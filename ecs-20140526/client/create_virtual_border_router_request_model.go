@@ -44,23 +44,50 @@ type iCreateVirtualBorderRouterRequest interface {
 }
 
 type CreateVirtualBorderRouterRequest struct {
-	CircuitCode       *string `json:"CircuitCode,omitempty" xml:"CircuitCode,omitempty"`
-	ClientToken       *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Description       *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	LocalGatewayIp    *string `json:"LocalGatewayIp,omitempty" xml:"LocalGatewayIp,omitempty"`
-	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	OwnerAccount      *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PeerGatewayIp     *string `json:"PeerGatewayIp,omitempty" xml:"PeerGatewayIp,omitempty"`
+	// The circuit code of the physical connection. This code is provided by your connectivity provider.
+	CircuitCode *string `json:"CircuitCode,omitempty" xml:"CircuitCode,omitempty"`
+	// A client token to ensure that the request is idempotent.
+	//
+	// You can generate this token on your client, but you must ensure that it is unique for each request. The token can contain only ASCII characters and cannot be longer than 64 characters.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The description of the VBR.
+	//
+	// The description must be 2 to 256 characters long and cannot start with `http://` or `https://`.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The IP address of the VBR gateway in Alibaba Cloud.
+	LocalGatewayIp *string `json:"LocalGatewayIp,omitempty" xml:"LocalGatewayIp,omitempty"`
+	// The name of the VBR.
+	//
+	// The name must be 2 to 128 characters long, start with a letter, and can contain only letters, digits, periods (.), underscores (_), and hyphens (-).
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The IP address of the gateway in your on-premises data center.
+	PeerGatewayIp *string `json:"PeerGatewayIp,omitempty" xml:"PeerGatewayIp,omitempty"`
+	// The peering subnet mask for the IP addresses of the local gateway and the peer gateway.
 	PeeringSubnetMask *string `json:"PeeringSubnetMask,omitempty" xml:"PeeringSubnetMask,omitempty"`
+	// The ID of the physical connection.
+	//
 	// This parameter is required.
 	PhysicalConnectionId *string `json:"PhysicalConnectionId,omitempty" xml:"PhysicalConnectionId,omitempty"`
+	// The ID of the region where the Virtual Border Router (VBR) is located.
+	//
+	// You can call the `DescribeRegions` operation to get the latest list of regions.
+	//
 	// This parameter is required.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	UserCidr             *string `json:"UserCidr,omitempty" xml:"UserCidr,omitempty"`
-	VbrOwnerId           *int64  `json:"VbrOwnerId,omitempty" xml:"VbrOwnerId,omitempty"`
+	// The CIDR block of your on-premises network. Required when the VBR is connected to a Cloud Enterprise Network (CEN) instance.
+	UserCidr *string `json:"UserCidr,omitempty" xml:"UserCidr,omitempty"`
+	// The ID of the Alibaba Cloud account that owns the VBR. Specify this parameter when creating a VBR for another account.
+	VbrOwnerId *int64 `json:"VbrOwnerId,omitempty" xml:"VbrOwnerId,omitempty"`
+	// The VLAN ID of the VBR.
+	//
+	// Valid values: 0 to 4095.
+	//
+	// A value of 0 indicates that the VBR is connected to the physical connection in Layer 3 router mode.
+	//
 	// This parameter is required.
 	VlanId *int32 `json:"VlanId,omitempty" xml:"VlanId,omitempty"`
 }

@@ -30,21 +30,15 @@ type iDescribeHpcClustersRequest interface {
 }
 
 type DescribeHpcClustersRequest struct {
-	// The page number.
-	//
-	// Pages start from page 1.
-	//
-	// Default value: 1.
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. **ClientToken*	- can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The number of entries per page.
+	// The IDs of HPC clusters.
 	//
-	// Maximum value: 100.
-	//
-	// Default value: 10.
+	// The value can be a JSON array that consists of multiple HPC cluster IDs. You can specify up to 100 IDs. Separate the IDs with commas (,).
 	//
 	// example:
 	//
@@ -52,27 +46,27 @@ type DescribeHpcClustersRequest struct {
 	HpcClusterIds *string `json:"HpcClusterIds,omitempty" xml:"HpcClusterIds,omitempty"`
 	OwnerAccount  *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number.
+	// The page number of the HPC cluster list.
 	//
-	// Pages start from page 1.
+	// Start value: 1
 	//
-	// Default value: 1.
+	// Default value: 1
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page set for paginated queries.
 	//
-	// Valid values: 1 to 100.
+	// Maximum value: 100
 	//
-	// Default value: 10.
+	// Default value: 10
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The IDs of HPC clusters. The value is a JSON array that consists of up to 100 HPC cluster IDs. Separate the HPC cluster IDs with commas (,).
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent list of Alibaba Cloud regions.
 	//
 	// This parameter is required.
 	//

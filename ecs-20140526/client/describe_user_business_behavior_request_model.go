@@ -24,11 +24,14 @@ type iDescribeUserBusinessBehaviorRequest interface {
 }
 
 type DescribeUserBusinessBehaviorRequest struct {
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region. Call the `DescribeRegions` operation to query the latest list of regions.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The key of the business attribute to query.
+	//
 	// This parameter is required.
 	StatusKey *string `json:"statusKey,omitempty" xml:"statusKey,omitempty"`
 }

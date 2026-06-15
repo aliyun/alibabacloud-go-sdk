@@ -39,9 +39,9 @@ type RenewElasticityAssurancesRequest struct {
 	PrivatePoolOptions *RenewElasticityAssurancesRequestPrivatePoolOptions `json:"PrivatePoolOptions,omitempty" xml:"PrivatePoolOptions,omitempty" type:"Struct"`
 	// Specifies whether to enable automatic payment. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// Default value: true.
 	//
@@ -51,9 +51,9 @@ type RenewElasticityAssurancesRequest struct {
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
 	// Specifies whether to enable auto-renewal for the elasticity assurance. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// Default value: false.
 	//
@@ -63,11 +63,11 @@ type RenewElasticityAssurancesRequest struct {
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
 	// The auto-renewal period. Unit: month. Valid values: 1, 2, 3, 6, 12, 24, and 36.
 	//
-	// 	- If you set `PeriodUnit` to Month, the default value is 1.
+	// - If you set `PeriodUnit` to Month, the default value is 1.
 	//
-	// 	- If you set `PeriodUnit` to Year, the default value is 12.
+	// - If you set `PeriodUnit` to Year, the default value is 12.
 	//
-	// >  This parameter is required if you set `AutoRenew` to `true`.
+	// > This parameter is required if you set `AutoRenew` to `true`.
 	//
 	// example:
 	//
@@ -85,9 +85,9 @@ type RenewElasticityAssurancesRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The renewal duration. The unit of the renewal duration is determined by the `PeriodUnit` value. Valid values:
 	//
-	// 	- Valid values if you set `PeriodUnit` to `Month`: 1, 2, 3, 4, 5, 6, 7, 8, and 9.
+	// - Valid values if you set `PeriodUnit` to `Month`: 1, 2, 3, 4, 5, 6, 7, 8, and 9.
 	//
-	// 	- Valid values if you set `PeriodUnit` to `Year`: 1, 2, and 3.
+	// - Valid values if you set `PeriodUnit` to `Year`: 1, 2, and 3.
 	//
 	// Default value: 1.
 	//
@@ -97,9 +97,9 @@ type RenewElasticityAssurancesRequest struct {
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
 	// The unit of the renewal duration. Valid values:
 	//
-	// 	- Month
+	// - Month
 	//
-	// 	- Year
+	// - Year
 	//
 	// Default value: Year.
 	//

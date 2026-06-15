@@ -30,9 +30,9 @@ type iStartInstancesRequest interface {
 type StartInstancesRequest struct {
 	// The batch operation mode. Valid values:
 	//
-	// 	- AllTogether: starts all ECS instances at the same time. If all ECS instances are started, a success message is returned. If an ECS instance fails to be started, all the specified instances fail to be started and an error message is returned.
+	// - AllTogether: starts all ECS instances at the same time. If all ECS instances are started, a success message is returned. If an ECS instance fails to be started, all the specified instances fail to be started and an error message is returned.
 	//
-	// 	- SuccessFirst: separately starts each ECS instance. The response contains the operation results of each ECS instance.
+	// - SuccessFirst: separately starts each ECS instance. The response contains the operation results of each ECS instance.
 	//
 	// Default value: AllTogether.
 	//
@@ -42,11 +42,11 @@ type StartInstancesRequest struct {
 	BatchOptimization *string `json:"BatchOptimization,omitempty" xml:"BatchOptimization,omitempty"`
 	// Specifies whether to perform a dry run. Valid values:
 	//
-	// 	- true: performs only a dry run. The system checks the request for potential issues, including required parameters, request syntax, and instance status. If the request fails the dry run, an error message is returned. If the request passes the dry run, `DRYRUN.SUCCESS` is returned.
+	// - true: performs only a dry run. The system checks the request for potential issues, including required parameters, request syntax, and instance status. If the request fails the dry run, an error message is returned. If the request passes the dry run, `DRYRUN.SUCCESS` is returned.
 	//
 	// > If you set `BatchOptimization` to `SuccessFirst` and `DryRun` to true, only `DRYRUN.SUCCESS` is returned regardless of whether the request passes the dry run.
 	//
-	// 	- false: performs a dry run and performs the actual request. If the request passes the dry run, the operation is performed.
+	// - false: performs a dry run and performs the actual request. If the request passes the dry run, the operation is performed.
 	//
 	// Default value: false.
 	//

@@ -41,7 +41,7 @@ type DescribeResourceByTagsResponseBody struct {
 	// 1C1E5359-71D7-44D8-8FAA-0327B549157X
 	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Resources *DescribeResourceByTagsResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Struct"`
-	// The total number of resources returned.
+	// The total number of resources.
 	//
 	// example:
 	//

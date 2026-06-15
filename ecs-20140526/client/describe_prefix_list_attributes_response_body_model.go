@@ -30,9 +30,9 @@ type iDescribePrefixListAttributesResponseBody interface {
 type DescribePrefixListAttributesResponseBody struct {
 	// The IP address family of the prefix list. Valid values:
 	//
-	// 	- IPv4
+	// - IPv4
 	//
-	// 	- IPv6
+	// - IPv6
 	//
 	// example:
 	//

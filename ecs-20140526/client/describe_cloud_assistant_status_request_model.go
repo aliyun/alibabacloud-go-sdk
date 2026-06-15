@@ -58,11 +58,11 @@ type DescribeCloudAssistantStatusRequest struct {
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The operating system type of the instance. Valid values:
 	//
-	// 	- Windows
+	// - Windows
 	//
-	// 	- Linux
+	// - Linux
 	//
-	// 	- FreeBSD
+	// - FreeBSD
 	//
 	// example:
 	//
@@ -70,13 +70,13 @@ type DescribeCloudAssistantStatusRequest struct {
 	OSType       *string `json:"OSType,omitempty" xml:"OSType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// >  This parameter will be removed in the future. We recommend that you use NextToken and MaxResults for a paged query.
+	// > This parameter will be removed in the future. We recommend that you use NextToken and MaxResults for a paged query.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// >  This parameter will be removed in the future. We recommend that you use NextToken and MaxResults for a paged query.
+	// > This parameter will be removed in the future. We recommend that you use NextToken and MaxResults for a paged query.
 	//
 	// example:
 	//

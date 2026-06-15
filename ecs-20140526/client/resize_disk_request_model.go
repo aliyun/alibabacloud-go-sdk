@@ -30,49 +30,49 @@ type iResizeDiskRequest interface {
 type ResizeDiskRequest struct {
 	// The new disk capacity. Unit: GiB. Valid values:
 	//
-	// 	- For a system disk:
+	// - For a system disk:
 	//
-	//     	- Basic disk (cloud): 20 to 500.
+	//   - Basic disk (cloud): 20 to 500.
 	//
-	//     	- ESSD (cloud_essd): The valid values vary based on the performance level of the ESSD.
+	//   - ESSD (cloud_essd): The valid values vary based on the performance level of the ESSD.
 	//
-	//         	- PL0 ESSD: 1 to 2048.
+	//     - PL0 ESSD: 1 to 2048.
 	//
-	//         	- PL1 ESSD: 20 to 2048.
+	//     - PL1 ESSD: 20 to 2048.
 	//
-	//         	- PL2 ESSD: 461 to 2048.
+	//     - PL2 ESSD: 461 to 2048.
 	//
-	//         	- PL3 ESSD: 1261 to 2048.
+	//     - PL3 ESSD: 1261 to 2048.
 	//
-	//     	- ESSD AutoPL disk: 1 to 2048.
+	//   - ESSD AutoPL disk: 1 to 2048.
 	//
-	//     	- Other disk categories: 20 to 2048.
+	//   - Other disk categories: 20 to 2048.
 	//
-	// 	- For a data disk:
+	// - For a data disk:
 	//
-	//     	- Ultra disk (cloud_efficiency): 20 to 32768.
+	//   - Ultra disk (cloud_efficiency): 20 to 32768.
 	//
-	//     	- Standard SSD (cloud_ssd): 20 to 32768.
+	//   - Standard SSD (cloud_ssd): 20 to 32768.
 	//
-	//     	- ESSD (cloud_essd): The valid values vary based on the performance level of the ESSD.`` To query the performance level of an ESSD, call the [DescribeDisks](https://help.aliyun.com/document_detail/25514.html) operation to query disk information and check the `PerformanceLevel` value in the response.
+	//   - ESSD (cloud_essd): The valid values vary based on the performance level of the ESSD.\\`\\` To query the performance level of an ESSD, call the [DescribeDisks](https://help.aliyun.com/document_detail/25514.html) operation to query disk information and check the `PerformanceLevel` value in the response.
 	//
-	//         	- PL0 ESSD: 1 to 65536.
+	//     - PL0 ESSD: 1 to 65536.
 	//
-	//         	- PL1 ESSD: 20 to 65536.
+	//     - PL1 ESSD: 20 to 65536.
 	//
-	//         	- PL2 ESSD: 461 to 65536.
+	//     - PL2 ESSD: 461 to 65536.
 	//
-	//         	- PL3 ESSD: 1261 to 65536.
+	//     - PL3 ESSD: 1261 to 65536.
 	//
-	//     	- Basic disk (cloud): 5 to 2000.
+	//   - Basic disk (cloud): 5 to 2000.
 	//
-	//     	- ESSD AutoPL disk (cloud_auto): 1 to 65536.
+	//   - ESSD AutoPL disk (cloud_auto): 1 to 65536.
 	//
-	//     	- Standard elastic ephemeral disk (elastic_ephemeral_disk_standard): 64 to 8192.
+	//   - Standard elastic ephemeral disk (elastic_ephemeral_disk_standard): 64 to 8192.
 	//
-	//     	- Premium elastic ephemeral disk (elastic_ephemeral_disk_premium): 64 to 8192.
+	//   - Premium elastic ephemeral disk (elastic_ephemeral_disk_premium): 64 to 8192.
 	//
-	// >  The new disk capacity must be larger than the original disk capacity. Otherwise, an error is reported.
+	// > The new disk capacity must be larger than the original disk capacity. Otherwise, an error is reported.
 	//
 	// example:
 	//
@@ -88,49 +88,49 @@ type ResizeDiskRequest struct {
 	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
 	// The new disk capacity. Unit: GiB. Valid values:
 	//
-	// 	- System disk:
+	// - System disk:
 	//
-	//     	- Basic disk (cloud): 20 to 500.
+	//   - Basic disk (cloud): 20 to 500.
 	//
-	//     	- ESSD (cloud_essd): The valid values vary based on the performance level of the ESSD.
+	//   - ESSD (cloud_essd): The valid values vary based on the performance level of the ESSD.
 	//
-	//         	- Valid values when SystemDisk.PerformanceLevel is set to PL0: 1 to 2048.
+	//     - Valid values when SystemDisk.PerformanceLevel is set to PL0: 1 to 2048.
 	//
-	//         	- Valid values when SystemDisk.PerformanceLevel is set to PL1: 20 to 2048.
+	//     - Valid values when SystemDisk.PerformanceLevel is set to PL1: 20 to 2048.
 	//
-	//         	- Valid values when SystemDisk.PerformanceLevel is set to PL2: 461 to 2048.
+	//     - Valid values when SystemDisk.PerformanceLevel is set to PL2: 461 to 2048.
 	//
-	//         	- Valid values when SystemDisk.PerformanceLevel is set to PL3: 1261 to 2048.
+	//     - Valid values when SystemDisk.PerformanceLevel is set to PL3: 1261 to 2048.
 	//
-	//     	- ESSD AutoPL disk: 1 to 2048.
+	//   - ESSD AutoPL disk: 1 to 2048.
 	//
-	//     	- Other disk categories: 20 to 2048.
+	//   - Other disk categories: 20 to 2048.
 	//
-	// 	- Data disk:
+	// - Data disk:
 	//
-	//     	- Ultra disk (cloud_efficiency): 20 to 32768.
+	//   - Ultra disk (cloud_efficiency): 20 to 32768.
 	//
-	//     	- Standard SSD (cloud_ssd): 20 to 32768.
+	//   - Standard SSD (cloud_ssd): 20 to 32768.
 	//
-	//     	- ESSD (cloud_essd): The valid values vary based on the performance level of the ESSD.`` To query the performance level of an ESSD, call the [DescribeDisks](https://help.aliyun.com/document_detail/25514.html) operation to query disk information and check the `PerformanceLevel` value in the response.
+	//   - ESSD (cloud_essd): The valid values vary based on the performance level of the ESSD.\\`\\` To query the performance level of an ESSD, call the [DescribeDisks](https://help.aliyun.com/document_detail/25514.html) operation to query disk information and check the `PerformanceLevel` value in the response.
 	//
-	//         	- PL0 ESSD: 1 to 65536.
+	//     - PL0 ESSD: 1 to 65536.
 	//
-	//         	- PL1 ESSD: 20 to 65536.
+	//     - PL1 ESSD: 20 to 65536.
 	//
-	//         	- PL2 ESSD: 461 to 65536.
+	//     - PL2 ESSD: 461 to 65536.
 	//
-	//         	- PL3 ESSD: 1261 to 65536.
+	//     - PL3 ESSD: 1261 to 65536.
 	//
-	//     	- Basic disk (cloud): 5 to 2000.
+	//   - Basic disk (cloud): 5 to 2000.
 	//
-	//     	- ESSD AutoPL disk (cloud_auto): 1 to 65536.
+	//   - ESSD AutoPL disk (cloud_auto): 1 to 65536.
 	//
-	//     	- Standard elastic ephemeral disk (elastic_ephemeral_disk_standard): 64 to 8192.
+	//   - Standard elastic ephemeral disk (elastic_ephemeral_disk_standard): 64 to 8192.
 	//
-	//     	- Premium elastic ephemeral disk (elastic_ephemeral_disk_premium): 64 to 8192.
+	//   - Premium elastic ephemeral disk (elastic_ephemeral_disk_premium): 64 to 8192.
 	//
-	// >  The new disk capacity must be larger than the original disk capacity. Otherwise, an error is reported.
+	// > The new disk capacity must be larger than the original disk capacity. Otherwise, an error is reported.
 	//
 	// This parameter is required.
 	//
@@ -144,9 +144,9 @@ type ResizeDiskRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The method that you want to use to resize the disk. Valid values:
 	//
-	// 	- offline (default): resizes the disk offline. After resizing a disk offline, you must [restart the instance](https://help.aliyun.com/document_detail/25440.html) in the console or call an API operation [RebootInstance](https://help.aliyun.com/document_detail/25502.html) make the operation take effect.
+	// - offline (default): resizes the disk offline. After resizing a disk offline, you must [restart the instance](https://help.aliyun.com/document_detail/25440.html) in the console or call an API operation [RebootInstance](https://help.aliyun.com/document_detail/25502.html) make the operation take effect.
 	//
-	// 	- online: resizes the disk online without the need to restart the instance. You can resize ultra disks, standard SSDs, ESSDs, and elastic ephemeral disks online.
+	// - online: resizes the disk online without the need to restart the instance. You can resize ultra disks, standard SSDs, ESSDs, and elastic ephemeral disks online.
 	//
 	// example:
 	//

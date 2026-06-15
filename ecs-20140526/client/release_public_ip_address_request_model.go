@@ -20,13 +20,13 @@ type iReleasePublicIpAddressRequest interface {
 }
 
 type ReleasePublicIpAddressRequest struct {
-	// > This parameter is unavailable.
+	// > This parameter is not yet available.
 	//
 	// example:
 	//
 	// hide
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type ReleasePublicIpAddressRequest struct {
 	//
 	// ``121.40.**.**``
 	PublicIpAddress *string `json:"PublicIpAddress,omitempty" xml:"PublicIpAddress,omitempty"`
-	// The region ID of the instance.
+	// The ID of the region where the instance is located.
 	//
 	// example:
 	//

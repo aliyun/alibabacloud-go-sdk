@@ -29,7 +29,7 @@ type DescribeCapacityReservationsResponseBody struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results.If NextToken is empty, no next page exists.
+	// The token to retrieve the next page of results.
 	//
 	// example:
 	//
@@ -41,7 +41,7 @@ type DescribeCapacityReservationsResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of capacity reservations that match the query.
 	//
 	// example:
 	//

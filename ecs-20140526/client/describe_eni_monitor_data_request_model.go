@@ -58,11 +58,11 @@ type DescribeEniMonitorDataRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The interval at which to retrieve the monitoring data. Unit: seconds. Default value: Month. Valid values:
 	//
-	// 	- 60
+	// - 60
 	//
-	// 	- 600
+	// - 600
 	//
-	// 	- 3600
+	// - 3600
 	//
 	// Default: 60.
 	//

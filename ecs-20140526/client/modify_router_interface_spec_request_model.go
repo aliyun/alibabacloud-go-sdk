@@ -30,17 +30,25 @@ type iModifyRouterInterfaceSpecRequest interface {
 }
 
 type ModifyRouterInterfaceSpecRequest struct {
+	// A client token to ensure that the request is idempotent. You can generate this token from your client, but you must ensure that it is unique across requests. The token must consist of only ASCII characters and not exceed 64 characters in length.
 	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region where the router interface is located. To obtain the latest list of regions, call the [DescribeRegions](~~DescribeRegions~~) operation.
+	//
 	// This parameter is required.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The ID of the router interface.
+	//
 	// This parameter is required.
 	RouterInterfaceId *string `json:"RouterInterfaceId,omitempty" xml:"RouterInterfaceId,omitempty"`
+	// The new specification of the router interface. The supported specifications vary based on the type and region of the router interface. For more information, see the pricing page of Express Connect.
+	//
 	// This parameter is required.
-	Spec     *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	// The client-side CIDR block for the router interface. This parameter is used for VBR-to-VPC connections. The system assigns a gateway IP address from this CIDR block to the VBR to forward traffic to the VPC.
 	UserCidr *string `json:"UserCidr,omitempty" xml:"UserCidr,omitempty"`
 }
 

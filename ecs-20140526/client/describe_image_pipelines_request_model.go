@@ -34,13 +34,13 @@ type iDescribeImagePipelinesRequest interface {
 }
 
 type DescribeImagePipelinesRequest struct {
-	// The IDs of image templates. Valid values of N: 1 to 20.
+	// The IDs of the image pipelines. You can specify up to 20 IDs.
 	//
 	// example:
 	//
 	// ip-2ze5tsl5bp6nf2b3****
 	ImagePipelineId []*string `json:"ImagePipelineId,omitempty" xml:"ImagePipelineId,omitempty" type:"Repeated"`
-	// The maximum number of entries per page. Valid values: 1 to 500
+	// The number of entries to return per page. Valid values: 1 to 500.
 	//
 	// Default value: 50.
 	//
@@ -48,13 +48,13 @@ type DescribeImagePipelinesRequest struct {
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The name of the image template.
+	// The name of the image pipeline.
 	//
 	// example:
 	//
 	// testImagePipeline
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of `NextToken`.
+	// The pagination token. To retrieve the next page of results, set this parameter to the `NextToken` value from the previous response. Omit this parameter on your first request.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type DescribeImagePipelinesRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the image template. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+	// The ID of the region. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to view the latest list of Alibaba Cloud regions.
 	//
 	// This parameter is required.
 	//
@@ -70,9 +70,9 @@ type DescribeImagePipelinesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group. If this parameter is specified to query resources, up to 1,000 resources that belong to the specified resource group can be displayed in the response.
+	// The resource group ID. If you use this parameter for filtering, you can query a maximum of 1,000 resources.
 	//
-	// >  Resources in the default resource group are displayed in the response regardless of how this parameter is set.
+	// > Filtering by the default resource group is not supported.
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type DescribeImagePipelinesRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The tags of the image template.
+	// A list of tags.
 	Tag []*DescribeImagePipelinesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -205,13 +205,13 @@ func (s *DescribeImagePipelinesRequest) Validate() error {
 }
 
 type DescribeImagePipelinesRequestTag struct {
-	// The key of tag N. Valid values of N: 1 to 20.
+	// The key of a tag. Up to 20 tags are supported.
 	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N. Valid values of N: 1 to 20.
+	// The value of a tag. Up to 20 tags are supported.
 	//
 	// example:
 	//

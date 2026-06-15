@@ -28,14 +28,19 @@ type iModifyVRouterAttributeRequest interface {
 }
 
 type ModifyVRouterAttributeRequest struct {
-	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The description of the virtual router. The description must be 2 to 256 characters long and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region where the virtual router is deployed. You can call the `DescribeRegions` operation to obtain the most recent list of regions.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The ID of the VRouter to modify.
+	//
 	// This parameter is required.
-	VRouterId   *string `json:"VRouterId,omitempty" xml:"VRouterId,omitempty"`
+	VRouterId *string `json:"VRouterId,omitempty" xml:"VRouterId,omitempty"`
+	// The name of the virtual router. The name must be 2 to 128 characters long and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
 	VRouterName *string `json:"VRouterName,omitempty" xml:"VRouterName,omitempty"`
 }
 

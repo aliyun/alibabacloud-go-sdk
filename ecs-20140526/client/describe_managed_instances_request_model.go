@@ -54,6 +54,12 @@ type DescribeManagedInstancesRequest struct {
 	//
 	// 4ECEEE12-56F1-4FBC-9AB1-890F7494****
 	ActivationId *string `json:"ActivationId,omitempty" xml:"ActivationId,omitempty"`
+	// Indicates whether the managed instance is connected.
+	//
+	// true: The managed instance is connected, and you can manage it by using Cloud Assistant.
+	//
+	// false: The managed instance is not connected. The server may be shut down or the Cloud Assistant Agent may not be installed correctly.
+	//
 	// example:
 	//
 	// true
@@ -78,23 +84,27 @@ type DescribeManagedInstancesRequest struct {
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// The value of the MachineId parameter that you specify when you register a managed instance. A maximum of 36 characters are allowed. Sample registration script:
 	//
-	//     aliyun-service --register \\
+	// ```
 	//
-	//       --RegionId=cn-hangznou \\
+	// aliyun-service --register \\
 	//
-	//       --ActivationId=xxxxxxxxxxx \\
+	//   --RegionId=cn-hangznou \\
 	//
-	//       --ActivationCode=xxxxxxxxx \\
+	//   --ActivationId=xxxxxxxxxxx \\
 	//
-	//     --MachineId=xxxxxx \\ # Optional. The unique identifier of the machine.
+	//   --ActivationCode=xxxxxxxxx \\
 	//
-	//       --ForceResue
+	// --MachineId=xxxxxx \\ # Optional. The unique identifier of the machine.
 	//
-	// 	- If the MachineId and ForceResult parameters are specified during registration, the Cloud Assistant generates a fixed managed instance ID for this MachineId.
+	//   --ForceResue
 	//
-	// 	- If the MachineId parameter is not explicitly specified, the Cloud Assistant will automatically generate a MachineId value based on the hardware information of the machine.
+	// ```
 	//
-	// 	- We recommend that you explicitly specify the MachineId and ForceResult parameters to mark the mapping between a managed instance and an on-premises machine.
+	// - If the MachineId and ForceResult parameters are specified during registration, the Cloud Assistant generates a fixed managed instance ID for this MachineId.
+	//
+	// - If the MachineId parameter is not explicitly specified, the Cloud Assistant will automatically generate a MachineId value based on the hardware information of the machine.
+	//
+	// - We recommend that you explicitly specify the MachineId and ForceResult parameters to mark the mapping between a managed instance and an on-premises machine.
 	//
 	// example:
 	//
@@ -118,11 +128,11 @@ type DescribeManagedInstancesRequest struct {
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The operating system type of the managed instance. Valid values:
 	//
-	// 	- windows
+	// - windows
 	//
-	// 	- linux
+	// - linux
 	//
-	// 	- FreeBSD
+	// - FreeBSD
 	//
 	// example:
 	//
@@ -130,13 +140,13 @@ type DescribeManagedInstancesRequest struct {
 	OsType       *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// >  This parameter will be removed in the future. We recommend that you use NextToken and MaxResults for a paged query.
+	// > This parameter will be removed in the future. We recommend that you use NextToken and MaxResults for a paged query.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// >  This parameter will be removed in the future. We recommend that you use NextToken and MaxResults for a paged query.
+	// > This parameter will be removed in the future. We recommend that you use NextToken and MaxResults for a paged query.
 	//
 	// example:
 	//

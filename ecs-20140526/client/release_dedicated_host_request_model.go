@@ -48,9 +48,9 @@ type ReleaseDedicatedHostRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The expiration time of the subscription dedicated host.
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// Default value: false.
 	//

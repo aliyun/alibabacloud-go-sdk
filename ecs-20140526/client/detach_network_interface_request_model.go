@@ -30,7 +30,7 @@ type iDetachNetworkInterfaceRequest interface {
 type DetachNetworkInterfaceRequest struct {
 	// The ID of the trunk ENI.
 	//
-	// >  This parameter is unavailable for use.
+	// > This parameter is unavailable for use.
 	//
 	// This parameter is required.
 	//

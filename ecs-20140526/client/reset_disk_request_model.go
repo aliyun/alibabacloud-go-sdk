@@ -36,9 +36,9 @@ type ResetDiskRequest struct {
 	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
 	// Specifies whether to check the validity of the request without actually making the request. Valid values:
 	//
-	// 	- true: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and resource state limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// - true: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and resource state limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
 	//
-	// 	- false: performs a dry run and performs the actual request. If the request passes the dry run, the rollback operation is performed.
+	// - false: performs a dry run and performs the actual request. If the request passes the dry run, the rollback operation is performed.
 	//
 	// Default value: false
 	//

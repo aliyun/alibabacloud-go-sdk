@@ -38,7 +38,7 @@ type iDescribeAutoProvisioningGroupsRequest interface {
 }
 
 type DescribeAutoProvisioningGroupsRequest struct {
-	// The ID of the auto provisioning group. You can specify up to 20 IDs.
+	// The IDs of the auto provisioning groups. You can specify up to 20 IDs.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type DescribeAutoProvisioningGroupsRequest struct {
 	//
 	// testAutoProvisioningGroupName
 	AutoProvisioningGroupName *string `json:"AutoProvisioningGroupName,omitempty" xml:"AutoProvisioningGroupName,omitempty"`
-	// The status of the auto provisioning group.
+	// The statuses of the auto provisioning groups.
 	//
 	// example:
 	//
@@ -59,9 +59,9 @@ type DescribeAutoProvisioningGroupsRequest struct {
 	AutoProvisioningGroupTypes  []*string `json:"AutoProvisioningGroupTypes,omitempty" xml:"AutoProvisioningGroupTypes,omitempty" type:"Repeated"`
 	OwnerAccount                *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId                     *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number.
+	// The page number to return.
 	//
-	// Pages start from page 1.
+	// Start value: 1.
 	//
 	// Default value: 1.
 	//
@@ -69,9 +69,9 @@ type DescribeAutoProvisioningGroupsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries to return per page.
 	//
-	// Valid values: 1 to 100.
+	// Maximum value: 100.
 	//
 	// Default value: 10.
 	//
@@ -79,7 +79,7 @@ type DescribeAutoProvisioningGroupsRequest struct {
 	//
 	// 2
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the auto provisioning group.
+	// The ID of the region where the auto provisioning group is located.
 	//
 	// This parameter is required.
 	//
@@ -95,7 +95,7 @@ type DescribeAutoProvisioningGroupsRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The tags that are added to the auto provisioning group.
+	// The tags used to filter auto provisioning groups. You can specify up to 20 tags.
 	Tag []*DescribeAutoProvisioningGroupsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -238,17 +238,13 @@ func (s *DescribeAutoProvisioningGroupsRequest) Validate() error {
 }
 
 type DescribeAutoProvisioningGroupsRequestTag struct {
-	// The key of tag N that is added to the auto provisioning group.
-	//
-	// Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot contain http:// or https://. The tag key cannot start with acs: or aliyun.
+	// The key of the tag. The key can be up to 128 characters in length and cannot be an empty string. It cannot start with `aliyun` or `acs:` or contain http\\:// or https\\://.
 	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N that is added to the auto provisioning group.
-	//
-	// Valid values of N: 1 to 20. The tag value can be an empty string. The tag key can be up to 128 characters in length and cannot contain http:// or https://.
+	// The value of the tag. The value can be up to 128 characters in length and can be an empty string. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

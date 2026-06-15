@@ -26,7 +26,7 @@ type CreateDiagnosticMetricSetRequest struct {
 	//
 	// example:
 	//
-	// The ID of the request.
+	// 远程连接问题诊断
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The IDs of diagnostic metrics. You can specify up to 100 diagnostic metric IDs.
 	//
@@ -36,7 +36,7 @@ type CreateDiagnosticMetricSetRequest struct {
 	//
 	// example:
 	//
-	// The IDs of diagnostic metrics. You can specify up to 100 diagnostic metric IDs.
+	// 远程连接问题诊断
 	MetricSetName *string `json:"MetricSetName,omitempty" xml:"MetricSetName,omitempty"`
 	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
 	//

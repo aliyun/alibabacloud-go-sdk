@@ -31,9 +31,9 @@ type DescribeCapacityReservationInstancesRequest struct {
 	PrivatePoolOptions *DescribeCapacityReservationInstancesRequestPrivatePoolOptions `json:"PrivatePoolOptions,omitempty" xml:"PrivatePoolOptions,omitempty" type:"Struct"`
 	// The number of entries per page.
 	//
-	// 	- Valid values: 1 to 100.
+	// - Valid values: 1 to 100.
 	//
-	// 	- Default value: 10.
+	// - Default value: 10.
 	//
 	// example:
 	//

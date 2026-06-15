@@ -27,7 +27,7 @@ type DescribeInstanceHistoryEventsResponseBody struct {
 	InstanceSystemEventSet *DescribeInstanceHistoryEventsResponseBodyInstanceSystemEventSet `json:"InstanceSystemEventSet,omitempty" xml:"InstanceSystemEventSet,omitempty" type:"Struct"`
 	// A pagination token. It can be used in the next request to retrieve a new page of results.
 	//
-	// >  If the NextToken parameter is not returned when you use the MaxResults and NextToken parameters to perform a paged query, no more data is returned.
+	// > If the NextToken parameter is not returned when you use the MaxResults and NextToken parameters to perform a paged query, no more data is returned.
 	//
 	// example:
 	//
@@ -37,9 +37,9 @@ type DescribeInstanceHistoryEventsResponseBody struct {
 	//
 	// >
 	//
-	// 	- If MaxResults and NextToken are used to query results by page, ignore this parameter.
+	// - If MaxResults and NextToken are used to query results by page, ignore this parameter.
 	//
-	// 	- This parameter will be removed in the future. We recommend that you use the NextToken and MaxResults parameters for a paged query.
+	// - This parameter will be removed in the future. We recommend that you use the NextToken and MaxResults parameters for a paged query.
 	//
 	// example:
 	//
@@ -49,9 +49,9 @@ type DescribeInstanceHistoryEventsResponseBody struct {
 	//
 	// >
 	//
-	// 	- If MaxResults and NextToken are used to query results by page, ignore this parameter.
+	// - If MaxResults and NextToken are used to query results by page, ignore this parameter.
 	//
-	// 	- This parameter will be removed in the future. We recommend that you use the NextToken and MaxResults parameters for a paged query.
+	// - This parameter will be removed in the future. We recommend that you use the NextToken and MaxResults parameters for a paged query.
 	//
 	// example:
 	//
@@ -65,7 +65,7 @@ type DescribeInstanceHistoryEventsResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of instances.
 	//
-	// >  If you specify the MaxResults and NextToken request parameters to perform a paged query, the value of the TotalCount response parameter is invalid.
+	// > If you specify the MaxResults and NextToken request parameters to perform a paged query, the value of the TotalCount response parameter is invalid.
 	//
 	// example:
 	//

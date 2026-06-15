@@ -44,9 +44,9 @@ type iCreateAutoSnapshotPolicyRequest interface {
 type CreateAutoSnapshotPolicyRequest struct {
 	// The retention period of the snapshot copy in the destination region. Unit: days. Valid values:
 	//
-	// 	- \\-1: The snapshot copy is retained until it is deleted.
+	// - -1: The snapshot copy is retained until it is deleted.
 	//
-	// 	- 1 to 65535: The snapshot copy is retained for the specified number of days. After the retention period of the snapshot copy expires, the snapshot copy is automatically deleted.
+	// - 1 to 65535: The snapshot copy is retained for the specified number of days. After the retention period of the snapshot copy expires, the snapshot copy is automatically deleted.
 	//
 	// Default value: -1.
 	//
@@ -58,9 +58,9 @@ type CreateAutoSnapshotPolicyRequest struct {
 	CopyEncryptionConfiguration *CreateAutoSnapshotPolicyRequestCopyEncryptionConfiguration `json:"CopyEncryptionConfiguration,omitempty" xml:"CopyEncryptionConfiguration,omitempty" type:"Struct"`
 	// Specifies whether to enable cross-region replication for snapshots.
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
@@ -89,7 +89,7 @@ type CreateAutoSnapshotPolicyRequest struct {
 	//
 	// ["cn-hangzhou"]
 	TargetCopyRegions *string `json:"TargetCopyRegions,omitempty" xml:"TargetCopyRegions,omitempty"`
-	// The name of the automatic snapshot policy. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+	// The name of the automatic snapshot policy. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http\\:// or https\\://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
 	//
 	// By default, this parameter is left empty.
 	//
@@ -107,9 +107,9 @@ type CreateAutoSnapshotPolicyRequest struct {
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
 	// The days of the week on which to create automatic snapshots. Valid values: 1 to 7, which correspond to Monday to Sunday. 1 indicates Monday. Format description:
 	//
-	// 	- Set this parameter to a JSON-formatted array. For example, a value of ["1"] specifies automatic snapshots to be created every Monday.
+	// - Set this parameter to a JSON-formatted array. For example, a value of ["1"] specifies automatic snapshots to be created every Monday.
 	//
-	// 	- To schedule multiple automatic snapshots to be created in a week, you can specify multiple values. Separate the values with commas (,). You can specify a maximum of seven days. For example, a value of ["1","3","5"] specifies automatic snapshots to be created every Monday, Wednesday, and Friday.
+	// - To schedule multiple automatic snapshots to be created in a week, you can specify multiple values. Separate the values with commas (,). You can specify a maximum of seven days. For example, a value of ["1","3","5"] specifies automatic snapshots to be created every Monday, Wednesday, and Friday.
 	//
 	// This parameter is required.
 	//
@@ -119,9 +119,9 @@ type CreateAutoSnapshotPolicyRequest struct {
 	RepeatWeekdays *string `json:"repeatWeekdays,omitempty" xml:"repeatWeekdays,omitempty"`
 	// The retention period of the automatic snapshot. Unit: days. Valid values:
 	//
-	// 	- \\-1: The automatic snapshot is retained until it is deleted.
+	// - -1: The automatic snapshot is retained until it is deleted.
 	//
-	// 	- 1 to 65535: The automatic snapshot is retained for the specified number of days. After the retention period of the automatic snapshot expires, the automatic snapshot is automatically deleted.
+	// - 1 to 65535: The automatic snapshot is retained for the specified number of days. After the retention period of the automatic snapshot expires, the automatic snapshot is automatically deleted.
 	//
 	// Default value: -1.
 	//
@@ -133,11 +133,11 @@ type CreateAutoSnapshotPolicyRequest struct {
 	RetentionDays *int32 `json:"retentionDays,omitempty" xml:"retentionDays,omitempty"`
 	// The points in time of the day at which to create automatic snapshots. The time must be in UTC+8. Unit: hours. Valid values: 0 to 23, which correspond to the 24 on-the-hour points in time from 00:00:00 to 23:00:00. For example, 1 indicates 01:00:00. Format description:
 	//
-	// 	- Set this parameter to a JSON-formatted array. For example, a value of ["1"] specifies automatic snapshots to be created at 01:00:00.
+	// - Set this parameter to a JSON-formatted array. For example, a value of ["1"] specifies automatic snapshots to be created at 01:00:00.
 	//
-	// 	- To schedule multiple automatic snapshots to be created in a day, you can specify multiple values. Separate the values with commas (,). You can specify up to 24 points in time. For example, a value of ["1","3","5"] specifies automatic snapshots to be created at 01:00:00, 03:00:00, and 05:00:00.
+	// - To schedule multiple automatic snapshots to be created in a day, you can specify multiple values. Separate the values with commas (,). You can specify up to 24 points in time. For example, a value of ["1","3","5"] specifies automatic snapshots to be created at 01:00:00, 03:00:00, and 05:00:00.
 	//
-	// >  If an automatic snapshot is being created when the time scheduled for creating another automatic snapshot is due, the new snapshot task is skipped. This may occur when a disk contains a large volume of data. For example, you scheduled snapshots to be automatically created at 09:00, 10:00, 11:00, and 12:00. The system starts to create a snapshot for the disk at 09:00:00. The process takes 80 minutes to complete because the disk contains a large volume of data and ends at 10:20:00. The system skips the automatic snapshot task scheduled for 10:00:00 and creates the next automatic snapshot for the disk at 11:00:00.
+	// > If an automatic snapshot is being created when the time scheduled for creating another automatic snapshot is due, the new snapshot task is skipped. This may occur when a disk contains a large volume of data. For example, you scheduled snapshots to be automatically created at 09:00, 10:00, 11:00, and 12:00. The system starts to create a snapshot for the disk at 09:00:00. The process takes 80 minutes to complete because the disk contains a large volume of data and ends at 10:20:00. The system skips the automatic snapshot task scheduled for 10:00:00 and creates the next automatic snapshot for the disk at 11:00:00.
 	//
 	// This parameter is required.
 	//
@@ -309,13 +309,13 @@ func (s *CreateAutoSnapshotPolicyRequest) Validate() error {
 }
 
 type CreateAutoSnapshotPolicyRequestCopyEncryptionConfiguration struct {
-	// >  This parameter is not publicly available.
+	// > This parameter is not publicly available.
 	Arn []*CreateAutoSnapshotPolicyRequestCopyEncryptionConfigurationArn `json:"Arn,omitempty" xml:"Arn,omitempty" type:"Repeated"`
 	// Specifies whether to enable cross-region snapshot replication and encryption. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// Default value: false.
 	//
@@ -380,19 +380,19 @@ func (s *CreateAutoSnapshotPolicyRequestCopyEncryptionConfiguration) Validate() 
 }
 
 type CreateAutoSnapshotPolicyRequestCopyEncryptionConfigurationArn struct {
-	// >  This parameter is not publicly available.
+	// > This parameter is not publicly available.
 	//
 	// example:
 	//
 	// 1000000000
 	AssumeRoleFor *int64 `json:"AssumeRoleFor,omitempty" xml:"AssumeRoleFor,omitempty"`
-	// >  This parameter is not publicly available.
+	// > This parameter is not publicly available.
 	//
 	// example:
 	//
 	// hide
 	RoleType *string `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
-	// >  This parameter is not publicly available.
+	// > This parameter is not publicly available.
 	//
 	// example:
 	//
@@ -440,13 +440,13 @@ func (s *CreateAutoSnapshotPolicyRequestCopyEncryptionConfigurationArn) Validate
 }
 
 type CreateAutoSnapshotPolicyRequestTag struct {
-	// The key of tag N to add to the automatic snapshot policy. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot contain http:// or https://. The tag key cannot start with acs: or aliyun.
+	// The key of tag N to add to the automatic snapshot policy. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot contain http\\:// or https\\://. The tag key cannot start with acs: or aliyun.
 	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N to add to the automatic snapshot policy. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot contain http:// or https://. The tag value cannot start with acs:.
+	// The value of tag N to add to the automatic snapshot policy. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot contain http\\:// or https\\://. The tag value cannot start with acs:.
 	//
 	// example:
 	//

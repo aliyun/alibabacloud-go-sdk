@@ -28,14 +28,20 @@ type iDeleteVirtualBorderRouterRequest interface {
 }
 
 type DeleteVirtualBorderRouterRequest struct {
+	// A client token that is used to ensure the idempotence of the request. This token must be unique across requests. The token can contain only ASCII characters and must not exceed 64 characters in length.
 	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region where the VBR is deployed. You can call the `DescribeRegions` operation to obtain the latest list of regions.
+	//
 	// This parameter is required.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	UserCidr             *string `json:"UserCidr,omitempty" xml:"UserCidr,omitempty"`
+	// The client-side CIDR block. This parameter is required only when you delete a VBR that is part of a dual-tunnel connection.
+	UserCidr *string `json:"UserCidr,omitempty" xml:"UserCidr,omitempty"`
+	// The ID of the VBR to delete.
+	//
 	// This parameter is required.
 	VbrId *string `json:"VbrId,omitempty" xml:"VbrId,omitempty"`
 }

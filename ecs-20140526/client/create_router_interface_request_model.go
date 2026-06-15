@@ -64,37 +64,107 @@ type iCreateRouterInterfaceRequest interface {
 }
 
 type CreateRouterInterfaceRequest struct {
-	AccessPointId            *string `json:"AccessPointId,omitempty" xml:"AccessPointId,omitempty"`
-	AutoPay                  *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	ClientToken              *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Description              *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	HealthCheckSourceIp      *string `json:"HealthCheckSourceIp,omitempty" xml:"HealthCheckSourceIp,omitempty"`
-	HealthCheckTargetIp      *string `json:"HealthCheckTargetIp,omitempty" xml:"HealthCheckTargetIp,omitempty"`
-	InstanceChargeType       *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	Name                     *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	OppositeAccessPointId    *string `json:"OppositeAccessPointId,omitempty" xml:"OppositeAccessPointId,omitempty"`
-	OppositeInterfaceId      *string `json:"OppositeInterfaceId,omitempty" xml:"OppositeInterfaceId,omitempty"`
+	// The access point ID.
+	AccessPointId *string `json:"AccessPointId,omitempty" xml:"AccessPointId,omitempty"`
+	// Specifies whether to enable automatic payment. Valid values are `true` and `false`. The default value is `true`.
+	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The description of the router interface. The description must be 2 to 256 characters long, must start with a letter, and cannot start with `http://` or `https://`.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The source IP address that is used for the health check.
+	HealthCheckSourceIp *string `json:"HealthCheckSourceIp,omitempty" xml:"HealthCheckSourceIp,omitempty"`
+	// The destination IP address that is used for the health check.
+	HealthCheckTargetIp *string `json:"HealthCheckTargetIp,omitempty" xml:"HealthCheckTargetIp,omitempty"`
+	// The billing method of the instance. Set the value to `PrePaid`. This parameter is required if you also specify `PricingCycle`.
+	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
+	// The name of the router interface. The name must be 2 to 128 characters long and start with a letter. It can contain letters, digits, underscores (_), and hyphens (-).
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the peer access point.
+	OppositeAccessPointId *string `json:"OppositeAccessPointId,omitempty" xml:"OppositeAccessPointId,omitempty"`
+	// The ID of the peer router interface.
+	OppositeInterfaceId *string `json:"OppositeInterfaceId,omitempty" xml:"OppositeInterfaceId,omitempty"`
+	// The ID of the account to which the peer router interface belongs.
 	OppositeInterfaceOwnerId *string `json:"OppositeInterfaceOwnerId,omitempty" xml:"OppositeInterfaceOwnerId,omitempty"`
+	// The ID of the peer region.
+	//
 	// This parameter is required.
-	OppositeRegionId   *string `json:"OppositeRegionId,omitempty" xml:"OppositeRegionId,omitempty"`
-	OppositeRouterId   *string `json:"OppositeRouterId,omitempty" xml:"OppositeRouterId,omitempty"`
+	OppositeRegionId *string `json:"OppositeRegionId,omitempty" xml:"OppositeRegionId,omitempty"`
+	// The ID of the peer router. This parameter is available only when the local and peer router interfaces belong to the same account.
+	OppositeRouterId *string `json:"OppositeRouterId,omitempty" xml:"OppositeRouterId,omitempty"`
+	// The type of the peer router. Valid values:
+	//
+	// - **VRouter**
+	//
+	// - **VBR**
+	//
+	// Default value: **VRouter**.
 	OppositeRouterType *string `json:"OppositeRouterType,omitempty" xml:"OppositeRouterType,omitempty"`
 	OwnerAccount       *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Period             *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
-	PricingCycle       *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	// The subscription duration. This parameter is required when `InstanceChargeType` is set to `PrePaid` and `PricingCycle` is set to `Month` or `Year`. Valid values:
+	//
+	// - If `PricingCycle` is set to `Month`, the valid values are 1 to 9.
+	//
+	// - If `PricingCycle` is set to `Year`, the valid values are 1 to 3.
+	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The billing cycle. This parameter is required if `InstanceChargeType` is set to `PrePaid`. Valid values are `Month` and `Year`.
+	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	// The region ID of the router interface.
+	//
 	// This parameter is required.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The role of the router interface in the peering connection. Valid values:
+	//
+	// - **InitiatingSide**: The router interface is the initiator.
+	//
+	// - **AcceptingSide**: The router interface is the acceptor.
+	//
 	// This parameter is required.
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// The router ID.
+	//
 	// This parameter is required.
 	RouterId *string `json:"RouterId,omitempty" xml:"RouterId,omitempty"`
+	// The router type. Valid values:
+	//
+	// - **VRouter**
+	//
+	// - **VBR**
+	//
 	// This parameter is required.
 	RouterType *string `json:"RouterType,omitempty" xml:"RouterType,omitempty"`
+	// The specification of the router interface. Valid values:
+	//
+	// - **Mini.2**
+	//
+	// - **Mini.5**
+	//
+	// - **Small.1**
+	//
+	// - **Small.2**
+	//
+	// - **Small.5**
+	//
+	// - **Middle.1**
+	//
+	// - **Middle.2**
+	//
+	// - **Middle.5**
+	//
+	// - **Large.1**
+	//
+	// - **Large.2**
+	//
+	// - **Large.5**
+	//
+	// - **Xlarge.1**
+	//
 	// This parameter is required.
-	Spec     *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	// The CIDR block of the user. This parameter is required when you create a router interface for a virtual border router (VBR) that is in the same region as the Express Connect circuit, or when both `RouterType` and `OppositeRouterType` are set to `VBR`.
 	UserCidr *string `json:"UserCidr,omitempty" xml:"UserCidr,omitempty"`
 }
 

@@ -56,103 +56,109 @@ type iCreateNetworkInterfaceResponseBody interface {
 }
 
 type CreateNetworkInterfaceResponseBody struct {
-	// The description of the ENI.
+	// The description of the elastic network interface.
 	//
 	// example:
 	//
 	// testDescription
-	Description    *string                                           `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The IPv4 prefixes that are assigned to the elastic network interface.
 	Ipv4PrefixSets *CreateNetworkInterfaceResponseBodyIpv4PrefixSets `json:"Ipv4PrefixSets,omitempty" xml:"Ipv4PrefixSets,omitempty" type:"Struct"`
+	// The IPv6 prefixes that are assigned to the elastic network interface.
 	Ipv6PrefixSets *CreateNetworkInterfaceResponseBodyIpv6PrefixSets `json:"Ipv6PrefixSets,omitempty" xml:"Ipv6PrefixSets,omitempty" type:"Struct"`
-	Ipv6Sets       *CreateNetworkInterfaceResponseBodyIpv6Sets       `json:"Ipv6Sets,omitempty" xml:"Ipv6Sets,omitempty" type:"Struct"`
-	// The media access control (MAC) address of the ENI.
+	// The IPv6 addresses that are assigned to the elastic network interface.
+	Ipv6Sets *CreateNetworkInterfaceResponseBodyIpv6Sets `json:"Ipv6Sets,omitempty" xml:"Ipv6Sets,omitempty" type:"Struct"`
+	// The MAC address of the elastic network interface.
 	//
 	// example:
 	//
 	// 00:16:3e:12:**:**
 	MacAddress *string `json:"MacAddress,omitempty" xml:"MacAddress,omitempty"`
-	// The ID of the ENI.
+	// The ID of the elastic network interface.
 	//
 	// example:
 	//
 	// eni-bp14v2sdd3v8htln****
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
-	// The name of the ENI.
+	// The name of the elastic network interface.
 	//
 	// example:
 	//
 	// my-eni-name
 	NetworkInterfaceName *string `json:"NetworkInterfaceName,omitempty" xml:"NetworkInterfaceName,omitempty"`
-	// The ID of the account to which the ENI belongs.
+	// The ID of the account that owns the elastic network interface.
 	//
 	// example:
 	//
 	// 123456****
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The private IP address of the ENI.
+	// The primary private IP address of the elastic network interface.
 	//
 	// example:
 	//
 	// ``172.17.**.**``
-	PrivateIpAddress *string                                          `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
-	PrivateIpSets    *CreateNetworkInterfaceResponseBodyPrivateIpSets `json:"PrivateIpSets,omitempty" xml:"PrivateIpSets,omitempty" type:"Struct"`
+	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
+	// The private IP addresses that are assigned to the elastic network interface.
+	PrivateIpSets *CreateNetworkInterfaceResponseBodyPrivateIpSets `json:"PrivateIpSets,omitempty" xml:"PrivateIpSets,omitempty" type:"Struct"`
 	// The request ID.
 	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the resource group to which the ENI belongs.
+	// The ID of the resource group.
 	//
 	// example:
 	//
 	// rg-2ze88m67qx5z****
-	ResourceGroupId  *string                                             `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The IDs of the security groups to which the elastic network interface belongs.
 	SecurityGroupIds *CreateNetworkInterfaceResponseBodySecurityGroupIds `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Struct"`
-	// The ID of the distributor to which the ENI belongs.
+	// The ID of the distributor for the elastic network interface.
 	//
 	// example:
 	//
 	// 12345678910
 	ServiceID *int64 `json:"ServiceID,omitempty" xml:"ServiceID,omitempty"`
-	// Indicates whether the user of the ENI is an Alibaba Cloud service or a distributor.
+	// Specifies whether the elastic network interface is managed by a cloud service or a distributor.
 	//
 	// example:
 	//
 	// true
 	ServiceManaged *bool `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
-	// >  This parameter is in invitational preview and is not publicly available.
+	// > This parameter is in invitational preview and is not publicly available.
 	//
 	// example:
 	//
 	// false
 	SourceDestCheck *bool `json:"SourceDestCheck,omitempty" xml:"SourceDestCheck,omitempty"`
-	// The state of the ENI.
+	// The status of the elastic network interface.
 	//
 	// example:
 	//
 	// Available
-	Status *string                                 `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags   *CreateNetworkInterfaceResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// The type of the ENI.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tags of the elastic network interface.
+	Tags *CreateNetworkInterfaceResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	// The type of the elastic network interface.
 	//
 	// example:
 	//
 	// Secondary
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The ID of the vSwitch to which the ENI is connected.
+	// The ID of the vSwitch.
 	//
 	// example:
 	//
 	// vsw-bp16usj2p27htro3****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the VPC to which the ENI belongs.
+	// The ID of the VPC to which the elastic network interface belongs.
 	//
 	// example:
 	//
 	// vpc-bp1j7w3gc1cexjqd****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The zone ID of the ENI.
+	// The ID of the zone.
 	//
 	// example:
 	//

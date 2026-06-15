@@ -53,7 +53,7 @@ type iReplaceSystemDiskRequest interface {
 
 type ReplaceSystemDiskRequest struct {
 	SystemDisk *ReplaceSystemDiskRequestSystemDisk `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
-	// >  This parameter is deprecated.
+	// > This parameter is deprecated.
 	//
 	// example:
 	//
@@ -67,7 +67,7 @@ type ReplaceSystemDiskRequest struct {
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// >  This parameter is deprecated. To improve compatibility, we recommend that you use `ImageId`.
+	// > This parameter is deprecated. To improve compatibility, we recommend that you use `ImageId`.
 	//
 	// example:
 	//
@@ -81,13 +81,13 @@ type ReplaceSystemDiskRequest struct {
 	EncryptAlgorithm *string `json:"EncryptAlgorithm,omitempty" xml:"EncryptAlgorithm,omitempty"`
 	// Specifies whether to encrypt the disk. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// Default value: false.
 	//
-	// >  When you use a shared encrypted image to create the disk based on an encrypted snapshot, you must set Encrypted to true to ensure that the disk uses an encryption key of your own.
+	// > When you use a shared encrypted image to create the disk based on an encrypted snapshot, you must set Encrypted to true to ensure that the disk uses an encryption key of your own.
 	//
 	// example:
 	//
@@ -101,7 +101,7 @@ type ReplaceSystemDiskRequest struct {
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	// The ID of the instance whose operating system you want to replace.
 	//
-	// >  Make sure that the instance is in the `Stopped` (`Stopped`) state.
+	// > Make sure that the instance is in the `Stopped` (`Stopped`) state.
 	//
 	// This parameter is required.
 	//
@@ -127,7 +127,11 @@ type ReplaceSystemDiskRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// Specifies whether to reset the password for the instance. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. Special characters include:
 	//
-	//     ()`~!@#$%^&*-_+=|{}[]:;\\"<>,.?/
+	// ```
+	//
+	// ()`~!@#$%^&*-_+=|{}[]:;\\"<>,.?/
+	//
+	// ```
 	//
 	// The passwords of Windows instances cannot start with a forward slash (/).
 	//
@@ -149,7 +153,7 @@ type ReplaceSystemDiskRequest struct {
 	//
 	// false
 	PasswordInherit *bool `json:"PasswordInherit,omitempty" xml:"PasswordInherit,omitempty"`
-	// >  This parameter is deprecated.
+	// > This parameter is deprecated.
 	//
 	// example:
 	//
@@ -159,9 +163,9 @@ type ReplaceSystemDiskRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// Specifies whether to use Security Center Basic after the system disk is replaced. Valid values:
 	//
-	// 	- Active: uses Security Center Basic after the system disk is re-initialized. This value is applicable only to public images.
+	// - Active: uses Security Center Basic after the system disk is re-initialized. This value is applicable only to public images.
 	//
-	// 	- Deactive: does not use Security Center Basic after the system disk is re-initialized. This value is applicable to all images.
+	// - Deactive: does not use Security Center Basic after the system disk is re-initialized. This value is applicable to all images.
 	//
 	// Default value: Deactive.
 	//
@@ -388,25 +392,25 @@ func (s *ReplaceSystemDiskRequest) Validate() error {
 type ReplaceSystemDiskRequestSystemDisk struct {
 	// The capacity of the new system disk. Unit: GiB. Valid values:
 	//
-	// 	- Basic disk: Max{20, Size of the image specified by ImageId} to 500.
+	// - Basic disk: Max{20, Size of the image specified by ImageId} to 500.
 	//
-	// 	- Enterprise SSD (ESSD):
+	// - Enterprise SSD (ESSD):
 	//
-	//     	- PL0 ESSD: Max{1, Size of the image specified by ImageId} to 2048.
+	//   - PL0 ESSD: Max{1, Size of the image specified by ImageId} to 2048.
 	//
-	//     	- PL1 ESSD: Max{20, Size of the image specified by ImageId} to 2048.
+	//   - PL1 ESSD: Max{20, Size of the image specified by ImageId} to 2048.
 	//
-	//     	- PL2 ESSD: Max{461, Size of the image specified by ImageId} to 2048.
+	//   - PL2 ESSD: Max{461, Size of the image specified by ImageId} to 2048.
 	//
-	//     	- PL3 ESSD: Max{1261, Size of the image specified by ImageId} to 2048.
+	//   - PL3 ESSD: Max{1261, Size of the image specified by ImageId} to 2048.
 	//
-	// 	- ESSD AutoPL disk: Max{1, Size of the image specified by ImageId} to 2048.
+	// - ESSD AutoPL disk: Max{1, Size of the image specified by ImageId} to 2048.
 	//
-	// 	- Other disk categories: Max{20, Size of the image specified by ImageId} to 2048.
+	// - Other disk categories: Max{20, Size of the image specified by ImageId} to 2048.
 	//
 	// Default value: Max{40, Size of the image specified by ImageId}.
 	//
-	// >  If the capacity of the new system disk exceeds `Max{20, Capacity of the original system disk}`, you are charged for the excess capacity.
+	// > If the capacity of the new system disk exceeds `Max{20, Capacity of the original system disk}`, you are charged for the excess capacity.
 	//
 	// example:
 	//

@@ -22,11 +22,16 @@ type iDescribePhysicalConnectionsResponseBody interface {
 }
 
 type DescribePhysicalConnectionsResponseBody struct {
-	PageNumber            *int32                                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize              *int32                                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The page number.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The physical connection set.
 	PhysicalConnectionSet *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSet `json:"PhysicalConnectionSet,omitempty" xml:"PhysicalConnectionSet,omitempty" type:"Struct"`
-	RequestId             *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount            *int32                                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribePhysicalConnectionsResponseBody) String() string {

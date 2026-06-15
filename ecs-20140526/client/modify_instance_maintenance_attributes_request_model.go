@@ -32,11 +32,11 @@ type iModifyInstanceMaintenanceAttributesRequest interface {
 type ModifyInstanceMaintenanceAttributesRequest struct {
 	// The maintenance action. Valid values:
 	//
-	// 	- Stop: stops the instance.
+	// - Stop: stops the instance.
 	//
-	// 	- AutoRecover: automatically recovers the instance.
+	// - AutoRecover: automatically recovers the instance.
 	//
-	// 	- AutoRedeploy: redeploys the instance, which may damage the data disks attached to the instance.
+	// - AutoRedeploy: redeploys the instance, which may damage the data disks attached to the instance.
 	//
 	// example:
 	//
@@ -52,9 +52,9 @@ type ModifyInstanceMaintenanceAttributesRequest struct {
 	MaintenanceWindow []*ModifyInstanceMaintenanceAttributesRequestMaintenanceWindow `json:"MaintenanceWindow,omitempty" xml:"MaintenanceWindow,omitempty" type:"Repeated"`
 	// Specifies whether to send an event notification before maintenance. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// Default value: false.
 	//

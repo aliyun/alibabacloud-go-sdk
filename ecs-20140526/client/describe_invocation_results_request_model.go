@@ -52,69 +52,49 @@ type DescribeInvocationResultsRequest struct {
 	//
 	// c-hz0jdfwcsr****
 	CommandId *string `json:"CommandId,omitempty" xml:"CommandId,omitempty"`
-	// <DescribeInvocationResultsResponse>
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE*****
 	//
-	//     <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE*****</RequestId>
+	// 0
 	//
-	//     <Invocation>
+	// Success
 	//
-	//         <InvocationResults>
+	// i-bp1i7gg30r52z2em****
 	//
-	//             <InvocationResult>
+	// 0
 	//
-	//                 <Dropped>0</Dropped>
+	// the specified instance does not exists
 	//
-	//                 <InvocationStatus>Success</InvocationStatus>
+	// 2019-12-20T06:15:55Z
 	//
-	//                 <InstanceId>i-bp1i7gg30r52z2em****</InstanceId>
+	// 0
 	//
-	//                 <ExitCode>0</ExitCode>
+	// Running
 	//
-	//                 <ErrorInfo>the specified instance does not exists</ErrorInfo>
+	// 2019-12-20T06:15:56Z
 	//
-	//                 <StartTime>2019-12-20T06:15:55Z</StartTime>
+	// MTU6MzA6MDEK
 	//
-	//                 <Repeats>0</Repeats>
+	// c-hz0jdfwcsr****
 	//
-	//                 <InvokeRecordStatus>Running</InvokeRecordStatus>
+	// InstanceNotExists
 	//
-	//                 <FinishedTime>2019-12-20T06:15:56Z</FinishedTime>
+	// t-hz0jdfwd9f****
 	//
-	//                 <Output>MTU6MzA6MDEK</Output>
+	// 2020-01-19T09:15:47Z
 	//
-	//                 <CommandId>c-hz0jdfwcsr****</CommandId>
+	// ab141ddfbacfe02d9dbc25966ed971536124527097398d419a6746873fea****
 	//
-	//                 <ErrorCode>InstanceNotExists</ErrorCode>
+	// test-container
 	//
-	//                 <InvokeId>t-hz0jdfwd9f****</InvokeId>
+	// owner
 	//
-	//                 <StopTime>2020-01-19T09:15:47Z</StopTime>
+	// zhangsan
 	//
-	//                 <ContainerId>ab141ddfbacfe02d9dbc25966ed971536124527097398d419a6746873fea****</ContainerId>
+	// 1
 	//
-	//                 <ContainerName>test-container</ContainerName>
+	// 1
 	//
-	//                 <Tags>
-	//
-	//                     <TagKey>owner</TagKey>
-	//
-	//                     <TagValue>zhangsan</TagValue>
-	//
-	//                 </Tags>
-	//
-	//             </InvocationResult>
-	//
-	//         </InvocationResults>
-	//
-	//         <TotalCount>1</TotalCount>
-	//
-	//         <PageSize>1</PageSize>
-	//
-	//         <PageNumber>1</PageNumber>
-	//
-	//     </Invocation>
-	//
-	// </DescribeInvocationResultsResponse>
+	// 1
 	//
 	// example:
 	//
@@ -122,69 +102,69 @@ type DescribeInvocationResultsRequest struct {
 	ContentEncoding *string `json:"ContentEncoding,omitempty" xml:"ContentEncoding,omitempty"`
 	// {
 	//
-	//   "RequestId" : "473469C7-AA6F-4DC5-B3DB-A3DC0DE*****",
+	// "RequestId" : "473469C7-AA6F-4DC5-B3DB-A3DC0DE\\*\\*\\*\\*\\*",
 	//
-	//   "Invocation" : {
+	// "Invocation" : {
 	//
-	//     "InvocationResults" : {
+	// "InvocationResults" : {
 	//
-	//       "InvocationResult" : [ {
+	// "InvocationResult" : [ {
 	//
-	//         "Dropped" : 0,
+	// "Dropped" : 0,
 	//
-	//         "InvocationStatus" : "Success",
+	// "InvocationStatus" : "Success",
 	//
-	//         "InstanceId" : "i-bp1i7gg30r52z2em****",
+	// "InstanceId" : "i-bp1i7gg30r52z2em\\*\\*\\*\\*",
 	//
-	//         "ExitCode" : 0,
+	// "ExitCode" : 0,
 	//
-	//         "ErrorInfo" : "the specified instance does not exists",
+	// "ErrorInfo" : "the specified instance does not exists",
 	//
-	//         "StartTime" : "2019-12-20T06:15:55Z",
+	// "StartTime" : "2019-12-20T06:15:55Z",
 	//
-	//         "Repeats" : 0,
+	// "Repeats" : 0,
 	//
-	//         "InvokeRecordStatus" : "Running",
+	// "InvokeRecordStatus" : "Running",
 	//
-	//         "FinishedTime" : "2019-12-20T06:15:56Z",
+	// "FinishedTime" : "2019-12-20T06:15:56Z",
 	//
-	//         "Output" : "MTU6MzA6MDEK",
+	// "Output" : "MTU6MzA6MDEK",
 	//
-	//         "CommandId" : "c-hz0jdfwcsr****",
+	// "CommandId" : "c-hz0jdfwcsr\\*\\*\\*\\*",
 	//
-	//         "ErrorCode" : "InstanceNotExists",
+	// "ErrorCode" : "InstanceNotExists",
 	//
-	//         "InvokeId" : "t-hz0jdfwd9f****",
+	// "InvokeId" : "t-hz0jdfwd9f\\*\\*\\*\\*",
 	//
-	//         "StopTime" : "2020-01-19T09:15:47Z",
+	// "StopTime" : "2020-01-19T09:15:47Z",
 	//
-	//         "ContainerId":"ab141ddfbacfe02d9dbc25966ed971536124527097398d419a6746873fea****",
+	// "ContainerId":"ab141ddfbacfe02d9dbc25966ed971536124527097398d419a6746873fea\\*\\*\\*\\*",
 	//
-	//         "ContainerName":"test-container",
+	// "ContainerName":"test-container",<br>
 	//
-	//         "Tags": [
+	// "Tags": [
 	//
-	//                     {
+	// {
 	//
-	//                         "TagKey": "owner",
+	// "TagKey": "owner",
 	//
-	//                         "TagValue": "zhangsan"
+	// "TagValue": "zhangsan"
 	//
-	//                     }
+	// }
 	//
-	//                 ]
+	// ]
 	//
-	//       } ]
+	// } ]
 	//
-	//     },
+	// },
 	//
-	//     "TotalCount" : 1,
+	// "TotalCount" : 1,
 	//
-	//     "PageSize" : 1,
+	// "PageSize" : 1,
 	//
-	//     "PageNumber" : 1
+	// "PageNumber" : 1
 	//
-	//   }
+	// }
 	//
 	// }
 	//
@@ -224,13 +204,13 @@ type DescribeInvocationResultsRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// acs:ecs:{#regionId}:{#accountId}:command/*
+	// acs:ecs:{#regionId}:{#accountId}:command/\\*
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// acs:ecs:{#regionId}:{#accountId}:instance/*
+	// acs:ecs:{#regionId}:{#accountId}:instance/\\*
 	//
 	// example:
 	//

@@ -30,15 +30,22 @@ type iCreateHaVipRequest interface {
 }
 
 type CreateHaVipRequest struct {
-	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// A client-generated token that ensures the idempotence of the request. The token must be unique across requests, contain only ASCII characters, and be no more than 64 characters long.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The description of the HaVip. The description must be 2 to 256 characters long and cannot start with `http://` or `https://`.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The IP address of the HaVip. The IP address must be available and fall within the CIDR block of the vSwitch. If this parameter is not specified, an available IP address is randomly allocated from the CIDR block of the vSwitch.
 	IpAddress    *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region in which to create the HaVip. You can call the operation to get the latest list of regions.
+	//
 	// This parameter is required.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The ID of the vSwitch to which the HaVip belongs.
+	//
 	// This parameter is required.
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }

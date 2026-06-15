@@ -22,28 +22,27 @@ type iDescribeImagePipelineExecutionsResponseBody interface {
 }
 
 type DescribeImagePipelineExecutionsResponseBody struct {
+	// The details of the image pipeline executions.
 	ImagePipelineExecution *DescribeImagePipelineExecutionsResponseBodyImagePipelineExecution `json:"ImagePipelineExecution,omitempty" xml:"ImagePipelineExecution,omitempty" type:"Struct"`
-	// The request ID.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of `NextToken`.
+	// The token returned in this call. Use this token to retrieve the next page of results. For more information, see the operation description.
 	//
 	// example:
 	//
 	// AAAAAdDWBF2****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The maximum number of entries per page. Valid values: 1 to 500
-	//
-	// Default value: 50.
+	// The request ID.
 	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists. For information about how to use the returned value, see the "Usage notes" section in this topic.
+	// The total number of image pipeline executions.
 	//
 	// example:
 	//

@@ -42,27 +42,27 @@ type iCreateSnapshotRequest interface {
 }
 
 type CreateSnapshotRequest struct {
-	// The category of the snapshot. Valid values:
+	// The type of the snapshot. Valid values:
 	//
-	// 	- Standard: standard snapshot
+	// - Standard: a standard snapshot.
 	//
-	// 	- Flash: local snapshot
+	// - Flash: a Flash Snapshot.
 	//
-	// >  This parameter is no longer used. By default, new standard snapshots of ESSDs are upgraded to instant access snapshots free of charge without the need for additional configurations. For more information, see [Use the instant access feature](https://help.aliyun.com/document_detail/193667.html).
+	// > This parameter is deprecated. standard snapshots for ESSD cloud disks now include the [Instant Access](https://help.aliyun.com/document_detail/193667.html) feature by default at no additional cost.
 	//
 	// example:
 	//
 	// Standard
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among requests. The **ClientToken*	- value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+	// A client-generated token to ensure request idempotence. The token must be unique for each request. The **ClientToken*	- value must be an ASCII string of up to 64 characters. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The description of the snapshot. The description must be 2 to 256 characters in length and cannot start with `http:// `or `https://`.
+	// The snapshot description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
 	//
-	// By default, this parameter is left empty.
+	// This parameter is empty by default.
 	//
 	// example:
 	//
@@ -76,25 +76,25 @@ type CreateSnapshotRequest struct {
 	//
 	// d-bp1s5fnvk4gn2tws0****
 	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	// Specifies whether to enable the instant access feature. Valid values:
+	// Specifies whether to enable the Instant Access feature. Valid values:
 	//
-	// 	- true: enables the instant access feature. This feature can be enabled only for ESSDs.
+	// - true: Enables the Instant Access feature. This feature can be enabled only for snapshots of ESSD cloud disks.
 	//
-	// 	- false: does not enable the instant access feature. If InstantAccess is set to false, a standard snapshot is created.
+	// - false: Disables the Instant Access feature. A standard snapshot is created.
 	//
 	// Default value: false.
 	//
-	// >  This parameter is no longer used. By default, new standard snapshots of ESSDs are upgraded to instant access snapshots free of charge without the need for additional configurations. For more information, see [Use the instant access feature](https://help.aliyun.com/document_detail/193667.html).
+	// > This parameter is deprecated. standard snapshots for ESSD cloud disks now include the [Instant Access](https://help.aliyun.com/document_detail/193667.html) feature by default at no additional cost.
 	//
 	// example:
 	//
 	// false
 	InstantAccess *bool `json:"InstantAccess,omitempty" xml:"InstantAccess,omitempty"`
-	// The validity period of the instant access feature. When the validity period ends, the feature is disabled and the instant access snapshot is automatically released. This parameter takes effect only when `InstantAccess` is set to true. Unit: days. Valid values: 1 to 65535.
+	// The retention period for the Instant Access feature, in days. The snapshot is automatically deleted when this retention period expires. This parameter takes effect only when `InstantAccess` is set to `true`. Valid values: 1 to 65,535.
 	//
-	// By default, the value of this parameter is the same as that of `RetentionDays`.
+	// Defaults to the value of `RetentionDays`.
 	//
-	// >  This parameter is no longer used. By default, new standard snapshots of ESSDs are upgraded to instant access snapshots free of charge without the need for additional configurations. For more information, see [Use the instant access feature](https://help.aliyun.com/document_detail/193667.html).
+	// > This parameter is deprecated. standard snapshots for ESSD cloud disks now include the [Instant Access](https://help.aliyun.com/document_detail/193667.html) feature by default at no additional cost.
 	//
 	// example:
 	//
@@ -102,13 +102,7 @@ type CreateSnapshotRequest struct {
 	InstantAccessRetentionDays *int32  `json:"InstantAccessRetentionDays,omitempty" xml:"InstantAccessRetentionDays,omitempty"`
 	OwnerAccount               *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId                    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The snapshot type. Valid values:
-	//
-	// 	- Standard: standard snapshot
-	//
-	// 	- Flash: local snapshot
-	//
-	// > This parameter will be removed in the future. We recommend that you use the `InstantAccess` parameter to ensure future compatibility. This parameter and the `InstantAccess` parameter cannot be specified at the same time. For more information, see the "Description" section of this topic.
+	// The ID of the Resource Group to which the snapshot belongs.
 	//
 	// example:
 	//
@@ -116,29 +110,29 @@ type CreateSnapshotRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The retention period of the snapshot. Unit: days. Valid values: 1 to 65536. After the retention period ends, the snapshot is automatically released.
+	// The retention period of the snapshot, in days. Valid values: 1 to 65,536. The snapshot is automatically deleted when the retention period expires.
 	//
-	// This parameter is left empty by default, which indicates that the snapshot is not automatically released.
+	// If this parameter is not specified, the snapshot is retained indefinitely.
 	//
 	// example:
 	//
 	// 30
 	RetentionDays *int32 `json:"RetentionDays,omitempty" xml:"RetentionDays,omitempty"`
-	// The name of the snapshot. The name must be 2 to 128 characters in length and start with a letter. The name can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+	// The snapshot name must be 2 to 128 characters long. It must start with a letter or a Chinese character and can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
 	//
-	// >  The name cannot start with http:// or https://. The name cannot start with `auto` because the names of automatic snapshots start with auto.
+	// > The name cannot start with `http://` or `https://`. To avoid conflicts with auto snapshot names, the name cannot start with `auto`.
 	//
 	// example:
 	//
 	// testSnapshotName
 	SnapshotName *string `json:"SnapshotName,omitempty" xml:"SnapshotName,omitempty"`
-	// > This parameter is unavailable for public use.
+	// > This parameter is not available for public use.
 	//
 	// example:
 	//
 	// null
 	StorageLocationArn *string `json:"StorageLocationArn,omitempty" xml:"StorageLocationArn,omitempty"`
-	// The tags to add to the snapshot.
+	// The tags to add to the snapshot. You can add up to 20 tags.
 	Tag []*CreateSnapshotRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -299,13 +293,15 @@ func (s *CreateSnapshotRequest) Validate() error {
 }
 
 type CreateSnapshotRequestTag struct {
-	// The key of tag N to add to the snapshot. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot contain http:// or https://. The tag key cannot start with acs: or aliyun.
+	// The key of the tag.
+	//
+	// > This parameter is not recommended. For better compatibility, use the Key parameter instead.
 	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N to add to the snapshot. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot contain http:// or https://.
+	// The tag value. It can be an empty string, must be 128 characters or shorter, and cannot contain http\\:// or https\\://.
 	//
 	// example:
 	//

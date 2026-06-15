@@ -40,31 +40,31 @@ type iDescribeDeploymentSetsRequest interface {
 }
 
 type DescribeDeploymentSetsRequest struct {
-	// The IDs of deployment sets. The value can be a JSON array that consists of deployment set IDs in the format of `["ds-xxxxxxxxx", "ds-yyyyyyyyy", ... "ds-zzzzzzzzz"]`. You can specify up to 100 deployment set IDs in each request. Separate the deployment set IDs with commas (,).
+	// The IDs of the deployment sets. The value can be a JSON array that consists of up to 100 deployment set IDs. Sample format: `["ds-xxxxxxxxx", "ds-yyyyyyyyy", … "ds-zzzzzzzzz"]`.
 	//
 	// example:
 	//
 	// ["ds-bp67acfmxazb4ph****", "ds-bp67acfmxazb4pi****", … "ds-bp67acfmxazb4pj****"]
 	DeploymentSetIds *string `json:"DeploymentSetIds,omitempty" xml:"DeploymentSetIds,omitempty"`
-	// The name of the deployment set. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain digits, letters, colons (:), underscores (_), and hyphens (-).
+	// The name of the deployment set. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
 	//
 	// example:
 	//
 	// testDeploymentSetName
 	DeploymentSetName *string `json:"DeploymentSetName,omitempty" xml:"DeploymentSetName,omitempty"`
-	// >  This parameter is deprecated.
+	// > This parameter is deprecated.
 	//
 	// example:
 	//
 	// null
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// >  This parameter is deprecated.
+	// > This parameter is deprecated.
 	//
 	// example:
 	//
 	// null
 	Granularity *string `json:"Granularity,omitempty" xml:"Granularity,omitempty"`
-	// >  This parameter is deprecated.
+	// > This parameter is deprecated.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type DescribeDeploymentSetsRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The page number.
 	//
-	// Pages start from page 1.
+	// Starts at 1.
 	//
 	// Default value: 1.
 	//
@@ -82,9 +82,9 @@ type DescribeDeploymentSetsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page.
 	//
-	// Valid values: 1 to 50.
+	// Maximum value: 50.
 	//
 	// Default value: 10.
 	//
@@ -92,7 +92,7 @@ type DescribeDeploymentSetsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the deployment set. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+	// The ID of the region where the deployment set is located. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to view the latest list of Alibaba Cloud regions.
 	//
 	// This parameter is required.
 	//
@@ -104,15 +104,30 @@ type DescribeDeploymentSetsRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The deployment strategy. Valid values:
 	//
-	// 	- Availability: high availability strategy
+	// - Availability: high availability strategy.
 	//
-	// 	- AvailabilityGroup: high availability group strategy
+	// - AvailabilityGroup: high availability group strategy.
+	//
+	// - LowLatency: low-latency strategy.
 	//
 	// example:
 	//
 	// Availability
 	Strategy *string `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
-	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The deployment type. Valid values:
+	//
+	// - host: Ensures that the instances in the deployment set are deployed on different hosts.
+	//
+	// - sw: Ensures that the instances in the deployment set are deployed on different switches.
+	//
+	// - rack: Ensures that the instances in the deployment set are deployed on different racks.
+	//
+	// Default value: host.
+	//
+	// example:
+	//
+	// host
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeDeploymentSetsRequest) String() string {

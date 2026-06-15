@@ -28,19 +28,17 @@ type iDescribeNetworkInterfaceAttributeRequest interface {
 }
 
 type DescribeNetworkInterfaceAttributeRequest struct {
-	// The attribute of the ENI. Valid values:
+	// The attribute to query. Valid values:
 	//
-	// attachment: member ENI attachment information of the trunk ENI. This value is in invitational preview and is not publicly available.
+	// `attachment`: The attachment details for member network interfaces associated with a trunk network interface. This is an invitation-only parameter.
 	//
-	// connectionTrackingConfiguration: connection tracking configuration.
-	//
-	// Default value:
+	// `connectionTrackingConfiguration`: The connection tracking configuration.
 	//
 	// example:
 	//
 	// attachment
 	Attribute *string `json:"Attribute,omitempty" xml:"Attribute,omitempty"`
-	// The ID of the ENI.
+	// The ID of the elastic network interface.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +48,7 @@ type DescribeNetworkInterfaceAttributeRequest struct {
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
 	OwnerAccount       *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the ENI. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+	// The ID of the region where the elastic network interface resides. Call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to get the latest list of Alibaba Cloud regions.
 	//
 	// This parameter is required.
 	//
@@ -60,7 +58,7 @@ type DescribeNetworkInterfaceAttributeRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// >  This parameter is unavailable.
+	// > This parameter is not publicly available.
 	Tag []*DescribeNetworkInterfaceAttributeRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -158,13 +156,13 @@ func (s *DescribeNetworkInterfaceAttributeRequest) Validate() error {
 }
 
 type DescribeNetworkInterfaceAttributeRequestTag struct {
-	// >  This parameter is unavailable.
+	// > This parameter is not publicly available.
 	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// >  This parameter is unavailable.
+	// > This parameter is not publicly available.
 	//
 	// example:
 	//

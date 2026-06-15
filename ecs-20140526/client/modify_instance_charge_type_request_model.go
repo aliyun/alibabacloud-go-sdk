@@ -42,13 +42,13 @@ type iModifyInstanceChargeTypeRequest interface {
 type ModifyInstanceChargeTypeRequest struct {
 	// Specifies whether to automatically complete the payment. Valid values:
 	//
-	// 	- true: enables automatic payment. Maintain a sufficient account balance. Otherwise, your order becomes invalid and is canceled.
+	// - true: enables automatic payment. Maintain a sufficient account balance. Otherwise, your order becomes invalid and is canceled.
 	//
-	// 	- false: disables automatic payment. An order is generated but no payment is made.
+	// - false: disables automatic payment. An order is generated but no payment is made.
 	//
 	// Default value: true.
 	//
-	// >  If your account balance is insufficient, you can set AutoPay to false to generate an unpaid order. Then, you can log on to the ECS console to pay for the order.
+	// > If your account balance is insufficient, you can set AutoPay to false to generate an unpaid order. Then, you can log on to the ECS console to pay for the order.
 	//
 	// example:
 	//
@@ -62,9 +62,9 @@ type ModifyInstanceChargeTypeRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// 	- true: performs only a dry run. The system checks the request for potential issues, including invalid AccessKey pairs, unauthorized Resource Access Management (RAM) users, and missing parameter values. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// - true: performs only a dry run. The system checks the request for potential issues, including invalid AccessKey pairs, unauthorized Resource Access Management (RAM) users, and missing parameter values. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
 	//
-	// 	- false: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// - false: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	//
 	// Default value: false.
 	//
@@ -74,9 +74,9 @@ type ModifyInstanceChargeTypeRequest struct {
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// Specifies whether to change the billing method of all data disks on the instance from pay-as-you-go to subscription. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// Default value: false.
 	//
@@ -86,9 +86,9 @@ type ModifyInstanceChargeTypeRequest struct {
 	IncludeDataDisks *bool `json:"IncludeDataDisks,omitempty" xml:"IncludeDataDisks,omitempty"`
 	// The new billing method of the instance. Valid values:
 	//
-	// 	- PrePaid: subscription
+	// - PrePaid: subscription
 	//
-	// 	- PostPaid: pay-as-you-go
+	// - PostPaid: pay-as-you-go
 	//
 	// Default value: PrePaid.
 	//
@@ -106,9 +106,9 @@ type ModifyInstanceChargeTypeRequest struct {
 	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
 	// Specifies whether to return cost details of the order after the billing method is changed from subscription to pay-as-you-go. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// Default value: false.
 	//

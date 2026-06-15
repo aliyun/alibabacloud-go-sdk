@@ -18,9 +18,9 @@ type iDescribeDiskEncryptionByDefaultStatusResponseBody interface {
 type DescribeDiskEncryptionByDefaultStatusResponseBody struct {
 	// Indicates whether account-level default encryption of EBS resources is enabled in the region. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// Default value: false.
 	//

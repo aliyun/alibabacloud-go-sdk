@@ -34,20 +34,34 @@ type iCreateForwardEntryRequest interface {
 }
 
 type CreateForwardEntryRequest struct {
+	// The public IP address for the DNAT entry. This must be a public IP address of the NAT gateway associated with the DNAT table.
+	//
 	// This parameter is required.
 	ExternalIp *string `json:"ExternalIp,omitempty" xml:"ExternalIp,omitempty"`
+	// The external port used for DNAT. Valid values: 1 to 65535.
+	//
 	// This parameter is required.
 	ExternalPort *string `json:"ExternalPort,omitempty" xml:"ExternalPort,omitempty"`
+	// The ID of the DNAT table.
+	//
 	// This parameter is required.
 	ForwardTableId *string `json:"ForwardTableId,omitempty" xml:"ForwardTableId,omitempty"`
+	// The private IP address to which traffic is forwarded.
+	//
 	// This parameter is required.
 	InternalIp *string `json:"InternalIp,omitempty" xml:"InternalIp,omitempty"`
+	// The internal port to which traffic is forwarded. Valid values: 1 to 65535.
+	//
 	// This parameter is required.
 	InternalPort *string `json:"InternalPort,omitempty" xml:"InternalPort,omitempty"`
+	// The protocol. Valid values: TCP, UDP, and Any. If you set this parameter to Any, the DNAT entry applies to all protocols.
+	//
 	// This parameter is required.
 	IpProtocol   *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region where the DNAT table is located. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to retrieve a list of available regions.
+	//
 	// This parameter is required.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`

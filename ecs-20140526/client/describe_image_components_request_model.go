@@ -46,21 +46,21 @@ type DescribeImageComponentsRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- Build
+	// - Build
 	//
-	// 	- Test
+	// - Test
 	//
 	// example:
 	//
-	// null
+	// Build
 	ComponentType *string `json:"ComponentType,omitempty" xml:"ComponentType,omitempty"`
 	// The version number of the image component in the \\<major>.\\<minor>.\\<patch> format. You can set \\<major>, \\<minor>, and \\<patch> to non-negative integers, or set one of \\<major>, \\<minor>, and \\<patch> to the wildcard (\\*) and the other two to non-negative integers.
 	//
-	// >  This parameter takes effect only if you specify Name.
+	// > This parameter takes effect only if you specify Name.
 	//
 	// example:
 	//
-	// null
+	// 1.0.*
 	ComponentVersion *string `json:"ComponentVersion,omitempty" xml:"ComponentVersion,omitempty"`
 	// The IDs of image components. Valid values of N: 1 to 20.
 	//
@@ -90,9 +90,9 @@ type DescribeImageComponentsRequest struct {
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The type of the image component. Valid values:
 	//
-	// 	- SELF: the custom component that you created.
+	// - SELF: the custom component that you created.
 	//
-	// 	- ALIYUN: the system component provided by Alibaba Cloud.
+	// - ALIYUN: the system component provided by Alibaba Cloud.
 	//
 	// example:
 	//
@@ -110,7 +110,7 @@ type DescribeImageComponentsRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group. If this parameter is specified to query resources, up to 1,000 resources that belong to the specified resource group can be displayed in the response.
 	//
-	// >  Resources in the default resource group are displayed in the response regardless of how this parameter is set.
+	// > Resources in the default resource group are displayed in the response regardless of how this parameter is set.
 	//
 	// example:
 	//
@@ -122,13 +122,13 @@ type DescribeImageComponentsRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- Linux
+	// - Linux
 	//
-	// 	- Windows
+	// - Windows
 	//
 	// example:
 	//
-	// null
+	// Linux
 	SystemType *string `json:"SystemType,omitempty" xml:"SystemType,omitempty"`
 	// The tags of the image component.
 	Tag []*DescribeImageComponentsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`

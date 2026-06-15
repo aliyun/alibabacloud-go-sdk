@@ -38,9 +38,9 @@ type iDescribePrefixListsRequest interface {
 type DescribePrefixListsRequest struct {
 	// The IP address family. Valid values:
 	//
-	// 	- IPv4
+	// - IPv4
 	//
-	// 	- IPv6
+	// - IPv6
 	//
 	// This parameter is empty by default, which indicates that all prefix lists are queried.
 	//

@@ -148,9 +148,9 @@ type DescribeManagedInstancesResponseBodyInstances struct {
 	AgentVersion *string `json:"AgentVersion,omitempty" xml:"AgentVersion,omitempty"`
 	// Indicates whether the managed instance is connected. Valid values:
 	//
-	// 	- true: The managed instance is connected. You can manage the instance by using Cloud Assistant.
+	// - true: The managed instance is connected. You can manage the instance by using Cloud Assistant.
 	//
-	// 	- false: The managed instance is not connected. The managed instance may be down or Cloud Assistant Agent may be incorrectly installed.
+	// - false: The managed instance is not connected. The managed instance may be down or Cloud Assistant Agent may be incorrectly installed.
 	//
 	// example:
 	//

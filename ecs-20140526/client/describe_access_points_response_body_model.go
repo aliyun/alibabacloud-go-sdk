@@ -22,11 +22,16 @@ type iDescribeAccessPointsResponseBody interface {
 }
 
 type DescribeAccessPointsResponseBody struct {
+	// Contains details about the access points.
 	AccessPointSet *DescribeAccessPointsResponseBodyAccessPointSet `json:"AccessPointSet,omitempty" xml:"AccessPointSet,omitempty" type:"Struct"`
-	PageNumber     *int32                                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize       *int32                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId      *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount     *int32                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The page number.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of access points.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeAccessPointsResponseBody) String() string {

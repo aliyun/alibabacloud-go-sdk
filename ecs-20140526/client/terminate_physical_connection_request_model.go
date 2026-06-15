@@ -28,16 +28,24 @@ type iTerminatePhysicalConnectionRequest interface {
 }
 
 type TerminatePhysicalConnectionRequest struct {
+	// A client-generated token to ensure the idempotency of the request. The token must be unique across requests and can contain only ASCII characters, with a maximum length of 64 characters.
 	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the physical connection.
+	//
 	// This parameter is required.
 	PhysicalConnectionId *string `json:"PhysicalConnectionId,omitempty" xml:"PhysicalConnectionId,omitempty"`
+	// The ID of the region where the physical connection is deployed.\\
+	//
+	// You can call the `DescribeRegions` operation to get the most recent region list.\\
+	//
 	// This parameter is required.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	UserCidr             *string `json:"UserCidr,omitempty" xml:"UserCidr,omitempty"`
+	// This parameter is not used.
+	UserCidr *string `json:"UserCidr,omitempty" xml:"UserCidr,omitempty"`
 }
 
 func (s TerminatePhysicalConnectionRequest) String() string {

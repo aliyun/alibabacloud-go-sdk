@@ -40,9 +40,9 @@ type DescribeSecurityGroupAttributeResponseBody struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The access control policy of the security group. Valid values:
 	//
-	// 	- Accept: All instances in the security group can communicate with each other.
+	// - Accept: All instances in the security group can communicate with each other.
 	//
-	// 	- Drop: All instances in the security group are isolated from each other.
+	// - Drop: All instances in the security group are isolated from each other.
 	//
 	// example:
 	//

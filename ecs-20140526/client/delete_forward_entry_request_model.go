@@ -26,12 +26,24 @@ type iDeleteForwardEntryRequest interface {
 }
 
 type DeleteForwardEntryRequest struct {
+	// The ID of the DNAT entry to delete.
+	//
 	// This parameter is required.
 	ForwardEntryId *string `json:"ForwardEntryId,omitempty" xml:"ForwardEntryId,omitempty"`
+	// The ID of the DNAT table to which the DNAT entry belongs.
+	//
 	// This parameter is required.
 	ForwardTableId *string `json:"ForwardTableId,omitempty" xml:"ForwardTableId,omitempty"`
 	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region where the VPC is located.\\
+	//
+	// \\
+	//
+	// To obtain the latest list of regions, call the [DescribeRegions](~~DescribeRegions~~) operation.\\
+	//
+	// \\
+	//
 	// This parameter is required.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`

@@ -46,27 +46,44 @@ type iCreatePhysicalConnectionRequest interface {
 }
 
 type CreatePhysicalConnectionRequest struct {
+	// The access point ID. You can call the `DescribeAccessPoints` operation to obtain a list of available access points.
+	//
 	// This parameter is required.
 	AccessPointId *string `json:"AccessPointId,omitempty" xml:"AccessPointId,omitempty"`
-	CircuitCode   *string `json:"CircuitCode,omitempty" xml:"CircuitCode,omitempty"`
-	ClientToken   *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The circuit code provided by the carrier.
+	CircuitCode *string `json:"CircuitCode,omitempty" xml:"CircuitCode,omitempty"`
+	// A client-generated token that you can use to ensure the idempotency of the request. This token must be unique across requests, contain only ASCII characters, and be no more than 64 characters long.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The description of the physical connection. The description must be 2 to 256 characters long and cannot start with `http://` or `https://`.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The carrier that provides the physical connection. Valid values: `CT` (China Telecom), `CU` (China Unicom), `CM` (China Mobile), `CO` (other Chinese carriers), and `AL` (Alibaba Cloud).
+	//
 	// This parameter is required.
 	LineOperator *string `json:"LineOperator,omitempty" xml:"LineOperator,omitempty"`
+	// The name of the physical connection. The name must be 2 to 128 characters long. It must start with a letter and can contain letters, digits, underscores (`_`), and hyphens (`-`).
 	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The physical location of your on-premises data center.
+	//
 	// This parameter is required.
-	PeerLocation                  *string `json:"PeerLocation,omitempty" xml:"PeerLocation,omitempty"`
-	PortType                      *string `json:"PortType,omitempty" xml:"PortType,omitempty"`
+	PeerLocation *string `json:"PeerLocation,omitempty" xml:"PeerLocation,omitempty"`
+	// The port type of the physical connection. You cannot change this parameter after the physical connection is created. Valid values: `1000Base-LX` (1 Gbit/s), `10GBase-LR` (10 Gbit/s), and `40GBase-LR` (40 Gbit/s).
+	PortType *string `json:"PortType,omitempty" xml:"PortType,omitempty"`
+	// The ID of the redundant physical connection. The redundant physical connection must be in the `Allocated`, `Confirmed`, or `Enabled` state.
 	RedundantPhysicalConnectionId *string `json:"RedundantPhysicalConnectionId,omitempty" xml:"RedundantPhysicalConnectionId,omitempty"`
+	// The ID of the region for the physical connection. You can call the `DescribeRegions` operation to obtain the latest list of regions.
+	//
 	// This parameter is required.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Type                 *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	UserCidr             *string `json:"UserCidr,omitempty" xml:"UserCidr,omitempty"`
-	Bandwidth            *int32  `json:"bandwidth,omitempty" xml:"bandwidth,omitempty"`
+	// The type of the physical connection. Valid values: `VPC` and `VBR`. The default value is `VPC`. This parameter is available only to whitelisted users.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The user CIDR block. This parameter is required when `Type` is set to `VPC`. The CIDR block must be a private IPv4 block. Valid CIDR blocks include the following blocks and their subnets: `10.0.0.0/8`, `172.16.0.0/12`, and `192.168.0.0/16`.
+	UserCidr *string `json:"UserCidr,omitempty" xml:"UserCidr,omitempty"`
+	// The bandwidth of the physical connection in Mbit/s. The value must be an integer that ranges from 1 to 10,240.
+	Bandwidth *int32 `json:"bandwidth,omitempty" xml:"bandwidth,omitempty"`
 }
 
 func (s CreatePhysicalConnectionRequest) String() string {

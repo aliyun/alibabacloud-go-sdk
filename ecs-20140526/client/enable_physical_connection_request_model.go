@@ -28,16 +28,27 @@ type iEnablePhysicalConnectionRequest interface {
 }
 
 type EnablePhysicalConnectionRequest struct {
+  // A client token that ensures the request is idempotent.
+  // 
+  // Your client generates this token, which must be unique for each request. The token can contain only ASCII characters and must not exceed 64 characters in length.
+  // 
   // This parameter is required.
   ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
   OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
   OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+  // The ID of the physical connection.
+  // 
   // This parameter is required.
   PhysicalConnectionId *string `json:"PhysicalConnectionId,omitempty" xml:"PhysicalConnectionId,omitempty"`
+  // The ID of the region where the physical connection is located.
+  // 
+  // You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the latest list of regions.
+  // 
   // This parameter is required.
   RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
   ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
   ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+  // The IPv4 CIDR block of the gateway device in your data center.
   UserCidr *string `json:"UserCidr,omitempty" xml:"UserCidr,omitempty"`
 }
 

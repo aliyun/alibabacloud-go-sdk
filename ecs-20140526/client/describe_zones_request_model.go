@@ -32,19 +32,19 @@ type iDescribeZonesRequest interface {
 type DescribeZonesRequest struct {
 	// The natural language that is used to filter responses. For more information, see [RFC 7231](https://tools.ietf.org/html/rfc7231). Valid values:
 	//
-	// 	- zh-CN: Simplified Chinese
+	// - zh-CN: Simplified Chinese
 	//
-	// 	- zh_TW: Traditional Chinese
+	// - zh_TW: Traditional Chinese
 	//
-	// 	- en-US: English
+	// - en-US: English
 	//
-	// 	- ja: Japanese
+	// - ja: Japanese
 	//
-	// 	- fr: French
+	// - fr: French
 	//
-	// 	- de: German
+	// - de: German
 	//
-	// 	- ko: Korean
+	// - ko: Korean
 	//
 	// Default value: zh-CN.
 	//
@@ -54,9 +54,9 @@ type DescribeZonesRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	// The billing method of resources. For more information, see [Billing overview](https://help.aliyun.com/document_detail/25398.html). Valid values:
 	//
-	// 	- Prepaid: subscription
+	// - Prepaid: subscription
 	//
-	// 	- PostPaid: pay-as-you-go
+	// - PostPaid: pay-as-you-go
 	//
 	// Default value: PostPaid.
 	//
@@ -78,11 +78,11 @@ type DescribeZonesRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The bidding policy for the pay-as-you-go instance. You can specify this parameter when you set `InstanceChargeType` to PostPaid. For more information, see [Spot instances](https://help.aliyun.com/document_detail/52088.html). Valid values:
 	//
-	// 	- NoSpot: The instances are regular pay-as-you-go instances.
+	// - NoSpot: The instances are regular pay-as-you-go instances.
 	//
-	// 	- SpotWithPriceLimit: The instance is a spot instance that has a user-defined maximum hourly price.
+	// - SpotWithPriceLimit: The instance is a spot instance that has a user-defined maximum hourly price.
 	//
-	// 	- SpotAsPriceGo: The instance is a spot instance for which the market price is automatically used as the bid price. The market price can be up to the pay-as-you-go price.
+	// - SpotAsPriceGo: The instance is a spot instance for which the market price is automatically used as the bid price. The market price can be up to the pay-as-you-go price.
 	//
 	// Default value: NoSpot.
 	//
@@ -92,9 +92,9 @@ type DescribeZonesRequest struct {
 	SpotStrategy *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
 	// Specifies whether to display detailed information.
 	//
-	// 	- true: displays detailed information.
+	// - true: displays detailed information.
 	//
-	// 	- false: does not display detailed information.
+	// - false: does not display detailed information.
 	//
 	// Default value: true.
 	//

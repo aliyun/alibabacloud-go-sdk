@@ -22,19 +22,28 @@ type iDescribePlanMaintenanceWindowsResponseBody interface {
 }
 
 type DescribePlanMaintenanceWindowsResponseBody struct {
+	// The number of entries to return per page. The default value is 10, and the maximum value is 100. If you omit this parameter or specify a value less than 10, the default value is used. If you specify a value greater than 100, the maximum value is used.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token to retrieve the next page of results.
+	//
 	// example:
 	//
 	// AAAAAdDWBF2
-	NextToken                 *string                                                                `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// A list of maintenance windows.
 	PlanMaintenanceWindowList []*DescribePlanMaintenanceWindowsResponseBodyPlanMaintenanceWindowList `json:"PlanMaintenanceWindowList,omitempty" xml:"PlanMaintenanceWindowList,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries that match the query. This parameter is optional and not returned by default.
+	//
 	// example:
 	//
 	// 1
@@ -108,29 +117,51 @@ func (s *DescribePlanMaintenanceWindowsResponseBody) Validate() error {
 }
 
 type DescribePlanMaintenanceWindowsResponseBodyPlanMaintenanceWindowList struct {
+	// The creation time of the maintenance window.
+	//
+	// The time is in UTC and follows the ISO 8601 standard, formatted as yyyy-MM-ddTHH:mm:ssZ.
+	//
 	// example:
 	//
 	// 2025-04-11T02:20:41Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Indicates whether the maintenance window is enabled.
+	//
 	// example:
 	//
 	// true
-	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	Enable                 *bool  `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	MinMaintenanceInterval *int32 `json:"MinMaintenanceInterval,omitempty" xml:"MinMaintenanceInterval,omitempty"`
+	// The modification time of the maintenance window.
+	//
+	// The time is in UTC and follows the ISO 8601 standard, formatted as yyyy-MM-ddTHH:mm:ssZ.
+	//
 	// example:
 	//
 	// 2025-02-22 10:14:28 +0800
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The ID of the maintenance window.
+	//
 	// example:
 	//
 	// pw-bp1bqkbjb7h4j8zqzwvp
-	PlanWindowId   *string `json:"PlanWindowId,omitempty" xml:"PlanWindowId,omitempty"`
+	PlanWindowId *string `json:"PlanWindowId,omitempty" xml:"PlanWindowId,omitempty"`
+	// The name of the maintenance window.
+	//
+	// example:
+	//
+	// WindowName
 	PlanWindowName *string `json:"PlanWindowName,omitempty" xml:"PlanWindowName,omitempty"`
+	// The supported maintenance action.
+	//
 	// example:
 	//
 	// Reboot
-	SupportMaintenanceAction *string                                                                            `json:"SupportMaintenanceAction,omitempty" xml:"SupportMaintenanceAction,omitempty"`
-	TargetResource           *DescribePlanMaintenanceWindowsResponseBodyPlanMaintenanceWindowListTargetResource `json:"TargetResource,omitempty" xml:"TargetResource,omitempty" type:"Struct"`
-	TimePeriod               *DescribePlanMaintenanceWindowsResponseBodyPlanMaintenanceWindowListTimePeriod     `json:"TimePeriod,omitempty" xml:"TimePeriod,omitempty" type:"Struct"`
+	SupportMaintenanceAction *string `json:"SupportMaintenanceAction,omitempty" xml:"SupportMaintenanceAction,omitempty"`
+	// The resources targeted by the maintenance window.
+	TargetResource *DescribePlanMaintenanceWindowsResponseBodyPlanMaintenanceWindowListTargetResource `json:"TargetResource,omitempty" xml:"TargetResource,omitempty" type:"Struct"`
+	// The recurrence schedule of the maintenance window.
+	TimePeriod *DescribePlanMaintenanceWindowsResponseBodyPlanMaintenanceWindowListTimePeriod `json:"TimePeriod,omitempty" xml:"TimePeriod,omitempty" type:"Struct"`
 }
 
 func (s DescribePlanMaintenanceWindowsResponseBodyPlanMaintenanceWindowList) String() string {
@@ -147,6 +178,10 @@ func (s *DescribePlanMaintenanceWindowsResponseBodyPlanMaintenanceWindowList) Ge
 
 func (s *DescribePlanMaintenanceWindowsResponseBodyPlanMaintenanceWindowList) GetEnable() *bool {
 	return s.Enable
+}
+
+func (s *DescribePlanMaintenanceWindowsResponseBodyPlanMaintenanceWindowList) GetMinMaintenanceInterval() *int32 {
+	return s.MinMaintenanceInterval
 }
 
 func (s *DescribePlanMaintenanceWindowsResponseBodyPlanMaintenanceWindowList) GetModifiedTime() *string {
@@ -180,6 +215,11 @@ func (s *DescribePlanMaintenanceWindowsResponseBodyPlanMaintenanceWindowList) Se
 
 func (s *DescribePlanMaintenanceWindowsResponseBodyPlanMaintenanceWindowList) SetEnable(v bool) *DescribePlanMaintenanceWindowsResponseBodyPlanMaintenanceWindowList {
 	s.Enable = &v
+	return s
+}
+
+func (s *DescribePlanMaintenanceWindowsResponseBodyPlanMaintenanceWindowList) SetMinMaintenanceInterval(v int32) *DescribePlanMaintenanceWindowsResponseBodyPlanMaintenanceWindowList {
+	s.MinMaintenanceInterval = &v
 	return s
 }
 
@@ -228,15 +268,20 @@ func (s *DescribePlanMaintenanceWindowsResponseBodyPlanMaintenanceWindowList) Va
 }
 
 type DescribePlanMaintenanceWindowsResponseBodyPlanMaintenanceWindowListTargetResource struct {
+	// The ID of the target resource group.
+	//
 	// example:
 	//
 	// rg-aek2qxeteo7fr6y
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The scope of the target resources. Valid values: Tag, ResourceGroup, Instance, and AliUid.
+	//
 	// example:
 	//
 	// Tag
-	Scope *string                                                                                  `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	Tags  []*DescribePlanMaintenanceWindowsResponseBodyPlanMaintenanceWindowListTargetResourceTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// The target tags.
+	Tags []*DescribePlanMaintenanceWindowsResponseBodyPlanMaintenanceWindowListTargetResourceTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s DescribePlanMaintenanceWindowsResponseBodyPlanMaintenanceWindowListTargetResource) String() string {
@@ -288,7 +333,17 @@ func (s *DescribePlanMaintenanceWindowsResponseBodyPlanMaintenanceWindowListTarg
 }
 
 type DescribePlanMaintenanceWindowsResponseBodyPlanMaintenanceWindowListTargetResourceTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// tagKey
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// tagValue
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -323,11 +378,14 @@ func (s *DescribePlanMaintenanceWindowsResponseBodyPlanMaintenanceWindowListTarg
 }
 
 type DescribePlanMaintenanceWindowsResponseBodyPlanMaintenanceWindowListTimePeriod struct {
+	// The recurrence frequency. Valid values: Daily and Weekly.
+	//
 	// example:
 	//
 	// Year
-	PeriodUnit *string                                                                                   `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	RangeList  []*DescribePlanMaintenanceWindowsResponseBodyPlanMaintenanceWindowListTimePeriodRangeList `json:"RangeList,omitempty" xml:"RangeList,omitempty" type:"Repeated"`
+	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// The recurring UTC time ranges for the maintenance window.
+	RangeList []*DescribePlanMaintenanceWindowsResponseBodyPlanMaintenanceWindowListTimePeriodRangeList `json:"RangeList,omitempty" xml:"RangeList,omitempty" type:"Repeated"`
 }
 
 func (s DescribePlanMaintenanceWindowsResponseBodyPlanMaintenanceWindowListTimePeriod) String() string {
@@ -370,10 +428,14 @@ func (s *DescribePlanMaintenanceWindowsResponseBodyPlanMaintenanceWindowListTime
 }
 
 type DescribePlanMaintenanceWindowsResponseBodyPlanMaintenanceWindowListTimePeriodRangeList struct {
+	// The end time of the time range.
+	//
 	// example:
 	//
 	// Monday,22:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The start time of the time range.
+	//
 	// example:
 	//
 	// Monday,22:00

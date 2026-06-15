@@ -22,26 +22,27 @@ type iDescribeAutoProvisioningGroupHistoryResponseBody interface {
 }
 
 type DescribeAutoProvisioningGroupHistoryResponseBody struct {
+	// An array of scheduled task history records.
 	AutoProvisioningGroupHistories *DescribeAutoProvisioningGroupHistoryResponseBodyAutoProvisioningGroupHistories `json:"AutoProvisioningGroupHistories,omitempty" xml:"AutoProvisioningGroupHistories,omitempty" type:"Struct"`
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// B48A12CD-1295-4A38-A8F0-0E92C937****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of queried scheduling tasks in the auto provisioning group.
+	// The total number of scheduled tasks.
 	//
 	// example:
 	//

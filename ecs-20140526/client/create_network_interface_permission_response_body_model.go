@@ -16,9 +16,9 @@ type iCreateNetworkInterfacePermissionResponseBody interface {
 }
 
 type CreateNetworkInterfacePermissionResponseBody struct {
-	// Details about permissions on the ENI.
+	// Details of the network interface permission.
 	NetworkInterfacePermission *CreateNetworkInterfacePermissionResponseBodyNetworkInterfacePermission `json:"NetworkInterfacePermission,omitempty" xml:"NetworkInterfacePermission,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,45 +62,45 @@ func (s *CreateNetworkInterfacePermissionResponseBody) Validate() error {
 }
 
 type CreateNetworkInterfacePermissionResponseBodyNetworkInterfacePermission struct {
-	// The ID of the Alibaba Cloud partner (a certified ISV).
+	// The account ID of the Alibaba Cloud Partner (certified ISV).
 	//
 	// example:
 	//
 	// 1234567890
 	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The ID of the ENI.
+	// The elastic network interface ID.
 	//
 	// example:
 	//
 	// eni-bp14v2sdd3v8htln****
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
-	// The ID of the permission on the ENI.
+	// The network interface permission ID.
 	//
 	// example:
 	//
 	// eni-perm-bp1cs4lwn56lfb****
 	NetworkInterfacePermissionId *string `json:"NetworkInterfacePermissionId,omitempty" xml:"NetworkInterfacePermissionId,omitempty"`
-	// The permission on the ENI.
+	// The permission for the elastic network interface.
 	//
 	// example:
 	//
 	// InstanceAttach
 	Permission *string `json:"Permission,omitempty" xml:"Permission,omitempty"`
-	// The state of the permission on the ENI. Valid values:
+	// The state of the network interface permission. Possible values:
 	//
-	// 	- Pending: The permission is being granted.
+	// - Pending: The permission is being granted.
 	//
-	// 	- Granted: The permission is granted.
+	// - Granted: The permission is granted.
 	//
-	// 	- Revoking: The permission is being revoked.
+	// - Revoking: The permission is being revoked.
 	//
-	// 	- Revoked: The permission is revoked.
+	// - Revoked: The permission is revoked.
 	//
 	// example:
 	//
 	// Granted
 	PermissionState *string `json:"PermissionState,omitempty" xml:"PermissionState,omitempty"`
-	// The name of the Alibaba Cloud service.
+	// The name of the Alibaba Cloud service that is granted the permission.
 	//
 	// example:
 	//

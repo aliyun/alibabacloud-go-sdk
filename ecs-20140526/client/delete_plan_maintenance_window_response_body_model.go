@@ -14,6 +14,11 @@ type iDeletePlanMaintenanceWindowResponseBody interface {
 }
 
 type DeletePlanMaintenanceWindowResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// F3CD6886-D8D0-4FEE-B93E-1B732396****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

@@ -28,14 +28,20 @@ type iRecoverVirtualBorderRouterRequest interface {
 }
 
 type RecoverVirtualBorderRouterRequest struct {
+	// A client-generated token that must be unique across requests to ensure idempotency. The token can contain only ASCII characters and must be no longer than 64 characters.
 	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region where the VBR is located. You can call the `DescribeRegions` operation to get the latest region list.
+	//
 	// This parameter is required.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	UserCidr             *string `json:"UserCidr,omitempty" xml:"UserCidr,omitempty"`
+	// The secondary IPv4 CIDR block of your on-premises data center. This parameter is used for disaster recovery in a dual-homed configuration.
+	UserCidr *string `json:"UserCidr,omitempty" xml:"UserCidr,omitempty"`
+	// The ID of the VBR to recover.
+	//
 	// This parameter is required.
 	VbrId *string `json:"VbrId,omitempty" xml:"VbrId,omitempty"`
 }

@@ -24,13 +24,13 @@ type iDeleteKeyPairsRequest interface {
 type DeleteKeyPairsRequest struct {
 	// The names of SSH key pairs. The value can be a JSON array that consists of up to 100 SSH key pair names. Separate the names with commas (,).
 	//
-	// >  Before you delete an SSH key pair, you can call the [DescribeKeyPairs](https://help.aliyun.com/document_detail/51773.html) operation to query existing key pairs.
+	// > Before you delete an SSH key pair, you can call the [DescribeKeyPairs](https://help.aliyun.com/document_detail/51773.html) operation to query existing key pairs.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// ["skp-bp67acfmxazb41****", "skp-bp67acfmxazb42****", … "skp-bp67acfmxazb4p3***"]
+	// ["TestKeyPairName-1", "TestKeyPairName-2", … "TestKeyPairName-100"]
 	KeyPairNames *string `json:"KeyPairNames,omitempty" xml:"KeyPairNames,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent list of regions.

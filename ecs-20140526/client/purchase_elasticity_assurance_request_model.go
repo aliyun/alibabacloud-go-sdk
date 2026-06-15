@@ -43,9 +43,9 @@ type PurchaseElasticityAssuranceRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The validity period of the elasticity assurance. The unit of the validity period is determined by the PeriodUnit value. Valid values:
 	//
-	// 	- When PeriodUnit is set to Month, valid values are 1, 2, 3, 4, 5, 6, 7, 8, and 9.
+	// - When PeriodUnit is set to Month, valid values are 1, 2, 3, 4, 5, 6, 7, 8, and 9.
 	//
-	// 	- When PeriodUnit is set to Year, valid values are 1, 2, 3, 4, and 5.
+	// - When PeriodUnit is set to Year, valid values are 1, 2, 3, 4, and 5.
 	//
 	// Default value: 1.
 	//
@@ -55,9 +55,9 @@ type PurchaseElasticityAssuranceRequest struct {
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
 	// The unit of the validity period of the elasticity assurance. Valid values:
 	//
-	// 	- Month
+	// - Month
 	//
-	// 	- Year
+	// - Year
 	//
 	// Default value: Year.
 	//
@@ -79,7 +79,7 @@ type PurchaseElasticityAssuranceRequest struct {
 	//
 	// example:
 	//
-	// 2024-06-18T00:00Z
+	// 2024-06-18T00:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -201,9 +201,9 @@ type PurchaseElasticityAssuranceRequestPrivatePoolOptions struct {
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The type of the private pool with which you want to associate the elasticity assurance. Valid values:
 	//
-	// 	- Open: open private pool. If you use the elasticity assurance to create Elastic Compute Service (ECS) instances, the open private pool that is associated with the elasticity assurance is automatically matched. If no capacity is available in the open private pool, resources in the public pool are automatically used to create the ECS instances.
+	// - Open: open private pool. If you use the elasticity assurance to create Elastic Compute Service (ECS) instances, the open private pool that is associated with the elasticity assurance is automatically matched. If no capacity is available in the open private pool, resources in the public pool are automatically used to create the ECS instances.
 	//
-	// 	- Target: targeted private pool. If you use the elasticity assurance to create ECS instances, the specified private pool that is associated with the elasticity assurance is automatically matched. If no capacity is available in the private pool, the ECS instances fail to be created.
+	// - Target: targeted private pool. If you use the elasticity assurance to create ECS instances, the specified private pool that is associated with the elasticity assurance is automatically matched. If no capacity is available in the private pool, the ECS instances fail to be created.
 	//
 	// Default value: Open.
 	//

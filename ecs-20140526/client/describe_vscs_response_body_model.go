@@ -22,14 +22,11 @@ type DescribeVscsResponseBody struct {
 	//
 	// AAAAAdDWBF2
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
-	//
 	// example:
 	//
 	// 473469C7-AA6F-**-B3DB-A3DC0DE3C83E
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// VSC
-	Vscs []*DescribeVscsResponseBodyVscs `json:"Vscs,omitempty" xml:"Vscs,omitempty" type:"Repeated"`
+	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Vscs      []*DescribeVscsResponseBodyVscs `json:"Vscs,omitempty" xml:"Vscs,omitempty" type:"Repeated"`
 }
 
 func (s DescribeVscsResponseBody) String() string {
@@ -98,8 +95,6 @@ type DescribeVscsResponseBodyVscs struct {
 	// In_use
 	Status *string                             `json:"Status,omitempty" xml:"Status,omitempty"`
 	Tags   []*DescribeVscsResponseBodyVscsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// VSC ID。
-	//
 	// example:
 	//
 	// vsc-hp34ue**g0wmycb27bwal

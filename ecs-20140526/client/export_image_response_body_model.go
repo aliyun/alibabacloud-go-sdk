@@ -30,7 +30,7 @@ type ExportImageResponseBody struct {
   // 
   // C8B26B44-0189-443E-9816-D951F596****
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-  // The ID of the task that is used to export the custom image.
+  // The ID of the image export task.
   // 
   // example:
   // 

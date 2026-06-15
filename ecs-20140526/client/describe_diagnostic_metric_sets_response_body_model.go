@@ -87,7 +87,7 @@ type DescribeDiagnosticMetricSetsResponseBodyMetricSets struct {
 	//
 	// example:
 	//
-	// connection issue diagnostics
+	// 远程连接问题诊断
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The IDs of the diagnostic metrics.
 	MetricIds []*string `json:"MetricIds,omitempty" xml:"MetricIds,omitempty" type:"Repeated"`
@@ -101,7 +101,7 @@ type DescribeDiagnosticMetricSetsResponseBodyMetricSets struct {
 	//
 	// example:
 	//
-	// connection issue diagnostics
+	// 远程连接问题诊断
 	MetricSetName *string `json:"MetricSetName,omitempty" xml:"MetricSetName,omitempty"`
 	// The resource type supported by the diagnostic metric set.
 	//
@@ -111,9 +111,9 @@ type DescribeDiagnosticMetricSetsResponseBodyMetricSets struct {
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The type of the diagnostic metric set. Valid values:
 	//
-	// 	- User: user-defined diagnostic metric set
+	// - User: user-defined diagnostic metric set
 	//
-	// 	- Common: common diagnostic metric set
+	// - Common: common diagnostic metric set
 	//
 	// example:
 	//

@@ -32,18 +32,25 @@ type iExportImageRequest interface {
 }
 
 type ExportImageRequest struct {
+  // Specifies whether to perform a dry run to check the request\\"s validity without actually exporting the image. Valid values:
+  // 
+  // - `true`: Performs a dry run. If the check succeeds, the `DryRunOperation` error code is returned. If the check fails, an error is returned.
+  // 
+  // - `false`: Sends a normal request. If the check succeeds, the image is exported.
+  // 
+  // Default value: false.
   DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-  // The format in which you want to export the custom image. Valid values:
+  // The format of the exported image file. Valid values:
   // 
-  // 	- raw
+  // - raw.
   // 
-  // 	- vhd
+  // - vhd.
   // 
-  // 	- qcow2
+  // - qcow2.
   // 
-  // 	- vmdk
+  // - vmdk.
   // 
-  // 	- vdi
+  // - vdi.
   // 
   // Default value: raw.
   // 
@@ -51,7 +58,7 @@ type ExportImageRequest struct {
   // 
   // raw
   ImageFormat *string `json:"ImageFormat,omitempty" xml:"ImageFormat,omitempty"`
-  // The custom image ID.
+  // The ID of the custom image.
   // 
   // This parameter is required.
   // 
@@ -59,7 +66,7 @@ type ExportImageRequest struct {
   // 
   // m-bp67acfmxazb4p****
   ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-  // The OSS bucket in which you want to store the exported custom image.
+  // The destination OSS bucket for the exported image.
   // 
   // This parameter is required.
   // 
@@ -67,14 +74,14 @@ type ExportImageRequest struct {
   // 
   // testexportImage
   OSSBucket *string `json:"OSSBucket,omitempty" xml:"OSSBucket,omitempty"`
-  // The prefix for the name of the OSS object. The prefix must be 1 to 30 characters in length and can contain digits and letters.
+  // The prefix for the OSS object. The prefix must be 1 to 30 characters in length and can consist of letters and digits.
   // 
   // example:
   // 
   // EcsExport
   OSSPrefix *string `json:"OSSPrefix,omitempty" xml:"OSSPrefix,omitempty"`
   OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-  // The region ID of the custom image. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+  // The region ID of the custom image. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to view the latest list of Alibaba Cloud regions.
   // 
   // This parameter is required.
   // 
@@ -84,7 +91,7 @@ type ExportImageRequest struct {
   RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
   ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
   ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-  // The name of the RAM role that you want to use to export the custom image.
+  // The name of the RAM role used to export the image.
   // 
   // example:
   // 

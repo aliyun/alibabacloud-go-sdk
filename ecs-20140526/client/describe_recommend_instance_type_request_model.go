@@ -54,7 +54,7 @@ type iDescribeRecommendInstanceTypeRequest interface {
 type DescribeRecommendInstanceTypeRequest struct {
 	// The number of vCPU cores of the instance type.
 	//
-	// >  If you specify both `Cores` and `Memory`, the system returns all instance types that match the values of the parameters.
+	// > If you specify both `Cores` and `Memory`, the system returns all instance types that match the values of the parameters.
 	//
 	// example:
 	//
@@ -62,9 +62,9 @@ type DescribeRecommendInstanceTypeRequest struct {
 	Cores *int32 `json:"Cores,omitempty" xml:"Cores,omitempty"`
 	// The billing method of the ECS instance. For more information, see [Billing overview](https://help.aliyun.com/document_detail/25398.html). Valid values:
 	//
-	// 	- PrePaid: subscription.
+	// - PrePaid: subscription.
 	//
-	// 	- PostPaid: pay-as-you-go
+	// - PostPaid: pay-as-you-go
 	//
 	// Default value: PostPaid
 	//
@@ -74,11 +74,11 @@ type DescribeRecommendInstanceTypeRequest struct {
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
 	// The level of the instance family. Valid values:
 	//
-	// 	- EntryLevel: entry level.
+	// - EntryLevel: entry level.
 	//
-	// 	- EnterpriseLevel: enterprise level.
+	// - EnterpriseLevel: enterprise level.
 	//
-	// 	- CreditEntryLevel: credit-based entry level. For more information, see [Burstable instance families](https://help.aliyun.com/document_detail/59977.html).
+	// - CreditEntryLevel: credit-based entry level. For more information, see [Burstable instance families](https://help.aliyun.com/document_detail/59977.html).
 	//
 	// example:
 	//
@@ -86,7 +86,7 @@ type DescribeRecommendInstanceTypeRequest struct {
 	InstanceFamilyLevel *string `json:"InstanceFamilyLevel,omitempty" xml:"InstanceFamilyLevel,omitempty"`
 	// The instance type. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html) or call the [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) operation to query the most recent instance type list.
 	//
-	// >  If you specify `InstanceType`, you cannot specify `Cores` or `Memory`.
+	// > If you specify `InstanceType`, you cannot specify `Cores` or `Memory`.
 	//
 	// example:
 	//
@@ -100,9 +100,9 @@ type DescribeRecommendInstanceTypeRequest struct {
 	InstanceTypeFamily []*string `json:"InstanceTypeFamily,omitempty" xml:"InstanceTypeFamily,omitempty" type:"Repeated"`
 	// Specifies whether instances of the instance type are I/O optimized. You cannot specify IoOptimized if the instance type supports only non-I/O optimized instances. Valid values:
 	//
-	// 	- optimized: The instances are I/O optimized.
+	// - optimized: The instances are I/O optimized.
 	//
-	// 	- none: The instances are non-I/O optimized.
+	// - none: The instances are non-I/O optimized.
 	//
 	// Default value: optimized.
 	//
@@ -114,7 +114,7 @@ type DescribeRecommendInstanceTypeRequest struct {
 	IoOptimized *string `json:"IoOptimized,omitempty" xml:"IoOptimized,omitempty"`
 	// The maximum hourly price for pay-as-you-go instances or spot instances.
 	//
-	// >  This parameter takes effect only when `SpotStrategy` is set to `SpotWithPriceLimit`.
+	// > This parameter takes effect only when `SpotStrategy` is set to `SpotWithPriceLimit`.
 	//
 	// example:
 	//
@@ -122,7 +122,7 @@ type DescribeRecommendInstanceTypeRequest struct {
 	MaxPrice *float32 `json:"MaxPrice,omitempty" xml:"MaxPrice,omitempty"`
 	// The memory size of the instance type. Unit: GiB.
 	//
-	// >  If you specify both `Cores` and `Memory`, the system returns all instance types that match the values of the parameters.
+	// > If you specify both `Cores` and `Memory`, the system returns all instance types that match the values of the parameters.
 	//
 	// example:
 	//
@@ -130,9 +130,9 @@ type DescribeRecommendInstanceTypeRequest struct {
 	Memory *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
 	// The network type of ECS instances. Valid values:
 	//
-	// 	- classic
+	// - classic
 	//
-	// 	- vpc
+	// - vpc
 	//
 	// Default value: vpc.
 	//
@@ -146,11 +146,11 @@ type DescribeRecommendInstanceTypeRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The policy for recommending instance types. Valid values:
 	//
-	// 	- InventoryFirst: recommends instance types in descending order of resource availability.
+	// - InventoryFirst: recommends instance types in descending order of resource availability.
 	//
-	// 	- PriceFirst: recommends the most cost-effective instance types. Recommended instance types appear based on the hourly prices of vCPUs in ascending order.
+	// - PriceFirst: recommends the most cost-effective instance types. Recommended instance types appear based on the hourly prices of vCPUs in ascending order.
 	//
-	// 	- NewProductFirst: recommends the latest instance types first.
+	// - NewProductFirst: recommends the latest instance types first.
 	//
 	// Default value: InventoryFirst.
 	//
@@ -170,9 +170,9 @@ type DescribeRecommendInstanceTypeRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// Specifies the scenarios in which instance types are recommended. Valid values:
 	//
-	// 	- UPGRADE: instance type upgrade or downgrade
+	// - UPGRADE: instance type upgrade or downgrade
 	//
-	// 	- CREATE: instance creation
+	// - CREATE: instance creation
 	//
 	// Default value: CREATE.
 	//
@@ -182,13 +182,13 @@ type DescribeRecommendInstanceTypeRequest struct {
 	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
 	// The bidding policy of the spot instance. Valid values:
 	//
-	// 	- NoSpot: The instance is created as a pay-as-you-go instance.
+	// - NoSpot: The instance is created as a pay-as-you-go instance.
 	//
-	// 	- SpotWithPriceLimit: The instance is a spot instance that has a user-defined maximum hourly price.
+	// - SpotWithPriceLimit: The instance is a spot instance that has a user-defined maximum hourly price.
 	//
-	// 	- SpotAsPriceGo: The instance is a spot instance for which the market price at the time of purchase is automatically used as the bid price. The market price can be up to the pay-as-you-go price.
+	// - SpotAsPriceGo: The instance is a spot instance for which the market price at the time of purchase is automatically used as the bid price. The market price can be up to the pay-as-you-go price.
 	//
-	// >  If you specify `SpotStrategy`, you must set `InstanceChargeType` to `PostPaid`.
+	// > If you specify `SpotStrategy`, you must set `InstanceChargeType` to `PostPaid`.
 	//
 	// Default value: NoSpot.
 	//
@@ -198,13 +198,13 @@ type DescribeRecommendInstanceTypeRequest struct {
 	SpotStrategy *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
 	// The category of the system disk. Valid values:
 	//
-	// 	- cloud_efficiency: ultra disk
+	// - cloud_efficiency: ultra disk
 	//
-	// 	- cloud_ssd: standard SSD
+	// - cloud_ssd: standard SSD
 	//
-	// 	- cloud_essd: Enterprise SSD (ESSD)
+	// - cloud_essd: Enterprise SSD (ESSD)
 	//
-	// 	- cloud: basic disk
+	// - cloud: basic disk
 	//
 	// For non-I/O optimized instances, the default value is cloud.
 	//
@@ -224,9 +224,9 @@ type DescribeRecommendInstanceTypeRequest struct {
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 	// Specifies whether to recommend only instance types in the zone specified by ZoneId. Valid values:
 	//
-	// 	- Strict: recommends only instance types that are available in the zone specified by ZoneId.
+	// - Strict: recommends only instance types that are available in the zone specified by ZoneId.
 	//
-	// 	- Include: recommends instance types that are available in the zone specified by ZoneId and instance types that are available in other zones within the same region.
+	// - Include: recommends instance types that are available in the zone specified by ZoneId and instance types that are available in other zones within the same region.
 	//
 	// If `ZoneId` is specified, the default value of this parameter is Strict, which indicates that only instance types in the zone specified by ZoneId are recommended.
 	//

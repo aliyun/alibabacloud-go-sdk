@@ -22,7 +22,7 @@ type iDescribeTagsResponseBody interface {
 }
 
 type DescribeTagsResponseBody struct {
-	// The page number.
+	// The page number of the returned page.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type DescribeTagsResponseBody struct {
 	//
 	// 50
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

@@ -88,9 +88,9 @@ type PurchaseStorageCapacityUnitRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The validity period of the SCU. Valid values:
 	//
-	// 	- Valid values when PeriodUnit is set to Month: 1, 2, 3, and 6.
+	// - Valid values when PeriodUnit is set to Month: 1, 2, 3, and 6.
 	//
-	// 	- Valid values when PeriodUnit is set to Year: 1, 3, and 5.
+	// - Valid values when PeriodUnit is set to Year: 1, 3, and 5.
 	//
 	// Default value: 1.
 	//
@@ -100,9 +100,9 @@ type PurchaseStorageCapacityUnitRequest struct {
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
 	// The unit of the validity period of the SCU. Valid values:
 	//
-	// 	- Month
+	// - Month
 	//
-	// 	- Year
+	// - Year
 	//
 	// Default value: Month.
 	//
@@ -132,7 +132,7 @@ type PurchaseStorageCapacityUnitRequest struct {
 	//
 	// example:
 	//
-	// 2020-09-09T02:00:00Z
+	// 2020-09-09T02Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The tags to add to the SCU. You can specify up to 20 tags.
 	Tag []*PurchaseStorageCapacityUnitRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`

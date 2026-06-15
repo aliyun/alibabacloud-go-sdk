@@ -56,9 +56,9 @@ type iPurchaseReservedInstancesOfferingRequest interface {
 type PurchaseReservedInstancesOfferingRequest struct {
 	// Specifies whether to enable auto-renewal for the reserved instance. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false (default)
+	// - false (default)
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type PurchaseReservedInstancesOfferingRequest struct {
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The description of the reserved instance. The description can be 2 to 256 characters in length and cannot start with [http:// or https://](http://https://。).
+	// The description of the reserved instance. The description can be 2 to 256 characters in length and cannot start with [http:// or https://](http://https://%E3%80%82).
 	//
 	// This parameter is left empty by default.
 	//
@@ -98,7 +98,7 @@ type PurchaseReservedInstancesOfferingRequest struct {
 	InstanceAmount *int32 `json:"InstanceAmount,omitempty" xml:"InstanceAmount,omitempty"`
 	// The instance type that the reserved instance can match.
 	//
-	// >  The instance types that support reserved instances are subject to updates. For more information, see [Reserved instance overview](~~100370#3c1b682051vt4~~).
+	// > The instance types that support reserved instances are subject to updates. For more information, see [Reserved instance overview](~~100370#3c1b682051vt4~~).
 	//
 	// This parameter is required.
 	//
@@ -108,11 +108,11 @@ type PurchaseReservedInstancesOfferingRequest struct {
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	// The payment option of the reserved instance. Valid values:
 	//
-	// 	- No Upfront
+	// - No Upfront
 	//
-	// 	- Partial Upfront
+	// - Partial Upfront
 	//
-	// 	- All Upfront
+	// - All Upfront
 	//
 	// Default value: All Upfront.
 	//
@@ -144,9 +144,9 @@ type PurchaseReservedInstancesOfferingRequest struct {
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
 	// The operating system of the image used by the instance. Valid values:
 	//
-	// 	- Windows: Windows Server operating system
+	// - Windows: Windows Server operating system
 	//
-	// 	- Linux: Linux and UNIX-like operating system
+	// - Linux: Linux and UNIX-like operating system
 	//
 	// Default value: Linux.
 	//
@@ -162,7 +162,7 @@ type PurchaseReservedInstancesOfferingRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the reserved instance. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+	// The name of the reserved instance. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http\\:// or https\\://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
 	//
 	// example:
 	//
@@ -178,9 +178,9 @@ type PurchaseReservedInstancesOfferingRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The scope of reserved instance N. Valid values:
 	//
-	// 	- Region: regional
+	// - Region: regional
 	//
-	// 	- Zone: zonal
+	// - Zone: zonal
 	//
 	// Default value: Region.
 	//
@@ -190,7 +190,7 @@ type PurchaseReservedInstancesOfferingRequest struct {
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
 	// The time when you want the reserved instance to take effect. Specify the time in the [ISO 8601 standard](https://help.aliyun.com/document_detail/25696.html) in the `yyyy-MM-ddTHHZ` format. The time must be in UTC.
 	//
-	// >  If you do not specify this parameter, the reserved instance takes effect starting on the hour when the reserved instance is purchased. For example, if you purchase a reserved instance at 13:45:35 on November 1, 2024, the reserved instance takes effect starting 13:00:00 on November 1, 2024.
+	// > If you do not specify this parameter, the reserved instance takes effect starting on the hour when the reserved instance is purchased. For example, if you purchase a reserved instance at 13:45:35 on November 1, 2024, the reserved instance takes effect starting 13:00:00 on November 1, 2024.
 	//
 	// example:
 	//

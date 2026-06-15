@@ -28,9 +28,9 @@ type DescribeDiagnosticMetricSetsRequest struct {
 	//
 	// Default value:
 	//
-	// 	- If this parameter is left empty, the default value is 10.
+	// - If this parameter is left empty, the default value is 10.
 	//
-	// 	- If you set this parameter to a value that is greater than 100, the default value is 100.
+	// - If you set this parameter to a value that is greater than 100, the default value is 100.
 	//
 	// example:
 	//
@@ -60,9 +60,9 @@ type DescribeDiagnosticMetricSetsRequest struct {
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The type of the diagnostic metric set. Valid values:
 	//
-	// 	- User: custom diagnostic metric set
+	// - User: custom diagnostic metric set
 	//
-	// 	- Common: public diagnostic metric set
+	// - Common: public diagnostic metric set
 	//
 	// Default value: User.
 	//

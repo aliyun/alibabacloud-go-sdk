@@ -16,7 +16,9 @@ type iExportSnapshotResponseBody interface {
 }
 
 type ExportSnapshotResponseBody struct {
+  // The request ID.
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+  // The export task ID. Call the `DescribeTasks` operation to check the task status.
   TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 

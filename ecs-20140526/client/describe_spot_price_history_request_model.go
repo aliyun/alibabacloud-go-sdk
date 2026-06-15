@@ -60,9 +60,9 @@ type DescribeSpotPriceHistoryRequest struct {
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	// Specifies whether the instance is I/O optimized. Valid values:
 	//
-	// 	- optimized: The instance is I/O optimized.
+	// - optimized: The instance is I/O optimized.
 	//
-	// 	- none: The instance is not I/O optimized.
+	// - none: The instance is not I/O optimized.
 	//
 	// For instances of generation I instance families, the default value is none.
 	//
@@ -74,9 +74,9 @@ type DescribeSpotPriceHistoryRequest struct {
 	IoOptimized *string `json:"IoOptimized,omitempty" xml:"IoOptimized,omitempty"`
 	// The network type of the spot instance. Valid values:
 	//
-	// 	- classic: classic network
+	// - classic: classic network
 	//
-	// 	- vpc: Virtual Private Cloud (VPC)
+	// - vpc: Virtual Private Cloud (VPC)
 	//
 	// This parameter is required.
 	//
@@ -116,13 +116,13 @@ type DescribeSpotPriceHistoryRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The protection period of the spot instance. Unit: hours. Default value: 1. Valid values:
 	//
-	// 	- 1: After a spot instance is created, Alibaba Cloud ensures that the instance is not automatically released within 1 hour. After the 1-hour protection period ends, the system compares the bid price with the market price and checks the resource inventory to determine whether to retain or release the instance.
+	// - 1: After a spot instance is created, Alibaba Cloud ensures that the instance is not automatically released within 1 hour. After the 1-hour protection period ends, the system compares the bid price with the market price and checks the resource inventory to determine whether to retain or release the instance.
 	//
-	// 	- 0: After a spot instance is created, Alibaba Cloud does not ensure that the instance runs for 1 hour. The system compares the bid price with the market price and checks the resource inventory to determine whether to retain or release the instance.
+	// - 0: After a spot instance is created, Alibaba Cloud does not ensure that the instance runs for 1 hour. The system compares the bid price with the market price and checks the resource inventory to determine whether to retain or release the instance.
 	//
 	// Alibaba Cloud sends an ECS system event to notify you 5 minutes before the instance is released. Spot instances are billed by second. We recommend that you specify a protection period based on your business requirements.
 	//
-	// >  This parameter takes effect only if you set SpotStrategy to SpotWithPriceLimit or SpotAsPriceGo.
+	// > This parameter takes effect only if you set SpotStrategy to SpotWithPriceLimit or SpotAsPriceGo.
 	//
 	// example:
 	//

@@ -11,6 +11,8 @@ type iModifyPlanMaintenanceWindowRequest interface {
 	GoString() string
 	SetEnable(v bool) *ModifyPlanMaintenanceWindowRequest
 	GetEnable() *bool
+	SetMinMaintenanceInterval(v int32) *ModifyPlanMaintenanceWindowRequest
+	GetMinMaintenanceInterval() *int32
 	SetPlanWindowId(v string) *ModifyPlanMaintenanceWindowRequest
 	GetPlanWindowId() *string
 	SetPlanWindowName(v string) *ModifyPlanMaintenanceWindowRequest
@@ -26,29 +28,45 @@ type iModifyPlanMaintenanceWindowRequest interface {
 }
 
 type ModifyPlanMaintenanceWindowRequest struct {
+	// Specifies whether to enable the maintenance window. If this parameter is not specified, the enabled status remains unchanged.
+	//
 	// example:
 	//
 	// false
-	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	Enable                 *bool  `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	MinMaintenanceInterval *int32 `json:"MinMaintenanceInterval,omitempty" xml:"MinMaintenanceInterval,omitempty"`
+	// The ID of the maintenance window to modify.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pw-bp1au1w8v8a1yer65g5k
-	PlanWindowId   *string `json:"PlanWindowId,omitempty" xml:"PlanWindowId,omitempty"`
+	PlanWindowId *string `json:"PlanWindowId,omitempty" xml:"PlanWindowId,omitempty"`
+	// The new name of the maintenance window. If this parameter is not specified, the name remains unchanged.
+	//
+	// example:
+	//
+	// WIndowName
 	PlanWindowName *string `json:"PlanWindowName,omitempty" xml:"PlanWindowName,omitempty"`
+	// The ID of the region where the instance is located. You can call the DescribeRegions operation to query the most recent list of Alibaba Cloud regions.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The maintenance action for the maintenance window. If this parameter is not specified, the action remains unchanged.
+	//
 	// example:
 	//
 	// Reboot
-	SupportMaintenanceAction *string                                           `json:"SupportMaintenanceAction,omitempty" xml:"SupportMaintenanceAction,omitempty"`
-	TargetResource           *ModifyPlanMaintenanceWindowRequestTargetResource `json:"TargetResource,omitempty" xml:"TargetResource,omitempty" type:"Struct"`
-	TimePeriod               *ModifyPlanMaintenanceWindowRequestTimePeriod     `json:"TimePeriod,omitempty" xml:"TimePeriod,omitempty" type:"Struct"`
+	SupportMaintenanceAction *string `json:"SupportMaintenanceAction,omitempty" xml:"SupportMaintenanceAction,omitempty"`
+	// The resources to which the maintenance window applies. If this parameter is not specified, the target resources remain unchanged.
+	TargetResource *ModifyPlanMaintenanceWindowRequestTargetResource `json:"TargetResource,omitempty" xml:"TargetResource,omitempty" type:"Struct"`
+	// The recurrence schedule for the maintenance window. If this parameter is not specified, the schedule remains unchanged.
+	TimePeriod *ModifyPlanMaintenanceWindowRequestTimePeriod `json:"TimePeriod,omitempty" xml:"TimePeriod,omitempty" type:"Struct"`
 }
 
 func (s ModifyPlanMaintenanceWindowRequest) String() string {
@@ -61,6 +79,10 @@ func (s ModifyPlanMaintenanceWindowRequest) GoString() string {
 
 func (s *ModifyPlanMaintenanceWindowRequest) GetEnable() *bool {
 	return s.Enable
+}
+
+func (s *ModifyPlanMaintenanceWindowRequest) GetMinMaintenanceInterval() *int32 {
+	return s.MinMaintenanceInterval
 }
 
 func (s *ModifyPlanMaintenanceWindowRequest) GetPlanWindowId() *string {
@@ -89,6 +111,11 @@ func (s *ModifyPlanMaintenanceWindowRequest) GetTimePeriod() *ModifyPlanMaintena
 
 func (s *ModifyPlanMaintenanceWindowRequest) SetEnable(v bool) *ModifyPlanMaintenanceWindowRequest {
 	s.Enable = &v
+	return s
+}
+
+func (s *ModifyPlanMaintenanceWindowRequest) SetMinMaintenanceInterval(v int32) *ModifyPlanMaintenanceWindowRequest {
+	s.MinMaintenanceInterval = &v
 	return s
 }
 
@@ -137,15 +164,20 @@ func (s *ModifyPlanMaintenanceWindowRequest) Validate() error {
 }
 
 type ModifyPlanMaintenanceWindowRequestTargetResource struct {
+	// The ID of the resource group. This parameter is required when `Scope` is set to `ResourceGroup`.
+	//
 	// example:
 	//
 	// rg-acfmy4cc27vsvia
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The method for specifying the target resources.
+	//
 	// example:
 	//
 	// Tag
-	Scope *string                                                 `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	Tags  []*ModifyPlanMaintenanceWindowRequestTargetResourceTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// The resource tags. This parameter is required when `Scope` is set to `Tag`.
+	Tags []*ModifyPlanMaintenanceWindowRequestTargetResourceTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ModifyPlanMaintenanceWindowRequestTargetResource) String() string {
@@ -197,7 +229,17 @@ func (s *ModifyPlanMaintenanceWindowRequestTargetResource) Validate() error {
 }
 
 type ModifyPlanMaintenanceWindowRequestTargetResourceTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of the tag.
+	//
+	// example:
+	//
+	// tagKey
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag.
+	//
+	// example:
+	//
+	// tagValue
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -232,11 +274,14 @@ func (s *ModifyPlanMaintenanceWindowRequestTargetResourceTags) Validate() error 
 }
 
 type ModifyPlanMaintenanceWindowRequestTimePeriod struct {
+	// The unit of the recurrence cycle. Valid values: `Daily` and `Weekly`.
+	//
 	// example:
 	//
 	// Year
-	PeriodUnit *string                                                  `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	RangeList  []*ModifyPlanMaintenanceWindowRequestTimePeriodRangeList `json:"RangeList,omitempty" xml:"RangeList,omitempty" type:"Repeated"`
+	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// The time ranges within the recurrence cycle. Times are specified in UTC.
+	RangeList []*ModifyPlanMaintenanceWindowRequestTimePeriodRangeList `json:"RangeList,omitempty" xml:"RangeList,omitempty" type:"Repeated"`
 }
 
 func (s ModifyPlanMaintenanceWindowRequestTimePeriod) String() string {
@@ -279,10 +324,26 @@ func (s *ModifyPlanMaintenanceWindowRequestTimePeriod) Validate() error {
 }
 
 type ModifyPlanMaintenanceWindowRequestTimePeriodRangeList struct {
+	// The end time of the maintenance window.
+	//
+	// - If `PeriodUnit` is set to `Weekly`, the format is `Day,HH:mm`. Valid values for `Day`: `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`, and `Sunday`.
+	//
+	// - If `PeriodUnit` is set to `Daily`, the format is `HH:mm`.
+	//
+	// - In the time format, `HH` represents the hour (00-23) and `mm` must be `00`.
+	//
 	// example:
 	//
 	// Tuesday,03:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The start time of the maintenance window.
+	//
+	// - If `PeriodUnit` is set to `Weekly`, the format is `Day,HH:mm`. Valid values for `Day`: `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`, and `Sunday`.
+	//
+	// - If `PeriodUnit` is set to `Daily`, the format is `HH:mm`.
+	//
+	// - In the time format, `HH` represents the hour (00-23) and `mm` must be `00`.
+	//
 	// example:
 	//
 	// Monday,22:00

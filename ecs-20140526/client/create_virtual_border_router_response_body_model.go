@@ -16,8 +16,10 @@ type iCreateVirtualBorderRouterResponseBody interface {
 }
 
 type CreateVirtualBorderRouterResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	VbrId     *string `json:"VbrId,omitempty" xml:"VbrId,omitempty"`
+	// The ID of the virtual border router.
+	VbrId *string `json:"VbrId,omitempty" xml:"VbrId,omitempty"`
 }
 
 func (s CreateVirtualBorderRouterResponseBody) String() string {

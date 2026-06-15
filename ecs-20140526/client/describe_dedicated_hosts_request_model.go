@@ -58,7 +58,7 @@ type DescribeDedicatedHostsRequest struct {
 	//
 	// dc-bp12wlf6am0vz9v2****
 	DedicatedHostClusterId *string `json:"DedicatedHostClusterId,omitempty" xml:"DedicatedHostClusterId,omitempty"`
-	// The list of DDH IDs. You can specify up to 100 deployment set IDs in each request. Separate the deployment set IDs with commas (,).
+	// The IDs of dedicated hosts. You can specify up to 100 dedicated host IDs in a JSON array.
 	//
 	// example:
 	//
@@ -70,25 +70,25 @@ type DescribeDedicatedHostsRequest struct {
 	//
 	// MyDDHTestName
 	DedicatedHostName *string `json:"DedicatedHostName,omitempty" xml:"DedicatedHostName,omitempty"`
-	// The type of the DDH. You can call the [DescribeDedicatedHostTypes](https://help.aliyun.com/document_detail/134240.html) operation to query the most recent list of DDH types.
+	// The dedicated host type. Call the [`DescribeDedicatedHostTypes`](https://help.aliyun.com/document_detail/134240.html) operation to get the latest list of dedicated host types.
 	//
 	// example:
 	//
 	// ddh.g5
 	DedicatedHostType *string `json:"DedicatedHostType,omitempty" xml:"DedicatedHostType,omitempty"`
-	// The reason why the dedicated host is locked. Valid values:
+	// The reason that the dedicated host is locked. Valid values:
 	//
-	// 	- financial: The dedicated host is locked due to overdue payments.
+	// - `financial`: The dedicated host is locked due to an overdue payment.
 	//
-	// 	- security: The dedicated host is locked due to security reasons.
+	// - `security`: The dedicated host is locked for security reasons.
 	//
 	// example:
 	//
 	// financial
 	LockReason *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
-	// The maximum number of entries per page. If you specify this parameter, both MaxResults and NextToken are used for a paged query.
+	// The maximum number of results to return per page.
 	//
-	// Valid values: 1 to 100.
+	// Maximum value: 100.
 	//
 	// Default value: 10.
 	//
@@ -96,7 +96,7 @@ type DescribeDedicatedHostsRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	// The token used to retrieve the next page of results. Do not set this parameter for the first request. For subsequent requests, set this parameter to the `NextToken` value returned from the previous response.
 	//
 	// example:
 	//
@@ -104,20 +104,20 @@ type DescribeDedicatedHostsRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// >  This parameter will be removed in the future. You can use NextToken and MaxResults for a paged query.
+	// > This parameter is deprecated. Use `NextToken` and `MaxResults` for pagination.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// >  This parameter will be removed in the future. You can use NextToken and MaxResults for a paged query.
+	// > This parameter is deprecated. Use `NextToken` and `MaxResults` for pagination.
 	//
 	// example:
 	//
 	// 10
 	PageSize       *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	QueryInventory *bool  `json:"QueryInventory,omitempty" xml:"QueryInventory,omitempty"`
-	// The region ID of the dedicated host. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+	// The ID of the region where the dedicated host resides. Call the [`DescribeRegions`](https://help.aliyun.com/document_detail/25609.html) operation to get the latest list of Alibaba Cloud regions.
 	//
 	// This parameter is required.
 	//
@@ -125,9 +125,9 @@ type DescribeDedicatedHostsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the dedicated host belongs. When this parameter is specified to query resources, up to 1,000 resources that belong to the specified resource group can be displayed in the response.
+	// The ID of the resource group to which the dedicated host belongs. When you use this parameter to filter resources, the number of resources cannot exceed 1,000.
 	//
-	// > Resources in the default resource group are displayed in the response regardless of how this parameter is set.
+	// > Filtering by the default resource group is not supported.
 	//
 	// example:
 	//
@@ -135,43 +135,45 @@ type DescribeDedicatedHostsRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Specifies whether to display socket information. You can view the remaining resources (vCPUs, memory usage, remaining resources, and total resources) based on the capacity information of the socket dimension. Then you can determine whether ECS instances of the corresponding specifications can be created. Valid values:
+	// Specifies whether to return socket-level capacity information. You can use the information to check the remaining vCPU and memory resources and determine whether an ECS instance of a specific instance type can be created on the dedicated host. Valid values:
 	//
-	// 	- true Only some DDHs support the information about resources in the socket dimension. For more information, see [View and export information about DDHs](https://help.aliyun.com/document_detail/68989.html).
+	// - `true`: returns the information. Only specific dedicated host types support this feature. For more information, see [View and export information about dedicated hosts](https://help.aliyun.com/document_detail/68989.html).
 	//
-	// 	- false
+	// - `false`: does not return the information.
 	//
-	// >  Each DDH generally has two CPUs, and each CPU corresponds to Socket 0 and Socket 1. To maximize the performance of an ECS instance on a DDH, ECS instances are not created across sockets.
+	// 	Notice:
 	//
-	// 	- If one socket has available computing resources for creating the ECS instance, creation succeeds.
+	// A dedicated host typically has two CPUs, which correspond to Socket 0 and Socket 1. To maximize performance, an ECS instance created on a dedicated host is allocated to a single socket and does not span sockets.
 	//
-	// 	- If not, creation fails even if the combined available resources of both sockets are sufficient. Although the remaining resources of the two sockets on the DDH are larger than the ECS instance type, the ECS instance cannot be created.
+	// - If the remaining resources on a socket are sufficient for the specified ECS instance type, the instance can be created.
+	//
+	// - If the remaining resources on each socket are insufficient for the specified ECS instance type, the instance cannot be created, even if the total remaining resources on both sockets are sufficient.
 	//
 	// example:
 	//
 	// true
 	SocketDetails *string `json:"SocketDetails,omitempty" xml:"SocketDetails,omitempty"`
-	// The service state of the dedicated host. Valid values:
+	// The state of the dedicated host. Valid values:
 	//
-	// 	- Available: The dedicated host is running normally.
+	// - `Available`: The dedicated host is running as expected.
 	//
-	// 	- UnderAssessment: The dedicated host is available but has potential risks that may cause the ECS instances on the dedicated host to fail.
+	// - `UnderAssessment`: The dedicated host is being assessed for physical hardware risks. The host is available but may have hardware issues that could affect its ECS instances.
 	//
-	// 	- PermanentFailure: The dedicated host encounters permanent failures and is unavailable.
+	// - `PermanentFailure`: The dedicated host has a permanent failure and is unavailable.
 	//
-	// 	- TempUnavailable: The dedicated host is temporarily unavailable.
+	// - `TempUnavailable`: The dedicated host is temporarily unavailable.
 	//
-	// 	- Redeploying: The dedicated host is being restored.
+	// - `Redeploying`: The dedicated host is being redeployed.
 	//
-	// Default value: Available.
+	// The default value is `Available`.
 	//
 	// example:
 	//
 	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The list of tags. The list length ranges from 0 to 20.
+	// The tags used to filter dedicated hosts. You can specify up to 20 tags.
 	Tag []*DescribeDedicatedHostsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The zone ID of the dedicated host. You can call the [DescribeZones](https://help.aliyun.com/document_detail/25610.html) operation to query the most recent zone list.
+	// The zone ID. Call the [`DescribeZones`](https://help.aliyun.com/document_detail/25610.html) operation to get the latest list of Alibaba Cloud zones.
 	//
 	// example:
 	//
@@ -381,13 +383,13 @@ func (s *DescribeDedicatedHostsRequest) Validate() error {
 }
 
 type DescribeDedicatedHostsRequestTag struct {
-	// The key of tag N of the DDH. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `acs:` or `aliyun`.
+	// The tag key. The key can be up to 128 characters long. It cannot be an empty string, start with `aliyun` or `acs:`, or contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N of the DDH. You can specify empty strings as tag values. The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`.
+	// The tag value. The value can be up to 128 characters long and cannot contain `http://` or `https://`. You can leave the value empty.
 	//
 	// example:
 	//

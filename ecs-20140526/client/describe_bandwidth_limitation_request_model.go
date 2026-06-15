@@ -34,9 +34,9 @@ type iDescribeBandwidthLimitationRequest interface {
 type DescribeBandwidthLimitationRequest struct {
 	// The billing method of the instance. For more information, see [Billing overview](https://help.aliyun.com/document_detail/25398.html). Valid values:
 	//
-	// 	- PrePaid: subscription
+	// - PrePaid: subscription
 	//
-	// 	- PostPaid: pay-as-you-go
+	// - PostPaid: pay-as-you-go
 	//
 	// Default value: PostPaid.
 	//
@@ -54,11 +54,11 @@ type DescribeBandwidthLimitationRequest struct {
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	// Specifies the operation for which to query the maximum public bandwidth. Valid values:
 	//
-	// 	- Upgrade: upgrades the public bandwidth.
+	// - Upgrade: upgrades the public bandwidth.
 	//
-	// 	- Downgrade: downgrades the public bandwidth.
+	// - Downgrade: downgrades the public bandwidth.
 	//
-	// 	- Create: creates an ECS instance.
+	// - Create: creates an ECS instance.
 	//
 	// Default value: Create.
 	//
@@ -78,7 +78,7 @@ type DescribeBandwidthLimitationRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The resource ID.
 	//
-	// >  This parameter is required when the OperationType parameter is set to Upgrade or Downgrade.
+	// > This parameter is required when the OperationType parameter is set to Upgrade or Downgrade.
 	//
 	// example:
 	//
@@ -88,15 +88,15 @@ type DescribeBandwidthLimitationRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The bidding policy for the pay-as-you-go instance. Valid values:
 	//
-	// 	- NoSpot: The instance is a pay-as-you-go instance.
+	// - NoSpot: The instance is a pay-as-you-go instance.
 	//
-	// 	- SpotWithPriceLimit: The instance is a spot instance for which you can specify the maximum hourly price.
+	// - SpotWithPriceLimit: The instance is a spot instance for which you can specify the maximum hourly price.
 	//
-	// 	- SpotAsPriceGo: The instance is a spot instance for which the market price at the time of purchase is automatically used as the bid price. The market price can be up to the pay-as-you-go price.
+	// - SpotAsPriceGo: The instance is a spot instance for which the market price at the time of purchase is automatically used as the bid price. The market price can be up to the pay-as-you-go price.
 	//
 	// Default value: NoSpot.
 	//
-	// >  The SpotStrategy parameter takes effect only when the InstanceChargeType parameter is set to PostPaid.
+	// > The SpotStrategy parameter takes effect only when the InstanceChargeType parameter is set to PostPaid.
 	//
 	// example:
 	//

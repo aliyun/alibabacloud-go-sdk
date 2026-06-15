@@ -16,7 +16,7 @@ type iDescribePortRangeListEntriesResponseBody interface {
 }
 
 type DescribePortRangeListEntriesResponseBody struct {
-	// Port list entries.
+	// The port range list entries.
 	Entries []*DescribePortRangeListEntriesResponseBodyEntries `json:"Entries,omitempty" xml:"Entries,omitempty" type:"Repeated"`
 	// The request ID.
 	//

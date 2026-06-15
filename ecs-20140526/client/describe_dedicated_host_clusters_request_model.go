@@ -52,7 +52,7 @@ type DescribeDedicatedHostClustersRequest struct {
 	//
 	// myDDHCluster
 	DedicatedHostClusterName *string `json:"DedicatedHostClusterName,omitempty" xml:"DedicatedHostClusterName,omitempty"`
-	// >  This parameter is unavailable for use.
+	// > This parameter is unavailable for use.
 	//
 	// example:
 	//
@@ -90,7 +90,7 @@ type DescribeDedicatedHostClustersRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The resource group ID of the host group. You can use a resource group ID to filter no more than 1,000 host groups.
 	//
-	// >  A default resource group is not supported.
+	// > A default resource group is not supported.
 	//
 	// example:
 	//
@@ -98,7 +98,7 @@ type DescribeDedicatedHostClustersRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// >  This parameter is unavailable for use.
+	// > This parameter is unavailable for use.
 	//
 	// example:
 	//

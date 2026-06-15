@@ -20,10 +20,14 @@ type iCreateNatGatewayResponseBody interface {
 }
 
 type CreateNatGatewayResponseBody struct {
+	// The IDs of the EIP bandwidth plans.
 	BandwidthPackageIds *CreateNatGatewayResponseBodyBandwidthPackageIds `json:"BandwidthPackageIds,omitempty" xml:"BandwidthPackageIds,omitempty" type:"Struct"`
-	ForwardTableIds     *CreateNatGatewayResponseBodyForwardTableIds     `json:"ForwardTableIds,omitempty" xml:"ForwardTableIds,omitempty" type:"Struct"`
-	NatGatewayId        *string                                          `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
-	RequestId           *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The IDs of the forwarding tables.
+	ForwardTableIds *CreateNatGatewayResponseBodyForwardTableIds `json:"ForwardTableIds,omitempty" xml:"ForwardTableIds,omitempty" type:"Struct"`
+	// The ID of the NAT gateway.
+	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateNatGatewayResponseBody) String() string {

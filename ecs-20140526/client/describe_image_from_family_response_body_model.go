@@ -64,9 +64,9 @@ func (s *DescribeImageFromFamilyResponseBody) Validate() error {
 type DescribeImageFromFamilyResponseBodyImage struct {
 	// The architecture of the image. Valid values:
 	//
-	// 	- i386
+	// - i386
 	//
-	// 	- x86_64
+	// - x86_64
 	//
 	// example:
 	//
@@ -105,13 +105,13 @@ type DescribeImageFromFamilyResponseBodyImage struct {
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
 	// The alias of the image owner. Valid values:
 	//
-	// 	- system: public images provided by Alibaba Cloud
+	// - system: public images provided by Alibaba Cloud
 	//
-	// 	- self: your custom images
+	// - self: your custom images
 	//
-	// 	- others: shared images from other Alibaba Cloud accounts
+	// - others: shared images from other Alibaba Cloud accounts
 	//
-	// 	- marketplace: Alibaba Cloud Marketplace images
+	// - marketplace: Alibaba Cloud Marketplace images
 	//
 	// example:
 	//
@@ -161,9 +161,9 @@ type DescribeImageFromFamilyResponseBodyImage struct {
 	OSName *string `json:"OSName,omitempty" xml:"OSName,omitempty"`
 	// The type of the operating system. Valid values:
 	//
-	// 	- windows
+	// - windows
 	//
-	// 	- linux
+	// - linux
 	//
 	// example:
 	//
@@ -195,13 +195,13 @@ type DescribeImageFromFamilyResponseBodyImage struct {
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
 	// The state of the image. Valid values:
 	//
-	// 	- UnAvailable
+	// - UnAvailable
 	//
-	// 	- Available
+	// - Available
 	//
-	// 	- Creating
+	// - Creating
 	//
-	// 	- CreateFailed
+	// - CreateFailed
 	//
 	// example:
 	//
@@ -210,9 +210,9 @@ type DescribeImageFromFamilyResponseBodyImage struct {
 	Tags   *DescribeImageFromFamilyResponseBodyImageTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	// Indicates whether the image has been used to create ECS instances. Valid values:
 	//
-	// 	- instance: The image was used to create one or more ECS instances.
+	// - instance: The image was used to create one or more ECS instances.
 	//
-	// 	- none: The image was not used to create ECS instances.
+	// - none: The image was not used to create ECS instances.
 	//
 	// example:
 	//

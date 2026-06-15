@@ -57,13 +57,13 @@ type DescribeDisksFullStatusRequest struct {
 	EventId []*string `json:"EventId,omitempty" xml:"EventId,omitempty" type:"Repeated"`
 	// The event type of the EBS device. Valid values:
 	//
-	// 	- Degraded: The performance of the EBS device is degraded.
+	// - Degraded: The performance of the EBS device is degraded.
 	//
-	// 	- SeverelyDegraded: The performance of the EBS device is severely degraded.
+	// - SeverelyDegraded: The performance of the EBS device is severely degraded.
 	//
-	// 	- Stalled: The performance of the EBS device is severely affected.
+	// - Stalled: The performance of the EBS device is severely affected.
 	//
-	// 	- ErrorDetected: The local disk is damaged.
+	// - ErrorDetected: The local disk is damaged.
 	//
 	// example:
 	//
@@ -71,15 +71,15 @@ type DescribeDisksFullStatusRequest struct {
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
 	// The health status of the EBS device. Valid values:
 	//
-	// 	- Impaired: The EBS device is damaged.
+	// - Impaired: The EBS device is damaged.
 	//
-	// 	- Warning: The performance of the EBS device is degraded.
+	// - Warning: The performance of the EBS device is degraded.
 	//
-	// 	- Initializing: The EBS device is being initialized.
+	// - Initializing: The EBS device is being initialized.
 	//
-	// 	- InsufficientData: The status cannot be determined due to insufficient data.
+	// - InsufficientData: The status cannot be determined due to insufficient data.
 	//
-	// 	- NotApplicable: The EBS device cannot be used.
+	// - NotApplicable: The EBS device cannot be used.
 	//
 	// example:
 	//
@@ -121,17 +121,17 @@ type DescribeDisksFullStatusRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The lifecycle status of the EBS device. For more information, see [Disk status](https://help.aliyun.com/document_detail/25689.html). Valid values:
 	//
-	// 	- In_use: The EBS device is in use.
+	// - In_use: The EBS device is in use.
 	//
-	// 	- Available: The EBS device can be attached.
+	// - Available: The EBS device can be attached.
 	//
-	// 	- Attaching: The EBS device is being attached.
+	// - Attaching: The EBS device is being attached.
 	//
-	// 	- Detaching: The EBS device is being detached.
+	// - Detaching: The EBS device is being detached.
 	//
-	// 	- Creating: The EBS device is being created.
+	// - Creating: The EBS device is being created.
 	//
-	// 	- ReIniting: The EBS device is being initialized.
+	// - ReIniting: The EBS device is being initialized.
 	//
 	// example:
 	//

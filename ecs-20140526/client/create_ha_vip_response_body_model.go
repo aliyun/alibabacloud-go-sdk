@@ -16,7 +16,9 @@ type iCreateHaVipResponseBody interface {
 }
 
 type CreateHaVipResponseBody struct {
-	HaVipId   *string `json:"HaVipId,omitempty" xml:"HaVipId,omitempty"`
+	// The ID of the HaVip.
+	HaVipId *string `json:"HaVipId,omitempty" xml:"HaVipId,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

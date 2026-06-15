@@ -32,9 +32,9 @@ type iUntagResourcesRequest interface {
 type UntagResourcesRequest struct {
 	// Specifies whether to remove all tags from the resource. This parameter takes effect only if you do not specify TagKey.N. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// Default value: false.
 	//
@@ -64,39 +64,39 @@ type UntagResourcesRequest struct {
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The type of the resource. Valid values:
 	//
-	// 	- instance: ECS instance
+	// - instance: ECS instance
 	//
-	// 	- disk: disk
+	// - disk: disk
 	//
-	// 	- snapshot: snapshot
+	// - snapshot: snapshot
 	//
-	// 	- image: image
+	// - image: image
 	//
-	// 	- securitygroup: security group
+	// - securitygroup: security group
 	//
-	// 	- volume: storage volume
+	// - volume: storage volume
 	//
-	// 	- eni: elastic network interface (ENI)
+	// - eni: elastic network interface (ENI)
 	//
-	// 	- ddh: dedicated host
+	// - ddh: dedicated host
 	//
-	// 	- ddhcluster: dedicated host cluster
+	// - ddhcluster: dedicated host cluster
 	//
-	// 	- keypair: SSH key pair
+	// - keypair: SSH key pair
 	//
-	// 	- launchtemplate: launch template
+	// - launchtemplate: launch template
 	//
-	// 	- reservedinstance: reserved instance
+	// - reservedinstance: reserved instance
 	//
-	// 	- snapshotpolicy: automatic snapshot policy
+	// - snapshotpolicy: automatic snapshot policy
 	//
-	// 	- elasticityassurance: elasticity assurance
+	// - elasticityassurance: elasticity assurance
 	//
-	// 	- capacityreservation: capacity reservation
+	// - capacityreservation: capacity reservation
 	//
-	// 	- command: Cloud Assistant command
+	// - command: Cloud Assistant command
 	//
-	// 	- invocation: Cloud Assistant command execution result
+	// - invocation: Cloud Assistant command execution result
 	//
 	// This parameter is required.
 	//

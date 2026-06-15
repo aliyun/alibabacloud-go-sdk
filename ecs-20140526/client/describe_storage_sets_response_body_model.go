@@ -22,31 +22,11 @@ type iDescribeStorageSetsResponseBody interface {
 }
 
 type DescribeStorageSetsResponseBody struct {
-	// The page number of the returned page.
-	//
-	// example:
-	//
-	// 1
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
-	//
-	// example:
-	//
-	// 1
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
-	//
-	// example:
-	//
-	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
+	PageNumber  *int32                                      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int32                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RequestId   *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	StorageSets *DescribeStorageSetsResponseBodyStorageSets `json:"StorageSets,omitempty" xml:"StorageSets,omitempty" type:"Struct"`
-	// The total number of storage sets.
-	//
-	// example:
-	//
-	// 20
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalCount  *int32                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeStorageSetsResponseBody) String() string {

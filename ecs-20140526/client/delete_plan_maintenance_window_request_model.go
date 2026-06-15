@@ -16,12 +16,16 @@ type iDeletePlanMaintenanceWindowRequest interface {
 }
 
 type DeletePlanMaintenanceWindowRequest struct {
+	// The ID of the maintenance window to delete.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pw-bp12kkvnebe7hksqnx9w
 	PlanWindowId *string `json:"PlanWindowId,omitempty" xml:"PlanWindowId,omitempty"`
+	// The ID of the region. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to retrieve the latest list of Alibaba Cloud regions.
+	//
 	// This parameter is required.
 	//
 	// example:

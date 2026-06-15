@@ -16,8 +16,10 @@ type iDescribeNewProjectEipMonitorDataResponseBody interface {
 }
 
 type DescribeNewProjectEipMonitorDataResponseBody struct {
+	// The container for EIP monitoring data.
 	EipMonitorDatas *DescribeNewProjectEipMonitorDataResponseBodyEipMonitorDatas `json:"EipMonitorDatas,omitempty" xml:"EipMonitorDatas,omitempty" type:"Struct"`
-	RequestId       *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeNewProjectEipMonitorDataResponseBody) String() string {

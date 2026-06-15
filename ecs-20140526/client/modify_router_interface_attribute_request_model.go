@@ -38,19 +38,31 @@ type iModifyRouterInterfaceAttributeRequest interface {
 }
 
 type ModifyRouterInterfaceAttributeRequest struct {
-	Description              *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	HealthCheckSourceIp      *string `json:"HealthCheckSourceIp,omitempty" xml:"HealthCheckSourceIp,omitempty"`
-	HealthCheckTargetIp      *string `json:"HealthCheckTargetIp,omitempty" xml:"HealthCheckTargetIp,omitempty"`
-	Name                     *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	OppositeInterfaceId      *string `json:"OppositeInterfaceId,omitempty" xml:"OppositeInterfaceId,omitempty"`
-	OppositeInterfaceOwnerId *int64  `json:"OppositeInterfaceOwnerId,omitempty" xml:"OppositeInterfaceOwnerId,omitempty"`
-	OppositeRouterId         *string `json:"OppositeRouterId,omitempty" xml:"OppositeRouterId,omitempty"`
-	OppositeRouterType       *string `json:"OppositeRouterType,omitempty" xml:"OppositeRouterType,omitempty"`
-	OwnerId                  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The new description of the router interface. The description must be 2 to 256 characters long and cannot start with `http://` or `https://`.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The source IP address used for the health check.
+	HealthCheckSourceIp *string `json:"HealthCheckSourceIp,omitempty" xml:"HealthCheckSourceIp,omitempty"`
+	// The destination IP address used for the health check.
+	HealthCheckTargetIp *string `json:"HealthCheckTargetIp,omitempty" xml:"HealthCheckTargetIp,omitempty"`
+	// The new name of the router interface. The name must be 2 to 128 characters long and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the opposite router interface.
+	OppositeInterfaceId *string `json:"OppositeInterfaceId,omitempty" xml:"OppositeInterfaceId,omitempty"`
+	// The ID of the Alibaba Cloud account that owns the opposite router interface.
+	OppositeInterfaceOwnerId *int64 `json:"OppositeInterfaceOwnerId,omitempty" xml:"OppositeInterfaceOwnerId,omitempty"`
+	// The ID of the opposite router.
+	OppositeRouterId *string `json:"OppositeRouterId,omitempty" xml:"OppositeRouterId,omitempty"`
+	// The type of the opposite router. Valid values: `VRouter` and `VBR`. The default value is `VRouter`.
+	OppositeRouterType *string `json:"OppositeRouterType,omitempty" xml:"OppositeRouterType,omitempty"`
+	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region where the router interface is deployed.
+	//
 	// This parameter is required.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The ID of the router interface that you want to modify.
+	//
 	// This parameter is required.
 	RouterInterfaceId *string `json:"RouterInterfaceId,omitempty" xml:"RouterInterfaceId,omitempty"`
 }

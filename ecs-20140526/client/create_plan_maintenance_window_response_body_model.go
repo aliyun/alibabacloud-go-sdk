@@ -16,10 +16,14 @@ type iCreatePlanMaintenanceWindowResponseBody interface {
 }
 
 type CreatePlanMaintenanceWindowResponseBody struct {
+	// The ID of the maintenance window.
+	//
 	// example:
 	//
 	// pw-bp1a9yavgq3dgttvowun
 	PlanWindowId *string `json:"PlanWindowId,omitempty" xml:"PlanWindowId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 7D5B1188-3F08-56D1-A6B2-91B267452633

@@ -16,7 +16,7 @@ type iDescribeInstanceModificationPriceResponseBody interface {
 }
 
 type DescribeInstanceModificationPriceResponseBody struct {
-	// Details about the prices and promotion rules.
+	// Price information, including price details and promotional rules.
 	PriceInfo *DescribeInstanceModificationPriceResponseBodyPriceInfo `json:"PriceInfo,omitempty" xml:"PriceInfo,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,7 +62,7 @@ func (s *DescribeInstanceModificationPriceResponseBody) Validate() error {
 }
 
 type DescribeInstanceModificationPriceResponseBodyPriceInfo struct {
-	// The price.
+	// The price details.
 	Price        *DescribeInstanceModificationPriceResponseBodyPriceInfoPrice        `json:"Price,omitempty" xml:"Price,omitempty" type:"Struct"`
 	RelatedPrice *DescribeInstanceModificationPriceResponseBodyPriceInfoRelatedPrice `json:"RelatedPrice,omitempty" xml:"RelatedPrice,omitempty" type:"Struct"`
 	Rules        *DescribeInstanceModificationPriceResponseBodyPriceInfoRules        `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
@@ -123,18 +123,18 @@ func (s *DescribeInstanceModificationPriceResponseBodyPriceInfo) Validate() erro
 }
 
 type DescribeInstanceModificationPriceResponseBodyPriceInfoPrice struct {
-	// The currency unit. Valid values:
+	// The currency. Valid values:
 	//
-	// 	- Alibaba Cloud China site (aliyun.com): CNY
+	// - `CNY`: For the China site.
 	//
-	// 	- Alibaba Cloud International site (alibabacloud.com): USD
+	// - `USD`: For the international site.
 	//
 	// example:
 	//
 	// CNY
 	Currency    *string                                                                 `json:"Currency,omitempty" xml:"Currency,omitempty"`
 	DetailInfos *DescribeInstanceModificationPriceResponseBodyPriceInfoPriceDetailInfos `json:"DetailInfos,omitempty" xml:"DetailInfos,omitempty" type:"Struct"`
-	// The discount.
+	// The discount amount.
 	//
 	// example:
 	//
@@ -146,7 +146,7 @@ type DescribeInstanceModificationPriceResponseBodyPriceInfoPrice struct {
 	//
 	// 175.200
 	OriginalPrice *float32 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
-	// The transaction price, which is equal to the original price minus the discount.
+	// The final price (original price - discount).
 	//
 	// example:
 	//

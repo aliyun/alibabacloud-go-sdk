@@ -14,6 +14,7 @@ type iConnectRouterInterfaceResponseBody interface {
 }
 
 type ConnectRouterInterfaceResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

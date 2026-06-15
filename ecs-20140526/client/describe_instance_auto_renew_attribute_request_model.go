@@ -30,9 +30,9 @@ type iDescribeInstanceAutoRenewAttributeRequest interface {
 }
 
 type DescribeInstanceAutoRenewAttributeRequest struct {
-	// The IDs of the instances. You can specify up to 100 subscription instance IDs in a single request. Separate multiple instance IDs with commas (,).
+	// The instance IDs. You can specify up to 100 subscription instances at a time. Separate multiple instance IDs with commas.
 	//
-	// > `InstanceId` and `RenewalStatus` cannot be empty at the same time.
+	// > You must specify either `InstanceId` or `RenewalStatus`.
 	//
 	// example:
 	//
@@ -40,9 +40,9 @@ type DescribeInstanceAutoRenewAttributeRequest struct {
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number.
+	// The number of the page to return.
 	//
-	// Pages start from page 1.
+	// Minimum value: 1.
 	//
 	// Default value: 1.
 	//
@@ -52,7 +52,7 @@ type DescribeInstanceAutoRenewAttributeRequest struct {
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page.
 	//
-	// Valid values: 1 to 100.
+	// Maximum value: 100.
 	//
 	// Default value: 10.
 	//
@@ -60,7 +60,7 @@ type DescribeInstanceAutoRenewAttributeRequest struct {
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to view the latest list of Alibaba Cloud regions.
 	//
 	// This parameter is required.
 	//
@@ -68,13 +68,13 @@ type DescribeInstanceAutoRenewAttributeRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The auto-renewal state of the instance. Valid values:
+	// The auto-renewal status of the instance. Valid values:
 	//
-	// 	- AutoRenewal: Auto-renewal is enabled for the instance.
+	// - AutoRenewal: Auto-renewal is enabled.
 	//
-	// 	- Normal: Auto-renewal is disabled for the instance.
+	// - Normal: Auto-renewal is disabled.
 	//
-	// 	- NotRenewal: The instance is not to be renewed. The system sends no more expiration reminders, but sends only a non-renewal reminder three days before the expiration date. For an instance that is not to be renewed, you can call the [ModifyInstanceAutoRenewAttribute](https://help.aliyun.com/document_detail/52843.html) operation to change its auto-renewal status to `Normal`. Then, you can manually renew the instance or enable auto-renewal for the instance.
+	// - NotRenewal: The instance will not be renewed. The system does not send expiration reminders but sends a non-renewal reminder three days before the expiration date. To renew an ECS instance with this status, you must first call [ModifyInstanceAutoRenewAttribute](https://help.aliyun.com/document_detail/52843.html) to change its status to `Normal`. You can then manually renew the instance or enable auto-renewal.
 	//
 	// example:
 	//

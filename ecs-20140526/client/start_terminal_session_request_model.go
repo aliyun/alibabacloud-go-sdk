@@ -40,10 +40,15 @@ type iStartTerminalSessionRequest interface {
 }
 
 type StartTerminalSessionRequest struct {
+	// Ensures the idempotence of the request. Generate a unique parameter value from your client to guarantee uniqueness across different requests. **ClientToken*	- supports only ASCII characters and must not exceed 64 characters. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+	//
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The command to run after the session is initiated. The command length cannot exceed 512 characters.
 	//
-	// >  If you specify the `CommandLine` parameter, you cannot specify the `PortNumber` or `TargetServer` parameter.
+	// > If you specify the `CommandLine` parameter, you cannot specify the `PortNumber` or `TargetServer` parameter.
 	//
 	// example:
 	//
@@ -51,14 +56,15 @@ type StartTerminalSessionRequest struct {
 	CommandLine *string `json:"CommandLine,omitempty" xml:"CommandLine,omitempty"`
 	// The network type of the WebSocket URL required to connect to the instance. Valid values:
 	//
-	// 	- Internet (default)
+	// - Internet (default)
 	//
-	// 	- Intranet
+	// - Intranet
 	//
 	// example:
 	//
 	// Intranet
-	ConnectionType    *string                                       `json:"ConnectionType,omitempty" xml:"ConnectionType,omitempty"`
+	ConnectionType *string `json:"ConnectionType,omitempty" xml:"ConnectionType,omitempty"`
+	// Session encryption configuration items.
 	EncryptionOptions *StartTerminalSessionRequestEncryptionOptions `json:"EncryptionOptions,omitempty" xml:"EncryptionOptions,omitempty" type:"Struct"`
 	// The instance IDs.
 	//
@@ -66,7 +72,14 @@ type StartTerminalSessionRequest struct {
 	InstanceId   []*string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Repeated"`
 	OwnerAccount *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PasswordName *string   `json:"PasswordName,omitempty" xml:"PasswordName,omitempty"`
+	// The password name of the user when using Session Manager on a Windows instance. The length cannot exceed 255 characters.<br>
+	//
+	// When you want to use Session Manager on a Windows instance as a non-default user (System), you must pass both Username and this parameter. To reduce the risk of password disclosure, store the plaintext password in the parameter repository of CloudOps Orchestration Service, and pass only the password name here. For more information, see [encrypted parameters](https://help.aliyun.com/document_detail/186828.html).
+	//
+	// example:
+	//
+	// axtSecretPassword
+	PasswordName *string `json:"PasswordName,omitempty" xml:"PasswordName,omitempty"`
 	// The port number of the ECS instance. The port is used to forward data. After this parameter is configured, Cloud Assistant Agent forwards data to the specified port. For example, you can set this parameter to 22 for data forwarding over SSH.
 	//
 	// This parameter is empty by default, which indicates that no port is configured to forward data.
@@ -87,7 +100,7 @@ type StartTerminalSessionRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The IP address of the instance. You can use the IP address to access the destination service in a virtual private cloud (VPC).
 	//
-	// >  If this parameter is not empty, `PortNumber` specifies the port number that is used by the managed instance to access the destination service in the VPC.
+	// > If this parameter is not empty, `PortNumber` specifies the port number that is used by the managed instance to access the destination service in the VPC.
 	//
 	// example:
 	//
@@ -245,9 +258,40 @@ func (s *StartTerminalSessionRequest) Validate() error {
 }
 
 type StartTerminalSessionRequestEncryptionOptions struct {
-	Enabled  *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// Enable end-to-end encryption for the session connection.
+	//
+	// example:
+	//
+	// true
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// KMS key ID.<br>
+	//
+	// Notes:
+	//
+	// - Only KMS symmetric keys are supported.
+	//
+	// - This parameter can be specified only when the encryption mode is Kms.
+	//
+	// example:
+	//
+	// xxx
 	KMSKeyId *string `json:"KMSKeyId,omitempty" xml:"KMSKeyId,omitempty"`
-	Mode     *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// Encryption mode. Valid values:
+	//
+	// - Auto: Use autonegotiation to encrypt the session with a secret key.
+	//
+	// - Kms: Use a KMS key to encrypt the session.
+	//
+	// - Default value: Auto.
+	//
+	// Notes:
+	//
+	// - This parameter can be specified only when session encryption is enabled.
+	//
+	// example:
+	//
+	// Auto
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 }
 
 func (s StartTerminalSessionRequestEncryptionOptions) String() string {

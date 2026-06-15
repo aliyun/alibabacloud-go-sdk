@@ -34,7 +34,7 @@ type iDescribeInstanceStatusRequest interface {
 type DescribeInstanceStatusRequest struct {
 	// The ID of the cluster to which the ECS instances belong.
 	//
-	// >  This parameter is deprecated. We recommend that you do not use this parameter.
+	// > This parameter is deprecated. We recommend that you do not use this parameter.
 	//
 	// example:
 	//

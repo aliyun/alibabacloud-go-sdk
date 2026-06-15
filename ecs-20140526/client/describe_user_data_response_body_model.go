@@ -40,7 +40,7 @@ type DescribeUserDataResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The user data of the instance.
 	//
-	// >  If no user data is configured for the instance, an empty string is returned.
+	// > If no user data is configured for the instance, an empty string is returned.
 	//
 	// example:
 	//

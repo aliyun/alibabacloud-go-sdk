@@ -16,8 +16,10 @@ type iCreatePhysicalConnectionResponseBody interface {
 }
 
 type CreatePhysicalConnectionResponseBody struct {
+	// The ID of the physical connection.
 	PhysicalConnectionId *string `json:"PhysicalConnectionId,omitempty" xml:"PhysicalConnectionId,omitempty"`
-	RequestId            *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreatePhysicalConnectionResponseBody) String() string {

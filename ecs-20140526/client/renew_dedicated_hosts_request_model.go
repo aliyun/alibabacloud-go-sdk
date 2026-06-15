@@ -48,9 +48,9 @@ type RenewDedicatedHostsRequest struct {
 	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The renewal duration. Valid values:
 	//
-	// 	- Valid values when the PeriodUnit parameter is set to Month: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, and 60.
+	// - Valid values when the PeriodUnit parameter is set to Month: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, and 60.
 	//
-	// 	- Valid values when the PeriodUnit parameter is set to Year: 1, 2, 3, 4, and 5.
+	// - Valid values when the PeriodUnit parameter is set to Year: 1, 2, 3, 4, and 5.
 	//
 	// This parameter is required.
 	//
@@ -60,9 +60,9 @@ type RenewDedicatedHostsRequest struct {
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
 	// The unit of the renewal period. Valid values:
 	//
-	// 	- Month
+	// - Month
 	//
-	// 	- Year
+	// - Year
 	//
 	// Default value: Month.
 	//

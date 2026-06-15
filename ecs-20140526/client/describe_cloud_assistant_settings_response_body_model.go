@@ -24,7 +24,7 @@ type iDescribeCloudAssistantSettingsResponseBody interface {
 }
 
 type DescribeCloudAssistantSettingsResponseBody struct {
-	// The configurations for upgrading Cloud Assistant Agent.
+	// The upgrade settings for the Cloud Assistant agent.
 	AgentUpgradeConfig *DescribeCloudAssistantSettingsResponseBodyAgentUpgradeConfig `json:"AgentUpgradeConfig,omitempty" xml:"AgentUpgradeConfig,omitempty" type:"Struct"`
 	OssDeliveryConfigs *DescribeCloudAssistantSettingsResponseBodyOssDeliveryConfigs `json:"OssDeliveryConfigs,omitempty" xml:"OssDeliveryConfigs,omitempty" type:"Struct"`
 	// The request ID.
@@ -32,9 +32,10 @@ type DescribeCloudAssistantSettingsResponseBody struct {
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3****
-	RequestId           *string                                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The resource usage settings for the Cloud Assistant agent.
 	ResourceUsageConfig *DescribeCloudAssistantSettingsResponseBodyResourceUsageConfig `json:"ResourceUsageConfig,omitempty" xml:"ResourceUsageConfig,omitempty" type:"Struct"`
-	// Cloud Assistant Session Manager configuration.
+	// Configurations for the Session Manager feature.
 	SessionManagerConfig *DescribeCloudAssistantSettingsResponseBodySessionManagerConfig `json:"SessionManagerConfig,omitempty" xml:"SessionManagerConfig,omitempty" type:"Struct"`
 	SlsDeliveryConfigs   *DescribeCloudAssistantSettingsResponseBodySlsDeliveryConfigs   `json:"SlsDeliveryConfigs,omitempty" xml:"SlsDeliveryConfigs,omitempty" type:"Struct"`
 }
@@ -132,15 +133,25 @@ func (s *DescribeCloudAssistantSettingsResponseBody) Validate() error {
 
 type DescribeCloudAssistantSettingsResponseBodyAgentUpgradeConfig struct {
 	AllowedUpgradeWindows *DescribeCloudAssistantSettingsResponseBodyAgentUpgradeConfigAllowedUpgradeWindows `json:"AllowedUpgradeWindows,omitempty" xml:"AllowedUpgradeWindows,omitempty" type:"Struct"`
-	BootstrapUpgrade      *bool                                                                              `json:"BootstrapUpgrade,omitempty" xml:"BootstrapUpgrade,omitempty"`
-	DisableUpgrade        *bool                                                                              `json:"DisableUpgrade,omitempty" xml:"DisableUpgrade,omitempty"`
-	// Indicates whether custom upgrade is enabled for Cloud Assistant Agent. If the value is false or empty, an upgrade attempt is performed for Cloud Assistant Agent every 30 minutes.
+	// Indicates whether the Cloud Assistant agent checks for and applies updates upon startup.
+	//
+	// example:
+	//
+	// true
+	BootstrapUpgrade *bool `json:"BootstrapUpgrade,omitempty" xml:"BootstrapUpgrade,omitempty"`
+	// Indicates whether to prevent the Cloud Assistant agent from automatically updating.
+	//
+	// example:
+	//
+	// true
+	DisableUpgrade *bool `json:"DisableUpgrade,omitempty" xml:"DisableUpgrade,omitempty"`
+	// Indicates whether custom agent upgrade settings are enabled. If this parameter is not specified or is set to `false`, the system attempts to upgrade the agent every 30 minutes by default.
 	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The time zone of the time windows.
+	// The time zone of the allowed upgrade windows.
 	//
 	// example:
 	//
@@ -355,12 +366,42 @@ func (s *DescribeCloudAssistantSettingsResponseBodyOssDeliveryConfigsOssDelivery
 }
 
 type DescribeCloudAssistantSettingsResponseBodyResourceUsageConfig struct {
-	CpuLimit          *int32  `json:"CpuLimit,omitempty" xml:"CpuLimit,omitempty"`
-	KeepScriptFile    *bool   `json:"KeepScriptFile,omitempty" xml:"KeepScriptFile,omitempty"`
-	LogFileCountLimit *int32  `json:"LogFileCountLimit,omitempty" xml:"LogFileCountLimit,omitempty"`
-	LogSizeLimit      *string `json:"LogSizeLimit,omitempty" xml:"LogSizeLimit,omitempty"`
-	MemoryLimit       *string `json:"MemoryLimit,omitempty" xml:"MemoryLimit,omitempty"`
-	OverloadLimit     *int32  `json:"OverloadLimit,omitempty" xml:"OverloadLimit,omitempty"`
+	// The maximum CPU usage limit for the main process of the Cloud Assistant agent.
+	//
+	// example:
+	//
+	// 20
+	CpuLimit *int32 `json:"CpuLimit,omitempty" xml:"CpuLimit,omitempty"`
+	// Indicates whether to retain the script file in the Cloud Assistant directory after a command invocation is complete.
+	//
+	// example:
+	//
+	// false
+	KeepScriptFile *bool `json:"KeepScriptFile,omitempty" xml:"KeepScriptFile,omitempty"`
+	// The maximum number of Cloud Assistant log files to retain.
+	//
+	// example:
+	//
+	// 30
+	LogFileCountLimit *int32 `json:"LogFileCountLimit,omitempty" xml:"LogFileCountLimit,omitempty"`
+	// The maximum size for a single Cloud Assistant log file.
+	//
+	// example:
+	//
+	// 100MB
+	LogSizeLimit *string `json:"LogSizeLimit,omitempty" xml:"LogSizeLimit,omitempty"`
+	// The maximum memory usage limit for the main process of the Cloud Assistant agent.
+	//
+	// example:
+	//
+	// 35MB
+	MemoryLimit *string `json:"MemoryLimit,omitempty" xml:"MemoryLimit,omitempty"`
+	// The number of consecutive times CPU or memory usage can exceed the configured limits before the Cloud Assistant agent process is terminated.
+	//
+	// example:
+	//
+	// 3
+	OverloadLimit *int32 `json:"OverloadLimit,omitempty" xml:"OverloadLimit,omitempty"`
 }
 
 func (s DescribeCloudAssistantSettingsResponseBodyResourceUsageConfig) String() string {
@@ -430,15 +471,15 @@ func (s *DescribeCloudAssistantSettingsResponseBodyResourceUsageConfig) Validate
 }
 
 type DescribeCloudAssistantSettingsResponseBodySessionManagerConfig struct {
-	// Specify whether to enable Cloud Assistant Session Manager. Valid values:
+	// Indicates whether the Session Manager feature is enabled. Valid values:
 	//
-	// 	- true: Enables the feature.
+	// - `true`: enabled
 	//
-	// 	- false: Disables the feature.
+	// - `false`: disabled
 	//
-	// Note:
+	// **Note**:
 	//
-	// 	- The feature applies to all regions.
+	// - This setting takes effect in all regions.
 	//
 	// example:
 	//

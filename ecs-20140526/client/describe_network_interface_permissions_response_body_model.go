@@ -22,6 +22,7 @@ type iDescribeNetworkInterfacePermissionsResponseBody interface {
 }
 
 type DescribeNetworkInterfacePermissionsResponseBody struct {
+	// The elastic network interface permissions.
 	NetworkInterfacePermissions *DescribeNetworkInterfacePermissionsResponseBodyNetworkInterfacePermissions `json:"NetworkInterfacePermissions,omitempty" xml:"NetworkInterfacePermissions,omitempty" type:"Struct"`
 	// The page number.
 	//
@@ -41,7 +42,7 @@ type DescribeNetworkInterfacePermissionsResponseBody struct {
 	//
 	// 0FCD3DEF-63D3-4605-A818-805C8BD7DB87
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of matching entries.
 	//
 	// example:
 	//

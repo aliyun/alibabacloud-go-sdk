@@ -46,50 +46,55 @@ type iCreateCommandRequest interface {
 }
 
 type CreateCommandRequest struct {
+	// Ensures the idempotence of the request. Generate a unique value for this parameter from your client to guarantee uniqueness across different requests. **ClientToken*	- supports only ASCII characters and cannot exceed 64 characters. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+	//
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The Base64-encoded content of the command. Take note of the following items:
 	//
-	// 	- The value must be Base64-encoded and cannot exceed 18 KB in size.
+	// - The value must be Base64-encoded and cannot exceed 18 KB in size.
 	//
-	// 	- You can use custom parameters in the command content. To enable the custom parameter feature, you must set `EnableParameter` to true.
+	// - You can use custom parameters in the command content. To enable the custom parameter feature, you must set `EnableParameter` to true.
 	//
-	//     	- Custom parameters are defined in the `{{}}` format. Within `{{}}`, the spaces and line feeds before and after the parameter names are ignored.
+	//   - Custom parameters are defined in the `{{}}` format. Within `{{}}`, the spaces and line feeds before and after the parameter names are ignored.
 	//
-	//     	- You can specify up to 20 custom parameters.
+	//   - You can specify up to 20 custom parameters.
 	//
-	//     	- A custom parameter name can contain only letters, digits, underscores (_), and hyphens (-). The name is case-insensitive. The ACS:: prefix cannot be used to specify non-built-in environment parameters.
+	//   - A custom parameter name can contain only letters, digits, underscores (_), and hyphens (-). The name is case-insensitive. The ACS:: prefix cannot be used to specify non-built-in environment parameters.
 	//
-	//     	- Each custom parameter name can be up to 64 bytes in length.
+	//   - Each custom parameter name can be up to 64 bytes in length.
 	//
-	// 	- You can specify built-in environment parameters as custom parameters in a command. When you run the command, Cloud Assistant automatically uses the environment parameter values for the custom parameters. You can specify the following built-in environment variables:
+	// - You can specify built-in environment parameters as custom parameters in a command. When you run the command, Cloud Assistant automatically uses the environment parameter values for the custom parameters. You can specify the following built-in environment variables:
 	//
-	//     	- `{{ACS::RegionId}}`: the region ID.
+	//   - `{{ACS::RegionId}}`: the region ID.
 	//
-	//     	- `{{ACS::AccountId}}`: the UID of the Alibaba Cloud account.
+	//   - `{{ACS::AccountId}}`: the UID of the Alibaba Cloud account.
 	//
-	//     	- `{{ACS::InstanceId}}`: the instance ID. If you want to run the command on multiple instances and specify `{{ACS::InstanceId}}` as a built-in environment parameter, make sure that the Cloud Assistant Agent version is not earlier than the following versions:
+	//   - `{{ACS::InstanceId}}`: the instance ID. If you want to run the command on multiple instances and specify `{{ACS::InstanceId}}` as a built-in environment parameter, make sure that the Cloud Assistant Agent version is not earlier than the following versions:
 	//
-	//         	- Linux: 2.2.3.309
+	//     - Linux: 2.2.3.309
 	//
-	//         	- Windows: 2.1.3.309
+	//     - Windows: 2.1.3.309
 	//
-	//     	- `{{ACS::InstanceName}}`: the instance name. If you want to run the command on multiple instances and specify `{{ACS::InstanceName}}` as a built-in environment parameter, make sure that the Cloud Assistant Agent version is not earlier than the following versions:
+	//   - `{{ACS::InstanceName}}`: the instance name. If you want to run the command on multiple instances and specify `{{ACS::InstanceName}}` as a built-in environment parameter, make sure that the Cloud Assistant Agent version is not earlier than the following versions:
 	//
-	//         	- Linux: 2.2.3.344
+	//     - Linux: 2.2.3.344
 	//
-	//         	- Windows: 2.1.3.344
+	//     - Windows: 2.1.3.344
 	//
-	//     	- `{{ACS::InvokeId}}`: the ID of the task. If you want to specify `{{ACS::InvokeId}}` as a built-in environment parameter, make sure that the Cloud Assistant Agent version is not earlier than the following versions:
+	//   - `{{ACS::InvokeId}}`: the ID of the task. If you want to specify `{{ACS::InvokeId}}` as a built-in environment parameter, make sure that the Cloud Assistant Agent version is not earlier than the following versions:
 	//
-	//         	- Linux: 2.2.3.309
+	//     - Linux: 2.2.3.309
 	//
-	//         	- Windows: 2.1.3.309
+	//     - Windows: 2.1.3.309
 	//
-	//     	- `{{ACS::CommandId}}`: the command ID. If you want to call the [RunCommand](https://help.aliyun.com/document_detail/141751.html) operation to run the command and specify `{{ACS::CommandId}}` as a built-in environment parameter, make sure that the Cloud Assistant Agent version is not earlier than the following versions:
+	//   - `{{ACS::CommandId}}`: the command ID. If you want to call the [RunCommand](https://help.aliyun.com/document_detail/141751.html) operation to run the command and specify `{{ACS::CommandId}}` as a built-in environment parameter, make sure that the Cloud Assistant Agent version is not earlier than the following versions:
 	//
-	//         	- Linux: 2.2.3.309
+	//     - Linux: 2.2.3.309
 	//
-	//         	- Windows: 2.1.3.309
+	//     - Windows: 2.1.3.309
 	//
 	// This parameter is required.
 	//
@@ -99,9 +104,9 @@ type CreateCommandRequest struct {
 	CommandContent *string `json:"CommandContent,omitempty" xml:"CommandContent,omitempty"`
 	// The encoding mode of the command content (CommandContent). Valid values:
 	//
-	// 	- PlainText: The command content is not encoded.
+	// - PlainText: The command content is not encoded.
 	//
-	// 	- Base64: The command content is Base64-encoded.
+	// - Base64: The command content is Base64-encoded.
 	//
 	// Default value: Base64.
 	//
@@ -169,11 +174,11 @@ type CreateCommandRequest struct {
 	Timeout *int64 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 	// The command type. Valid values:
 	//
-	// 	- RunBatScript: batch commands. These commands are applicable to Windows instances.
+	// - RunBatScript: batch commands. These commands are applicable to Windows instances.
 	//
-	// 	- RunPowerShellScript: PowerShell commands. These commands are applicable to Windows instances.
+	// - RunPowerShellScript: PowerShell commands. These commands are applicable to Windows instances.
 	//
-	// 	- RunShellScript: shell commands. These commands are applicable to Linux instances.
+	// - RunShellScript: shell commands. These commands are applicable to Linux instances.
 	//
 	// This parameter is required.
 	//
@@ -185,15 +190,15 @@ type CreateCommandRequest struct {
 	//
 	// Default values:
 	//
-	// 	- For Linux instance, the default value is the home directory of the root user, which is the `/root` directory.
+	// - For Linux instance, the default value is the home directory of the root user, which is the `/root` directory.
 	//
-	// 	- For Windows instances, the default value is the directory where the Cloud Assistant Agent process resides, such as `C:\\Windows\\System32\\`.
+	// - For Windows instances, the default value is the directory where the Cloud Assistant Agent process resides, such as `C:\\Windows\\System32\\`.
 	//
-	// >  If you set WorkingDir to a directory other than default ones, make sure that the directory exists on the instances.
+	// > If you set WorkingDir to a directory other than default ones, make sure that the directory exists on the instances.
 	//
 	// example:
 	//
-	// /root/
+	// /home/user
 	WorkingDir *string `json:"WorkingDir,omitempty" xml:"WorkingDir,omitempty"`
 }
 

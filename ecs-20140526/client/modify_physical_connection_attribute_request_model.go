@@ -44,24 +44,46 @@ type iModifyPhysicalConnectionAttributeRequest interface {
 }
 
 type ModifyPhysicalConnectionAttributeRequest struct {
-	CircuitCode  *string `json:"CircuitCode,omitempty" xml:"CircuitCode,omitempty"`
-	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The circuit code of the physical connection, provided by the line operator.
+	CircuitCode *string `json:"CircuitCode,omitempty" xml:"CircuitCode,omitempty"`
+	// A client-generated token to ensure the idempotency of the request.
+	//
+	// The token must be unique across requests. The client token can contain only ASCII characters and cannot exceed 64 characters in length.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The new description of the physical connection.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The line operator that provides the physical connection.
 	LineOperator *string `json:"LineOperator,omitempty" xml:"LineOperator,omitempty"`
+	// The new name of the physical connection.
 	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The peer location of the physical connection.
 	PeerLocation *string `json:"PeerLocation,omitempty" xml:"PeerLocation,omitempty"`
+	// The ID of the physical connection.
+	//
 	// This parameter is required.
-	PhysicalConnectionId          *string `json:"PhysicalConnectionId,omitempty" xml:"PhysicalConnectionId,omitempty"`
-	PortType                      *string `json:"PortType,omitempty" xml:"PortType,omitempty"`
+	PhysicalConnectionId *string `json:"PhysicalConnectionId,omitempty" xml:"PhysicalConnectionId,omitempty"`
+	// The port type of the physical connection.
+	PortType *string `json:"PortType,omitempty" xml:"PortType,omitempty"`
+	// The ID of the redundant physical connection.
 	RedundantPhysicalConnectionId *string `json:"RedundantPhysicalConnectionId,omitempty" xml:"RedundantPhysicalConnectionId,omitempty"`
+	// The ID of the region where the physical connection is located.
+	//
+	// To get the latest list of regions, call the `DescribeRegions` operation.
+	//
 	// This parameter is required.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	UserCidr             *string `json:"UserCidr,omitempty" xml:"UserCidr,omitempty"`
-	Bandwidth            *int32  `json:"bandwidth,omitempty" xml:"bandwidth,omitempty"`
+	// The client-side IP address or CIDR block in your data center.
+	//
+	// This parameter is used only for outbound traffic shaping.
+	UserCidr *string `json:"UserCidr,omitempty" xml:"UserCidr,omitempty"`
+	// The bandwidth of the physical connection.
+	//
+	// Unit: Mbit/s.
+	Bandwidth *int32 `json:"bandwidth,omitempty" xml:"bandwidth,omitempty"`
 }
 
 func (s ModifyPhysicalConnectionAttributeRequest) String() string {

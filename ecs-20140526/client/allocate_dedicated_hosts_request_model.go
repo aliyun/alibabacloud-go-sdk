@@ -65,13 +65,13 @@ type AllocateDedicatedHostsRequest struct {
 	NetworkAttributes *AllocateDedicatedHostsRequestNetworkAttributes `json:"NetworkAttributes,omitempty" xml:"NetworkAttributes,omitempty" type:"Struct"`
 	// The policy for migrating the instances deployed on the dedicated host when the dedicated host fails or needs to be repaired online. Valid values:
 	//
-	// 	- Migrate: The instances are migrated to another physical machine and then restarted.
+	// - Migrate: The instances are migrated to another physical machine and then restarted.
 	//
-	//     If cloud disks are attached to the dedicated host, the default value is Migrate.
+	//   If cloud disks are attached to the dedicated host, the default value is Migrate.
 	//
-	// 	- Stop: The instances are stopped. If the dedicated host cannot be repaired, the instances are migrated to another physical machine and then restarted.
+	// - Stop: The instances are stopped. If the dedicated host cannot be repaired, the instances are migrated to another physical machine and then restarted.
 	//
-	//     If local disks are attached to the dedicated host, the default value is Stop.
+	//   If local disks are attached to the dedicated host, the default value is Stop.
 	//
 	// example:
 	//
@@ -79,9 +79,9 @@ type AllocateDedicatedHostsRequest struct {
 	ActionOnMaintenance *string `json:"ActionOnMaintenance,omitempty" xml:"ActionOnMaintenance,omitempty"`
 	// Specifies whether to add the dedicated host to the resource pool for automatic deployment. If you create an ECS instance on a dedicated host without specifying the **DedicatedHostId*	- parameter, Alibaba Cloud selects a dedicated host from the resource pool to host the instance. For more information, see [Automatic deployment](https://help.aliyun.com/document_detail/118938.html). Valid values:
 	//
-	// 	- on: adds the dedicated host to the resource pool for automatic deployment.
+	// - on: adds the dedicated host to the resource pool for automatic deployment.
 	//
-	// 	- off: does not add the dedicated host to the resource pool for automatic deployment.
+	// - off: does not add the dedicated host to the resource pool for automatic deployment.
 	//
 	// Default value: on.
 	//
@@ -95,11 +95,11 @@ type AllocateDedicatedHostsRequest struct {
 	//
 	// >
 	//
-	// 	- It must be at least half an hour later than the current time.
+	// - It must be at least half an hour later than the current time.
 	//
-	// 	- It must be at most three years later than the current time.
+	// - It must be at most three years later than the current time.
 	//
-	// 	- If the value of seconds (ss) is not 00, it is automatically set to 00.
+	// - If the value of seconds (ss) is not 00, it is automatically set to 00.
 	//
 	// example:
 	//
@@ -125,9 +125,9 @@ type AllocateDedicatedHostsRequest struct {
 	AutoRenewPeriod *int32 `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
 	// The billing method of the dedicated host. Valid values:
 	//
-	// 	- PrePaid: subscription. If you set this parameter to PrePaid, make sure that you have sufficient account balance or credits. Otherwise, `InvalidPayMethod` is returned.
+	// - PrePaid: subscription. If you set this parameter to PrePaid, make sure that you have sufficient account balance or credits. Otherwise, `InvalidPayMethod` is returned.
 	//
-	// 	- PostPaid: pay-as-you-go.
+	// - PostPaid: pay-as-you-go.
 	//
 	// Default value: PostPaid.
 	//
@@ -187,9 +187,9 @@ type AllocateDedicatedHostsRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The subscription duration of the dedicated host. The `Period` parameter is required and takes effect only when the `ChargeType` parameter is set to `PrePaid`. Valid values:
 	//
-	// 	- Valid values when the PeriodUnit parameter is set to Month: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, and 60.
+	// - Valid values when the PeriodUnit parameter is set to Month: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, and 60.
 	//
-	// 	- Valid values when the PeriodUnit parameter is set to Year: 1, 2, 3, 4, and 5.
+	// - Valid values when the PeriodUnit parameter is set to Year: 1, 2, 3, 4, and 5.
 	//
 	// example:
 	//
@@ -197,9 +197,9 @@ type AllocateDedicatedHostsRequest struct {
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
 	// The unit of the subscription duration of the dedicated host. Valid values:
 	//
-	// 	- Month
+	// - Month
 	//
-	// 	- Year
+	// - Year
 	//
 	// Default value: Month.
 	//

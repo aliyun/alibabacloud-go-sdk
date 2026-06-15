@@ -35,7 +35,7 @@ type ApplyAutoSnapshotPolicyRequest struct {
 	//
 	// sp-bp14yziiuvu3s6jn****
 	AutoSnapshotPolicyId *string `json:"autoSnapshotPolicyId,omitempty" xml:"autoSnapshotPolicyId,omitempty"`
-	// The IDs of disks. The value is a JSON array that consists of disk IDs. Separate the disk IDs with commas (,).
+	// A JSON array of one or more disk IDs.
 	//
 	// This parameter is required.
 	//
@@ -43,7 +43,7 @@ type ApplyAutoSnapshotPolicyRequest struct {
 	//
 	// ["d-bp14k9cxvr5uzy54****", "d-bp1dtj8v7x6u08iw****", "d-bp1c0tyj9tfli2r8****"]
 	DiskIds *string `json:"diskIds,omitempty" xml:"diskIds,omitempty"`
-	// The region ID of the automatic snapshot policy and the disks. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+	// The ID of the region where the automatic snapshot policy and target disks are located. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to get the latest list of Alibaba Cloud regions.
 	//
 	// This parameter is required.
 	//

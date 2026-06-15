@@ -36,7 +36,7 @@ type CreateLaunchTemplateVersionResponseBody struct {
 	//
 	// example:
 	//
-	// 473469C7-AA6F-4DC5-B3DB-A3DC0DExxxxx
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DEX****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

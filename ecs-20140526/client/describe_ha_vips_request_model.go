@@ -28,12 +28,18 @@ type iDescribeHaVipsRequest interface {
 }
 
 type DescribeHaVipsRequest struct {
+	// The query filters. You can specify 1 to 20 filters.
+	//
 	// This parameter is required.
 	Filter       []*DescribeHaVipsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
 	OwnerAccount *string                        `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64                         `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageNumber   *int32                         `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int32                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The page number. Default value: 1.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Maximum value: 50. Default value: 10.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the region.
+	//
 	// This parameter is required.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -134,7 +140,23 @@ func (s *DescribeHaVipsRequest) Validate() error {
 }
 
 type DescribeHaVipsRequestFilter struct {
-	Key   *string   `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The filter key. Valid values:
+	//
+	// `HaVipId`: The ID of the high-availability virtual IP (HAVIP).
+	//
+	// `HaVipName`: The name of the HAVIP.
+	//
+	// `VpcId`: The ID of the VPC to which the HAVIP belongs.
+	//
+	// `VSwitchId`: The ID of the vSwitch to which the HAVIP belongs.
+	//
+	// `IpAddress`: The IP address of the HAVIP.
+	//
+	// `AssociatedInstanceType`: The type of instance associated with the HAVIP. The value must be `EcsInstance`.
+	//
+	// `AssociatedInstanceId`: The ID of the instance associated with the HAVIP.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// A list of 1 to 20 values.
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 

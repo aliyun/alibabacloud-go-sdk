@@ -41,9 +41,9 @@ type ModifyDedicatedHostAttributeRequest struct {
 	NetworkAttributes *ModifyDedicatedHostAttributeRequestNetworkAttributes `json:"NetworkAttributes,omitempty" xml:"NetworkAttributes,omitempty" type:"Struct"`
 	// The policy for migrating the instances deployed on the dedicated host when the dedicated host fails or needs to be repaired online. Valid values:
 	//
-	// 	- Migrate: The instances are migrated to another physical machine and then restarted.
+	// - Migrate: The instances are migrated to another physical machine and then restarted.
 	//
-	// 	- Stop: The instances are stopped. If the dedicated host cannot be repaired, the instances are migrated to another physical machine and then restarted.
+	// - Stop: The instances are stopped. If the dedicated host cannot be repaired, the instances are migrated to another physical machine and then restarted.
 	//
 	// If the dedicated host has cloud disks attached, the default value is Migrate.
 	//
@@ -55,9 +55,9 @@ type ModifyDedicatedHostAttributeRequest struct {
 	ActionOnMaintenance *string `json:"ActionOnMaintenance,omitempty" xml:"ActionOnMaintenance,omitempty"`
 	// Specifies whether to add the dedicated host to the resource pool for automatic deployment. If you do not specify **DedicatedHostId*	- when you create an instance on a dedicated host, Alibaba Cloud automatically selects a dedicated host from the resource pool to host the instance. Valid values:
 	//
-	// 	- on: adds the dedicated host to the resource pool for automatic deployment.
+	// - on: adds the dedicated host to the resource pool for automatic deployment.
 	//
-	// 	- off: does not add the dedicated host to the resource pool for automatic deployment.
+	// - off: does not add the dedicated host to the resource pool for automatic deployment.
 	//
 	// For information about automatic deployment, see [Functions and features](https://help.aliyun.com/document_detail/118938.html).
 	//
@@ -87,7 +87,7 @@ type ModifyDedicatedHostAttributeRequest struct {
 	//
 	// dh-bp165p6xk2tlw61e****
 	DedicatedHostId *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
-	// The name of the dedicated host. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+	// The name of the dedicated host. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http\\:// or https\\://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
 	//
 	// example:
 	//

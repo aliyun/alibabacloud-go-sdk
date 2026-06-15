@@ -16,8 +16,10 @@ type iCreateForwardEntryResponseBody interface {
 }
 
 type CreateForwardEntryResponseBody struct {
+	// The ID of the forwarding entry.
 	ForwardEntryId *string `json:"ForwardEntryId,omitempty" xml:"ForwardEntryId,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateForwardEntryResponseBody) String() string {

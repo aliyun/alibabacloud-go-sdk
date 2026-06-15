@@ -28,9 +28,9 @@ type iDescribeImageSupportInstanceTypesRequest interface {
 type DescribeImageSupportInstanceTypesRequest struct {
 	// The scenario in which the image is used. Valid values:
 	//
-	// 	- CreateEcs (default): instance creation
+	// - CreateEcs (default): instance creation
 	//
-	// 	- ChangeOS: replacement of the system disk or operating system
+	// - ChangeOS: replacement of the system disk or operating system
 	//
 	// example:
 	//

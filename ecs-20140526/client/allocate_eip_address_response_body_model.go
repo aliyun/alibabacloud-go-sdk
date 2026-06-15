@@ -18,9 +18,12 @@ type iAllocateEipAddressResponseBody interface {
 }
 
 type AllocateEipAddressResponseBody struct {
+	// The unique ID of the allocation.
 	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
-	EipAddress   *string `json:"EipAddress,omitempty" xml:"EipAddress,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The allocated elastic IP address.
+	EipAddress *string `json:"EipAddress,omitempty" xml:"EipAddress,omitempty"`
+	// The unique ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s AllocateEipAddressResponseBody) String() string {

@@ -26,10 +26,23 @@ type iDescribeRouterInterfacesRequest interface {
 }
 
 type DescribeRouterInterfacesRequest struct {
-	Filter     []*DescribeRouterInterfacesRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
-	OwnerId    *int64                                   `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageNumber *int32                                   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The filters.
+	Filter  []*DescribeRouterInterfacesRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
+	OwnerId *int64                                   `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page number.
+	//
+	// Page numbering starts from 1.
+	//
+	// Default: 1.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return per page.
+	//
+	// Valid values: 1 to 100.
+	//
+	// Default: 10.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the region. You can call the `DescribeRegions` operation to get the latest list of regions.
+	//
 	// This parameter is required.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -121,7 +134,21 @@ func (s *DescribeRouterInterfacesRequest) Validate() error {
 }
 
 type DescribeRouterInterfacesRequestFilter struct {
-	Key   *string   `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The filter key. Supported values:
+	//
+	// - `RouterInterfaceId`: The ID of the router interface.
+	//
+	// - `RouterId`: The ID of the router that the router interface is attached to.
+	//
+	// - `RouterType`: The type of the router. Valid values: `VRouter` and `VBR`.
+	//
+	// - `Status`: The status of the router interface.
+	//
+	// - `Name`: The name of the router interface.
+	//
+	// - `Role`: The role of the router interface. Valid values: `InitiatingSide` and `AcceptingSide`.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The values for the filter key. You can specify a maximum of 20 values.
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 

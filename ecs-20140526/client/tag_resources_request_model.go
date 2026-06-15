@@ -47,43 +47,43 @@ type TagResourcesRequest struct {
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	// The type of the resource to which the tags are added. Valid values:
 	//
-	// 	- instance: ECS instance
+	// - instance: ECS instance
 	//
-	// 	- disk: disk
+	// - disk: disk
 	//
-	// 	- snapshot: snapshot
+	// - snapshot: snapshot
 	//
-	// 	- image: image
+	// - image: image
 	//
-	// 	- securitygroup: security group
+	// - securitygroup: security group
 	//
-	// 	- volume: storage volume
+	// - volume: storage volume
 	//
-	// 	- eni: ENI
+	// - eni: ENI
 	//
-	// 	- ddh: dedicated host
+	// - ddh: dedicated host
 	//
-	// 	- ddhcluster: dedicated host cluster
+	// - ddhcluster: dedicated host cluster
 	//
-	// 	- keypair: SSH key pair
+	// - keypair: SSH key pair
 	//
-	// 	- launchtemplate: launch template
+	// - launchtemplate: launch template
 	//
-	// 	- reservedinstance
+	// - reservedinstance
 	//
-	// 	- snapshotpolicy: automatic snapshot policy
+	// - snapshotpolicy: automatic snapshot policy
 	//
-	// 	- elasticityassurance: elasticity assurance
+	// - elasticityassurance: elasticity assurance
 	//
-	// 	- capacityreservation: capacity reservation
+	// - capacityreservation: capacity reservation
 	//
-	// 	- command: Cloud Assistant command
+	// - command: Cloud Assistant command
 	//
-	// 	- invocation: Cloud Assistant command execution result or file delivery result
+	// - invocation: Cloud Assistant command execution result or file delivery result
 	//
-	// 	- activation: activation code for a Cloud Assistant managed instance
+	// - activation: activation code for a Cloud Assistant managed instance
 	//
-	// 	- managedinstance: Cloud Assistant managed instance
+	// - managedinstance: Cloud Assistant managed instance
 	//
 	// This parameter is required.
 	//
@@ -91,7 +91,7 @@ type TagResourcesRequest struct {
 	//
 	// instance
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tags of the reserved instance. You can specify up to 20 tags. If you specify multiple tags, the tag keys cannot be duplicated.``
+	// The tags of the reserved instance. You can specify up to 20 tags. If you specify multiple tags, the tag keys cannot be duplicated.\\`\\`
 	//
 	// This parameter is required.
 	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`

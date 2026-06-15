@@ -60,7 +60,7 @@ type iModifySecurityGroupEgressRuleRequest interface {
 }
 
 type ModifySecurityGroupEgressRuleRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.***	- For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.\\*\\*\\*\\	- For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
 	//
 	// example:
 	//
@@ -82,11 +82,11 @@ type ModifySecurityGroupEgressRuleRequest struct {
 	DestCidrIp *string `json:"DestCidrIp,omitempty" xml:"DestCidrIp,omitempty"`
 	// The ID of the destination security group. You must specify at least one of `DestGroupId` and `DestCidrIp`.
 	//
-	// 	- At least one of DestGroupId, DestCidrIp, Ipv6DestCidrIp, and DestPrefixListId must be specified.
+	// - At least one of DestGroupId, DestCidrIp, Ipv6DestCidrIp, and DestPrefixListId must be specified.
 	//
-	// 	- If DestGroupId is specified but DestCidrIp is not specified, the NicType parameter can be set only to intranet.
+	// - If DestGroupId is specified but DestCidrIp is not specified, the NicType parameter can be set only to intranet.
 	//
-	// 	- If both DestGroupId and DestCidrIp are specified, DestCidrIp takes precedence.
+	// - If both DestGroupId and DestCidrIp are specified, DestCidrIp takes precedence.
 	//
 	// example:
 	//
@@ -114,33 +114,33 @@ type ModifySecurityGroupEgressRuleRequest struct {
 	DestPrefixListId *string `json:"DestPrefixListId,omitempty" xml:"DestPrefixListId,omitempty"`
 	// Network Layer /transport layer protocol. Two types of assignments are supported:
 	//
-	// 1.  The case-insensitive protocol name. Valid values:
+	// 1. The case-insensitive protocol name. Valid values:
 	//
-	// 	- ICMP
+	// - ICMP
 	//
-	// 	- GRE
+	// - GRE
 	//
-	// 	- TCP
+	// - TCP
 	//
-	// 	- UDP
+	// - UDP
 	//
-	// 	- ALL: supports all protocols.
+	// - ALL: supports all protocols.
 	//
-	// 2.  The value of the IANA-compliant protocol number, which is an integer from 0 to 255. List of regions currently available:
+	// 2. The value of the IANA-compliant protocol number, which is an integer from 0 to 255. List of regions currently available:
 	//
-	// 	- Philippines (Manila)
+	// - Philippines (Manila)
 	//
-	// 	- UK (London)
+	// - UK (London)
 	//
-	// 	- Malaysia (Kuala Lumpur)
+	// - Malaysia (Kuala Lumpur)
 	//
-	// 	- China (Hohhot)
+	// - China (Hohhot)
 	//
-	// 	- China (Qingdao)
+	// - China (Qingdao)
 	//
-	// 	- US (Silicon Valley)
+	// - US (Silicon Valley)
 	//
-	// 	- Singapore
+	// - Singapore
 	//
 	// example:
 	//
@@ -148,7 +148,7 @@ type ModifySecurityGroupEgressRuleRequest struct {
 	IpProtocol *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
 	// The destination IPv6 CIDR block. IPv6 CIDR blocks and IPv6 addresses are supported.
 	//
-	// >  Only the IP addresses of instances in virtual private clouds (VPCs) are supported. You cannot specify both Ipv6DestCidrIp and `DestCidrIp`.
+	// > Only the IP addresses of instances in virtual private clouds (VPCs) are supported. You cannot specify both Ipv6DestCidrIp and `DestCidrIp`.
 	//
 	// By default, this parameter is left empty.
 	//
@@ -158,7 +158,7 @@ type ModifySecurityGroupEgressRuleRequest struct {
 	Ipv6DestCidrIp *string `json:"Ipv6DestCidrIp,omitempty" xml:"Ipv6DestCidrIp,omitempty"`
 	// The source IPv6 CIDR block. IPv6 CIDR blocks and IPv6 addresses are supported.
 	//
-	// >  Only the IP addresses of instances in VPCs are supported. You cannot specify both Ipv6SourceCidrIp and `SourceCidrIp`.
+	// > Only the IP addresses of instances in VPCs are supported. You cannot specify both Ipv6SourceCidrIp and `SourceCidrIp`.
 	//
 	// By default, this parameter is left empty.
 	//
@@ -168,7 +168,7 @@ type ModifySecurityGroupEgressRuleRequest struct {
 	Ipv6SourceCidrIp *string `json:"Ipv6SourceCidrIp,omitempty" xml:"Ipv6SourceCidrIp,omitempty"`
 	// The network interface controller (NIC) type.
 	//
-	// >  You cannot modify this parameter when you modify a security group rule by specifying the ID of the rule. If you want to change the NIC type of a security group rule, you can create a security group rule of a desired NIC type and delete the existing rule.
+	// > You cannot modify this parameter when you modify a security group rule by specifying the ID of the rule. If you want to change the NIC type of a security group rule, you can create a security group rule of a desired NIC type and delete the existing rule.
 	//
 	// example:
 	//
@@ -178,9 +178,9 @@ type ModifySecurityGroupEgressRuleRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The action of the security group rule. Valid values:
 	//
-	// 	- accept: allows access.
+	// - accept: allows access.
 	//
-	// 	- drop: denies access and returns no responses.
+	// - drop: denies access and returns no responses.
 	//
 	// Default value: accept.
 	//
@@ -190,13 +190,13 @@ type ModifySecurityGroupEgressRuleRequest struct {
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
 	// The range of destination ports that correspond to the transport layer protocol. Valid values:
 	//
-	// 	- If you set IpProtocol to TCP or UDP, the port number range is 1 to 65535. Separate the start port number and the end port number with a forward slash (/). Example: 1/200.
+	// - If you set IpProtocol to TCP or UDP, the port number range is 1 to 65535. Separate the start port number and the end port number with a forward slash (/). Example: 1/200.
 	//
-	// 	- If you set IpProtocol to ICMP, the port number range is -1/-1.
+	// - If you set IpProtocol to ICMP, the port number range is -1/-1.
 	//
-	// 	- If you set IpProtocol to GRE, the port number range is -1/-1.
+	// - If you set IpProtocol to GRE, the port number range is -1/-1.
 	//
-	// 	- If you set IpProtocol to ALL, the port number range is -1/-1.
+	// - If you set IpProtocol to ALL, the port number range is -1/-1.
 	//
 	// example:
 	//
@@ -204,9 +204,9 @@ type ModifySecurityGroupEgressRuleRequest struct {
 	PortRange *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
 	// The ID of the port list. You can call the `DescribePortRangeLists` operation to query the IDs of available prefix lists.
 	//
-	// 	- If you specify PortRange, the value of this parameter is ignored.
+	// - If you specify PortRange, the value of this parameter is ignored.
 	//
-	// 	- If the security group is of the classic network type, you cannot reference port lists in the security group rules. For information about the limits on security groups and port lists, see the [Security groups](~~25412#SecurityGroupQuota1~~) section of the "Limits and quotas" topic.
+	// - If the security group is of the classic network type, you cannot reference port lists in the security group rules. For information about the limits on security groups and port lists, see the [Security groups](~~25412#SecurityGroupQuota1~~) section of the "Limits and quotas" topic.
 	//
 	// example:
 	//
@@ -254,13 +254,13 @@ type ModifySecurityGroupEgressRuleRequest struct {
 	SourceCidrIp *string `json:"SourceCidrIp,omitempty" xml:"SourceCidrIp,omitempty"`
 	// The range of source ports that correspond to the transport layer protocol. Valid values:
 	//
-	// 	- If you set IpProtocol to TCP or UDP, the port number range is 1 to 65535. Separate the start port number and the end port number with a forward slash (/). Example: 1/200.
+	// - If you set IpProtocol to TCP or UDP, the port number range is 1 to 65535. Separate the start port number and the end port number with a forward slash (/). Example: 1/200.
 	//
-	// 	- If you set IpProtocol to ICMP, the port number range is -1/-1.
+	// - If you set IpProtocol to ICMP, the port number range is -1/-1.
 	//
-	// 	- If you set IpProtocol to GRE, the port number range is -1/-1.
+	// - If you set IpProtocol to GRE, the port number range is -1/-1.
 	//
-	// 	- If you set IpProtocol to ALL, the port number range is -1/-1.
+	// - If you set IpProtocol to ALL, the port number range is -1/-1.
 	//
 	// example:
 	//

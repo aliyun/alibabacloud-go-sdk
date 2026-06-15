@@ -16,13 +16,13 @@ type iReleasePublicIpAddressResponseBody interface {
 }
 
 type ReleasePublicIpAddressResponseBody struct {
-	// > This parameter is unavailable.
+	// > This parameter is not yet available.
 	//
 	// example:
 	//
 	// hide
 	RemainTimes *string `json:"RemainTimes,omitempty" xml:"RemainTimes,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

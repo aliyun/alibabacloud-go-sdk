@@ -42,56 +42,61 @@ type iCreateDeploymentSetRequest interface {
 }
 
 type CreateDeploymentSetRequest struct {
+	// The affinity level of the deployment set. This level determines how instances are distributed within the set. The value must be an integer from 1 to 10. Default value: 1.
+	//
+	// example:
+	//
+	// 3
 	Affinity *int64 `json:"Affinity,omitempty" xml:"Affinity,omitempty"`
-	// The description of the deployment set. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+	// A client-generated token that you can use to ensure request idempotence. The token must be unique across requests.
+	//
+	// The **ClientToken*	- value must be an ASCII string of up to 64 characters. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The name of the deployment set. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain digits, letters, colons (:), underscores (_), and hyphens (-).
+	// The name of the deployment set. The name must be 2 to 128 characters long and start with a letter. It can contain digits, colons (:), underscores (_), and hyphens (-). The name cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
 	// testDeploymentSetName
 	DeploymentSetName *string `json:"DeploymentSetName,omitempty" xml:"DeploymentSetName,omitempty"`
-	// The emergency solution to use in the situation where instances in the deployment set cannot be evenly distributed to different zones due to resource insufficiency after the instances failover. Valid values:
-	//
-	// 	- CancelMembershipAndStart: removes the instances from the deployment set and starts the instances immediately after they are failed over.
-	//
-	// 	- KeepStopped: leaves the instances in the Stopped state and starts them after resources are replenished.
-	//
-	// Default value: CancelMembershipAndStart.
+	// The description of the deployment set. The description must be 2 to 256 characters long and cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
 	// testDescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// >  This parameter is deprecated.
+	// > This parameter is deprecated.
 	//
 	// example:
 	//
-	// Default
+	// null
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// >  This parameter is deprecated.
+	// > This parameter is deprecated.
 	//
 	// example:
 	//
-	// host
+	// null
 	Granularity *string `json:"Granularity,omitempty" xml:"Granularity,omitempty"`
-	// The deployment strategy. Valid values:
+	// The number of partitions in the deployment set group. Valid values: 1 to 7.
 	//
-	// 	- Availability: high availability strategy.
+	// Default value: 3.
 	//
-	// 	- AvailabilityGroup: high availability group strategy.
-	//
-	// Default value: Availability.
+	// > This parameter is valid only when `Strategy` is set to `AvailabilityGroup`.
 	//
 	// example:
 	//
 	// 1
 	GroupCount *int64 `json:"GroupCount,omitempty" xml:"GroupCount,omitempty"`
-	// The region ID of the deployment set. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent list of regions.
+	// The policy for an instance that fails to be redeployed after a failover due to insufficient resources. Valid values:
+	//
+	// - CancelMembershipAndStart: Removes the instance from the deployment set and starts the instance immediately after failover.
+	//
+	// - KeepStopped: Keeps the instance in the deployment set and in the Stopped state.
+	//
+	// Default value: CancelMembershipAndStart.
 	//
 	// example:
 	//
@@ -99,7 +104,7 @@ type CreateDeploymentSetRequest struct {
 	OnUnableToRedeployFailedInstance *string `json:"OnUnableToRedeployFailedInstance,omitempty" xml:"OnUnableToRedeployFailedInstance,omitempty"`
 	OwnerAccount                     *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId                          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// Creates a deployment set in a specific region.
+	// The ID of the region for the deployment set. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to view the latest list of Alibaba Cloud regions.
 	//
 	// This parameter is required.
 	//
@@ -111,11 +116,11 @@ type CreateDeploymentSetRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The deployment strategy. Valid values:
 	//
-	// 	- Availability: high availability strategy
+	// - Availability: High availability strategy.
 	//
-	// 	- AvailabilityGroup: high availability group strategy
+	// - AvailabilityGroup: High availability strategy for deployment set groups.
 	//
-	// 	- LowLatency: low latency strategy
+	// - LowLatency: Low-latency strategy.
 	//
 	// Default value: Availability.
 	//
@@ -123,7 +128,20 @@ type CreateDeploymentSetRequest struct {
 	//
 	// Availability
 	Strategy *string `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
-	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The deployment granularity. Valid values:
+	//
+	// - host: Spreads instances across different hosts.
+	//
+	// - sw: Spreads instances across different switches.
+	//
+	// - rack: Spreads instances across different racks.
+	//
+	// Default value: host.
+	//
+	// example:
+	//
+	// host
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CreateDeploymentSetRequest) String() string {

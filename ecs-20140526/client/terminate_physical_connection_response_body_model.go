@@ -14,6 +14,7 @@ type iTerminatePhysicalConnectionResponseBody interface {
 }
 
 type TerminatePhysicalConnectionResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

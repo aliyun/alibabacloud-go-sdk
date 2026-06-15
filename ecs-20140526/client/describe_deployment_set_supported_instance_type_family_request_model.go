@@ -38,11 +38,11 @@ type DescribeDeploymentSetSupportedInstanceTypeFamilyRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The deployment strategy. Valid values:
 	//
-	// 	- Availability: high availability strategy
+	// - Availability: high availability strategy
 	//
-	// 	- AvailabilityGroup: high availability group strategy
+	// - AvailabilityGroup: high availability group strategy
 	//
-	// 	- LowLatency: low latency strategy
+	// - LowLatency: low latency strategy
 	//
 	// Default value: Availability.
 	//

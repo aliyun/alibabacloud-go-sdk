@@ -26,13 +26,18 @@ type iModifyUserBusinessBehaviorRequest interface {
 }
 
 type ModifyUserBusinessBehaviorRequest struct {
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The key of the attribute to modify.
+	//
 	// This parameter is required.
 	StatusKey *string `json:"statusKey,omitempty" xml:"statusKey,omitempty"`
+	// The new value of the attribute.
+	//
 	// This parameter is required.
 	StatusValue *string `json:"statusValue,omitempty" xml:"statusValue,omitempty"`
 }

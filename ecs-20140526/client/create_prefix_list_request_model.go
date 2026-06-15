@@ -40,9 +40,9 @@ type iCreatePrefixListRequest interface {
 type CreatePrefixListRequest struct {
 	// The IP address family. Valid values:
 	//
-	// 	- IPv4
+	// - IPv4
 	//
-	// 	- IPv6
+	// - IPv6
 	//
 	// This parameter is required.
 	//
@@ -252,15 +252,15 @@ func (s *CreatePrefixListRequest) Validate() error {
 type CreatePrefixListRequestEntry struct {
 	// The CIDR block in entry N. Valid values of N: 0 to 200. Notes:
 	//
-	// 	- The total number of entries cannot exceed the `MaxEntries` value.
+	// - The total number of entries cannot exceed the `MaxEntries` value.
 	//
-	// 	- CIDR block types are determined by the IP address family. You cannot combine IPv4 and IPv6 CIDR blocks in a single prefix list.
+	// - CIDR block types are determined by the IP address family. You cannot combine IPv4 and IPv6 CIDR blocks in a single prefix list.
 	//
-	// 	- CIDR blocks must be unique across all entries in a prefix list. For example, you cannot specify 192.168.1.0/24 twice in the entries of the prefix list.
+	// - CIDR blocks must be unique across all entries in a prefix list. For example, you cannot specify 192.168.1.0/24 twice in the entries of the prefix list.
 	//
-	// 	- You can set a single IP address. The system automatically converts the IP address to a CIDR block. For example, if you set 192.168.1.100, the system automatically converts it to 192.168.1.100/32.
+	// - You can set a single IP address. The system automatically converts the IP address to a CIDR block. For example, if you set 192.168.1.100, the system automatically converts it to 192.168.1.100/32.
 	//
-	// 	- If you use an IPv6 CIDR block, the system automatically converts the CIDR block to zero and the letters to lowercase. For example, if you specify 2001:0DB8:0000:0000:0000:0000:0000:0000/32, the system converts it to 2001:db8::/32.
+	// - If you use an IPv6 CIDR block, the system automatically converts the CIDR block to zero and the letters to lowercase. For example, if you specify 2001:0DB8:0000:0000:0000:0000:0000:0000/32, the system converts it to 2001:db8::/32.
 	//
 	// For more information about CIDR blocks, see [What is CIDR?](~~185311#598efe6ef1v00~~)
 	//
@@ -319,7 +319,7 @@ type CreatePrefixListRequestTag struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of tag N. Valid values of N: 1 to 20. The tag value can be an empty string.
 	//
-	// The tag value can be up to 128 characters in length and cannot contain`  http:// or https:// `.
+	// The tag value can be up to 128 characters in length and cannot contain` http:// or https://`.
 	//
 	// example:
 	//

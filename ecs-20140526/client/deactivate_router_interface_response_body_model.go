@@ -14,6 +14,7 @@ type iDeactivateRouterInterfaceResponseBody interface {
 }
 
 type DeactivateRouterInterfaceResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

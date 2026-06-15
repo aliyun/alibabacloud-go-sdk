@@ -34,7 +34,7 @@ type iAssignIpv6AddressesRequest interface {
 }
 
 type AssignIpv6AddressesRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.***	- For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.\\*\\*\\*\\	- For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type AssignIpv6AddressesRequest struct {
 	//
 	// Example: Ipv6Address.1=2001:db8:1234:1a00::\\*\\*\\*\\*
 	//
-	// >  You must specify `Ipv6Addresses.N` or `Ipv6AddressCount`, but not both.
+	// > You must specify `Ipv6Addresses.N` or `Ipv6AddressCount`, but not both.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type AssignIpv6AddressesRequest struct {
 	Ipv6Address []*string `json:"Ipv6Address,omitempty" xml:"Ipv6Address,omitempty" type:"Repeated"`
 	// The number of IPv6 addresses to randomly generate for the ENI. Valid values: 1 to 10.
 	//
-	// >  You must specify `Ipv6Addresses.N` or `Ipv6AddressCount`, but not both.
+	// > You must specify `Ipv6Addresses.N` or `Ipv6AddressCount`, but not both.
 	//
 	// example:
 	//
@@ -60,15 +60,15 @@ type AssignIpv6AddressesRequest struct {
 	Ipv6AddressCount *int32 `json:"Ipv6AddressCount,omitempty" xml:"Ipv6AddressCount,omitempty"`
 	// The IPv6 prefixes to assign to the ENI. Valid values of N: 1 to 10.
 	//
-	// >  To assign IPv6 prefixes to the ENI, you must specify Ipv6Prefix.N or Ipv6PrefixCount, but not both.
+	// > To assign IPv6 prefixes to the ENI, you must specify Ipv6Prefix.N or Ipv6PrefixCount, but not both.
 	Ipv6Prefix []*string `json:"Ipv6Prefix,omitempty" xml:"Ipv6Prefix,omitempty" type:"Repeated"`
 	// The number of IPv6 prefixes to assign to the ENI. Valid values: 1 to 10.
 	//
-	// >  To assign IPv6 prefixes to the ENI, you must specify Ipv6Prefix.N or Ipv6PrefixCount, but not both.
+	// > To assign IPv6 prefixes to the ENI, you must specify Ipv6Prefix.N or Ipv6PrefixCount, but not both.
 	//
 	// example:
 	//
-	// hide
+	// 1
 	Ipv6PrefixCount *int32 `json:"Ipv6PrefixCount,omitempty" xml:"Ipv6PrefixCount,omitempty"`
 	// The ENI ID.
 	//

@@ -36,9 +36,9 @@ type iDescribePortRangeListsRequest interface {
 type DescribePortRangeListsRequest struct {
 	// The maximum number of entries per page.
 	//
-	// 	- Maximum value: 100
+	// - Maximum value: 100
 	//
-	// 	- Default value: 10.
+	// - Default value: 10.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type DescribePortRangeListsRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the port list. Valid values of N: 0 to 100.
 	PortRangeListId []*string `json:"PortRangeListId,omitempty" xml:"PortRangeListId,omitempty" type:"Repeated"`
-	// The name of the port list. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http://, https://, com.aliyun, or com.alibabacloud. The name can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+	// The name of the port list. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http\\://, https\\://, com.aliyun, or com.alibabacloud. The name can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type DescribePortRangeListsRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group. If you specify this parameter to query resources, up to 1,000 resources that belong to the specified resource group can be returned in the response. You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/2716558.html) operation to query the most recent resource group list.
 	//
-	// >  A default resource group is not supported.
+	// > A default resource group is not supported.
 	//
 	// example:
 	//

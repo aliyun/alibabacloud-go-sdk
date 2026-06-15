@@ -36,11 +36,11 @@ type ModifySecurityGroupPolicyRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The internal access control policy of the security group. Valid values:
 	//
-	// 	- Accept: the internal interconnectivity policy
+	// - Accept: the internal interconnectivity policy
 	//
-	// 	- Drop: the internal isolation policy
+	// - Drop: the internal isolation policy
 	//
-	// >  The value of this parameter is case-insensitive.
+	// > The value of this parameter is case-insensitive.
 	//
 	// This parameter is required.
 	//

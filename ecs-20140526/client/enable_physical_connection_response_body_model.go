@@ -14,6 +14,7 @@ type iEnablePhysicalConnectionResponseBody interface {
 }
 
 type EnablePhysicalConnectionResponseBody struct {
+  // The ID of the request.
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

@@ -74,9 +74,9 @@ type DescribeNetworkInterfacesRequest struct {
 	//
 	// Default values:
 	//
-	// 	- If this parameter is not specified or if this parameter is set to a value less than 10, the default value is 10.
+	// - If this parameter is not specified or if this parameter is set to a value less than 10, the default value is 10.
 	//
-	// 	- If this parameter is set to a value greater than 500, the default value is 500.
+	// - If this parameter is set to a value greater than 500, the default value is 500.
 	//
 	// example:
 	//
@@ -112,7 +112,7 @@ type DescribeNetworkInterfacesRequest struct {
 	//
 	// Default value: 1.
 	//
-	// >  This parameter will be removed in the future. We recommend that you use NextToken and MaxResults for a paged query.
+	// > This parameter will be removed in the future. We recommend that you use NextToken and MaxResults for a paged query.
 	//
 	// example:
 	//
@@ -126,7 +126,7 @@ type DescribeNetworkInterfacesRequest struct {
 	//
 	// Default value: 10.
 	//
-	// >  This parameter will be removed in the future. We recommend that you use NextToken and MaxResults for a paged query.
+	// > This parameter will be removed in the future. We recommend that you use NextToken and MaxResults for a paged query.
 	//
 	// example:
 	//
@@ -164,9 +164,9 @@ type DescribeNetworkInterfacesRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The ID of the security group to which the secondary ENI belongs.
 	//
-	// 	- To query the details of secondary ENIs based on the ID of a security group, specify this parameter.
+	// - To query the details of secondary ENIs based on the ID of a security group, specify this parameter.
 	//
-	// 	- To query the details of primary ENIs based on the ID of a security group, call the [DescribeInstances](https://help.aliyun.com/document_detail/25506.html) operation and specify the `SecurityGroupId` parameter.
+	// - To query the details of primary ENIs based on the ID of a security group, call the [DescribeInstances](https://help.aliyun.com/document_detail/25506.html) operation and specify the `SecurityGroupId` parameter.
 	//
 	// example:
 	//
@@ -180,15 +180,15 @@ type DescribeNetworkInterfacesRequest struct {
 	ServiceManaged *bool `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
 	// The state of the ENI. Valid values:
 	//
-	// 	- Available: The ENI is available.
+	// - Available: The ENI is available.
 	//
-	// 	- Attaching: The ENI is being attached to an instance.
+	// - Attaching: The ENI is being attached to an instance.
 	//
-	// 	- InUse: The ENI is attached to an instance.
+	// - InUse: The ENI is attached to an instance.
 	//
-	// 	- Detaching: The ENI is being detached from an instance.
+	// - Detaching: The ENI is being detached from an instance.
 	//
-	// 	- Deleting: The ENI is being deleted.
+	// - Deleting: The ENI is being deleted.
 	//
 	// This parameter is empty by default, which indicates that ENIs in all states are queried.
 	//
@@ -200,9 +200,9 @@ type DescribeNetworkInterfacesRequest struct {
 	Tag []*DescribeNetworkInterfacesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The type of the ENI. Valid values:
 	//
-	// 	- Primary
+	// - Primary
 	//
-	// 	- Secondary
+	// - Secondary
 	//
 	// This parameter is empty by default, which indicates that both primary and secondary ENIs are queried.
 	//
@@ -220,7 +220,7 @@ type DescribeNetworkInterfacesRequest struct {
 	//
 	// example:
 	//
-	// vsw-bp16usj2p27htro3****
+	// vpc-bp1j7w3gc1cexjqd****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 

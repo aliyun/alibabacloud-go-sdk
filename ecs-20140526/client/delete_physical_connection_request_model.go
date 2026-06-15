@@ -26,11 +26,16 @@ type iDeletePhysicalConnectionRequest interface {
 }
 
 type DeletePhysicalConnectionRequest struct {
+	// A client-generated, case-sensitive token used to ensure request idempotency. This token must be unique across all requests and contain a maximum of 64 ASCII characters.
 	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the physical connection.
+	//
 	// This parameter is required.
 	PhysicalConnectionId *string `json:"PhysicalConnectionId,omitempty" xml:"PhysicalConnectionId,omitempty"`
+	// The region ID of the physical connection.
+	//
 	// This parameter is required.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`

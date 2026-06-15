@@ -45,15 +45,15 @@ type iDescribeElasticityAssurancesRequest interface {
 
 type DescribeElasticityAssurancesRequest struct {
 	PrivatePoolOptions *DescribeElasticityAssurancesRequestPrivatePoolOptions `json:"PrivatePoolOptions,omitempty" xml:"PrivatePoolOptions,omitempty" type:"Struct"`
-	// The billing method of the instance. Set the value to PostPaid. Only pay-as-you-go instances can be created by using elasticity assurances.
+	// The billing method of the instances. Only `PostPaid` (pay-as-you-go) is supported.
 	//
-	// Default value: PostPaid.
+	// Default value: `PostPaid`.
 	//
 	// example:
 	//
 	// PostPaid
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	// The instance type.
+	// The instance type. You can use this parameter to query only active elasticity assurances. To query released elasticity assurances, you must use `PrivatePoolOptions.Ids`.
 	//
 	// example:
 	//
@@ -61,7 +61,7 @@ type DescribeElasticityAssurancesRequest struct {
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	// The maximum number of entries to return on each page.
 	//
-	// Valid values: 1 to 100.
+	// Maximum value: 100.
 	//
 	// Default value: 10.
 	//
@@ -69,7 +69,7 @@ type DescribeElasticityAssurancesRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the request to retrieve a new page of results. You must specify the token that is obtained from the previous query as the value of NextToken.
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
 	//
 	// example:
 	//
@@ -77,11 +77,11 @@ type DescribeElasticityAssurancesRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The type of the elasticity assurance. Valid values:
+	// The type of the Elasticity Assurance. Valid values:
 	//
-	// 	- ElasticityAssurance: the general-purpose elasticity assurance. RecurrenceRules is not specified for a general-purpose elasticity assurance.
+	// - `ElasticityAssurance`: a standard elasticity assurance. This type of elasticity assurance is created when you do not specify `RecurrenceRules`.
 	//
-	// 	- TimeDivisionElasticityAssurance: the time-segmented elasticity assurance. RecurrenceRules is specified for a time-segmented assurance.
+	// - `TimeDivisionElasticityAssurance`: a time-division elasticity assurance. This type of elasticity assurance is created when you specify `RecurrenceRules`.
 	//
 	// example:
 	//
@@ -93,7 +93,7 @@ type DescribeElasticityAssurancesRequest struct {
 	//
 	// null
 	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	// The region ID of the elasticity assurances. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+	// The ID of the region where the Elasticity Assurance is located. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the latest list of Alibaba Cloud regions.
 	//
 	// This parameter is required.
 	//
@@ -101,9 +101,9 @@ type DescribeElasticityAssurancesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group. If you configure this parameter to query resources, up to 1,000 resources that belong to the specified resource group can be displayed in the response.
+	// The ID of the resource group. When you use this parameter to filter resources, the number of matching resources cannot exceed 1,000.
 	//
-	// > Resources in the default resource group are displayed in the response regardless of whether you configure this parameter.
+	// > Filtering by the default resource group is not supported.
 	//
 	// example:
 	//
@@ -111,29 +111,29 @@ type DescribeElasticityAssurancesRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The status of the elasticity assurance. Valid values:
+	// The status of the Elasticity Assurance. Valid values:
 	//
-	// 	- All: All states.
+	// - `All`: all statuses.
 	//
-	// 	- Deactivated: The elasticity assurance is pending activation. This state is in invitational preview.
+	// - `Deactivated`: The Elasticity Assurance is pending activation. This status is available only for invitational preview.
 	//
-	// 	- Preparing: The elasticity assurance is being prepared.
+	// - `Preparing`: The Elasticity Assurance is being prepared.
 	//
-	// 	- Prepared: The elasticity assurance is to take effect.
+	// - `Prepared`: The Elasticity Assurance is ready to take effect.
 	//
-	// 	- Active: The elasticity assurance is in effect.
+	// - `Active`: The Elasticity Assurance is active.
 	//
-	// 	- Released: The elasticity assurance is released.
+	// - `Released`: The Elasticity Assurance is released.
 	//
-	// If you do not specify this parameter, elasticity assurances in states other than Pending and Released are queried.
+	// If you do not specify this parameter, elasticity assurances in all states are returned, except for those in the `Pending` and `Released` states.
 	//
 	// example:
 	//
 	// Active
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tags.
+	// The tags used to filter Elasticity Assurances.
 	Tag []*DescribeElasticityAssurancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The zone ID of the elasticity assurances.
+	// The ID of the zone where the Elasticity Assurance is located.
 	//
 	// example:
 	//
@@ -312,7 +312,7 @@ func (s *DescribeElasticityAssurancesRequest) Validate() error {
 }
 
 type DescribeElasticityAssurancesRequestPrivatePoolOptions struct {
-	// The IDs of the elasticity assurances. The value can be a JSON array that consists of up to 100 elasticity assurance IDs. Separate the IDs with commas (,).
+	// The IDs of the elasticity assurances. You can specify a JSON array of up to 100 elasticity assurance IDs.
 	//
 	// example:
 	//
@@ -342,15 +342,15 @@ func (s *DescribeElasticityAssurancesRequestPrivatePoolOptions) Validate() error
 }
 
 type DescribeElasticityAssurancesRequestTag struct {
-	// The key of tag N. Valid values of N: 1 to 20.
+	// The tag key. You can specify up to 20 tag keys to filter resources.
 	//
-	// If you specify a tag to query resources, up to 1,000 resources with this tag are returned in the response. If you specify multiple tags to query resources, up to 1,000 resources with all these tags are returned in the response. To query more than 1,000 resources that have specified tags added, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation.
+	// The query returns a maximum of 1,000 resources that match the specified tags. If more than 1,000 resources match the tags, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query all the resources.
 	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N. Valid values of N: 1 to 20.
+	// The tag value. You can specify up to 20 tag values.
 	//
 	// example:
 	//

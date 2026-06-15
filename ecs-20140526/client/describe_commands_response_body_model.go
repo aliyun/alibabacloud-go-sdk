@@ -25,7 +25,7 @@ type iDescribeCommandsResponseBody interface {
 
 type DescribeCommandsResponseBody struct {
 	Commands *DescribeCommandsResponseBodyCommands `json:"Commands,omitempty" xml:"Commands,omitempty" type:"Struct"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	// The pagination token that is used in the next request to retrieve a new page of results. If this parameter is not returned, all results have been retrieved.
 	//
 	// example:
 	//
@@ -43,7 +43,7 @@ type DescribeCommandsResponseBody struct {
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

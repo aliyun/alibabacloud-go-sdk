@@ -78,9 +78,9 @@ type CreateSecurityGroupRequest struct {
 	SecurityGroupName *string `json:"SecurityGroupName,omitempty" xml:"SecurityGroupName,omitempty"`
 	// The type of the security group. Valid values:
 	//
-	// 	- normal: basic security group
+	// - normal: basic security group
 	//
-	// 	- enterprise: advanced security group For more information, see [Advanced security groups](https://help.aliyun.com/document_detail/120621.html).
+	// - enterprise: advanced security group For more information, see [Advanced security groups](https://help.aliyun.com/document_detail/120621.html).
 	//
 	// Default value: normal.
 	//

@@ -132,9 +132,9 @@ func (s *ModifyInstanceAttachmentAttributesRequest) Validate() error {
 type ModifyInstanceAttachmentAttributesRequestPrivatePoolOptions struct {
 	// The ID of the private pool. Set the value to the ID of the elasticity assurance or capacity reservation that generates the private pool.
 	//
-	// 	- This parameter is required when `PrivatePoolOptions.MatchCriteria` is set to `Target`.
+	// - This parameter is required when `PrivatePoolOptions.MatchCriteria` is set to `Target`.
 	//
-	// 	- This parameter must be empty when `PrivatePoolOptions.MatchCriteria` is set to `Open` or `None`.
+	// - This parameter must be empty when `PrivatePoolOptions.MatchCriteria` is set to `Open` or `None`.
 	//
 	// example:
 	//
@@ -142,11 +142,11 @@ type ModifyInstanceAttachmentAttributesRequestPrivatePoolOptions struct {
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The new type of private pool. Valid values:
 	//
-	// 	- Open: open private pool. The system matches the instance with an open private pool. If no matching open private pools exist, the system uses resources in the public pool to start the instance.
+	// - Open: open private pool. The system matches the instance with an open private pool. If no matching open private pools exist, the system uses resources in the public pool to start the instance.
 	//
-	// 	- Target: specified private pool. The system uses the capacity in a specified private pool to start the instance. If the specified private pool is unavailable, the instance cannot be started. You must use `PrivatePoolOptions.Id` to specify the ID of a private pool.
+	// - Target: specified private pool. The system uses the capacity in a specified private pool to start the instance. If the specified private pool is unavailable, the instance cannot be started. You must use `PrivatePoolOptions.Id` to specify the ID of a private pool.
 	//
-	// 	- None: no private pool. The capacity in private pools is not used to start the instance.
+	// - None: no private pool. The capacity in private pools is not used to start the instance.
 	//
 	// This parameter is required.
 	//

@@ -16,9 +16,9 @@ type iDescribeRenewalPriceResponseBody interface {
 }
 
 type DescribeRenewalPriceResponseBody struct {
-	// Details about the prices and promotion rules.
+	// A data type composed of price information (PriceInfo), including pricing and discount rule details.
 	PriceInfo *DescribeRenewalPriceResponseBodyPriceInfo `json:"PriceInfo,omitempty" xml:"PriceInfo,omitempty" type:"Struct"`
-	// The ID of the request.
+	// Request ID.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ func (s *DescribeRenewalPriceResponseBody) Validate() error {
 }
 
 type DescribeRenewalPriceResponseBodyPriceInfo struct {
-	// The price.
+	// Price.
 	Price        *DescribeRenewalPriceResponseBodyPriceInfoPrice        `json:"Price,omitempty" xml:"Price,omitempty" type:"Struct"`
 	RelatedPrice *DescribeRenewalPriceResponseBodyPriceInfoRelatedPrice `json:"RelatedPrice,omitempty" xml:"RelatedPrice,omitempty" type:"Struct"`
 	Rules        *DescribeRenewalPriceResponseBodyPriceInfoRules        `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
@@ -123,30 +123,30 @@ func (s *DescribeRenewalPriceResponseBodyPriceInfo) Validate() error {
 }
 
 type DescribeRenewalPriceResponseBodyPriceInfoPrice struct {
-	// The currency unit.
+	// Currency unit.
 	//
-	// Alibaba Cloud China site (aliyun.com): CNY.
+	// China site (aliyun.com): CNY.
 	//
-	// Alibaba Cloud International site (alibabacloud.com): USD.
+	// International site (alibabacloud.com): USD.
 	//
 	// example:
 	//
 	// CNY
 	Currency    *string                                                    `json:"Currency,omitempty" xml:"Currency,omitempty"`
 	DetailInfos *DescribeRenewalPriceResponseBodyPriceInfoPriceDetailInfos `json:"DetailInfos,omitempty" xml:"DetailInfos,omitempty" type:"Struct"`
-	// The discount.
+	// Discounted price.
 	//
 	// example:
 	//
 	// 655.2
 	DiscountPrice *float32 `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
-	// The original price.
+	// Original price.
 	//
 	// example:
 	//
 	// 4368
 	OriginalPrice *float32 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
-	// The transaction price, which is equal to the original price minus the discount.
+	// Final price, calculated as the original price minus discounts.
 	//
 	// example:
 	//

@@ -60,7 +60,7 @@ type StartImagePipelineExecutionRequest struct {
 	Tag []*StartImagePipelineExecutionRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// Deprecated
 	//
-	// >  This parameter is deprecated.
+	// > This parameter is deprecated.
 	TemplateTag []*StartImagePipelineExecutionRequestTemplateTag `json:"TemplateTag,omitempty" xml:"TemplateTag,omitempty" type:"Repeated"`
 }
 
@@ -221,13 +221,13 @@ func (s *StartImagePipelineExecutionRequestTag) Validate() error {
 }
 
 type StartImagePipelineExecutionRequestTemplateTag struct {
-	// >  This parameter is deprecated.
+	// > This parameter is deprecated.
 	//
 	// example:
 	//
 	// null
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// >  This parameter is deprecated.
+	// > This parameter is deprecated.
 	//
 	// example:
 	//

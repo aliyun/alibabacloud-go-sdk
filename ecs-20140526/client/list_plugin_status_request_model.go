@@ -48,13 +48,13 @@ type ListPluginStatusRequest struct {
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The name of the Cloud Assistant plug-in. The name supports all character sets and must be 1 to 255 characters in length.
 	//
-	// 	- If this parameter is not specified, the status of all Cloud Assistant plug-ins that are installed on the specified instances are queried.
+	// - If this parameter is not specified, the status of all Cloud Assistant plug-ins that are installed on the specified instances are queried.
 	//
-	//     **
+	//   \\*\\*
 	//
-	//     **Note*	- If this parameter is not specified, only a single instance ID can be specified.
+	//   **Note*	- If this parameter is not specified, only a single instance ID can be specified.
 	//
-	// 	- If this parameter is specified, the status of the specified Cloud Assistant plug-in is queried.
+	// - If this parameter is specified, the status of the specified Cloud Assistant plug-in is queried.
 	//
 	// example:
 	//
@@ -68,13 +68,13 @@ type ListPluginStatusRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// >  This parameter will be removed in the future. We recommend that you use NextToken and MaxResults for a paged query.
+	// > This parameter will be removed in the future. We recommend that you use NextToken and MaxResults for a paged query.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// >  This parameter will be removed in the future. We recommend that you use NextToken and MaxResults for a paged query.
+	// > This parameter will be removed in the future. We recommend that you use NextToken and MaxResults for a paged query.
 	//
 	// example:
 	//

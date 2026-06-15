@@ -18,14 +18,15 @@ type iDescribeInstanceTypesResponseBody interface {
 }
 
 type DescribeInstanceTypesResponseBody struct {
+	// A collection of instance types.
 	InstanceTypes *DescribeInstanceTypesResponseBodyInstanceTypes `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Struct"`
-	// The query token returned in this call.
+	// The token used to retrieve the next page of results.
 	//
 	// example:
 	//
 	// e71d8a535bd9cc11
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

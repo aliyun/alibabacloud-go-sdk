@@ -48,11 +48,11 @@ type DescribeInstanceMonitorDataRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The interval at which to retrieve monitoring data. Unit: seconds. Valid values:
 	//
-	// 	- 60
+	// - 60
 	//
-	// 	- 600
+	// - 600
 	//
-	// 	- 3600
+	// - 3600
 	//
 	// Default value: 60.
 	//

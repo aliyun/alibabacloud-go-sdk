@@ -23,25 +23,25 @@ type iDescribeHpcClustersResponseBody interface {
 
 type DescribeHpcClustersResponseBody struct {
 	HpcClusters *DescribeHpcClustersResponseBodyHpcClusters `json:"HpcClusters,omitempty" xml:"HpcClusters,omitempty" type:"Struct"`
-	// Details about the HPC clusters. The value is an array that consists of the information of each HPC cluster.
+	// The page number of the HPC cluster list.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The page number.
+	// The number of entries per page that was set when the request was made.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of HPC clusters.
+	// The request ID.
 	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the HPC cluster.
+	// The total number of HPC clusters.
 	//
 	// example:
 	//

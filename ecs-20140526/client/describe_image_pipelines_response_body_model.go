@@ -23,13 +23,13 @@ type iDescribeImagePipelinesResponseBody interface {
 
 type DescribeImagePipelinesResponseBody struct {
 	ImagePipeline *DescribeImagePipelinesResponseBodyImagePipeline `json:"ImagePipeline,omitempty" xml:"ImagePipeline,omitempty" type:"Struct"`
-	// The number of entries per page.
+	// The number of entries per page for a paginated query.
 	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results. For information about how to use the return value, see the "Usage notes" section of this topic.
+	// The token used to retrieve the next page of results. This value is returned if the results are paginated.
 	//
 	// example:
 	//
@@ -41,7 +41,7 @@ type DescribeImagePipelinesResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of image templates returned.
+	// The total number of image pipelines that match the query criteria.
 	//
 	// example:
 	//

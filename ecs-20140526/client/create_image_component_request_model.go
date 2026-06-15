@@ -50,13 +50,13 @@ type CreateImageComponentRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- Build
+	// - Build
 	//
-	// 	- Test
+	// - Test
 	//
 	// Default value: Build.
 	//
-	// >  Image building components can be used only in image building templates. Image test components can be used only in image test templates.
+	// > Image building components can be used only in image building templates. Image test components can be used only in image test templates.
 	//
 	// example:
 	//
@@ -68,23 +68,31 @@ type CreateImageComponentRequest struct {
 	//
 	// example:
 	//
-	// null
+	// 1.0.0
 	ComponentVersion *string `json:"ComponentVersion,omitempty" xml:"ComponentVersion,omitempty"`
 	// The content of the image component. The image component consists of multiple commands. The command content cannot exceed 16 KB in size. For information about the commands supported by Image Builder and the formats of the commands, see [Commands supported by Image Builder](https://help.aliyun.com/document_detail/200206.html).
 	//
 	// example:
 	//
-	// RUN yum update -y
+	// Tasks:
+	//
+	//   - Name: HelloWorld
+	//
+	//     Action: RunShellCommand
+	//
+	//     Properties:
+	//
+	//       commandContent: echo hello world
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The description. The description must be 2 to 256 characters in length and cannot start with [http:// or https://](http://https://。).
+	// The description. The description must be 2 to 256 characters in length and cannot start with [http:// or https://](http://https://%E3%80%82).
 	//
 	// example:
 	//
 	// This is description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the image component. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+	// The name of the image component. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http\\:// or https\\://. The name can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
 	//
-	// >  If you do not specify `Name`, the return value of `ImageComponentId` is used.
+	// > If you do not specify `Name`, the return value of `ImageComponentId` is used.
 	//
 	// example:
 	//
@@ -112,9 +120,9 @@ type CreateImageComponentRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- Linux
+	// - Linux
 	//
-	// 	- Windows
+	// - Windows
 	//
 	// Default value: Linux.
 	//
@@ -274,13 +282,13 @@ func (s *CreateImageComponentRequest) Validate() error {
 }
 
 type CreateImageComponentRequestTag struct {
-	// The key of tag N. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot contain [http:// or https://](http://https://。). The tag key cannot start with acs: or aliyun.
+	// The key of tag N. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot contain [http:// or https://](http://https://%E3%80%82). The tag key cannot start with acs: or aliyun.
 	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot contain [http:// or https://](http://https://。). The tag value cannot start with acs:.
+	// The value of tag N. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot contain [http:// or https://](http://https://%E3%80%82). The tag value cannot start with acs:.
 	//
 	// example:
 	//

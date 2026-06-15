@@ -58,9 +58,9 @@ type ModifyReservedInstanceAutoRenewAttributeRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// Specifies whether to automatically renew the reserved instances. Valid values:
 	//
-	// 	- AutoRenewal: automatically renews the reserved instances.
+	// - AutoRenewal: automatically renews the reserved instances.
 	//
-	// 	- Normal: manually renews the reserved instances.
+	// - Normal: manually renews the reserved instances.
 	//
 	// example:
 	//

@@ -14,6 +14,7 @@ type iDeleteNatGatewayResponseBody interface {
 }
 
 type DeleteNatGatewayResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

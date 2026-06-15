@@ -40,9 +40,9 @@ type StopInstanceRequest struct {
 	ConfirmStop *bool `json:"ConfirmStop,omitempty" xml:"ConfirmStop,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// 	- true: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, service limits, and available ECS resources. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// - true: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, service limits, and available ECS resources. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
 	//
-	// 	- false: performs a dry run and performs the actual request.
+	// - false: performs a dry run and performs the actual request.
 	//
 	// Default value: false.
 	//
@@ -52,9 +52,9 @@ type StopInstanceRequest struct {
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// Specifies whether to forcefully stop the ECS instance. Valid values:
 	//
-	// 	- true: forcefully stops the ECS instance. If you set ForceStop to true, this operation is equivalent to a power-off operation. Cache data that is not written to storage devices on the instance is lost.
+	// - true: forcefully stops the ECS instance. If you set ForceStop to true, this operation is equivalent to a power-off operation. Cache data that is not written to storage devices on the instance is lost.
 	//
-	// 	- false: normally stops the ECS instance.
+	// - false: normally stops the ECS instance.
 	//
 	// Default value: false.
 	//
@@ -82,23 +82,23 @@ type StopInstanceRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The stop mode of the pay-as-you-go instance. Valid values:
 	//
-	// 	- StopCharging: economical mode. After an instance is stopped in economical mode:
+	// - StopCharging: economical mode. After an instance is stopped in economical mode:
 	//
-	//     	- Billing for the following resources of the instance stops: computing resources (vCPUs, memory, and GPUs), image licenses, and public bandwidth of the static public IP address (if any) that uses the pay-by-bandwidth metering method.
+	//   - Billing for the following resources of the instance stops: computing resources (vCPUs, memory, and GPUs), image licenses, and public bandwidth of the static public IP address (if any) that uses the pay-by-bandwidth metering method.
 	//
-	//     	- Billing for the following resources of the instance continues: system disk, data disks, and public bandwidth of the elastic IP address (EIP) (if any) that uses the pay-by-bandwidth metering method.
+	//   - Billing for the following resources of the instance continues: system disk, data disks, and public bandwidth of the elastic IP address (EIP) (if any) that uses the pay-by-bandwidth metering method.
 	//
-	//     	- The instance may fail to restart due to the reclaimed computing resources or insufficient resources. Try again later or change the instance type of the instance.
+	//   - The instance may fail to restart due to the reclaimed computing resources or insufficient resources. Try again later or change the instance type of the instance.
 	//
-	//     	- If an EIP is associated with the instance before the instance is stopped, the EIP remains unchanged after the instance is restarted. If a static public IP address is associated with the instance before the instance is stopped, the static public IP address may change, but the private IP address does not change.
+	//   - If an EIP is associated with the instance before the instance is stopped, the EIP remains unchanged after the instance is restarted. If a static public IP address is associated with the instance before the instance is stopped, the static public IP address may change, but the private IP address does not change.
 	//
-	//     For more information, see [Economical mode](https://help.aliyun.com/document_detail/63353.html).
+	//   For more information, see [Economical mode](https://help.aliyun.com/document_detail/63353.html).
 	//
-	//     **
+	//   \\*\\*
 	//
-	//     **Note*	- If the instance does not support the economical mode, the system stops the instance and does not report errors during the operation call. The following types of instances are not supported: classic network instances, local disks, and monthly instances.
+	//   **Note*	- If the instance does not support the economical mode, the system stops the instance and does not report errors during the operation call. The following types of instances are not supported: classic network instances, local disks, and monthly instances.
 	//
-	// 	- KeepCharging: standard mode. After the instance is stopped in standard mode, you continue to be charged for the instance.
+	// - KeepCharging: standard mode. After the instance is stopped in standard mode, you continue to be charged for the instance.
 	//
 	// Default value: If the conditions for [enabling the economical mode for an instance in a VPC](~~63353#default~~) are met and you have enabled this mode in the ECS console, the default value is `StopCharging`. Otherwise, the default value is `KeepCharging`.
 	//

@@ -28,14 +28,23 @@ type iModifyVSwitchAttributeRequest interface {
 }
 
 type ModifyVSwitchAttributeRequest struct {
-	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The new description for the vSwitch.\\
+	//
+	// The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.\\
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region where the vSwitch is located.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The ID of the vSwitch to modify.
+	//
 	// This parameter is required.
-	VSwitchId   *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The new name for the vSwitch.\\
+	//
+	// The name must be 2 to 128 characters in length. It must start with a letter and can contain letters, digits, underscores (_), and hyphens (-).\\
 	VSwitchName *string `json:"VSwitchName,omitempty" xml:"VSwitchName,omitempty"`
 }
 

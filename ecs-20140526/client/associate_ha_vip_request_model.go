@@ -28,13 +28,20 @@ type iAssociateHaVipRequest interface {
 }
 
 type AssociateHaVipRequest struct {
+	// A client-generated token that ensures request idempotency. This token must be unique across requests and can contain only ASCII characters.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The ID of the HaVip.
+	//
 	// This parameter is required.
 	HaVipId *string `json:"HaVipId,omitempty" xml:"HaVipId,omitempty"`
+	// The ID of the ECS instance to associate with the HaVip.
+	//
 	// This parameter is required.
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region where the HaVip is located. To obtain the latest list of regions, call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation.
+	//
 	// This parameter is required.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`

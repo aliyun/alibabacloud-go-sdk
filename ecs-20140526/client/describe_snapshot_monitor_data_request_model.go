@@ -32,11 +32,11 @@ type iDescribeSnapshotMonitorDataRequest interface {
 type DescribeSnapshotMonitorDataRequest struct {
 	// The type of the snapshot. Valid values:
 	//
-	// 	- Standard: standard snapshot
+	// - Standard: standard snapshot
 	//
-	// 	- Flash: local snapshot
+	// - Flash: local snapshot
 	//
-	// 	- Archive: archive snapshot
+	// - Archive: archive snapshot
 	//
 	// Default value: Standard.
 	//
@@ -56,11 +56,11 @@ type DescribeSnapshotMonitorDataRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The interval at which to query the monitoring data of snapshot sizes. Unit: seconds. Valid values:
 	//
-	// 	- 60
+	// - 60
 	//
-	// 	- 600
+	// - 600
 	//
-	// 	- 3600
+	// - 3600
 	//
 	// Default value: 60.
 	//

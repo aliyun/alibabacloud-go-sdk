@@ -40,35 +40,42 @@ type iModifyImageAttributeRequest interface {
 }
 
 type ModifyImageAttributeRequest struct {
-	// The new boot mode of the image. Valid values:
+	// The boot mode of the image. Valid values:
 	//
-	// 	- BIOS: BIOS mode
+	// - `BIOS`: BIOS boot mode.
 	//
-	// 	- UEFI: Unified Extensible Firmware Interface (UEFI) mode
+	// - `UEFI`: UEFI boot mode.
 	//
-	// 	- UEFI-Preferred: BIOS mode and UEFI mode
+	// - `UEFI-Preferred`: UEFI-preferred boot mode.
 	//
-	// >  Before you change this parameter, make sure that you are familiar with the boot modes supported by the image. If you specify a boot mode that is not supported by the image, ECS instances created from the image cannot start as expected. For information about the boot modes of images, see the [Boot modes of custom images](~~2244655#b9caa9b8bb1wf~~) section of the "Best practices for ECS instance boot modes" topic.
+	// 	Notice:
+	//
+	// To prevent startup failures, verify the boot modes that the image supports before you change its boot mode. For more information, see [Boot modes](~~2244655#b9caa9b8bb1wf~~).
 	//
 	// example:
 	//
 	// BIOS
 	BootMode *string `json:"BootMode,omitempty" xml:"BootMode,omitempty"`
-	// The new description of the custom image. The description must be 2 to 256 characters in length It cannot start with [http:// or https://.](http://https://。)
+	// The new description of the custom image. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
 	//
-	// This parameter is empty by default, which specifies that the original description is retained.
+	// If you do not specify this parameter, the original description is retained.
 	//
 	// example:
 	//
 	// testDescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DryRun      *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The attributes of the custom image.
+	// Specifies whether to perform a dry run to check whether the request is valid. Valid values:
+	//
+	// - `true`: performs a dry run to check the request for validity, syntax, and required permissions. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// - `false` (default): sends the request. If the request passes the validation checks, the operation is performed.
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The features of the image.
 	//
 	// if can be null:
 	// true
 	Features *ModifyImageAttributeRequestFeatures `json:"Features,omitempty" xml:"Features,omitempty" type:"Struct"`
-	// The name of the image family. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with acs: or aliyun. [It cannot contain http:// or https://. It can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-).](http://https://。、（.）、（:）、（_）（-）。)
+	// The name of the image family. The name must be 2 to 128 characters in length. It must start with a letter or a Chinese character. The name cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`. It can contain digits, periods (.), colons (:), underscores (_), and hyphens (-).
 	//
 	// By default, this parameter is empty.
 	//
@@ -84,25 +91,25 @@ type ModifyImageAttributeRequest struct {
 	//
 	// m-bp18ygjuqnwhechc****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The name of the custom image. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with acs: or aliyun. [It cannot contain http:// or https://. It can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-).](http://https://。、（.）、（:）、（_）（-）。)
+	// The name of the custom image. The name must be 2 to 128 characters in length. It must start with a letter or a Chinese character. The name cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`. It can contain digits, periods (.), colons (:), underscores (_), and hyphens (-).
 	//
-	// By default, this parameter is empty. In this case, the original name is retained.
+	// If you do not specify this parameter, the original name is retained.
 	//
 	// example:
 	//
 	// testImageName
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	// The type of the license that is used to activate the operating system after the image is imported. Set the value to BYOL.
+	// The license type for activating the operating system after you import the image. The only valid value is `BYOL`.
 	//
-	// BYOL: The license that comes with the source operating system is used. When you use the BYOL license, make sure that your license key is supported by Alibaba Cloud.
+	// `BYOL`: Bring Your Own License. If you use the BYOL license type, you must ensure that your license key is supported for use on Alibaba Cloud.
 	//
 	// example:
 	//
-	// Auto
+	// BYOL
 	LicenseType  *string `json:"LicenseType,omitempty" xml:"LicenseType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the custom image. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+	// The ID of the region where the custom image is located. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to view the latest list of Alibaba Cloud regions.
 	//
 	// This parameter is required.
 	//
@@ -112,13 +119,13 @@ type ModifyImageAttributeRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The new state of the custom image. Valid values:
+	// The image status. Valid values:
 	//
-	// 	- Deprecated: puts the image into the Deprecated state. If the custom image is shared, you must unshare it before you can put it into the Deprecated state. Images in the Deprecated state cannot be shared or copied, but can be used to create instances or replace system disks.
+	// - `Deprecated`: Deprecates the image. If a custom image that you want to deprecate is shared, you must unshare it first. You cannot share or copy a deprecated image. However, you can use the image to create an instance or replace a system disk.
 	//
-	// 	- Available: puts the image into the Available state. You can restore an image from the Deprecated state to the Available state.
+	// - `Available`: Makes the image available. You can change the status of a deprecated image to `Available`.
 	//
-	// > If you want to roll back a custom image in the image family to a previous version, you can put the latest available custom image into the Deprecated state. If no custom images are in the Available state within the image family, an image family cannot be used to create instances. Proceed with caution if only a single custom image is in the Available state within the image family.
+	// > However, if this is the only available custom image in the image family, deprecating it prevents the creation of instances from any image in that family. Use this option with caution.
 	//
 	// example:
 	//
@@ -270,25 +277,25 @@ func (s *ModifyImageAttributeRequest) Validate() error {
 }
 
 type ModifyImageAttributeRequestFeatures struct {
-	// The image metadata access mode. Valid values:
+	// The metadata access mode of the image. Valid values:
 	//
-	// 	- v1: You cannot set the image metadata access mode to security hardening when you create instances from the image.
+	// - `v1`: When you create an ECS instance from this image, you cannot set the metadata access mode to `enforced mode`.
 	//
-	// 	- v2: You can set the image metadata access mode to security hardening when you create instances from the image.
+	// - `v2`: When you create an ECS instance from this image, you can set the metadata access mode to `enforced mode`.
 	//
-	//     **
+	//   	Notice:
 	//
-	//     **Note*	- You cannot change the value of ImdsSupport from v2 to v1 for an image. To change the value of ImdsSupport from v2 to v1 for an image, use the snapshots associated with the image to create an image and set ImdsSupport to v1 for the new image.
+	//   You cannot change the value of `ImdsSupport` from `v2` to `v1`. To use the `v1` mode, create a new image from a snapshot that is associated with the image and set `ImdsSupport` to `v1`.
 	//
 	// example:
 	//
 	// v2
 	ImdsSupport *string `json:"ImdsSupport,omitempty" xml:"ImdsSupport,omitempty"`
-	// Specifies whether the image supports the Non-Volatile Memory Express (NVMe) protocol. Valid values:
+	// Specifies whether the image supports NVMe. Valid values:
 	//
-	// 	- supported: The image supports the NVMe protocol. Instances created from the image also support the NVMe protocol.
+	// - `supported`: The image supports NVMe. Instances that you create from this image support the NVMe protocol.
 	//
-	// 	- unsupported: The image does not support the NVMe protocol. Instances created from the image do not support the NVMe protocol.
+	// - `unsupported`: The image does not support NVMe. Instances that you create from this image do not support the NVMe protocol.
 	//
 	// if can be null:
 	// true

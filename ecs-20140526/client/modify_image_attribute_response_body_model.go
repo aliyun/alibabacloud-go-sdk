@@ -14,7 +14,7 @@ type iModifyImageAttributeResponseBody interface {
 }
 
 type ModifyImageAttributeResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

@@ -34,34 +34,39 @@ type iModifyCloudAssistantSettingsRequest interface {
 }
 
 type ModifyCloudAssistantSettingsRequest struct {
-	// The configurations for upgrading Cloud Assistant Agent.
+	// The configurations of upgrading the Cloud Assistant agent.
 	AgentUpgradeConfig *ModifyCloudAssistantSettingsRequestAgentUpgradeConfig `json:"AgentUpgradeConfig,omitempty" xml:"AgentUpgradeConfig,omitempty" type:"Struct"`
-	// The configurations for delivering records to Object Storage Service (OSS).
+	// The configurations of delivering records to OSS.
 	OssDeliveryConfig *ModifyCloudAssistantSettingsRequestOssDeliveryConfig `json:"OssDeliveryConfig,omitempty" xml:"OssDeliveryConfig,omitempty" type:"Struct"`
 	OwnerAccount      *string                                               `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId           *int64                                                `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID.
+	// The ID of the region.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId             *string                                                 `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string                                                 `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                                                  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	ResourceUsageConfig  *ModifyCloudAssistantSettingsRequestResourceUsageConfig `json:"ResourceUsageConfig,omitempty" xml:"ResourceUsageConfig,omitempty" type:"Struct"`
-	// Cloud Assistant Session Manager configuration.
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The configurations of resource usage for Cloud Assistant. This setting takes effect only when the version of the Cloud Assistant agent is not earlier than the following versions:
+	//
+	// - Windows: 2.1.4.1065
+	//
+	// - Linux: 2.2.4.1065
+	ResourceUsageConfig *ModifyCloudAssistantSettingsRequestResourceUsageConfig `json:"ResourceUsageConfig,omitempty" xml:"ResourceUsageConfig,omitempty" type:"Struct"`
+	// The configurations of the Session Manager feature.
 	SessionManagerConfig *ModifyCloudAssistantSettingsRequestSessionManagerConfig `json:"SessionManagerConfig,omitempty" xml:"SessionManagerConfig,omitempty" type:"Struct"`
-	// The Cloud Assistant feature. Set SettingType to one of the following valid values:
+	// The type of the service configurations. Valid values:
 	//
-	// 	- SessionManagerDelivery: the Session Record Delivery configurations.
+	// - `SessionManagerDelivery`: the configurations of delivering session records.
 	//
-	// 	- InvocationDelivery: the Operation Content and Result Delivery configurations.
+	// - `InvocationDelivery`: the configurations of delivering command execution records.
 	//
-	// 	- AgentUpgradeConfig: the Cloud Assistant Agent Upgrade configurations.
+	// - `AgentUpgradeConfig`: the configurations of upgrading the Cloud Assistant agent.
 	//
-	// 	- SessionManagerConfig: Cloud Assistant the SessionManager configuration.
+	// - `SessionManagerConfig`: the configurations of Cloud Assistant Session Manager.
 	//
 	// This parameter is required.
 	//
@@ -69,7 +74,7 @@ type ModifyCloudAssistantSettingsRequest struct {
 	//
 	// SessionManagerDelivery
 	SettingType *string `json:"SettingType,omitempty" xml:"SettingType,omitempty"`
-	// The configurations for delivering records to Simple Log Service.
+	// The configurations of delivering records to SLS.
 	SlsDeliveryConfig *ModifyCloudAssistantSettingsRequestSlsDeliveryConfig `json:"SlsDeliveryConfig,omitempty" xml:"SlsDeliveryConfig,omitempty" type:"Struct"`
 }
 
@@ -210,17 +215,47 @@ func (s *ModifyCloudAssistantSettingsRequest) Validate() error {
 }
 
 type ModifyCloudAssistantSettingsRequestAgentUpgradeConfig struct {
-	// The time windows during which Cloud Assistant Agent can be upgraded. The time windows can be accurate to minutes. The Coordinated Universal Time (UTC) time zone is used by default.
+	// A list of time windows during which the agent is allowed to be upgraded. The time windows are accurate to minutes and are in UTC by default.
 	//
-	// Make sure that the upgrade windows specified by this parameter are not shorter than 1 hour.
+	// The interval between two consecutive time windows must be at least 1 hour.
 	//
-	// Specify each upgrade window in the following format: \\<Start time in the HH:mm format>-\\<End time in the HH:mm format>.
+	// Format: StartTime(HH:mm)-EndTime(HH:mm).
 	//
-	// For example, [ "02:00-03:00", "05:00-06:00" ] specifies that Cloud Assistant Agent can be upgraded from 2:00:00 to 3:00:00 and from 5:00:00 to 6:00:00 every day in the UTC time zone.
+	// For example, [
+	//
+	// "02:00-03:00",
+	//
+	// "05:00-06:00"
+	//
+	// ]
+	//
+	// indicates that the agent can be upgraded from 2:00 to 3:00 and from 5:00 to 6:00 every day in UTC.
 	AllowedUpgradeWindow []*string `json:"AllowedUpgradeWindow,omitempty" xml:"AllowedUpgradeWindow,omitempty" type:"Repeated"`
-	BootstrapUpgrade     *bool     `json:"BootstrapUpgrade,omitempty" xml:"BootstrapUpgrade,omitempty"`
-	DisableUpgrade       *bool     `json:"DisableUpgrade,omitempty" xml:"DisableUpgrade,omitempty"`
-	// Specifies whether to enable custom upgrade for Cloud Assistant Agent. If you set this parameter to false, an upgrade attempt is performed for Cloud Assistant Agent every 30 minutes.
+	// Specifies whether to immediately check the version and perform an update when the Cloud Assistant agent is started. Default value: true.
+	//
+	// This setting takes effect only when the version of the Cloud Assistant agent is not earlier than the following versions:
+	//
+	// - Windows: 2.1.4.1065
+	//
+	// - Linux: 2.2.4.1065
+	//
+	// example:
+	//
+	// true
+	BootstrapUpgrade *bool `json:"BootstrapUpgrade,omitempty" xml:"BootstrapUpgrade,omitempty"`
+	// Specifies whether to disallow the Cloud Assistant agent to check for or perform updates. Default value: false.
+	//
+	// This setting takes effect only when the version of the Cloud Assistant agent is not earlier than the following versions:
+	//
+	// - Windows: 2.1.4.1065
+	//
+	// - Linux: 2.2.4.1065
+	//
+	// example:
+	//
+	// false
+	DisableUpgrade *bool `json:"DisableUpgrade,omitempty" xml:"DisableUpgrade,omitempty"`
+	// Specifies whether to enable custom upgrade configurations for the agent. If you set this parameter to false, the agent attempts to upgrade every 30 minutes by default.
 	//
 	// Default value: false.
 	//
@@ -228,11 +263,13 @@ type ModifyCloudAssistantSettingsRequestAgentUpgradeConfig struct {
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The time zone of the time windows. Default value: UTC. You can specify a time zone in the following forms:
+	// The time zone of the time windows for agent upgrade. Default value: UTC.
 	//
-	// 	- The time zone name. Examples: Asia/Shanghai and America/Los_Angeles.
+	// The following formats are supported for the time zone:
 	//
-	// 	- The time offset from GMT. Examples: GMT+8:00 (UTC+8) and GMT-7:00 (UTC-7). You cannot add leading zeros to the hour value.
+	// - Time zone name: for example, Asia/Shanghai (China/Shanghai time) and America/Los_Angeles (US/Los Angeles time).
+	//
+	// - Offset from Greenwich Mean Time (GMT): for example, GMT+8:00 (UTC+8) and GMT-7:00 (UTC-7). The hour part cannot have a leading zero.
 	//
 	// example:
 	//
@@ -304,7 +341,7 @@ type ModifyCloudAssistantSettingsRequestOssDeliveryConfig struct {
 	//
 	// example-bucket
 	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
-	// Specifies whether to deliver records to OSS. Default value: false.
+	// Specifies whether to enable the feature of delivering records to OSS. Default value: false.
 	//
 	// example:
 	//
@@ -312,39 +349,39 @@ type ModifyCloudAssistantSettingsRequestOssDeliveryConfig struct {
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 	// The OSS encryption algorithm. Valid values:
 	//
-	// 	- AES256
+	// - AES256
 	//
-	// 	- SM4
+	// - SM4
 	//
 	// example:
 	//
 	// AES256
 	EncryptionAlgorithm *string `json:"EncryptionAlgorithm,omitempty" xml:"EncryptionAlgorithm,omitempty"`
-	// The ID of the customer master key (CMK) when EncryptionType is set to KMS.
+	// The ID of the customer master key (CMK) when KMS encryption is used.
 	//
 	// example:
 	//
 	// a807****7a70e
 	EncryptionKeyId *string `json:"EncryptionKeyId,omitempty" xml:"EncryptionKeyId,omitempty"`
-	// The OSS encryption method. Valid values:
+	// The OSS encryption mode. Valid values:
 	//
-	// 	- Inherit: the encryption method used by the specified bucket.
+	// - Inherit: inherits the bucket encryption.
 	//
-	// 	- OssManaged: server-side encryption by using OSS-managed keys (SSE-OSS).
+	// - OssManaged: uses OSS-managed server-side encryption.
 	//
-	// 	- KMS: server-side encryption by using Key Management Service managed keys (SSE-KMS).
+	// - KMS: uses KMS encryption.
 	//
 	// example:
 	//
 	// Inherit
 	EncryptionType *string `json:"EncryptionType,omitempty" xml:"EncryptionType,omitempty"`
-	// The prefix of the OSS bucket directory. The prefix must meet the following requirements:
+	// The prefix of the directory in the OSS bucket. The following limits apply:
 	//
-	// 	- The prefix can be up to 254 characters in length.
+	// - The prefix can be up to 254 characters in length.
 	//
-	// 	- The prefix cannot start with a forward slash (/) or a backslash (\\\\).
+	// - The prefix cannot start with a forward slash (/) or a backslash ().
 	//
-	// Note: If you do not need a directory prefix, specify a pair of double quotation marks ("") for this parameter to clear the directory prefix that you specified.
+	// Note: If you want to deliver records to the root directory of the bucket, enter "". To clear the prefix that is previously set, enter "".
 	//
 	// example:
 	//
@@ -419,12 +456,72 @@ func (s *ModifyCloudAssistantSettingsRequestOssDeliveryConfig) Validate() error 
 }
 
 type ModifyCloudAssistantSettingsRequestResourceUsageConfig struct {
-	CpuLimit          *int32  `json:"CpuLimit,omitempty" xml:"CpuLimit,omitempty"`
-	KeepScriptFile    *bool   `json:"KeepScriptFile,omitempty" xml:"KeepScriptFile,omitempty"`
-	LogFileCountLimit *int32  `json:"LogFileCountLimit,omitempty" xml:"LogFileCountLimit,omitempty"`
-	LogSizeLimit      *string `json:"LogSizeLimit,omitempty" xml:"LogSizeLimit,omitempty"`
-	MemoryLimit       *string `json:"MemoryLimit,omitempty" xml:"MemoryLimit,omitempty"`
-	OverloadLimit     *int32  `json:"OverloadLimit,omitempty" xml:"OverloadLimit,omitempty"`
+	// The maximum CPU usage that is allowed for the main process of the Cloud Assistant agent.
+	//
+	// - Unit: %.
+	//
+	// - Valid values: 10 to 95.
+	//
+	// - Default value: 20.
+	//
+	// example:
+	//
+	// 20
+	CpuLimit *int32 `json:"CpuLimit,omitempty" xml:"CpuLimit,omitempty"`
+	// Specifies whether to retain the script file of a command in the Cloud Assistant directory after the command execution is complete.
+	//
+	// Default value: false.
+	//
+	// example:
+	//
+	// false
+	KeepScriptFile *bool `json:"KeepScriptFile,omitempty" xml:"KeepScriptFile,omitempty"`
+	// The maximum number of Cloud Assistant log files that can be retained.
+	//
+	// - Default value: 30.
+	//
+	// - Minimum value: 7.
+	//
+	// - Maximum value: 365.
+	//
+	// example:
+	//
+	// 30
+	LogFileCountLimit *int32 `json:"LogFileCountLimit,omitempty" xml:"LogFileCountLimit,omitempty"`
+	// The maximum size of a single Cloud Assistant log file. You must specify a unit (B, KB, or MB).
+	//
+	// - Default value: 100 MB.
+	//
+	// - Minimum value: 10 MB.
+	//
+	// - Maximum value: 1024 MB.
+	//
+	// example:
+	//
+	// 10MB
+	LogSizeLimit *string `json:"LogSizeLimit,omitempty" xml:"LogSizeLimit,omitempty"`
+	// The maximum memory usage that is allowed for the main process of the Cloud Assistant agent. You must specify a unit (B, KB, or MB).
+	//
+	// - Default value: 50 MB.
+	//
+	// - Minimum value: 35 MB.
+	//
+	// - Maximum value: 1024 MB.
+	//
+	// example:
+	//
+	// 50MB
+	MemoryLimit *string `json:"MemoryLimit,omitempty" xml:"MemoryLimit,omitempty"`
+	// The maximum number of consecutive times that CPU or memory usage can exceed the specified limits. If the limits are consecutively exceeded for the specified number of times, the Cloud Assistant agent is automatically stopped.
+	//
+	// - Default value: 3.
+	//
+	// - Minimum value: 3.
+	//
+	// example:
+	//
+	// 3
+	OverloadLimit *int32 `json:"OverloadLimit,omitempty" xml:"OverloadLimit,omitempty"`
 }
 
 func (s ModifyCloudAssistantSettingsRequestResourceUsageConfig) String() string {
@@ -494,15 +591,15 @@ func (s *ModifyCloudAssistantSettingsRequestResourceUsageConfig) Validate() erro
 }
 
 type ModifyCloudAssistantSettingsRequestSessionManagerConfig struct {
-	// Specify whether to enable Cloud Assistant Session Manager. Valid values:
+	// The switch for the Session Manager feature. Valid values:
 	//
-	// 	- true: Enables the feature.
+	// - true: enables the feature.
 	//
-	// 	- false: Disables the feature.
+	// - false: disables the feature.
 	//
-	// Notes:
+	// Note:
 	//
-	// 	- The feature applies to all regions.
+	// - After you enable or disable the Session Manager feature, the setting takes effect for all regions.
 	//
 	// example:
 	//
@@ -532,19 +629,21 @@ func (s *ModifyCloudAssistantSettingsRequestSessionManagerConfig) Validate() err
 }
 
 type ModifyCloudAssistantSettingsRequestSlsDeliveryConfig struct {
-	// Specifies whether to deliver records to Simple Log Service. Default value: false.
+	// Specifies whether to enable the feature of delivering records to SLS.
+	//
+	// Default value: false.
 	//
 	// example:
 	//
 	// false
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The name of the Logstore.
+	// The name of the SLS Logstore.
 	//
 	// example:
 	//
 	// example-logstore
 	LogstoreName *string `json:"LogstoreName,omitempty" xml:"LogstoreName,omitempty"`
-	// The name of the Simple Log Service project.
+	// The name of the SLS project.
 	//
 	// example:
 	//

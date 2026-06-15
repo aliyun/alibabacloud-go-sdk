@@ -22,7 +22,7 @@ type ModifySnapshotCategoryResponseBody struct {
 	//
 	// B48A12CD-1295-4A38-A8F0-0E92C937****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the archive task. You can call the DescribeTasks operation to query the status and progress of the archive task.
+	// The archive task ID. You can call the DescribeTasks operation to query the status and progress of the task.
 	//
 	// example:
 	//

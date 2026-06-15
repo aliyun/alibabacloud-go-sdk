@@ -137,39 +137,45 @@ type CreateInstanceRequest struct {
 	HibernationOptions *CreateInstanceRequestHibernationOptions `json:"HibernationOptions,omitempty" xml:"HibernationOptions,omitempty" type:"Struct"`
 	PrivatePoolOptions *CreateInstanceRequestPrivatePoolOptions `json:"PrivatePoolOptions,omitempty" xml:"PrivatePoolOptions,omitempty" type:"Struct"`
 	SystemDisk         *CreateInstanceRequestSystemDisk         `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
-	// Specifies whether to associate the instance on a dedicated host with the dedicated host. Valid values:
+	// 专有宿主机实例是否与专有宿主机关联。取值范围：
 	//
-	// 	- default: does not associate the instance with the dedicated host. When you start an instance that was stopped in economical mode, the instance is automatically deployed to another dedicated host in the automatic deployment resource pool if the available resources of the original dedicated host are insufficient.
+	// - default：实例不与专有宿主机关联。已启用节省停机模式的实例，停机后再次启动时，若原专有宿主机可用资源不足，则实例被放置在自动部署资源池的其它专有宿主机上。
 	//
-	// 	- host: associates the instance with the dedicated host. When you start an instance that was stopped in economical mode, the instance remains on the original dedicated host. If the available resources of the original dedicated host are insufficient, the instance cannot start.
+	// - host：实例与专有宿主机关联。已启用节省停机模式的实例，停机后再次启动时，仍放置在原专有宿主机上。若原专有宿主机可用资源不足，则实例重启失败。
 	//
-	// Default value: default.
+	// 默认值为 default。
 	//
 	// example:
 	//
 	// default
 	Affinity *string `json:"Affinity,omitempty" xml:"Affinity,omitempty"`
-	// >  This parameter is in invitational preview and is not publicly available.
+	// > This parameter is in invitational preview and is not publicly available.
 	Arn []*CreateInstanceRequestArn `json:"Arn,omitempty" xml:"Arn,omitempty" type:"Repeated"`
-	// Specifies whether to enable auto-renewal for the instance. This parameter is valid only if `InstanceChargeType` is set to `PrePaid`. Valid values:
+	// Specifies whether to enable auto-renewal for the instance. This parameter is valid only for subscription (`InstanceChargeType` is `PrePaid`) instances. Valid values:
 	//
-	// 	- true: enables auto-renewal.
+	// - true: enables auto-renewal.
 	//
-	// 	- false: does not enable auto-renewal.
+	// - false: disables auto-renewal. (Default)
 	//
 	// example:
 	//
 	// true
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// The auto-renewal period of the instance. This parameter is required if AutoRenew is set to true.
+	// The auto-renewal duration. This parameter is required if `AutoRenew` is `true`.
 	//
-	// Valid values if PeriodUnit is set to Month: 1, 2, 3, 6, and 12.
+	// <props="china">
+	//
+	// If `PeriodUnit` is set to `Week`, valid values of `AutoRenewPeriod` are 1, 2, and 3.
+	//
+	//
+	//
+	// If `PeriodUnit` is set to `Month`, valid values of `AutoRenewPeriod` are 1, 2, 3, 6, and 12.
 	//
 	// example:
 	//
 	// 2
 	AutoRenewPeriod *int32 `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.***	- For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+	// A client-generated token that you can use to ensure the idempotency of the request. Generate a value that is unique among different requests. **ClientToken*	- can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
 	//
 	// example:
 	//
@@ -177,17 +183,17 @@ type CreateInstanceRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The ID of the cluster in which to create the instance.
 	//
-	// >  This parameter will be removed in the future. We recommend that you use other parameters to ensure future compatibility.
+	// > This parameter is deprecated. To ensure future compatibility, use other parameters.
 	//
 	// example:
 	//
 	// c-bp67acfmxazb4p****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The performance mode of the burstable instance. Valid values:
+	// The performance mode of the burstable performance instance. Valid values:
 	//
-	// 	- Standard: standard mode. For more information, see the "Standard mode" section in the [Overview of burstable instances](https://help.aliyun.com/document_detail/59977.html) topic.
+	// - `Standard`: standard mode. For more information about the performance of burstable performance instances, see the "Standard mode" section in [Burstable performance instances](https://help.aliyun.com/document_detail/59977.html).
 	//
-	// 	- Unlimited: unlimited mode. For more information, see the "Unlimited mode" section in the [Burstable instances](https://help.aliyun.com/document_detail/59977.html) topic.
+	// - `Unlimited`: unlimited mode. For more information about the performance of burstable performance instances, see the "Unlimited mode" section in [Burstable performance instances](https://help.aliyun.com/document_detail/59977.html).
 	//
 	// example:
 	//
@@ -195,35 +201,43 @@ type CreateInstanceRequest struct {
 	CreditSpecification *string `json:"CreditSpecification,omitempty" xml:"CreditSpecification,omitempty"`
 	// The data disks.
 	DataDisk []*CreateInstanceRequestDataDisk `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
-	// The ID of the dedicated host on which to create the instance.
+	// The ID of the dedicated host.
+	//
+	// <props="china">You can call the [DescribeDedicatedHosts](https://help.aliyun.com/document_detail/134242.html) operation to query the list of dedicated host IDs.
+	//
+	// <props="intl">
 	//
 	// You can call the [DescribeDedicatedHosts](https://help.aliyun.com/document_detail/134242.html) operation to query the list of dedicated host IDs.
 	//
-	// > Spot instances (spot instances) cannot be created on dedicated hosts. If you specify DedicatedHostId, SpotStrategy and SpotPriceLimit are automatically ignored.
+	//
+	//
+	// 	Notice:
+	//
+	// You cannot create spot instances on dedicated hosts. If you specify `DedicatedHostId`, the `SpotStrategy` and `SpotPriceLimit` parameters are ignored.
 	//
 	// example:
 	//
 	// dh-bp67acfmxazb4p****
 	DedicatedHostId *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
-	// Specifies whether to enable release protection for the instance. This parameter indicates whether you can use the ECS console or call the [DeleteInstance](https://help.aliyun.com/document_detail/25507.html) operation to release the instance.
+	// Specifies whether to enable deletion protection for the instance. This parameter determines whether you can release the instance by using the console or by calling the [DeleteInstance](https://help.aliyun.com/document_detail/25507.html) operation.
 	//
-	// 	- true: enables release protection.
+	// - `true`: enables deletion protection.
 	//
-	// 	- false (default): disables release protection.
+	// - `false`: disables deletion protection. This is the default value.
 	//
-	// >  This parameter is applicable only to pay-as-you-go instances. It can protect instances against manual releases, but not against automatic releases.
+	// > This parameter is applicable only to pay-as-you-go instances. It can prevent only manual releases but not releases that are performed by the system.
 	//
 	// example:
 	//
 	// false
 	DeletionProtection *bool `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
-	// The number of the deployment set group to which to deploy the instance. If the deployment set specified by the DeploymentSetId parameter uses the high availability group strategy (AvailabilityGroup), you can use the DeploymentSetGroupNo parameter to specify a deployment set group in the deployment set. Valid values: 1 to 7.
+	// If the deployment set you specified uses the high availability group strategy (AvailabilityGroup), you can use this parameter to specify the group number of the instance within the deployment set. Valid values: 1 to 7.
 	//
 	// example:
 	//
 	// 1
 	DeploymentSetGroupNo *int32 `json:"DeploymentSetGroupNo,omitempty" xml:"DeploymentSetGroupNo,omitempty"`
-	// The ID of the deployment set to which to deploy the instance.
+	// The ID of the deployment set.
 	//
 	// example:
 	//
@@ -231,17 +245,17 @@ type CreateInstanceRequest struct {
 	DeploymentSetId *string `json:"DeploymentSetId,omitempty" xml:"DeploymentSetId,omitempty"`
 	// The description of the instance. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
 	//
-	// This parameter is empty by default.
+	// Default value: empty.
 	//
 	// example:
 	//
 	// InstanceTest
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	// Specifies whether to perform a dry run for this request. Valid values:
 	//
-	// 	- true: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, service limits, and unavailable ECS resources. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// - `true`: Performs a dry run to check the request for issues like parameter validity and permissions, without creating the instance. If the check succeeds, a `DryRunOperation` error code is returned. If the check fails, an error message is returned.
 	//
-	// 	- false (default): performs a dry run and performs the actual request. If the request passes the dry run, the operation is performed.
+	// - `false`: performs a dry run and creates the instance if the request passes the dry run. This is the default value.
 	//
 	// example:
 	//
@@ -249,17 +263,17 @@ type CreateInstanceRequest struct {
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The hostname of the instance.
 	//
-	// 	- The hostname cannot start or end with a period (.) or hyphen (-). It cannot contain consecutive periods (.) or hyphens (-).
+	// - The first and last characters cannot be periods (.) or hyphens (-). These characters also cannot be used consecutively.
 	//
-	// 	- For a Windows instance, the hostname must be 2 to 15 characters in length and cannot contain periods (.) or contain only digits. It can contain letters, digits, and hyphens (-).
+	// - For Windows instances: The hostname must be 2 to 15 characters long, cannot contain periods (.), and cannot consist of only digits. It can contain letters, digits, and hyphens (-).
 	//
-	// 	- For an instance that runs another type of operating system such as Linux, the hostname must be 2 to 64 characters in length. You can use periods (.) to separate the hostname into multiple segments. Each segment can contain letters, digits, and hyphens (-).
+	// - For other operating systems, such as Linux: The hostname must be 2 to 64 characters long. You can use periods (.) as separators. The segments between periods can contain letters, digits, and hyphens (-).
 	//
 	// example:
 	//
 	// LocalHostName
 	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// The ID of the high performance computing (HPC) cluster to which to assign the instance.
+	// The ID of the HPC cluster to which the instance belongs.
 	//
 	// example:
 	//
@@ -267,55 +281,55 @@ type CreateInstanceRequest struct {
 	HpcClusterId *string `json:"HpcClusterId,omitempty" xml:"HpcClusterId,omitempty"`
 	// Specifies whether to enable the access channel for instance metadata. Valid values:
 	//
-	// 	- enabled
+	// - `enabled`
 	//
-	// 	- disabled
+	// - `disabled`
 	//
-	// Default value: enabled.
+	// Default value: `enabled`.
 	//
-	// >  For more information about instance metadata, see [Overview of instance metadata](https://help.aliyun.com/document_detail/49122.html).
+	// > For more information about instance metadata, see [Overview of instance metadata](https://help.aliyun.com/document_detail/49122.html).
 	//
 	// example:
 	//
 	// enabled
 	HttpEndpoint *string `json:"HttpEndpoint,omitempty" xml:"HttpEndpoint,omitempty"`
-	// >  This parameter is in invitational preview and is not publicly available.
+	// > This parameter is not publicly available.
 	//
 	// example:
 	//
 	// 0
 	HttpPutResponseHopLimit *int32 `json:"HttpPutResponseHopLimit,omitempty" xml:"HttpPutResponseHopLimit,omitempty"`
-	// Specifies whether to forcibly use the security hardening mode (IMDSv2) to access instance metadata. Valid values:
+	// Specifies whether to enforce token-based access (IMDSv2) to instance metadata. Valid values:
 	//
-	// 	- optional: does not forcefully use the security hardening mode (IMDSv2).
+	// - `optional`: does not enforce the use of IMDSv2.
 	//
-	// 	- required: forcefully uses the security hardening mode (IMDSv2). After you set this parameter to required, you cannot access instance metadata in normal mode.
+	// - `required`: enforces the use of IMDSv2. If you set this value, you cannot use IMDSv1 to access instance metadata.
 	//
-	// Default value: optional.
+	// Default value: `optional`.
 	//
-	// >  For more information about the modes of accessing instance metadata, see [Access mode of instance metadata](https://help.aliyun.com/document_detail/150575.html).
+	// > For more information about the modes of accessing instance metadata, see [Access instance metadata](https://help.aliyun.com/document_detail/150575.html).
 	//
 	// example:
 	//
 	// optional
 	HttpTokens *string `json:"HttpTokens,omitempty" xml:"HttpTokens,omitempty"`
-	// The name of the image family. You can set this parameter to obtain the latest available custom image from the specified image family to create the instance.
+	// The name of the image family. Setting this parameter creates an instance with the latest available image from the specified image family.
 	//
-	// 	- ImageFamily must be empty if `ImageId` is specified.
+	// - If `ImageId` is specified, this parameter cannot be used.
 	//
-	// 	- ImageFamily can be specified if `ImageId` is not specified.
+	// - If `ImageId` is not specified, you can specify this parameter.
 	//
 	// example:
 	//
 	// hangzhou-daily-update
 	ImageFamily *string `json:"ImageFamily,omitempty" xml:"ImageFamily,omitempty"`
-	// The ID of the image to use to create the instance. To use an Alibaba Cloud Marketplace image, you can view the `image ID` on the product page of the Alibaba Cloud Marketplace image. This parameter is required if you do not specify `ImageFamily` to obtain the latest available custom image from the specified image family.
+	// The ID of the image used to create the instance. For an Alibaba Cloud Marketplace image, find its `ImageId` on the product details page. This parameter is required if you do not specify `ImageFamily` to use the latest available image from an image family.
 	//
 	// example:
 	//
 	// ubuntu_18_04_64_20G_alibase_20190624.vhd
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The internal IP address to assign to the instance.
+	// The internal IP address of the instance.
 	//
 	// example:
 	//
@@ -323,25 +337,25 @@ type CreateInstanceRequest struct {
 	InnerIpAddress *string `json:"InnerIpAddress,omitempty" xml:"InnerIpAddress,omitempty"`
 	// The billing method of the instance. Valid values:
 	//
-	// 	- PrePaid: subscription. If you set this parameter to PrePaid, make sure that you have sufficient balance or credit in your account. Otherwise, an `InvalidPayMethod` error is returned.
+	// - `PrePaid`: subscription. If you select this billing method, make sure that your account supports balance payment or credit payment. Otherwise, an `InvalidPayMethod` error is returned.
 	//
-	// 	- PostPaid (default): pay-as-you-go.
+	// - `PostPaid`: pay-as-you-go. This is the default value.
 	//
 	// example:
 	//
 	// PrePaid
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	// The name of the instance. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-). If you do not specify this parameter, the instance ID is used as the instance name by default.
+	// The name of the instance. The name must be 2 to 128 characters long. It can contain Unicode letters (such as Chinese characters), digits, colons (:), underscores (_), periods (.), and hyphens (-). If you do not specify this parameter, the instance ID is used by default.
 	//
 	// example:
 	//
-	// 2018-12-06T103200Z
+	// k8s-node-[1,4]-alibabacloud
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// The instance type.
 	//
-	// 	- Instance type selection: See [Instance families](https://help.aliyun.com/document_detail/25378.html) or call the [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) operation to query the performance data of instance types, or see [Best practices for instance type selection](https://help.aliyun.com/document_detail/58291.html) to learn about how to select instance types.
+	// - Select an instance type: For more information, see [Instance type families](https://help.aliyun.com/document_detail/25378.html), call the [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) operation to query performance data, or see [Select instance types](https://help.aliyun.com/document_detail/58291.html) for selection guidance.
 	//
-	// 	- Query of available resources: Call the [DescribeAvailableResource](https://help.aliyun.com/document_detail/66186.html) operation to query resources available in a specific region or zone.
+	// - Query available resources: Call the [DescribeAvailableResource](https://help.aliyun.com/document_detail/66186.html) operation to query available resources in a specific region or zone.
 	//
 	// This parameter is required.
 	//
@@ -349,13 +363,13 @@ type CreateInstanceRequest struct {
 	//
 	// ecs.g6.large
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The billing method for network usage. Default value: PayByTraffic. Valid values:
+	// The network billing method. Valid values:
 	//
-	// 	- PayByBandwidth: pay-by-bandwidth
+	// - `PayByBandwidth`: pay-by-bandwidth.
 	//
-	// 	- PayByTraffic (default): pay-by-traffic
+	// - `PayByTraffic`: pay-by-traffic. This is the default value.
 	//
-	// >  When the **pay-by-traffic*	- billing method is used for network usage, the maximum inbound and outbound bandwidths are used as the upper limits of bandwidths instead of guaranteed performance specifications. In scenarios where demand outstrips resource supplies, these maximum bandwidth values may be limited. If you want guaranteed bandwidths for your instance, use the **pay-by-bandwidth*	- billing method for network usage.
+	// > With the **pay-by-traffic*	- billing method, the specified peak bandwidth is an upper limit, not a guaranteed speed. Actual bandwidth may be limited during resource contention. If your business requires guaranteed bandwidth, use the **pay-by-bandwidth*	- billing method.
 	//
 	// example:
 	//
@@ -363,9 +377,9 @@ type CreateInstanceRequest struct {
 	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
 	// The maximum inbound public bandwidth. Unit: Mbit/s. Valid values:
 	//
-	// 	- When the purchased outbound public bandwidth is less than or equal to 10 Mbit/s, the valid values of this parameter are 1 to 10 and the default value is 10.
+	// - If `InternetMaxBandwidthOut` is 10 or less, the value of this parameter is an integer from 1 to 10. Default value: 10.
 	//
-	// 	- When the purchased outbound public bandwidth is greater than 10 Mbit/s, the valid values of this parameter are 1 to the `InternetMaxBandwidthOut` value and the default value is the `InternetMaxBandwidthOut` value.
+	// - If `InternetMaxBandwidthOut` is greater than 10 Mbit/s, the value of this parameter is an integer from 1 to the value of `InternetMaxBandwidthOut`. Default value: the value of `InternetMaxBandwidthOut`.
 	//
 	// example:
 	//
@@ -379,15 +393,15 @@ type CreateInstanceRequest struct {
 	//
 	// 5
 	InternetMaxBandwidthOut *int32 `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
-	// Specifies whether the instance is I/O optimized. Valid values:
+	// 是否为 I/O 优化实例。取值范围：
 	//
-	// 	- none: The instance is not I/O optimized.
+	// - none：非 I/O 优化。
 	//
-	// 	- optimized: The ECS instance is I/O optimized.
+	// - optimized：I/O 优化。
 	//
-	// For retired instance types, the default value is none. For more information, see [Retired instance types](https://help.aliyun.com/document_detail/55263.html).
+	// [已停售的实例规格](https://help.aliyun.com/document_detail/55263.html)实例默认值是 none。
 	//
-	// For other instance types, the default value is optimized.
+	// 其他实例规格默认值是 optimized。
 	//
 	// example:
 	//
@@ -395,53 +409,91 @@ type CreateInstanceRequest struct {
 	IoOptimized *string `json:"IoOptimized,omitempty" xml:"IoOptimized,omitempty"`
 	// The name of the key pair.
 	//
-	// >  For Windows instances, this parameter is ignored. This parameter is empty by default. The `Password` parameter takes effect even if the KeyPairName parameter is specified.
+	// > For Windows instances, this parameter is ignored and the `Password` parameter is used. Default value: empty.
 	//
 	// example:
 	//
 	// KeyPairTestName
 	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
-	// >  This parameter is in invitational preview and is not publicly available.
+	// > This parameter is in invitational preview and is not publicly available.
 	//
 	// example:
 	//
-	// hide
+	// null
 	NodeControllerId *string `json:"NodeControllerId,omitempty" xml:"NodeControllerId,omitempty"`
 	OwnerAccount     *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The password of the instance. The password must be 8 to 30 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported:
+	// The password of the instance. The password must be 8 to 30 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. The supported special characters are:
 	//
-	//     ( ) ` ~ ! @ # $ % ^ & 	- - _ + = | { } [ ] : ; \\" < > , . ? /
+	// ```
 	//
-	// Take note of the following items:
+	// ()`~!@#$%^&*-_+=|{}[]:;\\"<>,.?/
 	//
-	// 	- For security reasons, we recommend that you use HTTPS to send requests if the Password parameter is specified.
+	// ```
 	//
-	// 	- Passwords of Windows instances cannot start with a forward slash (/).
+	// Note the following:
 	//
-	// 	- Passwords cannot be set for instances that run specific types of operating systems such as Others Linux and Fedora CoreOS. For these instances, only key pairs can be set.
+	// - If you specify the `Password` parameter, send the request over HTTPS to prevent the password from being leaked.
+	//
+	// - For Windows instances, the password cannot start with a forward slash (/).
+	//
+	// - Some operating systems, such as Others Linux and Fedora CoreOS, do not support password-based logon. For these, you must use a key pair.
 	//
 	// example:
 	//
 	// TestEcs123!
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// Specifies whether to use the password preset in the image. When you use this parameter, leave the Password parameter empty and make sure that the selected image has a password preset.
+	// Specifies whether to use the password preconfigured in the image. If you set this parameter, you must leave the `Password` parameter empty and make sure that the image has a password preconfigured.
 	//
 	// example:
 	//
 	// false
 	PasswordInherit *bool `json:"PasswordInherit,omitempty" xml:"PasswordInherit,omitempty"`
-	// The subscription period of the instance. The unit is specified by `PeriodUnit`. This parameter is valid and required only when `InstanceChargeType` is set to `PrePaid`. If `DedicatedHostId` is specified, the value of Period must not exceed the subscription period of the specified dedicated host. Valid values:
+	// The subscription duration of the resource. The unit is specified by `PeriodUnit`. This parameter is required and takes effect only if `InstanceChargeType` is set to `PrePaid`. If you specify `DedicatedHostId`, the value of this parameter cannot exceed the subscription duration of the specified dedicated host. Valid values:
 	//
-	// Valid values if PeriodUnit is set to Month: 1, 2, 3, 6, and 12.
+	// <props="china">
+	//
+	// - If `PeriodUnit` is set to `Week`: 1, 2, 3, and 4.
+	//
+	// - If `PeriodUnit` is set to `Month`: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, and 60.
+	//
+	//
+	//
+	// <props="intl">
+	//
+	// If `PeriodUnit` is set to `Month`, valid values are 1, 2, 3, 6, and 12.
+	//
+	//
+	//
+	// <props="partner">
+	//
+	// If `PeriodUnit` is set to `Month`, valid values are 1, 2, 3, 6, and 12.
 	//
 	// example:
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The unit of the subscription period. Valid values:
+	// The unit of the subscription duration. Valid values:
+	//
+	// <props="china">
+	//
+	// - Week
+	//
+	// - Month
+	//
+	//
+	//
+	// <props="intl">
 	//
 	// Month
+	//
+	//
+	//
+	// <props="partner">
+	//
+	// Month
+	//
+	//
 	//
 	// Default value: Month.
 	//
@@ -449,19 +501,19 @@ type CreateInstanceRequest struct {
 	//
 	// Month
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// The private IP address to assign to the instance. The private IP address must be an available IP address in the CIDR block of the specified vSwitch.
+	// The private IP address of the instance. The IP address must be an available address in the CIDR block of the specified VSwitch.
 	//
 	// example:
 	//
 	// 172.16.236.*
 	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
-	// The name of the instance Resource Access Management (RAM) role. You can call the [ListRoles](https://help.aliyun.com/document_detail/28713.html) operation provided by RAM to query the instance RAM roles that you created.
+	// The name of the instance RAM role. You can call the RAM API operation [ListRoles](https://help.aliyun.com/document_detail/28713.html) to query the instance RAM roles that you created.
 	//
 	// example:
 	//
 	// RAMTestName
 	RamRoleName *string `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
-	// The ID of the region in which to create the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+	// The ID of the region in which to create the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to view the latest list of Alibaba Cloud regions.
 	//
 	// This parameter is required.
 	//
@@ -469,7 +521,7 @@ type CreateInstanceRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which to assign the instance.
+	// The ID of the resource group to which the instance belongs.
 	//
 	// example:
 	//
@@ -479,15 +531,15 @@ type CreateInstanceRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// Specifies whether to enable security hardening. Valid values:
 	//
-	// 	- Active: enables security hardening. This value applies only to public images.
+	// - `Active`: enables security hardening. This setting is valid only for system images.
 	//
-	// 	- Deactive: disables security hardening. This value is applicable to all images.
+	// - `Deactive`: disables security hardening. This setting is valid for all image types.
 	//
 	// example:
 	//
 	// Active
 	SecurityEnhancementStrategy *string `json:"SecurityEnhancementStrategy,omitempty" xml:"SecurityEnhancementStrategy,omitempty"`
-	// The ID of the security group to which to assign the instance.
+	// The ID of the security group to assign to the instance.
 	//
 	// example:
 	//
@@ -495,29 +547,31 @@ type CreateInstanceRequest struct {
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	// The protection period of the spot instance. Unit: hours. Default value: 1. Valid values:
 	//
-	// 	- 1: After a spot instance is created, Alibaba Cloud ensures that the instance is not automatically released within 1 hour. After the 1-hour protection period ends, the system compares the bid price with the market price and checks the resource inventory to determine whether to retain or release the instance.
+	// - 1: Alibaba Cloud ensures that the instance runs for 1 hour without being automatically released. After 1 hour, the system compares your bid with the market price and checks the resource inventory to determine whether to retain or reclaim the instance.
 	//
-	// 	- 0: After a spot instance is created, Alibaba Cloud does not ensure that the instance runs for 1 hour. The system compares the bid price with the market price and checks the resource inventory to determine whether to retain or release the instance.
+	// - 0: Alibaba Cloud does not guarantee that the instance runs for 1 hour after it is created. The system compares your bid with the market price and checks the resource inventory to determine whether to retain or reclaim the instance.
+	//
+	// > 	- This parameter supports only 0 and 1.
 	//
 	// >
 	//
-	// 	- You can set this parameter only to 0 or 1.
+	// > 	- Spot instances are billed per second. We recommend that you select a protection period based on the expected runtime of your tasks.
 	//
-	// 	- The spot instance is billed by second. Specify an appropriate protection period.
+	// >
 	//
-	// 	- Alibaba Cloud sends an ECS system event to notify you 5 minutes before the instance is released.
+	// > 	- Alibaba Cloud sends a notification through ECS system events 5 minutes before the instance is reclaimed.
 	//
 	// example:
 	//
 	// 1
 	SpotDuration *int32 `json:"SpotDuration,omitempty" xml:"SpotDuration,omitempty"`
-	// The interruption mode of the spot instance. Valid values:
+	// The interruption mode for the spot instance. Valid values:
 	//
-	// 	- Terminate: The instance is released.
+	// - `Terminate`: releases the instance.
 	//
-	// 	- Stop: The instance is stopped in economical mode.
+	// - `Stop`: stops the instance in economical mode.
 	//
-	//     For information about the economical mode, see [Economical mode](https://help.aliyun.com/document_detail/63353.html).
+	//   For more information about economical mode, see [Economical mode for pay-as-you-go instances](https://help.aliyun.com/document_detail/63353.html).
 	//
 	// Default value: Terminate.
 	//
@@ -525,65 +579,65 @@ type CreateInstanceRequest struct {
 	//
 	// Terminate
 	SpotInterruptionBehavior *string `json:"SpotInterruptionBehavior,omitempty" xml:"SpotInterruptionBehavior,omitempty"`
-	// The maximum hourly price of the instance. The value is accurate to three decimal places. This parameter is valid only when `SpotStrategy` is set to `SpotWithPriceLimit`.
+	// The maximum hourly price of the instance. The value can be accurate to three decimal places. This parameter is valid only if `SpotStrategy` is set to `SpotWithPriceLimit`.
 	//
 	// example:
 	//
 	// 0.98
 	SpotPriceLimit *float32 `json:"SpotPriceLimit,omitempty" xml:"SpotPriceLimit,omitempty"`
-	// The bidding policy for the pay-as-you-go instance. This parameter is valid only if you set `InstanceChargeType` to `PostPaid`. Valid values:
+	// The bidding policy for the instance. This parameter is valid only if `InstanceChargeType` is set to `PostPaid`. Valid values:
 	//
-	// 	- NoSpot (default): The instance is created as a regular pay-as-you-go instance.
+	// - `NoSpot`: The instance is created as a regular pay-as-you-go instance. This is the default value.
 	//
-	// 	- SpotWithPriceLimit: The instance is a spot instance for which you specify the maximum hourly price.
+	// - `SpotWithPriceLimit`: The instance is created as a spot instance with a user-defined maximum hourly price.
 	//
-	// 	- SpotAsPriceGo: The instance is a spot instance for which the market price at the time of purchase is automatically used as the bid price. The market price can be up to the pay-as-you-go price.
+	// - `SpotAsPriceGo`: The instance is created as a spot instance for which the system automatically bids based on the current market price.
 	//
 	// example:
 	//
 	// NoSpot
 	SpotStrategy *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
-	// The ID of the storage set.
+	// Specifies whether to create the instance on a dedicated host. Valid values:
 	//
 	// example:
 	//
 	// ss-bp1j4i2jdf3owlhe****
 	StorageSetId *string `json:"StorageSetId,omitempty" xml:"StorageSetId,omitempty"`
-	// The maximum number of partitions in the storage set. Valid values: greater than or equal to 2.
+	// The maximum number of partitions in the storage set. The value must be 2 or greater.
 	//
 	// example:
 	//
 	// 2
 	StorageSetPartitionNumber *int32 `json:"StorageSetPartitionNumber,omitempty" xml:"StorageSetPartitionNumber,omitempty"`
-	// The tags to add to the instance.
+	// The tags.
 	Tag []*CreateInstanceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// Specifies whether to create the instance on a dedicated host. Valid values:
+	// Specifies whether to associate the instance on a dedicated host with the dedicated host. Valid values:
 	//
-	// 	- default: creates the instance on a non-dedicated host.
+	// - `default`: does not associate the instance with the dedicated host. When a stopped instance in economical mode is restarted, it may be placed on a different dedicated host in the auto-deployment resource pool if the original dedicated host has insufficient resources.
 	//
-	// 	- host: creates the instance on a dedicated host. If you do not specify `DedicatedHostId`, Alibaba Cloud selects a dedicated host for the instance.
+	// - `host`: associates the instance with the dedicated host. When a stopped instance in economical mode is restarted, it is still placed on the original dedicated host. If the original dedicated host has insufficient resources, the instance fails to restart.
 	//
-	// Default value: default.
+	// Default value: `default`.
 	//
 	// example:
 	//
 	// default
 	Tenancy *string `json:"Tenancy,omitempty" xml:"Tenancy,omitempty"`
-	// Specifies whether to use the system configurations for virtual machines. Alibaba Cloud provides the Network Time Protocol (NTP) and Key Management Service (KMS) system configurations for Windows and the NTP and Yellowdog Updater, Modified (YUM) system configurations for Linux.
+	// 是否使用阿里云提供的虚拟机系统配置（Windows：NTP、KMS；Linux：NTP、YUM）。
 	//
 	// example:
 	//
 	// true
 	UseAdditionalService *bool `json:"UseAdditionalService,omitempty" xml:"UseAdditionalService,omitempty"`
-	// The user data of the instance. The user data must be encoded in Base64. The maximum size of raw data is 32 KB.
+	// The user data of the instance. The user data must be Base64-encoded. The raw data can be up to 32 KB in size.
 	//
 	// example:
 	//
 	// ZWNobyBoZWxsbyBlY3Mh
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
-	// The ID of the vSwitch to which to connect the instance. This parameter is required when you create an instance in a VPC. You can call the [DescribeVSwitches](https://help.aliyun.com/document_detail/35748.html) operation to query available vSwitches.
+	// When you create an instance in a VPC, you must specify a VSwitch ID. You can call the [DescribeVSwitches](https://help.aliyun.com/document_detail/35748.html) operation to query information about the VSwitches that you created.
 	//
-	// >  If `VSwitchId` is specified, the zone specified by `ZoneId` must be the zone where the specified vSwitch resides. You can also leave `ZoneId` empty. Then, the system selects the zone where the specified vSwitch resides.
+	// > If `VSwitchId` is specified, `ZoneId` must match the VSwitch\\"s zone. If `ZoneId` is left unspecified, the system automatically uses the VSwitch\\"s zone.
 	//
 	// example:
 	//
@@ -595,11 +649,11 @@ type CreateInstanceRequest struct {
 	//
 	// 10
 	VlanId *string `json:"VlanId,omitempty" xml:"VlanId,omitempty"`
-	// The ID of the zone in which to create the instance. You can call the [DescribeZones](https://help.aliyun.com/document_detail/25610.html) operation to query the zones in a specific region.
+	// The ID of the zone to which the instance belongs. For more information, call the [DescribeZones](https://help.aliyun.com/document_detail/25610.html) operation to query the list of zones.
 	//
-	// >  If `VSwitchId` is specified, the zone specified by `ZoneId` must be the zone where the specified vSwitch resides. You can also leave `ZoneId` empty. Then, the system selects the zone where the specified vSwitch resides.
+	// > If `VSwitchId` is specified, `ZoneId` must match the VSwitch\\"s zone. If `ZoneId` is left unspecified, the system automatically uses the VSwitch\\"s zone.
 	//
-	// This parameter is empty by default.
+	// Default value: empty, which indicates that the system randomly selects a zone.
 	//
 	// example:
 	//
@@ -1211,7 +1265,7 @@ func (s *CreateInstanceRequest) Validate() error {
 }
 
 type CreateInstanceRequestHibernationOptions struct {
-	// >  This parameter is in invitational preview and is not publicly available.
+	// > This parameter is in invitational preview and is not publicly available.
 	//
 	// example:
 	//
@@ -1241,29 +1295,29 @@ func (s *CreateInstanceRequestHibernationOptions) Validate() error {
 }
 
 type CreateInstanceRequestPrivatePoolOptions struct {
-	// The ID of the private pool. The ID of a private pool is the same as that of the elasticity assurance or capacity reservation for which the private pool is generated.
+	// The ID of the private pool. This is the ID of the Elastic Assurance service or the Capacity Reservation service.
 	//
 	// example:
 	//
 	// eap-bp67acfmxazb4****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The type of the private pool to use to start the instance. A private pool is generated when an elasticity assurance or a capacity reservation takes effect. You can select a private pool to start instances. Valid values:
+	// The matching mode for the private pool. A private pool is a capacity pool generated by the Elastic Assurance service or Capacity Reservation service. Valid values:
 	//
-	// 	- Open: open private pool. The system selects a matching open private pool to start the instance. If no matching open private pools are found, resources in the public pool are used. When you set this parameter to Open, you can leave the `PrivatePoolOptions.Id` parameter empty.
+	// - `Open`: Attempts to use capacity from an open private pool. If unavailable, it uses resources from the public pool. You do not need to specify `PrivatePoolOptions.Id`.
 	//
-	// 	- Target: specified private pool. The system uses the capacity in a specified private pool to start the instance. If the specified private pool is unavailable, the instance cannot be started. If you set this parameter to Target, you must specify the `PrivatePoolOptions.Id` parameter.
+	// - `Target`: Uses capacity only from a specific private pool, which you must specify in `PrivatePoolOptions.Id`. The request fails if the specified capacity is unavailable.
 	//
-	// 	- None: no private pool. The capacity in private pools is not used.
+	// - `None`: The instance is launched without using private pool capacity.
 	//
-	// Default value: none.
+	// Default value: `None`.
 	//
-	// In the following scenarios, the PrivatePoolOptions.MatchCriteria parameter can be set only to `None` or left empty:
+	// In any of the following scenarios, the capacity option for the private pool can only be set to `None` or left unspecified.
 	//
-	// 	- Create a spot instance.
+	// - Create a spot instance.
 	//
-	// 	- Create an instance in the classic network.
+	// - Create an ECS instance in the classic network.
 	//
-	// 	- Create an instance on a dedicated host.
+	// - Create an ECS instance on a dedicated host.
 	//
 	// example:
 	//
@@ -1304,15 +1358,21 @@ func (s *CreateInstanceRequestPrivatePoolOptions) Validate() error {
 type CreateInstanceRequestSystemDisk struct {
 	// The category of the system disk. Valid values:
 	//
-	// 	- cloud_essd: ESSD. If SystemDisk.Category is set to this value, you can use `SystemDisk.PerformanceLevel` to specify the performance level of the disk.
+	// - `cloud_efficiency`: Ultra Disk.
 	//
-	// 	- cloud_efficiency: ultra disk.
+	// - `cloud_ssd`: SSD cloud disk.
 	//
-	// 	- cloud_ssd: standard SSD.
+	// - `cloud_essd`: ESSD.
 	//
-	// 	- cloud: basic disk.
+	// - `cloud`: Basic Disk.
 	//
-	// For non-I/O optimized instances of retired instance types, the default value is cloud. For other types of instances, the default value is cloud_efficiency.
+	// - `cloud_auto`: ESSD AutoPL disk.
+	//
+	// - `cloud_essd_entry`: ESSD Entry disk.
+	//
+	// > You can set this parameter to `cloud_essd_entry` only if you set `InstanceType` to an instance type of the [general-purpose instance type family u1](https://help.aliyun.com/document_detail/457079.html) (`ecs.u1`) or [economy instance type family e](https://help.aliyun.com/document_detail/108489.html) (`ecs.e`).
+	//
+	// The default value is `cloud` for retired and non-I/O optimized instance types, and `cloud_efficiency` for all other types.
 	//
 	// example:
 	//
@@ -1320,31 +1380,31 @@ type CreateInstanceRequestSystemDisk struct {
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The description of the system disk. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
 	//
-	// This parameter is empty by default.
+	// Default value: empty.
 	//
 	// example:
 	//
 	// TestDescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the system disk. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+	// The name of the system disk. The name must be 2 to 128 characters in length. It can contain letters in the Unicode letter category (such as English letters, Chinese characters, and digits), colons (:), underscores (_), periods (.), and hyphens (-).
 	//
-	// This parameter is empty by default.
+	// Default value: empty.
 	//
 	// example:
 	//
 	// SystemDiskName
 	DiskName *string `json:"DiskName,omitempty" xml:"DiskName,omitempty"`
-	// The performance level of the ESSD that is used as the system disk. Default value: PL1. Valid values:
+	// The performance level of the ESSD to use as the system disk. Valid values:
 	//
-	// 	- PL0: A single ESSD can deliver up to 10,000 random read/write IOPS.
+	// - PL0: A single disk delivers up to 10,000 random read/write IOPS.
 	//
-	// 	- PL1 (default): A single ESSD can deliver up to 50,000 random read/write IOPS.
+	// - PL1: A single disk delivers up to 50,000 random read/write IOPS. This is the default value.
 	//
-	// 	- PL2: A single ESSD can deliver up to 100,000 random read/write IOPS.
+	// - PL2: A single disk delivers up to 100,000 random read/write IOPS.
 	//
-	// 	- PL3: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
+	// - PL3: A single disk delivers up to 1,000,000 random read/write IOPS.
 	//
-	// For information about ESSD performance levels, see [ESSDs](https://help.aliyun.com/document_detail/122389.html).
+	// For more information about how to select an ESSD performance level, see [ESSDs](https://help.aliyun.com/document_detail/122389.html).
 	//
 	// example:
 	//
@@ -1352,19 +1412,19 @@ type CreateInstanceRequestSystemDisk struct {
 	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
 	// The size of the system disk. Unit: GiB. Valid values:
 	//
-	// 	- Basic disks: 20 to 500.
+	// - Basic Disk: 20 to 500.
 	//
-	// 	- Other disks: 20 to 2048.
+	// - Other cloud disk types: 20 to 2048.
 	//
-	// The value of this parameter must be at least 20 and greater than or equal to the size of the image.
+	// The value must be greater than or equal to `max(20, ImageSize)`.
 	//
-	// Default value: 40 or the size of the image, whichever is greater.
+	// Default value: max(40, ImageSize).
 	//
 	// example:
 	//
 	// 40
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you need to specify this parameter.
+	// 专属块存储集群 ID。如果您在创建 ECS 实例时，需要使用专属块存储集群中的云盘资源作为系统盘，请设置该参数。
 	//
 	// example:
 	//
@@ -1439,19 +1499,19 @@ func (s *CreateInstanceRequestSystemDisk) Validate() error {
 }
 
 type CreateInstanceRequestArn struct {
-	// >  This parameter is in invitational preview and is not publicly available.
+	// > This parameter is in invitational preview and is not publicly available.
 	//
 	// example:
 	//
 	// 1234567890
 	AssumeRoleFor *int64 `json:"AssumeRoleFor,omitempty" xml:"AssumeRoleFor,omitempty"`
-	// >  This parameter is in invitational preview and is not publicly available.
+	// > This parameter is in invitational preview and is not publicly available.
 	//
 	// example:
 	//
 	// Primary
 	RoleType *string `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
-	// >  This parameter is in invitational preview and is not publicly available.
+	// > This parameter is in invitational preview and is not publicly available.
 	//
 	// example:
 	//
@@ -1501,139 +1561,137 @@ func (s *CreateInstanceRequestArn) Validate() error {
 type CreateInstanceRequestDataDisk struct {
 	// The category of data disk N. Valid values:
 	//
-	// 	- cloud_efficiency: utra disk.
+	// - `cloud_efficiency`: Ultra Disk.
 	//
-	// 	- cloud_ssd: standard SSD.
+	// - `cloud_ssd`: SSD cloud disk.
 	//
-	// 	- cloud_essd: ESSD.
+	// - `cloud_essd`: ESSD.
 	//
-	// 	- cloud: basic disk.
+	// - `cloud`: Basic Disk.
 	//
-	// 	- cloud_auto: ESSD AutoPL disk.
+	// - `cloud_auto`: ESSD AutoPL disk.
 	//
-	// 	- cloud_essd_entry: ESSD Entry disk.
+	// - `cloud_essd_entry`: ESSD Entry disk.
 	//
-	//     **
+	//   > You can set this parameter to `cloud_essd_entry` only if you set `InstanceType` to an `ecs.u1` or `ecs.e` instance type family.
 	//
-	//     **Note*	- This parameter can be set to `cloud_essd_entry` only when `InstanceType` is set to `ecs.u1` or `ecs.e`.
+	// - `elastic_ephemeral_disk_standard`: standard elastic ephemeral disk.
 	//
-	// 	- elastic_ephemeral_disk_standard: standard elastic ephemeral disk.
+	// - `elastic_ephemeral_disk_premium`: premium elastic ephemeral disk.
 	//
-	// 	- elastic_ephemeral_disk_premium: premium elastic ephemeral disk.
-	//
-	// For I/O optimized instances, the default value is cloud_efficiency. For non-I/O optimized instances, the default value is cloud.
+	// Default value for I/O optimized instances: `cloud_efficiency`. Default value for non-I/O optimized instances: `cloud`.
 	//
 	// example:
 	//
 	// cloud_ssd
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// Specifies whether to release data disk N when the instance is released. Valid values:
+	// Specifies whether to release the data disk when the instance is released.
 	//
-	// 	- true
+	// - `true`: releases the data disk.
 	//
-	// 	- false
+	// - `false`: does not release the data disk.
 	//
-	// Default value: true.
+	// Default value: `true`.
 	//
 	// example:
 	//
 	// true
 	DeleteWithInstance *bool `json:"DeleteWithInstance,omitempty" xml:"DeleteWithInstance,omitempty"`
-	// The description of data disk N. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+	// The description of the data disk. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
 	// TestDescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The mount point of data disk N.
+	// The mount point of the data disk.
 	//
-	// >  This parameter is applicable to scenarios in which a full image is used to create instances. A full image is an image that contains an operating system, application software, and business data. For these scenarios, you can set this parameter to the mount point of data disk N contained in the full image and modify the `DataDisk.N.Size` and `DataDisk.N.Category` parameters to change the category and size of data disk N created based on the image.
+	// > This parameter is valid only for whole machine images. You can set this parameter to the mount point that corresponds to the data disk in the whole machine image and modify the `DataDisk.N.Size` and `DataDisk.N.Category` parameters to change the category and size of the data disk in the whole machine image.
 	//
 	// example:
 	//
 	// /dev/xvdb
 	Device *string `json:"Device,omitempty" xml:"Device,omitempty"`
-	// The name of data disk N. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+	// The name of the data disk. The name must be 2 to 128 characters in length. It can contain letters in the Unicode letter category (such as English letters, Chinese characters, and digits), colons (:), underscores (_), periods (.), and hyphens (-).
 	//
 	// example:
 	//
 	// DataDiskName
 	DiskName *string `json:"DiskName,omitempty" xml:"DiskName,omitempty"`
-	// >  This parameter is not publicly available.
+	// > This parameter is not publicly available.
 	//
 	// example:
 	//
-	// hide
+	// null
 	EncryptAlgorithm *string `json:"EncryptAlgorithm,omitempty" xml:"EncryptAlgorithm,omitempty"`
-	// Specifies whether to encrypt data disk N. Valid values:
+	// Specifies whether to encrypt data disk N.
 	//
-	// 	- true
+	// - `true`: encrypts the data disk.
 	//
-	// 	- false
+	// - `false`: does not encrypt the data disk.
 	//
-	// Default value: false.
+	// Default value: `false`.
 	//
 	// example:
 	//
 	// false
 	Encrypted *bool `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
-	// The ID of the KMS key to use for data disk N.
+	// The ID of the KMS key to use for the cloud disk.
 	//
 	// example:
 	//
 	// 0e478b7a-4262-4802-b8cb-00d****
 	KMSKeyId *string `json:"KMSKeyId,omitempty" xml:"KMSKeyId,omitempty"`
-	// The performance level of the ESSD to use as data disk N. The value of N must be the same as that in `DataDisk.N.Category` when DataDisk.N.Category is set to cloud_essd. Valid values:
+	// The performance level of the ESSD to use as a data disk. The value of N must be the same as in `DataDisk.N.Category=cloud_essd`. Valid values:
 	//
-	// 	- PL0: A single ESSD can deliver up to 10,000 random read/write IOPS.
+	// - PL0: A single disk delivers up to 10,000 random read/write IOPS.
 	//
-	// 	- PL1 (default): A single ESSD can deliver up to 50,000 random read/write IOPS.
+	// - PL1: A single disk delivers up to 50,000 random read/write IOPS. This is the default value.
 	//
-	// 	- PL2: A single ESSD can deliver up to 100,000 random read/write IOPS.
+	// - PL2: A single disk delivers up to 100,000 random read/write IOPS.
 	//
-	// 	- PL3: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
+	// - PL3: A single disk delivers up to 1,000,000 random read/write IOPS.
 	//
-	// For more information about ESSD performance levels, see [ESSDs](https://help.aliyun.com/document_detail/122389.html).
+	// For more information about how to select an ESSD performance level, see [ESSDs](https://help.aliyun.com/document_detail/122389.html).
 	//
 	// example:
 	//
 	// PL2
 	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
-	// The size of data disk N. Valid values of N: 1 to 16. Unit: GiB. Valid values:
+	// The size of data disk N. The value of N ranges from 1 to 16. Unit: GiB. Valid values:
 	//
-	// 	- Valid values if you set DataDisk.N.Category to cloud_efficiency: 20 to 32768.
+	// - `cloud_efficiency`: 20 to 32768.
 	//
-	// 	- Valid values if you set DataDisk.N.Category to cloud_ssd: 20 to 32768.
+	// - `cloud_ssd`: 20 to 32768.
 	//
-	// 	- Valid values if you set DataDisk.N.Category to cloud_essd: vary based on the `DataDisk.N.PerformanceLevel` value.
+	// - `cloud_essd`: The valid values of this parameter are related to the value of `DataDisk.N.PerformanceLevel`.
 	//
-	//     	- Valid values when DataDisk.N.PerformanceLevel is set to PL0: 1 to 65536.
+	//   - PL0: 1 to 65,536.
 	//
-	//     	- Valid values when DataDisk.N.PerformanceLevel is set to PL1: 20 to 65536.
+	//   - PL1: 20 to 65,536.
 	//
-	//     	- Valid values when DataDisk.N.PerformanceLevel is set to PL2: 461 to 65536.
+	//   - PL2: 461 to 65,536.
 	//
-	//     	- Valid values when DataDisk.N.PerformanceLevel is set to PL3: 1261 to 65536.
+	//   - PL3: 1261 to 65,536.
 	//
-	// 	- Valid values if you set DataDisk.N.Category to cloud: 5 to 2000.
+	// - `cloud`: 5 to 2000.
 	//
-	// >  The value of this parameter must be greater than or equal to the size of the snapshot specified by `SnapshotId`.
+	// > The value of this parameter must be greater than or equal to the size of the snapshot specified by `SnapshotId`.
 	//
 	// example:
 	//
 	// 2000
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The ID of the snapshot to use to create data disk N. Valid values of N: 1 to 16.
+	// The ID of the snapshot to use to create data disk N. The value of N ranges from 1 to 16.
 	//
-	// 	- If `DataDisk.N.SnapshotId` is specified, `DataDisk.N.Size` is ignored. The data disk is created based on the size of the specified snapshot.
+	// - If `DataDisk.N.SnapshotId` is specified, `DataDisk.N.Size` is ignored, and the disk is created with the same size as the snapshot.
 	//
-	// 	- Use snapshots created on or after July 15, 2013. Otherwise, an error is returned and your request is rejected.
+	// - Snapshots created on or before July 15, 2013, are not supported.
 	//
 	// example:
 	//
 	// s-bp17441ohwka0yuh****
 	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
-	// The ID of the dedicated block storage cluster to which data disk N belongs. If you want to use a disk in a dedicated block storage cluster as data disk N when you create the instance, specify this parameter.
+	// The ID of the dedicated block storage cluster. If you want to use cloud disk resources in a dedicated block storage cluster as data disks when you create an ECS instance, set this parameter.
 	//
 	// example:
 	//
@@ -1762,13 +1820,15 @@ func (s *CreateInstanceRequestDataDisk) Validate() error {
 }
 
 type CreateInstanceRequestTag struct {
-	// The key of tag N to add to the instance, disks, and primary ENI. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	// The tag key.
+	//
+	// > For better compatibility
 	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N to add to the instance, disks, and primary ENI. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`.
+	// 实例、云盘和主网卡的标签值。N 的取值范围：1\\~20。一旦传入该值，可以为空字符串。最多支持 128 个字符，不能包含`http://`或者`https://`。
 	//
 	// example:
 	//

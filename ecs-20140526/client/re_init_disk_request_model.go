@@ -32,9 +32,9 @@ type iReInitDiskRequest interface {
 type ReInitDiskRequest struct {
 	// Specifies whether to automatically start the instance after the disk is re-initialized. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// Default value: false.
 	//
@@ -62,7 +62,11 @@ type ReInitDiskRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// Specifies whether to reset the password of the instance when you re-initialize its system disk. The password must be 8 to 30 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include:
 	//
-	//     ()`~!@#$%^&*-_+=|{}[]:;\\"<>,.?/
+	// ```
+	//
+	// ()`~!@#$%^&*-_+=|{}[]:;\\"<>,.?/
+	//
+	// ```
 	//
 	// For Windows instances, passwords cannot start with a forward slash (/).
 	//
@@ -76,9 +80,9 @@ type ReInitDiskRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// Specifies whether to use Security Center free of charge after the system disk is re-initialized. Valid values:
 	//
-	// 	- Active: uses Security Center free of charge after the system disk is re-initialized. This value is applicable to only public images.
+	// - Active: uses Security Center free of charge after the system disk is re-initialized. This value is applicable to only public images.
 	//
-	// 	- Deactive: does not use Security Center free of charge after the system disk is re-initialized. This value is applicable to all images.
+	// - Deactive: does not use Security Center free of charge after the system disk is re-initialized. This value is applicable to all images.
 	//
 	// Default value: Deactive.
 	//

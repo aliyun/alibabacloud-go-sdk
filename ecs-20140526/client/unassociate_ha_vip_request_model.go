@@ -30,14 +30,22 @@ type iUnassociateHaVipRequest interface {
 }
 
 type UnassociateHaVipRequest struct {
+	// A client-generated token that ensures request idempotency. The token must be unique for each request, contain only ASCII characters, and be no more than 64 characters long.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Force       *string `json:"Force,omitempty" xml:"Force,omitempty"`
+	// Specifies whether to forcefully disassociate the HaVip. If you set this parameter to `true`, you can disassociate the HaVip from a master instance. Valid values: `true` and `false`. The default value is `false`.
+	Force *string `json:"Force,omitempty" xml:"Force,omitempty"`
+	// The ID of the HaVip.
+	//
 	// This parameter is required.
 	HaVipId *string `json:"HaVipId,omitempty" xml:"HaVipId,omitempty"`
+	// The ID of the ECS instance to disassociate the HaVip from.
+	//
 	// This parameter is required.
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region where the HaVip is deployed. You can call the `DescribeRegions` operation to query the latest region list.
+	//
 	// This parameter is required.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`

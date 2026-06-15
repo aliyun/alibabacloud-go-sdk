@@ -52,31 +52,31 @@ type JoinResourceGroupRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The type of the ECS resource. Valid values:
 	//
-	// 	- instance: instance
+	// - instance: instance
 	//
-	// 	- disk: Elastic Block Storage (EBS) device
+	// - disk: Elastic Block Storage (EBS) device
 	//
-	// 	- snapshot: snapshot
+	// - snapshot: snapshot
 	//
-	// 	- image: image
+	// - image: image
 	//
-	// 	- securitygroup: security group
+	// - securitygroup: security group
 	//
-	// 	- ddh: dedicated host
+	// - ddh: dedicated host
 	//
-	// 	- ddhcluster: dedicated host cluster
+	// - ddhcluster: dedicated host cluster
 	//
-	// 	- eni: ENI
+	// - eni: ENI
 	//
-	// 	- keypair: SSH key pair
+	// - keypair: SSH key pair
 	//
-	// 	- launchtemplate: launch template
+	// - launchtemplate: launch template
 	//
-	// 	- command: Cloud Assistant command
+	// - command: Cloud Assistant command
 	//
-	// 	- activation: activation code for a Cloud Assistant managed instance
+	// - activation: activation code for a Cloud Assistant managed instance
 	//
-	// 	- managedinstance: Cloud Assistant managed instance
+	// - managedinstance: Cloud Assistant managed instance
 	//
 	// The values are case-sensitive.
 	//

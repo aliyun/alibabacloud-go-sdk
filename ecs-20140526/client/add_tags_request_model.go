@@ -27,7 +27,7 @@ type iAddTagsRequest interface {
 
 type AddTagsRequest struct {
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the resource. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+	// The ID of the region where the resource is located. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the latest list of Alibaba Cloud regions.
 	//
 	// This parameter is required.
 	//
@@ -35,7 +35,7 @@ type AddTagsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource. When the resources are instances, this parameter can be interpreted as InstanceId.
+	// The ID of the resource to tag. For example, if `ResourceType` is set to `instance`, this parameter is the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -47,31 +47,31 @@ type AddTagsRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The type of the resource. Valid values:
 	//
-	// 	- instance: ECS instance
+	// - instance: an ECS instance
 	//
-	// 	- disk: disk
+	// - disk: a disk
 	//
-	// 	- snapshot: snapshot
+	// - snapshot: a snapshot
 	//
-	// 	- image: image
+	// - image: an image
 	//
-	// 	- securitygroup: security group
+	// - securitygroup: a security group
 	//
-	// 	- volume: storage volume
+	// - volume: a storage volume
 	//
-	// 	- eni: elastic network interface (ENI)
+	// - eni: an elastic network interface (ENI)
 	//
-	// 	- ddh: dedicated host
+	// - ddh: a Dedicated Host
 	//
-	// 	- keypair: SSH key pair
+	// - keypair: an SSH key pair
 	//
-	// 	- launchtemplate: launch template
+	// - launchtemplate: a launch template
 	//
-	// 	- reservedinstance: reserved instance
+	// - reservedinstance: a reserved instance
 	//
-	// 	- snapshotpolicy: automatic snapshot policy
+	// - snapshotpolicy: an automatic snapshot policy
 	//
-	// All values must be lowercase.
+	// All values are in lowercase.
 	//
 	// This parameter is required.
 	//
@@ -79,7 +79,7 @@ type AddTagsRequest struct {
 	//
 	// instance
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tags.
+	// A list of tags.
 	//
 	// This parameter is required.
 	Tag []*AddTagsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -170,13 +170,15 @@ func (s *AddTagsRequest) Validate() error {
 }
 
 type AddTagsRequestTag struct {
-	// The key of tag N of the resource. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with acs: or aliyun. It cannot contain [http:// or https://](http://https://).
+	// The tag key.
+	//
+	// > For compatibility, we recommend that you use the `Tag.N.Key` parameter.
 	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N of the resource. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot start with acs: or aliyun. It cannot contain [http:// or https://](http://https://).
+	// The tag value. The value can be up to 128 characters in length and can be an empty string. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

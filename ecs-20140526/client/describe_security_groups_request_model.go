@@ -56,9 +56,9 @@ type iDescribeSecurityGroupsRequest interface {
 type DescribeSecurityGroupsRequest struct {
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// 	- true: performs only a dry run. The system checks your AccessKey pair, the permissions of the RAM user, and the required parameters. If the request passes the dry run, the DryRunOperation error code is returned. Otherwise, an error message is returned.
+	// - true: performs only a dry run. The system checks your AccessKey pair, the permissions of the RAM user, and the required parameters. If the request passes the dry run, the DryRunOperation error code is returned. Otherwise, an error message is returned.
 	//
-	// 	- false: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// - false: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	//
 	// Default value: false.
 	//
@@ -74,7 +74,7 @@ type DescribeSecurityGroupsRequest struct {
 	FuzzyQuery *bool `json:"FuzzyQuery,omitempty" xml:"FuzzyQuery,omitempty"`
 	// Specifies whether to query the capacity of the security group. If you set this parameter to True, the `EcsCount` and `AvailableInstanceAmount` values in the response are valid.
 	//
-	// >  This parameter is deprecated.
+	// > This parameter is deprecated.
 	//
 	// example:
 	//
@@ -92,9 +92,9 @@ type DescribeSecurityGroupsRequest struct {
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The network type of the security group. Valid values:
 	//
-	// 	- vpc
+	// - vpc
 	//
-	// 	- classic
+	// - classic
 	//
 	// example:
 	//
@@ -108,13 +108,13 @@ type DescribeSecurityGroupsRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// >  This parameter will be removed in the future. We recommend that you use NextToken and MaxResults for a paged query.
+	// > This parameter will be removed in the future. We recommend that you use NextToken and MaxResults for a paged query.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// >  This parameter will be removed in the future. We recommend that you use NextToken and MaxResults for a paged query.
+	// > This parameter will be removed in the future. We recommend that you use NextToken and MaxResults for a paged query.
 	//
 	// example:
 	//
@@ -158,9 +158,9 @@ type DescribeSecurityGroupsRequest struct {
 	SecurityGroupName *string `json:"SecurityGroupName,omitempty" xml:"SecurityGroupName,omitempty"`
 	// The type of the security group. Valid values:
 	//
-	// 	- normal: basic security group
+	// - normal: basic security group
 	//
-	// 	- enterprise: advanced security group
+	// - enterprise: advanced security group
 	//
 	// > If you do not specify this parameter, both basic and advanced security groups are queried.
 	//
@@ -170,9 +170,9 @@ type DescribeSecurityGroupsRequest struct {
 	SecurityGroupType *string `json:"SecurityGroupType,omitempty" xml:"SecurityGroupType,omitempty"`
 	// Specifies whether to query managed security groups. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// if can be null:
 	// true

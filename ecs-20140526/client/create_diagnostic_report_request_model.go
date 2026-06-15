@@ -25,19 +25,19 @@ type iCreateDiagnosticReportRequest interface {
 
 type CreateDiagnosticReportRequest struct {
 	AdditionalOptions map[string]*string `json:"AdditionalOptions,omitempty" xml:"AdditionalOptions,omitempty"`
-	// The end time. This parameter takes effect only for diagnostic metrics that do not need to be assessed by running Cloud Assistant commands in guest operating systems.
+	// The end time. This parameter applies only to diagnostic metrics that do not require running Cloud Assistant commands in the guest OS.
 	//
 	// example:
 	//
-	// 2022-07-11T14:00:00Z
+	// 2022-07-11T14:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the diagnostic metric set. If this parameter is left empty, the dms-instancedefault set is used, which is the default diagnostic metric set provided for Elastic Compute Service (ECS) instances.
+	// The diagnostic metric set ID. If this parameter is omitted, the default diagnostic metric set for ECS instances, `dms-instancedefault`, is used.
 	//
 	// example:
 	//
 	// dms-uf6i0tv2refv8wz*****
 	MetricSetId *string `json:"MetricSetId,omitempty" xml:"MetricSetId,omitempty"`
-	// The region ID of the security group. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to get the latest list of Alibaba Cloud regions.
 	//
 	// This parameter is required.
 	//
@@ -45,7 +45,7 @@ type CreateDiagnosticReportRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of resource N.
+	// The resource ID.
 	//
 	// This parameter is required.
 	//
@@ -53,11 +53,11 @@ type CreateDiagnosticReportRequest struct {
 	//
 	// i-uf6i0tv2refv8wz*****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The start time. This parameter takes effect only for diagnostic metrics that do not need to be assessed by running Cloud Assistant commands in guest operating systems.
+	// The start time. This parameter applies only to diagnostic metrics that do not require running Cloud Assistant commands in the guest OS.
 	//
 	// example:
 	//
-	// 2022-07-11T12:00:00Z
+	// 2022-07-11T12:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 

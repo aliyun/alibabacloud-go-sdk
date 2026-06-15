@@ -50,9 +50,9 @@ type iDescribeReservedInstancesRequest interface {
 type DescribeReservedInstancesRequest struct {
 	// The allocation type of the reserved instances. Valid values:
 	//
-	// 	- Normal: queries all reserved instances that belong to the current account.
+	// - Normal: queries all reserved instances that belong to the current account.
 	//
-	// 	- Shared: queries the reserved instances that are shared between the current main account and linked accounts.
+	// - Shared: queries the reserved instances that are shared between the current main account and linked accounts.
 	//
 	// Default value: Normal.
 	//
@@ -62,7 +62,7 @@ type DescribeReservedInstancesRequest struct {
 	AllocationType *string `json:"AllocationType,omitempty" xml:"AllocationType,omitempty"`
 	// The instance type of the reserved instance. For information about the valid values, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
 	//
-	// >  Specify the instance type that you selected when you purchased the reserved instance. If the reserved instance is a regional reserved instance, it can be used to offset the bills of instance types that belong to the same instance family as the specified instance type, regardless of instance specifications.
+	// > Specify the instance type that you selected when you purchased the reserved instance. If the reserved instance is a regional reserved instance, it can be used to offset the bills of instance types that belong to the same instance family as the specified instance type, regardless of instance specifications.
 	//
 	// example:
 	//
@@ -76,9 +76,9 @@ type DescribeReservedInstancesRequest struct {
 	InstanceTypeFamily *string `json:"InstanceTypeFamily,omitempty" xml:"InstanceTypeFamily,omitempty"`
 	// The reason why the reserved instance is locked. Valid values:
 	//
-	// 	- financial: The reserved instance is locked because the account has overdue payments or the service expires.
+	// - financial: The reserved instance is locked because the account has overdue payments or the service expires.
 	//
-	// 	- security: The reserved instance is locked due to security reasons.
+	// - security: The reserved instance is locked due to security reasons.
 	//
 	// example:
 	//
@@ -86,11 +86,11 @@ type DescribeReservedInstancesRequest struct {
 	LockReason *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
 	// The payment option of the reserved instance. Valid values:
 	//
-	// 	- No Upfront
+	// - No Upfront
 	//
-	// 	- Partial Upfront
+	// - Partial Upfront
 	//
-	// 	- All Upfront
+	// - All Upfront
 	//
 	// example:
 	//
@@ -130,7 +130,7 @@ type DescribeReservedInstancesRequest struct {
 	ReservedInstanceId []*string `json:"ReservedInstanceId,omitempty" xml:"ReservedInstanceId,omitempty" type:"Repeated"`
 	// The name of the reserved instance.
 	//
-	// >  Only exact search is supported.
+	// > Only exact search is supported.
 	//
 	// example:
 	//
@@ -140,9 +140,9 @@ type DescribeReservedInstancesRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The scope level of the reserved instance. Valid values:
 	//
-	// 	- Region: regional
+	// - Region: regional
 	//
-	// 	- Zone: zonal
+	// - Zone: zonal
 	//
 	// example:
 	//
@@ -348,9 +348,9 @@ func (s *DescribeReservedInstancesRequest) Validate() error {
 }
 
 type DescribeReservedInstancesRequestTag struct {
-	// The key of tag N of the reserved instance. The tag key cannot be empty and can be up to 128 characters in length. It cannot start with aliyun or acs: and cannot contain http:// or https://.
+	// The key of tag N of the reserved instance. The tag key cannot be empty and can be up to 128 characters in length. It cannot start with aliyun or acs: and cannot contain http\\:// or https\\://.
 	//
-	// >  If you specify a single tag to query resources, up to 1,000 resources to which the tag is added are returned. If you specify multiple tags to query resources, up to 1,000 resources to which all specified tags are added are returned. To query more than 1,000 resources that have specified tags added, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation.
+	// > If you specify a single tag to query resources, up to 1,000 resources to which the tag is added are returned. If you specify multiple tags to query resources, up to 1,000 resources to which all specified tags are added are returned. To query more than 1,000 resources that have specified tags added, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation.
 	//
 	// example:
 	//

@@ -51,9 +51,9 @@ type ModifyCapacityReservationRequest struct {
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The release mode of the capacity reservation. Valid values:
 	//
-	// 	- Limited: The capacity reservation is automatically released at the specified point in time. If you configure this parameter, you must also configure `EndTime`.
+	// - Limited: The capacity reservation is automatically released at the specified point in time. If you configure this parameter, you must also configure `EndTime`.
 	//
-	// 	- Unlimited: The capacity reservation must be manually released. You can release it anytime.
+	// - Unlimited: The capacity reservation must be manually released. You can release it anytime.
 	//
 	// example:
 	//
@@ -71,9 +71,9 @@ type ModifyCapacityReservationRequest struct {
 	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The operating system of the image used by the instance. Valid values:
 	//
-	// 	- Windows
+	// - Windows
 	//
-	// 	- Linux
+	// - Linux
 	//
 	// > This parameter is unavailable.
 	//

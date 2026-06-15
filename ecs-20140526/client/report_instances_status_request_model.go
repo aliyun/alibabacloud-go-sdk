@@ -44,7 +44,7 @@ type ReportInstancesStatusRequest struct {
 	//
 	// example:
 	//
-	// The local disk is unavailable, the mount point is inaccessible, or files cannot be loaded.
+	// 本地盘不可用，挂载点拒绝访问，无法加载文件。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The device names of disks on an instance that have the exception. You can specify to 100 device names in a single request.
 	//
@@ -80,23 +80,23 @@ type ReportInstancesStatusRequest struct {
 	InstanceId []*string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Repeated"`
 	// The category of the exception. This parameter is applicable only to ECS bare metal instances. Valid values:
 	//
-	// 	- hardware-cpu-error: CPU failure
+	// - hardware-cpu-error: CPU failure
 	//
-	// 	- hardware-motherboard-error: motherboard failure
+	// - hardware-motherboard-error: motherboard failure
 	//
-	// 	- hardware-mem-error: memory failure
+	// - hardware-mem-error: memory failure
 	//
-	// 	- hardware-power-error: power failure
+	// - hardware-power-error: power failure
 	//
-	// 	- hardware-disk-error: disk failure
+	// - hardware-disk-error: disk failure
 	//
-	// 	- hardware-networkcard-error: network interface controller (NIC) failure
+	// - hardware-networkcard-error: network interface controller (NIC) failure
 	//
-	// 	- hardware-raidcard-error: SAS/RAID card failure
+	// - hardware-raidcard-error: SAS/RAID card failure
 	//
-	// 	- hardware-fan-error: fan failure
+	// - hardware-fan-error: fan failure
 	//
-	// 	- others: other failures
+	// - others: other failures
 	//
 	// example:
 	//
@@ -106,17 +106,17 @@ type ReportInstancesStatusRequest struct {
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The impact of the exception on the instance. Valid values:
 	//
-	// 	- instance-hang: The instance is unavailable or cannot be connected.
+	// - instance-hang: The instance is unavailable or cannot be connected.
 	//
-	// 	- instance-stuck-in-status: The instance is stuck in a state such as Starting or Stopping.
+	// - instance-stuck-in-status: The instance is stuck in a state such as Starting or Stopping.
 	//
-	// 	- abnormal-network: The instance has a network exception.
+	// - abnormal-network: The instance has a network exception.
 	//
-	// 	- abnormal-local-disk: A local disk attached to the instance has an exception.
+	// - abnormal-local-disk: A local disk attached to the instance has an exception.
 	//
-	// 	- abnormal-cloud-disk: A disk or a Shared Block Storage device attached to the instance has an exception.
+	// - abnormal-cloud-disk: A disk or a Shared Block Storage device attached to the instance has an exception.
 	//
-	// 	- others: other exception types. If the impact is not of the preceding types, you can set `Reason` to others and specify the `Description` parameter.
+	// - others: other exception types. If the impact is not of the preceding types, you can set `Reason` to others and specify the `Description` parameter.
 	//
 	// example:
 	//

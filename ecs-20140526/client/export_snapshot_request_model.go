@@ -26,14 +26,21 @@ type iExportSnapshotRequest interface {
 }
 
 type ExportSnapshotRequest struct {
+  // The name of the destination OSS bucket. The bucket must be in the same region as the snapshot.
+  // 
   // This parameter is required.
   OssBucket *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
   OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+  // The ID of the region where the snapshot is located. You can call the `DescribeRegions` operation to query the latest region list.
+  // 
   // This parameter is required.
   RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
   ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
   ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+  // The name of the RAM role that authorizes ECS to export the snapshot. This role must grant ECS permission to write to the specified OSS bucket. If you omit this parameter, ECS uses its default service-linked role.
   RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+  // The ID of the snapshot to export.
+  // 
   // This parameter is required.
   SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
 }

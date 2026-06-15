@@ -23,13 +23,13 @@ type iDescribeElasticityAssurancesResponseBody interface {
 
 type DescribeElasticityAssurancesResponseBody struct {
 	ElasticityAssuranceSet *DescribeElasticityAssurancesResponseBodyElasticityAssuranceSet `json:"ElasticityAssuranceSet,omitempty" xml:"ElasticityAssuranceSet,omitempty" type:"Struct"`
-	// The maximum number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	// The token used to retrieve the next page of results.
 	//
 	// example:
 	//
@@ -41,7 +41,7 @@ type DescribeElasticityAssurancesResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of matching entries.
 	//
 	// example:
 	//

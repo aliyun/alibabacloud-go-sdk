@@ -18,19 +18,19 @@ type iRunCommandResponseBody interface {
 }
 
 type RunCommandResponseBody struct {
-	// The command ID.
+	// The ID of the command.
 	//
 	// example:
 	//
 	// c-7d2a745b412b4601b2d47f6a768d****
 	CommandId *string `json:"CommandId,omitempty" xml:"CommandId,omitempty"`
-	// The command task ID.
+	// The ID of the command execution.
 	//
 	// example:
 	//
 	// t-7d2a745b412b4601b2d47f6a768d****
 	InvokeId *string `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

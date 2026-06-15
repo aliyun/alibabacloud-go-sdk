@@ -18,21 +18,21 @@ type iCreateDiskResponseBody interface {
 }
 
 type CreateDiskResponseBody struct {
-	// The disk ID.
+	// The ID of the disk.
 	//
 	// example:
 	//
 	// d-bp131n0q38u3a4zi****
 	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	// The order ID.
+	// The ID of the order.
 	//
-	// > The order ID is returned only when you create a subscription disk.
+	// > This parameter is returned only when you create a subscription disk.
 	//
 	// example:
 	//
 	// 20413515388****
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

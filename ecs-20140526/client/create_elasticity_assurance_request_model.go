@@ -65,9 +65,9 @@ type CreateElasticityAssuranceRequest struct {
 	AssuranceTimes *string `json:"AssuranceTimes,omitempty" xml:"AssuranceTimes,omitempty"`
 	// Specifies whether to enable auto-renewal for the elasticity assurance. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// Default value: false.
 	//
@@ -77,11 +77,11 @@ type CreateElasticityAssuranceRequest struct {
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
 	// The auto-renewal period. Unit: month. Valid values: 1, 2, 3, 6, 12, 24, and 36.
 	//
-	// 	- Default value when `PeriodUnit` is set to Month: 1.
+	// - Default value when `PeriodUnit` is set to Month: 1.
 	//
-	// 	- Default value when `PeriodUnit` is set to Year: 12.
+	// - Default value when `PeriodUnit` is set to Year: 12.
 	//
-	// >  If you set `AutoRenew` to `true`, you must specify this parameter.
+	// > If you set `AutoRenew` to `true`, you must specify this parameter.
 	//
 	// example:
 	//
@@ -105,7 +105,7 @@ type CreateElasticityAssuranceRequest struct {
 	//
 	// Valid values: 1 to 1000.
 	//
-	// >  You must specify this parameter.
+	// > You must specify this parameter.
 	//
 	// example:
 	//
@@ -129,11 +129,11 @@ type CreateElasticityAssuranceRequest struct {
 	OwnerId      *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The validity period of the elasticity assurance. The unit of the validity period is determined by the value of `PeriodUnit`. Specifies whether to check the image used by the instance supports hot migration. Valid values:
 	//
-	// 	- When the value of `PeriodUnit` is `Month`, the valid values are 1, 2, 3, 4, 5, 6, 7, 8, and 9.
+	// - When the value of `PeriodUnit` is `Month`, the valid values are 1, 2, 3, 4, 5, 6, 7, 8, and 9.
 	//
-	// 	- When the value of `PeriodUnit` is `Year`, the valid values are 1, 2, 3, 4, and 5.
+	// - When the value of `PeriodUnit` is `Year`, the valid values are 1, 2, 3, 4, and 5.
 	//
-	// 	- When the value of `PeriodUnit` is `Day`, the valid values are 1 to 365.
+	// - When the value of `PeriodUnit` is `Day`, the valid values are 1 to 365.
 	//
 	// Default value: 1
 	//
@@ -143,15 +143,15 @@ type CreateElasticityAssuranceRequest struct {
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
 	// The unit of the validity period of the elasticity assurance. Valid values:
 	//
-	// 	- Month
+	// - Month
 	//
-	// 	- Year
+	// - Year
 	//
-	// 	- Day
+	// - Day
 	//
-	//     **
+	//   \\*\\*
 	//
-	//     **Note*	- If you set `PeriodUnit` to `Day`, you must specify RecurrenceRules to create a time-segmented elasticity assurance.
+	//   **Note*	- If you set `PeriodUnit` to `Day`, you must specify RecurrenceRules to create a time-segmented elasticity assurance.
 	//
 	// Default value: Year.
 	//
@@ -161,7 +161,7 @@ type CreateElasticityAssuranceRequest struct {
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
 	// The assurance schedules based on which the capacity reservation takes effect.
 	//
-	// >  Time-segmented elasticity assurances are available only in specific regions and to specific users. To use time-segmented elasticity assurances, [submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket-intl).
+	// > Time-segmented elasticity assurances are available only in specific regions and to specific users. To use time-segmented elasticity assurances, [submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket-intl).
 	RecurrenceRules []*CreateElasticityAssuranceRequestRecurrenceRules `json:"RecurrenceRules,omitempty" xml:"RecurrenceRules,omitempty" type:"Repeated"`
 	// The ID of the region in which to create the elasticity assurance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
 	//
@@ -424,9 +424,9 @@ func (s *CreateElasticityAssuranceRequest) Validate() error {
 type CreateElasticityAssuranceRequestPrivatePoolOptions struct {
 	// The type of the private pool with which you want to associate the elasticity assurance. Valid values:
 	//
-	// 	- Open: open private pool. If you use the elasticity assurance to create ECS instances, the open private pool that is associated with the elasticity assurance is automatically matched. If no capacity is available in the open private pool, resources in the public pool are automatically used to create the ECS instances.
+	// - Open: open private pool. If you use the elasticity assurance to create ECS instances, the open private pool that is associated with the elasticity assurance is automatically matched. If no capacity is available in the open private pool, resources in the public pool are automatically used to create the ECS instances.
 	//
-	// 	- Target: targeted private pool. If you use the elasticity assurance to create ECS instances, the specified private pool that is associated with the elasticity assurance is automatically matched. If no capacity is available in the private pool, the ECS instances fail to be created.
+	// - Target: targeted private pool. If you use the elasticity assurance to create ECS instances, the specified private pool that is associated with the elasticity assurance is automatically matched. If no capacity is available in the private pool, the ECS instances fail to be created.
 	//
 	// Default value: Open.
 	//
@@ -481,13 +481,13 @@ type CreateElasticityAssuranceRequestRecurrenceRules struct {
 	EndHour *int32 `json:"EndHour,omitempty" xml:"EndHour,omitempty"`
 	// The type of the assurance schedule. Valid values:
 	//
-	// 	- Daily
+	// - Daily
 	//
-	// 	- Weekly
+	// - Weekly
 	//
-	// 	- Monthly
+	// - Monthly
 	//
-	// >  You must specify both `RecurrenceType` and `RecurrenceValue`.
+	// > You must specify both `RecurrenceType` and `RecurrenceValue`.
 	//
 	// example:
 	//
@@ -495,11 +495,11 @@ type CreateElasticityAssuranceRequestRecurrenceRules struct {
 	RecurrenceType *string `json:"RecurrenceType,omitempty" xml:"RecurrenceType,omitempty"`
 	// The days of the week or month on which the capacity reservation takes effect or the interval, in number of days, at which the capacity reservation takes effect.
 	//
-	// 	- If you set `RecurrenceType` to `Daily`, you can specify only one value for this parameter. Valid values: 1 to 31. The value specifies that the capacity reservation takes effect every few days.
+	// - If you set `RecurrenceType` to `Daily`, you can specify only one value for this parameter. Valid values: 1 to 31. The value specifies that the capacity reservation takes effect every few days.
 	//
-	// 	- If you set `RecurrenceType` to `Weekly`, you can specify multiple values for this parameter. Separate the values with commas (,). Valid values: 0, 1, 2, 3, 4, 5, and 6, which specify Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, and Saturday, respectively. Example: `1,2`, which specifies that the capacity reservation takes effect on Monday and Tuesday.
+	// - If you set `RecurrenceType` to `Weekly`, you can specify multiple values for this parameter. Separate the values with commas (,). Valid values: 0, 1, 2, 3, 4, 5, and 6, which specify Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, and Saturday, respectively. Example: `1,2`, which specifies that the capacity reservation takes effect on Monday and Tuesday.
 	//
-	// 	- If you set `RecurrenceType` to `Monthly`, you can specify two values in the `A-B` format for this parameter. Valid values of A and B: 1 to 31. B must be greater than or equal to A. For example, `1-5` indicates that the execution is repeated from the 1st to 5th of each month.
+	// - If you set `RecurrenceType` to `Monthly`, you can specify two values in the `A-B` format for this parameter. Valid values of A and B: 1 to 31. B must be greater than or equal to A. For example, `1-5` indicates that the execution is repeated from the 1st to 5th of each month.
 	//
 	// > You must specify both `RecurrenceType` and `RecurrenceValue`.
 	//
@@ -509,7 +509,7 @@ type CreateElasticityAssuranceRequestRecurrenceRules struct {
 	RecurrenceValue *string `json:"RecurrenceValue,omitempty" xml:"RecurrenceValue,omitempty"`
 	// The start time of the assurance period for the capacity reservation. Specify an on-the-hour point in time.
 	//
-	// >  You must specify both `StartHour` and `EndHour`. EndHour must be at least four hours later than StartHour.
+	// > You must specify both `StartHour` and `EndHour`. EndHour must be at least four hours later than StartHour.
 	//
 	// example:
 	//

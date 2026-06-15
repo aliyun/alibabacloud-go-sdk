@@ -36,9 +36,9 @@ type iRenewReservedInstancesRequest interface {
 type RenewReservedInstancesRequest struct {
 	// Specifies whether to enable auto-renewal for the reserved instance. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// Default value: false.
 	//

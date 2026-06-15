@@ -36,7 +36,7 @@ type AllocatePublicIpAddressRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The static public IP address that you want to assign to the instance. This parameter is empty by default, which indicates that a static public IP address is randomly assigned by the system.
 	//
-	// >  Only users in the whitelist can specify this parameter.
+	// > Only users in the whitelist can specify this parameter.
 	//
 	// example:
 	//

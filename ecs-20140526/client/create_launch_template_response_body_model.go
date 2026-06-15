@@ -28,7 +28,7 @@ type CreateLaunchTemplateResponseBody struct {
 	//
 	// example:
 	//
-	// 2
+	// 20
 	LaunchTemplateVersionNumber *int64 `json:"LaunchTemplateVersionNumber,omitempty" xml:"LaunchTemplateVersionNumber,omitempty"`
 	// The ID of the request.
 	//

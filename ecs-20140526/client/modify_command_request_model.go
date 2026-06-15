@@ -36,7 +36,7 @@ type iModifyCommandRequest interface {
 }
 
 type ModifyCommandRequest struct {
-	// >  This parameter is no longer used and does not take effect.
+	// > This parameter is no longer used and does not take effect.
 	//
 	// example:
 	//

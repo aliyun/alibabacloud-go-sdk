@@ -36,7 +36,7 @@ type iDescribeSecurityGroupAttributeRequest interface {
 type DescribeSecurityGroupAttributeRequest struct {
 	// The attributes of the security group. Valid value:
 	//
-	// 	- snapshotPolicyIds: queries information about snapshot policies associated with a security group.
+	// - snapshotPolicyIds: queries information about snapshot policies associated with a security group.
 	//
 	// example:
 	//
@@ -44,11 +44,11 @@ type DescribeSecurityGroupAttributeRequest struct {
 	Attribute *string `json:"Attribute,omitempty" xml:"Attribute,omitempty"`
 	// The direction in which the security group rule is applied. Valid values:
 	//
-	// 	- egress: outbound
+	// - egress: outbound
 	//
-	// 	- ingress: inbound
+	// - ingress: inbound
 	//
-	// 	- all: outbound and inbound
+	// - all: outbound and inbound
 	//
 	// Default value: all.
 	//
@@ -58,9 +58,9 @@ type DescribeSecurityGroupAttributeRequest struct {
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
 	// The maximum number of entries per page.
 	//
-	// 	- Minimum value: 10.
+	// - Minimum value: 10.
 	//
-	// 	- Maximum value: 1000.
+	// - Maximum value: 1000.
 	//
 	// Default value: 500.
 	//
@@ -76,21 +76,21 @@ type DescribeSecurityGroupAttributeRequest struct {
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The network interface controller (NIC) type of the security group rule.
 	//
-	// 	- Valid values for rules of security groups in the classic network:
+	// - Valid values for rules of security groups in the classic network:
 	//
-	//     	- internet (default)
+	//   - internet (default)
 	//
-	//     	- intranet
+	//   - intranet
 	//
-	//     **
+	//   \\*\\*
 	//
-	//     **Note*	- You can query security group rules of only one NIC type in a single call. To query security group rules of both NIC types, call the operation twice.
+	//   **Note*	- You can query security group rules of only one NIC type in a single call. To query security group rules of both NIC types, call the operation twice.
 	//
-	// 	- When the security group is in a virtual private cloud (VPC), set the value to intranet, which is the default value for rules of security groups in VPCs.
+	// - When the security group is in a virtual private cloud (VPC), set the value to intranet, which is the default value for rules of security groups in VPCs.
 	//
-	//     **
+	//   \\*\\*
 	//
-	//     **Note*	- If you set this parameter to internet or leave this parameter empty, a value of intranet is automatically used.
+	//   **Note*	- If you set this parameter to internet or leave this parameter empty, a value of intranet is automatically used.
 	//
 	// example:
 	//

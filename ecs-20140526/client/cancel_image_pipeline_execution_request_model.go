@@ -46,7 +46,7 @@ type CancelImagePipelineExecutionRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// >  This parameter is not publicly available.
+	// > This parameter is not publicly available.
 	TemplateTag []*CancelImagePipelineExecutionRequestTemplateTag `json:"TemplateTag,omitempty" xml:"TemplateTag,omitempty" type:"Repeated"`
 }
 
@@ -135,13 +135,13 @@ func (s *CancelImagePipelineExecutionRequest) Validate() error {
 }
 
 type CancelImagePipelineExecutionRequestTemplateTag struct {
-	// >  This parameter is not publicly available.
+	// > This parameter is not publicly available.
 	//
 	// example:
 	//
 	// null
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// >  This parameter is not publicly available.
+	// > This parameter is not publicly available.
 	//
 	// example:
 	//

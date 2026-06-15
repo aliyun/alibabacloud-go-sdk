@@ -464,17 +464,17 @@ type RevokeSecurityGroupEgressRequestPermissions struct {
 	DestCidrIp *string `json:"DestCidrIp,omitempty" xml:"DestCidrIp,omitempty"`
 	// The ID of the destination security group of the security group rule.
 	//
-	// 	- You must specify at least one of the following parameters: `DestGroupId`, `DestCidrIp`, `Ipv6DestCidrIp`, and `DestPrefixListId`.
+	// - You must specify at least one of the following parameters: `DestGroupId`, `DestCidrIp`, `Ipv6DestCidrIp`, and `DestPrefixListId`.
 	//
-	// 	- If you specify `DestGroupId` but do not specify `DestCidrIp`, you must set `NicType` to intranet.
+	// - If you specify `DestGroupId` but do not specify `DestCidrIp`, you must set `NicType` to intranet.
 	//
-	// 	- If you specify both `DestGroupId` and `DestCidrIp`, `DestCidrIp` takes precedence.
+	// - If you specify both `DestGroupId` and `DestCidrIp`, `DestCidrIp` takes precedence.
 	//
 	// Take note of the following items:
 	//
-	// 	- Advanced security groups do not support security group rules that reference security groups as authorization objects.
+	// - Advanced security groups do not support security group rules that reference security groups as authorization objects.
 	//
-	// 	- Each basic security group can contain up to 20 security group rules that reference security groups as authorization objects.
+	// - Each basic security group can contain up to 20 security group rules that reference security groups as authorization objects.
 	//
 	// example:
 	//
@@ -482,9 +482,9 @@ type RevokeSecurityGroupEgressRequestPermissions struct {
 	DestGroupId *string `json:"DestGroupId,omitempty" xml:"DestGroupId,omitempty"`
 	// The Alibaba Cloud account that manages the destination security group specified in the security group rule.
 	//
-	// 	- If you leave `DestGroupOwnerAccount` and `DestGroupOwnerId` empty, access control configurations are removed from another security group managed by your Alibaba Cloud account.
+	// - If you leave `DestGroupOwnerAccount` and `DestGroupOwnerId` empty, access control configurations are removed from another security group managed by your Alibaba Cloud account.
 	//
-	// 	- If you specify `DestCidrIp`, `DestGroupOwnerAccount` is invalid.
+	// - If you specify `DestCidrIp`, `DestGroupOwnerAccount` is invalid.
 	//
 	// example:
 	//
@@ -492,9 +492,9 @@ type RevokeSecurityGroupEgressRequestPermissions struct {
 	DestGroupOwnerAccount *string `json:"DestGroupOwnerAccount,omitempty" xml:"DestGroupOwnerAccount,omitempty"`
 	// The ID of the Alibaba Cloud account that manages the destination security group specified in the security group rule.
 	//
-	// 	- If you leave `DestGroupOwnerId` and `DestGroupOwnerAccount` empty, access control configurations are removed from another security group managed by your Alibaba Cloud account.
+	// - If you leave `DestGroupOwnerId` and `DestGroupOwnerAccount` empty, access control configurations are removed from another security group managed by your Alibaba Cloud account.
 	//
-	// 	- If you specify `DestCidrIp`, `DestGroupOwnerId` is invalid.
+	// - If you specify `DestCidrIp`, `DestGroupOwnerId` is invalid.
 	//
 	// example:
 	//
@@ -504,9 +504,9 @@ type RevokeSecurityGroupEgressRequestPermissions struct {
 	//
 	// Take note of the following items:
 	//
-	// 	- If a security group resides in the classic network, you cannot reference prefix lists in the rules of the security group. For information about the limits on security groups and prefix lists, see the [Security group limits](~~25412#SecurityGroupQuota1~~) section of the "Limits and quotas" topic.
+	// - If a security group resides in the classic network, you cannot reference prefix lists in the rules of the security group. For information about the limits on security groups and prefix lists, see the [Security group limits](~~25412#SecurityGroupQuota1~~) section of the "Limits and quotas" topic.
 	//
-	// 	- If you specify `DestCidrIp`, `Ipv6DestCidrIp`, or `DestGroupId`, this parameter is ignored.
+	// - If you specify `DestCidrIp`, `Ipv6DestCidrIp`, or `DestGroupId`, this parameter is ignored.
 	//
 	// example:
 	//
@@ -514,17 +514,17 @@ type RevokeSecurityGroupEgressRequestPermissions struct {
 	DestPrefixListId *string `json:"DestPrefixListId,omitempty" xml:"DestPrefixListId,omitempty"`
 	// The protocol type. The values of this parameter are case-insensitive. Valid values:
 	//
-	// 	- TCP.
+	// - TCP.
 	//
-	// 	- UDP.
+	// - UDP.
 	//
-	// 	- ICMP.
+	// - ICMP.
 	//
-	// 	- ICMPv6.
+	// - ICMPv6.
 	//
-	// 	- GRE.
+	// - GRE.
 	//
-	// 	- ALL: All protocols are supported.
+	// - ALL: All protocols are supported.
 	//
 	// example:
 	//
@@ -532,7 +532,7 @@ type RevokeSecurityGroupEgressRequestPermissions struct {
 	IpProtocol *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
 	// The destination IPv6 CIDR block of the security group rule. IPv6 CIDR blocks and IPv6 addresses are supported.
 	//
-	// >  This parameter is valid only for Elastic Compute Service (ECS) instances that reside in virtual private clouds (VPCs) and support IPv6 CIDR blocks. You cannot specify both this parameter and `DestCidrIp` in the same request.
+	// > This parameter is valid only for Elastic Compute Service (ECS) instances that reside in virtual private clouds (VPCs) and support IPv6 CIDR blocks. You cannot specify both this parameter and `DestCidrIp` in the same request.
 	//
 	// example:
 	//
@@ -542,7 +542,7 @@ type RevokeSecurityGroupEgressRequestPermissions struct {
 	//
 	// This parameter is used to support quintuple rules. For more information, see [Security group quintuple rules](https://help.aliyun.com/document_detail/97439.html).
 	//
-	// >  This parameter is valid only for ECS instances that reside in VPCs and support IPv6 CIDR blocks. You cannot specify both this parameter and `DestCidrIp` in the same request.
+	// > This parameter is valid only for ECS instances that reside in VPCs and support IPv6 CIDR blocks. You cannot specify both this parameter and `DestCidrIp` in the same request.
 	//
 	// example:
 	//
@@ -550,9 +550,9 @@ type RevokeSecurityGroupEgressRequestPermissions struct {
 	Ipv6SourceCidrIp *string `json:"Ipv6SourceCidrIp,omitempty" xml:"Ipv6SourceCidrIp,omitempty"`
 	// The network interface controller (NIC) type of the security group rule if the security group resides in the classic network. Valid values:
 	//
-	// 	- internet: public NIC.
+	// - internet: public NIC.
 	//
-	// 	- intranet: internal NIC.
+	// - intranet: internal NIC.
 	//
 	// If the security group resides in a VPC, this parameter is set to intranet by default and cannot be modified.
 	//
@@ -566,9 +566,9 @@ type RevokeSecurityGroupEgressRequestPermissions struct {
 	NicType *string `json:"NicType,omitempty" xml:"NicType,omitempty"`
 	// The action of the security group rule. Valid values:
 	//
-	// 	- accept: allows access.
+	// - accept: allows access.
 	//
-	// 	- drop: denies access and returns no responses. In this case, the request times out or the connection cannot be established.
+	// - drop: denies access and returns no responses. In this case, the request times out or the connection cannot be established.
 	//
 	// Default value: accept.
 	//
@@ -578,13 +578,13 @@ type RevokeSecurityGroupEgressRequestPermissions struct {
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
 	// The destination port range of the security group rule. Valid values:
 	//
-	// 	- If you set IpProtocol to TCP or UDP, the valid values of this parameter are 1 to 65535. Specify a port range in the format of \\<Start port number>/\\<End port number>. Example: 1/200.
+	// - If you set IpProtocol to TCP or UDP, the valid values of this parameter are 1 to 65535. Specify a port range in the format of \\<Start port number>/\\<End port number>. Example: 1/200.
 	//
-	// 	- If you set IpProtocol to ICMP, the port range is -1/-1.
+	// - If you set IpProtocol to ICMP, the port range is -1/-1.
 	//
-	// 	- If you set IpProtocol to GRE, the port range is -1/-1.
+	// - If you set IpProtocol to GRE, the port range is -1/-1.
 	//
-	// 	- If you set IpProtocol to ALL, the port range is -1/-1.
+	// - If you set IpProtocol to ALL, the port range is -1/-1.
 	//
 	// example:
 	//
@@ -592,9 +592,9 @@ type RevokeSecurityGroupEgressRequestPermissions struct {
 	PortRange *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
 	// The ID of the port list. You can call the `DescribePortRangeLists` operation to query the IDs of available prefix lists.
 	//
-	// 	- If you specify `Permissions.N.PortRange`, this parameter is ignored.
+	// - If you specify `Permissions.N.PortRange`, this parameter is ignored.
 	//
-	// 	- If a security group resides in the classic network, you cannot reference port lists in the rules of the security group. For information about the limits on security groups and port lists, see the [Security group limits](~~25412#SecurityGroupQuota1~~) section of the "Limits and quotas" topic.
+	// - If a security group resides in the classic network, you cannot reference port lists in the rules of the security group. For information about the limits on security groups and port lists, see the [Security group limits](~~25412#SecurityGroupQuota1~~) section of the "Limits and quotas" topic.
 	//
 	// example:
 	//
@@ -618,13 +618,13 @@ type RevokeSecurityGroupEgressRequestPermissions struct {
 	SourceCidrIp *string `json:"SourceCidrIp,omitempty" xml:"SourceCidrIp,omitempty"`
 	// The source port range of the security group rule. Valid values:
 	//
-	// 	- If you set IpProtocol to TCP or UDP, the valid values of this parameter are 1 to 65535. Specify a port range in the format of \\<Start port number>/\\<End port number>. Example: 1/200.
+	// - If you set IpProtocol to TCP or UDP, the valid values of this parameter are 1 to 65535. Specify a port range in the format of \\<Start port number>/\\<End port number>. Example: 1/200.
 	//
-	// 	- If you set IpProtocol to ICMP, the port range is -1/-1.
+	// - If you set IpProtocol to ICMP, the port range is -1/-1.
 	//
-	// 	- If you set IpProtocol to GRE, the port range is -1/-1.
+	// - If you set IpProtocol to GRE, the port range is -1/-1.
 	//
-	// 	- If you set IpProtocol to ALL, the port range is -1/-1.
+	// - If you set IpProtocol to ALL, the port range is -1/-1.
 	//
 	// This parameter is used to support quintuple rules. For more information, see [Security group quintuple rules](https://help.aliyun.com/document_detail/97439.html).
 	//

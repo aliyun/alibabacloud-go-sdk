@@ -40,13 +40,13 @@ type iModifyDedicatedHostsChargeTypeRequest interface {
 type ModifyDedicatedHostsChargeTypeRequest struct {
 	// Specifies whether to automatically complete the payment. Valid value:
 	//
-	// 	- true: The payment is automatically completed. Ensure that your account balance is sufficient. Otherwise, your order becomes invalid and must be canceled.
+	// - true: The payment is automatically completed. Ensure that your account balance is sufficient. Otherwise, your order becomes invalid and must be canceled.
 	//
-	// 	- false: An order is generated but no payment is made.
+	// - false: An order is generated but no payment is made.
 	//
 	// Default value: true.
 	//
-	// >  If you do not have sufficient balance in your account, you can set `AutoPay` to `false` to generate an unpaid order. Then, you can pay for the order.
+	// > If you do not have sufficient balance in your account, you can set `AutoPay` to `false` to generate an unpaid order. Then, you can pay for the order.
 	//
 	// example:
 	//
@@ -60,9 +60,9 @@ type ModifyDedicatedHostsChargeTypeRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The new billing method for the dedicated host. Valid value:
 	//
-	// 	- PrePaid: changes the billing method from pay-as-you-go to subscription.
+	// - PrePaid: changes the billing method from pay-as-you-go to subscription.
 	//
-	// 	- PostPaid: changes the billing method from subscription to pay-as-you-go.
+	// - PostPaid: changes the billing method from subscription to pay-as-you-go.
 	//
 	// Default value: PrePaid.
 	//
@@ -88,9 +88,9 @@ type ModifyDedicatedHostsChargeTypeRequest struct {
 	DetailFee *bool `json:"DetailFee,omitempty" xml:"DetailFee,omitempty"`
 	// Specifies whether to perform only a dry run. Valid value:
 	//
-	// 	- true: performs only a dry run. The system checks the request for potential issues, including invalid AccessKey pairs, unauthorized Resource Access Management (RAM) users, and missing parameter values. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// - true: performs only a dry run. The system checks the request for potential issues, including invalid AccessKey pairs, unauthorized Resource Access Management (RAM) users, and missing parameter values. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
 	//
-	// 	- false: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// - false: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	//
 	// Indicates whether the nfs volume is set to the read-only mode. Default value: false.
 	//
@@ -102,9 +102,9 @@ type ModifyDedicatedHostsChargeTypeRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The renewal duration of the subscription dedicated hosts. Valid values:
 	//
-	// 	- If you set `PeriodUnit` to Week, valid values of `Period` are 1, 2, 3, and 4.
+	// - If you set `PeriodUnit` to Week, valid values of `Period` are 1, 2, 3, and 4.
 	//
-	// 	- If you set `PeriodUnit` to Month, valid values of `Period` are 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, and 60.
+	// - If you set `PeriodUnit` to Month, valid values of `Period` are 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, and 60.
 	//
 	// example:
 	//
@@ -112,9 +112,9 @@ type ModifyDedicatedHostsChargeTypeRequest struct {
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
 	// The unit of the renewal duration specified by `Period`. Valid values:
 	//
-	// 	- Week
+	// - Week
 	//
-	// 	- Month
+	// - Month
 	//
 	// Default value: Month.
 	//

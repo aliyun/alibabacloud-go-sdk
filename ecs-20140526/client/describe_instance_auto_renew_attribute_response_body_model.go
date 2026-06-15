@@ -22,6 +22,7 @@ type iDescribeInstanceAutoRenewAttributeResponseBody interface {
 }
 
 type DescribeInstanceAutoRenewAttributeResponseBody struct {
+	// The auto-renewal attributes of the instances.
 	InstanceRenewAttributes *DescribeInstanceAutoRenewAttributeResponseBodyInstanceRenewAttributes `json:"InstanceRenewAttributes,omitempty" xml:"InstanceRenewAttributes,omitempty" type:"Struct"`
 	// The page number.
 	//
@@ -41,7 +42,7 @@ type DescribeInstanceAutoRenewAttributeResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of queried instances.
+	// The total number of instances that are returned.
 	//
 	// example:
 	//

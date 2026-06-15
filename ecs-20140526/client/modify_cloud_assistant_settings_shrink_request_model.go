@@ -34,34 +34,39 @@ type iModifyCloudAssistantSettingsShrinkRequest interface {
 }
 
 type ModifyCloudAssistantSettingsShrinkRequest struct {
-	// The configurations for upgrading Cloud Assistant Agent.
+	// The configurations of upgrading the Cloud Assistant agent.
 	AgentUpgradeConfigShrink *string `json:"AgentUpgradeConfig,omitempty" xml:"AgentUpgradeConfig,omitempty"`
-	// The configurations for delivering records to Object Storage Service (OSS).
+	// The configurations of delivering records to OSS.
 	OssDeliveryConfigShrink *string `json:"OssDeliveryConfig,omitempty" xml:"OssDeliveryConfig,omitempty"`
 	OwnerAccount            *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId                 *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID.
+	// The ID of the region.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId                  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount      *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId           *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The configurations of resource usage for Cloud Assistant. This setting takes effect only when the version of the Cloud Assistant agent is not earlier than the following versions:
+	//
+	// - Windows: 2.1.4.1065
+	//
+	// - Linux: 2.2.4.1065
 	ResourceUsageConfigShrink *string `json:"ResourceUsageConfig,omitempty" xml:"ResourceUsageConfig,omitempty"`
-	// Cloud Assistant Session Manager configuration.
+	// The configurations of the Session Manager feature.
 	SessionManagerConfigShrink *string `json:"SessionManagerConfig,omitempty" xml:"SessionManagerConfig,omitempty"`
-	// The Cloud Assistant feature. Set SettingType to one of the following valid values:
+	// The type of the service configurations. Valid values:
 	//
-	// 	- SessionManagerDelivery: the Session Record Delivery configurations.
+	// - `SessionManagerDelivery`: the configurations of delivering session records.
 	//
-	// 	- InvocationDelivery: the Operation Content and Result Delivery configurations.
+	// - `InvocationDelivery`: the configurations of delivering command execution records.
 	//
-	// 	- AgentUpgradeConfig: the Cloud Assistant Agent Upgrade configurations.
+	// - `AgentUpgradeConfig`: the configurations of upgrading the Cloud Assistant agent.
 	//
-	// 	- SessionManagerConfig: Cloud Assistant the SessionManager configuration.
+	// - `SessionManagerConfig`: the configurations of Cloud Assistant Session Manager.
 	//
 	// This parameter is required.
 	//
@@ -69,7 +74,7 @@ type ModifyCloudAssistantSettingsShrinkRequest struct {
 	//
 	// SessionManagerDelivery
 	SettingType *string `json:"SettingType,omitempty" xml:"SettingType,omitempty"`
-	// The configurations for delivering records to Simple Log Service.
+	// The configurations of delivering records to SLS.
 	SlsDeliveryConfigShrink *string `json:"SlsDeliveryConfig,omitempty" xml:"SlsDeliveryConfig,omitempty"`
 }
 

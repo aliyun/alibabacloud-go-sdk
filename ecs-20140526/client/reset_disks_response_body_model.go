@@ -17,7 +17,7 @@ type iResetDisksResponseBody interface {
 
 type ResetDisksResponseBody struct {
 	OperationProgressSet *ResetDisksResponseBodyOperationProgressSet `json:"OperationProgressSet,omitempty" xml:"OperationProgressSet,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

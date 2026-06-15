@@ -14,7 +14,7 @@ type iApplyAutoSnapshotPolicyResponseBody interface {
 }
 
 type ApplyAutoSnapshotPolicyResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

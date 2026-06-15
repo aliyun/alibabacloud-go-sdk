@@ -145,7 +145,7 @@ type ModifyReservedInstancesRequestConfiguration struct {
 	InstanceAmount *int32 `json:"InstanceAmount,omitempty" xml:"InstanceAmount,omitempty"`
 	// The instance types that the new reserved instance can match.
 	//
-	// >  The supported instance types are continuously updated. For information about the instance types supported by reserved instances, see [Overview of reserved instances](~~100370#3c1b682051vt4~~).
+	// > The supported instance types are continuously updated. For information about the instance types supported by reserved instances, see [Overview of reserved instances](~~100370#3c1b682051vt4~~).
 	//
 	// example:
 	//
@@ -153,7 +153,7 @@ type ModifyReservedInstancesRequestConfiguration struct {
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	// The name of the new reserved instance.
 	//
-	// The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+	// The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http\\:// or https\\://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
 	//
 	// example:
 	//
@@ -161,9 +161,9 @@ type ModifyReservedInstancesRequestConfiguration struct {
 	ReservedInstanceName *string `json:"ReservedInstanceName,omitempty" xml:"ReservedInstanceName,omitempty"`
 	// The scope level of the new reserved instance. Valid values:
 	//
-	// 	- Region
+	// - Region
 	//
-	// 	- Zone
+	// - Zone
 	//
 	// Default value: Region.
 	//

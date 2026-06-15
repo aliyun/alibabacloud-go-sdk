@@ -26,6 +26,8 @@ type iEnableNetworkInterfaceQoSRequest interface {
 }
 
 type EnableNetworkInterfaceQoSRequest struct {
+  // The ID of the Elastic Network Interface (ENI).
+  // 
   // This parameter is required.
   // 
   // example:
@@ -36,6 +38,8 @@ type EnableNetworkInterfaceQoSRequest struct {
   OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
   // QoS Speed Limit Settings
   QoS *EnableNetworkInterfaceQoSRequestQoS `json:"QoS,omitempty" xml:"QoS,omitempty" type:"Struct"`
+  // The Region ID. You can invoke DescribeRegions to view the latest Alibaba Cloud Region list.
+  // 
   // This parameter is required.
   // 
   // example:

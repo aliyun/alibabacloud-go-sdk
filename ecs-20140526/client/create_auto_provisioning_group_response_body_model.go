@@ -25,7 +25,7 @@ type CreateAutoProvisioningGroupResponseBody struct {
 	// apg-sn54avj8htgvtyh8****
 	AutoProvisioningGroupId *string                                               `json:"AutoProvisioningGroupId,omitempty" xml:"AutoProvisioningGroupId,omitempty"`
 	LaunchResults           *CreateAutoProvisioningGroupResponseBodyLaunchResults `json:"LaunchResults,omitempty" xml:"LaunchResults,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

@@ -16,8 +16,10 @@ type iDescribeEipMonitorDataResponseBody interface {
 }
 
 type DescribeEipMonitorDataResponseBody struct {
+	// The EIP monitoring data.
 	EipMonitorDatas *DescribeEipMonitorDataResponseBodyEipMonitorDatas `json:"EipMonitorDatas,omitempty" xml:"EipMonitorDatas,omitempty" type:"Struct"`
-	RequestId       *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeEipMonitorDataResponseBody) String() string {

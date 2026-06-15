@@ -20,7 +20,7 @@ type ModifyDiskChargeTypeResponseBody struct {
 	//
 	// example:
 	//
-	// 1234567890
+	// 123456****
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	// The request ID.
 	//

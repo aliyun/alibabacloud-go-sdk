@@ -29,7 +29,7 @@ type iDescribeResourceByTagsRequest interface {
 
 type DescribeResourceByTagsRequest struct {
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. Pages start from page 1.
+	// The page number to return. The minimum value is 1.
 	//
 	// Default value: 1.
 	//
@@ -37,7 +37,7 @@ type DescribeResourceByTagsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: 1 to 100.
+	// The number of entries per page. Maximum value: 100.
 	//
 	// Default value: 50.
 	//
@@ -45,7 +45,7 @@ type DescribeResourceByTagsRequest struct {
 	//
 	// 50
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the resource. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+	// The ID of the region where the resource is located. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to view the latest list of Alibaba Cloud regions.
 	//
 	// This parameter is required.
 	//
@@ -55,35 +55,35 @@ type DescribeResourceByTagsRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The type of the resource. Valid values:
+	// The resource type. Valid values:
 	//
-	// 	- instance: Elastic Compute Service (ECS) instance
+	// - `instance`: ECS instance.
 	//
-	// 	- disk: disk
+	// - `disk`: disk.
 	//
-	// 	- snapshot: snapshot
+	// - `snapshot`: snapshot.
 	//
-	// 	- image: image
+	// - `image`: image.
 	//
-	// 	- securitygroup: security group
+	// - `securitygroup`: security group.
 	//
-	// 	- volume: storage volume
+	// - `volume`: volume.
 	//
-	// 	- eni: elastic network interface (ENI)
+	// - `eni`: elastic network interface.
 	//
-	// 	- ddh: dedicated host
+	// - `ddh`: dedicated host.
 	//
-	// 	- keypair: SSH key pair
+	// - `keypair`: key pair.
 	//
-	// 	- launchtemplate: launch template
+	// - `launchtemplate`: launch template.
 	//
-	// All the preceding values must be lowercase.
+	// All values must be in lowercase.
 	//
 	// example:
 	//
 	// instance
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tags.
+	// The tag list.
 	Tag []*DescribeResourceByTagsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -181,13 +181,15 @@ func (s *DescribeResourceByTagsRequest) Validate() error {
 }
 
 type DescribeResourceByTagsRequestTag struct {
-	// The key of tag N of the resource. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length.
+	// The tag key.
+	//
+	// > For best compatibility, we recommend that you use the `Tag.N.Key` parameter.
 	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N of the resource. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length.
+	// The tag value. An empty string is allowed. The value can be up to 128 characters in length.
 	//
 	// example:
 	//

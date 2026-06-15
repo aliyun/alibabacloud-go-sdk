@@ -18,8 +18,11 @@ type iCreateRouterInterfaceResponseBody interface {
 }
 
 type CreateRouterInterfaceResponseBody struct {
-	OrderId           *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The order ID. This parameter is returned only for subscription-based router interfaces.
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The router interface ID.
 	RouterInterfaceId *string `json:"RouterInterfaceId,omitempty" xml:"RouterInterfaceId,omitempty"`
 }
 

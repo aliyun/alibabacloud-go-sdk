@@ -16,13 +16,13 @@ type iModifyDiskDeploymentResponseBody interface {
 }
 
 type ModifyDiskDeploymentResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// D69846D9-F17F-51C0-8AC6-B4B71777****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the disk migration task.
+	// The disk migration task ID.
 	//
 	// example:
 	//

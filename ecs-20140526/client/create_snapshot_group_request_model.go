@@ -60,15 +60,15 @@ type CreateSnapshotGroupRequest struct {
 	//
 	// Take note of the following:
 	//
-	// 	- You cannot specify both the DiskId.N and `ExcludeDiskId.N` parameters in the same request.
+	// - You cannot specify both the DiskId.N and `ExcludeDiskId.N` parameters in the same request.
 	//
-	// 	- If you specify `InstanceId`, you can specify the IDs of cloud disks that are attached only to the specified instance. You cannot specify the IDs of cloud disks that are attached to multiple instances.
+	// - If you specify `InstanceId`, you can specify the IDs of cloud disks that are attached only to the specified instance. You cannot specify the IDs of cloud disks that are attached to multiple instances.
 	DiskId []*string `json:"DiskId,omitempty" xml:"DiskId,omitempty" type:"Repeated"`
 	// The IDs of the cloud disks for which you do not want to create snapshots. After you specify the IDs of cloud disks, the snapshot-consistent group that you create does not contain the snapshots of the specified cloud disks. Valid values of N: 1 to 16.
 	//
 	// This parameter is empty by default, which indicates that snapshots are created for all disks of the instance.
 	//
-	// >  This parameter cannot be set at the same time as the `DiskId.N`.
+	// > This parameter cannot be set at the same time as the `DiskId.N`.
 	//
 	// example:
 	//
@@ -82,13 +82,13 @@ type CreateSnapshotGroupRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// Specifies whether to enable the instant access feature. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// Default value: false.
 	//
-	// >  This parameter is no longer used. By default, new standard snapshots of ESSDs are upgraded to instant access snapshots free of charge without the need for additional configurations. For more information, see [Use the instant access feature](https://help.aliyun.com/document_detail/193667.html).
+	// > This parameter is no longer used. By default, new standard snapshots of ESSDs are upgraded to instant access snapshots free of charge without the need for additional configurations. For more information, see [Use the instant access feature](https://help.aliyun.com/document_detail/193667.html).
 	//
 	// example:
 	//
@@ -100,7 +100,7 @@ type CreateSnapshotGroupRequest struct {
 	//
 	// This parameter is left empty by default, which indicates that the instant access feature is automatically disabled when the instant access snapshots are released.
 	//
-	// >  This parameter is no longer used. By default, new standard snapshots of ESSDs are upgraded to instant access snapshots free of charge without the need for additional configurations. For more information, see [Use the instant access feature](https://help.aliyun.com/document_detail/193667.html).
+	// > This parameter is no longer used. By default, new standard snapshots of ESSDs are upgraded to instant access snapshots free of charge without the need for additional configurations. For more information, see [Use the instant access feature](https://help.aliyun.com/document_detail/193667.html).
 	//
 	// example:
 	//

@@ -30,9 +30,9 @@ type DescribeDiagnosticReportsRequest struct {
 	//
 	// Default value:
 	//
-	// 	- If this parameter is left empty, the default value is 10.
+	// - If this parameter is left empty, the default value is 10.
 	//
-	// 	- If you set this parameter to a value that is greater than 100, the default value is 100.
+	// - If you set this parameter to a value that is greater than 100, the default value is 100.
 	//
 	// example:
 	//
@@ -58,15 +58,15 @@ type DescribeDiagnosticReportsRequest struct {
 	ResourceIds []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
 	// The severity level of the diagnostic report. Valid values:
 	//
-	// 	- Unknown: The diagnostic did not start, failed to run, or unexpectedly exited without a diagnosis.
+	// - Unknown: The diagnostic did not start, failed to run, or unexpectedly exited without a diagnosis.
 	//
-	// 	- Normal: No exceptions were detected.
+	// - Normal: No exceptions were detected.
 	//
-	// 	- Info: Diagnostic information was recorded and may be related to exceptions.
+	// - Info: Diagnostic information was recorded and may be related to exceptions.
 	//
-	// 	- Warn: Diagnostic information was recorded and may indicate exceptions.
+	// - Warn: Diagnostic information was recorded and may indicate exceptions.
 	//
-	// 	- Critical: Critical exceptions were detected.
+	// - Critical: Critical exceptions were detected.
 	//
 	// example:
 	//
@@ -74,11 +74,11 @@ type DescribeDiagnosticReportsRequest struct {
 	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
 	// The status of the diagnostic report. Valid values:
 	//
-	// 	- InProgress
+	// - InProgress
 	//
-	// 	- Failed
+	// - Failed
 	//
-	// 	- Finished
+	// - Finished
 	//
 	// example:
 	//

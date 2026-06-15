@@ -88,22 +88,30 @@ type DescribeTasksRequest struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The name of the operation that generates the task. Valid values:
 	//
-	// 	- ImportImage
+	// - ImportImage
 	//
-	// 	- ExportImage
+	// - ExportImage
 	//
-	// 	- RedeployInstance
+	// - RedeployInstance
 	//
-	// 	- ModifyDiskSpec
+	// - ModifyDiskSpec
 	//
-	// 	- ArchiveSnapshot
+	// - ArchiveSnapshot
 	//
 	// example:
 	//
 	// ImportImage
 	TaskAction *string `json:"TaskAction,omitempty" xml:"TaskAction,omitempty"`
+	// Task group ID.
+	//
+	// > This parameter is in invitational preview. When this parameter is used, other query conditions become invalid.
+	//
 	// if can be null:
 	// false
+	//
+	// example:
+	//
+	// g-2ze2op2grqpclwu7****
 	TaskGroupId *string `json:"TaskGroupId,omitempty" xml:"TaskGroupId,omitempty"`
 	// The task IDs. You can specify up to 100 task IDs at a time. Separate the task IDs with commas (,).
 	//
@@ -113,15 +121,15 @@ type DescribeTasksRequest struct {
 	TaskIds *string `json:"TaskIds,omitempty" xml:"TaskIds,omitempty"`
 	// The task status. Valid values:
 	//
-	// 	- Finished
+	// - Finished
 	//
-	// 	- Processing
+	// - Processing
 	//
-	// 	- Failed
+	// - Failed
 	//
 	// This parameter is left empty by default.
 	//
-	// >  The system only queries tasks in the Finished, Processing, and Failed states and ignores other values.
+	// > The system only queries tasks in the Finished, Processing, and Failed states and ignores other values.
 	//
 	// example:
 	//

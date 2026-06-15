@@ -24,10 +24,13 @@ type iReleaseEipAddressRequest interface {
 }
 
 type ReleaseEipAddressRequest struct {
+	// The allocation ID of the EIP to release.
+	//
 	// This parameter is required.
-	AllocationId         *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region where the EIP is located. You can call the `DescribeRegions` operation to get the latest list of regions.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

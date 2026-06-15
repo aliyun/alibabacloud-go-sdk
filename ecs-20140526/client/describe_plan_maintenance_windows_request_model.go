@@ -28,34 +28,52 @@ type iDescribePlanMaintenanceWindowsRequest interface {
 }
 
 type DescribePlanMaintenanceWindowsRequest struct {
+	// Indicates whether the maintenance window is enabled.
+	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The number of entries to return on each page. Valid values: 1 to 100. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the last query as the value of NextToken.
+	//
 	// example:
 	//
 	// AAAAAdDWBF2
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the maintenance window.
+	//
 	// example:
 	//
 	// pw-bp1jarob1aup7yvlrdt6
-	PlanWindowId   *string `json:"PlanWindowId,omitempty" xml:"PlanWindowId,omitempty"`
+	PlanWindowId *string `json:"PlanWindowId,omitempty" xml:"PlanWindowId,omitempty"`
+	// The name of the maintenance window.
+	//
+	// example:
+	//
+	// WIndowName
 	PlanWindowName *string `json:"PlanWindowName,omitempty" xml:"PlanWindowName,omitempty"`
+	// The ID of the region where the ECS instance is located. You can call the DescribeRegions operation to query the latest list of Alibaba Cloud regions.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group to which the maintenance window applies.
+	//
 	// example:
 	//
 	// rg-d85g5yocioezmdrll
-	TargetResourceGroupId *string                                                  `json:"TargetResourceGroupId,omitempty" xml:"TargetResourceGroupId,omitempty"`
-	TargetResourceTags    *DescribePlanMaintenanceWindowsRequestTargetResourceTags `json:"TargetResourceTags,omitempty" xml:"TargetResourceTags,omitempty" type:"Struct"`
+	TargetResourceGroupId *string `json:"TargetResourceGroupId,omitempty" xml:"TargetResourceGroupId,omitempty"`
+	// The tags of the resources to which the maintenance window applies.
+	TargetResourceTags *DescribePlanMaintenanceWindowsRequestTargetResourceTags `json:"TargetResourceTags,omitempty" xml:"TargetResourceTags,omitempty" type:"Struct"`
 }
 
 func (s DescribePlanMaintenanceWindowsRequest) String() string {
@@ -148,7 +166,17 @@ func (s *DescribePlanMaintenanceWindowsRequest) Validate() error {
 }
 
 type DescribePlanMaintenanceWindowsRequestTargetResourceTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of the tag.
+	//
+	// example:
+	//
+	// tagKey
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag.
+	//
+	// example:
+	//
+	// tagValue
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

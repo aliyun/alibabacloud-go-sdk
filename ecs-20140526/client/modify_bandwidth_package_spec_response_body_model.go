@@ -14,6 +14,7 @@ type iModifyBandwidthPackageSpecResponseBody interface {
 }
 
 type ModifyBandwidthPackageSpecResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

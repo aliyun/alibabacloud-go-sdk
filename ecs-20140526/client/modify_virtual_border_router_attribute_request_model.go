@@ -42,23 +42,46 @@ type iModifyVirtualBorderRouterAttributeRequest interface {
 }
 
 type ModifyVirtualBorderRouterAttributeRequest struct {
-	CircuitCode       *string `json:"CircuitCode,omitempty" xml:"CircuitCode,omitempty"`
-	ClientToken       *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Description       *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	LocalGatewayIp    *string `json:"LocalGatewayIp,omitempty" xml:"LocalGatewayIp,omitempty"`
-	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	OwnerAccount      *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PeerGatewayIp     *string `json:"PeerGatewayIp,omitempty" xml:"PeerGatewayIp,omitempty"`
+	// The circuit code of the Express Connect circuit. The circuit code is provided by your connectivity provider.
+	CircuitCode *string `json:"CircuitCode,omitempty" xml:"CircuitCode,omitempty"`
+	// A client-generated token that ensures the request is idempotent. The token must be unique for each request, contain only ASCII characters, and not exceed 64 characters in length.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The description of the VBR.
+	//
+	// The description must be 2 to 256 characters long. It must start with a letter and cannot start with `http://` or `https://`.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The local gateway IP address for the BGP session.
+	LocalGatewayIp *string `json:"LocalGatewayIp,omitempty" xml:"LocalGatewayIp,omitempty"`
+	// The name of the VBR.
+	//
+	// The name must be 2 to 128 characters long. It must start with a letter and can contain letters, digits, underscores (_), and hyphens (-).
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The peer gateway IP address for the BGP session.
+	PeerGatewayIp *string `json:"PeerGatewayIp,omitempty" xml:"PeerGatewayIp,omitempty"`
+	// The subnet mask for the `LocalGatewayIp` and `PeerGatewayIp`.
 	PeeringSubnetMask *string `json:"PeeringSubnetMask,omitempty" xml:"PeeringSubnetMask,omitempty"`
+	// The ID of the region where the virtual border router (VBR) is deployed.
+	//
+	// To get a list of the latest regions, call the `DescribeRegions` operation.
+	//
 	// This parameter is required.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	UserCidr             *string `json:"UserCidr,omitempty" xml:"UserCidr,omitempty"`
+	// The CIDR block of the on-premises network that is connected to the VBR.
+	UserCidr *string `json:"UserCidr,omitempty" xml:"UserCidr,omitempty"`
+	// The ID of the VBR to modify.
+	//
 	// This parameter is required.
-	VbrId  *string `json:"VbrId,omitempty" xml:"VbrId,omitempty"`
-	VlanId *int32  `json:"VlanId,omitempty" xml:"VlanId,omitempty"`
+	VbrId *string `json:"VbrId,omitempty" xml:"VbrId,omitempty"`
+	// The VLAN ID of the VBR. The VLAN ID must be unique on the physical connection.
+	//
+	// Valid values: 0 to 4095.
+	//
+	// A value of 0 indicates that the VBR does not use a VLAN.
+	VlanId *int32 `json:"VlanId,omitempty" xml:"VlanId,omitempty"`
 }
 
 func (s ModifyVirtualBorderRouterAttributeRequest) String() string {

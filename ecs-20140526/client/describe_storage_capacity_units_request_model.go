@@ -40,9 +40,9 @@ type iDescribeStorageCapacityUnitsRequest interface {
 type DescribeStorageCapacityUnitsRequest struct {
 	// The allocation type. Valid values:
 	//
-	// 	- Normal: queries SCUs that belong to the current Alibaba Cloud account.
+	// - Normal: queries SCUs that belong to the current Alibaba Cloud account.
 	//
-	// 	- Shared: queries SCUs shared between the Alibaba Cloud account and RAM users.
+	// - Shared: queries SCUs shared between the Alibaba Cloud account and RAM users.
 	//
 	// Default value: Normal.
 	//

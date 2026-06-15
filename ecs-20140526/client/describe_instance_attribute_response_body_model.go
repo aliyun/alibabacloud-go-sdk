@@ -104,9 +104,9 @@ type DescribeInstanceAttributeResponseBody struct {
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// The performance mode of the burstable instance. Valid values:
 	//
-	// 	- Standard: the standard mode. For more information, see the [Performance modes](~~59977#section-svb-w9d-dju~~) section of the "Overview of burstable instances" topic.
+	// - Standard: the standard mode. For more information, see the [Performance modes](~~59977#section-svb-w9d-dju~~) section of the "Overview of burstable instances" topic.
 	//
-	// 	- Unlimited: the unlimited mode. For more information, see the [Performance modes](~~59977#section-svb-w9d-dju~~) section of the "Overview of burstable instances" topic.
+	// - Unlimited: the unlimited mode. For more information, see the [Performance modes](~~59977#section-svb-w9d-dju~~) section of the "Overview of burstable instances" topic.
 	//
 	// example:
 	//
@@ -124,9 +124,9 @@ type DescribeInstanceAttributeResponseBody struct {
 	EipAddress *DescribeInstanceAttributeResponseBodyEipAddress `json:"EipAddress,omitempty" xml:"EipAddress,omitempty" type:"Struct"`
 	// Indicates whether the Jumbo Frame feature is enabled for the instance. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// For more information, see [MTUs](https://help.aliyun.com/document_detail/200512.html).
 	//
@@ -134,6 +134,14 @@ type DescribeInstanceAttributeResponseBody struct {
 	//
 	// false
 	EnableJumboFrame *bool `json:"EnableJumboFrame,omitempty" xml:"EnableJumboFrame,omitempty"`
+	// Indicates whether VPC network traffic encryption is enabled for the instance. Valid values:
+	//
+	// - true: Enabled.
+	//
+	// - false: Not enabled.
+	//
+	// > This parameter is in invitational preview and is not publicly available yet.
+	//
 	// example:
 	//
 	// True
@@ -159,9 +167,9 @@ type DescribeInstanceAttributeResponseBody struct {
 	InnerIpAddress *DescribeInstanceAttributeResponseBodyInnerIpAddress `json:"InnerIpAddress,omitempty" xml:"InnerIpAddress,omitempty" type:"Struct"`
 	// The billing method of the instance. Valid values:
 	//
-	// 	- PrePaid: subscription.
+	// - PrePaid: subscription.
 	//
-	// 	- PostPaid: pay-as-you-go
+	// - PostPaid: pay-as-you-go
 	//
 	// example:
 	//
@@ -181,9 +189,9 @@ type DescribeInstanceAttributeResponseBody struct {
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// The network type of the instance. Valid values:
 	//
-	// 	- classic: classic network
+	// - classic: classic network
 	//
-	// 	- vpc: VPC
+	// - vpc: VPC
 	//
 	// example:
 	//
@@ -197,11 +205,11 @@ type DescribeInstanceAttributeResponseBody struct {
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	// The billing method for network usage. Valid values:
 	//
-	// 	- PayByBandwidth
+	// - PayByBandwidth
 	//
-	// 	- PayByTraffic
+	// - PayByTraffic
 	//
-	// >  When the **pay-by-traffic*	- billing method is used for network usage, the maximum inbound and outbound bandwidths are used as the upper limits of bandwidths instead of guaranteed performance specifications. In scenarios in which demands exceed resource supplies, the maximum bandwidths may not be reached. If you want guaranteed bandwidths for your instance, use the **pay-by-bandwidth*	- billing method for network usage.
+	// > When the **pay-by-traffic*	- billing method is used for network usage, the maximum inbound and outbound bandwidths are used as the upper limits of bandwidths instead of guaranteed performance specifications. In scenarios in which demands exceed resource supplies, the maximum bandwidths may not be reached. If you want guaranteed bandwidths for your instance, use the **pay-by-bandwidth*	- billing method for network usage.
 	//
 	// example:
 	//
@@ -221,13 +229,13 @@ type DescribeInstanceAttributeResponseBody struct {
 	InternetMaxBandwidthOut *int32 `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
 	// Indicates whether the ECS instance is I/O optimized. Valid values:
 	//
-	// 	- optimized: The ECS instance is I/O optimized.
+	// - optimized: The ECS instance is I/O optimized.
 	//
-	// 	- none: The ECS instance is not I/O optimized.
+	// - none: The ECS instance is not I/O optimized.
 	//
 	// example:
 	//
-	// true
+	// optimized
 	IoOptimized *string `json:"IoOptimized,omitempty" xml:"IoOptimized,omitempty"`
 	// The memory size of the instance. Unit: MiB.
 	//
@@ -262,15 +270,15 @@ type DescribeInstanceAttributeResponseBody struct {
 	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
 	// The status of the instance. Valid values:
 	//
-	// 	- Pending: The instance is being created.
+	// - Pending: The instance is being created.
 	//
-	// 	- Running: The instance is running.
+	// - Running: The instance is running.
 	//
-	// 	- Starting: The instance is being started.
+	// - Starting: The instance is being started.
 	//
-	// 	- Stopping: The instance is being stopped.
+	// - Stopping: The instance is being stopped.
 	//
-	// 	- Stopped: The instance is stopped.
+	// - Stopped: The instance is stopped.
 	//
 	// example:
 	//
@@ -278,11 +286,11 @@ type DescribeInstanceAttributeResponseBody struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// Indicates whether the system implements billing after the instance is stopped. Valid values:
 	//
-	// 	- KeepCharging: The instance is stopped in standard mode. The billing of the instance continues after the instance is stopped, and resources are retained for the instance.
+	// - KeepCharging: The instance is stopped in standard mode. The billing of the instance continues after the instance is stopped, and resources are retained for the instance.
 	//
-	// 	- StopCharging: The instance is stopped in economical mode. The billing of some resources of the instance stops after the instance is stopped. When the instance is stopped, its resources such as vCPUs, memory, and public IP address are released. The instance may be unable to start again if some required resources are out of stock in the current region.
+	// - StopCharging: The instance is stopped in economical mode. The billing of some resources of the instance stops after the instance is stopped. When the instance is stopped, its resources such as vCPUs, memory, and public IP address are released. The instance may be unable to start again if some required resources are out of stock in the current region.
 	//
-	// 	- Not-applicable: The instance does not support economical mode.
+	// - Not-applicable: The instance does not support economical mode.
 	//
 	// example:
 	//
@@ -733,11 +741,11 @@ type DescribeInstanceAttributeResponseBodyEipAddress struct {
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	// The billing method for network usage. Valid values:
 	//
-	// 	- PayByBandwidth
+	// - PayByBandwidth
 	//
-	// 	- PayByTraffic
+	// - PayByTraffic
 	//
-	// >  When the **pay-by-traffic*	- billing method is used for network usage, the maximum inbound and outbound bandwidths are used as the upper limits of bandwidths instead of guaranteed performance specifications. In scenarios in which demands exceed resource supplies, the maximum bandwidths may not be reached. If you want guaranteed bandwidths for your instance, use the **pay-by-bandwidth*	- billing method for network usage.
+	// > When the **pay-by-traffic*	- billing method is used for network usage, the maximum inbound and outbound bandwidths are used as the upper limits of bandwidths instead of guaranteed performance specifications. In scenarios in which demands exceed resource supplies, the maximum bandwidths may not be reached. If you want guaranteed bandwidths for your instance, use the **pay-by-bandwidth*	- billing method for network usage.
 	//
 	// example:
 	//
@@ -831,24 +839,42 @@ type DescribeInstanceAttributeResponseBodyNetworkOptions struct {
 	//
 	// Valid values:
 	//
-	// 	- Vpc-L1.
+	// - Vpc-L1.
 	//
-	// 	- Vpc-L2.
+	// - Vpc-L2.
 	//
-	// 	- Ebs-L1.
+	// - Ebs-L1.
 	//
-	// 	- Ebs-L2.
+	// - Ebs-L2.
 	//
-	// 	- Default.
+	// - Default.
 	//
 	// example:
 	//
 	// Vpc-L1
 	BandwidthWeighting *string `json:"BandwidthWeighting,omitempty" xml:"BandwidthWeighting,omitempty"`
+	// Indicates whether the Jumbo frame attribute is enabled for the instance. Valid values:
+	//
+	// - true: Enabled.
+	//
+	// - false: Not enabled.
+	//
+	// For more information, see [ECS Instance MTU](https://help.aliyun.com/document_detail/200512.html).
+	//
+	// > This parameter is in invitational preview and is not publicly available yet.
+	//
 	// example:
 	//
 	// false
 	EnableJumboFrame *bool `json:"EnableJumboFrame,omitempty" xml:"EnableJumboFrame,omitempty"`
+	// Indicates whether VPC network traffic encryption is enabled for the instance. Valid values:
+	//
+	// - true: Enabled.
+	//
+	// - false: Not enabled.
+	//
+	// > This parameter is in invitational preview and is not publicly available yet.
+	//
 	// example:
 	//
 	// False

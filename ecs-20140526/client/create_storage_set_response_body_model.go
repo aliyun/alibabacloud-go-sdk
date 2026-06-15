@@ -16,17 +16,7 @@ type iCreateStorageSetResponseBody interface {
 }
 
 type CreateStorageSetResponseBody struct {
-	// The request ID.
-	//
-	// example:
-	//
-	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the storage set.
-	//
-	// example:
-	//
-	// ss-bp67acfmxazb4p****
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	StorageSetId *string `json:"StorageSetId,omitempty" xml:"StorageSetId,omitempty"`
 }
 

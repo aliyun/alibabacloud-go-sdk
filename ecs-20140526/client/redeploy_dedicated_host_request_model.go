@@ -36,9 +36,9 @@ type RedeployDedicatedHostRequest struct {
 	DedicatedHostId *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
 	// Specifies whether to stop the instance before it is migrated to the destination dedicated host. Valid values:
 	//
-	// 	- reboot: stops the instance before migration.
+	// - reboot: stops the instance before migration.
 	//
-	// 	- LiveMigrationFirst: migrates the instance without stopping it. If you set MigrationType to LiveMigrationFirst, you must specify DedicatedHostId. In this case, you cannot change the instance type of the ECS instance when the instance is migrated. If the migration in LiveMigrationFirst mode fails, the system switches to the Reboot mode.
+	// - LiveMigrationFirst: migrates the instance without stopping it. If you set MigrationType to LiveMigrationFirst, you must specify DedicatedHostId. In this case, you cannot change the instance type of the ECS instance when the instance is migrated. If the migration in LiveMigrationFirst mode fails, the system switches to the Reboot mode.
 	//
 	// Default value: reboot.
 	//

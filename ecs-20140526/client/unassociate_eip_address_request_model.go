@@ -28,13 +28,29 @@ type iUnassociateEipAddressRequest interface {
 }
 
 type UnassociateEipAddressRequest struct {
+	// The allocation ID of the EIP.
+	//
 	// This parameter is required.
 	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
+	// This parameter is optional because the system automatically determines the instance ID from the provided `AllocationId`.
+	//
 	// This parameter is required.
-	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceType         *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The type of the associated instance. Valid values:
+	//
+	// - `EcsInstance`: An ECS instance. This is the default.
+	//
+	// - `SlbInstance`: A Classic Load Balancer (CLB) instance.
+	//
+	// - `Nat`: A NAT gateway.
+	//
+	// - `HaVip`: A high-availability virtual IP address (HaVip).
+	//
+	// - `NetworkInterface`: A secondary elastic network interface.
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region where the EIP is located. To get the latest list of regions, call the `DescribeRegions` operation.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

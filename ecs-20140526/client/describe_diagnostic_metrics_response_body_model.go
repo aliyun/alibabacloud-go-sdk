@@ -87,7 +87,7 @@ type DescribeDiagnosticMetricsResponseBodyMetrics struct {
 	//
 	// example:
 	//
-	// CPU diagnostic
+	// CPU诊断
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Indicates whether the diagnostic metric needs to be assessed by running a Cloud Assistant command in a guest operating system.
 	//
@@ -111,7 +111,7 @@ type DescribeDiagnosticMetricsResponseBodyMetrics struct {
 	//
 	// example:
 	//
-	// CPU diagnostic
+	// CPU诊断
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
 	// The resource type supported by the diagnostic metric.
 	//
@@ -121,11 +121,11 @@ type DescribeDiagnosticMetricsResponseBodyMetrics struct {
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The operating system type supported by the diagnostic metric. Valid values:
 	//
-	// 	- Windows
+	// - Windows
 	//
-	// 	- Linux
+	// - Linux
 	//
-	// 	- All: Windows and Linux
+	// - All: Windows and Linux
 	//
 	// example:
 	//

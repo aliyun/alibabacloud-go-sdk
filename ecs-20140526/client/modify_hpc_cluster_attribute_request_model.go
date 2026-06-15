@@ -36,7 +36,7 @@ type ModifyHpcClusterAttributeRequest struct {
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The description of the HPC cluster. The description must be 2 to 256 characters in length, and cannot start with http:// or https://.
+	// The description of the HPC cluster. The description must be 2 to 256 characters in length, and cannot start with http\\:// or https\\://.
 	//
 	// This parameter is empty by default.
 	//
@@ -52,7 +52,7 @@ type ModifyHpcClusterAttributeRequest struct {
 	//
 	// hpc-b8bq705cvx1****
 	HpcClusterId *string `json:"HpcClusterId,omitempty" xml:"HpcClusterId,omitempty"`
-	// The name of the HPC cluster. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, underscores (_), and hyphens (-).
+	// The name of the HPC cluster. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http\\:// or https\\://. The name can contain letters, digits, underscores (_), and hyphens (-).
 	//
 	// This parameter is empty by default.
 	//

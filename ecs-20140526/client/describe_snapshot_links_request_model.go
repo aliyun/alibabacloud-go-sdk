@@ -50,9 +50,9 @@ type DescribeSnapshotLinksRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The maximum number of entries per page. Maximum value: 100. Default value:
 	//
-	// 	- If you do not specify this parameter or if you set a value smaller than 10, the default value is 10.
+	// - If you do not specify this parameter or if you set a value smaller than 10, the default value is 10.
 	//
-	// 	- If you set a value greater than 100, the default value is 100.
+	// - If you set a value greater than 100, the default value is 100.
 	//
 	// example:
 	//

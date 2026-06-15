@@ -11,6 +11,8 @@ type iCreatePlanMaintenanceWindowRequest interface {
 	GoString() string
 	SetEnable(v bool) *CreatePlanMaintenanceWindowRequest
 	GetEnable() *bool
+	SetMinMaintenanceInterval(v int32) *CreatePlanMaintenanceWindowRequest
+	GetMinMaintenanceInterval() *int32
 	SetPlanWindowName(v string) *CreatePlanMaintenanceWindowRequest
 	GetPlanWindowName() *string
 	SetRegionId(v string) *CreatePlanMaintenanceWindowRequest
@@ -24,28 +26,49 @@ type iCreatePlanMaintenanceWindowRequest interface {
 }
 
 type CreatePlanMaintenanceWindowRequest struct {
+	// Specifies whether to enable the maintenance window.
+	//
+	// - **true**: Enables the maintenance window.
+	//
+	// - **false**: Disables the maintenance window.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// true
-	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	Enable                 *bool  `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	MinMaintenanceInterval *int32 `json:"MinMaintenanceInterval,omitempty" xml:"MinMaintenanceInterval,omitempty"`
+	// The name of the maintenance window. The name can be up to 200 characters long.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// WIndowName
 	PlanWindowName *string `json:"PlanWindowName,omitempty" xml:"PlanWindowName,omitempty"`
+	// The ID of the region. You can call the DescribeRegions operation to query the latest list of Alibaba Cloud regions.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The maintenance operation supported by the maintenance window.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Reboot
 	SupportMaintenanceAction *string `json:"SupportMaintenanceAction,omitempty" xml:"SupportMaintenanceAction,omitempty"`
+	// The resources to which the maintenance window applies.
+	//
 	// This parameter is required.
 	TargetResource *CreatePlanMaintenanceWindowRequestTargetResource `json:"TargetResource,omitempty" xml:"TargetResource,omitempty" type:"Struct"`
+	// The recurring schedule for the maintenance window.
+	//
 	// This parameter is required.
 	TimePeriod *CreatePlanMaintenanceWindowRequestTimePeriod `json:"TimePeriod,omitempty" xml:"TimePeriod,omitempty" type:"Struct"`
 }
@@ -60,6 +83,10 @@ func (s CreatePlanMaintenanceWindowRequest) GoString() string {
 
 func (s *CreatePlanMaintenanceWindowRequest) GetEnable() *bool {
 	return s.Enable
+}
+
+func (s *CreatePlanMaintenanceWindowRequest) GetMinMaintenanceInterval() *int32 {
+	return s.MinMaintenanceInterval
 }
 
 func (s *CreatePlanMaintenanceWindowRequest) GetPlanWindowName() *string {
@@ -84,6 +111,11 @@ func (s *CreatePlanMaintenanceWindowRequest) GetTimePeriod() *CreatePlanMaintena
 
 func (s *CreatePlanMaintenanceWindowRequest) SetEnable(v bool) *CreatePlanMaintenanceWindowRequest {
 	s.Enable = &v
+	return s
+}
+
+func (s *CreatePlanMaintenanceWindowRequest) SetMinMaintenanceInterval(v int32) *CreatePlanMaintenanceWindowRequest {
+	s.MinMaintenanceInterval = &v
 	return s
 }
 
@@ -127,17 +159,22 @@ func (s *CreatePlanMaintenanceWindowRequest) Validate() error {
 }
 
 type CreatePlanMaintenanceWindowRequestTargetResource struct {
+	// The ID of the resource group. This parameter is required if `Scope` is set to `ResourceGroup`.
+	//
 	// example:
 	//
 	// rg-aekzhm7pmnvcbty
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The scope of resources to which the maintenance window applies.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Tag
-	Scope *string                                                 `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	Tags  []*CreatePlanMaintenanceWindowRequestTargetResourceTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// The tags of the resources to which the maintenance window applies. This parameter is required if `Scope` is set to `Tag`.
+	Tags []*CreatePlanMaintenanceWindowRequestTargetResourceTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s CreatePlanMaintenanceWindowRequestTargetResource) String() string {
@@ -189,7 +226,14 @@ func (s *CreatePlanMaintenanceWindowRequestTargetResource) Validate() error {
 }
 
 type CreatePlanMaintenanceWindowRequestTargetResourceTags struct {
+	// The tag key.
+	//
+	// example:
+	//
+	// vms_qualification_孙总身份证_e5590864-1fef-4db2-b2a7-bd2d657fed43.png
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// 21.137.18.60
@@ -227,12 +271,16 @@ func (s *CreatePlanMaintenanceWindowRequestTargetResourceTags) Validate() error 
 }
 
 type CreatePlanMaintenanceWindowRequestTimePeriod struct {
+	// Specifies how often the maintenance window recurs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Weekly
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// The time ranges of the recurring maintenance window. All times are in UTC.
+	//
 	// This parameter is required.
 	RangeList []*CreatePlanMaintenanceWindowRequestTimePeriodRangeList `json:"RangeList,omitempty" xml:"RangeList,omitempty" type:"Repeated"`
 }
@@ -277,10 +325,26 @@ func (s *CreatePlanMaintenanceWindowRequestTimePeriod) Validate() error {
 }
 
 type CreatePlanMaintenanceWindowRequestTimePeriodRangeList struct {
+	// The end time of the maintenance window.
+	//
+	// - If `PeriodUnit` is set to `Weekly`, use the format `Day,HH:mm`. Valid values for `Day` are `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`, and `Sunday`.
+	//
+	// - If `PeriodUnit` is set to `Daily`, use the format `HH:mm`.
+	//
+	// - The time is in `HH:mm` format, where `HH` is the hour (00-23) and `mm` is the minute. Only `00` is supported for the minute.
+	//
 	// example:
 	//
 	// Tuesday,03:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The start time of the maintenance window.
+	//
+	// - If `PeriodUnit` is set to `Weekly`, use the format `Day,HH:mm`. Valid values for `Day` are `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`, and `Sunday`.
+	//
+	// - If `PeriodUnit` is set to `Daily`, use the format `HH:mm`.
+	//
+	// - The time is in `HH:mm` format, where `HH` is the hour (00-23) and `mm` is the minute. Only `00` is supported for the minute.
+	//
 	// example:
 	//
 	// Monday,22:00
