@@ -22,7 +22,7 @@ type iCreateDataAgentWorkspaceResponseBody interface {
 }
 
 type CreateDataAgentWorkspaceResponseBody struct {
-	// The returned data structure.
+	// The response struct.
 	Data *CreateDataAgentWorkspaceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error code.
 	//
@@ -113,27 +113,26 @@ func (s *CreateDataAgentWorkspaceResponseBody) Validate() error {
 }
 
 type CreateDataAgentWorkspaceResponseBodyData struct {
-	// The time the workspace was created, as a UNIX timestamp in seconds.
+	// The time when the workspace was created. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1765960516
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The user ID of the workspace creator.
+	// The UID of the workspace creator.
 	//
 	// example:
 	//
 	// 20282*****7591
-	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// Indicates whether session sharing is enabled for the workspace.
-	IsSessionShareEnabled *bool `json:"IsSessionShareEnabled,omitempty" xml:"IsSessionShareEnabled,omitempty"`
-	// The time the workspace was last modified, as a UNIX timestamp in seconds.
+	Creator               *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	IsSessionShareEnabled *bool   `json:"IsSessionShareEnabled,omitempty" xml:"IsSessionShareEnabled,omitempty"`
+	// The time when the workspace was last modified. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1765961516
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The name of the user\\"s role in the workspace.
+	// The role name of the user in the workspace.
 	//
 	// example:
 	//
@@ -144,7 +143,8 @@ type CreateDataAgentWorkspaceResponseBodyData struct {
 	// example:
 	//
 	// 11
-	TotalMember *int64 `json:"TotalMember,omitempty" xml:"TotalMember,omitempty"`
+	TotalMember *int64  `json:"TotalMember,omitempty" xml:"TotalMember,omitempty"`
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The description of the workspace.
 	//
 	// example:
@@ -203,6 +203,10 @@ func (s *CreateDataAgentWorkspaceResponseBodyData) GetTotalMember() *int64 {
 	return s.TotalMember
 }
 
+func (s *CreateDataAgentWorkspaceResponseBodyData) GetType() *string {
+	return s.Type
+}
+
 func (s *CreateDataAgentWorkspaceResponseBodyData) GetWorkspaceDesc() *string {
 	return s.WorkspaceDesc
 }
@@ -246,6 +250,11 @@ func (s *CreateDataAgentWorkspaceResponseBodyData) SetRoleName(v string) *Create
 
 func (s *CreateDataAgentWorkspaceResponseBodyData) SetTotalMember(v int64) *CreateDataAgentWorkspaceResponseBodyData {
 	s.TotalMember = &v
+	return s
+}
+
+func (s *CreateDataAgentWorkspaceResponseBodyData) SetType(v string) *CreateDataAgentWorkspaceResponseBodyData {
+	s.Type = &v
 	return s
 }
 

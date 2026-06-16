@@ -26,7 +26,7 @@ type iListDataAgentWorkspaceResponseBody interface {
 }
 
 type ListDataAgentWorkspaceResponseBody struct {
-	// The returned data.
+	// The response struct.
 	Data *ListDataAgentWorkspaceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error code.
 	//
@@ -34,19 +34,19 @@ type ListDataAgentWorkspaceResponseBody struct {
 	//
 	// DMS-DA-40114
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned if the request fails.
+	// The error message returned if the call failed.
 	//
 	// example:
 	//
 	// Specified parameter is not valid.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// This parameter is not used.
+	// The maximum number of entries per page.
 	//
 	// example:
 	//
 	// nu use
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// This parameter is not used.
+	// The token information.
 	//
 	// example:
 	//
@@ -147,15 +147,15 @@ func (s *ListDataAgentWorkspaceResponseBody) Validate() error {
 }
 
 type ListDataAgentWorkspaceResponseBodyData struct {
-	// The details of the workspaces.
+	// The configuration content.
 	Content []*ListDataAgentWorkspaceResponseBodyDataContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Repeated"`
-	// The page number.
+	// The total number of pages.
 	//
 	// example:
 	//
 	// 12
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of workspaces on each page.
+	// The number of workspaces per page.
 	//
 	// example:
 	//
@@ -242,13 +242,13 @@ func (s *ListDataAgentWorkspaceResponseBodyData) Validate() error {
 }
 
 type ListDataAgentWorkspaceResponseBodyDataContent struct {
-	// The creation time of the workspace, provided as a UNIX timestamp in seconds.
+	// The creation time of the workspace. This value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1765960516
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The creator\\"s user ID (UID).
+	// The UID of the workspace creator.
 	//
 	// example:
 	//
@@ -261,13 +261,13 @@ type ListDataAgentWorkspaceResponseBodyDataContent struct {
 	// space for test
 	Description           *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	IsSessionShareEnabled *bool   `json:"IsSessionShareEnabled,omitempty" xml:"IsSessionShareEnabled,omitempty"`
-	// The last modification time of the workspace, provided as a UNIX timestamp in seconds.
+	// The most recent modification time of the workspace. This value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1765961516
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The name of the user\\"s role in the workspace.
+	// The role name of the user in the workspace.
 	//
 	// example:
 	//
@@ -278,8 +278,9 @@ type ListDataAgentWorkspaceResponseBodyDataContent struct {
 	// example:
 	//
 	// 11
-	TotalMember *int64 `json:"TotalMember,omitempty" xml:"TotalMember,omitempty"`
-	// The ID of the workspace.
+	TotalMember *int64  `json:"TotalMember,omitempty" xml:"TotalMember,omitempty"`
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The workspace ID.
 	//
 	// example:
 	//
@@ -335,6 +336,10 @@ func (s *ListDataAgentWorkspaceResponseBodyDataContent) GetTotalMember() *int64 
 	return s.TotalMember
 }
 
+func (s *ListDataAgentWorkspaceResponseBodyDataContent) GetType() *string {
+	return s.Type
+}
+
 func (s *ListDataAgentWorkspaceResponseBodyDataContent) GetWorkspaceId() *string {
 	return s.WorkspaceId
 }
@@ -379,6 +384,11 @@ func (s *ListDataAgentWorkspaceResponseBodyDataContent) SetRoleName(v string) *L
 
 func (s *ListDataAgentWorkspaceResponseBodyDataContent) SetTotalMember(v int64) *ListDataAgentWorkspaceResponseBodyDataContent {
 	s.TotalMember = &v
+	return s
+}
+
+func (s *ListDataAgentWorkspaceResponseBodyDataContent) SetType(v string) *ListDataAgentWorkspaceResponseBodyDataContent {
+	s.Type = &v
 	return s
 }
 

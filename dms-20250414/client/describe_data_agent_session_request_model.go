@@ -18,19 +18,19 @@ type iDescribeDataAgentSessionRequest interface {
 }
 
 type DescribeDataAgentSessionRequest struct {
-	// The ID of the DMS unit.
+	// The current Data Management unit.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	DMSUnit *string `json:"DMSUnit,omitempty" xml:"DMSUnit,omitempty"`
-	// The ID of the agent session.
+	// The agent session ID.
 	//
 	// example:
 	//
 	// c61n7gm******rj
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	// The ID of the workspace.
+	// The workspace ID.
 	//
 	// example:
 	//

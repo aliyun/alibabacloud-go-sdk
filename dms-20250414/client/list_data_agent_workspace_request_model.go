@@ -36,13 +36,13 @@ type ListDataAgentWorkspaceRequest struct {
 	//
 	// cn-hangzhou
 	DMSUnit *string `json:"DMSUnit,omitempty" xml:"DMSUnit,omitempty"`
-	// This parameter is reserved for future use.
+	// The maximum number of entries per page.
 	//
 	// example:
 	//
 	// no use
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// This parameter is reserved for future use.
+	// The token information.
 	//
 	// example:
 	//
@@ -54,13 +54,13 @@ type ListDataAgentWorkspaceRequest struct {
 	//
 	// DESC
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The field to sort by.
+	// The name of the field by which to sort.
 	//
 	// example:
 	//
 	// CreateTime
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	// The page number.
+	// The page number to start from.
 	//
 	// This parameter is required.
 	//
@@ -68,7 +68,7 @@ type ListDataAgentWorkspaceRequest struct {
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The number of records per page.
 	//
 	// This parameter is required.
 	//
@@ -82,7 +82,7 @@ type ListDataAgentWorkspaceRequest struct {
 	//
 	// workspaceTest
 	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
-	// The workspace type.
+	// The type of workspace to query.
 	//
 	// This parameter is required.
 	//

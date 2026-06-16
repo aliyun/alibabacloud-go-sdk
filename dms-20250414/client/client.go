@@ -24,7 +24,17 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = dara.String("")
+	client.EndpointRule = dara.String("regional")
+	client.EndpointMap = map[string]*string{
+		"us-west-1":      dara.String("dms.us-west-1.aliyuncs.com"),
+		"us-east-1":      dara.String("dms.us-east-1.aliyuncs.com"),
+		"cn-shenzhen":    dara.String("dms.cn-shenzhen.aliyuncs.com"),
+		"cn-shanghai":    dara.String("dms.cn-shanghai.aliyuncs.com"),
+		"cn-hongkong":    dara.String("dms.cn-hongkong.aliyuncs.com"),
+		"cn-hangzhou":    dara.String("dms.cn-hangzhou.aliyuncs.com"),
+		"cn-beijing":     dara.String("dms.cn-beijing.aliyuncs.com"),
+		"ap-southeast-1": dara.String("dms.ap-southeast-1.aliyuncs.com"),
+	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -998,7 +1008,7 @@ func (client *Client) CreateDataAgentSession(request *CreateDataAgentSessionRequ
 
 // Summary:
 //
-// Creates a DataAgent workspace.
+// Creates a DataAgent collaborative workspace.
 //
 // @param request - CreateDataAgentWorkspaceRequest
 //
@@ -1054,7 +1064,7 @@ func (client *Client) CreateDataAgentWorkspaceWithOptions(request *CreateDataAge
 
 // Summary:
 //
-// Creates a DataAgent workspace.
+// Creates a DataAgent collaborative workspace.
 //
 // @param request - CreateDataAgentWorkspaceRequest
 //
@@ -2388,7 +2398,7 @@ func (client *Client) DescribeCustomAgent(request *DescribeCustomAgentRequest) (
 
 // Summary:
 //
-// Gets the details of a DataAgent session.
+// Retrieves the description of a DataAgent session.
 //
 // @param request - DescribeDataAgentSessionRequest
 //
@@ -2440,7 +2450,7 @@ func (client *Client) DescribeDataAgentSessionWithOptions(request *DescribeDataA
 
 // Summary:
 //
-// Gets the details of a DataAgent session.
+// Retrieves the description of a DataAgent session.
 //
 // @param request - DescribeDataAgentSessionRequest
 //
@@ -3041,7 +3051,7 @@ func (client *Client) GetDataAgentSubAccountInfo(request *GetDataAgentSubAccount
 
 // Summary:
 //
-// Retrieves workspace details.
+// Retrieves the details of a collaborative workspace.
 //
 // @param request - GetDataAgentWorkspaceInfoRequest
 //
@@ -3089,7 +3099,7 @@ func (client *Client) GetDataAgentWorkspaceInfoWithOptions(request *GetDataAgent
 
 // Summary:
 //
-// Retrieves workspace details.
+// Retrieves the details of a collaborative workspace.
 //
 // @param request - GetDataAgentWorkspaceInfoRequest
 //
@@ -4191,7 +4201,7 @@ func (client *Client) ListDataAgentSession(request *ListDataAgentSessionRequest)
 
 // Summary:
 //
-// Retrieves paginated collaboration workspaces for an Alibaba Cloud account.
+// Retrieves the collaborative workspaces under the primary account with pagination.
 //
 // @param request - ListDataAgentWorkspaceRequest
 //
@@ -4267,7 +4277,7 @@ func (client *Client) ListDataAgentWorkspaceWithOptions(request *ListDataAgentWo
 
 // Summary:
 //
-// Retrieves paginated collaboration workspaces for an Alibaba Cloud account.
+// Retrieves the collaborative workspaces under the primary account with pagination.
 //
 // @param request - ListDataAgentWorkspaceRequest
 //
@@ -6403,23 +6413,23 @@ func (client *Client) SaveWorkspaceCode(request *SaveWorkspaceCodeRequest) (_res
 
 // Summary:
 //
-// Sends a user message to a specified session or ends the session.
+// Sends a user message to a specified session or cancels a session.
 //
 // Description:
 //
-// ## Request
+// ## Request description
 //
-// - The `agent_id` and `session_id` fields are required.
+// - `agent_id` and `session_id` are required fields.
 //
-// - The `message_type` field defaults to `primary`. Set it to `additional` to append information or to `cancel` to end the session.
+// - `message_type` defaults to `primary`. Set it to `additional` when appending information or `cancel` when canceling a session.
 //
-// - The `reply_to` field specifies which agent message the current message is a response to. It defaults to `0`.
+// - `reply_to` indicates which Agent message this message responds to. The default value is `0`.
 //
 // - When `message_type` is `additional`, the `question` field is required.
 //
-// - Use the `quoted_message` field to reference a previous user message.
+// - `quoted_message` can be used to quote the content of a previous user message.
 //
-// - The optional fields `data_source`, `dms_user`, `db_metadata`, and `session_config` provide more detailed context.
+// - `data_source`, `dms_user`, `db_metadata`, `session_config`, and other fields are optional but provide more detailed context information.
 //
 // @param tmpReq - SendChatMessageRequest
 //
@@ -6445,6 +6455,10 @@ func (client *Client) SendChatMessageWithOptions(tmpReq *SendChatMessageRequest,
 
 	if !dara.IsNil(tmpReq.SessionConfig) {
 		request.SessionConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SessionConfig, dara.String("SessionConfig"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.TaskConfig) {
+		request.TaskConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TaskConfig, dara.String("TaskConfig"), dara.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -6496,6 +6510,10 @@ func (client *Client) SendChatMessageWithOptions(tmpReq *SendChatMessageRequest,
 		query["SessionId"] = request.SessionId
 	}
 
+	if !dara.IsNil(request.TaskConfigShrink) {
+		query["TaskConfig"] = request.TaskConfigShrink
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -6521,23 +6539,23 @@ func (client *Client) SendChatMessageWithOptions(tmpReq *SendChatMessageRequest,
 
 // Summary:
 //
-// Sends a user message to a specified session or ends the session.
+// Sends a user message to a specified session or cancels a session.
 //
 // Description:
 //
-// ## Request
+// ## Request description
 //
-// - The `agent_id` and `session_id` fields are required.
+// - `agent_id` and `session_id` are required fields.
 //
-// - The `message_type` field defaults to `primary`. Set it to `additional` to append information or to `cancel` to end the session.
+// - `message_type` defaults to `primary`. Set it to `additional` when appending information or `cancel` when canceling a session.
 //
-// - The `reply_to` field specifies which agent message the current message is a response to. It defaults to `0`.
+// - `reply_to` indicates which Agent message this message responds to. The default value is `0`.
 //
 // - When `message_type` is `additional`, the `question` field is required.
 //
-// - Use the `quoted_message` field to reference a previous user message.
+// - `quoted_message` can be used to quote the content of a previous user message.
 //
-// - The optional fields `data_source`, `dms_user`, `db_metadata`, and `session_config` provide more detailed context.
+// - `data_source`, `dms_user`, `db_metadata`, `session_config`, and other fields are optional but provide more detailed context information.
 //
 // @param request - SendChatMessageRequest
 //

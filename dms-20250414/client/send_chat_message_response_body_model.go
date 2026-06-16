@@ -24,13 +24,13 @@ type iSendChatMessageResponseBody interface {
 type SendChatMessageResponseBody struct {
 	// The response data.
 	Data *SendChatMessageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code. A value of `Success` indicates that the request was successful.
+	// The error code.
 	//
 	// example:
 	//
 	// Success
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message. This field is empty if the request is successful.
+	// The error message.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type SendChatMessageResponseBody struct {
 	//
 	// FE65CE1F-****-****-****-******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Success
 	//
 	// example:
 	//
@@ -113,19 +113,20 @@ func (s *SendChatMessageResponseBody) Validate() error {
 }
 
 type SendChatMessageResponseBodyData struct {
-	// The agent ID.
+	// AgentId
 	//
 	// example:
 	//
 	// 3jqqdiuxun******
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
-	// Describes the result of the request.
+	// Message
 	//
 	// example:
 	//
 	// success
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The session ID.
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	// SessionId
 	//
 	// example:
 	//
@@ -149,6 +150,10 @@ func (s *SendChatMessageResponseBodyData) GetMessage() *string {
 	return s.Message
 }
 
+func (s *SendChatMessageResponseBodyData) GetMessageId() *string {
+	return s.MessageId
+}
+
 func (s *SendChatMessageResponseBodyData) GetSessionId() *string {
 	return s.SessionId
 }
@@ -160,6 +165,11 @@ func (s *SendChatMessageResponseBodyData) SetAgentId(v string) *SendChatMessageR
 
 func (s *SendChatMessageResponseBodyData) SetMessage(v string) *SendChatMessageResponseBodyData {
 	s.Message = &v
+	return s
+}
+
+func (s *SendChatMessageResponseBodyData) SetMessageId(v string) *SendChatMessageResponseBodyData {
+	s.MessageId = &v
 	return s
 }
 

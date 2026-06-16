@@ -762,7 +762,7 @@ func (client *Client) CreateDataAgentSessionWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// Creates a DataAgent workspace.
+// Creates a DataAgent collaborative workspace.
 //
 // @param request - CreateDataAgentWorkspaceRequest
 //
@@ -1824,7 +1824,7 @@ func (client *Client) DescribeCustomAgentWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Gets the details of a DataAgent session.
+// Retrieves the description of a DataAgent session.
 //
 // @param request - DescribeDataAgentSessionRequest
 //
@@ -2307,7 +2307,7 @@ func (client *Client) GetDataAgentSubAccountInfoWithContext(ctx context.Context,
 
 // Summary:
 //
-// Retrieves workspace details.
+// Retrieves the details of a collaborative workspace.
 //
 // @param request - GetDataAgentWorkspaceInfoRequest
 //
@@ -3171,7 +3171,7 @@ func (client *Client) ListDataAgentSessionWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Retrieves paginated collaboration workspaces for an Alibaba Cloud account.
+// Retrieves the collaborative workspaces under the primary account with pagination.
 //
 // @param request - ListDataAgentWorkspaceRequest
 //
@@ -4921,23 +4921,23 @@ func (client *Client) SaveWorkspaceCodeWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Sends a user message to a specified session or ends the session.
+// Sends a user message to a specified session or cancels a session.
 //
 // Description:
 //
-// ## Request
+// ## Request description
 //
-// - The `agent_id` and `session_id` fields are required.
+// - `agent_id` and `session_id` are required fields.
 //
-// - The `message_type` field defaults to `primary`. Set it to `additional` to append information or to `cancel` to end the session.
+// - `message_type` defaults to `primary`. Set it to `additional` when appending information or `cancel` when canceling a session.
 //
-// - The `reply_to` field specifies which agent message the current message is a response to. It defaults to `0`.
+// - `reply_to` indicates which Agent message this message responds to. The default value is `0`.
 //
 // - When `message_type` is `additional`, the `question` field is required.
 //
-// - Use the `quoted_message` field to reference a previous user message.
+// - `quoted_message` can be used to quote the content of a previous user message.
 //
-// - The optional fields `data_source`, `dms_user`, `db_metadata`, and `session_config` provide more detailed context.
+// - `data_source`, `dms_user`, `db_metadata`, `session_config`, and other fields are optional but provide more detailed context information.
 //
 // @param tmpReq - SendChatMessageRequest
 //
@@ -4963,6 +4963,10 @@ func (client *Client) SendChatMessageWithContext(ctx context.Context, tmpReq *Se
 
 	if !dara.IsNil(tmpReq.SessionConfig) {
 		request.SessionConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SessionConfig, dara.String("SessionConfig"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.TaskConfig) {
+		request.TaskConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TaskConfig, dara.String("TaskConfig"), dara.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -5012,6 +5016,10 @@ func (client *Client) SendChatMessageWithContext(ctx context.Context, tmpReq *Se
 
 	if !dara.IsNil(request.SessionId) {
 		query["SessionId"] = request.SessionId
+	}
+
+	if !dara.IsNil(request.TaskConfigShrink) {
+		query["TaskConfig"] = request.TaskConfigShrink
 	}
 
 	req := &openapiutil.OpenApiRequest{

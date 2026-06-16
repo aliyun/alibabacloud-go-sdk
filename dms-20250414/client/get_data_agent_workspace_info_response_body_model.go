@@ -22,7 +22,7 @@ type iGetDataAgentWorkspaceInfoResponseBody interface {
 }
 
 type GetDataAgentWorkspaceInfoResponseBody struct {
-	// The returned data.
+	// The response struct.
 	Data *GetDataAgentWorkspaceInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error code.
 	//
@@ -42,7 +42,7 @@ type GetDataAgentWorkspaceInfoResponseBody struct {
 	//
 	// E0D2-*****-A63B6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -113,27 +113,26 @@ func (s *GetDataAgentWorkspaceInfoResponseBody) Validate() error {
 }
 
 type GetDataAgentWorkspaceInfoResponseBodyData struct {
-	// The time when the workspace was created. This value is a UNIX timestamp in seconds.
+	// The creation time of the session. Unit: seconds. The value is a UNIX timestamp.
 	//
 	// example:
 	//
 	// 1765960516
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The user ID (UID) of the workspace creator.
+	// The UID of the workspace creator.
 	//
 	// example:
 	//
 	// 20282*****7591
-	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// Indicates whether session sharing is enabled.
-	IsSessionShareEnabled *bool `json:"IsSessionShareEnabled,omitempty" xml:"IsSessionShareEnabled,omitempty"`
-	// The time when the workspace was last modified. This value is a UNIX timestamp in seconds.
+	Creator               *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	IsSessionShareEnabled *bool   `json:"IsSessionShareEnabled,omitempty" xml:"IsSessionShareEnabled,omitempty"`
+	// The most recent modification time of the workspace. Unit: seconds. The value is a UNIX timestamp.
 	//
 	// example:
 	//
 	// 1765961516
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The user\\"s role in the workspace.
+	// The role name of the user in the workspace.
 	//
 	// example:
 	//
@@ -145,13 +144,14 @@ type GetDataAgentWorkspaceInfoResponseBodyData struct {
 	//
 	// 11
 	TotalMember *string `json:"TotalMember,omitempty" xml:"TotalMember,omitempty"`
-	// The description of the workspace.
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The description of the collaborative workspace.
 	//
 	// example:
 	//
 	// space for test
 	WorkspaceDesc *string `json:"WorkspaceDesc,omitempty" xml:"WorkspaceDesc,omitempty"`
-	// The workspace ID.
+	// The ID of the collaborative workspace.
 	//
 	// example:
 	//
@@ -203,6 +203,10 @@ func (s *GetDataAgentWorkspaceInfoResponseBodyData) GetTotalMember() *string {
 	return s.TotalMember
 }
 
+func (s *GetDataAgentWorkspaceInfoResponseBodyData) GetType() *string {
+	return s.Type
+}
+
 func (s *GetDataAgentWorkspaceInfoResponseBodyData) GetWorkspaceDesc() *string {
 	return s.WorkspaceDesc
 }
@@ -246,6 +250,11 @@ func (s *GetDataAgentWorkspaceInfoResponseBodyData) SetRoleName(v string) *GetDa
 
 func (s *GetDataAgentWorkspaceInfoResponseBodyData) SetTotalMember(v string) *GetDataAgentWorkspaceInfoResponseBodyData {
 	s.TotalMember = &v
+	return s
+}
+
+func (s *GetDataAgentWorkspaceInfoResponseBodyData) SetType(v string) *GetDataAgentWorkspaceInfoResponseBodyData {
+	s.Type = &v
 	return s
 }
 

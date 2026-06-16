@@ -33,10 +33,12 @@ type iSendChatMessageRequest interface {
 	GetSessionConfig() *SendChatMessageRequestSessionConfig
 	SetSessionId(v string) *SendChatMessageRequest
 	GetSessionId() *string
+	SetTaskConfig(v *SendChatMessageRequestTaskConfig) *SendChatMessageRequest
+	GetTaskConfig() *SendChatMessageRequestTaskConfig
 }
 
 type SendChatMessageRequest struct {
-	// The agent ID. This parameter is required. You can obtain this ID from the response of the `CreateAgentSession` operation. An agent has a lifecycle, so its ID may change with each request.
+	// The agent ID. This parameter is required. You can obtain the current AgentId from the response of the CreateAgentSession operation. Agent resources have a lifecycle, so the AgentId you need to specify may change with each request.
 	//
 	// This parameter is required.
 	//
@@ -44,17 +46,17 @@ type SendChatMessageRequest struct {
 	//
 	// agent_***
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
-	// The DMS unit where your DMS instance is located. This information is used to connect to your DMS instance for database analysis. You can find this value in the DMS console. For users on the Alibaba Cloud China site, you can enter `cn-hangzhou`.
+	// The Data Management unit you are currently in. If you choose to analyze a database, this information is used to correctly connect to your Data Management instance. You can go to the Data Management console to view your current Data Management unit. If you are a user of Alibaba Cloud China Website (www.aliyun.com), set this parameter to ap-southeast-1.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	DMSUnit *string `json:"DMSUnit,omitempty" xml:"DMSUnit,omitempty"`
-	// The data source information. Optional.
+	// The data source information. This parameter is optional.
 	DataSource *SendChatMessageRequestDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
-	// A list of data sources. Optional.
+	// The detailed data source information. This parameter is optional.
 	DataSources []*SendChatMessageRequestDataSources `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
-	// The content of the message to send to the agent.
+	// The message content to send to the Agent in this request.
 	//
 	// This parameter is required.
 	//
@@ -62,7 +64,7 @@ type SendChatMessageRequest struct {
 	//
 	// what can you do?
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The message type. The default value is `primary`. Set this parameter to `additional` when responding to a human-in-the-loop question from the agent. Set it to `cancel` to cancel the current session.
+	// The message type. Default value: `[primary]`. When the message is a response to the Agent\\"s human-in-the-loop question, set this parameter to `[additional]`. When the message is intended to cancel the current session, set this parameter to `[cancel]`.
 	//
 	// example:
 	//
@@ -74,37 +76,38 @@ type SendChatMessageRequest struct {
 	//
 	// 20qrliuoo7p2vlsfg*****
 	ParentSessionId *string `json:"ParentSessionId,omitempty" xml:"ParentSessionId,omitempty"`
-	// This parameter is required if the `MessageType` is `additional`. It contains the specific question asked by the agent during the human-in-the-loop process.
+	// The specific question that the Agent asks the user through human-in-the-loop. This parameter is required when the message type is `additional`.
 	//
 	// example:
 	//
 	// 请提供计算GMV的口径。
 	Question *string `json:"Question,omitempty" xml:"Question,omitempty"`
-	// The quoted content. This parameter is typically used when interacting with the agent.
+	// The quoted content, typically used during interaction with the Agent.
 	//
 	// example:
 	//
 	// {"version":"v0"}
 	QuotedMessage *string `json:"QuotedMessage,omitempty" xml:"QuotedMessage,omitempty"`
-	// This parameter specifies the agent message to which this message is a response, enabling message deduplication. Set this to the highest checkpoint sequence number you have received. For the first message, use 0.
+	// Indicates which Agent message this message responds to. Set this parameter to the largest Checkpoint sequence number currently received. Set it to 0 for the first message. This field is used for message deduplication in case of occasional network issues or duplicate message delivery.
 	//
 	// example:
 	//
 	// 0
 	ReplyTo *string `json:"ReplyTo,omitempty" xml:"ReplyTo,omitempty"`
-	// Session-specific configurations. These apply only if provided in the first `SendMessage` request of the session.
+	// The special configuration for this session. For the same session, only the configuration included in the first SendMessage call takes effect.
 	//
 	// if can be null:
 	// true
 	SessionConfig *SendChatMessageRequestSessionConfig `json:"SessionConfig,omitempty" xml:"SessionConfig,omitempty" type:"Struct"`
-	// The session ID. This parameter is required. You can obtain the session ID by calling the `CreateAgentSession` operation.
+	// The session ID. This parameter is required. You can obtain the SessionId by calling the CreateAgentSession operation.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// sess_***
-	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	SessionId  *string                           `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	TaskConfig *SendChatMessageRequestTaskConfig `json:"TaskConfig,omitempty" xml:"TaskConfig,omitempty" type:"Struct"`
 }
 
 func (s SendChatMessageRequest) String() string {
@@ -161,6 +164,10 @@ func (s *SendChatMessageRequest) GetSessionConfig() *SendChatMessageRequestSessi
 
 func (s *SendChatMessageRequest) GetSessionId() *string {
 	return s.SessionId
+}
+
+func (s *SendChatMessageRequest) GetTaskConfig() *SendChatMessageRequestTaskConfig {
+	return s.TaskConfig
 }
 
 func (s *SendChatMessageRequest) SetAgentId(v string) *SendChatMessageRequest {
@@ -223,6 +230,11 @@ func (s *SendChatMessageRequest) SetSessionId(v string) *SendChatMessageRequest 
 	return s
 }
 
+func (s *SendChatMessageRequest) SetTaskConfig(v *SendChatMessageRequestTaskConfig) *SendChatMessageRequest {
+	s.TaskConfig = v
+	return s
+}
+
 func (s *SendChatMessageRequest) Validate() error {
 	if s.DataSource != nil {
 		if err := s.DataSource.Validate(); err != nil {
@@ -243,23 +255,28 @@ func (s *SendChatMessageRequest) Validate() error {
 			return err
 		}
 	}
+	if s.TaskConfig != nil {
+		if err := s.TaskConfig.Validate(); err != nil {
+			return err
+		}
+	}
 	return nil
 }
 
 type SendChatMessageRequestDataSource struct {
-	// This parameter is deprecated. Do not use it.
+	// Deprecated. You do not need to specify this parameter.
 	//
 	// example:
 	//
 	// 123
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	// The data source type. Valid values are `remote_data_center` for file analysis and `database` for database analysis.
+	// The data source type. Valid values: `[remote_data_center, database]`, indicating that the analysis is performed on a file or a database respectively.
 	//
 	// example:
 	//
 	// remote_data_center
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	// This parameter is deprecated. Do not use it.
+	// Deprecated. You do not need to specify this parameter.
 	//
 	// example:
 	//
@@ -271,13 +288,13 @@ type SendChatMessageRequestDataSource struct {
 	//
 	// ******
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	// The ID of the database in DMS.
+	// The ID of the database in Data Management.
 	//
 	// example:
 	//
 	// 23******
 	DmsDatabaseId *string `json:"DmsDatabaseId,omitempty" xml:"DmsDatabaseId,omitempty"`
-	// The ID of the instance in DMS.
+	// The ID of the instance in Data Management.
 	//
 	// example:
 	//
@@ -295,7 +312,7 @@ type SendChatMessageRequestDataSource struct {
 	//
 	// 35****
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// This parameter is deprecated. Do not use it.
+	// Deprecated. You do not need to specify this parameter.
 	//
 	// example:
 	//
@@ -307,7 +324,7 @@ type SendChatMessageRequestDataSource struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// A list of table names to analyze.
+	// The list of table names to analyze.
 	Tables []*string `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
 }
 
@@ -423,19 +440,19 @@ func (s *SendChatMessageRequestDataSource) Validate() error {
 }
 
 type SendChatMessageRequestDataSources struct {
-	// This parameter is deprecated. Do not use it.
+	// Deprecated. You do not need to specify this parameter.
 	//
 	// example:
 	//
 	// 123
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	// The data source type. Valid values are `remote_data_center` for file analysis and `database` for database analysis.
+	// The data source type. Valid values: [remote_data_center, database], indicating that the analysis is performed on a file or a database respectively.
 	//
 	// example:
 	//
 	// remote_data_center
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	// This parameter is deprecated. Do not use it.
+	// Deprecated. You do not need to specify this parameter.
 	//
 	// example:
 	//
@@ -447,13 +464,13 @@ type SendChatMessageRequestDataSources struct {
 	//
 	// mydatabase
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	// The ID of the database in DMS.
+	// The ID of the database in Data Management.
 	//
 	// example:
 	//
 	// 123****
 	DmsDatabaseId *string `json:"DmsDatabaseId,omitempty" xml:"DmsDatabaseId,omitempty"`
-	// The ID of the instance in DMS.
+	// The ID of the instance in Data Management.
 	//
 	// example:
 	//
@@ -471,7 +488,7 @@ type SendChatMessageRequestDataSources struct {
 	//
 	// f-4w*******
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// This parameter is deprecated. Do not use it.
+	// Deprecated. You do not need to specify this parameter.
 	//
 	// example:
 	//
@@ -483,7 +500,7 @@ type SendChatMessageRequestDataSources struct {
 	//
 	// cn-shenzhen
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// A list of table names to analyze.
+	// The list of table names to analyze.
 	Tables []*string `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
 }
 
@@ -599,31 +616,35 @@ func (s *SendChatMessageRequestDataSources) Validate() error {
 }
 
 type SendChatMessageRequestSessionConfig struct {
-	// This parameter is deprecated. Use the `CustomAgentId` request parameter from the `CreateAgentSession` operation instead.
+	// Deprecated. Use the input parameters of CreateAgentSession instead.
 	//
 	// example:
 	//
 	// null
 	CustomAgentId *string `json:"CustomAgentId,omitempty" xml:"CustomAgentId,omitempty"`
-	// This parameter is deprecated. Use the `CustomAgentStage` request parameter from the `CreateAgentSession` operation instead.
+	// Deprecated. Use the input parameters of CreateAgentSession instead.
 	//
 	// example:
 	//
 	// null
 	CustomAgentStage *string `json:"CustomAgentStage,omitempty" xml:"CustomAgentStage,omitempty"`
-	// The language of the session. Only Chinese and English are supported. The default value is Chinese. The value must be in uppercase.
+	// Only Chinese and English are supported. The default value is Chinese. Only uppercase values are supported.
 	//
 	// example:
 	//
 	// ENGLISH
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	Mode     *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// A text watermark of up to 64 characters that will be added to generated PDF reports.
+	// The text of up to 64 characters that is used as a watermark in the generated PDF report.
 	//
 	// example:
 	//
 	// 示例水印
-	ReportWaterMark *string `json:"ReportWaterMark,omitempty" xml:"ReportWaterMark,omitempty"`
+	ReportWaterMark      *string `json:"ReportWaterMark,omitempty" xml:"ReportWaterMark,omitempty"`
+	SkipAskHuman         *bool   `json:"SkipAskHuman,omitempty" xml:"SkipAskHuman,omitempty"`
+	SkipPlan             *bool   `json:"SkipPlan,omitempty" xml:"SkipPlan,omitempty"`
+	SkipSqlConfirm       *bool   `json:"SkipSqlConfirm,omitempty" xml:"SkipSqlConfirm,omitempty"`
+	SkipWebReportConfirm *bool   `json:"SkipWebReportConfirm,omitempty" xml:"SkipWebReportConfirm,omitempty"`
 }
 
 func (s SendChatMessageRequestSessionConfig) String() string {
@@ -654,6 +675,22 @@ func (s *SendChatMessageRequestSessionConfig) GetReportWaterMark() *string {
 	return s.ReportWaterMark
 }
 
+func (s *SendChatMessageRequestSessionConfig) GetSkipAskHuman() *bool {
+	return s.SkipAskHuman
+}
+
+func (s *SendChatMessageRequestSessionConfig) GetSkipPlan() *bool {
+	return s.SkipPlan
+}
+
+func (s *SendChatMessageRequestSessionConfig) GetSkipSqlConfirm() *bool {
+	return s.SkipSqlConfirm
+}
+
+func (s *SendChatMessageRequestSessionConfig) GetSkipWebReportConfirm() *bool {
+	return s.SkipWebReportConfirm
+}
+
 func (s *SendChatMessageRequestSessionConfig) SetCustomAgentId(v string) *SendChatMessageRequestSessionConfig {
 	s.CustomAgentId = &v
 	return s
@@ -679,6 +716,101 @@ func (s *SendChatMessageRequestSessionConfig) SetReportWaterMark(v string) *Send
 	return s
 }
 
+func (s *SendChatMessageRequestSessionConfig) SetSkipAskHuman(v bool) *SendChatMessageRequestSessionConfig {
+	s.SkipAskHuman = &v
+	return s
+}
+
+func (s *SendChatMessageRequestSessionConfig) SetSkipPlan(v bool) *SendChatMessageRequestSessionConfig {
+	s.SkipPlan = &v
+	return s
+}
+
+func (s *SendChatMessageRequestSessionConfig) SetSkipSqlConfirm(v bool) *SendChatMessageRequestSessionConfig {
+	s.SkipSqlConfirm = &v
+	return s
+}
+
+func (s *SendChatMessageRequestSessionConfig) SetSkipWebReportConfirm(v bool) *SendChatMessageRequestSessionConfig {
+	s.SkipWebReportConfirm = &v
+	return s
+}
+
 func (s *SendChatMessageRequestSessionConfig) Validate() error {
+	return dara.Validate(s)
+}
+
+type SendChatMessageRequestTaskConfig struct {
+	ReportConfig *SendChatMessageRequestTaskConfigReportConfig `json:"ReportConfig,omitempty" xml:"ReportConfig,omitempty" type:"Struct"`
+}
+
+func (s SendChatMessageRequestTaskConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s SendChatMessageRequestTaskConfig) GoString() string {
+	return s.String()
+}
+
+func (s *SendChatMessageRequestTaskConfig) GetReportConfig() *SendChatMessageRequestTaskConfigReportConfig {
+	return s.ReportConfig
+}
+
+func (s *SendChatMessageRequestTaskConfig) SetReportConfig(v *SendChatMessageRequestTaskConfigReportConfig) *SendChatMessageRequestTaskConfig {
+	s.ReportConfig = v
+	return s
+}
+
+func (s *SendChatMessageRequestTaskConfig) Validate() error {
+	if s.ReportConfig != nil {
+		if err := s.ReportConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type SendChatMessageRequestTaskConfigReportConfig struct {
+	ReportPrompt *string `json:"ReportPrompt,omitempty" xml:"ReportPrompt,omitempty"`
+	ReportTheme  *string `json:"ReportTheme,omitempty" xml:"ReportTheme,omitempty"`
+	ReportType   *string `json:"ReportType,omitempty" xml:"ReportType,omitempty"`
+}
+
+func (s SendChatMessageRequestTaskConfigReportConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s SendChatMessageRequestTaskConfigReportConfig) GoString() string {
+	return s.String()
+}
+
+func (s *SendChatMessageRequestTaskConfigReportConfig) GetReportPrompt() *string {
+	return s.ReportPrompt
+}
+
+func (s *SendChatMessageRequestTaskConfigReportConfig) GetReportTheme() *string {
+	return s.ReportTheme
+}
+
+func (s *SendChatMessageRequestTaskConfigReportConfig) GetReportType() *string {
+	return s.ReportType
+}
+
+func (s *SendChatMessageRequestTaskConfigReportConfig) SetReportPrompt(v string) *SendChatMessageRequestTaskConfigReportConfig {
+	s.ReportPrompt = &v
+	return s
+}
+
+func (s *SendChatMessageRequestTaskConfigReportConfig) SetReportTheme(v string) *SendChatMessageRequestTaskConfigReportConfig {
+	s.ReportTheme = &v
+	return s
+}
+
+func (s *SendChatMessageRequestTaskConfigReportConfig) SetReportType(v string) *SendChatMessageRequestTaskConfigReportConfig {
+	s.ReportType = &v
+	return s
+}
+
+func (s *SendChatMessageRequestTaskConfigReportConfig) Validate() error {
 	return dara.Validate(s)
 }

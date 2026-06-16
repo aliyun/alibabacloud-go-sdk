@@ -20,20 +20,20 @@ type iCreateDataAgentWorkspaceRequest interface {
 }
 
 type CreateDataAgentWorkspaceRequest struct {
-	// The DMS unit.
+	// The current DMS unit.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	DMSUnit               *string `json:"DMSUnit,omitempty" xml:"DMSUnit,omitempty"`
 	IsSessionShareEnabled *bool   `json:"IsSessionShareEnabled,omitempty" xml:"IsSessionShareEnabled,omitempty"`
-	// The description of the workspace.
+	// The description of the collaborative workspace.
 	//
 	// example:
 	//
 	// Space for test
 	WorkspaceDesc *string `json:"WorkspaceDesc,omitempty" xml:"WorkspaceDesc,omitempty"`
-	// The name of the workspace.
+	// The name of the collaborative workspace.
 	//
 	// example:
 	//
