@@ -1,0 +1,99 @@
+// This file is auto-generated, don't edit it. Thanks.
+package client
+
+import (
+	"github.com/alibabacloud-go/tea/dara"
+)
+
+type iCreateDocParserJobResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetErrorCode(v string) *CreateDocParserJobResponseBody
+	GetErrorCode() *string
+	SetErrorMessage(v string) *CreateDocParserJobResponseBody
+	GetErrorMessage() *string
+	SetHttpStatusCode(v int32) *CreateDocParserJobResponseBody
+	GetHttpStatusCode() *int32
+	SetJobId(v string) *CreateDocParserJobResponseBody
+	GetJobId() *string
+	SetRequestId(v string) *CreateDocParserJobResponseBody
+	GetRequestId() *string
+	SetSuccess(v bool) *CreateDocParserJobResponseBody
+	GetSuccess() *bool
+}
+
+type CreateDocParserJobResponseBody struct {
+	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage   *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	JobId          *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateDocParserJobResponseBody) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateDocParserJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDocParserJobResponseBody) GetErrorCode() *string {
+	return s.ErrorCode
+}
+
+func (s *CreateDocParserJobResponseBody) GetErrorMessage() *string {
+	return s.ErrorMessage
+}
+
+func (s *CreateDocParserJobResponseBody) GetHttpStatusCode() *int32 {
+	return s.HttpStatusCode
+}
+
+func (s *CreateDocParserJobResponseBody) GetJobId() *string {
+	return s.JobId
+}
+
+func (s *CreateDocParserJobResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
+func (s *CreateDocParserJobResponseBody) GetSuccess() *bool {
+	return s.Success
+}
+
+func (s *CreateDocParserJobResponseBody) SetErrorCode(v string) *CreateDocParserJobResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateDocParserJobResponseBody) SetErrorMessage(v string) *CreateDocParserJobResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateDocParserJobResponseBody) SetHttpStatusCode(v int32) *CreateDocParserJobResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *CreateDocParserJobResponseBody) SetJobId(v string) *CreateDocParserJobResponseBody {
+	s.JobId = &v
+	return s
+}
+
+func (s *CreateDocParserJobResponseBody) SetRequestId(v string) *CreateDocParserJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateDocParserJobResponseBody) SetSuccess(v bool) *CreateDocParserJobResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *CreateDocParserJobResponseBody) Validate() error {
+	return dara.Validate(s)
+}
