@@ -20,10 +20,14 @@ type iEkycVerifyV2ResponseBody interface {
 }
 
 type EkycVerifyV2ResponseBody struct {
+  // Return code
+  // 
   // example:
   // 
   // Success
   Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+  // Return message
+  // 
   // example:
   // 
   // success
@@ -34,6 +38,7 @@ type EkycVerifyV2ResponseBody struct {
   // 
   // 4EB356FE-BB6A-5DCC-B4C5-E8051787EBA1
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+  // Return Result
   Result *EkycVerifyV2ResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -91,6 +96,8 @@ func (s *EkycVerifyV2ResponseBody) Validate() error {
 }
 
 type EkycVerifyV2ResponseBodyResult struct {
+  // Face detection result information
+  // 
   // example:
   // 
   // {
@@ -105,15 +112,52 @@ type EkycVerifyV2ResponseBodyResult struct {
   // 
   // }
   ExtFaceInfo *string `json:"ExtFaceInfo,omitempty" xml:"ExtFaceInfo,omitempty"`
+  // Certificate Classification Result. Returned only when the API response Succeeded.
+  // 
+  // example:
+  // 
+  // {
+  // 
+  //  "ocrIdInfo": {
+  // 
+  //  "firstName": "**龙",
+  // 
+  //  "lastName": "**",
+  // 
+  //  "countryCode": "CHN",
+  // 
+  //  "docType": "01560001",
+  // 
+  //  "dateOfBirth": "2002-08-04",
+  // 
+  //  "idNumber": "410************19"
+  // 
+  //  },
+  // 
+  //  "ocrIdPassed": "N",
+  // 
+  //  "spoofInfo": {
+  // 
+  //  "spoofResult": "Y",
+  // 
+  //  }
+  // 
+  // }
   ExtIdInfo *string `json:"ExtIdInfo,omitempty" xml:"ExtIdInfo,omitempty"`
+  // Indicates whether the verification passed. The value is Y if passed, or N if Failed.
+  // 
   // example:
   // 
   // Y
   Passed *string `json:"Passed,omitempty" xml:"Passed,omitempty"`
+  // Sub-result code
+  // 
   // example:
   // 
   // 205
   SubCode *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+  // The unique id of the request
+  // 
   // example:
   // 
   // 4ab0b***cbde97

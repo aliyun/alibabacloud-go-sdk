@@ -20,10 +20,16 @@ type iFaceCompareV2ResponseBody interface {
 }
 
 type FaceCompareV2ResponseBody struct {
+	// The return code.
+	//
+	// 200: succeeded. Other values: error codes. For more information, see error codes.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The return message.
+	//
 	// example:
 	//
 	// success
@@ -33,8 +39,9 @@ type FaceCompareV2ResponseBody struct {
 	// example:
 	//
 	// 4EB356FE-BB6A-5DCC-B4C5-E8051787EBA1
-	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *FaceCompareV2ResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned result.
+	Result *FaceCompareV2ResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s FaceCompareV2ResponseBody) String() string {
@@ -91,15 +98,26 @@ func (s *FaceCompareV2ResponseBody) Validate() error {
 }
 
 type FaceCompareV2ResponseBodyResult struct {
+	// The additional result information.
 	ExtFaceInfo *FaceCompareV2ResponseBodyResultExtFaceInfo `json:"ExtFaceInfo,omitempty" xml:"ExtFaceInfo,omitempty" type:"Struct"`
+	// The comparison score between the submitted face image and the reference face image during verification. Value range: 0 to 100.
+	//
 	// example:
 	//
 	// 98
 	FaceComparisonScore *float64 `json:"FaceComparisonScore,omitempty" xml:"FaceComparisonScore,omitempty"`
+	// Indicates whether the verification passed. Valid values:
+	//
+	// - Y: passed.
+	//
+	// - N: not passed.
+	//
 	// example:
 	//
 	// Y
 	Passed *string `json:"Passed,omitempty" xml:"Passed,omitempty"`
+	// The unique ID of the verification request.
+	//
 	// example:
 	//
 	// 08573be80f944d95ac812e019e3655a8
@@ -160,22 +178,32 @@ func (s *FaceCompareV2ResponseBodyResult) Validate() error {
 }
 
 type FaceCompareV2ResponseBodyResultExtFaceInfo struct {
+	// The overall quality score.
+	//
 	// example:
 	//
 	// 39.04
 	FaceQualityScore *float64 `json:"FaceQualityScore,omitempty" xml:"FaceQualityScore,omitempty"`
+	// The illumination score.
+	//
 	// example:
 	//
 	// 0.02
 	IlluminationScore *float64 `json:"IlluminationScore,omitempty" xml:"IlluminationScore,omitempty"`
+	// The key area occlusion score.
+	//
 	// example:
 	//
 	// 20
 	KaOcclusionScore *float64 `json:"KaOcclusionScore,omitempty" xml:"KaOcclusionScore,omitempty"`
+	// The occlusion score.
+	//
 	// example:
 	//
 	// 50.26
 	OcclusionScore *float64 `json:"OcclusionScore,omitempty" xml:"OcclusionScore,omitempty"`
+	// The sharpness score.
+	//
 	// example:
 	//
 	// 86.47

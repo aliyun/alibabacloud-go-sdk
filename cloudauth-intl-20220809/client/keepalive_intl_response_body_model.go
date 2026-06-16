@@ -20,13 +20,13 @@ type iKeepaliveIntlResponseBody interface {
 }
 
 type KeepaliveIntlResponseBody struct {
-	// The [return code.](https://www.alibabacloud.com/help/en/ekyc/latest/client-connection-hold?spm=a3c0i.23458820.2359477120.1.48207d3ftEYld2#74d291dfaaxci)
+	// The return code.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// A detailed description of the Code.
+	// The return message.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type KeepaliveIntlResponseBody struct {
 	//
 	// 4EB35****87EBA1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Return result
+	// The returned result.
 	Result *KeepaliveIntlResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -96,7 +96,7 @@ func (s *KeepaliveIntlResponseBody) Validate() error {
 }
 
 type KeepaliveIntlResponseBodyResult struct {
-	// The result of the call.
+	// The returned result.
 	//
 	// example:
 	//

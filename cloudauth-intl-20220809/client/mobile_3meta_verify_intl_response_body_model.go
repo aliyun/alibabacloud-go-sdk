@@ -20,25 +20,25 @@ type iMobile3MetaVerifyIntlResponseBody interface {
 }
 
 type Mobile3MetaVerifyIntlResponseBody struct {
-	// Return code
+	// The return code.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Return message
+	// The return message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// D241532C-4EE9-5A2A-A5A5-C1FD98CE2EDD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Return result
+	// The verification result.
 	Result *Mobile3MetaVerifyIntlResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -96,43 +96,43 @@ func (s *Mobile3MetaVerifyIntlResponseBody) Validate() error {
 }
 
 type Mobile3MetaVerifyIntlResponseBodyResult struct {
-	// Verification result code.
+	// The verification result code. Valid values:
 	//
-	// - 1: Verification consistent
+	// - 1: Consistent.
 	//
-	// - 2: Verification inconsistent
+	// - 2: Inconsistent.
 	//
-	// - 3: No record found
+	// - 3: No record found.
 	//
 	// example:
 	//
 	// 1
 	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	// ISP name
+	// The carrier name. Valid values:
 	//
 	// - CMCC: China Mobile
 	//
 	// - CUCC: China Unicom
 	//
-	// - CTCC: China Telecom
+	// - CTCC: China Telecom.
 	//
 	// example:
 	//
 	// CMCC
 	IspName *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
-	// Detailed verification results
+	// The detailed verification result. Valid values:
 	//
-	// - 101: Verification passed
+	// - 101: Verification passed.
 	//
-	// - 201: Mobile number and name do not match, mobile number and ID number do not match
+	// - 201: The phone number is inconsistent with the name, and the phone number is inconsistent with the ID card number.
 	//
-	// - 202: Mobile number and name match, but mobile number and ID number do not match
+	// - 202: The phone number is consistent with the name, but the phone number is inconsistent with the ID card number.
 	//
-	// - 203: Mobile number and ID number match, but mobile number and name do not match
+	// - 203: The phone number is consistent with the ID card number, but the phone number is inconsistent with the name.
 	//
-	// - 204: Other inconsistencies
+	// - 204: Other inconsistency.
 	//
-	// - 301: No record found
+	// - 301: No record found.
 	//
 	// example:
 	//

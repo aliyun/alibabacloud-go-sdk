@@ -20,25 +20,25 @@ type iAddressCompareIntlRequest interface {
 }
 
 type AddressCompareIntlRequest struct {
-	// Country name
+	// The country name. Valid values:
 	//
-	// - China
+	// - China.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// fixed value：中国
+	// 固定值：中国
 	DefaultCountry *string `json:"DefaultCountry,omitempty" xml:"DefaultCountry,omitempty"`
-	// ADD_VERIFY
+	// ADD_VERIFY.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// fixed value：ADD_VERIFY
+	// 固定值：ADD_VERIFY
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// Address 1
+	// Address 1.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type AddressCompareIntlRequest struct {
 	//
 	// 杭州市阿里巴巴西溪园区
 	Text1 *string `json:"Text1,omitempty" xml:"Text1,omitempty"`
-	// Address 2
+	// Address 2.
 	//
 	// This parameter is required.
 	//

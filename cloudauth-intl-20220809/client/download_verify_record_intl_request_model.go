@@ -22,39 +22,39 @@ type iDownloadVerifyRecordIntlRequest interface {
 }
 
 type DownloadVerifyRecordIntlRequest struct {
-	// Business type:
+	// The business type. Valid values:
 	//
 	// - INVOKE_STATISTICS
 	//
-	// - INVOKE_RECORD
+	// - INVOKE_RECORD.
 	//
 	// example:
 	//
 	// INVOKE_RECORD
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// Query code.
+	// The query code.
 	//
 	// example:
 	//
 	// vrf_intl_verify_record_real_id_idv_invoke_statistics_query
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Download mode:
+	// The download mode. Valid values:
 	//
-	// - **async**: Asynchronous
+	// - **async**: asynchronous
 	//
-	// - **sync**: Synchronous
+	// - **sync**: synchronous.
 	//
 	// example:
 	//
 	// async
 	DownloadMode *string `json:"DownloadMode,omitempty" xml:"DownloadMode,omitempty"`
-	// Parameters related to the export and download query task.
+	// The parameters for the export and download query task.
 	//
 	// example:
 	//
 	// {\\"productCode\\":\\"FACE_LIVENESS\\",\\"startDs\\":\\"20251121\\",\\"endDs\\":\\"20251128\\",\\"language\\":\\"en\\"}
 	Param *string `json:"Param,omitempty" xml:"Param,omitempty"`
-	// Product Code.
+	// The product code.
 	//
 	// example:
 	//

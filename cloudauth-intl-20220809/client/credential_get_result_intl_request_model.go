@@ -14,7 +14,7 @@ type iCredentialGetResultIntlRequest interface {
 }
 
 type CredentialGetResultIntlRequest struct {
-	// Unique identifier for the authentication request
+	// The unique identifier of the authentication request.
 	//
 	// This parameter is required.
 	//

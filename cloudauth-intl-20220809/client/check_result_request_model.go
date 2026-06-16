@@ -22,35 +22,35 @@ type iCheckResultRequest interface {
 }
 
 type CheckResultRequest struct {
-	// Return additional information.
+	// The additional information to return.
 	//
 	// example:
 	//
 	// ***
 	ExtraImageControlList *string `json:"ExtraImageControlList,omitempty" xml:"ExtraImageControlList,omitempty"`
-	// Whether to return images.
+	// Specifies whether to return images. Valid values:
 	//
-	// - Y: Return
+	// - Y: Return images.
 	//
-	// - N: Do not return
+	// - N: Do not return images.
 	//
 	// example:
 	//
 	// N
 	IsReturnImage *string `json:"IsReturnImage,omitempty" xml:"IsReturnImage,omitempty"`
-	// A unique business identifier defined by the merchant, used for subsequent troubleshooting. It supports a combination of letters and numbers, with a maximum length of 32 characters. Please ensure its uniqueness.
+	// The merchant-defined unique business ID used for subsequent troubleshooting. The value can be a combination of letters and digits with a maximum length of 32 characters. Ensure that the value is unique.
 	//
 	// example:
 	//
 	// djs20d***9-dsskc
 	MerchantBizId *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
-	// Whether to return anti-fraud detection results.
+	// Specifies whether to return the anti-spoofing detection result.
 	//
 	// example:
 	//
 	// Y
 	ReturnFiveCategorySpoofResult *string `json:"ReturnFiveCategorySpoofResult,omitempty" xml:"ReturnFiveCategorySpoofResult,omitempty"`
-	// Authentication ID.
+	// The verification ID.
 	//
 	// example:
 	//

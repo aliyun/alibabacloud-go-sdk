@@ -20,25 +20,25 @@ type iDeleteFaceGroupResponseBody interface {
 }
 
 type DeleteFaceGroupResponseBody struct {
-	// Return code
+	// The return code.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Return result.
+	// The response result.
 	//
 	// example:
 	//
 	// 1
 	Data *int32 `json:"Data,omitempty" xml:"Data,omitempty"`
-	// Return message
+	// The response message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// ID of the request
+	// Id of the request
 	//
 	// example:
 	//

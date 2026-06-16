@@ -20,35 +20,33 @@ type iId2MetaVerifyIntlRequest interface {
 }
 
 type Id2MetaVerifyIntlRequest struct {
-	// The ID card number.
-	//
-	// > Only ID cards of residents in the Chinese mainland are supported.
+	// The ID card number (in plaintext).
 	//
 	// example:
 	//
 	// 429001********8211
 	IdentifyNum *string `json:"IdentifyNum,omitempty" xml:"IdentifyNum,omitempty"`
-	// The parameter type.
+	// The parameter type. Valid values:
 	//
-	// **normal**: The original value in plaintext.
+	// - normal: original value (plaintext).
 	//
-	// > Due to limitations of the authoritative data source, two-factor ID verification does not support MD5 encryption.
+	// - Note: Due to authoritative data source restrictions, two-factor identity verification does not support MD5 encryption.
 	//
 	// example:
 	//
 	// normal
 	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
-	// The product plan. This is a static field. Set the value to **ID_2META**.
+	// The product solution code. Set this parameter to ID_2META.
 	//
 	// example:
 	//
 	// ID_2META
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The name.
+	// The name (in plaintext).
 	//
 	// example:
 	//
-	// Zhang*
+	// 张*
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 

@@ -20,14 +20,20 @@ type iModifyFaceRecordResponseBody interface {
 }
 
 type ModifyFaceRecordResponseBody struct {
+	// The return code.
+	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The result.
+	//
 	// example:
 	//
 	// 1
 	Data *int32 `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// success

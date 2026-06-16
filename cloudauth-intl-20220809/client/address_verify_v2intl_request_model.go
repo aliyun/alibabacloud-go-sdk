@@ -24,7 +24,7 @@ type iAddressVerifyV2IntlRequest interface {
 }
 
 type AddressVerifyV2IntlRequest struct {
-	// DeviceToken obtained via the client SDK
+	// The device token, which is used for risk identification.
 	//
 	// This parameter is required.
 	//
@@ -32,13 +32,13 @@ type AddressVerifyV2IntlRequest struct {
 	//
 	// Tk9SSUQuMS*****************ZDNmNWY5NzQxOW1o
 	DeviceToken *string `json:"DeviceToken,omitempty" xml:"DeviceToken,omitempty"`
-	// Supported: Chinese mobile phone numbers
+	// The China mobile phone number.
 	//
 	// example:
 	//
 	// 1872334****
 	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
-	// Fixed value: ADD_VERIFY_PRO
+	// The product code. Set this parameter to ADD_VERIFY_PRO.
 	//
 	// This parameter is required.
 	//
@@ -46,25 +46,25 @@ type AddressVerifyV2IntlRequest struct {
 	//
 	// ADD_VERIFY_PRO
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// List of prohibited countries or regions
+	// The list of prohibited countries.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// Currently supported: USA
+	// 目前仅支持：USA
 	RegCountry *string `json:"RegCountry,omitempty" xml:"RegCountry,omitempty"`
-	// Detailed address text content
+	// The detailed address text.
 	//
 	// example:
 	//
-	// 浙江省杭州市西湖区灯彩街云谷园区
+	// 江苏省常州市*******小区
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
-	// Address verification method:
+	// The address verification method. Valid values:
 	//
-	// - **HOME**: Home address verification
+	// - HOME: home address verification.
 	//
-	// - **WORK**: Work address verification
+	// - WORK: work address verification.
 	//
 	// example:
 	//

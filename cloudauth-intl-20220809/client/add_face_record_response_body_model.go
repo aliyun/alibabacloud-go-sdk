@@ -20,10 +20,14 @@ type iAddFaceRecordResponseBody interface {
 }
 
 type AddFaceRecordResponseBody struct {
+	// The return code.
+	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The return message.
+	//
 	// example:
 	//
 	// success
@@ -33,8 +37,9 @@ type AddFaceRecordResponseBody struct {
 	// example:
 	//
 	// 7A0D192A-CC0C-5DE5-A3B6-A14CF45508F2
-	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *AddFaceRecordResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned result.
+	Result *AddFaceRecordResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s AddFaceRecordResponseBody) String() string {
@@ -91,6 +96,8 @@ func (s *AddFaceRecordResponseBody) Validate() error {
 }
 
 type AddFaceRecordResponseBodyResult struct {
+	// The face result information.
+	//
 	// example:
 	//
 	// {
@@ -99,6 +106,12 @@ type AddFaceRecordResponseBodyResult struct {
 	//
 	// }
 	ExtFaceInfo *string `json:"ExtFaceInfo,omitempty" xml:"ExtFaceInfo,omitempty"`
+	// Indicates whether the verification is passed. Valid values:
+	//
+	// - Y: Passed.
+	//
+	// - N: Not passed.
+	//
 	// example:
 	//
 	// Y

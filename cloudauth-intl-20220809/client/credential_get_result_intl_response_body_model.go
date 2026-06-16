@@ -20,25 +20,25 @@ type iCredentialGetResultIntlResponseBody interface {
 }
 
 type CredentialGetResultIntlResponseBody struct {
-	// Return code.
+	// The return code.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Return message.
+	// The return message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// ID of the request
+	// Id of the request
 	//
 	// example:
 	//
 	// 5E63B760-0ECB-5C07-8503-A65C27876968
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Return result.
+	// The returned result.
 	Result *CredentialGetResultIntlResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -96,7 +96,7 @@ func (s *CredentialGetResultIntlResponseBody) Validate() error {
 }
 
 type CredentialGetResultIntlResponseBodyResult struct {
-	// Identified key information, in JSON format.
+	// The key information identified, in JSON format.
 	//
 	// example:
 	//
@@ -108,19 +108,19 @@ type CredentialGetResultIntlResponseBodyResult struct {
 	//
 	// }
 	ExtIdInfo *string `json:"ExtIdInfo,omitempty" xml:"ExtIdInfo,omitempty"`
-	// Task status:
+	// The task status. Valid values:
 	//
-	// - PROCESSING: In progress (please continue polling)
+	// - PROCESSING: Processing. Continue polling.
 	//
-	// - SUCCESS: Execution succeeded
+	// - SUCCESS: Succeeded.
 	//
-	// - FAILED: Execution failed
+	// - FAILED: Failed.
 	//
 	// example:
 	//
 	// SUCCESS
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Authentication result description. For more information, see ResultObject.SubCode error codes.
+	// The description of the authentication result. For more information, refer to the ResultObject.SubCode error code description.
 	//
 	// example:
 	//

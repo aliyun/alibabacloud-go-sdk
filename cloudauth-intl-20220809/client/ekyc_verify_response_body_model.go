@@ -20,13 +20,13 @@ type iEkycVerifyResponseBody interface {
 }
 
 type EkycVerifyResponseBody struct {
-  // The [response code](https://www.alibabacloud.com/help/en/ekyc/latest/im1u641gyesiqmbg?spm=a2c63.p38356.0.i18#GiGmf).
+  // The response code.
   // 
   // example:
   // 
   // Success
   Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-  // A detailed description of the response code.
+  // The response message.
   // 
   // example:
   // 
@@ -38,7 +38,7 @@ type EkycVerifyResponseBody struct {
   // 
   // 4EB356FE-BB6A-5DCC-B4C5-E8051787EBA1
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-  // Result object
+  // The returned result.
   Result *EkycVerifyResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -96,7 +96,7 @@ func (s *EkycVerifyResponseBody) Validate() error {
 }
 
 type EkycVerifyResponseBodyResult struct {
-  // Information about the face liveness verification result. For the JSON format, see the example on the right. For more information, see [ExtFaceInfo](https://www.alibabacloud.com/help/en/ekyc/latest/im1u641gyesiqmbg?spm=a2c63.p38356.0.i18#JJ40j).
+  // The face verification result information.
   // 
   // example:
   // 
@@ -112,67 +112,55 @@ type EkycVerifyResponseBodyResult struct {
   // 
   // }
   ExtFaceInfo *string `json:"ExtFaceInfo,omitempty" xml:"ExtFaceInfo,omitempty"`
-  // Information about the certificate detection result.
-  // 
-  // For the JSON format, see the example on the right. For more information, see [ExtIdInfo](https://www.alibabacloud.com/help/en/ekyc/latest/im1u641gyesiqmbg?spm=a2c63.p38356.0.i18#iWOBY).
+  // The document recognition result. This parameter is returned only when the API response is successful.
   // 
   // example:
   // 
   // {
   // 
-  //   "ocrIdInfo": {
+  //  "ocrIdInfo": {
   // 
-  //     "expiryDate": "",
+  //  "firstName": "**龙",
   // 
-  //     "originOfIssue": "Exit and Entry Administration of the Ministry of Public Security",
+  //  "lastName": "**",
   // 
-  //     "englishName": "LI SI",
+  //  "countryCode": "CHN",
   // 
-  //     "sex": "Male",
+  //  "docType": "01560001",
   // 
-  //     "name": "Li Si",
+  //  "dateOfBirth": "2002-08-04",
   // 
-  //     "idNumber": "H11111112",
+  //  "idNumber": "410************19"
   // 
-  //     "issueDate": "2013-01-02",
+  //  },
   // 
-  //     "birthDate": "1990-02-21"
+  //  "ocrIdPassed": "N",
   // 
-  //   },
+  //  "spoofInfo": {
   // 
-  //   "ocrIdPassed": "N",
+  //  "spoofResult": "Y",
   // 
-  //   "spoofInfo": {
-  // 
-  //     "spoofResult": "Y",
-  // 
-  //     "spoofType": [
-  // 
-  //       "SCREEN_REMARK"
-  // 
-  //     ]
-  // 
-  //   }
+  //  }
   // 
   // }
   ExtIdInfo *string `json:"ExtIdInfo,omitempty" xml:"ExtIdInfo,omitempty"`
-  // The final authentication result. Valid values:
+  // Indicates whether the verification is passed. Valid values:
   // 
-  // - **Y**: The authentication is passed.
+  // - T: Passed.
   // 
-  // - **N**: The authentication fails.
+  // - F: Not passed.
   // 
   // example:
   // 
   // Y
   Passed *string `json:"Passed,omitempty" xml:"Passed,omitempty"`
-  // A description of the authentication result. For more information, see [Error codes for ResultObject.SubCode](https://www.alibabacloud.com/help/en/ekyc/latest/im1u641gyesiqmbg?spm=a2c63.p38356.0.i18#HCGLb).
+  // The sub-result code.
   // 
   // example:
   // 
   // 205
   SubCode *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
-  // The transaction ID.
+  // The unique identifier of the verification request.
   // 
   // example:
   // 

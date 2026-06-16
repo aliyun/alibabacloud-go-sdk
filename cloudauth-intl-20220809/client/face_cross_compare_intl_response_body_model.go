@@ -20,25 +20,25 @@ type iFaceCrossCompareIntlResponseBody interface {
 }
 
 type FaceCrossCompareIntlResponseBody struct {
-	// Return code.
+	// The return code.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Return message.
+	// The return message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// ID of the request
+	// Id of the request
 	//
 	// example:
 	//
 	// 130A2C10-B9EE-4D84-88E3-5384FF039795
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Return result.
+	// The returned result.
 	Result *FaceCrossCompareIntlResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -96,35 +96,35 @@ func (s *FaceCrossCompareIntlResponseBody) Validate() error {
 }
 
 type FaceCrossCompareIntlResponseBodyResult struct {
-	// A to B comparison score, range 0～100.
+	// The comparison score between A and B. Value range: 0 to 1.
 	//
 	// example:
 	//
-	// 99
+	// 0.9999999999999999
 	FaceComparisonScoreA2B *float64 `json:"FaceComparisonScoreA2B,omitempty" xml:"FaceComparisonScoreA2B,omitempty"`
-	// B to C comparison score, range 0～100.
+	// The comparison score between B and C. Value range: 0 to 1.
 	//
 	// example:
 	//
-	// 99
+	// 0.9999999999999999
 	FaceComparisonScoreB2C *float64 `json:"FaceComparisonScoreB2C,omitempty" xml:"FaceComparisonScoreB2C,omitempty"`
-	// C to A comparison score, range 0～100.
+	// The comparison score between C and A. Value range: 0 to 1.
 	//
 	// example:
 	//
-	// 99
+	// 0.9999999999999999
 	FaceComparisonScoreC2A *float64 `json:"FaceComparisonScoreC2A,omitempty" xml:"FaceComparisonScoreC2A,omitempty"`
-	// Final verification result, values:
+	// The final verification result. Valid values:
 	//
-	// - Y: Pass
+	// - Y: Passed.
 	//
-	// - N: Fail
+	// - N: Not passed.
 	//
 	// example:
 	//
 	// Y
 	FacePassed *string `json:"FacePassed,omitempty" xml:"FacePassed,omitempty"`
-	// Unique identifier for the authentication request.
+	// The unique identifier of the verification request.
 	//
 	// example:
 	//

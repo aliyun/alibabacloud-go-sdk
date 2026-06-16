@@ -20,25 +20,25 @@ type iDocOcrMaxResponseBody interface {
 }
 
 type DocOcrMaxResponseBody struct {
-	// Return code
+	// The response code.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Return message
+	// The response message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// ID of the request
+	// Id of the request
 	//
 	// example:
 	//
 	// 4EB35****87EBA1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Return result
+	// The returned result.
 	Result *DocOcrMaxResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -96,7 +96,7 @@ func (s *DocOcrMaxResponseBody) Validate() error {
 }
 
 type DocOcrMaxResponseBodyResult struct {
-	// Card and document recognition result	Only returned when the interface response is successful
+	// The card and certificate recognition result. This parameter is returned only when the API response is successful.
 	//
 	// example:
 	//
@@ -130,23 +130,23 @@ type DocOcrMaxResponseBodyResult struct {
 	//
 	// }
 	ExtIdInfo *string `json:"ExtIdInfo,omitempty" xml:"ExtIdInfo,omitempty"`
-	// Whether the authentication passed.
+	// Indicates whether the authentication is passed. Valid values:
 	//
-	// - Y: Passed.
+	// - Y: passed.
 	//
-	// - N: Not passed.
+	// - N: not passed.
 	//
 	// example:
 	//
 	// Y
 	Passed *string `json:"Passed,omitempty" xml:"Passed,omitempty"`
-	// Sub-result code.
+	// The sub-result code.
 	//
 	// example:
 	//
 	// 200
 	SubCode *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
-	// Authentication ID
+	// The authentication ID.
 	//
 	// example:
 	//

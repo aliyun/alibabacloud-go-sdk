@@ -20,13 +20,13 @@ type iId2MetaPeriodVerifyIntlResponseBody interface {
 }
 
 type Id2MetaPeriodVerifyIntlResponseBody struct {
-	// [Return to Code](https://www.alibabacloud.com/help/en/ekyc/latest/dateverify?spm=a2c63.p38356.0.i32#22facb6ab6ui1).
+	// The response code. For more information about response codes, see the description of response codes and messages.
 	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// A detailed description of the response code.
+	// The response message of the request.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type Id2MetaPeriodVerifyIntlResponseBody struct {
 	//
 	// 7B97D932-7FF5-517D-BF39-7CA1BEE3CDD9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Return result
+	// The returned result.
 	Result *Id2MetaPeriodVerifyIntlResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -98,15 +98,15 @@ func (s *Id2MetaPeriodVerifyIntlResponseBody) Validate() error {
 type Id2MetaPeriodVerifyIntlResponseBodyResult struct {
 	// The final authentication result. Valid values:
 	//
-	// - **Y**, via
+	// 	- Y: Passed.
 	//
-	// - **N**: The authentication is not passed.
+	// 	- N: Not passed.
 	//
 	// example:
 	//
 	// Y
 	Passed *string `json:"Passed,omitempty" xml:"Passed,omitempty"`
-	// A description of the authentication result. For more information, see [ResultObject.SubCode error codes](https://www.alibabacloud.com/help/en/ekyc/latest/dateverify?spm=a2c63.p38356.0.i32#d1f36d445az8i).
+	// The description of the authentication result. For more information, see the ResultObject.SubCode error code description.
 	//
 	// example:
 	//

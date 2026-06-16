@@ -20,21 +20,21 @@ type iTempAccessTokenIntlResponseBody interface {
 }
 
 type TempAccessTokenIntlResponseBody struct {
-	// Return code
+	// The return code.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Return result.
+	// The response data.
 	Data *TempAccessTokenIntlResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Return message.
+	// The response message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// ID of the request
+	// Id of the request
 	//
 	// example:
 	//
@@ -96,37 +96,37 @@ func (s *TempAccessTokenIntlResponseBody) Validate() error {
 }
 
 type TempAccessTokenIntlResponseBodyData struct {
-	// AccessKeyId for temporary file upload credentials.
+	// The AccessKeyId of the temporary credential for file upload.
 	//
 	// example:
 	//
 	// ***
 	AccessKeyId *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
-	// Temporary authorization secret.
+	// The temporary authorization secret.
 	//
 	// example:
 	//
 	// 3hxuRpEJ3Jv2Rtzyg4HooFCYqps762XcNtzhn19wQymk
 	AccessKeySecret *string `json:"AccessKeySecret,omitempty" xml:"AccessKeySecret,omitempty"`
-	// Bucket name.
+	// The bucket name.
 	//
 	// example:
 	//
 	// liyi
 	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
-	// File prefix.
+	// The file name prefix.
 	//
 	// example:
 	//
 	// test001
 	FileNamePrefix *string `json:"FileNamePrefix,omitempty" xml:"FileNamePrefix,omitempty"`
-	// OSS endpoint.
+	// OssEndPoint。
 	//
 	// example:
 	//
 	// ossEndPoint
 	OssEndPoint *string `json:"OssEndPoint,omitempty" xml:"OssEndPoint,omitempty"`
-	// Security token for temporary file upload credentials.
+	// The security token of the temporary credential for file upload.
 	//
 	// example:
 	//

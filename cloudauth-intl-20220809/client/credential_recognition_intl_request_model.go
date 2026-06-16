@@ -24,21 +24,21 @@ type iCredentialRecognitionIntlRequest interface {
 }
 
 type CredentialRecognitionIntlRequest struct {
-	// Base64 encoded image. If you choose to upload the photo via IdOcrPictureBase64 (photo Base64 encoding), please check the photo size and do not upload overly large photos.
+	// The Base64-encoded image. If you choose to pass in the image by using IdOcrPictureBase64 (Base64-encoded photo), check the photo size and do not pass in an excessively large photo.
 	//
 	// example:
 	//
 	// base64
 	CredentialOcrPictureBase64 *string `json:"CredentialOcrPictureBase64,omitempty" xml:"CredentialOcrPictureBase64,omitempty"`
-	// Image URL, accessible over the public network via HTTP or HTTPS links.
+	// The URL of the image. The URL must be a publicly accessible HTTP or HTTPS link.
 	//
 	// example:
 	//
 	// https://***
 	CredentialOcrPictureUrl *string `json:"CredentialOcrPictureUrl,omitempty" xml:"CredentialOcrPictureUrl,omitempty"`
-	// Voucher type.
+	// The credential type. Valid values:
 	//
-	// - Transaction Voucher: 01 (including: water, electricity, gas, credit card, and other types of e-bill images)
+	// - 01: transaction credential (including electronic bill images for water, electricity, gas, credit cards, and other types).
 	//
 	// This parameter is required.
 	//
@@ -46,11 +46,11 @@ type CredentialRecognitionIntlRequest struct {
 	//
 	// 01
 	DocType *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
-	// Whether to enable tampering detection
+	// Specifies whether to enable tampering detection. Valid values:
 	//
-	// - true: Enable
+	// - true: Enabled.
 	//
-	// - false: Disable
+	// - false: Disabled.
 	//
 	// This parameter is required.
 	//
@@ -58,9 +58,9 @@ type CredentialRecognitionIntlRequest struct {
 	//
 	// true
 	FraudCheck *string `json:"FraudCheck,omitempty" xml:"FraudCheck,omitempty"`
-	// Extraction type:
+	// The extraction type. Valid values:
 	//
-	// - 0101: E-bill Address & Name Module (extracts address and name modules through intelligent analysis)
+	// - 0101: electronic bill address and name module (extracts the address and name module through intelligent analysis).
 	//
 	// This parameter is required.
 	//
@@ -68,7 +68,7 @@ type CredentialRecognitionIntlRequest struct {
 	//
 	// 0101
 	OcrArea *string `json:"OcrArea,omitempty" xml:"OcrArea,omitempty"`
-	// The product solution to be integrated. Value: CREDENTIAL_RECOGNITION.
+	// The product solution to use. Set this to CREDENTIAL_RECOGNITION.
 	//
 	// This parameter is required.
 	//

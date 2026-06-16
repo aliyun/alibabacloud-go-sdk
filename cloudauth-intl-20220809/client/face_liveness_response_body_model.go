@@ -20,25 +20,25 @@ type iFaceLivenessResponseBody interface {
 }
 
 type FaceLivenessResponseBody struct {
-	// [The response code.](https://www.alibabacloud.com/help/en/ekyc/latest/cadqvlft48igbpdc?spm=a2c63.p38356.0.i54#3d0ed52f967g6)
+	// The return code.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// A detailed description of the response code.
+	// The message returned with the result.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The unique ID that Alibaba Cloud generates for the request.
 	//
 	// example:
 	//
 	// 42EA58CA-5DF4-55D5-82C4-5E7A40DA62BA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Result object
+	// The returned result.
 	Result *FaceLivenessResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -96,25 +96,25 @@ func (s *FaceLivenessResponseBody) Validate() error {
 }
 
 type FaceLivenessResponseBodyResult struct {
-	// The results of the passive liveness detection. The value is in the JSON format. For more information, see [ExtFaceInfo](https://www.alibabacloud.com/help/en/ekyc/latest/cadqvlft48igbpdc?spm=a2c63.p38356.0.i54#5ff42f7274agz).
+	// The face result information.
 	ExtFaceInfo *FaceLivenessResponseBodyResultExtFaceInfo `json:"ExtFaceInfo,omitempty" xml:"ExtFaceInfo,omitempty" type:"Struct"`
-	// The authentication result. Valid values:
+	// Indicates whether the authentication passed. Valid values:
 	//
-	// - Y: The authentication is passed.
+	// - Y: passed.
 	//
-	// - N: The authentication is not passed.
+	// - N: not passed.
 	//
 	// example:
 	//
 	// N
 	Passed *string `json:"Passed,omitempty" xml:"Passed,omitempty"`
-	// The code that corresponds to the verification result. For more information, see [ResultObject.SubCode error codes](https://www.alibabacloud.com/help/en/ekyc/latest/cadqvlft48igbpdc?spm=a2c63.p38356.0.i54#5ff3e16174tl2).
+	// The sub-result code.
 	//
 	// example:
 	//
 	// 205
 	SubCode *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
-	// The transaction ID.
+	// The unique ID of the authentication request.
 	//
 	// example:
 	//
@@ -176,52 +176,60 @@ func (s *FaceLivenessResponseBodyResult) Validate() error {
 }
 
 type FaceLivenessResponseBodyResultExtFaceInfo struct {
-	// The predicted age of the person in the image. The prediction may fail, resulting in an empty value.
+	// The predicted reference age based on the face. The prediction may fail and return no value.
 	//
 	// example:
 	//
 	// 18
 	FaceAge *int32 `json:"FaceAge,omitempty" xml:"FaceAge,omitempty"`
-	// Indicates whether a presentation attack was detected on the captured face. Y means an attack was detected. N means no attack was detected.
+	// The liveness detection result. Valid values: Y (attack detected) and N (normal).
 	//
 	// example:
 	//
 	// Y
 	FaceAttack *string `json:"FaceAttack,omitempty" xml:"FaceAttack,omitempty"`
-	// The predicted gender of the person in the image. The prediction may fail, resulting in an empty value.
+	// The predicted gender based on the face photo. The prediction may fail and return no value. Valid values:
 	//
-	// - **M**: Male
+	// - M: male.
 	//
-	// - **F**: Female
+	// - F: female.
 	//
 	// example:
 	//
 	// M
 	FaceGender *string `json:"FaceGender,omitempty" xml:"FaceGender,omitempty"`
-	// Optional. The quality score of the live face. The value ranges from 0 to 100.
+	// The face quality score (0 to 100). This value is returned only when the face quality score switch is enabled in the request parameters.
 	//
 	// example:
 	//
 	// 87.19
 	FaceQualityScore *float64 `json:"FaceQualityScore,omitempty" xml:"FaceQualityScore,omitempty"`
+	// The illumination score.
+	//
 	// example:
 	//
 	// 0.02
 	IlluminationScore *float64 `json:"IlluminationScore,omitempty" xml:"IlluminationScore,omitempty"`
+	// The key area occlusion score.
+	//
 	// example:
 	//
 	// 20
 	KaOcclusionScore *float64 `json:"KaOcclusionScore,omitempty" xml:"KaOcclusionScore,omitempty"`
-	// Optional. Indicates whether the face is occluded. Y means the face is occluded. N means the face is not occluded.
+	// The occlusion detection result. Valid values: Y (occluded) and N (not occluded). This value is returned only when the occlusion detection switch is enabled.
 	//
 	// example:
 	//
 	// Y
 	OcclusionResult *string `json:"OcclusionResult,omitempty" xml:"OcclusionResult,omitempty"`
+	// The occlusion score.
+	//
 	// example:
 	//
 	// 50.26
 	OcclusionScore *float64 `json:"OcclusionScore,omitempty" xml:"OcclusionScore,omitempty"`
+	// The sharpness score.
+	//
 	// example:
 	//
 	// 86.47

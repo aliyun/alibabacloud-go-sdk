@@ -14,7 +14,7 @@ type iDeleteFaceGroupRequest interface {
 }
 
 type DeleteFaceGroupRequest struct {
-	// Primary key ID
+	// The primary key ID.
 	//
 	// This parameter is required.
 	//

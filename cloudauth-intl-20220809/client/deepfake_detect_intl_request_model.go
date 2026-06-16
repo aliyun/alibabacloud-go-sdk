@@ -24,29 +24,29 @@ type iDeepfakeDetectIntlRequest interface {
 }
 
 type DeepfakeDetectIntlRequest struct {
-	// Input the Base64 encoded format of the face image.
+	// The Base64-encoded content of the facial image.
 	//
-	// > Choose one of FaceUrl or FaceBase64 to input.
+	// > Specify either FaceUrl or FaceBase64.
 	//
 	// example:
 	//
 	// /9j/4AAQSkZJRgABAQAASxxxxxxx
 	FaceBase64 *string `json:"FaceBase64,omitempty" xml:"FaceBase64,omitempty"`
-	// Input **IMAGE**, indicating a face image.
+	// Set the value to **IMAGE*	- to specify a facial image.
 	//
 	// example:
 	//
 	// IMAGE
 	FaceInputType *string `json:"FaceInputType,omitempty" xml:"FaceInputType,omitempty"`
-	// Input the URL address of the face image.
+	// The URL of the facial image.
 	//
-	// > Choose one of FaceUrl or FaceBase64 to input.
+	// > Specify either FaceUrl or FaceBase64.
 	//
 	// example:
 	//
 	// https://cn-shanghai-aliyun-cloudauth-xxxxxx.oss-cn-shanghai.aliyuncs.com/verify/xxxxx/xxxxx.jpeg
 	FaceUrl *string `json:"FaceUrl,omitempty" xml:"FaceUrl,omitempty"`
-	// A unique identifier for the merchant\\"s request, consisting of a 32-character alphanumeric combination. The first few characters are composed of a custom abbreviation defined by the merchant, the middle part can include a period of time, and the latter part can use a random or incremental sequence.
+	// The unique identifier of the merchant request. The value is a 32-character combination of letters and digits. The first few characters are a custom merchant abbreviation, the middle part can contain a timestamp, and the last part can be a random or incremental sequence.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +54,7 @@ type DeepfakeDetectIntlRequest struct {
 	//
 	// e0c34a77f5ac40a5aa5e6ed20c******
 	MerchantBizId *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
-	// The product solution to be integrated. Value: **FACE_DEEPFAKE**.
+	// The product solution to use. Set the value to **FACE_DEEPFAKE**.
 	//
 	// This parameter is required.
 	//
@@ -62,7 +62,7 @@ type DeepfakeDetectIntlRequest struct {
 	//
 	// FACE_DEEPFAKE
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// Your custom authentication scenario ID, used for querying related records by entering this scenario ID in the console later. Supports a combination of 10 characters, including letters, numbers, or underscores.
+	// The custom scene ID for authentication. You can use this scene ID to query related records in the console. The value can be up to 10 characters long and can contain letters, digits, and underscores.
 	//
 	// example:
 	//

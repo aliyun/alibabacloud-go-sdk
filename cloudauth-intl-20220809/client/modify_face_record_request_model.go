@@ -16,12 +16,16 @@ type iModifyFaceRecordRequest interface {
 }
 
 type ModifyFaceRecordRequest struct {
+	// The face library code.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 4EB35****87
 	FaceGroupCode *string `json:"FaceGroupCode,omitempty" xml:"FaceGroupCode,omitempty"`
+	// The OSS information of the image.
+	//
 	// This parameter is required.
 	//
 	// example:

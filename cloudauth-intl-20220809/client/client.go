@@ -24,7 +24,13 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = dara.String("")
+	client.EndpointRule = dara.String("regional")
+	client.EndpointMap = map[string]*string{
+		"cn-hongkong":    dara.String("cloudauth-intl.cn-hongkong.aliyuncs.com"),
+		"ap-southeast-5": dara.String("cloudauth-intl.ap-southeast-5.aliyuncs.com"),
+		"ap-southeast-3": dara.String("cloudauth-intl.ap-southeast-3.aliyuncs.com"),
+		"ap-southeast-1": dara.String("cloudauth-intl.ap-southeast-1.aliyuncs.com"),
+	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -139,7 +145,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 人脸图片入库
+// Adds a face image to a specified face library.
 //
 // @param request - AddFaceRecordRequest
 //
@@ -207,7 +213,7 @@ func (client *Client) AddFaceRecordWithOptions(request *AddFaceRecordRequest, ru
 
 // Summary:
 //
-// 人脸图片入库
+// Adds a face image to a specified face library.
 //
 // @param request - AddFaceRecordRequest
 //
@@ -332,11 +338,11 @@ func (client *Client) AddFaceRecordAdvance(request *AddFaceRecordAdvanceRequest,
 
 // Summary:
 //
-// # Address Similarity Comparison
+// Compares the similarity of two addresses.
 //
 // Description:
 //
-// API for comparing two addresses, standardizing and checking address consistency.
+// Compares two addresses for consistency by using address standardization.
 //
 // @param request - AddressCompareIntlRequest
 //
@@ -392,11 +398,11 @@ func (client *Client) AddressCompareIntlWithOptions(request *AddressCompareIntlR
 
 // Summary:
 //
-// # Address Similarity Comparison
+// Compares the similarity of two addresses.
 //
 // Description:
 //
-// API for comparing two addresses, standardizing and checking address consistency.
+// Compares two addresses for consistency by using address standardization.
 //
 // @param request - AddressCompareIntlRequest
 //
@@ -416,11 +422,11 @@ func (client *Client) AddressCompareIntl(request *AddressCompareIntlRequest) (_r
 //
 // Summary:
 //
-// # Address Verification
+// Verifies whether a specified address belongs to a user\\"s residential address based on telecommunications service provider capabilities, using a phone number and an address (or coordinates).
 //
 // Description:
 //
-// Based on the operator\\"s capabilities, input the phone number and address (or latitude and longitude) to verify whether the provided address is the user\\"s usual residence.
+// Verifies whether a specified address belongs to a user\\"s residential address based on telecommunications service provider capabilities, using a phone number and an address (or coordinates).
 //
 // @param request - AddressVerifyIntlRequest
 //
@@ -506,11 +512,11 @@ func (client *Client) AddressVerifyIntlWithOptions(request *AddressVerifyIntlReq
 //
 // Summary:
 //
-// # Address Verification
+// Verifies whether a specified address belongs to a user\\"s residential address based on telecommunications service provider capabilities, using a phone number and an address (or coordinates).
 //
 // Description:
 //
-// Based on the operator\\"s capabilities, input the phone number and address (or latitude and longitude) to verify whether the provided address is the user\\"s usual residence.
+// Verifies whether a specified address belongs to a user\\"s residential address based on telecommunications service provider capabilities, using a phone number and an address (or coordinates).
 //
 // @param request - AddressVerifyIntlRequest
 //
@@ -529,7 +535,7 @@ func (client *Client) AddressVerifyIntl(request *AddressVerifyIntlRequest) (_res
 
 // Summary:
 //
-// This topic describes the address verification API operation, which verifies the region and address of a device using device data and carrier big data capabilities.
+// Verifies an address.
 //
 // @param request - AddressVerifyV2IntlRequest
 //
@@ -593,7 +599,7 @@ func (client *Client) AddressVerifyV2IntlWithOptions(request *AddressVerifyV2Int
 
 // Summary:
 //
-// This topic describes the address verification API operation, which verifies the region and address of a device using device data and carrier big data capabilities.
+// Verifies an address.
 //
 // @param request - AddressVerifyV2IntlRequest
 //
@@ -611,11 +617,11 @@ func (client *Client) AddressVerifyV2Intl(request *AddressVerifyV2IntlRequest) (
 
 // Summary:
 //
-// # Bank Card Verification
+// Provides bank card element verification (two-element, three-element, and four-element) API operations.
 //
 // Description:
 //
-// Verification of bank card elements, including: two-element verification (name + bank card number), three-element verification (name + ID number + bank card number), and four-element verification (name + ID number + phone number + bank card number) for consistency.
+// Verifies bank card elements, including two-element verification (name + bank card number), three-element verification (name + ID card number + bank card number), and four-element verification (name + ID card number + phone number + bank card number) for consistency.
 //
 // @param request - BankMetaVerifyIntlRequest
 //
@@ -691,11 +697,11 @@ func (client *Client) BankMetaVerifyIntlWithOptions(request *BankMetaVerifyIntlR
 
 // Summary:
 //
-// # Bank Card Verification
+// Provides bank card element verification (two-element, three-element, and four-element) API operations.
 //
 // Description:
 //
-// Verification of bank card elements, including: two-element verification (name + bank card number), three-element verification (name + ID number + bank card number), and four-element verification (name + ID number + phone number + bank card number) for consistency.
+// Verifies bank card elements, including two-element verification (name + bank card number), three-element verification (name + ID card number + bank card number), and four-element verification (name + ID card number + phone number + bank card number) for consistency.
 //
 // @param request - BankMetaVerifyIntlRequest
 //
@@ -715,7 +721,7 @@ func (client *Client) BankMetaVerifyIntl(request *BankMetaVerifyIntlRequest) (_r
 //
 // Summary:
 //
-// # Pure server-side interface for document OCR recognition
+// Provides server-side ID card and certificate OCR capabilities.
 //
 // @param request - CardOcrRequest
 //
@@ -795,7 +801,7 @@ func (client *Client) CardOcrWithOptions(request *CardOcrRequest, runtime *dara.
 //
 // Summary:
 //
-// # Pure server-side interface for document OCR recognition
+// Provides server-side ID card and certificate OCR capabilities.
 //
 // @param request - CardOcrRequest
 //
@@ -814,7 +820,7 @@ func (client *Client) CardOcr(request *CardOcrRequest) (_result *CardOcrResponse
 
 // Summary:
 //
-// # Result Query
+// Queries the verification result.
 //
 // @param request - CheckResultRequest
 //
@@ -874,7 +880,7 @@ func (client *Client) CheckResultWithOptions(request *CheckResultRequest, runtim
 
 // Summary:
 //
-// # Result Query
+// Queries the verification result.
 //
 // @param request - CheckResultRequest
 //
@@ -892,7 +898,7 @@ func (client *Client) CheckResult(request *CheckResultRequest) (_result *CheckRe
 
 // Summary:
 //
-// # Authentication Log Query Interface
+// Authentication log query.
 //
 // @param request - CheckVerifyLogRequest
 //
@@ -940,7 +946,7 @@ func (client *Client) CheckVerifyLogWithOptions(request *CheckVerifyLogRequest, 
 
 // Summary:
 //
-// # Authentication Log Query Interface
+// Authentication log query.
 //
 // @param request - CheckVerifyLogRequest
 //
@@ -958,11 +964,11 @@ func (client *Client) CheckVerifyLog(request *CheckVerifyLogRequest) (_result *C
 
 // Summary:
 //
-// # Credential Recognition Query
+// Queries the credential recognition result.
 //
 // Description:
 //
-// After obtaining the TransactionId, you can use this interface on the server side to get the corresponding authentication result.
+// After you obtain the TransactionId, you can call this operation on the server side to retrieve the corresponding authentication result.
 //
 // @param request - CredentialGetResultIntlRequest
 //
@@ -1006,11 +1012,11 @@ func (client *Client) CredentialGetResultIntlWithOptions(request *CredentialGetR
 
 // Summary:
 //
-// # Credential Recognition Query
+// Queries the credential recognition result.
 //
 // Description:
 //
-// After obtaining the TransactionId, you can use this interface on the server side to get the corresponding authentication result.
+// After you obtain the TransactionId, you can call this operation on the server side to retrieve the corresponding authentication result.
 //
 // @param request - CredentialGetResultIntlRequest
 //
@@ -1028,11 +1034,11 @@ func (client *Client) CredentialGetResultIntl(request *CredentialGetResultIntlRe
 
 // Summary:
 //
-// # Credential Recognition
+// An API operation that uploads a credential image, such as a utility bill or credit card statement, and uses Qwen-VL to intelligently fetch the billing address and name from the credential.
 //
 // Description:
 //
-// Detects whether a voucher (such as water, electricity, gas, credit card, etc., e-bills) is forged using AI technology and extracts key information from the voucher.
+// Uses AI technology to detect whether a credential (such as a water, electricity, gas, or credit card electronic bill) has been forged, and extracts key information from the credential.
 //
 // @param request - CredentialRecognitionIntlRequest
 //
@@ -1098,11 +1104,11 @@ func (client *Client) CredentialRecognitionIntlWithOptions(request *CredentialRe
 
 // Summary:
 //
-// # Credential Recognition
+// An API operation that uploads a credential image, such as a utility bill or credit card statement, and uses Qwen-VL to intelligently fetch the billing address and name from the credential.
 //
 // Description:
 //
-// Detects whether a voucher (such as water, electricity, gas, credit card, etc., e-bills) is forged using AI technology and extracts key information from the voucher.
+// Uses AI technology to detect whether a credential (such as a water, electricity, gas, or credit card electronic bill) has been forged, and extracts key information from the credential.
 //
 // @param request - CredentialRecognitionIntlRequest
 //
@@ -1120,11 +1126,11 @@ func (client *Client) CredentialRecognitionIntl(request *CredentialRecognitionIn
 
 // Summary:
 //
-// # Credential Recognition Submission
+// Submits credential recognition information.
 //
 // Description:
 //
-// Initialization interface for credential recognition OCR, through which you can obtain the transactionId.
+// Initializes the credential recognition OCR operation and retrieves a transactionId.
 //
 // @param request - CredentialSubmitIntlRequest
 //
@@ -1198,11 +1204,11 @@ func (client *Client) CredentialSubmitIntlWithOptions(request *CredentialSubmitI
 
 // Summary:
 //
-// # Credential Recognition Submission
+// Submits credential recognition information.
 //
 // Description:
 //
-// Initialization interface for credential recognition OCR, through which you can obtain the transactionId.
+// Initializes the credential recognition OCR operation and retrieves a transactionId.
 //
 // @param request - CredentialSubmitIntlRequest
 //
@@ -1220,11 +1226,11 @@ func (client *Client) CredentialSubmitIntl(request *CredentialSubmitIntlRequest)
 
 // Summary:
 //
-// # Credential Verification
+// Provides the API operation for the credential verification service. This operation uses a large language model to detect image tampering, forgery, and image quality issues in submitted 
 //
 // Description:
 //
-// Input credential image information, perform image quality, tampering, and forgery detection, and return the detection results.
+// Submits credential image information, performs image quality, tampering, and forgery detection, and returns the detection results.
 //
 // @param request - CredentialVerifyIntlRequest
 //
@@ -1286,11 +1292,11 @@ func (client *Client) CredentialVerifyIntlWithOptions(request *CredentialVerifyI
 
 // Summary:
 //
-// # Credential Verification
+// Provides the API operation for the credential verification service. This operation uses a large language model to detect image tampering, forgery, and image quality issues in submitted credential images.
 //
 // Description:
 //
-// Input credential image information, perform image quality, tampering, and forgery detection, and return the detection results.
+// Submits credential image information, performs image quality, tampering, and forgery detection, and returns the detection results.
 //
 // @param request - CredentialVerifyIntlRequest
 //
@@ -1415,11 +1421,11 @@ func (client *Client) CredentialVerifyIntlAdvance(request *CredentialVerifyIntlA
 
 // Summary:
 //
-// # Face Credential Verification
+// Detects deepfake risks in facial images.
 //
 // Description:
 //
-// Input a face image and use the algorithm to detect if there is a risk of deep forgery. This includes risk scenarios such as AIGC-generated faces, deepfake face swapping, template faces, and rephotographed faces, and outputs risk labels and confidence levels.
+// Submits a facial image and uses algorithms to detect potential deepfake risks. This operation covers risk scenarios such as AIGC-generated faces, deep forgery face swaps, template faces, and recaptured faces. It returns risk labels and confidence scores.
 //
 // @param request - DeepfakeDetectIntlRequest
 //
@@ -1485,11 +1491,11 @@ func (client *Client) DeepfakeDetectIntlWithOptions(request *DeepfakeDetectIntlR
 
 // Summary:
 //
-// # Face Credential Verification
+// Detects deepfake risks in facial images.
 //
 // Description:
 //
-// Input a face image and use the algorithm to detect if there is a risk of deep forgery. This includes risk scenarios such as AIGC-generated faces, deepfake face swapping, template faces, and rephotographed faces, and outputs risk labels and confidence levels.
+// Submits a facial image and uses algorithms to detect potential deepfake risks. This operation covers risk scenarios such as AIGC-generated faces, deep forgery face swaps, template faces, and recaptured faces. It returns risk labels and confidence scores.
 //
 // @param request - DeepfakeDetectIntlRequest
 //
@@ -1507,11 +1513,11 @@ func (client *Client) DeepfakeDetectIntl(request *DeepfakeDetectIntlRequest) (_r
 
 // Summary:
 //
-// deepfake file stream API
+// ID Verification provides face deepfake detection capabilities, which can be integrated independently through API calls.
 //
 // Description:
 //
-// Input a face image and use the algorithm to detect if there is a risk of deepfake. This includes risk scenarios such as AIGC-generated faces, deepfake face swaps, template faces, and rephotographed faces, and outputs risk labels and confidence scores.
+// Submit a face image to detect deepfake risks through algorithms. This covers risk scenarios such as AIGC-generated faces, deep forgery face swaps, template faces, and re-captured faces, and outputs risk labels and confidence scores.
 //
 // @param request - DeepfakeDetectIntlStreamRequest
 //
@@ -1579,11 +1585,11 @@ func (client *Client) DeepfakeDetectIntlStreamWithOptions(request *DeepfakeDetec
 
 // Summary:
 //
-// deepfake file stream API
+// ID Verification provides face deepfake detection capabilities, which can be integrated independently through API calls.
 //
 // Description:
 //
-// Input a face image and use the algorithm to detect if there is a risk of deepfake. This includes risk scenarios such as AIGC-generated faces, deepfake face swaps, template faces, and rephotographed faces, and outputs risk labels and confidence scores.
+// Submit a face image to detect deepfake risks through algorithms. This covers risk scenarios such as AIGC-generated faces, deep forgery face swaps, template faces, and re-captured faces, and outputs risk labels and confidence scores.
 //
 // @param request - DeepfakeDetectIntlStreamRequest
 //
@@ -1708,7 +1714,7 @@ func (client *Client) DeepfakeDetectIntlStreamAdvance(request *DeepfakeDetectInt
 
 // Summary:
 //
-// # Delete Face Group
+// Deletes a face library.
 //
 // @param request - DeleteFaceGroupRequest
 //
@@ -1752,7 +1758,7 @@ func (client *Client) DeleteFaceGroupWithOptions(request *DeleteFaceGroupRequest
 
 // Summary:
 //
-// # Delete Face Group
+// Deletes a face library.
 //
 // @param request - DeleteFaceGroupRequest
 //
@@ -1770,7 +1776,7 @@ func (client *Client) DeleteFaceGroup(request *DeleteFaceGroupRequest) (_result 
 
 // Summary:
 //
-// # Delete Face
+// Deletes a face record.
 //
 // @param request - DeleteFaceRecordRequest
 //
@@ -1814,7 +1820,7 @@ func (client *Client) DeleteFaceRecordWithOptions(request *DeleteFaceRecordReque
 
 // Summary:
 //
-// # Delete Face
+// Deletes a face record.
 //
 // @param request - DeleteFaceRecordRequest
 //
@@ -1832,7 +1838,7 @@ func (client *Client) DeleteFaceRecord(request *DeleteFaceRecordRequest) (_resul
 
 // Summary:
 //
-// # Delete user authentication record results
+// Deletes data related to a user authentication record.
 //
 // @param request - DeleteVerifyResultRequest
 //
@@ -1884,7 +1890,7 @@ func (client *Client) DeleteVerifyResultWithOptions(request *DeleteVerifyResultR
 
 // Summary:
 //
-// # Delete user authentication record results
+// Deletes data related to a user authentication record.
 //
 // @param request - DeleteVerifyResultRequest
 //
@@ -1902,7 +1908,7 @@ func (client *Client) DeleteVerifyResult(request *DeleteVerifyResultRequest) (_r
 
 // Summary:
 //
-// # Card and document OCR pure server-side
+// Provides server-side card and certificate OCR capabilities.
 //
 // @param request - DocOcrRequest
 //
@@ -1988,7 +1994,7 @@ func (client *Client) DocOcrWithOptions(request *DocOcrRequest, runtime *dara.Ru
 
 // Summary:
 //
-// # Card and document OCR pure server-side
+// Provides server-side card and certificate OCR capabilities.
 //
 // @param request - DocOcrRequest
 //
@@ -2006,7 +2012,7 @@ func (client *Client) DocOcr(request *DocOcrRequest) (_result *DocOcrResponse, _
 
 // Summary:
 //
-// # Global Document OCR Recognition Interface
+// Recognizes global identity documents through OCR.
 //
 // @param request - DocOcrMaxRequest
 //
@@ -2108,7 +2114,7 @@ func (client *Client) DocOcrMaxWithOptions(request *DocOcrMaxRequest, runtime *d
 
 // Summary:
 //
-// # Global Document OCR Recognition Interface
+// Recognizes global identity documents through OCR.
 //
 // @param request - DocOcrMaxRequest
 //
@@ -2126,7 +2132,230 @@ func (client *Client) DocOcrMax(request *DocOcrMaxRequest) (_result *DocOcrMaxRe
 
 // Summary:
 //
-// 卡证ocr纯服务端V2
+// 全球证件ocr识别接口
+//
+// @param request - DocOcrMaxV2Request
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DocOcrMaxV2Response
+func (client *Client) DocOcrMaxV2WithOptions(request *DocOcrMaxV2Request, runtime *dara.RuntimeOptions) (_result *DocOcrMaxV2Response, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OcrValueStandard) {
+		query["OcrValueStandard"] = request.OcrValueStandard
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Authorize) {
+		body["Authorize"] = request.Authorize
+	}
+
+	if !dara.IsNil(request.DocPage) {
+		body["DocPage"] = request.DocPage
+	}
+
+	if !dara.IsNil(request.DocType) {
+		body["DocType"] = request.DocType
+	}
+
+	if !dara.IsNil(request.IdOcrPictureBase64) {
+		body["IdOcrPictureBase64"] = request.IdOcrPictureBase64
+	}
+
+	if !dara.IsNil(request.IdOcrPictureFile) {
+		body["IdOcrPictureFile"] = request.IdOcrPictureFile
+	}
+
+	if !dara.IsNil(request.IdOcrPictureUrl) {
+		body["IdOcrPictureUrl"] = request.IdOcrPictureUrl
+	}
+
+	if !dara.IsNil(request.IdSpoof) {
+		body["IdSpoof"] = request.IdSpoof
+	}
+
+	if !dara.IsNil(request.IdThreshold) {
+		body["IdThreshold"] = request.IdThreshold
+	}
+
+	if !dara.IsNil(request.MerchantBizId) {
+		body["MerchantBizId"] = request.MerchantBizId
+	}
+
+	if !dara.IsNil(request.MerchantUserId) {
+		body["MerchantUserId"] = request.MerchantUserId
+	}
+
+	if !dara.IsNil(request.OcrModel) {
+		body["OcrModel"] = request.OcrModel
+	}
+
+	if !dara.IsNil(request.ProductCode) {
+		body["ProductCode"] = request.ProductCode
+	}
+
+	if !dara.IsNil(request.SceneCode) {
+		body["SceneCode"] = request.SceneCode
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DocOcrMaxV2"),
+		Version:     dara.String("2022-08-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DocOcrMaxV2Response{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 全球证件ocr识别接口
+//
+// @param request - DocOcrMaxV2Request
+//
+// @return DocOcrMaxV2Response
+func (client *Client) DocOcrMaxV2(request *DocOcrMaxV2Request) (_result *DocOcrMaxV2Response, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DocOcrMaxV2Response{}
+	_body, _err := client.DocOcrMaxV2WithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DocOcrMaxV2Advance(request *DocOcrMaxV2AdvanceRequest, runtime *dara.RuntimeOptions) (_result *DocOcrMaxV2Response, _err error) {
+	// Step 0: init client
+	if dara.IsNil(client.Credential) {
+		_err = &openapi.ClientError{
+			Code:    dara.String("InvalidCredentials"),
+			Message: dara.String("Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details."),
+		}
+		return _result, _err
+	}
+
+	credentialModel, _err := client.Credential.GetCredential()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeyId := dara.StringValue(credentialModel.AccessKeyId)
+	accessKeySecret := dara.StringValue(credentialModel.AccessKeySecret)
+	securityToken := dara.StringValue(credentialModel.SecurityToken)
+	credentialType := dara.StringValue(credentialModel.Type)
+	openPlatformEndpoint := dara.StringValue(client.OpenPlatformEndpoint)
+	if dara.IsNil(dara.String(openPlatformEndpoint)) || openPlatformEndpoint == "" {
+		openPlatformEndpoint = "openplatform.aliyuncs.com"
+	}
+
+	if dara.IsNil(dara.String(credentialType)) {
+		credentialType = "access_key"
+	}
+
+	authConfig := &openapiutil.Config{
+		AccessKeyId:     dara.String(accessKeyId),
+		AccessKeySecret: dara.String(accessKeySecret),
+		SecurityToken:   dara.String(securityToken),
+		Type:            dara.String(credentialType),
+		Endpoint:        dara.String(openPlatformEndpoint),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openapi.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := map[string]*string{
+		"Product":  dara.String("Cloudauth-intl"),
+		"RegionId": client.RegionId,
+	}
+	authReq := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(authRequest),
+	}
+	authParams := &openapiutil.Params{
+		Action:      dara.String("AuthorizeFileUpload"),
+		Version:     dara.String("2019-12-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	authResponse := map[string]interface{}{}
+	fileObj := &dara.FileField{}
+	ossHeader := map[string]interface{}{}
+	tmpBody := map[string]interface{}{}
+	useAccelerate := false
+	authResponseBody := make(map[string]*string)
+	docOcrMaxV2Req := &DocOcrMaxV2Request{}
+	openapiutil.Convert(request, docOcrMaxV2Req)
+	if !dara.IsNil(request.IdOcrPictureFileObject) {
+		authResponse, _err = authClient.CallApi(authParams, authReq, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		tmpBody = dara.ToMap(authResponse["body"])
+		useAccelerate = dara.ForceBoolean(tmpBody["UseAccelerate"])
+		authResponseBody = openapiutil.StringifyMapValue(tmpBody)
+		fileObj = &dara.FileField{
+			Filename:    authResponseBody["ObjectKey"],
+			Content:     request.IdOcrPictureFileObject,
+			ContentType: dara.String(""),
+		}
+		ossHeader = map[string]interface{}{
+			"host":                  dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
+			"OSSAccessKeyId":        dara.StringValue(authResponseBody["AccessKeyId"]),
+			"policy":                dara.StringValue(authResponseBody["EncodedPolicy"]),
+			"Signature":             dara.StringValue(authResponseBody["Signature"]),
+			"key":                   dara.StringValue(authResponseBody["ObjectKey"]),
+			"file":                  fileObj,
+			"success_action_status": "201",
+		}
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		docOcrMaxV2Req.IdOcrPictureFile = dara.String("http://" + dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(authResponseBody["Endpoint"]) + "/" + dara.StringValue(authResponseBody["ObjectKey"]))
+	}
+
+	docOcrMaxV2Resp, _err := client.DocOcrMaxV2WithOptions(docOcrMaxV2Req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = docOcrMaxV2Resp
+	return _result, _err
+}
+
+// Summary:
+//
+// Provides server-side card and certificate OCR capabilities.
 //
 // @param request - DocOcrV2Request
 //
@@ -2216,7 +2445,7 @@ func (client *Client) DocOcrV2WithOptions(request *DocOcrV2Request, runtime *dar
 
 // Summary:
 //
-// 卡证ocr纯服务端V2
+// Provides server-side card and certificate OCR capabilities.
 //
 // @param request - DocOcrV2Request
 //
@@ -2341,7 +2570,7 @@ func (client *Client) DocOcrV2Advance(request *DocOcrV2AdvanceRequest, runtime *
 
 // Summary:
 //
-// # Console Export Records
+// Downloads verification task records.
 //
 // @param request - DownloadVerifyRecordIntlRequest
 //
@@ -2401,7 +2630,7 @@ func (client *Client) DownloadVerifyRecordIntlWithOptions(request *DownloadVerif
 
 // Summary:
 //
-// # Console Export Records
+// Downloads verification task records.
 //
 // @param request - DownloadVerifyRecordIntlRequest
 //
@@ -2419,7 +2648,7 @@ func (client *Client) DownloadVerifyRecordIntl(request *DownloadVerifyRecordIntl
 
 // Summary:
 //
-// This topic describes how to integrate with ID Verification using only the server-side API.
+// Provides a server-side-only API for the eKYC solution.
 //
 // @param request - EkycVerifyRequest
 //
@@ -2513,7 +2742,7 @@ func (client *Client) EkycVerifyWithOptions(request *EkycVerifyRequest, runtime 
 
 // Summary:
 //
-// This topic describes how to integrate with ID Verification using only the server-side API.
+// Provides a server-side-only API for the eKYC solution.
 //
 // @param request - EkycVerifyRequest
 //
@@ -2531,7 +2760,7 @@ func (client *Client) EkycVerify(request *EkycVerifyRequest) (_result *EkycVerif
 
 // Summary:
 //
-// ekyc纯服务端接口V2
+// # Server-side-only eKYC API
 //
 // @param request - EkycVerifyV2Request
 //
@@ -2633,7 +2862,7 @@ func (client *Client) EkycVerifyV2WithOptions(request *EkycVerifyV2Request, runt
 
 // Summary:
 //
-// ekyc纯服务端接口V2
+// # Server-side-only eKYC API
 //
 // @param request - EkycVerifyV2Request
 //
@@ -2788,7 +3017,7 @@ func (client *Client) EkycVerifyV2Advance(request *EkycVerifyV2AdvanceRequest, r
 
 // Summary:
 //
-// This topic describes how to integrate FaceCompare using only the server-side API.
+// Compares two face images by using face recognition technology and returns the comparison result and similarity score.
 //
 // @param request - FaceCompareRequest
 //
@@ -2858,7 +3087,7 @@ func (client *Client) FaceCompareWithOptions(request *FaceCompareRequest, runtim
 
 // Summary:
 //
-// This topic describes how to integrate FaceCompare using only the server-side API.
+// Compares two face images by using face recognition technology and returns the comparison result and similarity score.
 //
 // @param request - FaceCompareRequest
 //
@@ -2876,7 +3105,7 @@ func (client *Client) FaceCompare(request *FaceCompareRequest) (_result *FaceCom
 
 // Summary:
 //
-// 人脸比对V2
+// Compares two face images by using face recognition technology and returns the comparison result and a similarity score.
 //
 // @param request - FaceCompareV2Request
 //
@@ -2954,7 +3183,7 @@ func (client *Client) FaceCompareV2WithOptions(request *FaceCompareV2Request, ru
 
 // Summary:
 //
-// 人脸比对V2
+// Compares two face images by using face recognition technology and returns the comparison result and a similarity score.
 //
 // @param request - FaceCompareV2Request
 //
@@ -3109,7 +3338,7 @@ func (client *Client) FaceCompareV2Advance(request *FaceCompareV2AdvanceRequest,
 
 // Summary:
 //
-// # Face Cross Comparison
+// Performs cross-comparison of faces.
 //
 // @param request - FaceCrossCompareIntlRequest
 //
@@ -3195,7 +3424,7 @@ func (client *Client) FaceCrossCompareIntlWithOptions(request *FaceCrossCompareI
 
 // Summary:
 //
-// # Face Cross Comparison
+// Performs cross-comparison of faces.
 //
 // @param request - FaceCrossCompareIntlRequest
 //
@@ -3213,7 +3442,7 @@ func (client *Client) FaceCrossCompareIntl(request *FaceCrossCompareIntlRequest)
 
 // Summary:
 //
-// # Face Duplication Detection API
+// FaceDuplicationCheckIntl is designed for scenarios where SDK integration is not feasible. You can call this API operation to submit facial images and perform the following functions: verify whether the user is a real person, compare the submitted face against a stored face to verify identity, search a face database to check for existing records, and automatically register the face in a specified face database after successful verification.
 //
 // @param request - FaceDuplicationCheckIntlRequest
 //
@@ -3323,7 +3552,7 @@ func (client *Client) FaceDuplicationCheckIntlWithOptions(request *FaceDuplicati
 
 // Summary:
 //
-// # Face Duplication Detection API
+// FaceDuplicationCheckIntl is designed for scenarios where SDK integration is not feasible. You can call this API operation to submit facial images and perform the following functions: verify whether the user is a real person, compare the submitted face against a stored face to verify identity, search a face database to check for existing records, and automatically register the face in a specified face database after successful verification.
 //
 // @param request - FaceDuplicationCheckIntlRequest
 //
@@ -3341,7 +3570,7 @@ func (client *Client) FaceDuplicationCheckIntl(request *FaceDuplicationCheckIntl
 
 // Summary:
 //
-// This topic describes how to set up the server for FACE_GUARD.
+// Server-side API for the international Face Guard service.
 //
 // @param request - FaceGuardRiskRequest
 //
@@ -3401,7 +3630,7 @@ func (client *Client) FaceGuardRiskWithOptions(request *FaceGuardRiskRequest, ru
 
 // Summary:
 //
-// This topic describes how to set up the server for FACE_GUARD.
+// Server-side API for the international Face Guard service.
 //
 // @param request - FaceGuardRiskRequest
 //
@@ -3419,7 +3648,7 @@ func (client *Client) FaceGuardRisk(request *FaceGuardRiskRequest) (_result *Fac
 
 // Summary:
 //
-// Passive liveness detection (FaceLiveness) is a service that detects whether a pre-captured facial image, submitted to an API operation, is a real face. The algorithm primarily detects presentation attacks, such as screen replays and printed photos. This service is suitable for low-risk business scen
+// Calls the server-side API for passive liveness detection.
 //
 // @param request - FaceLivenessRequest
 //
@@ -3497,7 +3726,7 @@ func (client *Client) FaceLivenessWithOptions(request *FaceLivenessRequest, runt
 
 // Summary:
 //
-// Passive liveness detection (FaceLiveness) is a service that detects whether a pre-captured facial image, submitted to an API operation, is a real face. The algorithm primarily detects presentation attacks, such as screen replays and printed photos. This service is suitable for low-risk business scen
+// Calls the server-side API for passive liveness detection.
 //
 // @param request - FaceLivenessRequest
 //
@@ -3516,6 +3745,10 @@ func (client *Client) FaceLiveness(request *FaceLivenessRequest) (_result *FaceL
 // Summary:
 //
 // 人脸活体验证
+//
+// Description:
+//
+// 调用FaceLivenessV2接口对人脸图片进行活体检测。
 //
 // @param request - FaceLivenessV2Request
 //
@@ -3586,6 +3819,10 @@ func (client *Client) FaceLivenessV2WithOptions(request *FaceLivenessV2Request, 
 // Summary:
 //
 // 人脸活体验证
+//
+// Description:
+//
+// 调用FaceLivenessV2接口对人脸图片进行活体检测。
 //
 // @param request - FaceLivenessV2Request
 //
@@ -3712,6 +3949,10 @@ func (client *Client) FaceLivenessV2Advance(request *FaceLivenessV2AdvanceReques
 //
 // 人脸活体验证
 //
+// Description:
+//
+// 调用FaceVerifyIntl接口对人脸图片进行活体检测。
+//
 // @param request - FaceVerifyIntlRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3813,6 +4054,10 @@ func (client *Client) FaceVerifyIntlWithOptions(request *FaceVerifyIntlRequest, 
 // Summary:
 //
 // 人脸活体验证
+//
+// Description:
+//
+// 调用FaceVerifyIntl接口对人脸图片进行活体检测。
 //
 // @param request - FaceVerifyIntlRequest
 //
@@ -3969,7 +4214,7 @@ func (client *Client) FaceVerifyIntlAdvance(request *FaceVerifyIntlAdvanceReques
 //
 // Summary:
 //
-// # Anti-Fraud Callback Interface
+// Calls the eKYC global anti-spoofing callback operation.
 //
 // @param request - FraudResultCallBackRequest
 //
@@ -4027,7 +4272,7 @@ func (client *Client) FraudResultCallBackWithOptions(request *FraudResultCallBac
 //
 // Summary:
 //
-// # Anti-Fraud Callback Interface
+// Calls the eKYC global anti-spoofing callback operation.
 //
 // @param request - FraudResultCallBackRequest
 //
@@ -4046,7 +4291,7 @@ func (client *Client) FraudResultCallBack(request *FraudResultCallBackRequest) (
 
 // Summary:
 //
-// This operation verifies the authenticity and consistency of a name, ID card number, and the start and end dates of the ID card\\"s validity period against an authoritative source.
+// Verifies the validity period of an identity document as a two-factor authentication element.
 //
 // @param request - Id2MetaPeriodVerifyIntlRequest
 //
@@ -4122,7 +4367,7 @@ func (client *Client) Id2MetaPeriodVerifyIntlWithOptions(request *Id2MetaPeriodV
 
 // Summary:
 //
-// This operation verifies the authenticity and consistency of a name, ID card number, and the start and end dates of the ID card\\"s validity period against an authoritative source.
+// Verifies the validity period of an identity document as a two-factor authentication element.
 //
 // @param request - Id2MetaPeriodVerifyIntlRequest
 //
@@ -4140,7 +4385,7 @@ func (client *Client) Id2MetaPeriodVerifyIntl(request *Id2MetaPeriodVerifyIntlRe
 
 // Summary:
 //
-// Verifies that a name and an ID card number are consistent.
+// Verifies the authenticity and consistency of a name and ID card number against an authoritative data source.
 //
 // @param request - Id2MetaVerifyIntlRequest
 //
@@ -4196,7 +4441,7 @@ func (client *Client) Id2MetaVerifyIntlWithOptions(request *Id2MetaVerifyIntlReq
 
 // Summary:
 //
-// Verifies that a name and an ID card number are consistent.
+// Verifies the authenticity and consistency of a name and ID card number against an authoritative data source.
 //
 // @param request - Id2MetaVerifyIntlRequest
 //
@@ -4214,7 +4459,7 @@ func (client *Client) Id2MetaVerifyIntl(request *Id2MetaVerifyIntlRequest) (_res
 
 // Summary:
 //
-// # Authentication Initialization
+// Initializes an authentication session.
 //
 // @param tmpReq - InitializeRequest
 //
@@ -4486,7 +4731,7 @@ func (client *Client) InitializeWithOptions(tmpReq *InitializeRequest, runtime *
 
 // Summary:
 //
-// # Authentication Initialization
+// Initializes an authentication session.
 //
 // @param request - InitializeRequest
 //
@@ -4504,7 +4749,446 @@ func (client *Client) Initialize(request *InitializeRequest) (_result *Initializ
 
 // Summary:
 //
-// If your server makes infrequent calls to the ID Verification API, you can call the KeepaliveIntl operation to maintain the client connection.
+// 认证初始化
+//
+// @param tmpReq - InitializeV2Request
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InitializeV2Response
+func (client *Client) InitializeV2WithOptions(tmpReq *InitializeV2Request, runtime *dara.RuntimeOptions) (_result *InitializeV2Response, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &InitializeV2ShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.DocPageConfig) {
+		request.DocPageConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DocPageConfig, dara.String("DocPageConfig"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppQualityCheck) {
+		query["AppQualityCheck"] = request.AppQualityCheck
+	}
+
+	if !dara.IsNil(request.Authorize) {
+		query["Authorize"] = request.Authorize
+	}
+
+	if !dara.IsNil(request.AutoRegistration) {
+		query["AutoRegistration"] = request.AutoRegistration
+	}
+
+	if !dara.IsNil(request.CallbackToken) {
+		query["CallbackToken"] = request.CallbackToken
+	}
+
+	if !dara.IsNil(request.CallbackUrl) {
+		query["CallbackUrl"] = request.CallbackUrl
+	}
+
+	if !dara.IsNil(request.ChameleonFrameEnable) {
+		query["ChameleonFrameEnable"] = request.ChameleonFrameEnable
+	}
+
+	if !dara.IsNil(request.Crop) {
+		query["Crop"] = request.Crop
+	}
+
+	if !dara.IsNil(request.DateOfBirth) {
+		query["DateOfBirth"] = request.DateOfBirth
+	}
+
+	if !dara.IsNil(request.DateOfExpiry) {
+		query["DateOfExpiry"] = request.DateOfExpiry
+	}
+
+	if !dara.IsNil(request.DocName) {
+		query["DocName"] = request.DocName
+	}
+
+	if !dara.IsNil(request.DocNo) {
+		query["DocNo"] = request.DocNo
+	}
+
+	if !dara.IsNil(request.DocPageConfigShrink) {
+		query["DocPageConfig"] = request.DocPageConfigShrink
+	}
+
+	if !dara.IsNil(request.DocScanMode) {
+		query["DocScanMode"] = request.DocScanMode
+	}
+
+	if !dara.IsNil(request.DocType) {
+		query["DocType"] = request.DocType
+	}
+
+	if !dara.IsNil(request.DocVideo) {
+		query["DocVideo"] = request.DocVideo
+	}
+
+	if !dara.IsNil(request.DocumentNumber) {
+		query["DocumentNumber"] = request.DocumentNumber
+	}
+
+	if !dara.IsNil(request.EditOcrResult) {
+		query["EditOcrResult"] = request.EditOcrResult
+	}
+
+	if !dara.IsNil(request.Email) {
+		query["Email"] = request.Email
+	}
+
+	if !dara.IsNil(request.ExperienceCode) {
+		query["ExperienceCode"] = request.ExperienceCode
+	}
+
+	if !dara.IsNil(request.FaceGroupCodes) {
+		query["FaceGroupCodes"] = request.FaceGroupCodes
+	}
+
+	if !dara.IsNil(request.FacePictureFile) {
+		query["FacePictureFile"] = request.FacePictureFile
+	}
+
+	if !dara.IsNil(request.FacePictureUrl) {
+		query["FacePictureUrl"] = request.FacePictureUrl
+	}
+
+	if !dara.IsNil(request.FaceRegisterGroupCode) {
+		query["FaceRegisterGroupCode"] = request.FaceRegisterGroupCode
+	}
+
+	if !dara.IsNil(request.FaceVerifyThreshold) {
+		query["FaceVerifyThreshold"] = request.FaceVerifyThreshold
+	}
+
+	if !dara.IsNil(request.IdFaceQuality) {
+		query["IdFaceQuality"] = request.IdFaceQuality
+	}
+
+	if !dara.IsNil(request.IdSpoof) {
+		query["IdSpoof"] = request.IdSpoof
+	}
+
+	if !dara.IsNil(request.IdThreshold) {
+		query["IdThreshold"] = request.IdThreshold
+	}
+
+	if !dara.IsNil(request.LanguageConfig) {
+		query["LanguageConfig"] = request.LanguageConfig
+	}
+
+	if !dara.IsNil(request.MRTDInput) {
+		query["MRTDInput"] = request.MRTDInput
+	}
+
+	if !dara.IsNil(request.MerchantBizId) {
+		query["MerchantBizId"] = request.MerchantBizId
+	}
+
+	if !dara.IsNil(request.MerchantUserId) {
+		query["MerchantUserId"] = request.MerchantUserId
+	}
+
+	if !dara.IsNil(request.MetaInfo) {
+		query["MetaInfo"] = request.MetaInfo
+	}
+
+	if !dara.IsNil(request.Mobile) {
+		query["Mobile"] = request.Mobile
+	}
+
+	if !dara.IsNil(request.Model) {
+		query["Model"] = request.Model
+	}
+
+	if !dara.IsNil(request.Ocr) {
+		query["Ocr"] = request.Ocr
+	}
+
+	if !dara.IsNil(request.OcrValueStandard) {
+		query["OcrValueStandard"] = request.OcrValueStandard
+	}
+
+	if !dara.IsNil(request.Pages) {
+		query["Pages"] = request.Pages
+	}
+
+	if !dara.IsNil(request.ProcedurePriority) {
+		query["ProcedurePriority"] = request.ProcedurePriority
+	}
+
+	if !dara.IsNil(request.ProductCode) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	if !dara.IsNil(request.ProductFlow) {
+		query["ProductFlow"] = request.ProductFlow
+	}
+
+	if !dara.IsNil(request.ReturnFaces) {
+		query["ReturnFaces"] = request.ReturnFaces
+	}
+
+	if !dara.IsNil(request.ReturnUrl) {
+		query["ReturnUrl"] = request.ReturnUrl
+	}
+
+	if !dara.IsNil(request.SaveFacePicture) {
+		query["SaveFacePicture"] = request.SaveFacePicture
+	}
+
+	if !dara.IsNil(request.SceneCode) {
+		query["SceneCode"] = request.SceneCode
+	}
+
+	if !dara.IsNil(request.SecurityLevel) {
+		query["SecurityLevel"] = request.SecurityLevel
+	}
+
+	if !dara.IsNil(request.ShowAlbumIcon) {
+		query["ShowAlbumIcon"] = request.ShowAlbumIcon
+	}
+
+	if !dara.IsNil(request.ShowGuidePage) {
+		query["ShowGuidePage"] = request.ShowGuidePage
+	}
+
+	if !dara.IsNil(request.ShowOcrResult) {
+		query["ShowOcrResult"] = request.ShowOcrResult
+	}
+
+	if !dara.IsNil(request.StyleConfig) {
+		query["StyleConfig"] = request.StyleConfig
+	}
+
+	if !dara.IsNil(request.TargetFacePictureFile) {
+		query["TargetFacePictureFile"] = request.TargetFacePictureFile
+	}
+
+	if !dara.IsNil(request.TargetFacePictureUrl) {
+		query["TargetFacePictureUrl"] = request.TargetFacePictureUrl
+	}
+
+	if !dara.IsNil(request.TemplateConfig) {
+		query["TemplateConfig"] = request.TemplateConfig
+	}
+
+	if !dara.IsNil(request.TemplateRanCount) {
+		query["TemplateRanCount"] = request.TemplateRanCount
+	}
+
+	if !dara.IsNil(request.TemplateType) {
+		query["TemplateType"] = request.TemplateType
+	}
+
+	if !dara.IsNil(request.UseNFC) {
+		query["UseNFC"] = request.UseNFC
+	}
+
+	if !dara.IsNil(request.VerifyModel) {
+		query["VerifyModel"] = request.VerifyModel
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.FacePictureBase64) {
+		body["FacePictureBase64"] = request.FacePictureBase64
+	}
+
+	if !dara.IsNil(request.TargetFacePicture) {
+		body["TargetFacePicture"] = request.TargetFacePicture
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("InitializeV2"),
+		Version:     dara.String("2022-08-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &InitializeV2Response{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 认证初始化
+//
+// @param request - InitializeV2Request
+//
+// @return InitializeV2Response
+func (client *Client) InitializeV2(request *InitializeV2Request) (_result *InitializeV2Response, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &InitializeV2Response{}
+	_body, _err := client.InitializeV2WithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) InitializeV2Advance(request *InitializeV2AdvanceRequest, runtime *dara.RuntimeOptions) (_result *InitializeV2Response, _err error) {
+	// Step 0: init client
+	if dara.IsNil(client.Credential) {
+		_err = &openapi.ClientError{
+			Code:    dara.String("InvalidCredentials"),
+			Message: dara.String("Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details."),
+		}
+		return _result, _err
+	}
+
+	credentialModel, _err := client.Credential.GetCredential()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeyId := dara.StringValue(credentialModel.AccessKeyId)
+	accessKeySecret := dara.StringValue(credentialModel.AccessKeySecret)
+	securityToken := dara.StringValue(credentialModel.SecurityToken)
+	credentialType := dara.StringValue(credentialModel.Type)
+	openPlatformEndpoint := dara.StringValue(client.OpenPlatformEndpoint)
+	if dara.IsNil(dara.String(openPlatformEndpoint)) || openPlatformEndpoint == "" {
+		openPlatformEndpoint = "openplatform.aliyuncs.com"
+	}
+
+	if dara.IsNil(dara.String(credentialType)) {
+		credentialType = "access_key"
+	}
+
+	authConfig := &openapiutil.Config{
+		AccessKeyId:     dara.String(accessKeyId),
+		AccessKeySecret: dara.String(accessKeySecret),
+		SecurityToken:   dara.String(securityToken),
+		Type:            dara.String(credentialType),
+		Endpoint:        dara.String(openPlatformEndpoint),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openapi.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := map[string]*string{
+		"Product":  dara.String("Cloudauth-intl"),
+		"RegionId": client.RegionId,
+	}
+	authReq := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(authRequest),
+	}
+	authParams := &openapiutil.Params{
+		Action:      dara.String("AuthorizeFileUpload"),
+		Version:     dara.String("2019-12-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	authResponse := map[string]interface{}{}
+	fileObj := &dara.FileField{}
+	ossHeader := map[string]interface{}{}
+	tmpBody := map[string]interface{}{}
+	useAccelerate := false
+	authResponseBody := make(map[string]*string)
+	initializeV2Req := &InitializeV2Request{}
+	openapiutil.Convert(request, initializeV2Req)
+	if !dara.IsNil(request.FacePictureFileObject) {
+		authResponse, _err = authClient.CallApi(authParams, authReq, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		tmpBody = dara.ToMap(authResponse["body"])
+		useAccelerate = dara.ForceBoolean(tmpBody["UseAccelerate"])
+		authResponseBody = openapiutil.StringifyMapValue(tmpBody)
+		fileObj = &dara.FileField{
+			Filename:    authResponseBody["ObjectKey"],
+			Content:     request.FacePictureFileObject,
+			ContentType: dara.String(""),
+		}
+		ossHeader = map[string]interface{}{
+			"host":                  dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
+			"OSSAccessKeyId":        dara.StringValue(authResponseBody["AccessKeyId"]),
+			"policy":                dara.StringValue(authResponseBody["EncodedPolicy"]),
+			"Signature":             dara.StringValue(authResponseBody["Signature"]),
+			"key":                   dara.StringValue(authResponseBody["ObjectKey"]),
+			"file":                  fileObj,
+			"success_action_status": "201",
+		}
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		initializeV2Req.FacePictureFile = dara.String("http://" + dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(authResponseBody["Endpoint"]) + "/" + dara.StringValue(authResponseBody["ObjectKey"]))
+	}
+
+	if !dara.IsNil(request.TargetFacePictureFileObject) {
+		authResponse, _err = authClient.CallApi(authParams, authReq, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		tmpBody = dara.ToMap(authResponse["body"])
+		useAccelerate = dara.ForceBoolean(tmpBody["UseAccelerate"])
+		authResponseBody = openapiutil.StringifyMapValue(tmpBody)
+		fileObj = &dara.FileField{
+			Filename:    authResponseBody["ObjectKey"],
+			Content:     request.TargetFacePictureFileObject,
+			ContentType: dara.String(""),
+		}
+		ossHeader = map[string]interface{}{
+			"host":                  dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
+			"OSSAccessKeyId":        dara.StringValue(authResponseBody["AccessKeyId"]),
+			"policy":                dara.StringValue(authResponseBody["EncodedPolicy"]),
+			"Signature":             dara.StringValue(authResponseBody["Signature"]),
+			"key":                   dara.StringValue(authResponseBody["ObjectKey"]),
+			"file":                  fileObj,
+			"success_action_status": "201",
+		}
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		initializeV2Req.TargetFacePictureFile = dara.String("http://" + dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(authResponseBody["Endpoint"]) + "/" + dara.StringValue(authResponseBody["ObjectKey"]))
+	}
+
+	initializeV2Resp, _err := client.InitializeV2WithOptions(initializeV2Req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = initializeV2Resp
+	return _result, _err
+}
+
+// Summary:
+//
+// Configures client connection keep-alive settings.
+//
+// Description:
+//
+// Configures client connection keep-alive settings.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -4533,7 +5217,11 @@ func (client *Client) KeepaliveIntlWithOptions(runtime *dara.RuntimeOptions) (_r
 
 // Summary:
 //
-// If your server makes infrequent calls to the ID Verification API, you can call the KeepaliveIntl operation to maintain the client connection.
+// Configures client connection keep-alive settings.
+//
+// Description:
+//
+// Configures client connection keep-alive settings.
 //
 // @return KeepaliveIntlResponse
 func (client *Client) KeepaliveIntl() (_result *KeepaliveIntlResponse, _err error) {
@@ -4549,7 +5237,11 @@ func (client *Client) KeepaliveIntl() (_result *KeepaliveIntlResponse, _err erro
 
 // Summary:
 //
-// Verifies the authenticity and consistency of a mobile number and name against an authoritative data source.
+// Verifies the identity of a phone number owner by using two-factor authentication.
+//
+// Description:
+//
+// Pass in a phone number and name to verify their authenticity and consistency through an authoritative data source. Before using this operation, make sure that you fully understand the billing method and pricing of the two-factor phone number verification service.
 //
 // @param request - Mobile2MetaVerifyIntlRequest
 //
@@ -4605,7 +5297,11 @@ func (client *Client) Mobile2MetaVerifyIntlWithOptions(request *Mobile2MetaVerif
 
 // Summary:
 //
-// Verifies the authenticity and consistency of a mobile number and name against an authoritative data source.
+// Verifies the identity of a phone number owner by using two-factor authentication.
+//
+// Description:
+//
+// Pass in a phone number and name to verify their authenticity and consistency through an authoritative data source. Before using this operation, make sure that you fully understand the billing method and pricing of the two-factor phone number verification service.
 //
 // @param request - Mobile2MetaVerifyIntlRequest
 //
@@ -4623,7 +5319,7 @@ func (client *Client) Mobile2MetaVerifyIntl(request *Mobile2MetaVerifyIntlReques
 
 // Summary:
 //
-// # International Version of Mobile Three Elements API
+// Verifies the authenticity and consistency of a phone number, name, and ID card number against an authoritative data source. If the information is inconsistent, returns the reason for the inconsistency.
 //
 // @param request - Mobile3MetaVerifyIntlRequest
 //
@@ -4683,7 +5379,7 @@ func (client *Client) Mobile3MetaVerifyIntlWithOptions(request *Mobile3MetaVerif
 
 // Summary:
 //
-// # International Version of Mobile Three Elements API
+// Verifies the authenticity and consistency of a phone number, name, and ID card number against an authoritative data source. If the information is inconsistent, returns the reason for the inconsistency.
 //
 // @param request - Mobile3MetaVerifyIntlRequest
 //
@@ -4701,7 +5397,7 @@ func (client *Client) Mobile3MetaVerifyIntl(request *Mobile3MetaVerifyIntlReques
 
 // Summary:
 //
-// # Modify Face Group
+// Modifies a face library.
 //
 // @param request - ModifyFaceGroupRequest
 //
@@ -4753,7 +5449,7 @@ func (client *Client) ModifyFaceGroupWithOptions(request *ModifyFaceGroupRequest
 
 // Summary:
 //
-// # Modify Face Group
+// Modifies a face library.
 //
 // @param request - ModifyFaceGroupRequest
 //
@@ -4771,7 +5467,7 @@ func (client *Client) ModifyFaceGroup(request *ModifyFaceGroupRequest) (_result 
 
 // Summary:
 //
-// # Add New Face
+// Edits a face record.
 //
 // @param request - ModifyFaceRecordRequest
 //
@@ -4819,7 +5515,7 @@ func (client *Client) ModifyFaceRecordWithOptions(request *ModifyFaceRecordReque
 
 // Summary:
 //
-// # Add New Face
+// Edits a face record.
 //
 // @param request - ModifyFaceRecordRequest
 //
@@ -4837,7 +5533,7 @@ func (client *Client) ModifyFaceRecord(request *ModifyFaceRecordRequest) (_resul
 
 // Summary:
 //
-// # Query Face Group
+// Queries face libraries.
 //
 // @param request - QueryFaceGroupRequest
 //
@@ -4901,7 +5597,7 @@ func (client *Client) QueryFaceGroupWithOptions(request *QueryFaceGroupRequest, 
 
 // Summary:
 //
-// # Query Face Group
+// Queries face libraries.
 //
 // @param request - QueryFaceGroupRequest
 //
@@ -4919,7 +5615,7 @@ func (client *Client) QueryFaceGroup(request *QueryFaceGroupRequest) (_result *Q
 
 // Summary:
 //
-// # Query Face Records
+// Queries face records.
 //
 // @param request - QueryFaceRecordRequest
 //
@@ -4991,7 +5687,7 @@ func (client *Client) QueryFaceRecordWithOptions(request *QueryFaceRecordRequest
 
 // Summary:
 //
-// # Query Face Records
+// Queries face records.
 //
 // @param request - QueryFaceRecordRequest
 //
@@ -5009,7 +5705,7 @@ func (client *Client) QueryFaceRecord(request *QueryFaceRecordRequest) (_result 
 
 // Summary:
 //
-// # Get Temporary Token
+// Retrieves a temporary token.
 //
 // @param request - TempAccessTokenIntlRequest
 //
@@ -5053,7 +5749,7 @@ func (client *Client) TempAccessTokenIntlWithOptions(request *TempAccessTokenInt
 
 // Summary:
 //
-// # Get Temporary Token
+// Retrieves a temporary token.
 //
 // @param request - TempAccessTokenIntlRequest
 //
@@ -5071,7 +5767,7 @@ func (client *Client) TempAccessTokenIntl(request *TempAccessTokenIntlRequest) (
 
 // Summary:
 //
-// # Get Temporary File URL
+// Retrieves a temporary URL for a file.
 //
 // @param request - TempOssUrlIntlRequest
 //
@@ -5115,7 +5811,7 @@ func (client *Client) TempOssUrlIntlWithOptions(request *TempOssUrlIntlRequest, 
 
 // Summary:
 //
-// # Get Temporary File URL
+// Retrieves a temporary URL for a file.
 //
 // @param request - TempOssUrlIntlRequest
 //

@@ -32,27 +32,40 @@ type iQueryFaceGroupResponseBody interface {
 }
 
 type QueryFaceGroupResponseBody struct {
+	// The return code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
-	CurrentPage *int64                             `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Items       []*QueryFaceGroupResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The list of returned entries.
+	Items []*QueryFaceGroupResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The number of entries per page in a paged query.
+	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The return message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The token for the next query.
+	//
 	// example:
 	//
 	// N/zmQeG/x9TDWmaB/pbfBQ==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 100
@@ -63,10 +76,14 @@ type QueryFaceGroupResponseBody struct {
 	//
 	// 5E63B760-0ECB-5C07-8503-A65C27876968
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 0
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The total number of pages.
+	//
 	// example:
 	//
 	// 1
@@ -185,18 +202,26 @@ func (s *QueryFaceGroupResponseBody) Validate() error {
 }
 
 type QueryFaceGroupResponseBodyItems struct {
+	// The code of the face library.
+	//
 	// example:
 	//
 	// faceGroup001
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The description.
+	//
 	// example:
 	//
 	// desc
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The primary key ID.
+	//
 	// example:
 	//
 	// 162261
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the face library.
+	//
 	// example:
 	//
 	// test-888

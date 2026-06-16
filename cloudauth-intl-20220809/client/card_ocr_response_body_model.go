@@ -20,25 +20,25 @@ type iCardOcrResponseBody interface {
 }
 
 type CardOcrResponseBody struct {
-	// Return code
+	// The response code.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Return message
+	// The response message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// ID of the request
+	// Id of the request
 	//
 	// example:
 	//
 	// 4EB356FE-BB6A-5DCC-B4C5-E8051787EBA1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Return result
+	// The returned result.
 	Result *CardOcrResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -96,7 +96,7 @@ func (s *CardOcrResponseBody) Validate() error {
 }
 
 type CardOcrResponseBodyResult struct {
-	// Document recognition result
+	// The ID card and certificate recognition result.
 	//
 	// example:
 	//
@@ -140,13 +140,13 @@ type CardOcrResponseBodyResult struct {
 	//
 	// }
 	ExtCardInfo *string `json:"ExtCardInfo,omitempty" xml:"ExtCardInfo,omitempty"`
-	// Additional result information
+	// The additional result information.
 	//
 	// example:
 	//
 	// **
 	ExtIdInfo *string `json:"ExtIdInfo,omitempty" xml:"ExtIdInfo,omitempty"`
-	// Whether the authentication passed.
+	// Indicates whether the authentication is passed. Valid values:
 	//
 	// - Y: Passed.
 	//
@@ -156,13 +156,13 @@ type CardOcrResponseBodyResult struct {
 	//
 	// Y
 	Passed *string `json:"Passed,omitempty" xml:"Passed,omitempty"`
-	// Sub-result code.
+	// The sub-result code.
 	//
 	// example:
 	//
 	// 200
 	SubCode *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
-	// Unique identifier for the authentication request
+	// The unique ID of the authentication request.
 	//
 	// example:
 	//

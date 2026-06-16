@@ -14,7 +14,7 @@ type iTempOssUrlIntlRequest interface {
 }
 
 type TempOssUrlIntlRequest struct {
-	// Object name.
+	// The object name.
 	//
 	// This parameter is required.
 	//

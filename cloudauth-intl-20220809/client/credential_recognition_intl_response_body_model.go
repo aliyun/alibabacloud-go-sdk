@@ -20,25 +20,25 @@ type iCredentialRecognitionIntlResponseBody interface {
 }
 
 type CredentialRecognitionIntlResponseBody struct {
-	// Return code.
+	// The return code.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Response message for the returned information.
+	// The response message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 4EB35****87EBA1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Returned result.
+	// The returned result.
 	Result *CredentialRecognitionIntlResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -96,7 +96,7 @@ func (s *CredentialRecognitionIntlResponseBody) Validate() error {
 }
 
 type CredentialRecognitionIntlResponseBodyResult struct {
-	// Identified key information in JSON format.
+	// The key information extracted from the credential, in JSON format.
 	//
 	// example:
 	//
@@ -108,17 +108,17 @@ type CredentialRecognitionIntlResponseBodyResult struct {
 	//
 	// }
 	ExtIdInfo *string `json:"ExtIdInfo,omitempty" xml:"ExtIdInfo,omitempty"`
-	// Authentication result description
+	// The description of the authentication result.
 	//
 	// example:
 	//
 	// 200
 	SubCode *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
-	// Extraction result. Values:
+	// The extraction result. Valid values:
 	//
-	// - S: Success.
+	// - S: Succeeded.
 	//
-	// - F: Failure.
+	// - F: Failed.
 	//
 	// example:
 	//

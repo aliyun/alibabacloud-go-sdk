@@ -34,79 +34,93 @@ type iDocOcrRequest interface {
 }
 
 type DocOcrRequest struct {
-	// CardSide
+	// Specifies the side of the certificate to distinguish between the national emblem side and the portrait side. If this parameter is not specified, the portrait side is used by default. Valid values:
+	//
+	// - OCR_ID_FACE (default): portrait side
+	//
+	// - OCR_ID_NATIONAL_EMBLEM: national emblem side.
 	//
 	// example:
 	//
-	// 0
+	// OCR_ID_FACE
 	CardSide *string `json:"CardSide,omitempty" xml:"CardSide,omitempty"`
-	// Document type
+	// The certificate type.
 	//
 	// example:
 	//
 	// 00000006
 	DocType *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
-	// Whether to perform ID face quality detection
+	// Specifies whether to perform certificate face quality detection. Valid values:
 	//
-	// - T: Indicates that detection is required
+	// - T: Detection is required.
 	//
-	// - F: Indicates that detection is not required (default F)
+	// - F: Detection is not required. (Default value: F).
 	//
 	// example:
 	//
 	// F
 	IdFaceQuality *string `json:"IdFaceQuality,omitempty" xml:"IdFaceQuality,omitempty"`
-	// Base64 of the front side of the document image
+	// The Base64-encoded card or certificate image.
+	//
+	// If you use IdOcrPictureBase64 (Base64-encoded photo) to submit the certificate photo, check the photo size and do not submit an excessively large photo.
 	//
 	// example:
 	//
 	// base64
 	IdOcrPictureBase64 *string `json:"IdOcrPictureBase64,omitempty" xml:"IdOcrPictureBase64,omitempty"`
-	// URL of the front side of the document image
+	// The URL of the front side of the certificate image.
 	//
 	// example:
 	//
 	// https://digital-cardocr-prod8.oss-cn-hangzhou.aliyuncs.com/1669520556530-expo/default/face/20221127114236530_w3kx2e6t.jpg
 	IdOcrPictureUrl *string `json:"IdOcrPictureUrl,omitempty" xml:"IdOcrPictureUrl,omitempty"`
-	// IdThreshold
+	// The custom OCR quality detection threshold mode. Valid values:
+	//
+	// - 0: system default
+	//
+	// - 1: strict mode
+	//
+	// - 2: loose mode
+	//
+	// - 3 (default): quality detection disabled.
 	//
 	// example:
 	//
 	// 0
 	IdThreshold *string `json:"IdThreshold,omitempty" xml:"IdThreshold,omitempty"`
-	// A unique business identifier defined by the merchant, used for subsequent troubleshooting. It supports a combination of letters and numbers, with a maximum length of 32 characters. Please ensure uniqueness.
+	// The custom business unique identifier on the merchant side, used for subsequent issue tracking and troubleshooting. The value can be a combination of letters and digits with a maximum length of 32 characters. Ensure that the value is unique.
 	//
 	// example:
 	//
 	// dso9322***dsjsd22
 	MerchantBizId *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
-	// A custom user ID in the business, please keep it unique.
+	// The custom user ID in the business. Ensure that the value is unique.
 	//
 	// example:
 	//
 	// 123456789
 	MerchantUserId *string `json:"MerchantUserId,omitempty" xml:"MerchantUserId,omitempty"`
-	// Whether to perform document OCR
+	// Specifies whether to perform certificate OCR. Valid values:
 	//
-	// - T: Indicates that document OCR is required
+	// - T: OCR is required.
 	//
-	// - F: Indicates that document OCR is not required
+	// - F: OCR is not required.
 	//
 	// example:
 	//
 	// T
 	Ocr *string `json:"Ocr,omitempty" xml:"Ocr,omitempty"`
-	// Product code
+	// The product code.
 	//
 	// example:
 	//
 	// 产品方案类型ID_OCR_MIN
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// Whether to enable anti-counterfeiting detection
+	// Specifies whether to enable anti-spoofing detection. Valid values:
 	//
-	// - T: Indicates that anti-counterfeiting is enabled
+	// - T: Anti-spoofing is enabled.
 	//
-	// - F: Indicates that anti-counterfeiting is disabled
+	// - F: Anti-spoofing is disabled.
 	//
 	// example:
 	//

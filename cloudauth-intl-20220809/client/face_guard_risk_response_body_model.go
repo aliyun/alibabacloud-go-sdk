@@ -20,13 +20,13 @@ type iFaceGuardRiskResponseBody interface {
 }
 
 type FaceGuardRiskResponseBody struct {
-	// The return code. A value of Success indicates that the API operation responded successfully. For more information about how to determine the authentication result, expand the **Return codes*	- section below.
+	// The return code.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// A detailed description of the return code.
+	// The return message.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type FaceGuardRiskResponseBody struct {
 	//
 	// 595E387B-3F0E-5C52-BD02-8EFE63D41FD5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Result object
+	// The returned result.
 	Result *FaceGuardRiskResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -96,47 +96,31 @@ func (s *FaceGuardRiskResponseBody) Validate() error {
 }
 
 type FaceGuardRiskResponseBodyResult struct {
-	// The device risk probability predicted by the Device Guard algorithm. A higher score indicates a higher device risk.
+	// The device risk probability predicted by the Face Guard algorithm. A higher score indicates a higher device risk.
 	//
-	// Valid values: 0 to 100.
+	// Value range: 0 to 100.
 	//
 	// example:
 	//
 	// 0
 	GuardRiskScore *float64 `json:"GuardRiskScore,omitempty" xml:"GuardRiskScore,omitempty"`
-	// Extended information. This is empty by default.
+	// The extended information in JSON format. The response is customized based on tenant requirements.
 	//
 	// example:
 	//
-	// {
-	//
-	//   "code": 200
-	//
-	//   "message":"success"
-	//
-	//   "umid":"07d3295d3d597b425d102a7f********",
-	//
-	//   "sip":"198.51.100.1",
-	//
-	//   "durationMs" : 4968931
-	//
-	//   "queryCount":1,
-	//
-	//   "querySessionCount":1,
-	//
-	//   "queryUmidCount":1
-	//
-	//   "platform":"Android
-	//
-	// }
+	// 默认为空
 	RiskExtends *string `json:"RiskExtends,omitempty" xml:"RiskExtends,omitempty"`
-	// The device risk tags. Multiple risk tags are separated by commas (**,**). For more information about the risk tags and their meanings, expand the **Risk tags (RiskTags)*	- section below.
+	// The device risk tags.
+	//
+	// - Multiple device risk tags are separated by commas (,), such as "ROOT,VPN,HOOK".
+	//
+	// - For more information about device risk tags and their meanings, refer to the Face Guard tag description in the official documentation.
 	//
 	// example:
 	//
 	// ROOT,VPN,HOOK
 	RiskTags *string `json:"RiskTags,omitempty" xml:"RiskTags,omitempty"`
-	// The transaction ID.
+	// The unique identifier of the authentication request.
 	//
 	// example:
 	//

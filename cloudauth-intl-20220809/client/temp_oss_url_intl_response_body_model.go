@@ -20,21 +20,21 @@ type iTempOssUrlIntlResponseBody interface {
 }
 
 type TempOssUrlIntlResponseBody struct {
-	// Return code.
+	// The return code.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Result.
+	// The result.
 	Data *TempOssUrlIntlResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Return message.
+	// The response message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// ID of the request
+	// Id of the request
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ func (s *TempOssUrlIntlResponseBody) Validate() error {
 }
 
 type TempOssUrlIntlResponseBodyData struct {
-	// File URL
+	// The file URL.
 	//
 	// example:
 	//

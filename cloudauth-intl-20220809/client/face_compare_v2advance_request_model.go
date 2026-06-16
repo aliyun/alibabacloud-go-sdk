@@ -31,38 +31,70 @@ type iFaceCompareV2AdvanceRequest interface {
 }
 
 type FaceCompareV2AdvanceRequest struct {
+	// Specifies whether to enable quality check for the input face images.
+	//
+	// 	Danger: Deprecated.
+	//
 	// example:
 	//
 	// N
 	FacePictureQualityCheck *string `json:"FacePictureQualityCheck,omitempty" xml:"FacePictureQualityCheck,omitempty"`
+	// Specifies whether to enable face quality check.
+	//
 	// example:
 	//
 	// Y
 	FaceQualityCheck *string `json:"FaceQualityCheck,omitempty" xml:"FaceQualityCheck,omitempty"`
+	// The merchant-defined unique business ID used for subsequent troubleshooting. The value can be a combination of letters and numbers with a maximum length of 32 characters. Ensure that the value is unique.
+	//
 	// example:
 	//
 	// e0c34a77f5ac40a5aa5e6ed20c353888
 	MerchantBizId *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
+	// The Base64-encoded source face image.
+	//
+	// > **Note**
+	//
+	// - If you use this method to pass in the image, check the image size and do not pass in an excessively large image.
+	//
+	// - Specify one of the following parameters: SourceFacePicture, SourceFacePictureUrl, or SourceFacePictureFile.
+	//
 	// example:
 	//
 	// base64
 	SourceFacePicture *string `json:"SourceFacePicture,omitempty" xml:"SourceFacePicture,omitempty"`
+	// The file stream of the source face image.
+	//
 	// example:
 	//
 	// InputStream
 	SourceFacePictureFileObject io.Reader `json:"SourceFacePictureFile,omitempty" xml:"SourceFacePictureFile,omitempty"`
+	// The HTTPS or HTTP URL of the source face image.
+	//
 	// example:
 	//
 	// https://***face1.jpeg
 	SourceFacePictureUrl *string `json:"SourceFacePictureUrl,omitempty" xml:"SourceFacePictureUrl,omitempty"`
+	// The Base64-encoded reference face image.
+	//
+	// > **Note**
+	//
+	// - If you use this method to pass in the image, check the image size and do not pass in an excessively large image.
+	//
+	// - Specify one of the following parameters: TargetFacePicture, TargetFacePictureUrl, or TargetFacePictureFile.
+	//
 	// example:
 	//
 	// base64
 	TargetFacePicture *string `json:"TargetFacePicture,omitempty" xml:"TargetFacePicture,omitempty"`
+	// The file stream of the reference face image.
+	//
 	// example:
 	//
 	// InputStream
 	TargetFacePictureFileObject io.Reader `json:"TargetFacePictureFile,omitempty" xml:"TargetFacePictureFile,omitempty"`
+	// The HTTPS or HTTP URL of the reference face image.
+	//
 	// example:
 	//
 	// https://***face2.jpeg

@@ -20,25 +20,25 @@ type iAddressCompareIntlResponseBody interface {
 }
 
 type AddressCompareIntlResponseBody struct {
-	// Return code.
+	// The return code.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Return message.
+	// The return message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 86C40EC3-5940-5F47-995C-BFE90B70E540
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Return result.
+	// The returned result.
 	Result *AddressCompareIntlResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -96,25 +96,25 @@ func (s *AddressCompareIntlResponseBody) Validate() error {
 }
 
 type AddressCompareIntlResponseBodyResult struct {
-	// The values of sameLevel include:
+	// The sameLevel parameter has the following valid values:
 	//
-	// - all: Exactly the same
+	// - all: completely identical
 	//
-	// - prov: Provincial level
+	// - prov: province level
 	//
-	// - city: City level
+	// - city: city level
 	//
-	// - district: District level
+	// - district: district level
 	//
-	// - town: Town level
+	// - town: street level
 	//
-	// - road: Road level
+	// - road: road level
 	//
-	// - roadno: Road number
+	// - roadno: road number level
 	//
-	// - poi: Point of interest (e.g., residential area)
+	// - poi: community/neighborhood level
 	//
-	// - roomno: Room number
+	// - roomno: room number level.
 	//
 	// example:
 	//

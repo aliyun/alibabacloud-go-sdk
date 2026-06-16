@@ -36,47 +36,100 @@ type iDocOcrV2Request interface {
 }
 
 type DocOcrV2Request struct {
+	// Specifies the side of the certificate. If this parameter is not specified, the portrait side is used by default.
+	//
+	// - OCR_ID_FACE (default): the portrait side
+	//
+	// - OCR_ID_NATIONAL_EMBLEM: the national emblem side.
+	//
 	// example:
 	//
 	// OCR_ID_FACE
 	CardSide *string `json:"CardSide,omitempty" xml:"CardSide,omitempty"`
+	// The certificate type.
+	//
 	// example:
 	//
 	// 00000006
 	DocType *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
+	// Specifies whether to perform face quality detection on the certificate.
+	//
+	// - T: Detection is required.
+	//
+	// - F: Detection is not required. (Default: F).
+	//
 	// example:
 	//
 	// F
 	IdFaceQuality *string `json:"IdFaceQuality,omitempty" xml:"IdFaceQuality,omitempty"`
+	// The Base64-encoded card or certificate image.
+	//
+	// If you use IdOcrPictureBase64 to pass in the certificate image, check the image size and do not pass in an excessively large image.
+	//
 	// example:
 	//
 	// base64
 	IdOcrPictureBase64 *string `json:"IdOcrPictureBase64,omitempty" xml:"IdOcrPictureBase64,omitempty"`
+	// The file stream of the front side of the certificate image.
+	//
 	// example:
 	//
 	// InputStream
 	IdOcrPictureFile *string `json:"IdOcrPictureFile,omitempty" xml:"IdOcrPictureFile,omitempty"`
+	// The URL of the front side of the certificate image.
+	//
 	// example:
 	//
 	// https://digital-cardocr-prod8.oss-cn-hangzhou.aliyuncs.com/1669520556530-expo/default/face/20221127114236530_w3kx2e6t.jpg
 	IdOcrPictureUrl *string `json:"IdOcrPictureUrl,omitempty" xml:"IdOcrPictureUrl,omitempty"`
+	// The custom OCR quality detection threshold mode. Valid values:
+	//
+	// - 0: system default
+	//
+	// - 1: strict mode
+	//
+	// - 2: loose mode
+	//
+	// - 3 (default): quality detection is disabled.
+	//
 	// example:
 	//
 	// 0
 	IdThreshold *string `json:"IdThreshold,omitempty" xml:"IdThreshold,omitempty"`
+	// The merchant-defined unique business ID used for subsequent troubleshooting. The value can contain letters and digits with a maximum length of 32 characters. Ensure that the value is unique.
+	//
 	// example:
 	//
 	// dso9322***dsjsd22
 	MerchantBizId *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
+	// The custom user ID defined in your business. Ensure that the value is unique.
+	//
 	// example:
 	//
 	// 123456789
 	MerchantUserId *string `json:"MerchantUserId,omitempty" xml:"MerchantUserId,omitempty"`
+	// Specifies whether to perform certificate OCR.
+	//
+	// - T: OCR is required.
+	//
+	// - F: OCR is not required.
+	//
 	// example:
 	//
 	// T
-	Ocr         *string `json:"Ocr,omitempty" xml:"Ocr,omitempty"`
+	Ocr *string `json:"Ocr,omitempty" xml:"Ocr,omitempty"`
+	// The product code.
+	//
+	// example:
+	//
+	// 产品方案类型ID_OCR_MIN
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// Specifies whether to enable anti-spoofing detection.
+	//
+	// - T: Anti-spoofing is enabled.
+	//
+	// - F: Anti-spoofing is disabled.
+	//
 	// example:
 	//
 	// F

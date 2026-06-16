@@ -28,8 +28,6 @@ type FaceLivenessV2ResponseBody struct {
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
-	//
 	// example:
 	//
 	// 5E63B760-0ECB-5C07-8503-A65C27876968

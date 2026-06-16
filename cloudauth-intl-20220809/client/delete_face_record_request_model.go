@@ -14,7 +14,7 @@ type iDeleteFaceRecordRequest interface {
 }
 
 type DeleteFaceRecordRequest struct {
-	// Primary Key ID
+	// The primary key ID.
 	//
 	// example:
 	//

@@ -20,25 +20,25 @@ type iCheckVerifyLogResponseBody interface {
 }
 
 type CheckVerifyLogResponseBody struct {
-	// Backend error code.
+	// The backend error code.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Return message
+	// The response message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// ID of the request
+	// Id of the request
 	//
 	// example:
 	//
 	// 4EB35****87EBA1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Return result.
+	// The returned result.
 	Result *CheckVerifyLogResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -96,13 +96,13 @@ func (s *CheckVerifyLogResponseBody) Validate() error {
 }
 
 type CheckVerifyLogResponseBodyResult struct {
-	// Extended information
+	// The extended information.
 	//
 	// example:
 	//
 	// {}
 	ExtInfo *string `json:"ExtInfo,omitempty" xml:"ExtInfo,omitempty"`
-	// Records the last page where the authentication was interrupted.
+	// The last page where the authentication was interrupted. Valid values:
 	//
 	// - Page not started
 	//
@@ -124,19 +124,17 @@ type CheckVerifyLogResponseBodyResult struct {
 	//
 	// - Liveness detection page
 	//
-	// - Liveness detection fallback page
+	// - Liveness detection downgrade page
 	//
 	// - Liveness detection retry
 	//
-	// - Liveness detection loading
+	// - Liveness detection loading.
 	//
 	// example:
 	//
 	// OCR拍摄证件页面
 	InterruptPage *string `json:"InterruptPage,omitempty" xml:"InterruptPage,omitempty"`
-	// The page where the authentication process stops. Possible English values:
-	//
-	// The following are the values in an unordered list:
+	// The last page where the authentication was interrupted, in English. Valid values:
 	//
 	// - LOADING
 	//
@@ -150,17 +148,17 @@ type CheckVerifyLogResponseBodyResult struct {
 	//
 	// - NFC_INPUT
 	//
-	// - NFC_READ
+	// - NFC_READ.
 	//
 	// example:
 	//
 	// LOADING
 	InterruptPageEn *string `json:"InterruptPageEn,omitempty" xml:"InterruptPageEn,omitempty"`
-	// SDK operation log details
+	// The SDK runtime log details.
 	LogInfo []*string `json:"LogInfo,omitempty" xml:"LogInfo,omitempty" type:"Repeated"`
-	// SDK Operation Log Details (English Version)
+	// The SDK runtime trace log details in English. The format of this field is the same as **LogInfo**.
 	LogInfoEn []*string `json:"LogInfoEn,omitempty" xml:"LogInfoEn,omitempty" type:"Repeated"`
-	// SDK operation log statistics details
+	// The SDK runtime log statistics details.
 	//
 	// example:
 	//
@@ -200,7 +198,7 @@ type CheckVerifyLogResponseBodyResult struct {
 	//
 	//         }
 	LogStatisticsInfo *string `json:"LogStatisticsInfo,omitempty" xml:"LogStatisticsInfo,omitempty"`
-	// Whether the authentication passed.
+	// Indicates whether the authentication is passed. Valid values:
 	//
 	// - Y: Passed.
 	//
@@ -210,57 +208,57 @@ type CheckVerifyLogResponseBodyResult struct {
 	//
 	// Y
 	Passed *string `json:"Passed,omitempty" xml:"Passed,omitempty"`
-	// Sub-result code
+	// The sub-result code.
 	//
 	// example:
 	//
 	// 200
 	SubCode *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
-	// Authentication interruption error codes
+	// The error code for authentication interruption. Valid values:
 	//
-	// - 1000: The user completed the face scanning process, and the suggested authentication result is pass
+	// - 1000: The user completed the face verification process, and the authentication result is passed.
 	//
-	// - 1001: The user completed the face scanning process, and the suggested authentication result is fail
+	// - 1001: The user completed the face verification process, and the authentication result is not passed.
 	//
-	// - 1002: System error
+	// - 1002: System error.
 	//
-	// - 1003: SDK initialization failed, please check if the client time is correct
+	// - 1003: SDK initialization failed. Check whether the client time is correct.
 	//
-	// - 1004: Camera permission error
+	// - 1004: Camera permission error.
 	//
-	// - 1005: Network error
+	// - 1005: Network error.
 	//
-	// - 1006: User exited
+	// - 1006: The user exited.
 	//
-	// - 1007: Invalid TransactionId
+	// - 1007: Invalid TransactionId.
 	//
-	// - 1009: Client timestamp error
+	// - 1009: Client timestamp error.
 	//
-	// - 1011: Incorrect document type submitted
+	// - 1011: Incorrect document type submitted.
 	//
-	// - 1012: Missing or format validation failure of key information on the recognized document
+	// - 1012: Key information of the recognized document is missing or format validation failed.
 	//
-	// - 1013: Poor image quality
+	// - 1013: Poor image quality.
 	//
-	// - 1014: Exceeded the upper limit of errors
+	// - 1014: The number of errors exceeded the upper limit.
 	//
-	// - 1015: Android system version too low
+	// - 1015: The Android system version is too low.
 	//
-	// - 1016: Camera permission not obtained
+	// - 1016: Camera permission not obtained.
 	//
-	// - 9999: Suspected authentication process interruption
+	// - 9999: The authentication process is suspected to be interrupted.
 	//
 	// example:
 	//
 	// 1001
 	VerifyErrorCode *string `json:"VerifyErrorCode,omitempty" xml:"VerifyErrorCode,omitempty"`
-	// Authentication status, values:
+	// The authentication status. Valid values:
 	//
-	// - 0: finished (authentication completed)
+	// - 0: finished. The authentication is complete.
 	//
-	// - 1: unfinished (authentication interrupted)
+	// - 1: unfinished. The authentication is interrupted.
 	//
-	// - 2: notstart (authentication not started)
+	// - 2: notstart. The authentication has not started.
 	//
 	// example:
 	//

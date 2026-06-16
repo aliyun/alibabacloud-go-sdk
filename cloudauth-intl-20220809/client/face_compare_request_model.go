@@ -26,51 +26,55 @@ type iFaceCompareRequest interface {
 }
 
 type FaceCompareRequest struct {
-	// 是否开启传入人脸图片质量检测
+	// Specifies whether to enable face image quality check.<danger>Deprecated.</danger>.
 	//
 	// example:
 	//
 	// N
 	FacePictureQualityCheck *string `json:"FacePictureQualityCheck,omitempty" xml:"FacePictureQualityCheck,omitempty"`
+	// The face quality check.
+	//
 	// example:
 	//
 	// Y
 	FaceQualityCheck *string `json:"FaceQualityCheck,omitempty" xml:"FaceQualityCheck,omitempty"`
-	// A custom unique business ID used for troubleshooting. It can be a combination of up to 32 letters and digits. Make sure that the ID is unique.
+	// The merchant-defined unique business ID used for subsequent troubleshooting. The value can be a combination of letters and digits with a maximum length of 32 characters. Ensure that the value is unique.
 	//
 	// example:
 	//
 	// e0c34a77f5ac40a5aa5e6ed20c353888
 	MerchantBizId *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
-	// The Base64 encoding of the portrait photo.
+	// The Base64-encoded source face image.
 	//
-	// > If you use this method to pass the image, check the image size. Do not pass an oversized image.
+	// > **Note**
+	//
+	// > - If you use this method to pass in the image, check the image size and do not pass in an excessively large image.
+	//
+	// > - Specify either SourceFacePicture or SourceFacePictureUrl.
 	//
 	// example:
 	//
-	// /9j/4AAQSkZJRgABAQAASxxxxxxx
+	// base64
 	SourceFacePicture *string `json:"SourceFacePicture,omitempty" xml:"SourceFacePicture,omitempty"`
-	// The URL of the portrait photo. The URL must be an HTTP or HTTPS link accessible over the Internet.
-	//
-	// > You must specify either SourceFacePicture or SourceFacePictureUrl.
+	// The HTTPS or HTTP URL of the source face image.
 	//
 	// example:
 	//
 	// https://***face1.jpeg
 	SourceFacePictureUrl *string `json:"SourceFacePictureUrl,omitempty" xml:"SourceFacePictureUrl,omitempty"`
-	// The Base64 encoding of the base photo.
+	// The Base64-encoded reference face image.
 	//
-	// > If you use this method to pass the image, check the image size. Do not pass an oversized image.
+	// > **Note**
+	//
+	// > - If you use this method to pass in the image, check the image size and do not pass in an excessively large image.
+	//
+	// > - Specify either TargetFacePicture or TargetFacePictureUrl.
 	//
 	// example:
 	//
-	// /9j/4AAQSkZJRgABAQAASxxxxxxx
+	// base64
 	TargetFacePicture *string `json:"TargetFacePicture,omitempty" xml:"TargetFacePicture,omitempty"`
-	// The URL of the base portrait photo. The URL must be an HTTP or HTTPS link accessible over the Internet.
-	//
-	//
-	//
-	// > You must specify either TargetFacePicture or TargetFacePictureUrl.
+	// The HTTPS or HTTP URL of the reference face image.
 	//
 	// example:
 	//

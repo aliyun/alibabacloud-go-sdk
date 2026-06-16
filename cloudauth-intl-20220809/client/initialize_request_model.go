@@ -124,69 +124,69 @@ type iInitializeRequest interface {
 }
 
 type InitializeRequest struct {
-	// <warning>This feature is not supported by **Web SDK**. Please refer to the App SDK integration if needed.</warning>
+	// <warning>This feature is **not supported by the Web SDK**. To use this feature, integrate the App SDK.</warning>
 	//
-	// Whether to enable strict face quality check:
+	// Specifies whether to enable strict face quality detection:
 	//
-	// - Y: Enabled (default)
+	// - Y: enabled (default)
 	//
-	// - N: Disabled
+	// - N: disabled.
 	//
 	// example:
 	//
 	// N
 	AppQualityCheck *string `json:"AppQualityCheck,omitempty" xml:"AppQualityCheck,omitempty"`
-	// Whether to enable authoritative identity verification, currently applicable only to the second-generation ID card in mainland China. (IDV product input parameter)
+	// Specifies whether to enable authoritative identity verification. Currently, this applies only to second-generation ID cards in the Chinese mainland. This is an input parameter for the IDV product.
 	//
 	// example:
 	//
 	// Y
 	Authorize *string `json:"Authorize,omitempty" xml:"Authorize,omitempty"`
-	// Whether to enable automatic registration
+	// Specifies whether to enable auto-registration.
 	//
 	// example:
 	//
 	// 0
 	AutoRegistration *string `json:"AutoRegistration,omitempty" xml:"AutoRegistration,omitempty"`
-	// Security token used for preventing duplication and tampering. If this parameter is passed, the CallbackToken field will be displayed in the callback URL.
+	// The security token used for anti-replay and anti-tampering verification. If this parameter is specified, the CallbackToken field is included in the callback URL.
 	//
 	// example:
 	//
 	// 7ca5c68d869344ea8eeb30cdfd544544-6358700
 	CallbackToken *string `json:"CallbackToken,omitempty" xml:"CallbackToken,omitempty"`
-	// Callback notification URL for authentication results. The default callback request method is GET, and the callback URL must start with https. After completing the authentication, the platform will call back this URL and automatically add the transactionId, passed, and subcode fields.
+	// The callback URL for the authentication result. The callback request method is GET by default. The callback URL must start with https. After the authentication is complete, the platform calls back this URL and automatically appends the transactionId, passed, and subcode fields.
 	//
 	// example:
 	//
 	// https://www.aliyun.com?callbackToken=1000004826&transactionId=shaxxxx&passed=Y&subCode=200
 	CallbackUrl *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
-	// Whether to enable adaptive color-changing window border
+	// Specifies whether to enable the adaptive color-changing window frame.
 	//
-	// - **Y**: Enabled
+	// - **Y**: enabled
 	//
-	// - **N**: Disabled
+	// - **N**: disabled.
 	//
 	// example:
 	//
 	// N
 	ChameleonFrameEnable *string `json:"ChameleonFrameEnable,omitempty" xml:"ChameleonFrameEnable,omitempty"`
-	// Whether to crop. (IDV product input parameter)
+	// Specifies whether to enable cropping. This is an input parameter for the IDV product.
 	//
 	// example:
 	//
 	// N
 	Crop *string `json:"Crop,omitempty" xml:"Crop,omitempty"`
-	// Date of birth on the document
+	// The date of birth on the document.
 	//
-	// **MRTDInput = 2*	- is required.
+	// Required when **MRTDInput = 2**.
 	//
 	// example:
 	//
 	// -
 	DateOfBirth *string `json:"DateOfBirth,omitempty" xml:"DateOfBirth,omitempty"`
-	// Expiration date on the document
+	// The expiration date on the document.
 	//
-	// **MRTDInput = 2*	- is required.
+	// Required when **MRTDInput*	- = 2.
 	//
 	// example:
 	//
@@ -198,65 +198,65 @@ type InitializeRequest struct {
 	//
 	// 张三
 	DocName *string `json:"DocName,omitempty" xml:"DocName,omitempty"`
-	// User\\"s document number.
+	// The document number of the user.
 	//
 	// example:
 	//
 	// 411xxxxxxxxxxx0001
 	DocNo *string `json:"DocNo,omitempty" xml:"DocNo,omitempty"`
-	// Customer-defined input for whether to capture additional pages
+	// The custom configuration for whether to capture additional pages.
 	DocPageConfig []*string `json:"DocPageConfig,omitempty" xml:"DocPageConfig,omitempty" type:"Repeated"`
-	// Document capture mode.
+	// The document capture photo mode.
 	//
-	// - manual: Manual capture.
+	// - manual: manual photo capture.
 	//
-	// - auto: Automatic capture (default)
+	// - auto: automatic photo capture (default).
 	//
 	// example:
 	//
 	// manual
 	DocScanMode *string `json:"DocScanMode,omitempty" xml:"DocScanMode,omitempty"`
-	// Document type
+	// The document type.
 	//
-	// > For eKYC_PRO and ID_OCR_MAX solutions, see the official documentation: https://www.alibabacloud.com/help/zh/ekyc/latest/certificate-code-table?spm=a2c63.p38356.help-menu-445633.d_2_8_2_0.279147abwKAWbr
+	// >For the eKYC_PRO and ID_OCR_MAX solutions, see the official documentation: https://www.alibabacloud.com/help/zh/ekyc/latest/certificate-code-table?spm=a2c63.p38356.help-menu-445633.d_2_8_2_0.279147abwKAWbr
 	//
-	// > For ID_OCR, eKYC, and eYKC_MIN solutions, see the official documentation: Document Type List https://www.alibabacloud.com/help/zh/ekyc/latest/gnhekqy05ni51m4c?spm=a2c63.p38356.help-menu-445633.d_2_3_1_0_0_0.6243244777KoZ7
+	// >For the ID_OCR, eKYC, and eKYC_MIN solutions, see the document type list in the official documentation: https://www.alibabacloud.com/help/zh/ekyc/latest/gnhekqy05ni51m4c?spm=a2c63.p38356.help-menu-445633.d_2_3_1_0_0_0.6243244777KoZ7.
 	//
 	// example:
 	//
 	// 00000001
 	DocType *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
-	// Whether to require evidence video.
+	// Specifies whether to save an evidence video.
 	//
-	// - N: Not required (default).
+	// - N: not required (default).
 	//
-	// - Y: During the authentication process, a 1-2 second video of the user\\"s face will be captured and returned via the query interface.
+	// - Y: a face verification video (1 to 2 seconds) is captured during the authentication process and returned through the query API.
 	//
-	// > Due to the large size of video files, the system may discard them in case of network instability, prioritizing the transmission of necessary images for authentication.
+	// > Because video files are large, the system discards the video file when the network is unstable to prioritize the transmission of images required for authentication.
 	//
 	// example:
 	//
 	// N
 	DocVideo *string `json:"DocVideo,omitempty" xml:"DocVideo,omitempty"`
-	// Document number
+	// The document number.
 	//
-	// **MRTDInput = 2*	- is required.
+	// Required when **MRTDInput = 2**.
 	//
 	// example:
 	//
 	// -
 	DocumentNumber *string `json:"DocumentNumber,omitempty" xml:"DocumentNumber,omitempty"`
-	// Whether the OCR result page is editable in the document OCR recognition process:
+	// Specifies whether the recognition result page is editable during the document OCR recognition step:
 	//
-	// - **0**: Not editable
+	// - **0**: not editable
 	//
-	// - **1*	- (default): Editable
+	// - **1*	- (default): editable.
 	//
 	// example:
 	//
 	// 0
 	EditOcrResult *string `json:"EditOcrResult,omitempty" xml:"EditOcrResult,omitempty"`
-	// Enter an Indonesian email address. This field is only effective when Authorize=T.
+	// The Indonesian email address. This field takes effect only when Authorize is set to T.
 	//
 	// >
 	//
@@ -266,105 +266,105 @@ type InitializeRequest struct {
 	//
 	// evxxx@imigxxxxx.go.id
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	// Experience code
+	// The experience code.
 	//
 	// example:
 	//
 	// 9be7b7d0180041219e5ab03ac6dab5fb
 	ExperienceCode *string `json:"ExperienceCode,omitempty" xml:"ExperienceCode,omitempty"`
-	// The face library to be compared
+	// The face libraries for comparison.
 	//
 	// example:
 	//
 	// 0e0c34a77f
 	FaceGroupCodes *string `json:"FaceGroupCodes,omitempty" xml:"FaceGroupCodes,omitempty"`
-	// Base64 encoded photo. If you choose to pass the face photo via FacePictureBase64, please check the photo size and avoid uploading overly large photos.
+	// The Base64-encoded face photo. If you use FacePictureBase64 to pass in the face photo, check the photo size and do not pass in an excessively large photo.
 	//
 	// example:
 	//
 	// Base64
 	FacePictureBase64 *string `json:"FacePictureBase64,omitempty" xml:"FacePictureBase64,omitempty"`
-	// URL of the face photo. A publicly accessible HTTP or HTTPS link.
+	// The URL of the face photo. The URL must be a publicly accessible HTTP or HTTPS link.
 	//
 	// example:
 	//
 	// ***
 	FacePictureUrl *string `json:"FacePictureUrl,omitempty" xml:"FacePictureUrl,omitempty"`
-	// Face library for registration.
+	// The face registration library.
 	//
 	// example:
 	//
 	// 0e0c34a77f
 	FaceRegisterGroupCode *string `json:"FaceRegisterGroupCode,omitempty" xml:"FaceRegisterGroupCode,omitempty"`
-	// Face verification threshold
+	// The face verification threshold.
 	//
 	// example:
 	//
 	// 0.5
 	FaceVerifyThreshold *string `json:"FaceVerifyThreshold,omitempty" xml:"FaceVerifyThreshold,omitempty"`
-	// Face image quality. (IDV product input parameter)
+	// The face image quality. This is an input parameter for the IDV product.
 	//
 	// example:
 	//
 	// Y
 	IdFaceQuality *string `json:"IdFaceQuality,omitempty" xml:"IdFaceQuality,omitempty"`
-	// Whether to enable certificate anti-counterfeiting detection. (IDV product input parameter)
+	// Specifies whether to enable document anti-spoofing detection. This is an input parameter for the IDV product.
 	//
 	// example:
 	//
 	// Y
 	IdSpoof *string `json:"IdSpoof,omitempty" xml:"IdSpoof,omitempty"`
-	// Custom OCR quality check threshold mode:
+	// The custom OCR quality detection threshold mode:
 	//
-	// - **0**: Standard mode
+	// - **0**: standard mode
 	//
-	// - **1**: Strict mode
+	// - **1**: strict mode
 	//
-	// - **2**: Lenient mode
+	// - **2**: loose mode
 	//
-	// - **3*	- (default): Quality check disabled
+	// - **3*	- (default): quality detection disabled.
 	//
 	// example:
 	//
 	// 0
 	IdThreshold *string `json:"IdThreshold,omitempty" xml:"IdThreshold,omitempty"`
-	// Language configuration. (IDV product input parameter)
+	// The language configuration. This is an input parameter for the IDV product.
 	//
 	// example:
 	//
 	// en
 	LanguageConfig *string `json:"LanguageConfig,omitempty" xml:"LanguageConfig,omitempty"`
-	// Source of MRTD verification parameters. This parameter is required for decrypting information when reading the document chip via NFC.
+	// The input source for MRTD verification parameters. This parameter is required for decrypting information when reading document chip data via NFC.
 	//
-	// - **0**: User input
+	// - **0**: user input
 	//
-	// - **1**: OCR read
+	// - **1**: OCR reading
 	//
-	// - **2**: Passed through the interface
+	// - **2**: API input.
 	//
 	// example:
 	//
 	// 0
 	MRTDInput *string `json:"MRTDInput,omitempty" xml:"MRTDInput,omitempty"`
-	// A unique business identifier defined by the merchant, used for subsequent troubleshooting. It supports a combination of letters and numbers, with a maximum length of 32 characters. Ensure its uniqueness.
+	// The merchant-defined unique business ID used for subsequent troubleshooting. The value can contain letters and digits with a maximum length of 32 characters. Make sure the value is unique.
 	//
 	// example:
 	//
 	// e0c34a***353888
 	MerchantBizId *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
-	// Your custom user ID or other identifiers that can uniquely identify a specific user, such as a phone number or email address. It is strongly recommended to pre-desensitize the value of this field, for example, by hashing it.
+	// Your custom user ID or another identifier that can identify a specific user, such as a phone number or email address. We strongly recommend that you desensitize this field value in advance, such as by hashing the value.
 	//
 	// example:
 	//
 	// 1221****6543
 	MerchantUserId *string `json:"MerchantUserId,omitempty" xml:"MerchantUserId,omitempty"`
-	// Metainfo environment parameter, which needs to be obtained through the client SDK.
+	// The MetaInfo environment parameter. Obtain this value by using the client SDK.
 	//
 	// example:
 	//
 	// {\\"bioMetaInfo\\":\\"4.1.0:2916352,0\\",\\"deviceType\\":\\"web\\",\\"ua\\":\\"Mozilla/5.0 (Macintosh
 	MetaInfo *string `json:"MetaInfo,omitempty" xml:"MetaInfo,omitempty"`
-	// Enter an Indonesian phone number, which must be in the format (starting with +62, followed by 9-11 digits). This field is only effective when Authorize=T.
+	// The Indonesian phone number. The format must start with +62 followed by 9 to 11 digits. This field takes effect only when Authorize is set to T.
 	//
 	// >
 	//
@@ -374,146 +374,152 @@ type InitializeRequest struct {
 	//
 	// +6281293671234
 	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
-	// Type of liveness detection to be performed:
+	// The type of liveness detection:
 	//
-	// - **LIVENESS*	- (default): Blinking action liveness detection.
+	// - **LIVENESS*	- (default): blink action liveness detection.
 	//
-	// - **PHOTINUS_LIVENESS**: Dual liveness detection with blinking action and photinus liveness.
+	// - **PHOTINUS_LIVENESS**: blink action liveness + colorful liveness dual detection.
 	//
 	// >
 	//
-	// > - For supported SDK versions, see [SDK Release Records](https://www.alibabacloud.com/help/zh/ekyc/latest/sdk-publishing-record?spm=a2c63.p38356.0.i99).
+	// > - For supported SDK versions, see [SDK release notes](https://www.alibabacloud.com/help/zh/ekyc/latest/sdk-publishing-record?spm=a2c63.p38356.0.i99).
 	//
-	// > - PC does not support dual liveness detection with photinus.
+	// > - Colorful liveness dual detection is not supported on PC.
 	//
 	// example:
 	//
 	// PHOTINUS_LIVENESS
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// Whether to enable OCR. (IDV product input parameter)
+	// Specifies whether to enable OCR. This is an input parameter for the IDV product.
 	//
 	// example:
 	//
 	// Y
 	Ocr *string `json:"Ocr,omitempty" xml:"Ocr,omitempty"`
+	// Specifies whether to return additional OCR recognition standardized format fields:
+	//
+	// 0: no (default)
+	//
+	// 1: yes.
+	//
 	// example:
 	//
 	// 0
 	OcrValueStandard *string `json:"OcrValueStandard,omitempty" xml:"OcrValueStandard,omitempty"`
-	// Page configuration for collection, multiple pages are connected using commas. Value range:
+	// The capture page configuration. Use commas (,) to connect multiple pages. Valid values:
 	//
-	// - **01**: Front side of the document
+	// - **01**: portrait side of the document
 	//
-	// - **01,02**: Front and back sides of the document
+	// - **01,02**: portrait side and back side of the document
 	//
-	// > When this value is set to 01,02, it currently only supports Chinese and Vietnamese IDs.
+	// > When this value is set to 01,02, only Chinese ID cards and Vietnamese ID cards are supported.
 	//
 	// example:
 	//
 	// 01
 	Pages *string `json:"Pages,omitempty" xml:"Pages,omitempty"`
-	// When compatibility issues occur with H5-based mobile authentication, whether to allow a fallback handling method.
+	// Specifies whether to allow a degraded processing method when compatibility issues occur during mobile H5 authentication.
 	//
-	// - **url*	- (default): Fallback supported. The page displays the authentication URL, which users can copy and open or switch browsers to continue the authentication process.
+	// - **url (default)**: degradation supported. The page displays the authentication URL, and the user can copy the URL or switch browsers to continue authentication.
 	//
-	// - **keep**: Fallback not supported. The error reason is returned directly, and the authentication process ends.
+	// - **keep**: degradation not supported. The error reason is returned directly and the authentication flow ends.
 	//
 	//
 	// >
 	//
 	// > - This switch is not supported on PC.
 	//
-	// > - If the business scenario involves completing authentication within an embedded web page in an app, it is recommended to set this parameter to keep, disallowing URL fallback.
+	// > - If the business scenario involves completing authentication within an in-app embedded web page, set this parameter to keep to disallow URL degradation.
 	//
 	// example:
 	//
 	// url
 	ProcedurePriority *string `json:"ProcedurePriority,omitempty" xml:"ProcedurePriority,omitempty"`
-	// The product solution to be integrated
+	// The product solution to use.
 	//
-	// > For more details, see the official documentation: https://www.alibabacloud.com/help/zh/ekyc/latest/product-introduction?spm=a2c63.p38356.0.i1
+	// >For more information, see the official documentation: https://www.alibabacloud.com/help/zh/ekyc/latest/product-introduction?spm=a2c63.p38356.0.i1.
 	//
 	// example:
 	//
 	// eKYC
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// Supports card and face sequence arrangement:
+	// The order of document and face capture:
 	//
 	// - DOC_FACE (default)
 	//
 	// - FACE_DOC
 	//
-	// Note: This parameter is required only when ProductCode is KYC_GLOBAL.
+	// Note: This parameter is required only when ProductCode is set to KYC_GLOBAL.
 	//
 	// example:
 	//
 	// DOC_FACE
 	ProductFlow *string `json:"ProductFlow,omitempty" xml:"ProductFlow,omitempty"`
-	// Number of duplicate faces returned
+	// The number of duplicate faces returned.
 	//
 	// example:
 	//
 	// 1
 	ReturnFaces *string `json:"ReturnFaces,omitempty" xml:"ReturnFaces,omitempty"`
-	// Callback URL on the client side.
+	// The client-side callback URL.
 	//
 	// example:
 	//
 	// http*****
 	ReturnUrl *string `json:"ReturnUrl,omitempty" xml:"ReturnUrl,omitempty"`
-	// Whether to save the face image
+	// Specifies whether to save the face picture.
 	//
 	// example:
 	//
 	// 0
 	SaveFacePicture *string `json:"SaveFacePicture,omitempty" xml:"SaveFacePicture,omitempty"`
-	// Scene code. (IDV product input parameter)
+	// The scene code. This is an input parameter for the IDV product.
 	//
 	// example:
 	//
 	// 123****123
 	SceneCode *string `json:"SceneCode,omitempty" xml:"SceneCode,omitempty"`
-	// Represents different security levels in the authentication process. Available values:
+	// The pattern that represents different security levels of the authentication flow. Valid values:
 	//
-	// 01: Normal mode (default).
+	// 01: normal pattern (default).
 	//
-	// 02: Secure mode, a relatively strict mode suitable for high-risk scenarios. (IDV product input parameter)
+	// 02: safe mode, a relatively strict pattern that is active for high-risk scenarios. This is an input parameter for the IDV product.
 	//
 	// example:
 	//
 	// 01
 	SecurityLevel *string `json:"SecurityLevel,omitempty" xml:"SecurityLevel,omitempty"`
-	// Whether to display the album upload entry during the document OCR recognition phase:
+	// Specifies whether to display the album upload entry during the document OCR recognition step:
 	//
-	// - **1**: Display (default)
+	// - **1**: display (default)
 	//
-	// - **0**: Do not display
+	// - **0**: do not display.
 	//
 	// example:
 	//
 	// 1
 	ShowAlbumIcon *string `json:"ShowAlbumIcon,omitempty" xml:"ShowAlbumIcon,omitempty"`
-	// Switch for displaying the guide page:
+	// Specifies whether to display the guide page:
 	//
-	// - **1**: Display (default)
+	// - **1**: display (default)
 	//
-	// - **0**: Do not display
+	// - **0**: do not display.
 	//
 	// example:
 	//
 	// 1
 	ShowGuidePage *string `json:"ShowGuidePage,omitempty" xml:"ShowGuidePage,omitempty"`
-	// Whether to display the recognition result page during the document OCR recognition phase:
+	// Specifies whether to display the recognition result page during the document OCR recognition step:
 	//
-	// - **1**: Display (default)
+	// - **1**: display (default)
 	//
-	// - **0**: Do not display
+	// - **0**: do not display.
 	//
 	// example:
 	//
 	// 1
 	ShowOcrResult *string `json:"ShowOcrResult,omitempty" xml:"ShowOcrResult,omitempty"`
-	// Custom UI configuration. Based on the configuration template, convert your custom UI settings into a JSON string and pass it through this interface. For more information, see [IDV UI Customization](https://www.alibabacloud.com/help/zh/ekyc/latest/idv-kyc-custom-skin?spm=a2c63.p38356.0.i60).
+	// The custom UI configuration. Convert your custom UI configuration to a JSON string based on the configuration template and pass it in through this parameter. For more information, see [IDV UI style customization](https://www.alibabacloud.com/help/zh/ekyc/latest/idv-kyc-custom-skin?spm=a2c63.p38356.0.i60).
 	//
 	// example:
 	//
@@ -529,32 +535,79 @@ type InitializeRequest struct {
 	//
 	// }
 	StyleConfig *string `json:"StyleConfig,omitempty" xml:"StyleConfig,omitempty"`
-	// Base64 encoding of the portrait photo.
+	// The Base64-encoded portrait photo.
 	//
 	// example:
 	//
 	// base64
 	TargetFacePicture *string `json:"TargetFacePicture,omitempty" xml:"TargetFacePicture,omitempty"`
-	// Portrait image URL, accessible via HTTP or HTTPS on the public network.
+	// The URL of the portrait image. The URL must be a publicly accessible HTTP or HTTPS link.
 	//
 	// example:
 	//
 	// https://www.xxxxx.com/1.jpg
 	TargetFacePictureUrl *string `json:"TargetFacePictureUrl,omitempty" xml:"TargetFacePictureUrl,omitempty"`
-	TemplateConfig       *string `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
-	TemplateRanCount     *string `json:"TemplateRanCount,omitempty" xml:"TemplateRanCount,omitempty"`
-	TemplateType         *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
-	// Optional to enable NFC verification when **DocType**=01000000 (global passport).
+	// The custom action pool configuration for liveness detection.
 	//
-	// - **Y*	- (Enabled)
+	// This parameter is required when Model is set to TEMPLATE.
 	//
-	// - **N*	- (Disabled)
+	// Configuration rule: separate multiple action codes with commas (,). Best practices: include at least one frontal face action (such as blink) and no more than 3 actions in total.
+	//
+	// Action lookup table:
+	//
+	// - Blink: 01
+	//
+	// - Open Mouth: 02
+	//
+	// - Shake Head Left: 03
+	//
+	// - Shake Head Right: 04
+	//
+	// - Move Farther: 05
+	//
+	// - Move Closer: 06
+	//
+	// - Photinus: 07.
+	//
+	// example:
+	//
+	// 01,02,07
+	TemplateConfig *string `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
+	// The number of actions randomly selected from TemplateConfig.
+	//
+	// This parameter takes effect only when TemplateType is set to Ran.
+	//
+	// - Validation rules:
+	//
+	// - The value must be greater than 1. The value must be less than or equal to the total number of actions configured in TemplateConfig. If not specified, the default value equals the total number of actions in TemplateConfig.
+	//
+	// example:
+	//
+	// 2
+	TemplateRanCount *string `json:"TemplateRanCount,omitempty" xml:"TemplateRanCount,omitempty"`
+	// The execution order of liveness detection actions in TemplateConfig.
+	//
+	// This parameter is required when Model is set to TEMPLATE.
+	//
+	// - Seq: actions are executed in the order configured in TemplateConfig from left to right.
+	//
+	// - Ran: actions are executed in random order. When this option is selected, TemplateConfig must contain more than one action.
+	//
+	// example:
+	//
+	// Seq
+	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+	// Specifies whether to enable NFC verification when **DocType*	- is set to 01000000 (global passport).
+	//
+	// - **Y**: enabled
+	//
+	// - **N**: disabled.
 	//
 	// example:
 	//
 	// N
 	UseNFC *string `json:"UseNFC,omitempty" xml:"UseNFC,omitempty"`
-	// The type of verification
+	// The verification type.
 	//
 	// example:
 	//

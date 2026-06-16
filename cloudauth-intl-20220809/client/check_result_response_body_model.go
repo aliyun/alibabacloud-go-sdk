@@ -20,25 +20,25 @@ type iCheckResultResponseBody interface {
 }
 
 type CheckResultResponseBody struct {
-	// Return code.
+	// The return code.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Return message.
+	// The return message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// ID of the request
+	// Id of the request
 	//
 	// example:
 	//
 	// 4EB35****87EBA1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Return result.
+	// The returned result.
 	Result *CheckResultResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -96,51 +96,51 @@ func (s *CheckResultResponseBody) Validate() error {
 }
 
 type CheckResultResponseBodyResult struct {
-	// Authentication result.
+	// The verification result.
 	//
 	// example:
 	//
 	// **
 	EkycResult *string `json:"EkycResult,omitempty" xml:"EkycResult,omitempty"`
-	// Extended basic information.
+	// The extended basic information.
 	//
 	// example:
 	//
 	// **
 	ExtBasicInfo *string `json:"ExtBasicInfo,omitempty" xml:"ExtBasicInfo,omitempty"`
-	// Face information.
+	// The face information.
 	//
 	// example:
 	//
 	// **
 	ExtFaceInfo *string `json:"ExtFaceInfo,omitempty" xml:"ExtFaceInfo,omitempty"`
-	// ID information.
+	// The ID information.
 	//
 	// example:
 	//
 	// **
 	ExtIdInfo *string `json:"ExtIdInfo,omitempty" xml:"ExtIdInfo,omitempty"`
-	// Extended information, in JSON string format.
+	// The extended information, in JSON string format.
 	//
 	// example:
 	//
 	// {}
 	ExtInfo *string `json:"ExtInfo,omitempty" xml:"ExtInfo,omitempty"`
-	// Risk information.
+	// The risk information.
 	//
 	// example:
 	//
 	// **
 	ExtRiskInfo *string `json:"ExtRiskInfo,omitempty" xml:"ExtRiskInfo,omitempty"`
-	// Detailed verification results from the data source (example using Indonesian data sources):
+	// The data source verification details are described as follows (using the Indonesian data source as an example):
 	//
-	// - **govId, fullName, dob**: A comparison score of 1.0 indicates complete consistency with the official data source; less than 1.0 indicates inconsistency.
+	// - **govId, fullName, dob**: A comparison score equal to 1.0 indicates a complete match with the official data source. A score lower than 1.0 indicates a mismatch.
 	//
-	// - **selfiePhoto**: A comparison score greater than 0.8 indicates consistency with the official data source; less than or equal to 0.8 indicates inconsistency.
+	// - **selfiePhoto**: A comparison score greater than 0.8 indicates a match with the official data source. A score equal to or lower than 0.8 indicates a mismatch.
 	//
-	// - **liveness**: A score higher than 0.95 indicates a risk of liveness detection.
+	// - **liveness**: A score higher than 0.95 indicates a liveness detection risk.
 	//
-	// - **imgManipulationScore**: A score higher than 0.95 indicates a risk of image manipulation.
+	// - **imgManipulationScore**: A score higher than 0.95 indicates an image tampering risk.
 	//
 	// example:
 	//
@@ -160,17 +160,17 @@ type CheckResultResponseBodyResult struct {
 	//
 	// }
 	ExtSourceInfo *string `json:"ExtSourceInfo,omitempty" xml:"ExtSourceInfo,omitempty"`
-	// Whether the authentication is passed.
+	// Indicates whether the verification is passed. Valid values:
 	//
-	// - Y: Passed
+	// - Y: Passed.
 	//
-	// - N: Not passed
+	// - N: Not passed.
 	//
 	// example:
 	//
 	// Y
 	Passed *string `json:"Passed,omitempty" xml:"Passed,omitempty"`
-	// Sub-result code.
+	// The sub-result code.
 	//
 	// example:
 	//

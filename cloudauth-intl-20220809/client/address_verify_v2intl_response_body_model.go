@@ -20,13 +20,13 @@ type iAddressVerifyV2IntlResponseBody interface {
 }
 
 type AddressVerifyV2IntlResponseBody struct {
-	// [Return Code](https://www.alibabacloud.com/help/zh/ekyc/latest/add-verify-pro-api?spm=a2c63.p38356.0.i4#ae60001a3804w)
+	// The response code.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Detailed description of the return code
+	// The response message.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type AddressVerifyV2IntlResponseBody struct {
 	//
 	// 7F971622-38C0-5F56-B2EC-315367979B4F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Result object
+	// The verification result.
 	Result *AddressVerifyV2IntlResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -98,39 +98,23 @@ func (s *AddressVerifyV2IntlResponseBody) Validate() error {
 type AddressVerifyV2IntlResponseBodyResult struct {
 	// The verification result. Valid values:
 	//
-	// - **1**: Passed (billed)
+	// - 1: Passed.
 	//
-	// - **2**: Failed (The device is in a prohibited region) (billed)
+	// - 2: Failed (the device is in a prohibited region).
 	//
-	// - **3**: Unknown (billed)
+	// - 3: Unable to determine.
 	//
 	// example:
 	//
 	// 1
 	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	// Verification details, including：
+	// The verification details, which include:
 	//
-	// - **DistanceRange**：Position rang：[DistanceRange description](https://www.alibabacloud.com/help/zh/ekyc/latest/add-verify-pro-api?spm=a2c63.p38356.0.i27#ee274c08976er)。
+	// - distanceRange: the location range.
 	//
-	// > If the input phone number or address is empty, or if no carrier information is found, this field will not be returned.
+	// - ispName: the ISP name.
 	//
-	// - **IspName**: The carrier name:
-	//
-	//    - **CMCC**: China Mobile
-	//
-	//    - **CTCC**: China Telecom
-	//
-	//    - **CUCC**: China Unicom
-	//
-	// > This parameter is not returned if the mobile phone number or address is empty in the request, or if carrier information is not found.
-	//
-	// - **PhoneStatus**: The status of the mobile phone:
-	//
-	//   - **0**: Abnormal
-	//
-	//   - **1**: Normal
-	//
-	// > This parameter is not returned if the mobile phone number is empty in the request.
+	// - phoneStatus: the phone status. A value of 0 indicates abnormal. A value of 1 indicates Normal. Otherwise, the status is unknown.
 	//
 	// example:
 	//
@@ -144,7 +128,7 @@ type AddressVerifyV2IntlResponseBodyResult struct {
 	//
 	// }
 	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	// The transaction ID
+	// The authentication ID.
 	//
 	// example:
 	//

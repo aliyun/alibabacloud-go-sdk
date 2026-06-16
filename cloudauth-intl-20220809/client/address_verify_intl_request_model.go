@@ -34,11 +34,11 @@ type iAddressVerifyIntlRequest interface {
 }
 
 type AddressVerifyIntlRequest struct {
-	// Verification address type:
+	// The type of the address to verify. Valid values:
 	//
-	// - “0”: Text address
+	// - "0": text address
 	//
-	// - “1”: Latitude and longitude
+	// - "1": coordinates (longitude and latitude).
 	//
 	// This parameter is required.
 	//
@@ -46,13 +46,13 @@ type AddressVerifyIntlRequest struct {
 	//
 	// “0”
 	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
-	// Default city
+	// The default city.
 	//
 	// example:
 	//
 	// 杭州市
 	DefaultCity *string `json:"DefaultCity,omitempty" xml:"DefaultCity,omitempty"`
-	// Country name, currently only supports: China
+	// The country name. Currently, only China is supported.
 	//
 	// This parameter is required.
 	//
@@ -60,31 +60,31 @@ type AddressVerifyIntlRequest struct {
 	//
 	// 中国
 	DefaultCountry *string `json:"DefaultCountry,omitempty" xml:"DefaultCountry,omitempty"`
-	// Default district
+	// The default district.
 	//
 	// example:
 	//
 	// 余杭区
 	DefaultDistrict *string `json:"DefaultDistrict,omitempty" xml:"DefaultDistrict,omitempty"`
-	// Default province
+	// The default province.
 	//
 	// example:
 	//
 	// 浙江省
 	DefaultProvince *string `json:"DefaultProvince,omitempty" xml:"DefaultProvince,omitempty"`
-	// Latitude.
+	// The latitude.
 	//
 	// example:
 	//
 	// “31.2304”
 	Latitude *string `json:"Latitude,omitempty" xml:"Latitude,omitempty"`
-	// Longitude.
+	// The longitude.
 	//
 	// example:
 	//
 	// “121.4737”
 	Longitude *string `json:"Longitude,omitempty" xml:"Longitude,omitempty"`
-	// Supports Chinese mobile phone numbers.
+	// Chinese mainland phone numbers are supported.
 	//
 	// This parameter is required.
 	//
@@ -92,7 +92,7 @@ type AddressVerifyIntlRequest struct {
 	//
 	// 1872334****
 	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
-	// Fixed value: ADD_VERIFY_PRO
+	// Fixed value: ADD_VERIFY_PRO.
 	//
 	// This parameter is required.
 	//
@@ -100,17 +100,17 @@ type AddressVerifyIntlRequest struct {
 	//
 	// ADD_VERIFY_PRO
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// Detailed address text content
+	// The detailed address in text format.
 	//
 	// example:
 	//
 	// 阿里巴巴西溪园区
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
-	// Address verification method:
+	// The address verification method. Valid values:
 	//
-	// - HOME: Home address verification
+	// - HOME: home address verification
 	//
-	// - WORK: Work address verification
+	// - WORK: work address verification.
 	//
 	// This parameter is required.
 	//

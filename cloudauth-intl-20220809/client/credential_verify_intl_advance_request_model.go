@@ -23,23 +23,23 @@ type iCredentialVerifyIntlAdvanceRequest interface {
 }
 
 type CredentialVerifyIntlAdvanceRequest struct {
-	// Credential name (numeric code):
+	// The credential name (specified as a numeric code). Valid values:
 	//
-	// - Starting with 03: Enterprise Qualification
+	// - Codes starting with 03: enterprise qualification
 	//
-	//   - 0301: Mainland China Business License
+	//   - 0301: business license issued in the Chinese mainland
 	//
-	// - Starting with 04, Transaction Voucher
+	// - Codes starting with 04: transaction voucher
 	//
-	//   - 0401: Bank Statement
+	//   - 0401: bank statement
 	//
-	//   - 0402: Pay Slip
+	//   - 0402: payslip
 	//
-	//   - 0403: Utility Bill
+	//   - 0403: utility bill
 	//
-	//   - 0405: Credit Card Statement
+	//   - 0405: credit card statement
 	//
-	//   - 0499: Others
+	//   - 0499: other.
 	//
 	// This parameter is required.
 	//
@@ -47,11 +47,11 @@ type CredentialVerifyIntlAdvanceRequest struct {
 	//
 	// 0301
 	CredName *string `json:"CredName,omitempty" xml:"CredName,omitempty"`
-	// Credential type:
+	// The credential type. Valid values:
 	//
-	// - 03: Enterprise Qualification
+	// - 03: enterprise qualification
 	//
-	// - 04: Transaction Voucher
+	// - 04: transaction voucher.
 	//
 	// This parameter is required.
 	//
@@ -59,9 +59,9 @@ type CredentialVerifyIntlAdvanceRequest struct {
 	//
 	// 03
 	CredType *string `json:"CredType,omitempty" xml:"CredType,omitempty"`
-	// Image input stream.
+	// The image input stream.
 	//
-	// > Choose either ImageUrl or ImageFile.
+	// > Specify either ImageUrl or ImageFile.
 	//
 	// example:
 	//
@@ -69,15 +69,15 @@ type CredentialVerifyIntlAdvanceRequest struct {
 	ImageFileObject io.Reader `json:"ImageFile,omitempty" xml:"ImageFile,omitempty"`
 	// The URL of the image.
 	//
-	// > Choose either ImageUrl or ImageFile.
+	// > Specify either ImageUrl or ImageFile.
 	//
 	// example:
 	//
 	// https://oss-bj01.avic.com/eavic-prod-commodity/pic/commodity/94677ee6-1067-4287-8ff4-6e030ef3a5a8.jpg
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	// Invocation mode:
+	// The call mode. Valid values:
 	//
-	// - ANTI_FAKE_CHECK: Image quality and tampering detection.
+	// - ANTI_FAKE_CHECK: image quality and tampering detection.
 	//
 	// This parameter is required.
 	//

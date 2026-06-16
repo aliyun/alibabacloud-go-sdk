@@ -18,14 +18,20 @@ type iModifyFaceGroupRequest interface {
 }
 
 type ModifyFaceGroupRequest struct {
+	// The description.
+	//
 	// example:
 	//
 	// description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The primary key ID.
+	//
 	// example:
 	//
 	// 65c030cd54b23283ceb27b4ade5da49d
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the face library.
+	//
 	// This parameter is required.
 	//
 	// example:

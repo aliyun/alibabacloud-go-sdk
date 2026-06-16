@@ -28,21 +28,21 @@ type iCredentialSubmitIntlRequest interface {
 }
 
 type CredentialSubmitIntlRequest struct {
-	// Base64 encoding of the image. If you choose to upload the photo this way, please check the photo size and avoid uploading overly large photos.
+	// The Base64-encoded image. If you use this method to submit a photo, check the photo size and do not submit an excessively large photo.
 	//
 	// example:
 	//
 	// base64
 	CredentialOcrPictureBase64 *string `json:"CredentialOcrPictureBase64,omitempty" xml:"CredentialOcrPictureBase64,omitempty"`
-	// Image URL, accessible via HTTP or HTTPS on the public network.
+	// The URL of the image. The URL must be a publicly accessible HTTP or HTTPS link.
 	//
 	// example:
 	//
 	// https://***
 	CredentialOcrPictureUrl *string `json:"CredentialOcrPictureUrl,omitempty" xml:"CredentialOcrPictureUrl,omitempty"`
-	// Credential type:
+	// The credential type. Valid values:
 	//
-	// - 02: Vehicle registration certificate
+	// - 02: vehicle registration certificate.
 	//
 	// This parameter is required.
 	//
@@ -50,11 +50,11 @@ type CredentialSubmitIntlRequest struct {
 	//
 	// 02
 	DocType *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
-	// Whether to enable tampering detection
+	// Specifies whether to enable tampering detection. Valid values:
 	//
-	// - true: Enable
+	// - true: Enable.
 	//
-	// - false: Disable
+	// - false: Disable.
 	//
 	// This parameter is required.
 	//
@@ -62,7 +62,7 @@ type CredentialSubmitIntlRequest struct {
 	//
 	// false
 	FraudCheck *string `json:"FraudCheck,omitempty" xml:"FraudCheck,omitempty"`
-	// A unique business identifier defined on the merchant side, used for troubleshooting issues later. Supports a combination of letters and digits, with a maximum length of 32 characters. Ensure uniqueness.
+	// The merchant-side custom business unique identifier, used for subsequent troubleshooting. The value can be a combination of letters and digits with a maximum length of 32 characters. Ensure that the value is unique.
 	//
 	// This parameter is required.
 	//
@@ -70,9 +70,9 @@ type CredentialSubmitIntlRequest struct {
 	//
 	// e0c34a***353888
 	MerchantBizId *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
-	// Extraction type:
+	// The extraction type. Valid values:
 	//
-	// - 0201: Thai vehicle registration certificate
+	// - 0201: Thailand vehicle registration certificate.
 	//
 	// This parameter is required.
 	//
@@ -80,7 +80,7 @@ type CredentialSubmitIntlRequest struct {
 	//
 	// 0201
 	OcrArea *string `json:"OcrArea,omitempty" xml:"OcrArea,omitempty"`
-	// The product solution to be integrated. Value: CREDENTIAL_RECOGNITION.
+	// The product solution to use. Set this parameter to CREDENTIAL_RECOGNITION.
 	//
 	// This parameter is required.
 	//
@@ -88,7 +88,7 @@ type CredentialSubmitIntlRequest struct {
 	//
 	// CREDENTIAL_RECOGNITION
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// Your custom authentication scenario ID, used for querying related records by entering this scenario ID in the console later. Supports a combination of 10 characters, digits, or underscores.
+	// The custom authentication scenario ID. You can use this scenario ID to query related records in the console. The value can be a combination of letters, digits, or underscores with a maximum length of 10 characters.
 	//
 	// This parameter is required.
 	//

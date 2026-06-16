@@ -42,141 +42,151 @@ type iDocOcrMaxRequest interface {
 }
 
 type DocOcrMaxRequest struct {
-	// Specifies whether to enable verification with an authoritative data source to enhance document anti-spoofing capabilities.
+	// Specifies whether to enable authoritative data source verification to enhance document anti-forgery capabilities.
 	//
-	// - **T**: Enable
+	// - **T**: enabled.
 	//
-	// - **F**: Disable (default)
+	// - **F**: disabled (default).
 	//
 	// >
 	//
-	// > - **Applicable document types**: Chinese resident ID cards (CHN01001) and Chinese mainland driver\\"s licenses (CHN02001).
+	// > - **Applicable document types**: China resident identity card (CHN01001) and Chinese mainland driver\\"s license (CHN02001).
 	//
-	// > - **Data transfer declaration**: If you enable this parameter, you agree to transfer the user\\"s name and certificate number to an authoritative data source in the Chinese mainland for consistency verification.
+	// > - **Data transmission statement**: Enabling this parameter indicates your consent to transmit the user\\"s name and document number to an authoritative data source in the Chinese mainland for consistency verification.
 	//
-	// > - **Performance impact:*	- After you enable this feature, the response time of the API operation increases by 1 to 2 seconds. Adjust the timeout setting.
+	// > - **Performance impact**: After this feature is enabled, the API response time increases by approximately 1 to 2 seconds. Adjust the timeout settings accordingly.
 	//
 	// example:
 	//
 	// T
 	Authorize *string `json:"Authorize,omitempty" xml:"Authorize,omitempty"`
-	// Page expected to be recognized
+	// The expected page to recognize. Valid values:
 	//
-	// - 01 (default): ID portrait.
+	// - 01 (default): the portrait side of the document.
 	//
-	// - 02: Back of the certificate
+	// - 02: the back side of the document.
 	//
 	// example:
 	//
 	// 01
 	DocPage *string `json:"DocPage,omitempty" xml:"DocPage,omitempty"`
-	// Document type.
+	// The document type.
 	//
-	// Format: Country (region) code + document type abbreviation + page (optional)
+	// - Format: country code + document type abbreviation + page (optional).
 	//
-	// Note: If provided, it will automatically check if it matches the model recognition result; if empty, the document type will be returned after model recognition.
+	// Note:
+	//
+	// - OcrModel = 0: DocType is required. Specify the document type. The existing logic remains unchanged.
+	//
+	// - OcrModel = 1 or 2: DocType must be left empty.
 	//
 	// example:
 	//
 	// CNSSC01
 	DocType *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
-	// Document image, base64 encoded binary stream
+	// The Base64-encoded image of the card or certificate.
+	//
+	// If you use IdOcrPictureBase64 to pass in the document image, check the image size and do not pass in an excessively large image.
 	//
 	// example:
 	//
 	// base64
 	IdOcrPictureBase64 *string `json:"IdOcrPictureBase64,omitempty" xml:"IdOcrPictureBase64,omitempty"`
-	// Document image URL
+	// The URL of the card or certificate image. The URL must be a publicly accessible HTTP or HTTPS link.
 	//
 	// example:
 	//
 	// https://***********.oss-cn-hangzhou.aliyuncs.com/1669520556530-expo/default/face/20221127114236530_w3kx2e6t.jpg
 	IdOcrPictureUrl *string `json:"IdOcrPictureUrl,omitempty" xml:"IdOcrPictureUrl,omitempty"`
-	// Whether to turn on the certificate anti-counterfeiting function:
+	// Specifies whether to enable the document anti-forgery feature. Valid values:
 	//
-	// - T: open
+	// - T: enabled.
 	//
-	// - F (default): not turned on.
+	// - F (default): disabled.
 	//
 	// example:
 	//
 	// F
 	IdSpoof *string `json:"IdSpoof,omitempty" xml:"IdSpoof,omitempty"`
-	// Custom OCR quality detection threshold mode:
+	// The custom OCR quality detection threshold mode. Valid values:
 	//
-	// - 0: System default
+	// - 0: system default.
 	//
-	// - 1: Strict mode
+	// - 1: strict mode.
 	//
-	// - 2: Lenient mode
+	// - 2: loose mode.
 	//
-	// - 3 (default): Disable quality detection
+	// - 3 (default): quality detection disabled.
 	//
 	// example:
 	//
 	// 0
 	IdThreshold *string `json:"IdThreshold,omitempty" xml:"IdThreshold,omitempty"`
-	// A unique business identifier defined by the merchant, used for subsequent problem localization and troubleshooting. It supports a combination of letters and numbers, with a maximum length of 32 characters. Please ensure its uniqueness.
+	// The custom unique business identifier, which is used for subsequent troubleshooting.
+	//
+	// The value can contain up to 32 characters, including letters and digits. Make sure the value is unique.
 	//
 	// example:
 	//
 	// e0c34a77f5ac40a5aa5e6ed20c******
 	MerchantBizId *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
-	// Your custom user ID or other identifiers that can uniquely identify a specific user, such as a phone number or email address. It is strongly recommended to pre-desensitize the value of this field, for example, by hashing it.
+	// The custom user ID or another identifier that can identify a specific user, such as a phone number or email address.
+	//
+	// We strongly recommend that you desensitize the value of this field in advance, for example, by hashing the value.
 	//
 	// example:
 	//
 	// 123456789
 	MerchantUserId *string `json:"MerchantUserId,omitempty" xml:"MerchantUserId,omitempty"`
-	// OCR recognition mode.
+	// The OCR recognition mode. Valid values:
 	//
-	// 0: General document mode.
+	// - 0: general document recognition mode (default).
 	//
-	// 1: Custom mode.
+	// - 1: automatic document classification mode.
+	//
+	// - 2: automatic document classification + general recognition mode.
 	//
 	// example:
 	//
 	// 0
 	OcrModel *string `json:"OcrModel,omitempty" xml:"OcrModel,omitempty"`
-	// Specifies whether to return additional OCR fields in a standardized format:
+	// Specifies whether to enable OCR key field standardization. Valid values:
 	//
-	// - **0**: No (default)
+	// - 0: no (default).
 	//
-	// - **1**: Yes
+	// - 1: yes.
 	//
 	// example:
 	//
 	// 0
 	OcrValueStandard *string `json:"OcrValueStandard,omitempty" xml:"OcrValueStandard,omitempty"`
-	// The product solution to be integrated.
+	// The product solution to use.
 	//
-	// Value: ID_OCR_MAX
+	// Set this parameter to ID_OCR_MAX.
 	//
 	// example:
 	//
 	// ID_OCR_MAX
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// Prompt (for custom mode)
+	// 	Warning: This field is deprecated.</warning>.
 	//
 	// example:
 	//
-	// xxxocr识别
+	// 已废弃
 	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
-	// Custom scene code, used to distinguish business scenarios, a 10-digit number.
+	// The custom authentication scenario ID. You can use this scenario ID to query related records in the console.
+	//
+	// The value can contain up to 10 characters, including letters, digits, and underscores.
 	//
 	// example:
 	//
 	// 1234567890
 	SceneCode *string `json:"SceneCode,omitempty" xml:"SceneCode,omitempty"`
-	// Whether to enable document anti-counterfeiting function, default is not enabled.
-	//
-	// - T: Enable document anti-counterfeiting function.
-	//
-	// - F: Do not enable.
+	// <warning>This field is deprecated.</warning>.
 	//
 	// example:
 	//
-	// F
+	// 已废弃
 	Spoof *string `json:"Spoof,omitempty" xml:"Spoof,omitempty"`
 }
 

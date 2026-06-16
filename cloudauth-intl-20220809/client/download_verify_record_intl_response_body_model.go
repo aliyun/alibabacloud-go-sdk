@@ -20,21 +20,21 @@ type iDownloadVerifyRecordIntlResponseBody interface {
 }
 
 type DownloadVerifyRecordIntlResponseBody struct {
-	// Return code.
+	// The return code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Returned data.
+	// The returned data.
 	Data *DownloadVerifyRecordIntlResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Return message.
+	// The return message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// ID of the request
+	// Id of the request
 	//
 	// example:
 	//
@@ -96,13 +96,13 @@ func (s *DownloadVerifyRecordIntlResponseBody) Validate() error {
 }
 
 type DownloadVerifyRecordIntlResponseBodyData struct {
-	// Task ID, returned in asynchronous mode, used later with QueryDownloadTaskIntl to download the exported file.
+	// The task ID. This parameter is returned in asynchronous mode. Use QueryDownloadTaskIntl to download the exported file.
 	//
 	// example:
 	//
 	// 202511284106866
 	DownloadTaskId *string `json:"DownloadTaskId,omitempty" xml:"DownloadTaskId,omitempty"`
-	// Exported file download link.
+	// The download URL of the exported file.
 	//
 	// example:
 	//

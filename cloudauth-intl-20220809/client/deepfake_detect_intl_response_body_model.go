@@ -20,25 +20,25 @@ type iDeepfakeDetectIntlResponseBody interface {
 }
 
 type DeepfakeDetectIntlResponseBody struct {
-	// Return code: 200 indicates a successful request, any other value indicates failure.
+	// The return code. A value of 200 indicates success. Other values indicate failure.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Return message.
+	// The response message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 8FC3D6AC-9FED-4311-8DA7-C4BF47D9F260
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Returned result information.
+	// The result information.
 	ResultObject *DeepfakeDetectIntlResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
 
@@ -96,33 +96,33 @@ func (s *DeepfakeDetectIntlResponseBody) Validate() error {
 }
 
 type DeepfakeDetectIntlResponseBodyResultObject struct {
-	// Risk result:
+	// The risk result. Valid values:
 	//
-	// - **0**: Low risk
+	// - **0**: Low risk.
 	//
-	// - **1**: High risk
+	// - **1**: High risk.
 	//
-	// - **2**: Suspicious
+	// - **2**: Suspicious.
 	//
 	// example:
 	//
 	// 1
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	// Risk score map.
+	// The risk score map.
 	RiskScore map[string]*string `json:"RiskScore,omitempty" xml:"RiskScore,omitempty"`
-	// Risk tags. Multiple tags are separated by commas (,). Includes:
+	// The risk labels. Multiple labels are separated by commas (,). Valid values:
 	//
-	// - **SuspectDeepForgery*	- Suspected deep forgery
+	// - **SuspectDeepForgery**: suspected depth forgery
 	//
-	// - **SuspectPSFace*	- Suspected synthetic attack
+	// - **SuspectPSFace**: suspected synthetic attack
 	//
-	// - **SuspectWarterMark*	- Suspected watermark presence
+	// - **SuspectWarterMark**: suspected watermark
 	//
-	// - **SuspectTemple*	- Suspected template attack
+	// - **SuspectTemple**: suspected template attack
 	//
-	// - **SuspectAIGCFace*	- Suspected generated face
+	// - **SuspectAIGCFace**: suspected AIGC-generated face
 	//
-	// - **SuspectRemake*	- Suspected rephotographed face
+	// - **SuspectRemake**: suspected recaptured face.
 	//
 	// example:
 	//

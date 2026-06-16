@@ -20,25 +20,25 @@ type iDeleteVerifyResultResponseBody interface {
 }
 
 type DeleteVerifyResultResponseBody struct {
-	// Return code
+	// The return code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Return message
+	// The return message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// ID of this request
+	// The request ID.
 	//
 	// example:
 	//
 	// 4EB35****87EBA1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Return result
+	// The returned result.
 	Result *DeleteVerifyResultResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -96,13 +96,17 @@ func (s *DeleteVerifyResultResponseBody) Validate() error {
 }
 
 type DeleteVerifyResultResponseBodyResult struct {
-	// Deletion result. Y indicates successful deletion, N indicates failed deletion
+	// The deletion result. Valid values:
+	//
+	// - Y: The deletion was successful.
+	//
+	// - N: The deletion failed.
 	//
 	// example:
 	//
 	// Y/N
 	DeleteResult *string `json:"DeleteResult,omitempty" xml:"DeleteResult,omitempty"`
-	// Unique identifier of the authentication request
+	// The unique identifier of the authentication request.
 	//
 	// example:
 	//

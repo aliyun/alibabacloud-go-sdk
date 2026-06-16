@@ -20,13 +20,17 @@ type iFaceCompareResponseBody interface {
 }
 
 type FaceCompareResponseBody struct {
-	// The [response code](https://www.alibabacloud.com/help/en/ekyc/latest/facecompare?spm=a3c0i.23458820.2359477120.28.21167d3fzUmXQC#c43fd16d07mae).
+	// The response code.
+	//
+	// 200: The request was successful.
+	//
+	// Other values: An error occurred. For more information, see error codes.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The detailed description of the response code.
+	// The response message.
 	//
 	// example:
 	//
@@ -38,7 +42,7 @@ type FaceCompareResponseBody struct {
 	//
 	// 4EB356FE-BB6A-5DCC-B4C5-E8051787EBA1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Result object
+	// The returned result.
 	Result *FaceCompareResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -96,24 +100,25 @@ func (s *FaceCompareResponseBody) Validate() error {
 }
 
 type FaceCompareResponseBodyResult struct {
+	// The additional result information.
 	ExtFaceInfo *FaceCompareResponseBodyResultExtFaceInfo `json:"ExtFaceInfo,omitempty" xml:"ExtFaceInfo,omitempty" type:"Struct"`
-	// The face comparison score. The value ranges from 0 to 100.
+	// The comparison score between the submitted face image and the reference face image during verification. Value range: **0*	- to **100**.
 	//
 	// example:
 	//
 	// 98
 	FaceComparisonScore *float64 `json:"FaceComparisonScore,omitempty" xml:"FaceComparisonScore,omitempty"`
-	// The final authentication result. Valid values:
+	// Indicates whether the verification passed.
 	//
-	// - **Y**: The authentication is passed.
+	// - Y: Passed.
 	//
-	// - **N**: The authentication failed.
+	// - N: Not passed.
 	//
 	// example:
 	//
 	// Y
 	Passed *string `json:"Passed,omitempty" xml:"Passed,omitempty"`
-	// The transaction ID.
+	// The unique ID of the verification request.
 	//
 	// example:
 	//
@@ -175,22 +180,32 @@ func (s *FaceCompareResponseBodyResult) Validate() error {
 }
 
 type FaceCompareResponseBodyResultExtFaceInfo struct {
+	// The overall quality score.
+	//
 	// example:
 	//
 	// 39.04
 	FaceQualityScore *float64 `json:"FaceQualityScore,omitempty" xml:"FaceQualityScore,omitempty"`
+	// The illumination score.
+	//
 	// example:
 	//
 	// 0.02
 	IlluminationScore *float64 `json:"IlluminationScore,omitempty" xml:"IlluminationScore,omitempty"`
+	// The key area occlusion score.
+	//
 	// example:
 	//
 	// 20
 	KaOcclusionScore *float64 `json:"KaOcclusionScore,omitempty" xml:"KaOcclusionScore,omitempty"`
+	// The occlusion score.
+	//
 	// example:
 	//
 	// 50.26
 	OcclusionScore *float64 `json:"OcclusionScore,omitempty" xml:"OcclusionScore,omitempty"`
+	// The sharpness score.
+	//
 	// example:
 	//
 	// 86.47

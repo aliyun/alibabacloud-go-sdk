@@ -24,28 +24,40 @@ type iQueryFaceGroupRequest interface {
 }
 
 type QueryFaceGroupRequest struct {
+	// The current page number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The code of the face library.
+	//
 	// example:
 	//
 	// groupCode001
 	GroupCode *string `json:"GroupCode,omitempty" xml:"GroupCode,omitempty"`
+	// The maximum number of entries per page.
+	//
 	// example:
 	//
 	// 100
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The name of the face library.
+	//
 	// example:
 	//
 	// test008
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The token for the next query.
+	//
 	// example:
 	//
 	// WpY9RBGa5Vrzxi3+mp2Cdw==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The number of entries per page.
+	//
 	// This parameter is required.
 	//
 	// example:

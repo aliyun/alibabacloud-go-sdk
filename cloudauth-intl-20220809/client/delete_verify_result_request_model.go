@@ -18,19 +18,19 @@ type iDeleteVerifyResultRequest interface {
 }
 
 type DeleteVerifyResultRequest struct {
-	// Whether to depend on the query interface when deleting data
+	// Specifies whether the deletion depends on the query operation.
 	//
 	// example:
 	//
 	// Y / N
 	DeleteAfterQuery *string `json:"DeleteAfterQuery,omitempty" xml:"DeleteAfterQuery,omitempty"`
-	// Type of data to be deleted
+	// The type of data to delete.
 	//
 	// example:
 	//
 	// Img / Text / All
 	DeleteType *string `json:"DeleteType,omitempty" xml:"DeleteType,omitempty"`
-	// Unique identifier of the authentication request
+	// The unique identifier of the authentication request.
 	//
 	// example:
 	//

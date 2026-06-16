@@ -20,25 +20,25 @@ type iFaceDuplicationCheckIntlResponseBody interface {
 }
 
 type FaceDuplicationCheckIntlResponseBody struct {
-	// Return code.
+	// The response code.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Return message.
+	// The response message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// ID of the request
+	// Id of the request
 	//
 	// example:
 	//
 	// 5E63B760-0ECB-5C07-8503-A65C27876968
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Return result.
+	// The returned result.
 	Result *FaceDuplicationCheckIntlResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -96,90 +96,93 @@ func (s *FaceDuplicationCheckIntlResponseBody) Validate() error {
 }
 
 type FaceDuplicationCheckIntlResponseBodyResult struct {
-	// Returns the face library face ID and UserID when a duplicate face is detected.
+	// The face ID and UserID retrieved from the face database when a duplicate face is detected.
 	//
 	// example:
 	//
 	// [
 	//
-	// {\\"faceGroupCode\\":\\"sg7****uzt\\",\\"faceId\\":\\"f5a921*******9e792ec84c8f0ca592a\\"}
+	//     {
+	//
+	//         "faceGroupCode": "sg7****uzt",
+	//
+	//         "faceId": "f5a921*******9e792ec84c8f0ca592a",
+	//
+	//         "merchantUserId": "fa****01"
+	//
+	//     }
 	//
 	// ]
-	DuplicateFace *string                                                `json:"DuplicateFace,omitempty" xml:"DuplicateFace,omitempty"`
-	ExtFaceInfo   *FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo `json:"ExtFaceInfo,omitempty" xml:"ExtFaceInfo,omitempty" type:"Struct"`
-	// The estimated age of the face, which may not be returned if the prediction fails.
+	DuplicateFace *string `json:"DuplicateFace,omitempty" xml:"DuplicateFace,omitempty"`
+	// The additional result information.
+	ExtFaceInfo *FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo `json:"ExtFaceInfo,omitempty" xml:"ExtFaceInfo,omitempty" type:"Struct"`
+	// The estimated age of the face. This value may not be returned if the prediction fails.
 	//
 	// example:
 	//
 	// 30
 	FaceAge *string `json:"FaceAge,omitempty" xml:"FaceAge,omitempty"`
-	// Indicates whether the captured face involves a liveness attack, Y for an attack, N for no attack.
-	//
-	// Returned when silent liveness detection is enabled.
+	// Indicates whether the captured face involves a liveness attack. A value of Y indicates an attack, and a value of N indicates no attack. This field is returned only when passive liveness detection is enabled.
 	//
 	// example:
 	//
 	// N
 	FaceAttack *string `json:"FaceAttack,omitempty" xml:"FaceAttack,omitempty"`
-	// The probability of a liveness attack detected by silent liveness detection. The value range is 0 to 100.
-	//
-	// Returned when silent liveness detection is enabled.
+	// The probability of a passive liveness detection attack. Value range: 0 to 100. This field is returned only when passive liveness detection is enabled.
 	//
 	// example:
 	//
 	// 99
 	FaceAttackScore *string `json:"FaceAttackScore,omitempty" xml:"FaceAttackScore,omitempty"`
-	// When the verification mode is 1 or 2, returns the 1:1 verification comparison score
-	//
-	// Comparison score range 0～100.
+	// The 1:1 face comparison score returned when the verification mode is 1 or 2. Value range: 0 to 100.
 	//
 	// example:
 	//
 	// 98
 	FaceComparisonScore *string `json:"FaceComparisonScore,omitempty" xml:"FaceComparisonScore,omitempty"`
-	// The predicted gender of the face in the image, which may not be returned if the prediction fails.
+	// The predicted gender of the face. This value may not be returned if the prediction fails. Valid values:
 	//
-	// - M: Male
+	// - M: Male.
 	//
-	// - F: Female
+	// - F: Female.
 	//
 	// example:
 	//
 	// M
 	FaceGender *string `json:"FaceGender,omitempty" xml:"FaceGender,omitempty"`
-	// Final authentication result, values:
+	// The final verification result. Valid values:
 	//
-	// - Y: Passed
+	// - Y: Passed.
 	//
-	// - N: Not passed
+	// - N: Not passed.
 	//
 	// example:
 	//
 	// Y
 	FacePassed *string `json:"FacePassed,omitempty" xml:"FacePassed,omitempty"`
-	// Returns the corresponding FACEID only when the customer sets auto-registration and the face registration is successful.
+	// The FACEID returned only when automatic registration is enabled and the face is registered successfully.
 	//
 	// example:
 	//
 	// 9e792ec84c8f0ca592a
 	FaceRegistrationId *string `json:"FaceRegistrationId,omitempty" xml:"FaceRegistrationId,omitempty"`
-	// Face registration result
+	// The face registration result. Valid values:
 	//
-	// - 0- Failed
+	// - 0: Failed.
 	//
-	// - 1- Succeeded
+	// - 1: Succeeded.
 	//
 	// example:
 	//
 	// 0
 	FaceRegistrationResult *int32 `json:"FaceRegistrationResult,omitempty" xml:"FaceRegistrationResult,omitempty"`
-	// Description of the authentication result. For more information, see ResultObject.SubCode error code description.
+	// The description of the verification result. For more information, refer to the ResultObject.SubCode error code description.
 	//
 	// example:
 	//
 	// 200
 	SubCode *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
-	// Unique identifier of the authentication request.
+	// The unique identifier of the verification request.
 	//
 	// example:
 	//
@@ -313,22 +316,32 @@ func (s *FaceDuplicationCheckIntlResponseBodyResult) Validate() error {
 }
 
 type FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo struct {
+	// The overall quality score.
+	//
 	// example:
 	//
 	// 39.04
 	FaceQualityScore *float64 `json:"FaceQualityScore,omitempty" xml:"FaceQualityScore,omitempty"`
+	// The illumination score.
+	//
 	// example:
 	//
 	// 0.02
 	IlluminationScore *float64 `json:"IlluminationScore,omitempty" xml:"IlluminationScore,omitempty"`
+	// The key area occlusion score.
+	//
 	// example:
 	//
 	// 20
 	KaOcclusionScore *float64 `json:"KaOcclusionScore,omitempty" xml:"KaOcclusionScore,omitempty"`
+	// The occlusion score.
+	//
 	// example:
 	//
 	// 50.26
 	OcclusionScore *float64 `json:"OcclusionScore,omitempty" xml:"OcclusionScore,omitempty"`
+	// The sharpness score.
+	//
 	// example:
 	//
 	// 86.47
