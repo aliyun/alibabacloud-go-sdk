@@ -24,17 +24,17 @@ type iDescribeEventResultListRequest interface {
 }
 
 type DescribeEventResultListRequest struct {
-	// Sets the language type for requests and received messages, default value is **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Start time, accurate to milliseconds (ms).
+	// The start time, in milliseconds (ms).
 	//
 	// This parameter is required.
 	//
@@ -42,13 +42,13 @@ type DescribeEventResultListRequest struct {
 	//
 	// 1737101348000
 	BeginTime *int64 `json:"beginTime,omitempty" xml:"beginTime,omitempty"`
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int64 `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
-	// End time, accurate to milliseconds (ms).
+	// The end time, in milliseconds (ms).
 	//
 	// This parameter is required.
 	//
@@ -56,13 +56,13 @@ type DescribeEventResultListRequest struct {
 	//
 	// 1683616457000
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// Page size, default value is 10
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// example:
 	//

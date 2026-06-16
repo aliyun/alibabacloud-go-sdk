@@ -24,23 +24,23 @@ type iDescribeEventsVariableListRequest interface {
 }
 
 type DescribeEventsVariableListRequest struct {
-	// Sets the language type for requests and received messages, with a default value of **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Creation type
+	// The creation type.
 	//
 	// example:
 	//
 	// NORMAL
 	CreateType *string `json:"createType,omitempty" xml:"createType,omitempty"`
-	// Event code.
+	// The event code.
 	//
 	// This parameter is required.
 	//
@@ -48,19 +48,19 @@ type DescribeEventsVariableListRequest struct {
 	//
 	// de_afghcf6411
 	EventCodes *string `json:"eventCodes,omitempty" xml:"eventCodes,omitempty"`
-	// Filter object
+	// The filter object.
 	//
 	// example:
 	//
 	// {\\"type\\":\\"EXPRESSION\\",\\"name\\":\\"ex_NgR6nDVD821c\\"}
 	FilterDTO *string `json:"filterDTO,omitempty" xml:"filterDTO,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegId *string `json:"regId,omitempty" xml:"regId,omitempty"`
-	// Applicable scene code
+	// The applicable scenario code.
 	//
 	// This parameter is required.
 	//

@@ -24,13 +24,13 @@ type iDescribeEventTotalCountReportResponseBody interface {
 }
 
 type DescribeEventTotalCountReportResponseBody struct {
-	// Status code
+	// Status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// HTTP status code
+	// HTTP status code.
 	//
 	// example:
 	//
@@ -48,9 +48,9 @@ type DescribeEventTotalCountReportResponseBody struct {
 	//
 	// AE7E6105-7DEB-5125-9B24-DCBC139F6CD2
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Returned object
+	// Response object.
 	ResultObject *DescribeEventTotalCountReportResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Struct"`
-	// Indicates whether this operation was successful, `true` means success.
+	// Indicates whether the operation was successful. A value of true indicates success.
 	//
 	// example:
 	//
@@ -130,13 +130,13 @@ func (s *DescribeEventTotalCountReportResponseBody) Validate() error {
 }
 
 type DescribeEventTotalCountReportResponseBodyResultObject struct {
-	// Comparison with yesterday\\"s event invocation count
+	// Day-over-day comparison of call event count.
 	//
 	// example:
 	//
 	// 101
 	Ratio *string `json:"ratio,omitempty" xml:"ratio,omitempty"`
-	// Today\\"s event invocation count
+	// Total number of call events today.
 	//
 	// example:
 	//

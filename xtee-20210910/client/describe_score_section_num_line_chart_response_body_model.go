@@ -16,13 +16,13 @@ type iDescribeScoreSectionNumLineChartResponseBody interface {
 }
 
 type DescribeScoreSectionNumLineChartResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// A32FE941-35F2-5378-B37C-4B8FDB16F094
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Returned object
+	// The response object.
 	ResultObject *DescribeScoreSectionNumLineChartResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Struct"`
 }
 
@@ -62,9 +62,9 @@ func (s *DescribeScoreSectionNumLineChartResponseBody) Validate() error {
 }
 
 type DescribeScoreSectionNumLineChartResponseBodyResultObject struct {
-	// Data list
+	// The data list.
 	Series []*DescribeScoreSectionNumLineChartResponseBodyResultObjectSeries `json:"series,omitempty" xml:"series,omitempty" type:"Repeated"`
-	// Details of xaxis node.
+	// The xaxis node details.
 	Xaxis *DescribeScoreSectionNumLineChartResponseBodyResultObjectXaxis `json:"xaxis,omitempty" xml:"xaxis,omitempty" type:"Struct"`
 }
 
@@ -113,9 +113,9 @@ func (s *DescribeScoreSectionNumLineChartResponseBodyResultObject) Validate() er
 }
 
 type DescribeScoreSectionNumLineChartResponseBodyResultObjectSeries struct {
-	// List of current category results.
+	// The result list for the current category.
 	Data []*string `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// Category name.
+	// The category name.
 	//
 	// example:
 	//
@@ -154,7 +154,7 @@ func (s *DescribeScoreSectionNumLineChartResponseBodyResultObjectSeries) Validat
 }
 
 type DescribeScoreSectionNumLineChartResponseBodyResultObjectXaxis struct {
-	// Data structure.
+	// The data structure.
 	Data []*string `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
 }
 

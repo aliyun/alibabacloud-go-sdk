@@ -26,43 +26,43 @@ type iDescribeSampleUploadPolicyResponseBody interface {
 }
 
 type DescribeSampleUploadPolicyResponseBody struct {
-	// OSS access key ID.
+	// ossaccesskeyid。
 	//
 	// example:
 	//
-	// LTAxxxxxxxxxxxx
+	// LTAxxxxxxxxxxxxx
 	AccessId *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
-	// OSS domain name.
+	// The OSS domain name.
 	//
 	// example:
 	//
 	// emseu.cxy8uoq4aafx.eu-central-1.rds.amazonaws.com
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// The key of OSS upload policy.
+	// The key of the OSS upload policy.
 	//
 	// example:
 	//
 	// saf/de/namelist/e924/ufzgsedX9bd3a7
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// OSS upload policy.
+	// The OSS upload policy.
 	//
 	// example:
 	//
 	// eyJleHBpcmF0aW9uIjoiMjAyNS0wNy0zMFQwNjowNTo0OS45NTRaIiwiY29uZGl0aW9ucyI6W1siY29udGVudC1sZW5ndGgtcmFuZ2UiLDAsMTA0ODU3NjAwMF0sWyJlcSIsIiRrZXkiLCJzYWZcL2RlXC9uYW1lbGlzdFwvZTkyNFwvdWZ6Z3NlZFg5Ymxxxxxxxxxxx
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// A32FE941-35F2-5378-B37C-4B8FDB16F094
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Signature information.
+	// The signature information.
 	//
 	// example:
 	//
 	// 3Es5j/9Xm/zwPcM9cwEr5pa0Wsc=
 	Signature *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
-	// Temporary identity credential.
+	// The temporary identity credential.
 	//
 	// example:
 	//

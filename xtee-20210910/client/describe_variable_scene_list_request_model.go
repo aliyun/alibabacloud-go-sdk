@@ -26,17 +26,17 @@ type iDescribeVariableSceneListRequest interface {
 }
 
 type DescribeVariableSceneListRequest struct {
-	// Sets the language type for requests and received messages, default value is **zh**. Values:
+	// The language type for the request and response messages. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Business type.
+	// The business type.
 	//
 	// This parameter is required.
 	//
@@ -44,25 +44,25 @@ type DescribeVariableSceneListRequest struct {
 	//
 	// variable_scene
 	BizType *string `json:"bizType,omitempty" xml:"bizType,omitempty"`
-	// Configuration key.
+	// The configuration key.
 	//
 	// example:
 	//
 	// account_abuse_detection
 	ConfigKey *string `json:"configKey,omitempty" xml:"configKey,omitempty"`
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *string `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
-	// Page size, default value is 10.
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Paging flag, default is true.
+	// Specifies whether to enable paging. Default value: true.
 	//
 	// This parameter is required.
 	//
@@ -70,7 +70,7 @@ type DescribeVariableSceneListRequest struct {
 	//
 	// true
 	Paging *bool `json:"paging,omitempty" xml:"paging,omitempty"`
-	// Region code.
+	// The region code.
 	//
 	// example:
 	//

@@ -24,23 +24,42 @@ type iCreateForeignPocSampleRequest interface {
 }
 
 type CreateForeignPocSampleRequest struct {
+	// OSS path of the file.
+	//
+	// example:
+	//
+	// saf/cpoc/953c883cde33b2e21d722eb661d26375/1779172027996_自动回溯测试 2605191.csv
 	File *string `json:"File,omitempty" xml:"File,omitempty"`
+	// Set the language type for requests and received messages. Default value is **zh**. Valid values:
+	//
+	// - **zh**: Chinese
+	//
+	// - **en**: English
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Area encoding.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegId *string `json:"RegId,omitempty" xml:"RegId,omitempty"`
+	// Remarks.
+	//
 	// example:
 	//
 	// nemo-test
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// Sample Name.
+	//
 	// example:
 	//
 	// SampleNameTest
 	SampleName *string `json:"SampleName,omitempty" xml:"SampleName,omitempty"`
+	// Scenario.
+	//
 	// example:
 	//
 	// FINANCE

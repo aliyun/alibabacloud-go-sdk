@@ -18,19 +18,19 @@ type iCreateSampleApiResponseBody interface {
 }
 
 type CreateSampleApiResponseBody struct {
-	// Status code.
+	// The API status code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Error message.
+	// The response message.
 	//
 	// example:
 	//
-	// ConsolePocQueryServiceImpl.queryServiceCodeName.arg0.tab tab Type error
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// ID of the request
+	// Id of the request
 	//
 	// example:
 	//

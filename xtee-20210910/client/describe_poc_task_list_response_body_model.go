@@ -24,33 +24,33 @@ type iDescribePocTaskListResponseBody interface {
 }
 
 type DescribePocTaskListResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// A32FE941-35F2-5378-B37C-4B8FDB16F094
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
-	// Page size, with a default value of 10.
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Returned object.
+	// The returned object.
 	ResultObject []*DescribePocTaskListResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Repeated"`
-	// Total number of items.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 6
 	TotalItem *int32 `json:"totalItem,omitempty" xml:"totalItem,omitempty"`
-	// Total number of pages.
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -134,49 +134,49 @@ func (s *DescribePocTaskListResponseBody) Validate() error {
 }
 
 type DescribePocTaskListResponseBodyResultObject struct {
-	// Creation time.
+	// The creation time.
 	//
 	// example:
 	//
 	// 1753804800000
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// Download URL.
+	// The download URL.
 	//
 	// example:
 	//
 	// https://xxxxx-oss-xxxxx.xxxxxx.aliyuncs.com/xx/xx/xxx/xxxxxx.csv?Expires=1753433384&OSSAccessKeyId=xxxxxxxxx&Signature=%2F%xxxxxxxxxxxx%3D
 	DownloadUrl *string `json:"downloadUrl,omitempty" xml:"downloadUrl,omitempty"`
-	// File type.
+	// The file type.
 	//
 	// example:
 	//
 	// EXCEL
 	FileType *string `json:"fileType,omitempty" xml:"fileType,omitempty"`
-	// Service name.
+	// The service name.
 	//
 	// example:
 	//
 	// 注册风险识别
 	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
-	// Status.
+	// The status.
 	//
 	// example:
 	//
 	// WAIT_CHECK
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// Task ID.
+	// The task ID.
 	//
 	// example:
 	//
 	// 7
 	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
-	// Task name.
+	// The task name.
 	//
 	// example:
 	//
 	// 任务
 	TaskName *string `json:"taskName,omitempty" xml:"taskName,omitempty"`
-	// Last modified time.
+	// The last modification time.
 	//
 	// example:
 	//

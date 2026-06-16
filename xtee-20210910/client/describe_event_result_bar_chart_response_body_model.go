@@ -24,33 +24,33 @@ type iDescribeEventResultBarChartResponseBody interface {
 }
 
 type DescribeEventResultBarChartResponseBody struct {
-	// Status code.
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// HTTP status code
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *string `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// Error message.
+	// The error message.
 	//
 	// example:
 	//
 	// The input parameter data is not valid. order_storage_company_num component not found
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// AE7E6105-7DEB-5125-9B24-DCBC139F6CD2
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Returned object
+	// The response object.
 	ResultObject *DescribeEventResultBarChartResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Struct"`
-	// Whether the request was successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -130,9 +130,9 @@ func (s *DescribeEventResultBarChartResponseBody) Validate() error {
 }
 
 type DescribeEventResultBarChartResponseBodyResultObject struct {
-	// Chart data
+	// The chart data.
 	Series []*DescribeEventResultBarChartResponseBodyResultObjectSeries `json:"series,omitempty" xml:"series,omitempty" type:"Repeated"`
-	// xaxis interface configuration.
+	// The xaxis configuration.
 	Xaxis *DescribeEventResultBarChartResponseBodyResultObjectXaxis `json:"xaxis,omitempty" xml:"xaxis,omitempty" type:"Struct"`
 }
 
@@ -181,15 +181,15 @@ func (s *DescribeEventResultBarChartResponseBodyResultObject) Validate() error {
 }
 
 type DescribeEventResultBarChartResponseBodyResultObjectSeries struct {
-	// Returned data object
+	// The response data.
 	Data []*DescribeEventResultBarChartResponseBodyResultObjectSeriesData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// Series name.
+	// The name of the series.
 	//
 	// example:
 	//
 	// 通过
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Label key
+	// The tag key.
 	//
 	// example:
 	//
@@ -246,13 +246,13 @@ func (s *DescribeEventResultBarChartResponseBodyResultObjectSeries) Validate() e
 }
 
 type DescribeEventResultBarChartResponseBodyResultObjectSeriesData struct {
-	// Number.
+	// The quantity.
 	//
 	// example:
 	//
 	// 100
 	Num *int64 `json:"num,omitempty" xml:"num,omitempty"`
-	// Scale
+	// The proportion.
 	//
 	// example:
 	//
@@ -291,7 +291,7 @@ func (s *DescribeEventResultBarChartResponseBodyResultObjectSeriesData) Validate
 }
 
 type DescribeEventResultBarChartResponseBodyResultObjectXaxis struct {
-	// Returned data object
+	// The response data.
 	Data []*string `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
 }
 

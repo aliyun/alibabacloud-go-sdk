@@ -24,41 +24,41 @@ type iCreateSampleApiRequest interface {
 }
 
 type CreateSampleApiRequest struct {
-	// Same as input parameter
+	// Same as the request parameter.
 	//
 	// example:
 	//
 	// ip/accountID
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	// Specific data value
+	// The specific data value.
 	//
 	// example:
 	//
 	// 同参数
 	DataValue *string `json:"DataValue,omitempty" xml:"DataValue,omitempty"`
-	// Sets the language type for requests and received messages, with a default value of **zh**. Values:
+	// The language type for the request and response messages. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// regionId
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegId *string `json:"RegId,omitempty" xml:"RegId,omitempty"`
-	// Sample batch type
+	// The sample batch type.
 	//
 	// example:
 	//
 	// 白名单/黑名单/混合
 	SampleBatchType *string `json:"SampleBatchType,omitempty" xml:"SampleBatchType,omitempty"`
-	// Service list.
+	// The list of services.
 	//
 	// example:
 	//

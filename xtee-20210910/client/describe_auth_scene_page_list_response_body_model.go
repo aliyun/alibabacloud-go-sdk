@@ -24,33 +24,33 @@ type iDescribeAuthScenePageListResponseBody interface {
 }
 
 type DescribeAuthScenePageListResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// A32FE941-35F2-5378-B37C-4B8FDB16F094
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int64 `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
-	// Page size, default value is 10
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Returned object
+	// The returned object.
 	ResultObject []*DescribeAuthScenePageListResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Repeated"`
-	// Total number of items
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 6
 	TotalItem *int64 `json:"totalItem,omitempty" xml:"totalItem,omitempty"`
-	// Total number of pages.
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -134,31 +134,31 @@ func (s *DescribeAuthScenePageListResponseBody) Validate() error {
 }
 
 type DescribeAuthScenePageListResponseBodyResultObject struct {
-	// Number of common rules
+	// The number of General Policy policies.
 	//
 	// example:
 	//
 	// 10
 	CommonRuleCount *int64 `json:"commonRuleCount,omitempty" xml:"commonRuleCount,omitempty"`
-	// Number of custom rules
+	// The number of custom policies.
 	//
 	// example:
 	//
 	// 10
 	CustomRuleCount *int64 `json:"customRuleCount,omitempty" xml:"customRuleCount,omitempty"`
-	// Event code
+	// The event code.
 	//
 	// example:
 	//
 	// de_avypfd8253
 	EventCode *string `json:"eventCode,omitempty" xml:"eventCode,omitempty"`
-	// Scene name.
+	// The scenario name.
 	//
 	// example:
 	//
 	// 注册风险识别服务
 	SceneName *string `json:"sceneName,omitempty" xml:"sceneName,omitempty"`
-	// Service name.
+	// The service name.
 	//
 	// example:
 	//

@@ -20,29 +20,29 @@ type iDescribeVariableBindDetailRequest interface {
 }
 
 type DescribeVariableBindDetailRequest struct {
-	// Sets the language type for requests and received messages, with a default value of **zh**. Values:
+	// The language type for the request and response messages. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Bound variable definition ID
+	// The ID of the bound variable definition.
 	//
 	// example:
 	//
 	// 10
 	DefineId *int64 `json:"defineId,omitempty" xml:"defineId,omitempty"`
-	// Primary key ID of the variable, which is empty if it\\"s a new addition
+	// The primary key ID of the variable. Leave this parameter empty for new entries.
 	//
 	// example:
 	//
 	// 3144
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// example:
 	//

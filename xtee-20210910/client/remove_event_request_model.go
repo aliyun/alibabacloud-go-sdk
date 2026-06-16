@@ -24,41 +24,41 @@ type iRemoveEventRequest interface {
 }
 
 type RemoveEventRequest struct {
-	// Sets the language type for requests and received messages, with a default value of **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Creation type
+	// The creation type.
 	//
 	// example:
 	//
 	// NORMAL
 	CreateType *string `json:"createType,omitempty" xml:"createType,omitempty"`
-	// Event code
+	// The event code.
 	//
 	// example:
 	//
 	// de_arqbuy7206
 	EventCode *string `json:"eventCode,omitempty" xml:"eventCode,omitempty"`
-	// Event ID
+	// The event ID.
 	//
 	// example:
 	//
 	// 2556
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegId *string `json:"regId,omitempty" xml:"regId,omitempty"`
-	// Input field template type
+	// The templatetype of the input parameter.
 	//
 	// example:
 	//

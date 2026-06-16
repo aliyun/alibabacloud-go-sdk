@@ -16,13 +16,13 @@ type iDescribeSDKDownloadListResponseBody interface {
 }
 
 type DescribeSDKDownloadListResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// A32FE941-35F2-5378-B37C-4B8FDB16F094
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Return object
+	// The returned object.
 	ResultObject []*DescribeSDKDownloadListResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Repeated"`
 }
 
@@ -66,61 +66,61 @@ func (s *DescribeSDKDownloadListResponseBody) Validate() error {
 }
 
 type DescribeSDKDownloadListResponseBodyResultObject struct {
-	// Description information.
+	// The description.
 	//
 	// example:
 	//
 	// 描述
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Developer
+	// The developer.
 	//
 	// example:
 	//
 	// 阿里云安全-风险识别
 	Developer *string `json:"developer,omitempty" xml:"developer,omitempty"`
-	// Device type.
+	// The device type.
 	//
 	// example:
 	//
 	// ANDROID
 	DeviceType *string `json:"deviceType,omitempty" xml:"deviceType,omitempty"`
-	// Download URL.
+	// The download URL.
 	//
 	// example:
 	//
 	// https://aliyun-xxxx.oss-cn-xxx.xxx.com/sdk/xxx/10056.1/Android-AliyunDeviceEnhance-10056.1-20250611.tgz
 	DownloadUrl *string `json:"downloadUrl,omitempty" xml:"downloadUrl,omitempty"`
-	// File MD5.
+	// The MD5 hash of the file.
 	//
 	// example:
 	//
 	// E582EEB6B4BC9B5CB168AA5A7DD0EE93
 	Md5 *string `json:"md5,omitempty" xml:"md5,omitempty"`
-	// Package name
+	// The package name.
 	//
 	// example:
 	//
 	// net.security.device
 	PackageName *string `json:"packageName,omitempty" xml:"packageName,omitempty"`
-	// Risk recognition SDK privacy policy link
+	// The privacy policy link for the risk identification SDK.
 	//
 	// example:
 	//
 	// https://terms.aliyun.com/legal-agreement/terms/suit_bu1_ali_cloud/suit_bu1_ali_cloud202111120818_92724.html
 	PrivacyLink *string `json:"privacyLink,omitempty" xml:"privacyLink,omitempty"`
-	// Release time
+	// The release time.
 	//
 	// example:
 	//
 	// 1751212800000
 	PushTime *string `json:"pushTime,omitempty" xml:"pushTime,omitempty"`
-	// SDK version.
+	// The SDK version.
 	//
 	// example:
 	//
 	// 1
 	SdkVersion *string `json:"sdkVersion,omitempty" xml:"sdkVersion,omitempty"`
-	// Size
+	// The size.
 	//
 	// example:
 	//

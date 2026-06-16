@@ -16,13 +16,13 @@ type iDescribeInputFeildCountByEventCodeResponseBody interface {
 }
 
 type DescribeInputFeildCountByEventCodeResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// A32FE941-35F2-5378-B37C-4B8FDB16F094
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Return object
+	// The returned object.
 	ResultObject *DescribeInputFeildCountByEventCodeResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Struct"`
 }
 
@@ -62,19 +62,19 @@ func (s *DescribeInputFeildCountByEventCodeResponseBody) Validate() error {
 }
 
 type DescribeInputFeildCountByEventCodeResponseBodyResultObject struct {
-	// Whether it exceeds the maximum quantity
+	// Indicates whether the maximum number is exceeded.
 	//
 	// example:
 	//
 	// true
 	Limit *bool `json:"limit,omitempty" xml:"limit,omitempty"`
-	// Maximum number of created items
+	// The maximum number of entries that can be created.
 	//
 	// example:
 	//
 	// 100
 	MaxTotalItem *int32 `json:"maxTotalItem,omitempty" xml:"maxTotalItem,omitempty"`
-	// Total number of items
+	// The total number of entries.
 	//
 	// example:
 	//

@@ -24,33 +24,33 @@ type iDescribeNameListPageListResponseBody interface {
 }
 
 type DescribeNameListPageListResponseBody struct {
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *string `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
-	// Page size, default value is 10
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// AE7E6105-7DEB-5125-9B24-DCBC139F6CD2
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Returned object
+	// The returned object.
 	ResultObject []*DescribeNameListPageListResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Repeated"`
-	// Total number of items
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 101
 	TotalItem *string `json:"totalItem,omitempty" xml:"totalItem,omitempty"`
-	// Total number of pages
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -134,61 +134,61 @@ func (s *DescribeNameListPageListResponseBody) Validate() error {
 }
 
 type DescribeNameListPageListResponseBodyResultObject struct {
-	// Creation time.
+	// The creation time.
 	//
 	// example:
 	//
 	// 1621578648000
 	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// Modification time.
+	// The modification time.
 	//
 	// example:
 	//
 	// 1565701886000
 	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// ID of the list variable content data
+	// The ID of the list variable content data.
 	//
 	// example:
 	//
 	// 497
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// NameList Content memo
+	// The remarks.
 	//
 	// example:
 	//
-	// 名单内容描述
+	// 本迭代测试
 	Memo *string `json:"memo,omitempty" xml:"memo,omitempty"`
-	// Variable name
+	// The variable name.
 	//
 	// example:
 	//
 	// nl_UN8otElLb490
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Variable type
+	// The variable type.
 	//
 	// example:
 	//
 	// accountId
 	NameListType *string `json:"nameListType,omitempty" xml:"nameListType,omitempty"`
-	// Title.
+	// The title.
 	//
 	// example:
 	//
 	// 白名单
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
-	// User UID
+	// The user UID.
 	//
 	// example:
 	//
 	// 130433202307074287
 	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
-	// Variable value
+	// The variable value.
 	//
 	// example:
 	//
 	// 130433202307074287
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
-	// Variable ID.
+	// The variable ID.
 	//
 	// example:
 	//

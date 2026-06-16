@@ -30,59 +30,59 @@ type iDescribeTemplatePageListRequest interface {
 }
 
 type DescribeTemplatePageListRequest struct {
-	// Sets the language type for requests and received messages, default value is **zh**. Values:
+	// The language type for the request and response messages. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *string `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
-	// Event code.
+	// The event code.
 	//
 	// example:
 	//
 	// d6_h1fe4cfa1g
 	EventCodes *string `json:"eventCodes,omitempty" xml:"eventCodes,omitempty"`
-	// Page size, default value is 10
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegId *string `json:"regId,omitempty" xml:"regId,omitempty"`
-	// Event name
+	// The event name.
 	//
 	// example:
 	//
 	// 注册事件
 	TemplateName *string `json:"templateName,omitempty" xml:"templateName,omitempty"`
-	// Event template search field
+	// The search field for event templates.
 	//
 	// example:
 	//
 	// age
 	TemplateSearchItem *string `json:"templateSearchItem,omitempty" xml:"templateSearchItem,omitempty"`
-	// Event status
+	// The event status.
 	//
 	// example:
 	//
 	// ONLINE
 	TemplateStatus *string `json:"templateStatus,omitempty" xml:"templateStatus,omitempty"`
-	// Template type
+	// The templatetype.
 	//
 	// example:
 	//

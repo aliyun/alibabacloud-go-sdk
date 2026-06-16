@@ -26,51 +26,51 @@ type iDescribeListPocRequest interface {
 }
 
 type DescribeListPocRequest struct {
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// Sets the language type for requests and received messages, with a default value of **zh**. Values:
+	// The language type for the request and response messages. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Page size.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegId *string `json:"RegId,omitempty" xml:"RegId,omitempty"`
-	// Task name.
+	// The task name.
 	//
 	// example:
 	//
-	// Task_001
+	// task1
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// The status of the import task. Valid values:
+	// The execution status of the import task. Valid values:
 	//
-	// 	- DOING
+	// - DOING: running
 	//
-	// 	- FINISH
+	// - FINISH: completed.
 	//
 	// example:
 	//
-	// FINISH
+	// DOING
 	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	// Type
+	// The type.
 	//
 	// example:
 	//

@@ -34,53 +34,53 @@ type iUpdateAnalysisConditionFavoriteRequest interface {
 }
 
 type UpdateAnalysisConditionFavoriteRequest struct {
-	// Sets the language type for requests and received messages, with a default value of **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Condition value.
+	// The condition value.
 	//
 	// example:
 	//
 	// {\\"relationship\\":\\"and\\",\\"list\\":[{\\"deepCount\\":1,\\"left\\":{\\"hasRightVariable\\":true,\\"fieldType\\":\\"INT\\",\\"functionName\\":\\"\\",\\"leftVariableType\\":\\"NATIVE\\",\\"name\\":\\"DEtest222\\",\\"operatorCode\\":\\"equals\\"},\\"right\\":{\\"rightVariableType\\":\\"constant\\",\\"name\\":\\"9007199254\\",\\"functionName\\":\\"\\"},\\"operatorCode\\":\\"equals\\"}]}
 	Condition *string `json:"condition,omitempty" xml:"condition,omitempty"`
-	// Start time, accurate to milliseconds (ms).
+	// The start time, in milliseconds (ms).
 	//
 	// example:
 	//
 	// 1752076800000
 	EventBeginTime *int64 `json:"eventBeginTime,omitempty" xml:"eventBeginTime,omitempty"`
-	// Event code
+	// The event code.
 	//
 	// example:
 	//
 	// de_ajnoqe2016
 	EventCode *string `json:"eventCode,omitempty" xml:"eventCode,omitempty"`
-	// End time, accurate to milliseconds (ms).
+	// The end time, in milliseconds (ms).
 	//
 	// example:
 	//
 	// 1753891199000
 	EventEndTime *int64 `json:"eventEndTime,omitempty" xml:"eventEndTime,omitempty"`
-	// Field name
+	// The field name.
 	//
 	// example:
 	//
 	// age
 	FieldName *string `json:"fieldName,omitempty" xml:"fieldName,omitempty"`
-	// Field value
+	// The field value.
 	//
 	// example:
 	//
 	// 20
 	FieldValue *string `json:"fieldValue,omitempty" xml:"fieldValue,omitempty"`
-	// Primary key ID
+	// The primary key ID.
 	//
 	// This parameter is required.
 	//
@@ -88,13 +88,13 @@ type UpdateAnalysisConditionFavoriteRequest struct {
 	//
 	// 3144
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// Condition name
+	// The condition name.
 	//
 	// example:
 	//
 	// 查询条件1
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// This parameter is required.
 	//
@@ -102,7 +102,13 @@ type UpdateAnalysisConditionFavoriteRequest struct {
 	//
 	// cn-hangzhou
 	RegId *string `json:"regId,omitempty" xml:"regId,omitempty"`
-	// Type, BASIC: Basic query, ADVANCE: Advanced query, BATCH: Batch query
+	// The type. Valid values:
+	//
+	// - BASIC: basic query.
+	//
+	// - ADVANCE: advanced query.
+	//
+	// - BATCH: batch query.
 	//
 	// example:
 	//

@@ -18,17 +18,17 @@ type iCheckUsageVariableRequest interface {
 }
 
 type CheckUsageVariableRequest struct {
-	// Sets the language type for requests and received messages, with a default value of **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Primary Key ID
+	// The primary key ID.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type CheckUsageVariableRequest struct {
 	//
 	// 1
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// Region ID
+	// The region ID.
 	//
 	// This parameter is required.
 	//

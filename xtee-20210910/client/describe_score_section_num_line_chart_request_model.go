@@ -26,17 +26,17 @@ type iDescribeScoreSectionNumLineChartRequest interface {
 }
 
 type DescribeScoreSectionNumLineChartRequest struct {
-	// Sets the language type for requests and received messages, default value is **zh**. Values:
+	// The language type for the request and response. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Start timestamp, in milliseconds.
+	// The start timestamp, in milliseconds.
 	//
 	// This parameter is required.
 	//
@@ -44,13 +44,13 @@ type DescribeScoreSectionNumLineChartRequest struct {
 	//
 	// 1751249559000
 	BeginTime *string `json:"beginTime,omitempty" xml:"beginTime,omitempty"`
-	// Bypass event code
+	// The bypass event codes.
 	//
 	// example:
 	//
 	// de_amnhke2482
 	ByPassEventCodes *string `json:"byPassEventCodes,omitempty" xml:"byPassEventCodes,omitempty"`
-	// End timestamp, in milliseconds.
+	// The end timestamp, in milliseconds.
 	//
 	// This parameter is required.
 	//
@@ -58,19 +58,19 @@ type DescribeScoreSectionNumLineChartRequest struct {
 	//
 	// 1751249559000
 	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// Main event code
+	// The main event codes.
 	//
 	// example:
 	//
 	// de_avcqzc3714
 	MainEventCodes *string `json:"mainEventCodes,omitempty" xml:"mainEventCodes,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegId *string `json:"regId,omitempty" xml:"regId,omitempty"`
-	// Diversion event code
+	// The diversion event codes.
 	//
 	// example:
 	//

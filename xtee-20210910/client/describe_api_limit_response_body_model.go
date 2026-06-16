@@ -16,13 +16,13 @@ type iDescribeApiLimitResponseBody interface {
 }
 
 type DescribeApiLimitResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// AE7E6105-7DEB-5125-9B24-DCBC139F6CD2
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Returned object
+	// The returned object.
 	ResultObject *DescribeApiLimitResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Struct"`
 }
 
@@ -62,19 +62,19 @@ func (s *DescribeApiLimitResponseBody) Validate() error {
 }
 
 type DescribeApiLimitResponseBodyResultObject struct {
-	// Whether the maximum number has been exceeded
+	// Indicates whether the maximum number is exceeded.
 	//
 	// example:
 	//
 	// true
 	Limit *bool `json:"limit,omitempty" xml:"limit,omitempty"`
-	// Maximum number of items that can be created
+	// The maximum number of items that can be created.
 	//
 	// example:
 	//
 	// 150
 	MaxTotalItem *int64 `json:"maxTotalItem,omitempty" xml:"maxTotalItem,omitempty"`
-	// Total number of items
+	// The total number of items.
 	//
 	// example:
 	//

@@ -22,35 +22,35 @@ type iDeleteCustVariableRequest interface {
 }
 
 type DeleteCustVariableRequest struct {
-	// Sets the language type for requests and received messages, default value is **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Creation type
+	// The creation type.
 	//
 	// example:
 	//
 	// NORMAL
 	CreateType *string `json:"createType,omitempty" xml:"createType,omitempty"`
-	// Data version.
+	// The data version.
 	//
 	// example:
 	//
 	// 1
 	DataVersion *int64 `json:"dataVersion,omitempty" xml:"dataVersion,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegId *string `json:"regId,omitempty" xml:"regId,omitempty"`
-	// Variable ID
+	// The variable ID.
 	//
 	// example:
 	//

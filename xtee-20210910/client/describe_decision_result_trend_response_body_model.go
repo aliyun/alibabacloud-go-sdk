@@ -24,33 +24,33 @@ type iDescribeDecisionResultTrendResponseBody interface {
 }
 
 type DescribeDecisionResultTrendResponseBody struct {
-	// Status code
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// HTTP status code
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *string `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// Error details
+	// The error details.
 	//
 	// example:
 	//
 	// The input parameter data is not valid. order_storage_company_num component not found
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// AE7E6105-7DEB-5125-9B24-DCBC139F6CD2
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Returned object
+	// The returned object.
 	ResultObject *DescribeDecisionResultTrendResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Struct"`
-	// Whether the request was successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -130,9 +130,9 @@ func (s *DescribeDecisionResultTrendResponseBody) Validate() error {
 }
 
 type DescribeDecisionResultTrendResponseBodyResultObject struct {
-	// Chart data
+	// The chart data.
 	Series []*DescribeDecisionResultTrendResponseBodyResultObjectSeries `json:"series,omitempty" xml:"series,omitempty" type:"Repeated"`
-	// X-axis data
+	// The x-axis data.
 	Xaxis *DescribeDecisionResultTrendResponseBodyResultObjectXaxis `json:"xaxis,omitempty" xml:"xaxis,omitempty" type:"Struct"`
 }
 
@@ -181,9 +181,9 @@ func (s *DescribeDecisionResultTrendResponseBodyResultObject) Validate() error {
 }
 
 type DescribeDecisionResultTrendResponseBodyResultObjectSeries struct {
-	// Returned data object
+	// The returned data object.
 	Data []*DescribeDecisionResultTrendResponseBodyResultObjectSeriesData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// Name.
+	// The name.
 	//
 	// example:
 	//
@@ -231,13 +231,13 @@ func (s *DescribeDecisionResultTrendResponseBodyResultObjectSeries) Validate() e
 }
 
 type DescribeDecisionResultTrendResponseBodyResultObjectSeriesData struct {
-	// Number
+	// The quantity.
 	//
 	// example:
 	//
 	// 10
 	Num *int64 `json:"num,omitempty" xml:"num,omitempty"`
-	// ratio
+	// The ratio.
 	//
 	// example:
 	//
@@ -276,7 +276,7 @@ func (s *DescribeDecisionResultTrendResponseBodyResultObjectSeriesData) Validate
 }
 
 type DescribeDecisionResultTrendResponseBodyResultObjectXaxis struct {
-	// X-axis data structure.
+	// The xaxis data structure.
 	Data []*string `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
 }
 

@@ -30,41 +30,41 @@ type iCreateFieldRequest interface {
 }
 
 type CreateFieldRequest struct {
-	// Sets the language type for requests and received messages, with a default value of **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Field classification.
+	// The field classification.
 	//
 	// example:
 	//
 	// REQUEST_PARAM
 	Classify *string `json:"classify,omitempty" xml:"classify,omitempty"`
-	// Description information.
+	// The description.
 	//
 	// example:
 	//
 	// 字段描述信息
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Enum data.
+	// The enumeration data.
 	//
 	// example:
 	//
 	// enum
 	EnumData *string `json:"enumData,omitempty" xml:"enumData,omitempty"`
-	// Field name.
+	// The field name.
 	//
 	// example:
 	//
 	// age
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Region code.
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -72,19 +72,19 @@ type CreateFieldRequest struct {
 	//
 	// cn-hangzhou
 	RegId *string `json:"regId,omitempty" xml:"regId,omitempty"`
-	// Business source.
+	// The business source.
 	//
 	// example:
 	//
 	// DEFINE
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
-	// Title.
+	// The title.
 	//
 	// example:
 	//
 	// 年龄
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
-	// Field type.
+	// The field type.
 	//
 	// example:
 	//

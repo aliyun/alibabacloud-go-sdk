@@ -26,47 +26,47 @@ type iDescribeAuditPageListRequest interface {
 }
 
 type DescribeAuditPageListRequest struct {
-	// Sets the language type for requests and received messages, default value is **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Audit status
+	// The audit status.
 	//
 	// example:
 	//
 	// SUCCESS
 	AuditStatus *string `json:"auditStatus,omitempty" xml:"auditStatus,omitempty"`
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *string `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
-	// Event code
+	// The event code.
 	//
 	// example:
 	//
 	// de_awukck7117
 	EventCode *string `json:"eventCode,omitempty" xml:"eventCode,omitempty"`
-	// Page size, default value is 10
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegId *string `json:"regId,omitempty" xml:"regId,omitempty"`
-	// Policy name
+	// The policy name.
 	//
 	// example:
 	//

@@ -16,13 +16,13 @@ type iDescribeAnalysisConditionFavoriteListResponseBody interface {
 }
 
 type DescribeAnalysisConditionFavoriteListResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// A32FE941-35F2-5378-B37C-4B8FDB16F094
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Returned object
+	// The response object.
 	ResultObject []*DescribeAnalysisConditionFavoriteListResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Repeated"`
 }
 
@@ -66,55 +66,55 @@ func (s *DescribeAnalysisConditionFavoriteListResponseBody) Validate() error {
 }
 
 type DescribeAnalysisConditionFavoriteListResponseBodyResultObject struct {
-	// Condition value.
+	// The condition value.
 	//
 	// example:
 	//
 	// {"currentId":1,"deepCount":0,"list":[{"currentId":2,"deepCount":1,"left":{"code":"accountId","fieldType":"STRING","functionName":"","hasRightVariable":false,"name":"accountId"},"operatorCode":"isNotEmptyWrapper","parentId":1,"right":{"code":"\\"A\\nB\\nC\\"","functionName":"","name":"","rightVariableType":"constant"}}],"parentId":0,"relationship":"and"}
 	Condition *string `json:"condition,omitempty" xml:"condition,omitempty"`
-	// Event start timestamp.
+	// The event start timestamp.
 	//
 	// example:
 	//
 	// 1752076800000
 	EventBeginTime *int64 `json:"eventBeginTime,omitempty" xml:"eventBeginTime,omitempty"`
-	// Event codes.
+	// The event code.
 	//
 	// example:
 	//
 	// de_ahespg8137
 	EventCodes *string `json:"eventCodes,omitempty" xml:"eventCodes,omitempty"`
-	// Event end time.
+	// The event end timestamp.
 	//
 	// example:
 	//
 	// 1753891199000
 	EventEndTime *int64 `json:"eventEndTime,omitempty" xml:"eventEndTime,omitempty"`
-	// Field name.
+	// The field name.
 	//
 	// example:
 	//
 	// age
 	FieldName *string `json:"fieldName,omitempty" xml:"fieldName,omitempty"`
-	// Field value.
+	// The field value.
 	//
 	// example:
 	//
 	// 20
 	FieldValue *string `json:"fieldValue,omitempty" xml:"fieldValue,omitempty"`
-	// Primary key ID
+	// The primary key ID.
 	//
 	// example:
 	//
 	// 497
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// Condition name
+	// The condition name.
 	//
 	// example:
 	//
 	// 查询条件1
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Type, BASIC: Basic query, ADVANCE: Advanced query, BATCH: Batch query
+	// The type. Valid values: BASIC: basic query. ADVANCE: advanced query. BATCH: batch query.
 	//
 	// example:
 	//

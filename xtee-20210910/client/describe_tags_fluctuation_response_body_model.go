@@ -24,33 +24,33 @@ type iDescribeTagsFluctuationResponseBody interface {
 }
 
 type DescribeTagsFluctuationResponseBody struct {
-	// Status code.
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// HTTP status code
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *string `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// Error message.
+	// The error message.
 	//
 	// example:
 	//
 	// The input parameter data is not valid. order_storage_company_num component not found
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// AE7E6105-7DEB-5125-9B24-DCBC139F6CD2
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Return object
+	// The returned object.
 	ResultObject []*DescribeTagsFluctuationResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Repeated"`
-	// Indicates whether the call was successful
+	// Indicates whether the call was successful.
 	//
 	// example:
 	//
@@ -134,37 +134,37 @@ func (s *DescribeTagsFluctuationResponseBody) Validate() error {
 }
 
 type DescribeTagsFluctuationResponseBodyResultObject struct {
-	// Tag name
+	// The label name.
 	//
 	// example:
 	//
 	// accountId
 	TableName *string `json:"tableName,omitempty" xml:"tableName,omitempty"`
-	// Data for today
+	// The data for today.
 	//
 	// example:
 	//
 	// 100
 	TodayNum *int64 `json:"todayNum,omitempty" xml:"todayNum,omitempty"`
-	// Data for the last seven days
+	// The data for the last seven days.
 	//
 	// example:
 	//
 	// 600
 	WithinSevenDayNum *string `json:"withinSevenDayNum,omitempty" xml:"withinSevenDayNum,omitempty"`
-	// Data for the last thirty days
+	// The data for the last 30 days.
 	//
 	// example:
 	//
 	// 1200
 	WithinThirtyDayNum *string `json:"withinThirtyDayNum,omitempty" xml:"withinThirtyDayNum,omitempty"`
-	// Data for the last three days
+	// The data for the last three days.
 	//
 	// example:
 	//
 	// 300
 	WithinThreeDayNum *string `json:"withinThreeDayNum,omitempty" xml:"withinThreeDayNum,omitempty"`
-	// Data for yesterday
+	// The data for yesterday.
 	//
 	// example:
 	//

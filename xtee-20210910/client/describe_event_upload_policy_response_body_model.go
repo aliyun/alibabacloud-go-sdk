@@ -26,43 +26,43 @@ type iDescribeEventUploadPolicyResponseBody interface {
 }
 
 type DescribeEventUploadPolicyResponseBody struct {
-	// ID for accessing OSS
+	// The AccessKey ID used to access OSS.
 	//
 	// example:
 	//
-	// LTAxxxxxxxxxxxx
+	// LTAxxxxxxxxxxxxxxx
 	AccessId *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
-	// OSS host.
+	// The OSS host.
 	//
 	// example:
 	//
 	// 172.16.0.44
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// The Key required for file upload.
+	// The key required for file upload.
 	//
 	// example:
 	//
 	// saf/de/namelist/e924/ufzgsedX9bd3a7
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// OSS security policy
+	// The OSS security policy.
 	//
 	// example:
 	//
 	// eyJleHBpcmF0aW9uIjoiMjAyNS0wNy0zMFQwNjowNTo0OS45NTRaIiwiY29uZGl0aW9ucyI6W1siY29udGVudC1sZW5ndGgtcmFuZ2UiLDAsMTA0ODU3NjAwMF0sWyJlcSIsIiRrZXkiLCJzYWZcL2RlXC9uYW1lbGlzdFwvZTkyNFwvdWZ6Z3NlZFg5Ymxxxxxxxxxxx
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// A32FE941-35F2-5378-B37C-4B8FDB16F094
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Signature data.
+	// The signature data.
 	//
 	// example:
 	//
 	// 7aXmkd2Z3oksCXOS9uvKlJuOKaY=
 	Signature *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
-	// Temporary identity credential.
+	// The temporary security token.
 	//
 	// example:
 	//

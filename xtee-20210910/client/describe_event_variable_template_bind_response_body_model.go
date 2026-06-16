@@ -16,13 +16,13 @@ type iDescribeEventVariableTemplateBindResponseBody interface {
 }
 
 type DescribeEventVariableTemplateBindResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// A32FE941-35F2-5378-B37C-4B8FDB16F094
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Return object
+	// The response object.
 	ResultObject *DescribeEventVariableTemplateBindResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Struct"`
 }
 
@@ -62,17 +62,17 @@ func (s *DescribeEventVariableTemplateBindResponseBody) Validate() error {
 }
 
 type DescribeEventVariableTemplateBindResponseBodyResultObject struct {
-	// List of chargeable variables
+	// The list of paid variables.
 	ChargeVariables []*DescribeEventVariableTemplateBindResponseBodyResultObjectChargeVariables `json:"chargeVariables,omitempty" xml:"chargeVariables,omitempty" type:"Repeated"`
-	// List of free variables
+	// The list of free variables.
 	FreeVariables []*DescribeEventVariableTemplateBindResponseBodyResultObjectFreeVariables `json:"freeVariables,omitempty" xml:"freeVariables,omitempty" type:"Repeated"`
-	// Template code
+	// The template code.
 	//
 	// example:
 	//
 	// register
 	TemplateCode *string `json:"templateCode,omitempty" xml:"templateCode,omitempty"`
-	// Total count
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -147,43 +147,43 @@ func (s *DescribeEventVariableTemplateBindResponseBodyResultObject) Validate() e
 }
 
 type DescribeEventVariableTemplateBindResponseBodyResultObjectChargeVariables struct {
-	// Variable code
+	// The variable code.
 	//
 	// example:
 	//
 	// ip
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Description of the variable.
+	// The variable description.
 	//
 	// example:
 	//
 	// 描述
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Field type.
+	// The field type.
 	//
 	// example:
 	//
 	// STRING
 	FieldType *string `json:"fieldType,omitempty" xml:"fieldType,omitempty"`
-	// Primary key ID
+	// The primary key ID.
 	//
 	// example:
 	//
 	// 456
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// Variable name
+	// The variable name.
 	//
 	// example:
 	//
 	// ip
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Title.
+	// The title.
 	//
 	// example:
 	//
 	// ip
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
-	// Variable type.
+	// The variable type.
 	//
 	// example:
 	//
@@ -267,43 +267,43 @@ func (s *DescribeEventVariableTemplateBindResponseBodyResultObjectChargeVariable
 }
 
 type DescribeEventVariableTemplateBindResponseBodyResultObjectFreeVariables struct {
-	// Variable code
+	// The variable code.
 	//
 	// example:
 	//
 	// age
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Variable description.
+	// The variable description.
 	//
 	// example:
 	//
 	// 描述
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Field type.
+	// The field type.
 	//
 	// example:
 	//
 	// STRING
 	FieldType *string `json:"fieldType,omitempty" xml:"fieldType,omitempty"`
-	// Primary key ID
+	// The primary key ID.
 	//
 	// example:
 	//
 	// 234
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// Variable name
+	// The variable name.
 	//
 	// example:
 	//
 	// age
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Title.
+	// The title.
 	//
 	// example:
 	//
 	// 年龄
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
-	// Variable type.
+	// The variable type.
 	//
 	// example:
 	//

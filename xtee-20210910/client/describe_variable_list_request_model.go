@@ -32,65 +32,65 @@ type iDescribeVariableListRequest interface {
 }
 
 type DescribeVariableListRequest struct {
-	// Set the language type for requests and responses, default value is **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Creation type.
+	// The creation type.
 	//
 	// example:
 	//
 	// NORMAL
 	CreateType *string `json:"createType,omitempty" xml:"createType,omitempty"`
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *string `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
-	// Page size, default value is 10.
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Associated event ID.
+	// The ID of the associated event.
 	//
 	// example:
 	//
 	// de_avypfd8253
 	RefObjId *string `json:"refObjId,omitempty" xml:"refObjId,omitempty"`
-	// Region code.
+	// The region code.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegId *string `json:"regId,omitempty" xml:"regId,omitempty"`
-	// Source type.
+	// The source type.
 	//
 	// example:
 	//
 	// SAF
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	// Type.
+	// The type.
 	//
 	// example:
 	//
 	// IDENTIFY_SERVICE
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// JSON array string of types.
+	// The type JSON array string.
 	//
 	// example:
 	//
 	// [\\"coupon_abuse_detection\\"]
 	TypesStr *string `json:"typesStr,omitempty" xml:"typesStr,omitempty"`
-	// Value for fuzzy search.
+	// The value for fuzzy match.
 	//
 	// example:
 	//

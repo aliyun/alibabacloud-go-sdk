@@ -16,13 +16,13 @@ type iDescribeAllDataSourceResponseBody interface {
 }
 
 type DescribeAllDataSourceResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// A32FE941-35F2-5378-B37C-4B8FDB16F094
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Return object
+	// The returned object.
 	ResultObject []*DescribeAllDataSourceResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Repeated"`
 }
 
@@ -66,19 +66,19 @@ func (s *DescribeAllDataSourceResponseBody) Validate() error {
 }
 
 type DescribeAllDataSourceResponseBodyResultObject struct {
-	// Event code
+	// The event code.
 	//
 	// example:
 	//
 	// de_aszbjb7236
 	EventCode *string `json:"eventCode,omitempty" xml:"eventCode,omitempty"`
-	// Event name.
+	// The event name.
 	//
 	// example:
 	//
 	// 注册风险
 	EventName *string `json:"eventName,omitempty" xml:"eventName,omitempty"`
-	// Policy primary key ID
+	// The primary key ID of the policy.
 	//
 	// example:
 	//

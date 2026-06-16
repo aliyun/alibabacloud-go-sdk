@@ -16,13 +16,13 @@ type iDescribeParamByEventCodesResponseBody interface {
 }
 
 type DescribeParamByEventCodesResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// A32FE941-35F2-5378-B37C-4B8FDB16F094
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Return object
+	// The returned object.
 	ResultObject []*DescribeParamByEventCodesResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Repeated"`
 }
 
@@ -66,13 +66,13 @@ func (s *DescribeParamByEventCodesResponseBody) Validate() error {
 }
 
 type DescribeParamByEventCodesResponseBodyResultObject struct {
-	// Return code.
+	// The return code.
 	//
 	// example:
 	//
 	// age
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Name
+	// The name.
 	//
 	// example:
 	//

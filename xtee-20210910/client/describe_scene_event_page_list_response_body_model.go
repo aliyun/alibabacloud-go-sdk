@@ -24,33 +24,33 @@ type iDescribeSceneEventPageListResponseBody interface {
 }
 
 type DescribeSceneEventPageListResponseBody struct {
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
-	// Number of items per page. Default value: 20, minimum value: 1, maximum value: 50.
+	// The number of entries per page in the response. Default value: 20. Minimum value: 1. Maximum value: 50.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Request ID, each request has a unique value, which facilitates subsequent troubleshooting
+	// The request ID. Each request has a unique ID for troubleshooting purposes.
 	//
 	// example:
 	//
 	// AE7E6105-7DEB-5125-9B24-DCBC139F6CD2
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Return array
+	// The returned array.
 	ResultObject []*DescribeSceneEventPageListResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Repeated"`
-	// Total number of items
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 3
 	TotalItem *int32 `json:"totalItem,omitempty" xml:"totalItem,omitempty"`
-	// Total number of pages
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -134,61 +134,61 @@ func (s *DescribeSceneEventPageListResponseBody) Validate() error {
 }
 
 type DescribeSceneEventPageListResponseBodyResultObject struct {
-	// Number of common rules
+	// The number of General Policy rules.
 	//
 	// example:
 	//
 	// 10
 	CommonRuleCount *string `json:"commonRuleCount,omitempty" xml:"commonRuleCount,omitempty"`
-	// Number of custom rules
+	// The number of custom policies.
 	//
 	// example:
 	//
 	// 10
 	CustomRuleCount *string `json:"customRuleCount,omitempty" xml:"customRuleCount,omitempty"`
-	// Event code
+	// The event code.
 	//
 	// example:
 	//
 	// de_aszbjb7236
 	EventCode *string `json:"eventCode,omitempty" xml:"eventCode,omitempty"`
-	// Event name.
+	// The event name.
 	//
 	// example:
 	//
 	// 注册风险
 	EventName *string `json:"eventName,omitempty" xml:"eventName,omitempty"`
-	// Modification time
+	// The time when the event was last modified.
 	//
 	// example:
 	//
 	// 1565701886000
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// Modifier
+	// The user who last modified the event.
 	//
 	// example:
 	//
 	// 公有云用户uid
 	Modifier *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
-	// Number of custom rules
+	// The number of user-defined policies.
 	//
 	// example:
 	//
 	// 10
 	NormalRuleCount *string `json:"normalRuleCount,omitempty" xml:"normalRuleCount,omitempty"`
-	// Service code
+	// The service code.
 	//
 	// example:
 	//
 	// device_risk
 	Service *string `json:"service,omitempty" xml:"service,omitempty"`
-	// Usage status
+	// The usage status.
 	//
 	// example:
 	//
 	// 使用/未使用
 	UseStatus *string `json:"useStatus,omitempty" xml:"useStatus,omitempty"`
-	// Number of white-box rules
+	// The number of whitebox implementation policies.
 	//
 	// example:
 	//

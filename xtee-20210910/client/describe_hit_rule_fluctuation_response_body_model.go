@@ -24,33 +24,33 @@ type iDescribeHitRuleFluctuationResponseBody interface {
 }
 
 type DescribeHitRuleFluctuationResponseBody struct {
-	// Status code.
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// HTTP status code
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *string `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// Error message.
+	// The error message.
 	//
 	// example:
 	//
 	// The input parameter data is not valid. order_storage_company_num component not found
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// AE7E6105-7DEB-5125-9B24-DCBC139F6CD2
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Return object
+	// The returned object.
 	ResultObject []*DescribeHitRuleFluctuationResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Repeated"`
-	// Whether the request was successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -134,43 +134,43 @@ func (s *DescribeHitRuleFluctuationResponseBody) Validate() error {
 }
 
 type DescribeHitRuleFluctuationResponseBodyResultObject struct {
-	// Policy ID
+	// The policy ID.
 	//
 	// example:
 	//
 	// 115019
 	RuleId *string `json:"ruleId,omitempty" xml:"ruleId,omitempty"`
-	// Policy name
+	// The policy name.
 	//
 	// example:
 	//
 	// 营销风险识别
 	RuleName *string `json:"ruleName,omitempty" xml:"ruleName,omitempty"`
-	// Today\\"s count
+	// The number of hits today.
 	//
 	// example:
 	//
 	// 100
 	TodayNum *int64 `json:"todayNum,omitempty" xml:"todayNum,omitempty"`
-	// Count within seven days
+	// The number of hits in the last seven days.
 	//
 	// example:
 	//
 	// 600
 	WithinSevenDayNum *string `json:"withinSevenDayNum,omitempty" xml:"withinSevenDayNum,omitempty"`
-	// Count within thirty days
+	// The number of hits in the last thirty days.
 	//
 	// example:
 	//
 	// 1200
 	WithinThirtyDayNum *string `json:"withinThirtyDayNum,omitempty" xml:"withinThirtyDayNum,omitempty"`
-	// Count within three days
+	// The number of hits in the last three days.
 	//
 	// example:
 	//
 	// 300
 	WithinThreeDayNum *string `json:"withinThreeDayNum,omitempty" xml:"withinThreeDayNum,omitempty"`
-	// Yesterday\\"s count
+	// The number of hits yesterday.
 	//
 	// example:
 	//

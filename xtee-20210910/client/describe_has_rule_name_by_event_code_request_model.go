@@ -22,35 +22,35 @@ type iDescribeHasRuleNameByEventCodeRequest interface {
 }
 
 type DescribeHasRuleNameByEventCodeRequest struct {
-	// Sets the language type for requests and received messages, default value is **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Event code
+	// The event code.
 	//
 	// example:
 	//
 	// de_atvmlf7412
 	EventCode *string `json:"eventCode,omitempty" xml:"eventCode,omitempty"`
-	// Excluded policy ID
+	// The ID of the policy to exclude.
 	//
 	// example:
 	//
 	// 10621
 	ExcludeRuleId *string `json:"excludeRuleId,omitempty" xml:"excludeRuleId,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegId *string `json:"regId,omitempty" xml:"regId,omitempty"`
-	// Policy name
+	// The policy name.
 	//
 	// example:
 	//

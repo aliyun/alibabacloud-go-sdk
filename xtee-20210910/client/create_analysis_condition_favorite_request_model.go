@@ -32,17 +32,17 @@ type iCreateAnalysisConditionFavoriteRequest interface {
 }
 
 type CreateAnalysisConditionFavoriteRequest struct {
-	// Sets the language type for requests and received messages, with a default value of **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Condition value.
+	// The condition value.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +50,7 @@ type CreateAnalysisConditionFavoriteRequest struct {
 	//
 	// {"relationship":"and","list":[{"deepCount":1,"left":{"hasRightVariable":true,"fieldType":"INT","functionName":"","leftVariableType":"NATIVE","name":"DEtest222","operatorCode":"equals"},"right":{"rightVariableType":"constant","name":"11","functionName":""},"operatorCode":"equals"}]}
 	Condition *string `json:"condition,omitempty" xml:"condition,omitempty"`
-	// Start time, accurate to milliseconds (ms).
+	// The start time, in milliseconds (ms).
 	//
 	// This parameter is required.
 	//
@@ -58,7 +58,7 @@ type CreateAnalysisConditionFavoriteRequest struct {
 	//
 	// 1751299200000
 	EventBeginTime *int64 `json:"eventBeginTime,omitempty" xml:"eventBeginTime,omitempty"`
-	// Event codes, separated by commas
+	// The event codes. Separate multiple event codes with commas (,).
 	//
 	// This parameter is required.
 	//
@@ -66,7 +66,7 @@ type CreateAnalysisConditionFavoriteRequest struct {
 	//
 	// ["de_ahqhsw7665","de_agbzfi5134"]
 	EventCodes *string `json:"eventCodes,omitempty" xml:"eventCodes,omitempty"`
-	// End time, accurate to milliseconds (ms).
+	// The end time, in milliseconds (ms).
 	//
 	// This parameter is required.
 	//
@@ -74,19 +74,19 @@ type CreateAnalysisConditionFavoriteRequest struct {
 	//
 	// 1753372799000
 	EventEndTime *int64 `json:"eventEndTime,omitempty" xml:"eventEndTime,omitempty"`
-	// Field name
+	// The field name.
 	//
 	// example:
 	//
 	// age
 	FieldName *string `json:"fieldName,omitempty" xml:"fieldName,omitempty"`
-	// Field value
+	// The field value.
 	//
 	// example:
 	//
 	// 10
 	FieldValue *string `json:"fieldValue,omitempty" xml:"fieldValue,omitempty"`
-	// Condition favorite name
+	// The name of the saved query condition.
 	//
 	// This parameter is required.
 	//
@@ -94,7 +94,7 @@ type CreateAnalysisConditionFavoriteRequest struct {
 	//
 	// 条件一
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// This parameter is required.
 	//
@@ -102,7 +102,7 @@ type CreateAnalysisConditionFavoriteRequest struct {
 	//
 	// cn-hangzhou
 	RegId *string `json:"regId,omitempty" xml:"regId,omitempty"`
-	// Query type
+	// The query type.
 	//
 	// This parameter is required.
 	//

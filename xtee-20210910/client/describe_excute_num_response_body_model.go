@@ -20,7 +20,7 @@ type iDescribeExcuteNumResponseBody interface {
 type DescribeExcuteNumResponseBody struct {
 	// Service category names.
 	Categories []*string `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
-	// Returned data.
+	// Response data.
 	Data []*string `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// Request ID.
 	//

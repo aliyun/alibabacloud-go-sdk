@@ -24,33 +24,33 @@ type iDescribeAllEventNameAndCodeResponseBody interface {
 }
 
 type DescribeAllEventNameAndCodeResponseBody struct {
-	// Status code.
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// HTTP status code
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *string `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// Error message.
+	// The error message.
 	//
 	// example:
 	//
 	// The input parameter data is not valid. order_storage_company_num component not found
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// AE7E6105-7DEB-5125-9B24-DCBC139F6CD2
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Returned object
+	// The returned object.
 	ResultObject []*DescribeAllEventNameAndCodeResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Repeated"`
-	// Whether the operation was successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -134,27 +134,27 @@ func (s *DescribeAllEventNameAndCodeResponseBody) Validate() error {
 }
 
 type DescribeAllEventNameAndCodeResponseBodyResultObject struct {
-	// List of child fields.
+	// The list of child fields.
 	Children []*DescribeAllEventNameAndCodeResponseBodyResultObjectChildren `json:"children,omitempty" xml:"children,omitempty" type:"Repeated"`
-	// Creation type
+	// The creation type.
 	//
 	// example:
 	//
 	// MORMAL
 	CreateType *string `json:"createType,omitempty" xml:"createType,omitempty"`
-	// Event code
+	// The event code.
 	//
 	// example:
 	//
 	// de_aszbjb7236
 	EventCode *string `json:"eventCode,omitempty" xml:"eventCode,omitempty"`
-	// Event name.
+	// The event name.
 	//
 	// example:
 	//
 	// 注册风险
 	EventName *string `json:"eventName,omitempty" xml:"eventName,omitempty"`
-	// Event type
+	// The event type.
 	//
 	// example:
 	//
@@ -229,25 +229,25 @@ func (s *DescribeAllEventNameAndCodeResponseBodyResultObject) Validate() error {
 }
 
 type DescribeAllEventNameAndCodeResponseBodyResultObjectChildren struct {
-	// Creation type
+	// The creation type.
 	//
 	// example:
 	//
 	// NORMAL
 	CreateType *string `json:"createType,omitempty" xml:"createType,omitempty"`
-	// Event code
+	// The event code.
 	//
 	// example:
 	//
 	// de_aamexg3015
 	EventCode *string `json:"eventCode,omitempty" xml:"eventCode,omitempty"`
-	// Event name.
+	// The event name.
 	//
 	// example:
 	//
 	// 注册风险旁路
 	EventName *string `json:"eventName,omitempty" xml:"eventName,omitempty"`
-	// Event type
+	// The event type.
 	//
 	// example:
 	//

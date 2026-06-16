@@ -24,33 +24,33 @@ type iDescribeAppKeyPageResponseBody interface {
 }
 
 type DescribeAppKeyPageResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// E01E1B4A-6747-5329-9046-B6D6B2D91349
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
-	// Number of items per page, default value is 10.
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Returned object.
+	// The returned object.
 	ResultObject []*DescribeAppKeyPageResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Repeated"`
-	// Total number of items.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 3
 	TotalItem *int32 `json:"totalItem,omitempty" xml:"totalItem,omitempty"`
-	// Total number of pages.
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -134,43 +134,43 @@ func (s *DescribeAppKeyPageResponseBody) Validate() error {
 }
 
 type DescribeAppKeyPageResponseBodyResultObject struct {
-	// Android SDK download URL.
+	// The download URL of the Android SDK.
 	//
 	// example:
 	//
 	// https://xxxxx-oss-xxxxx.xxxxxx.aliyuncs.com/xx/xx/xxx/xxxxxx.csv?Expires=1753433384&OSSAccessKeyId=xxxxxxxxx&Signature=%2F%xxxxxxxxxxxx%3D
 	AndroidSdkUrl *string `json:"androidSdkUrl,omitempty" xml:"androidSdkUrl,omitempty"`
-	// Android SDK version number.
+	// The version number of the Android SDK.
 	//
 	// example:
 	//
 	// 1
 	AndroidSdkVersion *string `json:"androidSdkVersion,omitempty" xml:"androidSdkVersion,omitempty"`
-	// Application appkey.
+	// The appKey of the application.
 	//
 	// example:
 	//
 	// sh9a71f07fhs556bd767586307e82795
 	AppKey *string `json:"appKey,omitempty" xml:"appKey,omitempty"`
-	// Creation time.
+	// The creation time.
 	//
 	// example:
 	//
 	// 1621578648000
 	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// iOS SDK download URL.
+	// The download URL of the iOS SDK.
 	//
 	// example:
 	//
 	// https://xxxxx-oss-xxxxx.xxxxxx.aliyuncs.com/xx/xx/xxx/xxxxxx.csv?Expires=1753433384&OSSAccessKeyId=xxxxxxxxx&Signature=%2F%xxxxxxxxxxxx%3D
 	IosSdkUrl *string `json:"iosSdkUrl,omitempty" xml:"iosSdkUrl,omitempty"`
-	// iOS SDK version number.
+	// The version number of the iOS SDK.
 	//
 	// example:
 	//
 	// 1
 	IosSdkVersion *string `json:"iosSdkVersion,omitempty" xml:"iosSdkVersion,omitempty"`
-	// Memo.
+	// The remarks.
 	//
 	// example:
 	//
@@ -182,7 +182,7 @@ type DescribeAppKeyPageResponseBodyResultObject struct {
 	//
 	// 已作废
 	SdkItems *string `json:"sdkItems,omitempty" xml:"sdkItems,omitempty"`
-	// Whether this appKey is integrated.
+	// Indicates whether the appKey is integrated.
 	//
 	// example:
 	//

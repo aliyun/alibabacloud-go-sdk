@@ -28,53 +28,53 @@ type iDescribeOperationLogPageListRequest interface {
 }
 
 type DescribeOperationLogPageListRequest struct {
-	// Set the language type for request and response messages, default value is **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
-	// End time.
+	// The end time.
 	//
 	// example:
 	//
 	// 1733364850919
 	EndDate *int64 `json:"endDate,omitempty" xml:"endDate,omitempty"`
-	// Operation Summary.
+	// The change content to query.
 	//
 	// example:
 	//
-	// Update
+	// 修改变量
 	OperationSummary *string `json:"operationSummary,omitempty" xml:"operationSummary,omitempty"`
-	// Page size, default value is 10
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Region code.
+	// The region code.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegId *string `json:"regId,omitempty" xml:"regId,omitempty"`
-	// Start time.
+	// The start time.
 	//
 	// example:
 	//
 	// 1733364850919
 	StartDate *int64 `json:"startDate,omitempty" xml:"startDate,omitempty"`
-	// User Name Search.
+	// The operator name to query.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iDescribeUsedServiceRequest interface {
 }
 
 type DescribeUsedServiceRequest struct {
-	// Sets the language type for requests and received messages, with a default value of **zh**. Values:
+	// The language type for sending and receiving messages. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
@@ -26,7 +26,7 @@ type DescribeUsedServiceRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Region code
+	// The region ID.
 	//
 	// example:
 	//

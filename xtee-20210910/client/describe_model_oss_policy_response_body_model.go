@@ -32,13 +32,13 @@ type DescribeModelOssPolicyResponseBody struct {
 	//
 	// example:
 	//
-	// LTAxxxxxxxxxxxx
+	// LTAxxxxxxxxx
 	AccessId *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
 	// Address.
 	//
 	// example:
 	//
-	// https://xxxxxxxx-xxxxxxx.aliyuncs.com
+	// https://saf-ai.oss-cn-shanghai.aliyuncs.com
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
 	// OSS access key secret.
 	//

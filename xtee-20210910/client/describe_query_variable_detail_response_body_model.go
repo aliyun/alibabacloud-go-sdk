@@ -16,13 +16,13 @@ type iDescribeQueryVariableDetailResponseBody interface {
 }
 
 type DescribeQueryVariableDetailResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// A32FE941-35F2-5378-B37C-4B8FDB16F094
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Returned object
+	// The returned object.
 	ResultObject *DescribeQueryVariableDetailResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Struct"`
 }
 
@@ -62,67 +62,67 @@ func (s *DescribeQueryVariableDetailResponseBody) Validate() error {
 }
 
 type DescribeQueryVariableDetailResponseBodyResultObject struct {
-	// Data source code.
+	// The data source code.
 	//
 	// example:
 	//
 	// ds_vcaoii1697
 	DataSourceCode *int64 `json:"dataSourceCode,omitempty" xml:"dataSourceCode,omitempty"`
-	// Data source name
+	// The data source name.
 	//
 	// example:
 	//
 	// 名称数据源
 	DataSourceName *string `json:"dataSourceName,omitempty" xml:"dataSourceName,omitempty"`
-	// Description.
+	// The description.
 	//
 	// example:
 	//
 	// 变量描述
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Event code
+	// The event code.
 	//
 	// example:
 	//
 	// de_aszbjb7236
 	EventCode *string `json:"eventCode,omitempty" xml:"eventCode,omitempty"`
-	// Expression.
+	// The expression.
 	//
 	// example:
 	//
 	// SELECT  AVG( $source )\\nFROM ds_vcaoii1697 \\nWHERE  $age > 0
 	Expression *string `json:"expression,omitempty" xml:"expression,omitempty"`
-	// Expression title.
+	// The expression name.
 	//
 	// example:
 	//
 	// SELECT  AVG( $source )\\nFROM testCase\\nWHERE  $age > 0
 	ExpressionTitle *string `json:"expressionTitle,omitempty" xml:"expressionTitle,omitempty"`
-	// Expression variable.
+	// The expression variable.
 	//
 	// example:
 	//
 	// [96426]
 	ExpressionVariable *string `json:"expressionVariable,omitempty" xml:"expressionVariable,omitempty"`
-	// Variable ID
+	// The variable ID.
 	//
 	// example:
 	//
 	// 355
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// Outlier
+	// The outlier value.
 	//
 	// example:
 	//
 	// -1
 	Outlier *string `json:"outlier,omitempty" xml:"outlier,omitempty"`
-	// Output results.
+	// The output result.
 	//
 	// example:
 	//
 	// DOUBLE
 	Outputs *string `json:"outputs,omitempty" xml:"outputs,omitempty"`
-	// Title.
+	// The title.
 	//
 	// example:
 	//

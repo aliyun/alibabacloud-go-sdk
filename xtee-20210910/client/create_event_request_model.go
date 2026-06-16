@@ -30,59 +30,59 @@ type iCreateEventRequest interface {
 }
 
 type CreateEventRequest struct {
-	// Sets the language type for requests and received messages, default value is **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Creation type
+	// The creation type.
 	//
 	// example:
 	//
 	// NORMAL
 	CreateType *string `json:"createType,omitempty" xml:"createType,omitempty"`
-	// Event name.
+	// The event name.
 	//
 	// example:
 	//
 	// 登录事件
 	EventName *string `json:"eventName,omitempty" xml:"eventName,omitempty"`
-	// Input parameters, JSON string.
+	// The input parameters in a JSON string.
 	//
 	// example:
 	//
 	// [{"fieldCode":"accountId","description":"用户的账户ID，唯一标识一个账户的id","fieldRank":1,"title":"账户ID","fieldType":"STRING","fieldSource":"DEFAULT"},{"fieldCode":"hitRules","fieldRank":2,"title":"命中策略","fieldType":"STRING","fieldSource":"DEFAULT"},{"fieldCode":"age","description":"","fieldRank":3,"title":"年龄","fieldType":"INT","fieldSource":"DEFAULT"},{"fieldCode":"ip","description":"IP地址","fieldRank":4,"title":"IP地址","fieldType":"STRING","fieldSource":"DEFAULT"},{"fieldCode":"tags","fieldRank":5,"title":"风险标签","fieldType":"STRING","fieldSource":"DEFAULT"},{"fieldCode":"score","fieldRank":6,"title":"风险分值","fieldType":"DOUBLE","fieldSource":"DEFAULT"},{"fieldCode":"hitList","fieldRank":7}]
 	InputFieldsStr *string `json:"inputFieldsStr,omitempty" xml:"inputFieldsStr,omitempty"`
-	// Memo information
+	// The remarks.
 	//
 	// example:
 	//
 	// 登录事件描述
 	Memo *string `json:"memo,omitempty" xml:"memo,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegId *string `json:"regId,omitempty" xml:"regId,omitempty"`
-	// Input field template type
+	// The templatetype of the input field.
 	//
 	// example:
 	//
 	// register
 	TemplateCode *string `json:"templateCode,omitempty" xml:"templateCode,omitempty"`
-	// Published template name.
+	// The name of the published template.
 	//
 	// example:
 	//
 	// 注册事件模版
 	TemplateName *string `json:"templateName,omitempty" xml:"templateName,omitempty"`
-	// Template type.
+	// The templatetype.
 	//
 	// example:
 	//

@@ -16,13 +16,13 @@ type iDescribeServiceListResponseBody interface {
 }
 
 type DescribeServiceListResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// A32FE941-35F2-5378-B37C-4B8FDB16F094
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Return object
+	// The response object.
 	ResultObject []*DescribeServiceListResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Repeated"`
 }
 
@@ -66,13 +66,13 @@ func (s *DescribeServiceListResponseBody) Validate() error {
 }
 
 type DescribeServiceListResponseBodyResultObject struct {
-	// Service code
+	// The service code.
 	//
 	// example:
 	//
 	// coupon_abuse_detection
 	ServiceCode *string `json:"serviceCode,omitempty" xml:"serviceCode,omitempty"`
-	// Service name.
+	// The service name.
 	//
 	// example:
 	//

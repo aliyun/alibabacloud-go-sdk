@@ -26,47 +26,47 @@ type iDescribeQueryVariablePageListRequest interface {
 }
 
 type DescribeQueryVariablePageListRequest struct {
-	// Sets the language type for requests and received messages, default value is **zh**. Values:
+	// The language type for the request and response messages. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int64 `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
-	// Data source code
+	// The data source code.
 	//
 	// example:
 	//
 	// ds_vcaoii1697
 	DataSourceCode *string `json:"dataSourceCode,omitempty" xml:"dataSourceCode,omitempty"`
-	// Event code
+	// The event code.
 	//
 	// example:
 	//
 	// de_ahpayh4121
 	EventCode *string `json:"eventCode,omitempty" xml:"eventCode,omitempty"`
-	// Query variable name
+	// The name of the custom query variable.
 	//
 	// example:
 	//
 	// 名称
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Page size, default value is 10
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// This parameter is required.
 	//

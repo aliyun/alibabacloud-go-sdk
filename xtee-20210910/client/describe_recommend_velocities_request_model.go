@@ -20,29 +20,29 @@ type iDescribeRecommendVelocitiesRequest interface {
 }
 
 type DescribeRecommendVelocitiesRequest struct {
-	// Sets the language type for requests and responses, with a default value of **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Metric code
+	// The metric code.
 	//
 	// example:
 	//
 	// coupon_abuse_detection
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Region ID
+	// The region code.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegId *string `json:"regId,omitempty" xml:"regId,omitempty"`
-	// Metric type
+	// The metric type.
 	//
 	// example:
 	//

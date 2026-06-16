@@ -24,37 +24,37 @@ type iDescribeAuditPageListResponseBody interface {
 }
 
 type DescribeAuditPageListResponseBody struct {
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
-	// Number of records per page, default value: 10.
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// AE7E6105-7DEB-5125-9B24-DCBC139F6CD2
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Return object
+	// The returned object.
 	//
 	// example:
 	//
 	// true
 	ResultObject *bool `json:"resultObject,omitempty" xml:"resultObject,omitempty"`
-	// Total items
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 6
 	TotalItem *int32 `json:"totalItem,omitempty" xml:"totalItem,omitempty"`
-	// Total pages
+	// The total number of pages.
 	//
 	// example:
 	//

@@ -24,33 +24,33 @@ type iDescribeRuleBarChartResponseBody interface {
 }
 
 type DescribeRuleBarChartResponseBody struct {
-	// Status code.
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// HTTP status code.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *string `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// Error message.
+	// The error message.
 	//
 	// example:
 	//
 	// The input parameter data is not valid. order_storage_company_num component not found
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// AE7E6105-7DEB-5125-9B24-DCBC139F6CD2
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Returned object
+	// The response object.
 	ResultObject *DescribeRuleBarChartResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Struct"`
-	// Whether the request was successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -130,9 +130,9 @@ func (s *DescribeRuleBarChartResponseBody) Validate() error {
 }
 
 type DescribeRuleBarChartResponseBodyResultObject struct {
-	// Data list
+	// The data list.
 	Series []*DescribeRuleBarChartResponseBodyResultObjectSeries `json:"series,omitempty" xml:"series,omitempty" type:"Repeated"`
-	// yaxis related results.
+	// The y-axis results.
 	Yaxis *DescribeRuleBarChartResponseBodyResultObjectYaxis `json:"yaxis,omitempty" xml:"yaxis,omitempty" type:"Struct"`
 }
 
@@ -181,9 +181,9 @@ func (s *DescribeRuleBarChartResponseBodyResultObject) Validate() error {
 }
 
 type DescribeRuleBarChartResponseBodyResultObjectSeries struct {
-	// Response data.
+	// The response data.
 	Data []*DescribeRuleBarChartResponseBodyResultObjectSeriesData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// Bar chart type
+	// The bar chart type.
 	//
 	// example:
 	//
@@ -231,25 +231,25 @@ func (s *DescribeRuleBarChartResponseBodyResultObjectSeries) Validate() error {
 }
 
 type DescribeRuleBarChartResponseBodyResultObjectSeriesData struct {
-	// Event name.
+	// The event name.
 	//
 	// example:
 	//
 	// 营销事件
 	EventName *string `json:"eventName,omitempty" xml:"eventName,omitempty"`
-	// Number.
+	// The quantity.
 	//
 	// example:
 	//
 	// 100
 	Num *int64 `json:"num,omitempty" xml:"num,omitempty"`
-	// Policy name
+	// The policy name.
 	//
 	// example:
 	//
 	// 营销风险识别评分_高风险_拒绝
 	RuleName *string `json:"ruleName,omitempty" xml:"ruleName,omitempty"`
-	// Status.
+	// The status.
 	//
 	// example:
 	//
@@ -306,7 +306,7 @@ func (s *DescribeRuleBarChartResponseBodyResultObjectSeriesData) Validate() erro
 }
 
 type DescribeRuleBarChartResponseBodyResultObjectYaxis struct {
-	// yaxis data items
+	// The y-axis data items.
 	Data []*string `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
 }
 

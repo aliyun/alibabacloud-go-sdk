@@ -16,13 +16,13 @@ type iDescribeSafStartStepsResponseBody interface {
 }
 
 type DescribeSafStartStepsResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// A32FE941-35F2-5378-B37C-4B8FDB16F094
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Return object
+	// The response object.
 	ResultObject []*DescribeSafStartStepsResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Repeated"`
 }
 
@@ -66,19 +66,19 @@ func (s *DescribeSafStartStepsResponseBody) Validate() error {
 }
 
 type DescribeSafStartStepsResponseBodyResultObject struct {
-	// Step content
+	// The step content.
 	//
 	// example:
 	//
 	// https://help.aliyun.com/document_detail/177689.html
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// Step title
+	// The step title.
 	//
 	// example:
 	//
 	// ios
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// Type
+	// The type.
 	//
 	// example:
 	//

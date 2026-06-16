@@ -22,31 +22,31 @@ type iUpdateAuditResponseBody interface {
 }
 
 type UpdateAuditResponseBody struct {
-	// Status code
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// HTTP status code
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *string `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// Error message.
+	// The error message.
 	//
 	// example:
 	//
 	// The input parameter data is not valid. order_storage_company_num component not found
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Returned object
+	// The response object.
 	//
 	// example:
 	//
 	// true
 	ResultObject *bool `json:"resultObject,omitempty" xml:"resultObject,omitempty"`
-	// Whether the call was successful
+	// Indicates whether the call was successful.
 	//
 	// example:
 	//

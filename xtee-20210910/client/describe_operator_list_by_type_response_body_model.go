@@ -16,13 +16,13 @@ type iDescribeOperatorListByTypeResponseBody interface {
 }
 
 type DescribeOperatorListByTypeResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// A32FE941-35F2-5378-B37C-4B8FDB16F094
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Return object
+	// The returned object.
 	ResultObject []*DescribeOperatorListByTypeResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Repeated"`
 }
 
@@ -66,13 +66,13 @@ func (s *DescribeOperatorListByTypeResponseBody) Validate() error {
 }
 
 type DescribeOperatorListByTypeResponseBodyResultObject struct {
-	// Return value type
+	// The return value type.
 	//
 	// example:
 	//
 	// STRING
 	FieldType *string `json:"fieldType,omitempty" xml:"fieldType,omitempty"`
-	// Operator list
+	// The list of operators.
 	Operators []*DescribeOperatorListByTypeResponseBodyResultObjectOperators `json:"operators,omitempty" xml:"operators,omitempty" type:"Repeated"`
 }
 
@@ -116,19 +116,19 @@ func (s *DescribeOperatorListByTypeResponseBodyResultObject) Validate() error {
 }
 
 type DescribeOperatorListByTypeResponseBodyResultObjectOperators struct {
-	// Operator code
+	// The operator code.
 	//
 	// example:
 	//
 	// equals
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Whether it contains a right variable
+	// Indicates whether the operator has a right variable.
 	//
 	// example:
 	//
 	// true
 	HasRightVariable *bool `json:"hasRightVariable,omitempty" xml:"hasRightVariable,omitempty"`
-	// Operator name
+	// The operator name.
 	//
 	// example:
 	//

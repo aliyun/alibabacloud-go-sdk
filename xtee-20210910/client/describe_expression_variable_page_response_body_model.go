@@ -24,33 +24,33 @@ type iDescribeExpressionVariablePageResponseBody interface {
 }
 
 type DescribeExpressionVariablePageResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// A32FE941-35F2-5378-B37C-4B8FDB16F094
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
-	// Page size, with a default value of 10.
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Returned object.
+	// The returned object.
 	ResultObject []*DescribeExpressionVariablePageResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Repeated"`
-	// Total number of items.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 31
 	TotalItem *int32 `json:"totalItem,omitempty" xml:"totalItem,omitempty"`
-	// Total number of pages.
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -134,57 +134,57 @@ func (s *DescribeExpressionVariablePageResponseBody) Validate() error {
 }
 
 type DescribeExpressionVariablePageResponseBodyResultObject struct {
-	// Description information.
+	// The description.
 	//
 	// example:
 	//
 	// 变量描述
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Event name.
+	// The event name.
 	//
 	// example:
 	//
 	// 注册风险
 	EventName *string `json:"eventName,omitempty" xml:"eventName,omitempty"`
-	// Modification time.
+	// The modification time.
 	//
 	// example:
 	//
 	// 1565701886000
 	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// Primary key of custom variable.
+	// The primary key of the custom variable.
 	//
 	// example:
 	//
 	// 2793
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// Query variable name.
+	// The variable name.
 	//
 	// example:
 	//
 	// ex_OERlw0Zqfb23
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Variable return type.
+	// The variable return type.
 	//
 	// example:
 	//
 	// DOUBLE
 	Outputs *string `json:"outputs,omitempty" xml:"outputs,omitempty"`
-	// Associated Strategies.
+	// The rule ID of the associated policy.
 	RuleList []*string `json:"ruleList,omitempty" xml:"ruleList,omitempty" type:"Repeated"`
-	// Status.
+	// The status.
 	//
 	// example:
 	//
 	// ENABLE
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// Title.
+	// The title.
 	//
 	// example:
 	//
 	// 获取手机号前7位自定义变量
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
-	// Version information.
+	// The version information.
 	//
 	// example:
 	//

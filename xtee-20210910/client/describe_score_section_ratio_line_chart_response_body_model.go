@@ -16,13 +16,13 @@ type iDescribeScoreSectionRatioLineChartResponseBody interface {
 }
 
 type DescribeScoreSectionRatioLineChartResponseBody struct {
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// A32FE941-35F2-5378-B37C-4B8FDB16F094
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Return object
+	// The response object.
 	ResultObject *DescribeScoreSectionRatioLineChartResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Struct"`
 }
 
@@ -62,7 +62,7 @@ func (s *DescribeScoreSectionRatioLineChartResponseBody) Validate() error {
 }
 
 type DescribeScoreSectionRatioLineChartResponseBodyResultObject struct {
-	// Data list
+	// The data list.
 	Series []*DescribeScoreSectionRatioLineChartResponseBodyResultObjectSeries `json:"series,omitempty" xml:"series,omitempty" type:"Repeated"`
 	// Details of the xaxis node.
 	Xaxis *DescribeScoreSectionRatioLineChartResponseBodyResultObjectXaxis `json:"xaxis,omitempty" xml:"xaxis,omitempty" type:"Struct"`
@@ -113,9 +113,9 @@ func (s *DescribeScoreSectionRatioLineChartResponseBodyResultObject) Validate() 
 }
 
 type DescribeScoreSectionRatioLineChartResponseBodyResultObjectSeries struct {
-	// Chart data list
+	// The chart data list.
 	Data []*string `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// Statistical dimension.
+	// The statistical dimension.
 	//
 	// example:
 	//
@@ -154,7 +154,7 @@ func (s *DescribeScoreSectionRatioLineChartResponseBodyResultObjectSeries) Valid
 }
 
 type DescribeScoreSectionRatioLineChartResponseBodyResultObjectXaxis struct {
-	// Chart data list
+	// The chart data list.
 	Data []*string `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
 }
 

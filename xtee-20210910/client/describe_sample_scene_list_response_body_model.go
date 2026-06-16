@@ -24,33 +24,33 @@ type iDescribeSampleSceneListResponseBody interface {
 }
 
 type DescribeSampleSceneListResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// A32FE941-35F2-5378-B37C-4B8FDB16F094
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
-	// Page size, default value is 10.
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Returned object.
+	// The returned object.
 	ResultObject []*DescribeSampleSceneListResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Repeated"`
-	// Total number of items.
+	// The total number of items.
 	//
 	// example:
 	//
 	// 6
 	TotalItem *int32 `json:"totalItem,omitempty" xml:"totalItem,omitempty"`
-	// Total number of pages.
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -134,61 +134,61 @@ func (s *DescribeSampleSceneListResponseBody) Validate() error {
 }
 
 type DescribeSampleSceneListResponseBodyResultObject struct {
-	// Business type.
+	// The business type.
 	//
 	// example:
 	//
 	// variable_scene
 	BizType *string `json:"bizType,omitempty" xml:"bizType,omitempty"`
-	// Configuration key.
+	// The configuration item key.
 	//
 	// example:
 	//
 	// account_abuse_detection
 	ConfigKey *string `json:"configKey,omitempty" xml:"configKey,omitempty"`
-	// Configuration value.
+	// The configuration item value.
 	//
 	// example:
 	//
 	// 1
 	ConfigValue *string `json:"configValue,omitempty" xml:"configValue,omitempty"`
-	// Creator.
+	// The creator.
 	//
 	// example:
 	//
 	// 1519714049632764
 	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
-	// Description information.
+	// The description.
 	//
 	// example:
 	//
 	// 变量描述
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Creation time.
+	// The creation time.
 	//
 	// example:
 	//
 	// 1621578648000
 	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// Modification time.
+	// The modification time.
 	//
 	// example:
 	//
 	// 1565701886000
 	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// Task ID.
+	// The task ID.
 	//
 	// example:
 	//
 	// 3144
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// Last modified by.
+	// The last modifier.
 	//
 	// example:
 	//
 	// 1519714049632764
 	LastModifiedOperator *string `json:"lastModifiedOperator,omitempty" xml:"lastModifiedOperator,omitempty"`
-	// Status.
+	// The status.
 	//
 	// example:
 	//

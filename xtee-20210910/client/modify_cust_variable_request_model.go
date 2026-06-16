@@ -30,23 +30,23 @@ type iModifyCustVariableRequest interface {
 }
 
 type ModifyCustVariableRequest struct {
-	// Sets the language type for requests and received messages, default value is **zh**. Values:
+	// The language type for the request and response messages. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Condition value.
+	// The condition value.
 	//
 	// example:
 	//
 	// {\\"currentId\\":1,\\"deepCount\\":0,\\"list\\":[{\\"currentId\\":2,\\"deepCount\\":1,\\"left\\":{\\"code\\":\\"__hit_rules\\",\\"fieldType\\":\\"STRING\\",\\"functionName\\":\\"\\",\\"hasRightVariable\\":true,\\"name\\":\\"hitRules\\",\\"operatorCode\\":\\"deNotInNameList\\"},\\"operatorCode\\":\\"deNotInNameList\\",\\"parentId\\":1,\\"right\\":{\\"code\\":\\"\\"nl_Xcufc8wV6624\\"\\",\\"name\\":\\"nl_Xcufc8wV6624\\",\\"rightVariableType\\":\\"variable\\"}},{\\"currentId\\":3,\\"deepCount\\":1,\\"list\\":[{\\"currentId\\":4,\\"deepCount\\":2,\\"left\\":{\\"code\\":\\"__v_safde\\",\\"fieldType\\":\\"DOUBLE\\",\\"functionName\\":\\"\\",\\"hasRightVariable\\":true,\\"name\\":\\"score\\",\\"operatorCode\\":\\"equals\\"},\\"operatorCode\\":\\"equals\\",\\"parentId\\":3,\\"right\\":{\\"code\\":\\"\\"99\\"\\",\\"name\\":\\"99\\",\\"rightVariableType\\":\\"constant\\"}},{\\"currentId\\":5,\\"deepCount\\":2,\\"left\\":{\\"code\\":\\"queryPhoneSimulatorInfo(deviceToken)?\\",\\"fieldType\\":\\"STRING\\",\\"functionName\\":\\"\\",\\"hasRightVariable\\":false,\\"name\\":\\"__device-test01__\\",\\"operatorCode\\":\\"isNotEmptyWrapper\\"},\\"operatorCode\\":\\"isNotEmptyWrapper\\",\\"parentId\\":3,\\"right\\":{\\"functionName\\":\\"\\",\\"name\\":\\"\\",\\"rightVariableType\\":\\"constant\\"}}],\\"parentId\\":1,\\"relationship\\":\\"and\\"}],\\"parentId\\":0,\\"relationship\\":\\"and\\"}
 	Condition *string `json:"condition,omitempty" xml:"condition,omitempty"`
-	// Data version.
+	// The data version.
 	//
 	// This parameter is required.
 	//
@@ -54,19 +54,19 @@ type ModifyCustVariableRequest struct {
 	//
 	// 6
 	DataVersion *int64 `json:"dataVersion,omitempty" xml:"dataVersion,omitempty"`
-	// Description information.
+	// The description.
 	//
 	// example:
 	//
 	// 描述
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Event code.
+	// The event code.
 	//
 	// example:
 	//
 	// account_abuse_pro,account_abuse
 	EventCodes *string `json:"eventCodes,omitempty" xml:"eventCodes,omitempty"`
-	// Variable ID
+	// The variable ID.
 	//
 	// This parameter is required.
 	//
@@ -74,7 +74,7 @@ type ModifyCustVariableRequest struct {
 	//
 	// 376773
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// Variable name
+	// The variable name.
 	//
 	// This parameter is required.
 	//
@@ -82,13 +82,13 @@ type ModifyCustVariableRequest struct {
 	//
 	// dxkkLw8fe18
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Output
+	// The output.
 	//
 	// example:
 	//
 	// STRING
 	Outputs *string `json:"outputs,omitempty" xml:"outputs,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// example:
 	//

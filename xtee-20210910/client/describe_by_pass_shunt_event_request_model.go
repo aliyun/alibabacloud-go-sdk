@@ -18,23 +18,23 @@ type iDescribeByPassShuntEventRequest interface {
 }
 
 type DescribeByPassShuntEventRequest struct {
-	// Sets the language type for requests and received messages, default value is **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Event ID.
+	// The event ID.
 	//
 	// example:
 	//
 	// 25
 	EventId *int64 `json:"eventId,omitempty" xml:"eventId,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// example:
 	//

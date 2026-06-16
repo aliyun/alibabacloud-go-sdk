@@ -24,33 +24,33 @@ type iDescribeRulePageListResponseBody interface {
 }
 
 type DescribeRulePageListResponseBody struct {
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
-	// Page size, default value is 10.
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// AE7E6105-7DEB-5125-9B24-DCBC139F6CD2
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Returned object.
+	// The returned object.
 	ResultObject []*DescribeRulePageListResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Repeated"`
-	// Total number of items.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 28
 	TotalItem *int32 `json:"totalItem,omitempty" xml:"totalItem,omitempty"`
-	// Total number of pages.
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -134,123 +134,123 @@ func (s *DescribeRulePageListResponseBody) Validate() error {
 }
 
 type DescribeRulePageListResponseBodyResultObject struct {
-	// Service authorization type
+	// The service authorization type.
 	//
 	// example:
 	//
 	// all
 	AuthType *string `json:"authType,omitempty" xml:"authType,omitempty"`
-	// Audit object
+	// The approval object.
 	ConsoleAudit *DescribeRulePageListResponseBodyResultObjectConsoleAudit `json:"consoleAudit,omitempty" xml:"consoleAudit,omitempty" type:"Struct"`
-	// Event code.
+	// The event code.
 	//
 	// example:
 	//
 	// de_arcehq4370
 	EventCode *string `json:"eventCode,omitempty" xml:"eventCode,omitempty"`
-	// Event name.
+	// The event name.
 	//
 	// example:
 	//
 	// 注册风险
 	EventName *string `json:"eventName,omitempty" xml:"eventName,omitempty"`
-	// Event type
+	// The event type.
 	//
 	// example:
 	//
 	// MAIN
 	EventType *string `json:"eventType,omitempty" xml:"eventType,omitempty"`
-	// External name of the rule
+	// The customer-facing policy name.
 	//
 	// example:
 	//
 	// 策略1
 	ExternalRuleName *string `json:"externalRuleName,omitempty" xml:"externalRuleName,omitempty"`
-	// Creation time.
+	// The creation time.
 	//
 	// example:
 	//
 	// 1621578648000
 	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// Modification time.
+	// The modification time.
 	//
 	// example:
 	//
 	// 1565701886000
 	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// Whether there is a new version
+	// Indicates whether a new version is available.
 	//
 	// example:
 	//
 	// true
 	HasNewVersion *bool `json:"hasNewVersion,omitempty" xml:"hasNewVersion,omitempty"`
-	// Primary key ID of the policy.
+	// The primary key ID of the policy.
 	//
 	// example:
 	//
 	// 2793
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// Main rule ID
+	// The ID of the main policy.
 	//
 	// example:
 	//
 	// 4399
 	MainRuleId *string `json:"mainRuleId,omitempty" xml:"mainRuleId,omitempty"`
-	// Policy priority, the higher the number, the higher the priority.
+	// The policy priority. A larger value indicates a higher priority.
 	//
 	// example:
 	//
 	// 10
 	Priority *int64 `json:"priority,omitempty" xml:"priority,omitempty"`
-	// Rule type
+	// The policy type.
 	//
 	// example:
 	//
 	// NORMAL
 	RuleAuthType *string `json:"ruleAuthType,omitempty" xml:"ruleAuthType,omitempty"`
-	// Policy ID.
+	// The policy ID.
 	//
 	// example:
 	//
 	// 102059
 	RuleId *string `json:"ruleId,omitempty" xml:"ruleId,omitempty"`
-	// Policy description.
+	// The policy description.
 	//
 	// example:
 	//
 	// 描述信息
 	RuleMemo *string `json:"ruleMemo,omitempty" xml:"ruleMemo,omitempty"`
-	// Policy name.
+	// The policy name.
 	//
 	// example:
 	//
 	// 营销风险识别
 	RuleName *string `json:"ruleName,omitempty" xml:"ruleName,omitempty"`
-	// Policy status.
+	// The policy status.
 	//
 	// example:
 	//
 	// RUNNING
 	RuleStatus *string `json:"ruleStatus,omitempty" xml:"ruleStatus,omitempty"`
-	// Rule type
+	// The policy type.
 	//
 	// example:
 	//
 	// NORMAL
 	RuleType *string `json:"ruleType,omitempty" xml:"ruleType,omitempty"`
-	// Primary key ID of the rule version.
+	// The primary key ID of the policy version.
 	//
 	// example:
 	//
 	// 11300
 	RuleVersionId *int64 `json:"ruleVersionId,omitempty" xml:"ruleVersionId,omitempty"`
-	// Template ID.
+	// The template ID.
 	//
 	// example:
 	//
 	// register
 	TemplateId *int64 `json:"templateId,omitempty" xml:"templateId,omitempty"`
-	// Version number.
+	// The version number.
 	//
 	// example:
 	//
@@ -465,97 +465,97 @@ func (s *DescribeRulePageListResponseBodyResultObject) Validate() error {
 }
 
 type DescribeRulePageListResponseBodyResultObjectConsoleAudit struct {
-	// UID of the user who passed the audit
+	// The UID of the user who approved the request.
 	//
 	// example:
 	//
 	// 用户uid
 	ApplyUserId *string `json:"applyUserId,omitempty" xml:"applyUserId,omitempty"`
-	// Name of the user who passed the audit
+	// The name of the user who approved the request.
 	//
 	// example:
 	//
 	// root
 	ApplyUserName *string `json:"applyUserName,omitempty" xml:"applyUserName,omitempty"`
-	// Approval comments
+	// The approval comment.
 	//
 	// example:
 	//
 	// 同意
 	AuditMsg *string `json:"auditMsg,omitempty" xml:"auditMsg,omitempty"`
-	// UID of the final auditor
+	// The UID of the final reviewer.
 	//
 	// example:
 	//
 	// 1728
 	AuditRealUserId *string `json:"auditRealUserId,omitempty" xml:"auditRealUserId,omitempty"`
-	// Name of the final auditor
+	// The name of the final reviewer.
 	//
 	// example:
 	//
 	// root
 	AuditRealUserName *string `json:"auditRealUserName,omitempty" xml:"auditRealUserName,omitempty"`
-	// Remarks by the approver.
+	// The remark from the reviewer.
 	//
 	// example:
 	//
 	// 备注
 	AuditRemark *string `json:"auditRemark,omitempty" xml:"auditRemark,omitempty"`
-	// Application audit status
+	// The approval status.
 	//
 	// example:
 	//
 	// AGREE
 	AuditStatus *string `json:"auditStatus,omitempty" xml:"auditStatus,omitempty"`
-	// Approval time
+	// The approval time.
 	//
 	// example:
 	//
 	// 1545726028000
 	AuditTime *int64 `json:"auditTime,omitempty" xml:"auditTime,omitempty"`
-	// UID of the auditor
+	// The UID of the reviewer.
 	//
 	// example:
 	//
 	// 1234xxxx
 	AuditUserId *string `json:"auditUserId,omitempty" xml:"auditUserId,omitempty"`
-	// Name of the auditor
+	// The name of the reviewer.
 	//
 	// example:
 	//
 	// root
 	AuditUserName *string `json:"auditUserName,omitempty" xml:"auditUserName,omitempty"`
-	// Creation time.
+	// The creation time.
 	//
 	// example:
 	//
 	// 1545726028000
 	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// Primary key ID
+	// The primary key ID.
 	//
 	// example:
 	//
 	// 1728
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// Information of other related parties (in JSON format)
+	// The information about other associated users in JSON format.
 	//
 	// example:
 	//
 	// {}
 	RelationExt *string `json:"relationExt,omitempty" xml:"relationExt,omitempty"`
-	// ID of the related transaction for the approval
+	// The transaction ID associated with the approval.
 	//
 	// example:
 	//
 	// 123
 	RelationId *int64 `json:"relationId,omitempty" xml:"relationId,omitempty"`
-	// Name of the related transaction for the approval (can be null)
+	// The transaction name associated with the approval. This parameter can be empty.
 	//
 	// example:
 	//
 	// 策略1
 	RelationName *string `json:"relationName,omitempty" xml:"relationName,omitempty"`
-	// Type of the approval (e.g., `rule` represents the approval of a rule)
+	// The type of the approval. For example, rule indicates a policy approval.
 	//
 	// example:
 	//

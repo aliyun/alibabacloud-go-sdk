@@ -18,14 +18,20 @@ type iGetSampleDetailRequest interface {
 }
 
 type GetSampleDetailRequest struct {
+	// The language of error messages returned by the API. Valid values: zh: Chinese; en: English. The default value is en.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The area encoding.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegId *string `json:"RegId,omitempty" xml:"RegId,omitempty"`
+	// The sample ID.
+	//
 	// example:
 	//
 	// 1

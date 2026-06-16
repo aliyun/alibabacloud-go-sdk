@@ -20,17 +20,17 @@ type iDescribeCustVariableConfigListRequest interface {
 }
 
 type DescribeCustVariableConfigListRequest struct {
-	// Set the language type for requests and received messages, default value is **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Configuration type
+	// The configuration type. Valid values:
 	//
 	// This parameter is required.
 	//
@@ -38,13 +38,13 @@ type DescribeCustVariableConfigListRequest struct {
 	//
 	// TIME_TYPE
 	BizType *string `json:"bizType,omitempty" xml:"bizType,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegId *string `json:"regId,omitempty" xml:"regId,omitempty"`
-	// Time type
+	// The time type. Valid values:
 	//
 	// example:
 	//

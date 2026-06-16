@@ -16,13 +16,13 @@ type iDescribeMonitorTaskLimitResponseBody interface {
 }
 
 type DescribeMonitorTaskLimitResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// A32FE941-35F2-5378-B37C-4B8FDB16F094
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Returned object
+	// The response object.
 	ResultObject *DescribeMonitorTaskLimitResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Struct"`
 }
 
@@ -62,19 +62,19 @@ func (s *DescribeMonitorTaskLimitResponseBody) Validate() error {
 }
 
 type DescribeMonitorTaskLimitResponseBodyResultObject struct {
-	// Whether the maximum limit has been reached
+	// Indicates whether the maximum number is reached.
 	//
 	// example:
 	//
 	// false
 	Limit *bool `json:"limit,omitempty" xml:"limit,omitempty"`
-	// Maximum number of items
+	// The maximum number of items.
 	//
 	// example:
 	//
 	// 1000
 	MaxTotalItem *int32 `json:"maxTotalItem,omitempty" xml:"maxTotalItem,omitempty"`
-	// Total number of items
+	// The total number of items.
 	//
 	// example:
 	//

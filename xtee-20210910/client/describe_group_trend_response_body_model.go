@@ -16,13 +16,13 @@ type iDescribeGroupTrendResponseBody interface {
 }
 
 type DescribeGroupTrendResponseBody struct {
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// A32FE941-35F2-5378-B37C-4B8FDB16F094
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Return result.
+	// The returned result.
 	//
 	// example:
 	//

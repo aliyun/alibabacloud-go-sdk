@@ -16,13 +16,13 @@ type iDescribeRequestHitResponseBody interface {
 }
 
 type DescribeRequestHitResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// AE7E6105-7DEB-5125-9B24-DCBC139F6CD2
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Return object
+	// The returned object.
 	ResultObject *DescribeRequestHitResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Struct"`
 }
 
@@ -62,45 +62,45 @@ func (s *DescribeRequestHitResponseBody) Validate() error {
 }
 
 type DescribeRequestHitResponseBodyResultObject struct {
-	// Event code
+	// The event code.
 	//
 	// example:
 	//
 	// de_aszbjb7236
 	EventCode *string `json:"eventCode,omitempty" xml:"eventCode,omitempty"`
-	// Event name.
+	// The event name.
 	//
 	// example:
 	//
 	// 注册风险
 	EventName *string `json:"eventName,omitempty" xml:"eventName,omitempty"`
-	// Input parameters.
+	// The input parameters.
 	//
 	// example:
 	//
 	// {\\"eventCode\\":\\"de_afghcf6411\\",\\"ip\\":\\"196.168.0.1\\",\\"DEtest222\\":9007199254740999,\\"age\\":20}
 	Inputs *string `json:"inputs,omitempty" xml:"inputs,omitempty"`
-	// Output parameters
+	// The output parameters.
 	//
 	// example:
 	//
 	// {\\"tags\\":\\"rm0102,test_tag,age\\",\\"score\\":\\"30.0\\",\\"extend\\":\\"{\\\\\\"OUT_V01\\\\\\":\\\\\\"Maritime\\\\\\",\\\\\\"OUT_V02\\\\\\":\\\\\\"Lome\\\\\\",\\\\\\"OUT_V03\\\\\\":\\\\\\"196.168.0.1_A\\\\\\"}\\",\\"finalDecision\\":\\"REJECT\\"}
 	Outputs *string `json:"outputs,omitempty" xml:"outputs,omitempty"`
-	// Timestamp of the request.
+	// The timestamp of the request.
 	//
 	// example:
 	//
 	// 1752571330000
 	RequestTime *int64 `json:"requestTime,omitempty" xml:"requestTime,omitempty"`
-	// Details of the executed rules.
+	// The details of the rules executed by the request.
 	RuleHitRecords []*DescribeRequestHitResponseBodyResultObjectRuleHitRecords `json:"ruleHitRecords,omitempty" xml:"ruleHitRecords,omitempty" type:"Repeated"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 60C97040-D5D5-4906-9522-B9B413730CAA
 	SRequestId *string `json:"sRequestId,omitempty" xml:"sRequestId,omitempty"`
-	// Total amount of the request
+	// The total cost of the request.
 	//
 	// example:
 	//
@@ -202,55 +202,55 @@ func (s *DescribeRequestHitResponseBodyResultObject) Validate() error {
 }
 
 type DescribeRequestHitResponseBodyResultObjectRuleHitRecords struct {
-	// Duration
+	// The time consumed.
 	//
 	// example:
 	//
 	// 1
 	Cost *int32 `json:"cost,omitempty" xml:"cost,omitempty"`
-	// Whether the rule was hit.
+	// Indicates whether the rule is hit.
 	//
 	// example:
 	//
 	// true
 	HitSuccessful *bool `json:"hitSuccessful,omitempty" xml:"hitSuccessful,omitempty"`
-	// Whether to show details
+	// Indicates whether to display details.
 	//
 	// example:
 	//
 	// true
 	IsShowDetail *bool `json:"isShowDetail,omitempty" xml:"isShowDetail,omitempty"`
-	// Order.
+	// The order.
 	//
 	// example:
 	//
 	// 1
 	Order *int32 `json:"order,omitempty" xml:"order,omitempty"`
-	// Policy ID
+	// The policy ID.
 	//
 	// example:
 	//
 	// 101544
 	RuleId *string `json:"ruleId,omitempty" xml:"ruleId,omitempty"`
-	// Policy name
+	// The policy name.
 	//
 	// example:
 	//
 	// 注册手机号是11位数字
 	RuleName *string `json:"ruleName,omitempty" xml:"ruleName,omitempty"`
-	// Rule snapshot ID
+	// The rule snapshot ID.
 	//
 	// example:
 	//
 	// 27
 	RuleSnapshotId *string `json:"ruleSnapshotId,omitempty" xml:"ruleSnapshotId,omitempty"`
-	// Policy status
+	// The policy status.
 	//
 	// example:
 	//
 	// RUNNING
 	RuleStatus *string `json:"ruleStatus,omitempty" xml:"ruleStatus,omitempty"`
-	// Rule Type
+	// The policy type.
 	//
 	// example:
 	//

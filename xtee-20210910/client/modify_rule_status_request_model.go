@@ -36,77 +36,77 @@ type iModifyRuleStatusRequest interface {
 }
 
 type ModifyRuleStatusRequest struct {
-	// Set the language type for requests and received messages, default value is **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// UID of the applicant.
+	// The UID of the user who initiated the approval.
 	//
 	// example:
 	//
 	// 1519714049632764
 	ApplyUserId *string `json:"applyUserId,omitempty" xml:"applyUserId,omitempty"`
-	// Name of the applicant.
+	// The name of the user who initiated the approval.
 	//
 	// example:
 	//
 	// root
 	ApplyUserName *string `json:"applyUserName,omitempty" xml:"applyUserName,omitempty"`
-	// Approval remarks.
+	// The remarks for the approval request.
 	//
 	// example:
 	//
 	// 申请发布上线
 	AuditRemark *string `json:"auditRemark,omitempty" xml:"auditRemark,omitempty"`
-	// UID of the auditor.
+	// The UID of the approver.
 	//
 	// example:
 	//
 	// 1519714049632764
 	AuditUserId *string `json:"auditUserId,omitempty" xml:"auditUserId,omitempty"`
-	// Name of the auditor.
+	// The name of the approver.
 	//
 	// example:
 	//
 	// root
 	AuditUserName *string `json:"auditUserName,omitempty" xml:"auditUserName,omitempty"`
-	// Primary key ID of the policy.
+	// The primary key ID of the policy.
 	//
 	// example:
 	//
 	// 6843
 	ConsoleRuleId *int64 `json:"consoleRuleId,omitempty" xml:"consoleRuleId,omitempty"`
-	// Event type.
+	// The event type.
 	//
 	// example:
 	//
 	// MAIN
 	EventType *string `json:"eventType,omitempty" xml:"eventType,omitempty"`
-	// Region code.
+	// The region code.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegId *string `json:"regId,omitempty" xml:"regId,omitempty"`
-	// Audit status.
+	// The approval status.
 	//
 	// example:
 	//
 	// DRAFT_TO_RUNNING
 	RuleAuditType *string `json:"ruleAuditType,omitempty" xml:"ruleAuditType,omitempty"`
-	// Policy ID.
+	// The policy ID.
 	//
 	// example:
 	//
 	// 101544
 	RuleId *string `json:"ruleId,omitempty" xml:"ruleId,omitempty"`
-	// Primary key ID of the policy version.
+	// The primary key ID of the policy version.
 	//
 	// example:
 	//

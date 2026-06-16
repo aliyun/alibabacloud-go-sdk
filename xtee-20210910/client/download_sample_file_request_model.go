@@ -20,18 +20,26 @@ type iDownloadSampleFileRequest interface {
 }
 
 type DownloadSampleFileRequest struct {
+	// Language of error messages returned by the API. Valid values: zh: Chinese. en: English. Default value: en.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Area encoding.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegId *string `json:"RegId,omitempty" xml:"RegId,omitempty"`
+	// Sample ID.
+	//
 	// example:
 	//
 	// 1
 	SampleId *int32 `json:"SampleId,omitempty" xml:"SampleId,omitempty"`
+	// Scenario.
+	//
 	// example:
 	//
 	// INTERNET

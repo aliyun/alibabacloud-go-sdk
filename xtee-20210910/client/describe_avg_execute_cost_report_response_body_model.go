@@ -24,33 +24,33 @@ type iDescribeAvgExecuteCostReportResponseBody interface {
 }
 
 type DescribeAvgExecuteCostReportResponseBody struct {
-	// Status code.
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// HTTP status code
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *string `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// Error message.
+	// The error message.
 	//
 	// example:
 	//
 	// The input parameter data is not valid. order_storage_company_num component not found
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// AE7E6105-7DEB-5125-9B24-DCBC139F6CD2
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Return object
+	// The response object.
 	ResultObject []*DescribeAvgExecuteCostReportResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Repeated"`
-	// Whether the call was successful
+	// Indicates whether the call was successful.
 	//
 	// example:
 	//
@@ -134,13 +134,13 @@ func (s *DescribeAvgExecuteCostReportResponseBody) Validate() error {
 }
 
 type DescribeAvgExecuteCostReportResponseBodyResultObject struct {
-	// Comparison with yesterday\\"s average execution time
+	// The day-over-day ratio compared to yesterday\\"s average execution duration.
 	//
 	// example:
 	//
 	// 0.2
 	Ratio *string `json:"ratio,omitempty" xml:"ratio,omitempty"`
-	// Today\\"s average execution time
+	// The average execution duration for today.
 	//
 	// example:
 	//

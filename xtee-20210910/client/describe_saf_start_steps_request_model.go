@@ -26,57 +26,55 @@ type iDescribeSafStartStepsRequest interface {
 }
 
 type DescribeSafStartStepsRequest struct {
-	// Set the language type for requests and received messages, default value is **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Whether the server is an Alibaba Cloud server
-	//
-	// true or false
+	// Specifies whether the server is an Alibaba Cloud server. Valid values: true and false.
 	//
 	// example:
 	//
 	// true
 	AliyunServer *bool `json:"aliyunServer,omitempty" xml:"aliyunServer,omitempty"`
-	// Used to receive a collection of strings from the frontend that POP cannot accept
+	// The string of device type collection passed from the frontend that cannot be received by POP.
 	//
 	//
 	//
-	// Device type
+	// The device type.
 	//
 	// example:
 	//
 	// ios
 	DeviceTypesStr *string `json:"deviceTypesStr,omitempty" xml:"deviceTypesStr,omitempty"`
-	// Event code
+	// The event code.
 	//
 	// example:
 	//
 	// de_ahqido8038
 	EventCode *string `json:"eventCode,omitempty" xml:"eventCode,omitempty"`
-	// Language, parameters can be passed
+	// The language. Valid values:
 	//
 	// - zh-CN: Chinese (default)
 	//
-	// - en-US: English
+	// - en-US: English.
 	//
 	// example:
 	//
 	// zh_CN
 	Language *string `json:"language,omitempty" xml:"language,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegId *string `json:"regId,omitempty" xml:"regId,omitempty"`
-	// Server region
+	// The region where the server resides.
 	//
 	// example:
 	//

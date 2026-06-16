@@ -20,23 +20,23 @@ type iDescribeRecommendVariablesVelocityRequest interface {
 }
 
 type DescribeRecommendVariablesVelocityRequest struct {
-	// Set the language type for request and response, default value is **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Region Code
+	// The region code.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegId *string `json:"regId,omitempty" xml:"regId,omitempty"`
-	// Task ID
+	// The task ID.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type DescribeRecommendVariablesVelocityRequest struct {
 	//
 	// 6770764
 	TaskId *int64 `json:"taskId,omitempty" xml:"taskId,omitempty"`
-	// Variable IDs
+	// The variable IDs.
 	//
 	// example:
 	//

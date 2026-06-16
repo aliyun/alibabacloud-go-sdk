@@ -16,13 +16,13 @@ type iCreateEventResponseBody interface {
 }
 
 type CreateEventResponseBody struct {
-	// Return result.
+	// The returned result.
 	//
 	// example:
 	//
 	// true
 	Data *bool `json:"data,omitempty" xml:"data,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

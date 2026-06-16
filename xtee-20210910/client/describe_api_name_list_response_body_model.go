@@ -16,13 +16,13 @@ type iDescribeApiNameListResponseBody interface {
 }
 
 type DescribeApiNameListResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// A32FE941-35F2-5378-B37C-4B8FDB16F094
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Return object
+	// The response object.
 	ResultObject []*DescribeApiNameListResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Repeated"`
 }
 
@@ -66,13 +66,13 @@ func (s *DescribeApiNameListResponseBody) Validate() error {
 }
 
 type DescribeApiNameListResponseBodyResultObject struct {
-	// API ID.
+	// The API ID.
 	//
 	// example:
 	//
 	// 33
 	ApiId *string `json:"apiId,omitempty" xml:"apiId,omitempty"`
-	// API name.
+	// The API name.
 	//
 	// example:
 	//

@@ -24,33 +24,33 @@ type iDescribeGroupPageResponseBody interface {
 }
 
 type DescribeGroupPageResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// A32FE941-35F2-5378-B37C-4B8FDB16F094
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
-	// Page size, with a default value of 10.
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Returned object.
+	// The returned object.
 	ResultObject []*DescribeGroupPageResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Repeated"`
-	// Total number of items.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 3
 	TotalItem *int32 `json:"totalItem,omitempty" xml:"totalItem,omitempty"`
-	// Total number of pages.
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -134,49 +134,49 @@ func (s *DescribeGroupPageResponseBody) Validate() error {
 }
 
 type DescribeGroupPageResponseBodyResultObject struct {
-	// Community number.
+	// The community number.
 	//
 	// example:
 	//
 	// 129838420210118141502RaMMIgVG
 	CommunityNo *string `json:"communityNo,omitempty" xml:"communityNo,omitempty"`
-	// Creation time.
+	// The creation time.
 	//
 	// example:
 	//
 	// 1699450018265
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// Group risk concentration.
+	// The risk concentration.
 	//
 	// example:
 	//
 	// 80
 	GroupRisk *string `json:"groupRisk,omitempty" xml:"groupRisk,omitempty"`
-	// Group scale.
+	// The community scale.
 	//
 	// example:
 	//
 	// 2
 	GroupScale *string `json:"groupScale,omitempty" xml:"groupScale,omitempty"`
-	// Primary key ID.
+	// The primary key ID.
 	//
 	// example:
 	//
 	// 497
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// Scene name.
+	// The scenario name.
 	//
 	// example:
 	//
 	// 通用图计算
 	SceneName *string `json:"sceneName,omitempty" xml:"sceneName,omitempty"`
-	// Task ID.
+	// The task ID.
 	//
 	// example:
 	//
 	// 6770764
 	TaskId *int64 `json:"taskId,omitempty" xml:"taskId,omitempty"`
-	// User UID.
+	// The user UID.
 	//
 	// example:
 	//

@@ -16,17 +16,17 @@ type iCreateAppKeyRequest interface {
 }
 
 type CreateAppKeyRequest struct {
-	// Set the language type for requests and responses, with a default value of **zh**. Values:
+	// The language type for requests and responses. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Region code
+	// The region ID.
 	//
 	// example:
 	//

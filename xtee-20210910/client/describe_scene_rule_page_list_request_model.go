@@ -30,59 +30,59 @@ type iDescribeSceneRulePageListRequest interface {
 }
 
 type DescribeSceneRulePageListRequest struct {
-	// Set the language type for requests and received messages. Default value is **zh**. Values:
+	// The language type for the request and response messages. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Creation type
+	// The creation type.
 	//
 	// example:
 	//
 	// NOMAL
 	CreateType *string `json:"createType,omitempty" xml:"createType,omitempty"`
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *string `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
-	// Event code
+	// The event code.
 	//
 	// example:
 	//
 	// de_ahgctb7098
 	EventCode *string `json:"eventCode,omitempty" xml:"eventCode,omitempty"`
-	// Number of items per page in the returned results. Default value: 20, minimum value: 1, maximum value: 50.
+	// The number of entries per page. Default value: 20. Minimum value: 1. Maximum value: 50.
 	//
 	// example:
 	//
 	// 20
 	PageSize *string `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegId *string `json:"regId,omitempty" xml:"regId,omitempty"`
-	// Strategy type
+	// The policy type.
 	//
 	// example:
 	//
 	// CUSTMER
 	RuleAuthType *string `json:"ruleAuthType,omitempty" xml:"ruleAuthType,omitempty"`
-	// Strategy name
+	// The policy name.
 	//
 	// example:
 	//
 	// 营销风险识别
 	RuleName *string `json:"ruleName,omitempty" xml:"ruleName,omitempty"`
-	// Strategy status
+	// The policy status.
 	//
 	// example:
 	//

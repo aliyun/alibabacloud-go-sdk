@@ -22,7 +22,7 @@ type DescribeAnalysisExportTaskDownloadUrlResponseBody struct {
 	//
 	// A32FE941-35F2-5378-B37C-4B8FDB16F094
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Returned object
+	// Response object.
 	ResultObject *DescribeAnalysisExportTaskDownloadUrlResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Struct"`
 }
 
@@ -68,7 +68,7 @@ type DescribeAnalysisExportTaskDownloadUrlResponseBodyResultObject struct {
 	//
 	// https://xxxxx-oss-xxxxx.xxxxxx.aliyuncs.com/xx/xx/xxx/xxxxxx.csv?Expires=1753433384&OSSAccessKeyId=xxxxxxxxx&Signature=%2F%xxxxxxxxxxxx%3D
 	DownloadFileUrl *string `json:"downloadFileUrl,omitempty" xml:"downloadFileUrl,omitempty"`
-	// Download execution time
+	// Download execution time.
 	//
 	// example:
 	//

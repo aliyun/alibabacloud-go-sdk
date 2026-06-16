@@ -18,17 +18,17 @@ type iDescribeSupportRuleListRequest interface {
 }
 
 type DescribeSupportRuleListRequest struct {
-	// Sets the language type for requests and received messages, with a default value of **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Event code
+	// The event code.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type DescribeSupportRuleListRequest struct {
 	//
 	// de_ahpayh4121
 	EventCode *string `json:"eventCode,omitempty" xml:"eventCode,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// example:
 	//

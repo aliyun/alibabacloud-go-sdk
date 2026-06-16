@@ -16,13 +16,13 @@ type iDescribeAuthSceneListResponseBody interface {
 }
 
 type DescribeAuthSceneListResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// A32FE941-35F2-5378-B37C-4B8FDB16F094
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Returned object
+	// The returned object.
 	ResultObject []*DescribeAuthSceneListResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Repeated"`
 }
 
@@ -66,7 +66,7 @@ func (s *DescribeAuthSceneListResponseBody) Validate() error {
 }
 
 type DescribeAuthSceneListResponseBodyResultObject struct {
-	// Service code
+	// The service code.
 	//
 	// example:
 	//

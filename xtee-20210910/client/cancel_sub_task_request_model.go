@@ -20,18 +20,30 @@ type iCancelSubTaskRequest interface {
 }
 
 type CancelSubTaskRequest struct {
+	// Set the language type for requests and received messages. The default value is **zh**. Valid values:
+	//
+	// - **zh**: Chinese
+	//
+	// - **en**: English
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Area encoding.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegId *string `json:"RegId,omitempty" xml:"RegId,omitempty"`
+	// Subtask ID.
+	//
 	// example:
 	//
 	// 2
 	SubTaskId *int32 `json:"SubTaskId,omitempty" xml:"SubTaskId,omitempty"`
+	// Scenario.
+	//
 	// example:
 	//
 	// FINANCE

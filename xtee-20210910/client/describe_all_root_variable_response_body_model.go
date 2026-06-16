@@ -16,13 +16,13 @@ type iDescribeAllRootVariableResponseBody interface {
 }
 
 type DescribeAllRootVariableResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// A32FE941-35F2-5378-B37C-4B8FDB16F094
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Return object
+	// The returned object.
 	ResultObject []*DescribeAllRootVariableResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Repeated"`
 }
 
@@ -66,81 +66,81 @@ func (s *DescribeAllRootVariableResponseBody) Validate() error {
 }
 
 type DescribeAllRootVariableResponseBodyResultObject struct {
-	// Variable code
+	// The variable code.
 	//
 	// example:
 	//
 	// age
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Variable description.
+	// The variable description.
 	//
 	// example:
 	//
 	// 年龄
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Display type and group label
+	// The display type and group label.
 	//
 	// example:
 	//
 	// NATIVE
 	DisplayType *string `json:"displayType,omitempty" xml:"displayType,omitempty"`
-	// Favorite flag
+	// The favorite flag.
 	//
 	// example:
 	//
 	// true
 	FavoriteFlag *bool `json:"favoriteFlag,omitempty" xml:"favoriteFlag,omitempty"`
-	// Field ranking
+	// The field sorting order.
 	//
 	// example:
 	//
 	// 1
 	FieldRank *int64 `json:"fieldRank,omitempty" xml:"fieldRank,omitempty"`
-	// Field type.
+	// The field type.
 	//
 	// example:
 	//
 	// STRING
 	FieldType *string `json:"fieldType,omitempty" xml:"fieldType,omitempty"`
-	// Variable ID.
+	// The variable ID.
 	//
 	// example:
 	//
 	// 497
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// Input field type.
+	// The input type of the parameter.
 	//
 	// example:
 	//
 	// STRING
 	InputFieldType *string `json:"inputFieldType,omitempty" xml:"inputFieldType,omitempty"`
-	// Variable input.
+	// The inputs of the variable.
 	//
 	// example:
 	//
 	// age
 	Inputs *string `json:"inputs,omitempty" xml:"inputs,omitempty"`
-	// Variable name.
+	// The variable name.
 	//
 	// example:
 	//
 	// age
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Maximum cross-sectional area of the checkbox.
+	// The maximum cross-sectional area of the check box.
 	OutputThreshold *DescribeAllRootVariableResponseBodyResultObjectOutputThreshold `json:"outputThreshold,omitempty" xml:"outputThreshold,omitempty" type:"Struct"`
-	// Data source
+	// The data source.
 	//
 	// example:
 	//
 	// SAF
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	// Title.
+	// The title.
 	//
 	// example:
 	//
 	// 年龄
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
-	// Variable type.
+	// The variable type.
 	//
 	// example:
 	//
@@ -292,13 +292,13 @@ func (s *DescribeAllRootVariableResponseBodyResultObject) Validate() error {
 }
 
 type DescribeAllRootVariableResponseBodyResultObjectOutputThreshold struct {
-	// Maximum value
+	// The maximum value.
 	//
 	// example:
 	//
 	// 1000
 	MaxValue *float64 `json:"maxValue,omitempty" xml:"maxValue,omitempty"`
-	// Minimum value.
+	// The minimum value.
 	//
 	// example:
 	//

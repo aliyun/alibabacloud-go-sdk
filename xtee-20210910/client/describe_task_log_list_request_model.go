@@ -26,47 +26,47 @@ type iDescribeTaskLogListRequest interface {
 }
 
 type DescribeTaskLogListRequest struct {
-	// Current page.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// Whether to paginate.
+	// Specifies whether to enable pagination.
 	//
 	// example:
 	//
 	// true
 	IsPage *bool `json:"IsPage,omitempty" xml:"IsPage,omitempty"`
-	// Sets the language type for requests and received messages, default value is **zh**. Values:
+	// The language type for the request and response messages. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Page size.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Task ID.
+	// The task ID.
 	//
 	// example:
 	//
 	// 18044
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// Task log ID
+	// The task log ID.
 	//
 	// example:
 	//
 	// 107
 	TaskLogId *string `json:"TaskLogId,omitempty" xml:"TaskLogId,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// example:
 	//

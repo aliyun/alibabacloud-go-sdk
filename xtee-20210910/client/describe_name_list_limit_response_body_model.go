@@ -16,13 +16,13 @@ type iDescribeNameListLimitResponseBody interface {
 }
 
 type DescribeNameListLimitResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// A32FE941-35F2-5378-B37C-4B8FDB16F094
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Return object
+	// The returned object.
 	ResultObject *DescribeNameListLimitResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Struct"`
 }
 
@@ -62,19 +62,19 @@ func (s *DescribeNameListLimitResponseBody) Validate() error {
 }
 
 type DescribeNameListLimitResponseBodyResultObject struct {
-	// Whether it exceeds the maximum quantity
+	// Indicates whether the maximum number of entries is exceeded.
 	//
 	// example:
 	//
 	// true
 	Limit *bool `json:"limit,omitempty" xml:"limit,omitempty"`
-	// Maximum number of creatable items
+	// The maximum number of entries that can be created.
 	//
 	// example:
 	//
 	// 100
 	MaxTotalItem *int64 `json:"maxTotalItem,omitempty" xml:"maxTotalItem,omitempty"`
-	// Total number of items
+	// The total number of entries.
 	//
 	// example:
 	//

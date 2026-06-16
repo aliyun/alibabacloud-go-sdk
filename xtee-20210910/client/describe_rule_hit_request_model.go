@@ -24,41 +24,41 @@ type iDescribeRuleHitRequest interface {
 }
 
 type DescribeRuleHitRequest struct {
-	// Sets the language type for requests and received messages, with a default value of **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegId *string `json:"regId,omitempty" xml:"regId,omitempty"`
-	// Execution time
+	// The execution time.
 	//
 	// example:
 	//
 	// 1752571330000
 	RequestTime *int64 `json:"requestTime,omitempty" xml:"requestTime,omitempty"`
-	// Rule ID
+	// The policy ID.
 	//
 	// example:
 	//
 	// 102059
 	RuleId *string `json:"ruleId,omitempty" xml:"ruleId,omitempty"`
-	// Snapshot ID.
+	// The snapshot ID.
 	//
 	// example:
 	//
 	// 27
 	RuleSnapshotId *string `json:"ruleSnapshotId,omitempty" xml:"ruleSnapshotId,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

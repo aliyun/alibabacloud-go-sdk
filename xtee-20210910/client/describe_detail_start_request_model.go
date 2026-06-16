@@ -22,39 +22,39 @@ type iDescribeDetailStartRequest interface {
 }
 
 type DescribeDetailStartRequest struct {
-	// Application appkey.
+	// The AppKey of the application.
 	//
 	// example:
 	//
 	// ***
 	AppKey *string `json:"appKey,omitempty" xml:"appKey,omitempty"`
-	// End time
+	// The end time.
 	//
 	//
 	//
-	// Format yyyymmdd
+	// Format: yyyymmdd.
 	//
 	// example:
 	//
 	// 20250320
 	EndDs *string `json:"endDs,omitempty" xml:"endDs,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegId *string `json:"regId,omitempty" xml:"regId,omitempty"`
-	// Called service
+	// The service to call.
 	//
 	// example:
 	//
 	// service_tender_cee
 	Service *string `json:"service,omitempty" xml:"service,omitempty"`
-	// Start time
+	// The start time.
 	//
 	//
 	//
-	//  Format yyyymmdd
+	// Format: yyyymmdd.
 	//
 	// example:
 	//

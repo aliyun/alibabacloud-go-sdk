@@ -20,7 +20,7 @@ type iModifyAppKeyRequest interface {
 }
 
 type ModifyAppKeyRequest struct {
-	// Sets the language type for requests and received messages, default value is **zh**. Values:
+	// Specifies the language type of the request and response messages. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
@@ -30,19 +30,19 @@ type ModifyAppKeyRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// appkey information.
+	// The AppKey information.
 	//
 	// example:
 	//
 	// ***
 	AppKey *string `json:"appKey,omitempty" xml:"appKey,omitempty"`
-	// Application memo information.
+	// The memo information of the application.
 	//
 	// example:
 	//
 	// 备注
 	Memo *string `json:"memo,omitempty" xml:"memo,omitempty"`
-	// Region code
+	// The region ID.
 	//
 	// example:
 	//

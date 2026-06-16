@@ -28,53 +28,53 @@ type iDescribeCustVariablePageRequest interface {
 }
 
 type DescribeCustVariablePageRequest struct {
-	// Sets the language type for requests and received messages, default value is **zh**. Values:
+	// The language type for the request and response messages. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Creation type.
+	// The creation type.
 	//
 	// example:
 	//
 	// NORMAL
 	CreateType *string `json:"createType,omitempty" xml:"createType,omitempty"`
-	// Pagination parameter, current page number.
+	// The current page number for pagination.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
-	// Description.
+	// The description.
 	//
 	// example:
 	//
 	// 累计变量描述
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Event code.
+	// The event code.
 	//
 	// example:
 	//
 	// de_aheldm3876
 	EventCode *string `json:"eventCode,omitempty" xml:"eventCode,omitempty"`
-	// Number of records per page, default value: 10.
+	// The number of records per page. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Region code.
+	// The region code.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegId *string `json:"regId,omitempty" xml:"regId,omitempty"`
-	// status.
+	// The status.
 	//
 	// example:
 	//

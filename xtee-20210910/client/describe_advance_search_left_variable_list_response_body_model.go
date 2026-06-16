@@ -16,13 +16,13 @@ type iDescribeAdvanceSearchLeftVariableListResponseBody interface {
 }
 
 type DescribeAdvanceSearchLeftVariableListResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// AE7E6105-7DEB-5125-9B24-DCBC139F6CD2
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Return object
+	// The returned object.
 	ResultObject []*DescribeAdvanceSearchLeftVariableListResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Repeated"`
 }
 
@@ -66,67 +66,67 @@ func (s *DescribeAdvanceSearchLeftVariableListResponseBody) Validate() error {
 }
 
 type DescribeAdvanceSearchLeftVariableListResponseBodyResultObject struct {
-	// Variable code
+	// The variable code.
 	//
 	// example:
 	//
 	// age
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Description.
+	// The description.
 	//
 	// example:
 	//
 	// 年龄描述
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Display type and grouping label
+	// The display type and group label.
 	//
 	// example:
 	//
 	// NATIVE
 	DisplayType *string `json:"displayType,omitempty" xml:"displayType,omitempty"`
-	// Variable return value type
+	// The return value type of the variable.
 	//
 	// example:
 	//
 	// STRING
 	FieldRank *int64 `json:"fieldRank,omitempty" xml:"fieldRank,omitempty"`
-	// Field table sorting
+	// The field table sorting.
 	//
 	// example:
 	//
 	// 1
 	FieldType *string `json:"fieldType,omitempty" xml:"fieldType,omitempty"`
-	// Primary key ID
+	// The primary key ID.
 	//
 	// example:
 	//
 	// 2453
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// Variable name
+	// The variable name.
 	//
 	// example:
 	//
 	// age
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Parent node
+	// The parent node.
 	//
 	// example:
 	//
 	// name
 	ParentName *string `json:"parentName,omitempty" xml:"parentName,omitempty"`
-	// Data source
+	// The data source.
 	//
 	// example:
 	//
 	// SAF
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	// Title.
+	// The title.
 	//
 	// example:
 	//
 	// 年龄
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
-	// Variable type
+	// The variable type.
 	//
 	// example:
 	//

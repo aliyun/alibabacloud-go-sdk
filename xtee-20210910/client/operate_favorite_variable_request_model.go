@@ -20,17 +20,17 @@ type iOperateFavoriteVariableRequest interface {
 }
 
 type OperateFavoriteVariableRequest struct {
-	// Sets the language type for requests and received messages, default value is **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Variable ID
+	// The variable ID.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type OperateFavoriteVariableRequest struct {
 	//
 	// 3144
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// Favorite operation
+	// The favorite operation.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type OperateFavoriteVariableRequest struct {
 	//
 	// ADD
 	Operate *string `json:"operate,omitempty" xml:"operate,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// example:
 	//

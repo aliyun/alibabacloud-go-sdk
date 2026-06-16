@@ -18,23 +18,23 @@ type iDeleteNameListRequest interface {
 }
 
 type DeleteNameListRequest struct {
-	// Sets the language type for requests and received messages, default value is **zh**. Values:
+	// The language type for the request and response. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Name list ID, multiple IDs should be separated by commas
+	// The list IDs. Separate multiple IDs with commas (,).
 	//
 	// example:
 	//
 	// 23,24,25
 	Ids *string `json:"ids,omitempty" xml:"ids,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// example:
 	//

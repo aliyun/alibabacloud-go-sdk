@@ -16,13 +16,13 @@ type iDescribeRuleCountByUserIdResponseBody interface {
 }
 
 type DescribeRuleCountByUserIdResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// A32FE941-35F2-5378-B37C-4B8FDB16F094
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Returned object
+	// The response object.
 	ResultObject *DescribeRuleCountByUserIdResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Struct"`
 }
 
@@ -62,19 +62,19 @@ func (s *DescribeRuleCountByUserIdResponseBody) Validate() error {
 }
 
 type DescribeRuleCountByUserIdResponseBodyResultObject struct {
-	// Whether the limit condition is reached. Values: -**true**: Yes-**false**: No
+	// Indicates whether the limit condition is reached. Valid values: - **true**: The limit condition is reached. - **false**: The limit condition is not reached.
 	//
 	// example:
 	//
 	// false
 	Limit *bool `json:"limit,omitempty" xml:"limit,omitempty"`
-	// Maximum number of items
+	// The maximum number of entries.
 	//
 	// example:
 	//
 	// 100
 	MaxTotalItem *int32 `json:"maxTotalItem,omitempty" xml:"maxTotalItem,omitempty"`
-	// Total number of items
+	// The total number of entries.
 	//
 	// example:
 	//

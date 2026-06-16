@@ -34,71 +34,71 @@ type iDescribeFieldPageRequest interface {
 }
 
 type DescribeFieldPageRequest struct {
-	// Set the language type for request and response messages, default value is **zh**. Values:
+	// The language type for the request and response messages. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Field classification
+	// The field classification.
 	//
 	// example:
 	//
 	// REQUEST_PARAM
 	Classify *string `json:"classify,omitempty" xml:"classify,omitempty"`
-	// Query input parameter name or title
+	// The query parameter: name or title.
 	//
 	// example:
 	//
 	// age/年龄
 	Condition *string `json:"condition,omitempty" xml:"condition,omitempty"`
-	// Current page number
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *string `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
-	// Field name
+	// The field name.
 	//
 	// example:
 	//
 	// age
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Number of items per page, default value is 10
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegId *string `json:"regId,omitempty" xml:"regId,omitempty"`
-	// Field source
+	// The field source.
 	//
 	// example:
 	//
 	// DEFINE
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
-	// Status.
+	// The status.
 	//
 	// example:
 	//
 	// ENABLE
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// Title.
+	// The title.
 	//
 	// example:
 	//
 	// 年龄
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
-	// Field type
+	// The field type.
 	//
 	// example:
 	//

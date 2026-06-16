@@ -16,7 +16,7 @@ type iRecallRuleAuditRequest interface {
 }
 
 type RecallRuleAuditRequest struct {
-	// Primary key ID
+	// The primary key ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type RecallRuleAuditRequest struct {
 	//
 	// 1
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// Region code
+	// The region encoding.
 	//
 	// example:
 	//

@@ -24,33 +24,33 @@ type iDescribeNameListVariablePageListResponseBody interface {
 }
 
 type DescribeNameListVariablePageListResponseBody struct {
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
-	// Page size, default value is 10
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// AE7E6105-7DEB-5125-9B24-DCBC139F6CD2
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Return object
+	// The returned object.
 	ResultObject []*DescribeNameListVariablePageListResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Repeated"`
-	// Total number of items
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 101
 	TotalItem *int32 `json:"totalItem,omitempty" xml:"totalItem,omitempty"`
-	// Total number of pages
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -134,85 +134,85 @@ func (s *DescribeNameListVariablePageListResponseBody) Validate() error {
 }
 
 type DescribeNameListVariablePageListResponseBodyResultObject struct {
-	// Used capacity
+	// The used capacity.
 	//
 	// example:
 	//
 	// 3
 	Capacity *int64 `json:"capacity,omitempty" xml:"capacity,omitempty"`
-	// Description information.
+	// The description.
 	//
 	// example:
 	//
 	// 变量描述
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Creation time.
+	// The creation time.
 	//
 	// example:
 	//
 	// 1621578648000
 	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// Modification time
+	// The modification time.
 	//
 	// example:
 	//
 	// 1565701886000
 	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// Name list ID
+	// The named list ID.
 	//
 	// example:
 	//
 	// 497
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// Remaining capacity
+	// The remaining capacity.
 	//
 	// example:
 	//
 	// 99997
 	LeftCapacity *int64 `json:"leftCapacity,omitempty" xml:"leftCapacity,omitempty"`
-	// Parameter name.
+	// The parameter name.
 	//
 	// example:
 	//
 	// nl_UN8otElLb490
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Name list type
+	// The named list type.
 	//
 	// example:
 	//
 	// 手机号
 	NameListType *string `json:"nameListType,omitempty" xml:"nameListType,omitempty"`
-	// Associated event eventCode
+	// The associated event code.
 	//
 	// example:
 	//
 	// -1
 	RefObjId *string `json:"refObjId,omitempty" xml:"refObjId,omitempty"`
-	// Association type
+	// The association type.
 	//
 	// example:
 	//
 	// EVENT
 	RefObjType *int64 `json:"refObjType,omitempty" xml:"refObjType,omitempty"`
-	// Data source
+	// The data source.
 	//
 	// example:
 	//
 	// SAF
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	// Title.
+	// The title.
 	//
 	// example:
 	//
 	// 白名单
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
-	// Variable type
+	// The variable type.
 	//
 	// example:
 	//
 	// NAME_LIST
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// User UID
+	// The user UID.
 	//
 	// example:
 	//

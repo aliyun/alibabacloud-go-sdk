@@ -16,13 +16,13 @@ type iCreateSampleResponseBody interface {
 }
 
 type CreateSampleResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// A32FE941-35F2-5378-B37C-4B8FDB16F094
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Return object
+	// The returned object.
 	ResultObject *CreateSampleResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Struct"`
 }
 
@@ -62,37 +62,37 @@ func (s *CreateSampleResponseBody) Validate() error {
 }
 
 type CreateSampleResponseBodyResultObject struct {
-	// Number of colored groups
+	// The number of tainted groups.
 	//
 	// example:
 	//
 	// 10
 	CommunityCount *int32 `json:"communityCount,omitempty" xml:"communityCount,omitempty"`
-	// Number of failed samples
+	// The number of failed data samples.
 	//
 	// example:
 	//
 	// 1
 	FailCount *int32 `json:"failCount,omitempty" xml:"failCount,omitempty"`
-	// Recall probability
+	// The recall probability.
 	//
 	// example:
 	//
 	// 2.5%
 	RecallProbability *string `json:"recallProbability,omitempty" xml:"recallProbability,omitempty"`
-	// Risk density
+	// The risk density.
 	//
 	// example:
 	//
 	// 1.5%
 	RiskDensity *string `json:"riskDensity,omitempty" xml:"riskDensity,omitempty"`
-	// Number of samples
+	// The number of data samples.
 	//
 	// example:
 	//
 	// 100
 	SampleCount *int32 `json:"sampleCount,omitempty" xml:"sampleCount,omitempty"`
-	// Number of successful samples
+	// The number of successful data samples.
 	//
 	// example:
 	//

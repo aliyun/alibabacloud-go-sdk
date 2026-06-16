@@ -16,13 +16,13 @@ type iRecallRuleAuditResponseBody interface {
 }
 
 type RecallRuleAuditResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 4C7DC1C8-557F-5483-9E96-74D77A15EEB5
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Return object
+	// The response object.
 	//
 	// example:
 	//

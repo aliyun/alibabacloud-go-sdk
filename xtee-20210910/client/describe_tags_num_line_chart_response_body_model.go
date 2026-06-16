@@ -16,13 +16,13 @@ type iDescribeTagsNumLineChartResponseBody interface {
 }
 
 type DescribeTagsNumLineChartResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// AE7E6105-7DEB-5125-9B24-DCBC139F6CD2
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Returned object
+	// The response object.
 	ResultObject *DescribeTagsNumLineChartResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Struct"`
 }
 
@@ -62,9 +62,9 @@ func (s *DescribeTagsNumLineChartResponseBody) Validate() error {
 }
 
 type DescribeTagsNumLineChartResponseBodyResultObject struct {
-	// Data list
+	// The data list.
 	Series []*DescribeTagsNumLineChartResponseBodyResultObjectSeries `json:"series,omitempty" xml:"series,omitempty" type:"Repeated"`
-	// xaxis node.
+	// The xaxis node.
 	Xaxis *DescribeTagsNumLineChartResponseBodyResultObjectXaxis `json:"xaxis,omitempty" xml:"xaxis,omitempty" type:"Struct"`
 }
 
@@ -113,9 +113,9 @@ func (s *DescribeTagsNumLineChartResponseBodyResultObject) Validate() error {
 }
 
 type DescribeTagsNumLineChartResponseBodyResultObjectSeries struct {
-	// Chart data list
+	// The chart data list.
 	Data []*string `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// Series name.
+	// The series name.
 	//
 	// example:
 	//
@@ -154,7 +154,7 @@ func (s *DescribeTagsNumLineChartResponseBodyResultObjectSeries) Validate() erro
 }
 
 type DescribeTagsNumLineChartResponseBodyResultObjectXaxis struct {
-	// Chart data list
+	// The chart data list.
 	Data []*string `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
 }
 

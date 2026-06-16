@@ -26,47 +26,47 @@ type iDescribeDataSourcePageListRequest interface {
 }
 
 type DescribeDataSourcePageListRequest struct {
-	// Set the language type for request and response, default value is **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Request source IP.
+	// The source IP address of the request.
 	//
 	// example:
 	//
 	// 220.250.21.83
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int64 `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
-	// Variable name
+	// The variable name.
 	//
 	// example:
 	//
 	// data_source
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Page size, default value is 10
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Region code
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegId *string `json:"regId,omitempty" xml:"regId,omitempty"`
-	// Type
+	// The type.
 	//
 	// example:
 	//

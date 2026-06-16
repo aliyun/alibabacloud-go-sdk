@@ -24,33 +24,33 @@ type iDescribeMarkPageResponseBody interface {
 }
 
 type DescribeMarkPageResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// A32FE941-35F2-5378-B37C-4B8FDB16F094
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
-	// Page size, default value is 10.
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Returned object.
+	// The returned object.
 	ResultObject []*DescribeMarkPageResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Repeated"`
-	// Total number of items.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 6
 	TotalItem *int32 `json:"totalItem,omitempty" xml:"totalItem,omitempty"`
-	// Total number of pages.
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -134,25 +134,29 @@ func (s *DescribeMarkPageResponseBody) Validate() error {
 }
 
 type DescribeMarkPageResponseBodyResultObject struct {
-	// Field name.
+	// The field name.
 	//
 	// example:
 	//
 	// mobile
 	FieldName *string `json:"fieldName,omitempty" xml:"fieldName,omitempty"`
-	// Field value.
+	// The field value.
 	//
 	// example:
 	//
 	// 18000000000
 	FieldValue *string `json:"fieldValue,omitempty" xml:"fieldValue,omitempty"`
-	// Primary key ID.
+	// The primary key ID.
 	//
 	// example:
 	//
 	// 2793
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// Mark (0 No / 1 Yes).
+	// Indicates whether the entry is tagged. Valid values:
+	//
+	// - **0**: not tagged.
+	//
+	// - **1**: tagged.
 	//
 	// example:
 	//

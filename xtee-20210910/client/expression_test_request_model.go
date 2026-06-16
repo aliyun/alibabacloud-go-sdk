@@ -26,17 +26,17 @@ type iExpressionTestRequest interface {
 }
 
 type ExpressionTestRequest struct {
-  // Sets the language type for requests and received messages, with a default value of **zh**. Values: 
+  // The language of the request and response. Default value: **zh**. Valid values:
   // 
-  // - **zh**: Chinese
+  // - **zh**: Chinese.
   // 
-  // - **en**: English
+  // - **en**: English.
   // 
   // example:
   // 
   // zh
   Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-  // Test expression.
+  // The test expression.
   // 
   // This parameter is required.
   // 
@@ -44,7 +44,7 @@ type ExpressionTestRequest struct {
   // 
   // @ex_GX9rrlTq4b67 + 1001
   Expression *string `json:"expression,omitempty" xml:"expression,omitempty"`
-  // Calculation expression variable
+  // The calculation expression variable.
   // 
   // This parameter is required.
   // 
@@ -52,19 +52,19 @@ type ExpressionTestRequest struct {
   // 
   // [{\\"name\\":\\"age\\",\\"code\\":\\"age\\",\\"fieldType\\":\\"INT\\",\\"id\\":44809,\\"value\\":\\"1\\"}]
   ExpressionVariable *string `json:"expressionVariable,omitempty" xml:"expressionVariable,omitempty"`
-  // Associated variable ID
+  // The associated variable ID.
   // 
   // example:
   // 
   // [44659]
   ExpressionVariableIds *string `json:"expressionVariableIds,omitempty" xml:"expressionVariableIds,omitempty"`
-  // Variable ID
+  // The variable ID.
   // 
   // example:
   // 
   // 3144
   Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-  // Region code
+  // The region code.
   // 
   // This parameter is required.
   // 
@@ -72,7 +72,7 @@ type ExpressionTestRequest struct {
   // 
   // cn-hangzhou
   RegId *string `json:"regId,omitempty" xml:"regId,omitempty"`
-  // Scene
+  // The scenario.
   // 
   // This parameter is required.
   // 

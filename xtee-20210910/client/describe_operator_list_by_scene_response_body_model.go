@@ -16,13 +16,13 @@ type iDescribeOperatorListBySceneResponseBody interface {
 }
 
 type DescribeOperatorListBySceneResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// AE7E6105-7DEB-5125-9B24-DCBC139F6CD2
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Return object
+	// The returned object.
 	ResultObject []*DescribeOperatorListBySceneResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Repeated"`
 }
 
@@ -66,13 +66,13 @@ func (s *DescribeOperatorListBySceneResponseBody) Validate() error {
 }
 
 type DescribeOperatorListBySceneResponseBodyResultObject struct {
-	// Return value type
+	// The return value type.
 	//
 	// example:
 	//
 	// STRING
 	FieldType *string `json:"fieldType,omitempty" xml:"fieldType,omitempty"`
-	// Operator list
+	// The operator list.
 	Operators []*DescribeOperatorListBySceneResponseBodyResultObjectOperators `json:"operators,omitempty" xml:"operators,omitempty" type:"Repeated"`
 }
 
@@ -116,31 +116,31 @@ func (s *DescribeOperatorListBySceneResponseBodyResultObject) Validate() error {
 }
 
 type DescribeOperatorListBySceneResponseBodyResultObjectOperators struct {
-	// Operator code
+	// The operator code.
 	//
 	// example:
 	//
 	// equals
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Whether it contains a right variable
+	// Indicates whether the operator has a right variable.
 	//
 	// example:
 	//
 	// true
 	HasRightVariable *bool `json:"hasRightVariable,omitempty" xml:"hasRightVariable,omitempty"`
-	// Description
+	// The description.
 	//
 	// example:
 	//
 	// 等于
 	Memo *string `json:"memo,omitempty" xml:"memo,omitempty"`
-	// Operator name
+	// The operator name.
 	//
 	// example:
 	//
 	// 等于
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Right variable object
+	// The right variable object.
 	RightVariables []*DescribeOperatorListBySceneResponseBodyResultObjectOperatorsRightVariables `json:"rightVariables,omitempty" xml:"rightVariables,omitempty" type:"Repeated"`
 }
 
@@ -211,19 +211,19 @@ func (s *DescribeOperatorListBySceneResponseBodyResultObjectOperators) Validate(
 }
 
 type DescribeOperatorListBySceneResponseBodyResultObjectOperatorsRightVariables struct {
-	// Field name.
+	// The field name.
 	//
 	// example:
 	//
 	// 年龄
 	FieldName *string `json:"fieldName,omitempty" xml:"fieldName,omitempty"`
-	// Field type.
+	// The field type.
 	//
 	// example:
 	//
 	// INT
 	FieldType *string `json:"fieldType,omitempty" xml:"fieldType,omitempty"`
-	// Field value.
+	// The field value.
 	//
 	// example:
 	//

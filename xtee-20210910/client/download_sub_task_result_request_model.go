@@ -18,14 +18,20 @@ type iDownloadSubTaskResultRequest interface {
 }
 
 type DownloadSubTaskResultRequest struct {
+	// Language of error messages returned by the API. Valid values: zh: Chinese. en: English. Default value: en.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// area encoding.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegId *string `json:"RegId,omitempty" xml:"RegId,omitempty"`
+	// Subtask ID.
+	//
 	// example:
 	//
 	// 2

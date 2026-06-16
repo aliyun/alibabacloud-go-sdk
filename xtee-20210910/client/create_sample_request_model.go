@@ -30,59 +30,59 @@ type iCreateSampleRequest interface {
 }
 
 type CreateSampleRequest struct {
-	// Sets the language type for requests and received messages, with a default value of **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// OSS client uploaded file name
+	// The name of the file uploaded by the OSS client.
 	//
 	// example:
 	//
 	// 样本文件.csv
 	ClientFileName *string `json:"clientFileName,omitempty" xml:"clientFileName,omitempty"`
-	// OSS client address
+	// The OSS client address.
 	//
 	// example:
 	//
 	// sample/path
 	ClientPath *string `json:"clientPath,omitempty" xml:"clientPath,omitempty"`
-	// File type
+	// The file type.
 	//
 	// example:
 	//
 	// CSV
 	FileType *string `json:"fileType,omitempty" xml:"fileType,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegId *string `json:"regId,omitempty" xml:"regId,omitempty"`
-	// Sample tag
+	// The label of the data sample.
 	//
 	// example:
 	//
 	// rm0102
 	SampleTag *string `json:"sampleTag,omitempty" xml:"sampleTag,omitempty"`
-	// Sample type
+	// The type of the data sample.
 	//
 	// example:
 	//
 	// PHONE
 	SampleType *string `json:"sampleType,omitempty" xml:"sampleType,omitempty"`
-	// Sample values
+	// The values of the data sample.
 	//
 	// example:
 	//
 	// 1777000000,1777000001
 	SampleValues *string `json:"sampleValues,omitempty" xml:"sampleValues,omitempty"`
-	// Upload type
+	// The upload type.
 	//
 	// example:
 	//

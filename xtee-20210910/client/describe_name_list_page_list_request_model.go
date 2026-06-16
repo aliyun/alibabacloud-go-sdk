@@ -28,53 +28,53 @@ type iDescribeNameListPageListRequest interface {
 }
 
 type DescribeNameListPageListRequest struct {
-	// Sets the language type for requests and received messages, default value is **zh**. Values:
+	// The language type for the request and response messages. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 3
 	CurrentPage *int32 `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
-	// Page size, default value is 10
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegId *string `json:"regId,omitempty" xml:"regId,omitempty"`
-	// Update start time.
+	// The start time of the update period.
 	//
 	// example:
 	//
 	// 1753372800000
 	UpdateBeginTime *int64 `json:"updateBeginTime,omitempty" xml:"updateBeginTime,omitempty"`
-	// Update end time.
+	// The end time of the update period.
 	//
 	// example:
 	//
 	// 1753459199059
 	UpdateEndTime *int64 `json:"updateEndTime,omitempty" xml:"updateEndTime,omitempty"`
-	// Variable name/description
+	// The variable name or description.
 	//
 	// example:
 	//
 	// 白名单
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
-	// Variable ID
+	// The variable ID.
 	//
 	// This parameter is required.
 	//

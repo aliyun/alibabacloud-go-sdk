@@ -24,33 +24,33 @@ type iDescribeRecommendTaskPageListResponseBody interface {
 }
 
 type DescribeRecommendTaskPageListResponseBody struct {
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// A32FE941-35F2-5378-B37C-4B8FDB16F094
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Current page number
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
-	// Page size, with a default value of 10
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Returned object
+	// The returned object.
 	ResultObject []*DescribeRecommendTaskPageListResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Repeated"`
-	// Total number of items
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 3
 	TotalItem *int32 `json:"totalItem,omitempty" xml:"totalItem,omitempty"`
-	// Total number of pages.
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -134,63 +134,63 @@ func (s *DescribeRecommendTaskPageListResponseBody) Validate() error {
 }
 
 type DescribeRecommendTaskPageListResponseBodyResultObject struct {
-	// Impact indicators
+	// The affected metrics.
 	ExpectVelocities []*string `json:"expectVelocities,omitempty" xml:"expectVelocities,omitempty" type:"Repeated"`
-	// Creation time.
+	// The creation time.
 	//
 	// example:
 	//
 	// 1621578648000
 	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// Number of samples
+	// The number of samples.
 	//
 	// example:
 	//
 	// 100
 	NormalCount *int64 `json:"normalCount,omitempty" xml:"normalCount,omitempty"`
-	// Number of normal samples
+	// The number of normal samples.
 	//
 	// example:
 	//
 	// 10
 	NormalSize *int64 `json:"normalSize,omitempty" xml:"normalSize,omitempty"`
-	// Number of records displayed on the current page.
+	// The number of records displayed on the current page.
 	//
 	// example:
 	//
 	// 100
 	RiskCount *int64 `json:"riskCount,omitempty" xml:"riskCount,omitempty"`
-	// Number of risk samples
+	// The number of risky samples.
 	//
 	// example:
 	//
 	// 5
 	RiskSize *int64 `json:"riskSize,omitempty" xml:"riskSize,omitempty"`
-	// Sample name
+	// The sample name.
 	//
 	// example:
 	//
 	// 白样本
 	SampleName *string `json:"sampleName,omitempty" xml:"sampleName,omitempty"`
-	// Sample scenario
+	// The sample scenario.
 	//
 	// example:
 	//
 	// account_abuse_detection
 	SampleScene *string `json:"sampleScene,omitempty" xml:"sampleScene,omitempty"`
-	// Task ID.
+	// The task ID.
 	//
 	// example:
 	//
 	// 240c93ddffa74e38be3a00375eb3041d
 	TaskId *int64 `json:"taskId,omitempty" xml:"taskId,omitempty"`
-	// Task name.
+	// The task name.
 	//
 	// example:
 	//
 	// 策略推荐任务
 	TaskName *string `json:"taskName,omitempty" xml:"taskName,omitempty"`
-	// Task status.
+	// The task status.
 	//
 	// example:
 	//

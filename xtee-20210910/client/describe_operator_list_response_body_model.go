@@ -16,13 +16,13 @@ type iDescribeOperatorListResponseBody interface {
 }
 
 type DescribeOperatorListResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// A32FE941-35F2-5378-B37C-4B8FDB16F094
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Return object
+	// The returned object.
 	ResultObject []*DescribeOperatorListResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Repeated"`
 }
 
@@ -66,13 +66,13 @@ func (s *DescribeOperatorListResponseBody) Validate() error {
 }
 
 type DescribeOperatorListResponseBodyResultObject struct {
-	// Return value type
+	// The type of the return value.
 	//
 	// example:
 	//
 	// STRING
 	FieldType *string `json:"fieldType,omitempty" xml:"fieldType,omitempty"`
-	// Operator list
+	// The list of operators.
 	Operators []*DescribeOperatorListResponseBodyResultObjectOperators `json:"operators,omitempty" xml:"operators,omitempty" type:"Repeated"`
 }
 
@@ -116,31 +116,31 @@ func (s *DescribeOperatorListResponseBodyResultObject) Validate() error {
 }
 
 type DescribeOperatorListResponseBodyResultObjectOperators struct {
-	// Operator code
+	// The operator code.
 	//
 	// example:
 	//
 	// equals
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Whether it contains a right variable
+	// Indicates whether a right variable exists.
 	//
 	// example:
 	//
 	// true
 	HasRightVariable *bool `json:"hasRightVariable,omitempty" xml:"hasRightVariable,omitempty"`
-	// Description
+	// The description.
 	//
 	// example:
 	//
 	// 等于
 	Memo *string `json:"memo,omitempty" xml:"memo,omitempty"`
-	// Operator name
+	// The operator name.
 	//
 	// example:
 	//
 	// 等于
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Right variable object
+	// The right variable object.
 	RightVariables []*DescribeOperatorListResponseBodyResultObjectOperatorsRightVariables `json:"rightVariables,omitempty" xml:"rightVariables,omitempty" type:"Repeated"`
 }
 
@@ -211,19 +211,19 @@ func (s *DescribeOperatorListResponseBodyResultObjectOperators) Validate() error
 }
 
 type DescribeOperatorListResponseBodyResultObjectOperatorsRightVariables struct {
-	// Field name.
+	// The field name.
 	//
 	// example:
 	//
 	// 年龄
 	FieldName *string `json:"fieldName,omitempty" xml:"fieldName,omitempty"`
-	// Field type.
+	// The type of the field.
 	//
 	// example:
 	//
 	// INT
 	FieldType *string `json:"fieldType,omitempty" xml:"fieldType,omitempty"`
-	// Field value.
+	// The field value.
 	//
 	// example:
 	//

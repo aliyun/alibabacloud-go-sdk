@@ -28,31 +28,50 @@ type iCreatePocSampleRequest interface {
 }
 
 type CreatePocSampleRequest struct {
+	// File Name.
+	//
 	// example:
 	//
 	// P4911_2707.csv
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	FileUrl  *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// File URL.
+	//
+	// example:
+	//
+	// saf/cpoc/953c883cde33b2e21d722eb661d26375/测试文件模板-通用.csv
+	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// The language of the error message returned by the API. Valid values: zh: Chinese. en: English. The default value is en.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The area encoding.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegId *string `json:"RegId,omitempty" xml:"RegId,omitempty"`
+	// The remark for the topic. It can only contain letters, digits, underscores (_), and hyphens (-). The length must be 3 to 64 characters.
+	//
 	// example:
 	//
 	// cs-pub
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// Sample Name.
+	//
 	// example:
 	//
 	// SampleNameTest
 	SampleName *string `json:"SampleName,omitempty" xml:"SampleName,omitempty"`
+	// Scenario.
+	//
 	// example:
 	//
 	// INTERNET
 	Tab *string `json:"Tab,omitempty" xml:"Tab,omitempty"`
+	// Access type.
+	//
 	// example:
 	//
 	// SAF_CONSOLE

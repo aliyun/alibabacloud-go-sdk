@@ -24,33 +24,33 @@ type iDescribeSampleListResponseBody interface {
 }
 
 type DescribeSampleListResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// A32FE941-35F2-5378-B37C-4B8FDB16F094
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
-	// Page size, with a default value of 10
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Returned object
+	// The returned objects.
 	ResultObject []*DescribeSampleListResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Repeated"`
-	// Total count.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 6
 	TotalItem *int32 `json:"totalItem,omitempty" xml:"totalItem,omitempty"`
-	// Total pages
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -134,37 +134,37 @@ func (s *DescribeSampleListResponseBody) Validate() error {
 }
 
 type DescribeSampleListResponseBodyResultObject struct {
-	// Database ID.
+	// The database ID.
 	//
 	// example:
 	//
 	// 497
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// Sample tags.
+	// The sample tags.
 	//
 	// example:
 	//
 	// rm0102
 	SampleTags *string `json:"sampleTags,omitempty" xml:"sampleTags,omitempty"`
-	// Sample type
+	// The sample type.
 	//
 	// example:
 	//
 	// PHONE
 	SampleType *int32 `json:"sampleType,omitempty" xml:"sampleType,omitempty"`
-	// Sample value.
+	// The sample value.
 	//
 	// example:
 	//
 	// 1770000000
 	SampleValue *string `json:"sampleValue,omitempty" xml:"sampleValue,omitempty"`
-	// Update time.
+	// The update time.
 	//
 	// example:
 	//
 	// 1699450018265
 	UpdateTime *int64 `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	// Version number.
+	// The version number.
 	//
 	// example:
 	//

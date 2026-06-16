@@ -18,17 +18,17 @@ type iDescribeRuleListByEventCodesListRequest interface {
 }
 
 type DescribeRuleListByEventCodesListRequest struct {
-	// Set the language type for request and response messages, default value is **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Event codes, JSON array string
+	// The event codes. The value is a JSON array string.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type DescribeRuleListByEventCodesListRequest struct {
 	//
 	// ["de_asssce8122"]
 	EventCodes *string `json:"eventCodes,omitempty" xml:"eventCodes,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// This parameter is required.
 	//

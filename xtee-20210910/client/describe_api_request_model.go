@@ -22,17 +22,17 @@ type iDescribeApiRequest interface {
 }
 
 type DescribeApiRequest struct {
-	// Set the language type for requests and received messages, default value is **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// API unique ID.
+	// The unique ID of the API.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type DescribeApiRequest struct {
 	//
 	// 33
 	ApiId *string `json:"apiId,omitempty" xml:"apiId,omitempty"`
-	// Region ID.
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type DescribeApiRequest struct {
 	//
 	// cn-hangzhou、cn-shanghai
 	ApiRegionId *string `json:"apiRegionId,omitempty" xml:"apiRegionId,omitempty"`
-	// API type
+	// The API type.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +56,7 @@ type DescribeApiRequest struct {
 	//
 	// SELF
 	ApiType *string `json:"apiType,omitempty" xml:"apiType,omitempty"`
-	// Region code
+	// The area code.
 	//
 	// example:
 	//

@@ -20,29 +20,29 @@ type iFileUploadRequest interface {
 }
 
 type FileUploadRequest struct {
-	// File name.
+	// The file name.
 	//
 	// example:
 	//
 	// P4911_2707.csv
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// File URL
+	// The file URL.
 	//
 	// example:
 	//
 	// https://res-v1.cupl-fdfs.com/direct/79886bdc-9855-4ff4-aa34-eb5b21cd43a7
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	// Sets the language type for requests and received messages, default value is **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Scenario.
+	// The scenario.
 	//
 	// example:
 	//

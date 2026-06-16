@@ -24,33 +24,33 @@ type iDescribeVariableListResponseBody interface {
 }
 
 type DescribeVariableListResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// A32FE941-35F2-5378-B37C-4B8FDB16F094
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
-	// Page size, default value is 10.
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Returned object.
+	// The returned object.
 	ResultObject []*DescribeVariableListResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Repeated"`
-	// Total number of items.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 27
 	TotalItem *int32 `json:"totalItem,omitempty" xml:"totalItem,omitempty"`
-	// Total number of pages.
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -134,103 +134,103 @@ func (s *DescribeVariableListResponseBody) Validate() error {
 }
 
 type DescribeVariableListResponseBodyResultObject struct {
-	// Capacity.
+	// The capacity.
 	//
 	// example:
 	//
 	// 100000
 	Capacity *int64 `json:"capacity,omitempty" xml:"capacity,omitempty"`
-	// Variable definition ID.
+	// The variable definition ID.
 	//
 	// example:
 	//
 	// 10
 	DefineId *string `json:"defineId,omitempty" xml:"defineId,omitempty"`
-	// Description information.
+	// The description.
 	//
 	// example:
 	//
 	// 变量描述
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Extended information.
+	// The extended information.
 	//
 	// example:
 	//
 	// 暂无
 	ExtendInfo map[string]interface{} `json:"extendInfo,omitempty" xml:"extendInfo,omitempty"`
-	// Creation time.
+	// The creation time.
 	//
 	// example:
 	//
 	// 1621578648000
 	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// Modification time.
+	// The modification time.
 	//
 	// example:
 	//
 	// 1565701886000
 	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// Variable ID.
+	// The variable ID.
 	//
 	// example:
 	//
 	// 497
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// Remaining capacity.
+	// The remaining capacity.
 	//
 	// example:
 	//
 	// 100000
 	LeftCapacity *int64 `json:"leftCapacity,omitempty" xml:"leftCapacity,omitempty"`
-	// Variable name
+	// The variable name.
 	//
 	// example:
 	//
 	// __ipLocationCityCode__
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Variable output type
+	// The output type of the variable.
 	//
 	// example:
 	//
 	// STRING
 	OutputsType *string `json:"outputsType,omitempty" xml:"outputsType,omitempty"`
-	// Associated event ID.
+	// The associated event of the variable.
 	//
 	// example:
 	//
 	// de_agdxgz0246
 	RefObjId *string `json:"refObjId,omitempty" xml:"refObjId,omitempty"`
-	// Associated event name.
+	// The name of the associated event of the variable.
 	//
 	// example:
 	//
 	// 注册事件
 	RefObjName *string `json:"refObjName,omitempty" xml:"refObjName,omitempty"`
-	// Associated object type of the variable
+	// The association type of the variable.
 	//
 	// example:
 	//
 	// EVENT
 	RefObjType *string `json:"refObjType,omitempty" xml:"refObjType,omitempty"`
-	// Source type.
+	// The source type.
 	//
 	// example:
 	//
 	// SAF
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	// Title.
+	// The title.
 	//
 	// example:
 	//
 	// 设备风险识别_标签
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
-	// Variable type.
+	// The variable type.
 	//
 	// example:
 	//
 	// NATIVE
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// User ID to which the data belongs.
+	// The UID of the user who owns the data.
 	//
 	// example:
 	//

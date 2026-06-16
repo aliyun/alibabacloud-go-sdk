@@ -34,73 +34,73 @@ type iCreatePocEvRequest interface {
 }
 
 type CreatePocEvRequest struct {
-	// Date format type
+	// The date format type.
 	//
 	// example:
 	//
 	// yyyyMMdd
 	DateFormat *string `json:"DateFormat,omitempty" xml:"DateFormat,omitempty"`
-	// File name.
+	// The file name.
 	//
-	// > The file name must end with txt or sql. For example, test.txt, test.sql.
+	// > The file name must end with txt or sql. Example: test.txt or test.sql.
 	//
 	// example:
 	//
 	// test.csv
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// File type
+	// The file type.
 	//
 	// example:
 	//
 	// CSV
 	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
-	// File URL.
+	// The file URL.
 	//
 	// example:
 	//
 	// saf/cpoc/953c883cde33b2e21d722eb661d26375/测试文件模板-通用.csv
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	// Sets the language type for requests and received messages, with a default value of **zh**. Values:
+	// The language type for the request and response messages. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegId *string `json:"RegId,omitempty" xml:"RegId,omitempty"`
-	// Service code.
+	// The service code.
 	//
 	// example:
 	//
 	// anti_fraud_v2
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	// Service name.
+	// The service name.
 	//
 	// example:
 	//
 	// 注册风险
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// Scenario.
+	// The scenario.
 	//
 	// example:
 	//
 	// INTERNET
 	Tab *string `json:"Tab,omitempty" xml:"Tab,omitempty"`
-	// Task name.
+	// The task name.
 	//
 	// example:
 	//
 	// er-log-s3
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// Access type.
+	// The access type.
 	//
 	// example:
 	//

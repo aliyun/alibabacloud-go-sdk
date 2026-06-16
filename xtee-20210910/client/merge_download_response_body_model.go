@@ -22,22 +22,31 @@ type iMergeDownloadResponseBody interface {
 }
 
 type MergeDownloadResponseBody struct {
+	// Status code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Return message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// A32FE941-35F2-5378-B37C-4B8FDB16F094
-	RequestId    *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Return Result.
 	ResultObject *MergeDownloadResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
 
@@ -104,10 +113,14 @@ func (s *MergeDownloadResponseBody) Validate() error {
 }
 
 type MergeDownloadResponseBodyResultObject struct {
+	// Status.
+	//
 	// example:
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// OSS download URL.
+	//
 	// example:
 	//
 	// rtmp://push-live.gaotime.com/jiaenguang789/21645251932448?auth_key=1768357031-0-0-6e2a4815fe4e2287a86be1105d42bf53

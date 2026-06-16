@@ -26,23 +26,23 @@ type iUpdateDataSourceRequest interface {
 }
 
 type UpdateDataSourceRequest struct {
-	// Sets the language type for requests and received messages, default value is **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Description information.
+	// The description.
 	//
 	// example:
 	//
 	// 描述
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Primary key ID
+	// The primary key ID.
 	//
 	// This parameter is required.
 	//
@@ -50,19 +50,19 @@ type UpdateDataSourceRequest struct {
 	//
 	// 30
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// Data source name.
+	// The data source name.
 	//
 	// example:
 	//
 	// 年龄数据源
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// OSS file key.
+	// The OSS file key.
 	//
 	// example:
 	//
 	// saf/path/xxx
 	OssKey *string `json:"ossKey,omitempty" xml:"ossKey,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// This parameter is required.
 	//
@@ -70,7 +70,7 @@ type UpdateDataSourceRequest struct {
 	//
 	// cn-hangzhou
 	RegId *string `json:"regId,omitempty" xml:"regId,omitempty"`
-	// Data source type
+	// The data source type.
 	//
 	// example:
 	//

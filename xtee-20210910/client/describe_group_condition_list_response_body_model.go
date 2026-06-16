@@ -16,13 +16,13 @@ type iDescribeGroupConditionListResponseBody interface {
 }
 
 type DescribeGroupConditionListResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// A32FE941-35F2-5378-B37C-4B8FDB16F094
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Return object
+	// The response object.
 	ResultObject []*DescribeGroupConditionListResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Repeated"`
 }
 
@@ -66,13 +66,13 @@ func (s *DescribeGroupConditionListResponseBody) Validate() error {
 }
 
 type DescribeGroupConditionListResponseBodyResultObject struct {
-	// Field key
+	// fieldKey
 	//
 	// example:
 	//
 	// key
 	FieldKey *string `json:"fieldKey,omitempty" xml:"fieldKey,omitempty"`
-	// Field value.
+	// The field value.
 	//
 	// example:
 	//

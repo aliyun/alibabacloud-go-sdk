@@ -24,33 +24,33 @@ type iDescribeTemplatePageListResponseBody interface {
 }
 
 type DescribeTemplatePageListResponseBody struct {
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
-	// Number of items per page, default value is 10
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// AE7E6105-7DEB-5125-9B24-DCBC139F6CD2
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Returned object
+	// The returned object.
 	ResultObject []*DescribeTemplatePageListResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Repeated"`
-	// Total number of items
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 6
 	TotalItem *int32 `json:"totalItem,omitempty" xml:"totalItem,omitempty"`
-	// Total number of pages
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -134,79 +134,79 @@ func (s *DescribeTemplatePageListResponseBody) Validate() error {
 }
 
 type DescribeTemplatePageListResponseBodyResultObject struct {
-	// Description information.
+	// The description.
 	//
 	// example:
 	//
 	// 描述
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Event code
+	// The event code.
 	//
 	// example:
 	//
 	// de_aszbjb7236
 	EventCode *string `json:"eventCode,omitempty" xml:"eventCode,omitempty"`
-	// Event name.
+	// The event name.
 	//
 	// example:
 	//
 	// 注册风险
 	EventName *string `json:"eventName,omitempty" xml:"eventName,omitempty"`
-	// Creation time.
+	// The creation time.
 	//
 	// example:
 	//
 	// 1621578648000
 	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// Modification time.
+	// The modification time.
 	//
 	// example:
 	//
 	// 1565701886000
 	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// Template ID.
+	// The template ID.
 	//
 	// example:
 	//
 	// 497
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// Number of policies
+	// The number of policies.
 	//
 	// example:
 	//
 	// 3
 	RuleCount *int32 `json:"ruleCount,omitempty" xml:"ruleCount,omitempty"`
-	// Template code.
+	// The template code.
 	//
 	// example:
 	//
 	// register
 	TemplateCode *string `json:"templateCode,omitempty" xml:"templateCode,omitempty"`
-	// Template name.
+	// The template name.
 	//
 	// example:
 	//
 	// 注册事件
 	TemplateName *string `json:"templateName,omitempty" xml:"templateName,omitempty"`
-	// Event status
+	// The event status.
 	//
 	// example:
 	//
 	// ONLINE
 	TemplateStatus *string `json:"templateStatus,omitempty" xml:"templateStatus,omitempty"`
-	// Template type
+	// The template type.
 	//
 	// example:
 	//
 	// PUB_SERVICE
 	TemplateType *string `json:"templateType,omitempty" xml:"templateType,omitempty"`
-	// Number of customer authorizations
+	// The number of authorized customers.
 	//
 	// example:
 	//
 	// 1
 	UserCount *int32 `json:"userCount,omitempty" xml:"userCount,omitempty"`
-	// Version number.
+	// The version number.
 	//
 	// example:
 	//

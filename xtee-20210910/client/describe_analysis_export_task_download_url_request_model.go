@@ -16,7 +16,7 @@ type iDescribeAnalysisExportTaskDownloadUrlRequest interface {
 }
 
 type DescribeAnalysisExportTaskDownloadUrlRequest struct {
-	// Sets the language type for requests and received messages, default value is **zh**. Values:
+	// Sets the language type for request and response messages. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
@@ -26,7 +26,7 @@ type DescribeAnalysisExportTaskDownloadUrlRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Region code
+	// Region ID.
 	//
 	// This parameter is required.
 	//

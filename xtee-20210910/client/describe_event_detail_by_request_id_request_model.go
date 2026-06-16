@@ -22,29 +22,29 @@ type iDescribeEventDetailByRequestIdRequest interface {
 }
 
 type DescribeEventDetailByRequestIdRequest struct {
-	// Sets the language type for requests and received messages, with a default value of **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Event code
+	// The event code.
 	//
 	// example:
 	//
 	// de_azywkh7523
 	EventCode *string `json:"eventCode,omitempty" xml:"eventCode,omitempty"`
-	// Event execution time
+	// The event execution time.
 	//
 	// example:
 	//
 	// 1752571330000
 	EventTime *int64 `json:"eventTime,omitempty" xml:"eventTime,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +52,7 @@ type DescribeEventDetailByRequestIdRequest struct {
 	//
 	// cn-hangzhou
 	RegId *string `json:"regId,omitempty" xml:"regId,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// This parameter is required.
 	//

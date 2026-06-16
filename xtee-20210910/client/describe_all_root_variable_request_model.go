@@ -32,65 +32,65 @@ type iDescribeAllRootVariableRequest interface {
 }
 
 type DescribeAllRootVariableRequest struct {
-	// Set the language type for requests and received messages, default value is **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Request source IP. No need to fill in, the system will automatically obtain it.
+	// The source IP address of the request. You do not need to specify this parameter. The system automatically obtains the value.
 	//
 	// example:
 	//
 	// 61.169.104.202
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// Device variable list
+	// The list of device variables.
 	//
 	// example:
 	//
 	// [180]
 	DeviceVariableIds *string `json:"deviceVariableIds,omitempty" xml:"deviceVariableIds,omitempty"`
-	// Event code
+	// The event code.
 	//
 	// example:
 	//
 	// de_arqbuy7206
 	EventCode *string `json:"eventCode,omitempty" xml:"eventCode,omitempty"`
-	// Custom variable list
+	// The list of custom variables.
 	//
 	// example:
 	//
 	// [6780]
 	ExpressionVariableIds *string `json:"expressionVariableIds,omitempty" xml:"expressionVariableIds,omitempty"`
-	// Variable ID.
+	// The variable ID.
 	//
 	// example:
 	//
 	// 2557
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// Event field list
+	// The list of event fields.
 	//
 	// example:
 	//
 	// [106780]
 	NativeVariableIds *string `json:"nativeVariableIds,omitempty" xml:"nativeVariableIds,omitempty"`
-	// Custom query variable
+	// The custom query variables.
 	//
 	// example:
 	//
 	// [2678]
 	QueryVariableIds *string `json:"queryVariableIds,omitempty" xml:"queryVariableIds,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegId *string `json:"regId,omitempty" xml:"regId,omitempty"`
-	// Custom cumulative variable
+	// The custom cumulative variables.
 	//
 	// example:
 	//

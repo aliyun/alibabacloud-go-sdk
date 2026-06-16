@@ -24,33 +24,33 @@ type iDescribeSampleDataListResponseBody interface {
 }
 
 type DescribeSampleDataListResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// A32FE941-35F2-5378-B37C-4B8FDB16F094
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
-	// Page size, default value is 10.
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Returned object
+	// The returned object.
 	ResultObject []*DescribeSampleDataListResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Repeated"`
-	// Total number of items.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 6
 	TotalItem *int32 `json:"totalItem,omitempty" xml:"totalItem,omitempty"`
-	// Total number of pages.
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -134,133 +134,133 @@ func (s *DescribeSampleDataListResponseBody) Validate() error {
 }
 
 type DescribeSampleDataListResponseBodyResultObject struct {
-	// Classification type, binary or multi-class.
+	// The classification type, such as binary classification or multi-class classification.
 	//
 	// example:
 	//
 	// 二分类
 	ClassificationType *string `json:"classificationType,omitempty" xml:"classificationType,omitempty"`
-	// Criterion value for sample data calculation
+	// The benchmark value used for sample data calculation.
 	//
 	// example:
 	//
 	// {"正样本":"1"，"负样本":"1"}
 	DataDistributed *string `json:"dataDistributed,omitempty" xml:"dataDistributed,omitempty"`
-	// First row of sample data. Used to define the values of each column.
+	// The first row of the sample data. This row defines the value of each column.
 	//
 	// example:
 	//
 	// 17700000000
 	DataTitle *string `json:"dataTitle,omitempty" xml:"dataTitle,omitempty"`
-	// Deletion tag.
+	// The deletion tag.
 	//
 	// example:
 	//
 	// DELETE
 	DeleteTag *string `json:"deleteTag,omitempty" xml:"deleteTag,omitempty"`
-	// Description information.
+	// The description.
 	//
 	// example:
 	//
 	// 描述
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Creation time.
+	// The creation time.
 	//
 	// example:
 	//
 	// 1621578648000
 	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// Modification time.
+	// The modification time.
 	//
 	// example:
 	//
 	// 1565701886000
 	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// Primary key ID
+	// The primary key ID.
 	//
 	// example:
 	//
 	// 497
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// Name
+	// The name.
 	//
 	// example:
 	//
 	// 注册样本
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Number of normal samples
+	// The number of normal samples.
 	//
 	// example:
 	//
 	// 999
 	NormalSize *int64 `json:"normalSize,omitempty" xml:"normalSize,omitempty"`
-	// Recall configuration
+	// The backtracking configuration.
 	//
 	// example:
 	//
 	// {"variables":"a,b,c"}
 	RecallConfig *string `json:"recallConfig,omitempty" xml:"recallConfig,omitempty"`
-	// Number of risk samples
+	// The number of risky samples.
 	//
 	// example:
 	//
 	// 1
 	RiskSize *int64 `json:"riskSize,omitempty" xml:"riskSize,omitempty"`
-	// Specified risk value
+	// The specified risk value.
 	//
 	// example:
 	//
 	// black
 	RiskValue *string `json:"riskValue,omitempty" xml:"riskValue,omitempty"`
-	// Sample label details
+	// The sample label details.
 	//
 	// example:
 	//
 	// [{"type":"positive","size":"2000","value":1},{"type":"negative","size":1900,"value":0}]
 	SampleLabelDetail *string `json:"sampleLabelDetail,omitempty" xml:"sampleLabelDetail,omitempty"`
-	// Sample size
+	// The number of samples.
 	//
 	// example:
 	//
 	// 1000
 	SampleSize *int64 `json:"sampleSize,omitempty" xml:"sampleSize,omitempty"`
-	// Scene code
+	// The scenario code.
 	//
 	// example:
 	//
 	// account_abuse_detection
 	Scene *string `json:"scene,omitempty" xml:"scene,omitempty"`
-	// Status.
+	// The status.
 	//
 	// example:
 	//
 	// CREATE
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// Storage path
+	// The storage path.
 	//
 	// example:
 	//
 	// saf/de/sample/3dc2spspHKq4G3YI9d08
 	StorePath *string `json:"storePath,omitempty" xml:"storePath,omitempty"`
-	// Storage type
+	// The storage type.
 	//
 	// example:
 	//
 	// OSS
 	StoreType *string `json:"storeType,omitempty" xml:"storeType,omitempty"`
-	// Whether recall is supported
+	// Indicates whether backtracking is supported.
 	//
 	// example:
 	//
 	// true
 	SupportRecall *string `json:"supportRecall,omitempty" xml:"supportRecall,omitempty"`
-	// User UID
+	// The user UID.
 	//
 	// example:
 	//
 	// 1519714049632764
 	UserId *int64 `json:"userId,omitempty" xml:"userId,omitempty"`
-	// Version
+	// The version.
 	//
 	// example:
 	//

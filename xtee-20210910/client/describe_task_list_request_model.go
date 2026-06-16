@@ -22,35 +22,35 @@ type iDescribeTaskListRequest interface {
 }
 
 type DescribeTaskListRequest struct {
-	// Current page.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// Whether to paginate.
+	// Specifies whether to enable pagination.
 	//
 	// example:
 	//
 	// true
 	IsPage *bool `json:"IsPage,omitempty" xml:"IsPage,omitempty"`
-	// Sets the language type for requests and received messages, with a default value of **zh**. Values:
+	// The language type for the request and response messages. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Page size, with a default value of 10.
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// example:
 	//

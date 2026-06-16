@@ -22,23 +22,23 @@ type iDescribeAuthRulePageListRequest interface {
 }
 
 type DescribeAuthRulePageListRequest struct {
-	// Sets the language type for requests and received messages, default value is **zh**. Values:
+	// The language type for the request and response messages. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Event code
+	// The event code.
 	//
 	// example:
 	//
 	// de_arcehq4370
 	EventCode *string `json:"eventCode,omitempty" xml:"eventCode,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// This parameter is required.
 	//
@@ -46,13 +46,13 @@ type DescribeAuthRulePageListRequest struct {
 	//
 	// cn-hangzhou
 	RegId *string `json:"regId,omitempty" xml:"regId,omitempty"`
-	// Policy name
+	// The policy name.
 	//
 	// example:
 	//
 	// 分析中心事件测试_策略01
 	RuleName *string `json:"ruleName,omitempty" xml:"ruleName,omitempty"`
-	// Status.
+	// The status.
 	//
 	// example:
 	//

@@ -22,25 +22,25 @@ type iDescribeUserInfoResponseBody interface {
 }
 
 type DescribeUserInfoResponseBody struct {
-	// Status code.
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// HTTP status code
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *string `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// Error message
+	// The error message.
 	//
 	// example:
 	//
 	// The input parameter data is not valid. order_storage_company_num component not found
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Returned object
+	// The returned object.
 	ResultObject *DescribeUserInfoResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Struct"`
 	// Indicates whether the request was successful.
 	//
@@ -113,25 +113,25 @@ func (s *DescribeUserInfoResponseBody) Validate() error {
 }
 
 type DescribeUserInfoResponseBodyResultObject struct {
-	// Client IP.
+	// The client IP address.
 	//
 	// example:
 	//
 	// 192.168.0.1
 	ClientIp *string `json:"clientIp,omitempty" xml:"clientIp,omitempty"`
-	// Sub-account ID
+	// The RAM user ID.
 	//
 	// example:
 	//
 	// 555666
 	SubId *string `json:"subId,omitempty" xml:"subId,omitempty"`
-	// User UID
+	// The user UID.
 	//
 	// example:
 	//
 	// 15633333331111
 	UserId *int64 `json:"userId,omitempty" xml:"userId,omitempty"`
-	// User name
+	// The username.
 	//
 	// example:
 	//

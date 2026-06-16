@@ -16,17 +16,17 @@ type iDescribeTagsListRequest interface {
 }
 
 type DescribeTagsListRequest struct {
-	// Sets the language type for requests and responses, with a default value of **zh**. Values:
+	// The language type for the request and response messages. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// example:
 	//

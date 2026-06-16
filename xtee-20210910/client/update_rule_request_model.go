@@ -40,53 +40,53 @@ type iUpdateRuleRequest interface {
 }
 
 type UpdateRuleRequest struct {
-	// Sets the language type for requests and received messages, default value is **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Primary key ID of the policy
+	// The primary key ID of the policy.
 	//
 	// example:
 	//
 	// 6843
 	ConsoleRuleId *int64 `json:"consoleRuleId,omitempty" xml:"consoleRuleId,omitempty"`
-	// Event code
+	// The event code.
 	//
 	// example:
 	//
 	// de_agdxgz0246
 	EventCode *string `json:"eventCode,omitempty" xml:"eventCode,omitempty"`
-	// Execution logic
+	// The execution logic.
 	//
 	// example:
 	//
 	// 1&2
 	LogicExpression *string `json:"logicExpression,omitempty" xml:"logicExpression,omitempty"`
-	// Description
+	// The description.
 	//
 	// example:
 	//
 	// 备注
 	Memo *string `json:"memo,omitempty" xml:"memo,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegId *string `json:"regId,omitempty" xml:"regId,omitempty"`
-	// Output action
+	// The output actions.
 	//
 	// example:
 	//
 	// [{\\"inputs\\":[\\"rn0301\\"],\\"name\\":\\"__addDeTags__\\",\\"actionType\\":\\"TAG\\",\\"outputType\\":\\"const\\"}]
 	RuleActions *string `json:"ruleActions,omitempty" xml:"ruleActions,omitempty"`
-	// DSL policy expression
+	// The DSL policy expression.
 	//
 	// example:
 	//
@@ -366,37 +366,37 @@ type UpdateRuleRequest struct {
 	//
 	//     }
 	RuleBody *string `json:"ruleBody,omitempty" xml:"ruleBody,omitempty"`
-	// Policy expression
+	// The policy expressions.
 	//
 	// example:
 	//
 	// [{\\"expressionName\\":\\"手机号MD5命中人脸测试名单\\",\\"itemId\\":1,\\"left\\":{\\"name\\":\\"mobileMd5\\"},\\"operatorCode\\":\\"deInNameList\\",\\"operatorName\\":\\"在名单中\\",\\"right\\":{\\"fieldValue\\":\\"nl_5tolf69W138c\\"}}]
 	RuleExpressions *string `json:"ruleExpressions,omitempty" xml:"ruleExpressions,omitempty"`
-	// Policy ID
+	// The policy ID.
 	//
 	// example:
 	//
 	// 102224
 	RuleId *string `json:"ruleId,omitempty" xml:"ruleId,omitempty"`
-	// Policy name
+	// The policy name.
 	//
 	// example:
 	//
 	// 分析中心事件测试_策略01
 	RuleName *string `json:"ruleName,omitempty" xml:"ruleName,omitempty"`
-	// Policy status
+	// The policy status.
 	//
 	// example:
 	//
 	// RUNNING
 	RuleStatus *string `json:"ruleStatus,omitempty" xml:"ruleStatus,omitempty"`
-	// Policy type
+	// The policy type.
 	//
 	// example:
 	//
 	// DEFAULT
 	RuleType *string `json:"ruleType,omitempty" xml:"ruleType,omitempty"`
-	// Primary key ID of the policy version
+	// The primary key ID of the policy version.
 	//
 	// example:
 	//

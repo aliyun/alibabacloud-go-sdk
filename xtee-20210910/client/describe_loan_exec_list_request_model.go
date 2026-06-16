@@ -26,7 +26,7 @@ type iDescribeLoanExecListRequest interface {
 }
 
 type DescribeLoanExecListRequest struct {
-	// Set the language type for request and response messages, default value is **zh**. Values:
+	// The language type for sending requests and receiving responses. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
@@ -36,37 +36,37 @@ type DescribeLoanExecListRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Import batch number.
+	// The import batch number.
 	//
 	// example:
 	//
 	// 1
 	BatchNo *string `json:"batchNo,omitempty" xml:"batchNo,omitempty"`
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *string `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
-	// Monitoring metric data.
+	// The monitoring metric data.
 	//
 	// example:
 	//
 	// de_afghcf6411
 	MonitorObj *string `json:"monitorObj,omitempty" xml:"monitorObj,omitempty"`
-	// Status
+	// The status.
 	//
 	// example:
 	//
 	// WAIT
 	MonitorStatus *string `json:"monitorStatus,omitempty" xml:"monitorStatus,omitempty"`
-	// Page size, with a default value of 10.
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Region code
+	// The region ID.
 	//
 	// example:
 	//

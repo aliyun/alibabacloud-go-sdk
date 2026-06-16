@@ -22,7 +22,7 @@ type iDescribeEventResultBarChartRequest interface {
 }
 
 type DescribeEventResultBarChartRequest struct {
-	// Sets the language type for requests and received messages, default value is **zh**. Values:
+	// Sets the language type for requests and responses. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
@@ -32,7 +32,7 @@ type DescribeEventResultBarChartRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Start time, accurate to milliseconds (ms).
+	// The start time, accurate to milliseconds (ms).
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type DescribeEventResultBarChartRequest struct {
 	//
 	// 1737101348000
 	BeginTime *int64 `json:"beginTime,omitempty" xml:"beginTime,omitempty"`
-	// End time, accurate to milliseconds (ms).
+	// The end time, accurate to milliseconds (ms).
 	//
 	// This parameter is required.
 	//
@@ -48,13 +48,13 @@ type DescribeEventResultBarChartRequest struct {
 	//
 	// 1744337383000
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// Event code.
+	// Event codes.
 	//
 	// example:
 	//
 	// de_ahqhsw7665,de_ahqhsw7622
 	EventCodes *string `json:"eventCodes,omitempty" xml:"eventCodes,omitempty"`
-	// Region code
+	// Region ID.
 	//
 	// example:
 	//

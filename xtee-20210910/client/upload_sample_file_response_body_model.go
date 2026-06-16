@@ -22,22 +22,31 @@ type iUploadSampleFileResponseBody interface {
 }
 
 type UploadSampleFileResponseBody struct {
+	// Status code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Return message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// A32FE941-35F2-5378-B37C-4B8FDB16F094
-	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Return Result.
 	ResultObject *UploadSampleFileResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
 
@@ -104,30 +113,46 @@ func (s *UploadSampleFileResponseBody) Validate() error {
 }
 
 type UploadSampleFileResponseBodyResultObject struct {
+	// Number of jobs.
+	//
 	// example:
 	//
 	// gd
-	BeyondBacktrackingPeriodNum *int32                                                 `json:"BeyondBacktrackingPeriodNum,omitempty" xml:"BeyondBacktrackingPeriodNum,omitempty"`
-	ColumnStats                 []*UploadSampleFileResponseBodyResultObjectColumnStats `json:"ColumnStats,omitempty" xml:"ColumnStats,omitempty" type:"Repeated"`
+	BeyondBacktrackingPeriodNum *int32 `json:"BeyondBacktrackingPeriodNum,omitempty" xml:"BeyondBacktrackingPeriodNum,omitempty"`
+	// Columns.
+	ColumnStats []*UploadSampleFileResponseBodyResultObjectColumnStats `json:"ColumnStats,omitempty" xml:"ColumnStats,omitempty" type:"Repeated"`
+	// Time type.
+	//
 	// example:
 	//
 	// yyyyMMdd
 	DateType *string `json:"DateType,omitempty" xml:"DateType,omitempty"`
+	// File name.
+	//
 	// example:
 	//
 	// Acct71b_Sample140934_md5_batch20250916.csv
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// File Size.
+	//
 	// example:
 	//
 	// 1472
 	FileSize *int32 `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	// File URL.
+	//
 	// example:
 	//
 	// saf/cpoc/30e2aff8f355af429bbab18f776496ef/1764037297543_icekredit_model_A_2025b_1764034785_147787.csv
-	FileUrl          *string                                              `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	NotExistScenes   []*string                                            `json:"NotExistScenes,omitempty" xml:"NotExistScenes,omitempty" type:"Repeated"`
-	PhoneInvalidList []*string                                            `json:"PhoneInvalidList,omitempty" xml:"PhoneInvalidList,omitempty" type:"Repeated"`
-	PreviewData      *UploadSampleFileResponseBodyResultObjectPreviewData `json:"PreviewData,omitempty" xml:"PreviewData,omitempty" type:"Struct"`
+	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// Non-existent scenarios.
+	NotExistScenes []*string `json:"NotExistScenes,omitempty" xml:"NotExistScenes,omitempty" type:"Repeated"`
+	// Number.
+	PhoneInvalidList []*string `json:"PhoneInvalidList,omitempty" xml:"PhoneInvalidList,omitempty" type:"Repeated"`
+	// Table data.
+	PreviewData *UploadSampleFileResponseBodyResultObjectPreviewData `json:"PreviewData,omitempty" xml:"PreviewData,omitempty" type:"Struct"`
+	// Number of rows.
+	//
 	// example:
 	//
 	// 4974
@@ -251,26 +276,38 @@ func (s *UploadSampleFileResponseBodyResultObject) Validate() error {
 }
 
 type UploadSampleFileResponseBodyResultObjectColumnStats struct {
+	// De-duplication Count.
+	//
 	// example:
 	//
 	// 4
 	DistinctNumber *int32 `json:"DistinctNumber,omitempty" xml:"DistinctNumber,omitempty"`
+	// De-duplication rate.
+	//
 	// example:
 	//
 	// 28.23%
 	DistinctRate *string `json:"DistinctRate,omitempty" xml:"DistinctRate,omitempty"`
+	// Field Name.
+	//
 	// example:
 	//
 	// fb_org_id
 	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
+	// Number of missing values.
+	//
 	// example:
 	//
 	// 5
 	MissNumber *int32 `json:"MissNumber,omitempty" xml:"MissNumber,omitempty"`
+	// Missing rate.
+	//
 	// example:
 	//
 	// 28.23%
 	MissRate *string `json:"MissRate,omitempty" xml:"MissRate,omitempty"`
+	// Row number of the record.
+	//
 	// example:
 	//
 	// 4
@@ -344,8 +381,10 @@ func (s *UploadSampleFileResponseBodyResultObjectColumnStats) Validate() error {
 }
 
 type UploadSampleFileResponseBodyResultObjectPreviewData struct {
-	Headers []*string   `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Repeated"`
-	Rows    [][]*string `json:"Rows,omitempty" xml:"Rows,omitempty" type:"Repeated"`
+	// Table header.
+	Headers []*string `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Repeated"`
+	// Row data.
+	Rows [][]*string `json:"Rows,omitempty" xml:"Rows,omitempty" type:"Repeated"`
 }
 
 func (s UploadSampleFileResponseBodyResultObjectPreviewData) String() string {

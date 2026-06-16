@@ -24,37 +24,37 @@ type iDescribeOssPolicyResponseBody interface {
 }
 
 type DescribeOssPolicyResponseBody struct {
-	// accessId, a parameter used in OSS SDK uploads, corresponding to OSSAccessKeyId
+	// The access ID. This parameter corresponds to OSSAccessKeyId when you use the OSS SDK for upload.
 	//
 	// example:
 	//
-	// LTAxxxxxxxxxxxx
+	// LTAxxxxxxxxxx
 	AccessId *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
-	// OSS host ID.
+	// The host ID of OSS.
 	//
 	// example:
 	//
 	// testvm.biubiubiuu.com
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// Key required for file upload.
+	// The key required for file upload.
 	//
 	// example:
 	//
 	// saf/a/uid/ccc
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// OSS security policy
+	// The OSS security policy.
 	//
 	// example:
 	//
 	// eyJleHBpxxxxxx
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	// Signature data.
+	// The signature data.
 	//
 	// example:
 	//
 	// tzl1wL4q8rR/xxxxxx
 	Signature *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

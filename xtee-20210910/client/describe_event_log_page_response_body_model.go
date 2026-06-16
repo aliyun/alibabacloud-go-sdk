@@ -24,33 +24,33 @@ type iDescribeEventLogPageResponseBody interface {
 }
 
 type DescribeEventLogPageResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// A32FE941-35F2-5378-B37C-4B8FDB16F094
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
-	// Page size, default value is 10.
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Returned object.
+	// The returned objects.
 	ResultObject []*DescribeEventLogPageResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Repeated"`
-	// Total number of items.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 6
 	TotalItem *int32 `json:"totalItem,omitempty" xml:"totalItem,omitempty"`
-	// Total number of pages.
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -134,67 +134,67 @@ func (s *DescribeEventLogPageResponseBody) Validate() error {
 }
 
 type DescribeEventLogPageResponseBodyResultObject struct {
-	// Account ID.
+	// The account ID.
 	//
 	// example:
 	//
 	// 1631801314885832
 	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
-	// Email.
+	// The email address.
 	//
 	// example:
 	//
 	// xxxx@123.com
 	Email *string `json:"email,omitempty" xml:"email,omitempty"`
-	// IP address.
+	// ip。
 	//
 	// example:
 	//
 	// 10.200.5.100
 	Ip *string `json:"ip,omitempty" xml:"ip,omitempty"`
-	// Mobile phone number.
+	// The phone number.
 	//
 	// example:
 	//
 	// 13817606333
 	Mobile *string `json:"mobile,omitempty" xml:"mobile,omitempty"`
-	// Nickname.
+	// The nickname.
 	//
 	// example:
 	//
 	// 昵称
 	NickName *string `json:"nickName,omitempty" xml:"nickName,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 546F8063-0104-5271-9EB7-56FB3F375BAD
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Score.
+	// The score.
 	//
 	// example:
 	//
 	// 10.0
 	Score *string `json:"score,omitempty" xml:"score,omitempty"`
-	// Event name.
+	// The event name.
 	//
 	// example:
 	//
 	// 注册事件
 	Service *string `json:"service,omitempty" xml:"service,omitempty"`
-	// Tags.
+	// The labels.
 	//
 	// example:
 	//
 	// rm0102
 	Tags *string `json:"tags,omitempty" xml:"tags,omitempty"`
-	// Transaction time.
+	// The transaction time.
 	//
 	// example:
 	//
 	// 1737101348000
 	Timestamp *string `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
-	// Device ID.
+	// The device ID.
 	//
 	// example:
 	//

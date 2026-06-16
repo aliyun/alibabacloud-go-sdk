@@ -16,13 +16,13 @@ type iDescribeHitRuleListResponseBody interface {
 }
 
 type DescribeHitRuleListResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// AE7E6105-7DEB-5125-9B24-DCBC139F6CD2
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Response object
+	// The response object.
 	ResultObject []*DescribeHitRuleListResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Repeated"`
 }
 
@@ -66,13 +66,13 @@ func (s *DescribeHitRuleListResponseBody) Validate() error {
 }
 
 type DescribeHitRuleListResponseBodyResultObject struct {
-	// Number of hits.
+	// The number of hits.
 	//
 	// example:
 	//
 	// 100
 	HitCount *int32 `json:"hitCount,omitempty" xml:"hitCount,omitempty"`
-	// Strategy name
+	// The policy name.
 	//
 	// example:
 	//

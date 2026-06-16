@@ -18,11 +18,11 @@ type iImportTemplateEventRequest interface {
 }
 
 type ImportTemplateEventRequest struct {
-	// Sets the language type for requests and received messages, default value is **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type ImportTemplateEventRequest struct {
 	//
 	// register
 	EventTemplateIds *string `json:"eventTemplateIds,omitempty" xml:"eventTemplateIds,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// example:
 	//

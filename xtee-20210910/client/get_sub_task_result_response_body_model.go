@@ -22,22 +22,31 @@ type iGetSubTaskResultResponseBody interface {
 }
 
 type GetSubTaskResultResponseBody struct {
+	// Status code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Return message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 0A519CFA-0EEC-580A-A5C1-F9C653FB2354
-	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Return Result.
 	ResultObject *GetSubTaskResultResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
 
@@ -104,52 +113,92 @@ func (s *GetSubTaskResultResponseBody) Validate() error {
 }
 
 type GetSubTaskResultResponseBodyResultObject struct {
-	Config    []*GetSubTaskResultResponseBodyResultObjectConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Repeated"`
-	ExtraInfo *string                                           `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
-	File      *GetSubTaskResultResponseBodyResultObjectFile     `json:"File,omitempty" xml:"File,omitempty" type:"Struct"`
+	// Outputs List Settings.
+	Config []*GetSubTaskResultResponseBodyResultObjectConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Repeated"`
+	// Additional extension information.
+	//
+	// example:
+	//
+	// {\\"approveNodeInfo\\":[{\\"approver\\":[\\"325337\\",\\"270729\\",\\"290278\\",\\"371000\\",\\"175234\\",\\"237109\\"],\\"nodeName\\":\\"团队审批人\\",\\"nodeCode\\":1,\\"approveRule\\":\\"ONE\\"}]}
+	ExtraInfo *string `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
+	// File.
+	File *GetSubTaskResultResponseBodyResultObjectFile `json:"File,omitempty" xml:"File,omitempty" type:"Struct"`
+	// File name.
+	//
 	// example:
 	//
 	// enorl-20w-0926.csv
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// File type.
+	//
 	// example:
 	//
 	// CSV
 	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	// File URL.
+	//
 	// example:
 	//
 	// saf/cpoc/34cd7959590ef568086035b956210495/1760580976089_XN_test_1016_100000.csv
-	FileUrl  *string                                        `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	IsCharge *bool                                          `json:"IsCharge,omitempty" xml:"IsCharge,omitempty"`
-	Log      []*GetSubTaskResultResponseBodyResultObjectLog `json:"Log,omitempty" xml:"Log,omitempty" type:"Repeated"`
+	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// Is charged.
+	//
+	// example:
+	//
+	// 是否收费
+	IsCharge *bool `json:"IsCharge,omitempty" xml:"IsCharge,omitempty"`
+	// Log content.
+	Log []*GetSubTaskResultResponseBodyResultObjectLog `json:"Log,omitempty" xml:"Log,omitempty" type:"Repeated"`
+	// Reason.
+	//
 	// example:
 	//
 	// managed.by.apig
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// Result URL.
+	//
 	// example:
 	//
 	// http://shuanglu-prod.oss-cn-shanghai-finance-1-pub.aliyuncs.com/idrs/24/local/remoteresult?Expires=1756436489&OSSAccessKeyId=****&Signature=****
 	ResultUrl *string `json:"ResultUrl,omitempty" xml:"ResultUrl,omitempty"`
+	// Schedule type.
+	//
 	// example:
 	//
 	// rate
 	ScheduleType *string `json:"ScheduleType,omitempty" xml:"ScheduleType,omitempty"`
+	// Service code.
+	//
 	// example:
 	//
 	// anti_fraud_customed_v3
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+	// Service name.
+	//
+	// example:
+	//
+	// 申请反欺诈（定制增强版）
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// Status.
+	//
 	// example:
 	//
 	// CLASS_CHANGING
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Job ID.
+	//
 	// example:
 	//
 	// 19150
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Task Name.
+	//
 	// example:
 	//
 	// icekredit_model_A_2025a_508185
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// User ID.
+	//
 	// example:
 	//
 	// 5129547232
@@ -345,18 +394,25 @@ func (s *GetSubTaskResultResponseBodyResultObject) Validate() error {
 }
 
 type GetSubTaskResultResponseBodyResultObjectConfig struct {
+	// Backing field for service support.
+	//
 	// example:
 	//
 	// repl_lag
 	Item *string `json:"Item,omitempty" xml:"Item,omitempty"`
+	// Product description information.
+	//
 	// example:
 	//
 	// des
 	ItemDesc *string `json:"ItemDesc,omitempty" xml:"ItemDesc,omitempty"`
+	// Sample.
+	//
 	// example:
 	//
 	// sample
-	SampleItem  *string   `json:"SampleItem,omitempty" xml:"SampleItem,omitempty"`
+	SampleItem *string `json:"SampleItem,omitempty" xml:"SampleItem,omitempty"`
+	// List of fields corresponding to the sample.
 	SampleItems []*string `json:"SampleItems,omitempty" xml:"SampleItems,omitempty" type:"Repeated"`
 }
 
@@ -409,8 +465,10 @@ func (s *GetSubTaskResultResponseBodyResultObjectConfig) Validate() error {
 }
 
 type GetSubTaskResultResponseBodyResultObjectFile struct {
-	Col   []*GetSubTaskResultResponseBodyResultObjectFileCol `json:"Col,omitempty" xml:"Col,omitempty" type:"Repeated"`
-	Title []*string                                          `json:"Title,omitempty" xml:"Title,omitempty" type:"Repeated"`
+	// Column names.
+	Col []*GetSubTaskResultResponseBodyResultObjectFileCol `json:"Col,omitempty" xml:"Col,omitempty" type:"Repeated"`
+	// Variable title.
+	Title []*string `json:"Title,omitempty" xml:"Title,omitempty" type:"Repeated"`
 }
 
 func (s GetSubTaskResultResponseBodyResultObjectFile) String() string {
@@ -453,73 +511,73 @@ func (s *GetSubTaskResultResponseBodyResultObjectFile) Validate() error {
 }
 
 type GetSubTaskResultResponseBodyResultObjectFileCol struct {
-	// A0。
+	// A0.
 	//
 	// example:
 	//
 	// A0
 	A0 *string `json:"A0,omitempty" xml:"A0,omitempty"`
-	// A1。
+	// A1.
 	//
 	// example:
 	//
 	// A1
 	A1 *string `json:"A1,omitempty" xml:"A1,omitempty"`
-	// A10。
+	// A10.
 	//
 	// example:
 	//
 	// A10
 	A10 *string `json:"A10,omitempty" xml:"A10,omitempty"`
-	// A11。
+	// A11.
 	//
 	// example:
 	//
 	// A11
 	A11 *string `json:"A11,omitempty" xml:"A11,omitempty"`
-	// A2。
+	// A2.
 	//
 	// example:
 	//
 	// A2
 	A2 *string `json:"A2,omitempty" xml:"A2,omitempty"`
-	// A3。
+	// A3.
 	//
 	// example:
 	//
 	// A3
 	A3 *string `json:"A3,omitempty" xml:"A3,omitempty"`
-	// A4。
+	// A4.
 	//
 	// example:
 	//
 	// A4
 	A4 *string `json:"A4,omitempty" xml:"A4,omitempty"`
-	// A5。
+	// A5.
 	//
 	// example:
 	//
 	// A5
 	A5 *string `json:"A5,omitempty" xml:"A5,omitempty"`
-	// A6。
+	// A6.
 	//
 	// example:
 	//
 	// A6
 	A6 *string `json:"A6,omitempty" xml:"A6,omitempty"`
-	// A7。
+	// A7.
 	//
 	// example:
 	//
 	// A7
 	A7 *string `json:"A7,omitempty" xml:"A7,omitempty"`
-	// A8。
+	// A8.
 	//
 	// example:
 	//
 	// A8
 	A8 *string `json:"A8,omitempty" xml:"A8,omitempty"`
-	// A9。
+	// A9.
 	//
 	// example:
 	//
@@ -648,14 +706,20 @@ func (s *GetSubTaskResultResponseBodyResultObjectFileCol) Validate() error {
 }
 
 type GetSubTaskResultResponseBodyResultObjectLog struct {
+	// Processing type.
+	//
 	// example:
 	//
 	// RELEASE
 	OperateType *string `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
+	// Reason for the service status.
+	//
 	// example:
 	//
 	// PasswordExpired
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// Time. Unit: ms.
+	//
 	// example:
 	//
 	// 1760408725312

@@ -38,17 +38,17 @@ type iModifyExpressionVariableRequest interface {
 }
 
 type ModifyExpressionVariableRequest struct {
-	// Sets the language type for requests and received messages, with a default value of **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Data version.
+	// The data version.
 	//
 	// This parameter is required.
 	//
@@ -56,13 +56,13 @@ type ModifyExpressionVariableRequest struct {
 	//
 	// 5
 	DataVersion *int64 `json:"dataVersion,omitempty" xml:"dataVersion,omitempty"`
-	// Description.
+	// The description.
 	//
 	// example:
 	//
 	// 描述
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Event code
+	// The event code.
 	//
 	// This parameter is required.
 	//
@@ -70,7 +70,7 @@ type ModifyExpressionVariableRequest struct {
 	//
 	// de_acytyt7036
 	EventCode *string `json:"eventCode,omitempty" xml:"eventCode,omitempty"`
-	// Expression
+	// The expression.
 	//
 	// This parameter is required.
 	//
@@ -78,7 +78,7 @@ type ModifyExpressionVariableRequest struct {
 	//
 	// @ex_GX9rrlTq4b67 + 1001
 	Expression *string `json:"expression,omitempty" xml:"expression,omitempty"`
-	// Expression display
+	// The display name of the expression.
 	//
 	// This parameter is required.
 	//
@@ -86,13 +86,13 @@ type ModifyExpressionVariableRequest struct {
 	//
 	// @selfvariable_02 + 1001
 	ExpressionTitle *string `json:"expressionTitle,omitempty" xml:"expressionTitle,omitempty"`
-	// Calculation expression variable
+	// The calculation expression variable.
 	//
 	// example:
 	//
 	// ex_GX9rrlTq4b67
 	ExpressionVariable *string `json:"expressionVariable,omitempty" xml:"expressionVariable,omitempty"`
-	// Variable ID
+	// The variable ID.
 	//
 	// This parameter is required.
 	//
@@ -100,13 +100,13 @@ type ModifyExpressionVariableRequest struct {
 	//
 	// 3144
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// Variable name
+	// The variable name.
 	//
 	// example:
 	//
 	// ex_NgR6nDVD821c
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Outlier
+	// The outlier value.
 	//
 	// This parameter is required.
 	//
@@ -114,7 +114,7 @@ type ModifyExpressionVariableRequest struct {
 	//
 	// -1
 	Outlier *string `json:"outlier,omitempty" xml:"outlier,omitempty"`
-	// Output
+	// The output.
 	//
 	// This parameter is required.
 	//
@@ -122,7 +122,7 @@ type ModifyExpressionVariableRequest struct {
 	//
 	// STRING
 	Outputs *string `json:"outputs,omitempty" xml:"outputs,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// This parameter is required.
 	//
@@ -130,7 +130,7 @@ type ModifyExpressionVariableRequest struct {
 	//
 	// cn-hangzhou
 	RegId *string `json:"regId,omitempty" xml:"regId,omitempty"`
-	// Title.
+	// The title.
 	//
 	// This parameter is required.
 	//

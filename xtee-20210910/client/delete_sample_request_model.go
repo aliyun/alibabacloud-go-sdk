@@ -18,14 +18,20 @@ type iDeleteSampleRequest interface {
 }
 
 type DeleteSampleRequest struct {
+	// Language of the error message returned by the API. Valid values: zh: Chinese; en: English. Default value: en.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// area encoding.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegId *string `json:"RegId,omitempty" xml:"RegId,omitempty"`
+	// ID of the sample to delete.
+	//
 	// example:
 	//
 	// 1

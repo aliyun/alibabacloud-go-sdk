@@ -16,13 +16,13 @@ type iDescribeBasicSearchPageListResponseBody interface {
 }
 
 type DescribeBasicSearchPageListResponseBody struct {
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// A32FE941-35F2-5378-B37C-4B8FDB16F094
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Return object
+	// The returned object.
 	ResultObject *DescribeBasicSearchPageListResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Struct"`
 }
 
@@ -62,29 +62,29 @@ func (s *DescribeBasicSearchPageListResponseBody) Validate() error {
 }
 
 type DescribeBasicSearchPageListResponseBodyResultObject struct {
-	// Current page number in pagination queries.
+	// The current page number in the paged query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int64 `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
-	// Returned data object
+	// The returned data object.
 	Data []map[string]interface{} `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// Table header
+	// The table header.
 	Header []*DescribeBasicSearchPageListResponseBodyResultObjectHeader `json:"header,omitempty" xml:"header,omitempty" type:"Repeated"`
-	// Page size, with a default value of 10
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Total number of items
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 6
 	TotalItem *int64 `json:"totalItem,omitempty" xml:"totalItem,omitempty"`
-	// Total number of pages
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -168,23 +168,23 @@ func (s *DescribeBasicSearchPageListResponseBodyResultObject) Validate() error {
 }
 
 type DescribeBasicSearchPageListResponseBodyResultObjectHeader struct {
-	// Field name
+	// The field name.
 	//
 	// example:
 	//
 	// age
 	FieldName *string `json:"fieldName,omitempty" xml:"fieldName,omitempty"`
-	// Field title.
+	// The field name.
 	//
 	// example:
 	//
 	// 年龄
 	FieldTitle *string `json:"fieldTitle,omitempty" xml:"fieldTitle,omitempty"`
-	// Whether it is a default display field (displayed in the response, not used as a parameter)
+	// Indicates whether the field is displayed by default. This field is included in the response only and is not used as a request parameter. Valid values:
 	//
-	// - true: Yes
+	// - true: The field is displayed by default.
 	//
-	// - false: No
+	// - false: The field is not displayed by default.
 	//
 	// example:
 	//

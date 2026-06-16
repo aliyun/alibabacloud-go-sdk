@@ -22,17 +22,17 @@ type iDescribeApisRequest interface {
 }
 
 type DescribeApisRequest struct {
-	// Set the language type for requests and received messages, default value is **zh**. Values:
+	// The language type for the request and response. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// API group ID.
+	// The API group ID.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type DescribeApisRequest struct {
 	//
 	// 3309b0f4b1e243cd8bd9dd029f9c5f0a
 	ApiGroupId *string `json:"apiGroupId,omitempty" xml:"apiGroupId,omitempty"`
-	// Region ID.
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type DescribeApisRequest struct {
 	//
 	// cn-hangzhou、cn-shanghai
 	ApiRegionId *string `json:"apiRegionId,omitempty" xml:"apiRegionId,omitempty"`
-	// API type.
+	// The API type.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +56,7 @@ type DescribeApisRequest struct {
 	//
 	// SELF
 	ApiType *string `json:"apiType,omitempty" xml:"apiType,omitempty"`
-	// Region code.
+	// The region code.
 	//
 	// example:
 	//

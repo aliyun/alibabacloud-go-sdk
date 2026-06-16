@@ -357,7 +357,7 @@ func (client *Client) BatchDeleteSampleData(request *BatchDeleteSampleDataReques
 
 // Summary:
 //
-// # Variable binding operation
+// Performs a variable binding operation.
 //
 // @param request - BindVariableRequest
 //
@@ -465,7 +465,7 @@ func (client *Client) BindVariableWithOptions(request *BindVariableRequest, runt
 
 // Summary:
 //
-// # Variable binding operation
+// Performs a variable binding operation.
 //
 // @param request - BindVariableRequest
 //
@@ -483,7 +483,7 @@ func (client *Client) BindVariable(request *BindVariableRequest) (_result *BindV
 
 // Summary:
 //
-// 创建任务组
+// # Create a task group
 //
 // @param request - CancelSubTaskRequest
 //
@@ -539,7 +539,7 @@ func (client *Client) CancelSubTaskWithOptions(request *CancelSubTaskRequest, ru
 
 // Summary:
 //
-// 创建任务组
+// # Create a task group
 //
 // @param request - CancelSubTaskRequest
 //
@@ -639,7 +639,7 @@ func (client *Client) CheckCopyRuleVariable(request *CheckCopyRuleVariableReques
 
 // Summary:
 //
-// # Check if the cumulative number of variables exceeds the limit
+// Checks whether the number of cumulative variables exceeds the limit.
 //
 // @param request - CheckCustVariableLimitRequest
 //
@@ -691,7 +691,7 @@ func (client *Client) CheckCustVariableLimitWithOptions(request *CheckCustVariab
 
 // Summary:
 //
-// # Check if the cumulative number of variables exceeds the limit
+// Checks whether the number of cumulative variables exceeds the limit.
 //
 // @param request - CheckCustVariableLimitRequest
 //
@@ -709,7 +709,7 @@ func (client *Client) CheckCustVariableLimit(request *CheckCustVariableLimitRequ
 
 // Summary:
 //
-// # Check if Creating Variables Exceeds the Limit
+// Checks whether creating a variable exceeds the upper limit.
 //
 // @param request - CheckExpressionVariableLimitRequest
 //
@@ -757,7 +757,7 @@ func (client *Client) CheckExpressionVariableLimitWithOptions(request *CheckExpr
 
 // Summary:
 //
-// # Check if Creating Variables Exceeds the Limit
+// Checks whether creating a variable exceeds the upper limit.
 //
 // @param request - CheckExpressionVariableLimitRequest
 //
@@ -775,7 +775,7 @@ func (client *Client) CheckExpressionVariableLimit(request *CheckExpressionVaria
 
 // Summary:
 //
-// # Check if the number of fields exceeds the limit
+// Checks whether the number of fields exceeds the specified limit.
 //
 // @param request - CheckFieldLimitRequest
 //
@@ -827,7 +827,7 @@ func (client *Client) CheckFieldLimitWithOptions(request *CheckFieldLimitRequest
 
 // Summary:
 //
-// # Check if the number of fields exceeds the limit
+// Checks whether the number of fields exceeds the specified limit.
 //
 // @param request - CheckFieldLimitRequest
 //
@@ -845,7 +845,7 @@ func (client *Client) CheckFieldLimit(request *CheckFieldLimitRequest) (_result 
 
 // Summary:
 //
-// 样本名称唯一性校验
+// # Validate sample name uniqueness
 //
 // @param request - CheckSampleNameRequest
 //
@@ -897,7 +897,7 @@ func (client *Client) CheckSampleNameWithOptions(request *CheckSampleNameRequest
 
 // Summary:
 //
-// 样本名称唯一性校验
+// # Validate sample name uniqueness
 //
 // @param request - CheckSampleNameRequest
 //
@@ -915,7 +915,7 @@ func (client *Client) CheckSampleName(request *CheckSampleNameRequest) (_result 
 
 // Summary:
 //
-// 任务组名称唯一性校验
+// # Validate the uniqueness of the task group name
 //
 // @param request - CheckTaskGroupNameRequest
 //
@@ -967,7 +967,7 @@ func (client *Client) CheckTaskGroupNameWithOptions(request *CheckTaskGroupNameR
 
 // Summary:
 //
-// 任务组名称唯一性校验
+// # Validate the uniqueness of the task group name
 //
 // @param request - CheckTaskGroupNameRequest
 //
@@ -985,7 +985,7 @@ func (client *Client) CheckTaskGroupName(request *CheckTaskGroupNameRequest) (_r
 
 // Summary:
 //
-// # Validate Variable Reference
+// Checks variable references.
 //
 // @param request - CheckUsageVariableRequest
 //
@@ -1037,7 +1037,7 @@ func (client *Client) CheckUsageVariableWithOptions(request *CheckUsageVariableR
 
 // Summary:
 //
-// # Validate Variable Reference
+// Checks variable references.
 //
 // @param request - CheckUsageVariableRequest
 //
@@ -1211,7 +1211,7 @@ func (client *Client) CompareRule(request *CompareRuleRequest) (_result *Compare
 
 // Summary:
 //
-// # Add Query Conditions
+// Creates a query condition.
 //
 // @param request - CreateAnalysisConditionFavoriteRequest
 //
@@ -1291,7 +1291,7 @@ func (client *Client) CreateAnalysisConditionFavoriteWithOptions(request *Create
 
 // Summary:
 //
-// # Add Query Conditions
+// Creates a query condition.
 //
 // @param request - CreateAnalysisConditionFavoriteRequest
 //
@@ -1309,7 +1309,7 @@ func (client *Client) CreateAnalysisConditionFavorite(request *CreateAnalysisCon
 
 // Summary:
 //
-// # Create Export Task
+// Creates an export task.
 //
 // @param request - CreateAnalysisExportTaskRequest
 //
@@ -1397,7 +1397,7 @@ func (client *Client) CreateAnalysisExportTaskWithOptions(request *CreateAnalysi
 
 // Summary:
 //
-// # Create Export Task
+// Creates an export task.
 //
 // @param request - CreateAnalysisExportTaskRequest
 //
@@ -1415,7 +1415,7 @@ func (client *Client) CreateAnalysisExportTask(request *CreateAnalysisExportTask
 
 // Summary:
 //
-// # Create AppKey
+// Create an AppKey.
 //
 // @param request - CreateAppKeyRequest
 //
@@ -1463,7 +1463,7 @@ func (client *Client) CreateAppKeyWithOptions(request *CreateAppKeyRequest, runt
 
 // Summary:
 //
-// # Create AppKey
+// Create an AppKey.
 //
 // @param request - CreateAppKeyRequest
 //
@@ -1481,7 +1481,7 @@ func (client *Client) CreateAppKey(request *CreateAppKeyRequest) (_result *Creat
 
 // Summary:
 //
-// # Create Accumulative Variable
+// Creates a cumulative variable.
 //
 // @param request - CreateCustVariableRequest
 //
@@ -1581,7 +1581,7 @@ func (client *Client) CreateCustVariableWithOptions(request *CreateCustVariableR
 
 // Summary:
 //
-// # Create Accumulative Variable
+// Creates a cumulative variable.
 //
 // @param request - CreateCustVariableRequest
 //
@@ -1599,7 +1599,7 @@ func (client *Client) CreateCustVariable(request *CreateCustVariableRequest) (_r
 
 // Summary:
 //
-// # Add Data Source
+// Creates a data source.
 //
 // @param request - CreateDataSourceRequest
 //
@@ -1663,7 +1663,7 @@ func (client *Client) CreateDataSourceWithOptions(request *CreateDataSourceReque
 
 // Summary:
 //
-// # Add Data Source
+// Creates a data source.
 //
 // @param request - CreateDataSourceRequest
 //
@@ -1681,7 +1681,7 @@ func (client *Client) CreateDataSource(request *CreateDataSourceRequest) (_resul
 
 // Summary:
 //
-// # Create Event
+// Creates an event.
 //
 // @param request - CreateEventRequest
 //
@@ -1757,7 +1757,7 @@ func (client *Client) CreateEventWithOptions(request *CreateEventRequest, runtim
 
 // Summary:
 //
-// # Create Event
+// Creates an event.
 //
 // @param request - CreateEventRequest
 //
@@ -1775,7 +1775,7 @@ func (client *Client) CreateEvent(request *CreateEventRequest) (_result *CreateE
 
 // Summary:
 //
-// # Create Custom Variable
+// Creates a custom variable.
 //
 // @param request - CreateExpressionVariableRequest
 //
@@ -1855,7 +1855,7 @@ func (client *Client) CreateExpressionVariableWithOptions(request *CreateExpress
 
 // Summary:
 //
-// # Create Custom Variable
+// Creates a custom variable.
 //
 // @param request - CreateExpressionVariableRequest
 //
@@ -1873,7 +1873,7 @@ func (client *Client) CreateExpressionVariable(request *CreateExpressionVariable
 
 // Summary:
 //
-// # Add New Field
+// Creates a field.
 //
 // @param request - CreateFieldRequest
 //
@@ -1949,7 +1949,7 @@ func (client *Client) CreateFieldWithOptions(request *CreateFieldRequest, runtim
 
 // Summary:
 //
-// # Add New Field
+// Creates a field.
 //
 // @param request - CreateFieldRequest
 //
@@ -1967,7 +1967,7 @@ func (client *Client) CreateField(request *CreateFieldRequest) (_result *CreateF
 
 // Summary:
 //
-// 创建样本记录对客
+// Create a sample record for the customer.
 //
 // @param request - CreateForeignPocSampleRequest
 //
@@ -2031,7 +2031,7 @@ func (client *Client) CreateForeignPocSampleWithOptions(request *CreateForeignPo
 
 // Summary:
 //
-// 创建样本记录对客
+// Create a sample record for the customer.
 //
 // @param request - CreateForeignPocSampleRequest
 //
@@ -2250,7 +2250,7 @@ func (client *Client) CreateModel(request *CreateModelRequest) (_result *CreateM
 
 // Summary:
 //
-// # Create POC
+// Creates a POC.
 //
 // @param request - CreatePocEvRequest
 //
@@ -2334,7 +2334,7 @@ func (client *Client) CreatePocEvWithOptions(request *CreatePocEvRequest, runtim
 
 // Summary:
 //
-// # Create POC
+// Creates a POC.
 //
 // @param request - CreatePocEvRequest
 //
@@ -2352,7 +2352,7 @@ func (client *Client) CreatePocEv(request *CreatePocEvRequest) (_result *CreateP
 
 // Summary:
 //
-// 创建样本记录
+// # Create a sample record
 //
 // @param request - CreatePocSampleRequest
 //
@@ -2424,7 +2424,7 @@ func (client *Client) CreatePocSampleWithOptions(request *CreatePocSampleRequest
 
 // Summary:
 //
-// 创建样本记录
+// # Create a sample record
 //
 // @param request - CreatePocSampleRequest
 //
@@ -2442,7 +2442,7 @@ func (client *Client) CreatePocSample(request *CreatePocSampleRequest) (_result 
 
 // Summary:
 //
-// # Add New Custom Query Variable
+// Creates a custom query variable.
 //
 // @param request - CreateQueryVariableRequest
 //
@@ -2526,7 +2526,7 @@ func (client *Client) CreateQueryVariableWithOptions(request *CreateQueryVariabl
 
 // Summary:
 //
-// # Add New Custom Query Variable
+// Creates a custom query variable.
 //
 // @param request - CreateQueryVariableRequest
 //
@@ -2544,7 +2544,7 @@ func (client *Client) CreateQueryVariable(request *CreateQueryVariableRequest) (
 
 // Summary:
 //
-// # Create Recommended Event Strategy
+// Creates a recommended event policy.
 //
 // @param request - CreateRecommendEventRuleRequest
 //
@@ -2608,7 +2608,7 @@ func (client *Client) CreateRecommendEventRuleWithOptions(request *CreateRecomme
 
 // Summary:
 //
-// # Create Recommended Event Strategy
+// Creates a recommended event policy.
 //
 // @param request - CreateRecommendEventRuleRequest
 //
@@ -2626,7 +2626,7 @@ func (client *Client) CreateRecommendEventRule(request *CreateRecommendEventRule
 
 // Summary:
 //
-// # Create Recommendation Task
+// Creates a recommendation task.
 //
 // @param request - CreateRecommendTaskRequest
 //
@@ -2690,7 +2690,7 @@ func (client *Client) CreateRecommendTaskWithOptions(request *CreateRecommendTas
 
 // Summary:
 //
-// # Create Recommendation Task
+// Creates a recommendation task.
 //
 // @param request - CreateRecommendTaskRequest
 //
@@ -2708,7 +2708,7 @@ func (client *Client) CreateRecommendTask(request *CreateRecommendTaskRequest) (
 
 // Summary:
 //
-// Create Policy & Version
+// Creates a policy and version.
 //
 // @param request - CreateRuleRequest
 //
@@ -2804,7 +2804,7 @@ func (client *Client) CreateRuleWithOptions(request *CreateRuleRequest, runtime 
 
 // Summary:
 //
-// Create Policy & Version
+// Creates a policy and version.
 //
 // @param request - CreateRuleRequest
 //
@@ -2822,7 +2822,7 @@ func (client *Client) CreateRule(request *CreateRuleRequest) (_result *CreateRul
 
 // Summary:
 //
-// # Add Sample
+// Adds a data sample.
 //
 // @param request - CreateSampleRequest
 //
@@ -2898,7 +2898,7 @@ func (client *Client) CreateSampleWithOptions(request *CreateSampleRequest, runt
 
 // Summary:
 //
-// # Add Sample
+// Adds a data sample.
 //
 // @param request - CreateSampleRequest
 //
@@ -2916,7 +2916,7 @@ func (client *Client) CreateSample(request *CreateSampleRequest) (_result *Creat
 
 // Summary:
 //
-// # User-level Single API to Create Sample Batches
+// Creates a sample batch for a single API at the user level.
 //
 // @param request - CreateSampleApiRequest
 //
@@ -2980,7 +2980,7 @@ func (client *Client) CreateSampleApiWithOptions(request *CreateSampleApiRequest
 
 // Summary:
 //
-// # User-level Single API to Create Sample Batches
+// Creates a sample batch for a single API at the user level.
 //
 // @param request - CreateSampleApiRequest
 //
@@ -3092,7 +3092,7 @@ func (client *Client) CreateSampleBatch(request *CreateSampleBatchRequest) (_res
 
 // Summary:
 //
-// # Create Sample Data
+// Creates sample data.
 //
 // @param request - CreateSampleDataRequest
 //
@@ -3168,7 +3168,7 @@ func (client *Client) CreateSampleDataWithOptions(request *CreateSampleDataReque
 
 // Summary:
 //
-// # Create Sample Data
+// Creates sample data.
 //
 // @param request - CreateSampleDataRequest
 //
@@ -3186,7 +3186,7 @@ func (client *Client) CreateSampleData(request *CreateSampleDataRequest) (_resul
 
 // Summary:
 //
-// # Create Task
+// Creates a task.
 //
 // @param request - CreateSimulationTaskRequest
 //
@@ -3270,7 +3270,7 @@ func (client *Client) CreateSimulationTaskWithOptions(request *CreateSimulationT
 
 // Summary:
 //
-// # Create Task
+// Creates a task.
 //
 // @param request - CreateSimulationTaskRequest
 //
@@ -3288,7 +3288,7 @@ func (client *Client) CreateSimulationTask(request *CreateSimulationTaskRequest)
 
 // Summary:
 //
-// 取消子任务
+// Cancels a subtask.
 //
 // @param request - CreateTaskGroupRequest
 //
@@ -3321,6 +3321,10 @@ func (client *Client) CreateTaskGroupWithOptions(request *CreateTaskGroupRequest
 
 	if !dara.IsNil(request.ServiceCodes) {
 		query["ServiceCodes"] = request.ServiceCodes
+	}
+
+	if !dara.IsNil(request.ServiceList) {
+		query["ServiceList"] = request.ServiceList
 	}
 
 	if !dara.IsNil(request.ServiceNames) {
@@ -3364,7 +3368,7 @@ func (client *Client) CreateTaskGroupWithOptions(request *CreateTaskGroupRequest
 
 // Summary:
 //
-// 取消子任务
+// Cancels a subtask.
 //
 // @param request - CreateTaskGroupRequest
 //
@@ -3484,7 +3488,7 @@ func (client *Client) DeepCopyRule(request *DeepCopyRuleRequest) (_result *DeepC
 
 // Summary:
 //
-// # Delete Query Condition
+// Deletes a query condition.
 //
 // @param request - DeleteAnalysisConditionFavoriteRequest
 //
@@ -3536,7 +3540,7 @@ func (client *Client) DeleteAnalysisConditionFavoriteWithOptions(request *Delete
 
 // Summary:
 //
-// # Delete Query Condition
+// Deletes a query condition.
 //
 // @param request - DeleteAnalysisConditionFavoriteRequest
 //
@@ -3554,7 +3558,7 @@ func (client *Client) DeleteAnalysisConditionFavorite(request *DeleteAnalysisCon
 
 // Summary:
 //
-// # Delete Bypass Event
+// Deletes a bypass event.
 //
 // @param request - DeleteByPassShuntEventRequest
 //
@@ -3606,7 +3610,7 @@ func (client *Client) DeleteByPassShuntEventWithOptions(request *DeleteByPassShu
 
 // Summary:
 //
-// # Delete Bypass Event
+// Deletes a bypass event.
 //
 // @param request - DeleteByPassShuntEventRequest
 //
@@ -3624,7 +3628,7 @@ func (client *Client) DeleteByPassShuntEvent(request *DeleteByPassShuntEventRequ
 
 // Summary:
 //
-// # Delete Accumulated Variable
+// Deletes a cumulative variable.
 //
 // @param request - DeleteCustVariableRequest
 //
@@ -3684,7 +3688,7 @@ func (client *Client) DeleteCustVariableWithOptions(request *DeleteCustVariableR
 
 // Summary:
 //
-// # Delete Accumulated Variable
+// Deletes a cumulative variable.
 //
 // @param request - DeleteCustVariableRequest
 //
@@ -3702,7 +3706,7 @@ func (client *Client) DeleteCustVariable(request *DeleteCustVariableRequest) (_r
 
 // Summary:
 //
-// # Delete Data Source
+// Deletes a data source.
 //
 // @param request - DeleteDataSourceRequest
 //
@@ -3754,7 +3758,7 @@ func (client *Client) DeleteDataSourceWithOptions(request *DeleteDataSourceReque
 
 // Summary:
 //
-// # Delete Data Source
+// Deletes a data source.
 //
 // @param request - DeleteDataSourceRequest
 //
@@ -3846,7 +3850,7 @@ func (client *Client) DeleteEventField(request *DeleteEventFieldRequest) (_resul
 
 // Summary:
 //
-// # Delete Custom Variable
+// Deletes a custom variable.
 //
 // @param request - DeleteExpressionVariableRequest
 //
@@ -3902,7 +3906,7 @@ func (client *Client) DeleteExpressionVariableWithOptions(request *DeleteExpress
 
 // Summary:
 //
-// # Delete Custom Variable
+// Deletes a custom variable.
 //
 // @param request - DeleteExpressionVariableRequest
 //
@@ -3920,7 +3924,7 @@ func (client *Client) DeleteExpressionVariable(request *DeleteExpressionVariable
 
 // Summary:
 //
-// # Delete Field
+// Deletes a field.
 //
 // @param request - DeleteFieldRequest
 //
@@ -3976,7 +3980,7 @@ func (client *Client) DeleteFieldWithOptions(request *DeleteFieldRequest, runtim
 
 // Summary:
 //
-// # Delete Field
+// Deletes a field.
 //
 // @param request - DeleteFieldRequest
 //
@@ -3994,7 +3998,7 @@ func (client *Client) DeleteField(request *DeleteFieldRequest) (_result *DeleteF
 
 // Summary:
 //
-// # Delete Name List
+// Deletes a list.
 //
 // @param request - DeleteNameListRequest
 //
@@ -4046,7 +4050,7 @@ func (client *Client) DeleteNameListWithOptions(request *DeleteNameListRequest, 
 
 // Summary:
 //
-// # Delete Name List
+// Deletes a list.
 //
 // @param request - DeleteNameListRequest
 //
@@ -4064,7 +4068,7 @@ func (client *Client) DeleteNameList(request *DeleteNameListRequest) (_result *D
 
 // Summary:
 //
-// # Delete (pseudo) name list variable data
+// Deletes list variable data.
 //
 // @param request - DeleteNameListDataRequest
 //
@@ -4116,7 +4120,7 @@ func (client *Client) DeleteNameListDataWithOptions(request *DeleteNameListDataR
 
 // Summary:
 //
-// # Delete (pseudo) name list variable data
+// Deletes list variable data.
 //
 // @param request - DeleteNameListDataRequest
 //
@@ -4134,7 +4138,7 @@ func (client *Client) DeleteNameListData(request *DeleteNameListDataRequest) (_r
 
 // Summary:
 //
-// # Delete Query Variable
+// Deletes a custom query variable.
 //
 // @param request - DeleteQueryVariableRequest
 //
@@ -4186,7 +4190,7 @@ func (client *Client) DeleteQueryVariableWithOptions(request *DeleteQueryVariabl
 
 // Summary:
 //
-// # Delete Query Variable
+// Deletes a custom query variable.
 //
 // @param request - DeleteQueryVariableRequest
 //
@@ -4204,7 +4208,7 @@ func (client *Client) DeleteQueryVariable(request *DeleteQueryVariableRequest) (
 
 // Summary:
 //
-// # Delete Policy Version
+// Deletes a policy version.
 //
 // @param request - DeleteRuleRequest
 //
@@ -4264,7 +4268,7 @@ func (client *Client) DeleteRuleWithOptions(request *DeleteRuleRequest, runtime 
 
 // Summary:
 //
-// # Delete Policy Version
+// Deletes a policy version.
 //
 // @param request - DeleteRuleRequest
 //
@@ -4282,7 +4286,7 @@ func (client *Client) DeleteRule(request *DeleteRuleRequest) (_result *DeleteRul
 
 // Summary:
 //
-// 删除样本
+// # Delete sample
 //
 // @param request - DeleteSampleRequest
 //
@@ -4334,7 +4338,7 @@ func (client *Client) DeleteSampleWithOptions(request *DeleteSampleRequest, runt
 
 // Summary:
 //
-// 删除样本
+// # Delete sample
 //
 // @param request - DeleteSampleRequest
 //
@@ -4352,7 +4356,7 @@ func (client *Client) DeleteSample(request *DeleteSampleRequest) (_result *Delet
 
 // Summary:
 //
-// # Batch Delete Samples
+// Deletes samples in batches.
 //
 // @param request - DeleteSampleBatchRequest
 //
@@ -4408,7 +4412,7 @@ func (client *Client) DeleteSampleBatchWithOptions(request *DeleteSampleBatchReq
 
 // Summary:
 //
-// # Batch Delete Samples
+// Deletes samples in batches.
 //
 // @param request - DeleteSampleBatchRequest
 //
@@ -4496,7 +4500,7 @@ func (client *Client) DeleteSampleBatchMeta(request *DeleteSampleBatchMetaReques
 
 // Summary:
 //
-// # Delete Sample Data
+// Deletes sample data.
 //
 // @param request - DeleteSampleDataRequest
 //
@@ -4548,7 +4552,7 @@ func (client *Client) DeleteSampleDataWithOptions(request *DeleteSampleDataReque
 
 // Summary:
 //
-// # Delete Sample Data
+// Deletes sample data.
 //
 // @param request - DeleteSampleDataRequest
 //
@@ -4636,7 +4640,7 @@ func (client *Client) DeleteSelfBindVariable(request *DeleteSelfBindVariableRequ
 
 // Summary:
 //
-// # Advanced Query to Get Left Variables Interface
+// Retrieves left-hand variables for advanced queries.
 //
 // @param request - DescribeAdvanceSearchLeftVariableListRequest
 //
@@ -4692,7 +4696,7 @@ func (client *Client) DescribeAdvanceSearchLeftVariableListWithOptions(request *
 
 // Summary:
 //
-// # Advanced Query to Get Left Variables Interface
+// Retrieves left-hand variables for advanced queries.
 //
 // @param request - DescribeAdvanceSearchLeftVariableListRequest
 //
@@ -4710,7 +4714,7 @@ func (client *Client) DescribeAdvanceSearchLeftVariableList(request *DescribeAdv
 
 // Summary:
 //
-// # Advanced Query
+// Performs an advanced query for event analysis.
 //
 // @param request - DescribeAdvanceSearchPageListRequest
 //
@@ -4790,7 +4794,7 @@ func (client *Client) DescribeAdvanceSearchPageListWithOptions(request *Describe
 
 // Summary:
 //
-// # Advanced Query
+// Performs an advanced query for event analysis.
 //
 // @param request - DescribeAdvanceSearchPageListRequest
 //
@@ -4808,7 +4812,7 @@ func (client *Client) DescribeAdvanceSearchPageList(request *DescribeAdvanceSear
 
 // Summary:
 //
-// # Data Source List
+// Lists data sources.
 //
 // @param request - DescribeAllDataSourceRequest
 //
@@ -4856,7 +4860,7 @@ func (client *Client) DescribeAllDataSourceWithOptions(request *DescribeAllDataS
 
 // Summary:
 //
-// # Data Source List
+// Lists data sources.
 //
 // @param request - DescribeAllDataSourceRequest
 //
@@ -4874,7 +4878,7 @@ func (client *Client) DescribeAllDataSource(request *DescribeAllDataSourceReques
 
 // Summary:
 //
-// # Event List Query
+// Queries the event list.
 //
 // @param request - DescribeAllEventNameAndCodeRequest
 //
@@ -4926,7 +4930,7 @@ func (client *Client) DescribeAllEventNameAndCodeWithOptions(request *DescribeAl
 
 // Summary:
 //
-// # Event List Query
+// Queries the event list.
 //
 // @param request - DescribeAllEventNameAndCodeRequest
 //
@@ -4944,7 +4948,7 @@ func (client *Client) DescribeAllEventNameAndCode(request *DescribeAllEventNameA
 
 // Summary:
 //
-// # Display all root variables when testing custom expressions
+// Displays all root variables during custom expression testing.
 //
 // @param request - DescribeAllRootVariableRequest
 //
@@ -5024,7 +5028,7 @@ func (client *Client) DescribeAllRootVariableWithOptions(request *DescribeAllRoo
 
 // Summary:
 //
-// # Display all root variables when testing custom expressions
+// Displays all root variables during custom expression testing.
 //
 // @param request - DescribeAllRootVariableRequest
 //
@@ -5042,7 +5046,7 @@ func (client *Client) DescribeAllRootVariable(request *DescribeAllRootVariableRe
 
 // Summary:
 //
-// # Display All Fields
+// Displays all fields.
 //
 // @param request - DescribeAnalysisColumnFieldListRequest
 //
@@ -5090,7 +5094,7 @@ func (client *Client) DescribeAnalysisColumnFieldListWithOptions(request *Descri
 
 // Summary:
 //
-// # Display All Fields
+// Displays all fields.
 //
 // @param request - DescribeAnalysisColumnFieldListRequest
 //
@@ -5108,7 +5112,7 @@ func (client *Client) DescribeAnalysisColumnFieldList(request *DescribeAnalysisC
 
 // Summary:
 //
-// # Query Custom Columns
+// Queries custom columns.
 //
 // @param request - DescribeAnalysisColumnListRequest
 //
@@ -5156,7 +5160,7 @@ func (client *Client) DescribeAnalysisColumnListWithOptions(request *DescribeAna
 
 // Summary:
 //
-// # Query Custom Columns
+// Queries custom columns.
 //
 // @param request - DescribeAnalysisColumnListRequest
 //
@@ -5174,7 +5178,7 @@ func (client *Client) DescribeAnalysisColumnList(request *DescribeAnalysisColumn
 
 // Summary:
 //
-// # Query Condition List
+// Queries the condition favorite list.
 //
 // @param request - DescribeAnalysisConditionFavoriteListRequest
 //
@@ -5222,7 +5226,7 @@ func (client *Client) DescribeAnalysisConditionFavoriteListWithOptions(request *
 
 // Summary:
 //
-// # Query Condition List
+// Queries the condition favorite list.
 //
 // @param request - DescribeAnalysisConditionFavoriteListRequest
 //
@@ -5240,7 +5244,7 @@ func (client *Client) DescribeAnalysisConditionFavoriteList(request *DescribeAna
 
 // Summary:
 //
-// # Download Query Results
+// Download query results.
 //
 // @param request - DescribeAnalysisExportTaskDownloadUrlRequest
 //
@@ -5288,7 +5292,7 @@ func (client *Client) DescribeAnalysisExportTaskDownloadUrlWithOptions(request *
 
 // Summary:
 //
-// # Download Query Results
+// Download query results.
 //
 // @param request - DescribeAnalysisExportTaskDownloadUrlRequest
 //
@@ -5306,7 +5310,7 @@ func (client *Client) DescribeAnalysisExportTaskDownloadUrl(request *DescribeAna
 
 // Summary:
 //
-// # Get API Details
+// Retrieves the details of an API.
 //
 // @param request - DescribeApiRequest
 //
@@ -5366,7 +5370,7 @@ func (client *Client) DescribeApiWithOptions(request *DescribeApiRequest, runtim
 
 // Summary:
 //
-// # Get API Details
+// Retrieves the details of an API.
 //
 // @param request - DescribeApiRequest
 //
@@ -5384,7 +5388,7 @@ func (client *Client) DescribeApi(request *DescribeApiRequest) (_result *Describ
 
 // Summary:
 //
-// # Get API groups including those purchased by the user and custom ones
+// Retrieves API groups, including purchased and custom groups.
 //
 // @param request - DescribeApiGroupsRequest
 //
@@ -5436,7 +5440,7 @@ func (client *Client) DescribeApiGroupsWithOptions(request *DescribeApiGroupsReq
 
 // Summary:
 //
-// # Get API groups including those purchased by the user and custom ones
+// Retrieves API groups, including purchased and custom groups.
 //
 // @param request - DescribeApiGroupsRequest
 //
@@ -5454,7 +5458,7 @@ func (client *Client) DescribeApiGroups(request *DescribeApiGroupsRequest) (_res
 
 // Summary:
 //
-// # Query the limit information for creating API tasks
+// Queries the limit information for creating API tasks.
 //
 // @param request - DescribeApiLimitRequest
 //
@@ -5502,7 +5506,7 @@ func (client *Client) DescribeApiLimitWithOptions(request *DescribeApiLimitReque
 
 // Summary:
 //
-// # Query the limit information for creating API tasks
+// Queries the limit information for creating API tasks.
 //
 // @param request - DescribeApiLimitRequest
 //
@@ -5520,7 +5524,7 @@ func (client *Client) DescribeApiLimit(request *DescribeApiLimitRequest) (_resul
 
 // Summary:
 //
-// # Get API Service Name
+// Retrieves API service names.
 //
 // @param request - DescribeApiNameListRequest
 //
@@ -5568,7 +5572,7 @@ func (client *Client) DescribeApiNameListWithOptions(request *DescribeApiNameLis
 
 // Summary:
 //
-// # Get API Service Name
+// Retrieves API service names.
 //
 // @param request - DescribeApiNameListRequest
 //
@@ -5586,7 +5590,7 @@ func (client *Client) DescribeApiNameList(request *DescribeApiNameListRequest) (
 
 // Summary:
 //
-// # Query Variable Details
+// Query variable details.
 //
 // @param request - DescribeApiVariableRequest
 //
@@ -5638,7 +5642,7 @@ func (client *Client) DescribeApiVariableWithOptions(request *DescribeApiVariabl
 
 // Summary:
 //
-// # Query Variable Details
+// Query variable details.
 //
 // @param request - DescribeApiVariableRequest
 //
@@ -5656,7 +5660,7 @@ func (client *Client) DescribeApiVariable(request *DescribeApiVariableRequest) (
 
 // Summary:
 //
-// # Get API list including purchased and customized APIs
+// Retrieves the API list, including purchased and custom APIs.
 //
 // @param request - DescribeApisRequest
 //
@@ -5716,7 +5720,7 @@ func (client *Client) DescribeApisWithOptions(request *DescribeApisRequest, runt
 
 // Summary:
 //
-// # Get API list including purchased and customized APIs
+// Retrieves the API list, including purchased and custom APIs.
 //
 // @param request - DescribeApisRequest
 //
@@ -5734,7 +5738,7 @@ func (client *Client) DescribeApis(request *DescribeApisRequest) (_result *Descr
 
 // Summary:
 //
-// # Query appKey List
+// Queries the list of appKeys.
 //
 // @param request - DescribeAppKeyPageRequest
 //
@@ -5790,7 +5794,7 @@ func (client *Client) DescribeAppKeyPageWithOptions(request *DescribeAppKeyPageR
 
 // Summary:
 //
-// # Query appKey List
+// Queries the list of appKeys.
 //
 // @param request - DescribeAppKeyPageRequest
 //
@@ -5808,7 +5812,7 @@ func (client *Client) DescribeAppKeyPage(request *DescribeAppKeyPageRequest) (_r
 
 // Summary:
 //
-// # Approval Switch
+// Configures the approval switch.
 //
 // @param request - DescribeAuditConfigRequest
 //
@@ -5860,7 +5864,7 @@ func (client *Client) DescribeAuditConfigWithOptions(request *DescribeAuditConfi
 
 // Summary:
 //
-// # Approval Switch
+// Configures the approval switch.
 //
 // @param request - DescribeAuditConfigRequest
 //
@@ -5878,7 +5882,7 @@ func (client *Client) DescribeAuditConfig(request *DescribeAuditConfigRequest) (
 
 // Summary:
 //
-// # Approval Details
+// Retrieves approval details.
 //
 // @param request - DescribeAuditDetailsRequest
 //
@@ -5930,7 +5934,7 @@ func (client *Client) DescribeAuditDetailsWithOptions(request *DescribeAuditDeta
 
 // Summary:
 //
-// # Approval Details
+// Retrieves approval details.
 //
 // @param request - DescribeAuditDetailsRequest
 //
@@ -5948,7 +5952,7 @@ func (client *Client) DescribeAuditDetails(request *DescribeAuditDetailsRequest)
 
 // Summary:
 //
-// # Display and Query of Audit List
+// Displays and queries the audit list.
 //
 // @param request - DescribeAuditPageListRequest
 //
@@ -6016,7 +6020,7 @@ func (client *Client) DescribeAuditPageListWithOptions(request *DescribeAuditPag
 
 // Summary:
 //
-// # Display and Query of Audit List
+// Displays and queries the audit list.
 //
 // @param request - DescribeAuditPageListRequest
 //
@@ -6034,7 +6038,7 @@ func (client *Client) DescribeAuditPageList(request *DescribeAuditPageListReques
 
 // Summary:
 //
-// # Query the list of event names for the current user
+// Queries the list of event names for the current user.
 //
 // @param request - DescribeAuthEventNameListRequest
 //
@@ -6082,7 +6086,7 @@ func (client *Client) DescribeAuthEventNameListWithOptions(request *DescribeAuth
 
 // Summary:
 //
-// # Query the list of event names for the current user
+// Queries the list of event names for the current user.
 //
 // @param request - DescribeAuthEventNameListRequest
 //
@@ -6100,7 +6104,7 @@ func (client *Client) DescribeAuthEventNameList(request *DescribeAuthEventNameLi
 
 // Summary:
 //
-// # Policy List
+// Queries a list of policies.
 //
 // @param request - DescribeAuthRulePageListRequest
 //
@@ -6160,7 +6164,7 @@ func (client *Client) DescribeAuthRulePageListWithOptions(request *DescribeAuthR
 
 // Summary:
 //
-// # Policy List
+// Queries a list of policies.
 //
 // @param request - DescribeAuthRulePageListRequest
 //
@@ -6178,7 +6182,7 @@ func (client *Client) DescribeAuthRulePageList(request *DescribeAuthRulePageList
 
 // Summary:
 //
-// # List of Scenarios
+// Queries the list of scenarios.
 //
 // @param request - DescribeAuthSceneListRequest
 //
@@ -6226,7 +6230,7 @@ func (client *Client) DescribeAuthSceneListWithOptions(request *DescribeAuthScen
 
 // Summary:
 //
-// # List of Scenarios
+// Queries the list of scenarios.
 //
 // @param request - DescribeAuthSceneListRequest
 //
@@ -6244,7 +6248,7 @@ func (client *Client) DescribeAuthSceneList(request *DescribeAuthSceneListReques
 
 // Summary:
 //
-// # Scene List
+// Queries the list of scenarios.
 //
 // @param request - DescribeAuthScenePageListRequest
 //
@@ -6296,7 +6300,7 @@ func (client *Client) DescribeAuthScenePageListWithOptions(request *DescribeAuth
 
 // Summary:
 //
-// # Scene List
+// Queries the list of scenarios.
 //
 // @param request - DescribeAuthScenePageListRequest
 //
@@ -6314,7 +6318,7 @@ func (client *Client) DescribeAuthScenePageList(request *DescribeAuthScenePageLi
 
 // Summary:
 //
-// # Check Authorization
+// Checks whether authorization is granted.
 //
 // @param request - DescribeAuthStatusRequest
 //
@@ -6362,7 +6366,7 @@ func (client *Client) DescribeAuthStatusWithOptions(request *DescribeAuthStatusR
 
 // Summary:
 //
-// # Check Authorization
+// Checks whether authorization is granted.
 //
 // @param request - DescribeAuthStatusRequest
 //
@@ -6380,7 +6384,7 @@ func (client *Client) DescribeAuthStatus(request *DescribeAuthStatusRequest) (_r
 
 // Summary:
 //
-// # Average Execution Time
+// Average execution duration.
 //
 // @param request - DescribeAvgExecuteCostReportRequest
 //
@@ -6428,7 +6432,7 @@ func (client *Client) DescribeAvgExecuteCostReportWithOptions(request *DescribeA
 
 // Summary:
 //
-// # Average Execution Time
+// Average execution duration.
 //
 // @param request - DescribeAvgExecuteCostReportRequest
 //
@@ -6446,7 +6450,7 @@ func (client *Client) DescribeAvgExecuteCostReport(request *DescribeAvgExecuteCo
 
 // Summary:
 //
-// # Basic Query
+// Performs a basic query.
 //
 // @param request - DescribeBasicSearchPageListRequest
 //
@@ -6522,7 +6526,7 @@ func (client *Client) DescribeBasicSearchPageListWithOptions(request *DescribeBa
 
 // Summary:
 //
-// # Basic Query
+// Performs a basic query.
 //
 // @param request - DescribeBasicSearchPageListRequest
 //
@@ -6540,7 +6544,7 @@ func (client *Client) DescribeBasicSearchPageList(request *DescribeBasicSearchPa
 
 // Summary:
 //
-// # Basic Statistics
+// Queries basic statistics.
 //
 // @param request - DescribeBasicStartRequest
 //
@@ -6600,7 +6604,7 @@ func (client *Client) DescribeBasicStartWithOptions(request *DescribeBasicStartR
 
 // Summary:
 //
-// # Basic Statistics
+// Queries basic statistics.
 //
 // @param request - DescribeBasicStartRequest
 //
@@ -6618,7 +6622,7 @@ func (client *Client) DescribeBasicStart(request *DescribeBasicStartRequest) (_r
 
 // Summary:
 //
-// # View Bypass Event
+// Queries a bypass event.
 //
 // @param request - DescribeByPassShuntEventRequest
 //
@@ -6670,7 +6674,7 @@ func (client *Client) DescribeByPassShuntEventWithOptions(request *DescribeByPas
 
 // Summary:
 //
-// # View Bypass Event
+// Queries a bypass event.
 //
 // @param request - DescribeByPassShuntEventRequest
 //
@@ -6688,7 +6692,7 @@ func (client *Client) DescribeByPassShuntEvent(request *DescribeByPassShuntEvent
 
 // Summary:
 //
-// # Query the type configuration of custom accumulated variables
+// Queries the type configurations of custom cumulative variables.
 //
 // @param request - DescribeCustVariableConfigListRequest
 //
@@ -6744,7 +6748,7 @@ func (client *Client) DescribeCustVariableConfigListWithOptions(request *Describ
 
 // Summary:
 //
-// # Query the type configuration of custom accumulated variables
+// Queries the type configurations of custom cumulative variables.
 //
 // @param request - DescribeCustVariableConfigListRequest
 //
@@ -6762,7 +6766,7 @@ func (client *Client) DescribeCustVariableConfigList(request *DescribeCustVariab
 
 // Summary:
 //
-// # Cumulative Variable Details
+// Queries the details of a cumulative variable.
 //
 // @param request - DescribeCustVariableDetailRequest
 //
@@ -6814,7 +6818,7 @@ func (client *Client) DescribeCustVariableDetailWithOptions(request *DescribeCus
 
 // Summary:
 //
-// # Cumulative Variable Details
+// Queries the details of a cumulative variable.
 //
 // @param request - DescribeCustVariableDetailRequest
 //
@@ -6832,11 +6836,11 @@ func (client *Client) DescribeCustVariableDetail(request *DescribeCustVariableDe
 
 // Summary:
 //
-// # Query Custom Accumulated Variable List
+// Queries the list of custom cumulative variables.
 //
 // Description:
 //
-// # List Query of Accumulated Variables
+// Queries the list of cumulative variables.
 //
 // @param request - DescribeCustVariablePageRequest
 //
@@ -6908,11 +6912,11 @@ func (client *Client) DescribeCustVariablePageWithOptions(request *DescribeCustV
 
 // Summary:
 //
-// # Query Custom Accumulated Variable List
+// Queries the list of custom cumulative variables.
 //
 // Description:
 //
-// # List Query of Accumulated Variables
+// Queries the list of cumulative variables.
 //
 // @param request - DescribeCustVariablePageRequest
 //
@@ -6930,7 +6934,7 @@ func (client *Client) DescribeCustVariablePage(request *DescribeCustVariablePage
 
 // Summary:
 //
-// # Get Data Source Data Download Link
+// Retrieves the download URL for data source data.
 //
 // @param request - DescribeDataSourceDataDownloadUrlRequest
 //
@@ -6982,7 +6986,7 @@ func (client *Client) DescribeDataSourceDataDownloadUrlWithOptions(request *Desc
 
 // Summary:
 //
-// # Get Data Source Data Download Link
+// Retrieves the download URL for data source data.
 //
 // @param request - DescribeDataSourceDataDownloadUrlRequest
 //
@@ -7000,7 +7004,7 @@ func (client *Client) DescribeDataSourceDataDownloadUrl(request *DescribeDataSou
 
 // Summary:
 //
-// # Retrieve all fields of a data source
+// Retrieves all fields of a data source.
 //
 // @param request - DescribeDataSourceFieldsRequest
 //
@@ -7052,7 +7056,7 @@ func (client *Client) DescribeDataSourceFieldsWithOptions(request *DescribeDataS
 
 // Summary:
 //
-// # Retrieve all fields of a data source
+// Retrieves all fields of a data source.
 //
 // @param request - DescribeDataSourceFieldsRequest
 //
@@ -7070,7 +7074,7 @@ func (client *Client) DescribeDataSourceFields(request *DescribeDataSourceFields
 
 // Summary:
 //
-// # Data Source List Interface
+// Queries a list of data sources.
 //
 // @param request - DescribeDataSourcePageListRequest
 //
@@ -7138,7 +7142,7 @@ func (client *Client) DescribeDataSourcePageListWithOptions(request *DescribeDat
 
 // Summary:
 //
-// # Data Source List Interface
+// Queries a list of data sources.
 //
 // @param request - DescribeDataSourcePageListRequest
 //
@@ -7156,7 +7160,7 @@ func (client *Client) DescribeDataSourcePageList(request *DescribeDataSourcePage
 
 // Summary:
 //
-// # Decision Result Fluctuation Detection
+// Detects fluctuations in decision results.
 //
 // @param request - DescribeDecisionResultFluctuationRequest
 //
@@ -7208,7 +7212,7 @@ func (client *Client) DescribeDecisionResultFluctuationWithOptions(request *Desc
 
 // Summary:
 //
-// # Decision Result Fluctuation Detection
+// Detects fluctuations in decision results.
 //
 // @param request - DescribeDecisionResultFluctuationRequest
 //
@@ -7226,7 +7230,7 @@ func (client *Client) DescribeDecisionResultFluctuation(request *DescribeDecisio
 
 // Summary:
 //
-// # Decision Result Fluctuation Trend
+// Queries the fluctuation trend of decision results.
 //
 // @param request - DescribeDecisionResultTrendRequest
 //
@@ -7286,7 +7290,7 @@ func (client *Client) DescribeDecisionResultTrendWithOptions(request *DescribeDe
 
 // Summary:
 //
-// # Decision Result Fluctuation Trend
+// Queries the fluctuation trend of decision results.
 //
 // @param request - DescribeDecisionResultTrendRequest
 //
@@ -7304,7 +7308,7 @@ func (client *Client) DescribeDecisionResultTrend(request *DescribeDecisionResul
 
 // Summary:
 //
-// # Detailed Statistics
+// Retrieves detailed statistics.
 //
 // @param request - DescribeDetailStartRequest
 //
@@ -7364,7 +7368,7 @@ func (client *Client) DescribeDetailStartWithOptions(request *DescribeDetailStar
 
 // Summary:
 //
-// # Detailed Statistics
+// Retrieves detailed statistics.
 //
 // @param request - DescribeDetailStartRequest
 //
@@ -7382,7 +7386,7 @@ func (client *Client) DescribeDetailStart(request *DescribeDetailStartRequest) (
 
 // Summary:
 //
-// # Download
+// Downloads a file.
 //
 // @param request - DescribeDownloadUrlRequest
 //
@@ -7442,7 +7446,7 @@ func (client *Client) DescribeDownloadUrlWithOptions(request *DescribeDownloadUr
 
 // Summary:
 //
-// # Download
+// Downloads a file.
 //
 // @param request - DescribeDownloadUrlRequest
 //
@@ -7460,7 +7464,7 @@ func (client *Client) DescribeDownloadUrl(request *DescribeDownloadUrlRequest) (
 
 // Summary:
 //
-// # Query Event Details
+// Queries event details.
 //
 // @param request - DescribeEventBaseInfoByEventCodeRequest
 //
@@ -7516,7 +7520,7 @@ func (client *Client) DescribeEventBaseInfoByEventCodeWithOptions(request *Descr
 
 // Summary:
 //
-// # Query Event Details
+// Queries event details.
 //
 // @param request - DescribeEventBaseInfoByEventCodeRequest
 //
@@ -7534,7 +7538,7 @@ func (client *Client) DescribeEventBaseInfoByEventCode(request *DescribeEventBas
 
 // Summary:
 //
-// # Query Total Event Count
+// Queries the total number of events.
 //
 // @param request - DescribeEventCountRequest
 //
@@ -7586,7 +7590,7 @@ func (client *Client) DescribeEventCountWithOptions(request *DescribeEventCountR
 
 // Summary:
 //
-// # Query Total Event Count
+// Queries the total number of events.
 //
 // @param request - DescribeEventCountRequest
 //
@@ -7604,7 +7608,7 @@ func (client *Client) DescribeEventCount(request *DescribeEventCountRequest) (_r
 
 // Summary:
 //
-// # Query event details based on the request ID
+// Queries event details by request ID.
 //
 // @param request - DescribeEventDetailByRequestIdRequest
 //
@@ -7664,7 +7668,7 @@ func (client *Client) DescribeEventDetailByRequestIdWithOptions(request *Describ
 
 // Summary:
 //
-// # Query event details based on the request ID
+// Queries event details by request ID.
 //
 // @param request - DescribeEventDetailByRequestIdRequest
 //
@@ -7682,7 +7686,7 @@ func (client *Client) DescribeEventDetailByRequestId(request *DescribeEventDetai
 
 // Summary:
 //
-// # Query Event History Details
+// Queries the details of an event history.
 //
 // @param request - DescribeEventLogDetailRequest
 //
@@ -7734,7 +7738,7 @@ func (client *Client) DescribeEventLogDetailWithOptions(request *DescribeEventLo
 
 // Summary:
 //
-// # Query Event History Details
+// Queries the details of an event history.
 //
 // @param request - DescribeEventLogDetailRequest
 //
@@ -7752,7 +7756,7 @@ func (client *Client) DescribeEventLogDetail(request *DescribeEventLogDetailRequ
 
 // Summary:
 //
-// # Query Event History List
+// Queries the event history list.
 //
 // @param request - DescribeEventLogPageRequest
 //
@@ -7912,7 +7916,7 @@ func (client *Client) DescribeEventLogPageWithOptions(request *DescribeEventLogP
 
 // Summary:
 //
-// # Query Event History List
+// Queries the event history list.
 //
 // @param request - DescribeEventLogPageRequest
 //
@@ -7930,7 +7934,7 @@ func (client *Client) DescribeEventLogPage(request *DescribeEventLogPageRequest)
 
 // Summary:
 //
-// # Paged Query for Events
+// Queries events by paging.
 //
 // @param request - DescribeEventPageListRequest
 //
@@ -8002,7 +8006,7 @@ func (client *Client) DescribeEventPageListWithOptions(request *DescribeEventPag
 
 // Summary:
 //
-// # Paged Query for Events
+// Queries events by paging.
 //
 // @param request - DescribeEventPageListRequest
 //
@@ -8098,7 +8102,7 @@ func (client *Client) DescribeEventResultBarChart(request *DescribeEventResultBa
 
 // Summary:
 //
-// # Event Overview List
+// Queries the event overview list.
 //
 // @param request - DescribeEventResultListRequest
 //
@@ -8162,7 +8166,7 @@ func (client *Client) DescribeEventResultListWithOptions(request *DescribeEventR
 
 // Summary:
 //
-// # Event Overview List
+// Queries the event overview list.
 //
 // @param request - DescribeEventResultListRequest
 //
@@ -8180,7 +8184,7 @@ func (client *Client) DescribeEventResultList(request *DescribeEventResultListRe
 
 // Summary:
 //
-// # Query Policy Download List
+// Queries the policy download list.
 //
 // @param request - DescribeEventTaskHistoryRequest
 //
@@ -8228,7 +8232,7 @@ func (client *Client) DescribeEventTaskHistoryWithOptions(request *DescribeEvent
 
 // Summary:
 //
-// # Query Policy Download List
+// Queries the policy download list.
 //
 // @param request - DescribeEventTaskHistoryRequest
 //
@@ -8246,7 +8250,7 @@ func (client *Client) DescribeEventTaskHistory(request *DescribeEventTaskHistory
 
 // Summary:
 //
-// # Event Invocation Count
+// # Call event count
 //
 // @param request - DescribeEventTotalCountReportRequest
 //
@@ -8294,7 +8298,7 @@ func (client *Client) DescribeEventTotalCountReportWithOptions(request *Describe
 
 // Summary:
 //
-// # Event Invocation Count
+// # Call event count
 //
 // @param request - DescribeEventTotalCountReportRequest
 //
@@ -8312,7 +8316,7 @@ func (client *Client) DescribeEventTotalCountReport(request *DescribeEventTotalC
 
 // Summary:
 //
-// # Batch Import Policy
+// Imports policies in batches.
 //
 // @param request - DescribeEventUploadPolicyRequest
 //
@@ -8360,7 +8364,7 @@ func (client *Client) DescribeEventUploadPolicyWithOptions(request *DescribeEven
 
 // Summary:
 //
-// # Batch Import Policy
+// Imports policies in batches.
 //
 // @param request - DescribeEventUploadPolicyRequest
 //
@@ -8378,11 +8382,11 @@ func (client *Client) DescribeEventUploadPolicy(request *DescribeEventUploadPoli
 
 // Summary:
 //
-// # Query event variables
+// Queries event variables.
 //
 // Description:
 //
-// # Cumulative Variable List Query
+// Queries the list of cumulative variables.
 //
 // @param request - DescribeEventVariableListRequest
 //
@@ -8450,11 +8454,11 @@ func (client *Client) DescribeEventVariableListWithOptions(request *DescribeEven
 
 // Summary:
 //
-// # Query event variables
+// Queries event variables.
 //
 // Description:
 //
-// # Cumulative Variable List Query
+// Queries the list of cumulative variables.
 //
 // @param request - DescribeEventVariableListRequest
 //
@@ -8472,7 +8476,7 @@ func (client *Client) DescribeEventVariableList(request *DescribeEventVariableLi
 
 // Summary:
 //
-// # Query Event Template
+// Queries an event pattern template.
 //
 // @param request - DescribeEventVariableTemplateBindRequest
 //
@@ -8532,7 +8536,7 @@ func (client *Client) DescribeEventVariableTemplateBindWithOptions(request *Desc
 
 // Summary:
 //
-// # Query Event Template
+// Queries an event pattern template.
 //
 // @param request - DescribeEventVariableTemplateBindRequest
 //
@@ -8550,7 +8554,7 @@ func (client *Client) DescribeEventVariableTemplateBind(request *DescribeEventVa
 
 // Summary:
 //
-// # Query Event Template
+// Queries an event pattern template.
 //
 // @param request - DescribeEventVariableTemplateListRequest
 //
@@ -8610,7 +8614,7 @@ func (client *Client) DescribeEventVariableTemplateListWithOptions(request *Desc
 
 // Summary:
 //
-// # Query Event Template
+// Queries an event pattern template.
 //
 // @param request - DescribeEventVariableTemplateListRequest
 //
@@ -8628,7 +8632,7 @@ func (client *Client) DescribeEventVariableTemplateList(request *DescribeEventVa
 
 // Summary:
 //
-// # Query Event Variables
+// Queries event variables.
 //
 // @param request - DescribeEventsVariableListRequest
 //
@@ -8692,7 +8696,7 @@ func (client *Client) DescribeEventsVariableListWithOptions(request *DescribeEve
 
 // Summary:
 //
-// # Query Event Variables
+// Queries event variables.
 //
 // @param request - DescribeEventsVariableListRequest
 //
@@ -8710,7 +8714,7 @@ func (client *Client) DescribeEventsVariableList(request *DescribeEventsVariable
 
 // Summary:
 //
-// Self-service call list.
+// Self-service invocation list.
 //
 // @param request - DescribeExcuteNumRequest
 //
@@ -8774,7 +8778,7 @@ func (client *Client) DescribeExcuteNumWithOptions(request *DescribeExcuteNumReq
 
 // Summary:
 //
-// Self-service call list.
+// Self-service invocation list.
 //
 // @param request - DescribeExcuteNumRequest
 //
@@ -8792,7 +8796,7 @@ func (client *Client) DescribeExcuteNum(request *DescribeExcuteNumRequest) (_res
 
 // Summary:
 //
-// Validate if the field name is duplicated (based on user\\"s organization)
+// Checks whether a field name is duplicate based on the user unit.
 //
 // @param request - DescribeExistNameRequest
 //
@@ -8844,7 +8848,7 @@ func (client *Client) DescribeExistNameWithOptions(request *DescribeExistNameReq
 
 // Summary:
 //
-// Validate if the field name is duplicated (based on user\\"s organization)
+// Checks whether a field name is duplicate based on the user unit.
 //
 // @param request - DescribeExistNameRequest
 //
@@ -8862,7 +8866,7 @@ func (client *Client) DescribeExistName(request *DescribeExistNameRequest) (_res
 
 // Summary:
 //
-// # Check if Scene Exists
+// Checks whether a scenario exists.
 //
 // @param request - DescribeExistSceneRequest
 //
@@ -8914,7 +8918,7 @@ func (client *Client) DescribeExistSceneWithOptions(request *DescribeExistSceneR
 
 // Summary:
 //
-// # Check if Scene Exists
+// Checks whether a scenario exists.
 //
 // @param request - DescribeExistSceneRequest
 //
@@ -8932,7 +8936,7 @@ func (client *Client) DescribeExistScene(request *DescribeExistSceneRequest) (_r
 
 // Summary:
 //
-// # Custom Variable Details
+// Queries the details of a custom variable.
 //
 // @param request - DescribeExpressionVariableDetailRequest
 //
@@ -8984,7 +8988,7 @@ func (client *Client) DescribeExpressionVariableDetailWithOptions(request *Descr
 
 // Summary:
 //
-// # Custom Variable Details
+// Queries the details of a custom variable.
 //
 // @param request - DescribeExpressionVariableDetailRequest
 //
@@ -9002,7 +9006,7 @@ func (client *Client) DescribeExpressionVariableDetail(request *DescribeExpressi
 
 // Summary:
 //
-// # Function List
+// Queries the function list.
 //
 // @param request - DescribeExpressionVariableFunctionListRequest
 //
@@ -9050,7 +9054,7 @@ func (client *Client) DescribeExpressionVariableFunctionListWithOptions(request 
 
 // Summary:
 //
-// # Function List
+// Queries the function list.
 //
 // @param request - DescribeExpressionVariableFunctionListRequest
 //
@@ -9068,7 +9072,7 @@ func (client *Client) DescribeExpressionVariableFunctionList(request *DescribeEx
 
 // Summary:
 //
-// Paged Query for Custom Variables.
+// Performs a paging query of custom variables.
 //
 // @param request - DescribeExpressionVariablePageRequest
 //
@@ -9140,7 +9144,7 @@ func (client *Client) DescribeExpressionVariablePageWithOptions(request *Describ
 
 // Summary:
 //
-// Paged Query for Custom Variables.
+// Performs a paging query of custom variables.
 //
 // @param request - DescribeExpressionVariablePageRequest
 //
@@ -9240,7 +9244,7 @@ func (client *Client) DescribeExpressionVariableVersionDetail(request *DescribeE
 
 // Summary:
 //
-// # Get Field Details
+// Retrieves field details.
 //
 // @param request - DescribeFieldByIdRequest
 //
@@ -9292,7 +9296,7 @@ func (client *Client) DescribeFieldByIdWithOptions(request *DescribeFieldByIdReq
 
 // Summary:
 //
-// # Get Field Details
+// Retrieves field details.
 //
 // @param request - DescribeFieldByIdRequest
 //
@@ -9310,7 +9314,7 @@ func (client *Client) DescribeFieldById(request *DescribeFieldByIdRequest) (_res
 
 // Summary:
 //
-// # Query Field List
+// Queries the list of fields.
 //
 // @param request - DescribeFieldListRequest
 //
@@ -9366,7 +9370,7 @@ func (client *Client) DescribeFieldListWithOptions(request *DescribeFieldListReq
 
 // Summary:
 //
-// # Query Field List
+// Queries the list of fields.
 //
 // @param request - DescribeFieldListRequest
 //
@@ -9384,7 +9388,7 @@ func (client *Client) DescribeFieldList(request *DescribeFieldListRequest) (_res
 
 // Summary:
 //
-// # Query paged list of fields
+// Queries a paginated list of fields.
 //
 // @param request - DescribeFieldPageRequest
 //
@@ -9468,7 +9472,7 @@ func (client *Client) DescribeFieldPageWithOptions(request *DescribeFieldPageReq
 
 // Summary:
 //
-// # Query paged list of fields
+// Queries a paginated list of fields.
 //
 // @param request - DescribeFieldPageRequest
 //
@@ -9486,7 +9490,7 @@ func (client *Client) DescribeFieldPage(request *DescribeFieldPageRequest) (_res
 
 // Summary:
 //
-// # Community Account List
+// Queries the list of community accounts.
 //
 // @param request - DescribeGroupAccountPageRequest
 //
@@ -9570,7 +9574,7 @@ func (client *Client) DescribeGroupAccountPageWithOptions(request *DescribeGroup
 
 // Summary:
 //
-// # Community Account List
+// Queries the list of community accounts.
 //
 // @param request - DescribeGroupAccountPageRequest
 //
@@ -9588,7 +9592,7 @@ func (client *Client) DescribeGroupAccountPage(request *DescribeGroupAccountPage
 
 // Summary:
 //
-// # Community List Query Conditions
+// Queries the filter conditions for the community list.
 //
 // @param request - DescribeGroupConditionListRequest
 //
@@ -9636,7 +9640,7 @@ func (client *Client) DescribeGroupConditionListWithOptions(request *DescribeGro
 
 // Summary:
 //
-// # Community List Query Conditions
+// Queries the filter conditions for the community list.
 //
 // @param request - DescribeGroupConditionListRequest
 //
@@ -9654,7 +9658,7 @@ func (client *Client) DescribeGroupConditionList(request *DescribeGroupCondition
 
 // Summary:
 //
-// # Community List
+// Queries the list of communities.
 //
 // @param request - DescribeGroupPageRequest
 //
@@ -9726,7 +9730,7 @@ func (client *Client) DescribeGroupPageWithOptions(request *DescribeGroupPageReq
 
 // Summary:
 //
-// # Community List
+// Queries the list of communities.
 //
 // @param request - DescribeGroupPageRequest
 //
@@ -9744,7 +9748,7 @@ func (client *Client) DescribeGroupPage(request *DescribeGroupPageRequest) (_res
 
 // Summary:
 //
-// # Risk Communities Discovered Today
+// Queries the risk communities discovered on the current day.
 //
 // @param request - DescribeGroupStatisticsByTodayRequest
 //
@@ -9792,7 +9796,7 @@ func (client *Client) DescribeGroupStatisticsByTodayWithOptions(request *Describ
 
 // Summary:
 //
-// # Risk Communities Discovered Today
+// Queries the risk communities discovered on the current day.
 //
 // @param request - DescribeGroupStatisticsByTodayRequest
 //
@@ -9810,7 +9814,7 @@ func (client *Client) DescribeGroupStatisticsByToday(request *DescribeGroupStati
 
 // Summary:
 //
-// # Recent Trends in Risk Communities
+// Queries recent trends of risky communities.
 //
 // @param request - DescribeGroupTrendRequest
 //
@@ -9862,7 +9866,7 @@ func (client *Client) DescribeGroupTrendWithOptions(request *DescribeGroupTrendR
 
 // Summary:
 //
-// # Recent Trends in Risk Communities
+// Queries recent trends of risky communities.
 //
 // @param request - DescribeGroupTrendRequest
 //
@@ -9880,7 +9884,7 @@ func (client *Client) DescribeGroupTrend(request *DescribeGroupTrendRequest) (_r
 
 // Summary:
 //
-// # Check if the policy name under the event name exists
+// Queries whether a policy name exists under a specified event name.
 //
 // @param request - DescribeHasRuleNameByEventCodeRequest
 //
@@ -9940,7 +9944,7 @@ func (client *Client) DescribeHasRuleNameByEventCodeWithOptions(request *Describ
 
 // Summary:
 //
-// # Check if the policy name under the event name exists
+// Queries whether a policy name exists under a specified event name.
 //
 // @param request - DescribeHasRuleNameByEventCodeRequest
 //
@@ -9958,7 +9962,7 @@ func (client *Client) DescribeHasRuleNameByEventCode(request *DescribeHasRuleNam
 
 // Summary:
 //
-// Risk Map Overview Chart (Pie Chart)
+// Retrieves the risk map overview chart (pie chart).
 //
 // @param request - DescribeHighRiskPieChartRequest
 //
@@ -10018,7 +10022,7 @@ func (client *Client) DescribeHighRiskPieChartWithOptions(request *DescribeHighR
 
 // Summary:
 //
-// Risk Map Overview Chart (Pie Chart)
+// Retrieves the risk map overview chart (pie chart).
 //
 // @param request - DescribeHighRiskPieChartRequest
 //
@@ -10036,7 +10040,7 @@ func (client *Client) DescribeHighRiskPieChart(request *DescribeHighRiskPieChart
 
 // Summary:
 //
-// # Policy Hit Fluctuation Detection
+// Detects fluctuations in policy hits.
 //
 // @param request - DescribeHitRuleFluctuationRequest
 //
@@ -10092,7 +10096,7 @@ func (client *Client) DescribeHitRuleFluctuationWithOptions(request *DescribeHit
 
 // Summary:
 //
-// # Policy Hit Fluctuation Detection
+// Detects fluctuations in policy hits.
 //
 // @param request - DescribeHitRuleFluctuationRequest
 //
@@ -10110,7 +10114,7 @@ func (client *Client) DescribeHitRuleFluctuation(request *DescribeHitRuleFluctua
 
 // Summary:
 //
-// Top 20 Hits for Main Events/Bypass/Diversion Strategies
+// Queries the top 20 policies by hits for main events, bypass, and automatic request distribution.
 //
 // @param request - DescribeHitRuleListRequest
 //
@@ -10174,7 +10178,7 @@ func (client *Client) DescribeHitRuleListWithOptions(request *DescribeHitRuleLis
 
 // Summary:
 //
-// Top 20 Hits for Main Events/Bypass/Diversion Strategies
+// Queries the top 20 policies by hits for main events, bypass, and automatic request distribution.
 //
 // @param request - DescribeHitRuleListRequest
 //
@@ -10192,7 +10196,7 @@ func (client *Client) DescribeHitRuleList(request *DescribeHitRuleListRequest) (
 
 // Summary:
 //
-// # Hit Rule Trend
+// Queries the policy hit trends.
 //
 // @param request - DescribeHitRuleTrendRequest
 //
@@ -10256,7 +10260,7 @@ func (client *Client) DescribeHitRuleTrendWithOptions(request *DescribeHitRuleTr
 
 // Summary:
 //
-// # Hit Rule Trend
+// Queries the policy hit trends.
 //
 // @param request - DescribeHitRuleTrendRequest
 //
@@ -10352,7 +10356,7 @@ func (client *Client) DescribeInitDig(request *DescribeInitDigRequest) (_result 
 
 // Summary:
 //
-// # Query Total Number of Events
+// Queries the total number of events.
 //
 // @param request - DescribeInputFeildCountByEventCodeRequest
 //
@@ -10408,7 +10412,7 @@ func (client *Client) DescribeInputFeildCountByEventCodeWithOptions(request *Des
 
 // Summary:
 //
-// # Query Total Number of Events
+// Queries the total number of events.
 //
 // @param request - DescribeInputFeildCountByEventCodeRequest
 //
@@ -10496,7 +10500,7 @@ func (client *Client) DescribeListModel(request *DescribeListModelRequest) (_res
 
 // Summary:
 //
-// # Task List
+// Queries the list of tasks.
 //
 // @param request - DescribeListPocRequest
 //
@@ -10564,7 +10568,7 @@ func (client *Client) DescribeListPocWithOptions(request *DescribeListPocRequest
 
 // Summary:
 //
-// # Task List
+// Queries the list of tasks.
 //
 // @param request - DescribeListPocRequest
 //
@@ -10582,7 +10586,7 @@ func (client *Client) DescribeListPoc(request *DescribeListPocRequest) (_result 
 
 // Summary:
 //
-// # Get Monitoring Object List
+// Queries the list of monitoring objects.
 //
 // @param request - DescribeLoanExecListRequest
 //
@@ -10650,7 +10654,7 @@ func (client *Client) DescribeLoanExecListWithOptions(request *DescribeLoanExecL
 
 // Summary:
 //
-// # Get Monitoring Object List
+// Queries the list of monitoring objects.
 //
 // @param request - DescribeLoanExecListRequest
 //
@@ -10668,7 +10672,7 @@ func (client *Client) DescribeLoanExecList(request *DescribeLoanExecListRequest)
 
 // Summary:
 //
-// # Get Loan Monitoring Task List
+// Retrieves the list of in-loan monitoring tasks.
 //
 // @param request - DescribeLoanTaskListRequest
 //
@@ -10732,7 +10736,7 @@ func (client *Client) DescribeLoanTaskListWithOptions(request *DescribeLoanTaskL
 
 // Summary:
 //
-// # Get Loan Monitoring Task List
+// Retrieves the list of in-loan monitoring tasks.
 //
 // @param request - DescribeLoanTaskListRequest
 //
@@ -10750,7 +10754,7 @@ func (client *Client) DescribeLoanTaskList(request *DescribeLoanTaskListRequest)
 
 // Summary:
 //
-// # Mark List
+// Queries the tagging list.
 //
 // @param request - DescribeMarkPageRequest
 //
@@ -10822,7 +10826,7 @@ func (client *Client) DescribeMarkPageWithOptions(request *DescribeMarkPageReque
 
 // Summary:
 //
-// # Mark List
+// Queries the tagging list.
 //
 // @param request - DescribeMarkPageRequest
 //
@@ -10840,7 +10844,7 @@ func (client *Client) DescribeMarkPage(request *DescribeMarkPageRequest) (_resul
 
 // Summary:
 //
-// # Check Permission
+// Queries whether the current user has the specified permission.
 //
 // @param request - DescribeMenuPermissionRequest
 //
@@ -10892,7 +10896,7 @@ func (client *Client) DescribeMenuPermissionWithOptions(request *DescribeMenuPer
 
 // Summary:
 //
-// # Check Permission
+// Queries whether the current user has the specified permission.
 //
 // @param request - DescribeMenuPermissionRequest
 //
@@ -11042,7 +11046,7 @@ func (client *Client) DescribeModelOssPolicy(request *DescribeModelOssPolicyRequ
 
 // Summary:
 //
-// # Query Task Limit
+// Queries the limits of tasks.
 //
 // @param request - DescribeMonitorTaskLimitRequest
 //
@@ -11090,7 +11094,7 @@ func (client *Client) DescribeMonitorTaskLimitWithOptions(request *DescribeMonit
 
 // Summary:
 //
-// # Query Task Limit
+// Queries the limits of tasks.
 //
 // @param request - DescribeMonitorTaskLimitRequest
 //
@@ -11108,7 +11112,7 @@ func (client *Client) DescribeMonitorTaskLimit(request *DescribeMonitorTaskLimit
 
 // Summary:
 //
-// # Query Name List Pagination
+// Queries a name list by page.
 //
 // @param request - DescribeNameListRequest
 //
@@ -11176,7 +11180,7 @@ func (client *Client) DescribeNameListWithOptions(request *DescribeNameListReque
 
 // Summary:
 //
-// # Query Name List Pagination
+// Queries a name list by page.
 //
 // @param request - DescribeNameListRequest
 //
@@ -11194,7 +11198,7 @@ func (client *Client) DescribeNameList(request *DescribeNameListRequest) (_resul
 
 // Summary:
 //
-// # Download Name List
+// Downloads the content of a list.
 //
 // @param request - DescribeNameListDownloadUrlRequest
 //
@@ -11246,7 +11250,7 @@ func (client *Client) DescribeNameListDownloadUrlWithOptions(request *DescribeNa
 
 // Summary:
 //
-// # Download Name List
+// Downloads the content of a list.
 //
 // @param request - DescribeNameListDownloadUrlRequest
 //
@@ -11264,7 +11268,7 @@ func (client *Client) DescribeNameListDownloadUrl(request *DescribeNameListDownl
 
 // Summary:
 //
-// # Query Name List Limit
+// Queries the quota limit for lists.
 //
 // @param request - DescribeNameListLimitRequest
 //
@@ -11316,7 +11320,7 @@ func (client *Client) DescribeNameListLimitWithOptions(request *DescribeNameList
 
 // Summary:
 //
-// # Query Name List Limit
+// Queries the quota limit for lists.
 //
 // @param request - DescribeNameListLimitRequest
 //
@@ -11334,7 +11338,7 @@ func (client *Client) DescribeNameListLimit(request *DescribeNameListLimitReques
 
 // Summary:
 //
-// # Query the content of the list
+// Queries the content of a list.
 //
 // @param request - DescribeNameListPageListRequest
 //
@@ -11406,7 +11410,7 @@ func (client *Client) DescribeNameListPageListWithOptions(request *DescribeNameL
 
 // Summary:
 //
-// # Query the content of the list
+// Queries the content of a list.
 //
 // @param request - DescribeNameListPageListRequest
 //
@@ -11424,7 +11428,7 @@ func (client *Client) DescribeNameListPageList(request *DescribeNameListPageList
 
 // Summary:
 //
-// # List of Name Types
+// Queries the list of name list types.
 //
 // @param request - DescribeNameListTypeListRequest
 //
@@ -11472,7 +11476,7 @@ func (client *Client) DescribeNameListTypeListWithOptions(request *DescribeNameL
 
 // Summary:
 //
-// # List of Name Types
+// Queries the list of name list types.
 //
 // @param request - DescribeNameListTypeListRequest
 //
@@ -11490,7 +11494,7 @@ func (client *Client) DescribeNameListTypeList(request *DescribeNameListTypeList
 
 // Summary:
 //
-// # Name List
+// Queries a list of named lists.
 //
 // @param request - DescribeNameListVariablePageListRequest
 //
@@ -11558,7 +11562,7 @@ func (client *Client) DescribeNameListVariablePageListWithOptions(request *Descr
 
 // Summary:
 //
-// # Name List
+// Queries a list of named lists.
 //
 // @param request - DescribeNameListVariablePageListRequest
 //
@@ -11654,7 +11658,7 @@ func (client *Client) DescribeOperationLogMonitoring(request *DescribeOperationL
 
 // Summary:
 //
-// # Query event list by event name
+// Queries the list of events by event name.
 //
 // @param request - DescribeOperationLogPageListRequest
 //
@@ -11726,7 +11730,7 @@ func (client *Client) DescribeOperationLogPageListWithOptions(request *DescribeO
 
 // Summary:
 //
-// # Query event list by event name
+// Queries the list of events by event name.
 //
 // @param request - DescribeOperationLogPageListRequest
 //
@@ -11744,7 +11748,7 @@ func (client *Client) DescribeOperationLogPageList(request *DescribeOperationLog
 
 // Summary:
 //
-// # Query the operator mapping list based on customer ID
+// Queries the operator mapping list by customer ID.
 //
 // @param request - DescribeOperatorListRequest
 //
@@ -11792,7 +11796,7 @@ func (client *Client) DescribeOperatorListWithOptions(request *DescribeOperatorL
 
 // Summary:
 //
-// # Query the operator mapping list based on customer ID
+// Queries the operator mapping list by customer ID.
 //
 // @param request - DescribeOperatorListRequest
 //
@@ -11810,7 +11814,7 @@ func (client *Client) DescribeOperatorList(request *DescribeOperatorListRequest)
 
 // Summary:
 //
-// # Query Operator Mapping List
+// Queries the operator mapping list.
 //
 // @param request - DescribeOperatorListBySceneRequest
 //
@@ -11862,7 +11866,7 @@ func (client *Client) DescribeOperatorListBySceneWithOptions(request *DescribeOp
 
 // Summary:
 //
-// # Query Operator Mapping List
+// Queries the operator mapping list.
 //
 // @param request - DescribeOperatorListBySceneRequest
 //
@@ -11880,7 +11884,7 @@ func (client *Client) DescribeOperatorListByScene(request *DescribeOperatorListB
 
 // Summary:
 //
-// # Query Operator Mapping List
+// Queries the list of operator mappings.
 //
 // @param request - DescribeOperatorListByTypeRequest
 //
@@ -11928,7 +11932,7 @@ func (client *Client) DescribeOperatorListByTypeWithOptions(request *DescribeOpe
 
 // Summary:
 //
-// # Query Operator Mapping List
+// Queries the list of operator mappings.
 //
 // @param request - DescribeOperatorListByTypeRequest
 //
@@ -11946,7 +11950,7 @@ func (client *Client) DescribeOperatorListByType(request *DescribeOperatorListBy
 
 // Summary:
 //
-// # Check Oss Authorization
+// Checks whether OSS is authorized.
 //
 // @param request - DescribeOssAuthStatusRequest
 //
@@ -11994,7 +11998,7 @@ func (client *Client) DescribeOssAuthStatusWithOptions(request *DescribeOssAuthS
 
 // Summary:
 //
-// # Check Oss Authorization
+// Checks whether OSS is authorized.
 //
 // @param request - DescribeOssAuthStatusRequest
 //
@@ -12012,7 +12016,7 @@ func (client *Client) DescribeOssAuthStatus(request *DescribeOssAuthStatusReques
 
 // Summary:
 //
-// # Get OSS Policy
+// Retrieves the OSS policy.
 //
 // @param request - DescribeOssPolicyRequest
 //
@@ -12064,7 +12068,7 @@ func (client *Client) DescribeOssPolicyWithOptions(request *DescribeOssPolicyReq
 
 // Summary:
 //
-// # Get OSS Policy
+// Retrieves the OSS policy.
 //
 // @param request - DescribeOssPolicyRequest
 //
@@ -12082,7 +12086,7 @@ func (client *Client) DescribeOssPolicy(request *DescribeOssPolicyRequest) (_res
 
 // Summary:
 //
-// # Get File Upload Credentials
+// Retrieves the upload credential for a file.
 //
 // @param request - DescribeOssTokenRequest
 //
@@ -12138,7 +12142,7 @@ func (client *Client) DescribeOssTokenWithOptions(request *DescribeOssTokenReque
 
 // Summary:
 //
-// # Get File Upload Credentials
+// Retrieves the upload credential for a file.
 //
 // @param request - DescribeOssTokenRequest
 //
@@ -12156,7 +12160,7 @@ func (client *Client) DescribeOssToken(request *DescribeOssTokenRequest) (_resul
 
 // Summary:
 //
-// # Query Event Property List
+// Queries the list of event properties.
 //
 // @param request - DescribeParamByEventCodesRequest
 //
@@ -12212,7 +12216,7 @@ func (client *Client) DescribeParamByEventCodesWithOptions(request *DescribePara
 
 // Summary:
 //
-// # Query Event Property List
+// Queries the list of event properties.
 //
 // @param request - DescribeParamByEventCodesRequest
 //
@@ -12230,7 +12234,7 @@ func (client *Client) DescribeParamByEventCodes(request *DescribeParamByEventCod
 
 // Summary:
 //
-// # Get File Upload Credentials
+// Retrieves the file upload credential.
 //
 // @param request - DescribePocOssTokenRequest
 //
@@ -12278,7 +12282,7 @@ func (client *Client) DescribePocOssTokenWithOptions(request *DescribePocOssToke
 
 // Summary:
 //
-// # Get File Upload Credentials
+// Retrieves the file upload credential.
 //
 // @param request - DescribePocOssTokenRequest
 //
@@ -12296,7 +12300,7 @@ func (client *Client) DescribePocOssToken(request *DescribePocOssTokenRequest) (
 
 // Summary:
 //
-// # Get POC Task List
+// Retrieves the list of POC tasks.
 //
 // @param request - DescribePocTaskListRequest
 //
@@ -12356,7 +12360,7 @@ func (client *Client) DescribePocTaskListWithOptions(request *DescribePocTaskLis
 
 // Summary:
 //
-// # Get POC Task List
+// Retrieves the list of POC tasks.
 //
 // @param request - DescribePocTaskListRequest
 //
@@ -12374,7 +12378,7 @@ func (client *Client) DescribePocTaskList(request *DescribePocTaskListRequest) (
 
 // Summary:
 //
-// # Determine if Stack Private Domain Mode is Enabled
+// Checks whether the Stack private domain mode is enabled.
 //
 // @param request - DescribePrivateStackRequest
 //
@@ -12418,7 +12422,7 @@ func (client *Client) DescribePrivateStackWithOptions(request *DescribePrivateSt
 
 // Summary:
 //
-// # Determine if Stack Private Domain Mode is Enabled
+// Checks whether the Stack private domain mode is enabled.
 //
 // @param request - DescribePrivateStackRequest
 //
@@ -12436,7 +12440,7 @@ func (client *Client) DescribePrivateStack(request *DescribePrivateStackRequest)
 
 // Summary:
 //
-// # Query Variable Detail Query
+// Queries the details of a custom query variable.
 //
 // @param request - DescribeQueryVariableDetailRequest
 //
@@ -12488,7 +12492,7 @@ func (client *Client) DescribeQueryVariableDetailWithOptions(request *DescribeQu
 
 // Summary:
 //
-// # Query Variable Detail Query
+// Queries the details of a custom query variable.
 //
 // @param request - DescribeQueryVariableDetailRequest
 //
@@ -12506,7 +12510,7 @@ func (client *Client) DescribeQueryVariableDetail(request *DescribeQueryVariable
 
 // Summary:
 //
-// # Query Variable List Query
+// Queries a list of custom query variables.
 //
 // @param request - DescribeQueryVariablePageListRequest
 //
@@ -12574,7 +12578,7 @@ func (client *Client) DescribeQueryVariablePageListWithOptions(request *Describe
 
 // Summary:
 //
-// # Query Variable List Query
+// Queries a list of custom query variables.
 //
 // @param request - DescribeQueryVariablePageListRequest
 //
@@ -12592,7 +12596,7 @@ func (client *Client) DescribeQueryVariablePageList(request *DescribeQueryVariab
 
 // Summary:
 //
-// Query Variable List under Sample & Scenario
+// Queries the list of variables under a data sample and scenario.
 //
 // @param request - DescribeRecommendSceneVariablesRequest
 //
@@ -12644,7 +12648,7 @@ func (client *Client) DescribeRecommendSceneVariablesWithOptions(request *Descri
 
 // Summary:
 //
-// Query Variable List under Sample & Scenario
+// Queries the list of variables under a data sample and scenario.
 //
 // @param request - DescribeRecommendSceneVariablesRequest
 //
@@ -12662,7 +12666,7 @@ func (client *Client) DescribeRecommendSceneVariables(request *DescribeRecommend
 
 // Summary:
 //
-// # Variable Recommendation Details Query Interface
+// Queries the details of variable recommendations.
 //
 // @param request - DescribeRecommendTaskDetailRequest
 //
@@ -12714,7 +12718,7 @@ func (client *Client) DescribeRecommendTaskDetailWithOptions(request *DescribeRe
 
 // Summary:
 //
-// # Variable Recommendation Details Query Interface
+// Queries the details of variable recommendations.
 //
 // @param request - DescribeRecommendTaskDetailRequest
 //
@@ -12732,7 +12736,7 @@ func (client *Client) DescribeRecommendTaskDetail(request *DescribeRecommendTask
 
 // Summary:
 //
-// # Variable Recommendation List Query Interface
+// Queries the variable recommendation list.
 //
 // @param request - DescribeRecommendTaskPageListRequest
 //
@@ -12792,7 +12796,7 @@ func (client *Client) DescribeRecommendTaskPageListWithOptions(request *Describe
 
 // Summary:
 //
-// # Variable Recommendation List Query Interface
+// Queries the variable recommendation list.
 //
 // @param request - DescribeRecommendTaskPageListRequest
 //
@@ -12810,7 +12814,7 @@ func (client *Client) DescribeRecommendTaskPageList(request *DescribeRecommendTa
 
 // Summary:
 //
-// # Query Indicators Information under Variables
+// Queries the metric information of a variable.
 //
 // @param request - DescribeRecommendVariablesVelocityRequest
 //
@@ -12866,7 +12870,7 @@ func (client *Client) DescribeRecommendVariablesVelocityWithOptions(request *Des
 
 // Summary:
 //
-// # Query Indicators Information under Variables
+// Queries the metric information of a variable.
 //
 // @param request - DescribeRecommendVariablesVelocityRequest
 //
@@ -12884,7 +12888,7 @@ func (client *Client) DescribeRecommendVariablesVelocity(request *DescribeRecomm
 
 // Summary:
 //
-// # Query Supported Metrics List
+// Queries the list of supported metrics.
 //
 // @param request - DescribeRecommendVelocitiesRequest
 //
@@ -12940,7 +12944,7 @@ func (client *Client) DescribeRecommendVelocitiesWithOptions(request *DescribeRe
 
 // Summary:
 //
-// # Query Supported Metrics List
+// Queries the list of supported metrics.
 //
 // @param request - DescribeRecommendVelocitiesRequest
 //
@@ -12958,7 +12962,7 @@ func (client *Client) DescribeRecommendVelocities(request *DescribeRecommendVelo
 
 // Summary:
 //
-// # Query the list of regions supported by ApiGateway
+// Queries the list of regions supported by API Gateway.
 //
 // @param request - DescribeRegionsRequest
 //
@@ -13006,7 +13010,7 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 
 // Summary:
 //
-// # Query the list of regions supported by ApiGateway
+// Queries the list of regions supported by API Gateway.
 //
 // @param request - DescribeRegionsRequest
 //
@@ -13024,7 +13028,7 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 
 // Summary:
 //
-// # Query Request Hit Details
+// Queries the hit details of a request.
 //
 // @param request - DescribeRequestHitRequest
 //
@@ -13076,7 +13080,7 @@ func (client *Client) DescribeRequestHitWithOptions(request *DescribeRequestHitR
 
 // Summary:
 //
-// # Query Request Hit Details
+// Queries the hit details of a request.
 //
 // @param request - DescribeRequestHitRequest
 //
@@ -13094,7 +13098,7 @@ func (client *Client) DescribeRequestHit(request *DescribeRequestHitRequest) (_r
 
 // Summary:
 //
-// # Request Peak
+// Request Rate (QPS).
 //
 // @param request - DescribeRequestPeakReportRequest
 //
@@ -13142,7 +13146,7 @@ func (client *Client) DescribeRequestPeakReportWithOptions(request *DescribeRequ
 
 // Summary:
 //
-// # Request Peak
+// Request Rate (QPS).
 //
 // @param request - DescribeRequestPeakReportRequest
 //
@@ -13160,7 +13164,7 @@ func (client *Client) DescribeRequestPeakReport(request *DescribeRequestPeakRepo
 
 // Summary:
 //
-// # Drill-down Analysis
+// Performs drill-down analysis.
 //
 // @param request - DescribeResultCountRequest
 //
@@ -13216,7 +13220,7 @@ func (client *Client) DescribeResultCountWithOptions(request *DescribeResultCoun
 
 // Summary:
 //
-// # Drill-down Analysis
+// Performs drill-down analysis.
 //
 // @param request - DescribeResultCountRequest
 //
@@ -13234,7 +13238,7 @@ func (client *Client) DescribeResultCount(request *DescribeResultCountRequest) (
 
 // Summary:
 //
-// Risk map overview chart (line chart)
+// Risk Map Overview Chart (Line Chart)
 //
 // @param request - DescribeRiskLineChartRequest
 //
@@ -13294,7 +13298,7 @@ func (client *Client) DescribeRiskLineChartWithOptions(request *DescribeRiskLine
 
 // Summary:
 //
-// Risk map overview chart (line chart)
+// Risk Map Overview Chart (Line Chart)
 //
 // @param request - DescribeRiskLineChartRequest
 //
@@ -13390,7 +13394,7 @@ func (client *Client) DescribeRiskTagsLineChart(request *DescribeRiskTagsLineCha
 
 // Summary:
 //
-// # Policy Overview List
+// Queries the policy overview list.
 //
 // @param request - DescribeRuleBarChartRequest
 //
@@ -13450,7 +13454,7 @@ func (client *Client) DescribeRuleBarChartWithOptions(request *DescribeRuleBarCh
 
 // Summary:
 //
-// # Policy Overview List
+// Queries the policy overview list.
 //
 // @param request - DescribeRuleBarChartRequest
 //
@@ -13468,7 +13472,7 @@ func (client *Client) DescribeRuleBarChart(request *DescribeRuleBarChartRequest)
 
 // Summary:
 //
-// # Query Policy Count by User ID
+// Queries the number of policies by user ID.
 //
 // @param request - DescribeRuleCountByUserIdRequest
 //
@@ -13520,7 +13524,7 @@ func (client *Client) DescribeRuleCountByUserIdWithOptions(request *DescribeRule
 
 // Summary:
 //
-// # Query Policy Count by User ID
+// Queries the number of policies by user ID.
 //
 // @param request - DescribeRuleCountByUserIdRequest
 //
@@ -13538,7 +13542,7 @@ func (client *Client) DescribeRuleCountByUserId(request *DescribeRuleCountByUser
 
 // Summary:
 //
-// Query policy/version details
+// Query policy/version details.
 //
 // @param request - DescribeRuleDetailByRuleIdRequest
 //
@@ -13598,7 +13602,7 @@ func (client *Client) DescribeRuleDetailByRuleIdWithOptions(request *DescribeRul
 
 // Summary:
 //
-// Query policy/version details
+// Query policy/version details.
 //
 // @param request - DescribeRuleDetailByRuleIdRequest
 //
@@ -13616,7 +13620,7 @@ func (client *Client) DescribeRuleDetailByRuleId(request *DescribeRuleDetailByRu
 
 // Summary:
 //
-// # Query rule hit details
+// Queries the details of policy rule hits.
 //
 // @param request - DescribeRuleHitRequest
 //
@@ -13680,7 +13684,7 @@ func (client *Client) DescribeRuleHitWithOptions(request *DescribeRuleHitRequest
 
 // Summary:
 //
-// # Query rule hit details
+// Queries the details of policy rule hits.
 //
 // @param request - DescribeRuleHitRequest
 //
@@ -13698,7 +13702,7 @@ func (client *Client) DescribeRuleHit(request *DescribeRuleHitRequest) (_result 
 
 // Summary:
 //
-// # Query policy list
+// Queries a list of policies.
 //
 // @param request - DescribeRuleListByEventCodesListRequest
 //
@@ -13750,7 +13754,7 @@ func (client *Client) DescribeRuleListByEventCodesListWithOptions(request *Descr
 
 // Summary:
 //
-// # Query policy list
+// Queries a list of policies.
 //
 // @param request - DescribeRuleListByEventCodesListRequest
 //
@@ -13768,7 +13772,7 @@ func (client *Client) DescribeRuleListByEventCodesList(request *DescribeRuleList
 
 // Summary:
 //
-// # Query the list of policies
+// Queries a list of policies.
 //
 // @param request - DescribeRulePageListRequest
 //
@@ -13848,7 +13852,7 @@ func (client *Client) DescribeRulePageListWithOptions(request *DescribeRulePageL
 
 // Summary:
 //
-// # Query the list of policies
+// Queries a list of policies.
 //
 // @param request - DescribeRulePageListRequest
 //
@@ -13866,7 +13870,7 @@ func (client *Client) DescribeRulePageList(request *DescribeRulePageListRequest)
 
 // Summary:
 //
-// # Query historical snapshots based on ruleId and version
+// Query historical snapshots based on ruleId and version.
 //
 // @param request - DescribeRuleSnapshotRequest
 //
@@ -13922,7 +13926,7 @@ func (client *Client) DescribeRuleSnapshotWithOptions(request *DescribeRuleSnaps
 
 // Summary:
 //
-// # Query historical snapshots based on ruleId and version
+// Query historical snapshots based on ruleId and version.
 //
 // @param request - DescribeRuleSnapshotRequest
 //
@@ -13940,7 +13944,7 @@ func (client *Client) DescribeRuleSnapshot(request *DescribeRuleSnapshotRequest)
 
 // Summary:
 //
-// # Query Policy Version List
+// Queries the list of policy versions.
 //
 // @param request - DescribeRuleVersionListRequest
 //
@@ -14004,7 +14008,7 @@ func (client *Client) DescribeRuleVersionListWithOptions(request *DescribeRuleVe
 
 // Summary:
 //
-// # Query Policy Version List
+// Queries the list of policy versions.
 //
 // @param request - DescribeRuleVersionListRequest
 //
@@ -14022,7 +14026,7 @@ func (client *Client) DescribeRuleVersionList(request *DescribeRuleVersionListRe
 
 // Summary:
 //
-// # SDK Download List
+// Queries the list of SDK downloads.
 //
 // @param request - DescribeSDKDownloadListRequest
 //
@@ -14078,7 +14082,7 @@ func (client *Client) DescribeSDKDownloadListWithOptions(request *DescribeSDKDow
 
 // Summary:
 //
-// # SDK Download List
+// Queries the list of SDK downloads.
 //
 // @param request - DescribeSDKDownloadListRequest
 //
@@ -14096,7 +14100,7 @@ func (client *Client) DescribeSDKDownloadList(request *DescribeSDKDownloadListRe
 
 // Summary:
 //
-// Query SAF permissions.
+// Queries SAF permissions.
 //
 // @param request - DescribeSafConsoleRequest
 //
@@ -14148,7 +14152,7 @@ func (client *Client) DescribeSafConsoleWithOptions(request *DescribeSafConsoleR
 
 // Summary:
 //
-// Query SAF permissions.
+// Queries SAF permissions.
 //
 // @param request - DescribeSafConsoleRequest
 //
@@ -14166,7 +14170,7 @@ func (client *Client) DescribeSafConsole(request *DescribeSafConsoleRequest) (_r
 
 // Summary:
 //
-// Query saf_de Order
+// Queries saf_de orders.
 //
 // @param request - DescribeSafDeOrderRequest
 //
@@ -14230,7 +14234,7 @@ func (client *Client) DescribeSafDeOrderWithOptions(request *DescribeSafDeOrderR
 
 // Summary:
 //
-// Query saf_de Order
+// Queries saf_de orders.
 //
 // @param request - DescribeSafDeOrderRequest
 //
@@ -14248,7 +14252,7 @@ func (client *Client) DescribeSafDeOrder(request *DescribeSafDeOrderRequest) (_r
 
 // Summary:
 //
-// # Query Order Information
+// Queries order information.
 //
 // @param request - DescribeSafOrderRequest
 //
@@ -14316,7 +14320,7 @@ func (client *Client) DescribeSafOrderWithOptions(request *DescribeSafOrderReque
 
 // Summary:
 //
-// # Query Order Information
+// Queries order information.
 //
 // @param request - DescribeSafOrderRequest
 //
@@ -14334,7 +14338,7 @@ func (client *Client) DescribeSafOrder(request *DescribeSafOrderRequest) (_resul
 
 // Summary:
 //
-// # Query Access Configuration
+// Queries the access configuration.
 //
 // @param request - DescribeSafStartConfigRequest
 //
@@ -14382,7 +14386,7 @@ func (client *Client) DescribeSafStartConfigWithOptions(request *DescribeSafStar
 
 // Summary:
 //
-// # Query Access Configuration
+// Queries the access configuration.
 //
 // @param request - DescribeSafStartConfigRequest
 //
@@ -14400,7 +14404,7 @@ func (client *Client) DescribeSafStartConfig(request *DescribeSafStartConfigRequ
 
 // Summary:
 //
-// # Query Access Configuration
+// Queries access configurations.
 //
 // @param request - DescribeSafStartStepsRequest
 //
@@ -14468,7 +14472,7 @@ func (client *Client) DescribeSafStartStepsWithOptions(request *DescribeSafStart
 
 // Summary:
 //
-// # Query Access Configuration
+// Queries access configurations.
 //
 // @param request - DescribeSafStartStepsRequest
 //
@@ -14486,7 +14490,7 @@ func (client *Client) DescribeSafStartSteps(request *DescribeSafStartStepsReques
 
 // Summary:
 //
-// # Get Risk Tag List
+// Retrieves the list of risk labels.
 //
 // @param request - DescribeSafTagListRequest
 //
@@ -14550,7 +14554,7 @@ func (client *Client) DescribeSafTagListWithOptions(request *DescribeSafTagListR
 
 // Summary:
 //
-// # Get Risk Tag List
+// Retrieves the list of risk labels.
 //
 // @param request - DescribeSafTagListRequest
 //
@@ -14728,7 +14732,7 @@ func (client *Client) DescribeSampleDataByBatchUUidPage(request *DescribeSampleD
 
 // Summary:
 //
-// # Paged Query of Sample List
+// Performs a paging query on the sample list.
 //
 // @param request - DescribeSampleDataListRequest
 //
@@ -14804,7 +14808,7 @@ func (client *Client) DescribeSampleDataListWithOptions(request *DescribeSampleD
 
 // Summary:
 //
-// # Paged Query of Sample List
+// Performs a paging query on the sample list.
 //
 // @param request - DescribeSampleDataListRequest
 //
@@ -14908,7 +14912,7 @@ func (client *Client) DescribeSampleDataPage(request *DescribeSampleDataPageRequ
 
 // Summary:
 //
-// # Query Sample Example Authorization
+// Queries the authorization of a data sample.
 //
 // @param request - DescribeSampleDemoDownloadUrlRequest
 //
@@ -14960,7 +14964,7 @@ func (client *Client) DescribeSampleDemoDownloadUrlWithOptions(request *Describe
 
 // Summary:
 //
-// # Query Sample Example Authorization
+// Queries the authorization of a data sample.
 //
 // @param request - DescribeSampleDemoDownloadUrlRequest
 //
@@ -14978,7 +14982,7 @@ func (client *Client) DescribeSampleDemoDownloadUrl(request *DescribeSampleDemoD
 
 // Summary:
 //
-// # Query Sample Download Authorization Information
+// Queries the authorization information for downloading a data sample.
 //
 // @param request - DescribeSampleDownloadUrlRequest
 //
@@ -15030,7 +15034,7 @@ func (client *Client) DescribeSampleDownloadUrlWithOptions(request *DescribeSamp
 
 // Summary:
 //
-// # Query Sample Download Authorization Information
+// Queries the authorization information for downloading a data sample.
 //
 // @param request - DescribeSampleDownloadUrlRequest
 //
@@ -15048,7 +15052,7 @@ func (client *Client) DescribeSampleDownloadUrl(request *DescribeSampleDownloadU
 
 // Summary:
 //
-// # Query Sample Details
+// Queries the details of a data sample.
 //
 // @param request - DescribeSampleInfoRequest
 //
@@ -15104,7 +15108,7 @@ func (client *Client) DescribeSampleInfoWithOptions(request *DescribeSampleInfoR
 
 // Summary:
 //
-// # Query Sample Details
+// Queries the details of a data sample.
 //
 // @param request - DescribeSampleInfoRequest
 //
@@ -15122,7 +15126,7 @@ func (client *Client) DescribeSampleInfo(request *DescribeSampleInfoRequest) (_r
 
 // Summary:
 //
-// # Query Sample List
+// Queries the sample list.
 //
 // @param request - DescribeSampleListRequest
 //
@@ -15186,7 +15190,7 @@ func (client *Client) DescribeSampleListWithOptions(request *DescribeSampleListR
 
 // Summary:
 //
-// # Query Sample List
+// Queries the sample list.
 //
 // @param request - DescribeSampleListRequest
 //
@@ -15204,7 +15208,7 @@ func (client *Client) DescribeSampleList(request *DescribeSampleListRequest) (_r
 
 // Summary:
 //
-// # Query Scene List
+// Queries the list of scenarios.
 //
 // @param request - DescribeSampleSceneListRequest
 //
@@ -15252,7 +15256,7 @@ func (client *Client) DescribeSampleSceneListWithOptions(request *DescribeSample
 
 // Summary:
 //
-// # Query Scene List
+// Queries the list of scenarios.
 //
 // @param request - DescribeSampleSceneListRequest
 //
@@ -15270,7 +15274,7 @@ func (client *Client) DescribeSampleSceneList(request *DescribeSampleSceneListRe
 
 // Summary:
 //
-// # Get Tag List
+// Retrieves the list of labels.
 //
 // @param request - DescribeSampleTagListRequest
 //
@@ -15318,7 +15322,7 @@ func (client *Client) DescribeSampleTagListWithOptions(request *DescribeSampleTa
 
 // Summary:
 //
-// # Get Tag List
+// Retrieves the list of labels.
 //
 // @param request - DescribeSampleTagListRequest
 //
@@ -15336,7 +15340,7 @@ func (client *Client) DescribeSampleTagList(request *DescribeSampleTagListReques
 
 // Summary:
 //
-// # Query Sample Upload Authorization Information
+// Queries the authorization information for sample uploads.
 //
 // @param request - DescribeSampleUploadPolicyRequest
 //
@@ -15384,7 +15388,7 @@ func (client *Client) DescribeSampleUploadPolicyWithOptions(request *DescribeSam
 
 // Summary:
 //
-// # Query Sample Upload Authorization Information
+// Queries the authorization information for sample uploads.
 //
 // @param request - DescribeSampleUploadPolicyRequest
 //
@@ -15480,11 +15484,11 @@ func (client *Client) DescribeSamplebatchPage(request *DescribeSamplebatchPageRe
 
 // Summary:
 //
-// # Dropdown list for scenario-based service events
+// Queries the dropdown list of scenario-based risk control events.
 //
 // Description:
 //
-// # Dropdown list for scenario-based risk control events
+// Queries the dropdown list of scenario-based risk control events.
 //
 // @param request - DescribeSceneAllEventNameCodeListRequest
 //
@@ -15536,11 +15540,11 @@ func (client *Client) DescribeSceneAllEventNameCodeListWithOptions(request *Desc
 
 // Summary:
 //
-// # Dropdown list for scenario-based service events
+// Queries the dropdown list of scenario-based risk control events.
 //
 // Description:
 //
-// # Dropdown list for scenario-based risk control events
+// Queries the dropdown list of scenario-based risk control events.
 //
 // @param request - DescribeSceneAllEventNameCodeListRequest
 //
@@ -15558,7 +15562,7 @@ func (client *Client) DescribeSceneAllEventNameCodeList(request *DescribeSceneAl
 
 // Summary:
 //
-// # List of Scenario-based Risk Control Events
+// Queries the list of scenario-based risk control events.
 //
 // @param request - DescribeSceneEventPageListRequest
 //
@@ -15618,7 +15622,7 @@ func (client *Client) DescribeSceneEventPageListWithOptions(request *DescribeSce
 
 // Summary:
 //
-// # List of Scenario-based Risk Control Events
+// Queries the list of scenario-based risk control events.
 //
 // @param request - DescribeSceneEventPageListRequest
 //
@@ -15636,11 +15640,11 @@ func (client *Client) DescribeSceneEventPageList(request *DescribeSceneEventPage
 
 // Summary:
 //
-// # White-boxed strategy list for risk control services
+// Queries the list of scenario-based risk control event policies.
 //
 // Description:
 //
-// # Query the list of scenarized risk control event strategies
+// Queries the list of scenario-based risk control event policies.
 //
 // @param request - DescribeSceneRulePageListRequest
 //
@@ -15716,11 +15720,11 @@ func (client *Client) DescribeSceneRulePageListWithOptions(request *DescribeScen
 
 // Summary:
 //
-// # White-boxed strategy list for risk control services
+// Queries the list of scenario-based risk control event policies.
 //
 // Description:
 //
-// # Query the list of scenarized risk control event strategies
+// Queries the list of scenario-based risk control event policies.
 //
 // @param request - DescribeSceneRulePageListRequest
 //
@@ -15804,7 +15808,7 @@ func (client *Client) DescribeScoreList(request *DescribeScoreListRequest) (_res
 
 // Summary:
 //
-// # Score Range Quantity Analysis
+// Analyzes the quantity distribution across score ranges.
 //
 // @param request - DescribeScoreSectionNumLineChartRequest
 //
@@ -15872,7 +15876,7 @@ func (client *Client) DescribeScoreSectionNumLineChartWithOptions(request *Descr
 
 // Summary:
 //
-// # Score Range Quantity Analysis
+// Analyzes the quantity distribution across score ranges.
 //
 // @param request - DescribeScoreSectionNumLineChartRequest
 //
@@ -15890,7 +15894,7 @@ func (client *Client) DescribeScoreSectionNumLineChart(request *DescribeScoreSec
 
 // Summary:
 //
-// Proportion of Score Ranges for Main Events/Bypass Events/Diversion Events
+// Queries the score range distribution of main events, bypass events, and diversion events.
 //
 // @param request - DescribeScoreSectionPieChartRequest
 //
@@ -15954,7 +15958,7 @@ func (client *Client) DescribeScoreSectionPieChartWithOptions(request *DescribeS
 
 // Summary:
 //
-// Proportion of Score Ranges for Main Events/Bypass Events/Diversion Events
+// Queries the score range distribution of main events, bypass events, and diversion events.
 //
 // @param request - DescribeScoreSectionPieChartRequest
 //
@@ -15972,7 +15976,7 @@ func (client *Client) DescribeScoreSectionPieChart(request *DescribeScoreSection
 
 // Summary:
 //
-// # Score Section Ratio Analysis
+// # Score Range Proportion Analysis
 //
 // @param request - DescribeScoreSectionRatioLineChartRequest
 //
@@ -16040,7 +16044,7 @@ func (client *Client) DescribeScoreSectionRatioLineChartWithOptions(request *Des
 
 // Summary:
 //
-// # Score Section Ratio Analysis
+// # Score Range Proportion Analysis
 //
 // @param request - DescribeScoreSectionRatioLineChartRequest
 //
@@ -16058,7 +16062,7 @@ func (client *Client) DescribeScoreSectionRatioLineChart(request *DescribeScoreS
 
 // Summary:
 //
-// # Query Task ID List
+// Queries the list of task IDs.
 //
 // @param request - DescribeSelectItemRequest
 //
@@ -16106,7 +16110,7 @@ func (client *Client) DescribeSelectItemWithOptions(request *DescribeSelectItemR
 
 // Summary:
 //
-// # Query Task ID List
+// Queries the list of task IDs.
 //
 // @param request - DescribeSelectItemRequest
 //
@@ -16124,7 +16128,7 @@ func (client *Client) DescribeSelectItem(request *DescribeSelectItemRequest) (_r
 
 // Summary:
 //
-// # ServiceAppkey dropdown
+// Retrieves the dropdown values for ServiceAppkey.
 //
 // @param request - DescribeServiceAppKeyRequest
 //
@@ -16168,7 +16172,7 @@ func (client *Client) DescribeServiceAppKeyWithOptions(request *DescribeServiceA
 
 // Summary:
 //
-// # ServiceAppkey dropdown
+// Retrieves the dropdown values for ServiceAppkey.
 //
 // @param request - DescribeServiceAppKeyRequest
 //
@@ -16252,7 +16256,7 @@ func (client *Client) DescribeServiceCodeName(request *DescribeServiceCodeNameRe
 
 // Summary:
 //
-// # Get Service List
+// Retrieves the list of services.
 //
 // @param request - DescribeServiceListRequest
 //
@@ -16300,7 +16304,7 @@ func (client *Client) DescribeServiceListWithOptions(request *DescribeServiceLis
 
 // Summary:
 //
-// # Get Service List
+// Retrieves the list of services.
 //
 // @param request - DescribeServiceListRequest
 //
@@ -16318,7 +16322,7 @@ func (client *Client) DescribeServiceList(request *DescribeServiceListRequest) (
 
 // Summary:
 //
-// # Estimate Call Information
+// Estimates call information.
 //
 // @param request - DescribeSimulationPreditInfoRequest
 //
@@ -16374,7 +16378,7 @@ func (client *Client) DescribeSimulationPreditInfoWithOptions(request *DescribeS
 
 // Summary:
 //
-// # Estimate Call Information
+// Estimates call information.
 //
 // @param request - DescribeSimulationPreditInfoRequest
 //
@@ -16392,7 +16396,7 @@ func (client *Client) DescribeSimulationPreditInfo(request *DescribeSimulationPr
 
 // Summary:
 //
-// # Query Task Record Count
+// Queries the number of task records.
 //
 // @param request - DescribeSimulationTaskCountRequest
 //
@@ -16464,7 +16468,7 @@ func (client *Client) DescribeSimulationTaskCountWithOptions(request *DescribeSi
 
 // Summary:
 //
-// # Query Task Record Count
+// Queries the number of task records.
 //
 // @param request - DescribeSimulationTaskCountRequest
 //
@@ -16482,7 +16486,7 @@ func (client *Client) DescribeSimulationTaskCount(request *DescribeSimulationTas
 
 // Summary:
 //
-// # Task List
+// Queries the task list.
 //
 // @param request - DescribeSimulationTaskListRequest
 //
@@ -16550,7 +16554,7 @@ func (client *Client) DescribeSimulationTaskListWithOptions(request *DescribeSim
 
 // Summary:
 //
-// # Task List
+// Queries the task list.
 //
 // @param request - DescribeSimulationTaskListRequest
 //
@@ -16568,7 +16572,7 @@ func (client *Client) DescribeSimulationTaskList(request *DescribeSimulationTask
 
 // Summary:
 //
-// # Get Project Configuration
+// Retrieves the project configuration.
 //
 // @param request - DescribeSlsUrlConfigRequest
 //
@@ -16616,7 +16620,7 @@ func (client *Client) DescribeSlsUrlConfigWithOptions(request *DescribeSlsUrlCon
 
 // Summary:
 //
-// # Get Project Configuration
+// Retrieves the project configuration.
 //
 // @param request - DescribeSlsUrlConfigRequest
 //
@@ -16634,7 +16638,7 @@ func (client *Client) DescribeSlsUrlConfig(request *DescribeSlsUrlConfigRequest)
 
 // Summary:
 //
-// # Query List of Policies Supporting Simulation
+// Queries the list of policies that support simulation.
 //
 // @param request - DescribeSupportRuleListRequest
 //
@@ -16686,7 +16690,7 @@ func (client *Client) DescribeSupportRuleListWithOptions(request *DescribeSuppor
 
 // Summary:
 //
-// # Query List of Policies Supporting Simulation
+// Queries the list of policies that support simulation.
 //
 // @param request - DescribeSupportRuleListRequest
 //
@@ -16704,7 +16708,7 @@ func (client *Client) DescribeSupportRuleList(request *DescribeSupportRuleListRe
 
 // Summary:
 //
-// # Tag List
+// Queries the label list.
 //
 // @param request - DescribeTagListRequest
 //
@@ -16756,7 +16760,7 @@ func (client *Client) DescribeTagListWithOptions(request *DescribeTagListRequest
 
 // Summary:
 //
-// # Tag List
+// Queries the label list.
 //
 // @param request - DescribeTagListRequest
 //
@@ -16774,7 +16778,7 @@ func (client *Client) DescribeTagList(request *DescribeTagListRequest) (_result 
 
 // Summary:
 //
-// # Tag Overview List
+// Queries the tag overview list.
 //
 // @param request - DescribeTagsBarChartRequest
 //
@@ -16838,7 +16842,7 @@ func (client *Client) DescribeTagsBarChartWithOptions(request *DescribeTagsBarCh
 
 // Summary:
 //
-// # Tag Overview List
+// Queries the tag overview list.
 //
 // @param request - DescribeTagsBarChartRequest
 //
@@ -16856,7 +16860,7 @@ func (client *Client) DescribeTagsBarChart(request *DescribeTagsBarChartRequest)
 
 // Summary:
 //
-// # Tag Fluctuation Detection
+// Detects label fluctuations.
 //
 // @param request - DescribeTagsFluctuationRequest
 //
@@ -16908,7 +16912,7 @@ func (client *Client) DescribeTagsFluctuationWithOptions(request *DescribeTagsFl
 
 // Summary:
 //
-// # Tag Fluctuation Detection
+// Detects label fluctuations.
 //
 // @param request - DescribeTagsFluctuationRequest
 //
@@ -16926,7 +16930,7 @@ func (client *Client) DescribeTagsFluctuation(request *DescribeTagsFluctuationRe
 
 // Summary:
 //
-// # Get Tag List
+// Retrieves the list of labels.
 //
 // @param request - DescribeTagsListRequest
 //
@@ -16974,7 +16978,7 @@ func (client *Client) DescribeTagsListWithOptions(request *DescribeTagsListReque
 
 // Summary:
 //
-// # Get Tag List
+// Retrieves the list of labels.
 //
 // @param request - DescribeTagsListRequest
 //
@@ -16992,7 +16996,7 @@ func (client *Client) DescribeTagsList(request *DescribeTagsListRequest) (_resul
 
 // Summary:
 //
-// # Tag Hit Count Analysis
+// Analyzes the number of label hits.
 //
 // @param request - DescribeTagsNumLineChartRequest
 //
@@ -17060,7 +17064,7 @@ func (client *Client) DescribeTagsNumLineChartWithOptions(request *DescribeTagsN
 
 // Summary:
 //
-// # Tag Hit Count Analysis
+// Analyzes the number of label hits.
 //
 // @param request - DescribeTagsNumLineChartRequest
 //
@@ -17078,7 +17082,7 @@ func (client *Client) DescribeTagsNumLineChart(request *DescribeTagsNumLineChart
 
 // Summary:
 //
-// # Tag Hit Ratio Analysis
+// Analyzes the tag hit ratio distribution.
 //
 // @param request - DescribeTagsRatioLineChartRequest
 //
@@ -17146,7 +17150,7 @@ func (client *Client) DescribeTagsRatioLineChartWithOptions(request *DescribeTag
 
 // Summary:
 //
-// # Tag Hit Ratio Analysis
+// Analyzes the tag hit ratio distribution.
 //
 // @param request - DescribeTagsRatioLineChartRequest
 //
@@ -17164,7 +17168,7 @@ func (client *Client) DescribeTagsRatioLineChart(request *DescribeTagsRatioLineC
 
 // Summary:
 //
-// # Tag Hit Trend
+// Queries the trend of tag hits.
 //
 // @param request - DescribeTagsTrendRequest
 //
@@ -17228,7 +17232,7 @@ func (client *Client) DescribeTagsTrendWithOptions(request *DescribeTagsTrendReq
 
 // Summary:
 //
-// # Tag Hit Trend
+// Queries the trend of tag hits.
 //
 // @param request - DescribeTagsTrendRequest
 //
@@ -17246,7 +17250,7 @@ func (client *Client) DescribeTagsTrend(request *DescribeTagsTrendRequest) (_res
 
 // Summary:
 //
-// # Task List
+// Queries the task list.
 //
 // @param request - DescribeTaskListRequest
 //
@@ -17306,7 +17310,7 @@ func (client *Client) DescribeTaskListWithOptions(request *DescribeTaskListReque
 
 // Summary:
 //
-// # Task List
+// Queries the task list.
 //
 // @param request - DescribeTaskListRequest
 //
@@ -17324,7 +17328,7 @@ func (client *Client) DescribeTaskList(request *DescribeTaskListRequest) (_resul
 
 // Summary:
 //
-// # Task Log List
+// Queries the task logs.
 //
 // @param request - DescribeTaskLogListRequest
 //
@@ -17392,7 +17396,7 @@ func (client *Client) DescribeTaskLogListWithOptions(request *DescribeTaskLogLis
 
 // Summary:
 //
-// # Task Log List
+// Queries the task logs.
 //
 // @param request - DescribeTaskLogListRequest
 //
@@ -17410,7 +17414,7 @@ func (client *Client) DescribeTaskLogList(request *DescribeTaskLogListRequest) (
 
 // Summary:
 //
-// # Query Total Event Count
+// Queries the total number of events.
 //
 // @param request - DescribeTemplateCountRequest
 //
@@ -17458,7 +17462,7 @@ func (client *Client) DescribeTemplateCountWithOptions(request *DescribeTemplate
 
 // Summary:
 //
-// # Query Total Event Count
+// Queries the total number of events.
 //
 // @param request - DescribeTemplateCountRequest
 //
@@ -17476,7 +17480,7 @@ func (client *Client) DescribeTemplateCount(request *DescribeTemplateCountReques
 
 // Summary:
 //
-// # Template Download
+// Downloads a template.
 //
 // @param request - DescribeTemplateDownloadRequest
 //
@@ -17524,7 +17528,7 @@ func (client *Client) DescribeTemplateDownloadWithOptions(request *DescribeTempl
 
 // Summary:
 //
-// # Template Download
+// Downloads a template.
 //
 // @param request - DescribeTemplateDownloadRequest
 //
@@ -17542,7 +17546,7 @@ func (client *Client) DescribeTemplateDownload(request *DescribeTemplateDownload
 
 // Summary:
 //
-// # Query Event List by Event Name
+// Queries a list of events by event name.
 //
 // @param request - DescribeTemplatePageListRequest
 //
@@ -17618,7 +17622,7 @@ func (client *Client) DescribeTemplatePageListWithOptions(request *DescribeTempl
 
 // Summary:
 //
-// # Query Event List by Event Name
+// Queries a list of events by event name.
 //
 // @param request - DescribeTemplatePageListRequest
 //
@@ -17636,7 +17640,7 @@ func (client *Client) DescribeTemplatePageList(request *DescribeTemplatePageList
 
 // Summary:
 //
-// # Get List of Services Used by User
+// Queries the list of services used by the user.
 //
 // @param request - DescribeUsedServiceRequest
 //
@@ -17684,7 +17688,7 @@ func (client *Client) DescribeUsedServiceWithOptions(request *DescribeUsedServic
 
 // Summary:
 //
-// # Get List of Services Used by User
+// Queries the list of services used by the user.
 //
 // @param request - DescribeUsedServiceRequest
 //
@@ -17702,7 +17706,7 @@ func (client *Client) DescribeUsedService(request *DescribeUsedServiceRequest) (
 
 // Summary:
 //
-// # Get Current Logged-in User Information
+// Retrieves the information about the current logged-on user.
 //
 // @param request - DescribeUserInfoRequest
 //
@@ -17750,7 +17754,7 @@ func (client *Client) DescribeUserInfoWithOptions(request *DescribeUserInfoReque
 
 // Summary:
 //
-// # Get Current Logged-in User Information
+// Retrieves the information about the current logged-on user.
 //
 // @param request - DescribeUserInfoRequest
 //
@@ -17768,7 +17772,7 @@ func (client *Client) DescribeUserInfo(request *DescribeUserInfoRequest) (_resul
 
 // Summary:
 //
-// # Query Variable Binding Information
+// Queries variable binding information.
 //
 // @param request - DescribeVariableBindDetailRequest
 //
@@ -17824,7 +17828,7 @@ func (client *Client) DescribeVariableBindDetailWithOptions(request *DescribeVar
 
 // Summary:
 //
-// # Query Variable Binding Information
+// Queries variable binding information.
 //
 // @param request - DescribeVariableBindDetailRequest
 //
@@ -17842,7 +17846,7 @@ func (client *Client) DescribeVariableBindDetail(request *DescribeVariableBindDe
 
 // Summary:
 //
-// # Query variable details
+// Queries the details of a variable.
 //
 // @param request - DescribeVariableDetailRequest
 //
@@ -17894,7 +17898,7 @@ func (client *Client) DescribeVariableDetailWithOptions(request *DescribeVariabl
 
 // Summary:
 //
-// # Query variable details
+// Queries the details of a variable.
 //
 // @param request - DescribeVariableDetailRequest
 //
@@ -17912,7 +17916,7 @@ func (client *Client) DescribeVariableDetail(request *DescribeVariableDetailRequ
 
 // Summary:
 //
-// # Query Variable Fee Information
+// Queries the billing information of variables.
 //
 // @param request - DescribeVariableFeeRequest
 //
@@ -17964,7 +17968,7 @@ func (client *Client) DescribeVariableFeeWithOptions(request *DescribeVariableFe
 
 // Summary:
 //
-// # Query Variable Fee Information
+// Queries the billing information of variables.
 //
 // @param request - DescribeVariableFeeRequest
 //
@@ -17982,7 +17986,7 @@ func (client *Client) DescribeVariableFee(request *DescribeVariableFeeRequest) (
 
 // Summary:
 //
-// # Query Variable Details
+// Queries the details of variables.
 //
 // @param request - DescribeVariableListRequest
 //
@@ -18062,7 +18066,7 @@ func (client *Client) DescribeVariableListWithOptions(request *DescribeVariableL
 
 // Summary:
 //
-// # Query Variable Details
+// Queries the details of variables.
 //
 // @param request - DescribeVariableListRequest
 //
@@ -18080,7 +18084,7 @@ func (client *Client) DescribeVariableList(request *DescribeVariableListRequest)
 
 // Summary:
 //
-// # Query Variable Definitions
+// Queries variable definitions.
 //
 // @param request - DescribeVariableMarketListRequest
 //
@@ -18160,7 +18164,7 @@ func (client *Client) DescribeVariableMarketListWithOptions(request *DescribeVar
 
 // Summary:
 //
-// # Query Variable Definitions
+// Queries variable definitions.
 //
 // @param request - DescribeVariableMarketListRequest
 //
@@ -18178,7 +18182,7 @@ func (client *Client) DescribeVariableMarketList(request *DescribeVariableMarket
 
 // Summary:
 //
-// # Query Configuration Information
+// Queries configuration information.
 //
 // @param request - DescribeVariableSceneListRequest
 //
@@ -18246,7 +18250,7 @@ func (client *Client) DescribeVariableSceneListWithOptions(request *DescribeVari
 
 // Summary:
 //
-// # Query Configuration Information
+// Queries configuration information.
 //
 // @param request - DescribeVariableSceneListRequest
 //
@@ -18444,7 +18448,7 @@ func (client *Client) DescribeVersionPageList(request *DescribeVersionPageListRe
 
 // Summary:
 //
-// 下载样本文件
+// # Download sample file
 //
 // @param request - DownloadSampleFileRequest
 //
@@ -18500,7 +18504,7 @@ func (client *Client) DownloadSampleFileWithOptions(request *DownloadSampleFileR
 
 // Summary:
 //
-// 下载样本文件
+// # Download sample file
 //
 // @param request - DownloadSampleFileRequest
 //
@@ -18588,7 +18592,7 @@ func (client *Client) DownloadSmapleBatch(request *DownloadSmapleBatchRequest) (
 
 // Summary:
 //
-// 下载子任务结果
+// # Download subtask result
 //
 // @param request - DownloadSubTaskResultRequest
 //
@@ -18640,7 +18644,7 @@ func (client *Client) DownloadSubTaskResultWithOptions(request *DownloadSubTaskR
 
 // Summary:
 //
-// 下载子任务结果
+// # Download subtask result
 //
 // @param request - DownloadSubTaskResultRequest
 //
@@ -18658,7 +18662,7 @@ func (client *Client) DownloadSubTaskResult(request *DownloadSubTaskResultReques
 
 // Summary:
 //
-// # Custom Variable Test
+// Tests a custom variable.
 //
 // @param request - ExpressionTestRequest
 //
@@ -18726,7 +18730,7 @@ func (client *Client) ExpressionTestWithOptions(request *ExpressionTestRequest, 
 
 // Summary:
 //
-// # Custom Variable Test
+// Tests a custom variable.
 //
 // @param request - ExpressionTestRequest
 //
@@ -18744,7 +18748,7 @@ func (client *Client) ExpressionTest(request *ExpressionTestRequest) (_result *E
 
 // Summary:
 //
-// # File Upload
+// Uploads a file.
 //
 // @param request - FileUploadRequest
 //
@@ -18800,7 +18804,7 @@ func (client *Client) FileUploadWithOptions(request *FileUploadRequest, runtime 
 
 // Summary:
 //
-// # File Upload
+// Uploads a file.
 //
 // @param request - FileUploadRequest
 //
@@ -18818,7 +18822,7 @@ func (client *Client) FileUpload(request *FileUploadRequest) (_result *FileUploa
 
 // Summary:
 //
-// 创建样本记录
+// # Create a sample record
 //
 // @param request - GetSampleDetailRequest
 //
@@ -18870,7 +18874,7 @@ func (client *Client) GetSampleDetailWithOptions(request *GetSampleDetailRequest
 
 // Summary:
 //
-// 创建样本记录
+// # Create a sample record
 //
 // @param request - GetSampleDetailRequest
 //
@@ -18888,7 +18892,7 @@ func (client *Client) GetSampleDetail(request *GetSampleDetailRequest) (_result 
 
 // Summary:
 //
-// 查看子任务结果
+// # View subtask results
 //
 // @param request - GetSubTaskResultRequest
 //
@@ -18940,7 +18944,7 @@ func (client *Client) GetSubTaskResultWithOptions(request *GetSubTaskResultReque
 
 // Summary:
 //
-// 查看子任务结果
+// # View subtask results
 //
 // @param request - GetSubTaskResultRequest
 //
@@ -19028,7 +19032,7 @@ func (client *Client) ImportField(request *ImportFieldRequest) (_result *ImportF
 
 // Summary:
 //
-// # Create or Import Name List
+// Creates or imports a list.
 //
 // @param request - ImportNameListRequest
 //
@@ -19108,7 +19112,7 @@ func (client *Client) ImportNameListWithOptions(request *ImportNameListRequest, 
 
 // Summary:
 //
-// # Create or Import Name List
+// Creates or imports a list.
 //
 // @param request - ImportNameListRequest
 //
@@ -19126,7 +19130,7 @@ func (client *Client) ImportNameList(request *ImportNameListRequest) (_result *I
 
 // Summary:
 //
-// # Import Template Event
+// Imports template events.
 //
 // @param request - ImportTemplateEventRequest
 //
@@ -19178,7 +19182,7 @@ func (client *Client) ImportTemplateEventWithOptions(request *ImportTemplateEven
 
 // Summary:
 //
-// # Import Template Event
+// Imports template events.
 //
 // @param request - ImportTemplateEventRequest
 //
@@ -19196,7 +19200,7 @@ func (client *Client) ImportTemplateEvent(request *ImportTemplateEventRequest) (
 
 // Summary:
 //
-// 样本列表查询
+// # Sample List Query
 //
 // @param request - ListSampleRequest
 //
@@ -19272,7 +19276,7 @@ func (client *Client) ListSampleWithOptions(request *ListSampleRequest, runtime 
 
 // Summary:
 //
-// 样本列表查询
+// # Sample List Query
 //
 // @param request - ListSampleRequest
 //
@@ -19290,7 +19294,7 @@ func (client *Client) ListSample(request *ListSampleRequest) (_result *ListSampl
 
 // Summary:
 //
-// 任务组列表查询
+// # Query task group list
 //
 // @param request - ListTaskGroupRequest
 //
@@ -19358,7 +19362,7 @@ func (client *Client) ListTaskGroupWithOptions(request *ListTaskGroupRequest, ru
 
 // Summary:
 //
-// 任务组列表查询
+// # Query task group list
 //
 // @param request - ListTaskGroupRequest
 //
@@ -19490,7 +19494,7 @@ func (client *Client) ListVariableDefine(request *ListVariableDefineRequest) (_r
 
 // Summary:
 //
-// 合并下载
+// # Merge Download
 //
 // @param request - MergeDownloadRequest
 //
@@ -19542,7 +19546,7 @@ func (client *Client) MergeDownloadWithOptions(request *MergeDownloadRequest, ru
 
 // Summary:
 //
-// 合并下载
+// # Merge Download
 //
 // @param request - MergeDownloadRequest
 //
@@ -19898,7 +19902,7 @@ func (client *Client) ModelSampleDownload(request *ModelSampleDownloadRequest) (
 
 // Summary:
 //
-// # Update Memo
+// Update memo.
 //
 // @param request - ModifyAppKeyRequest
 //
@@ -19954,7 +19958,7 @@ func (client *Client) ModifyAppKeyWithOptions(request *ModifyAppKeyRequest, runt
 
 // Summary:
 //
-// # Update Memo
+// Update memo.
 //
 // @param request - ModifyAppKeyRequest
 //
@@ -19972,7 +19976,7 @@ func (client *Client) ModifyAppKey(request *ModifyAppKeyRequest) (_result *Modif
 
 // Summary:
 //
-// # Edit Accumulated Variable
+// Edits a cumulative variable.
 //
 // @param request - ModifyCustVariableRequest
 //
@@ -20048,7 +20052,7 @@ func (client *Client) ModifyCustVariableWithOptions(request *ModifyCustVariableR
 
 // Summary:
 //
-// # Edit Accumulated Variable
+// Edits a cumulative variable.
 //
 // @param request - ModifyCustVariableRequest
 //
@@ -20066,7 +20070,7 @@ func (client *Client) ModifyCustVariable(request *ModifyCustVariableRequest) (_r
 
 // Summary:
 //
-// # Edit Event
+// Edits an event.
 //
 // @param request - ModifyEventRequest
 //
@@ -20142,7 +20146,7 @@ func (client *Client) ModifyEventWithOptions(request *ModifyEventRequest, runtim
 
 // Summary:
 //
-// # Edit Event
+// Edits an event.
 //
 // @param request - ModifyEventRequest
 //
@@ -20160,7 +20164,7 @@ func (client *Client) ModifyEvent(request *ModifyEventRequest) (_result *ModifyE
 
 // Summary:
 //
-// # Modify Event Status
+// Modifies the status of an event.
 //
 // @param request - ModifyEventStatusRequest
 //
@@ -20224,7 +20228,7 @@ func (client *Client) ModifyEventStatusWithOptions(request *ModifyEventStatusReq
 
 // Summary:
 //
-// # Modify Event Status
+// Modifies the status of an event.
 //
 // @param request - ModifyEventStatusRequest
 //
@@ -20242,7 +20246,7 @@ func (client *Client) ModifyEventStatus(request *ModifyEventStatusRequest) (_res
 
 // Summary:
 //
-// # Edit Custom Variable
+// Edits a custom variable.
 //
 // @param request - ModifyExpressionVariableRequest
 //
@@ -20334,7 +20338,7 @@ func (client *Client) ModifyExpressionVariableWithOptions(request *ModifyExpress
 
 // Summary:
 //
-// # Edit Custom Variable
+// Edits a custom variable.
 //
 // @param request - ModifyExpressionVariableRequest
 //
@@ -20352,7 +20356,7 @@ func (client *Client) ModifyExpressionVariable(request *ModifyExpressionVariable
 
 // Summary:
 //
-// # Modify Field
+// Modifies a field.
 //
 // @param request - ModifyFieldRequest
 //
@@ -20424,7 +20428,7 @@ func (client *Client) ModifyFieldWithOptions(request *ModifyFieldRequest, runtim
 
 // Summary:
 //
-// # Modify Field
+// Modifies a field.
 //
 // @param request - ModifyFieldRequest
 //
@@ -20442,7 +20446,7 @@ func (client *Client) ModifyField(request *ModifyFieldRequest) (_result *ModifyF
 
 // Summary:
 //
-// # Modify Policy Priority
+// Modifies the priority of a policy.
 //
 // @param request - ModifyRulePriorityRequest
 //
@@ -20502,7 +20506,7 @@ func (client *Client) ModifyRulePriorityWithOptions(request *ModifyRulePriorityR
 
 // Summary:
 //
-// # Modify Policy Priority
+// Modifies the priority of a policy.
 //
 // @param request - ModifyRulePriorityRequest
 //
@@ -20520,7 +20524,7 @@ func (client *Client) ModifyRulePriority(request *ModifyRulePriorityRequest) (_r
 
 // Summary:
 //
-// # Change the status of a policy version application
+// Changes the approval status of a policy version.
 //
 // @param request - ModifyRuleStatusRequest
 //
@@ -20608,7 +20612,7 @@ func (client *Client) ModifyRuleStatusWithOptions(request *ModifyRuleStatusReque
 
 // Summary:
 //
-// # Change the status of a policy version application
+// Changes the approval status of a policy version.
 //
 // @param request - ModifyRuleStatusRequest
 //
@@ -20626,7 +20630,7 @@ func (client *Client) ModifyRuleStatus(request *ModifyRuleStatusRequest) (_resul
 
 // Summary:
 //
-// # Activate Service
+// Activates a service.
 //
 // @param request - OpenConsoleSlsRequest
 //
@@ -20678,7 +20682,7 @@ func (client *Client) OpenConsoleSlsWithOptions(request *OpenConsoleSlsRequest, 
 
 // Summary:
 //
-// # Activate Service
+// Activates a service.
 //
 // @param request - OpenConsoleSlsRequest
 //
@@ -20696,7 +20700,7 @@ func (client *Client) OpenConsoleSls(request *OpenConsoleSlsRequest) (_result *O
 
 // Summary:
 //
-// # Operate Favorites
+// Manages favorites.
 //
 // @param request - OperateFavoriteVariableRequest
 //
@@ -20752,7 +20756,7 @@ func (client *Client) OperateFavoriteVariableWithOptions(request *OperateFavorit
 
 // Summary:
 //
-// # Operate Favorites
+// Manages favorites.
 //
 // @param request - OperateFavoriteVariableRequest
 //
@@ -20770,7 +20774,7 @@ func (client *Client) OperateFavoriteVariable(request *OperateFavoriteVariableRe
 
 // Summary:
 //
-// # Enterprise Verification
+// Performs a precondition check.
 //
 // @param request - PermissionCheckRequest
 //
@@ -20818,7 +20822,7 @@ func (client *Client) PermissionCheckWithOptions(request *PermissionCheckRequest
 
 // Summary:
 //
-// # Enterprise Verification
+// Performs a precondition check.
 //
 // @param request - PermissionCheckRequest
 //
@@ -21128,7 +21132,7 @@ func (client *Client) PocSendData(request *PocSendDataRequest) (_result *PocSend
 
 // Summary:
 //
-// # Query White-box Strategy Details
+// Queries the details of a whitebox implementation policy.
 //
 // @param request - QueryAuthRuleDetailByRuleIdRequest
 //
@@ -21188,7 +21192,7 @@ func (client *Client) QueryAuthRuleDetailByRuleIdWithOptions(request *QueryAuthR
 
 // Summary:
 //
-// # Query White-box Strategy Details
+// Queries the details of a whitebox implementation policy.
 //
 // @param request - QueryAuthRuleDetailByRuleIdRequest
 //
@@ -21206,7 +21210,7 @@ func (client *Client) QueryAuthRuleDetailByRuleId(request *QueryAuthRuleDetailBy
 
 // Summary:
 //
-// Recall.
+// Withdraws a review.
 //
 // @param request - RecallRuleAuditRequest
 //
@@ -21254,7 +21258,7 @@ func (client *Client) RecallRuleAuditWithOptions(request *RecallRuleAuditRequest
 
 // Summary:
 //
-// Recall.
+// Withdraws a review.
 //
 // @param request - RecallRuleAuditRequest
 //
@@ -21272,7 +21276,7 @@ func (client *Client) RecallRuleAudit(request *RecallRuleAuditRequest) (_result 
 
 // Summary:
 //
-// # Delete Event
+// Deletes an event.
 //
 // @param request - RemoveEventRequest
 //
@@ -21336,7 +21340,7 @@ func (client *Client) RemoveEventWithOptions(request *RemoveEventRequest, runtim
 
 // Summary:
 //
-// # Delete Event
+// Deletes an event.
 //
 // @param request - RemoveEventRequest
 //
@@ -21354,7 +21358,7 @@ func (client *Client) RemoveEvent(request *RemoveEventRequest) (_result *RemoveE
 
 // Summary:
 //
-// # Template Download
+// Download template.
 //
 // @param request - SampleFileDownloadRequest
 //
@@ -21406,7 +21410,7 @@ func (client *Client) SampleFileDownloadWithOptions(request *SampleFileDownloadR
 
 // Summary:
 //
-// # Template Download
+// Download template.
 //
 // @param request - SampleFileDownloadRequest
 //
@@ -21424,7 +21428,7 @@ func (client *Client) SampleFileDownload(request *SampleFileDownloadRequest) (_r
 
 // Summary:
 //
-// # Save Custom Columns
+// Saves custom columns.
 //
 // @param request - SaveAnalysisColumnRequest
 //
@@ -21476,7 +21480,7 @@ func (client *Client) SaveAnalysisColumnWithOptions(request *SaveAnalysisColumnR
 
 // Summary:
 //
-// # Save Custom Columns
+// Saves custom columns.
 //
 // @param request - SaveAnalysisColumnRequest
 //
@@ -21494,7 +21498,7 @@ func (client *Client) SaveAnalysisColumn(request *SaveAnalysisColumnRequest) (_r
 
 // Summary:
 //
-// Bypass/Shunt Configuration
+// The bypass/diversion configuration.
 //
 // @param request - SaveByPassOrShuntEventRequest
 //
@@ -21554,7 +21558,7 @@ func (client *Client) SaveByPassOrShuntEventWithOptions(request *SaveByPassOrShu
 
 // Summary:
 //
-// Bypass/Shunt Configuration
+// The bypass/diversion configuration.
 //
 // @param request - SaveByPassOrShuntEventRequest
 //
@@ -21572,7 +21576,7 @@ func (client *Client) SaveByPassOrShuntEvent(request *SaveByPassOrShuntEventRequ
 
 // Summary:
 //
-// 样本列表查询
+// # Sample Search
 //
 // @param request - SearchSampleRequest
 //
@@ -21640,7 +21644,7 @@ func (client *Client) SearchSampleWithOptions(request *SearchSampleRequest, runt
 
 // Summary:
 //
-// 样本列表查询
+// # Sample Search
 //
 // @param request - SearchSampleRequest
 //
@@ -21658,7 +21662,7 @@ func (client *Client) SearchSample(request *SearchSampleRequest) (_result *Searc
 
 // Summary:
 //
-// Start/Stop Bypass Event
+// Starts or stops a bypass event.
 //
 // @param request - StartOrStopByPassShuntEventRequest
 //
@@ -21714,7 +21718,7 @@ func (client *Client) StartOrStopByPassShuntEventWithOptions(request *StartOrSto
 
 // Summary:
 //
-// Start/Stop Bypass Event
+// Starts or stops a bypass event.
 //
 // @param request - StartOrStopByPassShuntEventRequest
 //
@@ -21732,7 +21736,7 @@ func (client *Client) StartOrStopByPassShuntEvent(request *StartOrStopByPassShun
 
 // Summary:
 //
-// # Start Task Execution
+// Starts executing a task.
 //
 // @param request - StartSimulationTaskRequest
 //
@@ -21784,7 +21788,7 @@ func (client *Client) StartSimulationTaskWithOptions(request *StartSimulationTas
 
 // Summary:
 //
-// # Start Task Execution
+// Starts executing a task.
 //
 // @param request - StartSimulationTaskRequest
 //
@@ -21802,7 +21806,7 @@ func (client *Client) StartSimulationTask(request *StartSimulationTaskRequest) (
 
 // Summary:
 //
-// # Stop Task
+// Stops a task.
 //
 // @param request - StopSimulationTaskRequest
 //
@@ -21854,7 +21858,7 @@ func (client *Client) StopSimulationTaskWithOptions(request *StopSimulationTaskR
 
 // Summary:
 //
-// # Stop Task
+// Stops a task.
 //
 // @param request - StopSimulationTaskRequest
 //
@@ -21872,7 +21876,7 @@ func (client *Client) StopSimulationTask(request *StopSimulationTaskRequest) (_r
 
 // Summary:
 //
-// # Custom Variable Switch
+// Enables or disables a custom variable.
 //
 // @param request - SwitchExpressionVariableRequest
 //
@@ -21932,7 +21936,7 @@ func (client *Client) SwitchExpressionVariableWithOptions(request *SwitchExpress
 
 // Summary:
 //
-// # Custom Variable Switch
+// Enables or disables a custom variable.
 //
 // @param request - SwitchExpressionVariableRequest
 //
@@ -21950,7 +21954,7 @@ func (client *Client) SwitchExpressionVariable(request *SwitchExpressionVariable
 
 // Summary:
 //
-// # Field Switch
+// Toggles a field on or off.
 //
 // @param request - SwitchFieldRequest
 //
@@ -22014,7 +22018,7 @@ func (client *Client) SwitchFieldWithOptions(request *SwitchFieldRequest, runtim
 
 // Summary:
 //
-// # Field Switch
+// Toggles a field on or off.
 //
 // @param request - SwitchFieldRequest
 //
@@ -22032,7 +22036,7 @@ func (client *Client) SwitchField(request *SwitchFieldRequest) (_result *SwitchF
 
 // Summary:
 //
-// Query Variable Enable/Disable
+// Queries the enabling or disabling status of a variable.
 //
 // @param request - SwitchQueryVariableRequest
 //
@@ -22088,7 +22092,7 @@ func (client *Client) SwitchQueryVariableWithOptions(request *SwitchQueryVariabl
 
 // Summary:
 //
-// Query Variable Enable/Disable
+// Queries the enabling or disabling status of a variable.
 //
 // @param request - SwitchQueryVariableRequest
 //
@@ -22106,7 +22110,7 @@ func (client *Client) SwitchQueryVariable(request *SwitchQueryVariableRequest) (
 
 // Summary:
 //
-// # One-click switch online
+// Switches an event to online with one click.
 //
 // @param request - SwitchToOnlineRequest
 //
@@ -22158,7 +22162,7 @@ func (client *Client) SwitchToOnlineWithOptions(request *SwitchToOnlineRequest, 
 
 // Summary:
 //
-// # One-click switch online
+// Switches an event to online with one click.
 //
 // @param request - SwitchToOnlineRequest
 //
@@ -22176,7 +22180,7 @@ func (client *Client) SwitchToOnline(request *SwitchToOnlineRequest) (_result *S
 
 // Summary:
 //
-// # Cumulative Variable Switch
+// Enables or disables a cumulative variable.
 //
 // @param request - SwitchVariableRequest
 //
@@ -22240,7 +22244,7 @@ func (client *Client) SwitchVariableWithOptions(request *SwitchVariableRequest, 
 
 // Summary:
 //
-// # Cumulative Variable Switch
+// Enables or disables a cumulative variable.
 //
 // @param request - SwitchVariableRequest
 //
@@ -22258,7 +22262,7 @@ func (client *Client) SwitchVariable(request *SwitchVariableRequest) (_result *S
 
 // Summary:
 //
-// # Determine if the task name is duplicated
+// Checks whether a task name is duplicate.
 //
 // @param request - TaskNameByUserIdRequest
 //
@@ -22310,7 +22314,7 @@ func (client *Client) TaskNameByUserIdWithOptions(request *TaskNameByUserIdReque
 
 // Summary:
 //
-// # Determine if the task name is duplicated
+// Checks whether a task name is duplicate.
 //
 // @param request - TaskNameByUserIdRequest
 //
@@ -22328,7 +22332,7 @@ func (client *Client) TaskNameByUserId(request *TaskNameByUserIdRequest) (_resul
 
 // Summary:
 //
-// # Modify Query Conditions
+// Modifies a query condition.
 //
 // @param request - UpdateAnalysisConditionFavoriteRequest
 //
@@ -22412,7 +22416,7 @@ func (client *Client) UpdateAnalysisConditionFavoriteWithOptions(request *Update
 
 // Summary:
 //
-// # Modify Query Conditions
+// Modifies a query condition.
 //
 // @param request - UpdateAnalysisConditionFavoriteRequest
 //
@@ -22430,7 +22434,7 @@ func (client *Client) UpdateAnalysisConditionFavorite(request *UpdateAnalysisCon
 
 // Summary:
 //
-// # Approval
+// Processes an approval request.
 //
 // @param request - UpdateAuditRequest
 //
@@ -22494,7 +22498,7 @@ func (client *Client) UpdateAuditWithOptions(request *UpdateAuditRequest, runtim
 
 // Summary:
 //
-// # Approval
+// Processes an approval request.
 //
 // @param request - UpdateAuditRequest
 //
@@ -22512,7 +22516,7 @@ func (client *Client) UpdateAudit(request *UpdateAuditRequest) (_result *UpdateA
 
 // Summary:
 //
-// # Modify Authorization Policy
+// Modifies an authorization policy.
 //
 // @param request - UpdateAuthRuleRequest
 //
@@ -22584,7 +22588,7 @@ func (client *Client) UpdateAuthRuleWithOptions(request *UpdateAuthRuleRequest, 
 
 // Summary:
 //
-// # Modify Authorization Policy
+// Modifies an authorization policy.
 //
 // @param request - UpdateAuthRuleRequest
 //
@@ -22602,7 +22606,7 @@ func (client *Client) UpdateAuthRule(request *UpdateAuthRuleRequest) (_result *U
 
 // Summary:
 //
-// # Edit Bypass Event
+// Edits a bypass event.
 //
 // @param request - UpdateByPassShuntEventRequest
 //
@@ -22658,7 +22662,7 @@ func (client *Client) UpdateByPassShuntEventWithOptions(request *UpdateByPassShu
 
 // Summary:
 //
-// # Edit Bypass Event
+// Edits a bypass event.
 //
 // @param request - UpdateByPassShuntEventRequest
 //
@@ -22676,7 +22680,7 @@ func (client *Client) UpdateByPassShuntEvent(request *UpdateByPassShuntEventRequ
 
 // Summary:
 //
-// # Modify Data Source
+// Modifies a data source.
 //
 // @param request - UpdateDataSourceRequest
 //
@@ -22744,7 +22748,7 @@ func (client *Client) UpdateDataSourceWithOptions(request *UpdateDataSourceReque
 
 // Summary:
 //
-// # Modify Data Source
+// Modifies a data source.
 //
 // @param request - UpdateDataSourceRequest
 //
@@ -22762,7 +22766,7 @@ func (client *Client) UpdateDataSource(request *UpdateDataSourceRequest) (_resul
 
 // Summary:
 //
-// # Modify Custom Query Variable
+// Modifies a custom query variable.
 //
 // @param request - UpdateQueryVariableRequest
 //
@@ -22850,7 +22854,7 @@ func (client *Client) UpdateQueryVariableWithOptions(request *UpdateQueryVariabl
 
 // Summary:
 //
-// # Modify Custom Query Variable
+// Modifies a custom query variable.
 //
 // @param request - UpdateQueryVariableRequest
 //
@@ -22868,7 +22872,7 @@ func (client *Client) UpdateQueryVariable(request *UpdateQueryVariableRequest) (
 
 // Summary:
 //
-// # Update Policy
+// Updates a policy.
 //
 // @param request - UpdateRuleRequest
 //
@@ -22964,7 +22968,7 @@ func (client *Client) UpdateRuleWithOptions(request *UpdateRuleRequest, runtime 
 
 // Summary:
 //
-// # Update Policy
+// Updates a policy.
 //
 // @param request - UpdateRuleRequest
 //
@@ -22982,7 +22986,7 @@ func (client *Client) UpdateRule(request *UpdateRuleRequest) (_result *UpdateRul
 
 // Summary:
 //
-// # Update Basic Policy Information
+// Updates the basic information of a policy.
 //
 // @param request - UpdateRuleBaseRequest
 //
@@ -23050,7 +23054,7 @@ func (client *Client) UpdateRuleBaseWithOptions(request *UpdateRuleBaseRequest, 
 
 // Summary:
 //
-// # Update Basic Policy Information
+// Updates the basic information of a policy.
 //
 // @param request - UpdateRuleBaseRequest
 //
@@ -23068,7 +23072,7 @@ func (client *Client) UpdateRuleBase(request *UpdateRuleBaseRequest) (_result *U
 
 // Summary:
 //
-// # Batch Update Samples
+// Modifies samples in batches.
 //
 // @param request - UpdateSampleBatchRequest
 //
@@ -23128,7 +23132,7 @@ func (client *Client) UpdateSampleBatchWithOptions(request *UpdateSampleBatchReq
 
 // Summary:
 //
-// # Batch Update Samples
+// Modifies samples in batches.
 //
 // @param request - UpdateSampleBatchRequest
 //
@@ -23232,7 +23236,7 @@ func (client *Client) UploadFileCheck(request *UploadFileCheckRequest) (_result 
 
 // Summary:
 //
-// 上传并校验样本文件
+// Upload and validate the sample file for the customer.
 //
 // @param request - UploadForeignSampleFileRequest
 //
@@ -23288,7 +23292,7 @@ func (client *Client) UploadForeignSampleFileWithOptions(request *UploadForeignS
 
 // Summary:
 //
-// 上传并校验样本文件
+// Upload and validate the sample file for the customer.
 //
 // @param request - UploadForeignSampleFileRequest
 //
@@ -23413,7 +23417,7 @@ func (client *Client) UploadForeignSampleFileAdvance(request *UploadForeignSampl
 
 // Summary:
 //
-// 上传并校验样本文件
+// # Upload and validate the sample file
 //
 // @param request - UploadSampleFileRequest
 //
@@ -23477,7 +23481,7 @@ func (client *Client) UploadSampleFileWithOptions(request *UploadSampleFileReque
 
 // Summary:
 //
-// 上传并校验样本文件
+// # Upload and validate the sample file
 //
 // @param request - UploadSampleFileRequest
 //

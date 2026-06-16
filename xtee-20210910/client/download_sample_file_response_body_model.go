@@ -22,22 +22,31 @@ type iDownloadSampleFileResponseBody interface {
 }
 
 type DownloadSampleFileResponseBody struct {
+	// Status code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Return message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// A32FE941-35F2-5378-B37C-4B8FDB16F094
-	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Return Result.
 	ResultObject *DownloadSampleFileResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
 
@@ -104,10 +113,14 @@ func (s *DownloadSampleFileResponseBody) Validate() error {
 }
 
 type DownloadSampleFileResponseBodyResultObject struct {
+	// Model status.
+	//
 	// example:
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// OSS download URL.
+	//
 	// example:
 	//
 	// https://pic.zfp.cn/image/2026/02/06/45b5fee18baf4b99b13025987486319c.jpg

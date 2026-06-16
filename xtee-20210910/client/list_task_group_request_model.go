@@ -26,30 +26,44 @@ type iListTaskGroupRequest interface {
 }
 
 type ListTaskGroupRequest struct {
+	// Current page number.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The language of the error message returned by the API. Valid values: zh: Chinese; en: English. The default value is en.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The area encoding.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegId *string `json:"RegId,omitempty" xml:"RegId,omitempty"`
+	// Sample name.
+	//
 	// example:
 	//
 	// TEst
 	SampleName *string `json:"SampleName,omitempty" xml:"SampleName,omitempty"`
+	// Task group name.
+	//
 	// example:
 	//
 	// TeskGroupTest
 	TaskGroupName *string `json:"TaskGroupName,omitempty" xml:"TaskGroupName,omitempty"`
+	// Access type.
+	//
 	// example:
 	//
 	// SAF_CONSOLE

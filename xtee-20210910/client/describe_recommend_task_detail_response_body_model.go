@@ -16,13 +16,13 @@ type iDescribeRecommendTaskDetailResponseBody interface {
 }
 
 type DescribeRecommendTaskDetailResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// A32FE941-35F2-5378-B37C-4B8FDB16F094
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Return result
+	// The returned result.
 	ResultObject *DescribeRecommendTaskDetailResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Struct"`
 }
 
@@ -62,73 +62,73 @@ func (s *DescribeRecommendTaskDetailResponseBody) Validate() error {
 }
 
 type DescribeRecommendTaskDetailResponseBodyResultObject struct {
-	// Event code
+	// The event code.
 	//
 	// example:
 	//
 	// de_aszbjb7236
 	EventCode *string `json:"eventCode,omitempty" xml:"eventCode,omitempty"`
-	// Event name.
+	// The event name.
 	//
 	// example:
 	//
 	// 注册风险
 	EventName *string `json:"eventName,omitempty" xml:"eventName,omitempty"`
-	// Comparison indicators
+	// The comparison metrics.
 	ExpectVelocities []*string `json:"expectVelocities,omitempty" xml:"expectVelocities,omitempty" type:"Repeated"`
-	// Creation time
+	// The creation time.
 	//
 	// example:
 	//
 	// 1621578648000
 	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// Number of normal samples
+	// The number of normal samples.
 	//
 	// example:
 	//
 	// 100
 	NormalSize *int64 `json:"normalSize,omitempty" xml:"normalSize,omitempty"`
-	// Recommended strategy list
+	// The list of recommended policies.
 	RecommendRuleDTOs []*DescribeRecommendTaskDetailResponseBodyResultObjectRecommendRuleDTOs `json:"recommendRuleDTOs,omitempty" xml:"recommendRuleDTOs,omitempty" type:"Repeated"`
-	// Selected variable list
+	// The list of selected variables.
 	RecommendVariableDTOs []*DescribeRecommendTaskDetailResponseBodyResultObjectRecommendVariableDTOs `json:"recommendVariableDTOs,omitempty" xml:"recommendVariableDTOs,omitempty" type:"Repeated"`
-	// Number of risk samples
+	// The number of risk samples.
 	//
 	// example:
 	//
 	// 10
 	RiskSize *int64 `json:"riskSize,omitempty" xml:"riskSize,omitempty"`
-	// Sample name
+	// The sample name.
 	//
 	// example:
 	//
 	// 白样本
 	SampleName *string `json:"sampleName,omitempty" xml:"sampleName,omitempty"`
-	// Sample scenario
+	// The sample scenario.
 	//
 	// example:
 	//
 	// account_abuse_detection
 	SampleScene *string `json:"sampleScene,omitempty" xml:"sampleScene,omitempty"`
-	// Sample scenario name
+	// The sample scenario name.
 	//
 	// example:
 	//
 	// 防虚假账号
 	SampleSceneName *string `json:"sampleSceneName,omitempty" xml:"sampleSceneName,omitempty"`
-	// Task ID
+	// The task ID.
 	//
 	// example:
 	//
 	// 887
 	TaskId *int64 `json:"taskId,omitempty" xml:"taskId,omitempty"`
-	// Task name
+	// The task name.
 	//
 	// example:
 	//
 	// 策略推荐任务
 	TaskName *string `json:"taskName,omitempty" xml:"taskName,omitempty"`
-	// Task status.
+	// The task status.
 	//
 	// example:
 	//
@@ -293,51 +293,51 @@ func (s *DescribeRecommendTaskDetailResponseBodyResultObject) Validate() error {
 }
 
 type DescribeRecommendTaskDetailResponseBodyResultObjectRecommendRuleDTOs struct {
-	// Calculation path
+	// The computation path.
 	//
 	// example:
 	//
 	// 1&2
 	ComputeExpression *string `json:"computeExpression,omitempty" xml:"computeExpression,omitempty"`
-	// Number of hit samples
+	// The number of samples that are hit.
 	//
 	// example:
 	//
 	// 99
 	HitSample *int64 `json:"hitSample,omitempty" xml:"hitSample,omitempty"`
-	// Primary key ID of the rule
+	// The primary key ID of the policy.
 	//
 	// example:
 	//
 	// 30
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// Number of unhit samples
+	// The number of samples that are not hit.
 	//
 	// example:
 	//
 	// 1
 	NotHitSample *int64 `json:"notHitSample,omitempty" xml:"notHitSample,omitempty"`
-	// List of candidate rules
+	// The list of candidate policies.
 	RecommendRules []*DescribeRecommendTaskDetailResponseBodyResultObjectRecommendRuleDTOsRecommendRules `json:"recommendRules,omitempty" xml:"recommendRules,omitempty" type:"Repeated"`
-	// Strategy ID
+	// The policy ID.
 	//
 	// example:
 	//
 	// 102224
 	RuleId *string `json:"ruleId,omitempty" xml:"ruleId,omitempty"`
-	// Rule name
+	// The policy name.
 	//
 	// example:
 	//
 	// 营销风险识别评分_高风险_拒绝_副本
 	RuleName *string `json:"ruleName,omitempty" xml:"ruleName,omitempty"`
-	// Status
+	// The status.
 	//
 	// example:
 	//
 	// NO_RULE
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// List of indicators in JSON string format
+	// The list of metrics in JSON string format.
 	//
 	// example:
 	//
@@ -448,19 +448,19 @@ func (s *DescribeRecommendTaskDetailResponseBodyResultObjectRecommendRuleDTOs) V
 }
 
 type DescribeRecommendTaskDetailResponseBodyResultObjectRecommendRuleDTOsRecommendRules struct {
-	// Left variable
+	// The left variable.
 	//
 	// example:
 	//
 	// age
 	Left *string `json:"left,omitempty" xml:"left,omitempty"`
-	// Operator
+	// The operator.
 	//
 	// example:
 	//
 	// equals
 	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
-	// Right variable
+	// The right variable.
 	//
 	// example:
 	//
@@ -508,13 +508,13 @@ func (s *DescribeRecommendTaskDetailResponseBodyResultObjectRecommendRuleDTOsRec
 }
 
 type DescribeRecommendTaskDetailResponseBodyResultObjectRecommendVariableDTOs struct {
-	// Primary key ID
+	// The primary key ID.
 	//
 	// example:
 	//
 	// 234
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// Title
+	// The title.
 	//
 	// example:
 	//

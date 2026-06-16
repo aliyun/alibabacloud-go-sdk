@@ -18,17 +18,17 @@ type iDescribeDataSourceDataDownloadUrlRequest interface {
 }
 
 type DescribeDataSourceDataDownloadUrlRequest struct {
-	// Sets the language type for requests and received messages, default value is **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Data source ID.
+	// The data source ID.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type DescribeDataSourceDataDownloadUrlRequest struct {
 	//
 	// 69
 	DataSourceId *int64 `json:"dataSourceId,omitempty" xml:"dataSourceId,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// This parameter is required.
 	//

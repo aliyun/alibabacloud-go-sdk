@@ -26,30 +26,44 @@ type iSearchSampleRequest interface {
 }
 
 type SearchSampleRequest struct {
+	// The domain name keyword provided.
+	//
 	// example:
 	//
 	// test
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The language of error messages returned by the API. Valid values: zh: Chinese. en: English. Default value: en.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The area encoding.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegId *string `json:"RegId,omitempty" xml:"RegId,omitempty"`
+	// The scenario.
+	//
 	// example:
 	//
 	// INTERNET
 	Tab *string `json:"Tab,omitempty" xml:"Tab,omitempty"`
+	// The access type.
+	//
 	// example:
 	//
 	// SAF_CONSOLE
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The upload end time.
+	//
 	// example:
 	//
 	// 2023-03-09 14:45:26
 	UploadTimeEnd *string `json:"UploadTimeEnd,omitempty" xml:"UploadTimeEnd,omitempty"`
+	// The upload start time.
+	//
 	// example:
 	//
 	// 2023-02-09 14:12:12

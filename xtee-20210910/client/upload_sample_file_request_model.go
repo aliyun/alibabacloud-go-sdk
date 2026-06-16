@@ -24,26 +24,38 @@ type iUploadSampleFileRequest interface {
 }
 
 type UploadSampleFileRequest struct {
+	// File name.
+	//
 	// example:
 	//
 	// icekredit_202312_23a_1764640368_6908.csv
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// File URL.
+	//
 	// example:
 	//
 	// saf/cpoc/34cd7959590ef568086035b956210495/1761186218068_XN_test JR142_1023_204794.csv
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// Language of the error message returned by the API. Valid values: zh: Chinese. en: English. Default value: en.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Area encoding.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegId *string `json:"RegId,omitempty" xml:"RegId,omitempty"`
+	// Scenario.
+	//
 	// example:
 	//
 	// INTERNET
 	Tab *string `json:"Tab,omitempty" xml:"Tab,omitempty"`
+	// Access type.
+	//
 	// example:
 	//
 	// SAF_CONSOLE

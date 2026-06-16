@@ -46,53 +46,53 @@ type iBindVariableRequest interface {
 }
 
 type BindVariableRequest struct {
-	// Sets the language type for requests and received messages, default value is **zh**. Values:
+	// The language type for the request and response messages. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// API region ID
+	// The API region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	ApiRegionId *string `json:"apiRegionId,omitempty" xml:"apiRegionId,omitempty"`
-	// API type
+	// The API type.
 	//
 	// example:
 	//
 	// SELF
 	ApiType *string `json:"apiType,omitempty" xml:"apiType,omitempty"`
-	// Creation type
+	// The creation type.
 	//
 	// example:
 	//
 	// NORMAL
 	CreateType *string `json:"createType,omitempty" xml:"createType,omitempty"`
-	// Associated variable definition primary key ID
+	// The primary key ID of the associated variable definition.
 	//
 	// example:
 	//
 	// 2438
 	DefineId *string `json:"defineId,omitempty" xml:"defineId,omitempty"`
-	// Variable definition IDs, can be multiple. If binding multiple IDs, separate them with commas
+	// The variable definition IDs. You can specify multiple IDs separated by commas.
 	//
 	// example:
 	//
 	// 1546, 1547
 	DefineIds *string `json:"defineIds,omitempty" xml:"defineIds,omitempty"`
-	// Description information.
+	// The description.
 	//
 	// example:
 	//
 	// 变量描述
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Event code
+	// The event code.
 	//
 	// This parameter is required.
 	//
@@ -100,55 +100,55 @@ type BindVariableRequest struct {
 	//
 	// de_agbzfi5134
 	EventCode *string `json:"eventCode,omitempty" xml:"eventCode,omitempty"`
-	// Exception value
+	// The exception value.
 	//
 	// example:
 	//
 	// SYS_ERROR
 	ExceptionValue *string `json:"exceptionValue,omitempty" xml:"exceptionValue,omitempty"`
-	// Variable primary key ID
+	// The primary key ID of the variable.
 	//
 	// example:
 	//
 	// 106875
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// Output field path
+	// The output field path.
 	//
 	// example:
 	//
 	// BOOLEAN
 	OutputField *string `json:"outputField,omitempty" xml:"outputField,omitempty"`
-	// Output type
+	// The output type.
 	//
 	// example:
 	//
 	// STRING
 	OutputType *string `json:"outputType,omitempty" xml:"outputType,omitempty"`
-	// Binding input parameter information
+	// The input parameter information for the binding.
 	//
 	// example:
 	//
 	// {"accountId":"accountId","mobile":""}
 	Params *string `json:"params,omitempty" xml:"params,omitempty"`
-	// Event parameter mapping 2.0, either params or paramsList must not be empty. List, JSON structure
+	// The event parameter mapping 2.0. Either params or paramsList must be non-empty. This is a List JSON structure.
 	//
 	// example:
 	//
 	// [{"eventFieldName":"accountId","required":false}]
 	ParamsList *string `json:"paramsList,omitempty" xml:"paramsList,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegId *string `json:"regId,omitempty" xml:"regId,omitempty"`
-	// Variable source
+	// The variable source.
 	//
 	// example:
 	//
 	// SAF
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	// Title
+	// The title.
 	//
 	// This parameter is required.
 	//

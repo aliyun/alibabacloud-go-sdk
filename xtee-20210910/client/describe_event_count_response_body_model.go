@@ -24,33 +24,33 @@ type iDescribeEventCountResponseBody interface {
 }
 
 type DescribeEventCountResponseBody struct {
-	// Status code
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// HTTP status code
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *string `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// Error details
+	// The error details.
 	//
 	// example:
 	//
 	// The input parameter data is not valid. order_storage_company_num component not found
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// AE7E6105-7DEB-5125-9B24-DCBC139F6CD2
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Returned object
+	// The returned object.
 	ResultObject *DescribeEventCountResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Struct"`
-	// Whether the request was successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -130,19 +130,19 @@ func (s *DescribeEventCountResponseBody) Validate() error {
 }
 
 type DescribeEventCountResponseBodyResultObject struct {
-	// Whether it exceeds the maximum number
+	// Indicates whether the maximum number is exceeded.
 	//
 	// example:
 	//
 	// true
 	Limit *bool `json:"limit,omitempty" xml:"limit,omitempty"`
-	// Maximum creation count
+	// The maximum number of items that can be created.
 	//
 	// example:
 	//
 	// 100
 	MaxTotalItem *int32 `json:"maxTotalItem,omitempty" xml:"maxTotalItem,omitempty"`
-	// Total count
+	// The total number of items.
 	//
 	// example:
 	//

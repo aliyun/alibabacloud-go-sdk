@@ -22,7 +22,7 @@ type iDescribeRiskLineChartRequest interface {
 }
 
 type DescribeRiskLineChartRequest struct {
-	// Sets the language type for requests and received messages, default value is **zh**. Values:
+	// Sets the language type for the request and response messages. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
@@ -32,7 +32,7 @@ type DescribeRiskLineChartRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Query start time, accurate to milliseconds (ms).
+	// The beginning of the time range to query, in milliseconds (ms).
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type DescribeRiskLineChartRequest struct {
 	//
 	// 1739841750000
 	BeginTime *int64 `json:"beginTime,omitempty" xml:"beginTime,omitempty"`
-	// End time, accurate to milliseconds (ms).
+	// The end of the time range to query, in milliseconds (ms).
 	//
 	// This parameter is required.
 	//
@@ -48,13 +48,13 @@ type DescribeRiskLineChartRequest struct {
 	//
 	// 1748491200000
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// Event codes, separated by commas (,).
+	// Event codes. Separate multiple event codes with commas (,).
 	//
 	// example:
 	//
 	// de_afghcf6411,de_awkhwh0314
 	EventCodes *string `json:"eventCodes,omitempty" xml:"eventCodes,omitempty"`
-	// Region code
+	// Region ID.
 	//
 	// example:
 	//

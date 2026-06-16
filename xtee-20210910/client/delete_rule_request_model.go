@@ -22,35 +22,35 @@ type iDeleteRuleRequest interface {
 }
 
 type DeleteRuleRequest struct {
-	// Sets the language type for requests and received messages, default value is **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Policy primary key ID
+	// The primary key ID of the policy.
 	//
 	// example:
 	//
 	// 7035
 	ConsoleRuleId *int64 `json:"consoleRuleId,omitempty" xml:"consoleRuleId,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegId *string `json:"regId,omitempty" xml:"regId,omitempty"`
-	// Policy ID
+	// The policy ID.
 	//
 	// example:
 	//
 	// 102059
 	RuleId *string `json:"ruleId,omitempty" xml:"ruleId,omitempty"`
-	// Policy version primary key ID
+	// The primary key ID of the policy version number.
 	//
 	// example:
 	//

@@ -22,35 +22,35 @@ type iDescribeDecisionResultTrendRequest interface {
 }
 
 type DescribeDecisionResultTrendRequest struct {
-	// Sets the language type for requests and received messages, default value is **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Start timestamp, in milliseconds.
+	// The start timestamp, in milliseconds.
 	//
 	// example:
 	//
 	// 1737101348000
 	BeginTime *int64 `json:"beginTime,omitempty" xml:"beginTime,omitempty"`
-	// End time, accurate to milliseconds (ms).
+	// The end timestamp, in milliseconds.
 	//
 	// example:
 	//
 	// 1747101348000
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// Event code.
+	// The event code.
 	//
 	// example:
 	//
 	// de_ahqhsw7665,de_agbzfi5134
 	EventCodes *string `json:"eventCodes,omitempty" xml:"eventCodes,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// example:
 	//

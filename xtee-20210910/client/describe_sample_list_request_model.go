@@ -24,7 +24,7 @@ type iDescribeSampleListRequest interface {
 }
 
 type DescribeSampleListRequest struct {
-	// Sets the language type for requests and received messages, with a default value of **zh**. Values:
+	// Sets the language type for request and response messages. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
@@ -34,31 +34,31 @@ type DescribeSampleListRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
-	// Page size, with a default value of 10
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Region code
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegId *string `json:"regId,omitempty" xml:"regId,omitempty"`
-	// Sample type
+	// The sample type.
 	//
 	// example:
 	//
 	// PHONE
 	SampleType *string `json:"sampleType,omitempty" xml:"sampleType,omitempty"`
-	// Sample data value.
+	// The sample data value.
 	//
 	// example:
 	//

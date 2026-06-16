@@ -24,41 +24,41 @@ type iDescribeHitRuleTrendRequest interface {
 }
 
 type DescribeHitRuleTrendRequest struct {
-	// Sets the language type for the request and response messages. Default value is **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Start time, accurate to milliseconds (ms).
+	// The start time, in milliseconds (ms).
 	//
 	// example:
 	//
 	// 1737101348000
 	BeginTime *int64 `json:"beginTime,omitempty" xml:"beginTime,omitempty"`
-	// End time, accurate to milliseconds (ms).
+	// The end time, in milliseconds (ms).
 	//
 	// example:
 	//
 	// 1746669075000
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// Event codes, separated by commas (,).
+	// The event codes. Separate multiple event codes with commas (,).
 	//
 	// example:
 	//
 	// de_ahqhsw7665,de_agbzfi5134
 	EventCodes *string `json:"eventCodes,omitempty" xml:"eventCodes,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegId *string `json:"regId,omitempty" xml:"regId,omitempty"`
-	// Rule status
+	// The policy status.
 	//
 	// example:
 	//

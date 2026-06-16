@@ -20,29 +20,29 @@ type iUpdateByPassShuntEventRequest interface {
 }
 
 type UpdateByPassShuntEventRequest struct {
-	// Sets the language type for requests and received messages, default value is **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Event ID.
+	// The event ID.
 	//
 	// example:
 	//
 	// 233
 	EventId *int64 `json:"eventId,omitempty" xml:"eventId,omitempty"`
-	// Event name.
+	// The event name.
 	//
 	// example:
 	//
 	// 用户昵称文本审核检测结果
 	EventName *string `json:"eventName,omitempty" xml:"eventName,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// example:
 	//

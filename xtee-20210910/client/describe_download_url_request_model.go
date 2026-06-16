@@ -22,35 +22,35 @@ type iDescribeDownloadUrlRequest interface {
 }
 
 type DescribeDownloadUrlRequest struct {
-	// File type
+	// The file type.
 	//
 	// example:
 	//
 	// CSV
 	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
-	// Sets the language type for requests and received messages, default value is **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegId *string `json:"RegId,omitempty" xml:"RegId,omitempty"`
-	// Task ID.
+	// The task ID.
 	//
 	// example:
 	//
 	// 18191
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// Download type
+	// The download type.
 	//
 	// example:
 	//

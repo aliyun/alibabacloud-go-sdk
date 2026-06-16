@@ -16,13 +16,13 @@ type iDescribeSafStartConfigResponseBody interface {
 }
 
 type DescribeSafStartConfigResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// A32FE941-35F2-5378-B37C-4B8FDB16F094
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Returned object
+	// The returned object.
 	ResultObject *DescribeSafStartConfigResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Struct"`
 }
 
@@ -62,13 +62,13 @@ func (s *DescribeSafStartConfigResponseBody) Validate() error {
 }
 
 type DescribeSafStartConfigResponseBodyResultObject struct {
-	// List of device types.
+	// The device type list.
 	DeviceTypes []*string `json:"deviceTypes,omitempty" xml:"deviceTypes,omitempty" type:"Repeated"`
-	// Event codes.
+	// The event codes.
 	EventCodes []*string `json:"eventCodes,omitempty" xml:"eventCodes,omitempty" type:"Repeated"`
-	// Configuration language details.
+	// The configuration language details.
 	Languages []*string `json:"languages,omitempty" xml:"languages,omitempty" type:"Repeated"`
-	// Server region
+	// The server regions.
 	ServerRegions []*string `json:"serverRegions,omitempty" xml:"serverRegions,omitempty" type:"Repeated"`
 }
 

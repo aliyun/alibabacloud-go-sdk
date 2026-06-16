@@ -26,7 +26,7 @@ type iDescribeNameListRequest interface {
 }
 
 type DescribeNameListRequest struct {
-	// Sets the language type for requests and received messages, with a default value of **zh**. Values:
+	// Sets the language type for the request and response messages. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
@@ -36,37 +36,37 @@ type DescribeNameListRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Creation type.
+	// The creation type.
 	//
 	// example:
 	//
 	// NORMAL
 	CreateType *string `json:"createType,omitempty" xml:"createType,omitempty"`
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *string `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
-	// Page size, with a default value of 10.
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Region code.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegId *string `json:"regId,omitempty" xml:"regId,omitempty"`
-	// Search value.
+	// The search value.
 	//
 	// example:
 	//
 	// 白名单
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
-	// Variable ID.
+	// The variable ID.
 	//
 	// example:
 	//

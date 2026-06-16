@@ -32,57 +32,57 @@ type iDescribeEventResultListResponseBody interface {
 }
 
 type DescribeEventResultListResponseBody struct {
-	// Status code.
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int64 `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
-	// HTTP status code
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *string `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// Error details
+	// The error details.
 	//
 	// example:
 	//
 	// The input parameter data is not valid. order_storage_company_num component not found
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Page size, default value is 10
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// AE7E6105-7DEB-5125-9B24-DCBC139F6CD2
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Returned object
+	// The returned object.
 	ResultObject []*DescribeEventResultListResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Repeated"`
-	// Whether the query was successful.
+	// Indicates whether the query was successful.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// Total number of items.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 31
 	TotalItem *int64 `json:"totalItem,omitempty" xml:"totalItem,omitempty"`
-	// Total number of pages
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -202,37 +202,37 @@ func (s *DescribeEventResultListResponseBody) Validate() error {
 }
 
 type DescribeEventResultListResponseBodyResultObject struct {
-	// Event code
+	// The event code.
 	//
 	// example:
 	//
 	// de_aszbjb7236
 	EventCode *string `json:"eventCode,omitempty" xml:"eventCode,omitempty"`
-	// Event name.
+	// The event name.
 	//
 	// example:
 	//
 	// 注册风险
 	EventName *string `json:"eventName,omitempty" xml:"eventName,omitempty"`
-	// Number of passed checks.
+	// The number of entries that passed the check.
 	//
 	// example:
 	//
 	// 90
 	PassNum *int64 `json:"passNum,omitempty" xml:"passNum,omitempty"`
-	// Number of pending items.
+	// The number of pending entries.
 	//
 	// example:
 	//
 	// 5
 	PendingNum *int64 `json:"pendingNum,omitempty" xml:"pendingNum,omitempty"`
-	// Number of rejected approvals.
+	// The number of entries rejected during approval.
 	//
 	// example:
 	//
 	// 5
 	RejectNum *int64 `json:"rejectNum,omitempty" xml:"rejectNum,omitempty"`
-	// Total number of items.
+	// The total number of entries.
 	//
 	// example:
 	//

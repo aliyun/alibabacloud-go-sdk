@@ -24,17 +24,17 @@ type iCreateRecommendTaskRequest interface {
 }
 
 type CreateRecommendTaskRequest struct {
-	// Set the language type for requests and received messages, default value is **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Name
+	// The name.
 	//
 	// This parameter is required.
 	//
@@ -42,13 +42,13 @@ type CreateRecommendTaskRequest struct {
 	//
 	// 注册样本
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegId *string `json:"regId,omitempty" xml:"regId,omitempty"`
-	// Task ID.
+	// The task ID.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +56,7 @@ type CreateRecommendTaskRequest struct {
 	//
 	// 5467
 	SampleId *int64 `json:"sampleId,omitempty" xml:"sampleId,omitempty"`
-	// Variables to be calculated, variables
+	// The variables to be calculated.
 	//
 	// This parameter is required.
 	//
@@ -64,7 +64,7 @@ type CreateRecommendTaskRequest struct {
 	//
 	// [\\"1112\\",\\"1113\\"]
 	VariablesStr *string `json:"variablesStr,omitempty" xml:"variablesStr,omitempty"`
-	// Indicator effect
+	// The metric results.
 	//
 	// This parameter is required.
 	//

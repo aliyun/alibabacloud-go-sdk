@@ -22,7 +22,7 @@ type iDescribeRuleDetailByRuleIdRequest interface {
 }
 
 type DescribeRuleDetailByRuleIdRequest struct {
-	// Set the language type for requests and received messages, default value is **zh**. Values:
+	// Sets the language type for the request and response messages. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
@@ -32,25 +32,25 @@ type DescribeRuleDetailByRuleIdRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Primary key ID of the policy.
+	// The primary key ID of the policy.
 	//
 	// example:
 	//
 	// 7110
 	ConsoleRuleId *int64 `json:"consoleRuleId,omitempty" xml:"consoleRuleId,omitempty"`
-	// Region code.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegId *string `json:"regId,omitempty" xml:"regId,omitempty"`
-	// Policy ID.
+	// The policy ID.
 	//
 	// example:
 	//
 	// 102059
 	RuleId *string `json:"ruleId,omitempty" xml:"ruleId,omitempty"`
-	// Primary key ID of the policy version.
+	// The primary key ID of the policy version.
 	//
 	// example:
 	//

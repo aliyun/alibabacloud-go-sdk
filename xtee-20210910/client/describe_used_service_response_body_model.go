@@ -16,13 +16,13 @@ type iDescribeUsedServiceResponseBody interface {
 }
 
 type DescribeUsedServiceResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// A32FE941-35F2-5378-B37C-4B8FDB16F094
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Record details
+	// The record details.
 	Records []*DescribeUsedServiceResponseBodyRecords `json:"records,omitempty" xml:"records,omitempty" type:"Repeated"`
 }
 
@@ -66,19 +66,19 @@ func (s *DescribeUsedServiceResponseBody) Validate() error {
 }
 
 type DescribeUsedServiceResponseBodyRecords struct {
-	// English name
+	// The English name.
 	//
 	// example:
 	//
 	// account_abuse
 	EnName *string `json:"enName,omitempty" xml:"enName,omitempty"`
-	// Service name
+	// The service name.
 	//
 	// example:
 	//
 	// 注册风险识别服务
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Service code
+	// The service code.
 	//
 	// example:
 	//

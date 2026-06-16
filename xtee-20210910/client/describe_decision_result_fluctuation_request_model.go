@@ -18,23 +18,23 @@ type iDescribeDecisionResultFluctuationRequest interface {
 }
 
 type DescribeDecisionResultFluctuationRequest struct {
-	// Sets the language type for requests and received messages, with a default value of **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Event code.
+	// The event code.
 	//
 	// example:
 	//
 	// de_ahqhsw7665,de_ahqhsw7622
 	EventCodes *string `json:"eventCodes,omitempty" xml:"eventCodes,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// example:
 	//

@@ -18,23 +18,23 @@ type iDescribeAuditConfigRequest interface {
 }
 
 type DescribeAuditConfigRequest struct {
-	// Sets the language type for requests and received messages, with a default value of **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Audit type
+	// The approval type.
 	//
 	// example:
 	//
 	// RULE
 	AuditRelationType *string `json:"auditRelationType,omitempty" xml:"auditRelationType,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// example:
 	//

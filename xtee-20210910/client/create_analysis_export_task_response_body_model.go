@@ -16,13 +16,13 @@ type iCreateAnalysisExportTaskResponseBody interface {
 }
 
 type CreateAnalysisExportTaskResponseBody struct {
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// A32FE941-35F2-5378-B37C-4B8FDB16F094
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Returned object
+	// The returned object.
 	ResultObject *CreateAnalysisExportTaskResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Struct"`
 }
 
@@ -62,7 +62,7 @@ func (s *CreateAnalysisExportTaskResponseBody) Validate() error {
 }
 
 type CreateAnalysisExportTaskResponseBodyResultObject struct {
-	// Export list.
+	// The export list.
 	//
 	// example:
 	//
@@ -142,7 +142,7 @@ type CreateAnalysisExportTaskResponseBodyResultObject struct {
 	//
 	//             ]
 	Columns *string `json:"columns,omitempty" xml:"columns,omitempty"`
-	// Export task conditions.
+	// The conditions of the export task.
 	//
 	// example:
 	//
@@ -154,55 +154,55 @@ type CreateAnalysisExportTaskResponseBodyResultObject struct {
 	//
 	//       }
 	Conditions *string `json:"conditions,omitempty" xml:"conditions,omitempty"`
-	// Event start time.
+	// The event start time.
 	//
 	// example:
 	//
 	// 1752076800000
 	EventBeginTime *int64 `json:"eventBeginTime,omitempty" xml:"eventBeginTime,omitempty"`
-	// Event code.
+	// The event code.
 	//
 	// example:
 	//
 	// de_ahespg8137
 	EventCodes *string `json:"eventCodes,omitempty" xml:"eventCodes,omitempty"`
-	// End time.
+	// The end time.
 	//
 	// example:
 	//
 	// 1753891199000
 	EventEndTime *int64 `json:"eventEndTime,omitempty" xml:"eventEndTime,omitempty"`
-	// File format.
+	// The file format.
 	//
 	// example:
 	//
 	// CSV
 	FileFormat *string `json:"fileFormat,omitempty" xml:"fileFormat,omitempty"`
-	// OSS-generated key.
+	// The randomly generated OSS key.
 	//
 	// example:
 	//
 	// xxxxx
 	OssKey *string `json:"ossKey,omitempty" xml:"ossKey,omitempty"`
-	// Export task scope.
+	// The scope of the export task.
 	//
 	// example:
 	//
 	// ALL
 	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
-	// Task status.
+	// The task status.
 	//
 	// example:
 	//
 	// RUNNING
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// Export task type.
+	// The export task type.
 	//
 	// example:
 	//
 	// BASIC
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// User UID
+	// The user UID.
 	//
 	// example:
 	//

@@ -20,29 +20,29 @@ type iDescribeSDKDownloadListRequest interface {
 }
 
 type DescribeSDKDownloadListRequest struct {
-	// Sets the language type for requests and received messages, with a default value of **zh**. Values:
+	// The language type for the request and response messages. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Device type.
+	// The device type.
 	//
 	// example:
 	//
 	// ANDROID
 	DeviceType *string `json:"deviceType,omitempty" xml:"deviceType,omitempty"`
-	// Download type
+	// The download type.
 	//
 	// example:
 	//
 	// OLD
 	ListType *string `json:"listType,omitempty" xml:"listType,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// example:
 	//

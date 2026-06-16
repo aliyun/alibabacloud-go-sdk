@@ -16,13 +16,13 @@ type iDescribeCustVariableDetailResponseBody interface {
 }
 
 type DescribeCustVariableDetailResponseBody struct {
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// A32FE941-35F2-5378-B37C-4B8FDB16F094
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Return object
+	// The returned object.
 	ResultObject []*DescribeCustVariableDetailResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Repeated"`
 }
 
@@ -66,85 +66,85 @@ func (s *DescribeCustVariableDetailResponseBody) Validate() error {
 }
 
 type DescribeCustVariableDetailResponseBodyResultObject struct {
-	// Condition value.
+	// The condition value.
 	//
 	// example:
 	//
 	// {"currentId":1,"deepCount":0,"list":[{"currentId":2,"deepCount":1,"left":{"code":"accountId","fieldType":"STRING","functionName":"","hasRightVariable":false,"name":"accountId"},"operatorCode":"isNotEmptyWrapper","parentId":1,"right":{"code":"\\"A\\nB\\nC\\"","functionName":"","name":"","rightVariableType":"constant"}}],"parentId":0,"relationship":"and"}
 	Condition *string `json:"condition,omitempty" xml:"condition,omitempty"`
-	// Data version.
+	// The data version.
 	//
 	// example:
 	//
 	// 1
 	DataVersion *int64 `json:"dataVersion,omitempty" xml:"dataVersion,omitempty"`
-	// Description information.
+	// The description.
 	//
 	// example:
 	//
 	// 变量描述
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Event code.
+	// The event code.
 	//
 	// example:
 	//
 	// de_ahespg8137
 	EventCodes *string `json:"eventCodes,omitempty" xml:"eventCodes,omitempty"`
-	// Value type
+	// The value type.
 	//
 	// example:
 	//
 	// EARLIEST
 	HistoryValueType *string `json:"historyValueType,omitempty" xml:"historyValueType,omitempty"`
-	// Primary key ID of the cumulative variable
+	// The primary key ID of the cumulative variable.
 	//
 	// example:
 	//
 	// 2793
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// Cumulative object
+	// The cumulative object.
 	//
 	// example:
 	//
 	// DEpage
 	Object *string `json:"object,omitempty" xml:"object,omitempty"`
-	// Variable return type
+	// The variable return type.
 	//
 	// example:
 	//
 	// DOUBLE
 	Outputs *string `json:"outputs,omitempty" xml:"outputs,omitempty"`
-	// Main object
+	// The primary object.
 	//
 	// example:
 	//
 	// DEpname
 	Subject *string `json:"subject,omitempty" xml:"subject,omitempty"`
-	// Time slice type
+	// The time slice type.
 	//
 	// example:
 	//
 	// NEAR
 	TimeType *string `json:"timeType,omitempty" xml:"timeType,omitempty"`
-	// Title.
+	// The title.
 	//
 	// example:
 	//
 	// 累计变量求平均值
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
-	// Time count
+	// The number of time windows.
 	//
 	// example:
 	//
 	// 1
 	TwCount *string `json:"twCount,omitempty" xml:"twCount,omitempty"`
-	// Variable type
+	// The variable type.
 	//
 	// example:
 	//
 	// DISTINCT
 	VelocityFC *string `json:"velocityFC,omitempty" xml:"velocityFC,omitempty"`
-	// Time slice unit
+	// The time slice unit.
 	//
 	// example:
 	//

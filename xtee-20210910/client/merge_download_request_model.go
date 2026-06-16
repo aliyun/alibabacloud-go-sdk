@@ -18,14 +18,20 @@ type iMergeDownloadRequest interface {
 }
 
 type MergeDownloadRequest struct {
+	// Language of error messages returned by the API. Valid values: zh: Chinese. en: English. Default value: en.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Area encoding.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegId *string `json:"RegId,omitempty" xml:"RegId,omitempty"`
+	// Job IDs.
+	//
 	// example:
 	//
 	// 1,2

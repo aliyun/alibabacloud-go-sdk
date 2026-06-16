@@ -14,7 +14,7 @@ type iDescribePrivateStackRequest interface {
 }
 
 type DescribePrivateStackRequest struct {
-	// Region Code
+	// The region ID.
 	//
 	// example:
 	//

@@ -24,41 +24,41 @@ type iUpdateAuditRequest interface {
 }
 
 type UpdateAuditRequest struct {
-	// Sets the language type for requests and received messages, default value is **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Approval comments
+	// The approval comment.
 	//
 	// example:
 	//
 	// 同意
 	AuditMsg *string `json:"auditMsg,omitempty" xml:"auditMsg,omitempty"`
-	// Associated type
+	// The association type.
 	//
 	// example:
 	//
 	// RULE
 	AuditRelationType *string `json:"auditRelationType,omitempty" xml:"auditRelationType,omitempty"`
-	// Status
+	// The approval status.
 	//
 	// example:
 	//
 	// AGREE
 	AuditStatus *string `json:"auditStatus,omitempty" xml:"auditStatus,omitempty"`
-	// The ID of the approval to be updated.
+	// The ID of the approval to update.
 	//
 	// example:
 	//
 	// 376773
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// example:
 	//

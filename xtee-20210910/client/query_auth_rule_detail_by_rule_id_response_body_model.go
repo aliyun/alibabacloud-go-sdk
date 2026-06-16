@@ -16,13 +16,13 @@ type iQueryAuthRuleDetailByRuleIdResponseBody interface {
 }
 
 type QueryAuthRuleDetailByRuleIdResponseBody struct {
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// A32FE941-35F2-5378-B37C-4B8FDB16F094
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Returned object
+	// The returned object.
 	ResultObject *QueryAuthRuleDetailByRuleIdResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Struct"`
 }
 
@@ -62,129 +62,129 @@ func (s *QueryAuthRuleDetailByRuleIdResponseBody) Validate() error {
 }
 
 type QueryAuthRuleDetailByRuleIdResponseBodyResultObject struct {
-	// Audit ID
+	// The approval ID.
 	//
 	// example:
 	//
 	// 225
 	AuditId *int64 `json:"auditId,omitempty" xml:"auditId,omitempty"`
-	// Authorization type
+	// The authorization type.
 	//
 	// example:
 	//
 	// all
 	AuthType *string `json:"authType,omitempty" xml:"authType,omitempty"`
-	// Authorized user UID
+	// The UID of the authorized user.
 	//
 	// example:
 	//
 	// *
 	AuthUsers *string `json:"authUsers,omitempty" xml:"authUsers,omitempty"`
-	// Primary key ID of the strategy
+	// The primary key ID of the policy.
 	//
 	// example:
 	//
 	// 6843
 	ConsoleRuleId *int64 `json:"consoleRuleId,omitempty" xml:"consoleRuleId,omitempty"`
-	// Event code
+	// The event code.
 	//
 	// example:
 	//
 	// de_aszbjb7236
 	EventCode *string `json:"eventCode,omitempty" xml:"eventCode,omitempty"`
-	// Event name.
+	// The event name.
 	//
 	// example:
 	//
 	// 注册风险
 	EventName *string `json:"eventName,omitempty" xml:"eventName,omitempty"`
-	// Creation time.
+	// The creation time.
 	//
 	// example:
 	//
 	// 1621578648000
 	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// Modification time
+	// The modification time.
 	//
 	// example:
 	//
 	// 1565701886000
 	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// Execution logic
+	// The execution logic.
 	//
 	// example:
 	//
 	// 1&2
 	LogicExpression *string `json:"logicExpression,omitempty" xml:"logicExpression,omitempty"`
-	// Description
+	// The description.
 	//
 	// example:
 	//
 	// 描述
 	Memo *string `json:"memo,omitempty" xml:"memo,omitempty"`
-	// Rule priority, the higher the number, the higher the priority.
+	// The policy priority. A larger value indicates a higher priority.
 	//
 	// example:
 	//
 	// 10
 	Priority *int64 `json:"priority,omitempty" xml:"priority,omitempty"`
-	// Returned rule action structure.
+	// The returned rule action struct.
 	RuleActionMap map[string]*string `json:"ruleActionMap,omitempty" xml:"ruleActionMap,omitempty"`
-	// Output actions
+	// The output actions.
 	//
 	// example:
 	//
 	// [{\\"inputs\\":[\\"unusualBrand\\"],\\"name\\":\\"__addDeTags__\\",\\"actionType\\":\\"TAG\\",\\"outputType\\":\\"const\\"}]
 	RuleActions *string `json:"ruleActions,omitempty" xml:"ruleActions,omitempty"`
-	// Rule authorization type
+	// The policy type.
 	//
 	// example:
 	//
 	// WHITE_BOX
 	RuleAuthType *string `json:"ruleAuthType,omitempty" xml:"ruleAuthType,omitempty"`
-	// Rule expressions.
+	// The rule expressions.
 	//
 	// example:
 	//
 	// [{\\"expressionName\\":\\"同一设备同一IP上的注册用户数\\",\\"itemId\\":1,\\"left\\":{\\"name\\":\\"dK7EXHr490f\\"},\\"operatorCode\\":\\"gte\\",\\"operatorName\\":\\"大于等于\\",\\"right\\":{\\"fieldValue\\":\\"2\\"}}]
 	RuleExpressions *string `json:"ruleExpressions,omitempty" xml:"ruleExpressions,omitempty"`
-	// Strategy ID
+	// The policy ID.
 	//
 	// example:
 	//
 	// 102224
 	RuleId *string `json:"ruleId,omitempty" xml:"ruleId,omitempty"`
-	// Strategy name
+	// The policy name.
 	//
 	// example:
 	//
 	// 营销风险识别
 	RuleName *string `json:"ruleName,omitempty" xml:"ruleName,omitempty"`
-	// Strategy status
+	// The policy status.
 	//
 	// example:
 	//
 	// RUNNING
 	RuleStatus *string `json:"ruleStatus,omitempty" xml:"ruleStatus,omitempty"`
-	// Rule type
+	// The policy type.
 	//
 	// example:
 	//
 	// DEFAULT
 	RuleType *string `json:"ruleType,omitempty" xml:"ruleType,omitempty"`
-	// Primary key ID of the strategy version
+	// The primary key ID of the policy version.
 	//
 	// example:
 	//
 	// 11519
 	RuleVersionId *int64 `json:"ruleVersionId,omitempty" xml:"ruleVersionId,omitempty"`
-	// Template type
+	// The template type.
 	//
 	// example:
 	//
 	// PUB_SERVICE
 	TemplateType *string `json:"templateType,omitempty" xml:"templateType,omitempty"`
-	// Version number
+	// The version number.
 	//
 	// example:
 	//

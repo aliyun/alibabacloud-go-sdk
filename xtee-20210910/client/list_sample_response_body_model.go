@@ -30,35 +30,52 @@ type iListSampleResponseBody interface {
 }
 
 type ListSampleResponseBody struct {
+	// Status code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Current page number.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// A32FE941-35F2-5378-B37C-4B8FDB16F094
-	RequestId    *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Return Result.
 	ResultObject []*ListSampleResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Repeated"`
+	// Total Number of Returned Items.
+	//
 	// example:
 	//
 	// 0
 	TotalItem *int32 `json:"TotalItem,omitempty" xml:"TotalItem,omitempty"`
+	// Total number of pages.
+	//
 	// example:
 	//
 	// 1
@@ -168,38 +185,56 @@ func (s *ListSampleResponseBody) Validate() error {
 }
 
 type ListSampleResponseBodyResultObject struct {
+	// File Name.
+	//
 	// example:
 	//
 	// 202604016426_2_MOB_10W.csv
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// File Size. Unit: bytes.
+	//
 	// example:
 	//
 	// 78
 	FileSize *int32 `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	// Remarks.
+	//
 	// example:
 	//
 	// vpc-gw8hs2m7qiiy4onxnjf7x
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// Table Row Count.
+	//
 	// example:
 	//
 	// 284
 	RowCount *int32 `json:"RowCount,omitempty" xml:"RowCount,omitempty"`
+	// Sample ID.
+	//
 	// example:
 	//
 	// 7
 	SampleId *int32 `json:"SampleId,omitempty" xml:"SampleId,omitempty"`
+	// Sample Name.
+	//
 	// example:
 	//
 	// TEst
 	SampleName *string `json:"SampleName,omitempty" xml:"SampleName,omitempty"`
+	// Scenario.
+	//
 	// example:
 	//
 	// FINANCE
 	Tab *string `json:"Tab,omitempty" xml:"Tab,omitempty"`
+	// File Upload Time.
+	//
 	// example:
 	//
 	// 2023-04-09 12:45:23
 	UploadTime *string `json:"UploadTime,omitempty" xml:"UploadTime,omitempty"`
+	// Uploader.
+	//
 	// example:
 	//
 	// mest

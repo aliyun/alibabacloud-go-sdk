@@ -32,23 +32,23 @@ type iCreateExpressionVariableRequest interface {
 }
 
 type CreateExpressionVariableRequest struct {
-	// Sets the language type for requests and received messages, with a default value of **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Description.
+	// The description.
 	//
 	// example:
 	//
 	// 获取入参的手机号前7位
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Event code
+	// The event code.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +56,7 @@ type CreateExpressionVariableRequest struct {
 	//
 	// de_ahpayh4121
 	EventCode *string `json:"eventCode,omitempty" xml:"eventCode,omitempty"`
-	// Calculation expression
+	// The calculation expression.
 	//
 	// This parameter is required.
 	//
@@ -64,7 +64,7 @@ type CreateExpressionVariableRequest struct {
 	//
 	// @ex_GX9rrlTq4b67 + 1001
 	Expression *string `json:"expression,omitempty" xml:"expression,omitempty"`
-	// Display value of calculation expression
+	// The display value of the calculation expression.
 	//
 	// This parameter is required.
 	//
@@ -72,13 +72,13 @@ type CreateExpressionVariableRequest struct {
 	//
 	// @selfvariable_02 + 1001
 	ExpressionTitle *string `json:"expressionTitle,omitempty" xml:"expressionTitle,omitempty"`
-	// Calculation expression variable
+	// The variable of the calculation expression.
 	//
 	// example:
 	//
 	// [{"name":"ex_GX9rrlTq4b67","code":"deInvokeSelfVariable(44659)","fieldType":"INT"}]
 	ExpressionVariable *string `json:"expressionVariable,omitempty" xml:"expressionVariable,omitempty"`
-	// Outlier
+	// The outlier value.
 	//
 	// This parameter is required.
 	//
@@ -86,7 +86,7 @@ type CreateExpressionVariableRequest struct {
 	//
 	// -1
 	Outlier *string `json:"outlier,omitempty" xml:"outlier,omitempty"`
-	// Variable return type
+	// The return type of the variable.
 	//
 	// This parameter is required.
 	//
@@ -94,7 +94,7 @@ type CreateExpressionVariableRequest struct {
 	//
 	// STRING
 	Outputs *string `json:"outputs,omitempty" xml:"outputs,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// This parameter is required.
 	//
@@ -102,7 +102,7 @@ type CreateExpressionVariableRequest struct {
 	//
 	// cn-hangzhou
 	RegId *string `json:"regId,omitempty" xml:"regId,omitempty"`
-	// Title.
+	// The title.
 	//
 	// This parameter is required.
 	//

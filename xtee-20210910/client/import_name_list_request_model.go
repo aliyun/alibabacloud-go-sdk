@@ -32,42 +32,41 @@ type iImportNameListRequest interface {
 }
 
 type ImportNameListRequest struct {
-	// Set the language type for request and response messages, default value is **zh**. Values:
+	// The language type for the request and response. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Creation type
+	// The creation type.
 	//
 	// example:
 	//
 	// NORMAL
 	CreateType *string `json:"createType,omitempty" xml:"createType,omitempty"`
-	// Import name list.
+	// The list of names to import.
 	//
 	// example:
 	//
 	// aa\\nbb\\ncc
 	Data *string `json:"data,omitempty" xml:"data,omitempty"`
-	// Description information.
+	// The description.
 	//
 	// example:
 	//
-	// 描述
+	// description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Document import type:
+	// The document import type. Valid values:
 	//
+	// INPUT: data entry.
 	//
-	// INPUT: Text input
+	// CSV: CSV upload.
 	//
-	// CSV: CSV upload
-	//
-	// NONE: Do not upload for now
+	// NONE: no upload.
 	//
 	// This parameter is required.
 	//
@@ -75,25 +74,25 @@ type ImportNameListRequest struct {
 	//
 	// CSV
 	ImportType *string `json:"importType,omitempty" xml:"importType,omitempty"`
-	// name content memo
+	// The description.
 	//
 	// example:
 	//
-	// 名单内容描述
+	// test
 	Memo *string `json:"memo,omitempty" xml:"memo,omitempty"`
-	// nameListType
+	// The nameListType.
 	//
 	// example:
 	//
 	// accountId
 	NameListType *string `json:"nameListType,omitempty" xml:"nameListType,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegId *string `json:"regId,omitempty" xml:"regId,omitempty"`
-	// Title.
+	// The title.
 	//
 	// This parameter is required.
 	//
@@ -101,7 +100,7 @@ type ImportNameListRequest struct {
 	//
 	// 变量title
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
-	// Variable ID
+	// The variable ID.
 	//
 	// example:
 	//

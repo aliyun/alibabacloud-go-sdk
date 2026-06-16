@@ -16,13 +16,13 @@ type iDescribeVariableBindDetailResponseBody interface {
 }
 
 type DescribeVariableBindDetailResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// A32FE941-35F2-5378-B37C-4B8FDB16F094
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Return object
+	// The returned object.
 	ResultObject *DescribeVariableBindDetailResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Struct"`
 }
 
@@ -62,47 +62,47 @@ func (s *DescribeVariableBindDetailResponseBody) Validate() error {
 }
 
 type DescribeVariableBindDetailResponseBodyResultObject struct {
-	// Whether modification is allowed, default is false
+	// Indicates whether modification is allowed. Default value: false.
 	//
 	// example:
 	//
 	// false
 	AllowModify *bool `json:"allowModify,omitempty" xml:"allowModify,omitempty"`
-	// Variable definition ID
+	// The variable definition ID.
 	//
 	// example:
 	//
 	// 10
 	DefineId *int64 `json:"defineId,omitempty" xml:"defineId,omitempty"`
-	// Variable definition title
+	// The variable definition title.
 	//
 	// example:
 	//
 	// IP所在地_城市Code
 	DefineTitle *string `json:"defineTitle,omitempty" xml:"defineTitle,omitempty"`
-	// Variable description information
+	// The variable description.
 	//
 	// example:
 	//
 	// 描述
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Event code
+	// The event code.
 	//
 	// example:
 	//
 	// de_aszbjb7236
 	EventCode *string `json:"eventCode,omitempty" xml:"eventCode,omitempty"`
-	// Variable ID.
+	// The variable ID.
 	//
 	// example:
 	//
 	// 497
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// Bound parameters.
+	// The bound parameters.
 	Params []*DescribeVariableBindDetailResponseBodyResultObjectParams `json:"params,omitempty" xml:"params,omitempty" type:"Repeated"`
-	// List of associated policies
+	// The list of associated policies.
 	RelationRules []*DescribeVariableBindDetailResponseBodyResultObjectRelationRules `json:"relationRules,omitempty" xml:"relationRules,omitempty" type:"Repeated"`
-	// Title.
+	// The title.
 	//
 	// example:
 	//
@@ -222,19 +222,19 @@ func (s *DescribeVariableBindDetailResponseBodyResultObject) Validate() error {
 }
 
 type DescribeVariableBindDetailResponseBodyResultObjectParams struct {
-	// Event field name
+	// The name of the event field.
 	//
 	// example:
 	//
 	// ip
 	EventFieldName *string `json:"eventFieldName,omitempty" xml:"eventFieldName,omitempty"`
-	// Whether it is required, default is false
+	// Indicates whether this parameter is required. Default value: false.
 	//
 	// example:
 	//
 	// false
 	Required *bool `json:"required,omitempty" xml:"required,omitempty"`
-	// Bound variable name
+	// The name of the bound variable.
 	//
 	// example:
 	//
@@ -282,13 +282,13 @@ func (s *DescribeVariableBindDetailResponseBodyResultObjectParams) Validate() er
 }
 
 type DescribeVariableBindDetailResponseBodyResultObjectRelationRules struct {
-	// Policy rule ID
+	// The policy ruleId.
 	//
 	// example:
 	//
 	// 104566
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// Policy name
+	// The policy name.
 	//
 	// example:
 	//

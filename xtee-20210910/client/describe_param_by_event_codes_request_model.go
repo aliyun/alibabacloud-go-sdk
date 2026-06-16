@@ -20,17 +20,17 @@ type iDescribeParamByEventCodesRequest interface {
 }
 
 type DescribeParamByEventCodesRequest struct {
-	// Set the language type for request and response, default value is **zh**. Values:
+	// The language type for the request and response messages. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Event code.
+	// The event code.
 	//
 	// This parameter is required.
 	//
@@ -38,13 +38,13 @@ type DescribeParamByEventCodesRequest struct {
 	//
 	// account_abuse_pro,account_abuse
 	EventCodes *string `json:"eventCodes,omitempty" xml:"eventCodes,omitempty"`
-	// Query condition
+	// The query condition.
 	//
 	// example:
 	//
 	// 标题/描述
 	Parma *string `json:"parma,omitempty" xml:"parma,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// example:
 	//

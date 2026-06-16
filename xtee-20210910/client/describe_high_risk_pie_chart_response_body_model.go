@@ -24,33 +24,33 @@ type iDescribeHighRiskPieChartResponseBody interface {
 }
 
 type DescribeHighRiskPieChartResponseBody struct {
-	// Status code
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// HTTP status code
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *string `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// Error details
+	// The error details.
 	//
 	// example:
 	//
 	// The input parameter data is not valid. order_storage_company_num component not found
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// AE7E6105-7DEB-5125-9B24-DCBC139F6CD2
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Returned object
+	// The response object.
 	ResultObject *DescribeHighRiskPieChartResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Struct"`
-	// Whether the request was successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -130,13 +130,13 @@ func (s *DescribeHighRiskPieChartResponseBody) Validate() error {
 }
 
 type DescribeHighRiskPieChartResponseBodyResultObject struct {
-	// High-risk IP city
+	// The city to which the high-risk IP address belongs.
 	HighRiskIPCity *DescribeHighRiskPieChartResponseBodyResultObjectHighRiskIPCity `json:"highRiskIPCity,omitempty" xml:"highRiskIPCity,omitempty" type:"Struct"`
-	// High-risk IP归属province
+	// The province to which the high-risk IP address belongs.
 	HighRiskIPProvince *DescribeHighRiskPieChartResponseBodyResultObjectHighRiskIPProvince `json:"highRiskIPProvince,omitempty" xml:"highRiskIPProvince,omitempty" type:"Struct"`
-	// High-risk mobile phone归属city
+	// The city to which the high-risk phone number belongs.
 	HighRiskMobileCity *DescribeHighRiskPieChartResponseBodyResultObjectHighRiskMobileCity `json:"highRiskMobileCity,omitempty" xml:"highRiskMobileCity,omitempty" type:"Struct"`
-	// High-risk mobile phone\\"s province of origin
+	// The province to which the high-risk phone number belongs.
 	HighRiskMobileProvince *DescribeHighRiskPieChartResponseBodyResultObjectHighRiskMobileProvince `json:"highRiskMobileProvince,omitempty" xml:"highRiskMobileProvince,omitempty" type:"Struct"`
 }
 
@@ -209,15 +209,15 @@ func (s *DescribeHighRiskPieChartResponseBodyResultObject) Validate() error {
 }
 
 type DescribeHighRiskPieChartResponseBodyResultObjectHighRiskIPCity struct {
-	// Chart flag, default true
+	// The chart identifier. Default value: true.
 	//
 	// example:
 	//
 	// true
 	Animation *bool `json:"animation,omitempty" xml:"animation,omitempty"`
-	// Belonging grid.
+	// The grid to which the chart belongs.
 	Grid *DescribeHighRiskPieChartResponseBodyResultObjectHighRiskIPCityGrid `json:"grid,omitempty" xml:"grid,omitempty" type:"Struct"`
-	// Chart data
+	// The chart data.
 	Series []*DescribeHighRiskPieChartResponseBodyResultObjectHighRiskIPCitySeries `json:"series,omitempty" xml:"series,omitempty" type:"Repeated"`
 }
 
@@ -275,7 +275,7 @@ func (s *DescribeHighRiskPieChartResponseBodyResultObjectHighRiskIPCity) Validat
 }
 
 type DescribeHighRiskPieChartResponseBodyResultObjectHighRiskIPCityGrid struct {
-	// Chart flag, default false
+	// The chart identifier. Default value: false.
 	//
 	// example:
 	//
@@ -305,15 +305,15 @@ func (s *DescribeHighRiskPieChartResponseBodyResultObjectHighRiskIPCityGrid) Val
 }
 
 type DescribeHighRiskPieChartResponseBodyResultObjectHighRiskIPCitySeries struct {
-	// Returned data object
+	// The response data object.
 	Data []*DescribeHighRiskPieChartResponseBodyResultObjectHighRiskIPCitySeriesData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// Field name
+	// The field name.
 	//
 	// example:
 	//
 	// 杭州市
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Chart identifier, default is false
+	// The chart identifier. Default value: false.
 	//
 	// example:
 	//
@@ -370,13 +370,13 @@ func (s *DescribeHighRiskPieChartResponseBodyResultObjectHighRiskIPCitySeries) V
 }
 
 type DescribeHighRiskPieChartResponseBodyResultObjectHighRiskIPCitySeriesData struct {
-	// Field name
+	// The field name.
 	//
 	// example:
 	//
 	// 杭州市
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Data value
+	// The data value.
 	//
 	// example:
 	//
@@ -415,15 +415,15 @@ func (s *DescribeHighRiskPieChartResponseBodyResultObjectHighRiskIPCitySeriesDat
 }
 
 type DescribeHighRiskPieChartResponseBodyResultObjectHighRiskIPProvince struct {
-	// Chart identifier, default is true
+	// The chart identifier. Default value: true.
 	//
 	// example:
 	//
 	// true
 	Animation *bool `json:"animation,omitempty" xml:"animation,omitempty"`
-	// Belonging grid.
+	// The grid to which the chart belongs.
 	Grid *DescribeHighRiskPieChartResponseBodyResultObjectHighRiskIPProvinceGrid `json:"grid,omitempty" xml:"grid,omitempty" type:"Struct"`
-	// Chart data
+	// The chart data.
 	Series []*DescribeHighRiskPieChartResponseBodyResultObjectHighRiskIPProvinceSeries `json:"series,omitempty" xml:"series,omitempty" type:"Repeated"`
 }
 
@@ -481,7 +481,7 @@ func (s *DescribeHighRiskPieChartResponseBodyResultObjectHighRiskIPProvince) Val
 }
 
 type DescribeHighRiskPieChartResponseBodyResultObjectHighRiskIPProvinceGrid struct {
-	// Chart identifier, default is false
+	// The chart identifier. Default value: false.
 	//
 	// example:
 	//
@@ -511,15 +511,15 @@ func (s *DescribeHighRiskPieChartResponseBodyResultObjectHighRiskIPProvinceGrid)
 }
 
 type DescribeHighRiskPieChartResponseBodyResultObjectHighRiskIPProvinceSeries struct {
-	// Returned data object
+	// The response data object.
 	Data []*DescribeHighRiskPieChartResponseBodyResultObjectHighRiskIPProvinceSeriesData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// Field name
+	// The field name.
 	//
 	// example:
 	//
 	// 浙江省
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Chart identifier, default is false
+	// The chart identifier. Default value: false.
 	//
 	// example:
 	//
@@ -576,13 +576,13 @@ func (s *DescribeHighRiskPieChartResponseBodyResultObjectHighRiskIPProvinceSerie
 }
 
 type DescribeHighRiskPieChartResponseBodyResultObjectHighRiskIPProvinceSeriesData struct {
-	// Variable name
+	// The variable name.
 	//
 	// example:
 	//
 	// 浙江省
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Data value
+	// The data value.
 	//
 	// example:
 	//
@@ -621,15 +621,15 @@ func (s *DescribeHighRiskPieChartResponseBodyResultObjectHighRiskIPProvinceSerie
 }
 
 type DescribeHighRiskPieChartResponseBodyResultObjectHighRiskMobileCity struct {
-	// Chart flag, default is true
+	// The chart identifier. Default value: true.
 	//
 	// example:
 	//
 	// true
 	Animation *bool `json:"animation,omitempty" xml:"animation,omitempty"`
-	// Belongs to grid.
+	// The grid to which the chart belongs.
 	Grid *DescribeHighRiskPieChartResponseBodyResultObjectHighRiskMobileCityGrid `json:"grid,omitempty" xml:"grid,omitempty" type:"Struct"`
-	// Chart data
+	// The chart data.
 	Series []*DescribeHighRiskPieChartResponseBodyResultObjectHighRiskMobileCitySeries `json:"series,omitempty" xml:"series,omitempty" type:"Repeated"`
 }
 
@@ -687,7 +687,7 @@ func (s *DescribeHighRiskPieChartResponseBodyResultObjectHighRiskMobileCity) Val
 }
 
 type DescribeHighRiskPieChartResponseBodyResultObjectHighRiskMobileCityGrid struct {
-	// Chart flag, default is false
+	// The chart identifier. Default value: false.
 	//
 	// example:
 	//
@@ -717,15 +717,15 @@ func (s *DescribeHighRiskPieChartResponseBodyResultObjectHighRiskMobileCityGrid)
 }
 
 type DescribeHighRiskPieChartResponseBodyResultObjectHighRiskMobileCitySeries struct {
-	// Returned data object
+	// The response data object.
 	Data []*DescribeHighRiskPieChartResponseBodyResultObjectHighRiskMobileCitySeriesData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// Field name
+	// The field name.
 	//
 	// example:
 	//
 	// 杭州市
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Chart flag, default is false
+	// The chart identifier. Default value: false.
 	//
 	// example:
 	//
@@ -782,13 +782,13 @@ func (s *DescribeHighRiskPieChartResponseBodyResultObjectHighRiskMobileCitySerie
 }
 
 type DescribeHighRiskPieChartResponseBodyResultObjectHighRiskMobileCitySeriesData struct {
-	// Field name
+	// The field name.
 	//
 	// example:
 	//
 	// 杭州市
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Data value
+	// The data value.
 	//
 	// example:
 	//
@@ -827,15 +827,15 @@ func (s *DescribeHighRiskPieChartResponseBodyResultObjectHighRiskMobileCitySerie
 }
 
 type DescribeHighRiskPieChartResponseBodyResultObjectHighRiskMobileProvince struct {
-	// Indicator, default true
+	// The identifier. Default value: true.
 	//
 	// example:
 	//
 	// true
 	Animation *bool `json:"animation,omitempty" xml:"animation,omitempty"`
-	// Belongs to grid.
+	// The grid to which the chart belongs.
 	Grid *DescribeHighRiskPieChartResponseBodyResultObjectHighRiskMobileProvinceGrid `json:"grid,omitempty" xml:"grid,omitempty" type:"Struct"`
-	// Chart data
+	// The chart data.
 	Series []*DescribeHighRiskPieChartResponseBodyResultObjectHighRiskMobileProvinceSeries `json:"series,omitempty" xml:"series,omitempty" type:"Repeated"`
 }
 
@@ -893,7 +893,7 @@ func (s *DescribeHighRiskPieChartResponseBodyResultObjectHighRiskMobileProvince)
 }
 
 type DescribeHighRiskPieChartResponseBodyResultObjectHighRiskMobileProvinceGrid struct {
-	// Chart flag, default is false
+	// The chart identifier. Default value: false.
 	//
 	// example:
 	//
@@ -923,15 +923,15 @@ func (s *DescribeHighRiskPieChartResponseBodyResultObjectHighRiskMobileProvinceG
 }
 
 type DescribeHighRiskPieChartResponseBodyResultObjectHighRiskMobileProvinceSeries struct {
-	// High-risk position data.
+	// The high-risk location data.
 	Data []*DescribeHighRiskPieChartResponseBodyResultObjectHighRiskMobileProvinceSeriesData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// Display title
+	// The display title.
 	//
 	// example:
 	//
 	// 分值区间占比
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Chart identifier, default false
+	// The chart identifier. Default value: false.
 	//
 	// example:
 	//
@@ -988,13 +988,13 @@ func (s *DescribeHighRiskPieChartResponseBodyResultObjectHighRiskMobileProvinceS
 }
 
 type DescribeHighRiskPieChartResponseBodyResultObjectHighRiskMobileProvinceSeriesData struct {
-	// Field name
+	// The field name.
 	//
 	// example:
 	//
 	// 浙江省
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Data value
+	// The data value.
 	//
 	// example:
 	//

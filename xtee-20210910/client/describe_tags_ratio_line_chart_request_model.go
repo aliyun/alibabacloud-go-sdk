@@ -26,17 +26,17 @@ type iDescribeTagsRatioLineChartRequest interface {
 }
 
 type DescribeTagsRatioLineChartRequest struct {
-	// Sets the language type for requests and received messages, default value is **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Start time, accurate to milliseconds (ms).
+	// The start time, in milliseconds (ms).
 	//
 	// This parameter is required.
 	//
@@ -44,13 +44,13 @@ type DescribeTagsRatioLineChartRequest struct {
 	//
 	// 1751249559000
 	BeginTime *int64 `json:"beginTime,omitempty" xml:"beginTime,omitempty"`
-	// Bypass event code
+	// The bypass event codes.
 	//
 	// example:
 	//
 	// de_amnhke2482
 	ByPassEventCodes *string `json:"byPassEventCodes,omitempty" xml:"byPassEventCodes,omitempty"`
-	// End time, accurate to milliseconds (ms).
+	// The end time, in milliseconds (ms).
 	//
 	// This parameter is required.
 	//
@@ -58,13 +58,13 @@ type DescribeTagsRatioLineChartRequest struct {
 	//
 	// 1751595912000
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// Main event code
+	// The main event codes.
 	//
 	// example:
 	//
 	// de_amnhke2482
 	MainEventCodes *string `json:"mainEventCodes,omitempty" xml:"mainEventCodes,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// This parameter is required.
 	//
@@ -72,7 +72,7 @@ type DescribeTagsRatioLineChartRequest struct {
 	//
 	// cn-hangzhou
 	RegId *string `json:"regId,omitempty" xml:"regId,omitempty"`
-	// Shunt event code
+	// The diversion event codes.
 	//
 	// example:
 	//

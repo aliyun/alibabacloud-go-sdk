@@ -24,33 +24,33 @@ type iDescribeEventPageListResponseBody interface {
 }
 
 type DescribeEventPageListResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// A32FE941-35F2-5378-B37C-4B8FDB16F094
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
-	// Page size, with a default value of 10
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Returned object
+	// The returned object.
 	ResultObject []*DescribeEventPageListResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Repeated"`
-	// Total number of items
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 3
 	TotalItem *int32 `json:"totalItem,omitempty" xml:"totalItem,omitempty"`
-	// Total number of pages.
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -134,75 +134,75 @@ func (s *DescribeEventPageListResponseBody) Validate() error {
 }
 
 type DescribeEventPageListResponseBodyResultObject struct {
-	// Object
+	// The object.
 	Children []*DescribeEventPageListResponseBodyResultObjectChildren `json:"children,omitempty" xml:"children,omitempty" type:"Repeated"`
-	// Event code
+	// The event code.
 	//
 	// example:
 	//
 	// de_aszbjb7236
 	EventCode *string `json:"eventCode,omitempty" xml:"eventCode,omitempty"`
-	// Event name.
+	// The event name.
 	//
 	// example:
 	//
 	// 注册风险
 	EventName *string `json:"eventName,omitempty" xml:"eventName,omitempty"`
-	// Event status.
+	// The event status.
 	//
 	// example:
 	//
 	// ONLINE
 	EventStatus *string `json:"eventStatus,omitempty" xml:"eventStatus,omitempty"`
-	// Event type.
+	// The event type.
 	//
 	// example:
 	//
 	// MAIN
 	EventType *string `json:"eventType,omitempty" xml:"eventType,omitempty"`
-	// Creation time.
+	// The creation time.
 	//
 	// example:
 	//
 	// 1621578648000
 	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// Modification time
+	// The modification time.
 	//
 	// example:
 	//
 	// 1565701886000
 	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// Database ID.
+	// The database ID.
 	//
 	// example:
 	//
 	// 497
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// Total number of rules.
+	// The total number of rules.
 	//
 	// example:
 	//
 	// 10
 	RuleCount *int32 `json:"ruleCount,omitempty" xml:"ruleCount,omitempty"`
-	// Template code
+	// The template code.
 	//
 	// example:
 	//
 	// register
 	TemplateCode *string `json:"templateCode,omitempty" xml:"templateCode,omitempty"`
-	// Template name.
+	// The template name.
 	//
 	// example:
 	//
 	// 注册模版
 	TemplateName *string `json:"templateName,omitempty" xml:"templateName,omitempty"`
-	// Template type
+	// The template type.
 	//
 	// example:
 	//
 	// UNIVERSAL
 	TemplateType *string `json:"templateType,omitempty" xml:"templateType,omitempty"`
-	// Number of customer authorizations
+	// The number of authorized users.
 	//
 	// example:
 	//
@@ -349,49 +349,49 @@ func (s *DescribeEventPageListResponseBodyResultObject) Validate() error {
 }
 
 type DescribeEventPageListResponseBodyResultObjectChildren struct {
-	// Event code.
+	// The event code.
 	//
 	// example:
 	//
 	// de_aamexg3015
 	EventCode *string `json:"eventCode,omitempty" xml:"eventCode,omitempty"`
-	// Event name.
+	// The event name.
 	//
 	// example:
 	//
 	// 测试
 	EventName *string `json:"eventName,omitempty" xml:"eventName,omitempty"`
-	// Event status.
+	// The event status.
 	//
 	// example:
 	//
 	// ONLINE
 	EventStatus *string `json:"eventStatus,omitempty" xml:"eventStatus,omitempty"`
-	// Event type.
+	// The event type.
 	//
 	// example:
 	//
 	// BYPASS
 	EventType *string `json:"eventType,omitempty" xml:"eventType,omitempty"`
-	// Creation time.
+	// The creation time.
 	//
 	// example:
 	//
 	// 1621578648000
 	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// Modification time
+	// The modification time.
 	//
 	// example:
 	//
 	// 1621578648000
 	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// Primary key ID
+	// The primary key ID.
 	//
 	// example:
 	//
 	// 334
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// Total number of rules.
+	// The total number of rules.
 	//
 	// example:
 	//

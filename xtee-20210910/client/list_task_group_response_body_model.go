@@ -30,35 +30,52 @@ type iListTaskGroupResponseBody interface {
 }
 
 type ListTaskGroupResponseBody struct {
+	// Status code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Current page number.
+	//
 	// example:
 	//
 	// 2
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Return message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// A32FE941-35F2-5378-B37C-4B8FDB16F094
-	RequestId    *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Request result.
 	ResultObject []*ListTaskGroupResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Repeated"`
+	// Total number of returned items.
+	//
 	// example:
 	//
 	// 1
 	TotalItem *int32 `json:"TotalItem,omitempty" xml:"TotalItem,omitempty"`
+	// Total number of pages.
+	//
 	// example:
 	//
 	// 1
@@ -168,29 +185,48 @@ func (s *ListTaskGroupResponseBody) Validate() error {
 }
 
 type ListTaskGroupResponseBodyResultObject struct {
+	// Creation Time.
+	//
 	// example:
 	//
 	// 1588820785212
-	CreateTime    *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Creator.
+	//
+	// example:
+	//
+	// 324253
 	CreatorUserId *int64 `json:"CreatorUserId,omitempty" xml:"CreatorUserId,omitempty"`
+	// Audience group status.
+	//
 	// example:
 	//
 	// RUNNING
-	GroupStatus *string   `json:"GroupStatus,omitempty" xml:"GroupStatus,omitempty"`
+	GroupStatus *string `json:"GroupStatus,omitempty" xml:"GroupStatus,omitempty"`
+	// Task group name.
 	SampleNames []*string `json:"SampleNames,omitempty" xml:"SampleNames,omitempty" type:"Repeated"`
+	// Number of subtasks parsed and split from the task.
+	//
 	// example:
 	//
 	// 4
-	SubTaskCount *int32                                              `json:"SubTaskCount,omitempty" xml:"SubTaskCount,omitempty"`
-	SubTaskList  []*ListTaskGroupResponseBodyResultObjectSubTaskList `json:"SubTaskList,omitempty" xml:"SubTaskList,omitempty" type:"Repeated"`
+	SubTaskCount *int32 `json:"SubTaskCount,omitempty" xml:"SubTaskCount,omitempty"`
+	// Subtask.
+	SubTaskList []*ListTaskGroupResponseBodyResultObjectSubTaskList `json:"SubTaskList,omitempty" xml:"SubTaskList,omitempty" type:"Repeated"`
+	// Scenario.
+	//
 	// example:
 	//
 	// FINANCE
 	Tab *string `json:"Tab,omitempty" xml:"Tab,omitempty"`
+	// Task group ID.
+	//
 	// example:
 	//
 	// g-uf62fwvw2f8dx88xo2lt
 	TaskGroupId *int32 `json:"TaskGroupId,omitempty" xml:"TaskGroupId,omitempty"`
+	// Task group name.
+	//
 	// example:
 	//
 	// GroupTest
@@ -300,67 +336,112 @@ func (s *ListTaskGroupResponseBodyResultObject) Validate() error {
 }
 
 type ListTaskGroupResponseBodyResultObjectSubTaskList struct {
+	// Job end time.
+	//
 	// example:
 	//
 	// 2026-01-12 15:47:23
 	FinishTime *int64 `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// Group name.
+	//
 	// example:
 	//
 	// pts-demo
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// Indicates whether to hide.
+	//
 	// example:
 	//
 	// true
 	HideViewResultButton *bool `json:"HideViewResultButton,omitempty" xml:"HideViewResultButton,omitempty"`
+	// Indicates whether the subtask is charged.
+	//
 	// example:
 	//
 	// true
 	IsCharge *bool `json:"IsCharge,omitempty" xml:"IsCharge,omitempty"`
+	// Model scenario.
+	//
 	// example:
 	//
 	// rfs
 	ModelScene *string `json:"ModelScene,omitempty" xml:"ModelScene,omitempty"`
+	// Sample ID.
+	//
 	// example:
 	//
 	// 4
 	SampleId *int32 `json:"SampleId,omitempty" xml:"SampleId,omitempty"`
+	// Sample name.
+	//
 	// example:
 	//
 	// fs
 	SampleName *string `json:"SampleName,omitempty" xml:"SampleName,omitempty"`
+	// Service code.
+	//
 	// example:
 	//
 	// anti_fraud_riskscreening
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+	// Service name.
+	//
+	// example:
+	//
+	// 申请反欺诈V5（分值版）
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// Subtask ID.
+	//
 	// example:
 	//
 	// 3
 	SubTaskId *int32 `json:"SubTaskId,omitempty" xml:"SubTaskId,omitempty"`
+	// Indicates whether the job can be canceled. Valid values:
+	//
+	// - true: The job can be canceled.
+	//
+	// - false: The job cannot be canceled.
+	//
 	// example:
 	//
 	// true
 	SupportCancel *bool `json:"SupportCancel,omitempty" xml:"SupportCancel,omitempty"`
+	// Supports download.
+	//
 	// example:
 	//
 	// true
 	SupportDownload *bool `json:"SupportDownload,omitempty" xml:"SupportDownload,omitempty"`
+	// Indicates whether merge download is supported.
+	//
 	// example:
 	//
 	// false
 	SupportMergeSelect *bool `json:"SupportMergeSelect,omitempty" xml:"SupportMergeSelect,omitempty"`
+	// Indicates whether viewing is supported.
+	//
 	// example:
 	//
 	// true
 	SupportView *bool `json:"SupportView,omitempty" xml:"SupportView,omitempty"`
+	// Scenario.
+	//
 	// example:
 	//
 	// FINANCE
 	Tab *string `json:"Tab,omitempty" xml:"Tab,omitempty"`
+	// Task group ID.
+	//
 	// example:
 	//
 	// 4
 	TaskGroupId *int32 `json:"TaskGroupId,omitempty" xml:"TaskGroupId,omitempty"`
+	// The execution status of the import job:
+	//
+	// - DOING: running
+	//
+	// - FINISH: execution completed.
+	//
 	// example:
 	//
 	// Finished

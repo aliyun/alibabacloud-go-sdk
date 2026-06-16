@@ -24,33 +24,33 @@ type iDescribeFieldPageResponseBody interface {
 }
 
 type DescribeFieldPageResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// A32FE941-35F2-5378-B37C-4B8FDB16F094
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Current page number
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
-	// Number of items per page, default value is 10
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Returned object
+	// The returned object.
 	ResultObject []*DescribeFieldPageResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Repeated"`
-	// Total number of items
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 40
 	TotalItem *int32 `json:"totalItem,omitempty" xml:"totalItem,omitempty"`
-	// Total number of pages.
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -134,55 +134,55 @@ func (s *DescribeFieldPageResponseBody) Validate() error {
 }
 
 type DescribeFieldPageResponseBodyResultObject struct {
-	// Field classification
+	// The field classification.
 	//
 	// example:
 	//
 	// REQUEST_PARAM
 	Classify *string `json:"classify,omitempty" xml:"classify,omitempty"`
-	// Description information.
+	// The description.
 	//
 	// example:
 	//
 	// 描述
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Enum data
+	// The enumeration data.
 	//
 	// example:
 	//
 	// STATUS
 	EnumData *string `json:"enumData,omitempty" xml:"enumData,omitempty"`
-	// Unique table ID.
+	// The unique ID of the table.
 	//
 	// example:
 	//
 	// 497
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// Field name
+	// The field name.
 	//
 	// example:
 	//
 	// age
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// File source.
+	// The file source.
 	//
 	// example:
 	//
 	// DEFINE
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
-	// Status.
+	// The status.
 	//
 	// example:
 	//
 	// ENABLE
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// Title.
+	// The title.
 	//
 	// example:
 	//
 	// 年龄
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
-	// Field type
+	// The field type.
 	//
 	// example:
 	//

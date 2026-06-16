@@ -30,59 +30,59 @@ type iDescribeSampleDataListRequest interface {
 }
 
 type DescribeSampleDataListRequest struct {
-	// Sets the language type for requests and received messages, default value is **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *string `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
-	// Deletion status
+	// The deletion status.
 	//
 	// example:
 	//
 	// DELETE
 	DeleteTag *string `json:"deleteTag,omitempty" xml:"deleteTag,omitempty"`
-	// Page size, default value is 10.
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Query content
+	// The query content.
 	//
 	// example:
 	//
 	// 手机号
 	QueryContent *string `json:"queryContent,omitempty" xml:"queryContent,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegId *string `json:"regId,omitempty" xml:"regId,omitempty"`
-	// Sample ID.
+	// The sample ID.
 	//
 	// example:
 	//
 	// 5467
 	SampleId *int64 `json:"sampleId,omitempty" xml:"sampleId,omitempty"`
-	// Scene
+	// The scenario.
 	//
 	// example:
 	//
 	// 1
 	Scene *string `json:"scene,omitempty" xml:"scene,omitempty"`
-	// Status.
+	// The status.
 	//
 	// example:
 	//

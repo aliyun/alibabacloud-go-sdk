@@ -16,13 +16,13 @@ type iDescribeCustVariableConfigListResponseBody interface {
 }
 
 type DescribeCustVariableConfigListResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// A32FE941-35F2-5378-B37C-4B8FDB16F094
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Return object
+	// The returned object.
 	ResultObject []*DescribeCustVariableConfigListResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Repeated"`
 }
 
@@ -66,13 +66,13 @@ func (s *DescribeCustVariableConfigListResponseBody) Validate() error {
 }
 
 type DescribeCustVariableConfigListResponseBodyResultObject struct {
-	// Configuration key
+	// The key of the configuration item.
 	//
 	// example:
 	//
 	// COUNT
 	ConfigKey *string `json:"configKey,omitempty" xml:"configKey,omitempty"`
-	// Configuration value
+	// The value of the configuration item.
 	//
 	// example:
 	//

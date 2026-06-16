@@ -16,13 +16,13 @@ type iDescribeExpressionVariableFunctionListResponseBody interface {
 }
 
 type DescribeExpressionVariableFunctionListResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 6E8817D5-5354-5953-84B1-D98379F036DC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Return object
+	// The response object.
 	ResultObject []*DescribeExpressionVariableFunctionListResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Repeated"`
 }
 
@@ -66,49 +66,49 @@ func (s *DescribeExpressionVariableFunctionListResponseBody) Validate() error {
 }
 
 type DescribeExpressionVariableFunctionListResponseBodyResultObject struct {
-	// Description information.
+	// The description.
 	//
 	// example:
 	//
 	// 描述
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Function name
+	// The function name.
 	//
 	// example:
 	//
 	// concat
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// Maximum number of parameters
+	// The maximum number of input parameters.
 	//
 	// example:
 	//
 	// 4
 	MaxParamSize *int64 `json:"maxParamSize,omitempty" xml:"maxParamSize,omitempty"`
-	// Minimum number of parameters
+	// The minimum number of input parameters.
 	//
 	// example:
 	//
 	// 2
 	MinParamSize *int64 `json:"minParamSize,omitempty" xml:"minParamSize,omitempty"`
-	// Parameter types
+	// The input parameter types.
 	//
 	// example:
 	//
 	// *STRING
 	ParamTypes *string `json:"paramTypes,omitempty" xml:"paramTypes,omitempty"`
-	// Whether it is directly invoked
+	// Indicates whether the function is directly invoked.
 	//
 	// example:
 	//
 	// true
 	Redirect *bool `json:"redirect,omitempty" xml:"redirect,omitempty"`
-	// Method return types
+	// The return type of the method.
 	//
 	// example:
 	//
 	// STRING
 	ReturnTypes *string `json:"returnTypes,omitempty" xml:"returnTypes,omitempty"`
-	// Function value
+	// The function value.
 	//
 	// example:
 	//

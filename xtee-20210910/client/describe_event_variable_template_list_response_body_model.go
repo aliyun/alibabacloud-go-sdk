@@ -16,13 +16,13 @@ type iDescribeEventVariableTemplateListResponseBody interface {
 }
 
 type DescribeEventVariableTemplateListResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// A32FE941-35F2-5378-B37C-4B8FDB16F094
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Return object
+	// The response object.
 	ResultObject []*DescribeEventVariableTemplateListResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Repeated"`
 }
 
@@ -66,19 +66,19 @@ func (s *DescribeEventVariableTemplateListResponseBody) Validate() error {
 }
 
 type DescribeEventVariableTemplateListResponseBodyResultObject struct {
-	// Template code.
+	// The template code.
 	//
 	// example:
 	//
 	// register
 	TemplateCode *string `json:"templateCode,omitempty" xml:"templateCode,omitempty"`
-	// Template name.
+	// The template name.
 	//
 	// example:
 	//
 	// 注册模版
 	TemplateName *string `json:"templateName,omitempty" xml:"templateName,omitempty"`
-	// Variable list.
+	// The list of variables.
 	Variables []*DescribeEventVariableTemplateListResponseBodyResultObjectVariables `json:"variables,omitempty" xml:"variables,omitempty" type:"Repeated"`
 }
 
@@ -131,43 +131,43 @@ func (s *DescribeEventVariableTemplateListResponseBodyResultObject) Validate() e
 }
 
 type DescribeEventVariableTemplateListResponseBodyResultObjectVariables struct {
-	// Variable code
+	// The variable code.
 	//
 	// example:
 	//
 	// age
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Description information.
+	// The description.
 	//
 	// example:
 	//
 	// 描述
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Variable input type
+	// The variable input type.
 	//
 	// example:
 	//
 	// STRING
 	FieldType *string `json:"fieldType,omitempty" xml:"fieldType,omitempty"`
-	// Primary key ID
+	// The primary key ID.
 	//
 	// example:
 	//
 	// 454
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// Variable name
+	// The variable name.
 	//
 	// example:
 	//
 	// age
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Title.
+	// The title.
 	//
 	// example:
 	//
 	// 年龄
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
-	// Variable type.
+	// The variable type.
 	//
 	// example:
 	//

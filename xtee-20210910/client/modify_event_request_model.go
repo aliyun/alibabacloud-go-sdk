@@ -30,59 +30,59 @@ type iModifyEventRequest interface {
 }
 
 type ModifyEventRequest struct {
-	// Set the language type for requests and received messages, default value is **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Version number (latest).
+	// The version number (latest).
 	//
 	// example:
 	//
 	// 1
 	BizVersion *int32 `json:"bizVersion,omitempty" xml:"bizVersion,omitempty"`
-	// Creation type
+	// The creation type.
 	//
 	// example:
 	//
 	// NORMAL
 	CreateType *string `json:"createType,omitempty" xml:"createType,omitempty"`
-	// Event code
+	// The event code.
 	//
 	// example:
 	//
 	// de_ambiby3420
 	EventCode *string `json:"eventCode,omitempty" xml:"eventCode,omitempty"`
-	// Event name.
+	// The event name.
 	//
 	// example:
 	//
 	// 注册事件
 	EventName *string `json:"eventName,omitempty" xml:"eventName,omitempty"`
-	// Input parameters, JSON string.
+	// The input parameters in a JSON string.
 	//
 	// example:
 	//
 	// [{\\"fieldCode\\":\\"sessionId\\",\\"description\\":\\"会话ID\\",\\"fieldRank\\":0,\\"title\\":\\"会话ID\\",\\"fieldType\\":\\"STRING\\",\\"fieldSource\\":\\"DEFAULT\\"},{\\"fieldCode\\":\\"tags\\",\\"fieldRank\\":1,\\"title\\":\\"风险标签\\",\\"fieldType\\":\\"STRING\\",\\"fieldSource\\":\\"DEFAULT\\"},{\\"fieldCode\\":\\"score\\",\\"fieldRank\\":2,\\"title\\":\\"风险分值\\",\\"fieldType\\":\\"DOUBLE\\",\\"fieldSource\\":\\"DEFAULT\\"},{\\"fieldCode\\":\\"hitRules\\",\\"fieldRank\\":3,\\"title\\":\\"命中策略\\",\\"fieldType\\":\\"STRING\\",\\"fieldSource\\":\\"DEFAULT\\"}]
 	InputFieldsStr *string `json:"inputFieldsStr,omitempty" xml:"inputFieldsStr,omitempty"`
-	// Memo.
+	// The remarks.
 	//
 	// example:
 	//
 	// 备注
 	Memo *string `json:"memo,omitempty" xml:"memo,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegId *string `json:"regId,omitempty" xml:"regId,omitempty"`
-	// Template type
+	// The template type.
 	//
 	// example:
 	//

@@ -16,13 +16,13 @@ type iDescribeVariableDetailResponseBody interface {
 }
 
 type DescribeVariableDetailResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// A32FE941-35F2-5378-B37C-4B8FDB16F094
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Return object
+	// The returned object.
 	ResultObject *DescribeVariableDetailResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Struct"`
 }
 
@@ -62,7 +62,7 @@ func (s *DescribeVariableDetailResponseBody) Validate() error {
 }
 
 type DescribeVariableDetailResponseBodyResultObject struct {
-	// Basic attributes.
+	// The basic properties.
 	BaseInfo *DescribeVariableDetailResponseBodyResultObjectBaseInfo `json:"baseInfo,omitempty" xml:"baseInfo,omitempty" type:"Struct"`
 }
 
@@ -93,207 +93,223 @@ func (s *DescribeVariableDetailResponseBodyResultObject) Validate() error {
 }
 
 type DescribeVariableDetailResponseBodyResultObjectBaseInfo struct {
-	// Whether variable binding is allowed
+	// Specifies whether variable binding is allowed. Valid values:
+	//
+	// - **DISABLE**: unavailable
+	//
+	// - **ALL**: all
+	//
+	// - **ENABLE**: available
+	//
+	// - **PART_ENABLE**: partially available.
 	//
 	// example:
 	//
 	// ENABLE
 	AllowBind *string `json:"allowBind,omitempty" xml:"allowBind,omitempty"`
-	// Charging mode
+	// The billing mode. Valid values:
+	//
+	// - **PAY_PER_VIEW**: paid
+	//
+	// - **FREE**: free.
 	//
 	// example:
 	//
 	// FREE
 	ChargingMode *string `json:"chargingMode,omitempty" xml:"chargingMode,omitempty"`
-	// Charging mode description
+	// The billing mode description.
 	//
 	// example:
 	//
 	// 免费
 	ChargingModeDesc *string `json:"chargingModeDesc,omitempty" xml:"chargingModeDesc,omitempty"`
-	// Creator.
+	// The creator.
 	//
 	// example:
 	//
 	// 176020
 	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
-	// Data distribution display, in JSON format
+	// The data distribution display in JSON format.
 	//
 	// example:
 	//
 	// {}
 	DataDisplay *string `json:"dataDisplay,omitempty" xml:"dataDisplay,omitempty"`
-	// Data valid range, left-closed and right-closed
+	// The valid data range, inclusive on both ends.
 	//
 	// example:
 	//
 	// (0,10)
 	DataThreshold *string `json:"dataThreshold,omitempty" xml:"dataThreshold,omitempty"`
-	// Deduction factor
+	// The deduction coefficient.
 	//
 	// example:
 	//
 	// 10
 	DeductionFactor *int32 `json:"deductionFactor,omitempty" xml:"deductionFactor,omitempty"`
-	// Description.
+	// The description.
 	//
 	// example:
 	//
 	// 描述
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Front-end binding allowed
+	// Specifies whether front-end binding is allowed. Valid values:
+	//
+	// - **DISABLE**: not allowed
+	//
+	// - **ENABLE**: allowed.
 	//
 	// example:
 	//
 	// ENABLE
 	FrontAllowBind *string `json:"frontAllowBind,omitempty" xml:"frontAllowBind,omitempty"`
-	// Creation time.
+	// The creation time.
 	//
 	// example:
 	//
 	// 1698143758000
 	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// Modification time.
+	// The modification time.
 	//
 	// example:
 	//
 	// 1698143758000
 	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// Primary key ID
+	// The primary key ID.
 	//
 	// example:
 	//
 	// 3144
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// Required parameters
+	// The required parameters.
 	//
 	//
 	//
-	//      When inputRequired=__all__, it means all parameters are required
+	// When inputRequired is set to __all__, all parameters are required.
 	//
-	//      When inputRequired=__one__, it means only one input is needed
+	// When inputRequired is set to __one__, only one input parameter is required.
 	//
-	//      Required fields are separated by commas, e.g., mobile,ip,email
+	// Required fields are separated by commas, such as mobile,ip,email.
 	//
 	// example:
 	//
 	// __one__
 	InputRequired *string `json:"inputRequired,omitempty" xml:"inputRequired,omitempty"`
-	// Input parameters.
+	// The input parameters.
 	//
 	// example:
 	//
 	// ip,age,mobile
 	Inputs *string `json:"inputs,omitempty" xml:"inputs,omitempty"`
-	// Input parameter description.
+	// The input parameter description.
 	//
 	// example:
 	//
 	// ip,年龄,手机号
 	InputsDesc *string `json:"inputsDesc,omitempty" xml:"inputsDesc,omitempty"`
-	// Invoke key
+	// The invocation key.
 	//
 	// example:
 	//
 	// onlineScamDetectionTags_v
 	InvokeKey *string `json:"invokeKey,omitempty" xml:"invokeKey,omitempty"`
-	// Invoke RT, unit: milliseconds
+	// The invocation response time, in milliseconds.
 	//
 	// example:
 	//
 	// 10
 	InvokeRt *int32 `json:"invokeRt,omitempty" xml:"invokeRt,omitempty"`
-	// Invocation success rate
+	// The invocation success rate.
 	//
 	// example:
 	//
 	// 100
 	InvokeSuccessRate *string `json:"invokeSuccessRate,omitempty" xml:"invokeSuccessRate,omitempty"`
-	// Number of invocations
+	// The number of invocations.
 	//
 	// example:
 	//
 	// 100000
 	InvokeTimes *int64 `json:"invokeTimes,omitempty" xml:"invokeTimes,omitempty"`
-	// Last modifier.
+	// The last modifier.
 	//
 	// example:
 	//
 	// root
 	LastModifiedOperator *string `json:"lastModifiedOperator,omitempty" xml:"lastModifiedOperator,omitempty"`
-	// Variable name
+	// The variable name.
 	//
 	// example:
 	//
 	// __onlineScamDetectionTags__
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Output
+	// The outputs.
 	//
 	// example:
 	//
 	// STRING
 	Outputs *string `json:"outputs,omitempty" xml:"outputs,omitempty"`
-	// Output description
+	// The output description.
 	//
 	// example:
 	//
 	// 字符串
 	OutputsDesc *string `json:"outputsDesc,omitempty" xml:"outputsDesc,omitempty"`
-	// Code of applicable scenarios
+	// The applicable scenario code.
 	Scene []*string `json:"scene,omitempty" xml:"scene,omitempty" type:"Repeated"`
-	// Applicable scenario description
+	// The applicable scenario description.
 	SceneDesc []*string `json:"sceneDesc,omitempty" xml:"sceneDesc,omitempty" type:"Repeated"`
-	// Display order
+	// The display order.
 	//
 	// example:
 	//
 	// 10
 	ShowOrder *string `json:"showOrder,omitempty" xml:"showOrder,omitempty"`
-	// Source
+	// The source.
 	//
 	// example:
 	//
 	// SAF
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
-	// Source description
+	// The source description.
 	//
 	// example:
 	//
 	// 风险识别
 	SourceDesc *string `json:"sourceDesc,omitempty" xml:"sourceDesc,omitempty"`
-	// Status.
+	// The status.
 	//
 	// example:
 	//
 	// ENABLE
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// List of supported regions.
+	// The list of supported regions.
 	SupportRegions []*string `json:"supportRegions,omitempty" xml:"supportRegions,omitempty" type:"Repeated"`
-	// Title.
+	// The title.
 	//
 	// example:
 	//
 	// 诈骗引流识别_标签
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
-	// Type
+	// The type.
 	//
 	// example:
 	//
 	// NATIVE
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// Category description
+	// The category description.
 	//
 	// example:
 	//
 	// 事件字段
 	TypeDesc *string `json:"typeDesc,omitempty" xml:"typeDesc,omitempty"`
-	// X-axis label for data distribution display
+	// The X-axis label for the data distribution chart.
 	//
 	// example:
 	//
 	// 10
 	XLabel *string `json:"xLabel,omitempty" xml:"xLabel,omitempty"`
-	// Data distribution display y-axis label
+	// The Y-axis label for the data distribution chart.
 	//
 	// example:
 	//

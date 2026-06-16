@@ -18,14 +18,20 @@ type iGetSubTaskResultRequest interface {
 }
 
 type GetSubTaskResultRequest struct {
+	// Language of the error message returned by the API. Valid values: zh: Chinese. en: English. Default value: en.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Area encoding.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegId *string `json:"RegId,omitempty" xml:"RegId,omitempty"`
+	// Subtask ID.
+	//
 	// example:
 	//
 	// 2

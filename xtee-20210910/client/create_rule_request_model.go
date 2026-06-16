@@ -40,89 +40,89 @@ type iCreateRuleRequest interface {
 }
 
 type CreateRuleRequest struct {
-	// Sets the language type for requests and received messages, default value is **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Rule ID.
+	// The rule ID.
 	//
 	// example:
 	//
 	// 5178
 	ConsoleRuleId *int64 `json:"consoleRuleId,omitempty" xml:"consoleRuleId,omitempty"`
-	// Creation type
+	// The creation type.
 	//
 	// example:
 	//
 	// NORMAL
 	CreateType *string `json:"createType,omitempty" xml:"createType,omitempty"`
-	// Event code
+	// The event code.
 	//
 	// example:
 	//
 	// de_acytyt7036
 	EventCode *string `json:"eventCode,omitempty" xml:"eventCode,omitempty"`
-	// Event name.
+	// The event name.
 	//
 	// example:
 	//
 	// 登录事件
 	EventName *string `json:"eventName,omitempty" xml:"eventName,omitempty"`
-	// Policy expression execution logic
+	// The execution logic of the policy expression.
 	//
 	// example:
 	//
 	// 1&2
 	LogicExpression *string `json:"logicExpression,omitempty" xml:"logicExpression,omitempty"`
-	// Memo
+	// The remarks.
 	//
 	// example:
 	//
 	// 描述信息
 	Memo *string `json:"memo,omitempty" xml:"memo,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegId *string `json:"regId,omitempty" xml:"regId,omitempty"`
-	// Policy execution output action
+	// The output actions of the policy execution.
 	//
 	// example:
 	//
 	// [{"inputs":["123"],"name":"__addDeTags__","actionType":"TAG","outputType":"const"},{"inputs":["123"],"name":"__addDeScore__","actionType":"SCORE","outputType":"const","inputTitle":"123"},{"actionType":"MIDDLE_VARIABLE","fieldValue":"123","inputs":["mid1"]},{"actionType":"VARIABLE","inputs":["gg"],"name":"mid1"}]
 	RuleActions *string `json:"ruleActions,omitempty" xml:"ruleActions,omitempty"`
-	// DSL policy execution logic
+	// The DSL policy execution logic.
 	//
 	// example:
 	//
 	// {"elseIfStatement":[],"elseStatement":{},"ifStatement":{"condition":{"currentId":0,"deepCount":1,"list":[{"currentId":0,"deepCount":1,"left":{"code":"deFunctionProcess(ip,\\"isIp\\")","description":"判断是否符合IPv4标准","displayType":"SYSTEM_BIND","fieldType":"BOOLEAN","functionCode":"","functionName":"","hasRightVariable":false,"name":"__isIpAddressV4__","outputThreshold":{},"sourceType":"SAF","title":"IP是否符合IPV4格式","type":"SYSTEM_BIND"},"operatorCode":"boolIsFalse","operatorName":"为false","parentId":0,"sequence":1}],"parentId":0,"relationship":"and"},"then":[{"inputs":["123"],"name":"__addDeTags__","actionType":"TAG","outputType":"const"}]}}
 	RuleBody *string `json:"ruleBody,omitempty" xml:"ruleBody,omitempty"`
-	// Policy expression
+	// The policy expressions.
 	//
 	// example:
 	//
 	// [{"expressionName":"cc","itemId":1,"left":{"name":"__ipLocationCityCode__"},"operatorCode":"equals","operatorName":"等于","right":{"fieldValue":"a"}}]
 	RuleExpressions *string `json:"ruleExpressions,omitempty" xml:"ruleExpressions,omitempty"`
-	// Policy name
+	// The policy name.
 	//
 	// example:
 	//
 	// 注册手机号是11位数字
 	RuleName *string `json:"ruleName,omitempty" xml:"ruleName,omitempty"`
-	// Policy status
+	// The policy status.
 	//
 	// example:
 	//
 	// DRAFT
 	RuleStatus *string `json:"ruleStatus,omitempty" xml:"ruleStatus,omitempty"`
-	// Policy type
+	// The policy type.
 	//
 	// example:
 	//

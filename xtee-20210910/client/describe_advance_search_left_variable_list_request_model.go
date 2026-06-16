@@ -20,17 +20,17 @@ type iDescribeAdvanceSearchLeftVariableListRequest interface {
 }
 
 type DescribeAdvanceSearchLeftVariableListRequest struct {
-	// Sets the language type for requests and received messages, with a default value of **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Event code.
+	// The event code.
 	//
 	// This parameter is required.
 	//
@@ -38,13 +38,13 @@ type DescribeAdvanceSearchLeftVariableListRequest struct {
 	//
 	// de_ahqhsw7665,de_agbzfi5134
 	EventCodes *string `json:"eventCodes,omitempty" xml:"eventCodes,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegId *string `json:"regId,omitempty" xml:"regId,omitempty"`
-	// Scene
+	// The scenario.
 	//
 	// This parameter is required.
 	//

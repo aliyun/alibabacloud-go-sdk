@@ -28,29 +28,29 @@ type iUpdateAuthRuleRequest interface {
 }
 
 type UpdateAuthRuleRequest struct {
-	// Sets the language type for requests and received messages, with a default value of **zh**. Values:
+	// The language type for the request and response messages. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Policy primary key ID
+	// The primary key ID of the policy.
 	//
 	// example:
 	//
 	// 7088
 	ConsoleRuleId *int64 `json:"consoleRuleId,omitempty" xml:"consoleRuleId,omitempty"`
-	// Event code
+	// The event code.
 	//
 	// example:
 	//
 	// de_afghcf6411
 	EventCode *string `json:"eventCode,omitempty" xml:"eventCode,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// This parameter is required.
 	//
@@ -58,13 +58,13 @@ type UpdateAuthRuleRequest struct {
 	//
 	// cn-hangzhou
 	RegId *string `json:"regId,omitempty" xml:"regId,omitempty"`
-	// Policy output action
+	// The output action of the policy.
 	//
 	// example:
 	//
 	// [{\\"inputs\\":[\\"auto_accselist\\"],\\"name\\":\\"__addDeTags__\\",\\"actionType\\":\\"TAG\\",\\"outputType\\":\\"const\\"}]
 	RuleActions *string `json:"ruleActions,omitempty" xml:"ruleActions,omitempty"`
-	// Expression
+	// The expression.
 	//
 	// This parameter is required.
 	//
@@ -72,7 +72,7 @@ type UpdateAuthRuleRequest struct {
 	//
 	// [{\\"expressionName\\":\\"设备token不为空\\",\\"itemId\\":1,\\"left\\":{\\"name\\":\\"deviceToken\\"},\\"operatorCode\\":\\"isNotEmptyWrapper\\",\\"operatorName\\":\\"不为空\\"}]
 	RuleExpressions *string `json:"ruleExpressions,omitempty" xml:"ruleExpressions,omitempty"`
-	// Policy ID
+	// The policy ID.
 	//
 	// This parameter is required.
 	//
@@ -80,7 +80,7 @@ type UpdateAuthRuleRequest struct {
 	//
 	// 101544
 	RuleId *string `json:"ruleId,omitempty" xml:"ruleId,omitempty"`
-	// Policy version primary key ID
+	// The primary key ID of the policy version.
 	//
 	// example:
 	//

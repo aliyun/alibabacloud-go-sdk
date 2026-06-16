@@ -28,17 +28,17 @@ type iDescribeExpressionVariablePageRequest interface {
 }
 
 type DescribeExpressionVariablePageRequest struct {
-	// Sets the language type for requests and received messages, with a default value of **zh**. Values:
+	// The language type for the request and response. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Current page number.
+	// The current page number.
 	//
 	// This parameter is required.
 	//
@@ -46,19 +46,19 @@ type DescribeExpressionVariablePageRequest struct {
 	//
 	// 1
 	CurrentPage *string `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
-	// Event code.
+	// The event code.
 	//
 	// example:
 	//
 	// de_aamexg3015,de_aamexg3342
 	EventCode *string `json:"eventCode,omitempty" xml:"eventCode,omitempty"`
-	// Variable return type.
+	// The variable return type.
 	//
 	// example:
 	//
 	// STRING
 	Outputs *string `json:"outputs,omitempty" xml:"outputs,omitempty"`
-	// Page size, with a default value of 10.
+	// The number of entries per page. Default value: 10.
 	//
 	// This parameter is required.
 	//
@@ -66,7 +66,7 @@ type DescribeExpressionVariablePageRequest struct {
 	//
 	// 10
 	PageSize *string `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Region code.
+	// The region code.
 	//
 	// This parameter is required.
 	//
@@ -74,13 +74,13 @@ type DescribeExpressionVariablePageRequest struct {
 	//
 	// cn-hangzhou
 	RegId *string `json:"regId,omitempty" xml:"regId,omitempty"`
-	// Status.
+	// The status.
 	//
 	// example:
 	//
 	// ENABLE
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// Variable name/description.
+	// The variable name or description.
 	//
 	// example:
 	//

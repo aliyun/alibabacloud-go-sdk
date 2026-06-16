@@ -24,33 +24,33 @@ type iDescribeTagsBarChartResponseBody interface {
 }
 
 type DescribeTagsBarChartResponseBody struct {
-	// Status code.
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// HTTP status code
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *string `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// Error message.
+	// The error message.
 	//
 	// example:
 	//
 	// The input parameter data is not valid. order_storage_company_num component not found
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// AE7E6105-7DEB-5125-9B24-DCBC139F6CD2
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Return object
+	// The returned object.
 	ResultObject *DescribeTagsBarChartResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Struct"`
-	// Whether the request was successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -130,9 +130,9 @@ func (s *DescribeTagsBarChartResponseBody) Validate() error {
 }
 
 type DescribeTagsBarChartResponseBodyResultObject struct {
-	// Data list
+	// The data list.
 	Series []*DescribeTagsBarChartResponseBodyResultObjectSeries `json:"series,omitempty" xml:"series,omitempty" type:"Repeated"`
-	// xaxis interface configuration.
+	// The x-axis configuration.
 	Xaxis *DescribeTagsBarChartResponseBodyResultObjectXaxis `json:"xaxis,omitempty" xml:"xaxis,omitempty" type:"Struct"`
 }
 
@@ -181,15 +181,15 @@ func (s *DescribeTagsBarChartResponseBodyResultObject) Validate() error {
 }
 
 type DescribeTagsBarChartResponseBodyResultObjectSeries struct {
-	// Chart data list
+	// The chart data list.
 	Data []*DescribeTagsBarChartResponseBodyResultObjectSeriesData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// Series name.
+	// The series name.
 	//
 	// example:
 	//
 	// tag
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Chart field, same as name
+	// The chart field, which is the same as the name.
 	//
 	// example:
 	//
@@ -246,13 +246,13 @@ func (s *DescribeTagsBarChartResponseBodyResultObjectSeries) Validate() error {
 }
 
 type DescribeTagsBarChartResponseBodyResultObjectSeriesData struct {
-	// Number.
+	// The quantity.
 	//
 	// example:
 	//
 	// 200
 	Num *int64 `json:"num,omitempty" xml:"num,omitempty"`
-	// Scale
+	// The ratio.
 	//
 	// example:
 	//
@@ -291,7 +291,7 @@ func (s *DescribeTagsBarChartResponseBodyResultObjectSeriesData) Validate() erro
 }
 
 type DescribeTagsBarChartResponseBodyResultObjectXaxis struct {
-	// xaxis data items
+	// The x-axis data items.
 	Data []*string `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
 }
 

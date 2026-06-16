@@ -16,13 +16,13 @@ type iDescribeSampleInfoResponseBody interface {
 }
 
 type DescribeSampleInfoResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// A32FE941-35F2-5378-B37C-4B8FDB16F094
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Returned object
+	// The returned object.
 	ResultObject *DescribeSampleInfoResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Struct"`
 }
 
@@ -62,37 +62,37 @@ func (s *DescribeSampleInfoResponseBody) Validate() error {
 }
 
 type DescribeSampleInfoResponseBodyResultObject struct {
-	// Primary key ID
+	// The primary key ID.
 	//
 	// example:
 	//
 	// 3144
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// Sample tags.
+	// The sample tags.
 	//
 	// example:
 	//
 	// em0102
 	SampleTags *string `json:"sampleTags,omitempty" xml:"sampleTags,omitempty"`
-	// Sample type
+	// The data sample type.
 	//
 	// example:
 	//
 	// PHONE
 	SampleType *string `json:"sampleType,omitempty" xml:"sampleType,omitempty"`
-	// Sample value.
+	// The sample value.
 	//
 	// example:
 	//
 	// 17700000000
 	SampleValue *string `json:"sampleValue,omitempty" xml:"sampleValue,omitempty"`
-	// Update time.
+	// The update time.
 	//
 	// example:
 	//
 	// 1753804800000
 	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	// Version number.
+	// The version number.
 	//
 	// example:
 	//

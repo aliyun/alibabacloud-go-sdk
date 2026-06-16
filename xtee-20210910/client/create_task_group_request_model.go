@@ -19,6 +19,8 @@ type iCreateTaskGroupRequest interface {
 	GetScenes() *string
 	SetServiceCodes(v string) *CreateTaskGroupRequest
 	GetServiceCodes() *string
+	SetServiceList(v string) *CreateTaskGroupRequest
+	GetServiceList() *string
 	SetServiceNames(v string) *CreateTaskGroupRequest
 	GetServiceNames() *string
 	SetTab(v string) *CreateTaskGroupRequest
@@ -30,38 +32,68 @@ type iCreateTaskGroupRequest interface {
 }
 
 type CreateTaskGroupRequest struct {
+	// The language of the error message returned by the operation. Valid values:
+	//
+	// - zh: Chinese.
+	//
+	// - en: English.
+	//
+	// Default value: en.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The region code.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegId *string `json:"RegId,omitempty" xml:"RegId,omitempty"`
+	// The sample IDs.
+	//
 	// example:
 	//
 	// 1,2
 	SampleIds *string `json:"SampleIds,omitempty" xml:"SampleIds,omitempty"`
+	// The scenarios corresponding to the service.
+	//
 	// example:
 	//
 	// [\\"porn\\",\\"terrorism\\",\\"ad\\"]
 	Scenes *string `json:"Scenes,omitempty" xml:"Scenes,omitempty"`
+	// The service codes.
+	//
 	// example:
 	//
 	// oss
 	ServiceCodes *string `json:"ServiceCodes,omitempty" xml:"ServiceCodes,omitempty"`
+	// The service list.
+	//
+	// example:
+	//
+	// [{"serviceCode":"anti_fraud_v4_score"},{"serviceCode":"antif2_score"},{"serviceCode":"anti_fraud_customed","scenes":["TC_general_1","aliyun_cust_feat_all"]},{"serviceCode":"antif2_customed_plus","scenes":["antif2_customed_v1_feature"]}]
+	ServiceList *string `json:"ServiceList,omitempty" xml:"ServiceList,omitempty"`
+	// The list of service names for per-application statistics.
+	//
 	// example:
 	//
 	// Test
 	ServiceNames *string `json:"ServiceNames,omitempty" xml:"ServiceNames,omitempty"`
+	// The scenario.
+	//
 	// example:
 	//
 	// INTERNET
 	Tab *string `json:"Tab,omitempty" xml:"Tab,omitempty"`
+	// The task group name.
+	//
 	// example:
 	//
 	// TeskGroupTest
 	TaskGroupName *string `json:"TaskGroupName,omitempty" xml:"TaskGroupName,omitempty"`
+	// The access type.
+	//
 	// example:
 	//
 	// SAF_CONSOLE
@@ -94,6 +126,10 @@ func (s *CreateTaskGroupRequest) GetScenes() *string {
 
 func (s *CreateTaskGroupRequest) GetServiceCodes() *string {
 	return s.ServiceCodes
+}
+
+func (s *CreateTaskGroupRequest) GetServiceList() *string {
+	return s.ServiceList
 }
 
 func (s *CreateTaskGroupRequest) GetServiceNames() *string {
@@ -134,6 +170,11 @@ func (s *CreateTaskGroupRequest) SetScenes(v string) *CreateTaskGroupRequest {
 
 func (s *CreateTaskGroupRequest) SetServiceCodes(v string) *CreateTaskGroupRequest {
 	s.ServiceCodes = &v
+	return s
+}
+
+func (s *CreateTaskGroupRequest) SetServiceList(v string) *CreateTaskGroupRequest {
+	s.ServiceList = &v
 	return s
 }
 

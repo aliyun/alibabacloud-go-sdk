@@ -28,7 +28,7 @@ type DescribeSampleBatchOssPolicyResponseBody struct {
 	//
 	// example:
 	//
-	// LTAxxxxxxxxxxxx
+	// LTAIxxxxxxxxxxxx
 	AccessId *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
 	// OSS Domain
 	//

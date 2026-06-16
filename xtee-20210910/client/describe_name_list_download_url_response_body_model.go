@@ -16,13 +16,13 @@ type iDescribeNameListDownloadUrlResponseBody interface {
 }
 
 type DescribeNameListDownloadUrlResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// AE7E6105-7DEB-5125-9B24-DCBC139F6CD2
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Returned object
+	// The response object.
 	ResultObject *DescribeNameListDownloadUrlResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Struct"`
 }
 
@@ -62,7 +62,7 @@ func (s *DescribeNameListDownloadUrlResponseBody) Validate() error {
 }
 
 type DescribeNameListDownloadUrlResponseBodyResultObject struct {
-	// Download URL.
+	// The download URL.
 	//
 	// example:
 	//

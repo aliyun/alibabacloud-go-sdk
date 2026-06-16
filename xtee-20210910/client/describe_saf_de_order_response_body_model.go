@@ -16,13 +16,13 @@ type iDescribeSafDeOrderResponseBody interface {
 }
 
 type DescribeSafDeOrderResponseBody struct {
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// AE7E6105-7DEB-5125-9B24-DCBC139F6CD2
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Return object
+	// The response object.
 	ResultObject *DescribeSafDeOrderResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Struct"`
 }
 
@@ -62,25 +62,25 @@ func (s *DescribeSafDeOrderResponseBody) Validate() error {
 }
 
 type DescribeSafDeOrderResponseBodyResultObject struct {
-	// Expiration time
+	// The expiration time.
 	//
 	// example:
 	//
 	// 1728008155799
 	ExpirationDate *int64 `json:"expirationDate,omitempty" xml:"expirationDate,omitempty"`
-	// Based on the product type subscribed by the customer, the console permissions are divided into three categories:
+	// The console permissions are classified into three categories based on the commodity type activated by the customer:
 	//
-	//      1. New Customer: Has not purchased/subscribed to any service.
+	//      1. New customer: has not purchased or activated any service.
 	//
-	//      2. Old Customer (Subscription): Customers who have purchased the SAF product.
+	//      2. Existing customer (subscription): has purchased the saf commodity.
 	//
-	//      3. Pay-As-You-Go: Customers who have purchased the SAF_BAG product or activated SAF_POS.
+	//      3. Pay-as-you-go: has purchased the saf_bag commodity or activated saf_pos.
 	//
 	// example:
 	//
 	// 2
 	OpenUserType *int32 `json:"openUserType,omitempty" xml:"openUserType,omitempty"`
-	// Activated region permission addresses.
+	// The activated region permission addresses.
 	Regions []*DescribeSafDeOrderResponseBodyResultObjectRegions `json:"regions,omitempty" xml:"regions,omitempty" type:"Repeated"`
 }
 
@@ -133,27 +133,27 @@ func (s *DescribeSafDeOrderResponseBodyResultObject) Validate() error {
 }
 
 type DescribeSafDeOrderResponseBodyResultObjectRegions struct {
-	// Expiration date (timestamp).
+	// The expiration date (timestamp).
 	//
 	// example:
 	//
 	// 2117750400000
 	ExpirationDate *int64 `json:"expirationDate,omitempty" xml:"expirationDate,omitempty"`
-	// Region ID.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-shanghai
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
-	// Specification model:
+	// The specification type:
 	//
-	// 1: Basic Edition
+	//  1: Basic Edition
 	//
-	// 2: Advanced Edition
+	//  2: Advanced Edition
 	//
-	// 3: Premium Edition
+	//  3: Premium Edition
 	//
-	// 4: Flagship Edition
+	//  4: Ultimate Edition.
 	//
 	// example:
 	//

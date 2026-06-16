@@ -36,17 +36,17 @@ type iUpdateQueryVariableRequest interface {
 }
 
 type UpdateQueryVariableRequest struct {
-	// Sets the language type for requests and received messages, with a default value of **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Data source code
+	// The data source code.
 	//
 	// This parameter is required.
 	//
@@ -54,13 +54,13 @@ type UpdateQueryVariableRequest struct {
 	//
 	// ds_vcaoii1697
 	DataSourceCode *string `json:"dataSourceCode,omitempty" xml:"dataSourceCode,omitempty"`
-	// Description.
+	// The description.
 	//
 	// example:
 	//
 	// 描述
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Event code
+	// The event code.
 	//
 	// This parameter is required.
 	//
@@ -68,7 +68,7 @@ type UpdateQueryVariableRequest struct {
 	//
 	// de_ajnoqe2016
 	EventCode *string `json:"eventCode,omitempty" xml:"eventCode,omitempty"`
-	// Expression.
+	// The expression.
 	//
 	// This parameter is required.
 	//
@@ -76,7 +76,7 @@ type UpdateQueryVariableRequest struct {
 	//
 	// SELECT  AVG( $source )\\nFROM ds_vcaoii1697 \\nWHERE  $age > 0
 	Expression *string `json:"expression,omitempty" xml:"expression,omitempty"`
-	// Display expression
+	// The display expression.
 	//
 	// This parameter is required.
 	//
@@ -84,7 +84,7 @@ type UpdateQueryVariableRequest struct {
 	//
 	// SELECT  AVG( $source )\\nFROM testCase\\nWHERE  $age > 0
 	ExpressionTitle *string `json:"expressionTitle,omitempty" xml:"expressionTitle,omitempty"`
-	// Expression associated variable
+	// The variable associated with the expression.
 	//
 	// This parameter is required.
 	//
@@ -92,7 +92,7 @@ type UpdateQueryVariableRequest struct {
 	//
 	// age
 	ExpressionVariable *string `json:"expressionVariable,omitempty" xml:"expressionVariable,omitempty"`
-	// Primary key ID
+	// The primary key ID.
 	//
 	// This parameter is required.
 	//
@@ -100,7 +100,7 @@ type UpdateQueryVariableRequest struct {
 	//
 	// 3144
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// Outlier
+	// The outlier value.
 	//
 	// This parameter is required.
 	//
@@ -108,7 +108,7 @@ type UpdateQueryVariableRequest struct {
 	//
 	// -1
 	Outlier *string `json:"outlier,omitempty" xml:"outlier,omitempty"`
-	// Variable return type
+	// The return type of the variable.
 	//
 	// This parameter is required.
 	//
@@ -116,7 +116,7 @@ type UpdateQueryVariableRequest struct {
 	//
 	// STRING
 	Outputs *string `json:"outputs,omitempty" xml:"outputs,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// This parameter is required.
 	//
@@ -124,7 +124,7 @@ type UpdateQueryVariableRequest struct {
 	//
 	// cn-hangzhou
 	RegId *string `json:"regId,omitempty" xml:"regId,omitempty"`
-	// Title.
+	// The title.
 	//
 	// This parameter is required.
 	//

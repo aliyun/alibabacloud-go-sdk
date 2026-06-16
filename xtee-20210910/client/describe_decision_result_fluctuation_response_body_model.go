@@ -24,33 +24,33 @@ type iDescribeDecisionResultFluctuationResponseBody interface {
 }
 
 type DescribeDecisionResultFluctuationResponseBody struct {
-	// Status code.
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// HTTP status code
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *string `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// Error details
+	// The error details.
 	//
 	// example:
 	//
 	// The input parameter data is not valid. order_storage_company_num component not found
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// AE7E6105-7DEB-5125-9B24-DCBC139F6CD2
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Return object
+	// The returned object.
 	ResultObject []*DescribeDecisionResultFluctuationResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Repeated"`
-	// Indicates whether the operation was successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -134,37 +134,37 @@ func (s *DescribeDecisionResultFluctuationResponseBody) Validate() error {
 }
 
 type DescribeDecisionResultFluctuationResponseBodyResultObject struct {
-	// Execution status.
+	// The execution status.
 	//
 	// example:
 	//
 	// PASS
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// Today\\"s count
+	// The count for today.
 	//
 	// example:
 	//
 	// 100
 	TodayNum *int64 `json:"todayNum,omitempty" xml:"todayNum,omitempty"`
-	// Count within the last seven days
+	// The count for the last seven days.
 	//
 	// example:
 	//
 	// 600
 	WithinSevenDayNum *string `json:"withinSevenDayNum,omitempty" xml:"withinSevenDayNum,omitempty"`
-	// Count within the last thirty days
+	// The count for the last thirty days.
 	//
 	// example:
 	//
 	// 1200
 	WithinThirtyDayNum *string `json:"withinThirtyDayNum,omitempty" xml:"withinThirtyDayNum,omitempty"`
-	// Count within the last three days
+	// The count for the last three days.
 	//
 	// example:
 	//
 	// 300
 	WithinThreeDayNum *string `json:"withinThreeDayNum,omitempty" xml:"withinThreeDayNum,omitempty"`
-	// Yesterday\\"s count
+	// The count for yesterday.
 	//
 	// example:
 	//

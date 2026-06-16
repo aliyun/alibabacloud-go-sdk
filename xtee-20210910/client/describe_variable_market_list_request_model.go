@@ -32,67 +32,65 @@ type iDescribeVariableMarketListRequest interface {
 }
 
 type DescribeVariableMarketListRequest struct {
-	// Sets the language type for requests and received messages, with a default value of **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Charging mode
+	// The billing mode.
 	//
 	// example:
 	//
 	// FREE
 	ChargingMode *string `json:"chargingMode,omitempty" xml:"chargingMode,omitempty"`
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
-	// Page size, with a default value of 10.
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Paging indicator, default is true.
+	// Specifies whether to enable paging. Default value: true.
 	//
 	// example:
 	//
 	// true
 	Paging *string `json:"paging,omitempty" xml:"paging,omitempty"`
-	// Query content, supports fuzzy search.
-	//
-	//  Title/Description
+	// The query content. Fuzzy match is supported for the title or description.
 	//
 	// example:
 	//
 	// 手机号
 	QueryContent *string `json:"queryContent,omitempty" xml:"queryContent,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegId *string `json:"regId,omitempty" xml:"regId,omitempty"`
-	// Scenario
+	// The scenario.
 	//
 	// example:
 	//
 	// [\\"coupon_abuse_detection\\"]
 	ScenesStr *string `json:"scenesStr,omitempty" xml:"scenesStr,omitempty"`
-	// Source
+	// The source.
 	//
 	// example:
 	//
 	// SAF
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
-	// Title.
+	// The title.
 	//
 	// example:
 	//

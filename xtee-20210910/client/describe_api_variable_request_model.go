@@ -18,7 +18,7 @@ type iDescribeApiVariableRequest interface {
 }
 
 type DescribeApiVariableRequest struct {
-	// Sets the language type for requests and received messages, with a default value of **zh**. Values:
+	// The language type for the request and response messages. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
@@ -28,7 +28,7 @@ type DescribeApiVariableRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Variable ID
+	// The variable ID.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type DescribeApiVariableRequest struct {
 	//
 	// 3144
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// Region code
+	// The region ID.
 	//
 	// example:
 	//

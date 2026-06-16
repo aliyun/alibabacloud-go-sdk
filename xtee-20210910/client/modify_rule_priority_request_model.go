@@ -22,35 +22,35 @@ type iModifyRulePriorityRequest interface {
 }
 
 type ModifyRulePriorityRequest struct {
-	// Set the language type for requests and received messages, default value is **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Primary key ID of the policy
+	// The primary key ID of the policy.
 	//
 	// example:
 	//
 	// 3581
 	ConsoleRuleId *int64 `json:"consoleRuleId,omitempty" xml:"consoleRuleId,omitempty"`
-	// Policy priority, the higher the number, the higher the priority.
+	// The policy priority. A larger value indicates a higher priority.
 	//
 	// example:
 	//
 	// 10
 	Priority *int32 `json:"priority,omitempty" xml:"priority,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegId *string `json:"regId,omitempty" xml:"regId,omitempty"`
-	// Policy ID
+	// The policy ID.
 	//
 	// example:
 	//

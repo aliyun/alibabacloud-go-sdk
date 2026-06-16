@@ -16,13 +16,13 @@ type iCheckUsageVariableResponseBody interface {
 }
 
 type CheckUsageVariableResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// A32FE941-35F2-5378-B37C-4B8FDB16F094
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Whether it was successful
+	// Indicates whether the operation is successful.
 	//
 	// example:
 	//

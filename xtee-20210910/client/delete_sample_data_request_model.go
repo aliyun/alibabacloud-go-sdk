@@ -18,23 +18,23 @@ type iDeleteSampleDataRequest interface {
 }
 
 type DeleteSampleDataRequest struct {
-	// Sets the language type for requests and received messages, with a default value of **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Primary key ID
+	// The primary key ID.
 	//
 	// example:
 	//
 	// 3144
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// example:
 	//

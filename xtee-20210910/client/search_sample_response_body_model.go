@@ -22,22 +22,31 @@ type iSearchSampleResponseBody interface {
 }
 
 type SearchSampleResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// A32FE941-35F2-5378-B37C-4B8FDB16F094
-	RequestId    *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Return Result.
 	ResultObject []*SearchSampleResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Repeated"`
 }
 
@@ -108,38 +117,56 @@ func (s *SearchSampleResponseBody) Validate() error {
 }
 
 type SearchSampleResponseBodyResultObject struct {
+	// File Name.
+	//
 	// example:
 	//
 	// icekredit_model_A_2025c_1755826424_870000.csv
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// File Size.
+	//
 	// example:
 	//
 	// 572
 	FileSize *int32 `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	// Remarks.
+	//
 	// example:
 	//
 	// ios_velo
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// Number of Records.
+	//
 	// example:
 	//
 	// 325
 	RowCount *int32 `json:"RowCount,omitempty" xml:"RowCount,omitempty"`
+	// Sample ID.
+	//
 	// example:
 	//
 	// 9b020e69bbae49d88c07a377c3ab7a71
 	SampleId *int32 `json:"SampleId,omitempty" xml:"SampleId,omitempty"`
+	// Sample Name.
+	//
 	// example:
 	//
 	// Test
 	SampleName *string `json:"SampleName,omitempty" xml:"SampleName,omitempty"`
+	// Scenario.
+	//
 	// example:
 	//
 	// FINANCE
 	Tab *string `json:"Tab,omitempty" xml:"Tab,omitempty"`
+	// File Upload Time.
+	//
 	// example:
 	//
 	// 2023-12-01 12:23:34
 	UploadTime *string `json:"UploadTime,omitempty" xml:"UploadTime,omitempty"`
+	// Uploader.
+	//
 	// example:
 	//
 	// ds

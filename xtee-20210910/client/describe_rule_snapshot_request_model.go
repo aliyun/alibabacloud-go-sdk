@@ -20,7 +20,7 @@ type iDescribeRuleSnapshotRequest interface {
 }
 
 type DescribeRuleSnapshotRequest struct {
-	// Sets the language type for requests and received messages, with a default value of **zh**. Values:
+	// Sets the language type for sending and receiving messages. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
@@ -30,19 +30,19 @@ type DescribeRuleSnapshotRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegId *string `json:"regId,omitempty" xml:"regId,omitempty"`
-	// Policy ID
+	// The policy ID.
 	//
 	// example:
 	//
 	// 101544
 	RuleId *string `json:"ruleId,omitempty" xml:"ruleId,omitempty"`
-	// Snapshot version.
+	// The snapshot version.
 	//
 	// example:
 	//

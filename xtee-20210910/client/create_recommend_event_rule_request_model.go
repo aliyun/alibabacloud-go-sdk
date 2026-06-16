@@ -24,41 +24,41 @@ type iCreateRecommendEventRuleRequest interface {
 }
 
 type CreateRecommendEventRuleRequest struct {
-	// Set the language type for requests and received messages, default value is **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Event code.
+	// The event code.
 	//
 	// example:
 	//
 	// de_ahqido8038
 	EventCode *string `json:"eventCode,omitempty" xml:"eventCode,omitempty"`
-	// Event name.
+	// The event name.
 	//
 	// example:
 	//
 	// 用户昵称文本审核检测结果
 	EventName *string `json:"eventName,omitempty" xml:"eventName,omitempty"`
-	// Strategy ID.
+	// The policy ID.
 	//
 	// example:
 	//
 	// [\\"100234\\",\\"100235\\"]
 	RecommendRuleIdsStr *string `json:"recommendRuleIdsStr,omitempty" xml:"recommendRuleIdsStr,omitempty"`
-	// Region code.
+	// The region code.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegId *string `json:"regId,omitempty" xml:"regId,omitempty"`
-	// Task ID.
+	// The task ID.
 	//
 	// example:
 	//

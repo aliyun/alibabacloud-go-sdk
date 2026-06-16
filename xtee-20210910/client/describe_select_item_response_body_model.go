@@ -16,13 +16,13 @@ type iDescribeSelectItemResponseBody interface {
 }
 
 type DescribeSelectItemResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// A32FE941-35F2-5378-B37C-4B8FDB16F094
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Return object
+	// The response object.
 	ResultObject *DescribeSelectItemResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Struct"`
 }
 
@@ -62,9 +62,9 @@ func (s *DescribeSelectItemResponseBody) Validate() error {
 }
 
 type DescribeSelectItemResponseBodyResultObject struct {
-	// Monitoring status list.
+	// The list of monitoring statuses.
 	MonitorStatusList []*string `json:"monitorStatusList,omitempty" xml:"monitorStatusList,omitempty" type:"Repeated"`
-	// Task ID list.
+	// The list of task IDs.
 	TaskIdList []*string `json:"taskIdList,omitempty" xml:"taskIdList,omitempty" type:"Repeated"`
 }
 

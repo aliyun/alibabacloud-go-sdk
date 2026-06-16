@@ -24,33 +24,33 @@ type iDescribeSafTagListResponseBody interface {
 }
 
 type DescribeSafTagListResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// A32FE941-35F2-5378-B37C-4B8FDB16F094
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
-	// Page size, default value is 10.
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Returned object.
+	// The returned object.
 	ResultObject []*DescribeSafTagListResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Repeated"`
-	// Total number of items.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 6
 	TotalItem *int32 `json:"totalItem,omitempty" xml:"totalItem,omitempty"`
-	// Total number of pages.
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -134,43 +134,43 @@ func (s *DescribeSafTagListResponseBody) Validate() error {
 }
 
 type DescribeSafTagListResponseBodyResultObject struct {
-	// Tag description.
+	// The label description.
 	//
 	// example:
 	//
 	// 依赖IP画像模型识别输出风险高、中高、中的判定\\n数据来源主要基于IP的网络属性数据和对黑产行为轨迹的情报监控数据，涵盖可识别检测IP网络属性特征、恶意属性等特征\\n而模型评分的高中低主要是根据当前IP号段命中风险行为的恶意程度和种类来判定的\\n备注：以下rn0311、rn0312、rn0313、rn0314、rn0315属于IP画像模型针对当前请求IP识别出的风险类别
 	TagDesc *string `json:"tagDesc,omitempty" xml:"tagDesc,omitempty"`
-	// Tag meaning.
+	// The label meaning.
 	//
 	// example:
 	//
 	// IP风险评分高
 	TagMean *string `json:"tagMean,omitempty" xml:"tagMean,omitempty"`
-	// Tag name.
+	// The label name.
 	//
 	// example:
 	//
 	// rn0301
 	TagName *string `json:"tagName,omitempty" xml:"tagName,omitempty"`
-	// Tag identifier.
+	// The label identifier.
 	//
 	// example:
 	//
 	// rn0301
 	TagState *string `json:"tagState,omitempty" xml:"tagState,omitempty"`
-	// Tag type.
+	// The label type.
 	//
 	// example:
 	//
 	// IP风险类
 	TagType *string `json:"tagType,omitempty" xml:"tagType,omitempty"`
-	// Unique identifier of the tag key.
+	// The unique identifier of the label key.
 	//
 	// example:
 	//
 	// rn0301
 	TagUid *string `json:"tagUid,omitempty" xml:"tagUid,omitempty"`
-	// Update time.
+	// The update time.
 	//
 	// example:
 	//

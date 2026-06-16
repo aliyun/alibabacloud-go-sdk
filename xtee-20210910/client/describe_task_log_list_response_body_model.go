@@ -24,33 +24,33 @@ type iDescribeTaskLogListResponseBody interface {
 }
 
 type DescribeTaskLogListResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// A32FE941-35F2-5378-B37C-4B8FDB16F094
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
-	// Number of items per page, default value is 10
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Returned object
+	// The returned object.
 	ResultObject []*DescribeTaskLogListResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Repeated"`
-	// Total number of items
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 6
 	TotalItem *int32 `json:"totalItem,omitempty" xml:"totalItem,omitempty"`
-	// Total number of pages.
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -134,53 +134,53 @@ func (s *DescribeTaskLogListResponseBody) Validate() error {
 }
 
 type DescribeTaskLogListResponseBodyResultObject struct {
-	// Completion time, in milliseconds.
+	// The completion time, in milliseconds.
 	//
 	// example:
 	//
 	// 1753804800000
 	CompletionTime *int64 `json:"completionTime,omitempty" xml:"completionTime,omitempty"`
-	// Task creation time.
+	// The time when the task was created.
 	//
 	// example:
 	//
 	// 1753804800000
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// Log ID.
+	// The log ID.
 	//
 	// example:
 	//
 	// 2793
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// Remark.
+	// The remarks.
 	//
 	// example:
 	//
 	// 备注
 	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
-	// Scene name
+	// The scenario name.
 	//
 	// example:
 	//
 	// coupon_abuse_detection
 	SceneName *string `json:"sceneName,omitempty" xml:"sceneName,omitempty"`
-	// Status.
+	// The status. Valid values:
 	//
-	// 0: Deleted
+	// 0: deleted
 	//
-	// 1: Normal
+	// 1: Normal.
 	//
 	// example:
 	//
 	// 1
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// Task type
+	// The task type. Valid values:
 	//
-	// 1: Data upload
+	// 1: data upload
 	//
-	// 2: Supplemental upload
+	// 2: supplementary upload
 	//
-	// 3: Labeling
+	// 3: labeling.
 	//
 	// example:
 	//

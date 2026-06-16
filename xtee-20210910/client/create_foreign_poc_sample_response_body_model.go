@@ -22,22 +22,31 @@ type iCreateForeignPocSampleResponseBody interface {
 }
 
 type CreateForeignPocSampleResponseBody struct {
+	// Status code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Return message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// A32FE941-35F2-5378-B37C-4B8FDB16F094
-	RequestId    *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Return Result.
 	ResultObject *CreateForeignPocSampleResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
 
@@ -104,22 +113,32 @@ func (s *CreateForeignPocSampleResponseBody) Validate() error {
 }
 
 type CreateForeignPocSampleResponseBodyResultObject struct {
+	// Indicates whether validation warnings exist.
+	//
 	// example:
 	//
 	// true
 	HasWarnings *bool `json:"HasWarnings,omitempty" xml:"HasWarnings,omitempty"`
+	// Sample ID.
+	//
 	// example:
 	//
 	// 174
 	SampleId *int32 `json:"SampleId,omitempty" xml:"SampleId,omitempty"`
+	// Sample Name.
+	//
 	// example:
 	//
 	// SampleNameTest
 	SampleName *string `json:"SampleName,omitempty" xml:"SampleName,omitempty"`
+	// Scenario.
+	//
 	// example:
 	//
 	// FINANCE
 	Tab *string `json:"Tab,omitempty" xml:"Tab,omitempty"`
+	// Warning summary.
+	//
 	// example:
 	//
 	// test

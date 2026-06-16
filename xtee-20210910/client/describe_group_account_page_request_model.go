@@ -34,7 +34,7 @@ type iDescribeGroupAccountPageRequest interface {
 }
 
 type DescribeGroupAccountPageRequest struct {
-	// Sets the language type for requests and received messages, default value is **zh**. Values:
+	// The language type for sending and receiving messages. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
@@ -44,61 +44,61 @@ type DescribeGroupAccountPageRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Community number.
+	// The community number.
 	//
 	// example:
 	//
 	// 129838420210118141502KiJ1SZL2
 	CommunityNo *string `json:"communityNo,omitempty" xml:"communityNo,omitempty"`
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *string `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
-	// Order direction.
+	// The sort order.
 	//
 	// example:
 	//
 	// 0
 	Direction *string `json:"direction,omitempty" xml:"direction,omitempty"`
-	// fieldKey.
+	// fieldKey
 	//
 	// example:
 	//
 	// mobile
 	FieldKey *string `json:"fieldKey,omitempty" xml:"fieldKey,omitempty"`
-	// fieldVal.
+	// fieldVal
 	//
 	// example:
 	//
 	// 18000000000
 	FieldVal *string `json:"fieldVal,omitempty" xml:"fieldVal,omitempty"`
-	// Whether to paginate.
+	// Specifies whether to enable pagination.
 	//
 	// example:
 	//
 	// true
 	IsPage *bool `json:"isPage,omitempty" xml:"isPage,omitempty"`
-	// Sorting condition.
+	// The sort condition.
 	//
 	// example:
 	//
 	// asc
 	Order *string `json:"order,omitempty" xml:"order,omitempty"`
-	// Page size, default value is 10.
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Region code.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegId *string `json:"regId,omitempty" xml:"regId,omitempty"`
-	// Task ID.
+	// The task ID.
 	//
 	// example:
 	//

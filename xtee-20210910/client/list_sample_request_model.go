@@ -30,38 +30,56 @@ type iListSampleRequest interface {
 }
 
 type ListSampleRequest struct {
+	// Current page number.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// Language of error messages returned by the API. Valid values: zh: Chinese. en: English. Default value: en.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Area code.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegId *string `json:"RegId,omitempty" xml:"RegId,omitempty"`
+	// Sample name.
+	//
 	// example:
 	//
 	// SampleTest
 	SampleName *string `json:"SampleName,omitempty" xml:"SampleName,omitempty"`
+	// Scenario.
+	//
 	// example:
 	//
 	// FINANCE
 	Tab *string `json:"Tab,omitempty" xml:"Tab,omitempty"`
+	// Access type.
+	//
 	// example:
 	//
 	// SAF_CONSOLE
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Upload end time.
+	//
 	// example:
 	//
 	// 2023-03-09 14:45:26
 	UploadTimeEnd *string `json:"UploadTimeEnd,omitempty" xml:"UploadTimeEnd,omitempty"`
+	// Upload start time.
+	//
 	// example:
 	//
 	// 2023-03-09 14:45:23

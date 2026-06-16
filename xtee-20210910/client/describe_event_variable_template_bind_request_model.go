@@ -22,17 +22,17 @@ type iDescribeEventVariableTemplateBindRequest interface {
 }
 
 type DescribeEventVariableTemplateBindRequest struct {
-	// Sets the language type for requests and received messages. Default value is **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Input parameters, separated by commas if multiple.
+	// The input parameters. Separate multiple values with commas (,).
 	//
 	// This parameter is required.
 	//
@@ -40,19 +40,19 @@ type DescribeEventVariableTemplateBindRequest struct {
 	//
 	// age,ip
 	Inputs *string `json:"inputs,omitempty" xml:"inputs,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegId *string `json:"regId,omitempty" xml:"regId,omitempty"`
-	// Template code.
+	// The template code.
 	//
 	// example:
 	//
 	// register
 	TemplateCode *string `json:"templateCode,omitempty" xml:"templateCode,omitempty"`
-	// Type
+	// The type.
 	//
 	// This parameter is required.
 	//

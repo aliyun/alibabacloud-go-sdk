@@ -22,22 +22,31 @@ type iDownloadSubTaskResultResponseBody interface {
 }
 
 type DownloadSubTaskResultResponseBody struct {
+	// status code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Return message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// request ID.
+	//
 	// example:
 	//
 	// E01E1B4A-6747-5329-9046-B6D6B2D91349
-	RequestId    *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Return Result.
 	ResultObject *DownloadSubTaskResultResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
 
@@ -104,10 +113,14 @@ func (s *DownloadSubTaskResultResponseBody) Validate() error {
 }
 
 type DownloadSubTaskResultResponseBodyResultObject struct {
+	// Status.
+	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// OSS download URL.
+	//
 	// example:
 	//
 	// https://mass.alipay.com/enhance/afts/file/n5XnQounknwAAAAAZfAAAAgAhvocAAFr?t=2hrPX0at3hhaRjlScory9JzLGiLchaonac5suH-Z1BgDAAAAZAABHPpobI2j

@@ -24,33 +24,33 @@ type iDescribeDataSourcePageListResponseBody interface {
 }
 
 type DescribeDataSourcePageListResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// A32FE941-35F2-5378-B37C-4B8FDB16F094
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
-	// Page size, default value is 10
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Return object
+	// The returned object.
 	ResultObject []*DescribeDataSourcePageListResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Repeated"`
-	// Total items
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 3
 	TotalItem *int32 `json:"totalItem,omitempty" xml:"totalItem,omitempty"`
-	// Total pages
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -134,55 +134,55 @@ func (s *DescribeDataSourcePageListResponseBody) Validate() error {
 }
 
 type DescribeDataSourcePageListResponseBodyResultObject struct {
-	// Creator of the data source.
+	// The creator of the data source.
 	//
 	// example:
 	//
 	// xxxx
 	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
-	// Data source description.
+	// The description of the data source.
 	//
 	// example:
 	//
 	// 描述
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Time when the data source was created.
+	// The time when the data source was created.
 	//
 	// example:
 	//
 	// 1621578648000
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// Time when the data source was last modified.
+	// The time when the data source was last modified.
 	//
 	// example:
 	//
 	// 1565701886000
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// Data source ID.
+	// The data source ID.
 	//
 	// example:
 	//
 	// 497
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// Last modifier.
+	// The user who last modified the data source.
 	//
 	// example:
 	//
 	// xxxxx
 	Modifier *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
-	// Data source name.
+	// The data source name.
 	//
 	// example:
 	//
 	// data_source
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Total pages.
+	// The total number of pages.
 	//
 	// example:
 	//
 	// 4
 	Total *int64 `json:"total,omitempty" xml:"total,omitempty"`
-	// Data source type.
+	// The data source type.
 	//
 	// example:
 	//

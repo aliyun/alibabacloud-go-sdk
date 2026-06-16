@@ -18,23 +18,23 @@ type iDescribeExistSceneRequest interface {
 }
 
 type DescribeExistSceneRequest struct {
-	// Sets the language type for requests and received messages, default value is **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Scene name.
+	// The scenario name.
 	//
 	// example:
 	//
 	// 样本调度
 	SceneName *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// example:
 	//

@@ -22,31 +22,31 @@ type iDescribeBasicStartRequest interface {
 }
 
 type DescribeBasicStartRequest struct {
-	// Application appkey.
+	// The AppKey of the application.
 	//
 	// example:
 	//
 	// ***
 	AppKey *string `json:"appKey,omitempty" xml:"appKey,omitempty"`
-	// End time, accurate to milliseconds (ms).
+	// The end time, in milliseconds (ms).
 	//
 	// example:
 	//
 	// 20250320
 	EndDs *string `json:"endDs,omitempty" xml:"endDs,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegId *string `json:"regId,omitempty" xml:"regId,omitempty"`
-	// Service to call
+	// The service to call.
 	//
 	// example:
 	//
 	// service_tender_cee
 	Service *string `json:"service,omitempty" xml:"service,omitempty"`
-	// Start time, accurate to milliseconds (ms).
+	// The start time, in milliseconds (ms).
 	//
 	// example:
 	//

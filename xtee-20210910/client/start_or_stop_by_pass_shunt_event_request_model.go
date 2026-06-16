@@ -20,29 +20,29 @@ type iStartOrStopByPassShuntEventRequest interface {
 }
 
 type StartOrStopByPassShuntEventRequest struct {
-	// Sets the language type for requests and received messages, default value is **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Event ID.
+	// The event ID.
 	//
 	// example:
 	//
 	// 445
 	EventId *int64 `json:"eventId,omitempty" xml:"eventId,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegId *string `json:"regId,omitempty" xml:"regId,omitempty"`
-	// Status.
+	// The status.
 	//
 	// example:
 	//

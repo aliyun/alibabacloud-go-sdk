@@ -16,13 +16,13 @@ type iDescribeRuleListByEventCodesListResponseBody interface {
 }
 
 type DescribeRuleListByEventCodesListResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// A32FE941-35F2-5378-B37C-4B8FDB16F094
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Returned object
+	// The returned object.
 	ResultObject []*DescribeRuleListByEventCodesListResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Repeated"`
 }
 
@@ -66,13 +66,13 @@ func (s *DescribeRuleListByEventCodesListResponseBody) Validate() error {
 }
 
 type DescribeRuleListByEventCodesListResponseBodyResultObject struct {
-	// Policy ID
+	// The policy ID.
 	//
 	// example:
 	//
 	// 4730
 	RuleId *string `json:"ruleId,omitempty" xml:"ruleId,omitempty"`
-	// Policy name
+	// The policy name.
 	//
 	// example:
 	//

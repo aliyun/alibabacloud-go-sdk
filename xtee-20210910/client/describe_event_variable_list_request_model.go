@@ -26,19 +26,23 @@ type iDescribeEventVariableListRequest interface {
 }
 
 type DescribeEventVariableListRequest struct {
-	// Sets the language type for requests and received messages, with a default value of **zh**. The values are: - **zh**: Chinese - **en**: English
+	// The language type for the request and response messages. Default value: **zh**. Valid values:
+	//
+	// - **zh**: Chinese
+	//
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Create Type.
+	// The creation type.
 	//
 	// example:
 	//
 	// NORMAL
 	CreateType *string `json:"createType,omitempty" xml:"createType,omitempty"`
-	// Filter object.
+	// The filter object.
 	//
 	// example:
 	//
@@ -50,7 +54,7 @@ type DescribeEventVariableListRequest struct {
 	//
 	// }
 	FilterDTO *string `json:"filterDTO,omitempty" xml:"filterDTO,omitempty"`
-	// Associated event eventCode.
+	// The associated event code (eventCode).
 	//
 	// This parameter is required.
 	//
@@ -58,7 +62,7 @@ type DescribeEventVariableListRequest struct {
 	//
 	// de_awkhwh0314
 	RefObjId *string `json:"refObjId,omitempty" xml:"refObjId,omitempty"`
-	// Association Type.
+	// The association type.
 	//
 	// This parameter is required.
 	//
@@ -66,13 +70,13 @@ type DescribeEventVariableListRequest struct {
 	//
 	// EVENT
 	RefObjType *string `json:"refObjType,omitempty" xml:"refObjType,omitempty"`
-	// Region Code.
+	// The region code.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegId *string `json:"regId,omitempty" xml:"regId,omitempty"`
-	// type.
+	// The type.
 	//
 	// example:
 	//

@@ -24,33 +24,33 @@ type iDescribeQueryVariablePageListResponseBody interface {
 }
 
 type DescribeQueryVariablePageListResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// A32FE941-35F2-5378-B37C-4B8FDB16F094
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Pagination parameter, current page.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int64 `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
-	// Page size, default value is 10
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Return object
+	// The returned object.
 	ResultObject []*DescribeQueryVariablePageListResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Repeated"`
-	// Total items
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 6
 	TotalItem *int64 `json:"totalItem,omitempty" xml:"totalItem,omitempty"`
-	// Total pages
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -134,73 +134,73 @@ func (s *DescribeQueryVariablePageListResponseBody) Validate() error {
 }
 
 type DescribeQueryVariablePageListResponseBodyResultObject struct {
-	// Data source code.
+	// The data source code.
 	//
 	// example:
 	//
 	// ds_vcaoii1697
 	DataSourceCode *int64 `json:"dataSourceCode,omitempty" xml:"dataSourceCode,omitempty"`
-	// Data source name.
+	// The data source name.
 	//
 	// example:
 	//
 	// 姓名数据源
 	DataSourceName *string `json:"dataSourceName,omitempty" xml:"dataSourceName,omitempty"`
-	// Description information.
+	// The description.
 	//
 	// example:
 	//
 	// 变量描述
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Event name.
+	// The event name.
 	//
 	// example:
 	//
 	// 注册风险
 	EventName *string `json:"eventName,omitempty" xml:"eventName,omitempty"`
-	// Return value type
+	// The return value type.
 	//
 	// example:
 	//
 	// STRING
 	FieldType *string `json:"fieldType,omitempty" xml:"fieldType,omitempty"`
-	// Creation time.
+	// The creation time.
 	//
 	// example:
 	//
 	// 1621578648000
 	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// Modification time
+	// The modification time.
 	//
 	// example:
 	//
 	// 1565701886000
 	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// Query variable primary key ID
+	// The primary key ID of the custom query variable.
 	//
 	// example:
 	//
 	// 497
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// Query variable name
+	// The name of the custom query variable.
 	//
 	// example:
 	//
 	// 查询变量名称
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Status.
+	// The status.
 	//
 	// example:
 	//
 	// ENABLE
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// Total count
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 24
 	Total *int64 `json:"total,omitempty" xml:"total,omitempty"`
-	// Version number.
+	// The version number.
 	//
 	// example:
 	//

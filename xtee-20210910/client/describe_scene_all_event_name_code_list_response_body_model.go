@@ -24,33 +24,33 @@ type iDescribeSceneAllEventNameCodeListResponseBody interface {
 }
 
 type DescribeSceneAllEventNameCodeListResponseBody struct {
-	// Status code
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// HTTP status code
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *string `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// Error details
+	// The error details.
 	//
 	// example:
 	//
 	// The input parameter data is not valid. order_storage_company_num component not found
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Request ID, which is unique for each request, facilitating subsequent troubleshooting
+	// The request ID. Each request has a unique ID for troubleshooting purposes.
 	//
 	// example:
 	//
 	// AE7E6105-7DEB-5125-9B24-DCBC139F6CD2
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Returned object
+	// The response object.
 	ResultObject []*DescribeSceneAllEventNameCodeListResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Repeated"`
-	// Indicates whether the operation was successful, where true means success.
+	// Indicates whether the operation was successful. A value of true indicates success.
 	//
 	// example:
 	//
@@ -134,27 +134,27 @@ func (s *DescribeSceneAllEventNameCodeListResponseBody) Validate() error {
 }
 
 type DescribeSceneAllEventNameCodeListResponseBodyResultObject struct {
-	// Child objects
+	// The child class objects.
 	Children []*DescribeSceneAllEventNameCodeListResponseBodyResultObjectChildren `json:"children,omitempty" xml:"children,omitempty" type:"Repeated"`
-	// Creation type
+	// The creation type.
 	//
 	// example:
 	//
 	// MORMAL
 	CreateType *string `json:"createType,omitempty" xml:"createType,omitempty"`
-	// Event code
+	// The event code.
 	//
 	// example:
 	//
 	// de_aszbjb7236
 	EventCode *string `json:"eventCode,omitempty" xml:"eventCode,omitempty"`
-	// Event name.
+	// The event name.
 	//
 	// example:
 	//
 	// 营销风险识别_增强版
 	EventName *string `json:"eventName,omitempty" xml:"eventName,omitempty"`
-	// Event type
+	// The event type.
 	//
 	// example:
 	//
@@ -229,25 +229,25 @@ func (s *DescribeSceneAllEventNameCodeListResponseBodyResultObject) Validate() e
 }
 
 type DescribeSceneAllEventNameCodeListResponseBodyResultObjectChildren struct {
-	// Creation type
+	// The creation type.
 	//
 	// example:
 	//
 	// NORMAL
 	CreateType *string `json:"createType,omitempty" xml:"createType,omitempty"`
-	// Event code
+	// The event code.
 	//
 	// example:
 	//
 	// de_aamexg3015
 	EventCode *string `json:"eventCode,omitempty" xml:"eventCode,omitempty"`
-	// Event name.
+	// The event name.
 	//
 	// example:
 	//
 	// 测试
 	EventName *string `json:"eventName,omitempty" xml:"eventName,omitempty"`
-	// Event type
+	// The event type.
 	//
 	// example:
 	//

@@ -24,29 +24,29 @@ type iSwitchFieldRequest interface {
 }
 
 type SwitchFieldRequest struct {
-	// Sets the language type for requests and received messages, with a default value of **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Primary Key ID
+	// The primary key ID.
 	//
 	// example:
 	//
 	// 250002
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// Parameter Name.
+	// The parameter name.
 	//
 	// example:
 	//
 	// age
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Region Code
+	// The region code.
 	//
 	// This parameter is required.
 	//
@@ -54,13 +54,21 @@ type SwitchFieldRequest struct {
 	//
 	// cn-hangzhou
 	RegId *string `json:"regId,omitempty" xml:"regId,omitempty"`
-	// Field Source
+	// The field source. Valid values:
+	//
+	// - **DEFINE**: custom
+	//
+	// - **DEFAULT**: system default.
 	//
 	// example:
 	//
 	// DEFINE
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
-	// Status.
+	// The status. Valid values:
+	//
+	// - **DISABLE**: disabled
+	//
+	// - **ENABLE**: enabled.
 	//
 	// example:
 	//

@@ -24,33 +24,33 @@ type iDescribeAuthRulePageListResponseBody interface {
 }
 
 type DescribeAuthRulePageListResponseBody struct {
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// A32FE941-35F2-5378-B37C-4B8FDB16F094
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int64 `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
-	// Page size, default value is 10
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Returned object
+	// The returned object.
 	ResultObject []*DescribeAuthRulePageListResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Repeated"`
-	// Total items
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 6
 	TotalItem *int64 `json:"totalItem,omitempty" xml:"totalItem,omitempty"`
-	// Total pages
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -134,61 +134,61 @@ func (s *DescribeAuthRulePageListResponseBody) Validate() error {
 }
 
 type DescribeAuthRulePageListResponseBodyResultObject struct {
-	// Console rule ID.
+	// The console rule ID.
 	//
 	// example:
 	//
 	// 6715
 	ConsoleRuleId *int64 `json:"consoleRuleId,omitempty" xml:"consoleRuleId,omitempty"`
-	// Creation type
+	// The creation type.
 	//
 	// example:
 	//
 	// MORMAL
 	CreateType *string `json:"createType,omitempty" xml:"createType,omitempty"`
-	// Modification time
+	// The modification time.
 	//
 	// example:
 	//
 	// 1565701886000
 	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// Policy primary key ID
+	// The primary key ID of the policy.
 	//
 	// example:
 	//
 	// 497
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// Memo
+	// The remarks.
 	//
 	// example:
 	//
 	// 分析中心事件测试_策略01
 	Memo *string `json:"memo,omitempty" xml:"memo,omitempty"`
-	// Policy ID
+	// The policy ID.
 	//
 	// example:
 	//
 	// 102059
 	RuleId *string `json:"ruleId,omitempty" xml:"ruleId,omitempty"`
-	// Policy name
+	// The policy name.
 	//
 	// example:
 	//
 	// 营销风险识别
 	RuleName *string `json:"ruleName,omitempty" xml:"ruleName,omitempty"`
-	// Policy version primary key ID
+	// The primary key ID of the policy version.
 	//
 	// example:
 	//
 	// 3823
 	RuleVersionId *int64 `json:"ruleVersionId,omitempty" xml:"ruleVersionId,omitempty"`
-	// Status.
+	// The status.
 	//
 	// example:
 	//
 	// RUNNING
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// Version number
+	// The version number.
 	//
 	// example:
 	//

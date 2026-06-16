@@ -16,7 +16,7 @@ type iDescribeEventTotalCountReportRequest interface {
 }
 
 type DescribeEventTotalCountReportRequest struct {
-	// Sets the language type for requests and received messages, default value is **zh**. Values:
+	// Sets the language type for requests and responses. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
@@ -26,7 +26,7 @@ type DescribeEventTotalCountReportRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Region code
+	// Region ID.
 	//
 	// example:
 	//

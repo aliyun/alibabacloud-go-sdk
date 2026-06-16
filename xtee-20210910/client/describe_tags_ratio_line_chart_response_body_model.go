@@ -16,13 +16,13 @@ type iDescribeTagsRatioLineChartResponseBody interface {
 }
 
 type DescribeTagsRatioLineChartResponseBody struct {
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// AE7E6105-7DEB-5125-9B24-DCBC139F6CD2
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Return object
+	// The response object.
 	ResultObject *DescribeTagsRatioLineChartResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Struct"`
 }
 
@@ -62,9 +62,9 @@ func (s *DescribeTagsRatioLineChartResponseBody) Validate() error {
 }
 
 type DescribeTagsRatioLineChartResponseBodyResultObject struct {
-	// Data list
+	// The data list.
 	Series []*DescribeTagsRatioLineChartResponseBodyResultObjectSeries `json:"series,omitempty" xml:"series,omitempty" type:"Repeated"`
-	// xaxis node.
+	// The xaxis node.
 	Xaxis *DescribeTagsRatioLineChartResponseBodyResultObjectXaxis `json:"xaxis,omitempty" xml:"xaxis,omitempty" type:"Struct"`
 }
 
@@ -113,9 +113,9 @@ func (s *DescribeTagsRatioLineChartResponseBodyResultObject) Validate() error {
 }
 
 type DescribeTagsRatioLineChartResponseBodyResultObjectSeries struct {
-	// Result data.
+	// The result data.
 	Data []*string `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// Series name.
+	// The series name.
 	//
 	// example:
 	//
@@ -154,7 +154,7 @@ func (s *DescribeTagsRatioLineChartResponseBodyResultObjectSeries) Validate() er
 }
 
 type DescribeTagsRatioLineChartResponseBodyResultObjectXaxis struct {
-	// X-axis data
+	// The X-axis data.
 	Data []*string `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
 }
 

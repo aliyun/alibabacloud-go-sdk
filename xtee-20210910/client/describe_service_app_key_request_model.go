@@ -14,7 +14,7 @@ type iDescribeServiceAppKeyRequest interface {
 }
 
 type DescribeServiceAppKeyRequest struct {
-	// Region code
+	// The region code.
 	//
 	// example:
 	//

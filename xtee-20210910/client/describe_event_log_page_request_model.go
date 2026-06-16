@@ -72,185 +72,185 @@ type iDescribeEventLogPageRequest interface {
 }
 
 type DescribeEventLogPageRequest struct {
-	// Set the language type for request and response messages, default value is **zh**. Values:
+	// The language type for the request and response messages. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Account ID (request_param.accountId), up to 50 characters, supports “*” and “?” wildcards.
+	// The account ID (request_param.accountId). The value can be up to 50 characters in length and supports the "\\*" and "?" wildcards.
 	//
 	// example:
 	//
 	// 180650758xxxxxxx
 	AccountIdPRP *string `json:"accountIdPRP,omitempty" xml:"accountIdPRP,omitempty"`
-	// Start timestamp of the log. Unit: milliseconds.
+	// The start timestamp of the log. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1737101348000
 	BeginTime *int64 `json:"beginTime,omitempty" xml:"beginTime,omitempty"`
-	// Full-text match 1, cannot exceed 30 characters.
+	// The first full-text match condition. The value can be up to 30 characters in length.
 	//
 	// example:
 	//
 	// rm0102
 	Condition1AL *string `json:"condition1AL,omitempty" xml:"condition1AL,omitempty"`
-	// Full-text match 2, cannot exceed 30 characters.
+	// The second full-text match condition. The value can be up to 30 characters in length.
 	//
 	// example:
 	//
 	// rm0102
 	Condition2AL *string `json:"condition2AL,omitempty" xml:"condition2AL,omitempty"`
-	// Full-text match 3, cannot exceed 30 characters.
+	// The third full-text match condition. The value can be up to 30 characters in length.
 	//
 	// example:
 	//
 	// rm0102
 	Condition3AL *string `json:"condition3AL,omitempty" xml:"condition3AL,omitempty"`
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
-	// Device type (request_param.deviceType), examples: 1. PC, 2. MOBILE.
+	// The device type (request_param.deviceType). Example values: 1: PC. 2: MOBILE.
 	//
 	// example:
 	//
 	// PC
 	DeviceTypeLRP *string `json:"deviceTypeLRP,omitempty" xml:"deviceTypeLRP,omitempty"`
-	// Email (request_param.email), up to 100 characters, supports “*” and “?” wildcards.
+	// The email address (request_param.email). The value can be up to 100 characters in length and supports the "\\*" and "?" wildcards.
 	//
 	// example:
 	//
 	// xxxx@123.com
 	EmailPRP *string `json:"emailPRP,omitempty" xml:"emailPRP,omitempty"`
-	// End time, accurate to milliseconds (ms).
+	// The end time. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1746669075000
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// Login failure reason (-request_param.failReason).
+	// The logon failure reason (-request_param.failReason).
 	//
 	// example:
 	//
 	// wrongPassword
 	FailReasonLRP *string `json:"failReasonLRP,omitempty" xml:"failReasonLRP,omitempty"`
-	// IP (request_param.ip), up to 20 characters, supports “*” and “?” wildcards.
+	// The IP address (request_param.ip). The value can be up to 20 characters in length and supports the "\\*" and "?" wildcards.
 	//
 	// example:
 	//
 	// 168.168.168.168
 	IpPRP *string `json:"ipPRP,omitempty" xml:"ipPRP,omitempty"`
-	// Login success indicator (request_param.loginResult).
+	// The logon success flag (request_param.loginResult).
 	//
 	// example:
 	//
 	// SUCCESS
 	LoginResultARP *string `json:"loginResultARP,omitempty" xml:"loginResultARP,omitempty"`
-	// Login verification method (-request_param.loginType).
+	// The logon authentication method (-request_param.loginType).
 	//
 	// example:
 	//
 	// PASSWORD
 	LoginTypeLRP *string `json:"loginTypeLRP,omitempty" xml:"loginTypeLRP,omitempty"`
-	// Device MAC address (-request_param.mac), up to 30 characters, supports “*” and “?” wildcards.
+	// The device MAC address (-request_param.mac). The value can be up to 30 characters in length and supports the "\\*" and "?" wildcards.
 	//
 	// example:
 	//
 	// 00-1C-F0-1D-A7-81
 	MacPRP *string `json:"macPRP,omitempty" xml:"macPRP,omitempty"`
-	// Phone number (supports MD5 request_param.mobile/request_param.mobileMd5), up to 30 characters, supports “*” and “?” wildcards, searchable by mobile and mobileMd5 fields.
+	// The phone number (supports MD5: request_param.mobile/request_param.mobileMd5). The value can be up to 30 characters in length and supports the "\\*" and "?" wildcards. The search is performed based on the mobile and mobileMd5 fields.
 	//
 	// example:
 	//
 	// 17600000000
 	MobilePRP *string `json:"mobilePRP,omitempty" xml:"mobilePRP,omitempty"`
-	// Account nickname (request_param.nickName), up to 50 characters, supports “*” and “?” wildcards.
+	// The account nickname (request_param.nickName). The value can be up to 50 characters in length and supports the "\\*" and "?" wildcards.
 	//
 	// example:
 	//
 	// 测试xx
 	NickNamePRP *string `json:"nickNamePRP,omitempty" xml:"nickNamePRP,omitempty"`
-	// Operation source (request_param.operateSource), examples: 1. PC, 2. H5, 3. App.
+	// The operation source (request_param.operateSource). Example values: 1: PC. 2: H5. 3: App.
 	//
 	// example:
 	//
 	// PC
 	OperateSourceLRP *string `json:"operateSourceLRP,omitempty" xml:"operateSourceLRP,omitempty"`
-	// Number of items per page, default value is 10.
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Referer (-request_param.refer), up to 50 characters, supports “*” and “?” wildcards.
+	// The referer (-request_param.refer). The value can be up to 50 characters in length and supports the "\\*" and "?" wildcards.
 	//
 	// example:
 	//
 	// refer
 	ReferPRP *string `json:"referPRP,omitempty" xml:"referPRP,omitempty"`
-	// Region code.
+	// The region code.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegId *string `json:"regId,omitempty" xml:"regId,omitempty"`
-	// Account registration IP (request_param.registerIp), up to 20 characters, supports “*” and “?” wildcards.
+	// The account registration IP address (request_param.registerIp). The value can be up to 20 characters in length and supports the "\\*" and "?" wildcards.
 	//
 	// example:
 	//
 	// 168.168.168.168
 	RegisterIpPRP *string `json:"registerIpPRP,omitempty" xml:"registerIpPRP,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// BD6B08EC-1B44-5378-8838-C76A36415C55
 	ReqIdPBS *string `json:"reqIdPBS,omitempty" xml:"reqIdPBS,omitempty"`
-	// End value of the score range (score), only non-negative integers are allowed, and the right interval must be greater than the left interval, with both intervals being closed.
+	// The end value of the score range (score). Only non-negative integers are allowed. The end value must be greater than the start value. Both boundaries are inclusive.
 	//
 	// example:
 	//
 	// 2
 	ScoreEBS *int32 `json:"scoreEBS,omitempty" xml:"scoreEBS,omitempty"`
-	// Starting value of the score range (score), only non-negative integers are allowed, the right interval must be greater than the left interval, both intervals are inclusive.
+	// The start value of the score range (score). Only non-negative integers are allowed. The end value must be greater than the start value. Both boundaries are inclusive.
 	//
 	// example:
 	//
 	// 1
 	ScoreSBS *int32 `json:"scoreSBS,omitempty" xml:"scoreSBS,omitempty"`
-	// Event name (instance_id).
+	// The event name (instance_id).
 	//
 	// example:
 	//
 	// de_afghcf6411
 	ServiceABS *string `json:"serviceABS,omitempty" xml:"serviceABS,omitempty"`
-	// Risk tags (tags), data source DescribeTagsList.
+	// The risk label (tags). The data is obtained from DescribeTagsList.
 	//
 	// example:
 	//
 	// rg0001
 	TagsLBS *string `json:"tagsLBS,omitempty" xml:"tagsLBS,omitempty"`
-	// Device ID (device_info.umid).
+	// The device ID (device_info.umid).
 	//
 	// example:
 	//
 	// 设备ID
 	UmidPDI *string `json:"umidPDI,omitempty" xml:"umidPDI,omitempty"`
-	// User agent (-request_param.userAgent), up to 50 characters, supports “*” and “?” wildcards.
+	// The user agent (-request_param.userAgent). The value can be up to 50 characters in length and supports the "\\*" and "?" wildcards.
 	//
 	// example:
 	//
 	// 00-1C-F0-1D-A7-81
 	UserAgentPRP *string `json:"userAgentPRP,omitempty" xml:"userAgentPRP,omitempty"`
-	// Username type, login scenario (-request_param.userNameType).
+	// The account name type for the logon scenario (-request_param.userNameType).
 	//
 	// example:
 	//

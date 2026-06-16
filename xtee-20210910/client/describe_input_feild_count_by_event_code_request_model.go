@@ -20,29 +20,29 @@ type iDescribeInputFeildCountByEventCodeRequest interface {
 }
 
 type DescribeInputFeildCountByEventCodeRequest struct {
-	// Set the language type for request and response, default value is **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Creation type
+	// The creation type.
 	//
 	// example:
 	//
 	// NORMAL
 	CreateType *string `json:"createType,omitempty" xml:"createType,omitempty"`
-	// Event code
+	// The event code.
 	//
 	// example:
 	//
 	// de_ahqido8038
 	EventCode *string `json:"eventCode,omitempty" xml:"eventCode,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// example:
 	//

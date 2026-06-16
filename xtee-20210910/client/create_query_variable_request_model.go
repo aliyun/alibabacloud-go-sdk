@@ -34,17 +34,17 @@ type iCreateQueryVariableRequest interface {
 }
 
 type CreateQueryVariableRequest struct {
-	// Sets the language type for requests and received messages, with a default value of **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Data source ID.
+	// The data source ID.
 	//
 	// This parameter is required.
 	//
@@ -52,13 +52,13 @@ type CreateQueryVariableRequest struct {
 	//
 	// 3527
 	DataSourceCode *string `json:"dataSourceCode,omitempty" xml:"dataSourceCode,omitempty"`
-	// Description.
+	// The description.
 	//
 	// example:
 	//
 	// 查询变量描述信息
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Event code
+	// The event code.
 	//
 	// This parameter is required.
 	//
@@ -66,7 +66,7 @@ type CreateQueryVariableRequest struct {
 	//
 	// de_arqbuy7206
 	EventCode *string `json:"eventCode,omitempty" xml:"eventCode,omitempty"`
-	// Calculation expression
+	// The calculation expression.
 	//
 	// This parameter is required.
 	//
@@ -78,7 +78,7 @@ type CreateQueryVariableRequest struct {
 	//
 	// WHERE  $age > 0
 	Expression *string `json:"expression,omitempty" xml:"expression,omitempty"`
-	// Display value of calculation expression
+	// The display value of the calculation expression.
 	//
 	// This parameter is required.
 	//
@@ -90,7 +90,7 @@ type CreateQueryVariableRequest struct {
 	//
 	// WHERE  $age > 0
 	ExpressionTitle *string `json:"expressionTitle,omitempty" xml:"expressionTitle,omitempty"`
-	// Calculation expression variable
+	// The variable of the calculation expression.
 	//
 	// This parameter is required.
 	//
@@ -98,7 +98,7 @@ type CreateQueryVariableRequest struct {
 	//
 	// age
 	ExpressionVariable *string `json:"expressionVariable,omitempty" xml:"expressionVariable,omitempty"`
-	// Outlier
+	// The outlier value.
 	//
 	// This parameter is required.
 	//
@@ -106,7 +106,7 @@ type CreateQueryVariableRequest struct {
 	//
 	// -1
 	Outlier *string `json:"outlier,omitempty" xml:"outlier,omitempty"`
-	// Variable return type
+	// The return type of the variable.
 	//
 	// This parameter is required.
 	//
@@ -114,7 +114,7 @@ type CreateQueryVariableRequest struct {
 	//
 	// STRING
 	Outputs *string `json:"outputs,omitempty" xml:"outputs,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// This parameter is required.
 	//
@@ -122,7 +122,7 @@ type CreateQueryVariableRequest struct {
 	//
 	// cn-hangzhou
 	RegId *string `json:"regId,omitempty" xml:"regId,omitempty"`
-	// Title.
+	// The title.
 	//
 	// This parameter is required.
 	//

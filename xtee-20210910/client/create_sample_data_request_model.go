@@ -30,59 +30,65 @@ type iCreateSampleDataRequest interface {
 }
 
 type CreateSampleDataRequest struct {
-	// Set the language type for requests and received messages, default value is **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Description.
+	// The description.
 	//
 	// example:
 	//
 	// 描述
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Encryption type
+	// The encryption type. Valid values:
+	//
+	// - **ALL**: all encryption
+	//
+	// - **LABEL**: label encryption
+	//
+	// - **NONE**: no encryption.
 	//
 	// example:
 	//
 	// LABEL
 	EncryptType *string `json:"encryptType,omitempty" xml:"encryptType,omitempty"`
-	// Name
+	// The name.
 	//
 	// example:
 	//
 	// 注册样本
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegId *string `json:"regId,omitempty" xml:"regId,omitempty"`
-	// Specified risk value
+	// The specified risk value.
 	//
 	// example:
 	//
 	// black
 	RiskValue *string `json:"riskValue,omitempty" xml:"riskValue,omitempty"`
-	// Scene
+	// The scenario.
 	//
 	// example:
 	//
 	// PHONE
 	Scene *string `json:"scene,omitempty" xml:"scene,omitempty"`
-	// Storage path
+	// The storage path.
 	//
 	// example:
 	//
 	// saf/de/sample/3dc2spspHKq4G3YI9d08
 	StorePath *string `json:"storePath,omitempty" xml:"storePath,omitempty"`
-	// Storage type
+	// The storage type.
 	//
 	// example:
 	//

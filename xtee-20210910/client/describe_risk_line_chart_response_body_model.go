@@ -24,33 +24,33 @@ type iDescribeRiskLineChartResponseBody interface {
 }
 
 type DescribeRiskLineChartResponseBody struct {
-	// Status code.
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// HTTP status code
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *string `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// Error message.
+	// The error message.
 	//
 	// example:
 	//
 	// The input parameter data is not valid. order_storage_company_num component not found
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// AE7E6105-7DEB-5125-9B24-DCBC139F6CD2
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Returned object
+	// The returned object.
 	ResultObject *DescribeRiskLineChartResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Struct"`
-	// Whether the request was successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -130,9 +130,9 @@ func (s *DescribeRiskLineChartResponseBody) Validate() error {
 }
 
 type DescribeRiskLineChartResponseBodyResultObject struct {
-	// Data list
+	// The data list.
 	Series []*DescribeRiskLineChartResponseBodyResultObjectSeries `json:"series,omitempty" xml:"series,omitempty" type:"Repeated"`
-	// Details of xaxis node.
+	// The details of the xaxis node.
 	Xaxis *DescribeRiskLineChartResponseBodyResultObjectXaxis `json:"xaxis,omitempty" xml:"xaxis,omitempty" type:"Struct"`
 }
 
@@ -181,9 +181,9 @@ func (s *DescribeRiskLineChartResponseBodyResultObject) Validate() error {
 }
 
 type DescribeRiskLineChartResponseBodyResultObjectSeries struct {
-	// Line chart data
+	// The data of the line chart.
 	Data []*string `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// Title of the line segment in the line chart
+	// The title of the line segment in the line chart.
 	//
 	// example:
 	//
@@ -222,7 +222,7 @@ func (s *DescribeRiskLineChartResponseBodyResultObjectSeries) Validate() error {
 }
 
 type DescribeRiskLineChartResponseBodyResultObjectXaxis struct {
-	// Returns x-axis data points
+	// The data of the X-axis.
 	Data []*string `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
 }
 

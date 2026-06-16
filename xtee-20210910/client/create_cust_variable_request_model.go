@@ -42,35 +42,35 @@ type iCreateCustVariableRequest interface {
 }
 
 type CreateCustVariableRequest struct {
-	// Sets the language type for requests and received messages, with a default value of **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Condition value.
+	// The condition value.
 	//
 	// example:
 	//
 	// {"relationship":"and","list":[{"deepCount":1,"left":{"hasRightVariable":true,"fieldType":"INT","functionName":"","leftVariableType":"NATIVE","name":"DEtest222","operatorCode":"equals"},"right":{"rightVariableType":"constant","name":"11","functionName":""},"operatorCode":"equals"}]}
 	Condition *string `json:"condition,omitempty" xml:"condition,omitempty"`
-	// Creation type
+	// The creation type.
 	//
 	// example:
 	//
 	// NORMAL
 	CreateType *string `json:"createType,omitempty" xml:"createType,omitempty"`
-	// Description information.
+	// The description.
 	//
 	// example:
 	//
 	// ip调用次数累计描述
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Event code
+	// The event code.
 	//
 	// This parameter is required.
 	//
@@ -78,31 +78,31 @@ type CreateCustVariableRequest struct {
 	//
 	// de_ahqhsw7665,de_agbzfi5134
 	EventCodes *string `json:"eventCodes,omitempty" xml:"eventCodes,omitempty"`
-	// Value type
+	// The value type.
 	//
 	// example:
 	//
 	// EARLIEST
 	HistoryValueType *string `json:"historyValueType,omitempty" xml:"historyValueType,omitempty"`
-	// Accumulative object
+	// The cumulative object.
 	//
 	// example:
 	//
 	// age
 	Object *string `json:"object,omitempty" xml:"object,omitempty"`
-	// Variable return type
+	// The return type of the variable.
 	//
 	// example:
 	//
 	// STRING
 	Outputs *string `json:"outputs,omitempty" xml:"outputs,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegId *string `json:"regId,omitempty" xml:"regId,omitempty"`
-	// Primary object
+	// The subject object.
 	//
 	// This parameter is required.
 	//
@@ -110,7 +110,7 @@ type CreateCustVariableRequest struct {
 	//
 	// name
 	Subject *string `json:"subject,omitempty" xml:"subject,omitempty"`
-	// Time slice type
+	// The time slice type.
 	//
 	// This parameter is required.
 	//
@@ -118,7 +118,7 @@ type CreateCustVariableRequest struct {
 	//
 	// CURRENT
 	TimeType *string `json:"timeType,omitempty" xml:"timeType,omitempty"`
-	// Title.
+	// The title.
 	//
 	// This parameter is required.
 	//
@@ -126,13 +126,13 @@ type CreateCustVariableRequest struct {
 	//
 	// ip调用次数累计
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
-	// Number of time units
+	// The number of time units.
 	//
 	// example:
 	//
 	// 1
 	TwCount *int32 `json:"twCount,omitempty" xml:"twCount,omitempty"`
-	// Variable type
+	// The variable type.
 	//
 	// This parameter is required.
 	//
@@ -140,7 +140,7 @@ type CreateCustVariableRequest struct {
 	//
 	// DISTINCT
 	VelocityFC *string `json:"velocityFC,omitempty" xml:"velocityFC,omitempty"`
-	// Time slice unit
+	// The time slice unit.
 	//
 	// This parameter is required.
 	//

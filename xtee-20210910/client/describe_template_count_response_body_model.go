@@ -16,13 +16,13 @@ type iDescribeTemplateCountResponseBody interface {
 }
 
 type DescribeTemplateCountResponseBody struct {
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// AE7E6105-7DEB-5125-9B24-DCBC139F6CD2
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Returned object
+	// The returned object.
 	ResultObject *DescribeTemplateCountResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Struct"`
 }
 
@@ -62,19 +62,19 @@ func (s *DescribeTemplateCountResponseBody) Validate() error {
 }
 
 type DescribeTemplateCountResponseBodyResultObject struct {
-	// Template quantity limit.
+	// The template quantity limit.
 	//
 	// example:
 	//
 	// false
 	Limit *bool `json:"limit,omitempty" xml:"limit,omitempty"`
-	// Maximum count
+	// The maximum number of items.
 	//
 	// example:
 	//
 	// 1000
 	MaxTotalItem *int32 `json:"maxTotalItem,omitempty" xml:"maxTotalItem,omitempty"`
-	// Total count.
+	// The total number of items.
 	//
 	// example:
 	//

@@ -16,13 +16,13 @@ type iDescribeScoreSectionPieChartResponseBody interface {
 }
 
 type DescribeScoreSectionPieChartResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// AE7E6105-7DEB-5125-9B24-DCBC139F6CD2
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Return object
+	// The response object.
 	ResultObject *DescribeScoreSectionPieChartResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Struct"`
 }
 
@@ -62,15 +62,15 @@ func (s *DescribeScoreSectionPieChartResponseBody) Validate() error {
 }
 
 type DescribeScoreSectionPieChartResponseBodyResultObject struct {
-	// Chart field, default true
+	// The chart field. Default value: true.
 	//
 	// example:
 	//
 	// true
 	Animation *bool `json:"animation,omitempty" xml:"animation,omitempty"`
-	// Belongs to grid.
+	// The grid.
 	Grid *DescribeScoreSectionPieChartResponseBodyResultObjectGrid `json:"grid,omitempty" xml:"grid,omitempty" type:"Struct"`
-	// Data list
+	// The data list.
 	Series []*DescribeScoreSectionPieChartResponseBodyResultObjectSeries `json:"series,omitempty" xml:"series,omitempty" type:"Repeated"`
 }
 
@@ -128,7 +128,7 @@ func (s *DescribeScoreSectionPieChartResponseBodyResultObject) Validate() error 
 }
 
 type DescribeScoreSectionPieChartResponseBodyResultObjectGrid struct {
-	// Chart field, default false
+	// The chart field. Default value: false.
 	//
 	// example:
 	//
@@ -158,15 +158,15 @@ func (s *DescribeScoreSectionPieChartResponseBodyResultObjectGrid) Validate() er
 }
 
 type DescribeScoreSectionPieChartResponseBodyResultObjectSeries struct {
-	// Chart data list
+	// The chart data list.
 	Data []*DescribeScoreSectionPieChartResponseBodyResultObjectSeriesData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// Category name.
+	// The category name.
 	//
 	// example:
 	//
 	// 分值区间占比
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Chart field, default false
+	// The chart field. Default value: false.
 	//
 	// example:
 	//
@@ -223,13 +223,13 @@ func (s *DescribeScoreSectionPieChartResponseBodyResultObjectSeries) Validate() 
 }
 
 type DescribeScoreSectionPieChartResponseBodyResultObjectSeriesData struct {
-	// Category item name.
+	// The category item name.
 	//
 	// example:
 	//
 	// 名称
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Result value.
+	// The result value.
 	//
 	// example:
 	//

@@ -16,13 +16,13 @@ type iDescribeEventTaskHistoryResponseBody interface {
 }
 
 type DescribeEventTaskHistoryResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// A32FE941-35F2-5378-B37C-4B8FDB16F094
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Return object
+	// The response object.
 	ResultObject []*DescribeEventTaskHistoryResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Repeated"`
 }
 
@@ -66,25 +66,25 @@ func (s *DescribeEventTaskHistoryResponseBody) Validate() error {
 }
 
 type DescribeEventTaskHistoryResponseBodyResultObject struct {
-	// Task code.
+	// The task code.
 	//
 	// example:
 	//
 	// de_aoxcdy9473
 	TaskCode *string `json:"taskCode,omitempty" xml:"taskCode,omitempty"`
-	// Task name
+	// The task name.
 	//
 	// example:
 	//
 	// 仿真任务
 	TaskName *string `json:"taskName,omitempty" xml:"taskName,omitempty"`
-	// Task status.
+	// The task status.
 	//
 	// example:
 	//
 	// SUCCESSFUL
 	TaskStatus *string `json:"taskStatus,omitempty" xml:"taskStatus,omitempty"`
-	// OSS download URL
+	// The OSS download URL.
 	//
 	// example:
 	//

@@ -16,13 +16,13 @@ type iDescribeEventBaseInfoByEventCodeResponseBody interface {
 }
 
 type DescribeEventBaseInfoByEventCodeResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// A32FE941-35F2-5378-B37C-4B8FDB16F094
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Return object
+	// The returned object.
 	ResultObject *DescribeEventBaseInfoByEventCodeResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Struct"`
 }
 
@@ -62,53 +62,53 @@ func (s *DescribeEventBaseInfoByEventCodeResponseBody) Validate() error {
 }
 
 type DescribeEventBaseInfoByEventCodeResponseBodyResultObject struct {
-	// Business version number
+	// The business version number.
 	//
 	// example:
 	//
 	// 1
 	BizVersion *int32 `json:"bizVersion,omitempty" xml:"bizVersion,omitempty"`
-	// Event code
+	// The event code.
 	//
 	// example:
 	//
 	// de_aszbjb7236
 	EventCode *string `json:"eventCode,omitempty" xml:"eventCode,omitempty"`
-	// Event name.
+	// The event name.
 	//
 	// example:
 	//
 	// 注册风险
 	EventName *string `json:"eventName,omitempty" xml:"eventName,omitempty"`
-	// Event status.
+	// The event status.
 	//
 	// example:
 	//
 	// ONLINE
 	EventStauts *string `json:"eventStauts,omitempty" xml:"eventStauts,omitempty"`
-	// Field list.
+	// The field list.
 	InputFields []*DescribeEventBaseInfoByEventCodeResponseBodyResultObjectInputFields `json:"inputFields,omitempty" xml:"inputFields,omitempty" type:"Repeated"`
-	// Memo.
+	// The remarks.
 	//
 	// example:
 	//
 	// 备注
 	Memo *string `json:"memo,omitempty" xml:"memo,omitempty"`
-	// Policy Information
+	// The policy information.
 	RuleDetails []*DescribeEventBaseInfoByEventCodeResponseBodyResultObjectRuleDetails `json:"ruleDetails,omitempty" xml:"ruleDetails,omitempty" type:"Repeated"`
-	// Operation template code
+	// The operation template code.
 	//
 	// example:
 	//
 	// register
 	TemplateCode *string `json:"templateCode,omitempty" xml:"templateCode,omitempty"`
-	// Template name
+	// The template name.
 	//
 	// example:
 	//
 	// 注册事件模板
 	TemplateName *string `json:"templateName,omitempty" xml:"templateName,omitempty"`
-	// Template type.
+	// The templatetype.
 	//
 	// example:
 	//
@@ -237,37 +237,37 @@ func (s *DescribeEventBaseInfoByEventCodeResponseBodyResultObject) Validate() er
 }
 
 type DescribeEventBaseInfoByEventCodeResponseBodyResultObjectInputFields struct {
-	// Field description.
+	// The field description.
 	//
 	// example:
 	//
 	// 描述
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Field code
+	// The field code.
 	//
 	// example:
 	//
 	// age
 	FieldCode *string `json:"fieldCode,omitempty" xml:"fieldCode,omitempty"`
-	// Field ranking
+	// The field sort order.
 	//
 	// example:
 	//
 	// 1
 	FieldRank *string `json:"fieldRank,omitempty" xml:"fieldRank,omitempty"`
-	// Field source.
+	// The source of the field.
 	//
 	// example:
 	//
 	// DEFAULT
 	FieldSource *string `json:"fieldSource,omitempty" xml:"fieldSource,omitempty"`
-	// Field type.
+	// The field type.
 	//
 	// example:
 	//
 	// STRING
 	FieldType *string `json:"fieldType,omitempty" xml:"fieldType,omitempty"`
-	// Field name.
+	// The field name.
 	//
 	// example:
 	//
@@ -342,49 +342,49 @@ func (s *DescribeEventBaseInfoByEventCodeResponseBodyResultObjectInputFields) Va
 }
 
 type DescribeEventBaseInfoByEventCodeResponseBodyResultObjectRuleDetails struct {
-	// Policy Execution Logic
+	// The policy execution logic.
 	//
 	// example:
 	//
 	// 3&((1&2&4)
 	LogicExpression *string `json:"logicExpression,omitempty" xml:"logicExpression,omitempty"`
-	// Memo
+	// The remarks.
 	//
 	// example:
 	//
 	// 描述
 	Memo *string `json:"memo,omitempty" xml:"memo,omitempty"`
-	// Rule Actions
+	// The rule actions.
 	//
 	// example:
 	//
 	// [{\\"inputs\\":[\\"auto_accselist\\"],\\"name\\":\\"__addDeTags__\\",\\"actionType\\":\\"TAG\\",\\"outputType\\":\\"const\\"}]
 	RuleActions *string `json:"ruleActions,omitempty" xml:"ruleActions,omitempty"`
-	// Policy Type
+	// The policy type.
 	//
 	// example:
 	//
 	// DEFAULT
 	RuleAuthType *string `json:"ruleAuthType,omitempty" xml:"ruleAuthType,omitempty"`
-	// Event Expressions.
+	// The event expressions.
 	//
 	// example:
 	//
 	// [{\\"expressionName\\":\\"同一设备同一IP上的注册用户数\\",\\"itemId\\":1,\\"left\\":{\\"name\\":\\"dK7EXHr490f\\"},\\"operatorCode\\":\\"gte\\",\\"operatorName\\":\\"大于等于\\",\\"right\\":{\\"fieldValue\\":\\"2\\"}}]
 	RuleExpressions *string `json:"ruleExpressions,omitempty" xml:"ruleExpressions,omitempty"`
-	// Policy ID
+	// The policy ID.
 	//
 	// example:
 	//
 	// 101544
 	RuleId *string `json:"ruleId,omitempty" xml:"ruleId,omitempty"`
-	// Policy Name
+	// The policy name.
 	//
 	// example:
 	//
 	// 手机号MD5命中人脸测试名单
 	RuleName *string `json:"ruleName,omitempty" xml:"ruleName,omitempty"`
-	// Policy Status
+	// The policy status.
 	//
 	// example:
 	//

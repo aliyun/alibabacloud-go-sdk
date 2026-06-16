@@ -18,17 +18,17 @@ type iSwitchToOnlineRequest interface {
 }
 
 type SwitchToOnlineRequest struct {
-	// Sets the language type for requests and received messages, default value is **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The event ID to switch to.
+	// The ID of the event to switch to.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type SwitchToOnlineRequest struct {
 	//
 	// de_ahqhsw7665
 	EventId *int64 `json:"eventId,omitempty" xml:"eventId,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// example:
 	//

@@ -28,29 +28,29 @@ type iDescribeSimulationTaskCountRequest interface {
 }
 
 type DescribeSimulationTaskCountRequest struct {
-	// Sets the language type for requests and received messages, default value is **zh**. Values:
+	// The language type for the request and response messages. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Data source configuration
+	// The datasource config.
 	//
 	// example:
 	//
 	// {}
 	DataSourceConfig *string `json:"dataSourceConfig,omitempty" xml:"dataSourceConfig,omitempty"`
-	// Data source type
+	// The data source type.
 	//
 	// example:
 	//
 	// SLS
 	DataSourceType *string `json:"dataSourceType,omitempty" xml:"dataSourceType,omitempty"`
-	// Task end time.
+	// The end time of the task.
 	//
 	// This parameter is required.
 	//
@@ -58,7 +58,7 @@ type DescribeSimulationTaskCountRequest struct {
 	//
 	// 1740016411000
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// Event code
+	// The event code.
 	//
 	// This parameter is required.
 	//
@@ -66,19 +66,19 @@ type DescribeSimulationTaskCountRequest struct {
 	//
 	// de_ayfofy4941
 	EventCode *string `json:"eventCode,omitempty" xml:"eventCode,omitempty"`
-	// Filter
+	// The filter.
 	//
 	// example:
 	//
 	// {"left":"score","operate":"bw","right":"222,333"}
 	FiltersStr *string `json:"filtersStr,omitempty" xml:"filtersStr,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegId *string `json:"regId,omitempty" xml:"regId,omitempty"`
-	// Task start time.
+	// The start time of the task.
 	//
 	// This parameter is required.
 	//

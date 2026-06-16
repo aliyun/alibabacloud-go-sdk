@@ -16,13 +16,13 @@ type iDescribeNameListTypeListResponseBody interface {
 }
 
 type DescribeNameListTypeListResponseBody struct {
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// AE7E6105-7DEB-5125-9B24-DCBC139F6CD2
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Returned object
+	// The returned object.
 	ResultObject []*DescribeNameListTypeListResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Repeated"`
 }
 
@@ -66,13 +66,13 @@ func (s *DescribeNameListTypeListResponseBody) Validate() error {
 }
 
 type DescribeNameListTypeListResponseBodyResultObject struct {
-	// Match Key.
+	// The matching key.
 	//
 	// example:
 	//
 	// accountId
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// Variable value
+	// The variable value.
 	//
 	// example:
 	//

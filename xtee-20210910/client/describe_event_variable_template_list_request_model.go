@@ -22,35 +22,35 @@ type iDescribeEventVariableTemplateListRequest interface {
 }
 
 type DescribeEventVariableTemplateListRequest struct {
-	// Sets the language type for the request and response messages. The default value is **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Input parameters, separated by commas.
+	// The input parameters. Separate multiple values with commas (,).
 	//
 	// example:
 	//
 	// age,ip
 	Inputs *string `json:"inputs,omitempty" xml:"inputs,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegId *string `json:"regId,omitempty" xml:"regId,omitempty"`
-	// Template code.
+	// The template code.
 	//
 	// example:
 	//
 	// register
 	TemplateCode *string `json:"templateCode,omitempty" xml:"templateCode,omitempty"`
-	// Template type.
+	// The templatetype.
 	//
 	// example:
 	//

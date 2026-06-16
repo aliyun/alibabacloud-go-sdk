@@ -36,17 +36,17 @@ type iCreateAnalysisExportTaskRequest interface {
 }
 
 type CreateAnalysisExportTaskRequest struct {
-	// Sets the language type for the request and response messages, with a default value of **zh**. Values:
+	// The language type for the request and response messages. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Custom columns
+	// The custom columns.
 	//
 	// example:
 	//
@@ -126,7 +126,7 @@ type CreateAnalysisExportTaskRequest struct {
 	//
 	//             ]
 	Columns *string `json:"columns,omitempty" xml:"columns,omitempty"`
-	// Query expression
+	// The query expression.
 	//
 	// example:
 	//
@@ -138,7 +138,7 @@ type CreateAnalysisExportTaskRequest struct {
 	//
 	//       }
 	Conditions *string `json:"conditions,omitempty" xml:"conditions,omitempty"`
-	// Start time, accurate to milliseconds (ms).
+	// The start time, in milliseconds (ms).
 	//
 	// This parameter is required.
 	//
@@ -146,7 +146,7 @@ type CreateAnalysisExportTaskRequest struct {
 	//
 	// 1752076800000
 	EventBeginTime *int64 `json:"eventBeginTime,omitempty" xml:"eventBeginTime,omitempty"`
-	// Event code.
+	// The event code.
 	//
 	// This parameter is required.
 	//
@@ -154,7 +154,7 @@ type CreateAnalysisExportTaskRequest struct {
 	//
 	// de_afghcf6411
 	EventCodes *string `json:"eventCodes,omitempty" xml:"eventCodes,omitempty"`
-	// End time, accurate to milliseconds (ms).
+	// The end time, in milliseconds (ms).
 	//
 	// This parameter is required.
 	//
@@ -162,19 +162,19 @@ type CreateAnalysisExportTaskRequest struct {
 	//
 	// 1753891199000
 	EventEndTime *int64 `json:"eventEndTime,omitempty" xml:"eventEndTime,omitempty"`
-	// Field name
+	// The field name.
 	//
 	// example:
 	//
 	// age
 	FieldName *string `json:"fieldName,omitempty" xml:"fieldName,omitempty"`
-	// Field value
+	// The field value.
 	//
 	// example:
 	//
 	// 20
 	FieldValue *string `json:"fieldValue,omitempty" xml:"fieldValue,omitempty"`
-	// File format, Excel, CSV
+	// The file format. Valid values: Excel and CSV.
 	//
 	// This parameter is required.
 	//
@@ -182,7 +182,7 @@ type CreateAnalysisExportTaskRequest struct {
 	//
 	// CSV
 	FileFormat *string `json:"fileFormat,omitempty" xml:"fileFormat,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// This parameter is required.
 	//
@@ -190,7 +190,11 @@ type CreateAnalysisExportTaskRequest struct {
 	//
 	// cn-hangzhou
 	RegId *string `json:"regId,omitempty" xml:"regId,omitempty"`
-	// Export scope: ALL: All, SELECT: Selected rows
+	// The export scope. Valid values:
+	//
+	// - ALL: all data
+	//
+	// - SELECT: selected rows.
 	//
 	// This parameter is required.
 	//
@@ -198,7 +202,13 @@ type CreateAnalysisExportTaskRequest struct {
 	//
 	// ALL
 	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
-	// Type, BASIC: Basic query, ADVANCE: Advanced query, BATCH: Batch query
+	// The query type. Valid values:
+	//
+	// - BASIC: basic query
+	//
+	// - ADVANCE: advanced query
+	//
+	// - BATCH: batch query.
 	//
 	// This parameter is required.
 	//

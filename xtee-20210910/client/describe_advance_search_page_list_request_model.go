@@ -32,17 +32,17 @@ type iDescribeAdvanceSearchPageListRequest interface {
 }
 
 type DescribeAdvanceSearchPageListRequest struct {
-	// Sets the language type for requests and received messages, default value is **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Condition value.
+	// The condition value.
 	//
 	// example:
 	//
@@ -90,7 +90,7 @@ type DescribeAdvanceSearchPageListRequest struct {
 	//
 	// }
 	Condition *string `json:"condition,omitempty" xml:"condition,omitempty"`
-	// Current page number.
+	// The current page number.
 	//
 	// This parameter is required.
 	//
@@ -98,7 +98,7 @@ type DescribeAdvanceSearchPageListRequest struct {
 	//
 	// 1
 	CurrentPage *int64 `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
-	// Query start time, accurate to milliseconds (ms).
+	// The start time of the query, in milliseconds (ms).
 	//
 	// This parameter is required.
 	//
@@ -106,7 +106,7 @@ type DescribeAdvanceSearchPageListRequest struct {
 	//
 	// 1753372800000
 	EventBeginTime *int64 `json:"eventBeginTime,omitempty" xml:"eventBeginTime,omitempty"`
-	// Event code.
+	// The event code.
 	//
 	// This parameter is required.
 	//
@@ -114,7 +114,7 @@ type DescribeAdvanceSearchPageListRequest struct {
 	//
 	// ["de_ahqhsw7665"]
 	EventCodes *string `json:"eventCodes,omitempty" xml:"eventCodes,omitempty"`
-	// End time, accurate to milliseconds (ms).
+	// The end time of the query, in milliseconds (ms).
 	//
 	// This parameter is required.
 	//
@@ -122,19 +122,19 @@ type DescribeAdvanceSearchPageListRequest struct {
 	//
 	// 1753459199059
 	EventEndTime *int64 `json:"eventEndTime,omitempty" xml:"eventEndTime,omitempty"`
-	// Field name
+	// The field name.
 	//
 	// example:
 	//
 	// age
 	FieldName *string `json:"fieldName,omitempty" xml:"fieldName,omitempty"`
-	// Field value
+	// The field value.
 	//
 	// example:
 	//
 	// 20
 	FieldValue *string `json:"fieldValue,omitempty" xml:"fieldValue,omitempty"`
-	// Page size, default value is 10
+	// The number of entries per page. Default value: 10.
 	//
 	// This parameter is required.
 	//
@@ -142,7 +142,7 @@ type DescribeAdvanceSearchPageListRequest struct {
 	//
 	// 10
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// This parameter is required.
 	//

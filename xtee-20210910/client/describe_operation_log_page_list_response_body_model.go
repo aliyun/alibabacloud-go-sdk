@@ -24,33 +24,33 @@ type iDescribeOperationLogPageListResponseBody interface {
 }
 
 type DescribeOperationLogPageListResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// A32FE941-35F2-5378-B37C-4B8FDB16F094
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
-	// Page size, default value is 10
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Returned object
+	// The returned object.
 	ResultObject []*DescribeOperationLogPageListResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Repeated"`
-	// Total number of items
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 3
 	TotalItem *int32 `json:"totalItem,omitempty" xml:"totalItem,omitempty"`
-	// Total number of pages
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -134,43 +134,43 @@ func (s *DescribeOperationLogPageListResponseBody) Validate() error {
 }
 
 type DescribeOperationLogPageListResponseBodyResultObject struct {
-	// Client IP.
+	// The client IP address.
 	//
 	// example:
 	//
 	// 100.68.***.166
 	ClientIp *string `json:"clientIp,omitempty" xml:"clientIp,omitempty"`
-	// Creation time.
+	// The creation time.
 	//
 	// example:
 	//
 	// 1621578648000
 	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// Content after operation
+	// The content after the operation.
 	//
 	// example:
 	//
 	// @selfvariable_02
 	NewContent *string `json:"newContent,omitempty" xml:"newContent,omitempty"`
-	// Content before operation
+	// The content before the operation.
 	//
 	// example:
 	//
 	// @selfvariable_02 + 1001
 	OldContent *string `json:"oldContent,omitempty" xml:"oldContent,omitempty"`
-	// Operation summary
+	// The brief description of the operation.
 	//
 	// example:
 	//
 	// 更新事件:决策引擎可观测性持续建设_事件A(de_afghcf6411)
 	OperationSummary *string `json:"operationSummary,omitempty" xml:"operationSummary,omitempty"`
-	// Operation type.
+	// The operation type.
 	//
 	// example:
 	//
 	// CREATE_EVENT
 	OperationType *string `json:"operationType,omitempty" xml:"operationType,omitempty"`
-	// Operator
+	// The operator.
 	//
 	// example:
 	//

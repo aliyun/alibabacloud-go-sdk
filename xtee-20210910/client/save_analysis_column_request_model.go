@@ -18,17 +18,17 @@ type iSaveAnalysisColumnRequest interface {
 }
 
 type SaveAnalysisColumnRequest struct {
-	// Sets the language type for requests and received messages, default value is **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Custom columns
+	// The custom columns.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type SaveAnalysisColumnRequest struct {
 	//
 	// [{\\"variableName\\":\\"requestId\\",\\"variableTitle\\":\\"RequestId\\",\\"variableType\\":\\"SYSTEM_BIND\\",\\"isDefault\\":true},{\\"variableName\\":\\"eventTime\\",\\"variableTitle\\":\\"事件时间\\",\\"variableType\\":\\"SYSTEM_BIND\\",\\"isDefault\\":true},{\\"variableName\\":\\"accountId\\",\\"variableTitle\\":\\"账号\\",\\"variableType\\":\\"SYSTEM_BIND\\",\\"isDefault\\":true},{\\"variableName\\":\\"deviceId\\",\\"variableTitle\\":\\"设备ID\\",\\"variableType\\":\\"SYSTEM_BIND\\",\\"isDefault\\":true},{\\"variableName\\":\\"eventCode\\",\\"variableTitle\\":\\"事件编码\\",\\"variableType\\":\\"SYSTEM_BIND\\",\\"isDefault\\":true},{\\"variableName\\":\\"ip\\",\\"variableTitle\\":\\"IP\\",\\"variableType\\":\\"SYSTEM_BIND\\",\\"isDefault\\":true},{\\"variableName\\":\\"score\\",\\"variableTitle\\":\\"分值\\",\\"variableType\\":\\"SYSTEM_BIND\\",\\"isDefault\\":true},{\\"variableName\\":\\"tags\\",\\"variableTitle\\":\\"标签\\",\\"variableType\\":\\"SYSTEM_BIND\\",\\"isDefault\\":true},{\\"variableName\\":\\"DEtest222\\",\\"variableTitle\\":\\"测试222\\",\\"variableType\\":\\"NATIVE\\",\\"isDefault\\":false}]
 	Columns *string `json:"columns,omitempty" xml:"columns,omitempty"`
-	// Region code
+	// The region code.
 	//
 	// This parameter is required.
 	//

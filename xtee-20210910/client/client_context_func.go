@@ -173,7 +173,7 @@ func (client *Client) BatchDeleteSampleDataWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// # Variable binding operation
+// Performs a variable binding operation.
 //
 // @param request - BindVariableRequest
 //
@@ -281,7 +281,7 @@ func (client *Client) BindVariableWithContext(ctx context.Context, request *Bind
 
 // Summary:
 //
-// 创建任务组
+// # Create a task group
 //
 // @param request - CancelSubTaskRequest
 //
@@ -401,7 +401,7 @@ func (client *Client) CheckCopyRuleVariableWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// # Check if the cumulative number of variables exceeds the limit
+// Checks whether the number of cumulative variables exceeds the limit.
 //
 // @param request - CheckCustVariableLimitRequest
 //
@@ -453,7 +453,7 @@ func (client *Client) CheckCustVariableLimitWithContext(ctx context.Context, req
 
 // Summary:
 //
-// # Check if Creating Variables Exceeds the Limit
+// Checks whether creating a variable exceeds the upper limit.
 //
 // @param request - CheckExpressionVariableLimitRequest
 //
@@ -501,7 +501,7 @@ func (client *Client) CheckExpressionVariableLimitWithContext(ctx context.Contex
 
 // Summary:
 //
-// # Check if the number of fields exceeds the limit
+// Checks whether the number of fields exceeds the specified limit.
 //
 // @param request - CheckFieldLimitRequest
 //
@@ -553,7 +553,7 @@ func (client *Client) CheckFieldLimitWithContext(ctx context.Context, request *C
 
 // Summary:
 //
-// 样本名称唯一性校验
+// # Validate sample name uniqueness
 //
 // @param request - CheckSampleNameRequest
 //
@@ -605,7 +605,7 @@ func (client *Client) CheckSampleNameWithContext(ctx context.Context, request *C
 
 // Summary:
 //
-// 任务组名称唯一性校验
+// # Validate the uniqueness of the task group name
 //
 // @param request - CheckTaskGroupNameRequest
 //
@@ -657,7 +657,7 @@ func (client *Client) CheckTaskGroupNameWithContext(ctx context.Context, request
 
 // Summary:
 //
-// # Validate Variable Reference
+// Checks variable references.
 //
 // @param request - CheckUsageVariableRequest
 //
@@ -829,7 +829,7 @@ func (client *Client) CompareRuleWithContext(ctx context.Context, request *Compa
 
 // Summary:
 //
-// # Add Query Conditions
+// Creates a query condition.
 //
 // @param request - CreateAnalysisConditionFavoriteRequest
 //
@@ -909,7 +909,7 @@ func (client *Client) CreateAnalysisConditionFavoriteWithContext(ctx context.Con
 
 // Summary:
 //
-// # Create Export Task
+// Creates an export task.
 //
 // @param request - CreateAnalysisExportTaskRequest
 //
@@ -997,7 +997,7 @@ func (client *Client) CreateAnalysisExportTaskWithContext(ctx context.Context, r
 
 // Summary:
 //
-// # Create AppKey
+// Create an AppKey.
 //
 // @param request - CreateAppKeyRequest
 //
@@ -1045,7 +1045,7 @@ func (client *Client) CreateAppKeyWithContext(ctx context.Context, request *Crea
 
 // Summary:
 //
-// # Create Accumulative Variable
+// Creates a cumulative variable.
 //
 // @param request - CreateCustVariableRequest
 //
@@ -1145,7 +1145,7 @@ func (client *Client) CreateCustVariableWithContext(ctx context.Context, request
 
 // Summary:
 //
-// # Add Data Source
+// Creates a data source.
 //
 // @param request - CreateDataSourceRequest
 //
@@ -1209,7 +1209,7 @@ func (client *Client) CreateDataSourceWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// # Create Event
+// Creates an event.
 //
 // @param request - CreateEventRequest
 //
@@ -1285,7 +1285,7 @@ func (client *Client) CreateEventWithContext(ctx context.Context, request *Creat
 
 // Summary:
 //
-// # Create Custom Variable
+// Creates a custom variable.
 //
 // @param request - CreateExpressionVariableRequest
 //
@@ -1365,7 +1365,7 @@ func (client *Client) CreateExpressionVariableWithContext(ctx context.Context, r
 
 // Summary:
 //
-// # Add New Field
+// Creates a field.
 //
 // @param request - CreateFieldRequest
 //
@@ -1441,7 +1441,7 @@ func (client *Client) CreateFieldWithContext(ctx context.Context, request *Creat
 
 // Summary:
 //
-// 创建样本记录对客
+// Create a sample record for the customer.
 //
 // @param request - CreateForeignPocSampleRequest
 //
@@ -1581,7 +1581,7 @@ func (client *Client) CreateModelWithContext(ctx context.Context, request *Creat
 
 // Summary:
 //
-// # Create POC
+// Creates a POC.
 //
 // @param request - CreatePocEvRequest
 //
@@ -1665,7 +1665,7 @@ func (client *Client) CreatePocEvWithContext(ctx context.Context, request *Creat
 
 // Summary:
 //
-// 创建样本记录
+// # Create a sample record
 //
 // @param request - CreatePocSampleRequest
 //
@@ -1737,7 +1737,7 @@ func (client *Client) CreatePocSampleWithContext(ctx context.Context, request *C
 
 // Summary:
 //
-// # Add New Custom Query Variable
+// Creates a custom query variable.
 //
 // @param request - CreateQueryVariableRequest
 //
@@ -1821,7 +1821,7 @@ func (client *Client) CreateQueryVariableWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// # Create Recommended Event Strategy
+// Creates a recommended event policy.
 //
 // @param request - CreateRecommendEventRuleRequest
 //
@@ -1885,7 +1885,7 @@ func (client *Client) CreateRecommendEventRuleWithContext(ctx context.Context, r
 
 // Summary:
 //
-// # Create Recommendation Task
+// Creates a recommendation task.
 //
 // @param request - CreateRecommendTaskRequest
 //
@@ -1949,7 +1949,7 @@ func (client *Client) CreateRecommendTaskWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Create Policy & Version
+// Creates a policy and version.
 //
 // @param request - CreateRuleRequest
 //
@@ -2045,7 +2045,7 @@ func (client *Client) CreateRuleWithContext(ctx context.Context, request *Create
 
 // Summary:
 //
-// # Add Sample
+// Adds a data sample.
 //
 // @param request - CreateSampleRequest
 //
@@ -2121,7 +2121,7 @@ func (client *Client) CreateSampleWithContext(ctx context.Context, request *Crea
 
 // Summary:
 //
-// # User-level Single API to Create Sample Batches
+// Creates a sample batch for a single API at the user level.
 //
 // @param request - CreateSampleApiRequest
 //
@@ -2261,7 +2261,7 @@ func (client *Client) CreateSampleBatchWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// # Create Sample Data
+// Creates sample data.
 //
 // @param request - CreateSampleDataRequest
 //
@@ -2337,7 +2337,7 @@ func (client *Client) CreateSampleDataWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// # Create Task
+// Creates a task.
 //
 // @param request - CreateSimulationTaskRequest
 //
@@ -2421,7 +2421,7 @@ func (client *Client) CreateSimulationTaskWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 取消子任务
+// Cancels a subtask.
 //
 // @param request - CreateTaskGroupRequest
 //
@@ -2454,6 +2454,10 @@ func (client *Client) CreateTaskGroupWithContext(ctx context.Context, request *C
 
 	if !dara.IsNil(request.ServiceCodes) {
 		query["ServiceCodes"] = request.ServiceCodes
+	}
+
+	if !dara.IsNil(request.ServiceList) {
+		query["ServiceList"] = request.ServiceList
 	}
 
 	if !dara.IsNil(request.ServiceNames) {
@@ -2581,7 +2585,7 @@ func (client *Client) DeepCopyRuleWithContext(ctx context.Context, request *Deep
 
 // Summary:
 //
-// # Delete Query Condition
+// Deletes a query condition.
 //
 // @param request - DeleteAnalysisConditionFavoriteRequest
 //
@@ -2633,7 +2637,7 @@ func (client *Client) DeleteAnalysisConditionFavoriteWithContext(ctx context.Con
 
 // Summary:
 //
-// # Delete Bypass Event
+// Deletes a bypass event.
 //
 // @param request - DeleteByPassShuntEventRequest
 //
@@ -2685,7 +2689,7 @@ func (client *Client) DeleteByPassShuntEventWithContext(ctx context.Context, req
 
 // Summary:
 //
-// # Delete Accumulated Variable
+// Deletes a cumulative variable.
 //
 // @param request - DeleteCustVariableRequest
 //
@@ -2745,7 +2749,7 @@ func (client *Client) DeleteCustVariableWithContext(ctx context.Context, request
 
 // Summary:
 //
-// # Delete Data Source
+// Deletes a data source.
 //
 // @param request - DeleteDataSourceRequest
 //
@@ -2853,7 +2857,7 @@ func (client *Client) DeleteEventFieldWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// # Delete Custom Variable
+// Deletes a custom variable.
 //
 // @param request - DeleteExpressionVariableRequest
 //
@@ -2909,7 +2913,7 @@ func (client *Client) DeleteExpressionVariableWithContext(ctx context.Context, r
 
 // Summary:
 //
-// # Delete Field
+// Deletes a field.
 //
 // @param request - DeleteFieldRequest
 //
@@ -2965,7 +2969,7 @@ func (client *Client) DeleteFieldWithContext(ctx context.Context, request *Delet
 
 // Summary:
 //
-// # Delete Name List
+// Deletes a list.
 //
 // @param request - DeleteNameListRequest
 //
@@ -3017,7 +3021,7 @@ func (client *Client) DeleteNameListWithContext(ctx context.Context, request *De
 
 // Summary:
 //
-// # Delete (pseudo) name list variable data
+// Deletes list variable data.
 //
 // @param request - DeleteNameListDataRequest
 //
@@ -3069,7 +3073,7 @@ func (client *Client) DeleteNameListDataWithContext(ctx context.Context, request
 
 // Summary:
 //
-// # Delete Query Variable
+// Deletes a custom query variable.
 //
 // @param request - DeleteQueryVariableRequest
 //
@@ -3121,7 +3125,7 @@ func (client *Client) DeleteQueryVariableWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// # Delete Policy Version
+// Deletes a policy version.
 //
 // @param request - DeleteRuleRequest
 //
@@ -3181,7 +3185,7 @@ func (client *Client) DeleteRuleWithContext(ctx context.Context, request *Delete
 
 // Summary:
 //
-// 删除样本
+// # Delete sample
 //
 // @param request - DeleteSampleRequest
 //
@@ -3233,7 +3237,7 @@ func (client *Client) DeleteSampleWithContext(ctx context.Context, request *Dele
 
 // Summary:
 //
-// # Batch Delete Samples
+// Deletes samples in batches.
 //
 // @param request - DeleteSampleBatchRequest
 //
@@ -3341,7 +3345,7 @@ func (client *Client) DeleteSampleBatchMetaWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// # Delete Sample Data
+// Deletes sample data.
 //
 // @param request - DeleteSampleDataRequest
 //
@@ -3445,7 +3449,7 @@ func (client *Client) DeleteSelfBindVariableWithContext(ctx context.Context, req
 
 // Summary:
 //
-// # Advanced Query to Get Left Variables Interface
+// Retrieves left-hand variables for advanced queries.
 //
 // @param request - DescribeAdvanceSearchLeftVariableListRequest
 //
@@ -3501,7 +3505,7 @@ func (client *Client) DescribeAdvanceSearchLeftVariableListWithContext(ctx conte
 
 // Summary:
 //
-// # Advanced Query
+// Performs an advanced query for event analysis.
 //
 // @param request - DescribeAdvanceSearchPageListRequest
 //
@@ -3581,7 +3585,7 @@ func (client *Client) DescribeAdvanceSearchPageListWithContext(ctx context.Conte
 
 // Summary:
 //
-// # Data Source List
+// Lists data sources.
 //
 // @param request - DescribeAllDataSourceRequest
 //
@@ -3629,7 +3633,7 @@ func (client *Client) DescribeAllDataSourceWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// # Event List Query
+// Queries the event list.
 //
 // @param request - DescribeAllEventNameAndCodeRequest
 //
@@ -3681,7 +3685,7 @@ func (client *Client) DescribeAllEventNameAndCodeWithContext(ctx context.Context
 
 // Summary:
 //
-// # Display all root variables when testing custom expressions
+// Displays all root variables during custom expression testing.
 //
 // @param request - DescribeAllRootVariableRequest
 //
@@ -3761,7 +3765,7 @@ func (client *Client) DescribeAllRootVariableWithContext(ctx context.Context, re
 
 // Summary:
 //
-// # Display All Fields
+// Displays all fields.
 //
 // @param request - DescribeAnalysisColumnFieldListRequest
 //
@@ -3809,7 +3813,7 @@ func (client *Client) DescribeAnalysisColumnFieldListWithContext(ctx context.Con
 
 // Summary:
 //
-// # Query Custom Columns
+// Queries custom columns.
 //
 // @param request - DescribeAnalysisColumnListRequest
 //
@@ -3857,7 +3861,7 @@ func (client *Client) DescribeAnalysisColumnListWithContext(ctx context.Context,
 
 // Summary:
 //
-// # Query Condition List
+// Queries the condition favorite list.
 //
 // @param request - DescribeAnalysisConditionFavoriteListRequest
 //
@@ -3905,7 +3909,7 @@ func (client *Client) DescribeAnalysisConditionFavoriteListWithContext(ctx conte
 
 // Summary:
 //
-// # Download Query Results
+// Download query results.
 //
 // @param request - DescribeAnalysisExportTaskDownloadUrlRequest
 //
@@ -3953,7 +3957,7 @@ func (client *Client) DescribeAnalysisExportTaskDownloadUrlWithContext(ctx conte
 
 // Summary:
 //
-// # Get API Details
+// Retrieves the details of an API.
 //
 // @param request - DescribeApiRequest
 //
@@ -4013,7 +4017,7 @@ func (client *Client) DescribeApiWithContext(ctx context.Context, request *Descr
 
 // Summary:
 //
-// # Get API groups including those purchased by the user and custom ones
+// Retrieves API groups, including purchased and custom groups.
 //
 // @param request - DescribeApiGroupsRequest
 //
@@ -4065,7 +4069,7 @@ func (client *Client) DescribeApiGroupsWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// # Query the limit information for creating API tasks
+// Queries the limit information for creating API tasks.
 //
 // @param request - DescribeApiLimitRequest
 //
@@ -4113,7 +4117,7 @@ func (client *Client) DescribeApiLimitWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// # Get API Service Name
+// Retrieves API service names.
 //
 // @param request - DescribeApiNameListRequest
 //
@@ -4161,7 +4165,7 @@ func (client *Client) DescribeApiNameListWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// # Query Variable Details
+// Query variable details.
 //
 // @param request - DescribeApiVariableRequest
 //
@@ -4213,7 +4217,7 @@ func (client *Client) DescribeApiVariableWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// # Get API list including purchased and customized APIs
+// Retrieves the API list, including purchased and custom APIs.
 //
 // @param request - DescribeApisRequest
 //
@@ -4273,7 +4277,7 @@ func (client *Client) DescribeApisWithContext(ctx context.Context, request *Desc
 
 // Summary:
 //
-// # Query appKey List
+// Queries the list of appKeys.
 //
 // @param request - DescribeAppKeyPageRequest
 //
@@ -4329,7 +4333,7 @@ func (client *Client) DescribeAppKeyPageWithContext(ctx context.Context, request
 
 // Summary:
 //
-// # Approval Switch
+// Configures the approval switch.
 //
 // @param request - DescribeAuditConfigRequest
 //
@@ -4381,7 +4385,7 @@ func (client *Client) DescribeAuditConfigWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// # Approval Details
+// Retrieves approval details.
 //
 // @param request - DescribeAuditDetailsRequest
 //
@@ -4433,7 +4437,7 @@ func (client *Client) DescribeAuditDetailsWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// # Display and Query of Audit List
+// Displays and queries the audit list.
 //
 // @param request - DescribeAuditPageListRequest
 //
@@ -4501,7 +4505,7 @@ func (client *Client) DescribeAuditPageListWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// # Query the list of event names for the current user
+// Queries the list of event names for the current user.
 //
 // @param request - DescribeAuthEventNameListRequest
 //
@@ -4549,7 +4553,7 @@ func (client *Client) DescribeAuthEventNameListWithContext(ctx context.Context, 
 
 // Summary:
 //
-// # Policy List
+// Queries a list of policies.
 //
 // @param request - DescribeAuthRulePageListRequest
 //
@@ -4609,7 +4613,7 @@ func (client *Client) DescribeAuthRulePageListWithContext(ctx context.Context, r
 
 // Summary:
 //
-// # List of Scenarios
+// Queries the list of scenarios.
 //
 // @param request - DescribeAuthSceneListRequest
 //
@@ -4657,7 +4661,7 @@ func (client *Client) DescribeAuthSceneListWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// # Scene List
+// Queries the list of scenarios.
 //
 // @param request - DescribeAuthScenePageListRequest
 //
@@ -4709,7 +4713,7 @@ func (client *Client) DescribeAuthScenePageListWithContext(ctx context.Context, 
 
 // Summary:
 //
-// # Check Authorization
+// Checks whether authorization is granted.
 //
 // @param request - DescribeAuthStatusRequest
 //
@@ -4757,7 +4761,7 @@ func (client *Client) DescribeAuthStatusWithContext(ctx context.Context, request
 
 // Summary:
 //
-// # Average Execution Time
+// Average execution duration.
 //
 // @param request - DescribeAvgExecuteCostReportRequest
 //
@@ -4805,7 +4809,7 @@ func (client *Client) DescribeAvgExecuteCostReportWithContext(ctx context.Contex
 
 // Summary:
 //
-// # Basic Query
+// Performs a basic query.
 //
 // @param request - DescribeBasicSearchPageListRequest
 //
@@ -4881,7 +4885,7 @@ func (client *Client) DescribeBasicSearchPageListWithContext(ctx context.Context
 
 // Summary:
 //
-// # Basic Statistics
+// Queries basic statistics.
 //
 // @param request - DescribeBasicStartRequest
 //
@@ -4941,7 +4945,7 @@ func (client *Client) DescribeBasicStartWithContext(ctx context.Context, request
 
 // Summary:
 //
-// # View Bypass Event
+// Queries a bypass event.
 //
 // @param request - DescribeByPassShuntEventRequest
 //
@@ -4993,7 +4997,7 @@ func (client *Client) DescribeByPassShuntEventWithContext(ctx context.Context, r
 
 // Summary:
 //
-// # Query the type configuration of custom accumulated variables
+// Queries the type configurations of custom cumulative variables.
 //
 // @param request - DescribeCustVariableConfigListRequest
 //
@@ -5049,7 +5053,7 @@ func (client *Client) DescribeCustVariableConfigListWithContext(ctx context.Cont
 
 // Summary:
 //
-// # Cumulative Variable Details
+// Queries the details of a cumulative variable.
 //
 // @param request - DescribeCustVariableDetailRequest
 //
@@ -5101,11 +5105,11 @@ func (client *Client) DescribeCustVariableDetailWithContext(ctx context.Context,
 
 // Summary:
 //
-// # Query Custom Accumulated Variable List
+// Queries the list of custom cumulative variables.
 //
 // Description:
 //
-// # List Query of Accumulated Variables
+// Queries the list of cumulative variables.
 //
 // @param request - DescribeCustVariablePageRequest
 //
@@ -5177,7 +5181,7 @@ func (client *Client) DescribeCustVariablePageWithContext(ctx context.Context, r
 
 // Summary:
 //
-// # Get Data Source Data Download Link
+// Retrieves the download URL for data source data.
 //
 // @param request - DescribeDataSourceDataDownloadUrlRequest
 //
@@ -5229,7 +5233,7 @@ func (client *Client) DescribeDataSourceDataDownloadUrlWithContext(ctx context.C
 
 // Summary:
 //
-// # Retrieve all fields of a data source
+// Retrieves all fields of a data source.
 //
 // @param request - DescribeDataSourceFieldsRequest
 //
@@ -5281,7 +5285,7 @@ func (client *Client) DescribeDataSourceFieldsWithContext(ctx context.Context, r
 
 // Summary:
 //
-// # Data Source List Interface
+// Queries a list of data sources.
 //
 // @param request - DescribeDataSourcePageListRequest
 //
@@ -5349,7 +5353,7 @@ func (client *Client) DescribeDataSourcePageListWithContext(ctx context.Context,
 
 // Summary:
 //
-// # Decision Result Fluctuation Detection
+// Detects fluctuations in decision results.
 //
 // @param request - DescribeDecisionResultFluctuationRequest
 //
@@ -5401,7 +5405,7 @@ func (client *Client) DescribeDecisionResultFluctuationWithContext(ctx context.C
 
 // Summary:
 //
-// # Decision Result Fluctuation Trend
+// Queries the fluctuation trend of decision results.
 //
 // @param request - DescribeDecisionResultTrendRequest
 //
@@ -5461,7 +5465,7 @@ func (client *Client) DescribeDecisionResultTrendWithContext(ctx context.Context
 
 // Summary:
 //
-// # Detailed Statistics
+// Retrieves detailed statistics.
 //
 // @param request - DescribeDetailStartRequest
 //
@@ -5521,7 +5525,7 @@ func (client *Client) DescribeDetailStartWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// # Download
+// Downloads a file.
 //
 // @param request - DescribeDownloadUrlRequest
 //
@@ -5581,7 +5585,7 @@ func (client *Client) DescribeDownloadUrlWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// # Query Event Details
+// Queries event details.
 //
 // @param request - DescribeEventBaseInfoByEventCodeRequest
 //
@@ -5637,7 +5641,7 @@ func (client *Client) DescribeEventBaseInfoByEventCodeWithContext(ctx context.Co
 
 // Summary:
 //
-// # Query Total Event Count
+// Queries the total number of events.
 //
 // @param request - DescribeEventCountRequest
 //
@@ -5689,7 +5693,7 @@ func (client *Client) DescribeEventCountWithContext(ctx context.Context, request
 
 // Summary:
 //
-// # Query event details based on the request ID
+// Queries event details by request ID.
 //
 // @param request - DescribeEventDetailByRequestIdRequest
 //
@@ -5749,7 +5753,7 @@ func (client *Client) DescribeEventDetailByRequestIdWithContext(ctx context.Cont
 
 // Summary:
 //
-// # Query Event History Details
+// Queries the details of an event history.
 //
 // @param request - DescribeEventLogDetailRequest
 //
@@ -5801,7 +5805,7 @@ func (client *Client) DescribeEventLogDetailWithContext(ctx context.Context, req
 
 // Summary:
 //
-// # Query Event History List
+// Queries the event history list.
 //
 // @param request - DescribeEventLogPageRequest
 //
@@ -5961,7 +5965,7 @@ func (client *Client) DescribeEventLogPageWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// # Paged Query for Events
+// Queries events by paging.
 //
 // @param request - DescribeEventPageListRequest
 //
@@ -6093,7 +6097,7 @@ func (client *Client) DescribeEventResultBarChartWithContext(ctx context.Context
 
 // Summary:
 //
-// # Event Overview List
+// Queries the event overview list.
 //
 // @param request - DescribeEventResultListRequest
 //
@@ -6157,7 +6161,7 @@ func (client *Client) DescribeEventResultListWithContext(ctx context.Context, re
 
 // Summary:
 //
-// # Query Policy Download List
+// Queries the policy download list.
 //
 // @param request - DescribeEventTaskHistoryRequest
 //
@@ -6205,7 +6209,7 @@ func (client *Client) DescribeEventTaskHistoryWithContext(ctx context.Context, r
 
 // Summary:
 //
-// # Event Invocation Count
+// # Call event count
 //
 // @param request - DescribeEventTotalCountReportRequest
 //
@@ -6253,7 +6257,7 @@ func (client *Client) DescribeEventTotalCountReportWithContext(ctx context.Conte
 
 // Summary:
 //
-// # Batch Import Policy
+// Imports policies in batches.
 //
 // @param request - DescribeEventUploadPolicyRequest
 //
@@ -6301,11 +6305,11 @@ func (client *Client) DescribeEventUploadPolicyWithContext(ctx context.Context, 
 
 // Summary:
 //
-// # Query event variables
+// Queries event variables.
 //
 // Description:
 //
-// # Cumulative Variable List Query
+// Queries the list of cumulative variables.
 //
 // @param request - DescribeEventVariableListRequest
 //
@@ -6373,7 +6377,7 @@ func (client *Client) DescribeEventVariableListWithContext(ctx context.Context, 
 
 // Summary:
 //
-// # Query Event Template
+// Queries an event pattern template.
 //
 // @param request - DescribeEventVariableTemplateBindRequest
 //
@@ -6433,7 +6437,7 @@ func (client *Client) DescribeEventVariableTemplateBindWithContext(ctx context.C
 
 // Summary:
 //
-// # Query Event Template
+// Queries an event pattern template.
 //
 // @param request - DescribeEventVariableTemplateListRequest
 //
@@ -6493,7 +6497,7 @@ func (client *Client) DescribeEventVariableTemplateListWithContext(ctx context.C
 
 // Summary:
 //
-// # Query Event Variables
+// Queries event variables.
 //
 // @param request - DescribeEventsVariableListRequest
 //
@@ -6557,7 +6561,7 @@ func (client *Client) DescribeEventsVariableListWithContext(ctx context.Context,
 
 // Summary:
 //
-// Self-service call list.
+// Self-service invocation list.
 //
 // @param request - DescribeExcuteNumRequest
 //
@@ -6621,7 +6625,7 @@ func (client *Client) DescribeExcuteNumWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Validate if the field name is duplicated (based on user\\"s organization)
+// Checks whether a field name is duplicate based on the user unit.
 //
 // @param request - DescribeExistNameRequest
 //
@@ -6673,7 +6677,7 @@ func (client *Client) DescribeExistNameWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// # Check if Scene Exists
+// Checks whether a scenario exists.
 //
 // @param request - DescribeExistSceneRequest
 //
@@ -6725,7 +6729,7 @@ func (client *Client) DescribeExistSceneWithContext(ctx context.Context, request
 
 // Summary:
 //
-// # Custom Variable Details
+// Queries the details of a custom variable.
 //
 // @param request - DescribeExpressionVariableDetailRequest
 //
@@ -6777,7 +6781,7 @@ func (client *Client) DescribeExpressionVariableDetailWithContext(ctx context.Co
 
 // Summary:
 //
-// # Function List
+// Queries the function list.
 //
 // @param request - DescribeExpressionVariableFunctionListRequest
 //
@@ -6825,7 +6829,7 @@ func (client *Client) DescribeExpressionVariableFunctionListWithContext(ctx cont
 
 // Summary:
 //
-// Paged Query for Custom Variables.
+// Performs a paging query of custom variables.
 //
 // @param request - DescribeExpressionVariablePageRequest
 //
@@ -6961,7 +6965,7 @@ func (client *Client) DescribeExpressionVariableVersionDetailWithContext(ctx con
 
 // Summary:
 //
-// # Get Field Details
+// Retrieves field details.
 //
 // @param request - DescribeFieldByIdRequest
 //
@@ -7013,7 +7017,7 @@ func (client *Client) DescribeFieldByIdWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// # Query Field List
+// Queries the list of fields.
 //
 // @param request - DescribeFieldListRequest
 //
@@ -7069,7 +7073,7 @@ func (client *Client) DescribeFieldListWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// # Query paged list of fields
+// Queries a paginated list of fields.
 //
 // @param request - DescribeFieldPageRequest
 //
@@ -7153,7 +7157,7 @@ func (client *Client) DescribeFieldPageWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// # Community Account List
+// Queries the list of community accounts.
 //
 // @param request - DescribeGroupAccountPageRequest
 //
@@ -7237,7 +7241,7 @@ func (client *Client) DescribeGroupAccountPageWithContext(ctx context.Context, r
 
 // Summary:
 //
-// # Community List Query Conditions
+// Queries the filter conditions for the community list.
 //
 // @param request - DescribeGroupConditionListRequest
 //
@@ -7285,7 +7289,7 @@ func (client *Client) DescribeGroupConditionListWithContext(ctx context.Context,
 
 // Summary:
 //
-// # Community List
+// Queries the list of communities.
 //
 // @param request - DescribeGroupPageRequest
 //
@@ -7357,7 +7361,7 @@ func (client *Client) DescribeGroupPageWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// # Risk Communities Discovered Today
+// Queries the risk communities discovered on the current day.
 //
 // @param request - DescribeGroupStatisticsByTodayRequest
 //
@@ -7405,7 +7409,7 @@ func (client *Client) DescribeGroupStatisticsByTodayWithContext(ctx context.Cont
 
 // Summary:
 //
-// # Recent Trends in Risk Communities
+// Queries recent trends of risky communities.
 //
 // @param request - DescribeGroupTrendRequest
 //
@@ -7457,7 +7461,7 @@ func (client *Client) DescribeGroupTrendWithContext(ctx context.Context, request
 
 // Summary:
 //
-// # Check if the policy name under the event name exists
+// Queries whether a policy name exists under a specified event name.
 //
 // @param request - DescribeHasRuleNameByEventCodeRequest
 //
@@ -7517,7 +7521,7 @@ func (client *Client) DescribeHasRuleNameByEventCodeWithContext(ctx context.Cont
 
 // Summary:
 //
-// Risk Map Overview Chart (Pie Chart)
+// Retrieves the risk map overview chart (pie chart).
 //
 // @param request - DescribeHighRiskPieChartRequest
 //
@@ -7577,7 +7581,7 @@ func (client *Client) DescribeHighRiskPieChartWithContext(ctx context.Context, r
 
 // Summary:
 //
-// # Policy Hit Fluctuation Detection
+// Detects fluctuations in policy hits.
 //
 // @param request - DescribeHitRuleFluctuationRequest
 //
@@ -7633,7 +7637,7 @@ func (client *Client) DescribeHitRuleFluctuationWithContext(ctx context.Context,
 
 // Summary:
 //
-// Top 20 Hits for Main Events/Bypass/Diversion Strategies
+// Queries the top 20 policies by hits for main events, bypass, and automatic request distribution.
 //
 // @param request - DescribeHitRuleListRequest
 //
@@ -7697,7 +7701,7 @@ func (client *Client) DescribeHitRuleListWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// # Hit Rule Trend
+// Queries the policy hit trends.
 //
 // @param request - DescribeHitRuleTrendRequest
 //
@@ -7817,7 +7821,7 @@ func (client *Client) DescribeInitDigWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// # Query Total Number of Events
+// Queries the total number of events.
 //
 // @param request - DescribeInputFeildCountByEventCodeRequest
 //
@@ -7925,7 +7929,7 @@ func (client *Client) DescribeListModelWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// # Task List
+// Queries the list of tasks.
 //
 // @param request - DescribeListPocRequest
 //
@@ -7993,7 +7997,7 @@ func (client *Client) DescribeListPocWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// # Get Monitoring Object List
+// Queries the list of monitoring objects.
 //
 // @param request - DescribeLoanExecListRequest
 //
@@ -8061,7 +8065,7 @@ func (client *Client) DescribeLoanExecListWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// # Get Loan Monitoring Task List
+// Retrieves the list of in-loan monitoring tasks.
 //
 // @param request - DescribeLoanTaskListRequest
 //
@@ -8125,7 +8129,7 @@ func (client *Client) DescribeLoanTaskListWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// # Mark List
+// Queries the tagging list.
 //
 // @param request - DescribeMarkPageRequest
 //
@@ -8197,7 +8201,7 @@ func (client *Client) DescribeMarkPageWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// # Check Permission
+// Queries whether the current user has the specified permission.
 //
 // @param request - DescribeMenuPermissionRequest
 //
@@ -8345,7 +8349,7 @@ func (client *Client) DescribeModelOssPolicyWithContext(ctx context.Context, req
 
 // Summary:
 //
-// # Query Task Limit
+// Queries the limits of tasks.
 //
 // @param request - DescribeMonitorTaskLimitRequest
 //
@@ -8393,7 +8397,7 @@ func (client *Client) DescribeMonitorTaskLimitWithContext(ctx context.Context, r
 
 // Summary:
 //
-// # Query Name List Pagination
+// Queries a name list by page.
 //
 // @param request - DescribeNameListRequest
 //
@@ -8461,7 +8465,7 @@ func (client *Client) DescribeNameListWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// # Download Name List
+// Downloads the content of a list.
 //
 // @param request - DescribeNameListDownloadUrlRequest
 //
@@ -8513,7 +8517,7 @@ func (client *Client) DescribeNameListDownloadUrlWithContext(ctx context.Context
 
 // Summary:
 //
-// # Query Name List Limit
+// Queries the quota limit for lists.
 //
 // @param request - DescribeNameListLimitRequest
 //
@@ -8565,7 +8569,7 @@ func (client *Client) DescribeNameListLimitWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// # Query the content of the list
+// Queries the content of a list.
 //
 // @param request - DescribeNameListPageListRequest
 //
@@ -8637,7 +8641,7 @@ func (client *Client) DescribeNameListPageListWithContext(ctx context.Context, r
 
 // Summary:
 //
-// # List of Name Types
+// Queries the list of name list types.
 //
 // @param request - DescribeNameListTypeListRequest
 //
@@ -8685,7 +8689,7 @@ func (client *Client) DescribeNameListTypeListWithContext(ctx context.Context, r
 
 // Summary:
 //
-// # Name List
+// Queries a list of named lists.
 //
 // @param request - DescribeNameListVariablePageListRequest
 //
@@ -8813,7 +8817,7 @@ func (client *Client) DescribeOperationLogMonitoringWithContext(ctx context.Cont
 
 // Summary:
 //
-// # Query event list by event name
+// Queries the list of events by event name.
 //
 // @param request - DescribeOperationLogPageListRequest
 //
@@ -8885,7 +8889,7 @@ func (client *Client) DescribeOperationLogPageListWithContext(ctx context.Contex
 
 // Summary:
 //
-// # Query the operator mapping list based on customer ID
+// Queries the operator mapping list by customer ID.
 //
 // @param request - DescribeOperatorListRequest
 //
@@ -8933,7 +8937,7 @@ func (client *Client) DescribeOperatorListWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// # Query Operator Mapping List
+// Queries the operator mapping list.
 //
 // @param request - DescribeOperatorListBySceneRequest
 //
@@ -8985,7 +8989,7 @@ func (client *Client) DescribeOperatorListBySceneWithContext(ctx context.Context
 
 // Summary:
 //
-// # Query Operator Mapping List
+// Queries the list of operator mappings.
 //
 // @param request - DescribeOperatorListByTypeRequest
 //
@@ -9033,7 +9037,7 @@ func (client *Client) DescribeOperatorListByTypeWithContext(ctx context.Context,
 
 // Summary:
 //
-// # Check Oss Authorization
+// Checks whether OSS is authorized.
 //
 // @param request - DescribeOssAuthStatusRequest
 //
@@ -9081,7 +9085,7 @@ func (client *Client) DescribeOssAuthStatusWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// # Get OSS Policy
+// Retrieves the OSS policy.
 //
 // @param request - DescribeOssPolicyRequest
 //
@@ -9133,7 +9137,7 @@ func (client *Client) DescribeOssPolicyWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// # Get File Upload Credentials
+// Retrieves the upload credential for a file.
 //
 // @param request - DescribeOssTokenRequest
 //
@@ -9189,7 +9193,7 @@ func (client *Client) DescribeOssTokenWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// # Query Event Property List
+// Queries the list of event properties.
 //
 // @param request - DescribeParamByEventCodesRequest
 //
@@ -9245,7 +9249,7 @@ func (client *Client) DescribeParamByEventCodesWithContext(ctx context.Context, 
 
 // Summary:
 //
-// # Get File Upload Credentials
+// Retrieves the file upload credential.
 //
 // @param request - DescribePocOssTokenRequest
 //
@@ -9293,7 +9297,7 @@ func (client *Client) DescribePocOssTokenWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// # Get POC Task List
+// Retrieves the list of POC tasks.
 //
 // @param request - DescribePocTaskListRequest
 //
@@ -9353,7 +9357,7 @@ func (client *Client) DescribePocTaskListWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// # Determine if Stack Private Domain Mode is Enabled
+// Checks whether the Stack private domain mode is enabled.
 //
 // @param request - DescribePrivateStackRequest
 //
@@ -9397,7 +9401,7 @@ func (client *Client) DescribePrivateStackWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// # Query Variable Detail Query
+// Queries the details of a custom query variable.
 //
 // @param request - DescribeQueryVariableDetailRequest
 //
@@ -9449,7 +9453,7 @@ func (client *Client) DescribeQueryVariableDetailWithContext(ctx context.Context
 
 // Summary:
 //
-// # Query Variable List Query
+// Queries a list of custom query variables.
 //
 // @param request - DescribeQueryVariablePageListRequest
 //
@@ -9517,7 +9521,7 @@ func (client *Client) DescribeQueryVariablePageListWithContext(ctx context.Conte
 
 // Summary:
 //
-// Query Variable List under Sample & Scenario
+// Queries the list of variables under a data sample and scenario.
 //
 // @param request - DescribeRecommendSceneVariablesRequest
 //
@@ -9569,7 +9573,7 @@ func (client *Client) DescribeRecommendSceneVariablesWithContext(ctx context.Con
 
 // Summary:
 //
-// # Variable Recommendation Details Query Interface
+// Queries the details of variable recommendations.
 //
 // @param request - DescribeRecommendTaskDetailRequest
 //
@@ -9621,7 +9625,7 @@ func (client *Client) DescribeRecommendTaskDetailWithContext(ctx context.Context
 
 // Summary:
 //
-// # Variable Recommendation List Query Interface
+// Queries the variable recommendation list.
 //
 // @param request - DescribeRecommendTaskPageListRequest
 //
@@ -9681,7 +9685,7 @@ func (client *Client) DescribeRecommendTaskPageListWithContext(ctx context.Conte
 
 // Summary:
 //
-// # Query Indicators Information under Variables
+// Queries the metric information of a variable.
 //
 // @param request - DescribeRecommendVariablesVelocityRequest
 //
@@ -9737,7 +9741,7 @@ func (client *Client) DescribeRecommendVariablesVelocityWithContext(ctx context.
 
 // Summary:
 //
-// # Query Supported Metrics List
+// Queries the list of supported metrics.
 //
 // @param request - DescribeRecommendVelocitiesRequest
 //
@@ -9793,7 +9797,7 @@ func (client *Client) DescribeRecommendVelocitiesWithContext(ctx context.Context
 
 // Summary:
 //
-// # Query the list of regions supported by ApiGateway
+// Queries the list of regions supported by API Gateway.
 //
 // @param request - DescribeRegionsRequest
 //
@@ -9841,7 +9845,7 @@ func (client *Client) DescribeRegionsWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// # Query Request Hit Details
+// Queries the hit details of a request.
 //
 // @param request - DescribeRequestHitRequest
 //
@@ -9893,7 +9897,7 @@ func (client *Client) DescribeRequestHitWithContext(ctx context.Context, request
 
 // Summary:
 //
-// # Request Peak
+// Request Rate (QPS).
 //
 // @param request - DescribeRequestPeakReportRequest
 //
@@ -9941,7 +9945,7 @@ func (client *Client) DescribeRequestPeakReportWithContext(ctx context.Context, 
 
 // Summary:
 //
-// # Drill-down Analysis
+// Performs drill-down analysis.
 //
 // @param request - DescribeResultCountRequest
 //
@@ -9997,7 +10001,7 @@ func (client *Client) DescribeResultCountWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Risk map overview chart (line chart)
+// Risk Map Overview Chart (Line Chart)
 //
 // @param request - DescribeRiskLineChartRequest
 //
@@ -10117,7 +10121,7 @@ func (client *Client) DescribeRiskTagsLineChartWithContext(ctx context.Context, 
 
 // Summary:
 //
-// # Policy Overview List
+// Queries the policy overview list.
 //
 // @param request - DescribeRuleBarChartRequest
 //
@@ -10177,7 +10181,7 @@ func (client *Client) DescribeRuleBarChartWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// # Query Policy Count by User ID
+// Queries the number of policies by user ID.
 //
 // @param request - DescribeRuleCountByUserIdRequest
 //
@@ -10229,7 +10233,7 @@ func (client *Client) DescribeRuleCountByUserIdWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Query policy/version details
+// Query policy/version details.
 //
 // @param request - DescribeRuleDetailByRuleIdRequest
 //
@@ -10289,7 +10293,7 @@ func (client *Client) DescribeRuleDetailByRuleIdWithContext(ctx context.Context,
 
 // Summary:
 //
-// # Query rule hit details
+// Queries the details of policy rule hits.
 //
 // @param request - DescribeRuleHitRequest
 //
@@ -10353,7 +10357,7 @@ func (client *Client) DescribeRuleHitWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// # Query policy list
+// Queries a list of policies.
 //
 // @param request - DescribeRuleListByEventCodesListRequest
 //
@@ -10405,7 +10409,7 @@ func (client *Client) DescribeRuleListByEventCodesListWithContext(ctx context.Co
 
 // Summary:
 //
-// # Query the list of policies
+// Queries a list of policies.
 //
 // @param request - DescribeRulePageListRequest
 //
@@ -10485,7 +10489,7 @@ func (client *Client) DescribeRulePageListWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// # Query historical snapshots based on ruleId and version
+// Query historical snapshots based on ruleId and version.
 //
 // @param request - DescribeRuleSnapshotRequest
 //
@@ -10541,7 +10545,7 @@ func (client *Client) DescribeRuleSnapshotWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// # Query Policy Version List
+// Queries the list of policy versions.
 //
 // @param request - DescribeRuleVersionListRequest
 //
@@ -10605,7 +10609,7 @@ func (client *Client) DescribeRuleVersionListWithContext(ctx context.Context, re
 
 // Summary:
 //
-// # SDK Download List
+// Queries the list of SDK downloads.
 //
 // @param request - DescribeSDKDownloadListRequest
 //
@@ -10661,7 +10665,7 @@ func (client *Client) DescribeSDKDownloadListWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Query SAF permissions.
+// Queries SAF permissions.
 //
 // @param request - DescribeSafConsoleRequest
 //
@@ -10713,7 +10717,7 @@ func (client *Client) DescribeSafConsoleWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Query saf_de Order
+// Queries saf_de orders.
 //
 // @param request - DescribeSafDeOrderRequest
 //
@@ -10777,7 +10781,7 @@ func (client *Client) DescribeSafDeOrderWithContext(ctx context.Context, request
 
 // Summary:
 //
-// # Query Order Information
+// Queries order information.
 //
 // @param request - DescribeSafOrderRequest
 //
@@ -10845,7 +10849,7 @@ func (client *Client) DescribeSafOrderWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// # Query Access Configuration
+// Queries the access configuration.
 //
 // @param request - DescribeSafStartConfigRequest
 //
@@ -10893,7 +10897,7 @@ func (client *Client) DescribeSafStartConfigWithContext(ctx context.Context, req
 
 // Summary:
 //
-// # Query Access Configuration
+// Queries access configurations.
 //
 // @param request - DescribeSafStartStepsRequest
 //
@@ -10961,7 +10965,7 @@ func (client *Client) DescribeSafStartStepsWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// # Get Risk Tag List
+// Retrieves the list of risk labels.
 //
 // @param request - DescribeSafTagListRequest
 //
@@ -11149,7 +11153,7 @@ func (client *Client) DescribeSampleDataByBatchUUidPageWithContext(ctx context.C
 
 // Summary:
 //
-// # Paged Query of Sample List
+// Performs a paging query on the sample list.
 //
 // @param request - DescribeSampleDataListRequest
 //
@@ -11293,7 +11297,7 @@ func (client *Client) DescribeSampleDataPageWithContext(ctx context.Context, req
 
 // Summary:
 //
-// # Query Sample Example Authorization
+// Queries the authorization of a data sample.
 //
 // @param request - DescribeSampleDemoDownloadUrlRequest
 //
@@ -11345,7 +11349,7 @@ func (client *Client) DescribeSampleDemoDownloadUrlWithContext(ctx context.Conte
 
 // Summary:
 //
-// # Query Sample Download Authorization Information
+// Queries the authorization information for downloading a data sample.
 //
 // @param request - DescribeSampleDownloadUrlRequest
 //
@@ -11397,7 +11401,7 @@ func (client *Client) DescribeSampleDownloadUrlWithContext(ctx context.Context, 
 
 // Summary:
 //
-// # Query Sample Details
+// Queries the details of a data sample.
 //
 // @param request - DescribeSampleInfoRequest
 //
@@ -11453,7 +11457,7 @@ func (client *Client) DescribeSampleInfoWithContext(ctx context.Context, request
 
 // Summary:
 //
-// # Query Sample List
+// Queries the sample list.
 //
 // @param request - DescribeSampleListRequest
 //
@@ -11517,7 +11521,7 @@ func (client *Client) DescribeSampleListWithContext(ctx context.Context, request
 
 // Summary:
 //
-// # Query Scene List
+// Queries the list of scenarios.
 //
 // @param request - DescribeSampleSceneListRequest
 //
@@ -11565,7 +11569,7 @@ func (client *Client) DescribeSampleSceneListWithContext(ctx context.Context, re
 
 // Summary:
 //
-// # Get Tag List
+// Retrieves the list of labels.
 //
 // @param request - DescribeSampleTagListRequest
 //
@@ -11613,7 +11617,7 @@ func (client *Client) DescribeSampleTagListWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// # Query Sample Upload Authorization Information
+// Queries the authorization information for sample uploads.
 //
 // @param request - DescribeSampleUploadPolicyRequest
 //
@@ -11721,11 +11725,11 @@ func (client *Client) DescribeSamplebatchPageWithContext(ctx context.Context, re
 
 // Summary:
 //
-// # Dropdown list for scenario-based service events
+// Queries the dropdown list of scenario-based risk control events.
 //
 // Description:
 //
-// # Dropdown list for scenario-based risk control events
+// Queries the dropdown list of scenario-based risk control events.
 //
 // @param request - DescribeSceneAllEventNameCodeListRequest
 //
@@ -11777,7 +11781,7 @@ func (client *Client) DescribeSceneAllEventNameCodeListWithContext(ctx context.C
 
 // Summary:
 //
-// # List of Scenario-based Risk Control Events
+// Queries the list of scenario-based risk control events.
 //
 // @param request - DescribeSceneEventPageListRequest
 //
@@ -11837,11 +11841,11 @@ func (client *Client) DescribeSceneEventPageListWithContext(ctx context.Context,
 
 // Summary:
 //
-// # White-boxed strategy list for risk control services
+// Queries the list of scenario-based risk control event policies.
 //
 // Description:
 //
-// # Query the list of scenarized risk control event strategies
+// Queries the list of scenario-based risk control event policies.
 //
 // @param request - DescribeSceneRulePageListRequest
 //
@@ -11965,7 +11969,7 @@ func (client *Client) DescribeScoreListWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// # Score Range Quantity Analysis
+// Analyzes the quantity distribution across score ranges.
 //
 // @param request - DescribeScoreSectionNumLineChartRequest
 //
@@ -12033,7 +12037,7 @@ func (client *Client) DescribeScoreSectionNumLineChartWithContext(ctx context.Co
 
 // Summary:
 //
-// Proportion of Score Ranges for Main Events/Bypass Events/Diversion Events
+// Queries the score range distribution of main events, bypass events, and diversion events.
 //
 // @param request - DescribeScoreSectionPieChartRequest
 //
@@ -12097,7 +12101,7 @@ func (client *Client) DescribeScoreSectionPieChartWithContext(ctx context.Contex
 
 // Summary:
 //
-// # Score Section Ratio Analysis
+// # Score Range Proportion Analysis
 //
 // @param request - DescribeScoreSectionRatioLineChartRequest
 //
@@ -12165,7 +12169,7 @@ func (client *Client) DescribeScoreSectionRatioLineChartWithContext(ctx context.
 
 // Summary:
 //
-// # Query Task ID List
+// Queries the list of task IDs.
 //
 // @param request - DescribeSelectItemRequest
 //
@@ -12213,7 +12217,7 @@ func (client *Client) DescribeSelectItemWithContext(ctx context.Context, request
 
 // Summary:
 //
-// # ServiceAppkey dropdown
+// Retrieves the dropdown values for ServiceAppkey.
 //
 // @param request - DescribeServiceAppKeyRequest
 //
@@ -12305,7 +12309,7 @@ func (client *Client) DescribeServiceCodeNameWithContext(ctx context.Context, re
 
 // Summary:
 //
-// # Get Service List
+// Retrieves the list of services.
 //
 // @param request - DescribeServiceListRequest
 //
@@ -12353,7 +12357,7 @@ func (client *Client) DescribeServiceListWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// # Estimate Call Information
+// Estimates call information.
 //
 // @param request - DescribeSimulationPreditInfoRequest
 //
@@ -12409,7 +12413,7 @@ func (client *Client) DescribeSimulationPreditInfoWithContext(ctx context.Contex
 
 // Summary:
 //
-// # Query Task Record Count
+// Queries the number of task records.
 //
 // @param request - DescribeSimulationTaskCountRequest
 //
@@ -12481,7 +12485,7 @@ func (client *Client) DescribeSimulationTaskCountWithContext(ctx context.Context
 
 // Summary:
 //
-// # Task List
+// Queries the task list.
 //
 // @param request - DescribeSimulationTaskListRequest
 //
@@ -12549,7 +12553,7 @@ func (client *Client) DescribeSimulationTaskListWithContext(ctx context.Context,
 
 // Summary:
 //
-// # Get Project Configuration
+// Retrieves the project configuration.
 //
 // @param request - DescribeSlsUrlConfigRequest
 //
@@ -12597,7 +12601,7 @@ func (client *Client) DescribeSlsUrlConfigWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// # Query List of Policies Supporting Simulation
+// Queries the list of policies that support simulation.
 //
 // @param request - DescribeSupportRuleListRequest
 //
@@ -12649,7 +12653,7 @@ func (client *Client) DescribeSupportRuleListWithContext(ctx context.Context, re
 
 // Summary:
 //
-// # Tag List
+// Queries the label list.
 //
 // @param request - DescribeTagListRequest
 //
@@ -12701,7 +12705,7 @@ func (client *Client) DescribeTagListWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// # Tag Overview List
+// Queries the tag overview list.
 //
 // @param request - DescribeTagsBarChartRequest
 //
@@ -12765,7 +12769,7 @@ func (client *Client) DescribeTagsBarChartWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// # Tag Fluctuation Detection
+// Detects label fluctuations.
 //
 // @param request - DescribeTagsFluctuationRequest
 //
@@ -12817,7 +12821,7 @@ func (client *Client) DescribeTagsFluctuationWithContext(ctx context.Context, re
 
 // Summary:
 //
-// # Get Tag List
+// Retrieves the list of labels.
 //
 // @param request - DescribeTagsListRequest
 //
@@ -12865,7 +12869,7 @@ func (client *Client) DescribeTagsListWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// # Tag Hit Count Analysis
+// Analyzes the number of label hits.
 //
 // @param request - DescribeTagsNumLineChartRequest
 //
@@ -12933,7 +12937,7 @@ func (client *Client) DescribeTagsNumLineChartWithContext(ctx context.Context, r
 
 // Summary:
 //
-// # Tag Hit Ratio Analysis
+// Analyzes the tag hit ratio distribution.
 //
 // @param request - DescribeTagsRatioLineChartRequest
 //
@@ -13001,7 +13005,7 @@ func (client *Client) DescribeTagsRatioLineChartWithContext(ctx context.Context,
 
 // Summary:
 //
-// # Tag Hit Trend
+// Queries the trend of tag hits.
 //
 // @param request - DescribeTagsTrendRequest
 //
@@ -13065,7 +13069,7 @@ func (client *Client) DescribeTagsTrendWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// # Task List
+// Queries the task list.
 //
 // @param request - DescribeTaskListRequest
 //
@@ -13125,7 +13129,7 @@ func (client *Client) DescribeTaskListWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// # Task Log List
+// Queries the task logs.
 //
 // @param request - DescribeTaskLogListRequest
 //
@@ -13193,7 +13197,7 @@ func (client *Client) DescribeTaskLogListWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// # Query Total Event Count
+// Queries the total number of events.
 //
 // @param request - DescribeTemplateCountRequest
 //
@@ -13241,7 +13245,7 @@ func (client *Client) DescribeTemplateCountWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// # Template Download
+// Downloads a template.
 //
 // @param request - DescribeTemplateDownloadRequest
 //
@@ -13289,7 +13293,7 @@ func (client *Client) DescribeTemplateDownloadWithContext(ctx context.Context, r
 
 // Summary:
 //
-// # Query Event List by Event Name
+// Queries a list of events by event name.
 //
 // @param request - DescribeTemplatePageListRequest
 //
@@ -13365,7 +13369,7 @@ func (client *Client) DescribeTemplatePageListWithContext(ctx context.Context, r
 
 // Summary:
 //
-// # Get List of Services Used by User
+// Queries the list of services used by the user.
 //
 // @param request - DescribeUsedServiceRequest
 //
@@ -13413,7 +13417,7 @@ func (client *Client) DescribeUsedServiceWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// # Get Current Logged-in User Information
+// Retrieves the information about the current logged-on user.
 //
 // @param request - DescribeUserInfoRequest
 //
@@ -13461,7 +13465,7 @@ func (client *Client) DescribeUserInfoWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// # Query Variable Binding Information
+// Queries variable binding information.
 //
 // @param request - DescribeVariableBindDetailRequest
 //
@@ -13517,7 +13521,7 @@ func (client *Client) DescribeVariableBindDetailWithContext(ctx context.Context,
 
 // Summary:
 //
-// # Query variable details
+// Queries the details of a variable.
 //
 // @param request - DescribeVariableDetailRequest
 //
@@ -13569,7 +13573,7 @@ func (client *Client) DescribeVariableDetailWithContext(ctx context.Context, req
 
 // Summary:
 //
-// # Query Variable Fee Information
+// Queries the billing information of variables.
 //
 // @param request - DescribeVariableFeeRequest
 //
@@ -13621,7 +13625,7 @@ func (client *Client) DescribeVariableFeeWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// # Query Variable Details
+// Queries the details of variables.
 //
 // @param request - DescribeVariableListRequest
 //
@@ -13701,7 +13705,7 @@ func (client *Client) DescribeVariableListWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// # Query Variable Definitions
+// Queries variable definitions.
 //
 // @param request - DescribeVariableMarketListRequest
 //
@@ -13781,7 +13785,7 @@ func (client *Client) DescribeVariableMarketListWithContext(ctx context.Context,
 
 // Summary:
 //
-// # Query Configuration Information
+// Queries configuration information.
 //
 // @param request - DescribeVariableSceneListRequest
 //
@@ -13993,7 +13997,7 @@ func (client *Client) DescribeVersionPageListWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 下载样本文件
+// # Download sample file
 //
 // @param request - DownloadSampleFileRequest
 //
@@ -14101,7 +14105,7 @@ func (client *Client) DownloadSmapleBatchWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 下载子任务结果
+// # Download subtask result
 //
 // @param request - DownloadSubTaskResultRequest
 //
@@ -14153,7 +14157,7 @@ func (client *Client) DownloadSubTaskResultWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// # Custom Variable Test
+// Tests a custom variable.
 //
 // @param request - ExpressionTestRequest
 //
@@ -14221,7 +14225,7 @@ func (client *Client) ExpressionTestWithContext(ctx context.Context, request *Ex
 
 // Summary:
 //
-// # File Upload
+// Uploads a file.
 //
 // @param request - FileUploadRequest
 //
@@ -14277,7 +14281,7 @@ func (client *Client) FileUploadWithContext(ctx context.Context, request *FileUp
 
 // Summary:
 //
-// 创建样本记录
+// # Create a sample record
 //
 // @param request - GetSampleDetailRequest
 //
@@ -14329,7 +14333,7 @@ func (client *Client) GetSampleDetailWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// 查看子任务结果
+// # View subtask results
 //
 // @param request - GetSubTaskResultRequest
 //
@@ -14433,7 +14437,7 @@ func (client *Client) ImportFieldWithContext(ctx context.Context, request *Impor
 
 // Summary:
 //
-// # Create or Import Name List
+// Creates or imports a list.
 //
 // @param request - ImportNameListRequest
 //
@@ -14513,7 +14517,7 @@ func (client *Client) ImportNameListWithContext(ctx context.Context, request *Im
 
 // Summary:
 //
-// # Import Template Event
+// Imports template events.
 //
 // @param request - ImportTemplateEventRequest
 //
@@ -14565,7 +14569,7 @@ func (client *Client) ImportTemplateEventWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 样本列表查询
+// # Sample List Query
 //
 // @param request - ListSampleRequest
 //
@@ -14641,7 +14645,7 @@ func (client *Client) ListSampleWithContext(ctx context.Context, request *ListSa
 
 // Summary:
 //
-// 任务组列表查询
+// # Query task group list
 //
 // @param request - ListTaskGroupRequest
 //
@@ -14805,7 +14809,7 @@ func (client *Client) ListVariableDefineWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 合并下载
+// # Merge Download
 //
 // @param request - MergeDownloadRequest
 //
@@ -15105,7 +15109,7 @@ func (client *Client) ModelSampleDownloadWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// # Update Memo
+// Update memo.
 //
 // @param request - ModifyAppKeyRequest
 //
@@ -15161,7 +15165,7 @@ func (client *Client) ModifyAppKeyWithContext(ctx context.Context, request *Modi
 
 // Summary:
 //
-// # Edit Accumulated Variable
+// Edits a cumulative variable.
 //
 // @param request - ModifyCustVariableRequest
 //
@@ -15237,7 +15241,7 @@ func (client *Client) ModifyCustVariableWithContext(ctx context.Context, request
 
 // Summary:
 //
-// # Edit Event
+// Edits an event.
 //
 // @param request - ModifyEventRequest
 //
@@ -15313,7 +15317,7 @@ func (client *Client) ModifyEventWithContext(ctx context.Context, request *Modif
 
 // Summary:
 //
-// # Modify Event Status
+// Modifies the status of an event.
 //
 // @param request - ModifyEventStatusRequest
 //
@@ -15377,7 +15381,7 @@ func (client *Client) ModifyEventStatusWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// # Edit Custom Variable
+// Edits a custom variable.
 //
 // @param request - ModifyExpressionVariableRequest
 //
@@ -15469,7 +15473,7 @@ func (client *Client) ModifyExpressionVariableWithContext(ctx context.Context, r
 
 // Summary:
 //
-// # Modify Field
+// Modifies a field.
 //
 // @param request - ModifyFieldRequest
 //
@@ -15541,7 +15545,7 @@ func (client *Client) ModifyFieldWithContext(ctx context.Context, request *Modif
 
 // Summary:
 //
-// # Modify Policy Priority
+// Modifies the priority of a policy.
 //
 // @param request - ModifyRulePriorityRequest
 //
@@ -15601,7 +15605,7 @@ func (client *Client) ModifyRulePriorityWithContext(ctx context.Context, request
 
 // Summary:
 //
-// # Change the status of a policy version application
+// Changes the approval status of a policy version.
 //
 // @param request - ModifyRuleStatusRequest
 //
@@ -15689,7 +15693,7 @@ func (client *Client) ModifyRuleStatusWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// # Activate Service
+// Activates a service.
 //
 // @param request - OpenConsoleSlsRequest
 //
@@ -15741,7 +15745,7 @@ func (client *Client) OpenConsoleSlsWithContext(ctx context.Context, request *Op
 
 // Summary:
 //
-// # Operate Favorites
+// Manages favorites.
 //
 // @param request - OperateFavoriteVariableRequest
 //
@@ -15797,7 +15801,7 @@ func (client *Client) OperateFavoriteVariableWithContext(ctx context.Context, re
 
 // Summary:
 //
-// # Enterprise Verification
+// Performs a precondition check.
 //
 // @param request - PermissionCheckRequest
 //
@@ -16065,7 +16069,7 @@ func (client *Client) PocSendDataWithContext(ctx context.Context, request *PocSe
 
 // Summary:
 //
-// # Query White-box Strategy Details
+// Queries the details of a whitebox implementation policy.
 //
 // @param request - QueryAuthRuleDetailByRuleIdRequest
 //
@@ -16125,7 +16129,7 @@ func (client *Client) QueryAuthRuleDetailByRuleIdWithContext(ctx context.Context
 
 // Summary:
 //
-// Recall.
+// Withdraws a review.
 //
 // @param request - RecallRuleAuditRequest
 //
@@ -16173,7 +16177,7 @@ func (client *Client) RecallRuleAuditWithContext(ctx context.Context, request *R
 
 // Summary:
 //
-// # Delete Event
+// Deletes an event.
 //
 // @param request - RemoveEventRequest
 //
@@ -16237,7 +16241,7 @@ func (client *Client) RemoveEventWithContext(ctx context.Context, request *Remov
 
 // Summary:
 //
-// # Template Download
+// Download template.
 //
 // @param request - SampleFileDownloadRequest
 //
@@ -16289,7 +16293,7 @@ func (client *Client) SampleFileDownloadWithContext(ctx context.Context, request
 
 // Summary:
 //
-// # Save Custom Columns
+// Saves custom columns.
 //
 // @param request - SaveAnalysisColumnRequest
 //
@@ -16341,7 +16345,7 @@ func (client *Client) SaveAnalysisColumnWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Bypass/Shunt Configuration
+// The bypass/diversion configuration.
 //
 // @param request - SaveByPassOrShuntEventRequest
 //
@@ -16401,7 +16405,7 @@ func (client *Client) SaveByPassOrShuntEventWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 样本列表查询
+// # Sample Search
 //
 // @param request - SearchSampleRequest
 //
@@ -16469,7 +16473,7 @@ func (client *Client) SearchSampleWithContext(ctx context.Context, request *Sear
 
 // Summary:
 //
-// Start/Stop Bypass Event
+// Starts or stops a bypass event.
 //
 // @param request - StartOrStopByPassShuntEventRequest
 //
@@ -16525,7 +16529,7 @@ func (client *Client) StartOrStopByPassShuntEventWithContext(ctx context.Context
 
 // Summary:
 //
-// # Start Task Execution
+// Starts executing a task.
 //
 // @param request - StartSimulationTaskRequest
 //
@@ -16577,7 +16581,7 @@ func (client *Client) StartSimulationTaskWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// # Stop Task
+// Stops a task.
 //
 // @param request - StopSimulationTaskRequest
 //
@@ -16629,7 +16633,7 @@ func (client *Client) StopSimulationTaskWithContext(ctx context.Context, request
 
 // Summary:
 //
-// # Custom Variable Switch
+// Enables or disables a custom variable.
 //
 // @param request - SwitchExpressionVariableRequest
 //
@@ -16689,7 +16693,7 @@ func (client *Client) SwitchExpressionVariableWithContext(ctx context.Context, r
 
 // Summary:
 //
-// # Field Switch
+// Toggles a field on or off.
 //
 // @param request - SwitchFieldRequest
 //
@@ -16753,7 +16757,7 @@ func (client *Client) SwitchFieldWithContext(ctx context.Context, request *Switc
 
 // Summary:
 //
-// Query Variable Enable/Disable
+// Queries the enabling or disabling status of a variable.
 //
 // @param request - SwitchQueryVariableRequest
 //
@@ -16809,7 +16813,7 @@ func (client *Client) SwitchQueryVariableWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// # One-click switch online
+// Switches an event to online with one click.
 //
 // @param request - SwitchToOnlineRequest
 //
@@ -16861,7 +16865,7 @@ func (client *Client) SwitchToOnlineWithContext(ctx context.Context, request *Sw
 
 // Summary:
 //
-// # Cumulative Variable Switch
+// Enables or disables a cumulative variable.
 //
 // @param request - SwitchVariableRequest
 //
@@ -16925,7 +16929,7 @@ func (client *Client) SwitchVariableWithContext(ctx context.Context, request *Sw
 
 // Summary:
 //
-// # Determine if the task name is duplicated
+// Checks whether a task name is duplicate.
 //
 // @param request - TaskNameByUserIdRequest
 //
@@ -16977,7 +16981,7 @@ func (client *Client) TaskNameByUserIdWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// # Modify Query Conditions
+// Modifies a query condition.
 //
 // @param request - UpdateAnalysisConditionFavoriteRequest
 //
@@ -17061,7 +17065,7 @@ func (client *Client) UpdateAnalysisConditionFavoriteWithContext(ctx context.Con
 
 // Summary:
 //
-// # Approval
+// Processes an approval request.
 //
 // @param request - UpdateAuditRequest
 //
@@ -17125,7 +17129,7 @@ func (client *Client) UpdateAuditWithContext(ctx context.Context, request *Updat
 
 // Summary:
 //
-// # Modify Authorization Policy
+// Modifies an authorization policy.
 //
 // @param request - UpdateAuthRuleRequest
 //
@@ -17197,7 +17201,7 @@ func (client *Client) UpdateAuthRuleWithContext(ctx context.Context, request *Up
 
 // Summary:
 //
-// # Edit Bypass Event
+// Edits a bypass event.
 //
 // @param request - UpdateByPassShuntEventRequest
 //
@@ -17253,7 +17257,7 @@ func (client *Client) UpdateByPassShuntEventWithContext(ctx context.Context, req
 
 // Summary:
 //
-// # Modify Data Source
+// Modifies a data source.
 //
 // @param request - UpdateDataSourceRequest
 //
@@ -17321,7 +17325,7 @@ func (client *Client) UpdateDataSourceWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// # Modify Custom Query Variable
+// Modifies a custom query variable.
 //
 // @param request - UpdateQueryVariableRequest
 //
@@ -17409,7 +17413,7 @@ func (client *Client) UpdateQueryVariableWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// # Update Policy
+// Updates a policy.
 //
 // @param request - UpdateRuleRequest
 //
@@ -17505,7 +17509,7 @@ func (client *Client) UpdateRuleWithContext(ctx context.Context, request *Update
 
 // Summary:
 //
-// # Update Basic Policy Information
+// Updates the basic information of a policy.
 //
 // @param request - UpdateRuleBaseRequest
 //
@@ -17573,7 +17577,7 @@ func (client *Client) UpdateRuleBaseWithContext(ctx context.Context, request *Up
 
 // Summary:
 //
-// # Batch Update Samples
+// Modifies samples in batches.
 //
 // @param request - UpdateSampleBatchRequest
 //
@@ -17701,7 +17705,7 @@ func (client *Client) UploadFileCheckWithContext(ctx context.Context, request *U
 
 // Summary:
 //
-// 上传并校验样本文件
+// Upload and validate the sample file for the customer.
 //
 // @param request - UploadForeignSampleFileRequest
 //
@@ -17757,7 +17761,7 @@ func (client *Client) UploadForeignSampleFileWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 上传并校验样本文件
+// # Upload and validate the sample file
 //
 // @param request - UploadSampleFileRequest
 //

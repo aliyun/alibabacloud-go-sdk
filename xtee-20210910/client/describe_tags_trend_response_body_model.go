@@ -24,33 +24,33 @@ type iDescribeTagsTrendResponseBody interface {
 }
 
 type DescribeTagsTrendResponseBody struct {
-	// Status code
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// HTTP status code
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *string `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// Error message.
+	// The error message.
 	//
 	// example:
 	//
 	// The input parameter data is not valid. order_storage_company_num component not found
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// AE7E6105-7DEB-5125-9B24-DCBC139F6CD2
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Returned object
+	// The returned object.
 	ResultObject *DescribeTagsTrendResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Struct"`
-	// Whether the request was successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -130,9 +130,9 @@ func (s *DescribeTagsTrendResponseBody) Validate() error {
 }
 
 type DescribeTagsTrendResponseBodyResultObject struct {
-	// Data list
+	// The data list.
 	Series []*DescribeTagsTrendResponseBodyResultObjectSeries `json:"series,omitempty" xml:"series,omitempty" type:"Repeated"`
-	// xaxis returned data
+	// The x-axis data.
 	Xaxis *DescribeTagsTrendResponseBodyResultObjectXaxis `json:"xaxis,omitempty" xml:"xaxis,omitempty" type:"Struct"`
 }
 
@@ -181,9 +181,9 @@ func (s *DescribeTagsTrendResponseBodyResultObject) Validate() error {
 }
 
 type DescribeTagsTrendResponseBodyResultObjectSeries struct {
-	// Chart data list
+	// The chart data list.
 	Data []*DescribeTagsTrendResponseBodyResultObjectSeriesData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// Category name.
+	// The category name.
 	//
 	// example:
 	//
@@ -237,7 +237,7 @@ type DescribeTagsTrendResponseBodyResultObjectSeriesData struct {
 	//
 	// 100
 	Num *int64 `json:"num,omitempty" xml:"num,omitempty"`
-	// Proportion
+	// The proportion.
 	//
 	// example:
 	//
@@ -276,7 +276,7 @@ func (s *DescribeTagsTrendResponseBodyResultObjectSeriesData) Validate() error {
 }
 
 type DescribeTagsTrendResponseBodyResultObjectXaxis struct {
-	// X-axis data
+	// The x-axis data.
 	Data []*string `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
 }
 

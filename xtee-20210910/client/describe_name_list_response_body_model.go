@@ -24,33 +24,33 @@ type iDescribeNameListResponseBody interface {
 }
 
 type DescribeNameListResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// A32FE941-35F2-5378-B37C-4B8FDB16F094
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
-	// Page size, with a default value of 10.
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Returned object.
+	// The returned objects.
 	ResultObject []*DescribeNameListResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Repeated"`
-	// Total number of items.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 6
 	TotalItem *int32 `json:"totalItem,omitempty" xml:"totalItem,omitempty"`
-	// Total number of pages.
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -134,43 +134,43 @@ func (s *DescribeNameListResponseBody) Validate() error {
 }
 
 type DescribeNameListResponseBodyResultObject struct {
-	// Creation time.
+	// The creation time.
 	//
 	// example:
 	//
 	// 1621578648000
 	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// Modification time.
+	// The modification time.
 	//
 	// example:
 	//
 	// 1565701886000
 	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// Name list content ID.
+	// The name list content ID.
 	//
 	// example:
 	//
 	// 30
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// Variable identifier.
+	// The variable identifier.
 	//
 	// example:
 	//
 	// NAME_LIST
 	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
-	// Title.
+	// The title.
 	//
 	// example:
 	//
 	// 变量的title
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
-	// Value.
+	// The value.
 	//
 	// example:
 	//
 	// 321311193502064288
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
-	// Variable ID.
+	// The variable ID.
 	//
 	// example:
 	//
