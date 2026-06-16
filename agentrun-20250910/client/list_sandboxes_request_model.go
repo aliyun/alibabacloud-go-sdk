@@ -24,12 +24,14 @@ type iListSandboxesRequest interface {
 }
 
 type ListSandboxesRequest struct {
-	// 当前页码，从1开始计数
+	// The maximum number of results to return.
 	//
 	// example:
 	//
 	// 1000
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The pagination token for the next set of results. A non-empty value indicates that more data is available.
+	//
 	// example:
 	//
 	// dnLkmeaJc9vHgbzREh2l0J4dD+2BRJj42DLT6GrZysw=
@@ -38,16 +40,20 @@ type ListSandboxesRequest struct {
 	//
 	// 01KMB33KCB3YRYE9C2AJCW5DQK
 	SandboxId *string `json:"sandboxId,omitempty" xml:"sandboxId,omitempty"`
+	// Filters the results by status.
+	//
 	// example:
 	//
 	// CREATING
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// 按模板名称过滤
+	// Filters the results by template name.
 	//
 	// example:
 	//
 	// templateName
 	TemplateName *string `json:"templateName,omitempty" xml:"templateName,omitempty"`
+	// Filters the results by template type.
+	//
 	// example:
 	//
 	// TASK

@@ -14,6 +14,8 @@ type iBrowserLiveViewStream interface {
 }
 
 type BrowserLiveViewStream struct {
+	// The WebSocket (WSS) stream endpoint.
+	//
 	// example:
 	//
 	// wss://browser-liveview.cn-hangzhou.agentrun.aliyuncs.com/stream/bs-1234567890abcdef

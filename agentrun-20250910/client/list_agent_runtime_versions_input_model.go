@@ -16,9 +16,9 @@ type iListAgentRuntimeVersionsInput interface {
 }
 
 type ListAgentRuntimeVersionsInput struct {
-	// 页码
+	// The page number to retrieve.
 	PageNumber *int `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// 每页记录数
+	// The maximum number of results to return per page.
 	PageSize *int `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 }
 

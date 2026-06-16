@@ -32,53 +32,53 @@ type iModelConnection interface {
 }
 
 type ModelConnection struct {
-	// 绑定的消费者API密钥列表
+	// A list of consumer API keys bound to this model connection.
 	ConsumerApiKeys []*ModelConnectionConsumerAPIKey `json:"consumerApiKeys" xml:"consumerApiKeys" type:"Repeated"`
-	// 模型连接的创建时间，采用ISO 8601格式
+	// The time the model connection was created, in ISO 8601 format.
 	//
 	// example:
 	//
 	// 2025-01-10T10:30:00Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// 模型连接的描述信息
+	// A description of the model connection.
 	//
 	// example:
 	//
 	// OpenAI GPT-4 connection for production
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 模型连接最后一次更新的时间，采用ISO 8601格式
+	// The time the model connection was last updated, in ISO 8601 format.
 	//
 	// example:
 	//
 	// 2025-01-10T11:45:00Z
 	LastUpdatedAt *string `json:"lastUpdatedAt,omitempty" xml:"lastUpdatedAt,omitempty"`
-	// 模型连接的唯一标识符
+	// The model connection\\"s unique identifier.
 	//
 	// example:
 	//
 	// mc-1234567890abcdef
 	ModelConnectionId *string `json:"modelConnectionId,omitempty" xml:"modelConnectionId,omitempty"`
-	// 模型连接的唯一名称标识
+	// A unique name identifying the model connection.
 	//
 	// example:
 	//
 	// my-openai-connection
 	ModelConnectionName *string `json:"modelConnectionName,omitempty" xml:"modelConnectionName,omitempty"`
-	// 模型元数据配置列表，包含各个模型的功能特性和参数规则
+	// A list of model metadata configurations. Each configuration includes the features and parameter rules for a specific model.
 	ModelInfoConfigs []*ModelInfoConfig `json:"modelInfoConfigs" xml:"modelInfoConfigs" type:"Repeated"`
-	// 模型提供商名称
+	// The model provider\\"s name.
 	//
 	// example:
 	//
 	// openai
 	Provider *string `json:"provider,omitempty" xml:"provider,omitempty"`
-	// 模型提供商的配置信息
+	// The settings for the model provider.
 	//
 	// example:
 	//
 	// {}
 	ProviderSettings *ModelConnectionProviderSettings `json:"providerSettings,omitempty" xml:"providerSettings,omitempty"`
-	// 模型连接所属的工作空间标识符
+	// The identifier of the workspace containing the model connection.
 	//
 	// example:
 	//

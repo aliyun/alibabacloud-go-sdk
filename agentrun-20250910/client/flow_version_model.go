@@ -42,7 +42,7 @@ type FlowVersion struct {
 	//
 	// example:
 	//
-	// Type: StateMachine\nName: my-flow\n...
+	// Type: StateMachine\\nName: my-flow\\n...
 	Definition *string `json:"definition,omitempty" xml:"definition,omitempty"`
 	// 工作流版本的描述信息
 	//

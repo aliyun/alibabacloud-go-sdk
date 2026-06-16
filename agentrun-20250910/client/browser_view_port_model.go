@@ -16,10 +16,14 @@ type iBrowserViewPort interface {
 }
 
 type BrowserViewPort struct {
+	// The height of the browser viewport in pixels.
+	//
 	// example:
 	//
 	// 1080
 	Height *float64 `json:"height,omitempty" xml:"height,omitempty"`
+	// The width of the browser viewport in pixels.
+	//
 	// example:
 	//
 	// 1920

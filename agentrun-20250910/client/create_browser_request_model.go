@@ -14,6 +14,8 @@ type iCreateBrowserRequest interface {
 }
 
 type CreateBrowserRequest struct {
+	// Request body for creation parameters
+	//
 	// This parameter is required.
 	Body *CreateBrowserInput `json:"body,omitempty" xml:"body,omitempty"`
 }

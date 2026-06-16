@@ -16,7 +16,10 @@ type iActivateTemplateMCPRequest interface {
 }
 
 type ActivateTemplateMCPRequest struct {
+	// A list of tools to enable.
 	EnabledTools []*string `json:"enabledTools" xml:"enabledTools" type:"Repeated"`
+	// The transport protocol.
+	//
 	// example:
 	//
 	// streamable-http

@@ -16,10 +16,14 @@ type iBrowserAutomationStream interface {
 }
 
 type BrowserAutomationStream struct {
+	// The WebSocket URL for the stream endpoint.
+	//
 	// example:
 	//
 	// wss://browser-automation.cn-hangzhou.agentrun.aliyuncs.com/stream/bs-1234567890abcdef
 	StreamEndpoint *string `json:"streamEndpoint,omitempty" xml:"streamEndpoint,omitempty"`
+	// The status of the stream.
+	//
 	// example:
 	//
 	// ACTIVE

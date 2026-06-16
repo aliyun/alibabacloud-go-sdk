@@ -18,10 +18,12 @@ type iListCodeInterpretersInput interface {
 }
 
 type ListCodeInterpretersInput struct {
-	// 按代码解释器名称过滤
+	// Filters results by code interpreter name.
 	CodeInterpreterName *string `json:"codeInterpreterName,omitempty" xml:"codeInterpreterName,omitempty"`
-	PageNumber          *int    `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize            *int    `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The page number of the results to return. Default: 1.
+	PageNumber *int `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// Maximum number of results to return per page. Valid values: 1 to 100. Default: 20.
+	PageSize *int `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 }
 
 func (s ListCodeInterpretersInput) String() string {

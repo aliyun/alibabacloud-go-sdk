@@ -20,25 +20,25 @@ type iListBrowsersRequest interface {
 }
 
 type ListBrowsersRequest struct {
-	// 根据浏览器实例名称进行模糊匹配过滤
+	// Filter by browser name
 	//
 	// example:
 	//
 	// browser
 	BrowserName *string `json:"browserName,omitempty" xml:"browserName,omitempty"`
-	// 当前页码，从1开始计数
+	// Page number
 	//
 	// example:
 	//
 	// 10
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// 每页返回的记录数量
+	// Page size
 	//
 	// example:
 	//
 	// 1
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// 根据浏览器实例的运行状态进行过滤，可选值：CREATING、READY、DELETING等
+	// Filter by status
 	//
 	// if can be null:
 	// true

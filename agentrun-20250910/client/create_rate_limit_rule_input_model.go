@@ -20,13 +20,13 @@ type iCreateRateLimitRuleInput interface {
 }
 
 type CreateRateLimitRuleInput struct {
-	// 限流规则的描述符标识；非model维时必填，model维由服务端拼接
+	// The descriptor ID for the rate limit rule. This parameter is required if the descriptor type is not `model`. For `model` types, the server assembles the ID.
 	//
 	// example:
 	//
 	// model:gpt-4
 	DescriptorId *string `json:"descriptorId,omitempty" xml:"descriptorId,omitempty"`
-	// 限流规则的描述符类型，如model、user等
+	// The descriptor type for the rate limit rule, such as `model` or `user`.
 	//
 	// This parameter is required.
 	//
@@ -34,13 +34,13 @@ type CreateRateLimitRuleInput struct {
 	//
 	// model
 	DescriptorType *string `json:"descriptorType,omitempty" xml:"descriptorType,omitempty"`
-	// 是否启用该限流规则
+	// Whether to enable the rate limit rule.
 	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// 限流时间窗口配置列表，至少需要一个窗口
+	// A list of time window configurations. At least one window is required.
 	//
 	// This parameter is required.
 	Windows []*WindowLimit `json:"windows" xml:"windows" type:"Repeated"`

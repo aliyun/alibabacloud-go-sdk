@@ -14,6 +14,7 @@ type iCreateModelProxyRequest interface {
 }
 
 type CreateModelProxyRequest struct {
+	// The configuration for the Model Proxy.
 	Body *CreateModelProxyInput `json:"body,omitempty" xml:"body,omitempty"`
 }
 

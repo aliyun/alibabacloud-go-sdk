@@ -14,6 +14,7 @@ type iCreateModelServiceRequest interface {
 }
 
 type CreateModelServiceRequest struct {
+	// Parameters for creating the model service.
 	Body *CreateModelServiceInput `json:"body,omitempty" xml:"body,omitempty"`
 }
 

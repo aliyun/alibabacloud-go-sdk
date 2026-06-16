@@ -20,21 +20,21 @@ type iListRateLimitRulesOutput interface {
 }
 
 type ListRateLimitRulesOutput struct {
-	// 限流规则列表
+	// The list of rate-limiting rules.
 	Items []*RateLimitRule `json:"items" xml:"items" type:"Repeated"`
-	// 当前页码
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// 每页记录数
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// 符合条件的限流规则总数
+	// The total number of matching rate-limiting rules.
 	//
 	// example:
 	//

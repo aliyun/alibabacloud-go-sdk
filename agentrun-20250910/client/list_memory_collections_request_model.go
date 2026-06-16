@@ -26,27 +26,39 @@ type iListMemoryCollectionsRequest interface {
 }
 
 type ListMemoryCollectionsRequest struct {
+	// Filters the results by memory collection name.
+	//
 	// example:
 	//
 	// my-memory-1
 	MemoryCollectionName *string `json:"memoryCollectionName,omitempty" xml:"memoryCollectionName,omitempty"`
+	// The page number. Defaults to 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries to return per page. Defaults to 20.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// Filters the results by memory collection status.
+	//
 	// example:
 	//
 	// READY
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// Filters the results by memory collection type.
+	//
 	// example:
 	//
 	// mem0
-	Type         *string `json:"type,omitempty" xml:"type,omitempty"`
-	WorkspaceId  *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The ID of the workspace to filter by.
+	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+	// The IDs of the workspaces to filter by, provided as a comma-separated string.
 	WorkspaceIds *string `json:"workspaceIds,omitempty" xml:"workspaceIds,omitempty"`
 }
 

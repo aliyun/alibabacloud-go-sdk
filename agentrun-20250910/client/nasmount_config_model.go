@@ -18,11 +18,16 @@ type iNASMountConfig interface {
 }
 
 type NASMountConfig struct {
+	// Specifies whether to enable encryption in transit. This option is supported only for general-purpose NAS.
 	EnableTLS *bool `json:"enableTLS,omitempty" xml:"enableTLS,omitempty"`
+	// Specifies the local mount directory.
+	//
 	// example:
 	//
 	// /home/test
 	MountDir *string `json:"mountDir,omitempty" xml:"mountDir,omitempty"`
+	// Specifies the NAS server address.
+	//
 	// example:
 	//
 	// ***-uni85.cn-hangzhou.nas.com:/

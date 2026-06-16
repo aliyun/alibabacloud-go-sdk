@@ -18,10 +18,12 @@ type iStartCodeInterpreterSessionResult interface {
 }
 
 type StartCodeInterpreterSessionResult struct {
-	// SUCCESS 为成功，失败情况返回对应错误类型，比如 ERR_BAD_REQUEST ERR_VALIDATION_FAILED ERR_INTERNAL_SERVER_ERROR
-	Code      *string                    `json:"code,omitempty" xml:"code,omitempty"`
-	Data      *CodeInterpreterSessionOut `json:"data,omitempty" xml:"data,omitempty"`
-	RequestId *string                    `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// SUCCESS indicates success. In case of failure, the corresponding error type is returned, such as ERR_BAD_REQUEST, ERR_VALIDATION_FAILED, or ERR_INTERNAL_SERVER_ERROR.
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Data
+	Data *CodeInterpreterSessionOut `json:"data,omitempty" xml:"data,omitempty"`
+	// Request ID
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s StartCodeInterpreterSessionResult) String() string {

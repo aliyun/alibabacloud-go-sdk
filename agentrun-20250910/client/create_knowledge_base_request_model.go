@@ -14,6 +14,7 @@ type iCreateKnowledgeBaseRequest interface {
 }
 
 type CreateKnowledgeBaseRequest struct {
+	// The data structure to create a knowledge base.
 	Body *CreateKnowledgeBaseInput `json:"body,omitempty" xml:"body,omitempty"`
 }
 

@@ -26,23 +26,23 @@ type iCodeInterpreterSessionOut interface {
 }
 
 type CodeInterpreterSessionOut struct {
-	// 关联的代码解释器的唯一标识符
+	// The Unique Identifier of the associated code interpreter
 	//
 	// This parameter is required.
 	CodeInterpreterId *string `json:"codeInterpreterId,omitempty" xml:"codeInterpreterId,omitempty"`
-	// 代码解释器会话的名称
+	// The name of the code interpreter session
 	CodeInterpreterName *string `json:"codeInterpreterName,omitempty" xml:"codeInterpreterName,omitempty"`
-	// 代码解释器会话的创建时间，采用ISO 8601格式
+	// The creation time of the code interpreter session, in ISO 8601 format
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// 代码解释器会话的最后更新时间，采用ISO 8601格式
+	// The last update time of the code interpreter session, in ISO 8601 format
 	LastUpdatedAt *string `json:"lastUpdatedAt,omitempty" xml:"lastUpdatedAt,omitempty"`
-	// 代码解释器会话的唯一标识符
+	// The Unique Identifier of the code interpreter session
 	//
 	// This parameter is required.
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
-	// 代码解释器会话的空闲超时时间，单位为秒。实例没有会话请求后处于空闲状态，空闲态为闲置计费模式，超过此超时时间后会话自动过期，不可继续使用
+	// The idle timeout duration of the code interpreter session, in seconds. After the instance receives no session requests, it enters an idle state, which is billed under the idle billing model. If the idle duration exceeds this timeout, the session automatically expires and can no longer be used.
 	SessionIdleTimeoutSeconds *int32 `json:"sessionIdleTimeoutSeconds,omitempty" xml:"sessionIdleTimeoutSeconds,omitempty"`
-	// 代码解释器会话的当前状态
+	// The current status of the code interpreter session
 	//
 	// This parameter is required.
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`

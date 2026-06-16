@@ -18,11 +18,16 @@ type iNASConfig interface {
 }
 
 type NASConfig struct {
+	// The group ID for file system access.
+	//
 	// example:
 	//
 	// 100
-	GroupId     *int32            `json:"groupId,omitempty" xml:"groupId,omitempty"`
+	GroupId *int32 `json:"groupId,omitempty" xml:"groupId,omitempty"`
+	// A list of mount point configurations.
 	MountPoints []*NASMountConfig `json:"mountPoints" xml:"mountPoints" type:"Repeated"`
+	// The user ID for file system access.
+	//
 	// example:
 	//
 	// 100

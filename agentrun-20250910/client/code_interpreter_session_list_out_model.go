@@ -20,18 +20,26 @@ type iCodeInterpreterSessionListOut interface {
 }
 
 type CodeInterpreterSessionListOut struct {
+	// A list of Code Interpreter session objects.
+	//
 	// example:
 	//
 	// []
 	Items []*CodeInterpreterSessionOut `json:"items" xml:"items" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of sessions per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The total number of sessions.
+	//
 	// example:
 	//
 	// 100

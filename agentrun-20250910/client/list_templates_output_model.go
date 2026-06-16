@@ -20,20 +20,28 @@ type iListTemplatesOutput interface {
 }
 
 type ListTemplatesOutput struct {
+	// An array of template objects.
+	//
 	// This parameter is required.
 	Items []*Template `json:"items" xml:"items" type:"Repeated"`
+	// The page number of the returned results.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The maximum number of items to return per page.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The total number of templates available.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -34,7 +34,7 @@ type iSandbox interface {
 }
 
 type Sandbox struct {
-	// 沙箱创建时间
+	// Sandbox Creation Time
 	//
 	// This parameter is required.
 	//
@@ -42,49 +42,68 @@ type Sandbox struct {
 	//
 	// 2025-11-26T10:54:17.770719+08:00
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// Sandbox stop time
+	//
 	// example:
 	//
 	// 2025-11-26T10:54:17.770719+08:00
 	EndedAt *string `json:"endedAt,omitempty" xml:"endedAt,omitempty"`
-	// 最后更新时间
+	// Last Update Time
 	//
 	// example:
 	//
 	// 2025-11-26T10:54:17.770719+08:00
 	LastUpdatedAt *string `json:"lastUpdatedAt,omitempty" xml:"lastUpdatedAt,omitempty"`
+	// Sandbox metadata
+	//
 	// example:
 	//
 	// {}
 	Metadata map[string]interface{} `json:"metadata" xml:"metadata"`
+	// Sandbox resource ARN
+	//
 	// example:
 	//
 	// acs:ram::1760720386195983:role/aliyunfcdefaultrole
 	SandboxArn *string `json:"sandboxArn,omitempty" xml:"sandboxArn,omitempty"`
+	// Sandbox ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 01KAWBP6JQD0J3Z34BP4WMX1KG
-	SandboxId               *string `json:"sandboxId,omitempty" xml:"sandboxId,omitempty"`
-	SandboxIdleTTLInSeconds *int32  `json:"sandboxIdleTTLInSeconds,omitempty" xml:"sandboxIdleTTLInSeconds,omitempty"`
-	// 沙箱空闲超时时间（秒）
+	SandboxId *string `json:"sandboxId,omitempty" xml:"sandboxId,omitempty"`
+	// Sandbox lifecycle duration (deprecated)
+	//
+	// example:
+	//
+	// 已弃用
+	SandboxIdleTTLInSeconds *int32 `json:"sandboxIdleTTLInSeconds,omitempty" xml:"sandboxIdleTTLInSeconds,omitempty"`
+	// Sandbox idle timeout (seconds)
 	//
 	// example:
 	//
 	// 1800
 	SandboxIdleTimeoutSeconds *int32 `json:"sandboxIdleTimeoutSeconds,omitempty" xml:"sandboxIdleTimeoutSeconds,omitempty"`
+	// Status
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// READY
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// Template ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 8d409d30-cac1-445a-95d5-476c47780336.schema
 	TemplateId *string `json:"templateId,omitempty" xml:"templateId,omitempty"`
+	// Template Name
+	//
 	// example:
 	//
 	// my-template

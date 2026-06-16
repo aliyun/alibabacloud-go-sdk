@@ -16,13 +16,13 @@ type iUpdateRateLimitRuleInput interface {
 }
 
 type UpdateRateLimitRuleInput struct {
-	// 是否启用该限流规则
+	// Specifies whether to enable the rate limit rule.
 	//
 	// example:
 	//
 	// false
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// 限流时间窗口配置列表，提供时将整组覆盖
+	// A list of time window configurations. Providing this parameter replaces the entire existing list.
 	Windows []*WindowLimit `json:"windows" xml:"windows" type:"Repeated"`
 }
 

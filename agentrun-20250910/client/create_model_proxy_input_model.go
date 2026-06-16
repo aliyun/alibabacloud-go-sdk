@@ -42,41 +42,51 @@ type iCreateModelProxyInput interface {
 }
 
 type CreateModelProxyInput struct {
+	// Specifies the configuration for Application Real-Time Monitoring Service (ARMS).
 	ArmsConfiguration *ArmsConfiguration `json:"armsConfiguration,omitempty" xml:"armsConfiguration,omitempty"`
+	// The number of CPU cores for the proxy.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	Cpu *float32 `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	// credentialName
+	// The name of the credential for accessing the model service.
 	//
 	// example:
 	//
 	// credentialName
 	CredentialName *string `json:"credentialName,omitempty" xml:"credentialName,omitempty"`
+	// Optional. A custom description for the model proxy.
+	//
 	// example:
 	//
 	// 1
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The ARN of the execution role the service assumes to act on your behalf.
+	//
 	// example:
 	//
 	// executionRoleArn
 	ExecutionRoleArn *string `json:"executionRoleArn,omitempty" xml:"executionRoleArn,omitempty"`
-	// litellmVersion
+	// The version of LiteLLM for the proxy.
 	//
 	// example:
 	//
 	// litellmVersion
-	LitellmVersion   *string           `json:"litellmVersion,omitempty" xml:"litellmVersion,omitempty"`
+	LitellmVersion *string `json:"litellmVersion,omitempty" xml:"litellmVersion,omitempty"`
+	// The Log Service (SLS) configuration for the Agent runtime.
 	LogConfiguration *LogConfiguration `json:"logConfiguration,omitempty" xml:"logConfiguration,omitempty"`
+	// The memory size for the proxy, in GiB.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 31
 	Memory *int32 `json:"memory,omitempty" xml:"memory,omitempty"`
-	// modelProxyName
+	// The unique name for the model proxy.
 	//
 	// This parameter is required.
 	//
@@ -84,16 +94,23 @@ type CreateModelProxyInput struct {
 	//
 	// modelProxyName
 	ModelProxyName *string `json:"modelProxyName,omitempty" xml:"modelProxyName,omitempty"`
+	// The model type. Valid values:
+	//
+	// - `system`: Specifies a system model.
+	//
+	// - `deployment`: Specifies a custom deployment model.
+	//
 	// example:
 	//
 	// system
-	ModelType            *string               `json:"modelType,omitempty" xml:"modelType,omitempty"`
+	ModelType *string `json:"modelType,omitempty" xml:"modelType,omitempty"`
+	// Specifies the network configuration for the proxy.
 	NetworkConfiguration *NetworkConfiguration `json:"networkConfiguration,omitempty" xml:"networkConfiguration,omitempty"`
-	// ProxyConfig
+	// The configuration settings for the proxy.
 	//
 	// This parameter is required.
 	ProxyConfig *ProxyConfig `json:"proxyConfig,omitempty" xml:"proxyConfig,omitempty"`
-	// proxyMode
+	// Specifies the operational mode of the proxy.
 	//
 	// This parameter is required.
 	//
@@ -101,13 +118,14 @@ type CreateModelProxyInput struct {
 	//
 	// proxyMode
 	ProxyMode *string `json:"proxyMode,omitempty" xml:"proxyMode,omitempty"`
-	// serviceRegionId
+	// The ID of the region for the model service.
 	//
 	// example:
 	//
 	// serviceRegionId
 	ServiceRegionId *string `json:"serviceRegionId,omitempty" xml:"serviceRegionId,omitempty"`
-	WorkspaceId     *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+	// The ID of the workspace that contains the model proxy.
+	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
 }
 
 func (s CreateModelProxyInput) String() string {

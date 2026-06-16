@@ -24,25 +24,33 @@ type iListModelProxiesRequest interface {
 }
 
 type ListModelProxiesRequest struct {
+	// The page number for pagination.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries per page. The default is 20.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// proxyMode
+	// Specifies the proxy mode.
 	//
 	// example:
 	//
 	// proxyMode
 	ProxyMode *string `json:"proxyMode,omitempty" xml:"proxyMode,omitempty"`
+	// Filters the list by Model Proxy status.
+	//
 	// example:
 	//
 	// CREATING
-	Status       *string `json:"status,omitempty" xml:"status,omitempty"`
-	WorkspaceId  *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The ID of the workspace.
+	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+	// A comma-separated list of workspace IDs to query.
 	WorkspaceIds *string `json:"workspaceIds,omitempty" xml:"workspaceIds,omitempty"`
 }
 

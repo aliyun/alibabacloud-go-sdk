@@ -16,13 +16,14 @@ type iModelConnectionConsumerAPIKey interface {
 }
 
 type ModelConnectionConsumerAPIKey struct {
-	// 消费者API密钥记录的唯一标识
+	// The unique identifier for the consumer API key.
 	//
 	// example:
 	//
 	// 12345678-1234-1234-1234-123456789abc
 	ApiKeyId *string `json:"apiKeyId,omitempty" xml:"apiKeyId,omitempty"`
-	Value    *string `json:"value,omitempty" xml:"value,omitempty"`
+	// The value of the consumer API key.
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
 func (s ModelConnectionConsumerAPIKey) String() string {

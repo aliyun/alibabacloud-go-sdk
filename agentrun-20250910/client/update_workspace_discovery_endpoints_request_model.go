@@ -14,6 +14,7 @@ type iUpdateWorkspaceDiscoveryEndpointsRequest interface {
 }
 
 type UpdateWorkspaceDiscoveryEndpointsRequest struct {
+	// The discovery endpoint configuration to apply.
 	Body *UpdateDiscoveryEndpointsInput `json:"body,omitempty" xml:"body,omitempty"`
 }
 

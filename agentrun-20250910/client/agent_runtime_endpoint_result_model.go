@@ -18,11 +18,11 @@ type iAgentRuntimeEndpointResult interface {
 }
 
 type AgentRuntimeEndpointResult struct {
-	// SUCCESS 为成功，失败情况返回对应错误类型，比如 ERR_BAD_REQUEST ERR_VALIDATION_FAILED ERR_INTERNAL_SERVER_ERROR
+	// SUCCESS indicates success. In case of failure, the corresponding error type is returned, such as ERR_BAD_REQUEST, ERR_VALIDATION_FAILED, or ERR_INTERNAL_SERVER_ERROR.
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 智能体运行时端点的详细信息
+	// Detailed information about the agent runtime endpoint
 	Data *AgentRuntimeEndpoint `json:"data,omitempty" xml:"data,omitempty"`
-	// 唯一的请求标识符，用于问题追踪
+	// A unique request identifier used for troubleshooting
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 

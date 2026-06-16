@@ -14,7 +14,7 @@ type iUpdateFlowRequest interface {
 }
 
 type UpdateFlowRequest struct {
-	// 包含要更新的工作流配置信息的请求体
+	// The input parameters for updating the workflow.
 	//
 	// This parameter is required.
 	Body *UpdateFlowInput `json:"body,omitempty" xml:"body,omitempty"`

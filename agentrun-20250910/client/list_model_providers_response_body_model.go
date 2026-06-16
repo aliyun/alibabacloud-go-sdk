@@ -18,11 +18,16 @@ type iListModelProvidersResponseBody interface {
 }
 
 type ListModelProvidersResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// SUCCESS
-	Code *string                             `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response data.
 	Data *ListModelProvidersResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The unique request identifier. Include this ID when reporting issues.
+	//
 	// example:
 	//
 	// F8A0F5F3-0C3E-4C82-9D4F-5E4B6A7C8D9E
@@ -74,15 +79,22 @@ func (s *ListModelProvidersResponseBody) Validate() error {
 }
 
 type ListModelProvidersResponseBodyData struct {
+	// An array of model provider objects.
 	Items []*ListModelProvidersResponseBodyDataItems `json:"items" xml:"items" type:"Repeated"`
+	// 页码
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// 页面大小
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// 总数
+	//
 	// example:
 	//
 	// 211
@@ -147,7 +159,7 @@ func (s *ListModelProvidersResponseBodyData) Validate() error {
 }
 
 type ListModelProvidersResponseBodyDataItems struct {
-	// baseUrl
+	// The base URL of the model provider.
 	//
 	// example:
 	//
@@ -155,11 +167,24 @@ type ListModelProvidersResponseBodyDataItems struct {
 	BaseUrl *string `json:"baseUrl,omitempty" xml:"baseUrl,omitempty"`
 	// modelInfoConfig
 	ModelInfoConfig *ModelInfoConfig `json:"modelInfoConfig,omitempty" xml:"modelInfoConfig,omitempty"`
+	// The model type. Valid values:
+	//
+	// - `text_embedding`: text embedding
+	//
+	// - `text_sparse_embedding`: text sparse embedding
+	//
+	// - `image_embedding`: image embedding
+	//
+	// - `image_analyze`: image analysis
+	//
 	// example:
 	//
 	// native
-	ModelType *string   `json:"modelType,omitempty" xml:"modelType,omitempty"`
-	Models    []*string `json:"models" xml:"models" type:"Repeated"`
+	ModelType *string `json:"modelType,omitempty" xml:"modelType,omitempty"`
+	// An array of model names.
+	Models []*string `json:"models" xml:"models" type:"Repeated"`
+	// The name of the model provider.
+	//
 	// example:
 	//
 	// providerName

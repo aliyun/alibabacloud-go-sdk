@@ -22,7 +22,7 @@ type TLSConfig struct {
 	//
 	// example:
 	//
-	// [\"TLS_RSA_WITH_RC4_128_SHA\"]
+	// [\\"TLS_RSA_WITH_RC4_128_SHA\\"]
 	CipherSuites []*string `json:"cipherSuites" xml:"cipherSuites" type:"Repeated"`
 	// TLS 最大版本号。
 	//

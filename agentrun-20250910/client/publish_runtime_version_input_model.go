@@ -16,9 +16,9 @@ type iPublishRuntimeVersionInput interface {
 }
 
 type PublishRuntimeVersionInput struct {
-	// 此版本的描述
+	// Description of this version
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 发布此版本的用户或系统标识
+	// Identity of the user or system that publishes this version
 	//
 	// example:
 	//

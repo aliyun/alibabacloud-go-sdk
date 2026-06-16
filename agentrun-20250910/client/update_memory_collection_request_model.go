@@ -14,6 +14,7 @@ type iUpdateMemoryCollectionRequest interface {
 }
 
 type UpdateMemoryCollectionRequest struct {
+	// The request body to update the memory collection.
 	Body *UpdateMemoryCollectionInput `json:"body,omitempty" xml:"body,omitempty"`
 }
 

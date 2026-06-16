@@ -18,14 +18,20 @@ type iPolarFsMountConfig interface {
 }
 
 type PolarFsMountConfig struct {
+	// Instance ID.
+	//
 	// example:
 	//
 	// pfs-cn-6sa48a6gk001
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// Local mount folder.
+	//
 	// example:
 	//
 	// /
 	MountDir *string `json:"mountDir,omitempty" xml:"mountDir,omitempty"`
+	// Remote mount folder
+	//
 	// example:
 	//
 	// /mnt/pfs

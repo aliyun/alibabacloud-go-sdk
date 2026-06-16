@@ -14,7 +14,7 @@ type iCreateToolRequest interface {
 }
 
 type CreateToolRequest struct {
-	// 创建工具的请求参数，包含工具的所有配置信息
+	// The request body.
 	Body *CreateToolInputV2 `json:"body,omitempty" xml:"body,omitempty"`
 }
 

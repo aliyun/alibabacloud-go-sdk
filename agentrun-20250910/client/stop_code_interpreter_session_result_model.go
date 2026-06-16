@@ -16,8 +16,9 @@ type iStopCodeInterpreterSessionResult interface {
 }
 
 type StopCodeInterpreterSessionResult struct {
-	// SUCCESS 为成功，失败情况返回对应错误类型，比如 ERR_BAD_REQUEST ERR_VALIDATION_FAILED ERR_INTERNAL_SERVER_ERROR
-	Code      *string `json:"code,omitempty" xml:"code,omitempty"`
+	// SUCCESS indicates success. In case of failure, the corresponding error type is returned, such as ERR_BAD_REQUEST, ERR_VALIDATION_FAILED, or ERR_INTERNAL_SERVER_ERROR.
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Request ID
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 

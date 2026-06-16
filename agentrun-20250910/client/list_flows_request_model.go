@@ -22,30 +22,32 @@ type iListFlowsRequest interface {
 }
 
 type ListFlowsRequest struct {
-	// 根据工作流名称进行模糊匹配过滤
+	// Filter by flow name
 	//
 	// example:
 	//
 	// my-flow
 	FlowName *string `json:"flowName,omitempty" xml:"flowName,omitempty"`
-	// 当前页码，从1开始计数
+	// Page number
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// 每页返回的记录数量
+	// Page size
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// 根据工作空间ID进行过滤，用于资源隔离和权限管理
+	// Workspace ID
 	//
 	// example:
 	//
 	// ws-1234567890abcdef
 	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+	// List of workspace IDs
+	//
 	// example:
 	//
 	// ws-1234567890abcdef,ws-1234567890bcdefg

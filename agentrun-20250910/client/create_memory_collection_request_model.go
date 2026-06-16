@@ -14,6 +14,7 @@ type iCreateMemoryCollectionRequest interface {
 }
 
 type CreateMemoryCollectionRequest struct {
+	// Configuration settings to create a memory collection.
 	Body *CreateMemoryCollectionInput `json:"body,omitempty" xml:"body,omitempty"`
 }
 

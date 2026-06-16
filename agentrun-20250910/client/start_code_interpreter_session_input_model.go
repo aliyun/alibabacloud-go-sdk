@@ -14,7 +14,7 @@ type iStartCodeInterpreterSessionInput interface {
 }
 
 type StartCodeInterpreterSessionInput struct {
-	// 代码解释器会话的名称，用于标识和区分不同的会话实例
+	// The name of the code interpreter session, used to identify and distinguish between different session instances
 	//
 	// if can be null:
 	// true

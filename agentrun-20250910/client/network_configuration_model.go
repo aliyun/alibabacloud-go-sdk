@@ -20,18 +20,26 @@ type iNetworkConfiguration interface {
 }
 
 type NetworkConfiguration struct {
+	// The network mode.
+	//
 	// example:
 	//
 	// PRIVATE
 	NetworkMode *string `json:"networkMode,omitempty" xml:"networkMode,omitempty"`
+	// The security group ID.
+	//
 	// example:
 	//
 	// sg-1234567890abcdef0
 	SecurityGroupId *string `json:"securityGroupId,omitempty" xml:"securityGroupId,omitempty"`
+	// The VPC ID.
+	//
 	// example:
 	//
 	// vpc-1234567890abcdef0
 	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+	// An array of VSwitch IDs.
+	//
 	// example:
 	//
 	// vsw-1234567890abcdef0,vsw-abcdef1234567890

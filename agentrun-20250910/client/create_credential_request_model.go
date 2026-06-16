@@ -14,6 +14,7 @@ type iCreateCredentialRequest interface {
 }
 
 type CreateCredentialRequest struct {
+	// The parameters for creating a credential.
 	Body *CreateCredentialInput `json:"body,omitempty" xml:"body,omitempty"`
 }
 

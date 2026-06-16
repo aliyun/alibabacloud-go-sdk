@@ -18,11 +18,23 @@ type iErrorResult interface {
 }
 
 type ErrorResult struct {
-  // SUCCESS 为成功，失败情况返回对应错误类型，比如 ERR_BAD_REQUEST ERR_VALIDATION_FAILED ERR_INTERNAL_SERVER_ERROR
+  // The error code. SUCCESS indicates the request was successful. Otherwise, a specific error code is returned, such as ERR_BAD_REQUEST, ERR_VALIDATION_FAILED, or ERR_INTERNAL_SERVER_ERROR.
+  // 
+  // example:
+  // 
+  // SUCCESS
   Code *string `json:"code,omitempty" xml:"code,omitempty"`
-  // 错误信息描述
+  // A human-readable description of the error.
+  // 
+  // example:
+  // 
+  // Conflict Transaction, process failed
   Message *string `json:"message,omitempty" xml:"message,omitempty"`
-  // 唯一的请求标识符，用于问题追踪
+  // The unique request identifier, used for troubleshooting.
+  // 
+  // example:
+  // 
+  // 55D4BE40-2811-5CFB-8482-E0E98D575B1E
   RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 

@@ -14,6 +14,7 @@ type iUpdateModelProxyRequest interface {
 }
 
 type UpdateModelProxyRequest struct {
+	// The new configuration for the model proxy.
 	Body *UpdateModelProxyInput `json:"body,omitempty" xml:"body,omitempty"`
 }
 

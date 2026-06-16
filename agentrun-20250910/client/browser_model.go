@@ -40,56 +40,78 @@ type iBrowser interface {
 }
 
 type Browser struct {
+	// The unique identifier of the browser.
+	//
 	// example:
 	//
 	// browser-1234567890abcdef
 	BrowserId *string `json:"browserId,omitempty" xml:"browserId,omitempty"`
+	// The name of the browser.
+	//
 	// example:
 	//
 	// my-browser
 	BrowserName *string `json:"browserName,omitempty" xml:"browserName,omitempty"`
+	// The number of CPU cores allocated to the browser.
+	//
 	// example:
 	//
 	// 2.0
 	Cpu *float32 `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	// The time the browser was created, in ISO 8601 format.
+	//
 	// example:
 	//
 	// 2025-01-10T10:30:00Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// The unique identifier for the credential associated with the browser.
+	//
 	// example:
 	//
 	// cred-1234567890abcdef
 	CredentialId *string `json:"credentialId,omitempty" xml:"credentialId,omitempty"`
+	// A user-defined description for the browser.
+	//
 	// example:
 	//
 	// Web automation browser for testing
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of the execution role used by the browser.
+	//
 	// example:
 	//
 	// acs:ram::1760720386195983:role/BrowserExecutionRole
 	ExecutionRoleArn *string `json:"executionRoleArn,omitempty" xml:"executionRoleArn,omitempty"`
+	// The time the browser was last updated, in ISO 8601 format.
+	//
 	// example:
 	//
 	// 2025-01-10T11:45:00Z
 	LastUpdatedAt *string `json:"lastUpdatedAt,omitempty" xml:"lastUpdatedAt,omitempty"`
-	// 内存资源配置（单位：MB）
+	// The memory allocated to the browser, in megabytes (MB).
 	//
 	// example:
 	//
 	// 2048
-	Memory               *int32                         `json:"memory,omitempty" xml:"memory,omitempty"`
-	NetworkConfiguration *NetworkConfiguration          `json:"networkConfiguration,omitempty" xml:"networkConfiguration,omitempty"`
-	Recording            *BrowserRecordingConfiguration `json:"recording,omitempty" xml:"recording,omitempty"`
+	Memory *int32 `json:"memory,omitempty" xml:"memory,omitempty"`
+	// The network configuration for the browser.
+	NetworkConfiguration *NetworkConfiguration `json:"networkConfiguration,omitempty" xml:"networkConfiguration,omitempty"`
+	// The recording configuration for the browser.
+	Recording *BrowserRecordingConfiguration `json:"recording,omitempty" xml:"recording,omitempty"`
+	// The current status of the browser.
+	//
 	// example:
 	//
 	// READY
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// 当前状态的原因说明（如适用）
+	// The reason for the current status, if any.
 	//
 	// example:
 	//
 	// Browser is ready for use
 	StatusReason *string `json:"statusReason,omitempty" xml:"statusReason,omitempty"`
+	// The unique identifier of the tenant that owns the browser.
+	//
 	// example:
 	//
 	// tenant-1234567890abcdef

@@ -1,3 +1,6 @@
+2026-06-16 Version: v5.8.4
+- Generated golang 2025-09-10 for AgentRun.
+
 2026-06-01 Version: v5.8.3
 - Generated golang 2025-09-10 for AgentRun.
 

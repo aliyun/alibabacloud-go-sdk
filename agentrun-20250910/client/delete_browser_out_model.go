@@ -18,9 +18,12 @@ type iDeleteBrowserOut interface {
 }
 
 type DeleteBrowserOut struct {
-	BrowserId   *string `json:"browserId,omitempty" xml:"browserId,omitempty"`
+	// The browser ID.
+	BrowserId *string `json:"browserId,omitempty" xml:"browserId,omitempty"`
+	// The browser name.
 	BrowserName *string `json:"browserName,omitempty" xml:"browserName,omitempty"`
-	Status      *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The operation status.
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s DeleteBrowserOut) String() string {

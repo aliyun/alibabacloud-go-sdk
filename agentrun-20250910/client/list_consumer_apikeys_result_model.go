@@ -18,19 +18,19 @@ type iListConsumerAPIKeysResult interface {
 }
 
 type ListConsumerAPIKeysResult struct {
-	// SUCCESS 为成功，失败情况返回对应错误类型
+	// The request status. `SUCCESS` indicates that the request was successful. Otherwise, this field returns the error type.
 	//
 	// example:
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 消费者API密钥列表的详细信息
+	// The list of consumer API keys.
 	//
 	// example:
 	//
 	// {}
 	Data *ListConsumerAPIKeysOutput `json:"data,omitempty" xml:"data,omitempty"`
-	// 唯一的请求标识符，用于问题追踪
+	// The unique request ID. Use this ID for issue tracking.
 	//
 	// example:
 	//

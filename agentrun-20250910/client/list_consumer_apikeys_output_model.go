@@ -20,21 +20,21 @@ type iListConsumerAPIKeysOutput interface {
 }
 
 type ListConsumerAPIKeysOutput struct {
-	// 消费者API密钥列表
+	// A list of consumer API keys.
 	Items []*ConsumerAPIKey `json:"items" xml:"items" type:"Repeated"`
-	// 当前页码
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// 每页记录数
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// 符合条件的消费者API密钥总数
+	// The total number of matching consumer API keys.
 	//
 	// example:
 	//

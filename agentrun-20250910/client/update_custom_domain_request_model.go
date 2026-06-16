@@ -14,6 +14,7 @@ type iUpdateCustomDomainRequest interface {
 }
 
 type UpdateCustomDomainRequest struct {
+	// The updated configuration for the custom domain.
 	Body *UpdateCustomDomainInput `json:"body,omitempty" xml:"body,omitempty"`
 }
 

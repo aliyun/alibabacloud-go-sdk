@@ -28,36 +28,36 @@ type iPathConfig interface {
 }
 
 type PathConfig struct {
-	// agent runtime 版本（仅当 resourceType 为 runtime 时有效）
+	// The agent runtime version. This parameter takes effect only when `resourceType` is `runtime`.
 	AgentRuntimeEndpointName *string `json:"agentRuntimeEndpointName,omitempty" xml:"agentRuntimeEndpointName,omitempty"`
-	// 兼容协议，指定后端响应格式转换。仅当 resourceType 为 flow 时必填：native 表示 FnF 原生调用；openai、dify-workflow、dify-chatflow 为对应兼容 API。
+	// The compatible protocol, used to convert the backend response format. This parameter is required only when `resourceType` is `flow`. Valid values: `native` indicates an FnF native call; `openai`, `dify-workflow`, and `dify-chatflow` map to their corresponding compatible APIs.
 	//
 	// example:
 	//
 	// native
 	CompatibleProtocol *string `json:"compatibleProtocol,omitempty" xml:"compatibleProtocol,omitempty"`
-	// Flow 版本/别名（仅当 resourceType 为 flow 时有效，默认 Default）
+	// The Flow version/alias. This parameter takes effect only when `resourceType` is `flow`. Default value: `Default`.
 	//
 	// example:
 	//
 	// Default
 	FlowEndpointName *string `json:"flowEndpointName,omitempty" xml:"flowEndpointName,omitempty"`
-	// 支持的方法有：HEAD, GET, POST, PUT, DELETE, PATCH, OPTIONS
+	// Supported methods: HEAD, GET, POST, PUT, DELETE, PATCH, and OPTIONS.
 	//
 	// example:
 	//
-	// [\"GET\"]
+	// [\\"GET\\"]
 	Methods []*string `json:"methods" xml:"methods" type:"Repeated"`
-	// 此条路由规则对应的请求路径。
+	// The path for this routing rule.
 	//
 	// example:
 	//
 	// /login
 	Path                    *string `json:"path,omitempty" xml:"path,omitempty"`
 	RemoveBasePathOnForward *bool   `json:"removeBasePathOnForward,omitempty" xml:"removeBasePathOnForward,omitempty"`
-	// 资源名称
+	// The resource name.
 	ResourceName *string `json:"resourceName,omitempty" xml:"resourceName,omitempty"`
-	// 资源类型（和凭证关联资源类型一致）
+	// The resource type. This type must match the one associated with the credential.
 	//
 	// example:
 	//

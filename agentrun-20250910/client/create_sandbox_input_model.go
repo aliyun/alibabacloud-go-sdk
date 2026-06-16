@@ -26,23 +26,29 @@ type iCreateSandboxInput interface {
 }
 
 type CreateSandboxInput struct {
-	NasConfig      *NASConfig      `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
+	// The NAS configuration.
+	NasConfig *NASConfig `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
+	// The OSS mount configuration.
 	OssMountConfig *OSSMountConfig `json:"ossMountConfig,omitempty" xml:"ossMountConfig,omitempty"`
-	PolarFsConfig  *PolarFsConfig  `json:"polarFsConfig,omitempty" xml:"polarFsConfig,omitempty"`
+	// The PolarFS configuration.
+	PolarFsConfig *PolarFsConfig `json:"polarFsConfig,omitempty" xml:"polarFsConfig,omitempty"`
+	// The unique identifier of the sandbox instance.
+	//
 	// example:
 	//
 	// 01KE8DAJ35JC8SKP9CNFRZ8CW7
-	SandboxId                   *string `json:"sandboxId,omitempty" xml:"sandboxId,omitempty"`
-	SandboxIdleTimeoutInSeconds *int32  `json:"sandboxIdleTimeoutInSeconds,omitempty" xml:"sandboxIdleTimeoutInSeconds,omitempty"`
+	SandboxId *string `json:"sandboxId,omitempty" xml:"sandboxId,omitempty"`
+	// The idle timeout for the sandbox, in seconds.
+	SandboxIdleTimeoutInSeconds *int32 `json:"sandboxIdleTimeoutInSeconds,omitempty" xml:"sandboxIdleTimeoutInSeconds,omitempty"`
 	// Deprecated
 	//
-	// 沙箱空闲超时时间（秒）
+	// The idle timeout for the sandbox, in seconds.
 	//
 	// example:
 	//
 	// 1800
 	SandboxIdleTimeoutSeconds *int32 `json:"sandboxIdleTimeoutSeconds,omitempty" xml:"sandboxIdleTimeoutSeconds,omitempty"`
-	// 模板名称（系统内部通过 templateName 查询 template_id）
+	// The template name.
 	//
 	// This parameter is required.
 	//

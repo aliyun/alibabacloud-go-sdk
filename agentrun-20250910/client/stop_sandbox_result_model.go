@@ -18,11 +18,16 @@ type iStopSandboxResult interface {
 }
 
 type StopSandboxResult struct {
+	// Result code
+	//
 	// example:
 	//
 	// SUCCESS
-	Code *string  `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Details of the code interpreter, including all configuration and status information of the interpreter
 	Data *Sandbox `json:"data,omitempty" xml:"data,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// F8A0F5F3-0C3E-4C82-9D4F-5E4B6A7C8D9E

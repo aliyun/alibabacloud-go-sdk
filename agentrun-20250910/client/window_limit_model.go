@@ -16,7 +16,7 @@ type iWindowLimit interface {
 }
 
 type WindowLimit struct {
-	// 限流时间窗口的持续时间，单位为秒
+	// The duration of the time window in seconds.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type WindowLimit struct {
 	//
 	// 60
 	DurationSecs *int64 `json:"durationSecs,omitempty" xml:"durationSecs,omitempty"`
-	// 在指定时间窗口内允许的最大请求数量
+	// The maximum requests allowed within the time window.
 	//
 	// This parameter is required.
 	//

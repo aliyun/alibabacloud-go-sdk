@@ -18,11 +18,16 @@ type iGetAccessTokenResponseBody interface {
 }
 
 type GetAccessTokenResponseBody struct {
+	// The status code of the response. A value of `SUCCESS` indicates that the request was successful. For failures, this parameter returns an error code, such as `ERR_BAD_REQUEST`, `ERR_VALIDATION_FAILED`, or `ERR_INTERNAL_SERVER_ERROR`.
+	//
 	// example:
 	//
 	// SUCCESS
-	Code *string                         `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response data.
 	Data *GetAccessTokenResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The unique request ID. This ID is used for troubleshooting purposes.
+	//
 	// example:
 	//
 	// F8A0F5F3-0C3E-4C82-9D4F-5E4B6A7C8D9E
@@ -74,6 +79,8 @@ func (s *GetAccessTokenResponseBody) Validate() error {
 }
 
 type GetAccessTokenResponseBodyData struct {
+	// The personal access token. You can use this token to authenticate subsequent API calls. This authentication method is an alternative to using an Alibaba Cloud AccessKey pair or temporary credentials provided by the Security Token Service (STS).
+	//
 	// example:
 	//
 	// accessToken

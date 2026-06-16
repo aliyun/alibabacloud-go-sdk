@@ -18,19 +18,19 @@ type iRateLimitRuleResult interface {
 }
 
 type RateLimitRuleResult struct {
-	// SUCCESS 为成功，失败情况返回对应错误类型
+	// A value of `SUCCESS` indicates the request succeeded. On failure, this field returns the corresponding error type.
 	//
 	// example:
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 限流规则的详细信息
+	// The details of the rate limit rule.
 	//
 	// example:
 	//
 	// {}
 	Data *RateLimitRule `json:"data,omitempty" xml:"data,omitempty"`
-	// 唯一的请求标识符，用于问题追踪
+	// A unique request identifier for troubleshooting.
 	//
 	// example:
 	//

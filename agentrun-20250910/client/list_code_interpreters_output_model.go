@@ -20,10 +20,14 @@ type iListCodeInterpretersOutput interface {
 }
 
 type ListCodeInterpretersOutput struct {
-	Items      []*CodeInterpreter `json:"items" xml:"items" type:"Repeated"`
-	PageNumber *int32             `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize   *int32             `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	Total      *int64             `json:"total,omitempty" xml:"total,omitempty"`
+	// List of code interpreters
+	Items []*CodeInterpreter `json:"items" xml:"items" type:"Repeated"`
+	// Page number
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// Page size
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// Total count
+	Total *int64 `json:"total,omitempty" xml:"total,omitempty"`
 }
 
 func (s ListCodeInterpretersOutput) String() string {

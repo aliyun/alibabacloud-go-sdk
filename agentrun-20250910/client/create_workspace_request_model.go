@@ -14,6 +14,7 @@ type iCreateWorkspaceRequest interface {
 }
 
 type CreateWorkspaceRequest struct {
+	// The request body.
 	Body *CreateWorkspaceInput `json:"body,omitempty" xml:"body,omitempty"`
 }
 

@@ -26,43 +26,43 @@ type iConsumerAPIKey interface {
 }
 
 type ConsumerAPIKey struct {
-	// 密钥是否启用，true表示启用，false表示禁用
+	// Specifies if the key is enabled (true) or disabled (false).
 	//
 	// example:
 	//
 	// true
 	Active *bool `json:"active,omitempty" xml:"active,omitempty"`
-	// 消费者API密钥的唯一标识符
+	// The unique identifier of the consumer API key.
 	//
 	// example:
 	//
 	// 12345678-1234-1234-1234-123456789abc
 	ConsumerApiKeyId *string `json:"consumerApiKeyId,omitempty" xml:"consumerApiKeyId,omitempty"`
-	// 消费者API密钥的创建时间，采用ISO 8601格式
+	// The creation time of the consumer API key, in ISO 8601 format.
 	//
 	// example:
 	//
 	// 2025-01-10T10:30:00Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// 消费者API密钥的描述信息
+	// A user-defined description for the consumer API key.
 	//
 	// example:
 	//
 	// 用于生产环境的API密钥
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 消费者API密钥最后一次更新的时间，采用ISO 8601格式
+	// The last update time of the consumer API key, in ISO 8601 format.
 	//
 	// example:
 	//
 	// 2025-01-10T11:45:00Z
 	LastUpdatedAt *string `json:"lastUpdatedAt,omitempty" xml:"lastUpdatedAt,omitempty"`
-	// API密钥的掩码展示形式，仅显示前后几位字符
+	// The masked API key, showing only the first and last few characters.
 	//
 	// example:
 	//
 	// sk-****1234
 	MaskedKey *string `json:"maskedKey,omitempty" xml:"maskedKey,omitempty"`
-	// 关联的模型连接标识符
+	// The identifier of the associated model connection.
 	//
 	// example:
 	//

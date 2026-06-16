@@ -22,25 +22,25 @@ type iListAgentRuntimesInput interface {
 }
 
 type ListAgentRuntimesInput struct {
-	// 按名称过滤
+	// Filters the results by agent runtime name.
 	//
 	// example:
 	//
 	// my-agent-runtime
 	AgentRuntimeName *string `json:"agentRuntimeName,omitempty" xml:"agentRuntimeName,omitempty"`
-	// 页码
+	// The page number for pagination.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// 每页记录数
+	// The maximum number of results to return per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// 按状态过滤
+	// Filters the results by status.
 	//
 	// example:
 	//

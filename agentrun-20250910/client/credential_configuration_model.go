@@ -14,7 +14,7 @@ type iCredentialConfiguration interface {
 }
 
 type CredentialConfiguration struct {
-	// 凭证的唯一标识符
+	// The unique identifier for the credential.
 	//
 	// example:
 	//

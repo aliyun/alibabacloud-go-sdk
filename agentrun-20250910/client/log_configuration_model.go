@@ -16,13 +16,13 @@ type iLogConfiguration interface {
 }
 
 type LogConfiguration struct {
-	// SLS日志库名称
+	// The name of the SLS logstore.
 	//
 	// example:
 	//
 	// agent-runtime-logs
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
-	// SLS项目名称
+	// The name of the SLS project.
 	//
 	// example:
 	//

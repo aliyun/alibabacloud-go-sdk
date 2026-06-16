@@ -18,9 +18,12 @@ type iDeleteCodeInterpreterOut interface {
 }
 
 type DeleteCodeInterpreterOut struct {
-	CodeInterpreterId   *string `json:"codeInterpreterId,omitempty" xml:"codeInterpreterId,omitempty"`
+	// ID of the code interpreter.
+	CodeInterpreterId *string `json:"codeInterpreterId,omitempty" xml:"codeInterpreterId,omitempty"`
+	// Name of the code interpreter.
 	CodeInterpreterName *string `json:"codeInterpreterName,omitempty" xml:"codeInterpreterName,omitempty"`
-	Status              *string `json:"status,omitempty" xml:"status,omitempty"`
+	// Status of the code interpreter.
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s DeleteCodeInterpreterOut) String() string {

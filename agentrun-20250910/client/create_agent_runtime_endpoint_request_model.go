@@ -14,7 +14,7 @@ type iCreateAgentRuntimeEndpointRequest interface {
 }
 
 type CreateAgentRuntimeEndpointRequest struct {
-	// 包含要创建的智能体运行时端点配置信息的请求体
+	// Create agent runtime endpoint input
 	//
 	// This parameter is required.
 	Body *CreateAgentRuntimeEndpointInput `json:"body,omitempty" xml:"body,omitempty"`

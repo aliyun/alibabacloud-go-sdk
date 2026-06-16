@@ -78,43 +78,150 @@ type iTemplate interface {
 }
 
 type Template struct {
-	AllowAnonymousManage   *bool                   `json:"allowAnonymousManage,omitempty" xml:"allowAnonymousManage,omitempty"`
+	// Indicates whether the data link can invoke APIs to create, stop, or delete sandbox instances
+	//
+	// example:
+	//
+	// true
+	AllowAnonymousManage *bool `json:"allowAnonymousManage,omitempty" xml:"allowAnonymousManage,omitempty"`
+	// Custom image configuration
 	ContainerConfiguration *ContainerConfiguration `json:"containerConfiguration,omitempty" xml:"containerConfiguration,omitempty"`
+	// Number of CPU cores
+	//
 	// This parameter is required.
-	Cpu                     *float32                 `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	CreatedAt               *string                  `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	//
+	// example:
+	//
+	// 4
+	Cpu *float32 `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	// Creation Time
+	//
+	// example:
+	//
+	// 2026-01-15T17:12:59.375168+08:00
+	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// Authentication configuration
 	CredentialConfiguration *CredentialConfiguration `json:"credentialConfiguration,omitempty" xml:"credentialConfiguration,omitempty"`
-	Description             *string                  `json:"description,omitempty" xml:"description,omitempty"`
-	DiskSize                *int32                   `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
-	EnableAgent             *bool                    `json:"enableAgent,omitempty" xml:"enableAgent,omitempty"`
-	EnablePreStop           *bool                    `json:"enablePreStop,omitempty" xml:"enablePreStop,omitempty"`
-	EnvironmentVariables    map[string]*string       `json:"environmentVariables" xml:"environmentVariables"`
-	ExecutionRoleArn        *string                  `json:"executionRoleArn,omitempty" xml:"executionRoleArn,omitempty"`
-	LastUpdatedAt           *string                  `json:"lastUpdatedAt,omitempty" xml:"lastUpdatedAt,omitempty"`
-	LogConfiguration        *LogConfiguration        `json:"logConfiguration,omitempty" xml:"logConfiguration,omitempty"`
-	McpOptions              *TemplateMcpOptions      `json:"mcpOptions,omitempty" xml:"mcpOptions,omitempty" type:"Struct"`
-	McpState                *TemplateMcpState        `json:"mcpState,omitempty" xml:"mcpState,omitempty" type:"Struct"`
+	// Description
+	//
+	// example:
+	//
+	// template描述
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Disk size
+	//
+	// example:
+	//
+	// 10240
+	DiskSize *int32 `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
+	// Sandbox Agent Toggle
+	EnableAgent   *bool `json:"enableAgent,omitempty" xml:"enableAgent,omitempty"`
+	EnablePreStop *bool `json:"enablePreStop,omitempty" xml:"enablePreStop,omitempty"`
+	// Environment variable configuration for the agent runtime
+	EnvironmentVariables map[string]*string `json:"environmentVariables" xml:"environmentVariables"`
+	// Execution role
+	//
+	// example:
+	//
+	// acs:agentrun:cn-hangzhou:12345678:templates/efb6de2f-1814-42a2-b7f3-474a0e0b3a48
+	ExecutionRoleArn *string `json:"executionRoleArn,omitempty" xml:"executionRoleArn,omitempty"`
+	// Update Time
+	//
+	// example:
+	//
+	// 2026-01-15T17:12:59.375168+08:00
+	LastUpdatedAt *string `json:"lastUpdatedAt,omitempty" xml:"lastUpdatedAt,omitempty"`
+	// Log configuration
+	LogConfiguration *LogConfiguration `json:"logConfiguration,omitempty" xml:"logConfiguration,omitempty"`
+	// MCP options
+	McpOptions *TemplateMcpOptions `json:"mcpOptions,omitempty" xml:"mcpOptions,omitempty" type:"Struct"`
+	// MCP server status
+	McpState *TemplateMcpState `json:"mcpState,omitempty" xml:"mcpState,omitempty" type:"Struct"`
+	// Memory specification
+	//
 	// This parameter is required.
-	Memory                      *int32                 `json:"memory,omitempty" xml:"memory,omitempty"`
-	NasConfig                   *NASConfig             `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
-	NetworkConfiguration        *NetworkConfiguration  `json:"networkConfiguration,omitempty" xml:"networkConfiguration,omitempty"`
-	OssConfiguration            []*OssConfiguration    `json:"ossConfiguration" xml:"ossConfiguration" type:"Repeated"`
-	PreStopTimeoutInSeconds     *int32                 `json:"preStopTimeoutInSeconds,omitempty" xml:"preStopTimeoutInSeconds,omitempty"`
-	ResourceName                *string                `json:"resourceName,omitempty" xml:"resourceName,omitempty"`
-	SandboxIdleTimeoutInSeconds *string                `json:"sandboxIdleTimeoutInSeconds,omitempty" xml:"sandboxIdleTimeoutInSeconds,omitempty"`
-	SandboxTTLInSeconds         *string                `json:"sandboxTTLInSeconds,omitempty" xml:"sandboxTTLInSeconds,omitempty"`
-	ScalingStatus               *ScalingStatus         `json:"scalingStatus,omitempty" xml:"scalingStatus,omitempty"`
-	Status                      *string                `json:"status,omitempty" xml:"status,omitempty"`
-	StatusReason                *string                `json:"statusReason,omitempty" xml:"statusReason,omitempty"`
-	TemplateArn                 *string                `json:"templateArn,omitempty" xml:"templateArn,omitempty"`
-	TemplateConfiguration       map[string]interface{} `json:"templateConfiguration" xml:"templateConfiguration"`
+	//
+	// example:
+	//
+	// 4096
+	Memory *int32 `json:"memory,omitempty" xml:"memory,omitempty"`
+	// NAS mount configuration item
+	NasConfig *NASConfig `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
+	// Network configuration
+	NetworkConfiguration *NetworkConfiguration `json:"networkConfiguration,omitempty" xml:"networkConfiguration,omitempty"`
+	// OSS configuration
+	OssConfiguration        []*OssConfiguration `json:"ossConfiguration" xml:"ossConfiguration" type:"Repeated"`
+	PreStopTimeoutInSeconds *int32              `json:"preStopTimeoutInSeconds,omitempty" xml:"preStopTimeoutInSeconds,omitempty"`
+	// Resource Name
+	//
+	// example:
+	//
+	// agentrun-f2570dd4-c8a2-452c-8bd5-4ef74b0a69b5
+	ResourceName *string `json:"resourceName,omitempty" xml:"resourceName,omitempty"`
+	// Sandbox idle timeout
+	//
+	// example:
+	//
+	// 1800
+	SandboxIdleTimeoutInSeconds *string `json:"sandboxIdleTimeoutInSeconds,omitempty" xml:"sandboxIdleTimeoutInSeconds,omitempty"`
+	// Sandbox lifecycle time to live (deprecated)
+	//
+	// example:
+	//
+	// 已弃用
+	SandboxTTLInSeconds *string `json:"sandboxTTLInSeconds,omitempty" xml:"sandboxTTLInSeconds,omitempty"`
+	// Elasticity Status
+	ScalingStatus *ScalingStatus `json:"scalingStatus,omitempty" xml:"scalingStatus,omitempty"`
+	// Status
+	//
+	// example:
+	//
+	// READY
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// Status reason
+	//
+	// example:
+	//
+	// SDK Error
+	StatusReason *string `json:"statusReason,omitempty" xml:"statusReason,omitempty"`
+	// Template ARN
+	//
+	// example:
+	//
+	// acs:agentrun:cn-hangzhou:12345678:templates/efb6de2f-1814-42a2-b7f3-474a0e0b3a48
+	TemplateArn *string `json:"templateArn,omitempty" xml:"templateArn,omitempty"`
+	// Template Configuration (flexible object structure that varies based on templateType)
+	TemplateConfiguration map[string]interface{} `json:"templateConfiguration" xml:"templateConfiguration"`
+	// Template ID
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 996ffd5e-003f-4700-9f24-9e2a1c19019b.schema
 	TemplateId *string `json:"templateId,omitempty" xml:"templateId,omitempty"`
+	// Template Name
+	//
 	// This parameter is required.
-	TemplateName    *string `json:"templateName,omitempty" xml:"templateName,omitempty"`
-	TemplateType    *string `json:"templateType,omitempty" xml:"templateType,omitempty"`
+	//
+	// example:
+	//
+	// browser-1767874121726
+	TemplateName *string `json:"templateName,omitempty" xml:"templateName,omitempty"`
+	// templatetype
+	//
+	// example:
+	//
+	// Browser
+	TemplateType *string `json:"templateType,omitempty" xml:"templateType,omitempty"`
+	// Template Version
+	//
+	// example:
+	//
+	// 预留
 	TemplateVersion *string `json:"templateVersion,omitempty" xml:"templateVersion,omitempty"`
-	WorkspaceId     *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+	// Associated Space ID
+	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
 }
 
 func (s Template) String() string {
@@ -476,7 +583,10 @@ func (s *Template) Validate() error {
 }
 
 type TemplateMcpOptions struct {
+	// List of enabled tools
 	EnabledTools []*string `json:"enabledTools" xml:"enabledTools" type:"Repeated"`
+	// Transport type
+	//
 	// example:
 	//
 	// streamable-http
@@ -514,9 +624,24 @@ func (s *TemplateMcpOptions) Validate() error {
 }
 
 type TemplateMcpState struct {
+	// Access Endpoint
+	//
+	// example:
+	//
+	// /mcp
 	AccessEndpoint *string `json:"accessEndpoint,omitempty" xml:"accessEndpoint,omitempty"`
-	Status         *string `json:"status,omitempty" xml:"status,omitempty"`
-	StatusReason   *string `json:"statusReason,omitempty" xml:"statusReason,omitempty"`
+	// MCP Status
+	//
+	// example:
+	//
+	// CREATING
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// Status reason
+	//
+	// example:
+	//
+	// SDK Error
+	StatusReason *string `json:"statusReason,omitempty" xml:"statusReason,omitempty"`
 }
 
 func (s TemplateMcpState) String() string {

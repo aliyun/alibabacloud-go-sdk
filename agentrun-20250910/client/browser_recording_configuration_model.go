@@ -16,7 +16,9 @@ type iBrowserRecordingConfiguration interface {
 }
 
 type BrowserRecordingConfiguration struct {
-	Enabled     *bool               `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// Is recording enabled
+	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// OSS storage location
 	OssLocation *BrowserOssLocation `json:"ossLocation,omitempty" xml:"ossLocation,omitempty"`
 }
 

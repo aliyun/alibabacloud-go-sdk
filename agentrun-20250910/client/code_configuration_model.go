@@ -24,33 +24,37 @@ type iCodeConfiguration interface {
 }
 
 type CodeConfiguration struct {
-	// 代码包的CRC-64校验值。如果提供了checksum，则函数计算会校验代码包的checksum是否和提供的一致
+	// The CRC-64 checksum of the code package. If you provide `checksum`, Function Compute verifies that the code package\\"s computed checksum matches this value.
 	//
 	// example:
 	//
 	// 1234567890123456789
 	Checksum *string `json:"checksum,omitempty" xml:"checksum,omitempty"`
-	// 在运行时中运行的命令（例如：[\"python\"]）
+	// The command and arguments to run in the runtime.
 	//
 	// example:
 	//
 	// python,main.py
 	Command []*string `json:"command" xml:"command" type:"Repeated"`
-	// 代码运行时的编程语言，如 python3、nodejs 等
+	// The programming language for the function\\"s runtime, such as python3 or nodejs.
 	//
 	// example:
 	//
 	// python3.12
 	Language *string `json:"language,omitempty" xml:"language,omitempty"`
+	// The name of the OSS bucket that contains the function\\"s code package.
+	//
 	// example:
 	//
 	// my-agent-code-bucket
 	OssBucketName *string `json:"ossBucketName,omitempty" xml:"ossBucketName,omitempty"`
+	// The name of the OSS object for the function\\"s code package.
+	//
 	// example:
 	//
 	// agent-code-v1.0.zip
 	OssObjectName *string `json:"ossObjectName,omitempty" xml:"ossObjectName,omitempty"`
-	// 智能体代码ZIP包的Base64编码
+	// The base64-encoded content of the agent\\"s code package.
 	//
 	// example:
 	//

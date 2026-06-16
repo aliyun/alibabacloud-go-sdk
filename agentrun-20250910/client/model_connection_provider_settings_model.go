@@ -16,13 +16,13 @@ type iModelConnectionProviderSettings interface {
 }
 
 type ModelConnectionProviderSettings struct {
-	// 模型提供商的默认API基础地址
+	// The default API base URL for the model provider.
 	//
 	// example:
 	//
 	// https://api.openai.com/v1
 	BaseUrl *string `json:"baseUrl,omitempty" xml:"baseUrl,omitempty"`
-	// 该连接支持的模型名称列表
+	// The list of model names supported by this connection.
 	ModelNames []*string `json:"modelNames" xml:"modelNames" type:"Repeated"`
 }
 

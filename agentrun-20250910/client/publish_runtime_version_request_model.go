@@ -14,6 +14,7 @@ type iPublishRuntimeVersionRequest interface {
 }
 
 type PublishRuntimeVersionRequest struct {
+	// The request body for publishing a version.
 	Body *PublishRuntimeVersionInput `json:"body,omitempty" xml:"body,omitempty"`
 }
 

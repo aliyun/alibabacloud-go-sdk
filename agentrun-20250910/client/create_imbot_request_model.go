@@ -14,6 +14,8 @@ type iCreateIMBotRequest interface {
 }
 
 type CreateIMBotRequest struct {
+	// The request body.
+	//
 	// This parameter is required.
 	Body *CreateIMBotInput `json:"body,omitempty" xml:"body,omitempty"`
 }

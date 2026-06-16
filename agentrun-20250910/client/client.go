@@ -24,7 +24,14 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = dara.String("")
+	client.EndpointRule = dara.String("regional")
+	client.EndpointMap = map[string]*string{
+		"cn-shenzhen":    dara.String("agentrun.cn-shenzhen.aliyuncs.com"),
+		"cn-shanghai":    dara.String("agentrun.cn-shanghai.aliyuncs.com"),
+		"cn-hangzhou":    dara.String("agentrun.cn-hangzhou.aliyuncs.com"),
+		"cn-beijing":     dara.String("agentrun.cn-beijing.aliyuncs.com"),
+		"ap-southeast-1": dara.String("agentrun.ap-southeast-1.aliyuncs.com"),
+	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -58,7 +65,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Enable the TemplateMCP service.
+// Activates the `MCP service` for a `sandbox` `template`. This enables a client to access the `sandbox` using the MCP protocol.
+//
+// Description:
+//
+// After activation, the platform automatically deploys the `MCP service` `function` for the specified `sandbox` `template`. The `MCP service` ensures a unique mapping between an `mcp-session-id` and a `SandboxID`. When an MCP `client` invokes a `tool`, the `MCP service` automatically creates a `sandbox`.
 //
 // @param request - ActivateTemplateMCPRequest
 //
@@ -109,7 +120,11 @@ func (client *Client) ActivateTemplateMCPWithOptions(templateName *string, reque
 
 // Summary:
 //
-// Enable the TemplateMCP service.
+// Activates the `MCP service` for a `sandbox` `template`. This enables a client to access the `sandbox` using the MCP protocol.
+//
+// Description:
+//
+// After activation, the platform automatically deploys the `MCP service` `function` for the specified `sandbox` `template`. The `MCP service` ensures a unique mapping between an `mcp-session-id` and a `SandboxID`. When an MCP `client` invokes a `tool`, the `MCP service` automatically creates a `sandbox`.
 //
 // @param request - ActivateTemplateMCPRequest
 //
@@ -128,11 +143,11 @@ func (client *Client) ActivateTemplateMCP(templateName *string, request *Activat
 
 // Summary:
 //
-// 转换Flow DSL
+// Converts a Flow DSL.
 //
 // Description:
 //
-// 将第三方工作流DSL（如Dify、n8n等）转换为AgentRun Flow定义。支持兼容性检查、插件识别和元数据提取，返回转换后的Flow配置、兼容性分析报告和所需的Toolset安装配置。此操作为dry-run模式，不会创建实际的Flow资源。
+// This operation converts a third-party workflow DSL, such as Dify or n8n, into an AgentRun Flow definition. It performs compatibility checks, identifies plugins, and extracts metadata. The operation runs in dry-run mode, returning the converted Flow configuration, a compatibility analysis report, and the required Toolset installation configuration without creating a Flow resource.
 //
 // @param request - ConvertFlowDSLRequest
 //
@@ -174,11 +189,11 @@ func (client *Client) ConvertFlowDSLWithOptions(request *ConvertFlowDSLRequest, 
 
 // Summary:
 //
-// 转换Flow DSL
+// Converts a Flow DSL.
 //
 // Description:
 //
-// 将第三方工作流DSL（如Dify、n8n等）转换为AgentRun Flow定义。支持兼容性检查、插件识别和元数据提取，返回转换后的Flow配置、兼容性分析报告和所需的Toolset安装配置。此操作为dry-run模式，不会创建实际的Flow资源。
+// This operation converts a third-party workflow DSL, such as Dify or n8n, into an AgentRun Flow definition. It performs compatibility checks, identifies plugins, and extracts metadata. The operation runs in dry-run mode, returning the converted Flow configuration, a compatibility analysis report, and the required Toolset installation configuration without creating a Flow resource.
 //
 // @param request - ConvertFlowDSLRequest
 //
@@ -197,7 +212,7 @@ func (client *Client) ConvertFlowDSL(request *ConvertFlowDSLRequest) (_result *C
 
 // Summary:
 //
-// # CreateAgentRuntime
+// Creates an agent runtime.
 //
 // Description:
 //
@@ -243,7 +258,7 @@ func (client *Client) CreateAgentRuntimeWithOptions(request *CreateAgentRuntimeR
 
 // Summary:
 //
-// # CreateAgentRuntime
+// Creates an agent runtime.
 //
 // Description:
 //
@@ -266,11 +281,11 @@ func (client *Client) CreateAgentRuntime(request *CreateAgentRuntimeRequest) (_r
 
 // Summary:
 //
-// 创建智能体运行时端点
+// # Create an access endpoint for an agent runtime
 //
 // Description:
 //
-// 为指定的智能体运行时创建新的端点，用于外部访问和调用。端点是智能体运行时对外提供服务的入口。
+// Creates a new endpoint for the specified agent runtime, used for external access and invocation. An endpoint serves as the entry point through which an agent runtime provides services externally.
 //
 // @param request - CreateAgentRuntimeEndpointRequest
 //
@@ -312,11 +327,11 @@ func (client *Client) CreateAgentRuntimeEndpointWithOptions(agentRuntimeId *stri
 
 // Summary:
 //
-// 创建智能体运行时端点
+// # Create an access endpoint for an agent runtime
 //
 // Description:
 //
-// 为指定的智能体运行时创建新的端点，用于外部访问和调用。端点是智能体运行时对外提供服务的入口。
+// Creates a new endpoint for the specified agent runtime, used for external access and invocation. An endpoint serves as the entry point through which an agent runtime provides services externally.
 //
 // @param request - CreateAgentRuntimeEndpointRequest
 //
@@ -335,11 +350,11 @@ func (client *Client) CreateAgentRuntimeEndpoint(agentRuntimeId *string, request
 
 // Summary:
 //
-// 创建浏览器实例
+// # Create Browser Sandbox
 //
 // Description:
 //
-// 创建一个新的浏览器实例，用于执行网页自动化任务。浏览器实例提供网页浏览、元素操作、截图录制等功能。
+// Create a new browser instance for executing web automation tasks. The browser instance provides features such as web browsing, element manipulation, and screenshot recording.
 //
 // @param request - CreateBrowserRequest
 //
@@ -381,11 +396,11 @@ func (client *Client) CreateBrowserWithOptions(request *CreateBrowserRequest, he
 
 // Summary:
 //
-// 创建浏览器实例
+// # Create Browser Sandbox
 //
 // Description:
 //
-// 创建一个新的浏览器实例，用于执行网页自动化任务。浏览器实例提供网页浏览、元素操作、截图录制等功能。
+// Create a new browser instance for executing web automation tasks. The browser instance provides features such as web browsing, element manipulation, and screenshot recording.
 //
 // @param request - CreateBrowserRequest
 //
@@ -404,7 +419,7 @@ func (client *Client) CreateBrowser(request *CreateBrowserRequest) (_result *Cre
 
 // Summary:
 //
-// 创建代码解释器
+// Creates a code interpreter.
 //
 // Description:
 //
@@ -450,7 +465,7 @@ func (client *Client) CreateCodeInterpreterWithOptions(request *CreateCodeInterp
 
 // Summary:
 //
-// 创建代码解释器
+// Creates a code interpreter.
 //
 // Description:
 //
@@ -473,7 +488,11 @@ func (client *Client) CreateCodeInterpreter(request *CreateCodeInterpreterReques
 
 // Summary:
 //
-// # Create a credential
+// Creates a new credential.
+//
+// Description:
+//
+// This operation creates a credential for an agent.
 //
 // @param request - CreateCredentialRequest
 //
@@ -515,7 +534,11 @@ func (client *Client) CreateCredentialWithOptions(request *CreateCredentialReque
 
 // Summary:
 //
-// # Create a credential
+// Creates a new credential.
+//
+// Description:
+//
+// This operation creates a credential for an agent.
 //
 // @param request - CreateCredentialRequest
 //
@@ -534,7 +557,7 @@ func (client *Client) CreateCredential(request *CreateCredentialRequest) (_resul
 
 // Summary:
 //
-// 创建自定义域名
+// Creates a custom domain.
 //
 // @param request - CreateCustomDomainRequest
 //
@@ -576,7 +599,7 @@ func (client *Client) CreateCustomDomainWithOptions(request *CreateCustomDomainR
 
 // Summary:
 //
-// 创建自定义域名
+// Creates a custom domain.
 //
 // @param request - CreateCustomDomainRequest
 //
@@ -595,11 +618,11 @@ func (client *Client) CreateCustomDomain(request *CreateCustomDomainRequest) (_r
 
 // Summary:
 //
-// 创建工作流
+// Creates a workflow.
 //
 // Description:
 //
-// 创建一个新的工作流实例，用于定义和执行自动化流程。工作流是AgentRun服务的核心组件，支持可视化编排和版本管理。
+// Creates a flow orchestration agent. Flow orchestration is a core component of the AgentRun service that supports visual orchestration and version management.
 //
 // @param request - CreateFlowRequest
 //
@@ -641,11 +664,11 @@ func (client *Client) CreateFlowWithOptions(request *CreateFlowRequest, headers 
 
 // Summary:
 //
-// 创建工作流
+// Creates a workflow.
 //
 // Description:
 //
-// 创建一个新的工作流实例，用于定义和执行自动化流程。工作流是AgentRun服务的核心组件，支持可视化编排和版本管理。
+// Creates a flow orchestration agent. Flow orchestration is a core component of the AgentRun service that supports visual orchestration and version management.
 //
 // @param request - CreateFlowRequest
 //
@@ -664,7 +687,7 @@ func (client *Client) CreateFlow(request *CreateFlowRequest) (_result *CreateFlo
 
 // Summary:
 //
-// 创建工作流端点
+// Creates a flow endpoint.
 //
 // Description:
 //
@@ -710,7 +733,7 @@ func (client *Client) CreateFlowEndpointWithOptions(flowName *string, request *C
 
 // Summary:
 //
-// 创建工作流端点
+// Creates a flow endpoint.
 //
 // Description:
 //
@@ -733,11 +756,11 @@ func (client *Client) CreateFlowEndpoint(flowName *string, request *CreateFlowEn
 
 // Summary:
 //
-// 创建 IM Bot
+// Creates an IM Bot.
 //
 // Description:
 //
-// POST /2025-09-10/agents/im-bots；成功 HTTP 201；请求体无 status（创建后恒为 running）；Body 标准包装，data 为 IMBotInfo
+// A successful request returns an HTTP 201 status code. Once created, an IM Bot\\"s status is always `running`. The response is in a standard format, and its `data` field contains an `IMBotInfo` object.
 //
 // @param request - CreateIMBotRequest
 //
@@ -779,11 +802,11 @@ func (client *Client) CreateIMBotWithOptions(request *CreateIMBotRequest, header
 
 // Summary:
 //
-// 创建 IM Bot
+// Creates an IM Bot.
 //
 // Description:
 //
-// POST /2025-09-10/agents/im-bots；成功 HTTP 201；请求体无 status（创建后恒为 running）；Body 标准包装，data 为 IMBotInfo
+// A successful request returns an HTTP 201 status code. Once created, an IM Bot\\"s status is always `running`. The response is in a standard format, and its `data` field contains an `IMBotInfo` object.
 //
 // @param request - CreateIMBotRequest
 //
@@ -802,7 +825,7 @@ func (client *Client) CreateIMBot(request *CreateIMBotRequest) (_result *CreateI
 
 // Summary:
 //
-// 创建知识库
+// Creates a knowledge base.
 //
 // @param request - CreateKnowledgeBaseRequest
 //
@@ -844,7 +867,7 @@ func (client *Client) CreateKnowledgeBaseWithOptions(request *CreateKnowledgeBas
 
 // Summary:
 //
-// 创建知识库
+// Creates a knowledge base.
 //
 // @param request - CreateKnowledgeBaseRequest
 //
@@ -863,7 +886,7 @@ func (client *Client) CreateKnowledgeBase(request *CreateKnowledgeBaseRequest) (
 
 // Summary:
 //
-// 添加记忆存储
+// Creates a memory collection.
 //
 // @param request - CreateMemoryCollectionRequest
 //
@@ -905,7 +928,7 @@ func (client *Client) CreateMemoryCollectionWithOptions(request *CreateMemoryCol
 
 // Summary:
 //
-// 添加记忆存储
+// Creates a memory collection.
 //
 // @param request - CreateMemoryCollectionRequest
 //
@@ -924,7 +947,11 @@ func (client *Client) CreateMemoryCollection(request *CreateMemoryCollectionRequ
 
 // Summary:
 //
-// 新增模型
+// Creates a Model Proxy.
+//
+// Description:
+//
+// This operation creates a Model Proxy based on the specified configuration.
 //
 // @param request - CreateModelProxyRequest
 //
@@ -966,7 +993,11 @@ func (client *Client) CreateModelProxyWithOptions(request *CreateModelProxyReque
 
 // Summary:
 //
-// 新增模型
+// Creates a Model Proxy.
+//
+// Description:
+//
+// This operation creates a Model Proxy based on the specified configuration.
 //
 // @param request - CreateModelProxyRequest
 //
@@ -985,7 +1016,11 @@ func (client *Client) CreateModelProxy(request *CreateModelProxyRequest) (_resul
 
 // Summary:
 //
-// 新增模型
+// Creates a model service.
+//
+// Description:
+//
+// This operation creates a model service, such as a code interpreter, based on the specified configuration.
 //
 // @param request - CreateModelServiceRequest
 //
@@ -1027,7 +1062,11 @@ func (client *Client) CreateModelServiceWithOptions(request *CreateModelServiceR
 
 // Summary:
 //
-// 新增模型
+// Creates a model service.
+//
+// Description:
+//
+// This operation creates a model service, such as a code interpreter, based on the specified configuration.
 //
 // @param request - CreateModelServiceRequest
 //
@@ -1046,11 +1085,11 @@ func (client *Client) CreateModelService(request *CreateModelServiceRequest) (_r
 
 // Summary:
 //
-// 创建沙箱
+// Creates a sandbox.
 //
 // Description:
 //
-// 根据模板创建一个新的沙箱实例。沙箱是运行时的执行环境，可以执行代码或运行浏览器。
+// Creates a new sandbox instance from a specified template. A sandbox provides an isolated execution environment to run code or launch a browser.
 //
 // @param request - CreateSandboxRequest
 //
@@ -1092,11 +1131,11 @@ func (client *Client) CreateSandboxWithOptions(request *CreateSandboxRequest, he
 
 // Summary:
 //
-// 创建沙箱
+// Creates a sandbox.
 //
 // Description:
 //
-// 根据模板创建一个新的沙箱实例。沙箱是运行时的执行环境，可以执行代码或运行浏览器。
+// Creates a new sandbox instance from a specified template. A sandbox provides an isolated execution environment to run code or launch a browser.
 //
 // @param request - CreateSandboxRequest
 //
@@ -1115,11 +1154,11 @@ func (client *Client) CreateSandbox(request *CreateSandboxRequest) (_result *Cre
 
 // Summary:
 //
-// Create a template.
+// Creates a template.
 //
 // Description:
 //
-// 创建一个新的模板，用于后续创建沙箱。模板定义了沙箱的运行时环境、资源配置等。
+// Creates a template for launching sandboxes. A template defines the runtime environment, resource configuration, and other settings for a sandbox.
 //
 // @param request - CreateTemplateRequest
 //
@@ -1161,11 +1200,11 @@ func (client *Client) CreateTemplateWithOptions(request *CreateTemplateRequest, 
 
 // Summary:
 //
-// Create a template.
+// Creates a template.
 //
 // Description:
 //
-// 创建一个新的模板，用于后续创建沙箱。模板定义了沙箱的运行时环境、资源配置等。
+// Creates a template for launching sandboxes. A template defines the runtime environment, resource configuration, and other settings for a sandbox.
 //
 // @param request - CreateTemplateRequest
 //
@@ -1184,11 +1223,11 @@ func (client *Client) CreateTemplate(request *CreateTemplateRequest) (_result *C
 
 // Summary:
 //
-// 创建工具
+// Creates a tool.
 //
 // Description:
 //
-// 创建一个新的工具，支持创建 MCP、函数调用和技能等多种类型的工具。工具创建后可以被 Agent 调用以扩展其能力。
+// This operation creates various types of tools, such as MCP, function call, and skill. An Agent can then call a tool to extend its capabilities.
 //
 // @param request - CreateToolRequest
 //
@@ -1230,11 +1269,11 @@ func (client *Client) CreateToolWithOptions(request *CreateToolRequest, headers 
 
 // Summary:
 //
-// 创建工具
+// Creates a tool.
 //
 // Description:
 //
-// 创建一个新的工具，支持创建 MCP、函数调用和技能等多种类型的工具。工具创建后可以被 Agent 调用以扩展其能力。
+// This operation creates various types of tools, such as MCP, function call, and skill. An Agent can then call a tool to extend its capabilities.
 //
 // @param request - CreateToolRequest
 //
@@ -1253,11 +1292,11 @@ func (client *Client) CreateTool(request *CreateToolRequest) (_result *CreateToo
 
 // Summary:
 //
-// 创建工作空间
+// Creates a workspace.
 //
 // Description:
 //
-// 创建工作空间
+// Creates a workspace.
 //
 // @param request - CreateWorkspaceRequest
 //
@@ -1299,11 +1338,11 @@ func (client *Client) CreateWorkspaceWithOptions(request *CreateWorkspaceRequest
 
 // Summary:
 //
-// 创建工作空间
+// Creates a workspace.
 //
 // Description:
 //
-// 创建工作空间
+// Creates a workspace.
 //
 // @param request - CreateWorkspaceRequest
 //
@@ -1322,11 +1361,11 @@ func (client *Client) CreateWorkspace(request *CreateWorkspaceRequest) (_result 
 
 // Summary:
 //
-// 删除智能体运行时
+// # Delete Agent Runtime
 //
 // Description:
 //
-// 删除指定的智能体运行时实例，包括其所有相关资源和数据。删除操作不可逆，请谨慎操作。
+// Deletes a specified agent runtime instance, including all associated resources and data. This operation is irreversible. Proceed with caution.
 //
 // @param headers - map
 //
@@ -1359,11 +1398,11 @@ func (client *Client) DeleteAgentRuntimeWithOptions(agentRuntimeId *string, head
 
 // Summary:
 //
-// 删除智能体运行时
+// # Delete Agent Runtime
 //
 // Description:
 //
-// 删除指定的智能体运行时实例，包括其所有相关资源和数据。删除操作不可逆，请谨慎操作。
+// Deletes a specified agent runtime instance, including all associated resources and data. This operation is irreversible. Proceed with caution.
 //
 // @return DeleteAgentRuntimeResponse
 func (client *Client) DeleteAgentRuntime(agentRuntimeId *string) (_result *DeleteAgentRuntimeResponse, _err error) {
@@ -1380,7 +1419,7 @@ func (client *Client) DeleteAgentRuntime(agentRuntimeId *string) (_result *Delet
 
 // Summary:
 //
-// # Delete an agent runtime endpoint
+// # Delete Agent Runtime Endpoint
 //
 // @param headers - map
 //
@@ -1413,7 +1452,7 @@ func (client *Client) DeleteAgentRuntimeEndpointWithOptions(agentRuntimeId *stri
 
 // Summary:
 //
-// # Delete an agent runtime endpoint
+// # Delete Agent Runtime Endpoint
 //
 // @return DeleteAgentRuntimeEndpointResponse
 func (client *Client) DeleteAgentRuntimeEndpoint(agentRuntimeId *string, agentRuntimeEndpointId *string) (_result *DeleteAgentRuntimeEndpointResponse, _err error) {
@@ -1430,11 +1469,11 @@ func (client *Client) DeleteAgentRuntimeEndpoint(agentRuntimeId *string, agentRu
 
 // Summary:
 //
-// 删除浏览器实例
+// # Delete Browser Sandbox
 //
 // Description:
 //
-// 删除指定的浏览器实例，包括其所有相关资源和数据。删除操作不可逆，请谨慎操作。
+// Delete the specified browser instance, including all its associated resources and data. The deletion is irreversible. Please proceed with caution.
 //
 // @param headers - map
 //
@@ -1467,11 +1506,11 @@ func (client *Client) DeleteBrowserWithOptions(browserId *string, headers map[st
 
 // Summary:
 //
-// 删除浏览器实例
+// # Delete Browser Sandbox
 //
 // Description:
 //
-// 删除指定的浏览器实例，包括其所有相关资源和数据。删除操作不可逆，请谨慎操作。
+// Delete the specified browser instance, including all its associated resources and data. The deletion is irreversible. Please proceed with caution.
 //
 // @return DeleteBrowserResponse
 func (client *Client) DeleteBrowser(browserId *string) (_result *DeleteBrowserResponse, _err error) {
@@ -1488,11 +1527,11 @@ func (client *Client) DeleteBrowser(browserId *string) (_result *DeleteBrowserRe
 
 // Summary:
 //
-// 删除代码解释器
+// # Delete Code Interpreter
 //
 // Description:
 //
-// 删除指定的代码解释器实例，包括其所有相关资源和数据。删除操作不可逆，请谨慎操作。
+// Delete a specified code interpreter instance, including all its associated resources and data. This operation is irreversible. Please proceed with caution.
 //
 // @param headers - map
 //
@@ -1525,11 +1564,11 @@ func (client *Client) DeleteCodeInterpreterWithOptions(codeInterpreterId *string
 
 // Summary:
 //
-// 删除代码解释器
+// # Delete Code Interpreter
 //
 // Description:
 //
-// 删除指定的代码解释器实例，包括其所有相关资源和数据。删除操作不可逆，请谨慎操作。
+// Delete a specified code interpreter instance, including all its associated resources and data. This operation is irreversible. Please proceed with caution.
 //
 // @return DeleteCodeInterpreterResponse
 func (client *Client) DeleteCodeInterpreter(codeInterpreterId *string) (_result *DeleteCodeInterpreterResponse, _err error) {
@@ -1546,7 +1585,11 @@ func (client *Client) DeleteCodeInterpreter(codeInterpreterId *string) (_result 
 
 // Summary:
 //
-// # Delete a credential
+// Deletes the specified credential.
+//
+// Description:
+//
+// This operation deletes the specified credential. This action cannot be undone.
 //
 // @param headers - map
 //
@@ -1579,7 +1622,11 @@ func (client *Client) DeleteCredentialWithOptions(credentialName *string, header
 
 // Summary:
 //
-// # Delete a credential
+// Deletes the specified credential.
+//
+// Description:
+//
+// This operation deletes the specified credential. This action cannot be undone.
 //
 // @return DeleteCredentialResponse
 func (client *Client) DeleteCredential(credentialName *string) (_result *DeleteCredentialResponse, _err error) {
@@ -1596,7 +1643,7 @@ func (client *Client) DeleteCredential(credentialName *string) (_result *DeleteC
 
 // Summary:
 //
-// # Delete a custom domain
+// Deletes a custom domain.
 //
 // @param headers - map
 //
@@ -1629,7 +1676,7 @@ func (client *Client) DeleteCustomDomainWithOptions(domainName *string, headers 
 
 // Summary:
 //
-// # Delete a custom domain
+// Deletes a custom domain.
 //
 // @return DeleteCustomDomainResponse
 func (client *Client) DeleteCustomDomain(domainName *string) (_result *DeleteCustomDomainResponse, _err error) {
@@ -1646,11 +1693,11 @@ func (client *Client) DeleteCustomDomain(domainName *string) (_result *DeleteCus
 
 // Summary:
 //
-// 删除工作流
+// Deletes a flow.
 //
 // Description:
 //
-// 删除指定的工作流实例，包括其所有相关资源和数据。删除操作不可逆，请谨慎操作。
+// Deletes a specified flow instance, along with all its related resources and data. This operation is irreversible and cannot be undone. Use with caution.
 //
 // @param request - DeleteFlowRequest
 //
@@ -1691,11 +1738,11 @@ func (client *Client) DeleteFlowWithOptions(flowName *string, request *DeleteFlo
 
 // Summary:
 //
-// 删除工作流
+// Deletes a flow.
 //
 // Description:
 //
-// 删除指定的工作流实例，包括其所有相关资源和数据。删除操作不可逆，请谨慎操作。
+// Deletes a specified flow instance, along with all its related resources and data. This operation is irreversible and cannot be undone. Use with caution.
 //
 // @param request - DeleteFlowRequest
 //
@@ -1714,11 +1761,11 @@ func (client *Client) DeleteFlow(flowName *string, request *DeleteFlowRequest) (
 
 // Summary:
 //
-// 删除工作流端点
+// Deletes a flow endpoint.
 //
 // Description:
 //
-// 删除指定的工作流端点。删除操作不可逆，请谨慎操作。
+// Deletes the specified flow endpoint. This operation is irreversible. Proceed with caution.
 //
 // @param request - DeleteFlowEndpointRequest
 //
@@ -1759,11 +1806,11 @@ func (client *Client) DeleteFlowEndpointWithOptions(flowName *string, flowEndpoi
 
 // Summary:
 //
-// 删除工作流端点
+// Deletes a flow endpoint.
 //
 // Description:
 //
-// 删除指定的工作流端点。删除操作不可逆，请谨慎操作。
+// Deletes the specified flow endpoint. This operation is irreversible. Proceed with caution.
 //
 // @param request - DeleteFlowEndpointRequest
 //
@@ -1782,11 +1829,11 @@ func (client *Client) DeleteFlowEndpoint(flowName *string, flowEndpointName *str
 
 // Summary:
 //
-// 删除工作流版本
+// Deletes a workflow version.
 //
 // Description:
 //
-// 删除指定工作流的指定版本。删除操作不可逆，请谨慎操作。
+// Deletes a specified version of a workflow. This operation is irreversible. Proceed with caution.
 //
 // @param request - DeleteFlowVersionRequest
 //
@@ -1827,11 +1874,11 @@ func (client *Client) DeleteFlowVersionWithOptions(flowName *string, flowVersion
 
 // Summary:
 //
-// 删除工作流版本
+// Deletes a workflow version.
 //
 // Description:
 //
-// 删除指定工作流的指定版本。删除操作不可逆，请谨慎操作。
+// Deletes a specified version of a workflow. This operation is irreversible. Proceed with caution.
 //
 // @param request - DeleteFlowVersionRequest
 //
@@ -1850,11 +1897,11 @@ func (client *Client) DeleteFlowVersion(flowName *string, flowVersion *string, r
 
 // Summary:
 //
-// 删除 IM Bot
+// Deletes an IM bot.
 //
 // Description:
 //
-// DELETE /2025-09-10/agents/im-bots/{imBotId}；成功为 HTTP 204 No Content，无 JSON 响应体
+// This operation deletes an IM bot via a `DELETE` request to the `/2025-09-10/agents/im-bots/{imBotId}` endpoint. A successful request returns an HTTP `204 No Content` status code and an empty response body.
 //
 // @param request - DeleteIMBotRequest
 //
@@ -1895,11 +1942,11 @@ func (client *Client) DeleteIMBotWithOptions(imBotId *string, request *DeleteIMB
 
 // Summary:
 //
-// 删除 IM Bot
+// Deletes an IM bot.
 //
 // Description:
 //
-// DELETE /2025-09-10/agents/im-bots/{imBotId}；成功为 HTTP 204 No Content，无 JSON 响应体
+// This operation deletes an IM bot via a `DELETE` request to the `/2025-09-10/agents/im-bots/{imBotId}` endpoint. A successful request returns an HTTP `204 No Content` status code and an empty response body.
 //
 // @param request - DeleteIMBotRequest
 //
@@ -1918,7 +1965,9 @@ func (client *Client) DeleteIMBot(imBotId *string, request *DeleteIMBotRequest) 
 
 // Summary:
 //
-// 删除知识库
+// Deletes a knowledge base.
+//
+// > This operation is permanent and cannot be undone.
 //
 // @param headers - map
 //
@@ -1951,7 +2000,9 @@ func (client *Client) DeleteKnowledgeBaseWithOptions(knowledgeBaseName *string, 
 
 // Summary:
 //
-// 删除知识库
+// Deletes a knowledge base.
+//
+// > This operation is permanent and cannot be undone.
 //
 // @return DeleteKnowledgeBaseResponse
 func (client *Client) DeleteKnowledgeBase(knowledgeBaseName *string) (_result *DeleteKnowledgeBaseResponse, _err error) {
@@ -1968,7 +2019,7 @@ func (client *Client) DeleteKnowledgeBase(knowledgeBaseName *string) (_result *D
 
 // Summary:
 //
-// 删除记忆存储
+// Deletes a memory collection.
 //
 // @param headers - map
 //
@@ -2001,7 +2052,7 @@ func (client *Client) DeleteMemoryCollectionWithOptions(memoryCollectionName *st
 
 // Summary:
 //
-// 删除记忆存储
+// Deletes a memory collection.
 //
 // @return DeleteMemoryCollectionResponse
 func (client *Client) DeleteMemoryCollection(memoryCollectionName *string) (_result *DeleteMemoryCollectionResponse, _err error) {
@@ -2018,7 +2069,11 @@ func (client *Client) DeleteMemoryCollection(memoryCollectionName *string) (_res
 
 // Summary:
 //
-// 删除模型
+// Deletes a model proxy.
+//
+// Description:
+//
+// This operation deletes the specified model proxy configuration without deleting the underlying models or related resources.
 //
 // @param headers - map
 //
@@ -2051,7 +2106,11 @@ func (client *Client) DeleteModelProxyWithOptions(modelProxyName *string, header
 
 // Summary:
 //
-// 删除模型
+// Deletes a model proxy.
+//
+// Description:
+//
+// This operation deletes the specified model proxy configuration without deleting the underlying models or related resources.
 //
 // @return DeleteModelProxyResponse
 func (client *Client) DeleteModelProxy(modelProxyName *string) (_result *DeleteModelProxyResponse, _err error) {
@@ -2068,7 +2127,11 @@ func (client *Client) DeleteModelProxy(modelProxyName *string) (_result *DeleteM
 
 // Summary:
 //
-// 删除模型
+// Deletes a model service.
+//
+// Description:
+//
+// This operation deletes a model service. You must specify the name of the service to delete.
 //
 // @param headers - map
 //
@@ -2101,7 +2164,11 @@ func (client *Client) DeleteModelServiceWithOptions(modelServiceName *string, he
 
 // Summary:
 //
-// 删除模型
+// Deletes a model service.
+//
+// Description:
+//
+// This operation deletes a model service. You must specify the name of the service to delete.
 //
 // @return DeleteModelServiceResponse
 func (client *Client) DeleteModelService(modelServiceName *string) (_result *DeleteModelServiceResponse, _err error) {
@@ -2118,7 +2185,11 @@ func (client *Client) DeleteModelService(modelServiceName *string) (_result *Del
 
 // Summary:
 //
-// 删除Sandbox
+// Deletes a sandbox instance.
+//
+// Description:
+//
+// Deletes a sandbox instance.
 //
 // @param headers - map
 //
@@ -2151,7 +2222,11 @@ func (client *Client) DeleteSandboxWithOptions(sandboxId *string, headers map[st
 
 // Summary:
 //
-// 删除Sandbox
+// Deletes a sandbox instance.
+//
+// Description:
+//
+// Deletes a sandbox instance.
 //
 // @return DeleteSandboxResponse
 func (client *Client) DeleteSandbox(sandboxId *string) (_result *DeleteSandboxResponse, _err error) {
@@ -2168,11 +2243,11 @@ func (client *Client) DeleteSandbox(sandboxId *string) (_result *DeleteSandboxRe
 
 // Summary:
 //
-// 删除模板
+// Deletes a template.
 //
 // Description:
 //
-// 删除指定的模板。删除后，该模板将无法再用于创建新的沙箱。
+// Deletes the specified template. After you delete a template, you can no longer use it to create new sandboxes.
 //
 // @param headers - map
 //
@@ -2205,11 +2280,11 @@ func (client *Client) DeleteTemplateWithOptions(templateName *string, headers ma
 
 // Summary:
 //
-// 删除模板
+// Deletes a template.
 //
 // Description:
 //
-// 删除指定的模板。删除后，该模板将无法再用于创建新的沙箱。
+// Deletes the specified template. After you delete a template, you can no longer use it to create new sandboxes.
 //
 // @return DeleteTemplateResponse
 func (client *Client) DeleteTemplate(templateName *string) (_result *DeleteTemplateResponse, _err error) {
@@ -2226,11 +2301,11 @@ func (client *Client) DeleteTemplate(templateName *string) (_result *DeleteTempl
 
 // Summary:
 //
-// 删除工具
+// # Delete a tool
 //
 // Description:
 //
-// 删除指定的工具。删除操作不可逆，请谨慎操作。删除工具后，所有引用该工具的 Agent 将无法继续使用该工具。
+// Delete the specified tool. The delete operation is irreversible. Proceed with caution. After the tool is deleted, all Agents that reference this tool will no longer be able to use it.
 //
 // @param headers - map
 //
@@ -2263,11 +2338,11 @@ func (client *Client) DeleteToolWithOptions(toolName *string, headers map[string
 
 // Summary:
 //
-// 删除工具
+// # Delete a tool
 //
 // Description:
 //
-// 删除指定的工具。删除操作不可逆，请谨慎操作。删除工具后，所有引用该工具的 Agent 将无法继续使用该工具。
+// Delete the specified tool. The delete operation is irreversible. Proceed with caution. After the tool is deleted, all Agents that reference this tool will no longer be able to use it.
 //
 // @return DeleteToolResponse
 func (client *Client) DeleteTool(toolName *string) (_result *DeleteToolResponse, _err error) {
@@ -2284,11 +2359,11 @@ func (client *Client) DeleteTool(toolName *string) (_result *DeleteToolResponse,
 
 // Summary:
 //
-// 删除工作空间
+// Deletes a workspace.
 //
 // Description:
 //
-// 删除工作空间
+// Deletes the specified workspace.
 //
 // @param headers - map
 //
@@ -2321,11 +2396,11 @@ func (client *Client) DeleteWorkspaceWithOptions(workspaceId *string, headers ma
 
 // Summary:
 //
-// 删除工作空间
+// Deletes a workspace.
 //
 // Description:
 //
-// 删除工作空间
+// Deletes the specified workspace.
 //
 // @return DeleteWorkspaceResponse
 func (client *Client) DeleteWorkspace(workspaceId *string) (_result *DeleteWorkspaceResponse, _err error) {
@@ -2342,7 +2417,11 @@ func (client *Client) DeleteWorkspace(workspaceId *string) (_result *DeleteWorks
 
 // Summary:
 //
-// # Get access token for a resource
+// Obtains an access token.
+//
+// Description:
+//
+// Obtains a temporary accessToken that is used to authenticate subsequent API requests.
 //
 // @param request - GetAccessTokenRequest
 //
@@ -2397,7 +2476,11 @@ func (client *Client) GetAccessTokenWithOptions(request *GetAccessTokenRequest, 
 
 // Summary:
 //
-// # Get access token for a resource
+// Obtains an access token.
+//
+// Description:
+//
+// Obtains a temporary accessToken that is used to authenticate subsequent API requests.
 //
 // @param request - GetAccessTokenRequest
 //
@@ -2416,11 +2499,11 @@ func (client *Client) GetAccessToken(request *GetAccessTokenRequest) (_result *G
 
 // Summary:
 //
-// 获取智能体运行时详情
+// # Get Agent Runtime
 //
 // Description:
 //
-// 根据智能体运行时ID获取指定智能体运行时的详细信息，包括配置、状态、资源使用情况等。
+// Retrieves detailed information about a specified agent runtime by its agent runtime ID, including configuration, status, resource usage, and more.
 //
 // @param request - GetAgentRuntimeRequest
 //
@@ -2467,11 +2550,11 @@ func (client *Client) GetAgentRuntimeWithOptions(agentRuntimeId *string, request
 
 // Summary:
 //
-// 获取智能体运行时详情
+// # Get Agent Runtime
 //
 // Description:
 //
-// 根据智能体运行时ID获取指定智能体运行时的详细信息，包括配置、状态、资源使用情况等。
+// Retrieves detailed information about a specified agent runtime by its agent runtime ID, including configuration, status, resource usage, and more.
 //
 // @param request - GetAgentRuntimeRequest
 //
@@ -2490,7 +2573,7 @@ func (client *Client) GetAgentRuntime(agentRuntimeId *string, request *GetAgentR
 
 // Summary:
 //
-// # Get an agent runtime endpoint
+// # Get Agent Runtime Access Endpoint
 //
 // @param headers - map
 //
@@ -2523,7 +2606,7 @@ func (client *Client) GetAgentRuntimeEndpointWithOptions(agentRuntimeId *string,
 
 // Summary:
 //
-// # Get an agent runtime endpoint
+// # Get Agent Runtime Access Endpoint
 //
 // @return GetAgentRuntimeEndpointResponse
 func (client *Client) GetAgentRuntimeEndpoint(agentRuntimeId *string, agentRuntimeEndpointId *string) (_result *GetAgentRuntimeEndpointResponse, _err error) {
@@ -2540,11 +2623,11 @@ func (client *Client) GetAgentRuntimeEndpoint(agentRuntimeId *string, agentRunti
 
 // Summary:
 //
-// 获取浏览器实例详情
+// # GetBrowserSandbox
 //
 // Description:
 //
-// 根据浏览器ID获取指定浏览器实例的详细信息，包括配置、状态、资源使用情况等。
+// Retrieves detailed information about a specified browser instance by browser ID, including configuration, status, resource usage, and more.
 //
 // @param headers - map
 //
@@ -2577,11 +2660,11 @@ func (client *Client) GetBrowserWithOptions(browserId *string, headers map[strin
 
 // Summary:
 //
-// 获取浏览器实例详情
+// # GetBrowserSandbox
 //
 // Description:
 //
-// 根据浏览器ID获取指定浏览器实例的详细信息，包括配置、状态、资源使用情况等。
+// Retrieves detailed information about a specified browser instance by browser ID, including configuration, status, resource usage, and more.
 //
 // @return GetBrowserResponse
 func (client *Client) GetBrowser(browserId *string) (_result *GetBrowserResponse, _err error) {
@@ -2598,7 +2681,7 @@ func (client *Client) GetBrowser(browserId *string) (_result *GetBrowserResponse
 
 // Summary:
 //
-// 获取代码解释器详情
+// Retrieves an interpreter.
 //
 // Description:
 //
@@ -2635,7 +2718,7 @@ func (client *Client) GetCodeInterpreterWithOptions(codeInterpreterId *string, h
 
 // Summary:
 //
-// 获取代码解释器详情
+// Retrieves an interpreter.
 //
 // Description:
 //
@@ -2656,7 +2739,11 @@ func (client *Client) GetCodeInterpreter(codeInterpreterId *string) (_result *Ge
 
 // Summary:
 //
-// # Get a credential
+// Retrieves information about a specific credential.
+//
+// Description:
+//
+// Retrieves detailed information about a specified credential, including its configuration, metadata, and related resources.
 //
 // @param headers - map
 //
@@ -2689,7 +2776,11 @@ func (client *Client) GetCredentialWithOptions(credentialName *string, headers m
 
 // Summary:
 //
-// # Get a credential
+// Retrieves information about a specific credential.
+//
+// Description:
+//
+// Retrieves detailed information about a specified credential, including its configuration, metadata, and related resources.
 //
 // @return GetCredentialResponse
 func (client *Client) GetCredential(credentialName *string) (_result *GetCredentialResponse, _err error) {
@@ -2706,7 +2797,7 @@ func (client *Client) GetCredential(credentialName *string) (_result *GetCredent
 
 // Summary:
 //
-// 获取自定义域名详情
+// Retrieves the configuration of a custom domain.
 //
 // @param headers - map
 //
@@ -2739,7 +2830,7 @@ func (client *Client) GetCustomDomainWithOptions(domainName *string, headers map
 
 // Summary:
 //
-// 获取自定义域名详情
+// Retrieves the configuration of a custom domain.
 //
 // @return GetCustomDomainResponse
 func (client *Client) GetCustomDomain(domainName *string) (_result *GetCustomDomainResponse, _err error) {
@@ -2756,7 +2847,7 @@ func (client *Client) GetCustomDomain(domainName *string) (_result *GetCustomDom
 
 // Summary:
 //
-// 获取工作流详情
+// # Get flow details
 //
 // Description:
 //
@@ -2801,7 +2892,7 @@ func (client *Client) GetFlowWithOptions(flowName *string, request *GetFlowReque
 
 // Summary:
 //
-// 获取工作流详情
+// # Get flow details
 //
 // Description:
 //
@@ -2824,7 +2915,7 @@ func (client *Client) GetFlow(flowName *string, request *GetFlowRequest) (_resul
 
 // Summary:
 //
-// 获取工作流草稿
+// Get the workflow draft.
 //
 // Description:
 //
@@ -2869,7 +2960,7 @@ func (client *Client) GetFlowDraftWithOptions(flowName *string, request *GetFlow
 
 // Summary:
 //
-// 获取工作流草稿
+// Get the workflow draft.
 //
 // Description:
 //
@@ -2892,7 +2983,7 @@ func (client *Client) GetFlowDraft(flowName *string, request *GetFlowDraftReques
 
 // Summary:
 //
-// 获取工作流端点详情
+// Retrieves the details of a workflow endpoint.
 //
 // Description:
 //
@@ -2937,7 +3028,7 @@ func (client *Client) GetFlowEndpointWithOptions(flowName *string, flowEndpointN
 
 // Summary:
 //
-// 获取工作流端点详情
+// Retrieves the details of a workflow endpoint.
 //
 // Description:
 //
@@ -2960,11 +3051,11 @@ func (client *Client) GetFlowEndpoint(flowName *string, flowEndpointName *string
 
 // Summary:
 //
-// 获取工作流版本详情
+// Retrieves the details of a workflow version.
 //
 // Description:
 //
-// 根据工作流名称和版本号获取指定版本的详细信息，包括该版本的完整配置快照（定义、环境变量、追踪配置、日志配置等）。
+// Retrieves the details of a specific workflow version, including a complete configuration snapshot of its definition, environment variables, tracing configuration, and logging configuration.
 //
 // @param request - GetFlowVersionRequest
 //
@@ -3005,11 +3096,11 @@ func (client *Client) GetFlowVersionWithOptions(flowName *string, flowVersion *s
 
 // Summary:
 //
-// 获取工作流版本详情
+// Retrieves the details of a workflow version.
 //
 // Description:
 //
-// 根据工作流名称和版本号获取指定版本的详细信息，包括该版本的完整配置快照（定义、环境变量、追踪配置、日志配置等）。
+// Retrieves the details of a specific workflow version, including a complete configuration snapshot of its definition, environment variables, tracing configuration, and logging configuration.
 //
 // @param request - GetFlowVersionRequest
 //
@@ -3028,7 +3119,7 @@ func (client *Client) GetFlowVersion(flowName *string, flowVersion *string, requ
 
 // Summary:
 //
-// 获取 IM Bot
+// Gets the details of a specific IM Bot.
 //
 // Description:
 //
@@ -3073,7 +3164,7 @@ func (client *Client) GetIMBotWithOptions(imBotId *string, request *GetIMBotRequ
 
 // Summary:
 //
-// 获取 IM Bot
+// Gets the details of a specific IM Bot.
 //
 // Description:
 //
@@ -3096,7 +3187,7 @@ func (client *Client) GetIMBot(imBotId *string, request *GetIMBotRequest) (_resu
 
 // Summary:
 //
-// 获取知识库
+// Gets information about a knowledge base.
 //
 // @param headers - map
 //
@@ -3129,7 +3220,7 @@ func (client *Client) GetKnowledgeBaseWithOptions(knowledgeBaseName *string, hea
 
 // Summary:
 //
-// 获取知识库
+// Gets information about a knowledge base.
 //
 // @return GetKnowledgeBaseResponse
 func (client *Client) GetKnowledgeBase(knowledgeBaseName *string) (_result *GetKnowledgeBaseResponse, _err error) {
@@ -3146,7 +3237,7 @@ func (client *Client) GetKnowledgeBase(knowledgeBaseName *string) (_result *GetK
 
 // Summary:
 //
-// 查询记忆存储详情
+// Retrieves details for a specific memory collection.
 //
 // @param headers - map
 //
@@ -3179,7 +3270,7 @@ func (client *Client) GetMemoryCollectionWithOptions(memoryCollectionName *strin
 
 // Summary:
 //
-// 查询记忆存储详情
+// Retrieves details for a specific memory collection.
 //
 // @return GetMemoryCollectionResponse
 func (client *Client) GetMemoryCollection(memoryCollectionName *string) (_result *GetMemoryCollectionResponse, _err error) {
@@ -3196,7 +3287,11 @@ func (client *Client) GetMemoryCollection(memoryCollectionName *string) (_result
 
 // Summary:
 //
-// 查看model
+// Retrieves model governance information.
+//
+// Description:
+//
+// This operation retrieves the configuration details of a specific model proxy.
 //
 // @param headers - map
 //
@@ -3229,7 +3324,11 @@ func (client *Client) GetModelProxyWithOptions(modelProxyName *string, headers m
 
 // Summary:
 //
-// 查看model
+// Retrieves model governance information.
+//
+// Description:
+//
+// This operation retrieves the configuration details of a specific model proxy.
 //
 // @return GetModelProxyResponse
 func (client *Client) GetModelProxy(modelProxyName *string) (_result *GetModelProxyResponse, _err error) {
@@ -3246,7 +3345,11 @@ func (client *Client) GetModelProxy(modelProxyName *string) (_result *GetModelPr
 
 // Summary:
 //
-// 查看model
+// Retrieves the details of a specified model service.
+//
+// Description:
+//
+// Retrieves the details of a specified model service.
 //
 // @param headers - map
 //
@@ -3279,7 +3382,11 @@ func (client *Client) GetModelServiceWithOptions(modelServiceName *string, heade
 
 // Summary:
 //
-// 查看model
+// Retrieves the details of a specified model service.
+//
+// Description:
+//
+// Retrieves the details of a specified model service.
 //
 // @return GetModelServiceResponse
 func (client *Client) GetModelService(modelServiceName *string) (_result *GetModelServiceResponse, _err error) {
@@ -3296,11 +3403,11 @@ func (client *Client) GetModelService(modelServiceName *string) (_result *GetMod
 
 // Summary:
 //
-// 获取沙箱
+// Retrieves the details of a specific sandbox.
 //
 // Description:
 //
-// 根据沙箱ID获取指定沙箱的详细信息，包括状态、配置等。
+// Retrieves the details of a specific sandbox by its `sandboxId`, including its status and configuration.
 //
 // @param headers - map
 //
@@ -3333,11 +3440,11 @@ func (client *Client) GetSandboxWithOptions(sandboxId *string, headers map[strin
 
 // Summary:
 //
-// 获取沙箱
+// Retrieves the details of a specific sandbox.
 //
 // Description:
 //
-// 根据沙箱ID获取指定沙箱的详细信息，包括状态、配置等。
+// Retrieves the details of a specific sandbox by its `sandboxId`, including its status and configuration.
 //
 // @return GetSandboxResponse
 func (client *Client) GetSandbox(sandboxId *string) (_result *GetSandboxResponse, _err error) {
@@ -3354,11 +3461,11 @@ func (client *Client) GetSandbox(sandboxId *string) (_result *GetSandboxResponse
 
 // Summary:
 //
-// 获取模板
+// Retrieves a template.
 //
 // Description:
 //
-// 根据模板名称获取指定模板的详细信息，包括配置、状态等。
+// Retrieves the details of a template by its name. The response includes the template\\"s configuration and status.
 //
 // @param headers - map
 //
@@ -3391,11 +3498,11 @@ func (client *Client) GetTemplateWithOptions(templateName *string, headers map[s
 
 // Summary:
 //
-// 获取模板
+// Retrieves a template.
 //
 // Description:
 //
-// 根据模板名称获取指定模板的详细信息，包括配置、状态等。
+// Retrieves the details of a template by its name. The response includes the template\\"s configuration and status.
 //
 // @return GetTemplateResponse
 func (client *Client) GetTemplate(templateName *string) (_result *GetTemplateResponse, _err error) {
@@ -3412,11 +3519,11 @@ func (client *Client) GetTemplate(templateName *string) (_result *GetTemplateRes
 
 // Summary:
 //
-// 获取工具详情
+// # Get a tool
 //
 // Description:
 //
-// 根据工具名称获取工具的完整配置信息，包括工具的基本信息、资源配置、网络配置、运行状态等所有详细信息。
+// Obtain the complete configuration information of a tool by its name, including basic information, resource configuration, network configuration, running status, and all other detailed information.
 //
 // @param headers - map
 //
@@ -3449,11 +3556,11 @@ func (client *Client) GetToolWithOptions(toolName *string, headers map[string]*s
 
 // Summary:
 //
-// 获取工具详情
+// # Get a tool
 //
 // Description:
 //
-// 根据工具名称获取工具的完整配置信息，包括工具的基本信息、资源配置、网络配置、运行状态等所有详细信息。
+// Obtain the complete configuration information of a tool by its name, including basic information, resource configuration, network configuration, running status, and all other detailed information.
 //
 // @return GetToolResponse
 func (client *Client) GetTool(toolName *string) (_result *GetToolResponse, _err error) {
@@ -3470,11 +3577,11 @@ func (client *Client) GetTool(toolName *string) (_result *GetToolResponse, _err 
 
 // Summary:
 //
-// 查看工作空间
+// Retrieves the details of a specific workspace.
 //
 // Description:
 //
-// 查看工作空间
+// Retrieves the details of a specific workspace.
 //
 // @param headers - map
 //
@@ -3507,11 +3614,11 @@ func (client *Client) GetWorkspaceWithOptions(workspaceId *string, headers map[s
 
 // Summary:
 //
-// 查看工作空间
+// Retrieves the details of a specific workspace.
 //
 // Description:
 //
-// 查看工作空间
+// Retrieves the details of a specific workspace.
 //
 // @return GetWorkspaceResponse
 func (client *Client) GetWorkspace(workspaceId *string) (_result *GetWorkspaceResponse, _err error) {
@@ -3528,7 +3635,7 @@ func (client *Client) GetWorkspace(workspaceId *string) (_result *GetWorkspaceRe
 
 // Summary:
 //
-// 获取工作空间下的发现端点
+// Gets the discovery endpoints for a workspace.
 //
 // @param headers - map
 //
@@ -3561,7 +3668,7 @@ func (client *Client) GetWorkspaceDiscoveryEndpointsWithOptions(workspaceId *str
 
 // Summary:
 //
-// 获取工作空间下的发现端点
+// Gets the discovery endpoints for a workspace.
 //
 // @return GetWorkspaceDiscoveryEndpointsResponse
 func (client *Client) GetWorkspaceDiscoveryEndpoints(workspaceId *string) (_result *GetWorkspaceDiscoveryEndpointsResponse, _err error) {
@@ -3578,7 +3685,7 @@ func (client *Client) GetWorkspaceDiscoveryEndpoints(workspaceId *string) (_resu
 
 // Summary:
 //
-// # Retrieve the list of access endpoints for an agent runtime
+// # List Agent Runtime Endpoints
 //
 // Description:
 //
@@ -3641,7 +3748,7 @@ func (client *Client) ListAgentRuntimeEndpointsWithOptions(agentRuntimeId *strin
 
 // Summary:
 //
-// # Retrieve the list of access endpoints for an agent runtime
+// # List Agent Runtime Endpoints
 //
 // Description:
 //
@@ -3664,7 +3771,7 @@ func (client *Client) ListAgentRuntimeEndpoints(agentRuntimeId *string, request 
 
 // Summary:
 //
-// # List agent runtime versions
+// Retrieves agent runtime versions.
 //
 // @param request - ListAgentRuntimeVersionsRequest
 //
@@ -3715,7 +3822,7 @@ func (client *Client) ListAgentRuntimeVersionsWithOptions(agentRuntimeId *string
 
 // Summary:
 //
-// # List agent runtime versions
+// Retrieves agent runtime versions.
 //
 // @param request - ListAgentRuntimeVersionsRequest
 //
@@ -3734,11 +3841,11 @@ func (client *Client) ListAgentRuntimeVersions(agentRuntimeId *string, request *
 
 // Summary:
 //
-// 列出智能体运行时
+// Retrieves a list of agent runtimes.
 //
 // Description:
 //
-// 获取当前用户的所有智能体运行时列表，支持按名称、标签等条件过滤，支持分页查询。
+// Retrieves a list of agent runtimes for the current user. You can filter the results based on criteria such as name and tags. This operation supports pagination.
 //
 // @param request - ListAgentRuntimesRequest
 //
@@ -3821,11 +3928,11 @@ func (client *Client) ListAgentRuntimesWithOptions(request *ListAgentRuntimesReq
 
 // Summary:
 //
-// 列出智能体运行时
+// Retrieves a list of agent runtimes.
 //
 // Description:
 //
-// 获取当前用户的所有智能体运行时列表，支持按名称、标签等条件过滤，支持分页查询。
+// Retrieves a list of agent runtimes for the current user. You can filter the results based on criteria such as name and tags. This operation supports pagination.
 //
 // @param request - ListAgentRuntimesRequest
 //
@@ -3844,11 +3951,11 @@ func (client *Client) ListAgentRuntimes(request *ListAgentRuntimesRequest) (_res
 
 // Summary:
 //
-// 列出浏览器实例
+// # List Browser Sandboxes
 //
 // Description:
 //
-// 获取当前用户的所有浏览器实例列表，支持按名称、状态等条件过滤，支持分页查询。
+// Retrieves a list of all browser instances for the current user. Supports filtering by conditions such as name and status, and supports paginated queries.
 //
 // @param request - ListBrowsersRequest
 //
@@ -3907,11 +4014,11 @@ func (client *Client) ListBrowsersWithOptions(request *ListBrowsersRequest, head
 
 // Summary:
 //
-// 列出浏览器实例
+// # List Browser Sandboxes
 //
 // Description:
 //
-// 获取当前用户的所有浏览器实例列表，支持按名称、状态等条件过滤，支持分页查询。
+// Retrieves a list of all browser instances for the current user. Supports filtering by conditions such as name and status, and supports paginated queries.
 //
 // @param request - ListBrowsersRequest
 //
@@ -3930,11 +4037,11 @@ func (client *Client) ListBrowsers(request *ListBrowsersRequest) (_result *ListB
 
 // Summary:
 //
-// 列出代码解释器
+// # List Code Interpreters
 //
 // Description:
 //
-// 获取当前用户的所有代码解释器实例列表，支持按名称等条件过滤，支持分页查询。
+// Retrieve a list of all code interpreter instances for the current user, with support for filtering by name and pagination.
 //
 // @param request - ListCodeInterpretersRequest
 //
@@ -3989,11 +4096,11 @@ func (client *Client) ListCodeInterpretersWithOptions(request *ListCodeInterpret
 
 // Summary:
 //
-// 列出代码解释器
+// # List Code Interpreters
 //
 // Description:
 //
-// 获取当前用户的所有代码解释器实例列表，支持按名称等条件过滤，支持分页查询。
+// Retrieve a list of all code interpreter instances for the current user, with support for filtering by name and pagination.
 //
 // @param request - ListCodeInterpretersRequest
 //
@@ -4012,7 +4119,11 @@ func (client *Client) ListCodeInterpreters(request *ListCodeInterpretersRequest)
 
 // Summary:
 //
-// # List credentials
+// Lists all credentials.
+//
+// Description:
+//
+// Lists the credentials in your account. This operation supports filtering and pagination.
 //
 // @param request - ListCredentialsRequest
 //
@@ -4091,7 +4202,11 @@ func (client *Client) ListCredentialsWithOptions(request *ListCredentialsRequest
 
 // Summary:
 //
-// # List credentials
+// Lists all credentials.
+//
+// Description:
+//
+// Lists the credentials in your account. This operation supports filtering and pagination.
 //
 // @param request - ListCredentialsRequest
 //
@@ -4110,7 +4225,7 @@ func (client *Client) ListCredentials(request *ListCredentialsRequest) (_result 
 
 // Summary:
 //
-// 自定义域名列表
+// Lists custom domains.
 //
 // @param request - ListCustomDomainsRequest
 //
@@ -4177,7 +4292,7 @@ func (client *Client) ListCustomDomainsWithOptions(request *ListCustomDomainsReq
 
 // Summary:
 //
-// 自定义域名列表
+// Lists custom domains.
 //
 // @param request - ListCustomDomainsRequest
 //
@@ -4196,11 +4311,11 @@ func (client *Client) ListCustomDomains(request *ListCustomDomainsRequest) (_res
 
 // Summary:
 //
-// 列出工作流端点
+// List workflow endpoints.
 //
 // Description:
 //
-// 获取指定工作流的所有端点列表，支持分页查询。
+// Retrieve all endpoints for a specified workflow, with pagination support.
 //
 // @param request - ListFlowEndpointsRequest
 //
@@ -4251,11 +4366,11 @@ func (client *Client) ListFlowEndpointsWithOptions(flowId *string, request *List
 
 // Summary:
 //
-// 列出工作流端点
+// List workflow endpoints.
 //
 // Description:
 //
-// 获取指定工作流的所有端点列表，支持分页查询。
+// Retrieve all endpoints for a specified workflow, with pagination support.
 //
 // @param request - ListFlowEndpointsRequest
 //
@@ -4274,11 +4389,11 @@ func (client *Client) ListFlowEndpoints(flowId *string, request *ListFlowEndpoin
 
 // Summary:
 //
-// 列出工作流版本
+// Lists the versions of a flow.
 //
 // Description:
 //
-// 获取指定工作流的所有版本列表，支持分页查询。
+// Returns a paginated list of all versions for a specified flow.
 //
 // @param request - ListFlowVersionsRequest
 //
@@ -4329,11 +4444,11 @@ func (client *Client) ListFlowVersionsWithOptions(flowName *string, request *Lis
 
 // Summary:
 //
-// 列出工作流版本
+// Lists the versions of a flow.
 //
 // Description:
 //
-// 获取指定工作流的所有版本列表，支持分页查询。
+// Returns a paginated list of all versions for a specified flow.
 //
 // @param request - ListFlowVersionsRequest
 //
@@ -4352,7 +4467,7 @@ func (client *Client) ListFlowVersions(flowName *string, request *ListFlowVersio
 
 // Summary:
 //
-// 列出工作流
+// # List flows
 //
 // Description:
 //
@@ -4419,7 +4534,7 @@ func (client *Client) ListFlowsWithOptions(request *ListFlowsRequest, headers ma
 
 // Summary:
 //
-// 列出工作流
+// # List flows
 //
 // Description:
 //
@@ -4442,11 +4557,11 @@ func (client *Client) ListFlows(request *ListFlowsRequest) (_result *ListFlowsRe
 
 // Summary:
 //
-// 分页列举 IM Bots
+// Retrieves a paginated list of IM bots.
 //
 // Description:
 //
-// GET /2025-09-10/agents/im-bots；200 OK；data 含 items、pageNumber、pageSize、total；pageNumber 默认 1、pageSize 默认 20、上限 100；可按 botName（子串忽略大小写）、agentRuntimeId、botBizType、status 筛选
+// Send a GET request to the `/2025-09-10/agents/im-bots` endpoint to retrieve a paginated list of IM bots. Use the `botName`, `agentRuntimeId`, `botBizType`, and `status` query parameters to filter the results. For pagination, the `pageNumber` defaults to 1 and the `pageSize` defaults to 20, with a maximum of 100.
 //
 // @param request - ListIMBotsRequest
 //
@@ -4513,11 +4628,11 @@ func (client *Client) ListIMBotsWithOptions(request *ListIMBotsRequest, headers 
 
 // Summary:
 //
-// 分页列举 IM Bots
+// Retrieves a paginated list of IM bots.
 //
 // Description:
 //
-// GET /2025-09-10/agents/im-bots；200 OK；data 含 items、pageNumber、pageSize、total；pageNumber 默认 1、pageSize 默认 20、上限 100；可按 botName（子串忽略大小写）、agentRuntimeId、botBizType、status 筛选
+// Send a GET request to the `/2025-09-10/agents/im-bots` endpoint to retrieve a paginated list of IM bots. Use the `botName`, `agentRuntimeId`, `botBizType`, and `status` query parameters to filter the results. For pagination, the `pageNumber` defaults to 1 and the `pageSize` defaults to 20, with a maximum of 100.
 //
 // @param request - ListIMBotsRequest
 //
@@ -4536,7 +4651,7 @@ func (client *Client) ListIMBots(request *ListIMBotsRequest) (_result *ListIMBot
 
 // Summary:
 //
-// 列出知识库
+// Lists the knowledge bases in your account.
 //
 // @param request - ListKnowledgeBasesRequest
 //
@@ -4599,7 +4714,7 @@ func (client *Client) ListKnowledgeBasesWithOptions(request *ListKnowledgeBasesR
 
 // Summary:
 //
-// 列出知识库
+// Lists the knowledge bases in your account.
 //
 // @param request - ListKnowledgeBasesRequest
 //
@@ -4618,7 +4733,7 @@ func (client *Client) ListKnowledgeBases(request *ListKnowledgeBasesRequest) (_r
 
 // Summary:
 //
-// 查询记忆存储列表
+// Returns a paginated list of memory collections.
 //
 // @param request - ListMemoryCollectionsRequest
 //
@@ -4689,7 +4804,7 @@ func (client *Client) ListMemoryCollectionsWithOptions(request *ListMemoryCollec
 
 // Summary:
 //
-// 查询记忆存储列表
+// Returns a paginated list of memory collections.
 //
 // @param request - ListMemoryCollectionsRequest
 //
@@ -4708,7 +4823,11 @@ func (client *Client) ListMemoryCollections(request *ListMemoryCollectionsReques
 
 // Summary:
 //
-// 查询支持的模型提供商及其模型
+// Lists all model providers.
+//
+// Description:
+//
+// Lists the available model providers. This operation supports filtering and pagination.
 //
 // @param request - ListModelProvidersRequest
 //
@@ -4771,7 +4890,11 @@ func (client *Client) ListModelProvidersWithOptions(request *ListModelProvidersR
 
 // Summary:
 //
-// 查询支持的模型提供商及其模型
+// Lists all model providers.
+//
+// Description:
+//
+// Lists the available model providers. This operation supports filtering and pagination.
 //
 // @param request - ListModelProvidersRequest
 //
@@ -4790,7 +4913,11 @@ func (client *Client) ListModelProviders(request *ListModelProvidersRequest) (_r
 
 // Summary:
 //
-// model列表
+// Lists all Model Proxies.
+//
+// Description:
+//
+// Retrieves a paginated list of all Model Proxies for the current user. You can filter the list by status.
 //
 // @param request - ListModelProxiesRequest
 //
@@ -4857,7 +4984,11 @@ func (client *Client) ListModelProxiesWithOptions(request *ListModelProxiesReque
 
 // Summary:
 //
-// model列表
+// Lists all Model Proxies.
+//
+// Description:
+//
+// Retrieves a paginated list of all Model Proxies for the current user. You can filter the list by status.
 //
 // @param request - ListModelProxiesRequest
 //
@@ -4876,7 +5007,11 @@ func (client *Client) ListModelProxies(request *ListModelProxiesRequest) (_resul
 
 // Summary:
 //
-// model列表
+// Lists all models.
+//
+// Description:
+//
+// Retrieves a list of all models for the current user. You can filter the models by type and paginate the results.
 //
 // @param request - ListModelServicesRequest
 //
@@ -4947,7 +5082,11 @@ func (client *Client) ListModelServicesWithOptions(request *ListModelServicesReq
 
 // Summary:
 //
-// model列表
+// Lists all models.
+//
+// Description:
+//
+// Retrieves a list of all models for the current user. You can filter the models by type and paginate the results.
 //
 // @param request - ListModelServicesRequest
 //
@@ -4966,11 +5105,11 @@ func (client *Client) ListModelServices(request *ListModelServicesRequest) (_res
 
 // Summary:
 //
-// 列出沙箱
+// Returns a list of sandboxes.
 //
 // Description:
 //
-// 获取当前用户的所有沙箱列表，支持按模板名称过滤，支持分页查询。
+// Retrieves a list of sandboxes for the current user. You can filter the results by template name, template type, or status. This operation supports pagination.
 //
 // @param request - ListSandboxesRequest
 //
@@ -5037,11 +5176,11 @@ func (client *Client) ListSandboxesWithOptions(request *ListSandboxesRequest, he
 
 // Summary:
 //
-// 列出沙箱
+// Returns a list of sandboxes.
 //
 // Description:
 //
-// 获取当前用户的所有沙箱列表，支持按模板名称过滤，支持分页查询。
+// Retrieves a list of sandboxes for the current user. You can filter the results by template name, template type, or status. This operation supports pagination.
 //
 // @param request - ListSandboxesRequest
 //
@@ -5060,11 +5199,11 @@ func (client *Client) ListSandboxes(request *ListSandboxesRequest) (_result *Lis
 
 // Summary:
 //
-// 列出模板
+// Lists templates.
 //
 // Description:
 //
-// 获取当前用户的所有模板列表，支持按模板类型过滤，支持分页查询。
+// Lists all templates for the current user. You can filter the results by template type and use pagination.
 //
 // @param request - ListTemplatesRequest
 //
@@ -5135,11 +5274,11 @@ func (client *Client) ListTemplatesWithOptions(request *ListTemplatesRequest, he
 
 // Summary:
 //
-// 列出模板
+// Lists templates.
 //
 // Description:
 //
-// 获取当前用户的所有模板列表，支持按模板类型过滤，支持分页查询。
+// Lists all templates for the current user. You can filter the results by template type and use pagination.
 //
 // @param request - ListTemplatesRequest
 //
@@ -5158,11 +5297,11 @@ func (client *Client) ListTemplates(request *ListTemplatesRequest) (_result *Lis
 
 // Summary:
 //
-// 工具列表
+// # List tools
 //
 // Description:
 //
-// 查询工具列表，支持分页查询和按工具类型、工作空间等条件过滤。返回符合条件的工具列表及分页信息。
+// Query the tool list. Support paged query and conditional filtering by tool type, workspace, and other criteria. Return the list of tools that meet the conditions and paging information.
 //
 // @param request - ListToolsRequest
 //
@@ -5229,11 +5368,11 @@ func (client *Client) ListToolsWithOptions(request *ListToolsRequest, headers ma
 
 // Summary:
 //
-// 工具列表
+// # List tools
 //
 // Description:
 //
-// 查询工具列表，支持分页查询和按工具类型、工作空间等条件过滤。返回符合条件的工具列表及分页信息。
+// Query the tool list. Support paged query and conditional filtering by tool type, workspace, and other criteria. Return the list of tools that meet the conditions and paging information.
 //
 // @param request - ListToolsRequest
 //
@@ -5252,11 +5391,11 @@ func (client *Client) ListTools(request *ListToolsRequest) (_result *ListToolsRe
 
 // Summary:
 //
-// 获取工作空间列表
+// Lists all workspaces in your account.
 //
 // Description:
 //
-// 获取工作空间列表
+// Lists all workspaces.
 //
 // @param request - ListWorkspacesRequest
 //
@@ -5315,11 +5454,11 @@ func (client *Client) ListWorkspacesWithOptions(request *ListWorkspacesRequest, 
 
 // Summary:
 //
-// 获取工作空间列表
+// Lists all workspaces in your account.
 //
 // Description:
 //
-// 获取工作空间列表
+// Lists all workspaces.
 //
 // @param request - ListWorkspacesRequest
 //
@@ -5338,11 +5477,13 @@ func (client *Client) ListWorkspaces(request *ListWorkspacesRequest) (_result *L
 
 // Summary:
 //
-// 暂停沙箱
+// Pause the sandbox and retain snapshots of its memory and file system. The sandbox enters the PAUSED state so that it can be recovered later.
 //
 // Description:
 //
-// 停止指定的沙箱实例。停止后，沙箱将进入TERMINATED状态。
+// This API is used to pause a sandbox. When invoked, the system takes a snapshot of the sandbox, capturing and persisting the memory and disk states. The user can recover the sandbox at a later time.
+//
+// Note that sandbox snapshots are retained for only 30 days. After 30 days, recovery becomes unavailable.
 //
 // @param headers - map
 //
@@ -5375,11 +5516,13 @@ func (client *Client) PauseSandboxWithOptions(sandboxId *string, headers map[str
 
 // Summary:
 //
-// 暂停沙箱
+// Pause the sandbox and retain snapshots of its memory and file system. The sandbox enters the PAUSED state so that it can be recovered later.
 //
 // Description:
 //
-// 停止指定的沙箱实例。停止后，沙箱将进入TERMINATED状态。
+// This API is used to pause a sandbox. When invoked, the system takes a snapshot of the sandbox, capturing and persisting the memory and disk states. The user can recover the sandbox at a later time.
+//
+// Note that sandbox snapshots are retained for only 30 days. After 30 days, recovery becomes unavailable.
 //
 // @return PauseSandboxResponse
 func (client *Client) PauseSandbox(sandboxId *string) (_result *PauseSandboxResponse, _err error) {
@@ -5396,11 +5539,11 @@ func (client *Client) PauseSandbox(sandboxId *string) (_result *PauseSandboxResp
 
 // Summary:
 //
-// 发布工作流版本
+// Publishes a workflow version.
 //
 // Description:
 //
-// 为指定工作流发布新版本，用于版本管理和回滚。
+// Publishes a new version of a specified workflow. This operation supports version management and rollbacks.
 //
 // @param request - PublishFlowVersionRequest
 //
@@ -5442,11 +5585,11 @@ func (client *Client) PublishFlowVersionWithOptions(flowName *string, request *P
 
 // Summary:
 //
-// 发布工作流版本
+// Publishes a workflow version.
 //
 // Description:
 //
-// 为指定工作流发布新版本，用于版本管理和回滚。
+// Publishes a new version of a specified workflow. This operation supports version management and rollbacks.
 //
 // @param request - PublishFlowVersionRequest
 //
@@ -5465,11 +5608,11 @@ func (client *Client) PublishFlowVersion(flowName *string, request *PublishFlowV
 
 // Summary:
 //
-// 发布运行时版本
+// Publishes a new version of an agent runtime.
 //
 // Description:
 //
-// 为指定的智能体运行时发布新版本，用于版本管理和部署。新版本可以包含代码更新、配置变更等内容。
+// Publishes a new version for a specified agent runtime for version management and deployment. The new version can include code updates, configuration changes, and other content.
 //
 // @param request - PublishRuntimeVersionRequest
 //
@@ -5511,11 +5654,11 @@ func (client *Client) PublishRuntimeVersionWithOptions(agentRuntimeId *string, r
 
 // Summary:
 //
-// 发布运行时版本
+// Publishes a new version of an agent runtime.
 //
 // Description:
 //
-// 为指定的智能体运行时发布新版本，用于版本管理和部署。新版本可以包含代码更新、配置变更等内容。
+// Publishes a new version for a specified agent runtime for version management and deployment. The new version can include code updates, configuration changes, and other content.
 //
 // @param request - PublishRuntimeVersionRequest
 //
@@ -5534,7 +5677,11 @@ func (client *Client) PublishRuntimeVersion(agentRuntimeId *string, request *Pub
 
 // Summary:
 //
-// 恢复沙箱
+// Resume a paused sandbox instance to restore it from the PAUSED state to the READY (running) state.
+//
+// Description:
+//
+// This API resumes a sandbox instance from the paused state to the ready state, allowing the user to invoke it and restore it to the state it was in before being paused.
 //
 // @param headers - map
 //
@@ -5567,7 +5714,11 @@ func (client *Client) ResumeSandboxWithOptions(sandboxId *string, headers map[st
 
 // Summary:
 //
-// 恢复沙箱
+// Resume a paused sandbox instance to restore it from the PAUSED state to the READY (running) state.
+//
+// Description:
+//
+// This API resumes a sandbox instance from the paused state to the ready state, allowing the user to invoke it and restore it to the state it was in before being paused.
 //
 // @return ResumeSandboxResponse
 func (client *Client) ResumeSandbox(sandboxId *string) (_result *ResumeSandboxResponse, _err error) {
@@ -5584,11 +5735,11 @@ func (client *Client) ResumeSandbox(sandboxId *string) (_result *ResumeSandboxRe
 
 // Summary:
 //
-// 停止沙箱
+// Stops a sandbox.
 //
 // Description:
 //
-// 停止指定的沙箱实例。停止后，沙箱将进入TERMINATED状态。
+// Stops the specified sandbox instance. After the operation, the sandbox enters the TERMINATED state.
 //
 // @param headers - map
 //
@@ -5621,11 +5772,11 @@ func (client *Client) StopSandboxWithOptions(sandboxId *string, headers map[stri
 
 // Summary:
 //
-// 停止沙箱
+// Stops a sandbox.
 //
 // Description:
 //
-// 停止指定的沙箱实例。停止后，沙箱将进入TERMINATED状态。
+// Stops the specified sandbox instance. After the operation, the sandbox enters the TERMINATED state.
 //
 // @return StopSandboxResponse
 func (client *Client) StopSandbox(sandboxId *string) (_result *StopSandboxResponse, _err error) {
@@ -5642,7 +5793,11 @@ func (client *Client) StopSandbox(sandboxId *string) (_result *StopSandboxRespon
 
 // Summary:
 //
-// Stop the TemplateMCP service.
+// Stops the TemplateMCP service.
+//
+// Description:
+//
+// Stopping the MCP service deletes the associated MCP resources and makes the endpoint inaccessible.
 //
 // @param headers - map
 //
@@ -5675,7 +5830,11 @@ func (client *Client) StopTemplateMCPWithOptions(templateName *string, headers m
 
 // Summary:
 //
-// Stop the TemplateMCP service.
+// Stops the TemplateMCP service.
+//
+// Description:
+//
+// Stopping the MCP service deletes the associated MCP resources and makes the endpoint inaccessible.
 //
 // @return StopTemplateMCPResponse
 func (client *Client) StopTemplateMCP(templateName *string) (_result *StopTemplateMCPResponse, _err error) {
@@ -5692,11 +5851,11 @@ func (client *Client) StopTemplateMCP(templateName *string) (_result *StopTempla
 
 // Summary:
 //
-// 更新智能体运行时
+// # UpdateAgentRuntime
 //
 // Description:
 //
-// 更新指定智能体运行时的配置信息，包括资源分配、网络配置、环境变量等。更新操作会触发运行时重启。
+// Updates the configuration of a specified agent runtime, including resource allocation, network configuration, and environment variables. The update operation triggers a runtime restart.
 //
 // @param request - UpdateAgentRuntimeRequest
 //
@@ -5738,11 +5897,11 @@ func (client *Client) UpdateAgentRuntimeWithOptions(agentRuntimeId *string, requ
 
 // Summary:
 //
-// 更新智能体运行时
+// # UpdateAgentRuntime
 //
 // Description:
 //
-// 更新指定智能体运行时的配置信息，包括资源分配、网络配置、环境变量等。更新操作会触发运行时重启。
+// Updates the configuration of a specified agent runtime, including resource allocation, network configuration, and environment variables. The update operation triggers a runtime restart.
 //
 // @param request - UpdateAgentRuntimeRequest
 //
@@ -5761,7 +5920,7 @@ func (client *Client) UpdateAgentRuntime(agentRuntimeId *string, request *Update
 
 // Summary:
 //
-// # Update an agent runtime endpoint
+// # Update Agent Runtime Endpoint
 //
 // @param request - UpdateAgentRuntimeEndpointRequest
 //
@@ -5803,7 +5962,7 @@ func (client *Client) UpdateAgentRuntimeEndpointWithOptions(agentRuntimeId *stri
 
 // Summary:
 //
-// # Update an agent runtime endpoint
+// # Update Agent Runtime Endpoint
 //
 // @param request - UpdateAgentRuntimeEndpointRequest
 //
@@ -5822,7 +5981,11 @@ func (client *Client) UpdateAgentRuntimeEndpoint(agentRuntimeId *string, agentRu
 
 // Summary:
 //
-// # Update a credential
+// Updates a credential.
+//
+// Description:
+//
+// Updates the configuration of a specified credential.
 //
 // @param request - UpdateCredentialRequest
 //
@@ -5864,7 +6027,11 @@ func (client *Client) UpdateCredentialWithOptions(credentialName *string, reques
 
 // Summary:
 //
-// # Update a credential
+// Updates a credential.
+//
+// Description:
+//
+// Updates the configuration of a specified credential.
 //
 // @param request - UpdateCredentialRequest
 //
@@ -5883,7 +6050,7 @@ func (client *Client) UpdateCredential(credentialName *string, request *UpdateCr
 
 // Summary:
 //
-// 更新自定义域名
+// Updates a custom domain.
 //
 // @param request - UpdateCustomDomainRequest
 //
@@ -5925,7 +6092,7 @@ func (client *Client) UpdateCustomDomainWithOptions(domainName *string, request 
 
 // Summary:
 //
-// 更新自定义域名
+// Updates a custom domain.
 //
 // @param request - UpdateCustomDomainRequest
 //
@@ -5944,11 +6111,11 @@ func (client *Client) UpdateCustomDomain(domainName *string, request *UpdateCust
 
 // Summary:
 //
-// 更新工作流
+// Updates a workflow.
 //
 // Description:
 //
-// 更新指定工作流的配置信息，包括定义、执行模式、环境变量等。
+// Updates the configuration of a specified workflow, including the definition, execution mode, and environment variables.
 //
 // @param request - UpdateFlowRequest
 //
@@ -5990,11 +6157,11 @@ func (client *Client) UpdateFlowWithOptions(flowName *string, request *UpdateFlo
 
 // Summary:
 //
-// 更新工作流
+// Updates a workflow.
 //
 // Description:
 //
-// 更新指定工作流的配置信息，包括定义、执行模式、环境变量等。
+// Updates the configuration of a specified workflow, including the definition, execution mode, and environment variables.
 //
 // @param request - UpdateFlowRequest
 //
@@ -6013,7 +6180,7 @@ func (client *Client) UpdateFlow(flowName *string, request *UpdateFlowRequest) (
 
 // Summary:
 //
-// 更新工作流草稿
+// Update a flow draft.
 //
 // Description:
 //
@@ -6059,7 +6226,7 @@ func (client *Client) UpdateFlowDraftWithOptions(flowName *string, request *Upda
 
 // Summary:
 //
-// 更新工作流草稿
+// Update a flow draft.
 //
 // Description:
 //
@@ -6082,7 +6249,7 @@ func (client *Client) UpdateFlowDraft(flowName *string, request *UpdateFlowDraft
 
 // Summary:
 //
-// 更新工作流端点
+// # Update Flow Endpoint
 //
 // Description:
 //
@@ -6128,7 +6295,7 @@ func (client *Client) UpdateFlowEndpointWithOptions(flowName *string, flowEndpoi
 
 // Summary:
 //
-// 更新工作流端点
+// # Update Flow Endpoint
 //
 // Description:
 //
@@ -6151,7 +6318,7 @@ func (client *Client) UpdateFlowEndpoint(flowName *string, flowEndpointName *str
 
 // Summary:
 //
-// 更新 IM Bot
+// Updates an IM bot.
 //
 // Description:
 //
@@ -6197,7 +6364,7 @@ func (client *Client) UpdateIMBotWithOptions(imBotId *string, request *UpdateIMB
 
 // Summary:
 //
-// 更新 IM Bot
+// Updates an IM bot.
 //
 // Description:
 //
@@ -6220,7 +6387,7 @@ func (client *Client) UpdateIMBot(imBotId *string, request *UpdateIMBotRequest) 
 
 // Summary:
 //
-// 更新知识库
+// Updates the configuration of a knowledge base.
 //
 // @param request - UpdateKnowledgeBaseRequest
 //
@@ -6262,7 +6429,7 @@ func (client *Client) UpdateKnowledgeBaseWithOptions(knowledgeBaseName *string, 
 
 // Summary:
 //
-// 更新知识库
+// Updates the configuration of a knowledge base.
 //
 // @param request - UpdateKnowledgeBaseRequest
 //
@@ -6281,7 +6448,7 @@ func (client *Client) UpdateKnowledgeBase(knowledgeBaseName *string, request *Up
 
 // Summary:
 //
-// 修改记忆存储信息
+// Modifies a memory collection.
 //
 // @param request - UpdateMemoryCollectionRequest
 //
@@ -6323,7 +6490,7 @@ func (client *Client) UpdateMemoryCollectionWithOptions(memoryCollectionName *st
 
 // Summary:
 //
-// 修改记忆存储信息
+// Modifies a memory collection.
 //
 // @param request - UpdateMemoryCollectionRequest
 //
@@ -6342,7 +6509,11 @@ func (client *Client) UpdateMemoryCollection(memoryCollectionName *string, reque
 
 // Summary:
 //
-// 更新模型
+// Updates the configuration of a model proxy.
+//
+// Description:
+//
+// Use this operation to update the configuration of a specific model proxy.
 //
 // @param request - UpdateModelProxyRequest
 //
@@ -6384,7 +6555,11 @@ func (client *Client) UpdateModelProxyWithOptions(modelProxyName *string, reques
 
 // Summary:
 //
-// 更新模型
+// Updates the configuration of a model proxy.
+//
+// Description:
+//
+// Use this operation to update the configuration of a specific model proxy.
 //
 // @param request - UpdateModelProxyRequest
 //
@@ -6403,7 +6578,11 @@ func (client *Client) UpdateModelProxy(modelProxyName *string, request *UpdateMo
 
 // Summary:
 //
-// 更新模型
+// Updates a model service.
+//
+// Description:
+//
+// This operation modifies the configuration of an existing model service.
 //
 // @param request - UpdateModelServiceRequest
 //
@@ -6445,7 +6624,11 @@ func (client *Client) UpdateModelServiceWithOptions(modelServiceName *string, re
 
 // Summary:
 //
-// 更新模型
+// Updates a model service.
+//
+// Description:
+//
+// This operation modifies the configuration of an existing model service.
 //
 // @param request - UpdateModelServiceRequest
 //
@@ -6464,11 +6647,11 @@ func (client *Client) UpdateModelService(modelServiceName *string, request *Upda
 
 // Summary:
 //
-// 更新模板
+// Updates a template.
 //
 // Description:
 //
-// 更新指定模板的配置信息，包括资源配置、网络配置、环境变量等。
+// Updates a template\\"s configuration, including its resource configuration, network configuration, and environment variables.
 //
 // @param request - UpdateTemplateRequest
 //
@@ -6516,11 +6699,11 @@ func (client *Client) UpdateTemplateWithOptions(templateName *string, request *U
 
 // Summary:
 //
-// 更新模板
+// Updates a template.
 //
 // Description:
 //
-// 更新指定模板的配置信息，包括资源配置、网络配置、环境变量等。
+// Updates a template\\"s configuration, including its resource configuration, network configuration, and environment variables.
 //
 // @param request - UpdateTemplateRequest
 //
@@ -6539,11 +6722,11 @@ func (client *Client) UpdateTemplate(templateName *string, request *UpdateTempla
 
 // Summary:
 //
-// 更新工具
+// Updates a tool.
 //
 // Description:
 //
-// 更新现有工具的配置信息，可以修改工具的描述、资源配置、网络配置等。更新操作支持部分更新，只需提供需要修改的字段。
+// Updates the configuration of an existing tool. You can modify its description, resource configuration, network configuration, and more. This operation supports partial updates. You only need to specify the fields that you want to modify.
 //
 // @param request - UpdateToolRequest
 //
@@ -6585,11 +6768,11 @@ func (client *Client) UpdateToolWithOptions(toolName *string, request *UpdateToo
 
 // Summary:
 //
-// 更新工具
+// Updates a tool.
 //
 // Description:
 //
-// 更新现有工具的配置信息，可以修改工具的描述、资源配置、网络配置等。更新操作支持部分更新，只需提供需要修改的字段。
+// Updates the configuration of an existing tool. You can modify its description, resource configuration, network configuration, and more. This operation supports partial updates. You only need to specify the fields that you want to modify.
 //
 // @param request - UpdateToolRequest
 //
@@ -6608,11 +6791,11 @@ func (client *Client) UpdateTool(toolName *string, request *UpdateToolRequest) (
 
 // Summary:
 //
-// 更新工作空间
+// Updates a workspace.
 //
 // Description:
 //
-// 更新工作空间
+// Updates the properties of a workspace.
 //
 // @param request - UpdateWorkspaceRequest
 //
@@ -6654,11 +6837,11 @@ func (client *Client) UpdateWorkspaceWithOptions(workspaceId *string, request *U
 
 // Summary:
 //
-// 更新工作空间
+// Updates a workspace.
 //
 // Description:
 //
-// 更新工作空间
+// Updates the properties of a workspace.
 //
 // @param request - UpdateWorkspaceRequest
 //
@@ -6677,7 +6860,7 @@ func (client *Client) UpdateWorkspace(workspaceId *string, request *UpdateWorksp
 
 // Summary:
 //
-// 获取工作空间下的发现端点
+// Updates the discovery endpoint configuration for a specified workspace.
 //
 // @param request - UpdateWorkspaceDiscoveryEndpointsRequest
 //
@@ -6719,7 +6902,7 @@ func (client *Client) UpdateWorkspaceDiscoveryEndpointsWithOptions(workspaceId *
 
 // Summary:
 //
-// 获取工作空间下的发现端点
+// Updates the discovery endpoint configuration for a specified workspace.
 //
 // @param request - UpdateWorkspaceDiscoveryEndpointsRequest
 //

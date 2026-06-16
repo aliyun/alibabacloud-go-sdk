@@ -26,19 +26,23 @@ type iUpdateAgentRuntimeEndpointInput interface {
 }
 
 type UpdateAgentRuntimeEndpointInput struct {
+	// Agent runtime endpoint Name
+	//
 	// example:
 	//
 	// production-endpoint
 	AgentRuntimeEndpointName *string `json:"agentRuntimeEndpointName,omitempty" xml:"agentRuntimeEndpointName,omitempty"`
 	// 为 true 时删除该端点的弹性配置
 	DeleteScalingConfig *bool `json:"deleteScalingConfig,omitempty" xml:"deleteScalingConfig,omitempty"`
+	// Description
+	//
 	// example:
 	//
 	// Updated endpoint configuration
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 是否禁用该端点的公网访问
+	// Whether to disable public network access for this endpoint
 	DisablePublicNetworkAccess *bool `json:"disablePublicNetworkAccess,omitempty" xml:"disablePublicNetworkAccess,omitempty"`
-	// 智能体运行时端点的路由配置，支持多版本权重分配
+	// The Ingress configuration of the agent runtime endpoint, which supports weight assignment across multiple versions
 	//
 	// example:
 	//
@@ -46,7 +50,7 @@ type UpdateAgentRuntimeEndpointInput struct {
 	RoutingConfiguration *RoutingConfiguration `json:"routingConfiguration,omitempty" xml:"routingConfiguration,omitempty"`
 	// 端点的弹性伸缩配置，包括最小实例数和定时扩容策略（复用 ScalingConfig）
 	ScalingConfig *ScalingConfig `json:"scalingConfig,omitempty" xml:"scalingConfig,omitempty"`
-	// 智能体运行时的目标版本
+	// Target Version of the agent runtime
 	//
 	// example:
 	//

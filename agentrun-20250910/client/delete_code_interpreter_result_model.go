@@ -18,19 +18,19 @@ type iDeleteCodeInterpreterResult interface {
 }
 
 type DeleteCodeInterpreterResult struct {
-	// SUCCESS 为成功，失败情况返回对应错误类型，比如 ERR_BAD_REQUEST ERR_VALIDATION_FAILED ERR_INTERNAL_SERVER_ERROR
+	// Returns `SUCCESS` if the operation is successful. On failure, returns an error code, such as `ERR_BAD_REQUEST`, `ERR_VALIDATION_FAILED`, or `ERR_INTERNAL_SERVER_ERROR`.
 	//
 	// example:
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 被删除的代码解释器详细信息
+	// Details of the deleted code interpreter.
 	//
 	// example:
 	//
 	// {}
 	Data *CodeInterpreter `json:"data,omitempty" xml:"data,omitempty"`
-	// 唯一的请求标识符，用于问题追踪
+	// A unique request ID for troubleshooting.
 	//
 	// example:
 	//

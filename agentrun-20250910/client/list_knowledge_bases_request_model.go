@@ -22,14 +22,20 @@ type iListKnowledgeBasesRequest interface {
 }
 
 type ListKnowledgeBasesRequest struct {
+	// The page number to return. The value must be 1 or greater. The default value is 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of results to return per page. The default value is 20.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The knowledge base provider.
+	//
 	// example:
 	//
 	// bailian

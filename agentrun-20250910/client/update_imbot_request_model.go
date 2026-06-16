@@ -14,6 +14,8 @@ type iUpdateIMBotRequest interface {
 }
 
 type UpdateIMBotRequest struct {
+	// Contains the configuration details to update for the IM bot.
+	//
 	// This parameter is required.
 	Body *UpdateIMBotInput `json:"body,omitempty" xml:"body,omitempty"`
 }

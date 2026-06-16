@@ -24,23 +24,34 @@ type iListCustomDomainsRequest interface {
 }
 
 type ListCustomDomainsRequest struct {
+	// The custom domain name.
+	//
 	// example:
 	//
 	// mydomain.com
 	DomainName *string `json:"domainName,omitempty" xml:"domainName,omitempty"`
+	// The domain type used for filtering. Valid values: STANDARD and SANDBOX.
 	DomainType *string `json:"domainType,omitempty" xml:"domainType,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The name of the resource associated with the custom domain.
+	//
 	// example:
 	//
 	// agent-1
 	ResourceName *string `json:"resourceName,omitempty" xml:"resourceName,omitempty"`
+	// The type of the resource associated with the custom domain.
+	//
 	// example:
 	//
 	// runtime

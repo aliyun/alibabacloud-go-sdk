@@ -16,13 +16,13 @@ type iListFlowVersionsRequest interface {
 }
 
 type ListFlowVersionsRequest struct {
-	// 当前页码，从1开始计数
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// 每页返回的记录数量
+	// The page size.
 	//
 	// example:
 	//

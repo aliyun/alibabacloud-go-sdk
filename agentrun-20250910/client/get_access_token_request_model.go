@@ -18,14 +18,20 @@ type iGetAccessTokenRequest interface {
 }
 
 type GetAccessTokenRequest struct {
+	// The resource ID.
+	//
 	// example:
 	//
 	// mod-kw1750tjqs94n9k37o5hjk
 	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
+	// The resource name of the agent runtime.
+	//
 	// example:
 	//
 	// COUPON_OPERATION_CALLBACK
 	ResourceName *string `json:"resourceName,omitempty" xml:"resourceName,omitempty"`
+	// The resource type.
+	//
 	// example:
 	//
 	// SceneTestingTask

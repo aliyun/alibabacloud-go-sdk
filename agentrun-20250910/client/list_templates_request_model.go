@@ -26,36 +26,43 @@ type iListTemplatesRequest interface {
 }
 
 type ListTemplatesRequest struct {
-	// 当前页码，从1开始计数
+	// The number of the page to return.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// 每页返回的记录数量
+	// The number of entries to return on each page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The status of the template. Use this parameter to filter templates.
+	//
 	// example:
 	//
 	// READY
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The name of the template. Use this parameter to filter templates.
+	//
 	// example:
 	//
 	// temp-abc
 	TemplateName *string `json:"templateName,omitempty" xml:"templateName,omitempty"`
-	// 按模板类型过滤
+	// The type of the template. Use this parameter to filter templates.
 	//
 	// example:
 	//
 	// Browser
 	TemplateType *string `json:"templateType,omitempty" xml:"templateType,omitempty"`
+	// The ID of the workspace to which the template belongs.
+	//
 	// example:
 	//
 	// aaa
-	WorkspaceId  *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+	// The IDs of the workspaces. You can use this parameter to query templates from multiple workspaces.
 	WorkspaceIds *string `json:"workspaceIds,omitempty" xml:"workspaceIds,omitempty"`
 }
 

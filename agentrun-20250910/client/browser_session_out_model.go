@@ -26,34 +26,46 @@ type iBrowserSessionOut interface {
 }
 
 type BrowserSessionOut struct {
+	// The unique identifier for the browser.
+	//
 	// example:
 	//
 	// browser-1234567890abcdef
 	BrowserId *string `json:"browserId,omitempty" xml:"browserId,omitempty"`
+	// The browser name.
+	//
 	// example:
 	//
 	// my-browser-session
 	BrowserName *string `json:"browserName,omitempty" xml:"browserName,omitempty"`
+	// The time the session was created.
+	//
 	// example:
 	//
 	// 2025-01-10T10:30:00Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// The time the session was last updated.
+	//
 	// example:
 	//
 	// 2025-01-10T11:45:00Z
 	LastUpdatedAt *string `json:"lastUpdatedAt,omitempty" xml:"lastUpdatedAt,omitempty"`
+	// The unique identifier for the session.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// bs-1234567890abcdef
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
-	// 会话空闲超时时间，单位为秒
+	// The session idle timeout, in seconds.
 	//
 	// example:
 	//
 	// 3600
 	SessionIdleTimeoutSeconds *int32 `json:"sessionIdleTimeoutSeconds,omitempty" xml:"sessionIdleTimeoutSeconds,omitempty"`
+	// The session status.
+	//
 	// example:
 	//
 	// RUNNING

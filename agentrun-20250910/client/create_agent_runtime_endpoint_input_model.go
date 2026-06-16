@@ -24,17 +24,21 @@ type iCreateAgentRuntimeEndpointInput interface {
 }
 
 type CreateAgentRuntimeEndpointInput struct {
+	// The name of the agent runtime endpoint.
+	//
 	// example:
 	//
 	// production-endpoint
 	AgentRuntimeEndpointName *string `json:"agentRuntimeEndpointName,omitempty" xml:"agentRuntimeEndpointName,omitempty"`
+	// The description of the agent runtime endpoint.
+	//
 	// example:
 	//
 	// Production endpoint for customer service agent
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 是否禁用该端点的公网访问
+	// Specifies whether to disable public network access for the endpoint.
 	DisablePublicNetworkAccess *bool `json:"disablePublicNetworkAccess,omitempty" xml:"disablePublicNetworkAccess,omitempty"`
-	// 智能体运行时端点的路由配置，支持多版本权重分配
+	// The routing configuration for the agent runtime endpoint. This configuration distributes traffic to multiple versions based on weights.
 	//
 	// example:
 	//
@@ -42,7 +46,7 @@ type CreateAgentRuntimeEndpointInput struct {
 	RoutingConfiguration *RoutingConfiguration `json:"routingConfiguration,omitempty" xml:"routingConfiguration,omitempty"`
 	// 端点的弹性伸缩配置，包括最小实例数和定时扩容策略（复用 ScalingConfig）
 	ScalingConfig *ScalingConfig `json:"scalingConfig,omitempty" xml:"scalingConfig,omitempty"`
-	// 智能体运行时的目标版本
+	// The target version of the agent runtime.
 	//
 	// example:
 	//

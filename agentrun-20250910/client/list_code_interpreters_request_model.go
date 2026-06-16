@@ -18,19 +18,19 @@ type iListCodeInterpretersRequest interface {
 }
 
 type ListCodeInterpretersRequest struct {
-	// 根据代码解释器实例名称进行模糊匹配过滤
+	// Filter by code interpreter name
 	//
 	// example:
 	//
 	// code
 	CodeInterpreterName *string `json:"codeInterpreterName,omitempty" xml:"codeInterpreterName,omitempty"`
-	// 当前页码，从1开始计数
+	// Page number
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// 每页返回的记录数量
+	// Page size
 	//
 	// example:
 	//

@@ -18,19 +18,19 @@ type iCreateConsumerAPIKeyInput interface {
 }
 
 type CreateConsumerAPIKeyInput struct {
-	// 用户自定义的完整API密钥；为空时由服务自动生成
+	// A custom API key. If omitted, the service generates one automatically.
 	//
 	// example:
 	//
 	// sk-xxxxxxxxxxxxxxxxxxxx
 	ApiKey *string `json:"apiKey,omitempty" xml:"apiKey,omitempty"`
-	// 消费者API密钥的描述信息，用于说明该密钥的用途
+	// A description for the consumer API key.
 	//
 	// example:
 	//
 	// 用于生产环境的API密钥
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 关联的模型连接标识符
+	// The identifier for the model connection.
 	//
 	// This parameter is required.
 	//

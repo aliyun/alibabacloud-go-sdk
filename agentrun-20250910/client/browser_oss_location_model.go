@@ -16,7 +16,9 @@ type iBrowserOssLocation interface {
 }
 
 type BrowserOssLocation struct {
+	// The name of the OSS bucket.
 	Bucket *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
+	// The storage prefix within the bucket.
 	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
 }
 

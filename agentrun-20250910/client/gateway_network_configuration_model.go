@@ -18,9 +18,11 @@ type iGatewayNetworkConfiguration interface {
 }
 
 type GatewayNetworkConfiguration struct {
-	NetworkMode *string   `json:"networkMode,omitempty" xml:"networkMode,omitempty"`
-	VpcId       *string   `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
-	VswitchIds  []*string `json:"vswitchIds" xml:"vswitchIds" type:"Repeated"`
+	// Network mode
+	NetworkMode *string `json:"networkMode,omitempty" xml:"networkMode,omitempty"`
+	// Virtual private cloud (VPC) ID
+	VpcId      *string   `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+	VswitchIds []*string `json:"vswitchIds" xml:"vswitchIds" type:"Repeated"`
 }
 
 func (s GatewayNetworkConfiguration) String() string {

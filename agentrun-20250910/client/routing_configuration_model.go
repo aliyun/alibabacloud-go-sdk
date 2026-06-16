@@ -14,7 +14,7 @@ type iRoutingConfiguration interface {
 }
 
 type RoutingConfiguration struct {
-	// 不同版本的流量权重配置
+	// Traffic weight configuration for different versions
 	VersionWeights []*VersionWeight `json:"versionWeights" xml:"versionWeights" type:"Repeated"`
 }
 

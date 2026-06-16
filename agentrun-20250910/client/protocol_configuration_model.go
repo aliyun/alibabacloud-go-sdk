@@ -16,9 +16,11 @@ type iProtocolConfiguration interface {
 }
 
 type ProtocolConfiguration struct {
-	// 详细的协议配置信息
+	// Detailed protocol configuration information
 	ProtocolSettings []*ProtocolSettings `json:"protocolSettings" xml:"protocolSettings" type:"Repeated"`
 	// Deprecated
+	//
+	// Protocol Type
 	//
 	// example:
 	//

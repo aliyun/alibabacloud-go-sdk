@@ -14,7 +14,7 @@ type iPublishFlowVersionRequest interface {
 }
 
 type PublishFlowVersionRequest struct {
-	// 包含版本描述等信息的请求体
+	// The input parameters for publishing a workflow version.
 	Body *PublishFlowVersionInput `json:"body,omitempty" xml:"body,omitempty"`
 }
 

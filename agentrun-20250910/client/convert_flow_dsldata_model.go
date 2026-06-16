@@ -214,7 +214,7 @@ type ConvertFlowDSLDataConversionPlanIssues struct {
 	//
 	// example:
 	//
-	// Install Toolset \"google\" before using this flow
+	// Install Toolset \\"google\\" before using this flow
 	Suggestion *string `json:"suggestion,omitempty" xml:"suggestion,omitempty"`
 }
 

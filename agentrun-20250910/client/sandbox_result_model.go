@@ -18,17 +18,17 @@ type iSandboxResult interface {
 }
 
 type SandboxResult struct {
-	// SUCCESS 为成功，失败情况返回对应错误类型
+	// SUCCESS indicates success. In case of failure, the corresponding Error Type is returned.
 	//
 	// example:
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 沙箱的详细信息
+	// Detailed information about the sandbox
 	//
 	// This parameter is required.
 	Data *Sandbox `json:"data,omitempty" xml:"data,omitempty"`
-	// 唯一的请求标识符，用于问题追踪
+	// Unique request ID used for troubleshooting
 	//
 	// example:
 	//

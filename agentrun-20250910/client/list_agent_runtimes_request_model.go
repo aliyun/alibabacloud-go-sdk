@@ -32,7 +32,7 @@ type iListAgentRuntimesRequest interface {
 }
 
 type ListAgentRuntimesRequest struct {
-	// 根据智能体运行时名称进行模糊匹配过滤
+	// Filters the results by agent runtime name.
 	//
 	// example:
 	//
@@ -40,50 +40,53 @@ type ListAgentRuntimesRequest struct {
 	AgentRuntimeName *string `json:"agentRuntimeName,omitempty" xml:"agentRuntimeName,omitempty"`
 	// Deprecated
 	//
-	// 用于服务发现的资源组标识符
+	// The service discovery resource group ID.
 	//
 	// example:
 	//
 	// rg-123456
 	DiscoveryResourceGroupId *string `json:"discoveryResourceGroupId,omitempty" xml:"discoveryResourceGroupId,omitempty"`
-	// 当前页码，从1开始计数
+	// The page number to return.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// 每页返回的记录数量
+	// The number of entries to return per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	// Deprecated
+	//
+	// The ID of the resource group. This parameter is deprecated.
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// 查询模式，支持精确查询和模糊查询
+	// The search mode.
 	//
 	// example:
 	//
 	// fuzzy
 	SearchMode *string `json:"searchMode,omitempty" xml:"searchMode,omitempty"`
-	// 根据状态进行过滤，多个状态用逗号分隔，支持精确匹配
+	// Filters the results by status.
 	//
 	// example:
 	//
 	// READY,CREATING
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// 根据系统标签进行过滤，多个标签用逗号分隔，支持精确匹配
+	// Filters the results by system tags. Separate multiple tags with commas. This parameter supports only exact matches.
 	//
 	// example:
 	//
 	// acs:ecs:tag1,acs:ecs:tag2
 	SystemTags *string `json:"systemTags,omitempty" xml:"systemTags,omitempty"`
-	// 根据工作空间ID进行过滤，用于资源隔离和权限管理
+	// The workspace ID.
 	//
 	// example:
 	//
 	// ws-1234567890abcdef
-	WorkspaceId  *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+	// A comma-separated string of workspace IDs.
 	WorkspaceIds *string `json:"workspaceIds,omitempty" xml:"workspaceIds,omitempty"`
 }
 

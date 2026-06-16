@@ -18,19 +18,19 @@ type iCodeInterpreterSessionConfig interface {
 }
 
 type CodeInterpreterSessionConfig struct {
-	// 代码解释器会话的环境变量配置
+	// The environment variables for the session, specified as key-value pairs.
 	//
 	// example:
 	//
 	// PYTHONPATH=/app,DEBUG=true
 	Environment map[string]*string `json:"environment" xml:"environment"`
-	// 代码解释器会话的超时时间，单位为秒
+	// The timeout for the session, in seconds.
 	//
 	// example:
 	//
 	// 3600
 	Timeout *int32 `json:"timeout,omitempty" xml:"timeout,omitempty"`
-	// 代码解释器会话的工作目录路径
+	// The working directory path for the session.
 	//
 	// example:
 	//

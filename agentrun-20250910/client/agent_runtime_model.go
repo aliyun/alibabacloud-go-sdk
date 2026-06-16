@@ -31,6 +31,8 @@ type iAgentRuntime interface {
 	GetCredentialName() *string
 	SetDescription(v string) *AgentRuntime
 	GetDescription() *string
+	SetDisableOndemand(v bool) *AgentRuntime
+	GetDisableOndemand() *bool
 	SetDisableSessionAffinity(v bool) *AgentRuntime
 	GetDisableSessionAffinity() *bool
 	SetDiskSize(v int) *AgentRuntime
@@ -45,6 +47,8 @@ type iAgentRuntime interface {
 	GetExecutionRoleArn() *string
 	SetExternalAgentEndpointUrl(v string) *AgentRuntime
 	GetExternalAgentEndpointUrl() *string
+	SetHeaderFieldName(v string) *AgentRuntime
+	GetHeaderFieldName() *string
 	SetHealthCheckConfiguration(v *HealthCheckConfiguration) *AgentRuntime
 	GetHealthCheckConfiguration() *HealthCheckConfiguration
 	SetLastUpdatedAt(v string) *AgentRuntime
@@ -65,6 +69,8 @@ type iAgentRuntime interface {
 	GetProtocolConfiguration() *ProtocolConfiguration
 	SetResourceGroupId(v string) *AgentRuntime
 	GetResourceGroupId() *string
+	SetSessionAffinityType(v string) *AgentRuntime
+	GetSessionAffinityType() *string
 	SetSessionConcurrencyLimitPerInstance(v int) *AgentRuntime
 	GetSessionConcurrencyLimitPerInstance() *int
 	SetSessionIdleTimeoutSeconds(v int32) *AgentRuntime
@@ -80,191 +86,213 @@ type iAgentRuntime interface {
 }
 
 type AgentRuntime struct {
-	// 智能体运行时的全局唯一资源名称
+	// The Alibaba Cloud Resource Name (ARN) of the agent runtime.
 	//
 	// example:
 	//
 	// acs:agentrun:cn-hangzhou:1760720386195983:runtimes/7a1b6d39-9f8f-4ce2-b9c9-6db1b0b9e169
 	AgentRuntimeArn *string `json:"agentRuntimeArn,omitempty" xml:"agentRuntimeArn,omitempty"`
-	// 智能体运行时的唯一标识符
+	// The unique identifier of the agent runtime.
 	//
 	// example:
 	//
 	// ar-1234567890abcdef
 	AgentRuntimeId *string `json:"agentRuntimeId,omitempty" xml:"agentRuntimeId,omitempty"`
-	// 智能体运行时的名称，用于标识和区分不同的运行时实例
+	// The name of the agent runtime.
 	//
 	// example:
 	//
 	// my-agent-runtime
 	AgentRuntimeName *string `json:"agentRuntimeName,omitempty" xml:"agentRuntimeName,omitempty"`
-	// 智能体运行时的版本号，用于版本管理和回滚
+	// The version number of the agent runtime.
 	//
 	// example:
 	//
 	// 1
 	AgentRuntimeVersion *string `json:"agentRuntimeVersion,omitempty" xml:"agentRuntimeVersion,omitempty"`
-	// 智能体运行时的部署类型，支持Code（代码模式）和Container（容器模式）
+	// The deployment type of the agent runtime. Valid values: `Code` and `Container`.
 	//
 	// example:
 	//
 	// Code
 	ArtifactType *string `json:"artifactType,omitempty" xml:"artifactType,omitempty"`
-	// 当artifactType为Code时的代码配置信息
+	// The code configuration details. This parameter is applicable when `artifactType` is set to `Code`.
 	//
 	// example:
 	//
 	// {}
 	CodeConfiguration *CodeConfiguration `json:"codeConfiguration,omitempty" xml:"codeConfiguration,omitempty"`
-	// 当artifactType为Container时的容器配置信息
+	// The container configuration details. This parameter is applicable when `artifactType` is set to `Container`.
 	//
 	// example:
 	//
 	// {}
 	ContainerConfiguration *ContainerConfiguration `json:"containerConfiguration,omitempty" xml:"containerConfiguration,omitempty"`
-	// 智能体运行时分配的CPU资源，单位为核数
+	// The amount of CPU allocated to the agent runtime, in vCPUs.
 	//
 	// example:
 	//
 	// 2.0
 	Cpu *float32 `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	// 智能体运行时的创建时间，采用ISO 8601格式
+	// The creation time of the agent runtime, in ISO 8601 format.
 	//
 	// example:
 	//
 	// 2025-01-10T10:30:00Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// 用于访问智能体的凭证名称，访问智能体运行时将使用此凭证进行身份验证
+	// The name of the credential used to authenticate requests to the agent runtime.
 	//
 	// example:
 	//
 	// my-credential
 	CredentialName *string `json:"credentialName,omitempty" xml:"credentialName,omitempty"`
-	// 智能体运行时的描述信息，说明该运行时的用途和功能
+	// The description of the agent runtime.
 	//
 	// example:
 	//
 	// AI agent runtime for customer service automation
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 是否禁用会话亲和性。默认为 false（即默认启用会话亲和），设置为 true 时关闭会话亲和
+	// Specifies whether to disable on-demand elasticity. Default: `false`.
 	//
 	// example:
 	//
 	// false
-	DisableSessionAffinity *bool   `json:"disableSessionAffinity,omitempty" xml:"disableSessionAffinity,omitempty"`
-	DiskSize               *int    `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
-	Edition                *string `json:"edition,omitempty" xml:"edition,omitempty"`
-	// 是否启用会话隔离，启用后每个会话将在独立的环境中运行
+	DisableOndemand *bool `json:"disableOndemand,omitempty" xml:"disableOndemand,omitempty"`
+	// Specifies whether to disable session affinity. Default: `false`.
+	//
+	// example:
+	//
+	// false
+	DisableSessionAffinity *bool `json:"disableSessionAffinity,omitempty" xml:"disableSessionAffinity,omitempty"`
+	// The disk size.
+	DiskSize *int `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
+	// The edition of the agent runtime.
+	Edition *string `json:"edition,omitempty" xml:"edition,omitempty"`
+	// Specifies whether to enable session isolation. If enabled, each session runs in an isolated environment.
 	//
 	// example:
 	//
 	// false
 	EnableSessionIsolation *bool `json:"enableSessionIsolation,omitempty" xml:"enableSessionIsolation,omitempty"`
-	// 智能体运行时的环境变量配置
+	// The environment variables for the agent runtime.
 	//
 	// example:
 	//
 	// ENV_VAR1=value1,ENV_VAR2=value2
 	EnvironmentVariables map[string]*string `json:"environmentVariables" xml:"environmentVariables"`
-	// 为智能体运行时提供访问云服务权限的执行角色ARN
+	// The ARN of the execution role that grants the agent runtime permission to access cloud services.
 	//
 	// example:
 	//
 	// acs:ram::1760720386195983:role/AgentRunExecutionRole
 	ExecutionRoleArn *string `json:"executionRoleArn,omitempty" xml:"executionRoleArn,omitempty"`
-	// 外部注册类型的智能体访问端点地址，用于连接已部署在外部的智能体服务
+	// The endpoint URL of an externally deployed agent service.
 	//
 	// example:
 	//
 	// https://external-agent.example.com/api
 	ExternalAgentEndpointUrl *string `json:"externalAgentEndpointUrl,omitempty" xml:"externalAgentEndpointUrl,omitempty"`
-	// 智能体运行时的健康检查配置，用于监控运行时实例的健康状态
+	// The name of the request header used for session affinity when `sessionAffinityType` is `HEADER_FIELD`.
+	//
+	// example:
+	//
+	// x-agentrun-session-id
+	HeaderFieldName *string `json:"headerFieldName,omitempty" xml:"headerFieldName,omitempty"`
+	// The health check configuration.
 	//
 	// example:
 	//
 	// {}
 	HealthCheckConfiguration *HealthCheckConfiguration `json:"healthCheckConfiguration,omitempty" xml:"healthCheckConfiguration,omitempty"`
-	// 智能体运行时最后一次更新的时间，采用ISO 8601格式
+	// The last update time of the agent runtime, in ISO 8601 format.
 	//
 	// example:
 	//
 	// 2025-01-10T11:45:00Z
 	LastUpdatedAt *string `json:"lastUpdatedAt,omitempty" xml:"lastUpdatedAt,omitempty"`
-	// SLS（简单日志服务）配置
+	// The Log Service configuration.
 	//
 	// example:
 	//
 	// {}
 	LogConfiguration *LogConfiguration `json:"logConfiguration,omitempty" xml:"logConfiguration,omitempty"`
-	// 智能体运行时分配的内存资源，单位为MB
+	// The amount of memory allocated to the agent runtime, in MB.
 	//
 	// example:
 	//
 	// 2048
 	Memory *int `json:"memory,omitempty" xml:"memory,omitempty"`
-	// 文件存储NAS的配置信息，用于挂载NAS文件系统到智能体运行时
+	// The NAS file system configuration.
 	//
 	// example:
 	//
 	// {}
 	NasConfig *NASConfig `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
-	// 智能体运行时的网络配置信息
+	// The network configuration of the agent runtime.
 	//
 	// example:
 	//
 	// {}
 	NetworkConfiguration *NetworkConfiguration `json:"networkConfiguration,omitempty" xml:"networkConfiguration,omitempty"`
-	// 对象存储OSS的挂载配置信息，用于挂载OSS存储桶到智能体运行时
+	// The OSS bucket mount configuration.
 	//
 	// example:
 	//
 	// {}
 	OssMountConfig *OSSMountConfig `json:"ossMountConfig,omitempty" xml:"ossMountConfig,omitempty"`
-	// 智能体运行时监听的端口号
+	// The port on which the agent runtime listens.
 	//
 	// example:
 	//
 	// 8080
 	Port *int `json:"port,omitempty" xml:"port,omitempty"`
-	// 智能体运行时的通信协议配置
+	// The communication protocol configuration for the agent runtime.
 	//
 	// example:
 	//
 	// {}
 	ProtocolConfiguration *ProtocolConfiguration `json:"protocolConfiguration,omitempty" xml:"protocolConfiguration,omitempty"`
 	// Deprecated
+	//
+	// The ID of the resource group to which the agent runtime belongs.
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// 每个运行时实例允许的最大并发会话数
+	// The session affinity mode. Valid values: `NONE`, `HEADER_FIELD`, and `GENERATED_COOKIE`. `COOKIE` is a compatibility alias for `GENERATED_COOKIE`.
+	//
+	// example:
+	//
+	// GENERATED_COOKIE
+	SessionAffinityType *string `json:"sessionAffinityType,omitempty" xml:"sessionAffinityType,omitempty"`
+	// The maximum number of concurrent sessions allowed per runtime instance.
 	//
 	// example:
 	//
 	// 100
 	SessionConcurrencyLimitPerInstance *int `json:"sessionConcurrencyLimitPerInstance,omitempty" xml:"sessionConcurrencyLimitPerInstance,omitempty"`
-	// 会话的空闲超时时间，单位为秒。实例没有会话请求后处于空闲状态，空闲态为闲置计费模式，超过此超时时间后会话自动过期，不可继续使用
+	// The idle timeout period for a session, in seconds. After this period of inactivity, the session expires and can no longer be used.
 	//
 	// example:
 	//
 	// 3600
 	SessionIdleTimeoutSeconds *int32 `json:"sessionIdleTimeoutSeconds,omitempty" xml:"sessionIdleTimeoutSeconds,omitempty"`
-	// 智能体运行时的当前状态，如READY（就绪）、CREATING（创建中）、FAILED（失败）等
+	// The current status of the agent runtime. Possible values: `READY`, `CREATING`, and `FAILED`.
 	//
 	// example:
 	//
 	// READY
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// 当前状态的原因说明（如适用）
+	// The reason for the current status.
 	//
 	// example:
 	//
 	// Runtime is ready for use
 	StatusReason *string `json:"statusReason,omitempty" xml:"statusReason,omitempty"`
-	// 智能体运行时的系统标签信息，用于系统级别的资源分类和管理
+	// The system tags for the agent runtime.
 	//
 	// example:
 	//
 	// system-tag-1,system-tag-2
 	SystemTags []*string `json:"systemTags" xml:"systemTags" type:"Repeated"`
-	// 智能体运行时所属的工作空间标识符，用于资源隔离和权限管理
+	// The ID of the workspace for the agent runtime.
 	//
 	// example:
 	//
@@ -324,6 +352,10 @@ func (s *AgentRuntime) GetDescription() *string {
 	return s.Description
 }
 
+func (s *AgentRuntime) GetDisableOndemand() *bool {
+	return s.DisableOndemand
+}
+
 func (s *AgentRuntime) GetDisableSessionAffinity() *bool {
 	return s.DisableSessionAffinity
 }
@@ -350,6 +382,10 @@ func (s *AgentRuntime) GetExecutionRoleArn() *string {
 
 func (s *AgentRuntime) GetExternalAgentEndpointUrl() *string {
 	return s.ExternalAgentEndpointUrl
+}
+
+func (s *AgentRuntime) GetHeaderFieldName() *string {
+	return s.HeaderFieldName
 }
 
 func (s *AgentRuntime) GetHealthCheckConfiguration() *HealthCheckConfiguration {
@@ -390,6 +426,10 @@ func (s *AgentRuntime) GetProtocolConfiguration() *ProtocolConfiguration {
 
 func (s *AgentRuntime) GetResourceGroupId() *string {
 	return s.ResourceGroupId
+}
+
+func (s *AgentRuntime) GetSessionAffinityType() *string {
+	return s.SessionAffinityType
 }
 
 func (s *AgentRuntime) GetSessionConcurrencyLimitPerInstance() *int {
@@ -471,6 +511,11 @@ func (s *AgentRuntime) SetDescription(v string) *AgentRuntime {
 	return s
 }
 
+func (s *AgentRuntime) SetDisableOndemand(v bool) *AgentRuntime {
+	s.DisableOndemand = &v
+	return s
+}
+
 func (s *AgentRuntime) SetDisableSessionAffinity(v bool) *AgentRuntime {
 	s.DisableSessionAffinity = &v
 	return s
@@ -503,6 +548,11 @@ func (s *AgentRuntime) SetExecutionRoleArn(v string) *AgentRuntime {
 
 func (s *AgentRuntime) SetExternalAgentEndpointUrl(v string) *AgentRuntime {
 	s.ExternalAgentEndpointUrl = &v
+	return s
+}
+
+func (s *AgentRuntime) SetHeaderFieldName(v string) *AgentRuntime {
+	s.HeaderFieldName = &v
 	return s
 }
 
@@ -553,6 +603,11 @@ func (s *AgentRuntime) SetProtocolConfiguration(v *ProtocolConfiguration) *Agent
 
 func (s *AgentRuntime) SetResourceGroupId(v string) *AgentRuntime {
 	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *AgentRuntime) SetSessionAffinityType(v string) *AgentRuntime {
+	s.SessionAffinityType = &v
 	return s
 }
 

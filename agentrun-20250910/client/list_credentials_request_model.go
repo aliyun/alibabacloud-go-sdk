@@ -30,41 +30,59 @@ type iListCredentialsRequest interface {
 }
 
 type ListCredentialsRequest struct {
-	// credentialAuthType
+	// Filters the results by credential type.
 	//
 	// example:
 	//
 	// credentialAuthType
 	CredentialAuthType *string `json:"credentialAuthType,omitempty" xml:"credentialAuthType,omitempty"`
-	// credentialName
+	// Filters the results by credential name.
 	//
 	// example:
 	//
 	// credentialName
 	CredentialName *string `json:"credentialName,omitempty" xml:"credentialName,omitempty"`
-	// credentialSourceType
+	// Filters the results by credential source type.
 	//
 	// example:
 	//
 	// credentialSourceType
 	CredentialSourceType *string `json:"credentialSourceType,omitempty" xml:"credentialSourceType,omitempty"`
+	// Filters the results based on the credential\\"s enabled status.
+	//
 	// example:
 	//
 	// False
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// The page number of the results to return.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of credentials to return per page.
+	//
 	// example:
 	//
 	// 0
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// Filters the results by provider.
+	//
 	// example:
 	//
 	// Aliyun
-	Provider     *string `json:"provider,omitempty" xml:"provider,omitempty"`
-	WorkspaceId  *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+	Provider *string `json:"provider,omitempty" xml:"provider,omitempty"`
+	// Unique identifier of the workspace
+	//
+	// example:
+	//
+	// ws-1
+	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+	// Multiple workspace identifiers
+	//
+	// example:
+	//
+	// ws-1,ws-2
 	WorkspaceIds *string `json:"workspaceIds,omitempty" xml:"workspaceIds,omitempty"`
 }
 

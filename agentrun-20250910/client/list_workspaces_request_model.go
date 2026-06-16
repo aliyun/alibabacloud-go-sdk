@@ -20,18 +20,26 @@ type iListWorkspacesRequest interface {
 }
 
 type ListWorkspacesRequest struct {
+	// The name of the workspace. Used to filter the results.
+	//
 	// example:
 	//
 	// intl_synonym_module
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The page number to return. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries to return per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The ID of the resource group to which the workspace belongs.
+	//
 	// example:
 	//
 	// rg-aek25sodlatnioq

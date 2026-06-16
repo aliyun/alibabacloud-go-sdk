@@ -54,63 +54,81 @@ type iUpdateTemplateInput interface {
 }
 
 type UpdateTemplateInput struct {
+	// Specifies whether the data link is allowed to invoke APIs to create, stop, or delete sandboxes
+	//
 	// if can be null:
 	// true
 	//
 	// example:
 	//
 	// true
-	AllowAnonymousManage *bool              `json:"allowAnonymousManage,omitempty" xml:"allowAnonymousManage,omitempty"`
-	ArmsConfiguration    *ArmsConfiguration `json:"armsConfiguration,omitempty" xml:"armsConfiguration,omitempty"`
-	// 容器配置（内置的不可改）
+	AllowAnonymousManage *bool `json:"allowAnonymousManage,omitempty" xml:"allowAnonymousManage,omitempty"`
+	// Configuration information for Application Real-Time Monitoring Service (ARMS)
+	ArmsConfiguration *ArmsConfiguration `json:"armsConfiguration,omitempty" xml:"armsConfiguration,omitempty"`
+	// Container configuration (built-in and immutable)
 	ContainerConfiguration *ContainerConfiguration `json:"containerConfiguration,omitempty" xml:"containerConfiguration,omitempty"`
-	// CPU资源配置（单位：核心）
+	// CPU resource configuration (unit: core)
 	//
 	// example:
 	//
 	// 2
-	Cpu                     *float32                 `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	Cpu *float32 `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	// Credential configuration
 	CredentialConfiguration *CredentialConfiguration `json:"credentialConfiguration,omitempty" xml:"credentialConfiguration,omitempty"`
+	// Template description
+	//
 	// example:
 	//
 	// demo description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Sandbox Agent toggle
+	//
 	// example:
 	//
 	// true
-	EnableAgent          *bool              `json:"enableAgent,omitempty" xml:"enableAgent,omitempty"`
-	EnablePreStop        *bool              `json:"enablePreStop,omitempty" xml:"enablePreStop,omitempty"`
+	EnableAgent   *bool `json:"enableAgent,omitempty" xml:"enableAgent,omitempty"`
+	EnablePreStop *bool `json:"enablePreStop,omitempty" xml:"enablePreStop,omitempty"`
+	// Environment variables
 	EnvironmentVariables map[string]*string `json:"environmentVariables" xml:"environmentVariables"`
+	// Execution role ARN
+	//
 	// example:
 	//
 	// arn:acs:agentrun:cn-hangzhou:123456789:xxx/test
-	ExecutionRoleArn *string           `json:"executionRoleArn,omitempty" xml:"executionRoleArn,omitempty"`
+	ExecutionRoleArn *string `json:"executionRoleArn,omitempty" xml:"executionRoleArn,omitempty"`
+	// Log configuration
 	LogConfiguration *LogConfiguration `json:"logConfiguration,omitempty" xml:"logConfiguration,omitempty"`
-	// 内存资源配置（单位：MB）
+	// Memory resource configuration (unit: MB)
 	//
 	// example:
 	//
 	// 4
-	Memory                  *int32                `json:"memory,omitempty" xml:"memory,omitempty"`
-	NasConfig               *NASConfig            `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
-	NetworkConfiguration    *NetworkConfiguration `json:"networkConfiguration,omitempty" xml:"networkConfiguration,omitempty"`
-	OssConfiguration        []*OssConfiguration   `json:"ossConfiguration" xml:"ossConfiguration" type:"Repeated"`
-	PreStopTimeoutInSeconds *int32                `json:"preStopTimeoutInSeconds,omitempty" xml:"preStopTimeoutInSeconds,omitempty"`
-	// 沙箱空闲超时时间（秒）
+	Memory *int32 `json:"memory,omitempty" xml:"memory,omitempty"`
+	// NAS mount configuration item
+	NasConfig *NASConfig `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
+	// Network configuration
+	NetworkConfiguration *NetworkConfiguration `json:"networkConfiguration,omitempty" xml:"networkConfiguration,omitempty"`
+	// OSS mount configuration
+	OssConfiguration        []*OssConfiguration `json:"ossConfiguration" xml:"ossConfiguration" type:"Repeated"`
+	PreStopTimeoutInSeconds *int32              `json:"preStopTimeoutInSeconds,omitempty" xml:"preStopTimeoutInSeconds,omitempty"`
+	// Sandbox idle timeout (seconds)
 	//
 	// example:
 	//
 	// 21600
 	SandboxIdleTimeoutInSeconds *int32 `json:"sandboxIdleTimeoutInSeconds,omitempty" xml:"sandboxIdleTimeoutInSeconds,omitempty"`
-	// 沙箱存活时间（秒）
+	// Sandbox time to live (seconds)
 	//
 	// example:
 	//
 	// 86400
-	SandboxTTLInSeconds *int32         `json:"sandboxTTLInSeconds,omitempty" xml:"sandboxTTLInSeconds,omitempty"`
-	ScalingConfig       *ScalingConfig `json:"scalingConfig,omitempty" xml:"scalingConfig,omitempty"`
-	// 模板配置（灵活的对象结构，根据 templateType 不同而不同）
+	SandboxTTLInSeconds *int32 `json:"sandboxTTLInSeconds,omitempty" xml:"sandboxTTLInSeconds,omitempty"`
+	// Elasticity configuration
+	ScalingConfig *ScalingConfig `json:"scalingConfig,omitempty" xml:"scalingConfig,omitempty"`
+	// Template configuration (a flexible object structure that varies based on templateType)
 	TemplateConfiguration map[string]interface{} `json:"templateConfiguration" xml:"templateConfiguration"`
+	// Associated Space ID
+	//
 	// example:
 	//
 	// ws-1234567890abcdef

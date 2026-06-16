@@ -60,67 +60,90 @@ type iCreateTemplateInput interface {
 }
 
 type CreateTemplateInput struct {
+	// Controls whether data plane calls can create, stop, or delete the sandbox.
+	//
 	// if can be null:
 	// true
 	//
 	// example:
 	//
 	// true
-	AllowAnonymousManage *bool              `json:"allowAnonymousManage,omitempty" xml:"allowAnonymousManage,omitempty"`
-	ArmsConfiguration    *ArmsConfiguration `json:"armsConfiguration,omitempty" xml:"armsConfiguration,omitempty"`
-	// 容器配置，只允许基于 Browser/Code Interpreter 基础镜像的 image
+	AllowAnonymousManage *bool `json:"allowAnonymousManage,omitempty" xml:"allowAnonymousManage,omitempty"`
+	// The Application Real-Time Monitoring Service (ARMS) configuration.
+	ArmsConfiguration *ArmsConfiguration `json:"armsConfiguration,omitempty" xml:"armsConfiguration,omitempty"`
+	// The container configuration. You can only use images based on the Browser or Code Interpreter base images.
 	ContainerConfiguration *ContainerConfiguration `json:"containerConfiguration,omitempty" xml:"containerConfiguration,omitempty"`
-	// CPU资源配置（单位：核心）
+	// The number of CPU cores.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2
-	Cpu                     *float32                 `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	Cpu *float32 `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	// The credential configuration.
 	CredentialConfiguration *CredentialConfiguration `json:"credentialConfiguration,omitempty" xml:"credentialConfiguration,omitempty"`
-	Description             *string                  `json:"description,omitempty" xml:"description,omitempty"`
+	// The template description.
+	//
+	// example:
+	//
+	// 模板描述
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The disk size in MB.
+	//
 	// example:
 	//
 	// 10240
-	DiskSize             *int32             `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
-	EnableAgent          *bool              `json:"enableAgent,omitempty" xml:"enableAgent,omitempty"`
-	EnablePreStop        *bool              `json:"enablePreStop,omitempty" xml:"enablePreStop,omitempty"`
+	DiskSize *int32 `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
+	// Controls whether to enable the Sandbox Agent.
+	EnableAgent *bool `json:"enableAgent,omitempty" xml:"enableAgent,omitempty"`
+	// Specifies whether to enable the pre-stop hook.
+	EnablePreStop *bool `json:"enablePreStop,omitempty" xml:"enablePreStop,omitempty"`
+	// The environment variables for the sandbox.
 	EnvironmentVariables map[string]*string `json:"environmentVariables" xml:"environmentVariables"`
+	// The Alibaba Cloud Resource Name (ARN) of the execution role.
+	//
 	// example:
 	//
 	// acs:ram::123456789:role/aliyunfcdefaultrole
-	ExecutionRoleArn *string           `json:"executionRoleArn,omitempty" xml:"executionRoleArn,omitempty"`
+	ExecutionRoleArn *string `json:"executionRoleArn,omitempty" xml:"executionRoleArn,omitempty"`
+	// The log configuration.
 	LogConfiguration *LogConfiguration `json:"logConfiguration,omitempty" xml:"logConfiguration,omitempty"`
-	// 内存资源配置（单位：MB）
+	// The memory size in MB.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2048
-	Memory    *int32     `json:"memory,omitempty" xml:"memory,omitempty"`
+	Memory *int32 `json:"memory,omitempty" xml:"memory,omitempty"`
+	// The Network Attached Storage (NAS) mount configuration.
 	NasConfig *NASConfig `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
+	// The network configuration.
+	//
 	// This parameter is required.
-	NetworkConfiguration    *NetworkConfiguration `json:"networkConfiguration,omitempty" xml:"networkConfiguration,omitempty"`
-	OssConfiguration        []*OssConfiguration   `json:"ossConfiguration" xml:"ossConfiguration" type:"Repeated"`
-	PreStopTimeoutInSeconds *int32                `json:"preStopTimeoutInSeconds,omitempty" xml:"preStopTimeoutInSeconds,omitempty"`
-	// 沙箱空闲超时时间（秒）
+	NetworkConfiguration *NetworkConfiguration `json:"networkConfiguration,omitempty" xml:"networkConfiguration,omitempty"`
+	// A list of Object Storage Service (OSS) configurations.
+	OssConfiguration []*OssConfiguration `json:"ossConfiguration" xml:"ossConfiguration" type:"Repeated"`
+	// The timeout for the pre-stop hook, in seconds. This parameter applies only when `enablePreStop` is set to `true`.
+	PreStopTimeoutInSeconds *int32 `json:"preStopTimeoutInSeconds,omitempty" xml:"preStopTimeoutInSeconds,omitempty"`
+	// The duration in seconds that a sandbox can be idle before it is automatically stopped.
 	//
 	// example:
 	//
 	// 1800
 	SandboxIdleTimeoutInSeconds *int32 `json:"sandboxIdleTimeoutInSeconds,omitempty" xml:"sandboxIdleTimeoutInSeconds,omitempty"`
-	// 沙箱存活时间（秒）
+	// The maximum time-to-live (TTL) in seconds for the sandbox. The sandbox is terminated after this duration, regardless of activity.
 	//
 	// example:
 	//
 	// 26000
-	SandboxTTLInSeconds *int32         `json:"sandboxTTLInSeconds,omitempty" xml:"sandboxTTLInSeconds,omitempty"`
-	ScalingConfig       *ScalingConfig `json:"scalingConfig,omitempty" xml:"scalingConfig,omitempty"`
-	// 模板配置（灵活的对象结构，根据 templateType 不同而不同）
+	SandboxTTLInSeconds *int32 `json:"sandboxTTLInSeconds,omitempty" xml:"sandboxTTLInSeconds,omitempty"`
+	// The scaling configuration.
+	ScalingConfig *ScalingConfig `json:"scalingConfig,omitempty" xml:"scalingConfig,omitempty"`
+	// The template configuration. This is a flexible object whose structure varies depending on the `templateType`.
 	TemplateConfiguration map[string]interface{} `json:"templateConfiguration" xml:"templateConfiguration"`
-	// 模板名称（要求账号唯一的）
+	// A unique name for the template within your account.
 	//
 	// This parameter is required.
 	//
@@ -128,13 +151,16 @@ type CreateTemplateInput struct {
 	//
 	// browser-1766687911567
 	TemplateName *string `json:"templateName,omitempty" xml:"templateName,omitempty"`
+	// The template type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Browser
 	TemplateType *string `json:"templateType,omitempty" xml:"templateType,omitempty"`
-	WorkspaceId  *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+	// The ID of the workspace.
+	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
 }
 
 func (s CreateTemplateInput) String() string {

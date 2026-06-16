@@ -20,21 +20,21 @@ type iListModelConnectionsOutput interface {
 }
 
 type ListModelConnectionsOutput struct {
-	// 模型连接列表
+	// A list of ModelConnection objects.
 	Items []*ModelConnection `json:"items" xml:"items" type:"Repeated"`
-	// 当前页码
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// 每页记录数
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// 符合条件的模型连接总数
+	// The total number of matching ModelConnection objects.
 	//
 	// example:
 	//

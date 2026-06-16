@@ -16,13 +16,13 @@ type iUpdateConsumerAPIKeyInput interface {
 }
 
 type UpdateConsumerAPIKeyInput struct {
-	// 是否启用该密钥
+	// Indicates if the key is active.
 	//
 	// example:
 	//
 	// false
 	Active *bool `json:"active,omitempty" xml:"active,omitempty"`
-	// 更新后的描述信息
+	// A new description for the key.
 	//
 	// example:
 	//

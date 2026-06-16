@@ -22,27 +22,27 @@ type iUpdateFlowEndpointInput interface {
 }
 
 type UpdateFlowEndpointInput struct {
-	// 工作流端点的描述信息
+	// The description of the flow endpoint.
 	//
 	// example:
 	//
 	// Production endpoint for flow
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 是否禁用该端点的公网访问
+	// Specifies whether to disable public network access for the flow endpoint.
 	DisablePublicNetworkAccess *bool `json:"disablePublicNetworkAccess,omitempty" xml:"disablePublicNetworkAccess,omitempty"`
-	// 工作流端点的唯一标识名称
+	// The unique name of the flow endpoint.
 	//
 	// example:
 	//
 	// my-flow-endpoint
 	FlowEndpointName *string `json:"flowEndpointName,omitempty" xml:"flowEndpointName,omitempty"`
-	// 工作流端点的版本路由配置，用于流量分配
+	// The routing configuration that defines traffic distribution for the flow endpoint.
 	//
 	// example:
 	//
 	// []
 	RoutingConfiguration []*FlowEndpointRoutingConfig `json:"routingConfiguration" xml:"routingConfiguration" type:"Repeated"`
-	// 工作流端点指向的目标版本号
+	// The target version for the flow endpoint.
 	//
 	// example:
 	//

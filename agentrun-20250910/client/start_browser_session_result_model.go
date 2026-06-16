@@ -18,16 +18,20 @@ type iStartBrowserSessionResult interface {
 }
 
 type StartBrowserSessionResult struct {
-	// SUCCESS 为成功，失败情况返回对应错误类型，比如 ERR_BAD_REQUEST ERR_VALIDATION_FAILED ERR_INTERNAL_SERVER_ERROR
+	// SUCCESS indicates success. In case of failure, the corresponding error type is returned, such as ERR_BAD_REQUEST, ERR_VALIDATION_FAILED, or ERR_INTERNAL_SERVER_ERROR.
 	//
 	// example:
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Data
+	//
 	// example:
 	//
 	// {}
 	Data *BrowserSessionOut `json:"data,omitempty" xml:"data,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// F8A0F5F3-0C3E-4C82-9D4F-5E4B6A7C8D9E

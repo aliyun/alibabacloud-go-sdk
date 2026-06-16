@@ -36,46 +36,62 @@ type iAgentRuntimeEndpoint interface {
 }
 
 type AgentRuntimeEndpoint struct {
+	// The Alibaba Cloud Resource Name (ARN) of the agent runtime endpoint.
+	//
 	// example:
 	//
 	// acs:agentrun:cn-hangzhou:1760720386195983:runtime-endpoints/e56d483c-db80-4116-9ec4-25f16f5facfd
 	AgentRuntimeEndpointArn *string `json:"agentRuntimeEndpointArn,omitempty" xml:"agentRuntimeEndpointArn,omitempty"`
+	// The unique identifier of the agent runtime endpoint.
+	//
 	// example:
 	//
 	// are-1234567890abcdef
 	AgentRuntimeEndpointId *string `json:"agentRuntimeEndpointId,omitempty" xml:"agentRuntimeEndpointId,omitempty"`
+	// The name of the agent runtime endpoint.
+	//
 	// example:
 	//
 	// production-endpoint
 	AgentRuntimeEndpointName *string `json:"agentRuntimeEndpointName,omitempty" xml:"agentRuntimeEndpointName,omitempty"`
+	// The unique identifier of the agent runtime.
+	//
 	// example:
 	//
 	// ar-1234567890abcdef
 	AgentRuntimeId *string `json:"agentRuntimeId,omitempty" xml:"agentRuntimeId,omitempty"`
+	// The description of the agent runtime endpoint.
+	//
 	// example:
 	//
 	// Production endpoint for customer service agent
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 是否禁用该端点的公网访问
+	// If `true`, public access for this endpoint is disabled.
 	DisablePublicNetworkAccess *bool `json:"disablePublicNetworkAccess,omitempty" xml:"disablePublicNetworkAccess,omitempty"`
-	// 智能体运行时端点的公网访问地址
+	// The public access address for the agent runtime endpoint.
 	//
 	// example:
 	//
 	// https://ar-1234567890abcdef.cn-hangzhou.agentrun.aliyuncs.com
 	EndpointPublicUrl *string `json:"endpointPublicUrl,omitempty" xml:"endpointPublicUrl,omitempty"`
-	// 智能体运行时端点的路由配置，支持多版本权重分配
+	// The configuration for weight-based routing across multiple agent versions.
 	RoutingConfiguration *RoutingConfiguration `json:"routingConfiguration,omitempty" xml:"routingConfiguration,omitempty"`
 	// 端点的弹性伸缩状态，包括最小/目标/当前实例数及定时策略（复用 ScalingStatus）
 	ScalingStatus *ScalingStatus `json:"scalingStatus,omitempty" xml:"scalingStatus,omitempty"`
+	// The current status of the agent runtime endpoint.
+	//
 	// example:
 	//
 	// ACTIVE
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The reason for the current status of the endpoint.
+	//
 	// example:
 	//
 	// Endpoint is active and ready
 	StatusReason *string `json:"statusReason,omitempty" xml:"statusReason,omitempty"`
+	// The agent version that the endpoint targets.
+	//
 	// example:
 	//
 	// LATEST

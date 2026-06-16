@@ -14,6 +14,7 @@ type iUpdateCredentialRequest interface {
 }
 
 type UpdateCredentialRequest struct {
+	// The new configuration for the credential.
 	Body *UpdateCredentialInput `json:"body,omitempty" xml:"body,omitempty"`
 }
 

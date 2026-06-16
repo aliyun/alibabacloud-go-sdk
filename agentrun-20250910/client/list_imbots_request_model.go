@@ -24,14 +24,18 @@ type iListIMBotsRequest interface {
 }
 
 type ListIMBotsRequest struct {
+	// The ID of the agent runtime.
 	AgentRuntimeId *string `json:"agentRuntimeId,omitempty" xml:"agentRuntimeId,omitempty"`
-	BotBizType     *string `json:"botBizType,omitempty" xml:"botBizType,omitempty"`
-	BotName        *string `json:"botName,omitempty" xml:"botName,omitempty"`
-	// 默认 1；传入时须 ≥ 1
+	// The business type of the bot.
+	BotBizType *string `json:"botBizType,omitempty" xml:"botBizType,omitempty"`
+	// The name of the IM bot. The system performs a case-insensitive substring search.
+	BotName *string `json:"botName,omitempty" xml:"botName,omitempty"`
+	// The page number. Must be greater than or equal to 1. Default: 1.
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// 默认 20；传入时须 1–100
-	PageSize *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	Status   *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The number of entries per page. Valid values: 1–100. Default: 20.
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The status of the bot.
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s ListIMBotsRequest) String() string {

@@ -20,13 +20,13 @@ type iListAgentRuntimeEndpointsInput interface {
 }
 
 type ListAgentRuntimeEndpointsInput struct {
-	// 按端点名称过滤
+	// Filter by endpoint name
 	EndpointName *string `json:"endpointName,omitempty" xml:"endpointName,omitempty"`
-	// 页码
+	// Page number
 	PageNumber *int `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// 每页记录数
+	// Number of records per page
 	PageSize *int `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// 按状态过滤
+	// Filter by status
 	Statuses []*string `json:"statuses" xml:"statuses" type:"Repeated"`
 }
 

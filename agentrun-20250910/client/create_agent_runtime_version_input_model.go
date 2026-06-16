@@ -14,7 +14,7 @@ type iCreateAgentRuntimeVersionInput interface {
 }
 
 type CreateAgentRuntimeVersionInput struct {
-	// 版本描述
+	// A description of the agent runtime version.
 	//
 	// example:
 	//

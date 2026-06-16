@@ -18,16 +18,20 @@ type iGetBrowserSessionResult interface {
 }
 
 type GetBrowserSessionResult struct {
-	// SUCCESS 为成功，失败情况返回对应错误类型，比如 ERR_BAD_REQUEST ERR_VALIDATION_FAILED ERR_INTERNAL_SERVER_ERROR
+	// `SUCCESS` for a successful request; otherwise, an error type such as `ERR_BAD_REQUEST`, `ERR_VALIDATION_FAILED`, or `ERR_INTERNAL_SERVER_ERROR`.
 	//
 	// example:
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The details of the browser session.
+	//
 	// example:
 	//
 	// {}
 	Data *BrowserSessionOut `json:"data,omitempty" xml:"data,omitempty"`
+	// A unique identifier for the request.
+	//
 	// example:
 	//
 	// F8A0F5F3-0C3E-4C82-9D4F-5E4B6A7C8D9E

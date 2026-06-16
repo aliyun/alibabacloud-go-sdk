@@ -26,24 +26,38 @@ type iListModelServicesRequest interface {
 }
 
 type ListModelServicesRequest struct {
+	// The model type. Valid values:
+	//
+	// - `system`: A built-in model.
+	//
+	// - `deployment`: A model from a custom deployment.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// system
 	ModelType *string `json:"modelType,omitempty" xml:"modelType,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 10
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The cloud provider. Currently, only Alibaba Cloud is supported.
+	//
 	// example:
 	//
 	// Aliyun
 	Provider *string `json:"provider,omitempty" xml:"provider,omitempty"`
+	// The provider type.
+	//
 	// example:
 	//
 	// providerType

@@ -16,9 +16,9 @@ type iVersionWeight interface {
 }
 
 type VersionWeight struct {
-	// 智能体运行时版本号
+	// Agent runtime version number
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
-	// 流量权重比例（0.0-1.0）
+	// Traffic weight ratio (0.0–1.0)
 	Weight *float32 `json:"weight,omitempty" xml:"weight,omitempty"`
 }
 

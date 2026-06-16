@@ -18,19 +18,19 @@ type iListAgentRuntimeVersionsResult interface {
 }
 
 type ListAgentRuntimeVersionsResult struct {
-	// SUCCESS 为成功，失败情况返回对应错误类型，比如 ERR_BAD_REQUEST ERR_VALIDATION_FAILED ERR_INTERNAL_SERVER_ERROR
+	// Indicates whether the request succeeded. A value of `SUCCESS` is returned on success. Otherwise, an error type is returned, such as `ERR_BAD_REQUEST`, `ERR_VALIDATION_FAILED`, or `ERR_INTERNAL_SERVER_ERROR`.
 	//
 	// example:
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 智能体运行时版本列表的详细信息
+	// Contains the list of agent runtime versions.
 	//
 	// example:
 	//
 	// {}
 	Data *ListAgentRuntimeVersionsOutput `json:"data,omitempty" xml:"data,omitempty"`
-	// 唯一的请求标识符，用于问题追踪
+	// A unique request ID for troubleshooting.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iUpdateAgentRuntimeRequest interface {
 }
 
 type UpdateAgentRuntimeRequest struct {
-	// 包含要更新的智能体运行时配置信息的请求体
+	// The input parameters for updating an agent runtime.
 	//
 	// This parameter is required.
 	Body *UpdateAgentRuntimeInput `json:"body,omitempty" xml:"body,omitempty"`

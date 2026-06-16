@@ -18,19 +18,19 @@ type iModelConnectionResult interface {
 }
 
 type ModelConnectionResult struct {
-	// SUCCESS 为成功，失败情况返回对应错误类型
+	// `SUCCESS` indicates a successful request. On failure, this field returns the error type.
 	//
 	// example:
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 模型连接的详细信息
+	// The resulting model connection object.
 	//
 	// example:
 	//
 	// {}
 	Data *ModelConnection `json:"data,omitempty" xml:"data,omitempty"`
-	// 唯一的请求标识符，用于问题追踪
+	// The unique request ID used for troubleshooting.
 	//
 	// example:
 	//

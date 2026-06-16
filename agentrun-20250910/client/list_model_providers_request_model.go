@@ -22,22 +22,36 @@ type iListModelProvidersRequest interface {
 }
 
 type ListModelProvidersRequest struct {
+	// The name of the model to filter by.
+	//
 	// example:
 	//
 	// aa
 	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
+	// The model type to filter by. Valid values:
+	//
+	// - `system`: A system model.
+	//
+	// - `deployment`: A custom deployment model.
+	//
 	// example:
 	//
 	// pop
 	ModelType *string `json:"modelType,omitempty" xml:"modelType,omitempty"`
+	// The page number to retrieve.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of results to return per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The cloud provider. To specify Alibaba Cloud, use the value \\"Aliyun\\".
+	//
 	// example:
 	//
 	// Aliyun

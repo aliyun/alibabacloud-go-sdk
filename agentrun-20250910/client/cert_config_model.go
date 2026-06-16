@@ -28,13 +28,13 @@ type CertConfig struct {
 	//
 	// example:
 	//
-	// -----BEGIN CERTIFICATE-----\nxxxxx\n-----END CERTIFICATE-----
+	// -----BEGIN CERTIFICATE-----\\nxxxxx\\n-----END CERTIFICATE-----
 	Certificate *string `json:"certificate,omitempty" xml:"certificate,omitempty"`
 	// 私钥。
 	//
 	// example:
 	//
-	// -----BEGIN RSA PRIVATE KEY-----\nxxxxx\n-----END RSA PRIVATE KEY-----
+	// -----BEGIN RSA PRIVATE KEY-----\\nxxxxx\\n-----END RSA PRIVATE KEY-----
 	PrivateKey *string `json:"privateKey,omitempty" xml:"privateKey,omitempty"`
 }
 

@@ -14,6 +14,8 @@ type iCreateCodeInterpreterRequest interface {
 }
 
 type CreateCodeInterpreterRequest struct {
+	// Request body for creating a code interpreter.
+	//
 	// This parameter is required.
 	Body *CreateCodeInterpreterInput `json:"body,omitempty" xml:"body,omitempty"`
 }

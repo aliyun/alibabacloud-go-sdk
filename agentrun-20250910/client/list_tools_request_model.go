@@ -24,34 +24,38 @@ type iListToolsRequest interface {
 }
 
 type ListToolsRequest struct {
-	// 当前页码，从 1 开始
+	// Page number
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// 每页返回的工具数量，用于分页查询
+	// Page size
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// Tool Name, supports fuzzy search
+	//
 	// example:
 	//
 	// tool-1
 	ToolName *string `json:"toolName,omitempty" xml:"toolName,omitempty"`
-	// 按工具类型过滤，可选值：MCP、FUNCTIONCALL、SKILL
+	// Tool type
 	//
 	// example:
 	//
 	// MCP
 	ToolType *string `json:"toolType,omitempty" xml:"toolType,omitempty"`
-	// 按工作空间ID过滤，查询指定工作空间下的工具
+	// Workspace ID
 	//
 	// example:
 	//
 	// workspace-xyz789
 	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+	// List of workspace IDs, separated by commas
+	//
 	// example:
 	//
 	// ws1,ws2

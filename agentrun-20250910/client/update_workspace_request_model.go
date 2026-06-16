@@ -14,6 +14,7 @@ type iUpdateWorkspaceRequest interface {
 }
 
 type UpdateWorkspaceRequest struct {
+	// The parameters used to update the workspace.
 	Body *UpdateWorkspaceInput `json:"body,omitempty" xml:"body,omitempty"`
 }
 

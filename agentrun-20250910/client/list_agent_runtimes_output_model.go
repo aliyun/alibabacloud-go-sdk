@@ -20,10 +20,14 @@ type iListAgentRuntimesOutput interface {
 }
 
 type ListAgentRuntimesOutput struct {
-	Items      []*AgentRuntime `json:"items" xml:"items" type:"Repeated"`
-	PageNumber *int            `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize   *int            `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	Total      *int            `json:"total,omitempty" xml:"total,omitempty"`
+	// Project List
+	Items []*AgentRuntime `json:"items" xml:"items" type:"Repeated"`
+	// Page number
+	PageNumber *int `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// Page size
+	PageSize *int `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// Total count
+	Total *int `json:"total,omitempty" xml:"total,omitempty"`
 }
 
 func (s ListAgentRuntimesOutput) String() string {

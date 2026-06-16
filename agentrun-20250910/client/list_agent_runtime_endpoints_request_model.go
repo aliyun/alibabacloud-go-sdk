@@ -20,25 +20,25 @@ type iListAgentRuntimeEndpointsRequest interface {
 }
 
 type ListAgentRuntimeEndpointsRequest struct {
-	// 根据端点名称进行模糊匹配过滤
+	// Filter by endpoint name.
 	//
 	// example:
 	//
 	// my-endpoint
 	EndpointName *string `json:"endpointName,omitempty" xml:"endpointName,omitempty"`
-	// 当前页码，从1开始计数
+	// Page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// 每页返回的记录数量
+	// Page size.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// 查询模式，支持精确查询和模糊查询
+	// Search mode.
 	//
 	// example:
 	//

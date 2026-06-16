@@ -18,11 +18,16 @@ type iPolarFsConfig interface {
 }
 
 type PolarFsConfig struct {
+	// The ID of the group.
+	//
 	// example:
 	//
 	// 1000
-	GroupId     *int32                `json:"groupId,omitempty" xml:"groupId,omitempty"`
+	GroupId *int32 `json:"groupId,omitempty" xml:"groupId,omitempty"`
+	// The mount points for PFS.
 	MountPoints []*PolarFsMountConfig `json:"mountPoints" xml:"mountPoints" type:"Repeated"`
+	// The ID of the user.
+	//
 	// example:
 	//
 	// 1000

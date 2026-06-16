@@ -16,9 +16,9 @@ type iGrayTrafficWeight interface {
 }
 
 type GrayTrafficWeight struct {
-	// 灰度版本号
+	// The identifier of the gray version.
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
-	// 流量权重比例（0.0-1.0）
+	// The traffic weight, a value from 0.0 to 1.0.
 	Weight *float32 `json:"weight,omitempty" xml:"weight,omitempty"`
 }
 

@@ -16,10 +16,14 @@ type iBrowserStreams interface {
 }
 
 type BrowserStreams struct {
+	// automation stream
+	//
 	// example:
 	//
 	// {}
 	AutomationStream *BrowserAutomationStream `json:"automationStream,omitempty" xml:"automationStream,omitempty"`
+	// real-time view stream
+	//
 	// example:
 	//
 	// {}

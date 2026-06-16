@@ -14,6 +14,7 @@ type iUpdateModelServiceRequest interface {
 }
 
 type UpdateModelServiceRequest struct {
+	// The request body.
 	Body *UpdateModelServiceInput `json:"body,omitempty" xml:"body,omitempty"`
 }
 

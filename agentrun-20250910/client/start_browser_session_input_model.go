@@ -14,6 +14,8 @@ type iStartBrowserSessionInput interface {
 }
 
 type StartBrowserSessionInput struct {
+	// Browser session name
+	//
 	// if can be null:
 	// true
 	//

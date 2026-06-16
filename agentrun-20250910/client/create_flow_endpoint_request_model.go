@@ -14,7 +14,7 @@ type iCreateFlowEndpointRequest interface {
 }
 
 type CreateFlowEndpointRequest struct {
-	// 创建工作流端点所需的完整配置信息
+	// Request parameters for creating a flow endpoint
 	//
 	// This parameter is required.
 	Body *CreateFlowEndpointInput `json:"body,omitempty" xml:"body,omitempty"`

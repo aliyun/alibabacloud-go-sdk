@@ -30,17 +30,21 @@ type iCreateModelServiceInput interface {
 }
 
 type CreateModelServiceInput struct {
+	// The credential name for authenticating with the cloud provider.
+	//
 	// example:
 	//
 	// credentialName
 	CredentialName *string `json:"credentialName,omitempty" xml:"credentialName,omitempty"`
+	// An optional description of the model service.
+	//
 	// example:
 	//
 	// Auto generate task: Pipeline[pipeline-run-1742178254775] pipelineTemplate[data-export-service-online-iVnQB5] taskTemplate[serverless-runner-task], time[2025-03-17T02:24:36Z]
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// modelInfoConfigs
+	// A list of configurations for models in the service.
 	ModelInfoConfigs []*ModelInfoConfig `json:"modelInfoConfigs" xml:"modelInfoConfigs" type:"Repeated"`
-	// modelServiceName
+	// The name of the model service.
 	//
 	// This parameter is required.
 	//
@@ -48,24 +52,34 @@ type CreateModelServiceInput struct {
 	//
 	// modelServiceName
 	ModelServiceName *string `json:"modelServiceName,omitempty" xml:"modelServiceName,omitempty"`
+	// The model type. Valid values include:
+	//
+	// - `system`: A built-in model that the service provides.
+	//
+	// - `deployment`: A custom model that a user deploys.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// system
-	ModelType            *string               `json:"modelType,omitempty" xml:"modelType,omitempty"`
+	ModelType *string `json:"modelType,omitempty" xml:"modelType,omitempty"`
+	// The network configuration for the model service. See `NetworkConfiguration` for details.
 	NetworkConfiguration *NetworkConfiguration `json:"networkConfiguration,omitempty" xml:"networkConfiguration,omitempty"`
+	// The cloud provider for the model service. Currently, only Alibaba Cloud is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Aliyun
 	Provider *string `json:"provider,omitempty" xml:"provider,omitempty"`
-	// providerSettings
+	// Provider-specific configuration settings. See `ProviderSettings` for details.
 	//
 	// This parameter is required.
 	ProviderSettings *ProviderSettings `json:"providerSettings,omitempty" xml:"providerSettings,omitempty"`
-	WorkspaceId      *string           `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+	// The ID of the workspace in which to create the model service.
+	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
 }
 
 func (s CreateModelServiceInput) String() string {

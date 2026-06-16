@@ -25,6 +25,8 @@ type iUpdateAgentRuntimeInput interface {
 	GetCredentialName() *string
 	SetDescription(v string) *UpdateAgentRuntimeInput
 	GetDescription() *string
+	SetDisableOndemand(v bool) *UpdateAgentRuntimeInput
+	GetDisableOndemand() *bool
 	SetDisableSessionAffinity(v bool) *UpdateAgentRuntimeInput
 	GetDisableSessionAffinity() *bool
 	SetDiskSize(v int32) *UpdateAgentRuntimeInput
@@ -39,6 +41,10 @@ type iUpdateAgentRuntimeInput interface {
 	GetExecutionRoleArn() *string
 	SetExternalAgentEndpointUrl(v string) *UpdateAgentRuntimeInput
 	GetExternalAgentEndpointUrl() *string
+	SetForceEvictInstances(v bool) *UpdateAgentRuntimeInput
+	GetForceEvictInstances() *bool
+	SetHeaderFieldName(v string) *UpdateAgentRuntimeInput
+	GetHeaderFieldName() *string
 	SetHealthCheckConfiguration(v *HealthCheckConfiguration) *UpdateAgentRuntimeInput
 	GetHealthCheckConfiguration() *HealthCheckConfiguration
 	SetLogConfiguration(v *LogConfiguration) *UpdateAgentRuntimeInput
@@ -55,6 +61,8 @@ type iUpdateAgentRuntimeInput interface {
 	GetPort() *int32
 	SetProtocolConfiguration(v *ProtocolConfiguration) *UpdateAgentRuntimeInput
 	GetProtocolConfiguration() *ProtocolConfiguration
+	SetSessionAffinityType(v string) *UpdateAgentRuntimeInput
+	GetSessionAffinityType() *string
 	SetSessionConcurrencyLimitPerInstance(v int32) *UpdateAgentRuntimeInput
 	GetSessionConcurrencyLimitPerInstance() *int32
 	SetSessionIdleTimeoutSeconds(v int32) *UpdateAgentRuntimeInput
@@ -66,6 +74,8 @@ type iUpdateAgentRuntimeInput interface {
 }
 
 type UpdateAgentRuntimeInput struct {
+	// The name of the agent runtime.
+	//
 	// example:
 	//
 	// my-agent-runtime
@@ -76,133 +86,169 @@ type UpdateAgentRuntimeInput struct {
 	//
 	// {}
 	ArmsConfiguration *ArmsConfiguration `json:"armsConfiguration,omitempty" xml:"armsConfiguration,omitempty"`
+	// The artifact type.
+	//
 	// example:
 	//
 	// Code
 	ArtifactType *string `json:"artifactType,omitempty" xml:"artifactType,omitempty"`
-	// 当artifactType为Code时的代码配置信息，包括代码源、入口文件等
+	// The code configuration.
 	//
 	// example:
 	//
 	// {}
 	CodeConfiguration *CodeConfiguration `json:"codeConfiguration,omitempty" xml:"codeConfiguration,omitempty"`
-	// 当artifactType为Container时的容器配置信息，包括镜像地址、启动命令等
+	// The container configuration.
 	//
 	// example:
 	//
 	// {}
 	ContainerConfiguration *ContainerConfiguration `json:"containerConfiguration,omitempty" xml:"containerConfiguration,omitempty"`
+	// The number of CPU cores.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1.0
 	Cpu *float32 `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	// 用于访问智能体的凭证名称，访问智能体运行时将使用此凭证进行身份验证
+	// The name of the credential that the agent runtime uses to authenticate requests.
 	//
 	// example:
 	//
 	// my-credential
 	CredentialName *string `json:"credentialName,omitempty" xml:"credentialName,omitempty"`
+	// The description of the agent runtime.
+	//
 	// example:
 	//
 	// 更新后的智能体运行时描述
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 是否禁用会话亲和性。默认为 false（即默认启用会话亲和），设置为 true 时关闭会话亲和
+	// Specifies whether to disable on-demand elasticity. Set to true to disable. Default: false.
 	//
 	// example:
 	//
 	// false
-	DisableSessionAffinity *bool   `json:"disableSessionAffinity,omitempty" xml:"disableSessionAffinity,omitempty"`
-	DiskSize               *int32  `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
-	Edition                *string `json:"edition,omitempty" xml:"edition,omitempty"`
-	// 是否启用会话隔离，启用后每个会话将在独立的环境中运行
+	DisableOndemand *bool `json:"disableOndemand,omitempty" xml:"disableOndemand,omitempty"`
+	// Specifies whether to disable session affinity. Set to true to disable. Default: false.
+	//
+	// example:
+	//
+	// false
+	DisableSessionAffinity *bool `json:"disableSessionAffinity,omitempty" xml:"disableSessionAffinity,omitempty"`
+	// The disk size in gigabytes (GB).
+	DiskSize *int32  `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
+	Edition  *string `json:"edition,omitempty" xml:"edition,omitempty"`
+	// Specifies whether to enable session isolation. If enabled, each session runs in an isolated environment.
 	//
 	// example:
 	//
 	// false
 	EnableSessionIsolation *bool `json:"enableSessionIsolation,omitempty" xml:"enableSessionIsolation,omitempty"`
-	// 智能体运行时的环境变量配置，用于在运行时传递配置参数
+	// Environment variables for the agent runtime.
 	//
 	// example:
 	//
 	// ENV_VAR1=value1,ENV_VAR2=value2
 	EnvironmentVariables map[string]*string `json:"environmentVariables" xml:"environmentVariables"`
-	// 为智能体运行时提供访问云服务权限的执行角色ARN
+	// The execution role ARN that grants the agent runtime permissions to access cloud services.
 	//
 	// example:
 	//
 	// acs:ram::1760720386195983:role/AgentRunExecutionRole
 	ExecutionRoleArn *string `json:"executionRoleArn,omitempty" xml:"executionRoleArn,omitempty"`
-	// 外部注册类型的智能体访问端点地址，用于连接已部署在外部的智能体服务
+	// The endpoint URL for an externally registered agent. The platform uses this URL to connect to an agent service deployed outside the platform.
 	//
 	// example:
 	//
 	// https://external-agent.example.com/api
 	ExternalAgentEndpointUrl *string `json:"externalAgentEndpointUrl,omitempty" xml:"externalAgentEndpointUrl,omitempty"`
-	// 智能体运行时的健康检查配置，用于监控运行时实例的健康状态
+	// Specifies whether to perform a best-effort eviction of active Function Compute (FC) sessions when the configuration is updated. This helps the new settings take effect faster.
+	//
+	// example:
+	//
+	// true
+	ForceEvictInstances *bool `json:"forceEvictInstances,omitempty" xml:"forceEvictInstances,omitempty"`
+	// The name of the request header used for session affinity when sessionAffinityType is set to "HEADER_FIELD".
+	//
+	// example:
+	//
+	// x-agentrun-session-id
+	HeaderFieldName *string `json:"headerFieldName,omitempty" xml:"headerFieldName,omitempty"`
+	// The health check configuration for monitoring the health of agent runtime instances.
 	//
 	// example:
 	//
 	// {}
 	HealthCheckConfiguration *HealthCheckConfiguration `json:"healthCheckConfiguration,omitempty" xml:"healthCheckConfiguration,omitempty"`
-	// SLS（简单日志服务）配置
+	// The configuration for Simple Log Service (SLS).
 	//
 	// example:
 	//
 	// {}
 	LogConfiguration *LogConfiguration `json:"logConfiguration,omitempty" xml:"logConfiguration,omitempty"`
+	// The amount of memory in megabytes (MB).
+	//
 	// example:
 	//
 	// 1024
 	Memory *int32 `json:"memory,omitempty" xml:"memory,omitempty"`
-	// 文件存储NAS的配置信息，用于挂载NAS文件系统到智能体运行时
+	// Configuration for mounting a NAS file system to the agent runtime.
 	//
 	// example:
 	//
 	// {}
 	NasConfig *NASConfig `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
-	// 智能体运行时的网络配置，包括VPC、安全组等网络访问设置
+	// The network configuration.
 	//
 	// example:
 	//
 	// {}
 	NetworkConfiguration *NetworkConfiguration `json:"networkConfiguration,omitempty" xml:"networkConfiguration,omitempty"`
-	// 对象存储OSS的挂载配置信息，用于挂载OSS存储桶到智能体运行时
+	// Configuration for mounting an OSS bucket to the agent runtime.
 	//
 	// example:
 	//
 	// {}
 	OssMountConfig *OSSMountConfig `json:"ossMountConfig,omitempty" xml:"ossMountConfig,omitempty"`
+	// The port on which the agent service listens.
+	//
 	// example:
 	//
 	// 8080
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
-	// 智能体运行时的通信协议配置，定义运行时如何与外部系统交互
+	// The protocol configuration.
 	//
 	// example:
 	//
 	// {}
 	ProtocolConfiguration *ProtocolConfiguration `json:"protocolConfiguration,omitempty" xml:"protocolConfiguration,omitempty"`
-	// 每个运行时实例允许的最大并发会话数
+	// The session affinity mode. Valid values: NONE (disables session affinity), HEADER_FIELD (routes requests based on a request header), and GENERATED_COOKIE (routes requests using a cookie generated by Function Compute (FC)). The value COOKIE is an alias for GENERATED_COOKIE.
+	//
+	// example:
+	//
+	// GENERATED_COOKIE
+	SessionAffinityType *string `json:"sessionAffinityType,omitempty" xml:"sessionAffinityType,omitempty"`
+	// The maximum number of concurrent sessions allowed per runtime instance.
 	//
 	// example:
 	//
 	// 100
 	SessionConcurrencyLimitPerInstance *int32 `json:"sessionConcurrencyLimitPerInstance,omitempty" xml:"sessionConcurrencyLimitPerInstance,omitempty"`
-	// 会话的空闲超时时间，单位为秒。实例没有会话请求后处于空闲状态，空闲态为闲置计费模式，超过此超时时间后会话自动过期，不可继续使用
+	// The idle timeout for a session, in seconds. If an instance remains idle longer than this timeout after receiving no requests, the session expires.
 	//
 	// example:
 	//
 	// 3600
 	SessionIdleTimeoutSeconds *int32 `json:"sessionIdleTimeoutSeconds,omitempty" xml:"sessionIdleTimeoutSeconds,omitempty"`
-	// 智能体运行时的系统标签信息，用于系统级别的资源分类和管理
+	// The system tags for the agent runtime, used for resource classification and management.
 	//
 	// example:
 	//
 	// system-tag-1,system-tag-2
-	SystemTags  []*string `json:"systemTags" xml:"systemTags" type:"Repeated"`
-	WorkspaceId *string   `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+	SystemTags []*string `json:"systemTags" xml:"systemTags" type:"Repeated"`
+	// The ID of the workspace.
+	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
 }
 
 func (s UpdateAgentRuntimeInput) String() string {
@@ -245,6 +291,10 @@ func (s *UpdateAgentRuntimeInput) GetDescription() *string {
 	return s.Description
 }
 
+func (s *UpdateAgentRuntimeInput) GetDisableOndemand() *bool {
+	return s.DisableOndemand
+}
+
 func (s *UpdateAgentRuntimeInput) GetDisableSessionAffinity() *bool {
 	return s.DisableSessionAffinity
 }
@@ -271,6 +321,14 @@ func (s *UpdateAgentRuntimeInput) GetExecutionRoleArn() *string {
 
 func (s *UpdateAgentRuntimeInput) GetExternalAgentEndpointUrl() *string {
 	return s.ExternalAgentEndpointUrl
+}
+
+func (s *UpdateAgentRuntimeInput) GetForceEvictInstances() *bool {
+	return s.ForceEvictInstances
+}
+
+func (s *UpdateAgentRuntimeInput) GetHeaderFieldName() *string {
+	return s.HeaderFieldName
 }
 
 func (s *UpdateAgentRuntimeInput) GetHealthCheckConfiguration() *HealthCheckConfiguration {
@@ -303,6 +361,10 @@ func (s *UpdateAgentRuntimeInput) GetPort() *int32 {
 
 func (s *UpdateAgentRuntimeInput) GetProtocolConfiguration() *ProtocolConfiguration {
 	return s.ProtocolConfiguration
+}
+
+func (s *UpdateAgentRuntimeInput) GetSessionAffinityType() *string {
+	return s.SessionAffinityType
 }
 
 func (s *UpdateAgentRuntimeInput) GetSessionConcurrencyLimitPerInstance() *int32 {
@@ -361,6 +423,11 @@ func (s *UpdateAgentRuntimeInput) SetDescription(v string) *UpdateAgentRuntimeIn
 	return s
 }
 
+func (s *UpdateAgentRuntimeInput) SetDisableOndemand(v bool) *UpdateAgentRuntimeInput {
+	s.DisableOndemand = &v
+	return s
+}
+
 func (s *UpdateAgentRuntimeInput) SetDisableSessionAffinity(v bool) *UpdateAgentRuntimeInput {
 	s.DisableSessionAffinity = &v
 	return s
@@ -393,6 +460,16 @@ func (s *UpdateAgentRuntimeInput) SetExecutionRoleArn(v string) *UpdateAgentRunt
 
 func (s *UpdateAgentRuntimeInput) SetExternalAgentEndpointUrl(v string) *UpdateAgentRuntimeInput {
 	s.ExternalAgentEndpointUrl = &v
+	return s
+}
+
+func (s *UpdateAgentRuntimeInput) SetForceEvictInstances(v bool) *UpdateAgentRuntimeInput {
+	s.ForceEvictInstances = &v
+	return s
+}
+
+func (s *UpdateAgentRuntimeInput) SetHeaderFieldName(v string) *UpdateAgentRuntimeInput {
+	s.HeaderFieldName = &v
 	return s
 }
 
@@ -433,6 +510,11 @@ func (s *UpdateAgentRuntimeInput) SetPort(v int32) *UpdateAgentRuntimeInput {
 
 func (s *UpdateAgentRuntimeInput) SetProtocolConfiguration(v *ProtocolConfiguration) *UpdateAgentRuntimeInput {
 	s.ProtocolConfiguration = v
+	return s
+}
+
+func (s *UpdateAgentRuntimeInput) SetSessionAffinityType(v string) *UpdateAgentRuntimeInput {
+	s.SessionAffinityType = &v
 	return s
 }
 

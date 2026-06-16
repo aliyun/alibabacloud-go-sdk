@@ -24,17 +24,17 @@ type iHealthCheckConfig interface {
 }
 
 type HealthCheckConfig struct {
-	// 在将容器视为不健康之前，连续失败的健康检查次数
+	// The number of consecutive failed health checks before the container is considered unhealthy
 	FailureThreshold *int32 `json:"failureThreshold,omitempty" xml:"failureThreshold,omitempty"`
-	// 用于健康检查的HTTP GET请求的URL地址
+	// The URL address for the HTTP GET request used in health checks
 	HttpGetUrl *string `json:"httpGetUrl,omitempty" xml:"httpGetUrl,omitempty"`
-	// 在容器启动后，首次执行健康检查前的延迟时间（秒）
+	// The delay time (in seconds) after the container starts before the first health check is executed
 	InitialDelaySeconds *int32 `json:"initialDelaySeconds,omitempty" xml:"initialDelaySeconds,omitempty"`
-	// 执行健康检查的时间间隔（秒）
+	// The time interval (in seconds) between health checks
 	PeriodSeconds *int32 `json:"periodSeconds,omitempty" xml:"periodSeconds,omitempty"`
-	// 在将容器视为健康之前，连续成功的健康检查次数
+	// The number of consecutive successful health checks required before the container is considered healthy
 	SuccessThreshold *int32 `json:"successThreshold,omitempty" xml:"successThreshold,omitempty"`
-	// 健康检查的超时时间（秒）
+	// The timeout duration (in seconds) for health checks
 	TimeoutSeconds *int32 `json:"timeoutSeconds,omitempty" xml:"timeoutSeconds,omitempty"`
 }
 

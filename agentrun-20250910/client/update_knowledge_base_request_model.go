@@ -14,6 +14,7 @@ type iUpdateKnowledgeBaseRequest interface {
 }
 
 type UpdateKnowledgeBaseRequest struct {
+	// The request body for updating a knowledge base.
 	Body *UpdateKnowledgeBaseInput `json:"body,omitempty" xml:"body,omitempty"`
 }
 

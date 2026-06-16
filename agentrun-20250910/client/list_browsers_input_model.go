@@ -18,16 +18,20 @@ type iListBrowsersInput interface {
 }
 
 type ListBrowsersInput struct {
-	// 按浏览器名称过滤
+	// Filters the results by browser name.
 	//
 	// example:
 	//
 	// my-browser
 	BrowserName *string `json:"browserName,omitempty" xml:"browserName,omitempty"`
+	// The page number of the results to return.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The maximum number of results to return per page.
+	//
 	// example:
 	//
 	// 20
