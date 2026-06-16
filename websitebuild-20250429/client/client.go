@@ -24,7 +24,11 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = dara.String("")
+	client.EndpointRule = dara.String("regional")
+	client.EndpointMap = map[string]*string{
+		"public":         dara.String("websitebuild.aliyuncs.com"),
+		"cn-zhangjiakou": dara.String("websitebuild.aliyuncs.com"),
+	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -7220,11 +7224,11 @@ func (client *Client) MoveMaterialFile(request *MoveMaterialFileRequest) (_resul
 
 // Summary:
 //
-// 数据变更通知触发（for admin）
+// Data change notification trigger (for admin)
 //
 // Description:
 //
-// 查询应用实例信息
+// Queries application instance information.
 //
 // @param request - NotifyAppNotificationForAdminRequest
 //
@@ -7276,11 +7280,11 @@ func (client *Client) NotifyAppNotificationForAdminWithOptions(request *NotifyAp
 
 // Summary:
 //
-// 数据变更通知触发（for admin）
+// Data change notification trigger (for admin)
 //
 // Description:
 //
-// 查询应用实例信息
+// Queries application instance information.
 //
 // @param request - NotifyAppNotificationForAdminRequest
 //

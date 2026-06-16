@@ -5208,11 +5208,11 @@ func (client *Client) MoveMaterialFileWithContext(ctx context.Context, tmpReq *M
 
 // Summary:
 //
-// 数据变更通知触发（for admin）
+// Data change notification trigger (for admin)
 //
 // Description:
 //
-// 查询应用实例信息
+// Queries application instance information.
 //
 // @param request - NotifyAppNotificationForAdminRequest
 //

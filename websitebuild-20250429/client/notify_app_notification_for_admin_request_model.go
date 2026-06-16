@@ -18,14 +18,20 @@ type iNotifyAppNotificationForAdminRequest interface {
 }
 
 type NotifyAppNotificationForAdminRequest struct {
+	// Business ID.
+	//
 	// example:
 	//
 	// WS20260206134746000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// Environment identifier.
+	//
 	// example:
 	//
 	// staging
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// Scene ID.
+	//
 	// example:
 	//
 	// 8c909373-6c33-41a7-aa38-3650e288a63e
