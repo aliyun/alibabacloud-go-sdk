@@ -16,7 +16,7 @@ type iQueryMaterialFileDetailRequest interface {
 }
 
 type QueryMaterialFileDetailRequest struct {
-	// Application instance ID
+	// The application instance ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type QueryMaterialFileDetailRequest struct {
 	//
 	// WD20250814102215000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// File ID
+	// The file ID.
 	//
 	// This parameter is required.
 	//

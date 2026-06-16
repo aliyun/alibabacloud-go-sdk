@@ -20,7 +20,7 @@ type iGetAppRecommendedCommoditiesRequest interface {
 }
 
 type GetAppRecommendedCommoditiesRequest struct {
-	// Application instance business ID (required in scenario 1, used to filter instance versions during query)
+	// The business ID of the application instance. This parameter is required in scenario 1 and is used to filter by instance version.
 	//
 	// example:
 	//
@@ -28,7 +28,11 @@ type GetAppRecommendedCommoditiesRequest struct {
 	BizId              *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
 	Extend             *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
 	ResourceConditions *string `json:"ResourceConditions,omitempty" xml:"ResourceConditions,omitempty"`
-	// Scenarios: ai_chat | inspiration
+	// Scenarios. Valid values:
+	//
+	// - ai_chat
+	//
+	// - inspiration.
 	//
 	// example:
 	//

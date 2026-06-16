@@ -20,33 +20,33 @@ type iOperateAppServiceForPartnerRequest interface {
 }
 
 type OperateAppServiceForPartnerRequest struct {
-	// Business ID.
+	// The business ID.
 	//
 	// example:
 	//
 	// WS00001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// Additional extension information in JSON structure, facilitating future parameter extensions.
+	// Other extended information in JSON format for future parameter expansion.
 	//
 	// example:
 	//
 	// {\\"user_device_id\\":\\"6bef45cb0c76de284d24de074c088b73\\"}\\n
 	Extend *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
-	// Operation event:
+	// The operation event. Valid values:
 	//
-	// SERVICE_FINISH: Service completed
+	// SERVICE_FINISH: the service is completed.
 	//
 	// example:
 	//
 	// SERVICE_FINISH
 	OperateEvent *string `json:"OperateEvent,omitempty" xml:"OperateEvent,omitempty"`
-	// Service Type.
+	// The service type.
 	//
 	// Valid values:
 	//
-	// - private: Deployed under the user\\"s account.
+	// - private: deployment under the user account.
 	//
-	// - managed: Hosted under the service provider\\"s account.
+	// - managed: hosted under the service provider account.
 	//
 	// - operation: Alibaba Cloud Managed Services.
 	//

@@ -34,43 +34,43 @@ type iQueryInspirationAccountDetailsResponseBody interface {
 }
 
 type QueryInspirationAccountDetailsResponseBody struct {
-	// Access denied details
+	// The details of the permission verification failure.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether retry is allowed. Valid values:
+	// Indicates whether a retry is allowed. Valid values:
 	//
-	// - false: Retry is not allowed.
+	// - false: A retry is not allowed.
 	//
-	// - true: Retry is allowed.
+	// - true: A retry is allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// Application Name. Query the application with this name.
+	// The application name. The application with this name is queried.
 	//
 	// example:
 	//
 	// or
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// Dynamic error code.
+	// The dynamic error code.
 	//
 	// example:
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// Dynamic message.
+	// The dynamic message.
 	//
 	// example:
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// Returned error parameters
+	// The error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// Response data
+	// The response data.
 	Module *QueryInspirationAccountDetailsResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -78,19 +78,19 @@ type QueryInspirationAccountDetailsResponseBody struct {
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Error code
+	// The error code.
 	//
 	// example:
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// Abnormal message
+	// The error message.
 	//
 	// example:
 	//
 	// 系统异常
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// Indicates whether processing is synchronous
+	// Indicates whether the request is processed synchronously.
 	//
 	// example:
 	//
@@ -215,43 +215,43 @@ func (s *QueryInspirationAccountDetailsResponseBody) Validate() error {
 }
 
 type QueryInspirationAccountDetailsResponseBodyModule struct {
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 12
 	CurrentPageNum *int32 `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
-	// Request result.
+	// The query results.
 	Data []*QueryInspirationAccountDetailsResponseBodyModuleData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Decision weight
+	// The decision weight.
 	Next *QueryInspirationAccountDetailsResponseBodyModuleNext `json:"Next,omitempty" xml:"Next,omitempty" type:"Struct"`
-	// Indicates whether there is a next page.
+	// Indicates whether a next page exists.
 	//
 	// example:
 	//
 	// False
 	NextPage *bool `json:"NextPage,omitempty" xml:"NextPage,omitempty"`
-	// Page size.
+	// The page size.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Indicates whether a previous page exists
+	// Indicates whether a previous page exists.
 	//
 	// example:
 	//
 	// False
 	PrePage *bool `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
-	// In addition to paging limits, the server-side processes at most the latest 1,000 records for the current query. If the result exceeds 1,000 records, **ResultLimit*	- is **true**. You can narrow the Time Range and search again. Otherwise, **ResultLimit*	- is **false**.
+	// Apart from pagination limits, the server processes up to 1000 recent records for the current query. If the results exceed 1000 records, **ResultLimit*	- is **true**. In this case, narrow the time range and search again. Otherwise, **ResultLimit*	- is **false**.
 	ResultLimit *bool `json:"ResultLimit,omitempty" xml:"ResultLimit,omitempty"`
-	// Total number of records.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 1
 	TotalItemNum *int32 `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
-	// Total number of pages.
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -367,45 +367,45 @@ func (s *QueryInspirationAccountDetailsResponseBodyModule) Validate() error {
 }
 
 type QueryInspirationAccountDetailsResponseBodyModuleData struct {
-	// Acquisition Time
+	// The time when the inspiration points were acquired.
 	//
 	// example:
 	//
 	// 2026-03-03 12:00:00
 	AcquisitionTime *string `json:"AcquisitionTime,omitempty" xml:"AcquisitionTime,omitempty"`
-	// Balance (initQuota - used)
+	// The remaining balance (InitQuota minus used).
 	//
 	// example:
 	//
 	// 12
 	Balance    *int64  `json:"Balance,omitempty" xml:"Balance,omitempty"`
 	BalanceStr *string `json:"BalanceStr,omitempty" xml:"BalanceStr,omitempty"`
-	// Validity Period expiration time
+	// The expiration time of the quota.
 	//
 	// example:
 	//
 	// 2025-04-11 10:26:27 +0800
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// Indicates whether it has expired (endDate < current time). The frontend uses this to gray out the display.
+	// Indicates whether the quota has expired (EndDate is earlier than the current time). The frontend grays out expired entries based on this value.
 	//
 	// example:
 	//
 	// False
 	Expired *bool `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	// Quantity obtained (initial quota)
+	// The acquired quantity (initial quota).
 	//
 	// example:
 	//
 	// 123123
 	InitQuota    *int64  `json:"InitQuota,omitempty" xml:"InitQuota,omitempty"`
 	InitQuotaStr *string `json:"InitQuotaStr,omitempty" xml:"InitQuotaStr,omitempty"`
-	// Source type code (such as FREE_TRIAL_GIFT, INSTANCE_GIFT, UPGRADE_GRANT, PURCHASED)
+	// The source type code. Valid values: FREE_TRIAL_GIFT, INSTANCE_GIFT, UPGRADE_GRANT, and PURCHASED.
 	//
 	// example:
 	//
 	// MARKET_CLOUD_DREAM
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// Source Type Display Name
+	// The display name of the source type.
 	//
 	// example:
 	//
@@ -517,45 +517,45 @@ func (s *QueryInspirationAccountDetailsResponseBodyModuleData) Validate() error 
 }
 
 type QueryInspirationAccountDetailsResponseBodyModuleNext struct {
-	// Acquisition time
+	// The time when the inspiration points were acquired.
 	//
 	// example:
 	//
 	// 2026-03-03 12:00:00
 	AcquisitionTime *string `json:"AcquisitionTime,omitempty" xml:"AcquisitionTime,omitempty"`
-	// Balance (initQuota - used)
+	// The remaining balance (InitQuota minus used).
 	//
 	// example:
 	//
 	// 12
 	Balance    *int64  `json:"Balance,omitempty" xml:"Balance,omitempty"`
 	BalanceStr *string `json:"BalanceStr,omitempty" xml:"BalanceStr,omitempty"`
-	// Expiration time of the validity period
+	// The expiration time of the quota.
 	//
 	// example:
 	//
 	// 2026-02-25 10:11:25
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// Indicates whether it has expired (endDate < current time). The frontend uses this to gray out the display.
+	// Indicates whether the quota has expired (EndDate is earlier than the current time). The frontend grays out expired entries based on this value.
 	//
 	// example:
 	//
 	// False
 	Expired *bool `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	// Quantity obtained (initial quota)
+	// The acquired quantity (initial quota).
 	//
 	// example:
 	//
 	// 123123
 	InitQuota    *int64  `json:"InitQuota,omitempty" xml:"InitQuota,omitempty"`
 	InitQuotaStr *string `json:"InitQuotaStr,omitempty" xml:"InitQuotaStr,omitempty"`
-	// Source type code (such as FREE_TRIAL_GIFT, INSTANCE_GIFT, UPGRADE_GRANT, PURCHASED)
+	// The source type code. Valid values: FREE_TRIAL_GIFT, INSTANCE_GIFT, UPGRADE_GRANT, and PURCHASED.
 	//
 	// example:
 	//
 	// MARKET_CLOUD_DREAM
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// Display Name of the source type
+	// The display name of the source type.
 	//
 	// example:
 	//

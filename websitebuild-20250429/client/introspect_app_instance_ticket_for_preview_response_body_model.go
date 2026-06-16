@@ -34,7 +34,7 @@ type iIntrospectAppInstanceTicketForPreviewResponseBody interface {
 }
 
 type IntrospectAppInstanceTicketForPreviewResponseBody struct {
-	// Detailed reason for access denial.
+	// The details about the access deny.
 	//
 	// example:
 	//
@@ -46,29 +46,29 @@ type IntrospectAppInstanceTicketForPreviewResponseBody struct {
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// App Name.
+	// The application name.
 	//
 	// example:
 	//
 	// or
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// Dynamic error code.
+	// The dynamic fault code.
 	//
 	// example:
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// Dynamic error message used to replace the `%s` placeholder in the **ErrMessage*	- error message.
+	// The dynamic fault message, which is used to replace the `%s` variable in the **ErrMessage*	- return parameter.
 	//
-	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the provided request parameter **DtsJobId*	- is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the value of the request parameter **DtsJobId*	- is invalid.
 	//
 	// example:
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// Returned error parameters
+	// The fault parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// Returned object.
+	// The response object.
 	Module *IntrospectAppInstanceTicketForPreviewResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -76,19 +76,19 @@ type IntrospectAppInstanceTicketForPreviewResponseBody struct {
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Error code
+	// The fault code.
 	//
 	// example:
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// Abnormal message
+	// The root fault message.
 	//
 	// example:
 	//
 	// 系统异常
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// Reserved parameter.
+	// A reserved parameter.
 	//
 	// example:
 	//
@@ -213,19 +213,19 @@ func (s *IntrospectAppInstanceTicketForPreviewResponseBody) Validate() error {
 }
 
 type IntrospectAppInstanceTicketForPreviewResponseBodyModule struct {
-	// Access token time-to-live (TTL)
+	// The time when the access token expires.
 	//
 	// example:
 	//
 	// 2025-12-18T22:30:00+08:00
 	AccessTokenExpiresAt *string `json:"AccessTokenExpiresAt,omitempty" xml:"AccessTokenExpiresAt,omitempty"`
-	// Access token issue Time
+	// The time when the access token was issued.
 	//
 	// example:
 	//
 	// 2025-12-18T22:30:00+08:00
 	AccessTokenIssuedAt *string `json:"AccessTokenIssuedAt,omitempty" xml:"AccessTokenIssuedAt,omitempty"`
-	// Access token value
+	// The access token value.
 	//
 	// example:
 	//
@@ -237,13 +237,13 @@ type IntrospectAppInstanceTicketForPreviewResponseBodyModule struct {
 	//
 	// 12343131221311
 	AliyunPk *string `json:"AliyunPk,omitempty" xml:"AliyunPk,omitempty"`
-	// Extension property
+	// The extension properties.
 	//
 	// example:
 	//
 	// {}
 	Attributes *string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
-	// Authorization code Type
+	// The authorization code type.
 	//
 	// example:
 	//
@@ -255,31 +255,31 @@ type IntrospectAppInstanceTicketForPreviewResponseBodyModule struct {
 	//
 	// 123131
 	Bid *string `json:"Bid,omitempty" xml:"Bid,omitempty"`
-	// Parent Alibaba Cloud PK
+	// The parent Alibaba Cloud account ID.
 	//
 	// example:
 	//
 	// 12343131221311
 	ParentPk *string `json:"ParentPk,omitempty" xml:"ParentPk,omitempty"`
-	// Time-to-live (TTL) of the refresh token
+	// The time when the refresh token expires.
 	//
 	// example:
 	//
 	// 1768619049924
 	RefreshTokenExpiresAt *string `json:"RefreshTokenExpiresAt,omitempty" xml:"RefreshTokenExpiresAt,omitempty"`
-	// Refresh token issue Time
+	// The time when the refresh token was issued.
 	//
 	// example:
 	//
 	// 1768619049924
 	RefreshTokenIssuedAt *string `json:"RefreshTokenIssuedAt,omitempty" xml:"RefreshTokenIssuedAt,omitempty"`
-	// Refresh token value
+	// The refresh token value.
 	//
 	// example:
 	//
 	// be9750d595b6cd7c93a80b46
 	RefreshTokenValue *string `json:"RefreshTokenValue,omitempty" xml:"RefreshTokenValue,omitempty"`
-	// Externally Unique
+	// The external unique identifier.
 	//
 	// example:
 	//

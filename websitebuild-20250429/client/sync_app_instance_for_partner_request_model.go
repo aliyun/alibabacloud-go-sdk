@@ -22,27 +22,27 @@ type iSyncAppInstanceForPartnerRequest interface {
 }
 
 type SyncAppInstanceForPartnerRequest struct {
-	// Application instance object data
+	// The website instance object data.
 	AppInstance *SyncAppInstanceForPartnerRequestAppInstance `json:"AppInstance,omitempty" xml:"AppInstance,omitempty" type:"Struct"`
-	// Type of system event. CREATE, UPDATE, COMPLETE
+	// The type of the system event. Valid values: CREATE, UPDATE, and COMPLETE.
 	//
 	// example:
 	//
 	// CREATE
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	// Operator ID
+	// The employee ID of the operator.
 	//
 	// example:
 	//
 	// system
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	// Source business ID.
+	// The source business ID.
 	//
 	// example:
 	//
 	// 31104757
 	SourceBizId *string `json:"SourceBizId,omitempty" xml:"SourceBizId,omitempty"`
-	// Source: MARKET_CLOUD_DREAM
+	// The source. Set this parameter to MARKET_CLOUD_DREAM.
 	//
 	// example:
 	//
@@ -113,61 +113,61 @@ func (s *SyncAppInstanceForPartnerRequest) Validate() error {
 }
 
 type SyncAppInstanceForPartnerRequestAppInstance struct {
-	// Application Type: WEBSITE
+	// The application type. Set this parameter to WEBSITE.
 	//
 	// example:
 	//
 	// WEBSITE
 	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
-	// Website business ID
+	// The website business ID.
 	//
 	// example:
 	//
 	// WD20250711094503000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// Logical deletion
+	// Specifies whether the instance is logically deleted.
 	//
 	// example:
 	//
 	// fase
 	Deleted *string `json:"Deleted,omitempty" xml:"Deleted,omitempty"`
-	// Domain name
+	// The domain name.
 	//
 	// example:
 	//
 	// alliveout.xntv.tv
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// Event end time (UNIX timestamp).
+	// The end time of the event, in UNIX timestamp format.
 	//
 	// example:
 	//
 	// 2024-08-23T02:14:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Deletion time
+	// The deletion time.
 	//
 	// example:
 	//
 	// 2025-01-01 00:00:00
 	GmtDelete *string `json:"GmtDelete,omitempty" xml:"GmtDelete,omitempty"`
-	// Vulnerability published UNIX timestamp, in milliseconds.
+	// The timestamp when the vulnerability was published, in milliseconds.
 	//
 	// example:
 	//
 	// 2025-01-01 00:00:00
 	GmtPublish *string `json:"GmtPublish,omitempty" xml:"GmtPublish,omitempty"`
-	// Application icon URL.
+	// The URL of the application icon.
 	//
 	// example:
 	//
 	// icon/WS20250626112715000001/thumbnail.jpg
 	IconUrl *string `json:"IconUrl,omitempty" xml:"IconUrl,omitempty"`
-	// Website name
+	// The website name.
 	//
 	// example:
 	//
 	// AI建站
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Website configuration information
+	// The website configuration information.
 	//
 	// example:
 	//
@@ -179,41 +179,41 @@ type SyncAppInstanceForPartnerRequestAppInstance struct {
 	//
 	// xxxx.scd.wezhan.cn
 	SiteHost *string `json:"SiteHost,omitempty" xml:"SiteHost,omitempty"`
-	// Website SiteID
+	// The website SiteID.
 	//
 	// example:
 	//
 	// 31104757
 	Slug *string `json:"Slug,omitempty" xml:"Slug,omitempty"`
-	// Query start time. If no start and end times are provided, all historical deployment records of the instance are queried.
+	// The start time of the query. If you do not specify the start time or end time, all historical deployment records of the instance are queried.
 	//
 	// example:
 	//
 	// 2025-07-15T16:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// Instance running status.
+	// The running status of the instance. Valid values:
 	//
-	// - NotRun: Not running
+	// - NotRun: not running.
 	//
-	// - Running: Running
+	// - Running: running.
 	//
-	// - WaitTime: Waiting for TriggerTime
+	// - WaitTime: waiting for TriggerTime.
 	//
-	// - CheckingCondition: Checking branch conditions
+	// - CheckingCondition: checking branch conditions.
 	//
-	// - WaitResource: Waiting for resources
+	// - WaitResource: waiting for resources.
 	//
-	// - Failure: Execution failed
+	// - Failure: execution failed.
 	//
-	// - Success: Execution succeeded
+	// - Success: execution succeeded.
 	//
-	// - Checking: Sent to Data Quality check
+	// - Checking: submitted for data quality check.
 	//
 	// example:
 	//
 	// {\\"Phase\\": \\"Running\\", \\"SlotNum\\": 1, \\"UsedCapacity\\": \\"500.0Gi\\"}
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Thumbnail URL.
+	// The URL of the thumbnail.
 	//
 	// example:
 	//
@@ -389,37 +389,37 @@ func (s *SyncAppInstanceForPartnerRequestAppInstance) Validate() error {
 }
 
 type SyncAppInstanceForPartnerRequestAppInstanceProfile struct {
-	// Deployment region
+	// The deployment region.
 	//
 	// example:
 	//
 	// ChineseMainland
 	DeployArea *string `json:"DeployArea,omitempty" xml:"DeployArea,omitempty"`
-	// Lingxiao instance ID
+	// The LingXiao instance ID.
 	//
 	// example:
 	//
 	// 12313213
 	LxInstanceId *string `json:"LxInstanceId,omitempty" xml:"LxInstanceId,omitempty"`
-	// Order ID
+	// The order ID.
 	//
 	// example:
 	//
 	// 222217928591
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// Version
+	// The version.
 	//
 	// example:
 	//
 	// Basic_Edition
 	SiteVersion *string `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
-	// Template ID
+	// The template identifier.
 	//
 	// example:
 	//
 	// DC4D30B7BADDAFE9928A6C36416A2A4C
 	TemplateEtag *string `json:"TemplateEtag,omitempty" xml:"TemplateEtag,omitempty"`
-	// Model template ID
+	// The model template ID.
 	//
 	// example:
 	//

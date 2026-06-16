@@ -34,39 +34,39 @@ type iQueryInspirationConsumeRecordsResponseBody interface {
 }
 
 type QueryInspirationConsumeRecordsResponseBody struct {
-	// Detailed reason for access denial.
+	// The detailed reason why access is denied.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Is retry allowed
+	// Indicates whether a retry is allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// Application Name. Query the application with this name.
+	// The application name. The application with this name is queried.
 	//
 	// example:
 	//
 	// ish-intelligence-store-platform-admin-web
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// Dynamic error code.
+	// The dynamic error code.
 	//
 	// example:
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// Dynamic message. Not currently used. Please ignore.
+	// The dynamic message. This parameter is not in use. Ignore this parameter.
 	//
 	// example:
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// Returned error parameters
+	// The error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// Whether the deletion succeeded
+	// Indicates whether the deletion is successful.
 	Module *QueryInspirationConsumeRecordsResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -74,19 +74,19 @@ type QueryInspirationConsumeRecordsResponseBody struct {
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Error code
+	// The error code.
 	//
 	// example:
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// Abnormal message
+	// The error message.
 	//
 	// example:
 	//
 	// 系统异常
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// Is processed synchronously
+	// Indicates whether the request is synchronously processed.
 	//
 	// example:
 	//
@@ -211,43 +211,43 @@ func (s *QueryInspirationConsumeRecordsResponseBody) Validate() error {
 }
 
 type QueryInspirationConsumeRecordsResponseBodyModule struct {
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPageNum *int32 `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
-	// Request Result.
+	// The request result.
 	Data []*QueryInspirationConsumeRecordsResponseBodyModuleData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Next feature ID
+	// The ID of the next feature.
 	Next *QueryInspirationConsumeRecordsResponseBodyModuleNext `json:"Next,omitempty" xml:"Next,omitempty" type:"Struct"`
-	// Indicates whether there is a next page.
+	// Indicates whether a next page exists.
 	//
 	// example:
 	//
 	// False
 	NextPage *bool `json:"NextPage,omitempty" xml:"NextPage,omitempty"`
-	// Paging size.
+	// The page size.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Whether there is a previous page.
+	// Indicates whether a previous page exists.
 	//
 	// example:
 	//
 	// False
 	PrePage *bool `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
-	// In addition to paging limits, the server-side processes at most the latest 1 000 records for the current query. If the result exceeds 1 000 records, **ResultLimit*	- is **true**; you should narrow the Time Range and search again. Otherwise, **ResultLimit*	- is **false**.
+	// Apart from pagination limits, the server processes up to 1,000 recent records for the current query. If the results exceed 1,000 records, **ResultLimit*	- is **true**. In this case, narrow the time range and search again. Otherwise, **ResultLimit*	- is **false**.
 	ResultLimit *bool `json:"ResultLimit,omitempty" xml:"ResultLimit,omitempty"`
-	// Total number of records.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 1
 	TotalItemNum *int32 `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
-	// Total number of pages.
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -363,28 +363,28 @@ func (s *QueryInspirationConsumeRecordsResponseBodyModule) Validate() error {
 }
 
 type QueryInspirationConsumeRecordsResponseBodyModuleData struct {
-	// Quantity of inspiration value consumed
+	// The number of inspiration points consumed.
 	//
 	// example:
 	//
 	// 120
 	Amount    *int64  `json:"Amount,omitempty" xml:"Amount,omitempty"`
 	AmountStr *string `json:"AmountStr,omitempty" xml:"AmountStr,omitempty"`
-	// Consumption time
+	// The consumption time.
 	//
 	// example:
 	//
 	// 2026-06-01 12:00:00
 	ConsumeTime *string `json:"ConsumeTime,omitempty" xml:"ConsumeTime,omitempty"`
 	ConsumeType *string `json:"ConsumeType,omitempty" xml:"ConsumeType,omitempty"`
-	// Extension information (in JSON string format)
+	// The extended information in JSON string format.
 	//
 	// example:
 	//
 	// {\\"MD5\\":\\"296f6c01e7fea2697ffe1cf41082b774\\",\\"driver\\":\\"vhd\\",\\"flag\\":\\"12845825\\",\\"imds_support\\":\\"v1\\",\\"io_optimized\\":true,\\"nvme_supported\\":true,\\"uefi_preferred\\":false}
 	MetaData  *string `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
 	RecordKey *string `json:"RecordKey,omitempty" xml:"RecordKey,omitempty"`
-	// Consumption scenario Name (such as AI application development, AI creative image generation, AI Video creation, AI Content creation)
+	// The name of the consumption scenario, such as AI Application Development, AI Creative Illustration, AI Video Creation, or AI Content Creation.
 	//
 	// example:
 	//
@@ -468,27 +468,27 @@ func (s *QueryInspirationConsumeRecordsResponseBodyModuleData) Validate() error 
 }
 
 type QueryInspirationConsumeRecordsResponseBodyModuleNext struct {
-	// Quantity of inspiration value consumed
+	// The number of inspiration points consumed.
 	//
 	// example:
 	//
 	// 2
 	Amount    *int64  `json:"Amount,omitempty" xml:"Amount,omitempty"`
 	AmountStr *string `json:"AmountStr,omitempty" xml:"AmountStr,omitempty"`
-	// Consumption Time
+	// The consumption time.
 	//
 	// example:
 	//
 	// 2026-06-01 12:00:00
 	ConsumeTime *string `json:"ConsumeTime,omitempty" xml:"ConsumeTime,omitempty"`
 	ConsumeType *string `json:"ConsumeType,omitempty" xml:"ConsumeType,omitempty"`
-	// Extension information (in JSON string format)
+	// The extended information in JSON string format.
 	//
 	// example:
 	//
 	// {\\"MD5\\":\\"1042e65a2b7cdd3059b6a873ee1a3260\\",\\"driver\\":\\"vhd\\",\\"flag\\":\\"12845825\\",\\"imds_support\\":\\"v1\\",\\"io_optimized\\":true,\\"nvme_supported\\":true,\\"uefi_preferred\\":false}
 	MetaData *string `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
-	// Consumption scenario Name (such as AI application development, AI creative image generation, AI Video creation, AI Content creation)
+	// The name of the consumption scenario, such as AI Application Development, AI Creative Illustration, AI Video Creation, or AI Content Creation.
 	//
 	// example:
 	//

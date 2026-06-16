@@ -17,9 +17,9 @@ type iGetUserAccessTokenForPartnerRequest interface {
 
 type GetUserAccessTokenForPartnerRequest struct {
 	SiteHost *string `json:"SiteHost,omitempty" xml:"SiteHost,omitempty"`
-	// Credential for connecting to the cloud application.
+	// The credential for connecting to the cloud application.
 	//
-	// > This parameter appears when the API is invoked again (not on the first invocation).
+	// > This parameter is displayed for non-initial calls.
 	//
 	// This parameter is required.
 	//

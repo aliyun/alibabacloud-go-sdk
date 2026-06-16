@@ -34,61 +34,61 @@ type iRefreshAppInstanceTicketResponseBody interface {
 }
 
 type RefreshAppInstanceTicketResponseBody struct {
-	// Detailed reason for access denial.
+	// The detailed reason why access is denied.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Whether to allow retry
+	// Indicates whether retry is allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// App name.
+	// The application name.
 	//
 	// example:
 	//
 	// mar
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// Dynamic error code.
+	// The dynamic error code.
 	//
 	// example:
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// Dynamic error message, used to replace the `%s` in the **ErrMessage*	- error message.
+	// The dynamic error message, which is used to replace the `%s` placeholder in the **ErrMessage*	- response parameter.
 	//
-	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid**, and **DynamicMessage*	- returns **DtsJobId**, it indicates that the input request parameter **DtsJobId*	- is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
 	//
 	// example:
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// Returned error parameters
+	// The error parameters returned.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// Application module
+	// The application module.
 	Module *RefreshAppInstanceTicketResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
-	// ID of the request
+	// Id of the request
 	//
 	// example:
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Error code
+	// The error code.
 	//
 	// example:
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// Exception message
+	// The exception message.
 	//
 	// example:
 	//
 	// 系统异常
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// Reserved parameter.
+	// The reserved parameter.
 	//
 	// example:
 	//
@@ -213,73 +213,73 @@ func (s *RefreshAppInstanceTicketResponseBody) Validate() error {
 }
 
 type RefreshAppInstanceTicketResponseBodyModule struct {
-	// Access token expiration time
+	// The time when the access token expires.
 	//
 	// example:
 	//
 	// 2025-12-18T22:30:00+08:00
 	AccessTokenExpiresAt *string `json:"AccessTokenExpiresAt,omitempty" xml:"AccessTokenExpiresAt,omitempty"`
-	// Access token issuance time
+	// The time when the access token was issued.
 	//
 	// example:
 	//
 	// 2025-12-18T22:30:00+08:00
 	AccessTokenIssuedAt *string `json:"AccessTokenIssuedAt,omitempty" xml:"AccessTokenIssuedAt,omitempty"`
-	// Access token value
+	// The access token value.
 	//
 	// example:
 	//
 	// 2108341e17661121129745384e79f9
 	AccessTokenValue *string `json:"AccessTokenValue,omitempty" xml:"AccessTokenValue,omitempty"`
-	// User ID
+	// The user ID.
 	//
 	// example:
 	//
 	// 1907880872137014
 	AliyunPk *string `json:"AliyunPk,omitempty" xml:"AliyunPk,omitempty"`
-	// Extended attributes
+	// The extended properties.
 	//
 	// example:
 	//
 	// {}
 	Attributes *string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
-	// Authorization grant type
+	// The authorization code type.
 	//
 	// example:
 	//
 	// authorization_code
 	AuthorizationGrantType *string `json:"AuthorizationGrantType,omitempty" xml:"AuthorizationGrantType,omitempty"`
-	// business id for user
+	// bid
 	//
 	// example:
 	//
 	// 26842
 	Bid *string `json:"Bid,omitempty" xml:"Bid,omitempty"`
-	// User ID
+	// The user ID.
 	//
 	// example:
 	//
 	// 1907880872137014
 	ParentPk *string `json:"ParentPk,omitempty" xml:"ParentPk,omitempty"`
-	// 刷新token过期时间
+	// The time when the refresh token expires.
 	//
 	// example:
 	//
 	// 2025-12-18T22:30:00+08:00
 	RefreshTokenExpiresAt *string `json:"RefreshTokenExpiresAt,omitempty" xml:"RefreshTokenExpiresAt,omitempty"`
-	// 刷新token颁发时间
+	// The time when the refresh token was issued.
 	//
 	// example:
 	//
 	// 2025-12-18T22:30:00+08:00
 	RefreshTokenIssuedAt *string `json:"RefreshTokenIssuedAt,omitempty" xml:"RefreshTokenIssuedAt,omitempty"`
-	// 刷新token值
+	// The refresh token value.
 	//
 	// example:
 	//
 	// 2108341e17661121129745384e79f9
 	RefreshTokenValue *string `json:"RefreshTokenValue,omitempty" xml:"RefreshTokenValue,omitempty"`
-	// Unique identifier externally
+	// The external unique identifier.
 	//
 	// example:
 	//

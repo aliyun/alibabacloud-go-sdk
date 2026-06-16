@@ -20,25 +20,25 @@ type iListAIStaffChatEventsRequest interface {
 }
 
 type ListAIStaffChatEventsRequest struct {
-	// Business ID
+	// The business ID.
 	//
 	// example:
 	//
 	// WS20250731233102000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// Chat ID (optional; if not provided, the latest chatId is used)
+	// The chat ID. This parameter is optional. If not specified, the latest chat ID is used.
 	//
 	// example:
 	//
 	// 20833ba4-d189-4c50-9a44-a6bcbda2c93b
 	ChatId *string `json:"ChatId,omitempty" xml:"ChatId,omitempty"`
-	// session ID
+	// The conversation ID.
 	//
 	// example:
 	//
 	// 593fe1a2-d0b4-4fde-a2b0-78ad6a438d41
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
-	// Last event ID, used for incremental retrieval
+	// The ID of the last event, used for incremental retrieval.
 	//
 	// example:
 	//

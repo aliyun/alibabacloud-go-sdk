@@ -24,17 +24,17 @@ type iDispatchConsoleAPIForPartnerRequest interface {
 type DispatchConsoleAPIForPartnerRequest struct {
 	// This parameter is required.
 	LiveToken *string `json:"LiveToken,omitempty" xml:"LiveToken,omitempty"`
-	// Set the operation to perform on the alert. Valid values:
+	// The operation to perform on the alert. Valid values:
 	//
-	// - **deal**: Handle the alert (fencing)
+	// - **deal**: handles the alert (quarantine).
 	//
-	// - **ignore**: Ignore
+	// - **ignore**: ignores the alert.
 	//
-	// - **mark_mis_info**: Mark as false positive (add to whitelist)
+	// - **mark_mis_info**: marks the alert as a false positive (adds it to the whitelist).
 	//
-	// - **rm_mark_mis_info**: Unmark as false positive (remove from whitelist)
+	// - **rm_mark_mis_info**: unmarks the alert as a false positive (removes it from the whitelist).
 	//
-	// - **offline_handled**: Mark as Completed
+	// - **offline_handled**: marks the alert as handled.
 	//
 	// This parameter is required.
 	//
@@ -42,13 +42,13 @@ type DispatchConsoleAPIForPartnerRequest struct {
 	//
 	// disable
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
-	// Error parameter.
+	// The error parameters.
 	//
 	// example:
 	//
 	// [\\"\\"]
 	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
-	// Product code
+	// The product code.
 	//
 	// This parameter is required.
 	//

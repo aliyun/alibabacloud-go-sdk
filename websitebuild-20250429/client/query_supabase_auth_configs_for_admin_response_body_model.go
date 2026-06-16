@@ -34,39 +34,39 @@ type iQuerySupabaseAuthConfigsForAdminResponseBody interface {
 }
 
 type QuerySupabaseAuthConfigsForAdminResponseBody struct {
-	// Details of access denied
+	// The details of the permission verification failure.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Is retry allowed
+	// Indicates whether retry is allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// App Name.
+	// The application name.
 	//
 	// example:
 	//
 	// or
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// Dynamic error code
+	// The dynamic error code.
 	//
 	// example:
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// Dynamic message. Not currently used. Ignore it.
+	// The dynamic message. This parameter is not in use. Ignore this parameter.
 	//
 	// example:
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// Returned error parameters
+	// The error parameters returned.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// Task object
+	// The task object.
 	Module *QuerySupabaseAuthConfigsForAdminResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -74,19 +74,19 @@ type QuerySupabaseAuthConfigsForAdminResponseBody struct {
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// error code
+	// The error code.
 	//
 	// example:
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// Fault message
+	// The error message.
 	//
 	// example:
 	//
 	// 系统异常
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// Is processed synchronously
+	// Indicates whether the request is synchronously processed.
 	//
 	// example:
 	//
@@ -211,21 +211,21 @@ func (s *QuerySupabaseAuthConfigsForAdminResponseBody) Validate() error {
 }
 
 type QuerySupabaseAuthConfigsForAdminResponseBodyModule struct {
-	// Configuration values. Valid values:
+	// The configuration value. Valid values:
 	//
-	// - cc_rule: CC rule.
+	// - cc_rule: HTTP flood mitigation rule.
 	//
-	// - ddos_dispatch: DDoS filter interaction scheduling.
+	// - ddos_dispatch: DDoS interaction scheduling.
 	//
-	// - edge_safe: Edge application security.
+	// - edge_safe: edge application security.
 	//
-	// - blocked_regions: Geo-blocking.
+	// - blocked_regions: Location Blacklist.
 	//
-	// - http_acl_policy: Precise ACL rule.
+	// - http_acl_policy: Accurate Access Control.
 	//
-	// - bot_manager: Bot traffic Management.
+	// - bot_manager: bot traffic management.
 	//
-	// - ip_reputation: IP reputation investigation.
+	// - ip_reputation: IP reputation library.
 	Configs map[string]interface{} `json:"Configs,omitempty" xml:"Configs,omitempty"`
 }
 

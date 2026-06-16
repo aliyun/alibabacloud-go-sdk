@@ -34,39 +34,39 @@ type iCreateAIStaffConversationResponseBody interface {
 }
 
 type CreateAIStaffConversationResponseBody struct {
-	// Detailed reason for access denial.
+	// The detailed reason why access was denied.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Is retry allowed
+	// Indicates whether retry is allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// Application name. Query the application with this name.
+	// The application name. The application with this name is queried.
 	//
 	// example:
 	//
 	// spring-cloud-b
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// Dynamic error code.
+	// The dynamic error code.
 	//
 	// example:
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// Dynamic message.
+	// The dynamic message.
 	//
 	// example:
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// Returned error parameters
+	// The error parameters returned.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// Response data
+	// The response data.
 	Module *CreateAIStaffConversationResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -74,19 +74,19 @@ type CreateAIStaffConversationResponseBody struct {
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// error code
+	// The error code.
 	//
 	// example:
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// Abnormal message
+	// The exception message.
 	//
 	// example:
 	//
 	// 系统异常
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// Backup parameter.
+	// The reserved parameter.
 	//
 	// example:
 	//
@@ -211,37 +211,37 @@ func (s *CreateAIStaffConversationResponseBody) Validate() error {
 }
 
 type CreateAIStaffConversationResponseBodyModule struct {
-	// Bot ID
+	// The chatbot ID.
 	//
 	// example:
 	//
 	// Zero2
 	BotId *string `json:"BotId,omitempty" xml:"BotId,omitempty"`
-	// ID of the chat.
+	// The chat ID.
 	//
 	// example:
 	//
 	// 53467af9-8c4e-4498-9032-1f26978007f8
 	ChatId *string `json:"ChatId,omitempty" xml:"ChatId,omitempty"`
-	// Session ID
+	// The session ID.
 	//
 	// example:
 	//
 	// 8642d886-0322-43a9-b12f-6629b067978c
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
-	// Section ID of the check item.
+	// The section ID of the check item.
 	//
 	// example:
 	//
 	// 11
 	SectionId *string `json:"SectionId,omitempty" xml:"SectionId,omitempty"`
-	// Site ID, which can be obtained by invoking the [ListSites](~~ListSites~~) API.
+	// The site ID. You can call the [ListSites](~~ListSites~~) operation to obtain the site ID.
 	//
 	// example:
 	//
 	// 865181640657408
 	SiteId *string `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// Current point, equivalent to a news title
+	// The current viewpoint, equivalent to the news title.
 	//
 	// example:
 	//

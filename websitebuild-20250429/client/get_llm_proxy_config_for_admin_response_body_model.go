@@ -34,45 +34,45 @@ type iGetLlmProxyConfigForAdminResponseBody interface {
 }
 
 type GetLlmProxyConfigForAdminResponseBody struct {
-	// Detailed reason for access denial.
+	// The detailed reason why access is denied.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether retry is allowed. Valid values:
+	// Indicates whether retries are allowed. Valid values:
 	//
-	// - false: Retry is not allowed.
+	// - false: Retries are not allowed.
 	//
-	// - true: Retry is allowed.
+	// - true: Retries are allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// Application name. Query the application with this name.
+	// The application name. The application with this name is queried.
 	//
 	// example:
 	//
 	// or
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// Dynamic code. This parameter is not used and can be ignored.
+	// The dynamic code. This parameter is not in use. Ignore this parameter.
 	//
 	// example:
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// Dynamic error message used to replace the `%s` placeholder in the **ErrMessage*	- error message.
+	// The dynamic error message. This parameter is used to replace the `%s` variable in the **ErrMessage*	- parameter.
 	//
-	// > For example, if **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the request parameter **DtsJobId*	- is invalid.
+	// > For example, if the **ErrMessage*	- parameter returns **The Value of Input Parameter %s is not valid*	- and the **DynamicMessage*	- parameter returns **DtsJobId**, the **DtsJobId*	- request parameter is invalid.
 	//
 	// example:
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// Error parameters returned.
+	// The error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// Returned object.
+	// The returned object.
 	Module *GetLlmProxyConfigForAdminResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -80,19 +80,19 @@ type GetLlmProxyConfigForAdminResponseBody struct {
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Error code
+	// The error code.
 	//
 	// example:
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// Abnormal message
+	// The exception message.
 	//
 	// example:
 	//
 	// 系统异常
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// Indicates whether the request is processed synchronously.
+	// Indicates whether the request is synchronously processed.
 	//
 	// example:
 	//
@@ -217,105 +217,105 @@ func (s *GetLlmProxyConfigForAdminResponseBody) Validate() error {
 }
 
 type GetLlmProxyConfigForAdminResponseBodyModule struct {
-	// List of supported models
+	// The list of allowed models.
 	//
 	// example:
 	//
 	// qwen3.5-plus
 	AllowedModels *string `json:"AllowedModels,omitempty" xml:"AllowedModels,omitempty"`
-	// Business ID of the application instance
+	// The business ID of the application instance.
 	//
 	// example:
 	//
 	// WD20250703155602000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// List of blocked models
+	// The list of blocked models.
 	//
 	// example:
 	//
 	// qwen3.5-plus
 	BlockedModels *string `json:"BlockedModels,omitempty" xml:"BlockedModels,omitempty"`
-	// Grants specific permissions to processes within the container. Currently, only NET_ADMIN and NET_RAW are supported.
+	// The specific permissions granted to processes in the container. Only NET_ADMIN and NET_RAW are supported.
 	//
-	// > NET_RAW is not supported by default. You must submit a ticket to request it.
+	// > NET_RAW is not supported by default. Submit a ticket to apply for this permission.
 	//
 	// example:
 	//
 	// adds2
 	Capability *string `json:"Capability,omitempty" xml:"Capability,omitempty"`
-	// Daily request quota
+	// The maximum number of requests per day.
 	//
 	// example:
 	//
 	// -1
 	DailyLimit *int32 `json:"DailyLimit,omitempty" xml:"DailyLimit,omitempty"`
-	// Daily token quota
+	// The maximum number of tokens per day.
 	//
 	// example:
 	//
 	// -1
 	DailyTokenLimit *int64 `json:"DailyTokenLimit,omitempty" xml:"DailyTokenLimit,omitempty"`
-	// Indicates whether scheduled delivery of resource snapshots is enabled.
+	// Specifies whether scheduled delivery of resource snapshots is enabled.
 	//
 	// Valid values:
 	//
 	// - true: Enabled.
 	//
-	// - false: Shutdown.
+	// - false: Disabled.
 	//
 	// example:
 	//
 	// True
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// Extension configuration (in JSON format)
+	// The extended configuration in JSON format.
 	//
 	// example:
 	//
 	// {\\"deliveryNodeName\\":\\"绑定域名及发布\\",\\"deliveryNodeStatus\\":\\"Finish\\",\\"deliveryOperatorRole\\":\\"Provider\\"}
 	Extend *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
-	// Creation Time
+	// The creation time.
 	//
 	// example:
 	//
 	// 1740479834
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// Updated At
+	// The modification time.
 	//
 	// example:
 	//
 	// 2025-08-28T02:25:41Z
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// Primary key
+	// The primary key.
 	//
 	// example:
 	//
 	// 16257
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// IP blacklist
+	// The IP blacklist.
 	//
 	// example:
 	//
 	// 121.41.11.161,10.200.255.60
 	IpBlacklist *string `json:"IpBlacklist,omitempty" xml:"IpBlacklist,omitempty"`
-	// IP whitelist, with multiple entries separated by commas
+	// The IP whitelist. Separate multiple IP addresses with commas (,).
 	//
 	// example:
 	//
 	// 121.41.11.161,10.200.255.60
 	IpWhitelist *string `json:"IpWhitelist,omitempty" xml:"IpWhitelist,omitempty"`
-	// Requests per minute quota
+	// The maximum number of requests per minute.
 	//
 	// example:
 	//
 	// -1
 	RpmLimit *int32 `json:"RpmLimit,omitempty" xml:"RpmLimit,omitempty"`
-	// trial, draft, live, refunded, expired, released
+	// trial,draft,live,refunded,expired,released
 	//
 	// example:
 	//
 	// NORMAL
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Reason for pause.
+	// The reason for suspension.
 	//
 	// example:
 	//

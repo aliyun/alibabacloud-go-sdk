@@ -22,27 +22,27 @@ type iCreateAIStaffChatRequest interface {
 }
 
 type CreateAIStaffChatRequest struct {
-	// Site ID
+	// The site ID.
 	//
 	// example:
 	//
 	// WS20250801154628000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// Conversation ID (provided when recovering from a break)
+	// The chat ID. Pass in this parameter to resume a conversation after an interruption.
 	//
 	// example:
 	//
 	// 3b465fe1-6f06-4899-af9f-d43d9338df25
 	ChatId *string `json:"ChatId,omitempty" xml:"ChatId,omitempty"`
-	// session ID
+	// The conversation ID.
 	//
 	// example:
 	//
 	// 5b7105a2-2999-430b-ba23-ba09149d5434
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
-	// List of conversation messages
+	// The list of conversation messages.
 	Messages []*CreateAIStaffChatRequestMessages `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Repeated"`
-	// Additional conversation information
+	// The additional information for the conversation.
 	MetaData map[string]*string `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
 }
 
@@ -113,27 +113,27 @@ func (s *CreateAIStaffChatRequest) Validate() error {
 }
 
 type CreateAIStaffChatRequestMessages struct {
-	// Message content
+	// The message content.
 	//
 	// example:
 	//
 	// {\\"CodeRevision\\": \\"1750040991876284109\\"}
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// Content type
+	// The content type.
 	//
 	// example:
 	//
 	// application/octet-stream
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	// Business extension metadata (in Map format, must be a JSON string)
+	// The business extension metadata in Map format. The value must be a JSON string.
 	MetaData map[string]*string `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
-	// Role in the conversation
+	// The conversation role.
 	//
 	// example:
 	//
 	// polarx_dn
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// File type
+	// The file type.
 	//
 	// example:
 	//

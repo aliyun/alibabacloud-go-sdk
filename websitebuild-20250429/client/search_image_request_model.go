@@ -42,31 +42,31 @@ type iSearchImageRequest interface {
 }
 
 type SearchImageRequest struct {
-	// Color
+	// The color.
 	//
 	// example:
 	//
 	// #B0B0B0
 	ColorHex *string `json:"ColorHex,omitempty" xml:"ColorHex,omitempty"`
-	// Indicates whether the image contains a person.
+	// Specifies whether the image contains a person.
 	//
 	// example:
 	//
 	// false
 	HasPerson *bool `json:"HasPerson,omitempty" xml:"HasPerson,omitempty"`
-	// Image category. Valid values:
+	// The image category. Valid values:
 	//
-	// - normal: Illustrations or article images.
+	// - normal: illustrations or article images.
 	//
-	// - banner: Background images or image carousels.
+	// - banner: background images or carousel images.
 	//
-	// - goods: Product or service images.
+	// - goods: product or service images.
 	//
 	// example:
 	//
 	// WindowsWithMssqlStdLicense
 	ImageCategory *string `json:"ImageCategory,omitempty" xml:"ImageCategory,omitempty"`
-	// Image aspect ratio, including:
+	// The aspect ratio of the image. Valid values:
 	//
 	// "16:9"
 	//
@@ -78,71 +78,71 @@ type SearchImageRequest struct {
 	//
 	// "3:4"
 	//
-	// "9:16"
+	// "9:16".
 	//
 	// example:
 	//
 	// 16:9
 	ImageRatio *string `json:"ImageRatio,omitempty" xml:"ImageRatio,omitempty"`
-	// Maximum image height.
+	// The maximum height of the image.
 	//
 	// example:
 	//
 	// 4000
 	MaxHeight *int32 `json:"MaxHeight,omitempty" xml:"MaxHeight,omitempty"`
-	// Number of items per page in a paged query. Maximum value is 100. Default value is 20.
+	// The number of entries per page for paging queries. Maximum value: 100. Default value: 20.
 	//
 	// example:
 	//
 	// 500
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// Maximum image width (inclusive).
+	// The maximum width of the image, inclusive.
 	//
 	// example:
 	//
 	// 4000
 	MaxWidth *int32 `json:"MaxWidth,omitempty" xml:"MaxWidth,omitempty"`
-	// Minimum image height
+	// The minimum height of the image.
 	//
 	// example:
 	//
 	// 500
 	MinHeight *int32 `json:"MinHeight,omitempty" xml:"MinHeight,omitempty"`
-	// Minimum image width (inclusive).
+	// The minimum width of the image, inclusive.
 	//
 	// example:
 	//
 	// 500
 	MinWidth *int32 `json:"MinWidth,omitempty" xml:"MinWidth,omitempty"`
-	// Query credential (Token). Set this parameter to the NextToken value returned in the previous API call. You do not need to set this parameter for the initial API call. If NextToken is specified, the request parameters PageSize and PageNumber become invalid, and the TotalCount in the returned data is also invalid.
+	// The pagination token. Set this parameter to the NextToken value returned in the previous call. You do not need to set this parameter for the first request. If NextToken is specified, the PageSize and PageNumber request parameters do not take effect, and the TotalCount value in the response is invalid.
 	//
 	// example:
 	//
 	// FFh3Xqm+JgZ/U9Jyb7wdVr9LWk80Tghn5UZjbcWEVEderBcbVF+Y6PS0i8PpCL4PQZ3e0C9oEH0Asd4tJEuGtkl2WuKdiWZpEwadNydQdJPFM=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Osskey。
+	// The OSS key.
 	//
 	// example:
 	//
 	// backend/detection/objects/r-0008ujvfksltf5j45n81/task-000hckiuwyau0gwn17vq.jpg
 	OssKey *string `json:"OssKey,omitempty" xml:"OssKey,omitempty"`
-	// Number of results to return. Default value is 10.
+	// The number of returned results. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// Starting position of the return result. Valid values: 0 to 499. Default value is 0.
+	// The start position of the returned results. Valid values: 0 to 499. Default value: 0.
 	//
 	// example:
 	//
 	// 0
 	Start *int32 `json:"Start,omitempty" xml:"Start,omitempty"`
-	// Tags.
+	// The tags.
 	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// Description text for searching images.
+	// The description text used to search for images.
 	//
-	// > Supports up to 512 characters.
+	// >Maximum length: 512 characters.
 	//
 	// example:
 	//

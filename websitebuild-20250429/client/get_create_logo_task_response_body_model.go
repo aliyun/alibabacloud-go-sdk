@@ -22,7 +22,7 @@ type iGetCreateLogoTaskResponseBody interface {
 }
 
 type GetCreateLogoTaskResponseBody struct {
-	// The error code. The ErrorCode field is not returned if the request succeeds. If the request fails, the ErrorCode field is returned. For more information, see the error code list in this topic.
+	// The error code. If the request is successful, this field is not returned. If the request fails, this field is returned. For more information, see the error code list in this topic.
 	//
 	// example:
 	//
@@ -40,13 +40,13 @@ type GetCreateLogoTaskResponseBody struct {
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request succeeded.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// Job information
+	// The task information.
 	Task *GetCreateLogoTaskResponseBodyTask `json:"Task,omitempty" xml:"Task,omitempty" type:"Struct"`
 }
 
@@ -113,29 +113,29 @@ func (s *GetCreateLogoTaskResponseBody) Validate() error {
 }
 
 type GetCreateLogoTaskResponseBodyTask struct {
-	// The job ID.
+	// The task ID.
 	//
 	// example:
 	//
 	// 604860995
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The current status of the job:
+	// The current status of the task. Valid values:
 	//
-	// - pending: Pending execution
+	// - pending: pending execution
 	//
-	// - configuring: Configuring
+	// - configuring: being configured
 	//
-	// - success: Succeeded
+	// - success: succeeded
 	//
-	// - failed: Failed
+	// - failed: failed
 	//
-	// - partialFailed: Partially failed
+	// - partialFailed: partially failed.
 	//
 	// example:
 	//
 	// SUCCESS
 	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	// The URLs of the prefetched resources.
+	// The URL of the prefetched resource.
 	Urls []*string `json:"Urls,omitempty" xml:"Urls,omitempty" type:"Repeated"`
 }
 

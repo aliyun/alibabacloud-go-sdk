@@ -18,15 +18,15 @@ type iQueryMaterialDirectoryTreeRequest interface {
 }
 
 type QueryMaterialDirectoryTreeRequest struct {
-	// Application instance ID
+	// The application instance ID.
 	//
 	// example:
 	//
 	// WS20250731233102000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// Indicates whether shared folders are hidden.
+	// Specifies whether to hide shared folders.
 	HiddenPublic *bool `json:"HiddenPublic,omitempty" xml:"HiddenPublic,omitempty"`
-	// Indicates whether the request is for the top-level root folder.
+	// Specifies whether to request the first-level root folder.
 	//
 	// This parameter is required.
 	//

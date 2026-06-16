@@ -22,33 +22,33 @@ type iGetUserTmpIdentityForPartnerRequest interface {
 }
 
 type GetUserTmpIdentityForPartnerRequest struct {
-	// Authorization purpose
+	// The purpose of the authorization.
 	//
 	// example:
 	//
 	// BindDomain
 	AuthPurpose *string `json:"AuthPurpose,omitempty" xml:"AuthPurpose,omitempty"`
-	// Customer business ID
+	// The business ID of the customer.
 	//
 	// example:
 	//
 	// WD20250703155602000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// Whether the port number supports fuzzy query. To enable fuzzy query, set the value of this parameter to **1**. Any other value or an empty value indicates that fuzzy query is not supported.
+	// Specifies whether fuzzy match is supported for port numbers. Set this parameter to **1*	- to enable fuzzy match. Other values or an empty value indicate that fuzzy match is not supported.
 	//
 	// example:
 	//
 	// {\\"deliveryNodeName\\":\\"视觉设计确认\\",\\"deliveryNodeStatus\\":\\"Reject\\",\\"deliveryOperatorRole\\":\\"Customer\\"}
 	Extend *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
-	// Service-linked role.
+	// The service-linked role.
 	//
-	// > For service-linked roles supported by RDS, see [Service-linked Role](https://help.aliyun.com/document_detail/342840.html).
+	// > For information about the service-linked roles supported by ApsaraDB RDS, see [Service-linked roles](https://help.aliyun.com/document_detail/342840.html).
 	//
 	// example:
 	//
 	// AliyunServiceRoleForSasCspm
 	ServiceLinkedRole *string `json:"ServiceLinkedRole,omitempty" xml:"ServiceLinkedRole,omitempty"`
-	// User ID
+	// The user ID.
 	//
 	// example:
 	//

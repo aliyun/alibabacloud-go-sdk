@@ -34,67 +34,67 @@ type iBindAppDomainResponseBody interface {
 }
 
 type BindAppDomainResponseBody struct {
-	// Detailed reason for access denial.
+	// The detailed reason why access is denied.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Whether retry is allowed
+	// Indicates whether retry is allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// App Name.
+	// The application name.
 	//
 	// example:
 	//
 	// or
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// Error Code
+	// The error code.
 	//
 	// example:
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// Dynamic error message, used to replace the **%s*	- in the error message of the returned parameter **ErrMessage**.
+	// The dynamic error message, which is used to replace the **%s*	- placeholder in the **ErrMessage*	- response element.
 	//
-	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid**, and **DynamicMessage*	- returns **DtsJobId**, it indicates that the input request parameter **DtsJobId*	- is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
 	//
 	// example:
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// Returned error parameters
+	// The error parameters returned.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// Data table module.
+	// The data table module.
 	//
-	// - ABTest: Experiment data table
+	// - ABTest: experiment data table
 	//
-	// - ExperimentTool: Experiment tool table
+	// - ExperimentTool: experiment tool table
 	//
-	// - DataDiagnosis: Data diagnosis
+	// - DataDiagnosis: data modeling diagnostics.
 	Module *BindAppDomainResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
-	// ID of the request
+	// Id of the request
 	//
 	// example:
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Error Code
+	// The error code.
 	//
 	// example:
 	//
 	// SYSTEM.EROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// Exception Message
+	// The exception message.
 	//
 	// example:
 	//
 	// 系统异常
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// Whether to process synchronously
+	// Indicates whether the request is synchronously processed.
 	//
 	// example:
 	//
@@ -219,7 +219,7 @@ func (s *BindAppDomainResponseBody) Validate() error {
 }
 
 type BindAppDomainResponseBodyModule struct {
-	// Indicator of whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

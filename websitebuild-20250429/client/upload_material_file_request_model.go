@@ -20,7 +20,7 @@ type iUploadMaterialFileRequest interface {
 }
 
 type UploadMaterialFileRequest struct {
-	// Application Instance Business ID
+	// The business ID of the application instance.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type UploadMaterialFileRequest struct {
 	//
 	// WS20250801152639000005
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// Parent Folder ID
+	// The ID of the parent folder.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type UploadMaterialFileRequest struct {
 	//
 	// 68157a0a-769a-4364-bbdc-a0e2cf3d5ad
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	// File Path
+	// The path of the file.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type UploadMaterialFileRequest struct {
 	//
 	// http://docmind-api-cn-hangzhou.oss-cn-hangzhou.aliyuncs.com/4a7f_209934244261306272_14fd429b731245a79f291c64acf3ac77
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	// File Name
+	// The name of the file.
 	//
 	// example:
 	//

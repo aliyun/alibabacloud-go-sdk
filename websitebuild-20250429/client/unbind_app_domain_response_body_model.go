@@ -34,59 +34,59 @@ type iUnbindAppDomainResponseBody interface {
 }
 
 type UnbindAppDomainResponseBody struct {
-	// Detailed reason for access denial.
+	// The detailed reason why access was denied.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Whether retry is allowed
+	// Indicates whether retry is allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// Application name
+	// The application name.
 	//
 	// example:
 	//
 	// spring-cloud-b
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// Error code
+	// The error code.
 	//
 	// example:
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// Dynamic error message, used to replace %s in the ErrMessage of the response parameters.
+	// The dynamic error message, which is used to replace the %s placeholder in the ErrMessage response parameter.
 	//
 	// example:
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// Returned error parameters
+	// The error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// Response data
+	// The response data.
 	Module *UnbindAppDomainResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
-	// ID of the request
+	// Id of the request
 	//
 	// example:
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Error code
+	// The error code.
 	//
 	// example:
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// Exception message
+	// The exception message.
 	//
 	// example:
 	//
 	// 系统异常
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// Whether it is processed synchronously
+	// Indicates whether the request is synchronously processed.
 	//
 	// example:
 	//
@@ -211,7 +211,7 @@ func (s *UnbindAppDomainResponseBody) Validate() error {
 }
 
 type UnbindAppDomainResponseBodyModule struct {
-	// Whether it was successful
+	// Indicates whether the operation is successful.
 	//
 	// example:
 	//

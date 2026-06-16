@@ -22,19 +22,19 @@ type iGetAppPluginConfigResponseBody interface {
 }
 
 type GetAppPluginConfigResponseBody struct {
-	// API status or POP error code
+	// The API status code or POP error code.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Additional information
+	// The additional information.
 	//
 	// example:
 	//
 	// Instance `wget h33E1En5.popscan.xaliyun.com` does not exist.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Response data
+	// The response data.
 	Module *GetAppPluginConfigResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -42,7 +42,7 @@ type GetAppPluginConfigResponseBody struct {
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request succeeded.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -113,55 +113,55 @@ func (s *GetAppPluginConfigResponseBody) Validate() error {
 }
 
 type GetAppPluginConfigResponseBodyModule struct {
-	// Business ID
+	// The business ID.
 	//
 	// example:
 	//
 	// WD20250703155602000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// Creation Time
+	// The creation time.
 	//
 	// example:
 	//
 	// 1740479834
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// Updated At
+	// The modification time.
 	//
 	// example:
 	//
 	// 2025-08-28T02:25:41Z
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// Primary key
+	// The primary key.
 	//
 	// example:
 	//
 	// 16257
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Specific widget configuration, formatted as a JSON string. Refer to the utility class: com.alibaba.dataphin.pipeline.common.facade.openapi.model.plugin.OABasePluginConfig and the toJsonString method of its child classes. Developers should inherit this widget configuration class and implement the corresponding widget configuration. The structure of each widget configuration is identical to the MPS queue configuration structure created on the Dataphin Page.
+	// The specific component configuration in JSON string format. Refer to the toJsonString method of the subclasses related to com.alibaba.dataphin.pipeline.common.facade.openapi.model.plugin.OABasePluginConfig. Developers should inherit this component configuration class and implement the corresponding component configuration. Each component configuration has the same structure as the pipeline configuration created on the Dataphin console.
 	//
 	// example:
 	//
 	// {}
 	PluginConfig *string `json:"PluginConfig,omitempty" xml:"PluginConfig,omitempty"`
-	// View Description
+	// The description of the plugin.
 	//
 	// example:
 	//
 	// a simple test plugin
 	PluginDesc *string `json:"PluginDesc,omitempty" xml:"PluginDesc,omitempty"`
-	// ID of the attached API Gateway plugin
+	// The ID of the bound API gateway plugin.
 	//
 	// example:
 	//
 	// 1bae9ceaceea432d91c7069fab0dfc02
 	PluginId *string `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
-	// Plugin Name. It can contain uppercase and lowercase English letters, Chinese characters, digits, and underscores (_). The length must be between 4 and 50 characters, and it cannot start with an underscore.
+	// The plugin name. The name can contain uppercase and lowercase letters, Chinese characters, digits, and underscores (_). The name must be 4 to 50 characters in length and cannot start with an underscore.
 	//
 	// example:
 	//
 	// tf_testaccapigatewayplugin29311
 	PluginName *string `json:"PluginName,omitempty" xml:"PluginName,omitempty"`
-	// User ID
+	// The user ID.
 	//
 	// example:
 	//

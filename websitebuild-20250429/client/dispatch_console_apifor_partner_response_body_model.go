@@ -20,13 +20,13 @@ type iDispatchConsoleAPIForPartnerResponseBody interface {
 }
 
 type DispatchConsoleAPIForPartnerResponseBody struct {
-	// Error code. The value is as follows: If the request succeeds, the ErrorCode field is not returned. If the request fails, the ErrorCode field is returned. For more information, see the error code list in this topic.
+	// The error code. If the request is successful, this field is not returned. If the request fails, this field is returned. For more information, see the error codes in this topic.
 	//
 	// example:
 	//
 	// 0
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// Response data
+	// The response data.
 	Module *DispatchConsoleAPIForPartnerResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -34,7 +34,7 @@ type DispatchConsoleAPIForPartnerResponseBody struct {
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request succeeded.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ func (s *DispatchConsoleAPIForPartnerResponseBody) Validate() error {
 }
 
 type DispatchConsoleAPIForPartnerResponseBodyModule struct {
-	// Request result.
+	// The request result.
 	//
 	// example:
 	//

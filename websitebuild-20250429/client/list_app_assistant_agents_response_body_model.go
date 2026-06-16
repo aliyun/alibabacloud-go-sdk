@@ -40,35 +40,35 @@ type ListAppAssistantAgentsResponseBody struct {
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// is retry allowed
+	// Indicates whether a retry is allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// App Name.
+	// The application name.
 	//
 	// example:
 	//
 	// spring-cloud-b
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// dynamic error code.
+	// The dynamic error code.
 	//
 	// example:
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// dynamic error message, used to replace the `%s` placeholder in the **ErrMessage*	- error message.
+	// The dynamic error message, which is used to replace the `%s` placeholder in the **ErrMessage*	- response element.
 	//
-	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the request parameter **DtsJobId*	- is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the value of the **DtsJobId*	- request parameter is invalid.
 	//
 	// example:
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// Returned error parameters
+	// The error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// response Data
+	// The response data.
 	Module []*ListAppAssistantAgentsResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Repeated"`
 	// Id of the request
 	//
@@ -76,19 +76,19 @@ type ListAppAssistantAgentsResponseBody struct {
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Error code
+	// The error code.
 	//
 	// example:
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// abnormal message
+	// The exception message.
 	//
 	// example:
 	//
 	// 系统异常
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// Reserved parameter.
+	// A reserved parameter.
 	//
 	// example:
 	//
@@ -217,61 +217,61 @@ func (s *ListAppAssistantAgentsResponseBody) Validate() error {
 }
 
 type ListAppAssistantAgentsResponseBodyModule struct {
-	// Agent ID (returned by the platform)
+	// The agent ID returned by the platform.
 	//
 	// example:
 	//
 	// liyang1_v@soulapp
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
-	// Agent Name
+	// The agent name.
 	//
 	// example:
 	//
 	// 演示
 	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
-	// bizId of the associated application instance
+	// The business ID of the associated application instance.
 	//
 	// example:
 	//
 	// WD20250703155602000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// Credential
+	// The authentication credential.
 	Credential *ListAppAssistantAgentsResponseBodyModuleCredential `json:"Credential,omitempty" xml:"Credential,omitempty" type:"Struct"`
-	// Embed configuration
+	// The embedding configuration.
 	EmbedConfig *ListAppAssistantAgentsResponseBodyModuleEmbedConfig `json:"EmbedConfig,omitempty" xml:"EmbedConfig,omitempty" type:"Struct"`
-	// Extension parameters
+	// The extension parameters.
 	ExtraParams map[string]*string `json:"ExtraParams,omitempty" xml:"ExtraParams,omitempty"`
-	// Creation Time
+	// The creation time.
 	//
 	// example:
 	//
 	// 1740479834
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// Updated At
+	// The modification time.
 	//
 	// example:
 	//
 	// 2025-08-28T02:25:41Z
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// Agent platform appId
+	// The platform application ID of the agent.
 	//
 	// example:
 	//
 	// WA12313123131
 	PlatformAppId *string `json:"PlatformAppId,omitempty" xml:"PlatformAppId,omitempty"`
-	// Platform Type
+	// The platform type.
 	//
 	// example:
 	//
 	// VMWARE
 	PlatformType *string `json:"PlatformType,omitempty" xml:"PlatformType,omitempty"`
-	// Status
+	// The status.
 	//
 	// example:
 	//
 	// NORMAL
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// User ID
+	// The user ID.
 	//
 	// example:
 	//
@@ -410,7 +410,7 @@ func (s *ListAppAssistantAgentsResponseBodyModule) Validate() error {
 }
 
 type ListAppAssistantAgentsResponseBodyModuleCredential struct {
-	// API key
+	// API Key
 	//
 	// example:
 	//
@@ -422,15 +422,15 @@ type ListAppAssistantAgentsResponseBodyModuleCredential struct {
 	//
 	// sk-xxxxxx
 	ApiSecret *string `json:"ApiSecret,omitempty" xml:"ApiSecret,omitempty"`
-	// Extension field
+	// The extension field.
 	Extra map[string]*string `json:"Extra,omitempty" xml:"Extra,omitempty"`
-	// Password
+	// The password.
 	//
 	// example:
 	//
 	// ***
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// Username
+	// The username.
 	//
 	// example:
 	//
@@ -496,9 +496,9 @@ func (s *ListAppAssistantAgentsResponseBodyModuleCredential) Validate() error {
 }
 
 type ListAppAssistantAgentsResponseBodyModuleEmbedConfig struct {
-	// Extension fields
+	// The extension field.
 	Extra map[string]*string `json:"Extra,omitempty" xml:"Extra,omitempty"`
-	// Raw embed script
+	// The raw embedding script.
 	RawScript *string `json:"RawScript,omitempty" xml:"RawScript,omitempty"`
 }
 

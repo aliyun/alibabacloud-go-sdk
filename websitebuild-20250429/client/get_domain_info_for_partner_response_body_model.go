@@ -16,7 +16,7 @@ type iGetDomainInfoForPartnerResponseBody interface {
 }
 
 type GetDomainInfoForPartnerResponseBody struct {
-	// Request result.
+	// The request result.
 	Data *GetDomainInfoForPartnerResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -62,21 +62,21 @@ func (s *GetDomainInfoForPartnerResponseBody) Validate() error {
 }
 
 type GetDomainInfoForPartnerResponseBodyData struct {
-	// Domain name.
+	// The domain name.
 	//
 	// example:
 	//
 	// playnew-alilive.daotantan.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// List of DNS server IP addresses.
+	// The list of DNS server IP addresses.
 	//
 	// example:
 	//
 	// NS3.ALIYUN.COM,NS4.ALIYUN.COM
 	NameServers *string `json:"NameServers,omitempty" xml:"NameServers,omitempty"`
-	// IP ownership.
+	// The IP ownership.
 	Ownership *GetDomainInfoForPartnerResponseBodyDataOwnership `json:"Ownership,omitempty" xml:"Ownership,omitempty" type:"Struct"`
-	// Domain name registrar
+	// The domain name registrar.
 	//
 	// example:
 	//
@@ -138,13 +138,13 @@ func (s *GetDomainInfoForPartnerResponseBodyData) Validate() error {
 }
 
 type GetDomainInfoForPartnerResponseBodyDataOwnership struct {
-	// Member name.
+	// The member name.
 	//
 	// example:
 	//
 	// 1189245564569485
 	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
-	// Provider
+	// The provider.
 	//
 	// example:
 	//

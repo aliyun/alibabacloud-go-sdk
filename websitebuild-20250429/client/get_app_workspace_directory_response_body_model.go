@@ -34,39 +34,39 @@ type iGetAppWorkspaceDirectoryResponseBody interface {
 }
 
 type GetAppWorkspaceDirectoryResponseBody struct {
-	// Detailed reason for access denial.
+	// The detailed reason why access was denied.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Is retry allowed
+	// Indicates whether retry is allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// App name.
+	// The application name.
 	//
 	// example:
 	//
 	// ish-intelligence-store-platform-admin-web
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// Dynamic error code.
+	// The dynamic error code.
 	//
 	// example:
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// Dynamic message. Not currently used. Ignore it.
+	// The dynamic message. This parameter is not in use. Ignore this parameter.
 	//
 	// example:
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// Returned error parameters
+	// The error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// Returned object.
+	// The response object.
 	Module *GetAppWorkspaceDirectoryResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -74,19 +74,19 @@ type GetAppWorkspaceDirectoryResponseBody struct {
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Error code
+	// The error code.
 	//
 	// example:
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// Abnormal message
+	// The exception message.
 	//
 	// example:
 	//
 	// 系统异常
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// Spare parameter.
+	// The reserved parameter.
 	//
 	// example:
 	//
@@ -211,13 +211,13 @@ func (s *GetAppWorkspaceDirectoryResponseBody) Validate() error {
 }
 
 type GetAppWorkspaceDirectoryResponseBodyModule struct {
-	// Current time
+	// The current time.
 	//
 	// example:
 	//
 	// 2026
 	CurrentTime *string `json:"CurrentTime,omitempty" xml:"CurrentTime,omitempty"`
-	// Directory structure
+	// The directory structure.
 	DirectoryList []*GetAppWorkspaceDirectoryResponseBodyModuleDirectoryList `json:"DirectoryList,omitempty" xml:"DirectoryList,omitempty" type:"Repeated"`
 }
 
@@ -261,15 +261,15 @@ func (s *GetAppWorkspaceDirectoryResponseBodyModule) Validate() error {
 }
 
 type GetAppWorkspaceDirectoryResponseBodyModuleDirectoryList struct {
-	// Child content
+	// The child content.
 	Children []interface{} `json:"Children,omitempty" xml:"Children,omitempty" type:"Repeated"`
-	// Full path (relative to workspace)
+	// The full path relative to the workspace.
 	//
 	// example:
 	//
 	// PolarDBInnoDBRedoLogWrites
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// Name
+	// The name.
 	//
 	// example:
 	//

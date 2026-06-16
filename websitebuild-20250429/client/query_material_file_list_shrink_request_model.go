@@ -40,7 +40,7 @@ type iQueryMaterialFileListShrinkRequest interface {
 }
 
 type QueryMaterialFileListShrinkRequest struct {
-	// Business ID of the application instance
+	// The business ID of the application instance.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type QueryMaterialFileListShrinkRequest struct {
 	//
 	// WD20250703155602000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// Folder ID
+	// The folder ID.
 	//
 	// This parameter is required.
 	//
@@ -56,13 +56,13 @@ type QueryMaterialFileListShrinkRequest struct {
 	//
 	// 68157a0a-769a-4364-bbdc-a0e2cf3d5ad
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	// Maximum file size
+	// The maximum file size.
 	//
 	// example:
 	//
 	// 1024
 	MaxFileSize *int64 `json:"MaxFileSize,omitempty" xml:"MaxFileSize,omitempty"`
-	// Number of results per query.
+	// The maximum number of entries to return per query.
 	//
 	// Valid values: 10 to 100. Default value: 20.
 	//
@@ -70,53 +70,53 @@ type QueryMaterialFileListShrinkRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// Minimum file size
+	// The minimum file size.
 	//
 	// example:
 	//
 	// 0
 	MinFileSize *int64 `json:"MinFileSize,omitempty" xml:"MinFileSize,omitempty"`
-	// Website name
+	// The website name.
 	//
 	// example:
 	//
 	// 测试
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Token indicating the start of the next query. It is empty when there is no subsequent query.
+	// The token for the next query. This parameter is empty if no more results exist.
 	//
 	// example:
 	//
 	// 0l45bkwM022Dt+rOvPi/oQ==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Sorting field
+	// The field by which to sort the results.
 	//
 	// example:
 	//
 	// gmtCreated
 	OrderColumn *string `json:"OrderColumn,omitempty" xml:"OrderColumn,omitempty"`
-	// Sorting type: ASC or DESC
+	// The sort order. Valid values: ASC and DESC.
 	//
 	// example:
 	//
 	// BUY
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	// Page number. Default value is 1.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 0
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// Page size. Default value: 10.
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Status range
+	// The list of statuses.
 	StatusListShrink *string `json:"StatusList,omitempty" xml:"StatusList,omitempty"`
-	// File suffix list
+	// The list of file suffixes.
 	SuffixListShrink *string `json:"SuffixList,omitempty" xml:"SuffixList,omitempty"`
-	// List of file types
+	// The list of file types.
 	TypeListShrink *string `json:"TypeList,omitempty" xml:"TypeList,omitempty"`
 }
 

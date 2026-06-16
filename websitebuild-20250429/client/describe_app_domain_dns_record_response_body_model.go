@@ -34,59 +34,59 @@ type iDescribeAppDomainDnsRecordResponseBody interface {
 }
 
 type DescribeAppDomainDnsRecordResponseBody struct {
-	// Details of access denial; this field is returned only when RAM verification fails.
+	// The access denied details. This field is returned only when RAM authentication fails.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Whether retry is allowed
+	// Indicates whether retry is allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// 应用名称，查询此名称的应用
+	// The application name. Queries the application with this name.
 	//
 	// example:
 	//
 	// ish-intelligence-store-platform-admin-web
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// Dynamic error code.
+	// The dynamic error code.
 	//
 	// example:
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// Dynamic message.
+	// The dynamic message.
 	//
 	// example:
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// 返回错误参数
+	// The returned error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// Application module
+	// The application module.
 	Module *DescribeAppDomainDnsRecordResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
-	// ID of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Error code
+	// The error code.
 	//
 	// example:
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// Exception message
+	// The exception message.
 	//
 	// example:
 	//
 	// 系统异常
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// Backup parameter.
+	// The reserved parameter.
 	//
 	// example:
 	//
@@ -211,19 +211,19 @@ func (s *DescribeAppDomainDnsRecordResponseBody) Validate() error {
 }
 
 type DescribeAppDomainDnsRecordResponseBodyModule struct {
-	// Host record
+	// The host record.
 	//
 	// example:
 	//
 	// *.com
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// Record type
+	// The record type.
 	//
 	// example:
 	//
 	// A
 	RecordType *string `json:"RecordType,omitempty" xml:"RecordType,omitempty"`
-	// Record value
+	// The record value.
 	//
 	// example:
 	//

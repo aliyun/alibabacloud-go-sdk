@@ -14,7 +14,7 @@ type iGetAppInstanceForPartnerRequest interface {
 }
 
 type GetAppInstanceForPartnerRequest struct {
-	// Business ID
+	// The business ID.
 	//
 	// example:
 	//

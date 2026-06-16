@@ -10,11 +10,11 @@ import (
 
 // Summary:
 //
-// # Assign a Supabase instance to a resource
+// Allocates a Supabase instance for resource allocation.
 //
 // Description:
 //
-// # Query the Supabase instance information corresponding to the resource
+// Queries the Supabase instance information associated with a resource.
 //
 // @param request - AllocateSupabaseForAdminRequest
 //
@@ -82,11 +82,11 @@ func (client *Client) AllocateSupabaseForAdminWithContext(ctx context.Context, r
 
 // Summary:
 //
-// # Batch check resource usage
+// Checks resource usage in batches.
 //
 // Description:
 //
-// # Operation resource-related Supabase instance information
+// The Supabase instance information corresponding to the operated resources.
 //
 // @param request - BatchCheckResourceMeasureRequest
 //
@@ -150,7 +150,7 @@ func (client *Client) BatchCheckResourceMeasureWithContext(ctx context.Context, 
 
 // Summary:
 //
-// # Bind Application Domain
+// Binds a custom domain name to an application and automatically completes DNS resolution verification.
 //
 // @param request - BindAppDomainRequest
 //
@@ -206,11 +206,71 @@ func (client *Client) BindAppDomainWithContext(ctx context.Context, request *Bin
 
 // Summary:
 //
-// # Check resource usage
+// Verifies a verification code.
 //
 // Description:
 //
-// # Query the Supabase instance information corresponding to the resource
+// Retrieves the configuration information of the code generation plug-in.
+//
+// @param request - CheckAppVerifyCodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckAppVerifyCodeResponse
+func (client *Client) CheckAppVerifyCodeWithContext(ctx context.Context, request *CheckAppVerifyCodeRequest, runtime *dara.RuntimeOptions) (_result *CheckAppVerifyCodeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.Code) {
+		query["Code"] = request.Code
+	}
+
+	if !dara.IsNil(request.Target) {
+		query["Target"] = request.Target
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CheckAppVerifyCode"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CheckAppVerifyCodeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Checks resource usage.
+//
+// Description:
+//
+// Queries the Supabase instance information corresponding to a resource.
 //
 // @param request - CheckResourceMeasureRequest
 //
@@ -278,11 +338,11 @@ func (client *Client) CheckResourceMeasureWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// # Validate user resource metering
+// Checks user resource metering.
 //
 // Description:
 //
-// # Query the Supabase instance information corresponding to the resource
+// Queries the Supabase instance information corresponding to a resource.
 //
 // @param request - CheckUserResourceMeasureRequest
 //
@@ -494,11 +554,11 @@ func (client *Client) CopyAppPluginConfigWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// # Initiate an AI employee conversation asynchronously
+// Asynchronously initiates a conversation with an AI employee.
 //
 // Description:
 //
-// # Wan Xiaozhi 2.0 AI conversation
+// Initiates a WanXiaoZhi 2.0 AI conversation.
 //
 // @param request - CreateAIStaffChatRequest
 //
@@ -561,11 +621,11 @@ func (client *Client) CreateAIStaffChatWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// # Create an AI agent session
+// Creates an AI employee session.
 //
 // Description:
 //
-// # Wan Xiaozhi 2.0 API for creating an AI session
+// Creates an AI session for WanXiaoZhi 2.0.
 //
 // @param request - CreateAIStaffConversationRequest
 //
@@ -609,11 +669,11 @@ func (client *Client) CreateAIStaffConversationWithContext(ctx context.Context, 
 
 // Summary:
 //
-// # Create Application Assistant Agent
+// Creates an application assistant agent.
 //
 // Description:
 //
-// # Obtain the configuration information of the code generation plugin
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param request - CreateAppAssistantAgentRequest
 //
@@ -665,11 +725,11 @@ func (client *Client) CreateAppAssistantAgentWithContext(ctx context.Context, re
 
 // Summary:
 //
-// # Generate application assistant SSO logon
+// Generates an SSO logon-free URL for an application assistant agent.
 //
 // Description:
 //
-// # Obtain the configuration information of the code generation plugin
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - CreateAppAssistantAgentSsoLoginRequest
 //
@@ -796,7 +856,7 @@ func (client *Client) CreateAppChatWithContext(ctx context.Context, request *Cre
 
 // Summary:
 //
-// # Create a website instance
+// Creates a website builder application instance.
 //
 // @param tmpReq - CreateAppInstanceRequest
 //
@@ -908,7 +968,7 @@ func (client *Client) CreateAppInstanceWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// # SSO ticket
+// Creates a login-free ticket for a website builder instance.
 //
 // @param request - CreateAppInstanceTicketRequest
 //
@@ -1016,11 +1076,103 @@ func (client *Client) CreateAppLlmApiKeyForPartnerWithContext(ctx context.Contex
 
 // Summary:
 //
-// # Activate the Wanxiao Zhi Inspiration Value service
+// Creates a message notification scenario.
 //
 // Description:
 //
-// # Obtain the configuration information of the code generation plugin
+// Retrieves the configuration information of the code generation plug-in.
+//
+// @param request - CreateAppNotificationSceneRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAppNotificationSceneResponse
+func (client *Client) CreateAppNotificationSceneWithContext(ctx context.Context, request *CreateAppNotificationSceneRequest, runtime *dara.RuntimeOptions) (_result *CreateAppNotificationSceneResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.ChannelsJson) {
+		query["ChannelsJson"] = request.ChannelsJson
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.EmailFieldsJson) {
+		query["EmailFieldsJson"] = request.EmailFieldsJson
+	}
+
+	if !dara.IsNil(request.EmailLimitJson) {
+		query["EmailLimitJson"] = request.EmailLimitJson
+	}
+
+	if !dara.IsNil(request.EmailRecipientIdsJson) {
+		query["EmailRecipientIdsJson"] = request.EmailRecipientIdsJson
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.PhoneRecipientIdsJson) {
+		query["PhoneRecipientIdsJson"] = request.PhoneRecipientIdsJson
+	}
+
+	if !dara.IsNil(request.SmsFieldsJson) {
+		query["SmsFieldsJson"] = request.SmsFieldsJson
+	}
+
+	if !dara.IsNil(request.SmsLimitJson) {
+		query["SmsLimitJson"] = request.SmsLimitJson
+	}
+
+	if !dara.IsNil(request.TableName) {
+		query["TableName"] = request.TableName
+	}
+
+	if !dara.IsNil(request.TriggerEventsJson) {
+		query["TriggerEventsJson"] = request.TriggerEventsJson
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateAppNotificationScene"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateAppNotificationSceneResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Activates the Wanxiaozhi inspiration value service.
+//
+// Description:
+//
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param request - CreateAppTokenServiceRequest
 //
@@ -1064,7 +1216,7 @@ func (client *Client) CreateAppTokenServiceWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Commit a job to create a logo.
+// Submits a task to create a logo.
 //
 // @param request - CreateLogoTaskRequest
 //
@@ -1120,7 +1272,7 @@ func (client *Client) CreateLogoTaskWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// Create a subfolder under the parent folder.
+// Creates a subfolder under a parent folder.
 //
 // @param request - CreateMaterialDirectoryRequest
 //
@@ -1172,7 +1324,7 @@ func (client *Client) CreateMaterialDirectoryWithContext(ctx context.Context, re
 
 // Summary:
 //
-// # Delete the SSL certificate of a domain
+// Deletes and unbinds the SSL certificate that is bound to a website.
 //
 // @param request - DeleteAppDomainCertificateRequest
 //
@@ -1220,7 +1372,7 @@ func (client *Client) DeleteAppDomainCertificateWithContext(ctx context.Context,
 
 // Summary:
 //
-// # Delete the domain redirection rules
+// Deletes 301 redirect records bound to a website.
 //
 // @param request - DeleteAppDomainRedirectRequest
 //
@@ -1372,6 +1524,58 @@ func (client *Client) DeleteAppInstanceFileWithContext(ctx context.Context, requ
 
 // Summary:
 //
+// 删除消息通知场景
+//
+// Description:
+//
+// 查询应用实例信息
+//
+// @param request - DeleteAppNotificationSceneRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAppNotificationSceneResponse
+func (client *Client) DeleteAppNotificationSceneWithContext(ctx context.Context, request *DeleteAppNotificationSceneRequest, runtime *dara.RuntimeOptions) (_result *DeleteAppNotificationSceneResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.SceneId) {
+		query["SceneId"] = request.SceneId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteAppNotificationScene"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteAppNotificationSceneResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Delete Supabase key
 //
 // Description:
@@ -1424,7 +1628,7 @@ func (client *Client) DeleteAppSupabaseSecretsWithContext(ctx context.Context, r
 
 // Summary:
 //
-// # Delete a material folder
+// Deletes a material folder.
 //
 // @param request - DeleteMaterialDirectoryRequest
 //
@@ -1472,7 +1676,7 @@ func (client *Client) DeleteMaterialDirectoryWithContext(ctx context.Context, re
 
 // Summary:
 //
-// # Delete Material Generation Job
+// Deletes a material generation task.
 //
 // @param tmpReq - DeleteMaterialTaskRequest
 //
@@ -1522,7 +1726,7 @@ func (client *Client) DeleteMaterialTaskWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// # Query the DNS resolution records of a domain
+// Query website DNS resolution records. Supports CNAME resolution and verification resolution queries.
 //
 // @param request - DescribeAppDomainDnsRecordRequest
 //
@@ -1574,7 +1778,7 @@ func (client *Client) DescribeAppDomainDnsRecordWithContext(ctx context.Context,
 
 // Summary:
 //
-// # DispatchConsoleAPIForPartner
+// Calls a general-purpose API operation.
 //
 // @param request - DispatchConsoleAPIForPartnerRequest
 //
@@ -1634,7 +1838,7 @@ func (client *Client) DispatchConsoleAPIForPartnerWithContext(ctx context.Contex
 
 // Summary:
 //
-// Edit plugin configuration.
+// Edits a plug-in configuration.
 //
 // @param request - EditPluginConfigRequest
 //
@@ -1694,7 +1898,7 @@ func (client *Client) EditPluginConfigWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// # Export material files
+// Exports a material file.
 //
 // @param tmpReq - ExportMaterialFileRequest
 //
@@ -1900,11 +2104,11 @@ func (client *Client) GetAppConversationWithContext(ctx context.Context, request
 
 // Summary:
 //
-// # Obtain session lock status
+// Retrieves the session lock status.
 //
 // Description:
 //
-// # Wan Xiaozhi 2.0 API for creating AI sessions
+// Creates an AI session through the WanXiaoZhi 2.0 interface.
 //
 // @param request - GetAppConversationLockStatusRequest
 //
@@ -2052,7 +2256,7 @@ func (client *Client) GetAppFileContentWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// # Query Application Instance Details
+// Queries the details of a website builder application instance.
 //
 // @param request - GetAppInstanceRequest
 //
@@ -2144,11 +2348,11 @@ func (client *Client) GetAppInstanceEntitlementWithContext(ctx context.Context, 
 
 // Summary:
 //
-// # Query application instance information
+// Queries application instance information.
 //
 // Description:
 //
-// 查询应用实例信息
+// Queries application instance information.
 //
 // @param request - GetAppInstanceForAdminRequest
 //
@@ -2196,11 +2400,11 @@ func (client *Client) GetAppInstanceForAdminWithContext(ctx context.Context, req
 
 // Summary:
 //
-// # Query instance details
+// Queries instance details.
 //
 // Description:
 //
-// # Obtain the configuration information of the code generation plugin
+// Retrieves the configuration information of a code generation plugin.
 //
 // @param request - GetAppInstanceForPartnerRequest
 //
@@ -2292,11 +2496,11 @@ func (client *Client) GetAppInstanceTempShortUrlWithContext(ctx context.Context,
 
 // Summary:
 //
-// Obtain plugin configuration information.
+// Retrieves the configuration information of a plugin.
 //
 // Description:
 //
-// Obtain the configuration information of the code generation plugin.
+// Retrieves the configuration information of a code generation plugin.
 //
 // @param request - GetAppPluginConfigRequest
 //
@@ -2400,11 +2604,11 @@ func (client *Client) GetAppPublishStatusWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// # Query recommended products
+// Queries recommended commodities.
 //
 // Description:
 //
-// # Obtain barcode generation plugin configuration information
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param request - GetAppRecommendedCommoditiesRequest
 //
@@ -2460,11 +2664,11 @@ func (client *Client) GetAppRecommendedCommoditiesWithContext(ctx context.Contex
 
 // Summary:
 //
-// # Requirement query
+// Queries requirements.
 //
 // Description:
 //
-// # Obtain barcode generation plugin configuration information
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param request - GetAppRequirementRequest
 //
@@ -2928,11 +3132,11 @@ func (client *Client) GetAppTemplateWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
-// # Obtain the workspace directory structure
+// Retrieves the directory structure of a workspace.
 //
 // Description:
 //
-// # Query application instance information
+// Queries application instance information.
 //
 // @param request - GetAppWorkspaceDirectoryRequest
 //
@@ -2984,7 +3188,7 @@ func (client *Client) GetAppWorkspaceDirectoryWithContext(ctx context.Context, r
 
 // Summary:
 //
-// # Query the Logo creation job
+// Queries a logo creation task.
 //
 // @param request - GetCreateLogoTaskRequest
 //
@@ -3028,7 +3232,7 @@ func (client *Client) GetCreateLogoTaskWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// # Domain name query API provided to service providers
+// Provides a domain name query API for service providers.
 //
 // @param request - GetDomainInfoForPartnerRequest
 //
@@ -3080,7 +3284,7 @@ func (client *Client) GetDomainInfoForPartnerWithContext(ctx context.Context, re
 
 // Summary:
 //
-// # Query ICP filing information of a domain name
+// Queries the China Internet Content Provider (ICP) filing information of a domain name.
 //
 // @param request - GetIcpFilingInfoForPartnerRequest
 //
@@ -3128,11 +3332,11 @@ func (client *Client) GetIcpFilingInfoForPartnerWithContext(ctx context.Context,
 
 // Summary:
 //
-// # Query LLM Proxy configuration
+// Queries the LLM Proxy configuration.
 //
 // Description:
 //
-// Query the Supabase instance configuration information corresponding to the resource.
+// Queries the Supabase instance configuration information for a specified resource.
 //
 // @param request - GetLlmProxyConfigForAdminRequest
 //
@@ -3442,7 +3646,7 @@ func (client *Client) GetTempDownloadUrlWithContext(ctx context.Context, request
 
 // Summary:
 //
-// # Exchange temporary AccessKey for accessToken
+// Exchanges a temporary AccessKey pair for an access token.
 //
 // @param request - GetUserAccessTokenForPartnerRequest
 //
@@ -3490,7 +3694,7 @@ func (client *Client) GetUserAccessTokenForPartnerWithContext(ctx context.Contex
 
 // Summary:
 //
-// # Partnership obtains temporary credentials for User SLR role authorization
+// Obtains temporary credentials for a partner to assume a user\\"s service-linked role.
 //
 // @param request - GetUserTmpIdentityForPartnerRequest
 //
@@ -3550,7 +3754,7 @@ func (client *Client) GetUserTmpIdentityForPartnerWithContext(ctx context.Contex
 
 // Summary:
 //
-// # Introspection analysis of免登 accessToken
+// Performs introspection analysis on a China Chinese China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China.
 //
 // @param request - IntrospectAppInstanceTicketForPreviewRequest
 //
@@ -3598,11 +3802,11 @@ func (client *Client) IntrospectAppInstanceTicketForPreviewWithContext(ctx conte
 
 // Summary:
 //
-// # Obtain incremental SSE events of AI employee conversations
+// Retrieves incremental SSE events for an AI agent conversation.
 //
 // Description:
 //
-// # Wan Xiaozhi 2.0 – Retrieve streaming output results of AI sessions
+// Retrieves the streaming output results of an AI conversation.
 //
 // @param request - ListAIStaffChatEventsRequest
 //
@@ -3660,11 +3864,11 @@ func (client *Client) ListAIStaffChatEventsWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// # Paged query of AI employee conversation message list
+// Queries the conversation message list of an AI employee by paging.
 //
 // Description:
 //
-// # Wan Xiaozhi 2.0 - API for querying AI session history information
+// Queries the AI session history for WanXiaoZhi 2.0.
 //
 // @param request - ListAIStaffChatMessagesRequest
 //
@@ -3722,11 +3926,11 @@ func (client *Client) ListAIStaffChatMessagesWithContext(ctx context.Context, re
 
 // Summary:
 //
-// # Query the list of application assistant agents
+// Queries the list of application assistant agents.
 //
 // Description:
 //
-// # Query application instance information
+// Queries application instance information.
 //
 // @param request - ListAppAssistantAgentsRequest
 //
@@ -3838,11 +4042,11 @@ func (client *Client) ListAppChatMessagesWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// # Query website building product details
+// # Query Website Build Product Details
 //
 // Description:
 //
-// # Obtain the configuration information of the code generation plugin
+// # Get QR code plugin configuration information
 //
 // @param request - ListAppCommoditySpecificationsV2ForPartnerRequest
 //
@@ -4034,7 +4238,7 @@ func (client *Client) ListAppConversationsWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// # Query the list of domain redirection rules
+// Queries the list of HTTP 301 status code redirects for a website.
 //
 // @param request - ListAppDomainRedirectRecordsRequest
 //
@@ -4086,7 +4290,7 @@ func (client *Client) ListAppDomainRedirectRecordsWithContext(ctx context.Contex
 
 // Summary:
 //
-// # List all domain names under the application instance
+// Queries the list of domain names bound to a website.
 //
 // @param request - ListAppInstanceDomainsRequest
 //
@@ -4158,7 +4362,7 @@ func (client *Client) ListAppInstanceDomainsWithContext(ctx context.Context, req
 
 // Summary:
 //
-// # Website Instance List Query
+// Queries the list of application instances.
 //
 // @param tmpReq - ListAppInstancesRequest
 //
@@ -4660,7 +4864,7 @@ func (client *Client) ListIsvPaymentPluginConfigsWithContext(ctx context.Context
 
 // Summary:
 //
-// # Modify the configuration of a building instance
+// Modifies the specifications of a website building application instance.
 //
 // @param request - ModifyAppInstanceSpecRequest
 //
@@ -4728,7 +4932,7 @@ func (client *Client) ModifyAppInstanceSpecWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// # Modify a material folder
+// Modifies a material folder.
 //
 // @param request - ModifyMaterialDirectoryRequest
 //
@@ -4780,7 +4984,7 @@ func (client *Client) ModifyMaterialDirectoryWithContext(ctx context.Context, re
 
 // Summary:
 //
-// # Modify a material file
+// Modifies a material file.
 //
 // @param request - ModifyMaterialFileRequest
 //
@@ -4832,7 +5036,7 @@ func (client *Client) ModifyMaterialFileWithContext(ctx context.Context, request
 
 // Summary:
 //
-// # Modify the status of a material file
+// Modifies the status of a material file.
 //
 // @param tmpReq - ModifyMaterialFileStatusRequest
 //
@@ -4890,7 +5094,7 @@ func (client *Client) ModifyMaterialFileStatusWithContext(ctx context.Context, t
 
 // Summary:
 //
-// # Shift material folder
+// Moves a material file folder.
 //
 // @param request - MoveMaterialDirectoryRequest
 //
@@ -4946,7 +5150,7 @@ func (client *Client) MoveMaterialDirectoryWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// # Shift material files
+// Moves media asset files.
 //
 // @param tmpReq - MoveMaterialFileRequest
 //
@@ -5004,7 +5208,63 @@ func (client *Client) MoveMaterialFileWithContext(ctx context.Context, tmpReq *M
 
 // Summary:
 //
-// # Operate application for Partnership
+// 数据变更通知触发（for admin）
+//
+// Description:
+//
+// 查询应用实例信息
+//
+// @param request - NotifyAppNotificationForAdminRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return NotifyAppNotificationForAdminResponse
+func (client *Client) NotifyAppNotificationForAdminWithContext(ctx context.Context, request *NotifyAppNotificationForAdminRequest, runtime *dara.RuntimeOptions) (_result *NotifyAppNotificationForAdminResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.Env) {
+		query["Env"] = request.Env
+	}
+
+	if !dara.IsNil(request.SceneId) {
+		query["SceneId"] = request.SceneId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("NotifyAppNotificationForAdmin"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &NotifyAppNotificationForAdminResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Operates an application by a partner.
 //
 // @param request - OperateAppInstanceForPartnerRequest
 //
@@ -5052,7 +5312,7 @@ func (client *Client) OperateAppInstanceForPartnerWithContext(ctx context.Contex
 
 // Summary:
 //
-// Partnership operates application services.
+// Operates application services on behalf of a partner.
 //
 // @param request - OperateAppServiceForPartnerRequest
 //
@@ -5160,11 +5420,11 @@ func (client *Client) OperateAppTemplateLikeWithContext(ctx context.Context, req
 
 // Summary:
 //
-// # Supabase instance information corresponding to the operation resource
+// Operates on the Supabase instance information corresponding to a resource.
 //
 // Description:
 //
-// # Supabase instance information corresponding to the operation resource
+// The Supabase instance information corresponding to the operated resource.
 //
 // @param request - OperateSupabaseForAdminRequest
 //
@@ -5320,11 +5580,11 @@ func (client *Client) PublishAppInstanceWithContext(ctx context.Context, request
 
 // Summary:
 //
-// # Push resource metering data
+// Pushes resource metering data.
 //
 // Description:
 //
-// # Query the Supabase instance information corresponding to the resource
+// Queries the Supabase instance information corresponding to a resource.
 //
 // @param request - PushResourceMeasureRequest
 //
@@ -5400,11 +5660,11 @@ func (client *Client) PushResourceMeasureWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Query the details of inspiration value acquisition (quota account list, including expiration mark)
+// Queries the details of inspiration point acquisition (quota account list, including expiration flags).
 //
 // Description:
 //
-// # Query the Supabase instance information corresponding to the resource
+// Queries the Supabase instance information associated with a resource.
 //
 // @param request - QueryInspirationAccountDetailsRequest
 //
@@ -5472,11 +5732,11 @@ func (client *Client) QueryInspirationAccountDetailsWithContext(ctx context.Cont
 
 // Summary:
 //
-// # Query inspiration value consumption details
+// Queries the details of inspiration point consumption.
 //
 // Description:
 //
-// # Obtain the configuration information of the code generation plugin
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - QueryInspirationConsumeRecordsRequest
 //
@@ -5544,7 +5804,7 @@ func (client *Client) QueryInspirationConsumeRecordsWithContext(ctx context.Cont
 
 // Summary:
 //
-// # Query the material folder tree
+// Queries the material folder tree.
 //
 // @param request - QueryMaterialDirectoryTreeRequest
 //
@@ -5596,7 +5856,7 @@ func (client *Client) QueryMaterialDirectoryTreeWithContext(ctx context.Context,
 
 // Summary:
 //
-// # Query Material File Details
+// Queries the details of a material file.
 //
 // @param request - QueryMaterialFileDetailRequest
 //
@@ -5644,7 +5904,7 @@ func (client *Client) QueryMaterialFileDetailWithContext(ctx context.Context, re
 
 // Summary:
 //
-// # Query the list of material files
+// Queries the list of material files.
 //
 // @param tmpReq - QueryMaterialFileListRequest
 //
@@ -5754,7 +6014,7 @@ func (client *Client) QueryMaterialFileListWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// # Query file overview
+// Queries the file overview.
 //
 // @param tmpReq - QueryMaterialFileSummaryInfoRequest
 //
@@ -5840,7 +6100,7 @@ func (client *Client) QueryMaterialFileSummaryInfoWithContext(ctx context.Contex
 
 // Summary:
 //
-// # Query the details of a Material generation Job
+// Queries the details of a material generation task.
 //
 // @param request - QueryMaterialTaskDetailRequest
 //
@@ -5884,7 +6144,7 @@ func (client *Client) QueryMaterialTaskDetailWithContext(ctx context.Context, re
 
 // Summary:
 //
-// # Query the list of Material generation Jobs
+// # Query Material Generation Task List
 //
 // @param tmpReq - QueryMaterialTaskListRequest
 //
@@ -5966,11 +6226,11 @@ func (client *Client) QueryMaterialTaskListWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// # Query the auth configuration information of the Supabase instance corresponding to the resource
+// Queries the auth configuration of a Supabase instance associated with a resource.
 //
 // Description:
 //
-// # Query the auth configuration information of the Supabase instance corresponding to the resource
+// Queries the auth configuration of a Supabase instance associated with a resource.
 //
 // @param request - QuerySupabaseAuthConfigsForAdminRequest
 //
@@ -6042,11 +6302,11 @@ func (client *Client) QuerySupabaseAuthConfigsForAdminWithContext(ctx context.Co
 
 // Summary:
 //
-// Query the Supabase instance configuration information corresponding to the resource.
+// Queries the Supabase instance configuration information for a specified resource.
 //
 // Description:
 //
-// Query the Supabase instance configuration information corresponding to the resource.
+// Queries the Supabase instance configuration information for a specified resource.
 //
 // @param request - QuerySupabaseConfigsForAdminRequest
 //
@@ -6114,11 +6374,11 @@ func (client *Client) QuerySupabaseConfigsForAdminWithContext(ctx context.Contex
 
 // Summary:
 //
-// # Query the Supabase instance information corresponding to the resource
+// Queries the Supabase instance information for a specified resource.
 //
 // Description:
 //
-// # Query the Supabase instance information corresponding to the resource
+// Queries the Supabase instance information for a specified resource.
 //
 // @param request - QuerySupabaseInstanceInfoForAdminRequest
 //
@@ -6186,11 +6446,11 @@ func (client *Client) QuerySupabaseInstanceInfoForAdminWithContext(ctx context.C
 
 // Summary:
 //
-// # Reconnect AI conversation
+// Reconnects an AI conversation.
 //
 // Description:
 //
-// # Obtain QR code plugin Configuration Information
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param request - ReconnectAppChatRequest
 //
@@ -6205,11 +6465,11 @@ func (client *Client) ReconnectAppChatWithSSECtx(ctx context.Context, request *R
 
 // Summary:
 //
-// # Reconnect AI conversation
+// Reconnects an AI conversation.
 //
 // Description:
 //
-// # Obtain QR code plugin Configuration Information
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param request - ReconnectAppChatRequest
 //
@@ -6223,21 +6483,21 @@ func (client *Client) ReconnectAppChatWithContext(ctx context.Context, request *
 			return _result, _err
 		}
 	}
-	query := map[string]interface{}{}
+	body := map[string]interface{}{}
 	if !dara.IsNil(request.ChatId) {
-		query["ChatId"] = request.ChatId
+		body["ChatId"] = request.ChatId
 	}
 
 	if !dara.IsNil(request.ConversationId) {
-		query["ConversationId"] = request.ConversationId
+		body["ConversationId"] = request.ConversationId
 	}
 
 	if !dara.IsNil(request.LastEventId) {
-		query["LastEventId"] = request.LastEventId
+		body["LastEventId"] = request.LastEventId
 	}
 
 	req := &openapiutil.OpenApiRequest{
-		Query: openapiutil.Query(query),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("ReconnectAppChat"),
@@ -6261,7 +6521,7 @@ func (client *Client) ReconnectAppChatWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// # Refresh ticket
+// Refreshes the password-free login ticket for a website building instance.
 //
 // @param request - RefreshAppInstanceTicketRequest
 //
@@ -6313,7 +6573,7 @@ func (client *Client) RefreshAppInstanceTicketWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Refund for channel partner website building service.
+// Processes a refund for a channel partner website building service.
 //
 // @param request - RefundAppInstanceForPartnerRequest
 //
@@ -6369,7 +6629,7 @@ func (client *Client) RefundAppInstanceForPartnerWithContext(ctx context.Context
 
 // Summary:
 //
-// # Renewal of website building instance
+// Renews a website builder application instance.
 //
 // @param request - RenewAppInstanceRequest
 //
@@ -6433,11 +6693,11 @@ func (client *Client) RenewAppInstanceWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Renewal/Purge Sandbox Environment
+// Renews or refreshes a sandbox environment.
 //
 // Description:
 //
-// # Obtain the configuration information of the code generation plugin
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - RenewAppSandboxRequest
 //
@@ -6699,7 +6959,7 @@ func (client *Client) SaveAppSupabaseSecretsWithContext(ctx context.Context, req
 
 // Summary:
 //
-// # Image retrieval
+// Searches for images.
 //
 // @param tmpReq - SearchImageRequest
 //
@@ -6805,7 +7065,7 @@ func (client *Client) SearchImageWithContext(ctx context.Context, tmpReq *Search
 
 // Summary:
 //
-// # Set the SSL certificate for a domain
+// Sets the SSL certificate for a website.
 //
 // @param request - SetAppDomainCertificateRequest
 //
@@ -6929,7 +7189,7 @@ func (client *Client) SubmitAppSeoIndexWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// # Submit a Material Generation Job
+// Submits a material generation task.
 //
 // @param request - SubmitMaterialTaskRequest
 //
@@ -7033,7 +7293,7 @@ func (client *Client) SwitchAppConversationWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// # Partnership synchronizes application instance
+// Synchronizes an application instance from a partner.
 //
 // @param tmpReq - SyncAppInstanceForPartnerRequest
 //
@@ -7099,7 +7359,7 @@ func (client *Client) SyncAppInstanceForPartnerWithContext(ctx context.Context, 
 
 // Summary:
 //
-// # Unbind Application Domain
+// Unbinds a domain name from a website and deletes the related DNS records.
 //
 // @param request - UnbindAppDomainRequest
 //
@@ -7719,7 +7979,7 @@ func (client *Client) UploadAppSiteValidationFileWithContext(ctx context.Context
 
 // Summary:
 //
-// # Upload material files
+// Uploads a material file.
 //
 // @param request - UploadMaterialFileRequest
 //
@@ -7845,21 +8105,21 @@ func (client *Client) reconnectAppChatWithSSECtx_opYieldFunc(_yield chan *Reconn
 			return
 		}
 	}
-	query := map[string]interface{}{}
+	body := map[string]interface{}{}
 	if !dara.IsNil(request.ChatId) {
-		query["ChatId"] = request.ChatId
+		body["ChatId"] = request.ChatId
 	}
 
 	if !dara.IsNil(request.ConversationId) {
-		query["ConversationId"] = request.ConversationId
+		body["ConversationId"] = request.ConversationId
 	}
 
 	if !dara.IsNil(request.LastEventId) {
-		query["LastEventId"] = request.LastEventId
+		body["LastEventId"] = request.LastEventId
 	}
 
 	req := &openapiutil.OpenApiRequest{
-		Query: openapiutil.Query(query),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("ReconnectAppChat"),

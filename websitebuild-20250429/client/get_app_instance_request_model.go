@@ -14,7 +14,7 @@ type iGetAppInstanceRequest interface {
 }
 
 type GetAppInstanceRequest struct {
-	// Business ID
+	// The business ID.
 	//
 	// example:
 	//

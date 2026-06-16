@@ -18,19 +18,19 @@ type iGetAppWorkspaceDirectoryRequest interface {
 }
 
 type GetAppWorkspaceDirectoryRequest struct {
-	// Session ID
+	// The session ID.
 	//
 	// example:
 	//
 	// 5b7105a2-2999-430b-ba23-ba09149d5434
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
-	// Directory depth (optional; null or 0 returns all levels)
+	// The directory depth. This parameter is optional. If set to null or 0, all levels are returned.
 	//
 	// example:
 	//
 	// 1
 	Deep *int32 `json:"Deep,omitempty" xml:"Deep,omitempty"`
-	// Directory path (optional)
+	// The directory path. This parameter is optional.
 	//
 	// example:
 	//

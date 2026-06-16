@@ -16,13 +16,13 @@ type iCreateAppInstanceTicketRequest interface {
 }
 
 type CreateAppInstanceTicketRequest struct {
-	// Customer business ID
+	// The business ID of the customer.
 	//
 	// example:
 	//
 	// WS20250801154628000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// Client ID of the device that needs to revoke the access token.
+	// The client ID of the device whose access credentials need to be revoked.
 	//
 	// example:
 	//

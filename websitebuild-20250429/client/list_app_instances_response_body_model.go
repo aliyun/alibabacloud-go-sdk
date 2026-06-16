@@ -52,97 +52,97 @@ type iListAppInstancesResponseBody interface {
 }
 
 type ListAppInstancesResponseBody struct {
-	// Detailed reason for access denial.
+	// The details about the access denial.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Whether retry is allowed
+	// Indicates whether retry is allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// App name.
+	// The application name.
 	//
 	// example:
 	//
 	// dewuApp
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPageNum *int32 `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
-	// Query result.
+	// The request result.
 	Data []*AppInstanceAggregate `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Dynamic error code.
+	// The dynamic error code.
 	//
 	// example:
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// Dynamic message, not in use, please ignore
+	// The dynamic message. This parameter is not in use. Ignore this parameter.
 	//
 	// example:
 	//
 	// https://check-result-file-sh.oss-cn-shanghai.aliyuncs.com/u6qw3gxzu3b7sbj/u6qw3gxzu3b7sbj.diff.zip?Expires=1740975709&OSSAccessKeyId=LTAI5tKUErVCETM4ev9SELNb&Signature=FP7dDnkrLlOZHmRRORVqbLOtv9c%3D
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// 返回错误参数
+	// The error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// The number of results per query.
+	// The number of entries per query.
 	//
-	// Value range: 10~100. Default value: 20.
+	// Valid values: 10 to 100. Default value: 20.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// Whether there is a next page.
+	// Indicates whether a next page exists.
 	//
 	// example:
 	//
 	// False
 	NextPage *bool `json:"NextPage,omitempty" xml:"NextPage,omitempty"`
-	// The token for the next query. It is empty when there is no next query.
+	// The token for the next query. This parameter is empty if no more results exist.
 	//
 	// example:
 	//
 	// dw+qdTi1EjVSWX/INJdYNw==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Page size.
+	// The page size.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Whether there is a previous page
+	// Indicates whether a previous page exists.
 	//
 	// example:
 	//
 	// False
 	PrePage *bool `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
-	// ID of the request
+	// Id of the request
 	//
 	// example:
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// For the current query, apart from pagination limits, the server processes up to the most recent 1000 records. If the result exceeds 1000 records, **ResultLimit*	- is **true**, please narrow down the time range and search again; otherwise, **ResultLimit*	- is **false**.
+	// Indicates whether the result limit is reached. The server processes up to 1000 recent records excluding pagination limits. If the results exceed 1000 records, **ResultLimit*	- is **true*	- and you must narrow the time range and search again. Otherwise, **ResultLimit*	- is **false**.
 	//
 	// example:
 	//
 	// False
 	ResultLimit *bool `json:"ResultLimit,omitempty" xml:"ResultLimit,omitempty"`
-	// Error code
+	// The error code.
 	//
 	// example:
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// Error message
+	// The error message.
 	//
 	// example:
 	//
@@ -152,13 +152,13 @@ type ListAppInstancesResponseBody struct {
 	//
 	// 1
 	StartPosition *string `json:"StartPosition,omitempty" xml:"StartPosition,omitempty"`
-	// Reserved parameter.
+	// The reserved parameter.
 	//
 	// example:
 	//
 	// True
 	Synchro *bool `json:"Synchro,omitempty" xml:"Synchro,omitempty"`
-	// Total number of pages.
+	// The total number of pages.
 	//
 	// example:
 	//

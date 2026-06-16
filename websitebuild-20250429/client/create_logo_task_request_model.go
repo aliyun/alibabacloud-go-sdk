@@ -21,19 +21,19 @@ type iCreateLogoTaskRequest interface {
 
 type CreateLogoTaskRequest struct {
 	LogoVersion *string `json:"LogoVersion,omitempty" xml:"LogoVersion,omitempty"`
-	// Negative prompt
+	// The negative prompt.
 	//
 	// example:
 	//
 	// 不生成政治相关图片内容
 	NegativePrompt *string `json:"NegativePrompt,omitempty" xml:"NegativePrompt,omitempty"`
-	// Job parameters
+	// The task parameters.
 	//
 	// example:
 	//
 	// {\\"ehpcutilParam\\":\\"sched job_submit --commandline \\\\\\"/ehpcdata/data/usersTest/huangqiaoyi-1725933699384/huangqiaoyi-1725933699384.slurm\\\\\\" --runasuser TestGfjnSimworks\\"}
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	// Positive prompt
+	// The positive prompt.
 	//
 	// example:
 	//

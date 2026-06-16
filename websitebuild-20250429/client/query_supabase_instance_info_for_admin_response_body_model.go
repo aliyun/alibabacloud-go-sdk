@@ -34,41 +34,41 @@ type iQuerySupabaseInstanceInfoForAdminResponseBody interface {
 }
 
 type QuerySupabaseInstanceInfoForAdminResponseBody struct {
-	// Detailed reason for access denial.
+	// The details about the access denial.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Whether retry is allowed
+	// Indicates whether a retry is allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// App Name.
+	// The application name.
 	//
 	// example:
 	//
 	// dewuApp
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// Dynamic error code.
+	// The dynamic error code.
 	//
 	// example:
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// Dynamic error message used to replace the `%s` placeholder in the **ErrMessage*	- error message.
+	// The dynamic error message, which replaces the `%s` placeholder in the **ErrMessage*	- response element.
 	//
-	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the provided request parameter **DtsJobId*	- is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the value of the **DtsJobId*	- request parameter is invalid.
 	//
 	// example:
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// Returned error parameters
+	// The error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// Response data
+	// The response data.
 	Module *QuerySupabaseInstanceInfoForAdminResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -76,19 +76,19 @@ type QuerySupabaseInstanceInfoForAdminResponseBody struct {
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Error code
+	// The error code.
 	//
 	// example:
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// Abnormal message
+	// The error message.
 	//
 	// example:
 	//
 	// 系统异常
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// Reserved parameter.
+	// A reserved parameter.
 	//
 	// example:
 	//
@@ -213,103 +213,111 @@ func (s *QuerySupabaseInstanceInfoForAdminResponseBody) Validate() error {
 }
 
 type QuerySupabaseInstanceInfoForAdminResponseBodyModule struct {
-	// Anonymity key
+	// The anonymous key.
 	//
 	// example:
 	//
 	// 1111
 	AnonKey *string `json:"AnonKey,omitempty" xml:"AnonKey,omitempty"`
-	// Business ID
+	// The business ID.
 	//
 	// example:
 	//
 	// WD20250703155602000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// Database instance creation time
+	// The time when the database instance was created.
 	//
 	// example:
 	//
 	// 111
 	DbInstanceCreateTime *string `json:"DbInstanceCreateTime,omitempty" xml:"DbInstanceCreateTime,omitempty"`
-	// Database instance ID
+	// The database instance ID.
 	//
 	// example:
 	//
 	// selectdb-cn-2bl4djolb02
 	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
-	// Database public URL
+	// The public URL of the database.
 	//
 	// example:
 	//
 	// 111
 	DbPublicUrl *string `json:"DbPublicUrl,omitempty" xml:"DbPublicUrl,omitempty"`
-	// Database type (rds/polardb)
+	// The database type. Valid values:
+	//
+	// - rds
+	//
+	// - polardb.
 	//
 	// example:
 	//
 	// ORACLE
 	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	// Additional information
+	// The additional information.
 	//
 	// example:
 	//
 	// {\\"appId\\":\\"APP_NTJAK8P11SNZDJ3M6BWC\\"}
 	Extra *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
-	// Instance creation completion time
+	// The time when the instance creation was completed.
 	//
 	// example:
 	//
 	// 111
 	InstanceCreateFinishedTime *string `json:"InstanceCreateFinishedTime,omitempty" xml:"InstanceCreateFinishedTime,omitempty"`
-	// Instance creation status
+	// The creation status of the instance.
 	//
 	// example:
 	//
 	// 1111
 	InstanceCreateStatus *string `json:"InstanceCreateStatus,omitempty" xml:"InstanceCreateStatus,omitempty"`
-	// Deletion flag
+	// The deletion flag.
 	//
 	// example:
 	//
 	// false
 	IsDeleted *int32 `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
-	// RDS database access password
+	// The password for accessing the ApsaraDB RDS database.
 	//
 	// example:
 	//
 	// 111
 	RdsDatabasePassword *string `json:"RdsDatabasePassword,omitempty" xml:"RdsDatabasePassword,omitempty"`
-	// Service key
+	// The service key.
 	//
 	// example:
 	//
 	// e80f5a7a08514709a2fb
 	ServiceKey *string `json:"ServiceKey,omitempty" xml:"ServiceKey,omitempty"`
-	// Status. 0: paused; 1: running
+	// The instance status. Valid values:
+	//
+	// - 0: Paused.
+	//
+	// - 1: Running.
 	//
 	// example:
 	//
 	// RUNNING
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Supabase Dashboard password
+	// The password for the Supabase Dashboard.
 	//
 	// example:
 	//
 	// 1111
 	SupabaseDashboardPassword *string `json:"SupabaseDashboardPassword,omitempty" xml:"SupabaseDashboardPassword,omitempty"`
-	// Supabase Dashboard username
+	// The username for the Supabase Dashboard.
 	//
 	// example:
 	//
 	// 1111
 	SupabaseDashboardUserName *string `json:"SupabaseDashboardUserName,omitempty" xml:"SupabaseDashboardUserName,omitempty"`
-	// Supabase instance creation time
+	// The time when the Supabase instance was created.
 	//
 	// example:
 	//
 	// 111
 	SupabaseInstanceCreateTime *string `json:"SupabaseInstanceCreateTime,omitempty" xml:"SupabaseInstanceCreateTime,omitempty"`
-	// Supabase instance ID
+	// The Supabase instance ID.
 	//
 	// example:
 	//
@@ -321,31 +329,31 @@ type QuerySupabaseInstanceInfoForAdminResponseBodyModule struct {
 	//
 	// 111
 	SupabaseKongUrl *string `json:"SupabaseKongUrl,omitempty" xml:"SupabaseKongUrl,omitempty"`
-	// Supabase instance PrivateLink address
+	// The private endpoint of the Supabase instance.
 	//
 	// example:
 	//
 	// 1111
 	SupabasePrivateIp *string `json:"SupabasePrivateIp,omitempty" xml:"SupabasePrivateIp,omitempty"`
-	// Supabase instance public endpoint
+	// The public endpoint of the Supabase instance.
 	//
 	// example:
 	//
 	// 111
 	SupabasePublicIp *string `json:"SupabasePublicIp,omitempty" xml:"SupabasePublicIp,omitempty"`
-	// Supabase public URL
+	// The public URL of the Supabase instance.
 	//
 	// example:
 	//
 	// 111
 	SupabasePublicUrl *string `json:"SupabasePublicUrl,omitempty" xml:"SupabasePublicUrl,omitempty"`
-	// Tenant ID
+	// The tenant ID.
 	//
 	// example:
 	//
 	// GFCBAMJH-zh_CN
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// User ID
+	// The user ID.
 	//
 	// example:
 	//

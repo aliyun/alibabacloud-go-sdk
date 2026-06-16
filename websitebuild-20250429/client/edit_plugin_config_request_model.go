@@ -22,31 +22,31 @@ type iEditPluginConfigRequest interface {
 }
 
 type EditPluginConfigRequest struct {
-  // Business ID
+  // The business ID.
   // 
   // example:
   // 
   // WD20250703155602000001
   BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-  // Plugin configuration
+  // The plug-in configuration.
   // 
   // example:
   // 
   // {}
   PluginConfig *string `json:"PluginConfig,omitempty" xml:"PluginConfig,omitempty"`
-  // Plugin description
+  // The plug-in description.
   // 
   // example:
   // 
   // 根据关键字查询相关的Github Repositories
   PluginDesc *string `json:"PluginDesc,omitempty" xml:"PluginDesc,omitempty"`
-  // Plugin ID
+  // The plug-in ID.
   // 
   // example:
   // 
   // aliplayer-react
   PluginId *string `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
-  // Plugin name
+  // The plug-in name.
   // 
   // example:
   // 

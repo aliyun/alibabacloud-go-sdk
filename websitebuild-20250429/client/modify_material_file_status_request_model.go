@@ -18,7 +18,7 @@ type iModifyMaterialFileStatusRequest interface {
 }
 
 type ModifyMaterialFileStatusRequest struct {
-	// Business instance ID
+	// The business instance ID.
 	//
 	// This parameter is required.
 	//
@@ -26,11 +26,11 @@ type ModifyMaterialFileStatusRequest struct {
 	//
 	// WS12345678
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// File ID
+	// The file IDs.
 	//
 	// This parameter is required.
 	FileIds []*string `json:"FileIds,omitempty" xml:"FileIds,omitempty" type:"Repeated"`
-	// Modified status
+	// The updated status.
 	//
 	// This parameter is required.
 	//

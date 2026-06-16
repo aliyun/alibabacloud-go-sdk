@@ -34,39 +34,39 @@ type iEditPluginConfigResponseBody interface {
 }
 
 type EditPluginConfigResponseBody struct {
-  // Detailed reason for access denial.
+  // The detailed reason why access was denied.
   // 
   // example:
   // 
   // {}
   AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-  // Whether retry is allowed
+  // Indicates whether retry is allowed.
   // 
   // example:
   // 
   // False
   AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-  // The application name must start with a letter and can contain letters, digits, underscores (_), and hyphens (-). It supports up to 36 characters.
+  // The application name. The name must start with a letter and can contain letters, digits, underscores (_), and hyphens (-). The name can be up to 36 characters in length.
   // 
   // example:
   // 
   // spring-cloud-b
   AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-  // Dynamic code, currently unused. Please ignore.
+  // The dynamic code. This parameter is not in use. Ignore this parameter.
   // 
   // example:
   // 
   // ERROR-oo1
   DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-  // Error message
+  // The error message.
   // 
   // example:
   // 
   // SYSTEM_ERROR
   DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-  // Faulty parameters.
+  // The error parameters.
   ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-  // Response data
+  // The response data.
   // 
   // example:
   // 
@@ -78,19 +78,19 @@ type EditPluginConfigResponseBody struct {
   // 
   // 6C6B99AC-39EC-5350-874C-204128C905E6
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-  // Error code
+  // The error code.
   // 
   // example:
   // 
   // SYSTEM.ERROR
   RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-  // Abnormal message
+  // The exception message.
   // 
   // example:
   // 
   // 系统异常
   RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-  // Whether processing is synchronous
+  // Indicates whether the request is synchronously processed.
   // 
   // example:
   // 

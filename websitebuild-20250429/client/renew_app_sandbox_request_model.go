@@ -14,7 +14,7 @@ type iRenewAppSandboxRequest interface {
 }
 
 type RenewAppSandboxRequest struct {
-	// Session ID
+	// The session ID.
 	//
 	// example:
 	//

@@ -36,75 +36,75 @@ type iListAppInstancesShrinkRequest interface {
 }
 
 type ListAppInstancesShrinkRequest struct {
-	// Business ID
+	// The business ID.
 	//
 	// example:
 	//
 	// WS20250731233102000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// End time start
+	// The start of the expiration time range.
 	//
 	// example:
 	//
 	// 2025-12-18T14:30:00Z
 	EndTimeBegin *string `json:"EndTimeBegin,omitempty" xml:"EndTimeBegin,omitempty"`
-	// End time end
+	// The end of the expiration time range.
 	//
 	// example:
 	//
 	// 2025-12-31T14:30:00Z
 	EndTimeEnd *string `json:"EndTimeEnd,omitempty" xml:"EndTimeEnd,omitempty"`
-	// Extended information
+	// The extended information.
 	//
 	// example:
 	//
 	// {}
 	Extend *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
-	// Number of results per query.
+	// The number of entries per query.
 	//
-	// Range: 10~100. Default value: 20.
+	// Valid values: 10 to 100. Default value: 20.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// Token for the next query. It will be empty if there is no next query.
+	// The token for the next query. This parameter is empty if no more results exist.
 	//
 	// example:
 	//
 	// AAAAARbaCuN6hiD08qrLdwJ9Fh3BFw8paIJ7ylB6A7Qn9JjM
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Order column
+	// The field by which to sort the results.
 	//
 	// example:
 	//
 	// gmtCreated
 	OrderColumn *string `json:"OrderColumn,omitempty" xml:"OrderColumn,omitempty"`
-	// Order type ASC|DESC
+	// The sort order. Valid values: ASC and DESC.
 	//
 	// example:
 	//
 	// DOWNGRADE
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	// Page number, default is 1
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 0
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// Page size, default is 10
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Query parameter
+	// The query parameter.
 	//
 	// example:
 	//
 	// {\\"RequestId\\":\\"\\"}
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
-	// Status range
+	// The status range.
 	StatusListShrink *string `json:"StatusList,omitempty" xml:"StatusList,omitempty"`
 }
 

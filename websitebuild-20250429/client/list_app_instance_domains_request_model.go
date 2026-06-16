@@ -28,46 +28,46 @@ type iListAppInstanceDomainsRequest interface {
 }
 
 type ListAppInstanceDomainsRequest struct {
-	// Business ID
+	// The business ID.
 	//
 	// example:
 	//
 	// WD20250718165839000001
 	BizId         *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
 	DomainKeyword *string `json:"DomainKeyword,omitempty" xml:"DomainKeyword,omitempty"`
-	// Number of results per query.
+	// The maximum number of entries to return per query.
 	//
-	// Range: 10~100. Default value: 20.
+	// Valid values: 10 to 100. Default value: 20.
 	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// Token for the next query. It will be empty if there is no next query.
+	// The token for the next query. This parameter is empty if there are no more results.
 	//
 	// example:
 	//
 	// 0l45bkwM022Dt+rOvPi/oQ==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Sorting field
+	// The field by which to sort the results.
 	//
 	// example:
 	//
 	// CreationTime
 	OrderColumn *string `json:"OrderColumn,omitempty" xml:"OrderColumn,omitempty"`
-	// Sorting type ASC|DESC
+	// The sort order. Valid values: ASC and DESC.
 	//
 	// example:
 	//
 	// BUY
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	// Page number, default is 1
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// Page size, default is 10
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//

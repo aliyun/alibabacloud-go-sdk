@@ -22,23 +22,23 @@ type iModuleNextComponentsValue interface {
 }
 
 type ModuleNextComponentsValue struct {
-	// Unique widget encoding (system internal identity)
+	// Component unique code (internal system identifier)
 	//
 	// example:
 	//
 	// placeholder
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Widget display name (User-visible name)
+	// Component display name (user-visible name)
 	//
 	// example:
 	//
 	// placeholder
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Widget instance property configuration
+	// Component instance property configuration
 	InstanceProperty []*ModuleNextComponentsValueInstanceProperty `json:"InstanceProperty,omitempty" xml:"InstanceProperty,omitempty" type:"Repeated"`
-	// widget instance attribute configuration
+	// Component instance property configuration
 	Properties map[string]*ModuleNextComponentsValuePropertiesValue `json:"Properties,omitempty" xml:"Properties,omitempty"`
-	// Module attribute status
+	// Module property status
 	//
 	// example:
 	//
@@ -113,25 +113,25 @@ func (s *ModuleNextComponentsValue) Validate() error {
 }
 
 type ModuleNextComponentsValueInstanceProperty struct {
-	// Property encoding (system internal identity)
+	// Property code (internal system identifier)
 	//
 	// example:
 	//
 	// placeholder
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Property display name (User-visible Name)
+	// Property display name (user-visible name)
 	//
 	// example:
 	//
 	// placeholder
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Attribute Value encoding (internal System value)
+	// Property value code (internal system value)
 	//
 	// example:
 	//
 	// placeholder
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	// List of module Attribute Values
+	// Module property value list
 	Values []*ModuleNextComponentsValueInstancePropertyValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -193,19 +193,19 @@ func (s *ModuleNextComponentsValueInstanceProperty) Validate() error {
 }
 
 type ModuleNextComponentsValueInstancePropertyValues struct {
-	// Property encoding (system internal identity)
+	// Property code (internal system identifier)
 	//
 	// example:
 	//
 	// placeholder
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Attribute Value encoding (internal System value)
+	// Property value code (internal system value)
 	//
 	// example:
 	//
 	// placeholder
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	// Property display name (User-visible Name)
+	// Property display name (user-visible name)
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iGetAppRequirementRequest interface {
 }
 
 type GetAppRequirementRequest struct {
-	// Session ID
+	// The session ID.
 	//
 	// example:
 	//

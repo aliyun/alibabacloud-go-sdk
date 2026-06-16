@@ -20,25 +20,25 @@ type iModuleResultsValue interface {
 }
 
 type ModuleResultsValue struct {
-	// Whether the check is passed
+	// 是否通过检查
 	//
 	// example:
 	//
 	// true
 	Passed *bool `json:"Passed,omitempty" xml:"Passed,omitempty"`
-	// Resource identity
+	// 资源标识
 	//
 	// example:
 	//
 	// InspirationTokens
 	ResourceCode *string `json:"ResourceCode,omitempty" xml:"ResourceCode,omitempty"`
-	// Error code when failed; null when passed
+	// 失败时的错误码，通过时为null
 	//
 	// example:
 	//
 	// Resource.Control.No.Usage
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// Error message when failed; null when passed
+	// 失败时的错误信息，通过时为null
 	//
 	// example:
 	//

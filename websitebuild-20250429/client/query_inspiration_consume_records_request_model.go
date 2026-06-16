@@ -26,43 +26,43 @@ type iQueryInspirationConsumeRecordsRequest interface {
 }
 
 type QueryInspirationConsumeRecordsRequest struct {
-	// Query end time
+	// The end time of the query.
 	//
 	// example:
 	//
 	// 1762999521
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Sorting field
+	// The field used for sorting.
 	//
 	// example:
 	//
 	// CreationTime
 	OrderColumn *string `json:"OrderColumn,omitempty" xml:"OrderColumn,omitempty"`
-	// Sorting type: ASC or DESC
+	// The sort order. Valid values: ASC and DESC.
 	//
 	// example:
 	//
 	// DESC
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	// Page number, default is 1
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 0
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// Page size, default is 10
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Scenario Name.
+	// The scenario name.
 	//
 	// example:
 	//
 	// 百灵鸟-人员认证
 	SceneName *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
-	// Start Time
+	// The start time of the query.
 	//
 	// example:
 	//

@@ -26,43 +26,43 @@ type iModifyAppInstanceSpecRequest interface {
 }
 
 type ModifyAppInstanceSpecRequest struct {
-	// Application type
+	// The application type.
 	//
 	// example:
 	//
 	// Application
 	ApplicationType *string `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
-	// Business ID
+	// The business ID.
 	//
 	// example:
 	//
 	// WD20250703155602000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// Ensures idempotence of requests. Generate a unique value from your client to ensure it is unique across different requests. ClientToken supports only ASCII characters and cannot exceed 64 characters.
+	// The client token that is used to ensure the idempotence of the request. Generate a unique value from your client. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
 	//
 	// 2108341e17661121129745384e79f9
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Deployment area
+	// The deployment region.
 	//
 	// example:
 	//
 	// HongKong
 	DeployArea *string `json:"DeployArea,omitempty" xml:"DeployArea,omitempty"`
-	// Extended information
+	// The extended information.
 	//
 	// example:
 	//
 	// {\\"deliveryNodeName\\":\\"网站验收\\",\\"deliveryNodeStatus\\":\\"Reject\\",\\"deliveryOperatorRole\\":\\"Customer\\"}
 	Extend *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
-	// Payment type
+	// The payment type.
 	//
 	// example:
 	//
 	// PayAsYouGo
 	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
-	// Site version
+	// The website version.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iQueryMaterialTaskDetailRequest interface {
 }
 
 type QueryMaterialTaskDetailRequest struct {
-	// Job ID
+	// The task ID.
 	//
 	// This parameter is required.
 	//

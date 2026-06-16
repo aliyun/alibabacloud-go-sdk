@@ -16,13 +16,13 @@ type iModuleDataPropertiesValue interface {
 }
 
 type ModuleDataPropertiesValue struct {
-	// Property code, such as "aliyun_commodity_agreement".
+	// Property code, such as "aliyun_commodity_agreement"
 	//
 	// example:
 	//
 	// placeholder
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// List of attribute values
+	// Property value list
 	Values []*ModuleDataPropertiesValueValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 

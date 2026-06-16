@@ -16,13 +16,13 @@ type iGetIcpFilingInfoForPartnerRequest interface {
 }
 
 type GetIcpFilingInfoForPartnerRequest struct {
-	// Customer business ID
+	// The customer business ID.
 	//
 	// example:
 	//
 	// WD20250703155602000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// Domain name.
+	// The domain name.
 	//
 	// example:
 	//

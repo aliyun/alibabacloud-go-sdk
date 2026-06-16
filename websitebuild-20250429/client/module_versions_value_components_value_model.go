@@ -22,23 +22,23 @@ type iModuleVersionsValueComponentsValue interface {
 }
 
 type ModuleVersionsValueComponentsValue struct {
-	// Unique component code (system internal identity)
+	// 组件唯一编码（系统内部标识）
 	//
 	// example:
 	//
 	// ComponentCode
 	ComponentCode *string `json:"ComponentCode,omitempty" xml:"ComponentCode,omitempty"`
-	// Widget display name (user-visible name)
+	// 组件显示名称（用户可见名称）
 	//
 	// example:
 	//
 	// ComponentName
 	ComponentName *string `json:"ComponentName,omitempty" xml:"ComponentName,omitempty"`
-	// Component instance attribute configuration
+	// 组件实例属性配置
 	InstanceProperty []*ModuleVersionsValueComponentsValueInstanceProperty `json:"InstanceProperty,omitempty" xml:"InstanceProperty,omitempty" type:"Repeated"`
-	// Widget instance attribute configuration
+	// 组件实例属性配置
 	Properties map[string]*ModuleVersionsValueComponentsValuePropertiesValue `json:"Properties,omitempty" xml:"Properties,omitempty"`
-	// Module property status
+	// 模块属性状态
 	//
 	// example:
 	//
@@ -113,25 +113,25 @@ func (s *ModuleVersionsValueComponentsValue) Validate() error {
 }
 
 type ModuleVersionsValueComponentsValueInstanceProperty struct {
-	// Property encoding (system internal identity)
+	// 属性编码（系统内部标识）
 	//
 	// example:
 	//
 	// code
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Attribute display name (user-visible name)
+	// 属性显示名称（用户可见名称）
 	//
 	// example:
 	//
 	// name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Attribute Value encoding (internal System value)
+	// 属性值编码（系统内部值）
 	//
 	// example:
 	//
 	// value
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	// List of module Attribute Values
+	// 模块属性值列表
 	Values []*ModuleVersionsValueComponentsValueInstancePropertyValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -193,19 +193,19 @@ func (s *ModuleVersionsValueComponentsValueInstanceProperty) Validate() error {
 }
 
 type ModuleVersionsValueComponentsValueInstancePropertyValues struct {
-	// Property encoding (system internal identity)
+	// 属性编码（系统内部标识）
 	//
 	// example:
 	//
 	// code
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Attribute Value encoding (internal System value)
+	// 属性值编码（系统内部值）
 	//
 	// example:
 	//
 	// value
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	// Property display name (User-visible name)
+	// 属性显示名称（用户可见名称）
 	//
 	// example:
 	//

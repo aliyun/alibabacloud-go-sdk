@@ -14,7 +14,7 @@ type iCreateAppTokenServiceRequest interface {
 }
 
 type CreateAppTokenServiceRequest struct {
-	// Subscription Type: OPEN_SUBSCRIPTION
+	// The subscription type: OPEN_SUBSCRIPTION.
 	//
 	// example:
 	//

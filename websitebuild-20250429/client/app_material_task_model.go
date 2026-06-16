@@ -32,51 +32,51 @@ type iAppMaterialTask interface {
 }
 
 type AppMaterialTask struct {
-	// Job completion time
+	// The task completion time.
 	//
 	// example:
 	//
 	// 2025-12-26 11:30:05
 	CompleteTime *string `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
-	// Completion time display format
+	// The display format of the completion time.
 	//
 	// example:
 	//
 	// 1分钟前
 	CompleteTimeFormat *string `json:"CompleteTimeFormat,omitempty" xml:"CompleteTimeFormat,omitempty"`
-	// Reason for failure
+	// The failure reason.
 	//
 	// example:
 	//
 	// 参数不合规
 	FailReason *string `json:"FailReason,omitempty" xml:"FailReason,omitempty"`
-	// List of final files
+	// The list of final files.
 	FinalFileUrls []*string `json:"FinalFileUrls,omitempty" xml:"FinalFileUrls,omitempty" type:"Repeated"`
-	// Task Status
+	// The task status.
 	//
 	// example:
 	//
 	// RUNNING
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Job substatus
+	// The task substatus.
 	//
 	// example:
 	//
 	// PENDING
 	SubStatus *string `json:"SubStatus,omitempty" xml:"SubStatus,omitempty"`
-	// Submitted At.
+	// The submit time.
 	//
 	// example:
 	//
 	// 2025-12-26 11:30:05
 	SubmitTime *string `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
-	// Job ID.
+	// The task ID.
 	//
 	// example:
 	//
 	// 81d04d62c3483b32bacf1d306d2622b2
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// Job parameter
+	// The task parameter.
 	//
 	// example:
 	//
@@ -90,7 +90,7 @@ type AppMaterialTask struct {
 	//
 	// }
 	TaskParam *string `json:"TaskParam,omitempty" xml:"TaskParam,omitempty"`
-	// Task Type.
+	// The task type.
 	//
 	// example:
 	//

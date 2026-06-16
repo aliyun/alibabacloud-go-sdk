@@ -20,25 +20,25 @@ type iModuleVersionsValueComponentsValuePropertiesValue interface {
 }
 
 type ModuleVersionsValueComponentsValuePropertiesValue struct {
-	// Property code (system internal identity)
+	// 属性编码（系统内部标识）
 	//
 	// example:
 	//
 	// code
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Property display name (user-visible name)
+	// 属性显示名称（用户可见名称）
 	//
 	// example:
 	//
 	// name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Attribute value code (system internal value)
+	// 属性值编码（系统内部值）
 	//
 	// example:
 	//
 	// value
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	// List of module Attribute Values
+	// 模块属性值列表
 	Values []*ModuleVersionsValueComponentsValuePropertiesValueValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -100,19 +100,19 @@ func (s *ModuleVersionsValueComponentsValuePropertiesValue) Validate() error {
 }
 
 type ModuleVersionsValueComponentsValuePropertiesValueValues struct {
-	// Property code (system internal identity)
+	// 属性编码（系统内部标识）
 	//
 	// example:
 	//
 	// code
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Attribute Value encoding (internal System value)
+	// 属性值编码（系统内部值）
 	//
 	// example:
 	//
 	// value
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	// Property display name (User-visible name)
+	// 属性显示名称（用户可见名称）
 	//
 	// example:
 	//

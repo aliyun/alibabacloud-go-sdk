@@ -16,7 +16,7 @@ type iSubmitMaterialTaskRequest interface {
 }
 
 type SubmitMaterialTaskRequest struct {
-	// Job parameters
+	// The parameters of the task.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type SubmitMaterialTaskRequest struct {
 	//
 	// }
 	TaskParam *string `json:"TaskParam,omitempty" xml:"TaskParam,omitempty"`
-	// Task Type
+	// The type of the task.
 	//
 	// This parameter is required.
 	//

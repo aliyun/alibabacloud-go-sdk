@@ -16,13 +16,13 @@ type iDeleteAppDomainRedirectRequest interface {
 }
 
 type DeleteAppDomainRedirectRequest struct {
-	// Business ID of the application instance
+	// Application instance business ID.
 	//
 	// example:
 	//
 	// WD20250703155602000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// ID of the domain redirect record
+	// Domain name redirect record ID.
 	//
 	// example:
 	//

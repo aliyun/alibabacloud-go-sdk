@@ -14,7 +14,7 @@ type iCreateAIStaffConversationRequest interface {
 }
 
 type CreateAIStaffConversationRequest struct {
-	// User question text. The first 100 characters are truncated and used as the session title.
+	// The user question text. The first 100 characters are truncated and used as the session title.
 	//
 	// example:
 	//

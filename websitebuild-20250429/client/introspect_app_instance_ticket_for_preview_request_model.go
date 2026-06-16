@@ -16,13 +16,13 @@ type iIntrospectAppInstanceTicketForPreviewRequest interface {
 }
 
 type IntrospectAppInstanceTicketForPreviewRequest struct {
-	// Business ID
+	// The business ID.
 	//
 	// example:
 	//
 	// WS12345678
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// Password-free login access token
+	// The SSO access token.
 	//
 	// example:
 	//

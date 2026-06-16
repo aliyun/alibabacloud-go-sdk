@@ -18,7 +18,7 @@ type iModifyMaterialFileStatusShrinkRequest interface {
 }
 
 type ModifyMaterialFileStatusShrinkRequest struct {
-	// Business instance ID
+	// The business instance ID.
 	//
 	// This parameter is required.
 	//
@@ -26,11 +26,11 @@ type ModifyMaterialFileStatusShrinkRequest struct {
 	//
 	// WS12345678
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// File ID
+	// The file IDs.
 	//
 	// This parameter is required.
 	FileIdsShrink *string `json:"FileIds,omitempty" xml:"FileIds,omitempty"`
-	// Modified status
+	// The updated status.
 	//
 	// This parameter is required.
 	//

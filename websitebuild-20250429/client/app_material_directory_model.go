@@ -24,33 +24,33 @@ type iAppMaterialDirectory interface {
 }
 
 type AppMaterialDirectory struct {
-	// Application instance business ID
+	// The business ID of the application instance.
 	//
 	// example:
 	//
 	// WD20250814102215000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// List of subfolders
+	// The list of subfolders.
 	Children []*AppMaterialDirectory `json:"Children,omitempty" xml:"Children,omitempty" type:"Repeated"`
-	// Folder ID.
+	// The folder ID.
 	//
 	// example:
 	//
 	// WS20260206134746000001-system
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	// Name
+	// The name.
 	//
 	// example:
 	//
 	// 图片管理
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Sorting number
+	// The sort number.
 	//
 	// example:
 	//
 	// 1
 	SortNum *string `json:"SortNum,omitempty" xml:"SortNum,omitempty"`
-	// Folder type
+	// The folder type.
 	//
 	// example:
 	//

@@ -26,7 +26,7 @@ type iAllocateSupabaseForAdminRequest interface {
 }
 
 type AllocateSupabaseForAdminRequest struct {
-	// Business ID
+	// The business ID.
 	//
 	// This parameter is required.
 	//
@@ -35,31 +35,31 @@ type AllocateSupabaseForAdminRequest struct {
 	// WS20250801154628000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
 	Env   *string `json:"Env,omitempty" xml:"Env,omitempty"`
-	// Sorting field
+	// The field by which to sort the results.
 	//
 	// example:
 	//
 	// gmtCreated
 	OrderColumn *string `json:"OrderColumn,omitempty" xml:"OrderColumn,omitempty"`
-	// Sorting type: ASC or DESC
+	// The sort order. Valid values: ASC and DESC.
 	//
 	// example:
 	//
 	// BUY
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	// Page number, default is 1
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// Page size, default is 10
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// User ID
+	// The user ID.
 	//
 	// example:
 	//

@@ -44,19 +44,19 @@ type iCreateAppInstanceRequest interface {
 }
 
 type CreateAppInstanceRequest struct {
-	// Application type
+	// The application type.
 	//
 	// example:
 	//
 	// PC_WebSite
 	ApplicationType *string `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
-	// Whether to enable auto-renewal upon expiration
+	// Specifies whether to enable auto-renewal upon expiration.
 	//
 	// example:
 	//
 	// false
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// Ensures idempotence of the request. Generate a unique value from your client to ensure that it is unique across different requests. ClientToken only supports ASCII characters and cannot exceed 64 characters
+	// The client token that is used to ensure the idempotence of the request. Generate a unique value from your client. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type CreateAppInstanceRequest struct {
 	//
 	// OPEN_SUBSCRIPTION
 	CreateAction *string `json:"CreateAction,omitempty" xml:"CreateAction,omitempty"`
-	// Deployment area
+	// The deployment region.
 	//
 	// example:
 	//
@@ -76,13 +76,13 @@ type CreateAppInstanceRequest struct {
 	//
 	// go-to-the-docks-for-french-fries
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Required. The number of subscription periods
+	// Required. The number of subscription periods.
 	//
 	// example:
 	//
 	// 1
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// Extended information
+	// The extended information.
 	//
 	// example:
 	//
@@ -92,37 +92,45 @@ type CreateAppInstanceRequest struct {
 	//
 	// docs
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Payment type
+	// The payment type.
 	//
 	// example:
 	//
 	// AUTO_PAY
 	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
-	// Required. The unit of the subscription period, Year: Year, Month: Month, Day: Day, Hour: Hour
+	// Required. The unit of the subscription period. Valid values:
+	//
+	// - Year: year
+	//
+	// - Month: month
+	//
+	// - Day: day
+	//
+	// - Hour: hour.
 	//
 	// example:
 	//
 	// Year
 	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
-	// Required. The quantity of instances to be ordered.
+	// Required. The number of instances to subscribe to.
 	//
 	// example:
 	//
 	// 1
 	Quantity *int32 `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
-	// Resource group ID
+	// The ID of the resource group.
 	//
 	// example:
 	//
 	// rg-aek2smovqqpvuly
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// Site version
+	// The website version.
 	//
 	// example:
 	//
 	// Basic_Edition
 	SiteVersion *string `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
-	// List of tags
+	// The list of tags.
 	Tags []*CreateAppInstanceRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -296,13 +304,13 @@ func (s *CreateAppInstanceRequest) Validate() error {
 }
 
 type CreateAppInstanceRequestTags struct {
-	// tag key
+	// The tag key.
 	//
 	// example:
 	//
 	// Group
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// value of tag 0
+	// The value of tag 0.
 	//
 	// example:
 	//

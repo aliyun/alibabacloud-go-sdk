@@ -40,85 +40,85 @@ type iAppMaterialFile interface {
 }
 
 type AppMaterialFile struct {
-	// Application instance ID
+	// The application instance ID.
 	//
 	// example:
 	//
 	// WD20250703155602000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// Content Type
+	// The content type.
 	//
 	// example:
 	//
 	// image/png
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	// Creation Time.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2025-11-03 02:05:01
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Deletion Time
+	// The deletion time.
 	//
 	// example:
 	//
 	// 2025-11-03 02:05:01
 	DeletedTime *string `json:"DeletedTime,omitempty" xml:"DeletedTime,omitempty"`
-	// Folder ID
+	// The folder ID.
 	//
 	// example:
 	//
 	// ddddwww
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	// File ID
+	// The file ID.
 	//
 	// example:
 	//
 	// d75e1e9693cc460da218419d67735567
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// File URL
+	// The file URL.
 	//
 	// example:
 	//
 	// https://demo-moshicloud-test.oss-cn-hangzhou-internal.aliyuncs.com/document/testcase/aliyun/api_case/pdf_angle90_page1.pdf
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	// Image height
+	// The image height.
 	//
 	// example:
 	//
 	// 1280
 	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	// File name
+	// The file name.
 	//
 	// example:
 	//
 	// 文件名
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// File Status
+	// The file status.
 	//
 	// example:
 	//
 	// NORMAL
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Bucket size.
+	// The storage size.
 	//
 	// example:
 	//
 	// 23M
 	StorageSize *string `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
-	// File suffix
+	// The file name extension.
 	//
 	// example:
 	//
 	// png
 	Suffix *string `json:"Suffix,omitempty" xml:"Suffix,omitempty"`
-	// File Type
+	// The file type.
 	//
 	// example:
 	//
 	// IMAGE
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// Image width
+	// The image width.
 	//
 	// example:
 	//

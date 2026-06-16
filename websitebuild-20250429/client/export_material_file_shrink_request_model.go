@@ -16,7 +16,7 @@ type iExportMaterialFileShrinkRequest interface {
 }
 
 type ExportMaterialFileShrinkRequest struct {
-  // Business instance ID
+  // The business instance ID.
   // 
   // This parameter is required.
   // 
@@ -24,7 +24,7 @@ type ExportMaterialFileShrinkRequest struct {
   // 
   // WS20250801154628000001
   BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-  // List of file IDs
+  // The list of file IDs.
   // 
   // This parameter is required.
   FileIdsShrink *string `json:"FileIds,omitempty" xml:"FileIds,omitempty"`

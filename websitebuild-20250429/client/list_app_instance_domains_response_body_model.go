@@ -38,75 +38,75 @@ type iListAppInstanceDomainsResponseBody interface {
 }
 
 type ListAppInstanceDomainsResponseBody struct {
-	// Detailed reason for access denial.
+	// The details about the access denial.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Whether retry is allowed
+	// Indicates whether a retry is allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// App name.
+	// The application name.
 	//
 	// example:
 	//
 	// dewuApp
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// Dynamic error code.
+	// The dynamic error code.
 	//
 	// example:
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// Dynamic error message, used to replace `%s` in the error message of the returned parameter **ErrMessage**.
+	// The dynamic error message, which is used to replace the `%s` placeholder in the **ErrMessage*	- response parameter.
 	//
-	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid**, and **DynamicMessage*	- returns **DtsJobId**, it means that the input request parameter **DtsJobId*	- is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the value of the **DtsJobId*	- request parameter is invalid.
 	//
 	// example:
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// Returned error parameters
+	// The error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// Number of results per query.
+	// The maximum number of entries to return per query.
 	//
-	// Range: 10~100. Default value: 20.
+	// Valid values: 10 to 100. Default value: 20.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// Response data
+	// The response data.
 	Module *ListAppInstanceDomainsResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
-	// 下一个查询开始的Token。没有下一个查询时为空。
+	// The token for the next query. This parameter is empty if there are no more results.
 	//
 	// example:
 	//
 	// dw+qdTi1EjVSWX/INJdYNw==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// ID of the request
+	// Id of the request
 	//
 	// example:
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Error code
+	// The error code.
 	//
 	// example:
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// Exception message
+	// The error message.
 	//
 	// example:
 	//
 	// 系统异常
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// Reserved parameter.
+	// A reserved parameter.
 	//
 	// example:
 	//
@@ -249,35 +249,35 @@ func (s *ListAppInstanceDomainsResponseBody) Validate() error {
 }
 
 type ListAppInstanceDomainsResponseBodyModule struct {
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPageNum *int32 `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
-	// Query result.
+	// The query results.
 	Data []*ListAppInstanceDomainsResponseBodyModuleData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Decision weight
+	// The decision weight.
 	Next *ListAppInstanceDomainsResponseBodyModuleNext `json:"Next,omitempty" xml:"Next,omitempty" type:"Struct"`
-	// Whether there is a next page.
+	// Indicates whether a next page exists.
 	NextPage *bool `json:"NextPage,omitempty" xml:"NextPage,omitempty"`
-	// Page size.
+	// The page size.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Whether there is a previous page
+	// Indicates whether a previous page exists.
 	PrePage *bool `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
-	// Apart from pagination limits, the server can process up to the most recent 1000 records. If the result exceeds 1000 records, **ResultLimit*	- will be **true**, please narrow down the time range and search again; otherwise, **ResultLimit*	- will be **false**.
+	// In addition to pagination limits, the server processes up to 1,000 recent records per query. If the results exceed 1,000 records, **ResultLimit*	- is **true**. In this case, narrow the time range and search again. Otherwise, **ResultLimit*	- is **false**.
 	ResultLimit *bool `json:"ResultLimit,omitempty" xml:"ResultLimit,omitempty"`
-	// Total number of items.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 0
 	TotalItemNum *int32 `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
-	// Total number of pages.
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -393,33 +393,33 @@ func (s *ListAppInstanceDomainsResponseBodyModule) Validate() error {
 }
 
 type ListAppInstanceDomainsResponseBodyModuleData struct {
-	// Domain SSL certificate information
+	// The SSL certificate information of the domain name.
 	Certificate *ListAppInstanceDomainsResponseBodyModuleDataCertificate `json:"Certificate,omitempty" xml:"Certificate,omitempty" type:"Struct"`
-	// Instance creation time (required, format: yyyy-MM-dd HH:mm:ss)
+	// The time when the instance was created. Format: yyyy-MM-dd HH:mm:ss.
 	//
 	// example:
 	//
 	// 1683256054000
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Domain name
+	// The domain name.
 	//
 	// example:
 	//
 	// kaibaidu.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// Binding overall status
+	// The overall binding status.
 	//
 	// example:
 	//
 	// ACTIVE
 	OverallStatus *string `json:"OverallStatus,omitempty" xml:"OverallStatus,omitempty"`
-	// Domain ownership information
+	// The domain name ownership information.
 	Ownership *ListAppInstanceDomainsResponseBodyModuleDataOwnership `json:"Ownership,omitempty" xml:"Ownership,omitempty" type:"Struct"`
-	// Domain name qualification information
+	// The domain name qualification information.
 	Qualification *ListAppInstanceDomainsResponseBodyModuleDataQualification `json:"Qualification,omitempty" xml:"Qualification,omitempty" type:"Struct"`
-	// Domain resolution information
+	// The domain name resolution information.
 	Resolution *ListAppInstanceDomainsResponseBodyModuleDataResolution `json:"Resolution,omitempty" xml:"Resolution,omitempty" type:"Struct"`
-	// Domain verification information
+	// The domain name verification information.
 	Verification *ListAppInstanceDomainsResponseBodyModuleDataVerification `json:"Verification,omitempty" xml:"Verification,omitempty" type:"Struct"`
 }
 
@@ -533,25 +533,25 @@ func (s *ListAppInstanceDomainsResponseBodyModuleData) Validate() error {
 }
 
 type ListAppInstanceDomainsResponseBodyModuleDataCertificate struct {
-	// Certificate name.
+	// The certificate name.
 	//
 	// example:
 	//
 	// 2024
 	CertificateName *string `json:"CertificateName,omitempty" xml:"CertificateName,omitempty"`
-	// Certificate status
+	// The certificate status.
 	//
 	// example:
 	//
 	// ACTIVE
 	CertificateStatus *string `json:"CertificateStatus,omitempty" xml:"CertificateStatus,omitempty"`
-	// Certificate type
+	// The certificate type.
 	//
 	// example:
 	//
 	// self-signed
 	CertificateType *string `json:"CertificateType,omitempty" xml:"CertificateType,omitempty"`
-	// Certificate expiration date
+	// The expiration date of the certificate.
 	//
 	// example:
 	//
@@ -608,19 +608,19 @@ func (s *ListAppInstanceDomainsResponseBodyModuleDataCertificate) Validate() err
 }
 
 type ListAppInstanceDomainsResponseBodyModuleDataOwnership struct {
-	// Account owner type: CURRENT OTHER
+	// The account owner type. Valid values: CURRENT and OTHER.
 	//
 	// example:
 	//
 	// 1813244684017878
 	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
-	// Registrar type: ALIYUN OTHER
+	// The registrar type. Valid values: ALIYUN and OTHER.
 	//
 	// example:
 	//
 	// ROS
 	Provider *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
-	// The root domain name of the domain.
+	// The root domain name corresponding to the domain name.
 	//
 	// example:
 	//
@@ -668,11 +668,11 @@ func (s *ListAppInstanceDomainsResponseBodyModuleDataOwnership) Validate() error
 }
 
 type ListAppInstanceDomainsResponseBodyModuleDataQualification struct {
-	// ICP entity filing number
+	// The ICP entity filing number.
 	IcpRecordNumber *string `json:"IcpRecordNumber,omitempty" xml:"IcpRecordNumber,omitempty"`
-	// ICP website filing number
+	// The ICP website filing number.
 	IcpSiteRecordNumber *string `json:"IcpSiteRecordNumber,omitempty" xml:"IcpSiteRecordNumber,omitempty"`
-	// Public security filing number
+	// The public security filing number.
 	PoliceRecordNumber *string `json:"PoliceRecordNumber,omitempty" xml:"PoliceRecordNumber,omitempty"`
 }
 
@@ -716,15 +716,15 @@ func (s *ListAppInstanceDomainsResponseBodyModuleDataQualification) Validate() e
 }
 
 type ListAppInstanceDomainsResponseBodyModuleDataResolution struct {
-	// DNS record information
+	// The DNS record information.
 	DnsRecord *ListAppInstanceDomainsResponseBodyModuleDataResolutionDnsRecord `json:"DnsRecord,omitempty" xml:"DnsRecord,omitempty" type:"Struct"`
-	// Error message
+	// The error message.
 	//
 	// example:
 	//
 	// code: 400, invalid unionId request id: 09CC0F8B-49C2-7EFB-81E8-9AEF49068D02
 	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	// Domain resolution status
+	// The domain name resolution status.
 	//
 	// example:
 	//
@@ -777,19 +777,19 @@ func (s *ListAppInstanceDomainsResponseBodyModuleDataResolution) Validate() erro
 }
 
 type ListAppInstanceDomainsResponseBodyModuleDataResolutionDnsRecord struct {
-	// Host record
+	// The host record.
 	//
 	// example:
 	//
 	// portal-dev.bambulab.net
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// Record type
+	// The record type.
 	//
 	// example:
 	//
 	// 1
 	RecordType *string `json:"RecordType,omitempty" xml:"RecordType,omitempty"`
-	// Record value
+	// The record value.
 	//
 	// example:
 	//
@@ -837,21 +837,21 @@ func (s *ListAppInstanceDomainsResponseBodyModuleDataResolutionDnsRecord) Valida
 }
 
 type ListAppInstanceDomainsResponseBodyModuleDataVerification struct {
-	// DNS record guide that the user needs to configure.
+	// The DNS record that the user needs to configure.
 	DnsRecord *ListAppInstanceDomainsResponseBodyModuleDataVerificationDnsRecord `json:"DnsRecord,omitempty" xml:"DnsRecord,omitempty" type:"Struct"`
-	// Error message.
+	// The error message.
 	//
 	// example:
 	//
 	// code: 400, invalid unionId request id: 2270AB0B-6FD0-7F72-9DC5-7A02B67CBB3B
 	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	// Ownership verification status.
+	// The ownership verification status.
 	//
 	// example:
 	//
 	// SUCCESSFUL
 	VerificationStatus *string `json:"VerificationStatus,omitempty" xml:"VerificationStatus,omitempty"`
-	// Ownership verification status
+	// The ownership verification status code.
 	//
 	// example:
 	//
@@ -913,19 +913,19 @@ func (s *ListAppInstanceDomainsResponseBodyModuleDataVerification) Validate() er
 }
 
 type ListAppInstanceDomainsResponseBodyModuleDataVerificationDnsRecord struct {
-	// Host record
+	// The host record.
 	//
 	// example:
 	//
 	// ${host}
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// Record type
+	// The record type.
 	//
 	// example:
 	//
 	// 1
 	RecordType *string `json:"RecordType,omitempty" xml:"RecordType,omitempty"`
-	// Record value
+	// The record value.
 	//
 	// example:
 	//
@@ -973,33 +973,33 @@ func (s *ListAppInstanceDomainsResponseBodyModuleDataVerificationDnsRecord) Vali
 }
 
 type ListAppInstanceDomainsResponseBodyModuleNext struct {
-	// Domain SSL certificate information
+	// The SSL certificate information of the domain name.
 	Certificate *ListAppInstanceDomainsResponseBodyModuleNextCertificate `json:"Certificate,omitempty" xml:"Certificate,omitempty" type:"Struct"`
-	// Instance creation time (required, format: yyyy-MM-dd HH:mm:ss)
+	// The time when the instance was created. Format: yyyy-MM-dd HH:mm:ss.
 	//
 	// example:
 	//
 	// 1741572465000
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Domain name
+	// The domain name.
 	//
 	// example:
 	//
 	// usdcoin.xin
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// Binding overall status
+	// The overall binding status.
 	//
 	// example:
 	//
 	// ACTIVE
 	OverallStatus *string `json:"OverallStatus,omitempty" xml:"OverallStatus,omitempty"`
-	// Domain ownership information
+	// The domain name ownership information.
 	Ownership *ListAppInstanceDomainsResponseBodyModuleNextOwnership `json:"Ownership,omitempty" xml:"Ownership,omitempty" type:"Struct"`
-	// Domain name qualification information
+	// The domain name qualification information.
 	Qualification *ListAppInstanceDomainsResponseBodyModuleNextQualification `json:"Qualification,omitempty" xml:"Qualification,omitempty" type:"Struct"`
-	// Domain resolution information
+	// The domain name resolution information.
 	Resolution *ListAppInstanceDomainsResponseBodyModuleNextResolution `json:"Resolution,omitempty" xml:"Resolution,omitempty" type:"Struct"`
-	// Domain verification information
+	// The domain name verification information.
 	Verification *ListAppInstanceDomainsResponseBodyModuleNextVerification `json:"Verification,omitempty" xml:"Verification,omitempty" type:"Struct"`
 }
 
@@ -1113,25 +1113,25 @@ func (s *ListAppInstanceDomainsResponseBodyModuleNext) Validate() error {
 }
 
 type ListAppInstanceDomainsResponseBodyModuleNextCertificate struct {
-	// Certificate name.
+	// The certificate name.
 	//
 	// example:
 	//
 	// jfztkg202502
 	CertificateName *string `json:"CertificateName,omitempty" xml:"CertificateName,omitempty"`
-	// Certificate status
+	// The certificate status.
 	//
 	// example:
 	//
 	// ACTIVE
 	CertificateStatus *string `json:"CertificateStatus,omitempty" xml:"CertificateStatus,omitempty"`
-	// Certificate type
+	// The certificate type.
 	//
 	// example:
 	//
 	// Server
 	CertificateType *string `json:"CertificateType,omitempty" xml:"CertificateType,omitempty"`
-	// 证书的到期日期
+	// The expiration date of the certificate.
 	//
 	// example:
 	//
@@ -1188,13 +1188,13 @@ func (s *ListAppInstanceDomainsResponseBodyModuleNextCertificate) Validate() err
 }
 
 type ListAppInstanceDomainsResponseBodyModuleNextOwnership struct {
-	// Account owner type: CURRENT OTHER
+	// The account owner type. Valid values: CURRENT and OTHER.
 	//
 	// example:
 	//
 	// 拾肆gavin
 	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
-	// Registrar type: ALIYUN OTHER
+	// The registrar type. Valid values: ALIYUN and OTHER.
 	//
 	// example:
 	//
@@ -1233,11 +1233,11 @@ func (s *ListAppInstanceDomainsResponseBodyModuleNextOwnership) Validate() error
 }
 
 type ListAppInstanceDomainsResponseBodyModuleNextQualification struct {
-	// ICP filing number of the entity
+	// The ICP entity filing number.
 	IcpRecordNumber *string `json:"IcpRecordNumber,omitempty" xml:"IcpRecordNumber,omitempty"`
-	// ICP filing number for the website
+	// The ICP website filing number.
 	IcpSiteRecordNumber *string `json:"IcpSiteRecordNumber,omitempty" xml:"IcpSiteRecordNumber,omitempty"`
-	// Public security filing number
+	// The public security filing number.
 	PoliceRecordNumber *string `json:"PoliceRecordNumber,omitempty" xml:"PoliceRecordNumber,omitempty"`
 }
 
@@ -1281,15 +1281,15 @@ func (s *ListAppInstanceDomainsResponseBodyModuleNextQualification) Validate() e
 }
 
 type ListAppInstanceDomainsResponseBodyModuleNextResolution struct {
-	// DNS record information
+	// The DNS record information.
 	DnsRecord *ListAppInstanceDomainsResponseBodyModuleNextResolutionDnsRecord `json:"DnsRecord,omitempty" xml:"DnsRecord,omitempty" type:"Struct"`
-	// Error message
+	// The error message.
 	//
 	// example:
 	//
 	// aliuid:1133664521498319 assumeOssRole not exist,serviceName:aliyunesarealtimelogpushossrole
 	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	// Domain resolution status
+	// The domain name resolution status.
 	//
 	// example:
 	//
@@ -1342,19 +1342,19 @@ func (s *ListAppInstanceDomainsResponseBodyModuleNextResolution) Validate() erro
 }
 
 type ListAppInstanceDomainsResponseBodyModuleNextResolutionDnsRecord struct {
-	// Host record
+	// The host record.
 	//
 	// example:
 	//
 	// 172.16.6.1
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// Record type
+	// The record type.
 	//
 	// example:
 	//
 	// A
 	RecordType *string `json:"RecordType,omitempty" xml:"RecordType,omitempty"`
-	// Record value
+	// The record value.
 	//
 	// example:
 	//
@@ -1402,15 +1402,15 @@ func (s *ListAppInstanceDomainsResponseBodyModuleNextResolutionDnsRecord) Valida
 }
 
 type ListAppInstanceDomainsResponseBodyModuleNextVerification struct {
-	// Guide for DNS records that the user needs to configure.
+	// The DNS record that the user needs to configure.
 	DnsRecord *ListAppInstanceDomainsResponseBodyModuleNextVerificationDnsRecord `json:"DnsRecord,omitempty" xml:"DnsRecord,omitempty" type:"Struct"`
-	// Error message.
+	// The error message.
 	//
 	// example:
 	//
 	// aliuid:1133664521498319 assumeOssRole not exist,serviceName:aliyunesarealtimelogpushossrole
 	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	// Ownership verification status.
+	// The ownership verification status.
 	//
 	// example:
 	//
@@ -1463,19 +1463,19 @@ func (s *ListAppInstanceDomainsResponseBodyModuleNextVerification) Validate() er
 }
 
 type ListAppInstanceDomainsResponseBodyModuleNextVerificationDnsRecord struct {
-	// Host record
+	// The host record.
 	//
 	// example:
 	//
 	// www.abc.com
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// Record type
+	// The record type.
 	//
 	// example:
 	//
 	// 5
 	RecordType *string `json:"RecordType,omitempty" xml:"RecordType,omitempty"`
-	// Record value
+	// The record value.
 	//
 	// example:
 	//

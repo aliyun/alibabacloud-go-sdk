@@ -20,7 +20,7 @@ type iMoveMaterialDirectoryRequest interface {
 }
 
 type MoveMaterialDirectoryRequest struct {
-	// Application instance ID
+	// The application instance ID.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type MoveMaterialDirectoryRequest struct {
 	//
 	// WD20250703155602000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// Folder ID
+	// The folder ID.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type MoveMaterialDirectoryRequest struct {
 	//
 	// 68157a0a-769a-4364-bbdc-a0e2cf3d5ad
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	// Parent folder ID after shift
+	// The parent folder ID after the move.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type MoveMaterialDirectoryRequest struct {
 	//
 	// 58157a0a-769a-4364-bbdc-a0e2cf3d5a2
 	ParentDirectoryId *string `json:"ParentDirectoryId,omitempty" xml:"ParentDirectoryId,omitempty"`
-	// Sorting ordinal number
+	// The sort number.
 	//
 	// This parameter is required.
 	//

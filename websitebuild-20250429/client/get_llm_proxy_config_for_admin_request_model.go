@@ -16,13 +16,13 @@ type iGetLlmProxyConfigForAdminRequest interface {
 }
 
 type GetLlmProxyConfigForAdminRequest struct {
-	// Business ID
+	// The business ID.
 	//
 	// example:
 	//
 	// WD20250814102215000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// Capability Type: llm, image, video
+	// The capability type. Valid values: llm, image, and video.
 	//
 	// example:
 	//

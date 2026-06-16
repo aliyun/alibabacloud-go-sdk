@@ -18,7 +18,7 @@ type iModifyMaterialDirectoryRequest interface {
 }
 
 type ModifyMaterialDirectoryRequest struct {
-	// Application instance ID
+	// The application instance ID.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type ModifyMaterialDirectoryRequest struct {
 	//
 	// WD20250703155602000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// Folder ID
+	// The folder ID.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type ModifyMaterialDirectoryRequest struct {
 	//
 	// 68157a0a-769a-4364-bbdc-a0e2cf3d5ad
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	// Modified folder name
+	// The new name of the folder.
 	//
 	// This parameter is required.
 	//

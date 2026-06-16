@@ -22,7 +22,7 @@ type ModuleNextPropertiesValue struct {
 	//
 	// placeholder
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// List of attribute values
+	// Property value list
 	Values []*ModuleNextPropertiesValueValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
