@@ -66,6 +66,8 @@ func (s *DescribeNotificationConfigurationsResponseBody) Validate() error {
 }
 
 type DescribeNotificationConfigurationsResponseBodyNotificationConfigurationModels struct {
+	// The codec of the notification message content.
+	//
 	// example:
 	//
 	// PlainText

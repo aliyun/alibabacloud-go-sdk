@@ -18,12 +18,13 @@ type iRemoveInstancesResponseBody interface {
 }
 
 type RemoveInstancesResponseBody struct {
+	// The instances that were not removed and the reasons why they were not removed.
 	IgnoredInstances []*RemoveInstancesResponseBodyIgnoredInstances `json:"IgnoredInstances,omitempty" xml:"IgnoredInstances,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
-	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The ID of the scaling activity.
 	//
@@ -82,9 +83,12 @@ func (s *RemoveInstancesResponseBody) Validate() error {
 }
 
 type RemoveInstancesResponseBodyIgnoredInstances struct {
-	Code       *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error code that indicates the reason why the instance was not removed.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The ID of the instance that was not removed.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The error message that indicates the reason why the instance was not removed.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 
 func (s RemoveInstancesResponseBodyIgnoredInstances) String() string {

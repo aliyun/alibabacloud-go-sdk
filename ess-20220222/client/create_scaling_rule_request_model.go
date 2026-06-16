@@ -94,7 +94,8 @@ type CreateScalingRuleRequest struct {
 	AdjustmentValue *int32 `json:"AdjustmentValue,omitempty" xml:"AdjustmentValue,omitempty"`
 	// The metric dimensions. This parameter is applicable to target tracking scaling rules. If your predefined metric requires extra dimensions, you must specify this parameter. For example, if you use LoadBalancerRealServerAverageQps as your predefined metric, you must use this parameter to specify the rulePool dimension.
 	AlarmDimensions []*CreateScalingRuleRequestAlarmDimensions `json:"AlarmDimensions,omitempty" xml:"AlarmDimensions,omitempty" type:"Repeated"`
-	AlarmOptions    *CreateScalingRuleRequestAlarmOptions      `json:"AlarmOptions,omitempty" xml:"AlarmOptions,omitempty" type:"Struct"`
+	// Definition of alerting properties.
+	AlarmOptions *CreateScalingRuleRequestAlarmOptions `json:"AlarmOptions,omitempty" xml:"AlarmOptions,omitempty" type:"Struct"`
 	// The cooldown time of the scaling rule. This parameter is available only if you set the ScalingRuleType parameter to SimpleScalingRule. Valid values: 0 to 86400. Unit: seconds.
 	//
 	// By default, this parameter is left empty.
@@ -646,6 +647,20 @@ func (s *CreateScalingRuleRequestAlarmDimensions) Validate() error {
 }
 
 type CreateScalingRuleRequestAlarmOptions struct {
+	// The period for aggregating monitoring metric data in a target tracking rule, in seconds. Valid values:
+	//
+	// - 15
+	//
+	// - 60
+	//
+	// - 120
+	//
+	// - 300
+	//
+	// - 900
+	//
+	// > Default Value: 60.
+	//
 	// example:
 	//
 	// 60

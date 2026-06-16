@@ -18,9 +18,11 @@ type iDescribeCandidateInstanceTypeResponseBody interface {
 }
 
 type DescribeCandidateInstanceTypeResponseBody struct {
+	// A list of candidate ECS instance types.
 	CandidateInstanceTypes []*string `json:"CandidateInstanceTypes,omitempty" xml:"CandidateInstanceTypes,omitempty" type:"Repeated"`
-	CandidateZoneIds       []*string `json:"CandidateZoneIds,omitempty" xml:"CandidateZoneIds,omitempty" type:"Repeated"`
-	// Id of the request
+	// A list of candidate availability zones.
+	CandidateZoneIds []*string `json:"CandidateZoneIds,omitempty" xml:"CandidateZoneIds,omitempty" type:"Repeated"`
+	// The unique ID of the request.
 	//
 	// example:
 	//

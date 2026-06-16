@@ -38,65 +38,63 @@ type iDescribeElasticStrengthRequest interface {
 }
 
 type DescribeElasticStrengthRequest struct {
-	// The disk categories of the data disks. The disk categories that do not match the specified criteria are returned after you call this operation.
+	// A list of data disk categories used to evaluate elastic strength. If a category is incompatible, the response identifies the specific mismatched category.
 	//
-	// >  If you do not specify the scaling group ID, you must specify this parameter.
+	// > You can specify this parameter if `ScalingGroupId` is not specified.
 	DataDiskCategories []*string `json:"DataDiskCategories,omitempty" xml:"DataDiskCategories,omitempty" type:"Repeated"`
-	// The name of the image family. You can specify the ImageFamily request parameter to obtain the most recent available images in the current image family for instance creation. If you specify ImageId, you cannot specify ImageFamily.
+	// The name of the image family. You can set this parameter to use the latest available image from the specified image family to create instances. If you specify ImageId, this parameter is ignored.
 	//
-	// >  If you do not specify the scaling group ID, you must specify at least one of ImageId, ImageName, and ImageFamily.
+	// > If `ScalingGroupId` is not specified, you must specify at least one of `ImageId`, `ImageName`, or `ImageFamily`.
 	//
 	// example:
 	//
 	// CentOS7
 	ImageFamily *string `json:"ImageFamily,omitempty" xml:"ImageFamily,omitempty"`
-	// The ID of the image file that provides the image resource for Auto Scaling to create instances.
+	// The ID of the image used to create instances.
 	//
-	// >  If you do not specify the scaling group ID, you must specify at least one of ImageId, ImageName, and ImageFamily.
+	// > If `ScalingGroupId` is not specified, you must specify at least one of `ImageId`, `ImageName`, or `ImageFamily`.
 	//
 	// example:
 	//
 	// centos6u5_64_20G_aliaegis****.vhd
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The name of the image. Each image name must be unique in a region. If you specify ImageId, ImageName is ignored.
+	// The name of the image. The name must be unique within a region. If you specify `ImageId`, this parameter is ignored.
 	//
-	// You cannot use ImageName to specify an Alibaba Cloud Marketplace image.
+	// You cannot use this parameter to specify a Marketplace image.
 	//
-	// >  If you do not specify the scaling group ID, you must specify at least one of ImageId, ImageName, and ImageFamily.
+	// > If `ScalingGroupId` is not specified, you must specify at least one of `ImageId`, `ImageName`, or `ImageFamily`.
 	//
 	// example:
 	//
 	// ubuntu_18_04_x64_20G_alibase_20231225.vhd
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	// The instance types. The instance types specified by this parameter overwrite the instance types specified in the scaling configuration.
+	// A list of ECS instance types. If specified, this parameter overrides the instance types in the scaling configuration.
 	InstanceTypes []*string `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Repeated"`
-	// The number of IPv6 addresses. If the instance type that you specified does meet the requirement for the number of IPv6 addresses, the scaling strength is weak.
+	// The number of IPv6 addresses to be configured for each instance. The elastic strength is lowered for instance types that do not support the specified number of IPv6 addresses.
 	//
-	// >  If you do not specify the scaling group ID, you must specify this parameter.
+	// > You can specify this parameter if `ScalingGroupId` is not specified.
 	//
 	// example:
 	//
 	// 1
 	Ipv6AddressCount *int32 `json:"Ipv6AddressCount,omitempty" xml:"Ipv6AddressCount,omitempty"`
-	// **
+	// 	Warning: This parameter is deprecated. Use `SpotStrategy` instead.
 	//
-	// **Warning*	- This parameter is deprecated. We recommend that you use SpotStrategy.
+	// The spot strategy for pay-as-you-go instances. If specified, this parameter overrides the spot strategy in the scaling configuration. Valid values:
 	//
-	// The preemption policy that you want to apply to pay-as-you-go instances. The preemption policy specified by this parameter overwrites the preemption policy specified in the scaling configuration. Valid values:
+	// - `NoSpot`: A regular pay-as-you-go instance.
 	//
-	// 	- NoSpot: The instances are created as regular pay-as-you-go instances.
+	// - `SpotWithPriceLimit`: A spot instance with a specified maximum price.
 	//
-	// 	- SpotWithPriceLimit: The instances are created as preemptible instances with a user-defined maximum hourly price.
+	// - `SpotAsPriceGo`: A spot instance where the system automatically bids at the current market price.
 	//
-	// 	- SpotAsPriceGo: The instances are created as preemptible instances for which the market price at the time of purchase is automatically used as the bidding price.
-	//
-	// Default value: NoSpot.
+	// Default value: `NoSpot`.
 	//
 	// example:
 	//
 	// NoSpot
 	PriorityStrategy *string `json:"PriorityStrategy,omitempty" xml:"PriorityStrategy,omitempty"`
-	// The region ID of the scaling group.
+	// The ID of the region where the scaling group is located.
 	//
 	// This parameter is required.
 	//
@@ -110,37 +108,37 @@ type DescribeElasticStrengthRequest struct {
 	//
 	// asg-bp18p2yfxow2dloq****
 	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
-	// The IDs of the scaling groups that you want to query.
+	// The IDs of one or more scaling groups to query in a batch operation.
 	ScalingGroupIds []*string `json:"ScalingGroupIds,omitempty" xml:"ScalingGroupIds,omitempty" type:"Repeated"`
-	// The instance bidding policy. Valid values:
+	// The spot strategy for instances. Valid values:
 	//
-	// 	- NoSpot: The instances are created as pay-as-you-go instances.
+	// - `NoSpot`: A regular pay-as-you-go instance.
 	//
-	// 	- SpotWithPriceLimit: The instances are created as preemptible instances with a user-defined maximum hourly price.
+	// - `SpotWithPriceLimit`: A spot instance with a specified maximum price.
 	//
-	// 	- SpotAsPriceGo: The instances are created as preemptible instances for which the market price at the time of purchase is used as the bid price.
+	// - `SpotAsPriceGo`: A spot instance where the system automatically bids at the current market price.
 	//
-	// Default value: NoSpot.
+	// Default value: `NoSpot`.
 	//
 	// example:
 	//
 	// NoSpot
 	SpotStrategy *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
-	// The categories of the system disks. The categories of the system disks specified by this parameter overwrite the categories of the system disks specified in the scaling configuration. Valid values:
+	// A list of system disk categories. If specified, this parameter overrides the system disk categories in the scaling configuration. Valid values:
 	//
-	// 	- cloud: basic disk.
+	// - `cloud`: Basic Cloud Disk.
 	//
-	// 	- cloud_efficiency: ultra disk.
+	// - `cloud_efficiency`: Ultra Cloud Disk.
 	//
-	// 	- cloud_ssd: standard SSD.
+	// - `cloud_ssd`: Standard SSD.
 	//
-	// 	- cloud_essd: Enterprise SSD (ESSD).
+	// - `cloud_essd`: ESSD.
 	//
-	// >  If you do not specify the scaling group ID, you must specify this parameter.
+	// > This parameter is required if `ScalingGroupId` is not specified.
 	SystemDiskCategories []*string `json:"SystemDiskCategories,omitempty" xml:"SystemDiskCategories,omitempty" type:"Repeated"`
-	// The vSwitch IDs.
+	// A list of VSwitch IDs.
 	//
-	// >  If you do not specify the scaling group ID, you must specify this parameter.
+	// > This parameter is required if `ScalingGroupId` is not specified.
 	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
 }
 

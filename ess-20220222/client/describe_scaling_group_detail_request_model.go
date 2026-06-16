@@ -24,7 +24,7 @@ type DescribeScalingGroupDetailRequest struct {
 	//
 	// example:
 	//
-	// yaml
+	// YAML
 	OutputFormat *string `json:"OutputFormat,omitempty" xml:"OutputFormat,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the scaling group. For more information, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).

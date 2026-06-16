@@ -144,7 +144,7 @@ type CreateEciScalingConfigurationRequest struct {
 	//
 	// example:
 	//
-	// nginx-test
+	// nginx-test-(AUTO_INCREMENT)[0,3]
 	ContainerGroupName *string `json:"ContainerGroupName,omitempty" xml:"ContainerGroupName,omitempty"`
 	// The containers per elastic container instance.
 	Containers []*CreateEciScalingConfigurationRequestContainers `json:"Containers,omitempty" xml:"Containers,omitempty" type:"Repeated"`
@@ -414,7 +414,7 @@ type CreateEciScalingConfigurationRequest struct {
 	//
 	// example:
 	//
-	// SpotPriceLimit
+	// SpotWithPriceLimit
 	SpotStrategy *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
 	// The tags of elastic container instances. Tags must be specified as key-value pairs. You can specify up to 20 tags for each elastic container instance. When you specify Key and Value, take note of the following items:
 	//
@@ -2472,7 +2472,7 @@ type CreateEciScalingConfigurationRequestImageRegistryCredentials struct {
 	//
 	// example:
 	//
-	// yourpaasword
+	// yourpassword
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
 	// The endpoint of the image repository.
 	//

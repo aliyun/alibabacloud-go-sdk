@@ -22,25 +22,25 @@ type iDescribeScalingConfigurationsResponseBody interface {
 }
 
 type DescribeScalingConfigurationsResponseBody struct {
-	// The page number of the returned page.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 50
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The scaling configurations.
+	// The collection of scaling configuration information.
 	ScalingConfigurations []*DescribeScalingConfigurationsResponseBodyScalingConfigurations `json:"ScalingConfigurations,omitempty" xml:"ScalingConfigurations,omitempty" type:"Repeated"`
 	// The total number of scaling configurations.
 	//
@@ -117,11 +117,11 @@ func (s *DescribeScalingConfigurationsResponseBody) Validate() error {
 }
 
 type DescribeScalingConfigurationsResponseBodyScalingConfigurations struct {
-	// Indicates whether the ECS instance on a dedicated host is associated with the dedicated host. Valid values:
+	// Whether the Dedicated Host instance is associated with a dedicated host. Valid values:
 	//
-	// 	- default: The instance is not associated with the dedicated host. If you restart an instance that was stopped in Economical Mode and the original dedicated host of the instance has insufficient resources, the instance is automatically deployed to another dedicated host in the automatic deployment resource pool.
+	// - default: The instance is not associated with a dedicated host. If economical mode is enabled, when the instance restarts after being stopped and the original dedicated host lacks sufficient resources, the instance is placed on another dedicated host in the automatic deployment resource pool.
 	//
-	// 	- host: The instance is associated with the dedicated host. If you restart an instance that was stopped in Economical Mode, the instance remains on the original dedicated host. If the available resources of the original dedicated host are insufficient, the instance cannot be restarted.
+	// - host: The instance is associated with a dedicated host. If economical mode is enabled, when the instance restarts after being stopped, it remains on the original dedicated host. If the original dedicated host lacks sufficient resources, the instance fails to restart.
 	//
 	// example:
 	//
@@ -129,130 +129,133 @@ type DescribeScalingConfigurationsResponseBodyScalingConfigurations struct {
 	Affinity *string `json:"Affinity,omitempty" xml:"Affinity,omitempty"`
 	// The number of vCPUs.
 	//
-	// You can specify CPU and Memory to define the range of instance types. For example, if you set CPU to 2 and Memory to 16, the instance types that have 2 vCPUs and 16 GiB are returned. If you specify CPU and Memory, Auto Scaling determines the available instance types based on factors such as I/O optimization requirements and zones and preferentially creates instances by using the lowest-priced instance type.
+	// Specifying both CPU and Memory defines a range of instance types. For example, CPU=2 and Memory=16 defines all instance types with 2 vCPUs and 16 GiB memory. Auto Scaling determines available instance types based on I/O optimization, zone, and other factors, then creates the lowest-priced instance according to price sorting.
 	//
-	// >  You can specify CPU and Memory to define instance types only when you set Scaling Policy to Cost Optimization and no instance type is specified in the scaling configuration.
+	// > This range-based configuration takes effect only in cost optimization mode when no instance type is specified in the scaling configuration.
 	//
 	// example:
 	//
 	// 2
-	Cpu        *int32                                                                    `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// CPU options.
 	CpuOptions *DescribeScalingConfigurationsResponseBodyScalingConfigurationsCpuOptions `json:"CpuOptions,omitempty" xml:"CpuOptions,omitempty" type:"Struct"`
-	// The time at which the scaling configuration was created.
+	// The creation time of the scaling configuration.
 	//
 	// example:
 	//
 	// 2014-08-14T10:58Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The performance mode of the burstable instances. Valid values:
+	// The operating mode for burstable instances. Valid values:
 	//
-	// 	- Standard: the standard mode. For more information, see the "Standard mode" section in the [Overview of burstable instances](https://help.aliyun.com/document_detail/59977.html) topic.
+	// - Standard: Standard mode. For performance details, see the Performance-constrained mode section in [What are burstable instances?](https://help.aliyun.com/document_detail/59977.html)
 	//
-	// 	- Unlimited: the unlimited mode. For more information, see the "Unlimited mode" section in [Overview of burstable instances](https://help.aliyun.com/document_detail/59977.html).
+	// - Unlimited: Unlimited mode. For performance details, see the Unlimited mode section in [What are burstable instances?](https://help.aliyun.com/document_detail/59977.html)
 	//
 	// example:
 	//
 	// Standard
 	CreditSpecification *string `json:"CreditSpecification,omitempty" xml:"CreditSpecification,omitempty"`
-	// The priority of the custom ECS instance type + vSwitch combination.
+	// The custom priority for ECS instance type plus vSwitch combinations.
 	//
-	// >  This parameter takes effect only when Scaling Policy of the scaling group is set to Priority Policy.
+	// 	Notice: This parameter takes effect only when the scaling group\\"s scaling policy is set to priority-based.
 	//
-	// If Auto Scaling cannot create ECS instances by using the custom ECS instance type + vSwitch combination of the highest priority, Auto Scaling creates ECS instances by using the custom ECS instance type + vSwitch combination of the next highest priority.
+	// If Auto Scaling cannot create an instance using a higher-priority instance type plus vSwitch combination, it automatically tries the next priority combination.
 	//
-	// >  If you specify the priorities of only a portion of custom ECS instance type + vSwitch combinations, Auto Scaling preferentially creates ECS instances by using the custom combinations that have specified priorities. If the custom combinations that have specified priorities do not provide sufficient resources, Auto Scaling creates ECS instances by using the custom combinations that do not have specified priorities based on the specified orders of vSwitches and instance types.
+	// > If you specify custom priorities for only some instance type plus vSwitch combinations, unspecified combinations have lower priority. Among unspecified combinations, priority follows the scaling group\\"s vSwitch order and the scaling configuration\\"s instance type order.
 	//
-	// 	- Example: the specified order of vSwitches for your scaling group is vsw1 and vsw2 and the specified order of instance types in your scaling configuration is type1 and type 2. In addition, you use CustomPriorities to specify ["vsw2+type2", "vsw1+type2"]. In this example, the vsw2+type2 combination has the highest priority and the vsw2+type1 combination has the lowest priority. The vsw1+type2 combination has a higher priority than the vsw1+type1 combination.
+	// >
+	//
+	// > - Example: Scaling group vSwitch order is vsw1, vsw2. Scaling configuration instance type order is type1, type2. Custom priority order is ["vsw2+type2", "vsw1+type2"]. Final priority order is: "vsw2+type2" > "vsw1+type2" > "vsw1+type1" > "vsw2+type1".
 	CustomPriorities []*DescribeScalingConfigurationsResponseBodyScalingConfigurationsCustomPriorities `json:"CustomPriorities,omitempty" xml:"CustomPriorities,omitempty" type:"Repeated"`
-	// The data disks.
+	// The collection of data disk information.
 	DataDisks []*DescribeScalingConfigurationsResponseBodyScalingConfigurationsDataDisks `json:"DataDisks,omitempty" xml:"DataDisks,omitempty" type:"Repeated"`
-	// The ID of the dedicated host cluster.
+	// The dedicated host cluster ID.
 	//
 	// example:
 	//
 	// dc-zm04u8r3lohsq****
 	DedicatedHostClusterId *string `json:"DedicatedHostClusterId,omitempty" xml:"DedicatedHostClusterId,omitempty"`
-	// The ID of the dedicated host on which the ECS instance is created. Preemptible instances are not supported by dedicated hosts. Therefore, if you specify DedicatedHostId, SpotStrategy and SpotPriceLimit are ignored.
+	// Whether to create the ECS instance on a Dedicated Host. Since Dedicated Hosts do not support spot instances, specifying DedicatedHostId automatically ignores SpotStrategy and SpotPriceLimit settings in the request.
 	//
-	// You can call the DescribeDedicatedHosts operation to query the IDs of dedicated hosts.
+	// You can call the DescribeDedicatedHosts API to query the list of Dedicated Host IDs.
 	//
 	// example:
 	//
 	// dh-bp67acfmxazb4p****
 	DedicatedHostId *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
-	// Indicates whether Release Protection is enabled for the ECS instances. You can specify this parameter to determine whether the ECS instances can be deleted by using the ECS console or calling the DeleteInstance operation. Valid values:
+	// The instance release protection attribute, specifying whether the instance can be directly released through the ECS console or API (DeleteInstance). Valid values:
 	//
-	// 	- true: Release Protection is enabled for the ECS instances. You cannot delete the ECS instances by using the ECS console or calling the DeleteInstance operation.
+	// - true: Enable instance release protection. The instance cannot be directly released through the ECS console or API (DeleteInstance).
 	//
-	// 	- false: Release Protection is disabled for the ECS instances. You can delete the ECS instances by using the ECS console or calling the DeleteInstance operation.
+	// - false: Disable instance release protection. The instance can be directly released through the ECS console or API (DeleteInstance).
 	//
-	// >  You can enable Release Protection for only pay-as-you-go instances to prevent unexpected instance deletion during scale-in events. The Release Protection feature does not affect normal scaling activities. In other words, an instance that meets the criteria of scale-in policies may be removed from a scaling group during a scale-in event even if you enabled Release Protection for the instance.
+	// > This attribute applies only to pay-as-you-go instances to prevent accidental deletion of instances scaled out by Auto Scaling. It does not affect normal scale-in activities. Instances with release protection enabled can still be released during scale-in activities.
 	//
 	// example:
 	//
 	// false
 	DeletionProtection *bool `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
-	// The ID of the deployment set to which the Elastic Compute Service (ECS) instances belong.
+	// The ID of the deployment set to which the ECS instance belongs.
 	//
 	// example:
 	//
 	// ds-bp1frxuzdg87zh4p****
 	DeploymentSetId *string `json:"DeploymentSetId,omitempty" xml:"DeploymentSetId,omitempty"`
-	// The hostname series of the ECS instances.
+	// The hostname of the ECS instance.
 	//
 	// example:
 	//
 	// LocalHost
 	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// The ID of the High Performance Computing (HPC) cluster to which the ECS instances belong.
+	// The ID of the HPC cluster to which the ECS instance belongs.
 	//
 	// example:
 	//
 	// hpc-clus****
 	HpcClusterId *string `json:"HpcClusterId,omitempty" xml:"HpcClusterId,omitempty"`
-	// Indicates whether the access channel is enabled for instance metadata. Valid values:
+	// Whether to enable the instance metadata access channel. Valid values:
 	//
-	// 	- enabled
+	// - enabled: Enabled.
 	//
-	// 	- disabled
+	// - disabled: Disabled.
 	//
 	// example:
 	//
 	// enabled
 	HttpEndpoint *string `json:"HttpEndpoint,omitempty" xml:"HttpEndpoint,omitempty"`
-	// Indicates whether the security hardening mode (IMDSv2) is forcefully used to access instance metadata. Valid values:
+	// Whether to enforce hardened mode (IMDSv2) when accessing instance metadata. Valid values:
 	//
-	// 	- optional: The security hardening mode IMDSv2 is not forcibly used.
+	// - optional: Do not enforce.
 	//
-	// 	- required: The security hardening mode (IMDSv2) is forcibly used. After you set this parameter to required, you cannot access instance metadata in normal mode.
+	// - required: Enforce. When set, standard mode cannot access instance metadata.
 	//
 	// example:
 	//
 	// optional
 	HttpTokens *string `json:"HttpTokens,omitempty" xml:"HttpTokens,omitempty"`
-	// The name of the image family. You can specify this parameter to obtain the latest available images in the current image family for instance creation. If you specify ImageId, you cannot specify `ImageFamily`.
+	// The image family name. Setting this parameter retrieves the latest available image within the specified image family for instance creation. If ImageId is already set, do not set this parameter.
 	//
 	// example:
 	//
 	// hangzhou-daily-update
 	ImageFamily *string `json:"ImageFamily,omitempty" xml:"ImageFamily,omitempty"`
-	// The ID of the image file that provides the image resource for Auto Scaling to create ECS instances.
+	// The image file ID used as the image resource for automatic instance creation.
 	//
 	// example:
 	//
 	// centos6u5_64_20G_aliaegis_2014****.vhd
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The name of the image file.
+	// The image file name.
 	//
 	// example:
 	//
 	// centos6u5_64_20G_aliaegis_2014****.vhd
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	// Indicates whether the ecs-user username can be used to log on to an ECS instance created from the scaling configuration. Valid values:
+	// Whether the ECS instance uses the ecs-user account to log on. Valid values:
 	//
-	// 	- true
+	// - true: Yes.
 	//
-	// 	- false
+	// - false: No.
 	//
 	// example:
 	//
@@ -260,52 +263,53 @@ type DescribeScalingConfigurationsResponseBodyScalingConfigurations struct {
 	ImageOptionsLoginAsNonRoot *bool `json:"ImageOptionsLoginAsNonRoot,omitempty" xml:"ImageOptionsLoginAsNonRoot,omitempty"`
 	// The image source. Valid values:
 	//
-	// 	- system: a public image provided by Alibaba Cloud
+	// - system: Public images provided by Alibaba Cloud.
 	//
-	// 	- self: a custom image that you created
+	// - self: Custom images you created.
 	//
-	// 	- others: a shared image from another Alibaba Cloud account or a community image published by another Alibaba Cloud account
+	// - others: Shared or community images provided by other Alibaba Cloud users.
 	//
-	// 	- marketplace: an Alibaba Cloud Marketplace image
+	// - marketplace: Images provided by Alibaba Cloud Marketplace.
 	//
 	// example:
 	//
 	// system
 	ImageOwnerAlias *string `json:"ImageOwnerAlias,omitempty" xml:"ImageOwnerAlias,omitempty"`
-	// The description of the ECS instances.
+	// The description of the ECS instance.
 	//
 	// example:
 	//
 	// FinanceDept
 	InstanceDescription *string `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
-	// The generation of the ECS instances.
+	// The series of the ECS instance.
 	//
 	// example:
 	//
 	// ecs-3
 	InstanceGeneration *string `json:"InstanceGeneration,omitempty" xml:"InstanceGeneration,omitempty"`
-	// The naming series of the ECS instances.
+	// The name of the ECS instance.
 	//
 	// example:
 	//
 	// instance****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The intelligent configuration settings, which determine the available instance types.
+	// The collection of intelligent configuration information used to filter eligible instance type ranges.
 	InstancePatternInfos []*DescribeScalingConfigurationsResponseBodyScalingConfigurationsInstancePatternInfos `json:"InstancePatternInfos,omitempty" xml:"InstancePatternInfos,omitempty" type:"Repeated"`
-	// The instance types of the ECS instances.
+	// The instance type of the ECS instance.
 	//
 	// example:
 	//
 	// ecs.g6.large
-	InstanceType                 *string                                                                                     `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// When alternative mode is enabled, if issues like inventory shortages occur, similar instance types of the same size are supplemented based on the currently selected instance type, or switches in alternative zones are created and added to the scaling group.
 	InstanceTypeCandidateOptions *DescribeScalingConfigurationsResponseBodyScalingConfigurationsInstanceTypeCandidateOptions `json:"InstanceTypeCandidateOptions,omitempty" xml:"InstanceTypeCandidateOptions,omitempty" type:"Struct"`
-	// The ECS instance types.
+	// The collection of ECS instance types.
 	InstanceTypes []*string `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Repeated"`
-	// The billing method for network usage. Valid values:
+	// The network billing type. Valid values:
 	//
-	// 	- PayByBandwidth: pay-by-bandwidth. You are charged for the bandwidth that you specified by using InternetMaxBandwidthOut.
+	// - PayByBandwidth: Pay-by-bandwidth. InternetMaxBandwidthOut is the fixed bandwidth value.
 	//
-	// 	- PayByTraffic: pay-by-traffic. You are charged for the actual traffic that you used. InternetMaxBandwidthOut specifies only the maximum available bandwidth.
+	// - PayByTraffic: Pay-by-data-transfer. InternetMaxBandwidthOut is only a bandwidth cap. Billing is based on actual network traffic.
 	//
 	// example:
 	//
@@ -315,109 +319,113 @@ type DescribeScalingConfigurationsResponseBodyScalingConfigurations struct {
 	//
 	// example:
 	//
-	// 200
+	// 10
 	InternetMaxBandwidthIn *int32 `json:"InternetMaxBandwidthIn,omitempty" xml:"InternetMaxBandwidthIn,omitempty"`
 	// The maximum outbound public bandwidth. Unit: Mbit/s.
 	//
 	// example:
 	//
-	// 0
+	// 10
 	InternetMaxBandwidthOut *int32 `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
-	// Indicates whether the ECS instances are I/O optimized. Valid values:
+	// Whether the instance is I/O optimized. Valid values:
 	//
-	// 	- none: The ECS instances are not I/O optimized.
+	// - none: Not I/O optimized.
 	//
-	// 	- optimized: The ECS instances are I/O optimized.
+	// - optimized: I/O optimized.
 	//
 	// example:
 	//
 	// none
 	IoOptimized *string `json:"IoOptimized,omitempty" xml:"IoOptimized,omitempty"`
-	// The number of randomly generated IPv6 addresses that are allocated to the elastic network interface (ENI).
+	// The number of randomly generated IPv6 addresses assigned to the elastic network interface.
 	//
 	// example:
 	//
 	// 1
 	Ipv6AddressCount *int32 `json:"Ipv6AddressCount,omitempty" xml:"Ipv6AddressCount,omitempty"`
-	// The name of the key pair that is used to log on to an ECS instance created from the scaling configuration.
+	// The name of the key pair used to log on to the ECS instance.
 	//
 	// example:
 	//
 	// keypair****
 	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
-	// The status of the scaling configuration in the scaling group. Valid values:
+	// The status of the scaling configuration within the scaling group. Valid values:
 	//
-	// 	- Active: The scaling configuration is active in the scaling group. Auto Scaling uses the scaling configuration that is in the Active state to create ECS instances during scale-out events.
+	// - Active: The scaling configuration is active. The scaling group uses active scaling configurations to automatically create ECS instances.
 	//
-	// 	- Inactive: The scaling configuration is inactive in the scaling group. Scaling configurations that are in the Inactive state are still contained in the scaling group, but Auto Scaling does not use the inactive scaling configurations to create ECS instances during scale-out events.
+	// - Inactive: The scaling configuration is inactive. Inactive scaling configurations exist in the scaling group but are not used to automatically create ECS instances.
 	//
 	// example:
 	//
 	// Active
 	LifecycleState *string `json:"LifecycleState,omitempty" xml:"LifecycleState,omitempty"`
-	// The weight of an ECS instance as a backend server. Valid values: 1 to 100.
+	// The weight of the ECS instance as a backend server. Valid values: 1 to 100.
 	//
 	// example:
 	//
 	// 1
 	LoadBalancerWeight *int32 `json:"LoadBalancerWeight,omitempty" xml:"LoadBalancerWeight,omitempty"`
-	// The memory size. Unit: GiB.
+	// Memory size. Unit: GiB.
 	//
-	// You can specify CPU and Memory to define the range of instance types. For example, if you set CPU to 2 and Memory to 16, the instance types that have 2 vCPUs and 16 GiB are returned. If you specify CPU and Memory, Auto Scaling determines the available instance types based on factors such as I/O optimization requirements and zones and preferentially creates instances by using the lowest-priced instance type.
+	// Specifying both CPU and Memory defines a range of instance types. For example, CPU=2 and Memory=16 defines all instance types with 2 vCPUs and 16 GiB memory. Auto Scaling determines available instance types based on I/O optimization, zone, and other factors, then creates the lowest-priced instance according to price sorting.
 	//
-	// >  You can specify CPU and Memory to define instance types only when you set Scaling Policy to Cost Optimization and no instance type is specified in the scaling configuration.
+	// > This range-based configuration takes effect only in cost optimization mode when no instance type is specified in the scaling configuration.
 	//
 	// example:
 	//
 	// 16
 	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// The ENIs.
+	// The list of elastic network interfaces.
 	NetworkInterfaces []*DescribeScalingConfigurationsResponseBodyScalingConfigurationsNetworkInterfaces `json:"NetworkInterfaces,omitempty" xml:"NetworkInterfaces,omitempty" type:"Repeated"`
-	// Indicates whether the password preconfigured in the image is used.
+	// Whether to use the password preset in the image.
 	//
 	// example:
 	//
 	// true
 	PasswordInherit *bool `json:"PasswordInherit,omitempty" xml:"PasswordInherit,omitempty"`
-	// Indicates whether a password is configured for the instance.
+	// Whether to set an instance password. Valid values:
+	//
+	// - true: Set instance password.
+	//
+	// - false: Do not set instance password.
 	//
 	// example:
 	//
 	// false
 	PasswordSetted *bool `json:"PasswordSetted,omitempty" xml:"PasswordSetted,omitempty"`
-	// The ID of the private pool, which is the same as the ID of the elasticity assurance or capacity reservation for which the private pool is generated.
+	// The private pool ID. This is either the elastic provisioning service ID or the capacity reservation service ID.
 	//
 	// example:
 	//
 	// eap-bp67acfmxazb4****
 	PrivatePoolOptions_id *string `json:"PrivatePoolOptions.Id,omitempty" xml:"PrivatePoolOptions.Id,omitempty"`
-	// The type of the private pool. A private pool is generated when an elasticity assurance or a capacity reservation takes effect. You can specify a private pool for Auto Scaling to start instances. Valid values:
+	// The private pool capacity option for instance startup. After elastic provisioning or capacity reservation services take effect, they generate private pool capacity for instance startup selection. Valid values:
 	//
-	// 	- Open: open private pool. Auto Scaling selects a matching open private pool to start instances. If no matching open private pools exist, Auto Scaling uses the resources in the public pool to start instances.
+	// - Open: Open mode. Automatically matches open-type private pool capacity. If no matching private pool capacity exists, uses public pool resources to start the instance.
 	//
-	// 	- Target: specified private pool. Auto Scaling uses the resources in the specified private pool to start instances. If the resources in the specified private pool are insufficient, instances cannot be started.
+	// - Target: Target mode. Starts the instance using the specified private pool capacity. If that capacity is unavailable, the instance fails to start.
 	//
-	// 	- None: no private pool. Auto Scaling does not use the resources in private pools to start instances.
+	// - None: Do not use mode. Instance startup does not use private pool capacity.
 	//
 	// example:
 	//
 	// Open
 	PrivatePoolOptions_matchCriteria *string `json:"PrivatePoolOptions.MatchCriteria,omitempty" xml:"PrivatePoolOptions.MatchCriteria,omitempty"`
-	// The name of the Resource Access Management (RAM) role assumed by the ECS instances. This name is provided and maintained by RAM. You can call the ListRoles operation to query the available RAM roles.
+	// The RAM role name of the ECS instance. RAM role names are provided and maintained by RAM. You can call ListRoles to query available RAM roles.
 	//
 	// example:
 	//
 	// ramrole****
 	RamRoleName *string `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
-	// The ID of the resource group to which the ECS instances belong.
+	// The ID of the resource group to which the ECS instance belongs.
 	//
 	// example:
 	//
 	// rg-aekzn2ou7xo****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The resource pools used for instance creation, which can be the public pool or a private pool associated with any active elasticity assurance or capacity reservation.
+	// The resource pool strategy used when creating instances.
 	//
-	// 	- This parameter takes effect only when you create pay-as-you-go instances.
+	// - This parameter takes effect only when creating pay-as-you-go instances.
 	ResourcePoolOptions *DescribeScalingConfigurationsResponseBodyScalingConfigurationsResourcePoolOptions `json:"ResourcePoolOptions,omitempty" xml:"ResourcePoolOptions,omitempty" type:"Struct"`
 	// The ID of the scaling configuration.
 	//
@@ -437,106 +445,107 @@ type DescribeScalingConfigurationsResponseBodyScalingConfigurations struct {
 	//
 	// asg-bp17pelvl720x3v7****
 	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
-	// >  This parameter is in invitational preview and is not available for use.
+	// > This parameter is in invitational preview and is not yet available for general use.
 	SchedulerOptions *DescribeScalingConfigurationsResponseBodyScalingConfigurationsSchedulerOptions `json:"SchedulerOptions,omitempty" xml:"SchedulerOptions,omitempty" type:"Struct"`
-	// Indicates whether Security Hardening is enabled. Valid values:
+	// Whether to enable security hardening. Valid values:
 	//
-	// 	- Active: Security Hardening is enabled. This value is applicable to only public images.
+	// - Active: Enable security hardening. Applies only to public images.
 	//
-	// 	- Deactive: Security Hardening is disabled. This value is applicable to all images.
+	// - Deactive: Disable security hardening. Applies to all image types.
 	//
 	// example:
 	//
 	// Active
 	SecurityEnhancementStrategy *string `json:"SecurityEnhancementStrategy,omitempty" xml:"SecurityEnhancementStrategy,omitempty"`
-	// The ID of the security group to which the ECS instances belong. ECS instances that belong to the same security group can communicate with each other.
+	// The ID of the security group to which the ECS instance belongs. ECS instances in the same security group can access each other.
 	//
 	// example:
 	//
 	// sg-bp18kz60mefs****
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The IDs of the security groups to which the ECS instances belong. ECS instances that belong to the same security group can communicate with each other.
-	SecurityGroupIds []*string                                                                      `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
-	SecurityOptions  *DescribeScalingConfigurationsResponseBodyScalingConfigurationsSecurityOptions `json:"SecurityOptions,omitempty" xml:"SecurityOptions,omitempty" type:"Struct"`
-	// The protection period of the preemptible instances. Unit: hours.
+	// The IDs of multiple security groups to which the ECS instance belongs. ECS instances in the same security group can access each other.
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
+	// Security options.
+	SecurityOptions *DescribeScalingConfigurationsResponseBodyScalingConfigurationsSecurityOptions `json:"SecurityOptions,omitempty" xml:"SecurityOptions,omitempty" type:"Struct"`
+	// The reserved duration for the spot instance. Unit: hours.
 	//
 	// example:
 	//
 	// 1
 	SpotDuration *int32 `json:"SpotDuration,omitempty" xml:"SpotDuration,omitempty"`
-	// The interruption event of the preemptible instances.
+	// The interruption mode for spot instances.
 	//
 	// example:
 	//
 	// Terminate
 	SpotInterruptionBehavior *string `json:"SpotInterruptionBehavior,omitempty" xml:"SpotInterruptionBehavior,omitempty"`
-	// The preemptible instances.
+	// The collection of spot instance information.
 	SpotPriceLimits []*DescribeScalingConfigurationsResponseBodyScalingConfigurationsSpotPriceLimits `json:"SpotPriceLimits,omitempty" xml:"SpotPriceLimits,omitempty" type:"Repeated"`
-	// The preemption policy that is applied to pay-as-you-go instances. Valid values:
+	// The preemption policy for pay-as-you-go instances. Valid values:
 	//
-	// 	- NoSpot: The instances are created as regular pay-as-you-go instances.
+	// - NoSpot: standard pay-as-you-go instance.
 	//
-	// 	- SpotWithPriceLimit: The instances are created as preemptible instances that have a user-defined maximum hourly price.
+	// - SpotWithPriceLimit: spot instance with a maximum price limit.
 	//
-	// 	- SpotAsPriceGo: The instances are preemptible instances for which the market price at the time of purchase is automatically used as the bid price.
+	// - SpotAsPriceGo: system automatically bids based on current market price.
 	//
 	// example:
 	//
 	// NoSpot
 	SpotStrategy *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
-	// The ID of the storage set.
+	// The storage set ID.
 	//
 	// example:
 	//
 	// ss-bp67acfmxazb4p****
 	StorageSetId *string `json:"StorageSetId,omitempty" xml:"StorageSetId,omitempty"`
-	// The maximum number of partitions in the storage set. The value is an integer that is greater than or equal to 2.
+	// The maximum number of partitions in the storage set. Value must be an integer greater than or equal to 2.
 	//
 	// example:
 	//
 	// 2
 	StorageSetPartitionNumber *int32 `json:"StorageSetPartitionNumber,omitempty" xml:"StorageSetPartitionNumber,omitempty"`
-	// The ID of the automatic snapshot policy that is applied to the system disk.
+	// The ID of the automatic snapshot policy applied to the system disk.
 	//
 	// example:
 	//
 	// sp-bp12m37ccmxvbmi5****
 	SystemDiskAutoSnapshotPolicyId *string `json:"SystemDiskAutoSnapshotPolicyId,omitempty" xml:"SystemDiskAutoSnapshotPolicyId,omitempty"`
-	// Indicates whether the Performance Burst feature is enabled for the system disk. Valid values:
+	// Whether Burst (performance burst) is enabled for the system disk. Valid values:
 	//
-	// 	- true
+	// - true: Enabled.
 	//
-	// 	- false
+	// - false: Disabled.
 	//
-	// >  This parameter is available only when you set SystemDisk.Category to cloud_auto.
+	// > This parameter is supported only when SystemDisk.Category is cloud_auto.
 	//
 	// example:
 	//
 	// false
 	SystemDiskBurstingEnabled *bool `json:"SystemDiskBurstingEnabled,omitempty" xml:"SystemDiskBurstingEnabled,omitempty"`
-	// The categories of the system disks. The values are sorted based on their priorities. The first value has the highest priority. If Auto Scaling cannot create instances by using the disk category of the highest priority, Auto Scaling creates instances by using the disk category of the next highest priority. Valid values:
+	// Multiple disk categories for the system disk. The first disk category has the highest priority, followed by others in descending order. If Auto Scaling cannot use a higher-priority disk category, it automatically tries the next priority category to create the system disk. Valid values:
 	//
-	// 	- cloud: basic disk
+	// - cloud: basic disk.
 	//
-	// 	- cloud_efficiency: ultra disk
+	// - cloud_efficiency: ultra disk.
 	//
-	// 	- cloud_ssd: standard SSD
+	// - cloud_ssd: standard SSD.
 	//
-	// 	- cloud_essd: ESSD
+	// - cloud_essd: ESSD.
 	SystemDiskCategories []*string `json:"SystemDiskCategories,omitempty" xml:"SystemDiskCategories,omitempty" type:"Repeated"`
-	// The category of the system disk. Valid values:
+	// The disk category of the system disk. Valid values:
 	//
-	// 	- cloud: basic disk
+	// - cloud: basic disk.
 	//
-	// 	- cloud_efficiency: ultra disk
+	// - cloud_efficiency: ultra disk.
 	//
-	// 	- cloud_ssd: standard SSD
+	// - cloud_ssd: standard SSD.
 	//
-	// 	- ephemeral_ssd: local SSD
+	// - ephemeral_ssd: local SSD.
 	//
-	// 	- cloud_essd: enterprise SSD (ESSD)
+	// - cloud_essd: ESSD.
 	//
-	// 	- cloud_auto: ESSD AutoPL
+	// - cloud_auto: ESSD AutoPL.
 	//
 	// example:
 	//
@@ -548,27 +557,27 @@ type DescribeScalingConfigurationsResponseBodyScalingConfigurations struct {
 	//
 	// Test system disk.
 	SystemDiskDescription *string `json:"SystemDiskDescription,omitempty" xml:"SystemDiskDescription,omitempty"`
-	// The encryption algorithm that is applied to the system disk. Valid values:
+	// The encryption algorithm used for the system disk. Valid values:
 	//
-	// 	- AES-256
+	// - AES-256.
 	//
-	// 	- SM4-128
+	// - SM4-128.
 	//
 	// example:
 	//
 	// AES-256
 	SystemDiskEncryptAlgorithm *string `json:"SystemDiskEncryptAlgorithm,omitempty" xml:"SystemDiskEncryptAlgorithm,omitempty"`
-	// Indicates whether the system disk is encrypted. Valid values:
+	// Whether the system disk is encrypted. Valid values:
 	//
-	// 	- true
+	// - true: Encrypted.
 	//
-	// 	- false
+	// - false: Not encrypted.
 	//
 	// example:
 	//
 	// false
 	SystemDiskEncrypted *bool `json:"SystemDiskEncrypted,omitempty" xml:"SystemDiskEncrypted,omitempty"`
-	// The ID of the KMS key that is applied to the system disk.
+	// The KMS key ID used for the system disk.
 	//
 	// example:
 	//
@@ -580,15 +589,15 @@ type DescribeScalingConfigurationsResponseBodyScalingConfigurations struct {
 	//
 	// cloud_ssd_Test
 	SystemDiskName *string `json:"SystemDiskName,omitempty" xml:"SystemDiskName,omitempty"`
-	// The performance level (PL) of the system disk that is an ESSD.
+	// The performance level of the ESSD system disk.
 	//
 	// example:
 	//
 	// PL1
 	SystemDiskPerformanceLevel *string `json:"SystemDiskPerformanceLevel,omitempty" xml:"SystemDiskPerformanceLevel,omitempty"`
-	// The provisioned IOPS of the system disk.
+	// The provisioned IOPS (Input/Output Operations Per Second) performance metric for the system disk.
 	//
-	// >  IOPS measures the number of read and write operations that an EBS device can process per second.
+	// > IOPS (Input/Output Operations Per Second) measures the number of I/O operations per second, indicating block storage read/write capability. Unit: operations.
 	//
 	// example:
 	//
@@ -600,13 +609,13 @@ type DescribeScalingConfigurationsResponseBodyScalingConfigurations struct {
 	//
 	// 100
 	SystemDiskSize *int32 `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
-	// The tags.
+	// The collection of tag information.
 	Tags []*DescribeScalingConfigurationsResponseBodyScalingConfigurationsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// Indicates whether the ECS instance is created on a dedicated host. Valid values:
+	// Whether to create the instance on a Dedicated Host. Valid values:
 	//
-	// 	- default: The ECS instance is created on a non-dedicated host.
+	// - default: Create a non-Dedicated Host instance.
 	//
-	// 	- host: The ECS instance is created on a dedicated host. If you do not specify DedicatedHostId, the system selects a dedicated host for the ECS instance.
+	// - host: Create a Dedicated Host instance. If you do not specify DedicatedHostId, Alibaba Cloud automatically selects a Dedicated Host to place the instance.
 	//
 	// Default value: default.
 	//
@@ -614,15 +623,15 @@ type DescribeScalingConfigurationsResponseBodyScalingConfigurations struct {
 	//
 	// default
 	Tenancy *string `json:"Tenancy,omitempty" xml:"Tenancy,omitempty"`
-	// The user data of the ECS instances.
+	// The custom data for the ECS instance.
 	//
 	// example:
 	//
 	// echo hello ecs!
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
-	// The weights of the instance types. The value of this parameter indicates the capacity of an instance of the specified instance type in the scaling group. A higher weight indicates that a smaller number of instances of the instance type are required to meet the expected capacity requirement.
+	// The weights corresponding to specified instance types, representing the capacity size of a single instance in the scaling group. Higher weights require fewer instances of that type to meet the desired capacity.
 	WeightedCapacities []*int32 `json:"WeightedCapacities,omitempty" xml:"WeightedCapacities,omitempty" type:"Repeated"`
-	// The ID of the zone in which the ECS instances are created. You can call the DescribeZones operation to query the zone IDs.
+	// The zone ID of the instance. You can call DescribeZones to get the zone list.
 	//
 	// example:
 	//
@@ -1397,6 +1406,15 @@ func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurations) Validat
 }
 
 type DescribeScalingConfigurationsResponseBodyScalingConfigurationsCpuOptions struct {
+	// Nested virtualization, whether to enable hardware-based nested virtualization. Valid values:
+	//
+	// - enabled: Enabled.
+	//
+	// - disabled: Disabled.
+	//
+	// example:
+	//
+	// enabled
 	NestedVirtualization *string `json:"NestedVirtualization,omitempty" xml:"NestedVirtualization,omitempty"`
 }
 
@@ -1422,13 +1440,13 @@ func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsCpuOption
 }
 
 type DescribeScalingConfigurationsResponseBodyScalingConfigurationsCustomPriorities struct {
-	// The ECS instance type.
+	// The instance type of the ECS instance.
 	//
 	// example:
 	//
 	// ecs.c6a.4xlarge
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The vSwitch ID.
+	// The ID of the virtual switch.
 	//
 	// example:
 	//
@@ -1467,57 +1485,61 @@ func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsCustomPri
 }
 
 type DescribeScalingConfigurationsResponseBodyScalingConfigurationsDataDisks struct {
-	// The ID of the automatic snapshot policy that is applied to the data disk.
+	// The ID of the automatic snapshot policy applied to the data disk.
 	//
 	// example:
 	//
 	// sp-bp19nq9enxqkomib****
 	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" xml:"AutoSnapshotPolicyId,omitempty"`
-	// Indicates whether the Performance Burst feature is enabled for the data disk. Valid values:
+	// Whether Burst (performance burst) is enabled for the data disk. Valid values:
 	//
-	// 	- true
+	// - true: Enabled.
 	//
-	// 	- false
+	// - false: Disabled.
 	//
-	// >  This parameter is available only when you set `DataDisk.Category` to `cloud_auto`.
+	// > This parameter appears only when `DataDisk.Category` is `cloud_auto`.
+	//
+	// <props="china">
+	//
+	// For more information, see [ESSD AutoPL](https://help.aliyun.com/document_detail/368372.html).
 	//
 	// example:
 	//
 	// false
 	BurstingEnabled *bool `json:"BurstingEnabled,omitempty" xml:"BurstingEnabled,omitempty"`
-	// The categories of the data disks. The values are sorted based on their priorities. The first value has the highest priority. If Auto Scaling cannot create instances by using the disk category of the highest priority, Auto Scaling creates instances by using the disk category of the next highest priority. Valid values:
+	// Multiple disk categories for the data disk. The first disk category has the highest priority, followed by others in descending order. If Auto Scaling cannot use a higher-priority disk category, it automatically tries the next priority category to create the data disk. Valid values:
 	//
-	// 	- cloud: basic disk. DeleteWithInstance of a basic disk created along with the ECS instance is set to true.
+	// - cloud: basic disk. Basic disks created with an instance have DeleteWithInstance set to true.
 	//
-	// 	- cloud_efficiency: ultra disk.
+	// - cloud_efficiency: ultra disk.
 	//
-	// 	- cloud_ssd: standard SSD.
+	// - cloud_ssd: standard SSD.
 	//
-	// 	- cloud_essd: ESSD.
+	// - cloud_essd: ESSD.
 	Categories []*string `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
-	// The category of the data disk. Valid values:
+	// The disk category of the data disk. Valid values:
 	//
-	// 	- cloud: basic disk. DeleteWithInstance of a basic disk created along with the ECS instance is set to true.
+	// - cloud: basic disk. Basic disks created with an instance have DeleteWithInstance set to true.
 	//
-	// 	- cloud_efficiency: ultra disk.
+	// - cloud_efficiency: ultra disk.
 	//
-	// 	- cloud_ssd: standard SSD.
+	// - cloud_ssd: standard SSD.
 	//
-	// 	- ephemeral_ssd: local SSD.
+	// - ephemeral_ssd: local SSD.
 	//
-	// 	- cloud_essd: ESSD.
+	// - cloud_essd: ESSD.
 	//
-	// 	- cloud_auto: ESSD AutoPL.
+	// - cloud_auto: ESSD AutoPL.
 	//
 	// example:
 	//
 	// cloud
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// Indicates whether the data disk is released when the instance to which the data disk is attached is released. Valid values:
+	// Whether to release the data disk when releasing the instance. Valid values:
 	//
-	// 	- true
+	// - true: Release the disk along with the instance.
 	//
-	// 	- false
+	// - false: Keep the disk when releasing the instance.
 	//
 	// example:
 	//
@@ -1541,11 +1563,11 @@ type DescribeScalingConfigurationsResponseBodyScalingConfigurationsDataDisks str
 	//
 	// cloud_ssdData
 	DiskName *string `json:"DiskName,omitempty" xml:"DiskName,omitempty"`
-	// Indicates whether the data disk is encrypted. Valid values:
+	// Whether the data disk is encrypted. Valid values:
 	//
-	// 	- true
+	// - true: Encrypted.
 	//
-	// 	- false
+	// - false: Not encrypted.
 	//
 	// Default value: false.
 	//
@@ -1553,43 +1575,43 @@ type DescribeScalingConfigurationsResponseBodyScalingConfigurationsDataDisks str
 	//
 	// false
 	Encrypted *string `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
-	// The ID of the Key Management Service (KMS) key that is applied to the data disk.
+	// The KMS key ID corresponding to the data disk.
 	//
 	// example:
 	//
 	// 0e478b7a-4262-4802-b8cb-00d3fb40****
 	KMSKeyId *string `json:"KMSKeyId,omitempty" xml:"KMSKeyId,omitempty"`
-	// The PL of the data disk that is an ESSD.
+	// The performance level of the ESSD data disk.
 	//
 	// example:
 	//
 	// PL1
 	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
-	// The provisioned IOPS of the data disk.
+	// The provisioned IOPS (Input/Output Operations Per Second) performance metric for the data disk.
 	//
-	// >  IOPS measures the number of read and write operations that an Elastic Block Storage (EBS) device can process per second.
+	// > IOPS (Input/Output Operations Per Second) measures the number of I/O operations per second, indicating block storage read/write capability. Unit: operations.
 	//
 	// example:
 	//
 	// 100
 	ProvisionedIops *int64 `json:"ProvisionedIops,omitempty" xml:"ProvisionedIops,omitempty"`
-	// The size of the data disk. Unit: GB. Valid values:
+	// The size of the data disk. Unit: GiB. Valid values:
 	//
-	// 	- 5 to 2000 if you set Category to cloud.
+	// - cloud: 5–2000.
 	//
-	// 	- 20 to 32768 if you set Category to cloud_efficiency.
+	// - cloud_efficiency: 20–32768.
 	//
-	// 	- 20 to 32768 if you set Category to cloud_ssd.
+	// - cloud_ssd: 20–32768.
 	//
-	// 	- 20 to 32768 if you set Category to cloud_essd.
+	// - cloud_essd: 20–32768.
 	//
-	// 	- 5 to 800 if you set Category to ephemeral_ssd.
+	// - ephemeral_ssd: 5–800.
 	//
 	// example:
 	//
 	// 200
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The ID of the snapshot based on which the data disk is created.
+	// The snapshot ID used to create the data disk.
 	//
 	// example:
 	//
@@ -1736,137 +1758,137 @@ func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsDataDisks
 }
 
 type DescribeScalingConfigurationsResponseBodyScalingConfigurationsInstancePatternInfos struct {
-	// The architectures of instance types. Valid values:
+	// The architecture type of the instance type. Valid values:
 	//
-	// 	- X86: x86.
+	// - X86: X86 compute.
 	//
-	// 	- Heterogeneous: heterogeneous computing, such as GPU-accelerated or FPGA-accelerated.
+	// - Heterogeneous: Heterogeneous compute, such as GPU or FPGA.
 	//
-	// 	- BareMetal: ECS Bare Metal Instance.
+	// - BareMetal: ECS Bare Metal Instance.
 	//
-	// 	- Arm: Arm.
+	// - Arm: Arm compute.
 	Architectures []*string `json:"Architectures,omitempty" xml:"Architectures,omitempty" type:"Repeated"`
-	// Indicates whether burstable instance types are included. Valid values:
+	// Whether the instance type supports performance burst. Valid values:
 	//
-	// 	- Exclude: Burstable instance types are not included.
+	// - Exclude: Exclude burstable instance types.
 	//
-	// 	- Include: Burstable instance types are included.
+	// - Include: Include burstable instance types.
 	//
-	// 	- Required: Only burstable instance types are included.
+	// - Required: Include only burstable instance types.
 	//
 	// example:
 	//
 	// Include
 	BurstablePerformance *string `json:"BurstablePerformance,omitempty" xml:"BurstablePerformance,omitempty"`
-	// The number of vCPUs of the instance type.
+	// The number of vCPU cores for the instance type.
 	//
 	// example:
 	//
 	// 2
 	Cores *int32 `json:"Cores,omitempty" xml:"Cores,omitempty"`
-	// The CPU architectures of the instance types. Valid values:
+	// The CPU architecture of the instance type. Valid values:
 	//
-	// >  You can specify 1 to 2 CPU architectures.
+	// > N indicates multiple CPU architectures can be specified. N ranges from 1 to 2.
 	//
-	// 	- x86
+	// - X86.
 	//
-	// 	- Arm
+	// - ARM.
 	CpuArchitectures []*string `json:"CpuArchitectures,omitempty" xml:"CpuArchitectures,omitempty" type:"Repeated"`
-	// The instance types that are excluded. You can use wildcard characters, such as an asterisk (\\*), to exclude an instance type or an instance family. Examples:
+	// The instance types to exclude. Use wildcard characters (\\*) to exclude a single instance type or an entire instance family. Examples:
 	//
-	// 	- ecs.c6.large: The ecs.c6.large instance type is excluded.
+	// - ecs.c6.large: Excludes the ecs.c6.large instance type.
 	//
-	// 	- ecs.c6.\\*: The c6 instance family is excluded.
+	// - ecs.c6.\\*: Excludes all instance types in the c6 family.
 	ExcludedInstanceTypes []*string `json:"ExcludedInstanceTypes,omitempty" xml:"ExcludedInstanceTypes,omitempty" type:"Repeated"`
-	// The GPU models.
+	// GPU types.
 	GpuSpecs []*string `json:"GpuSpecs,omitempty" xml:"GpuSpecs,omitempty" type:"Repeated"`
-	// The categories of ECS instances. Valid values:
+	// Instance categories. Valid values:
 	//
-	// >  Up to 10 categories of ECS instances are supported.
+	// > N indicates multiple instance categories can be specified. N ranges from 1 to 10.
 	//
-	// 	- General-purpose: general-purpose instance type.
+	// - General-purpose: General-purpose.
 	//
-	// 	- Compute-optimized: compute-optimized instance type.
+	// - Compute-optimized: Compute-optimized.
 	//
-	// 	- Memory-optimized: memory-optimized instance type.
+	// - Memory-optimized: Memory-optimized.
 	//
-	// 	- Big data: big data instance type.
+	// - Big data: Big data.
 	//
-	// 	- Local SSDs: instance type with local SSDs.
+	// - Local SSDs: Local SSD.
 	//
-	// 	- High Clock Speed: instance type with high clock speeds.
+	// - High Clock Speed: High frequency.
 	//
-	// 	- Enhanced: enhanced instance type.
+	// - Enhanced: Enhanced.
 	//
-	// 	- Shared: shared instance type.
+	// - Shared: Shared-resource.
 	//
-	// 	- Compute-optimized with GPU: GPU-accelerated compute-optimized instance type.
+	// - Compute-optimized with GPU: GPU.
 	//
-	// 	- Visual Compute-optimized: visual compute-optimized instance type.
+	// - Visual Compute-optimized: Visual compute.
 	//
-	// 	- Heterogeneous Service: heterogeneous service instance type.
+	// - Heterogeneous Service: Heterogeneous computing.
 	//
-	// 	- Compute-optimized with FPGA: FPGA-accelerated compute-optimized instance type.
+	// - Compute-optimized with FPGA: FPGA.
 	//
-	// 	- Compute-optimized with NPU: NPU-accelerated compute-optimized instance type.
+	// - Compute-optimized with NPU: NPU.
 	//
-	// 	- ECS Bare Metal: ECS Bare Metal Instance type.
+	// - ECS Bare Metal: ECS Bare Metal Instance.
 	//
-	// 	- High Performance Compute: HPC-optimized instance type.
+	// - High Performance Compute: High-performance computing (HPC).
 	InstanceCategories []*string `json:"InstanceCategories,omitempty" xml:"InstanceCategories,omitempty" type:"Repeated"`
-	// The level of the instance family.
+	// The instance family level.
 	//
-	// 	- EntryLevel: entry level (shared instance types). Instance types of this level are the most cost-effective but may not provide stable computing performance. Instance types of this level are suitable for scenarios in which the CPU utilization is low. For more information, see [Shared instance families](https://help.aliyun.com/document_detail/108489.html).
+	// - EntryLevel: Entry-level, i.e., shared-resource instances. Lower cost but cannot guarantee stable compute performance. Suitable for workloads with low average CPU usage. For more information, see [Shared-resource instances](https://help.aliyun.com/document_detail/108489.html).
 	//
-	// 	- EnterpriseLevel: enterprise level. Instance types of this level provide stable performance and dedicated resources, and are suitable for scenarios that require high stability. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
+	// - EnterpriseLevel: Enterprise-level. Stable performance with dedicated resources. Suitable for workloads requiring high stability. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html).
 	//
-	// 	- CreditEntryLevel: credit entry level (burstable instance types). CPU credits are used to ensure computing performance. Instance types of this level are suitable for scenarios in which the CPU utilization is low but may fluctuate in specific cases. For more information, see [Overview of burstable instances](https://help.aliyun.com/document_detail/59977.html).
+	// - CreditEntryLevel: Credit entry-level, i.e., burstable instances. Uses CPU credits to ensure compute performance. Suitable for workloads with low average CPU usage and occasional bursts. For more information, see [Burstable instances](https://help.aliyun.com/document_detail/59977.html).
 	//
 	// example:
 	//
 	// EnterpriseLevel
 	InstanceFamilyLevel *string `json:"InstanceFamilyLevel,omitempty" xml:"InstanceFamilyLevel,omitempty"`
-	// The instance families that are queried. You can query 1 to 10 instance families in each call.
+	// The instance families to query. N indicates multiple instance families can be specified. N ranges from 1 to 10.
 	InstanceTypeFamilies []*string `json:"InstanceTypeFamilies,omitempty" xml:"InstanceTypeFamilies,omitempty" type:"Repeated"`
-	// The maximum hourly price for the pay-as-you-go or preemptible instances.
+	// The maximum hourly price acceptable for pay-as-you-go or spot instances.
 	//
 	// example:
 	//
 	// 2
 	MaxPrice *float32 `json:"MaxPrice,omitempty" xml:"MaxPrice,omitempty"`
-	// The maximum number of vCPUs per instance type.
+	// The maximum number of vCPU cores for the instance type.
 	//
-	// >  The value of MaximumCpuCoreCount cannot exceed four times the value of MinimumCpuCoreCount.
+	// > MaximumCpuCoreCount cannot exceed four times MinimumCpuCoreCount.
 	//
 	// example:
 	//
 	// 4
 	MaximumCpuCoreCount *int32 `json:"MaximumCpuCoreCount,omitempty" xml:"MaximumCpuCoreCount,omitempty"`
-	// The maximum number of GPUs per instance. The value must be a positive integer.
+	// The maximum number of GPUs. Valid values: positive integers.
 	//
 	// example:
 	//
 	// 2
 	MaximumGpuAmount *int32 `json:"MaximumGpuAmount,omitempty" xml:"MaximumGpuAmount,omitempty"`
-	// The maximum memory size per instance. Unit: GiB.
+	// The maximum memory size. Unit: GiB.
 	//
 	// example:
 	//
 	// 4
 	MaximumMemorySize *float32 `json:"MaximumMemorySize,omitempty" xml:"MaximumMemorySize,omitempty"`
-	// The memory size of the instance type. Unit: GiB.
+	// The memory size for the instance type. Unit: GiB.
 	//
 	// example:
 	//
 	// 4
 	Memory *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// The baseline vCPU computing performance (overall baseline performance of all vCPUs) per t5 or t6 burstable instance.
+	// The minimum baseline vCPU compute performance (sum of all vCPUs) for burstable instances t5 and t6.
 	//
 	// example:
 	//
 	// 12
 	MinimumBaselineCredit *int32 `json:"MinimumBaselineCredit,omitempty" xml:"MinimumBaselineCredit,omitempty"`
-	// The minimum number of vCPUs per instance type.
+	// The minimum number of vCPU cores for the instance type.
 	//
 	// example:
 	//
@@ -1884,31 +1906,31 @@ type DescribeScalingConfigurationsResponseBodyScalingConfigurationsInstancePatte
 	//
 	// 2
 	MinimumEniPrivateIpAddressQuantity *int32 `json:"MinimumEniPrivateIpAddressQuantity,omitempty" xml:"MinimumEniPrivateIpAddressQuantity,omitempty"`
-	// The minimum number of elastic network interfaces (ENIs) per instance.
+	// The minimum number of elastic network interfaces (ENIs) that the instance type supports attaching.
 	//
 	// example:
 	//
 	// 2
 	MinimumEniQuantity *int32 `json:"MinimumEniQuantity,omitempty" xml:"MinimumEniQuantity,omitempty"`
-	// The minimum number of GPUs per instance. The value must be a positive integer.
+	// The minimum number of GPUs. Valid values: positive integers.
 	//
 	// example:
 	//
 	// 2
 	MinimumGpuAmount *int32 `json:"MinimumGpuAmount,omitempty" xml:"MinimumGpuAmount,omitempty"`
-	// The initial vCPU credits per t5 or t6 burstable instance.
+	// The minimum initial vCPU credit for burstable instances t5 and t6.
 	//
 	// example:
 	//
 	// 12
 	MinimumInitialCredit *int32 `json:"MinimumInitialCredit,omitempty" xml:"MinimumInitialCredit,omitempty"`
-	// The minimum memory size per instance. Unit: GiB.
+	// The minimum memory size. Unit: GiB.
 	//
 	// example:
 	//
 	// 4
 	MinimumMemorySize *float32 `json:"MinimumMemorySize,omitempty" xml:"MinimumMemorySize,omitempty"`
-	// The processor models of the instance types. You can specify 1 to 10 processor models.
+	// The processor models of the instance. N indicates multiple processor models can be specified. N ranges from 1 to 10.
 	PhysicalProcessorModels []*string `json:"PhysicalProcessorModels,omitempty" xml:"PhysicalProcessorModels,omitempty" type:"Repeated"`
 }
 
@@ -2132,11 +2154,38 @@ func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsInstanceP
 }
 
 type DescribeScalingConfigurationsResponseBodyScalingConfigurationsInstanceTypeCandidateOptions struct {
-	AllowCidrBlocks          []*string `json:"AllowCidrBlocks,omitempty" xml:"AllowCidrBlocks,omitempty" type:"Repeated"`
-	AllowCrossAz             *bool     `json:"AllowCrossAz,omitempty" xml:"AllowCrossAz,omitempty"`
-	AllowDifferentGeneration *bool     `json:"AllowDifferentGeneration,omitempty" xml:"AllowDifferentGeneration,omitempty"`
-	Enabled                  *bool     `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	MaxPrice                 *float32  `json:"MaxPrice,omitempty" xml:"MaxPrice,omitempty"`
+	// When supplementing switches in other zones, specify the CIDR blocks for eligible switches.
+	AllowCidrBlocks []*string `json:"AllowCidrBlocks,omitempty" xml:"AllowCidrBlocks,omitempty" type:"Repeated"`
+	// Indicates whether ESS can add vSwitches from other zones.
+	//
+	// > The instance type remains unchanged. Only alternative zones are considered. If all selected zones in the scaling group cannot scale out due to inventory shortages or similar issues, ESS automatically adds a vSwitch from a new zone to the scaling group based on this setting.
+	//
+	// > For example, if the scaling group is configured with zones cn-hangzhou-h and cn-hangzhou-g, and neither zone can scale out, ESS might create a vSwitch in zone cn-hangzhou-k based on real-time inventory availability and add it to the scaling group.
+	//
+	// example:
+	//
+	// true
+	AllowCrossAz *bool `json:"AllowCrossAz,omitempty" xml:"AllowCrossAz,omitempty"`
+	// Whether to allow supplementing instance types from different generations.
+	//
+	// - For example, if the current type is ecs.c7.large, enabling this allows alternatives like ecs.c6.large and ecs.c8.large.
+	//
+	// example:
+	//
+	// true
+	AllowDifferentGeneration *bool `json:"AllowDifferentGeneration,omitempty" xml:"AllowDifferentGeneration,omitempty"`
+	// Whether to enable alternative mode.
+	//
+	// example:
+	//
+	// true
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The price cap for alternative instance types.
+	//
+	// example:
+	//
+	// 2
+	MaxPrice *float32 `json:"MaxPrice,omitempty" xml:"MaxPrice,omitempty"`
 }
 
 func (s DescribeScalingConfigurationsResponseBodyScalingConfigurationsInstanceTypeCandidateOptions) String() string {
@@ -2197,34 +2246,43 @@ func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsInstanceT
 }
 
 type DescribeScalingConfigurationsResponseBodyScalingConfigurationsNetworkInterfaces struct {
-	// The ENI type. Valid values:
+	// The elastic network interface type. Valid values:
 	//
-	// 	- Primary: the primary ENI
+	// - Primary: Primary network interface.
 	//
-	// 	- Secondary: the secondary ENI
+	// - Secondary: Secondary elastic network interface.
 	//
 	// example:
 	//
 	// Primary
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The number of randomly generated IPv6 addresses that are allocated to the primary ENI.
+	// The number of randomly generated IPv6 addresses assigned to the primary network interface.
 	//
 	// example:
 	//
 	// 1
 	Ipv6AddressCount *int32 `json:"Ipv6AddressCount,omitempty" xml:"Ipv6AddressCount,omitempty"`
-	// The communication mode of the ENI. Valid values:
+	// The communication mode of the elastic network interface. Valid values:
 	//
-	// 	- Standard: The TCP communication mode is used.
+	// - Standard: Uses TCP communication mode.
 	//
-	// 	- HighPerformance: The Elastic RDMA Interface (ERI) is enabled and the remote direct memory access (RDMA) communication mode is used.
+	// - HighPerformance: Enables ERI (Elastic RDMA Interface) and uses RDMA communication mode.
 	//
 	// example:
 	//
 	// HighPerformance
-	NetworkInterfaceTrafficMode    *string `json:"NetworkInterfaceTrafficMode,omitempty" xml:"NetworkInterfaceTrafficMode,omitempty"`
-	SecondaryPrivateIpAddressCount *int32  `json:"SecondaryPrivateIpAddressCount,omitempty" xml:"SecondaryPrivateIpAddressCount,omitempty"`
-	// The IDs of the security groups to which the ENIs belong.
+	NetworkInterfaceTrafficMode *string `json:"NetworkInterfaceTrafficMode,omitempty" xml:"NetworkInterfaceTrafficMode,omitempty"`
+	// The number of secondary private IPv4 addresses assigned to the network interface. Valid values: 1–49.
+	//
+	// - The value cannot exceed the IP address limit for the instance type. For more information, see [Instance families](https://help.aliyun.com/zh/ecs/user-guide/overview-of-instance-families).
+	//
+	// - NetworkInterface.N.SecondaryPrivateIpAddressCount assigns secondary private IPv4 addresses (excluding the primary private IP) to the network interface. The system randomly assigns addresses from the available CIDR block of the virtual switch (NetworkInterface.N.VSwitchId).
+	//
+	// example:
+	//
+	// 2
+	SecondaryPrivateIpAddressCount *int32 `json:"SecondaryPrivateIpAddressCount,omitempty" xml:"SecondaryPrivateIpAddressCount,omitempty"`
+	// The IDs of one or more security groups to which the elastic network interface belongs.
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
 }
 
@@ -2286,16 +2344,19 @@ func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsNetworkIn
 }
 
 type DescribeScalingConfigurationsResponseBodyScalingConfigurationsResourcePoolOptions struct {
-	// The IDs of private pools. The ID of a private pool is the same as the ID of the elasticity assurance or capacity reservation that is associated with the private pool.
-	PrivatePoolIds  []*string                                                                                           `json:"PrivatePoolIds,omitempty" xml:"PrivatePoolIds,omitempty" type:"Repeated"`
+	// The private pool ID. This is either the elastic provisioning service ID or the capacity reservation service ID.
+	PrivatePoolIds []*string `json:"PrivatePoolIds,omitempty" xml:"PrivatePoolIds,omitempty" type:"Repeated"`
+	// Filters available Target private pools by tag.
 	PrivatePoolTags []*DescribeScalingConfigurationsResponseBodyScalingConfigurationsResourcePoolOptionsPrivatePoolTags `json:"PrivatePoolTags,omitempty" xml:"PrivatePoolTags,omitempty" type:"Repeated"`
-	// The resource pool used for instance creation, which can be the public pool or a private pool associated with any active elasticity assurance or capacity reservation. Valid values:
+	// Resource pools include private pools generated after elastic provisioning or capacity reservation services take effect, along with public pools, for instance startup selection. Valid values:
 	//
-	// 	- PrivatePoolFirst: prioritizes private pools. When this option is set along with ResourcePoolOptions.PrivatePoolIds, the specified private pools are used first. If you leave ResourcePoolOptions.PrivatePoolIds empty or if the specified private pools lack sufficient capacity, the system will automatically use available open private pools instead. If no matching private pools are available, the system defaults to the public pool.
+	// - PrivatePoolFirst: Private pool first. With this strategy, if ResourcePoolOptions.PrivatePoolIds is specified or PrivatePoolTags conditions are met, the corresponding private pool is prioritized. If no private pool is specified or the specified private pool lacks capacity, open-type private pools are automatically matched. If no matching private pool exists, public pool resources are used.
 	//
-	// 	- PrivatePoolOnly: uses only private pools. If you use this value, you must specify ResourcePoolOptions.PrivatePoolIds. If the specified private pools lack sufficient capacity, instance creation will fail.
+	// - PrivatePoolOnly: Private pool only. With this strategy, ResourcePoolOptions.PrivatePoolIds must be specified. If the specified private pool lacks capacity, the instance fails to start.
 	//
-	// 	- None: uses no resource pools.
+	// - PublicPoolFirst: Public pool first. Public pool resources are prioritized for instance creation. If public pool resources are insufficient, private pool resources supplement them. Open-type private pools are automatically matched first. If no matching private pool exists, specified ResourcePoolOptions.PrivatePoolIds or Target-type private pools meeting PrivatePoolTags conditions are used.
+	//
+	// - None: Do not use resource pool strategy.
 	//
 	// example:
 	//
@@ -2352,7 +2413,17 @@ func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsResourceP
 }
 
 type DescribeScalingConfigurationsResponseBodyScalingConfigurationsResourcePoolOptionsPrivatePoolTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key of the private pool.
+	//
+	// example:
+	//
+	// TestKey
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value of the private pool.
+	//
+	// example:
+	//
+	// TestValue
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2387,7 +2458,7 @@ func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsResourceP
 }
 
 type DescribeScalingConfigurationsResponseBodyScalingConfigurationsSchedulerOptions struct {
-	// >  This parameter is in invitational preview and is not available for use.
+	// > This parameter is in invitational preview and is not yet available for general use.
 	//
 	// example:
 	//
@@ -2417,6 +2488,12 @@ func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScheduler
 }
 
 type DescribeScalingConfigurationsResponseBodyScalingConfigurationsSecurityOptions struct {
+	// The confidential computing mode. Valid values:
+	//
+	// - Enclave: The ECS instance uses Enclave to build a confidential computing environment. For more information, see [Use Enclave to build a confidential computing environment](https://help.aliyun.com/document_detail/203433.html).
+	//
+	// - TDX: Builds a TDX confidential computing environment. For more information, see [Build a TDX confidential computing environment](https://help.aliyun.com/document_detail/479090.html).
+	//
 	// example:
 	//
 	// TDX
@@ -2445,13 +2522,13 @@ func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsSecurityO
 }
 
 type DescribeScalingConfigurationsResponseBodyScalingConfigurationsSpotPriceLimits struct {
-	// The instance type of the preemptible instances.
+	// The instance type of the spot instance.
 	//
 	// example:
 	//
 	// ecs.g6.large
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The price limit of the preemptible instances.
+	// The bid price for the spot instance.
 	//
 	// example:
 	//
@@ -2490,17 +2567,17 @@ func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsSpotPrice
 }
 
 type DescribeScalingConfigurationsResponseBodyScalingConfigurationsTags struct {
-	// The tag key of the ECS instance. You can specify up to 20 tags for each ECS instance.
+	// The tag key of the instance. N ranges from 1 to 20.
 	//
-	// The tag key cannot be an empty string. The tag key can be up to 128 characters in length. It cannot start with `acs:` or `aliyun` and cannot contain `http://` or `https://`.
+	// If you specify this value, it cannot be an empty string. It can contain up to 128 characters, must not start with `aliyun` or `acs:`, and must not contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// binary
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value of the ECS instance. You can specify up to 20 tags for each ECS instance.
+	// The tag value of the instance. N ranges from 1 to 20.
 	//
-	// The tag value can be an empty string. The tag value can be up to 128 characters in length. It cannot start with `acs:` and cannot contain `http://` or `https://`.
+	// If you specify this value, it can be an empty string. It can contain up to 128 characters, must not start with `acs:`, and must not contain `http://` or `https://`.
 	//
 	// example:
 	//

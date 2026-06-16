@@ -30,15 +30,17 @@ type iDescribeInstanceRefreshesRequest interface {
 }
 
 type DescribeInstanceRefreshesRequest struct {
-	// The IDs of the instance refresh tasks that you want to query.
+	// The IDs of the instance refresh tasks to query.
 	InstanceRefreshTaskIds []*string `json:"InstanceRefreshTaskIds,omitempty" xml:"InstanceRefreshTaskIds,omitempty" type:"Repeated"`
-	// The maximum number of entries per page. Valid values: 1 to 50. Default value: 10.
+	// The maximum number of entries per page in a paging query. Valid values: 1 to 50.
+	//
+	// Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	// The pagination token. Set this parameter to the NextToken value returned in the previous call. You do not need to set this parameter for the first request.
 	//
 	// example:
 	//
@@ -46,7 +48,7 @@ type DescribeInstanceRefreshesRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the scaling group to which the instance refresh task belongs.
+	// The region ID of the scaling group.
 	//
 	// This parameter is required.
 	//
@@ -58,7 +60,9 @@ type DescribeInstanceRefreshesRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The ID of the scaling group.
 	//
-	// >  When you call this operation, you must specify one of the following parameters: ScalingGroupId and InstanceRefreshTaskIds. You cannot specify both of them. If you specify neither of them, an error is reported.
+	// > You must specify at least one of ScalingGroupId and InstanceRefreshTaskIds. If neither parameter is specified, an error is returned.
+	//
+	// >.
 	//
 	// example:
 	//

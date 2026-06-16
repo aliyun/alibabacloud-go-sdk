@@ -76,7 +76,12 @@ type ApplyEciScalingConfigurationRequest struct {
 	//
 	//             - containerPort: 80
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	Format  *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	// Optional. Set the value to YAML.
+	//
+	// example:
+	//
+	// YAML
+	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
 	// The region ID.
 	//
 	// example:

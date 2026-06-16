@@ -28,6 +28,16 @@ type iModifyNotificationConfigurationRequest interface {
 }
 
 type ModifyNotificationConfigurationRequest struct {
+	// The codec of the notification message content. Valid values:
+	//
+	// - PlainText: No encoding is applied. The content is transmitted as plaintext.
+	//
+	// - Base64: Base64 encoding is applied.
+	//
+	// Default Value: Base64.
+	//
+	// > This parameter can be set only for MNS notification objects.
+	//
 	// example:
 	//
 	// PlainText

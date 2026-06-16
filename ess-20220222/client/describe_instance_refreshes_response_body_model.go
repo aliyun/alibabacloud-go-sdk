@@ -22,7 +22,7 @@ type iDescribeInstanceRefreshesResponseBody interface {
 }
 
 type DescribeInstanceRefreshesResponseBody struct {
-	// The instance refresh tasks.
+	// The list of instance refresh tasks.
 	InstanceRefreshTasks []*DescribeInstanceRefreshesResponseBodyInstanceRefreshTasks `json:"InstanceRefreshTasks,omitempty" xml:"InstanceRefreshTasks,omitempty" type:"Repeated"`
 	// The maximum number of entries per page.
 	//
@@ -30,13 +30,13 @@ type DescribeInstanceRefreshesResponseBody struct {
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	// The pagination token for the next query. If NextToken is empty, no more results exist.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -117,14 +117,17 @@ func (s *DescribeInstanceRefreshesResponseBody) Validate() error {
 }
 
 type DescribeInstanceRefreshesResponseBodyInstanceRefreshTasks struct {
+	// The duration for which the task pauses when a checkpoint is reached. Unit: minutes.
+	//
 	// example:
 	//
 	// 30
-	CheckpointPauseTime *int32                                                                  `json:"CheckpointPauseTime,omitempty" xml:"CheckpointPauseTime,omitempty"`
-	Checkpoints         []*DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksCheckpoints `json:"Checkpoints,omitempty" xml:"Checkpoints,omitempty" type:"Repeated"`
-	// The desired configurations of the instance refresh task.
+	CheckpointPauseTime *int32 `json:"CheckpointPauseTime,omitempty" xml:"CheckpointPauseTime,omitempty"`
+	// The checkpoints for the refresh task. A checkpoint specifies that the task automatically pauses for CheckpointPauseTime minutes when the proportion of new instances reaches the specified value during the instance refresh.
+	Checkpoints []*DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksCheckpoints `json:"Checkpoints,omitempty" xml:"Checkpoints,omitempty" type:"Repeated"`
+	// The desired configuration for the instance refresh.
 	DesiredConfiguration *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfiguration `json:"DesiredConfiguration,omitempty" xml:"DesiredConfiguration,omitempty" type:"Struct"`
-	// The reason why the instance refresh task failed to be executed.
+	// The failure reason when the instance refresh task fails.
 	//
 	// example:
 	//
@@ -136,7 +139,7 @@ type DescribeInstanceRefreshesResponseBodyInstanceRefreshTasks struct {
 	//
 	// 2024-08-22T02:09:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The refreshed number of instances in the scaling group.
+	// The capacity that has been refreshed.
 	//
 	// example:
 	//
@@ -148,13 +151,13 @@ type DescribeInstanceRefreshesResponseBodyInstanceRefreshTasks struct {
 	//
 	// ir-1adfa123****
 	InstanceRefreshTaskId *string `json:"InstanceRefreshTaskId,omitempty" xml:"InstanceRefreshTaskId,omitempty"`
-	// The ratio by which the number of instances in the scaling group can exceed the upper limit for the number of instances in the scaling group during instance refresh.
+	// The maximum percentage by which the number of instances in the scaling group can exceed the scaling group capacity during the instance refresh.
 	//
 	// example:
 	//
 	// 120
 	MaxHealthyPercentage *int32 `json:"MaxHealthyPercentage,omitempty" xml:"MaxHealthyPercentage,omitempty"`
-	// The ratio of the number of instances that provide services to the total number of instances in the scaling group during instance refresh.
+	// The minimum percentage of instances that must remain in service in the scaling group during the instance refresh.
 	//
 	// example:
 	//
@@ -172,15 +175,15 @@ type DescribeInstanceRefreshesResponseBodyInstanceRefreshTasks struct {
 	//
 	// asg-bp16pbfcr8j9*****
 	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
-	// Indicates whether instances that match the desired scaling configuration are skipped.
+	// Indicates whether instances that already match the desired configuration are skipped.
 	//
-	// >  The system determines the match based on the ID of the desired scaling configuration rather than individual configuration items.
+	// > The system determines whether an instance matches based on the ID of the desired scaling configuration, not by comparing individual configuration items.
 	//
 	// Valid values:
 	//
-	// 	- true: Instances that match the desired scaling configuration are skipped. When you initiate an instance refresh task, the system checks the configurations of all instances. The refresh operation is skipped for instances created based on the desired scaling configuration.
+	// - true: Skipped. When the instance refresh task starts, the system checks the configuration of each instance. Instances that were already created with the desired configuration are not refreshed.
 	//
-	// 	- false: Instances that match the desired scaling configuration are not skipped. When an instance refresh task is initiated, all instances in the scaling group at the time of initiation are refreshed.
+	// - false: Not skipped. After the instance refresh task starts, all instances in the scaling group are refreshed.
 	//
 	// example:
 	//
@@ -192,33 +195,36 @@ type DescribeInstanceRefreshesResponseBodyInstanceRefreshTasks struct {
 	//
 	// 2024-08-22T01:09:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the instance refresh task. Valid values:
+	// The current status of the instance refresh task. Valid values:
 	//
-	// 	- Pending: The instance refresh task is created and is waiting to be scheduled.
+	// - Pending: The instance refresh task is created and waiting to be scheduled.
 	//
-	// 	- InProgress: The instance refresh task is being executed.
+	// - InProgress: The instance refresh task is in progress.
 	//
-	// 	- Paused: The instance refresh task is suspended.
+	// - Paused: The instance refresh task is paused.
 	//
-	// 	- Failed: The instance refresh task failed to be executed.
+	// - CheckpointPause: The instance refresh task is paused because the task progress reached a checkpoint (`Checkpoint.Percentage`).
 	//
-	// 	- Successful: The instance refresh task is successful.
+	// - Failed: The instance refresh task failed.
 	//
-	// 	- Cancelling: The instance refresh task is being canceled.
+	// - Successful: The instance refresh task succeeded.
 	//
-	// 	- Cancelled: The instance refresh task is canceled.
+	// - Cancelling: The instance refresh task is being canceled.
 	//
-	// 	- RollbackInProgress: The instance refresh task is being rolled back.
+	// - Cancelled: The instance refresh task is canceled.
 	//
-	// 	- RollbackSuccessful: The instance refresh task is rolled back.
+	// - RollbackInProgress: The instance refresh task is being rolled back.
 	//
-	// 	- RollbackFailed: The instance refresh task fails to be rolled back.
+	// - RollbackSuccessful: The instance refresh task is rolled back.
+	//
+	// - RollbackFailed: The rollback of the instance refresh task failed.
 	//
 	// example:
 	//
 	// InProgress
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The total number of instances whose configurations are refreshed.
+	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Strategy *string `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
+	// The total capacity that needs to be refreshed.
 	//
 	// example:
 	//
@@ -288,6 +294,10 @@ func (s *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasks) GetStartTime
 
 func (s *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasks) GetStatus() *string {
 	return s.Status
+}
+
+func (s *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasks) GetStrategy() *string {
+	return s.Strategy
 }
 
 func (s *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasks) GetTotalNeedUpdateCapacity() *int32 {
@@ -364,6 +374,11 @@ func (s *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasks) SetStatus(v 
 	return s
 }
 
+func (s *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasks) SetStrategy(v string) *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasks {
+	s.Strategy = &v
+	return s
+}
+
 func (s *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasks) SetTotalNeedUpdateCapacity(v int32) *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasks {
 	s.TotalNeedUpdateCapacity = &v
 	return s
@@ -388,6 +403,8 @@ func (s *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasks) Validate() e
 }
 
 type DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksCheckpoints struct {
+	// The percentage of new instances relative to the total instances in the scaling group. The task automatically pauses when this percentage is reached.
+	//
 	// example:
 	//
 	// 60
@@ -416,18 +433,30 @@ func (s *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksCheckpoints) V
 }
 
 type DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfiguration struct {
+	// The list of containers included in the instance.
 	Containers []*DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationContainers `json:"Containers,omitempty" xml:"Containers,omitempty" type:"Repeated"`
-	// The ID of the image file that provides the image resource for Auto Scaling to create instances.
+	// The ID of the image file used for automatic creation of instances.
 	//
 	// example:
 	//
 	// m-uf6g5noisr****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The ID of the launch template from which the scaling group obtains launch configuration information.
+	//
 	// example:
 	//
 	// lt-2ze5x4mp*****
-	LaunchTemplateId        *string                                                                                                 `json:"LaunchTemplateId,omitempty" xml:"LaunchTemplateId,omitempty"`
+	LaunchTemplateId *string `json:"LaunchTemplateId,omitempty" xml:"LaunchTemplateId,omitempty"`
+	// The instance type information that overrides the launch template.
 	LaunchTemplateOverrides []*DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationLaunchTemplateOverrides `json:"LaunchTemplateOverrides,omitempty" xml:"LaunchTemplateOverrides,omitempty" type:"Repeated"`
+	// The version of the launch template. Valid values:
+	//
+	// - A fixed template version number.
+	//
+	// - Default: always uses the default version of the template.
+	//
+	// - Latest: always uses the latest version of the template.
+	//
 	// example:
 	//
 	// Latest
@@ -525,13 +554,20 @@ func (s *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigu
 }
 
 type DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationContainers struct {
-	Args            []*string                                                                                                 `json:"Args,omitempty" xml:"Args,omitempty" type:"Repeated"`
-	Commands        []*string                                                                                                 `json:"Commands,omitempty" xml:"Commands,omitempty" type:"Repeated"`
+	// The arguments for the container startup commands.
+	Args []*string `json:"Args,omitempty" xml:"Args,omitempty" type:"Repeated"`
+	// The container startup commands.
+	Commands []*string `json:"Commands,omitempty" xml:"Commands,omitempty" type:"Repeated"`
+	// The environment variable information.
 	EnvironmentVars []*DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationContainersEnvironmentVars `json:"EnvironmentVars,omitempty" xml:"EnvironmentVars,omitempty" type:"Repeated"`
+	// The container image.
+	//
 	// example:
 	//
 	// registry-vpc.cn-hangzhou.aliyuncs.com/eci_open/nginx:latest
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// The custom container name.
+	//
 	// example:
 	//
 	// name
@@ -605,14 +641,20 @@ func (s *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigu
 }
 
 type DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationContainersEnvironmentVars struct {
+	// >This parameter is not available for use.
+	//
 	// example:
 	//
 	// fieldPath
 	FieldRefFieldPath *string `json:"FieldRefFieldPath,omitempty" xml:"FieldRefFieldPath,omitempty"`
+	// The name of the environment variable.
+	//
 	// example:
 	//
 	// PATH
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the environment variable.
+	//
 	// example:
 	//
 	// /usr/local/bin
@@ -659,6 +701,8 @@ func (s *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigu
 }
 
 type DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationLaunchTemplateOverrides struct {
+	// The instance type that overrides the instance type specified in the launch template.
+	//
 	// example:
 	//
 	// ecs.sn1ne.large

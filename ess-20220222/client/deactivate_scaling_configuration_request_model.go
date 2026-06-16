@@ -23,13 +23,7 @@ type DeactivateScalingConfigurationRequest struct {
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	// The ID of the scaling configuration.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// asc-bp1ahp2ud7qkzt2a****
 	ScalingConfigurationId *string `json:"ScalingConfigurationId,omitempty" xml:"ScalingConfigurationId,omitempty"`
 }
 

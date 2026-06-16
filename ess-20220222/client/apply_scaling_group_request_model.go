@@ -36,41 +36,41 @@ type ApplyScalingGroupRequest struct {
 	//
 	//     app: nginx
 	//
-	// spec:
+	//   spec:
 	//
-	//   replicas: 3
+	//     replicas: 3
 	//
-	//   selector:
+	//     selector:
 	//
-	//     matchLabels:
-	//
-	//       app: nginx
-	//
-	//   template:
-	//
-	//     metadata:
-	//
-	//       labels:
+	//        matchLabels:
 	//
 	//         app: nginx
 	//
-	//       annotations:
+	//     template:
 	//
-	//         k8s.aliyun.com/eip-bandwidth: 10
+	//       metadata:
 	//
-	//         k8s.aliyun.com/eci-with-eip: true
+	//         labels:
 	//
-	//     spec:
+	//           app: nginx
 	//
-	//       containers:
+	//         annotations:
 	//
-	//       - name: nginx
+	//           k8s.aliyun.com/eip-bandwidth: 10
 	//
-	//         image: nginx:1.14.2
+	//           k8s.aliyun.com/eci-with-eip: true
 	//
-	//         ports:
+	//         spec:
 	//
-	//         - containerPort: 80
+	//           containers:
+	//
+	//           - name: nginx
+	//
+	//             image: nginx:1.14.2
+	//
+	//             ports:
+	//
+	//             - containerPort: 80
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	Format  *string `json:"Format,omitempty" xml:"Format,omitempty"`
 	// The region ID.

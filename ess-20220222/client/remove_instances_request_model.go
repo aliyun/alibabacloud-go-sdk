@@ -38,17 +38,17 @@ type iRemoveInstancesRequest interface {
 }
 
 type RemoveInstancesRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25965.html).
+	// A client-generated token to ensure request idempotence. This token must be unique for each request, contain only ASCII characters, and not exceed 64 characters. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25965.html).
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-42665544****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to adjust the expected number of ECS instances in the scaling group. Valid values:
+	// Specifies whether to decrease the desired capacity of the scaling group. Valid values:
 	//
-	// 	- true: After ECS instances are removed from the scaling group, the expected number of ECS instances in the scaling group decreases.
+	// - `true`: Decreases the desired capacity of the scaling group by the number of removed instances.
 	//
-	// 	- false: After ECS instances are removed from the scaling group, the expected number of ECS instances in the scaling group remains unchanged.
+	// - `false`: The desired capacity of the scaling group remains unchanged.
 	//
 	// Default value: true.
 	//
@@ -56,11 +56,11 @@ type RemoveInstancesRequest struct {
 	//
 	// true
 	DecreaseDesiredCapacity *bool `json:"DecreaseDesiredCapacity,omitempty" xml:"DecreaseDesiredCapacity,omitempty"`
-	// Specifies whether to ignore invalid instances when you remove a batch of instances from the scaling group. Valid values:
+	// Specifies whether to ignore invalid instances when you remove multiple instances from a scaling group. Valid values:
 	//
-	// 	- true: ignores invalid instances. If invalid instances exist and valid instances are deleted, the corresponding scaling activity enters the Warning state. You can check the scaling activity details to view the invalid instances that are ignored.
+	// - `true`: Invalid instances are ignored. If valid instances are removed while invalid ones are present, the scaling activity status is set to Warning. The invalid instances are listed in the scaling activity details.
 	//
-	// 	- false: does not ignore invalid instances. If invalid instances exist in the batch of instances that you want to remove from the scaling group, an error is reported.
+	// - `false`: The request is rejected and an error is returned if it contains any invalid instances.
 	//
 	// Default value: false.
 	//
@@ -68,7 +68,7 @@ type RemoveInstancesRequest struct {
 	//
 	// false
 	IgnoreInvalidInstance *bool `json:"IgnoreInvalidInstance,omitempty" xml:"IgnoreInvalidInstance,omitempty"`
-	// The IDs of the ECS instances that you want to remove from the scaling group.
+	// The IDs of the ECS instances to remove.
 	//
 	// This parameter is required.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
@@ -82,25 +82,23 @@ type RemoveInstancesRequest struct {
 	//
 	// cn-qingdao
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The action subsequent to the removal of the Elastic Compute Service (ECS) instances. Valid values:
+	// Specifies the action to take on removed ECS instances. Valid values:
 	//
-	// 	- recycle: The ECS instances enter the Economical Mode.
+	// - recycle: The ECS instances enter the economical mode.
 	//
-	//     **
+	//   > This value takes effect only when the `ScalingPolicy` parameter of the scaling group is set to `recycle`.
 	//
-	//     **Note*	- This setting is applicable only if you set `ScalingPolicy` to `recycle`.
+	// - release: The ECS instances are released.
 	//
-	// 	- release: The ECS instances are released.
+	// The `ScalingPolicy` parameter of the `CreateScalingGroup` operation specifies the reclamation mode of a scaling group. However, the `RemovePolicy` parameter of the `RemoveInstances` operation determines the action taken when an instance is removed. For example:
 	//
-	// ScalingPolicy of the CreateScalingGroup operation specifies the reclaim mode of the scaling group while RemovePolicy of the RemoveInstances operation specifies the subsequent action when an ECS instance is removed from the scaling group. Examples:
+	// - If `ScalingPolicy` is `recycle` and `RemovePolicy` is `recycle`, the ECS instances enter the economical mode.
 	//
-	// 	- If you set ScalingPolicy and RemovePolicy to recycle, the ECS instances enter the Economical Mode when they are removed.
+	// - If `ScalingPolicy` is `recycle` and `RemovePolicy` is `release`, the ECS instances are released.
 	//
-	// 	- If you set ScalingPolicy to recycle and RemovePolicy to release, the ECS instances are released when they are removed.
+	// - If `ScalingPolicy` is `release` and `RemovePolicy` is `recycle`, the ECS instances are released.
 	//
-	// 	- If you set ScalingPolicy to release and RemovePolicy to recycle, the ECS instances are released when they are removed.
-	//
-	// 	- If you set ScalingPolicy and RemovePolicy to release, the ECS instances are released when they are removed.
+	// - If `ScalingPolicy` is `release` and `RemovePolicy` is `release`, the ECS instances are released.
 	//
 	// Default value: release.
 	//
@@ -118,17 +116,21 @@ type RemoveInstancesRequest struct {
 	//
 	// asg-bp18p2yfxow2dloq****
 	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
-	// The period of time required by the ECS instance to enter the Stopped state. Unit: seconds. Valid values: 30 to 240.
+	// The timeout period, in seconds, for an ECS instance to stop during a scale-in. Valid values: 30 to 240.
+	//
+	// > - By default, this parameter inherits its value from the scaling group, but you can override it when calling the `RemoveInstances` operation.
 	//
 	// >
 	//
-	// 	- By default, this parameter inherits the value of StopInstanceTimeout specified in the CreateScalingGroup or ModifyScalingGroup operation. You can also specify a different value for this parameter in the RemoveInstances operation.
+	// > - This parameter takes effect only during scale-in events where `RemovePolicy` is set to `release`.
 	//
-	// 	- This parameter takes effect only if you set RemovePolicy to release.
+	// >
 	//
-	// 	- If you specify this parameter, the system waits for the ECS instance to enter the Stopped state only for up to the specified period of time before continuing with the scale-in operation, regardless of the status of the ECS instance.
+	// > - If this parameter is set, the system waits for the specified duration for the instance to stop. The scale-in process continues after the timeout expires, regardless of the instance\\"s state.
 	//
-	// 	- If you do not specify this parameter, the system continues with the scale-in operation until the ECS instance enters the Stopped state. If the ECS instance is not successfully stopped, the scale-in process is rolled back and considered failed.
+	// >
+	//
+	// > - If this parameter is not set, the system waits until the instance stops before continuing the scale-in process. If the instance fails to stop, the scale-in operation is rolled back and fails.
 	//
 	// example:
 	//
@@ -271,17 +273,17 @@ func (s *RemoveInstancesRequest) Validate() error {
 }
 
 type RemoveInstancesRequestLifecycleHookContext struct {
-	// Specifies whether to disable the lifecycle hook. Valid values:
+	// Specifies whether to disable all lifecycle hooks for the scaling activity. Valid values:
 	//
-	// 	- true
+	// - `true`: Disables all lifecycle hooks.
 	//
-	// 	- false
+	// - `false`: Does not disable lifecycle hooks.
 	//
 	// example:
 	//
 	// false
 	DisableLifecycleHook *bool `json:"DisableLifecycleHook,omitempty" xml:"DisableLifecycleHook,omitempty"`
-	// The IDs of the lifecycle hooks that you want to disable.
+	// A list of lifecycle hook IDs to ignore for the scaling activity.
 	IgnoredLifecycleHookIds []*string `json:"IgnoredLifecycleHookIds,omitempty" xml:"IgnoredLifecycleHookIds,omitempty" type:"Repeated"`
 	LifecycleHookResult     *string   `json:"LifecycleHookResult,omitempty" xml:"LifecycleHookResult,omitempty"`
 }

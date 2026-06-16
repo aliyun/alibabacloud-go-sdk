@@ -3613,7 +3613,7 @@ type ModifyEciScalingConfigurationRequestVolumesNFSVolume struct {
 	//
 	// example:
 	//
-	// 3f9cd4a596-naw76.cn-shanghai.nas.aliyuncs.com
+	// 3f9cd4a596-n****.cn-shanghai.nas.aliyuncs.com
 	Server *string `json:"Server,omitempty" xml:"Server,omitempty"`
 }
 

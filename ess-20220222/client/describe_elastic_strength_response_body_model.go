@@ -22,19 +22,19 @@ type iDescribeElasticStrengthResponseBody interface {
 }
 
 type DescribeElasticStrengthResponseBody struct {
-	// The scaling strength level of the scaling group. Valid values:
+	// The elastic strength of the current scaling group. Valid values:
 	//
-	// 	- Strong
+	// - Strong: high elastic strength.
 	//
-	// 	- Medium
+	// - Medium: medium elastic strength.
 	//
-	// 	- Weak
+	// - Weak: weak elastic strength.
 	//
 	// example:
 	//
 	// Strong
 	ElasticStrength *string `json:"ElasticStrength,omitempty" xml:"ElasticStrength,omitempty"`
-	// The scaling strength models.
+	// An array of elastic strength details, returned when the API call targets multiple scaling groups.
 	ElasticStrengthModels []*DescribeElasticStrengthResponseBodyElasticStrengthModels `json:"ElasticStrengthModels,omitempty" xml:"ElasticStrengthModels,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -42,13 +42,9 @@ type DescribeElasticStrengthResponseBody struct {
 	//
 	// 73469C7-AA6F-4DC5-B3DB-A3DC0DE3****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The resource pools.
+	// An array of resource pools. This parameter is returned when the API call targets a single scaling group.
 	ResourcePools []*DescribeElasticStrengthResponseBodyResourcePools `json:"ResourcePools,omitempty" xml:"ResourcePools,omitempty" type:"Repeated"`
-	// The scaling strength score of the scaling group. Each combination of instance type + zone is scored from 0 to 1 based on its availability, with 0 being the weakest scaling strength and 1 being the strongest. The scaling strength score of the scaling group is measured by the combined scores of all the combinations of instance type + zone.
-	//
-	// **
-	//
-	// **Warning*	- This parameter is deprecated.
+	// The total elastic strength of the scaling group. The strength is the sum of scores from all configured instance type and zone combinations. Each combination is scored from 0 (low strength) to 1 (high strength) based on resource availability.	Warning:  This parameter is deprecated.
 	//
 	// example:
 	//
@@ -132,31 +128,27 @@ func (s *DescribeElasticStrengthResponseBody) Validate() error {
 }
 
 type DescribeElasticStrengthResponseBodyElasticStrengthModels struct {
-	// The scaling strength level of the scaling group. Valid values:
+	// The elastic strength of the current scaling group. Valid values:
 	//
-	// 	- Strong
+	// - Strong: high elastic strength.
 	//
-	// 	- Medium
+	// - Medium: medium elastic strength.
 	//
-	// 	- Weak
+	// - Weak: weak elastic strength.
 	//
 	// example:
 	//
 	// Strong
 	ElasticStrength *string `json:"ElasticStrength,omitempty" xml:"ElasticStrength,omitempty"`
-	// The resource pools.
+	// Details of the resource pools within the scaling group.
 	ResourcePools []*DescribeElasticStrengthResponseBodyElasticStrengthModelsResourcePools `json:"ResourcePools,omitempty" xml:"ResourcePools,omitempty" type:"Repeated"`
-	// The ID of the scaling group.
+	// The scaling group ID.
 	//
 	// example:
 	//
 	// asg-wz98mnj7nblv9gc****
 	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
-	// The scaling strength score of the scaling group. Each combination of instance type + zone is scored from 0 to 1 based on its availability, with 0 being the weakest scaling strength and 1 being the strongest. The scaling strength score of the scaling group is measured by the combined scores of all the combinations of instance type + zone.
-	//
-	// **
-	//
-	// **Warning*	- This parameter is deprecated.
+	// The total elastic strength of the scaling group. The strength is the sum of scores from all configured instance type and zone combinations. Each combination is scored from 0 (low strength) to 1 (high strength) based on resource availability.	Warning:  This parameter is deprecated.
 	//
 	// example:
 	//
@@ -222,12 +214,23 @@ func (s *DescribeElasticStrengthResponseBodyElasticStrengthModels) Validate() er
 }
 
 type DescribeElasticStrengthResponseBodyElasticStrengthModelsResourcePools struct {
-	// The error code returned when the scaling strength is the weakest.
+	// The error code returned when the elastic strength is 0.
 	//
 	// example:
 	//
 	// InstanceTypesOrDiskTypesNotSupported
-	Code            *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The elastic strength of the resource pool, which is based on its inventory health and current stock. Valid values:
+	//
+	// - Strong: high elastic strength.
+	//
+	// - Medium: medium elastic strength.
+	//
+	// - Weak: weak elastic strength.
+	//
+	// example:
+	//
+	// Strong
 	ElasticStrength *string `json:"ElasticStrength,omitempty" xml:"ElasticStrength,omitempty"`
 	// The instance type of the resource pool.
 	//
@@ -237,33 +240,29 @@ type DescribeElasticStrengthResponseBodyElasticStrengthModelsResourcePools struc
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	// The inventory health.
 	InventoryHealth *DescribeElasticStrengthResponseBodyElasticStrengthModelsResourcePoolsInventoryHealth `json:"InventoryHealth,omitempty" xml:"InventoryHealth,omitempty" type:"Struct"`
-	// The error message returned when the scaling strength is the weakest.
+	// The error message returned when the elastic strength is 0.
 	//
 	// example:
 	//
 	// The instanceTypes or diskTypes are not supported.
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	// Indicates whether the resource pool is available. Valid values:
+	// The availability of the resource pool. Valid values:
 	//
-	// 	- Available
+	// - Available: The resource pool is available.
 	//
-	// 	- Unavailable (If a constraint is not provided, the instance type is not deployed, or the instance type is out of stock, the resource pool becomes unavailable.)
+	// - Unavailable: The resource pool is unavailable. This can occur if the instance type is not deployed in the zone, has insufficient inventory, or does not meet other constraints.
 	//
 	// example:
 	//
 	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The scaling strength of the resource pool.
-	//
-	// **
-	//
-	// **Warning*	- This parameter is deprecated.
+	// The elastic strength of the resource pool.	Warning:  This parameter is deprecated.
 	//
 	// example:
 	//
 	// 0.6
 	Strength *float64 `json:"Strength,omitempty" xml:"Strength,omitempty"`
-	// The IDs of the vSwitches in the zones of the resource pool.
+	// The VSwitches in the zone of the resource pool.
 	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
 	// The zone ID of the resource pool.
 	//
@@ -380,21 +379,21 @@ type DescribeElasticStrengthResponseBodyElasticStrengthModelsResourcePoolsInvent
 	//
 	// 3
 	AdequacyScore *int32 `json:"AdequacyScore,omitempty" xml:"AdequacyScore,omitempty"`
-	// The score of the inventory health.
+	// The health score.
 	//
-	// 	- A score between 5 and 6 indicates a sufficient inventory.
+	// - A score from 5 to 6 indicates high confidence in supply.
 	//
-	// 	- A score between 1 and 4 indicates that there is no guarantee of a sufficient inventory. Select a reservation as necessary.
+	// - A score from 1 to 4 indicates that supply is not guaranteed. Consider making on-demand reservations.
 	//
-	// 	- A score between -3 and 0 indicates that the inventory is sufficient, and an alert is triggered. Select another instance type.
+	// - A score from -3 to 0 indicates a supply health alert. Consider using a different instance type.
 	//
-	// Calculation formula: `HealthScore` = `AdequacyScore` + `SupplyScore` - `HotScore`.
+	// The health score is calculated using the formula: `HealthScore` = `AdequacyScore` + `SupplyScore` - `HotScore`.
 	//
 	// example:
 	//
 	// 3
 	HealthScore *int32 `json:"HealthScore,omitempty" xml:"HealthScore,omitempty"`
-	// The popularity score.
+	// The hot score.
 	//
 	// Valid values: 0 to 3.
 	//
@@ -402,7 +401,7 @@ type DescribeElasticStrengthResponseBodyElasticStrengthModelsResourcePoolsInvent
 	//
 	// 0
 	HotScore *int32 `json:"HotScore,omitempty" xml:"HotScore,omitempty"`
-	// The score of the replenishment capability.
+	// The supply score.
 	//
 	// Valid values: 0 to 3.
 	//
@@ -461,12 +460,23 @@ func (s *DescribeElasticStrengthResponseBodyElasticStrengthModelsResourcePoolsIn
 }
 
 type DescribeElasticStrengthResponseBodyResourcePools struct {
-	// The error code returned when the scaling strength is the weakest.
+	// The error code returned when the elastic strength is 0.
 	//
 	// example:
 	//
 	// IMG_NOT_SUPPORTED
-	Code            *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The elastic strength of the resource pool, which is based on its inventory health and current stock. Valid values:
+	//
+	// - Strong: high elastic strength.
+	//
+	// - Medium: medium elastic strength.
+	//
+	// - Weak: weak elastic strength.
+	//
+	// example:
+	//
+	// Medium
 	ElasticStrength *string `json:"ElasticStrength,omitempty" xml:"ElasticStrength,omitempty"`
 	// The instance type of the resource pool.
 	//
@@ -476,29 +486,29 @@ type DescribeElasticStrengthResponseBodyResourcePools struct {
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	// The inventory health.
 	InventoryHealth *DescribeElasticStrengthResponseBodyResourcePoolsInventoryHealth `json:"InventoryHealth,omitempty" xml:"InventoryHealth,omitempty" type:"Struct"`
-	// The error message returned when the scaling strength is the weakest.
+	// The error message returned when the elastic strength is 0.
 	//
 	// example:
 	//
 	// The instanceType does not support the image in the configuration.
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	// Indicates whether the resource pool is available. Valid values:
+	// The availability of the resource pool. Valid values:
 	//
-	// 	- Available
+	// - Available: The resource pool is available.
 	//
-	// 	- Unavailable (If a constraint is not provided, the instance type is not deployed, or the instance type is out of stock, the resource pool becomes unavailable.)
+	// - Unavailable: The resource pool is unavailable. This can occur if the instance type is not deployed in the zone, has insufficient inventory, or does not meet other constraints.
 	//
 	// example:
 	//
 	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The scaling strength of the resource pool.
+	// The elastic strength of the resource pool.
 	//
 	// example:
 	//
 	// 0.6
 	Strength *float64 `json:"Strength,omitempty" xml:"Strength,omitempty"`
-	// The IDs of the vSwitches in the zones of the resource pool.
+	// The VSwitches in the zone of the resource pool.
 	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
 	// The zone ID of the resource pool.
 	//
@@ -615,21 +625,21 @@ type DescribeElasticStrengthResponseBodyResourcePoolsInventoryHealth struct {
 	//
 	// 3
 	AdequacyScore *int32 `json:"AdequacyScore,omitempty" xml:"AdequacyScore,omitempty"`
-	// The inventory health score.
+	// The health score.
 	//
-	// 	- A score between 5 and 6 indicates a sufficient inventory.
+	// - A score from 5 to 6 indicates high confidence in supply.
 	//
-	// 	- A score between 1 and 4 indicates that there is no guarantee of a sufficient inventory. Select a reservation as necessary.
+	// - A score from 1 to 4 indicates that supply is not guaranteed. Consider making on-demand reservations.
 	//
-	// 	- A score between -3 and 0 indicates that the inventory is sufficient, and an alert is triggered. Select another instance type.
+	// - A score from -3 to 0 indicates a supply health alert. Consider using a different instance type.
 	//
-	// Calculation formula: `HealthScore` = `AdequacyScore` + `SupplyScore` - `HotScore`.
+	// The health score is calculated using the formula: `HealthScore` = `AdequacyScore` + `SupplyScore` - `HotScore`.
 	//
 	// example:
 	//
 	// 3
 	HealthScore *int32 `json:"HealthScore,omitempty" xml:"HealthScore,omitempty"`
-	// The popularity score.
+	// The hot score.
 	//
 	// Valid values: 0 to 3.
 	//
@@ -637,7 +647,7 @@ type DescribeElasticStrengthResponseBodyResourcePoolsInventoryHealth struct {
 	//
 	// 3
 	HotScore *int32 `json:"HotScore,omitempty" xml:"HotScore,omitempty"`
-	// The replenishment capability score.
+	// The supply score.
 	//
 	// Valid values: 0 to 3.
 	//
