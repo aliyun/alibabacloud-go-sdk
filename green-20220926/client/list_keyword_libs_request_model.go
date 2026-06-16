@@ -11,6 +11,8 @@ type iListKeywordLibsRequest interface {
 	GoString() string
 	SetRegionId(v string) *ListKeywordLibsRequest
 	GetRegionId() *string
+	SetTenantCode(v string) *ListKeywordLibsRequest
+	GetTenantCode() *string
 }
 
 type ListKeywordLibsRequest struct {
@@ -19,7 +21,8 @@ type ListKeywordLibsRequest struct {
 	// example:
 	//
 	// cn-shanghai
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	TenantCode *string `json:"TenantCode,omitempty" xml:"TenantCode,omitempty"`
 }
 
 func (s ListKeywordLibsRequest) String() string {
@@ -34,8 +37,17 @@ func (s *ListKeywordLibsRequest) GetRegionId() *string {
 	return s.RegionId
 }
 
+func (s *ListKeywordLibsRequest) GetTenantCode() *string {
+	return s.TenantCode
+}
+
 func (s *ListKeywordLibsRequest) SetRegionId(v string) *ListKeywordLibsRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListKeywordLibsRequest) SetTenantCode(v string) *ListKeywordLibsRequest {
+	s.TenantCode = &v
 	return s
 }
 

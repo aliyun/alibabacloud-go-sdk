@@ -13,6 +13,8 @@ type iUpdateImageLibFreeInspectionShrinkRequest interface {
 	GetConfigShrink() *string
 	SetRegionId(v string) *UpdateImageLibFreeInspectionShrinkRequest
 	GetRegionId() *string
+	SetServiceCode(v string) *UpdateImageLibFreeInspectionShrinkRequest
+	GetServiceCode() *string
 }
 
 type UpdateImageLibFreeInspectionShrinkRequest struct {
@@ -23,7 +25,8 @@ type UpdateImageLibFreeInspectionShrinkRequest struct {
 	// example:
 	//
 	// cn-shanghai
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
 }
 
 func (s UpdateImageLibFreeInspectionShrinkRequest) String() string {
@@ -42,6 +45,10 @@ func (s *UpdateImageLibFreeInspectionShrinkRequest) GetRegionId() *string {
 	return s.RegionId
 }
 
+func (s *UpdateImageLibFreeInspectionShrinkRequest) GetServiceCode() *string {
+	return s.ServiceCode
+}
+
 func (s *UpdateImageLibFreeInspectionShrinkRequest) SetConfigShrink(v string) *UpdateImageLibFreeInspectionShrinkRequest {
 	s.ConfigShrink = &v
 	return s
@@ -49,6 +56,11 @@ func (s *UpdateImageLibFreeInspectionShrinkRequest) SetConfigShrink(v string) *U
 
 func (s *UpdateImageLibFreeInspectionShrinkRequest) SetRegionId(v string) *UpdateImageLibFreeInspectionShrinkRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateImageLibFreeInspectionShrinkRequest) SetServiceCode(v string) *UpdateImageLibFreeInspectionShrinkRequest {
+	s.ServiceCode = &v
 	return s
 }
 

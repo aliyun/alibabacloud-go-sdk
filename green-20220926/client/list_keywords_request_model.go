@@ -19,6 +19,8 @@ type iListKeywordsRequest interface {
 	GetRegionId() *string
 	SetSort(v map[string]*string) *ListKeywordsRequest
 	GetSort() map[string]*string
+	SetTenantCode(v string) *ListKeywordsRequest
+	GetTenantCode() *string
 	SetWord(v string) *ListKeywordsRequest
 	GetWord() *string
 }
@@ -49,7 +51,8 @@ type ListKeywordsRequest struct {
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// Sort field.
-	Sort map[string]*string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	Sort       map[string]*string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	TenantCode *string            `json:"TenantCode,omitempty" xml:"TenantCode,omitempty"`
 	// Keyword.
 	//
 	// example:
@@ -86,6 +89,10 @@ func (s *ListKeywordsRequest) GetSort() map[string]*string {
 	return s.Sort
 }
 
+func (s *ListKeywordsRequest) GetTenantCode() *string {
+	return s.TenantCode
+}
+
 func (s *ListKeywordsRequest) GetWord() *string {
 	return s.Word
 }
@@ -112,6 +119,11 @@ func (s *ListKeywordsRequest) SetRegionId(v string) *ListKeywordsRequest {
 
 func (s *ListKeywordsRequest) SetSort(v map[string]*string) *ListKeywordsRequest {
 	s.Sort = v
+	return s
+}
+
+func (s *ListKeywordsRequest) SetTenantCode(v string) *ListKeywordsRequest {
+	s.TenantCode = &v
 	return s
 }
 

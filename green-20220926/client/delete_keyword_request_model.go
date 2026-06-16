@@ -17,6 +17,8 @@ type iDeleteKeywordRequest interface {
 	GetLibId() *string
 	SetRegionId(v string) *DeleteKeywordRequest
 	GetRegionId() *string
+	SetTenantCode(v string) *DeleteKeywordRequest
+	GetTenantCode() *string
 }
 
 type DeleteKeywordRequest struct {
@@ -43,7 +45,8 @@ type DeleteKeywordRequest struct {
 	// example:
 	//
 	// cn-shanghai
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	TenantCode *string `json:"TenantCode,omitempty" xml:"TenantCode,omitempty"`
 }
 
 func (s DeleteKeywordRequest) String() string {
@@ -70,6 +73,10 @@ func (s *DeleteKeywordRequest) GetRegionId() *string {
 	return s.RegionId
 }
 
+func (s *DeleteKeywordRequest) GetTenantCode() *string {
+	return s.TenantCode
+}
+
 func (s *DeleteKeywordRequest) SetKeywordIdList(v string) *DeleteKeywordRequest {
 	s.KeywordIdList = &v
 	return s
@@ -87,6 +94,11 @@ func (s *DeleteKeywordRequest) SetLibId(v string) *DeleteKeywordRequest {
 
 func (s *DeleteKeywordRequest) SetRegionId(v string) *DeleteKeywordRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteKeywordRequest) SetTenantCode(v string) *DeleteKeywordRequest {
+	s.TenantCode = &v
 	return s
 }
 

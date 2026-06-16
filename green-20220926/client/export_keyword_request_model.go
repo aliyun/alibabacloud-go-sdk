@@ -13,6 +13,8 @@ type iExportKeywordRequest interface {
   GetLibId() *string 
   SetRegionId(v string) *ExportKeywordRequest
   GetRegionId() *string 
+  SetTenantCode(v string) *ExportKeywordRequest
+  GetTenantCode() *string 
 }
 
 type ExportKeywordRequest struct {
@@ -28,6 +30,7 @@ type ExportKeywordRequest struct {
   // 
   // cn-shanghai
   RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+  TenantCode *string `json:"TenantCode,omitempty" xml:"TenantCode,omitempty"`
 }
 
 func (s ExportKeywordRequest) String() string {
@@ -46,6 +49,10 @@ func (s *ExportKeywordRequest) GetRegionId() *string  {
   return s.RegionId
 }
 
+func (s *ExportKeywordRequest) GetTenantCode() *string  {
+  return s.TenantCode
+}
+
 func (s *ExportKeywordRequest) SetLibId(v string) *ExportKeywordRequest {
   s.LibId = &v
   return s
@@ -53,6 +60,11 @@ func (s *ExportKeywordRequest) SetLibId(v string) *ExportKeywordRequest {
 
 func (s *ExportKeywordRequest) SetRegionId(v string) *ExportKeywordRequest {
   s.RegionId = &v
+  return s
+}
+
+func (s *ExportKeywordRequest) SetTenantCode(v string) *ExportKeywordRequest {
+  s.TenantCode = &v
   return s
 }
 

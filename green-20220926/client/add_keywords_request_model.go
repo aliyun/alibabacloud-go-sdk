@@ -17,6 +17,8 @@ type iAddKeywordsRequest interface {
 	GetLibId() *string
 	SetRegionId(v string) *AddKeywordsRequest
 	GetRegionId() *string
+	SetTenantCode(v string) *AddKeywordsRequest
+	GetTenantCode() *string
 }
 
 type AddKeywordsRequest struct {
@@ -43,7 +45,8 @@ type AddKeywordsRequest struct {
 	// example:
 	//
 	// cn-shanghai
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	TenantCode *string `json:"TenantCode,omitempty" xml:"TenantCode,omitempty"`
 }
 
 func (s AddKeywordsRequest) String() string {
@@ -70,6 +73,10 @@ func (s *AddKeywordsRequest) GetRegionId() *string {
 	return s.RegionId
 }
 
+func (s *AddKeywordsRequest) GetTenantCode() *string {
+	return s.TenantCode
+}
+
 func (s *AddKeywordsRequest) SetKeywords(v string) *AddKeywordsRequest {
 	s.Keywords = &v
 	return s
@@ -87,6 +94,11 @@ func (s *AddKeywordsRequest) SetLibId(v string) *AddKeywordsRequest {
 
 func (s *AddKeywordsRequest) SetRegionId(v string) *AddKeywordsRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *AddKeywordsRequest) SetTenantCode(v string) *AddKeywordsRequest {
+	s.TenantCode = &v
 	return s
 }
 

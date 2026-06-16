@@ -15,6 +15,8 @@ type iUpdateKeywordLibRequest interface {
 	GetLibName() *string
 	SetRegionId(v string) *UpdateKeywordLibRequest
 	GetRegionId() *string
+	SetTenantCode(v string) *UpdateKeywordLibRequest
+	GetTenantCode() *string
 }
 
 type UpdateKeywordLibRequest struct {
@@ -35,7 +37,8 @@ type UpdateKeywordLibRequest struct {
 	// example:
 	//
 	// cn-shanghai
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	TenantCode *string `json:"TenantCode,omitempty" xml:"TenantCode,omitempty"`
 }
 
 func (s UpdateKeywordLibRequest) String() string {
@@ -58,6 +61,10 @@ func (s *UpdateKeywordLibRequest) GetRegionId() *string {
 	return s.RegionId
 }
 
+func (s *UpdateKeywordLibRequest) GetTenantCode() *string {
+	return s.TenantCode
+}
+
 func (s *UpdateKeywordLibRequest) SetLibId(v string) *UpdateKeywordLibRequest {
 	s.LibId = &v
 	return s
@@ -70,6 +77,11 @@ func (s *UpdateKeywordLibRequest) SetLibName(v string) *UpdateKeywordLibRequest 
 
 func (s *UpdateKeywordLibRequest) SetRegionId(v string) *UpdateKeywordLibRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateKeywordLibRequest) SetTenantCode(v string) *UpdateKeywordLibRequest {
+	s.TenantCode = &v
 	return s
 }
 

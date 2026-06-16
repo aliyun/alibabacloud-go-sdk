@@ -15,6 +15,8 @@ type iListImageLibResponseBody interface {
 	GetHttpStatusCode() *int32
 	SetLibList(v []*ListImageLibResponseBodyLibList) *ListImageLibResponseBody
 	GetLibList() []*ListImageLibResponseBodyLibList
+	SetMaxLibCount(v int32) *ListImageLibResponseBody
+	GetMaxLibCount() *int32
 	SetMsg(v string) *ListImageLibResponseBody
 	GetMsg() *string
 	SetRequestId(v string) *ListImageLibResponseBody
@@ -37,7 +39,8 @@ type ListImageLibResponseBody struct {
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	// List of image library information.
-	LibList []*ListImageLibResponseBodyLibList `json:"LibList,omitempty" xml:"LibList,omitempty" type:"Repeated"`
+	LibList     []*ListImageLibResponseBodyLibList `json:"LibList,omitempty" xml:"LibList,omitempty" type:"Repeated"`
+	MaxLibCount *int32                             `json:"MaxLibCount,omitempty" xml:"MaxLibCount,omitempty"`
 	// Further description of the error code.
 	//
 	// example:
@@ -78,6 +81,10 @@ func (s *ListImageLibResponseBody) GetLibList() []*ListImageLibResponseBodyLibLi
 	return s.LibList
 }
 
+func (s *ListImageLibResponseBody) GetMaxLibCount() *int32 {
+	return s.MaxLibCount
+}
+
 func (s *ListImageLibResponseBody) GetMsg() *string {
 	return s.Msg
 }
@@ -102,6 +109,11 @@ func (s *ListImageLibResponseBody) SetHttpStatusCode(v int32) *ListImageLibRespo
 
 func (s *ListImageLibResponseBody) SetLibList(v []*ListImageLibResponseBodyLibList) *ListImageLibResponseBody {
 	s.LibList = v
+	return s
+}
+
+func (s *ListImageLibResponseBody) SetMaxLibCount(v int32) *ListImageLibResponseBody {
+	s.MaxLibCount = &v
 	return s
 }
 

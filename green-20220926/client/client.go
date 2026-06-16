@@ -311,8 +311,16 @@ func (client *Client) AddKeywordLibWithOptions(request *AddKeywordLibRequest, ru
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Properties) {
+		query["Properties"] = request.Properties
+	}
+
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TenantCode) {
+		query["TenantCode"] = request.TenantCode
 	}
 
 	body := map[string]interface{}{}
@@ -391,6 +399,10 @@ func (client *Client) AddKeywordsWithOptions(request *AddKeywordsRequest, runtim
 		query["RegionId"] = request.RegionId
 	}
 
+	if !dara.IsNil(request.TenantCode) {
+		query["TenantCode"] = request.TenantCode
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Keywords) {
 		body["Keywords"] = request.Keywords
@@ -463,8 +475,16 @@ func (client *Client) AddKeywordsToLibWithOptions(request *AddKeywordsToLibReque
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Properties) {
+		query["Properties"] = request.Properties
+	}
+
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TenantCode) {
+		query["TenantCode"] = request.TenantCode
 	}
 
 	body := map[string]interface{}{}
@@ -1647,6 +1667,10 @@ func (client *Client) DeleteKeywordWithOptions(request *DeleteKeywordRequest, ru
 		query["RegionId"] = request.RegionId
 	}
 
+	if !dara.IsNil(request.TenantCode) {
+		query["TenantCode"] = request.TenantCode
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.KeywordIdList) {
 		body["KeywordIdList"] = request.KeywordIdList
@@ -1721,6 +1745,10 @@ func (client *Client) DeleteKeywordLibWithOptions(request *DeleteKeywordLibReque
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TenantCode) {
+		query["TenantCode"] = request.TenantCode
 	}
 
 	body := map[string]interface{}{}
@@ -2179,6 +2207,10 @@ func (client *Client) ExportKeywordWithOptions(request *ExportKeywordRequest, ru
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TenantCode) {
+		query["TenantCode"] = request.TenantCode
 	}
 
 	body := map[string]interface{}{}
@@ -3453,6 +3485,10 @@ func (client *Client) GetKeywordLibWithOptions(request *GetKeywordLibRequest, ru
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TenantCode) {
+		query["TenantCode"] = request.TenantCode
 	}
 
 	body := map[string]interface{}{}
@@ -4975,8 +5011,14 @@ func (client *Client) ListImageLibWithOptions(request *ListImageLibRequest, runt
 		query["RegionId"] = request.RegionId
 	}
 
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ServiceCode) {
+		body["ServiceCode"] = request.ServiceCode
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("ListImageLib"),
@@ -5135,6 +5177,10 @@ func (client *Client) ListKeywordLibsWithOptions(request *ListKeywordLibsRequest
 		query["RegionId"] = request.RegionId
 	}
 
+	if !dara.IsNil(request.TenantCode) {
+		query["TenantCode"] = request.TenantCode
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -5201,6 +5247,10 @@ func (client *Client) ListKeywordsWithOptions(tmpReq *ListKeywordsRequest, runti
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TenantCode) {
+		query["TenantCode"] = request.TenantCode
 	}
 
 	body := map[string]interface{}{}
@@ -6531,6 +6581,10 @@ func (client *Client) UpdateImageLibFreeInspectionWithOptions(tmpReq *UpdateImag
 		body["Config"] = request.ConfigShrink
 	}
 
+	if !dara.IsNil(request.ServiceCode) {
+		body["ServiceCode"] = request.ServiceCode
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 		Body:  openapiutil.ParseToMap(body),
@@ -6592,6 +6646,10 @@ func (client *Client) UpdateKeywordLibWithOptions(request *UpdateKeywordLibReque
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TenantCode) {
+		query["TenantCode"] = request.TenantCode
 	}
 
 	body := map[string]interface{}{}

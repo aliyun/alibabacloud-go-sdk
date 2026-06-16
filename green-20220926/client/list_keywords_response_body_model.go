@@ -222,7 +222,8 @@ type ListKeywordsResponseBodyDataItems struct {
 	// example:
 	//
 	// 4205334
-	KeywordMd5Id *int64 `json:"KeywordMd5Id,omitempty" xml:"KeywordMd5Id,omitempty"`
+	KeywordMd5Id *int64                                       `json:"KeywordMd5Id,omitempty" xml:"KeywordMd5Id,omitempty"`
+	Properties   *ListKeywordsResponseBodyDataItemsProperties `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Struct"`
 	// Keyword.
 	//
 	// example:
@@ -259,6 +260,10 @@ func (s *ListKeywordsResponseBodyDataItems) GetKeywordMd5Id() *int64 {
 	return s.KeywordMd5Id
 }
 
+func (s *ListKeywordsResponseBodyDataItems) GetProperties() *ListKeywordsResponseBodyDataItemsProperties {
+	return s.Properties
+}
+
 func (s *ListKeywordsResponseBodyDataItems) GetWord() *string {
 	return s.Word
 }
@@ -288,11 +293,46 @@ func (s *ListKeywordsResponseBodyDataItems) SetKeywordMd5Id(v int64) *ListKeywor
 	return s
 }
 
+func (s *ListKeywordsResponseBodyDataItems) SetProperties(v *ListKeywordsResponseBodyDataItemsProperties) *ListKeywordsResponseBodyDataItems {
+	s.Properties = v
+	return s
+}
+
 func (s *ListKeywordsResponseBodyDataItems) SetWord(v string) *ListKeywordsResponseBodyDataItems {
 	s.Word = &v
 	return s
 }
 
 func (s *ListKeywordsResponseBodyDataItems) Validate() error {
+	if s.Properties != nil {
+		if err := s.Properties.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type ListKeywordsResponseBodyDataItemsProperties struct {
+	Attribute *string `json:"Attribute,omitempty" xml:"Attribute,omitempty"`
+}
+
+func (s ListKeywordsResponseBodyDataItemsProperties) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListKeywordsResponseBodyDataItemsProperties) GoString() string {
+	return s.String()
+}
+
+func (s *ListKeywordsResponseBodyDataItemsProperties) GetAttribute() *string {
+	return s.Attribute
+}
+
+func (s *ListKeywordsResponseBodyDataItemsProperties) SetAttribute(v string) *ListKeywordsResponseBodyDataItemsProperties {
+	s.Attribute = &v
+	return s
+}
+
+func (s *ListKeywordsResponseBodyDataItemsProperties) Validate() error {
 	return dara.Validate(s)
 }

@@ -19,6 +19,8 @@ type iListKeywordsShrinkRequest interface {
 	GetRegionId() *string
 	SetSortShrink(v string) *ListKeywordsShrinkRequest
 	GetSortShrink() *string
+	SetTenantCode(v string) *ListKeywordsShrinkRequest
+	GetTenantCode() *string
 	SetWord(v string) *ListKeywordsShrinkRequest
 	GetWord() *string
 }
@@ -50,6 +52,7 @@ type ListKeywordsShrinkRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// Sort field.
 	SortShrink *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	TenantCode *string `json:"TenantCode,omitempty" xml:"TenantCode,omitempty"`
 	// Keyword.
 	//
 	// example:
@@ -86,6 +89,10 @@ func (s *ListKeywordsShrinkRequest) GetSortShrink() *string {
 	return s.SortShrink
 }
 
+func (s *ListKeywordsShrinkRequest) GetTenantCode() *string {
+	return s.TenantCode
+}
+
 func (s *ListKeywordsShrinkRequest) GetWord() *string {
 	return s.Word
 }
@@ -112,6 +119,11 @@ func (s *ListKeywordsShrinkRequest) SetRegionId(v string) *ListKeywordsShrinkReq
 
 func (s *ListKeywordsShrinkRequest) SetSortShrink(v string) *ListKeywordsShrinkRequest {
 	s.SortShrink = &v
+	return s
+}
+
+func (s *ListKeywordsShrinkRequest) SetTenantCode(v string) *ListKeywordsShrinkRequest {
+	s.TenantCode = &v
 	return s
 }
 

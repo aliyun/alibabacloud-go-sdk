@@ -15,8 +15,12 @@ type iAddKeywordLibRequest interface {
 	GetKeywordsObject() *string
 	SetLibName(v string) *AddKeywordLibRequest
 	GetLibName() *string
+	SetProperties(v string) *AddKeywordLibRequest
+	GetProperties() *string
 	SetRegionId(v string) *AddKeywordLibRequest
 	GetRegionId() *string
+	SetTenantCode(v string) *AddKeywordLibRequest
+	GetTenantCode() *string
 }
 
 type AddKeywordLibRequest struct {
@@ -37,13 +41,15 @@ type AddKeywordLibRequest struct {
 	// example:
 	//
 	// test_keyword_lib
-	LibName *string `json:"LibName,omitempty" xml:"LibName,omitempty"`
+	LibName    *string `json:"LibName,omitempty" xml:"LibName,omitempty"`
+	Properties *string `json:"Properties,omitempty" xml:"Properties,omitempty"`
 	// Region ID
 	//
 	// example:
 	//
 	// cn-shanghai
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	TenantCode *string `json:"TenantCode,omitempty" xml:"TenantCode,omitempty"`
 }
 
 func (s AddKeywordLibRequest) String() string {
@@ -66,8 +72,16 @@ func (s *AddKeywordLibRequest) GetLibName() *string {
 	return s.LibName
 }
 
+func (s *AddKeywordLibRequest) GetProperties() *string {
+	return s.Properties
+}
+
 func (s *AddKeywordLibRequest) GetRegionId() *string {
 	return s.RegionId
+}
+
+func (s *AddKeywordLibRequest) GetTenantCode() *string {
+	return s.TenantCode
 }
 
 func (s *AddKeywordLibRequest) SetKeywords(v string) *AddKeywordLibRequest {
@@ -85,8 +99,18 @@ func (s *AddKeywordLibRequest) SetLibName(v string) *AddKeywordLibRequest {
 	return s
 }
 
+func (s *AddKeywordLibRequest) SetProperties(v string) *AddKeywordLibRequest {
+	s.Properties = &v
+	return s
+}
+
 func (s *AddKeywordLibRequest) SetRegionId(v string) *AddKeywordLibRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *AddKeywordLibRequest) SetTenantCode(v string) *AddKeywordLibRequest {
+	s.TenantCode = &v
 	return s
 }
 

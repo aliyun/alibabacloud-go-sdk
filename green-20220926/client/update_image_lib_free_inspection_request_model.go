@@ -13,6 +13,8 @@ type iUpdateImageLibFreeInspectionRequest interface {
 	GetConfig() map[string]*int32
 	SetRegionId(v string) *UpdateImageLibFreeInspectionRequest
 	GetRegionId() *string
+	SetServiceCode(v string) *UpdateImageLibFreeInspectionRequest
+	GetServiceCode() *string
 }
 
 type UpdateImageLibFreeInspectionRequest struct {
@@ -23,7 +25,8 @@ type UpdateImageLibFreeInspectionRequest struct {
 	// example:
 	//
 	// cn-shanghai
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
 }
 
 func (s UpdateImageLibFreeInspectionRequest) String() string {
@@ -42,6 +45,10 @@ func (s *UpdateImageLibFreeInspectionRequest) GetRegionId() *string {
 	return s.RegionId
 }
 
+func (s *UpdateImageLibFreeInspectionRequest) GetServiceCode() *string {
+	return s.ServiceCode
+}
+
 func (s *UpdateImageLibFreeInspectionRequest) SetConfig(v map[string]*int32) *UpdateImageLibFreeInspectionRequest {
 	s.Config = v
 	return s
@@ -49,6 +56,11 @@ func (s *UpdateImageLibFreeInspectionRequest) SetConfig(v map[string]*int32) *Up
 
 func (s *UpdateImageLibFreeInspectionRequest) SetRegionId(v string) *UpdateImageLibFreeInspectionRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateImageLibFreeInspectionRequest) SetServiceCode(v string) *UpdateImageLibFreeInspectionRequest {
+	s.ServiceCode = &v
 	return s
 }
 

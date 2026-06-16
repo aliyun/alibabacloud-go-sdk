@@ -11,6 +11,8 @@ type iListImageLibRequest interface {
 	GoString() string
 	SetRegionId(v string) *ListImageLibRequest
 	GetRegionId() *string
+	SetServiceCode(v string) *ListImageLibRequest
+	GetServiceCode() *string
 }
 
 type ListImageLibRequest struct {
@@ -19,7 +21,8 @@ type ListImageLibRequest struct {
 	// example:
 	//
 	// cn-shanghai
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
 }
 
 func (s ListImageLibRequest) String() string {
@@ -34,8 +37,17 @@ func (s *ListImageLibRequest) GetRegionId() *string {
 	return s.RegionId
 }
 
+func (s *ListImageLibRequest) GetServiceCode() *string {
+	return s.ServiceCode
+}
+
 func (s *ListImageLibRequest) SetRegionId(v string) *ListImageLibRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListImageLibRequest) SetServiceCode(v string) *ListImageLibRequest {
+	s.ServiceCode = &v
 	return s
 }
 
