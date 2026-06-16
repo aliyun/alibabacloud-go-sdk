@@ -53,7 +53,12 @@ func (s *DescribeCapResponseBody) SetRequestId(v string) *DescribeCapResponseBod
 }
 
 func (s *DescribeCapResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CapUrl != nil {
+		if err := s.CapUrl.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCapResponseBodyCapUrl struct {

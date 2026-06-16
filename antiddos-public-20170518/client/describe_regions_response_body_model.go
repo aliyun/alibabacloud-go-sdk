@@ -16,7 +16,6 @@ type iDescribeRegionsResponseBody interface {
 }
 
 type DescribeRegionsResponseBody struct {
-	// An array consisting of regions in which Anti-DDoS Origin Basic is available.
 	Regions *DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -53,7 +52,12 @@ func (s *DescribeRegionsResponseBody) SetRequestId(v string) *DescribeRegionsRes
 }
 
 func (s *DescribeRegionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Regions != nil {
+		if err := s.Regions.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeRegionsResponseBodyRegions struct {
@@ -78,33 +82,22 @@ func (s *DescribeRegionsResponseBodyRegions) SetRegion(v []*DescribeRegionsRespo
 }
 
 func (s *DescribeRegionsResponseBodyRegions) Validate() error {
-	return dara.Validate(s)
+	if s.Region != nil {
+		for _, item := range s.Region {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRegionsResponseBodyRegionsRegion struct {
-	// The English name of the region.
-	//
-	// example:
-	//
-	// East China 1
-	RegionEnName *string `json:"RegionEnName,omitempty" xml:"RegionEnName,omitempty"`
-	// The Chinese name of the region.
-	//
-	// example:
-	//
-	// China (Hangzhou)
-	RegionName *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
-	// The code of the region.
-	//
-	// example:
-	//
-	// cn-hangzhou-dg-a01
-	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	// The ID of the region.
-	//
-	// example:
-	//
-	// cn-hangzhou
+	RegionEnName  *string `json:"RegionEnName,omitempty" xml:"RegionEnName,omitempty"`
+	RegionName    *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
+	RegionNo      *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
 	RegionNoAlias *string `json:"RegionNoAlias,omitempty" xml:"RegionNoAlias,omitempty"`
 }
 

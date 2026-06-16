@@ -30,11 +30,11 @@ type ModifyIpDefenseThresholdRequest struct {
 	//
 	// You can use the monitoring tool that is provided by the asset to query the Internet traffic of the asset:
 	//
-	// 	- If the asset is an ECS instance, see [View instance monitoring information](https://help.aliyun.com/document_detail/25482.html).
+	// - If the asset is an ECS instance, see [View instance monitoring information](https://help.aliyun.com/document_detail/25482.html).
 	//
-	// 	- If the asset is an SLB instance, see [View monitoring data](https://help.aliyun.com/document_detail/85982.html).
+	// - If the asset is an SLB instance, see [View monitoring data](https://help.aliyun.com/document_detail/85982.html).
 	//
-	// 	- If the asset is an EIP, see [View monitoring data](https://help.aliyun.com/document_detail/85354.html).
+	// - If the asset is an EIP, see [View monitoring data](https://help.aliyun.com/document_detail/85354.html).
 	//
 	// example:
 	//
@@ -62,19 +62,19 @@ type ModifyIpDefenseThresholdRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The type of the asset. Valid values:
 	//
-	// 	- **ecs**: an Elastic Compute Service (ECS) instance.
+	// - **ecs**: an Elastic Compute Service (ECS) instance.
 	//
-	// 	- **slb**: a Server Load Balancer (SLB) instance.
+	// - **slb**: a Server Load Balancer (SLB) instance.
 	//
-	// 	- **eip**: an elastic IP address (EIP).
+	// - **eip**: an elastic IP address (EIP).
 	//
-	// 	- **ipv6**: an IPv6 gateway.
+	// - **ipv6**: an IPv6 gateway.
 	//
-	// 	- **swas**: a simple application server.
+	// - **swas**: a simple application server.
 	//
-	// 	- **waf**: a Web Application Firewall (WAF) instance of the Exclusive edition.
+	// - **waf**: a Web Application Firewall (WAF) instance of the Exclusive edition.
 	//
-	// 	- **ga_basic**: a Global Accelerator (GA) instance.
+	// - **ga_basic**: a Global Accelerator (GA) instance.
 	//
 	// This parameter is required.
 	//
@@ -92,9 +92,9 @@ type ModifyIpDefenseThresholdRequest struct {
 	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
 	// Specifies whether to automatically adjust the scrubbing threshold based on the traffic load on the asset. Valid values:
 	//
-	// 	- **true**: automatically adjusts the scrubbing threshold. You do not need to configure the **Bps*	- and **Pps*	- parameters.
+	// - **true**: automatically adjusts the scrubbing threshold. You do not need to configure the **Bps*	- and **Pps*	- parameters.
 	//
-	// 	- **false**: The scrubbing threshold is not automatically adjusted. You must configure the **Bps*	- and **Pps*	- parameters. This is the default value.
+	// - **false**: The scrubbing threshold is not automatically adjusted. You must configure the **Bps*	- and **Pps*	- parameters. This is the default value.
 	//
 	// example:
 	//
@@ -104,11 +104,11 @@ type ModifyIpDefenseThresholdRequest struct {
 	//
 	// The packet scrubbing threshold cannot exceed the peak number of inbound or outbound packets, whichever is larger, of the asset. You can use the monitoring tool that is provided by the asset to query the number of packets of the asset:
 	//
-	// 	- If the asset is an ECS instance, see [View instance monitoring information](https://help.aliyun.com/document_detail/25482.html).
+	// - If the asset is an ECS instance, see [View instance monitoring information](https://help.aliyun.com/document_detail/25482.html).
 	//
-	// 	- If the asset is an SLB instance, see [View monitoring data](https://help.aliyun.com/document_detail/85982.html).
+	// - If the asset is an SLB instance, see [View monitoring data](https://help.aliyun.com/document_detail/85982.html).
 	//
-	// 	- If the asset is an EIP, see [View monitoring data](https://help.aliyun.com/document_detail/85354.html).
+	// - If the asset is an EIP, see [View monitoring data](https://help.aliyun.com/document_detail/85354.html).
 	//
 	// example:
 	//

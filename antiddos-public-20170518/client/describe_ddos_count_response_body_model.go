@@ -53,7 +53,12 @@ func (s *DescribeDdosCountResponseBody) SetRequestId(v string) *DescribeDdosCoun
 }
 
 func (s *DescribeDdosCountResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DdosCount != nil {
+		if err := s.DdosCount.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDdosCountResponseBodyDdosCount struct {

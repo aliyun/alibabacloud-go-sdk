@@ -21,8 +21,7 @@ type DescribeDdosThresholdResponseBody struct {
 	// example:
 	//
 	// E9B3C090-55AD-59C6-979E-FCFD81E7D9E7
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// An array that consists of the details of the threshold.
+	RequestId  *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Thresholds *DescribeDdosThresholdResponseBodyThresholds `json:"Thresholds,omitempty" xml:"Thresholds,omitempty" type:"Struct"`
 }
 
@@ -53,7 +52,12 @@ func (s *DescribeDdosThresholdResponseBody) SetThresholds(v *DescribeDdosThresho
 }
 
 func (s *DescribeDdosThresholdResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Thresholds != nil {
+		if err := s.Thresholds.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDdosThresholdResponseBodyThresholds struct {
@@ -78,78 +82,28 @@ func (s *DescribeDdosThresholdResponseBodyThresholds) SetThreshold(v []*Describe
 }
 
 func (s *DescribeDdosThresholdResponseBodyThresholds) Validate() error {
-	return dara.Validate(s)
+	if s.Threshold != nil {
+		for _, item := range s.Threshold {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDdosThresholdResponseBodyThresholdsThreshold struct {
-	// If the value of the **DdosType*	- parameter is **defense**, the Bps parameter indicates the current traffic scrubbing threshold. Unit: Mbit/s.
-	//
-	// If the value of the **DdosType*	- parameter is **blackhole**, the Bps parameter indicates the basic protection threshold. Unit: Mbit/s.
-	//
-	// example:
-	//
-	// 500
-	Bps *int32 `json:"Bps,omitempty" xml:"Bps,omitempty"`
-	// The type of the threshold. Valid values:
-	//
-	// 	- **defense**: traffic scrubbing threshold
-	//
-	// 	- **blackhole**: DDoS mitigation threshold
-	//
-	// example:
-	//
-	// defense
-	DdosType *string `json:"DdosType,omitempty" xml:"DdosType,omitempty"`
-	// The burstable protection threshold (the maximum DDoS mitigation threshold). Unit: Mbit/s.
-	//
-	// > This parameter is returned only when the value of the **DdosType*	- parameter is **blackhole**.
-	//
-	// example:
-	//
-	// 12310
-	ElasticBps *int32 `json:"ElasticBps,omitempty" xml:"ElasticBps,omitempty"`
-	// The ID of the instance.
-	//
-	// example:
-	//
-	// i-bp10bclrt56fblts****
+	Bps        *int32  `json:"Bps,omitempty" xml:"Bps,omitempty"`
+	DdosType   *string `json:"DdosType,omitempty" xml:"DdosType,omitempty"`
+	ElasticBps *int32  `json:"ElasticBps,omitempty" xml:"ElasticBps,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The IP address of the asset.
-	//
-	// example:
-	//
-	// 192.0.XX.XX
 	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
-	// Indicates whether the threshold is automatically adjusted. Valid values:
-	//
-	// 	- **true**: The scrubbing thresholds are automatically adjusted based on the traffic load on the asset.
-	//
-	// 	- **false**: The scrubbing thresholds are not automatically adjusted. You must manually specify the scrubbing thresholds.
-	//
-	// example:
-	//
-	// false
-	IsAuto *bool `json:"IsAuto,omitempty" xml:"IsAuto,omitempty"`
-	// The maximum traffic scrubbing threshold. Unit: Mbit/s.
-	//
-	// example:
-	//
-	// 1024
-	MaxBps *int32 `json:"MaxBps,omitempty" xml:"MaxBps,omitempty"`
-	// The maximum packet scrubbing threshold. Unit: pps.
-	//
-	// example:
-	//
-	// 150000
-	MaxPps *int32 `json:"MaxPps,omitempty" xml:"MaxPps,omitempty"`
-	// The packet scrubbing threshold. Unit: pps.
-	//
-	// > This parameter is returned only when the value of the **DdosType*	- parameter is **defense**.
-	//
-	// example:
-	//
-	// 150000
-	Pps *int32 `json:"Pps,omitempty" xml:"Pps,omitempty"`
+	IsAuto     *bool   `json:"IsAuto,omitempty" xml:"IsAuto,omitempty"`
+	MaxBps     *int32  `json:"MaxBps,omitempty" xml:"MaxBps,omitempty"`
+	MaxPps     *int32  `json:"MaxPps,omitempty" xml:"MaxPps,omitempty"`
+	Pps        *int32  `json:"Pps,omitempty" xml:"Pps,omitempty"`
 }
 
 func (s DescribeDdosThresholdResponseBodyThresholdsThreshold) String() string {

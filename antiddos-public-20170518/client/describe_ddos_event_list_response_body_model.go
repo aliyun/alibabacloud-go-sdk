@@ -18,15 +18,14 @@ type iDescribeDdosEventListResponseBody interface {
 }
 
 type DescribeDdosEventListResponseBody struct {
-	// The details of the DDoS attack events.
 	DdosEventList *DescribeDdosEventListResponseBodyDdosEventList `json:"DdosEventList,omitempty" xml:"DdosEventList,omitempty" type:"Struct"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The ID of the request. Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// BC0907F8-A9F3-5E11-977B-D59CD98C64ED
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of DDoS attack events.
+	// The total number of DDoS attack events found.
 	//
 	// example:
 	//
@@ -70,7 +69,12 @@ func (s *DescribeDdosEventListResponseBody) SetTotal(v int32) *DescribeDdosEvent
 }
 
 func (s *DescribeDdosEventListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DdosEventList != nil {
+		if err := s.DdosEventList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDdosEventListResponseBodyDdosEventList struct {
@@ -95,60 +99,25 @@ func (s *DescribeDdosEventListResponseBodyDdosEventList) SetDdosEvent(v []*Descr
 }
 
 func (s *DescribeDdosEventListResponseBodyDdosEventList) Validate() error {
-	return dara.Validate(s)
+	if s.DdosEvent != nil {
+		for _, item := range s.DdosEvent {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDdosEventListResponseBodyDdosEventListDdosEvent struct {
-	// The status of the DDoS attack event. Valid values:
-	//
-	// 	- **mitigating**: indicates that traffic scrubbing is in progress.
-	//
-	// 	- **blackholed**: indicates that blackhole filtering is triggered for the asset.
-	//
-	// 	- **normal**: indicates that the DDoS attack event ends.
-	//
-	// example:
-	//
-	// normal
-	DdosStatus *string `json:"DdosStatus,omitempty" xml:"DdosStatus,omitempty"`
-	// The type of the DDoS attack event. Valid values:
-	//
-	// 	- **defense**: an attack event that triggers traffic scrubbing
-	//
-	// 	- **blackhole**: an attack event that triggers blackhole filtering
-	//
-	// example:
-	//
-	// blackhole
-	DdosType *string `json:"DdosType,omitempty" xml:"DdosType,omitempty"`
-	// The time of the last attack. The value is a UNIX timestamp. Unit: milliseconds.
-	//
-	// > This parameter is returned only when the asset is attacked multiple times within a DDoS attack event.
-	//
-	// example:
-	//
-	// 1637817679000
-	DelayTime *int64 `json:"DelayTime,omitempty" xml:"DelayTime,omitempty"`
-	// The end time of the DDoS attack event. The value is a UNIX timestamp. Unit: milliseconds.
-	//
-	// example:
-	//
-	// 1637817679000
-	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The start time of the DDoS attack event. The value is a UNIX timestamp. Unit: milliseconds.
-	//
-	// example:
-	//
-	// 1637812279000
-	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The time when blackhole filtering is deactivated. The value is a UNIX timestamp. Unit: milliseconds.
-	//
-	// > This parameter is returned only when the value of the **DdosType*	- parameter is **blackhole**.
-	//
-	// example:
-	//
-	// 1637814079000
-	UnBlackholeTime *int64 `json:"UnBlackholeTime,omitempty" xml:"UnBlackholeTime,omitempty"`
+	DdosStatus      *string `json:"DdosStatus,omitempty" xml:"DdosStatus,omitempty"`
+	DdosType        *string `json:"DdosType,omitempty" xml:"DdosType,omitempty"`
+	DelayTime       *int64  `json:"DelayTime,omitempty" xml:"DelayTime,omitempty"`
+	EndTime         *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	StartTime       *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	UnBlackholeTime *int64  `json:"UnBlackholeTime,omitempty" xml:"UnBlackholeTime,omitempty"`
 }
 
 func (s DescribeDdosEventListResponseBodyDdosEventListDdosEvent) String() string {

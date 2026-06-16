@@ -28,9 +28,9 @@ type DescribeDdosCreditResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**: yes
+	// - **true**: yes
 	//
-	// 	- **false**: no
+	// - **false**: no
 	//
 	// example:
 	//
@@ -74,7 +74,12 @@ func (s *DescribeDdosCreditResponseBody) SetSuccess(v bool) *DescribeDdosCreditR
 }
 
 func (s *DescribeDdosCreditResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DdosCredit != nil {
+		if err := s.DdosCredit.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDdosCreditResponseBodyDdosCredit struct {
@@ -92,17 +97,17 @@ type DescribeDdosCreditResponseBodyDdosCredit struct {
 	Score *int32 `json:"Score,omitempty" xml:"Score,omitempty"`
 	// The security credit level. Valid values:
 	//
-	// 	- **A**: outstanding
+	// - **A**: outstanding
 	//
-	// 	- **B**: excellent
+	// - **B**: excellent
 	//
-	// 	- **C**: good
+	// - **C**: good
 	//
-	// 	- **D**: average
+	// - **D**: average
 	//
-	// 	- **E**: poor
+	// - **E**: poor
 	//
-	// 	- **F**: poorer
+	// - **F**: poorer
 	//
 	// example:
 	//

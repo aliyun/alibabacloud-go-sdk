@@ -38,9 +38,9 @@ type DescribeBgpPackByIpResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**: yes
+	// - **true**: yes
 	//
-	// 	- **false**: no
+	// - **false**: no
 	//
 	// example:
 	//
@@ -93,7 +93,12 @@ func (s *DescribeBgpPackByIpResponseBody) SetSuccess(v bool) *DescribeBgpPackByI
 }
 
 func (s *DescribeBgpPackByIpResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DdosbgpInfo != nil {
+		if err := s.DdosbgpInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeBgpPackByIpResponseBodyDdosbgpInfo struct {

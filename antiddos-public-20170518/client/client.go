@@ -10,6 +10,7 @@ import (
 type Client struct {
 	openapi.Client
 	DisableSDKError *bool
+	EnableValidate  *bool
 }
 
 func NewClient(config *openapiutil.Config) (*Client, error) {
@@ -87,6 +88,16 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		"cn-zhengzhou-nebula-1":       dara.String("antiddos.aliyuncs.com"),
 		"eu-west-1-oxs":               dara.String("antiddos.aliyuncs.com"),
 		"rus-west-1-pop":              dara.String("antiddos.aliyuncs.com"),
+		"us-southeast-1":              dara.String("antiddos-openapi.us-southeast-1.aliyuncs.com"),
+		"na-south-1":                  dara.String("antiddos-openapi.na-south-1.aliyuncs.com"),
+		"me-central-1":                dara.String("antiddos-openapi.me-central-1.aliyuncs.com"),
+		"eu-west-2":                   dara.String("antiddos-openapi.eu-west-2.aliyuncs.com"),
+		"cn-zhongwei":                 dara.String("antiddos-openapi.cn-zhongwei.aliyuncs.com"),
+		"cn-zhengzhou-jva":            dara.String("antiddos-openapi.cn-zhengzhou-jva.aliyuncs.com"),
+		"cn-wuhan-lr":                 dara.String("antiddos-openapi.cn-hangzhou-cloudstone.aliyuncs.com"),
+		"cn-fuzhou":                   dara.String("antiddos-openapi.cn-hangzhou-cloudstone.aliyuncs.com"),
+		"ap-southeast-8":              dara.String("antiddos-openapi.ap-southeast-8.aliyuncs.com"),
+		"ap-southeast-7":              dara.String("antiddos-openapi.ap-southeast-7.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -137,9 +148,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // @return DescribeBgpPackByIpResponse
 func (client *Client) DescribeBgpPackByIpWithOptions(request *DescribeBgpPackByIpRequest, runtime *dara.RuntimeOptions) (_result *DescribeBgpPackByIpResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DdosRegionId) {
@@ -217,9 +230,11 @@ func (client *Client) DescribeBgpPackByIp(request *DescribeBgpPackByIpRequest) (
 //
 // @return DescribeCapResponse
 func (client *Client) DescribeCapWithOptions(request *DescribeCapRequest, runtime *dara.RuntimeOptions) (_result *DescribeCapResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BegTime) {
@@ -307,9 +322,11 @@ func (client *Client) DescribeCap(request *DescribeCapRequest) (_result *Describ
 //
 // @return DescribeDdosCountResponse
 func (client *Client) DescribeDdosCountWithOptions(request *DescribeDdosCountRequest, runtime *dara.RuntimeOptions) (_result *DescribeDdosCountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DdosRegionId) {
@@ -369,7 +386,7 @@ func (client *Client) DescribeDdosCount(request *DescribeDdosCountRequest) (_res
 
 // Summary:
 //
-// Queries the details of the security credit score of the current Alibaba Cloud account in a specific region.
+// Retrieves the details of the security credit score of the current Alibaba Cloud account in a specific region.
 //
 // Description:
 //
@@ -385,9 +402,11 @@ func (client *Client) DescribeDdosCount(request *DescribeDdosCountRequest) (_res
 //
 // @return DescribeDdosCreditResponse
 func (client *Client) DescribeDdosCreditWithOptions(request *DescribeDdosCreditRequest, runtime *dara.RuntimeOptions) (_result *DescribeDdosCreditResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DdosRegionId) {
@@ -419,7 +438,7 @@ func (client *Client) DescribeDdosCreditWithOptions(request *DescribeDdosCreditR
 
 // Summary:
 //
-// Queries the details of the security credit score of the current Alibaba Cloud account in a specific region.
+// Retrieves the details of the security credit score of the current Alibaba Cloud account in a specific region.
 //
 // Description:
 //
@@ -445,15 +464,15 @@ func (client *Client) DescribeDdosCredit(request *DescribeDdosCreditRequest) (_r
 
 // Summary:
 //
-// Queries the details of the DDoS attack events that occur on an asset. The asset is assigned a public IP address.
+// Lists DDoS attack events for a specified asset with a public IP address.
 //
 // Description:
 //
-// You can call the DescribeDdosEventList operation to query the details of the DDoS attack events that occur on an asset by page. The details include the start time, end time, and status of each DDoS attack event.
+// This operation performs a paged query to retrieve the details of DDoS attack events for a specific asset with a public IP address. The details include the start time, end time, and status of each event.
 //
-// ## [](#qps-)Limits
+// ## QPS limits
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The queries per second (QPS) limit for this operation is 10 for each user. API calls are throttled if you exceed the limit. This can affect your business. We recommend that you call this operation a reasonable number of times.
 //
 // @param request - DescribeDdosEventListRequest
 //
@@ -461,9 +480,11 @@ func (client *Client) DescribeDdosCredit(request *DescribeDdosCreditRequest) (_r
 //
 // @return DescribeDdosEventListResponse
 func (client *Client) DescribeDdosEventListWithOptions(request *DescribeDdosEventListRequest, runtime *dara.RuntimeOptions) (_result *DescribeDdosEventListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -519,15 +540,15 @@ func (client *Client) DescribeDdosEventListWithOptions(request *DescribeDdosEven
 
 // Summary:
 //
-// Queries the details of the DDoS attack events that occur on an asset. The asset is assigned a public IP address.
+// Lists DDoS attack events for a specified asset with a public IP address.
 //
 // Description:
 //
-// You can call the DescribeDdosEventList operation to query the details of the DDoS attack events that occur on an asset by page. The details include the start time, end time, and status of each DDoS attack event.
+// This operation performs a paged query to retrieve the details of DDoS attack events for a specific asset with a public IP address. The details include the start time, end time, and status of each event.
 //
-// ## [](#qps-)Limits
+// ## QPS limits
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The queries per second (QPS) limit for this operation is 10 for each user. API calls are throttled if you exceed the limit. This can affect your business. We recommend that you call this operation a reasonable number of times.
 //
 // @param request - DescribeDdosEventListRequest
 //
@@ -545,7 +566,7 @@ func (client *Client) DescribeDdosEventList(request *DescribeDdosEventListReques
 
 // Summary:
 //
-// Queries the details of the DDoS mitigation thresholds or traffic scrubbing thresholds for specified assets. The assets can be elastic IP addresses (EIPs). The assets can also be Elastic Compute Service (ECS) instances or Server Load Balancer (SLB) instances that are assigned public IP addresses.
+// Retrieves the details of the DDoS mitigation thresholds or traffic scrubbing thresholds for specified assets. The assets can be elastic IP addresses (EIPs). The assets can also be Elastic Compute Service (ECS) instances or Server Load Balancer (SLB) instances that are assigned public IP addresses.
 //
 // Description:
 //
@@ -561,9 +582,11 @@ func (client *Client) DescribeDdosEventList(request *DescribeDdosEventListReques
 //
 // @return DescribeDdosThresholdResponse
 func (client *Client) DescribeDdosThresholdWithOptions(request *DescribeDdosThresholdRequest, runtime *dara.RuntimeOptions) (_result *DescribeDdosThresholdResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DdosRegionId) {
@@ -607,7 +630,7 @@ func (client *Client) DescribeDdosThresholdWithOptions(request *DescribeDdosThre
 
 // Summary:
 //
-// Queries the details of the DDoS mitigation thresholds or traffic scrubbing thresholds for specified assets. The assets can be elastic IP addresses (EIPs). The assets can also be Elastic Compute Service (ECS) instances or Server Load Balancer (SLB) instances that are assigned public IP addresses.
+// Retrieves the details of the DDoS mitigation thresholds or traffic scrubbing thresholds for specified assets. The assets can be elastic IP addresses (EIPs). The assets can also be Elastic Compute Service (ECS) instances or Server Load Balancer (SLB) instances that are assigned public IP addresses.
 //
 // Description:
 //
@@ -633,7 +656,7 @@ func (client *Client) DescribeDdosThreshold(request *DescribeDdosThresholdReques
 
 // Summary:
 //
-// Queries the details of the assets within the current Alibaba Cloud account. The assets can be elastic IP addresses (EIPs). The assets can also be Elastic Compute Service (ECS) instances or Server Load Balancer (SLB) instances that are assigned public IP addresses. This operation is phased out. We recommend that you use the DescribeInstanceIpAddress operation.
+// Retrieves the details of the assets within the current Alibaba Cloud account. The assets can be elastic IP addresses (EIPs). The assets can also be Elastic Compute Service (ECS) instances or Server Load Balancer (SLB) instances that are assigned public IP addresses. This operation is phased out. We recommend that you use the DescribeInstanceIpAddress operation.
 //
 // Description:
 //
@@ -649,9 +672,11 @@ func (client *Client) DescribeDdosThreshold(request *DescribeDdosThresholdReques
 //
 // @return DescribeInstanceResponse
 func (client *Client) DescribeInstanceWithOptions(request *DescribeInstanceRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -711,7 +736,7 @@ func (client *Client) DescribeInstanceWithOptions(request *DescribeInstanceReque
 
 // Summary:
 //
-// Queries the details of the assets within the current Alibaba Cloud account. The assets can be elastic IP addresses (EIPs). The assets can also be Elastic Compute Service (ECS) instances or Server Load Balancer (SLB) instances that are assigned public IP addresses. This operation is phased out. We recommend that you use the DescribeInstanceIpAddress operation.
+// Retrieves the details of the assets within the current Alibaba Cloud account. The assets can be elastic IP addresses (EIPs). The assets can also be Elastic Compute Service (ECS) instances or Server Load Balancer (SLB) instances that are assigned public IP addresses. This operation is phased out. We recommend that you use the DescribeInstanceIpAddress operation.
 //
 // Description:
 //
@@ -737,7 +762,7 @@ func (client *Client) DescribeInstance(request *DescribeInstanceRequest) (_resul
 
 // Summary:
 //
-// Queries the details of the assets within the current Alibaba Cloud account and the details of the Anti-DDoS Origin instance to which the assets belong. The assets can be elastic IP addresses (EIPs). The assets can also be Elastic Compute Service (ECS) instances or Server Load Balancer (SLB) instances that are assigned public IP addresses.
+// Retrieves the details of the assets within the current Alibaba Cloud account and the details of the Anti-DDoS Origin instance to which the assets belong. The assets can be elastic IP addresses (EIPs). The assets can also be Elastic Compute Service (ECS) instances or Server Load Balancer (SLB) instances that are assigned public IP addresses.
 //
 // Description:
 //
@@ -753,9 +778,11 @@ func (client *Client) DescribeInstance(request *DescribeInstanceRequest) (_resul
 //
 // @return DescribeInstanceIpAddressResponse
 func (client *Client) DescribeInstanceIpAddressWithOptions(request *DescribeInstanceIpAddressRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceIpAddressResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -815,7 +842,7 @@ func (client *Client) DescribeInstanceIpAddressWithOptions(request *DescribeInst
 
 // Summary:
 //
-// Queries the details of the assets within the current Alibaba Cloud account and the details of the Anti-DDoS Origin instance to which the assets belong. The assets can be elastic IP addresses (EIPs). The assets can also be Elastic Compute Service (ECS) instances or Server Load Balancer (SLB) instances that are assigned public IP addresses.
+// Retrieves the details of the assets within the current Alibaba Cloud account and the details of the Anti-DDoS Origin instance to which the assets belong. The assets can be elastic IP addresses (EIPs). The assets can also be Elastic Compute Service (ECS) instances or Server Load Balancer (SLB) instances that are assigned public IP addresses.
 //
 // Description:
 //
@@ -841,7 +868,7 @@ func (client *Client) DescribeInstanceIpAddress(request *DescribeInstanceIpAddre
 
 // Summary:
 //
-// Queries the details of the DDoS mitigation thresholds or traffic scrubbing thresholds for specified assets. The assets can be elastic IP addresses (EIPs). The assets can also be Elastic Compute Service (ECS) instances or Server Load Balancer (SLB) instances that are assigned public IP addresses.
+// Retrieves the details of the DDoS mitigation thresholds or traffic scrubbing thresholds for specified assets. The assets can be elastic IP addresses (EIPs). The assets can also be Elastic Compute Service (ECS) instances or Server Load Balancer (SLB) instances that are assigned public IP addresses.
 //
 // Description:
 //
@@ -857,9 +884,11 @@ func (client *Client) DescribeInstanceIpAddress(request *DescribeInstanceIpAddre
 //
 // @return DescribeIpDdosThresholdResponse
 func (client *Client) DescribeIpDdosThresholdWithOptions(request *DescribeIpDdosThresholdRequest, runtime *dara.RuntimeOptions) (_result *DescribeIpDdosThresholdResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DdosRegionId) {
@@ -907,7 +936,7 @@ func (client *Client) DescribeIpDdosThresholdWithOptions(request *DescribeIpDdos
 
 // Summary:
 //
-// Queries the details of the DDoS mitigation thresholds or traffic scrubbing thresholds for specified assets. The assets can be elastic IP addresses (EIPs). The assets can also be Elastic Compute Service (ECS) instances or Server Load Balancer (SLB) instances that are assigned public IP addresses.
+// Retrieves the details of the DDoS mitigation thresholds or traffic scrubbing thresholds for specified assets. The assets can be elastic IP addresses (EIPs). The assets can also be Elastic Compute Service (ECS) instances or Server Load Balancer (SLB) instances that are assigned public IP addresses.
 //
 // Description:
 //
@@ -949,9 +978,11 @@ func (client *Client) DescribeIpDdosThreshold(request *DescribeIpDdosThresholdRe
 //
 // @return DescribeIpLocationServiceResponse
 func (client *Client) DescribeIpLocationServiceWithOptions(request *DescribeIpLocationServiceRequest, runtime *dara.RuntimeOptions) (_result *DescribeIpLocationServiceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InternetIp) {
@@ -1019,8 +1050,6 @@ func (client *Client) DescribeIpLocationService(request *DescribeIpLocationServi
 //
 // You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
 //
-// @param request - DescribeRegionsRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeRegionsResponse
@@ -1072,13 +1101,13 @@ func (client *Client) DescribeRegions() (_result *DescribeRegionsResponse, _err 
 
 // Summary:
 //
-// Changes the scrubbing thresholds for an asset that is assigned a public IP address.
+// Modifies the Anti-DDoS scrubbing threshold for a single asset with a public IP address.
 //
 // Description:
 //
-// ## [](#qps-)Limits
+// ## QPS limits
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The queries per second (QPS) limit for this API is 10 calls per second for each user. If you exceed the limit, API calls are throttled. This can affect your business. We recommend that you call this API at a reasonable rate.
 //
 // @param request - ModifyDefenseThresholdRequest
 //
@@ -1086,9 +1115,11 @@ func (client *Client) DescribeRegions() (_result *DescribeRegionsResponse, _err 
 //
 // @return ModifyDefenseThresholdResponse
 func (client *Client) ModifyDefenseThresholdWithOptions(request *ModifyDefenseThresholdRequest, runtime *dara.RuntimeOptions) (_result *ModifyDefenseThresholdResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Bps) {
@@ -1148,13 +1179,13 @@ func (client *Client) ModifyDefenseThresholdWithOptions(request *ModifyDefenseTh
 
 // Summary:
 //
-// Changes the scrubbing thresholds for an asset that is assigned a public IP address.
+// Modifies the Anti-DDoS scrubbing threshold for a single asset with a public IP address.
 //
 // Description:
 //
-// ## [](#qps-)Limits
+// ## QPS limits
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The queries per second (QPS) limit for this API is 10 calls per second for each user. If you exceed the limit, API calls are throttled. This can affect your business. We recommend that you call this API at a reasonable rate.
 //
 // @param request - ModifyDefenseThresholdRequest
 //
@@ -1186,9 +1217,11 @@ func (client *Client) ModifyDefenseThreshold(request *ModifyDefenseThresholdRequ
 //
 // @return ModifyIpDefenseThresholdResponse
 func (client *Client) ModifyIpDefenseThresholdWithOptions(request *ModifyIpDefenseThresholdRequest, runtime *dara.RuntimeOptions) (_result *ModifyIpDefenseThresholdResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Bps) {

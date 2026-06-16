@@ -28,19 +28,19 @@ type DescribeDdosCountRequest struct {
 	DdosRegionId *string `json:"DdosRegionId,omitempty" xml:"DdosRegionId,omitempty"`
 	// The type of the asset to query. Valid values:
 	//
-	// 	- **ecs**: Elastic Compute Service (ECS) instances.
+	// - **ecs**: Elastic Compute Service (ECS) instances.
 	//
-	// 	- **slb**: Server Load Balancer (SLB) instances.
+	// - **slb**: Server Load Balancer (SLB) instances.
 	//
-	// 	- **eip**: elastic IP addresses (EIPs).
+	// - **eip**: elastic IP addresses (EIPs).
 	//
-	// 	- **ipv6**: IPv6 gateways.
+	// - **ipv6**: IPv6 gateways.
 	//
-	// 	- **swas**: simple application servers.
+	// - **swas**: simple application servers.
 	//
-	// 	- **waf**: Web Application Firewall (WAF) instances of the Exclusive edition.
+	// - **waf**: Web Application Firewall (WAF) instances of the Exclusive edition.
 	//
-	// 	- **ga_basic**: Global Accelerator (GA) instances.
+	// - **ga_basic**: Global Accelerator (GA) instances.
 	//
 	// This parameter is required.
 	//

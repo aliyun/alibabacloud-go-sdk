@@ -59,5 +59,10 @@ func (s *DescribeCapResponse) SetBody(v *DescribeCapResponseBody) *DescribeCapRe
 }
 
 func (s *DescribeCapResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

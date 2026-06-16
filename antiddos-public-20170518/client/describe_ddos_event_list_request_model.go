@@ -26,15 +26,15 @@ type iDescribeDdosEventListRequest interface {
 }
 
 type DescribeDdosEventListRequest struct {
-	// The number of the page to return. Default value: **1**.
+	// The number of the page to return for a paged query. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The region ID of the asset to query.
+	// The region ID of the asset that is assigned a public IP address.
 	//
-	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/353250.html) operation to query the most recent region list.
+	// > Call [DescribeRegions](https://help.aliyun.com/document_detail/353250.html) to query all region IDs.
 	//
 	// This parameter is required.
 	//
@@ -42,9 +42,9 @@ type DescribeDdosEventListRequest struct {
 	//
 	// cn-hangzhou
 	DdosRegionId *string `json:"DdosRegionId,omitempty" xml:"DdosRegionId,omitempty"`
-	// The ID of asset to query.
+	// The ID of the instance for the asset that is assigned a public IP address.
 	//
-	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/354191.html) operation to query the IDs of ECS instances, SLB instances, and EIPs within the current Alibaba Cloud account.
+	// > Call [DescribeInstance](https://help.aliyun.com/document_detail/354191.html) to query the IDs of the ECS, SLB, and EIP instances that belong to your Alibaba Cloud account.
 	//
 	// This parameter is required.
 	//
@@ -52,21 +52,21 @@ type DescribeDdosEventListRequest struct {
 	//
 	// i-bp10bclrt56fblts****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The type of the asset to query. Valid values:
+	// The instance type of the asset that is assigned a public IP address. Valid values:
 	//
-	// 	- **ecs**: an Elastic Compute Service (ECS) instance.
+	// - **ecs**: an Elastic Compute Service (ECS) instance.
 	//
-	// 	- **slb**: a Server Load Balancer (SLB) instance.
+	// - **slb**: a Server Load Balancer (SLB) instance.
 	//
-	// 	- **eip**: an elastic IP address (EIP).
+	// - **eip**: an elastic IP address (EIP) instance.
 	//
-	// 	- **ipv6**: an IPv6 gateway.
+	// - **ipv6**: an IPv6 Gateway instance.
 	//
-	// 	- **swas**: a simple application server.
+	// - **swas**: a simple application server instance.
 	//
-	// 	- **waf**: a Web Application Firewall (WAF) instance of the Exclusive edition.
+	// - **waf**: a dedicated Web Application Firewall (WAF) instance.
 	//
-	// 	- **ga_basic**: a Global Accelerator (GA) instance.
+	// - **ga_basic**: a Global Accelerator instance.
 	//
 	// This parameter is required.
 	//
@@ -74,18 +74,23 @@ type DescribeDdosEventListRequest struct {
 	//
 	// ecs
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The IP address of the asset to query.
+	// The IP address of the asset that is assigned a public IP address.
 	//
 	// example:
 	//
 	// 121.199.XX.XX
 	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
-	// The number of entries to return on each page. Default value: **10**.
+	// The number of attack events to return on each page for a paged query. Default value: **10**.
 	//
 	// example:
 	//
 	// 10
-	PageSize  *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The number of days to query backwards from the current time. Default value: 7.
+	//
+	// example:
+	//
+	// 7
 	QueryDays *int32 `json:"QueryDays,omitempty" xml:"QueryDays,omitempty"`
 }
 

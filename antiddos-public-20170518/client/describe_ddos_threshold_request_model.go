@@ -32,9 +32,9 @@ type DescribeDdosThresholdRequest struct {
 	DdosRegionId *string `json:"DdosRegionId,omitempty" xml:"DdosRegionId,omitempty"`
 	// The type of the threshold. Valid values:
 	//
-	// 	- **defense**: traffic scrubbing threshold
+	// - **defense**: traffic scrubbing threshold
 	//
-	// 	- **blackhole**: DDoS mitigation threshold
+	// - **blackhole**: DDoS mitigation threshold
 	//
 	// This parameter is required.
 	//
@@ -48,19 +48,19 @@ type DescribeDdosThresholdRequest struct {
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	// The type of the asset that is assigned a public IP address. Valid values:
 	//
-	// 	- **ecs**: ECS instances.
+	// - **ecs**: ECS instances.
 	//
-	// 	- **slb**: SLB instances.
+	// - **slb**: SLB instances.
 	//
-	// 	- **eip**: EIPs.
+	// - **eip**: EIPs.
 	//
-	// 	- **ipv6**: IPv6 gateways.
+	// - **ipv6**: IPv6 gateways.
 	//
-	// 	- **swas**: simple application servers.
+	// - **swas**: simple application servers.
 	//
-	// 	- **waf**: Web Application Firewall (WAF) instances of the Exclusive edition.
+	// - **waf**: Web Application Firewall (WAF) instances of the Exclusive edition.
 	//
-	// 	- **ga_basic**: Global Accelerator (GA) instances.
+	// - **ga_basic**: Global Accelerator (GA) instances.
 	//
 	// This parameter is required.
 	//

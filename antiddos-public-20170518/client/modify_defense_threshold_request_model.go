@@ -28,22 +28,26 @@ type iModifyDefenseThresholdRequest interface {
 }
 
 type ModifyDefenseThresholdRequest struct {
-	// The traffic scrubbing threshold. Unit: Mbit/s. The traffic scrubbing threshold cannot exceed the peak inbound or outbound Internet traffic, whichever is larger, of the asset. When you modify Bps, Pps is required. Otherwise, Bps does not take effect.
+	// The scrubbing threshold for traffic in Mbps. This value cannot exceed the peak public network traffic of the instance. If you specify Bps, you must also specify Pps. Otherwise, the change does not take effect.
 	//
-	// You can use the monitoring tool that is provided by the asset to query the Internet traffic of the asset:
+	// Use the monitoring tools of your instance to query its public network traffic:
 	//
-	// 	- If the asset is an ECS instance, see [View instance monitoring information](https://help.aliyun.com/document_detail/25482.html).
+	// - For an ECS instance, see [View instance monitoring information](https://help.aliyun.com/document_detail/25482.html).
 	//
-	// 	- If the asset is an SLB instance, see [View monitoring data](https://help.aliyun.com/document_detail/85982.html).
+	// - For an SLB instance, see [View monitoring data](https://help.aliyun.com/document_detail/85982.html).
+	//
+	// <props="china">
+	//
+	// - For an EIP instance, see [View monitoring data](https://help.aliyun.com/document_detail/85354.html).
 	//
 	// example:
 	//
 	// 100
 	Bps         *int32  `json:"Bps,omitempty" xml:"Bps,omitempty"`
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The region ID of the asset for which you want to change the scrubbing thresholds.
+	// The region ID of the asset that is assigned a public IP address.
 	//
-	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/353250.html) operation to query the most recent region list.
+	// > Call [DescribeRegions](https://help.aliyun.com/document_detail/353250.html) to query all region IDs.
 	//
 	// This parameter is required.
 	//
@@ -51,9 +55,9 @@ type ModifyDefenseThresholdRequest struct {
 	//
 	// cn-hangzhou
 	DdosRegionId *string `json:"DdosRegionId,omitempty" xml:"DdosRegionId,omitempty"`
-	// The ID of the asset.
+	// The instance ID of the asset that is assigned a public IP address.
 	//
-	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/354191.html) operation to query the IDs of ECS instances, SLB instances, and EIPs within the current Alibaba Cloud account.
+	// > Call [DescribeInstance](https://help.aliyun.com/document_detail/354191.html) to query the IDs of the ECS, SLB, and EIP instances that belong to your Alibaba Cloud account.
 	//
 	// This parameter is required.
 	//
@@ -61,21 +65,21 @@ type ModifyDefenseThresholdRequest struct {
 	//
 	// i-uf6idy3c57psf7vu****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The type of the asset. Valid values:
+	// The instance type of the asset that is assigned a public IP address. Valid values:
 	//
-	// 	- **ecs**: an Elastic Compute Service (ECS) instance.
+	// - **ecs**: Elastic Compute Service (ECS) instance.
 	//
-	// 	- **slb**: a Server Load Balancer (SLB) instance.
+	// - **slb**: Server Load Balancer (SLB) instance.
 	//
-	// 	- **eip**: an elastic IP address (EIP).
+	// - **eip**: Elastic IP Address (EIP) instance.
 	//
-	// 	- **ipv6**: an IPv6 gateway.
+	// - **ipv6**: IPv6 Gateway instance.
 	//
-	// 	- **swas**: a simple application server.
+	// - **swas**: simple application server instance.
 	//
-	// 	- **waf**: a Web Application Firewall (WAF) instance of the Exclusive edition.
+	// - **waf**: dedicated Web Application Firewall (WAF) instance.
 	//
-	// 	- **ga_basic**: a Global Accelerator (GA) instance.
+	// - **ga_basic**: basic Global Accelerator (GA) instance.
 	//
 	// This parameter is required.
 	//
@@ -83,31 +87,35 @@ type ModifyDefenseThresholdRequest struct {
 	//
 	// ecs
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The IP address of the asset.
+	// The public IP address of the asset.
 	//
 	// example:
 	//
 	// 192.0.XX.XX
 	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
-	// Specifies whether to automatically adjust the scrubbing threshold based on the traffic load on the asset. Valid values:
+	// Specifies whether to automatically adjust the scrubbing threshold based on the traffic loads of the instance. Valid values:
 	//
-	// 	- **true**: automatically adjusts the scrubbing thresholds. You do not need to configure the **Bps*	- and **Pps*	- parameters.
+	// - **true**: The scrubbing threshold is automatically adjusted. You do not need to set the **Bps*	- and **Pps*	- parameters.
 	//
-	// 	- **false**: The scrubbing threshold is not automatically adjusted. You must configure the **Bps*	- and **Pps*	- parameters.
+	// - **false**: The scrubbing threshold is not automatically adjusted. You must set the **Bps*	- and **Pps*	- parameters.
 	//
-	// Default value: false.
+	// Default value: false
 	//
 	// example:
 	//
 	// false
 	IsAuto *bool `json:"IsAuto,omitempty" xml:"IsAuto,omitempty"`
-	// The packet scrubbing threshold. Unit: packets per second (PPS). When you modify Pps, Bps is required. Otherwise, Pps does not take effect.
+	// The scrubbing threshold for packets per second (pps). This value cannot exceed the peak packet traffic of the instance. If you specify Pps, you must also specify Bps. Otherwise, the change does not take effect.
 	//
-	// The packet scrubbing threshold cannot exceed the peak number of inbound or outbound packets, whichever is larger, of the asset. You can use the monitoring tool that is provided by the asset to query the number of packets of the asset:
+	// Use the monitoring tools of your instance to query its packet traffic:
 	//
-	// 	- If the asset is an ECS instance, see [View instance monitoring information](https://help.aliyun.com/document_detail/25482.html).
+	// - For an ECS instance, see [View instance monitoring information](https://help.aliyun.com/document_detail/25482.html).
 	//
-	// 	- If the asset is an SLB instance, see [View monitoring data](https://help.aliyun.com/document_detail/85982.html).
+	// - For an SLB instance, see [View monitoring data](https://help.aliyun.com/document_detail/85982.html).
+	//
+	// <props="china">
+	//
+	// - For an EIP instance, see [View monitoring data](https://help.aliyun.com/document_detail/85354.html).
 	//
 	// example:
 	//

@@ -53,7 +53,12 @@ func (s *DescribeIpLocationServiceResponseBody) SetRequestId(v string) *Describe
 }
 
 func (s *DescribeIpLocationServiceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Instance != nil {
+		if err := s.Instance.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeIpLocationServiceResponseBodyInstance struct {
@@ -71,19 +76,19 @@ type DescribeIpLocationServiceResponseBodyInstance struct {
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// The type of the asset. Valid values:
 	//
-	// 	- **ecs**: an ECS instance.
+	// - **ecs**: an ECS instance.
 	//
-	// 	- **slb**: an SLB instance.
+	// - **slb**: an SLB instance.
 	//
-	// 	- **eip**: an EIP.
+	// - **eip**: an EIP.
 	//
-	// 	- **ipv6**: an IPv6 gateway.
+	// - **ipv6**: an IPv6 gateway.
 	//
-	// 	- **swas**: a simple application server.
+	// - **swas**: a simple application server.
 	//
-	// 	- **waf**: a Web Application Firewall (WAF) instance of the Exclusive edition.
+	// - **waf**: a Web Application Firewall (WAF) instance of the Exclusive edition.
 	//
-	// 	- **ga_basic**: a Global Accelerator (GA) instance.
+	// - **ga_basic**: a Global Accelerator (GA) instance.
 	//
 	// example:
 	//

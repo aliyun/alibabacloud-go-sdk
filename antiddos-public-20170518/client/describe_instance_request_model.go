@@ -46,11 +46,11 @@ type DescribeInstanceRequest struct {
 	DdosRegionId *string `json:"DdosRegionId,omitempty" xml:"DdosRegionId,omitempty"`
 	// The DDoS mitigation status of the asset. Valid values:
 	//
-	// 	- **mitigating**: queries assets for which traffic scrubbing is triggered.
+	// - **mitigating**: queries assets for which traffic scrubbing is triggered.
 	//
-	// 	- **blackholed**: queries assets for which blackhole filtering is triggered.
+	// - **blackholed**: queries assets for which blackhole filtering is triggered.
 	//
-	// 	- **normal**: queries assets that are not under DDoS attacks.
+	// - **normal**: queries assets that are not under DDoS attacks.
 	//
 	// example:
 	//
@@ -58,11 +58,11 @@ type DescribeInstanceRequest struct {
 	DdosStatus *string `json:"DdosStatus,omitempty" xml:"DdosStatus,omitempty"`
 	// The ID of the asset. The formats of asset IDs vary based on the value of the **InstanceType**. parameter.
 	//
-	// 	- If you set **InstanceType*	- to **ecs**, specify the ID of the ECS instance. For example, you can specify i-bp1cb6x80tfgocid\\*\\*\\*\\*.
+	// - If you set **InstanceType*	- to **ecs**, specify the ID of the ECS instance. For example, you can specify i-bp1cb6x80tfgocid\\*\\*\\*\\*.
 	//
-	// 	- If you set **InstanceType*	- to **slb**, specify the ID of the SLB instance. For example, you can specify alb-vn2dqg3v31y2vd\\*\\*\\*\\*.
+	// - If you set **InstanceType*	- to **slb**, specify the ID of the SLB instance. For example, you can specify alb-vn2dqg3v31y2vd\\*\\*\\*\\*.
 	//
-	// 	- If you set **InstanceType*	- to **eip**, specify the ID of the EIP. For example, you can specify eip-j6ce6dcx9epi7rs46\\*\\*\\*\\*.
+	// - If you set **InstanceType*	- to **eip**, specify the ID of the EIP. For example, you can specify eip-j6ce6dcx9epi7rs46\\*\\*\\*\\*.
 	//
 	// example:
 	//
@@ -82,19 +82,19 @@ type DescribeInstanceRequest struct {
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// The type of the asset to query. Valid values:
 	//
-	// 	- **ecs**: ECS instances.
+	// - **ecs**: ECS instances.
 	//
-	// 	- **slb**: SLB instances.
+	// - **slb**: SLB instances.
 	//
-	// 	- **eip**: EIPs.
+	// - **eip**: EIPs.
 	//
-	// 	- **ipv6**: IPv6 gateways.
+	// - **ipv6**: IPv6 gateways.
 	//
-	// 	- **swas**: simple application servers.
+	// - **swas**: simple application servers.
 	//
-	// 	- **waf**: Web Application Firewall (WAF) instances of the Exclusive edition.
+	// - **waf**: Web Application Firewall (WAF) instances of the Exclusive edition.
 	//
-	// 	- **ga_basic**: Global Accelerator (GA) instances.
+	// - **ga_basic**: Global Accelerator (GA) instances.
 	//
 	// This parameter is required.
 	//

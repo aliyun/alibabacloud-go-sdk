@@ -53,7 +53,12 @@ func (s *DescribeIpDdosThresholdResponseBody) SetThreshold(v *DescribeIpDdosThre
 }
 
 func (s *DescribeIpDdosThresholdResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Threshold != nil {
+		if err := s.Threshold.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeIpDdosThresholdResponseBodyThreshold struct {
@@ -67,9 +72,9 @@ type DescribeIpDdosThresholdResponseBodyThreshold struct {
 	Bps *int32 `json:"Bps,omitempty" xml:"Bps,omitempty"`
 	// The type of the threshold. Valid values:
 	//
-	// 	- **defense**: traffic scrubbing threshold
+	// - **defense**: traffic scrubbing threshold
 	//
-	// 	- **blackhole**: DDoS mitigation threshold
+	// - **blackhole**: DDoS mitigation threshold
 	//
 	// example:
 	//
@@ -97,9 +102,9 @@ type DescribeIpDdosThresholdResponseBodyThreshold struct {
 	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
 	// Indicates whether the threshold is automatically adjusted. Valid values:
 	//
-	// 	- **true**: The scrubbing thresholds are automatically adjusted based on the traffic load on the asset.
+	// - **true**: The scrubbing thresholds are automatically adjusted based on the traffic load on the asset.
 	//
-	// 	- **false**: The scrubbing thresholds are not automatically adjusted. You must manually specify the scrubbing thresholds.
+	// - **false**: The scrubbing thresholds are not automatically adjusted. You must manually specify the scrubbing thresholds.
 	//
 	// example:
 	//

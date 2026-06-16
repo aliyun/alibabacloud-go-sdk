@@ -70,7 +70,16 @@ func (s *DescribeInstanceIpAddressResponseBody) SetTotal(v int32) *DescribeInsta
 }
 
 func (s *DescribeInstanceIpAddressResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceList != nil {
+		for _, item := range s.InstanceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceIpAddressResponseBodyInstanceList struct {
@@ -88,9 +97,9 @@ type DescribeInstanceIpAddressResponseBodyInstanceList struct {
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// The DDoS mitigation status of the instance. Valid values:
 	//
-	// 	- **normal**: not under DDoS attacks.
+	// - **normal**: not under DDoS attacks.
 	//
-	// 	- **abnormal**: under DDoS attacks.
+	// - **abnormal**: under DDoS attacks.
 	//
 	// example:
 	//
@@ -98,11 +107,11 @@ type DescribeInstanceIpAddressResponseBodyInstanceList struct {
 	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
 	// The type of the asset. Valid values:
 	//
-	// 	- **ecs**
+	// - **ecs**
 	//
-	// 	- **slb**
+	// - **slb**
 	//
-	// 	- **eip**
+	// - **eip**
 	//
 	// example:
 	//
@@ -166,7 +175,16 @@ func (s *DescribeInstanceIpAddressResponseBodyInstanceList) SetIpAddressConfig(v
 }
 
 func (s *DescribeInstanceIpAddressResponseBodyInstanceList) Validate() error {
-	return dara.Validate(s)
+	if s.IpAddressConfig != nil {
+		for _, item := range s.IpAddressConfig {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceIpAddressResponseBodyInstanceListIpAddressConfig struct {
@@ -202,11 +220,11 @@ type DescribeInstanceIpAddressResponseBodyInstanceListIpAddressConfig struct {
 	InstanceIp *string `json:"InstanceIp,omitempty" xml:"InstanceIp,omitempty"`
 	// The DDoS mitigation status of the asset. Valid values:
 	//
-	// 	- **mitigating**: indicates that traffic scrubbing is in progress.
+	// - **mitigating**: indicates that traffic scrubbing is in progress.
 	//
-	// 	- **blackholed**: indicates that blackhole filtering is triggered for the asset.
+	// - **blackholed**: indicates that blackhole filtering is triggered for the asset.
 	//
-	// 	- **normal**: indicates that no DDoS attacks are launched against the asset.
+	// - **normal**: indicates that no DDoS attacks are launched against the asset.
 	//
 	// example:
 	//
@@ -214,9 +232,9 @@ type DescribeInstanceIpAddressResponseBodyInstanceListIpAddressConfig struct {
 	IpStatus *string `json:"IpStatus,omitempty" xml:"IpStatus,omitempty"`
 	// The IP version of the IP address. Valid values:
 	//
-	// 	- **v4**: IPv4.
+	// - **v4**: IPv4.
 	//
-	// 	- **v6**: IPv6.
+	// - **v6**: IPv6.
 	//
 	// example:
 	//
@@ -224,9 +242,9 @@ type DescribeInstanceIpAddressResponseBodyInstanceListIpAddressConfig struct {
 	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
 	// Indicates whether the asset is added to the instance. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -234,9 +252,9 @@ type DescribeInstanceIpAddressResponseBodyInstanceListIpAddressConfig struct {
 	IsBgppack *bool `json:"IsBgppack,omitempty" xml:"IsBgppack,omitempty"`
 	// Indicates whether best-effort protection is enabled for the asset. Valid values:
 	//
-	// 	- **0**: no.
+	// - **0**: no.
 	//
-	// 	- **1**: yes.
+	// - **1**: yes.
 	//
 	// example:
 	//
