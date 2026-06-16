@@ -20,6 +20,8 @@ type iCreateExternalCACertificateResponseBody interface {
 }
 
 type CreateExternalCACertificateResponseBody struct {
+	// The content of the certificate.
+	//
 	// example:
 	//
 	// -----BEGIN CERTIFICATE-----
@@ -36,6 +38,8 @@ type CreateExternalCACertificateResponseBody struct {
 	//
 	// -----END CERTIFICATE-----
 	Certificate *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
+	// The CA certificate chain.
+	//
 	// example:
 	//
 	// -----BEGIN CERTIFICATE-----
@@ -54,10 +58,14 @@ type CreateExternalCACertificateResponseBody struct {
 	//
 	// -----END CERTIFICATE-----
 	CertificateChain *string `json:"CertificateChain,omitempty" xml:"CertificateChain,omitempty"`
+	// The unique identifier for the certificate.
+	//
 	// example:
 	//
 	// 1ed4068c-6f1b-6deb-8e32-3f8439a851cb
 	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 12345678-1234-1234-1234-123456789ABC

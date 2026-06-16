@@ -22,19 +22,28 @@ type iListPcaCaCertificateResponseBody interface {
 }
 
 type ListPcaCaCertificateResponseBody struct {
+	// The list of CA certificates.
 	List []*ListPcaCaCertificateResponseBodyList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// The maximum number of entries to return on each page.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token for the next page of results. Leave this parameter empty to start the query from the first page. If this parameter is not returned, all results have been returned.
+	//
 	// example:
 	//
 	// 1d2db86sca4384811e0b5e8707e68181f
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 12345678-1234-1234-1234-123456789ABC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries in the result set.
+	//
 	// example:
 	//
 	// 10
@@ -108,30 +117,44 @@ func (s *ListPcaCaCertificateResponseBody) Validate() error {
 }
 
 type ListPcaCaCertificateResponseBodyList struct {
+	// The certificate identifier. Use this identifier to query certificate details.
+	//
 	// example:
 	//
 	// 1ef78be5-******-b5ef0f0eba3d
 	CertIdentifier *string `json:"CertIdentifier,omitempty" xml:"CertIdentifier,omitempty"`
+	// The common name of the certificate. This value matches the CommonName field in the certificate Subject.
+	//
 	// example:
 	//
 	// Example Co., Ltd.
 	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	// The identifier of the issuer certificate. Use this identifier to query the issuer certificate.
+	//
 	// example:
 	//
 	// 1ef78be5-******-b5ef0f0eba3d
 	IssuerIdentifier *string `json:"IssuerIdentifier,omitempty" xml:"IssuerIdentifier,omitempty"`
+	// The ID of the private CA instance.
+	//
 	// example:
 	//
 	// cas_deposit-cn-******
 	PrivateCaInstanceId *string `json:"PrivateCaInstanceId,omitempty" xml:"PrivateCaInstanceId,omitempty"`
+	// The region ID of the private CA instance.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	PrivateCaRegionId *string `json:"PrivateCaRegionId,omitempty" xml:"PrivateCaRegionId,omitempty"`
+	// The certificate status.
+	//
 	// example:
 	//
 	// ISSUE
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The Alibaba Cloud account ID.
+	//
 	// example:
 	//
 	// 166********

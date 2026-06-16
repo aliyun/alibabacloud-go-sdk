@@ -24,28 +24,38 @@ type iListTagResourcesRequest interface {
 }
 
 type ListTagResourcesRequest struct {
+	// The maximum number of entries to return for this call.
+	//
 	// example:
 	//
 	// 1000
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that is used to start the next query. If this parameter is empty, no more results exist.
+	//
 	// example:
 	//
 	// 1d2db86sca4384811e0b5e8707e68181f
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId   *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource ID.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// The resource type. Set the value to **instance**.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// instance
-	ResourceType *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tag          []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The information about the instances and tags that are queried.
+	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListTagResourcesRequest) String() string {
@@ -124,10 +134,14 @@ func (s *ListTagResourcesRequest) Validate() error {
 }
 
 type ListTagResourcesRequestTag struct {
+	// The key of the tag to query. You can specify multiple tag keys. n is a positive integer.
+	//
 	// example:
 	//
 	// testKey1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value. The value of n can be from 1 to 20.
+	//
 	// example:
 	//
 	// testValue1

@@ -26,8 +26,11 @@ type iCreateExternalCACertificateRequest interface {
 }
 
 type CreateExternalCACertificateRequest struct {
+	// Specifies API parameters that override content from the CSR or add information to the CA certificate.
 	ApiPassthrough *CreateExternalCACertificateRequestApiPassthrough `json:"ApiPassthrough,omitempty" xml:"ApiPassthrough,omitempty" type:"Struct"`
 	CertMaxTime    *int32                                            `json:"CertMaxTime,omitempty" xml:"CertMaxTime,omitempty"`
+	// The certificate signing request (CSR). The CSR can contain information such as the SubjectDN and custom extensions for the CA certificate. The CA generates the SubjectKeyIdentifier, AuthorityKeyIdentifier, and CRLDistributionPoints extensions, ignoring any corresponding values in the CSR.
+	//
 	// example:
 	//
 	// -----BEGIN CERTIFICATE REQUEST-----
@@ -40,12 +43,36 @@ type CreateExternalCACertificateRequest struct {
 	//
 	// -----END CERTIFICATE REQUEST-----
 	Csr *string `json:"Csr,omitempty" xml:"Csr,omitempty"`
+	// The ID of the external subordinate CA instance.
+	//
 	// example:
 	//
 	// cas_deposit-cn-1234abcd
-	InstanceId      *string                                   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ResourceGroupId *string                                   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Tags            []*CreateExternalCACertificateRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the resource group.
+	//
+	// example:
+	//
+	// test
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The tags to add to the certificate.
+	Tags []*CreateExternalCACertificateRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The certificate validity period. You can specify this using either relative or absolute time.
+	//
+	// > Relative time: Supported units are year, month, and day.
+	//
+	// - y - year
+	//
+	// - m - month
+	//
+	// - d - day
+	//
+	// > Absolute time: Use GMT time in the `yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\"` format.
+	//
+	// - To specify only the expiration time, use `$NotAfter`.
+	//
+	// - To specify both the start and expiration times, use `$NotBefore/$NotAfter`.
+	//
 	// example:
 	//
 	// 10y
@@ -142,8 +169,10 @@ func (s *CreateExternalCACertificateRequest) Validate() error {
 }
 
 type CreateExternalCACertificateRequestApiPassthrough struct {
+	// Specifies the extensions for the CA certificate. If specified, these values override the corresponding extensions in the CSR or are added to the CA certificate.
 	Extensions *CreateExternalCACertificateRequestApiPassthroughExtensions `json:"Extensions,omitempty" xml:"Extensions,omitempty" type:"Struct"`
-	Subject    *CreateExternalCACertificateRequestApiPassthroughSubject    `json:"Subject,omitempty" xml:"Subject,omitempty" type:"Struct"`
+	// The subject information for the CA certificate. If specified, this value overwrites the SubjectDN from the CSR.
+	Subject *CreateExternalCACertificateRequestApiPassthroughSubject `json:"Subject,omitempty" xml:"Subject,omitempty" type:"Struct"`
 }
 
 func (s CreateExternalCACertificateRequestApiPassthrough) String() string {
@@ -187,7 +216,10 @@ func (s *CreateExternalCACertificateRequestApiPassthrough) Validate() error {
 }
 
 type CreateExternalCACertificateRequestApiPassthroughExtensions struct {
+	// The extended key usages.
 	ExtendedKeyUsages []*string `json:"ExtendedKeyUsages,omitempty" xml:"ExtendedKeyUsages,omitempty" type:"Repeated"`
+	// The certificate path length constraint. For an end-entity CA, set this parameter to 0. A value of 0 indicates the CA will issue end-entity certificates.
+	//
 	// example:
 	//
 	// 0
@@ -225,15 +257,42 @@ func (s *CreateExternalCACertificateRequestApiPassthroughExtensions) Validate() 
 }
 
 type CreateExternalCACertificateRequestApiPassthroughSubject struct {
+	// The name of the CA certificate.
+	//
+	// example:
+	//
+	// Testing CA
 	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	// The two-letter country code (ISO 3166-1).
+	//
 	// example:
 	//
 	// CN
-	Country          *string `json:"Country,omitempty" xml:"Country,omitempty"`
-	Locality         *string `json:"Locality,omitempty" xml:"Locality,omitempty"`
-	Organization     *string `json:"Organization,omitempty" xml:"Organization,omitempty"`
+	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	// The city or region.
+	//
+	// example:
+	//
+	// Hangzhou
+	Locality *string `json:"Locality,omitempty" xml:"Locality,omitempty"`
+	// The organization or company.
+	//
+	// example:
+	//
+	// Alibaba
+	Organization *string `json:"Organization,omitempty" xml:"Organization,omitempty"`
+	// The organizational subdivision, such as a department, team, project group, or branch.
+	//
+	// example:
+	//
+	// Cloud Security
 	OrganizationUnit *string `json:"OrganizationUnit,omitempty" xml:"OrganizationUnit,omitempty"`
-	State            *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The state or province.
+	//
+	// example:
+	//
+	// Zhejiang
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 
 func (s CreateExternalCACertificateRequestApiPassthroughSubject) String() string {
@@ -303,7 +362,17 @@ func (s *CreateExternalCACertificateRequestApiPassthroughSubject) Validate() err
 }
 
 type CreateExternalCACertificateRequestTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag\\"s key.
+	//
+	// example:
+	//
+	// database
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag\\"s value.
+	//
+	// example:
+	//
+	// 1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

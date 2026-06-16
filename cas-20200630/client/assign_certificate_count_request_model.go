@@ -16,10 +16,14 @@ type iAssignCertificateCountRequest interface {
 }
 
 type AssignCertificateCountRequest struct {
+	// The total number of certificate records.
+	//
 	// example:
 	//
 	// 5
 	CertTotalCount *int32 `json:"CertTotalCount,omitempty" xml:"CertTotalCount,omitempty"`
+	// The ID of the data source.
+	//
 	// example:
 	//
 	// 33285

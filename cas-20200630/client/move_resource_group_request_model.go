@@ -20,22 +20,30 @@ type iMoveResourceGroupRequest interface {
 }
 
 type MoveResourceGroupRequest struct {
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the destination resource group.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rg-acfmykgxu5d46ey
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The ID of the resource to move.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cas-cn-4591d3xa****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The type of the resource. Set the value to **instance**.
+	//
 	// This parameter is required.
 	//
 	// example:

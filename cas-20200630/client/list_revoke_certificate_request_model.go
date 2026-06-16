@@ -16,13 +16,13 @@ type iListRevokeCertificateRequest interface {
 }
 
 type ListRevokeCertificateRequest struct {
-	// The number of the page to return. Default value: **1**.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of revoked certificates to return on each page. Default value: **20**.
+	// The number of entries to return on each page. Default value: 20.
 	//
 	// example:
 	//

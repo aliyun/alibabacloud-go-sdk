@@ -26,8 +26,11 @@ type iCreateExternalCACertificateShrinkRequest interface {
 }
 
 type CreateExternalCACertificateShrinkRequest struct {
+	// Specifies API parameters that override content from the CSR or add information to the CA certificate.
 	ApiPassthroughShrink *string `json:"ApiPassthrough,omitempty" xml:"ApiPassthrough,omitempty"`
 	CertMaxTime          *int32  `json:"CertMaxTime,omitempty" xml:"CertMaxTime,omitempty"`
+	// The certificate signing request (CSR). The CSR can contain information such as the SubjectDN and custom extensions for the CA certificate. The CA generates the SubjectKeyIdentifier, AuthorityKeyIdentifier, and CRLDistributionPoints extensions, ignoring any corresponding values in the CSR.
+	//
 	// example:
 	//
 	// -----BEGIN CERTIFICATE REQUEST-----
@@ -40,12 +43,36 @@ type CreateExternalCACertificateShrinkRequest struct {
 	//
 	// -----END CERTIFICATE REQUEST-----
 	Csr *string `json:"Csr,omitempty" xml:"Csr,omitempty"`
+	// The ID of the external subordinate CA instance.
+	//
 	// example:
 	//
 	// cas_deposit-cn-1234abcd
-	InstanceId      *string                                         `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ResourceGroupId *string                                         `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Tags            []*CreateExternalCACertificateShrinkRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the resource group.
+	//
+	// example:
+	//
+	// test
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The tags to add to the certificate.
+	Tags []*CreateExternalCACertificateShrinkRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The certificate validity period. You can specify this using either relative or absolute time.
+	//
+	// > Relative time: Supported units are year, month, and day.
+	//
+	// - y - year
+	//
+	// - m - month
+	//
+	// - d - day
+	//
+	// > Absolute time: Use GMT time in the `yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\"` format.
+	//
+	// - To specify only the expiration time, use `$NotAfter`.
+	//
+	// - To specify both the start and expiration times, use `$NotBefore/$NotAfter`.
+	//
 	// example:
 	//
 	// 10y
@@ -137,7 +164,17 @@ func (s *CreateExternalCACertificateShrinkRequest) Validate() error {
 }
 
 type CreateExternalCACertificateShrinkRequestTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag\\"s key.
+	//
+	// example:
+	//
+	// database
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag\\"s value.
+	//
+	// example:
+	//
+	// 1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

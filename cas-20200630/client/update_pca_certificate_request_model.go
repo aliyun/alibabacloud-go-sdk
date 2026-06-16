@@ -22,23 +22,34 @@ type iUpdatePcaCertificateRequest interface {
 }
 
 type UpdatePcaCertificateRequest struct {
+	// The alias of the certificate.
+	//
 	// example:
 	//
 	// cert-name
 	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	// A client token used to ensure the idempotence of the request. The client generates this value to make sure that it is unique among different requests. The token can be a maximum of 64 ASCII characters and cannot contain non-ASCII characters.
+	//
 	// example:
 	//
 	// XXX
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The unique identifier of the CA certificate.
+	//
+	// > Call [DescribeCACertificateList](https://help.aliyun.com/document_detail/328095.html) to query the unique identifiers of all CA certificates.
+	//
 	// example:
 	//
 	// 160ae6bb538d538c70c01f81dcf2****
 	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+	// The ID of the resource group.
+	//
 	// example:
 	//
 	// rg-ae******4wia
-	ResourceGroupId *string                            `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Tags            []*UpdatePcaCertificateRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// A list of tags.
+	Tags []*UpdatePcaCertificateRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s UpdatePcaCertificateRequest) String() string {
@@ -108,10 +119,14 @@ func (s *UpdatePcaCertificateRequest) Validate() error {
 }
 
 type UpdatePcaCertificateRequestTags struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// runtime
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// test

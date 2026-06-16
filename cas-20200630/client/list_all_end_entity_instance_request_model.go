@@ -24,26 +24,38 @@ type iListAllEndEntityInstanceRequest interface {
 }
 
 type ListAllEndEntityInstanceRequest struct {
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The maximum number of entries to return for this call.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that is used to retrieve the next page of results. You can get this token from the \\`NextToken\\` response parameter of the previous query.
+	//
 	// example:
 	//
 	// 1d2db86sca4384811e0b5e8707e68181f
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the parent instance.
+	//
 	// example:
 	//
 	// 37633
 	ParentId *int64 `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	// Specifies whether to return information about the billing type in the response. Valid values: -**0**: The information is not returned. -**1**: The information is returned.
+	//
 	// example:
 	//
 	// 9
 	RecursiveChildren *int32 `json:"RecursiveChildren,omitempty" xml:"RecursiveChildren,omitempty"`
+	// The number of entries to return on each page. Default value: 20.
+	//
 	// example:
 	//
 	// 20

@@ -32,39 +32,72 @@ type iListCertRequest interface {
 }
 
 type ListCertRequest struct {
+	// Filters certificates modified after this date.
+	//
 	// example:
 	//
 	// 2024-05-13 12:59:45
 	AfterDate *string `json:"AfterDate,omitempty" xml:"AfterDate,omitempty"`
+	// Filters certificates modified before this date.
+	//
 	// example:
 	//
 	// 2025-09-04
 	BeforeDate *string `json:"BeforeDate,omitempty" xml:"BeforeDate,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The UUID of the instance.
+	//
 	// example:
 	//
 	// 1ef79512-569b-6a4e-9105-9b91473562f7
 	InstanceUuid *string `json:"InstanceUuid,omitempty" xml:"InstanceUuid,omitempty"`
+	// The maximum number of entries to return.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token used to retrieve the next page of results. This is the NextToken value from a previous response. If unspecified, the first page is returned.
+	//
 	// example:
 	//
 	// 1d2db86sca4384811e0b5e8707e68181f
-	NextToken        *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The identifier of the intermediate CA that issued the certificate.
+	//
+	// example:
+	//
+	// 273ae6bb538d538c70c01f81jh2****
 	ParentIdentifier *string `json:"ParentIdentifier,omitempty" xml:"ParentIdentifier,omitempty"`
+	// The page size. Default value: 50.
+	//
 	// example:
 	//
 	// 50
 	ShowSize *int32 `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
+	// The status of the certificate. Valid values:
+	//
+	// - ISSUE: Active
+	//
+	// - REVOKE: Revoked
+	//
 	// example:
 	//
 	// ISSUE
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The certificate type. Valid values:
+	//
+	// - SERVER: Server certificate
+	//
+	// - CLIENT: Client certificate
+	//
+	// - END_ENTITY: End-entity certificate
+	//
 	// example:
 	//
 	// CLIENT

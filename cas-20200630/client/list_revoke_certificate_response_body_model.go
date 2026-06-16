@@ -24,7 +24,7 @@ type iListRevokeCertificateResponseBody interface {
 }
 
 type ListRevokeCertificateResponseBody struct {
-	// An array that consists of the details about the revoked client certificates or server certificates.
+	// The details of the revoked client or server-side certificates.
 	CertificateList []*ListRevokeCertificateResponseBodyCertificateList `json:"CertificateList,omitempty" xml:"CertificateList,omitempty" type:"Repeated"`
 	// The page number of the current page.
 	//
@@ -44,13 +44,13 @@ type ListRevokeCertificateResponseBody struct {
 	//
 	// 15C66C7B-671A-4297-9187-2C4477247A74
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of revoked certificates that are returned per page.
+	// The number of revoked certificates on each page.
 	//
 	// example:
 	//
 	// 20
 	ShowSize *int32 `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
-	// The total number of revoked client certificates and server certificates that are returned.
+	// The total number of revoked client and server-side certificates.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ func (s *ListRevokeCertificateResponseBody) Validate() error {
 }
 
 type ListRevokeCertificateResponseBodyCertificateList struct {
-	// The expiration date of the certificate. The date is in the `yyyy-MM-ddT00:00Z` format. For example, the value `2021-12-31T00:00Z` indicates December 31, 2021.
+	// The expiration date of the certificate. The format is `yyyy-MM-ddT00:00Z`. For example, `2021-12-31T00:00Z` indicates December 31, 2021.
 	//
 	// example:
 	//
@@ -142,17 +142,17 @@ type ListRevokeCertificateResponseBodyCertificateList struct {
 	AfterDate *string `json:"AfterDate,omitempty" xml:"AfterDate,omitempty"`
 	// The type of the encryption algorithm of the certificate. Valid values:
 	//
-	// 	- **RSA**: the Rivest-Shamir-Adleman (RSA) algorithm.
+	// - **RSA**: the RSA algorithm.
 	//
-	// 	- **ECC**: the elliptic curve cryptography (ECC) algorithm.
+	// - **ECC**: the ECC algorithm.
 	//
-	// 	- **SM2**: the SM2 algorithm, which is developed and approved by the State Cryptography Administration of China.
+	// - **SM2**: the SM2 algorithm.
 	//
 	// example:
 	//
 	// RSA
 	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
-	// The issuance date of the certificate. The date is in the `yyyy-MM-ddT00:00Z` format. For example, the value `2021-01-01T00:00Z` indicates January 1, 2021.
+	// The date when the certificate was issued. The format is `yyyy-MM-ddT00:00Z`. For example, `2021-01-01T00:00Z` indicates January 1, 2021.
 	//
 	// example:
 	//
@@ -170,14 +170,19 @@ type ListRevokeCertificateResponseBodyCertificateList struct {
 	//
 	// aliyundoc.com
 	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
-	// The code of the country in which the organization is located. The organization is associated with the intermediate certificate from which the certificate is issued.
+	// The country code of the organization that is associated with the subordinate CA certificate that issued the certificate.
 	//
-	// For more information about country codes, see the **"Country codes"*	- section of the [Manage company profiles](https://help.aliyun.com/document_detail/198289.html) topic.
+	// For more information about country codes, see the "Country codes" section in [Manage company information](https://help.aliyun.com/document_detail/198289.html).
 	//
 	// example:
 	//
 	// CN
-	CountryCode      *string `json:"CountryCode,omitempty" xml:"CountryCode,omitempty"`
+	CountryCode *string `json:"CountryCode,omitempty" xml:"CountryCode,omitempty"`
+	// The custom identifier. This is a unique key.
+	//
+	// example:
+	//
+	// ****48d8d3ecc9976d9ecd2b2f25****
 	CustomIdentifier *string `json:"CustomIdentifier,omitempty" xml:"CustomIdentifier,omitempty"`
 	// The unique identifier of the certificate.
 	//
@@ -191,7 +196,7 @@ type ListRevokeCertificateResponseBodyCertificateList struct {
 	//
 	// 4096
 	KeySize *int32 `json:"KeySize,omitempty" xml:"KeySize,omitempty"`
-	// The name of the city in which the organization is located. The organization is associated with the intermediate certificate from which the certificate is issued.
+	// The name of the city where the organization of the subordinate CA certificate that issued the certificate is located.
 	//
 	// example:
 	//
@@ -203,45 +208,45 @@ type ListRevokeCertificateResponseBodyCertificateList struct {
 	//
 	// 05e148d8d3ecc9976d9ecd2b2f25****
 	Md5 *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
-	// The name of the organization. The organization is associated with the intermediate certificate from which the certificate is issued.
+	// The name of the organization that is associated with the subordinate CA certificate that issued the certificate.
 	//
 	// example:
 	//
-	// Alibaba Cloud Computing Co., Ltd.
+	// 阿里云计算有限公司
 	Organization *string `json:"Organization,omitempty" xml:"Organization,omitempty"`
-	// The name of the department in the organization. The organization is associated with the intermediate certificate authority (CA) certificate from which the certificate is issued.
+	// The name of the department of the organization that is associated with the subordinate CA certificate that issued the certificate.
 	//
 	// example:
 	//
 	// Security
 	OrganizationUnit *string `json:"OrganizationUnit,omitempty" xml:"OrganizationUnit,omitempty"`
-	// The identifier of the root certificate.
+	// The identifier of the parent certificate.
 	//
 	// example:
 	//
 	// 160ae6bb538d538c70c01f81dcf2****
 	ParentIdentifier *string `json:"ParentIdentifier,omitempty" xml:"ParentIdentifier,omitempty"`
-	// The date on which the certificate was revoked. The value is in the `yyyy-MM-ddT00:00Z` format. For example, the value `2021-09-01T00:00Z` indicates September 1, 2021.
+	// The date when the certificate was revoked. The format is `yyyy-MM-ddT00:00Z`. For example, `2021-09-01T00:00Z` indicates September 1, 2021.
 	//
 	// example:
 	//
 	// 2021-09-01T00:00Z
 	RevokeDate *string `json:"RevokeDate,omitempty" xml:"RevokeDate,omitempty"`
-	// The subject alternative name (SAN) extension of the certificate.
+	// The Subject Alternative Name (SAN) extension of the certificate.
 	//
-	// The value is a string that consists of JSON arrays. Each element in a JSON array is a JSON struct that corresponds to a SAN extension. A SAN extension struct contains the following parameters:
+	// This parameter is a string that is converted from a JSON array. Each element in the JSON array is a struct that corresponds to a SAN extension. Each SAN extension struct contains the following parameters:
 	//
-	// 	- **Type**: the type of the extension. Data type: integer. Valid values:
+	// - **Type**: The type of the extension. This parameter is of the integer type. Valid values:
 	//
-	//     	- **1**: an email address
+	//   - **1**: an email address.
 	//
-	//     	- **2**: a domain name
+	//   - **2**: a domain name.
 	//
-	//     	- **6**: a Uniform Resource Identifier (URI)
+	//   - **6**: a Uniform Resource Identifier (URI).
 	//
-	//     	- **7**: an IP address
+	//   - **7**: an IP address.
 	//
-	// 	- **Value**: the value of the extension. Data type: string.
+	// - **Value**: The content of the extension. This parameter is of the string type.
 	//
 	// example:
 	//
@@ -265,35 +270,47 @@ type ListRevokeCertificateResponseBodyCertificateList struct {
 	//
 	// SHA256WITHRSA
 	SignAlgorithm *string `json:"SignAlgorithm,omitempty" xml:"SignAlgorithm,omitempty"`
-	// The name of the province, municipality, or autonomous region in which the organization is located. The organization is associated with the intermediate certificate from which the certificate is issued.
+	// The name of the province or state of the organization that is associated with the subordinate CA certificate that issued the certificate.
 	//
 	// example:
 	//
 	// Zhejiang
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The status.
+	// The status of the certificate.
 	//
 	// example:
 	//
 	// ISSUE
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The distinguished name (DN) extension of the certificate, which indicates the user of the certificate. The DN extension includes the following information:
+	// The Distinguished Name (DN) of the certificate. The DN indicates the user of the certificate and contains the following information:
 	//
-	// 	- **C**: the country
+	// - **C**: The country.
 	//
-	// 	- **O**: the organization
+	// - **O**: The organization.
 	//
-	// 	- **OU**: the department
+	// - **OU**: The department.
 	//
-	// 	- **L**: the city
+	// - **CN**: The common name.
 	//
-	// 	- **ST**: the province, municipality, or autonomous region
+	// <props="china">
 	//
-	// 	- **CN**: the common name
+	// - **ST**: The province, municipality, or autonomous region.
+	//
+	//
+	//
+	//
+	// <props="intl">
+	//
+	// - **ST**: The province or state.
+	//
+	//
+	//
+	//
+	// - **CN**: The common name.
 	//
 	// example:
 	//
-	// C=CN,O=Alibaba Cloud Computing Co., Ltd.,OU=Security,L=ZheJiang,ST=HangZhou,CN=aliyundoc.com
+	// C=CN,O=阿里云计算有限公司,OU=Security,L=ZheJiang,ST=HangZhou,CN=aliyundoc.com
 	SubjectDN *string `json:"SubjectDN,omitempty" xml:"SubjectDN,omitempty"`
 }
 

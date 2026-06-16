@@ -30,9 +30,9 @@ type iCreateCustomCertificateRequest interface {
 }
 
 type CreateCustomCertificateRequest struct {
-	// The passthrough parameters.
+	// Pass-through parameters.
 	ApiPassthrough *CreateCustomCertificateRequestApiPassthrough `json:"ApiPassthrough,omitempty" xml:"ApiPassthrough,omitempty" type:"Struct"`
-	// The content of the CSR. You can generate a CSR by using the OpenSSL tool or the Keytool tool. For more information, see [How do I create a CSR file?](https://help.aliyun.com/document_detail/42218.html)
+	// The content of the CSR. You can generate a CSR using tools such as OpenSSL or Keytool. For more information, see [Create a CSR file](https://help.aliyun.com/document_detail/42218.html).
 	//
 	// This parameter is required.
 	//
@@ -52,72 +52,83 @@ type CreateCustomCertificateRequest struct {
 	//
 	// -----END CERTIFICATE REQUEST-----
 	Csr *string `json:"Csr,omitempty" xml:"Csr,omitempty"`
-	// include the CRL address.
+	// Specifies whether to include a CRL address.
 	//
-	// - 0- No
+	// - 0 - No
 	//
-	// - 1- Yes
+	// - 1 - Yes
 	//
 	// example:
 	//
 	// 1
 	EnableCrl *int64 `json:"EnableCrl,omitempty" xml:"EnableCrl,omitempty"`
-	// Specifies whether to immediately issue the certificate. Valid values:
+	// Obtain the certificate immediately.
 	//
-	// 	- 0: asynchronously issues the certificate.
+	// - 0 - Issue the certificate asynchronously.
 	//
-	// 	- 1: immediately issues the certificate.
+	// - 1 - Issue the certificate immediately.
 	//
-	// 	- 2: immediately issues the certificate and returns the certificate chain.
+	// - 2 - Issue the certificate immediately and return the CA certificate chain.
 	//
 	// example:
 	//
 	// 0
 	Immediately *int32 `json:"Immediately,omitempty" xml:"Immediately,omitempty"`
-	// The identifier of the certificate.
+	// The identifier of the CA certificate.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1ed4068c-6f1b-6deb-8e32-3f8439a851cb
-	ParentIdentifier *string                               `json:"ParentIdentifier,omitempty" xml:"ParentIdentifier,omitempty"`
-	ResourceGroupId  *string                               `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Tags             []*CreateCustomCertificateRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The validity period of the certificate. The value cannot exceed the validity period of the certificate instance. Relative time and absolute time are supported.
+	ParentIdentifier *string `json:"ParentIdentifier,omitempty" xml:"ParentIdentifier,omitempty"`
+	// The ID of the resource group. You can obtain this ID by calling the [ListResources](https://help.aliyun.com/document_detail/2716559.html) operation.
 	//
-	// Units of relative time: year, month, and day.
+	// example:
 	//
-	// 	- Use y to specify years.
+	// rg-aek****wia
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The list of tags.
+	Tags []*CreateCustomCertificateRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The validity period of the certificate. This period cannot exceed the validity period of the instance. You can use relative time or absolute time.
 	//
-	// 	- Use m to specify months.
+	// Relative time: Supports years, months, and days.
 	//
-	// 	- Use d to specify days.
+	// - Year - y
 	//
-	// Absolute time: Use Greenwich Mean Time (GMT). Format: `yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\"`
+	// - Month - m
 	//
-	// 	- Format of the end time: $NotAfter
+	// - Day - d
 	//
-	// 	- Format of the start time and end time: $NotBefore/$NotAfter
+	// Absolute time: Uses GMT. Format: `yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\"`
+	//
+	// - Specify the end time - $NotAfter
+	//
+	// - Specify the start and end times - $NotBefore/$NotAfter
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// Relative time:
+	// 相对时间：
 	//
-	//  ● 1y
+	// ● 1y
 	//
-	//  ● 3m
+	// ● 3m
 	//
-	//  ● 7d
+	// ● 7d
 	//
-	// Absolute time:
+	// 绝对时间：
 	//
 	// ● 2006-01-02T15:04:05Z
 	//
 	// ● 2006-01-02T15:04:05Z/2023-03-09T17:48:13Z
-	Validity         *string `json:"Validity,omitempty" xml:"Validity,omitempty"`
+	Validity *string `json:"Validity,omitempty" xml:"Validity,omitempty"`
+	// A custom identifier.
+	//
+	// example:
+	//
+	// XXX068c-6f1b-6deb-8e32-3f8439a8XXX
 	CustomIdentifier *string `json:"customIdentifier,omitempty" xml:"customIdentifier,omitempty"`
 }
 
@@ -229,15 +240,15 @@ func (s *CreateCustomCertificateRequest) Validate() error {
 }
 
 type CreateCustomCertificateRequestApiPassthrough struct {
-	// The extensions of the certificate.
+	// The certificate extensions.
 	Extensions *CreateCustomCertificateRequestApiPassthroughExtensions `json:"Extensions,omitempty" xml:"Extensions,omitempty" type:"Struct"`
-	// The serial number MUST be a positive integer assigned by the CA to each certificate.
+	// The custom serial number of the certificate. Must be a long integer.
 	//
 	// example:
 	//
 	// 16889526086333
 	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
-	// The name of the entity that uses the certificate.
+	// The certificate subject.
 	Subject *CreateCustomCertificateRequestApiPassthroughSubject `json:"Subject,omitempty" xml:"Subject,omitempty" type:"Struct"`
 }
 
@@ -291,13 +302,13 @@ func (s *CreateCustomCertificateRequestApiPassthrough) Validate() error {
 }
 
 type CreateCustomCertificateRequestApiPassthroughExtensions struct {
-	// If it is a necessary parameter, the critical list contains the parameter name.
+	// If an extension is critical, its name is included in the criticals list.
 	Criticals []*string `json:"Criticals,omitempty" xml:"Criticals,omitempty" type:"Repeated"`
-	// The extended key usage.
+	// The extended key usages.
 	ExtendedKeyUsages []*string `json:"ExtendedKeyUsages,omitempty" xml:"ExtendedKeyUsages,omitempty" type:"Repeated"`
 	// The key usage.
 	KeyUsage *CreateCustomCertificateRequestApiPassthroughExtensionsKeyUsage `json:"KeyUsage,omitempty" xml:"KeyUsage,omitempty" type:"Struct"`
-	// The aliases of the entities.
+	// The subject alternative names (SANs) of the certificate.
 	SubjectAlternativeNames []*CreateCustomCertificateRequestApiPassthroughExtensionsSubjectAlternativeNames `json:"SubjectAlternativeNames,omitempty" xml:"SubjectAlternativeNames,omitempty" type:"Repeated"`
 }
 
@@ -364,49 +375,49 @@ func (s *CreateCustomCertificateRequestApiPassthroughExtensions) Validate() erro
 }
 
 type CreateCustomCertificateRequestApiPassthroughExtensionsKeyUsage struct {
-	// The original name of the parameter is NonRepudiation.
+	// Content commitment. Formerly known as NonRepudiation. Allows the certificate key to be used for content commitment.
 	//
 	// example:
 	//
 	// false
 	ContentCommitment *bool `json:"ContentCommitment,omitempty" xml:"ContentCommitment,omitempty"`
-	// Specifies whether the key can be used for data encryption.
+	// Data encipherment.
 	//
 	// example:
 	//
 	// false
 	DataEncipherment *bool `json:"DataEncipherment,omitempty" xml:"DataEncipherment,omitempty"`
-	// Specifies whether the key can be used only for data decryption.
+	// When KeyAgreement is true, this marks that the certificate key can only be used for decryption.
 	//
 	// example:
 	//
 	// false
 	DecipherOnly *bool `json:"DecipherOnly,omitempty" xml:"DecipherOnly,omitempty"`
-	// Specifies whether the key can be used for digital signing. If you set this parameter to true, the private key of the certificate can be used to generate digital signatures, and the public key of the certificate can be used to verify digital signatures.
+	// Digital signature. Allows the private key of the certificate to be used for digital signatures and the public key to be used to verify digital signatures.
 	//
 	// example:
 	//
 	// true
 	DigitalSignature *bool `json:"DigitalSignature,omitempty" xml:"DigitalSignature,omitempty"`
-	// Specifies whether the key can be used only for data encryption.
+	// When KeyAgreement is true, this marks that the certificate key can only be used for encryption.
 	//
 	// example:
 	//
 	// false
 	EncipherOnly *bool `json:"EncipherOnly,omitempty" xml:"EncipherOnly,omitempty"`
-	// Specifies whether the key can be used for key agreement.
+	// Key agreement.
 	//
 	// example:
 	//
 	// false
 	KeyAgreement *bool `json:"KeyAgreement,omitempty" xml:"KeyAgreement,omitempty"`
-	// Specifies whether the key can be used for data encipherment.
+	// Key encipherment. Allows the certificate key to be used to encrypt other keys.
 	//
 	// example:
 	//
 	// false
 	KeyEncipherment *bool `json:"KeyEncipherment,omitempty" xml:"KeyEncipherment,omitempty"`
-	// Specifies whether the key can be used for non-repudiation. This parameter is renamed ContentCommitment in the X.509 standard.
+	// Non-repudiation. This has been renamed to ContentCommitment in the X.509 standard.
 	//
 	// example:
 	//
@@ -499,15 +510,15 @@ func (s *CreateCustomCertificateRequestApiPassthroughExtensionsKeyUsage) Validat
 }
 
 type CreateCustomCertificateRequestApiPassthroughExtensionsSubjectAlternativeNames struct {
-	// The type of the alias. Valid values:
+	// The following values are allowed:
 	//
-	// 	- rfc822Name: email address
+	// - rfc822Name - Email address
 	//
-	// 	- dNSName: domain name
+	// - dNSName - Domain name
 	//
-	// 	- uniformResourceIdentifier: URI
+	// - uniformResourceIdentifier - Uniform Resource Identifier (URI)
 	//
-	// 	- iPAddress: IP address
+	// - iPAddress - IP address
 	//
 	// This parameter is required.
 	//
@@ -515,17 +526,17 @@ type CreateCustomCertificateRequestApiPassthroughExtensionsSubjectAlternativeNam
 	//
 	// dNSName
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The alias that meets the requirement of a specified type.
+	// A value that matches the specified Type.
 	//
 	// example:
 	//
 	// rfc822Name:
 	//
-	// exmaple@certqa.cn
+	// example.aliyundoc.com
 	//
 	// dNSName:
 	//
-	// www.certqa.cn
+	// learn.aliyundoc.com
 	//
 	// uniformResourceIdentifier:
 	//
@@ -572,39 +583,39 @@ type CreateCustomCertificateRequestApiPassthroughSubject struct {
 	//
 	// example:
 	//
-	// Bob
+	// 张三
 	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
-	// The code of the country. The value is an alpha-2 country code that complies with the ISO 3166-1 standard. For more information about country codes, visit <https://www.iso.org/obp/ui/#search/code/>.
+	// The country code. Use the two-letter country code from ISO 3166-1. For more information, see [ISO](https://www.iso.org/obp/ui/#search/code/).
 	//
 	// example:
 	//
 	// CN
 	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
-	// Customize the Subject attributes of the certificate.
+	// The custom subject properties of the certificate.
 	CustomAttributes []*CreateCustomCertificateRequestApiPassthroughSubjectCustomAttributes `json:"CustomAttributes,omitempty" xml:"CustomAttributes,omitempty" type:"Repeated"`
-	// The name of the city in which the organization is located. The value can contain letters.
+	// The name of the city where the organization is located. Chinese characters and letters are supported.
 	//
 	// example:
 	//
-	// Hangzhou
+	// 杭州市
 	Locality *string `json:"Locality,omitempty" xml:"Locality,omitempty"`
 	// The name of the organization.
 	//
 	// example:
 	//
-	// XXX company
+	// XXX公司
 	Organization *string `json:"Organization,omitempty" xml:"Organization,omitempty"`
-	// The name of the department or branch in the organization.
+	// The name of the department or branch within the organization.
 	//
 	// example:
 	//
-	// XXX department
+	// XXX部门
 	OrganizationUnit *string `json:"OrganizationUnit,omitempty" xml:"OrganizationUnit,omitempty"`
-	// The name of the province or state in which the organization associated with the certificate is located.
+	// The province or state where the organization is located.
 	//
 	// example:
 	//
-	// Zhejiang
+	// 浙江省
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 
@@ -693,39 +704,39 @@ func (s *CreateCustomCertificateRequestApiPassthroughSubject) Validate() error {
 }
 
 type CreateCustomCertificateRequestApiPassthroughSubjectCustomAttributes struct {
-	// Custom attribute type as:
+	// The key of the custom property. It must comply with industry standards. Examples:
 	//
-	// - 2.5.4.6 : country
+	// - 2.5.4.6: Country code
 	//
-	// - 2.5.4.10 : organization
+	// - 2.5.4.10: Organization
 	//
-	// - 2.5.4.11 : organizational unit
+	// - 2.5.4.11: Organizational unit name
 	//
-	// - 2.5.4.12 : title
+	// - 2.5.4.12: Title
 	//
-	// - 2.5.4.3 : common name
+	// - 2.5.4.3: Common name
 	//
-	// - 2.5.4.9 : street
+	// - 2.5.4.9: Street
 	//
-	// - 2.5.4.5 : serial number
+	// - 2.5.4.5: Serial number
 	//
-	// - 2.5.4.7 : locality
+	// - 2.5.4.7: Locality
 	//
-	// - 2.5.4.8 : state
+	// - 2.5.4.8: State or province
 	//
-	// - 1.3.6.1.4.1.37244.1.1 : Matter Operational Certificate - Node ID
+	// - 1.3.6.1.4.1.37244.1.1: Matter certificate - Node ID
 	//
-	// - 1.3.6.1.4.1.37244.1.5 : Matter Operational Certificate - Fabric ID
+	// - 1.3.6.1.4.1.37244.1.5: Matter certificate - Fabric ID
 	//
-	// - 1.3.6.1.4.1.37244.2.1 : Matter Device Attestation Certificate Vender ID (VID)
+	// - 1.3.6.1.4.1.37244.2.1: Matter certificate Vendor ID (VID)
 	//
-	// - 1.3.6.1.4.1.37244.2.2 : Matter Device Attestation Certificate Product ID (PID).
+	// - 1.3.6.1.4.1.37244.2.2: Matter certificate Product ID (PID)
 	//
 	// example:
 	//
 	// 2.5.4.3
 	ObjectIdentifier *string `json:"ObjectIdentifier,omitempty" xml:"ObjectIdentifier,omitempty"`
-	// Custom attribute value.
+	// The value of the custom property.
 	//
 	// example:
 	//
@@ -764,7 +775,17 @@ func (s *CreateCustomCertificateRequestApiPassthroughSubjectCustomAttributes) Va
 }
 
 type CreateCustomCertificateRequestTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// testKey
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// 1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

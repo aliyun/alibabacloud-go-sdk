@@ -18,14 +18,20 @@ type iAssignCertificateCountResponseBody interface {
 }
 
 type AssignCertificateCountResponseBody struct {
+	// The number of assigned certificates.
+	//
 	// example:
 	//
 	// 2
 	CertCount *int32 `json:"CertCount,omitempty" xml:"CertCount,omitempty"`
+	// The number of free certificates for the current year.
+	//
 	// example:
 	//
 	// 0
 	CurrentYearFreeCertCount *int32 `json:"CurrentYearFreeCertCount,omitempty" xml:"CurrentYearFreeCertCount,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// E77C4794-F24F-58CB-9929-F0F0C0EDE7B2

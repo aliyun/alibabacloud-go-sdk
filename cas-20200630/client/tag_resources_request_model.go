@@ -20,21 +20,28 @@ type iTagResourcesRequest interface {
 }
 
 type TagResourcesRequest struct {
+	// The ID of the region.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The IDs of the resources.
+	//
 	// This parameter is required.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// The type of the resource. Set the value to **instance**.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// instance
-	ResourceType *string                   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tag          []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tags to add to the resources. You can specify up to 20 tags.
+	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s TagResourcesRequest) String() string {
@@ -95,10 +102,14 @@ func (s *TagResourcesRequest) Validate() error {
 }
 
 type TagResourcesRequestTag struct {
+	// The key of the tag.
+	//
 	// example:
 	//
 	// testKey1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag.
+	//
 	// example:
 	//
 	// testValue1

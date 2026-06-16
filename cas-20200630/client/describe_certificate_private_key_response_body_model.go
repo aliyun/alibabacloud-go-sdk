@@ -16,7 +16,7 @@ type iDescribeCertificatePrivateKeyResponseBody interface {
 }
 
 type DescribeCertificatePrivateKeyResponseBody struct {
-	// The content of the encrypted private key.
+	// The encrypted content of the private key.
 	//
 	// example:
 	//

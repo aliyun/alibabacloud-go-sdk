@@ -28,11 +28,11 @@ type iDescribeCACertificateListRequest interface {
 }
 
 type DescribeCACertificateListRequest struct {
-	// Ca status.
+	// The status of the CA. Valid values:
 	//
-	// - issue: inUse.
+	// - issue: enabled.
 	//
-	// - forbidden: forbidden.
+	// - forbidden: disabled.
 	//
 	// - revoke: revoked.
 	//
@@ -40,19 +40,19 @@ type DescribeCACertificateListRequest struct {
 	//
 	// issue
 	CaStatus *string `json:"CaStatus,omitempty" xml:"CaStatus,omitempty"`
-	// The type of the certificate. Valid values:
+	// The type of the CA. Valid values:
 	//
-	// - root: rootCA.
+	// - root: root CA.
 	//
-	// - subRoot: subCA.
+	// - subRoot: intermediate CA.
 	//
-	// - externalCa: import.
+	// - externalCa: an imported external CA.
 	//
 	// example:
 	//
 	// subRoot
 	CertType *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
-	// The page number. Default value: **1**.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
@@ -60,36 +60,41 @@ type DescribeCACertificateListRequest struct {
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The unique identifier of the CA certificate.
 	//
-	// >  You can call the [DescribeCACertificateList](https://help.aliyun.com/document_detail/328095.html) operation to query the unique identifiers of all CA certificates.
+	// > Call [DescribeCACertificateList](https://help.aliyun.com/document_detail/328095.html) to query the unique identifiers of all CA certificates.
 	//
 	// example:
 	//
-	// 160ae6bb538d538c70c01f81dcf2****
+	// 1ee47e24-c51b-67cc-aa6b-1f7561cf9d9a
 	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
-	// The CA Issuer Type.
+	// The issuer of the CA. Valid values:
 	//
-	// - local: Private certificate.
+	// - local: private certificate.
 	//
-	// - iTrusChina: Compliance CA.
+	// - iTrusChina: a trusted CA.
 	//
-	// - external: External Import.
+	// - external: an imported external CA.
 	//
 	// example:
 	//
 	// local
-	IssuerType      *string `json:"IssuerType,omitempty" xml:"IssuerType,omitempty"`
+	IssuerType *string `json:"IssuerType,omitempty" xml:"IssuerType,omitempty"`
+	// The resource group ID. You can obtain this ID by calling the [ListResources](https://help.aliyun.com/document_detail/2716559.html) operation.
+	//
+	// example:
+	//
+	// rg-ae******4wia
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The number of CA certificates per page. Default value: **20**.
+	// The number of entries to return on each page. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	ShowSize *int32 `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
-	// valid time.
+	// The validity status of the CA. Valid values:
 	//
-	// - valid: means in the valid period.
+	// - valid: The CA certificate is valid.
 	//
-	// - notValid: means expired.
+	// - notValid: The CA certificate has expired.
 	//
 	// example:
 	//

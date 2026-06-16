@@ -22,7 +22,7 @@ type DescribeCACertificateCountResponseBody struct {
 	//
 	// 15C66C7B-671A-4297-9187-2C4477247A74
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of created CA certificates, which includes root CA certificates and intermediate CA certificates.
+	// The total number of your CA certificates, including root and subordinate CA certificates.
 	//
 	// example:
 	//

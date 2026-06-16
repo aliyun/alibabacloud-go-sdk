@@ -16,8 +16,9 @@ type iUpdatePcaCertificateResponseBody interface {
 }
 
 type UpdatePcaCertificateResponseBody struct {
+	// The error details of the authorization.
 	AccessDeniedDetail *UpdatePcaCertificateResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -61,32 +62,50 @@ func (s *UpdatePcaCertificateResponseBody) Validate() error {
 }
 
 type UpdatePcaCertificateResponseBodyAccessDeniedDetail struct {
+	// The unauthorized operation that you attempted to perform.
+	//
 	// example:
 	//
 	// yundun-cert:XXX
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
+	// The identity that is used for authorization in the request. Valid values:
+	//
+	// - RAM user: UID of the RAM user
+	//
+	// - RAM role: RoleName:RoleSessionName
+	//
+	// - Federated user: ProviderType/ProviderName
+	//
 	// example:
 	//
 	// RoleSessionName
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
-	// AuthPrincipalOwnerId
+	// The ID of the Alibaba Cloud account to which the authorized principal belongs.
 	//
 	// example:
 	//
 	// 186XXX
 	AuthPrincipalOwnerId *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
+	// The type of the identity.
+	//
 	// example:
 	//
 	// SubUser
 	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
+	// The complete diagnostic information that is encrypted.
+	//
 	// example:
 	//
 	// AQEAAAAAaEjlETkzRkQ5QjVELTI3NTEtM0I2Ni1BM0E1LThBQUYzMkJBNEJCQg==
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
+	// The reason why the authorization failed. Valid values: ExplicitDeny: The authorization is explicitly denied. ImplicitDeny: The authorization is implicitly denied.
+	//
 	// example:
 	//
 	// ImplicitDeny
 	NoPermissionType *string `json:"NoPermissionType,omitempty" xml:"NoPermissionType,omitempty"`
+	// The type of the policy.
+	//
 	// example:
 	//
 	// Custom

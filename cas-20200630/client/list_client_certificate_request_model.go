@@ -20,22 +20,27 @@ type iListClientCertificateRequest interface {
 }
 
 type ListClientCertificateRequest struct {
-	// The number of the page to return. Default value: **1**.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The unique identifier of the client certificate or the server certificate that you want to query.
+	// The unique identifier of the client or server-side certificate that you want to query.
 	//
-	// >  You can call the [ListClientCertificate](https://help.aliyun.com/document_detail/330884.html) operation to query the unique identifiers of all client certificates and server certificates.
+	// > You can call [ListClientCertificate](https://help.aliyun.com/document_detail/330884.html) to query the unique identifiers of all client and server-side certificates.
 	//
 	// example:
 	//
-	// 190ae6bb538d538c70c01f81dcf2****
-	Identifier      *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+	// 160ae6bb538d538c70c01f81dcf2****
+	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+	// The ID of the resource group. Call the [ListResources](https://help.aliyun.com/document_detail/2716559.html) operation to obtain this ID.
+	//
+	// example:
+	//
+	// rg-ae******4wia
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The number of certificates to return on each page. Default value: **20**.
+	// The number of entries to return on each page. Default value: 20.
 	//
 	// example:
 	//

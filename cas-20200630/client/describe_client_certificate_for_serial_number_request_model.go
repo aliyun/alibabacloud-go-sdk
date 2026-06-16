@@ -14,6 +14,10 @@ type iDescribeClientCertificateForSerialNumberRequest interface {
 }
 
 type DescribeClientCertificateForSerialNumberRequest struct {
+	// The serial numbers of the client or server certificates. Separate multiple serial numbers with a comma.
+	//
+	// > Call [ListClientCertificate](https://help.aliyun.com/document_detail/330884.html) to query the serial numbers of all client and server certificates.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -28,31 +28,46 @@ type iListCertResponseBody interface {
 }
 
 type ListCertResponseBody struct {
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
-	CurrentPage *int32                      `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	List        []*ListCertResponseBodyList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The list of certificates.
+	List []*ListCertResponseBodyList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// The maximum number of entries returned.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// A token to retrieve the next page of results. If this value is empty, all results have been returned.
+	//
 	// example:
 	//
 	// 1d2db86sca4384811e0b5e8707e68181f
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The number of pages.
+	//
 	// example:
 	//
 	// 1
 	PageCount *int32 `json:"PageCount,omitempty" xml:"PageCount,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 15C66C7B-671A-4297-9187-2C4477247A74
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 50
 	ShowSize *int32 `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
+	// The total number of certificates.
+	//
 	// example:
 	//
 	// 10
@@ -153,67 +168,134 @@ func (s *ListCertResponseBody) Validate() error {
 }
 
 type ListCertResponseBodyList struct {
+	// The expiration time of the certificate.
+	//
 	// example:
 	//
 	// 2024-05-13 12:59:45
 	AfterDate *string `json:"AfterDate,omitempty" xml:"AfterDate,omitempty"`
+	// The expiration time of the client certificate. This value is a UNIX timestamp. Unit: milliseconds.
+	//
+	// > The **BeforeTime*	- and **AfterTime*	- parameters must be both left empty or both specified.
+	//
 	// example:
 	//
 	// 1728921600000
 	AfterTime *int64 `json:"AfterTime,omitempty" xml:"AfterTime,omitempty"`
+	// The public key algorithm.
+	//
 	// example:
 	//
 	// RSA
 	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	// The alias of the certificate.
+	//
+	// example:
+	//
+	// test
 	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	// The issuance time of the certificate.
+	//
 	// example:
 	//
 	// 2026-05-19
 	BeforeDate *string `json:"BeforeDate,omitempty" xml:"BeforeDate,omitempty"`
+	// The issuance time of the client certificate. This value is a UNIX timestamp. Unit: milliseconds.
+	//
+	// > The **BeforeTime*	- and **AfterTime*	- parameters must be both left empty or both specified.
+	//
 	// example:
 	//
 	// 1728921600000
 	BeforeTime *int64 `json:"BeforeTime,omitempty" xml:"BeforeTime,omitempty"`
+	// The type of the certificate. Valid values:
+	//
+	// - `free`: Free certificate.
+	//
+	// - `cas`: Alibaba Cloud Security certificate.
+	//
+	// - `upload`: A user-uploaded certificate.
+	//
 	// example:
 	//
 	// Server
 	CertificateType *string `json:"CertificateType,omitempty" xml:"CertificateType,omitempty"`
+	// The primary domain name of the certificate.
+	//
 	// example:
 	//
 	// www.kfsjn.xyz
-	CommonName       *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
-	CustomIdentifier *string `json:"CustomIdentifier,omitempty" xml:"CustomIdentifier,omitempty"`
+	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	// A unique, user-defined identifier for the certificate.
+	//
 	// example:
 	//
-	// {\\"appId\\":\\"APP_PFHMIGUHKDUW6S3N7ZL2\\"}
+	// ***b86sca4384811e0b5e8707e68***
+	CustomIdentifier *string `json:"CustomIdentifier,omitempty" xml:"CustomIdentifier,omitempty"`
+	// A JSON string containing extended attributes.
+	//
+	// example:
+	//
+	// {"appId":"APP_PFHMIGUHKDUW6S3N7ZL2"}
 	Extra *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
+	// The ID of the data source to which the certificate order belongs.
+	//
 	// example:
 	//
 	// 1806958
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The unique identifier of the certificate.
+	//
 	// example:
 	//
 	// 1ef539a8-1e1f-6b88-8c11-21cf01a203e9
-	Identifier    *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
-	KeyExportable *bool   `json:"KeyExportable,omitempty" xml:"KeyExportable,omitempty"`
-	Organization  *string `json:"Organization,omitempty" xml:"Organization,omitempty"`
+	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+	// Specifies if the private key is exportable. Valid values:
+	//
+	// - `true`: The private key is exportable.
+	//
+	// - `false`: The private key is not exportable.
+	//
+	// example:
+	//
+	// true
+	KeyExportable *bool `json:"KeyExportable,omitempty" xml:"KeyExportable,omitempty"`
+	// The organization specified in the certificate.
+	//
+	// example:
+	//
+	// test
+	Organization *string `json:"Organization,omitempty" xml:"Organization,omitempty"`
+	// The organizational unit (OU) specified in the certificate.
+	//
 	// example:
 	//
 	// IT
 	OrganizationUnit *string `json:"OrganizationUnit,omitempty" xml:"OrganizationUnit,omitempty"`
+	// The certificate serial number.
+	//
 	// example:
 	//
 	// 3a3ee3c3597d675e
 	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	// The status of the certificate. Valid values:
+	//
+	// - `ISSUE`: Issued.
+	//
+	// - `REVOKE`: Revoked.
+	//
 	// example:
 	//
 	// complete
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The distinguished name (DN) of the certificate subject.
+	//
 	// example:
 	//
 	// SubjectDn
-	SubjectDn *string   `json:"SubjectDn,omitempty" xml:"SubjectDn,omitempty"`
-	Tags      []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	SubjectDn *string `json:"SubjectDn,omitempty" xml:"SubjectDn,omitempty"`
+	// The tags of the certificate.
+	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ListCertResponseBodyList) String() string {

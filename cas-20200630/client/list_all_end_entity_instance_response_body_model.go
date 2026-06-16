@@ -28,31 +28,46 @@ type iListAllEndEntityInstanceResponseBody interface {
 }
 
 type ListAllEndEntityInstanceResponseBody struct {
+	// The page number of the instance list.
+	//
 	// example:
 	//
 	// 1
-	CurrentPage *int32                   `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	List        []map[string]interface{} `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The list of instances.
+	List []map[string]interface{} `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// The maximum number of entries returned in this call.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that you can use to retrieve the next page of results. If this parameter is empty, all results have been returned.
+	//
 	// example:
 	//
 	// 1d2db86sca4384811e0b5e8707e68181f
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The total number of pages.
+	//
 	// example:
 	//
 	// 1
 	PageCount *int32 `json:"PageCount,omitempty" xml:"PageCount,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 443C05A8-6C16-52B5-BB97-5D8798F7A49A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The maximum number of entries displayed on each page of a paged query.
+	//
 	// example:
 	//
 	// 10
 	ShowSize *int32 `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 23

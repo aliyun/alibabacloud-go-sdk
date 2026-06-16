@@ -16,7 +16,10 @@ type iListTagResourcesResponseBody interface {
 }
 
 type ListTagResourcesResponseBody struct {
+	// The data returned.
 	Data *ListTagResourcesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 2D69A58F-345C-4FDE-88E4-BF5189484043
@@ -59,14 +62,19 @@ func (s *ListTagResourcesResponseBody) Validate() error {
 }
 
 type ListTagResourcesResponseBodyData struct {
+	// The maximum number of entries returned for this call.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that is used to start the next query. If this parameter is empty, no more results exist.
+	//
 	// example:
 	//
 	// 24262
-	NextToken    *string                                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The tag resources.
 	TagResources *ListTagResourcesResponseBodyDataTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Struct"`
 }
 

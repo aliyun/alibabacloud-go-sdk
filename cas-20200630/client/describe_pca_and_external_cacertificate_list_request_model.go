@@ -20,12 +20,26 @@ type iDescribePcaAndExternalCACertificateListRequest interface {
 }
 
 type DescribePcaAndExternalCACertificateListRequest struct {
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
-	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// One or more certificate identifiers, separated by commas.
+	//
+	// example:
+	//
+	// aaa,bbb
 	Identifiers *string `json:"Identifiers,omitempty" xml:"Identifiers,omitempty"`
-	KeyWord     *string `json:"KeyWord,omitempty" xml:"KeyWord,omitempty"`
+	// The keyword for a fuzzy search on the name, domain name, and SAN fields.
+	//
+	// example:
+	//
+	// test_name
+	KeyWord *string `json:"KeyWord,omitempty" xml:"KeyWord,omitempty"`
+	// The number of entries to return per page. The default value is 50.
+	//
 	// example:
 	//
 	// 50

@@ -16,7 +16,10 @@ type iDescribeClientCertificateForSerialNumberResponseBody interface {
 }
 
 type DescribeClientCertificateForSerialNumberResponseBody struct {
+	// Details of the client or server certificates.
 	CertificateList []*DescribeClientCertificateForSerialNumberResponseBodyCertificateList `json:"CertificateList,omitempty" xml:"CertificateList,omitempty" type:"Repeated"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 15C66C7B-671A-4297-9187-2C4477247A74
@@ -63,78 +66,186 @@ func (s *DescribeClientCertificateForSerialNumberResponseBody) Validate() error 
 }
 
 type DescribeClientCertificateForSerialNumberResponseBodyCertificateList struct {
+	// The expiration time of the certificate.
+	//
 	// example:
 	//
 	// 2022-08-23T16:15Z
 	AfterDate *string `json:"AfterDate,omitempty" xml:"AfterDate,omitempty"`
+	// The encryption algorithm of the certificate. Valid values:
+	//
+	// - **RSA**: The RSA algorithm.
+	//
+	// - **ECC**: The ECC algorithm.
+	//
+	// - **SM2**: The SM2 algorithm.
+	//
 	// example:
 	//
 	// RSA
 	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	// The issuance time of the certificate.
+	//
 	// example:
 	//
 	// 2021-10-28T16:15Z
-	BeforeDate      *string `json:"BeforeDate,omitempty" xml:"BeforeDate,omitempty"`
+	BeforeDate *string `json:"BeforeDate,omitempty" xml:"BeforeDate,omitempty"`
+	// The type of the certificate.
+	//
+	// example:
+	//
+	// SUB_ROOT
 	CertificateType *string `json:"CertificateType,omitempty" xml:"CertificateType,omitempty"`
+	// The common name of the certificate.
+	//
 	// example:
 	//
 	// aliyun.com
 	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	// The two-letter country code of the issuer.
+	//
+	// For more information about country codes, see the **Country codes*	- section in [Manage company profiles](https://help.aliyun.com/document_detail/198289.html).
+	//
 	// example:
 	//
 	// CN
 	CountryCode *string `json:"CountryCode,omitempty" xml:"CountryCode,omitempty"`
+	// The unique identifier of the certificate.
+	//
 	// example:
 	//
 	// d3b95700998e47afc4d95f886579****
 	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+	// The key length of the certificate.
+	//
 	// example:
 	//
 	// 4096
 	KeySize *int32 `json:"KeySize,omitempty" xml:"KeySize,omitempty"`
+	// The city of the issuer.
+	//
 	// example:
 	//
 	// Hangzhou
 	Locality *string `json:"Locality,omitempty" xml:"Locality,omitempty"`
+	// The MD5 fingerprint of the certificate.
+	//
 	// example:
 	//
 	// d3b95700998e47afc4d95f886579****
-	Md5          *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
+	Md5 *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
+	// The organization of the issuer.
+	//
+	// example:
+	//
+	// 阿里云计算有限公司
 	Organization *string `json:"Organization,omitempty" xml:"Organization,omitempty"`
+	// The organizational unit of the issuer.
+	//
 	// example:
 	//
 	// Security
 	OrganizationUnit *string `json:"OrganizationUnit,omitempty" xml:"OrganizationUnit,omitempty"`
+	// The identifier of the issuer. This parameter is returned only if the certificate is issued by Alibaba Cloud.
+	//
+	// example:
+	//
+	// 1a83bcbb89e562885e40aa0108f5****
 	ParentIdentifier *string `json:"ParentIdentifier,omitempty" xml:"ParentIdentifier,omitempty"`
+	// The subject alternative name (SAN) extension, which specifies identifiers such as email addresses, domain names, URIs, and IP addresses.
+	//
+	// A JSON string that represents an array of SAN objects. Each object contains the following parameters:
+	//
+	// - **Type**: The type of the extension. This parameter is an integer. Valid values:
+	//
+	//   - **1**: email address.
+	//
+	//   - **2**: domain name.
+	//
+	//   - **6**: uniform resource identifier (URI).
+	//
+	//   - **7**: IP address.
+	//
+	// - **Value**: The content of the extension. This parameter is a string.
+	//
 	// example:
 	//
 	// [ {"Type": 7, "Value": "192.0.XX.XX"}, {"Type": 2, "Value": "www.aliyundoc.com"}, ]
 	Sans *string `json:"Sans,omitempty" xml:"Sans,omitempty"`
+	// The serial number of the certificate.
+	//
 	// example:
 	//
 	// 084bde9cd233f0ddae33adc438cfbbbd****
 	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	// The SHA-256 fingerprint of the certificate.
+	//
 	// example:
 	//
 	// 14dcc8afc7578e1fcec36d658f7e20de18f6957bbac42b373a66bc9de4e9****
 	Sha2 *string `json:"Sha2,omitempty" xml:"Sha2,omitempty"`
+	// The signature algorithm of the certificate.
+	//
 	// example:
 	//
 	// SHA256WITHRSA
 	SignAlgorithm *string `json:"SignAlgorithm,omitempty" xml:"SignAlgorithm,omitempty"`
+	// <props="china">The state or province of the issuer.
+	//
+	// <props="intl">The state or province of the issuer.
+	//
 	// example:
 	//
 	// Zhejiang
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The status of the certificate. Valid values:
+	//
+	// - **ISSUE**: The certificate is issued.
+	//
+	// - **REVOKE**: The certificate is revoked.
+	//
 	// example:
 	//
 	// ISSUE
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The distinguished name (DN) of the certificate. The DN contains information about the certificate subject, including:
+	//
+	// - **C**: Country.
+	//
+	// - **O**: Organization.
+	//
+	// - **OU**: Organizational unit.
+	//
+	// - **L**: City.
+	//
+	// <props="china">
+	//
+	// - **ST**: State or province.
+	//
+	//
+	//
+	//
+	// <props="intl">
+	//
+	// - **ST**: State or province.
+	//
+	//
+	//
+	//
+	// - **CN**: Common name.
+	//
+	// example:
+	//
+	// C=CN,O=阿里云计算有限公司,OU=Security,L=Hangzhou,ST=Zhejiang,CN=Aliyun
 	SubjectDN *string `json:"SubjectDN,omitempty" xml:"SubjectDN,omitempty"`
+	// The certificate content.
+	//
 	// example:
 	//
 	// -----BEGIN CERTIFICATE-----  ...... -----END CERTIFICATE-----
 	X509Certificate *string `json:"X509Certificate,omitempty" xml:"X509Certificate,omitempty"`
+	// This parameter is deprecated.
+	//
 	// example:
 	//
 	// 1

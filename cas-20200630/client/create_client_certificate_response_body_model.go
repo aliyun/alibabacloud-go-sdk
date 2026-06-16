@@ -22,7 +22,7 @@ type iCreateClientCertificateResponseBody interface {
 }
 
 type CreateClientCertificateResponseBody struct {
-	// The certificate chain of the client certificate.
+	// The CA certificate chain.
 	//
 	// example:
 	//
@@ -34,17 +34,17 @@ type CreateClientCertificateResponseBody struct {
 	//
 	// 190ae6bb538d538c70c01f81dcf2****
 	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 8C467B38-3910-447D-87BC-AC049166F216
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The serial number of the certificate.
+	// The certificate serial number.
 	//
 	// example:
 	//
-	// 0f29522da2dae7a1c4b6ab7132ad3c06
+	// 084bde9cd233f0ddae33adc438cfbbbd****
 	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
 	// The content of the client certificate.
 	//

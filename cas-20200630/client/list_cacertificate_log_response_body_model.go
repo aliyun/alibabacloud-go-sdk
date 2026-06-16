@@ -16,7 +16,10 @@ type iListCACertificateLogResponseBody interface {
 }
 
 type ListCACertificateLogResponseBody struct {
+	// A list of operation logs for the CA certificate.
 	LogList []*ListCACertificateLogResponseBodyLogList `json:"LogList,omitempty" xml:"LogList,omitempty" type:"Repeated"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 15C66C7B-671A-4297-9187-2C4477247A74
@@ -63,18 +66,30 @@ func (s *ListCACertificateLogResponseBody) Validate() error {
 }
 
 type ListCACertificateLogResponseBodyLogList struct {
+	// The description of the operation.
+	//
 	// example:
 	//
 	// add sub-root ca
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The time of the operation. This is a UNIX timestamp. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1634539509000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The unique identifier of the CA certificate.
+	//
 	// example:
 	//
 	// 160ae6bb538d538c70c01f81dcf2****
 	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+	// The type of the operation. Valid values:
+	//
+	// - **ADD**: A CA certificate is created.
+	//
+	// - **UPDATE**: The status of the CA certificate is updated.
+	//
 	// example:
 	//
 	// ADD

@@ -46,21 +46,21 @@ type iCreateSubCACertificateRequest interface {
 }
 
 type CreateSubCACertificateRequest struct {
-	// The type of the key algorithm of the intermediate CA. The key algorithm is in the `<Encryption algorithm>_<Key length>` format. Valid values:
+	// The key algorithm for the intermediate CA certificate. The algorithm is in the `<Encryption algorithm>_<Key length>` format. Valid values:
 	//
-	// 	- **RSA_1024**: The signature algorithm is Sha256WithRSA.
+	// - **RSA_1024**: The corresponding signature algorithm is Sha256WithRSA.
 	//
-	// 	- **RSA_2048**: The signature algorithm is Sha256WithRSA.
+	// - **RSA_2048**: The corresponding signature algorithm is Sha256WithRSA.
 	//
-	// 	- **RSA_4096**: The signature algorithm is Sha256WithRSA.
+	// - **RSA_4096**: The corresponding signature algorithm is Sha256WithRSA.
 	//
-	// 	- **ECC_256**: The signature algorithm is Sha256WithECDSA.
+	// - **ECC_256**: The corresponding signature algorithm is Sha256WithECDSA.
 	//
-	// 	- **SM2_256**: The signature algorithm is SM3WithSM2.
+	// - **SM2_256**: The corresponding signature algorithm is SM3WithSM2.
 	//
-	// The encryption algorithm of an intermediate CA certificate must be consistent with the encryption algorithm of a root CA certificate. The length of the keys can be different. For example, if the key algorithm of the root CA certificate is **RSA_2048**, the key algorithm of the intermediate CA certificate must be **RSA_1024**, **RSA_2048**, or **RSA_4096**.
+	// The encryption algorithm of the intermediate CA certificate must be the same as that of the root CA certificate, but the key length can be different. For example, if the root CA certificate uses the **RSA_2048*	- algorithm, the intermediate CA certificate must use **RSA_1024**, **RSA_2048**, or **RSA_4096**.
 	//
-	// > You can call the [DescribeCACertificate](https://help.aliyun.com/document_detail/465954.html) operation to query the key algorithm of a root CA certificate.
+	// > Call the [DescribeCACertificate](https://help.aliyun.com/document_detail/465954.html) operation to get the key algorithm of the root CA certificate.
 	//
 	// This parameter is required.
 	//
@@ -69,8 +69,13 @@ type CreateSubCACertificateRequest struct {
 	// RSA_2048
 	Algorithm   *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
 	CertMaxTime *int32  `json:"CertMaxTime,omitempty" xml:"CertMaxTime,omitempty"`
+	// A client-generated token that is used to ensure the idempotence of the request. The token must be unique for each request. The token can be up to 64 ASCII characters in length.
+	//
+	// example:
+	//
+	// XXX
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The common name or abbreviation of the organization. The value can contain letters.
+	// The common name of your organization. The name can contain Chinese characters and English letters.
 	//
 	// This parameter is required.
 	//
@@ -78,33 +83,33 @@ type CreateSubCACertificateRequest struct {
 	//
 	// Aliyun
 	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
-	// The code of the country or region in which the organization is located. You can enter an alpha-2 or alpha-3 code. For example, you can use **CN*	- to indicate China and use **US*	- to indicate the United States.
+	// The two- or three-letter country or region code in uppercase. For example, **CN*	- indicates China and **US*	- indicates the United States.
 	//
-	// For more information about country codes, see the **"Country codes"*	- section in [Manage company profiles](https://help.aliyun.com/document_detail/198289.html).
+	// For more information, see the **Country codes*	- section in [Manage company information](https://help.aliyun.com/document_detail/198289.html).
 	//
 	// example:
 	//
 	// CN
 	CountryCode *string `json:"CountryCode,omitempty" xml:"CountryCode,omitempty"`
-	// CRL validity period: 1-365 days
+	// The validity period of the CRL, in days. Valid values: 1 to 365.
 	//
 	// example:
 	//
 	// 30
 	CrlDay *int32 `json:"CrlDay,omitempty" xml:"CrlDay,omitempty"`
-	// Enable Crl Service.
+	// Specifies whether to enable the certificate revocation list (CRL) feature.
 	//
-	// - 0- No
+	// - false: No
 	//
-	// - 1- Yes
+	// - true: Yes
 	//
 	// example:
 	//
-	// 1
+	// true
 	EnableCrl *bool `json:"EnableCrl,omitempty" xml:"EnableCrl,omitempty"`
-	// The extended key usages of the certificate.
+	// The extended key usages.
 	ExtendedKeyUsages []*string `json:"ExtendedKeyUsages,omitempty" xml:"ExtendedKeyUsages,omitempty" type:"Repeated"`
-	// The name of the city in which the organization is located. The value can contain letters.
+	// The name of the city where your organization is located. The name can contain Chinese characters and English letters.
 	//
 	// This parameter is required.
 	//
@@ -112,15 +117,15 @@ type CreateSubCACertificateRequest struct {
 	//
 	// Hangzhou
 	Locality *string `json:"Locality,omitempty" xml:"Locality,omitempty"`
-	// The name of the organization that is associated with the intermediate CA certificate. You can enter the name of your enterprise or company. The value can contain letters.
+	// The name of your organization, such as your company. The name can contain Chinese characters and English letters.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// Maizi Technology
+	// Alibaba
 	Organization *string `json:"Organization,omitempty" xml:"Organization,omitempty"`
-	// The name of the department or branch in the organization. The value can contain letters.
+	// The name of the department in your organization. The name can contain Chinese characters and English letters.
 	//
 	// This parameter is required.
 	//
@@ -130,33 +135,41 @@ type CreateSubCACertificateRequest struct {
 	OrganizationUnit *string `json:"OrganizationUnit,omitempty" xml:"OrganizationUnit,omitempty"`
 	// The unique identifier of the root CA certificate.
 	//
-	// > You can call the [DescribeCACertificateList] operation to query the unique identifiers of all CA certificates.
+	// > Call the [DescribeCACertificateList](https://help.aliyun.com/document_detail/465957.html) operation to get the unique identifiers of all CA certificates.
 	//
 	// example:
 	//
 	// 1a83bcbb89e562885e40aa0108f5****
 	ParentIdentifier *string `json:"ParentIdentifier,omitempty" xml:"ParentIdentifier,omitempty"`
-	// The path length constraint of the certificate. Default value: 0.
+	// The certificate path length constraint. The default value is 0.
 	//
 	// example:
 	//
 	// 0
-	PathLenConstraint *int32  `json:"PathLenConstraint,omitempty" xml:"PathLenConstraint,omitempty"`
-	ResourceGroupId   *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The name of the province or state in which the organization is located. The value can contain letters.
+	PathLenConstraint *int32 `json:"PathLenConstraint,omitempty" xml:"PathLenConstraint,omitempty"`
+	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-ae****vty
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// <props="china">The name of the province, municipality, or autonomous region where the organization is located. Chinese characters and English letters are supported.
+	//
+	// <props="intl">The name of the province or state where the organization is located. Chinese characters and English letters are supported.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Zhejiang
-	State *string                              `json:"State,omitempty" xml:"State,omitempty"`
-	Tags  []*CreateSubCACertificateRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The validity period of the intermediate CA certificate. Unit: years.
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// A list of tags.
+	Tags []*CreateSubCACertificateRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The validity period of the intermediate CA certificate, in years. Valid values: 5 to 10.
 	//
-	// We recommend that you set this parameter to 5 to 10.
+	// Set this parameter to a value from 5 to 10.
 	//
-	// > The validity period of the intermediate CA certificate cannot exceed the validity period of the root CA certificate. You can call the [DescribeCACertificate]operation to query the validity period of a root CA certificate.
+	// > The validity period of the intermediate CA certificate cannot exceed that of the root CA certificate. Call the [DescribeCACertificate](https://help.aliyun.com/document_detail/465954.html) operation to get the validity period of the root CA certificate.
 	//
 	// This parameter is required.
 	//
@@ -341,7 +354,17 @@ func (s *CreateSubCACertificateRequest) Validate() error {
 }
 
 type CreateSubCACertificateRequestTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// testKey
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// test
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
