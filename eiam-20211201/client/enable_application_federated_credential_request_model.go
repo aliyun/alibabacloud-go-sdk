@@ -18,7 +18,7 @@ type iEnableApplicationFederatedCredentialRequest interface {
 }
 
 type EnableApplicationFederatedCredentialRequest struct {
-  // 应用联邦凭证Id
+  // The ID of the application federated credential.
   // 
   // This parameter is required.
   // 
@@ -26,7 +26,7 @@ type EnableApplicationFederatedCredentialRequest struct {
   // 
   // afc_aaaaa1111
   ApplicationFederatedCredentialId *string `json:"ApplicationFederatedCredentialId,omitempty" xml:"ApplicationFederatedCredentialId,omitempty"`
-  // IDaaS的应用资源ID。
+  // The ID of the application.
   // 
   // This parameter is required.
   // 
@@ -34,7 +34,7 @@ type EnableApplicationFederatedCredentialRequest struct {
   // 
   // app_mkv7rgt4d7i4u7zqtzev2mxxxx
   ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-  // IDaaS EIAM实例的ID。
+  // The ID of the instance.
   // 
   // This parameter is required.
   // 

@@ -18,15 +18,15 @@ type iListOrganizationalUnitsForApplicationResponseBody interface {
 }
 
 type ListOrganizationalUnitsForApplicationResponseBody struct {
-	// The IDs of the organizations that are allowed to access the application.
+	// The list of organizations.
 	OrganizationalUnits []*ListOrganizationalUnitsForApplicationResponseBodyOrganizationalUnits `json:"OrganizationalUnits,omitempty" xml:"OrganizationalUnits,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of the returned entries.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -83,9 +83,9 @@ func (s *ListOrganizationalUnitsForApplicationResponseBody) Validate() error {
 }
 
 type ListOrganizationalUnitsForApplicationResponseBodyOrganizationalUnits struct {
-	// 应用角色列表。
+	// The list of application roles.
 	ApplicationRoles []*ListOrganizationalUnitsForApplicationResponseBodyOrganizationalUnitsApplicationRoles `json:"ApplicationRoles,omitempty" xml:"ApplicationRoles,omitempty" type:"Repeated"`
-	// The ID of the organization that is allowed to access the application.
+	// The organization ID.
 	//
 	// example:
 	//
@@ -133,7 +133,7 @@ func (s *ListOrganizationalUnitsForApplicationResponseBodyOrganizationalUnits) V
 }
 
 type ListOrganizationalUnitsForApplicationResponseBodyOrganizationalUnitsApplicationRoles struct {
-	// 应用角色标识。
+	// The ID of the application role.
 	//
 	// example:
 	//

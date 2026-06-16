@@ -118,11 +118,11 @@ type GetUserResponseBodyUser struct {
 	OrganizationalUnits []*GetUserResponseBodyUserOrganizationalUnits `json:"OrganizationalUnits,omitempty" xml:"OrganizationalUnits,omitempty" type:"Repeated"`
 	// The time when the password of the account expires. This value is a UNIX timestamp. Unit: milliseconds.
 	//
-	// 	- If the value -1 is returned, the password does not expire.
+	// - If the value -1 is returned, the password does not expire.
 	//
-	// 	- If no value is returned, the password does not expire.
+	// - If no value is returned, the password does not expire.
 	//
-	// 	- If a UNIX timestamp is returned, the password expires at the indicated point of time.
+	// - If a UNIX timestamp is returned, the password expires at the indicated point of time.
 	//
 	// example:
 	//
@@ -172,9 +172,9 @@ type GetUserResponseBodyUser struct {
 	RegisterTime *int64 `json:"RegisterTime,omitempty" xml:"RegisterTime,omitempty"`
 	// The status of the account. Valid values:
 	//
-	// 	- enabled: The account is enabled.
+	// - enabled: The account is enabled.
 	//
-	// 	- disabled: The account is disabled.
+	// - disabled: The account is disabled.
 	//
 	// example:
 	//
@@ -210,13 +210,13 @@ type GetUserResponseBodyUser struct {
 	UserSourceId *string `json:"UserSourceId,omitempty" xml:"UserSourceId,omitempty"`
 	// The source type of the account. Valid values:
 	//
-	// 	- build_in: The account was created in IDaaS.
+	// - build_in: The account was created in IDaaS.
 	//
-	// 	- ding_talk: The account was imported from DingTalk.
+	// - ding_talk: The account was imported from DingTalk.
 	//
-	// 	- ad: The account was imported from Microsoft Active Directory (AD).
+	// - ad: The account was imported from Microsoft Active Directory (AD).
 	//
-	// 	- ldap: The account was imported from a Lightweight Directory Access Protocol (LDAP) service.
+	// - ldap: The account was imported from a Lightweight Directory Access Protocol (LDAP) service.
 	//
 	// example:
 	//

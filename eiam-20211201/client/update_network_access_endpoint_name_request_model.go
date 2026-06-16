@@ -18,7 +18,7 @@ type iUpdateNetworkAccessEndpointNameRequest interface {
 }
 
 type UpdateNetworkAccessEndpointNameRequest struct {
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type UpdateNetworkAccessEndpointNameRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 专属网络端点ID。
+	// The ID of the private network access endpoint.
 	//
 	// This parameter is required.
 	//
@@ -34,13 +34,13 @@ type UpdateNetworkAccessEndpointNameRequest struct {
 	//
 	// nae_examplexxxx
 	NetworkAccessEndpointId *string `json:"NetworkAccessEndpointId,omitempty" xml:"NetworkAccessEndpointId,omitempty"`
-	// 专属网络端点名称。
+	// The name of the private network access endpoint. The endpoint type must be private.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// xx业务VPC访问端点
+	// VPC access endpoint for xx service
 	NetworkAccessEndpointName *string `json:"NetworkAccessEndpointName,omitempty" xml:"NetworkAccessEndpointName,omitempty"`
 }
 

@@ -16,10 +16,14 @@ type iCreateApplicationRoleResponseBody interface {
 }
 
 type CreateApplicationRoleResponseBody struct {
+	// The ID of the application role.
+	//
 	// example:
 	//
 	// approle_01kghbvoptu5262q35aalvq7cxxxx
 	ApplicationRoleId *string `json:"ApplicationRoleId,omitempty" xml:"ApplicationRoleId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A

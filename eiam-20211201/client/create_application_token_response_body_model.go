@@ -16,7 +16,10 @@ type iCreateApplicationTokenResponseBody interface {
 }
 
 type CreateApplicationTokenResponseBody struct {
+	// The application token.
 	ApplicationTokens *CreateApplicationTokenResponseBodyApplicationTokens `json:"ApplicationTokens,omitempty" xml:"ApplicationTokens,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
@@ -59,19 +62,19 @@ func (s *CreateApplicationTokenResponseBody) Validate() error {
 }
 
 type CreateApplicationTokenResponseBodyApplicationTokens struct {
-	// 应用token
+	// The application token.
 	//
 	// example:
 	//
 	// SATFwqX8zxGf83pJcJw78KFGjmrft4erWeZYBGS8oE7NN6qoE217yaJpUdMb1UuuGqhDiF43sCA4CF91CTL5iGntqwyLuaAcS9FJ9HfGadE5a7TjiwVafwrBYkt3XXX
 	ApplicationToken *string `json:"ApplicationToken,omitempty" xml:"ApplicationToken,omitempty"`
-	// 应用token ID
+	// The application token ID.
 	//
 	// example:
 	//
 	// token_ndfxxigahelfne2y2hodehrxxxx
 	ApplicationTokenId *string `json:"ApplicationTokenId,omitempty" xml:"ApplicationTokenId,omitempty"`
-	// 应用token类型
+	// The application token type.
 	//
 	// example:
 	//

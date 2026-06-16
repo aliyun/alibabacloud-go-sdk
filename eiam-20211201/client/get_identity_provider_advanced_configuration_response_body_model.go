@@ -16,7 +16,10 @@ type iGetIdentityProviderAdvancedConfigurationResponseBody interface {
 }
 
 type GetIdentityProviderAdvancedConfigurationResponseBody struct {
+	// Advanced configuration information
 	AdvancedConfiguration *GetIdentityProviderAdvancedConfigurationResponseBodyAdvancedConfiguration `json:"AdvancedConfiguration,omitempty" xml:"AdvancedConfiguration,omitempty" type:"Struct"`
+	// Request ID
+	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
@@ -59,15 +62,15 @@ func (s *GetIdentityProviderAdvancedConfigurationResponseBody) Validate() error 
 }
 
 type GetIdentityProviderAdvancedConfigurationResponseBodyAdvancedConfiguration struct {
-	// 钉钉高阶配置
+	// DingTalk advanced configuration
 	DingtalkAdvancedConfig *GetIdentityProviderAdvancedConfigurationResponseBodyAdvancedConfigurationDingtalkAdvancedConfig `json:"DingtalkAdvancedConfig,omitempty" xml:"DingtalkAdvancedConfig,omitempty" type:"Struct"`
-	// IDaaS EIAM 身份提供方ID
+	// Identity provider ID
 	//
 	// example:
 	//
 	// idp_na2rzpyc67zr7ixdfy35zgrxxx
 	IdentityProviderId *string `json:"IdentityProviderId,omitempty" xml:"IdentityProviderId,omitempty"`
-	// IDaaS EIAM 实例Id
+	// Instance ID
 	//
 	// example:
 	//
@@ -120,13 +123,13 @@ func (s *GetIdentityProviderAdvancedConfigurationResponseBodyAdvancedConfigurati
 }
 
 type GetIdentityProviderAdvancedConfigurationResponseBodyAdvancedConfigurationDingtalkAdvancedConfig struct {
-	// IDaaS EIAM 钉钉一方应用的AppKey
+	// AppKey of the DingTalk first-party application
 	//
 	// example:
 	//
 	// ding5xo9rg0csw3f6xxx
 	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	// IDaaS EIAM 钉钉一方应用的AppSecret
+	// App secret of the DingTalk first-party application
 	//
 	// example:
 	//

@@ -16,10 +16,13 @@ type iGenerateWebAuthnAuthenticatorRegistrationUrlResponseBody interface {
 }
 
 type GenerateWebAuthnAuthenticatorRegistrationUrlResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
-	RequestId                            *string                                                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Information about the WebAuthn authenticator registration URL.
 	WebAuthnAuthenticatorRegistrationUrl *GenerateWebAuthnAuthenticatorRegistrationUrlResponseBodyWebAuthnAuthenticatorRegistrationUrl `json:"WebAuthnAuthenticatorRegistrationUrl,omitempty" xml:"WebAuthnAuthenticatorRegistrationUrl,omitempty" type:"Struct"`
 }
 
@@ -59,13 +62,13 @@ func (s *GenerateWebAuthnAuthenticatorRegistrationUrlResponseBody) Validate() er
 }
 
 type GenerateWebAuthnAuthenticatorRegistrationUrlResponseBodyWebAuthnAuthenticatorRegistrationUrl struct {
-	// 注册WebAuthn认证器URL
+	// The WebAuthn authenticator registration URL.
 	//
 	// example:
 	//
 	// https://012cnaliyunidaas..com./login/webauthn/registration
 	RegistrationUrl *string `json:"RegistrationUrl,omitempty" xml:"RegistrationUrl,omitempty"`
-	// 注册WebAuthn认证器URL参数
+	// The parameters for the WebAuthn authenticator registration URL.
 	//
 	// example:
 	//

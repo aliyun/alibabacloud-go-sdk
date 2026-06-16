@@ -22,7 +22,7 @@ type iCreateAuthorizationResourceRequest interface {
 }
 
 type CreateAuthorizationResourceRequest struct {
-	// 授权资源关联的资源标识。
+	// The ID of the resource entity that is associated with the authorization resource.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,9 @@ type CreateAuthorizationResourceRequest struct {
 	//
 	// carole_01kmek49aqxxxx
 	AuthorizationResourceEntityId *string `json:"AuthorizationResourceEntityId,omitempty" xml:"AuthorizationResourceEntityId,omitempty"`
-	// 授权资源的资源类型。枚举取值:asset(资产)、credential(凭据)、cloudAccountRole(云账号角色)。
+	// The type of the resource entity that is associated with the authorization resource. Valid value:
+	//
+	// - cloud_account_role: indicates a cloud role.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +40,7 @@ type CreateAuthorizationResourceRequest struct {
 	//
 	// cloud_account_role
 	AuthorizationResourceEntityType *string `json:"AuthorizationResourceEntityType,omitempty" xml:"AuthorizationResourceEntityType,omitempty"`
-	// 授权规则标识。
+	// The authorization rule ID.
 	//
 	// This parameter is required.
 	//
@@ -46,13 +48,15 @@ type CreateAuthorizationResourceRequest struct {
 	//
 	// arrule_01kf143ug06fg7m9f43u7vahxxxx
 	AuthorizationRuleId *string `json:"AuthorizationRuleId,omitempty" xml:"AuthorizationRuleId,omitempty"`
+	// A client token used to ensure the idempotence of the request. Generate a unique value for this parameter from your client. The client token can contain only ASCII characters and must be no more than 64 characters long. For more information, see [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// client-token-example
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

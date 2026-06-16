@@ -16,9 +16,9 @@ type iSetInstanceControlConfigurationRequest interface {
 }
 
 type SetInstanceControlConfigurationRequest struct {
-	// 实例控制项。
+	// The control items for the instance.
 	ControlElements []*SetInstanceControlConfigurationRequestControlElements `json:"ControlElements,omitempty" xml:"ControlElements,omitempty" type:"Repeated"`
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -68,14 +68,15 @@ func (s *SetInstanceControlConfigurationRequest) Validate() error {
 }
 
 type SetInstanceControlConfigurationRequestControlElements struct {
-	// 实例控制项名称，如human_verification。
+	// The name of the control item.
 	//
 	// example:
 	//
 	// human_verification
-	ElementName             *string                                                                       `json:"ElementName,omitempty" xml:"ElementName,omitempty"`
+	ElementName *string `json:"ElementName,omitempty" xml:"ElementName,omitempty"`
+	// The CAPTCHA configuration.
 	HumanVerificationConfig *SetInstanceControlConfigurationRequestControlElementsHumanVerificationConfig `json:"HumanVerificationConfig,omitempty" xml:"HumanVerificationConfig,omitempty" type:"Struct"`
-	// 实例控制项状态。
+	// The status of the control item.
 	//
 	// example:
 	//
@@ -128,6 +129,8 @@ func (s *SetInstanceControlConfigurationRequestControlElements) Validate() error
 }
 
 type SetInstanceControlConfigurationRequestControlElementsHumanVerificationConfig struct {
+	// The CAPTCHA type.
+	//
 	// example:
 	//
 	// urn:alibaba:idaas:humanverification:alibaba-cloud-slider-verification

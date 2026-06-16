@@ -16,7 +16,7 @@ type iDeleteFederatedCredentialProviderRequest interface {
 }
 
 type DeleteFederatedCredentialProviderRequest struct {
-	// 联邦凭证提供方ID
+	// The ID of the federated credential provider.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DeleteFederatedCredentialProviderRequest struct {
 	//
 	// fcp_mkv7rgt4d7i4u7zqtzev2mxxxx
 	FederatedCredentialProviderId *string `json:"FederatedCredentialProviderId,omitempty" xml:"FederatedCredentialProviderId,omitempty"`
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

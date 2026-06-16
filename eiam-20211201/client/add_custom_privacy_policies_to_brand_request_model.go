@@ -18,7 +18,7 @@ type iAddCustomPrivacyPoliciesToBrandRequest interface {
 }
 
 type AddCustomPrivacyPoliciesToBrandRequest struct {
-	// 品牌化Id
+	// The ID of the brand.
 	//
 	// This parameter is required.
 	//
@@ -26,11 +26,11 @@ type AddCustomPrivacyPoliciesToBrandRequest struct {
 	//
 	// brand_xxxxx
 	BrandId *string `json:"BrandId,omitempty" xml:"BrandId,omitempty"`
-	// 条款ID列表
+	// A list of custom privacy policy IDs.
 	//
 	// This parameter is required.
 	CustomPrivacyPolicyIds []*string `json:"CustomPrivacyPolicyIds,omitempty" xml:"CustomPrivacyPolicyIds,omitempty" type:"Repeated"`
-	// IDaaS EIAM实例的ID。
+	// The ID of the instance.
 	//
 	// This parameter is required.
 	//

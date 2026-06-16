@@ -14,7 +14,7 @@ type iGetInstanceTrialStatusRequest interface {
 }
 
 type GetInstanceTrialStatusRequest struct {
-	// IDaaS EIAM的实例id
+	// The ID of the instance.
 	//
 	// This parameter is required.
 	//

@@ -14,7 +14,7 @@ type iDeleteConditionalAccessPolicyResponseBody interface {
 }
 
 type DeleteConditionalAccessPolicyResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

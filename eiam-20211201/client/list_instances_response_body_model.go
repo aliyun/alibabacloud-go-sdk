@@ -18,15 +18,15 @@ type iListInstancesResponseBody interface {
 }
 
 type ListInstancesResponseBody struct {
-	// The information of instances.
+	// The list of instance information.
 	Instances []*ListInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// Total number of entries.
 	//
 	// example:
 	//
@@ -83,32 +83,56 @@ func (s *ListInstancesResponseBody) Validate() error {
 }
 
 type ListInstancesResponseBodyInstances struct {
-	// The time when the instance was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The creation time of the instance, in Unix timestamp format, in milliseconds.
 	//
 	// example:
 	//
 	// 1550115455000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// enabled
+	CrossRegionReplication *string `json:"CrossRegionReplication,omitempty" xml:"CrossRegionReplication,omitempty"`
+	// example:
+	//
+	// primary
+	CrossRegionReplicationRole *string `json:"CrossRegionReplicationRole,omitempty" xml:"CrossRegionReplicationRole,omitempty"`
 	// The default endpoint of the instance.
 	DefaultEndpoint *ListInstancesResponseBodyInstancesDefaultEndpoint `json:"DefaultEndpoint,omitempty" xml:"DefaultEndpoint,omitempty" type:"Struct"`
 	// The description of the instance.
+	//
+	// example:
+	//
+	// instance_for_test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The instance ID.
+	// example:
+	//
+	// inactive
+	InstanceFailoverStatus *string `json:"InstanceFailoverStatus,omitempty" xml:"InstanceFailoverStatus,omitempty"`
+	// Instance ID.
 	//
 	// example:
 	//
 	// idaas_eypq6ljgyeuwmlw672sulxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The service code of the cloud service that manages the instance.
+	//
 	// example:
 	//
 	// sase
-	ManagedServiceCode *string `json:"ManagedServiceCode,omitempty" xml:"ManagedServiceCode,omitempty"`
-	ServiceManaged     *bool   `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
-	// The status of the instance. Valid values:
+	ManagedServiceCode       *string                                                     `json:"ManagedServiceCode,omitempty" xml:"ManagedServiceCode,omitempty"`
+	ReplicationConfiguration *ListInstancesResponseBodyInstancesReplicationConfiguration `json:"ReplicationConfiguration,omitempty" xml:"ReplicationConfiguration,omitempty" type:"Struct"`
+	// Indicates whether the instance is managed by a cloud service.
 	//
-	// 	- creating
+	// example:
 	//
-	// 	- running
+	// true
+	ServiceManaged *bool `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
+	// Instance status. Valid values:
+	//
+	// - creating: Being created.
+	//
+	// - running: Running.
 	//
 	// example:
 	//
@@ -128,6 +152,14 @@ func (s *ListInstancesResponseBodyInstances) GetCreateTime() *int64 {
 	return s.CreateTime
 }
 
+func (s *ListInstancesResponseBodyInstances) GetCrossRegionReplication() *string {
+	return s.CrossRegionReplication
+}
+
+func (s *ListInstancesResponseBodyInstances) GetCrossRegionReplicationRole() *string {
+	return s.CrossRegionReplicationRole
+}
+
 func (s *ListInstancesResponseBodyInstances) GetDefaultEndpoint() *ListInstancesResponseBodyInstancesDefaultEndpoint {
 	return s.DefaultEndpoint
 }
@@ -136,12 +168,20 @@ func (s *ListInstancesResponseBodyInstances) GetDescription() *string {
 	return s.Description
 }
 
+func (s *ListInstancesResponseBodyInstances) GetInstanceFailoverStatus() *string {
+	return s.InstanceFailoverStatus
+}
+
 func (s *ListInstancesResponseBodyInstances) GetInstanceId() *string {
 	return s.InstanceId
 }
 
 func (s *ListInstancesResponseBodyInstances) GetManagedServiceCode() *string {
 	return s.ManagedServiceCode
+}
+
+func (s *ListInstancesResponseBodyInstances) GetReplicationConfiguration() *ListInstancesResponseBodyInstancesReplicationConfiguration {
+	return s.ReplicationConfiguration
 }
 
 func (s *ListInstancesResponseBodyInstances) GetServiceManaged() *bool {
@@ -157,6 +197,16 @@ func (s *ListInstancesResponseBodyInstances) SetCreateTime(v int64) *ListInstanc
 	return s
 }
 
+func (s *ListInstancesResponseBodyInstances) SetCrossRegionReplication(v string) *ListInstancesResponseBodyInstances {
+	s.CrossRegionReplication = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstances) SetCrossRegionReplicationRole(v string) *ListInstancesResponseBodyInstances {
+	s.CrossRegionReplicationRole = &v
+	return s
+}
+
 func (s *ListInstancesResponseBodyInstances) SetDefaultEndpoint(v *ListInstancesResponseBodyInstancesDefaultEndpoint) *ListInstancesResponseBodyInstances {
 	s.DefaultEndpoint = v
 	return s
@@ -167,6 +217,11 @@ func (s *ListInstancesResponseBodyInstances) SetDescription(v string) *ListInsta
 	return s
 }
 
+func (s *ListInstancesResponseBodyInstances) SetInstanceFailoverStatus(v string) *ListInstancesResponseBodyInstances {
+	s.InstanceFailoverStatus = &v
+	return s
+}
+
 func (s *ListInstancesResponseBodyInstances) SetInstanceId(v string) *ListInstancesResponseBodyInstances {
 	s.InstanceId = &v
 	return s
@@ -174,6 +229,11 @@ func (s *ListInstancesResponseBodyInstances) SetInstanceId(v string) *ListInstan
 
 func (s *ListInstancesResponseBodyInstances) SetManagedServiceCode(v string) *ListInstancesResponseBodyInstances {
 	s.ManagedServiceCode = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstances) SetReplicationConfiguration(v *ListInstancesResponseBodyInstancesReplicationConfiguration) *ListInstancesResponseBodyInstances {
+	s.ReplicationConfiguration = v
 	return s
 }
 
@@ -193,21 +253,26 @@ func (s *ListInstancesResponseBodyInstances) Validate() error {
 			return err
 		}
 	}
+	if s.ReplicationConfiguration != nil {
+		if err := s.ReplicationConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
 	return nil
 }
 
 type ListInstancesResponseBodyInstancesDefaultEndpoint struct {
-	// The endpoint of the instance.
+	// The endpoint address of the instance.
 	//
 	// example:
 	//
 	// example-xxx.aliyunidaas.com
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	// The status of the endpoint. Valid values:
+	// The status of the instance endpoint. Valid values:
 	//
-	// 	- resolved
+	// - resolved: Resolved.
 	//
-	// 	- unresolved
+	// - unresolved: Unresolved.
 	//
 	// example:
 	//
@@ -242,5 +307,85 @@ func (s *ListInstancesResponseBodyInstancesDefaultEndpoint) SetStatus(v string) 
 }
 
 func (s *ListInstancesResponseBodyInstancesDefaultEndpoint) Validate() error {
+	return dara.Validate(s)
+}
+
+type ListInstancesResponseBodyInstancesReplicationConfiguration struct {
+	// example:
+	//
+	// idaas_xxxxxx
+	BackupInstanceId *string `json:"BackupInstanceId,omitempty" xml:"BackupInstanceId,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	BackupInstanceRegionId *string `json:"BackupInstanceRegionId,omitempty" xml:"BackupInstanceRegionId,omitempty"`
+	// example:
+	//
+	// idaas_xxxxxx
+	PrimaryInstanceId *string `json:"PrimaryInstanceId,omitempty" xml:"PrimaryInstanceId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	PrimaryInstanceRegionId *string `json:"PrimaryInstanceRegionId,omitempty" xml:"PrimaryInstanceRegionId,omitempty"`
+	// example:
+	//
+	// 1778499337000
+	ReplicationCreateTime *int64 `json:"ReplicationCreateTime,omitempty" xml:"ReplicationCreateTime,omitempty"`
+}
+
+func (s ListInstancesResponseBodyInstancesReplicationConfiguration) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListInstancesResponseBodyInstancesReplicationConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstancesResponseBodyInstancesReplicationConfiguration) GetBackupInstanceId() *string {
+	return s.BackupInstanceId
+}
+
+func (s *ListInstancesResponseBodyInstancesReplicationConfiguration) GetBackupInstanceRegionId() *string {
+	return s.BackupInstanceRegionId
+}
+
+func (s *ListInstancesResponseBodyInstancesReplicationConfiguration) GetPrimaryInstanceId() *string {
+	return s.PrimaryInstanceId
+}
+
+func (s *ListInstancesResponseBodyInstancesReplicationConfiguration) GetPrimaryInstanceRegionId() *string {
+	return s.PrimaryInstanceRegionId
+}
+
+func (s *ListInstancesResponseBodyInstancesReplicationConfiguration) GetReplicationCreateTime() *int64 {
+	return s.ReplicationCreateTime
+}
+
+func (s *ListInstancesResponseBodyInstancesReplicationConfiguration) SetBackupInstanceId(v string) *ListInstancesResponseBodyInstancesReplicationConfiguration {
+	s.BackupInstanceId = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstancesReplicationConfiguration) SetBackupInstanceRegionId(v string) *ListInstancesResponseBodyInstancesReplicationConfiguration {
+	s.BackupInstanceRegionId = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstancesReplicationConfiguration) SetPrimaryInstanceId(v string) *ListInstancesResponseBodyInstancesReplicationConfiguration {
+	s.PrimaryInstanceId = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstancesReplicationConfiguration) SetPrimaryInstanceRegionId(v string) *ListInstancesResponseBodyInstancesReplicationConfiguration {
+	s.PrimaryInstanceRegionId = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstancesReplicationConfiguration) SetReplicationCreateTime(v int64) *ListInstancesResponseBodyInstancesReplicationConfiguration {
+	s.ReplicationCreateTime = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstancesReplicationConfiguration) Validate() error {
 	return dara.Validate(s)
 }

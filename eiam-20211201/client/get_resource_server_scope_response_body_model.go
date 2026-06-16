@@ -16,10 +16,13 @@ type iGetResourceServerScopeResponseBody interface {
 }
 
 type GetResourceServerScopeResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
-	RequestId           *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the scope permission of the resource server.
 	ResourceServerScope *GetResourceServerScopeResponseBodyResourceServerScope `json:"ResourceServerScope,omitempty" xml:"ResourceServerScope,omitempty" type:"Struct"`
 }
 
@@ -59,41 +62,43 @@ func (s *GetResourceServerScopeResponseBody) Validate() error {
 }
 
 type GetResourceServerScopeResponseBodyResourceServerScope struct {
-	// IDaaS EIAM 应用Id
+	// The application ID.
 	//
 	// example:
 	//
 	// app_xxxxxxxxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The authorization type.
+	//
 	// example:
 	//
 	// authorize_required
 	AuthorizationType *string `json:"AuthorizationType,omitempty" xml:"AuthorizationType,omitempty"`
-	// IDaaS EIAM 实例Id
+	// The instance ID.
 	//
 	// example:
 	//
 	// idaas_xxxxxxxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// IDaaS EIAM ResourceServer下权限Id
+	// The ID of the scope permission.
 	//
 	// example:
 	//
 	// rss_xxxxxxxxxxx
 	ResourceServerScopeId *string `json:"ResourceServerScopeId,omitempty" xml:"ResourceServerScopeId,omitempty"`
-	// IDaaS EIAM ResourceServer下权限名称
+	// The name of the scope permission.
 	//
 	// example:
 	//
-	// 读取全部用户
+	// Read User Info
 	ResourceServerScopeName *string `json:"ResourceServerScopeName,omitempty" xml:"ResourceServerScopeName,omitempty"`
-	// IDaaS EIAM ResourceServer下权限类型
+	// The type of the scope permission.
 	//
 	// example:
 	//
 	// urn:alibaba:idaas:resourceserver:scope:delegated
 	ResourceServerScopeType *string `json:"ResourceServerScopeType,omitempty" xml:"ResourceServerScopeType,omitempty"`
-	// IDaaS EIAM ResourceServer下权限值
+	// The value of the scope permission.
 	//
 	// example:
 	//

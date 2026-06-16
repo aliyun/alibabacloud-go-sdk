@@ -18,7 +18,7 @@ type iRemoveGroupFromAuthorizationRuleRequest interface {
 }
 
 type RemoveGroupFromAuthorizationRuleRequest struct {
-	// 授权规则标识。
+	// The ID of the authorization rule.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type RemoveGroupFromAuthorizationRuleRequest struct {
 	//
 	// arrule_01kf143ug06fg7m9f43u7vahxxxx
 	AuthorizationRuleId *string `json:"AuthorizationRuleId,omitempty" xml:"AuthorizationRuleId,omitempty"`
-	// 组ID。
+	// The group ID.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type RemoveGroupFromAuthorizationRuleRequest struct {
 	//
 	// group_miu8e4t4d7i4u7uwezgr54xxxx
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

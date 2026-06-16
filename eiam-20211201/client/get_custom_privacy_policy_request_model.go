@@ -16,7 +16,7 @@ type iGetCustomPrivacyPolicyRequest interface {
 }
 
 type GetCustomPrivacyPolicyRequest struct {
-	// 自定义条款ID
+	// The ID of the custom privacy policy.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type GetCustomPrivacyPolicyRequest struct {
 	//
 	// pp_xxxxx
 	CustomPrivacyPolicyId *string `json:"CustomPrivacyPolicyId,omitempty" xml:"CustomPrivacyPolicyId,omitempty"`
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

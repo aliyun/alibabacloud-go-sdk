@@ -16,10 +16,14 @@ type iCreateCredentialProviderResponseBody interface {
 }
 
 type CreateCredentialProviderResponseBody struct {
+	// The ID of the credential provider.
+	//
 	// example:
 	//
 	// atp_01kr2cmj5gxxx4fvmls2e93dxxxxx
 	CredentialProviderId *string `json:"CredentialProviderId,omitempty" xml:"CredentialProviderId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A

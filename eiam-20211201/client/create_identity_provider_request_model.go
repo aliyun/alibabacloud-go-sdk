@@ -48,23 +48,23 @@ type iCreateIdentityProviderRequest interface {
 }
 
 type CreateIdentityProviderRequest struct {
-	// Authentication configuration information.
+	// The authentication configurations.
 	AuthnConfig *CreateIdentityProviderRequestAuthnConfig `json:"AuthnConfig,omitempty" xml:"AuthnConfig,omitempty" type:"Struct"`
-	// Auto-create account rule configuration.
+	// The rule configurations for automatic account creation.
 	AutoCreateUserConfig *CreateIdentityProviderRequestAutoCreateUserConfig `json:"AutoCreateUserConfig,omitempty" xml:"AutoCreateUserConfig,omitempty" type:"Struct"`
-	// Auto-update account rule configuration.
+	// The rule configurations for automatic account updates.
 	AutoUpdateUserConfig *CreateIdentityProviderRequestAutoUpdateUserConfig `json:"AutoUpdateUserConfig,omitempty" xml:"AutoUpdateUserConfig,omitempty" type:"Struct"`
-	// OIDC identity provider account binding rule configuration.
+	// The account binding rule configurations for the OIDC identity provider.
 	BindingConfig *CreateIdentityProviderRequestBindingConfig `json:"BindingConfig,omitempty" xml:"BindingConfig,omitempty" type:"Struct"`
-	// Idp client token.
+	// A client token used to ensure the idempotence of the request. Generate a unique value from your client for each request. The ClientToken can only contain ASCII characters. Note: If you do not specify this parameter, the system automatically uses the RequestId of the API request as the ClientToken. The RequestId may be different for each API request.
 	//
 	// example:
 	//
-	// client-token-example
+	// clientToken_20250704_Axxxxx
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// DingTalk configuration information.
+	// The DingTalk configurations.
 	DingtalkAppConfig *CreateIdentityProviderRequestDingtalkAppConfig `json:"DingtalkAppConfig,omitempty" xml:"DingtalkAppConfig,omitempty" type:"Struct"`
-	// Identity provider name.
+	// The name of the identity provider.
 	//
 	// This parameter is required.
 	//
@@ -72,23 +72,23 @@ type CreateIdentityProviderRequest struct {
 	//
 	// test
 	IdentityProviderName *string `json:"IdentityProviderName,omitempty" xml:"IdentityProviderName,omitempty"`
-	// Identity provider synchronization type.
+	// The synchronization type of the identity provider.
 	//
-	// - Inbound to DingTalk: urn:alibaba:idaas:idp:alibaba:dingtalk:pull
+	// - Inbound DingTalk: urn:alibaba:idaas:idp:alibaba:dingtalk:pull
 	//
-	// - Outbound to DingTalk: urn:alibaba:idaas:idp:alibaba:dingtalk:push
+	// - Outbound DingTalk: urn:alibaba:idaas:idp:alibaba:dingtalk:push
 	//
-	// - Inbound to WeCom: urn:alibaba:idaas:idp:tencent:wecom:pull
+	// - Inbound WeCom: urn:alibaba:idaas:idp:tencent:wecom:pull
 	//
-	// - Inbound to Lark: urn:alibaba:idaas:idp:bytedance:lark:pull
+	// - Inbound Lark: urn:alibaba:idaas:idp:bytedance:lark:pull
 	//
-	// - Inbound to AD: urn:alibaba:idaas:idp:microsoft:ad:pull
+	// - Inbound AD: urn:alibaba:idaas:idp:microsoft:ad:pull
 	//
-	// - Inbound to LDAP: urn:alibaba:idaas:idp:unknown:ldap:pull
+	// - Inbound LDAP: urn:alibaba:idaas:idp:unknown:ldap:pull
 	//
 	// - Standard OIDC: urn:alibaba:idaas:idp:standard:oidc
 	//
-	// - SASE Custom OIDC: urn:alibaba:idaas:idp:alibaba:sase
+	// - SASE-specific OIDC: urn:alibaba:idaas:idp:alibaba:sase
 	//
 	// This parameter is required.
 	//
@@ -96,7 +96,7 @@ type CreateIdentityProviderRequest struct {
 	//
 	// urn:alibaba:idaas:idp:alibaba:dingtalk:push
 	IdentityProviderType *string `json:"IdentityProviderType,omitempty" xml:"IdentityProviderType,omitempty"`
-	// Instance ID.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -104,30 +104,30 @@ type CreateIdentityProviderRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Lark (Feishu) configuration information.
+	// The Lark configurations.
 	LarkConfig *CreateIdentityProviderRequestLarkConfig `json:"LarkConfig,omitempty" xml:"LarkConfig,omitempty" type:"Struct"`
-	// AD/LDAP configuration information.
+	// The AD/LDAP configurations.
 	LdapConfig *CreateIdentityProviderRequestLdapConfig `json:"LdapConfig,omitempty" xml:"LdapConfig,omitempty" type:"Struct"`
-	// IdP logo url.
+	// The URL of the application logo.
 	//
 	// example:
 	//
-	// xxxx-image://idaas_23aqr2ye554csg33dqpch5eu3q/tmp/d17d9adc-a943-45e7-ba0c-2838dddexxxxx
+	// xxxx-image://xxxx_23aqr2ye554csg33dqpch5eu3q/tmp/d17d9adc-a943-45e7-ba0c-2838dddea678
 	LogoUrl *string `json:"LogoUrl,omitempty" xml:"LogoUrl,omitempty"`
-	// The unique identifier of the network access endpoint.
+	// The network endpoint ID.
 	//
 	// example:
 	//
 	// nae_examplexxxx
 	NetworkAccessEndpointId *string `json:"NetworkAccessEndpointId,omitempty" xml:"NetworkAccessEndpointId,omitempty"`
-	// OIDC IdP configuration.
+	// The OIDC IdP configurations.
 	OidcConfig *CreateIdentityProviderRequestOidcConfig `json:"OidcConfig,omitempty" xml:"OidcConfig,omitempty" type:"Struct"`
 	SamlConfig *CreateIdentityProviderRequestSamlConfig `json:"SamlConfig,omitempty" xml:"SamlConfig,omitempty" type:"Struct"`
-	// Inbound synchronization configuration information.
+	// The inbound synchronization configurations.
 	UdPullConfig *CreateIdentityProviderRequestUdPullConfig `json:"UdPullConfig,omitempty" xml:"UdPullConfig,omitempty" type:"Struct"`
-	// Outbound synchronization configuration information.
+	// The outbound synchronization configurations.
 	UdPushConfig *CreateIdentityProviderRequestUdPushConfig `json:"UdPushConfig,omitempty" xml:"UdPushConfig,omitempty" type:"Struct"`
-	// WeCom configuration information.
+	// The WeCom configurations.
 	WeComConfig *CreateIdentityProviderRequestWeComConfig `json:"WeComConfig,omitempty" xml:"WeComConfig,omitempty" type:"Struct"`
 }
 
@@ -366,21 +366,21 @@ func (s *CreateIdentityProviderRequest) Validate() error {
 }
 
 type CreateIdentityProviderRequestAuthnConfig struct {
-	// Whether the corresponding IdP supports authentication. Value range:
+	// Specifies whether the IdP supports authentication. Valid values:
 	//
-	// - Disabled: disabled
+	// - disabled
 	//
-	// - Enabled: enabled
+	// - enabled
 	//
 	// example:
 	//
 	// enabled
 	AuthnStatus *string `json:"AuthnStatus,omitempty" xml:"AuthnStatus,omitempty"`
-	// Whether automatic password update is supported. Value range:
+	// Specifies whether to automatically update passwords. Valid values:
 	//
-	// - Disabled: disabled
+	// - disabled
 	//
-	// - Enabled: enabled
+	// - enabled
 	//
 	// example:
 	//
@@ -419,17 +419,17 @@ func (s *CreateIdentityProviderRequestAuthnConfig) Validate() error {
 }
 
 type CreateIdentityProviderRequestAutoCreateUserConfig struct {
-	// Whether auto-creation of accounts is enabled. Possible values:
+	// Specifies whether to automatically create accounts. Valid values:
 	//
-	// - Disabled: disabled
+	// - disabled
 	//
-	// - Enabled: enabled
+	// - enabled
 	//
 	// example:
 	//
 	// disabled
 	AutoCreateUserStatus *string `json:"AutoCreateUserStatus,omitempty" xml:"AutoCreateUserStatus,omitempty"`
-	// Target organizational unit IDs collection.
+	// The collection of target organizational unit IDs.
 	TargetOrganizationalUnitIds []*string `json:"TargetOrganizationalUnitIds,omitempty" xml:"TargetOrganizationalUnitIds,omitempty" type:"Repeated"`
 }
 
@@ -464,11 +464,11 @@ func (s *CreateIdentityProviderRequestAutoCreateUserConfig) Validate() error {
 }
 
 type CreateIdentityProviderRequestAutoUpdateUserConfig struct {
-	// Whether auto-updating of accounts is enabled. Possible values:
+	// Specifies whether to automatically update accounts. Valid values:
 	//
-	// - Disabled: disabled
+	// - disabled
 	//
-	// - Enabled: enabled
+	// - enabled
 	//
 	// example:
 	//
@@ -498,23 +498,23 @@ func (s *CreateIdentityProviderRequestAutoUpdateUserConfig) Validate() error {
 }
 
 type CreateIdentityProviderRequestBindingConfig struct {
-	// List of rules for automatically matching accounts.
+	// The list of rules for automatically matching accounts.
 	AutoMatchUserProfileExpressions []*CreateIdentityProviderRequestBindingConfigAutoMatchUserProfileExpressions `json:"AutoMatchUserProfileExpressions,omitempty" xml:"AutoMatchUserProfileExpressions,omitempty" type:"Repeated"`
-	// Whether automatic account matching is enabled. Value range:
+	// Specifies whether to automatically match accounts. Valid values:
 	//
-	// - Disabled: disabled
+	// - disabled
 	//
-	// - Enabled: enabled
+	// - enabled
 	//
 	// example:
 	//
 	// disabled
 	AutoMatchUserStatus *string `json:"AutoMatchUserStatus,omitempty" xml:"AutoMatchUserStatus,omitempty"`
-	// Whether the user manual account binding function is enabled. Value range:
+	// Specifies whether to allow users to manually bind accounts. Valid values:
 	//
-	// - Disabled: disabled
+	// - disabled
 	//
-	// - Enabled: enabled
+	// - enabled
 	//
 	// example:
 	//
@@ -571,33 +571,33 @@ func (s *CreateIdentityProviderRequestBindingConfig) Validate() error {
 }
 
 type CreateIdentityProviderRequestBindingConfigAutoMatchUserProfileExpressions struct {
-	// Type of the expression. Value range:
+	// The type of the expression. Valid values:
 	//
-	// - Field: filed
+	// - field
 	//
-	// - Expression: expression
+	// - expression
 	//
 	// example:
 	//
-	// filed
+	// field
 	ExpressionMappingType *string `json:"ExpressionMappingType,omitempty" xml:"ExpressionMappingType,omitempty"`
-	// Expression for the mapped attribute value.
+	// The expression for the value of the mapped attribute.
 	//
 	// example:
 	//
 	// idpUser.phoneNumber
 	SourceValueExpression *string `json:"SourceValueExpression,omitempty" xml:"SourceValueExpression,omitempty"`
-	// Name of the target attribute.
+	// The name of the target mapped attribute.
 	//
 	// example:
 	//
 	// user.username
 	TargetField *string `json:"TargetField,omitempty" xml:"TargetField,omitempty"`
-	// Description of the target attribute.
+	// The name of the mapping\\"s target property.
 	//
 	// example:
 	//
-	// user.username
+	// username
 	TargetFieldDescription *string `json:"TargetFieldDescription,omitempty" xml:"TargetFieldDescription,omitempty"`
 }
 
@@ -650,45 +650,45 @@ func (s *CreateIdentityProviderRequestBindingConfigAutoMatchUserProfileExpressio
 }
 
 type CreateIdentityProviderRequestDingtalkAppConfig struct {
-	// AppKey of the DingTalk application.
+	// The AppKey of the DingTalk application.
 	//
 	// example:
 	//
 	// Xczngvfemo4e
 	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	// AppSecret of the DingTalk application.
+	// The AppSecret of the DingTalk application.
 	//
 	// example:
 	//
 	// 5d405a12a6f84ad4ab05ee09axxxx
 	AppSecret *string `json:"AppSecret,omitempty" xml:"AppSecret,omitempty"`
-	// CorpId of the DingTalk application.
+	// The CorpId of the DingTalk application.
 	//
 	// example:
 	//
-	// 3075680424786133505
+	// 307568042478613xxxx
 	CorpId *string `json:"CorpId,omitempty" xml:"CorpId,omitempty"`
-	// DingTalk edition. Valid values:
+	// The DingTalk version. Valid values:
 	//
-	// public_dingtalk – Standard DingTalk.
+	// - public_dingtalk: Standard DingTalk
 	//
-	// private_dingtalk – Dedicated DingTalk.
+	// - private_dingtalk: Enterprise DingTalk
 	//
 	// example:
 	//
 	// public_dingtalk
 	DingtalkVersion *string `json:"DingtalkVersion,omitempty" xml:"DingtalkVersion,omitempty"`
-	// DingTalk encrypt key.
+	// The EncryptKey of the DingTalk application.
 	//
 	// example:
 	//
-	// 29003eb11d0a28b4802a6f02fb8aa25dff730e2ac26ffd200dxxxx
+	// VkdWw91mdkrjVFr3ObNwefap21dfxxxx
 	EncryptKey *string `json:"EncryptKey,omitempty" xml:"EncryptKey,omitempty"`
-	// DingTalk verification token.
+	// The VerificationToken of the DingTalk application.
 	//
 	// example:
 	//
-	// 5ba9c127a7abe029003eb11d0a28b4802a6f02fb8aa25dff730e2ac26ffd200dxxxx
+	// myDingApp_VerifyTokenxxxxx
 	VerificationToken *string `json:"VerificationToken,omitempty" xml:"VerificationToken,omitempty"`
 }
 
@@ -759,35 +759,35 @@ func (s *CreateIdentityProviderRequestDingtalkAppConfig) Validate() error {
 }
 
 type CreateIdentityProviderRequestLarkConfig struct {
-	// Lark (Feishu) app appId.
+	// The AppId of the Lark application.
 	//
 	// example:
 	//
 	// cli_xxxx
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// Lark (Feishu) app secret.
+	// The App Secret of the Lark application.
 	//
 	// example:
 	//
 	// KiiLzh5Dueh4wbLxxxx
 	AppSecret *string `json:"AppSecret,omitempty" xml:"AppSecret,omitempty"`
-	// Lark (Feishu) encrypt key.
+	// The EncryptKey of the custom Lark application.
 	//
 	// example:
 	//
-	// 29003eb11d0a28b4802a6f02fb8aa25dff730e2ac26ffd200dxxxx
+	// VkdWw91mdkrjVFr3ObNwefap21dfxxxx
 	EncryptKey *string `json:"EncryptKey,omitempty" xml:"EncryptKey,omitempty"`
-	// Lark (Feishu) enterprise number.
+	// The enterprise code of Lark.
 	//
 	// example:
 	//
 	// FSX123111xxx
 	EnterpriseNumber *string `json:"EnterpriseNumber,omitempty" xml:"EnterpriseNumber,omitempty"`
-	// Lark (Feishu)  verification token.
+	// The VerificationToken of the custom Lark application.
 	//
 	// example:
 	//
-	// 5ba9c127a7abe029003eb11d0a28b4802a6f02fb8aa25dff730e2ac26ffd200dxxxx
+	// feishuVerifyTokenxxxxx
 	VerificationToken *string `json:"VerificationToken,omitempty" xml:"VerificationToken,omitempty"`
 }
 
@@ -849,108 +849,114 @@ func (s *CreateIdentityProviderRequestLarkConfig) Validate() error {
 }
 
 type CreateIdentityProviderRequestLdapConfig struct {
-	// Administrator password.
+	// The administrator password.
 	//
 	// example:
 	//
 	// xxxx
 	AdministratorPassword *string `json:"AdministratorPassword,omitempty" xml:"AdministratorPassword,omitempty"`
-	// Administrator username.
+	// The administrator account.
 	//
 	// example:
 	//
 	// DC=example,DC=com
 	AdministratorUsername *string `json:"AdministratorUsername,omitempty" xml:"AdministratorUsername,omitempty"`
-	// Whether to verify the certificate fingerprint. Value range:
+	// Specifies whether to verify the certificate fingerprint. Valid values:
 	//
-	// - Disabled: disabled
+	// - disabled
 	//
-	// - Enabled: enabled
+	// - enabled
 	//
 	// example:
 	//
 	// enabled
 	CertificateFingerprintStatus *string `json:"CertificateFingerprintStatus,omitempty" xml:"CertificateFingerprintStatus,omitempty"`
-	// List of certificate fingerprints.
+	// The list of certificate fingerprints.
 	CertificateFingerprints []*string `json:"CertificateFingerprints,omitempty" xml:"CertificateFingerprints,omitempty" type:"Repeated"`
-	// Group member attribute name.
+	// The group member identifier.
 	//
 	// example:
 	//
 	// member
 	GroupMemberAttributeName *string `json:"GroupMemberAttributeName,omitempty" xml:"GroupMemberAttributeName,omitempty"`
-	// Group ObjectClass.
+	// The objectClass for groups.
 	//
 	// example:
 	//
 	// group
 	GroupObjectClass *string `json:"GroupObjectClass,omitempty" xml:"GroupObjectClass,omitempty"`
-	// Custom filter for Group ObjectClass.
+	// The custom filter for groups.
 	//
 	// example:
 	//
 	// (|(cn=test)(group=test@test.com))
 	GroupObjectClassCustomFilter *string `json:"GroupObjectClassCustomFilter,omitempty" xml:"GroupObjectClassCustomFilter,omitempty"`
-	// Communication protocol.
+	// The communication protocol.
 	//
 	// example:
 	//
 	// ldap
 	LdapProtocol *string `json:"LdapProtocol,omitempty" xml:"LdapProtocol,omitempty"`
-	// AD/LDAP server address.
+	// The address of the AD/LDAP server.
 	//
 	// example:
 	//
 	// 123.xx.xx.89
 	LdapServerHost *string `json:"LdapServerHost,omitempty" xml:"LdapServerHost,omitempty"`
-	// AD/LDAP port number.
+	// The port number of the AD/LDAP server.
 	//
 	// example:
 	//
 	// 636
 	LdapServerPort *int32 `json:"LdapServerPort,omitempty" xml:"LdapServerPort,omitempty"`
-	// Organization Unit ObjectClass.
+	// The objectClass for organizational units.
 	//
 	// example:
 	//
 	// organizationUnit,top
 	OrganizationUnitObjectClass *string `json:"OrganizationUnitObjectClass,omitempty" xml:"OrganizationUnitObjectClass,omitempty"`
+	// The RDN for organizational units.
+	//
 	// example:
 	//
 	// ou
 	OrganizationalUnitRdn *string `json:"OrganizationalUnitRdn,omitempty" xml:"OrganizationalUnitRdn,omitempty"`
+	// The switch for password synchronization.
+	//
 	// example:
 	//
 	// enabled
 	PasswordSyncStatus *string `json:"PasswordSyncStatus,omitempty" xml:"PasswordSyncStatus,omitempty"`
-	// Whether startTLS is enabled. Value range:
+	// Specifies whether to enable StartTLS. Valid values:
 	//
-	// - Disabled: disabled
+	// - disabled
 	//
-	// - Enabled: enabled
+	// - enabled
 	//
 	// example:
 	//
 	// enabled
 	StartTlsStatus *string `json:"StartTlsStatus,omitempty" xml:"StartTlsStatus,omitempty"`
-	// User login identifier.
+	// The user logon identifier.
 	//
 	// example:
 	//
 	// userPrincipalName, mail
 	UserLoginIdentifier *string `json:"UserLoginIdentifier,omitempty" xml:"UserLoginIdentifier,omitempty"`
-	// User ObjectClass.
+	// The objectClass for users.
 	//
 	// example:
 	//
 	// person,user
 	UserObjectClass *string `json:"UserObjectClass,omitempty" xml:"UserObjectClass,omitempty"`
-	// Custom filter for User ObjectClass.
+	// The custom filter for users.
 	//
 	// example:
 	//
 	// (|(cn=test)(mail=test@test.com))
 	UserObjectClassCustomFilter *string `json:"UserObjectClassCustomFilter,omitempty" xml:"UserObjectClassCustomFilter,omitempty"`
+	// The RDN for users.
+	//
 	// example:
 	//
 	// cn
@@ -1132,33 +1138,33 @@ func (s *CreateIdentityProviderRequestLdapConfig) Validate() error {
 }
 
 type CreateIdentityProviderRequestOidcConfig struct {
-	// OIDC client authentication configuration.
+	// The OIDC client authentication configurations.
 	AuthnParam *CreateIdentityProviderRequestOidcConfigAuthnParam `json:"AuthnParam,omitempty" xml:"AuthnParam,omitempty" type:"Struct"`
-	// OIDC endpoint configuration.
+	// The OIDC endpoint configurations.
 	EndpointConfig *CreateIdentityProviderRequestOidcConfigEndpointConfig `json:"EndpointConfig,omitempty" xml:"EndpointConfig,omitempty" type:"Struct"`
-	// OIDC grant scopes collection.
+	// The collection of OIDC authorization scopes.
 	//
 	// example:
 	//
 	// openid
 	GrantScopes []*string `json:"GrantScopes,omitempty" xml:"GrantScopes,omitempty" type:"Repeated"`
-	// OIDC grant type.
+	// The OIDC grant type.
 	//
 	// example:
 	//
 	// authorization_code
 	GrantType *string `json:"GrantType,omitempty" xml:"GrantType,omitempty"`
-	// PKCE algorithm. Possible values:
+	// The PKCE algorithm. Valid values:
 	//
-	// - SHA256: S256
+	// - S256: SHA256
 	//
-	// - Plain text: plain
+	// - plain: Plaintext
 	//
 	// example:
 	//
 	// S256
 	PkceChallengeMethod *string `json:"PkceChallengeMethod,omitempty" xml:"PkceChallengeMethod,omitempty"`
-	// Whether to use PKCE in the AuthorizationCode grant mode.
+	// Specifies whether to use PKCE in the Authorization Code grant type.
 	//
 	// example:
 	//
@@ -1243,7 +1249,7 @@ func (s *CreateIdentityProviderRequestOidcConfig) Validate() error {
 }
 
 type CreateIdentityProviderRequestOidcConfigAuthnParam struct {
-	// OIDC authentication method. Value range:
+	// The OIDC authentication method. Valid values:
 	//
 	// - client_secret_basic
 	//
@@ -1253,13 +1259,13 @@ type CreateIdentityProviderRequestOidcConfigAuthnParam struct {
 	//
 	// client_secret_post
 	AuthnMethod *string `json:"AuthnMethod,omitempty" xml:"AuthnMethod,omitempty"`
-	// The ID of the client.
+	// The OIDC client ID.
 	//
 	// example:
 	//
 	// mkv7rgt4d7i4u7zqtzev2mxxxx
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	// The  secret of the client.
+	// The OpenID Connect (OIDC) client secret.
 	//
 	// example:
 	//
@@ -1307,31 +1313,31 @@ func (s *CreateIdentityProviderRequestOidcConfigAuthnParam) Validate() error {
 }
 
 type CreateIdentityProviderRequestOidcConfigEndpointConfig struct {
-	// OIDC authorization endpoint.
+	// The OIDC authorization endpoint.
 	//
 	// example:
 	//
 	// https://example.com/auth/authorize
 	AuthorizationEndpoint *string `json:"AuthorizationEndpoint,omitempty" xml:"AuthorizationEndpoint,omitempty"`
-	// OIDC issuer information.
+	// The OIDC issuer.
 	//
 	// example:
 	//
 	// https://example.com/auth
 	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
-	// OIDC jwks uri.
+	// The OIDC JWKS URI.
 	//
 	// example:
 	//
 	// https://example.com/auth/jwks
 	JwksUri *string `json:"JwksUri,omitempty" xml:"JwksUri,omitempty"`
-	// OIDC token endpoint.
+	// The OIDC token endpoint.
 	//
 	// example:
 	//
 	// https://example.com/auth/token
 	TokenEndpoint *string `json:"TokenEndpoint,omitempty" xml:"TokenEndpoint,omitempty"`
-	// OIDC user info endpoint.
+	// The OIDC user information endpoint.
 	//
 	// example:
 	//
@@ -1544,39 +1550,39 @@ func (s *CreateIdentityProviderRequestSamlConfigCertificates) Validate() error {
 }
 
 type CreateIdentityProviderRequestUdPullConfig struct {
-	// Whether group synchronization is supported. The default value is disabled. Possible values:
+	// Specifies whether to synchronize groups. The default value is disabled. Valid values:
 	//
-	// - Disabled: disabled
+	// - disabled
 	//
-	// - Enabled: enabled
+	// - enabled
 	//
 	// example:
 	//
 	// disabled
 	GroupSyncStatus *string `json:"GroupSyncStatus,omitempty" xml:"GroupSyncStatus,omitempty"`
-	// Incremental callback status, indicating whether to process incremental callback data from the IdP. Possible values:
+	// The status of incremental callbacks. Specifies whether to process incremental callback data from the identity provider (IdP). Valid values:
 	//
-	// - Disabled: disabled
+	// - disabled
 	//
-	// - Enabled: enabled
+	// - enabled
 	//
 	// example:
 	//
 	// disabled
 	IncrementalCallbackStatus *string `json:"IncrementalCallbackStatus,omitempty" xml:"IncrementalCallbackStatus,omitempty"`
-	// Scheduled configuration verification.
+	// The configuration for periodic synchronization.
 	PeriodicSyncConfig *CreateIdentityProviderRequestUdPullConfigPeriodicSyncConfig `json:"PeriodicSyncConfig,omitempty" xml:"PeriodicSyncConfig,omitempty" type:"Struct"`
-	// Periodic check status, indicating whether to periodically check the data differences between EIAM and the identity provider. Possible values:
+	// The status of periodic synchronization. Specifies whether to periodically check for data differences between IDaaS and the IdP. Valid values:
 	//
-	// - Disabled: disabled
+	// - disabled
 	//
-	// - Enabled: enabled
+	// - enabled
 	//
 	// example:
 	//
 	// disabled
 	PeriodicSyncStatus *string `json:"PeriodicSyncStatus,omitempty" xml:"PeriodicSyncStatus,omitempty"`
-	// Synchronization scope configuration information.
+	// The synchronization scope configurations.
 	UdSyncScopeConfig *CreateIdentityProviderRequestUdPullConfigUdSyncScopeConfig `json:"UdSyncScopeConfig,omitempty" xml:"UdSyncScopeConfig,omitempty" type:"Struct"`
 }
 
@@ -1648,15 +1654,15 @@ func (s *CreateIdentityProviderRequestUdPullConfig) Validate() error {
 }
 
 type CreateIdentityProviderRequestUdPullConfigPeriodicSyncConfig struct {
-	// cron expression.
+	// The cron expression.
 	//
 	// example:
 	//
 	// 0 45 1 	- 	- ?
 	PeriodicSyncCron *string `json:"PeriodicSyncCron,omitempty" xml:"PeriodicSyncCron,omitempty"`
-	// Collection of time points.
+	// The collection of running time points.
 	PeriodicSyncTimes []*int32 `json:"PeriodicSyncTimes,omitempty" xml:"PeriodicSyncTimes,omitempty" type:"Repeated"`
-	// type.
+	// The type.
 	//
 	// example:
 	//
@@ -1704,9 +1710,9 @@ func (s *CreateIdentityProviderRequestUdPullConfigPeriodicSyncConfig) Validate()
 }
 
 type CreateIdentityProviderRequestUdPullConfigUdSyncScopeConfig struct {
-	// List of source nodes for synchronization.
+	// The list of source nodes for synchronization.
 	SourceScopes []*string `json:"SourceScopes,omitempty" xml:"SourceScopes,omitempty" type:"Repeated"`
-	// Synchronize target node, and fill in the IDaaS organization ID.
+	// The target node for synchronization. Enter the IDaaS organization ID.
 	//
 	// example:
 	//
@@ -1745,20 +1751,21 @@ func (s *CreateIdentityProviderRequestUdPullConfigUdSyncScopeConfig) Validate() 
 }
 
 type CreateIdentityProviderRequestUdPushConfig struct {
-	// Incremental callback status. This field is reserved and currently not in use; please ignore it.
+	// The status of incremental callbacks. This parameter is not in use. Ignore this parameter.
 	//
 	// example:
 	//
 	// disabled
-	IncrementalCallbackStatus *string                                                      `json:"IncrementalCallbackStatus,omitempty" xml:"IncrementalCallbackStatus,omitempty"`
-	PeriodicSyncConfig        *CreateIdentityProviderRequestUdPushConfigPeriodicSyncConfig `json:"PeriodicSyncConfig,omitempty" xml:"PeriodicSyncConfig,omitempty" type:"Struct"`
-	// Periodic check status. This field is currently not in use, please ignore it.
+	IncrementalCallbackStatus *string `json:"IncrementalCallbackStatus,omitempty" xml:"IncrementalCallbackStatus,omitempty"`
+	// The periodic synchronization configurations.
+	PeriodicSyncConfig *CreateIdentityProviderRequestUdPushConfigPeriodicSyncConfig `json:"PeriodicSyncConfig,omitempty" xml:"PeriodicSyncConfig,omitempty" type:"Struct"`
+	// The status of periodic synchronization. This parameter is not in use. Ignore this parameter.
 	//
 	// example:
 	//
 	// disabled
 	PeriodicSyncStatus *string `json:"PeriodicSyncStatus,omitempty" xml:"PeriodicSyncStatus,omitempty"`
-	// Outbound synchronization configuration information.
+	// The configurations of the outbound synchronization scope.
 	UdSyncScopeConfigs []*CreateIdentityProviderRequestUdPushConfigUdSyncScopeConfigs `json:"UdSyncScopeConfigs,omitempty" xml:"UdSyncScopeConfigs,omitempty" type:"Repeated"`
 }
 
@@ -1825,11 +1832,16 @@ func (s *CreateIdentityProviderRequestUdPushConfig) Validate() error {
 }
 
 type CreateIdentityProviderRequestUdPushConfigPeriodicSyncConfig struct {
+	// The cron expression.
+	//
 	// example:
 	//
 	// 0 45 1 	- 	- ?
-	PeriodicSyncCron  *string  `json:"PeriodicSyncCron,omitempty" xml:"PeriodicSyncCron,omitempty"`
+	PeriodicSyncCron *string `json:"PeriodicSyncCron,omitempty" xml:"PeriodicSyncCron,omitempty"`
+	// The collection of running time points.
 	PeriodicSyncTimes []*int32 `json:"PeriodicSyncTimes,omitempty" xml:"PeriodicSyncTimes,omitempty" type:"Repeated"`
+	// The type.
+	//
 	// example:
 	//
 	// cron
@@ -1876,9 +1888,9 @@ func (s *CreateIdentityProviderRequestUdPushConfigPeriodicSyncConfig) Validate()
 }
 
 type CreateIdentityProviderRequestUdPushConfigUdSyncScopeConfigs struct {
-	// List of source nodes for synchronization.
+	// The list of source nodes for synchronization.
 	SourceScopes []*string `json:"SourceScopes,omitempty" xml:"SourceScopes,omitempty" type:"Repeated"`
-	// Target node for synchronization.
+	// The target node for synchronization.
 	//
 	// example:
 	//
@@ -1917,31 +1929,31 @@ func (s *CreateIdentityProviderRequestUdPushConfigUdSyncScopeConfigs) Validate()
 }
 
 type CreateIdentityProviderRequestWeComConfig struct {
-	// Agent ID of the self-built WeCom application.
+	// The agent ID of the custom WeCom application.
 	//
 	// example:
 	//
 	// 278231941749863339
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
-	// Authorization callback domain.
+	// The authorized callback domain.
 	//
 	// example:
 	//
 	// https://xxx.aliyunidaas.com/xxxx
 	AuthorizeCallbackDomain *string `json:"AuthorizeCallbackDomain,omitempty" xml:"AuthorizeCallbackDomain,omitempty"`
-	// Corp ID of the self-built WeCom application.
+	// The CorpId of the custom WeCom application.
 	//
 	// example:
 	//
 	// 3756043633237690761
 	CorpId *string `json:"CorpId,omitempty" xml:"CorpId,omitempty"`
-	// Corp Secret of the self-built WeCom application.
+	// The CorpSecret of the custom WeCom application.
 	//
 	// example:
 	//
 	// CSEHDddddddxxxxuxkJEHPveWRXBGqVqRsxxxx
 	CorpSecret *string `json:"CorpSecret,omitempty" xml:"CorpSecret,omitempty"`
-	// Trusted domain.
+	// The trusted domain name.
 	//
 	// example:
 	//

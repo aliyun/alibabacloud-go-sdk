@@ -20,7 +20,7 @@ type iRevokeApplicationFromOrganizationalUnitsRequest interface {
 }
 
 type RevokeApplicationFromOrganizationalUnitsRequest struct {
-	// The ID of the application.
+	// The application ID.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type RevokeApplicationFromOrganizationalUnitsRequest struct {
 	//
 	// app_role_mkv7rgt4ds8d8v0qtzev2mxxxx
 	ApplicationRoleId *string `json:"ApplicationRoleId,omitempty" xml:"ApplicationRoleId,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type RevokeApplicationFromOrganizationalUnitsRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The IDs of the organizations. You can revoke the access permissions from a maximum of 100 organizations at a time.
+	// A list of organizational unit IDs. A single operation supports up to 100 organizational unit IDs.
 	//
 	// This parameter is required.
 	//

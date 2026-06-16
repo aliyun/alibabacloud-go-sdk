@@ -16,7 +16,7 @@ type iGetInstanceResponseBody interface {
 }
 
 type GetInstanceResponseBody struct {
-	// The details of the instance.
+	// The instance information.
 	Instance *GetInstanceResponseBodyInstance `json:"Instance,omitempty" xml:"Instance,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,45 +62,66 @@ func (s *GetInstanceResponseBody) Validate() error {
 }
 
 type GetInstanceResponseBodyInstance struct {
-	// The time when the instance was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The time when the instance was created, in Unix timestamp format, measured in milliseconds.
 	//
 	// example:
 	//
 	// 1550115455000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The default endpoint of the instance.
+	// example:
+	//
+	// enabled
+	CrossRegionReplication *string `json:"CrossRegionReplication,omitempty" xml:"CrossRegionReplication,omitempty"`
+	// example:
+	//
+	// primary
+	CrossRegionReplicationRole *string `json:"CrossRegionReplicationRole,omitempty" xml:"CrossRegionReplicationRole,omitempty"`
+	// The default endpoint of the instance. This field is no longer maintained. Use the DomainConfig related fields or refer to the domain list query API instead.
 	DefaultEndpoint *GetInstanceResponseBodyInstanceDefaultEndpoint `json:"DefaultEndpoint,omitempty" xml:"DefaultEndpoint,omitempty" type:"Struct"`
 	// The description of the instance.
 	//
 	// example:
 	//
-	// test_description
+	// instance_for_test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The default domain of the instance.
+	// The domain-related configuration of the instance.
 	DomainConfig *GetInstanceResponseBodyInstanceDomainConfig `json:"DomainConfig,omitempty" xml:"DomainConfig,omitempty" type:"Struct"`
-	// The outbound public CIDR blocks of the instance. For example, when you synchronize Active Directory (AD) accounts, the IDaaS EIAM instance accesses your AD service by using the outbound public CIDR blocks.
+	// The egress public IP address ranges of the instance. For example, during AD account synchronization, the EIAM instance accesses your AD service through these public IP address ranges.
 	EgressAddresses []*string `json:"EgressAddresses,omitempty" xml:"EgressAddresses,omitempty" type:"Repeated"`
+	// example:
+	//
+	// inactive
+	InstanceFailoverStatus *string `json:"InstanceFailoverStatus,omitempty" xml:"InstanceFailoverStatus,omitempty"`
 	// The instance ID.
 	//
 	// example:
 	//
 	// idaas_abt3pfwojojcq323si6g5xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The service code of the cloud service that manages the instance.
+	//
 	// if can be null:
 	// false
 	//
 	// example:
 	//
 	// sase
-	ManagedServiceCode *string `json:"ManagedServiceCode,omitempty" xml:"ManagedServiceCode,omitempty"`
+	ManagedServiceCode       *string                                                  `json:"ManagedServiceCode,omitempty" xml:"ManagedServiceCode,omitempty"`
+	ReplicationConfiguration *GetInstanceResponseBodyInstanceReplicationConfiguration `json:"ReplicationConfiguration,omitempty" xml:"ReplicationConfiguration,omitempty" type:"Struct"`
+	// Indicates whether the instance is managed by a cloud service.
+	//
 	// if can be null:
 	// false
+	//
+	// example:
+	//
+	// false
 	ServiceManaged *bool `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
-	// The status of the instance. Valid values:
+	// The instance status. Valid values:
 	//
-	// 	- creating
+	// - creating: Being created.
 	//
-	// 	- running
+	// - running: Running.
 	//
 	// example:
 	//
@@ -120,6 +141,14 @@ func (s *GetInstanceResponseBodyInstance) GetCreateTime() *int64 {
 	return s.CreateTime
 }
 
+func (s *GetInstanceResponseBodyInstance) GetCrossRegionReplication() *string {
+	return s.CrossRegionReplication
+}
+
+func (s *GetInstanceResponseBodyInstance) GetCrossRegionReplicationRole() *string {
+	return s.CrossRegionReplicationRole
+}
+
 func (s *GetInstanceResponseBodyInstance) GetDefaultEndpoint() *GetInstanceResponseBodyInstanceDefaultEndpoint {
 	return s.DefaultEndpoint
 }
@@ -136,12 +165,20 @@ func (s *GetInstanceResponseBodyInstance) GetEgressAddresses() []*string {
 	return s.EgressAddresses
 }
 
+func (s *GetInstanceResponseBodyInstance) GetInstanceFailoverStatus() *string {
+	return s.InstanceFailoverStatus
+}
+
 func (s *GetInstanceResponseBodyInstance) GetInstanceId() *string {
 	return s.InstanceId
 }
 
 func (s *GetInstanceResponseBodyInstance) GetManagedServiceCode() *string {
 	return s.ManagedServiceCode
+}
+
+func (s *GetInstanceResponseBodyInstance) GetReplicationConfiguration() *GetInstanceResponseBodyInstanceReplicationConfiguration {
+	return s.ReplicationConfiguration
 }
 
 func (s *GetInstanceResponseBodyInstance) GetServiceManaged() *bool {
@@ -154,6 +191,16 @@ func (s *GetInstanceResponseBodyInstance) GetStatus() *string {
 
 func (s *GetInstanceResponseBodyInstance) SetCreateTime(v int64) *GetInstanceResponseBodyInstance {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyInstance) SetCrossRegionReplication(v string) *GetInstanceResponseBodyInstance {
+	s.CrossRegionReplication = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyInstance) SetCrossRegionReplicationRole(v string) *GetInstanceResponseBodyInstance {
+	s.CrossRegionReplicationRole = &v
 	return s
 }
 
@@ -177,6 +224,11 @@ func (s *GetInstanceResponseBodyInstance) SetEgressAddresses(v []*string) *GetIn
 	return s
 }
 
+func (s *GetInstanceResponseBodyInstance) SetInstanceFailoverStatus(v string) *GetInstanceResponseBodyInstance {
+	s.InstanceFailoverStatus = &v
+	return s
+}
+
 func (s *GetInstanceResponseBodyInstance) SetInstanceId(v string) *GetInstanceResponseBodyInstance {
 	s.InstanceId = &v
 	return s
@@ -184,6 +236,11 @@ func (s *GetInstanceResponseBodyInstance) SetInstanceId(v string) *GetInstanceRe
 
 func (s *GetInstanceResponseBodyInstance) SetManagedServiceCode(v string) *GetInstanceResponseBodyInstance {
 	s.ManagedServiceCode = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyInstance) SetReplicationConfiguration(v *GetInstanceResponseBodyInstanceReplicationConfiguration) *GetInstanceResponseBodyInstance {
+	s.ReplicationConfiguration = v
 	return s
 }
 
@@ -208,21 +265,26 @@ func (s *GetInstanceResponseBodyInstance) Validate() error {
 			return err
 		}
 	}
+	if s.ReplicationConfiguration != nil {
+		if err := s.ReplicationConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
 	return nil
 }
 
 type GetInstanceResponseBodyInstanceDefaultEndpoint struct {
-	// The endpoint of the instance.
+	// The endpoint address of the instance.
 	//
 	// example:
 	//
 	// example-xxx.aliyunidaas.com
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	// The status of the endpoint. Valid values:
+	// The status of the instance endpoint. Valid values:
 	//
-	// 	- resolved
+	// - resolved: Resolved.
 	//
-	// 	- unresolved
+	// - unresolved: Not resolved.
 	//
 	// example:
 	//
@@ -265,23 +327,23 @@ type GetInstanceResponseBodyInstanceDomainConfig struct {
 	//
 	// example:
 	//
-	// example-xxx.example.com
+	// login.example.com
 	DefaultDomain *string `json:"DefaultDomain,omitempty" xml:"DefaultDomain,omitempty"`
-	// The init domain of the instance.
+	// The initialization domain of the instance.
 	//
 	// example:
 	//
-	// example-xxx.aliyunidaas.com
+	// rx72nxxx.example.com
 	InitDomain *string `json:"InitDomain,omitempty" xml:"InitDomain,omitempty"`
-	// Valid values:
+	// The auto-redirect status of the initialization domain. Valid values:
 	//
-	// 	- true
+	// - enabled: Enabled.
 	//
-	// 	- false
+	// - disabled: Disabled.
 	//
 	// example:
 	//
-	// true
+	// disabled
 	InitDomainAutoRedirectStatus *string `json:"InitDomainAutoRedirectStatus,omitempty" xml:"InitDomainAutoRedirectStatus,omitempty"`
 }
 
@@ -321,5 +383,85 @@ func (s *GetInstanceResponseBodyInstanceDomainConfig) SetInitDomainAutoRedirectS
 }
 
 func (s *GetInstanceResponseBodyInstanceDomainConfig) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetInstanceResponseBodyInstanceReplicationConfiguration struct {
+	// example:
+	//
+	// idaas_xxxx
+	BackupInstanceId *string `json:"BackupInstanceId,omitempty" xml:"BackupInstanceId,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	BackupInstanceRegionId *string `json:"BackupInstanceRegionId,omitempty" xml:"BackupInstanceRegionId,omitempty"`
+	// example:
+	//
+	// idaas_xxxx
+	PrimaryInstanceId *string `json:"PrimaryInstanceId,omitempty" xml:"PrimaryInstanceId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	PrimaryInstanceRegionId *string `json:"PrimaryInstanceRegionId,omitempty" xml:"PrimaryInstanceRegionId,omitempty"`
+	// example:
+	//
+	// 1778499337000
+	ReplicationCreateTime *int64 `json:"ReplicationCreateTime,omitempty" xml:"ReplicationCreateTime,omitempty"`
+}
+
+func (s GetInstanceResponseBodyInstanceReplicationConfiguration) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetInstanceResponseBodyInstanceReplicationConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceResponseBodyInstanceReplicationConfiguration) GetBackupInstanceId() *string {
+	return s.BackupInstanceId
+}
+
+func (s *GetInstanceResponseBodyInstanceReplicationConfiguration) GetBackupInstanceRegionId() *string {
+	return s.BackupInstanceRegionId
+}
+
+func (s *GetInstanceResponseBodyInstanceReplicationConfiguration) GetPrimaryInstanceId() *string {
+	return s.PrimaryInstanceId
+}
+
+func (s *GetInstanceResponseBodyInstanceReplicationConfiguration) GetPrimaryInstanceRegionId() *string {
+	return s.PrimaryInstanceRegionId
+}
+
+func (s *GetInstanceResponseBodyInstanceReplicationConfiguration) GetReplicationCreateTime() *int64 {
+	return s.ReplicationCreateTime
+}
+
+func (s *GetInstanceResponseBodyInstanceReplicationConfiguration) SetBackupInstanceId(v string) *GetInstanceResponseBodyInstanceReplicationConfiguration {
+	s.BackupInstanceId = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyInstanceReplicationConfiguration) SetBackupInstanceRegionId(v string) *GetInstanceResponseBodyInstanceReplicationConfiguration {
+	s.BackupInstanceRegionId = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyInstanceReplicationConfiguration) SetPrimaryInstanceId(v string) *GetInstanceResponseBodyInstanceReplicationConfiguration {
+	s.PrimaryInstanceId = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyInstanceReplicationConfiguration) SetPrimaryInstanceRegionId(v string) *GetInstanceResponseBodyInstanceReplicationConfiguration {
+	s.PrimaryInstanceRegionId = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyInstanceReplicationConfiguration) SetReplicationCreateTime(v int64) *GetInstanceResponseBodyInstanceReplicationConfiguration {
+	s.ReplicationCreateTime = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyInstanceReplicationConfiguration) Validate() error {
 	return dara.Validate(s)
 }

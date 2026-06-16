@@ -16,7 +16,7 @@ type iCreateBrandRequest interface {
 }
 
 type CreateBrandRequest struct {
-	// 品牌化名称
+	// The brand name.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type CreateBrandRequest struct {
 	//
 	// Custom Brand
 	BrandName *string `json:"BrandName,omitempty" xml:"BrandName,omitempty"`
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

@@ -16,7 +16,7 @@ type iObtainCredentialRequest interface {
 }
 
 type ObtainCredentialRequest struct {
-	// 凭据ID。
+	// The credential ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type ObtainCredentialRequest struct {
 	//
 	// cred_mkv7rgt4d7i4u7zqtzev2mxxxx
 	CredentialId *string `json:"CredentialId,omitempty" xml:"CredentialId,omitempty"`
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

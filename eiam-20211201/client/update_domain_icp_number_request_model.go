@@ -18,7 +18,7 @@ type iUpdateDomainIcpNumberRequest interface {
 }
 
 type UpdateDomainIcpNumberRequest struct {
-	// 域名ID。
+	// The domain name ID.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type UpdateDomainIcpNumberRequest struct {
 	//
 	// dm_examplexxxxx
 	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
-	// 域名关联的备案号，长度最大限制64。
+	// The ICP filing number associated with the domain name.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type UpdateDomainIcpNumberRequest struct {
 	//
 	// 浙xx-xxxxxx
 	IcpNumber *string `json:"IcpNumber,omitempty" xml:"IcpNumber,omitempty"`
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

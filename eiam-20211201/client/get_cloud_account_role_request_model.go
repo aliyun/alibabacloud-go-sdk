@@ -18,13 +18,15 @@ type iGetCloudAccountRoleRequest interface {
 }
 
 type GetCloudAccountRoleRequest struct {
+	// The ID of the Alibaba Cloud account.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ca_01kmegjc11qa1txxxxx
 	CloudAccountId *string `json:"CloudAccountId,omitempty" xml:"CloudAccountId,omitempty"`
-	// 云账号角色ID。
+	// The ID of the cloud role.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +34,7 @@ type GetCloudAccountRoleRequest struct {
 	//
 	// carole_01kmek49aqxxxx
 	CloudAccountRoleId *string `json:"CloudAccountRoleId,omitempty" xml:"CloudAccountRoleId,omitempty"`
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

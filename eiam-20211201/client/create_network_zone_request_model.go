@@ -28,19 +28,19 @@ type iCreateNetworkZoneRequest interface {
 }
 
 type CreateNetworkZoneRequest struct {
-	// 保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。ClientToken只支持ASCII字符，且不能超过64个字符。
+	// The idempotence token.
 	//
 	// example:
 	//
 	// client-token-example
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 网络区域描述
+	// The description of the network zone.
 	//
 	// example:
 	//
-	// 测试描述
+	// Test description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -48,19 +48,19 @@ type CreateNetworkZoneRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 网络区域ipv4Cidr
+	// The IPv4 CIDR blocks of the network zone.
 	//
 	// example:
 	//
 	// 0.0.0.0/0
 	Ipv4Cidrs []*string `json:"Ipv4Cidrs,omitempty" xml:"Ipv4Cidrs,omitempty" type:"Repeated"`
-	// 网络区域ipv6Cidr
+	// The IPv6 CIDR blocks of the network zone.
 	//
 	// example:
 	//
 	// ::/0
 	Ipv6Cidrs []*string `json:"Ipv6Cidrs,omitempty" xml:"Ipv6Cidrs,omitempty" type:"Repeated"`
-	// 网络区域名称
+	// The name of the network zone.
 	//
 	// This parameter is required.
 	//
@@ -68,7 +68,7 @@ type CreateNetworkZoneRequest struct {
 	//
 	// IPV4Test
 	NetworkZoneName *string `json:"NetworkZoneName,omitempty" xml:"NetworkZoneName,omitempty"`
-	// 网络区域类型
+	// The type of the network zone.
 	//
 	// This parameter is required.
 	//
@@ -76,7 +76,7 @@ type CreateNetworkZoneRequest struct {
 	//
 	// arn:alibaba:idaas:network:zone:classic
 	NetworkZoneType *string `json:"NetworkZoneType,omitempty" xml:"NetworkZoneType,omitempty"`
-	// 专有网络VpcId
+	// The ID of the VPC.
 	//
 	// example:
 	//

@@ -22,21 +22,28 @@ type iListGroupsForResourceServerResponseBody interface {
 }
 
 type ListGroupsForResourceServerResponseBody struct {
+	// The list of groups.
 	Groups []*ListGroupsForResourceServerResponseBodyGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
+	// The number of entries returned on the current page.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 本次调用返回的查询凭证（Token）值，用于下一次翻页查询。
+	// The token to retrieve the next page of results. A null or empty value indicates that all results have been returned.
 	//
 	// example:
 	//
 	// NTxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries that meet the filter criteria.
+	//
 	// example:
 	//
 	// 100
@@ -110,19 +117,19 @@ func (s *ListGroupsForResourceServerResponseBody) Validate() error {
 }
 
 type ListGroupsForResourceServerResponseBodyGroups struct {
-	// 用户组的唯一标识
+	// The ID of the group.
 	//
 	// example:
 	//
 	// group_nbsomva32b6utec3hgi7scxxxx
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// 实例唯一标识
+	// The ID of the instance.
 	//
 	// example:
 	//
 	// idaas_qsw77zl5vrllwzyrrfwbmpxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 资源服务Scope权限集合
+	// The list of authorized scopes.
 	ResourceServerScopes []*ListGroupsForResourceServerResponseBodyGroupsResourceServerScopes `json:"ResourceServerScopes,omitempty" xml:"ResourceServerScopes,omitempty" type:"Repeated"`
 }
 
@@ -175,17 +182,17 @@ func (s *ListGroupsForResourceServerResponseBodyGroups) Validate() error {
 }
 
 type ListGroupsForResourceServerResponseBodyGroupsResourceServerScopes struct {
-	// ResourceServerScope唯一标识
+	// The ID of the scope.
 	//
 	// example:
 	//
 	// ress_nbte4bb3qqqnaq73rlmkqixxxx
 	ResourceServerScopeId *string `json:"ResourceServerScopeId,omitempty" xml:"ResourceServerScopeId,omitempty"`
-	// ResourceServerScope名称
+	// The name of the scope.
 	//
 	// example:
 	//
-	// 获取资源信息
+	// Read User Info
 	ResourceServerScopeName *string `json:"ResourceServerScopeName,omitempty" xml:"ResourceServerScopeName,omitempty"`
 }
 

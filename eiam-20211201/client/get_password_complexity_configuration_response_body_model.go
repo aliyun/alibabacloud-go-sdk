@@ -16,7 +16,7 @@ type iGetPasswordComplexityConfigurationResponseBody interface {
 }
 
 type GetPasswordComplexityConfigurationResponseBody struct {
-	// The password complexity configurations.
+	// The password complexity policy configuration.
 	PasswordComplexityConfiguration *GetPasswordComplexityConfigurationResponseBodyPasswordComplexityConfiguration `json:"PasswordComplexityConfiguration,omitempty" xml:"PasswordComplexityConfiguration,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,11 +62,21 @@ func (s *GetPasswordComplexityConfigurationResponseBody) Validate() error {
 }
 
 type GetPasswordComplexityConfigurationResponseBodyPasswordComplexityConfiguration struct {
-	DisabledWeakPasswordLogin          *bool  `json:"DisabledWeakPasswordLogin,omitempty" xml:"DisabledWeakPasswordLogin,omitempty"`
+	// Indicates whether logon with a weak password is disabled.
+	//
+	// example:
+	//
+	// false
+	DisabledWeakPasswordLogin *bool `json:"DisabledWeakPasswordLogin,omitempty" xml:"DisabledWeakPasswordLogin,omitempty"`
+	// The time when the weak password logon restriction takes effect.
+	//
+	// example:
+	//
+	// 1773383634936
 	DisabledWeakPasswordLoginStartedAt *int64 `json:"DisabledWeakPasswordLoginStartedAt,omitempty" xml:"DisabledWeakPasswordLoginStartedAt,omitempty"`
-	// The password complexity rules.
+	// The list of password complexity rules.
 	PasswordComplexityRules []*GetPasswordComplexityConfigurationResponseBodyPasswordComplexityConfigurationPasswordComplexityRules `json:"PasswordComplexityRules,omitempty" xml:"PasswordComplexityRules,omitempty" type:"Repeated"`
-	// The minimum number of characters in a password.
+	// The minimum password length.
 	//
 	// example:
 	//
@@ -132,23 +142,23 @@ func (s *GetPasswordComplexityConfigurationResponseBodyPasswordComplexityConfigu
 }
 
 type GetPasswordComplexityConfigurationResponseBodyPasswordComplexityConfigurationPasswordComplexityRules struct {
-	// The type of the password check. Valid values:
+	// The password check type. Valid values:
 	//
-	// 	- inclusion_upper_case: The password must contain uppercase letters.
+	// - inclusion_upper_case: The password must contain uppercase letters.
 	//
-	// 	- inclusion_lower_case: The password must contain lowercase letters.
+	// - inclusion_lower_case: The password must contain lowercase letters.
 	//
-	// 	- inclusion_special_case: The password must contain one or more of the following special characters: @ % + \\ / \\" ! # $ ^ ? : , ( ) { } [ ] ~ - _ .
+	// - inclusion_special_case: The password must contain at least one of the following special characters: \\` @ % + \\ / \\" ! # $ ^ ? : , ( ) { } [ ] \\~ - _ . \\`.
 	//
-	// 	- inclusion_number: The password must contain digits.
+	// - inclusion_number: The password must contain digits.
 	//
-	// 	- exclusion_username: The password cannot contain a username.
+	// - exclusion_username: The password cannot contain the username.
 	//
-	// 	- exclusion_email: The password cannot contain an email prefix.
+	// - exclusion_email: The password cannot contain the email address.
 	//
-	// 	- exclusion_phone_number: The password cannot contain a mobile number.
+	// - exclusion_phone_number: The password cannot contain the mobile number.
 	//
-	// 	- exclusion_display_name: The password cannot contain a display name.
+	// - exclusion_display_name: The password cannot contain the display name.
 	//
 	// example:
 	//

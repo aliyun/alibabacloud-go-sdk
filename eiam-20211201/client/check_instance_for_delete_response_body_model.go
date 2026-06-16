@@ -16,7 +16,10 @@ type iCheckInstanceForDeleteResponseBody interface {
 }
 
 type CheckInstanceForDeleteResponseBody struct {
+	// The returned result.
 	CheckInstanceResult *CheckInstanceForDeleteResponseBodyCheckInstanceResult `json:"CheckInstanceResult,omitempty" xml:"CheckInstanceResult,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
@@ -59,13 +62,13 @@ func (s *CheckInstanceForDeleteResponseBody) Validate() error {
 }
 
 type CheckInstanceForDeleteResponseBodyCheckInstanceResult struct {
-	// true表示实例可以被删除；false表示实例不可被删除，具体查看RestrictScenarios属性。
+	// Indicates whether the instance can be deleted.
 	//
 	// example:
 	//
 	// True
 	Deletable *bool `json:"Deletable,omitempty" xml:"Deletable,omitempty"`
-	// true表示实例可以被删除；false表示实例不可被删除，具体查看RestrictScenarios属性。
+	// The restriction information that prevents deletion.
 	RestrictScenarios []*CheckInstanceForDeleteResponseBodyCheckInstanceResultRestrictScenarios `json:"RestrictScenarios,omitempty" xml:"RestrictScenarios,omitempty" type:"Repeated"`
 }
 
@@ -109,19 +112,19 @@ func (s *CheckInstanceForDeleteResponseBodyCheckInstanceResult) Validate() error
 }
 
 type CheckInstanceForDeleteResponseBodyCheckInstanceResultRestrictScenarios struct {
-	// 有帮助的控制台地址，可以管理对应的资源，从而解除实例删除限制。可能返回为空，不一定所有的资源ID都有管理地址返回。
+	// The URL of a helpful console page.
 	//
 	// example:
 	//
 	// https://console-rpa.aliyun.com/
 	HelpfulConsoleUrl *string `json:"HelpfulConsoleUrl,omitempty" xml:"HelpfulConsoleUrl,omitempty"`
-	// 导致实例删除受限的资源ID。
+	// The resource ID.
 	//
 	// example:
 	//
 	// eas-r-nguosqgr75ndg784k8
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// 针对实例删除受限的原因文字描述。
+	// The reason for the restriction.
 	//
 	// example:
 	//

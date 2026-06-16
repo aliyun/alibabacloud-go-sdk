@@ -16,7 +16,10 @@ type iGetLoginRedirectApplicationForBrandResponseBody interface {
 }
 
 type GetLoginRedirectApplicationForBrandResponseBody struct {
+	// The information about the post-logon redirect application for the brand.
 	BrandLoginRedirectApplication *GetLoginRedirectApplicationForBrandResponseBodyBrandLoginRedirectApplication `json:"BrandLoginRedirectApplication,omitempty" xml:"BrandLoginRedirectApplication,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
@@ -59,19 +62,19 @@ func (s *GetLoginRedirectApplicationForBrandResponseBody) Validate() error {
 }
 
 type GetLoginRedirectApplicationForBrandResponseBodyBrandLoginRedirectApplication struct {
-	// 应用ID
+	// The application ID.
 	//
 	// example:
 	//
 	// app_xxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// 品牌ID
+	// The brand ID.
 	//
 	// example:
 	//
 	// brand_xxxx
 	BrandId *string `json:"BrandId,omitempty" xml:"BrandId,omitempty"`
-	// 实例ID
+	// The instance ID.
 	//
 	// example:
 	//

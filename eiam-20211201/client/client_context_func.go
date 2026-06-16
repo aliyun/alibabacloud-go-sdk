@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// 在当前应用下给指定员工添加一个应用账号。
+// Adds an application account to a specified user in the current application.
 //
 // @param request - AddApplicationAccountToUserRequest
 //
@@ -65,7 +65,7 @@ func (client *Client) AddApplicationAccountToUserWithContext(ctx context.Context
 
 // Summary:
 //
-// 将应用添加到授权规则
+// Adds an application to an authorization rule.
 //
 // @param request - AddApplicationToAuthorizationRuleRequest
 //
@@ -131,7 +131,7 @@ func (client *Client) AddApplicationToAuthorizationRuleWithContext(ctx context.C
 
 // Summary:
 //
-// 添加条款到品牌
+// # Assign terms to a brand
 //
 // @param request - AddCustomPrivacyPoliciesToBrandRequest
 //
@@ -183,7 +183,7 @@ func (client *Client) AddCustomPrivacyPoliciesToBrandWithContext(ctx context.Con
 
 // Summary:
 //
-// 将组添加到授权规则
+// Adds a group to an authorization rule.
 //
 // @param request - AddGroupToAuthorizationRuleRequest
 //
@@ -249,7 +249,7 @@ func (client *Client) AddGroupToAuthorizationRuleWithContext(ctx context.Context
 
 // Summary:
 //
-// 将账户添加到授权规则
+// Adds a user to an authorization rule.
 //
 // @param request - AddUserToAuthorizationRuleRequest
 //
@@ -315,7 +315,7 @@ func (client *Client) AddUserToAuthorizationRuleWithContext(ctx context.Context,
 
 // Summary:
 //
-// Adds an Employee Identity and Access Management (EIAM) account to multiple EIAM organizations of Identity as a Service (IDaaS). If the account already exists in the organizational unit, the system directly returns a success response.
+// Adds a specified EIAM account to one or more EIAM organizations. If the account already exists in one of the specified organizations, the request succeeds.
 //
 // @param request - AddUserToOrganizationalUnitsRequest
 //
@@ -419,7 +419,7 @@ func (client *Client) AddUsersToGroupWithContext(ctx context.Context, request *A
 
 // Summary:
 //
-// Grants the permissions to access an application to multiple account groups at a time in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
+// Grants multiple EIAM groups access to an application.
 //
 // @param request - AuthorizeApplicationToGroupsRequest
 //
@@ -475,7 +475,7 @@ func (client *Client) AuthorizeApplicationToGroupsWithContext(ctx context.Contex
 
 // Summary:
 //
-// Grants the access permissions on an application to multiple Employee Identity and Access Management (EIAM) organizations at a time.
+// Grants access to an application for multiple EIAM organizations in a batch operation.
 //
 // @param request - AuthorizeApplicationToOrganizationalUnitsRequest
 //
@@ -531,7 +531,7 @@ func (client *Client) AuthorizeApplicationToOrganizationalUnitsWithContext(ctx c
 
 // Summary:
 //
-// Grants the access permissions on an application to multiple Employee Identity and Access Management (EIAM) accounts at a time.
+// Grants permissions to multiple EIAM accounts to access an application.
 //
 // @param request - AuthorizeApplicationToUsersRequest
 //
@@ -587,7 +587,7 @@ func (client *Client) AuthorizeApplicationToUsersWithContext(ctx context.Context
 
 // Summary:
 //
-// 授权指定ResourceServer下的Scope给Client
+// Grants a client application permissions for specific scopes on a specified resource server.
 //
 // @param request - AuthorizeResourceServerScopesToClientRequest
 //
@@ -643,7 +643,7 @@ func (client *Client) AuthorizeResourceServerScopesToClientWithContext(ctx conte
 
 // Summary:
 //
-// 授予组ResourceServerScope权限
+// Grants a group permissions for specified scopes on a resource server.
 //
 // @param request - AuthorizeResourceServerScopesToGroupRequest
 //
@@ -703,7 +703,7 @@ func (client *Client) AuthorizeResourceServerScopesToGroupWithContext(ctx contex
 
 // Summary:
 //
-// 授予组织ResourceServerScope权限
+// Grants scope permissions for a specified resource server to an organization.
 //
 // @param request - AuthorizeResourceServerScopesToOrganizationalUnitRequest
 //
@@ -763,7 +763,7 @@ func (client *Client) AuthorizeResourceServerScopesToOrganizationalUnitWithConte
 
 // Summary:
 //
-// 授予用户ResourceServerScope权限
+// Grants scope permissions for a specified resource server to a user account.
 //
 // @param request - AuthorizeResourceServerScopesToUserRequest
 //
@@ -823,7 +823,7 @@ func (client *Client) AuthorizeResourceServerScopesToUserWithContext(ctx context
 
 // Summary:
 //
-// 授权指定ResourceServer给Client
+// Authorizes a resource server for a client application.
 //
 // @param request - AuthorizeResourceServerToClientRequest
 //
@@ -875,7 +875,7 @@ func (client *Client) AuthorizeResourceServerToClientWithContext(ctx context.Con
 
 // Summary:
 //
-// 绑定三方登录账户
+// Binds a user to a third-party logon account.
 //
 // @param request - BindUserAuthnSourceMappingRequest
 //
@@ -931,7 +931,7 @@ func (client *Client) BindUserAuthnSourceMappingWithContext(ctx context.Context,
 
 // Summary:
 //
-// 检查应用同步主组织是否在应用同步范围
+// Checks whether the primary organizational unit for an application is within the synchronization scope.
 //
 // @param request - CheckApplicationProvisioningUserPrimaryOrganizationalUnitRequest
 //
@@ -983,7 +983,11 @@ func (client *Client) CheckApplicationProvisioningUserPrimaryOrganizationalUnitW
 
 // Summary:
 //
-// 实例删除检查。
+// Checks if an instance can be deleted.
+//
+// Description:
+//
+// Verify that the instance is no longer in use. Deleting an EIAM instance permanently removes all its associated data.
 //
 // @param request - CheckInstanceForDeleteRequest
 //
@@ -1027,7 +1031,11 @@ func (client *Client) CheckInstanceForDeleteWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 判断实例是否具有某个模块的功能
+// Determines whether an instance has a specific module feature.
+//
+// Description:
+//
+// Ensure that your current instance is no longer in use. When you delete an EIAM instance, all related data is deleted.
 //
 // @param request - CheckInstanceModuleStatusRequest
 //
@@ -1083,11 +1091,11 @@ func (client *Client) CheckInstanceModuleStatusWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Adds an application to an Enterprise Identity Access Management (EIAM) instance of Identity as a Service (IDaaS).
+// Creates an application in the specified EIAM instance.
 //
 // Description:
 //
-// IDaaS EIAM supports the following two standard single sign-on (SSO) protocols for adding applications: SAML 2.0 and OIDC. You can select an SSO protocol based on your business requirements when you add an application. You cannot change the SSO protocol that you selected after the application is added.
+// You must select the required SSO protocol when you create the application. This selection cannot be changed after creation.
 //
 // @param request - CreateApplicationRequest
 //
@@ -1167,7 +1175,7 @@ func (client *Client) CreateApplicationWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Creates a client key for an Employee Identity and Access Management (EIAM) application. An EIAM application can have up to two client keys.
+// Creates a client secret for an EIAM application. You can create up to two client secrets for each application.
 //
 // @param request - CreateApplicationClientSecretRequest
 //
@@ -1219,7 +1227,7 @@ func (client *Client) CreateApplicationClientSecretWithContext(ctx context.Conte
 
 // Summary:
 //
-// 创建应用联邦凭证
+// Creates an application federated credential.
 //
 // @param request - CreateApplicationFederatedCredentialRequest
 //
@@ -1291,7 +1299,7 @@ func (client *Client) CreateApplicationFederatedCredentialWithContext(ctx contex
 
 // Summary:
 //
-// 创建应用角色
+// Creates an application role.
 //
 // @param request - CreateApplicationRoleRequest
 //
@@ -1351,7 +1359,7 @@ func (client *Client) CreateApplicationRoleWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 创建应用Token
+// Creates an application token.
 //
 // @param request - CreateApplicationTokenRequest
 //
@@ -1407,7 +1415,7 @@ func (client *Client) CreateApplicationTokenWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 创建授权资源
+// Creates an authorization resource.
 //
 // @param request - CreateAuthorizationResourceRequest
 //
@@ -1469,7 +1477,7 @@ func (client *Client) CreateAuthorizationResourceWithContext(ctx context.Context
 
 // Summary:
 //
-// 创建授权规则
+// Creates an authorization rule.
 //
 // @param request - CreateAuthorizationRuleRequest
 //
@@ -1535,7 +1543,7 @@ func (client *Client) CreateAuthorizationRuleWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 创建品牌
+// Creates a brand.
 //
 // @param request - CreateBrandRequest
 //
@@ -1583,7 +1591,7 @@ func (client *Client) CreateBrandWithContext(ctx context.Context, request *Creat
 
 // Summary:
 //
-// 创建应用ClientPublicKey
+// Creates a client public key for an application. The machine-to-machine (M2M) authorization server uses this public key to verify the assertion included in a token request from an M2M client using the PRIVATE_KEY_JWT method.
 //
 // @param request - CreateClientPublicKeyRequest
 //
@@ -1643,7 +1651,11 @@ func (client *Client) CreateClientPublicKeyWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 创建云账号
+// Creates a cloud account in the specified IDaaS EIAM instance.
+//
+// Description:
+//
+// *Before you call this operation, ensure that you understand the billing methods and [pricing](https://www.aliyun.com/price/product#/ecs/detail) of IDaaS EIAM.**
 //
 // @param request - CreateCloudAccountRequest
 //
@@ -1715,7 +1727,7 @@ func (client *Client) CreateCloudAccountWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 创建云角色
+// Creates a cloud role for a specified Alibaba Cloud account.
 //
 // @param request - CreateCloudAccountRoleRequest
 //
@@ -1863,7 +1875,7 @@ func (client *Client) CreateConditionalAccessPolicyWithContext(ctx context.Conte
 
 // Summary:
 //
-// 创建凭据
+// Creates a credential in a specified EIAM instance.
 //
 // @param request - CreateCredentialRequest
 //
@@ -1955,7 +1967,7 @@ func (client *Client) CreateCredentialWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 创建凭据提供商
+// Creates a credential provider.
 //
 // @param request - CreateCredentialProviderRequest
 //
@@ -2023,7 +2035,7 @@ func (client *Client) CreateCredentialProviderWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 创建扩展字段
+// Creates an extension field.
 //
 // @param request - CreateCustomFieldRequest
 //
@@ -2115,7 +2127,7 @@ func (client *Client) CreateCustomFieldWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 创建自定义条款
+// You can create custom terms.
 //
 // @param request - CreateCustomPrivacyPolicyRequest
 //
@@ -2183,7 +2195,7 @@ func (client *Client) CreateCustomPrivacyPolicyWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Creates a custom domain name for an Employee Identity and Access Management (EIAM) instance.
+// Creates a custom domain name for an EIAM (Entity and Identity Access Management) instance.
 //
 // @param request - CreateDomainRequest
 //
@@ -2283,7 +2295,7 @@ func (client *Client) CreateDomainProxyTokenWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 创建联邦凭证提供方
+// Create an identity provider.
 //
 // @param request - CreateFederatedCredentialProviderRequest
 //
@@ -2415,7 +2427,7 @@ func (client *Client) CreateGroupWithContext(ctx context.Context, request *Creat
 
 // Summary:
 //
-// # Create Identity Provider
+// Creates an identity provider.
 //
 // @param request - CreateIdentityProviderRequest
 //
@@ -2527,7 +2539,7 @@ func (client *Client) CreateIdentityProviderWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 创建IdP状态检查任务
+// Creates a status check job for an identity provider.
 //
 // @param request - CreateIdentityProviderStatusCheckJobRequest
 //
@@ -2619,7 +2631,7 @@ func (client *Client) CreateInstanceWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// 为实例创建试用版 License
+// Creates a trial license for an instance.
 //
 // @param request - CreateInstanceTrialLicenseRequest
 //
@@ -2727,7 +2739,7 @@ func (client *Client) CreateNetworkAccessEndpointWithContext(ctx context.Context
 
 // Summary:
 //
-// 创建网络区域对象
+// Creates a network zone object.
 //
 // @param request - CreateNetworkZoneRequest
 //
@@ -2859,7 +2871,7 @@ func (client *Client) CreateOrganizationalUnitWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 创建指定ResourceServer下的Scope
+// Creates a scope permission for a specified resource server.
 //
 // @param request - CreateResourceServerScopeRequest
 //
@@ -2923,7 +2935,7 @@ func (client *Client) CreateResourceServerScopeWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Creates an account in an Identity as a Service (IDaaS) Enterprise Identity Access Management (EIAM) instance.
+// Create an EIAM account in a specific EIAM instance.
 //
 // @param request - CreateUserRequest
 //
@@ -3131,7 +3143,7 @@ func (client *Client) DeleteApplicationClientSecretWithContext(ctx context.Conte
 
 // Summary:
 //
-// 删除应用联邦凭证
+// Deletes a federated credential for an application.
 //
 // @param request - DeleteApplicationFederatedCredentialRequest
 //
@@ -3183,7 +3195,7 @@ func (client *Client) DeleteApplicationFederatedCredentialWithContext(ctx contex
 
 // Summary:
 //
-// 删除应用角色
+// Deletes an application role.
 //
 // @param request - DeleteApplicationRoleRequest
 //
@@ -3235,7 +3247,7 @@ func (client *Client) DeleteApplicationRoleWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 删除ApplicationToken
+// Deletes an application token.
 //
 // @param request - DeleteApplicationTokenRequest
 //
@@ -3287,7 +3299,7 @@ func (client *Client) DeleteApplicationTokenWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 删除授权资源
+// Deletes an authorization resource.
 //
 // @param request - DeleteAuthorizationResourceRequest
 //
@@ -3339,7 +3351,7 @@ func (client *Client) DeleteAuthorizationResourceWithContext(ctx context.Context
 
 // Summary:
 //
-// 删除授权规则
+// Deletes an authorization rule. An authorization rule must be disabled before it can be deleted.
 //
 // @param request - DeleteAuthorizationRuleRequest
 //
@@ -3387,7 +3399,7 @@ func (client *Client) DeleteAuthorizationRuleWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 删除品牌
+// Deletes a brand.
 //
 // @param request - DeleteBrandRequest
 //
@@ -3435,7 +3447,7 @@ func (client *Client) DeleteBrandWithContext(ctx context.Context, request *Delet
 
 // Summary:
 //
-// 删除指定的应用ClientPublicKey
+// Deletes the ClientPublicKey for a specified application.
 //
 // @param request - DeleteClientPublicKeyRequest
 //
@@ -3487,7 +3499,7 @@ func (client *Client) DeleteClientPublicKeyWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 删除云账号
+// Deletes an Alibaba Cloud account resource.
 //
 // @param request - DeleteCloudAccountRequest
 //
@@ -3535,7 +3547,11 @@ func (client *Client) DeleteCloudAccountWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 删除云角色
+// Deletes a cloud role from a specified Alibaba Cloud account.
+//
+// Description:
+//
+// You must disable the cloud role before you delete it. After you delete the role, all related data is also deleted and cannot be recovered.
 //
 // @param request - DeleteCloudAccountRoleRequest
 //
@@ -3587,11 +3603,11 @@ func (client *Client) DeleteCloudAccountRoleWithContext(ctx context.Context, req
 
 // Summary:
 //
-// # Delete Conditional Access Policy
+// Deletes a conditional access policy.
 //
 // Description:
 //
-// When deleting a specified conditional access policy, please ensure that the policy is no longer in use. After deletion, all configuration data will be removed and cannot be recovered.
+// Before you delete a conditional access policy, ensure that it is no longer in use. This action permanently deletes all of its configuration data, which cannot be recovered.
 //
 // @param request - DeleteConditionalAccessPolicyRequest
 //
@@ -3639,7 +3655,7 @@ func (client *Client) DeleteConditionalAccessPolicyWithContext(ctx context.Conte
 
 // Summary:
 //
-// 删除凭据
+// Deletes a credential resource.
 //
 // @param request - DeleteCredentialRequest
 //
@@ -3687,7 +3703,7 @@ func (client *Client) DeleteCredentialWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 启用凭据提供商
+// Deletes a credential provider.
 //
 // @param request - DeleteCredentialProviderRequest
 //
@@ -3735,7 +3751,7 @@ func (client *Client) DeleteCredentialProviderWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 删除扩展字段
+// Deletes an extension field.
 //
 // @param request - DeleteCustomFieldRequest
 //
@@ -3783,7 +3799,7 @@ func (client *Client) DeleteCustomFieldWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 删除自定义条款
+// # Deleting custom clauses
 //
 // @param request - DeleteCustomPrivacyPolicyRequest
 //
@@ -3931,7 +3947,7 @@ func (client *Client) DeleteDomainProxyTokenWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 删除联邦凭证提供方
+// Deletes a federated credential provider.
 //
 // @param request - DeleteFederatedCredentialProviderRequest
 //
@@ -4171,7 +4187,7 @@ func (client *Client) DeleteNetworkAccessEndpointWithContext(ctx context.Context
 
 // Summary:
 //
-// 删除网络区域对象
+// Deletes a network zone object.
 //
 // @param request - DeleteNetworkZoneRequest
 //
@@ -4315,7 +4331,7 @@ func (client *Client) DeleteOrganizationalUnitChildrenWithContext(ctx context.Co
 
 // Summary:
 //
-// 删除指定ResourceServer下的Scope
+// Deletes a scope permission from a specified resource server.
 //
 // @param request - DeleteResourceServerScopeRequest
 //
@@ -4367,7 +4383,7 @@ func (client *Client) DeleteResourceServerScopeWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Deletes an Employee Identity and Access Management (EIAM) account of Identity as a Service (IDaaS). The information related to the account is cleared.
+// Deletes a specified EIAM user and purges all related information.
 //
 // @param request - DeleteUserRequest
 //
@@ -4415,7 +4431,7 @@ func (client *Client) DeleteUserWithContext(ctx context.Context, request *Delete
 
 // Summary:
 //
-// 批量删除账号
+// Deletes multiple accounts in a batch.
 //
 // @param request - DeleteUsersRequest
 //
@@ -4463,7 +4479,7 @@ func (client *Client) DeleteUsersWithContext(ctx context.Context, request *Delet
 
 // Summary:
 //
-// 删除指定WebAuthn认证器名称
+// Deletes the specified WebAuthn authenticator.
 //
 // @param request - DeleteWebAuthnAuthenticatorRequest
 //
@@ -4667,7 +4683,7 @@ func (client *Client) DisableApplicationClientSecretWithContext(ctx context.Cont
 
 // Summary:
 //
-// 禁用应用联邦凭证
+// Disables a federated credential for an application.
 //
 // @param request - DisableApplicationFederatedCredentialRequest
 //
@@ -4719,7 +4735,7 @@ func (client *Client) DisableApplicationFederatedCredentialWithContext(ctx conte
 
 // Summary:
 //
-// 禁用M2M Client 能力
+// Disables the machine-to-machine (M2M) client feature for an application. This feature enables an application to act as an OAuth client and make calls to access resources.
 //
 // @param request - DisableApplicationM2MClientRequest
 //
@@ -4815,7 +4831,7 @@ func (client *Client) DisableApplicationProvisioningWithContext(ctx context.Cont
 
 // Summary:
 //
-// 禁用ResourceServer能力
+// Disables the resource server functionality for a specified application.
 //
 // @param request - DisableApplicationResourceServerRequest
 //
@@ -4911,7 +4927,11 @@ func (client *Client) DisableApplicationSsoWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 禁用应用Token
+// Disables an application token.
+//
+// Description:
+//
+// When you change the status of an application from enabled to disabled, all application features, such as single sign-on (SSO) and account synchronization, become unavailable. Be aware of the potential threats associated with this operation.
 //
 // @param request - DisableApplicationTokenRequest
 //
@@ -4963,7 +4983,7 @@ func (client *Client) DisableApplicationTokenWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 禁用授权规则
+// Disables an authorization rule.
 //
 // @param request - DisableAuthorizationRuleRequest
 //
@@ -5017,7 +5037,7 @@ func (client *Client) DisableAuthorizationRuleWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 禁用品牌
+// Disables a brand.
 //
 // @param request - DisableBrandRequest
 //
@@ -5065,7 +5085,7 @@ func (client *Client) DisableBrandWithContext(ctx context.Context, request *Disa
 
 // Summary:
 //
-// 禁用指定的应用ClientPublicKey
+// Disables the ClientPublicKey for a specified application.
 //
 // @param request - DisableClientPublicKeyRequest
 //
@@ -5121,7 +5141,7 @@ func (client *Client) DisableClientPublicKeyWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 禁用云角色
+// Disables a cloud role for a specified Alibaba Cloud account.
 //
 // @param request - DisableCloudAccountRoleRequest
 //
@@ -5177,11 +5197,11 @@ func (client *Client) DisableCloudAccountRoleWithContext(ctx context.Context, re
 
 // Summary:
 //
-// # Disable Conditional Access Policy
+// Disables a conditional access policy.
 //
 // Description:
 //
-// When changing a conditional access policy from an enabled state to a disabled state, the policy will no longer intercept. Please confirm that you are aware of the potential risks associated with this action.
+// When you disable a conditional access policy, the policy no longer blocks access. Make sure that you are aware of the potential threats that may arise from this operation.
 //
 // @param request - DisableConditionalAccessPolicyRequest
 //
@@ -5229,7 +5249,7 @@ func (client *Client) DisableConditionalAccessPolicyWithContext(ctx context.Cont
 
 // Summary:
 //
-// 禁用凭据
+// Disables a credential resource.
 //
 // @param request - DisableCredentialRequest
 //
@@ -5281,7 +5301,7 @@ func (client *Client) DisableCredentialWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 禁用凭据提供商
+// Disables a credential provider.
 //
 // @param request - DisableCredentialProviderRequest
 //
@@ -5329,7 +5349,7 @@ func (client *Client) DisableCredentialProviderWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 禁用字段
+// Disables a custom field.
 //
 // @param request - DisableCustomFieldRequest
 //
@@ -5377,7 +5397,7 @@ func (client *Client) DisableCustomFieldWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 禁用自定义条款
+// Disables a custom privacy policy.
 //
 // @param request - DisableCustomPrivacyPolicyRequest
 //
@@ -5477,7 +5497,7 @@ func (client *Client) DisableDomainProxyTokenWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 禁用联邦凭证提供方
+// Disables a federated credential provider.
 //
 // @param request - DisableFederatedCredentialProviderRequest
 //
@@ -5525,7 +5545,7 @@ func (client *Client) DisableFederatedCredentialProviderWithContext(ctx context.
 
 // Summary:
 //
-// 禁用高级配置
+// Disables the advanced configuration.
 //
 // @param request - DisableIdentityProviderAdvancedAbilityRequest
 //
@@ -5573,7 +5593,11 @@ func (client *Client) DisableIdentityProviderAdvancedAbilityWithContext(ctx cont
 
 // Summary:
 //
-// 禁用认证
+// Disables authentication.
+//
+// Description:
+//
+// When you disable an application, all its features, such as single sign-on (SSO) and account synchronization, become unavailable. Before you perform this operation, make sure that you understand the associated risks.
 //
 // @param request - DisableIdentityProviderAuthnRequest
 //
@@ -5713,7 +5737,7 @@ func (client *Client) DisableInitDomainAutoRedirectWithContext(ctx context.Conte
 
 // Summary:
 //
-// 禁用内部认证源
+// Disables an internal authentication source.
 //
 // @param request - DisableInternalAuthenticationSourceRequest
 //
@@ -5761,7 +5785,7 @@ func (client *Client) DisableInternalAuthenticationSourceWithContext(ctx context
 
 // Summary:
 //
-// 禁用资源服务器自定义主体
+// Disables the custom subject feature for a specified resource server.
 //
 // @param request - DisableResourceServerCustomSubjectRequest
 //
@@ -5905,7 +5929,7 @@ func (client *Client) EnableApplicationWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Enables the Developer API feature for an Employee Identity and Access Management (EIAM) application.
+// You can call the EnableApplicationApiInvoke operation to enable Developer API calls for an EIAM application.
 //
 // @param request - EnableApplicationApiInvokeRequest
 //
@@ -6005,7 +6029,7 @@ func (client *Client) EnableApplicationClientSecretWithContext(ctx context.Conte
 
 // Summary:
 //
-// 启用应用联邦凭证
+// Enables an application federated credential.
 //
 // @param request - EnableApplicationFederatedCredentialRequest
 //
@@ -6057,7 +6081,7 @@ func (client *Client) EnableApplicationFederatedCredentialWithContext(ctx contex
 
 // Summary:
 //
-// 启用M2M Client 能力
+// Enables the machine-to-machine (M2M) client feature for an application. This allows the application to act as a caller (an OAuth client) to access resources.
 //
 // @param request - EnableApplicationM2MClientRequest
 //
@@ -6153,7 +6177,7 @@ func (client *Client) EnableApplicationProvisioningWithContext(ctx context.Conte
 
 // Summary:
 //
-// 启用ResourceServer能力
+// Enables the ResourceServer feature for a specified application.
 //
 // @param request - EnableApplicationResourceServerRequest
 //
@@ -6201,7 +6225,7 @@ func (client *Client) EnableApplicationResourceServerWithContext(ctx context.Con
 
 // Summary:
 //
-// Enables the single sign-on (SSO) feature for an Employee Identity and Access Management (EIAM) application.
+// Enables single sign-on (SSO) for an EIAM application.
 //
 // @param request - EnableApplicationSsoRequest
 //
@@ -6249,7 +6273,7 @@ func (client *Client) EnableApplicationSsoWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 启用应用Token
+// Enables an application token.
 //
 // @param request - EnableApplicationTokenRequest
 //
@@ -6301,7 +6325,7 @@ func (client *Client) EnableApplicationTokenWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 启用授权规则
+// Enables an authorization rule.
 //
 // @param request - EnableAuthorizationRuleRequest
 //
@@ -6355,7 +6379,7 @@ func (client *Client) EnableAuthorizationRuleWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 启用品牌
+// Enables a brand.
 //
 // @param request - EnableBrandRequest
 //
@@ -6403,7 +6427,7 @@ func (client *Client) EnableBrandWithContext(ctx context.Context, request *Enabl
 
 // Summary:
 //
-// 启用指定的应用ClientPublicKey
+// Enables the specified ClientPublicKey for an application.
 //
 // @param request - EnableClientPublicKeyRequest
 //
@@ -6459,7 +6483,7 @@ func (client *Client) EnableClientPublicKeyWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 启用云角色
+// Enables a cloud role for a specified Alibaba Cloud account.
 //
 // @param request - EnableCloudAccountRoleRequest
 //
@@ -6515,11 +6539,11 @@ func (client *Client) EnableCloudAccountRoleWithContext(ctx context.Context, req
 
 // Summary:
 //
-// # Enable Conditional Access Policy
+// Enables a conditional access policy.
 //
 // Description:
 //
-// When changing the status of a conditional access policy from enabled to disabled, the policy will no longer intercept. Please confirm that you are aware of the potential risks associated with this action.
+// When you disable a conditional access policy, it no longer blocks access. Be aware of the potential threats before you perform this operation.
 //
 // @param request - EnableConditionalAccessPolicyRequest
 //
@@ -6567,7 +6591,7 @@ func (client *Client) EnableConditionalAccessPolicyWithContext(ctx context.Conte
 
 // Summary:
 //
-// 启用凭据
+// Enables a credential resource.
 //
 // @param request - EnableCredentialRequest
 //
@@ -6619,7 +6643,7 @@ func (client *Client) EnableCredentialWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 启用凭据提供商
+// Enables a credential provider.
 //
 // @param request - EnableCredentialProviderRequest
 //
@@ -6667,7 +6691,11 @@ func (client *Client) EnableCredentialProviderWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 启用字段
+// Enables a custom field.
+//
+// Description:
+//
+// *Before you use this API, make sure you understand the billing methods and [pricing](https://www.aliyun.com/price/product#/ecs/detail) for IDaaS EIAM.**
 //
 // @param request - EnableCustomFieldRequest
 //
@@ -6715,7 +6743,7 @@ func (client *Client) EnableCustomFieldWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 启用自定义条款
+// # Enabling custom terms
 //
 // @param request - EnableCustomPrivacyPolicyRequest
 //
@@ -6815,7 +6843,7 @@ func (client *Client) EnableDomainProxyTokenWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 启用联邦凭证提供方
+// Enables a federated credential provider.
 //
 // @param request - EnableFederatedCredentialProviderRequest
 //
@@ -6863,7 +6891,7 @@ func (client *Client) EnableFederatedCredentialProviderWithContext(ctx context.C
 
 // Summary:
 //
-// 启用高级配置
+// Enables advanced configuration.
 //
 // @param request - EnableIdentityProviderAdvancedAbilityRequest
 //
@@ -6911,7 +6939,11 @@ func (client *Client) EnableIdentityProviderAdvancedAbilityWithContext(ctx conte
 
 // Summary:
 //
-// 启用认证
+// Enables authentication.
+//
+// Description:
+//
+// When a conditional access policy is disabled, it no longer blocks access. Ensure that you understand the potential security threats before you perform this operation.
 //
 // @param request - EnableIdentityProviderAuthnRequest
 //
@@ -7007,7 +7039,7 @@ func (client *Client) EnableIdentityProviderUdPullWithContext(ctx context.Contex
 
 // Summary:
 //
-// Enables the feature of automatically redirecting the initial domain name to the default domain name for an Employee Identity and Access Management (EIAM) instance.
+// Enables automatic redirection from the initialization domain name to the default domain name for an EIAM instance. After this feature is enabled, portal access via the initialization domain name is redirected to the default domain name.
 //
 // @param request - EnableInitDomainAutoRedirectRequest
 //
@@ -7051,7 +7083,7 @@ func (client *Client) EnableInitDomainAutoRedirectWithContext(ctx context.Contex
 
 // Summary:
 //
-// 启用内部认证源
+// Enables an internal authentication source.
 //
 // @param request - EnableInternalAuthenticationSourceRequest
 //
@@ -7099,7 +7131,7 @@ func (client *Client) EnableInternalAuthenticationSourceWithContext(ctx context.
 
 // Summary:
 //
-// 启用资源服务器自定义主体
+// Enables the custom subject feature for a specified resource server. After this feature is enabled, the subject of an issued access token changes from <clientId> to <clientId>:<client.activeSubjectUrn>. The `client.activeSubjectUrn` is set in the attribute mapping of the application\\"s federated identity provider.
 //
 // @param request - EnableResourceServerCustomSubjectRequest
 //
@@ -7195,7 +7227,7 @@ func (client *Client) EnableUserWithContext(ctx context.Context, request *Enable
 
 // Summary:
 //
-// 解析IdP Metadata信息。
+// Resolves the metadata for an identity provider.
 //
 // @param request - ExecIdentityProviderMetadataUrlResolutionRequest
 //
@@ -7255,7 +7287,7 @@ func (client *Client) ExecIdentityProviderMetadataUrlResolutionWithContext(ctx c
 
 // Summary:
 //
-// 生成文件导入结果下载地址
+// Generates a download URL for the result of a file import.
 //
 // @param request - GenerateDownloadUrlForSynchronizationJobRequest
 //
@@ -7303,7 +7335,7 @@ func (client *Client) GenerateDownloadUrlForSynchronizationJobWithContext(ctx co
 
 // Summary:
 //
-// 生成文件导入模板
+// Generates a file import template.
 //
 // @param request - GenerateFileImportTemplateRequest
 //
@@ -7351,7 +7383,7 @@ func (client *Client) GenerateFileImportTemplateWithContext(ctx context.Context,
 
 // Summary:
 //
-// 生成 Oauth Token
+// Obtain an access token to call a resource server using a specified application as the client.
 //
 // @param request - GenerateOauthTokenRequest
 //
@@ -7407,7 +7439,7 @@ func (client *Client) GenerateOauthTokenWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 获取上传认证
+// Generates an upload credential.
 //
 // @param request - GenerateUploadAuthRequest
 //
@@ -7459,7 +7491,7 @@ func (client *Client) GenerateUploadAuthWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 生成WebAuthn认证器注册URL
+// Generates a WebAuthn authenticator registration URL.
 //
 // @param request - GenerateWebAuthnAuthenticatorRegistrationUrlRequest
 //
@@ -7511,7 +7543,7 @@ func (client *Client) GenerateWebAuthnAuthenticatorRegistrationUrlWithContext(ct
 
 // Summary:
 //
-// Queries the details of an Employee Identity and Access Management (EIAM) application.
+// Retrieves the details of a specified EIAM application.
 //
 // @param request - GetApplicationRequest
 //
@@ -7559,7 +7591,7 @@ func (client *Client) GetApplicationWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
-// 获取应用高阶配置
+// Retrieves the advanced configuration of an application.
 //
 // @param request - GetApplicationAdvancedConfigRequest
 //
@@ -7607,7 +7639,7 @@ func (client *Client) GetApplicationAdvancedConfigWithContext(ctx context.Contex
 
 // Summary:
 //
-// 获取应用联邦凭证
+// Retrieves the federated credential for an application.
 //
 // @param request - GetApplicationFederatedCredentialRequest
 //
@@ -7707,7 +7739,7 @@ func (client *Client) GetApplicationGrantScopeWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the configuration of the account synchronization feature for an application in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
+// Retrieves the account synchronization configuration for an Entity Identity and Access Management (EIAM) application.
 //
 // @param request - GetApplicationProvisioningConfigRequest
 //
@@ -7803,7 +7835,7 @@ func (client *Client) GetApplicationProvisioningScopeWithContext(ctx context.Con
 
 // Summary:
 //
-// 查询指定应用同步配置
+// Queries the synchronization configuration of a specified application.
 //
 // @param request - GetApplicationProvisioningUserPrimaryOrganizationalUnitRequest
 //
@@ -7851,7 +7883,7 @@ func (client *Client) GetApplicationProvisioningUserPrimaryOrganizationalUnitWit
 
 // Summary:
 //
-// 获取角色信息
+// Retrieves the details of an application role.
 //
 // @param request - GetApplicationRoleRequest
 //
@@ -7903,7 +7935,7 @@ func (client *Client) GetApplicationRoleWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries the single sign-on (SSO) configuration attributes of an application in Identity as a Service (IDaaS) Employee IAM (EIAM).
+// Retrieves the single sign-on (SSO) configuration for an application in EIAM.
 //
 // @param request - GetApplicationSsoConfigRequest
 //
@@ -7951,7 +7983,7 @@ func (client *Client) GetApplicationSsoConfigWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 获取应用模板信息
+// Retrieves the details of an application template.
 //
 // @param request - GetApplicationTemplateRequest
 //
@@ -7995,7 +8027,7 @@ func (client *Client) GetApplicationTemplateWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 获取授权资源信息
+// Queries the information about an authorized resource.
 //
 // @param request - GetAuthorizationResourceRequest
 //
@@ -8047,7 +8079,7 @@ func (client *Client) GetAuthorizationResourceWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 获取授权规则信息
+// Query information about an authorization rule.
 //
 // @param request - GetAuthorizationRuleRequest
 //
@@ -8095,7 +8127,7 @@ func (client *Client) GetAuthorizationRuleWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 获取品牌详情
+// Retrieves the details of a brand.
 //
 // @param request - GetBrandRequest
 //
@@ -8143,7 +8175,7 @@ func (client *Client) GetBrandWithContext(ctx context.Context, request *GetBrand
 
 // Summary:
 //
-// 查询指定应用ClientPublicKey
+// Retrieves the ClientPublicKey for a specified application.
 //
 // @param request - GetClientPublicKeyRequest
 //
@@ -8195,7 +8227,7 @@ func (client *Client) GetClientPublicKeyWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 获取云账号
+// Retrieves information about resources in an Alibaba Cloud account.
 //
 // @param request - GetCloudAccountRequest
 //
@@ -8243,7 +8275,7 @@ func (client *Client) GetCloudAccountWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// 获取云角色
+// Retrieves information about a cloud role.
 //
 // @param request - GetCloudAccountRoleRequest
 //
@@ -8295,11 +8327,11 @@ func (client *Client) GetCloudAccountRoleWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// # Get Conditional Access Policy
+// Retrieves a conditional access policy.
 //
 // Description:
 //
-// # Query Conditional Access Policy
+// This operation retrieves a conditional access policy.
 //
 // @param request - GetConditionalAccessPolicyRequest
 //
@@ -8347,7 +8379,7 @@ func (client *Client) GetConditionalAccessPolicyWithContext(ctx context.Context,
 
 // Summary:
 //
-// 获取凭据
+// Retrieves the details of a specific credential.
 //
 // @param request - GetCredentialRequest
 //
@@ -8395,7 +8427,7 @@ func (client *Client) GetCredentialWithContext(ctx context.Context, request *Get
 
 // Summary:
 //
-// 查询凭据提供商详情
+// Retrieves the details of a credential provider.
 //
 // @param request - GetCredentialProviderRequest
 //
@@ -8443,7 +8475,11 @@ func (client *Client) GetCredentialProviderWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 获取扩展字段信息
+// Retrieves custom field information.
+//
+// Description:
+//
+// *Before using this operation, review the IDaaS pricing model and [pricing details](https://www.aliyun.com/price/product#/ecs/detail).**
 //
 // @param request - GetCustomFieldRequest
 //
@@ -8491,7 +8527,7 @@ func (client *Client) GetCustomFieldWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
-// 获取自定义条款
+// # Obtaining custom terms
 //
 // @param request - GetCustomPrivacyPolicyRequest
 //
@@ -8539,7 +8575,7 @@ func (client *Client) GetCustomPrivacyPolicyWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the information about a domain name of an Employee Identity and Access Management (EIAM) instance.
+// Retrieves information about a domain name for an EIAM instance.
 //
 // @param request - GetDomainRequest
 //
@@ -8587,7 +8623,7 @@ func (client *Client) GetDomainWithContext(ctx context.Context, request *GetDoma
 
 // Summary:
 //
-// Queries the domain name system (DNS) challenge records of a domain name of an Employee Identity and Access Management (EIAM) instance. The generated records are used to verify the ownership of the domain name.
+// Queries the DNS Challenge record for a specified EIAM domain name. This record is used to verify domain ownership.
 //
 // @param request - GetDomainDnsChallengeRequest
 //
@@ -8635,7 +8671,7 @@ func (client *Client) GetDomainDnsChallengeWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 获取联邦凭证提供方
+// Retrieve a federated credential provider.
 //
 // @param request - GetFederatedCredentialProviderRequest
 //
@@ -8683,7 +8719,7 @@ func (client *Client) GetFederatedCredentialProviderWithContext(ctx context.Cont
 
 // Summary:
 //
-// Queries the forgot password configurations of an Employee Identity and Access Management (EIAM) instance of Identity as a Service (IDaaS).
+// Queries the forgot-password configuration for a specified EIAM instance.
 //
 // @param request - GetForgetPasswordConfigurationRequest
 //
@@ -8727,7 +8763,7 @@ func (client *Client) GetForgetPasswordConfigurationWithContext(ctx context.Cont
 
 // Summary:
 //
-// Queries the information of an account group in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
+// Retrieves the information about an account group in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
 //
 // @param request - GetGroupRequest
 //
@@ -8775,7 +8811,7 @@ func (client *Client) GetGroupWithContext(ctx context.Context, request *GetGroup
 
 // Summary:
 //
-// Obtains an identity provider (IdP).
+// Get an identity provider.
 //
 // @param request - GetIdentityProviderRequest
 //
@@ -8823,7 +8859,7 @@ func (client *Client) GetIdentityProviderWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 获取高级配置信息
+// Retrieves advanced configuration information.
 //
 // @param request - GetIdentityProviderAdvancedConfigurationRequest
 //
@@ -8871,7 +8907,7 @@ func (client *Client) GetIdentityProviderAdvancedConfigurationWithContext(ctx co
 
 // Summary:
 //
-// 获取IdP检查任务
+// Retrieves an IdP check task.
 //
 // @param request - GetIdentityProviderStatusCheckJobRequest
 //
@@ -8971,7 +9007,7 @@ func (client *Client) GetIdentityProviderUdPullConfigurationWithContext(ctx cont
 
 // Summary:
 //
-// 获取IdP同步出配置
+// Retrieve the IdP outbound synchronization configuration.
 //
 // @param request - GetIdentityProviderUdPushConfigurationRequest
 //
@@ -9019,7 +9055,7 @@ func (client *Client) GetIdentityProviderUdPushConfigurationWithContext(ctx cont
 
 // Summary:
 //
-// Queries the information of an Enterprise Identity and Access Management (EIAM) instance of Identity as a Service (IDaaS).
+// Queries the detailed information of an EIAM instance.
 //
 // @param request - GetInstanceRequest
 //
@@ -9063,7 +9099,7 @@ func (client *Client) GetInstanceWithContext(ctx context.Context, request *GetIn
 
 // Summary:
 //
-// 查询实例控制项
+// Queries the control configuration for an instance.
 //
 // @param request - GetInstanceControlConfigurationRequest
 //
@@ -9111,7 +9147,11 @@ func (client *Client) GetInstanceControlConfigurationWithContext(ctx context.Con
 
 // Summary:
 //
-// 获取实例语言、时区信息
+// Retrieves the language and time zone information for an instance.
+//
+// Description:
+//
+// When you disable a conditional access policy, it no longer intercepts access requests. Confirm that you understand the security risks associated with this action.
 //
 // @param request - GetInstanceGlobalizationConfigRequest
 //
@@ -9155,11 +9195,11 @@ func (client *Client) GetInstanceGlobalizationConfigWithContext(ctx context.Cont
 
 // Summary:
 //
-// # Query the currently effective License information of the instance
+// Queries the active license information for an instance.
 //
 // Description:
 //
-// Please ensure that your current instance is no longer in use. When the EIAM instance is deleted, all related data will be deleted.
+// Ensure the instance is not in use before deletion. Deleting an EIAM instance permanently removes all of its associated data.
 //
 // @param request - GetInstanceLicenseRequest
 //
@@ -9203,7 +9243,7 @@ func (client *Client) GetInstanceLicenseWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 获取一级模块下，所有模块信息
+// Retrieves information about all modules within a primary module.
 //
 // @param request - GetInstanceModuleInfoRequest
 //
@@ -9251,7 +9291,7 @@ func (client *Client) GetInstanceModuleInfoWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 获取实例单一类型的Quota
+// Retrieves the quota of a specific type for an instance.
 //
 // @param request - GetInstanceQuotaRequest
 //
@@ -9299,7 +9339,7 @@ func (client *Client) GetInstanceQuotaWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 获取实例的试用状态
+// Retrieves the trial status of an instance.
 //
 // @param request - GetInstanceTrialStatusRequest
 //
@@ -9343,7 +9383,7 @@ func (client *Client) GetInstanceTrialStatusWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 获取品牌登录后跳转应用
+// # Configure the post-logon redirect application for a brand
 //
 // @param request - GetLoginRedirectApplicationForBrandRequest
 //
@@ -9439,7 +9479,7 @@ func (client *Client) GetNetworkAccessEndpointWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 获取网络区域对象
+// Retrieves a network zone object.
 //
 // @param request - GetNetworkZoneRequest
 //
@@ -9535,7 +9575,7 @@ func (client *Client) GetOrganizationalUnitWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the password complexity configurations of an Employee Identity and Access Management (EIAM) instance of Identity as a Service (IDaaS).
+// Retrieves the password complexity policy for a specified EIAM instance.
 //
 // @param request - GetPasswordComplexityConfigurationRequest
 //
@@ -9711,7 +9751,7 @@ func (client *Client) GetPasswordInitializationConfigurationWithContext(ctx cont
 
 // Summary:
 //
-// 查询指定ResourceServer下的Scope
+// Retrieves the permission scopes for a specified resource server.
 //
 // @param request - GetResourceServerScopeRequest
 //
@@ -9807,7 +9847,7 @@ func (client *Client) GetRootOrganizationalUnitWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 获取服务Quota
+// # Queries a service quota
 //
 // @param request - GetServiceQuotaRequest
 //
@@ -9899,7 +9939,7 @@ func (client *Client) GetSynchronizationJobWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the details of an account in Identity as a Service (IDaaS) Employee IAM (EIAM).
+// Retrieves the details of an account in Identity as a Service (IDaaS) Employee IAM (EIAM).
 //
 // @param request - GetUserRequest
 //
@@ -9947,7 +9987,7 @@ func (client *Client) GetUserWithContext(ctx context.Context, request *GetUserRe
 
 // Summary:
 //
-// 查看调用事件列表
+// View the list of invocation events.
 //
 // @param request - ListActionTrackEventTypesRequest
 //
@@ -10003,7 +10043,7 @@ func (client *Client) ListActionTrackEventTypesWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 分页查询应用下的应用账户列表
+// Returns a paginated list of application accounts.
 //
 // @param request - ListApplicationAccountsRequest
 //
@@ -10059,7 +10099,11 @@ func (client *Client) ListApplicationAccountsWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 查询当前应用下指定用户的所有账号
+// Queries all accounts that belong to a specified user in an application.
+//
+// Description:
+//
+// This operation queries only applications that are directly assigned to an organization. You can use the **ApplicationIds*	- parameter to filter the applications.
 //
 // @param request - ListApplicationAccountsForUserRequest
 //
@@ -10111,7 +10155,7 @@ func (client *Client) ListApplicationAccountsForUserWithContext(ctx context.Cont
 
 // Summary:
 //
-// Queries all client keys of an Employee Identity and Access Management (EIAM) application. The returned key secret is not masked. If you want to query the key secret that is masked, call the ObtainApplicationClientSecret operation.
+// Queries all client secrets for an EIAM application. The key data in the response is masked. To obtain an unmasked key, call the ObtainApplicationClientSecret operation.
 //
 // @param request - ListApplicationClientSecretsRequest
 //
@@ -10159,7 +10203,7 @@ func (client *Client) ListApplicationClientSecretsWithContext(ctx context.Contex
 
 // Summary:
 //
-// 查询应用联邦凭证列表
+// Lists the federated credentials for an application.
 //
 // @param request - ListApplicationFederatedCredentialsRequest
 //
@@ -10223,7 +10267,7 @@ func (client *Client) ListApplicationFederatedCredentialsWithContext(ctx context
 
 // Summary:
 //
-// 根据联邦凭证提供方查询应用联邦凭证列表
+// Lists the application federated credentials for a specified federated credential provider.
 //
 // @param request - ListApplicationFederatedCredentialsForProviderRequest
 //
@@ -10283,7 +10327,7 @@ func (client *Client) ListApplicationFederatedCredentialsForProviderWithContext(
 
 // Summary:
 //
-// 游标分页查询应用角色
+// Retrieves a list of application roles using a cursor.
 //
 // @param request - ListApplicationRolesRequest
 //
@@ -10343,7 +10387,7 @@ func (client *Client) ListApplicationRolesWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the synchronization protocol types that are supported by an application.
+// Call the ListApplicationSupportedProvisionProtocolTypes operation to query the account synchronization protocols supported by an application.
 //
 // @param request - ListApplicationSupportedProvisionProtocolTypesRequest
 //
@@ -10391,7 +10435,7 @@ func (client *Client) ListApplicationSupportedProvisionProtocolTypesWithContext(
 
 // Summary:
 //
-// 创建应用Token
+// Retrieves a list of application tokens.
 //
 // @param request - ListApplicationTokensRequest
 //
@@ -10443,7 +10487,7 @@ func (client *Client) ListApplicationTokensWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the information about one or multiple Employee Identity and Access Management (EIAM) applications by page.
+// Retrieves a paginated list of EIAM applications.
 //
 // @param request - ListApplicationsRequest
 //
@@ -10535,7 +10579,7 @@ func (client *Client) ListApplicationsWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 查询授权规则关联的应用列表
+// Queries the applications that are associated with an authorization rule.
 //
 // @param request - ListApplicationsForAuthorizationRuleRequest
 //
@@ -10595,7 +10639,7 @@ func (client *Client) ListApplicationsForAuthorizationRuleWithContext(ctx contex
 
 // Summary:
 //
-// 查询一个EIAM组可访问的应用列表
+// Retrieves a list of applications that an EIAM group can access.
 //
 // @param request - ListApplicationsForGroupRequest
 //
@@ -10655,7 +10699,7 @@ func (client *Client) ListApplicationsForGroupWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 获取网络访问端点下的App信息。
+// Lists the applications for a network access endpoint.
 //
 // @param request - ListApplicationsForNetworkAccessEndpointRequest
 //
@@ -10711,7 +10755,7 @@ func (client *Client) ListApplicationsForNetworkAccessEndpointWithContext(ctx co
 
 // Summary:
 //
-// 获取NetworkZone关联的应用列表
+// Retrieves a list of applications associated with a network domain.
 //
 // @param request - ListApplicationsForNetworkZoneRequest
 //
@@ -10771,11 +10815,11 @@ func (client *Client) ListApplicationsForNetworkZoneWithContext(ctx context.Cont
 
 // Summary:
 //
-// Queries the applications that an Employee Identity and Access Management (EIAM) organization can access. The return result includes the IDs of the applications. If you want to obtain the details of the applications, call the GetApplication operation.
+// This operation queries a paginated list of applications that an EIAM organization can access. The response includes application IDs. To retrieve detailed information about an application, call the GetApplication operation.
 //
 // Description:
 //
-// You can only query the permissions that are directly granted to the EIAM organization by calling the ListApplicationsForOrganizationalUnit operation. You can filter applications by configuring the **ApplicationIds*	- parameter when you call this operation.
+// This operation queries only the applications that are directly assigned to an organization. You can use the **ApplicationIds*	- parameter to filter the applications.
 //
 // @param request - ListApplicationsForOrganizationalUnitRequest
 //
@@ -10835,7 +10879,7 @@ func (client *Client) ListApplicationsForOrganizationalUnitWithContext(ctx conte
 
 // Summary:
 //
-// Queries the applications that an Employee Identity and Access Management (EIAM) account can access. The return result includes the IDs of the applications. If you want to obtain the details of the applications, call the GetApplication operation.
+// Queries the applications that an EIAM account can access and returns a paginated list of application IDs. To retrieve detailed information about a specific application, call the GetApplication operation.
 //
 // @param request - ListApplicationsForUserRequest
 //
@@ -10899,7 +10943,7 @@ func (client *Client) ListApplicationsForUserWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 查询授权资源信息列表
+// Queries a list of authorized resources.
 //
 // @param request - ListAuthorizationResourcesRequest
 //
@@ -10959,7 +11003,7 @@ func (client *Client) ListAuthorizationResourcesWithContext(ctx context.Context,
 
 // Summary:
 //
-// 查询授权规则信息列表
+// Lists authorization rules.
 //
 // @param request - ListAuthorizationRulesRequest
 //
@@ -11015,7 +11059,7 @@ func (client *Client) ListAuthorizationRulesWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 查询应用关联的授权规则信息列表
+// Lists the authorization rules associated with an application.
 //
 // @param request - ListAuthorizationRulesForApplicationRequest
 //
@@ -11071,7 +11115,7 @@ func (client *Client) ListAuthorizationRulesForApplicationWithContext(ctx contex
 
 // Summary:
 //
-// 查询组关联的授权规则信息列表
+// Lists the authorization rules associated with a group.
 //
 // @param request - ListAuthorizationRulesForGroupRequest
 //
@@ -11127,7 +11171,7 @@ func (client *Client) ListAuthorizationRulesForGroupWithContext(ctx context.Cont
 
 // Summary:
 //
-// 查询用户关联的授权规则信息列表
+// Queries the authorization rules associated with a user.
 //
 // @param request - ListAuthorizationRulesForUserRequest
 //
@@ -11183,7 +11227,7 @@ func (client *Client) ListAuthorizationRulesForUserWithContext(ctx context.Conte
 
 // Summary:
 //
-// 获取品牌列表
+// Retrieves a list of brands.
 //
 // @param request - ListBrandsRequest
 //
@@ -11239,7 +11283,7 @@ func (client *Client) ListBrandsWithContext(ctx context.Context, request *ListBr
 
 // Summary:
 //
-// 查询指定应用所属的全部ClientPublicKey
+// Lists the client public keys for a specified application using a cursor.
 //
 // @param request - ListClientPublicKeysRequest
 //
@@ -11295,7 +11339,7 @@ func (client *Client) ListClientPublicKeysWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 查询云角色列表
+// Queries a paginated list of cloud roles.
 //
 // @param request - ListCloudAccountRolesRequest
 //
@@ -11355,7 +11399,7 @@ func (client *Client) ListCloudAccountRolesWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 查询云账号列表
+// Returns a paginated list of information about one or more Alibaba Cloud accounts.
 //
 // @param request - ListCloudAccountsRequest
 //
@@ -11471,7 +11515,7 @@ func (client *Client) ListConditionalAccessPoliciesWithContext(ctx context.Conte
 
 // Summary:
 //
-// 获取应用关联的条件访问策略列表
+// Lists the conditional access policies associated with an application.
 //
 // @param request - ListConditionalAccessPoliciesForApplicationRequest
 //
@@ -11571,7 +11615,7 @@ func (client *Client) ListConditionalAccessPoliciesForNetworkZoneWithContext(ctx
 
 // Summary:
 //
-// 获取用户关联的条件访问策略列表
+// Retrieves a list of conditional access policies that are associated with a user.
 //
 // @param request - ListConditionalAccessPoliciesForUserRequest
 //
@@ -11619,7 +11663,7 @@ func (client *Client) ListConditionalAccessPoliciesForUserWithContext(ctx contex
 
 // Summary:
 //
-// 列举凭据提供商
+// Lists the credential providers.
 //
 // @param request - ListCredentialProvidersRequest
 //
@@ -11687,7 +11731,7 @@ func (client *Client) ListCredentialProvidersWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 查询凭据列表
+// Retrieves a paginated list of credentials.
 //
 // @param request - ListCredentialsRequest
 //
@@ -11763,7 +11807,7 @@ func (client *Client) ListCredentialsWithContext(ctx context.Context, request *L
 
 // Summary:
 //
-// 自定义条款列表查询。
+// Retrieves a list of custom privacy policies.
 //
 // @param request - ListCustomPrivacyPoliciesRequest
 //
@@ -11823,7 +11867,7 @@ func (client *Client) ListCustomPrivacyPoliciesWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 获取品牌关联资源的资源
+// Retrieves the resources of brand-linked instances.
 //
 // @param request - ListCustomPrivacyPoliciesForBrandRequest
 //
@@ -11883,7 +11927,7 @@ func (client *Client) ListCustomPrivacyPoliciesForBrandWithContext(ctx context.C
 
 // Summary:
 //
-// Queries the proxy tokens of a domain name of an Employee Identity and Access Management (EIAM) instance.
+// Retrieves a list of proxy tokens for a domain name in an EIAM instance.
 //
 // @param request - ListDomainProxyTokensRequest
 //
@@ -11931,7 +11975,7 @@ func (client *Client) ListDomainProxyTokensWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries a list of domain names of an Employee Identity and Access Management (EIAM) instance. The list contains the initial domain name and custom domain names.
+// Queries the domain names of an EIAM instance, including the default domain name and custom domain names.
 //
 // @param request - ListDomainsRequest
 //
@@ -12027,7 +12071,7 @@ func (client *Client) ListEiamInstancesWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 查看事件列表
+// View the event list.
 //
 // @param request - ListEventTypesRequest
 //
@@ -12075,7 +12119,7 @@ func (client *Client) ListEventTypesWithContext(ctx context.Context, request *Li
 
 // Summary:
 //
-// 查询联邦凭证提供方列表
+// Lists federated identity providers.
 //
 // @param request - ListFederatedCredentialProvidersRequest
 //
@@ -12207,7 +12251,7 @@ func (client *Client) ListGroupsWithContext(ctx context.Context, request *ListGr
 
 // Summary:
 //
-// Queries the account groups that are granted permissions to access an application and displays the results by page. The IDs of the account groups are returned. To query the detailed information about the account groups, call the GetGroup operation.
+// Performs a paged query to list the groups authorized to access an application. The response returns the group IDs. To obtain detailed information for a group, you can call the GetGroup operation.
 //
 // @param request - ListGroupsForApplicationRequest
 //
@@ -12271,7 +12315,7 @@ func (client *Client) ListGroupsForApplicationWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 查询授权规则关联的组列表
+// Lists the groups associated with an authorization rule.
 //
 // @param request - ListGroupsForAuthorizationRuleRequest
 //
@@ -12331,7 +12375,7 @@ func (client *Client) ListGroupsForAuthorizationRuleWithContext(ctx context.Cont
 
 // Summary:
 //
-// 查询ResourceServer授权的组和Scope权限
+// Lists the scopes authorized for groups on a specified resource server. This operation supports cursor-based pagination.
 //
 // @param request - ListGroupsForResourceServerRequest
 //
@@ -12451,7 +12495,7 @@ func (client *Client) ListGroupsForUserWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Query the list of identity providers.
+// Retrieves a list of identity providers.
 //
 // @param request - ListIdentityProvidersRequest
 //
@@ -12507,7 +12551,7 @@ func (client *Client) ListIdentityProvidersWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 获取网络端点下的IdP信息。
+// Retrieves information about Identity Providers (IdPs) for a network endpoint.
 //
 // @param request - ListIdentityProvidersForNetworkAccessEndpointRequest
 //
@@ -12563,7 +12607,7 @@ func (client *Client) ListIdentityProvidersForNetworkAccessEndpointWithContext(c
 
 // Summary:
 //
-// Queries the information about one or more Enterprise Identity and Access Management (EIAM) instances of Identity as a Service (IDaaS).
+// Queries information about one or more EIAM instances.
 //
 // @param request - ListInstancesRequest
 //
@@ -12578,6 +12622,10 @@ func (client *Client) ListInstancesWithContext(ctx context.Context, request *Lis
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.CrossRegionReplication) {
+		query["CrossRegionReplication"] = request.CrossRegionReplication
+	}
+
 	if !dara.IsNil(request.Edition) {
 		query["Edition"] = request.Edition
 	}
@@ -12623,7 +12671,7 @@ func (client *Client) ListInstancesWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// Queries the zones that support dedicated network endpoints in the specified region of Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
+// Queries the zones that support creating network endpoints for IDaaS in a specified region.
 //
 // @param request - ListNetworkAccessEndpointAvailableZonesRequest
 //
@@ -12667,7 +12715,7 @@ func (client *Client) ListNetworkAccessEndpointAvailableZonesWithContext(ctx con
 
 // Summary:
 //
-// # List query dedicated network endpoint
+// Lists the network endpoints for an IDaaS EIAM instance.
 //
 // @param request - ListNetworkAccessEndpointsRequest
 //
@@ -12735,7 +12783,7 @@ func (client *Client) ListNetworkAccessEndpointsWithContext(ctx context.Context,
 
 // Summary:
 //
-// List the access paths under a certain network access endpoint.
+// Lists the access paths for a specified network endpoint.
 //
 // @param request - ListNetworkAccessPathsRequest
 //
@@ -12783,7 +12831,7 @@ func (client *Client) ListNetworkAccessPathsWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 网络区域对象列表
+// Lists network zone objects.
 //
 // @param request - ListNetworkZonesRequest
 //
@@ -12843,7 +12891,7 @@ func (client *Client) ListNetworkZonesWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries all parent organizations of an Employee Identity and Access Management (EIAM) organization.
+// Queries all parent organizational units of a specified EIAM organizational unit. The returned organizational units are sorted in hierarchical order from the highest level to the lowest level.
 //
 // @param request - ListOrganizationalUnitParentsRequest
 //
@@ -12891,7 +12939,7 @@ func (client *Client) ListOrganizationalUnitParentsWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries the information about organizational units in Identity as a Service (IDaaS) Employee IAM (EIAM) by page.
+// Performs a paged query for EIAM organizational units.
 //
 // @param request - ListOrganizationalUnitsRequest
 //
@@ -12959,7 +13007,7 @@ func (client *Client) ListOrganizationalUnitsWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the organizations that are allowed to access an Employee Identity and Access Management (EIAM) application by page. The return result includes the IDs of the organizations. If you want to obtain the details of the organizations, call the GetOrganizationalUnit operation.
+// Performs a paged query to list the organizations that are granted access to an application. The response returns the IDs of the organizations. To obtain detailed information about a specific organization, call the GetOrganizationalUnit operation.
 //
 // @param request - ListOrganizationalUnitsForApplicationRequest
 //
@@ -13023,7 +13071,7 @@ func (client *Client) ListOrganizationalUnitsForApplicationWithContext(ctx conte
 
 // Summary:
 //
-// 查询被授权到组织的ResourceServers和Scopes权限
+// Retrieves a cursor-paginated list of scopes that the current resource server has granted to an organization.
 //
 // @param request - ListOrganizationalUnitsForResourceServerRequest
 //
@@ -13087,7 +13135,7 @@ func (client *Client) ListOrganizationalUnitsForResourceServerWithContext(ctx co
 
 // Summary:
 //
-// 获取指定ResourceServer下Scope列表。
+// Query the list of Scope permissions under a specified ResourceServer using cursor-based pagination.
 //
 // @param request - ListResourceServerScopesRequest
 //
@@ -13167,7 +13215,7 @@ func (client *Client) ListResourceServerScopesWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 查询用户的被授予ResourceServers和Scopes的权限
+// Performs a paged query to retrieve the ResourceServer and Scope permissions that are granted to the current user.
 //
 // @param request - ListResourceServersForUserRequest
 //
@@ -13227,7 +13275,17 @@ func (client *Client) ListResourceServersForUserWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries a list of synchronization jobs.
+// Lists the details of synchronization tasks.
+//
+// Description:
+//
+// You can view the returned data in one of the following two ways:
+//
+// - Method 1: To query the first page, set MaxResults to limit the number of entries to return. The NextToken value in the response is the token for the next page. To query subsequent pages, set NextToken to the value from the previous response and set MaxResults. If no more data is available, NextToken is not returned. The maximum value for MaxResults is 100.
+//
+// - Method 2: Set PageSize to specify the number of entries per page and PageNumber to specify the page number.
+//
+// You can use only one of these methods. Method 1 is recommended when many entries are returned. If you set MaxResults or NextToken, the PageSize and PageNumber parameters are ignored.
 //
 // @param request - ListSynchronizationJobsRequest
 //
@@ -13315,7 +13373,11 @@ func (client *Client) ListSynchronizationJobsWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 查询三方登录账户绑定关系
+// Lists the mappings for third-party logon accounts.
+//
+// Description:
+//
+// This operation queries only the applications that are directly assigned to an organization. You can use the **ApplicationIds*	- parameter to filter the applications.
 //
 // @param request - ListUserAuthnSourceMappingsRequest
 //
@@ -13383,7 +13445,11 @@ func (client *Client) ListUserAuthnSourceMappingsWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries the details of accounts in Identity as a Service (IDaaS) Employee IAM (EIAM) by page.
+// Retrieves a paginated list of EIAM accounts.
+//
+// Description:
+//
+// This API retrieves only applications directly assigned to an organization. Use the **ApplicationIds*	- parameter to filter applications.
 //
 // @param request - ListUsersRequest
 //
@@ -13487,7 +13553,7 @@ func (client *Client) ListUsersWithContext(ctx context.Context, request *ListUse
 
 // Summary:
 //
-// Queries the accounts that are allowed to access an Employee Identity and Access Management (EIAM) application. The return results include the IDs of the accounts. If you need to obtain the details of the accounts, call the GetUser operation.
+// Performs a paged query to list the accounts that have been granted access to an application. The response includes account IDs. To retrieve detailed information about an account, call the GetUser operation.
 //
 // @param request - ListUsersForApplicationRequest
 //
@@ -13551,7 +13617,7 @@ func (client *Client) ListUsersForApplicationWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 查询授权规则关联的账户列表
+// Lists the accounts associated with an authorization rule.
 //
 // @param request - ListUsersForAuthorizationRuleRequest
 //
@@ -13611,7 +13677,7 @@ func (client *Client) ListUsersForAuthorizationRuleWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries the information of accounts in an Employee Identity and Access Management (EIAM) group of Identity as a Service (IDaaS).
+// Lists the users in a specified EIAM account group.
 //
 // @param request - ListUsersForGroupRequest
 //
@@ -13671,7 +13737,7 @@ func (client *Client) ListUsersForGroupWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 查询ResourceServer授权的用户和Scope权限
+// List the scope permissions granted by a Resource Server to user accounts using cursor-based pagination.
 //
 // @param request - ListUsersForResourceServerRequest
 //
@@ -13735,7 +13801,7 @@ func (client *Client) ListUsersForResourceServerWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries a client key of an Employee Identity and Access Management (EIAM) application. The returned key secret is masked. If you want to query the key secret that is not masked, call the ListApplicationClientSecrets operation.
+// Obtains the client secret for an EIAM application. The secret is returned without desensitization. To obtain a desensitized secret, call the ListApplicationClientSecrets operation.
 //
 // @param request - ObtainApplicationClientSecretRequest
 //
@@ -13787,7 +13853,11 @@ func (client *Client) ObtainApplicationClientSecretWithContext(ctx context.Conte
 
 // Summary:
 //
-// 查询指定应用Token
+// Queries the token of a specified application.
+//
+// Description:
+//
+// When you disable an application, all its features, such as single sign-on (SSO) and account synchronization, become unavailable. Ensure that you understand the potential threats of this operation.
 //
 // @param request - ObtainApplicationTokenRequest
 //
@@ -13839,7 +13909,7 @@ func (client *Client) ObtainApplicationTokenWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 获取凭据
+// Retrieves a credential containing sensitive information.
 //
 // @param request - ObtainCredentialRequest
 //
@@ -13887,7 +13957,7 @@ func (client *Client) ObtainCredentialWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries the information about a proxy token of a domain name of an Employee Identity and Access Management (EIAM) instance.
+// Obtains the proxy token for a domain name in an EIAM instance.
 //
 // @param request - ObtainDomainProxyTokenRequest
 //
@@ -13939,7 +14009,11 @@ func (client *Client) ObtainDomainProxyTokenWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 删除一个当前应用下的指定员工的应用账号
+// Deletes the application account of a specified user from an application.
+//
+// Description:
+//
+// This operation queries only applications that are directly assigned to an organization. When you call this operation, you can use the **ApplicationIds*	- parameter to filter the applications.
 //
 // @param request - RemoveApplicationAccountFromUserRequest
 //
@@ -13995,7 +14069,7 @@ func (client *Client) RemoveApplicationAccountFromUserWithContext(ctx context.Co
 
 // Summary:
 //
-// 将应用从授权规则中解除
+// Removes an application from an authorization rule.
 //
 // @param request - RemoveApplicationFromAuthorizationRuleRequest
 //
@@ -14047,7 +14121,7 @@ func (client *Client) RemoveApplicationFromAuthorizationRuleWithContext(ctx cont
 
 // Summary:
 //
-// 移除品牌关联条款
+// # Removing a brand association
 //
 // @param request - RemoveCustomPrivacyPoliciesFromBrandRequest
 //
@@ -14099,7 +14173,7 @@ func (client *Client) RemoveCustomPrivacyPoliciesFromBrandWithContext(ctx contex
 
 // Summary:
 //
-// 将组从授权规则中解除
+// Removes an application from an authorization rule.
 //
 // @param request - RemoveGroupFromAuthorizationRuleRequest
 //
@@ -14151,7 +14225,7 @@ func (client *Client) RemoveGroupFromAuthorizationRuleWithContext(ctx context.Co
 
 // Summary:
 //
-// 将账户从授权规则中解除
+// Removes an account from an authorization rule.
 //
 // @param request - RemoveUserFromAuthorizationRuleRequest
 //
@@ -14307,7 +14381,7 @@ func (client *Client) RemoveUsersFromGroupWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 免费版续期
+// # Renewing the Free Edition
 //
 // @param request - RenewFreeLicenseEndTimeRequest
 //
@@ -14351,7 +14425,7 @@ func (client *Client) RenewFreeLicenseEndTimeWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Revokes the permissions to access an application from multiple account groups at a time in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
+// Revokes application access from multiple EIAM groups in a batch.
 //
 // @param request - RevokeApplicationFromGroupsRequest
 //
@@ -14407,7 +14481,7 @@ func (client *Client) RevokeApplicationFromGroupsWithContext(ctx context.Context
 
 // Summary:
 //
-// Revokes the permissions to access an application from multiple Employee Identity and Access Management (EIAM) organizations at a time.
+// Revokes application access from multiple EIAM organizations in a batch operation.
 //
 // @param request - RevokeApplicationFromOrganizationalUnitsRequest
 //
@@ -14463,7 +14537,7 @@ func (client *Client) RevokeApplicationFromOrganizationalUnitsWithContext(ctx co
 
 // Summary:
 //
-// Revokes the permissions to access an application from multiple Employee Identity and Access Management (EIAM) accounts at a time.
+// Revokes access to an application from multiple EIAM accounts.
 //
 // @param request - RevokeApplicationFromUsersRequest
 //
@@ -14519,7 +14593,7 @@ func (client *Client) RevokeApplicationFromUsersWithContext(ctx context.Context,
 
 // Summary:
 //
-// 解除指定ResourceServer到Client的授权
+// Revokes the authorization for a resource server from a client application.
 //
 // @param request - RevokeResourceServerFromClientRequest
 //
@@ -14571,7 +14645,7 @@ func (client *Client) RevokeResourceServerFromClientWithContext(ctx context.Cont
 
 // Summary:
 //
-// 解除指定ResourceServer下的Scope给Client
+// Revokes specified scope permissions of a resource server from a client application.
 //
 // @param request - RevokeResourceServerScopesFromClientRequest
 //
@@ -14627,7 +14701,7 @@ func (client *Client) RevokeResourceServerScopesFromClientWithContext(ctx contex
 
 // Summary:
 //
-// 取消被授予到组的ResourceServerScope权限
+// Revokes a resource server\\"s scope permissions from a group.
 //
 // @param request - RevokeResourceServerScopesFromGroupRequest
 //
@@ -14683,7 +14757,7 @@ func (client *Client) RevokeResourceServerScopesFromGroupWithContext(ctx context
 
 // Summary:
 //
-// 取消被授予到组织的ResourceServerScope权限
+// Revokes scope permissions for a resource server from an organization.
 //
 // @param request - RevokeResourceServerScopesFromOrganizationalUnitRequest
 //
@@ -14739,7 +14813,7 @@ func (client *Client) RevokeResourceServerScopesFromOrganizationalUnitWithContex
 
 // Summary:
 //
-// 取消被授予用户的ResourceServerScope权限
+// Revokes scope permissions for a specified resource server from an account.
 //
 // @param request - RevokeResourceServerScopesFromUserRequest
 //
@@ -14795,7 +14869,7 @@ func (client *Client) RevokeResourceServerScopesFromUserWithContext(ctx context.
 
 // Summary:
 //
-// Creates a synchronization job and immediately runs the job.
+// Creates and immediately runs a new synchronization task.
 //
 // @param request - RunSynchronizationJobRequest
 //
@@ -14915,7 +14989,7 @@ func (client *Client) SetApplicationGrantScopeWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Configures the account synchronization feature for an application in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
+// Sets the account synchronization configuration for an EIAM application.
 //
 // @param request - SetApplicationProvisioningConfigRequest
 //
@@ -15039,7 +15113,7 @@ func (client *Client) SetApplicationProvisioningScopeWithContext(ctx context.Con
 
 // Summary:
 //
-// 配置应用同步用户主组织
+// Sets the primary organizational unit for an application\\"s user provisioning.
 //
 // @param request - SetApplicationProvisioningUserPrimaryOrganizationalUnitRequest
 //
@@ -15091,7 +15165,7 @@ func (client *Client) SetApplicationProvisioningUserPrimaryOrganizationalUnitWit
 
 // Summary:
 //
-// 设置ResourceServer的Identifier
+// Sets the unique identifier for a resource server. This identifier is used as the aud (audience) claim in a JSON Web Token (JWT) to specify the service that is intended to accept the token.
 //
 // @param request - SetApplicationResourceServerIdentifierRequest
 //
@@ -15147,11 +15221,11 @@ func (client *Client) SetApplicationResourceServerIdentifierWithContext(ctx cont
 
 // Summary:
 //
-// Specifies the single sign-on (SSO) configuration attributes of an application in Identity as a Service (IDaaS) Employee IAM (EIAM).
+// Sets the single sign-on (SSO) properties for an IDaaS application.
 //
 // Description:
 //
-// In IDaaS EIAM, the application management feature supports multiple SSO protocols for applications, including SAML 2.0 and OIDC protocols. Each application supports only one protocol, and the protocol cannot be changed after the application is created. You can specify the SSO configuration attributes of an application based on the supported SSO protocol.
+// In IDaaS, the Application Management feature lets you add applications that use various SSO protocols, such as SAML 2.0 and OpenID Connect (OIDC). However, each application can support only one SSO protocol. The protocol is specified during application creation and cannot be changed afterward. You must configure the SSO parameters according to the protocol that your application uses.
 //
 // @param request - SetApplicationSsoConfigRequest
 //
@@ -15219,7 +15293,7 @@ func (client *Client) SetApplicationSsoConfigWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Sets a domain name of an Employee Identity and Access Management (EIAM) instance as the default domain name.
+// Sets the default domain name for a specified EIAM instance.
 //
 // @param request - SetDefaultDomainRequest
 //
@@ -15319,7 +15393,7 @@ func (client *Client) SetForgetPasswordConfigurationWithContext(ctx context.Cont
 
 // Summary:
 //
-// 修改认证信息
+// # Update authentication information
 //
 // @param request - SetIdentityProviderAuthnConfigurationRequest
 //
@@ -15383,7 +15457,7 @@ func (client *Client) SetIdentityProviderAuthnConfigurationWithContext(ctx conte
 
 // Summary:
 //
-// Update IdP synchronization configuration.
+// Sets the inbound synchronization configuration for an IdP.
 //
 // @param request - SetIdentityProviderUdPullConfigurationRequest
 //
@@ -15459,7 +15533,7 @@ func (client *Client) SetIdentityProviderUdPullConfigurationWithContext(ctx cont
 
 // Summary:
 //
-// 修改IdP同步出配置
+// Modifies the push configuration for an identity provider (IdP).
 //
 // @param request - SetIdentityProviderUdPushConfigurationRequest
 //
@@ -15527,7 +15601,7 @@ func (client *Client) SetIdentityProviderUdPushConfigurationWithContext(ctx cont
 
 // Summary:
 //
-// 设置实例控制项
+// Configures the control settings for an instance.
 //
 // @param request - SetInstanceControlConfigurationRequest
 //
@@ -15575,7 +15649,7 @@ func (client *Client) SetInstanceControlConfigurationWithContext(ctx context.Con
 
 // Summary:
 //
-// 设置实例语言、时区信息
+// Sets the language and time zone for an instance.
 //
 // @param request - SetInstanceGlobalizationConfigRequest
 //
@@ -15627,7 +15701,7 @@ func (client *Client) SetInstanceGlobalizationConfigWithContext(ctx context.Cont
 
 // Summary:
 //
-// 为品牌设置登录后跳转应用
+// Sets the post-logon redirect application for a brand.
 //
 // @param request - SetLoginRedirectApplicationForBrandRequest
 //
@@ -15679,7 +15753,7 @@ func (client *Client) SetLoginRedirectApplicationForBrandWithContext(ctx context
 
 // Summary:
 //
-// Configures a password complexity policy for an Employee Identity and Access Management (EIAM) instance of Identity as a Service (IDaaS).
+// Sets the password complexity policy for a specified EIAM instance.
 //
 // @param request - SetPasswordComplexityConfigurationRequest
 //
@@ -15735,7 +15809,7 @@ func (client *Client) SetPasswordComplexityConfigurationWithContext(ctx context.
 
 // Summary:
 //
-// Configures a password expiration policy for an Employee Identity and Access Management (EIAM) instance of Identity as a Service (IDaaS).
+// Sets the password expiration policy for a specified EIAM instance.
 //
 // @param request - SetPasswordExpirationConfigurationRequest
 //
@@ -15923,7 +15997,7 @@ func (client *Client) SetPasswordInitializationConfigurationWithContext(ctx cont
 
 // Summary:
 //
-// 设置指定的应用ClientPublicKey优先启用状态
+// Sets the specified client public key as the primary key for an application.
 //
 // @param request - SetPrimaryClientPublicKeyRequest
 //
@@ -16031,7 +16105,7 @@ func (client *Client) SetUserPrimaryOrganizationalUnitWithContext(ctx context.Co
 
 // Summary:
 //
-// 设置WebAuthn配置
+// Sets the WebAuthn configuration.
 //
 // @param request - SetWebAuthnConfigurationRequest
 //
@@ -16091,7 +16165,7 @@ func (client *Client) SetWebAuthnConfigurationWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 解绑指定用户TOTP
+// Detaches the TOTP authenticator for a specified user.
 //
 // @param request - UnbindTotpAuthenticatorRequest
 //
@@ -16139,7 +16213,7 @@ func (client *Client) UnbindTotpAuthenticatorWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 解绑三方登录账户
+// Unbinds a third-party logon account from a user.
 //
 // @param request - UnbindUserAuthnSourceMappingRequest
 //
@@ -16243,7 +16317,7 @@ func (client *Client) UnlockUserWithContext(ctx context.Context, request *Unlock
 
 // Summary:
 //
-// 修改应用高阶配置
+// Updates the advanced configuration of an application.
 //
 // @param request - UpdateApplicationAdvancedConfigRequest
 //
@@ -16347,7 +16421,7 @@ func (client *Client) UpdateApplicationAuthorizationTypeWithContext(ctx context.
 
 // Summary:
 //
-// 更新应用的指定ClientSecret的到期时间
+// Updates the expiration time of a specified client secret for an application.
 //
 // @param request - UpdateApplicationClientSecretExpirationTimeRequest
 //
@@ -16455,7 +16529,7 @@ func (client *Client) UpdateApplicationDescriptionWithContext(ctx context.Contex
 
 // Summary:
 //
-// 更新应用联邦凭证
+// Updates an application\\"s federated credential.
 //
 // @param request - UpdateApplicationFederatedCredentialRequest
 //
@@ -16515,7 +16589,7 @@ func (client *Client) UpdateApplicationFederatedCredentialWithContext(ctx contex
 
 // Summary:
 //
-// 更新应用联邦凭证描述
+// Updates the description of a federated credential for an application.
 //
 // @param request - UpdateApplicationFederatedCredentialDescriptionRequest
 //
@@ -16571,7 +16645,7 @@ func (client *Client) UpdateApplicationFederatedCredentialDescriptionWithContext
 
 // Summary:
 //
-// 更新应用基本信息
+// Updates the basic information for an application.
 //
 // @param request - UpdateApplicationInfoRequest
 //
@@ -16643,7 +16717,7 @@ func (client *Client) UpdateApplicationInfoWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 修改应用角色
+// Updates an application role.
 //
 // @param request - UpdateApplicationRoleRequest
 //
@@ -16703,7 +16777,7 @@ func (client *Client) UpdateApplicationRoleWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 修改应用角色描述
+// Updates the description of an application role.
 //
 // @param request - UpdateApplicationRoleDescriptionRequest
 //
@@ -16759,7 +16833,11 @@ func (client *Client) UpdateApplicationRoleDescriptionWithContext(ctx context.Co
 
 // Summary:
 //
-// 更新模板应用的SSO参数
+// Updates the SSO parameters for an application template.
+//
+// Description:
+//
+// Updates the single sign-on (SSO) parameters for an application template from the marketplace.
 //
 // @param request - UpdateApplicationSsoFormParamsRequest
 //
@@ -16811,7 +16889,7 @@ func (client *Client) UpdateApplicationSsoFormParamsWithContext(ctx context.Cont
 
 // Summary:
 //
-// 更新ApplicationToken过期时间
+// Updates the expiration time of an application token.
 //
 // @param request - UpdateApplicationTokenExpirationTimeRequest
 //
@@ -16867,7 +16945,7 @@ func (client *Client) UpdateApplicationTokenExpirationTimeWithContext(ctx contex
 
 // Summary:
 //
-// 更新授权规则信息
+// Updates the basic properties of an authorization rule.
 //
 // @param request - UpdateAuthorizationRuleRequest
 //
@@ -16929,7 +17007,7 @@ func (client *Client) UpdateAuthorizationRuleWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 更新授权规则应用关联关系属性
+// Updates the properties of the relationship between an authorization rule and an application.
 //
 // @param request - UpdateAuthorizationRuleApplicationAttachmentRequest
 //
@@ -16995,7 +17073,7 @@ func (client *Client) UpdateAuthorizationRuleApplicationAttachmentWithContext(ct
 
 // Summary:
 //
-// 更新授权规则描述信息
+// Updates the description of an authorization rule.
 //
 // @param request - UpdateAuthorizationRuleDescriptionRequest
 //
@@ -17053,7 +17131,7 @@ func (client *Client) UpdateAuthorizationRuleDescriptionWithContext(ctx context.
 
 // Summary:
 //
-// 更新授权规则组关联关系属性
+// Updates the properties of the association between an authorization rule and a group.
 //
 // @param request - UpdateAuthorizationRuleGroupAttachmentRequest
 //
@@ -17119,7 +17197,7 @@ func (client *Client) UpdateAuthorizationRuleGroupAttachmentWithContext(ctx cont
 
 // Summary:
 //
-// 更新授权规则账户关联关系属性
+// Updates the properties of an association between an authorization rule and a user.
 //
 // @param request - UpdateAuthorizationRuleUserAttachmentRequest
 //
@@ -17185,7 +17263,7 @@ func (client *Client) UpdateAuthorizationRuleUserAttachmentWithContext(ctx conte
 
 // Summary:
 //
-// 修改品牌
+// Updates a brand.
 //
 // @param request - UpdateBrandRequest
 //
@@ -17237,7 +17315,7 @@ func (client *Client) UpdateBrandWithContext(ctx context.Context, request *Updat
 
 // Summary:
 //
-// 更新云账号
+// Updates the basic information of an Alibaba Cloud account.
 //
 // @param request - UpdateCloudAccountRequest
 //
@@ -17293,7 +17371,7 @@ func (client *Client) UpdateCloudAccountWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 更新云账号描述
+// Updates the description of an Alibaba Cloud account.
 //
 // @param request - UpdateCloudAccountDescriptionRequest
 //
@@ -17349,7 +17427,7 @@ func (client *Client) UpdateCloudAccountDescriptionWithContext(ctx context.Conte
 
 // Summary:
 //
-// 更新云角色描述
+// Updates the description of a cloud role.
 //
 // @param request - UpdateCloudAccountRoleDescriptionRequest
 //
@@ -17409,11 +17487,11 @@ func (client *Client) UpdateCloudAccountRoleDescriptionWithContext(ctx context.C
 
 // Summary:
 //
-// # Update Conditional Access Policy
+// Updates a conditional access policy.
 //
 // Description:
 //
-// # Update Conditional Access Policy
+// Updates a conditional access policy.
 //
 // @param request - UpdateConditionalAccessPolicyRequest
 //
@@ -17485,11 +17563,11 @@ func (client *Client) UpdateConditionalAccessPolicyWithContext(ctx context.Conte
 
 // Summary:
 //
-// # Update Conditional Access Policy Description
+// Updates the description of a conditional access policy.
 //
 // Description:
 //
-// # Update Conditional Access Policy Description
+// Updates the description of a conditional access policy.
 //
 // @param request - UpdateConditionalAccessPolicyDescriptionRequest
 //
@@ -17545,7 +17623,7 @@ func (client *Client) UpdateConditionalAccessPolicyDescriptionWithContext(ctx co
 
 // Summary:
 //
-// 更新凭据
+// Update basic information for a credential.
 //
 // @param request - UpdateCredentialRequest
 //
@@ -17605,7 +17683,7 @@ func (client *Client) UpdateCredentialWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 更新凭据描述
+// Update the description of a credential.
 //
 // @param request - UpdateCredentialDescriptionRequest
 //
@@ -17661,7 +17739,7 @@ func (client *Client) UpdateCredentialDescriptionWithContext(ctx context.Context
 
 // Summary:
 //
-// 更新凭据提供商
+// Updates a credential provider.
 //
 // @param request - UpdateCredentialProviderRequest
 //
@@ -17721,7 +17799,7 @@ func (client *Client) UpdateCredentialProviderWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 更新凭据提供商描述
+// Update the description of a credential provider.
 //
 // @param request - UpdateCredentialProviderDescriptionRequest
 //
@@ -17773,7 +17851,7 @@ func (client *Client) UpdateCredentialProviderDescriptionWithContext(ctx context
 
 // Summary:
 //
-// 更新自定义条款
+// Updates a custom privacy policy.
 //
 // @param request - UpdateCustomPrivacyPolicyRequest
 //
@@ -17837,7 +17915,7 @@ func (client *Client) UpdateCustomPrivacyPolicyWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 修改域名关联的品牌。
+// Updates the brand associated with a domain name.
 //
 // @param request - UpdateDomainBrandRequest
 //
@@ -17889,7 +17967,7 @@ func (client *Client) UpdateDomainBrandWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 更新域名备案号。
+// Updates the ICP filing number for a domain name.
 //
 // @param request - UpdateDomainIcpNumberRequest
 //
@@ -17941,7 +18019,7 @@ func (client *Client) UpdateDomainIcpNumberWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 更新联邦凭证提供方
+// Updates a federated credential provider.
 //
 // @param request - UpdateFederatedCredentialProviderRequest
 //
@@ -18009,7 +18087,7 @@ func (client *Client) UpdateFederatedCredentialProviderWithContext(ctx context.C
 
 // Summary:
 //
-// 更新联邦凭证提供方描述
+// Updates the description of a federated credential provider.
 //
 // @param request - UpdateFederatedCredentialProviderDescriptionRequest
 //
@@ -18169,7 +18247,7 @@ func (client *Client) UpdateGroupDescriptionWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 更新idp基础配置
+// Updates the basic configuration of an identity provider.
 //
 // @param request - UpdateIdentityProviderRequest
 //
@@ -18305,7 +18383,7 @@ func (client *Client) UpdateInstanceDescriptionWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 更新一个专属网络端点的名称。
+// Modifies the name of a private network access endpoint.
 //
 // @param request - UpdateNetworkAccessEndpointNameRequest
 //
@@ -18357,7 +18435,7 @@ func (client *Client) UpdateNetworkAccessEndpointNameWithContext(ctx context.Con
 
 // Summary:
 //
-// 更新网络区域对象
+// Updates a network zone object.
 //
 // @param request - UpdateNetworkZoneRequest
 //
@@ -18425,7 +18503,7 @@ func (client *Client) UpdateNetworkZoneWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 更新网络区域对象描述
+// Updates the description of a network zone.
 //
 // @param request - UpdateNetworkZoneDescriptionRequest
 //
@@ -18637,7 +18715,7 @@ func (client *Client) UpdateOrganizationalUnitParentIdWithContext(ctx context.Co
 
 // Summary:
 //
-// 更新指定ResourceServer下的Scope
+// Updates a scope permission for a specified resource server.
 //
 // @param request - UpdateResourceServerScopeRequest
 //
@@ -18693,7 +18771,7 @@ func (client *Client) UpdateResourceServerScopeWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Updates the basic information about an Employee Identity and Access Management (EIAM) account of Identity as a Service (IDaaS).
+// Updates the basic information of an EIAM account.
 //
 // @param request - UpdateUserRequest
 //
@@ -18773,7 +18851,7 @@ func (client *Client) UpdateUserWithContext(ctx context.Context, request *Update
 
 // Summary:
 //
-// Modifies the description of an Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM) account.
+// Updates a user\\"s description.
 //
 // @param request - UpdateUserDescriptionRequest
 //

@@ -24,29 +24,34 @@ type iListApplicationsForNetworkZoneResponseBody interface {
 }
 
 type ListApplicationsForNetworkZoneResponseBody struct {
+	// The list of applications.
 	Applications []*ListApplicationsForNetworkZoneResponseBodyApplications `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Repeated"`
-	// 分页查询时每页行数。
+	// The number of entries returned on each page.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 本次调用返回的查询凭证（Token）值，用于下一次翻页查询。
+	// The token returned for the next query.
 	//
 	// example:
 	//
 	// NTxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 本次调用返回的查询凭证（Token）值，用于上一次翻页查询。
+	// The token returned for the previous query.
 	//
 	// example:
 	//
 	// PTxxxexample
 	PreviousToken *string `json:"PreviousToken,omitempty" xml:"PreviousToken,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 100
@@ -129,15 +134,19 @@ func (s *ListApplicationsForNetworkZoneResponseBody) Validate() error {
 }
 
 type ListApplicationsForNetworkZoneResponseBodyApplications struct {
-	// IDaaS EIAM 应用Id
+	// The ID of the application.
 	//
 	// example:
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// IDaaS EIAM 应用名称
+	// The name of the application.
+	//
+	// example:
+	//
+	// cloudSSO
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
-	// IDaaS EIAM 实例Id
+	// The ID of the IDaaS EIAM instance.
 	//
 	// example:
 	//

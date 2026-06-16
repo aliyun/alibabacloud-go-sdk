@@ -14,7 +14,7 @@ type iCreateInstanceTrialLicenseRequest interface {
 }
 
 type CreateInstanceTrialLicenseRequest struct {
-	// IDaaS EIAM的实例id
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

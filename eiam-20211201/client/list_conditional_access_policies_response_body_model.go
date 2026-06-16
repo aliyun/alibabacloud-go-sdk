@@ -127,7 +127,7 @@ type ListConditionalAccessPoliciesResponseBodyConditionalAccessPolicies struct {
 	//
 	// example:
 	//
-	// My Policy
+	// My policy
 	ConditionalAccessPolicyName *string `json:"ConditionalAccessPolicyName,omitempty" xml:"ConditionalAccessPolicyName,omitempty"`
 	// Type of the conditional access policy
 	//
@@ -155,7 +155,7 @@ type ListConditionalAccessPoliciesResponseBodyConditionalAccessPolicies struct {
 	//
 	// example:
 	//
-	// My Policy Description
+	// My policy description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Execution point of the conditional access policy
 	//
@@ -553,11 +553,7 @@ type ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesDecisionC
 	//
 	// disabled
 	ActiveSessionReuseStatus *string `json:"ActiveSessionReuseStatus,omitempty" xml:"ActiveSessionReuseStatus,omitempty"`
-	// Decision action of the conditional access policy:
-	//
-	// deny  Deny
-	//
-	// allow Allow
+	// Decision action of the conditional access policy: deny Deny allow Allow
 	//
 	// example:
 	//

@@ -18,7 +18,7 @@ type iUpdateCredentialProviderDescriptionRequest interface {
 }
 
 type UpdateCredentialProviderDescriptionRequest struct {
-	// 认证令牌提供商ID。
+	// The ID of the credential provider.
 	//
 	// This parameter is required.
 	//
@@ -26,13 +26,15 @@ type UpdateCredentialProviderDescriptionRequest struct {
 	//
 	// atp_01kr2cmj5gxxx4fvmls2e93dxxxxx
 	CredentialProviderId *string `json:"CredentialProviderId,omitempty" xml:"CredentialProviderId,omitempty"`
-	// 描述。
+	// A description of the credential provider.
+	//
+	// > The description can be up to 128 characters long.
 	//
 	// example:
 	//
 	// This is an example description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// IDaaS EIAM实例的ID。
+	// The ID of the instance.
 	//
 	// This parameter is required.
 	//

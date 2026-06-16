@@ -16,7 +16,7 @@ type iGetIdentityProviderUdPushConfigurationRequest interface {
 }
 
 type GetIdentityProviderUdPushConfigurationRequest struct {
-	// IDaaS的身份提供方主键id
+	// Identity provider ID
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type GetIdentityProviderUdPushConfigurationRequest struct {
 	//
 	// idp_11111
 	IdentityProviderId *string `json:"IdentityProviderId,omitempty" xml:"IdentityProviderId,omitempty"`
-	// IDaaS EIAM的实例id
+	// Instance ID
 	//
 	// This parameter is required.
 	//

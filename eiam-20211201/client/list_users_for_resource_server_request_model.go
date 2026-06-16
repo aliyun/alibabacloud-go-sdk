@@ -24,16 +24,17 @@ type iListUsersForResourceServerRequest interface {
 }
 
 type ListUsersForResourceServerRequest struct {
-	// IDaaS的应用资源ID。
+	// The ID of the Resource Server application.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
-	ApplicationId *string                                    `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	Filter        []*ListUsersForResourceServerRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
-	// IDaaS EIAM实例的ID。
+	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// A list of filter conditions.
+	Filter []*ListUsersForResourceServerRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
+	// The ID of the instance.
 	//
 	// This parameter is required.
 	//
@@ -41,11 +42,13 @@ type ListUsersForResourceServerRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The number of entries per page for paged queries.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 查询凭证（Token），取值为上一次API调用返回的NextToken参数值。
+	// The token for the next page. Set this parameter to the value of NextToken returned by the previous API call.
 	//
 	// example:
 	//
@@ -135,10 +138,13 @@ func (s *ListUsersForResourceServerRequest) Validate() error {
 }
 
 type ListUsersForResourceServerRequestFilter struct {
+	// The name of the filter condition.
+	//
 	// example:
 	//
 	// UserIds
-	Name  *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// A list of values for the filter condition.
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 

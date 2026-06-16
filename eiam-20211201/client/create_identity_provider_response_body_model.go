@@ -16,7 +16,7 @@ type iCreateIdentityProviderResponseBody interface {
 }
 
 type CreateIdentityProviderResponseBody struct {
-	// Identity provider ID.
+	// The ID of the identity provider.
 	//
 	// example:
 	//

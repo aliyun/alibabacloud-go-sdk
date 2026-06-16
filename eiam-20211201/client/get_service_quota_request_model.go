@@ -14,7 +14,7 @@ type iGetServiceQuotaRequest interface {
 }
 
 type GetServiceQuotaRequest struct {
-	// Quota 配额的唯一标识。
+	// The unique identifier of the quota.
 	//
 	// This parameter is required.
 	//

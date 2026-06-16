@@ -22,13 +22,13 @@ type iListApplicationsForGroupRequest interface {
 }
 
 type ListApplicationsForGroupRequest struct {
-	// 非必填，如果填写则可以基于应用ID进行过滤，列表中最多包含100个元素。
+	// The list of application IDs. A maximum of 100 application IDs are supported.
 	//
 	// example:
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationIds []*string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty" type:"Repeated"`
-	// 组的唯一标识。
+	// The group ID.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type ListApplicationsForGroupRequest struct {
 	//
 	// group_miu8e4t4d7i4u7uwezgr54xxxx
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -44,13 +44,13 @@ type ListApplicationsForGroupRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 当前查询的列表页码，默认为1。
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 当前查询的列表页码，默认为20。
+	// The number of entries per page.
 	//
 	// example:
 	//

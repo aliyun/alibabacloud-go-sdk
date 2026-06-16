@@ -22,7 +22,9 @@ type iUpdateCredentialProviderRequest interface {
 }
 
 type UpdateCredentialProviderRequest struct {
-	// 保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。ClientToken只支持ASCII字符，且不能超过64个字符。
+	// An idempotency token that ensures request idempotence.
+	//
+	// Generate a unique value on your client for each request. ClientToken supports only ASCII characters and must be no longer than 64 characters. For more information, see [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
 	//
 	// This parameter is required.
 	//
@@ -30,9 +32,9 @@ type UpdateCredentialProviderRequest struct {
 	//
 	// client-token-example
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 认证令牌提供商的配置。
+	// The configuration of the credential provider.
 	CredentialProviderConfig *UpdateCredentialProviderRequestCredentialProviderConfig `json:"CredentialProviderConfig,omitempty" xml:"CredentialProviderConfig,omitempty" type:"Struct"`
-	// 认证令牌提供商ID。
+	// The ID of the credential provider.
 	//
 	// This parameter is required.
 	//
@@ -40,13 +42,15 @@ type UpdateCredentialProviderRequest struct {
 	//
 	// atp_01kr2cmj5gxxx4fvmls2e93dxxxxx
 	CredentialProviderId *string `json:"CredentialProviderId,omitempty" xml:"CredentialProviderId,omitempty"`
-	// 认证令牌提供商名称。
+	// The name of the credential provider.
+	//
+	// > The name must be no longer than 64 characters.
 	//
 	// example:
 	//
 	// test_example_name
 	CredentialProviderName *string `json:"CredentialProviderName,omitempty" xml:"CredentialProviderName,omitempty"`
-	// IDaaS EIAM实例的ID。
+	// The ID of the instance.
 	//
 	// This parameter is required.
 	//
@@ -119,9 +123,9 @@ func (s *UpdateCredentialProviderRequest) Validate() error {
 }
 
 type UpdateCredentialProviderRequestCredentialProviderConfig struct {
-	// JWT身份提供商配置。
+	// The configuration for a JWT credential provider.
 	JwtProviderConfig *UpdateCredentialProviderRequestCredentialProviderConfigJwtProviderConfig `json:"JwtProviderConfig,omitempty" xml:"JwtProviderConfig,omitempty" type:"Struct"`
-	// OAuth 2LO机用类型的提供商的配置。
+	// The configuration for an OAuth credential provider.
 	OAuthProviderConfig *UpdateCredentialProviderRequestCredentialProviderConfigOAuthProviderConfig `json:"OAuthProviderConfig,omitempty" xml:"OAuthProviderConfig,omitempty" type:"Struct"`
 }
 
@@ -166,21 +170,27 @@ func (s *UpdateCredentialProviderRequestCredentialProviderConfig) Validate() err
 }
 
 type UpdateCredentialProviderRequestCredentialProviderConfigJwtProviderConfig struct {
-	// 签发出的JWT中的issuer字段的允许列表。
+	// A list of allowed JWT issuers.
+	//
+	// > The list must contain no more than 200 items.
+	//
+	// 	Notice:
+	//
+	// To clear the issuer list, pass an empty array or an empty string.
 	AllowedTokenIssuers []*string `json:"AllowedTokenIssuers,omitempty" xml:"AllowedTokenIssuers,omitempty" type:"Repeated"`
-	// 是否开启JWT派生短令牌能力。
+	// Whether to enable derived short tokens for JWTs.
 	//
 	// example:
 	//
 	// false
 	DerivedShortTokenEnabled *bool `json:"DerivedShortTokenEnabled,omitempty" xml:"DerivedShortTokenEnabled,omitempty"`
-	// JWT的有效时长，单位秒。
+	// The validity period of the JWT, in seconds.
 	//
 	// example:
 	//
 	// 900
 	Expiration *int32 `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
-	// 是否开启JWT过期清理。
+	// Whether to enable JWT expiration cleanup.
 	//
 	// example:
 	//
@@ -237,19 +247,41 @@ func (s *UpdateCredentialProviderRequestCredentialProviderConfigJwtProviderConfi
 }
 
 type UpdateCredentialProviderRequestCredentialProviderConfigOAuthProviderConfig struct {
-	// OAuth协议中的client_secret，客户端密钥。
+	// The client secret defined in the OAuth protocol.
+	//
+	// > The value must be no longer than 1024 characters.
 	//
 	// example:
 	//
 	// client_secret_example_xxx
 	ClientSecret *string `json:"ClientSecret,omitempty" xml:"ClientSecret,omitempty"`
-	// OAuth协议中的scope，权限范围。
+	// The scope defined in the OAuth protocol.
+	//
+	// > If you do not specify the scope parameter when calling the DeveloperAPI to get an OAuth access token, the scope configured for the credential provider is used as the default.
+	//
+	// 	Notice:
+	//
+	// Separate multiple scope values with spaces. To clear the scope configuration, pass an empty string.
+	//
+	//
+	//
+	// Rules for a single scope value:
+	//
+	// 1. Allowed characters: lowercase letters, digits, and special characters `|/:_-.`
+	//
+	// 2. Must contain at least one lowercase letter or digit.
+	//
+	// 3. Must start with a special character `.`, a lowercase letter, or a digit.
+	//
+	// 4. Must be no longer than 1024 characters.
 	//
 	// example:
 	//
 	// example:test_01 example:test_02
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	// OAuth协议的Token端点。
+	// The token endpoint defined in the OAuth protocol.
+	//
+	// > The value must start with `http://` or `https://`. It must be no longer than 1024 characters.
 	//
 	// example:
 	//

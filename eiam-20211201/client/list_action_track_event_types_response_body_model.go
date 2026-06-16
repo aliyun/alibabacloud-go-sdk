@@ -24,29 +24,34 @@ type iListActionTrackEventTypesResponseBody interface {
 }
 
 type ListActionTrackEventTypesResponseBody struct {
+	// The list of event types.
 	EventTypes []*ListActionTrackEventTypesResponseBodyEventTypes `json:"EventTypes,omitempty" xml:"EventTypes,omitempty" type:"Repeated"`
-	// 分页查询时每页行数。
+	// The number of entries per page.
 	//
 	// example:
 	//
-	// 20
+	// 100
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 本次调用返回的查询凭证（Token）值，用于下一次翻页查询。
+	// The token to retrieve the next page of results.
 	//
 	// example:
 	//
 	// NTxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 本次调用返回的查询凭证（Token）值，用于上一次翻页查询。
+	// The token to retrieve the previous page of results.
 	//
 	// example:
 	//
 	// PTxxxexample
 	PreviousToken *string `json:"PreviousToken,omitempty" xml:"PreviousToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 100
@@ -129,6 +134,8 @@ func (s *ListActionTrackEventTypesResponseBody) Validate() error {
 }
 
 type ListActionTrackEventTypesResponseBodyEventTypes struct {
+	// The event type.
+	//
 	// example:
 	//
 	// urn:alibaba:idaas:event:user:create

@@ -20,6 +20,8 @@ type iListIdentityProvidersRequest interface {
 }
 
 type ListIdentityProvidersRequest struct {
+	// The data synchronization direction of the identity provider.
+	//
 	// example:
 	//
 	// pull
@@ -32,7 +34,7 @@ type ListIdentityProvidersRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of the page to return.
+	// The page number.
 	//
 	// example:
 	//

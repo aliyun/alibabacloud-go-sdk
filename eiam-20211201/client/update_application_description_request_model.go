@@ -30,7 +30,7 @@ type UpdateApplicationDescriptionRequest struct {
 	//
 	// example:
 	//
-	// A demo application that is used for test.
+	// Demo application for testing
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the instance.
 	//

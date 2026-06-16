@@ -16,7 +16,10 @@ type iListApplicationSupportedProvisionProtocolTypesResponseBody interface {
 }
 
 type ListApplicationSupportedProvisionProtocolTypesResponseBody struct {
+	// The supported synchronization protocols for the application.
 	ApplicationSupportedProvisionProtocolType *ListApplicationSupportedProvisionProtocolTypesResponseBodyApplicationSupportedProvisionProtocolType `json:"ApplicationSupportedProvisionProtocolType,omitempty" xml:"ApplicationSupportedProvisionProtocolType,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
@@ -59,7 +62,11 @@ func (s *ListApplicationSupportedProvisionProtocolTypesResponseBody) Validate() 
 }
 
 type ListApplicationSupportedProvisionProtocolTypesResponseBodyApplicationSupportedProvisionProtocolType struct {
-	// 账户同步支持类型
+	// The account synchronization protocols that the application supports. Valid values:
+	//
+	// - idaas_callback: event callback.
+	//
+	// - scim2: System for Cross-domain Identity Management (SCIM) protocol.
 	ProvisionProtocolType []*string `json:"ProvisionProtocolType,omitempty" xml:"ProvisionProtocolType,omitempty" type:"Repeated"`
 }
 

@@ -16,7 +16,7 @@ type iCreateDomainResponseBody interface {
 }
 
 type CreateDomainResponseBody struct {
-	// Domain ID.
+	// The domain ID.
 	//
 	// example:
 	//

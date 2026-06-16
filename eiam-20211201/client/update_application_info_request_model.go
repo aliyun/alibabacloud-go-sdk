@@ -28,7 +28,7 @@ type iUpdateApplicationInfoRequest interface {
 }
 
 type UpdateApplicationInfoRequest struct {
-	// IDaaS的应用主键id
+	// The application ID.
 	//
 	// This parameter is required.
 	//
@@ -36,20 +36,23 @@ type UpdateApplicationInfoRequest struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// 应用的表示名称
+	// The application name.
 	//
 	// example:
 	//
 	// Ram Account SSO
-	ApplicationName       *string                                       `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
-	ApplicationOwner      *UpdateApplicationInfoRequestApplicationOwner `json:"ApplicationOwner,omitempty" xml:"ApplicationOwner,omitempty" type:"Struct"`
-	ApplicationVisibility []*string                                     `json:"ApplicationVisibility,omitempty" xml:"ApplicationVisibility,omitempty" type:"Repeated"`
+	ApplicationName  *string                                       `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
+	ApplicationOwner *UpdateApplicationInfoRequestApplicationOwner `json:"ApplicationOwner,omitempty" xml:"ApplicationOwner,omitempty" type:"Struct"`
+	// The collection of application visibility settings.
+	ApplicationVisibility []*string `json:"ApplicationVisibility,omitempty" xml:"ApplicationVisibility,omitempty" type:"Repeated"`
+	// The idempotent token.
+	//
 	// example:
 	//
 	// client-token-example
 	ClientToken  *string                                     `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	CustomFields []*UpdateApplicationInfoRequestCustomFields `json:"CustomFields,omitempty" xml:"CustomFields,omitempty" type:"Repeated"`
-	// IDaaS EIAM的实例id
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -57,7 +60,7 @@ type UpdateApplicationInfoRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 应用Logo地址
+	// The URL of the application logo.
 	//
 	// example:
 	//

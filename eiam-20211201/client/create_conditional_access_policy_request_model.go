@@ -44,7 +44,7 @@ type CreateConditionalAccessPolicyRequest struct {
 	//
 	// example:
 	//
-	// My Conditional Access Policy
+	// My conditional access policy
 	ConditionalAccessPolicyName *string `json:"ConditionalAccessPolicyName,omitempty" xml:"ConditionalAccessPolicyName,omitempty"`
 	// Type of the conditional access policy, with the following options:
 	//
@@ -74,7 +74,7 @@ type CreateConditionalAccessPolicyRequest struct {
 	//
 	// example:
 	//
-	// Test Description
+	// Test description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Execution point of the conditional access policy, with the following options:
 	//
@@ -94,11 +94,7 @@ type CreateConditionalAccessPolicyRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Priority of the conditional access policy, lower values indicate higher priority
-	//
-	// Minimum value: 1
-	//
-	// Maximum value: 100
+	// Priority of the conditional access policy, lower values indicate higher priority Minimum value: 1 Maximum value: 100
 	//
 	// example:
 	//

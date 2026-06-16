@@ -26,11 +26,11 @@ type iRunSynchronizationJobRequest interface {
 }
 
 type RunSynchronizationJobRequest struct {
-	// Synchronization task description
+	// The description of the synchronization task.
 	//
 	// example:
 	//
-	// 描述
+	// description_text
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The instance ID.
 	//
@@ -40,15 +40,15 @@ type RunSynchronizationJobRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Whether initialize password
+	// Specifies whether to initialize the password.
 	//
 	// example:
 	//
 	// true
 	PasswordInitialization *bool `json:"PasswordInitialization,omitempty" xml:"PasswordInitialization,omitempty"`
-	// Synchronization scope
+	// The configuration of the synchronization scope.
 	SynchronizationScopeConfig *RunSynchronizationJobRequestSynchronizationScopeConfig `json:"SynchronizationScopeConfig,omitempty" xml:"SynchronizationScopeConfig,omitempty" type:"Struct"`
-	// The ID of the synchronization destination.
+	// The ID of the synchronization target.
 	//
 	// This parameter is required.
 	//
@@ -56,11 +56,11 @@ type RunSynchronizationJobRequest struct {
 	//
 	// idp_my664lwkhpicbyzirog3ngxxxxx
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
-	// The type of the synchronization destination. Valid values:
+	// The type of the synchronization target. Valid values:
 	//
-	// 	- identity_provider
+	// - identity_provider: The identity provider.
 	//
-	// 	- application
+	// - application: The application.
 	//
 	// This parameter is required.
 	//
@@ -68,7 +68,7 @@ type RunSynchronizationJobRequest struct {
 	//
 	// identity_provider
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	// User identity types
+	// The list of unique user identifiers.
 	UserIdentityTypes []*string `json:"UserIdentityTypes,omitempty" xml:"UserIdentityTypes,omitempty" type:"Repeated"`
 }
 
@@ -153,11 +153,11 @@ func (s *RunSynchronizationJobRequest) Validate() error {
 }
 
 type RunSynchronizationJobRequestSynchronizationScopeConfig struct {
-	// The group IDs.
+	// The list of group IDs.
 	GroupIds []*string `json:"GroupIds,omitempty" xml:"GroupIds,omitempty" type:"Repeated"`
-	// The IDs of organizational units.
+	// The list of organizational unit IDs.
 	OrganizationalUnitIds []*string `json:"OrganizationalUnitIds,omitempty" xml:"OrganizationalUnitIds,omitempty" type:"Repeated"`
-	// UserIds
+	// The list of user IDs.
 	UserIds []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
 }
 

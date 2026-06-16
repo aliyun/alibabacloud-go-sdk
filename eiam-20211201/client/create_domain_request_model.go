@@ -18,7 +18,7 @@ type iCreateDomainRequest interface {
 }
 
 type CreateDomainRequest struct {
-	// The domain name of the website.
+	// The domain name.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type CreateDomainRequest struct {
 	//
 	// www.example.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// Registration information parameters.
+	// The parameters for ICP filing information.
 	Filing *CreateDomainRequestFiling `json:"Filing,omitempty" xml:"Filing,omitempty" type:"Struct"`
 	// The instance ID.
 	//
@@ -83,11 +83,11 @@ func (s *CreateDomainRequest) Validate() error {
 }
 
 type CreateDomainRequestFiling struct {
-	// Record number associated with the domain name.
+	// The ICP filing number associated with the domain name.
 	//
 	// example:
 	//
-	// 浙xx-xxxxxx
+	// xICPxxxxxx-xx
 	IcpNumber *string `json:"IcpNumber,omitempty" xml:"IcpNumber,omitempty"`
 }
 

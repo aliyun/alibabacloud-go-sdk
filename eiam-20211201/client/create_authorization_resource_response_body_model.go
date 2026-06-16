@@ -16,10 +16,14 @@ type iCreateAuthorizationResourceResponseBody interface {
 }
 
 type CreateAuthorizationResourceResponseBody struct {
+	// The authorization resource ID.
+	//
 	// example:
 	//
 	// arres_01kgh3jvt7pk093rv6giu0c0qxxxx
 	AuthorizationResourceId *string `json:"AuthorizationResourceId,omitempty" xml:"AuthorizationResourceId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A

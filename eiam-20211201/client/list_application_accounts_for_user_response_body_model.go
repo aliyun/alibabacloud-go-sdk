@@ -18,11 +18,16 @@ type iListApplicationAccountsForUserResponseBody interface {
 }
 
 type ListApplicationAccountsForUserResponseBody struct {
+	// The information about the member accounts.
 	ApplicationAccounts []*ListApplicationAccountsForUserResponseBodyApplicationAccounts `json:"ApplicationAccounts,omitempty" xml:"ApplicationAccounts,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 100
@@ -78,37 +83,37 @@ func (s *ListApplicationAccountsForUserResponseBody) Validate() error {
 }
 
 type ListApplicationAccountsForUserResponseBodyApplicationAccounts struct {
-	// IDaaS EIAM 应用账号Id
+	// The application account ID.
 	//
 	// example:
 	//
 	// aac_m6e3ukegwvbcb2fne7j32xxxxxx
 	ApplicationAccountId *string `json:"ApplicationAccountId,omitempty" xml:"ApplicationAccountId,omitempty"`
-	// IDaaS EIAM 应用Id
+	// The application ID.
 	//
 	// example:
 	//
 	// app_na2r76irswrwfgpkz7xvcj7xxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// IDaaS EIAM 应用账号名称
+	// The name of the application account.
 	//
 	// example:
 	//
 	// test
 	ApplicationUsername *string `json:"ApplicationUsername,omitempty" xml:"ApplicationUsername,omitempty"`
-	// 创建时间
+	// The time when the account was created.
 	//
 	// example:
 	//
 	// 1754359439000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// IDaaS EIAM 实例Id
+	// The ID of the IDaaS EIAM instance.
 	//
 	// example:
 	//
 	// idaas_ki6hd7ihir4ybawogqk6xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// IDaaS EIAM 用户Id
+	// The user ID.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iListDomainsResponseBody interface {
 }
 
 type ListDomainsResponseBody struct {
-	// The information about the domain names.
+	// The list of domain names.
 	Domains []*ListDomainsResponseBodyDomains `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -66,26 +66,31 @@ func (s *ListDomainsResponseBody) Validate() error {
 }
 
 type ListDomainsResponseBodyDomains struct {
+	// The brand ID.
+	//
+	// example:
+	//
+	// brand_xxxx
 	BrandId *string `json:"BrandId,omitempty" xml:"BrandId,omitempty"`
-	// The time when the domain name was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The time when the domain name was created. This value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1649830226000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Indicates whether the domain name is the default domain.
+	// Indicates whether the domain name is the default one.
 	//
 	// example:
 	//
 	// false
 	DefaultDomain *bool `json:"DefaultDomain,omitempty" xml:"DefaultDomain,omitempty"`
-	// The domain.
+	// The domain name.
 	//
 	// example:
 	//
 	// www.example.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The domain ID.
+	// The domain name ID.
 	//
 	// example:
 	//
@@ -93,15 +98,15 @@ type ListDomainsResponseBodyDomains struct {
 	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
 	// The type of the domain name. Valid values:
 	//
-	// 	- system_init: an initial domain name.
+	// - system_init: The default domain name that is generated during initialization.
 	//
-	// 	- user_custom: a custom domain name.
+	// - user_custom: A custom domain name.
 	//
 	// example:
 	//
 	// system_init
 	DomainType *string `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
-	// The information about the Internet content provider (ICP) filing of the domain name.
+	// The ICP filing information about the domain name.
 	Filing *ListDomainsResponseBodyDomainsFiling `json:"Filing,omitempty" xml:"Filing,omitempty" type:"Struct"`
 	// The instance ID.
 	//
@@ -109,17 +114,17 @@ type ListDomainsResponseBodyDomains struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Indicates whether the domain name is locked. Valid values:
+	// The lock status of the domain name. Valid values:
 	//
-	// 	- unlock
+	// - unlock: Normal.
 	//
-	// 	- lockByLicense
+	// - lockByLicense: The domain name is unavailable due to license limitations.
 	//
 	// example:
 	//
 	// unlock
 	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
-	// The time when the domain name was last updated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The time when the domain name was last updated. This value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -235,11 +240,11 @@ func (s *ListDomainsResponseBodyDomains) Validate() error {
 }
 
 type ListDomainsResponseBodyDomainsFiling struct {
-	// The ICP number associated with the domain name. Both the entity ICP number and website ICP number are supported.
+	// The ICP filing number associated with the domain name. Both entity and website ICP filing numbers are supported.
 	//
 	// example:
 	//
-	// Zhexx-xxxxxx
+	// xICPxxxxxx-xx
 	IcpNumber *string `json:"IcpNumber,omitempty" xml:"IcpNumber,omitempty"`
 }
 

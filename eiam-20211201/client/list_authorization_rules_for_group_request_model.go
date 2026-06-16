@@ -20,7 +20,7 @@ type iListAuthorizationRulesForGroupRequest interface {
 }
 
 type ListAuthorizationRulesForGroupRequest struct {
-	// 组标识。
+	// The group ID.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type ListAuthorizationRulesForGroupRequest struct {
 	//
 	// group_d6sbsuumeta4h66ec3il7yxxxx
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -36,13 +36,19 @@ type ListAuthorizationRulesForGroupRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 分页查询时每页行数。默认值为20，最大值为100。
+	// The maximum number of records to return on each page.
+	//
+	// - If this parameter is not specified, the default value is 20.
+	//
+	// - The maximum value is 100.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 查询凭证（Token），取值为上一次API调用返回的NextToken参数值。
+	// The token that specifies the start of the next page for a paged query.
+	//
+	// - If this parameter is not specified, the query starts from the first page.
 	//
 	// example:
 	//

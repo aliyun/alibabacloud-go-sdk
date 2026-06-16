@@ -26,7 +26,7 @@ type iSetIdentityProviderUdPushConfigurationRequest interface {
 }
 
 type SetIdentityProviderUdPushConfigurationRequest struct {
-	// IDaaS的身份提供方主键id
+	// The ID of the identity provider.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type SetIdentityProviderUdPushConfigurationRequest struct {
 	//
 	// idp_11111
 	IdentityProviderId *string `json:"IdentityProviderId,omitempty" xml:"IdentityProviderId,omitempty"`
-	// 增量回调状态，是否处理来自IdP的增量回调数据
+	// Specifies whether to process incremental callback data from the IdP.
 	//
 	// This parameter is required.
 	//
@@ -42,21 +42,25 @@ type SetIdentityProviderUdPushConfigurationRequest struct {
 	//
 	// disabled
 	IncrementalCallbackStatus *string `json:"IncrementalCallbackStatus,omitempty" xml:"IncrementalCallbackStatus,omitempty"`
-	// IDaaS EIAM的实例id
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// eiam-111ccc1111
-	InstanceId         *string                                                          `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	LdapUdPushConfig   *SetIdentityProviderUdPushConfigurationRequestLdapUdPushConfig   `json:"LdapUdPushConfig,omitempty" xml:"LdapUdPushConfig,omitempty" type:"Struct"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The configurations for LDAP push synchronization.
+	LdapUdPushConfig *SetIdentityProviderUdPushConfigurationRequestLdapUdPushConfig `json:"LdapUdPushConfig,omitempty" xml:"LdapUdPushConfig,omitempty" type:"Struct"`
+	// The configuration for periodic synchronization.
 	PeriodicSyncConfig *SetIdentityProviderUdPushConfigurationRequestPeriodicSyncConfig `json:"PeriodicSyncConfig,omitempty" xml:"PeriodicSyncConfig,omitempty" type:"Struct"`
+	// The status of periodic synchronization.
+	//
 	// example:
 	//
 	// disabled
 	PeriodicSyncStatus *string `json:"PeriodicSyncStatus,omitempty" xml:"PeriodicSyncStatus,omitempty"`
-	// 同步出配置信息
+	// The push synchronization configurations.
 	UdSyncScopeConfigs []*SetIdentityProviderUdPushConfigurationRequestUdSyncScopeConfigs `json:"UdSyncScopeConfigs,omitempty" xml:"UdSyncScopeConfigs,omitempty" type:"Repeated"`
 }
 
@@ -155,22 +159,32 @@ func (s *SetIdentityProviderUdPushConfigurationRequest) Validate() error {
 }
 
 type SetIdentityProviderUdPushConfigurationRequestLdapUdPushConfig struct {
+	// The object class for organizations.
+	//
 	// example:
 	//
 	// ou,top
 	OrganizationUnitObjectClass *string `json:"OrganizationUnitObjectClass,omitempty" xml:"OrganizationUnitObjectClass,omitempty"`
+	// The RDN for organizations.
+	//
 	// example:
 	//
 	// ou
 	OrganizationalUnitRdn *string `json:"OrganizationalUnitRdn,omitempty" xml:"OrganizationalUnitRdn,omitempty"`
+	// Specifies whether to synchronize passwords.
+	//
 	// example:
 	//
 	// enabled
 	PasswordSyncStatus *string `json:"PasswordSyncStatus,omitempty" xml:"PasswordSyncStatus,omitempty"`
+	// The object class for users.
+	//
 	// example:
 	//
 	// user,top
 	UserObjectClass *string `json:"UserObjectClass,omitempty" xml:"UserObjectClass,omitempty"`
+	// The Relative Distinguished Name (RDN) for users.
+	//
 	// example:
 	//
 	// cn
@@ -235,11 +249,16 @@ func (s *SetIdentityProviderUdPushConfigurationRequestLdapUdPushConfig) Validate
 }
 
 type SetIdentityProviderUdPushConfigurationRequestPeriodicSyncConfig struct {
+	// The cron expression.
+	//
 	// example:
 	//
 	// 0 45 1 	- 	- ?
-	PeriodicSyncCron  *string  `json:"PeriodicSyncCron,omitempty" xml:"PeriodicSyncCron,omitempty"`
+	PeriodicSyncCron *string `json:"PeriodicSyncCron,omitempty" xml:"PeriodicSyncCron,omitempty"`
+	// A collection of time points.
 	PeriodicSyncTimes []*int32 `json:"PeriodicSyncTimes,omitempty" xml:"PeriodicSyncTimes,omitempty" type:"Repeated"`
+	// The type of periodic synchronization.
+	//
 	// example:
 	//
 	// cron
@@ -286,9 +305,9 @@ func (s *SetIdentityProviderUdPushConfigurationRequestPeriodicSyncConfig) Valida
 }
 
 type SetIdentityProviderUdPushConfigurationRequestUdSyncScopeConfigs struct {
-	// 同步来源节点
+	// The source nodes for synchronization.
 	SourceScopes []*string `json:"SourceScopes,omitempty" xml:"SourceScopes,omitempty" type:"Repeated"`
-	// 同步目标节点
+	// The target node for synchronization.
 	//
 	// example:
 	//

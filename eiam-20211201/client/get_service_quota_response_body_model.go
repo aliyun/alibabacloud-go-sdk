@@ -16,10 +16,13 @@ type iGetServiceQuotaResponseBody interface {
 }
 
 type GetServiceQuotaResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
-	RequestId    *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The service quota.
 	ServiceQuota *GetServiceQuotaResponseBodyServiceQuota `json:"ServiceQuota,omitempty" xml:"ServiceQuota,omitempty" type:"Struct"`
 }
 
@@ -59,19 +62,19 @@ func (s *GetServiceQuotaResponseBody) Validate() error {
 }
 
 type GetServiceQuotaResponseBodyServiceQuota struct {
-	// Quota 配额的唯一标识。
+	// The unique identifier of the quota.
 	//
 	// example:
 	//
 	// instanceTrialNumber
 	QuotaType *string `json:"QuotaType,omitempty" xml:"QuotaType,omitempty"`
-	// Quota 配额的值。
+	// The value of the quota.
 	//
 	// example:
 	//
 	// 5
 	QuotaValue *int64 `json:"QuotaValue,omitempty" xml:"QuotaValue,omitempty"`
-	// Quota 配额的当前用量。
+	// The current usage of the quota.
 	//
 	// example:
 	//

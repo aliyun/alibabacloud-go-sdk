@@ -70,7 +70,7 @@ type ListRegionsResponseBodyRegions struct {
 	//
 	// example:
 	//
-	// China (Hangzhou)
+	// 华东1（杭州）
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	// The endpoint of the region.
 	//

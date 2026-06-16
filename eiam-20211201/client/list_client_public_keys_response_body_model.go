@@ -22,21 +22,28 @@ type iListClientPublicKeysResponseBody interface {
 }
 
 type ListClientPublicKeysResponseBody struct {
+	// The list of client public keys for the application.
 	ClientPublicKeys []*ListClientPublicKeysResponseBodyClientPublicKeys `json:"ClientPublicKeys,omitempty" xml:"ClientPublicKeys,omitempty" type:"Repeated"`
+	// The number of entries returned on each page.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 本次调用返回的查询凭证（Token）值，用于下一次翻页查询。
+	// The token for the next page of results.
 	//
 	// example:
 	//
 	// NTxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 100
@@ -110,47 +117,49 @@ func (s *ListClientPublicKeysResponseBody) Validate() error {
 }
 
 type ListClientPublicKeysResponseBodyClientPublicKeys struct {
-	// IDaaS EIAM 应用ClientPublicKey的算法类型 rsa2048、ecc256
+	// The algorithm type.
 	//
 	// example:
 	//
 	// RSA-2048
 	AlgorithmType *string `json:"AlgorithmType,omitempty" xml:"AlgorithmType,omitempty"`
-	// IDaaS EIAM 应用Id
+	// The application ID.
 	//
 	// example:
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// IDaaS EIAM 应用ClientPublicKey的Id
+	// The ID of the client public key.
 	//
 	// example:
 	//
 	// KEYEqDnDJhztiEAwSin7MZoxGcihzCAuxxxx
 	ClientPublicKeyId *string `json:"ClientPublicKeyId,omitempty" xml:"ClientPublicKeyId,omitempty"`
-	// IDaaS EIAM 应用ClientPublicKey的创建时间
+	// The time when the key was created.
 	//
 	// example:
 	//
 	// 1722006052000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// IDaaS EIAM 实例Id
+	// The instance ID.
 	//
 	// example:
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The time when the key was last used.
+	//
 	// example:
 	//
 	// 1762006052000
 	LastUsedTime *int64 `json:"LastUsedTime,omitempty" xml:"LastUsedTime,omitempty"`
-	// IDaaS EIAM 应用当前是否为首要使用的应用ClientPublicKey的
+	// Indicates whether the key is used with priority.
 	//
 	// example:
 	//
 	// true
 	Primary *bool `json:"Primary,omitempty" xml:"Primary,omitempty"`
-	// IDaaS EIAM 应用ClientPublicKey的公钥
+	// The public key.
 	//
 	// example:
 	//
@@ -172,7 +181,7 @@ type ListClientPublicKeysResponseBodyClientPublicKeys struct {
 	//
 	// -----END PUBLIC KEY-----
 	PublicKey *string `json:"PublicKey,omitempty" xml:"PublicKey,omitempty"`
-	// IDaaS EIAM 应用ClientPublicKey的状态
+	// The status.
 	//
 	// example:
 	//

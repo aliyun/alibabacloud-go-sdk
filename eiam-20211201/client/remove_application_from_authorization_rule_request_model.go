@@ -18,7 +18,7 @@ type iRemoveApplicationFromAuthorizationRuleRequest interface {
 }
 
 type RemoveApplicationFromAuthorizationRuleRequest struct {
-	// 应用 ID。
+	// The application ID.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type RemoveApplicationFromAuthorizationRuleRequest struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// 授权规则标识。
+	// The authorization rule ID.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type RemoveApplicationFromAuthorizationRuleRequest struct {
 	//
 	// arrule_01kf143ug06fg7m9f43u7vahxxxx
 	AuthorizationRuleId *string `json:"AuthorizationRuleId,omitempty" xml:"AuthorizationRuleId,omitempty"`
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

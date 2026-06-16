@@ -20,7 +20,7 @@ type iCreateApplicationTokenRequest interface {
 }
 
 type CreateApplicationTokenRequest struct {
-	// IDaaS的应用资源ID。
+	// The application ID.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type CreateApplicationTokenRequest struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// 应用token类型
+	// The application token type.
 	//
 	// This parameter is required.
 	//
@@ -36,13 +36,13 @@ type CreateApplicationTokenRequest struct {
 	//
 	// bearer_token
 	ApplicationTokenType *string `json:"ApplicationTokenType,omitempty" xml:"ApplicationTokenType,omitempty"`
-	// 不填，默认1年后到期
+	// The expiration time.
 	//
 	// example:
 	//
 	// 1735530123762
 	ExpirationTime *int64 `json:"ExpirationTime,omitempty" xml:"ExpirationTime,omitempty"`
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

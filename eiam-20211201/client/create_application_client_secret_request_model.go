@@ -18,7 +18,7 @@ type iCreateApplicationClientSecretRequest interface {
 }
 
 type CreateApplicationClientSecretRequest struct {
-	// The ID of the application for which you want to create a client key.
+	// The application ID.
 	//
 	// This parameter is required.
 	//
@@ -26,11 +26,13 @@ type CreateApplicationClientSecretRequest struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The expiration time. This parameter is a UNIX timestamp. Unit: milliseconds. If you leave this parameter empty, the client secret does not expire. The minimum validity period is 1 day and the maximum validity period is 3 years.
+	//
 	// example:
 	//
 	// 1735530123762
 	ExpirationTime *int64 `json:"ExpirationTime,omitempty" xml:"ExpirationTime,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

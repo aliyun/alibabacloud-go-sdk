@@ -16,7 +16,10 @@ type iGetInstanceQuotaResponseBody interface {
 }
 
 type GetInstanceQuotaResponseBody struct {
+	// The quota information.
 	Quota *GetInstanceQuotaResponseBodyQuota `json:"Quota,omitempty" xml:"Quota,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
@@ -59,13 +62,13 @@ func (s *GetInstanceQuotaResponseBody) Validate() error {
 }
 
 type GetInstanceQuotaResponseBodyQuota struct {
-	// Quota 配额的Key，同请求参数
+	// The key of the quota.
 	//
 	// example:
 	//
 	// userMaxNumber
 	QuotaKey *string `json:"QuotaKey,omitempty" xml:"QuotaKey,omitempty"`
-	// Quota 配额的值。
+	// The value of the quota.
 	//
 	// example:
 	//

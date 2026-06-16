@@ -20,7 +20,7 @@ type iListAuthorizationRulesForApplicationRequest interface {
 }
 
 type ListAuthorizationRulesForApplicationRequest struct {
-	// 应用 ID。
+	// The application ID.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type ListAuthorizationRulesForApplicationRequest struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -36,13 +36,19 @@ type ListAuthorizationRulesForApplicationRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 分页查询时每页行数。默认值为20，最大值为100。
+	// The maximum number of entries to return on each page.
+	//
+	// - Default value: 20.
+	//
+	// - Valid values: 1 to 100.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 查询凭证（Token），取值为上一次API调用返回的NextToken参数值。
+	// The token that is used to start the next page of results.
+	//
+	// - If you omit this parameter, the query starts from the first page.
 	//
 	// example:
 	//

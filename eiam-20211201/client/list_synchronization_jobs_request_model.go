@@ -36,20 +36,25 @@ type iListSynchronizationJobsRequest interface {
 }
 
 type ListSynchronizationJobsRequest struct {
-	// 同步方向[ingress,egress]
+	// The direction of the sync task. Valid values:
+	//
+	// - ingress: Inbound.
+	//
+	// - egress: Outbound.
 	//
 	// example:
 	//
 	// ingress
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	// 同步结束时间
+	// The synchronization end time. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1649830226000
-	EndTime *int64                                   `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The filter parameters.
 	Filters []*ListSynchronizationJobsRequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -57,49 +62,63 @@ type ListSynchronizationJobsRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 分页查询时每页行数。默认值为20，最大值为100。
+	// The number of entries to return on each page. The maximum value is 100.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 查询凭证（Token），取值为上一次API调用返回的NextToken参数值。
+	// The token to retrieve the next page of results. If no more pages exist, this parameter is not returned.
 	//
 	// example:
 	//
 	// NTxxxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 当前查询的列表页码，默认为1。
+	// The page number. The value starts from 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 当前查询的列表页码，默认为20。
+	// The number of entries per page. The maximum value is 100.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 同步开始时间
+	// The synchronization start time. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1649830226000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// 同步状态[pending,running,suspending,failed,partial_success,success]
+	// The status of the sync task. Valid values:
+	//
+	// - pending: The task is pending.
+	//
+	// - running: The task is running.
+	//
+	// - failed: The task failed.
+	//
+	// - partial_success: The task is partially successful.
+	//
+	// - success: The task is successful.
 	//
 	// example:
 	//
 	// running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 同步目标ID
+	// A list of synchronization target IDs. For example, \\`[idp_111XXXX,idp_222XXXX]\\`.
 	//
 	// example:
 	//
 	// target_001
 	TargetIds []*string `json:"TargetIds,omitempty" xml:"TargetIds,omitempty" type:"Repeated"`
-	// 同步目标类型[identity_provider,organizational_unit,application,user]
+	// The type of the synchronization target. Valid values:
+	//
+	// - identity_provider: Identity provider.
+	//
+	// - application: Application.
 	//
 	// example:
 	//
@@ -237,7 +256,13 @@ func (s *ListSynchronizationJobsRequest) Validate() error {
 }
 
 type ListSynchronizationJobsRequestFilters struct {
-	Key    *string   `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The name of the dynamic parameter.
+	//
+	// example:
+	//
+	// qps
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The values of the dynamic parameter.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 

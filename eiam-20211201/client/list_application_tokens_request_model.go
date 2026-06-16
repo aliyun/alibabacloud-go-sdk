@@ -18,7 +18,7 @@ type iListApplicationTokensRequest interface {
 }
 
 type ListApplicationTokensRequest struct {
-	// IDaaS的应用资源ID。
+	// The application ID.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type ListApplicationTokensRequest struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// ApplicationToken的类型
+	// The type of the application token.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type ListApplicationTokensRequest struct {
 	//
 	// bearer_token
 	ApplicationTokenType *string `json:"ApplicationTokenType,omitempty" xml:"ApplicationTokenType,omitempty"`
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

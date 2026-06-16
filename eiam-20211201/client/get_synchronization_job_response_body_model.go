@@ -64,9 +64,9 @@ func (s *GetSynchronizationJobResponseBody) Validate() error {
 type GetSynchronizationJobResponseBodySynchronizationJob struct {
 	// The direction of the synchronization job. Valid values:
 	//
-	// 	- ingress
+	// - ingress
 	//
-	// 	- egress
+	// - egress
 	//
 	// example:
 	//
@@ -88,15 +88,15 @@ type GetSynchronizationJobResponseBodySynchronizationJob struct {
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The status of the synchronization job. Valid values:
 	//
-	// 	- pending
+	// - pending
 	//
-	// 	- running
+	// - running
 	//
-	// 	- failed
+	// - failed
 	//
-	// 	- partial_success
+	// - partial_success
 	//
-	// 	- success
+	// - success
 	//
 	// example:
 	//
@@ -116,9 +116,9 @@ type GetSynchronizationJobResponseBodySynchronizationJob struct {
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
 	// The type of the synchronization destination. Valid values:
 	//
-	// 	- identity_provider
+	// - identity_provider
 	//
-	// 	- application
+	// - application
 	//
 	// example:
 	//
@@ -126,9 +126,9 @@ type GetSynchronizationJobResponseBodySynchronizationJob struct {
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 	// The trigger type of the synchronization. Valid values:
 	//
-	// 	- auto
+	// - auto
 	//
-	// 	- manual
+	// - manual
 	//
 	// example:
 	//
@@ -239,13 +239,13 @@ type GetSynchronizationJobResponseBodySynchronizationJobResult struct {
 	//
 	// example:
 	//
-	// ResourceNotFound. SynchronizationJob
+	// ErrorCodeNotFound
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The error message returned in the case of an error.
 	//
 	// example:
 	//
-	// The specified SynchronizationJob resource: %s not found.
+	// Internal error
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The group member synchronization result statistics.
 	GroupMemberStatistics *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatistics `json:"GroupMemberStatistics,omitempty" xml:"GroupMemberStatistics,omitempty" type:"Struct"`

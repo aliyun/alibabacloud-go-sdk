@@ -22,7 +22,7 @@ type iUpdateApplicationFederatedCredentialRequest interface {
 }
 
 type UpdateApplicationFederatedCredentialRequest struct {
-	// 应用联邦凭证Id
+	// The ID of the application\\"s federated credential.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type UpdateApplicationFederatedCredentialRequest struct {
 	//
 	// afc_aaaaa1111
 	ApplicationFederatedCredentialId *string `json:"ApplicationFederatedCredentialId,omitempty" xml:"ApplicationFederatedCredentialId,omitempty"`
-	// IDaaS的应用资源ID。
+	// The application ID.
 	//
 	// This parameter is required.
 	//
@@ -38,9 +38,9 @@ type UpdateApplicationFederatedCredentialRequest struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// 属性映射
+	// The attribute mappings.
 	AttributeMappings []*UpdateApplicationFederatedCredentialRequestAttributeMappings `json:"AttributeMappings,omitempty" xml:"AttributeMappings,omitempty" type:"Repeated"`
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type UpdateApplicationFederatedCredentialRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 校验条件
+	// The verification condition.
 	//
 	// example:
 	//
@@ -123,13 +123,13 @@ func (s *UpdateApplicationFederatedCredentialRequest) Validate() error {
 }
 
 type UpdateApplicationFederatedCredentialRequestAttributeMappings struct {
-	// 源值表达式
+	// The source value expression.
 	//
 	// example:
 	//
 	// Append(client.applicationFederatedCredentialId, ":", cert.subject.CN, ":", cert.serialNumber)
 	SourceValueExpression *string `json:"SourceValueExpression,omitempty" xml:"SourceValueExpression,omitempty"`
-	// 目标字段
+	// The target field.
 	//
 	// example:
 	//

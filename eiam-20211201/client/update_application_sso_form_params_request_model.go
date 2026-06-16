@@ -18,7 +18,7 @@ type iUpdateApplicationSsoFormParamsRequest interface {
 }
 
 type UpdateApplicationSsoFormParamsRequest struct {
-	// IDaaS的应用主键id
+	// The ID of the application.
 	//
 	// This parameter is required.
 	//
@@ -26,11 +26,11 @@ type UpdateApplicationSsoFormParamsRequest struct {
 	//
 	// app_11111
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// 应用模板创建参数，应用创建来源为模板时才可以指定
+	// The parameters for creating the application template.
 	//
 	// This parameter is required.
 	ApplicationTemplateParams []*UpdateApplicationSsoFormParamsRequestApplicationTemplateParams `json:"ApplicationTemplateParams,omitempty" xml:"ApplicationTemplateParams,omitempty" type:"Repeated"`
-	// IDaaS EIAM的实例id
+	// The ID of the instance.
 	//
 	// This parameter is required.
 	//
@@ -89,13 +89,13 @@ func (s *UpdateApplicationSsoFormParamsRequest) Validate() error {
 }
 
 type UpdateApplicationSsoFormParamsRequestApplicationTemplateParams struct {
-	// 应用模板创建参数具体名称
+	// The name of a parameter for creating the application template.
 	//
 	// example:
 	//
 	// aliyunUid
 	TemplateParamName *string `json:"TemplateParamName,omitempty" xml:"TemplateParamName,omitempty"`
-	// 应用模板创建参数真实的取值
+	// The value of the parameter for creating the application template.
 	//
 	// example:
 	//

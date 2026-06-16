@@ -16,7 +16,10 @@ type iGetIdentityProviderStatusCheckJobResponseBody interface {
 }
 
 type GetIdentityProviderStatusCheckJobResponseBody struct {
+	// The information about the IdP status check job.
 	IdentityProviderStatusCheckJob *GetIdentityProviderStatusCheckJobResponseBodyIdentityProviderStatusCheckJob `json:"IdentityProviderStatusCheckJob,omitempty" xml:"IdentityProviderStatusCheckJob,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
@@ -59,45 +62,45 @@ func (s *GetIdentityProviderStatusCheckJobResponseBody) Validate() error {
 }
 
 type GetIdentityProviderStatusCheckJobResponseBodyIdentityProviderStatusCheckJob struct {
-	// 任务检查结果
+	// The result of the check task.
 	//
 	// example:
 	//
 	// success
 	CheckResult *string `json:"CheckResult,omitempty" xml:"CheckResult,omitempty"`
-	// 结束时间
+	// The end time.
 	//
 	// example:
 	//
 	// 1763776265757
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// IdP身份提供方
+	// The ID of the IdP.
 	//
 	// example:
 	//
 	// idp_ncehkms65fiefobrvwy2blrxxx
 	IdentityProviderId *string `json:"IdentityProviderId,omitempty" xml:"IdentityProviderId,omitempty"`
-	// IdP状态检查任务Id
+	// The ID of the IdP status check job.
 	//
 	// example:
 	//
 	// async_000036tfu8cgngmakngrr2rk75qgf87pf3rxxx
 	IdentityProviderStatusCheckJobId *string `json:"IdentityProviderStatusCheckJobId,omitempty" xml:"IdentityProviderStatusCheckJobId,omitempty"`
-	// IDaaS EIAM 实例Id
+	// The instance ID.
 	//
 	// example:
 	//
 	// idaas_ki6hd7ihir4ybawogqk6kqsfxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 状态检查子项任务结果信息
+	// The results of the status check subtasks.
 	JobCheckItems []*GetIdentityProviderStatusCheckJobResponseBodyIdentityProviderStatusCheckJobJobCheckItems `json:"JobCheckItems,omitempty" xml:"JobCheckItems,omitempty" type:"Repeated"`
-	// 开始时间
+	// The start time.
 	//
 	// example:
 	//
 	// 1763776265757
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// 任务检查状态
+	// The status of the check task.
 	//
 	// example:
 	//
@@ -199,21 +202,21 @@ func (s *GetIdentityProviderStatusCheckJobResponseBodyIdentityProviderStatusChec
 }
 
 type GetIdentityProviderStatusCheckJobResponseBodyIdentityProviderStatusCheckJobJobCheckItems struct {
-	// 错误原因
+	// The reason for the error.
 	ErrorReason *GetIdentityProviderStatusCheckJobResponseBodyIdentityProviderStatusCheckJobJobCheckItemsErrorReason `json:"ErrorReason,omitempty" xml:"ErrorReason,omitempty" type:"Struct"`
-	// 主要检查项
+	// The major check item.
 	//
 	// example:
 	//
 	// network_check
 	MajorCheckItem *string `json:"MajorCheckItem,omitempty" xml:"MajorCheckItem,omitempty"`
-	// 次要检查项
+	// The minor check item.
 	//
 	// example:
 	//
 	// network_access_status
 	MinorCheckItem *string `json:"MinorCheckItem,omitempty" xml:"MinorCheckItem,omitempty"`
-	// 结果
+	// The result.
 	//
 	// example:
 	//
@@ -275,19 +278,19 @@ func (s *GetIdentityProviderStatusCheckJobResponseBodyIdentityProviderStatusChec
 }
 
 type GetIdentityProviderStatusCheckJobResponseBodyIdentityProviderStatusCheckJobJobCheckItemsErrorReason struct {
-	// 错误码
+	// The error code.
 	//
 	// example:
 	//
 	// NetworkAccessPointWarning.SingleNetworkAccessPath
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 错误级别
+	// The error level.
 	//
 	// example:
 	//
 	// high
 	ErrorLevel *string `json:"ErrorLevel,omitempty" xml:"ErrorLevel,omitempty"`
-	// 错误信息
+	// The error message.
 	//
 	// example:
 	//

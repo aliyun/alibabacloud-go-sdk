@@ -16,7 +16,10 @@ type iObtainApplicationTokenResponseBody interface {
 }
 
 type ObtainApplicationTokenResponseBody struct {
+	// The application token.
 	ApplicationToken *ObtainApplicationTokenResponseBodyApplicationToken `json:"ApplicationToken,omitempty" xml:"ApplicationToken,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
@@ -59,51 +62,55 @@ func (s *ObtainApplicationTokenResponseBody) Validate() error {
 }
 
 type ObtainApplicationTokenResponseBodyApplicationToken struct {
-	// IDaaS EIAM 应用Id
+	// The application ID.
 	//
 	// example:
 	//
 	// app_na2r73a65s7o4zbs7nj5gxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// 客户端密钥
+	// The application token.
 	//
 	// example:
 	//
 	// SATFwqX8zxGf83pJcJw78KFGjmrft4erWeZYBGS8oE7NN6qoE217yaJpUdMb1UuuGqhDiF43sCA4CF91CTL5iGntqwyLuaAcS9FJ9HfGadE5a7TjiwVafwrBxxxxx
 	ApplicationToken *string `json:"ApplicationToken,omitempty" xml:"ApplicationToken,omitempty"`
-	// IDaaS EIAM 客户端ID
+	// The application token ID.
 	//
 	// example:
 	//
 	// token_m7aso6v4efvu2otfq3jdzxxxx
 	ApplicationTokenId *string `json:"ApplicationTokenId,omitempty" xml:"ApplicationTokenId,omitempty"`
-	// IDaaS EIAM 客户端密钥Id
+	// The type of the application token.
 	//
 	// example:
 	//
 	// bearer_token
 	ApplicationTokenType *string `json:"ApplicationTokenType,omitempty" xml:"ApplicationTokenType,omitempty"`
+	// The time when the application token was created.
+	//
 	// example:
 	//
 	// 1735610930000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The expiration time.
+	//
 	// example:
 	//
 	// 1735610950000
 	ExpirationTime *int64 `json:"ExpirationTime,omitempty" xml:"ExpirationTime,omitempty"`
-	// IDaaS EIAM 实例Id
+	// The ID of the IDaaS EIAM instance.
 	//
 	// example:
 	//
 	// idaas_ki6hd7ihir4ybawogqk6kqxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// IDaaS EIAM 客户端密钥最近使用时间
+	// The time when the token was last used.
 	//
 	// example:
 	//
 	// 1735610930000
 	LastUsedTime *int64 `json:"LastUsedTime,omitempty" xml:"LastUsedTime,omitempty"`
-	// IDaaS EIAM 客户端密钥状态
+	// The status.
 	//
 	// example:
 	//

@@ -16,7 +16,10 @@ type iGetInstanceGlobalizationConfigResponseBody interface {
 }
 
 type GetInstanceGlobalizationConfigResponseBody struct {
+	// The language and time zone configuration for the instance.
 	GlobalizationConfig *GetInstanceGlobalizationConfigResponseBodyGlobalizationConfig `json:"GlobalizationConfig,omitempty" xml:"GlobalizationConfig,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
@@ -59,13 +62,13 @@ func (s *GetInstanceGlobalizationConfigResponseBody) Validate() error {
 }
 
 type GetInstanceGlobalizationConfigResponseBodyGlobalizationConfig struct {
-	// 语言
+	// The language.
 	//
 	// example:
 	//
 	// zh-Hans-CN
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// 时区
+	// The time zone.
 	//
 	// example:
 	//

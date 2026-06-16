@@ -24,29 +24,34 @@ type iListApplicationFederatedCredentialsResponseBody interface {
 }
 
 type ListApplicationFederatedCredentialsResponseBody struct {
+	// The list of application federated credentials.
 	ApplicationFederatedCredentials []*ListApplicationFederatedCredentialsResponseBodyApplicationFederatedCredentials `json:"ApplicationFederatedCredentials,omitempty" xml:"ApplicationFederatedCredentials,omitempty" type:"Repeated"`
-	// 分页查询时每页行数。
+	// The number of entries returned per page.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 本次调用返回的查询凭证（Token）值，用于下一次翻页查询。
+	// The token that is used to retrieve the next page of results.
 	//
 	// example:
 	//
 	// NTxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 本次调用返回的查询凭证（Token）值，用于上一次翻页查询。
+	// The query token returned by this call.
 	//
 	// example:
 	//
 	// PTxxxexample
 	PreviousToken *string `json:"PreviousToken,omitempty" xml:"PreviousToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 100
@@ -129,67 +134,67 @@ func (s *ListApplicationFederatedCredentialsResponseBody) Validate() error {
 }
 
 type ListApplicationFederatedCredentialsResponseBodyApplicationFederatedCredentials struct {
-	// 应用联邦凭证ID
+	// The ID of the application federated credential.
 	//
 	// example:
 	//
 	// afc_adsa1sdaxxxxx
 	ApplicationFederatedCredentialId *string `json:"ApplicationFederatedCredentialId,omitempty" xml:"ApplicationFederatedCredentialId,omitempty"`
-	// 应用联邦凭证名称
+	// The name of the application federated credential.
 	//
 	// example:
 	//
 	// test
 	ApplicationFederatedCredentialName *string `json:"ApplicationFederatedCredentialName,omitempty" xml:"ApplicationFederatedCredentialName,omitempty"`
-	// 应用联邦凭证类型
+	// The type of the application federated credential.
 	//
 	// example:
 	//
 	// oidc
 	ApplicationFederatedCredentialType *string `json:"ApplicationFederatedCredentialType,omitempty" xml:"ApplicationFederatedCredentialType,omitempty"`
-	// 应用ID
+	// The application ID.
 	//
 	// example:
 	//
 	// app_xxxasda1
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// 创建时间
+	// The time when the credential was created.
 	//
 	// example:
 	//
 	// 1758785994982
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 应用联邦凭证描述
+	// The description of the application federated credential.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 应用联邦凭证提供者ID
+	// The ID of the federated credential provider.
 	//
 	// example:
 	//
 	// fcp_das1asda1xxxx
 	FederatedCredentialProviderId *string `json:"FederatedCredentialProviderId,omitempty" xml:"FederatedCredentialProviderId,omitempty"`
-	// EAIM 实例ID
+	// The instance ID.
 	//
 	// example:
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 最近使用时间
+	// The time when the credential was last used.
 	//
 	// example:
 	//
 	// 1758785994982
 	LastUsedTime *int64 `json:"LastUsedTime,omitempty" xml:"LastUsedTime,omitempty"`
-	// 应用联邦凭证状态
+	// The status of the application federated credential.
 	//
 	// example:
 	//
 	// enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 更新时间
+	// The time when the credential was last updated.
 	//
 	// example:
 	//

@@ -18,15 +18,15 @@ type iListApplicationsForUserResponseBody interface {
 }
 
 type ListApplicationsForUserResponseBody struct {
-	// The applications that the EIAM account can access.
+	// The list of applications that the account is authorized to access.
 	Applications []*ListApplicationsForUserResponseBodyApplications `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of the returned entries.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -83,29 +83,29 @@ func (s *ListApplicationsForUserResponseBody) Validate() error {
 }
 
 type ListApplicationsForUserResponseBodyApplications struct {
-	// The ID of the application that the EIAM account can access.
+	// The application ID.
 	//
 	// example:
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// 应用角色列表。
+	// The list of application roles.
 	ApplicationRoles []*ListApplicationsForUserResponseBodyApplicationsApplicationRoles `json:"ApplicationRoles,omitempty" xml:"ApplicationRoles,omitempty" type:"Repeated"`
-	// Indicates whether the EIAM account has direct permissions on the application. Valid values:
+	// Indicates whether a direct authorization exists. Valid values:
 	//
-	// 	- true: The EIAM account has direct permissions on the application.
+	// - true: A direct authorization record exists between the application and the account.
 	//
-	// 	- false: The EIAM account does not have direct permissions on the application.
+	// - false: No direct authorization record exists between the application and the account.
 	//
 	// example:
 	//
 	// true
 	HasDirectAuthorization *bool `json:"HasDirectAuthorization,omitempty" xml:"HasDirectAuthorization,omitempty"`
-	// Indicates whether the EIAM account has inherited permissions on the application. Valid values:
+	// Indicates whether an inherited authorization exists. Valid values:
 	//
-	// 	- true: A parent organization or an organization to which the EIAM account belongs has direct permissions on the application.
+	// - true: A direct authorization record exists between the application and a parent organization or a group to which the account belongs.
 	//
-	// 	- false: A parent organization or an organization to which the EIAM account belongs does not have direct permissions on the application.
+	// - false: No direct authorization record exists between the application and any of the parent organizations or groups to which the account belongs.
 	//
 	// example:
 	//
@@ -171,19 +171,19 @@ func (s *ListApplicationsForUserResponseBodyApplications) Validate() error {
 }
 
 type ListApplicationsForUserResponseBodyApplicationsApplicationRoles struct {
-	// 应用角色标识。
+	// The ID of the application role.
 	//
 	// example:
 	//
 	// app_role_mkv7rgt4ds8d8v0qtzev2mxxxx
 	ApplicationRoleId *string `json:"ApplicationRoleId,omitempty" xml:"ApplicationRoleId,omitempty"`
-	// 直接分配给当前用户的权限，视为直接授权。
+	// Indicates whether the role is directly assigned to the user.
 	//
 	// example:
 	//
 	// true
 	HasDirectAuthorization *bool `json:"HasDirectAuthorization,omitempty" xml:"HasDirectAuthorization,omitempty"`
-	// 通过用户隶属的组织、组获取的权限，视为继承权限。
+	// Indicates whether the role is inherited from an organization or a group to which the user belongs.
 	//
 	// example:
 	//

@@ -18,19 +18,19 @@ type iListUsersForApplicationResponseBody interface {
 }
 
 type ListUsersForApplicationResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of returned entries.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 100
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The IDs of the accounts.
+	// The list of accounts.
 	Users []*ListUsersForApplicationResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
 }
 
@@ -83,9 +83,9 @@ func (s *ListUsersForApplicationResponseBody) Validate() error {
 }
 
 type ListUsersForApplicationResponseBodyUsers struct {
-	// 应用角色列表。
+	// The list of application roles.
 	ApplicationRoles []*ListUsersForApplicationResponseBodyUsersApplicationRoles `json:"ApplicationRoles,omitempty" xml:"ApplicationRoles,omitempty" type:"Repeated"`
-	// The ID of the account.
+	// The account ID.
 	//
 	// example:
 	//
@@ -133,7 +133,7 @@ func (s *ListUsersForApplicationResponseBodyUsers) Validate() error {
 }
 
 type ListUsersForApplicationResponseBodyUsersApplicationRoles struct {
-	// 应用角色标识。
+	// The application role ID.
 	//
 	// example:
 	//

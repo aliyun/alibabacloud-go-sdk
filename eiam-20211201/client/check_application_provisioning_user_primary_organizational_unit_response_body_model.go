@@ -16,7 +16,10 @@ type iCheckApplicationProvisioningUserPrimaryOrganizationalUnitResponseBody inte
 }
 
 type CheckApplicationProvisioningUserPrimaryOrganizationalUnitResponseBody struct {
+	// The authorization information.
 	CheckApplicationProvisioningUserPrimaryOuResult *CheckApplicationProvisioningUserPrimaryOrganizationalUnitResponseBodyCheckApplicationProvisioningUserPrimaryOuResult `json:"CheckApplicationProvisioningUserPrimaryOuResult,omitempty" xml:"CheckApplicationProvisioningUserPrimaryOuResult,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
@@ -59,15 +62,15 @@ func (s *CheckApplicationProvisioningUserPrimaryOrganizationalUnitResponseBody) 
 }
 
 type CheckApplicationProvisioningUserPrimaryOrganizationalUnitResponseBodyCheckApplicationProvisioningUserPrimaryOuResult struct {
-	// 是否授权
+	// Indicates if the authorization is granted.
 	AllowAuthorization *bool `json:"AllowAuthorization,omitempty" xml:"AllowAuthorization,omitempty"`
-	// IDaaS EIAM 实例Id
+	// The application ID.
 	//
 	// example:
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// IDaaS EIAM 实例Id
+	// The instance ID.
 	//
 	// example:
 	//

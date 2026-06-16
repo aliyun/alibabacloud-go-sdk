@@ -22,23 +22,28 @@ type iListGroupsForAuthorizationRuleResponseBody interface {
 }
 
 type ListGroupsForAuthorizationRuleResponseBody struct {
+	// The list of groups.
 	Groups []*ListGroupsForAuthorizationRuleResponseBodyGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
-	// 分页查询时每页行数。
+	// The number of entries returned per page.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 本次调用返回的查询凭证（Token）值，用于下一次翻页查询。
+	// The token that is returned for the next page.
 	//
 	// example:
 	//
 	// NTxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 100
@@ -112,21 +117,25 @@ func (s *ListGroupsForAuthorizationRuleResponseBody) Validate() error {
 }
 
 type ListGroupsForAuthorizationRuleResponseBodyGroups struct {
-	// 组标识。
+	// The group ID.
 	//
 	// example:
 	//
 	// group_d6sbsuumeta4h66ec3il7yxxxx
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// 实例ID。
+	// The instance ID.
 	//
 	// example:
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 有效周期。
+	// The time range of the validity period. This parameter takes effect only when **ValidityType*	- is set to **time_bound**.
 	ValidityPeriod *ListGroupsForAuthorizationRuleResponseBodyGroupsValidityPeriod `json:"ValidityPeriod,omitempty" xml:"ValidityPeriod,omitempty" type:"Struct"`
-	// 有效期类型，枚举值：permanent（永久），time_bound（自定义时间范围）。
+	// The type of the validity period of the relationship. Valid values:
+	//
+	// - permanent: permanent
+	//
+	// - time_bound: custom time range
 	//
 	// example:
 	//
@@ -188,13 +197,13 @@ func (s *ListGroupsForAuthorizationRuleResponseBodyGroups) Validate() error {
 }
 
 type ListGroupsForAuthorizationRuleResponseBodyGroupsValidityPeriod struct {
-	// 授权生效结束时间。
+	// The end time of the validity period. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1704042061000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// 授权生效开始时间。
+	// The start time of the validity period. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//

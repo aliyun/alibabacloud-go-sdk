@@ -22,23 +22,28 @@ type iListCloudAccountRolesResponseBody interface {
 }
 
 type ListCloudAccountRolesResponseBody struct {
+	// The list of cloud roles.
 	CloudAccountRoles []*ListCloudAccountRolesResponseBodyCloudAccountRoles `json:"CloudAccountRoles,omitempty" xml:"CloudAccountRoles,omitempty" type:"Repeated"`
-	// 分页查询时每页行数。
+	// The number of entries returned per page.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 本次调用返回的查询凭证（Token）值，用于下一次翻页查询。
+	// The query token returned in this call.
 	//
 	// example:
 	//
 	// NTxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 100
@@ -112,71 +117,92 @@ func (s *ListCloudAccountRolesResponseBody) Validate() error {
 }
 
 type ListCloudAccountRolesResponseBodyCloudAccountRoles struct {
-	// 云账号ID
+	// The ID of the Alibaba Cloud account.
 	//
 	// example:
 	//
 	// ca_01kmegjc11qa1txxxxx
 	CloudAccountId *string `json:"CloudAccountId,omitempty" xml:"CloudAccountId,omitempty"`
-	// 云账号角色外部唯一ID
+	// The external ID for the cloud role.
 	//
 	// example:
 	//
 	// acs:ram::xxx:role/role-test
 	CloudAccountRoleExternalId *string `json:"CloudAccountRoleExternalId,omitempty" xml:"CloudAccountRoleExternalId,omitempty"`
-	// 云账号角色可用性
+	// The health status of the cloud role. Valid values:
+	//
+	// - healthy: The role is healthy.
+	//
+	// - unhealthy: The role is unhealthy.
+	//
+	// - unknown: The health status is unknown.
 	//
 	// example:
 	//
 	// healthy
-	CloudAccountRoleHealth            *string                                                                              `json:"CloudAccountRoleHealth,omitempty" xml:"CloudAccountRoleHealth,omitempty"`
+	CloudAccountRoleHealth *string `json:"CloudAccountRoleHealth,omitempty" xml:"CloudAccountRoleHealth,omitempty"`
+	// The result of the health check for the cloud role.
 	CloudAccountRoleHealthCheckResult *ListCloudAccountRolesResponseBodyCloudAccountRolesCloudAccountRoleHealthCheckResult `json:"CloudAccountRoleHealthCheckResult,omitempty" xml:"CloudAccountRoleHealthCheckResult,omitempty" type:"Struct"`
-	// 云账号角色ID
+	// The ID of the cloud role.
 	//
 	// example:
 	//
 	// carole_01kmek49aqxxxx
 	CloudAccountRoleId *string `json:"CloudAccountRoleId,omitempty" xml:"CloudAccountRoleId,omitempty"`
-	// 云账号名称
+	// The name of the cloud role.
 	//
 	// example:
 	//
 	// role-test
 	CloudAccountRoleName *string `json:"CloudAccountRoleName,omitempty" xml:"CloudAccountRoleName,omitempty"`
-	// 云账号角色用途
+	// The type of the cloud role. The format of the role type varies based on the type of the cloud account. The following value is supported:
+	//
+	// - role: This value applies to Alibaba Cloud accounts.
 	//
 	// example:
 	//
 	// role
 	CloudAccountRoleType *string `json:"CloudAccountRoleType,omitempty" xml:"CloudAccountRoleType,omitempty"`
-	// 云账号角色类别
+	// The usage type of the cloud role. Valid values:
+	//
+	// - system: The role is used by the system.
+	//
+	// - user: The role is used by a user.
 	//
 	// example:
 	//
 	// system
 	CloudAccountRoleUsageType *string `json:"CloudAccountRoleUsageType,omitempty" xml:"CloudAccountRoleUsageType,omitempty"`
+	// The time when the role was created. This is a UNIX timestamp. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1719320115000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 云账号描述
+	// The description of the cloud role.
 	//
 	// example:
 	//
 	// cloud_account_role_description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// IDaaS EIAM 实例Id
+	// The instance ID.
 	//
 	// example:
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 云账号角色状态
+	// The status of the cloud role. Valid values:
+	//
+	// - enabled: The role is enabled.
+	//
+	// - disabled: The role is disabled.
 	//
 	// example:
 	//
 	// enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The time when the role was last updated. This is a UNIX timestamp. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1719320117000
@@ -318,11 +344,20 @@ func (s *ListCloudAccountRolesResponseBodyCloudAccountRoles) Validate() error {
 }
 
 type ListCloudAccountRolesResponseBodyCloudAccountRolesCloudAccountRoleHealthCheckResult struct {
+	// The reason for the error. This parameter is returned when the health check status is unhealthy.
 	ErrorReason *ListCloudAccountRolesResponseBodyCloudAccountRolesCloudAccountRoleHealthCheckResultErrorReason `json:"ErrorReason,omitempty" xml:"ErrorReason,omitempty" type:"Struct"`
+	// The time of the last health check. This is a UNIX timestamp. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1649830226000
 	LastCheckTime *int64 `json:"LastCheckTime,omitempty" xml:"LastCheckTime,omitempty"`
+	// The result of the health check. Valid values:
+	//
+	// - success: The health check was successful.
+	//
+	// - failed: The health check failed.
+	//
 	// example:
 	//
 	// success
@@ -374,10 +409,14 @@ func (s *ListCloudAccountRolesResponseBodyCloudAccountRolesCloudAccountRoleHealt
 }
 
 type ListCloudAccountRolesResponseBodyCloudAccountRolesCloudAccountRoleHealthCheckResultErrorReason struct {
+	// The error code.
+	//
 	// example:
 	//
 	// AuthenticationFail.NoPermission
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// There is no permission.

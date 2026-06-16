@@ -16,7 +16,10 @@ type iGetInstanceModuleInfoResponseBody interface {
 }
 
 type GetInstanceModuleInfoResponseBody struct {
+	// The instance information.
 	Module *GetInstanceModuleInfoResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
@@ -59,15 +62,15 @@ func (s *GetInstanceModuleInfoResponseBody) Validate() error {
 }
 
 type GetInstanceModuleInfoResponseBodyModule struct {
-	// 二级模块信息
+	// The information about the secondary modules.
 	Features []*GetInstanceModuleInfoResponseBodyModuleFeatures `json:"Features,omitempty" xml:"Features,omitempty" type:"Repeated"`
-	// 模块状态
+	// The identifier of the primary module.
 	//
 	// example:
 	//
 	// urn:alibaba:idaas:license:module:application
 	ModuleKey *string `json:"ModuleKey,omitempty" xml:"ModuleKey,omitempty"`
-	// 一级模块状态
+	// The status of the primary module.
 	//
 	// example:
 	//
@@ -124,13 +127,13 @@ func (s *GetInstanceModuleInfoResponseBodyModule) Validate() error {
 }
 
 type GetInstanceModuleInfoResponseBodyModuleFeatures struct {
-	// 二级模块标识
+	// The identifier of the secondary module.
 	//
 	// example:
 	//
 	// urn:alibaba:idaas:license:module:application:standard:oidc
 	FeatureKey *string `json:"FeatureKey,omitempty" xml:"FeatureKey,omitempty"`
-	// 二级模块状态
+	// The status of the secondary module.
 	//
 	// example:
 	//

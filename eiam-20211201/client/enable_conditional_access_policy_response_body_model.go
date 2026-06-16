@@ -14,7 +14,7 @@ type iEnableConditionalAccessPolicyResponseBody interface {
 }
 
 type EnableConditionalAccessPolicyResponseBody struct {
-  // 请求ID。
+  // The request ID.
   // 
   // example:
   // 

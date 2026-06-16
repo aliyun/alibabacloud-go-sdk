@@ -24,7 +24,7 @@ type ListOrganizationalUnitParentsRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The organization ID.
+	// The organizational unit ID.
 	//
 	// This parameter is required.
 	//

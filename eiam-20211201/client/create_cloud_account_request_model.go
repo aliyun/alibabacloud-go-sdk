@@ -28,13 +28,15 @@ type iCreateCloudAccountRequest interface {
 }
 
 type CreateCloudAccountRequest struct {
+	// A client token that ensures the idempotence of the request. The client must generate a unique token for each request. The token must consist of only ASCII characters and be no more than 64 characters in length. For more information, see [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// client-token-example
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 云账号唯一标识
+	// The external unique identifier of the cloud account.
 	//
 	// This parameter is required.
 	//
@@ -42,30 +44,45 @@ type CreateCloudAccountRequest struct {
 	//
 	// 1234567
 	CloudAccountExternalId *string `json:"CloudAccountExternalId,omitempty" xml:"CloudAccountExternalId,omitempty"`
-	// 云账号名称
+	// The name of the cloud account.
 	//
 	// example:
 	//
 	// cloud_accout_xxxx
 	CloudAccountName *string `json:"CloudAccountName,omitempty" xml:"CloudAccountName,omitempty"`
-	// 云账号提供商名称
+	// The name of the identity provider.
 	//
 	// example:
 	//
 	// idaas-eiam-oidc-provider
 	CloudAccountProviderName *string `json:"CloudAccountProviderName,omitempty" xml:"CloudAccountProviderName,omitempty"`
-	CloudAccountSite         *string `json:"CloudAccountSite,omitempty" xml:"CloudAccountSite,omitempty"`
-	// 云账号类型
+	// The site of the cloud account. Valid values:
+	//
+	// - global: international site
+	//
+	// - china_mainland: China mainland site
+	//
+	// example:
+	//
+	// china_mainland
+	CloudAccountSite *string `json:"CloudAccountSite,omitempty" xml:"CloudAccountSite,omitempty"`
+	// The type of the cloud account. Valid value:
+	//
+	// - alibaba_cloud: Alibaba Cloud
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// Alibaba_cloud(Alibaba Cloud)
 	CloudAccountVendorType *string `json:"CloudAccountVendorType,omitempty" xml:"CloudAccountVendorType,omitempty"`
-	// 云账号描述
+	// The description of the cloud account.
 	//
 	// example:
 	//
 	// cloud_accout_description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// IDaaS EIAM实例的ID。
+	// The ID of the instance.
 	//
 	// This parameter is required.
 	//

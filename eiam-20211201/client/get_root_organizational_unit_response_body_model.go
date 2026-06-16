@@ -72,7 +72,7 @@ type GetRootOrganizationalUnitResponseBodyOrganizationalUnit struct {
 	//
 	// example:
 	//
-	// Test organizational unit
+	// Test organization
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the instance.
 	//

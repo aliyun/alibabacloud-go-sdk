@@ -20,7 +20,7 @@ type iUpdateCredentialDescriptionRequest interface {
 }
 
 type UpdateCredentialDescriptionRequest struct {
-	// 保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。ClientToken只支持ASCII字符，且不能超过64个字符。
+	// Ensures idempotence. Generate a unique value on your client for each request. The ClientToken value must contain only ASCII characters and cannot exceed 64 characters. For more information, see [How to Ensure Idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type UpdateCredentialDescriptionRequest struct {
 	//
 	// client-token-example
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 凭据ID。
+	// The ID of the credential.
 	//
 	// This parameter is required.
 	//
@@ -36,13 +36,13 @@ type UpdateCredentialDescriptionRequest struct {
 	//
 	// cred_mkv7rgt4d7i4u7zqtzev2mxxxx
 	CredentialId *string `json:"CredentialId,omitempty" xml:"CredentialId,omitempty"`
-	// 描述
+	// The description of the credential.
 	//
 	// example:
 	//
 	// credential_description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// IDaaS EIAM实例的ID。
+	// The ID of the instance.
 	//
 	// This parameter is required.
 	//

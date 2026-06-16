@@ -16,13 +16,15 @@ type iGetCredentialRequest interface {
 }
 
 type GetCredentialRequest struct {
+	// The ID of the credential.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cred_mkv7rgt4d7i4u7zqtzev2mxxxx
 	CredentialId *string `json:"CredentialId,omitempty" xml:"CredentialId,omitempty"`
-	// IDaaS EIAM实例的ID。
+	// The ID of the instance.
 	//
 	// This parameter is required.
 	//

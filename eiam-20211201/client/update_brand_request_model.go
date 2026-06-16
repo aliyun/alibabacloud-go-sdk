@@ -18,7 +18,7 @@ type iUpdateBrandRequest interface {
 }
 
 type UpdateBrandRequest struct {
-	// 品牌化Id
+	// The brand ID.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type UpdateBrandRequest struct {
 	//
 	// brand_xxxx
 	BrandId *string `json:"BrandId,omitempty" xml:"BrandId,omitempty"`
-	// 品牌名称
+	// The brand name.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type UpdateBrandRequest struct {
 	//
 	// Custom Brand
 	BrandName *string `json:"BrandName,omitempty" xml:"BrandName,omitempty"`
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

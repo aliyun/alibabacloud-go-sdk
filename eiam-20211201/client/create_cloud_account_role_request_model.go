@@ -24,13 +24,15 @@ type iCreateCloudAccountRoleRequest interface {
 }
 
 type CreateCloudAccountRoleRequest struct {
+	// A client token used to ensure the idempotence of the request. Generate a unique value for this parameter from your client. The token can contain only ASCII characters and must be no more than 64 characters in length. For more information, see [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// client-token-example
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 云账号唯一标识
+	// The ID of the Alibaba Cloud account.
 	//
 	// This parameter is required.
 	//
@@ -38,23 +40,29 @@ type CreateCloudAccountRoleRequest struct {
 	//
 	// ca_01kmegjc11qa1txxxxx
 	CloudAccountId *string `json:"CloudAccountId,omitempty" xml:"CloudAccountId,omitempty"`
+	// The name of the cloud role.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// role-test
 	CloudAccountRoleName *string `json:"CloudAccountRoleName,omitempty" xml:"CloudAccountRoleName,omitempty"`
-	// 云账号类型
+	// The type of the cloud role. The format of this parameter depends on the type of the Alibaba Cloud account. The supported value is:
+	//
+	// - role: applies to Alibaba Cloud accounts.
 	//
 	// example:
 	//
 	// role
 	CloudAccountRoleType *string `json:"CloudAccountRoleType,omitempty" xml:"CloudAccountRoleType,omitempty"`
+	// The description of the cloud role.
+	//
 	// example:
 	//
 	// cloud_account_role_description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// IDaaS EIAM实例的ID。
+	// The ID of the instance.
 	//
 	// This parameter is required.
 	//

@@ -20,19 +20,21 @@ type iUpdateNetworkZoneDescriptionRequest interface {
 }
 
 type UpdateNetworkZoneDescriptionRequest struct {
+	// A client token. It is used to ensure the idempotence of the request.
+	//
 	// example:
 	//
 	// client-token-examplexxxx
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 网络区域描述
+	// The description of the network zone.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 测试描述
+	// Test description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -40,13 +42,13 @@ type UpdateNetworkZoneDescriptionRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// IDaaS的网络区域主键id
+	// The network zone ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// network_11111
+	// network_m5wsaclfvfrf5623xnirgxxxxx
 	NetworkZoneId *string `json:"NetworkZoneId,omitempty" xml:"NetworkZoneId,omitempty"`
 }
 

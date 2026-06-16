@@ -20,7 +20,7 @@ type iUpdateApplicationFederatedCredentialDescriptionRequest interface {
 }
 
 type UpdateApplicationFederatedCredentialDescriptionRequest struct {
-	// 应用联邦凭证Id
+	// The ID of the application\\"s federated credential.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type UpdateApplicationFederatedCredentialDescriptionRequest struct {
 	//
 	// afc_aaaaa1111
 	ApplicationFederatedCredentialId *string `json:"ApplicationFederatedCredentialId,omitempty" xml:"ApplicationFederatedCredentialId,omitempty"`
-	// IDaaS的应用资源ID。
+	// The application ID.
 	//
 	// This parameter is required.
 	//
@@ -36,13 +36,13 @@ type UpdateApplicationFederatedCredentialDescriptionRequest struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// 联邦凭证描述
+	// The description of the federated credential.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

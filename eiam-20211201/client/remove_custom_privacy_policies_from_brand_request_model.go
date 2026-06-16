@@ -18,7 +18,7 @@ type iRemoveCustomPrivacyPoliciesFromBrandRequest interface {
 }
 
 type RemoveCustomPrivacyPoliciesFromBrandRequest struct {
-	// 品牌化Id
+	// The branding ID.
 	//
 	// This parameter is required.
 	//
@@ -26,11 +26,11 @@ type RemoveCustomPrivacyPoliciesFromBrandRequest struct {
 	//
 	// brand_xxxx
 	BrandId *string `json:"BrandId,omitempty" xml:"BrandId,omitempty"`
-	// 条款ID列表
+	// A list of policy IDs.
 	//
 	// This parameter is required.
 	CustomPrivacyPolicyIds []*string `json:"CustomPrivacyPolicyIds,omitempty" xml:"CustomPrivacyPolicyIds,omitempty" type:"Repeated"`
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

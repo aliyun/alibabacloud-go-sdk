@@ -14,7 +14,7 @@ type iAuthorizeApplicationToOrganizationalUnitsResponseBody interface {
 }
 
 type AuthorizeApplicationToOrganizationalUnitsResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

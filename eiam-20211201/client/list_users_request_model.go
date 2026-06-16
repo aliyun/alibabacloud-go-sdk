@@ -44,19 +44,19 @@ type iListUsersRequest interface {
 }
 
 type ListUsersRequest struct {
-	// Displayname
+	// The prefix of the display name. The query is performed based on the prefix.
 	//
 	// example:
 	//
-	// name_001
+	// name
 	DisplayNameStartsWith *string `json:"DisplayNameStartsWith,omitempty" xml:"DisplayNameStartsWith,omitempty"`
-	// The email address of the user who owns the account.
+	// The email address of the user.
 	//
 	// example:
 	//
 	// user@example.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -64,81 +64,97 @@ type ListUsersRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// NTxxxxexample
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the organizational unit.
 	//
 	// example:
 	//
 	// ou_wovwffm62xifdziem7an7xxxxx
 	OrganizationalUnitId *string `json:"OrganizationalUnitId,omitempty" xml:"OrganizationalUnitId,omitempty"`
-	// The number of the page to return. Default value: 1.
+	// The page number. The default value is 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Default value: 20.
+	// The number of entries per page. The default value is 20. The maximum value is 100.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The mobile number of the user who owns the account.
+	// The mobile number of the user.
 	//
 	// example:
 	//
 	// 156xxxxxxx
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	// The country code of the mobile number. For example, the country code of China is 86 without 00 or +.
+	// The country calling code. For example, the country calling code of China is `86`. Do not add `00` or `+` to the country calling code.
 	//
 	// example:
 	//
 	// 86
 	PhoneRegion *string `json:"PhoneRegion,omitempty" xml:"PhoneRegion,omitempty"`
-	// The status of the account. Valid values:
+	// The status of the user. Valid values:
 	//
-	// 	- enabled: The account is enabled.
+	// - `enabled`: The user is enabled.
 	//
-	// 	- disabled: The account is disabled.
+	// - `disabled`: The user is disabled.
 	//
 	// example:
 	//
 	// enable
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The external ID of the account. The external ID can be used by external data to map the data of the account in IDaaS EIAM.
+	// The external ID of the user. The external ID can be used to associate the user with a user in an external system.
 	//
-	// For accounts with the same source type and source ID, each account has a unique external ID.
+	// > The external ID must be unique within the same source type and source ID.
 	//
 	// example:
 	//
 	// id_wovwffm62xifdziem7an7xxxxx
 	UserExternalId *string `json:"UserExternalId,omitempty" xml:"UserExternalId,omitempty"`
-	// User ID set
-	UserIds []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
-	// The source ID of the account.
+	// The list of user IDs.
 	//
-	// If the account was created in IDaaS, its source ID is the ID of the IDaaS instance. If the account was imported, its source ID is the enterprise ID in the source. For example, if the account was imported from DingTalk, its source ID is the corpId value of the enterprise in DingTalk.
+	// example:
+	//
+	// 20
+	UserIds []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
+	// The source ID of the user.
+	//
+	// If the user is created in EIAM, the value of this parameter is the ID of the EIAM instance. If the user is imported from an external system, the value of this parameter is the enterprise ID of the user in the external system. For example, if the user is imported from DingTalk, the value of this parameter is the `corpId` of the enterprise in DingTalk.
 	//
 	// example:
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	UserSourceId *string `json:"UserSourceId,omitempty" xml:"UserSourceId,omitempty"`
-	// The source type of the account. Valid values:
+	// The source type of the user. Valid values:
 	//
-	// 	- build_in: The account was created in IDaaS.
+	// - `build_in`: The user is created in EIAM.
 	//
-	// 	- ding_talk: The account was imported from DingTalk.
+	// - `ding_talk`: The user is imported from DingTalk.
 	//
-	// 	- ad: The account was imported from Microsoft Active Directory (AD).
+	// - `ad`: The user is imported from Active Directory (AD).
 	//
-	// 	- ldap: The account was imported from a Lightweight Directory Access Protocol (LDAP) service.
+	// - `ldap`: The user is imported from a Lightweight Directory Access Protocol (LDAP) directory.
+	//
+	// - `we_com`: The user is imported from WeCom.
 	//
 	// example:
 	//
 	// build_in
 	UserSourceType *string `json:"UserSourceType,omitempty" xml:"UserSourceType,omitempty"`
-	// Username
+	// The prefix of the username. The query is performed based on the prefix.
 	//
 	// example:
 	//

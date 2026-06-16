@@ -16,7 +16,10 @@ type iGetAuthorizationResourceResponseBody interface {
 }
 
 type GetAuthorizationResourceResponseBody struct {
+	// The authorized resource.
 	AuthorizationResource *GetAuthorizationResourceResponseBodyAuthorizationResource `json:"AuthorizationResource,omitempty" xml:"AuthorizationResource,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
@@ -59,37 +62,39 @@ func (s *GetAuthorizationResourceResponseBody) Validate() error {
 }
 
 type GetAuthorizationResourceResponseBodyAuthorizationResource struct {
-	// 资源实体标识
+	// The ID of the resource entity that is associated with the authorized resource.
 	//
 	// example:
 	//
 	// carole_01kmek49aqxxxx
 	AuthorizationResourceEntityId *string `json:"AuthorizationResourceEntityId,omitempty" xml:"AuthorizationResourceEntityId,omitempty"`
-	// 资源实体类型，枚举类型：asset（资产）、credential（凭据）、cloud_identity_role（云账号角色）
+	// The type of the resource entity that is associated with the authorized resource. Valid value:
+	//
+	// - cloud_account_role: a cloud role
 	//
 	// example:
 	//
 	// cloud_account_role
 	AuthorizationResourceEntityType *string `json:"AuthorizationResourceEntityType,omitempty" xml:"AuthorizationResourceEntityType,omitempty"`
-	// 授权资源标识
+	// The authorization resource ID.
 	//
 	// example:
 	//
 	// arres_01kgh3jvt7pk093rv6giu0c0qxxxx
 	AuthorizationResourceId *string `json:"AuthorizationResourceId,omitempty" xml:"AuthorizationResourceId,omitempty"`
-	// 授权规则标识
+	// The authorization rule ID.
 	//
 	// example:
 	//
 	// arrule_01kf143ug06fg7m9f43u7vahxxxx
 	AuthorizationRuleId *string `json:"AuthorizationRuleId,omitempty" xml:"AuthorizationRuleId,omitempty"`
-	// 云账号ID。
+	// The ID of the Alibaba Cloud account to which the resource entity that is associated with the authorized resource belongs.
 	//
 	// example:
 	//
 	// ca_01kmegjc11qa1txxxxx
 	CloudAccountId *string `json:"CloudAccountId,omitempty" xml:"CloudAccountId,omitempty"`
-	// 实例ID
+	// The instance ID.
 	//
 	// example:
 	//

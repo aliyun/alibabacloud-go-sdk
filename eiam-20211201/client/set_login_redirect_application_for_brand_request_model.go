@@ -18,7 +18,7 @@ type iSetLoginRedirectApplicationForBrandRequest interface {
 }
 
 type SetLoginRedirectApplicationForBrandRequest struct {
-	// 应用ID
+	// The application ID.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type SetLoginRedirectApplicationForBrandRequest struct {
 	//
 	// app_xxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// 品牌化Id
+	// The brand ID.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type SetLoginRedirectApplicationForBrandRequest struct {
 	//
 	// brand_xxxx
 	BrandId *string `json:"BrandId,omitempty" xml:"BrandId,omitempty"`
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

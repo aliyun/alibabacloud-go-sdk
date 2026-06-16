@@ -62,25 +62,25 @@ func (s *ObtainDomainProxyTokenResponseBody) Validate() error {
 }
 
 type ObtainDomainProxyTokenResponseBodyDomainProxyToken struct {
-	// The time when the proxy token of the domain name was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The time when the domain name proxy token was created. This value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1649830226000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the domain name.
+	// The domain ID.
 	//
 	// example:
 	//
 	// dm_examplexxxx
 	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
-	// The proxy token of the domain name.
+	// The domain name proxy token.
 	//
 	// example:
 	//
 	// PTxxxxxxxx
 	DomainProxyToken *string `json:"DomainProxyToken,omitempty" xml:"DomainProxyToken,omitempty"`
-	// The ID of the proxy token of the domain name.
+	// The ID of the domain name proxy token.
 	//
 	// example:
 	//
@@ -92,23 +92,23 @@ type ObtainDomainProxyTokenResponseBodyDomainProxyToken struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The time when the proxy token of the domain name was last used. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The time when the domain name proxy token was last used. This value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1649830226000
 	LastUsedTime *int64 `json:"LastUsedTime,omitempty" xml:"LastUsedTime,omitempty"`
-	// The state of the proxy token. Valid values:
+	// The status of the token. Valid values:
 	//
-	// 	- enabled
+	// - enabled: The token is enabled.
 	//
-	// 	- disabled
+	// - disabled: The token is disabled.
 	//
 	// example:
 	//
 	// enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time when the proxy token of the domain name was last updated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The time when the domain name proxy token was last updated. This value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//

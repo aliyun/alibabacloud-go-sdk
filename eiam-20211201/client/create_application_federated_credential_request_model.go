@@ -28,7 +28,7 @@ type iCreateApplicationFederatedCredentialRequest interface {
 }
 
 type CreateApplicationFederatedCredentialRequest struct {
-	// 应用联邦凭证名称
+	// The name of the application federated credential.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type CreateApplicationFederatedCredentialRequest struct {
 	//
 	// example_name
 	ApplicationFederatedCredentialName *string `json:"ApplicationFederatedCredentialName,omitempty" xml:"ApplicationFederatedCredentialName,omitempty"`
-	// 应用联邦凭证类型
+	// The type of the application federated credential.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type CreateApplicationFederatedCredentialRequest struct {
 	//
 	// oidc
 	ApplicationFederatedCredentialType *string `json:"ApplicationFederatedCredentialType,omitempty" xml:"ApplicationFederatedCredentialType,omitempty"`
-	// IDaaS的应用资源ID。
+	// The application ID.
 	//
 	// This parameter is required.
 	//
@@ -52,15 +52,15 @@ type CreateApplicationFederatedCredentialRequest struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// 属性映射
+	// The attribute mappings.
 	AttributeMappings []*CreateApplicationFederatedCredentialRequestAttributeMappings `json:"AttributeMappings,omitempty" xml:"AttributeMappings,omitempty" type:"Repeated"`
-	// 描述
+	// The description.
 	//
 	// example:
 	//
-	// 描述
+	// description_text
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 联邦凭证提供方ID
+	// The ID of the federated credential provider.
 	//
 	// This parameter is required.
 	//
@@ -68,7 +68,7 @@ type CreateApplicationFederatedCredentialRequest struct {
 	//
 	// fcp_adasd
 	FederatedCredentialProviderId *string `json:"FederatedCredentialProviderId,omitempty" xml:"FederatedCredentialProviderId,omitempty"`
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -76,7 +76,7 @@ type CreateApplicationFederatedCredentialRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 校验条件
+	// The verification condition.
 	//
 	// example:
 	//
@@ -178,13 +178,13 @@ func (s *CreateApplicationFederatedCredentialRequest) Validate() error {
 }
 
 type CreateApplicationFederatedCredentialRequestAttributeMappings struct {
-	// 源值表达式
+	// The source value expression.
 	//
 	// example:
 	//
 	// Append(client.applicationFederatedCredentialId, ":", cert.subject.CN, ":", cert.serialNumber)
 	SourceValueExpression *string `json:"SourceValueExpression,omitempty" xml:"SourceValueExpression,omitempty"`
-	// 目标字段
+	// The target field.
 	//
 	// example:
 	//

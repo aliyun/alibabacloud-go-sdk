@@ -30,7 +30,7 @@ type iSetPasswordExpirationConfigurationRequest interface {
 }
 
 type SetPasswordExpirationConfigurationRequest struct {
-	// Effective authentication sourceIds
+	// The list of IDs of authentication sources that take effect.
 	EffectiveAuthenticationSourceIds []*string `json:"EffectiveAuthenticationSourceIds,omitempty" xml:"EffectiveAuthenticationSourceIds,omitempty" type:"Repeated"`
 	// The instance ID.
 	//
@@ -40,45 +40,45 @@ type SetPasswordExpirationConfigurationRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The action to take upon password expiration. This parameter must be specified when PasswordExpirationStatus is set to enabled. Valid values:
+	// The action to be performed when a password expires. This parameter is required when PasswordExpirationStatus is set to enabled. Valid values:
 	//
-	// 	- forbid_login: Users cannot log on to IDaaS.
+	// - forbid_login: Prohibit logon.
 	//
-	// 	- force_update_password: Users must change the password.
+	// - force_update_password: Force the user to change the password.
 	//
-	// 	- remind_update_password: IDaaS reminds users to change the password upon each logon.
+	// - remind_update_password: Remind the user to change the password.
 	//
 	// example:
 	//
 	// force_update_password
 	PasswordExpirationAction *string `json:"PasswordExpirationAction,omitempty" xml:"PasswordExpirationAction,omitempty"`
-	// The methods for receiving password expiration notifications. This parameter must be specified when PasswordExpirationNotificationStatus is set to enabled.
+	// The list of notification channels for password expiration. This parameter is required when PasswordExpirationNotificationStatus is set to enabled.
 	//
 	// example:
 	//
 	// login
 	PasswordExpirationNotificationChannels []*string `json:"PasswordExpirationNotificationChannels,omitempty" xml:"PasswordExpirationNotificationChannels,omitempty" type:"Repeated"`
-	// The number of days before the expiration date during which password expiration notifications are sent. Unit: day. This parameter must be specified when PasswordExpirationNotificationStatus is set to enabled.
+	// The time when a password expiration notification is sent. Unit: days. This parameter is required when PasswordExpirationNotificationStatus is set to enabled.
 	//
 	// example:
 	//
 	// 7
 	PasswordExpirationNotificationDuration *int32 `json:"PasswordExpirationNotificationDuration,omitempty" xml:"PasswordExpirationNotificationDuration,omitempty"`
-	// Specifies whether to enable the password expiration notification feature. Valid values:
+	// The status of the password expiration notification. Valid values:
 	//
-	// 	- enabled
+	// - enabled: The password expiration notification is enabled.
 	//
-	// 	- disabled
+	// - disabled: The password expiration notification is disabled.
 	//
 	// example:
 	//
 	// enabled
 	PasswordExpirationNotificationStatus *string `json:"PasswordExpirationNotificationStatus,omitempty" xml:"PasswordExpirationNotificationStatus,omitempty"`
-	// Specifies whether to enable the password expiration feature. Valid values:
+	// The status of the password expiration configuration. Valid values:
 	//
-	// 	- enabled
+	// - enabled: The password expiration configuration is enabled.
 	//
-	// 	- disabled
+	// - disabled: The password expiration configuration is disabled.
 	//
 	// This parameter is required.
 	//
@@ -86,13 +86,13 @@ type SetPasswordExpirationConfigurationRequest struct {
 	//
 	// enabled
 	PasswordExpirationStatus *string `json:"PasswordExpirationStatus,omitempty" xml:"PasswordExpirationStatus,omitempty"`
-	// The number of days before which users must change the password to prevent password expiration. Unit: day. You must set this parameter to a value greater than the value of PasswordExpirationNotificationDuration.
+	// The time when a user is forced to change the password. Unit: days. The value of this parameter must be greater than the value of PasswordExpirationNotificationDuration.
 	//
 	// example:
 	//
 	// 7
 	PasswordForcedUpdateDuration *int32 `json:"PasswordForcedUpdateDuration,omitempty" xml:"PasswordForcedUpdateDuration,omitempty"`
-	// The validity period of a password. Unit: day. This parameter must be specified when PasswordExpirationStatus is set to enabled.
+	// The validity period of a password in days. This parameter is required when PasswordExpirationStatus is set to enabled.
 	//
 	// example:
 	//

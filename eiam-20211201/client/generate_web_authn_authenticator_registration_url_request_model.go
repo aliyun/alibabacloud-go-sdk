@@ -18,11 +18,13 @@ type iGenerateWebAuthnAuthenticatorRegistrationUrlRequest interface {
 }
 
 type GenerateWebAuthnAuthenticatorRegistrationUrlRequest struct {
+	// The domain ID.
+	//
 	// example:
 	//
 	// dm_nfplcagj5cguo2267bkjxxxx
 	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +32,7 @@ type GenerateWebAuthnAuthenticatorRegistrationUrlRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// UserID
+	// The user ID.
 	//
 	// This parameter is required.
 	//

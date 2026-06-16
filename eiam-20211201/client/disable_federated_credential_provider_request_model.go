@@ -16,7 +16,7 @@ type iDisableFederatedCredentialProviderRequest interface {
 }
 
 type DisableFederatedCredentialProviderRequest struct {
-	// 联邦凭证提供方ID
+	// The federated credential provider ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DisableFederatedCredentialProviderRequest struct {
 	//
 	// fcp_mkv7rgt4d7i4u7zqtzev2mxxxx
 	FederatedCredentialProviderId *string `json:"FederatedCredentialProviderId,omitempty" xml:"FederatedCredentialProviderId,omitempty"`
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

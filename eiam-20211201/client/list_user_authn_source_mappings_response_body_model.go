@@ -24,32 +24,37 @@ type iListUserAuthnSourceMappingsResponseBody interface {
 }
 
 type ListUserAuthnSourceMappingsResponseBody struct {
-	// 分页查询时每页行数。
+	// The maximum number of entries returned on each page.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 本次调用返回的查询凭证（Token）值，用于下一次翻页查询。
+	// The token to retrieve the next page of results.
 	//
 	// example:
 	//
 	// NTxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 本次调用返回的查询凭证（Token）值，用于上一次翻页查询。
+	// The token to retrieve the previous page of results.
 	//
 	// example:
 	//
 	// PTxxxexample
 	PreviousToken *string `json:"PreviousToken,omitempty" xml:"PreviousToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 100
-	TotalCount              *int32                                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// A list of bindings for third-party account logons.
 	UserAuthnSourceMappings []*ListUserAuthnSourceMappingsResponseBodyUserAuthnSourceMappings `json:"UserAuthnSourceMappings,omitempty" xml:"UserAuthnSourceMappings,omitempty" type:"Repeated"`
 }
 
@@ -129,44 +134,49 @@ func (s *ListUserAuthnSourceMappingsResponseBody) Validate() error {
 }
 
 type ListUserAuthnSourceMappingsResponseBodyUserAuthnSourceMappings struct {
-	// 来源Idp类型
+	// The authentication source type.
 	//
 	// example:
 	//
 	// urn:alibaba:idaas:authntype:oidc
 	AuthnSourceType *string `json:"AuthnSourceType,omitempty" xml:"AuthnSourceType,omitempty"`
-	// 创建时间
+	// The time when the binding was created.
 	//
 	// example:
 	//
 	// 1762309642177
-	CreateTime   *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Information about the associated third-party account.
+	//
+	// example:
+	//
+	// {\\"userId\\":\\"xxxx\\",\\"name\\":\\"xxx\\",\\"bindTime\\":\\"1766050298872\\",\\"description\\":\\"bind request id: reqpre_xxx\\"}
 	ExternalData *string `json:"ExternalData,omitempty" xml:"ExternalData,omitempty"`
-	// 来源Idp Id
+	// The source IdP ID.
 	//
 	// example:
 	//
 	// idp_my664lwkhpicbyzirog3xxxxx
 	IdentityProviderId *string `json:"IdentityProviderId,omitempty" xml:"IdentityProviderId,omitempty"`
-	// 实例Id
+	// The instance ID.
 	//
 	// example:
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 最近一次更新时间
+	// The time when the binding was last updated.
 	//
 	// example:
 	//
 	// 1762309642177
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// 外部ID
+	// The external ID.
 	//
 	// example:
 	//
 	// xxxxxx
 	UserExternalId *string `json:"UserExternalId,omitempty" xml:"UserExternalId,omitempty"`
-	// 用户ID
+	// The user ID.
 	//
 	// example:
 	//

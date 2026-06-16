@@ -18,7 +18,7 @@ type iGenerateUploadAuthRequest interface {
 }
 
 type GenerateUploadAuthRequest struct {
-	// IDaaS EIAM的实例id
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -26,13 +26,13 @@ type GenerateUploadAuthRequest struct {
 	//
 	// idaas_111ccc11xxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 文件用途
+	// The purpose of the file.
 	//
 	// example:
 	//
 	// user_import
 	Purpose *string `json:"Purpose,omitempty" xml:"Purpose,omitempty"`
-	// 文件类型，目前只支持image,最大1M
+	// The file type.
 	//
 	// example:
 	//

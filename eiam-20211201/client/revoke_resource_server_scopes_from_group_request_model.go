@@ -20,7 +20,7 @@ type iRevokeResourceServerScopesFromGroupRequest interface {
 }
 
 type RevokeResourceServerScopesFromGroupRequest struct {
-	// IDaaS的应用资源ID。
+	// The ID of the resource server application.
 	//
 	// This parameter is required.
 	//
@@ -28,13 +28,15 @@ type RevokeResourceServerScopesFromGroupRequest struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The group ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// group_mkv7rgt4d7i4u7zqtzev2mxxxx
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +44,7 @@ type RevokeResourceServerScopesFromGroupRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// ResourceServer权限ID。
+	// A list of scope permission IDs for the resource server.
 	//
 	// This parameter is required.
 	//

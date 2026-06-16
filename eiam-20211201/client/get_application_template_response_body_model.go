@@ -16,7 +16,10 @@ type iGetApplicationTemplateResponseBody interface {
 }
 
 type GetApplicationTemplateResponseBody struct {
+	// The details of the application template.
 	ApplicationTemplate *GetApplicationTemplateResponseBodyApplicationTemplate `json:"ApplicationTemplate,omitempty" xml:"ApplicationTemplate,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
@@ -59,57 +62,65 @@ func (s *GetApplicationTemplateResponseBody) Validate() error {
 }
 
 type GetApplicationTemplateResponseBodyApplicationTemplate struct {
-	// 应用模板Id
+	// The ID of the application template.
 	//
 	// example:
 	//
 	// apt_ramintlrole_ixxxxx
 	ApplicationTemplateId *string `json:"ApplicationTemplateId,omitempty" xml:"ApplicationTemplateId,omitempty"`
-	// 应用模板名称
+	// The name of the application template.
+	//
+	// example:
+	//
+	// Alibaba Cloud
 	ApplicationTemplateName *string `json:"ApplicationTemplateName,omitempty" xml:"ApplicationTemplateName,omitempty"`
-	// 应用模板创建时间
+	// The time when the application template was created.
 	//
 	// example:
 	//
 	// 1730341123000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 应用模板描述信息
+	// The description of the application template.
+	//
+	// example:
+	//
+	// Alibaba Cloud SSO
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 应用模板对应帮助文档地址
+	// The URL of the help document for the application template.
 	//
 	// example:
 	//
 	// https://example.com/document_detail/409xxx.html
 	HelpDocumentUrl *string `json:"HelpDocumentUrl,omitempty" xml:"HelpDocumentUrl,omitempty"`
-	// 应用模板Logo地址
+	// The URL of the logo for the application template.
 	//
 	// example:
 	//
 	// https://example.com/imgextra/i4/O1CN01xTLxLb1WtyKksHW1H_!!6000000002847-2-tps-xxx-xxx.png
 	LogoUrl *string `json:"LogoUrl,omitempty" xml:"LogoUrl,omitempty"`
-	// 托管应用模板的云产品ServiceCode。当且仅当ServiceManaged为true是返回。
+	// The service code of the Alibaba Cloud service that manages the application template.
 	//
 	// example:
 	//
 	// bastionhost
 	ManagedServiceCode *string `json:"ManagedServiceCode,omitempty" xml:"ManagedServiceCode,omitempty"`
-	// 应用模板售卖信息
+	// The sales information about the application template.
 	SaleInfo *GetApplicationTemplateResponseBodyApplicationTemplateSaleInfo `json:"SaleInfo,omitempty" xml:"SaleInfo,omitempty" type:"Struct"`
-	// 托管应用模板的云产品控制台地址。当且仅当ServiceManaged为true是返回。
+	// The URL of the console for the Alibaba Cloud service that manages the application template.
 	//
 	// example:
 	//
 	// https://example.com/?p=bastion
 	ServiceConsoleUrl *string `json:"ServiceConsoleUrl,omitempty" xml:"ServiceConsoleUrl,omitempty"`
-	// 应用模板是否被云产品托管。
+	// Indicates whether the application template is managed by an Alibaba Cloud service.
 	//
 	// example:
 	//
 	// true
 	ServiceManaged *bool `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
-	// 支持SSO协议
+	// The supported Single Sign-On (SSO) protocols.
 	SsoTypes []*string `json:"SsoTypes,omitempty" xml:"SsoTypes,omitempty" type:"Repeated"`
-	// 应用模板更新时间
+	// The time when the application template was last updated.
 	//
 	// example:
 	//
@@ -243,7 +254,7 @@ func (s *GetApplicationTemplateResponseBodyApplicationTemplate) Validate() error
 }
 
 type GetApplicationTemplateResponseBodyApplicationTemplateSaleInfo struct {
-	// 是否永久免费
+	// Indicates whether the application template is permanently free.
 	//
 	// example:
 	//

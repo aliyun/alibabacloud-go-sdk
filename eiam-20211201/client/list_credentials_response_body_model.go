@@ -22,23 +22,28 @@ type iListCredentialsResponseBody interface {
 }
 
 type ListCredentialsResponseBody struct {
+	// A list of credentials.
 	Credentials []*ListCredentialsResponseBodyCredentials `json:"Credentials,omitempty" xml:"Credentials,omitempty" type:"Repeated"`
-	// 分页查询时每页行数。
+	// The maximum number of entries to return per page.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 本次调用返回的查询凭证（Token）值，用于下一次翻页查询。
+	// The token used to retrieve the next page of results. If this parameter is not returned, it indicates all results have been returned.
 	//
 	// example:
 	//
 	// NTxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 100
@@ -112,84 +117,102 @@ func (s *ListCredentialsResponseBody) Validate() error {
 }
 
 type ListCredentialsResponseBodyCredentials struct {
-	// 云角色创建时间
+	// The time the credential was created, provided as a Unix timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1649830225000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 凭据的内容。
+	// The content of the credential.
 	CredentialContent *ListCredentialsResponseBodyCredentialsCredentialContent `json:"CredentialContent,omitempty" xml:"CredentialContent,omitempty" type:"Struct"`
-	// 凭据的创建类型。
+	// The creation type of the credential. Valid values:
+	//
+	// - `system_init`: Created by the system.
+	//
+	// - `user_custom`: Created by a user.
 	//
 	// example:
 	//
 	// user_custom
 	CredentialCreationType *string `json:"CredentialCreationType,omitempty" xml:"CredentialCreationType,omitempty"`
 	CredentialExternalId   *string `json:"CredentialExternalId,omitempty" xml:"CredentialExternalId,omitempty"`
-	// 凭据ID。
+	// The ID of the credential.
 	//
 	// example:
 	//
 	// cred_mkv7rgt4d7i4u7zqtzev2mxxxx
 	CredentialId *string `json:"CredentialId,omitempty" xml:"CredentialId,omitempty"`
-	// 凭据标识
+	// The identifier of the credential.
 	//
 	// example:
 	//
 	// credential_identifier_test
 	CredentialIdentifier *string `json:"CredentialIdentifier,omitempty" xml:"CredentialIdentifier,omitempty"`
-	// 凭据名称
+	// The name of the credential.
 	//
 	// example:
 	//
 	// credential_name
 	CredentialName *string `json:"CredentialName,omitempty" xml:"CredentialName,omitempty"`
-	// 凭据的使用场景标签。
+	// The use case label for the credential. Valid values:
+	//
+	// - `llm`: A large language model.
+	//
+	// - `saas`: A third-party SaaS service.
 	//
 	// example:
 	//
 	// llm
 	CredentialScenarioLabel *string `json:"CredentialScenarioLabel,omitempty" xml:"CredentialScenarioLabel,omitempty"`
 	CredentialSharingScope  *string `json:"CredentialSharingScope,omitempty" xml:"CredentialSharingScope,omitempty"`
-	// 凭据所属的主体ID。
+	// The ID of the credential\\"s subject.
 	//
 	// example:
 	//
 	// apt_werthgfdsasffxxxxx
 	CredentialSubjectId *string `json:"CredentialSubjectId,omitempty" xml:"CredentialSubjectId,omitempty"`
-	// 凭据所属的主体类型。
+	// The type of the credential\\"s subject. Valid value:
+	//
+	// - `authentication_token_provider`: An authentication token provider.
 	//
 	// example:
 	//
 	// authentication_token_provider
 	CredentialSubjectType *string `json:"CredentialSubjectType,omitempty" xml:"CredentialSubjectType,omitempty"`
-	// 凭据类型。
+	// The type of the credential. Valid values:
+	//
+	// - `api_key`: An API key.
+	//
+	// - `oauth_client`: An OAuth client.
 	//
 	// example:
 	//
 	// api_key
 	CredentialType *string `json:"CredentialType,omitempty" xml:"CredentialType,omitempty"`
-	// 描述
+	// The description of the credential.
 	//
 	// example:
 	//
 	// credential_description
 	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	ExclusiveUserId *string `json:"ExclusiveUserId,omitempty" xml:"ExclusiveUserId,omitempty"`
-	// EIAM实例ID。
+	// The ID of the EIAM instance.
 	//
 	// example:
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 凭据状态
+	// The status of the credential. Valid values:
+	//
+	// - `enabled`: The credential is enabled.
+	//
+	// - `disabled`: The credential is disabled.
 	//
 	// example:
 	//
 	// enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 云角色更新时间
+	// The time the credential was last updated, provided as a Unix timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -368,7 +391,7 @@ func (s *ListCredentialsResponseBodyCredentials) Validate() error {
 }
 
 type ListCredentialsResponseBodyCredentialsCredentialContent struct {
-	// OAuth客户端认证凭证类型的凭据内容。
+	// The content of an OAuth client credential.
 	OAuthClientContent *ListCredentialsResponseBodyCredentialsCredentialContentOAuthClientContent `json:"OAuthClientContent,omitempty" xml:"OAuthClientContent,omitempty" type:"Struct"`
 }
 
@@ -399,7 +422,7 @@ func (s *ListCredentialsResponseBodyCredentialsCredentialContent) Validate() err
 }
 
 type ListCredentialsResponseBodyCredentialsCredentialContentOAuthClientContent struct {
-	// OAuth协议的client_id
+	// The client ID of the OAuth client.
 	//
 	// example:
 	//

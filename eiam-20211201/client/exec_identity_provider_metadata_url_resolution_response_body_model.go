@@ -16,7 +16,10 @@ type iExecIdentityProviderMetadataUrlResolutionResponseBody interface {
 }
 
 type ExecIdentityProviderMetadataUrlResolutionResponseBody struct {
+  // The identity provider metadata.
   IdentityProviderMetadata *ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetadata `json:"IdentityProviderMetadata,omitempty" xml:"IdentityProviderMetadata,omitempty" type:"Struct"`
+  // The request ID.
+  // 
   // example:
   // 
   // 0441BD79-92F3-53AA-8657-F8CE4A2B912A
@@ -59,8 +62,9 @@ func (s *ExecIdentityProviderMetadataUrlResolutionResponseBody) Validate() error
 }
 
 type ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetadata struct {
-  // OIDC IdP的Meta信息。
+  // The OIDC identity provider metadata.
   OidcOpenIdConfiguration *ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetadataOidcOpenIdConfiguration `json:"OidcOpenIdConfiguration,omitempty" xml:"OidcOpenIdConfiguration,omitempty" type:"Struct"`
+  // The SAML identity provider metadata.
   SamlMetadataConfiguration *ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetadataSamlMetadataConfiguration `json:"SamlMetadataConfiguration,omitempty" xml:"SamlMetadataConfiguration,omitempty" type:"Struct"`
 }
 
@@ -105,31 +109,31 @@ func (s *ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMe
 }
 
 type ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetadataOidcOpenIdConfiguration struct {
-  // oAuth2 授权端点。
+  // The OAuth 2.0 authorization endpoint.
   // 
   // example:
   // 
   // https://demo.com/oauth2/default/v1/authorize
   AuthorizationEndpoint *string `json:"AuthorizationEndpoint,omitempty" xml:"AuthorizationEndpoint,omitempty"`
-  // OIDC issuer信息。
+  // The OIDC issuer.
   // 
   // example:
   // 
   // https://demo.com/fe974231-3454-4b70-9326-70fb71e41bce/v2.0/
   Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
-  // OIDC jwks地址。
+  // The OIDC JSON Web Key Set (JWKS) URI.
   // 
   // example:
   // 
   // https://demo.com/oauth2/v1/keys
   JwksUri *string `json:"JwksUri,omitempty" xml:"JwksUri,omitempty"`
-  // oAuth2 Token端点。
+  // The OAuth 2.0 token endpoint.
   // 
   // example:
   // 
   // https://demo.com/api/bff/v1.2/developer/oidc/token
   TokenEndpoint *string `json:"TokenEndpoint,omitempty" xml:"TokenEndpoint,omitempty"`
-  // OIDC 用户信息端点。
+  // The OIDC userinfo endpoint.
   // 
   // example:
   // 
@@ -195,11 +199,16 @@ func (s *ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMe
 }
 
 type ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetadataSamlMetadataConfiguration struct {
+  // The certificates.
   Certificates []*ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetadataSamlMetadataConfigurationCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
+  // The entity ID of the SAML identity provider.
+  // 
   // example:
   // 
   // http://dc.test.com/adfs/services/trust
   IdPEntityId *string `json:"IdPEntityId,omitempty" xml:"IdPEntityId,omitempty"`
+  // The SSO URL of the SAML identity provider.
+  // 
   // example:
   // 
   // https://dc.test.com/adfs/ls/
@@ -255,6 +264,8 @@ func (s *ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMe
 }
 
 type ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetadataSamlMetadataConfigurationCertificates struct {
+  // The content of the certificate.
+  // 
   // example:
   // 
   // -----BEGIN CERTIFICATE----- MIIE+zCCA0egAwIBAgIJAJZY0ZY0ZY0Z -----END CERTIFICATE-----

@@ -16,7 +16,10 @@ type iGetClientPublicKeyResponseBody interface {
 }
 
 type GetClientPublicKeyResponseBody struct {
+	// Information about the application\\"s ClientPublicKey.
 	ClientPublicKey *GetClientPublicKeyResponseBodyClientPublicKey `json:"ClientPublicKey,omitempty" xml:"ClientPublicKey,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
@@ -59,47 +62,49 @@ func (s *GetClientPublicKeyResponseBody) Validate() error {
 }
 
 type GetClientPublicKeyResponseBodyClientPublicKey struct {
-	// IDaaS EIAM 应用公私钥对算法类型 rsa2048、ecc256
+	// The algorithm type.
 	//
 	// example:
 	//
 	// RSA-2048
 	AlgorithmType *string `json:"AlgorithmType,omitempty" xml:"AlgorithmType,omitempty"`
-	// IDaaS EIAM 应用Id
+	// The application ID.
 	//
 	// example:
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// IDaaS EIAM 应用公私钥对Id
+	// The ID of the application\\"s ClientPublicKey.
 	//
 	// example:
 	//
 	// KEYEqDnDJhztiEAwSin7MZoxGcihzCAuxxxx
 	ClientPublicKeyId *string `json:"ClientPublicKeyId,omitempty" xml:"ClientPublicKeyId,omitempty"`
-	// IDaaS EIAM 应用公私钥对创建时间
+	// The time when the public key was created.
 	//
 	// example:
 	//
 	// 1731305755000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// IDaaS EIAM 实例Id
+	// The instance ID.
 	//
 	// example:
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The time when the key was last used.
+	//
 	// example:
 	//
 	// 1771305755000
 	LastUsedTime *int64 `json:"LastUsedTime,omitempty" xml:"LastUsedTime,omitempty"`
-	// IDaaS EIAM 应用当前是否为首要使用的公私钥对
+	// Indicates whether this is the primary key.
 	//
 	// example:
 	//
 	// true
 	Primary *bool `json:"Primary,omitempty" xml:"Primary,omitempty"`
-	// IDaaS EIAM 应用公钥
+	// The public key.
 	//
 	// example:
 	//
@@ -121,7 +126,7 @@ type GetClientPublicKeyResponseBodyClientPublicKey struct {
 	//
 	// -----END PUBLIC KEY-----
 	PublicKey *string `json:"PublicKey,omitempty" xml:"PublicKey,omitempty"`
-	// IDaaS EIAM 应用公私钥对状态
+	// The status.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iCreateIdentityProviderStatusCheckJobRequest interface {
 }
 
 type CreateIdentityProviderStatusCheckJobRequest struct {
-	// IDaaS的身份提供方主键id
+	// The ID of the identity provider.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type CreateIdentityProviderStatusCheckJobRequest struct {
 	//
 	// idp_11111
 	IdentityProviderId *string `json:"IdentityProviderId,omitempty" xml:"IdentityProviderId,omitempty"`
-	// IDaaS EIAM实例的ID。
+	// The ID of the instance.
 	//
 	// This parameter is required.
 	//

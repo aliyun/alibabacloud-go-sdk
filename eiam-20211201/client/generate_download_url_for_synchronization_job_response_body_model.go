@@ -16,10 +16,14 @@ type iGenerateDownloadUrlForSynchronizationJobResponseBody interface {
 }
 
 type GenerateDownloadUrlForSynchronizationJobResponseBody struct {
+	// The download URL of the template.
+	//
 	// example:
 	//
 	// https://test.oss.aliyuncs.com/idaas_ly77wa2oexrciw5v672vxxxx/tmp/eiam_user_export_1766469463365.csv
 	FileDownloadUrl *string `json:"FileDownloadUrl,omitempty" xml:"FileDownloadUrl,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A

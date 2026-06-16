@@ -20,7 +20,7 @@ type iUnbindUserAuthnSourceMappingRequest interface {
 }
 
 type UnbindUserAuthnSourceMappingRequest struct {
-	// 来源ID
+	// The ID of the source identity provider.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type UnbindUserAuthnSourceMappingRequest struct {
 	//
 	// idp_my664lwkhpicbyzirog3xxxxx
 	IdentityProviderId *string `json:"IdentityProviderId,omitempty" xml:"IdentityProviderId,omitempty"`
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type UnbindUserAuthnSourceMappingRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 外部关联ID
+	// The external ID associated with the user.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type UnbindUserAuthnSourceMappingRequest struct {
 	//
 	// xxxxxx
 	UserExternalId *string `json:"UserExternalId,omitempty" xml:"UserExternalId,omitempty"`
-	// 用户ID
+	// The user ID.
 	//
 	// This parameter is required.
 	//

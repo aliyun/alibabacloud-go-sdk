@@ -31,13 +31,13 @@ type iCreateFederatedCredentialProviderRequest interface {
 
 type CreateFederatedCredentialProviderRequest struct {
 	CloudIdPProviderConfig *CreateFederatedCredentialProviderRequestCloudIdPProviderConfig `json:"CloudIdPProviderConfig,omitempty" xml:"CloudIdPProviderConfig,omitempty" type:"Struct"`
-	// 联邦凭证提供方描述
+	// The description of the federated credential provider.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 联邦凭证提供方名称
+	// The name of the federated credential provider.
 	//
 	// This parameter is required.
 	//
@@ -45,7 +45,7 @@ type CreateFederatedCredentialProviderRequest struct {
 	//
 	// test
 	FederatedCredentialProviderName *string `json:"FederatedCredentialProviderName,omitempty" xml:"FederatedCredentialProviderName,omitempty"`
-	// 联邦凭证提供方类型
+	// The type of the federated credential provider.
 	//
 	// This parameter is required.
 	//
@@ -53,7 +53,7 @@ type CreateFederatedCredentialProviderRequest struct {
 	//
 	// pkcs7
 	FederatedCredentialProviderType *string `json:"FederatedCredentialProviderType,omitempty" xml:"FederatedCredentialProviderType,omitempty"`
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -61,17 +61,17 @@ type CreateFederatedCredentialProviderRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 网络端点ID
+	// The network access endpoint ID.
 	//
 	// example:
 	//
 	// nae_example_id
 	NetworkAccessEndpointId *string `json:"NetworkAccessEndpointId,omitempty" xml:"NetworkAccessEndpointId,omitempty"`
-	// OIDC配置
+	// The configuration for an OIDC-based provider.
 	OidcProviderConfig *CreateFederatedCredentialProviderRequestOidcProviderConfig `json:"OidcProviderConfig,omitempty" xml:"OidcProviderConfig,omitempty" type:"Struct"`
-	// PKCS7配置
+	// The configuration for a PKCS7-based provider.
 	Pkcs7ProviderConfig *CreateFederatedCredentialProviderRequestPkcs7ProviderConfig `json:"Pkcs7ProviderConfig,omitempty" xml:"Pkcs7ProviderConfig,omitempty" type:"Struct"`
-	// 私有CA配置
+	// The configuration for a private CA-based provider.
 	PrivateCaProviderConfig *CreateFederatedCredentialProviderRequestPrivateCaProviderConfig `json:"PrivateCaProviderConfig,omitempty" xml:"PrivateCaProviderConfig,omitempty" type:"Struct"`
 }
 
@@ -217,26 +217,27 @@ func (s *CreateFederatedCredentialProviderRequestCloudIdPProviderConfig) Validat
 }
 
 type CreateFederatedCredentialProviderRequestOidcProviderConfig struct {
+	// A list of audiences. The `aud` claim in the OIDC token must match a value from this list.
 	Audiences []*string `json:"Audiences,omitempty" xml:"Audiences,omitempty" type:"Repeated"`
-	// Issuer
+	// The issuer identifier for the OIDC provider. This value must match the `iss` claim in the token.
 	//
 	// example:
 	//
 	// https://example.com
 	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
-	// Jwks来源
+	// The source of the JSON Web Key Set (JWKS).
 	//
 	// example:
 	//
 	// static
 	JwksSource *string `json:"JwksSource,omitempty" xml:"JwksSource,omitempty"`
-	// JWKS 端点
+	// The URI of the JWKS endpoint.
 	//
 	// example:
 	//
 	// https://example.com/jwks
 	JwksUri *string `json:"JwksUri,omitempty" xml:"JwksUri,omitempty"`
-	// 静态获取的jwks
+	// The static JWKS content in JSON format.
 	//
 	// example:
 	//
@@ -262,7 +263,7 @@ type CreateFederatedCredentialProviderRequestOidcProviderConfig struct {
 	//
 	// }
 	StaticJwks *string `json:"StaticJwks,omitempty" xml:"StaticJwks,omitempty"`
-	// 信任条件
+	// The condition the OIDC token must meet to be trusted.
 	//
 	// example:
 	//
@@ -337,33 +338,33 @@ func (s *CreateFederatedCredentialProviderRequestOidcProviderConfig) Validate() 
 }
 
 type CreateFederatedCredentialProviderRequestPkcs7ProviderConfig struct {
-	// pkcs7证书列表
+	// The certificates for verifying the PKCS7 signature.
 	Certificates []*CreateFederatedCredentialProviderRequestPkcs7ProviderConfigCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
-	// CMS验证模式
+	// The Cryptographic Message Syntax (CMS) verification mode.
 	//
 	// example:
 	//
 	// cert_chain
 	CmsVerificationMode *string `json:"CmsVerificationMode,omitempty" xml:"CmsVerificationMode,omitempty"`
-	// 签名有效期, 单位秒，1200
+	// The validity period of the signature, in seconds.
 	//
 	// example:
 	//
 	// 1200
 	SignatureEffectiveTime *int64 `json:"SignatureEffectiveTime,omitempty" xml:"SignatureEffectiveTime,omitempty"`
-	// 获取签名时间的表达式
+	// The expression to extract the signing time from the signature.
 	//
 	// example:
 	//
 	// pkcs7.signingTime
 	SigningTimeValueExpression *string `json:"SigningTimeValueExpression,omitempty" xml:"SigningTimeValueExpression,omitempty"`
-	// 证书信任锚点来源
+	// The source of the trust anchor.
 	//
 	// example:
 	//
 	// custom
 	TrustAnchorSource *string `json:"TrustAnchorSource,omitempty" xml:"TrustAnchorSource,omitempty"`
-	// 信任条件
+	// The condition that the signature data must meet to be trusted.
 	//
 	// example:
 	//
@@ -447,7 +448,7 @@ func (s *CreateFederatedCredentialProviderRequestPkcs7ProviderConfig) Validate()
 }
 
 type CreateFederatedCredentialProviderRequestPkcs7ProviderConfigCertificates struct {
-	// Root证书内容
+	// The content of the PEM-encoded certificate.
 	//
 	// example:
 	//
@@ -481,15 +482,15 @@ func (s *CreateFederatedCredentialProviderRequestPkcs7ProviderConfigCertificates
 }
 
 type CreateFederatedCredentialProviderRequestPrivateCaProviderConfig struct {
-	// Root证书列表
+	// The root certificates that form the trust anchor.
 	Certificates []*CreateFederatedCredentialProviderRequestPrivateCaProviderConfigCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
-	// Root证书获取方式
+	// The source of the trust anchor.
 	//
 	// example:
 	//
 	// custom
 	TrustAnchorSource *string `json:"TrustAnchorSource,omitempty" xml:"TrustAnchorSource,omitempty"`
-	// Root证书的信任条件
+	// The condition for trusting the root certificate.
 	//
 	// example:
 	//
@@ -546,7 +547,7 @@ func (s *CreateFederatedCredentialProviderRequestPrivateCaProviderConfig) Valida
 }
 
 type CreateFederatedCredentialProviderRequestPrivateCaProviderConfigCertificates struct {
-	// Root证书内容
+	// The content of the PEM-encoded certificate.
 	//
 	// example:
 	//

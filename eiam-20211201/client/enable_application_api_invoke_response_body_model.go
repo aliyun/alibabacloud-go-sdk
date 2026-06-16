@@ -14,7 +14,7 @@ type iEnableApplicationApiInvokeResponseBody interface {
 }
 
 type EnableApplicationApiInvokeResponseBody struct {
-  // The ID of the request.
+  // The request ID.
   // 
   // example:
   // 

@@ -24,29 +24,34 @@ type iListFederatedCredentialProvidersResponseBody interface {
 }
 
 type ListFederatedCredentialProvidersResponseBody struct {
+	// The list of federated credential providers.
 	FederatedCredentialProviders []*ListFederatedCredentialProvidersResponseBodyFederatedCredentialProviders `json:"FederatedCredentialProviders,omitempty" xml:"FederatedCredentialProviders,omitempty" type:"Repeated"`
-	// 分页查询时每页行数。
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 本次调用返回的查询凭证（Token）值，用于下一次翻页查询。
+	// The token to retrieve the next page of results. This parameter is empty if all results have been returned.
 	//
 	// example:
 	//
 	// NTxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 本次调用返回的查询凭证（Token）值，用于上一次翻页查询。
+	// The token for the previous page of results.
 	//
 	// example:
 	//
 	// PTxxxexample
 	PreviousToken *string `json:"PreviousToken,omitempty" xml:"PreviousToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 100
@@ -130,61 +135,61 @@ func (s *ListFederatedCredentialProvidersResponseBody) Validate() error {
 
 type ListFederatedCredentialProvidersResponseBodyFederatedCredentialProviders struct {
 	CloudIdPProviderConfig *ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersCloudIdPProviderConfig `json:"CloudIdPProviderConfig,omitempty" xml:"CloudIdPProviderConfig,omitempty" type:"Struct"`
-	// 创建时间
+	// The provider\\"s creation time.
 	//
 	// example:
 	//
 	// 1729061324000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 描述
+	// The provider\\"s description.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Federated Credential Provider ID
+	// The ID of the federated credential provider.
 	//
 	// example:
 	//
 	// fcp_asda123XXX
 	FederatedCredentialProviderId *string `json:"FederatedCredentialProviderId,omitempty" xml:"FederatedCredentialProviderId,omitempty"`
-	// 联邦凭证提供方名称
+	// The name of the federated credential provider.
 	//
 	// example:
 	//
 	// pkcs7test
 	FederatedCredentialProviderName *string `json:"FederatedCredentialProviderName,omitempty" xml:"FederatedCredentialProviderName,omitempty"`
-	// 联邦凭证提供方类型
+	// The type of the federated credential provider.
 	//
 	// example:
 	//
 	// pkcs7
 	FederatedCredentialProviderType *string `json:"FederatedCredentialProviderType,omitempty" xml:"FederatedCredentialProviderType,omitempty"`
-	// EIAM 实例ID
+	// The instance ID.
 	//
 	// example:
 	//
 	// idaas_dd4n3rnknybjjxuu5gq6ovqxXXX
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 网络访问端点ID
+	// The ID of the network access endpoint.
 	//
 	// example:
 	//
 	// inae_public
 	NetworkAccessEndpointId *string `json:"NetworkAccessEndpointId,omitempty" xml:"NetworkAccessEndpointId,omitempty"`
-	// OIDC配置
+	// The OpenID Connect (OIDC) configuration.
 	OidcProviderConfig *ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersOidcProviderConfig `json:"OidcProviderConfig,omitempty" xml:"OidcProviderConfig,omitempty" type:"Struct"`
-	// PKCS7配置
+	// The PKCS7 configuration.
 	Pkcs7ProviderConfig *ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersPkcs7ProviderConfig `json:"Pkcs7ProviderConfig,omitempty" xml:"Pkcs7ProviderConfig,omitempty" type:"Struct"`
-	// 私有CA配置
+	// The private CA configuration.
 	PrivateCaProviderConfig *ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersPrivateCaProviderConfig `json:"PrivateCaProviderConfig,omitempty" xml:"PrivateCaProviderConfig,omitempty" type:"Struct"`
-	// 状态
+	// The provider\\"s status.
 	//
 	// example:
 	//
 	// enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 更新时间
+	// The provider\\"s last update time.
 	//
 	// example:
 	//
@@ -367,9 +372,9 @@ func (s *ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvider
 }
 
 type ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersOidcProviderConfig struct {
-	// oidc凭证的受众列表
+	// The list of audiences for the OIDC credential.
 	Audiences []*string `json:"Audiences,omitempty" xml:"Audiences,omitempty" type:"Repeated"`
-	// 动态获取的jwks
+	// The dynamically obtained JWKS.
 	//
 	// example:
 	//
@@ -395,29 +400,31 @@ type ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersOid
 	//
 	// }
 	DynamicJwks *string `json:"DynamicJwks,omitempty" xml:"DynamicJwks,omitempty"`
-	// Issuer
+	// The issuer.
 	//
 	// example:
 	//
 	// https://example.com
 	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	// The timestamp of the last JWKS retrieval.
+	//
 	// example:
 	//
 	// 1729061324000
 	JwksLastObtainedTime *int64 `json:"JwksLastObtainedTime,omitempty" xml:"JwksLastObtainedTime,omitempty"`
-	// Jwks来源
+	// The JWKS source.
 	//
 	// example:
 	//
 	// static
 	JwksSource *string `json:"JwksSource,omitempty" xml:"JwksSource,omitempty"`
-	// JWKS 端点
+	// The JSON Web Key Set (JWKS) endpoint.
 	//
 	// example:
 	//
 	// https://example.com
 	JwksUri *string `json:"JwksUri,omitempty" xml:"JwksUri,omitempty"`
-	// 静态获取的jwks
+	// The statically obtained JWKS.
 	//
 	// example:
 	//
@@ -443,7 +450,7 @@ type ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersOid
 	//
 	// }
 	StaticJwks *string `json:"StaticJwks,omitempty" xml:"StaticJwks,omitempty"`
-	// 默认条件
+	// The trust condition.
 	//
 	// example:
 	//
@@ -536,33 +543,33 @@ func (s *ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvider
 }
 
 type ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersPkcs7ProviderConfig struct {
-	// pkcs7证书列表
+	// A list of PKCS7 certificates.
 	Certificates []*ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersPkcs7ProviderConfigCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
-	// CMS验证模式
+	// The Cryptographic Message Syntax (CMS) verification mode.
 	//
 	// example:
 	//
 	// cert
 	CmsVerificationMode *string `json:"CmsVerificationMode,omitempty" xml:"CmsVerificationMode,omitempty"`
-	// 签名有效时间
+	// The validity period of the signature.
 	//
 	// example:
 	//
 	// 3600
 	SignatureEffectiveTime *int64 `json:"SignatureEffectiveTime,omitempty" xml:"SignatureEffectiveTime,omitempty"`
-	// 签名时间
+	// The expression used to obtain the signing time.
 	//
 	// example:
 	//
 	// pkcs7.payload.jsonData.audience.signingTime
 	SigningTimeValueExpression *string `json:"SigningTimeValueExpression,omitempty" xml:"SigningTimeValueExpression,omitempty"`
-	// 证书信任锚点来源
+	// The source of the certificate trust anchor.
 	//
 	// example:
 	//
 	// alibaba_cloud
 	TrustAnchorSource *string `json:"TrustAnchorSource,omitempty" xml:"TrustAnchorSource,omitempty"`
-	// 信任条件
+	// The trust condition.
 	//
 	// example:
 	//
@@ -646,9 +653,9 @@ func (s *ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvider
 }
 
 type ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersPkcs7ProviderConfigCertificates struct {
-	// 证书元数据
+	// The metadata of the certificate.
 	CertificateMetadata *ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersPkcs7ProviderConfigCertificatesCertificateMetadata `json:"CertificateMetadata,omitempty" xml:"CertificateMetadata,omitempty" type:"Struct"`
-	// Root证书内容
+	// The content of the certificate.
 	//
 	// example:
 	//
@@ -658,7 +665,7 @@ type ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersPkc
 	//
 	// -----END CERTIFICATE-----
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// Root证书指纹
+	// The certificate fingerprint.
 	//
 	// example:
 	//
@@ -711,13 +718,13 @@ func (s *ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvider
 }
 
 type ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersPkcs7ProviderConfigCertificatesCertificateMetadata struct {
-	// 证书过期时间
+	// The expiration time.
 	//
 	// example:
 	//
 	// 1729061324000
 	NotAfter *int64 `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
-	// 证书生效时间
+	// The validity start time.
 	//
 	// example:
 	//
@@ -756,15 +763,15 @@ func (s *ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvider
 }
 
 type ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersPrivateCaProviderConfig struct {
-	// Root证书
+	// A list of root certificates.
 	Certificates []*ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersPrivateCaProviderConfigCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
-	// Root证书获取方式
+	// The method for obtaining the root certificate.
 	//
 	// example:
 	//
 	// custom
 	TrustAnchorSource *string `json:"TrustAnchorSource,omitempty" xml:"TrustAnchorSource,omitempty"`
-	// Root证书的默认条件
+	// The trust condition.
 	//
 	// example:
 	//
@@ -821,9 +828,9 @@ func (s *ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvider
 }
 
 type ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersPrivateCaProviderConfigCertificates struct {
-	// 证书元数据
+	// The metadata of the certificate.
 	CertificateMetadata *ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersPrivateCaProviderConfigCertificatesCertificateMetadata `json:"CertificateMetadata,omitempty" xml:"CertificateMetadata,omitempty" type:"Struct"`
-	// Root证书内容
+	// The content of the root certificate.
 	//
 	// example:
 	//
@@ -833,7 +840,7 @@ type ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersPri
 	//
 	// -----END CERTIFICATE-----
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// Root证书指纹
+	// The fingerprint of the root certificate.
 	//
 	// example:
 	//
@@ -886,13 +893,13 @@ func (s *ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvider
 }
 
 type ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersPrivateCaProviderConfigCertificatesCertificateMetadata struct {
-	// 证书过期时间
+	// The expiration time.
 	//
 	// example:
 	//
 	// 1729061324000
 	NotAfter *int64 `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
-	// 证书生效时间
+	// The validity start time.
 	//
 	// example:
 	//

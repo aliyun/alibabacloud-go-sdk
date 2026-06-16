@@ -16,7 +16,10 @@ type iGetApplicationRoleResponseBody interface {
 }
 
 type GetApplicationRoleResponseBody struct {
+	// The details of the application role.
 	ApplicationRole *GetApplicationRoleResponseBodyApplicationRole `json:"ApplicationRole,omitempty" xml:"ApplicationRole,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
@@ -59,37 +62,37 @@ func (s *GetApplicationRoleResponseBody) Validate() error {
 }
 
 type GetApplicationRoleResponseBodyApplicationRole struct {
-	// 应用唯一标识
+	// The ID of the application.
 	//
 	// example:
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// 应用角色的唯一标识
+	// The ID of the application role.
 	//
 	// example:
 	//
 	// approle_01kh2vuo8v9splv8maak1d22rxxxx
 	ApplicationRoleId *string `json:"ApplicationRoleId,omitempty" xml:"ApplicationRoleId,omitempty"`
-	// 应用角色名称
+	// The name of the application role.
 	//
 	// example:
 	//
 	// Admin Role
 	ApplicationRoleName *string `json:"ApplicationRoleName,omitempty" xml:"ApplicationRoleName,omitempty"`
-	// 应用角色值
+	// The value of the application role.
 	//
 	// example:
 	//
 	// admin_role
 	ApplicationRoleValue *string `json:"ApplicationRoleValue,omitempty" xml:"ApplicationRoleValue,omitempty"`
-	// 应用角色描述
+	// The description of the application role.
 	//
 	// example:
 	//
 	// Admin Role Description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// EIAM 实例唯一标识
+	// The ID of the instance.
 	//
 	// example:
 	//

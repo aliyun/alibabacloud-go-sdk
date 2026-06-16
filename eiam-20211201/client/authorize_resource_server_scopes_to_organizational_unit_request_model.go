@@ -22,7 +22,7 @@ type iAuthorizeResourceServerScopesToOrganizationalUnitRequest interface {
 }
 
 type AuthorizeResourceServerScopesToOrganizationalUnitRequest struct {
-	// IDaaS的应用资源ID。
+	// The ID of the resource server application.
 	//
 	// This parameter is required.
 	//
@@ -30,13 +30,15 @@ type AuthorizeResourceServerScopesToOrganizationalUnitRequest struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// A client token to ensure the idempotence of the request. Generate a unique value from your client. This token can contain only ASCII characters and must be no more than 64 characters long. For more information, see [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// client-token-example
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +46,7 @@ type AuthorizeResourceServerScopesToOrganizationalUnitRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 组织ID。
+	// The organization ID.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +54,7 @@ type AuthorizeResourceServerScopesToOrganizationalUnitRequest struct {
 	//
 	// ou_wovwffm62xifdziem7an7xxxxx
 	OrganizationalUnitId *string `json:"OrganizationalUnitId,omitempty" xml:"OrganizationalUnitId,omitempty"`
-	// ResourceServer权限ID。
+	// A list of scope permission IDs for the resource server.
 	//
 	// This parameter is required.
 	//

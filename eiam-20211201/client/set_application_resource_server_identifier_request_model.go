@@ -20,7 +20,7 @@ type iSetApplicationResourceServerIdentifierRequest interface {
 }
 
 type SetApplicationResourceServerIdentifierRequest struct {
-	// IDaaS的应用资源ID。
+	// The application ID.
 	//
 	// This parameter is required.
 	//
@@ -28,11 +28,13 @@ type SetApplicationResourceServerIdentifierRequest struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// A client token to ensure the idempotence of the request. Generate a unique value from your client for this parameter. The client token can contain only ASCII characters and cannot be longer than 64 characters. For more information, see [How to ensure idempotence](https://www.alibabacloud.com/help/en/ecs/developer-reference/how-to-ensure-idempotence).
+	//
 	// example:
 	//
 	// client-token-example
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +42,7 @@ type SetApplicationResourceServerIdentifierRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// ResourceServer唯一标识，对应ResourceServer受众
+	// The unique identifier of the resource server.
 	//
 	// This parameter is required.
 	//

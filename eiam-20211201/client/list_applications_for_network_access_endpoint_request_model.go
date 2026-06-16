@@ -20,7 +20,7 @@ type iListApplicationsForNetworkAccessEndpointRequest interface {
 }
 
 type ListApplicationsForNetworkAccessEndpointRequest struct {
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -28,13 +28,13 @@ type ListApplicationsForNetworkAccessEndpointRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 分页查询时每页行数。默认值为20，最大值为100。
+	// The number of entries to return on each page.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 网络端点ID。
+	// The network access endpoint ID.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type ListApplicationsForNetworkAccessEndpointRequest struct {
 	//
 	// nae_mxzj4c44ctyectkggtg4mxxxxx
 	NetworkAccessEndpointId *string `json:"NetworkAccessEndpointId,omitempty" xml:"NetworkAccessEndpointId,omitempty"`
-	// 查询凭证（Token），取值为上一次API调用返回的NextToken参数值。
+	// The token for the next page of results.
 	//
 	// example:
 	//

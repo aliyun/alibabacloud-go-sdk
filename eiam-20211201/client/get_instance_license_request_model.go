@@ -14,7 +14,7 @@ type iGetInstanceLicenseRequest interface {
 }
 
 type GetInstanceLicenseRequest struct {
-	// Instance ID
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

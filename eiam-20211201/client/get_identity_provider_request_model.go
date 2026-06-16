@@ -16,7 +16,7 @@ type iGetIdentityProviderRequest interface {
 }
 
 type GetIdentityProviderRequest struct {
-	// Identity provider ID.
+	// The identity provider ID.
 	//
 	// This parameter is required.
 	//

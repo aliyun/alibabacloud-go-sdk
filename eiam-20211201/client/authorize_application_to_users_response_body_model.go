@@ -14,7 +14,7 @@ type iAuthorizeApplicationToUsersResponseBody interface {
 }
 
 type AuthorizeApplicationToUsersResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

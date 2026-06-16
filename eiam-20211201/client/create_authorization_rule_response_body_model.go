@@ -16,10 +16,14 @@ type iCreateAuthorizationRuleResponseBody interface {
 }
 
 type CreateAuthorizationRuleResponseBody struct {
+	// The authorization rule ID.
+	//
 	// example:
 	//
 	// arrule_01kf143ug06fg7m9f43u7vahxxxx
 	AuthorizationRuleId *string `json:"AuthorizationRuleId,omitempty" xml:"AuthorizationRuleId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A

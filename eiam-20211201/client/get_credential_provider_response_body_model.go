@@ -16,7 +16,10 @@ type iGetCredentialProviderResponseBody interface {
 }
 
 type GetCredentialProviderResponseBody struct {
+	// Credential provider.
 	CredentialProvider *GetCredentialProviderResponseBodyCredentialProvider `json:"CredentialProvider,omitempty" xml:"CredentialProvider,omitempty" type:"Struct"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
@@ -59,63 +62,75 @@ func (s *GetCredentialProviderResponseBody) Validate() error {
 }
 
 type GetCredentialProviderResponseBodyCredentialProvider struct {
-	// 认证令牌提供商的创建时间，Unix时间戳。
+	// Creation time of the credential provider, in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1649830225000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 认证令牌提供商的配置。
+	// Credential provider configuration.
 	CredentialProviderConfig *GetCredentialProviderResponseBodyCredentialProviderCredentialProviderConfig `json:"CredentialProviderConfig,omitempty" xml:"CredentialProviderConfig,omitempty" type:"Struct"`
-	// 认证令牌提供商的创建类型。
+	// Credential provider creation type. Valid values:
+	//
+	// - system_init: Created by the system
+	//
+	// - user_custom: Created by a user
 	//
 	// example:
 	//
 	// user_custom
 	CredentialProviderCreationType *string `json:"CredentialProviderCreationType,omitempty" xml:"CredentialProviderCreationType,omitempty"`
-	// 认证令牌提供商ID。
+	// Credential provider ID.
 	//
 	// example:
 	//
 	// atp_01kr2cmj5gxxx4fvmls2e93dxxxxx
 	CredentialProviderId *string `json:"CredentialProviderId,omitempty" xml:"CredentialProviderId,omitempty"`
-	// 认证令牌提供商的业务标识。
+	// Credential provider identifier.
 	//
 	// example:
 	//
 	// test_example_identifier
 	CredentialProviderIdentifier *string `json:"CredentialProviderIdentifier,omitempty" xml:"CredentialProviderIdentifier,omitempty"`
-	// 认证令牌提供商名称。
+	// Credential provider name.
 	//
 	// example:
 	//
 	// test_example_name
 	CredentialProviderName *string `json:"CredentialProviderName,omitempty" xml:"CredentialProviderName,omitempty"`
-	// 认证令牌提供商的类型。
+	// Credential provider type. Valid values:
+	//
+	// - oauth: OAuth credential provider
+	//
+	// - jwt: JWT credential provider
 	//
 	// example:
 	//
 	// oauth
 	CredentialProviderType *string `json:"CredentialProviderType,omitempty" xml:"CredentialProviderType,omitempty"`
-	// 描述。
+	// Description.
 	//
 	// example:
 	//
 	// This is an example description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// EIAM实例ID。
+	// Instance ID.
 	//
 	// example:
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 认证令牌提供商的状态。
+	// Credential provider status. Valid values:
+	//
+	// - enabled: Enabled
+	//
+	// - disabled: Disabled
 	//
 	// example:
 	//
 	// enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 认证令牌提供商的更新时间，Unix时间戳。
+	// Update time of the credential provider, in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -240,11 +255,13 @@ func (s *GetCredentialProviderResponseBodyCredentialProvider) Validate() error {
 }
 
 type GetCredentialProviderResponseBodyCredentialProviderCredentialProviderConfig struct {
-	// JWT身份提供商配置。
+	// Configuration for a JWT credential provider.
 	JwtProviderConfig *GetCredentialProviderResponseBodyCredentialProviderCredentialProviderConfigJwtProviderConfig `json:"JwtProviderConfig,omitempty" xml:"JwtProviderConfig,omitempty" type:"Struct"`
-	// OAuth 2LO机用类型的提供商的配置。
+	// Configuration for an OAuth credential provider.
 	OAuthProviderConfig *GetCredentialProviderResponseBodyCredentialProviderCredentialProviderConfigOAuthProviderConfig `json:"OAuthProviderConfig,omitempty" xml:"OAuthProviderConfig,omitempty" type:"Struct"`
-	// 认证令牌提供商的敏感配置对应的凭据ID列表。
+	// List of credential IDs for sensitive configurations of the credential provider.
+	//
+	// > The system securely stores sensitive configuration information as credentials.
 	ProviderCredentialIds []*string `json:"ProviderCredentialIds,omitempty" xml:"ProviderCredentialIds,omitempty" type:"Repeated"`
 }
 
@@ -298,33 +315,33 @@ func (s *GetCredentialProviderResponseBodyCredentialProviderCredentialProviderCo
 }
 
 type GetCredentialProviderResponseBodyCredentialProviderCredentialProviderConfigJwtProviderConfig struct {
-	// 签发出的JWT中的issuer字段的允许列表。
+	// List of allowed JWT issuers.
 	AllowedTokenIssuers []*string `json:"AllowedTokenIssuers,omitempty" xml:"AllowedTokenIssuers,omitempty" type:"Repeated"`
-	// 是否开启JWT派生短令牌能力。
+	// Enable JWT derived short token.
 	//
 	// example:
 	//
 	// false
 	DerivedShortTokenEnabled *bool `json:"DerivedShortTokenEnabled,omitempty" xml:"DerivedShortTokenEnabled,omitempty"`
-	// JWT的有效时长，单位秒。
+	// Validity period of the JWT. Unit: seconds.
 	//
 	// example:
 	//
 	// 900
 	Expiration *int32 `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
-	// 是否开启JWT过期清理。
+	// Enable JWT expiration cleanup.
 	//
 	// example:
 	//
 	// true
 	ExpirationCleanupEnabled *bool `json:"ExpirationCleanupEnabled,omitempty" xml:"ExpirationCleanupEnabled,omitempty"`
-	// JWT issuer。
+	// JWT issuer.
 	//
 	// example:
 	//
 	// https://test.issuer.com
 	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
-	// JWKs端点地址。
+	// JWKs endpoint URL.
 	//
 	// example:
 	//
@@ -399,19 +416,25 @@ func (s *GetCredentialProviderResponseBodyCredentialProviderCredentialProviderCo
 }
 
 type GetCredentialProviderResponseBodyCredentialProviderCredentialProviderConfigOAuthProviderConfig struct {
-	// OAuth协议中的client_id，客户端ID。
+	// Client ID, corresponding to client_id in the OAuth protocol.
 	//
 	// example:
 	//
 	// client_id_example_xxx
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	// OAuth协议中的scope，权限范围。
+	// Scope, corresponding to scope in the OAuth protocol.
+	//
+	// > The Scope value configured for the OAuth credential provider serves as the default. If you do not specify the scope parameter when calling the Developer API to obtain an OAuth access token, the system uses this default Scope value.
+	//
+	// 	Notice:
+	//
+	// Separate multiple Scope values with spaces.
 	//
 	// example:
 	//
 	// example:test_01 example:test_02
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	// OAuth协议的Token端点。
+	// Token endpoint, corresponding to the OAuth protocol.
 	//
 	// example:
 	//

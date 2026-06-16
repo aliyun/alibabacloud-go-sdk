@@ -20,24 +20,32 @@ type iGenerateOauthTokenRequest interface {
 }
 
 type GenerateOauthTokenRequest struct {
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The audience identifier of the resource server.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// https://example.com
 	Audience *string `json:"Audience,omitempty" xml:"Audience,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The scope of permissions.
+	//
 	// This parameter is required.
 	ScopeValues []*string `json:"ScopeValues,omitempty" xml:"ScopeValues,omitempty" type:"Repeated"`
 }

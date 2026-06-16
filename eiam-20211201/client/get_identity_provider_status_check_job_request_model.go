@@ -18,7 +18,7 @@ type iGetIdentityProviderStatusCheckJobRequest interface {
 }
 
 type GetIdentityProviderStatusCheckJobRequest struct {
-	// IDaaS的身份提供方主键id
+	// The identity provider (IdP) ID.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type GetIdentityProviderStatusCheckJobRequest struct {
 	//
 	// idp_11111
 	IdentityProviderId *string `json:"IdentityProviderId,omitempty" xml:"IdentityProviderId,omitempty"`
-	// 任务ID
+	// The task ID.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type GetIdentityProviderStatusCheckJobRequest struct {
 	//
 	// async_000xxxx
 	IdentityProviderStatusCheckJobId *string `json:"IdentityProviderStatusCheckJobId,omitempty" xml:"IdentityProviderStatusCheckJobId,omitempty"`
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

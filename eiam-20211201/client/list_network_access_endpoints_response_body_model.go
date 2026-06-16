@@ -20,17 +20,22 @@ type iListNetworkAccessEndpointsResponseBody interface {
 }
 
 type ListNetworkAccessEndpointsResponseBody struct {
+	// A collection of network endpoints.
 	NetworkAccessEndpoints []*ListNetworkAccessEndpointsResponseBodyNetworkAccessEndpoints `json:"NetworkAccessEndpoints,omitempty" xml:"NetworkAccessEndpoints,omitempty" type:"Repeated"`
-	// 本次调用返回的查询凭证（Token）值，用于下一次翻页查询。
+	// The token returned for the next query.
 	//
 	// example:
 	//
 	// NTxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 100
@@ -95,67 +100,79 @@ func (s *ListNetworkAccessEndpointsResponseBody) Validate() error {
 }
 
 type ListNetworkAccessEndpointsResponseBodyNetworkAccessEndpoints struct {
-	// 专属网络端点创建时间，Unix时间戳格式，单位为毫秒。
+	// The time when the network endpoint was created. This value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1649830226000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 实例ID。
+	// The instance ID.
 	//
 	// example:
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 专属网络端点ID。
+	// The network endpoint ID.
 	//
 	// example:
 	//
 	// nae_examplexxx
 	NetworkAccessEndpointId *string `json:"NetworkAccessEndpointId,omitempty" xml:"NetworkAccessEndpointId,omitempty"`
-	// 专属网络端点名称。
+	// The name of the network endpoint.
 	//
 	// example:
 	//
-	// xx业务VPC访问端点
+	// VPC access endpoint for xx service
 	NetworkAccessEndpointName *string `json:"NetworkAccessEndpointName,omitempty" xml:"NetworkAccessEndpointName,omitempty"`
-	// 专属网络端点连接的类型。
+	// The type of the network endpoint. Valid values:
+	//
+	// - shared: a shared network endpoint.
+	//
+	// - private: a private network endpoint.
 	//
 	// example:
 	//
 	// private
 	NetworkAccessEndpointType *string `json:"NetworkAccessEndpointType,omitempty" xml:"NetworkAccessEndpointType,omitempty"`
-	// 专属网络端点使用的安全组ID。
+	// The ID of the security group used by the private network endpoint.
 	//
 	// example:
 	//
 	// sg-examplexxx
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// 专属网络端点状态。
+	// The status of the network endpoint. Valid values:
+	//
+	// - pending: The endpoint is pending initialization.
+	//
+	// - creating: The endpoint is being created.
+	//
+	// - running: The endpoint is running.
+	//
+	// - deleting: The endpoint is being deleted.
 	//
 	// example:
 	//
 	// running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 专属网络端点最近更新时间，Unix时间戳格式，单位为毫秒。
+	// The time when the network endpoint was last updated. This value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1649830226000
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// 专属网络端点连接的指定vSwitch列表。
+	// A list of vSwitches to which the private network endpoint is connected.
 	//
 	// example:
 	//
 	// vsw-examplexxx
 	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
-	// 专属网络端点连接的VpcID。
+	// The ID of the VPC to which the private network endpoint is connected.
 	//
 	// example:
 	//
 	// vpc-examplexxx
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// 专属网络端点连接的Vpc所属地域。
+	// The region ID of the VPC to which the private network endpoint is connected.
 	//
 	// example:
 	//

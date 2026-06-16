@@ -24,7 +24,15 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = dara.String("")
+	client.EndpointRule = dara.String("regional")
+	client.EndpointMap = map[string]*string{
+		"eu-central-1":   dara.String("eiam.eu-central-1.aliyuncs.com"),
+		"cn-hongkong":    dara.String("eiam.cn-hongkong.aliyuncs.com"),
+		"cn-hangzhou":    dara.String("eiam.cn-hangzhou.aliyuncs.com"),
+		"ap-southeast-5": dara.String("eiam.ap-southeast-5.aliyuncs.com"),
+		"ap-southeast-1": dara.String("eiam.ap-southeast-1.aliyuncs.com"),
+		"ap-northeast-2": dara.String("eiam.ap-northeast-2.aliyuncs.com"),
+	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -58,7 +66,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 在当前应用下给指定员工添加一个应用账号。
+// Adds an application account to a specified user in the current application.
 //
 // @param request - AddApplicationAccountToUserRequest
 //
@@ -114,7 +122,7 @@ func (client *Client) AddApplicationAccountToUserWithOptions(request *AddApplica
 
 // Summary:
 //
-// 在当前应用下给指定员工添加一个应用账号。
+// Adds an application account to a specified user in the current application.
 //
 // @param request - AddApplicationAccountToUserRequest
 //
@@ -132,7 +140,7 @@ func (client *Client) AddApplicationAccountToUser(request *AddApplicationAccount
 
 // Summary:
 //
-// 将应用添加到授权规则
+// Adds an application to an authorization rule.
 //
 // @param request - AddApplicationToAuthorizationRuleRequest
 //
@@ -198,7 +206,7 @@ func (client *Client) AddApplicationToAuthorizationRuleWithOptions(request *AddA
 
 // Summary:
 //
-// 将应用添加到授权规则
+// Adds an application to an authorization rule.
 //
 // @param request - AddApplicationToAuthorizationRuleRequest
 //
@@ -216,7 +224,7 @@ func (client *Client) AddApplicationToAuthorizationRule(request *AddApplicationT
 
 // Summary:
 //
-// 添加条款到品牌
+// # Assign terms to a brand
 //
 // @param request - AddCustomPrivacyPoliciesToBrandRequest
 //
@@ -268,7 +276,7 @@ func (client *Client) AddCustomPrivacyPoliciesToBrandWithOptions(request *AddCus
 
 // Summary:
 //
-// 添加条款到品牌
+// # Assign terms to a brand
 //
 // @param request - AddCustomPrivacyPoliciesToBrandRequest
 //
@@ -286,7 +294,7 @@ func (client *Client) AddCustomPrivacyPoliciesToBrand(request *AddCustomPrivacyP
 
 // Summary:
 //
-// 将组添加到授权规则
+// Adds a group to an authorization rule.
 //
 // @param request - AddGroupToAuthorizationRuleRequest
 //
@@ -352,7 +360,7 @@ func (client *Client) AddGroupToAuthorizationRuleWithOptions(request *AddGroupTo
 
 // Summary:
 //
-// 将组添加到授权规则
+// Adds a group to an authorization rule.
 //
 // @param request - AddGroupToAuthorizationRuleRequest
 //
@@ -370,7 +378,7 @@ func (client *Client) AddGroupToAuthorizationRule(request *AddGroupToAuthorizati
 
 // Summary:
 //
-// 将账户添加到授权规则
+// Adds a user to an authorization rule.
 //
 // @param request - AddUserToAuthorizationRuleRequest
 //
@@ -436,7 +444,7 @@ func (client *Client) AddUserToAuthorizationRuleWithOptions(request *AddUserToAu
 
 // Summary:
 //
-// 将账户添加到授权规则
+// Adds a user to an authorization rule.
 //
 // @param request - AddUserToAuthorizationRuleRequest
 //
@@ -454,7 +462,7 @@ func (client *Client) AddUserToAuthorizationRule(request *AddUserToAuthorization
 
 // Summary:
 //
-// Adds an Employee Identity and Access Management (EIAM) account to multiple EIAM organizations of Identity as a Service (IDaaS). If the account already exists in the organizational unit, the system directly returns a success response.
+// Adds a specified EIAM account to one or more EIAM organizations. If the account already exists in one of the specified organizations, the request succeeds.
 //
 // @param request - AddUserToOrganizationalUnitsRequest
 //
@@ -506,7 +514,7 @@ func (client *Client) AddUserToOrganizationalUnitsWithOptions(request *AddUserTo
 
 // Summary:
 //
-// Adds an Employee Identity and Access Management (EIAM) account to multiple EIAM organizations of Identity as a Service (IDaaS). If the account already exists in the organizational unit, the system directly returns a success response.
+// Adds a specified EIAM account to one or more EIAM organizations. If the account already exists in one of the specified organizations, the request succeeds.
 //
 // @param request - AddUserToOrganizationalUnitsRequest
 //
@@ -594,7 +602,7 @@ func (client *Client) AddUsersToGroup(request *AddUsersToGroupRequest) (_result 
 
 // Summary:
 //
-// Grants the permissions to access an application to multiple account groups at a time in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
+// Grants multiple EIAM groups access to an application.
 //
 // @param request - AuthorizeApplicationToGroupsRequest
 //
@@ -650,7 +658,7 @@ func (client *Client) AuthorizeApplicationToGroupsWithOptions(request *Authorize
 
 // Summary:
 //
-// Grants the permissions to access an application to multiple account groups at a time in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
+// Grants multiple EIAM groups access to an application.
 //
 // @param request - AuthorizeApplicationToGroupsRequest
 //
@@ -668,7 +676,7 @@ func (client *Client) AuthorizeApplicationToGroups(request *AuthorizeApplication
 
 // Summary:
 //
-// Grants the access permissions on an application to multiple Employee Identity and Access Management (EIAM) organizations at a time.
+// Grants access to an application for multiple EIAM organizations in a batch operation.
 //
 // @param request - AuthorizeApplicationToOrganizationalUnitsRequest
 //
@@ -724,7 +732,7 @@ func (client *Client) AuthorizeApplicationToOrganizationalUnitsWithOptions(reque
 
 // Summary:
 //
-// Grants the access permissions on an application to multiple Employee Identity and Access Management (EIAM) organizations at a time.
+// Grants access to an application for multiple EIAM organizations in a batch operation.
 //
 // @param request - AuthorizeApplicationToOrganizationalUnitsRequest
 //
@@ -742,7 +750,7 @@ func (client *Client) AuthorizeApplicationToOrganizationalUnits(request *Authori
 
 // Summary:
 //
-// Grants the access permissions on an application to multiple Employee Identity and Access Management (EIAM) accounts at a time.
+// Grants permissions to multiple EIAM accounts to access an application.
 //
 // @param request - AuthorizeApplicationToUsersRequest
 //
@@ -798,7 +806,7 @@ func (client *Client) AuthorizeApplicationToUsersWithOptions(request *AuthorizeA
 
 // Summary:
 //
-// Grants the access permissions on an application to multiple Employee Identity and Access Management (EIAM) accounts at a time.
+// Grants permissions to multiple EIAM accounts to access an application.
 //
 // @param request - AuthorizeApplicationToUsersRequest
 //
@@ -816,7 +824,7 @@ func (client *Client) AuthorizeApplicationToUsers(request *AuthorizeApplicationT
 
 // Summary:
 //
-// 授权指定ResourceServer下的Scope给Client
+// Grants a client application permissions for specific scopes on a specified resource server.
 //
 // @param request - AuthorizeResourceServerScopesToClientRequest
 //
@@ -872,7 +880,7 @@ func (client *Client) AuthorizeResourceServerScopesToClientWithOptions(request *
 
 // Summary:
 //
-// 授权指定ResourceServer下的Scope给Client
+// Grants a client application permissions for specific scopes on a specified resource server.
 //
 // @param request - AuthorizeResourceServerScopesToClientRequest
 //
@@ -890,7 +898,7 @@ func (client *Client) AuthorizeResourceServerScopesToClient(request *AuthorizeRe
 
 // Summary:
 //
-// 授予组ResourceServerScope权限
+// Grants a group permissions for specified scopes on a resource server.
 //
 // @param request - AuthorizeResourceServerScopesToGroupRequest
 //
@@ -950,7 +958,7 @@ func (client *Client) AuthorizeResourceServerScopesToGroupWithOptions(request *A
 
 // Summary:
 //
-// 授予组ResourceServerScope权限
+// Grants a group permissions for specified scopes on a resource server.
 //
 // @param request - AuthorizeResourceServerScopesToGroupRequest
 //
@@ -968,7 +976,7 @@ func (client *Client) AuthorizeResourceServerScopesToGroup(request *AuthorizeRes
 
 // Summary:
 //
-// 授予组织ResourceServerScope权限
+// Grants scope permissions for a specified resource server to an organization.
 //
 // @param request - AuthorizeResourceServerScopesToOrganizationalUnitRequest
 //
@@ -1028,7 +1036,7 @@ func (client *Client) AuthorizeResourceServerScopesToOrganizationalUnitWithOptio
 
 // Summary:
 //
-// 授予组织ResourceServerScope权限
+// Grants scope permissions for a specified resource server to an organization.
 //
 // @param request - AuthorizeResourceServerScopesToOrganizationalUnitRequest
 //
@@ -1046,7 +1054,7 @@ func (client *Client) AuthorizeResourceServerScopesToOrganizationalUnit(request 
 
 // Summary:
 //
-// 授予用户ResourceServerScope权限
+// Grants scope permissions for a specified resource server to a user account.
 //
 // @param request - AuthorizeResourceServerScopesToUserRequest
 //
@@ -1106,7 +1114,7 @@ func (client *Client) AuthorizeResourceServerScopesToUserWithOptions(request *Au
 
 // Summary:
 //
-// 授予用户ResourceServerScope权限
+// Grants scope permissions for a specified resource server to a user account.
 //
 // @param request - AuthorizeResourceServerScopesToUserRequest
 //
@@ -1124,7 +1132,7 @@ func (client *Client) AuthorizeResourceServerScopesToUser(request *AuthorizeReso
 
 // Summary:
 //
-// 授权指定ResourceServer给Client
+// Authorizes a resource server for a client application.
 //
 // @param request - AuthorizeResourceServerToClientRequest
 //
@@ -1176,7 +1184,7 @@ func (client *Client) AuthorizeResourceServerToClientWithOptions(request *Author
 
 // Summary:
 //
-// 授权指定ResourceServer给Client
+// Authorizes a resource server for a client application.
 //
 // @param request - AuthorizeResourceServerToClientRequest
 //
@@ -1194,7 +1202,7 @@ func (client *Client) AuthorizeResourceServerToClient(request *AuthorizeResource
 
 // Summary:
 //
-// 绑定三方登录账户
+// Binds a user to a third-party logon account.
 //
 // @param request - BindUserAuthnSourceMappingRequest
 //
@@ -1250,7 +1258,7 @@ func (client *Client) BindUserAuthnSourceMappingWithOptions(request *BindUserAut
 
 // Summary:
 //
-// 绑定三方登录账户
+// Binds a user to a third-party logon account.
 //
 // @param request - BindUserAuthnSourceMappingRequest
 //
@@ -1268,7 +1276,7 @@ func (client *Client) BindUserAuthnSourceMapping(request *BindUserAuthnSourceMap
 
 // Summary:
 //
-// 检查应用同步主组织是否在应用同步范围
+// Checks whether the primary organizational unit for an application is within the synchronization scope.
 //
 // @param request - CheckApplicationProvisioningUserPrimaryOrganizationalUnitRequest
 //
@@ -1320,7 +1328,7 @@ func (client *Client) CheckApplicationProvisioningUserPrimaryOrganizationalUnitW
 
 // Summary:
 //
-// 检查应用同步主组织是否在应用同步范围
+// Checks whether the primary organizational unit for an application is within the synchronization scope.
 //
 // @param request - CheckApplicationProvisioningUserPrimaryOrganizationalUnitRequest
 //
@@ -1338,7 +1346,11 @@ func (client *Client) CheckApplicationProvisioningUserPrimaryOrganizationalUnit(
 
 // Summary:
 //
-// 实例删除检查。
+// Checks if an instance can be deleted.
+//
+// Description:
+//
+// Verify that the instance is no longer in use. Deleting an EIAM instance permanently removes all its associated data.
 //
 // @param request - CheckInstanceForDeleteRequest
 //
@@ -1382,7 +1394,11 @@ func (client *Client) CheckInstanceForDeleteWithOptions(request *CheckInstanceFo
 
 // Summary:
 //
-// 实例删除检查。
+// Checks if an instance can be deleted.
+//
+// Description:
+//
+// Verify that the instance is no longer in use. Deleting an EIAM instance permanently removes all its associated data.
 //
 // @param request - CheckInstanceForDeleteRequest
 //
@@ -1400,7 +1416,11 @@ func (client *Client) CheckInstanceForDelete(request *CheckInstanceForDeleteRequ
 
 // Summary:
 //
-// 判断实例是否具有某个模块的功能
+// Determines whether an instance has a specific module feature.
+//
+// Description:
+//
+// Ensure that your current instance is no longer in use. When you delete an EIAM instance, all related data is deleted.
 //
 // @param request - CheckInstanceModuleStatusRequest
 //
@@ -1456,7 +1476,11 @@ func (client *Client) CheckInstanceModuleStatusWithOptions(request *CheckInstanc
 
 // Summary:
 //
-// 判断实例是否具有某个模块的功能
+// Determines whether an instance has a specific module feature.
+//
+// Description:
+//
+// Ensure that your current instance is no longer in use. When you delete an EIAM instance, all related data is deleted.
 //
 // @param request - CheckInstanceModuleStatusRequest
 //
@@ -1474,11 +1498,11 @@ func (client *Client) CheckInstanceModuleStatus(request *CheckInstanceModuleStat
 
 // Summary:
 //
-// Adds an application to an Enterprise Identity Access Management (EIAM) instance of Identity as a Service (IDaaS).
+// Creates an application in the specified EIAM instance.
 //
 // Description:
 //
-// IDaaS EIAM supports the following two standard single sign-on (SSO) protocols for adding applications: SAML 2.0 and OIDC. You can select an SSO protocol based on your business requirements when you add an application. You cannot change the SSO protocol that you selected after the application is added.
+// You must select the required SSO protocol when you create the application. This selection cannot be changed after creation.
 //
 // @param request - CreateApplicationRequest
 //
@@ -1558,11 +1582,11 @@ func (client *Client) CreateApplicationWithOptions(request *CreateApplicationReq
 
 // Summary:
 //
-// Adds an application to an Enterprise Identity Access Management (EIAM) instance of Identity as a Service (IDaaS).
+// Creates an application in the specified EIAM instance.
 //
 // Description:
 //
-// IDaaS EIAM supports the following two standard single sign-on (SSO) protocols for adding applications: SAML 2.0 and OIDC. You can select an SSO protocol based on your business requirements when you add an application. You cannot change the SSO protocol that you selected after the application is added.
+// You must select the required SSO protocol when you create the application. This selection cannot be changed after creation.
 //
 // @param request - CreateApplicationRequest
 //
@@ -1580,7 +1604,7 @@ func (client *Client) CreateApplication(request *CreateApplicationRequest) (_res
 
 // Summary:
 //
-// Creates a client key for an Employee Identity and Access Management (EIAM) application. An EIAM application can have up to two client keys.
+// Creates a client secret for an EIAM application. You can create up to two client secrets for each application.
 //
 // @param request - CreateApplicationClientSecretRequest
 //
@@ -1632,7 +1656,7 @@ func (client *Client) CreateApplicationClientSecretWithOptions(request *CreateAp
 
 // Summary:
 //
-// Creates a client key for an Employee Identity and Access Management (EIAM) application. An EIAM application can have up to two client keys.
+// Creates a client secret for an EIAM application. You can create up to two client secrets for each application.
 //
 // @param request - CreateApplicationClientSecretRequest
 //
@@ -1650,7 +1674,7 @@ func (client *Client) CreateApplicationClientSecret(request *CreateApplicationCl
 
 // Summary:
 //
-// 创建应用联邦凭证
+// Creates an application federated credential.
 //
 // @param request - CreateApplicationFederatedCredentialRequest
 //
@@ -1722,7 +1746,7 @@ func (client *Client) CreateApplicationFederatedCredentialWithOptions(request *C
 
 // Summary:
 //
-// 创建应用联邦凭证
+// Creates an application federated credential.
 //
 // @param request - CreateApplicationFederatedCredentialRequest
 //
@@ -1740,7 +1764,7 @@ func (client *Client) CreateApplicationFederatedCredential(request *CreateApplic
 
 // Summary:
 //
-// 创建应用角色
+// Creates an application role.
 //
 // @param request - CreateApplicationRoleRequest
 //
@@ -1800,7 +1824,7 @@ func (client *Client) CreateApplicationRoleWithOptions(request *CreateApplicatio
 
 // Summary:
 //
-// 创建应用角色
+// Creates an application role.
 //
 // @param request - CreateApplicationRoleRequest
 //
@@ -1818,7 +1842,7 @@ func (client *Client) CreateApplicationRole(request *CreateApplicationRoleReques
 
 // Summary:
 //
-// 创建应用Token
+// Creates an application token.
 //
 // @param request - CreateApplicationTokenRequest
 //
@@ -1874,7 +1898,7 @@ func (client *Client) CreateApplicationTokenWithOptions(request *CreateApplicati
 
 // Summary:
 //
-// 创建应用Token
+// Creates an application token.
 //
 // @param request - CreateApplicationTokenRequest
 //
@@ -1892,7 +1916,7 @@ func (client *Client) CreateApplicationToken(request *CreateApplicationTokenRequ
 
 // Summary:
 //
-// 创建授权资源
+// Creates an authorization resource.
 //
 // @param request - CreateAuthorizationResourceRequest
 //
@@ -1954,7 +1978,7 @@ func (client *Client) CreateAuthorizationResourceWithOptions(request *CreateAuth
 
 // Summary:
 //
-// 创建授权资源
+// Creates an authorization resource.
 //
 // @param request - CreateAuthorizationResourceRequest
 //
@@ -1972,7 +1996,7 @@ func (client *Client) CreateAuthorizationResource(request *CreateAuthorizationRe
 
 // Summary:
 //
-// 创建授权规则
+// Creates an authorization rule.
 //
 // @param request - CreateAuthorizationRuleRequest
 //
@@ -2038,7 +2062,7 @@ func (client *Client) CreateAuthorizationRuleWithOptions(request *CreateAuthoriz
 
 // Summary:
 //
-// 创建授权规则
+// Creates an authorization rule.
 //
 // @param request - CreateAuthorizationRuleRequest
 //
@@ -2056,7 +2080,7 @@ func (client *Client) CreateAuthorizationRule(request *CreateAuthorizationRuleRe
 
 // Summary:
 //
-// 创建品牌
+// Creates a brand.
 //
 // @param request - CreateBrandRequest
 //
@@ -2104,7 +2128,7 @@ func (client *Client) CreateBrandWithOptions(request *CreateBrandRequest, runtim
 
 // Summary:
 //
-// 创建品牌
+// Creates a brand.
 //
 // @param request - CreateBrandRequest
 //
@@ -2122,7 +2146,7 @@ func (client *Client) CreateBrand(request *CreateBrandRequest) (_result *CreateB
 
 // Summary:
 //
-// 创建应用ClientPublicKey
+// Creates a client public key for an application. The machine-to-machine (M2M) authorization server uses this public key to verify the assertion included in a token request from an M2M client using the PRIVATE_KEY_JWT method.
 //
 // @param request - CreateClientPublicKeyRequest
 //
@@ -2182,7 +2206,7 @@ func (client *Client) CreateClientPublicKeyWithOptions(request *CreateClientPubl
 
 // Summary:
 //
-// 创建应用ClientPublicKey
+// Creates a client public key for an application. The machine-to-machine (M2M) authorization server uses this public key to verify the assertion included in a token request from an M2M client using the PRIVATE_KEY_JWT method.
 //
 // @param request - CreateClientPublicKeyRequest
 //
@@ -2200,7 +2224,11 @@ func (client *Client) CreateClientPublicKey(request *CreateClientPublicKeyReques
 
 // Summary:
 //
-// 创建云账号
+// Creates a cloud account in the specified IDaaS EIAM instance.
+//
+// Description:
+//
+// *Before you call this operation, ensure that you understand the billing methods and [pricing](https://www.aliyun.com/price/product#/ecs/detail) of IDaaS EIAM.**
 //
 // @param request - CreateCloudAccountRequest
 //
@@ -2272,7 +2300,11 @@ func (client *Client) CreateCloudAccountWithOptions(request *CreateCloudAccountR
 
 // Summary:
 //
-// 创建云账号
+// Creates a cloud account in the specified IDaaS EIAM instance.
+//
+// Description:
+//
+// *Before you call this operation, ensure that you understand the billing methods and [pricing](https://www.aliyun.com/price/product#/ecs/detail) of IDaaS EIAM.**
 //
 // @param request - CreateCloudAccountRequest
 //
@@ -2290,7 +2322,7 @@ func (client *Client) CreateCloudAccount(request *CreateCloudAccountRequest) (_r
 
 // Summary:
 //
-// 创建云角色
+// Creates a cloud role for a specified Alibaba Cloud account.
 //
 // @param request - CreateCloudAccountRoleRequest
 //
@@ -2354,7 +2386,7 @@ func (client *Client) CreateCloudAccountRoleWithOptions(request *CreateCloudAcco
 
 // Summary:
 //
-// 创建云角色
+// Creates a cloud role for a specified Alibaba Cloud account.
 //
 // @param request - CreateCloudAccountRoleRequest
 //
@@ -2478,7 +2510,7 @@ func (client *Client) CreateConditionalAccessPolicy(request *CreateConditionalAc
 
 // Summary:
 //
-// 创建凭据
+// Creates a credential in a specified EIAM instance.
 //
 // @param request - CreateCredentialRequest
 //
@@ -2570,7 +2602,7 @@ func (client *Client) CreateCredentialWithOptions(request *CreateCredentialReque
 
 // Summary:
 //
-// 创建凭据
+// Creates a credential in a specified EIAM instance.
 //
 // @param request - CreateCredentialRequest
 //
@@ -2588,7 +2620,7 @@ func (client *Client) CreateCredential(request *CreateCredentialRequest) (_resul
 
 // Summary:
 //
-// 创建凭据提供商
+// Creates a 
 //
 // @param request - CreateCredentialProviderRequest
 //
@@ -2656,7 +2688,7 @@ func (client *Client) CreateCredentialProviderWithOptions(request *CreateCredent
 
 // Summary:
 //
-// 创建凭据提供商
+// Creates a credential provider.
 //
 // @param request - CreateCredentialProviderRequest
 //
@@ -2674,7 +2706,7 @@ func (client *Client) CreateCredentialProvider(request *CreateCredentialProvider
 
 // Summary:
 //
-// 创建扩展字段
+// Creates an extension field.
 //
 // @param request - CreateCustomFieldRequest
 //
@@ -2766,7 +2798,7 @@ func (client *Client) CreateCustomFieldWithOptions(request *CreateCustomFieldReq
 
 // Summary:
 //
-// 创建扩展字段
+// Creates an extension field.
 //
 // @param request - CreateCustomFieldRequest
 //
@@ -2784,7 +2816,7 @@ func (client *Client) CreateCustomField(request *CreateCustomFieldRequest) (_res
 
 // Summary:
 //
-// 创建自定义条款
+// You can create custom terms.
 //
 // @param request - CreateCustomPrivacyPolicyRequest
 //
@@ -2852,7 +2884,7 @@ func (client *Client) CreateCustomPrivacyPolicyWithOptions(request *CreateCustom
 
 // Summary:
 //
-// 创建自定义条款
+// You can create custom terms.
 //
 // @param request - CreateCustomPrivacyPolicyRequest
 //
@@ -2870,7 +2902,7 @@ func (client *Client) CreateCustomPrivacyPolicy(request *CreateCustomPrivacyPoli
 
 // Summary:
 //
-// Creates a custom domain name for an Employee Identity and Access Management (EIAM) instance.
+// Creates a custom domain name for an EIAM (Entity and Identity Access Management) instance.
 //
 // @param request - CreateDomainRequest
 //
@@ -2922,7 +2954,7 @@ func (client *Client) CreateDomainWithOptions(request *CreateDomainRequest, runt
 
 // Summary:
 //
-// Creates a custom domain name for an Employee Identity and Access Management (EIAM) instance.
+// Creates a custom domain name for an EIAM (Entity and Identity Access Management) instance.
 //
 // @param request - CreateDomainRequest
 //
@@ -3006,7 +3038,7 @@ func (client *Client) CreateDomainProxyToken(request *CreateDomainProxyTokenRequ
 
 // Summary:
 //
-// 创建联邦凭证提供方
+// Create an identity provider.
 //
 // @param request - CreateFederatedCredentialProviderRequest
 //
@@ -3082,7 +3114,7 @@ func (client *Client) CreateFederatedCredentialProviderWithOptions(request *Crea
 
 // Summary:
 //
-// 创建联邦凭证提供方
+// Create an identity provider.
 //
 // @param request - CreateFederatedCredentialProviderRequest
 //
@@ -3174,7 +3206,7 @@ func (client *Client) CreateGroup(request *CreateGroupRequest) (_result *CreateG
 
 // Summary:
 //
-// # Create Identity Provider
+// Creates an identity provider.
 //
 // @param request - CreateIdentityProviderRequest
 //
@@ -3286,7 +3318,7 @@ func (client *Client) CreateIdentityProviderWithOptions(request *CreateIdentityP
 
 // Summary:
 //
-// # Create Identity Provider
+// Creates an identity provider.
 //
 // @param request - CreateIdentityProviderRequest
 //
@@ -3304,7 +3336,7 @@ func (client *Client) CreateIdentityProvider(request *CreateIdentityProviderRequ
 
 // Summary:
 //
-// 创建IdP状态检查任务
+// Creates a status check job for an identity provider.
 //
 // @param request - CreateIdentityProviderStatusCheckJobRequest
 //
@@ -3352,7 +3384,7 @@ func (client *Client) CreateIdentityProviderStatusCheckJobWithOptions(request *C
 
 // Summary:
 //
-// 创建IdP状态检查任务
+// Creates a status check job for an identity provider.
 //
 // @param request - CreateIdentityProviderStatusCheckJobRequest
 //
@@ -3432,7 +3464,7 @@ func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *C
 
 // Summary:
 //
-// 为实例创建试用版 License
+// Creates a trial license for an instance.
 //
 // @param request - CreateInstanceTrialLicenseRequest
 //
@@ -3476,7 +3508,7 @@ func (client *Client) CreateInstanceTrialLicenseWithOptions(request *CreateInsta
 
 // Summary:
 //
-// 为实例创建试用版 License
+// Creates a trial license for an instance.
 //
 // @param request - CreateInstanceTrialLicenseRequest
 //
@@ -3576,7 +3608,7 @@ func (client *Client) CreateNetworkAccessEndpoint(request *CreateNetworkAccessEn
 
 // Summary:
 //
-// 创建网络区域对象
+// Creates a network zone object.
 //
 // @param request - CreateNetworkZoneRequest
 //
@@ -3648,7 +3680,7 @@ func (client *Client) CreateNetworkZoneWithOptions(request *CreateNetworkZoneReq
 
 // Summary:
 //
-// 创建网络区域对象
+// Creates a network zone object.
 //
 // @param request - CreateNetworkZoneRequest
 //
@@ -3744,7 +3776,7 @@ func (client *Client) CreateOrganizationalUnit(request *CreateOrganizationalUnit
 
 // Summary:
 //
-// 创建指定ResourceServer下的Scope
+// Creates a scope permission for a specified resource server.
 //
 // @param request - CreateResourceServerScopeRequest
 //
@@ -3808,7 +3840,7 @@ func (client *Client) CreateResourceServerScopeWithOptions(request *CreateResour
 
 // Summary:
 //
-// 创建指定ResourceServer下的Scope
+// Creates a scope permission for a specified resource server.
 //
 // @param request - CreateResourceServerScopeRequest
 //
@@ -3826,7 +3858,7 @@ func (client *Client) CreateResourceServerScope(request *CreateResourceServerSco
 
 // Summary:
 //
-// Creates an account in an Identity as a Service (IDaaS) Enterprise Identity Access Management (EIAM) instance.
+// Create an EIAM account in a specific EIAM instance.
 //
 // @param request - CreateUserRequest
 //
@@ -3930,7 +3962,7 @@ func (client *Client) CreateUserWithOptions(request *CreateUserRequest, runtime 
 
 // Summary:
 //
-// Creates an account in an Identity as a Service (IDaaS) Enterprise Identity Access Management (EIAM) instance.
+// Create an EIAM account in a specific EIAM instance.
 //
 // @param request - CreateUserRequest
 //
@@ -4092,7 +4124,7 @@ func (client *Client) DeleteApplicationClientSecret(request *DeleteApplicationCl
 
 // Summary:
 //
-// 删除应用联邦凭证
+// Deletes a federated credential for an application.
 //
 // @param request - DeleteApplicationFederatedCredentialRequest
 //
@@ -4144,7 +4176,7 @@ func (client *Client) DeleteApplicationFederatedCredentialWithOptions(request *D
 
 // Summary:
 //
-// 删除应用联邦凭证
+// Deletes a federated credential for an application.
 //
 // @param request - DeleteApplicationFederatedCredentialRequest
 //
@@ -4162,7 +4194,7 @@ func (client *Client) DeleteApplicationFederatedCredential(request *DeleteApplic
 
 // Summary:
 //
-// 删除应用角色
+// Deletes an application role.
 //
 // @param request - DeleteApplicationRoleRequest
 //
@@ -4214,7 +4246,7 @@ func (client *Client) DeleteApplicationRoleWithOptions(request *DeleteApplicatio
 
 // Summary:
 //
-// 删除应用角色
+// Deletes an application role.
 //
 // @param request - DeleteApplicationRoleRequest
 //
@@ -4232,7 +4264,7 @@ func (client *Client) DeleteApplicationRole(request *DeleteApplicationRoleReques
 
 // Summary:
 //
-// 删除ApplicationToken
+// Deletes an application token.
 //
 // @param request - DeleteApplicationTokenRequest
 //
@@ -4284,7 +4316,7 @@ func (client *Client) DeleteApplicationTokenWithOptions(request *DeleteApplicati
 
 // Summary:
 //
-// 删除ApplicationToken
+// Deletes an application token.
 //
 // @param request - DeleteApplicationTokenRequest
 //
@@ -4302,7 +4334,7 @@ func (client *Client) DeleteApplicationToken(request *DeleteApplicationTokenRequ
 
 // Summary:
 //
-// 删除授权资源
+// Deletes an authorization resource.
 //
 // @param request - DeleteAuthorizationResourceRequest
 //
@@ -4354,7 +4386,7 @@ func (client *Client) DeleteAuthorizationResourceWithOptions(request *DeleteAuth
 
 // Summary:
 //
-// 删除授权资源
+// Deletes an authorization resource.
 //
 // @param request - DeleteAuthorizationResourceRequest
 //
@@ -4372,7 +4404,7 @@ func (client *Client) DeleteAuthorizationResource(request *DeleteAuthorizationRe
 
 // Summary:
 //
-// 删除授权规则
+// Deletes an authorization rule. An authorization rule must be disabled before it can be deleted.
 //
 // @param request - DeleteAuthorizationRuleRequest
 //
@@ -4420,7 +4452,7 @@ func (client *Client) DeleteAuthorizationRuleWithOptions(request *DeleteAuthoriz
 
 // Summary:
 //
-// 删除授权规则
+// Deletes an authorization rule. An authorization rule must be disabled before it can be deleted.
 //
 // @param request - DeleteAuthorizationRuleRequest
 //
@@ -4438,7 +4470,7 @@ func (client *Client) DeleteAuthorizationRule(request *DeleteAuthorizationRuleRe
 
 // Summary:
 //
-// 删除品牌
+// Deletes a brand.
 //
 // @param request - DeleteBrandRequest
 //
@@ -4486,7 +4518,7 @@ func (client *Client) DeleteBrandWithOptions(request *DeleteBrandRequest, runtim
 
 // Summary:
 //
-// 删除品牌
+// Deletes a brand.
 //
 // @param request - DeleteBrandRequest
 //
@@ -4504,7 +4536,7 @@ func (client *Client) DeleteBrand(request *DeleteBrandRequest) (_result *DeleteB
 
 // Summary:
 //
-// 删除指定的应用ClientPublicKey
+// Deletes the ClientPublicKey for a specified application.
 //
 // @param request - DeleteClientPublicKeyRequest
 //
@@ -4556,7 +4588,7 @@ func (client *Client) DeleteClientPublicKeyWithOptions(request *DeleteClientPubl
 
 // Summary:
 //
-// 删除指定的应用ClientPublicKey
+// Deletes the ClientPublicKey for a specified application.
 //
 // @param request - DeleteClientPublicKeyRequest
 //
@@ -4574,7 +4606,7 @@ func (client *Client) DeleteClientPublicKey(request *DeleteClientPublicKeyReques
 
 // Summary:
 //
-// 删除云账号
+// Deletes an Alibaba Cloud account resource.
 //
 // @param request - DeleteCloudAccountRequest
 //
@@ -4622,7 +4654,7 @@ func (client *Client) DeleteCloudAccountWithOptions(request *DeleteCloudAccountR
 
 // Summary:
 //
-// 删除云账号
+// Deletes an Alibaba Cloud account resource.
 //
 // @param request - DeleteCloudAccountRequest
 //
@@ -4640,7 +4672,11 @@ func (client *Client) DeleteCloudAccount(request *DeleteCloudAccountRequest) (_r
 
 // Summary:
 //
-// 删除云角色
+// Deletes a cloud role from a specified Alibaba Cloud account.
+//
+// Description:
+//
+// You must disable the cloud role before you delete it. After you delete the role, all related data is also deleted and cannot be recovered.
 //
 // @param request - DeleteCloudAccountRoleRequest
 //
@@ -4692,7 +4728,11 @@ func (client *Client) DeleteCloudAccountRoleWithOptions(request *DeleteCloudAcco
 
 // Summary:
 //
-// 删除云角色
+// Deletes a cloud role from a specified Alibaba Cloud account.
+//
+// Description:
+//
+// You must disable the cloud role before you delete it. After you delete the role, all related data is also deleted and cannot be recovered.
 //
 // @param request - DeleteCloudAccountRoleRequest
 //
@@ -4710,11 +4750,11 @@ func (client *Client) DeleteCloudAccountRole(request *DeleteCloudAccountRoleRequ
 
 // Summary:
 //
-// # Delete Conditional Access Policy
+// Deletes a conditional access policy.
 //
 // Description:
 //
-// When deleting a specified conditional access policy, please ensure that the policy is no longer in use. After deletion, all configuration data will be removed and cannot be recovered.
+// Before you delete a conditional access policy, ensure that it is no longer in use. This action permanently deletes all of its configuration data, which cannot be recovered.
 //
 // @param request - DeleteConditionalAccessPolicyRequest
 //
@@ -4762,11 +4802,11 @@ func (client *Client) DeleteConditionalAccessPolicyWithOptions(request *DeleteCo
 
 // Summary:
 //
-// # Delete Conditional Access Policy
+// Deletes a conditional access policy.
 //
 // Description:
 //
-// When deleting a specified conditional access policy, please ensure that the policy is no longer in use. After deletion, all configuration data will be removed and cannot be recovered.
+// Before you delete a conditional access policy, ensure that it is no longer in use. This action permanently deletes all of its configuration data, which cannot be recovered.
 //
 // @param request - DeleteConditionalAccessPolicyRequest
 //
@@ -4784,7 +4824,7 @@ func (client *Client) DeleteConditionalAccessPolicy(request *DeleteConditionalAc
 
 // Summary:
 //
-// 删除凭据
+// Deletes a credential resource.
 //
 // @param request - DeleteCredentialRequest
 //
@@ -4832,7 +4872,7 @@ func (client *Client) DeleteCredentialWithOptions(request *DeleteCredentialReque
 
 // Summary:
 //
-// 删除凭据
+// Deletes a credential resource.
 //
 // @param request - DeleteCredentialRequest
 //
@@ -4850,7 +4890,7 @@ func (client *Client) DeleteCredential(request *DeleteCredentialRequest) (_resul
 
 // Summary:
 //
-// 启用凭据提供商
+// Deletes a credential provider.
 //
 // @param request - DeleteCredentialProviderRequest
 //
@@ -4898,7 +4938,7 @@ func (client *Client) DeleteCredentialProviderWithOptions(request *DeleteCredent
 
 // Summary:
 //
-// 启用凭据提供商
+// Deletes a credential provider.
 //
 // @param request - DeleteCredentialProviderRequest
 //
@@ -4916,7 +4956,7 @@ func (client *Client) DeleteCredentialProvider(request *DeleteCredentialProvider
 
 // Summary:
 //
-// 删除扩展字段
+// Deletes an extension field.
 //
 // @param request - DeleteCustomFieldRequest
 //
@@ -4964,7 +5004,7 @@ func (client *Client) DeleteCustomFieldWithOptions(request *DeleteCustomFieldReq
 
 // Summary:
 //
-// 删除扩展字段
+// Deletes an extension field.
 //
 // @param request - DeleteCustomFieldRequest
 //
@@ -4982,7 +5022,7 @@ func (client *Client) DeleteCustomField(request *DeleteCustomFieldRequest) (_res
 
 // Summary:
 //
-// 删除自定义条款
+// # Deleting custom clauses
 //
 // @param request - DeleteCustomPrivacyPolicyRequest
 //
@@ -5030,7 +5070,7 @@ func (client *Client) DeleteCustomPrivacyPolicyWithOptions(request *DeleteCustom
 
 // Summary:
 //
-// 删除自定义条款
+// # Deleting custom clauses
 //
 // @param request - DeleteCustomPrivacyPolicyRequest
 //
@@ -5184,7 +5224,7 @@ func (client *Client) DeleteDomainProxyToken(request *DeleteDomainProxyTokenRequ
 
 // Summary:
 //
-// 删除联邦凭证提供方
+// Deletes a federated credential provider.
 //
 // @param request - DeleteFederatedCredentialProviderRequest
 //
@@ -5232,7 +5272,7 @@ func (client *Client) DeleteFederatedCredentialProviderWithOptions(request *Dele
 
 // Summary:
 //
-// 删除联邦凭证提供方
+// Deletes a federated credential provider.
 //
 // @param request - DeleteFederatedCredentialProviderRequest
 //
@@ -5518,7 +5558,7 @@ func (client *Client) DeleteNetworkAccessEndpoint(request *DeleteNetworkAccessEn
 
 // Summary:
 //
-// 删除网络区域对象
+// Deletes a network zone object.
 //
 // @param request - DeleteNetworkZoneRequest
 //
@@ -5566,7 +5606,7 @@ func (client *Client) DeleteNetworkZoneWithOptions(request *DeleteNetworkZoneReq
 
 // Summary:
 //
-// 删除网络区域对象
+// Deletes a network zone object.
 //
 // @param request - DeleteNetworkZoneRequest
 //
@@ -5716,7 +5756,7 @@ func (client *Client) DeleteOrganizationalUnitChildren(request *DeleteOrganizati
 
 // Summary:
 //
-// 删除指定ResourceServer下的Scope
+// Deletes a scope permission from a specified resource server.
 //
 // @param request - DeleteResourceServerScopeRequest
 //
@@ -5768,7 +5808,7 @@ func (client *Client) DeleteResourceServerScopeWithOptions(request *DeleteResour
 
 // Summary:
 //
-// 删除指定ResourceServer下的Scope
+// Deletes a scope permission from a specified resource server.
 //
 // @param request - DeleteResourceServerScopeRequest
 //
@@ -5786,7 +5826,7 @@ func (client *Client) DeleteResourceServerScope(request *DeleteResourceServerSco
 
 // Summary:
 //
-// Deletes an Employee Identity and Access Management (EIAM) account of Identity as a Service (IDaaS). The information related to the account is cleared.
+// Deletes a specified EIAM user and purges all related information.
 //
 // @param request - DeleteUserRequest
 //
@@ -5834,7 +5874,7 @@ func (client *Client) DeleteUserWithOptions(request *DeleteUserRequest, runtime 
 
 // Summary:
 //
-// Deletes an Employee Identity and Access Management (EIAM) account of Identity as a Service (IDaaS). The information related to the account is cleared.
+// Deletes a specified EIAM user and purges all related information.
 //
 // @param request - DeleteUserRequest
 //
@@ -5852,7 +5892,7 @@ func (client *Client) DeleteUser(request *DeleteUserRequest) (_result *DeleteUse
 
 // Summary:
 //
-// 批量删除账号
+// Deletes multiple accounts in a batch.
 //
 // @param request - DeleteUsersRequest
 //
@@ -5900,7 +5940,7 @@ func (client *Client) DeleteUsersWithOptions(request *DeleteUsersRequest, runtim
 
 // Summary:
 //
-// 批量删除账号
+// Deletes multiple accounts in a batch.
 //
 // @param request - DeleteUsersRequest
 //
@@ -5918,7 +5958,7 @@ func (client *Client) DeleteUsers(request *DeleteUsersRequest) (_result *DeleteU
 
 // Summary:
 //
-// 删除指定WebAuthn认证器名称
+// Deletes the specified WebAuthn authenticator.
 //
 // @param request - DeleteWebAuthnAuthenticatorRequest
 //
@@ -5970,7 +6010,7 @@ func (client *Client) DeleteWebAuthnAuthenticatorWithOptions(request *DeleteWebA
 
 // Summary:
 //
-// 删除指定WebAuthn认证器名称
+// Deletes the specified WebAuthn authenticator.
 //
 // @param request - DeleteWebAuthnAuthenticatorRequest
 //
@@ -6198,7 +6238,7 @@ func (client *Client) DisableApplicationClientSecret(request *DisableApplication
 
 // Summary:
 //
-// 禁用应用联邦凭证
+// Disables a federated credential for an application.
 //
 // @param request - DisableApplicationFederatedCredentialRequest
 //
@@ -6250,7 +6290,7 @@ func (client *Client) DisableApplicationFederatedCredentialWithOptions(request *
 
 // Summary:
 //
-// 禁用应用联邦凭证
+// Disables a federated credential for an application.
 //
 // @param request - DisableApplicationFederatedCredentialRequest
 //
@@ -6268,7 +6308,7 @@ func (client *Client) DisableApplicationFederatedCredential(request *DisableAppl
 
 // Summary:
 //
-// 禁用M2M Client 能力
+// Disables the machine-to-machine (M2M) client feature for an application. This feature enables an application to act as an OAuth client and make calls to access resources.
 //
 // @param request - DisableApplicationM2MClientRequest
 //
@@ -6316,7 +6356,7 @@ func (client *Client) DisableApplicationM2MClientWithOptions(request *DisableApp
 
 // Summary:
 //
-// 禁用M2M Client 能力
+// Disables the machine-to-machine (M2M) client feature for an application. This feature enables an application to act as an OAuth client and make calls to access resources.
 //
 // @param request - DisableApplicationM2MClientRequest
 //
@@ -6400,7 +6440,7 @@ func (client *Client) DisableApplicationProvisioning(request *DisableApplication
 
 // Summary:
 //
-// 禁用ResourceServer能力
+// Disables the resource server functionality for a specified application.
 //
 // @param request - DisableApplicationResourceServerRequest
 //
@@ -6448,7 +6488,7 @@ func (client *Client) DisableApplicationResourceServerWithOptions(request *Disab
 
 // Summary:
 //
-// 禁用ResourceServer能力
+// Disables the resource server functionality for a specified application.
 //
 // @param request - DisableApplicationResourceServerRequest
 //
@@ -6532,7 +6572,11 @@ func (client *Client) DisableApplicationSso(request *DisableApplicationSsoReques
 
 // Summary:
 //
-// 禁用应用Token
+// Disables an application token.
+//
+// Description:
+//
+// When you change the status of an application from enabled to disabled, all application features, such as single sign-on (SSO) and account synchronization, become unavailable. Be aware of the potential threats associated with this operation.
 //
 // @param request - DisableApplicationTokenRequest
 //
@@ -6584,7 +6628,11 @@ func (client *Client) DisableApplicationTokenWithOptions(request *DisableApplica
 
 // Summary:
 //
-// 禁用应用Token
+// Disables an application token.
+//
+// Description:
+//
+// When you change the status of an application from enabled to disabled, all application features, such as single sign-on (SSO) and account synchronization, become unavailable. Be aware of the potential threats associated with this operation.
 //
 // @param request - DisableApplicationTokenRequest
 //
@@ -6602,7 +6650,7 @@ func (client *Client) DisableApplicationToken(request *DisableApplicationTokenRe
 
 // Summary:
 //
-// 禁用授权规则
+// Disables an authorization rule.
 //
 // @param request - DisableAuthorizationRuleRequest
 //
@@ -6656,7 +6704,7 @@ func (client *Client) DisableAuthorizationRuleWithOptions(request *DisableAuthor
 
 // Summary:
 //
-// 禁用授权规则
+// Disables an authorization rule.
 //
 // @param request - DisableAuthorizationRuleRequest
 //
@@ -6674,7 +6722,7 @@ func (client *Client) DisableAuthorizationRule(request *DisableAuthorizationRule
 
 // Summary:
 //
-// 禁用品牌
+// Disables a brand.
 //
 // @param request - DisableBrandRequest
 //
@@ -6722,7 +6770,7 @@ func (client *Client) DisableBrandWithOptions(request *DisableBrandRequest, runt
 
 // Summary:
 //
-// 禁用品牌
+// Disables a brand.
 //
 // @param request - DisableBrandRequest
 //
@@ -6740,7 +6788,7 @@ func (client *Client) DisableBrand(request *DisableBrandRequest) (_result *Disab
 
 // Summary:
 //
-// 禁用指定的应用ClientPublicKey
+// Disables the ClientPublicKey for a specified application.
 //
 // @param request - DisableClientPublicKeyRequest
 //
@@ -6796,7 +6844,7 @@ func (client *Client) DisableClientPublicKeyWithOptions(request *DisableClientPu
 
 // Summary:
 //
-// 禁用指定的应用ClientPublicKey
+// Disables the ClientPublicKey for a specified application.
 //
 // @param request - DisableClientPublicKeyRequest
 //
@@ -6814,7 +6862,7 @@ func (client *Client) DisableClientPublicKey(request *DisableClientPublicKeyRequ
 
 // Summary:
 //
-// 禁用云角色
+// Disables a cloud role for a specified Alibaba Cloud account.
 //
 // @param request - DisableCloudAccountRoleRequest
 //
@@ -6870,7 +6918,7 @@ func (client *Client) DisableCloudAccountRoleWithOptions(request *DisableCloudAc
 
 // Summary:
 //
-// 禁用云角色
+// Disables a cloud role for a specified Alibaba Cloud account.
 //
 // @param request - DisableCloudAccountRoleRequest
 //
@@ -6888,11 +6936,11 @@ func (client *Client) DisableCloudAccountRole(request *DisableCloudAccountRoleRe
 
 // Summary:
 //
-// # Disable Conditional Access Policy
+// Disables a conditional access policy.
 //
 // Description:
 //
-// When changing a conditional access policy from an enabled state to a disabled state, the policy will no longer intercept. Please confirm that you are aware of the potential risks associated with this action.
+// When you disable a conditional access policy, the policy no longer blocks access. Make sure that you are aware of the potential threats that may arise from this operation.
 //
 // @param request - DisableConditionalAccessPolicyRequest
 //
@@ -6940,11 +6988,11 @@ func (client *Client) DisableConditionalAccessPolicyWithOptions(request *Disable
 
 // Summary:
 //
-// # Disable Conditional Access Policy
+// Disables a conditional access policy.
 //
 // Description:
 //
-// When changing a conditional access policy from an enabled state to a disabled state, the policy will no longer intercept. Please confirm that you are aware of the potential risks associated with this action.
+// When you disable a conditional access policy, the policy no longer blocks access. Make sure that you are aware of the potential threats that may arise from this operation.
 //
 // @param request - DisableConditionalAccessPolicyRequest
 //
@@ -6962,7 +7010,7 @@ func (client *Client) DisableConditionalAccessPolicy(request *DisableConditional
 
 // Summary:
 //
-// 禁用凭据
+// Disables a credential resource.
 //
 // @param request - DisableCredentialRequest
 //
@@ -7014,7 +7062,7 @@ func (client *Client) DisableCredentialWithOptions(request *DisableCredentialReq
 
 // Summary:
 //
-// 禁用凭据
+// Disables a credential resource.
 //
 // @param request - DisableCredentialRequest
 //
@@ -7032,7 +7080,7 @@ func (client *Client) DisableCredential(request *DisableCredentialRequest) (_res
 
 // Summary:
 //
-// 禁用凭据提供商
+// Disables a credential provider.
 //
 // @param request - DisableCredentialProviderRequest
 //
@@ -7080,7 +7128,7 @@ func (client *Client) DisableCredentialProviderWithOptions(request *DisableCrede
 
 // Summary:
 //
-// 禁用凭据提供商
+// Disables a credential provider.
 //
 // @param request - DisableCredentialProviderRequest
 //
@@ -7098,7 +7146,7 @@ func (client *Client) DisableCredentialProvider(request *DisableCredentialProvid
 
 // Summary:
 //
-// 禁用字段
+// Disables a custom field.
 //
 // @param request - DisableCustomFieldRequest
 //
@@ -7146,7 +7194,7 @@ func (client *Client) DisableCustomFieldWithOptions(request *DisableCustomFieldR
 
 // Summary:
 //
-// 禁用字段
+// Disables a custom field.
 //
 // @param request - DisableCustomFieldRequest
 //
@@ -7164,7 +7212,7 @@ func (client *Client) DisableCustomField(request *DisableCustomFieldRequest) (_r
 
 // Summary:
 //
-// 禁用自定义条款
+// Disables a custom privacy policy.
 //
 // @param request - DisableCustomPrivacyPolicyRequest
 //
@@ -7212,7 +7260,7 @@ func (client *Client) DisableCustomPrivacyPolicyWithOptions(request *DisableCust
 
 // Summary:
 //
-// 禁用自定义条款
+// Disables a custom privacy policy.
 //
 // @param request - DisableCustomPrivacyPolicyRequest
 //
@@ -7300,7 +7348,7 @@ func (client *Client) DisableDomainProxyToken(request *DisableDomainProxyTokenRe
 
 // Summary:
 //
-// 禁用联邦凭证提供方
+// Disables a federated credential provider.
 //
 // @param request - DisableFederatedCredentialProviderRequest
 //
@@ -7348,7 +7396,7 @@ func (client *Client) DisableFederatedCredentialProviderWithOptions(request *Dis
 
 // Summary:
 //
-// 禁用联邦凭证提供方
+// Disables a federated credential provider.
 //
 // @param request - DisableFederatedCredentialProviderRequest
 //
@@ -7366,7 +7414,7 @@ func (client *Client) DisableFederatedCredentialProvider(request *DisableFederat
 
 // Summary:
 //
-// 禁用高级配置
+// Disables the advanced configuration.
 //
 // @param request - DisableIdentityProviderAdvancedAbilityRequest
 //
@@ -7414,7 +7462,7 @@ func (client *Client) DisableIdentityProviderAdvancedAbilityWithOptions(request 
 
 // Summary:
 //
-// 禁用高级配置
+// Disables the advanced configuration.
 //
 // @param request - DisableIdentityProviderAdvancedAbilityRequest
 //
@@ -7432,7 +7480,11 @@ func (client *Client) DisableIdentityProviderAdvancedAbility(request *DisableIde
 
 // Summary:
 //
-// 禁用认证
+// Disables authentication.
+//
+// Description:
+//
+// When you disable an application, all its features, such as single sign-on (SSO) and account synchronization, become unavailable. Before you perform this operation, make sure that you understand the associated risks.
 //
 // @param request - DisableIdentityProviderAuthnRequest
 //
@@ -7480,7 +7532,11 @@ func (client *Client) DisableIdentityProviderAuthnWithOptions(request *DisableId
 
 // Summary:
 //
-// 禁用认证
+// Disables authentication.
+//
+// Description:
+//
+// When you disable an application, all its features, such as single sign-on (SSO) and account synchronization, become unavailable. Before you perform this operation, make sure that you understand the associated risks.
 //
 // @param request - DisableIdentityProviderAuthnRequest
 //
@@ -7626,7 +7682,7 @@ func (client *Client) DisableInitDomainAutoRedirect(request *DisableInitDomainAu
 
 // Summary:
 //
-// 禁用内部认证源
+// Disables an internal authentication source.
 //
 // @param request - DisableInternalAuthenticationSourceRequest
 //
@@ -7674,7 +7730,7 @@ func (client *Client) DisableInternalAuthenticationSourceWithOptions(request *Di
 
 // Summary:
 //
-// 禁用内部认证源
+// Disables an internal authentication source.
 //
 // @param request - DisableInternalAuthenticationSourceRequest
 //
@@ -7692,7 +7748,7 @@ func (client *Client) DisableInternalAuthenticationSource(request *DisableIntern
 
 // Summary:
 //
-// 禁用资源服务器自定义主体
+// Disables the custom subject feature for a specified resource server.
 //
 // @param request - DisableResourceServerCustomSubjectRequest
 //
@@ -7740,7 +7796,7 @@ func (client *Client) DisableResourceServerCustomSubjectWithOptions(request *Dis
 
 // Summary:
 //
-// 禁用资源服务器自定义主体
+// Disables the custom subject feature for a specified resource server.
 //
 // @param request - DisableResourceServerCustomSubjectRequest
 //
@@ -7890,7 +7946,7 @@ func (client *Client) EnableApplication(request *EnableApplicationRequest) (_res
 
 // Summary:
 //
-// Enables the Developer API feature for an Employee Identity and Access Management (EIAM) application.
+// You can call the EnableApplicationApiInvoke operation to enable Developer API calls for an EIAM application.
 //
 // @param request - EnableApplicationApiInvokeRequest
 //
@@ -7938,7 +7994,7 @@ func (client *Client) EnableApplicationApiInvokeWithOptions(request *EnableAppli
 
 // Summary:
 //
-// Enables the Developer API feature for an Employee Identity and Access Management (EIAM) application.
+// You can call the EnableApplicationApiInvoke operation to enable Developer API calls for an EIAM application.
 //
 // @param request - EnableApplicationApiInvokeRequest
 //
@@ -8026,7 +8082,7 @@ func (client *Client) EnableApplicationClientSecret(request *EnableApplicationCl
 
 // Summary:
 //
-// 启用应用联邦凭证
+// Enables an application federated credential.
 //
 // @param request - EnableApplicationFederatedCredentialRequest
 //
@@ -8078,7 +8134,7 @@ func (client *Client) EnableApplicationFederatedCredentialWithOptions(request *E
 
 // Summary:
 //
-// 启用应用联邦凭证
+// Enables an application federated credential.
 //
 // @param request - EnableApplicationFederatedCredentialRequest
 //
@@ -8096,7 +8152,7 @@ func (client *Client) EnableApplicationFederatedCredential(request *EnableApplic
 
 // Summary:
 //
-// 启用M2M Client 能力
+// Enables the machine-to-machine (M2M) client feature for an application. This allows the application to act as a caller (an OAuth client) to access resources.
 //
 // @param request - EnableApplicationM2MClientRequest
 //
@@ -8144,7 +8200,7 @@ func (client *Client) EnableApplicationM2MClientWithOptions(request *EnableAppli
 
 // Summary:
 //
-// 启用M2M Client 能力
+// Enables the machine-to-machine (M2M) client feature for an application. This allows the application to act as a caller (an OAuth client) to access resources.
 //
 // @param request - EnableApplicationM2MClientRequest
 //
@@ -8228,7 +8284,7 @@ func (client *Client) EnableApplicationProvisioning(request *EnableApplicationPr
 
 // Summary:
 //
-// 启用ResourceServer能力
+// Enables the ResourceServer feature for a specified application.
 //
 // @param request - EnableApplicationResourceServerRequest
 //
@@ -8276,7 +8332,7 @@ func (client *Client) EnableApplicationResourceServerWithOptions(request *Enable
 
 // Summary:
 //
-// 启用ResourceServer能力
+// Enables the ResourceServer feature for a specified application.
 //
 // @param request - EnableApplicationResourceServerRequest
 //
@@ -8294,7 +8350,7 @@ func (client *Client) EnableApplicationResourceServer(request *EnableApplication
 
 // Summary:
 //
-// Enables the single sign-on (SSO) feature for an Employee Identity and Access Management (EIAM) application.
+// Enables single sign-on (SSO) for an EIAM application.
 //
 // @param request - EnableApplicationSsoRequest
 //
@@ -8342,7 +8398,7 @@ func (client *Client) EnableApplicationSsoWithOptions(request *EnableApplication
 
 // Summary:
 //
-// Enables the single sign-on (SSO) feature for an Employee Identity and Access Management (EIAM) application.
+// Enables single sign-on (SSO) for an EIAM application.
 //
 // @param request - EnableApplicationSsoRequest
 //
@@ -8360,7 +8416,7 @@ func (client *Client) EnableApplicationSso(request *EnableApplicationSsoRequest)
 
 // Summary:
 //
-// 启用应用Token
+// Enables an application token.
 //
 // @param request - EnableApplicationTokenRequest
 //
@@ -8412,7 +8468,7 @@ func (client *Client) EnableApplicationTokenWithOptions(request *EnableApplicati
 
 // Summary:
 //
-// 启用应用Token
+// Enables an application token.
 //
 // @param request - EnableApplicationTokenRequest
 //
@@ -8430,7 +8486,7 @@ func (client *Client) EnableApplicationToken(request *EnableApplicationTokenRequ
 
 // Summary:
 //
-// 启用授权规则
+// Enables an authorization rule.
 //
 // @param request - EnableAuthorizationRuleRequest
 //
@@ -8484,7 +8540,7 @@ func (client *Client) EnableAuthorizationRuleWithOptions(request *EnableAuthoriz
 
 // Summary:
 //
-// 启用授权规则
+// Enables an authorization rule.
 //
 // @param request - EnableAuthorizationRuleRequest
 //
@@ -8502,7 +8558,7 @@ func (client *Client) EnableAuthorizationRule(request *EnableAuthorizationRuleRe
 
 // Summary:
 //
-// 启用品牌
+// Enables a brand.
 //
 // @param request - EnableBrandRequest
 //
@@ -8550,7 +8606,7 @@ func (client *Client) EnableBrandWithOptions(request *EnableBrandRequest, runtim
 
 // Summary:
 //
-// 启用品牌
+// Enables a brand.
 //
 // @param request - EnableBrandRequest
 //
@@ -8568,7 +8624,7 @@ func (client *Client) EnableBrand(request *EnableBrandRequest) (_result *EnableB
 
 // Summary:
 //
-// 启用指定的应用ClientPublicKey
+// Enables the specified ClientPublicKey for an application.
 //
 // @param request - EnableClientPublicKeyRequest
 //
@@ -8624,7 +8680,7 @@ func (client *Client) EnableClientPublicKeyWithOptions(request *EnableClientPubl
 
 // Summary:
 //
-// 启用指定的应用ClientPublicKey
+// Enables the specified ClientPublicKey for an application.
 //
 // @param request - EnableClientPublicKeyRequest
 //
@@ -8642,7 +8698,7 @@ func (client *Client) EnableClientPublicKey(request *EnableClientPublicKeyReques
 
 // Summary:
 //
-// 启用云角色
+// Enables a cloud role for a specified Alibaba Cloud account.
 //
 // @param request - EnableCloudAccountRoleRequest
 //
@@ -8698,7 +8754,7 @@ func (client *Client) EnableCloudAccountRoleWithOptions(request *EnableCloudAcco
 
 // Summary:
 //
-// 启用云角色
+// Enables a cloud role for a specified Alibaba Cloud account.
 //
 // @param request - EnableCloudAccountRoleRequest
 //
@@ -8716,11 +8772,11 @@ func (client *Client) EnableCloudAccountRole(request *EnableCloudAccountRoleRequ
 
 // Summary:
 //
-// # Enable Conditional Access Policy
+// Enables a conditional access policy.
 //
 // Description:
 //
-// When changing the status of a conditional access policy from enabled to disabled, the policy will no longer intercept. Please confirm that you are aware of the potential risks associated with this action.
+// When you disable a conditional access policy, it no longer blocks access. Be aware of the potential threats before you perform this operation.
 //
 // @param request - EnableConditionalAccessPolicyRequest
 //
@@ -8768,11 +8824,11 @@ func (client *Client) EnableConditionalAccessPolicyWithOptions(request *EnableCo
 
 // Summary:
 //
-// # Enable Conditional Access Policy
+// Enables a conditional access policy.
 //
 // Description:
 //
-// When changing the status of a conditional access policy from enabled to disabled, the policy will no longer intercept. Please confirm that you are aware of the potential risks associated with this action.
+// When you disable a conditional access policy, it no longer blocks access. Be aware of the potential threats before you perform this operation.
 //
 // @param request - EnableConditionalAccessPolicyRequest
 //
@@ -8790,7 +8846,7 @@ func (client *Client) EnableConditionalAccessPolicy(request *EnableConditionalAc
 
 // Summary:
 //
-// 启用凭据
+// Enables a credential resource.
 //
 // @param request - EnableCredentialRequest
 //
@@ -8842,7 +8898,7 @@ func (client *Client) EnableCredentialWithOptions(request *EnableCredentialReque
 
 // Summary:
 //
-// 启用凭据
+// Enables a credential resource.
 //
 // @param request - EnableCredentialRequest
 //
@@ -8860,7 +8916,7 @@ func (client *Client) EnableCredential(request *EnableCredentialRequest) (_resul
 
 // Summary:
 //
-// 启用凭据提供商
+// Enables a credential provider.
 //
 // @param request - EnableCredentialProviderRequest
 //
@@ -8908,7 +8964,7 @@ func (client *Client) EnableCredentialProviderWithOptions(request *EnableCredent
 
 // Summary:
 //
-// 启用凭据提供商
+// Enables a credential provider.
 //
 // @param request - EnableCredentialProviderRequest
 //
@@ -8926,7 +8982,11 @@ func (client *Client) EnableCredentialProvider(request *EnableCredentialProvider
 
 // Summary:
 //
-// 启用字段
+// Enables a custom field.
+//
+// Description:
+//
+// *Before you use this API, make sure you understand the billing methods and [pricing](https://www.aliyun.com/price/product#/ecs/detail) for IDaaS EIAM.**
 //
 // @param request - EnableCustomFieldRequest
 //
@@ -8974,7 +9034,11 @@ func (client *Client) EnableCustomFieldWithOptions(request *EnableCustomFieldReq
 
 // Summary:
 //
-// 启用字段
+// Enables a custom field.
+//
+// Description:
+//
+// *Before you use this API, make sure you understand the billing methods and [pricing](https://www.aliyun.com/price/product#/ecs/detail) for IDaaS EIAM.**
 //
 // @param request - EnableCustomFieldRequest
 //
@@ -8992,7 +9056,7 @@ func (client *Client) EnableCustomField(request *EnableCustomFieldRequest) (_res
 
 // Summary:
 //
-// 启用自定义条款
+// # Enabling custom terms
 //
 // @param request - EnableCustomPrivacyPolicyRequest
 //
@@ -9040,7 +9104,7 @@ func (client *Client) EnableCustomPrivacyPolicyWithOptions(request *EnableCustom
 
 // Summary:
 //
-// 启用自定义条款
+// # Enabling custom terms
 //
 // @param request - EnableCustomPrivacyPolicyRequest
 //
@@ -9128,7 +9192,7 @@ func (client *Client) EnableDomainProxyToken(request *EnableDomainProxyTokenRequ
 
 // Summary:
 //
-// 启用联邦凭证提供方
+// Enables a federated credential provider.
 //
 // @param request - EnableFederatedCredentialProviderRequest
 //
@@ -9176,7 +9240,7 @@ func (client *Client) EnableFederatedCredentialProviderWithOptions(request *Enab
 
 // Summary:
 //
-// 启用联邦凭证提供方
+// Enables a federated credential provider.
 //
 // @param request - EnableFederatedCredentialProviderRequest
 //
@@ -9194,7 +9258,7 @@ func (client *Client) EnableFederatedCredentialProvider(request *EnableFederated
 
 // Summary:
 //
-// 启用高级配置
+// Enables advanced configuration.
 //
 // @param request - EnableIdentityProviderAdvancedAbilityRequest
 //
@@ -9242,7 +9306,7 @@ func (client *Client) EnableIdentityProviderAdvancedAbilityWithOptions(request *
 
 // Summary:
 //
-// 启用高级配置
+// Enables advanced configuration.
 //
 // @param request - EnableIdentityProviderAdvancedAbilityRequest
 //
@@ -9260,7 +9324,11 @@ func (client *Client) EnableIdentityProviderAdvancedAbility(request *EnableIdent
 
 // Summary:
 //
-// 启用认证
+// Enables authentication.
+//
+// Description:
+//
+// When a conditional access policy is disabled, it no longer blocks access. Ensure that you understand the potential security threats before you perform this operation.
 //
 // @param request - EnableIdentityProviderAuthnRequest
 //
@@ -9308,7 +9376,11 @@ func (client *Client) EnableIdentityProviderAuthnWithOptions(request *EnableIden
 
 // Summary:
 //
-// 启用认证
+// Enables authentication.
+//
+// Description:
+//
+// When a conditional access policy is disabled, it no longer blocks access. Ensure that you understand the potential security threats before you perform this operation.
 //
 // @param request - EnableIdentityProviderAuthnRequest
 //
@@ -9392,7 +9464,7 @@ func (client *Client) EnableIdentityProviderUdPull(request *EnableIdentityProvid
 
 // Summary:
 //
-// Enables the feature of automatically redirecting the initial domain name to the default domain name for an Employee Identity and Access Management (EIAM) instance.
+// Enables automatic redirection from the initialization domain name to the default domain name for an EIAM instance. After this feature is enabled, portal access via the initialization domain name is redirected to the default domain name.
 //
 // @param request - EnableInitDomainAutoRedirectRequest
 //
@@ -9436,7 +9508,7 @@ func (client *Client) EnableInitDomainAutoRedirectWithOptions(request *EnableIni
 
 // Summary:
 //
-// Enables the feature of automatically redirecting the initial domain name to the default domain name for an Employee Identity and Access Management (EIAM) instance.
+// Enables automatic redirection from the initialization domain name to the default domain name for an EIAM instance. After this feature is enabled, portal access via the initialization domain name is redirected to the default domain name.
 //
 // @param request - EnableInitDomainAutoRedirectRequest
 //
@@ -9454,7 +9526,7 @@ func (client *Client) EnableInitDomainAutoRedirect(request *EnableInitDomainAuto
 
 // Summary:
 //
-// 启用内部认证源
+// Enables an internal authentication source.
 //
 // @param request - EnableInternalAuthenticationSourceRequest
 //
@@ -9502,7 +9574,7 @@ func (client *Client) EnableInternalAuthenticationSourceWithOptions(request *Ena
 
 // Summary:
 //
-// 启用内部认证源
+// Enables an internal authentication source.
 //
 // @param request - EnableInternalAuthenticationSourceRequest
 //
@@ -9520,7 +9592,7 @@ func (client *Client) EnableInternalAuthenticationSource(request *EnableInternal
 
 // Summary:
 //
-// 启用资源服务器自定义主体
+// Enables the custom subject feature for a specified resource server. After this feature is enabled, the subject of an issued access token changes from <clientId> to <clientId>:<client.activeSubjectUrn>. The `client.activeSubjectUrn` is set in the attribute mapping of the application\\"s federated identity provider.
 //
 // @param request - EnableResourceServerCustomSubjectRequest
 //
@@ -9568,7 +9640,7 @@ func (client *Client) EnableResourceServerCustomSubjectWithOptions(request *Enab
 
 // Summary:
 //
-// 启用资源服务器自定义主体
+// Enables the custom subject feature for a specified resource server. After this feature is enabled, the subject of an issued access token changes from <clientId> to <clientId>:<client.activeSubjectUrn>. The `client.activeSubjectUrn` is set in the attribute mapping of the application\\"s federated identity provider.
 //
 // @param request - EnableResourceServerCustomSubjectRequest
 //
@@ -9652,7 +9724,7 @@ func (client *Client) EnableUser(request *EnableUserRequest) (_result *EnableUse
 
 // Summary:
 //
-// 解析IdP Metadata信息。
+// Resolves the metadata for an identity provider.
 //
 // @param request - ExecIdentityProviderMetadataUrlResolutionRequest
 //
@@ -9712,7 +9784,7 @@ func (client *Client) ExecIdentityProviderMetadataUrlResolutionWithOptions(reque
 
 // Summary:
 //
-// 解析IdP Metadata信息。
+// Resolves the metadata for an identity provider.
 //
 // @param request - ExecIdentityProviderMetadataUrlResolutionRequest
 //
@@ -9730,7 +9802,7 @@ func (client *Client) ExecIdentityProviderMetadataUrlResolution(request *ExecIde
 
 // Summary:
 //
-// 生成文件导入结果下载地址
+// Generates a download URL for the result of a file import.
 //
 // @param request - GenerateDownloadUrlForSynchronizationJobRequest
 //
@@ -9778,7 +9850,7 @@ func (client *Client) GenerateDownloadUrlForSynchronizationJobWithOptions(reques
 
 // Summary:
 //
-// 生成文件导入结果下载地址
+// Generates a download URL for the result of a file import.
 //
 // @param request - GenerateDownloadUrlForSynchronizationJobRequest
 //
@@ -9796,7 +9868,7 @@ func (client *Client) GenerateDownloadUrlForSynchronizationJob(request *Generate
 
 // Summary:
 //
-// 生成文件导入模板
+// Generates a file import template.
 //
 // @param request - GenerateFileImportTemplateRequest
 //
@@ -9844,7 +9916,7 @@ func (client *Client) GenerateFileImportTemplateWithOptions(request *GenerateFil
 
 // Summary:
 //
-// 生成文件导入模板
+// Generates a file import template.
 //
 // @param request - GenerateFileImportTemplateRequest
 //
@@ -9862,7 +9934,7 @@ func (client *Client) GenerateFileImportTemplate(request *GenerateFileImportTemp
 
 // Summary:
 //
-// 生成 Oauth Token
+// Obtain an access token to call a resource server using a specified application as the client.
 //
 // @param request - GenerateOauthTokenRequest
 //
@@ -9918,7 +9990,7 @@ func (client *Client) GenerateOauthTokenWithOptions(request *GenerateOauthTokenR
 
 // Summary:
 //
-// 生成 Oauth Token
+// Obtain an access token to call a resource server using a specified application as the client.
 //
 // @param request - GenerateOauthTokenRequest
 //
@@ -9936,7 +10008,7 @@ func (client *Client) GenerateOauthToken(request *GenerateOauthTokenRequest) (_r
 
 // Summary:
 //
-// 获取上传认证
+// Generates an upload credential.
 //
 // @param request - GenerateUploadAuthRequest
 //
@@ -9988,7 +10060,7 @@ func (client *Client) GenerateUploadAuthWithOptions(request *GenerateUploadAuthR
 
 // Summary:
 //
-// 获取上传认证
+// Generates an upload credential.
 //
 // @param request - GenerateUploadAuthRequest
 //
@@ -10006,7 +10078,7 @@ func (client *Client) GenerateUploadAuth(request *GenerateUploadAuthRequest) (_r
 
 // Summary:
 //
-// 生成WebAuthn认证器注册URL
+// Generates a WebAuthn authenticator registration URL.
 //
 // @param request - GenerateWebAuthnAuthenticatorRegistrationUrlRequest
 //
@@ -10058,7 +10130,7 @@ func (client *Client) GenerateWebAuthnAuthenticatorRegistrationUrlWithOptions(re
 
 // Summary:
 //
-// 生成WebAuthn认证器注册URL
+// Generates a WebAuthn authenticator registration URL.
 //
 // @param request - GenerateWebAuthnAuthenticatorRegistrationUrlRequest
 //
@@ -10076,7 +10148,7 @@ func (client *Client) GenerateWebAuthnAuthenticatorRegistrationUrl(request *Gene
 
 // Summary:
 //
-// Queries the details of an Employee Identity and Access Management (EIAM) application.
+// Retrieves the details of a specified EIAM application.
 //
 // @param request - GetApplicationRequest
 //
@@ -10124,7 +10196,7 @@ func (client *Client) GetApplicationWithOptions(request *GetApplicationRequest, 
 
 // Summary:
 //
-// Queries the details of an Employee Identity and Access Management (EIAM) application.
+// Retrieves the details of a specified EIAM application.
 //
 // @param request - GetApplicationRequest
 //
@@ -10142,7 +10214,7 @@ func (client *Client) GetApplication(request *GetApplicationRequest) (_result *G
 
 // Summary:
 //
-// 获取应用高阶配置
+// Retrieves the advanced configuration of an application.
 //
 // @param request - GetApplicationAdvancedConfigRequest
 //
@@ -10190,7 +10262,7 @@ func (client *Client) GetApplicationAdvancedConfigWithOptions(request *GetApplic
 
 // Summary:
 //
-// 获取应用高阶配置
+// Retrieves the advanced configuration of an application.
 //
 // @param request - GetApplicationAdvancedConfigRequest
 //
@@ -10208,7 +10280,7 @@ func (client *Client) GetApplicationAdvancedConfig(request *GetApplicationAdvanc
 
 // Summary:
 //
-// 获取应用联邦凭证
+// Retrieves the federated credential for an application.
 //
 // @param request - GetApplicationFederatedCredentialRequest
 //
@@ -10260,7 +10332,7 @@ func (client *Client) GetApplicationFederatedCredentialWithOptions(request *GetA
 
 // Summary:
 //
-// 获取应用联邦凭证
+// Retrieves the federated credential for an application.
 //
 // @param request - GetApplicationFederatedCredentialRequest
 //
@@ -10344,7 +10416,7 @@ func (client *Client) GetApplicationGrantScope(request *GetApplicationGrantScope
 
 // Summary:
 //
-// Queries the configuration of the account synchronization feature for an application in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
+// Retrieves the account synchronization configuration for an Entity Identity and Access Management (EIAM) application.
 //
 // @param request - GetApplicationProvisioningConfigRequest
 //
@@ -10392,7 +10464,7 @@ func (client *Client) GetApplicationProvisioningConfigWithOptions(request *GetAp
 
 // Summary:
 //
-// Queries the configuration of the account synchronization feature for an application in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
+// Retrieves the account synchronization configuration for an Entity Identity and Access Management (EIAM) application.
 //
 // @param request - GetApplicationProvisioningConfigRequest
 //
@@ -10476,7 +10548,7 @@ func (client *Client) GetApplicationProvisioningScope(request *GetApplicationPro
 
 // Summary:
 //
-// 查询指定应用同步配置
+// Queries the synchronization configuration of a specified application.
 //
 // @param request - GetApplicationProvisioningUserPrimaryOrganizationalUnitRequest
 //
@@ -10524,7 +10596,7 @@ func (client *Client) GetApplicationProvisioningUserPrimaryOrganizationalUnitWit
 
 // Summary:
 //
-// 查询指定应用同步配置
+// Queries the synchronization configuration of a specified application.
 //
 // @param request - GetApplicationProvisioningUserPrimaryOrganizationalUnitRequest
 //
@@ -10542,7 +10614,7 @@ func (client *Client) GetApplicationProvisioningUserPrimaryOrganizationalUnit(re
 
 // Summary:
 //
-// 获取角色信息
+// Retrieves the details of an application role.
 //
 // @param request - GetApplicationRoleRequest
 //
@@ -10594,7 +10666,7 @@ func (client *Client) GetApplicationRoleWithOptions(request *GetApplicationRoleR
 
 // Summary:
 //
-// 获取角色信息
+// Retrieves the details of an application role.
 //
 // @param request - GetApplicationRoleRequest
 //
@@ -10612,7 +10684,7 @@ func (client *Client) GetApplicationRole(request *GetApplicationRoleRequest) (_r
 
 // Summary:
 //
-// Queries the single sign-on (SSO) configuration attributes of an application in Identity as a Service (IDaaS) Employee IAM (EIAM).
+// Retrieves the single sign-on (SSO) configuration for an application in EIAM.
 //
 // @param request - GetApplicationSsoConfigRequest
 //
@@ -10660,7 +10732,7 @@ func (client *Client) GetApplicationSsoConfigWithOptions(request *GetApplication
 
 // Summary:
 //
-// Queries the single sign-on (SSO) configuration attributes of an application in Identity as a Service (IDaaS) Employee IAM (EIAM).
+// Retrieves the single sign-on (SSO) configuration for an application in EIAM.
 //
 // @param request - GetApplicationSsoConfigRequest
 //
@@ -10678,7 +10750,7 @@ func (client *Client) GetApplicationSsoConfig(request *GetApplicationSsoConfigRe
 
 // Summary:
 //
-// 获取应用模板信息
+// Retrieves the details of an application template.
 //
 // @param request - GetApplicationTemplateRequest
 //
@@ -10722,7 +10794,7 @@ func (client *Client) GetApplicationTemplateWithOptions(request *GetApplicationT
 
 // Summary:
 //
-// 获取应用模板信息
+// Retrieves the details of an application template.
 //
 // @param request - GetApplicationTemplateRequest
 //
@@ -10740,7 +10812,7 @@ func (client *Client) GetApplicationTemplate(request *GetApplicationTemplateRequ
 
 // Summary:
 //
-// 获取授权资源信息
+// Queries the information about an authorized resource.
 //
 // @param request - GetAuthorizationResourceRequest
 //
@@ -10792,7 +10864,7 @@ func (client *Client) GetAuthorizationResourceWithOptions(request *GetAuthorizat
 
 // Summary:
 //
-// 获取授权资源信息
+// Queries the information about an authorized resource.
 //
 // @param request - GetAuthorizationResourceRequest
 //
@@ -10810,7 +10882,7 @@ func (client *Client) GetAuthorizationResource(request *GetAuthorizationResource
 
 // Summary:
 //
-// 获取授权规则信息
+// Query information about an authorization rule.
 //
 // @param request - GetAuthorizationRuleRequest
 //
@@ -10858,7 +10930,7 @@ func (client *Client) GetAuthorizationRuleWithOptions(request *GetAuthorizationR
 
 // Summary:
 //
-// 获取授权规则信息
+// Query information about an authorization rule.
 //
 // @param request - GetAuthorizationRuleRequest
 //
@@ -10876,7 +10948,7 @@ func (client *Client) GetAuthorizationRule(request *GetAuthorizationRuleRequest)
 
 // Summary:
 //
-// 获取品牌详情
+// Retrieves the details of a brand.
 //
 // @param request - GetBrandRequest
 //
@@ -10924,7 +10996,7 @@ func (client *Client) GetBrandWithOptions(request *GetBrandRequest, runtime *dar
 
 // Summary:
 //
-// 获取品牌详情
+// Retrieves the details of a brand.
 //
 // @param request - GetBrandRequest
 //
@@ -10942,7 +11014,7 @@ func (client *Client) GetBrand(request *GetBrandRequest) (_result *GetBrandRespo
 
 // Summary:
 //
-// 查询指定应用ClientPublicKey
+// Retrieves the ClientPublicKey for a specified application.
 //
 // @param request - GetClientPublicKeyRequest
 //
@@ -10994,7 +11066,7 @@ func (client *Client) GetClientPublicKeyWithOptions(request *GetClientPublicKeyR
 
 // Summary:
 //
-// 查询指定应用ClientPublicKey
+// Retrieves the ClientPublicKey for a specified application.
 //
 // @param request - GetClientPublicKeyRequest
 //
@@ -11012,7 +11084,7 @@ func (client *Client) GetClientPublicKey(request *GetClientPublicKeyRequest) (_r
 
 // Summary:
 //
-// 获取云账号
+// Retrieves information about resources in an Alibaba Cloud account.
 //
 // @param request - GetCloudAccountRequest
 //
@@ -11060,7 +11132,7 @@ func (client *Client) GetCloudAccountWithOptions(request *GetCloudAccountRequest
 
 // Summary:
 //
-// 获取云账号
+// Retrieves information about resources in an Alibaba Cloud account.
 //
 // @param request - GetCloudAccountRequest
 //
@@ -11078,7 +11150,7 @@ func (client *Client) GetCloudAccount(request *GetCloudAccountRequest) (_result 
 
 // Summary:
 //
-// 获取云角色
+// Retrieves information about a cloud role.
 //
 // @param request - GetCloudAccountRoleRequest
 //
@@ -11130,7 +11202,7 @@ func (client *Client) GetCloudAccountRoleWithOptions(request *GetCloudAccountRol
 
 // Summary:
 //
-// 获取云角色
+// Retrieves information about a cloud role.
 //
 // @param request - GetCloudAccountRoleRequest
 //
@@ -11148,11 +11220,11 @@ func (client *Client) GetCloudAccountRole(request *GetCloudAccountRoleRequest) (
 
 // Summary:
 //
-// # Get Conditional Access Policy
+// Retrieves a conditional access policy.
 //
 // Description:
 //
-// # Query Conditional Access Policy
+// This operation retrieves a conditional access policy.
 //
 // @param request - GetConditionalAccessPolicyRequest
 //
@@ -11200,11 +11272,11 @@ func (client *Client) GetConditionalAccessPolicyWithOptions(request *GetConditio
 
 // Summary:
 //
-// # Get Conditional Access Policy
+// Retrieves a conditional access policy.
 //
 // Description:
 //
-// # Query Conditional Access Policy
+// This operation retrieves a conditional access policy.
 //
 // @param request - GetConditionalAccessPolicyRequest
 //
@@ -11222,7 +11294,7 @@ func (client *Client) GetConditionalAccessPolicy(request *GetConditionalAccessPo
 
 // Summary:
 //
-// 获取凭据
+// Retrieves the details of a specific credential.
 //
 // @param request - GetCredentialRequest
 //
@@ -11270,7 +11342,7 @@ func (client *Client) GetCredentialWithOptions(request *GetCredentialRequest, ru
 
 // Summary:
 //
-// 获取凭据
+// Retrieves the details of a specific credential.
 //
 // @param request - GetCredentialRequest
 //
@@ -11288,7 +11360,7 @@ func (client *Client) GetCredential(request *GetCredentialRequest) (_result *Get
 
 // Summary:
 //
-// 查询凭据提供商详情
+// Retrieves the details of a credential provider.
 //
 // @param request - GetCredentialProviderRequest
 //
@@ -11336,7 +11408,7 @@ func (client *Client) GetCredentialProviderWithOptions(request *GetCredentialPro
 
 // Summary:
 //
-// 查询凭据提供商详情
+// Retrieves the details of a credential provider.
 //
 // @param request - GetCredentialProviderRequest
 //
@@ -11354,7 +11426,11 @@ func (client *Client) GetCredentialProvider(request *GetCredentialProviderReques
 
 // Summary:
 //
-// 获取扩展字段信息
+// Retrieves custom field information.
+//
+// Description:
+//
+// *Before using this operation, review the IDaaS pricing model and [pricing details](https://www.aliyun.com/price/product#/ecs/detail).**
 //
 // @param request - GetCustomFieldRequest
 //
@@ -11402,7 +11478,11 @@ func (client *Client) GetCustomFieldWithOptions(request *GetCustomFieldRequest, 
 
 // Summary:
 //
-// 获取扩展字段信息
+// Retrieves custom field information.
+//
+// Description:
+//
+// *Before using this operation, review the IDaaS pricing model and [pricing details](https://www.aliyun.com/price/product#/ecs/detail).**
 //
 // @param request - GetCustomFieldRequest
 //
@@ -11420,7 +11500,7 @@ func (client *Client) GetCustomField(request *GetCustomFieldRequest) (_result *G
 
 // Summary:
 //
-// 获取自定义条款
+// # Obtaining custom terms
 //
 // @param request - GetCustomPrivacyPolicyRequest
 //
@@ -11468,7 +11548,7 @@ func (client *Client) GetCustomPrivacyPolicyWithOptions(request *GetCustomPrivac
 
 // Summary:
 //
-// 获取自定义条款
+// # Obtaining custom terms
 //
 // @param request - GetCustomPrivacyPolicyRequest
 //
@@ -11486,7 +11566,7 @@ func (client *Client) GetCustomPrivacyPolicy(request *GetCustomPrivacyPolicyRequ
 
 // Summary:
 //
-// Queries the information about a domain name of an Employee Identity and Access Management (EIAM) instance.
+// Retrieves information about a domain name for an EIAM instance.
 //
 // @param request - GetDomainRequest
 //
@@ -11534,7 +11614,7 @@ func (client *Client) GetDomainWithOptions(request *GetDomainRequest, runtime *d
 
 // Summary:
 //
-// Queries the information about a domain name of an Employee Identity and Access Management (EIAM) instance.
+// Retrieves information about a domain name for an EIAM instance.
 //
 // @param request - GetDomainRequest
 //
@@ -11552,7 +11632,7 @@ func (client *Client) GetDomain(request *GetDomainRequest) (_result *GetDomainRe
 
 // Summary:
 //
-// Queries the domain name system (DNS) challenge records of a domain name of an Employee Identity and Access Management (EIAM) instance. The generated records are used to verify the ownership of the domain name.
+// Queries the DNS Challenge record for a specified EIAM domain name. This record is used to verify domain ownership.
 //
 // @param request - GetDomainDnsChallengeRequest
 //
@@ -11600,7 +11680,7 @@ func (client *Client) GetDomainDnsChallengeWithOptions(request *GetDomainDnsChal
 
 // Summary:
 //
-// Queries the domain name system (DNS) challenge records of a domain name of an Employee Identity and Access Management (EIAM) instance. The generated records are used to verify the ownership of the domain name.
+// Queries the DNS Challenge record for a specified EIAM domain name. This record is used to verify domain ownership.
 //
 // @param request - GetDomainDnsChallengeRequest
 //
@@ -11618,7 +11698,7 @@ func (client *Client) GetDomainDnsChallenge(request *GetDomainDnsChallengeReques
 
 // Summary:
 //
-// 获取联邦凭证提供方
+// Retrieve a federated credential provider.
 //
 // @param request - GetFederatedCredentialProviderRequest
 //
@@ -11666,7 +11746,7 @@ func (client *Client) GetFederatedCredentialProviderWithOptions(request *GetFede
 
 // Summary:
 //
-// 获取联邦凭证提供方
+// Retrieve a federated credential provider.
 //
 // @param request - GetFederatedCredentialProviderRequest
 //
@@ -11684,7 +11764,7 @@ func (client *Client) GetFederatedCredentialProvider(request *GetFederatedCreden
 
 // Summary:
 //
-// Queries the forgot password configurations of an Employee Identity and Access Management (EIAM) instance of Identity as a Service (IDaaS).
+// Queries the forgot-password configuration for a specified EIAM instance.
 //
 // @param request - GetForgetPasswordConfigurationRequest
 //
@@ -11728,7 +11808,7 @@ func (client *Client) GetForgetPasswordConfigurationWithOptions(request *GetForg
 
 // Summary:
 //
-// Queries the forgot password configurations of an Employee Identity and Access Management (EIAM) instance of Identity as a Service (IDaaS).
+// Queries the forgot-password configuration for a specified EIAM instance.
 //
 // @param request - GetForgetPasswordConfigurationRequest
 //
@@ -11746,7 +11826,7 @@ func (client *Client) GetForgetPasswordConfiguration(request *GetForgetPasswordC
 
 // Summary:
 //
-// Queries the information of an account group in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
+// Retrieves the information about an account group in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
 //
 // @param request - GetGroupRequest
 //
@@ -11794,7 +11874,7 @@ func (client *Client) GetGroupWithOptions(request *GetGroupRequest, runtime *dar
 
 // Summary:
 //
-// Queries the information of an account group in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
+// Retrieves the information about an account group in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
 //
 // @param request - GetGroupRequest
 //
@@ -11812,7 +11892,7 @@ func (client *Client) GetGroup(request *GetGroupRequest) (_result *GetGroupRespo
 
 // Summary:
 //
-// Obtains an identity provider (IdP).
+// Get an identity provider.
 //
 // @param request - GetIdentityProviderRequest
 //
@@ -11860,7 +11940,7 @@ func (client *Client) GetIdentityProviderWithOptions(request *GetIdentityProvide
 
 // Summary:
 //
-// Obtains an identity provider (IdP).
+// Get an identity provider.
 //
 // @param request - GetIdentityProviderRequest
 //
@@ -11878,7 +11958,7 @@ func (client *Client) GetIdentityProvider(request *GetIdentityProviderRequest) (
 
 // Summary:
 //
-// 获取高级配置信息
+// Retrieves advanced configuration information.
 //
 // @param request - GetIdentityProviderAdvancedConfigurationRequest
 //
@@ -11926,7 +12006,7 @@ func (client *Client) GetIdentityProviderAdvancedConfigurationWithOptions(reques
 
 // Summary:
 //
-// 获取高级配置信息
+// Retrieves advanced configuration information.
 //
 // @param request - GetIdentityProviderAdvancedConfigurationRequest
 //
@@ -11944,7 +12024,7 @@ func (client *Client) GetIdentityProviderAdvancedConfiguration(request *GetIdent
 
 // Summary:
 //
-// 获取IdP检查任务
+// Retrieves an IdP check task.
 //
 // @param request - GetIdentityProviderStatusCheckJobRequest
 //
@@ -11996,7 +12076,7 @@ func (client *Client) GetIdentityProviderStatusCheckJobWithOptions(request *GetI
 
 // Summary:
 //
-// 获取IdP检查任务
+// Retrieves an IdP check task.
 //
 // @param request - GetIdentityProviderStatusCheckJobRequest
 //
@@ -12080,7 +12160,7 @@ func (client *Client) GetIdentityProviderUdPullConfiguration(request *GetIdentit
 
 // Summary:
 //
-// 获取IdP同步出配置
+// Retrieve the IdP outbound synchronization configuration.
 //
 // @param request - GetIdentityProviderUdPushConfigurationRequest
 //
@@ -12128,7 +12208,7 @@ func (client *Client) GetIdentityProviderUdPushConfigurationWithOptions(request 
 
 // Summary:
 //
-// 获取IdP同步出配置
+// Retrieve the IdP outbound synchronization configuration.
 //
 // @param request - GetIdentityProviderUdPushConfigurationRequest
 //
@@ -12146,7 +12226,7 @@ func (client *Client) GetIdentityProviderUdPushConfiguration(request *GetIdentit
 
 // Summary:
 //
-// Queries the information of an Enterprise Identity and Access Management (EIAM) instance of Identity as a Service (IDaaS).
+// Queries the detailed information of an EIAM instance.
 //
 // @param request - GetInstanceRequest
 //
@@ -12190,7 +12270,7 @@ func (client *Client) GetInstanceWithOptions(request *GetInstanceRequest, runtim
 
 // Summary:
 //
-// Queries the information of an Enterprise Identity and Access Management (EIAM) instance of Identity as a Service (IDaaS).
+// Queries the detailed information of an EIAM instance.
 //
 // @param request - GetInstanceRequest
 //
@@ -12208,7 +12288,7 @@ func (client *Client) GetInstance(request *GetInstanceRequest) (_result *GetInst
 
 // Summary:
 //
-// 查询实例控制项
+// Queries the control configuration for an instance.
 //
 // @param request - GetInstanceControlConfigurationRequest
 //
@@ -12256,7 +12336,7 @@ func (client *Client) GetInstanceControlConfigurationWithOptions(request *GetIns
 
 // Summary:
 //
-// 查询实例控制项
+// Queries the control configuration for an instance.
 //
 // @param request - GetInstanceControlConfigurationRequest
 //
@@ -12274,7 +12354,11 @@ func (client *Client) GetInstanceControlConfiguration(request *GetInstanceContro
 
 // Summary:
 //
-// 获取实例语言、时区信息
+// Retrieves the language and time zone information for an instance.
+//
+// Description:
+//
+// When you disable a conditional access policy, it no longer intercepts access requests. Confirm that you understand the security risks associated with this action.
 //
 // @param request - GetInstanceGlobalizationConfigRequest
 //
@@ -12318,7 +12402,11 @@ func (client *Client) GetInstanceGlobalizationConfigWithOptions(request *GetInst
 
 // Summary:
 //
-// 获取实例语言、时区信息
+// Retrieves the language and time zone information for an instance.
+//
+// Description:
+//
+// When you disable a conditional access policy, it no longer intercepts access requests. Confirm that you understand the security risks associated with this action.
 //
 // @param request - GetInstanceGlobalizationConfigRequest
 //
@@ -12336,11 +12424,11 @@ func (client *Client) GetInstanceGlobalizationConfig(request *GetInstanceGlobali
 
 // Summary:
 //
-// # Query the currently effective License information of the instance
+// Queries the active license information for an instance.
 //
 // Description:
 //
-// Please ensure that your current instance is no longer in use. When the EIAM instance is deleted, all related data will be deleted.
+// Ensure the instance is not in use before deletion. Deleting an EIAM instance permanently removes all of its associated data.
 //
 // @param request - GetInstanceLicenseRequest
 //
@@ -12384,11 +12472,11 @@ func (client *Client) GetInstanceLicenseWithOptions(request *GetInstanceLicenseR
 
 // Summary:
 //
-// # Query the currently effective License information of the instance
+// Queries the active license information for an instance.
 //
 // Description:
 //
-// Please ensure that your current instance is no longer in use. When the EIAM instance is deleted, all related data will be deleted.
+// Ensure the instance is not in use before deletion. Deleting an EIAM instance permanently removes all of its associated data.
 //
 // @param request - GetInstanceLicenseRequest
 //
@@ -12406,7 +12494,7 @@ func (client *Client) GetInstanceLicense(request *GetInstanceLicenseRequest) (_r
 
 // Summary:
 //
-// 获取一级模块下，所有模块信息
+// Retrieves information about all modules within a primary module.
 //
 // @param request - GetInstanceModuleInfoRequest
 //
@@ -12454,7 +12542,7 @@ func (client *Client) GetInstanceModuleInfoWithOptions(request *GetInstanceModul
 
 // Summary:
 //
-// 获取一级模块下，所有模块信息
+// Retrieves information about all modules within a primary module.
 //
 // @param request - GetInstanceModuleInfoRequest
 //
@@ -12472,7 +12560,7 @@ func (client *Client) GetInstanceModuleInfo(request *GetInstanceModuleInfoReques
 
 // Summary:
 //
-// 获取实例单一类型的Quota
+// Retrieves the quota of a specific type for an instance.
 //
 // @param request - GetInstanceQuotaRequest
 //
@@ -12520,7 +12608,7 @@ func (client *Client) GetInstanceQuotaWithOptions(request *GetInstanceQuotaReque
 
 // Summary:
 //
-// 获取实例单一类型的Quota
+// Retrieves the quota of a specific type for an instance.
 //
 // @param request - GetInstanceQuotaRequest
 //
@@ -12538,7 +12626,7 @@ func (client *Client) GetInstanceQuota(request *GetInstanceQuotaRequest) (_resul
 
 // Summary:
 //
-// 获取实例的试用状态
+// Retrieves the trial status of an instance.
 //
 // @param request - GetInstanceTrialStatusRequest
 //
@@ -12582,7 +12670,7 @@ func (client *Client) GetInstanceTrialStatusWithOptions(request *GetInstanceTria
 
 // Summary:
 //
-// 获取实例的试用状态
+// Retrieves the trial status of an instance.
 //
 // @param request - GetInstanceTrialStatusRequest
 //
@@ -12600,7 +12688,7 @@ func (client *Client) GetInstanceTrialStatus(request *GetInstanceTrialStatusRequ
 
 // Summary:
 //
-// 获取品牌登录后跳转应用
+// # Configure the post-logon redirect application for a brand
 //
 // @param request - GetLoginRedirectApplicationForBrandRequest
 //
@@ -12648,7 +12736,7 @@ func (client *Client) GetLoginRedirectApplicationForBrandWithOptions(request *Ge
 
 // Summary:
 //
-// 获取品牌登录后跳转应用
+// # Configure the post-logon redirect application for a brand
 //
 // @param request - GetLoginRedirectApplicationForBrandRequest
 //
@@ -12732,7 +12820,7 @@ func (client *Client) GetNetworkAccessEndpoint(request *GetNetworkAccessEndpoint
 
 // Summary:
 //
-// 获取网络区域对象
+// Retrieves a network zone object.
 //
 // @param request - GetNetworkZoneRequest
 //
@@ -12780,7 +12868,7 @@ func (client *Client) GetNetworkZoneWithOptions(request *GetNetworkZoneRequest, 
 
 // Summary:
 //
-// 获取网络区域对象
+// Retrieves a network zone object.
 //
 // @param request - GetNetworkZoneRequest
 //
@@ -12864,7 +12952,7 @@ func (client *Client) GetOrganizationalUnit(request *GetOrganizationalUnitReques
 
 // Summary:
 //
-// Queries the password complexity configurations of an Employee Identity and Access Management (EIAM) instance of Identity as a Service (IDaaS).
+// Retrieves the password complexity policy for a specified EIAM instance.
 //
 // @param request - GetPasswordComplexityConfigurationRequest
 //
@@ -12908,7 +12996,7 @@ func (client *Client) GetPasswordComplexityConfigurationWithOptions(request *Get
 
 // Summary:
 //
-// Queries the password complexity configurations of an Employee Identity and Access Management (EIAM) instance of Identity as a Service (IDaaS).
+// Retrieves the password complexity policy for a specified EIAM instance.
 //
 // @param request - GetPasswordComplexityConfigurationRequest
 //
@@ -13112,7 +13200,7 @@ func (client *Client) GetPasswordInitializationConfiguration(request *GetPasswor
 
 // Summary:
 //
-// 查询指定ResourceServer下的Scope
+// Retrieves the permission scopes for a specified resource server.
 //
 // @param request - GetResourceServerScopeRequest
 //
@@ -13164,7 +13252,7 @@ func (client *Client) GetResourceServerScopeWithOptions(request *GetResourceServ
 
 // Summary:
 //
-// 查询指定ResourceServer下的Scope
+// Retrieves the permission scopes for a specified resource server.
 //
 // @param request - GetResourceServerScopeRequest
 //
@@ -13244,7 +13332,7 @@ func (client *Client) GetRootOrganizationalUnit(request *GetRootOrganizationalUn
 
 // Summary:
 //
-// 获取服务Quota
+// # Queries a service quota
 //
 // @param request - GetServiceQuotaRequest
 //
@@ -13288,7 +13376,7 @@ func (client *Client) GetServiceQuotaWithOptions(request *GetServiceQuotaRequest
 
 // Summary:
 //
-// 获取服务Quota
+// # Queries a service quota
 //
 // @param request - GetServiceQuotaRequest
 //
@@ -13372,7 +13460,7 @@ func (client *Client) GetSynchronizationJob(request *GetSynchronizationJobReques
 
 // Summary:
 //
-// Queries the details of an account in Identity as a Service (IDaaS) Employee IAM (EIAM).
+// Retrieves the details of an account in Identity as a Service (IDaaS) Employee IAM (EIAM).
 //
 // @param request - GetUserRequest
 //
@@ -13420,7 +13508,7 @@ func (client *Client) GetUserWithOptions(request *GetUserRequest, runtime *dara.
 
 // Summary:
 //
-// Queries the details of an account in Identity as a Service (IDaaS) Employee IAM (EIAM).
+// Retrieves the details of an account in Identity as a Service (IDaaS) Employee IAM (EIAM).
 //
 // @param request - GetUserRequest
 //
@@ -13438,7 +13526,7 @@ func (client *Client) GetUser(request *GetUserRequest) (_result *GetUserResponse
 
 // Summary:
 //
-// 查看调用事件列表
+// View the list of invocation events.
 //
 // @param request - ListActionTrackEventTypesRequest
 //
@@ -13494,7 +13582,7 @@ func (client *Client) ListActionTrackEventTypesWithOptions(request *ListActionTr
 
 // Summary:
 //
-// 查看调用事件列表
+// View the list of invocation events.
 //
 // @param request - ListActionTrackEventTypesRequest
 //
@@ -13512,7 +13600,7 @@ func (client *Client) ListActionTrackEventTypes(request *ListActionTrackEventTyp
 
 // Summary:
 //
-// 分页查询应用下的应用账户列表
+// Returns a paginated list of application accounts.
 //
 // @param request - ListApplicationAccountsRequest
 //
@@ -13568,7 +13656,7 @@ func (client *Client) ListApplicationAccountsWithOptions(request *ListApplicatio
 
 // Summary:
 //
-// 分页查询应用下的应用账户列表
+// Returns a paginated list of application accounts.
 //
 // @param request - ListApplicationAccountsRequest
 //
@@ -13586,7 +13674,11 @@ func (client *Client) ListApplicationAccounts(request *ListApplicationAccountsRe
 
 // Summary:
 //
-// 查询当前应用下指定用户的所有账号
+// Queries all accounts that belong to a specified user in an application.
+//
+// Description:
+//
+// This operation queries only applications that are directly assigned to an organization. You can use the **ApplicationIds*	- parameter to filter the applications.
 //
 // @param request - ListApplicationAccountsForUserRequest
 //
@@ -13638,7 +13730,11 @@ func (client *Client) ListApplicationAccountsForUserWithOptions(request *ListApp
 
 // Summary:
 //
-// 查询当前应用下指定用户的所有账号
+// Queries all accounts that belong to a specified user in an application.
+//
+// Description:
+//
+// This operation queries only applications that are directly assigned to an organization. You can use the **ApplicationIds*	- parameter to filter the applications.
 //
 // @param request - ListApplicationAccountsForUserRequest
 //
@@ -13656,7 +13752,7 @@ func (client *Client) ListApplicationAccountsForUser(request *ListApplicationAcc
 
 // Summary:
 //
-// Queries all client keys of an Employee Identity and Access Management (EIAM) application. The returned key secret is not masked. If you want to query the key secret that is masked, call the ObtainApplicationClientSecret operation.
+// Queries all client secrets for an EIAM application. The key data in the response is masked. To obtain an unmasked key, call the ObtainApplicationClientSecret operation.
 //
 // @param request - ListApplicationClientSecretsRequest
 //
@@ -13704,7 +13800,7 @@ func (client *Client) ListApplicationClientSecretsWithOptions(request *ListAppli
 
 // Summary:
 //
-// Queries all client keys of an Employee Identity and Access Management (EIAM) application. The returned key secret is not masked. If you want to query the key secret that is masked, call the ObtainApplicationClientSecret operation.
+// Queries all client secrets for an EIAM application. The key data in the response is masked. To obtain an unmasked key, call the ObtainApplicationClientSecret operation.
 //
 // @param request - ListApplicationClientSecretsRequest
 //
@@ -13722,7 +13818,7 @@ func (client *Client) ListApplicationClientSecrets(request *ListApplicationClien
 
 // Summary:
 //
-// 查询应用联邦凭证列表
+// Lists the federated credentials for an application.
 //
 // @param request - ListApplicationFederatedCredentialsRequest
 //
@@ -13786,7 +13882,7 @@ func (client *Client) ListApplicationFederatedCredentialsWithOptions(request *Li
 
 // Summary:
 //
-// 查询应用联邦凭证列表
+// Lists the federated credentials for an application.
 //
 // @param request - ListApplicationFederatedCredentialsRequest
 //
@@ -13804,7 +13900,7 @@ func (client *Client) ListApplicationFederatedCredentials(request *ListApplicati
 
 // Summary:
 //
-// 根据联邦凭证提供方查询应用联邦凭证列表
+// Lists the application federated credentials for a specified federated credential provider.
 //
 // @param request - ListApplicationFederatedCredentialsForProviderRequest
 //
@@ -13864,7 +13960,7 @@ func (client *Client) ListApplicationFederatedCredentialsForProviderWithOptions(
 
 // Summary:
 //
-// 根据联邦凭证提供方查询应用联邦凭证列表
+// Lists the application federated credentials for a specified federated credential provider.
 //
 // @param request - ListApplicationFederatedCredentialsForProviderRequest
 //
@@ -13882,7 +13978,7 @@ func (client *Client) ListApplicationFederatedCredentialsForProvider(request *Li
 
 // Summary:
 //
-// 游标分页查询应用角色
+// Retrieves a list of application roles using a cursor.
 //
 // @param request - ListApplicationRolesRequest
 //
@@ -13942,7 +14038,7 @@ func (client *Client) ListApplicationRolesWithOptions(request *ListApplicationRo
 
 // Summary:
 //
-// 游标分页查询应用角色
+// Retrieves a list of application roles using a cursor.
 //
 // @param request - ListApplicationRolesRequest
 //
@@ -13960,7 +14056,7 @@ func (client *Client) ListApplicationRoles(request *ListApplicationRolesRequest)
 
 // Summary:
 //
-// Queries the synchronization protocol types that are supported by an application.
+// Call the ListApplicationSupportedProvisionProtocolTypes operation to query the account synchronization protocols supported by an application.
 //
 // @param request - ListApplicationSupportedProvisionProtocolTypesRequest
 //
@@ -14008,7 +14104,7 @@ func (client *Client) ListApplicationSupportedProvisionProtocolTypesWithOptions(
 
 // Summary:
 //
-// Queries the synchronization protocol types that are supported by an application.
+// Call the ListApplicationSupportedProvisionProtocolTypes operation to query the account synchronization protocols supported by an application.
 //
 // @param request - ListApplicationSupportedProvisionProtocolTypesRequest
 //
@@ -14026,7 +14122,7 @@ func (client *Client) ListApplicationSupportedProvisionProtocolTypes(request *Li
 
 // Summary:
 //
-// 创建应用Token
+// Retrieves a list of application tokens.
 //
 // @param request - ListApplicationTokensRequest
 //
@@ -14078,7 +14174,7 @@ func (client *Client) ListApplicationTokensWithOptions(request *ListApplicationT
 
 // Summary:
 //
-// 创建应用Token
+// Retrieves a list of application tokens.
 //
 // @param request - ListApplicationTokensRequest
 //
@@ -14096,7 +14192,7 @@ func (client *Client) ListApplicationTokens(request *ListApplicationTokensReques
 
 // Summary:
 //
-// Queries the information about one or multiple Employee Identity and Access Management (EIAM) applications by page.
+// Retrieves a paginated list of EIAM applications.
 //
 // @param request - ListApplicationsRequest
 //
@@ -14188,7 +14284,7 @@ func (client *Client) ListApplicationsWithOptions(request *ListApplicationsReque
 
 // Summary:
 //
-// Queries the information about one or multiple Employee Identity and Access Management (EIAM) applications by page.
+// Retrieves a paginated list of EIAM applications.
 //
 // @param request - ListApplicationsRequest
 //
@@ -14206,7 +14302,7 @@ func (client *Client) ListApplications(request *ListApplicationsRequest) (_resul
 
 // Summary:
 //
-// 查询授权规则关联的应用列表
+// Queries the applications that are associated with an authorization rule.
 //
 // @param request - ListApplicationsForAuthorizationRuleRequest
 //
@@ -14266,7 +14362,7 @@ func (client *Client) ListApplicationsForAuthorizationRuleWithOptions(request *L
 
 // Summary:
 //
-// 查询授权规则关联的应用列表
+// Queries the applications that are associated with an authorization rule.
 //
 // @param request - ListApplicationsForAuthorizationRuleRequest
 //
@@ -14284,7 +14380,7 @@ func (client *Client) ListApplicationsForAuthorizationRule(request *ListApplicat
 
 // Summary:
 //
-// 查询一个EIAM组可访问的应用列表
+// Retrieves a list of applications that an EIAM group can access.
 //
 // @param request - ListApplicationsForGroupRequest
 //
@@ -14344,7 +14440,7 @@ func (client *Client) ListApplicationsForGroupWithOptions(request *ListApplicati
 
 // Summary:
 //
-// 查询一个EIAM组可访问的应用列表
+// Retrieves a list of applications that an EIAM group can access.
 //
 // @param request - ListApplicationsForGroupRequest
 //
@@ -14362,7 +14458,7 @@ func (client *Client) ListApplicationsForGroup(request *ListApplicationsForGroup
 
 // Summary:
 //
-// 获取网络访问端点下的App信息。
+// Lists the applications for a network access endpoint.
 //
 // @param request - ListApplicationsForNetworkAccessEndpointRequest
 //
@@ -14418,7 +14514,7 @@ func (client *Client) ListApplicationsForNetworkAccessEndpointWithOptions(reques
 
 // Summary:
 //
-// 获取网络访问端点下的App信息。
+// Lists the applications for a network access endpoint.
 //
 // @param request - ListApplicationsForNetworkAccessEndpointRequest
 //
@@ -14436,7 +14532,7 @@ func (client *Client) ListApplicationsForNetworkAccessEndpoint(request *ListAppl
 
 // Summary:
 //
-// 获取NetworkZone关联的应用列表
+// Retrieves a list of applications associated with a network domain.
 //
 // @param request - ListApplicationsForNetworkZoneRequest
 //
@@ -14496,7 +14592,7 @@ func (client *Client) ListApplicationsForNetworkZoneWithOptions(request *ListApp
 
 // Summary:
 //
-// 获取NetworkZone关联的应用列表
+// Retrieves a list of applications associated with a network domain.
 //
 // @param request - ListApplicationsForNetworkZoneRequest
 //
@@ -14514,11 +14610,11 @@ func (client *Client) ListApplicationsForNetworkZone(request *ListApplicationsFo
 
 // Summary:
 //
-// Queries the applications that an Employee Identity and Access Management (EIAM) organization can access. The return result includes the IDs of the applications. If you want to obtain the details of the applications, call the GetApplication operation.
+// This operation queries a paginated list of applications that an EIAM organization can access. The response includes application IDs. To retrieve detailed information about an application, call the GetApplication operation.
 //
 // Description:
 //
-// You can only query the permissions that are directly granted to the EIAM organization by calling the ListApplicationsForOrganizationalUnit operation. You can filter applications by configuring the **ApplicationIds*	- parameter when you call this operation.
+// This operation queries only the applications that are directly assigned to an organization. You can use the **ApplicationIds*	- parameter to filter the applications.
 //
 // @param request - ListApplicationsForOrganizationalUnitRequest
 //
@@ -14578,11 +14674,11 @@ func (client *Client) ListApplicationsForOrganizationalUnitWithOptions(request *
 
 // Summary:
 //
-// Queries the applications that an Employee Identity and Access Management (EIAM) organization can access. The return result includes the IDs of the applications. If you want to obtain the details of the applications, call the GetApplication operation.
+// This operation queries a paginated list of applications that an EIAM organization can access. The response includes application IDs. To retrieve detailed information about an application, call the GetApplication operation.
 //
 // Description:
 //
-// You can only query the permissions that are directly granted to the EIAM organization by calling the ListApplicationsForOrganizationalUnit operation. You can filter applications by configuring the **ApplicationIds*	- parameter when you call this operation.
+// This operation queries only the applications that are directly assigned to an organization. You can use the **ApplicationIds*	- parameter to filter the applications.
 //
 // @param request - ListApplicationsForOrganizationalUnitRequest
 //
@@ -14600,7 +14696,7 @@ func (client *Client) ListApplicationsForOrganizationalUnit(request *ListApplica
 
 // Summary:
 //
-// Queries the applications that an Employee Identity and Access Management (EIAM) account can access. The return result includes the IDs of the applications. If you want to obtain the details of the applications, call the GetApplication operation.
+// Queries the applications that an EIAM account can access and returns a paginated list of application IDs. To retrieve detailed information about a specific application, call the GetApplication operation.
 //
 // @param request - ListApplicationsForUserRequest
 //
@@ -14664,7 +14760,7 @@ func (client *Client) ListApplicationsForUserWithOptions(request *ListApplicatio
 
 // Summary:
 //
-// Queries the applications that an Employee Identity and Access Management (EIAM) account can access. The return result includes the IDs of the applications. If you want to obtain the details of the applications, call the GetApplication operation.
+// Queries the applications that an EIAM account can access and returns a paginated list of application IDs. To retrieve detailed information about a specific application, call the GetApplication operation.
 //
 // @param request - ListApplicationsForUserRequest
 //
@@ -14682,7 +14778,7 @@ func (client *Client) ListApplicationsForUser(request *ListApplicationsForUserRe
 
 // Summary:
 //
-// 查询授权资源信息列表
+// Queries a list of authorized resources.
 //
 // @param request - ListAuthorizationResourcesRequest
 //
@@ -14742,7 +14838,7 @@ func (client *Client) ListAuthorizationResourcesWithOptions(request *ListAuthori
 
 // Summary:
 //
-// 查询授权资源信息列表
+// Queries a list of authorized resources.
 //
 // @param request - ListAuthorizationResourcesRequest
 //
@@ -14760,7 +14856,7 @@ func (client *Client) ListAuthorizationResources(request *ListAuthorizationResou
 
 // Summary:
 //
-// 查询授权规则信息列表
+// Lists authorization rules.
 //
 // @param request - ListAuthorizationRulesRequest
 //
@@ -14816,7 +14912,7 @@ func (client *Client) ListAuthorizationRulesWithOptions(request *ListAuthorizati
 
 // Summary:
 //
-// 查询授权规则信息列表
+// Lists authorization rules.
 //
 // @param request - ListAuthorizationRulesRequest
 //
@@ -14834,7 +14930,7 @@ func (client *Client) ListAuthorizationRules(request *ListAuthorizationRulesRequ
 
 // Summary:
 //
-// 查询应用关联的授权规则信息列表
+// Lists the authorization rules associated with an application.
 //
 // @param request - ListAuthorizationRulesForApplicationRequest
 //
@@ -14890,7 +14986,7 @@ func (client *Client) ListAuthorizationRulesForApplicationWithOptions(request *L
 
 // Summary:
 //
-// 查询应用关联的授权规则信息列表
+// Lists the authorization rules associated with an application.
 //
 // @param request - ListAuthorizationRulesForApplicationRequest
 //
@@ -14908,7 +15004,7 @@ func (client *Client) ListAuthorizationRulesForApplication(request *ListAuthoriz
 
 // Summary:
 //
-// 查询组关联的授权规则信息列表
+// Lists the authorization rules associated with a group.
 //
 // @param request - ListAuthorizationRulesForGroupRequest
 //
@@ -14964,7 +15060,7 @@ func (client *Client) ListAuthorizationRulesForGroupWithOptions(request *ListAut
 
 // Summary:
 //
-// 查询组关联的授权规则信息列表
+// Lists the authorization rules associated with a group.
 //
 // @param request - ListAuthorizationRulesForGroupRequest
 //
@@ -14982,7 +15078,7 @@ func (client *Client) ListAuthorizationRulesForGroup(request *ListAuthorizationR
 
 // Summary:
 //
-// 查询用户关联的授权规则信息列表
+// Queries the authorization rules associated with a user.
 //
 // @param request - ListAuthorizationRulesForUserRequest
 //
@@ -15038,7 +15134,7 @@ func (client *Client) ListAuthorizationRulesForUserWithOptions(request *ListAuth
 
 // Summary:
 //
-// 查询用户关联的授权规则信息列表
+// Queries the authorization rules associated with a user.
 //
 // @param request - ListAuthorizationRulesForUserRequest
 //
@@ -15056,7 +15152,7 @@ func (client *Client) ListAuthorizationRulesForUser(request *ListAuthorizationRu
 
 // Summary:
 //
-// 获取品牌列表
+// Retrieves a list of brands.
 //
 // @param request - ListBrandsRequest
 //
@@ -15112,7 +15208,7 @@ func (client *Client) ListBrandsWithOptions(request *ListBrandsRequest, runtime 
 
 // Summary:
 //
-// 获取品牌列表
+// Retrieves a list of brands.
 //
 // @param request - ListBrandsRequest
 //
@@ -15130,7 +15226,7 @@ func (client *Client) ListBrands(request *ListBrandsRequest) (_result *ListBrand
 
 // Summary:
 //
-// 查询指定应用所属的全部ClientPublicKey
+// Lists the client public keys for a specified application using a cursor.
 //
 // @param request - ListClientPublicKeysRequest
 //
@@ -15186,7 +15282,7 @@ func (client *Client) ListClientPublicKeysWithOptions(request *ListClientPublicK
 
 // Summary:
 //
-// 查询指定应用所属的全部ClientPublicKey
+// Lists the client public keys for a specified application using a cursor.
 //
 // @param request - ListClientPublicKeysRequest
 //
@@ -15204,7 +15300,7 @@ func (client *Client) ListClientPublicKeys(request *ListClientPublicKeysRequest)
 
 // Summary:
 //
-// 查询云角色列表
+// Queries a paginated list of cloud roles.
 //
 // @param request - ListCloudAccountRolesRequest
 //
@@ -15264,7 +15360,7 @@ func (client *Client) ListCloudAccountRolesWithOptions(request *ListCloudAccount
 
 // Summary:
 //
-// 查询云角色列表
+// Queries a paginated list of cloud roles.
 //
 // @param request - ListCloudAccountRolesRequest
 //
@@ -15282,7 +15378,7 @@ func (client *Client) ListCloudAccountRoles(request *ListCloudAccountRolesReques
 
 // Summary:
 //
-// 查询云账号列表
+// Returns a paginated list of information about one or more Alibaba Cloud accounts.
 //
 // @param request - ListCloudAccountsRequest
 //
@@ -15338,7 +15434,7 @@ func (client *Client) ListCloudAccountsWithOptions(request *ListCloudAccountsReq
 
 // Summary:
 //
-// 查询云账号列表
+// Returns a paginated list of information about one or more Alibaba Cloud accounts.
 //
 // @param request - ListCloudAccountsRequest
 //
@@ -15438,7 +15534,7 @@ func (client *Client) ListConditionalAccessPolicies(request *ListConditionalAcce
 
 // Summary:
 //
-// 获取应用关联的条件访问策略列表
+// Lists the conditional access policies associated with an application.
 //
 // @param request - ListConditionalAccessPoliciesForApplicationRequest
 //
@@ -15486,7 +15582,7 @@ func (client *Client) ListConditionalAccessPoliciesForApplicationWithOptions(req
 
 // Summary:
 //
-// 获取应用关联的条件访问策略列表
+// Lists the conditional access policies associated with an application.
 //
 // @param request - ListConditionalAccessPoliciesForApplicationRequest
 //
@@ -15578,7 +15674,7 @@ func (client *Client) ListConditionalAccessPoliciesForNetworkZone(request *ListC
 
 // Summary:
 //
-// 获取用户关联的条件访问策略列表
+// Retrieves a list of conditional access policies that are associated with a user.
 //
 // @param request - ListConditionalAccessPoliciesForUserRequest
 //
@@ -15626,7 +15722,7 @@ func (client *Client) ListConditionalAccessPoliciesForUserWithOptions(request *L
 
 // Summary:
 //
-// 获取用户关联的条件访问策略列表
+// Retrieves a list of conditional access policies that are associated with a user.
 //
 // @param request - ListConditionalAccessPoliciesForUserRequest
 //
@@ -15644,7 +15740,7 @@ func (client *Client) ListConditionalAccessPoliciesForUser(request *ListConditio
 
 // Summary:
 //
-// 列举凭据提供商
+// Lists the credential providers.
 //
 // @param request - ListCredentialProvidersRequest
 //
@@ -15712,7 +15808,7 @@ func (client *Client) ListCredentialProvidersWithOptions(request *ListCredential
 
 // Summary:
 //
-// 列举凭据提供商
+// Lists the credential providers.
 //
 // @param request - ListCredentialProvidersRequest
 //
@@ -15730,7 +15826,7 @@ func (client *Client) ListCredentialProviders(request *ListCredentialProvidersRe
 
 // Summary:
 //
-// 查询凭据列表
+// Retrieves a paginated list of credentials.
 //
 // @param request - ListCredentialsRequest
 //
@@ -15806,7 +15902,7 @@ func (client *Client) ListCredentialsWithOptions(request *ListCredentialsRequest
 
 // Summary:
 //
-// 查询凭据列表
+// Retrieves a paginated list of credentials.
 //
 // @param request - ListCredentialsRequest
 //
@@ -15824,7 +15920,7 @@ func (client *Client) ListCredentials(request *ListCredentialsRequest) (_result 
 
 // Summary:
 //
-// 自定义条款列表查询。
+// Retrieves a list of custom privacy policies.
 //
 // @param request - ListCustomPrivacyPoliciesRequest
 //
@@ -15884,7 +15980,7 @@ func (client *Client) ListCustomPrivacyPoliciesWithOptions(request *ListCustomPr
 
 // Summary:
 //
-// 自定义条款列表查询。
+// Retrieves a list of custom privacy policies.
 //
 // @param request - ListCustomPrivacyPoliciesRequest
 //
@@ -15902,7 +15998,7 @@ func (client *Client) ListCustomPrivacyPolicies(request *ListCustomPrivacyPolici
 
 // Summary:
 //
-// 获取品牌关联资源的资源
+// Retrieves the resources of brand-linked instances.
 //
 // @param request - ListCustomPrivacyPoliciesForBrandRequest
 //
@@ -15962,7 +16058,7 @@ func (client *Client) ListCustomPrivacyPoliciesForBrandWithOptions(request *List
 
 // Summary:
 //
-// 获取品牌关联资源的资源
+// Retrieves the resources of brand-linked instances.
 //
 // @param request - ListCustomPrivacyPoliciesForBrandRequest
 //
@@ -15980,7 +16076,7 @@ func (client *Client) ListCustomPrivacyPoliciesForBrand(request *ListCustomPriva
 
 // Summary:
 //
-// Queries the proxy tokens of a domain name of an Employee Identity and Access Management (EIAM) instance.
+// Retrieves a list of proxy tokens for a domain name in an EIAM instance.
 //
 // @param request - ListDomainProxyTokensRequest
 //
@@ -16028,7 +16124,7 @@ func (client *Client) ListDomainProxyTokensWithOptions(request *ListDomainProxyT
 
 // Summary:
 //
-// Queries the proxy tokens of a domain name of an Employee Identity and Access Management (EIAM) instance.
+// Retrieves a list of proxy tokens for a domain name in an EIAM instance.
 //
 // @param request - ListDomainProxyTokensRequest
 //
@@ -16046,7 +16142,7 @@ func (client *Client) ListDomainProxyTokens(request *ListDomainProxyTokensReques
 
 // Summary:
 //
-// Queries a list of domain names of an Employee Identity and Access Management (EIAM) instance. The list contains the initial domain name and custom domain names.
+// Queries the domain names of an EIAM instance, including the default domain name and custom domain names.
 //
 // @param request - ListDomainsRequest
 //
@@ -16094,7 +16190,7 @@ func (client *Client) ListDomainsWithOptions(request *ListDomainsRequest, runtim
 
 // Summary:
 //
-// Queries a list of domain names of an Employee Identity and Access Management (EIAM) instance. The list contains the initial domain name and custom domain names.
+// Queries the domain names of an EIAM instance, including the default domain name and custom domain names.
 //
 // @param request - ListDomainsRequest
 //
@@ -16178,7 +16274,7 @@ func (client *Client) ListEiamInstances(request *ListEiamInstancesRequest) (_res
 
 // Summary:
 //
-// Queries the regions in which Employee Identity and Access Management (EIAM) V1.0 instances or EIAM V2.0 instances reside.
+// Lists the regions available for EIAM 1.0 and EIAM 2.0.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -16207,7 +16303,7 @@ func (client *Client) ListEiamRegionsWithOptions(runtime *dara.RuntimeOptions) (
 
 // Summary:
 //
-// Queries the regions in which Employee Identity and Access Management (EIAM) V1.0 instances or EIAM V2.0 instances reside.
+// Lists the regions available for EIAM 1.0 and EIAM 2.0.
 //
 // @return ListEiamRegionsResponse
 func (client *Client) ListEiamRegions() (_result *ListEiamRegionsResponse, _err error) {
@@ -16223,7 +16319,7 @@ func (client *Client) ListEiamRegions() (_result *ListEiamRegionsResponse, _err 
 
 // Summary:
 //
-// 查看事件列表
+// View the event list.
 //
 // @param request - ListEventTypesRequest
 //
@@ -16271,7 +16367,7 @@ func (client *Client) ListEventTypesWithOptions(request *ListEventTypesRequest, 
 
 // Summary:
 //
-// 查看事件列表
+// View the event list.
 //
 // @param request - ListEventTypesRequest
 //
@@ -16289,7 +16385,7 @@ func (client *Client) ListEventTypes(request *ListEventTypesRequest) (_result *L
 
 // Summary:
 //
-// 查询联邦凭证提供方列表
+// Lists federated identity providers.
 //
 // @param request - ListFederatedCredentialProvidersRequest
 //
@@ -16353,7 +16449,7 @@ func (client *Client) ListFederatedCredentialProvidersWithOptions(request *ListF
 
 // Summary:
 //
-// 查询联邦凭证提供方列表
+// Lists federated identity providers.
 //
 // @param request - ListFederatedCredentialProvidersRequest
 //
@@ -16457,7 +16553,7 @@ func (client *Client) ListGroups(request *ListGroupsRequest) (_result *ListGroup
 
 // Summary:
 //
-// Queries the account groups that are granted permissions to access an application and displays the results by page. The IDs of the account groups are returned. To query the detailed information about the account groups, call the GetGroup operation.
+// Performs a paged query to list the groups authorized to access an application. The response returns the group IDs. To obtain detailed information for a group, you can call the GetGroup operation.
 //
 // @param request - ListGroupsForApplicationRequest
 //
@@ -16521,7 +16617,7 @@ func (client *Client) ListGroupsForApplicationWithOptions(request *ListGroupsFor
 
 // Summary:
 //
-// Queries the account groups that are granted permissions to access an application and displays the results by page. The IDs of the account groups are returned. To query the detailed information about the account groups, call the GetGroup operation.
+// Performs a paged query to list the groups authorized to access an application. The response returns the group IDs. To obtain detailed information for a group, you can call the GetGroup operation.
 //
 // @param request - ListGroupsForApplicationRequest
 //
@@ -16539,7 +16635,7 @@ func (client *Client) ListGroupsForApplication(request *ListGroupsForApplication
 
 // Summary:
 //
-// 查询授权规则关联的组列表
+// Lists the groups associated with an authorization rule.
 //
 // @param request - ListGroupsForAuthorizationRuleRequest
 //
@@ -16599,7 +16695,7 @@ func (client *Client) ListGroupsForAuthorizationRuleWithOptions(request *ListGro
 
 // Summary:
 //
-// 查询授权规则关联的组列表
+// Lists the groups associated with an authorization rule.
 //
 // @param request - ListGroupsForAuthorizationRuleRequest
 //
@@ -16617,7 +16713,7 @@ func (client *Client) ListGroupsForAuthorizationRule(request *ListGroupsForAutho
 
 // Summary:
 //
-// 查询ResourceServer授权的组和Scope权限
+// Lists the scopes authorized for groups on a specified resource server. This operation supports cursor-based pagination.
 //
 // @param request - ListGroupsForResourceServerRequest
 //
@@ -16681,7 +16777,7 @@ func (client *Client) ListGroupsForResourceServerWithOptions(request *ListGroups
 
 // Summary:
 //
-// 查询ResourceServer授权的组和Scope权限
+// Lists the scopes authorized for groups on a specified resource server. This operation supports cursor-based pagination.
 //
 // @param request - ListGroupsForResourceServerRequest
 //
@@ -16773,7 +16869,7 @@ func (client *Client) ListGroupsForUser(request *ListGroupsForUserRequest) (_res
 
 // Summary:
 //
-// Query the list of identity providers.
+// Retrieves a list of identity providers.
 //
 // @param request - ListIdentityProvidersRequest
 //
@@ -16829,7 +16925,7 @@ func (client *Client) ListIdentityProvidersWithOptions(request *ListIdentityProv
 
 // Summary:
 //
-// Query the list of identity providers.
+// Retrieves a list of identity providers.
 //
 // @param request - ListIdentityProvidersRequest
 //
@@ -16847,7 +16943,7 @@ func (client *Client) ListIdentityProviders(request *ListIdentityProvidersReques
 
 // Summary:
 //
-// 获取网络端点下的IdP信息。
+// Retrieves information about Identity Providers (IdPs) for a network endpoint.
 //
 // @param request - ListIdentityProvidersForNetworkAccessEndpointRequest
 //
@@ -16903,7 +16999,7 @@ func (client *Client) ListIdentityProvidersForNetworkAccessEndpointWithOptions(r
 
 // Summary:
 //
-// 获取网络端点下的IdP信息。
+// Retrieves information about Identity Providers (IdPs) for a network endpoint.
 //
 // @param request - ListIdentityProvidersForNetworkAccessEndpointRequest
 //
@@ -16921,7 +17017,7 @@ func (client *Client) ListIdentityProvidersForNetworkAccessEndpoint(request *Lis
 
 // Summary:
 //
-// Queries the information about one or more Enterprise Identity and Access Management (EIAM) instances of Identity as a Service (IDaaS).
+// Queries information about one or more EIAM instances.
 //
 // @param request - ListInstancesRequest
 //
@@ -16936,6 +17032,10 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, ru
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.CrossRegionReplication) {
+		query["CrossRegionReplication"] = request.CrossRegionReplication
+	}
+
 	if !dara.IsNil(request.Edition) {
 		query["Edition"] = request.Edition
 	}
@@ -16981,7 +17081,7 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, ru
 
 // Summary:
 //
-// Queries the information about one or more Enterprise Identity and Access Management (EIAM) instances of Identity as a Service (IDaaS).
+// Queries information about one or more EIAM instances.
 //
 // @param request - ListInstancesRequest
 //
@@ -16999,7 +17099,7 @@ func (client *Client) ListInstances(request *ListInstancesRequest) (_result *Lis
 
 // Summary:
 //
-// Get a list of regions that support network access endpoints.
+// Lists the available regions for creating network access endpoints in IDaaS EIAM.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -17028,7 +17128,7 @@ func (client *Client) ListNetworkAccessEndpointAvailableRegionsWithOptions(runti
 
 // Summary:
 //
-// Get a list of regions that support network access endpoints.
+// Lists the available regions for creating network access endpoints in IDaaS EIAM.
 //
 // @return ListNetworkAccessEndpointAvailableRegionsResponse
 func (client *Client) ListNetworkAccessEndpointAvailableRegions() (_result *ListNetworkAccessEndpointAvailableRegionsResponse, _err error) {
@@ -17044,7 +17144,7 @@ func (client *Client) ListNetworkAccessEndpointAvailableRegions() (_result *List
 
 // Summary:
 //
-// Queries the zones that support dedicated network endpoints in the specified region of Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
+// Queries the zones that support creating network endpoints for IDaaS in a specified region.
 //
 // @param request - ListNetworkAccessEndpointAvailableZonesRequest
 //
@@ -17088,7 +17188,7 @@ func (client *Client) ListNetworkAccessEndpointAvailableZonesWithOptions(request
 
 // Summary:
 //
-// Queries the zones that support dedicated network endpoints in the specified region of Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
+// Queries the zones that support creating network endpoints for IDaaS in a specified region.
 //
 // @param request - ListNetworkAccessEndpointAvailableZonesRequest
 //
@@ -17106,7 +17206,7 @@ func (client *Client) ListNetworkAccessEndpointAvailableZones(request *ListNetwo
 
 // Summary:
 //
-// # List query dedicated network endpoint
+// Lists the network endpoints for an IDaaS EIAM instance.
 //
 // @param request - ListNetworkAccessEndpointsRequest
 //
@@ -17174,7 +17274,7 @@ func (client *Client) ListNetworkAccessEndpointsWithOptions(request *ListNetwork
 
 // Summary:
 //
-// # List query dedicated network endpoint
+// Lists the network endpoints for an IDaaS EIAM instance.
 //
 // @param request - ListNetworkAccessEndpointsRequest
 //
@@ -17192,7 +17292,7 @@ func (client *Client) ListNetworkAccessEndpoints(request *ListNetworkAccessEndpo
 
 // Summary:
 //
-// List the access paths under a certain network access endpoint.
+// Lists the access paths for a specified network endpoint.
 //
 // @param request - ListNetworkAccessPathsRequest
 //
@@ -17240,7 +17340,7 @@ func (client *Client) ListNetworkAccessPathsWithOptions(request *ListNetworkAcce
 
 // Summary:
 //
-// List the access paths under a certain network access endpoint.
+// Lists the access paths for a specified network endpoint.
 //
 // @param request - ListNetworkAccessPathsRequest
 //
@@ -17258,7 +17358,7 @@ func (client *Client) ListNetworkAccessPaths(request *ListNetworkAccessPathsRequ
 
 // Summary:
 //
-// 网络区域对象列表
+// Lists network zone objects.
 //
 // @param request - ListNetworkZonesRequest
 //
@@ -17318,7 +17418,7 @@ func (client *Client) ListNetworkZonesWithOptions(request *ListNetworkZonesReque
 
 // Summary:
 //
-// 网络区域对象列表
+// Lists network zone objects.
 //
 // @param request - ListNetworkZonesRequest
 //
@@ -17336,7 +17436,7 @@ func (client *Client) ListNetworkZones(request *ListNetworkZonesRequest) (_resul
 
 // Summary:
 //
-// Queries all parent organizations of an Employee Identity and Access Management (EIAM) organization.
+// Queries all parent organizational units of a specified EIAM organizational unit. The returned organizational units are sorted in hierarchical order from the highest level to the lowest level.
 //
 // @param request - ListOrganizationalUnitParentsRequest
 //
@@ -17384,7 +17484,7 @@ func (client *Client) ListOrganizationalUnitParentsWithOptions(request *ListOrga
 
 // Summary:
 //
-// Queries all parent organizations of an Employee Identity and Access Management (EIAM) organization.
+// Queries all parent organizational units of a specified EIAM organizational unit. The returned organizational units are sorted in hierarchical order from the highest level to the lowest level.
 //
 // @param request - ListOrganizationalUnitParentsRequest
 //
@@ -17402,7 +17502,7 @@ func (client *Client) ListOrganizationalUnitParents(request *ListOrganizationalU
 
 // Summary:
 //
-// Queries the information about organizational units in Identity as a Service (IDaaS) Employee IAM (EIAM) by page.
+// Performs a paged query for EIAM organizational units.
 //
 // @param request - ListOrganizationalUnitsRequest
 //
@@ -17470,7 +17570,7 @@ func (client *Client) ListOrganizationalUnitsWithOptions(request *ListOrganizati
 
 // Summary:
 //
-// Queries the information about organizational units in Identity as a Service (IDaaS) Employee IAM (EIAM) by page.
+// Performs a paged query for EIAM organizational units.
 //
 // @param request - ListOrganizationalUnitsRequest
 //
@@ -17488,7 +17588,7 @@ func (client *Client) ListOrganizationalUnits(request *ListOrganizationalUnitsRe
 
 // Summary:
 //
-// Queries the organizations that are allowed to access an Employee Identity and Access Management (EIAM) application by page. The return result includes the IDs of the organizations. If you want to obtain the details of the organizations, call the GetOrganizationalUnit operation.
+// Performs a paged query to list the organizations that are granted access to an application. The response returns the IDs of the organizations. To obtain detailed information about a specific organization, call the GetOrganizationalUnit operation.
 //
 // @param request - ListOrganizationalUnitsForApplicationRequest
 //
@@ -17552,7 +17652,7 @@ func (client *Client) ListOrganizationalUnitsForApplicationWithOptions(request *
 
 // Summary:
 //
-// Queries the organizations that are allowed to access an Employee Identity and Access Management (EIAM) application by page. The return result includes the IDs of the organizations. If you want to obtain the details of the organizations, call the GetOrganizationalUnit operation.
+// Performs a paged query to list the organizations that are granted access to an application. The response returns the IDs of the organizations. To obtain detailed information about a specific organization, call the GetOrganizationalUnit operation.
 //
 // @param request - ListOrganizationalUnitsForApplicationRequest
 //
@@ -17570,7 +17670,7 @@ func (client *Client) ListOrganizationalUnitsForApplication(request *ListOrganiz
 
 // Summary:
 //
-// 查询被授权到组织的ResourceServers和Scopes权限
+// Retrieves a cursor-paginated list of scopes that the current resource server has granted to an organization.
 //
 // @param request - ListOrganizationalUnitsForResourceServerRequest
 //
@@ -17634,7 +17734,7 @@ func (client *Client) ListOrganizationalUnitsForResourceServerWithOptions(reques
 
 // Summary:
 //
-// 查询被授权到组织的ResourceServers和Scopes权限
+// Retrieves a cursor-paginated list of scopes that the current resource server has granted to an organization.
 //
 // @param request - ListOrganizationalUnitsForResourceServerRequest
 //
@@ -17697,7 +17797,7 @@ func (client *Client) ListRegions() (_result *ListRegionsResponse, _err error) {
 
 // Summary:
 //
-// 获取指定ResourceServer下Scope列表。
+// Query the list of Scope permissions under a specified ResourceServer using cursor-based pagination.
 //
 // @param request - ListResourceServerScopesRequest
 //
@@ -17777,7 +17877,7 @@ func (client *Client) ListResourceServerScopesWithOptions(request *ListResourceS
 
 // Summary:
 //
-// 获取指定ResourceServer下Scope列表。
+// Query the list of Scope permissions under a specified ResourceServer using cursor-based pagination.
 //
 // @param request - ListResourceServerScopesRequest
 //
@@ -17795,7 +17895,7 @@ func (client *Client) ListResourceServerScopes(request *ListResourceServerScopes
 
 // Summary:
 //
-// 查询用户的被授予ResourceServers和Scopes的权限
+// Performs a paged query to retrieve the ResourceServer and Scope permissions that are granted to the current user.
 //
 // @param request - ListResourceServersForUserRequest
 //
@@ -17855,7 +17955,7 @@ func (client *Client) ListResourceServersForUserWithOptions(request *ListResourc
 
 // Summary:
 //
-// 查询用户的被授予ResourceServers和Scopes的权限
+// Performs a paged query to retrieve the ResourceServer and Scope permissions that are granted to the current user.
 //
 // @param request - ListResourceServersForUserRequest
 //
@@ -17873,7 +17973,17 @@ func (client *Client) ListResourceServersForUser(request *ListResourceServersFor
 
 // Summary:
 //
-// Queries a list of synchronization jobs.
+// Lists the details of synchronization tasks.
+//
+// Description:
+//
+// You can view the returned data in one of the following two ways:
+//
+// - Method 1: To query the first page, set MaxResults to limit the number of entries to return. The NextToken value in the response is the token for the next page. To query subsequent pages, set NextToken to the value from the previous response and set MaxResults. If no more data is available, NextToken is not returned. The maximum value for MaxResults is 100.
+//
+// - Method 2: Set PageSize to specify the number of entries per page and PageNumber to specify the page number.
+//
+// You can use only one of these methods. Method 1 is recommended when many entries are returned. If you set MaxResults or NextToken, the PageSize and PageNumber parameters are ignored.
 //
 // @param request - ListSynchronizationJobsRequest
 //
@@ -17961,7 +18071,17 @@ func (client *Client) ListSynchronizationJobsWithOptions(request *ListSynchroniz
 
 // Summary:
 //
-// Queries a list of synchronization jobs.
+// Lists the details of synchronization tasks.
+//
+// Description:
+//
+// You can view the returned data in one of the following two ways:
+//
+// - Method 1: To query the first page, set MaxResults to limit the number of entries to return. The NextToken value in the response is the token for the next page. To query subsequent pages, set NextToken to the value from the previous response and set MaxResults. If no more data is available, NextToken is not returned. The maximum value for MaxResults is 100.
+//
+// - Method 2: Set PageSize to specify the number of entries per page and PageNumber to specify the page number.
+//
+// You can use only one of these methods. Method 1 is recommended when many entries are returned. If you set MaxResults or NextToken, the PageSize and PageNumber parameters are ignored.
 //
 // @param request - ListSynchronizationJobsRequest
 //
@@ -17979,7 +18099,11 @@ func (client *Client) ListSynchronizationJobs(request *ListSynchronizationJobsRe
 
 // Summary:
 //
-// 查询三方登录账户绑定关系
+// Lists the mappings for third-party logon accounts.
+//
+// Description:
+//
+// This operation queries only the applications that are directly assigned to an organization. You can use the **ApplicationIds*	- parameter to filter the applications.
 //
 // @param request - ListUserAuthnSourceMappingsRequest
 //
@@ -18047,7 +18171,11 @@ func (client *Client) ListUserAuthnSourceMappingsWithOptions(request *ListUserAu
 
 // Summary:
 //
-// 查询三方登录账户绑定关系
+// Lists the mappings for third-party logon accounts.
+//
+// Description:
+//
+// This operation queries only the applications that are directly assigned to an organization. You can use the **ApplicationIds*	- parameter to filter the applications.
 //
 // @param request - ListUserAuthnSourceMappingsRequest
 //
@@ -18065,7 +18193,11 @@ func (client *Client) ListUserAuthnSourceMappings(request *ListUserAuthnSourceMa
 
 // Summary:
 //
-// Queries the details of accounts in Identity as a Service (IDaaS) Employee IAM (EIAM) by page.
+// Retrieves a paginated list of EIAM accounts.
+//
+// Description:
+//
+// This API retrieves only applications directly assigned to an organization. Use the **ApplicationIds*	- parameter to filter applications.
 //
 // @param request - ListUsersRequest
 //
@@ -18169,7 +18301,11 @@ func (client *Client) ListUsersWithOptions(request *ListUsersRequest, runtime *d
 
 // Summary:
 //
-// Queries the details of accounts in Identity as a Service (IDaaS) Employee IAM (EIAM) by page.
+// Retrieves a paginated list of EIAM accounts.
+//
+// Description:
+//
+// This API retrieves only applications directly assigned to an organization. Use the **ApplicationIds*	- parameter to filter applications.
 //
 // @param request - ListUsersRequest
 //
@@ -18187,7 +18323,7 @@ func (client *Client) ListUsers(request *ListUsersRequest) (_result *ListUsersRe
 
 // Summary:
 //
-// Queries the accounts that are allowed to access an Employee Identity and Access Management (EIAM) application. The return results include the IDs of the accounts. If you need to obtain the details of the accounts, call the GetUser operation.
+// Performs a paged query to list the accounts that have been granted access to an application. The response includes account IDs. To retrieve detailed information about an account, call the GetUser operation.
 //
 // @param request - ListUsersForApplicationRequest
 //
@@ -18251,7 +18387,7 @@ func (client *Client) ListUsersForApplicationWithOptions(request *ListUsersForAp
 
 // Summary:
 //
-// Queries the accounts that are allowed to access an Employee Identity and Access Management (EIAM) application. The return results include the IDs of the accounts. If you need to obtain the details of the accounts, call the GetUser operation.
+// Performs a paged query to list the accounts that have been granted access to an application. The response includes account IDs. To retrieve detailed information about an account, call the GetUser operation.
 //
 // @param request - ListUsersForApplicationRequest
 //
@@ -18269,7 +18405,7 @@ func (client *Client) ListUsersForApplication(request *ListUsersForApplicationRe
 
 // Summary:
 //
-// 查询授权规则关联的账户列表
+// Lists the accounts associated with an authorization rule.
 //
 // @param request - ListUsersForAuthorizationRuleRequest
 //
@@ -18329,7 +18465,7 @@ func (client *Client) ListUsersForAuthorizationRuleWithOptions(request *ListUser
 
 // Summary:
 //
-// 查询授权规则关联的账户列表
+// Lists the accounts associated with an authorization rule.
 //
 // @param request - ListUsersForAuthorizationRuleRequest
 //
@@ -18347,7 +18483,7 @@ func (client *Client) ListUsersForAuthorizationRule(request *ListUsersForAuthori
 
 // Summary:
 //
-// Queries the information of accounts in an Employee Identity and Access Management (EIAM) group of Identity as a Service (IDaaS).
+// Lists the users in a specified EIAM account group.
 //
 // @param request - ListUsersForGroupRequest
 //
@@ -18407,7 +18543,7 @@ func (client *Client) ListUsersForGroupWithOptions(request *ListUsersForGroupReq
 
 // Summary:
 //
-// Queries the information of accounts in an Employee Identity and Access Management (EIAM) group of Identity as a Service (IDaaS).
+// Lists the users in a specified EIAM account group.
 //
 // @param request - ListUsersForGroupRequest
 //
@@ -18425,7 +18561,7 @@ func (client *Client) ListUsersForGroup(request *ListUsersForGroupRequest) (_res
 
 // Summary:
 //
-// 查询ResourceServer授权的用户和Scope权限
+// List the scope permissions granted by a Resource Server to user accounts using cursor-based pagination.
 //
 // @param request - ListUsersForResourceServerRequest
 //
@@ -18489,7 +18625,7 @@ func (client *Client) ListUsersForResourceServerWithOptions(request *ListUsersFo
 
 // Summary:
 //
-// 查询ResourceServer授权的用户和Scope权限
+// List the scope permissions granted by a Resource Server to user accounts using cursor-based pagination.
 //
 // @param request - ListUsersForResourceServerRequest
 //
@@ -18507,7 +18643,7 @@ func (client *Client) ListUsersForResourceServer(request *ListUsersForResourceSe
 
 // Summary:
 //
-// Queries a client key of an Employee Identity and Access Management (EIAM) application. The returned key secret is masked. If you want to query the key secret that is not masked, call the ListApplicationClientSecrets operation.
+// Obtains the client secret for an EIAM application. The secret is returned without desensitization. To obtain a desensitized secret, call the ListApplicationClientSecrets operation.
 //
 // @param request - ObtainApplicationClientSecretRequest
 //
@@ -18559,7 +18695,7 @@ func (client *Client) ObtainApplicationClientSecretWithOptions(request *ObtainAp
 
 // Summary:
 //
-// Queries a client key of an Employee Identity and Access Management (EIAM) application. The returned key secret is masked. If you want to query the key secret that is not masked, call the ListApplicationClientSecrets operation.
+// Obtains the client secret for an EIAM application. The secret is returned without desensitization. To obtain a desensitized secret, call the ListApplicationClientSecrets operation.
 //
 // @param request - ObtainApplicationClientSecretRequest
 //
@@ -18577,7 +18713,11 @@ func (client *Client) ObtainApplicationClientSecret(request *ObtainApplicationCl
 
 // Summary:
 //
-// 查询指定应用Token
+// Queries the token of a specified application.
+//
+// Description:
+//
+// When you disable an application, all its features, such as single sign-on (SSO) and account synchronization, become unavailable. Ensure that you understand the potential threats of this operation.
 //
 // @param request - ObtainApplicationTokenRequest
 //
@@ -18629,7 +18769,11 @@ func (client *Client) ObtainApplicationTokenWithOptions(request *ObtainApplicati
 
 // Summary:
 //
-// 查询指定应用Token
+// Queries the token of a specified application.
+//
+// Description:
+//
+// When you disable an application, all its features, such as single sign-on (SSO) and account synchronization, become unavailable. Ensure that you understand the potential threats of this operation.
 //
 // @param request - ObtainApplicationTokenRequest
 //
@@ -18647,7 +18791,7 @@ func (client *Client) ObtainApplicationToken(request *ObtainApplicationTokenRequ
 
 // Summary:
 //
-// 获取凭据
+// Retrieves a credential containing sensitive information.
 //
 // @param request - ObtainCredentialRequest
 //
@@ -18695,7 +18839,7 @@ func (client *Client) ObtainCredentialWithOptions(request *ObtainCredentialReque
 
 // Summary:
 //
-// 获取凭据
+// Retrieves a credential containing sensitive information.
 //
 // @param request - ObtainCredentialRequest
 //
@@ -18713,7 +18857,7 @@ func (client *Client) ObtainCredential(request *ObtainCredentialRequest) (_resul
 
 // Summary:
 //
-// Queries the information about a proxy token of a domain name of an Employee Identity and Access Management (EIAM) instance.
+// Obtains the proxy token for a domain name in an EIAM instance.
 //
 // @param request - ObtainDomainProxyTokenRequest
 //
@@ -18765,7 +18909,7 @@ func (client *Client) ObtainDomainProxyTokenWithOptions(request *ObtainDomainPro
 
 // Summary:
 //
-// Queries the information about a proxy token of a domain name of an Employee Identity and Access Management (EIAM) instance.
+// Obtains the proxy token for a domain name in an EIAM instance.
 //
 // @param request - ObtainDomainProxyTokenRequest
 //
@@ -18783,7 +18927,11 @@ func (client *Client) ObtainDomainProxyToken(request *ObtainDomainProxyTokenRequ
 
 // Summary:
 //
-// 删除一个当前应用下的指定员工的应用账号
+// Deletes the application account of a specified user from an application.
+//
+// Description:
+//
+// This operation queries only applications that are directly assigned to an organization. When you call this operation, you can use the **ApplicationIds*	- parameter to filter the applications.
 //
 // @param request - RemoveApplicationAccountFromUserRequest
 //
@@ -18839,7 +18987,11 @@ func (client *Client) RemoveApplicationAccountFromUserWithOptions(request *Remov
 
 // Summary:
 //
-// 删除一个当前应用下的指定员工的应用账号
+// Deletes the application account of a specified user from an application.
+//
+// Description:
+//
+// This operation queries only applications that are directly assigned to an organization. When you call this operation, you can use the **ApplicationIds*	- parameter to filter the applications.
 //
 // @param request - RemoveApplicationAccountFromUserRequest
 //
@@ -18857,7 +19009,7 @@ func (client *Client) RemoveApplicationAccountFromUser(request *RemoveApplicatio
 
 // Summary:
 //
-// 将应用从授权规则中解除
+// Removes an application from an authorization rule.
 //
 // @param request - RemoveApplicationFromAuthorizationRuleRequest
 //
@@ -18909,7 +19061,7 @@ func (client *Client) RemoveApplicationFromAuthorizationRuleWithOptions(request 
 
 // Summary:
 //
-// 将应用从授权规则中解除
+// Removes an application from an authorization rule.
 //
 // @param request - RemoveApplicationFromAuthorizationRuleRequest
 //
@@ -18927,7 +19079,7 @@ func (client *Client) RemoveApplicationFromAuthorizationRule(request *RemoveAppl
 
 // Summary:
 //
-// 移除品牌关联条款
+// # Removing a brand association
 //
 // @param request - RemoveCustomPrivacyPoliciesFromBrandRequest
 //
@@ -18979,7 +19131,7 @@ func (client *Client) RemoveCustomPrivacyPoliciesFromBrandWithOptions(request *R
 
 // Summary:
 //
-// 移除品牌关联条款
+// # Removing a brand association
 //
 // @param request - RemoveCustomPrivacyPoliciesFromBrandRequest
 //
@@ -18997,7 +19149,7 @@ func (client *Client) RemoveCustomPrivacyPoliciesFromBrand(request *RemoveCustom
 
 // Summary:
 //
-// 将组从授权规则中解除
+// Removes an application from an authorization rule.
 //
 // @param request - RemoveGroupFromAuthorizationRuleRequest
 //
@@ -19049,7 +19201,7 @@ func (client *Client) RemoveGroupFromAuthorizationRuleWithOptions(request *Remov
 
 // Summary:
 //
-// 将组从授权规则中解除
+// Removes an application from an authorization rule.
 //
 // @param request - RemoveGroupFromAuthorizationRuleRequest
 //
@@ -19067,7 +19219,7 @@ func (client *Client) RemoveGroupFromAuthorizationRule(request *RemoveGroupFromA
 
 // Summary:
 //
-// 将账户从授权规则中解除
+// Removes an account from an authorization rule.
 //
 // @param request - RemoveUserFromAuthorizationRuleRequest
 //
@@ -19119,7 +19271,7 @@ func (client *Client) RemoveUserFromAuthorizationRuleWithOptions(request *Remove
 
 // Summary:
 //
-// 将账户从授权规则中解除
+// Removes an account from an authorization rule.
 //
 // @param request - RemoveUserFromAuthorizationRuleRequest
 //
@@ -19277,7 +19429,7 @@ func (client *Client) RemoveUsersFromGroup(request *RemoveUsersFromGroupRequest)
 
 // Summary:
 //
-// 免费版续期
+// # Renewing the Free Edition
 //
 // @param request - RenewFreeLicenseEndTimeRequest
 //
@@ -19321,7 +19473,7 @@ func (client *Client) RenewFreeLicenseEndTimeWithOptions(request *RenewFreeLicen
 
 // Summary:
 //
-// 免费版续期
+// # Renewing the Free Edition
 //
 // @param request - RenewFreeLicenseEndTimeRequest
 //
@@ -19339,7 +19491,7 @@ func (client *Client) RenewFreeLicenseEndTime(request *RenewFreeLicenseEndTimeRe
 
 // Summary:
 //
-// Revokes the permissions to access an application from multiple account groups at a time in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
+// Revokes application access from multiple EIAM groups in a batch.
 //
 // @param request - RevokeApplicationFromGroupsRequest
 //
@@ -19395,7 +19547,7 @@ func (client *Client) RevokeApplicationFromGroupsWithOptions(request *RevokeAppl
 
 // Summary:
 //
-// Revokes the permissions to access an application from multiple account groups at a time in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
+// Revokes application access from multiple EIAM groups in a batch.
 //
 // @param request - RevokeApplicationFromGroupsRequest
 //
@@ -19413,7 +19565,7 @@ func (client *Client) RevokeApplicationFromGroups(request *RevokeApplicationFrom
 
 // Summary:
 //
-// Revokes the permissions to access an application from multiple Employee Identity and Access Management (EIAM) organizations at a time.
+// Revokes application access from multiple EIAM organizations in a batch operation.
 //
 // @param request - RevokeApplicationFromOrganizationalUnitsRequest
 //
@@ -19469,7 +19621,7 @@ func (client *Client) RevokeApplicationFromOrganizationalUnitsWithOptions(reques
 
 // Summary:
 //
-// Revokes the permissions to access an application from multiple Employee Identity and Access Management (EIAM) organizations at a time.
+// Revokes application access from multiple EIAM organizations in a batch operation.
 //
 // @param request - RevokeApplicationFromOrganizationalUnitsRequest
 //
@@ -19487,7 +19639,7 @@ func (client *Client) RevokeApplicationFromOrganizationalUnits(request *RevokeAp
 
 // Summary:
 //
-// Revokes the permissions to access an application from multiple Employee Identity and Access Management (EIAM) accounts at a time.
+// Revokes access to an application from multiple EIAM accounts.
 //
 // @param request - RevokeApplicationFromUsersRequest
 //
@@ -19543,7 +19695,7 @@ func (client *Client) RevokeApplicationFromUsersWithOptions(request *RevokeAppli
 
 // Summary:
 //
-// Revokes the permissions to access an application from multiple Employee Identity and Access Management (EIAM) accounts at a time.
+// Revokes access to an application from multiple EIAM accounts.
 //
 // @param request - RevokeApplicationFromUsersRequest
 //
@@ -19561,7 +19713,7 @@ func (client *Client) RevokeApplicationFromUsers(request *RevokeApplicationFromU
 
 // Summary:
 //
-// 解除指定ResourceServer到Client的授权
+// Revokes the authorization for a resource server from a client application.
 //
 // @param request - RevokeResourceServerFromClientRequest
 //
@@ -19613,7 +19765,7 @@ func (client *Client) RevokeResourceServerFromClientWithOptions(request *RevokeR
 
 // Summary:
 //
-// 解除指定ResourceServer到Client的授权
+// Revokes the authorization for a resource server from a client application.
 //
 // @param request - RevokeResourceServerFromClientRequest
 //
@@ -19631,7 +19783,7 @@ func (client *Client) RevokeResourceServerFromClient(request *RevokeResourceServ
 
 // Summary:
 //
-// 解除指定ResourceServer下的Scope给Client
+// Revokes specified scope permissions of a resource server from a client application.
 //
 // @param request - RevokeResourceServerScopesFromClientRequest
 //
@@ -19687,7 +19839,7 @@ func (client *Client) RevokeResourceServerScopesFromClientWithOptions(request *R
 
 // Summary:
 //
-// 解除指定ResourceServer下的Scope给Client
+// Revokes specified scope permissions of a resource server from a client application.
 //
 // @param request - RevokeResourceServerScopesFromClientRequest
 //
@@ -19705,7 +19857,7 @@ func (client *Client) RevokeResourceServerScopesFromClient(request *RevokeResour
 
 // Summary:
 //
-// 取消被授予到组的ResourceServerScope权限
+// Revokes a resource server\\"s scope permissions from a group.
 //
 // @param request - RevokeResourceServerScopesFromGroupRequest
 //
@@ -19761,7 +19913,7 @@ func (client *Client) RevokeResourceServerScopesFromGroupWithOptions(request *Re
 
 // Summary:
 //
-// 取消被授予到组的ResourceServerScope权限
+// Revokes a resource server\\"s scope permissions from a group.
 //
 // @param request - RevokeResourceServerScopesFromGroupRequest
 //
@@ -19779,7 +19931,7 @@ func (client *Client) RevokeResourceServerScopesFromGroup(request *RevokeResourc
 
 // Summary:
 //
-// 取消被授予到组织的ResourceServerScope权限
+// Revokes scope permissions for a resource server from an organization.
 //
 // @param request - RevokeResourceServerScopesFromOrganizationalUnitRequest
 //
@@ -19835,7 +19987,7 @@ func (client *Client) RevokeResourceServerScopesFromOrganizationalUnitWithOption
 
 // Summary:
 //
-// 取消被授予到组织的ResourceServerScope权限
+// Revokes scope permissions for a resource server from an organization.
 //
 // @param request - RevokeResourceServerScopesFromOrganizationalUnitRequest
 //
@@ -19853,7 +20005,7 @@ func (client *Client) RevokeResourceServerScopesFromOrganizationalUnit(request *
 
 // Summary:
 //
-// 取消被授予用户的ResourceServerScope权限
+// Revokes scope permissions for a specified resource server from an account.
 //
 // @param request - RevokeResourceServerScopesFromUserRequest
 //
@@ -19909,7 +20061,7 @@ func (client *Client) RevokeResourceServerScopesFromUserWithOptions(request *Rev
 
 // Summary:
 //
-// 取消被授予用户的ResourceServerScope权限
+// Revokes scope permissions for a specified resource server from an account.
 //
 // @param request - RevokeResourceServerScopesFromUserRequest
 //
@@ -19927,7 +20079,7 @@ func (client *Client) RevokeResourceServerScopesFromUser(request *RevokeResource
 
 // Summary:
 //
-// Creates a synchronization job and immediately runs the job.
+// Creates and immediately runs a new synchronization task.
 //
 // @param request - RunSynchronizationJobRequest
 //
@@ -19995,7 +20147,7 @@ func (client *Client) RunSynchronizationJobWithOptions(request *RunSynchronizati
 
 // Summary:
 //
-// Creates a synchronization job and immediately runs the job.
+// Creates and immediately runs a new synchronization task.
 //
 // @param request - RunSynchronizationJobRequest
 //
@@ -20083,7 +20235,7 @@ func (client *Client) SetApplicationGrantScope(request *SetApplicationGrantScope
 
 // Summary:
 //
-// Configures the account synchronization feature for an application in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
+// Sets the account synchronization configuration for an EIAM application.
 //
 // @param request - SetApplicationProvisioningConfigRequest
 //
@@ -20151,7 +20303,7 @@ func (client *Client) SetApplicationProvisioningConfigWithOptions(request *SetAp
 
 // Summary:
 //
-// Configures the account synchronization feature for an application in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
+// Sets the account synchronization configuration for an EIAM application.
 //
 // @param request - SetApplicationProvisioningConfigRequest
 //
@@ -20243,7 +20395,7 @@ func (client *Client) SetApplicationProvisioningScope(request *SetApplicationPro
 
 // Summary:
 //
-// 配置应用同步用户主组织
+// Sets the primary organizational unit for an application\\"s user provisioning.
 //
 // @param request - SetApplicationProvisioningUserPrimaryOrganizationalUnitRequest
 //
@@ -20295,7 +20447,7 @@ func (client *Client) SetApplicationProvisioningUserPrimaryOrganizationalUnitWit
 
 // Summary:
 //
-// 配置应用同步用户主组织
+// Sets the primary organizational unit for an application\\"s user provisioning.
 //
 // @param request - SetApplicationProvisioningUserPrimaryOrganizationalUnitRequest
 //
@@ -20313,7 +20465,7 @@ func (client *Client) SetApplicationProvisioningUserPrimaryOrganizationalUnit(re
 
 // Summary:
 //
-// 设置ResourceServer的Identifier
+// Sets the unique identifier for a resource server. This identifier is used as the aud (audience) claim in a JSON Web Token (JWT) to specify the service that is intended to accept the token.
 //
 // @param request - SetApplicationResourceServerIdentifierRequest
 //
@@ -20369,7 +20521,7 @@ func (client *Client) SetApplicationResourceServerIdentifierWithOptions(request 
 
 // Summary:
 //
-// 设置ResourceServer的Identifier
+// Sets the unique identifier for a resource server. This identifier is used as the aud (audience) claim in a JSON Web Token (JWT) to specify the service that is intended to accept the token.
 //
 // @param request - SetApplicationResourceServerIdentifierRequest
 //
@@ -20387,11 +20539,11 @@ func (client *Client) SetApplicationResourceServerIdentifier(request *SetApplica
 
 // Summary:
 //
-// Specifies the single sign-on (SSO) configuration attributes of an application in Identity as a Service (IDaaS) Employee IAM (EIAM).
+// Sets the single sign-on (SSO) properties for an IDaaS application.
 //
 // Description:
 //
-// In IDaaS EIAM, the application management feature supports multiple SSO protocols for applications, including SAML 2.0 and OIDC protocols. Each application supports only one protocol, and the protocol cannot be changed after the application is created. You can specify the SSO configuration attributes of an application based on the supported SSO protocol.
+// In IDaaS, the Application Management feature lets you add applications that use various SSO protocols, such as SAML 2.0 and OpenID Connect (OIDC). However, each application can support only one SSO protocol. The protocol is specified during application creation and cannot be changed afterward. You must configure the SSO parameters according to the protocol that your application uses.
 //
 // @param request - SetApplicationSsoConfigRequest
 //
@@ -20459,11 +20611,11 @@ func (client *Client) SetApplicationSsoConfigWithOptions(request *SetApplication
 
 // Summary:
 //
-// Specifies the single sign-on (SSO) configuration attributes of an application in Identity as a Service (IDaaS) Employee IAM (EIAM).
+// Sets the single sign-on (SSO) properties for an IDaaS application.
 //
 // Description:
 //
-// In IDaaS EIAM, the application management feature supports multiple SSO protocols for applications, including SAML 2.0 and OIDC protocols. Each application supports only one protocol, and the protocol cannot be changed after the application is created. You can specify the SSO configuration attributes of an application based on the supported SSO protocol.
+// In IDaaS, the Application Management feature lets you add applications that use various SSO protocols, such as SAML 2.0 and OpenID Connect (OIDC). However, each application can support only one SSO protocol. The protocol is specified during application creation and cannot be changed afterward. You must configure the SSO parameters according to the protocol that your application uses.
 //
 // @param request - SetApplicationSsoConfigRequest
 //
@@ -20481,7 +20633,7 @@ func (client *Client) SetApplicationSsoConfig(request *SetApplicationSsoConfigRe
 
 // Summary:
 //
-// Sets a domain name of an Employee Identity and Access Management (EIAM) instance as the default domain name.
+// Sets the default domain name for a specified EIAM instance.
 //
 // @param request - SetDefaultDomainRequest
 //
@@ -20529,7 +20681,7 @@ func (client *Client) SetDefaultDomainWithOptions(request *SetDefaultDomainReque
 
 // Summary:
 //
-// Sets a domain name of an Employee Identity and Access Management (EIAM) instance as the default domain name.
+// Sets the default domain name for a specified EIAM instance.
 //
 // @param request - SetDefaultDomainRequest
 //
@@ -20617,7 +20769,7 @@ func (client *Client) SetForgetPasswordConfiguration(request *SetForgetPasswordC
 
 // Summary:
 //
-// 修改认证信息
+// # Update authentication information
 //
 // @param request - SetIdentityProviderAuthnConfigurationRequest
 //
@@ -20681,7 +20833,7 @@ func (client *Client) SetIdentityProviderAuthnConfigurationWithOptions(request *
 
 // Summary:
 //
-// 修改认证信息
+// # Update authentication information
 //
 // @param request - SetIdentityProviderAuthnConfigurationRequest
 //
@@ -20699,7 +20851,7 @@ func (client *Client) SetIdentityProviderAuthnConfiguration(request *SetIdentity
 
 // Summary:
 //
-// Update IdP synchronization configuration.
+// Sets the inbound synchronization configuration for an IdP.
 //
 // @param request - SetIdentityProviderUdPullConfigurationRequest
 //
@@ -20775,7 +20927,7 @@ func (client *Client) SetIdentityProviderUdPullConfigurationWithOptions(request 
 
 // Summary:
 //
-// Update IdP synchronization configuration.
+// Sets the inbound synchronization configuration for an IdP.
 //
 // @param request - SetIdentityProviderUdPullConfigurationRequest
 //
@@ -20793,7 +20945,7 @@ func (client *Client) SetIdentityProviderUdPullConfiguration(request *SetIdentit
 
 // Summary:
 //
-// 修改IdP同步出配置
+// Modifies the push configuration for an identity provider (IdP).
 //
 // @param request - SetIdentityProviderUdPushConfigurationRequest
 //
@@ -20861,7 +21013,7 @@ func (client *Client) SetIdentityProviderUdPushConfigurationWithOptions(request 
 
 // Summary:
 //
-// 修改IdP同步出配置
+// Modifies the push configuration for an identity provider (IdP).
 //
 // @param request - SetIdentityProviderUdPushConfigurationRequest
 //
@@ -20879,7 +21031,7 @@ func (client *Client) SetIdentityProviderUdPushConfiguration(request *SetIdentit
 
 // Summary:
 //
-// 设置实例控制项
+// Configures the control settings for an instance.
 //
 // @param request - SetInstanceControlConfigurationRequest
 //
@@ -20927,7 +21079,7 @@ func (client *Client) SetInstanceControlConfigurationWithOptions(request *SetIns
 
 // Summary:
 //
-// 设置实例控制项
+// Configures the control settings for an instance.
 //
 // @param request - SetInstanceControlConfigurationRequest
 //
@@ -20945,7 +21097,7 @@ func (client *Client) SetInstanceControlConfiguration(request *SetInstanceContro
 
 // Summary:
 //
-// 设置实例语言、时区信息
+// Sets the language and time zone for an instance.
 //
 // @param request - SetInstanceGlobalizationConfigRequest
 //
@@ -20997,7 +21149,7 @@ func (client *Client) SetInstanceGlobalizationConfigWithOptions(request *SetInst
 
 // Summary:
 //
-// 设置实例语言、时区信息
+// Sets the language and time zone for an instance.
 //
 // @param request - SetInstanceGlobalizationConfigRequest
 //
@@ -21015,7 +21167,7 @@ func (client *Client) SetInstanceGlobalizationConfig(request *SetInstanceGlobali
 
 // Summary:
 //
-// 为品牌设置登录后跳转应用
+// Sets the post-logon redirect application for a brand.
 //
 // @param request - SetLoginRedirectApplicationForBrandRequest
 //
@@ -21067,7 +21219,7 @@ func (client *Client) SetLoginRedirectApplicationForBrandWithOptions(request *Se
 
 // Summary:
 //
-// 为品牌设置登录后跳转应用
+// Sets the post-logon redirect application for a brand.
 //
 // @param request - SetLoginRedirectApplicationForBrandRequest
 //
@@ -21085,7 +21237,7 @@ func (client *Client) SetLoginRedirectApplicationForBrand(request *SetLoginRedir
 
 // Summary:
 //
-// Configures a password complexity policy for an Employee Identity and Access Management (EIAM) instance of Identity as a Service (IDaaS).
+// Sets the password complexity policy for a specified EIAM instance.
 //
 // @param request - SetPasswordComplexityConfigurationRequest
 //
@@ -21141,7 +21293,7 @@ func (client *Client) SetPasswordComplexityConfigurationWithOptions(request *Set
 
 // Summary:
 //
-// Configures a password complexity policy for an Employee Identity and Access Management (EIAM) instance of Identity as a Service (IDaaS).
+// Sets the password complexity policy for a specified EIAM instance.
 //
 // @param request - SetPasswordComplexityConfigurationRequest
 //
@@ -21159,7 +21311,7 @@ func (client *Client) SetPasswordComplexityConfiguration(request *SetPasswordCom
 
 // Summary:
 //
-// Configures a password expiration policy for an Employee Identity and Access Management (EIAM) instance of Identity as a Service (IDaaS).
+// Sets the password expiration policy for a specified EIAM instance.
 //
 // @param request - SetPasswordExpirationConfigurationRequest
 //
@@ -21235,7 +21387,7 @@ func (client *Client) SetPasswordExpirationConfigurationWithOptions(request *Set
 
 // Summary:
 //
-// Configures a password expiration policy for an Employee Identity and Access Management (EIAM) instance of Identity as a Service (IDaaS).
+// Sets the password expiration policy for a specified EIAM instance.
 //
 // @param request - SetPasswordExpirationConfigurationRequest
 //
@@ -21401,7 +21553,7 @@ func (client *Client) SetPasswordInitializationConfiguration(request *SetPasswor
 
 // Summary:
 //
-// 设置指定的应用ClientPublicKey优先启用状态
+// Sets the specified client public key as the primary key for an application.
 //
 // @param request - SetPrimaryClientPublicKeyRequest
 //
@@ -21457,7 +21609,7 @@ func (client *Client) SetPrimaryClientPublicKeyWithOptions(request *SetPrimaryCl
 
 // Summary:
 //
-// 设置指定的应用ClientPublicKey优先启用状态
+// Sets the specified client public key as the primary key for an application.
 //
 // @param request - SetPrimaryClientPublicKeyRequest
 //
@@ -21545,7 +21697,7 @@ func (client *Client) SetUserPrimaryOrganizationalUnit(request *SetUserPrimaryOr
 
 // Summary:
 //
-// 设置WebAuthn配置
+// Sets the WebAuthn configuration.
 //
 // @param request - SetWebAuthnConfigurationRequest
 //
@@ -21605,7 +21757,7 @@ func (client *Client) SetWebAuthnConfigurationWithOptions(request *SetWebAuthnCo
 
 // Summary:
 //
-// 设置WebAuthn配置
+// Sets the WebAuthn configuration.
 //
 // @param request - SetWebAuthnConfigurationRequest
 //
@@ -21623,7 +21775,7 @@ func (client *Client) SetWebAuthnConfiguration(request *SetWebAuthnConfiguration
 
 // Summary:
 //
-// 解绑指定用户TOTP
+// Detaches the TOTP authenticator for a specified user.
 //
 // @param request - UnbindTotpAuthenticatorRequest
 //
@@ -21671,7 +21823,7 @@ func (client *Client) UnbindTotpAuthenticatorWithOptions(request *UnbindTotpAuth
 
 // Summary:
 //
-// 解绑指定用户TOTP
+// Detaches the TOTP authenticator for a specified user.
 //
 // @param request - UnbindTotpAuthenticatorRequest
 //
@@ -21689,7 +21841,7 @@ func (client *Client) UnbindTotpAuthenticator(request *UnbindTotpAuthenticatorRe
 
 // Summary:
 //
-// 解绑三方登录账户
+// Unbinds a third-party logon account from a user.
 //
 // @param request - UnbindUserAuthnSourceMappingRequest
 //
@@ -21745,7 +21897,7 @@ func (client *Client) UnbindUserAuthnSourceMappingWithOptions(request *UnbindUse
 
 // Summary:
 //
-// 解绑三方登录账户
+// Unbinds a third-party logon account from a user.
 //
 // @param request - UnbindUserAuthnSourceMappingRequest
 //
@@ -21829,7 +21981,7 @@ func (client *Client) UnlockUser(request *UnlockUserRequest) (_result *UnlockUse
 
 // Summary:
 //
-// 修改应用高阶配置
+// Updates the advanced configuration of an application.
 //
 // @param request - UpdateApplicationAdvancedConfigRequest
 //
@@ -21881,7 +22033,7 @@ func (client *Client) UpdateApplicationAdvancedConfigWithOptions(request *Update
 
 // Summary:
 //
-// 修改应用高阶配置
+// Updates the advanced configuration of an application.
 //
 // @param request - UpdateApplicationAdvancedConfigRequest
 //
@@ -21969,7 +22121,7 @@ func (client *Client) UpdateApplicationAuthorizationType(request *UpdateApplicat
 
 // Summary:
 //
-// 更新应用的指定ClientSecret的到期时间
+// Updates the expiration time of a specified client secret for an application.
 //
 // @param request - UpdateApplicationClientSecretExpirationTimeRequest
 //
@@ -22025,7 +22177,7 @@ func (client *Client) UpdateApplicationClientSecretExpirationTimeWithOptions(req
 
 // Summary:
 //
-// 更新应用的指定ClientSecret的到期时间
+// Updates the expiration time of a specified client secret for an application.
 //
 // @param request - UpdateApplicationClientSecretExpirationTimeRequest
 //
@@ -22113,7 +22265,7 @@ func (client *Client) UpdateApplicationDescription(request *UpdateApplicationDes
 
 // Summary:
 //
-// 更新应用联邦凭证
+// Updates an application\\"s federated credential.
 //
 // @param request - UpdateApplicationFederatedCredentialRequest
 //
@@ -22173,7 +22325,7 @@ func (client *Client) UpdateApplicationFederatedCredentialWithOptions(request *U
 
 // Summary:
 //
-// 更新应用联邦凭证
+// Updates an application\\"s federated credential.
 //
 // @param request - UpdateApplicationFederatedCredentialRequest
 //
@@ -22191,7 +22343,7 @@ func (client *Client) UpdateApplicationFederatedCredential(request *UpdateApplic
 
 // Summary:
 //
-// 更新应用联邦凭证描述
+// Updates the description of a federated credential for an application.
 //
 // @param request - UpdateApplicationFederatedCredentialDescriptionRequest
 //
@@ -22247,7 +22399,7 @@ func (client *Client) UpdateApplicationFederatedCredentialDescriptionWithOptions
 
 // Summary:
 //
-// 更新应用联邦凭证描述
+// Updates the description of a federated credential for an application.
 //
 // @param request - UpdateApplicationFederatedCredentialDescriptionRequest
 //
@@ -22265,7 +22417,7 @@ func (client *Client) UpdateApplicationFederatedCredentialDescription(request *U
 
 // Summary:
 //
-// 更新应用基本信息
+// Updates the basic information for an application.
 //
 // @param request - UpdateApplicationInfoRequest
 //
@@ -22337,7 +22489,7 @@ func (client *Client) UpdateApplicationInfoWithOptions(request *UpdateApplicatio
 
 // Summary:
 //
-// 更新应用基本信息
+// Updates the basic information for an application.
 //
 // @param request - UpdateApplicationInfoRequest
 //
@@ -22355,7 +22507,7 @@ func (client *Client) UpdateApplicationInfo(request *UpdateApplicationInfoReques
 
 // Summary:
 //
-// 修改应用角色
+// Updates an application role.
 //
 // @param request - UpdateApplicationRoleRequest
 //
@@ -22415,7 +22567,7 @@ func (client *Client) UpdateApplicationRoleWithOptions(request *UpdateApplicatio
 
 // Summary:
 //
-// 修改应用角色
+// Updates an application role.
 //
 // @param request - UpdateApplicationRoleRequest
 //
@@ -22433,7 +22585,7 @@ func (client *Client) UpdateApplicationRole(request *UpdateApplicationRoleReques
 
 // Summary:
 //
-// 修改应用角色描述
+// Updates the description of an application role.
 //
 // @param request - UpdateApplicationRoleDescriptionRequest
 //
@@ -22489,7 +22641,7 @@ func (client *Client) UpdateApplicationRoleDescriptionWithOptions(request *Updat
 
 // Summary:
 //
-// 修改应用角色描述
+// Updates the description of an application role.
 //
 // @param request - UpdateApplicationRoleDescriptionRequest
 //
@@ -22507,7 +22659,11 @@ func (client *Client) UpdateApplicationRoleDescription(request *UpdateApplicatio
 
 // Summary:
 //
-// 更新模板应用的SSO参数
+// Updates the SSO parameters for an application template.
+//
+// Description:
+//
+// Updates the single sign-on (SSO) parameters for an application template from the marketplace.
 //
 // @param request - UpdateApplicationSsoFormParamsRequest
 //
@@ -22559,7 +22715,11 @@ func (client *Client) UpdateApplicationSsoFormParamsWithOptions(request *UpdateA
 
 // Summary:
 //
-// 更新模板应用的SSO参数
+// Updates the SSO parameters for an application template.
+//
+// Description:
+//
+// Updates the single sign-on (SSO) parameters for an application template from the marketplace.
 //
 // @param request - UpdateApplicationSsoFormParamsRequest
 //
@@ -22577,7 +22737,7 @@ func (client *Client) UpdateApplicationSsoFormParams(request *UpdateApplicationS
 
 // Summary:
 //
-// 更新ApplicationToken过期时间
+// Updates the expiration time of an application token.
 //
 // @param request - UpdateApplicationTokenExpirationTimeRequest
 //
@@ -22633,7 +22793,7 @@ func (client *Client) UpdateApplicationTokenExpirationTimeWithOptions(request *U
 
 // Summary:
 //
-// 更新ApplicationToken过期时间
+// Updates the expiration time of an application token.
 //
 // @param request - UpdateApplicationTokenExpirationTimeRequest
 //
@@ -22651,7 +22811,7 @@ func (client *Client) UpdateApplicationTokenExpirationTime(request *UpdateApplic
 
 // Summary:
 //
-// 更新授权规则信息
+// Updates the basic properties of an authorization rule.
 //
 // @param request - UpdateAuthorizationRuleRequest
 //
@@ -22713,7 +22873,7 @@ func (client *Client) UpdateAuthorizationRuleWithOptions(request *UpdateAuthoriz
 
 // Summary:
 //
-// 更新授权规则信息
+// Updates the basic properties of an authorization rule.
 //
 // @param request - UpdateAuthorizationRuleRequest
 //
@@ -22731,7 +22891,7 @@ func (client *Client) UpdateAuthorizationRule(request *UpdateAuthorizationRuleRe
 
 // Summary:
 //
-// 更新授权规则应用关联关系属性
+// Updates the properties of the relationship between an authorization rule and an application.
 //
 // @param request - UpdateAuthorizationRuleApplicationAttachmentRequest
 //
@@ -22797,7 +22957,7 @@ func (client *Client) UpdateAuthorizationRuleApplicationAttachmentWithOptions(re
 
 // Summary:
 //
-// 更新授权规则应用关联关系属性
+// Updates the properties of the relationship between an authorization rule and an application.
 //
 // @param request - UpdateAuthorizationRuleApplicationAttachmentRequest
 //
@@ -22815,7 +22975,7 @@ func (client *Client) UpdateAuthorizationRuleApplicationAttachment(request *Upda
 
 // Summary:
 //
-// 更新授权规则描述信息
+// Updates the description of an authorization rule.
 //
 // @param request - UpdateAuthorizationRuleDescriptionRequest
 //
@@ -22873,7 +23033,7 @@ func (client *Client) UpdateAuthorizationRuleDescriptionWithOptions(request *Upd
 
 // Summary:
 //
-// 更新授权规则描述信息
+// Updates the description of an authorization rule.
 //
 // @param request - UpdateAuthorizationRuleDescriptionRequest
 //
@@ -22891,7 +23051,7 @@ func (client *Client) UpdateAuthorizationRuleDescription(request *UpdateAuthoriz
 
 // Summary:
 //
-// 更新授权规则组关联关系属性
+// Updates the properties of the association between an authorization rule and a group.
 //
 // @param request - UpdateAuthorizationRuleGroupAttachmentRequest
 //
@@ -22957,7 +23117,7 @@ func (client *Client) UpdateAuthorizationRuleGroupAttachmentWithOptions(request 
 
 // Summary:
 //
-// 更新授权规则组关联关系属性
+// Updates the properties of the association between an authorization rule and a group.
 //
 // @param request - UpdateAuthorizationRuleGroupAttachmentRequest
 //
@@ -22975,7 +23135,7 @@ func (client *Client) UpdateAuthorizationRuleGroupAttachment(request *UpdateAuth
 
 // Summary:
 //
-// 更新授权规则账户关联关系属性
+// Updates the properties of an association between an authorization rule and a user.
 //
 // @param request - UpdateAuthorizationRuleUserAttachmentRequest
 //
@@ -23041,7 +23201,7 @@ func (client *Client) UpdateAuthorizationRuleUserAttachmentWithOptions(request *
 
 // Summary:
 //
-// 更新授权规则账户关联关系属性
+// Updates the properties of an association between an authorization rule and a user.
 //
 // @param request - UpdateAuthorizationRuleUserAttachmentRequest
 //
@@ -23059,7 +23219,7 @@ func (client *Client) UpdateAuthorizationRuleUserAttachment(request *UpdateAutho
 
 // Summary:
 //
-// 修改品牌
+// Updates a brand.
 //
 // @param request - UpdateBrandRequest
 //
@@ -23111,7 +23271,7 @@ func (client *Client) UpdateBrandWithOptions(request *UpdateBrandRequest, runtim
 
 // Summary:
 //
-// 修改品牌
+// Updates a brand.
 //
 // @param request - UpdateBrandRequest
 //
@@ -23129,7 +23289,7 @@ func (client *Client) UpdateBrand(request *UpdateBrandRequest) (_result *UpdateB
 
 // Summary:
 //
-// 更新云账号
+// Updates the basic information of an Alibaba Cloud account.
 //
 // @param request - UpdateCloudAccountRequest
 //
@@ -23185,7 +23345,7 @@ func (client *Client) UpdateCloudAccountWithOptions(request *UpdateCloudAccountR
 
 // Summary:
 //
-// 更新云账号
+// Updates the basic information of an Alibaba Cloud account.
 //
 // @param request - UpdateCloudAccountRequest
 //
@@ -23203,7 +23363,7 @@ func (client *Client) UpdateCloudAccount(request *UpdateCloudAccountRequest) (_r
 
 // Summary:
 //
-// 更新云账号描述
+// Updates the description of an Alibaba Cloud account.
 //
 // @param request - UpdateCloudAccountDescriptionRequest
 //
@@ -23259,7 +23419,7 @@ func (client *Client) UpdateCloudAccountDescriptionWithOptions(request *UpdateCl
 
 // Summary:
 //
-// 更新云账号描述
+// Updates the description of an Alibaba Cloud account.
 //
 // @param request - UpdateCloudAccountDescriptionRequest
 //
@@ -23277,7 +23437,7 @@ func (client *Client) UpdateCloudAccountDescription(request *UpdateCloudAccountD
 
 // Summary:
 //
-// 更新云角色描述
+// Updates the description of a cloud role.
 //
 // @param request - UpdateCloudAccountRoleDescriptionRequest
 //
@@ -23337,7 +23497,7 @@ func (client *Client) UpdateCloudAccountRoleDescriptionWithOptions(request *Upda
 
 // Summary:
 //
-// 更新云角色描述
+// Updates the description of a cloud role.
 //
 // @param request - UpdateCloudAccountRoleDescriptionRequest
 //
@@ -23355,11 +23515,11 @@ func (client *Client) UpdateCloudAccountRoleDescription(request *UpdateCloudAcco
 
 // Summary:
 //
-// # Update Conditional Access Policy
+// Updates a conditional access policy.
 //
 // Description:
 //
-// # Update Conditional Access Policy
+// Updates a conditional access policy.
 //
 // @param request - UpdateConditionalAccessPolicyRequest
 //
@@ -23431,11 +23591,11 @@ func (client *Client) UpdateConditionalAccessPolicyWithOptions(request *UpdateCo
 
 // Summary:
 //
-// # Update Conditional Access Policy
+// Updates a conditional access policy.
 //
 // Description:
 //
-// # Update Conditional Access Policy
+// Updates a conditional access policy.
 //
 // @param request - UpdateConditionalAccessPolicyRequest
 //
@@ -23453,11 +23613,11 @@ func (client *Client) UpdateConditionalAccessPolicy(request *UpdateConditionalAc
 
 // Summary:
 //
-// # Update Conditional Access Policy Description
+// Updates the description of a conditional access policy.
 //
 // Description:
 //
-// # Update Conditional Access Policy Description
+// Updates the description of a conditional access policy.
 //
 // @param request - UpdateConditionalAccessPolicyDescriptionRequest
 //
@@ -23513,11 +23673,11 @@ func (client *Client) UpdateConditionalAccessPolicyDescriptionWithOptions(reques
 
 // Summary:
 //
-// # Update Conditional Access Policy Description
+// Updates the description of a conditional access policy.
 //
 // Description:
 //
-// # Update Conditional Access Policy Description
+// Updates the description of a conditional access policy.
 //
 // @param request - UpdateConditionalAccessPolicyDescriptionRequest
 //
@@ -23535,7 +23695,7 @@ func (client *Client) UpdateConditionalAccessPolicyDescription(request *UpdateCo
 
 // Summary:
 //
-// 更新凭据
+// Update basic information for a credential.
 //
 // @param request - UpdateCredentialRequest
 //
@@ -23595,7 +23755,7 @@ func (client *Client) UpdateCredentialWithOptions(request *UpdateCredentialReque
 
 // Summary:
 //
-// 更新凭据
+// Update basic information for a credential.
 //
 // @param request - UpdateCredentialRequest
 //
@@ -23613,7 +23773,7 @@ func (client *Client) UpdateCredential(request *UpdateCredentialRequest) (_resul
 
 // Summary:
 //
-// 更新凭据描述
+// Update the description of a credential.
 //
 // @param request - UpdateCredentialDescriptionRequest
 //
@@ -23669,7 +23829,7 @@ func (client *Client) UpdateCredentialDescriptionWithOptions(request *UpdateCred
 
 // Summary:
 //
-// 更新凭据描述
+// Update the description of a credential.
 //
 // @param request - UpdateCredentialDescriptionRequest
 //
@@ -23687,7 +23847,7 @@ func (client *Client) UpdateCredentialDescription(request *UpdateCredentialDescr
 
 // Summary:
 //
-// 更新凭据提供商
+// Updates a credential provider.
 //
 // @param request - UpdateCredentialProviderRequest
 //
@@ -23747,7 +23907,7 @@ func (client *Client) UpdateCredentialProviderWithOptions(request *UpdateCredent
 
 // Summary:
 //
-// 更新凭据提供商
+// Updates a credential provider.
 //
 // @param request - UpdateCredentialProviderRequest
 //
@@ -23765,7 +23925,7 @@ func (client *Client) UpdateCredentialProvider(request *UpdateCredentialProvider
 
 // Summary:
 //
-// 更新凭据提供商描述
+// Update the description of a credential provider.
 //
 // @param request - UpdateCredentialProviderDescriptionRequest
 //
@@ -23817,7 +23977,7 @@ func (client *Client) UpdateCredentialProviderDescriptionWithOptions(request *Up
 
 // Summary:
 //
-// 更新凭据提供商描述
+// Update the description of a credential provider.
 //
 // @param request - UpdateCredentialProviderDescriptionRequest
 //
@@ -23835,7 +23995,7 @@ func (client *Client) UpdateCredentialProviderDescription(request *UpdateCredent
 
 // Summary:
 //
-// 更新自定义条款
+// Updates a custom privacy policy.
 //
 // @param request - UpdateCustomPrivacyPolicyRequest
 //
@@ -23899,7 +24059,7 @@ func (client *Client) UpdateCustomPrivacyPolicyWithOptions(request *UpdateCustom
 
 // Summary:
 //
-// 更新自定义条款
+// Updates a custom privacy policy.
 //
 // @param request - UpdateCustomPrivacyPolicyRequest
 //
@@ -23917,7 +24077,7 @@ func (client *Client) UpdateCustomPrivacyPolicy(request *UpdateCustomPrivacyPoli
 
 // Summary:
 //
-// 修改域名关联的品牌。
+// Updates the brand associated with a domain name.
 //
 // @param request - UpdateDomainBrandRequest
 //
@@ -23969,7 +24129,7 @@ func (client *Client) UpdateDomainBrandWithOptions(request *UpdateDomainBrandReq
 
 // Summary:
 //
-// 修改域名关联的品牌。
+// Updates the brand associated with a domain name.
 //
 // @param request - UpdateDomainBrandRequest
 //
@@ -23987,7 +24147,7 @@ func (client *Client) UpdateDomainBrand(request *UpdateDomainBrandRequest) (_res
 
 // Summary:
 //
-// 更新域名备案号。
+// Updates the ICP filing number for a domain name.
 //
 // @param request - UpdateDomainIcpNumberRequest
 //
@@ -24039,7 +24199,7 @@ func (client *Client) UpdateDomainIcpNumberWithOptions(request *UpdateDomainIcpN
 
 // Summary:
 //
-// 更新域名备案号。
+// Updates the ICP filing number for a domain name.
 //
 // @param request - UpdateDomainIcpNumberRequest
 //
@@ -24057,7 +24217,7 @@ func (client *Client) UpdateDomainIcpNumber(request *UpdateDomainIcpNumberReques
 
 // Summary:
 //
-// 更新联邦凭证提供方
+// Updates a federated credential provider.
 //
 // @param request - UpdateFederatedCredentialProviderRequest
 //
@@ -24125,7 +24285,7 @@ func (client *Client) UpdateFederatedCredentialProviderWithOptions(request *Upda
 
 // Summary:
 //
-// 更新联邦凭证提供方
+// Updates a federated credential provider.
 //
 // @param request - UpdateFederatedCredentialProviderRequest
 //
@@ -24143,7 +24303,7 @@ func (client *Client) UpdateFederatedCredentialProvider(request *UpdateFederated
 
 // Summary:
 //
-// 更新联邦凭证提供方描述
+// Updates the description of a federated credential provider.
 //
 // @param request - UpdateFederatedCredentialProviderDescriptionRequest
 //
@@ -24195,7 +24355,7 @@ func (client *Client) UpdateFederatedCredentialProviderDescriptionWithOptions(re
 
 // Summary:
 //
-// 更新联邦凭证提供方描述
+// Updates the description of a federated credential provider.
 //
 // @param request - UpdateFederatedCredentialProviderDescriptionRequest
 //
@@ -24357,7 +24517,7 @@ func (client *Client) UpdateGroupDescription(request *UpdateGroupDescriptionRequ
 
 // Summary:
 //
-// 更新idp基础配置
+// Updates the basic configuration of an identity provider.
 //
 // @param request - UpdateIdentityProviderRequest
 //
@@ -24445,7 +24605,7 @@ func (client *Client) UpdateIdentityProviderWithOptions(request *UpdateIdentityP
 
 // Summary:
 //
-// 更新idp基础配置
+// Updates the basic configuration of an identity provider.
 //
 // @param request - UpdateIdentityProviderRequest
 //
@@ -24529,7 +24689,7 @@ func (client *Client) UpdateInstanceDescription(request *UpdateInstanceDescripti
 
 // Summary:
 //
-// 更新一个专属网络端点的名称。
+// Modifies the name of a private network access endpoint.
 //
 // @param request - UpdateNetworkAccessEndpointNameRequest
 //
@@ -24581,7 +24741,7 @@ func (client *Client) UpdateNetworkAccessEndpointNameWithOptions(request *Update
 
 // Summary:
 //
-// 更新一个专属网络端点的名称。
+// Modifies the name of a private network access endpoint.
 //
 // @param request - UpdateNetworkAccessEndpointNameRequest
 //
@@ -24599,7 +24759,7 @@ func (client *Client) UpdateNetworkAccessEndpointName(request *UpdateNetworkAcce
 
 // Summary:
 //
-// 更新网络区域对象
+// Updates a network zone object.
 //
 // @param request - UpdateNetworkZoneRequest
 //
@@ -24667,7 +24827,7 @@ func (client *Client) UpdateNetworkZoneWithOptions(request *UpdateNetworkZoneReq
 
 // Summary:
 //
-// 更新网络区域对象
+// Updates a network zone object.
 //
 // @param request - UpdateNetworkZoneRequest
 //
@@ -24685,7 +24845,7 @@ func (client *Client) UpdateNetworkZone(request *UpdateNetworkZoneRequest) (_res
 
 // Summary:
 //
-// 更新网络区域对象描述
+// Updates the description of a network zone.
 //
 // @param request - UpdateNetworkZoneDescriptionRequest
 //
@@ -24741,7 +24901,7 @@ func (client *Client) UpdateNetworkZoneDescriptionWithOptions(request *UpdateNet
 
 // Summary:
 //
-// 更新网络区域对象描述
+// Updates the description of a network zone.
 //
 // @param request - UpdateNetworkZoneDescriptionRequest
 //
@@ -24969,7 +25129,7 @@ func (client *Client) UpdateOrganizationalUnitParentId(request *UpdateOrganizati
 
 // Summary:
 //
-// 更新指定ResourceServer下的Scope
+// Updates a scope permission for a specified resource server.
 //
 // @param request - UpdateResourceServerScopeRequest
 //
@@ -25025,7 +25185,7 @@ func (client *Client) UpdateResourceServerScopeWithOptions(request *UpdateResour
 
 // Summary:
 //
-// 更新指定ResourceServer下的Scope
+// Updates a scope permission for a specified resource server.
 //
 // @param request - UpdateResourceServerScopeRequest
 //
@@ -25043,7 +25203,7 @@ func (client *Client) UpdateResourceServerScope(request *UpdateResourceServerSco
 
 // Summary:
 //
-// Updates the basic information about an Employee Identity and Access Management (EIAM) account of Identity as a Service (IDaaS).
+// Updates the basic information of an EIAM account.
 //
 // @param request - UpdateUserRequest
 //
@@ -25123,7 +25283,7 @@ func (client *Client) UpdateUserWithOptions(request *UpdateUserRequest, runtime 
 
 // Summary:
 //
-// Updates the basic information about an Employee Identity and Access Management (EIAM) account of Identity as a Service (IDaaS).
+// Updates the basic information of an EIAM account.
 //
 // @param request - UpdateUserRequest
 //
@@ -25141,7 +25301,7 @@ func (client *Client) UpdateUser(request *UpdateUserRequest) (_result *UpdateUse
 
 // Summary:
 //
-// Modifies the description of an Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM) account.
+// Updates a user\\"s description.
 //
 // @param request - UpdateUserDescriptionRequest
 //
@@ -25193,7 +25353,7 @@ func (client *Client) UpdateUserDescriptionWithOptions(request *UpdateUserDescri
 
 // Summary:
 //
-// Modifies the description of an Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM) account.
+// Updates a user\\"s description.
 //
 // @param request - UpdateUserDescriptionRequest
 //

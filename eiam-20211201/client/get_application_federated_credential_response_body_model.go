@@ -16,7 +16,10 @@ type iGetApplicationFederatedCredentialResponseBody interface {
 }
 
 type GetApplicationFederatedCredentialResponseBody struct {
+	// The application federated credential object.
 	ApplicationFederatedCredential *GetApplicationFederatedCredentialResponseBodyApplicationFederatedCredential `json:"ApplicationFederatedCredential,omitempty" xml:"ApplicationFederatedCredential,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
@@ -59,75 +62,75 @@ func (s *GetApplicationFederatedCredentialResponseBody) Validate() error {
 }
 
 type GetApplicationFederatedCredentialResponseBodyApplicationFederatedCredential struct {
-	// 应用联邦凭证ID
+	// The ID of the application\\"s federated credential.
 	//
 	// example:
 	//
 	// afc_aaaaa1111
 	ApplicationFederatedCredentialId *string `json:"ApplicationFederatedCredentialId,omitempty" xml:"ApplicationFederatedCredentialId,omitempty"`
-	// 应用联邦凭证名称
+	// The name of the application\\"s federated credential.
 	//
 	// example:
 	//
 	// test
 	ApplicationFederatedCredentialName *string `json:"ApplicationFederatedCredentialName,omitempty" xml:"ApplicationFederatedCredentialName,omitempty"`
-	// 应用联邦凭证类型
+	// The type of the application\\"s federated credential.
 	//
 	// example:
 	//
 	// oidc
 	ApplicationFederatedCredentialType *string `json:"ApplicationFederatedCredentialType,omitempty" xml:"ApplicationFederatedCredentialType,omitempty"`
-	// 应用ID
+	// The application ID.
 	//
 	// example:
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// 属性映射
+	// The attribute mappings.
 	AttributeMappings []*GetApplicationFederatedCredentialResponseBodyApplicationFederatedCredentialAttributeMappings `json:"AttributeMappings,omitempty" xml:"AttributeMappings,omitempty" type:"Repeated"`
-	// 创建时间
+	// The time when the credential was created.
 	//
 	// example:
 	//
 	// 1758785994982
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 应用联邦凭证描述
+	// The description of the application\\"s federated credential.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 应用联邦凭证提供者ID
+	// The ID of the federated credential provider.
 	//
 	// example:
 	//
 	// fcp_asda1dasdxxxx
 	FederatedCredentialProviderId *string `json:"FederatedCredentialProviderId,omitempty" xml:"FederatedCredentialProviderId,omitempty"`
-	// EAIM 实例ID
+	// The instance ID.
 	//
 	// example:
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 最近使用时间
+	// The time when the credential was last used.
 	//
 	// example:
 	//
 	// 1758785994982
 	LastUsedTime *int64 `json:"LastUsedTime,omitempty" xml:"LastUsedTime,omitempty"`
-	// 应用联邦凭证状态
+	// The status of the application\\"s federated credential.
 	//
 	// example:
 	//
 	// enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 更新时间
+	// The time when the credential was last updated.
 	//
 	// example:
 	//
 	// 1758785994982
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// 验证条件
+	// The verification condition.
 	//
 	// example:
 	//
@@ -274,13 +277,13 @@ func (s *GetApplicationFederatedCredentialResponseBodyApplicationFederatedCreden
 }
 
 type GetApplicationFederatedCredentialResponseBodyApplicationFederatedCredentialAttributeMappings struct {
-	// 源值表达式
+	// The source value expression.
 	//
 	// example:
 	//
 	// Append(client.applicationFederatedCredentialId, ":", cert.subject.CN, ":", cert.serialNumber)
 	SourceValueExpression *string `json:"SourceValueExpression,omitempty" xml:"SourceValueExpression,omitempty"`
-	// 目标字段
+	// The target field.
 	//
 	// example:
 	//

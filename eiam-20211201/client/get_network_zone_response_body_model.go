@@ -16,7 +16,10 @@ type iGetNetworkZoneResponseBody interface {
 }
 
 type GetNetworkZoneResponseBody struct {
+	// The network zone object.
 	NetworkZone *GetNetworkZoneResponseBodyNetworkZone `json:"NetworkZone,omitempty" xml:"NetworkZone,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
@@ -59,39 +62,41 @@ func (s *GetNetworkZoneResponseBody) Validate() error {
 }
 
 type GetNetworkZoneResponseBodyNetworkZone struct {
-	// IDaaS EIAM 网络区域描述
+	// The description of the network zone.
 	//
 	// example:
 	//
 	// test_description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 实例ID。
+	// The instance ID.
 	//
 	// example:
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
-	InstanceId *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Ipv4Cidrs  []*string `json:"Ipv4Cidrs,omitempty" xml:"Ipv4Cidrs,omitempty" type:"Repeated"`
-	Ipv6Cidrs  []*string `json:"Ipv6Cidrs,omitempty" xml:"Ipv6Cidrs,omitempty" type:"Repeated"`
-	// IDaaS EIAM 网络区域Id
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The IPv4 CIDR blocks.
+	Ipv4Cidrs []*string `json:"Ipv4Cidrs,omitempty" xml:"Ipv4Cidrs,omitempty" type:"Repeated"`
+	// The IPv6 CIDR blocks.
+	Ipv6Cidrs []*string `json:"Ipv6Cidrs,omitempty" xml:"Ipv6Cidrs,omitempty" type:"Repeated"`
+	// The network zone ID.
 	//
 	// example:
 	//
 	// network_m6fbr2bcbcadu3bcdpgzcxxxxx
 	NetworkZoneId *string `json:"NetworkZoneId,omitempty" xml:"NetworkZoneId,omitempty"`
-	// IDaaS EIAM 网络区域名称
+	// The name of the network zone.
 	//
 	// example:
 	//
 	// test4_name
 	NetworkZoneName *string `json:"NetworkZoneName,omitempty" xml:"NetworkZoneName,omitempty"`
-	// IDaaS EIAM 网络区域类型
+	// The type of the network zone.
 	//
 	// example:
 	//
 	// arn:alibaba:idaas:network:zone:classic
 	NetworkZoneType *string `json:"NetworkZoneType,omitempty" xml:"NetworkZoneType,omitempty"`
-	// IDaaS EIAM 专有网络VpcId
+	// The VPC ID.
 	//
 	// example:
 	//

@@ -20,8 +20,9 @@ type iListCloudAccountsRequest interface {
 }
 
 type ListCloudAccountsRequest struct {
+	// The filter conditions.
 	Filter []*ListCloudAccountsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -29,13 +30,19 @@ type ListCloudAccountsRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 分页查询时每页行数。默认值为20，最大值为100。
+	// The maximum number of records to return on each page.
+	//
+	// - The default value is 20.
+	//
+	// - The maximum value is 100.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 查询凭证（Token），取值为上一次API调用返回的NextToken参数值。
+	// The token that specifies the start of the next page.
+	//
+	// - If you leave this parameter empty, the query starts from the first page.
 	//
 	// example:
 	//
@@ -101,10 +108,19 @@ func (s *ListCloudAccountsRequest) Validate() error {
 }
 
 type ListCloudAccountsRequestFilter struct {
+	// The name of the filter field. Valid values:
+	//
+	// - CloudAccountId: The ID of the Alibaba Cloud account.
+	//
+	// - CloudAccountExternalId: The external unique ID of the Alibaba Cloud account.
+	//
+	// - CloudAccountVendorType: The type of the Alibaba Cloud account.
+	//
 	// example:
 	//
 	// CloudAccountId
-	Name  *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// A list of values for the filter field.
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 

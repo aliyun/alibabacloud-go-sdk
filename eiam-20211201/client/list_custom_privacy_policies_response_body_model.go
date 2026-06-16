@@ -24,29 +24,34 @@ type iListCustomPrivacyPoliciesResponseBody interface {
 }
 
 type ListCustomPrivacyPoliciesResponseBody struct {
+	// A list of custom privacy policies.
 	CustomPrivacyPolicies []*ListCustomPrivacyPoliciesResponseBodyCustomPrivacyPolicies `json:"CustomPrivacyPolicies,omitempty" xml:"CustomPrivacyPolicies,omitempty" type:"Repeated"`
-	// 分页查询时每页行数。
+	// The number of entries to return on each page.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 本次调用返回的查询凭证（Token）值，用于下一次翻页查询。
+	// The token that is used to retrieve the next page of results.
 	//
 	// example:
 	//
 	// NTxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 本次调用返回的查询凭证（Token）值，用于上一次翻页查询。
+	// The token that is used to retrieve the previous page of results.
 	//
 	// example:
 	//
 	// PTxxxexample
 	PreviousToken *string `json:"PreviousToken,omitempty" xml:"PreviousToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 100
@@ -129,37 +134,37 @@ func (s *ListCustomPrivacyPoliciesResponseBody) Validate() error {
 }
 
 type ListCustomPrivacyPoliciesResponseBodyCustomPrivacyPolicies struct {
-	// 自定义条款Id
+	// The ID of the custom privacy policy.
 	//
 	// example:
 	//
 	// pp_xxxxx
 	CustomPrivacyPolicyId *string `json:"CustomPrivacyPolicyId,omitempty" xml:"CustomPrivacyPolicyId,omitempty"`
-	// 自定义条款名称
+	// The name of the custom privacy policy.
 	//
 	// example:
 	//
 	// Custom Privacy Policy Name
 	CustomPrivacyPolicyName *string `json:"CustomPrivacyPolicyName,omitempty" xml:"CustomPrivacyPolicyName,omitempty"`
-	// 若显示语言未配置时，门户侧展示默认语言展示条款。
+	// The default language of the policy. The value is the LanguageCode returned by the ListLanguages operation.
 	//
 	// example:
 	//
 	// zh-Hans-CN
 	DefaultLanguageCode *string `json:"DefaultLanguageCode,omitempty" xml:"DefaultLanguageCode,omitempty"`
-	// 实例id
+	// The instance ID.
 	//
 	// example:
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 自定义条款状态
+	// The status of the custom privacy policy.
 	//
 	// example:
 	//
 	// enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 自定义条款同意类型，是默认同意，还是用户勾选同意
+	// The user consent type for the policy.
 	//
 	// example:
 	//

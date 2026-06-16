@@ -18,11 +18,16 @@ type iListEventTypesResponseBody interface {
 }
 
 type ListEventTypesResponseBody struct {
+	// List of event types
 	EventTypes []*ListEventTypesResponseBodyEventTypes `json:"EventTypes,omitempty" xml:"EventTypes,omitempty" type:"Repeated"`
+	// Request ID
+	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total number of items in the list
+	//
 	// example:
 	//
 	// 100
@@ -78,6 +83,8 @@ func (s *ListEventTypesResponseBody) Validate() error {
 }
 
 type ListEventTypesResponseBodyEventTypes struct {
+	// Event type
+	//
 	// example:
 	//
 	// urn:alibaba:idaas:event:user:create

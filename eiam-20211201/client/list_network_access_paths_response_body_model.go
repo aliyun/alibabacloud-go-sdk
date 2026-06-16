@@ -16,7 +16,7 @@ type iListNetworkAccessPathsResponseBody interface {
 }
 
 type ListNetworkAccessPathsResponseBody struct {
-	// Network access paths
+	// The list of network endpoint access paths.
 	NetworkAccessPaths []*ListNetworkAccessPathsResponseBodyNetworkAccessPaths `json:"NetworkAccessPaths,omitempty" xml:"NetworkAccessPaths,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -66,7 +66,7 @@ func (s *ListNetworkAccessPathsResponseBody) Validate() error {
 }
 
 type ListNetworkAccessPathsResponseBodyNetworkAccessPaths struct {
-	// The creation time.
+	// The time when the dedicated network endpoint access path was created. This value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -78,43 +78,51 @@ type ListNetworkAccessPathsResponseBodyNetworkAccessPaths struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Network access endpoint ID.
+	// The ID of the dedicated network endpoint.
 	//
 	// example:
 	//
 	// nae_examplexxx
 	NetworkAccessEndpointId *string `json:"NetworkAccessEndpointId,omitempty" xml:"NetworkAccessEndpointId,omitempty"`
-	// Network access path ID
+	// The ID of the dedicated network endpoint access path.
 	//
 	// example:
 	//
 	// nap_examplexxx
 	NetworkAccessPathId *string `json:"NetworkAccessPathId,omitempty" xml:"NetworkAccessPathId,omitempty"`
-	// Network interface ID
+	// The ID of the ENI that is used by the dedicated network endpoint access path.
 	//
 	// example:
 	//
 	// eni-examplexxx
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
-	// The private IP address.
+	// The private IP address of the ENI that is used by the dedicated network endpoint access path.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
-	// Network access path status
+	// The status of the dedicated network endpoint access path. Valid values:
+	//
+	// - pending: The path is being initialized.
+	//
+	// - creating: The path is being created.
+	//
+	// - running: The path is running.
+	//
+	// - deleting: The path is being deleted.
 	//
 	// example:
 	//
 	// running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The update time.
+	// The time when the dedicated network endpoint access path was last updated. This value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1649830226000
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The ID of a vSwitch.
+	// The ID of the vSwitch to which the ENI of the dedicated network endpoint access path belongs.
 	//
 	// example:
 	//

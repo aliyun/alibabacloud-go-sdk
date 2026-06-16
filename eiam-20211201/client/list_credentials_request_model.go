@@ -30,12 +30,14 @@ type iListCredentialsRequest interface {
 }
 
 type ListCredentialsRequest struct {
-	CredentialExternalIds   []*string                       `json:"CredentialExternalIds,omitempty" xml:"CredentialExternalIds,omitempty" type:"Repeated"`
-	CredentialIds           []*string                       `json:"CredentialIds,omitempty" xml:"CredentialIds,omitempty" type:"Repeated"`
-	CredentialSharingScopes []*string                       `json:"CredentialSharingScopes,omitempty" xml:"CredentialSharingScopes,omitempty" type:"Repeated"`
-	CredentialTypes         []*string                       `json:"CredentialTypes,omitempty" xml:"CredentialTypes,omitempty" type:"Repeated"`
-	Filter                  []*ListCredentialsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
-	// IDaaS EIAM实例的ID。
+	CredentialExternalIds []*string `json:"CredentialExternalIds,omitempty" xml:"CredentialExternalIds,omitempty" type:"Repeated"`
+	// The credential IDs.
+	CredentialIds           []*string `json:"CredentialIds,omitempty" xml:"CredentialIds,omitempty" type:"Repeated"`
+	CredentialSharingScopes []*string `json:"CredentialSharingScopes,omitempty" xml:"CredentialSharingScopes,omitempty" type:"Repeated"`
+	CredentialTypes         []*string `json:"CredentialTypes,omitempty" xml:"CredentialTypes,omitempty" type:"Repeated"`
+	// The filter conditions.
+	Filter []*ListCredentialsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -43,19 +45,24 @@ type ListCredentialsRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 分页查询时每页行数。默认值为20，最大值为100。
+	// The number of entries per page.
+	//
+	// - Default value: 20.
+	//
+	// - Maximum value: 100.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 查询凭证（Token），取值为上一次API调用返回的NextToken参数值。
+	// The pagination token that is used in the next request to retrieve a new page of results.
 	//
 	// example:
 	//
 	// NTxxxxxexample
-	NextToken *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	Statuses  []*string `json:"Statuses,omitempty" xml:"Statuses,omitempty" type:"Repeated"`
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The credential statuses.
+	Statuses []*string `json:"Statuses,omitempty" xml:"Statuses,omitempty" type:"Repeated"`
 }
 
 func (s ListCredentialsRequest) String() string {
@@ -161,10 +168,15 @@ func (s *ListCredentialsRequest) Validate() error {
 }
 
 type ListCredentialsRequestFilter struct {
+	// The field to filter on. Valid value:
+	//
+	// - `CredentialIdentifier`: the credential identifier.
+	//
 	// example:
 	//
 	// CredentialIdentifier
-	Name  *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The values for the specified filter field.
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 

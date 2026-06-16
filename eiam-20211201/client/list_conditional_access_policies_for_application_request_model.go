@@ -16,7 +16,7 @@ type iListConditionalAccessPoliciesForApplicationRequest interface {
 }
 
 type ListConditionalAccessPoliciesForApplicationRequest struct {
-	// 条件访问策略关联的应用ID
+	// The ID of the application that is associated with the conditional access policy.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type ListConditionalAccessPoliciesForApplicationRequest struct {
 	//
 	// app_11111
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

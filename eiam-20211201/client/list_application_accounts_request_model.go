@@ -20,7 +20,7 @@ type iListApplicationAccountsRequest interface {
 }
 
 type ListApplicationAccountsRequest struct {
-	// IDaaS的应用主键id
+	// The application ID.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type ListApplicationAccountsRequest struct {
 	//
 	// app_11111
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// IDaaS EIAM的实例id
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -36,13 +36,13 @@ type ListApplicationAccountsRequest struct {
 	//
 	// eiam-111ccc1111
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 当前查询的列表页码，默认为1
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 当前查询的列表页码，默认为20
+	// The number of entries per page.
 	//
 	// example:
 	//

@@ -38,38 +38,43 @@ type iListApplicationsRequest interface {
 }
 
 type ListApplicationsRequest struct {
+	// The application creation type. If unspecified, only user-created (`user_custom`) applications are returned. To query applications of all types, set this parameter to `all`.
+	//
 	// example:
 	//
 	// system_init
 	ApplicationCreationType *string `json:"ApplicationCreationType,omitempty" xml:"ApplicationCreationType,omitempty"`
+	// The application identity type. If unspecified, only applications of the `application` type are returned. To query all identity types, set this parameter to `all`.
+	//
 	// example:
 	//
 	// application
 	ApplicationIdentityType *string `json:"ApplicationIdentityType,omitempty" xml:"ApplicationIdentityType,omitempty"`
-	// The IDs of the applications.
+	// A list of application IDs.
 	//
 	// example:
 	//
 	// Ram Account SSO
 	ApplicationIds []*string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty" type:"Repeated"`
-	// The name of the application. Only fuzzy match from the leftmost character is supported.
+	// The application name. Only prefix matching is supported.
 	//
 	// example:
 	//
 	// Ram Account SSO
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
-	// The authorization of the application. Valid values:
+	// The authorization type for application access. Valid values:
 	//
-	// 	- authorize_required: Only the user with explicit authorization can access the application.
+	// - `authorize_required`: Access requires explicit authorization.
 	//
-	// 	- default_all: By default, all users can access the application.
+	// - `default_all`: All members have access by default.
 	//
 	// example:
 	//
 	// authorize_required
-	AuthorizationType *string                                `json:"AuthorizationType,omitempty" xml:"AuthorizationType,omitempty"`
-	CustomFields      []*ListApplicationsRequestCustomFields `json:"CustomFields,omitempty" xml:"CustomFields,omitempty" type:"Repeated"`
-	// The ID of the instance.
+	AuthorizationType *string `json:"AuthorizationType,omitempty" xml:"AuthorizationType,omitempty"`
+	// A list of custom fields.
+	CustomFields []*ListApplicationsRequestCustomFields `json:"CustomFields,omitempty" xml:"CustomFields,omitempty" type:"Repeated"`
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -77,55 +82,41 @@ type ListApplicationsRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Used to determine whether M2M client identity is enabled.
-	//
-	// - enabled
-	//
-	// - disabled
+	// The status of the M2M client identity.
 	//
 	// example:
 	//
 	// enabled
 	M2MClientStatus *string `json:"M2MClientStatus,omitempty" xml:"M2MClientStatus,omitempty"`
-	// The number of the page to return.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The page size.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Used to determine whether the ResourceServer capability is enabled.
-	//
-	// - enabled
-	//
-	// - disabled
+	// The status of the resource server capability.
 	//
 	// example:
 	//
 	// enabled
 	ResourceServerStatus *string `json:"ResourceServerStatus,omitempty" xml:"ResourceServerStatus,omitempty"`
-	// SSO type.
-	//
-	// - oidc
-	//
-	// - saml2
-	//
-	// - oauth2/m2m
+	// A filter for the Single Sign-On (SSO) type. You can specify multiple types, separated by a comma. Example: `oauth2/m2m,oidc+oauth2/m2m`.
 	//
 	// example:
 	//
 	// oauth2/m2m
 	SsoType *string `json:"SsoType,omitempty" xml:"SsoType,omitempty"`
-	// The status of the application. Valid values:
+	// The application status. Valid values:
 	//
-	// 	- Enabled: The application is enabled.
+	// - `enabled`: Enabled.
 	//
-	// 	- Disabled: The application is disabled.
+	// - `disabled`: Disabled.
 	//
 	// example:
 	//
@@ -272,7 +263,19 @@ func (s *ListApplicationsRequest) Validate() error {
 }
 
 type ListApplicationsRequestCustomFields struct {
-	FieldName  *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
+	// The custom field identifier. Valid values:
+	//
+	// - `agent_type`: The agent type.
+	//
+	// example:
+	//
+	// agent_type
+	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
+	// The custom field value.
+	//
+	// example:
+	//
+	// x-claw
 	FieldValue *string `json:"FieldValue,omitempty" xml:"FieldValue,omitempty"`
 }
 

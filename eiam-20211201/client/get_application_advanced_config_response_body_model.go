@@ -16,7 +16,10 @@ type iGetApplicationAdvancedConfigResponseBody interface {
 }
 
 type GetApplicationAdvancedConfigResponseBody struct {
+	// The advanced configuration of the application.
 	ApplicationAdvancedConfig *GetApplicationAdvancedConfigResponseBodyApplicationAdvancedConfig `json:"ApplicationAdvancedConfig,omitempty" xml:"ApplicationAdvancedConfig,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
@@ -59,19 +62,19 @@ func (s *GetApplicationAdvancedConfigResponseBody) Validate() error {
 }
 
 type GetApplicationAdvancedConfigResponseBodyApplicationAdvancedConfig struct {
-	// IDaaS EIAM 应用Id
+	// The application ID.
 	//
 	// example:
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// IDaaS EIAM 实例Id
+	// The ID of the IDaaS EIAM instance.
 	//
 	// example:
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Scim Server 高阶配置
+	// The advanced configuration of the SCIM server.
 	ScimServerAdvancedConfig *GetApplicationAdvancedConfigResponseBodyApplicationAdvancedConfigScimServerAdvancedConfig `json:"ScimServerAdvancedConfig,omitempty" xml:"ScimServerAdvancedConfig,omitempty" type:"Struct"`
 }
 
@@ -120,9 +123,9 @@ func (s *GetApplicationAdvancedConfigResponseBodyApplicationAdvancedConfig) Vali
 }
 
 type GetApplicationAdvancedConfigResponseBodyApplicationAdvancedConfigScimServerAdvancedConfig struct {
-	// 支持的用户自定义字段ID列表。
+	// A list of IDs of the supported custom user fields.
 	SupportedUserCustomFieldIds []*string `json:"SupportedUserCustomFieldIds,omitempty" xml:"SupportedUserCustomFieldIds,omitempty" type:"Repeated"`
-	// 用户扩展字段的命名空间。
+	// The namespace of the user extension fields.
 	//
 	// example:
 	//

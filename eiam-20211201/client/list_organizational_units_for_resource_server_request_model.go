@@ -24,16 +24,17 @@ type iListOrganizationalUnitsForResourceServerRequest interface {
 }
 
 type ListOrganizationalUnitsForResourceServerRequest struct {
-	// IDaaS的应用资源ID。
+	// The resource server application ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
-	ApplicationId *string                                                  `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	Filter        []*ListOrganizationalUnitsForResourceServerRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
-	// IDaaS EIAM实例的ID。
+	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The list of filter conditions.
+	Filter []*ListOrganizationalUnitsForResourceServerRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -41,17 +42,19 @@ type ListOrganizationalUnitsForResourceServerRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The maximum number of entries to return on each page.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 查询凭证（Token），取值为上一次API调用返回的NextToken参数值。
+	// The pagination token. To retrieve the next page of results, set this parameter to the NextToken value from the previous response.
 	//
 	// example:
 	//
 	// NTxxxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 权限唯一标识。
+	// The ID of the resource server scope.
 	//
 	// example:
 	//
@@ -135,10 +138,13 @@ func (s *ListOrganizationalUnitsForResourceServerRequest) Validate() error {
 }
 
 type ListOrganizationalUnitsForResourceServerRequestFilter struct {
+	// The filter key.
+	//
 	// example:
 	//
 	// OrganizationalUnitIds
-	Name  *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The list of filter values.
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 

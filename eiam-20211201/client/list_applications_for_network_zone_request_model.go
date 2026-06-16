@@ -22,7 +22,7 @@ type iListApplicationsForNetworkZoneRequest interface {
 }
 
 type ListApplicationsForNetworkZoneRequest struct {
-	// IDaaS EIAM实例的ID。
+	// The ID of the instance.
 	//
 	// This parameter is required.
 	//
@@ -30,13 +30,13 @@ type ListApplicationsForNetworkZoneRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 分页查询时每页行数。默认值为20，最大值为100。
+	// The number of entries to return on each page.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 应用关联的网络范围ID
+	// The ID of the network domain associated with the application.
 	//
 	// This parameter is required.
 	//
@@ -44,13 +44,13 @@ type ListApplicationsForNetworkZoneRequest struct {
 	//
 	// network_11111
 	NetworkZoneId *string `json:"NetworkZoneId,omitempty" xml:"NetworkZoneId,omitempty"`
-	// 查询凭证（Token），取值为上一次API调用返回的NextToken参数值。
+	// The token used for the next query.
 	//
 	// example:
 	//
 	// NTxxxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 查询上一页凭证（Token），取值为上一次API调用返回的previousToken参数值。
+	// The token used to query the previous page.
 	//
 	// example:
 	//

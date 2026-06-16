@@ -22,25 +22,32 @@ type iListUsersForResourceServerResponseBody interface {
 }
 
 type ListUsersForResourceServerResponseBody struct {
+	// The number of entries per page for paged queries.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 本次调用返回的查询凭证（Token）值，用于下一次翻页查询。
+	// The token for the next page.
 	//
 	// example:
 	//
 	// NTxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries in the list.
+	//
 	// example:
 	//
 	// 100
-	TotalCount *int64                                         `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	Users      []*ListUsersForResourceServerResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// A list of user accounts.
+	Users []*ListUsersForResourceServerResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
 }
 
 func (s ListUsersForResourceServerResponseBody) String() string {
@@ -110,15 +117,15 @@ func (s *ListUsersForResourceServerResponseBody) Validate() error {
 }
 
 type ListUsersForResourceServerResponseBodyUsers struct {
-	// 实例唯一标识
+	// The ID of the instance.
 	//
 	// example:
 	//
 	// idaas_qsw77zl5vrllwzyrrfwbmpxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 资源服务Scope权限集合
+	// A list of granted scope permissions.
 	ResourceServerScopes []*ListUsersForResourceServerResponseBodyUsersResourceServerScopes `json:"ResourceServerScopes,omitempty" xml:"ResourceServerScopes,omitempty" type:"Repeated"`
-	// 用户的唯一标识
+	// The ID of the user account.
 	//
 	// example:
 	//
@@ -175,13 +182,13 @@ func (s *ListUsersForResourceServerResponseBodyUsers) Validate() error {
 }
 
 type ListUsersForResourceServerResponseBodyUsersResourceServerScopes struct {
-	// ResourceServerScope唯一标识
+	// The ID of the scope permission.
 	//
 	// example:
 	//
 	// ress_nbte4bb3qqqnaq73rlmkqixxxx
 	ResourceServerScopeId *string `json:"ResourceServerScopeId,omitempty" xml:"ResourceServerScopeId,omitempty"`
-	// ResourceServerScope名称
+	// The name of the scope permission.
 	//
 	// example:
 	//

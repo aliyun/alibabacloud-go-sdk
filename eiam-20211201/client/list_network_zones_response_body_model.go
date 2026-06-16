@@ -22,21 +22,28 @@ type iListNetworkZonesResponseBody interface {
 }
 
 type ListNetworkZonesResponseBody struct {
+	// The list of network zones.
 	NetworkZones []*ListNetworkZonesResponseBodyNetworkZones `json:"NetworkZones,omitempty" xml:"NetworkZones,omitempty" type:"Repeated"`
-	// 本次调用返回的查询凭证（Token）值，用于下一次翻页查询。
+	// The token that is used to retrieve the next page of results.
 	//
 	// example:
 	//
 	// NTxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The token that is used to retrieve the previous page of results.
+	//
 	// example:
 	//
 	// PTxxxxxexample
 	PreviousToken *string `json:"PreviousToken,omitempty" xml:"PreviousToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 100
@@ -110,39 +117,41 @@ func (s *ListNetworkZonesResponseBody) Validate() error {
 }
 
 type ListNetworkZonesResponseBodyNetworkZones struct {
-	// IDaaS EIAM 网络区域描述
+	// The description of the network zone.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 实例ID。
+	// The instance ID.
 	//
 	// example:
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
-	InstanceId *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Ipv4Cidrs  []*string `json:"Ipv4Cidrs,omitempty" xml:"Ipv4Cidrs,omitempty" type:"Repeated"`
-	Ipv6Cidrs  []*string `json:"Ipv6Cidrs,omitempty" xml:"Ipv6Cidrs,omitempty" type:"Repeated"`
-	// IDaaS EIAM 网络区域Id
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The IPv4 CIDR blocks.
+	Ipv4Cidrs []*string `json:"Ipv4Cidrs,omitempty" xml:"Ipv4Cidrs,omitempty" type:"Repeated"`
+	// The IPv6 CIDR blocks.
+	Ipv6Cidrs []*string `json:"Ipv6Cidrs,omitempty" xml:"Ipv6Cidrs,omitempty" type:"Repeated"`
+	// The network zone ID.
 	//
 	// example:
 	//
 	// network_m223wbvc3sn3uakfnxvhbxxxxx
 	NetworkZoneId *string `json:"NetworkZoneId,omitempty" xml:"NetworkZoneId,omitempty"`
-	// IDaaS EIAM 网络区域名称
+	// The network zone name.
 	//
 	// example:
 	//
 	// test_name
 	NetworkZoneName *string `json:"NetworkZoneName,omitempty" xml:"NetworkZoneName,omitempty"`
-	// IDaaS EIAM 网络区域类型
+	// The type of the network zone.
 	//
 	// example:
 	//
 	// arn:alibaba:idaas:network:zone:classic
 	NetworkZoneType *string `json:"NetworkZoneType,omitempty" xml:"NetworkZoneType,omitempty"`
-	// IDaaS EIAM 专有网络VpcId
+	// The VPC ID.
 	//
 	// example:
 	//

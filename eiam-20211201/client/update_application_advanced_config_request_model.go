@@ -18,7 +18,7 @@ type iUpdateApplicationAdvancedConfigRequest interface {
 }
 
 type UpdateApplicationAdvancedConfigRequest struct {
-	// IDaaS的应用资源ID。
+	// The application ID.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type UpdateApplicationAdvancedConfigRequest struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type UpdateApplicationAdvancedConfigRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Scim Server 高阶配置
+	// The advanced configuration of the SCIM server.
 	ScimServerAdvancedConfig *UpdateApplicationAdvancedConfigRequestScimServerAdvancedConfig `json:"ScimServerAdvancedConfig,omitempty" xml:"ScimServerAdvancedConfig,omitempty" type:"Struct"`
 }
 
@@ -83,9 +83,9 @@ func (s *UpdateApplicationAdvancedConfigRequest) Validate() error {
 }
 
 type UpdateApplicationAdvancedConfigRequestScimServerAdvancedConfig struct {
-	// 支持的用户自定义字段ID列表。
+	// A list of IDs of supported custom user fields.
 	SupportedUserCustomFieldIds []*string `json:"SupportedUserCustomFieldIds,omitempty" xml:"SupportedUserCustomFieldIds,omitempty" type:"Repeated"`
-	// 用户扩展字段的命名空间。
+	// The namespace of the user extension fields.
 	//
 	// example:
 	//

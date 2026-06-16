@@ -14,7 +14,7 @@ type iRenewFreeLicenseEndTimeRequest interface {
 }
 
 type RenewFreeLicenseEndTimeRequest struct {
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

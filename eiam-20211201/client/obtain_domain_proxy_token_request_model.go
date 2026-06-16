@@ -18,7 +18,7 @@ type iObtainDomainProxyTokenRequest interface {
 }
 
 type ObtainDomainProxyTokenRequest struct {
-	// The ID of the domain name.
+	// The domain ID.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type ObtainDomainProxyTokenRequest struct {
 	//
 	// dm_examplexxxxx
 	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
-	// The ID of the proxy token of the domain name.
+	// The ID of the domain name proxy token.
 	//
 	// This parameter is required.
 	//

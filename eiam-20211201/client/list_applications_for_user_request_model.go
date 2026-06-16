@@ -24,13 +24,13 @@ type iListApplicationsForUserRequest interface {
 }
 
 type ListApplicationsForUserRequest struct {
-	// The IDs of the applications that the EIAM account can access. You can query a maximum of 100 application IDs at a time.
+	// The list of application IDs. You can specify up to 100 application IDs in a single request.
 	//
 	// example:
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationIds []*string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty" type:"Repeated"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type ListApplicationsForUserRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of the page to return.
+	// The page number.
 	//
 	// example:
 	//
@@ -52,15 +52,15 @@ type ListApplicationsForUserRequest struct {
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The query mode. Default value: **OnlyDirect**. Valid values:
 	//
-	// 	- OnlyDirect: Only the direct permissions are queried. Direct permissions are the permissions that are directly granted to the account.
+	// - OnlyDirect: Queries only the direct permissions of the account. Direct permissions are granted for applications that are directly assigned to the account.
 	//
-	// 	- IncludeInherit: Both the permissions that are directly granted to the account and the inherited permissions are queried. Inherited permissions are the permissions that an account inherits from the parent organization or the group to which the account belongs.
+	// - IncludeInherit: Queries both the direct and inherited permissions of the account. Inherited permissions are granted from the parent organizations or groups to which the account belongs.
 	//
 	// example:
 	//
 	// OnlyDirect
 	QueryMode *string `json:"QueryMode,omitempty" xml:"QueryMode,omitempty"`
-	// The ID of the EIAM account.
+	// The account ID.
 	//
 	// This parameter is required.
 	//

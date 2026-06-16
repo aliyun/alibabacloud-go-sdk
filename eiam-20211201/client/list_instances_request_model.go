@@ -9,6 +9,8 @@ type iListInstancesRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetCrossRegionReplication(v string) *ListInstancesRequest
+	GetCrossRegionReplication() *string
 	SetEdition(v string) *ListInstancesRequest
 	GetEdition() *string
 	SetInstanceIds(v []*string) *ListInstancesRequest
@@ -22,26 +24,45 @@ type iListInstancesRequest interface {
 }
 
 type ListInstancesRequest struct {
+	// example:
+	//
+	// disabled
+	CrossRegionReplication *string `json:"CrossRegionReplication,omitempty" xml:"CrossRegionReplication,omitempty"`
+	// The edition of the license. Valid values:
+	//
+	// - free: Free edition.
+	//
+	// - trial: Trial edition.
+	//
+	// - scalability: Scalability edition.
+	//
+	// - standard: Standard edition.
+	//
+	// - enterprise: Enterprise edition.
+	//
+	// example:
+	//
+	// free
 	Edition *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
-	// The list of instance IDs.
+	// Instance ID list.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The number of the page to return.
+	// Page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// Page size.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The status of the instance. Valid values:
+	// Instance status. Valid values:
 	//
-	// 	- creating
+	// - creating: Being created.
 	//
-	// 	- running
+	// - running: Running.
 	//
 	// example:
 	//
@@ -55,6 +76,10 @@ func (s ListInstancesRequest) String() string {
 
 func (s ListInstancesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListInstancesRequest) GetCrossRegionReplication() *string {
+	return s.CrossRegionReplication
 }
 
 func (s *ListInstancesRequest) GetEdition() *string {
@@ -75,6 +100,11 @@ func (s *ListInstancesRequest) GetPageSize() *int64 {
 
 func (s *ListInstancesRequest) GetStatus() *string {
 	return s.Status
+}
+
+func (s *ListInstancesRequest) SetCrossRegionReplication(v string) *ListInstancesRequest {
+	s.CrossRegionReplication = &v
+	return s
 }
 
 func (s *ListInstancesRequest) SetEdition(v string) *ListInstancesRequest {

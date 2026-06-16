@@ -24,13 +24,13 @@ type iListApplicationFederatedCredentialsRequest interface {
 }
 
 type ListApplicationFederatedCredentialsRequest struct {
-	// 应用联邦凭证提供者类型
+	// The type of the application federated credential.
 	//
 	// example:
 	//
 	// oidc
 	ApplicationFederatedCredentialType *string `json:"ApplicationFederatedCredentialType,omitempty" xml:"ApplicationFederatedCredentialType,omitempty"`
-	// 应用ID
+	// The application ID.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type ListApplicationFederatedCredentialsRequest struct {
 	//
 	// app_xxxasda1
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -46,19 +46,19 @@ type ListApplicationFederatedCredentialsRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 分页查询时每页行数。默认值为20，最大值为100。
+	// The number of entries to return on each page.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 查询凭证（Token），取值为上一次API调用返回的NextToken参数值。
+	// The query token.
 	//
 	// example:
 	//
 	// NTxxxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 查询上一页凭证（Token），取值为上一次API调用返回的previousToken参数值。
+	// The token to retrieve the previous page of results.
 	//
 	// example:
 	//

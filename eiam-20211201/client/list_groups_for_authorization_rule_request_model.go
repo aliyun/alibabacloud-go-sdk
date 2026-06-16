@@ -22,7 +22,7 @@ type iListGroupsForAuthorizationRuleRequest interface {
 }
 
 type ListGroupsForAuthorizationRuleRequest struct {
-	// 授权规则标识。
+	// The authorization rule ID.
 	//
 	// This parameter is required.
 	//
@@ -30,9 +30,9 @@ type ListGroupsForAuthorizationRuleRequest struct {
 	//
 	// arrule_01kf143ug06fg7m9f43u7vahxxxx
 	AuthorizationRuleId *string `json:"AuthorizationRuleId,omitempty" xml:"AuthorizationRuleId,omitempty"`
-	// 过滤条件
+	// The filter conditions.
 	Filter []*ListGroupsForAuthorizationRuleRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -40,13 +40,19 @@ type ListGroupsForAuthorizationRuleRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 分页查询时每页行数。默认值为20，最大值为100。
+	// The maximum number of entries to return on each page.
+	//
+	// - Default value: 20.
+	//
+	// - The value cannot exceed 100.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 查询凭证（Token），取值为上一次API调用返回的NextToken参数值。
+	// The token that is used to start the next paged query.
+	//
+	// - If you do not specify this parameter, the query starts from the first page.
 	//
 	// example:
 	//
@@ -121,13 +127,15 @@ func (s *ListGroupsForAuthorizationRuleRequest) Validate() error {
 }
 
 type ListGroupsForAuthorizationRuleRequestFilter struct {
-	// 过滤条件名称。
+	// The name of the filter field. Valid values:
+	//
+	// - GroupId: The group ID.
 	//
 	// example:
 	//
 	// GroupId
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 过滤条件值。
+	// The values of the filter field.
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 

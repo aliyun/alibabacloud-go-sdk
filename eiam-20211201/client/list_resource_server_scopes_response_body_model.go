@@ -24,25 +24,34 @@ type iListResourceServerScopesResponseBody interface {
 }
 
 type ListResourceServerScopesResponseBody struct {
+	// Number of rows per page in paginated queries.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 本次调用返回的查询凭证（Token）值，用于下一次翻页查询。
+	// Token for the next page query.
 	//
 	// example:
 	//
 	// NTxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Token for the previous page query.
+	//
 	// example:
 	//
 	// PTxxxexample
 	PreviousToken *string `json:"PreviousToken,omitempty" xml:"PreviousToken,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
-	RequestId            *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// List of Scope permissions under the ResourceServer.
 	ResourceServerScopes []*ListResourceServerScopesResponseBodyResourceServerScopes `json:"ResourceServerScopes,omitempty" xml:"ResourceServerScopes,omitempty" type:"Repeated"`
+	// Total number of items in the list.
+	//
 	// example:
 	//
 	// 100
@@ -125,41 +134,43 @@ func (s *ListResourceServerScopesResponseBody) Validate() error {
 }
 
 type ListResourceServerScopesResponseBodyResourceServerScopes struct {
-	// IDaaS EIAM 应用Id
+	// Application ID.
 	//
 	// example:
 	//
 	// app_xxxxxxxxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// Authorization type.
+	//
 	// example:
 	//
 	// authorize_required
 	AuthorizationType *string `json:"AuthorizationType,omitempty" xml:"AuthorizationType,omitempty"`
-	// IDaaS EIAM 实例Id
+	// Instance ID.
 	//
 	// example:
 	//
 	// idaas_xxxxxxxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// IDaaS EIAM ResourceServer下权限Id
+	// Scope permission ID.
 	//
 	// example:
 	//
 	// rss_xxxxxxxxxxx
 	ResourceServerScopeId *string `json:"ResourceServerScopeId,omitempty" xml:"ResourceServerScopeId,omitempty"`
-	// IDaaS EIAM ResourceServer下权限名称
+	// Scope permission name.
 	//
 	// example:
 	//
 	// 读取全部用户
 	ResourceServerScopeName *string `json:"ResourceServerScopeName,omitempty" xml:"ResourceServerScopeName,omitempty"`
-	// IDaaS EIAM ResourceServer下权限类型
+	// Scope permission type.
 	//
 	// example:
 	//
 	// urn:alibaba:idaas:resourceserver:scope:delegated
 	ResourceServerScopeType *string `json:"ResourceServerScopeType,omitempty" xml:"ResourceServerScopeType,omitempty"`
-	// IDaaS EIAM ResourceServer下权限值
+	// Scope permission value.
 	//
 	// example:
 	//

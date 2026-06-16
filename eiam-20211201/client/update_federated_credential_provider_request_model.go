@@ -26,7 +26,7 @@ type iUpdateFederatedCredentialProviderRequest interface {
 }
 
 type UpdateFederatedCredentialProviderRequest struct {
-	// 联邦凭证提供方ID
+	// The ID of the federated credential provider.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type UpdateFederatedCredentialProviderRequest struct {
 	//
 	// fcp_mkv7rgt4d7i4u7zqtzev2mxxxx
 	FederatedCredentialProviderId *string `json:"FederatedCredentialProviderId,omitempty" xml:"FederatedCredentialProviderId,omitempty"`
-	// 联邦凭证提供方名称
+	// The name of the federated credential provider.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type UpdateFederatedCredentialProviderRequest struct {
 	//
 	// test
 	FederatedCredentialProviderName *string `json:"FederatedCredentialProviderName,omitempty" xml:"FederatedCredentialProviderName,omitempty"`
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -50,17 +50,17 @@ type UpdateFederatedCredentialProviderRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 网络端点ID
+	// The ID of the network access endpoint.
 	//
 	// example:
 	//
 	// nae_public
 	NetworkAccessEndpointId *string `json:"NetworkAccessEndpointId,omitempty" xml:"NetworkAccessEndpointId,omitempty"`
-	// OIDC配置
+	// The OpenID Connect (OIDC) configuration.
 	OidcProviderConfig *UpdateFederatedCredentialProviderRequestOidcProviderConfig `json:"OidcProviderConfig,omitempty" xml:"OidcProviderConfig,omitempty" type:"Struct"`
-	// PKCS7配置
+	// The PKCS7 configuration.
 	Pkcs7ProviderConfig *UpdateFederatedCredentialProviderRequestPkcs7ProviderConfig `json:"Pkcs7ProviderConfig,omitempty" xml:"Pkcs7ProviderConfig,omitempty" type:"Struct"`
-	// 私有CA配置
+	// The configuration of the private certificate authority (CA).
 	PrivateCaProviderConfig *UpdateFederatedCredentialProviderRequestPrivateCaProviderConfig `json:"PrivateCaProviderConfig,omitempty" xml:"PrivateCaProviderConfig,omitempty" type:"Struct"`
 }
 
@@ -155,8 +155,9 @@ func (s *UpdateFederatedCredentialProviderRequest) Validate() error {
 }
 
 type UpdateFederatedCredentialProviderRequestOidcProviderConfig struct {
+	// The list of audiences.
 	Audiences []*string `json:"Audiences,omitempty" xml:"Audiences,omitempty" type:"Repeated"`
-	// Jwks来源
+	// The source of the JSON Web Key Set (JWKS).
 	//
 	// This parameter is required.
 	//
@@ -164,13 +165,13 @@ type UpdateFederatedCredentialProviderRequestOidcProviderConfig struct {
 	//
 	// static
 	JwksSource *string `json:"JwksSource,omitempty" xml:"JwksSource,omitempty"`
-	// JWKS 端点
+	// JWKS endpoint
 	//
 	// example:
 	//
 	// https://example.com/jwks
 	JwksUri *string `json:"JwksUri,omitempty" xml:"JwksUri,omitempty"`
-	// 静态获取的jwks
+	// The statically obtained JWKS.
 	//
 	// example:
 	//
@@ -196,7 +197,7 @@ type UpdateFederatedCredentialProviderRequestOidcProviderConfig struct {
 	//
 	// }
 	StaticJwks *string `json:"StaticJwks,omitempty" xml:"StaticJwks,omitempty"`
-	// 信任条件
+	// The trust condition.
 	//
 	// example:
 	//
@@ -262,25 +263,27 @@ func (s *UpdateFederatedCredentialProviderRequestOidcProviderConfig) Validate() 
 }
 
 type UpdateFederatedCredentialProviderRequestPkcs7ProviderConfig struct {
-	// pkcs7证书列表
+	// The list of PKCS7 certificates.
 	Certificates []*UpdateFederatedCredentialProviderRequestPkcs7ProviderConfigCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
-	// CMS验证模式
+	// The Cryptographic Message Syntax (CMS) verification mode.
 	//
 	// example:
 	//
 	// cert
 	CmsVerificationMode *string `json:"CmsVerificationMode,omitempty" xml:"CmsVerificationMode,omitempty"`
-	// 签名有效期, 单位秒，1200
+	// The validity period of the signature.
 	//
 	// example:
 	//
 	// 1200
 	SignatureEffectiveTime *int64 `json:"SignatureEffectiveTime,omitempty" xml:"SignatureEffectiveTime,omitempty"`
+	// The expression to obtain the signing time.
+	//
 	// example:
 	//
 	// pkcs7.signingTime
 	SigningTimeValueExpression *string `json:"SigningTimeValueExpression,omitempty" xml:"SigningTimeValueExpression,omitempty"`
-	// 证书信任锚点来源
+	// The source of the certificate trust anchor.
 	//
 	// This parameter is required.
 	//
@@ -288,7 +291,7 @@ type UpdateFederatedCredentialProviderRequestPkcs7ProviderConfig struct {
 	//
 	// custom
 	TrustAnchorSource *string `json:"TrustAnchorSource,omitempty" xml:"TrustAnchorSource,omitempty"`
-	// 信任条件
+	// The trust condition.
 	//
 	// example:
 	//
@@ -372,7 +375,7 @@ func (s *UpdateFederatedCredentialProviderRequestPkcs7ProviderConfig) Validate()
 }
 
 type UpdateFederatedCredentialProviderRequestPkcs7ProviderConfigCertificates struct {
-	// Root证书内容
+	// The content of the root certificate.
 	//
 	// example:
 	//
@@ -406,9 +409,9 @@ func (s *UpdateFederatedCredentialProviderRequestPkcs7ProviderConfigCertificates
 }
 
 type UpdateFederatedCredentialProviderRequestPrivateCaProviderConfig struct {
-	// Root证书列表
+	// The list of root certificates.
 	Certificates []*UpdateFederatedCredentialProviderRequestPrivateCaProviderConfigCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
-	// Root证书获取方式
+	// The method to obtain the root certificate.
 	//
 	// This parameter is required.
 	//
@@ -416,7 +419,7 @@ type UpdateFederatedCredentialProviderRequestPrivateCaProviderConfig struct {
 	//
 	// custom
 	TrustAnchorSource *string `json:"TrustAnchorSource,omitempty" xml:"TrustAnchorSource,omitempty"`
-	// Root证书的信任条件
+	// The trust condition for the root certificate.
 	//
 	// example:
 	//
@@ -473,7 +476,7 @@ func (s *UpdateFederatedCredentialProviderRequestPrivateCaProviderConfig) Valida
 }
 
 type UpdateFederatedCredentialProviderRequestPrivateCaProviderConfigCertificates struct {
-	// Root证书内容
+	// The content of the root certificate.
 	//
 	// example:
 	//

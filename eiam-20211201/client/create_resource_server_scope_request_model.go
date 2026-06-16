@@ -24,7 +24,7 @@ type iCreateResourceServerScopeRequest interface {
 }
 
 type CreateResourceServerScopeRequest struct {
-	// IDaaS的应用资源ID。
+	// The application ID.
 	//
 	// This parameter is required.
 	//
@@ -32,11 +32,13 @@ type CreateResourceServerScopeRequest struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The authorization type. This parameter is required for user permissions.
+	//
 	// example:
 	//
 	// authorize_required
 	AuthorizationType *string `json:"AuthorizationType,omitempty" xml:"AuthorizationType,omitempty"`
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -44,15 +46,15 @@ type CreateResourceServerScopeRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 权限名称
+	// The name of the scope permission.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 读取全部用户
+	// Read User Info
 	ResourceServerScopeName *string `json:"ResourceServerScopeName,omitempty" xml:"ResourceServerScopeName,omitempty"`
-	// 权限类型
+	// The type of the scope permission.
 	//
 	// This parameter is required.
 	//
@@ -60,7 +62,7 @@ type CreateResourceServerScopeRequest struct {
 	//
 	// urn:alibaba:idaas:resourceserver:scope:delegated
 	ResourceServerScopeType *string `json:"ResourceServerScopeType,omitempty" xml:"ResourceServerScopeType,omitempty"`
-	// 权限值，大小写不敏感，格式(${ResourceType}:${ResourceOption}:${ResourceRestrict})
+	// The value of the scope permission.
 	//
 	// This parameter is required.
 	//

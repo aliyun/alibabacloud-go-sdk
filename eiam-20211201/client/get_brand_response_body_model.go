@@ -16,7 +16,10 @@ type iGetBrandResponseBody interface {
 }
 
 type GetBrandResponseBody struct {
+	// The brand.
 	Brand *GetBrandResponseBodyBrand `json:"Brand,omitempty" xml:"Brand,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
@@ -59,31 +62,31 @@ func (s *GetBrandResponseBody) Validate() error {
 }
 
 type GetBrandResponseBodyBrand struct {
-	// 品牌ID
+	// The brand ID.
 	//
 	// example:
 	//
 	// brand_xxxx
 	BrandId *string `json:"BrandId,omitempty" xml:"BrandId,omitempty"`
-	// 品牌名称
+	// The brand name.
 	//
 	// example:
 	//
 	// Custom Brand
 	BrandName *string `json:"BrandName,omitempty" xml:"BrandName,omitempty"`
-	// 品牌类型
+	// The brand type.
 	//
 	// example:
 	//
 	// user_custom
 	BrandType *string `json:"BrandType,omitempty" xml:"BrandType,omitempty"`
-	// 实例ID。
+	// The instance ID.
 	//
 	// example:
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 品牌状态
+	// The brand status.
 	//
 	// example:
 	//

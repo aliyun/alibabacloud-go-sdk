@@ -18,7 +18,7 @@ type iListGroupsForApplicationResponseBody interface {
 }
 
 type ListGroupsForApplicationResponseBody struct {
-	// The group IDs.
+	// The list of groups.
 	Groups []*ListGroupsForApplicationResponseBodyGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -26,7 +26,7 @@ type ListGroupsForApplicationResponseBody struct {
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -83,7 +83,7 @@ func (s *ListGroupsForApplicationResponseBody) Validate() error {
 }
 
 type ListGroupsForApplicationResponseBodyGroups struct {
-	// 应用角色列表。
+	// The list of application roles. This parameter is not returned for SAML applications.
 	ApplicationRoles []*ListGroupsForApplicationResponseBodyGroupsApplicationRoles `json:"ApplicationRoles,omitempty" xml:"ApplicationRoles,omitempty" type:"Repeated"`
 	// The group ID.
 	//
@@ -133,7 +133,7 @@ func (s *ListGroupsForApplicationResponseBodyGroups) Validate() error {
 }
 
 type ListGroupsForApplicationResponseBodyGroupsApplicationRoles struct {
-	// 应用角色标识。
+	// The ID of the application role.
 	//
 	// example:
 	//

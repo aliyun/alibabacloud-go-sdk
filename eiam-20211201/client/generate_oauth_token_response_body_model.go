@@ -16,10 +16,13 @@ type iGenerateOauthTokenResponseBody interface {
 }
 
 type GenerateOauthTokenResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4XXXXXXX
-	RequestId     *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The token response.
 	TokenResponse *GenerateOauthTokenResponseBodyTokenResponse `json:"TokenResponse,omitempty" xml:"TokenResponse,omitempty" type:"Struct"`
 }
 
@@ -59,20 +62,26 @@ func (s *GenerateOauthTokenResponseBody) Validate() error {
 }
 
 type GenerateOauthTokenResponseBodyTokenResponse struct {
-	// Access Token。
+	// The access token.
 	//
 	// example:
 	//
 	// ***
 	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
+	// The expiration time, in Unix timestamp format (seconds since epoch).
+	//
 	// example:
 	//
 	// 1770186372
 	ExpiresAt *int64 `json:"ExpiresAt,omitempty" xml:"ExpiresAt,omitempty"`
+	// The validity period, in seconds.
+	//
 	// example:
 	//
 	// 1200
 	ExpiresIn *int64 `json:"ExpiresIn,omitempty" xml:"ExpiresIn,omitempty"`
+	// The token type. Only Bearer is supported.
+	//
 	// example:
 	//
 	// Bearer

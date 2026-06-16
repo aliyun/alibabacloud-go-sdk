@@ -22,23 +22,28 @@ type iListAuthorizationRulesForUserResponseBody interface {
 }
 
 type ListAuthorizationRulesForUserResponseBody struct {
+	// The list of authorization rules.
 	AuthorizationRules []*ListAuthorizationRulesForUserResponseBodyAuthorizationRules `json:"AuthorizationRules,omitempty" xml:"AuthorizationRules,omitempty" type:"Repeated"`
-	// 分页查询时每页行数。
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 本次调用返回的查询凭证（Token）值，用于下一次翻页查询。
+	// The token that is returned in this call and is used to retrieve the next page of results.
 	//
 	// example:
 	//
 	// NTxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 100
@@ -112,21 +117,25 @@ func (s *ListAuthorizationRulesForUserResponseBody) Validate() error {
 }
 
 type ListAuthorizationRulesForUserResponseBodyAuthorizationRules struct {
-	// 授权规则标识。
+	// The authorization rule ID.
 	//
 	// example:
 	//
 	// arrule_01kf143ug06fg7m9f43u7vahxxxx
 	AuthorizationRuleId *string `json:"AuthorizationRuleId,omitempty" xml:"AuthorizationRuleId,omitempty"`
-	// 实例ID。
+	// The instance ID.
 	//
 	// example:
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 有效周期。
+	// The time range of the validity period. This parameter takes effect only when **ValidityType*	- is set to **time_bound**.
 	ValidityPeriod *ListAuthorizationRulesForUserResponseBodyAuthorizationRulesValidityPeriod `json:"ValidityPeriod,omitempty" xml:"ValidityPeriod,omitempty" type:"Struct"`
-	// 有效期类型，枚举值：permanent（永久），time_bound（自定义时间范围）。
+	// The type of the validity period of the relationship. Valid values:
+	//
+	// - permanent: The relationship is permanent.
+	//
+	// - time_bound: The relationship is valid for a custom time range.
 	//
 	// example:
 	//
@@ -188,13 +197,13 @@ func (s *ListAuthorizationRulesForUserResponseBodyAuthorizationRules) Validate()
 }
 
 type ListAuthorizationRulesForUserResponseBodyAuthorizationRulesValidityPeriod struct {
-	// 授权生效结束时间。
+	// The end time of the validity period. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1704042061000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// 授权生效开始时间。
+	// The start time of the validity period. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//

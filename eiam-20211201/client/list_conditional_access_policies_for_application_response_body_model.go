@@ -16,7 +16,10 @@ type iListConditionalAccessPoliciesForApplicationResponseBody interface {
 }
 
 type ListConditionalAccessPoliciesForApplicationResponseBody struct {
+	// A collection of conditional access policies.
 	ConditionalAccessPolicies []*ListConditionalAccessPoliciesForApplicationResponseBodyConditionalAccessPolicies `json:"ConditionalAccessPolicies,omitempty" xml:"ConditionalAccessPolicies,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
@@ -63,63 +66,71 @@ func (s *ListConditionalAccessPoliciesForApplicationResponseBody) Validate() err
 }
 
 type ListConditionalAccessPoliciesForApplicationResponseBodyConditionalAccessPolicies struct {
-	// IDaaS EIAM 条件访问策略Id
+	// The conditional access policy ID.
 	//
 	// example:
 	//
 	// cap_m5etun43kejxphsbke6mjxxxxx
 	ConditionalAccessPolicyId *string `json:"ConditionalAccessPolicyId,omitempty" xml:"ConditionalAccessPolicyId,omitempty"`
-	// IDaaS EIAM 条件访问策略名称
+	// The name of the conditional access policy.
+	//
+	// example:
+	//
+	// myPolicy
 	ConditionalAccessPolicyName *string `json:"ConditionalAccessPolicyName,omitempty" xml:"ConditionalAccessPolicyName,omitempty"`
-	// IDaaS EIAM 条件访问策略类型
+	// The type of the conditional access policy.
 	//
 	// example:
 	//
 	// arn:alibaba:idaas:authn:access:policy:system
 	ConditionalAccessPolicyType *string `json:"ConditionalAccessPolicyType,omitempty" xml:"ConditionalAccessPolicyType,omitempty"`
-	// IDaaS EIAM 条件访问策略内容
+	// The content of the conditional access policy.
 	ConditionsConfig *ListConditionalAccessPoliciesForApplicationResponseBodyConditionalAccessPoliciesConditionsConfig `json:"ConditionsConfig,omitempty" xml:"ConditionsConfig,omitempty" type:"Struct"`
-	// 创建时间
+	// The creation time.
 	//
 	// example:
 	//
 	// 1741857554000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// IDaaS EIAM 条件访问策略执行Action
+	// The execution configuration of the conditional access policy.
 	DecisionConfig *ListConditionalAccessPoliciesForApplicationResponseBodyConditionalAccessPoliciesDecisionConfig `json:"DecisionConfig,omitempty" xml:"DecisionConfig,omitempty" type:"Struct"`
-	// IDaaS EIAM 条件访问策略执行类型
+	// The execution type of the conditional access policy.
 	//
 	// example:
 	//
 	// enforcement
 	DecisionType *string `json:"DecisionType,omitempty" xml:"DecisionType,omitempty"`
-	// IDaaS EIAM 条件访问策略描述
+	// The description of the conditional access policy.
+	//
+	// example:
+	//
+	// policyTest
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// IDaaS EIAM 条件访问策略执行点
+	// The policy enforcement point.
 	//
 	// example:
 	//
 	// arn:alibaba:idaas:authn:access:rule:eval_at:after_step1
 	EvaluateAt *string `json:"EvaluateAt,omitempty" xml:"EvaluateAt,omitempty"`
-	// IDaaS EIAM 实例Id
+	// The instance ID.
 	//
 	// example:
 	//
 	// idaas_oynbcyaaejuik6b37eldzxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 更新时间
+	// The update time.
 	//
 	// example:
 	//
 	// 1741857554000
 	LastUpdatedTime *int64 `json:"LastUpdatedTime,omitempty" xml:"LastUpdatedTime,omitempty"`
-	// 优先级
+	// The priority.
 	//
 	// example:
 	//
 	// 100
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// IDaaS EIAM 条件访问策略启用禁用状态
+	// The status of the conditional access policy.
 	//
 	// example:
 	//
@@ -267,11 +278,11 @@ func (s *ListConditionalAccessPoliciesForApplicationResponseBodyConditionalAcces
 }
 
 type ListConditionalAccessPoliciesForApplicationResponseBodyConditionalAccessPoliciesConditionsConfig struct {
-	// 条件访问策略目标应用
+	// The target applications of the conditional access policy.
 	Applications *ListConditionalAccessPoliciesForApplicationResponseBodyConditionalAccessPoliciesConditionsConfigApplications `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Struct"`
-	// 条件访问策略网络区域
+	// The network zones of the conditional access policy.
 	NetworkZones *ListConditionalAccessPoliciesForApplicationResponseBodyConditionalAccessPoliciesConditionsConfigNetworkZones `json:"NetworkZones,omitempty" xml:"NetworkZones,omitempty" type:"Struct"`
-	// 条件访问策略目标用户
+	// The target users of the conditional access policy.
 	Users *ListConditionalAccessPoliciesForApplicationResponseBodyConditionalAccessPoliciesConditionsConfigUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Struct"`
 }
 
@@ -330,9 +341,9 @@ func (s *ListConditionalAccessPoliciesForApplicationResponseBodyConditionalAcces
 }
 
 type ListConditionalAccessPoliciesForApplicationResponseBodyConditionalAccessPoliciesConditionsConfigApplications struct {
-	// 排除的应用
+	// The excluded applications.
 	ExcludeApplications []*string `json:"ExcludeApplications,omitempty" xml:"ExcludeApplications,omitempty" type:"Repeated"`
-	// 选择的应用
+	// The selected applications.
 	IncludeApplications []*string `json:"IncludeApplications,omitempty" xml:"IncludeApplications,omitempty" type:"Repeated"`
 }
 
@@ -367,9 +378,9 @@ func (s *ListConditionalAccessPoliciesForApplicationResponseBodyConditionalAcces
 }
 
 type ListConditionalAccessPoliciesForApplicationResponseBodyConditionalAccessPoliciesConditionsConfigNetworkZones struct {
-	// 排除的网络区域
+	// The excluded network zones.
 	ExcludeNetworkZones []*string `json:"ExcludeNetworkZones,omitempty" xml:"ExcludeNetworkZones,omitempty" type:"Repeated"`
-	// 选择的网络区域
+	// The selected network zones.
 	IncludeNetworkZones []*string `json:"IncludeNetworkZones,omitempty" xml:"IncludeNetworkZones,omitempty" type:"Repeated"`
 }
 
@@ -404,17 +415,17 @@ func (s *ListConditionalAccessPoliciesForApplicationResponseBodyConditionalAcces
 }
 
 type ListConditionalAccessPoliciesForApplicationResponseBodyConditionalAccessPoliciesConditionsConfigUsers struct {
-	// 排除的用户组
+	// The excluded user groups.
 	ExcludeGroups []*string `json:"ExcludeGroups,omitempty" xml:"ExcludeGroups,omitempty" type:"Repeated"`
-	// 排除的组织
+	// The excluded organizations.
 	ExcludeOrganizationalUnits []*string `json:"ExcludeOrganizationalUnits,omitempty" xml:"ExcludeOrganizationalUnits,omitempty" type:"Repeated"`
-	// 排除的用户
+	// The excluded users.
 	ExcludeUsers []*string `json:"ExcludeUsers,omitempty" xml:"ExcludeUsers,omitempty" type:"Repeated"`
-	// 选择的用户组
+	// The selected user groups.
 	IncludeGroups []*string `json:"IncludeGroups,omitempty" xml:"IncludeGroups,omitempty" type:"Repeated"`
-	// 选择的组织
+	// The selected organizations.
 	IncludeOrganizationalUnits []*string `json:"IncludeOrganizationalUnits,omitempty" xml:"IncludeOrganizationalUnits,omitempty" type:"Repeated"`
-	// 选择的用户
+	// The selected users.
 	IncludeUsers []*string `json:"IncludeUsers,omitempty" xml:"IncludeUsers,omitempty" type:"Repeated"`
 }
 
@@ -485,25 +496,27 @@ func (s *ListConditionalAccessPoliciesForApplicationResponseBodyConditionalAcces
 }
 
 type ListConditionalAccessPoliciesForApplicationResponseBodyConditionalAccessPoliciesDecisionConfig struct {
+	// Indicates whether session reuse is enabled.
+	//
 	// example:
 	//
 	// disabled
 	ActiveSessionReuseStatus *string `json:"ActiveSessionReuseStatus,omitempty" xml:"ActiveSessionReuseStatus,omitempty"`
-	// IDaaS EIAM 条件访问策略决策Action
+	// The effect of the policy.
 	//
 	// example:
 	//
 	// allow
 	Effect *string `json:"Effect,omitempty" xml:"Effect,omitempty"`
-	// IDaaS EIAM 条件访问策略重复认证时间间隔(秒)
+	// The re-authentication interval of the conditional access policy, in seconds.
 	//
 	// example:
 	//
 	// 300
 	MfaAuthenticationIntervalSeconds *int64 `json:"MfaAuthenticationIntervalSeconds,omitempty" xml:"MfaAuthenticationIntervalSeconds,omitempty"`
-	// IDaaS EIAM 条件访问策略允许使用的mfa类型
+	// The collection of MFA methods allowed by the conditional access policy.
 	MfaAuthenticationMethods []*string `json:"MfaAuthenticationMethods,omitempty" xml:"MfaAuthenticationMethods,omitempty" type:"Repeated"`
-	// IDaaS EIAM 条件访问策略Mfa类型
+	// The multi-factor authentication (MFA) type of the conditional access policy.
 	//
 	// example:
 	//

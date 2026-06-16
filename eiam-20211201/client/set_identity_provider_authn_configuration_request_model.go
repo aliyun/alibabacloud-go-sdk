@@ -24,12 +24,13 @@ type iSetIdentityProviderAuthnConfigurationRequest interface {
 }
 
 type SetIdentityProviderAuthnConfigurationRequest struct {
-	// 自动创建账户账户规则配置。
+	// Automatic Account Creation Rule Configuration.
 	AutoCreateUserConfig *SetIdentityProviderAuthnConfigurationRequestAutoCreateUserConfig `json:"AutoCreateUserConfig,omitempty" xml:"AutoCreateUserConfig,omitempty" type:"Struct"`
+	// Automatic Account Update Configuration
 	AutoUpdateUserConfig *SetIdentityProviderAuthnConfigurationRequestAutoUpdateUserConfig `json:"AutoUpdateUserConfig,omitempty" xml:"AutoUpdateUserConfig,omitempty" type:"Struct"`
-	// 账户绑定规则配置
+	// Account Binding Rule Configuration
 	BindingConfig *SetIdentityProviderAuthnConfigurationRequestBindingConfig `json:"BindingConfig,omitempty" xml:"BindingConfig,omitempty" type:"Struct"`
-	// IDaaS的身份提供方主键id
+	// Identity Provider ID
 	//
 	// This parameter is required.
 	//
@@ -37,7 +38,7 @@ type SetIdentityProviderAuthnConfigurationRequest struct {
 	//
 	// idp_11111
 	IdentityProviderId *string `json:"IdentityProviderId,omitempty" xml:"IdentityProviderId,omitempty"`
-	// IDaaS EIAM实例的ID。
+	// Instance ID
 	//
 	// This parameter is required.
 	//
@@ -45,7 +46,7 @@ type SetIdentityProviderAuthnConfigurationRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// AD/LDAP配置
+	// AD/LDAP Authentication Configuration
 	LdapAuthnConfig *SetIdentityProviderAuthnConfigurationRequestLdapAuthnConfig `json:"LdapAuthnConfig,omitempty" xml:"LdapAuthnConfig,omitempty" type:"Struct"`
 }
 
@@ -136,12 +137,13 @@ func (s *SetIdentityProviderAuthnConfigurationRequest) Validate() error {
 }
 
 type SetIdentityProviderAuthnConfigurationRequestAutoCreateUserConfig struct {
-	// 自动创建账户是否开启
+	// Automatic account creation status.
 	//
 	// example:
 	//
 	// disabled
-	AutoCreateUserStatus        *string   `json:"AutoCreateUserStatus,omitempty" xml:"AutoCreateUserStatus,omitempty"`
+	AutoCreateUserStatus *string `json:"AutoCreateUserStatus,omitempty" xml:"AutoCreateUserStatus,omitempty"`
+	// Organization ID
 	TargetOrganizationalUnitIds []*string `json:"TargetOrganizationalUnitIds,omitempty" xml:"TargetOrganizationalUnitIds,omitempty" type:"Repeated"`
 }
 
@@ -176,6 +178,8 @@ func (s *SetIdentityProviderAuthnConfigurationRequestAutoCreateUserConfig) Valid
 }
 
 type SetIdentityProviderAuthnConfigurationRequestAutoUpdateUserConfig struct {
+	// Specifies whether to enable automatic account updates.
+	//
 	// example:
 	//
 	// disabled
@@ -204,15 +208,15 @@ func (s *SetIdentityProviderAuthnConfigurationRequestAutoUpdateUserConfig) Valid
 }
 
 type SetIdentityProviderAuthnConfigurationRequestBindingConfig struct {
-	// 自动匹配账户的规则
+	// Rules for automatic account matching.
 	AutoMatchUserProfileExpressions []*SetIdentityProviderAuthnConfigurationRequestBindingConfigAutoMatchUserProfileExpressions `json:"AutoMatchUserProfileExpressions,omitempty" xml:"AutoMatchUserProfileExpressions,omitempty" type:"Repeated"`
-	// 自动匹配账户是否开启
+	// Automatic account matching status.
 	//
 	// example:
 	//
 	// disabled
 	AutoMatchUserStatus *string `json:"AutoMatchUserStatus,omitempty" xml:"AutoMatchUserStatus,omitempty"`
-	// 用户手动绑定账户功能是否开启
+	// Specifies whether the manual account binding feature is enabled.
 	//
 	// example:
 	//
@@ -269,15 +273,15 @@ func (s *SetIdentityProviderAuthnConfigurationRequestBindingConfig) Validate() e
 }
 
 type SetIdentityProviderAuthnConfigurationRequestBindingConfigAutoMatchUserProfileExpressions struct {
-	// 表达式的类型
+	// Type of expression.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// filed
+	// field
 	ExpressionMappingType *string `json:"ExpressionMappingType,omitempty" xml:"ExpressionMappingType,omitempty"`
-	// 映射属性取值表达式
+	// Expression for mapping attribute value.
 	//
 	// This parameter is required.
 	//
@@ -285,7 +289,7 @@ type SetIdentityProviderAuthnConfigurationRequestBindingConfigAutoMatchUserProfi
 	//
 	// idpUser.userId
 	SourceValueExpression *string `json:"SourceValueExpression,omitempty" xml:"SourceValueExpression,omitempty"`
-	// 映射目标属性名称
+	// Target attribute name for mapping.
 	//
 	// This parameter is required.
 	//
@@ -293,7 +297,7 @@ type SetIdentityProviderAuthnConfigurationRequestBindingConfigAutoMatchUserProfi
 	//
 	// user.username
 	TargetField *string `json:"TargetField,omitempty" xml:"TargetField,omitempty"`
-	// 映射目标属性名称
+	// Target attribute name for mapping.
 	//
 	// example:
 	//
@@ -350,19 +354,19 @@ func (s *SetIdentityProviderAuthnConfigurationRequestBindingConfigAutoMatchUserP
 }
 
 type SetIdentityProviderAuthnConfigurationRequestLdapAuthnConfig struct {
-	// 是否支持自动更新密码
+	// Specifies whether to automatically update passwords.
 	//
 	// example:
 	//
 	// enabled
 	AutoUpdatePasswordStatus *string `json:"AutoUpdatePasswordStatus,omitempty" xml:"AutoUpdatePasswordStatus,omitempty"`
-	// 用户登录标识
+	// User Login Identifier
 	//
 	// example:
 	//
 	// email
 	UserLoginIdentifier *string `json:"UserLoginIdentifier,omitempty" xml:"UserLoginIdentifier,omitempty"`
-	// 用户ObjectClass
+	// User ObjectClass
 	//
 	// example:
 	//

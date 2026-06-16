@@ -16,7 +16,7 @@ type iGetApplicationProvisioningConfigResponseBody interface {
 }
 
 type GetApplicationProvisioningConfigResponseBody struct {
-	// The configuration of the account synchronization feature for the application.
+	// The account synchronization configuration of the application.
 	ApplicationProvisioningConfig *GetApplicationProvisioningConfigResponseBodyApplicationProvisioningConfig `json:"ApplicationProvisioningConfig,omitempty" xml:"ApplicationProvisioningConfig,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,64 +62,69 @@ func (s *GetApplicationProvisioningConfigResponseBody) Validate() error {
 }
 
 type GetApplicationProvisioningConfigResponseBodyApplicationProvisioningConfig struct {
-	// The ID of the application.
+	// The application ID.
 	//
 	// example:
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The configuration of the custom event callback protocol of IDaaS.
+	// The configuration parameters for the custom event callback protocol of IDaaS.
 	CallbackProvisioningConfig *GetApplicationProvisioningConfigResponseBodyApplicationProvisioningConfigCallbackProvisioningConfig `json:"CallbackProvisioningConfig,omitempty" xml:"CallbackProvisioningConfig,omitempty" type:"Struct"`
 	// The rendering mode of the account synchronization page. Valid values:
 	//
-	// 	- standard: standard mode
+	// - standard: standard mode.
 	//
-	// 	- template: template mode
+	// - template: template mode.
 	//
 	// example:
 	//
 	// standard
 	ConfigOperateMode *string `json:"ConfigOperateMode,omitempty" xml:"ConfigOperateMode,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
-	InstanceId              *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The network endpoint ID.
+	//
+	// example:
+	//
+	// nae_examplexxxx
 	NetworkAccessEndpointId *string `json:"NetworkAccessEndpointId,omitempty" xml:"NetworkAccessEndpointId,omitempty"`
-	// The public key endpoint for signature verification of the synchronization callback information.
+	// The public key endpoint for signature verification of application synchronization callback messages.
 	//
 	// example:
 	//
 	// https://eiam-api-cn-hangzhou.aliyuncs.com/v2/idaas_ue2jvisn35ea5lmthk267xxxxx/app_mkv7rgt4d7i4u7zqtzev2mxxxx/provisioning/jwks
 	ProvisionJwksEndpoint *string `json:"ProvisionJwksEndpoint,omitempty" xml:"ProvisionJwksEndpoint,omitempty"`
-	// Indicates whether the password is synchronized in IDaaS user event callbacks. Valid values:
+	// Indicates whether to synchronize passwords in IDaaS user event callbacks. Valid values:
 	//
-	// 	- true: The password is synchronized.
+	// - true: Passwords are synchronized.
 	//
-	// 	- false: The password is not synchronized.
+	// - false: Passwords are not synchronized.
 	//
 	// example:
 	//
 	// true
 	ProvisionPassword *bool `json:"ProvisionPassword,omitempty" xml:"ProvisionPassword,omitempty"`
-	// The synchronization protocol type of the application. Valid values:
+	// The protocol type for application synchronization. Valid values:
 	//
-	// 	- idaas_callback: custom event callback protocol of IDaaS.
+	// - idaas_callback: the custom event callback protocol of IDaaS.
 	//
-	// 	- scim2: System for Cross-domain Identity Management (SCIM) protocol.
+	// - scim2: the System for Cross-domain Identity Management (SCIM) protocol.
 	//
 	// example:
 	//
 	// idaas_callback
 	ProvisionProtocolType *string `json:"ProvisionProtocolType,omitempty" xml:"ProvisionProtocolType,omitempty"`
-	// The configuration of SCIM-based IDaaS synchronization.
+	// The configuration parameters for IDaaS SCIM protocol synchronization.
 	ScimProvisioningConfig *GetApplicationProvisioningConfigResponseBodyApplicationProvisioningConfigScimProvisioningConfig `json:"ScimProvisioningConfig,omitempty" xml:"ScimProvisioningConfig,omitempty" type:"Struct"`
 	// The status of the IDaaS account synchronization feature. Valid values:
 	//
-	// 	- enabled: The feature is enabled.
+	// - enabled: The feature is enabled.
 	//
-	// 	- disabled: The feature is disabled.
+	// - disabled: The feature is disabled.
 	//
 	// example:
 	//
@@ -240,29 +245,29 @@ func (s *GetApplicationProvisioningConfigResponseBodyApplicationProvisioningConf
 }
 
 type GetApplicationProvisioningConfigResponseBodyApplicationProvisioningConfigCallbackProvisioningConfig struct {
-	// The URL that the application uses to receive IDaaS event callbacks.
+	// The destination address where the application receives IDaaS event callbacks.
 	//
 	// example:
 	//
 	// https://example.com/event/callback
 	CallbackUrl *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
-	// The symmetric key for IDaaS event callbacks. The key is an AES-256 encryption key in the HEX format.
+	// The symmetric key for encrypting and decrypting IDaaS event callbacks. This key uses the AES-256 algorithm and is in hexadecimal format.
 	//
 	// example:
 	//
 	// 1adfdfdfd******111
 	EncryptKey *string `json:"EncryptKey,omitempty" xml:"EncryptKey,omitempty"`
-	// Indicates whether IDaaS event callback messages are encrypted. Valid values:
+	// Indicates whether to encrypt IDaaS event callback messages. Valid values:
 	//
-	// 	- true: The messages are encrypted.
+	// - true: The messages are encrypted.
 	//
-	// 	- false: The messages are transmitted in plaintext.
+	// - false: The messages are not encrypted and are transmitted in plaintext.
 	//
 	// example:
 	//
 	// true
 	EncryptRequired *bool `json:"EncryptRequired,omitempty" xml:"EncryptRequired,omitempty"`
-	// The list of types of IDaaS event callback messages that are supported by the listener.
+	// The list of message types for the IDaaS event callback listener.
 	ListenEventScopes []*string `json:"ListenEventScopes,omitempty" xml:"ListenEventScopes,omitempty" type:"Repeated"`
 }
 
@@ -315,21 +320,21 @@ func (s *GetApplicationProvisioningConfigResponseBodyApplicationProvisioningConf
 }
 
 type GetApplicationProvisioningConfigResponseBodyApplicationProvisioningConfigScimProvisioningConfig struct {
-	// The configuration parameters related to SCIM-based synchronization.
+	// The configuration parameters for SCIM protocol synchronization.
 	AuthnConfiguration *GetApplicationProvisioningConfigResponseBodyApplicationProvisioningConfigScimProvisioningConfigAuthnConfiguration `json:"AuthnConfiguration,omitempty" xml:"AuthnConfiguration,omitempty" type:"Struct"`
-	// The full synchronization scope of the SCIM protocol. Valid value:
+	// The scope of a full push for the SCIM protocol. Valid values:
 	//
-	// 	- urn:alibaba:idaas:app:scim:User:PUSH: full account data synchronization.
+	// - urn:alibaba:idaas:app:scim:User:PUSH: performs a full synchronization of users.
 	FullPushScopes []*string `json:"FullPushScopes,omitempty" xml:"FullPushScopes,omitempty" type:"Repeated"`
-	// The resource operations of the SCIM protocol. Valid values:
+	// The operations on the target resource for the SCIM protocol. Valid values:
 	//
-	// 	- urn:alibaba:idaas:app:scim:User:CREATE: account creation.
+	// - urn:alibaba:idaas:app:scim:User:CREATE: creates an account.
 	//
-	// 	- urn:alibaba:idaas:app:scim:User:UPDATE: account update.
+	// - urn:alibaba:idaas:app:scim:User:UPDATE: updates an account.
 	//
-	// 	- urn:alibaba:idaas:app:scim:User:DELETE: account deletion.
+	// - urn:alibaba:idaas:app:scim:User:DELETE: deletes an account.
 	ProvisioningActions []*string `json:"ProvisioningActions,omitempty" xml:"ProvisioningActions,omitempty" type:"Repeated"`
-	// The base URL that the application uses to receive the SCIM protocol for IDaaS synchronization.
+	// The base URL where the application receives IDaaS SCIM protocol synchronization.
 	//
 	// example:
 	//
@@ -391,25 +396,25 @@ func (s *GetApplicationProvisioningConfigResponseBodyApplicationProvisioningConf
 }
 
 type GetApplicationProvisioningConfigResponseBodyApplicationProvisioningConfigScimProvisioningConfigAuthnConfiguration struct {
-	// The authentication mode of the SCIM protocol. Valid value:
+	// The authorization mode for the SCIM protocol interface. Valid values:
 	//
-	// 	- oauth2: OAuth2.0 mode.
+	// - oauth2: OAuth2 mode.
 	//
 	// example:
 	//
 	// oauth2
 	AuthnMode *string `json:"AuthnMode,omitempty" xml:"AuthnMode,omitempty"`
-	// The configuration parameters related to authorization.
+	// The authorization configuration parameters. Usage:
 	//
-	// 	- If the GrantType parameter is set to client_credentials, the configuration parameters ClientId, ClientSecret, and AuthnMethod are returned.
+	// - If GrantType is set to client_credentials, you must specify ClientId, ClientSecret, and AuthnMethod.
 	//
-	// 	- If the GrantType parameter is set to bearer_token, the configuration parameter AccessToken is returned.
+	// - If GrantType is set to bearer_token, you must specify AccessToken.
 	AuthnParam *GetApplicationProvisioningConfigResponseBodyApplicationProvisioningConfigScimProvisioningConfigAuthnConfigurationAuthnParam `json:"AuthnParam,omitempty" xml:"AuthnParam,omitempty" type:"Struct"`
-	// The grant type of the SCIM protocol. Valid values:
+	// The authorization mode for the SCIM protocol. Valid values:
 	//
-	// 	- client_credentials: client mode.
+	// - client_credentials: client credentials mode.
 	//
-	// 	- bearer_token: key mode.
+	// - bearer_token: bearer token mode.
 	//
 	// example:
 	//
@@ -462,17 +467,17 @@ func (s *GetApplicationProvisioningConfigResponseBodyApplicationProvisioningConf
 }
 
 type GetApplicationProvisioningConfigResponseBodyApplicationProvisioningConfigScimProvisioningConfigAuthnConfigurationAuthnParam struct {
-	// The access token. This parameter is returned when the GrantType parameter is set to bearer_token.
+	// The access token. This parameter is required when GrantType is set to bearer_token.
 	//
 	// example:
 	//
 	// k52x2ru63rlkflina5utgkxxxx
 	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
-	// The authentication mode of the SCIM protocol. Valid values:
+	// The authentication mode for the SCIM protocol. Valid values:
 	//
-	// 	- client_secret_basic: The client secret is passed in the request header.
+	// - client_secret_basic: The key is passed in the request header.
 	//
-	// 	- client_secret_post: The client secret is passed in the request body.
+	// - client_secret_post: The key is passed in the request body.
 	//
 	// example:
 	//

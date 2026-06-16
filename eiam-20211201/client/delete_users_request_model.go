@@ -16,7 +16,7 @@ type iDeleteUsersRequest interface {
 }
 
 type DeleteUsersRequest struct {
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DeleteUsersRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 账号ID列表
+	// A list of account IDs.
 	//
 	// This parameter is required.
 	//

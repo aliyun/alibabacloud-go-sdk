@@ -24,7 +24,7 @@ type iUpdateAuthorizationRuleApplicationAttachmentRequest interface {
 }
 
 type UpdateAuthorizationRuleApplicationAttachmentRequest struct {
-	// 应用 ID。
+	// The application ID.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type UpdateAuthorizationRuleApplicationAttachmentRequest struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// 授权规则标识。
+	// The authorization rule ID.
 	//
 	// This parameter is required.
 	//
@@ -40,13 +40,15 @@ type UpdateAuthorizationRuleApplicationAttachmentRequest struct {
 	//
 	// arrule_01kf143ug06fg7m9f43u7vahxxxx
 	AuthorizationRuleId *string `json:"AuthorizationRuleId,omitempty" xml:"AuthorizationRuleId,omitempty"`
+	// A client token to ensure the idempotence of the request. Generate a unique value from your client for this parameter. The ClientToken can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// client-token-example
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -54,9 +56,13 @@ type UpdateAuthorizationRuleApplicationAttachmentRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 有效周期，当validityPeriodType为custom有效。
+	// The time range of the validity period. This parameter takes effect only when **ValidityType*	- is set to **time_bound**.
 	ValidityPeriod *UpdateAuthorizationRuleApplicationAttachmentRequestValidityPeriod `json:"ValidityPeriod,omitempty" xml:"ValidityPeriod,omitempty" type:"Struct"`
-	// 有效期类型，枚举值：permanent（永久），time_bound（自定义时间范围）。
+	// The validity type of the relationship. Valid values:
+	//
+	// - permanent: The relationship is permanent.
+	//
+	// - time_bound: The relationship is valid for a custom time range.
 	//
 	// This parameter is required.
 	//
@@ -138,13 +144,13 @@ func (s *UpdateAuthorizationRuleApplicationAttachmentRequest) Validate() error {
 }
 
 type UpdateAuthorizationRuleApplicationAttachmentRequestValidityPeriod struct {
-	// 授权规则生效结束时间，采用unix纪元精确到毫秒。
+	// The end time of the validity period. This is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1704062061000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// 授权规则生效开始时间，采用unix纪元精确到毫秒。
+	// The start time of the validity period. This is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iDeleteCustomFieldRequest interface {
 }
 
 type DeleteCustomFieldRequest struct {
-	// fieldId
+	// The field ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DeleteCustomFieldRequest struct {
 	//
 	// ufd_001
 	FieldId *string `json:"FieldId,omitempty" xml:"FieldId,omitempty"`
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

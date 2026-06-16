@@ -16,9 +16,9 @@ type iObtainApplicationClientSecretResponseBody interface {
 }
 
 type ObtainApplicationClientSecretResponseBody struct {
-	// The information about the client key.
+	// The secret information.
 	ApplicationClientSecret *ObtainApplicationClientSecretResponseBodyApplicationClientSecret `json:"ApplicationClientSecret,omitempty" xml:"ApplicationClientSecret,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ func (s *ObtainApplicationClientSecretResponseBody) Validate() error {
 }
 
 type ObtainApplicationClientSecretResponseBodyApplicationClientSecret struct {
-	// The ID of the application whose client key you want to query.
+	// The application ID.
 	//
 	// example:
 	//
@@ -74,36 +74,41 @@ type ObtainApplicationClientSecretResponseBodyApplicationClientSecret struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	// The client key secret of the application.
+	// The client secret of the application.
 	//
 	// example:
 	//
 	// CSEHDcHcrUKHw1CuxkJEHPveWRXBGqVqRsxxxx
-	ClientSecret   *string `json:"ClientSecret,omitempty" xml:"ClientSecret,omitempty"`
-	ExpirationTime *int64  `json:"ExpirationTime,omitempty" xml:"ExpirationTime,omitempty"`
-	// The ID of the instance.
+	ClientSecret *string `json:"ClientSecret,omitempty" xml:"ClientSecret,omitempty"`
+	// The expiration time of the client secret. This is a UNIX timestamp. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1749830226000
+	ExpirationTime *int64 `json:"ExpirationTime,omitempty" xml:"ExpirationTime,omitempty"`
+	// The instance ID.
 	//
 	// example:
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The time when the client key was last used. The value is a UNIX timestamp. Unit: milliseconds.
+	// The last time the client secret was used. This is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1649830226000
 	LastUsedTime *int64 `json:"LastUsedTime,omitempty" xml:"LastUsedTime,omitempty"`
-	// The client key ID of the application.
+	// The client secret ID of the application.
 	//
 	// example:
 	//
 	// sci_k52x2ru63rlkflina5utgkxxxx
 	SecretId *string `json:"SecretId,omitempty" xml:"SecretId,omitempty"`
-	// The status of the client key. Valid values:
+	// The status of the client secret. Valid values:
 	//
-	// 	- Enabled: The client key is enabled.
+	// - enabled: The secret is enabled.
 	//
-	// 	- Disabled: The client key is disabled.
+	// - disabled: The secret is disabled.
 	//
 	// example:
 	//

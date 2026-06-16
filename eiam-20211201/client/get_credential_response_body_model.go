@@ -16,7 +16,10 @@ type iGetCredentialResponseBody interface {
 }
 
 type GetCredentialResponseBody struct {
+	// The credential details.
 	Credential *GetCredentialResponseBodyCredential `json:"Credential,omitempty" xml:"Credential,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
@@ -59,84 +62,102 @@ func (s *GetCredentialResponseBody) Validate() error {
 }
 
 type GetCredentialResponseBodyCredential struct {
-	// 云角色创建时间
+	// The creation time of the credential, in Unix timestamp format (milliseconds).
 	//
 	// example:
 	//
 	// 1649830225000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 凭据的内容。
+	// The content of the credential.
 	CredentialContent *GetCredentialResponseBodyCredentialCredentialContent `json:"CredentialContent,omitempty" xml:"CredentialContent,omitempty" type:"Struct"`
-	// 凭据的创建类型。
+	// How the credential was created. Valid values:
+	//
+	// - `system_init`: The credential was created by the system.
+	//
+	// - `user_custom`: The credential was created by a user.
 	//
 	// example:
 	//
 	// user_custom
 	CredentialCreationType *string `json:"CredentialCreationType,omitempty" xml:"CredentialCreationType,omitempty"`
 	CredentialExternalId   *string `json:"CredentialExternalId,omitempty" xml:"CredentialExternalId,omitempty"`
-	// 凭据ID。
+	// The ID of the credential.
 	//
 	// example:
 	//
 	// cred_mkv7rgt4d7i4u7zqtzev2mxxxx
 	CredentialId *string `json:"CredentialId,omitempty" xml:"CredentialId,omitempty"`
-	// 凭据标识
+	// The identifier of the credential.
 	//
 	// example:
 	//
 	// credential_identifier_test
 	CredentialIdentifier *string `json:"CredentialIdentifier,omitempty" xml:"CredentialIdentifier,omitempty"`
-	// 凭据名称
+	// The name of the credential.
 	//
 	// example:
 	//
 	// credential_name
 	CredentialName *string `json:"CredentialName,omitempty" xml:"CredentialName,omitempty"`
-	// 凭据的使用场景标签。
+	// The use case of the credential. Valid values:
+	//
+	// - `llm`: a large language model (LLM).
+	//
+	// - `saas`: a third-party Software as a Service (SaaS) application.
 	//
 	// example:
 	//
 	// llm
 	CredentialScenarioLabel *string `json:"CredentialScenarioLabel,omitempty" xml:"CredentialScenarioLabel,omitempty"`
 	CredentialSharingScope  *string `json:"CredentialSharingScope,omitempty" xml:"CredentialSharingScope,omitempty"`
-	// 凭据所属的主体ID。
+	// The ID of the subject that owns the credential.
 	//
 	// example:
 	//
 	// apt_werthgfdsasffxxxxx
 	CredentialSubjectId *string `json:"CredentialSubjectId,omitempty" xml:"CredentialSubjectId,omitempty"`
-	// 凭据所属的主体类型。
+	// The type of the subject that owns the credential. Valid value:
+	//
+	// - `authentication_token_provider`: The subject is an authentication token provider.
 	//
 	// example:
 	//
 	// authentication_token_provider
 	CredentialSubjectType *string `json:"CredentialSubjectType,omitempty" xml:"CredentialSubjectType,omitempty"`
-	// 凭据类型。
+	// The type of the credential. Valid values:
+	//
+	// - `api_key`: An API key.
+	//
+	// - `oauth_client`: An OAuth client.
 	//
 	// example:
 	//
 	// api_key
 	CredentialType *string `json:"CredentialType,omitempty" xml:"CredentialType,omitempty"`
-	// 描述
+	// The user-defined description of the credential.
 	//
 	// example:
 	//
 	// credential_description
 	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	ExclusiveUserId *string `json:"ExclusiveUserId,omitempty" xml:"ExclusiveUserId,omitempty"`
-	// EIAM实例ID。
+	// The ID of the instance.
 	//
 	// example:
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 凭据状态
+	// The status of the credential. Valid values:
+	//
+	// - `enabled`: The credential is active.
+	//
+	// - `disabled`: The credential is inactive.
 	//
 	// example:
 	//
 	// enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 云角色更新时间
+	// The time the credential was last updated, in Unix timestamp format (milliseconds).
 	//
 	// example:
 	//
@@ -315,7 +336,7 @@ func (s *GetCredentialResponseBodyCredential) Validate() error {
 }
 
 type GetCredentialResponseBodyCredentialCredentialContent struct {
-	// OAuth客户端认证凭证类型的凭据内容。
+	// The credential content for an OAuth client. This parameter is returned only when `CredentialType` is `oauth_client`.
 	OAuthClientContent *GetCredentialResponseBodyCredentialCredentialContentOAuthClientContent `json:"OAuthClientContent,omitempty" xml:"OAuthClientContent,omitempty" type:"Struct"`
 }
 
@@ -346,7 +367,7 @@ func (s *GetCredentialResponseBodyCredentialCredentialContent) Validate() error 
 }
 
 type GetCredentialResponseBodyCredentialCredentialContentOAuthClientContent struct {
-	// OAuth协议的client_id
+	// The OAuth client ID.
 	//
 	// example:
 	//

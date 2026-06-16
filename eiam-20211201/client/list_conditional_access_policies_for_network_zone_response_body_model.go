@@ -76,7 +76,7 @@ type ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPol
 	//
 	// example:
 	//
-	// My Policy
+	// My policy
 	ConditionalAccessPolicyName *string `json:"ConditionalAccessPolicyName,omitempty" xml:"ConditionalAccessPolicyName,omitempty"`
 	// Type of the conditional access policy
 	//

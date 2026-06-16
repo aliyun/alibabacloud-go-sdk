@@ -70,7 +70,7 @@ type ListEiamInstancesResponseBodyInstances struct {
 	//
 	// example:
 	//
-	// instance test
+	// Production environment
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The private domain name of the instance Developer API.
 	//
@@ -100,9 +100,9 @@ type ListEiamInstancesResponseBodyInstances struct {
 	//
 	// Valid values:
 	//
-	// 	- EIAM 2.0
+	// - EIAM 2.0
 	//
-	// 	- EIAM 1.0
+	// - EIAM 1.0
 	//
 	// example:
 	//
@@ -120,7 +120,7 @@ type ListEiamInstancesResponseBodyInstances struct {
 	//
 	// eiam.cn-hangzhou.aliyuncs.com
 	OpenAPIPublicDomain *string `json:"OpenAPIPublicDomain,omitempty" xml:"OpenAPIPublicDomain,omitempty"`
-	// The single sign-on (SSO) domain  of the instance.
+	// The single sign-on (SSO) domain of the instance.
 	//
 	// example:
 	//

@@ -38,7 +38,7 @@ type iCreateCredentialRequest interface {
 }
 
 type CreateCredentialRequest struct {
-	// 保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。ClientToken只支持ASCII字符，且不能超过64个字符。
+	// A client-generated token that ensures the idempotence of the request. This token must be a unique value that contains only ASCII characters and is no more than 64 characters long. For more information, see [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
 	//
 	// This parameter is required.
 	//
@@ -46,12 +46,12 @@ type CreateCredentialRequest struct {
 	//
 	// client-token-example
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 凭据的内容。
+	// The credential content.
 	//
 	// This parameter is required.
 	CredentialContent    *CreateCredentialRequestCredentialContent `json:"CredentialContent,omitempty" xml:"CredentialContent,omitempty" type:"Struct"`
 	CredentialExternalId *string                                   `json:"CredentialExternalId,omitempty" xml:"CredentialExternalId,omitempty"`
-	// 凭据标识。
+	// The credential identifier.
 	//
 	// This parameter is required.
 	//
@@ -59,7 +59,7 @@ type CreateCredentialRequest struct {
 	//
 	// credential_identifier_test
 	CredentialIdentifier *string `json:"CredentialIdentifier,omitempty" xml:"CredentialIdentifier,omitempty"`
-	// 凭据名称。
+	// The credential name.
 	//
 	// This parameter is required.
 	//
@@ -67,26 +67,36 @@ type CreateCredentialRequest struct {
 	//
 	// credential_name
 	CredentialName *string `json:"CredentialName,omitempty" xml:"CredentialName,omitempty"`
-	// 凭据的使用场景标签。
+	// The use case label of the credential. Valid values:
+	//
+	// - `llm`: large language model.
+	//
+	// - `saas`: third-party SaaS.
 	//
 	// example:
 	//
 	// llm
 	CredentialScenarioLabel *string `json:"CredentialScenarioLabel,omitempty" xml:"CredentialScenarioLabel,omitempty"`
 	CredentialSharingScope  *string `json:"CredentialSharingScope,omitempty" xml:"CredentialSharingScope,omitempty"`
-	// 凭据所属的主体ID。
+	// The ID of the credential\\"s subject.
 	//
 	// example:
 	//
 	// apt_werthgfdsasffxxxxx
 	CredentialSubjectId *string `json:"CredentialSubjectId,omitempty" xml:"CredentialSubjectId,omitempty"`
-	// 凭据所属的主体类型。
+	// The subject type of the credential. Valid value:
+	//
+	// - `authentication_token_provider`: an authentication token provider.
 	//
 	// example:
 	//
 	// authentication_token_provider
 	CredentialSubjectType *string `json:"CredentialSubjectType,omitempty" xml:"CredentialSubjectType,omitempty"`
-	// 凭据类型。
+	// The credential type. Valid values:
+	//
+	// - `api_key`: an API key.
+	//
+	// - `oauth_client`: an OAuth client.
 	//
 	// This parameter is required.
 	//
@@ -94,14 +104,14 @@ type CreateCredentialRequest struct {
 	//
 	// api_key
 	CredentialType *string `json:"CredentialType,omitempty" xml:"CredentialType,omitempty"`
-	// 描述
+	// The credential description.
 	//
 	// example:
 	//
 	// credential_description
 	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	ExclusiveUserId *string `json:"ExclusiveUserId,omitempty" xml:"ExclusiveUserId,omitempty"`
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -246,9 +256,9 @@ func (s *CreateCredentialRequest) Validate() error {
 }
 
 type CreateCredentialRequestCredentialContent struct {
-	// Api Key的内容。
+	// The credential content of the API key type.
 	ApiKeyContent *CreateCredentialRequestCredentialContentApiKeyContent `json:"ApiKeyContent,omitempty" xml:"ApiKeyContent,omitempty" type:"Struct"`
-	// OAuth客户端认证凭证类型的凭据内容。
+	// The credential content of the OAuth client type.
 	OAuthClientContent *CreateCredentialRequestCredentialContentOAuthClientContent `json:"OAuthClientContent,omitempty" xml:"OAuthClientContent,omitempty" type:"Struct"`
 }
 
@@ -293,7 +303,7 @@ func (s *CreateCredentialRequestCredentialContent) Validate() error {
 }
 
 type CreateCredentialRequestCredentialContentApiKeyContent struct {
-	// API Key 凭证类型的凭据内容。
+	// The API key.
 	//
 	// example:
 	//
@@ -323,13 +333,13 @@ func (s *CreateCredentialRequestCredentialContentApiKeyContent) Validate() error
 }
 
 type CreateCredentialRequestCredentialContentOAuthClientContent struct {
-	// OAuth协议的client_id。
+	// The `client_id` of the OAuth protocol.
 	//
 	// example:
 	//
 	// dmvncmxersdxxxxxx
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	// OAuth协议的client_secret。
+	// The `client_secret` of the OAuth protocol.
 	//
 	// example:
 	//

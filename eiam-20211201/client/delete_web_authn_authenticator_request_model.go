@@ -18,7 +18,7 @@ type iDeleteWebAuthnAuthenticatorRequest interface {
 }
 
 type DeleteWebAuthnAuthenticatorRequest struct {
-	// 认证器ID
+	// The authenticator ID.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type DeleteWebAuthnAuthenticatorRequest struct {
 	//
 	// authn_h4x5etphqdasydr67lxxxxx
 	AuthenticatorId *string `json:"AuthenticatorId,omitempty" xml:"AuthenticatorId,omitempty"`
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type DeleteWebAuthnAuthenticatorRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// UserID
+	// The user ID.
 	//
 	// This parameter is required.
 	//

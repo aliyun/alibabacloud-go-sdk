@@ -24,29 +24,34 @@ type iListBrandsResponseBody interface {
 }
 
 type ListBrandsResponseBody struct {
+	// A list of brands.
 	Brands []*ListBrandsResponseBodyBrands `json:"Brands,omitempty" xml:"Brands,omitempty" type:"Repeated"`
-	// 分页查询时每页行数。
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 本次调用返回的查询凭证（Token）值，用于下一次翻页查询。
+	// The token that is used to retrieve the next page of results.
 	//
 	// example:
 	//
 	// NTxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 本次调用返回的查询凭证（Token）值，用于上一次翻页查询。
+	// The token that is used to retrieve the previous page of results.
 	//
 	// example:
 	//
 	// PTxxxexample
 	PreviousToken *string `json:"PreviousToken,omitempty" xml:"PreviousToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 100
@@ -129,31 +134,31 @@ func (s *ListBrandsResponseBody) Validate() error {
 }
 
 type ListBrandsResponseBodyBrands struct {
-	// 品牌ID
+	// The brand ID.
 	//
 	// example:
 	//
 	// brand_xxxx
 	BrandId *string `json:"BrandId,omitempty" xml:"BrandId,omitempty"`
-	// 品牌名称
+	// The brand name.
 	//
 	// example:
 	//
 	// Custom Brand
 	BrandName *string `json:"BrandName,omitempty" xml:"BrandName,omitempty"`
-	// 品牌类型
+	// The brand type.
 	//
 	// example:
 	//
 	// user_custom
 	BrandType *string `json:"BrandType,omitempty" xml:"BrandType,omitempty"`
-	// 实例ID。
+	// The instance ID.
 	//
 	// example:
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 品牌状态
+	// The brand status.
 	//
 	// example:
 	//

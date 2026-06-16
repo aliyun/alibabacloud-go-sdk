@@ -22,7 +22,7 @@ type iAuthorizeResourceServerScopesToUserRequest interface {
 }
 
 type AuthorizeResourceServerScopesToUserRequest struct {
-	// IDaaS的应用资源ID。
+	// The ID of the resource server application.
 	//
 	// This parameter is required.
 	//
@@ -30,13 +30,15 @@ type AuthorizeResourceServerScopesToUserRequest struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// Ensures the idempotence of the request. Generate a parameter value from your client to make sure that the value is unique among different requests. ClientToken can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://www.alibabacloud.com/help/en/ecs/developer-reference/how-to-ensure-idempotence).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// client-token-example
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +46,7 @@ type AuthorizeResourceServerScopesToUserRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// ResourceServer权限ID。
+	// A list of scope permission IDs under the resource server.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +54,7 @@ type AuthorizeResourceServerScopesToUserRequest struct {
 	//
 	// ["ress_XXXXX","ress_XXXXX"]
 	ResourceServerScopeIds []*string `json:"ResourceServerScopeIds,omitempty" xml:"ResourceServerScopeIds,omitempty" type:"Repeated"`
-	// 用户ID。
+	// The ID of the account.
 	//
 	// This parameter is required.
 	//

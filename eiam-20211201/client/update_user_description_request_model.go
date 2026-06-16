@@ -18,7 +18,7 @@ type iUpdateUserDescriptionRequest interface {
 }
 
 type UpdateUserDescriptionRequest struct {
-	// The description of the account. The value can be up to 256 characters in length.
+	// The description. The maximum length is 256 characters.
 	//
 	// example:
 	//
@@ -32,7 +32,7 @@ type UpdateUserDescriptionRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the account.
+	// The ID of the user.
 	//
 	// This parameter is required.
 	//

@@ -18,15 +18,15 @@ type iListApplicationsForOrganizationalUnitResponseBody interface {
 }
 
 type ListApplicationsForOrganizationalUnitResponseBody struct {
-	// The applications that the EIAM organization can access.
+	// A list of applications that are granted access.
 	Applications []*ListApplicationsForOrganizationalUnitResponseBodyApplications `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of the returned entries.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -83,13 +83,13 @@ func (s *ListApplicationsForOrganizationalUnitResponseBody) Validate() error {
 }
 
 type ListApplicationsForOrganizationalUnitResponseBodyApplications struct {
-	// The ID of the application that the EIAM organization can access.
+	// The application ID.
 	//
 	// example:
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// 应用角色列表。
+	// A list of application roles.
 	ApplicationRoles []*ListApplicationsForOrganizationalUnitResponseBodyApplicationsApplicationRoles `json:"ApplicationRoles,omitempty" xml:"ApplicationRoles,omitempty" type:"Repeated"`
 }
 
@@ -133,7 +133,7 @@ func (s *ListApplicationsForOrganizationalUnitResponseBodyApplications) Validate
 }
 
 type ListApplicationsForOrganizationalUnitResponseBodyApplicationsApplicationRoles struct {
-	// 应用角色标识。
+	// The ID of the application role.
 	//
 	// example:
 	//

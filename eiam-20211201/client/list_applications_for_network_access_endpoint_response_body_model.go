@@ -20,17 +20,22 @@ type iListApplicationsForNetworkAccessEndpointResponseBody interface {
 }
 
 type ListApplicationsForNetworkAccessEndpointResponseBody struct {
+	// The collection of applications for the network access endpoint.
 	ApplicationsForNetworkAccessEndpoint []*ListApplicationsForNetworkAccessEndpointResponseBodyApplicationsForNetworkAccessEndpoint `json:"ApplicationsForNetworkAccessEndpoint,omitempty" xml:"ApplicationsForNetworkAccessEndpoint,omitempty" type:"Repeated"`
-	// 本次调用返回的查询凭证（Token）值，用于下一次翻页查询。
+	// The token for the next page of results.
 	//
 	// example:
 	//
 	// NTxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 100
@@ -95,15 +100,19 @@ func (s *ListApplicationsForNetworkAccessEndpointResponseBody) Validate() error 
 }
 
 type ListApplicationsForNetworkAccessEndpointResponseBodyApplicationsForNetworkAccessEndpoint struct {
-	// 应用ID。
+	// The application ID.
 	//
 	// example:
 	//
 	// app_m5nzr3kk4njkco2nnc4wjxxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// 应用名称。
+	// The application name.
+	//
+	// example:
+	//
+	// cloudSSO
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
-	// IDaaS EIAM 实例ID
+	// The instance ID.
 	//
 	// example:
 	//

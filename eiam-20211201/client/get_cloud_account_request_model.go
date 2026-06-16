@@ -16,7 +16,7 @@ type iGetCloudAccountRequest interface {
 }
 
 type GetCloudAccountRequest struct {
-	// 云账号ID。
+	// The ID of the Alibaba Cloud account.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type GetCloudAccountRequest struct {
 	//
 	// ca_01kmegjc11qa1txxxxx
 	CloudAccountId *string `json:"CloudAccountId,omitempty" xml:"CloudAccountId,omitempty"`
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

@@ -16,7 +16,7 @@ type iDeleteCustomPrivacyPolicyRequest interface {
 }
 
 type DeleteCustomPrivacyPolicyRequest struct {
-	// 自定义条款ID
+	// The custom privacy policy ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DeleteCustomPrivacyPolicyRequest struct {
 	//
 	// pp_xxxxx
 	CustomPrivacyPolicyId *string `json:"CustomPrivacyPolicyId,omitempty" xml:"CustomPrivacyPolicyId,omitempty"`
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

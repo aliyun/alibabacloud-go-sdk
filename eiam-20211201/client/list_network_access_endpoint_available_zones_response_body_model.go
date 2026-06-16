@@ -16,11 +16,14 @@ type iListNetworkAccessEndpointAvailableZonesResponseBody interface {
 }
 
 type ListNetworkAccessEndpointAvailableZonesResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
-	RequestId *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Zones     []*ListNetworkAccessEndpointAvailableZonesResponseBodyZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of zones that support network endpoints in the current region.
+	Zones []*ListNetworkAccessEndpointAvailableZonesResponseBodyZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
 }
 
 func (s ListNetworkAccessEndpointAvailableZonesResponseBody) String() string {
@@ -63,13 +66,13 @@ func (s *ListNetworkAccessEndpointAvailableZonesResponseBody) Validate() error {
 }
 
 type ListNetworkAccessEndpointAvailableZonesResponseBodyZones struct {
-	// 可用区名称。
+	// The name of the zone.
 	//
 	// example:
 	//
-	// 华东1（杭州）可用区J
+	// China (Hangzhou) Zone J
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	// 可用区ID。
+	// The zone ID.
 	//
 	// example:
 	//

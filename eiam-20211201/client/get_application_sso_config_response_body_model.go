@@ -16,9 +16,9 @@ type iGetApplicationSsoConfigResponseBody interface {
 }
 
 type GetApplicationSsoConfigResponseBody struct {
-	// The single sign-on (SSO) configuration information of the application.
+	// The SSO configuration of the application.
 	ApplicationSsoConfig *GetApplicationSsoConfigResponseBodyApplicationSsoConfig `json:"ApplicationSsoConfig,omitempty" xml:"ApplicationSsoConfig,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,33 +62,33 @@ func (s *GetApplicationSsoConfigResponseBody) Validate() error {
 }
 
 type GetApplicationSsoConfigResponseBodyApplicationSsoConfig struct {
-	// The initial SSO method. Valid values:
+	// The SSO initiation method. Valid values:
 	//
-	// 	- only_app_init_sso: Only application-initiated SSO is allowed. This method is selected by default when the SSO protocol of the application is an OIDC protocol. If this method is selected when the SSO protocol of the application is SAML, the InitLoginUrl parameter is required.
+	// - only_app_init_sso: SSO is initiated only by the application. This is the default value for OIDC applications. If this method is used for a SAML application, you must specify InitLoginUrl.
 	//
-	// 	- idaas_or_app_init_sso: IDaaS-initiated SSO and application-initiated SSO are allowed. This method is selected by default when the SSO protocol of the application is SAML. If this method is selected when the SSO protocol of the application is an OIDC protocol, the InitLoginUrl parameter is required.
+	// - idaas_or_app_init_sso: SSO can be initiated by the IDaaS console or the application. This is the default value for SAML applications. If this method is used for an OIDC application, you must specify InitLoginUrl.
 	//
 	// example:
 	//
 	// only_app_init_sso
 	InitLoginType *string `json:"InitLoginType,omitempty" xml:"InitLoginType,omitempty"`
-	// The initial webhook URL of SSO. This parameter is required when the SSO protocol of the application is an OIDC protocol and the InitLoginType parameters is set to idaas_or_app_init_sso or when the SSO protocol of the application is SAML and the InitLoginType parameter is set to only_app_init_sso.
+	// The URL that triggers SSO. This parameter is required when InitLoginType for an OIDC application is set to idaas_or_app_init_sso. This parameter is also required when InitLoginType for a SAML application is set to only_app_init_sso.
 	//
 	// example:
 	//
 	// http://127.0.0.1:8000/start_login?enterprise_code=ABCDEF
 	InitLoginUrl *string `json:"InitLoginUrl,omitempty" xml:"InitLoginUrl,omitempty"`
-	// The Open ID Connect (OIDC)-based SSO configuration attributes of the application. This parameter is returned only when the SSO protocol of the application is an OIDC protocol.
+	// The SSO configuration parameters for the application that uses OpenID Connect (OIDC). This parameter is returned only when the application uses OIDC for SSO.
 	OidcSsoConfig *GetApplicationSsoConfigResponseBodyApplicationSsoConfigOidcSsoConfig `json:"OidcSsoConfig,omitempty" xml:"OidcSsoConfig,omitempty" type:"Struct"`
 	// The configuration of the metadata endpoint provided by the application.
 	ProtocolEndpointDomain *GetApplicationSsoConfigResponseBodyApplicationSsoConfigProtocolEndpointDomain `json:"ProtocolEndpointDomain,omitempty" xml:"ProtocolEndpointDomain,omitempty" type:"Struct"`
-	// The Security Assertion Markup Language (SAML)-based SSO configuration attributes of the application. This parameter is returned only if the SSO protocol of the application is SAML 2.0.
+	// The SSO configuration parameters for the application that uses Security Assertion Markup Language (SAML) 2.0. This parameter is returned only when the application uses SAML 2.0 for SSO.
 	SamlSsoConfig *GetApplicationSsoConfigResponseBodyApplicationSsoConfigSamlSsoConfig `json:"SamlSsoConfig,omitempty" xml:"SamlSsoConfig,omitempty" type:"Struct"`
-	// The SSO feature status of the application. Valid values:
+	// The status of the SSO feature for the application. Valid values:
 	//
-	// 	- enabled: The feature is enabled.
+	// - enabled: Enabled.
 	//
-	// 	- disabled: The feature is disabled.
+	// - disabled: Disabled.
 	//
 	// example:
 	//
@@ -178,80 +178,85 @@ func (s *GetApplicationSsoConfigResponseBodyApplicationSsoConfig) Validate() err
 }
 
 type GetApplicationSsoConfigResponseBodyApplicationSsoConfigOidcSsoConfig struct {
-	// The validity period of the issued access token. Unit: seconds. Default value: 1200.
+	// The validity period of the access token. Unit: seconds. Default value: 1200 (20 minutes).
 	//
 	// example:
 	//
 	// 1200
-	AccessTokenEffectiveTime *int64  `json:"AccessTokenEffectiveTime,omitempty" xml:"AccessTokenEffectiveTime,omitempty"`
-	AllowedPublicClient      *string `json:"AllowedPublicClient,omitempty" xml:"AllowedPublicClient,omitempty"`
-	// The validity period of the issued code. Unit: seconds. Default value: 60.
+	AccessTokenEffectiveTime *int64 `json:"AccessTokenEffectiveTime,omitempty" xml:"AccessTokenEffectiveTime,omitempty"`
+	// Indicates whether the application is allowed to make requests to the IDaaS EIAM authorization server as a public client. This feature is supported only for the authorization code and device code grant types. Default value: false.
+	//
+	// example:
+	//
+	// true
+	AllowedPublicClient *string `json:"AllowedPublicClient,omitempty" xml:"AllowedPublicClient,omitempty"`
+	// The validity period of the authorization code. Unit: seconds. Default value: 60 (1 minute).
 	//
 	// example:
 	//
 	// 60
 	CodeEffectiveTime *int64 `json:"CodeEffectiveTime,omitempty" xml:"CodeEffectiveTime,omitempty"`
-	// The custom claims that are returned for the ID token.
+	// The custom claims that are returned in the ID token.
 	CustomClaims []*GetApplicationSsoConfigResponseBodyApplicationSsoConfigOidcSsoConfigCustomClaims `json:"CustomClaims,omitempty" xml:"CustomClaims,omitempty" type:"Repeated"`
-	// The scopes of user attributes that can be returned for the UserInfo endpoint or ID token.
+	// The OIDC-compliant scope parameter. This parameter specifies the scope of user attributes that can be returned by the userinfo endpoint or included in the ID token.
 	//
 	// example:
 	//
 	// profile，email
 	GrantScopes []*string `json:"GrantScopes,omitempty" xml:"GrantScopes,omitempty" type:"Repeated"`
-	// The list of grant types that are supported for OIDC protocols.
+	// The list of OIDC grant types that are supported.
 	//
 	// example:
 	//
 	// authorization_code
 	GrantTypes []*string `json:"GrantTypes,omitempty" xml:"GrantTypes,omitempty" type:"Repeated"`
-	// The validity period of the issued ID token. Unit: seconds. Default value: 300.
+	// The validity period of the ID token. Unit: seconds. Default value: 300 (5 minutes).
 	//
 	// example:
 	//
 	// 1200
 	IdTokenEffectiveTime *int64 `json:"IdTokenEffectiveTime,omitempty" xml:"IdTokenEffectiveTime,omitempty"`
-	// The ID of the identity authentication source in password mode. This parameter is returned only when the value of the GrantTypes parameter includes the password mode.
+	// The ID of the authentication source for password-based logon. This parameter is valid only if GrantTypes for the OIDC application is set to password.
 	//
 	// example:
 	//
 	// ia_password
 	PasswordAuthenticationSourceId *string `json:"PasswordAuthenticationSourceId,omitempty" xml:"PasswordAuthenticationSourceId,omitempty"`
-	// Indicates whether time-based one-time password (TOTP) authentication is required in password mode. This parameter is returned only when the value of the GrantTypes parameter includes the password mode.
+	// Indicates whether Time-based One-Time Password (TOTP) multi-factor authentication (MFA) is required for password-based logon. This parameter is valid only if GrantTypes for the OIDC application is set to password.
 	//
 	// example:
 	//
 	// true
 	PasswordTotpMfaRequired *bool `json:"PasswordTotpMfaRequired,omitempty" xml:"PasswordTotpMfaRequired,omitempty"`
-	// The algorithms that are used to calculate the code challenge for PKCE.
+	// The algorithm used to calculate the code challenge in PKCE.
 	//
 	// example:
 	//
 	// S256
 	PkceChallengeMethods []*string `json:"PkceChallengeMethods,omitempty" xml:"PkceChallengeMethods,omitempty" type:"Repeated"`
-	// Indicates whether the SSO of the application requires Proof Key for Code Exchange (PKCE) (RFC 7636).
+	// Indicates whether Proof Key for Code Exchange (PKCE) is required for the application SSO. For more information, see RFC 7636.
 	//
 	// example:
 	//
 	// true
 	PkceRequired *bool `json:"PkceRequired,omitempty" xml:"PkceRequired,omitempty"`
-	// The list of logout redirect URIs that are supported by the application.
+	// The list of post-logout redirect URIs.
 	PostLogoutRedirectUris []*string `json:"PostLogoutRedirectUris,omitempty" xml:"PostLogoutRedirectUris,omitempty" type:"Repeated"`
-	// The list of redirect URIs that are supported by the application.
+	// The list of redirect URIs that the application supports.
 	RedirectUris []*string `json:"RedirectUris,omitempty" xml:"RedirectUris,omitempty" type:"Repeated"`
-	// The validity period of the issued refresh token. Unit: seconds. Default value: 86400.
+	// The validity period of the refresh token. Unit: seconds. Default value: 86400 (1 day).
 	//
 	// example:
 	//
 	// 86400
 	RefreshTokenEffective *int64 `json:"RefreshTokenEffective,omitempty" xml:"RefreshTokenEffective,omitempty"`
-	// The response types that are supported by the application. This parameter is returned when the value of the GrantTypes parameter includes the implicit mode.
+	// The response type that the application supports. This parameter is returned only if OidcSsoConfig.GrantTypes is set to implicit.
 	//
 	// example:
 	//
 	// token id_token
 	ResponseTypes []*string `json:"ResponseTypes,omitempty" xml:"ResponseTypes,omitempty" type:"Repeated"`
-	// The custom expression that is used to generate the subject ID returned for the ID token.
+	// The expression used to generate the value of the sub claim in the ID token.
 	//
 	// example:
 	//
@@ -425,13 +430,13 @@ func (s *GetApplicationSsoConfigResponseBodyApplicationSsoConfigOidcSsoConfig) V
 }
 
 type GetApplicationSsoConfigResponseBodyApplicationSsoConfigOidcSsoConfigCustomClaims struct {
-	// The claim name.
+	// The name of the claim.
 	//
 	// example:
 	//
 	// userOuIds
 	ClaimName *string `json:"ClaimName,omitempty" xml:"ClaimName,omitempty"`
-	// The expression that is used to generate the value of the claim.
+	// The expression used to generate the value of the claim.
 	//
 	// example:
 	//
@@ -470,61 +475,61 @@ func (s *GetApplicationSsoConfigResponseBodyApplicationSsoConfigOidcSsoConfigCus
 }
 
 type GetApplicationSsoConfigResponseBodyApplicationSsoConfigProtocolEndpointDomain struct {
-	// The OAuth2.0 authorization endpoint. This parameter is returned only when the SSO protocol of the application is an OIDC protocol.
+	// The OAuth 2.0 authorization endpoint. This parameter is returned only when the application uses OIDC for SSO.
 	//
 	// example:
 	//
 	// https://l1seshcn.aliyunidaas.com/login/app/app_mltta64q65enci54slingvvsgq/oauth2/authorize
 	Oauth2AuthorizationEndpoint *string `json:"Oauth2AuthorizationEndpoint,omitempty" xml:"Oauth2AuthorizationEndpoint,omitempty"`
-	// The OAuth2.0 device authorization endpoint. This parameter is returned only when the SSO protocol of the application is an OIDC protocol.
+	// The OAuth 2.0 device authorization endpoint. This parameter is returned only when the application uses OIDC for SSO.
 	//
 	// example:
 	//
 	// https://eiam-api-cn-hangzhou.aliyuncs.com/v2/idaas_ue2jvisn35ea5lmthk2676rypm/app_mltta64q65enci54slingvvsgq/oauth2/device/code
 	Oauth2DeviceAuthorizationEndpoint *string `json:"Oauth2DeviceAuthorizationEndpoint,omitempty" xml:"Oauth2DeviceAuthorizationEndpoint,omitempty"`
-	// The OAuth2.0 token revocation endpoint. This parameter is returned only when the SSO protocol of the application is an OIDC protocol.
+	// The OAuth 2.0 token revocation endpoint. This parameter is returned only when the application uses OIDC for SSO.
 	//
 	// example:
 	//
 	// https://eiam-api-cn-hangzhou.aliyuncs.com/v2/idaas_ue2jvisn35ea5lmthk2676rypm/app_mltta64q65enci54slingvvsgq/oauth2/revoke
 	Oauth2RevokeEndpoint *string `json:"Oauth2RevokeEndpoint,omitempty" xml:"Oauth2RevokeEndpoint,omitempty"`
-	// The OAuth2.0 token endpoint. This parameter is returned only when the SSO protocol of the application is an OIDC protocol.
+	// The OAuth 2.0 token endpoint. This parameter is returned only when the application uses OIDC for SSO.
 	//
 	// example:
 	//
 	// https://eiam-api-cn-hangzhou.aliyuncs.com/v2/idaas_ue2jvisn35ea5lmthk2676rypm/app_mltta64q65enci54slingvvsgq/oauth2/token
 	Oauth2TokenEndpoint *string `json:"Oauth2TokenEndpoint,omitempty" xml:"Oauth2TokenEndpoint,omitempty"`
-	// The OIDC UserInfo endpoint. This parameter is returned only when the SSO protocol of the application is an OIDC protocol.
+	// The OIDC userinfo endpoint. This parameter is returned only when the application uses OIDC for SSO.
 	//
 	// example:
 	//
 	// https://eiam-api-cn-hangzhou.aliyuncs.com/v2/idaas_ue2jvisn35ea5lmthk2676rypm/app_mltta64q65enci54slingvvsgq/oauth2/userinfo
 	Oauth2UserinfoEndpoint *string `json:"Oauth2UserinfoEndpoint,omitempty" xml:"Oauth2UserinfoEndpoint,omitempty"`
-	// The information about the OIDC issuer. This parameter is returned only when the SSO protocol of the application is an OIDC protocol.
+	// The OIDC issuer. This parameter is returned only when the application uses OIDC for SSO.
 	//
 	// example:
 	//
 	// https://eiam-api-cn-hangzhou.aliyuncs.com/v2/idaas_ue2jvisn35ea5lmthk2676rypm/app_mltta64q65enci54slingvvsgq/oidc
 	OidcIssuer *string `json:"OidcIssuer,omitempty" xml:"OidcIssuer,omitempty"`
-	// The JSON Web Key Set (JWKS) URL of the OIDC issuer. This parameter is returned only when the SSO protocol of the application is an OIDC protocol.
+	// The JSON Web Key Set (JWKS) endpoint for OIDC. This parameter is returned only when the application uses OIDC for SSO.
 	//
 	// example:
 	//
 	// https://eiam-api-cn-hangzhou.aliyuncs.com/v2/idaas_ue2jvisn35ea5lmthk2676rypm/app_mltta64q65enci54slingvvsgq/oidc/jwks
 	OidcJwksEndpoint *string `json:"OidcJwksEndpoint,omitempty" xml:"OidcJwksEndpoint,omitempty"`
-	// The OIDC relying party (RP)-initiated logout endpoint. This parameter is returned only when the SSO protocol of the application is an OIDC protocol.
+	// The OIDC Relying Party (RP)-initiated logout endpoint. This parameter is returned only when the application uses OIDC for SSO.
 	//
 	// example:
 	//
 	// https://l1seshcn.aliyunidaas.com/login/app/app_mltta64q65enci54slingvvsgq/oauth2/logout
 	OidcLogoutEndpoint *string `json:"OidcLogoutEndpoint,omitempty" xml:"OidcLogoutEndpoint,omitempty"`
-	// The metadata URL of the SAML protocol. This parameter is returned only when the SSO protocol of the application is SAML 2.0.
+	// The metadata endpoint for the SAML protocol. This parameter is returned only when the application uses SAML 2.0 for SSO.
 	//
 	// example:
 	//
 	// https://l1seshcn.aliyunidaas.com/api/v2/app_mltuxdwd4lq4eer6tmtlmaxm5e/saml2/meta
 	SamlMetaEndpoint *string `json:"SamlMetaEndpoint,omitempty" xml:"SamlMetaEndpoint,omitempty"`
-	// The request receiving URL of the SAML protocol. This parameter is returned only when the SSO protocol of the application is SAML 2.0.
+	// The endpoint that receives AuthnRequest requests for the SAML protocol. This parameter is returned only when the application uses SAML 2.0 for SSO.
 	//
 	// example:
 	//
@@ -635,75 +640,75 @@ func (s *GetApplicationSsoConfigResponseBodyApplicationSsoConfigProtocolEndpoint
 }
 
 type GetApplicationSsoConfigResponseBodyApplicationSsoConfigSamlSsoConfig struct {
-	// Whether the Assertion needs a signature. ResponseSigned and AssertionSigned cannot be false at the same time.
+	// Indicates whether the assertion needs to be signed. ResponseSigned and AssertionSigned cannot both be false.
 	//
-	// true: signature is required.
+	// - true: The assertion must be signed.
 	//
-	// false: signature is not required.
+	// - false: The assertion does not need to be signed.
 	//
 	// example:
 	//
 	// true
 	AssertionSigned *bool `json:"AssertionSigned,omitempty" xml:"AssertionSigned,omitempty"`
-	// The additional user attributes in the SAML assertion.
+	// The configuration of additional user attributes in the SAML assertion.
 	AttributeStatements []*GetApplicationSsoConfigResponseBodyApplicationSsoConfigSamlSsoConfigAttributeStatements `json:"AttributeStatements,omitempty" xml:"AttributeStatements,omitempty" type:"Repeated"`
-	// The default value of the RelayState attribute. If the SSO request is initiated in EIAM, the RelayState attribute in the SAML response is set to this default value.
+	// The default value of RelayState. If the SSO is initiated by EIAM, the RelayState in the SAML response is set to this value.
 	//
 	// example:
 	//
 	// https://home.console.aliyun.com
 	DefaultRelayState *string `json:"DefaultRelayState,omitempty" xml:"DefaultRelayState,omitempty"`
-	// The custom issuer ID.
+	// The EntityID of the identity provider (IdP) in the SAML protocol.
 	//
 	// example:
 	//
 	// https://example.com/
 	IdPEntityId *string `json:"IdPEntityId,omitempty" xml:"IdPEntityId,omitempty"`
-	// The Format attribute of the NameID element in the SAML assertion. Valid values:
+	// The format of the NameID in the SAML protocol. Valid values:
 	//
-	// 	- urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified: No format is specified. How to resolve the NameID element depends on the application.
+	// - urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified: Unspecified. The application determines how to parse the NameID.
 	//
-	// 	- urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress: The NameID element must be an email address.
+	// - urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress: Email address format.
 	//
-	// 	- urn:oasis:names:tc:SAML:2.0:nameid-format:persistent: The NameID element must be persistent.
+	// - urn:oasis:names:tc:SAML:2.0:nameid-format:persistent: Persistent NameID.
 	//
-	// 	- urn:oasis:names:tc:SAML:2.0:nameid-format:transient: The NameID element must be transient.
+	// - urn:oasis:names:tc:SAML:2.0:nameid-format:transient: Transient NameID.
 	//
 	// example:
 	//
 	// urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified
 	NameIdFormat *string `json:"NameIdFormat,omitempty" xml:"NameIdFormat,omitempty"`
-	// The expression that is used to generate the value of NameID in the SAML assertion.
+	// The expression used to generate the value of the NameID in the SAML assertion.
 	//
 	// example:
 	//
 	// user.username
 	NameIdValueExpression *string `json:"NameIdValueExpression,omitempty" xml:"NameIdValueExpression,omitempty"`
-	// Optional RelayState. The user will see the display names of multiple optional redirect addresses in the application card of the application portal. After the user clicks and completes SSO, they will automatically jump to the corresponding address. This field can only be filled in after the default redirect address is filled in.
+	// The optional RelayState values. The display names of multiple redirect URLs are shown on the application card in the application portal. After a user clicks a URL and completes the SSO, the user is redirected to the URL. You must specify a default redirect URL before you can specify optional RelayState values.
 	OptionalRelayStates []*GetApplicationSsoConfigResponseBodyApplicationSsoConfigSamlSsoConfigOptionalRelayStates `json:"OptionalRelayStates,omitempty" xml:"OptionalRelayStates,omitempty" type:"Repeated"`
-	// Whether the response needs to be signed. ResponseSigned and AssertionSigned cannot be false at the same time.
+	// Indicates whether the response needs to be signed. ResponseSigned and AssertionSigned cannot both be false.
 	//
-	// true: signature is required.
+	// - true: The response must be signed.
 	//
-	// false: signature is not required.
+	// - false: The response does not need to be signed.
 	//
 	// example:
 	//
 	// true
 	ResponseSigned *bool `json:"ResponseSigned,omitempty" xml:"ResponseSigned,omitempty"`
-	// The algorithm that is used to calculate the signature for the SAML assertion.
+	// The signature algorithm for the SAML assertion.
 	//
 	// example:
 	//
 	// RSA-SHA256
 	SignatureAlgorithm *string `json:"SignatureAlgorithm,omitempty" xml:"SignatureAlgorithm,omitempty"`
-	// The entity ID of the application in SAML. The application assumes the role of service provider.
+	// The SAML EntityID of the application (service provider).
 	//
 	// example:
 	//
 	// urn:alibaba:cloudcomputing
 	SpEntityId *string `json:"SpEntityId,omitempty" xml:"SpEntityId,omitempty"`
-	// The Assertion Consumer Service (ACS) URL of the application in SAML. The application assumes the role of service provider.
+	// The SAML assertion consumer service (ACS) URL of the application (service provider).
 	//
 	// example:
 	//
@@ -841,13 +846,13 @@ func (s *GetApplicationSsoConfigResponseBodyApplicationSsoConfigSamlSsoConfig) V
 }
 
 type GetApplicationSsoConfigResponseBodyApplicationSsoConfigSamlSsoConfigAttributeStatements struct {
-	// The attribute name.
+	// The name of the attribute in the SAML assertion.
 	//
 	// example:
 	//
 	// https://www.aliyun.com/SAML-Role/Attributes/RoleSessionName
 	AttributeName *string `json:"AttributeName,omitempty" xml:"AttributeName,omitempty"`
-	// The expression that is used to generate the value of the attribute.
+	// The expression used to generate the value of the attribute in the SAML assertion.
 	//
 	// example:
 	//
@@ -886,13 +891,13 @@ func (s *GetApplicationSsoConfigResponseBodyApplicationSsoConfigSamlSsoConfigAtt
 }
 
 type GetApplicationSsoConfigResponseBodyApplicationSsoConfigSamlSsoConfigOptionalRelayStates struct {
-	// The display name of the RelayState
+	// The display name of the RelayState.
 	//
 	// example:
 	//
 	// Ram Account SSO
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// RelayState.The user will see the display names of multiple optional redirect addresses in the application card of the application portal. After the user clicks and completes SSO, they will automatically jump to the corresponding address. This field can only be filled in after the default redirect address is filled in.
+	// The optional RelayState value. The display names of multiple redirect URLs are shown on the application card in the application portal. After a user clicks a URL and completes the SSO, the user is redirected to the URL.
 	//
 	// example:
 	//

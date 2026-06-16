@@ -16,7 +16,7 @@ type iListOrganizationalUnitParentsResponseBody interface {
 }
 
 type ListOrganizationalUnitParentsResponseBody struct {
-	// The parent organizations.
+	// The list of parent organizational units.
 	Parents []*ListOrganizationalUnitParentsResponseBodyParents `json:"Parents,omitempty" xml:"Parents,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -66,17 +66,17 @@ func (s *ListOrganizationalUnitParentsResponseBody) Validate() error {
 }
 
 type ListOrganizationalUnitParentsResponseBodyParents struct {
-	// The organization ID.
+	// The organizational unit ID.
 	//
 	// example:
 	//
-	// ou_4lag76zc2km5ssg5vsmm2xxxx
+	// ou_4lag76zc2km5ssg5vsmm2lznvu
 	OrganizationalUnitId *string `json:"OrganizationalUnitId,omitempty" xml:"OrganizationalUnitId,omitempty"`
-	// The parent organization ID.
+	// The parent organizational unit ID.
 	//
 	// example:
 	//
-	// ou_x3beoyepv2ls5iwuge3xhjxxxx
+	// ou_x3beoyepv2ls5iwuge3xhjkwbm
 	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
 }
 

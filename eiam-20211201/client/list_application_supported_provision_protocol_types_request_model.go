@@ -16,7 +16,7 @@ type iListApplicationSupportedProvisionProtocolTypesRequest interface {
 }
 
 type ListApplicationSupportedProvisionProtocolTypesRequest struct {
-	// IDaaS的应用资源ID。
+	// The application ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type ListApplicationSupportedProvisionProtocolTypesRequest struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// IDaaS EIAM的实例id
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

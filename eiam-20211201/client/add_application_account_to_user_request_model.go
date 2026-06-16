@@ -20,7 +20,7 @@ type iAddApplicationAccountToUserRequest interface {
 }
 
 type AddApplicationAccountToUserRequest struct {
-	// IDaaS的应用主键id
+	// The application ID.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type AddApplicationAccountToUserRequest struct {
 	//
 	// app_11111
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// 应用账号名称
+	// The name of the application account.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type AddApplicationAccountToUserRequest struct {
 	//
 	// zhangsan
 	ApplicationUsername *string `json:"ApplicationUsername,omitempty" xml:"ApplicationUsername,omitempty"`
-	// IDaaS EIAM的实例id
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type AddApplicationAccountToUserRequest struct {
 	//
 	// eiam-111ccc1111
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 用户Id
+	// The user ID.
 	//
 	// This parameter is required.
 	//

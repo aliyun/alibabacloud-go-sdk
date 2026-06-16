@@ -14,7 +14,7 @@ type iDisableConditionalAccessPolicyResponseBody interface {
 }
 
 type DisableConditionalAccessPolicyResponseBody struct {
-	// 请求ID。
+	// The request ID.
 	//
 	// example:
 	//

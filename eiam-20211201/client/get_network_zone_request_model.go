@@ -16,7 +16,7 @@ type iGetNetworkZoneRequest interface {
 }
 
 type GetNetworkZoneRequest struct {
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type GetNetworkZoneRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// IDaaS的网络区域主键id
+	// The network zone ID.
 	//
 	// This parameter is required.
 	//

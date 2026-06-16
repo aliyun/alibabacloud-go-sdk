@@ -16,7 +16,7 @@ type iGetApplicationProvisioningConfigRequest interface {
 }
 
 type GetApplicationProvisioningConfigRequest struct {
-	// The ID of the application.
+	// The application ID.
 	//
 	// This parameter is required.
 	//

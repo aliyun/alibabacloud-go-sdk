@@ -18,7 +18,7 @@ type iDisableApplicationTokenRequest interface {
 }
 
 type DisableApplicationTokenRequest struct {
-	// IDaaS的应用资源ID。
+	// The application ID.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type DisableApplicationTokenRequest struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// IDaaS的应用资源TokenID。
+	// The ID of the application token.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type DisableApplicationTokenRequest struct {
 	//
 	// token_sfrwerxxxxxxxxxxxxxx
 	ApplicationTokenId *string `json:"ApplicationTokenId,omitempty" xml:"ApplicationTokenId,omitempty"`
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

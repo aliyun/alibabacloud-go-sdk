@@ -16,10 +16,14 @@ type iCreateApplicationFederatedCredentialResponseBody interface {
 }
 
 type CreateApplicationFederatedCredentialResponseBody struct {
+	// The ID of the application federated credential.
+	//
 	// example:
 	//
 	// afc_asd123daxxxx
 	ApplicationFederatedCredentialId *string `json:"ApplicationFederatedCredentialId,omitempty" xml:"ApplicationFederatedCredentialId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A

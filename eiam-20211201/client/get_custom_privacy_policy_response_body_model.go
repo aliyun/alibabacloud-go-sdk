@@ -16,7 +16,10 @@ type iGetCustomPrivacyPolicyResponseBody interface {
 }
 
 type GetCustomPrivacyPolicyResponseBody struct {
+	// The custom privacy policy.
 	CustomPrivacyPolicy *GetCustomPrivacyPolicyResponseBodyCustomPrivacyPolicy `json:"CustomPrivacyPolicy,omitempty" xml:"CustomPrivacyPolicy,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
@@ -59,27 +62,44 @@ func (s *GetCustomPrivacyPolicyResponseBody) Validate() error {
 }
 
 type GetCustomPrivacyPolicyResponseBodyCustomPrivacyPolicy struct {
+	// The details of the custom privacy policy content.
 	CustomPrivacyPolicyContents []*GetCustomPrivacyPolicyResponseBodyCustomPrivacyPolicyCustomPrivacyPolicyContents `json:"CustomPrivacyPolicyContents,omitempty" xml:"CustomPrivacyPolicyContents,omitempty" type:"Repeated"`
+	// The ID of the custom privacy policy.
+	//
 	// example:
 	//
 	// pp_xxxxx
 	CustomPrivacyPolicyId *string `json:"CustomPrivacyPolicyId,omitempty" xml:"CustomPrivacyPolicyId,omitempty"`
+	// The name of the custom privacy policy.
+	//
 	// example:
 	//
 	// Custom Privacy Policy Name
 	CustomPrivacyPolicyName *string `json:"CustomPrivacyPolicyName,omitempty" xml:"CustomPrivacyPolicyName,omitempty"`
+	// The language of the custom privacy policy. The value is the LanguageCode returned by the ListLanguages operation.
+	//
 	// example:
 	//
 	// zh-Hans-CN
 	DefaultLanguageCode *string `json:"DefaultLanguageCode,omitempty" xml:"DefaultLanguageCode,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The valid values for the account status are:
+	//
+	// - enabled: Enabled.
+	//
+	// - disabled: Disabled.
+	//
 	// example:
 	//
 	// enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Agreement Type.
+	//
 	// example:
 	//
 	// implied_consent
@@ -171,11 +191,16 @@ func (s *GetCustomPrivacyPolicyResponseBodyCustomPrivacyPolicy) Validate() error
 }
 
 type GetCustomPrivacyPolicyResponseBodyCustomPrivacyPolicyCustomPrivacyPolicyContents struct {
+	// The items of the custom privacy policy.
 	CustomPrivacyPolicyItems []*GetCustomPrivacyPolicyResponseBodyCustomPrivacyPolicyCustomPrivacyPolicyContentsCustomPrivacyPolicyItems `json:"CustomPrivacyPolicyItems,omitempty" xml:"CustomPrivacyPolicyItems,omitempty" type:"Repeated"`
+	// The prompt for the custom privacy policy content.
+	//
 	// example:
 	//
 	// Please read and agree：
 	CustomPrivacyPolicyTip *string `json:"CustomPrivacyPolicyTip,omitempty" xml:"CustomPrivacyPolicyTip,omitempty"`
+	// The language of the custom privacy policy. The value is the LanguageCode returned by the ListLanguages operation.
+	//
 	// example:
 	//
 	// zh-Hans-CN
@@ -231,10 +256,14 @@ func (s *GetCustomPrivacyPolicyResponseBodyCustomPrivacyPolicyCustomPrivacyPolic
 }
 
 type GetCustomPrivacyPolicyResponseBodyCustomPrivacyPolicyCustomPrivacyPolicyContentsCustomPrivacyPolicyItems struct {
+	// The name of the custom privacy policy item.
+	//
 	// example:
 	//
 	// item name
 	CustomPrivacyPolicyItemName *string `json:"CustomPrivacyPolicyItemName,omitempty" xml:"CustomPrivacyPolicyItemName,omitempty"`
+	// The URL of the custom privacy policy item. The URL must start with https\\://.
+	//
 	// example:
 	//
 	// https://example.com

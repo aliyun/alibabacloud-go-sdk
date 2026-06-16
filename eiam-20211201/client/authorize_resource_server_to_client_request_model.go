@@ -18,7 +18,7 @@ type iAuthorizeResourceServerToClientRequest interface {
 }
 
 type AuthorizeResourceServerToClientRequest struct {
-	// IDaaS的应用资源ID。
+	// The unique ID of the client application.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type AuthorizeResourceServerToClientRequest struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ClientApplicationId *string `json:"ClientApplicationId,omitempty" xml:"ClientApplicationId,omitempty"`
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type AuthorizeResourceServerToClientRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// IDaaS的应用资源ID。
+	// The ID of the resource server application.
 	//
 	// This parameter is required.
 	//

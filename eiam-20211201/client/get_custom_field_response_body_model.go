@@ -16,7 +16,10 @@ type iGetCustomFieldResponseBody interface {
 }
 
 type GetCustomFieldResponseBody struct {
+	// Custom field information.
 	CustomField *GetCustomFieldResponseBodyCustomField `json:"CustomField,omitempty" xml:"CustomField,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
@@ -59,99 +62,99 @@ func (s *GetCustomFieldResponseBody) Validate() error {
 }
 
 type GetCustomFieldResponseBodyCustomField struct {
-	// 扩展字段创建时间，Unix时间戳格式，单位为毫秒
+	// The creation time of the custom field, in UNIX timestamp format in milliseconds.
 	//
 	// example:
 	//
 	// 17642960730
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 字段默认值
+	// The default value of the field.
 	//
 	// example:
 	//
 	// test
 	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
-	// 扩展字段描述
+	// The description of the custom field.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 是否加密，默认false
+	// Indicates whether the field is encrypted.
 	//
 	// example:
 	//
 	// false
 	Encrypted *bool `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
-	// 字段所属实体类型
+	// The entity type to which the field belongs.
 	//
 	// example:
 	//
 	// user
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	// 字段值配置项
+	// Field value configuration items.
 	FieldDataConfig *GetCustomFieldResponseBodyCustomFieldFieldDataConfig `json:"FieldDataConfig,omitempty" xml:"FieldDataConfig,omitempty" type:"Struct"`
-	// 数据类型，枚举值：string、number、boolean
+	// The data type.
 	//
 	// example:
 	//
 	// string
 	FieldDataType *string `json:"FieldDataType,omitempty" xml:"FieldDataType,omitempty"`
-	// 字段展示名
+	// The display name of the field.
 	//
 	// example:
 	//
 	// userId
 	FieldDisplayName *string `json:"FieldDisplayName,omitempty" xml:"FieldDisplayName,omitempty"`
-	// 字段展示类型，枚举值，select、checkbox、input、number
+	// The display type of the field.
 	//
 	// example:
 	//
 	// input
 	FieldDisplayType *string `json:"FieldDisplayType,omitempty" xml:"FieldDisplayType,omitempty"`
-	// 字段ID
+	// The field ID.
 	//
 	// example:
 	//
 	// ufd_ncvy5trszg3zajaal5iofauy2q
 	FieldId *string `json:"FieldId,omitempty" xml:"FieldId,omitempty"`
-	// 字段标识
+	// The field identifier.
 	//
 	// example:
 	//
 	// userId
 	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
-	// 实例ID
+	// The instance ID.
 	//
 	// example:
 	//
 	// idaas_z4pwq7v5ankdimdelzo2zbmzo4
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 是否必填，默认false
+	// Indicates whether the field is required.
 	//
 	// example:
 	//
 	// false
 	Required *bool `json:"Required,omitempty" xml:"Required,omitempty"`
-	// 扩展字段状态, 枚举类型：enabled，disabled
+	// The status of the custom field.
 	//
 	// example:
 	//
 	// enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 是否唯一，默认false
+	// Indicates whether the field is unique.
 	//
 	// example:
 	//
 	// false
 	Unique *bool `json:"Unique,omitempty" xml:"Unique,omitempty"`
-	// 扩展字段最近一次更新时间, Unix时间戳格式，单位为毫秒
+	// The last update time of the custom field, in UNIX timestamp format in milliseconds.
 	//
 	// example:
 	//
 	// 17642960730
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// 用户端(portal侧)权限，hide、read_only、read_write，默认read_only
+	// User-side (portal) permissions.
 	//
 	// example:
 	//
@@ -330,7 +333,7 @@ func (s *GetCustomFieldResponseBodyCustomField) Validate() error {
 }
 
 type GetCustomFieldResponseBodyCustomFieldFieldDataConfig struct {
-	// 字段配置项列表，displayName、value、status
+	// A list of field configuration items.
 	Items []*GetCustomFieldResponseBodyCustomFieldFieldDataConfigItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 }
 
@@ -365,19 +368,19 @@ func (s *GetCustomFieldResponseBodyCustomFieldFieldDataConfig) Validate() error 
 }
 
 type GetCustomFieldResponseBodyCustomFieldFieldDataConfigItems struct {
-	// 配置项展示名
+	// The display name of the configuration item.
 	//
 	// example:
 	//
 	// hobby
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// 配置项状态, 枚举值，enabled、disabled
+	// The status of the configuration item.
 	//
 	// example:
 	//
 	// enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 配置项值
+	// The value of the configuration item.
 	//
 	// example:
 	//

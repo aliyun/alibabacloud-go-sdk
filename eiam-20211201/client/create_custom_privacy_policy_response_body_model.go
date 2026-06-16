@@ -16,10 +16,14 @@ type iCreateCustomPrivacyPolicyResponseBody interface {
 }
 
 type CreateCustomPrivacyPolicyResponseBody struct {
+	// The ID of the custom privacy policy.
+	//
 	// example:
 	//
 	// pp_neagxpoznsjdtxxxxx
 	CustomPrivacyPolicyId *string `json:"CustomPrivacyPolicyId,omitempty" xml:"CustomPrivacyPolicyId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A

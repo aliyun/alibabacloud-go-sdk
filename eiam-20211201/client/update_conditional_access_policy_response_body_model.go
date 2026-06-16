@@ -14,7 +14,7 @@ type iUpdateConditionalAccessPolicyResponseBody interface {
 }
 
 type UpdateConditionalAccessPolicyResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

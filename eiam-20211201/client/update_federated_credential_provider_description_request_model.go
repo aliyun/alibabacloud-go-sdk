@@ -18,13 +18,13 @@ type iUpdateFederatedCredentialProviderDescriptionRequest interface {
 }
 
 type UpdateFederatedCredentialProviderDescriptionRequest struct {
-	// 联邦凭证提供方描述
+	// The description of the federated credential provider.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 联邦凭证提供方ID
+	// The federated credential provider ID.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type UpdateFederatedCredentialProviderDescriptionRequest struct {
 	//
 	// fcp_mkv7rgt4d7i4u7zqtzev2mxxxx
 	FederatedCredentialProviderId *string `json:"FederatedCredentialProviderId,omitempty" xml:"FederatedCredentialProviderId,omitempty"`
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

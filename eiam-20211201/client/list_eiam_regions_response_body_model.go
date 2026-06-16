@@ -16,7 +16,7 @@ type iListEiamRegionsResponseBody interface {
 }
 
 type ListEiamRegionsResponseBody struct {
-	// The region list.
+	// The list of regions.
 	Regions []*ListEiamRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -66,13 +66,13 @@ func (s *ListEiamRegionsResponseBody) Validate() error {
 }
 
 type ListEiamRegionsResponseBodyRegions struct {
-	// The region name.
+	// The name of the region.
 	//
 	// example:
 	//
-	// China (Hangzhou)
+	// 华东1（杭州）
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	// The ID of the region in which the instance resides.
+	// The region ID.
 	//
 	// example:
 	//

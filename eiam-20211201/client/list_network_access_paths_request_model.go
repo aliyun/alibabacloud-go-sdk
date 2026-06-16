@@ -24,7 +24,7 @@ type ListNetworkAccessPathsRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Network access endpoint ID.
+	// The ID of the dedicated network endpoint.
 	//
 	// This parameter is required.
 	//

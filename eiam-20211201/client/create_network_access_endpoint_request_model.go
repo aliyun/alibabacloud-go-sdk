@@ -44,7 +44,7 @@ type CreateNetworkAccessEndpointRequest struct {
 	//
 	// example:
 	//
-	// eiam-vpc-access-endpoint
+	// Xx-business VPC access endpoint
 	NetworkAccessEndpointName *string `json:"NetworkAccessEndpointName,omitempty" xml:"NetworkAccessEndpointName,omitempty"`
 	// The IDs of vSwitches.
 	//

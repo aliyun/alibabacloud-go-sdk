@@ -16,7 +16,10 @@ type iGetFederatedCredentialProviderResponseBody interface {
 }
 
 type GetFederatedCredentialProviderResponseBody struct {
+	// The federated credential provider.
 	FederatedCredentialProvider *GetFederatedCredentialProviderResponseBodyFederatedCredentialProvider `json:"FederatedCredentialProvider,omitempty" xml:"FederatedCredentialProvider,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
@@ -60,61 +63,61 @@ func (s *GetFederatedCredentialProviderResponseBody) Validate() error {
 
 type GetFederatedCredentialProviderResponseBodyFederatedCredentialProvider struct {
 	CloudIdPProviderConfig *GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderCloudIdPProviderConfig `json:"CloudIdPProviderConfig,omitempty" xml:"CloudIdPProviderConfig,omitempty" type:"Struct"`
-	// 创建时间
+	// The time when the provider was created.
 	//
 	// example:
 	//
 	// 1729061324000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 描述
+	// The description.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Federated Credential Provider ID
+	// The ID of the federated credential provider.
 	//
 	// example:
 	//
 	// fcp_asd123XXX
 	FederatedCredentialProviderId *string `json:"FederatedCredentialProviderId,omitempty" xml:"FederatedCredentialProviderId,omitempty"`
-	// 联邦凭证提供方名称
+	// The name of the federated credential provider.
 	//
 	// example:
 	//
 	// test
 	FederatedCredentialProviderName *string `json:"FederatedCredentialProviderName,omitempty" xml:"FederatedCredentialProviderName,omitempty"`
-	// 联邦凭证提供方类型
+	// The type of the federated credential provider.
 	//
 	// example:
 	//
 	// pkcs7
 	FederatedCredentialProviderType *string `json:"FederatedCredentialProviderType,omitempty" xml:"FederatedCredentialProviderType,omitempty"`
-	// EIAM 实例ID
+	// The ID of the EIAM instance.
 	//
 	// example:
 	//
 	// idaas_qlbbighyxbu42xl7eninojXXX
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 网络访问端点ID
+	// The ID of the network access endpoint.
 	//
 	// example:
 	//
 	// inae_public
 	NetworkAccessEndpointId *string `json:"NetworkAccessEndpointId,omitempty" xml:"NetworkAccessEndpointId,omitempty"`
-	// OIDC配置
+	// The OpenID Connect (OIDC) configuration.
 	OidcProviderConfig *GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderOidcProviderConfig `json:"OidcProviderConfig,omitempty" xml:"OidcProviderConfig,omitempty" type:"Struct"`
-	// PKCS7配置
+	// The PKCS#7 configuration.
 	Pkcs7ProviderConfig *GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderPkcs7ProviderConfig `json:"Pkcs7ProviderConfig,omitempty" xml:"Pkcs7ProviderConfig,omitempty" type:"Struct"`
-	// 私有CA配置
+	// The private certificate authority (CA) configuration.
 	PrivateCaProviderConfig *GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderPrivateCaProviderConfig `json:"PrivateCaProviderConfig,omitempty" xml:"PrivateCaProviderConfig,omitempty" type:"Struct"`
-	// 状态
+	// The status of the federated credential provider.
 	//
 	// example:
 	//
 	// enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 更新时间
+	// The time when the provider was last updated.
 	//
 	// example:
 	//
@@ -297,37 +300,39 @@ func (s *GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderCl
 }
 
 type GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderOidcProviderConfig struct {
-	// oidc凭证的受众列表
+	// A list of audiences for the OIDC credential.
 	Audiences []*string `json:"Audiences,omitempty" xml:"Audiences,omitempty" type:"Repeated"`
-	// 动态获取的jwks
+	// The dynamically obtained JWKS.
 	//
 	// example:
 	//
 	// https://example.com
 	DynamicJwks *string `json:"DynamicJwks,omitempty" xml:"DynamicJwks,omitempty"`
-	// Issuer
+	// The issuer of the OIDC credential.
 	//
 	// example:
 	//
 	// http://test.idaas.com/v2/oauth
 	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	// The time of the last JWKS retrieval.
+	//
 	// example:
 	//
 	// 1729061324000
 	JwksLastObtainedTime *int64 `json:"JwksLastObtainedTime,omitempty" xml:"JwksLastObtainedTime,omitempty"`
-	// Jwks来源
+	// The source of the JSON Web Key Set (JWKS).
 	//
 	// example:
 	//
 	// static
 	JwksSource *string `json:"JwksSource,omitempty" xml:"JwksSource,omitempty"`
-	// JWKS 端点
+	// The JWKS endpoint.
 	//
 	// example:
 	//
 	// https://example.com
 	JwksUri *string `json:"JwksUri,omitempty" xml:"JwksUri,omitempty"`
-	// 静态获取的jwks
+	// The static JWKS content.
 	//
 	// example:
 	//
@@ -353,7 +358,7 @@ type GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderOidcPr
 	//
 	// }
 	StaticJwks *string `json:"StaticJwks,omitempty" xml:"StaticJwks,omitempty"`
-	// 默认条件
+	// The trust condition for the OIDC provider.
 	//
 	// example:
 	//
@@ -446,33 +451,33 @@ func (s *GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderOi
 }
 
 type GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderPkcs7ProviderConfig struct {
-	// pkcs7证书列表
+	// A list of PKCS#7 certificates.
 	Certificates []*GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderPkcs7ProviderConfigCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
-	// CMS验证模式
+	// The Cryptographic Message Syntax (CMS) verification mode.
 	//
 	// example:
 	//
 	// cert
 	CmsVerificationMode *string `json:"CmsVerificationMode,omitempty" xml:"CmsVerificationMode,omitempty"`
-	// 签名有效时间
+	// The validity period of the signature, in seconds.
 	//
 	// example:
 	//
 	// 3600
 	SignatureEffectiveTime *int64 `json:"SignatureEffectiveTime,omitempty" xml:"SignatureEffectiveTime,omitempty"`
-	// 签名时间
+	// An expression that specifies the signing time.
 	//
 	// example:
 	//
 	// pkcs7.payload.jsonData.audience.signingTime
 	SigningTimeValueExpression *string `json:"SigningTimeValueExpression,omitempty" xml:"SigningTimeValueExpression,omitempty"`
-	// 证书信任锚点来源
+	// The source of the certificate trust anchor.
 	//
 	// example:
 	//
 	// alibaba_cloud
 	TrustAnchorSource *string `json:"TrustAnchorSource,omitempty" xml:"TrustAnchorSource,omitempty"`
-	// 信任条件
+	// The trust condition for the PKCS#7 provider.
 	//
 	// example:
 	//
@@ -556,9 +561,9 @@ func (s *GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderPk
 }
 
 type GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderPkcs7ProviderConfigCertificates struct {
-	// 证书元数据
+	// The certificate metadata.
 	CertificateMetadata *GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderPkcs7ProviderConfigCertificatesCertificateMetadata `json:"CertificateMetadata,omitempty" xml:"CertificateMetadata,omitempty" type:"Struct"`
-	// Root证书内容
+	// The content of the certificate.
 	//
 	// example:
 	//
@@ -568,7 +573,7 @@ type GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderPkcs7P
 	//
 	// -----END CERTIFICATE-----
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// Root证书指纹
+	// The fingerprint of the certificate.
 	//
 	// example:
 	//
@@ -621,13 +626,13 @@ func (s *GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderPk
 }
 
 type GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderPkcs7ProviderConfigCertificatesCertificateMetadata struct {
-	// 证书过期时间
+	// The time when the certificate expires.
 	//
 	// example:
 	//
 	// 1729061324000
 	NotAfter *int64 `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
-	// 证书生效时间
+	// The time when the certificate becomes valid.
 	//
 	// example:
 	//
@@ -666,15 +671,15 @@ func (s *GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderPk
 }
 
 type GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderPrivateCaProviderConfig struct {
-	// Root证书
+	// A list of root certificates.
 	Certificates []*GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderPrivateCaProviderConfigCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
-	// Root证书获取方式
+	// The method for obtaining the root certificate.
 	//
 	// example:
 	//
 	// custom
 	TrustAnchorSource *string `json:"TrustAnchorSource,omitempty" xml:"TrustAnchorSource,omitempty"`
-	// Root证书的默认条件
+	// The trust condition for the root certificate.
 	//
 	// example:
 	//
@@ -731,9 +736,9 @@ func (s *GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderPr
 }
 
 type GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderPrivateCaProviderConfigCertificates struct {
-	// 证书元数据
+	// The certificate metadata.
 	CertificateMetadata *GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderPrivateCaProviderConfigCertificatesCertificateMetadata `json:"CertificateMetadata,omitempty" xml:"CertificateMetadata,omitempty" type:"Struct"`
-	// Root证书内容
+	// The content of the root certificate.
 	//
 	// example:
 	//
@@ -743,7 +748,7 @@ type GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderPrivat
 	//
 	// -----END CERTIFICATE-----
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// Root证书指纹
+	// The fingerprint of the root certificate.
 	//
 	// example:
 	//
@@ -796,13 +801,13 @@ func (s *GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderPr
 }
 
 type GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderPrivateCaProviderConfigCertificatesCertificateMetadata struct {
-	// 证书过期时间
+	// The time when the certificate expires.
 	//
 	// example:
 	//
 	// 1729061324000
 	NotAfter *int64 `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
-	// 证书生效时间
+	// The time when the certificate becomes valid.
 	//
 	// example:
 	//

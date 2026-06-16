@@ -18,7 +18,7 @@ type iListApplicationAccountsForUserRequest interface {
 }
 
 type ListApplicationAccountsForUserRequest struct {
-	// IDaaS的应用主键id
+	// The application ID.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type ListApplicationAccountsForUserRequest struct {
 	//
 	// app_11111
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// IDaaS EIAM的实例id
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type ListApplicationAccountsForUserRequest struct {
 	//
 	// eiam-111ccc1111
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 用户Id
+	// The user ID.
 	//
 	// This parameter is required.
 	//

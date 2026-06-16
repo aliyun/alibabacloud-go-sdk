@@ -17,7 +17,7 @@ type iGetInstanceControlConfigurationRequest interface {
 
 type GetInstanceControlConfigurationRequest struct {
 	ElementName *string `json:"ElementName,omitempty" xml:"ElementName,omitempty"`
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

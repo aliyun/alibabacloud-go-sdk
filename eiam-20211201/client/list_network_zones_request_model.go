@@ -22,7 +22,7 @@ type iListNetworkZonesRequest interface {
 }
 
 type ListNetworkZonesRequest struct {
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -30,20 +30,22 @@ type ListNetworkZonesRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 分页查询时每页行数。默认值为20，最大值为100。
+	// The number of entries to return on each page.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 网络ID集合
+	// A collection of network IDs.
 	NetworkZoneIds []*string `json:"NetworkZoneIds,omitempty" xml:"NetworkZoneIds,omitempty" type:"Repeated"`
-	// 查询凭证（Token），取值为上一次API调用返回的NextToken参数值。
+	// The token that is used to retrieve the next page of results.
 	//
 	// example:
 	//
 	// NTxxxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The token that is used to retrieve the previous page of results.
+	//
 	// example:
 	//
 	// PTxxxxxexample

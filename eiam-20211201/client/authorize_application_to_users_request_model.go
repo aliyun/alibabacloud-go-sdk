@@ -20,7 +20,7 @@ type iAuthorizeApplicationToUsersRequest interface {
 }
 
 type AuthorizeApplicationToUsersRequest struct {
-	// The ID of the application on which you want to grant permissions.
+	// The application ID.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type AuthorizeApplicationToUsersRequest struct {
 	//
 	// app_role_mkv7rgt4ds8d8v0qtzev2mxxxx
 	ApplicationRoleId *string `json:"ApplicationRoleId,omitempty" xml:"ApplicationRoleId,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type AuthorizeApplicationToUsersRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk2676xxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The IDs of the accounts to which you want to grant permissions. You can grant permissions to a maximum of 100 accounts at a time.
+	// The IDs of the users. A single request can contain up to 100 user IDs.
 	//
 	// This parameter is required.
 	//

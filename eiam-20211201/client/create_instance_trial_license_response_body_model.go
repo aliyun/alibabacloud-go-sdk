@@ -16,10 +16,14 @@ type iCreateInstanceTrialLicenseResponseBody interface {
 }
 
 type CreateInstanceTrialLicenseResponseBody struct {
+	// The unique ID of the license.
+	//
 	// example:
 	//
 	// license_463hfmewi2njxxxx
 	LicenseId *string `json:"LicenseId,omitempty" xml:"LicenseId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A

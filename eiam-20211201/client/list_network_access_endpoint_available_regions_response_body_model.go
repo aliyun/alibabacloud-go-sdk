@@ -16,7 +16,7 @@ type iListNetworkAccessEndpointAvailableRegionsResponseBody interface {
 }
 
 type ListNetworkAccessEndpointAvailableRegionsResponseBody struct {
-	// The information of region.
+	// The collection of available regions.
 	Regions []*ListNetworkAccessEndpointAvailableRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -66,7 +66,7 @@ func (s *ListNetworkAccessEndpointAvailableRegionsResponseBody) Validate() error
 }
 
 type ListNetworkAccessEndpointAvailableRegionsResponseBodyRegions struct {
-	// The name of the region.
+	// The region name.
 	//
 	// example:
 	//

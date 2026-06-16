@@ -18,7 +18,7 @@ type iEnableAuthorizationRuleRequest interface {
 }
 
 type EnableAuthorizationRuleRequest struct {
-  // 授权规则标识。
+  // The authorization rule ID.
   // 
   // This parameter is required.
   // 
@@ -26,13 +26,15 @@ type EnableAuthorizationRuleRequest struct {
   // 
   // arrule_01kf143ug06fg7m9f43u7vahxxxx
   AuthorizationRuleId *string `json:"AuthorizationRuleId,omitempty" xml:"AuthorizationRuleId,omitempty"`
+  // A unique, client-generated token to ensure the idempotence of the request. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // client-token-example
   ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-  // IDaaS EIAM实例的ID。
+  // The instance ID.
   // 
   // This parameter is required.
   // 

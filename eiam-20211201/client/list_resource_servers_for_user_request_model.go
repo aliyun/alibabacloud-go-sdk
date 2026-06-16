@@ -22,8 +22,9 @@ type iListResourceServersForUserRequest interface {
 }
 
 type ListResourceServersForUserRequest struct {
+	// The list of filter conditions.
 	Filter []*ListResourceServersForUserRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -31,17 +32,19 @@ type ListResourceServersForUserRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 查询凭证（Token），取值为上一次API调用返回的NextToken参数值。
+	// The token for the next page of results. Set this to the NextToken value from the previous API call.
 	//
 	// example:
 	//
 	// NTxxxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 用户ID。
+	// The account ID.
 	//
 	// This parameter is required.
 	//
@@ -118,10 +121,13 @@ func (s *ListResourceServersForUserRequest) Validate() error {
 }
 
 type ListResourceServersForUserRequestFilter struct {
+	// The name of the filter condition.
+	//
 	// example:
 	//
 	// ApplicationIds
-	Name  *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The list of filter condition values.
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 

@@ -18,7 +18,7 @@ type iDeleteClientPublicKeyRequest interface {
 }
 
 type DeleteClientPublicKeyRequest struct {
-	// IDaaS的应用资源ID。
+	// The application ID.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type DeleteClientPublicKeyRequest struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// 应用ClientPublicKey的ID
+	// The ID of the application ClientPublicKey.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type DeleteClientPublicKeyRequest struct {
 	//
 	// KEYEqDnDJhztiEAwSin7MZoxGcihzCAuxxxx
 	ClientPublicKeyId *string `json:"ClientPublicKeyId,omitempty" xml:"ClientPublicKeyId,omitempty"`
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

@@ -26,11 +26,13 @@ type iUpdateNetworkZoneRequest interface {
 }
 
 type UpdateNetworkZoneRequest struct {
+	// The idempotence token.
+	//
 	// example:
 	//
 	// client-token-examplexxxx
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -38,11 +40,11 @@ type UpdateNetworkZoneRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 包含的CIDR
+	// The IPv4 CIDR blocks of the network zone.
 	Ipv4Cidrs []*string `json:"Ipv4Cidrs,omitempty" xml:"Ipv4Cidrs,omitempty" type:"Repeated"`
-	// 网络区域ipv6Cidr
+	// The IPv6 CIDR blocks of the network zone.
 	Ipv6Cidrs []*string `json:"Ipv6Cidrs,omitempty" xml:"Ipv6Cidrs,omitempty" type:"Repeated"`
-	// IDaaS的网络区域主键id
+	// The network zone ID.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +52,7 @@ type UpdateNetworkZoneRequest struct {
 	//
 	// network_11111
 	NetworkZoneId *string `json:"NetworkZoneId,omitempty" xml:"NetworkZoneId,omitempty"`
-	// 网络区域名称
+	// The name of the network zone.
 	//
 	// This parameter is required.
 	//
@@ -58,7 +60,7 @@ type UpdateNetworkZoneRequest struct {
 	//
 	// IPV4Test
 	NetworkZoneName *string `json:"NetworkZoneName,omitempty" xml:"NetworkZoneName,omitempty"`
-	// 专有网络VpcId
+	// The ID of the virtual private cloud (VPC).
 	//
 	// example:
 	//

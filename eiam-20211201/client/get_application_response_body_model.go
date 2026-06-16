@@ -16,9 +16,9 @@ type iGetApplicationResponseBody interface {
 }
 
 type GetApplicationResponseBody struct {
-	// The details of the application.
+	// The information about the application.
 	Application *GetApplicationResponseBodyApplication `json:"Application,omitempty" xml:"Application,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,57 +62,69 @@ func (s *GetApplicationResponseBody) Validate() error {
 }
 
 type GetApplicationResponseBodyApplication struct {
-	// The status of the Developer API feature. Valid values:
+	// The status of the Developer API feature for the application. Valid values:
 	//
-	// 	- Enabled: The Developer API feature is enabled.
+	// - enabled
 	//
-	// 	- Disabled: The Developer API feature is disabled.
+	// - disabled
 	//
 	// example:
 	//
 	// disabled
 	ApiInvokeStatus *string `json:"ApiInvokeStatus,omitempty" xml:"ApiInvokeStatus,omitempty"`
+	// The application creation type.
+	//
 	// example:
 	//
 	// user_custom
 	ApplicationCreationType *string `json:"ApplicationCreationType,omitempty" xml:"ApplicationCreationType,omitempty"`
-	// The ID of the application.
+	// The application ID.
 	//
 	// example:
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
-	ApplicationId           *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	ApplicationIdentityType *string `json:"ApplicationIdentityType,omitempty" xml:"ApplicationIdentityType,omitempty"`
-	// The name of the application.
+	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The identity type of the application. Valid values:
+	//
+	// - application: application.
+	//
+	// - agent: agent.
 	//
 	// example:
 	//
-	// SAML Application
-	ApplicationName  *string                                                `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
+	// application
+	ApplicationIdentityType *string `json:"ApplicationIdentityType,omitempty" xml:"ApplicationIdentityType,omitempty"`
+	// The application name.
+	//
+	// example:
+	//
+	// SAML application
+	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
+	// The application owners.
 	ApplicationOwner *GetApplicationResponseBodyApplicationApplicationOwner `json:"ApplicationOwner,omitempty" xml:"ApplicationOwner,omitempty" type:"Struct"`
-	// The origin of the application. Valid values:
+	// The source from which the application was created. Valid values:
 	//
-	// 	- urn:alibaba:idaas:app:source:template: The application is created based on a template.
+	// - urn:alibaba:idaas:app:source:template: The application was created from a template.
 	//
-	// 	- urn:alibaba:idaas: The application is created based on the standard protocol.
+	// - urn:alibaba:idaas:app:source:standard: The application was created based on a standard protocol.
 	//
 	// example:
 	//
 	// urn:alibaba:idaas:app:source:template
 	ApplicationSourceType *string `json:"ApplicationSourceType,omitempty" xml:"ApplicationSourceType,omitempty"`
-	// The ID of the template based on which the application is created. This parameter is returned only if the application is created based on a template.
+	// The ID of the application template that is associated with the application. This parameter is returned only if the application was created from a template.
 	//
 	// example:
 	//
 	// apt_rpa_tdsxxx
 	ApplicationTemplateId *string `json:"ApplicationTemplateId,omitempty" xml:"ApplicationTemplateId,omitempty"`
-	// Application visibility
+	// The visibility of the application.
 	ApplicationVisibility []*string `json:"ApplicationVisibility,omitempty" xml:"ApplicationVisibility,omitempty" type:"Repeated"`
-	// The authorization type of the EIAM application. Valid values:
+	// The authorization type for application access. Valid values:
 	//
-	// 	- authorize_required: Only the user with explicit authorization can access the application.
+	// - authorize_required: Explicit authorization is required for access.
 	//
-	// 	- default_all: By default, all users can access the application.
+	// - default_all: All members have access by default.
 	//
 	// example:
 	//
@@ -124,33 +136,39 @@ type GetApplicationResponseBodyApplication struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	// The time when the application was created. The value is a UNIX timestamp. Unit: milliseconds.
+	// The time when the application was created. This value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1649830226000
-	CreateTime          *int64                                               `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CustomFields        []*GetApplicationResponseBodyApplicationCustomFields `json:"CustomFields,omitempty" xml:"CustomFields,omitempty" type:"Repeated"`
-	CustomSubjectStatus *string                                              `json:"CustomSubjectStatus,omitempty" xml:"CustomSubjectStatus,omitempty"`
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The custom fields of the application.
+	CustomFields []*GetApplicationResponseBodyApplicationCustomFields `json:"CustomFields,omitempty" xml:"CustomFields,omitempty" type:"Repeated"`
+	// Indicates whether to customize the Subject field in the token. If this feature is enabled, the issued access token changes from \\<clientId> to \\<clientId>:\\<client.activeSubjectUrn>. The client.activeSubjectUrn is set in the attribute mapping of the application\\"s federated identity provider.
+	//
+	// example:
+	//
+	// enabled
+	CustomSubjectStatus *string `json:"CustomSubjectStatus,omitempty" xml:"CustomSubjectStatus,omitempty"`
 	// The description of the application.
 	//
 	// example:
 	//
-	// The application is applicable to the test environment.
+	// An application for test environment
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The features that are supported by the application. The value is a JSON array. Valid values:
+	// The features that the application supports. This parameter is returned as a JSON array string. Valid values:
 	//
-	// 	- sso: The application supports SSO.
+	// - sso: single sign-on (SSO).
 	//
-	// 	- provision: The application supports account synchronization.
+	// - provision: account synchronization.
 	//
-	// 	- api_invoke: The application supports custom APIs.
+	// - api_invoke: API calling.
 	//
 	// example:
 	//
 	// ["sso", "provision"]
 	Features *string `json:"Features,omitempty" xml:"Features,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
@@ -162,62 +180,68 @@ type GetApplicationResponseBodyApplication struct {
 	//
 	// https://img.alicdn.com/imgextra/i4/O1CN01lvYwpv1aGowQXDML9_!!6000000003303-0-tps-580-580.jpg
 	LogoUrl *string `json:"LogoUrl,omitempty" xml:"LogoUrl,omitempty"`
-	// M2M client status.
+	// The status of the M2M client.
 	//
 	// example:
 	//
 	// enabled
 	M2MClientStatus *string `json:"M2MClientStatus,omitempty" xml:"M2MClientStatus,omitempty"`
-	// The service code of the cloud service that manages the application template.
+	// The service code of the cloud product that hosts the application template.
 	//
 	// example:
 	//
 	// rpa
 	ManagedServiceCode *string `json:"ManagedServiceCode,omitempty" xml:"ManagedServiceCode,omitempty"`
-	// Unique identifier of the resource server
+	// The unique identifier of the resource server. This corresponds to the audience of the resource server.
 	//
 	// example:
 	//
 	// https://www.example.com
 	ResourceServerIdentifier *string `json:"ResourceServerIdentifier,omitempty" xml:"ResourceServerIdentifier,omitempty"`
+	// The source type of the resource server.
+	//
 	// example:
 	//
 	// urn:cloud:idaas:resourceserver:source:custom
 	ResourceServerSourceType *string `json:"ResourceServerSourceType,omitempty" xml:"ResourceServerSourceType,omitempty"`
-	// Resource server status.
+	// The status of the resource server.
 	//
 	// example:
 	//
-	// disabled	enabled
+	// enabled
 	ResourceServerStatus *string `json:"ResourceServerStatus,omitempty" xml:"ResourceServerStatus,omitempty"`
-	// Indicates whether the application template is managed by a cloud service.
+	// Indicates whether the application template is hosted by a cloud service.
 	//
 	// example:
 	//
 	// true
 	ServiceManaged          *bool     `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
 	SmartConfigCapabilities []*string `json:"SmartConfigCapabilities,omitempty" xml:"SmartConfigCapabilities,omitempty" type:"Repeated"`
-	// The type of the single sign-on (SSO) protocol. Valid values:
+	// The single sign-on (SSO) protocol. Valid values:
 	//
-	// 	- saml2: the Security Assertion Markup Language (SAML) 2.0 protocol.
+	// - saml2: SAML 2.0.
 	//
-	// 	- oidc: the OpenID Connect (OIDC) protocol.
+	// - oidc: OpenID Connect.
+	//
+	// - oauth2/m2m: OAuth 2.0.
+	//
+	// - oidc+oauth2/m2m: OpenID Connect and OAuth 2.0.
 	//
 	// example:
 	//
 	// saml2
 	SsoType *string `json:"SsoType,omitempty" xml:"SsoType,omitempty"`
-	// The status of the application. Valid values:
+	// The application status. Valid values:
 	//
-	// 	- Enabled: The application is enabled.
+	// - enabled
 	//
-	// 	- Disabled: The application is disabled.
+	// - disabled
 	//
 	// example:
 	//
 	// enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time when the application was last updated. The value is a UNIX timestamp. Unit: milliseconds.
+	// The time when the application was last updated. This value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -504,8 +528,10 @@ func (s *GetApplicationResponseBodyApplication) Validate() error {
 }
 
 type GetApplicationResponseBodyApplicationApplicationOwner struct {
+	// The group IDs of the application owners.
 	GroupIds []*string `json:"GroupIds,omitempty" xml:"GroupIds,omitempty" type:"Repeated"`
-	UserIds  []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
+	// The user IDs of the application owners.
+	UserIds []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
 }
 
 func (s GetApplicationResponseBodyApplicationApplicationOwner) String() string {
@@ -539,7 +565,9 @@ func (s *GetApplicationResponseBodyApplicationApplicationOwner) Validate() error
 }
 
 type GetApplicationResponseBodyApplicationCustomFields struct {
-	FieldName  *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
+	// The custom field name.
+	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
+	// The custom field value.
 	FieldValue *string `json:"FieldValue,omitempty" xml:"FieldValue,omitempty"`
 }
 

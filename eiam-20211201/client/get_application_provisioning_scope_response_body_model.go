@@ -68,7 +68,7 @@ type GetApplicationProvisioningScopeResponseBodyApplicationProvisioningScope str
 	//
 	// example:
 	//
-	// 20
+	// 1000
 	MaxQuota *int32 `json:"MaxQuota,omitempty" xml:"MaxQuota,omitempty"`
 	// The list of organizational units that are authorized for account synchronization.
 	OrganizationalUnitIds []*string `json:"OrganizationalUnitIds,omitempty" xml:"OrganizationalUnitIds,omitempty" type:"Repeated"`

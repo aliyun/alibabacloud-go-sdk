@@ -16,13 +16,15 @@ type iEnableCustomPrivacyPolicyRequest interface {
 }
 
 type EnableCustomPrivacyPolicyRequest struct {
+  // The custom privacy policy ID.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // pp_neagxpoznsjdtxxxxx
   CustomPrivacyPolicyId *string `json:"CustomPrivacyPolicyId,omitempty" xml:"CustomPrivacyPolicyId,omitempty"`
-  // IDaaS EIAM实例的ID。
+  // The instance ID.
   // 
   // This parameter is required.
   // 

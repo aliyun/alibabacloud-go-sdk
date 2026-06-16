@@ -22,13 +22,13 @@ type iListApplicationsForOrganizationalUnitRequest interface {
 }
 
 type ListApplicationsForOrganizationalUnitRequest struct {
-	// The IDs of the applications that the EIAM organization can access. You can query a maximum of 100 application IDs at a time.
+	// A list of application IDs. You can specify up to 100 application IDs in a single operation.
 	//
 	// example:
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationIds []*string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty" type:"Repeated"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type ListApplicationsForOrganizationalUnitRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the EIAM organization.
+	// The organization ID.
 	//
 	// This parameter is required.
 	//
@@ -44,13 +44,13 @@ type ListApplicationsForOrganizationalUnitRequest struct {
 	//
 	// ou_wovwffm62xifdziem7an7xxxxx
 	OrganizationalUnitId *string `json:"OrganizationalUnitId,omitempty" xml:"OrganizationalUnitId,omitempty"`
-	// The number of the page to return.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page.
 	//
 	// example:
 	//

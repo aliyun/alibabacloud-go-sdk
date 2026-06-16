@@ -22,7 +22,7 @@ type iUpdateCredentialRequest interface {
 }
 
 type UpdateCredentialRequest struct {
-	// 保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。ClientToken只支持ASCII字符，且不能超过64个字符。
+	// Ensures idempotence. Generate a unique value on your client for each request. The ClientToken value must contain only ASCII characters and cannot exceed 64 characters. For more information, see [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
 	//
 	// This parameter is required.
 	//
@@ -30,9 +30,9 @@ type UpdateCredentialRequest struct {
 	//
 	// client-token-example
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 凭据的内容。
+	// The credential content.
 	CredentialContent *UpdateCredentialRequestCredentialContent `json:"CredentialContent,omitempty" xml:"CredentialContent,omitempty" type:"Struct"`
-	// 凭据ID。
+	// The credential ID.
 	//
 	// This parameter is required.
 	//
@@ -40,13 +40,13 @@ type UpdateCredentialRequest struct {
 	//
 	// cred_mkv7rgt4d7i4u7zqtzev2mxxxx
 	CredentialId *string `json:"CredentialId,omitempty" xml:"CredentialId,omitempty"`
-	// 凭据名称。
+	// The credential name.
 	//
 	// example:
 	//
 	// credential_name
 	CredentialName *string `json:"CredentialName,omitempty" xml:"CredentialName,omitempty"`
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -119,9 +119,9 @@ func (s *UpdateCredentialRequest) Validate() error {
 }
 
 type UpdateCredentialRequestCredentialContent struct {
-	// Api Key的内容。
+	// The credential content for an API key credential type.
 	ApiKeyContent *UpdateCredentialRequestCredentialContentApiKeyContent `json:"ApiKeyContent,omitempty" xml:"ApiKeyContent,omitempty" type:"Struct"`
-	// OAuth客户端认证凭证类型的凭据内容。
+	// The credential content for an OAuth client authentication credential type.
 	OAuthClientContent *UpdateCredentialRequestCredentialContentOAuthClientContent `json:"OAuthClientContent,omitempty" xml:"OAuthClientContent,omitempty" type:"Struct"`
 }
 
@@ -166,7 +166,7 @@ func (s *UpdateCredentialRequestCredentialContent) Validate() error {
 }
 
 type UpdateCredentialRequestCredentialContentApiKeyContent struct {
-	// API Key 凭证类型的凭据内容。
+	// The API key value.
 	//
 	// example:
 	//
@@ -196,13 +196,13 @@ func (s *UpdateCredentialRequestCredentialContentApiKeyContent) Validate() error
 }
 
 type UpdateCredentialRequestCredentialContentOAuthClientContent struct {
-	// OAuth协议的client_id。
+	// The client_id in the OAuth protocol.
 	//
 	// example:
 	//
 	// dmvncmxersdxxxxxx
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	// OAuth协议的client_secret。
+	// The client_secret in the OAuth protocol.
 	//
 	// example:
 	//

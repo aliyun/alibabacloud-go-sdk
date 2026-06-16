@@ -18,7 +18,7 @@ type iSetInstanceGlobalizationConfigRequest interface {
 }
 
 type SetInstanceGlobalizationConfigRequest struct {
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type SetInstanceGlobalizationConfigRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 语言类型
+	// The language.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type SetInstanceGlobalizationConfigRequest struct {
 	//
 	// zh-Hans-CN
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// 时区
+	// The time zone.
 	//
 	// This parameter is required.
 	//

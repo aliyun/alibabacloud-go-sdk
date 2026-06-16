@@ -16,13 +16,13 @@ type iEnableInternalAuthenticationSourceRequest interface {
 }
 
 type EnableInternalAuthenticationSourceRequest struct {
-  // 内部认证源ID，比如 ia_password, ia_otp_sms 等
+  // The ID of the internal authentication source.
   // 
   // example:
   // 
   // ia_password
   AuthenticationSourceId *string `json:"AuthenticationSourceId,omitempty" xml:"AuthenticationSourceId,omitempty"`
-  // IDaaS EIAM的实例id
+  // The instance ID.
   // 
   // This parameter is required.
   // 

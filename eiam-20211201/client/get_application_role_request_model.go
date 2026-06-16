@@ -18,7 +18,7 @@ type iGetApplicationRoleRequest interface {
 }
 
 type GetApplicationRoleRequest struct {
-	// IDaaS的应用资源ID。
+	// The ID of the application.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type GetApplicationRoleRequest struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// 应用角色ID
+	// The ID of the application role.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type GetApplicationRoleRequest struct {
 	//
 	// approle_01kh2vuo8v9splv8maak1d22rxxxx
 	ApplicationRoleId *string `json:"ApplicationRoleId,omitempty" xml:"ApplicationRoleId,omitempty"`
-	// IDaaS EIAM实例的ID。
+	// The ID of the instance.
 	//
 	// This parameter is required.
 	//

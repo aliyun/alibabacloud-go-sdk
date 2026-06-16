@@ -20,7 +20,7 @@ type iBindUserAuthnSourceMappingRequest interface {
 }
 
 type BindUserAuthnSourceMappingRequest struct {
-	// 来源Idp Id
+	// The source IdP ID.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type BindUserAuthnSourceMappingRequest struct {
 	//
 	// idp_mwpcwnhrimlr2horxXXXX
 	IdentityProviderId *string `json:"IdentityProviderId,omitempty" xml:"IdentityProviderId,omitempty"`
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type BindUserAuthnSourceMappingRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 外部关联ID
+	// The external mapping ID.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type BindUserAuthnSourceMappingRequest struct {
 	//
 	// xxxxxx
 	UserExternalId *string `json:"UserExternalId,omitempty" xml:"UserExternalId,omitempty"`
-	// 用户ID
+	// The user ID.
 	//
 	// This parameter is required.
 	//

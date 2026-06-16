@@ -32,7 +32,7 @@ type iListResourceServerScopesRequest interface {
 }
 
 type ListResourceServerScopesRequest struct {
-	// IDaaS的应用资源ID。
+	// Application ID.
 	//
 	// This parameter is required.
 	//
@@ -40,11 +40,13 @@ type ListResourceServerScopesRequest struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// Authorization type.
+	//
 	// example:
 	//
 	// authorize_required
 	AuthorizationType *string `json:"AuthorizationType,omitempty" xml:"AuthorizationType,omitempty"`
-	// IDaaS EIAM实例的ID。
+	// Instance ID.
 	//
 	// This parameter is required.
 	//
@@ -52,34 +54,39 @@ type ListResourceServerScopesRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 分页查询时每页行数。默认值为20，最大值为100。
+	// Number of rows per page in paginated queries.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 查询凭证（Token），取值为上一次API调用返回的NextToken参数值。
+	// Token for the next page query. Set this to the NextToken value returned by the previous API call. Leave empty for the first query.
 	//
 	// example:
 	//
 	// NTxxxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Token for the previous page query. Set this to the PreviousToken value returned by the previous API call.
+	//
 	// example:
 	//
 	// PTxxxxxexample
-	PreviousToken          *string   `json:"PreviousToken,omitempty" xml:"PreviousToken,omitempty"`
+	PreviousToken *string `json:"PreviousToken,omitempty" xml:"PreviousToken,omitempty"`
+	// List of Scope permission IDs.
 	ResourceServerScopeIds []*string `json:"ResourceServerScopeIds,omitempty" xml:"ResourceServerScopeIds,omitempty" type:"Repeated"`
-	// 权限名称
+	// Scope permission name.
 	//
 	// example:
 	//
 	// 读取全部用户
 	ResourceServerScopeName *string `json:"ResourceServerScopeName,omitempty" xml:"ResourceServerScopeName,omitempty"`
+	// Scope permission type.
+	//
 	// example:
 	//
 	// urn:alibaba:idaas:resourceserver:scope:delegated
 	ResourceServerScopeType *string `json:"ResourceServerScopeType,omitempty" xml:"ResourceServerScopeType,omitempty"`
-	// 权限值，大小写不敏感，格式(${ResourceType}:${ResourceOption}:${ResourceRestrict})
+	// Scope permission value.
 	//
 	// example:
 	//

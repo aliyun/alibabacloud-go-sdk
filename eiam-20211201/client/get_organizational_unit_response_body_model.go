@@ -72,7 +72,7 @@ type GetOrganizationalUnitResponseBodyOrganizationalUnit struct {
 	//
 	// example:
 	//
-	// Test organizational unit
+	// Test organization
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the instance.
 	//
@@ -116,13 +116,13 @@ type GetOrganizationalUnitResponseBodyOrganizationalUnit struct {
 	OrganizationalUnitSourceId *string `json:"OrganizationalUnitSourceId,omitempty" xml:"OrganizationalUnitSourceId,omitempty"`
 	// The source type of the organizational unit. Valid values:
 	//
-	// 	- build_in: The organizational unit was created in IDaaS.
+	// - build_in: The organizational unit was created in IDaaS.
 	//
-	// 	- ding_talk: The organizational unit was imported from DingTalk.
+	// - ding_talk: The organizational unit was imported from DingTalk.
 	//
-	// 	- ad: The organizational unit was imported from Microsoft Active Directory (AD).
+	// - ad: The organizational unit was imported from Microsoft Active Directory (AD).
 	//
-	// 	- ldap: The organizational unit was imported from a Lightweight Directory Access Protocol (LDAP) service.
+	// - ldap: The organizational unit was imported from a Lightweight Directory Access Protocol (LDAP) service.
 	//
 	// example:
 	//

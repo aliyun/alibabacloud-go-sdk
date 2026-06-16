@@ -20,7 +20,7 @@ type iUpdateApplicationClientSecretExpirationTimeRequest interface {
 }
 
 type UpdateApplicationClientSecretExpirationTimeRequest struct {
-	// IDaaS的应用资源ID。
+	// The application ID.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type UpdateApplicationClientSecretExpirationTimeRequest struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// client secret的有效期时间，Unix时间戳格式，单位为毫秒
+	// The expiration time of the client secret. This is a UNIX timestamp in milliseconds. The minimum validity period is 1 day, and the maximum validity period is 3 years.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type UpdateApplicationClientSecretExpirationTimeRequest struct {
 	//
 	// 1735530123762
 	ExpirationTime *int64 `json:"ExpirationTime,omitempty" xml:"ExpirationTime,omitempty"`
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type UpdateApplicationClientSecretExpirationTimeRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// OIDC 场景下用于客户端身份验证的客户端密钥
+	// The ID of the client secret.
 	//
 	// This parameter is required.
 	//

@@ -16,7 +16,10 @@ type iGetInstanceControlConfigurationResponseBody interface {
 }
 
 type GetInstanceControlConfigurationResponseBody struct {
+	// The instance control configuration.
 	InstanceControlConfiguration *GetInstanceControlConfigurationResponseBodyInstanceControlConfiguration `json:"InstanceControlConfiguration,omitempty" xml:"InstanceControlConfiguration,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
@@ -59,7 +62,7 @@ func (s *GetInstanceControlConfigurationResponseBody) Validate() error {
 }
 
 type GetInstanceControlConfigurationResponseBodyInstanceControlConfiguration struct {
-	// 实例控制配置项
+	// The list of control elements.
 	ControlElements []*GetInstanceControlConfigurationResponseBodyInstanceControlConfigurationControlElements `json:"ControlElements,omitempty" xml:"ControlElements,omitempty" type:"Repeated"`
 }
 
@@ -94,14 +97,15 @@ func (s *GetInstanceControlConfigurationResponseBodyInstanceControlConfiguration
 }
 
 type GetInstanceControlConfigurationResponseBodyInstanceControlConfigurationControlElements struct {
-	// 实例控制项名称，如human_verification。
+	// The element name.
 	//
 	// example:
 	//
 	// human_verification
-	ElementName             *string                                                                                                        `json:"ElementName,omitempty" xml:"ElementName,omitempty"`
+	ElementName *string `json:"ElementName,omitempty" xml:"ElementName,omitempty"`
+	// The human verification configuration.
 	HumanVerificationConfig *GetInstanceControlConfigurationResponseBodyInstanceControlConfigurationControlElementsHumanVerificationConfig `json:"HumanVerificationConfig,omitempty" xml:"HumanVerificationConfig,omitempty" type:"Struct"`
-	// 实例控制项状态，enabled或者disabled。
+	// The status of the control element.
 	//
 	// example:
 	//
@@ -154,6 +158,8 @@ func (s *GetInstanceControlConfigurationResponseBodyInstanceControlConfiguration
 }
 
 type GetInstanceControlConfigurationResponseBodyInstanceControlConfigurationControlElementsHumanVerificationConfig struct {
+	// The human verification type.
+	//
 	// example:
 	//
 	// urn:alibaba:idaas:humanverification:alibaba-cloud-jigsaw-verification

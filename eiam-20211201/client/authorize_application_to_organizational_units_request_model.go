@@ -20,7 +20,7 @@ type iAuthorizeApplicationToOrganizationalUnitsRequest interface {
 }
 
 type AuthorizeApplicationToOrganizationalUnitsRequest struct {
-	// The ID of the application on which you want to grant permissions.
+	// The application ID.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type AuthorizeApplicationToOrganizationalUnitsRequest struct {
 	//
 	// app_role_mkv7rgt4ds8d8v0qtzev2mxxxx
 	ApplicationRoleId *string `json:"ApplicationRoleId,omitempty" xml:"ApplicationRoleId,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type AuthorizeApplicationToOrganizationalUnitsRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk2676xxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The IDs of the organizations to which you want to grant permissions. You can grant permissions to a maximum of 100 organizations at a time.
+	// The list of organization IDs. You can specify a maximum of 100 organization IDs per operation.
 	//
 	// This parameter is required.
 	//

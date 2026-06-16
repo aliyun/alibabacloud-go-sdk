@@ -22,16 +22,17 @@ type iListApplicationRolesRequest interface {
 }
 
 type ListApplicationRolesRequest struct {
-	// 应用ID
+	// The application ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
-	ApplicationId *string                              `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	Filter        []*ListApplicationRolesRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
-	// IDaaS EIAM实例的ID。
+	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The filter conditions.
+	Filter []*ListApplicationRolesRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -39,11 +40,13 @@ type ListApplicationRolesRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The number of entries to return on each page.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 查询凭证（Token），取值为上一次API调用返回的NextToken参数值。
+	// The token used to start the next query. Set this parameter to the value of NextToken that is returned in the last API call. Leave this parameter empty for the first query.
 	//
 	// example:
 	//
@@ -118,10 +121,13 @@ func (s *ListApplicationRolesRequest) Validate() error {
 }
 
 type ListApplicationRolesRequestFilter struct {
+	// The name of the filter condition.
+	//
 	// example:
 	//
 	// ApplicationRoleNameStartsWith
-	Name  *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The values of the filter condition.
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 

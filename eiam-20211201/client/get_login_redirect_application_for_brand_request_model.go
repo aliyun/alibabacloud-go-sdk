@@ -16,7 +16,7 @@ type iGetLoginRedirectApplicationForBrandRequest interface {
 }
 
 type GetLoginRedirectApplicationForBrandRequest struct {
-	// 品牌化Id
+	// The brand ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type GetLoginRedirectApplicationForBrandRequest struct {
 	//
 	// brand_xxxx
 	BrandId *string `json:"BrandId,omitempty" xml:"BrandId,omitempty"`
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

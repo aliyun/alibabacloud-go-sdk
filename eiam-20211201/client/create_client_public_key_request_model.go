@@ -22,7 +22,7 @@ type iCreateClientPublicKeyRequest interface {
 }
 
 type CreateClientPublicKeyRequest struct {
-	// IDaaS的应用ClientpublicKey算法类型
+	// The algorithm type.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type CreateClientPublicKeyRequest struct {
 	//
 	// RSA-2048
 	AlgorithmType *string `json:"AlgorithmType,omitempty" xml:"AlgorithmType,omitempty"`
-	// IDaaS的应用资源ID。
+	// The application ID.
 	//
 	// This parameter is required.
 	//
@@ -38,13 +38,15 @@ type CreateClientPublicKeyRequest struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// A client token used to ensure the idempotence of the request. Generate a unique value from your client for this parameter. The ClientToken value can contain only ASCII characters and must be no more than 64 characters long. For more information, see [How to ensure idempotence](https://www.alibabacloud.com/help/en/ecs/developer-reference/how-to-ensure-idempotence).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// client-token-example
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +54,7 @@ type CreateClientPublicKeyRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 应用ClientpublicKey的公钥，只接收 PEM 格式
+	// The public key in the Subject Public Key Info (SPKI) type of the Privacy-Enhanced Mail (PEM) format. The key must start with -----BEGIN PUBLIC KEY----- and end with -----END PUBLIC KEY-----.
 	//
 	// This parameter is required.
 	//

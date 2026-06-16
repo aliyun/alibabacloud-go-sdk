@@ -20,7 +20,7 @@ type UpdateInstanceDescriptionRequest struct {
 	//
 	// example:
 	//
-	// 测试实例
+	// For production use.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the instance whose description you want to modify.
 	//

@@ -18,11 +18,16 @@ type iListApplicationsForGroupResponseBody interface {
 }
 
 type ListApplicationsForGroupResponseBody struct {
+	// The list of applications that are granted access.
 	Applications []*ListApplicationsForGroupResponseBodyApplications `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 100
@@ -78,21 +83,25 @@ func (s *ListApplicationsForGroupResponseBody) Validate() error {
 }
 
 type ListApplicationsForGroupResponseBodyApplications struct {
-	// 应用的唯一标识。
+	// The application ID.
 	//
 	// example:
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// 应用角色列表。
+	// The list of application roles.
 	ApplicationRoles []*ListApplicationsForGroupResponseBodyApplicationsApplicationRoles `json:"ApplicationRoles,omitempty" xml:"ApplicationRoles,omitempty" type:"Repeated"`
-	// 直接分配给当前用户的权限，视为直接授权。
+	// Indicates whether a direct authorization exists. Valid values:
+	//
+	// - true: A direct authorization record exists between the application and the group.
+	//
+	// - false: No direct authorization record exists between the application and the group.
 	//
 	// example:
 	//
 	// true
 	HasDirectAuthorization *bool `json:"HasDirectAuthorization,omitempty" xml:"HasDirectAuthorization,omitempty"`
-	// 通过用户隶属的组织、组获取的权限，视为继承权限。
+	// Indicates whether an inherited authorization exists.
 	//
 	// example:
 	//
@@ -158,7 +167,7 @@ func (s *ListApplicationsForGroupResponseBodyApplications) Validate() error {
 }
 
 type ListApplicationsForGroupResponseBodyApplicationsApplicationRoles struct {
-	// 应用角色标识。
+	// The application role ID.
 	//
 	// example:
 	//

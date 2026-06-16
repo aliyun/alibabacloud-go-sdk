@@ -16,7 +16,7 @@ type iEnableBrandRequest interface {
 }
 
 type EnableBrandRequest struct {
-  // 品牌化Id
+  // The branding ID.
   // 
   // This parameter is required.
   // 
@@ -24,7 +24,7 @@ type EnableBrandRequest struct {
   // 
   // brand_xxxx
   BrandId *string `json:"BrandId,omitempty" xml:"BrandId,omitempty"`
-  // IDaaS EIAM实例的ID。
+  // The instance ID.
   // 
   // This parameter is required.
   // 

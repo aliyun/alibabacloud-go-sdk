@@ -20,7 +20,7 @@ type iUpdateApplicationRoleDescriptionRequest interface {
 }
 
 type UpdateApplicationRoleDescriptionRequest struct {
-	// IDaaS的应用资源ID。
+	// The application ID.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type UpdateApplicationRoleDescriptionRequest struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// 应用角色的唯一标识
+	// The application role ID.
 	//
 	// This parameter is required.
 	//
@@ -36,13 +36,13 @@ type UpdateApplicationRoleDescriptionRequest struct {
 	//
 	// approle_01kh2vuo8v9splv8maak1d22rxxxx
 	ApplicationRoleId *string `json:"ApplicationRoleId,omitempty" xml:"ApplicationRoleId,omitempty"`
-	// 应用角色的唯一标识
+	// The description of the application role.
 	//
 	// example:
 	//
 	// Admin Role Description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

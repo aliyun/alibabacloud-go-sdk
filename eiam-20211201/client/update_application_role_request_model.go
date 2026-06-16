@@ -22,7 +22,7 @@ type iUpdateApplicationRoleRequest interface {
 }
 
 type UpdateApplicationRoleRequest struct {
-	// IDaaS的应用资源ID。
+	// The application ID.
 	//
 	// This parameter is required.
 	//
@@ -30,13 +30,15 @@ type UpdateApplicationRoleRequest struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The ID of the application role.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// approle_01kh2vuo8v9splv8maak1d22rxxxx
 	ApplicationRoleId *string `json:"ApplicationRoleId,omitempty" xml:"ApplicationRoleId,omitempty"`
-	// 应用角色名称
+	// The name of the application role.
 	//
 	// This parameter is required.
 	//
@@ -44,13 +46,15 @@ type UpdateApplicationRoleRequest struct {
 	//
 	// Admin Role
 	ApplicationRoleName *string `json:"ApplicationRoleName,omitempty" xml:"ApplicationRoleName,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You must make sure that the token is unique for each request. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://www.alibabacloud.com/help/en/ecs/developer-reference/how-to-ensure-idempotence).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// client-token-example
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

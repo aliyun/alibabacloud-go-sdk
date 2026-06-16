@@ -22,11 +22,13 @@ type iExecIdentityProviderMetadataUrlResolutionRequest interface {
 }
 
 type ExecIdentityProviderMetadataUrlResolutionRequest struct {
+  // The ID of the identity provider in IDaaS.
+  // 
   // example:
   // 
   // idp_mwpcwnhrimlr2horxXXXX
   IdentityProviderId *string `json:"IdentityProviderId,omitempty" xml:"IdentityProviderId,omitempty"`
-  // IDaaS EIAM实例的ID。
+  // The instance ID.
   // 
   // This parameter is required.
   // 
@@ -34,11 +36,13 @@ type ExecIdentityProviderMetadataUrlResolutionRequest struct {
   // 
   // idaas_ue2jvisn35ea5lmthk267xxxxx
   InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+  // The network access endpoint ID.
+  // 
   // example:
   // 
   // inae_public
   NetworkAccessEndpointId *string `json:"NetworkAccessEndpointId,omitempty" xml:"NetworkAccessEndpointId,omitempty"`
-  // OIDC Issuer地址。
+  // The OIDC issuer URL.
   // 
   // example:
   // 

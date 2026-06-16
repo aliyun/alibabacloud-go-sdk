@@ -22,7 +22,7 @@ type iListCustomPrivacyPoliciesForBrandRequest interface {
 }
 
 type ListCustomPrivacyPoliciesForBrandRequest struct {
-	// 品牌化Id
+	// The brand ID.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type ListCustomPrivacyPoliciesForBrandRequest struct {
 	//
 	// brand_xxxx
 	BrandId *string `json:"BrandId,omitempty" xml:"BrandId,omitempty"`
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -38,19 +38,19 @@ type ListCustomPrivacyPoliciesForBrandRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 分页查询时每页行数。默认值为20，最大值为100。
+	// The number of entries to return on each page.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 查询凭证（Token），取值为上一次API调用返回的NextToken参数值。
+	// The token that is used to retrieve the next page of results.
 	//
 	// example:
 	//
 	// NTxxxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 查询上一页凭证（Token），取值为上一次API调用返回的previousToken参数值。
+	// The token that is used to retrieve the previous page of results.
 	//
 	// example:
 	//

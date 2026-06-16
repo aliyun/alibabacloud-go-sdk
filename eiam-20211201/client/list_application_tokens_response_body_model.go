@@ -16,7 +16,10 @@ type iListApplicationTokensResponseBody interface {
 }
 
 type ListApplicationTokensResponseBody struct {
+	// The application tokens.
 	ApplicationTokens []*ListApplicationTokensResponseBodyApplicationTokens `json:"ApplicationTokens,omitempty" xml:"ApplicationTokens,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
@@ -63,65 +66,67 @@ func (s *ListApplicationTokensResponseBody) Validate() error {
 }
 
 type ListApplicationTokensResponseBodyApplicationTokens struct {
-	// aliUid。
+	// The Alibaba Cloud account ID.
 	//
 	// example:
 	//
 	// 1973166921975xxxx
 	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// 应用ID
+	// The application ID.
 	//
 	// example:
 	//
 	// app_m7ar5tms4dwtggavalk3j3mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// 应用token
+	// The application token.
 	//
 	// example:
 	//
 	// SATFwqX8zxGf83pJcJw78KFGjmrft4erWeZYBGS8oE7NN6qoE217yaJpUdMb1UuuGqhDiF43sCA4CF91CTL5iGntqwyLuaAcS9FJ9HfGadE5a7TjiwVafwrBYktxxxx
 	ApplicationToken *string `json:"ApplicationToken,omitempty" xml:"ApplicationToken,omitempty"`
-	// 应用token ID
+	// The ID of the application token.
 	//
 	// example:
 	//
 	// token_ndfxxigahelfne2y2hodehrxxxx
 	ApplicationTokenId *string `json:"ApplicationTokenId,omitempty" xml:"ApplicationTokenId,omitempty"`
-	// 应用token类型
+	// The type of the application token.
 	//
 	// example:
 	//
 	// bearer_token
 	ApplicationTokenType *string `json:"ApplicationTokenType,omitempty" xml:"ApplicationTokenType,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 1747796654000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 应用token描述
+	// The description of the application token.
 	//
 	// example:
 	//
 	// jwqtts-0430
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 到期时间
+	// The expiration time.
 	//
 	// example:
 	//
 	// 1747796654000
 	ExpirationTime *int64 `json:"ExpirationTime,omitempty" xml:"ExpirationTime,omitempty"`
-	// IDaaS EIAM 实例Id
+	// The ID of the IDaaS EIAM instance.
 	//
 	// example:
 	//
 	// idaas_ki6hd7ihir4ybawogqk6kqxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 最后使用时间
+	// The last used time.
 	//
 	// example:
 	//
 	// 1747796654000
 	LastUsedTime *int64 `json:"LastUsedTime,omitempty" xml:"LastUsedTime,omitempty"`
-	// 应用状态
+	// The status.
 	//
 	// example:
 	//

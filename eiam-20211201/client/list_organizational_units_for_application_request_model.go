@@ -24,7 +24,7 @@ type iListOrganizationalUnitsForApplicationRequest interface {
 }
 
 type ListOrganizationalUnitsForApplicationRequest struct {
-	// The ID of the application that you want to query.
+	// The application ID.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type ListOrganizationalUnitsForApplicationRequest struct {
 	//
 	// app_role_mkv7rgt4ds8d8v0qtzev2mxxxx
 	ApplicationRoleId *string `json:"ApplicationRoleId,omitempty" xml:"ApplicationRoleId,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -46,19 +46,19 @@ type ListOrganizationalUnitsForApplicationRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The IDs of the organizations that are allowed to access the application. You can query a maximum of 100 organization IDs at a time.
+	// The list of organization IDs. A single request can contain up to 100 organization IDs.
 	//
 	// example:
 	//
 	// ou_wovwffm62xifdziem7an7xxxxx
 	OrganizationalUnitIds []*string `json:"OrganizationalUnitIds,omitempty" xml:"OrganizationalUnitIds,omitempty" type:"Repeated"`
-	// The number of the page to return.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page.
 	//
 	// example:
 	//

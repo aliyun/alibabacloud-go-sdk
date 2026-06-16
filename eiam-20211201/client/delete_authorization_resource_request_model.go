@@ -18,7 +18,7 @@ type iDeleteAuthorizationResourceRequest interface {
 }
 
 type DeleteAuthorizationResourceRequest struct {
-	// 授权资源标识。
+	// The authorization resource ID.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type DeleteAuthorizationResourceRequest struct {
 	//
 	// arres_01kgh3jvt7pk093rv6giu0c0qxxxx
 	AuthorizationResourceId *string `json:"AuthorizationResourceId,omitempty" xml:"AuthorizationResourceId,omitempty"`
-	// 授权规则标识。
+	// The authorization rule ID.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type DeleteAuthorizationResourceRequest struct {
 	//
 	// arrule_01kf143ug06fg7m9f43u7vahxxxx
 	AuthorizationRuleId *string `json:"AuthorizationRuleId,omitempty" xml:"AuthorizationRuleId,omitempty"`
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

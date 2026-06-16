@@ -16,7 +16,7 @@ type iGetDomainRequest interface {
 }
 
 type GetDomainRequest struct {
-	// Domain ID.
+	// The ID of the domain name.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type GetDomainRequest struct {
 	//
 	// dm_examplexxxxx
 	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
-	// The instance ID.
+	// The ID of the instance.
 	//
 	// This parameter is required.
 	//

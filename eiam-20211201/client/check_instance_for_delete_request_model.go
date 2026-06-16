@@ -14,7 +14,7 @@ type iCheckInstanceForDeleteRequest interface {
 }
 
 type CheckInstanceForDeleteRequest struct {
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

@@ -16,10 +16,14 @@ type iGetInstanceTrialStatusResponseBody interface {
 }
 
 type GetInstanceTrialStatusResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The trial status of the instance.
+	//
 	// example:
 	//
 	// true

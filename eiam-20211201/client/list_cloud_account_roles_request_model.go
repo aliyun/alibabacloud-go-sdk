@@ -22,26 +22,37 @@ type iListCloudAccountRolesRequest interface {
 }
 
 type ListCloudAccountRolesRequest struct {
+	// The ID of the Alibaba Cloud account.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ca_01kmegjc11qa1txxxxx
-	CloudAccountId *string                               `json:"CloudAccountId,omitempty" xml:"CloudAccountId,omitempty"`
-	Filter         []*ListCloudAccountRolesRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
+	CloudAccountId *string `json:"CloudAccountId,omitempty" xml:"CloudAccountId,omitempty"`
+	// The filter conditions.
+	Filter []*ListCloudAccountRolesRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 分页查询时每页行数。默认值为20，最大值为100。
+	// The maximum number of records to return on each page.
+	//
+	// - The default value is 20.
+	//
+	// - The maximum value is 100.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 查询凭证（Token），取值为上一次API调用返回的NextToken参数值。
+	// The token that specifies the start of the next page of results.
+	//
+	// - If this parameter is not specified, the query starts from the first page.
 	//
 	// example:
 	//
@@ -116,10 +127,21 @@ func (s *ListCloudAccountRolesRequest) Validate() error {
 }
 
 type ListCloudAccountRolesRequestFilter struct {
+	// The name of the filter field. Valid values:
+	//
+	// - CloudAccountRoleId: The ID of the cloud role.
+	//
+	// - CloudAccountRoleName: The name of the cloud role.
+	//
+	// - CloudAccountRoleExternalId: The external ID of the cloud role.
+	//
+	// - CloudAccountRoleUsageType: The usage type of the cloud role.
+	//
 	// example:
 	//
 	// CloudAccountRoleId
-	Name  *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The list of values for the filter field.
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 

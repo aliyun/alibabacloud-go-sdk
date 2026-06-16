@@ -18,7 +18,7 @@ type iEnableCredentialRequest interface {
 }
 
 type EnableCredentialRequest struct {
-  // 保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。ClientToken只支持ASCII字符，且不能超过64个字符。
+  // A client-generated token that ensures the idempotence of the request. Make sure that the token is unique for each request. The ClientToken parameter supports only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
   // 
   // This parameter is required.
   // 
@@ -26,7 +26,7 @@ type EnableCredentialRequest struct {
   // 
   // client-token-example
   ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-  // 凭据ID。
+  // The credential ID.
   // 
   // This parameter is required.
   // 
@@ -34,7 +34,7 @@ type EnableCredentialRequest struct {
   // 
   // cred_mkv7rgt4d7i4u7zqtzev2mxxxx
   CredentialId *string `json:"CredentialId,omitempty" xml:"CredentialId,omitempty"`
-  // IDaaS EIAM实例的ID。
+  // The instance ID.
   // 
   // This parameter is required.
   // 

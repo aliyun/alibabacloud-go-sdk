@@ -20,7 +20,7 @@ type iUpdateApplicationTokenExpirationTimeRequest interface {
 }
 
 type UpdateApplicationTokenExpirationTimeRequest struct {
-	// IDaaS的应用资源ID。
+	// The application ID.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type UpdateApplicationTokenExpirationTimeRequest struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// IDaaS的应用资源TokenID。
+	// The application token ID.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type UpdateApplicationTokenExpirationTimeRequest struct {
 	//
 	// token_sfrwerxxxxxxxxxxxxxx
 	ApplicationTokenId *string `json:"ApplicationTokenId,omitempty" xml:"ApplicationTokenId,omitempty"`
-	// 不填，默认1年后到期
+	// The expiration time.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type UpdateApplicationTokenExpirationTimeRequest struct {
 	//
 	// 1735530123762
 	ExpirationTime *int64 `json:"ExpirationTime,omitempty" xml:"ExpirationTime,omitempty"`
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

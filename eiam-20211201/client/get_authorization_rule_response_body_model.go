@@ -16,7 +16,10 @@ type iGetAuthorizationRuleResponseBody interface {
 }
 
 type GetAuthorizationRuleResponseBody struct {
+	// Authorization rule object.
 	AuthorizationRule *GetAuthorizationRuleResponseBodyAuthorizationRule `json:"AuthorizationRule,omitempty" xml:"AuthorizationRule,omitempty" type:"Struct"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
@@ -59,67 +62,99 @@ func (s *GetAuthorizationRuleResponseBody) Validate() error {
 }
 
 type GetAuthorizationRuleResponseBodyAuthorizationRule struct {
-	// 授权资源范围，枚举值：global（项目下所有资源）、custom（指定资源）。
+	// Authorization resource scope. Valid values:
+	//
+	// - global: Global resources under the project
+	//
+	// - custom: Resources within the specified project scope
 	//
 	// example:
 	//
 	// global
 	AuthorizationResourceScope *string `json:"AuthorizationResourceScope,omitempty" xml:"AuthorizationResourceScope,omitempty"`
-	// 授权规则的创建类型，枚举类型：user_created（用户创建)，approval_created（审批创建)。
+	// Authorization rule creation type. Valid values:
+	//
+	// - system_init: System created
+	//
+	// - user_custom: User created
 	//
 	// example:
 	//
 	// user_custom
 	AuthorizationRuleCreationType *string `json:"AuthorizationRuleCreationType,omitempty" xml:"AuthorizationRuleCreationType,omitempty"`
-	// 授权规则标识。
+	// Authorization rule ID.
 	//
 	// example:
 	//
 	// arrule_01kf143ug06fg7m9f43u7vahxxxx
 	AuthorizationRuleId *string `json:"AuthorizationRuleId,omitempty" xml:"AuthorizationRuleId,omitempty"`
-	// 授权规则名称。
+	// Authorization rule name.
 	//
 	// example:
 	//
 	// test-name
 	AuthorizationRuleName *string `json:"AuthorizationRuleName,omitempty" xml:"AuthorizationRuleName,omitempty"`
-	// 授权规则主体ID，主体类型对应的主体ID。
+	// Subject ID associated with the authorization rule.
+	//
+	// example:
+	//
+	// user_d6sbsuumeta4h66ec3il7yxxxx
 	AuthorizationRuleSubjectId *string `json:"AuthorizationRuleSubjectId,omitempty" xml:"AuthorizationRuleSubjectId,omitempty"`
-	// 授权规则主体范围，枚举类型：shared（共享型，即支持所有主体，包括账户、应用），exclusive（专属类型）
+	// Authorization rule subject scope. Valid values:
+	//
+	// - shared: Shared type, supports all subjects, including accounts and applications
+	//
+	// - exclusive: Exclusive type
+	//
+	// example:
+	//
+	// shared
 	AuthorizationRuleSubjectScope *string `json:"AuthorizationRuleSubjectScope,omitempty" xml:"AuthorizationRuleSubjectScope,omitempty"`
-	// 授权规则主体类型，枚举类型：application（应用)，user（账户)。
+	// Subject type associated with the authorization rule. Valid when the authorization rule subject scope is exclusive. Valid values:
+	//
+	// - application: Application
+	//
+	// - user: Account
+	//
+	// example:
+	//
+	// user
 	AuthorizationRuleSubjectType *string `json:"AuthorizationRuleSubjectType,omitempty" xml:"AuthorizationRuleSubjectType,omitempty"`
-	// 创建时间，Unix时间戳格式，单位为毫秒。
+	// Creation time, in UNIX timestamp format, in milliseconds.
 	//
 	// example:
 	//
 	// 1652085686179
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 授权规则描述，长度限制为128字符。
+	// Authorization rule description.
 	//
 	// example:
 	//
 	// this is a test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 实例ID。
+	// Instance ID.
 	//
 	// example:
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 授权规则关联的项目标识。
+	// Project ID associated with the authorization rule.
 	//
 	// example:
 	//
 	// iprj_system_default
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// 授权规则状态，枚举值：enabled（启用）、disabled（禁用）。
+	// Authorization rule status. Valid values:
+	//
+	// - enabled: Enabled
+	//
+	// - disabled: Disabled
 	//
 	// example:
 	//
 	// enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 最近一次更新时间，Unix时间戳格式，单位为毫秒。
+	// Last update time, in UNIX timestamp format, in milliseconds.
 	//
 	// example:
 	//

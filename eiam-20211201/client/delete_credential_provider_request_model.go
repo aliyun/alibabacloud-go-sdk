@@ -16,7 +16,7 @@ type iDeleteCredentialProviderRequest interface {
 }
 
 type DeleteCredentialProviderRequest struct {
-	// 认证令牌提供商ID。
+	// The ID of the credential provider.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DeleteCredentialProviderRequest struct {
 	//
 	// atp_01kr2cmj5gxxx4fvmls2e93dxxxxx
 	CredentialProviderId *string `json:"CredentialProviderId,omitempty" xml:"CredentialProviderId,omitempty"`
-	// IDaaS EIAM实例的ID。
+	// The ID of the instance.
 	//
 	// This parameter is required.
 	//

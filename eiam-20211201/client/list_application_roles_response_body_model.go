@@ -22,21 +22,28 @@ type iListApplicationRolesResponseBody interface {
 }
 
 type ListApplicationRolesResponseBody struct {
+	// The list of application roles.
 	ApplicationRoles []*ListApplicationRolesResponseBodyApplicationRoles `json:"ApplicationRoles,omitempty" xml:"ApplicationRoles,omitempty" type:"Repeated"`
+	// The number of entries returned on each page.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 本次调用返回的查询凭证（Token）值，用于下一次翻页查询。
+	// The token used to start the next query.
 	//
 	// example:
 	//
 	// NTxxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 100
@@ -110,30 +117,38 @@ func (s *ListApplicationRolesResponseBody) Validate() error {
 }
 
 type ListApplicationRolesResponseBodyApplicationRoles struct {
+	// The application ID.
+	//
 	// example:
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// 应用角色的唯一标识
+	// The application role ID.
 	//
 	// example:
 	//
 	// approle_01kh2vuo8v9splv8maak1d22rxxxx
 	ApplicationRoleId *string `json:"ApplicationRoleId,omitempty" xml:"ApplicationRoleId,omitempty"`
-	// 应用角色名称
+	// The name of the application role.
 	//
 	// example:
 	//
 	// Admin Role
 	ApplicationRoleName *string `json:"ApplicationRoleName,omitempty" xml:"ApplicationRoleName,omitempty"`
+	// The value of the application role.
+	//
 	// example:
 	//
 	// admin_role
 	ApplicationRoleValue *string `json:"ApplicationRoleValue,omitempty" xml:"ApplicationRoleValue,omitempty"`
+	// The description of the application role.
+	//
 	// example:
 	//
 	// Admin Role Description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx

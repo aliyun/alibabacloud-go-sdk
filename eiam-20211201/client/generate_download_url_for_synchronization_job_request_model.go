@@ -16,7 +16,7 @@ type iGenerateDownloadUrlForSynchronizationJobRequest interface {
 }
 
 type GenerateDownloadUrlForSynchronizationJobRequest struct {
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type GenerateDownloadUrlForSynchronizationJobRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 同步任务ID
+	// The ID of the sync task.
 	//
 	// This parameter is required.
 	//

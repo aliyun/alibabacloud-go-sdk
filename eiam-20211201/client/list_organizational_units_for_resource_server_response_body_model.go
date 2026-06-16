@@ -22,21 +22,28 @@ type iListOrganizationalUnitsForResourceServerResponseBody interface {
 }
 
 type ListOrganizationalUnitsForResourceServerResponseBody struct {
+	// The maximum number of results per page.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 本次调用返回的查询凭证（Token）值，用于下一次翻页查询。
+	// A token to retrieve the next page of results.
 	//
 	// example:
 	//
 	// NTxxxexample
-	NextToken           *string                                                                    `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// A list of organizational units.
 	OrganizationalUnits []*ListOrganizationalUnitsForResourceServerResponseBodyOrganizationalUnits `json:"OrganizationalUnits,omitempty" xml:"OrganizationalUnits,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of results.
+	//
 	// example:
 	//
 	// 100
@@ -110,19 +117,19 @@ func (s *ListOrganizationalUnitsForResourceServerResponseBody) Validate() error 
 }
 
 type ListOrganizationalUnitsForResourceServerResponseBodyOrganizationalUnits struct {
-	// 实例唯一标识
+	// The instance ID.
 	//
 	// example:
 	//
 	// idaas_qsw77zl5vrllwzyrrfwbmpxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 组织的唯一标识
+	// The organizational unit ID.
 	//
 	// example:
 	//
 	// ou_nbsomva32b6utec3hgi7scxxxx
 	OrganizationalUnitId *string `json:"OrganizationalUnitId,omitempty" xml:"OrganizationalUnitId,omitempty"`
-	// 资源服务Scope权限集合
+	// A list of scopes.
 	ResourceServerScopes []*ListOrganizationalUnitsForResourceServerResponseBodyOrganizationalUnitsResourceServerScopes `json:"ResourceServerScopes,omitempty" xml:"ResourceServerScopes,omitempty" type:"Repeated"`
 }
 
@@ -175,17 +182,17 @@ func (s *ListOrganizationalUnitsForResourceServerResponseBodyOrganizationalUnits
 }
 
 type ListOrganizationalUnitsForResourceServerResponseBodyOrganizationalUnitsResourceServerScopes struct {
-	// ResourceServerScope唯一标识
+	// The scope ID.
 	//
 	// example:
 	//
 	// ress_nbte4bb3qqqnaq73rlmkqixxxx
 	ResourceServerScopeId *string `json:"ResourceServerScopeId,omitempty" xml:"ResourceServerScopeId,omitempty"`
-	// ResourceServerScope名称
+	// The scope name.
 	//
 	// example:
 	//
-	// 获取资源信息
+	// Read User Info
 	ResourceServerScopeName *string `json:"ResourceServerScopeName,omitempty" xml:"ResourceServerScopeName,omitempty"`
 }
 

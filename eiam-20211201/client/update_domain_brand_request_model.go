@@ -18,13 +18,15 @@ type iUpdateDomainBrandRequest interface {
 }
 
 type UpdateDomainBrandRequest struct {
+	// The brand ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// brand_xxxx
 	BrandId *string `json:"BrandId,omitempty" xml:"BrandId,omitempty"`
-	// 域名ID。
+	// The domain name ID.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +34,7 @@ type UpdateDomainBrandRequest struct {
 	//
 	// dm_examplexxxxx
 	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

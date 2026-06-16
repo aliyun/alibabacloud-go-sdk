@@ -16,7 +16,7 @@ type iGetInstanceQuotaRequest interface {
 }
 
 type GetInstanceQuotaRequest struct {
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type GetInstanceQuotaRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 配额类型，QuotaEnum
+	// The quota type.
 	//
 	// This parameter is required.
 	//

@@ -24,14 +24,17 @@ type iListGroupsForResourceServerRequest interface {
 }
 
 type ListGroupsForResourceServerRequest struct {
+	// The ID of the resource server application.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
-	ApplicationId *string                                     `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	Filter        []*ListGroupsForResourceServerRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
-	// IDaaS EIAM实例的ID。
+	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The filter conditions.
+	Filter []*ListGroupsForResourceServerRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
+	// The ID of the instance.
 	//
 	// This parameter is required.
 	//
@@ -39,17 +42,19 @@ type ListGroupsForResourceServerRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The maximum number of entries to return on each page.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 查询凭证（Token），取值为上一次API调用返回的NextToken参数值。
+	// The token for the next page of results. You do not need to provide this parameter for the first request. For subsequent requests, set this to the `NextToken` value from the previous response.
 	//
 	// example:
 	//
 	// NTxxxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 权限唯一标识。
+	// The ID of the scope.
 	//
 	// example:
 	//
@@ -133,10 +138,13 @@ func (s *ListGroupsForResourceServerRequest) Validate() error {
 }
 
 type ListGroupsForResourceServerRequestFilter struct {
+	// The name of the filter condition. The only valid value is GroupIds.
+	//
 	// example:
 	//
 	// GroupIds
-	Name  *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The values for the filter condition.
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 

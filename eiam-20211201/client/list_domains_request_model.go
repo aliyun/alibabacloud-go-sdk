@@ -16,6 +16,11 @@ type iListDomainsRequest interface {
 }
 
 type ListDomainsRequest struct {
+	// The brand ID.
+	//
+	// example:
+	//
+	// brand_xxxx
 	BrandId *string `json:"BrandId,omitempty" xml:"BrandId,omitempty"`
 	// The instance ID.
 	//

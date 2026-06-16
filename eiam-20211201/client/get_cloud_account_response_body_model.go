@@ -16,7 +16,10 @@ type iGetCloudAccountResponseBody interface {
 }
 
 type GetCloudAccountResponseBody struct {
+	// The details of the Alibaba Cloud account.
 	CloudAccount *GetCloudAccountResponseBodyCloudAccount `json:"CloudAccount,omitempty" xml:"CloudAccount,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
@@ -59,61 +62,74 @@ func (s *GetCloudAccountResponseBody) Validate() error {
 }
 
 type GetCloudAccountResponseBodyCloudAccount struct {
-	// 云账号外部唯一ID
+	// The unique external ID of the Alibaba Cloud account.
 	//
 	// example:
 	//
 	// 1234567
 	CloudAccountExternalId *string `json:"CloudAccountExternalId,omitempty" xml:"CloudAccountExternalId,omitempty"`
-	// 云账号状态
+	// The health status of the Alibaba Cloud account. Valid values:
+	//
+	// - healthy: Healthy.
+	//
+	// - unhealthy: Unhealthy.
+	//
+	// - unknown: Unknown.
 	//
 	// example:
 	//
 	// healthy
-	CloudAccountHealth            *string                                                               `json:"CloudAccountHealth,omitempty" xml:"CloudAccountHealth,omitempty"`
+	CloudAccountHealth *string `json:"CloudAccountHealth,omitempty" xml:"CloudAccountHealth,omitempty"`
+	// The health check result for the cloud account.
 	CloudAccountHealthCheckResult *GetCloudAccountResponseBodyCloudAccountCloudAccountHealthCheckResult `json:"CloudAccountHealthCheckResult,omitempty" xml:"CloudAccountHealthCheckResult,omitempty" type:"Struct"`
-	// 云账号ID
+	// The ID of the Alibaba Cloud account.
 	//
 	// example:
 	//
 	// ca_01kmegjc11qa1txxxxx
 	CloudAccountId *string `json:"CloudAccountId,omitempty" xml:"CloudAccountId,omitempty"`
-	// 云账号名称
+	// The name of the Alibaba Cloud account.
 	//
 	// example:
 	//
 	// cloud_accout_xxxx
 	CloudAccountName *string `json:"CloudAccountName,omitempty" xml:"CloudAccountName,omitempty"`
-	// 云账号提供商配置
+	// The configuration of the identity provider.
 	CloudAccountProviderConfig *GetCloudAccountResponseBodyCloudAccountCloudAccountProviderConfig `json:"CloudAccountProviderConfig,omitempty" xml:"CloudAccountProviderConfig,omitempty" type:"Struct"`
-	// 云账号提供商名称
+	// The name of the identity provider.
 	//
 	// example:
 	//
 	// idaas-eiam-oidc-provider
 	CloudAccountProviderName *string `json:"CloudAccountProviderName,omitempty" xml:"CloudAccountProviderName,omitempty"`
-	// 云账号类别
+	// The type of the Alibaba Cloud account. The valid value is:
+	//
+	// - alibaba_cloud: Alibaba Cloud
 	//
 	// example:
 	//
 	// alibaba_cloud
 	CloudAccountVendorType *string `json:"CloudAccountVendorType,omitempty" xml:"CloudAccountVendorType,omitempty"`
+	// The creation time. The value is a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1649830225000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 云账号描述
+	// The description of the Alibaba Cloud account.
 	//
 	// example:
 	//
 	// cloud_accout_description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// IDaaS EIAM 实例Id
+	// The instance ID.
 	//
 	// example:
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The time of the last update. The value is a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1649830227000
@@ -251,11 +267,20 @@ func (s *GetCloudAccountResponseBodyCloudAccount) Validate() error {
 }
 
 type GetCloudAccountResponseBodyCloudAccountCloudAccountHealthCheckResult struct {
+	// The reason for the fault. This field returns a value when the health check status is unhealthy.
 	ErrorReason *GetCloudAccountResponseBodyCloudAccountCloudAccountHealthCheckResultErrorReason `json:"ErrorReason,omitempty" xml:"ErrorReason,omitempty" type:"Struct"`
+	// The time of the last check. The value is a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1649830226000
 	LastCheckTime *int64 `json:"LastCheckTime,omitempty" xml:"LastCheckTime,omitempty"`
+	// The result of the health check for the cloud account. Valid values:
+	//
+	// - success: The health check was successful.
+	//
+	// - failed: The health check failed.
+	//
 	// example:
 	//
 	// success
@@ -307,10 +332,14 @@ func (s *GetCloudAccountResponseBodyCloudAccountCloudAccountHealthCheckResult) V
 }
 
 type GetCloudAccountResponseBodyCloudAccountCloudAccountHealthCheckResultErrorReason struct {
+	// The error code.
+	//
 	// example:
 	//
 	// AuthenticationFail.NoPermission
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The description of the error.
+	//
 	// example:
 	//
 	// There is no permission.
@@ -348,25 +377,25 @@ func (s *GetCloudAccountResponseBodyCloudAccountCloudAccountHealthCheckResultErr
 }
 
 type GetCloudAccountResponseBodyCloudAccountCloudAccountProviderConfig struct {
-	// 受众标识
+	// The audience identity.
 	//
 	// example:
 	//
 	// urn:cloud:idaas:sts:xxx:xxx
 	Audience *string `json:"Audience,omitempty" xml:"Audience,omitempty"`
-	// 授权服务ID
+	// The ID of the authorization server.
 	//
 	// example:
 	//
 	// iauths_system
 	AuthorizationServerId *string `json:"AuthorizationServerId,omitempty" xml:"AuthorizationServerId,omitempty"`
-	// Issuer。
+	// The issuer.
 	//
 	// example:
 	//
 	// https://xxxxx.aliyunidaas.com/api/v2/iauths_system/oauth2
 	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
-	// 验签公钥端点
+	// The public key endpoint for signature verification.
 	//
 	// example:
 	//

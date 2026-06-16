@@ -68,21 +68,17 @@ type GetNetworkAccessEndpointResponseBodyNetworkAccessEndpoint struct {
 	//
 	// 1649830226000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Public egress ip address range of the dedicated network endpoint
-	//
-	// This field is returned only when NetworkEndpointType is set to private.
+	// Public egress ip address range of the dedicated network endpoint This field is returned only when NetworkEndpointType is set to private.
 	//
 	// example:
 	//
 	// 172.168.x.x
 	EgressPrivateIpAddresses []*string `json:"EgressPrivateIpAddresses,omitempty" xml:"EgressPrivateIpAddresses,omitempty" type:"Repeated"`
-	// Public egress ip address range of the shared network endpoint
-	//
-	// This field is returned only when networkEndpointType is set to shared.
+	// Public egress ip address range of the shared network endpoint This field is returned only when networkEndpointType is set to shared.
 	//
 	// example:
 	//
-	// 8.xx.xx.xxx/27
+	// 203.0.XX.XX/27
 	EgressPublicIpAddresses []*string `json:"EgressPublicIpAddresses,omitempty" xml:"EgressPublicIpAddresses,omitempty" type:"Repeated"`
 	// Instance ID.
 	//
@@ -100,11 +96,9 @@ type GetNetworkAccessEndpointResponseBodyNetworkAccessEndpoint struct {
 	//
 	// example:
 	//
-	// xx business VPC access endpoint
+	// Xx-business VPC access endpoint
 	NetworkAccessEndpointName *string `json:"NetworkAccessEndpointName,omitempty" xml:"NetworkAccessEndpointName,omitempty"`
-	// Type of the Network Endpoint
-	//
-	// Possible values:
+	// Type of the Network Endpoint Possible values:
 	//
 	// shared: Shared network endpoint
 	//
@@ -120,9 +114,7 @@ type GetNetworkAccessEndpointResponseBodyNetworkAccessEndpoint struct {
 	//
 	// sg-examplexxx
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// Status of the Network Endpoint
-	//
-	// Possible values:
+	// Status of the Network Endpoint Possible values:
 	//
 	// pending: Pending initialization
 	//

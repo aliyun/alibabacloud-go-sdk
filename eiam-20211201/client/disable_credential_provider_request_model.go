@@ -16,7 +16,7 @@ type iDisableCredentialProviderRequest interface {
 }
 
 type DisableCredentialProviderRequest struct {
-	// 认证令牌提供商ID。
+	// The credential provider ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DisableCredentialProviderRequest struct {
 	//
 	// atp_01kr2cmj5gxxx4fvmls2e93dxxxxx
 	CredentialProviderId *string `json:"CredentialProviderId,omitempty" xml:"CredentialProviderId,omitempty"`
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

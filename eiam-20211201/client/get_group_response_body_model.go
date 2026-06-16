@@ -100,7 +100,7 @@ type GetGroupResponseBodyGroup struct {
 	GroupSourceId *string `json:"GroupSourceId,omitempty" xml:"GroupSourceId,omitempty"`
 	// The source type of the group. Only build_in may be returned, which indicates that the group was created in IDaaS.
 	//
-	// *build_in:Create By Self.
+	// \\*build_in:Create By Self.
 	//
 	// example:
 	//

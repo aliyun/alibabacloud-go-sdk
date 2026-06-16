@@ -16,7 +16,7 @@ type iEnableApplicationM2MClientRequest interface {
 }
 
 type EnableApplicationM2MClientRequest struct {
-  // IDaaS的应用资源ID。
+  // The application ID.
   // 
   // This parameter is required.
   // 
@@ -24,7 +24,7 @@ type EnableApplicationM2MClientRequest struct {
   // 
   // app_mkv7rgt4d7i4u7zqtzev2mxxxx
   ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-  // IDaaS EIAM实例的ID。
+  // The instance ID.
   // 
   // This parameter is required.
   // 

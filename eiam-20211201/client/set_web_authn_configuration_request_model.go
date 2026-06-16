@@ -22,21 +22,21 @@ type iSetWebAuthnConfigurationRequest interface {
 }
 
 type SetWebAuthnConfigurationRequest struct {
-	// AAGUID及其名称列表
+	// List of AAGUIDs and their names.
 	Aaguids []*SetWebAuthnConfigurationRequestAaguids `json:"Aaguids,omitempty" xml:"Aaguids,omitempty" type:"Repeated"`
-	// 是否开启AAGUID校验
+	// Enable AAGUID verification.
 	//
 	// example:
 	//
 	// true
 	EnableAaguidVerification *bool `json:"EnableAaguidVerification,omitempty" xml:"EnableAaguidVerification,omitempty"`
-	// 是否开启WebAuthn认证器MDS校验
+	// Enable WebAuthn authenticator MDS verification.
 	//
 	// example:
 	//
 	// true
 	EnableMetadataServiceVerification *bool `json:"EnableMetadataServiceVerification,omitempty" xml:"EnableMetadataServiceVerification,omitempty"`
-	// 是否允许用户自注册WebAuthn认证器
+	// Allow user self-registration of WebAuthn authenticators.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type SetWebAuthnConfigurationRequest struct {
 	//
 	// true
 	EnableUserSelfRegistration *bool `json:"EnableUserSelfRegistration,omitempty" xml:"EnableUserSelfRegistration,omitempty"`
-	// IDaaS EIAM实例的ID。
+	// Instance ID.
 	//
 	// This parameter is required.
 	//
@@ -121,13 +121,13 @@ func (s *SetWebAuthnConfigurationRequest) Validate() error {
 }
 
 type SetWebAuthnConfigurationRequestAaguids struct {
-	// AAGUID
+	// AAGUID.
 	//
 	// example:
 	//
 	// adce0002-35bc-c60a-648b-0b25f1f05503
 	Aaguid *string `json:"Aaguid,omitempty" xml:"Aaguid,omitempty"`
-	// AAGUID名称
+	// AAGUID name.
 	//
 	// example:
 	//

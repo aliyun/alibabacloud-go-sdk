@@ -16,7 +16,7 @@ type iGetDomainResponseBody interface {
 }
 
 type GetDomainResponseBody struct {
-	// The domain name.
+	// The domain name object.
 	Domain *GetDomainResponseBodyDomain `json:"Domain,omitempty" xml:"Domain,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -62,26 +62,31 @@ func (s *GetDomainResponseBody) Validate() error {
 }
 
 type GetDomainResponseBodyDomain struct {
+	// The ID of the brand.
+	//
+	// example:
+	//
+	// brand_xxxxx
 	BrandId *string `json:"BrandId,omitempty" xml:"BrandId,omitempty"`
-	// The start time when the change order was created.
+	// The time when the domain name was created. This value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1649830226000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Whether it is the default domain.
+	// Specifies whether the domain name is the default domain name.
 	//
 	// example:
 	//
 	// false
 	DefaultDomain *bool `json:"DefaultDomain,omitempty" xml:"DefaultDomain,omitempty"`
-	// The domain.
+	// The domain name.
 	//
 	// example:
 	//
 	// login.example.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// Domain ID.
+	// The ID of the domain name.
 	//
 	// example:
 	//
@@ -89,33 +94,33 @@ type GetDomainResponseBodyDomain struct {
 	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
 	// The type of the domain name. Valid values:
 	//
-	// 	- **system_init**: Initialize domain
+	// - system_init: The initial domain name.
 	//
-	// 	- **user_custom**: user custom domain
+	// - user_custom: A custom domain name.
 	//
 	// example:
 	//
 	// system_init
 	DomainType *string `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
-	// Domain registration information.
+	// The ICP filing information about the domain name.
 	Filing *GetDomainResponseBodyDomainFiling `json:"Filing,omitempty" xml:"Filing,omitempty" type:"Struct"`
-	// The instance ID.
+	// The ID of the instance.
 	//
 	// example:
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The lock status of the instance. Valid values:
+	// The lock status of the domain name. Valid values:
 	//
-	// 	- **Unlock**: The instance is normal.
+	// - unlock: Normal.
 	//
-	// 	- **lockByLicense**: Not available due to license restrictions.
+	// - lockByLicense: The domain name is unavailable due to license restrictions.
 	//
 	// example:
 	//
 	// unlock
 	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
-	// The time when the service was updated.
+	// The time when the domain name was last updated. This value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -231,9 +236,11 @@ func (s *GetDomainResponseBodyDomain) Validate() error {
 }
 
 type GetDomainResponseBodyDomainFiling struct {
-	// <notice>The ICP filing number is only applicable for services in the China region.  For non-China regions, no validation or display of this record number will be performed.</notice>
+	// The ICP filing number that is associated with the domain name. The ICP filing number can be for an entity or a website.
 	//
-	// The ICP filing number associated with the domain name, with a maximum length of 64 characters.
+	// example:
+	//
+	// xICPxxxxxx-xx
 	IcpNumber *string `json:"IcpNumber,omitempty" xml:"IcpNumber,omitempty"`
 }
 

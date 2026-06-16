@@ -22,21 +22,28 @@ type iListResourceServersForUserResponseBody interface {
 }
 
 type ListResourceServersForUserResponseBody struct {
+	// The number of entries returned per page.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 本次调用返回的查询凭证（Token）值，用于下一次翻页查询。
+	// The token for the next page of results.
 	//
 	// example:
 	//
 	// NTxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
-	RequestId       *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of ResourceServer applications.
 	ResourceServers []*ListResourceServersForUserResponseBodyResourceServers `json:"ResourceServers,omitempty" xml:"ResourceServers,omitempty" type:"Repeated"`
+	// The total number of entries in the list.
+	//
 	// example:
 	//
 	// 100
@@ -110,23 +117,25 @@ func (s *ListResourceServersForUserResponseBody) Validate() error {
 }
 
 type ListResourceServersForUserResponseBodyResourceServers struct {
-	// 资源服务应用的唯一标识
+	// The ID of the ResourceServer application.
 	//
 	// example:
 	//
 	// app_nbsomva32b6utec3hgi7scxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// 实例唯一标识
+	// The instance ID.
 	//
 	// example:
 	//
 	// idaas_qsw77zl5vrllwzyrrfwbmpxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The unique identifier of the ResourceServer.
+	//
 	// example:
 	//
 	// urn:idaas:test
 	ResourceServerIdentifier *string `json:"ResourceServerIdentifier,omitempty" xml:"ResourceServerIdentifier,omitempty"`
-	// 资源服务Scope权限集合
+	// The list of granted Scope permissions.
 	ResourceServerScopes []*ListResourceServersForUserResponseBodyResourceServersResourceServerScopes `json:"ResourceServerScopes,omitempty" xml:"ResourceServerScopes,omitempty" type:"Repeated"`
 }
 
@@ -188,25 +197,25 @@ func (s *ListResourceServersForUserResponseBodyResourceServers) Validate() error
 }
 
 type ListResourceServersForUserResponseBodyResourceServersResourceServerScopes struct {
-	// 直接分配给当前用户的权限，视为直接授权。
+	// Indicates whether a direct authorization exists.
 	//
 	// example:
 	//
 	// true
 	HasDirectAuthorization *bool `json:"HasDirectAuthorization,omitempty" xml:"HasDirectAuthorization,omitempty"`
-	// 通过用户隶属的组织、组获取的权限，视为继承权限。
+	// Indicates whether an inherited permission exists.
 	//
 	// example:
 	//
 	// false
 	HasInheritAuthorization *bool `json:"HasInheritAuthorization,omitempty" xml:"HasInheritAuthorization,omitempty"`
-	// ResourceServerScope唯一标识
+	// The ID of the Scope permission.
 	//
 	// example:
 	//
 	// ress_nbte4bb3qqqnaq73rlmkqixxxx
 	ResourceServerScopeId *string `json:"ResourceServerScopeId,omitempty" xml:"ResourceServerScopeId,omitempty"`
-	// ResourceServerScope名称
+	// The name of the Scope permission.
 	//
 	// example:
 	//

@@ -20,17 +20,22 @@ type iListSynchronizationJobsResponseBody interface {
 }
 
 type ListSynchronizationJobsResponseBody struct {
-	// 本次调用返回的查询凭证（Token）值，用于下一次翻页查询。
+	// The token to retrieve the next page of results.
 	//
 	// example:
 	//
 	// NTxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
-	RequestId           *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// A list of sync task information.
 	SynchronizationJobs []*ListSynchronizationJobsResponseBodySynchronizationJobs `json:"SynchronizationJobs,omitempty" xml:"SynchronizationJobs,omitempty" type:"Repeated"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 100
@@ -95,55 +100,79 @@ func (s *ListSynchronizationJobsResponseBody) Validate() error {
 }
 
 type ListSynchronizationJobsResponseBodySynchronizationJobs struct {
+	// The description of the sync task.
+	//
 	// example:
 	//
-	// 描述
+	// Description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 同步任务方向
+	// The direction of the sync task. Valid values:
+	//
+	// - ingress: Inbound.
+	//
+	// - egress: Outbound.
 	//
 	// example:
 	//
 	// ingress
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	// 同步结束时间
+	// The synchronization end time. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1649830226000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// 同步任务结果
+	// The result of the sync task.
 	Result *ListSynchronizationJobsResponseBodySynchronizationJobsResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// 同步开始时间
+	// The synchronization start time. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1649830226000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// 同步任务状态
+	// The status of the sync task. Valid values:
+	//
+	// - pending: The task is pending.
+	//
+	// - running: The task is running.
+	//
+	// - failed: The task failed.
+	//
+	// - partial_success: The task is partially successful.
+	//
+	// - success: The task is successful.
 	//
 	// example:
 	//
 	// success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 同步任务ID
+	// The sync task ID.
 	//
 	// example:
 	//
 	// sync_0000347vjovtcf41li0fgsd98gn24q9njxxxxx
 	SynchronizationJobId *string `json:"SynchronizationJobId,omitempty" xml:"SynchronizationJobId,omitempty"`
-	// 同步目标ID
+	// The synchronization target ID.
 	//
 	// example:
 	//
 	// idp_my664lwkhpicbyzirog3xxxxx
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
-	// 同步目标类型
+	// The type of the synchronization target. Valid values:
+	//
+	// - identity_provider: Identity provider.
+	//
+	// - application: Application.
 	//
 	// example:
 	//
 	// identity_provider
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	// 同步触发类型
+	// The trigger type of the synchronization. Valid values:
+	//
+	// - auto: Automatic.
+	//
+	// - manual: Manual.
 	//
 	// example:
 	//
@@ -259,21 +288,25 @@ func (s *ListSynchronizationJobsResponseBodySynchronizationJobs) Validate() erro
 }
 
 type ListSynchronizationJobsResponseBodySynchronizationJobsResult struct {
-	// 同步结果错误码
+	// The error code for the synchronization result.
 	//
 	// example:
 	//
-	// ErrorCodeNotFound
+	// MissingParameter.Username
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 同步结果错误信息描述
+	// The error message for the synchronization result.
+	//
+	// example:
+	//
+	// The specified parameter Username is required!
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// 组成员同步结果统计
+	// The statistics of group member synchronization results.
 	GroupMemberStatistics *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatistics `json:"GroupMemberStatistics,omitempty" xml:"GroupMemberStatistics,omitempty" type:"Struct"`
-	// 组同步结果统计
+	// The statistics of group synchronization results.
 	GroupStatistics *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatistics `json:"GroupStatistics,omitempty" xml:"GroupStatistics,omitempty" type:"Struct"`
-	// 组织同步结果统计
+	// The statistics of organization synchronization results.
 	OrganizationalUnitStatistics *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatistics `json:"OrganizationalUnitStatistics,omitempty" xml:"OrganizationalUnitStatistics,omitempty" type:"Struct"`
-	// 用户同步结果统计
+	// The statistics of user synchronization results.
 	UserStatistics *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatistics `json:"UserStatistics,omitempty" xml:"UserStatistics,omitempty" type:"Struct"`
 }
 
@@ -364,17 +397,17 @@ func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResult) Validate(
 }
 
 type ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatistics struct {
-	// 绑定结果统计
+	// The statistics of binding results.
 	Binded *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsBinded `json:"Binded,omitempty" xml:"Binded,omitempty" type:"Struct"`
-	// 创建结果统计
+	// The statistics of creation results.
 	Created *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsCreated `json:"Created,omitempty" xml:"Created,omitempty" type:"Struct"`
-	// 删除结果统计
+	// The statistics of deletion results.
 	Deleted *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsDeleted `json:"Deleted,omitempty" xml:"Deleted,omitempty" type:"Struct"`
-	// 推送结果统计
+	// The statistics of push results.
 	Pushed *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsPushed `json:"Pushed,omitempty" xml:"Pushed,omitempty" type:"Struct"`
-	// 相同结果统计
+	// The statistics of identical entries.
 	Same *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsSame `json:"Same,omitempty" xml:"Same,omitempty" type:"Struct"`
-	// 更新结果统计
+	// The statistics of update results.
 	Updated *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsUpdated `json:"Updated,omitempty" xml:"Updated,omitempty" type:"Struct"`
 }
 
@@ -475,25 +508,25 @@ func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMember
 }
 
 type ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsBinded struct {
-	// 失败数目
+	// The number of failed operations.
 	//
 	// example:
 	//
 	// 1
 	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
-	// 跳过数目
+	// The number of skipped operations.
 	//
 	// example:
 	//
 	// 1
 	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
-	// 成功数目
+	// The number of successful operations.
 	//
 	// example:
 	//
 	// 1
 	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
-	// 总共数目
+	// The total number.
 	//
 	// example:
 	//
@@ -550,25 +583,25 @@ func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMember
 }
 
 type ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsCreated struct {
-	// 失败数目
+	// The number of failed operations.
 	//
 	// example:
 	//
 	// 1
 	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
-	// 跳过数目
+	// The number of skipped operations.
 	//
 	// example:
 	//
 	// 1
 	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
-	// 成功数目
+	// The number of successful operations.
 	//
 	// example:
 	//
 	// 1
 	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
-	// 总共数目
+	// The total number.
 	//
 	// example:
 	//
@@ -625,25 +658,25 @@ func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMember
 }
 
 type ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsDeleted struct {
-	// 失败数目
+	// The number of failed operations.
 	//
 	// example:
 	//
 	// 1
 	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
-	// 跳过数目
+	// The number of skipped operations.
 	//
 	// example:
 	//
 	// 1
 	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
-	// 成功数目
+	// The number of successful operations.
 	//
 	// example:
 	//
 	// 1
 	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
-	// 总共数目
+	// The total number.
 	//
 	// example:
 	//
@@ -700,25 +733,25 @@ func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMember
 }
 
 type ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsPushed struct {
-	// 失败数目
+	// The number of failed operations.
 	//
 	// example:
 	//
 	// 1
 	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
-	// 跳过数目
+	// The number of skipped operations.
 	//
 	// example:
 	//
 	// 1
 	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
-	// 成功数目
+	// The number of successful operations.
 	//
 	// example:
 	//
 	// 1
 	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
-	// 总共数目
+	// The total number.
 	//
 	// example:
 	//
@@ -775,25 +808,25 @@ func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMember
 }
 
 type ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsSame struct {
-	// 失败数目
+	// The number of failed operations.
 	//
 	// example:
 	//
 	// 1
 	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
-	// 跳过数目
+	// The number of skipped operations.
 	//
 	// example:
 	//
 	// 1
 	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
-	// 成功数目
+	// The number of successful operations.
 	//
 	// example:
 	//
 	// 1
 	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
-	// 总共数目
+	// The total number.
 	//
 	// example:
 	//
@@ -850,25 +883,25 @@ func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMember
 }
 
 type ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsUpdated struct {
-	// 失败数目
+	// The number of failed operations.
 	//
 	// example:
 	//
 	// 1
 	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
-	// 跳过数目
+	// The number of skipped operations.
 	//
 	// example:
 	//
 	// 1
 	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
-	// 成功数目
+	// The number of successful operations.
 	//
 	// example:
 	//
 	// 1
 	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
-	// 总共数目
+	// The total number.
 	//
 	// example:
 	//
@@ -925,17 +958,17 @@ func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMember
 }
 
 type ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatistics struct {
-	// 绑定结果统计
+	// The statistics of binding results.
 	Binded *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsBinded `json:"Binded,omitempty" xml:"Binded,omitempty" type:"Struct"`
-	// 创建结果统计
+	// The statistics of creation results.
 	Created *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsCreated `json:"Created,omitempty" xml:"Created,omitempty" type:"Struct"`
-	// 删除结果统计
+	// The statistics of deletion results.
 	Deleted *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsDeleted `json:"Deleted,omitempty" xml:"Deleted,omitempty" type:"Struct"`
-	// 推送结果统计
+	// The statistics of push results.
 	Pushed *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsPushed `json:"Pushed,omitempty" xml:"Pushed,omitempty" type:"Struct"`
-	// 相同结果统计
+	// The statistics of identical entries.
 	Same *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsSame `json:"Same,omitempty" xml:"Same,omitempty" type:"Struct"`
-	// 更新结果统计
+	// The statistics of update results.
 	Updated *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsUpdated `json:"Updated,omitempty" xml:"Updated,omitempty" type:"Struct"`
 }
 
@@ -1036,25 +1069,25 @@ func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatis
 }
 
 type ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsBinded struct {
-	// 失败数目
+	// The number of failed operations.
 	//
 	// example:
 	//
 	// 1
 	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
-	// 跳过数目
+	// The number of skipped operations.
 	//
 	// example:
 	//
 	// 1
 	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
-	// 成功数目
+	// The number of successful operations.
 	//
 	// example:
 	//
 	// 1
 	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
-	// 总共数目
+	// The total number.
 	//
 	// example:
 	//
@@ -1111,25 +1144,25 @@ func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatis
 }
 
 type ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsCreated struct {
-	// 失败数目
+	// The number of failed operations.
 	//
 	// example:
 	//
 	// 1
 	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
-	// 跳过数目
+	// The number of skipped operations.
 	//
 	// example:
 	//
 	// 1
 	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
-	// 成功数目
+	// The number of successful operations.
 	//
 	// example:
 	//
 	// 1
 	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
-	// 总共数目
+	// The total number.
 	//
 	// example:
 	//
@@ -1186,25 +1219,25 @@ func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatis
 }
 
 type ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsDeleted struct {
-	// 失败数目
+	// The number of failed operations.
 	//
 	// example:
 	//
 	// 1
 	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
-	// 跳过数目
+	// The number of skipped operations.
 	//
 	// example:
 	//
 	// 1
 	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
-	// 成功数目
+	// The number of successful operations.
 	//
 	// example:
 	//
 	// 1
 	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
-	// 总共数目
+	// The total number.
 	//
 	// example:
 	//
@@ -1261,25 +1294,25 @@ func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatis
 }
 
 type ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsPushed struct {
-	// 失败数目
+	// The number of failed operations.
 	//
 	// example:
 	//
 	// 1
 	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
-	// 跳过数目
+	// The number of skipped operations.
 	//
 	// example:
 	//
 	// 1
 	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
-	// 成功数目
+	// The number of successful operations.
 	//
 	// example:
 	//
 	// 1
 	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
-	// 总共数目
+	// The total number.
 	//
 	// example:
 	//
@@ -1336,25 +1369,25 @@ func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatis
 }
 
 type ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsSame struct {
-	// 失败数目
+	// The number of failed operations.
 	//
 	// example:
 	//
 	// 1
 	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
-	// 跳过数目
+	// The number of skipped operations.
 	//
 	// example:
 	//
 	// 1
 	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
-	// 成功数目
+	// The number of successful operations.
 	//
 	// example:
 	//
 	// 1
 	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
-	// 总共数目
+	// The total number.
 	//
 	// example:
 	//
@@ -1411,25 +1444,25 @@ func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatis
 }
 
 type ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsUpdated struct {
-	// 失败数目
+	// The number of failed operations.
 	//
 	// example:
 	//
 	// 1
 	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
-	// 跳过数目
+	// The number of skipped operations.
 	//
 	// example:
 	//
 	// 1
 	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
-	// 成功数目
+	// The number of successful operations.
 	//
 	// example:
 	//
 	// 1
 	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
-	// 总共数目
+	// The total number.
 	//
 	// example:
 	//
@@ -1486,17 +1519,17 @@ func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatis
 }
 
 type ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatistics struct {
-	// 绑定结果统计
+	// The statistics of binding results.
 	Binded *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsBinded `json:"Binded,omitempty" xml:"Binded,omitempty" type:"Struct"`
-	// 创建结果统计
+	// The statistics of creation results.
 	Created *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsCreated `json:"Created,omitempty" xml:"Created,omitempty" type:"Struct"`
-	// 删除结果统计
+	// The statistics of deletion results.
 	Deleted *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsDeleted `json:"Deleted,omitempty" xml:"Deleted,omitempty" type:"Struct"`
-	// 推送结果统计
+	// The statistics of push results.
 	Pushed *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsPushed `json:"Pushed,omitempty" xml:"Pushed,omitempty" type:"Struct"`
-	// 相同结果统计
+	// The statistics of identical entries.
 	Same *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsSame `json:"Same,omitempty" xml:"Same,omitempty" type:"Struct"`
-	// 更新结果统计
+	// The statistics of update results.
 	Updated *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsUpdated `json:"Updated,omitempty" xml:"Updated,omitempty" type:"Struct"`
 }
 
@@ -1597,25 +1630,25 @@ func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizatio
 }
 
 type ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsBinded struct {
-	// 失败数目
+	// The number of failed operations.
 	//
 	// example:
 	//
 	// 1
 	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
-	// 跳过数目
+	// The number of skipped operations.
 	//
 	// example:
 	//
 	// 1
 	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
-	// 成功数目
+	// The number of successful operations.
 	//
 	// example:
 	//
 	// 1
 	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
-	// 总共数目
+	// The total number.
 	//
 	// example:
 	//
@@ -1672,25 +1705,25 @@ func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizatio
 }
 
 type ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsCreated struct {
-	// 失败数目
+	// The number of failed operations.
 	//
 	// example:
 	//
 	// 1
 	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
-	// 跳过数目
+	// The number of skipped operations.
 	//
 	// example:
 	//
 	// 1
 	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
-	// 成功数目
+	// The number of successful operations.
 	//
 	// example:
 	//
 	// 1
 	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
-	// 总共数目
+	// The total number.
 	//
 	// example:
 	//
@@ -1747,25 +1780,25 @@ func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizatio
 }
 
 type ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsDeleted struct {
-	// 失败数目
+	// The number of failed operations.
 	//
 	// example:
 	//
 	// 1
 	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
-	// 跳过数目
+	// The number of skipped operations.
 	//
 	// example:
 	//
 	// 1
 	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
-	// 成功数目
+	// The number of successful operations.
 	//
 	// example:
 	//
 	// 1
 	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
-	// 总共数目
+	// The total number.
 	//
 	// example:
 	//
@@ -1822,25 +1855,25 @@ func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizatio
 }
 
 type ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsPushed struct {
-	// 失败数目
+	// The number of failed operations.
 	//
 	// example:
 	//
 	// 1
 	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
-	// 跳过数目
+	// The number of skipped operations.
 	//
 	// example:
 	//
 	// 1
 	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
-	// 成功数目
+	// The number of successful operations.
 	//
 	// example:
 	//
 	// 1
 	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
-	// 总共数目
+	// The total number.
 	//
 	// example:
 	//
@@ -1897,25 +1930,25 @@ func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizatio
 }
 
 type ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsSame struct {
-	// 失败数目
+	// The number of failed operations.
 	//
 	// example:
 	//
 	// 1
 	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
-	// 跳过数目
+	// The number of skipped operations.
 	//
 	// example:
 	//
 	// 1
 	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
-	// 成功数目
+	// The number of successful operations.
 	//
 	// example:
 	//
 	// 1
 	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
-	// 总共数目
+	// The total number.
 	//
 	// example:
 	//
@@ -1972,25 +2005,25 @@ func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizatio
 }
 
 type ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsUpdated struct {
-	// 失败数目
+	// The number of failed operations.
 	//
 	// example:
 	//
 	// 1
 	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
-	// 跳过数目
+	// The number of skipped operations.
 	//
 	// example:
 	//
 	// 1
 	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
-	// 成功数目
+	// The number of successful operations.
 	//
 	// example:
 	//
 	// 1
 	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
-	// 总共数目
+	// The total number.
 	//
 	// example:
 	//
@@ -2047,18 +2080,19 @@ func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizatio
 }
 
 type ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatistics struct {
-	// 绑定结果统计
+	// The statistics of binding results.
 	Binded *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsBinded `json:"Binded,omitempty" xml:"Binded,omitempty" type:"Struct"`
-	// 创建结果统计
+	// The statistics of creation results.
 	Created *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsCreated `json:"Created,omitempty" xml:"Created,omitempty" type:"Struct"`
-	// 删除结果统计
-	Deleted  *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsDeleted  `json:"Deleted,omitempty" xml:"Deleted,omitempty" type:"Struct"`
+	// The statistics of deletion results.
+	Deleted *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsDeleted `json:"Deleted,omitempty" xml:"Deleted,omitempty" type:"Struct"`
+	// The statistics of export results.
 	Exported *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsExported `json:"Exported,omitempty" xml:"Exported,omitempty" type:"Struct"`
-	// 推送结果统计
+	// The statistics of push results.
 	Pushed *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsPushed `json:"Pushed,omitempty" xml:"Pushed,omitempty" type:"Struct"`
-	// 相同结果统计
+	// The statistics of identical entries.
 	Same *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsSame `json:"Same,omitempty" xml:"Same,omitempty" type:"Struct"`
-	// 更新结果统计
+	// The statistics of update results.
 	Updated *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsUpdated `json:"Updated,omitempty" xml:"Updated,omitempty" type:"Struct"`
 }
 
@@ -2173,25 +2207,25 @@ func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatist
 }
 
 type ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsBinded struct {
-	// 失败数目
+	// The number of failed operations.
 	//
 	// example:
 	//
 	// 1
 	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
-	// 跳过数目
+	// The number of skipped operations.
 	//
 	// example:
 	//
 	// 1
 	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
-	// 成功数目
+	// The number of successful operations.
 	//
 	// example:
 	//
 	// 1
 	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
-	// 总共数目
+	// The total number.
 	//
 	// example:
 	//
@@ -2248,25 +2282,25 @@ func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatist
 }
 
 type ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsCreated struct {
-	// 失败数目
+	// The number of failed operations.
 	//
 	// example:
 	//
 	// 1
 	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
-	// 跳过数目
+	// The number of skipped operations.
 	//
 	// example:
 	//
 	// 1
 	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
-	// 成功数目
+	// The number of successful operations.
 	//
 	// example:
 	//
 	// 1
 	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
-	// 总共数目
+	// The total number.
 	//
 	// example:
 	//
@@ -2323,25 +2357,25 @@ func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatist
 }
 
 type ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsDeleted struct {
-	// 失败数目
+	// The number of failed operations.
 	//
 	// example:
 	//
 	// 1
 	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
-	// 跳过数目
+	// The number of skipped operations.
 	//
 	// example:
 	//
 	// 1
 	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
-	// 成功数目
+	// The number of successful operations.
 	//
 	// example:
 	//
 	// 1
 	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
-	// 总共数目
+	// The total number.
 	//
 	// example:
 	//
@@ -2398,10 +2432,30 @@ func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatist
 }
 
 type ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsExported struct {
-	Failed  *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	// The number of failed operations.
+	//
+	// example:
+	//
+	// 2
+	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	// The number of skipped operations.
+	//
+	// example:
+	//
+	// 1
 	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
+	// The number of successful operations.
+	//
+	// example:
+	//
+	// 2
 	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
-	Total   *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+	// The total number.
+	//
+	// example:
+	//
+	// 5
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsExported) String() string {
@@ -2453,25 +2507,25 @@ func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatist
 }
 
 type ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsPushed struct {
-	// 失败数目
+	// The number of failed operations.
 	//
 	// example:
 	//
 	// 1
 	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
-	// 跳过数目
+	// The number of skipped operations.
 	//
 	// example:
 	//
 	// 1
 	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
-	// 成功数目
+	// The number of successful operations.
 	//
 	// example:
 	//
 	// 1
 	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
-	// 总共数目
+	// The total number.
 	//
 	// example:
 	//
@@ -2528,25 +2582,25 @@ func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatist
 }
 
 type ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsSame struct {
-	// 失败数目
+	// The number of failed operations.
 	//
 	// example:
 	//
 	// 1
 	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
-	// 跳过数目
+	// The number of skipped operations.
 	//
 	// example:
 	//
 	// 1
 	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
-	// 成功数目
+	// The number of successful operations.
 	//
 	// example:
 	//
 	// 1
 	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
-	// 总共数目
+	// The total number.
 	//
 	// example:
 	//
@@ -2603,25 +2657,25 @@ func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatist
 }
 
 type ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsUpdated struct {
-	// 失败数目
+	// The number of failed operations.
 	//
 	// example:
 	//
 	// 1
 	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
-	// 跳过数目
+	// The number of skipped operations.
 	//
 	// example:
 	//
 	// 1
 	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
-	// 成功数目
+	// The number of successful operations.
 	//
 	// example:
 	//
 	// 1
 	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
-	// 总共数目
+	// The total number.
 	//
 	// example:
 	//
