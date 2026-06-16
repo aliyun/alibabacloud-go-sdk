@@ -20,16 +20,21 @@ type iMultiModalGuardAsyncResponseBody interface {
 }
 
 type MultiModalGuardAsyncResponseBody struct {
+	// The response code. A value of 200 indicates that the request was successful.
+	//
 	// example:
 	//
 	// 200
-	Code *int32                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response data.
 	Data *MultiModalGuardAsyncResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The response message.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -91,10 +96,14 @@ func (s *MultiModalGuardAsyncResponseBody) Validate() error {
 }
 
 type MultiModalGuardAsyncResponseBodyData struct {
+	// The custom data ID.
+	//
 	// example:
 	//
 	// dataIdxxx
 	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	// The ID of the asynchronous task.
+	//
 	// example:
 	//
 	// au_f_xxxxx

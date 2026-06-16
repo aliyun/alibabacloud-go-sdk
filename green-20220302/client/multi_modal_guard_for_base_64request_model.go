@@ -22,8 +22,6 @@ type MultiModalGuardForBase64Request struct {
 	//
 	// {base64}
 	ImageBase64Str *string `json:"ImageBase64Str,omitempty" xml:"ImageBase64Str,omitempty"`
-	// Service
-	//
 	// example:
 	//
 	// query_security_check

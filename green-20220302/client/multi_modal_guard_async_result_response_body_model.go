@@ -20,16 +20,21 @@ type iMultiModalGuardAsyncResultResponseBody interface {
 }
 
 type MultiModalGuardAsyncResultResponseBody struct {
+	// The status code of the response.
+	//
 	// example:
 	//
 	// 200
-	Code *int32                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response data.
 	Data *MultiModalGuardAsyncResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The response message.
+	//
 	// example:
 	//
 	// SUCCESS
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -91,20 +96,38 @@ func (s *MultiModalGuardAsyncResultResponseBody) Validate() error {
 }
 
 type MultiModalGuardAsyncResultResponseBodyData struct {
+	// The audio moderation result.
 	AudioResult *MultiModalGuardAsyncResultResponseBodyDataAudioResult `json:"AudioResult,omitempty" xml:"AudioResult,omitempty" type:"Struct"`
+	// The value of the `dataId` parameter from the request. This field is omitted if `dataId` was not provided.
+	//
 	// example:
 	//
 	// data1234
-	DataId      *string                                                `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	// The video frame moderation result.
 	FrameResult *MultiModalGuardAsyncResultResponseBodyDataFrameResult `json:"FrameResult,omitempty" xml:"FrameResult,omitempty" type:"Struct"`
+	// The unique identifier for the live stream.
+	//
 	// example:
 	//
 	// liveId
 	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	// The recommended action. Valid values:
+	//
+	// - `block`: Block the content.
+	//
+	// - `pass`: Pass the content.
+	//
+	// - `watch`: The content requires review.
+	//
+	// - `mask`: Mask the content.
+	//
 	// example:
 	//
 	// pass
 	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// vi_f_xxx
@@ -188,11 +211,16 @@ func (s *MultiModalGuardAsyncResultResponseBodyData) Validate() error {
 }
 
 type MultiModalGuardAsyncResultResponseBodyDataAudioResult struct {
+	// Details for each audio slice.
 	SliceDetails []*MultiModalGuardAsyncResultResponseBodyDataAudioResultSliceDetails `json:"SliceDetails,omitempty" xml:"SliceDetails,omitempty" type:"Repeated"`
+	// The slice count.
+	//
 	// example:
 	//
 	// 2
 	SliceNum *int32 `json:"SliceNum,omitempty" xml:"SliceNum,omitempty"`
+	// The overall recommended action for the audio content.
+	//
 	// example:
 	//
 	// pass
@@ -248,20 +276,42 @@ func (s *MultiModalGuardAsyncResultResponseBodyDataAudioResult) Validate() error
 }
 
 type MultiModalGuardAsyncResultResponseBodyDataAudioResultSliceDetails struct {
+	// Detection details for the audio slice.
 	Detail []*MultiModalGuardAsyncResultResponseBodyDataAudioResultSliceDetailsDetail `json:"Detail,omitempty" xml:"Detail,omitempty" type:"Repeated"`
+	// The end time of the audio slice, in seconds.
+	//
 	// example:
 	//
-	// 30
+	// 20
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The start time of the audio slice, in seconds.
+	//
 	// example:
 	//
 	// 0
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The recommended action. Valid values:
+	//
+	// - `block`: Block the content.
+	//
+	// - `pass`: Pass the content.
+	//
+	// - `watch`: The content requires review.
+	//
+	// - `mask`: Mask the content.
+	//
 	// example:
 	//
 	// block
 	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
-	Text       *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// The speech-to-text transcript of the audio slice.
+	//
+	// example:
+	//
+	// 今天天气真不错
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// The temporary URL of the audio slice.
+	//
 	// example:
 	//
 	// http://xxxx.abc.wav
@@ -344,15 +394,48 @@ func (s *MultiModalGuardAsyncResultResponseBodyDataAudioResultSliceDetails) Vali
 }
 
 type MultiModalGuardAsyncResultResponseBodyDataAudioResultSliceDetailsDetail struct {
+	// The risk level. Valid values:
+	//
+	// - `high`: High risk. If the content matches an entry in a custom keyword library, the risk level defaults to high.
+	//
+	// - `medium`: Medium risk.
+	//
+	// - `low`: Low risk.
+	//
+	// - `none`: No risk detected.
+	//
 	// example:
 	//
 	// high
-	Level  *string                                                                          `json:"Level,omitempty" xml:"Level,omitempty"`
+	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	// A list of detection results.
 	Result []*MultiModalGuardAsyncResultResponseBodyDataAudioResultSliceDetailsDetailResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// The recommended action. Valid values:
+	//
+	// - `block`: Block the content.
+	//
+	// - `pass`: Pass the content.
+	//
+	// - `watch`: The content requires review.
+	//
+	// - `mask`: Mask the content.
+	//
 	// example:
 	//
 	// block
 	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
+	// The detection type. Valid values:
+	//
+	// - `contentModeration`: Content moderation.
+	//
+	// - `promptAttack`: Prompt attack detection.
+	//
+	// - `sensitiveData`: Sensitive data detection.
+	//
+	// - `modelHallucination`: Model hallucination.
+	//
+	// - `maliciousFile`: Malicious file detection.
+	//
 	// example:
 	//
 	// contentModeration
@@ -417,19 +500,40 @@ func (s *MultiModalGuardAsyncResultResponseBodyDataAudioResultSliceDetailsDetail
 }
 
 type MultiModalGuardAsyncResultResponseBodyDataAudioResultSliceDetailsDetailResult struct {
+	// The confidence score, ranging from 0 to 100, accurate to two decimal places.
+	//
 	// example:
 	//
 	// 90
-	Confidence  *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
+	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	// The description of the label.
+	//
+	// example:
+	//
+	// 毒品
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Additional information about the detection result.
+	//
 	// example:
 	//
 	// {}
 	Ext interface{} `json:"Ext,omitempty" xml:"Ext,omitempty"`
+	// The label of the detection result.
+	//
 	// example:
 	//
 	// drug
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The risk level. Valid values:
+	//
+	// - `high`: High risk. If the content matches an entry in a custom keyword library, the risk level defaults to high.
+	//
+	// - `medium`: Medium risk.
+	//
+	// - `low`: Low risk.
+	//
+	// - `none`: No risk detected.
+	//
 	// example:
 	//
 	// high
@@ -494,11 +598,24 @@ func (s *MultiModalGuardAsyncResultResponseBodyDataAudioResultSliceDetailsDetail
 }
 
 type MultiModalGuardAsyncResultResponseBodyDataFrameResult struct {
+	// The moderation results for video frames.
 	Frames []*MultiModalGuardAsyncResultResponseBodyDataFrameResultFrames `json:"Frames,omitempty" xml:"Frames,omitempty" type:"Repeated"`
+	// The frame count.
+	//
 	// example:
 	//
 	// 2
 	SliceNum *int32 `json:"SliceNum,omitempty" xml:"SliceNum,omitempty"`
+	// The recommended action. Valid values:
+	//
+	// - `block`: Block the content.
+	//
+	// - `pass`: Pass the content.
+	//
+	// - `watch`: The content requires review.
+	//
+	// - `mask`: Mask the content.
+	//
 	// example:
 	//
 	// pass
@@ -554,19 +671,36 @@ func (s *MultiModalGuardAsyncResultResponseBodyDataFrameResult) Validate() error
 }
 
 type MultiModalGuardAsyncResultResponseBodyDataFrameResultFrames struct {
+	// A list of detection results.
 	Detail []*MultiModalGuardAsyncResultResponseBodyDataFrameResultFramesDetail `json:"Detail,omitempty" xml:"Detail,omitempty" type:"Repeated"`
+	// The time offset of the frame in the video, in seconds.
+	//
 	// example:
 	//
 	// 1.5
 	Offset *float32 `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	// The recommended action. Valid values:
+	//
+	// - `block`: Block the content.
+	//
+	// - `pass`: Pass the content.
+	//
+	// - `watch`: The content requires review.
+	//
+	// - `mask`: Mask the content.
+	//
 	// example:
 	//
 	// block
 	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
+	// The absolute timestamp of the frame, in milliseconds.
+	//
 	// example:
 	//
 	// 1684559739000
 	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// The temporary URL of the video frame.
+	//
 	// example:
 	//
 	// https://xxx.jpeg
@@ -640,15 +774,48 @@ func (s *MultiModalGuardAsyncResultResponseBodyDataFrameResultFrames) Validate()
 }
 
 type MultiModalGuardAsyncResultResponseBodyDataFrameResultFramesDetail struct {
+	// The risk level. Valid values include:
+	//
+	// - high: High risk. If a match is found in a custom dictionary, the risk level defaults to high.
+	//
+	// - medium: Medium risk.
+	//
+	// - low: Low risk.
+	//
+	// - none: No risk detected.
+	//
 	// example:
 	//
 	// low
-	Level  *string                                                                    `json:"Level,omitempty" xml:"Level,omitempty"`
+	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	// A list of detection results.
 	Result []*MultiModalGuardAsyncResultResponseBodyDataFrameResultFramesDetailResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// Suggestion
+	//
+	// - block: A suggestion to block.
+	//
+	// - pass: A suggestion to pass.
+	//
+	// - watch: A suggestion to watch.
+	//
+	// - mask: A suggestion to mask.
+	//
 	// example:
 	//
 	// watch
 	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
+	// The detection type. Valid values:
+	//
+	// - `contentModeration`: Content moderation.
+	//
+	// - `promptAttack`: Prompt attack detection.
+	//
+	// - `sensitiveData`: Sensitive data detection.
+	//
+	// - `modelHallucination`: Model hallucination.
+	//
+	// - `maliciousFile`: Malicious file detection.
+	//
 	// example:
 	//
 	// contentModeration
@@ -713,19 +880,40 @@ func (s *MultiModalGuardAsyncResultResponseBodyDataFrameResultFramesDetail) Vali
 }
 
 type MultiModalGuardAsyncResultResponseBodyDataFrameResultFramesDetailResult struct {
+	// The confidence score, ranging from 0 to 100, accurate to two decimal places.
+	//
 	// example:
 	//
 	// 80
-	Confidence  *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
+	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	// The description of the label.
+	//
+	// example:
+	//
+	// 广告
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Additional information about the detection result.
+	//
 	// example:
 	//
 	// {}
 	Ext interface{} `json:"Ext,omitempty" xml:"Ext,omitempty"`
+	// The label of the detection result.
+	//
 	// example:
 	//
 	// ad
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The risk level. Valid values:
+	//
+	// - `high`: High risk. If the content matches an entry in a custom keyword library, the risk level defaults to high.
+	//
+	// - `medium`: Medium risk.
+	//
+	// - `low`: Low risk.
+	//
+	// - `none`: No risk detected.
+	//
 	// example:
 	//
 	// loose

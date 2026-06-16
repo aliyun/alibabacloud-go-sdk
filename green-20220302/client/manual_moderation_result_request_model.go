@@ -14,9 +14,9 @@ type iManualModerationResultRequest interface {
 }
 
 type ManualModerationResultRequest struct {
-	// Set of parameters required by the service, in JSON string format.
+	// The set of parameters that the service requires. The value must be a JSON string.
 	//
-	// - TaskId: The task ID returned when the task was submitted.
+	// - TaskId: The ID of the task that is returned after you submit the task.
 	//
 	// example:
 	//

@@ -16,17 +16,21 @@ type iVoiceModerationCancelRequest interface {
 }
 
 type VoiceModerationCancelRequest struct {
-	// The type of the moderation service.
+	// The type of moderation service. Valid values include \\`nickname_detection\\` for user nicknames. Other values are to be determined.
 	//
 	// example:
 	//
 	// nickname_detection
 	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
-	// The parameters required by the moderation service. The value is a JSON string.
+	// The ID of the task that you want to cancel.
 	//
 	// example:
 	//
-	// {"taskId":"xxxxx-xxxx"}
+	// {
+	//
+	//         "taskId": "xxxxx-xxxx"
+	//
+	//     }
 	ServiceParameters *string `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty"`
 }
 

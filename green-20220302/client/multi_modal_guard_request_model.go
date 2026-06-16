@@ -16,10 +16,43 @@ type iMultiModalGuardRequest interface {
 }
 
 type MultiModalGuardRequest struct {
+	// The type of the moderation service. Valid values:
+	//
+	// - query_security_check: AI input content moderation.
+	//
+	// - response_security_check: AI-generated content moderation.
+	//
 	// example:
 	//
-	// query_security_check
-	Service           *string `json:"Service,omitempty" xml:"Service,omitempty"`
+	// query_security_check_pro
+	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
+	// The set of parameters required for the moderation service. The value must be a JSON string.
+	//
+	// example:
+	//
+	// - 文本：
+	//
+	// {
+	//
+	//   "content": "test"
+	//
+	// }
+	//
+	// - 图片：
+	//
+	// {
+	//
+	//   "imageUrls": ["https://example.com/image.png"]
+	//
+	// }
+	//
+	// - 文件：
+	//
+	// {
+	//
+	//   "fileUrls": ["https://example.com/file.pdf"]
+	//
+	// }
 	ServiceParameters *string `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty"`
 }
 

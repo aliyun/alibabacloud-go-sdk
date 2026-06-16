@@ -20,21 +20,21 @@ type iDescribeImageModerationResultResponseBody interface {
 }
 
 type DescribeImageModerationResultResponseBody struct {
-	// The returned HTTP status code.
+	// The error code. This is the same as the HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The image moderation results.
+	// The results of the image content moderation.
 	Data *DescribeImageModerationResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message that is returned in response to the request.
+	// The response message.
 	//
 	// example:
 	//
 	// success
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	// The request ID, which is used to locate and troubleshoot issues.
+	// The unique ID of the request. Alibaba Cloud generates this ID for each request. Use this ID to troubleshoot and locate issues.
 	//
 	// example:
 	//
@@ -96,35 +96,45 @@ func (s *DescribeImageModerationResultResponseBody) Validate() error {
 }
 
 type DescribeImageModerationResultResponseBodyData struct {
+	// The AccountId specified in the request.
+	//
+	// example:
+	//
+	// 123456789
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The value of dataId that is specified in the API request. If this parameter is not specified in the API request, this field is not available in the response.
+	// The value of the \\`dataId\\` parameter specified in the API request. This field is not returned if \\`dataId\\` was not specified.
 	//
 	// example:
 	//
 	// 2a5389eb-4ff8-4584-ac99-644e2a539aa1
 	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	// The information about the captured frames.
+	// Information about the image frames.
 	//
 	// example:
 	//
 	// [{"result":[{"confidence":81.22,"label":"violent_explosion"}]}]
 	Frame *string `json:"Frame,omitempty" xml:"Frame,omitempty"`
-	// The number of frames.
+	// The number of result frames.
 	//
 	// example:
 	//
 	// 1
-	FrameNum     *int32  `json:"FrameNum,omitempty" xml:"FrameNum,omitempty"`
+	FrameNum *int32 `json:"FrameNum,omitempty" xml:"FrameNum,omitempty"`
+	// The ID of the manual review task.
+	//
+	// example:
+	//
+	// xxxxx-xxxxx
 	ManualTaskId *string `json:"ManualTaskId,omitempty" xml:"ManualTaskId,omitempty"`
-	// The reqId field returned by the Image Async Moderation API.
+	// The \\`ReqId\\` returned by the asynchronous Image Moderation Pro API.
 	//
 	// example:
 	//
 	// B0963D30-BAB4-562F-9ED0-7A23AEC51C7C
 	ReqId *string `json:"ReqId,omitempty" xml:"ReqId,omitempty"`
-	// The results of image moderation parameters such as the label parameter and the confidence parameter.
+	// The results of the image moderation, including risk labels and confidence scores.
 	Result []*DescribeImageModerationResultResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	// Risk Level.
+	// The risk level.
 	//
 	// example:
 	//
@@ -226,25 +236,25 @@ func (s *DescribeImageModerationResultResponseBodyData) Validate() error {
 }
 
 type DescribeImageModerationResultResponseBodyDataResult struct {
-	// The score of the confidence level. Valid values: 0 to 100. The value is accurate to two decimal places.
+	// The confidence score. The value ranges from 0 to 100. The value is accurate to two decimal places.
 	//
 	// example:
 	//
 	// 81.22
 	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
-	// The description of the result.
+	// The description.
 	//
 	// example:
 	//
-	// no risk
+	// 未检测出风险
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The labels returned after the image moderation.
+	// The label returned after the image content is moderated.
 	//
 	// example:
 	//
 	// violent_explosion
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// Risk Level
+	// The risk level.
 	//
 	// example:
 	//

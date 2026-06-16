@@ -20,21 +20,21 @@ type iTextModerationPlusResponseBody interface {
 }
 
 type TextModerationPlusResponseBody struct {
-	// The returned HTTP status code. The status code 200 indicates that the request was successful.
+	// The return code. A value of 200 indicates that the request was successful.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The moderation results.
+	// The data that is returned.
 	Data *TextModerationPlusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message that is returned in response to the request.
+	// A human-readable description of the error.
 	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -96,29 +96,47 @@ func (s *TextModerationPlusResponseBody) Validate() error {
 }
 
 type TextModerationPlusResponseBodyData struct {
+	// The AccountId from the request.
+	//
+	// example:
+	//
+	// 123456789
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The suggestion.
+	// The suggested actions.
 	Advice []*TextModerationPlusResponseBodyDataAdvice `json:"Advice,omitempty" xml:"Advice,omitempty" type:"Repeated"`
-	// The level of prompt attack
+	// The attack level.
 	//
 	// example:
 	//
 	// none
 	AttackLevel *string `json:"AttackLevel,omitempty" xml:"AttackLevel,omitempty"`
-	// The result of prompt attack detect
+	// The prompt attack detection results.
 	AttackResult []*TextModerationPlusResponseBodyDataAttackResult `json:"AttackResult,omitempty" xml:"AttackResult,omitempty" type:"Repeated"`
-	// The id of data
+	// The ID of the data that was moderated.
+	//
+	// > If you specify the \\`dataId\\` parameter in the request, the value of this parameter is returned.
 	//
 	// example:
 	//
 	// text1234
-	DataId           *string                                `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	DetectedLanguage *string                                `json:"DetectedLanguage,omitempty" xml:"DetectedLanguage,omitempty"`
-	Ext              *TextModerationPlusResponseBodyDataExt `json:"Ext,omitempty" xml:"Ext,omitempty" type:"Struct"`
-	ManualTaskId     *string                                `json:"ManualTaskId,omitempty" xml:"ManualTaskId,omitempty"`
-	// The results.
+	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	// The detected language.
+	//
+	// example:
+	//
+	// en
+	DetectedLanguage *string `json:"DetectedLanguage,omitempty" xml:"DetectedLanguage,omitempty"`
+	// The auxiliary information.
+	Ext *TextModerationPlusResponseBodyDataExt `json:"Ext,omitempty" xml:"Ext,omitempty" type:"Struct"`
+	// The ID of the manual review task.
+	//
+	// example:
+	//
+	// xxxxx-xxxxx
+	ManualTaskId *string `json:"ManualTaskId,omitempty" xml:"ManualTaskId,omitempty"`
+	// The moderation results.
 	Result []*TextModerationPlusResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	// Risk Level
+	// The risk level.
 	//
 	// example:
 	//
@@ -130,15 +148,20 @@ type TextModerationPlusResponseBodyData struct {
 	//
 	// 1
 	Score *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
-	// The level of sensitivity data
+	// The sensitivity level.
 	//
 	// example:
 	//
 	// S0
 	SensitiveLevel *string `json:"SensitiveLevel,omitempty" xml:"SensitiveLevel,omitempty"`
-	// The result of sensitivity data detect
-	SensitiveResult   []*TextModerationPlusResponseBodyDataSensitiveResult `json:"SensitiveResult,omitempty" xml:"SensitiveResult,omitempty" type:"Repeated"`
-	TranslatedContent *string                                              `json:"TranslatedContent,omitempty" xml:"TranslatedContent,omitempty"`
+	// The sensitive data detection results.
+	SensitiveResult []*TextModerationPlusResponseBodyDataSensitiveResult `json:"SensitiveResult,omitempty" xml:"SensitiveResult,omitempty" type:"Repeated"`
+	// The translated content.
+	//
+	// example:
+	//
+	// hello
+	TranslatedContent *string `json:"TranslatedContent,omitempty" xml:"TranslatedContent,omitempty"`
 }
 
 func (s TextModerationPlusResponseBodyData) String() string {
@@ -321,23 +344,23 @@ func (s *TextModerationPlusResponseBodyData) Validate() error {
 }
 
 type TextModerationPlusResponseBodyDataAdvice struct {
-	// The answer.
+	// The suggested answer.
 	//
 	// example:
 	//
 	// XXX
 	Answer *string `json:"Answer,omitempty" xml:"Answer,omitempty"`
-	// Hit Label
+	// The label that was hit.
 	//
 	// example:
 	//
-	// xxx
+	// XXX
 	HitLabel *string `json:"HitLabel,omitempty" xml:"HitLabel,omitempty"`
-	// Hit Library Name
+	// The name of the keyword library that was hit.
 	//
 	// example:
 	//
-	// xxx
+	// XXX
 	HitLibName *string `json:"HitLibName,omitempty" xml:"HitLibName,omitempty"`
 }
 
@@ -381,25 +404,25 @@ func (s *TextModerationPlusResponseBodyDataAdvice) Validate() error {
 }
 
 type TextModerationPlusResponseBodyDataAttackResult struct {
-	// The level of prompt attack
+	// The attack level.
 	//
 	// example:
 	//
 	// none
 	AttackLevel *string `json:"AttackLevel,omitempty" xml:"AttackLevel,omitempty"`
-	// The confidence
+	// The confidence score.
 	//
 	// example:
 	//
 	// 0
 	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
-	// Description
+	// The description.
 	//
 	// example:
 	//
 	// safe
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The label
+	// The label.
 	//
 	// example:
 	//
@@ -456,6 +479,7 @@ func (s *TextModerationPlusResponseBodyDataAttackResult) Validate() error {
 }
 
 type TextModerationPlusResponseBodyDataExt struct {
+	// The LLM output.
 	LlmContent *TextModerationPlusResponseBodyDataExtLlmContent `json:"LlmContent,omitempty" xml:"LlmContent,omitempty" type:"Struct"`
 }
 
@@ -486,6 +510,11 @@ func (s *TextModerationPlusResponseBodyDataExt) Validate() error {
 }
 
 type TextModerationPlusResponseBodyDataExtLlmContent struct {
+	// The output.
+	//
+	// example:
+	//
+	// 正常。文本中无风险内容。
 	OutputText *string `json:"OutputText,omitempty" xml:"OutputText,omitempty"`
 }
 
@@ -511,28 +540,29 @@ func (s *TextModerationPlusResponseBodyDataExtLlmContent) Validate() error {
 }
 
 type TextModerationPlusResponseBodyDataResult struct {
-	// The score of the confidence level. Valid values: 0 to 100. The value is accurate to two decimal places.
+	// The confidence score. The value ranges from 0 to 100. The value is accurate to two decimal places.
 	//
 	// example:
 	//
 	// 81.22
 	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
-	// The custom term hit by the moderated content.
+	// The custom keywords that were hit.
 	CustomizedHit []*TextModerationPlusResponseBodyDataResultCustomizedHit `json:"CustomizedHit,omitempty" xml:"CustomizedHit,omitempty" type:"Repeated"`
 	// The description of the label.
 	//
 	// example:
 	//
-	// none
+	// 未检测出风险
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The label.
 	//
 	// example:
 	//
 	// porn
-	Label         *string                                                  `json:"Label,omitempty" xml:"Label,omitempty"`
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The position information of the risk words.
 	RiskPositions []*TextModerationPlusResponseBodyDataResultRiskPositions `json:"RiskPositions,omitempty" xml:"RiskPositions,omitempty" type:"Repeated"`
-	// The term hit by the moderated content.
+	// The risk keywords that were hit.
 	//
 	// example:
 	//
@@ -625,17 +655,17 @@ func (s *TextModerationPlusResponseBodyDataResult) Validate() error {
 }
 
 type TextModerationPlusResponseBodyDataResultCustomizedHit struct {
-	// The terms that are hit. Multiple terms are separated by commas (,).
+	// The keywords that were hit, separated by commas.
 	//
 	// example:
 	//
 	// xxx
 	KeyWords *string `json:"KeyWords,omitempty" xml:"KeyWords,omitempty"`
-	// The library name.
+	// The name of the keyword library.
 	//
 	// example:
 	//
-	// test
+	// 测试词库
 	LibName *string `json:"LibName,omitempty" xml:"LibName,omitempty"`
 }
 
@@ -670,9 +700,24 @@ func (s *TextModerationPlusResponseBodyDataResultCustomizedHit) Validate() error
 }
 
 type TextModerationPlusResponseBodyDataResultRiskPositions struct {
-	EndPos   *int32  `json:"EndPos,omitempty" xml:"EndPos,omitempty"`
+	// The end position of the non-compliant word.
+	//
+	// example:
+	//
+	// 6
+	EndPos *int32 `json:"EndPos,omitempty" xml:"EndPos,omitempty"`
+	// The non-compliant word.
+	//
+	// example:
+	//
+	// 词A
 	RiskWord *string `json:"RiskWord,omitempty" xml:"RiskWord,omitempty"`
-	StartPos *int32  `json:"StartPos,omitempty" xml:"StartPos,omitempty"`
+	// The start position of the non-compliant word.
+	//
+	// example:
+	//
+	// 4
+	StartPos *int32 `json:"StartPos,omitempty" xml:"StartPos,omitempty"`
 }
 
 func (s TextModerationPlusResponseBodyDataResultRiskPositions) String() string {
@@ -715,21 +760,21 @@ func (s *TextModerationPlusResponseBodyDataResultRiskPositions) Validate() error
 }
 
 type TextModerationPlusResponseBodyDataSensitiveResult struct {
-	// Description
+	// The description.
 	//
 	// example:
 	//
-	// xxx
+	// 省份
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The label
+	// The label.
 	//
 	// example:
 	//
 	// 1234
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The sensitive data.
+	// The list of sensitive data.
 	SensitiveData []*string `json:"SensitiveData,omitempty" xml:"SensitiveData,omitempty" type:"Repeated"`
-	// The level of sensitivity data
+	// The sensitivity level.
 	//
 	// example:
 	//

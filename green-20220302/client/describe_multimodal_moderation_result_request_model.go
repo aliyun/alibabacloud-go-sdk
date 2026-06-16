@@ -14,6 +14,8 @@ type iDescribeMultimodalModerationResultRequest interface {
 }
 
 type DescribeMultimodalModerationResultRequest struct {
+	// The ReqId field returned by the asynchronous moderation API.
+	//
 	// example:
 	//
 	// AAAAA-BBBBB-AIXI-1314-CCCCC

@@ -20,21 +20,21 @@ type iVoiceModerationResponseBody interface {
 }
 
 type VoiceModerationResponseBody struct {
-	// The returned HTTP status code.
+	// The error code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The data structure of the returned task information.
 	Data *VoiceModerationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message that is returned in response to the request.
+	// The error message.
 	//
 	// example:
 	//
 	// SUCCESS
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ func (s *VoiceModerationResponseBody) Validate() error {
 }
 
 type VoiceModerationResponseBodyData struct {
-	// The ID of the moderated object.
+	// The value of the dataId parameter that you specify in the API request. If you do not specify this parameter in the request, this field is not returned.
 	//
 	// example:
 	//

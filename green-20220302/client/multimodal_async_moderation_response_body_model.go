@@ -20,11 +20,16 @@ type iMultimodalAsyncModerationResponseBody interface {
 }
 
 type MultimodalAsyncModerationResponseBody struct {
+	// Return code. A value of 200 indicates success.
+	//
 	// example:
 	//
 	// 200
-	Code *int32                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Returned data.
 	Data *MultimodalAsyncModerationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The response message for this request.
+	//
 	// example:
 	//
 	// OK
@@ -91,10 +96,14 @@ func (s *MultimodalAsyncModerationResponseBody) Validate() error {
 }
 
 type MultimodalAsyncModerationResponseBodyData struct {
+	// The value of dataId passed in the API request. This field is absent if dataId was not included in the request.
+	//
 	// example:
 	//
 	// 26769ada6e264e7ba9aa048241e12be9
 	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	// The ReqId field returned by the URL asynchronous enhanced moderation API. Use this field to query moderation results.
+	//
 	// example:
 	//
 	// A07B3DB9-D762-5C56-95B1-8EC55CF176D2

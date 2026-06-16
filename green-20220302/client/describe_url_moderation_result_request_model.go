@@ -14,7 +14,7 @@ type iDescribeUrlModerationResultRequest interface {
 }
 
 type DescribeUrlModerationResultRequest struct {
-	// The ReqId field returned by an asynchronous URL moderation operation.
+	// The ReqId field returned by the asynchronous URL moderation operation
 	//
 	// example:
 	//

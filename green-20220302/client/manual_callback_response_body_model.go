@@ -18,19 +18,19 @@ type iManualCallbackResponseBody interface {
 }
 
 type ManualCallbackResponseBody struct {
-	// Error code
+	// The error code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Message information
+	// The message.
 	//
 	// example:
 	//
 	// SUCCESS
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// ID of the request
+	// Id of the request
 	//
 	// example:
 	//

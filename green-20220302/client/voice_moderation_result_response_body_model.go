@@ -20,7 +20,7 @@ type iVoiceModerationResultResponseBody interface {
 }
 
 type VoiceModerationResultResponseBody struct {
-	// The returned HTTP status code.
+	// The error code.
 	//
 	// example:
 	//
@@ -28,13 +28,13 @@ type VoiceModerationResultResponseBody struct {
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
 	Data *VoiceModerationResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message that is returned in response to the request.
+	// The response message.
 	//
 	// example:
 	//
 	// SUCCESS
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -96,26 +96,39 @@ func (s *VoiceModerationResultResponseBody) Validate() error {
 }
 
 type VoiceModerationResultResponseBodyData struct {
-	// The ID of the moderated object.
+	// The value of the `dataId` parameter you specified in the request. This parameter is returned only if you specified it in the request.
 	//
 	// example:
 	//
-	// 26769ada6e264e7ba9aa048241e12be9
+	// data1234
 	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
 	// The unique ID of the live stream.
 	//
 	// example:
 	//
 	// liveId
-	LiveId       *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	// The ID of the manual review task.
+	//
+	// example:
+	//
+	// xxxxx-xxxxx
 	ManualTaskId *string `json:"ManualTaskId,omitempty" xml:"ManualTaskId,omitempty"`
-	// Risk Level.
+	// The risk level, which is determined based on the configured thresholds for high and low risk scores. Valid values:
+	//
+	// - `high`: high risk
+	//
+	// - `medium`: medium risk
+	//
+	// - `low`: low risk
+	//
+	// - `none`: no risk detected
 	//
 	// example:
 	//
 	// high
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The moderation results of audio segments.
+	// The slice results.
 	SliceDetails []*VoiceModerationResultResponseBodyDataSliceDetails `json:"SliceDetails,omitempty" xml:"SliceDetails,omitempty" type:"Repeated"`
 	// The task ID.
 	//
@@ -123,11 +136,11 @@ type VoiceModerationResultResponseBodyData struct {
 	//
 	// kw24ihd0WGkdi5nniVZM@qOj-1x5Ibb
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The URL of the moderated content.
+	// The task URL.
 	//
 	// example:
 	//
-	// https://aliyundoc.com
+	// 暂无
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
@@ -216,90 +229,95 @@ func (s *VoiceModerationResultResponseBodyData) Validate() error {
 }
 
 type VoiceModerationResultResponseBodyDataSliceDetails struct {
-	// The description of the labels.
+	// The description of the label.
 	//
 	// example:
 	//
-	// no risk
+	// 疑似违禁内容
 	Descriptions *string `json:"Descriptions,omitempty" xml:"Descriptions,omitempty"`
-	// The end time of the audio segment in seconds.
+	// The end time of the slice, in seconds.
 	//
 	// example:
 	//
 	// 10
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The end timestamp of the segment. Unit: milliseconds.
+	// The end timestamp of the slice, in milliseconds.
 	//
 	// example:
 	//
 	// 1678854649720
 	EndTimestamp *int64 `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
-	// Extended fields.
+	// Extended information.
 	//
 	// example:
 	//
-	// {\\"riskTips\\":\\"sexuality_Suggestive\\",\\"riskWords\\":\\"pxxxxy\\"}
+	// {\\"riskWords\\":\\"色情服务\\","adNums":"\\","riskTips":"涉政_人物，涉政_红歌"}
 	Extend *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
-	// The details of the labels.
+	// The matched violation labels.
 	//
 	// example:
 	//
 	// sexual_sounds
 	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	// Reserved parameter.
+	// A reserved field.
+	OriginAlgoResult map[string]interface{} `json:"OriginAlgoResult,omitempty" xml:"OriginAlgoResult,omitempty"`
+	// The text detection results.
+	Result []*VoiceModerationResultResponseBodyDataSliceDetailsResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// The risk level, which is determined based on the configured thresholds for high and low risk scores. Valid values:
 	//
-	// example:
+	// - `high`: high risk
 	//
-	// {}
-	OriginAlgoResult map[string]interface{}                                     `json:"OriginAlgoResult,omitempty" xml:"OriginAlgoResult,omitempty"`
-	Result           []*VoiceModerationResultResponseBodyDataSliceDetailsResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	// Risk Level.
+	// - `medium`: medium risk
+	//
+	// - `low`: low risk
+	//
+	// - `none`: no risk detected
 	//
 	// example:
 	//
 	// high
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The details of the risky content.
+	// Details about the matched risk.
 	//
 	// example:
 	//
-	// sexuality_Suggestive
+	// 涉政_人物
 	RiskTips *string `json:"RiskTips,omitempty" xml:"RiskTips,omitempty"`
-	// The term hit by the risky content.
+	// The matched risk keywords.
 	//
 	// example:
 	//
-	// AAA,BBB,CCC
+	// 色情服务
 	RiskWords *string `json:"RiskWords,omitempty" xml:"RiskWords,omitempty"`
-	// The risk score. Default range: 0 to 99.
+	// The risk score. The value ranges from 0 to 99.
 	//
 	// example:
 	//
 	// 87.01
 	Score *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
-	// The start time of the audio segment in seconds.
+	// The start time of the slice, in seconds.
 	//
 	// example:
 	//
 	// 0
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The start timestamp of the segment. Unit: milliseconds.
+	// The start timestamp of the slice, in milliseconds.
 	//
 	// example:
 	//
 	// 1678854649720
 	StartTimestamp *int64 `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
-	// The text converted from the audio segment.
+	// The transcribed text of the audio slice.
 	//
 	// example:
 	//
-	// Disgusting
+	// 今天天气真不错
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
-	// The temporary URL of the audio segment.
+	// The temporary URL of the audio slice.
 	//
 	// example:
 	//
-	// https://aliyundoc.com
+	// 暂无
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
@@ -460,13 +478,40 @@ func (s *VoiceModerationResultResponseBodyDataSliceDetails) Validate() error {
 }
 
 type VoiceModerationResultResponseBodyDataSliceDetailsResult struct {
-	Confidence    *float32                                                                `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	// The confidence score.
+	//
+	// example:
+	//
+	// 100.00
+	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	// The matched custom libraries.
 	CustomizedHit []*VoiceModerationResultResponseBodyDataSliceDetailsResultCustomizedHit `json:"CustomizedHit,omitempty" xml:"CustomizedHit,omitempty" type:"Repeated"`
-	Description   *string                                                                 `json:"Description,omitempty" xml:"Description,omitempty"`
-	Label         *string                                                                 `json:"Label,omitempty" xml:"Label,omitempty"`
-	RiskLevel     *string                                                                 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The description.
+	//
+	// example:
+	//
+	// profanity
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The label.
+	//
+	// example:
+	//
+	// ad
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The risk level.
+	//
+	// example:
+	//
+	// high
+	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// A list of risk positions.
 	RiskPositions []*VoiceModerationResultResponseBodyDataSliceDetailsResultRiskPositions `json:"RiskPositions,omitempty" xml:"RiskPositions,omitempty" type:"Repeated"`
-	RiskWords     *string                                                                 `json:"RiskWords,omitempty" xml:"RiskWords,omitempty"`
+	// The matched risky content.
+	//
+	// example:
+	//
+	// XX
+	RiskWords *string `json:"RiskWords,omitempty" xml:"RiskWords,omitempty"`
 }
 
 func (s VoiceModerationResultResponseBodyDataSliceDetailsResult) String() string {
@@ -563,8 +608,18 @@ func (s *VoiceModerationResultResponseBodyDataSliceDetailsResult) Validate() err
 }
 
 type VoiceModerationResultResponseBodyDataSliceDetailsResultCustomizedHit struct {
+	// The custom keyword.
+	//
+	// example:
+	//
+	// fxxk
 	KeyWords *string `json:"KeyWords,omitempty" xml:"KeyWords,omitempty"`
-	LibName  *string `json:"LibName,omitempty" xml:"LibName,omitempty"`
+	// The name of the custom library.
+	//
+	// example:
+	//
+	// insultLib
+	LibName *string `json:"LibName,omitempty" xml:"LibName,omitempty"`
 }
 
 func (s VoiceModerationResultResponseBodyDataSliceDetailsResultCustomizedHit) String() string {
@@ -598,9 +653,24 @@ func (s *VoiceModerationResultResponseBodyDataSliceDetailsResultCustomizedHit) V
 }
 
 type VoiceModerationResultResponseBodyDataSliceDetailsResultRiskPositions struct {
-	EndPos   *int32  `json:"EndPos,omitempty" xml:"EndPos,omitempty"`
+	// The end position.
+	//
+	// example:
+	//
+	// 4
+	EndPos *int32 `json:"EndPos,omitempty" xml:"EndPos,omitempty"`
+	// The detected sensitive word.
+	//
+	// example:
+	//
+	// fxxk
 	RiskWord *string `json:"RiskWord,omitempty" xml:"RiskWord,omitempty"`
-	StartPos *int32  `json:"StartPos,omitempty" xml:"StartPos,omitempty"`
+	// The start position.
+	//
+	// example:
+	//
+	// 1
+	StartPos *int32 `json:"StartPos,omitempty" xml:"StartPos,omitempty"`
 }
 
 func (s VoiceModerationResultResponseBodyDataSliceDetailsResultRiskPositions) String() string {

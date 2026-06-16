@@ -16,10 +16,18 @@ type iMultimodalAsyncModerationRequest interface {
 }
 
 type MultimodalAsyncModerationRequest struct {
+	// The type of moderation service. Valid values:
+	//
+	// - post_text_image_detection: multimodal moderation for post text and images
+	//
+	// - profile_text_image_detection: multimodal moderation for profile picture and nickname
+	//
 	// example:
 	//
 	// post_text_image_detection
 	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
+	// The parameter set required by the moderation service. This value must be a JSON string.
+	//
 	// example:
 	//
 	// {"mainData":{"mainContent":"testMainContent","mainTitle":"testMainTitle","mainImages":[{"imageUrl":"https://xxxx.com/001.jpg"}]}}

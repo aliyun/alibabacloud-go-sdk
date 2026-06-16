@@ -16,19 +16,19 @@ type iVoiceModerationResultRequest interface {
 }
 
 type VoiceModerationResultRequest struct {
-	// The type of the moderation service. Valid values: nickname_detection: user nickname
+	// The moderation service type. Supported values include `nickname_detection` for user nickname moderation. Support for more types is planned.
 	//
 	// example:
 	//
 	// nickname_detection
 	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
-	// The parameters of API requests that are sent from API Gateway to the backend service.
+	// Parameters that the gateway sends to the backend service.
 	//
 	// For more information, see [ServiceParameter](https://help.aliyun.com/document_detail/43988.html).
 	//
 	// example:
 	//
-	// {"taskId":"xxxxx-xxxx"}
+	// 暂无
 	ServiceParameters *string `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty"`
 }
 

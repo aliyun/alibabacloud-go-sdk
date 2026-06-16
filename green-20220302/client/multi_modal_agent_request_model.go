@@ -16,10 +16,17 @@ type iMultiModalAgentRequest interface {
 }
 
 type MultiModalAgentRequest struct {
+	// The unique identifier of the whiteboard application. To get the whiteboard application ID, see [CreateApp](https://help.aliyun.com/document_detail/204234.html).
+	//
 	// example:
 	//
 	// txt_check_agent_01
-	AppID             *string `json:"AppID,omitempty" xml:"AppID,omitempty"`
+	AppID *string `json:"AppID,omitempty" xml:"AppID,omitempty"`
+	// The set of parameters for the auditing service. This includes the taskId of the detection task to query. You can specify only one taskId at a time.
+	//
+	// example:
+	//
+	// {"content":"测试文本","dataId":"img1234567"}
 	ServiceParameters *string `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty"`
 }
 

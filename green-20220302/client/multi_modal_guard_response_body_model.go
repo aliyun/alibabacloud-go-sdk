@@ -20,15 +20,22 @@ type iMultiModalGuardResponseBody interface {
 }
 
 type MultiModalGuardResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// 200
-	Code *int32                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *MultiModalGuardResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
@@ -89,11 +96,16 @@ func (s *MultiModalGuardResponseBody) Validate() error {
 }
 
 type MultiModalGuardResponseBodyData struct {
+	// The data ID of the detection object.
+	//
 	// example:
 	//
 	// data1234
-	DataId *string                                  `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	// The detection details.
 	Detail []*MultiModalGuardResponseBodyDataDetail `json:"Detail,omitempty" xml:"Detail,omitempty" type:"Repeated"`
+	// The moderation suggestion. Valid values: -block: The content is non-compliant. -pass: The content is compliant.
+	//
 	// example:
 	//
 	// pass
@@ -149,15 +161,22 @@ func (s *MultiModalGuardResponseBodyData) Validate() error {
 }
 
 type MultiModalGuardResponseBodyDataDetail struct {
+	// The risk level.
+	//
 	// example:
 	//
 	// none
-	Level  *string                                        `json:"Level,omitempty" xml:"Level,omitempty"`
+	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The detection results.
 	Result []*MultiModalGuardResponseBodyDataDetailResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// The moderation suggestion. Valid values: -**block**: The content is non-compliant. -**pass**: The content is compliant.
+	//
 	// example:
 	//
 	// pass
 	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
+	// The type.
+	//
 	// example:
 	//
 	// contentModeration
@@ -222,19 +241,32 @@ func (s *MultiModalGuardResponseBodyDataDetail) Validate() error {
 }
 
 type MultiModalGuardResponseBodyDataDetailResult struct {
+	// The confidence score. Valid values: 0 to 100. The value is accurate to two decimal places.
+	//
 	// example:
 	//
-	// 0
-	Confidence  *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 100
+	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	// The description of the label.
+	//
+	// example:
+	//
+	// 疑似违禁行为
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The extended information about the detection results.
+	//
 	// example:
 	//
 	// {}
 	Ext interface{} `json:"Ext,omitempty" xml:"Ext,omitempty"`
+	// The label.
+	//
 	// example:
 	//
 	// contraband_act
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The risk level.
+	//
 	// example:
 	//
 	// none

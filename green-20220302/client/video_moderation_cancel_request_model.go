@@ -16,13 +16,13 @@ type iVideoModerationCancelRequest interface {
 }
 
 type VideoModerationCancelRequest struct {
-	// The type of the moderation service.
+	// The moderation service type.
 	//
 	// example:
 	//
 	// videoDetection
 	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
-	// The parameters required by the moderation service. The value is a JSON string.
+	// The TaskId of the task to be canceled.
 	//
 	// example:
 	//

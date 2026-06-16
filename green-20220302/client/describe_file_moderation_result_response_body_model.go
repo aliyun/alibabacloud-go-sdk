@@ -20,21 +20,21 @@ type iDescribeFileModerationResultResponseBody interface {
 }
 
 type DescribeFileModerationResultResponseBody struct {
-	// The returned HTTP status code. The status code 200 indicates that the request was successful.
+	// The return code. A value of 200 indicates that the request was successful.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *DescribeFileModerationResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message that is returned in response to the request.
+	// The error message.
 	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -96,30 +96,35 @@ func (s *DescribeFileModerationResultResponseBody) Validate() error {
 }
 
 type DescribeFileModerationResultResponseBodyData struct {
+	// The AccountId specified in the request.
+	//
+	// example:
+	//
+	// accountIdtest123
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The ID of the moderated object.
+	// The ID of the data.
 	//
 	// example:
 	//
 	// 26769ada6e264e7ba9aa048241e12be9
 	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	// Optional. The document type.
+	// The document type. This parameter is optional.
 	//
 	// example:
 	//
 	// doc
 	DocType *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
-	// An array that consists of the moderation results.
+	// A list of moderation results.
 	PageResult []*DescribeFileModerationResultResponseBodyDataPageResult `json:"PageResult,omitempty" xml:"PageResult,omitempty" type:"Repeated"`
-	// Summary of results
+	// The summary information.
 	PageSummary *DescribeFileModerationResultResponseBodyDataPageSummary `json:"PageSummary,omitempty" xml:"PageSummary,omitempty" type:"Struct"`
-	// Risk Level
+	// The risk level.
 	//
 	// example:
 	//
 	// high
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The URL of the moderated object.
+	// The download URL for the file.
 	//
 	// example:
 	//
@@ -219,7 +224,7 @@ func (s *DescribeFileModerationResultResponseBodyData) Validate() error {
 type DescribeFileModerationResultResponseBodyDataPageResult struct {
 	// The image moderation results.
 	ImageResult []*DescribeFileModerationResultResponseBodyDataPageResultImageResult `json:"ImageResult,omitempty" xml:"ImageResult,omitempty" type:"Repeated"`
-	// The image URL.
+	// The URL of the image.
 	//
 	// example:
 	//
@@ -233,7 +238,7 @@ type DescribeFileModerationResultResponseBodyDataPageResult struct {
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	// The text moderation results.
 	TextResult []*DescribeFileModerationResultResponseBodyDataPageResultTextResult `json:"TextResult,omitempty" xml:"TextResult,omitempty" type:"Repeated"`
-	// The text URL.
+	// The URL where the text content is stored.
 	//
 	// example:
 	//
@@ -321,19 +326,19 @@ type DescribeFileModerationResultResponseBodyDataPageResultImageResult struct {
 	//
 	// example:
 	//
-	// This is a title.
+	// 这个是标题
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The label information.
 	LabelResult []*DescribeFileModerationResultResponseBodyDataPageResultImageResultLabelResult `json:"LabelResult,omitempty" xml:"LabelResult,omitempty" type:"Repeated"`
-	// The location information
+	// The location information.
 	Location *DescribeFileModerationResultResponseBodyDataPageResultImageResultLocation `json:"Location,omitempty" xml:"Location,omitempty" type:"Struct"`
-	// Risk Level
+	// The risk level.
 	//
 	// example:
 	//
 	// high
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The moderation service.
+	// The service that was called.
 	//
 	// example:
 	//
@@ -413,7 +418,7 @@ func (s *DescribeFileModerationResultResponseBodyDataPageResultImageResult) Vali
 }
 
 type DescribeFileModerationResultResponseBodyDataPageResultImageResultLabelResult struct {
-	// The score of the confidence level. Valid values: 0 to 100. The value is accurate to two decimal places.
+	// The confidence score.
 	//
 	// example:
 	//
@@ -423,9 +428,9 @@ type DescribeFileModerationResultResponseBodyDataPageResultImageResultLabelResul
 	//
 	// example:
 	//
-	// This is a title.
+	// 这个是标题
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The details of the labels.
+	// The label.
 	//
 	// example:
 	//
@@ -473,25 +478,25 @@ func (s *DescribeFileModerationResultResponseBodyDataPageResultImageResultLabelR
 }
 
 type DescribeFileModerationResultResponseBodyDataPageResultImageResultLocation struct {
-	// The H value of the coordinate point.
+	// The height of the detected area.
 	//
 	// example:
 	//
 	// 44
 	H *int32 `json:"H,omitempty" xml:"H,omitempty"`
-	// The W value of the coordinate point.
+	// The width of the detected area.
 	//
 	// example:
 	//
 	// 33
 	W *int32 `json:"W,omitempty" xml:"W,omitempty"`
-	// The X value of the coordinate point.
+	// The X coordinate of the point.
 	//
 	// example:
 	//
 	// 11
 	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
-	// The Y value of the coordinate point.
+	// The Y-coordinate of the point.
 	//
 	// example:
 	//
@@ -552,39 +557,39 @@ type DescribeFileModerationResultResponseBodyDataPageResultTextResult struct {
 	//
 	// example:
 	//
-	// This is a title.
+	// 这是一个标题
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The description of the labels.
+	// The description of the label.
 	//
 	// example:
 	//
-	// no risk
+	// 疑似广告内容
 	Descriptions *string `json:"Descriptions,omitempty" xml:"Descriptions,omitempty"`
-	// The details of the labels.
+	// The value of the label.
 	//
 	// example:
 	//
 	// porn
 	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	// Risk Level
+	// The risk level.
 	//
 	// example:
 	//
 	// high
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The risk details that are hit.
+	// Details about the hit risk.
 	//
 	// example:
 	//
 	// xxx
 	RiskTips *string `json:"RiskTips,omitempty" xml:"RiskTips,omitempty"`
-	// The risk words that are hit.
+	// The risk keywords that were hit.
 	//
 	// example:
 	//
 	// xxx
 	RiskWords *string `json:"RiskWords,omitempty" xml:"RiskWords,omitempty"`
-	// The moderation service.
+	// The service.
 	//
 	// example:
 	//
@@ -594,9 +599,9 @@ type DescribeFileModerationResultResponseBodyDataPageResultTextResult struct {
 	//
 	// example:
 	//
-	// This is a text.
+	// 吧啦吧啦
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
-	// The text segmentation information.
+	// Information about the text segment.
 	//
 	// example:
 	//
@@ -698,15 +703,15 @@ func (s *DescribeFileModerationResultResponseBodyDataPageResultTextResult) Valid
 }
 
 type DescribeFileModerationResultResponseBodyDataPageSummary struct {
-	// Image Results Summary
+	// The image summary information.
 	ImageSummary *DescribeFileModerationResultResponseBodyDataPageSummaryImageSummary `json:"ImageSummary,omitempty" xml:"ImageSummary,omitempty" type:"Struct"`
-	// Number of pages
+	// The total number of pages.
 	//
 	// example:
 	//
 	// 1
 	PageSum *int32 `json:"PageSum,omitempty" xml:"PageSum,omitempty"`
-	// Text Results Summary
+	// The text summary information.
 	TextSummary *DescribeFileModerationResultResponseBodyDataPageSummaryTextSummary `json:"TextSummary,omitempty" xml:"TextSummary,omitempty" type:"Struct"`
 }
 
@@ -760,9 +765,9 @@ func (s *DescribeFileModerationResultResponseBodyDataPageSummary) Validate() err
 }
 
 type DescribeFileModerationResultResponseBodyDataPageSummaryImageSummary struct {
-	// Image Label
+	// The image labels.
 	ImageLabels []*DescribeFileModerationResultResponseBodyDataPageSummaryImageSummaryImageLabels `json:"ImageLabels,omitempty" xml:"ImageLabels,omitempty" type:"Repeated"`
-	// Risk Level
+	// The risk level.
 	//
 	// example:
 	//
@@ -810,19 +815,19 @@ func (s *DescribeFileModerationResultResponseBodyDataPageSummaryImageSummary) Va
 }
 
 type DescribeFileModerationResultResponseBodyDataPageSummaryImageSummaryImageLabels struct {
-	// The description.
+	// The description of the label.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The details of the labels.
+	// The label.
 	//
 	// example:
 	//
 	// contraband
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The number of times that the label is matched.
+	// The number of times the label appears.
 	//
 	// example:
 	//
@@ -870,13 +875,13 @@ func (s *DescribeFileModerationResultResponseBodyDataPageSummaryImageSummaryImag
 }
 
 type DescribeFileModerationResultResponseBodyDataPageSummaryTextSummary struct {
-	// Risk Level
+	// The risk level.
 	//
 	// example:
 	//
 	// high
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// Text Label
+	// The text labels.
 	TextLabels []*DescribeFileModerationResultResponseBodyDataPageSummaryTextSummaryTextLabels `json:"TextLabels,omitempty" xml:"TextLabels,omitempty" type:"Repeated"`
 }
 
@@ -920,19 +925,19 @@ func (s *DescribeFileModerationResultResponseBodyDataPageSummaryTextSummary) Val
 }
 
 type DescribeFileModerationResultResponseBodyDataPageSummaryTextSummaryTextLabels struct {
-	// The description of the labels.
+	// The description of the label.
 	//
 	// example:
 	//
-	// no risk
+	// 未检测出风险
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The details of the labels.
+	// The label.
 	//
 	// example:
 	//
 	// contraband
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The number of times that the label is matched.
+	// The number of times the label appears.
 	//
 	// example:
 	//

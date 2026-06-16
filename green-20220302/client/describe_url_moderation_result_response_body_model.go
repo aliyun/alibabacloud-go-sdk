@@ -20,21 +20,21 @@ type iDescribeUrlModerationResultResponseBody interface {
 }
 
 type DescribeUrlModerationResultResponseBody struct {
-	// The returned HTTP status code. The status code 200 indicates that the request was successful.
+	// The return code. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *DescribeUrlModerationResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message that is returned in response to the request.
+	// The response message of this request.
 	//
 	// example:
 	//
 	// success
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	// The request ID.
+	// The ID of this request.
 	//
 	// example:
 	//
@@ -96,21 +96,21 @@ func (s *DescribeUrlModerationResultResponseBody) Validate() error {
 }
 
 type DescribeUrlModerationResultResponseBodyData struct {
-	// The value of dataId that is specified in the API request. If this parameter is not specified in the API request, this field is not available in the response.
+	// The value of the dataId parameter passed in the API request. This field is not returned if the parameter is not passed in the request.
 	//
 	// example:
 	//
 	// 26769ada6e264e7ba9aa048241e12be9
 	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	// The supplementary information.
+	// Additional information.
 	ExtraInfo *DescribeUrlModerationResultResponseBodyDataExtraInfo `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty" type:"Struct"`
-	// The ReqId field returned by an asynchronous URL moderation operation.
+	// The ReqId field returned by the asynchronous URL moderation operation
 	//
 	// example:
 	//
 	// B0963D30-BAB4-562F-9ED0-7A23AEC51C7C
 	ReqId *string `json:"ReqId,omitempty" xml:"ReqId,omitempty"`
-	// The returned results.
+	// The returned collection.
 	Result []*DescribeUrlModerationResultResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
@@ -177,19 +177,19 @@ func (s *DescribeUrlModerationResultResponseBodyData) Validate() error {
 }
 
 type DescribeUrlModerationResultResponseBodyDataExtraInfo struct {
-	// The ICP number.
+	// The ICP filing number.
 	//
 	// example:
 	//
-	// xx
+	// ICP备123456789
 	IcpNo *string `json:"IcpNo,omitempty" xml:"IcpNo,omitempty"`
-	// The type of the ICP filing.
+	// The ICP filing type.
 	//
 	// example:
 	//
-	// xx
+	// 企业
 	IcpType *string `json:"IcpType,omitempty" xml:"IcpType,omitempty"`
-	// The type of site
+	// The website type
 	//
 	// example:
 	//
@@ -237,13 +237,13 @@ func (s *DescribeUrlModerationResultResponseBodyDataExtraInfo) Validate() error 
 }
 
 type DescribeUrlModerationResultResponseBodyDataResult struct {
-	// The score of the confidence level. Valid values: 0 to 100. The value is accurate to two decimal places.
+	// The confidence score, ranging from 0 to 100, with two decimal places.
 	//
 	// example:
 	//
 	// 81.22
 	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
-	// The labels returned after the asynchronous URL moderation.
+	// The label returned after URL moderation.
 	//
 	// example:
 	//

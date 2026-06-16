@@ -16,27 +16,17 @@ type iVideoModerationResultRequest interface {
 }
 
 type VideoModerationResultRequest struct {
-	// The type of the moderation service.
-	//
-	// Valid values:
-	//
-	// 	- liveStreamDetection: live stream moderation
-	//
-	// 	- videoDetection: video file moderation
-	//
-	// 	- liveStreamDetection_cb: live stream moderation_For regions outside the Chinese mainland
-	//
-	// 	- videoDetection_cb: video file moderation_For regions outside the Chinese mainland.
+	// The service code for video moderation.
 	//
 	// example:
 	//
 	// videoDetection
 	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
-	// The parameters required by the moderation service. The ID of the task that you want to query. You can specify one task ID at a time.
+	// A JSON string that contains the `taskId` of the detection task. You can specify only one `taskId` per request.
 	//
 	// example:
 	//
-	// {\\"taskId\\":\\"au_f_8PoWiZKoLbczp5HRn69VdT-1y8@U5\\"}
+	// {"taskId":"au_f_8PoWiZKoLbczp5HRn69VdT-1y8@U5"}
 	ServiceParameters *string `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty"`
 }
 

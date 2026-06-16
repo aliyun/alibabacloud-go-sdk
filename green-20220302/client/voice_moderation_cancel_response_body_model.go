@@ -18,19 +18,19 @@ type iVoiceModerationCancelResponseBody interface {
 }
 
 type VoiceModerationCancelResponseBody struct {
-	// The returned HTTP status code.
+	// The return code. A return code of 200 indicates that the request is successful.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The message that is returned in response to the request.
+	// The response message.
 	//
 	// example:
 	//
 	// SUCCESS
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iDescribeImageModerationResultRequest interface {
 }
 
 type DescribeImageModerationResultRequest struct {
-	// The ReqId field returned by the asynchronous Image Moderation 2.0 API.
+	// The \\`ReqId\\` returned by the asynchronous Image Moderation Pro API.
 	//
 	// example:
 	//

@@ -20,15 +20,15 @@ type iDescribeImageResultExtResponseBody interface {
 }
 
 type DescribeImageResultExtResponseBody struct {
-	// The returned HTTP status code.
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *DescribeImageResultExtResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message that is returned in response to the request.
+	// The response message of the request.
 	//
 	// example:
 	//
@@ -96,11 +96,11 @@ func (s *DescribeImageResultExtResponseBody) Validate() error {
 }
 
 type DescribeImageResultExtResponseBodyData struct {
-	// If a custom image library is hit, information about the hit custom image library is returned.
+	// The list of custom image library hit information.
 	CustomImage []*DescribeImageResultExtResponseBodyDataCustomImage `json:"CustomImage,omitempty" xml:"CustomImage,omitempty" type:"Repeated"`
-	// Person information list.
+	// The list of figure information.
 	PublicFigure []*DescribeImageResultExtResponseBodyDataPublicFigure `json:"PublicFigure,omitempty" xml:"PublicFigure,omitempty" type:"Repeated"`
-	// Returns the text information in the hit image.
+	// The text information in the hit image.
 	TextInImage *DescribeImageResultExtResponseBodyDataTextInImage `json:"TextInImage,omitempty" xml:"TextInImage,omitempty" type:"Struct"`
 }
 
@@ -227,7 +227,7 @@ func (s *DescribeImageResultExtResponseBodyDataCustomImage) Validate() error {
 }
 
 type DescribeImageResultExtResponseBodyDataPublicFigure struct {
-	// Identified person coding information.
+	// The figure ID.
 	//
 	// example:
 	//
@@ -257,11 +257,11 @@ func (s *DescribeImageResultExtResponseBodyDataPublicFigure) Validate() error {
 }
 
 type DescribeImageResultExtResponseBodyDataTextInImage struct {
-	// When a custom text library is hit, the custom library ID, custom library name, and custom word are returned.
+	// When a custom text library is hit, the custom library ID, custom library name, and custom words are returned.
 	CustomTexts []*DescribeImageResultExtResponseBodyDataTextInImageCustomTexts `json:"CustomTexts,omitempty" xml:"CustomTexts,omitempty" type:"Repeated"`
-	// Returns the text information in the recognized image.
+	// The text information detected in the image.
 	OcrDatas []*string `json:"OcrDatas,omitempty" xml:"OcrDatas,omitempty" type:"Repeated"`
-	// The risk words that are hit. Multiple words are separated by commas (,).
+	// The hit risk keywords
 	RiskWords []*string `json:"RiskWords,omitempty" xml:"RiskWords,omitempty" type:"Repeated"`
 }
 
@@ -314,23 +314,23 @@ func (s *DescribeImageResultExtResponseBodyDataTextInImage) Validate() error {
 }
 
 type DescribeImageResultExtResponseBodyDataTextInImageCustomTexts struct {
-	// Custom words, multiple words separated by commas.
+	// The custom words, multiple words are separated by commas.
 	//
 	// example:
 	//
-	// aaa,bbb
+	// 自定义词1,自定义词2
 	KeyWords *string `json:"KeyWords,omitempty" xml:"KeyWords,omitempty"`
-	// Custom library ID.
+	// The custom library ID
 	//
 	// example:
 	//
 	// 123456
 	LibId *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
-	// Custom library name.
+	// The custom library name.
 	//
 	// example:
 	//
-	// test
+	// 自定义库1
 	LibName *string `json:"LibName,omitempty" xml:"LibName,omitempty"`
 }
 

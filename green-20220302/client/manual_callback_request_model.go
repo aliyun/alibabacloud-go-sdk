@@ -24,37 +24,37 @@ type iManualCallbackRequest interface {
 }
 
 type ManualCallbackRequest struct {
-	// Channel field
+	// The channel field.
 	//
 	// example:
 	//
 	// ant
 	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
-	// Checksum.
+	// The checksum.
 	//
 	// example:
 	//
 	// abc
 	Checksum *string `json:"Checksum,omitempty" xml:"Checksum,omitempty"`
-	// Code value
+	// The code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Returned data.
+	// The returned data.
 	//
 	// example:
 	//
 	// {\\"Result\\": [{\\"Confidence\\": 100.0, \\"CustomizedHit\\": [{\\"KeyWords\\": u\\"\\u4fdd\\u969c,\\u6700\\u5927,\\u9ad8\\u7ea7\\", \\"LibName\\": u\\"\\u4f18\\u8def\\u654f\\u611f\\u8bcd\\"}], \\"Label\\": \\"customized\\"}]}
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// Message information
+	// The message.
 	//
 	// example:
 	//
 	// OK
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	// Platform request ID, used for troubleshooting assistance
+	// The ID of the platform request. This ID is used to troubleshoot issues.
 	//
 	// example:
 	//

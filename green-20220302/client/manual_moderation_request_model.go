@@ -22,11 +22,11 @@ type ManualModerationRequest struct {
 	//
 	// imageManualCheck
 	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
-	// Parameter set required for the review service, in JSON string format.
+	// Parameters required by the moderation service, in JSON string format.
 	//
-	// - url: The URL of the object to be checked. Please ensure that this URL is publicly accessible.
+	// - url: The URL of the object to be inspected. Make sure the URL is accessible through the public network.
 	//
-	// - dataId: Optional, the data ID corresponding to the object being checked.
+	// - dataId: Optional. The data ID corresponding to the object being inspected.
 	//
 	// example:
 	//

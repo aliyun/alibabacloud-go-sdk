@@ -20,21 +20,21 @@ type iManualModerationResultResponseBody interface {
 }
 
 type ManualModerationResultResponseBody struct {
-	// Error code.
+	// The error code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Returned data.
+	// The returned data.
 	Data *ManualModerationResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Error message
+	// The error message.
 	//
 	// example:
 	//
 	// SUCCESS
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// ID of the request
+	// Id of the request
 	//
 	// example:
 	//
@@ -96,29 +96,27 @@ func (s *ManualModerationResultResponseBody) Validate() error {
 }
 
 type ManualModerationResultResponseBodyData struct {
-	// The value of dataId passed during the API request. This field will not be present if it was not provided during the request.
+	// The value of the dataId parameter that you specified in the API request. If you did not specify this parameter in the request, this field is not returned.
 	//
 	// example:
 	//
 	// data1234
 	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	// Detailed label results.
+	// The detailed results of the labels.
 	Result []*ManualModerationResultResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	// Risk level, returned based on the set high and low risk scores. Possible values include:
+	// The risk level. The value is returned based on the specified high-risk and low-risk scores. Valid values include the following:
 	//
-	// - high: High risk
+	// - high: high risk
 	//
+	// - low: low risk
 	//
-	//
-	// - low: Low risk
-	//
-	//  - none: No risk detected
+	// - none: no risk detected
 	//
 	// example:
 	//
 	// high
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// Task ID
+	// The task ID.
 	//
 	// example:
 	//
@@ -184,13 +182,13 @@ func (s *ManualModerationResultResponseBodyData) Validate() error {
 }
 
 type ManualModerationResultResponseBodyDataResult struct {
-	// Label description
+	// The description of the label.
 	//
 	// example:
 	//
-	// no risk
+	// 未检测出风险
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Risk label
+	// The risk label.
 	//
 	// example:
 	//

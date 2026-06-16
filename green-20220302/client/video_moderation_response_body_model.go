@@ -20,21 +20,21 @@ type iVideoModerationResponseBody interface {
 }
 
 type VideoModerationResponseBody struct {
-	// The returned HTTP status code.
+	// The return code. A return code of 200 indicates that the request was successful.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *VideoModerationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message that is returned in response to the request.
+	// The response message.
 	//
 	// example:
 	//
 	// SUCCESS
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ func (s *VideoModerationResponseBody) Validate() error {
 }
 
 type VideoModerationResponseBodyData struct {
-	// The ID of the moderated object.
+	// The value of the dataId parameter that you specified in the API request. This parameter is not returned if you did not specify the dataId parameter in the request.
 	//
 	// example:
 	//

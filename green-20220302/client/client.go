@@ -4,6 +4,7 @@ package client
 import (
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
+	websocketutils "github.com/alibabacloud-go/darabonba-openapi/v2/websocketUtils"
 	"github.com/alibabacloud-go/tea/dara"
 )
 
@@ -78,7 +79,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 文档审核结果
+// # Document review results
 //
 // @param request - DescribeFileModerationResultRequest
 //
@@ -126,7 +127,7 @@ func (client *Client) DescribeFileModerationResultWithOptions(request *DescribeF
 
 // Summary:
 //
-// 文档审核结果
+// # Document review results
 //
 // @param request - DescribeFileModerationResultRequest
 //
@@ -144,13 +145,13 @@ func (client *Client) DescribeFileModerationResult(request *DescribeFileModerati
 
 // Summary:
 //
-// Obtains the moderation results of an Image Moderation 2.0 task.
+// Retrieves the results of an Image Moderation Pro task.
 //
 // Description:
 //
-//	  Billing: This operation is free of charge.
+// - Billing information: This operation is not billed.
 //
-//		- QPS limit: You can call this operation up to 100 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// - QPS limit: This operation is limited to 100 queries per second (QPS) for each user. If you exceed this limit, your API calls are throttled, which may affect your business. We recommend that you call this operation at a reasonable rate.
 //
 // @param request - DescribeImageModerationResultRequest
 //
@@ -194,13 +195,13 @@ func (client *Client) DescribeImageModerationResultWithOptions(request *Describe
 
 // Summary:
 //
-// Obtains the moderation results of an Image Moderation 2.0 task.
+// Retrieves the results of an Image Moderation Pro task.
 //
 // Description:
 //
-//	  Billing: This operation is free of charge.
+// - Billing information: This operation is not billed.
 //
-//		- QPS limit: You can call this operation up to 100 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// - QPS limit: This operation is limited to 100 queries per second (QPS) for each user. If you exceed this limit, your API calls are throttled, which may affect your business. We recommend that you call this operation at a reasonable rate.
 //
 // @param request - DescribeImageModerationResultRequest
 //
@@ -218,7 +219,11 @@ func (client *Client) DescribeImageModerationResult(request *DescribeImageModera
 
 // Summary:
 //
-// Obtains more auxiliary information that is identified by calling the Image Moderation 2.0 API. The auxiliary information includes the moderation results of images and text and the hit information of custom image libraries.
+// The enhanced image moderation auxiliary information API operation retrieves additional auxiliary information detected by the enhanced image moderation API operation, including OCR results and custom image library hit information.
+//
+// Description:
+//
+// This API operation must be used with the enhanced image moderation API. After you call the enhanced image moderation API operation, you can call this API operation to obtain additional detection information. This API operation is free of charge.
 //
 // @param request - DescribeImageResultExtRequest
 //
@@ -266,7 +271,11 @@ func (client *Client) DescribeImageResultExtWithOptions(request *DescribeImageRe
 
 // Summary:
 //
-// Obtains more auxiliary information that is identified by calling the Image Moderation 2.0 API. The auxiliary information includes the moderation results of images and text and the hit information of custom image libraries.
+// The enhanced image moderation auxiliary information API operation retrieves additional auxiliary information detected by the enhanced image moderation API operation, including OCR results and custom image library hit information.
+//
+// Description:
+//
+// This API operation must be used with the enhanced image moderation API. After you call the enhanced image moderation API operation, you can call this API operation to obtain additional detection information. This API operation is free of charge.
 //
 // @param request - DescribeImageResultExtRequest
 //
@@ -284,7 +293,15 @@ func (client *Client) DescribeImageResultExt(request *DescribeImageResultExtRequ
 
 // Summary:
 //
-// 查询异步多模态检测结果
+// Query the results of an asynchronous multimodal moderation task.
+//
+// Description:
+//
+// - Billing information: This API call is free.
+//
+// - Query timeout: Wait 30 seconds after you submit an asynchronous moderation task before querying the result. Do not wait longer than 24 hours, or the result will be automatically deleted.
+//
+// - This API has a per-user rate limiting limit of 10 requests per second. Exceeding this limit triggers rate limiting, which may affect your service. Call the API responsibly.
 //
 // @param request - DescribeMultimodalModerationResultRequest
 //
@@ -328,7 +345,15 @@ func (client *Client) DescribeMultimodalModerationResultWithOptions(request *Des
 
 // Summary:
 //
-// 查询异步多模态检测结果
+// Query the results of an asynchronous multimodal moderation task.
+//
+// Description:
+//
+// - Billing information: This API call is free.
+//
+// - Query timeout: Wait 30 seconds after you submit an asynchronous moderation task before querying the result. Do not wait longer than 24 hours, or the result will be automatically deleted.
+//
+// - This API has a per-user rate limiting limit of 10 requests per second. Exceeding this limit triggers rate limiting, which may affect your service. Call the API responsibly.
 //
 // @param request - DescribeMultimodalModerationResultRequest
 //
@@ -346,7 +371,7 @@ func (client *Client) DescribeMultimodalModerationResult(request *DescribeMultim
 
 // Summary:
 //
-// Queries the token for uploading files.
+// Retrieves an upload token.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -375,7 +400,7 @@ func (client *Client) DescribeUploadTokenWithOptions(runtime *dara.RuntimeOption
 
 // Summary:
 //
-// Queries the token for uploading files.
+// Retrieves an upload token.
 //
 // @return DescribeUploadTokenResponse
 func (client *Client) DescribeUploadToken() (_result *DescribeUploadTokenResponse, _err error) {
@@ -391,15 +416,15 @@ func (client *Client) DescribeUploadToken() (_result *DescribeUploadTokenRespons
 
 // Summary:
 //
-// Queries the moderation results based on the ReqId returned by asynchronous URL moderation.
+// Queries moderation results based on the ReqId returned by asynchronous URL moderation.
 //
 // Description:
 //
-//	  Billing: This operation is free of charge.
+// - Billing information: This operation is free of charge.
 //
-//		- Query timeout: We recommend that you query moderation results at least 480 seconds after you send an asynchronous moderation request. Content Moderation retains moderation results for up to 3 days. After 3 days, the results are deleted.
+// - Query timeout: We recommend that you set the query interval to 480 seconds (query the results 480 seconds after you submit the asynchronous moderation task). The maximum timeout period is 3 days. After this period, the results are automatically deleted.
 //
-//		- You can call this operation up to 100 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// - The QPS limit for this operation is 100 queries per second (QPS) per user. If the limit is exceeded, your API calls will be throttled, which may affect your business. Make sure you call the operation at a reasonable rate.
 //
 // @param request - DescribeUrlModerationResultRequest
 //
@@ -443,15 +468,15 @@ func (client *Client) DescribeUrlModerationResultWithOptions(request *DescribeUr
 
 // Summary:
 //
-// Queries the moderation results based on the ReqId returned by asynchronous URL moderation.
+// Queries moderation results based on the ReqId returned by asynchronous URL moderation.
 //
 // Description:
 //
-//	  Billing: This operation is free of charge.
+// - Billing information: This operation is free of charge.
 //
-//		- Query timeout: We recommend that you query moderation results at least 480 seconds after you send an asynchronous moderation request. Content Moderation retains moderation results for up to 3 days. After 3 days, the results are deleted.
+// - Query timeout: We recommend that you set the query interval to 480 seconds (query the results 480 seconds after you submit the asynchronous moderation task). The maximum timeout period is 3 days. After this period, the results are automatically deleted.
 //
-//		- You can call this operation up to 100 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// - The QPS limit for this operation is 100 queries per second (QPS) per user. If the limit is exceeded, your API calls will be throttled, which may affect your business. Make sure you call the operation at a reasonable rate.
 //
 // @param request - DescribeUrlModerationResultRequest
 //
@@ -469,7 +494,7 @@ func (client *Client) DescribeUrlModerationResult(request *DescribeUrlModeration
 
 // Summary:
 //
-// Moderates files.
+// Moderates document content.
 //
 // @param request - FileModerationRequest
 //
@@ -517,7 +542,7 @@ func (client *Client) FileModerationWithOptions(request *FileModerationRequest, 
 
 // Summary:
 //
-// Moderates files.
+// Moderates document content.
 //
 // @param request - FileModerationRequest
 //
@@ -535,7 +560,15 @@ func (client *Client) FileModeration(request *FileModerationRequest) (_result *F
 
 // Summary:
 //
-// Moderates images in asynchronous mode. An asynchronous image moderation task does not return the moderation results in real time. To obtain moderation results, you can poll the moderation results periodically or enable callback notification. The moderation results are retained for a maximum of 3 days.
+// This API is used for asynchronous image moderation. Asynchronous moderation tasks do not return detection results in real time. You can obtain the detection results using a callback or by polling. The detection results are retained for up to three days.
+//
+// Description:
+//
+// - The following image formats are supported: PNG, JPG, JPEG, BMP, WEBP, TIFF, ICO, HEIC, and SVG.
+//
+// - The image size cannot exceed 10 MB. The recommended image resolution is greater than 200 × 200 pixels. A low resolution may compromise the accuracy of the Content Moderation algorithm.
+//
+// - The timeout period for image downloads is 3 seconds. If an image download exceeds this duration, a download timeout error is returned.
 //
 // @param request - ImageAsyncModerationRequest
 //
@@ -583,7 +616,15 @@ func (client *Client) ImageAsyncModerationWithOptions(request *ImageAsyncModerat
 
 // Summary:
 //
-// Moderates images in asynchronous mode. An asynchronous image moderation task does not return the moderation results in real time. To obtain moderation results, you can poll the moderation results periodically or enable callback notification. The moderation results are retained for a maximum of 3 days.
+// This API is used for asynchronous image moderation. Asynchronous moderation tasks do not return detection results in real time. You can obtain the detection results using a callback or by polling. The detection results are retained for up to three days.
+//
+// Description:
+//
+// - The following image formats are supported: PNG, JPG, JPEG, BMP, WEBP, TIFF, ICO, HEIC, and SVG.
+//
+// - The image size cannot exceed 10 MB. The recommended image resolution is greater than 200 × 200 pixels. A low resolution may compromise the accuracy of the Content Moderation algorithm.
+//
+// - The timeout period for image downloads is 3 seconds. If an image download exceeds this duration, a download timeout error is returned.
 //
 // @param request - ImageAsyncModerationRequest
 //
@@ -601,7 +642,7 @@ func (client *Client) ImageAsyncModeration(request *ImageAsyncModerationRequest)
 
 // Summary:
 //
-// 图片批量调用
+// # Batch Invocation of Images
 //
 // @param request - ImageBatchModerationRequest
 //
@@ -649,7 +690,7 @@ func (client *Client) ImageBatchModerationWithOptions(request *ImageBatchModerat
 
 // Summary:
 //
-// 图片批量调用
+// # Batch Invocation of Images
 //
 // @param request - ImageBatchModerationRequest
 //
@@ -667,11 +708,17 @@ func (client *Client) ImageBatchModeration(request *ImageBatchModerationRequest)
 
 // Summary:
 //
-// Identifies whether an image contains content or elements that violate relevant regulations on network content dissemination, affect the content order of a specific platform, or affect user experience. Image Moderation 2.0 supports over 90 content risk labels and over 100 risk control items. Image Moderation 2.0 of Content Moderation allows you to develop further moderation or governance measures for specific image content based on business scenarios, platform-specific content governance rules, or rich risk labels and scores of confidence levels returned by API calls.
+// # Image moderation
 //
 // Description:
 //
-// *Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/467826.html)[](https://www.aliyun.com/price/product?#/lvwang/detail/cdibag) of Image Moderation 2.0.
+// Before you call this operation, complete the following steps:
+//
+// 1. [Activate AI Guardrails-Enhanced Edition](https://common-buy.aliyun.com/?commodityCode=lvwang_cip_public_cn).
+//
+// 2. Understand the [billing methods and pricing](https://help.aliyun.com/document_detail/467826.html?#section-h06-qz6-1pt) of the enhanced image moderation feature.
+//
+// 3. For more information about API usage and parameters, see the [API reference](https://help.aliyun.com/document_detail/467829.html).
 //
 // @param request - ImageModerationRequest
 //
@@ -719,11 +766,17 @@ func (client *Client) ImageModerationWithOptions(request *ImageModerationRequest
 
 // Summary:
 //
-// Identifies whether an image contains content or elements that violate relevant regulations on network content dissemination, affect the content order of a specific platform, or affect user experience. Image Moderation 2.0 supports over 90 content risk labels and over 100 risk control items. Image Moderation 2.0 of Content Moderation allows you to develop further moderation or governance measures for specific image content based on business scenarios, platform-specific content governance rules, or rich risk labels and scores of confidence levels returned by API calls.
+// # Image moderation
 //
 // Description:
 //
-// *Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/467826.html)[](https://www.aliyun.com/price/product?#/lvwang/detail/cdibag) of Image Moderation 2.0.
+// Before you call this operation, complete the following steps:
+//
+// 1. [Activate AI Guardrails-Enhanced Edition](https://common-buy.aliyun.com/?commodityCode=lvwang_cip_public_cn).
+//
+// 2. Understand the [billing methods and pricing](https://help.aliyun.com/document_detail/467826.html?#section-h06-qz6-1pt) of the enhanced image moderation feature.
+//
+// 3. For more information about API usage and parameters, see the [API reference](https://help.aliyun.com/document_detail/467829.html).
 //
 // @param request - ImageModerationRequest
 //
@@ -807,7 +860,7 @@ func (client *Client) ImageQueueModeration(request *ImageQueueModerationRequest)
 
 // Summary:
 //
-// # Content Security Manual Review Result Callback Interface
+// The channel callback API for manual review results in Content Moderation.
 //
 // @param request - ManualCallbackRequest
 //
@@ -871,7 +924,7 @@ func (client *Client) ManualCallbackWithOptions(request *ManualCallbackRequest, 
 
 // Summary:
 //
-// # Content Security Manual Review Result Callback Interface
+// The channel callback API for manual review results in Content Moderation.
 //
 // @param request - ManualCallbackRequest
 //
@@ -889,7 +942,7 @@ func (client *Client) ManualCallback(request *ManualCallbackRequest) (_result *M
 
 // Summary:
 //
-// # Content Security Manual Review Request Interface
+// # Interface for submitting Content Moderation manual review requests
 //
 // @param request - ManualModerationRequest
 //
@@ -937,7 +990,7 @@ func (client *Client) ManualModerationWithOptions(request *ManualModerationReque
 
 // Summary:
 //
-// # Content Security Manual Review Request Interface
+// # Interface for submitting Content Moderation manual review requests
 //
 // @param request - ManualModerationRequest
 //
@@ -955,7 +1008,7 @@ func (client *Client) ManualModeration(request *ManualModerationRequest) (_resul
 
 // Summary:
 //
-// # Retrieve manual review results
+// Retrieves the manual moderation result.
 //
 // @param request - ManualModerationResultRequest
 //
@@ -999,7 +1052,7 @@ func (client *Client) ManualModerationResultWithOptions(request *ManualModeratio
 
 // Summary:
 //
-// # Retrieve manual review results
+// Retrieves the manual moderation result.
 //
 // @param request - ManualModerationResultRequest
 //
@@ -1017,7 +1070,11 @@ func (client *Client) ManualModerationResult(request *ManualModerationResultRequ
 
 // Summary:
 //
-// 多模态AgentAPI同步检测接口
+// This is the synchronous detection API for the multi-modal agent.
+//
+// Description:
+//
+// This is the AI Guardrails agent.
 //
 // @param request - MultiModalAgentRequest
 //
@@ -1065,7 +1122,11 @@ func (client *Client) MultiModalAgentWithOptions(request *MultiModalAgentRequest
 
 // Summary:
 //
-// 多模态AgentAPI同步检测接口
+// This is the synchronous detection API for the multi-modal agent.
+//
+// Description:
+//
+// This is the AI Guardrails agent.
 //
 // @param request - MultiModalAgentRequest
 //
@@ -1083,7 +1144,7 @@ func (client *Client) MultiModalAgent(request *MultiModalAgentRequest) (_result 
 
 // Summary:
 //
-// 同步检测接口
+// # API for synchronous detection
 //
 // @param request - MultiModalGuardRequest
 //
@@ -1131,7 +1192,7 @@ func (client *Client) MultiModalGuardWithOptions(request *MultiModalGuardRequest
 
 // Summary:
 //
-// 同步检测接口
+// # API for synchronous detection
 //
 // @param request - MultiModalGuardRequest
 //
@@ -1149,7 +1210,11 @@ func (client *Client) MultiModalGuard(request *MultiModalGuardRequest) (_result 
 
 // Summary:
 //
-// 视频检测任务提交
+// An asynchronous multimodal AI safety guardrail API for audio and video. It provides comprehensive detection of non-compliant content, sensitive content, prompt injection attacks, malicious files, and malicious URLs.
+//
+// Description:
+//
+// If an API is subject to billing, add the following sentence in bold: "Before using this API, ensure that you fully understand the billing methods and pricing of the XXX product." The word "pricing" must be a hyperlink to https\\://www\\.aliyun.com/price/product#/ecs/detail.
 //
 // @param request - MultiModalGuardAsyncRequest
 //
@@ -1197,7 +1262,11 @@ func (client *Client) MultiModalGuardAsyncWithOptions(request *MultiModalGuardAs
 
 // Summary:
 //
-// 视频检测任务提交
+// An asynchronous multimodal AI safety guardrail API for audio and video. It provides comprehensive detection of non-compliant content, sensitive content, prompt injection attacks, malicious files, and malicious URLs.
+//
+// Description:
+//
+// If an API is subject to billing, add the following sentence in bold: "Before using this API, ensure that you fully understand the billing methods and pricing of the XXX product." The word "pricing" must be a hyperlink to https\\://www\\.aliyun.com/price/product#/ecs/detail.
 //
 // @param request - MultiModalGuardAsyncRequest
 //
@@ -1215,7 +1284,11 @@ func (client *Client) MultiModalGuardAsync(request *MultiModalGuardAsyncRequest)
 
 // Summary:
 //
-// 获取视频检测结果
+// This AI Security Guardrail API retrieves asynchronous multimodal results from both audio and video.
+//
+// Description:
+//
+// For APIs that incur charges, add the following sentence in bold at the beginning of the description: "Before you use this API, make sure that you fully understand the billing methods and pricing of the XXX product." Link the word \\"pricing\\" to https\\://www\\.aliyun.com/price/product#/ecs/detail.
 //
 // @param request - MultiModalGuardAsyncResultRequest
 //
@@ -1263,7 +1336,11 @@ func (client *Client) MultiModalGuardAsyncResultWithOptions(request *MultiModalG
 
 // Summary:
 //
-// 获取视频检测结果
+// This AI Security Guardrail API retrieves asynchronous multimodal results from both audio and video.
+//
+// Description:
+//
+// For APIs that incur charges, add the following sentence in bold at the beginning of the description: "Before you use this API, make sure that you fully understand the billing methods and pricing of the XXX product." Link the word \\"pricing\\" to https\\://www\\.aliyun.com/price/product#/ecs/detail.
 //
 // @param request - MultiModalGuardAsyncResultRequest
 //
@@ -1353,7 +1430,80 @@ func (client *Client) MultiModalGuardForBase64(request *MultiModalGuardForBase64
 
 // Summary:
 //
-// 多模态-异步检测
+// Provides a WebSocket-based multimodal detection API for AI safety guardrails. This API supports content compliance detection, sensitive content detection, prompt attack detection, malicious file detection, malicious URL detection, and other comprehensive detection capabilities.
+//
+// @param request - MultiModalGuardWsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return MultiModalGuardWsResponse
+func (client *Client) MultiModalGuardWsWithOptions(request *MultiModalGuardWsRequest, runtime *dara.RuntimeOptions) (_result *MultiModalGuardWsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:               dara.String("MultiModalGuardWs"),
+		Version:              dara.String("2022-03-02"),
+		Protocol:             dara.String("wss"),
+		Pathname:             dara.String("/"),
+		Method:               dara.String("GET"),
+		AuthType:             dara.String("AK"),
+		Style:                dara.String("RPC"),
+		ReqBodyType:          dara.String("formData"),
+		BodyType:             dara.String("json"),
+		WebsocketSubProtocol: dara.String("awap"),
+	}
+	res := &MultiModalGuardWsResponse{}
+	callApiTmp, err := client.CallApi(params, req, runtime)
+	if err != nil {
+		_err = err
+		return _result, _err
+	}
+	tmp := dara.ToMap(callApiTmp)
+	if !dara.IsNil(tmp["WebSocketClient"]) {
+		res.WebSocketClient = websocketutils.CreateWebSocketClient(tmp["WebSocketClient"])
+	}
+
+	_result = res
+	return _result, _err
+}
+
+// Summary:
+//
+// Provides a WebSocket-based multimodal detection API for AI safety guardrails. This API supports content compliance detection, sensitive content detection, prompt attack detection, malicious file detection, malicious URL detection, and other comprehensive detection capabilities.
+//
+// @param request - MultiModalGuardWsRequest
+//
+// @return MultiModalGuardWsResponse
+func (client *Client) MultiModalGuardWs(request *MultiModalGuardWsRequest) (_result *MultiModalGuardWsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &MultiModalGuardWsResponse{}
+	_body, _err := client.MultiModalGuardWsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # Multimodal-Asynchronous Detection
+//
+// Description:
+//
+// The asynchronous URL moderation service supports two billing methods: pay-as-you-go and resource plan usage.
+//
+// - After you activate the enhanced text moderation service, the default billing method is pay-as-you-go. You are billed daily based on actual usage. No charges apply if you do not invoke the service.
+//
+// - If your moderation volume is large or your moderation needs are relatively stable, purchase a resource plan in advance. Larger resource plans offer greater discounts. You can stack multiple resource plans.
 //
 // @param request - MultimodalAsyncModerationRequest
 //
@@ -1401,7 +1551,15 @@ func (client *Client) MultimodalAsyncModerationWithOptions(request *MultimodalAs
 
 // Summary:
 //
-// 多模态-异步检测
+// # Multimodal-Asynchronous Detection
+//
+// Description:
+//
+// The asynchronous URL moderation service supports two billing methods: pay-as-you-go and resource plan usage.
+//
+// - After you activate the enhanced text moderation service, the default billing method is pay-as-you-go. You are billed daily based on actual usage. No charges apply if you do not invoke the service.
+//
+// - If your moderation volume is large or your moderation needs are relatively stable, purchase a resource plan in advance. Larger resource plans offer greater discounts. You can stack multiple resource plans.
 //
 // @param request - MultimodalAsyncModerationRequest
 //
@@ -1419,11 +1577,11 @@ func (client *Client) MultimodalAsyncModeration(request *MultimodalAsyncModerati
 
 // Summary:
 //
-// Provides moderation services for multiple business scenarios and identifies various violation risks.
+// This service uses dynamic policies and models to defend against adversarial content. It provides moderation services for various business scenarios and detects different types of violations.
 //
 // Description:
 //
-// Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/464388.html?#section-itm-m2s-ugq) of Text Moderation 2.0.
+// Before you use this operation, review the [billing methods and pricing](https://help.aliyun.com/document_detail/464388.html?#section-itm-m2s-ugq) for Text Moderation Plus.
 //
 // @param request - TextModerationRequest
 //
@@ -1471,11 +1629,11 @@ func (client *Client) TextModerationWithOptions(request *TextModerationRequest, 
 
 // Summary:
 //
-// Provides moderation services for multiple business scenarios and identifies various violation risks.
+// This service uses dynamic policies and models to defend against adversarial content. It provides moderation services for various business scenarios and detects different types of violations.
 //
 // Description:
 //
-// Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/464388.html?#section-itm-m2s-ugq) of Text Moderation 2.0.
+// Before you use this operation, review the [billing methods and pricing](https://help.aliyun.com/document_detail/464388.html?#section-itm-m2s-ugq) for Text Moderation Plus.
 //
 // @param request - TextModerationRequest
 //
@@ -1493,11 +1651,11 @@ func (client *Client) TextModeration(request *TextModerationRequest) (_result *T
 
 // Summary:
 //
-// Moderates the input command and generated text of large language models (LLMs). Specific model input commands can be used to retrieve standard answers. The feature of enabling and disabling the moderation labels is also available.
+// Text Moderation Plus is an upgraded service that moderates the input instructions and generated text of large language models (LLMs). This service can retrieve standard answers for specific input instructions and lets you enable or disable moderation labels.
 //
 // Description:
 //
-// Before you call this operation, make sure that you have [activated the Content Moderation 2.0 service](https://common-buy.aliyun.com/?commodityCode=lvwang_cip_public_cn) and are familiar with the [billing](https://help.aliyun.com/document_detail/2671445.html?#section-6od-32j-99n) of the Text Moderation 2.0 Plus service.
+// Before you use this API, [activate AI Guardrails Pro](https://common-buy.aliyun.com/?commodityCode=lvwang_cip_public_cn) and make sure that you understand the [billing methods and pricing](https://help.aliyun.com/document_detail/2671445.html?#section-6od-32j-99n) for Text Moderation Plus.
 //
 // @param request - TextModerationPlusRequest
 //
@@ -1545,11 +1703,11 @@ func (client *Client) TextModerationPlusWithOptions(request *TextModerationPlusR
 
 // Summary:
 //
-// Moderates the input command and generated text of large language models (LLMs). Specific model input commands can be used to retrieve standard answers. The feature of enabling and disabling the moderation labels is also available.
+// Text Moderation Plus is an upgraded service that moderates the input instructions and generated text of large language models (LLMs). This service can retrieve standard answers for specific input instructions and lets you enable or disable moderation labels.
 //
 // Description:
 //
-// Before you call this operation, make sure that you have [activated the Content Moderation 2.0 service](https://common-buy.aliyun.com/?commodityCode=lvwang_cip_public_cn) and are familiar with the [billing](https://help.aliyun.com/document_detail/2671445.html?#section-6od-32j-99n) of the Text Moderation 2.0 Plus service.
+// Before you use this API, [activate AI Guardrails Pro](https://common-buy.aliyun.com/?commodityCode=lvwang_cip_public_cn) and make sure that you understand the [billing methods and pricing](https://help.aliyun.com/document_detail/2671445.html?#section-6od-32j-99n) for Text Moderation Plus.
 //
 // @param request - TextModerationPlusRequest
 //
@@ -1567,7 +1725,15 @@ func (client *Client) TextModerationPlus(request *TextModerationPlusRequest) (_r
 
 // Summary:
 //
-// Identifies whether URL links contain risks such as fraud, pornographic, and gambling content, to protect the platform content ecosystem.
+// The URL asynchronous moderation service detects threats such as fraud, pornography, and gambling in URLs to protect the content ecosystem of your platform.
+//
+// Description:
+//
+// The URL asynchronous moderation service supports the pay-as-you-go and resource plan billing methods.
+//
+// - After you activate the enhanced edition of Text Moderation, the default billing method is pay-as-you-go. You are charged CNY 30 per 10,000 calls based on your daily usage. No fees are incurred if you do not call the service.
+//
+// - If you have many moderation requests or relatively fixed moderation requirements, we recommend that you purchase resource plans in advance. The larger the resource plan you purchase, the greater the discount you receive. You can purchase and use multiple resource plans.
 //
 // @param request - UrlAsyncModerationRequest
 //
@@ -1615,7 +1781,15 @@ func (client *Client) UrlAsyncModerationWithOptions(request *UrlAsyncModerationR
 
 // Summary:
 //
-// Identifies whether URL links contain risks such as fraud, pornographic, and gambling content, to protect the platform content ecosystem.
+// The URL asynchronous moderation service detects threats such as fraud, pornography, and gambling in URLs to protect the content ecosystem of your platform.
+//
+// Description:
+//
+// The URL asynchronous moderation service supports the pay-as-you-go and resource plan billing methods.
+//
+// - After you activate the enhanced edition of Text Moderation, the default billing method is pay-as-you-go. You are charged CNY 30 per 10,000 calls based on your daily usage. No fees are incurred if you do not call the service.
+//
+// - If you have many moderation requests or relatively fixed moderation requirements, we recommend that you purchase resource plans in advance. The larger the resource plan you purchase, the greater the discount you receive. You can purchase and use multiple resource plans.
 //
 // @param request - UrlAsyncModerationRequest
 //
@@ -1633,7 +1807,11 @@ func (client *Client) UrlAsyncModeration(request *UrlAsyncModerationRequest) (_r
 
 // Summary:
 //
-// Identifies risky or illegal content in video files. You can call this operation to submit a moderation task.
+// The enhanced video moderation feature of Content Moderation detects threats and non-compliant content in video files. Use this operation to submit a moderation task.
+//
+// Description:
+//
+// Before you call this operation, make sure that you have activated the [enhanced Content Moderation](https://common-buy.aliyun.com/?commodityCode=lvwang_cip_public_cn) service and understand the [billing methods](https://help.aliyun.com/document_detail/2505807.html) and [pricing](https://www.aliyun.com/price/product?#/lvwang/detail/cdibag) of the enhanced video moderation feature.
 //
 // @param request - VideoModerationRequest
 //
@@ -1681,7 +1859,11 @@ func (client *Client) VideoModerationWithOptions(request *VideoModerationRequest
 
 // Summary:
 //
-// Identifies risky or illegal content in video files. You can call this operation to submit a moderation task.
+// The enhanced video moderation feature of Content Moderation detects threats and non-compliant content in video files. Use this operation to submit a moderation task.
+//
+// Description:
+//
+// Before you call this operation, make sure that you have activated the [enhanced Content Moderation](https://common-buy.aliyun.com/?commodityCode=lvwang_cip_public_cn) service and understand the [billing methods](https://help.aliyun.com/document_detail/2505807.html) and [pricing](https://www.aliyun.com/price/product?#/lvwang/detail/cdibag) of the enhanced video moderation feature.
 //
 // @param request - VideoModerationRequest
 //
@@ -1699,7 +1881,7 @@ func (client *Client) VideoModeration(request *VideoModerationRequest) (_result 
 
 // Summary:
 //
-// Cancels a live stream moderation task.
+// Cancels an ApsaraVideo Live moderation task.
 //
 // @param request - VideoModerationCancelRequest
 //
@@ -1747,7 +1929,7 @@ func (client *Client) VideoModerationCancelWithOptions(request *VideoModerationC
 
 // Summary:
 //
-// Cancels a live stream moderation task.
+// Cancels an ApsaraVideo Live moderation task.
 //
 // @param request - VideoModerationCancelRequest
 //
@@ -1765,11 +1947,11 @@ func (client *Client) VideoModerationCancel(request *VideoModerationCancelReques
 
 // Summary:
 //
-// # Get Video Detection Results
+// Retrieves the results of an enhanced video moderation task.
 //
 // Description:
 //
-// This operation is free of charge. We recommend that you query moderation results at least 30 seconds after you send an asynchronous moderation request. Content Moderation retains moderation results for at most 24 hours. After 24 hours, the results are deleted.
+// This operation is free. We recommend querying for the result 30 seconds after submitting the asynchronous detection task. You must retrieve the result within 24 hours, or it will be automatically deleted.
 //
 // @param request - VideoModerationResultRequest
 //
@@ -1817,11 +1999,11 @@ func (client *Client) VideoModerationResultWithOptions(request *VideoModerationR
 
 // Summary:
 //
-// # Get Video Detection Results
+// Retrieves the results of an enhanced video moderation task.
 //
 // Description:
 //
-// This operation is free of charge. We recommend that you query moderation results at least 30 seconds after you send an asynchronous moderation request. Content Moderation retains moderation results for at most 24 hours. After 24 hours, the results are deleted.
+// This operation is free. We recommend querying for the result 30 seconds after submitting the asynchronous detection task. You must retrieve the result within 24 hours, or it will be automatically deleted.
 //
 // @param request - VideoModerationResultRequest
 //
@@ -1839,7 +2021,7 @@ func (client *Client) VideoModerationResult(request *VideoModerationResultReques
 
 // Summary:
 //
-// Submits a Voice Moderation 2.0 task.
+// Submits a task for enhanced voice moderation.
 //
 // @param request - VoiceModerationRequest
 //
@@ -1887,7 +2069,7 @@ func (client *Client) VoiceModerationWithOptions(request *VoiceModerationRequest
 
 // Summary:
 //
-// Submits a Voice Moderation 2.0 task.
+// Submits a task for enhanced voice moderation.
 //
 // @param request - VoiceModerationRequest
 //
@@ -1905,7 +2087,7 @@ func (client *Client) VoiceModeration(request *VoiceModerationRequest) (_result 
 
 // Summary:
 //
-// Cancels a Voice Moderation 2.0 task.
+// This operation cancels an enhanced voice moderation task.
 //
 // @param request - VoiceModerationCancelRequest
 //
@@ -1953,7 +2135,7 @@ func (client *Client) VoiceModerationCancelWithOptions(request *VoiceModerationC
 
 // Summary:
 //
-// Cancels a Voice Moderation 2.0 task.
+// This operation cancels an enhanced voice moderation task.
 //
 // @param request - VoiceModerationCancelRequest
 //
@@ -1971,7 +2153,7 @@ func (client *Client) VoiceModerationCancel(request *VoiceModerationCancelReques
 
 // Summary:
 //
-// Obtains the moderation results of a Voice Moderation 2.0 task.
+// Retrieve the detection results for enhanced voice moderation.
 //
 // @param request - VoiceModerationResultRequest
 //
@@ -2019,7 +2201,7 @@ func (client *Client) VoiceModerationResultWithOptions(request *VoiceModerationR
 
 // Summary:
 //
-// Obtains the moderation results of a Voice Moderation 2.0 task.
+// Retrieve the detection results for enhanced voice moderation.
 //
 // @param request - VoiceModerationResultRequest
 //

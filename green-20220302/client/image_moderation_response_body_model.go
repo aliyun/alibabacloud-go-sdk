@@ -20,21 +20,21 @@ type iImageModerationResponseBody interface {
 }
 
 type ImageModerationResponseBody struct {
-	// The returned HTTP status code. The status code 200 indicates that the request was successful.
+	// The return code. A value of 200 indicates that the request was successful.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The moderation results.
+	// The results of the image content moderation.
 	Data *ImageModerationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message that is returned in response to the request.
+	// The message returned for the request.
 	//
 	// example:
 	//
 	// OK
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	// The request ID, which is used to locate and troubleshoot issues.
+	// The ID of the request. Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -96,21 +96,31 @@ func (s *ImageModerationResponseBody) Validate() error {
 }
 
 type ImageModerationResponseBodyData struct {
-	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The ID of the moderated object.
+	// The AccountId specified in the request.
 	//
-	// >  If you specify the dataId parameter in the request, the value of the dataId parameter is returned in the response.
+	// example:
+	//
+	// testaccountid123
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The data ID of the detected object.
+	//
+	// > If you specify the dataId parameter in the request, the corresponding dataId is returned.
 	//
 	// example:
 	//
 	// fb5ffab1-993b-449f-b8d6-b97d5e3331f2
 	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	// Auxiliary reference information.
-	Ext          *ImageModerationResponseBodyDataExt `json:"Ext,omitempty" xml:"Ext,omitempty" type:"Struct"`
-	ManualTaskId *string                             `json:"ManualTaskId,omitempty" xml:"ManualTaskId,omitempty"`
-	// The results of image moderation parameters such as the label parameter and the confidence parameter, which are an array structure.
+	// Auxiliary reference information for the image.
+	Ext *ImageModerationResponseBodyDataExt `json:"Ext,omitempty" xml:"Ext,omitempty" type:"Struct"`
+	// The ID of the manual review task.
+	//
+	// example:
+	//
+	// xxxxx-xxxxx
+	ManualTaskId *string `json:"ManualTaskId,omitempty" xml:"ManualTaskId,omitempty"`
+	// The results of the image moderation, including the threat labels and confidence levels. The value is an array.
 	Result []*ImageModerationResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	// Risk Level.
+	// The threat level.
 	//
 	// example:
 	//
@@ -199,22 +209,23 @@ func (s *ImageModerationResponseBodyData) Validate() error {
 }
 
 type ImageModerationResponseBodyDataExt struct {
+	// The detection information for the implicit AIGC identity in the image.
 	AigcData *ImageModerationResponseBodyDataExtAigcData `json:"AigcData,omitempty" xml:"AigcData,omitempty" type:"Struct"`
-	// If a custom image library is hit, information about the hit custom image library is returned.
+	// A list of hits from the custom image library.
 	CustomImage []*ImageModerationResponseBodyDataExtCustomImage `json:"CustomImage,omitempty" xml:"CustomImage,omitempty" type:"Repeated"`
-	// The returned face attribute information
+	// The facial attribute detection results.
 	FaceData []*ImageModerationResponseBodyDataExtFaceData `json:"FaceData,omitempty" xml:"FaceData,omitempty" type:"Repeated"`
-	// Logo information.
+	// The identity information.
 	LogoData []*ImageModerationResponseBodyDataExtLogoData `json:"LogoData,omitempty" xml:"LogoData,omitempty" type:"Repeated"`
-	// Returns the text information in the recognized image.
+	// The results of optical character recognition (OCR).
 	OcrResult []*ImageModerationResponseBodyDataExtOcrResult `json:"OcrResult,omitempty" xml:"OcrResult,omitempty" type:"Repeated"`
-	// Person information list.
+	// A list of public figures.
 	PublicFigure []*ImageModerationResponseBodyDataExtPublicFigure `json:"PublicFigure,omitempty" xml:"PublicFigure,omitempty" type:"Repeated"`
-	// The result of image recognition.
+	// The results of image object recognition.
 	Recognition []*ImageModerationResponseBodyDataExtRecognition `json:"Recognition,omitempty" xml:"Recognition,omitempty" type:"Repeated"`
-	// Returns the text information in the hit image.
+	// The text information that is hit in the image.
 	TextInImage *ImageModerationResponseBodyDataExtTextInImage `json:"TextInImage,omitempty" xml:"TextInImage,omitempty" type:"Struct"`
-	// the vl output content
+	// The output content.
 	VlContent *ImageModerationResponseBodyDataExtVlContent `json:"VlContent,omitempty" xml:"VlContent,omitempty" type:"Struct"`
 }
 
@@ -381,6 +392,7 @@ func (s *ImageModerationResponseBodyDataExt) Validate() error {
 }
 
 type ImageModerationResponseBodyDataExtAigcData struct {
+	// The detection information for the implicit AIGC identity.
 	AIGC *ImageModerationResponseBodyDataExtAigcDataAIGC `json:"AIGC,omitempty" xml:"AIGC,omitempty" type:"Struct"`
 }
 
@@ -411,13 +423,58 @@ func (s *ImageModerationResponseBodyDataExtAigcData) Validate() error {
 }
 
 type ImageModerationResponseBodyDataExtAigcDataAIGC struct {
-	ContentProducer   *string `json:"ContentProducer,omitempty" xml:"ContentProducer,omitempty"`
+	// The code or name of the service provider, which identifies the content producer.
+	//
+	// example:
+	//
+	// 001191******M000100Y43
+	ContentProducer *string `json:"ContentProducer,omitempty" xml:"ContentProducer,omitempty"`
+	// The name, ID, or code of the propagation platform. For services that provide AI-generated content, this can be the same as the value of ContentProducer.
+	//
+	// example:
+	//
+	// 001191******M000100Y43
 	ContentPropagator *string `json:"ContentPropagator,omitempty" xml:"ContentPropagator,omitempty"`
-	Label             *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	ProduceID         *string `json:"ProduceID,omitempty" xml:"ProduceID,omitempty"`
-	PropagateID       *string `json:"PropagateID,omitempty" xml:"PropagateID,omitempty"`
-	ReservedCode1     *string `json:"ReservedCode1,omitempty" xml:"ReservedCode1,omitempty"`
-	ReservedCode2     *string `json:"ReservedCode2,omitempty" xml:"ReservedCode2,omitempty"`
+	// Indicates whether the content is generated by artificial intelligence (AI). Valid values:
+	//
+	// - 1: The content is generated by AI.
+	//
+	// - 2: (For distribution platforms only) The content may be generated by AI.
+	//
+	// - 3: (For distribution platforms only) The content is suspected to be generated by AI.
+	//
+	// example:
+	//
+	// 1
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The content production ID. This is a unique ID used on the production platform to trace the source of synthesized content.
+	//
+	// example:
+	//
+	// 123******456
+	ProduceID *string `json:"ProduceID,omitempty" xml:"ProduceID,omitempty"`
+	// The content propagation ID. This is a unique ID that the propagation platform assigns to the distributed synthetic content.
+	//
+	// example:
+	//
+	// 123******456
+	PropagateID *string `json:"PropagateID,omitempty" xml:"PropagateID,omitempty"`
+	// A reserved field.
+	//
+	// This field can store information that the generative service provider uses for security protection to ensure the integrity of content and identities. A hashing mechanism based on ContentProducer and ProduceID can be used to securely store and verify key information.
+	//
+	// example:
+	//
+	// d41d**********427e
+	ReservedCode1 *string `json:"ReservedCode1,omitempty" xml:"ReservedCode1,omitempty"`
+	// A reserved field.
+	//
+	// This field can be used by content distribution service providers for security protection to ensure the integrity of content and identities. A hashing mechanism based on ContentProducer and ProduceID can be used to securely store and verify key information.
+	//
+	// example:
+	//
+	// d41d**********427e
+	ReservedCode2 *string `json:"ReservedCode2,omitempty" xml:"ReservedCode2,omitempty"`
 }
 
 func (s ImageModerationResponseBodyDataExtAigcDataAIGC) String() string {
@@ -496,23 +553,23 @@ func (s *ImageModerationResponseBodyDataExtAigcDataAIGC) Validate() error {
 }
 
 type ImageModerationResponseBodyDataExtCustomImage struct {
-	// The image ID.
+	// The ID of the hit custom image.
 	//
 	// example:
 	//
 	// 123456
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The image library ID.
+	// The ID of the hit custom image library.
 	//
 	// example:
 	//
-	// lib_123456
+	// 图库123
 	LibId *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
-	// The image library name.
+	// The name of the hit custom image library.
 	//
 	// example:
 	//
-	// xx
+	// 图库123
 	LibName *string `json:"LibName,omitempty" xml:"LibName,omitempty"`
 }
 
@@ -556,41 +613,41 @@ func (s *ImageModerationResponseBodyDataExtCustomImage) Validate() error {
 }
 
 type ImageModerationResponseBodyDataExtFaceData struct {
-	// The age recognition result.
+	// The detected age.
 	//
 	// example:
 	//
 	// 18
 	Age *int32 `json:"Age,omitempty" xml:"Age,omitempty"`
-	// Indicates whether the recognition result of bangs is available.
+	// The detection result for bangs.
 	Bang *ImageModerationResponseBodyDataExtFaceDataBang `json:"Bang,omitempty" xml:"Bang,omitempty" type:"Struct"`
-	// The gender recognition result.
+	// The gender detection result.
 	Gender *ImageModerationResponseBodyDataExtFaceDataGender `json:"Gender,omitempty" xml:"Gender,omitempty" type:"Struct"`
-	// The recognition result of whether to wear glasses.
+	// Indicates whether the person is wearing glasses. Valid values:
 	//
-	// - None: No glasses.
+	// - None: The person is not wearing glasses.
 	//
-	// - Wear: Wear glasses.
+	// - Common: The person is wearing regular glasses.
 	//
-	// - Sunglass: Wear sunglasses.
+	// - Sunglass: The person is wearing sunglasses.
 	//
 	// example:
 	//
 	// Common
 	Glasses *string `json:"Glasses,omitempty" xml:"Glasses,omitempty"`
-	// The hairstyle recognition result.
+	// The hairstyle detection result.
 	Hairstyle *ImageModerationResponseBodyDataExtFaceDataHairstyle `json:"Hairstyle,omitempty" xml:"Hairstyle,omitempty" type:"Struct"`
-	// The recognition result of whether to wear a hat.
+	// The result of hat detection.
 	Hat *ImageModerationResponseBodyDataExtFaceDataHat `json:"Hat,omitempty" xml:"Hat,omitempty" type:"Struct"`
 	// The location of the face.
 	Location *ImageModerationResponseBodyDataExtFaceDataLocation `json:"Location,omitempty" xml:"Location,omitempty" type:"Struct"`
-	// The recognition result of whether to wear a mask.
+	// The result of mask detection.
 	Mask *ImageModerationResponseBodyDataExtFaceDataMask `json:"Mask,omitempty" xml:"Mask,omitempty" type:"Struct"`
-	// The identification result of whether there is a beard.
+	// The result of mustache detection.
 	Mustache *ImageModerationResponseBodyDataExtFaceDataMustache `json:"Mustache,omitempty" xml:"Mustache,omitempty" type:"Struct"`
-	// The quality information of the face image.
+	// The quality of the face image.
 	Quality *ImageModerationResponseBodyDataExtFaceDataQuality `json:"Quality,omitempty" xml:"Quality,omitempty" type:"Struct"`
-	// The smiling degree of the face.
+	// The degree of the smile. The value ranges from 0 to 100. A higher score indicates a wider smile.
 	//
 	// example:
 	//
@@ -750,13 +807,17 @@ func (s *ImageModerationResponseBodyDataExtFaceData) Validate() error {
 }
 
 type ImageModerationResponseBodyDataExtFaceDataBang struct {
-	// The confidence level of the bang recognition result. Valid values: 0 to 100. A higher value indicates a more credible result.
+	// The confidence level of the bangs detection. The value ranges from 0 to 100. A higher value indicates a more reliable result.
 	//
 	// example:
 	//
 	// 81.88
 	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
-	// Indicates whether the recognition result of bangs is available.
+	// The detection result for bangs. Valid values:
+	//
+	// - Has: The person has bangs.
+	//
+	// - None: The person does not have bangs.
 	//
 	// example:
 	//
@@ -795,17 +856,17 @@ func (s *ImageModerationResponseBodyDataExtFaceDataBang) Validate() error {
 }
 
 type ImageModerationResponseBodyDataExtFaceDataGender struct {
-	// The confidence level of the gender recognition result. Valid values: 0 to 100. A higher value indicates a more credible result.
+	// The confidence level of the gender detection. The value ranges from 0 to 100. A higher value indicates a more reliable result.
 	//
 	// example:
 	//
 	// 81.88
 	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
-	// The gender recognition result. Valid values:
+	// The detected gender. Valid values:
 	//
-	// - Male
+	// - Male: male
 	//
-	// - FeMale
+	// - FeMale: female
 	//
 	// example:
 	//
@@ -844,19 +905,19 @@ func (s *ImageModerationResponseBodyDataExtFaceDataGender) Validate() error {
 }
 
 type ImageModerationResponseBodyDataExtFaceDataHairstyle struct {
-	// The confidence level of the hairstyle recognition result. Valid values: 0 to 100. A higher value indicates a more credible result.
+	// The confidence level of the hairstyle detection. The value ranges from 0 to 100. A higher value indicates a more reliable result.
 	//
 	// example:
 	//
 	// 81.88
 	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
-	// The hairstyle recognition result. Valid values:
+	// The detected hairstyle. Valid values:
 	//
-	// - Bald: bald head.
+	// - Bald: bald
 	//
-	// - Long: Long hair.
+	// - Long: long hair
 	//
-	// - Short: Short hair.
+	// - Short: short hair
 	//
 	// example:
 	//
@@ -895,17 +956,17 @@ func (s *ImageModerationResponseBodyDataExtFaceDataHairstyle) Validate() error {
 }
 
 type ImageModerationResponseBodyDataExtFaceDataHat struct {
-	// The confidence level of the result of wearing the hat. Valid values: 0 to 100. A higher value indicates a more credible result.
+	// The confidence level of the hat detection. The value ranges from 0 to 100. A higher value indicates a more reliable result.
 	//
 	// example:
 	//
 	// 88.88
 	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
-	// The recognition result of whether to wear the hat. Valid values:
+	// Indicates whether a hat is detected. Valid values:
 	//
-	// - Wear: Wear a hat.
+	// - Wear: A hat is worn.
 	//
-	// - None: No hat.
+	// - None: No hat is worn.
 	//
 	// example:
 	//
@@ -944,25 +1005,25 @@ func (s *ImageModerationResponseBodyDataExtFaceDataHat) Validate() error {
 }
 
 type ImageModerationResponseBodyDataExtFaceDataLocation struct {
-	// The height of the face area. Unit: pixels.
+	// The height of the face area. Unit: pixel.
 	//
 	// example:
 	//
 	// 26
 	H *int32 `json:"H,omitempty" xml:"H,omitempty"`
-	// The width of the face area. Unit: pixels.
+	// The width of the face area. Unit: pixel.
 	//
 	// example:
 	//
 	// 83
 	W *int32 `json:"W,omitempty" xml:"W,omitempty"`
-	// The distance from the upper-left corner of the face area to the y-axis with the upper-left corner of the image as the coordinate origin. Unit: pixels.
+	// The distance from the upper-left corner of the face area to the y-axis. The origin is the upper-left corner of the image. Unit: pixel.
 	//
 	// example:
 	//
 	// 41
 	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
-	// The distance from the upper-left corner of the face area to the x-axis with the upper-left corner of the image as the coordinate origin. Unit: pixels.
+	// The distance from the upper-left corner of the face area to the x-axis. The origin is the upper-left corner of the image. Unit: pixel.
 	//
 	// example:
 	//
@@ -1019,17 +1080,17 @@ func (s *ImageModerationResponseBodyDataExtFaceDataLocation) Validate() error {
 }
 
 type ImageModerationResponseBodyDataExtFaceDataMask struct {
-	// The confidence level of the result of wearing the mask. Valid values: 0 to 100. A higher value indicates a more credible result.
+	// The confidence level of the mask detection. The value ranges from 0 to 100. A higher value indicates a more reliable result.
 	//
 	// example:
 	//
 	// 99.99
 	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
-	// The recognition result of whether to wear a mask. Valid values:
+	// Indicates whether a mask is worn. Valid values:
 	//
-	// - Wear a mask.
+	// - Wear: A mask is worn.
 	//
-	//  - None: No mask.
+	// - None: No mask is worn.
 	//
 	// example:
 	//
@@ -1068,17 +1129,17 @@ func (s *ImageModerationResponseBodyDataExtFaceDataMask) Validate() error {
 }
 
 type ImageModerationResponseBodyDataExtFaceDataMustache struct {
-	// The confidence level of the result of the beard. Valid values: 0 to 100. A higher value indicates a more credible result.
+	// The confidence level of the mustache detection. The value ranges from 0 to 100. A higher value indicates a more reliable result.
 	//
 	// example:
 	//
 	// 99.99
 	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
-	// The identification result of whether there is a beard.Valid values:
+	// Indicates whether a mustache is present. Valid values:
 	//
-	// - Has:have a beard.
+	// - Has: A mustache is present.
 	//
-	// - None:No beard.
+	// - None: No mustache is present.
 	//
 	// example:
 	//
@@ -1117,39 +1178,41 @@ func (s *ImageModerationResponseBodyDataExtFaceDataMustache) Validate() error {
 }
 
 type ImageModerationResponseBodyDataExtFaceDataQuality struct {
-	// The blur of the face image. Valid values: 0 to 100. The higher the score, the more fuzzy it is.
+	// The blurriness of the face image. The value ranges from 0 to 100. A higher score indicates a blurrier image.
 	//
-	// Recommended values: 0 to 25.
+	// A value from 0 to 25 is recommended.
 	//
 	// example:
 	//
 	// 5.88
 	Blur *float32 `json:"Blur,omitempty" xml:"Blur,omitempty"`
-	// The integrity of the human face. Recommended values:80 to 100.
+	// The integrity of the face. The value ranges from 0 to 100. A higher score indicates a more complete face.
+	//
+	// A value from 80 to 100 is recommended.
 	//
 	// example:
 	//
 	// 100.0
 	Integrity *float32 `json:"Integrity,omitempty" xml:"Integrity,omitempty"`
-	// The head-up or head-down angle of the face.
+	// The pitch angle of the face.
 	//
-	// Recommended values:-30 to 30.
+	// A value from -30 to 30 is recommended.
 	//
 	// example:
 	//
 	// 5.88
 	Pitch *float32 `json:"Pitch,omitempty" xml:"Pitch,omitempty"`
-	// The plane rotation angle of the face.
+	// The roll angle of the face.
 	//
-	// Recommended values:-30 to 30.
+	// A value from -30 to 30 is recommended.
 	//
 	// example:
 	//
 	// 5.18
 	Roll *float32 `json:"Roll,omitempty" xml:"Roll,omitempty"`
-	// The left and right shaking angle of the human face.
+	// The yaw angle of the face.
 	//
-	// Recommended values:-30 to 30.
+	// A value from -30 to 30 is recommended.
 	//
 	// example:
 	//
@@ -1215,9 +1278,9 @@ func (s *ImageModerationResponseBodyDataExtFaceDataQuality) Validate() error {
 }
 
 type ImageModerationResponseBodyDataExtLogoData struct {
-	// Location information.
+	// The location of the logo.
 	Location *ImageModerationResponseBodyDataExtLogoDataLocation `json:"Location,omitempty" xml:"Location,omitempty" type:"Struct"`
-	// Logo information.
+	// The identity information.
 	Logo []*ImageModerationResponseBodyDataExtLogoDataLogo `json:"Logo,omitempty" xml:"Logo,omitempty" type:"Repeated"`
 }
 
@@ -1266,25 +1329,25 @@ func (s *ImageModerationResponseBodyDataExtLogoData) Validate() error {
 }
 
 type ImageModerationResponseBodyDataExtLogoDataLocation struct {
-	// The height of the text area, in pixels.
+	// The height of the detected area. Unit: pixel.
 	//
 	// example:
 	//
-	// 44
+	// 440
 	H *int32 `json:"H,omitempty" xml:"H,omitempty"`
-	// The width of the text area, in pixels.
+	// The width of the detected area. Unit: pixel.
 	//
 	// example:
 	//
-	// 33
+	// 330
 	W *int32 `json:"W,omitempty" xml:"W,omitempty"`
-	// The distance between the upper-left corner of the text area and the y-axis, using the upper-left corner of the image as the coordinate origin, in pixels.
+	// The distance from the upper-left corner of the detected area to the y-axis. The origin is the upper-left corner of the image. Unit: pixel.
 	//
 	// example:
 	//
 	// 11
 	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
-	// The distance between the upper left corner of the text area and the x-axis, with the upper left corner of the image as the coordinate origin, in pixels.
+	// The distance from the upper-left corner of the detected area to the x-axis. The origin is the upper-left corner of the image. Unit: pixel.
 	//
 	// example:
 	//
@@ -1341,23 +1404,23 @@ func (s *ImageModerationResponseBodyDataExtLogoDataLocation) Validate() error {
 }
 
 type ImageModerationResponseBodyDataExtLogoDataLogo struct {
-	// The score of the confidence level. Valid values: 0 to 100. The value is accurate to two decimal places. Some labels do not have scores of confidence levels.
+	// The confidence score. The value ranges from 0 to 100, with two decimal places retained.
 	//
 	// example:
 	//
-	// 99.01
+	// 99.1
 	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
-	// Logo category.
+	// The identity category.
 	//
 	// example:
 	//
-	// xx
+	// logo_sns
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// Logo name.
+	// The identity name.
 	//
 	// example:
 	//
-	// xx
+	// 钉钉
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -1401,13 +1464,13 @@ func (s *ImageModerationResponseBodyDataExtLogoDataLogo) Validate() error {
 }
 
 type ImageModerationResponseBodyDataExtOcrResult struct {
-	// Location information.
+	// The coordinates of the text line.
 	Location *ImageModerationResponseBodyDataExtOcrResultLocation `json:"Location,omitempty" xml:"Location,omitempty" type:"Struct"`
-	// The text information in the recognized image.
+	// A single line of recognized text.
 	//
 	// example:
 	//
-	// xx
+	// abcd
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 }
 
@@ -1447,25 +1510,25 @@ func (s *ImageModerationResponseBodyDataExtOcrResult) Validate() error {
 }
 
 type ImageModerationResponseBodyDataExtOcrResultLocation struct {
-	// The height of the text area, in pixels.
+	// The height of the text area. Unit: pixel.
 	//
 	// example:
 	//
 	// 44
 	H *int32 `json:"H,omitempty" xml:"H,omitempty"`
-	// The width of the text area, in pixels.
+	// The width of the text area. Unit: pixel.
 	//
 	// example:
 	//
 	// 33
 	W *int32 `json:"W,omitempty" xml:"W,omitempty"`
-	// The distance between the upper-left corner of the text area and the y-axis, using the upper-left corner of the image as the coordinate origin, in pixels.
+	// The distance from the upper-left corner of the text area to the y-axis. The origin is the upper-left corner of the image. Unit: pixel.
 	//
 	// example:
 	//
 	// 11
 	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
-	// The distance between the upper left corner of the text area and the x-axis, with the upper left corner of the image as the coordinate origin, in pixels.
+	// The distance from the upper-left corner of the text area to the x-axis. The origin is the upper-left corner of the image. Unit: pixel.
 	//
 	// example:
 	//
@@ -1522,19 +1585,19 @@ func (s *ImageModerationResponseBodyDataExtOcrResultLocation) Validate() error {
 }
 
 type ImageModerationResponseBodyDataExtPublicFigure struct {
-	// Identified person coding information.
+	// The ID of the detected public figure.
 	//
 	// example:
 	//
-	// xx
+	// xxx001
 	FigureId *string `json:"FigureId,omitempty" xml:"FigureId,omitempty"`
-	// Identified person name information.
+	// The name of the detected public figure.
 	//
 	// example:
 	//
-	// xx
+	// yzazhzou
 	FigureName *string `json:"FigureName,omitempty" xml:"FigureName,omitempty"`
-	// the data array of location info
+	// The location of the identity.
 	Location []*ImageModerationResponseBodyDataExtPublicFigureLocation `json:"Location,omitempty" xml:"Location,omitempty" type:"Repeated"`
 }
 
@@ -1587,25 +1650,25 @@ func (s *ImageModerationResponseBodyDataExtPublicFigure) Validate() error {
 }
 
 type ImageModerationResponseBodyDataExtPublicFigureLocation struct {
-	// The height
+	// The height of the detected area. Unit: pixel.
 	//
 	// example:
 	//
-	// 44
+	// 440
 	H *int32 `json:"H,omitempty" xml:"H,omitempty"`
-	// The weight
+	// The width of the detected area. Unit: pixel.
 	//
 	// example:
 	//
-	// 33
+	// 330
 	W *int32 `json:"W,omitempty" xml:"W,omitempty"`
-	// X coordinate
+	// The distance from the upper-left corner of the detected area to the y-axis. The origin is the upper-left corner of the image. Unit: pixel.
 	//
 	// example:
 	//
 	// 11
 	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
-	// Y coordinate
+	// The distance from the upper-left corner of the detected area to the x-axis. The origin is the upper-left corner of the image. Unit: pixel.
 	//
 	// example:
 	//
@@ -1662,17 +1725,17 @@ func (s *ImageModerationResponseBodyDataExtPublicFigureLocation) Validate() erro
 }
 
 type ImageModerationResponseBodyDataExtRecognition struct {
-	// The category of image recognition.
+	// The category of the recognized object in the image.
 	//
 	// example:
 	//
-	// xx
+	// 办公大楼
 	Classification *string `json:"Classification,omitempty" xml:"Classification,omitempty"`
-	// The score of the confidence level. Valid values: 0 to 100. The value is accurate to two decimal places. Some labels do not have scores of confidence levels.
+	// The confidence level. The value ranges from 0 to 100, with two decimal places retained. No confidence level is returned when the value is nonLabel.
 	//
 	// example:
 	//
-	// 99.01
+	// 81.22
 	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
 }
 
@@ -1707,11 +1770,11 @@ func (s *ImageModerationResponseBodyDataExtRecognition) Validate() error {
 }
 
 type ImageModerationResponseBodyDataExtTextInImage struct {
-	// When a custom text library is hit, the custom library ID, custom library name, and custom word are returned.
+	// If a custom text library is hit, the custom library ID, custom library name, and custom word are returned.
 	CustomText []*ImageModerationResponseBodyDataExtTextInImageCustomText `json:"CustomText,omitempty" xml:"CustomText,omitempty" type:"Repeated"`
-	// Returns the text information in the recognized image.
+	// Each line of text recognized in the image.
 	OcrResult []*ImageModerationResponseBodyDataExtTextInImageOcrResult `json:"OcrResult,omitempty" xml:"OcrResult,omitempty" type:"Repeated"`
-	// The risk words that are hit. Multiple words are separated by commas (,).
+	// The hit threat keywords.
 	RiskWord []*string `json:"RiskWord,omitempty" xml:"RiskWord,omitempty" type:"Repeated"`
 }
 
@@ -1773,23 +1836,23 @@ func (s *ImageModerationResponseBodyDataExtTextInImage) Validate() error {
 }
 
 type ImageModerationResponseBodyDataExtTextInImageCustomText struct {
-	// Custom words, multiple words separated by commas.
+	// The custom words. Separate multiple words with commas.
 	//
 	// example:
 	//
-	// aaa,bbb
+	// 自定义词1,自定义词2
 	KeyWords *string `json:"KeyWords,omitempty" xml:"KeyWords,omitempty"`
-	// Custom library ID.
+	// The custom library ID.
 	//
 	// example:
 	//
 	// 123456
 	LibId *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
-	// Custom library name.
+	// The name of the custom library.
 	//
 	// example:
 	//
-	// xxxx
+	// 自定义库1
 	LibName *string `json:"LibName,omitempty" xml:"LibName,omitempty"`
 }
 
@@ -1833,13 +1896,13 @@ func (s *ImageModerationResponseBodyDataExtTextInImageCustomText) Validate() err
 }
 
 type ImageModerationResponseBodyDataExtTextInImageOcrResult struct {
-	// Location information.
+	// The coordinates of the text line.
 	Location *ImageModerationResponseBodyDataExtTextInImageOcrResultLocation `json:"Location,omitempty" xml:"Location,omitempty" type:"Struct"`
-	// The text information in the recognized image.
+	// The text.
 	//
 	// example:
 	//
-	// xx
+	// abcd
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 }
 
@@ -1879,25 +1942,25 @@ func (s *ImageModerationResponseBodyDataExtTextInImageOcrResult) Validate() erro
 }
 
 type ImageModerationResponseBodyDataExtTextInImageOcrResultLocation struct {
-	// The height of the text area, in pixels.
+	// The height of the text area. Unit: pixel.
 	//
 	// example:
 	//
 	// 33
 	H *int32 `json:"H,omitempty" xml:"H,omitempty"`
-	// The width of the text area, in pixels.
+	// The width of the text area. Unit: pixel.
 	//
 	// example:
 	//
 	// 44
 	W *int32 `json:"W,omitempty" xml:"W,omitempty"`
-	// The distance between the upper-left corner of the text area and the y-axis, using the upper-left corner of the image as the coordinate origin, in pixels.
+	// The distance from the upper-left corner of the text area to the y-axis. The origin is the upper-left corner of the image. Unit: pixel.
 	//
 	// example:
 	//
 	// 11
 	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
-	// The distance between the upper left corner of the text area and the x-axis, with the upper left corner of the image as the coordinate origin, in pixels.
+	// The distance from the upper-left corner of the text area to the x-axis. The origin is the upper-left corner of the image. Unit: pixel.
 	//
 	// example:
 	//
@@ -1954,11 +2017,11 @@ func (s *ImageModerationResponseBodyDataExtTextInImageOcrResultLocation) Validat
 }
 
 type ImageModerationResponseBodyDataExtVlContent struct {
-	// the vl output content
+	// The output content.
 	//
 	// example:
 	//
-	// this is a cat
+	// 这是一段描述
 	OutputText *string `json:"OutputText,omitempty" xml:"OutputText,omitempty"`
 }
 
@@ -1984,25 +2047,25 @@ func (s *ImageModerationResponseBodyDataExtVlContent) Validate() error {
 }
 
 type ImageModerationResponseBodyDataResult struct {
-	// The score of the confidence level. Valid values: 0 to 100. The value is accurate to two decimal places. Some labels do not have scores of confidence levels.
+	// The confidence level. The value ranges from 0 to 100, with two decimal places retained. Some labels do not have a confidence level.
 	//
 	// example:
 	//
 	// 81.22
 	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
-	// The description of the result.
+	// The description.
 	//
 	// example:
 	//
-	// no risk
+	// 未检测出风险
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The labels returned after the image moderation. Multiple risk labels and the corresponding scores of confidence levels may be returned for an image.
+	// The label returned after the image content is moderated. Multiple labels and scores may be returned for a single image.
 	//
 	// example:
 	//
 	// violent_explosion
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// Risk Level
+	// The threat level.
 	//
 	// example:
 	//

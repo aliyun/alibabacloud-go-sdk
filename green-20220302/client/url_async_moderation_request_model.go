@@ -16,13 +16,13 @@ type iUrlAsyncModerationRequest interface {
 }
 
 type UrlAsyncModerationRequest struct {
-	// The type of the moderation service.
+	// Service name: URL threat detection
 	//
 	// example:
 	//
-	// url_detection
+	// url_detection_pro
 	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
-	// The parameters required by the moderation service. The value is a JSON string.
+	// The parameter set for the content moderation object. This parameter is a JSON string. For more information, see the description of ServiceParameters.
 	//
 	// example:
 	//

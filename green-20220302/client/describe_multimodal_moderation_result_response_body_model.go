@@ -20,15 +20,22 @@ type iDescribeMultimodalModerationResultResponseBody interface {
 }
 
 type DescribeMultimodalModerationResultResponseBody struct {
+	// The error code, which matches the HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	Code *int64                                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *DescribeMultimodalModerationResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The response message for this request.
+	//
 	// example:
 	//
 	// OK
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
@@ -89,16 +96,24 @@ func (s *DescribeMultimodalModerationResultResponseBody) Validate() error {
 }
 
 type DescribeMultimodalModerationResultResponseBodyData struct {
+	// Comment moderation results.
 	CommentDatas []*DescribeMultimodalModerationResultResponseBodyDataCommentDatas `json:"CommentDatas,omitempty" xml:"CommentDatas,omitempty" type:"Repeated"`
+	// The dataId value passed in the API request. This field is absent if no dataId was provided in the request.
+	//
 	// example:
 	//
 	// data1234
-	DataId   *string                                                     `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	// Main post moderation results.
 	MainData *DescribeMultimodalModerationResultResponseBodyDataMainData `json:"MainData,omitempty" xml:"MainData,omitempty" type:"Struct"`
+	// The ReqId field returned by the asynchronous moderation API.
+	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	ReqId *string `json:"ReqId,omitempty" xml:"ReqId,omitempty"`
+	// Risk level.
+	//
 	// example:
 	//
 	// high
@@ -177,8 +192,10 @@ func (s *DescribeMultimodalModerationResultResponseBodyData) Validate() error {
 }
 
 type DescribeMultimodalModerationResultResponseBodyDataCommentDatas struct {
+	// Moderation results.
 	CommentDatas []*DescribeMultimodalModerationResultResponseBodyDataCommentDatasCommentDatas `json:"CommentDatas,omitempty" xml:"CommentDatas,omitempty" type:"Repeated"`
-	Results      []*DescribeMultimodalModerationResultResponseBodyDataCommentDatasResults      `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+	// Comment moderation results.
+	Results []*DescribeMultimodalModerationResultResponseBodyDataCommentDatasResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
 }
 
 func (s DescribeMultimodalModerationResultResponseBodyDataCommentDatas) String() string {
@@ -230,6 +247,7 @@ func (s *DescribeMultimodalModerationResultResponseBodyDataCommentDatas) Validat
 }
 
 type DescribeMultimodalModerationResultResponseBodyDataCommentDatasCommentDatas struct {
+	// Comment moderation results.
 	Results []*DescribeMultimodalModerationResultResponseBodyDataCommentDatasCommentDatasResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
 }
 
@@ -264,7 +282,14 @@ func (s *DescribeMultimodalModerationResultResponseBodyDataCommentDatasCommentDa
 }
 
 type DescribeMultimodalModerationResultResponseBodyDataCommentDatasCommentDatasResults struct {
+	// Description of the Label field.
+	//
+	// example:
+	//
+	// 疑似含有烟火类内容元素
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Risk label.
+	//
 	// example:
 	//
 	// violent_explosion
@@ -302,7 +327,14 @@ func (s *DescribeMultimodalModerationResultResponseBodyDataCommentDatasCommentDa
 }
 
 type DescribeMultimodalModerationResultResponseBodyDataCommentDatasResults struct {
+	// Description of the Label field.
+	//
+	// example:
+	//
+	// 疑似含有烟火类内容元素
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Risk label.
+	//
 	// example:
 	//
 	// violent_explosion
@@ -340,6 +372,7 @@ func (s *DescribeMultimodalModerationResultResponseBodyDataCommentDatasResults) 
 }
 
 type DescribeMultimodalModerationResultResponseBodyDataMainData struct {
+	// Main post moderation results.
 	Results []*DescribeMultimodalModerationResultResponseBodyDataMainDataResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
 }
 
@@ -374,7 +407,14 @@ func (s *DescribeMultimodalModerationResultResponseBodyDataMainData) Validate() 
 }
 
 type DescribeMultimodalModerationResultResponseBodyDataMainDataResults struct {
+	// Description of the Label field.
+	//
+	// example:
+	//
+	// 疑似含有烟火类内容元素
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Risk label.
+	//
 	// example:
 	//
 	// violent_explosion

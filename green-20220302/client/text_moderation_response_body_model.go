@@ -20,15 +20,15 @@ type iTextModerationResponseBody interface {
 }
 
 type TextModerationResponseBody struct {
-	// The returned HTTP status code.
+	// The response code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The moderation results.
+	// The moderation result data.
 	Data *TextModerationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message that is returned in response to the request.
+	// The response message for the request.
 	//
 	// example:
 	//
@@ -96,43 +96,69 @@ func (s *TextModerationResponseBody) Validate() error {
 }
 
 type TextModerationResponseBodyData struct {
-	// The ID of the Alibaba Cloud account.
+	// The \\`accountId\\` specified in the request.
 	//
 	// example:
 	//
 	// 123456
 	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
-	// The ID of the moderated object.
+	// The data ID of the moderated object.
+	//
+	// > If you specify the dataId parameter in the request, its value is returned in this parameter.
 	//
 	// example:
 	//
 	// text1234
 	DataId *string `json:"dataId,omitempty" xml:"dataId,omitempty"`
-	// The description of the labels.
+	// The description of the label.
 	//
 	// example:
 	//
-	// no risk
+	// 疑似广告内容
 	Descriptions *string `json:"descriptions,omitempty" xml:"descriptions,omitempty"`
-	// The device ID.
+	// The \\`deviceId\\` specified in the request.
 	//
 	// example:
 	//
 	// xxxxxx
-	DeviceId *string                            `json:"deviceId,omitempty" xml:"deviceId,omitempty"`
-	Ext      *TextModerationResponseBodyDataExt `json:"ext,omitempty" xml:"ext,omitempty" type:"Struct"`
-	// The labels. Multiple labels are separated by commas (,). Valid values: ad: ad violation profanity: abuse contraband: contraband sexual_content: pornography violence: violence nonsense: irrigation spam: spam negative_content: undesirable content cyberbullying: cyberbullying C_customized: custom library that is hit
+	DeviceId *string `json:"deviceId,omitempty" xml:"deviceId,omitempty"`
+	// Auxiliary reference information for the text.
+	Ext *TextModerationResponseBodyDataExt `json:"ext,omitempty" xml:"ext,omitempty" type:"Struct"`
+	// The moderation labels. If multiple labels are returned, they are separated by commas (,). Valid values: ad: advertisement profanity: profanity contraband: contraband sexual_content: sexual content violence: violent and terrorist content nonsense: meaningless content spam: spam negative_content: undesirable content cyberbullying: cyberbullying C_customized: A match in a custom library
 	//
 	// example:
 	//
 	// porn
-	Labels       *string `json:"labels,omitempty" xml:"labels,omitempty"`
-	ManualTaskId *string `json:"manualTaskId,omitempty" xml:"manualTaskId,omitempty"`
-	// The JSON string used to locate the cause. Valid values: riskTips: subcategory label riskWords: risk words adNums: hit advertising number customizedWords: customized words customizedLibs: customized libraries
+	Labels *string `json:"labels,omitempty" xml:"labels,omitempty"`
+	// The ID of the manual review task.
 	//
 	// example:
 	//
-	// {\\"detectedLanguage\\":\\"ar\\",\\"riskTips\\":\\"sexuality_Suggestive\\",\\"riskWords\\":\\"pxxxxy\\",\\"translatedContent\\":\\"pxxxxy sxxxx\\"}
+	// xxxxx-xxxxx
+	ManualTaskId *string `json:"manualTaskId,omitempty" xml:"manualTaskId,omitempty"`
+	// A JSON string that contains the reason for the moderation result. The string includes the following fields:
+	//
+	// 1. riskTips: The sub-labels.
+	//
+	// 2. riskWords: The detected risk words.
+	//
+	// 3. adNums: The detected ad-related numbers.
+	//
+	// 4. customizedWords: The detected custom words.
+	//
+	// 5. customizedLibs: The names of the custom libraries that contain a match.
+	//
+	// 6. riskLevel: The risk level, which is recommended by the system. Valid values:
+	//
+	// - high: high risk
+	//
+	// - medium: medium risk
+	//
+	// - low: low risk
+	//
+	// example:
+	//
+	// {\\"riskLevel\\":\\"high\\",\\"riskTips\\":\\"色情_低俗词\\",\\"riskWords\\":\\"色情服务\\"}
 	Reason *string `json:"reason,omitempty" xml:"reason,omitempty"`
 }
 
@@ -226,6 +252,7 @@ func (s *TextModerationResponseBodyData) Validate() error {
 }
 
 type TextModerationResponseBodyDataExt struct {
+	// The output from the Large Language Model (LLM).
 	LlmContent *TextModerationResponseBodyDataExtLlmContent `json:"llmContent,omitempty" xml:"llmContent,omitempty" type:"Struct"`
 }
 
@@ -256,6 +283,11 @@ func (s *TextModerationResponseBodyDataExt) Validate() error {
 }
 
 type TextModerationResponseBodyDataExtLlmContent struct {
+	// The output content.
+	//
+	// example:
+	//
+	// 正常。文本中无风险内容。
 	OutputText *string `json:"outputText,omitempty" xml:"outputText,omitempty"`
 }
 

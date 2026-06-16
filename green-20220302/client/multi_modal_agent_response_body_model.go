@@ -20,11 +20,16 @@ type iMultiModalAgentResponseBody interface {
 }
 
 type MultiModalAgentResponseBody struct {
+	// The return code. A value of 200 indicates that the request was successful.
+	//
 	// example:
 	//
 	// 200
-	Code *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The result of the image content detection.
 	Data *MultiModalAgentResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message.
+	//
 	// example:
 	//
 	// SUCCESS
@@ -91,16 +96,30 @@ func (s *MultiModalAgentResponseBody) Validate() error {
 }
 
 type MultiModalAgentResponseBodyData struct {
+	// The data ID.
+	//
 	// example:
 	//
 	// 26769ada6e264e7ba9aa048241e12be9
-	DataId *string                                  `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	// The structure of the label item.
 	Result []*MultiModalAgentResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// The risk level. The value is returned based on the configured high and low risk scores. Valid values:
+	//
+	// - high: High risk
+	//
+	// - medium: Medium risk
+	//
+	// - low: Low risk
+	//
+	// - none: No risk detected
+	//
 	// example:
 	//
 	// high
-	RiskLevel *string                               `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	Usage     *MultiModalAgentResponseBodyDataUsage `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
+	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// Token usage.
+	Usage *MultiModalAgentResponseBodyDataUsage `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
 }
 
 func (s MultiModalAgentResponseBodyData) String() string {
@@ -166,11 +185,36 @@ func (s *MultiModalAgentResponseBodyData) Validate() error {
 }
 
 type MultiModalAgentResponseBodyDataResult struct {
+	// The description of the label.
+	//
+	// example:
+	//
+	// 未检测出风险
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The risk label.
+	//
 	// example:
 	//
 	// violent_explosion
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// A description of the result when the session is terminated.
+	//
+	// - **SESSION_KILLED**: The session was successfully terminated.
+	//
+	// - **SESSION_EXPIRED**: The session has expired.
+	//
+	// - **SESSION_NO_PERMISSION**: The account used to terminate the session does not have sufficient permissions.
+	//
+	// - **SESSION_ACCOUNT_ERROR**: The account or password used to terminate the session is incorrect.
+	//
+	// - **SESSION_IGNORED_USER**: The session of an account that does not need to be terminated.
+	//
+	// - **SESSION_INTERNAL_USER_OR_COMMAND**: The session or command of an Alibaba Cloud operations account.
+	//
+	// - **SESSION_KILL_TASK_TIMEOUT**: A timeout occurred when terminating the session.
+	//
+	// - **SESSION_OTHER_ERROR**: Other errors.
+	//
 	// example:
 	//
 	// TRACER_SLB_ALL_DEST_WEIGHT_0
@@ -217,11 +261,16 @@ func (s *MultiModalAgentResponseBodyDataResult) Validate() error {
 }
 
 type MultiModalAgentResponseBodyDataUsage struct {
+	// Agent details.
 	AgentDetail map[string]interface{} `json:"AgentDetail,omitempty" xml:"AgentDetail,omitempty"`
+	// The length of the content.
+	//
 	// example:
 	//
 	// 10
 	ContentLength *int64 `json:"ContentLength,omitempty" xml:"ContentLength,omitempty"`
+	// The length of the prompt.
+	//
 	// example:
 	//
 	// 100

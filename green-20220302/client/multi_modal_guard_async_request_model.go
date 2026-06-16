@@ -16,13 +16,17 @@ type iMultiModalGuardAsyncRequest interface {
 }
 
 type MultiModalGuardAsyncRequest struct {
+	// The moderation service type. Valid values: `audio_security_check` and `video_security_check`.
+	//
 	// example:
 	//
-	// baselineCheck
+	// audio_security_check
 	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
+	// The parameter set required for the moderation service.
+	//
 	// example:
 	//
-	// {"url": "https://talesofai.oss-cn-shanghai.aliyuncs.com/xxx.mp4", "dataId": "data1234"}
+	// {"url": "https://testxxx.oss-cn-shanghai.aliyuncs.com/xxx.mp4", "dataId": "data1234"}
 	ServiceParameters *string `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty"`
 }
 

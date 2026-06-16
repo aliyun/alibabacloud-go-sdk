@@ -20,15 +20,15 @@ type iUrlAsyncModerationResponseBody interface {
 }
 
 type UrlAsyncModerationResponseBody struct {
-	// The returned HTTP status code.
+	// The return code. A value of 200 indicates that the request was successful.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *UrlAsyncModerationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message that is returned in response to the request.
+	// The response message for the current request.
 	//
 	// example:
 	//
@@ -96,13 +96,13 @@ func (s *UrlAsyncModerationResponseBody) Validate() error {
 }
 
 type UrlAsyncModerationResponseBodyData struct {
-	// The ID of the moderated object.
+	// The value of dataId that you specified in the API request. If you did not specify this parameter in the request, this field is not returned.
 	//
 	// example:
 	//
 	// 26769ada6e264e7ba9aa048241e12be9
 	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	// The reqId field returned by the Url Async Moderation API.
+	// The ReqId field returned by the enhanced URL asynchronous moderation API. You can use this field to query the detection results.
 	//
 	// example:
 	//

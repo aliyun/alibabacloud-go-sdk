@@ -26,7 +26,7 @@ type ManualModerationResponseBody struct {
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Returned data.
+	// The response data.
 	Data *ManualModerationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Error message
 	//
@@ -34,7 +34,7 @@ type ManualModerationResponseBody struct {
 	//
 	// SUCCESS
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// ID of the request
+	// The ID of the request
 	//
 	// example:
 	//
@@ -96,13 +96,13 @@ func (s *ManualModerationResponseBody) Validate() error {
 }
 
 type ManualModerationResponseBodyData struct {
-	// The value of dataId passed during the API request. This field will not be present if it was not provided during the request.
+	// The value of dataId passed in the API request. This field is not present if no dataId was passed in the request.
 	//
 	// example:
 	//
 	// 2a5389eb-4ff8-4584-ac99-644e2a539aa1
 	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	// Task ID
+	// The task ID
 	//
 	// example:
 	//

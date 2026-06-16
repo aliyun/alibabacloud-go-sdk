@@ -20,15 +20,15 @@ type iDescribeUploadTokenResponseBody interface {
 }
 
 type DescribeUploadTokenResponseBody struct {
-	// The returned HTTP status code.
+	// The return code. A value of 200 indicates that the request was successful.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *DescribeUploadTokenResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message that is returned in response to the request.
+	// The response message for the request.
 	//
 	// example:
 	//
@@ -96,13 +96,13 @@ func (s *DescribeUploadTokenResponseBody) Validate() error {
 }
 
 type DescribeUploadTokenResponseBodyData struct {
-	// The AccessKey ID.
+	// The AccessKey ID of the temporary credential for file upload.
 	//
 	// example:
 	//
 	// STS.NUEUjvDqMuvH6oQA1TXxxH4wVR
 	AccessKeyId *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
-	// The AccessKey secret.
+	// The temporary authorization secret.
 	//
 	// example:
 	//
@@ -114,7 +114,7 @@ type DescribeUploadTokenResponseBodyData struct {
 	//
 	// oss-cip-shanghai
 	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
-	// The time when the file sharing link expires.
+	// The expiration time.
 	//
 	// example:
 	//
@@ -126,19 +126,19 @@ type DescribeUploadTokenResponseBodyData struct {
 	//
 	// upload/1xxb89/
 	FileNamePrefix *string `json:"FileNamePrefix,omitempty" xml:"FileNamePrefix,omitempty"`
-	// the oss intranet point.
+	// The internal endpoint of OSS.
 	//
 	// example:
 	//
 	// https://oss-cn-shanghai-internal.aliyuncs.com
 	OssInternalEndPoint *string `json:"OssInternalEndPoint,omitempty" xml:"OssInternalEndPoint,omitempty"`
-	// the oss internet point.
+	// The Internet endpoint of OSS.
 	//
 	// example:
 	//
 	// https://oss-cn-shanghai.aliyuncs.com
 	OssInternetEndPoint *string `json:"OssInternetEndPoint,omitempty" xml:"OssInternetEndPoint,omitempty"`
-	// The security token.
+	// The security token of the temporary credential for file upload.
 	//
 	// example:
 	//
