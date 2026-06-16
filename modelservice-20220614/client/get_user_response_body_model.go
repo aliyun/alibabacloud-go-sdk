@@ -17,6 +17,8 @@ type iGetUserResponseBody interface {
 	GetAppId() *string
 	SetCode(v string) *GetUserResponseBody
 	GetCode() *string
+	SetDashscopeHost(v string) *GetUserResponseBody
+	GetDashscopeHost() *string
 	SetHost(v string) *GetUserResponseBody
 	GetHost() *string
 	SetInnerToken(v string) *GetUserResponseBody
@@ -34,6 +36,7 @@ type GetUserResponseBody struct {
 	ApiKeys       []*GetUserResponseBodyApiKeys `json:"ApiKeys,omitempty" xml:"ApiKeys,omitempty" type:"Repeated"`
 	AppId         *string                       `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	Code          *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	DashscopeHost *string                       `json:"DashscopeHost,omitempty" xml:"DashscopeHost,omitempty"`
 	Host          *string                       `json:"Host,omitempty" xml:"Host,omitempty"`
 	InnerToken    *string                       `json:"InnerToken,omitempty" xml:"InnerToken,omitempty"`
 	Message       *string                       `json:"Message,omitempty" xml:"Message,omitempty"`
@@ -63,6 +66,10 @@ func (s *GetUserResponseBody) GetAppId() *string {
 
 func (s *GetUserResponseBody) GetCode() *string {
 	return s.Code
+}
+
+func (s *GetUserResponseBody) GetDashscopeHost() *string {
+	return s.DashscopeHost
 }
 
 func (s *GetUserResponseBody) GetHost() *string {
@@ -102,6 +109,11 @@ func (s *GetUserResponseBody) SetAppId(v string) *GetUserResponseBody {
 
 func (s *GetUserResponseBody) SetCode(v string) *GetUserResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *GetUserResponseBody) SetDashscopeHost(v string) *GetUserResponseBody {
+	s.DashscopeHost = &v
 	return s
 }
 
