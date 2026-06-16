@@ -20,14 +20,20 @@ type iQaChatRequest interface {
 }
 
 type QaChatRequest struct {
+	// Application ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 2047140750220754946
+	// 2052929167853146113
 	AppId *string `json:"appId,omitempty" xml:"appId,omitempty"`
+	// User message object containing role and multimodal content.
+	//
 	// This parameter is required.
 	Message *QaChatRequestMessage `json:"message,omitempty" xml:"message,omitempty" type:"Struct"`
+	// No input required
+	//
 	// example:
 	//
 	// {
@@ -36,9 +42,11 @@ type QaChatRequest struct {
 	//
 	// }
 	Options map[string]interface{} `json:"options,omitempty" xml:"options,omitempty"`
+	// Q&A session ID, used to track multiple Q&A interactions from the same user.
+	//
 	// example:
 	//
-	// b2a979e79799489fbde56119bf8c4dc7
+	// req_123456789
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
 }
 
@@ -96,7 +104,10 @@ func (s *QaChatRequest) Validate() error {
 }
 
 type QaChatRequestMessage struct {
+	// Individual content block, differentiated by `type`
 	Parts []*QaChatRequestMessageParts `json:"parts,omitempty" xml:"parts,omitempty" type:"Repeated"`
+	// Message role, currently only supports the `"user"` role
+	//
 	// example:
 	//
 	// user
@@ -143,29 +154,53 @@ func (s *QaChatRequestMessage) Validate() error {
 }
 
 type QaChatRequestMessageParts struct {
+	// Required when type = "data". The data object structure is as follows:
+	//
+	// - type: String type, required, indicates the data subtype. Currently supported value is "template", indicating a video template.
+	//
+	// - videoId: String type, conditionally required. Only required when type = "template", indicating the video template ID; can be ignored or set to null for other types.
+	//
 	// example:
 	//
 	// {
 	//
-	//   "templateId": "456789"
+	//   "type": "template",
+	//
+	//   "videoId": "xxxx"
 	//
 	// }
 	Data interface{} `json:"data,omitempty" xml:"data,omitempty"`
+	// Required when `type="file"`.
+	//
+	// 	- Media type, currently only supports image formats JPG/PNG/WEBP/JPEG, maximum 5
+	//
 	// example:
 	//
 	// image/png
 	MediaType *string `json:"mediaType,omitempty" xml:"mediaType,omitempty"`
+	// Required when `type="text"`.
+	//
+	// 	- Text content, maximum 1024 characters
+	//
 	// example:
 	//
-	// 帮我搜索下今天的天气
+	// 请问这个视频讲了什么？
 	Text *string `json:"text,omitempty" xml:"text,omitempty"`
+	// Fixed content block type, only supports `"text"` / `"file"` / `"data"`
+	//
 	// example:
 	//
 	// text
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// Required when `type="file"`. Supports the following two types, with format support for JPG/PNG/WEBP/JPEG:
+	//
+	// • Media resource CDN URL, currently supports images, maximum 5;
+	//
+	// • Image encoding, upload image files using base64 encoded strings (supports bitmap formats), maximum 5
+	//
 	// example:
 	//
-	// https://meeting.dingtalk.com/j/4sSPAxWaPbM
+	// https://example.com/img.jpg
 	Url *string `json:"url,omitempty" xml:"url,omitempty"`
 }
 

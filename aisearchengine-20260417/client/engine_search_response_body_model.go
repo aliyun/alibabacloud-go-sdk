@@ -18,11 +18,16 @@ type iEngineSearchResponseBody interface {
 }
 
 type EngineSearchResponseBody struct {
+  // The status code. A value of 200 indicates success.
+  // 
   // example:
   // 
-  // SUCCESS
+  // 200
   Code *int32 `json:"code,omitempty" xml:"code,omitempty"`
+  // The business data body.
   Data *EngineSearchResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+  // The response message.
+  // 
   // example:
   // 
   // successful
@@ -74,35 +79,60 @@ func (s *EngineSearchResponseBody) Validate() error {
 }
 
 type EngineSearchResponseBodyData struct {
+  // The error message.
+  // 
   // example:
   // 
   // 搜索词违禁
   ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+  // The additional metadata. 
+  // 
+  // > Contains the exclude_ids field, which represents the list of IDs that were actually excluded. The format is `Array[String]`.
+  // 
+  // > - Example: ["id_1", "id_2"].
+  // 
   // example:
   // 
-  // {}
+  // {exclude_ids: ["id_1", "id_2"]}
   Extra map[string]interface{} `json:"extra,omitempty" xml:"extra,omitempty"`
+  // 搜索结果列表
   Items []*EngineSearchResponseBodyDataItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+  // The search page number.
+  // 
   // example:
   // 
   // 1
   Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
+  // The response ID of this request.
+  // 
   // example:
   // 
   // 62CC3999-5380-5344-ABC7-46453625A910
   RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+  // The number of results returned on the current page.
+  // 
   // example:
   // 
   // 10
   Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
+  // The execution status.
+  // 
+  // 200: succeeded.
+  // 
+  // 500: failed.
+  // 
   // example:
   // 
   // 200
   Status *string `json:"status,omitempty" xml:"status,omitempty"`
+  // The total number of records.
+  // 
   // example:
   // 
   // 121
   Total *int32 `json:"total,omitempty" xml:"total,omitempty"`
+  // The Tracing Analysis information.
+  // 
   // example:
   // 
   // {"traceId":"234234324"}
@@ -212,22 +242,36 @@ func (s *EngineSearchResponseBodyData) Validate() error {
 }
 
 type EngineSearchResponseBodyDataItems struct {
+  // 算法内容
+  // 
   // example:
   // 
   // {"rankScore":1.0}
   Algorithm map[string]interface{} `json:"algorithm,omitempty" xml:"algorithm,omitempty"`
+  // 内容详情对象（详细结构见下文）
+  // 
   // example:
   // 
   // {"titile":"大疆无人机"}
   Content map[string]interface{} `json:"content,omitempty" xml:"content,omitempty"`
+  // 权益绑定 ID
+  // 
   // example:
   // 
   // iceberg-tbl-b7420156-6d23-4555-8e05-12285b36d6ca
   Id *string `json:"id,omitempty" xml:"id,omitempty"`
+  // 相关性得分
+  // 
   // example:
   // 
-  // 1.75
+  // 0.005369
   Score *float32 `json:"score,omitempty" xml:"score,omitempty"`
+  // 回传日志时使用。
+  // 
+  // 取值：
+  // 
+  // trace_id=ali。
+  // 
   // example:
   // 
   // {"traceId":"12285b36d6ca"}

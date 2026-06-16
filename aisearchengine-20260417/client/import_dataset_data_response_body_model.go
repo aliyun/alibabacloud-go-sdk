@@ -20,18 +20,26 @@ type iImportDatasetDataResponseBody interface {
 }
 
 type ImportDatasetDataResponseBody struct {
+	// The business status code. A value of 200 indicates a successful request. Other values indicate exceptions. For more information, see error codes.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"code,omitempty" xml:"code,omitempty"`
+	// The response data body, which uses an empty placeholder.
+	//
 	// example:
 	//
 	// []
 	Data map[string]interface{} `json:"data,omitempty" xml:"data,omitempty"`
+	// The status description.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The unique request ID, used for troubleshooting.
+	//
 	// example:
 	//
 	// 1a0f40dd17774641794394269ec0e9

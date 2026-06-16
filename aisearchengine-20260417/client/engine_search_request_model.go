@@ -15,45 +15,39 @@ type iEngineSearchRequest interface {
   GetGrey() *bool 
   SetQuery(v *EngineSearchRequestQuery) *EngineSearchRequest
   GetQuery() *EngineSearchRequestQuery 
-  SetRecall(v *EngineSearchRequestRecall) *EngineSearchRequest
-  GetRecall() *EngineSearchRequestRecall 
   SetSessionId(v string) *EngineSearchRequest
   GetSessionId() *string 
-  SetStrategyId(v string) *EngineSearchRequest
-  GetStrategyId() *string 
   SetUser(v *EngineSearchRequestUser) *EngineSearchRequest
   GetUser() *EngineSearchRequestUser 
-  SetVersion(v string) *EngineSearchRequest
-  GetVersion() *string 
 }
 
 type EngineSearchRequest struct {
+  // The unique ID of the application.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
-  // 507218
+  // 2048962366415007746
   AppId *string `json:"appId,omitempty" xml:"appId,omitempty"`
+  // Specifies whether to access the draft version.
+  // 
   // example:
   // 
   // false
   Grey *bool `json:"grey,omitempty" xml:"grey,omitempty"`
+  // The query condition object.
+  // 
   // This parameter is required.
   Query *EngineSearchRequestQuery `json:"query,omitempty" xml:"query,omitempty" type:"Struct"`
-  Recall *EngineSearchRequestRecall `json:"recall,omitempty" xml:"recall,omitempty" type:"Struct"`
+  // This parameter does not need to be specified.
+  // 
   // example:
   // 
   // 2e95ef4fbc28437db5008a910bd392a4
   SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
-  // example:
-  // 
-  // 507218
-  StrategyId *string `json:"strategyId,omitempty" xml:"strategyId,omitempty"`
+  // The user information object, used for subsequent user-perspective analysis.
   User *EngineSearchRequestUser `json:"user,omitempty" xml:"user,omitempty" type:"Struct"`
-  // example:
-  // 
-  // 默认1.0
-  Version *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s EngineSearchRequest) String() string {
@@ -76,24 +70,12 @@ func (s *EngineSearchRequest) GetQuery() *EngineSearchRequestQuery  {
   return s.Query
 }
 
-func (s *EngineSearchRequest) GetRecall() *EngineSearchRequestRecall  {
-  return s.Recall
-}
-
 func (s *EngineSearchRequest) GetSessionId() *string  {
   return s.SessionId
 }
 
-func (s *EngineSearchRequest) GetStrategyId() *string  {
-  return s.StrategyId
-}
-
 func (s *EngineSearchRequest) GetUser() *EngineSearchRequestUser  {
   return s.User
-}
-
-func (s *EngineSearchRequest) GetVersion() *string  {
-  return s.Version
 }
 
 func (s *EngineSearchRequest) SetAppId(v string) *EngineSearchRequest {
@@ -111,18 +93,8 @@ func (s *EngineSearchRequest) SetQuery(v *EngineSearchRequestQuery) *EngineSearc
   return s
 }
 
-func (s *EngineSearchRequest) SetRecall(v *EngineSearchRequestRecall) *EngineSearchRequest {
-  s.Recall = v
-  return s
-}
-
 func (s *EngineSearchRequest) SetSessionId(v string) *EngineSearchRequest {
   s.SessionId = &v
-  return s
-}
-
-func (s *EngineSearchRequest) SetStrategyId(v string) *EngineSearchRequest {
-  s.StrategyId = &v
   return s
 }
 
@@ -131,19 +103,9 @@ func (s *EngineSearchRequest) SetUser(v *EngineSearchRequestUser) *EngineSearchR
   return s
 }
 
-func (s *EngineSearchRequest) SetVersion(v string) *EngineSearchRequest {
-  s.Version = &v
-  return s
-}
-
 func (s *EngineSearchRequest) Validate() error {
   if s.Query != nil {
     if err := s.Query.Validate(); err != nil {
-      return err
-    }
-  }
-  if s.Recall != nil {
-    if err := s.Recall.Validate(); err != nil {
       return err
     }
   }
@@ -156,22 +118,32 @@ func (s *EngineSearchRequest) Validate() error {
 }
 
 type EngineSearchRequestQuery struct {
+  // The list of primary key IDs to exclude.<br>• Purpose: filters out previously viewed history records.
+  // 
   // example:
   // 
   // ["24234111","12423525"]
   ExcludeIds []*string `json:"excludeIds,omitempty" xml:"excludeIds,omitempty" type:"Repeated"`
+  // The image query list.<br>• Only one image URL is supported. The maximum size of a single image is 10 MB. Supported formats: JPG, PNG, WEBP, and JPEG.
+  // 
   // example:
   // 
   // ["https://paperreview.oss-cn-hangzhou.aliyuncs.com/59dd424f-97ed-4855-942e-c961f1f5b67e.jpeg"]
   ImageUrls []*string `json:"imageUrls,omitempty" xml:"imageUrls,omitempty" type:"Repeated"`
+  // The page number, starting from 1.<br>• Default value: `1`.
+  // 
   // example:
   // 
   // 1
   PageNo *int32 `json:"pageNo,omitempty" xml:"pageNo,omitempty"`
+  // The number of results returned per page.
+  // 
   // example:
   // 
   // 10
   PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+  // The text query list.<br>• Only one text string is supported. The maximum length is 256 characters.
+  // 
   // example:
   // 
   // ["梅花图片"]
@@ -235,51 +207,12 @@ func (s *EngineSearchRequestQuery) Validate() error {
   return dara.Validate(s)
 }
 
-type EngineSearchRequestRecall struct {
-  // example:
-  // 
-  // false
-  CloseRecallAsr *bool `json:"closeRecallAsr,omitempty" xml:"closeRecallAsr,omitempty"`
-  // example:
-  // 
-  // true
-  NeedMergeSegments *bool `json:"needMergeSegments,omitempty" xml:"needMergeSegments,omitempty"`
-}
-
-func (s EngineSearchRequestRecall) String() string {
-  return dara.Prettify(s)
-}
-
-func (s EngineSearchRequestRecall) GoString() string {
-  return s.String()
-}
-
-func (s *EngineSearchRequestRecall) GetCloseRecallAsr() *bool  {
-  return s.CloseRecallAsr
-}
-
-func (s *EngineSearchRequestRecall) GetNeedMergeSegments() *bool  {
-  return s.NeedMergeSegments
-}
-
-func (s *EngineSearchRequestRecall) SetCloseRecallAsr(v bool) *EngineSearchRequestRecall {
-  s.CloseRecallAsr = &v
-  return s
-}
-
-func (s *EngineSearchRequestRecall) SetNeedMergeSegments(v bool) *EngineSearchRequestRecall {
-  s.NeedMergeSegments = &v
-  return s
-}
-
-func (s *EngineSearchRequestRecall) Validate() error {
-  return dara.Validate(s)
-}
-
 type EngineSearchRequestUser struct {
+  // The unique ID of the user.
+  // 
   // example:
   // 
-  // "123456"
+  // asdfgnoevnor
   UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
 }
 

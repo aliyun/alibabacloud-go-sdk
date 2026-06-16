@@ -16,10 +16,14 @@ type iGetDatasetResourceUrlRequest interface {
 }
 
 type GetDatasetResourceUrlRequest struct {
+	// The dataset ID. You can view this in the dataset list on the console.
+	//
 	// example:
 	//
 	// 730
 	DatasetId *string `json:"datasetId,omitempty" xml:"datasetId,omitempty"`
+	// The primary key value of the data record in the dataset.
+	//
 	// This parameter is required.
 	//
 	// example:

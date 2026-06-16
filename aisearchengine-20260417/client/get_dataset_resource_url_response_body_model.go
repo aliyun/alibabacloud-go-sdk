@@ -20,15 +20,22 @@ type iGetDatasetResourceUrlResponseBody interface {
 }
 
 type GetDatasetResourceUrlResponseBody struct {
+	// The business status code. A value of `200` indicates a successful request. Other values indicate an exception. For more information, see error codes.
+	//
 	// example:
 	//
 	// 200
-	Code *int32                                 `json:"code,omitempty" xml:"code,omitempty"`
+	Code *int32 `json:"code,omitempty" xml:"code,omitempty"`
+	// The business data body.
 	Data *GetDatasetResourceUrlResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The status description. The value is "success" for successful requests and a specific error message for failed requests.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The unique request ID, used for troubleshooting.
+	//
 	// example:
 	//
 	// 1a0f40dd17774641794394269ec0e9
@@ -89,6 +96,8 @@ func (s *GetDatasetResourceUrlResponseBody) Validate() error {
 }
 
 type GetDatasetResourceUrlResponseBodyData struct {
+	// The temporary OSS access URL with a signature and expiration time (valid for 24 hours). The URL can be used directly for frontend display or download.
+	//
 	// example:
 	//
 	// https://maas-ai-search-center-raw.oss-cn-hangzhou.aliyuncs.com/.../sample.mp4...
