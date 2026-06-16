@@ -1,0 +1,59 @@
+// This file is auto-generated, don't edit it. Thanks.
+package client
+
+import (
+	"github.com/alibabacloud-go/tea/dara"
+)
+
+type iCreateContextStoreAPIKeyRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetName(v string) *CreateContextStoreAPIKeyRequest
+	GetName() *string
+	SetClientToken(v string) *CreateContextStoreAPIKeyRequest
+	GetClientToken() *string
+}
+
+type CreateContextStoreAPIKeyRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// my-api-key
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// a1b2c3d4-1234-5678-90ab-cdef12345678
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+}
+
+func (s CreateContextStoreAPIKeyRequest) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateContextStoreAPIKeyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateContextStoreAPIKeyRequest) GetName() *string {
+	return s.Name
+}
+
+func (s *CreateContextStoreAPIKeyRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *CreateContextStoreAPIKeyRequest) SetName(v string) *CreateContextStoreAPIKeyRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateContextStoreAPIKeyRequest) SetClientToken(v string) *CreateContextStoreAPIKeyRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateContextStoreAPIKeyRequest) Validate() error {
+	return dara.Validate(s)
+}

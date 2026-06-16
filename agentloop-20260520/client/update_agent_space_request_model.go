@@ -1,0 +1,66 @@
+// This file is auto-generated, don't edit it. Thanks.
+package client
+
+import (
+	"github.com/alibabacloud-go/tea/dara"
+)
+
+type iUpdateAgentSpaceRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetCmsWorkspace(v string) *UpdateAgentSpaceRequest
+	GetCmsWorkspace() *string
+	SetDescription(v string) *UpdateAgentSpaceRequest
+	GetDescription() *string
+	SetClientToken(v string) *UpdateAgentSpaceRequest
+	GetClientToken() *string
+}
+
+type UpdateAgentSpaceRequest struct {
+	CmsWorkspace *string `json:"cmsWorkspace,omitempty" xml:"cmsWorkspace,omitempty"`
+	Description  *string `json:"description,omitempty" xml:"description,omitempty"`
+	// example:
+	//
+	// a1b2c3d4-1234-5678-90ab-cdef12345678
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+}
+
+func (s UpdateAgentSpaceRequest) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateAgentSpaceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAgentSpaceRequest) GetCmsWorkspace() *string {
+	return s.CmsWorkspace
+}
+
+func (s *UpdateAgentSpaceRequest) GetDescription() *string {
+	return s.Description
+}
+
+func (s *UpdateAgentSpaceRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *UpdateAgentSpaceRequest) SetCmsWorkspace(v string) *UpdateAgentSpaceRequest {
+	s.CmsWorkspace = &v
+	return s
+}
+
+func (s *UpdateAgentSpaceRequest) SetDescription(v string) *UpdateAgentSpaceRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateAgentSpaceRequest) SetClientToken(v string) *UpdateAgentSpaceRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateAgentSpaceRequest) Validate() error {
+	return dara.Validate(s)
+}
