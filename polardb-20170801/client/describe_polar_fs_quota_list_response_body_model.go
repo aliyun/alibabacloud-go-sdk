@@ -26,29 +26,42 @@ type iDescribePolarFsQuotaListResponseBody interface {
 }
 
 type DescribePolarFsQuotaListResponseBody struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of records on the current page.
+	//
 	// example:
 	//
 	// 30
 	PageRecordCount *string `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	// The number of records per page. Valid values: **30**, **50**, and **100**.
+	//
+	// Default value: **30**.
+	//
 	// example:
 	//
 	// 30
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The PolarFS instance ID.
+	//
 	// example:
 	//
 	// pfs-test****
-	PolarFsInstanceId *string                                           `json:"PolarFsInstanceId,omitempty" xml:"PolarFsInstanceId,omitempty"`
-	QuotaItems        []*DescribePolarFsQuotaListResponseBodyQuotaItems `json:"QuotaItems,omitempty" xml:"QuotaItems,omitempty" type:"Repeated"`
-	// Id of the request
+	PolarFsInstanceId *string `json:"PolarFsInstanceId,omitempty" xml:"PolarFsInstanceId,omitempty"`
+	// A list of directory quotas.
+	QuotaItems []*DescribePolarFsQuotaListResponseBodyQuotaItems `json:"QuotaItems,omitempty" xml:"QuotaItems,omitempty" type:"Repeated"`
+	// The ID of the request.
 	//
 	// example:
 	//
 	// EBEAA83D-1734-42E3-85E3-E25F6E******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 2
@@ -140,24 +153,32 @@ func (s *DescribePolarFsQuotaListResponseBody) Validate() error {
 }
 
 type DescribePolarFsQuotaListResponseBodyQuotaItems struct {
+	// The capacity in bytes.
+	//
 	// example:
 	//
 	// 1073741824
 	Capacity *int64 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
-	// Inodes
+	// The inode quota.
 	//
 	// example:
 	//
 	// 100
 	Inodes *int64 `json:"Inodes,omitempty" xml:"Inodes,omitempty"`
+	// The directory path.
+	//
 	// example:
 	//
 	// /test
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The used capacity in bytes.
+	//
 	// example:
 	//
 	// 104857600
 	UsedCapacity *int64 `json:"UsedCapacity,omitempty" xml:"UsedCapacity,omitempty"`
+	// The number of inodes in use.
+	//
 	// example:
 	//
 	// 1

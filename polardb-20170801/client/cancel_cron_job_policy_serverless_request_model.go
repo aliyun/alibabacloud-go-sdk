@@ -26,16 +26,22 @@ type iCancelCronJobPolicyServerlessRequest interface {
 }
 
 type CancelCronJobPolicyServerlessRequest struct {
+	// The cluster ID.
+	//
 	// example:
 	//
 	// pc-*************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The scheduled task ID.
+	//
 	// example:
 	//
 	// b3e7b3d3-027d-4fcc-9f92-5c5f2363e141
 	JobId        *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing

@@ -18,14 +18,19 @@ type iDescribeApplicationServerlessConfResponseBody interface {
 }
 
 type DescribeApplicationServerlessConfResponseBody struct {
+	// The application ID.
+	//
 	// example:
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CDB3258F-B5DE-43C4-8935-CBA0CA******
-	RequestId           *string                                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of serverless configurations.
 	ServerlessConfItems []*DescribeApplicationServerlessConfResponseBodyServerlessConfItems `json:"ServerlessConfItems,omitempty" xml:"ServerlessConfItems,omitempty" type:"Repeated"`
 }
 
@@ -78,14 +83,26 @@ func (s *DescribeApplicationServerlessConfResponseBody) Validate() error {
 }
 
 type DescribeApplicationServerlessConfResponseBodyServerlessConfItems struct {
+	// The type of the application sub-component.
+	//
+	// For Supabase, valid values are:
+	//
+	// - gateway
+	//
+	// - backend
+	//
 	// example:
 	//
 	// gateway
 	ComponentType *string `json:"ComponentType,omitempty" xml:"ComponentType,omitempty"`
+	// The maximum scaling capacity for a single node. Valid values: 0 PCU to 16 PCU.
+	//
 	// example:
 	//
 	// 16
 	ScaleMax *string `json:"ScaleMax,omitempty" xml:"ScaleMax,omitempty"`
+	// The minimum scaling capacity for a single node, measured in PolarDB Capacity Units (PCU). Valid values: 0 PCU to 16 PCU.
+	//
 	// example:
 	//
 	// 1

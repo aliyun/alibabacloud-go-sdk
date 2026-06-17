@@ -28,12 +28,20 @@ type iModifyDBClusterVpcRequest interface {
 }
 
 type ModifyDBClusterVpcRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pc-*************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// Specifies whether to switch existing endpoints. Valid values:
+	//
+	// - **NONE**: Does not switch existing endpoints.
+	//
+	// - **ALL**: Switches all existing endpoints.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -44,10 +52,14 @@ type ModifyDBClusterVpcRequest struct {
 	OwnerId                   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount      *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId           *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The ID of the virtual private cloud (VPC).
+	//
 	// example:
 	//
 	// vpc-*******************
 	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
+	// The ID of the virtual switch.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -26,12 +26,16 @@ type iModifyDBNodeSccModeRequest interface {
 }
 
 type ModifyDBNodeSccModeRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pc-****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The node ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -42,7 +46,7 @@ type ModifyDBNodeSccModeRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// SCC
+	// The SCC mode to set for the node.
 	//
 	// This parameter is required.
 	//

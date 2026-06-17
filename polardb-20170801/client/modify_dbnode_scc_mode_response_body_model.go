@@ -14,6 +14,8 @@ type iModifyDBNodeSccModeResponseBody interface {
 }
 
 type ModifyDBNodeSccModeResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// E2FDB684-751D-424D-98B9-704BEA******

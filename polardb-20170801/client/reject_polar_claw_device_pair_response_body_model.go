@@ -24,27 +24,37 @@ type iRejectPolarClawDevicePairResponseBody interface {
 }
 
 type RejectPolarClawDevicePairResponseBody struct {
+	// The application ID.
+	//
 	// example:
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The response status code.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The unique device ID.
+	//
 	// example:
 	//
 	// device-784x37k0vko734fk
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The pairing request ID.
+	//
 	// example:
 	//
 	// req-abc-123
 	PairRequestId *string `json:"PairRequestId,omitempty" xml:"PairRequestId,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

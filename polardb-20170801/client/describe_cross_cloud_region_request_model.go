@@ -18,14 +18,30 @@ type iDescribeCrossCloudRegionRequest interface {
 }
 
 type DescribeCrossCloudRegionRequest struct {
+	// The cloud service provider. Valid values:
+	//
+	// - HuaweiCloud
+	//
+	// - Azure
+	//
 	// example:
 	//
 	// HuaweiCloud
 	CloudProvider *string `json:"CloudProvider,omitempty" xml:"CloudProvider,omitempty"`
+	// The ID of the third-party cloud region.
+	//
 	// example:
 	//
 	// cn-east-3
 	CrossCloudRegionId *string `json:"CrossCloudRegionId,omitempty" xml:"CrossCloudRegionId,omitempty"`
+	// The database engine type. Valid values:
+	//
+	// - MySQL
+	//
+	// - PostgreSQL
+	//
+	// - Oracle
+	//
 	// example:
 	//
 	// MySQL

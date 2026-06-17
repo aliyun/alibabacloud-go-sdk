@@ -20,22 +20,52 @@ type iDescribeCrossCloudLevelsRequest interface {
 }
 
 type DescribeCrossCloudLevelsRequest struct {
+	// The database engine type. Valid values:
+	//
+	// - MySQL
+	//
+	// - PostgreSQL
+	//
+	// - Oracle
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// MySQL
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
+	// The version number of the database engine.
+	//
+	// Valid values for MySQL:
+	//
+	// - 5.6
+	//
+	// - 5.7
+	//
+	// - 8.0
+	//
+	// Valid values for PostgreSQL:
+	//
+	// - 11
+	//
+	// - 14
+	//
+	// - 15
+	//
 	// example:
 	//
 	// 5.6
 	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
+	// The resource pool ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pj-87681rbcef6******
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The storage class.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -42,66 +42,96 @@ type iUpdatePolarClawCronJobShrinkRequest interface {
 }
 
 type UpdatePolarClawCronJobShrinkRequest struct {
+	// The ID of the Agent that runs the task.
+	//
 	// example:
 	//
 	// work
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pa-xxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// Specifies whether to delete the task after its first execution.
+	//
 	// example:
 	//
 	// true
 	DeleteAfterRun *bool `json:"DeleteAfterRun,omitempty" xml:"DeleteAfterRun,omitempty"`
+	// The result delivery configuration.
+	//
 	// example:
 	//
 	// {"Mode":"announce","Channel":"telegram"}
 	DeliveryShrink *string `json:"Delivery,omitempty" xml:"Delivery,omitempty"`
+	// The new description for the task.
+	//
 	// example:
 	//
 	// Daily report generation
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Specifies whether the task is enabled.
+	//
 	// example:
 	//
 	// false
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The configuration for failure alerts. Set this to `false` to disable alerts.
+	//
 	// example:
 	//
 	// {"After":3,"Channel":"telegram"}
 	FailureAlertShrink *string `json:"FailureAlert,omitempty" xml:"FailureAlert,omitempty"`
+	// The ID of the scheduled task to update.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0ee00f56-f467-4d41-858c-ca4ede2c770e
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The new name for the task.
+	//
 	// example:
 	//
 	// afternoon-report
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The new payload configuration.
+	//
 	// example:
 	//
 	// {"Kind":"agentTurn","Message":"Updated: Generate afternoon report."}
 	PayloadShrink *string `json:"Payload,omitempty" xml:"Payload,omitempty"`
+	// Specifies whether to restart the gateway after the update. Default value: `true`.
+	//
 	// example:
 	//
 	// true
 	Restart *bool `json:"Restart,omitempty" xml:"Restart,omitempty"`
+	// The scheduling configuration.
+	//
 	// example:
 	//
 	// {"Kind":"cron","Expr":"0 12 	- 	- *","Tz":"America/New_York"}
 	ScheduleShrink *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
+	// The session routing key.
+	//
 	// example:
 	//
 	// agent:main:feishu:direct:***
 	SessionKey *string `json:"SessionKey,omitempty" xml:"SessionKey,omitempty"`
+	// The new session target.
+	//
 	// example:
 	//
 	// isolated
 	SessionTarget *string `json:"SessionTarget,omitempty" xml:"SessionTarget,omitempty"`
+	// The new wake mode.
+	//
 	// example:
 	//
 	// now

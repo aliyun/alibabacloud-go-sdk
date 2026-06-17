@@ -16,10 +16,14 @@ type iDescribeGlobalDataNetworkListRequest interface {
 }
 
 type DescribeGlobalDataNetworkListRequest struct {
+	// The page number to return.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of records to return on each page.
+	//
 	// example:
 	//
 	// 30

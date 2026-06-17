@@ -48,21 +48,26 @@ type CreateGlobalDatabaseNetworkRequest struct {
 	EnableGlobalDomainName *bool `json:"EnableGlobalDomainName,omitempty" xml:"EnableGlobalDomainName,omitempty"`
 	// The description of the GDN. The description must meet the following requirements:
 	//
-	// 	- It cannot start with [http:// or https://.](http://https://。)
+	// - It cannot start with http\\:// or https\\://.
 	//
-	// 	- It must start with a letter.
+	// - It must start with a letter or a Chinese character.
 	//
-	// 	- It can contain letters, digits, underscores (_), and hyphens (-).
+	// - It can contain letters, Chinese characters, digits, underscores (_), and hyphens (-).
 	//
-	// 	- It must be 2 to 126 characters in length.
+	// - It must be 2 to 126 characters in length.
 	//
 	// example:
 	//
 	// GDN-fortest
 	GDNDescription *string `json:"GDNDescription,omitempty" xml:"GDNDescription,omitempty"`
-	GDNVersion     *string `json:"GDNVersion,omitempty" xml:"GDNVersion,omitempty"`
-	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The GDN version.
+	//
+	// example:
+	//
+	// 2.0
+	GDNVersion   *string `json:"GDNVersion,omitempty" xml:"GDNVersion,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the resource group.
 	//
 	// example:

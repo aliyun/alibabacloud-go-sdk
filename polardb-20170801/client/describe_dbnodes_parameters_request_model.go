@@ -32,7 +32,7 @@ type DescribeDBNodesParametersRequest struct {
 	//
 	// pc-****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The node ID. You can specify multiple node IDs. Separate multiple node IDs with commas (,).
+	// The ID of the node. You can specify multiple node IDs. Separate the IDs with a comma (,).
 	//
 	// This parameter is required.
 	//

@@ -14,7 +14,7 @@ type iCreateDBEndpointAddressResponseBody interface {
 }
 
 type CreateDBEndpointAddressResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

@@ -24,12 +24,16 @@ type iModifyAIDBClusterDescriptionRequest interface {
 }
 
 type ModifyAIDBClusterDescriptionRequest struct {
+	// The cluster description.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test
 	DBClusterDescription *string `json:"DBClusterDescription,omitempty" xml:"DBClusterDescription,omitempty"`
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:

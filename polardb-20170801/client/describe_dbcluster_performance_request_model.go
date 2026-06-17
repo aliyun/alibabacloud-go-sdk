@@ -34,7 +34,7 @@ type DescribeDBClusterPerformanceRequest struct {
 	//
 	// pc-****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The end of the time range to query. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
+	// The end of the time range to query. Specify the time in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,21 @@ type DescribeDBClusterPerformanceRequest struct {
 	//
 	// 2020-09-23T01:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The interval at which performance data is collected. Valid values: 5, 30, 60, 600, 1800, 3600, 86400, in seconds.
+	// The granularity of the performance data. Valid values:
+	//
+	// - 5
+	//
+	// - 30
+	//
+	// - 60
+	//
+	// - 600
+	//
+	// - 1800
+	//
+	// - 3600
+	//
+	// - 86400
 	//
 	// example:
 	//
@@ -50,7 +64,7 @@ type DescribeDBClusterPerformanceRequest struct {
 	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	// The performance metrics that you want to query. Separate multiple metrics with commas (,). For more information, see [Performance parameters](https://help.aliyun.com/document_detail/141787.html).
 	//
-	// >  You can specify a maximum of five performance metrics.
+	// > Specify up to five performance metrics.
 	//
 	// This parameter is required.
 	//
@@ -58,7 +72,7 @@ type DescribeDBClusterPerformanceRequest struct {
 	//
 	// PolarDBDiskUsage
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
+	// The beginning of the time range to query. Specify the time in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
 	//
 	// This parameter is required.
 	//

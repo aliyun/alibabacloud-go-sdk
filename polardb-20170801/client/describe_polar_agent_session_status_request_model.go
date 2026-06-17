@@ -16,12 +16,16 @@ type iDescribePolarAgentSessionStatusRequest interface {
 }
 
 type DescribePolarAgentSessionStatusRequest struct {
+	// The ID of the session. This ID is used to identify a visitor\\"s session and maintain context information.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1e28530a0da2c4755f165b1b8b9a73c9
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// The source of the product. Set the value to polardb-console.
+	//
 	// example:
 	//
 	// polardb-console

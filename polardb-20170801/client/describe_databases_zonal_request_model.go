@@ -32,30 +32,50 @@ type iDescribeDatabasesZonalRequest interface {
 }
 
 type DescribeDatabasesZonalRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pc-**************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The database name.
+	//
 	// example:
 	//
 	// test_db
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
+	// The maximum number of entries to return for the current request.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The query token. This is the NextToken value from the previous API call. If there are no more results, do not specify this parameter.
+	//
 	// example:
 	//
 	// 212db86sca4384811e0b5e8707e******
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page number. The value must be an integer that is greater than 0 and does not exceed the maximum value of the Integer data type. The default value is 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Valid values:
+	//
+	// - 30
+	//
+	// - 50
+	//
+	// - 100
+	//
+	// The default value is 30.
+	//
 	// example:
 	//
 	// 30

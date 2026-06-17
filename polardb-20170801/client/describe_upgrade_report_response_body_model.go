@@ -34,45 +34,77 @@ type iDescribeUpgradeReportResponseBody interface {
 }
 
 type DescribeUpgradeReportResponseBody struct {
+	// The details.
+	//
 	// example:
 	//
 	// []
 	Details *string `json:"Details,omitempty" xml:"Details,omitempty"`
+	// The database type of the destination instance. Valid values:
+	//
+	// - **MySQL**
+	//
+	// - **Oracle**
+	//
 	// example:
 	//
 	// MySQL
-	DstDBType *string                                   `json:"DstDBType,omitempty" xml:"DstDBType,omitempty"`
-	Items     []*DescribeUpgradeReportResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	DstDBType *string `json:"DstDBType,omitempty" xml:"DstDBType,omitempty"`
+	// The list of Oracle compatibility evaluation details.
+	//
+	// > This parameter is supported only for **Oracle*	- instances.
+	Items []*DescribeUpgradeReportResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The number of entries in the list of Oracle compatibility evaluation details.
+	//
 	// example:
 	//
 	// 10
 	ItemsSize *int64 `json:"ItemsSize,omitempty" xml:"ItemsSize,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 2FED790E-FB61-4721-8C1C-07C627******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the source instance.
+	//
 	// example:
 	//
 	// rm-2zen5pe5vi56447d0
 	SourceDBClusterId *string `json:"SourceDBClusterId,omitempty" xml:"SourceDBClusterId,omitempty"`
+	// The database type of the source instance. Valid values:
+	//
+	// - **MySQL**
+	//
+	// - **Oracle**
+	//
 	// example:
 	//
 	// MySQL
 	SrcDBType *string `json:"SrcDBType,omitempty" xml:"SrcDBType,omitempty"`
+	// The deletion status of the source instance. Valid values:
+	//
+	// - **0**: Not deleted.
+	//
+	// - **1**: Deleted.
+	//
 	// example:
 	//
 	// 1
 	SrcDeleted *string `json:"SrcDeleted,omitempty" xml:"SrcDeleted,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 137
 	TotalSize *int64 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+	// A special metric. This parameter is supported only for instances that use the Tair architecture.
+	//
 	// example:
 	//
 	// tair
-	Type              *string                                               `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The list of evaluation reports.
 	UpgradeReportList []*DescribeUpgradeReportResponseBodyUpgradeReportList `json:"UpgradeReportList,omitempty" xml:"UpgradeReportList,omitempty" type:"Repeated"`
 }
 
@@ -206,22 +238,36 @@ func (s *DescribeUpgradeReportResponseBody) Validate() error {
 }
 
 type DescribeUpgradeReportResponseBodyItems struct {
+	// The Data Definition Language (DDL) statements for object synchronization.
+	//
 	// example:
 	//
 	// CREATE XXXX
 	DDL *string `json:"DDL,omitempty" xml:"DDL,omitempty"`
+	// The name of the evaluation object.
+	//
 	// example:
 	//
 	// testName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The schema of the evaluation object.
+	//
 	// example:
 	//
 	// ny_openapi
 	Schema *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
+	// The result of the compatibility evaluation. Valid values:
+	//
+	// - **0**: Failed.
+	//
+	// - **1**: Succeeded.
+	//
 	// example:
 	//
 	// 1
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The type of the evaluation object.
+	//
 	// example:
 	//
 	// orca
@@ -286,42 +332,62 @@ func (s *DescribeUpgradeReportResponseBodyItems) Validate() error {
 }
 
 type DescribeUpgradeReportResponseBodyUpgradeReportList struct {
+	// The check time.
+	//
 	// example:
 	//
 	// 2024-03-15T06:48:44Z
 	CheckTime *string `json:"CheckTime,omitempty" xml:"CheckTime,omitempty"`
+	// The version of the destination instance.
+	//
 	// example:
 	//
 	// 8.0
 	DstVersion *string `json:"DstVersion,omitempty" xml:"DstVersion,omitempty"`
+	// The effective time of the evaluation.
+	//
 	// example:
 	//
 	// 2024-03-08T06:48:44Z
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
+	// The end time of the evaluation.
+	//
 	// example:
 	//
 	// 2024-03-08T06:48:44Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The status of the evaluation task.
+	//
 	// example:
 	//
 	// running
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// The name of the source instance.
+	//
 	// example:
 	//
 	// pc-2ze54671qoz830za9
 	SrcInsName *string `json:"SrcInsName,omitempty" xml:"SrcInsName,omitempty"`
+	// The version of the source instance.
+	//
 	// example:
 	//
 	// 5.7
 	SrcVersion *string `json:"SrcVersion,omitempty" xml:"SrcVersion,omitempty"`
+	// The start time of the evaluation.
+	//
 	// example:
 	//
 	// 2025-07-05T01:56:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// 275948
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The upgrade mode.
+	//
 	// example:
 	//
 	// rds2polar_pengine_with_dts

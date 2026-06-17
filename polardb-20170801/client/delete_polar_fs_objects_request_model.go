@@ -18,12 +18,18 @@ type iDeletePolarFsObjectsRequest interface {
 }
 
 type DeletePolarFsObjectsRequest struct {
+	// The cluster ID.
+	//
 	// example:
 	//
 	// pc-***
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The list of objects to delete.
+	//
 	// This parameter is required.
 	ObjectsToDelete []*string `json:"ObjectsToDelete,omitempty" xml:"ObjectsToDelete,omitempty" type:"Repeated"`
+	// The PolarLakebase instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

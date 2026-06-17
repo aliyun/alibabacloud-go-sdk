@@ -18,25 +18,25 @@ type iModifyMaskingRulesResponseBody interface {
 }
 
 type ModifyMaskingRulesResponseBody struct {
-	// The message that is returned for the request.
+	// The response message.
 	//
-	// > If the request is successful, Successful is returned. If the request fails, an error message such as an error code is returned.
+	// > If the request is successful, `Successful` is returned. If the request fails, an error message is returned.
 	//
 	// example:
 	//
 	// Message
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 99B355CE-526C-478B-B730-AD9D7C******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. Valid value:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**:
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//

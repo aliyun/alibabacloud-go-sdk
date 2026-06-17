@@ -9,6 +9,8 @@ type iDescribeBatchTaskResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetApplicationType(v string) *DescribeBatchTaskResponseBody
+	GetApplicationType() *string
 	SetBatchId(v string) *DescribeBatchTaskResponseBody
 	GetBatchId() *string
 	SetRequestId(v string) *DescribeBatchTaskResponseBody
@@ -32,41 +34,59 @@ type iDescribeBatchTaskResponseBody interface {
 }
 
 type DescribeBatchTaskResponseBody struct {
+	ApplicationType *string `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
+	// The ID of the batch task.
+	//
 	// example:
 	//
 	// pcb-xxx
 	BatchId *string `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 25C70FF3-D49B-594D-BECE-0DE2BA1D8BBB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task status.
+	//
 	// example:
 	//
 	// RUNNING
-	Status   *string                                  `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// A list of subtasks.
 	SubTasks []*DescribeBatchTaskResponseBodySubTasks `json:"SubTasks,omitempty" xml:"SubTasks,omitempty" type:"Repeated"`
+	// The number of successful subtasks.
+	//
 	// example:
 	//
 	// 8
 	SuccessCount *int32 `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
+	// The time when the task started.
+	//
 	// example:
 	//
 	// 2026/05/28T16:38:20Z
 	TaskBegin *string `json:"TaskBegin,omitempty" xml:"TaskBegin,omitempty"`
+	// The time when the task ended.
+	//
 	// example:
 	//
 	// 2026/05/28T15:23:47Z
 	TaskEnd *string `json:"TaskEnd,omitempty" xml:"TaskEnd,omitempty"`
+	// The name of the task.
+	//
 	// example:
 	//
 	// batch_task_test
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// The type of the task.
+	//
 	// example:
 	//
 	// polarclaw_install_skills
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// The total number of subtasks.
+	//
 	// example:
 	//
 	// 10
@@ -79,6 +99,10 @@ func (s DescribeBatchTaskResponseBody) String() string {
 
 func (s DescribeBatchTaskResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeBatchTaskResponseBody) GetApplicationType() *string {
+	return s.ApplicationType
 }
 
 func (s *DescribeBatchTaskResponseBody) GetBatchId() *string {
@@ -119,6 +143,11 @@ func (s *DescribeBatchTaskResponseBody) GetTaskType() *string {
 
 func (s *DescribeBatchTaskResponseBody) GetTotalCount() *int32 {
 	return s.TotalCount
+}
+
+func (s *DescribeBatchTaskResponseBody) SetApplicationType(v string) *DescribeBatchTaskResponseBody {
+	s.ApplicationType = &v
+	return s
 }
 
 func (s *DescribeBatchTaskResponseBody) SetBatchId(v string) *DescribeBatchTaskResponseBody {
@@ -185,26 +214,38 @@ func (s *DescribeBatchTaskResponseBody) Validate() error {
 }
 
 type DescribeBatchTaskResponseBodySubTasks struct {
+	// The error message.
+	//
 	// example:
 	//
 	// aliuid:1422133474238823 assumeOssRole not exist,serviceName:aliyunesarealtimelogpushossrole
 	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// pc-pz5f6mvi1p84t35d7
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The status of the subtask.
+	//
 	// example:
 	//
 	// COMPLETED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The time when the subtask started.
+	//
 	// example:
 	//
 	// 2026/05/28T17:38:20Z
 	TaskBegin *string `json:"TaskBegin,omitempty" xml:"TaskBegin,omitempty"`
+	// The time when the subtask ended.
+	//
 	// example:
 	//
 	// 2026/05/28T20:38:20Z
 	TaskEnd *string `json:"TaskEnd,omitempty" xml:"TaskEnd,omitempty"`
+	// The ID of the subtask.
+	//
 	// example:
 	//
 	// 629271331

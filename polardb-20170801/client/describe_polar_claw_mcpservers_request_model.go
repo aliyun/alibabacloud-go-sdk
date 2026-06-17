@@ -16,13 +16,16 @@ type iDescribePolarClawMCPServersRequest interface {
 }
 
 type DescribePolarClawMCPServersRequest struct {
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pa-**************
-	ApplicationId *string   `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	ServerList    []*string `json:"ServerList,omitempty" xml:"ServerList,omitempty" type:"Repeated"`
+	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// A list of MCP server names. If this parameter is empty, the configurations of all MCP servers are returned.
+	ServerList []*string `json:"ServerList,omitempty" xml:"ServerList,omitempty" type:"Repeated"`
 }
 
 func (s DescribePolarClawMCPServersRequest) String() string {

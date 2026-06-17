@@ -24,7 +24,7 @@ type iDeleteAccountRequest interface {
 }
 
 type DeleteAccountRequest struct {
-	// The username of the account.
+	// The account name.
 	//
 	// This parameter is required.
 	//

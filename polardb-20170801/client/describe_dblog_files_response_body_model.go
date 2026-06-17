@@ -34,40 +34,69 @@ type iDescribeDBLogFilesResponseBody interface {
 }
 
 type DescribeDBLogFilesResponseBody struct {
+	// The cluster ID.
+	//
 	// example:
 	//
-	// pi-****************
+	// pc-****************
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The instance type. Valid values:
+	//
+	// - **polardb_mysql_rw**: read-write instance.
+	//
+	// - **polardb_mysql_ro**: read-only instance.
+	//
+	// - **polardb_mysql_standby**: standby instance.
+	//
 	// example:
 	//
 	// polardb_mysql_rw
-	DBInstanceType *string                                     `json:"DBInstanceType,omitempty" xml:"DBInstanceType,omitempty"`
-	HaLogItems     []*DescribeDBLogFilesResponseBodyHaLogItems `json:"HaLogItems,omitempty" xml:"HaLogItems,omitempty" type:"Repeated"`
+	DBInstanceType *string `json:"DBInstanceType,omitempty" xml:"DBInstanceType,omitempty"`
+	// A list of failover logs.
+	HaLogItems []*DescribeDBLogFilesResponseBodyHaLogItems `json:"HaLogItems,omitempty" xml:"HaLogItems,omitempty" type:"Repeated"`
+	// Indicates whether a failover record exists. Valid values:
+	//
+	// - **1**: No
+	//
+	// - **0**: Yes
+	//
 	// example:
 	//
 	// 1
 	HaStatus *int32 `json:"HaStatus,omitempty" xml:"HaStatus,omitempty"`
+	// The number of log items on the current page.
+	//
 	// example:
 	//
-	// 10
+	// 1
 	ItemsNumbers *int32 `json:"ItemsNumbers,omitempty" xml:"ItemsNumbers,omitempty"`
+	// The page number. It must be a positive integer that does not exceed the maximum value of the Integer data type. Default value: 1.
+	//
 	// example:
 	//
-	// 6
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Valid values: 5 to 50. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 24A1990B-4F6E-482B-B8CB-75C612******
-	RequestId       *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// A list of fault simulation records.
 	SwitchListItems []*DescribeDBLogFilesResponseBodySwitchListItems `json:"SwitchListItems,omitempty" xml:"SwitchListItems,omitempty" type:"Repeated"`
-	SwitchLogItems  []*DescribeDBLogFilesResponseBodySwitchLogItems  `json:"SwitchLogItems,omitempty" xml:"SwitchLogItems,omitempty" type:"Repeated"`
+	// A list of fault simulation logs.
+	SwitchLogItems []*DescribeDBLogFilesResponseBodySwitchLogItems `json:"SwitchLogItems,omitempty" xml:"SwitchLogItems,omitempty" type:"Repeated"`
+	// The total number of records.
+	//
 	// example:
 	//
-	// 160
+	// 1
 	TotalRecords *int32 `json:"TotalRecords,omitempty" xml:"TotalRecords,omitempty"`
 }
 
@@ -210,20 +239,65 @@ func (s *DescribeDBLogFilesResponseBody) Validate() error {
 }
 
 type DescribeDBLogFilesResponseBodyHaLogItems struct {
-	AffectedSessions  *int64  `json:"AffectedSessions,omitempty" xml:"AffectedSessions,omitempty"`
-	FromDBType        *string `json:"FromDBType,omitempty" xml:"FromDBType,omitempty"`
-	SwitchCauseCode   *string `json:"SwitchCauseCode,omitempty" xml:"SwitchCauseCode,omitempty"`
+	// The number of affected sessions during the failover.
+	//
+	// example:
+	//
+	// 100
+	AffectedSessions *int64 `json:"AffectedSessions,omitempty" xml:"AffectedSessions,omitempty"`
+	// The instance type before the failover. Valid values:
+	//
+	// - **polardb_mysql_rw**: read-write instance.
+	//
+	// - **polardb_mysql_ro**: read-only instance.
+	//
+	// - **polardb_mysql_standby**: standby instance.
+	//
+	// example:
+	//
+	// polardb_mysql_rw
+	FromDBType *string `json:"FromDBType,omitempty" xml:"FromDBType,omitempty"`
+	// The error code for the failover cause.
+	//
+	// example:
+	//
+	// Platform.Ha.AuroraService.ManualOperations
+	SwitchCauseCode *string `json:"SwitchCauseCode,omitempty" xml:"SwitchCauseCode,omitempty"`
+	// Details about the failover cause.
+	//
+	// example:
+	//
+	// Platform.Ha.ManuallyTriggered
 	SwitchCauseDetail *string `json:"SwitchCauseDetail,omitempty" xml:"SwitchCauseDetail,omitempty"`
-	SwitchFinishTime  *string `json:"SwitchFinishTime,omitempty" xml:"SwitchFinishTime,omitempty"`
+	// The time when the failover was complete. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format and is displayed in UTC.
+	//
+	// example:
+	//
+	// 2025-05-20T03:09:56Z
+	SwitchFinishTime *string `json:"SwitchFinishTime,omitempty" xml:"SwitchFinishTime,omitempty"`
+	// The failover log ID.
+	//
 	// example:
 	//
 	// e571f897-9b3c-4012-9470-88333832dec4
-	SwitchId        *string `json:"SwitchId,omitempty" xml:"SwitchId,omitempty"`
+	SwitchId *string `json:"SwitchId,omitempty" xml:"SwitchId,omitempty"`
+	// The time when the failover started. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format and is displayed in UTC.
+	//
+	// example:
+	//
+	// 2025-05-20T03:09:45Z
 	SwitchStartTime *string `json:"SwitchStartTime,omitempty" xml:"SwitchStartTime,omitempty"`
+	// The failover type.
+	//
 	// example:
 	//
 	// 0
-	SwitchType    *int64 `json:"SwitchType,omitempty" xml:"SwitchType,omitempty"`
+	SwitchType *int64 `json:"SwitchType,omitempty" xml:"SwitchType,omitempty"`
+	// The total number of sessions during the failover.
+	//
+	// example:
+	//
+	// 10000
 	TotalSessions *int64 `json:"TotalSessions,omitempty" xml:"TotalSessions,omitempty"`
 }
 
@@ -321,18 +395,82 @@ func (s *DescribeDBLogFilesResponseBodyHaLogItems) Validate() error {
 }
 
 type DescribeDBLogFilesResponseBodySwitchListItems struct {
-	DBNodeCrashList    []*string                                                       `json:"DBNodeCrashList,omitempty" xml:"DBNodeCrashList,omitempty" type:"Repeated"`
-	EndTime            *string                                                         `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	EventFinishTime    *string                                                         `json:"EventFinishTime,omitempty" xml:"EventFinishTime,omitempty"`
-	EventStartTime     *string                                                         `json:"EventStartTime,omitempty" xml:"EventStartTime,omitempty"`
-	FaultInjectionType *string                                                         `json:"FaultInjectionType,omitempty" xml:"FaultInjectionType,omitempty"`
-	SimulateListId     *string                                                         `json:"SimulateListId,omitempty" xml:"SimulateListId,omitempty"`
-	SimulateMode       *string                                                         `json:"SimulateMode,omitempty" xml:"SimulateMode,omitempty"`
-	SimulateStatus     *string                                                         `json:"SimulateStatus,omitempty" xml:"SimulateStatus,omitempty"`
-	SimulateTaskId     *string                                                         `json:"SimulateTaskId,omitempty" xml:"SimulateTaskId,omitempty"`
-	StartTime          *string                                                         `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	SwitchLogItems     []*DescribeDBLogFilesResponseBodySwitchListItemsSwitchLogItems  `json:"SwitchLogItems,omitempty" xml:"SwitchLogItems,omitempty" type:"Repeated"`
-	SwitchStepItems    []*DescribeDBLogFilesResponseBodySwitchListItemsSwitchStepItems `json:"SwitchStepItems,omitempty" xml:"SwitchStepItems,omitempty" type:"Repeated"`
+	// The IDs of nodes on which to simulate a fault.
+	//
+	// > For a node-level fault simulation, specify the ID of a single node. For an availability zone-level fault simulation, you can either omit this parameter or specify the IDs of all nodes in the zone.
+	DBNodeCrashList []*string `json:"DBNodeCrashList,omitempty" xml:"DBNodeCrashList,omitempty" type:"Repeated"`
+	// The time when the fault simulation was complete. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format and is displayed in UTC.
+	//
+	// example:
+	//
+	// 2025-02-10T02:25:00Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The time when the system event was complete. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format and is displayed in UTC.
+	//
+	// example:
+	//
+	// 2025-04-19T02:12:00Z
+	EventFinishTime *string `json:"EventFinishTime,omitempty" xml:"EventFinishTime,omitempty"`
+	// The time when the system event started. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format and is displayed in UTC.
+	//
+	// example:
+	//
+	// 2025-04-19T01:12:00Z
+	EventStartTime *string `json:"EventStartTime,omitempty" xml:"EventStartTime,omitempty"`
+	// The fault injection method. Valid values:
+	//
+	// - CrashSQLInjection: Injects a fault into the instance by using `Crash SQL`.
+	//
+	// example:
+	//
+	// CrashSQLInjection
+	FaultInjectionType *string `json:"FaultInjectionType,omitempty" xml:"FaultInjectionType,omitempty"`
+	// The fault simulation record ID.
+	//
+	// example:
+	//
+	// 23
+	SimulateListId *string `json:"SimulateListId,omitempty" xml:"SimulateListId,omitempty"`
+	// The fault simulation mode.
+	//
+	// example:
+	//
+	// 0
+	SimulateMode *string `json:"SimulateMode,omitempty" xml:"SimulateMode,omitempty"`
+	// The fault simulation status. Valid values:
+	//
+	// - **0**: Pending
+	//
+	// - **1**: Success
+	//
+	// - **2**: Running
+	//
+	// - **3**: Failed
+	//
+	// - **4**: Aborted
+	//
+	// - **5**: Awaiting rollback
+	//
+	// example:
+	//
+	// 2
+	SimulateStatus *string `json:"SimulateStatus,omitempty" xml:"SimulateStatus,omitempty"`
+	// The fault simulation task ID.
+	//
+	// example:
+	//
+	// 23
+	SimulateTaskId *string `json:"SimulateTaskId,omitempty" xml:"SimulateTaskId,omitempty"`
+	// The time when the fault simulation started. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format and is displayed in UTC.
+	//
+	// example:
+	//
+	// 2025-02-25T01:05:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// A list of fault simulation logs.
+	SwitchLogItems []*DescribeDBLogFilesResponseBodySwitchListItemsSwitchLogItems `json:"SwitchLogItems,omitempty" xml:"SwitchLogItems,omitempty" type:"Repeated"`
+	// A list of failover steps.
+	SwitchStepItems []*DescribeDBLogFilesResponseBodySwitchListItemsSwitchStepItems `json:"SwitchStepItems,omitempty" xml:"SwitchStepItems,omitempty" type:"Repeated"`
 }
 
 func (s DescribeDBLogFilesResponseBodySwitchListItems) String() string {
@@ -474,14 +612,77 @@ func (s *DescribeDBLogFilesResponseBodySwitchListItems) Validate() error {
 }
 
 type DescribeDBLogFilesResponseBodySwitchListItemsSwitchLogItems struct {
-	DBInstanceId    *string                                                                       `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	DstDbType       *string                                                                       `json:"DstDbType,omitempty" xml:"DstDbType,omitempty"`
-	EventFinishTime *string                                                                       `json:"EventFinishTime,omitempty" xml:"EventFinishTime,omitempty"`
-	EventStartTime  *string                                                                       `json:"EventStartTime,omitempty" xml:"EventStartTime,omitempty"`
-	SimulateListId  *string                                                                       `json:"SimulateListId,omitempty" xml:"SimulateListId,omitempty"`
-	SimulateLogId   *string                                                                       `json:"SimulateLogId,omitempty" xml:"SimulateLogId,omitempty"`
-	SimulateStatus  *string                                                                       `json:"SimulateStatus,omitempty" xml:"SimulateStatus,omitempty"`
-	SrcDbType       *string                                                                       `json:"SrcDbType,omitempty" xml:"SrcDbType,omitempty"`
+	// The cluster ID.
+	//
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of your clusters, including the cluster IDs.
+	//
+	// example:
+	//
+	// pc-*************
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The destination database type. Valid values:
+	//
+	// - **PolarDBMySQL**: A major version upgrade of PolarDB for MySQL.
+	//
+	// - **RDS**: A migration from RDS to PolarDB for MySQL.
+	//
+	// example:
+	//
+	// PolarDBMySQL
+	DstDbType *string `json:"DstDbType,omitempty" xml:"DstDbType,omitempty"`
+	// The time when the system event was complete. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format and is displayed in UTC.
+	//
+	// example:
+	//
+	// 2025-04-19T02:12:00Z
+	EventFinishTime *string `json:"EventFinishTime,omitempty" xml:"EventFinishTime,omitempty"`
+	// The time when the system event started. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format and is displayed in UTC.
+	//
+	// example:
+	//
+	// 2025-04-19T01:12:00Z
+	EventStartTime *string `json:"EventStartTime,omitempty" xml:"EventStartTime,omitempty"`
+	// The simulation list ID.
+	//
+	// example:
+	//
+	// 96
+	SimulateListId *string `json:"SimulateListId,omitempty" xml:"SimulateListId,omitempty"`
+	// The simulation log ID.
+	//
+	// example:
+	//
+	// 23
+	SimulateLogId *string `json:"SimulateLogId,omitempty" xml:"SimulateLogId,omitempty"`
+	// The fault simulation status. Valid values:
+	//
+	// - **0**: Pending
+	//
+	// - **1**: Success
+	//
+	// - **2**: Running
+	//
+	// - **3**: Failed
+	//
+	// - **4**: Aborted
+	//
+	// - **5**: Awaiting rollback
+	//
+	// example:
+	//
+	// 1
+	SimulateStatus *string `json:"SimulateStatus,omitempty" xml:"SimulateStatus,omitempty"`
+	// The source database type. Valid values:
+	//
+	// - **PolarDBMySQL**: A major version upgrade of PolarDB for MySQL.
+	//
+	// - **RDS**: A migration from RDS to PolarDB for MySQL.
+	//
+	// example:
+	//
+	// PolarDBMySQL
+	SrcDbType *string `json:"SrcDbType,omitempty" xml:"SrcDbType,omitempty"`
+	// A list of fault simulation steps.
 	SwitchStepItems []*DescribeDBLogFilesResponseBodySwitchListItemsSwitchLogItemsSwitchStepItems `json:"SwitchStepItems,omitempty" xml:"SwitchStepItems,omitempty" type:"Repeated"`
 }
 
@@ -588,12 +789,52 @@ func (s *DescribeDBLogFilesResponseBodySwitchListItemsSwitchLogItems) Validate()
 }
 
 type DescribeDBLogFilesResponseBodySwitchListItemsSwitchLogItemsSwitchStepItems struct {
-	EndTime       *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	IsSuccess     *string `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The time when the step was complete. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format and is displayed in UTC.
+	//
+	// example:
+	//
+	// 2025-08-14T02:07:00Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Indicates whether the step was successful. Valid values:
+	//
+	// - `true`: The step was successful.
+	//
+	// - `false`: The step failed.
+	//
+	// example:
+	//
+	// true
+	IsSuccess *string `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The fault simulation phase. Valid values:
+	//
+	// - **PolarDB.MySQL.FaultSimulate.Phase.FAULT_INJECTION**: The fault injection phase.
+	//
+	// - **PolarDB.MySQL.FaultSimulate.Phase.RECOVERY**: The recovery phase.
+	//
+	// - **PolarDB.MySQL.FaultSimulate.Phase.POST_PROCESS**: The post-processing phase.
+	//
+	// example:
+	//
+	// PolarDB.MySQL.FaultSimulate.Phase.FAULT_INJECTION
 	SimulatePhase *string `json:"SimulatePhase,omitempty" xml:"SimulatePhase,omitempty"`
-	StartTime     *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	StepName      *string `json:"StepName,omitempty" xml:"StepName,omitempty"`
-	TimeCost      *string `json:"TimeCost,omitempty" xml:"TimeCost,omitempty"`
+	// The time when the step started. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format and is displayed in UTC.
+	//
+	// example:
+	//
+	// 2025-04-19T02:12:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The name of the current step. You can call the [DescribeHistoryTasks](https://help.aliyun.com/document_detail/2400077.html) operation to query the current step of a specified task. A common value is **do_pause**, which indicates that the system waits for a specified period of time.
+	//
+	// example:
+	//
+	// init_task_info
+	StepName *string `json:"StepName,omitempty" xml:"StepName,omitempty"`
+	// The duration of the step in milliseconds.
+	//
+	// example:
+	//
+	// 1000
+	TimeCost *string `json:"TimeCost,omitempty" xml:"TimeCost,omitempty"`
 }
 
 func (s DescribeDBLogFilesResponseBodySwitchListItemsSwitchLogItemsSwitchStepItems) String() string {
@@ -663,13 +904,60 @@ func (s *DescribeDBLogFilesResponseBodySwitchListItemsSwitchLogItemsSwitchStepIt
 }
 
 type DescribeDBLogFilesResponseBodySwitchListItemsSwitchStepItems struct {
-	DBNodeId      *string `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty"`
-	EndTime       *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	IsSuccess     *string `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The cluster node ID.
+	//
+	// > This parameter is returned only when the `Key` parameter in the request is not set to `PolarDBDiskUsage`.
+	//
+	// example:
+	//
+	// pi-*************
+	DBNodeId *string `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty"`
+	// The time when the step was complete. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format and is displayed in UTC.
+	//
+	// example:
+	//
+	// 2025-07-23T02:30:00Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Indicates whether the step was successful. Valid values:
+	//
+	// - `true`: The step was successful.
+	//
+	// - `false`: The step failed.
+	//
+	// example:
+	//
+	// true
+	IsSuccess *string `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The fault simulation phase. Valid values:
+	//
+	// - **PolarDB.MySQL.FaultSimulate.Phase.FAULT_INJECTION**: The fault injection phase.
+	//
+	// - **PolarDB.MySQL.FaultSimulate.Phase.RECOVERY**: The recovery phase.
+	//
+	// - **PolarDB.MySQL.FaultSimulate.Phase.POST_PROCESS**: The post-processing phase.
+	//
+	// example:
+	//
+	// PolarDB.MySQL.FaultSimulate.Phase.FAULT_INJECTION
 	SimulatePhase *string `json:"SimulatePhase,omitempty" xml:"SimulatePhase,omitempty"`
-	StartTime     *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	StepName      *string `json:"StepName,omitempty" xml:"StepName,omitempty"`
-	TimeCost      *string `json:"TimeCost,omitempty" xml:"TimeCost,omitempty"`
+	// The time when the step started. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format and is displayed in UTC.
+	//
+	// example:
+	//
+	// 2025-07-16T02:12:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The name of the current step. You can call the [DescribeHistoryTasks](https://help.aliyun.com/document_detail/2400077.html) operation to query the current step of a specified task. A common value is **do_pause**, which indicates that the system waits for a specified period of time.
+	//
+	// example:
+	//
+	// init_task_info
+	StepName *string `json:"StepName,omitempty" xml:"StepName,omitempty"`
+	// The duration of the step in milliseconds.
+	//
+	// example:
+	//
+	// 1000
+	TimeCost *string `json:"TimeCost,omitempty" xml:"TimeCost,omitempty"`
 }
 
 func (s DescribeDBLogFilesResponseBodySwitchListItemsSwitchStepItems) String() string {
@@ -748,14 +1036,77 @@ func (s *DescribeDBLogFilesResponseBodySwitchListItemsSwitchStepItems) Validate(
 }
 
 type DescribeDBLogFilesResponseBodySwitchLogItems struct {
-	DBInstanceId    *string                                                        `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	DstDbType       *string                                                        `json:"DstDbType,omitempty" xml:"DstDbType,omitempty"`
-	EventFinishTime *string                                                        `json:"EventFinishTime,omitempty" xml:"EventFinishTime,omitempty"`
-	EventStartTime  *string                                                        `json:"EventStartTime,omitempty" xml:"EventStartTime,omitempty"`
-	SimulateListId  *string                                                        `json:"SimulateListId,omitempty" xml:"SimulateListId,omitempty"`
-	SimulateStatus  *string                                                        `json:"SimulateStatus,omitempty" xml:"SimulateStatus,omitempty"`
-	Simulatecode    *string                                                        `json:"Simulatecode,omitempty" xml:"Simulatecode,omitempty"`
-	SrcDbType       *string                                                        `json:"SrcDbType,omitempty" xml:"SrcDbType,omitempty"`
+	// The cluster ID.
+	//
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of your clusters, including the cluster IDs.
+	//
+	// example:
+	//
+	// pc-*************
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The destination database type. Valid values:
+	//
+	// - **PolarDBMySQL**: A major version upgrade of PolarDB for MySQL.
+	//
+	// - **RDS**: A migration from RDS to PolarDB for MySQL.
+	//
+	// example:
+	//
+	// PolarDBMySQL
+	DstDbType *string `json:"DstDbType,omitempty" xml:"DstDbType,omitempty"`
+	// The time when the system event was complete. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format and is displayed in UTC.
+	//
+	// example:
+	//
+	// 2025-04-19T02:12:00Z
+	EventFinishTime *string `json:"EventFinishTime,omitempty" xml:"EventFinishTime,omitempty"`
+	// The time when the system event started. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format and is displayed in UTC.
+	//
+	// example:
+	//
+	// 2025-04-19T01:12:00Z
+	EventStartTime *string `json:"EventStartTime,omitempty" xml:"EventStartTime,omitempty"`
+	// The simulation list ID.
+	//
+	// example:
+	//
+	// 231
+	SimulateListId *string `json:"SimulateListId,omitempty" xml:"SimulateListId,omitempty"`
+	// The fault simulation status. Valid values:
+	//
+	// - **0**: Pending
+	//
+	// - **1**: Success
+	//
+	// - **2**: Running
+	//
+	// - **3**: Failed
+	//
+	// - **4**: Aborted
+	//
+	// - **5**: Awaiting rollback
+	//
+	// example:
+	//
+	// 1
+	SimulateStatus *string `json:"SimulateStatus,omitempty" xml:"SimulateStatus,omitempty"`
+	// The status code of the fault simulation.
+	//
+	// example:
+	//
+	// 0
+	Simulatecode *string `json:"Simulatecode,omitempty" xml:"Simulatecode,omitempty"`
+	// The source database type. Valid values:
+	//
+	// - **PolarDBMySQL**: A major version upgrade of PolarDB for MySQL.
+	//
+	// - **RDS**: A migration from RDS to PolarDB for MySQL.
+	//
+	// example:
+	//
+	// PolarDBMySQL
+	SrcDbType *string `json:"SrcDbType,omitempty" xml:"SrcDbType,omitempty"`
+	// A list of failover steps.
 	SwitchStepItems []*DescribeDBLogFilesResponseBodySwitchLogItemsSwitchStepItems `json:"SwitchStepItems,omitempty" xml:"SwitchStepItems,omitempty" type:"Repeated"`
 }
 
@@ -862,14 +1213,66 @@ func (s *DescribeDBLogFilesResponseBodySwitchLogItems) Validate() error {
 }
 
 type DescribeDBLogFilesResponseBodySwitchLogItemsSwitchStepItems struct {
-	DBNodeId      *string `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty"`
-	EndTime       *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	IsSuccess     *string `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The node ID.
+	//
+	// > You must specify either the `DBNodeId` or `DBClusterId` parameter. You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of your clusters, including the node IDs.
+	//
+	// example:
+	//
+	// pi-*************
+	DBNodeId *string `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty"`
+	// The time when the step was complete. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format and is displayed in UTC.
+	//
+	// example:
+	//
+	// 2025-03-27T02:27:00Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Indicates whether the step was successful. Valid values:
+	//
+	// - `true`: The step was successful.
+	//
+	// - `false`: The step failed.
+	//
+	// example:
+	//
+	// true
+	IsSuccess *string `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The fault simulation phase. Valid values:
+	//
+	// - **PolarDB.MySQL.FaultSimulate.Phase.FAULT_INJECTION**: The fault injection phase.
+	//
+	// - **PolarDB.MySQL.FaultSimulate.Phase.RECOVERY**: The recovery phase.
+	//
+	// - **PolarDB.MySQL.FaultSimulate.Phase.POST_PROCESS**: The post-processing phase.
+	//
+	// example:
+	//
+	// PolarDB.MySQL.FaultSimulate.Phase.FAULT_INJECTION
 	SimulatePhase *string `json:"SimulatePhase,omitempty" xml:"SimulatePhase,omitempty"`
-	StartTime     *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	StepMsg       *string `json:"StepMsg,omitempty" xml:"StepMsg,omitempty"`
-	StepName      *string `json:"StepName,omitempty" xml:"StepName,omitempty"`
-	TimeCost      *string `json:"TimeCost,omitempty" xml:"TimeCost,omitempty"`
+	// The time when the step started. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format and is displayed in UTC.
+	//
+	// example:
+	//
+	// 2024-10-21T02:12:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// A message about the execution status of the step.
+	//
+	// example:
+	//
+	// This step exec success
+	StepMsg *string `json:"StepMsg,omitempty" xml:"StepMsg,omitempty"`
+	// The name of the step.
+	//
+	// example:
+	//
+	// init_task_info
+	StepName *string `json:"StepName,omitempty" xml:"StepName,omitempty"`
+	// The duration of the step in milliseconds.
+	//
+	// example:
+	//
+	// 1000
+	TimeCost *string `json:"TimeCost,omitempty" xml:"TimeCost,omitempty"`
 }
 
 func (s DescribeDBLogFilesResponseBodySwitchLogItemsSwitchStepItems) String() string {

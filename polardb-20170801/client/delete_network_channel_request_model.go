@@ -32,16 +32,22 @@ type iDeleteNetworkChannelRequest interface {
 }
 
 type DeleteNetworkChannelRequest struct {
+	// The name of the channel.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ch4
 	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
+	// A client token that ensures request idempotence. The client generates this token. It must be unique across requests. The token is case-sensitive and can contain up to 64 ASCII characters.
+	//
 	// example:
 	//
 	// 6000170000591aed949d0f54a343f1a4233c1e7d1c5c******
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The name of the target instance.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -50,16 +56,22 @@ type DeleteNetworkChannelRequest struct {
 	DBClusterId  *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	//
 	// example:
 	//
 	// rg-************
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The ID of the virtual private cloud (VPC) where the endpoint is located.
+	//
 	// example:
 	//
 	// vpc-bp1qpo0kug3a20qqe****

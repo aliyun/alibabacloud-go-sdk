@@ -26,32 +26,44 @@ type iEnablePolarClawChannelResponseBody interface {
 }
 
 type EnablePolarClawChannelResponseBody struct {
+  // The ID of the application.
+  // 
   // example:
   // 
   // pa-**************
   ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+  // The ID of the enabled channel.
+  // 
   // example:
   // 
   // feishu
   ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+  // The response status code.
+  // 
   // example:
   // 
   // 200
   Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+  // The message returned in the response.
+  // 
   // example:
   // 
   // successful
   Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+  // Indicates whether the operation was successful.
+  // 
   // example:
   // 
   // true
   Ok *bool `json:"Ok,omitempty" xml:"Ok,omitempty"`
-  // Id of the request
+  // The ID of the request.
   // 
   // example:
   // 
   // 3E5CD764-FCCA-5C9C-838E-20E0DE84B2AF
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+  // Indicates whether the gateway was restarted.
+  // 
   // example:
   // 
   // true

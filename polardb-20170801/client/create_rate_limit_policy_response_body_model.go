@@ -18,15 +18,19 @@ type iCreateRateLimitPolicyResponseBody interface {
 }
 
 type CreateRateLimitPolicyResponseBody struct {
+	// The gateway instance ID.
+	//
 	// example:
 	//
 	// pg-xxxxxxxx
 	GwClusterId *string `json:"GwClusterId,omitempty" xml:"GwClusterId,omitempty"`
+	// The policy ID.
+	//
 	// example:
 	//
 	// 02eccf7c61cf4d05a543075ee907f3**
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

@@ -28,47 +28,51 @@ type iDescribeDBClusterParametersResponseBody interface {
 }
 
 type DescribeDBClusterParametersResponseBody struct {
-	// The ID of the cluster.
+	// The cluster ID.
 	//
 	// example:
 	//
 	// pc-bp1s826a1up******
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The database engine that the clusters runs. Valid values:
+	// The database type. Valid values:
 	//
-	// 	- **MySQL**
+	// - **MySQL**
 	//
-	// 	- **PostgreSQL**
+	// - **PostgreSQL**
 	//
-	// 	- **Oracle**
+	// - **Oracle**
 	//
 	// example:
 	//
 	// MySQL
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
-	// The version of the database engine.
+	// The database engine version.
 	//
-	// - Valid values for the MySQL database engine:
+	// Valid values for MySQL:
 	//
-	//   - **5.6**
+	// - **5.6**
 	//
-	//   - **5.7**
+	// - **5.7**
 	//
-	//   - **8.0**
+	// - **8.0**
 	//
-	// - Valid value for the PostgreSQL database engine:
+	// Valid values for PostgreSQL:
 	//
-	//   - **11**
+	// - **11**
 	//
-	//   - **14**
+	// - **14**
 	//
-	// - Valid value for the Oracle database engine:  **11**
+	// Valid values for Oracle:
+	//
+	// - **11**
+	//
+	// - **14**
 	//
 	// example:
 	//
 	// 5.6
 	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
-	// The cluster engine.
+	// The engine.
 	//
 	// example:
 	//
@@ -81,7 +85,7 @@ type DescribeDBClusterParametersResponseBody struct {
 	// 1
 	ParameterNumbers *string                                            `json:"ParameterNumbers,omitempty" xml:"ParameterNumbers,omitempty"`
 	Parameters       *DescribeDBClusterParametersResponseBodyParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

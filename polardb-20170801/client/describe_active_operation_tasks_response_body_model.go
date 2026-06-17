@@ -22,19 +22,36 @@ type iDescribeActiveOperationTasksResponseBody interface {
 }
 
 type DescribeActiveOperationTasksResponseBody struct {
+	// The list of O\\&M tasks.
 	Items []*DescribeActiveOperationTasksResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The page number. The value must be greater than 0 and cannot exceed the maximum value of the Integer data type. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page. Valid values:
+	//
+	// - **30**
+	//
+	// - **50**
+	//
+	// - **100**
+	//
+	// Default value: **30**.
+	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// FAF88508-D5F8-52B1-8824-262601769E31
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of task records returned.
+	//
 	// example:
 	//
 	// 1
@@ -108,93 +125,182 @@ func (s *DescribeActiveOperationTasksResponseBody) Validate() error {
 }
 
 type DescribeActiveOperationTasksResponseBodyItems struct {
+	// Indicates whether cancellation is allowed. Valid values:
+	//
+	// - 1: indicates that users are allowed to cancel the task.
+	//
+	// - 0: indicates that cancellation is not allowed.
+	//
 	// example:
 	//
 	// 0
 	AllowCancel *int64 `json:"AllowCancel,omitempty" xml:"AllowCancel,omitempty"`
+	// Indicates whether time modification is allowed. Valid values:
+	//
+	// - 1: indicates that users are allowed to modify the time.
+	//
+	// - 0: indicates that users are not allowed to modify the time.
+	//
 	// example:
 	//
 	// 0
 	AllowChange *int64 `json:"AllowChange,omitempty" xml:"AllowChange,omitempty"`
+	// The event level code. Valid values:
+	//
+	// - S1: system maintenance.
+	//
+	// - S0: threat fix.
+	//
 	// example:
 	//
 	// S0
 	ChangeLevel *string `json:"ChangeLevel,omitempty" xml:"ChangeLevel,omitempty"`
+	// The event level (English).
+	//
 	// example:
 	//
 	// System maintenance
 	ChangeLevelEn *string `json:"ChangeLevelEn,omitempty" xml:"ChangeLevelEn,omitempty"`
+	// The event level (Chinese).
+	//
+	// example:
+	//
+	// 系统运维
 	ChangeLevelZh *string `json:"ChangeLevelZh,omitempty" xml:"ChangeLevelZh,omitempty"`
+	// The creation time. Format: YYYY-MM-DDTHH:mm:ssZ.
+	//
 	// example:
 	//
 	// 2020-06-09T22:00:42Z
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The current zone.
+	//
 	// example:
 	//
 	// cn-beijing-h
 	CurrentAVZ *string `json:"CurrentAVZ,omitempty" xml:"CurrentAVZ,omitempty"`
+	// The cluster ID.
+	//
 	// example:
 	//
 	// pc-*****************
-	DBClusterId *string   `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	DBNodeIds   []*string `json:"DBNodeIds,omitempty" xml:"DBNodeIds,omitempty" type:"Repeated"`
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The list of node IDs.
+	DBNodeIds []*string `json:"DBNodeIds,omitempty" xml:"DBNodeIds,omitempty" type:"Repeated"`
+	// The database engine type. Valid values:
+	//
+	// - **MySQL**
+	//
+	// - **PostgreSQL**
+	//
+	// - **Oracle**
+	//
 	// example:
 	//
 	// MySQL
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
+	// The kernel version number.
+	//
 	// example:
 	//
 	// 8.0
 	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
+	// The latest deadline for the adjustable range of task execution time. Format: YYYY-MM-DDTHH:mm:ssZ.
+	//
 	// example:
 	//
 	// 2020-06-11T15:59:59Z
 	Deadline *string `json:"Deadline,omitempty" xml:"Deadline,omitempty"`
+	// The event impact.
+	//
 	// example:
 	//
 	// TransientDisconnection
 	Impact *string `json:"Impact,omitempty" xml:"Impact,omitempty"`
+	// The event impact (English).
+	//
 	// example:
 	//
 	// Transient instance disconnection
 	ImpactEn *string `json:"ImpactEn,omitempty" xml:"ImpactEn,omitempty"`
+	// The event impact (Chinese).
+	//
+	// example:
+	//
+	// 集群闪断
 	ImpactZh *string `json:"ImpactZh,omitempty" xml:"ImpactZh,omitempty"`
+	// The cluster alias or cluster comment.
+	//
 	// example:
 	//
 	// test
 	InsComment *string `json:"InsComment,omitempty" xml:"InsComment,omitempty"`
+	// The modification time. Format: YYYY-MM-DDTHH:mm:ssZ.
+	//
 	// example:
 	//
 	// 2020-06-09T22:00:42Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The preparation time required between the start time and the switch time. Format: HH:mm:ss.
+	//
 	// example:
 	//
 	// 04:00:00
 	PrepareInterval *string `json:"PrepareInterval,omitempty" xml:"PrepareInterval,omitempty"`
+	// The region code.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The execution result information.
+	//
 	// example:
 	//
 	// userCancel
 	ResultInfo *string `json:"ResultInfo,omitempty" xml:"ResultInfo,omitempty"`
+	// The time when the background task is executed. Format: YYYY-MM-DDTHH:mm:ssZ.
+	//
 	// example:
 	//
 	// 2023-05-19T02:48:17Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The task status. Valid values:
+	//
+	// - 0: indicates waiting for notification.
+	//
+	// - 1: indicates retry notification.
+	//
+	// - 2: indicates waiting for user-specified time.
+	//
+	// - 3: indicates waiting for processing.
+	//
+	// - 4: indicates in progress.
+	//
+	// - 5: indicates successfully completed.
+	//
+	// - 6: indicates failed.
+	//
+	// - 7: indicates canceled.
+	//
 	// example:
 	//
 	// 3
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The time when the background initiates the switch operation. Format: YYYY-MM-DDTHH:mm:ssZ.
+	//
 	// example:
 	//
 	// 2020-06-09T22:00:00Z
 	SwitchTime *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// 107202351
 	TaskId *int32 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The task parameters.
+	//
 	// example:
 	//
 	// {
@@ -203,14 +309,33 @@ type DescribeActiveOperationTasksResponseBodyItems struct {
 	//
 	// }
 	TaskParams *string `json:"TaskParams,omitempty" xml:"TaskParams,omitempty"`
+	// The type of the pending event task. Valid values:
+	//
+	// - **DatabaseSoftwareUpgrading**: database software upgrade.
+	//
+	// - **DatabaseHardwareMaintenance**: hardware maintenance and upgrade.
+	//
+	// - **DatabaseStorageUpgrading**: database storage upgrade.
+	//
+	// - **DatabaseProxyUpgrading**: proxy minor version upgrade.
+	//
+	// - **all**: returns all types of pending events.
+	//
 	// example:
 	//
 	// DatabaseSoftwareUpgrading
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// The task reason in English.
+	//
 	// example:
 	//
 	// Minor version update
 	TaskTypeEn *string `json:"TaskTypeEn,omitempty" xml:"TaskTypeEn,omitempty"`
+	// The task reason in Chinese.
+	//
+	// example:
+	//
+	// 小版本升级
 	TaskTypeZh *string `json:"TaskTypeZh,omitempty" xml:"TaskTypeZh,omitempty"`
 }
 

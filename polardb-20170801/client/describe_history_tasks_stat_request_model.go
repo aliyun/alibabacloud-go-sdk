@@ -40,27 +40,37 @@ type iDescribeHistoryTasksStatRequest interface {
 }
 
 type DescribeHistoryTasksStatRequest struct {
+	// The minimum running time. The query returns tasks with a running time greater than this value. Unit: seconds.
+	//
 	// example:
 	//
 	// 0
 	FromExecTime *int32 `json:"FromExecTime,omitempty" xml:"FromExecTime,omitempty"`
+	// The beginning of the time range to query. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2025-01-02T11:31:03Z
 	FromStartTime *string `json:"FromStartTime,omitempty" xml:"FromStartTime,omitempty"`
+	// The instance ID. This corresponds to the ins_name parameter. You can specify up to 30 instance IDs. Separate multiple IDs with commas (,).
+	//
 	// example:
 	//
 	// pc-2zed3m89cw***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg-************
@@ -68,22 +78,46 @@ type DescribeHistoryTasksStatRequest struct {
 	ResourceOwnerAccount *int64  `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The task status. Valid values:
+	//
+	// - **Scheduled**: The task is waiting to be executed.
+	//
+	// - **Running**: The task is running.
+	//
+	// - **Succeed**: The task is successful.
+	//
+	// - **Cancelling**: The task is being canceled.
+	//
+	// - **Canceled**: The task is canceled.
+	//
+	// - **Waiting**: The task is waiting for a scheduled time.
+	//
+	// To query tasks in multiple states, separate the states with commas (,). If you leave this parameter empty, tasks in all states are queried.
+	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The task ID. You can specify up to 30 task IDs. Separate multiple IDs with commas (,). If you leave this parameter empty, this parameter is not used as a filter.
+	//
 	// example:
 	//
 	// ec8c4723-eac5-4f12-becb-01ac08******
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The task type. This parameter is used to query tasks of a specific type. You can specify up to 30 task types. Separate multiple types with commas (,). If you leave this parameter empty, this parameter is not used as a filter.
+	//
 	// example:
 	//
 	// DatabaseProxyUpgrading
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// The maximum running time. The query returns tasks with a running time less than or equal to this value. Unit: seconds.
+	//
 	// example:
 	//
 	// 10
 	ToExecTime *int32 `json:"ToExecTime,omitempty" xml:"ToExecTime,omitempty"`
+	// The end of the time range to query. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
 	// This parameter is required.
 	//
 	// example:

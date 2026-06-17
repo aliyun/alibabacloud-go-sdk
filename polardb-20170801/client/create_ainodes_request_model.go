@@ -16,11 +16,16 @@ type iCreateAINodesRequest interface {
 }
 
 type CreateAINodesRequest struct {
+	// The cluster ID.
+	//
+	// > Call the [DescribeAIDBClusters](https://api.aliyun.com/api/polardb/2017-08-01/DescribeAIDBClusters) operation to query information about all clusters in your account, including cluster IDs.
+	//
 	// example:
 	//
 	// pm-xxxxxx
-	DBClusterId *string                        `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	DBNodes     []*CreateAINodesRequestDBNodes `json:"DBNodes,omitempty" xml:"DBNodes,omitempty" type:"Repeated"`
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The information about the nodes to add.
+	DBNodes []*CreateAINodesRequestDBNodes `json:"DBNodes,omitempty" xml:"DBNodes,omitempty" type:"Repeated"`
 }
 
 func (s CreateAINodesRequest) String() string {
@@ -63,6 +68,8 @@ func (s *CreateAINodesRequest) Validate() error {
 }
 
 type CreateAINodesRequestDBNodes struct {
+	// The node specifications.
+	//
 	// example:
 	//
 	// polar.mysql.g4.xlarge.gu10

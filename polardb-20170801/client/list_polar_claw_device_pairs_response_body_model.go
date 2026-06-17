@@ -24,21 +24,29 @@ type iListPolarClawDevicePairsResponseBody interface {
 }
 
 type ListPolarClawDevicePairsResponseBody struct {
+	// The application ID.
+	//
 	// example:
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The status code of the response.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// successful
-	Message *string                                        `json:"Message,omitempty" xml:"Message,omitempty"`
-	Paired  []*ListPolarClawDevicePairsResponseBodyPaired  `json:"Paired,omitempty" xml:"Paired,omitempty" type:"Repeated"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// A list of paired devices.
+	Paired []*ListPolarClawDevicePairsResponseBodyPaired `json:"Paired,omitempty" xml:"Paired,omitempty" type:"Repeated"`
+	// A list of pending pairing requests.
 	Pending []*ListPolarClawDevicePairsResponseBodyPending `json:"Pending,omitempty" xml:"Pending,omitempty" type:"Repeated"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -131,42 +139,61 @@ func (s *ListPolarClawDevicePairsResponseBody) Validate() error {
 }
 
 type ListPolarClawDevicePairsResponseBodyPaired struct {
+	// The client ID.
+	//
 	// example:
 	//
 	// cli
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The client mode.
+	//
 	// example:
 	//
 	// cli
 	ClientMode *string `json:"ClientMode,omitempty" xml:"ClientMode,omitempty"`
+	// The time when the device pairing was created, in Unix milliseconds.
+	//
 	// example:
 	//
 	// 1778659807727
 	CreatedAtMs *int64 `json:"CreatedAtMs,omitempty" xml:"CreatedAtMs,omitempty"`
+	// The device family.
+	//
 	// example:
 	//
 	// empty
 	DeviceFamily *string `json:"DeviceFamily,omitempty" xml:"DeviceFamily,omitempty"`
+	// The unique device ID.
+	//
 	// example:
 	//
 	// f92620d6bea04f65d48cf603c57b367c97e837c1ab9f6d78f741f477e99d857c
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// The display name of the device.
+	//
 	// example:
 	//
 	// empty
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The time when the device was last active, in Unix milliseconds.
+	//
 	// example:
 	//
 	// 1778659807727
 	LastSeenAtMs *int64 `json:"LastSeenAtMs,omitempty" xml:"LastSeenAtMs,omitempty"`
+	// The operating system.
+	//
 	// example:
 	//
 	// linux
 	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	// The device role.
+	//
 	// example:
 	//
 	// operator
-	Role   *string   `json:"Role,omitempty" xml:"Role,omitempty"`
+	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// The list of permission scopes.
 	Scopes []*string `json:"Scopes,omitempty" xml:"Scopes,omitempty" type:"Repeated"`
 }
 
@@ -273,56 +300,84 @@ func (s *ListPolarClawDevicePairsResponseBodyPaired) Validate() error {
 }
 
 type ListPolarClawDevicePairsResponseBodyPending struct {
+	// The client ID.
+	//
 	// example:
 	//
 	// cli
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The client mode.
+	//
 	// example:
 	//
 	// cli
 	ClientMode *string `json:"ClientMode,omitempty" xml:"ClientMode,omitempty"`
+	// The device family.
+	//
 	// example:
 	//
 	// server
 	DeviceFamily *string `json:"DeviceFamily,omitempty" xml:"DeviceFamily,omitempty"`
+	// The unique device ID.
+	//
 	// example:
 	//
 	// device-784x37k0vko734fk
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// The display name of the device.
+	//
 	// example:
 	//
 	// test
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// Whether the request is to repair an existing pairing.
+	//
 	// example:
 	//
 	// false
 	IsRepair *bool `json:"IsRepair,omitempty" xml:"IsRepair,omitempty"`
+	// The pairing request ID.
+	//
 	// example:
 	//
 	// test-1778647932986
 	PairRequestId *string `json:"PairRequestId,omitempty" xml:"PairRequestId,omitempty"`
+	// The operating system.
+	//
 	// example:
 	//
 	// linux
 	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	// The Ed25519 public key.
+	//
 	// example:
 	//
 	// test-pubkey-base64url
 	PublicKey *string `json:"PublicKey,omitempty" xml:"PublicKey,omitempty"`
+	// The requester\\"s remote IP address.
+	//
 	// example:
 	//
 	// 127.0.0.1
 	RemoteIp *string `json:"RemoteIp,omitempty" xml:"RemoteIp,omitempty"`
+	// The device role.
+	//
 	// example:
 	//
 	// operator
-	Role   *string   `json:"Role,omitempty" xml:"Role,omitempty"`
-	Roles  []*string `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
+	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// The list of roles.
+	Roles []*string `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
+	// The list of permission scopes.
 	Scopes []*string `json:"Scopes,omitempty" xml:"Scopes,omitempty" type:"Repeated"`
+	// Whether this is a silent pairing.
+	//
 	// example:
 	//
 	// false
 	Silent *bool `json:"Silent,omitempty" xml:"Silent,omitempty"`
+	// The timestamp of the pairing request, in Unix milliseconds.
+	//
 	// example:
 	//
 	// 1778660347550

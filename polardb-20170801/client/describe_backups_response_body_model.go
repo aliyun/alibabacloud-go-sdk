@@ -31,23 +31,35 @@ type DescribeBackupsResponseBody struct {
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of records on the current page.
 	//
 	// example:
 	//
 	// 1
 	PageRecordCount *string `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 24A1990B-4F6E-482B-B8CB-75C612******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total size of level-2 backups in the specified region, in bytes.
+	//
+	// > - Supported only for storage classes PSL4 and PSL5.
+	//
+	// >
+	//
+	// > - Supported only for clusters with the level-2 backup feature enabled.
+	//
+	// >
+	//
+	// > - If this field is not returned, the level-2 backup size is 0.
+	//
 	// example:
 	//
 	// 4639948800
 	TotalLevel2BackupSize *string `json:"TotalLevel2BackupSize,omitempty" xml:"TotalLevel2BackupSize,omitempty"`
-	// The total number of returned entries.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -161,20 +173,21 @@ func (s *DescribeBackupsResponseBodyItems) Validate() error {
 }
 
 type DescribeBackupsResponseBodyItemsBackup struct {
-	BackupEndTime    *string `json:"BackupEndTime,omitempty" xml:"BackupEndTime,omitempty"`
-	BackupId         *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
-	BackupMethod     *string `json:"BackupMethod,omitempty" xml:"BackupMethod,omitempty"`
-	BackupMode       *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
-	BackupSetSize    *string `json:"BackupSetSize,omitempty" xml:"BackupSetSize,omitempty"`
-	BackupStartTime  *string `json:"BackupStartTime,omitempty" xml:"BackupStartTime,omitempty"`
-	BackupStatus     *string `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
-	BackupType       *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
-	BackupsLevel     *string `json:"BackupsLevel,omitempty" xml:"BackupsLevel,omitempty"`
-	ConsistentTime   *string `json:"ConsistentTime,omitempty" xml:"ConsistentTime,omitempty"`
-	DBClusterId      *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	ExpectExpireTime *string `json:"ExpectExpireTime,omitempty" xml:"ExpectExpireTime,omitempty"`
-	ExpectExpireType *string `json:"ExpectExpireType,omitempty" xml:"ExpectExpireType,omitempty"`
-	IsAvail          *string `json:"IsAvail,omitempty" xml:"IsAvail,omitempty"`
+	BackupEndTime          *string `json:"BackupEndTime,omitempty" xml:"BackupEndTime,omitempty"`
+	BackupId               *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
+	BackupMethod           *string `json:"BackupMethod,omitempty" xml:"BackupMethod,omitempty"`
+	BackupMode             *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
+	BackupSetSize          *string `json:"BackupSetSize,omitempty" xml:"BackupSetSize,omitempty"`
+	BackupStartTime        *string `json:"BackupStartTime,omitempty" xml:"BackupStartTime,omitempty"`
+	BackupStatus           *string `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
+	BackupType             *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	BackupsLevel           *string `json:"BackupsLevel,omitempty" xml:"BackupsLevel,omitempty"`
+	ConsistentTime         *string `json:"ConsistentTime,omitempty" xml:"ConsistentTime,omitempty"`
+	DBClusterId            *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	ExpectExpireTime       *string `json:"ExpectExpireTime,omitempty" xml:"ExpectExpireTime,omitempty"`
+	ExpectExpireType       *string `json:"ExpectExpireType,omitempty" xml:"ExpectExpireType,omitempty"`
+	IsAvail                *string `json:"IsAvail,omitempty" xml:"IsAvail,omitempty"`
+	TableRestoreMetaStatus *string `json:"TableRestoreMetaStatus,omitempty" xml:"TableRestoreMetaStatus,omitempty"`
 }
 
 func (s DescribeBackupsResponseBodyItemsBackup) String() string {
@@ -239,6 +252,10 @@ func (s *DescribeBackupsResponseBodyItemsBackup) GetExpectExpireType() *string {
 
 func (s *DescribeBackupsResponseBodyItemsBackup) GetIsAvail() *string {
 	return s.IsAvail
+}
+
+func (s *DescribeBackupsResponseBodyItemsBackup) GetTableRestoreMetaStatus() *string {
+	return s.TableRestoreMetaStatus
 }
 
 func (s *DescribeBackupsResponseBodyItemsBackup) SetBackupEndTime(v string) *DescribeBackupsResponseBodyItemsBackup {
@@ -308,6 +325,11 @@ func (s *DescribeBackupsResponseBodyItemsBackup) SetExpectExpireType(v string) *
 
 func (s *DescribeBackupsResponseBodyItemsBackup) SetIsAvail(v string) *DescribeBackupsResponseBodyItemsBackup {
 	s.IsAvail = &v
+	return s
+}
+
+func (s *DescribeBackupsResponseBodyItemsBackup) SetTableRestoreMetaStatus(v string) *DescribeBackupsResponseBodyItemsBackup {
+	s.TableRestoreMetaStatus = &v
 	return s
 }
 

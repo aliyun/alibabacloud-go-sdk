@@ -30,7 +30,7 @@ type iModifyGlobalSecurityIPGroupRelationRequest interface {
 }
 
 type ModifyGlobalSecurityIPGroupRelationRequest struct {
-	// The ID of the cluster.
+	// The cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type ModifyGlobalSecurityIPGroupRelationRequest struct {
 	//
 	// pc-*****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The ID of the IP whitelist template.
+	// The ID of the IP address whitelist template.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +56,7 @@ type ModifyGlobalSecurityIPGroupRelationRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//

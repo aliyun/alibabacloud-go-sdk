@@ -28,33 +28,68 @@ type iDescribeBudgetPoliciesRequest interface {
 }
 
 type DescribeBudgetPoliciesRequest struct {
+	// The ID of the consumer group or user. This parameter is required if BudgetDimensionType is set to ConsumerGroup or Consumer.
+	//
 	// example:
 	//
 	// cg-p3gk2oh55c**
 	BudgetDimensionRefId *string `json:"BudgetDimensionRefId,omitempty" xml:"BudgetDimensionRefId,omitempty"`
+	// The policy type. Valid values:
+	//
+	// - **ConsumerGroup**: The policy applies to a consumer group.
+	//
+	// - **Consumer**: The policy applies to a user.
+	//
 	// example:
 	//
 	// ConsumerGroup
 	BudgetDimensionType *string `json:"BudgetDimensionType,omitempty" xml:"BudgetDimensionType,omitempty"`
+	// The budget policy ID.
+	//
 	// example:
 	//
 	// 023aacc1effc4b56bb154bfbec6baxxx
 	BudgetPolicyId *string `json:"BudgetPolicyId,omitempty" xml:"BudgetPolicyId,omitempty"`
+	// The gateway instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pg-xxxxxxx
 	GwClusterId *string `json:"GwClusterId,omitempty" xml:"GwClusterId,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values:
+	//
+	// - **30**
+	//
+	// - **50**
+	//
+	// - **100**
+	//
+	// The default value is **30**.
+	//
 	// example:
 	//
 	// 30
-	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The policy status. Valid values:
+	//
+	// - **Enabled**
+	//
+	// - **Disabled**
+	//
 	// example:
 	//
 	// Enabled

@@ -20,20 +20,35 @@ type iUpgradePolarClawSkillsRequest interface {
 }
 
 type UpgradePolarClawSkillsRequest struct {
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The application type.
+	//
+	// > You can omit this parameter when you first call this operation.
+	//
 	// example:
 	//
 	// polarclaw
 	ApplicationType *string `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
+	// The region ID.
+	//
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query the regions of all clusters in your account.
+	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The upgrade method.
+	//
+	// example:
+	//
+	// Manual
 	UpgradeMethod *string `json:"UpgradeMethod,omitempty" xml:"UpgradeMethod,omitempty"`
 }
 

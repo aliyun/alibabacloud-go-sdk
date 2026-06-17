@@ -26,32 +26,44 @@ type iEnablePolarClawPluginResponseBody interface {
 }
 
 type EnablePolarClawPluginResponseBody struct {
+  // The ID of the application.
+  // 
   // example:
   // 
   // pa-**************
   ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+  // The response status code.
+  // 
   // example:
   // 
   // 200
   Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+  // The response message.
+  // 
   // example:
   // 
   // successful
   Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+  // Indicates whether the request was successful.
+  // 
   // example:
   // 
   // true
   Ok *bool `json:"Ok,omitempty" xml:"Ok,omitempty"`
+  // The ID of the plugin that was enabled.
+  // 
   // example:
   // 
   // openclaw-lark
   PluginId *string `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
-  // Id of the request
+  // The ID of the request.
   // 
   // example:
   // 
   // 7F2007D3-7E74-4ECB-89A8-BF130D******
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+  // Indicates whether the gateway was restarted.
+  // 
   // example:
   // 
   // true

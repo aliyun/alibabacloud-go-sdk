@@ -22,7 +22,7 @@ type iDescribeLicenseOrderDetailsRequest interface {
 }
 
 type DescribeLicenseOrderDetailsRequest struct {
-	// The Alibaba Cloud order ID (or virtual order ID).
+	// The ID of the Alibaba Cloud order or virtual order.
 	//
 	// This parameter is required.
 	//

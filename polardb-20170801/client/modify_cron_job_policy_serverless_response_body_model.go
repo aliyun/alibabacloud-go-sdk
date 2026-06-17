@@ -14,7 +14,11 @@ type iModifyCronJobPolicyServerlessResponseBody interface {
 }
 
 type ModifyCronJobPolicyServerlessResponseBody struct {
-	// Id of the request
+	// The request ID.
+	//
+	// example:
+	//
+	// D1401250-910B-57A6-8A6A-D9988A62B1CD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

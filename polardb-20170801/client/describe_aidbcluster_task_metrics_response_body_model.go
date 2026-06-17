@@ -32,31 +32,46 @@ type iDescribeAIDBClusterTaskMetricsResponseBody interface {
 }
 
 type DescribeAIDBClusterTaskMetricsResponseBody struct {
+	// The cluster ID.
+	//
 	// example:
 	//
 	// pm-2zejpr***
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The end time of the query. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format in UTC.
+	//
 	// example:
 	//
 	// 2026-01-15T15:00:00Z
-	EndTime *string                                          `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Items   *DescribeAIDBClusterTaskMetricsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The list.
+	Items *DescribeAIDBClusterTaskMetricsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	// The metric type.
+	//
 	// example:
 	//
 	// all
 	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
+	// The page number of the returned page. The default value is 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The total number of entries that match the query conditions. This parameter is optional and is not returned by default.
+	//
 	// example:
 	//
 	// 5
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	// The maximum number of entries returned for the current request.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the associated PolarDB cluster.
+	//
 	// example:
 	//
 	// pc-2zejpr***
@@ -67,6 +82,8 @@ type DescribeAIDBClusterTaskMetricsResponseBody struct {
 	//
 	// 5E71541A-6007-4DCC-A38A-F872C31FEB45
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The start time of the query. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format in UTC.
+	//
 	// example:
 	//
 	// 2026-01-15T14:00:00Z
@@ -181,6 +198,7 @@ func (s *DescribeAIDBClusterTaskMetricsResponseBody) Validate() error {
 }
 
 type DescribeAIDBClusterTaskMetricsResponseBodyItems struct {
+	// The list of metrics.
 	SlsMetricsItems []*DescribeAIDBClusterTaskMetricsResponseBodyItemsSlsMetricsItems `json:"SlsMetricsItems,omitempty" xml:"SlsMetricsItems,omitempty" type:"Repeated"`
 }
 
@@ -215,30 +233,44 @@ func (s *DescribeAIDBClusterTaskMetricsResponseBodyItems) Validate() error {
 }
 
 type DescribeAIDBClusterTaskMetricsResponseBodyItemsSlsMetricsItems struct {
+	// The current step.
+	//
 	// example:
 	//
 	// 21
 	CurrentStep *int32 `json:"CurrentStep,omitempty" xml:"CurrentStep,omitempty"`
+	// The epoch.
+	//
 	// example:
 	//
 	// 0.23
 	Epoch *float64 `json:"Epoch,omitempty" xml:"Epoch,omitempty"`
+	// The total number of steps.
+	//
 	// example:
 	//
 	// 90
 	GlobalStep *int32 `json:"GlobalStep,omitempty" xml:"GlobalStep,omitempty"`
+	// The log time.
+	//
 	// example:
 	//
 	// 2026-01-15T14:16:49.52140317Z
 	LogTime *string `json:"LogTime,omitempty" xml:"LogTime,omitempty"`
+	// The metric details.
+	//
 	// example:
 	//
 	// {"memory(GiB)":"xxx"}
 	Metric map[string]interface{} `json:"Metric,omitempty" xml:"Metric,omitempty"`
+	// The metric type.
+	//
 	// example:
 	//
 	// train
 	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
+	// The specific point in time when the monitoring metric was collected. The value is a UNIX timestamp. Unit: seconds.
+	//
 	// example:
 	//
 	// 1742090703

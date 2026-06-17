@@ -30,50 +30,50 @@ type iDescribeSlowLogsResponseBody interface {
 }
 
 type DescribeSlowLogsResponseBody struct {
-	// The ID of cluster.
+	// The cluster ID.
 	//
 	// example:
 	//
 	// pc-****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The end date of the query.
+	// The end time of the query.
 	//
 	// example:
 	//
 	// 2021-05-30Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The type of the database engine.
+	// The database engine.
 	//
 	// example:
 	//
 	// polardb_mysql
 	Engine *string                            `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	Items  *DescribeSlowLogsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	// The number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 3
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of SQL statements that are returned on the current page.
+	// The number of SQL statements on the current page.
 	//
 	// example:
 	//
 	// 6
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 2553A660-E4EB-4AF4-A402-8AFF70A49143
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The start date of the query.
+	// The start time of the query.
 	//
 	// example:
 	//
 	// 2021-05-01Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The total number of returned entries.
+	// The total number of records.
 	//
 	// example:
 	//

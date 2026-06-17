@@ -26,27 +26,40 @@ type iDescribePolarFsObjectsResponseBody interface {
 }
 
 type DescribePolarFsObjectsResponseBody struct {
+	// The files and subdirectories in the specified path.
 	Items []*DescribePolarFsObjectsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The number of records returned on the current page.
+	//
 	// example:
 	//
 	// 30
 	PageRecordCount *string `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	// The number of records to return per page. Valid values: 30, 50, and 100. Default value: 30.
+	//
 	// example:
 	//
 	// 30
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The path that was queried.
+	//
 	// example:
 	//
 	// /test
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The PolarFs instance ID.
+	//
 	// example:
 	//
 	// pfs-2ze0i7*****
 	PolarFsInstanceId *string `json:"PolarFsInstanceId,omitempty" xml:"PolarFsInstanceId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CDB3258F-B5DE-43C4-8935-CBA0CA******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of records that match the query.
+	//
 	// example:
 	//
 	// 50
@@ -138,40 +151,56 @@ func (s *DescribePolarFsObjectsResponseBody) Validate() error {
 }
 
 type DescribePolarFsObjectsResponseBodyItems struct {
+	// The size of the item in bytes.
+	//
 	// example:
 	//
 	// 100
 	Capacity *string `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
+	// The time when the item was created, as a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 2025-03-25T09:37:10Z
 	CreationTime *int64 `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The time the item was last modified, as a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 2025-03-25T09:37:10Z
 	LastModified *int64 `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
+	// The target path of the symbolic link.
+	//
 	// example:
 	//
 	// test
 	LinkTarget *string `json:"LinkTarget,omitempty" xml:"LinkTarget,omitempty"`
+	// The file system permissions in octal format.
+	//
 	// example:
 	//
 	// 755
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The number of hard links to the item.
+	//
 	// example:
 	//
 	// test
 	Nlink *int32 `json:"Nlink,omitempty" xml:"Nlink,omitempty"`
-	// Owner
+	// The owner of the file or directory.
 	//
 	// example:
 	//
 	// test
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The absolute path of the file or subdirectory.
+	//
 	// example:
 	//
 	// /test
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The file type.
+	//
 	// example:
 	//
 	// directory

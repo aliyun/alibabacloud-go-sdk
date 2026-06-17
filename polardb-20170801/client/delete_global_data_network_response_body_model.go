@@ -14,6 +14,8 @@ type iDeleteGlobalDataNetworkResponseBody interface {
 }
 
 type DeleteGlobalDataNetworkResponseBody struct {
+	// Request ID
+	//
 	// example:
 	//
 	// EBEAA83D-1734-42E3-85E3-E25F6E******

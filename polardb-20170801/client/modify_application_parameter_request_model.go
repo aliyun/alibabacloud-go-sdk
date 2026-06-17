@@ -20,21 +20,28 @@ type iModifyApplicationParameterRequest interface {
 }
 
 type ModifyApplicationParameterRequest struct {
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The parameter name.
+	//
 	// example:
 	//
 	// name
 	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
+	// The parameter value.
+	//
 	// example:
 	//
 	// value
-	ParameterValue *string                                        `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
-	Parameters     []*ModifyApplicationParameterRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
+	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
+	// The list of parameter names and values for modifying multiple parameters.
+	Parameters []*ModifyApplicationParameterRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
 }
 
 func (s ModifyApplicationParameterRequest) String() string {
@@ -95,10 +102,14 @@ func (s *ModifyApplicationParameterRequest) Validate() error {
 }
 
 type ModifyApplicationParameterRequestParameters struct {
+	// The parameter name.
+	//
 	// example:
 	//
 	// name
 	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
+	// The parameter value.
+	//
 	// example:
 	//
 	// value

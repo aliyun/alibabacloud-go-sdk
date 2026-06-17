@@ -14,6 +14,8 @@ type iDescribePolarAgentUserSessionsRequest interface {
 }
 
 type DescribePolarAgentUserSessionsRequest struct {
+	// The source of the product. The value is \\`polardb-console\\`.
+	//
 	// example:
 	//
 	// polardb-console

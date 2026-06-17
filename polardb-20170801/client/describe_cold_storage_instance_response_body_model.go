@@ -36,44 +36,70 @@ type iDescribeColdStorageInstanceResponseBody interface {
 }
 
 type DescribeColdStorageInstanceResponseBody struct {
+	// The maximum number of entries returned. Default value: 10.
+	//
 	// example:
 	//
 	// 1000
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token to retrieve the next page of results. If this parameter is not returned, all results have been returned.
+	//
 	// example:
 	//
 	// c2FpXzIwMjIwNjI5X2Jhay9zYWlfc3VtbWVyX3RyZWFzdXJlX3Bvb2xfbG9nLkNTVg==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The object type.
+	//
 	// example:
 	//
 	// TABLE
 	ObjectType *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
+	// Indicates whether the OSS bucket is enabled.
+	//
+	// - **true**: enabled
+	//
+	// - **false**: disabled
+	//
 	// example:
 	//
 	// true
-	OssClusterEnabled  *string                                                      `json:"OssClusterEnabled,omitempty" xml:"OssClusterEnabled,omitempty"`
+	OssClusterEnabled *string `json:"OssClusterEnabled,omitempty" xml:"OssClusterEnabled,omitempty"`
+	// The list of OSS addresses for the cold storage instances.
 	OssClusterInfoList []*DescribeColdStorageInstanceResponseBodyOssClusterInfoList `json:"OssClusterInfoList,omitempty" xml:"OssClusterInfoList,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries on the current page.
+	//
 	// example:
 	//
 	// 1
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// C7A8EA8E-A140-5226-90D7-5BCB304D3DB6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the cluster supports cold storage. If the cluster does not support cold storage, the switch is not displayed on the console.
+	//
 	// example:
 	//
 	// true
-	SupportOssCluster *string                                          `json:"SupportOssCluster,omitempty" xml:"SupportOssCluster,omitempty"`
-	Tables            []*DescribeColdStorageInstanceResponseBodyTables `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
+	SupportOssCluster *string `json:"SupportOssCluster,omitempty" xml:"SupportOssCluster,omitempty"`
+	// The list of cold storage instances.
+	Tables []*DescribeColdStorageInstanceResponseBodyTables `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 1
@@ -219,18 +245,26 @@ func (s *DescribeColdStorageInstanceResponseBody) Validate() error {
 }
 
 type DescribeColdStorageInstanceResponseBodyOssClusterInfoList struct {
+	// The time when the cluster was created.
+	//
 	// example:
 	//
 	// 2023-05-10T17:01:16Z
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The ID of the cold storage instance.
+	//
 	// example:
 	//
 	// pc-*****************
 	OssClusterId *string `json:"OssClusterId,omitempty" xml:"OssClusterId,omitempty"`
+	// The ID of the region where the task is located.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The size of the cold storage table. Unit: GB.
+	//
 	// example:
 	//
 	// 50
@@ -286,39 +320,58 @@ func (s *DescribeColdStorageInstanceResponseBodyOssClusterInfoList) Validate() e
 }
 
 type DescribeColdStorageInstanceResponseBodyTables struct {
+	// The list of child objects.
 	ChildObjects []*DescribeColdStorageInstanceResponseBodyTablesChildObjects `json:"ChildObjects,omitempty" xml:"ChildObjects,omitempty" type:"Repeated"`
+	// The database name.
+	//
 	// example:
 	//
 	// test_db
 	DB *string `json:"DB,omitempty" xml:"DB,omitempty"`
+	// The database name.
+	//
 	// example:
 	//
 	// test_db
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
+	// The name of the large object (LOB) field.
+	//
 	// example:
 	//
 	// user
 	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
+	// The ID of the OSS-based cluster.
+	//
 	// example:
 	//
 	// pc-*****************
 	OssClusterId *string `json:"OssClusterId,omitempty" xml:"OssClusterId,omitempty"`
+	// The partition of the cold storage instance.
+	//
 	// example:
 	//
 	// 202509
 	Partion *string `json:"Partion,omitempty" xml:"Partion,omitempty"`
+	// The disk size of the cold storage instance. Unit: GiB.
+	//
 	// example:
 	//
 	// 30
 	Size *string `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The status of the task.
+	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The table name.
+	//
 	// example:
 	//
 	// user
 	Table *string `json:"Table,omitempty" xml:"Table,omitempty"`
+	// The table name.
+	//
 	// example:
 	//
 	// test_table
@@ -437,18 +490,40 @@ func (s *DescribeColdStorageInstanceResponseBodyTables) Validate() error {
 }
 
 type DescribeColdStorageInstanceResponseBodyTablesChildObjects struct {
+	// The object name.
+	//
 	// example:
 	//
 	// img/1728554006462.png
 	ObjectName *string `json:"ObjectName,omitempty" xml:"ObjectName,omitempty"`
+	// The object type.
+	//
 	// example:
 	//
 	// File
 	ObjectType *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
+	// The disk size. Unit: GiB.
+	//
 	// example:
 	//
 	// 10
 	Size *string `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The status of the task. Valid values:
+	//
+	// - **Scheduled**: The task is waiting to be executed.
+	//
+	// - **Running**: The task is in progress.
+	//
+	// - **Succeed**: The task is successful.
+	//
+	// - **Cancelling**: The task is being stopped.
+	//
+	// - **Canceled**: The task is stopped.
+	//
+	// - **Waiting**: The task is waiting for a preset time.
+	//
+	// To query multiple statuses, separate them with commas (,). If you do not specify this parameter, all statuses are queried.
+	//
 	// example:
 	//
 	// Running

@@ -24,28 +24,38 @@ type iRemovePolarClawMCPServerResponseBody interface {
 }
 
 type RemovePolarClawMCPServerResponseBody struct {
+	// The application ID.
+	//
 	// example:
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The status code.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Indicates whether the request was successful. A value of `true` indicates success.
+	//
 	// example:
 	//
 	// true
 	Ok *bool `json:"Ok,omitempty" xml:"Ok,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// E56531A4-E552-40BA-9C58-137B80******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the deleted MCP server.
+	//
 	// example:
 	//
 	// test-v1

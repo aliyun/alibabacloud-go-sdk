@@ -18,18 +18,24 @@ type iDeleteApplicationEndpointAddressRequest interface {
 }
 
 type DeleteApplicationEndpointAddressRequest struct {
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The ID of the server-side endpoint to delete.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pa-**************
 	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
+	// The network type of the connection address to delete. The value is fixed to `Public`.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -14,6 +14,8 @@ type iDescribeEncryptionDBSecretRequest interface {
 }
 
 type DescribeEncryptionDBSecretRequest struct {
+	// The cluster ID.
+	//
 	// example:
 	//
 	// pc-wz9fb5nn44u1d****

@@ -16,9 +16,9 @@ type iDescribeGlobalSecurityIPGroupResponseBody interface {
 }
 
 type DescribeGlobalSecurityIPGroupResponseBody struct {
-	// The details of the global IP whitelist template.
+	// The information about the global IP allowlist template.
 	GlobalSecurityIPGroup []*DescribeGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup `json:"GlobalSecurityIPGroup,omitempty" xml:"GlobalSecurityIPGroup,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -66,35 +66,35 @@ func (s *DescribeGlobalSecurityIPGroupResponseBody) Validate() error {
 }
 
 type DescribeGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup struct {
-	// The details of the clusters that are associated with the global IP address whitelist template.
+	// The list of clusters associated with the IP allowlist template.
 	DBInstances []*string `json:"DBInstances,omitempty" xml:"DBInstances,omitempty" type:"Repeated"`
-	// The IP address in the global IP whitelist template.
+	// The IP addresses in the allowlist template.
 	//
-	// >  Separate multiple IP addresses with commas (,). You can add up to 1,000 IP addresses or CIDR blocks to all IP whitelists.
+	// > Separate multiple IP addresses with commas (,). You can add up to 1,000 IP addresses or CIDR blocks to all IP allowlists in total.
 	//
 	// example:
 	//
 	// 192.168.0.1
 	GIpList *string `json:"GIpList,omitempty" xml:"GIpList,omitempty"`
-	// The name of the global IP whitelist template. The name must meet the following requirements:
+	// The name of the IP allowlist template. The name of the IP allowlist template must meet the following requirements:
 	//
-	// 	- The name can contain lowercase letters, digits, and underscores (_).
+	// - The name can contain lowercase letters, digits, and underscores (_).
 	//
-	// 	- The name must start with a letter and end with a letter or a digit.
+	// - The name must start with a letter and end with a letter or a digit.
 	//
-	// 	- The name must be 2 to 120 characters in length.
+	// - The name must be 2 to 120 characters in length.
 	//
 	// example:
 	//
 	// test_123
 	GlobalIgName *string `json:"GlobalIgName,omitempty" xml:"GlobalIgName,omitempty"`
-	// The ID of the global IP whitelist template.
+	// The ID of the IP allowlist template.
 	//
 	// example:
 	//
 	// g-zsldxfiwjmti0kcm****
 	GlobalSecurityGroupId *string `json:"GlobalSecurityGroupId,omitempty" xml:"GlobalSecurityGroupId,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	//
 	// example:
 	//

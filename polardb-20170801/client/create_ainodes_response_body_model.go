@@ -20,15 +20,22 @@ type iCreateAINodesResponseBody interface {
 }
 
 type CreateAINodesResponseBody struct {
+	// The cluster ID.
+	//
 	// example:
 	//
 	// pm-xxxxxx
-	DBClusterId *string   `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	DBNodeIds   []*string `json:"DBNodeIds,omitempty" xml:"DBNodeIds,omitempty" type:"Repeated"`
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The IDs of the created DB nodes.
+	DBNodeIds []*string `json:"DBNodeIds,omitempty" xml:"DBNodeIds,omitempty" type:"Repeated"`
+	// The ID of the order.
+	//
 	// example:
 	//
 	// 2148126708*****
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// D0CEC6AC-7760-409A-A0D5-E6CD86******

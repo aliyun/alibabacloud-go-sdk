@@ -16,10 +16,13 @@ type iDescribeRdsVSwitchsResponseBody interface {
 }
 
 type DescribeRdsVSwitchsResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// A0450B18-BBD4-5DF9-8E71-610F1A921CDE
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The vSwitch information.
 	VSwitches *DescribeRdsVSwitchsResponseBodyVSwitches `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Struct"`
 }
 
@@ -59,6 +62,7 @@ func (s *DescribeRdsVSwitchsResponseBody) Validate() error {
 }
 
 type DescribeRdsVSwitchsResponseBodyVSwitches struct {
+	// The vSwitch information.
 	VSwitch []*DescribeRdsVSwitchsResponseBodyVSwitchesVSwitch `json:"VSwitch,omitempty" xml:"VSwitch,omitempty" type:"Repeated"`
 }
 
@@ -93,46 +97,72 @@ func (s *DescribeRdsVSwitchsResponseBodyVSwitches) Validate() error {
 }
 
 type DescribeRdsVSwitchsResponseBodyVSwitchesVSwitch struct {
+	// The user ID.
+	//
 	// example:
 	//
 	// 175358919****
 	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// Identifies the cloud service type, such as Alibaba Finance Cloud, Alibaba Gov Cloud, or public cloud.
+	//
 	// example:
 	//
 	// 26842
 	Bid *string `json:"Bid,omitempty" xml:"Bid,omitempty"`
+	// The CIDR block of the vSwitch.
+	//
 	// example:
 	//
 	// 192.168.8.0/24
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	// The time when the vSwitch was created.
+	//
 	// example:
 	//
 	// 2024-12-23 10:15:38
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The time when the vSwitch was last modified.
+	//
 	// example:
 	//
 	// 2025-04-30T09:41:14+08:00
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// Indicates whether the vSwitch is the default vSwitch. Valid values:
+	//
+	// - **true**: The vSwitch is the default vSwitch.
+	//
+	// - **false**: The vSwitch is not the default vSwitch.
+	//
 	// example:
 	//
 	// false
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// The ID of the zone to which the vSwitch belongs.
+	//
 	// example:
 	//
 	// ch-hangzhou-g
 	IzNo *string `json:"IzNo,omitempty" xml:"IzNo,omitempty"`
+	// The ID of the region to which the vSwitch belongs.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	// The status of the vSwitch. Valid values: ***Pending***\\*: The vSwitch is being configured.\\	- **Available**: The vSwitch is available.
+	//
 	// example:
 	//
 	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The vSwitch ID.
+	//
 	// example:
 	//
 	// vsw-**************
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The name of the vSwitch.
+	//
 	// example:
 	//
 	// sw01

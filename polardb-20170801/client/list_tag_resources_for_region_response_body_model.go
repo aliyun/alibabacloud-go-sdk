@@ -18,10 +18,14 @@ type iListTagResourcesForRegionResponseBody interface {
 }
 
 type ListTagResourcesForRegionResponseBody struct {
+	// If the response does not return all results, this parameter is returned. You can use this token in the next request to continue the query.
+	//
 	// example:
 	//
 	// 212db86sca4384811e0b5e8707e******
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 688C04E4-23F8-409F-8A38-B954D5******

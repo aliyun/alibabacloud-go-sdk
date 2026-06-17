@@ -18,14 +18,20 @@ type iCreateApplicationEndpointAddressResponseBody interface {
 }
 
 type CreateApplicationEndpointAddressResponseBody struct {
+	// The application ID.
+	//
 	// example:
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The service endpoint ID.
+	//
 	// example:
 	//
 	// pa-**************
 	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 3E5CD764-FCCA-5C9C-838E-20E0DE84B2AF

@@ -40,46 +40,78 @@ type iDescribeUpgradeReportRequest interface {
 }
 
 type DescribeUpgradeReportRequest struct {
+	// The product series. Valid values:
+	//
+	// - **Normal**: Cluster Edition (default)
+	//
+	// - **SENormal**: Standard Edition
+	//
+	// For more information, see [Product series](https://help.aliyun.com/document_detail/183258.html).
+	//
 	// example:
 	//
 	// Normal
 	CreationCategory *string `json:"CreationCategory,omitempty" xml:"CreationCategory,omitempty"`
+	// The database type. Valid values:
+	//
+	// - **MySQL**
+	//
+	// - **Oracle**
+	//
 	// example:
 	//
 	// MySQL
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
+	// The compatible database version.
+	//
 	// example:
 	//
 	// 8.0
 	DBVersion    *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the region.
+	//
+	// > For more information, see [DescribeRegions](https://help.aliyun.com/document_detail/98041.html).
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The ID of the source instance.
+	//
 	// example:
 	//
 	// rm-2zen5pe5vi56447d0
 	SourceDBClusterId *string `json:"SourceDBClusterId,omitempty" xml:"SourceDBClusterId,omitempty"`
+	// The task status.
+	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// 2321321
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// A special metric. This parameter is supported only for instances that use the Tair architecture.
+	//
 	// example:
 	//
 	// orca

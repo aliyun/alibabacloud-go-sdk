@@ -16,10 +16,14 @@ type iListPolarClawBindingsRequest interface {
 }
 
 type ListPolarClawBindingsRequest struct {
+	// A list of agent IDs to filter the bindings.
+	//
 	// example:
 	//
 	// work,research
 	AgentList []*string `json:"AgentList,omitempty" xml:"AgentList,omitempty" type:"Repeated"`
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:

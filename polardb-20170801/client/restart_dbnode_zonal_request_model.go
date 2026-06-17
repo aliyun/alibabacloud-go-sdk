@@ -26,16 +26,22 @@ type iRestartDBNodeZonalRequest interface {
 }
 
 type RestartDBNodeZonalRequest struct {
+	// A client token to ensure request idempotence. Generate a unique token for each request. The token must be case-sensitive and up to 64 ASCII characters long.
+	//
 	// example:
 	//
 	// 6000170000591aed949d0f54a343f1a4233c1e7d1c5c******
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pc-**************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The cluster node ID.
+	//
 	// This parameter is required.
 	//
 	// example:

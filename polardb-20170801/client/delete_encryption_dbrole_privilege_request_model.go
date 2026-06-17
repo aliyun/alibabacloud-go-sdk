@@ -24,6 +24,10 @@ type iDeleteEncryptionDBRolePrivilegeRequest interface {
 }
 
 type DeleteEncryptionDBRolePrivilegeRequest struct {
+	// The cluster ID.
+	//
+	// > Call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of all clusters in your account, such as the cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -34,6 +38,8 @@ type DeleteEncryptionDBRolePrivilegeRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The name of the role permission.
+	//
 	// example:
 	//
 	// test

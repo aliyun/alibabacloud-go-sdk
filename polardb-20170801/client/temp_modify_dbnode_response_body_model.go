@@ -26,9 +26,9 @@ type TempModifyDBNodeResponseBody struct {
 	//
 	// pc-xxxxxxxxxxxxxxxxx
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The details of the nodes.
+	// The list of nodes.
 	DBNodeIds []*string `json:"DBNodeIds,omitempty" xml:"DBNodeIds,omitempty" type:"Repeated"`
-	// The ID of the order.
+	// The order ID.
 	//
 	// example:
 	//

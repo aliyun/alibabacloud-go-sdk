@@ -22,7 +22,7 @@ type CancelScheduleTasksResponseBody struct {
 	//
 	// 7F2007D3-7E74-4ECB-89A8-BF130D******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//

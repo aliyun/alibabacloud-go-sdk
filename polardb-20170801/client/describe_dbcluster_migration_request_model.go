@@ -22,13 +22,7 @@ type iDescribeDBClusterMigrationRequest interface {
 }
 
 type DescribeDBClusterMigrationRequest struct {
-	// The network type of the endpoint. Valid values:
-	//
-	// 	- **Public**: the public endpoint
-	//
-	// 	- **Private**: the internal endpoint (VPC)
-	//
-	// 	- **Inner**: the internal endpoint (classic network)
+	// The cluster ID.
 	//
 	// This parameter is required.
 	//

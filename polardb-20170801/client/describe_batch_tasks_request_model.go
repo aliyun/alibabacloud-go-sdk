@@ -24,27 +24,40 @@ type iDescribeBatchTasksRequest interface {
 }
 
 type DescribeBatchTasksRequest struct {
+	// The end time of the query range. Specify the time in UTC format.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
 	// example:
 	//
 	// 2026-04-06T20:52:40Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The page number. The value must be a positive integer. The default is 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page.
+	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The start time of the query range. Specify the time in UTC format.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
 	// example:
 	//
 	// 2026-04-06T20:51:40Z
-	StartTime *string   `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status    []*string `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The task statuses.
+	//
+	// > If you omit this parameter, the operation returns tasks of all statuses.
+	Status []*string `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`
+	// The type of the batch task.
+	//
 	// example:
 	//
 	// polarclaw_install_skills

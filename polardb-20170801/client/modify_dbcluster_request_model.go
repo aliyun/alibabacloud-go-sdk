@@ -44,7 +44,7 @@ type iModifyDBClusterRequest interface {
 }
 
 type ModifyDBClusterRequest struct {
-	// Specifies whether to enable storage compression. Set the value to **ON**.
+	// Enables storage compression. Set the value to **ON**.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type ModifyDBClusterRequest struct {
 	CompressStorage *string `json:"CompressStorage,omitempty" xml:"CompressStorage,omitempty"`
 	// The cluster ID.
 	//
-	// >  You can call the DescribeDBClusters operation to query information about all PolarDB clusters that are deployed in a specified region, such as cluster IDs.
+	// > You can call the DescribeDBClusters operation to query the details of all clusters in a specific region, including their cluster IDs.
 	//
 	// This parameter is required.
 	//
@@ -60,19 +60,19 @@ type ModifyDBClusterRequest struct {
 	//
 	// pc-*************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The list of nodes for the drill.
+	// The names of the nodes to target in the fault simulation.
 	//
-	// >  You can specify only one node for a node-level disaster recovery drill. For a primary zone-level disaster recovery drill, you can either choose not to specify this parameter or specify all nodes.
+	// > For a node-level simulation, you can specify only a single node. For a zone-level simulation, you can leave this parameter empty or specify all nodes.
 	//
 	// example:
 	//
 	// pi-rwxxx
 	DBNodeCrashList *string `json:"DBNodeCrashList,omitempty" xml:"DBNodeCrashList,omitempty"`
-	// The method used to replicate data across zones. Valid values:
+	// The cross-zone data replication method for the cluster. Valid values:
 	//
-	// 	- **AsyncSync**: the asynchronous mode.
+	// - **AsyncSync**: asynchronous.
 	//
-	// 	- **SemiSync**: the semi-synchronous mode.
+	// - **SemiSync**: semi-synchronous.
 	//
 	// example:
 	//
@@ -80,94 +80,92 @@ type ModifyDBClusterRequest struct {
 	DataSyncMode *string `json:"DataSyncMode,omitempty" xml:"DataSyncMode,omitempty"`
 	// The fault injection method. Valid values:
 	//
-	// 	- 0: `Crash SQL`-based fault injection.
-	//
-	// Enumerated values:
-	//
-	// 	- CrashSQLInjection: CrashSQLInjection.
+	// - `0`: instance-level fault injection based on Crash SQL.
 	//
 	// example:
 	//
 	// 0
 	FaultInjectionType *string `json:"FaultInjectionType,omitempty" xml:"FaultInjectionType,omitempty"`
-	// The level of the disaster recovery drill. Valid values:
+	// The fault simulation scope for the cluster. Valid values:
 	//
-	// 	- `0` or `FaultInjection`: The primary zone level.
+	// - `0` or `FaultInjection`: primary zone-level fault simulation.
 	//
-	// 	- `1`: The node level.
+	// - `1`: node-level fault simulation.
+	//
+	// > 	- In a **primary zone-level fault simulation**, all compute nodes in the primary zone become unavailable. The disaster recovery failover in this scenario is lossy.
 	//
 	// >
 	//
-	// 	- In **primary zone-level disaster recovery drill*	- scenarios, all compute nodes in the primary zone are unavailable. Data loss occurs during failovers in the scenarios.
-	//
-	// 	- In **node-level disaster recovery drill*	- scenarios, you can specify only one compute node for the disaster recovery drill. You can use the `DBNodeCrashList` parameter to specify the name of the compute node that you want to use for the drill.
-	//
-	// Enumerated values:
-	//
-	// 	- FaultInjectToPrimaryAz
-	//
-	// 	- FaultInjectToDbNode
-	//
-	// 	- FaultInjection
-	//
-	// 	- 0
-	//
-	// 	- 1
+	// > 	- In a **node-level fault simulation**, you can simulate a fault on only a single compute node. You must specify the target compute node by using the `DBNodeCrashList` parameter.
 	//
 	// example:
 	//
 	// 0
 	FaultSimulateMode *string `json:"FaultSimulateMode,omitempty" xml:"FaultSimulateMode,omitempty"`
-	// Specifies whether to enable automatic IMCI-based query acceleration. IMCI is short for In-Memory Column Index. Valid values:
+	// Controls the automatic columnar index feature. Valid values:
 	//
-	// 	- `ON`: enables automatic IMCI-based query acceleration.
+	// - `ON`: enables the feature.
 	//
-	// 	- `OFF`: disables automatic IMCI-based query acceleration.
+	// - `OFF`: disables the feature.
+	//
+	// > 	- This feature is available only for PolarDB for MySQL clusters.
 	//
 	// >
 	//
-	// 	- This parameter is supported only for PolarDB for MySQL clusters.
-	//
-	// 	- For information about the cluster version limits, see [Automatic IMCI-based query acceleration](https://help.aliyun.com/document_detail/2854119.html).
+	// > 	- For cluster version limits, see [Automatic indexing (AutoIndex)](https://help.aliyun.com/document_detail/2854119.html).
 	//
 	// example:
 	//
 	// OFF
-	ImciAutoIndex        *string `json:"ImciAutoIndex,omitempty" xml:"ImciAutoIndex,omitempty"`
+	ImciAutoIndex *string `json:"ImciAutoIndex,omitempty" xml:"ImciAutoIndex,omitempty"`
+	// Enables or disables row-level compression.
+	//
+	// example:
+	//
+	// OFF
 	ModifyRowCompression *string `json:"ModifyRowCompression,omitempty" xml:"ModifyRowCompression,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Specifies whether to enable cross-zone automatic switchover. Valid values:
+	// The automatic cross-zone failover mode for the cluster. Valid values:
 	//
-	// 	- **ON**: enables cross-zone automatic switchover.
+	// - **ON**: enables automatic cross-zone failover.
 	//
-	// 	- **OFF**: disables cross-zone automatic switchover.
+	// - **OFF**: disables automatic cross-zone failover.
 	//
 	// example:
 	//
 	// ON
 	StandbyHAMode *string `json:"StandbyHAMode,omitempty" xml:"StandbyHAMode,omitempty"`
-	// Specifies whether to enable automatic storage scaling for the Standard Edition cluster. Valid values:
+	// Enables or disables automatic storage scaling for a standard cluster. Valid values:
 	//
-	// 	- Enable
+	// - Enable: enables automatic storage scaling.
 	//
-	// 	- Disable
+	// - Disable: disables automatic storage scaling.
 	//
 	// example:
 	//
 	// Enable
 	StorageAutoScale *string `json:"StorageAutoScale,omitempty" xml:"StorageAutoScale,omitempty"`
-	// The maximum storage capacity of the cluster of Standard Edition in automatic scaling. Unit: GB.
+	// The upper limit for automatic storage scaling on a standard cluster. Unit: GB.
 	//
-	// >  The maximum value of this parameter is 32000.
+	// > The maximum value is 32000.
 	//
 	// example:
 	//
 	// 800
-	StorageUpperBound *int64  `json:"StorageUpperBound,omitempty" xml:"StorageUpperBound,omitempty"`
-	TableMeta         *string `json:"TableMeta,omitempty" xml:"TableMeta,omitempty"`
+	StorageUpperBound *int64 `json:"StorageUpperBound,omitempty" xml:"StorageUpperBound,omitempty"`
+	// A JSON string that specifies information about the destination databases and tables to be restored. All values in the database and table information must be strings.
+	//
+	// Example: `[ { "tables":[ { "name":"testtb", "type":"table", "newname":"testtb_restore" } ], "name":"testdb", "type":"db", "newname":"testdb_restore" } ]`.
+	//
+	// > You can call the [DescribeMetaList](https://help.aliyun.com/document_detail/194770.html) operation to query for restorable databases and tables. Use the returned information to populate the fields in the example JSON.
+	//
+	// example:
+	//
+	// [ { "tables":[ { "name":"testtb", "type":"table", "newname":"testtb_restore" } ], "name":"testdb", "type":"db", "newname":"testdb_restore" } ]
+	TableMeta *string `json:"TableMeta,omitempty" xml:"TableMeta,omitempty"`
 }
 
 func (s ModifyDBClusterRequest) String() string {

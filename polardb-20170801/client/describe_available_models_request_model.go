@@ -16,12 +16,14 @@ type iDescribeAvailableModelsRequest interface {
 }
 
 type DescribeAvailableModelsRequest struct {
-	// aideploy
+	// The service type. The value must be set to `aideploy`.
 	//
 	// example:
 	//
 	// aideploy
 	KubeType *string `json:"KubeType,omitempty" xml:"KubeType,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing

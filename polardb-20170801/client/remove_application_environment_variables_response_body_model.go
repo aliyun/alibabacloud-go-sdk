@@ -28,36 +28,50 @@ type iRemoveApplicationEnvironmentVariablesResponseBody interface {
 }
 
 type RemoveApplicationEnvironmentVariablesResponseBody struct {
+	// The application ID.
+	//
 	// example:
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The response status code.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Indicates whether the operation was successful.
+	//
 	// example:
 	//
 	// true
 	Ok *bool `json:"Ok,omitempty" xml:"Ok,omitempty"`
+	// The number of variables removed.
+	//
 	// example:
 	//
 	// 1
 	RemovedCount *int32 `json:"RemovedCount,omitempty" xml:"RemovedCount,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// CDB3258F-B5DE-43C4-8935-CBA0CA******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the gateway was restarted.
+	//
 	// example:
 	//
 	// true
 	Restarted *bool `json:"Restarted,omitempty" xml:"Restarted,omitempty"`
+	// The total number of application environment variables remaining.
+	//
 	// example:
 	//
 	// 0

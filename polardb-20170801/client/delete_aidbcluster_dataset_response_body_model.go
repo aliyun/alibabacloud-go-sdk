@@ -18,15 +18,19 @@ type iDeleteAIDBClusterDatasetResponseBody interface {
 }
 
 type DeleteAIDBClusterDatasetResponseBody struct {
+	// The ID of the Data Service instance.
+	//
 	// example:
 	//
 	// pcs-2zeei***
 	DataServiceId *string `json:"DataServiceId,omitempty" xml:"DataServiceId,omitempty"`
+	// The dataset ID.
+	//
 	// example:
 	//
 	// pds-xxxxxxxxxxxxxxxx
 	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

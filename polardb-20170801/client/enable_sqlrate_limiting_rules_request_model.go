@@ -26,12 +26,22 @@ type iEnableSQLRateLimitingRulesRequest interface {
 }
 
 type EnableSQLRateLimitingRulesRequest struct {
+  // The ID of the cluster.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // pc-*****************
   DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+  // Specifies whether to enable or disable the specified SQL throttling rules. Valid values:
+  // 
+  // - **true**: Enable.
+  // 
+  // - **false**: Disable.
+  // 
+  // > This parameter applies only when you specify the **RuleNameList*	- parameter.
+  // 
   // This parameter is required.
   // 
   // example:
@@ -42,6 +52,10 @@ type EnableSQLRateLimitingRulesRequest struct {
   OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
   ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
   ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+  // The names of the SQL throttling rules to enable. To specify multiple rules, separate the names with a comma (,).
+  // 
+  // > You can view all SQL throttling rules and their names on the SQL Firewall tab of the Security Management page for the cluster.
+  // 
   // This parameter is required.
   // 
   // example:

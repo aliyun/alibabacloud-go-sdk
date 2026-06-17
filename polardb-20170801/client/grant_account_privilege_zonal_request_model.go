@@ -30,28 +30,48 @@ type iGrantAccountPrivilegeZonalRequest interface {
 }
 
 type GrantAccountPrivilegeZonalRequest struct {
+	// The account name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testacc
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The account permissions. Valid values:
+	//
+	// - ReadWrite: Read and write permissions.
+	//
+	// - ReadOnly: Read-only permissions.
+	//
+	// - DMLOnly: DML-only permissions.
+	//
+	// - DDLOnly: DDL-only permissions.
+	//
+	// - ReadIndex: Read-only and index permissions.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ReadWrite,ReadOnly
 	AccountPrivilege *string `json:"AccountPrivilege,omitempty" xml:"AccountPrivilege,omitempty"`
+	// A client-generated token that ensures the idempotence of the request. Make sure that the token is unique among different requests. The token is case-sensitive and can be up to 64 ASCII characters in length.
+	//
 	// example:
 	//
 	// 6000170000591aed949d0f5********************
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pc-****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The name of the database for which to grant permissions. To grant permissions for multiple databases, separate the database names with a comma (,).
+	//
 	// This parameter is required.
 	//
 	// example:

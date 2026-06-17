@@ -22,7 +22,7 @@ type iDescribeAccountsResponseBody interface {
 type DescribeAccountsResponseBody struct {
 	// The details of the account.
 	Accounts []*DescribeAccountsResponseBodyAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Repeated"`
-	// The page number of the page returned.
+	// The page number. Pages start from page 1.
 	//
 	// example:
 	//
@@ -100,23 +100,23 @@ func (s *DescribeAccountsResponseBody) Validate() error {
 }
 
 type DescribeAccountsResponseBodyAccounts struct {
-	// The description of the account.
+	// The description of the database account.
 	//
 	// example:
 	//
 	// test
 	AccountDescription *string `json:"AccountDescription,omitempty" xml:"AccountDescription,omitempty"`
-	// The locking state of the account. Valid values:
+	// The lock status of the account. Valid values:
 	//
-	// 	- **UnLock**
+	// - **UnLock**: The account is not locked.
 	//
-	// 	- **Lock**
+	// - **Lock**: The account is locked.
 	//
 	// example:
 	//
 	// UnLock
 	AccountLockState *string `json:"AccountLockState,omitempty" xml:"AccountLockState,omitempty"`
-	// The name of the account.
+	// The name of the database account.
 	//
 	// example:
 	//
@@ -128,13 +128,13 @@ type DescribeAccountsResponseBodyAccounts struct {
 	//
 	// undefined
 	AccountPasswordValidTime *string `json:"AccountPasswordValidTime,omitempty" xml:"AccountPasswordValidTime,omitempty"`
-	// The state of the account. Valid values:
+	// The status of the database account. Valid values:
 	//
-	// 	- **Creating**: The account is being created.
+	// - **Creating**: The account is being created.
 	//
-	// 	- **Available**: The account is available.
+	// - **Available**: The account is available.
 	//
-	// 	- **Deleting**: The account is being deleted
+	// - **Deleting**: The account is being deleted.
 	//
 	// example:
 	//
@@ -142,11 +142,11 @@ type DescribeAccountsResponseBodyAccounts struct {
 	AccountStatus *string `json:"AccountStatus,omitempty" xml:"AccountStatus,omitempty"`
 	// The type of the account. Valid values:
 	//
-	// 	- **Normal**: standard account.
+	// - **Normal**: standard account.
 	//
-	// 	- **Super**: privileged account.
+	// - **Super**: privileged account.
 	//
-	// 	- **ReadOnly**: global read-only account.
+	// - **ReadOnly**: global read-only account.
 	//
 	// example:
 	//
@@ -241,13 +241,13 @@ func (s *DescribeAccountsResponseBodyAccounts) Validate() error {
 }
 
 type DescribeAccountsResponseBodyAccountsDatabasePrivileges struct {
-	// The permissions that the account is granted on the database. Valid values:
+	// The permissions of the account.
 	//
 	// example:
 	//
 	// ReadOnly
 	AccountPrivilege *string `json:"AccountPrivilege,omitempty" xml:"AccountPrivilege,omitempty"`
-	// The name of the database.
+	// The database name.
 	//
 	// example:
 	//

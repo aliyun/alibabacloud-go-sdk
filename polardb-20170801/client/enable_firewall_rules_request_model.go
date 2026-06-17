@@ -36,11 +36,11 @@ type EnableFirewallRulesRequest struct {
   DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
   // Specifies whether to enable or disable the specified firewall rules. Valid values:
   // 
-  // 	- **true**: enables the specified firewall rules.
+  // - **true**: Enable.
   // 
-  // 	- **false**: disables the specified firewall rules.
+  // - **false**: Disable.
   // 
-  // > This parameter is valid only when you specify the **RuleNameList*	- parameter.
+  // > This parameter takes effect only when a value is specified for the **RuleNameList*	- parameter.
   // 
   // example:
   // 
@@ -50,9 +50,9 @@ type EnableFirewallRulesRequest struct {
   OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
   ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
   ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-  // The name of the firewall rule that you want to enable for the cluster. You can specify multiple firewall rules at a time. Separate multiple rules with commas (,).
+  // A comma-separated list of the firewall rule names to enable or disable.
   // 
-  // > You can call the **DescribeFirewallRules*	- operation to query the details of all firewall rules that are applicable to a cluster, such as rule names.
+  // > You can find rule names under **Security Management****SQL Firewall*	- tab of the cluster.
   // 
   // This parameter is required.
   // 

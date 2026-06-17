@@ -18,14 +18,24 @@ type iDescribeCrossCloudRegionMappingToAliyunRequest interface {
 }
 
 type DescribeCrossCloudRegionMappingToAliyunRequest struct {
+	// The region ID of Alibaba Cloud.
+	//
 	// example:
 	//
 	// cn-beijing
 	AliyunRegionId *string `json:"AliyunRegionId,omitempty" xml:"AliyunRegionId,omitempty"`
+	// The cloud provider. Valid values:
+	//
+	// - HuaweiCloud
+	//
+	// - Azure
+	//
 	// example:
 	//
 	// HuaweiCloud
 	CloudProvider *string `json:"CloudProvider,omitempty" xml:"CloudProvider,omitempty"`
+	// The region ID of the third-party cloud.
+	//
 	// example:
 	//
 	// cn-east-3

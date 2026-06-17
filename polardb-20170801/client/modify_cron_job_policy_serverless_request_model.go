@@ -54,34 +54,50 @@ type iModifyCronJobPolicyServerlessRequest interface {
 }
 
 type ModifyCronJobPolicyServerlessRequest struct {
+	// Specifies whether to enable No-activity Suspension. Valid values:
+	//
+	// - **true**: Enables the feature.
+	//
+	// - **false*	- (default): Disables the feature.
+	//
 	// example:
 	//
 	// true
 	AllowShutDown *string `json:"AllowShutDown,omitempty" xml:"AllowShutDown,omitempty"`
+	// The Cron expression.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0 0 13 	- 	- ?
 	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pc-************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The end time.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2020-02-12T15:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the scheduled task.
+	//
 	// example:
 	//
 	// 8006e51c-dab3-4602-bc69-4f728002c6ce
 	JobId        *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -90,46 +106,72 @@ type ModifyCronJobPolicyServerlessRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The maximum number of read-only column store nodes. Valid values: 0 to 15.
+	//
 	// example:
 	//
 	// 1
 	ScaleApRoNumMax *string `json:"ScaleApRoNumMax,omitempty" xml:"ScaleApRoNumMax,omitempty"`
+	// The minimum number of read-only column store nodes. Valid values: 0 to 15.
+	//
 	// example:
 	//
 	// 1
 	ScaleApRoNumMin *string `json:"ScaleApRoNumMin,omitempty" xml:"ScaleApRoNumMin,omitempty"`
+	// The maximum number of PCUs. Valid values: 1 to 32.
+	//
 	// example:
 	//
 	// 12
 	ScaleMax *string `json:"ScaleMax,omitempty" xml:"ScaleMax,omitempty"`
+	// The minimum number of PolarDB Capacity Units (PCUs). Valid values: 0.25 to 32. This value must be less than or equal to the value of ScaleMax.
+	//
 	// example:
 	//
 	// 1
 	ScaleMin *string `json:"ScaleMin,omitempty" xml:"ScaleMin,omitempty"`
+	// The maximum number of read-only nodes for scaling. Valid values: 0 to 15.
+	//
 	// example:
 	//
 	// 4
 	ScaleRoNumMax *string `json:"ScaleRoNumMax,omitempty" xml:"ScaleRoNumMax,omitempty"`
+	// The minimum number of read-only nodes for scaling. Valid values: 0 to 15.
+	//
 	// example:
 	//
 	// 2
 	ScaleRoNumMin *string `json:"ScaleRoNumMin,omitempty" xml:"ScaleRoNumMin,omitempty"`
+	// The detection period for No-activity Suspension. Unit: minutes. Valid values: 5 to 1440. The value must be a multiple of 5.
+	//
 	// example:
 	//
 	// 10
 	SecondsUntilAutoPause *string `json:"SecondsUntilAutoPause,omitempty" xml:"SecondsUntilAutoPause,omitempty"`
+	// The CPU utilization threshold for a scale-up. Unit: percent. Valid values: 40 to 100.
+	//
 	// example:
 	//
 	// 80
 	ServerlessRuleCpuEnlargeThreshold *string `json:"ServerlessRuleCpuEnlargeThreshold,omitempty" xml:"ServerlessRuleCpuEnlargeThreshold,omitempty"`
+	// The CPU utilization threshold for a scale-down. Unit: percent. Valid values: 10 to 100. The value of ServerlessRuleCpuEnlargeThreshold minus the value of this parameter must be greater than or equal to 30.
+	//
 	// example:
 	//
 	// 25
 	ServerlessRuleCpuShrinkThreshold *string `json:"ServerlessRuleCpuShrinkThreshold,omitempty" xml:"ServerlessRuleCpuShrinkThreshold,omitempty"`
+	// The scaling sensitivity. Valid values:
+	//
+	// - normal
+	//
+	// - flexible
+	//
 	// example:
 	//
 	// normal
 	ServerlessRuleMode *string `json:"ServerlessRuleMode,omitempty" xml:"ServerlessRuleMode,omitempty"`
+	// The start time. Specify the time in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
+	//
 	// example:
 	//
 	// 2020-09-23T01:00:00Z

@@ -35,7 +35,7 @@ type iCreateStoragePlanRequest interface {
 
 type CreateStoragePlanRequest struct {
 	AutoUseCoupon *bool `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value. Make sure that the value is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.
+	// A client token to ensure the idempotence of the request. Generate this token on your client. The token must be unique across different requests. It is case-sensitive and can contain up to 64 ASCII characters.
 	//
 	// example:
 	//
@@ -45,9 +45,9 @@ type CreateStoragePlanRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The unit of the subscription duration for the storage plan. Valid values:
 	//
-	// 	- **Month**
+	// - **Month**
 	//
-	// 	- **Year**
+	// - **Year**
 	//
 	// This parameter is required.
 	//
@@ -61,7 +61,7 @@ type CreateStoragePlanRequest struct {
 	PromotionCode        *string `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The capacity of the storage plan. Unit: GB. Valid values: 50, 100, 200, 300, 500, 1000, 2000, 3000, 5000, 10000, 15000, 20000, 25000, 30000, 50000, 100000, and 200000
+	// The capacity of the storage plan, in GB. Valid values: 50, 100, 200, 300, 500, 1,000, 2,000, 3,000, 5,000, 10,000, 15,000, 20,000, 25,000, 30,000, 50,000, 100,000, and 200,000.
 	//
 	// This parameter is required.
 	//
@@ -71,9 +71,9 @@ type CreateStoragePlanRequest struct {
 	StorageClass *string `json:"StorageClass,omitempty" xml:"StorageClass,omitempty"`
 	// The type of the storage plan. Valid values:
 	//
-	// 	- **Mainland**: The storage plan is used inside the Chinese mainland.
+	// - **Mainland**: For use in the Chinese mainland.
 	//
-	// 	- **Overseas**: The storage plan is used outside the Chinese mainland.
+	// - **Overseas**: For use in China (Hong Kong) and regions outside China.
 	//
 	// This parameter is required.
 	//
@@ -83,9 +83,9 @@ type CreateStoragePlanRequest struct {
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 	// The subscription duration of the storage plan.
 	//
-	// 	- If **Period*	- is set to **Month**, the value ranges from 1 to 9.
+	// - If **Period*	- is set to **Month**, the value ranges from 1 to 9.
 	//
-	// 	- If **Period*	- is set to **Year**, the value can be 1, 2, 3, or 5.
+	// - If **Period*	- is set to **Year**, the valid values are 1, 2, 3, and 5.
 	//
 	// This parameter is required.
 	//

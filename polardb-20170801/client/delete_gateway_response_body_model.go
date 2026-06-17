@@ -14,7 +14,7 @@ type iDeleteGatewayResponseBody interface {
 }
 
 type DeleteGatewayResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

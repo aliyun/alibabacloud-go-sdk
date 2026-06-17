@@ -22,21 +22,36 @@ type iDescribeCronJobPolicyServerlessResponseBody interface {
 }
 
 type DescribeCronJobPolicyServerlessResponseBody struct {
+	// The list of tasks.
 	Items []*DescribeCronJobPolicyServerlessResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of records on each page. Valid values:
+	//
+	// - **30**
+	//
+	// - **50**
+	//
+	// - **100**
+	//
+	// Default value: **30**.
+	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 9B7BFB11-C077-4FE3-B051-F69CEB******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 5
@@ -110,82 +125,134 @@ func (s *DescribeCronJobPolicyServerlessResponseBody) Validate() error {
 }
 
 type DescribeCronJobPolicyServerlessResponseBodyItems struct {
+	// A system parameter. Set the value to **ModifyDBClusterServerlessConf**.
+	//
 	// example:
 	//
 	// ModifyDBClusterServerlessConf
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// Specifies whether to enable No-activity Suspension. Valid values:
+	//
+	// - **true**: enabled
+	//
+	// - **false**: disabled (default)
+	//
 	// example:
 	//
 	// true
 	AllowShutDown *string `json:"AllowShutDown,omitempty" xml:"AllowShutDown,omitempty"`
+	// The Cron expression for the scheduled task.
+	//
 	// example:
 	//
 	// 0 0 8 	- 	- ?
 	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
+	// The cluster ID.
+	//
 	// example:
 	//
 	// pc-*****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The end time of the task. The time is in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+	//
 	// example:
 	//
 	// 2024-12-04T02:25:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the scheduled task.
+	//
 	// example:
 	//
 	// 12eee3eb-60bd-40ac-a403-218e02eb99c7
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The order ID.
+	//
 	// example:
 	//
 	// 254752088000354
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The maximum number of read-only IMCI nodes. Valid values: 1 to 15.
+	//
 	// example:
 	//
 	// 2
 	ScaleApRoNumMax *string `json:"ScaleApRoNumMax,omitempty" xml:"ScaleApRoNumMax,omitempty"`
+	// The minimum number of read-only IMCI nodes. Valid values: 0 to 15.
+	//
 	// example:
 	//
 	// 1
 	ScaleApRoNumMin *string `json:"ScaleApRoNumMin,omitempty" xml:"ScaleApRoNumMin,omitempty"`
+	// The maximum capacity. The value must be from 1 to 32. Unit: PCU.
+	//
 	// example:
 	//
 	// 9
 	ScaleMax *string `json:"ScaleMax,omitempty" xml:"ScaleMax,omitempty"`
+	// The minimum capacity. The value must be from 0.25 to 32 and less than or equal to the maximum capacity. Unit: PolarDB Capacity Unit (PCU).
+	//
 	// example:
 	//
 	// 1
 	ScaleMin *string `json:"ScaleMin,omitempty" xml:"ScaleMin,omitempty"`
+	// The maximum number of read-only nodes. The value must be greater than or equal to the minimum value. Valid values: 0 to 15.
+	//
 	// example:
 	//
 	// 3
 	ScaleRoNumMax *string `json:"ScaleRoNumMax,omitempty" xml:"ScaleRoNumMax,omitempty"`
+	// The minimum number of read-only nodes. Valid values: 0 to 15.
+	//
 	// example:
 	//
 	// 2
 	ScaleRoNumMin *string `json:"ScaleRoNumMin,omitempty" xml:"ScaleRoNumMin,omitempty"`
+	// The detection period for No-activity Suspension. The value must be a multiple of 5. Valid values: 5 to 1440. Unit: minutes.
+	//
 	// example:
 	//
 	// 1200
 	SecondsUntilAutoPause *string `json:"SecondsUntilAutoPause,omitempty" xml:"SecondsUntilAutoPause,omitempty"`
+	// The CPU utilization threshold for scaling up. Valid values: 40 to 100. Unit: %.
+	//
 	// example:
 	//
 	// 70
 	ServerlessRuleCpuEnlargeThreshold *string `json:"ServerlessRuleCpuEnlargeThreshold,omitempty" xml:"ServerlessRuleCpuEnlargeThreshold,omitempty"`
+	// The CPU utilization threshold for scaling down. Valid values: 10 to 100. Unit: %. The difference between the scale-up threshold and the scale-down threshold must be 30 or greater.
+	//
 	// example:
 	//
 	// 40
 	ServerlessRuleCpuShrinkThreshold *string `json:"ServerlessRuleCpuShrinkThreshold,omitempty" xml:"ServerlessRuleCpuShrinkThreshold,omitempty"`
+	// The elasticity sensitivity. Valid values:
+	//
+	// - normal: standard
+	//
+	// - flexible: sensitive
+	//
 	// example:
 	//
 	// normal
 	ServerlessRuleMode *string `json:"ServerlessRuleMode,omitempty" xml:"ServerlessRuleMode,omitempty"`
+	// The start time of the task. The time is in the `yyyy-MM-ddTHH:mmZ` format and in UTC.
+	//
 	// example:
 	//
 	// 2020-06-09T18:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The status of the task. Valid values:
+	//
+	// - **working**: The scheduled task is running.
+	//
+	// - **finish**: The scheduled task is complete.
+	//
 	// example:
 	//
 	// 3

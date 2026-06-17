@@ -28,22 +28,30 @@ type iRevokeAccountPrivilegeZonalRequest interface {
 }
 
 type RevokeAccountPrivilegeZonalRequest struct {
+	// The account name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testacc
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// A client-generated token that ensures the idempotence of the request. The token must be unique for each request. It is case-sensitive and cannot exceed 64 ASCII characters.
+	//
 	// example:
 	//
 	// 6000170000591aed949d0f5********************
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pc-**************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The name of the database. To specify multiple databases, separate the names with a comma (,).
+	//
 	// This parameter is required.
 	//
 	// example:

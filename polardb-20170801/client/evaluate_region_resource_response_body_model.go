@@ -20,51 +20,51 @@ type iEvaluateRegionResourceResponseBody interface {
 }
 
 type EvaluateRegionResourceResponseBody struct {
-  // Indicates whether sufficient resources are available. Valid values:
+  // Indicates whether the resources are sufficient.
   // 
-  // 	- **true**
+  // - **true**: The resources are sufficient.
   // 
-  // 	- **false**
+  // - **false**: The resources are insufficient.
   // 
   // example:
   // 
   // true
   DBInstanceAvailable *string `json:"DBInstanceAvailable,omitempty" xml:"DBInstanceAvailable,omitempty"`
-  // The type of the database engine. Valid values:
+  // The database engine type. Valid values:
   // 
-  // 	- **MySQL**
+  // - **MySQL**
   // 
-  // 	- **PostgreSQL**
+  // - **PostgreSQL**
   // 
-  // 	- **Oracle**
+  // - **Oracle**
   // 
   // example:
   // 
   // MySQL
   DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
-  // The version of the database engine
+  // The version of the database engine.
   // 
-  // 	- Valid values for the MySQL database engine:
+  // - Valid values for MySQL:
   // 
-  //     	- **5.6**
+  //   - **5.6**
   // 
-  //     	- **5.7**
+  //   - **5.7**
   // 
-  //     	- **8.0**
+  //   - **8.0**
   // 
-  // 	- Valid values for the PostgreSQL database engine:
+  // - Valid values for PostgreSQL:
   // 
-  //     	- **11**
+  //   - **11**
   // 
-  //     	- **14**
+  //   - **14**
   // 
-  // 	- Valid value for the Oracle database engine: **11**
+  // - Valid value for Oracle: **11**.
   // 
   // example:
   // 
   // 8.0
   DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
-  // The ID of the request.
+  // The request ID.
   // 
   // example:
   // 

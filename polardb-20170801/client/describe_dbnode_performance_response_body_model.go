@@ -26,25 +26,25 @@ type iDescribeDBNodePerformanceResponseBody interface {
 }
 
 type DescribeDBNodePerformanceResponseBody struct {
-	// The ID of the cluster node.
+	// The ID of the node in the PolarDB cluster.
 	//
 	// example:
 	//
 	// pi-*****************
 	DBNodeId *string `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty"`
-	// The type of the database engine.
+	// The database engine type.
 	//
 	// example:
 	//
 	// MySQL
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
-	// The version of the database engine.
+	// The database engine version.
 	//
 	// example:
 	//
 	// 8.0
 	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
-	// The end time of the query. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+	// The end of the time range. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is in UTC.
 	//
 	// example:
 	//
@@ -57,7 +57,7 @@ type DescribeDBNodePerformanceResponseBody struct {
 	//
 	// E2FDB684-751D-424D-98B9-704BEA******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The start time of the query. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+	// The beginning of the time range. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is in UTC.
 	//
 	// example:
 	//

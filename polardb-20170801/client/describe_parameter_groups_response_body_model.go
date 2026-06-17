@@ -16,9 +16,9 @@ type iDescribeParameterGroupsResponseBody interface {
 }
 
 type DescribeParameterGroupsResponseBody struct {
-	// The details of parameter templates.
+	// The list of parameter templates.
 	ParameterGroups []*DescribeParameterGroupsResponseBodyParameterGroups `json:"ParameterGroups,omitempty" xml:"ParameterGroups,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -72,23 +72,23 @@ type DescribeParameterGroupsResponseBodyParameterGroups struct {
 	//
 	// 2023-03-10T08:40:39Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The type of the engine.
+	// The type of the database engine.
 	//
 	// example:
 	//
 	// MySQL
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
-	// The version of the database engine
+	// The version of the database engine.
 	//
 	// example:
 	//
 	// 8.0
 	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
-	// Indicates whether to restart the cluster when this parameter template is applied. Valid values:
+	// Indicates whether a cluster restart is required for the parameter template to take effect. Valid values:
 	//
-	// 	- **0**: A restart is not required.
+	// - **0**: A restart is not required.
 	//
-	// 	- **1**: A restart is required.
+	// - **1**: A restart is required.
 	//
 	// example:
 	//
@@ -120,11 +120,11 @@ type DescribeParameterGroupsResponseBodyParameterGroups struct {
 	ParameterGroupName *string `json:"ParameterGroupName,omitempty" xml:"ParameterGroupName,omitempty"`
 	// The type of the parameter template. Valid values:
 	//
-	// 	- **0**: the default parameter template.
+	// - **0**: system default template
 	//
-	// 	- **1**: a custom parameter template.
+	// - **1**: user-defined template
 	//
-	// 	- **2**: an automatic backup parameter template. After you apply this type of template, the system automatically backs up the original parameter settings and saves the backup as a template.
+	// - **2**: automatic backup template (The system automatically backs up the previous parameter settings as a template after you apply a new template.)
 	//
 	// example:
 	//

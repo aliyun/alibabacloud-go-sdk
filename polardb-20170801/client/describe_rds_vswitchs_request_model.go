@@ -30,6 +30,8 @@ type iDescribeRdsVSwitchsRequest interface {
 type DescribeRdsVSwitchsRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID. Call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to view available regions.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -39,10 +41,14 @@ type DescribeRdsVSwitchsRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The ID of the virtual private cloud (VPC) where the endpoint is located.
+	//
 	// example:
 	//
 	// vpc-*************
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The zone ID.
+	//
 	// example:
 	//
 	// cn-hangzhou-i

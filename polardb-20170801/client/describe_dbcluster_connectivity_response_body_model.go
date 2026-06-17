@@ -22,27 +22,27 @@ type iDescribeDBClusterConnectivityResponseBody interface {
 }
 
 type DescribeDBClusterConnectivityResponseBody struct {
-	// The error code for connection diagnosis. Valid values:
+	// The connection check error code. Valid values:
 	//
-	// 	- **SRC_IP_NOT_IN_USER_WHITELIST**: The source IP address is not added to the whitelist.
+	// - **SRC_IP_NOT_IN_USER_WHITELIST**: The source IP address is not in the whitelist.
 	//
-	// 	- **CONNECTION_ABNORMAL**: The connection to the cluster is normal.
+	// - **CONNECTION_ABNORMAL**: The connection is abnormal.
 	//
 	// example:
 	//
 	// SRC_IP_NOT_IN_USER_WHITELIST
 	ConnCheckErrorCode *string `json:"ConnCheckErrorCode,omitempty" xml:"ConnCheckErrorCode,omitempty"`
-	// The error message for connection diagnosis.
+	// The connection check error message.
 	//
 	// example:
 	//
 	// Src ip:192.***.***.1 not in user whitelist
 	ConnCheckErrorMessage *string `json:"ConnCheckErrorMessage,omitempty" xml:"ConnCheckErrorMessage,omitempty"`
-	// The connection diagnosis result. Valid values:
+	// The connection check result. Valid values:
 	//
-	// 	- **Success**
+	// - **Success**
 	//
-	// 	- **Failed**
+	// - **Failed**
 	//
 	// example:
 	//

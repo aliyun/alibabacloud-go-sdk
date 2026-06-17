@@ -14,7 +14,7 @@ type iDeleteParameterGroupResponseBody interface {
 }
 
 type DeleteParameterGroupResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

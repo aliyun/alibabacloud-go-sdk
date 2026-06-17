@@ -30,10 +30,17 @@ type iModifyLogBackupPolicyShrinkRequest interface {
 }
 
 type ModifyLogBackupPolicyShrinkRequest struct {
+	// The advanced backup policies.
+	//
+	// > - - This parameter is not supported for PolarDB for PostgreSQL (Oracle Compatible) or PolarDB for PostgreSQL.
+	//
+	// >
+	//
+	// > - - This parameter is supported only for clusters for which the BackupPolicyLevel parameter is set to Advanced.
 	AdvancedLogPoliciesShrink *string `json:"AdvancedLogPolicies,omitempty" xml:"AdvancedLogPolicies,omitempty"`
 	// The cluster ID.
 	//
-	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the information of all clusters that are deployed in a specific region, such as the cluster IDs.
+	// > Call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to view information about all clusters in a specific region, including cluster IDs.
 	//
 	// This parameter is required.
 	//
@@ -41,7 +48,9 @@ type ModifyLogBackupPolicyShrinkRequest struct {
 	//
 	// pc-****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The region in which you want to store cross-region log backups. For information about regions that support the cross-region backup feature, see [Overview](https://help.aliyun.com/document_detail/72672.html).
+	// The destination region for cross-region log backups. For information about the regions that support cross-region backup, see [Overview](https://help.aliyun.com/document_detail/72672.html).
+	//
+	// > - - After you enable the advanced backup feature, this parameter is no longer valid. Use the AdvancedLogPolicies parameter instead.
 	//
 	// example:
 	//
@@ -49,23 +58,29 @@ type ModifyLogBackupPolicyShrinkRequest struct {
 	LogBackupAnotherRegionRegion *string `json:"LogBackupAnotherRegionRegion,omitempty" xml:"LogBackupAnotherRegionRegion,omitempty"`
 	// The retention period of cross-region log backups. Valid values:
 	//
-	// 	- **0**: The cross-region backup feature is disabled.
+	// - **0**: Disables the cross-region log backup feature.
 	//
-	// 	- **30 to 7300**: Cross-region log backups are retained for 30 to 7,300 days.
+	// - **30 to 7300**: The retention period in days.
 	//
-	// 	- **-1**: The log backups are permanently retained.
+	// - **-1**: long-term retention.
 	//
-	// >  When you create a cluster, the default value of this parameter is **0**.
+	// > 	- 	- When you create a cluster, the default value of this parameter is **0**. This value disables the cross-region log backup feature.
+	//
+	// >
+	//
+	// > 	- - After you enable the advanced backup feature, this parameter is no longer valid. Use the AdvancedLogPolicies parameter instead.
 	//
 	// example:
 	//
 	// 30
 	LogBackupAnotherRegionRetentionPeriod *string `json:"LogBackupAnotherRegionRetentionPeriod,omitempty" xml:"LogBackupAnotherRegionRetentionPeriod,omitempty"`
-	// The retention period of the log backups. Valid values:
+	// The retention period of log backups. Valid values:
 	//
-	// 	- 3 to 7300: The log backups are retained for 3 to 7,300 days.
+	// - 3 to 7300: The retention period in days.
 	//
-	// 	- \\-1: The log backups are permanently retained.
+	// - -1: long-term retention.
+	//
+	// > 	- 	- After you enable the advanced backup feature, this parameter is no longer valid. Use the AdvancedLogPolicies parameter instead.
 	//
 	// example:
 	//

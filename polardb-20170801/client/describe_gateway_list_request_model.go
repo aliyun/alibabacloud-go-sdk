@@ -22,23 +22,45 @@ type iDescribeGatewayListRequest interface {
 }
 
 type DescribeGatewayListRequest struct {
+	// The ID of the gateway instance.
+	//
 	// example:
 	//
 	// pg-xxxxxxxxxx
 	GwClusterId *string `json:"GwClusterId,omitempty" xml:"GwClusterId,omitempty"`
+	// The description of the gateway instance.
+	//
 	// example:
 	//
 	// test
 	GwDescription *string `json:"GwDescription,omitempty" xml:"GwDescription,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values:
+	//
+	// - **30**
+	//
+	// - **50**
+	//
+	// - **100**
+	//
+	// Default value: **30**.
+	//
 	// example:
 	//
 	// 30
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 

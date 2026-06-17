@@ -14,7 +14,7 @@ type iDeleteExtensionsResponseBody interface {
 }
 
 type DeleteExtensionsResponseBody struct {
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//

@@ -52,72 +52,126 @@ type iDescribeAIDBClusterTaskAttributeResponseBody interface {
 }
 
 type DescribeAIDBClusterTaskAttributeResponseBody struct {
+	// The access information for the model in a test deployment.
+	//
 	// example:
 	//
 	// {\\"networkInterfaceId\\":\\"eni-2zea***\\",\\"port\\":\\"8000\\",\\"host\\":\\"192.**.**.**\\"}
 	AccessInfo *string `json:"AccessInfo,omitempty" xml:"AccessInfo,omitempty"`
+	// The cluster network type.
+	//
 	// example:
 	//
 	// VPC
 	ClusterNetworkType *string `json:"ClusterNetworkType,omitempty" xml:"ClusterNetworkType,omitempty"`
+	// The task creation time.
+	//
 	// example:
 	//
 	// 2025-11-12T03:45:13Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The cluster description.
+	//
 	// example:
 	//
 	// task01
 	DBClusterDescription *string `json:"DBClusterDescription,omitempty" xml:"DBClusterDescription,omitempty"`
+	// The cluster ID.
+	//
 	// example:
 	//
 	// pm-2ze99***
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The training status. Valid values:
+	//
+	// - **ACTIVATION**: Training in progress.
+	//
+	// - **COMPLETED**: Training successful.
+	//
+	// - **FAILED**: Training failed.
+	//
 	// example:
 	//
 	// COMPLETED
 	DBClusterStatus *string `json:"DBClusterStatus,omitempty" xml:"DBClusterStatus,omitempty"`
+	// The training status description. Valid values:
+	//
+	// - **ACTIVATION**: Training in progress.
+	//
+	// - **COMPLETED**: Training successful.
+	//
+	// - **FAILED**: Training failed.
+	//
 	// example:
 	//
 	// COMPLETED
 	DBClusterStatusDesc *string `json:"DBClusterStatusDesc,omitempty" xml:"DBClusterStatusDesc,omitempty"`
+	// The engine type.
+	//
 	// example:
 	//
 	// polardb_ai
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
+	// The version. Valid value:
+	//
+	// - **3.1**: Model operator tuning.
+	//
 	// example:
 	//
 	// 3.1
-	DBVersion *string                                                 `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
-	DataSets  []*DescribeAIDBClusterTaskAttributeResponseBodyDataSets `json:"DataSets,omitempty" xml:"DataSets,omitempty" type:"Repeated"`
-	ExtraInfo []map[string]interface{}                                `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty" type:"Repeated"`
+	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
+	// The datasets used for the task.
+	DataSets []*DescribeAIDBClusterTaskAttributeResponseBodyDataSets `json:"DataSets,omitempty" xml:"DataSets,omitempty" type:"Repeated"`
+	// A list of objects containing additional information about the task.
+	ExtraInfo []map[string]interface{} `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty" type:"Repeated"`
+	// The instance type. Valid value:
+	//
+	// - **18**.
+	//
 	// example:
 	//
 	// 18
 	KindCode *int64 `json:"KindCode,omitempty" xml:"KindCode,omitempty"`
+	// The lock mode. Valid values:
+	//
+	// - **0**: Locked.
+	//
+	// - **1**: Unlocked.
+	//
 	// example:
 	//
 	// 1
 	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
+	// The maintenance end time.
+	//
 	// example:
 	//
 	// 12:00Z
 	MaintainEndTime *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
+	// The maintenance start time.
+	//
 	// example:
 	//
 	// 8:00Z
 	MaintainStartTime *string `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
-	ModelPath         *string `json:"ModelPath,omitempty" xml:"ModelPath,omitempty"`
-	// Id of the request
+	// A comma-separated list of output model paths from the model fine-tuning task.
+	ModelPath *string `json:"ModelPath,omitempty" xml:"ModelPath,omitempty"`
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 45D24263-7E3A-4140-9472-************
-	RequestId *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskInfo  []*DescribeAIDBClusterTaskAttributeResponseBodyTaskInfo `json:"TaskInfo,omitempty" xml:"TaskInfo,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// A list of objects containing information about each training task.
+	TaskInfo []*DescribeAIDBClusterTaskAttributeResponseBodyTaskInfo `json:"TaskInfo,omitempty" xml:"TaskInfo,omitempty" type:"Repeated"`
+	// The VPC ID.
+	//
 	// example:
 	//
 	// vpc-**********
 	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
+	// The vSwitch ID.
+	//
 	// example:
 	//
 	// vsw-*********************
@@ -335,18 +389,30 @@ func (s *DescribeAIDBClusterTaskAttributeResponseBody) Validate() error {
 }
 
 type DescribeAIDBClusterTaskAttributeResponseBodyDataSets struct {
+	// The dataset name.
+	//
 	// example:
 	//
 	// dataset02
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The dataset path.
+	//
 	// example:
 	//
 	// polardb_ai/datasets/train/grpo/dataset02/test-**.jsonl#1000
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The proportion of the training set reserved for validation.
+	//
 	// example:
 	//
 	// 0.1
 	SplitDatasetRatio *string `json:"SplitDatasetRatio,omitempty" xml:"SplitDatasetRatio,omitempty"`
+	// The type of the dataset. Valid values:
+	//
+	// - **train**: The training set.
+	//
+	// - **eval**: The validation set.
+	//
 	// example:
 	//
 	// train
@@ -402,34 +468,62 @@ func (s *DescribeAIDBClusterTaskAttributeResponseBodyDataSets) Validate() error 
 }
 
 type DescribeAIDBClusterTaskAttributeResponseBodyTaskInfo struct {
+	// The task completion time.
+	//
 	// example:
 	//
 	// 2025-09-10T01:56:00Z
 	CompletedTime *string `json:"CompletedTime,omitempty" xml:"CompletedTime,omitempty"`
+	// The base model.
+	//
 	// example:
 	//
 	// Qwen-1.7B
 	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	// The path to the custom model.
+	//
 	// example:
 	//
 	// Qwen-1.7B
 	ModelPath *string `json:"ModelPath,omitempty" xml:"ModelPath,omitempty"`
+	// The source of the model. Valid values:
+	//
+	// - **public**: A pre-built model.
+	//
+	// - **custom**: A custom model.
+	//
 	// example:
 	//
 	// public
 	ModelSource *string `json:"ModelSource,omitempty" xml:"ModelSource,omitempty"`
+	// The runtime parameters.
+	//
 	// example:
 	//
 	// {"split_dataset_ratio": 0.1,"train_mode": "grpo","train_type": "lora","num_epochs": 1,"batch_size": 2,"eval_batch_size": 2, "num_generations": 2, "learning_rate": "1e-6", "data_file_list": "test-00000-of-00001.jsonl#1000", "lora_rank": 8, "lora_alpha": 32, "external_plugins": "/plugin/train/plugin.py", "reward_funcs": "format,external_countdown", "gpu_memory_utilization": 0.4}
 	RunningTimes *string `json:"RunningTimes,omitempty" xml:"RunningTimes,omitempty"`
+	// The task start time.
+	//
 	// example:
 	//
 	// 2025-09-10T01:56:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The task type. Valid values:
+	//
+	// - **sft**: Supervised Fine-tuning.
+	//
+	// - **grpo**: Reinforcement learning.
+	//
 	// example:
 	//
 	// stf
 	TrainMode *string `json:"TrainMode,omitempty" xml:"TrainMode,omitempty"`
+	// The training method. Valid values:
+	//
+	// - **lora**: Low-Rank Adaptation (LoRA) training.
+	//
+	// - **full**: Full training.
+	//
 	// example:
 	//
 	// lora

@@ -26,29 +26,40 @@ type iPatchPolarClawConfigResponseBody interface {
 }
 
 type PatchPolarClawConfigResponseBody struct {
+	// The application ID.
+	//
 	// example:
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The status code.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Indicates whether the operation was successful.
+	//
 	// example:
 	//
 	// true
-	Ok          *bool     `json:"Ok,omitempty" xml:"Ok,omitempty"`
+	Ok *bool `json:"Ok,omitempty" xml:"Ok,omitempty"`
+	// A list of the top-level configuration keys that were modified.
 	PatchedKeys []*string `json:"PatchedKeys,omitempty" xml:"PatchedKeys,omitempty" type:"Repeated"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 3E5CD764-FCCA-5C9C-838E-20E0DE84B2AF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the gateway was restarted.
+	//
 	// example:
 	//
 	// true

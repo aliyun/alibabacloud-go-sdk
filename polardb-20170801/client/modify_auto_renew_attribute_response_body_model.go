@@ -14,7 +14,7 @@ type iModifyAutoRenewAttributeResponseBody interface {
 }
 
 type ModifyAutoRenewAttributeResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

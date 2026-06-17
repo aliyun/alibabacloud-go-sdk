@@ -40,50 +40,70 @@ type iCreateNetworkChannelRequest interface {
 }
 
 type CreateNetworkChannelRequest struct {
+	// The name of the network channel. The name must consist of lowercase letters, digits, and underscores (_). It must start and end with a letter or a digit. The name can be up to 64 characters long.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ch4
 	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
+	// A client token that ensures the request is idempotent. The client generates this token. The token must be unique for each request. It is case-sensitive and can be up to 64 ASCII characters long.
+	//
 	// example:
 	//
 	// 6000170000591aed949d0f5********************
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The name of the source instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pc-*****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The notes.
+	//
 	// example:
 	//
 	// test
 	Notes        *string `json:"Notes,omitempty" xml:"Notes,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	//
 	// example:
 	//
 	// rg-re*********
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The name of the destination instance.
+	//
 	// example:
 	//
 	// pc-*****************
 	TargetDBClusterId *string `json:"TargetDBClusterId,omitempty" xml:"TargetDBClusterId,omitempty"`
+	// The IP address of the destination instance.
+	//
 	// example:
 	//
 	// 192.**.**.46
 	TargetIp *string `json:"TargetIp,omitempty" xml:"TargetIp,omitempty"`
+	// The port of the destination instance.
+	//
 	// example:
 	//
 	// 9032
 	TargetPort *string `json:"TargetPort,omitempty" xml:"TargetPort,omitempty"`
+	// The ID of the virtual private cloud (VPC) where the endpoint is located.
+	//
 	// example:
 	//
 	// vpc-25cdvfeq58pl****

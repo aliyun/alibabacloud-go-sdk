@@ -22,26 +22,27 @@ type iDescribeDBClustersResponseBody interface {
 }
 
 type DescribeDBClustersResponseBody struct {
+	// The details of the clusters.
 	Items *DescribeDBClustersResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	// The number of the page to return.
+	// The page number.
 	//
 	// example:
 	//
 	// 12
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of clusters returned per page.
+	// The number of clusters returned on the current page.
 	//
 	// example:
 	//
 	// 5
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 9B7BFB11-C077-4FE3-B051-F69CEB******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of returned entries.
+	// The total number of records.
 	//
 	// example:
 	//

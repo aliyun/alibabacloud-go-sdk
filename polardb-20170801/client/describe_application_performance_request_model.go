@@ -28,40 +28,70 @@ type iDescribeApplicationPerformanceRequest interface {
 }
 
 type DescribeApplicationPerformanceRequest struct {
+	// The ID of the application cluster.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The ID of the consumer.
+	//
 	// example:
 	//
 	// c-xxxxxxx
 	Consumer *string `json:"Consumer,omitempty" xml:"Consumer,omitempty"`
+	// The ID of the consumer group.
+	//
 	// example:
 	//
 	// cg-xxxxxx
 	ConsumerGroup *string `json:"ConsumerGroup,omitempty" xml:"ConsumerGroup,omitempty"`
+	// The end time for the query. Specify the time in UTC in the `yyyy-MM-ddTHH:mmZ` format.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2020-09-23T01:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The granularity of the performance data, in seconds. Valid values:
+	//
+	// - 5
+	//
+	// - 30
+	//
+	// - 60
+	//
+	// - 600
+	//
+	// - 1800
+	//
+	// - 3600
+	//
+	// - 86400
+	//
 	// example:
 	//
 	// 5
 	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The performance metrics to query. Separate multiple metrics with commas (,).<br>You can specify up to five performance metrics.<br>
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// PolarDBSupabaseMemUsage
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The ID of the model service.
+	//
 	// example:
 	//
 	// ms-xxxxxx
 	ModelService *string `json:"ModelService,omitempty" xml:"ModelService,omitempty"`
+	// The start time for the query. Specify the time in UTC in the `yyyy-MM-ddTHH:mmZ` format.
+	//
 	// This parameter is required.
 	//
 	// example:

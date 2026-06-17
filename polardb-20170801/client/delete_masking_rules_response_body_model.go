@@ -18,25 +18,25 @@ type iDeleteMaskingRulesResponseBody interface {
 }
 
 type DeleteMaskingRulesResponseBody struct {
-	// The message that is returned for the request.
+	// The response message.
 	//
-	// > If the request is successful, `Successful` is returned. If the request fails, an error message such as an error code is returned.
+	// > If the request is successful, `Successful` is returned. If the request fails, an error message is returned, such as an error code.
 	//
 	// example:
 	//
 	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 2BCEE25B-797C-426B-BA7B-D28CCF******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. Valid value:
+	// The result of the request. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The request was successful.
 	//
-	// 	- **false**
+	// - **false**: The request failed.
 	//
 	// example:
 	//

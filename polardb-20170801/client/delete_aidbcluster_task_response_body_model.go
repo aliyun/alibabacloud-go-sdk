@@ -18,15 +18,19 @@ type iDeleteAIDBClusterTaskResponseBody interface {
 }
 
 type DeleteAIDBClusterTaskResponseBody struct {
+	// The task ID.
+	//
 	// example:
 	//
 	// pm-2ze9***
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The ID of the PolarDB database instance for the AI model service.
+	//
 	// example:
 	//
 	// pc-2zejpr***
 	RelativeDBClusterId *string `json:"RelativeDBClusterId,omitempty" xml:"RelativeDBClusterId,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

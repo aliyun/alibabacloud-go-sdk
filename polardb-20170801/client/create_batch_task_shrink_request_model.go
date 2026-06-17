@@ -9,6 +9,8 @@ type iCreateBatchTaskShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetApplicationType(v string) *CreateBatchTaskShrinkRequest
+	GetApplicationType() *string
 	SetInstanceIdsShrink(v string) *CreateBatchTaskShrinkRequest
 	GetInstanceIdsShrink() *string
 	SetParam(v string) *CreateBatchTaskShrinkRequest
@@ -22,24 +24,37 @@ type iCreateBatchTaskShrinkRequest interface {
 }
 
 type CreateBatchTaskShrinkRequest struct {
+	ApplicationType *string `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
+	// The instance IDs.
+	//
 	// This parameter is required.
 	InstanceIdsShrink *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	// The task parameters.
+	//
 	// example:
 	//
 	// [{"skillName":"github","version":"1.0.0"},{"skillName":"skill-vetter","version":"1.0.1"}]
 	Param *string `json:"Param,omitempty" xml:"Param,omitempty"`
+	// The region ID.
+	//
+	// > Call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query the regions of all clusters in your account.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the batch task.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// batch_task_test
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// The task type.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -54,6 +69,10 @@ func (s CreateBatchTaskShrinkRequest) String() string {
 
 func (s CreateBatchTaskShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateBatchTaskShrinkRequest) GetApplicationType() *string {
+	return s.ApplicationType
 }
 
 func (s *CreateBatchTaskShrinkRequest) GetInstanceIdsShrink() *string {
@@ -74,6 +93,11 @@ func (s *CreateBatchTaskShrinkRequest) GetTaskName() *string {
 
 func (s *CreateBatchTaskShrinkRequest) GetTaskType() *string {
 	return s.TaskType
+}
+
+func (s *CreateBatchTaskShrinkRequest) SetApplicationType(v string) *CreateBatchTaskShrinkRequest {
+	s.ApplicationType = &v
+	return s
 }
 
 func (s *CreateBatchTaskShrinkRequest) SetInstanceIdsShrink(v string) *CreateBatchTaskShrinkRequest {

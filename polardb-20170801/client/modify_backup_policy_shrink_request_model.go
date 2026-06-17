@@ -50,45 +50,79 @@ type iModifyBackupPolicyShrinkRequest interface {
 }
 
 type ModifyBackupPolicyShrinkRequest struct {
+	// The advanced backup policies.
+	//
+	// > - - This parameter is not supported for PolarDB for PostgreSQL (compatible with Oracle) and PolarDB for PostgreSQL.
+	//
+	// >
+	//
+	// > - - This parameter is supported only for clusters for which `BackupPolicyLevel` is set to `Advanced`.
 	AdvancedDataPoliciesShrink *string `json:"AdvancedDataPolicies,omitempty" xml:"AdvancedDataPolicies,omitempty"`
-	// The backup frequency. Default value: Normal. Valid values:
+	// The backup frequency. Valid values:
 	//
-	// 	- **Normal**: standard backup. The system backs up data once a day.
+	// - **Normal*	- (default): standard backup. The cluster is backed up once a day.
 	//
-	// 	- **2/24H**: enhanced backup. The system backs up data every 2 hours.
+	// - **2/24H**: high-frequency backup. The cluster is backed up every 2 hours.
 	//
-	// 	- **3/24H**: enhanced backup. The system backs up data every 3 hours.
+	// - **3/24H**: high-frequency backup. The cluster is backed up every 3 hours.
 	//
-	// 	- **4/24H**: enhanced backup. The system backs up data every 4 hours.
+	// - **4/24H**: high-frequency backup. The cluster is backed up every 4 hours.
 	//
-	// >- If you enable enhanced backup, all backups are retained for 24 hours. For backup files that are created earlier than the previous 24 hours, the system permanently retains only the first backup that is created after 00:00 every day and deletes the rest.
+	// > 	- 	- If you enable high-frequency backup, all backups completed within the last 24 hours are retained. For backups older than 24 hours, the system retains only the first backup completed after 00:00 each day and deletes the rest.
 	//
-	// >- If you enable enhanced backup, **PreferredBackupPeriod*	- is automatically set to all days in a week (from Monday to Sunday).
+	// >
 	//
-	// >- This parameter is invalid if the region where your PolarDB for MySQL cluster is deployed supports the cross-region backup feature. For information about the regions that support the cross-region backup feature, see [Overview](https://help.aliyun.com/document_detail/72672.html).
+	// > 	- - If you enable high-frequency backup, the **PreferredBackupPeriod*	- parameter is automatically set to all days of the week (from Monday to Sunday).
+	//
+	// >
+	//
+	// > 	- - This parameter is not supported if your PolarDB for MySQL cluster is in a region that supports the cross-region backup feature. For more information about the regions that support cross-region backup, see [Overview](https://help.aliyun.com/document_detail/72672.html).
+	//
+	// >
+	//
+	// > 	- - After you enable advanced backup, this parameter is no longer effective. Use the `AdvancedDataPolicies` parameter instead.
 	//
 	// example:
 	//
 	// Normal
-	BackupFrequency   *string `json:"BackupFrequency,omitempty" xml:"BackupFrequency,omitempty"`
+	BackupFrequency *string `json:"BackupFrequency,omitempty" xml:"BackupFrequency,omitempty"`
+	// The level of the backup policy. Valid values:
+	//
+	// - **Normal**: standard backup
+	//
+	// - **Advanced**: advanced backup
+	//
+	// > 	- 	- This parameter is not supported for PolarDB for PostgreSQL (compatible with Oracle) and PolarDB for PostgreSQL.
+	//
+	// >
+	//
+	// > 	- - Check the `AdvancedPolicyOption` parameter in the response of the [DescribeBackupPolicy](https://help.aliyun.com/document_detail/2319231.html) operation to determine whether the cluster supports advanced backup. If the cluster supports advanced backup, you can request this feature in [Advanced backup settings](~611727~~).
+	//
+	// >
+	//
+	// > 	- - After you enable advanced backup, you **cannot*	- switch back to standard backup.
+	//
+	// example:
+	//
+	// Normal
 	BackupPolicyLevel *string `json:"BackupPolicyLevel,omitempty" xml:"BackupPolicyLevel,omitempty"`
-	// Specifies whether to retain backups when a cluster is deleted. Valid values:
+	// Specifies whether to retain backups when you delete the cluster. Valid values:
 	//
-	// 	- **ALL**: permanently retains all backups.
+	// - **ALL**: Permanently retains all backups.
 	//
-	// 	- **LATEST**: permanently retains the most recent backup.
+	// - **LATEST**: Permanently retains the last backup.
 	//
-	// 	- **NONE**: does not retain backups.
+	// - **NONE**: Does not retain backup sets.
 	//
-	// >  The default value of the parameter is NONE.
+	// > The default value is `NONE`.
 	//
 	// example:
 	//
 	// NONE
 	BackupRetentionPolicyOnClusterDeletion *string `json:"BackupRetentionPolicyOnClusterDeletion,omitempty" xml:"BackupRetentionPolicyOnClusterDeletion,omitempty"`
-	// The ID of the cluster.
+	// The cluster ID.
 	//
-	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query information about all clusters that are deployed in a specified region, such as the cluster ID.
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of all clusters in a specified region, including the cluster IDs.
 	//
 	// This parameter is required.
 	//
@@ -96,67 +130,87 @@ type ModifyBackupPolicyShrinkRequest struct {
 	//
 	// pc-bp13wz9586voc****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The frequency of level-1 backups. Default value: Normal. Valid values:
+	// The backup frequency. Valid values:
 	//
-	// 	- **Normal**: standard backup. The system backs up data once a day.
+	// - **Normal*	- (default): standard backup. The cluster is backed up once a day.
 	//
-	// 	- **2/24H**: enhanced backup. The system backs up data every 2 hours.
+	// - **2/24H**: high-frequency backup. The cluster is backed up every 2 hours.
 	//
-	// 	- **3/24H**: enhanced backup. The system backs up data every 3 hours.
+	// - **3/24H**: high-frequency backup. The cluster is backed up every 3 hours.
 	//
-	// 	- **4/24H**: enhanced backup. The system backs up data every 4 hours.
+	// - **4/24H**: high-frequency backup. The cluster is backed up every 4 hours.
 	//
-	// >- This parameter is invalid for PolarDB for Oracle clusters or PolarDB for PostgreSQL clusters.
+	// > 	- 	- This parameter is not supported for PolarDB for PostgreSQL (compatible with Oracle) and PolarDB for PostgreSQL.
 	//
-	// >- This parameter is invalid if the region where your PolarDB for MySQL cluster is deployed does not support the cross-region backup feature. For information about the regions that support the cross-region backup feature, see [Overview](https://help.aliyun.com/document_detail/72672.html).
+	// >
+	//
+	// > 	- - This parameter is not supported if your PolarDB for MySQL cluster is in a region that supports the cross-region backup feature. For more information about the regions that support cross-region backup, see [Overview](https://help.aliyun.com/document_detail/72672.html).
+	//
+	// >
+	//
+	// > 	- - After you enable advanced backup, this parameter is no longer effective. Use the `AdvancedDataPolicies` parameter instead.
 	//
 	// example:
 	//
 	// Normal
 	DataLevel1BackupFrequency *string `json:"DataLevel1BackupFrequency,omitempty" xml:"DataLevel1BackupFrequency,omitempty"`
-	// The backup cycle of level-1 backups. Valid values:
+	// The level-1 backup cycle. Valid values:
 	//
-	// 	- **Monday**
+	// - **Monday**
 	//
-	// 	- **Tuesday**
+	// - **Tuesday**
 	//
-	// 	- **Wednesday**
+	// - **Wednesday**
 	//
-	// 	- **Thursday**
+	// - **Thursday**
 	//
-	// 	- **Friday**
+	// - **Friday**
 	//
-	// 	- **Saturday**
+	// - **Saturday**
 	//
-	// 	- **Sunday**
+	// - **Sunday**
 	//
-	// >- You need to specify at least two values. Separate multiple values with commas (,).
+	// > 	- 	- You must select at least two days. Separate multiple values with commas.
 	//
-	// >- This parameter is invalid for PolarDB for Oracle clusters or PolarDB for PostgreSQL clusters.
+	// >
 	//
-	// >- This parameter is invalid if the region where your PolarDB for MySQL cluster is deployed does not support the cross-region backup feature. For information about the regions that support the cross-region backup feature, see [Overview](https://help.aliyun.com/document_detail/72672.html).
+	// > 	- - This parameter is not supported for PolarDB for PostgreSQL (compatible with Oracle) and PolarDB for PostgreSQL.
+	//
+	// >
+	//
+	// > 	- - This parameter is not supported if your PolarDB for MySQL cluster is in a region that supports the cross-region backup feature. For more information about the regions that support cross-region backup, see [Overview](https://help.aliyun.com/document_detail/72672.html).
+	//
+	// >
+	//
+	// > 	- - After you enable advanced backup, this parameter is no longer effective. Use the `AdvancedDataPolicies` parameter instead.
 	//
 	// example:
 	//
 	// Monday,Tuesday
 	DataLevel1BackupPeriod *string `json:"DataLevel1BackupPeriod,omitempty" xml:"DataLevel1BackupPeriod,omitempty"`
-	// The retention period of level-1 backups. Valid values: 3 to 14. Unit: days.
+	// The retention period for level-1 backups, in days. Valid values: 3 to 14.
+	//
+	// > - After you enable advanced backup, this parameter is no longer effective. Use the `AdvancedDataPolicies` parameter instead.
 	//
 	// example:
 	//
 	// 3
 	DataLevel1BackupRetentionPeriod *string `json:"DataLevel1BackupRetentionPeriod,omitempty" xml:"DataLevel1BackupRetentionPeriod,omitempty"`
-	// The time period during which automatic backup for level-1 backup is performed. The time period is in the `hh:mmZ-hh:mmZ` format and is displayed in UTC. The start time and end time are on the hour and have an interval of 1 hour. Example: `14:00Z-15:00Z`.
+	// The time window for automatic backups. Specify the time in UTC and in the `hh:mmZ-hh:mmZ` format. The time window must be a one-hour period that starts on the hour. For example, `14:00Z-15:00Z`.
 	//
-	// >- This parameter is invalid for PolarDB for Oracle clusters or PolarDB for PostgreSQL clusters.
+	// > - This parameter is not supported for PolarDB for PostgreSQL (compatible with Oracle) and PolarDB for PostgreSQL.
 	//
-	// >- This parameter is invalid if the region where your PolarDB for MySQL cluster is deployed does not support the cross-region backup feature. For information about the regions that support the cross-region backup feature, see [Overview](https://help.aliyun.com/document_detail/72672.html).
+	// >
+	//
+	// > - This parameter is not supported if your PolarDB for MySQL cluster is in a region that supports the cross-region backup feature. For more information about the regions that support cross-region backup, see [Overview](https://help.aliyun.com/document_detail/72672.html).
 	//
 	// example:
 	//
 	// 15:00Z-16:00Z
 	DataLevel1BackupTime *string `json:"DataLevel1BackupTime,omitempty" xml:"DataLevel1BackupTime,omitempty"`
-	// The region where the cross-region level-2 backup is stored. For information about regions that support the cross-region backup feature, see [Overview](https://help.aliyun.com/document_detail/72672.html).
+	// The destination region for the cross-region level-2 backup. For more information about the regions that support cross-region backup, see [Overview](https://help.aliyun.com/document_detail/72672.html).
+	//
+	// > - After you enable advanced backup, this parameter is no longer effective. Use the `AdvancedDataPolicies` parameter instead.
 	//
 	// example:
 	//
@@ -164,39 +218,51 @@ type ModifyBackupPolicyShrinkRequest struct {
 	DataLevel2BackupAnotherRegionRegion *string `json:"DataLevel2BackupAnotherRegionRegion,omitempty" xml:"DataLevel2BackupAnotherRegionRegion,omitempty"`
 	// The retention period of cross-region level-2 backups. Valid values:
 	//
-	// 	- **0**: The cross-region level-2 backup feature is disabled.
+	// - **0**: Disables the cross-region level-2 backup feature.
 	//
-	// 	- **30 to 7300**: Cross-region level-2 backups are retained for 30 to 7,300 days.
+	// - **30 to 7300**: The retention period of cross-region level-2 backups, in days.
 	//
-	// 	- **1**: Cross-region level-2 backups are permanently retained.
+	// - **-1**: Cross-region level-2 backups are permanently retained.
 	//
-	// >  The default value of the parameter is **0**.
+	// > 	- 	- When you create a cluster, the default value is **0**, which disables the cross-region level-2 backup feature.
+	//
+	// >
+	//
+	// > 	- - After you enable advanced backup, this parameter is no longer effective. Use the `AdvancedDataPolicies` parameter instead.
 	//
 	// example:
 	//
 	// 30
 	DataLevel2BackupAnotherRegionRetentionPeriod *string `json:"DataLevel2BackupAnotherRegionRetentionPeriod,omitempty" xml:"DataLevel2BackupAnotherRegionRetentionPeriod,omitempty"`
-	// The backup cycle of level-2 backups. Valid values:
+	// The level-2 backup cycle. Valid values:
 	//
-	// 	- **Monday**
+	// - **Monday**
 	//
-	// 	- **Tuesday**
+	// - **Tuesday**
 	//
-	// 	- **Wednesday**
+	// - **Wednesday**
 	//
-	// 	- **Thursday**
+	// - **Thursday**
 	//
-	// 	- **Friday**
+	// - **Friday**
 	//
-	// 	- **Saturday**
+	// - **Saturday**
 	//
-	// 	- **Sunday**
+	// - **Sunday**
 	//
-	// >- You need to specify at least two values. Separate multiple values with commas (,).
+	// > 	- 	- You must select at least two days. Separate multiple values with commas.
 	//
-	// >- This parameter is invalid for PolarDB for Oracle clusters or PolarDB for PostgreSQL clusters.
+	// >
 	//
-	// >- This parameter is invalid if the region where your PolarDB for MySQL cluster is deployed does not support the cross-region backup feature. For information about the regions that support the cross-region backup feature, see [Overview](https://help.aliyun.com/document_detail/72672.html).
+	// > 	- - This parameter is not supported for PolarDB for PostgreSQL (compatible with Oracle) and PolarDB for PostgreSQL.
+	//
+	// >
+	//
+	// > 	- - This parameter is not supported if your PolarDB for MySQL cluster is in a region that supports the cross-region backup feature. For more information about the regions that support cross-region backup, see [Overview](https://help.aliyun.com/document_detail/72672.html).
+	//
+	// >
+	//
+	// > 	- - After you enable advanced backup, this parameter is no longer effective. Use the `AdvancedDataPolicies` parameter instead.
 	//
 	// example:
 	//
@@ -204,13 +270,17 @@ type ModifyBackupPolicyShrinkRequest struct {
 	DataLevel2BackupPeriod *string `json:"DataLevel2BackupPeriod,omitempty" xml:"DataLevel2BackupPeriod,omitempty"`
 	// The retention period of level-2 backups. Valid values:
 	//
-	// 	- **0**: The level-2 backup feature is disabled.
+	// - **0**: Disables the level-2 backup feature.
 	//
-	// 	- **30 to 7300**: Level-2 backups are retained for 30 to 7,300 days.
+	// - **30 to 7300**: The retention period of level-2 backups, in days.
 	//
-	// 	- **1**: Level-2 backups are permanently retained.
+	// - **-1**: Level-2 backups are permanently retained.
 	//
-	// >  The default value of this parameter is **0**.
+	// > 	- 	- When you create a cluster, the default value is **0**, which disables the level-2 backup feature.
+	//
+	// >
+	//
+	// > 	- - After you enable advanced backup, this parameter is no longer effective. Use the `AdvancedDataPolicies` parameter instead.
 	//
 	// example:
 	//
@@ -220,29 +290,35 @@ type ModifyBackupPolicyShrinkRequest struct {
 	OwnerId                         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The backup cycle. Valid values:
 	//
-	// 	- **Monday**
+	// - **Monday**
 	//
-	// 	- **Tuesday**
+	// - **Tuesday**
 	//
-	// 	- **Wednesday**
+	// - **Wednesday**
 	//
-	// 	- **Thursday**
+	// - **Thursday**
 	//
-	// 	- **Friday**
+	// - **Friday**
 	//
-	// 	- **Saturday**
+	// - **Saturday**
 	//
-	// 	- **Sunday**
+	// - **Sunday**
 	//
-	// >- You need to specify at least two values. Separate multiple values with commas (,).
+	// > 	- 	- You must select at least two days. Separate multiple values with commas.
 	//
-	// >- This parameter is invalid if the region where your PolarDB for MySQL cluster is deployed supports the cross-region backup feature. For information about the regions that support the cross-region backup feature, see [Overview](https://help.aliyun.com/document_detail/72672.html).
+	// >
+	//
+	// > 	- - This parameter is not supported if your PolarDB for MySQL cluster is in a region that supports the cross-region backup feature. For more information about the regions that support cross-region backup, see [Overview](https://help.aliyun.com/document_detail/72672.html).
+	//
+	// >
+	//
+	// > 	- - After you enable advanced backup, this parameter is no longer effective. Use the `AdvancedDataPolicies` parameter instead.
 	//
 	// example:
 	//
 	// Monday,Tuesday
 	PreferredBackupPeriod *string `json:"PreferredBackupPeriod,omitempty" xml:"PreferredBackupPeriod,omitempty"`
-	// The time period during which automatic backup for level-1 backup is performed. The format is `hh:mmZ-hh:mmZ` format. The time is displayed in UTC. The start time and end time are on the hour and with an interval of one hour. Example: `14:00Z-15:00Z`.
+	// The time window for automatic backups. Specify the time in UTC and in the `hh:mmZ-hh:mmZ` format. The time window must be a one-hour period that starts on the hour. For example, `14:00Z-15:00Z`.
 	//
 	// example:
 	//

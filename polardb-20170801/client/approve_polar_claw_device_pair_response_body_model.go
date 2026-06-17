@@ -24,24 +24,33 @@ type iApprovePolarClawDevicePairResponseBody interface {
 }
 
 type ApprovePolarClawDevicePairResponseBody struct {
+	// The application ID.
+	//
 	// example:
 	//
 	// pa-********************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The response status code.
+	//
 	// example:
 	//
 	// 200
-	Code   *int32                                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The paired device information.
 	Device *ApprovePolarClawDevicePairResponseBodyDevice `json:"Device,omitempty" xml:"Device,omitempty" type:"Struct"`
+	// The response message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The pairing request ID.
+	//
 	// example:
 	//
 	// req-abc-123
 	PairRequestId *string `json:"PairRequestId,omitempty" xml:"PairRequestId,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -121,30 +130,43 @@ func (s *ApprovePolarClawDevicePairResponseBody) Validate() error {
 }
 
 type ApprovePolarClawDevicePairResponseBodyDevice struct {
+	// The creation time of the device pairing, in Unix milliseconds.
+	//
 	// example:
 	//
 	// 1778662316663
 	CreatedAtMs *int64 `json:"CreatedAtMs,omitempty" xml:"CreatedAtMs,omitempty"`
+	// The device family.
+	//
 	// example:
 	//
 	// server
 	DeviceFamily *string `json:"DeviceFamily,omitempty" xml:"DeviceFamily,omitempty"`
+	// The unique ID of the device.
+	//
 	// example:
 	//
 	// device-l7rdl36iz6op66zf
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// The display name of the device.
+	//
 	// example:
 	//
 	// test
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The operating system of the device.
+	//
 	// example:
 	//
 	// linux
 	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	// The role of the device.
+	//
 	// example:
 	//
 	// operator
-	Role   *string   `json:"Role,omitempty" xml:"Role,omitempty"`
+	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// A list of permission scopes.
 	Scopes []*string `json:"Scopes,omitempty" xml:"Scopes,omitempty" type:"Repeated"`
 }
 

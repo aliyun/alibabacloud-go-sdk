@@ -24,31 +24,50 @@ type iCreateRateLimitPolicyRequest interface {
 }
 
 type CreateRateLimitPolicyRequest struct {
+	// The gateway instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pg-xxxxxxx
 	GwClusterId *string `json:"GwClusterId,omitempty" xml:"GwClusterId,omitempty"`
+	// The maximum number of requests per minute.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	RateLimitRpm *string `json:"RateLimitRpm,omitempty" xml:"RateLimitRpm,omitempty"`
+	// The maximum number of tokens per minute.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	RateLimitTpm *string `json:"RateLimitTpm,omitempty" xml:"RateLimitTpm,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the consumer group or consumer.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cg-xxxxxxx
 	ScopeRefId *string `json:"ScopeRefId,omitempty" xml:"ScopeRefId,omitempty"`
+	// The rate limiting dimension. Valid values:
+	//
+	// - **ConsumerGroup**: Consumer group
+	//
+	// - **Consumer**: Consumer
+	//
 	// This parameter is required.
 	//
 	// example:

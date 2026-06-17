@@ -18,19 +18,28 @@ type iDeleteModelApiRequest interface {
 }
 
 type DeleteModelApiRequest struct {
+	// The gateway instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pg-xxxxxxxxxx
 	GwClusterId *string `json:"GwClusterId,omitempty" xml:"GwClusterId,omitempty"`
+	// The model API ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// mi-xxxxx
 	ModelApiId *string `json:"ModelApiId,omitempty" xml:"ModelApiId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DeleteModelApiRequest) String() string {

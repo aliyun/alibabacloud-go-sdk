@@ -24,6 +24,8 @@ type iDeleteSQLRateLimitingRulesRequest interface {
 }
 
 type DeleteSQLRateLimitingRulesRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -34,6 +36,10 @@ type DeleteSQLRateLimitingRulesRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The names of the SQL throttling rules to delete. To delete multiple rules in a batch, separate the rule names with commas (,).
+	//
+	// > Call the [DescribeSQLRateLimitingRules](https://help.aliyun.com/document_detail/212573.html) operation to view the details of all SQL throttling rules for the target cluster, including their names.
+	//
 	// This parameter is required.
 	//
 	// example:

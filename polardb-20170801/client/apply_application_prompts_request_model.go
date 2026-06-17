@@ -18,16 +18,22 @@ type iApplyApplicationPromptsRequest interface {
 }
 
 type ApplyApplicationPromptsRequest struct {
+	// The ID of the application.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// An array of prompt IDs to disable.
+	//
 	// example:
 	//
 	// papt-************
 	DisabledPromptIds []*string `json:"DisabledPromptIds,omitempty" xml:"DisabledPromptIds,omitempty" type:"Repeated"`
+	// An array of prompt IDs to enable.
+	//
 	// example:
 	//
 	// papt-************

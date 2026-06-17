@@ -30,9 +30,9 @@ type iModifyMaskingRulesRequest interface {
 }
 
 type ModifyMaskingRulesRequest struct {
-	// The ID of the cluster.
+	// The cluster ID.
 	//
-	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of the clusters that belong to your Alibaba Cloud account, such as cluster IDs.
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of all clusters in your account, including cluster IDs.
 	//
 	// This parameter is required.
 	//
@@ -40,44 +40,69 @@ type ModifyMaskingRulesRequest struct {
 	//
 	// pc-*****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The default algorithm.
+	//
+	// > You must specify either MaskingAlgo or DefaultAIgo.
+	//
+	// example:
+	//
+	// aes-128-gcm
 	DefaultAlgo *string `json:"DefaultAlgo,omitempty" xml:"DefaultAlgo,omitempty"`
-	// Specifies whether to enable the specified masking rule. Valid values:
+	// Enables or disables the specified data masking rules. Valid values:
 	//
-	// 	- **true**
+	// - **true**: enables the specified rules.
 	//
-	// 	- **false**
+	// - **false**: disables the specified rules.
 	//
-	// > This parameter is valid only when the `RuleNameList` parameter is specfied.
+	// > This parameter applies only when the `RuleNameList` parameter is specified.
 	//
 	// example:
 	//
 	// true
-	Enable           *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The type of rule to modify. Valid values:
+	//
+	// v1: Modifies a data masking rule.
+	//
+	// v2: Modifies an encryption rule.
+	//
+	// example:
+	//
+	// v1
 	InterfaceVersion *string `json:"InterfaceVersion,omitempty" xml:"InterfaceVersion,omitempty"`
-	MaskingAlgo      *string `json:"MaskingAlgo,omitempty" xml:"MaskingAlgo,omitempty"`
-	// The parameter that is used to specify the masking rule that you want to modify and the value in the JSON format. All parameter values are of the string type. Example: `{"auto": {"databases": ["db1"], "tables": ["tb1"], "columns": ["c1,c2"] }, "description": "This rule will be applied to the columns c1 and c2 in table t1", "enabled": true, "applies_to": ["user"]}`. Where,
+	// The masking algorithm. Specify one or more algorithms and their parameters. Format: `[{ "name": "algorithm_name", "params": {"key": "value"} }]`
 	//
-	// 	- `"auto"`: specifies that the dynamic masking algorithm is supported. This parameter is required.
+	// example:
 	//
-	// 	- `"databases"`: Optional. The names of databases to which the masking rule is applied. Separate the names with commas (,). If you leave this parameter empty, the masking rule applies to all databases in the cluster.
+	// [{
 	//
-	// 	- `"tables"`: Optional. The names of tables to which the masking rule is applied. Separate the names with commas (,). If you leave this parameter empty, the rule applies to all tables in the cluster.
+	// "name": "aes-128-gcm"
 	//
-	// 	- `"columns"`: Required. The names of fields to which the masking rule is applied. Separate the names with commas (,).
+	// }]
+	MaskingAlgo *string `json:"MaskingAlgo,omitempty" xml:"MaskingAlgo,omitempty"`
+	// A JSON string that specifies the rule configuration. Example: `{"auto": {"databases": ["db1"], "tables": ["tb1"], "columns": ["c1,c2"] }, "description": "This rule will be applied to the columns c1 and c2 in table t1", "enabled": true, "applies_to": ["user"]}`. The JSON string includes the following fields:
 	//
-	// 	- `"description"`: Optional. The description of the masking rule. The description is up to 64 characters in length.
+	// - `"auto"`: Required. The object that contains the configuration for the dynamic data masking algorithm.
 	//
-	// 	- `"enabled"`: Required. Specifies whether to enable the masking rule. Valid values: **true*	- (enable) and **false*	- (disable).
+	// - `"databases"`: Optional. The databases to which the rule applies. Separate multiple database names with a comma (,). If this parameter is omitted, the rule applies to all databases in the cluster.
 	//
-	// 	- `"applies_to"`: The names of database accounts to which the masking rule is applied. Separate the names with commas (,).
+	// - `"tables"`: Optional. The tables to which the rule applies. Separate multiple table names with a comma (,). If this parameter is omitted, the rule applies to all tables in the cluster.
 	//
-	// 	- `"exempted"`: The names of database accounts to which the masking rule is not applied. Separate the names with commas (,).
+	// - `"columns"`: Required. The columns to which the rule applies. Separate multiple column names with a comma (,).
+	//
+	// - `"description"`: Optional. The rule description, up to 64 characters in length.
+	//
+	// - `"enabled"`: Required. Specifies whether the data masking rule is enabled. Valid values: **true*	- (enabled) and **false*	- (disabled).
+	//
+	// - `"applies_to"`: The database accounts to which the rule applies. Separate multiple account names with a comma (,).
+	//
+	// - `"exempted"`: The database accounts that are exempt from the rule. Separate multiple account names with a comma (,).
+	//
+	// > 	- If you specify the `RuleName` parameter, you must also specify the `RuleConfig` parameter.
 	//
 	// >
 	//
-	// 	- If you specify `RuleName`, `RuleConfig` parameter is required.
-	//
-	// 	- You need to select either `"applies_to"` or `"exempted"`.
+	// > 	- You must specify either `"applies_to"` or `"exempted"`.
 	//
 	// example:
 	//
@@ -85,17 +110,17 @@ type ModifyMaskingRulesRequest struct {
 	RuleConfig *string `json:"RuleConfig,omitempty" xml:"RuleConfig,omitempty"`
 	// The name of the data masking rule. You can specify only one rule name at a time.
 	//
+	// > - You can call the [DescribeMaskingRules](https://help.aliyun.com/document_detail/212573.html) operation to query the details of all data masking rules in the target cluster, including rule names.
+	//
 	// >
 	//
-	// 	- You can call the [DescribeMaskingRules](https://help.aliyun.com/document_detail/212573.html) operation to query the details of all masking rules for a specified cluster, such as the names of the masking rules.
-	//
-	// 	- If the rule name does not exist in the cluster, the system automatically creates a masking rule based on the name and the value of `RuleConfig`.
+	// > - If a rule with the specified name does not exist, the system creates a new one based on the provided `RuleConfig`.
 	//
 	// example:
 	//
 	// testrule
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The list of masking rule names. You can specify one or more masking rules at a time. Separate the masking rule names with commas (,).
+	// A comma-separated list of data masking rule names.
 	//
 	// > You must specify either the `RuleName` or `RuleNameList` parameter.
 	//
@@ -103,11 +128,11 @@ type ModifyMaskingRulesRequest struct {
 	//
 	// testrule
 	RuleNameList *string `json:"RuleNameList,omitempty" xml:"RuleNameList,omitempty"`
-	// The version of the masking rule. Default value: v1. Valid values:
+	// The version of the data masking rule. Valid values:
 	//
-	// 	- v1
+	// - v1 (default)
 	//
-	// 	- v2
+	// - v2
 	//
 	// example:
 	//

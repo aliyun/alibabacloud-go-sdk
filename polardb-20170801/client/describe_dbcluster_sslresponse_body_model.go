@@ -18,9 +18,9 @@ type iDescribeDBClusterSSLResponseBody interface {
 }
 
 type DescribeDBClusterSSLResponseBody struct {
-	// The list of SSL connections.
+	// A list of SSL connection information.
 	Items []*DescribeDBClusterSSLResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -28,11 +28,11 @@ type DescribeDBClusterSSLResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether automatic rotation of SSL certificates is enabled. Valid values:
 	//
-	// 	- **Enable**: The feature is enabled.
+	// - **Enable**: enabled
 	//
-	// 	- **Disable**: The feature is disabled.
+	// - **Disable**: disabled
 	//
-	// > This parameter is valid only for a PolarDB for MySQL cluster.
+	// > This parameter is supported only for PolarDB for MySQL.
 	//
 	// example:
 	//
@@ -89,17 +89,25 @@ func (s *DescribeDBClusterSSLResponseBody) Validate() error {
 }
 
 type DescribeDBClusterSSLResponseBodyItems struct {
-	// The ID of the endpoint.
+	// The cluster endpoint ID.
 	//
 	// example:
 	//
 	// pe-************
 	DBEndpointId *string `json:"DBEndpointId,omitempty" xml:"DBEndpointId,omitempty"`
+	// Indicates whether automatic rotation of SSL certificates is enabled. Valid values:
+	//
+	// - **Enable**: enabled
+	//
+	// - **Disable**: disabled
+	//
+	// > This parameter is supported only when the database engine is compatible with PostgreSQL or Oracle syntax.
+	//
 	// example:
 	//
 	// Enable
 	SSLAutoRotate *string `json:"SSLAutoRotate,omitempty" xml:"SSLAutoRotate,omitempty"`
-	// The SSL connection string.
+	// The SSL connection endpoint.
 	//
 	// example:
 	//
@@ -107,15 +115,15 @@ type DescribeDBClusterSSLResponseBodyItems struct {
 	SSLConnectionString *string `json:"SSLConnectionString,omitempty" xml:"SSLConnectionString,omitempty"`
 	// Indicates whether SSL encryption is enabled. Valid values:
 	//
-	// 	- **Enabled**: SSL is enabled.
+	// - **Enabled**: enabled.
 	//
-	// 	- **Disable**: SSL is disabled.
+	// - **Disabled**: disabled.
 	//
 	// example:
 	//
 	// Enabled
 	SSLEnabled *string `json:"SSLEnabled,omitempty" xml:"SSLEnabled,omitempty"`
-	// The time when the server certificate expires. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+	// The certificate validity period. Format: `yyyy-MM-ddTHH:mm:ssZ` (UTC time).
 	//
 	// example:
 	//

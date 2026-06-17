@@ -26,7 +26,7 @@ type iDescribeBackupTasksRequest interface {
 }
 
 type DescribeBackupTasksRequest struct {
-	// The ID of the backup task.
+	// The backup job ID.
 	//
 	// example:
 	//
@@ -34,9 +34,9 @@ type DescribeBackupTasksRequest struct {
 	BackupJobId *string `json:"BackupJobId,omitempty" xml:"BackupJobId,omitempty"`
 	// The backup mode. Valid values:
 	//
-	// 	- **Automated**
+	// - **Automated**: An automatic backup.
 	//
-	// 	- **Manual**
+	// - **Manual**: A manual backup.
 	//
 	// example:
 	//

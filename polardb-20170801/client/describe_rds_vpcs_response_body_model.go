@@ -16,11 +16,14 @@ type iDescribeRdsVpcsResponseBody interface {
 }
 
 type DescribeRdsVpcsResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// B45E8D29-EA17-5141-AE09-F7A399760C9E
-	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Vpcs      *DescribeRdsVpcsResponseBodyVpcs `json:"Vpcs,omitempty" xml:"Vpcs,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// A list of VPCs.
+	Vpcs *DescribeRdsVpcsResponseBodyVpcs `json:"Vpcs,omitempty" xml:"Vpcs,omitempty" type:"Struct"`
 }
 
 func (s DescribeRdsVpcsResponseBody) String() string {
@@ -59,6 +62,7 @@ func (s *DescribeRdsVpcsResponseBody) Validate() error {
 }
 
 type DescribeRdsVpcsResponseBodyVpcs struct {
+	// The VPC details.
 	Vpc []*DescribeRdsVpcsResponseBodyVpcsVpc `json:"Vpc,omitempty" xml:"Vpc,omitempty" type:"Repeated"`
 }
 
@@ -93,43 +97,68 @@ func (s *DescribeRdsVpcsResponseBodyVpcs) Validate() error {
 }
 
 type DescribeRdsVpcsResponseBodyVpcsVpc struct {
+	// The ID of the Alibaba Cloud account.
+	//
 	// example:
 	//
 	// 1485293698******
 	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// The business type of the account. This parameter indicates whether the account is an Alibaba Finance Cloud account, an Alibaba Gov Cloud account, or a public cloud account.
+	//
 	// example:
 	//
 	// 26842
 	Bid *string `json:"Bid,omitempty" xml:"Bid,omitempty"`
+	// The CIDR block of the VPC.
+	//
 	// example:
 	//
 	// 10.21.0.0/16
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	// The time when the VPC was created.
+	//
 	// example:
 	//
 	// 2025-08-28T02:25:41Z
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The time when the VPC was last modified.
+	//
 	// example:
 	//
 	// 2025-04-30T09:41:14+08:00
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// Indicates whether the VPC is the default VPC.
+	//
 	// example:
 	//
 	// true
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	// The status of the VPC. Valid values:
+	//
+	// - Pending: The VPC is being configured.
+	//
+	// - Available: The VPC is available.
+	//
 	// example:
 	//
 	// Available
-	Status   *string                                       `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The details of the vSwitches in the VPC.
 	VSwitchs []*DescribeRdsVpcsResponseBodyVpcsVpcVSwitchs `json:"VSwitchs,omitempty" xml:"VSwitchs,omitempty" type:"Repeated"`
+	// The ID of the VPC.
+	//
 	// example:
 	//
 	// vpc-*************
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The name of the VPC.
+	//
 	// example:
 	//
 	// fc-webide
@@ -257,34 +286,54 @@ func (s *DescribeRdsVpcsResponseBodyVpcsVpc) Validate() error {
 }
 
 type DescribeRdsVpcsResponseBodyVpcsVpcVSwitchs struct {
+	// The vSwitch CIDR block.
+	//
 	// example:
 	//
 	// 192.168.7.0/24
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	// The time when the vSwitch was created.
+	//
 	// example:
 	//
 	// 2025-05-12 18:17:25
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The time when the vSwitch was last modified.
+	//
 	// example:
 	//
 	// 2025-01-07T15:10:32+08:00
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// Indicates whether the vSwitch is the default vSwitch. Valid values:
+	//
+	// - **true**: The vSwitch is the default vSwitch.
+	//
+	// - **false**: The vSwitch is not the default vSwitch.
+	//
 	// example:
 	//
 	// true
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// The ID of the zone.
+	//
 	// example:
 	//
 	// cn-hangzhou-k
 	IzNo *string `json:"IzNo,omitempty" xml:"IzNo,omitempty"`
+	// The status of the vSwitch. **Available*	- indicates that the vSwitch is available.
+	//
 	// example:
 	//
 	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the vSwitch.
+	//
 	// example:
 	//
 	// vsw-**********
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The name of the vSwitch.
+	//
 	// example:
 	//
 	// test

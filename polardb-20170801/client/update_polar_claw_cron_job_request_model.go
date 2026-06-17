@@ -42,66 +42,96 @@ type iUpdatePolarClawCronJobRequest interface {
 }
 
 type UpdatePolarClawCronJobRequest struct {
+	// The ID of the Agent that runs the task.
+	//
 	// example:
 	//
 	// work
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pa-xxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// Specifies whether to delete the task after its first execution.
+	//
 	// example:
 	//
 	// true
 	DeleteAfterRun *bool `json:"DeleteAfterRun,omitempty" xml:"DeleteAfterRun,omitempty"`
+	// The result delivery configuration.
+	//
 	// example:
 	//
 	// {"Mode":"announce","Channel":"telegram"}
 	Delivery *UpdatePolarClawCronJobRequestDelivery `json:"Delivery,omitempty" xml:"Delivery,omitempty" type:"Struct"`
+	// The new description for the task.
+	//
 	// example:
 	//
 	// Daily report generation
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Specifies whether the task is enabled.
+	//
 	// example:
 	//
 	// false
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The configuration for failure alerts. Set this to `false` to disable alerts.
+	//
 	// example:
 	//
 	// {"After":3,"Channel":"telegram"}
 	FailureAlert *UpdatePolarClawCronJobRequestFailureAlert `json:"FailureAlert,omitempty" xml:"FailureAlert,omitempty" type:"Struct"`
+	// The ID of the scheduled task to update.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0ee00f56-f467-4d41-858c-ca4ede2c770e
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The new name for the task.
+	//
 	// example:
 	//
 	// afternoon-report
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The new payload configuration.
+	//
 	// example:
 	//
 	// {"Kind":"agentTurn","Message":"Updated: Generate afternoon report."}
 	Payload *UpdatePolarClawCronJobRequestPayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
+	// Specifies whether to restart the gateway after the update. Default value: `true`.
+	//
 	// example:
 	//
 	// true
 	Restart *bool `json:"Restart,omitempty" xml:"Restart,omitempty"`
+	// The scheduling configuration.
+	//
 	// example:
 	//
 	// {"Kind":"cron","Expr":"0 12 	- 	- *","Tz":"America/New_York"}
 	Schedule *UpdatePolarClawCronJobRequestSchedule `json:"Schedule,omitempty" xml:"Schedule,omitempty" type:"Struct"`
+	// The session routing key.
+	//
 	// example:
 	//
 	// agent:main:feishu:direct:***
 	SessionKey *string `json:"SessionKey,omitempty" xml:"SessionKey,omitempty"`
+	// The new session target.
+	//
 	// example:
 	//
 	// isolated
 	SessionTarget *string `json:"SessionTarget,omitempty" xml:"SessionTarget,omitempty"`
+	// The new wake mode.
+	//
 	// example:
 	//
 	// now
@@ -276,22 +306,32 @@ func (s *UpdatePolarClawCronJobRequest) Validate() error {
 }
 
 type UpdatePolarClawCronJobRequestDelivery struct {
+	// The account ID for the channel.
+	//
 	// example:
 	//
 	// accountId123
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// Specifies whether to ignore delivery failures.
+	//
 	// example:
 	//
 	// false
 	BestEffort *bool `json:"BestEffort,omitempty" xml:"BestEffort,omitempty"`
+	// The delivery channel.
+	//
 	// example:
 	//
 	// telegram
 	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
+	// The delivery mode. Valid values: `none`, `announce`, and `webhook`.
+	//
 	// example:
 	//
 	// announce
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The delivery target. This parameter is required and must be a URL if `Delivery.Mode` is `webhook`.
+	//
 	// example:
 	//
 	// https://example.com/webhook
@@ -356,26 +396,38 @@ func (s *UpdatePolarClawCronJobRequestDelivery) Validate() error {
 }
 
 type UpdatePolarClawCronJobRequestFailureAlert struct {
+	// The account ID for the channel.
+	//
 	// example:
 	//
 	// accountId123
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The number of consecutive failures after which to send an alert.
+	//
 	// example:
 	//
 	// 3
 	After *int32 `json:"After,omitempty" xml:"After,omitempty"`
+	// The alert channel.
+	//
 	// example:
 	//
 	// email
 	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
+	// The minimum interval between two alerts, in milliseconds.
+	//
 	// example:
 	//
 	// 5000
 	CooldownMs *int32 `json:"CooldownMs,omitempty" xml:"CooldownMs,omitempty"`
+	// The alert mode. Valid values: `announce` and `webhook`.
+	//
 	// example:
 	//
 	// announce
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The alert target.
+	//
 	// example:
 	//
 	// user@example.com
@@ -449,44 +501,66 @@ func (s *UpdatePolarClawCronJobRequestFailureAlert) Validate() error {
 }
 
 type UpdatePolarClawCronJobRequestPayload struct {
+	// Specifies whether to ignore delivery failures.
 	BestEffortDeliver *bool `json:"BestEffortDeliver,omitempty" xml:"BestEffortDeliver,omitempty"`
+	// The ID of the delivery channel.
+	//
 	// example:
 	//
 	// telegram
 	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
+	// Specifies whether to deliver the output to a channel.
+	//
 	// example:
 	//
 	// false
-	Deliver   *bool     `json:"Deliver,omitempty" xml:"Deliver,omitempty"`
+	Deliver *bool `json:"Deliver,omitempty" xml:"Deliver,omitempty"`
+	// A list of fallback models.
 	Fallbacks []*string `json:"Fallbacks,omitempty" xml:"Fallbacks,omitempty" type:"Repeated"`
+	// The payload type. Valid values are `agentTurn` (for an Agent conversation) or `systemEvent` (for a system event).
+	//
 	// example:
 	//
 	// agentTurn
 	Kind *string `json:"Kind,omitempty" xml:"Kind,omitempty"`
+	// Specifies whether to use a lightweight context.
+	//
 	// example:
 	//
 	// false
 	LightContext *bool `json:"LightContext,omitempty" xml:"LightContext,omitempty"`
+	// The prompt for the Agent conversation. This parameter is required if `Payload.Kind` is `agentTurn`.
+	//
 	// example:
 	//
 	// Generate the daily report and send it to the team.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The model override.
+	//
 	// example:
 	//
 	// anthropic/sonnet-4.6
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// The text for the system event. This parameter is required if `Payload.Kind` is `systemEvent`.
+	//
 	// example:
 	//
 	// Send a reminder to the user.
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// The thinking level. Valid values: `off`, `minimal`, `low`, `medium`, `high`, and `xhigh`.
+	//
 	// example:
 	//
 	// medium
 	Thinking *string `json:"Thinking,omitempty" xml:"Thinking,omitempty"`
+	// The execution timeout in seconds.
+	//
 	// example:
 	//
 	// 10
 	TimeoutSeconds *int32 `json:"TimeoutSeconds,omitempty" xml:"TimeoutSeconds,omitempty"`
+	// The delivery target.
+	//
 	// example:
 	//
 	// team
@@ -614,30 +688,44 @@ func (s *UpdatePolarClawCronJobRequestPayload) Validate() error {
 }
 
 type UpdatePolarClawCronJobRequestSchedule struct {
+	// The anchor timestamp for interval alignment, in milliseconds.
+	//
 	// example:
 	//
 	// 1777370572518
 	AnchorMs *int64 `json:"AnchorMs,omitempty" xml:"AnchorMs,omitempty"`
+	// An ISO 8601 timestamp. This parameter is required if `Schedule.Kind` is `at`. For example: `2026-04-10T09:00:00+08:00`.
+	//
 	// example:
 	//
 	// 2026-04-10T09:00:00+08:00
 	At *string `json:"At,omitempty" xml:"At,omitempty"`
+	// The interval in milliseconds. This parameter is required if `Schedule.Kind` is `every`.
+	//
 	// example:
 	//
 	// 100000
 	EveryMs *int64 `json:"EveryMs,omitempty" xml:"EveryMs,omitempty"`
+	// The cron expression.
+	//
 	// example:
 	//
 	// 0 9 	- 	- *
 	Expr *string `json:"Expr,omitempty" xml:"Expr,omitempty"`
+	// The schedule type.
+	//
 	// example:
 	//
 	// cron
 	Kind *string `json:"Kind,omitempty" xml:"Kind,omitempty"`
+	// The deterministic jitter window, in milliseconds.
+	//
 	// example:
 	//
 	// 0
 	StaggerMs *int32 `json:"StaggerMs,omitempty" xml:"StaggerMs,omitempty"`
+	// The time zone.
+	//
 	// example:
 	//
 	// Asia/Shanghai

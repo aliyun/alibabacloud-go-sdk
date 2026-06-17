@@ -34,22 +34,30 @@ type iDeleteExtensionsRequest interface {
 }
 
 type DeleteExtensionsRequest struct {
+	// A client-generated token to ensure that the request is idempotent. The token must be unique for each request. It is case-sensitive and can contain a maximum of 64 ASCII characters.
+	//
 	// example:
 	//
 	// 6000170000591aed949d0f54a343f1a4233c1e7d1c5c******
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The ID of the cluster.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pc-**************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The name of the database.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// auto_test_db
 	DBNames *string `json:"DBNames,omitempty" xml:"DBNames,omitempty"`
+	// The extensions to uninstall. Separate multiple extension names with a comma (,).
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -64,10 +72,14 @@ type DeleteExtensionsRequest struct {
 	//
 	// 1234567890123456
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region.
+	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	//
 	// example:
 	//
 	// rg-************
@@ -80,6 +92,8 @@ type DeleteExtensionsRequest struct {
 	//
 	// 1234567890123456
 	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The ID of the virtual private cloud (VPC) where the endpoint is located.
+	//
 	// example:
 	//
 	// vpc-25cdvfeq58pl****

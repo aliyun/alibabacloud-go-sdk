@@ -16,12 +16,16 @@ type iDeleteApplicationPromptRequest interface {
 }
 
 type DeleteApplicationPromptRequest struct {
+	// The Application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The Prompt ID.
+	//
 	// This parameter is required.
 	//
 	// example:

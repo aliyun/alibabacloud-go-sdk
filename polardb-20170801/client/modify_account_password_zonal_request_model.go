@@ -30,22 +30,36 @@ type iModifyAccountPasswordZonalRequest interface {
 }
 
 type ModifyAccountPasswordZonalRequest struct {
+	// The account name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testacc
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// A client-generated, case-sensitive token that you can use to ensure the idempotence of the request. The token must be unique among different requests and can be up to 64 ASCII characters in length.
+	//
 	// example:
 	//
 	// 6000170000591aed949d0f5********************
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pc-**************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The new password for the account. The password must meet the following requirements:
+	//
+	// - Contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+	//
+	// - Be 8 to 32 characters in length.
+	//
+	// - The special characters are `!@#$%^&*()_+-=`.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -54,6 +68,8 @@ type ModifyAccountPasswordZonalRequest struct {
 	NewAccountPassword *string `json:"NewAccountPassword,omitempty" xml:"NewAccountPassword,omitempty"`
 	OwnerAccount       *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The password type.
+	//
 	// example:
 	//
 	// Tair

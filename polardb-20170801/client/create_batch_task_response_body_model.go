@@ -16,10 +16,14 @@ type iCreateBatchTaskResponseBody interface {
 }
 
 type CreateBatchTaskResponseBody struct {
+	// The release batch ID.
+	//
 	// example:
 	//
 	// pcb-xxx
 	BatchId *string `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// C61892A4-0850-4516-9E26-44D96C1782DE

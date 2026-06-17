@@ -16,13 +16,20 @@ type iDescribeGatewayAttributeRequest interface {
 }
 
 type DescribeGatewayAttributeRequest struct {
+	// The ID of the gateway instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pg-xxxxxxx
 	GwClusterId *string `json:"GwClusterId,omitempty" xml:"GwClusterId,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeGatewayAttributeRequest) String() string {

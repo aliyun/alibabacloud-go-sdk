@@ -24,12 +24,16 @@ type iUpgradePolarClawChannelShrinkRequest interface {
 }
 
 type UpgradePolarClawChannelShrinkRequest struct {
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The channel configuration object.
+	//
 	// example:
 	//
 	// {
@@ -48,20 +52,28 @@ type UpgradePolarClawChannelShrinkRequest struct {
 	//
 	// }
 	ChannelConfigShrink *string `json:"ChannelConfig,omitempty" xml:"ChannelConfig,omitempty"`
+	// The channel ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// feishu
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// The npm package name of the channel plugin, including the version number.
+	//
 	// example:
 	//
 	// @larksuite/openclaw-feishu@2026.4.7
 	NpmPackage *string `json:"NpmPackage,omitempty" xml:"NpmPackage,omitempty"`
+	// The ID of the channel plugin.
+	//
 	// example:
 	//
 	// openclaw-feishu
 	PluginId *string `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
+	// Specifies whether to restart the gateway after the upgrade. The default value is `true`.
+	//
 	// example:
 	//
 	// true

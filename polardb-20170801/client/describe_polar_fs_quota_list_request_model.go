@@ -24,22 +24,36 @@ type iDescribePolarFsQuotaListRequest interface {
 }
 
 type DescribePolarFsQuotaListRequest struct {
+	// The cluster ID.
+	//
 	// example:
 	//
 	// pc-************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	PageNumber  *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 30
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The PolarFS instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pfs-2ze0i74ka607*****
 	PolarFsInstanceId *string `json:"PolarFsInstanceId,omitempty" xml:"PolarFsInstanceId,omitempty"`
+	// The quota mode.
+	//
 	// example:
 	//
 	// quotaPolicy
 	QuotaMode *string `json:"QuotaMode,omitempty" xml:"QuotaMode,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing

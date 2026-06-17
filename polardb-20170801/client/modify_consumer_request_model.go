@@ -24,32 +24,47 @@ type iModifyConsumerRequest interface {
 }
 
 type ModifyConsumerRequest struct {
+	// The name of the consumer group.
+	//
 	// example:
 	//
 	// cg-xxxxxx
 	ConsumerGroupName *string `json:"ConsumerGroupName,omitempty" xml:"ConsumerGroupName,omitempty"`
+	// The ID of the consumer.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// c-mqveroemc***
 	ConsumerId *string `json:"ConsumerId,omitempty" xml:"ConsumerId,omitempty"`
+	// The ID of the gateway instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pg-xxxxxxxx
 	GwClusterId *string `json:"GwClusterId,omitempty" xml:"GwClusterId,omitempty"`
+	// Indicates if the consumer is in the default group. Valid values: 0 (No) and 1 (Yes).
+	//
 	// example:
 	//
 	// 0
 	IsDefault *string `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// The new name for the consumer.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 

@@ -22,7 +22,7 @@ type iDescribeDBClusterAccessWhitelistRequest interface {
 }
 
 type DescribeDBClusterAccessWhitelistRequest struct {
-	// The ID of the PolarDB cluster.
+	// The cluster ID.
 	//
 	// This parameter is required.
 	//

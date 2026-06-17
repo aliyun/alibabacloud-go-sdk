@@ -24,7 +24,7 @@ type CreateStoragePlanResponseBody struct {
 	//
 	// POLARDB-cn-**************
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The ID of the order.
+	// The order ID.
 	//
 	// example:
 	//

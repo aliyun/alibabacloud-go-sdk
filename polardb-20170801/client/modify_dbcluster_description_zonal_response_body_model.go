@@ -14,6 +14,8 @@ type iModifyDBClusterDescriptionZonalResponseBody interface {
 }
 
 type ModifyDBClusterDescriptionZonalResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 65D7ACE6-4A61-4B6E-B357-8CB24A******

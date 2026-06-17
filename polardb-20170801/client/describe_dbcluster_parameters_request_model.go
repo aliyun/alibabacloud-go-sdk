@@ -24,7 +24,7 @@ type iDescribeDBClusterParametersRequest interface {
 }
 
 type DescribeDBClusterParametersRequest struct {
-	// The ID of the cluster.
+	// The cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -32,11 +32,11 @@ type DescribeDBClusterParametersRequest struct {
 	//
 	// pc-**********
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The type of the parameter information to query. Valid values:
+	// The kernel parameters. Valid values:
 	//
-	// 	- **Normal**: the information about the cluster parameters
+	// - **Normal**: The list of kernel parameters.
 	//
-	// 	- **MigrationFromRDS**: a comparison of parameters between the source RDS instance and the destination PolarDB cluster
+	// - **MigrationFromRDS**: Compares parameters with those of an ApsaraDB RDS instance.
 	//
 	// example:
 	//

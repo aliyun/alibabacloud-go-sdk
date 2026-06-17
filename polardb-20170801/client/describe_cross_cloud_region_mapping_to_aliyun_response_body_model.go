@@ -16,7 +16,10 @@ type iDescribeCrossCloudRegionMappingToAliyunResponseBody interface {
 }
 
 type DescribeCrossCloudRegionMappingToAliyunResponseBody struct {
+	// The list of cross-cloud region mappings.
 	CrossCloudRegionMappingList []*DescribeCrossCloudRegionMappingToAliyunResponseBodyCrossCloudRegionMappingList `json:"CrossCloudRegionMappingList,omitempty" xml:"CrossCloudRegionMappingList,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// E56531A4-E552-40BA-9C58-137B80******
@@ -63,14 +66,20 @@ func (s *DescribeCrossCloudRegionMappingToAliyunResponseBody) Validate() error {
 }
 
 type DescribeCrossCloudRegionMappingToAliyunResponseBodyCrossCloudRegionMappingList struct {
+	// The region ID of Alibaba Cloud.
+	//
 	// example:
 	//
 	// cn-beijing
 	AliyunRegionId *string `json:"AliyunRegionId,omitempty" xml:"AliyunRegionId,omitempty"`
+	// The cloud provider.
+	//
 	// example:
 	//
 	// HuaweiCloud
 	CloudProvider *string `json:"CloudProvider,omitempty" xml:"CloudProvider,omitempty"`
+	// The region ID of the third-party cloud.
+	//
 	// example:
 	//
 	// cn-east-3

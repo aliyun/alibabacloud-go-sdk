@@ -22,22 +22,29 @@ type iDescribeSQLRateLimitingRulesResponseBody interface {
 }
 
 type DescribeSQLRateLimitingRulesResponseBody struct {
+	// The result set.
 	Data *DescribeSQLRateLimitingRulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The maximum number of entries returned for the current request. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The response message.
+	//
+	// > If the request is successful, \\`Successful\\` is returned. If the request fails, an error message is returned.
+	//
 	// example:
 	//
 	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// nextToken
+	// The token for the next page of results.
 	//
 	// example:
 	//
 	// AAAAARbaCuN6hiD08qrLdwJ9Fh0vHYf39hc0J5qELgsazkBk
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -108,6 +115,7 @@ func (s *DescribeSQLRateLimitingRulesResponseBody) Validate() error {
 }
 
 type DescribeSQLRateLimitingRulesResponseBodyData struct {
+	// The list of rules.
 	RuleList []*string `json:"RuleList,omitempty" xml:"RuleList,omitempty" type:"Repeated"`
 }
 

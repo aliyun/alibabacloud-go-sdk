@@ -33,28 +33,40 @@ type GetPolarAgentResponseBody struct {
 	// example:
 	//
 	// QZ-13661677-80
-	Content      *string                                  `json:"Content,omitempty" xml:"Content,omitempty"`
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Indicates whether FunctionCall is supported.
 	FunctionCall []*GetPolarAgentResponseBodyFunctionCall `json:"FunctionCall,omitempty" xml:"FunctionCall,omitempty" type:"Repeated"`
+	// The cloud product type.
+	//
 	// example:
 	//
 	// polardb
 	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	// The ID of the user query pipeline task.
+	//
 	// example:
 	//
 	// 2548026401648157601743560466154
 	QueryId *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
+	// The model\\"s reasoning content.
+	//
 	// example:
 	//
 	// xxxx
 	ReasoningContent *string `json:"ReasoningContent,omitempty" xml:"ReasoningContent,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 34458CD3-33E0-4624-BFEF-840C15******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The session ID for code execution.
+	//
 	// example:
 	//
 	// 40315d708f0806903b08813bf4c9db2e
-	SessionId      *string                                    `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// Indicates whether UiFunctionCall is supported.
 	UiFunctionCall []*GetPolarAgentResponseBodyUiFunctionCall `json:"UiFunctionCall,omitempty" xml:"UiFunctionCall,omitempty" type:"Repeated"`
 }
 
@@ -161,18 +173,26 @@ func (s *GetPolarAgentResponseBody) Validate() error {
 }
 
 type GetPolarAgentResponseBodyFunctionCall struct {
+	// The operation-related output result.
+	//
 	// example:
 	//
 	// ---narguments:n  parameters: []n
 	Arguments *string `json:"Arguments,omitempty" xml:"Arguments,omitempty"`
+	// The quota ID.
+	//
 	// example:
 	//
 	// 393
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The rule name.
+	//
 	// example:
 	//
 	// rule04
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The status.
+	//
 	// example:
 	//
 	// xxx
@@ -234,6 +254,8 @@ type GetPolarAgentResponseBodyUiFunctionCall struct {
 	//
 	// xxx
 	ArgsText *string `json:"ArgsText,omitempty" xml:"ArgsText,omitempty"`
+	// The tool command that is invoked.
+	//
 	// example:
 	//
 	// xxx

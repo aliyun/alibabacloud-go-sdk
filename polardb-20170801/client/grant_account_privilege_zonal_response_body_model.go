@@ -14,6 +14,8 @@ type iGrantAccountPrivilegeZonalResponseBody interface {
 }
 
 type GrantAccountPrivilegeZonalResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// CD35F3-F3-44CA-AFFF-BAF869******

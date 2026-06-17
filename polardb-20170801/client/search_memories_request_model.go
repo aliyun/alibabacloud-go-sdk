@@ -26,36 +26,50 @@ type iSearchMemoriesRequest interface {
 }
 
 type SearchMemoriesRequest struct {
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The start time for filtering memories by creation time. Must be in UTC and ISO 8601 format.
+	//
 	// example:
 	//
 	// yyyy-MM-ddTHH:mm:ssZ
 	CreateTimeBegin *string `json:"CreateTimeBegin,omitempty" xml:"CreateTimeBegin,omitempty"`
+	// The end time for filtering memories by creation time. Must be in UTC and ISO 8601 format.
+	//
 	// example:
 	//
 	// yyyy-MM-ddTHH:mm:ssZ
 	CreateTimeEnd *string `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
+	// The agent ID associated with the memory.
+	//
 	// example:
 	//
 	// agent1
 	MemoryAgentId *string `json:"MemoryAgentId,omitempty" xml:"MemoryAgentId,omitempty"`
+	// The user ID associated with the memory.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// user1
 	MemoryUserId *string `json:"MemoryUserId,omitempty" xml:"MemoryUserId,omitempty"`
+	// The search query.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// who are you
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// The maximum number of results to return.
+	//
 	// example:
 	//
 	// 3

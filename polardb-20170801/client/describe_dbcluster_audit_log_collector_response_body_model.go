@@ -18,9 +18,9 @@ type iDescribeDBClusterAuditLogCollectorResponseBody interface {
 type DescribeDBClusterAuditLogCollectorResponseBody struct {
 	// The status of SQL collector. Valid values:
 	//
-	// 	- Enable
+	// - Enable
 	//
-	// 	- Disabled
+	// - Disabled
 	//
 	// example:
 	//

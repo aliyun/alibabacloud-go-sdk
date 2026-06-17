@@ -24,25 +24,34 @@ type iDescribeConsumerGroupsResponseBody interface {
 }
 
 type DescribeConsumerGroupsResponseBody struct {
+	// A list of consumer groups.
 	Items []*DescribeConsumerGroupsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of records on the current page.
+	//
 	// example:
 	//
 	// 30
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	// The number of records returned per page. Valid values: 30, 50, and 100. Default value: 30.
+	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 24A1990B-4F6E-482B-B8CB-75C612******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 1
@@ -125,30 +134,48 @@ func (s *DescribeConsumerGroupsResponseBody) Validate() error {
 }
 
 type DescribeConsumerGroupsResponseBodyItems struct {
+	// The list of supported models.
+	//
 	// example:
 	//
 	// "[]"
 	AllowedModels *string `json:"AllowedModels,omitempty" xml:"AllowedModels,omitempty"`
+	// The ID of the consumer group.
+	//
 	// example:
 	//
 	// cg-xxxxxxxx
 	ConsumerGroupId *string `json:"ConsumerGroupId,omitempty" xml:"ConsumerGroupId,omitempty"`
+	// The name of the consumer group.
+	//
 	// example:
 	//
 	// test
 	ConsumerGroupName *string `json:"ConsumerGroupName,omitempty" xml:"ConsumerGroupName,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2026-01-28T09:56:03+08:00
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	// The update time.
+	//
 	// example:
 	//
 	// 2026-01-04T16:09:29+08:00
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// Indicates whether the consumer group is the default group. Valid values:
+	//
+	// - **0**: No
+	//
+	// - **1**: Yes
+	//
 	// example:
 	//
 	// 0
 	IsDefault *string `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// The nickname of the consumer group.
+	//
 	// example:
 	//
 	// test

@@ -20,14 +20,22 @@ type iDescribeZonesRequest interface {
 }
 
 type DescribeZonesRequest struct {
+	// The database engine.
+	//
 	// example:
 	//
 	// POLARDB
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The engine extension.
+	//
 	// example:
 	//
 	// local
 	Extra *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
+	// The region ID.
+	//
+	// > Call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to view information about all available regions for your account, including region IDs.
+	//
 	// example:
 	//
 	// cn-zhangjiakou

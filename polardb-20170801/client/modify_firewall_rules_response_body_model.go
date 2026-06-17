@@ -18,16 +18,26 @@ type iModifyFirewallRulesResponseBody interface {
 }
 
 type ModifyFirewallRulesResponseBody struct {
+	// The returned message.
+	//
+	// > If the request is successful, Successful is returned. If the request fails, an error message is returned, such as an error code.
+	//
 	// example:
 	//
 	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// A8DBA3A7-82FB-5CBE-A002-8959E47D1D61
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The result of the request. Valid values:
+	//
+	// - **true**: The request is successful.
+	//
+	// - **false**: The request fails.
+	//
 	// example:
 	//
 	// true

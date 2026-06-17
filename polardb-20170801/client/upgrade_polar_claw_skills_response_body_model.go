@@ -16,10 +16,14 @@ type iUpgradePolarClawSkillsResponseBody interface {
 }
 
 type UpgradePolarClawSkillsResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 45D24263-7E3A-4140-9472-************
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// 32077061

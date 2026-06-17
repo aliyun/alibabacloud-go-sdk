@@ -30,7 +30,7 @@ type iDescribeActivationCodesRequest interface {
 }
 
 type DescribeActivationCodesRequest struct {
-	// The ID of the Alibaba Cloud order. The value can be the ID of a virtual order.
+	// The ID of the Alibaba Cloud order (including virtual orders) used to purchase the activation codes.
 	//
 	// This parameter is required.
 	//
@@ -38,19 +38,21 @@ type DescribeActivationCodesRequest struct {
 	//
 	// 2233****445566
 	AliyunOrderId *string `json:"AliyunOrderId,omitempty" xml:"AliyunOrderId,omitempty"`
+	// Filters the list to return only the activation code matching the specified MAC address.
+	//
 	// example:
 	//
 	// aa:bb:cc:dd:ee:ff
 	MacAddress   *string `json:"MacAddress,omitempty" xml:"MacAddress,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number.
+	// Page number
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// Number of records to return per page
 	//
 	// example:
 	//
@@ -58,6 +60,8 @@ type DescribeActivationCodesRequest struct {
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// Filters the list to return only the activation code matching the specified system identifier.
+	//
 	// example:
 	//
 	// 3312548696141831911

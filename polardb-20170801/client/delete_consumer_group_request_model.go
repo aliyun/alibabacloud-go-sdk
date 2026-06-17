@@ -18,19 +18,28 @@ type iDeleteConsumerGroupRequest interface {
 }
 
 type DeleteConsumerGroupRequest struct {
+	// The name of the consumer group.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cg-xxxxxxx
 	ConsumerGroupName *string `json:"ConsumerGroupName,omitempty" xml:"ConsumerGroupName,omitempty"`
+	// The gateway instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pg-xxxxxxxxxx
 	GwClusterId *string `json:"GwClusterId,omitempty" xml:"GwClusterId,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DeleteConsumerGroupRequest) String() string {

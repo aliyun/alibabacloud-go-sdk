@@ -16,10 +16,14 @@ type iModifyApplicationParameterResponseBody interface {
 }
 
 type ModifyApplicationParameterResponseBody struct {
+	// The application ID.
+	//
 	// example:
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 3E5CD764-FCCA-5C9C-838E-20E0DE84B2AF

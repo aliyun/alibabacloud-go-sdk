@@ -20,18 +20,24 @@ type iCreateApplicationPromptRequest interface {
 }
 
 type CreateApplicationPromptRequest struct {
+	// The ID of the Application.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The name of the Prompt.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// my_prompt
 	PromptName *string `json:"PromptName,omitempty" xml:"PromptName,omitempty"`
+	// The type of the Prompt.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -56,6 +62,8 @@ type CreateApplicationPromptRequest struct {
 	//
 	// DELETE_RELATIONS_SYSTEM_PROMPT
 	PromptType *string `json:"PromptType,omitempty" xml:"PromptType,omitempty"`
+	// The content of the Prompt.
+	//
 	// This parameter is required.
 	//
 	// example:

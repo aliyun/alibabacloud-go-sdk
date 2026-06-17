@@ -20,24 +20,32 @@ type iBindPolarClawAgentRequest interface {
 }
 
 type BindPolarClawAgentRequest struct {
+	// The agent ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// work
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The channel ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// feishu
 	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
+	// The account ID for the channel. If omitted, the default value is \\"default\\".
+	//
 	// example:
 	//
 	// default

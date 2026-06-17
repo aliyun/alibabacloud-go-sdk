@@ -14,7 +14,7 @@ type iModifyDBNodesParametersResponseBody interface {
 }
 
 type ModifyDBNodesParametersResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

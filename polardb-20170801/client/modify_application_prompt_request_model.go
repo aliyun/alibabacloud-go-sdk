@@ -20,13 +20,15 @@ type iModifyApplicationPromptRequest interface {
 }
 
 type ModifyApplicationPromptRequest struct {
+	// The ID of the application.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// papt-xx
+	// The ID of the prompt.
 	//
 	// This parameter is required.
 	//
@@ -34,10 +36,14 @@ type ModifyApplicationPromptRequest struct {
 	//
 	// papt-f9lajgw765f4fnrzn1
 	PromptId *string `json:"PromptId,omitempty" xml:"PromptId,omitempty"`
+	// The name of the prompt.
+	//
 	// example:
 	//
 	// prompt name
 	PromptName *string `json:"PromptName,omitempty" xml:"PromptName,omitempty"`
+	// The content of the prompt.
+	//
 	// example:
 	//
 	// prompt value

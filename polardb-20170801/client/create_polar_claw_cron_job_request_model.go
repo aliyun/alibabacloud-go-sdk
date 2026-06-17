@@ -42,72 +42,102 @@ type iCreatePolarClawCronJobRequest interface {
 }
 
 type CreatePolarClawCronJobRequest struct {
+	// The ID of the agent that executes the task.
+	//
 	// example:
 	//
 	// main
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// Specifies whether to automatically delete the job after its first execution. This is useful for one-time tasks. Default: `false`.
+	//
 	// example:
 	//
 	// false
 	DeleteAfterRun *bool `json:"DeleteAfterRun,omitempty" xml:"DeleteAfterRun,omitempty"`
+	// The configuration for delivering task execution results.
+	//
 	// example:
 	//
 	// {"Mode":"announce","Channel":"telegram"}
 	Delivery *CreatePolarClawCronJobRequestDelivery `json:"Delivery,omitempty" xml:"Delivery,omitempty" type:"Struct"`
+	// A description of the task.
+	//
 	// example:
 	//
 	// Daily report generation
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Specifies whether the cron job is enabled. Default: `true`.
+	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The failure alert configuration.
+	//
 	// example:
 	//
 	// {"After":3,"Channel":"telegram"}
 	FailureAlert *CreatePolarClawCronJobRequestFailureAlert `json:"FailureAlert,omitempty" xml:"FailureAlert,omitempty" type:"Struct"`
+	// The unique name of the task.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// daily-report
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The execution payload configuration.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// {"Kind":"agentTurn","Message":"Generate the daily report."}
 	Payload *CreatePolarClawCronJobRequestPayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
+	// Specifies whether to restart the gateway upon job creation. Default: `true`.
+	//
 	// example:
 	//
 	// true
 	Restart *bool `json:"Restart,omitempty" xml:"Restart,omitempty"`
+	// Specifies whether to run the job once immediately upon creation. Default: `false`.
+	//
 	// example:
 	//
 	// false
 	RunImmediately *bool `json:"RunImmediately,omitempty" xml:"RunImmediately,omitempty"`
+	// The schedule configuration.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// {"Kind":"cron","Expr":"0 9 	- 	- *","Tz":"Asia/Shanghai"}
 	Schedule *CreatePolarClawCronJobRequestSchedule `json:"Schedule,omitempty" xml:"Schedule,omitempty" type:"Struct"`
+	// The session routing key, which determines the conversation session for the task.
+	//
 	// example:
 	//
 	// agent:main:feishu:direct:***
 	SessionKey *string `json:"SessionKey,omitempty" xml:"SessionKey,omitempty"`
+	// The session target. Valid values are `main`, `isolated`, and `current`.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// main
 	SessionTarget *string `json:"SessionTarget,omitempty" xml:"SessionTarget,omitempty"`
+	// The wake mode for the agent. Valid values are `now` and `next-heartbeat`.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -284,22 +314,32 @@ func (s *CreatePolarClawCronJobRequest) Validate() error {
 }
 
 type CreatePolarClawCronJobRequestDelivery struct {
+	// The account ID for the delivery channel.
+	//
 	// example:
 	//
 	// default
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// Specifies whether to use best-effort delivery. If `true`, delivery failures are ignored.
+	//
 	// example:
 	//
 	// false
 	BestEffort *bool `json:"BestEffort,omitempty" xml:"BestEffort,omitempty"`
+	// The delivery channel.
+	//
 	// example:
 	//
 	// feishu
 	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
+	// The delivery mode. Valid values are `none`, `announce`, and `webhook`.
+	//
 	// example:
 	//
 	// announce
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The recipient for the delivery.
+	//
 	// example:
 	//
 	// ou_***
@@ -364,26 +404,38 @@ func (s *CreatePolarClawCronJobRequestDelivery) Validate() error {
 }
 
 type CreatePolarClawCronJobRequestFailureAlert struct {
+	// The account ID for the alert channel.
+	//
 	// example:
 	//
 	// default
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The number of consecutive failures required to trigger an alert.
+	//
 	// example:
 	//
 	// 3
 	After *int32 `json:"After,omitempty" xml:"After,omitempty"`
+	// The channel for sending failure alerts.
+	//
 	// example:
 	//
 	// feishu
 	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
+	// The cooldown period, in milliseconds, between alerts for the same job.
+	//
 	// example:
 	//
 	// 5000
 	CooldownMs *int32 `json:"CooldownMs,omitempty" xml:"CooldownMs,omitempty"`
+	// The mode for sending alerts. Valid values are `announce` and `webhook`.
+	//
 	// example:
 	//
 	// announce
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The recipient for the failure alert.
+	//
 	// example:
 	//
 	// ou_***
@@ -457,47 +509,70 @@ func (s *CreatePolarClawCronJobRequestFailureAlert) Validate() error {
 }
 
 type CreatePolarClawCronJobRequestPayload struct {
+	// Specifies whether to use best-effort delivery. If `true`, delivery failures are ignored.
+	//
 	// example:
 	//
 	// false
 	BestEffortDeliver *bool `json:"BestEffortDeliver,omitempty" xml:"BestEffortDeliver,omitempty"`
+	// The ID of the delivery channel.
+	//
 	// example:
 	//
 	// feishu
 	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
+	// Specifies whether to deliver the agent\\"s output to a channel.
+	//
 	// example:
 	//
 	// true
-	Deliver   *bool     `json:"Deliver,omitempty" xml:"Deliver,omitempty"`
+	Deliver *bool `json:"Deliver,omitempty" xml:"Deliver,omitempty"`
+	// A list of fallback models to use if the primary model fails.
 	Fallbacks []*string `json:"Fallbacks,omitempty" xml:"Fallbacks,omitempty" type:"Repeated"`
+	// The payload type. Valid values are `agentTurn` and `systemEvent`.
+	//
 	// example:
 	//
 	// systemEvent
 	Kind *string `json:"Kind,omitempty" xml:"Kind,omitempty"`
+	// Specifies whether to use a light context for the agent conversation.
+	//
 	// example:
 	//
 	// false
 	LightContext *bool `json:"LightContext,omitempty" xml:"LightContext,omitempty"`
+	// The prompt for an agent conversation, used when `Kind` is `agentTurn`.
+	//
 	// example:
 	//
 	// Generate the daily report.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Specifies a model that overrides the agent\\"s default model.
+	//
 	// example:
 	//
 	// bailian/qwen3.5-plus
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// The text for the system event, used when `Kind` is `systemEvent`.
+	//
 	// example:
 	//
 	// Generate the daily report.
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// The thinking level for the agent\\"s response generation. Valid values are `off`, `minimal`, `low`, `medium`, `high`, and `xhigh`.
+	//
 	// example:
 	//
 	// xhigh
 	Thinking *string `json:"Thinking,omitempty" xml:"Thinking,omitempty"`
+	// The execution timeout, in seconds.
+	//
 	// example:
 	//
 	// 10
 	TimeoutSeconds *int32 `json:"TimeoutSeconds,omitempty" xml:"TimeoutSeconds,omitempty"`
+	// The specific target or recipient within the channel.
+	//
 	// example:
 	//
 	// ou_***
@@ -625,30 +700,44 @@ func (s *CreatePolarClawCronJobRequestPayload) Validate() error {
 }
 
 type CreatePolarClawCronJobRequestSchedule struct {
+	// The anchor timestamp for aligning interval-based schedules, in milliseconds.
+	//
 	// example:
 	//
 	// 1777370572518
 	AnchorMs *int64 `json:"AnchorMs,omitempty" xml:"AnchorMs,omitempty"`
+	// The specific time for a one-time execution, specified as an ISO 8601 timestamp.
+	//
 	// example:
 	//
 	// 2026-04-10T09:00:00+08:00
 	At *string `json:"At,omitempty" xml:"At,omitempty"`
+	// The task execution interval, in milliseconds.
+	//
 	// example:
 	//
 	// 100000
 	EveryMs *int64 `json:"EveryMs,omitempty" xml:"EveryMs,omitempty"`
+	// The cron expression that specifies when the task runs.
+	//
 	// example:
 	//
 	// 0 9 	- 	- *
 	Expr *string `json:"Expr,omitempty" xml:"Expr,omitempty"`
+	// The type of schedule.
+	//
 	// example:
 	//
 	// cron
 	Kind *string `json:"Kind,omitempty" xml:"Kind,omitempty"`
+	// The deterministic jitter window, in milliseconds.
+	//
 	// example:
 	//
 	// 0
 	StaggerMs *int32 `json:"StaggerMs,omitempty" xml:"StaggerMs,omitempty"`
+	// The time zone for the schedule.
+	//
 	// example:
 	//
 	// Asia/Shanghai

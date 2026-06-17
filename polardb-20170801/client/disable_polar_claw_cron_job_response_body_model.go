@@ -24,26 +24,38 @@ type iDisablePolarClawCronJobResponseBody interface {
 }
 
 type DisablePolarClawCronJobResponseBody struct {
+	// The ID of the application.
+	//
 	// example:
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The response status code.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The ID of the disabled job.
+	//
 	// example:
 	//
 	// 0ee00f56-f467-4d41-858c-ca4ede2c770e
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Indicates whether the operation was successful. A value of `true` indicates success.
+	//
 	// example:
 	//
 	// true
 	Ok *bool `json:"Ok,omitempty" xml:"Ok,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 2281C6C9-CBAB-1AFD-8400-670750CF6025_2212

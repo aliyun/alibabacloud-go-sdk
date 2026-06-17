@@ -14,6 +14,8 @@ type iUpgradeDBClusterVersionZonalResponseBody interface {
 }
 
 type UpgradeDBClusterVersionZonalResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// CAE6755F-B79A-4861-B227-801FE8******

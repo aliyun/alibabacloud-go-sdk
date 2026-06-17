@@ -24,20 +24,30 @@ type iDescribePolarClawPluginsResponseBody interface {
 }
 
 type DescribePolarClawPluginsResponseBody struct {
+	// The application ID.
+	//
 	// example:
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The response status code.
+	//
 	// example:
 	//
 	// 200
-	Code        *int32                                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// An array of diagnostic objects.
 	Diagnostics []*DescribePolarClawPluginsResponseBodyDiagnostics `json:"Diagnostics,omitempty" xml:"Diagnostics,omitempty" type:"Repeated"`
+	// The response message.
+	//
 	// example:
 	//
 	// successful
-	Message *string                                        `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// An array of plugin objects.
 	Plugins []*DescribePolarClawPluginsResponseBodyPlugins `json:"Plugins,omitempty" xml:"Plugins,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 2281C6C9-CBAB-1AFD-8400-670750CF6025_2212
@@ -129,18 +139,26 @@ func (s *DescribePolarClawPluginsResponseBody) Validate() error {
 }
 
 type DescribePolarClawPluginsResponseBodyDiagnostics struct {
+	// The severity level. Valid values: `error` and `warn`.
+	//
 	// example:
 	//
 	// warn
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The detailed diagnostic message.
+	//
 	// example:
 	//
 	// loaded without install/load-path provenance; treat as untracked local code
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the associated plugin.
+	//
 	// example:
 	//
 	// openclaw-lark
 	PluginId *string `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
+	// The source file path associated with the diagnostic.
+	//
 	// example:
 	//
 	// /home/node/.openclaw/extensions/openclaw-lark/index.js
@@ -196,40 +214,60 @@ func (s *DescribePolarClawPluginsResponseBodyDiagnostics) Validate() error {
 }
 
 type DescribePolarClawPluginsResponseBodyPlugins struct {
+	// A list of channel IDs, which can be empty.
 	ChannelIds []*string `json:"ChannelIds,omitempty" xml:"ChannelIds,omitempty" type:"Repeated"`
+	// The description of the plugin.
+	//
 	// example:
 	//
 	// Lark/Feishu channel plugin with im/doc/wiki/drive/task/calendar tools
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The error message, or `null` if no error occurred.
+	//
 	// example:
 	//
 	// null
 	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
+	// The format of the plugin, which can be an empty string.
+	//
 	// example:
 	//
 	// openclaw
 	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	// The plugin ID.
+	//
 	// example:
 	//
 	// openclaw-lark
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The display name of the plugin.
+	//
 	// example:
 	//
 	// Feishu
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The origin of the plugin. Valid values: `bundled`, `global`, and `user-install`.
+	//
 	// example:
 	//
 	// global
-	Origin      *string   `json:"Origin,omitempty" xml:"Origin,omitempty"`
+	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
+	// A list of provider IDs, which can be empty.
 	ProviderIds []*string `json:"ProviderIds,omitempty" xml:"ProviderIds,omitempty" type:"Repeated"`
+	// The file path to the plugin\\"s entry point.
+	//
 	// example:
 	//
 	// /home/node/.openclaw/extensions/openclaw-lark/index.js
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The status of the plugin. Valid values: `loaded`, `disabled`, and `error`.
+	//
 	// example:
 	//
 	// loaded
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The version number of the plugin.
+	//
 	// example:
 	//
 	// 2026.4.7

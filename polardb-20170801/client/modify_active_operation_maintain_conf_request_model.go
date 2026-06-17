@@ -38,28 +38,46 @@ type iModifyActiveOperationMaintainConfRequest interface {
 }
 
 type ModifyActiveOperationMaintainConfRequest struct {
+	// The remarks for the operation.
+	//
 	// example:
 	//
 	// test
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The time of the cycle.
+	//
+	// - If CycleType is set to Month, specify the day of the month. Valid values: 1 to 28. Use commas (,) to separate multiple days.
+	//
+	// - If CycleType is set to Week, specify the day of the week. Valid values: 1 to 7. Use commas (,) to separate multiple days.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	CycleTime *string `json:"CycleTime,omitempty" xml:"CycleTime,omitempty"`
+	// The cycle type. Valid values:
+	//
+	// - Month
+	//
+	// - Week
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Week
 	CycleType *string `json:"CycleType,omitempty" xml:"CycleType,omitempty"`
+	// The end time of the maintenance window. Use the HH:mmZ format. The time is in UTC.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 12:00Z
 	MaintainEndTime *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
+	// The start time of the task. The time must be in UTC and in the yyyy-mm-ddThh:mm:ssZ format.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -68,12 +86,16 @@ type ModifyActiveOperationMaintainConfRequest struct {
 	MaintainStartTime *string `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
 	OwnerAccount      *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-chengdu
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	//
 	// example:
 	//
 	// rg-************
@@ -81,6 +103,8 @@ type ModifyActiveOperationMaintainConfRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// Specifies whether to enable the configuration. Valid values: 1 (Enable) and 2 (Disable).
+	//
 	// This parameter is required.
 	//
 	// example:

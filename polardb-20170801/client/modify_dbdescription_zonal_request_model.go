@@ -28,22 +28,34 @@ type iModifyDBDescriptionZonalRequest interface {
 }
 
 type ModifyDBDescriptionZonalRequest struct {
+	// A client token to ensure the idempotence of the request. The client generates this token. It must be unique across requests, case-sensitive, and up to 64 ASCII characters in length.
+	//
 	// example:
 	//
 	// 6000170000591aed949d0f54a343f1a4233c1e7d1c5******
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pc-**************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The description of the database. The description must meet the following requirements:
+	//
+	// - It cannot start with `http://` or `https://`.
+	//
+	// - It must be 2 to 256 characters in length.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testdesc
 	DBDescription *string `json:"DBDescription,omitempty" xml:"DBDescription,omitempty"`
+	// The database name.
+	//
 	// This parameter is required.
 	//
 	// example:

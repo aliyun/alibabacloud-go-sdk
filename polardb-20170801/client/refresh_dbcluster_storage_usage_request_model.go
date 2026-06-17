@@ -26,11 +26,11 @@ type RefreshDBClusterStorageUsageRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Specifies whether to enable real-time synchronization. Valid values:
+	// Specifies the synchronization mode. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Real-time synchronization.
 	//
-	// 	- **false**: T + 1
+	// - **false**: T+1 synchronization.
 	//
 	// example:
 	//

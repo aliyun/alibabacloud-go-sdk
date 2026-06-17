@@ -18,15 +18,19 @@ type iCreateGatewayResponseBody interface {
 }
 
 type CreateGatewayResponseBody struct {
+	// The gateway instance ID.
+	//
 	// example:
 	//
 	// pg-2ze2079ueg20****
 	GwClusterId *string `json:"GwClusterId,omitempty" xml:"GwClusterId,omitempty"`
+	// The order ID.
+	//
 	// example:
 	//
 	// 2035629******
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

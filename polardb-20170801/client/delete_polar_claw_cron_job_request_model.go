@@ -18,18 +18,24 @@ type iDeletePolarClawCronJobRequest interface {
 }
 
 type DeletePolarClawCronJobRequest struct {
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The ID of the cron job to delete.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0ee00f56-f467-4d41-858c-ca4ede2c770e
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// Specifies whether to restart the gateway after the cron job is deleted. The default value is true.
+	//
 	// example:
 	//
 	// true

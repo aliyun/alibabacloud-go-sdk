@@ -16,11 +16,16 @@ type iDeleteAINodesRequest interface {
 }
 
 type DeleteAINodesRequest struct {
+	// The cluster ID.
+	//
+	// > Call the [DescribeAIDBClusters](https://api.aliyun.com/api/polardb/2017-08-01/DescribeAIDBClusters) operation to view the cluster ID.
+	//
 	// example:
 	//
 	// pm-xxxxxx
-	DBClusterId *string   `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	DBNodeId    []*string `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty" type:"Repeated"`
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The IDs of the nodes to delete.
+	DBNodeId []*string `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty" type:"Repeated"`
 }
 
 func (s DeleteAINodesRequest) String() string {

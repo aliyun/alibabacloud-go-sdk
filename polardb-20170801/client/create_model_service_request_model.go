@@ -34,56 +34,85 @@ type iCreateModelServiceRequest interface {
 }
 
 type CreateModelServiceRequest struct {
+	// The API key for the model service.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxxx
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	// The URL of the upstream service.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxxx
 	BaseUrl *string `json:"BaseUrl,omitempty" xml:"BaseUrl,omitempty"`
+	// The gateway instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pg-xxxxxxxxxx
 	GwClusterId *string `json:"GwClusterId,omitempty" xml:"GwClusterId,omitempty"`
+	// The billing cost for input, measured in points per one million tokens.
+	//
 	// example:
 	//
 	// 10
 	InputCostPointsPerMillion *string `json:"InputCostPointsPerMillion,omitempty" xml:"InputCostPointsPerMillion,omitempty"`
+	// The model category.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// text
 	ModelCategory *string `json:"ModelCategory,omitempty" xml:"ModelCategory,omitempty"`
+	// The model service name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The billing cost for output, measured in points per one million tokens.
+	//
 	// example:
 	//
 	// 10
 	OutputCostPointsPerMillion *string `json:"OutputCostPointsPerMillion,omitempty" xml:"OutputCostPointsPerMillion,omitempty"`
+	// The protocol type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// openai
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The billing cost per request, measured in points.
+	//
 	// example:
 	//
 	// 10
 	RequestCostPoints *string `json:"RequestCostPoints,omitempty" xml:"RequestCostPoints,omitempty"`
+	// The model service provider. The example value `bailian` is a pinyin-based identifier that corresponds to the product name Model Studio.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// bailian
 	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 }
 

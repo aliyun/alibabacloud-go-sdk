@@ -18,15 +18,19 @@ type iCreateAIDBClusterTaskResponseBody interface {
 }
 
 type CreateAIDBClusterTaskResponseBody struct {
+	// The ID of the model operator instance.
+	//
 	// example:
 	//
 	// pm-2zo88***
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The order ID.
+	//
 	// example:
 	//
 	// 2035638*******
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

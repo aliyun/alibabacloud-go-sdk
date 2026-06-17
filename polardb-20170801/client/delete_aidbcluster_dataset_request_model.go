@@ -26,10 +26,14 @@ type iDeleteAIDBClusterDatasetRequest interface {
 }
 
 type DeleteAIDBClusterDatasetRequest struct {
+	// The cluster ID.
+	//
 	// example:
 	//
 	// pc-**************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The dataset ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -38,6 +42,8 @@ type DeleteAIDBClusterDatasetRequest struct {
 	DatasetId    *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing

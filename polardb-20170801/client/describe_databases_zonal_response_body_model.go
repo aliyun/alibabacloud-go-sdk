@@ -24,23 +24,34 @@ type iDescribeDatabasesZonalResponseBody interface {
 }
 
 type DescribeDatabasesZonalResponseBody struct {
+	// The details of the databases.
 	Databases []*DescribeDatabasesZonalResponseBodyDatabases `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Repeated"`
+	// The maximum number of entries returned for the current request.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The query token. This is the NextToken value from the previous API call. If there are no more results, do not specify this parameter.
+	//
 	// example:
 	//
 	// 212db86sca4384811e0b5e8707e******
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned on the current page.
+	//
 	// example:
 	//
 	// 7
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 2FED790E-FB61-4721-8C1C-07C627******
@@ -123,27 +134,54 @@ func (s *DescribeDatabasesZonalResponseBody) Validate() error {
 }
 
 type DescribeDatabasesZonalResponseBodyDatabases struct {
+	// The details of the database accounts.
+	//
+	// > If the cluster is a PolarDB for MySQL cluster, privileged accounts are not included.
 	Accounts []*DescribeDatabasesZonalResponseBodyDatabasesAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Repeated"`
+	// The character set.
+	//
 	// example:
 	//
 	// utf8mb4
 	CharacterSetName *string `json:"CharacterSetName,omitempty" xml:"CharacterSetName,omitempty"`
+	// The description of the database.
+	//
 	// example:
 	//
 	// test_des
 	DBDescription *string `json:"DBDescription,omitempty" xml:"DBDescription,omitempty"`
+	// The name of the database.
+	//
 	// example:
 	//
 	// test_db
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
+	// The status of the database. Valid values:
+	//
+	// - **Creating**
+	//
+	// - **Running**
+	//
+	// - **Deleting**
+	//
 	// example:
 	//
 	// Running
 	DBStatus *string `json:"DBStatus,omitempty" xml:"DBStatus,omitempty"`
+	// The database engine type. Valid values:
+	//
+	// - **MySQL**
+	//
+	// - **Oracle**
+	//
+	// - **PostgreSQL**
+	//
 	// example:
 	//
 	// MySQL
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The ID of the primary node that corresponds to the database in a Multi-master Cluster (Database/Table) edition cluster.
+	//
 	// example:
 	//
 	// 2
@@ -235,18 +273,50 @@ func (s *DescribeDatabasesZonalResponseBodyDatabases) Validate() error {
 }
 
 type DescribeDatabasesZonalResponseBodyDatabasesAccounts struct {
+	// The account name.
+	//
+	// > If the cluster is a PolarDB for MySQL cluster, privileged accounts are not included.
+	//
 	// example:
 	//
 	// test_acc
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The permissions of the account. Valid values:
+	//
+	// - **ReadWrite**
+	//
+	// - **ReadOnly**
+	//
+	// - **DMLOnly**
+	//
+	// - **DDLOnly**
+	//
+	// - **ReadIndex**
+	//
 	// example:
 	//
 	// ReadOnly
 	AccountPrivilege *string `json:"AccountPrivilege,omitempty" xml:"AccountPrivilege,omitempty"`
+	// The status of the account. Valid values:
+	//
+	// - **Creating**
+	//
+	// - **Available**
+	//
+	// - **Deleting**
+	//
 	// example:
 	//
 	// Available
 	AccountStatus *string `json:"AccountStatus,omitempty" xml:"AccountStatus,omitempty"`
+	// The authorization status. Valid values:
+	//
+	// - **Empowering**: Permissions are being granted.
+	//
+	// - **Empowered**: Permissions are granted.
+	//
+	// - **Removing**: Permissions are being revoked.
+	//
 	// example:
 	//
 	// Empowered

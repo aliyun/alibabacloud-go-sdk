@@ -22,25 +22,32 @@ type iDescribePolarClawTaskResponseBody interface {
 }
 
 type DescribePolarClawTaskResponseBody struct {
+	// The application ID.
+	//
 	// example:
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The status code.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// C890995A-CF06-4F4D-8DB8-DD26C2******
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Task      *DescribePolarClawTaskResponseBodyTask `json:"Task,omitempty" xml:"Task,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task object.
+	Task *DescribePolarClawTaskResponseBodyTask `json:"Task,omitempty" xml:"Task,omitempty" type:"Struct"`
 }
 
 func (s DescribePolarClawTaskResponseBody) String() string {
@@ -106,27 +113,40 @@ func (s *DescribePolarClawTaskResponseBody) Validate() error {
 }
 
 type DescribePolarClawTaskResponseBodyTask struct {
+	// The timestamp when the task was created, in milliseconds.
+	//
 	// example:
 	//
 	// 1778564698304
-	CreatedAtMs *int64                                      `json:"CreatedAtMs,omitempty" xml:"CreatedAtMs,omitempty"`
-	Error       *DescribePolarClawTaskResponseBodyTaskError `json:"Error,omitempty" xml:"Error,omitempty" type:"Struct"`
+	CreatedAtMs *int64 `json:"CreatedAtMs,omitempty" xml:"CreatedAtMs,omitempty"`
+	// The error object. This parameter is returned only if the task fails.
+	Error *DescribePolarClawTaskResponseBodyTaskError `json:"Error,omitempty" xml:"Error,omitempty" type:"Struct"`
+	// The operation name.
+	//
 	// example:
 	//
 	// LoginPolarClawChannel
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	// The task result object. This parameter is returned only if the task succeeds. The content of this object varies by operation.
+	//
 	// example:
 	//
 	// {}
 	Result map[string]interface{} `json:"Result,omitempty" xml:"Result,omitempty"`
+	// The task state. Valid values: pending, running, succeeded, and failed.
+	//
 	// example:
 	//
 	// running
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The task ID, which is a universally unique identifier (UUID).
+	//
 	// example:
 	//
 	// 5956e600-ce6e-4d11-9648-939ef3286e94
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The timestamp when the task was last updated, in milliseconds.
+	//
 	// example:
 	//
 	// 1778564750541
@@ -214,10 +234,14 @@ func (s *DescribePolarClawTaskResponseBodyTask) Validate() error {
 }
 
 type DescribePolarClawTaskResponseBodyTaskError struct {
+	// The error code.
+	//
 	// example:
 	//
 	// INVALID_REQUEST
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// channelId format invalid

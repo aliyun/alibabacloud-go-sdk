@@ -24,28 +24,46 @@ type iModifyApplicationWhitelistRequest interface {
 }
 
 type ModifyApplicationWhitelistRequest struct {
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The ID of the application subcomponent. If you specify this parameter, the whitelist modification takes effect only for this subcomponent.
+	//
 	// example:
 	//
 	// pac-*******************
 	ComponentId *string `json:"ComponentId,omitempty" xml:"ComponentId,omitempty"`
+	// The method to modify the whitelist. Valid values:
+	//
+	// - **Cover**: Overwrites the original IP address whitelist. This is the default value.
+	//
+	// - **Append**: Appends IP addresses.
+	//
+	// - **Delete**: Deletes IP addresses.
+	//
 	// example:
 	//
 	// Append
 	ModifyMode *string `json:"ModifyMode,omitempty" xml:"ModifyMode,omitempty"`
+	// The list of security group IDs. Separate multiple IDs with commas.
+	//
 	// example:
 	//
 	// sg-**************
 	SecurityGroups *string `json:"SecurityGroups,omitempty" xml:"SecurityGroups,omitempty"`
+	// The name of the IP address group. The default value is `default`.
+	//
 	// example:
 	//
 	// default
 	SecurityIPArrayName *string `json:"SecurityIPArrayName,omitempty" xml:"SecurityIPArrayName,omitempty"`
+	// The IP addresses for the whitelist. Separate multiple IP addresses with commas.
+	//
 	// example:
 	//
 	// 127.0.0.1,172.17.0.0/24

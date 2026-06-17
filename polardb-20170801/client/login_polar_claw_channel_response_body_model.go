@@ -26,32 +26,44 @@ type iLoginPolarClawChannelResponseBody interface {
 }
 
 type LoginPolarClawChannelResponseBody struct {
+	// The application ID.
+	//
 	// example:
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The response status code.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The name of the operation.
+	//
 	// example:
 	//
 	// LoginPolarClawChannel
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// CD3FA5F3-FAF3-44CA-AFFF-BAF869******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The state of the asynchronous task.
+	//
 	// example:
 	//
 	// running
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The ID of the asynchronous task.
+	//
 	// example:
 	//
 	// dc6762fb-20ad-4796-84fe-5c5d0dc413ce

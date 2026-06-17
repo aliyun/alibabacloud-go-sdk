@@ -18,14 +18,20 @@ type iModifyApplicationWhitelistResponseBody interface {
 }
 
 type ModifyApplicationWhitelistResponseBody struct {
+	// The application ID.
+	//
 	// example:
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The ID of the application subcomponent.
+	//
 	// example:
 	//
 	// pac-**************
 	ComponentId *string `json:"ComponentId,omitempty" xml:"ComponentId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 3E5CD764-FCCA-5C9C-838E-20E0DE84B2AF

@@ -24,28 +24,51 @@ type iDescribeCostRulesRequest interface {
 }
 
 type DescribeCostRulesRequest struct {
+	// The gateway instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pg-xxxxxxxx
 	GwClusterId *string `json:"GwClusterId,omitempty" xml:"GwClusterId,omitempty"`
+	// The model name, such as `gpt-4` or `qwen-turbo`.
+	//
 	// example:
 	//
 	// qwen3-max
 	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	// The model service ID.
+	//
 	// example:
 	//
 	// ms-xxxxxx
 	ModelServiceId *string `json:"ModelServiceId,omitempty" xml:"ModelServiceId,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values:
+	//
+	// - **30**
+	//
+	// - **50**
+	//
+	// - **100**
+	//
+	// Default value: 30.
+	//
 	// example:
 	//
 	// 30
-	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 

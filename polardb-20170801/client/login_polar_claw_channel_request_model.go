@@ -16,12 +16,16 @@ type iLoginPolarClawChannelRequest interface {
 }
 
 type LoginPolarClawChannelRequest struct {
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The ID of the PolarClaw channel to log into.
+	//
 	// This parameter is required.
 	//
 	// example:

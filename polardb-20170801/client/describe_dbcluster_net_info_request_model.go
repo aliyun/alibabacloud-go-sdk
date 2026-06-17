@@ -24,10 +24,20 @@ type iDescribeDBClusterNetInfoRequest interface {
 }
 
 type DescribeDBClusterNetInfoRequest struct {
+	// The type of the endpoint. Valid values:
+	//
+	// - Normal: the primary endpoint
+	//
+	// - ReadWriteSplitting: the cluster endpoint
+	//
+	// - MPP: the Massively Parallel Processing (MPP) endpoint
+	//
 	// example:
 	//
 	// Normal
 	ConnectionStringType *string `json:"ConnectionStringType,omitempty" xml:"ConnectionStringType,omitempty"`
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:

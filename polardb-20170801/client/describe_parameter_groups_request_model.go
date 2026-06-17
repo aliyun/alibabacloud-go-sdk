@@ -28,7 +28,7 @@ type iDescribeParameterGroupsRequest interface {
 }
 
 type DescribeParameterGroupsRequest struct {
-	// The type of the database engine. Only **MySQL*	- is supported.
+	// The database engine type. Only **MySQL*	- is supported.
 	//
 	// example:
 	//
@@ -36,11 +36,11 @@ type DescribeParameterGroupsRequest struct {
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
 	// The version of the database engine. Valid values:
 	//
-	// 	- **5.6**
+	// - **5.6**
 	//
-	// 	- **5.7**
+	// - **5.7**
 	//
-	// 	- **8.0**
+	// - **8.0**
 	//
 	// example:
 	//
@@ -48,9 +48,9 @@ type DescribeParameterGroupsRequest struct {
 	DBVersion    *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the cluster.
+	// The ID of the region.
 	//
-	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query all regions that are available for your account, such as the region ID.
+	// > Call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query the information about all available regions of your account, including the region IDs.
 	//
 	// This parameter is required.
 	//
@@ -58,7 +58,7 @@ type DescribeParameterGroupsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the virtual node belongs.
+	// The ID of the resource group.
 	//
 	// example:
 	//

@@ -26,33 +26,56 @@ type iCreateBudgetPolicyRequest interface {
 }
 
 type CreateBudgetPolicyRequest struct {
+	// The alert threshold, as a percentage. Valid values: 0 to 100.
+	//
 	// example:
 	//
 	// 10
 	AlertThresholdPct *string `json:"AlertThresholdPct,omitempty" xml:"AlertThresholdPct,omitempty"`
+	// The ID of the dimension object. This parameter is required if `BudgetType` is set to `ConsumerTotal` or `ConsumerGroupTotal`.
+	//
 	// example:
 	//
 	// mi-xxxxx
 	BudgetDimensionRefId *string `json:"BudgetDimensionRefId,omitempty" xml:"BudgetDimensionRefId,omitempty"`
+	// The number of budget points.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1000
 	BudgetPoints *string `json:"BudgetPoints,omitempty" xml:"BudgetPoints,omitempty"`
+	// The budget type. Valid values:
+	//
+	// - `GlobalTotal`: global total budget
+	//
+	// - `ConsumerTotal`: consumer total budget
+	//
+	// - `ConsumerGroupTotal`: consumer group total budget
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ConsumerTotal
 	BudgetType *string `json:"BudgetType,omitempty" xml:"BudgetType,omitempty"`
+	// The gateway cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pg-xxxxxxx
 	GwClusterId *string `json:"GwClusterId,omitempty" xml:"GwClusterId,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The day of the month on which the budget resets. Valid values: 1 to 28.
+	//
 	// This parameter is required.
 	//
 	// example:

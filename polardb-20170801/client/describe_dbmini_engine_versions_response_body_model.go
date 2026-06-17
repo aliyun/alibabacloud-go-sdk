@@ -16,8 +16,9 @@ type iDescribeDBMiniEngineVersionsResponseBody interface {
 }
 
 type DescribeDBMiniEngineVersionsResponseBody struct {
+	// A list of information about the versions available for an upgrade.
 	DBRevisionVersionList []*DescribeDBMiniEngineVersionsResponseBodyDBRevisionVersionList `json:"DBRevisionVersionList,omitempty" xml:"DBRevisionVersionList,omitempty" type:"Repeated"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -65,18 +66,34 @@ func (s *DescribeDBMiniEngineVersionsResponseBody) Validate() error {
 }
 
 type DescribeDBMiniEngineVersionsResponseBodyDBRevisionVersionList struct {
+	// The release notes of the version.
+	//
 	// example:
 	//
 	// ReleaseNote
 	ReleaseNote *string `json:"ReleaseNote,omitempty" xml:"ReleaseNote,omitempty"`
+	// The release state of the database version. Valid values:
+	//
+	// - **Stable**: The version is stable.
+	//
+	// - **Old**: The version is outdated. Upgrading to this version is not recommended.
+	//
+	// - **HighRisk**: The version has a critical bug. Upgrading to this version is not recommended.
+	//
+	// - **Beta**: The version is a beta version.
+	//
 	// example:
 	//
 	// Stable
 	ReleaseType *string `json:"ReleaseType,omitempty" xml:"ReleaseType,omitempty"`
+	// The code of the database engine revision version. Use this code to specify the target version for an upgrade.
+	//
 	// example:
 	//
 	// 20230707
 	RevisionVersionCode *string `json:"RevisionVersionCode,omitempty" xml:"RevisionVersionCode,omitempty"`
+	// The number of the database engine revision version.
+	//
 	// example:
 	//
 	// 8.0.1.1.35.1

@@ -18,12 +18,18 @@ type iSetPolarFsFileQuotaRequest interface {
 }
 
 type SetPolarFsFileQuotaRequest struct {
+	// The cluster ID.
+	//
 	// example:
 	//
 	// pc-**************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// An array of objects defining the file quota rules for specific directories.
+	//
 	// This parameter is required.
 	FilePathQuotas []*SetPolarFsFileQuotaRequestFilePathQuotas `json:"FilePathQuotas,omitempty" xml:"FilePathQuotas,omitempty" type:"Repeated"`
+	// The ID of the PolarFS instance.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -81,26 +87,42 @@ func (s *SetPolarFsFileQuotaRequest) Validate() error {
 }
 
 type SetPolarFsFileQuotaRequestFilePathQuotas struct {
+	// The capacity quota in GB.
+	//
 	// example:
 	//
 	// 100
 	Capacity *int64 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
+	// The absolute path of the directory.
+	//
 	// example:
 	//
 	// /a/project
 	FilePathId *string `json:"FilePathId,omitempty" xml:"FilePathId,omitempty"`
+	// The inode quota.
+	//
 	// example:
 	//
 	// 100
 	Inodes *int64 `json:"Inodes,omitempty" xml:"Inodes,omitempty"`
+	// The maximum depth of subdirectories to traverse under the path specified by `FilePathId`. A value of 1 traverses only the first level of subdirectories. A value of 0 traverses to the deepest level.
+	//
 	// example:
 	//
 	// 1
 	MaxDepth *int32 `json:"MaxDepth,omitempty" xml:"MaxDepth,omitempty"`
+	// A list of file quota rule IDs, separated by a comma (`,`).
+	//
 	// example:
 	//
 	// 1,2
 	QuotaIds *string `json:"QuotaIds,omitempty" xml:"QuotaIds,omitempty"`
+	// Specifies how to apply the rule to existing files. Valid values:
+	//
+	// - **missing**: Applies the rule only if one does not already exist. (Default)
+	//
+	// - **all**: Applies the rule to all files.
+	//
 	// example:
 	//
 	// missing

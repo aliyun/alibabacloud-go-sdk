@@ -18,18 +18,24 @@ type iEnablePolarClawChannelRequest interface {
 }
 
 type EnablePolarClawChannelRequest struct {
+  // The ID of the application.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // pa-**************
   ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+  // The ID of the channel.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // feishu
   ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+  // Specifies whether to restart the gateway after the channel is enabled. The default value is `true`.
+  // 
   // example:
   // 
   // true

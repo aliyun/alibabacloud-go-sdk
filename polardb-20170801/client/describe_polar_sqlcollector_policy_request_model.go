@@ -24,7 +24,7 @@ type iDescribePolarSQLCollectorPolicyRequest interface {
 type DescribePolarSQLCollectorPolicyRequest struct {
 	// The ID of the cluster.
 	//
-	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of all the clusters for your account, such as the cluster ID.
+	// > Call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of all clusters in your account. The details include the cluster ID.
 	//
 	// This parameter is required.
 	//

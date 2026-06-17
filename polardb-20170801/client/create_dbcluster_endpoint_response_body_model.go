@@ -14,7 +14,7 @@ type iCreateDBClusterEndpointResponseBody interface {
 }
 
 type CreateDBClusterEndpointResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

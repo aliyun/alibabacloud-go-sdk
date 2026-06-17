@@ -22,23 +22,23 @@ type iDescribeDBInitializeVariableResponseBody interface {
 type DescribeDBInitializeVariableResponseBody struct {
 	// The database type. Valid values:
 	//
-	// 	- Oracle
+	// - Oracle
 	//
-	// 	- PostgreSQL
+	// - PostgreSQL
 	//
-	// 	- MySQL
+	// - MySQL
 	//
 	// example:
 	//
 	// PostgreSQL
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
-	// The version of the database engine.
+	// The database version.
 	//
 	// example:
 	//
 	// 11
 	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

@@ -16,12 +16,15 @@ type iDescribeApplicationParametersShrinkRequest interface {
 }
 
 type DescribeApplicationParametersShrinkRequest struct {
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pa-**************
-	ApplicationId         *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// A list of subcomponent IDs. If you specify this parameter, the operation returns the parameters and parameter templates for only these components.
 	ComponentIdListShrink *string `json:"ComponentIdList,omitempty" xml:"ComponentIdList,omitempty"`
 }
 

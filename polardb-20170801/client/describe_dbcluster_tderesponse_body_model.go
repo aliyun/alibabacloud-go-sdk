@@ -32,29 +32,29 @@ type iDescribeDBClusterTDEResponseBody interface {
 type DescribeDBClusterTDEResponseBody struct {
 	// Indicates whether automatic key rotation is allowed. Valid values:
 	//
-	// 	- **Enabled**: Automatic key rotation is allowed.
+	// - **Enabled**: Automatic key rotation is allowed.
 	//
-	// 	- **Disabled**: Automatic key rotation is not allowed.
+	// - **Disabled**: Automatic key rotation is not allowed.
 	//
-	// >  This parameter is returned only for a PolarDB for PostgreSQL or PolarDB for PostgreSQL (Compatible with Oracle) cluster.
+	// > This parameter is returned only when the database engine is compatible with PostgreSQL or Oracle syntax.
 	//
 	// example:
 	//
 	// Enabled
 	AutomaticRotation *string `json:"AutomaticRotation,omitempty" xml:"AutomaticRotation,omitempty"`
-	// The ID of the cluster.
+	// The unique ID of the cluster.
 	//
 	// example:
 	//
 	// pc-***************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// Indicates whether automatic encryption is enabled for new tables. Valid values:
+	// Indicates whether automatic encryption is enabled for all newly created tables. Valid values:
 	//
-	// 	- **ON**
+	// - **ON**: Automatic encryption is enabled.
 	//
-	// 	- **OFF**
+	// - **OFF**: Automatic encryption is disabled.
 	//
-	// >  This parameter is returned only for a PolarDB for MySQL cluster.
+	// > This parameter is returned only when the database engine is compatible with MySQL.
 	//
 	// example:
 	//
@@ -66,27 +66,33 @@ type DescribeDBClusterTDEResponseBody struct {
 	//
 	// 2a4f4ac2-****-****-****-************
 	EncryptionKey *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
+	// The status of the key. Valid values:
+	//
+	// - **Enabled**: The key is enabled.
+	//
+	// - **Disabled**: The key is disabled.
+	//
 	// example:
 	//
 	// Enabled
 	EncryptionKeyStatus *string `json:"EncryptionKeyStatus,omitempty" xml:"EncryptionKeyStatus,omitempty"`
-	// The ID of the request.
+	// The unique ID of the request.
 	//
 	// example:
 	//
 	// E37D1508-EC3B-4E06-A24A-C7AC31******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The automatic key rotation period configured in Key Management Service (KMS). If no automatic key rotation period is configured, 0s is returned. Unit: seconds.
+	// The automatic key rotation interval configured in KMS. If no automatic key rotation interval is set, 0 s is returned. Unit: s.
 	//
-	// For example, if the rotation period is set to 7 days, 604800s is returned.
+	// For example, if the rotation interval is 7 days, 604800 s is returned.
 	//
-	// >  This parameter is returned only for a PolarDB for PostgreSQL or PolarDB for PostgreSQL (Compatible with Oracle) cluster whose AutomaticRotation parameter is set to Enabled.
+	// > This parameter is returned only when the database engine is compatible with PostgreSQL or Oracle syntax, and the value of `AutomaticRotation` is `Enabled`.
 	//
 	// example:
 	//
 	// 604800s
 	RotationInterval *string `json:"RotationInterval,omitempty" xml:"RotationInterval,omitempty"`
-	// The region where the TDE key resides.
+	// The region where the TDE key is located.
 	//
 	// example:
 	//
@@ -94,9 +100,9 @@ type DescribeDBClusterTDEResponseBody struct {
 	TDERegion *string `json:"TDERegion,omitempty" xml:"TDERegion,omitempty"`
 	// Indicates whether TDE encryption is enabled. Valid values:
 	//
-	// 	- **Enabled**
+	// - **Enabled**: TDE encryption is enabled.
 	//
-	// 	- **Disabled**
+	// - **Disabled**: TDE encryption is disabled.
 	//
 	// example:
 	//

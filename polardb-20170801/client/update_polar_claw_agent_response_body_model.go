@@ -24,26 +24,33 @@ type iUpdatePolarClawAgentResponseBody interface {
 }
 
 type UpdatePolarClawAgentResponseBody struct {
+	// The details of the updated agent.
 	Agent *UpdatePolarClawAgentResponseBodyAgent `json:"Agent,omitempty" xml:"Agent,omitempty" type:"Struct"`
-	// Agent ID
+	// The agent ID.
 	//
 	// example:
 	//
 	// main
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	// The application ID.
+	//
 	// example:
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The response status code.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -123,17 +130,22 @@ func (s *UpdatePolarClawAgentResponseBody) Validate() error {
 }
 
 type UpdatePolarClawAgentResponseBodyAgent struct {
-	// Agent ID
+	// The agent ID.
 	//
 	// example:
 	//
 	// main
-	Id       *string                                        `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The identity information of the agent.
 	Identity *UpdatePolarClawAgentResponseBodyAgentIdentity `json:"Identity,omitempty" xml:"Identity,omitempty" type:"Struct"`
+	// The display name of the agent.
+	//
 	// example:
 	//
 	// PolarClaw
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The workspace path.
+	//
 	// example:
 	//
 	// /home/node/.openclaw/workspace-work-v2
@@ -194,22 +206,32 @@ func (s *UpdatePolarClawAgentResponseBodyAgent) Validate() error {
 }
 
 type UpdatePolarClawAgentResponseBodyAgentIdentity struct {
+	// The path or content of the avatar.
+	//
 	// example:
 	//
 	// test
 	Avatar *string `json:"Avatar,omitempty" xml:"Avatar,omitempty"`
+	// The avatar URL.
+	//
 	// example:
 	//
 	// test
 	AvatarUrl *string `json:"AvatarUrl,omitempty" xml:"AvatarUrl,omitempty"`
+	// The identity\\"s Emoji identifier. This can be a Unicode code point, such as U+1F99E, or the Emoji character itself.
+	//
 	// example:
 	//
 	// U+1F99E
 	Emoji *string `json:"Emoji,omitempty" xml:"Emoji,omitempty"`
+	// The name of the identity.
+	//
 	// example:
 	//
 	// PolarClaw
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The theme of the identity.
+	//
 	// example:
 	//
 	// soul lobster

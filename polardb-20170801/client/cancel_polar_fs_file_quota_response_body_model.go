@@ -18,15 +18,19 @@ type iCancelPolarFsFileQuotaResponseBody interface {
 }
 
 type CancelPolarFsFileQuotaResponseBody struct {
+	// The file paths for which the quotas were deleted. Multiple paths are separated by a comma (`,`).
+	//
 	// example:
 	//
 	// /path1,/path2
 	FilePathIds *string `json:"FilePathIds,omitempty" xml:"FilePathIds,omitempty"`
+	// The ID of the Polarlakebase instance.
+	//
 	// example:
 	//
 	// pfs-2ze0i74ka607*****
 	PolarFsInstanceId *string `json:"PolarFsInstanceId,omitempty" xml:"PolarFsInstanceId,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//

@@ -14,6 +14,8 @@ type iModifyDBClusterVpcResponseBody interface {
 }
 
 type ModifyDBClusterVpcResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// EBEAA83D-1734-42E3-85E3-E25F6E******

@@ -14,6 +14,8 @@ type iResetAccountZonalResponseBody interface {
 }
 
 type ResetAccountZonalResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 24A1990B-4F6E-482B-B8CB-75C612******

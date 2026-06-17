@@ -30,35 +30,58 @@ type iDescribeAIDBClusterPerformanceResponseBody interface {
 }
 
 type DescribeAIDBClusterPerformanceResponseBody struct {
+	// The API key for the model service.
+	//
 	// example:
 	//
 	// xxx
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	// The ID of the database cluster.
+	//
 	// example:
 	//
 	// pc-a************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The type of the database engine. Only **polardb_ai*	- is supported.
+	//
 	// example:
 	//
 	// polardb_ai
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
+	// The version number of the database AI engine.
+	//
+	// Example: 3.0
+	//
 	// example:
 	//
 	// 3.0
 	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
+	// The end of the time range that was queried. The time is in the `YYYY-MM-DDThh:mmZ` format and is in UTC.
+	//
 	// example:
 	//
 	// 2022-11-16T16:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The time granularity of the performance data. Valid values:
+	//
+	// - 60
+	//
+	// - 3600
+	//
 	// example:
 	//
 	// 60
-	Interval        *string                                                      `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The details of the instance performance parameters.
 	PerformanceKeys []*DescribeAIDBClusterPerformanceResponseBodyPerformanceKeys `json:"PerformanceKeys,omitempty" xml:"PerformanceKeys,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// D0CEC6AC-7760-409A-A0D5-E6CD86******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The beginning of the time range that was queried. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format and is in UTC.
+	//
 	// example:
 	//
 	// 2022-11-15T16:00Z
@@ -168,19 +191,26 @@ func (s *DescribeAIDBClusterPerformanceResponseBody) Validate() error {
 }
 
 type DescribeAIDBClusterPerformanceResponseBodyPerformanceKeys struct {
+	// The ID of the cluster node.
+	//
 	// example:
 	//
 	// pi-*************
 	DBNodeId *string `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty"`
+	// The performance metric.
+	//
 	// example:
 	//
 	// PolarDBAIModelCall
 	Measurement *string `json:"Measurement,omitempty" xml:"Measurement,omitempty"`
+	// The name of the specific performance metric.
+	//
 	// example:
 	//
 	// model_input_amount
-	MetricName *string                                                            `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	Points     []*DescribeAIDBClusterPerformanceResponseBodyPerformanceKeysPoints `json:"Points,omitempty" xml:"Points,omitempty" type:"Repeated"`
+	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	// The array of performance data.
+	Points []*DescribeAIDBClusterPerformanceResponseBodyPerformanceKeysPoints `json:"Points,omitempty" xml:"Points,omitempty" type:"Repeated"`
 }
 
 func (s DescribeAIDBClusterPerformanceResponseBodyPerformanceKeys) String() string {
@@ -241,10 +271,14 @@ func (s *DescribeAIDBClusterPerformanceResponseBodyPerformanceKeys) Validate() e
 }
 
 type DescribeAIDBClusterPerformanceResponseBodyPerformanceKeysPoints struct {
+	// The UNIX timestamp that indicates when the metric was collected. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1724206183
 	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// The value of the metric.
+	//
 	// example:
 	//
 	// 42.38

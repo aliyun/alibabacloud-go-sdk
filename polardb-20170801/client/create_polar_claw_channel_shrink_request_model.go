@@ -24,12 +24,16 @@ type iCreatePolarClawChannelShrinkRequest interface {
 }
 
 type CreatePolarClawChannelShrinkRequest struct {
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The channel configuration.
+	//
 	// example:
 	//
 	// {
@@ -46,24 +50,32 @@ type CreatePolarClawChannelShrinkRequest struct {
 	//
 	// }
 	ChannelConfigShrink *string `json:"ChannelConfig,omitempty" xml:"ChannelConfig,omitempty"`
+	// The channel\\"s unique identifier.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// feishu
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// The name and version of the npm package for the channel plugin.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// @larksuite/openclaw-lark@2026.4.7
 	NpmPackage *string `json:"NpmPackage,omitempty" xml:"NpmPackage,omitempty"`
+	// The channel plugin\\"s name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// openclaw-lark
 	PluginId *string `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
+	// Indicates whether to restart the gateway after the channel is created. Default: `true`.
+	//
 	// example:
 	//
 	// true

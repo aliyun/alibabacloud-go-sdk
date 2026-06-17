@@ -24,7 +24,7 @@ type ModifyDBNodeHotReplicaModeResponseBody struct {
 	//
 	// example:
 	//
-	// pc-2vc327c2a14a3u858
+	// pc-*****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The ID of the order.
 	//
@@ -36,7 +36,7 @@ type ModifyDBNodeHotReplicaModeResponseBody struct {
 	//
 	// example:
 	//
-	// 9F4DDFBF-205C-5A3E-8DC2-C60F3E3FDC38
+	// 9F4DDFBF-205C-5A3E-8DC2-C6**********
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

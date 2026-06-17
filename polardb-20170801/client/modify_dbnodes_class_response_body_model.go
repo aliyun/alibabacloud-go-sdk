@@ -18,13 +18,13 @@ type iModifyDBNodesClassResponseBody interface {
 }
 
 type ModifyDBNodesClassResponseBody struct {
-	// The cluster ID.
+	// The database cluster ID.
 	//
 	// example:
 	//
 	// pc-*************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The ID of the order.
+	// The order ID.
 	//
 	// example:
 	//

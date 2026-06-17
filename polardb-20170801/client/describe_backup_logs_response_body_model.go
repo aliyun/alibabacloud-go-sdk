@@ -23,13 +23,13 @@ type iDescribeBackupLogsResponseBody interface {
 
 type DescribeBackupLogsResponseBody struct {
 	Items *DescribeBackupLogsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries returned on the current page.
 	//
 	// example:
 	//
@@ -41,7 +41,7 @@ type DescribeBackupLogsResponseBody struct {
 	//
 	// ADAC63DB-0691-4ECE-949A-FAEA68******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of returned entries.
+	// The total number of entries.
 	//
 	// example:
 	//

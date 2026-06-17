@@ -34,34 +34,58 @@ type iDescribeAccountsZonalRequest interface {
 }
 
 type DescribeAccountsZonalRequest struct {
+	// The account name.
+	//
 	// example:
 	//
 	// test_acc
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pc-***************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The maximum number of entries to return in a single request.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token to retrieve the next page of results. You do not need to specify this parameter for the first request. In a subsequent request, set this parameter to the NextToken value returned in the previous response.
+	//
 	// example:
 	//
 	// 212db86sca4384811e0b5e8707e******
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The node type. This parameter is required when you query the accounts of a PolarDB Search node.
+	//
+	// - Search
+	//
 	// example:
 	//
 	// Search
 	NodeType     *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page number. The value must be an integer that is greater than 0. The default value is 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Valid values:
+	//
+	// - 30
+	//
+	// - 50
+	//
+	// - 100
+	//
+	// The default value is 30.
+	//
 	// example:
 	//
 	// 30

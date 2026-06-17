@@ -30,36 +30,62 @@ type iDescribeHALogsResponseBody interface {
 }
 
 type DescribeHALogsResponseBody struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// pc-a*************
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The instance type. Valid values:
+	//
+	// - **polardb_mysql_rw**: read-write instance.
+	//
+	// - **polardb_mysql_ro**: read-only instance.
+	//
+	// - **polardb_mysql_standby**: standby instance.
+	//
 	// example:
 	//
 	// polardb_mysql_rw
 	DBInstanceType *string `json:"DBInstanceType,omitempty" xml:"DBInstanceType,omitempty"`
-	// The failover logs.
+	// The list of primary/secondary 这里 AI 机翻使用了 failover，但代码里用了 switch，建议保持一致，都改为 swichover logs.
 	HaLogItems []*DescribeHALogsResponseBodyHaLogItems `json:"HaLogItems,omitempty" xml:"HaLogItems,omitempty" type:"Repeated"`
+	// Indicates whether primary/secondary switchover records exist. Valid values:
+	//
+	// - **1**: No
+	//
+	// - **0**: Yes
+	//
 	// example:
 	//
 	// 1
 	HaStatus *int32 `json:"HaStatus,omitempty" xml:"HaStatus,omitempty"`
+	// The number of items in the log list on the current page.
+	//
 	// example:
 	//
 	// 10
 	ItemsNumbers *int32 `json:"ItemsNumbers,omitempty" xml:"ItemsNumbers,omitempty"`
+	// The page number. The value is greater than 0 and does not exceed the maximum value of the Integer data type. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page. Valid values: 30 to 100. Default value: 30.
+	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6BD9CDE4-5E7B-4BF3-9BB8-83C73E******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 160
@@ -169,29 +195,31 @@ func (s *DescribeHALogsResponseBody) Validate() error {
 }
 
 type DescribeHALogsResponseBodyHaLogItems struct {
-	// The reason code of the failover.
+	// The cause code of the switchover.
 	//
 	// example:
 	//
 	// Platform.Ha.AuroraService.ManualOperations
 	SwitchCauseCode *string `json:"SwitchCauseCode,omitempty" xml:"SwitchCauseCode,omitempty"`
-	// The reason of the failover.
+	// The cause of the switchover.
 	//
 	// example:
 	//
 	// Platform.Ha.ManuallyTriggered
 	SwitchCauseDetail *string `json:"SwitchCauseDetail,omitempty" xml:"SwitchCauseDetail,omitempty"`
-	// The time when the failover ended.
+	// The end time of the switchover.
 	//
 	// example:
 	//
 	// 2025-05-20T03:09:56Z
 	SwitchFinishTime *string `json:"SwitchFinishTime,omitempty" xml:"SwitchFinishTime,omitempty"`
+	// The ID of the primary/secondary switchover log.
+	//
 	// example:
 	//
 	// e571f897-9b3c-4012-9470-88333832dec4
 	SwitchId *string `json:"SwitchId,omitempty" xml:"SwitchId,omitempty"`
-	// The time when the failover started.
+	// The start time of the switchover.
 	//
 	// example:
 	//

@@ -16,9 +16,9 @@ type iDescribeDBClusterEndpointsResponseBody interface {
 }
 
 type DescribeDBClusterEndpointsResponseBody struct {
-	// The information about the endpoints.
+	// A list of cluster endpoints.
 	Items []*DescribeDBClusterEndpointsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -66,132 +66,166 @@ func (s *DescribeDBClusterEndpointsResponseBody) Validate() error {
 }
 
 type DescribeDBClusterEndpointsResponseBodyItems struct {
-	// The details of the endpoint.
+	// The connection addresses for the endpoint.
 	AddressItems []*DescribeDBClusterEndpointsResponseBodyItemsAddressItems `json:"AddressItems,omitempty" xml:"AddressItems,omitempty" type:"Repeated"`
-	// Indicates whether new nodes are automatically associated with the default cluster endpoint. Valid values:
+	// Indicates whether new nodes are automatically added to the default cluster endpoint. Valid values:
 	//
-	// 	- **Enable**
+	// - **Enable**
 	//
-	// 	- **Disable**
+	// - **Disable**
 	//
 	// example:
 	//
 	// Enable
-	AutoAddNewNodes  *string `json:"AutoAddNewNodes,omitempty" xml:"AutoAddNewNodes,omitempty"`
+	AutoAddNewNodes *string `json:"AutoAddNewNodes,omitempty" xml:"AutoAddNewNodes,omitempty"`
+	// The connection string.
+	//
+	// example:
+	//
+	// ********.rwlb.polardb-pg-public.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	// The ID of the cluster.
+	// The cluster ID.
 	//
 	// example:
 	//
 	// pc-bp1s826a1up******
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The name of the endpoint.
+	// The endpoint name.
 	//
 	// example:
 	//
 	// test
 	DBEndpointDescription *string `json:"DBEndpointDescription,omitempty" xml:"DBEndpointDescription,omitempty"`
-	// The ID of the endpoint.
+	// The endpoint ID.
 	//
 	// example:
 	//
 	// pe-*************
 	DBEndpointId *string `json:"DBEndpointId,omitempty" xml:"DBEndpointId,omitempty"`
-	// The advanced configurations of the endpoint.
+	// The advanced settings for the cluster endpoint.
 	//
-	// 	- **DistributedTransaction**: indicates whether transaction splitting is enabled. Valid values:
+	// - **DistributedTransaction**: The transaction splitting status. Valid values:
 	//
-	//     	- **on**
+	//   - **on**: enabled
 	//
-	//     	- **off**
+	//   - **off**: disabled
 	//
-	// 	- **ConsistLevel**: the consistency level of sessions. Valid values:
+	// - **ConsistLevel**: The consistency level. Valid values:
 	//
-	//     	- **0**: eventual consistency.
+	//   - **0**: eventual consistency
 	//
-	//     	- **1**: session consistency.
+	//   - **1**: session consistency
 	//
-	//     	- **2**: global consistency.
+	//   - **2**: global consistency
 	//
-	// 	- **LoadBalanceStrategy**: the load balancing policy that automatically schedules loads. Only **load*	- may be returned.
+	// - **LoadBalanceStrategy**: The load balancing policy. The value is fixed to **load**, which indicates load-based scheduling.
 	//
-	// 	- **MasterAcceptReads**: indicates whether the primary node processes read requests. Valid values:
+	// - **MasterAcceptReads**: Indicates whether the primary node accepts read requests. Valid values:
 	//
-	//     	- **on**
+	//   - **on**: The primary node accepts read requests.
 	//
-	//     	- **off**
+	//   - **off**: The primary node does not accept read requests.
 	//
 	// example:
 	//
 	// {\\"DistributedTransaction\\":\\"off\\",\\"ConsistLevel\\":\\"0\\",\\"LoadBalanceStrategy\\":\\"load\\",\\"MasterAcceptReads\\":\\"on\\"}
 	EndpointConfig *string `json:"EndpointConfig,omitempty" xml:"EndpointConfig,omitempty"`
-	// The type of the endpoint. Valid values:
+	// The type of the cluster endpoint. Valid values:
 	//
-	// 	- **Cluster**: the default endpoint.
+	// - **Cluster**: the default cluster endpoint.
 	//
-	// 	- **Primary**: the primary endpoint.
+	// - **Primary**: the primary endpoint.
 	//
-	// 	- **Custom**: a custom cluster endpoint.
+	// - **Custom**: a custom cluster endpoint.
 	//
 	// example:
 	//
 	// Custom
 	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
-	NetType      *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
-	// The role name of each node in the endpoint. The role name of the primary node is **Writer**. Multiple read-only nodes can be associated with an endpoint. Therefore, the role name of each read-only node is suffixed with a number. For example, you can use **Reader1*	- and **Reader2*	- as the role names.
+	// The network type. Valid values:
 	//
-	// >  This parameter is valid only for PolarDB for PostgreSQL clusters and PolarDB for PostgreSQL (Compatible with Oracle)) clusters.
+	// - **Public**: public network
+	//
+	// - **Private**: private network
+	//
+	// example:
+	//
+	// Private
+	NetType *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
+	// The role of each node in the endpoint. The primary node has the **Writer*	- role. Read-only nodes have numbered roles, such as **Reader1**, **Reader2**, and so on.
+	//
+	// > This parameter is supported only by PolarDB for PostgreSQL clusters and PolarDB for PostgreSQL (compatible with Oracle) clusters.
 	//
 	// example:
 	//
 	// Reader1
 	NodeWithRoles *string `json:"NodeWithRoles,omitempty" xml:"NodeWithRoles,omitempty"`
-	// The nodes in the endpoint.
+	// The list of nodes configured for the endpoint.
 	//
 	// example:
 	//
 	// pi-***************,pi-***************
 	Nodes *string `json:"Nodes,omitempty" xml:"Nodes,omitempty"`
-	// The global consistency timeout policy. Valid values:
+	// The policy for handling global consistency read timeouts. Valid values:
 	//
-	// 	- **0**: sends the request to the primary node.
+	// - **0**: Redirects the request to the primary node.
 	//
-	// 	- **2**: downgrades the consistency level of a query to inconsistent read when a global consistent read in the query times out. No error message is returned to the client.
+	// - **2**: Downgrades the request. If a global consistency read times out, the system automatically downgrades the query to a non-consistent read, and the client does not receive an error.
 	//
 	// example:
 	//
 	// 0
 	PolarSccTimeoutAction *string `json:"PolarSccTimeoutAction,omitempty" xml:"PolarSccTimeoutAction,omitempty"`
-	// Global consistency timeout.
+	// The timeout period for global consistency reads.
 	//
 	// example:
 	//
 	// 100
 	PolarSccWaitTimeout *string `json:"PolarSccWaitTimeout,omitempty" xml:"PolarSccWaitTimeout,omitempty"`
-	Port                *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	Protocol            *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The port.
+	//
+	// example:
+	//
+	// 1521
+	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The protocol type.
+	//
+	// example:
+	//
+	// http
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 	// The read/write mode. Valid values:
 	//
-	// 	- **ReadWrite**: handles read and write requests. Automatic read/write splitting is enabled.
+	// - **ReadWrite**: read and write (automatic read/write splitting).
 	//
-	// 	- **ReadOnly**: handles read-only requests.
+	// - **ReadOnly**: read-only.
 	//
 	// example:
 	//
 	// ReadOnly
 	ReadWriteMode *string `json:"ReadWriteMode,omitempty" xml:"ReadWriteMode,omitempty"`
-	// Indicates whether the global consistency (high-performance mode) feature is enabled for the node. Valid values:
+	// Indicates whether global consistency (high-performance mode) is enabled for the node. Valid values:
 	//
-	// 	- **on**: enabled.
+	// - **on**: enabled
 	//
-	// 	- **off**: disabled
+	// - **off**: disabled
 	//
 	// example:
 	//
 	// on
-	SccMode     *string `json:"SccMode,omitempty" xml:"SccMode,omitempty"`
+	SccMode *string `json:"SccMode,omitempty" xml:"SccMode,omitempty"`
+	// The service name.
+	//
+	// example:
+	//
+	// test-name
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	VPCId       *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
+	// The VPC ID.
+	//
+	// example:
+	//
+	// vpc-***************
+	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
 }
 
 func (s DescribeDBClusterEndpointsResponseBodyItems) String() string {
@@ -387,17 +421,17 @@ func (s *DescribeDBClusterEndpointsResponseBodyItems) Validate() error {
 }
 
 type DescribeDBClusterEndpointsResponseBodyItemsAddressItems struct {
-	// The endpoint.
+	// The connection string.
 	//
 	// example:
 	//
 	// ********.rwlb.polardb-pg-public.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	// Whether it is the dashboard endpoint of the PolarDB search node.
+	// Indicates whether the endpoint is a dashboard endpoint for a PolarDB Search node.
 	//
-	// 	- Ture
+	// - **True**: Yes
 	//
-	// 	- False
+	// - **False**: No
 	//
 	// example:
 	//
@@ -409,11 +443,21 @@ type DescribeDBClusterEndpointsResponseBodyItemsAddressItems struct {
 	//
 	// 192.***.***.***
 	IPAddress *string `json:"IPAddress,omitempty" xml:"IPAddress,omitempty"`
-	// The network type of the endpoint. Valid values:
+	// The network type. Valid values:
 	//
-	// 	- **Public**
+	// - **Public**: public network
 	//
-	// 	- **Private**
+	// - **Private**: private network
+	//
+	// <props="china">
+	//
+	// - **Inner**: classic network
+	//
+	//
+	//
+	// <props="china">
+	//
+	// Only PolarDB for MySQL clusters support the classic network type.
 	//
 	// example:
 	//
@@ -425,27 +469,27 @@ type DescribeDBClusterEndpointsResponseBodyItemsAddressItems struct {
 	//
 	// 1521
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The private domain name that is bound to the endpoint.
+	// The connection string for the private domain name.
 	//
 	// example:
 	//
 	// ***.***.**.com
 	PrivateZoneConnectionString *string `json:"PrivateZoneConnectionString,omitempty" xml:"PrivateZoneConnectionString,omitempty"`
-	// The ID of the VPC.
+	// The VPC ID.
 	//
 	// example:
 	//
 	// vpc-***************
 	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	// The ID of the vSwitch.
+	// The vSwitch ID.
 	//
 	// example:
 	//
 	// vsw-************
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the virtual private cloud (VPC) instance.
+	// The VPC instance ID.
 	//
-	// > This parameter is returned for only PolarDB for MySQL clusters.
+	// > This parameter is returned only for PolarDB for MySQL clusters.
 	//
 	// example:
 	//

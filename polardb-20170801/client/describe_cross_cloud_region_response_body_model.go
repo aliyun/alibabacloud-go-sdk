@@ -16,7 +16,10 @@ type iDescribeCrossCloudRegionResponseBody interface {
 }
 
 type DescribeCrossCloudRegionResponseBody struct {
+	// The information about the cross-cloud regions.
 	CrossCloudRegionList []*DescribeCrossCloudRegionResponseBodyCrossCloudRegionList `json:"CrossCloudRegionList,omitempty" xml:"CrossCloudRegionList,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// E56531A4-E552-40BA-9C58-137B80******
@@ -63,15 +66,22 @@ func (s *DescribeCrossCloudRegionResponseBody) Validate() error {
 }
 
 type DescribeCrossCloudRegionResponseBodyCrossCloudRegionList struct {
+	// The ID of the third-party cloud region.
+	//
 	// example:
 	//
 	// cn-east-3
 	CrossCloudRegionId *string `json:"CrossCloudRegionId,omitempty" xml:"CrossCloudRegionId,omitempty"`
+	// The name of the third-party cloud region.
+	//
 	// example:
 	//
 	// cn-east-3
-	CrossCloudRegionName *string                                                                       `json:"CrossCloudRegionName,omitempty" xml:"CrossCloudRegionName,omitempty"`
-	CrossCloudZoneList   []*DescribeCrossCloudRegionResponseBodyCrossCloudRegionListCrossCloudZoneList `json:"CrossCloudZoneList,omitempty" xml:"CrossCloudZoneList,omitempty" type:"Repeated"`
+	CrossCloudRegionName *string `json:"CrossCloudRegionName,omitempty" xml:"CrossCloudRegionName,omitempty"`
+	// A list of third-party cloud zones.
+	CrossCloudZoneList []*DescribeCrossCloudRegionResponseBodyCrossCloudRegionListCrossCloudZoneList `json:"CrossCloudZoneList,omitempty" xml:"CrossCloudZoneList,omitempty" type:"Repeated"`
+	// The resource pool ID.
+	//
 	// example:
 	//
 	// pj-87681rbcef6******
@@ -136,10 +146,14 @@ func (s *DescribeCrossCloudRegionResponseBodyCrossCloudRegionList) Validate() er
 }
 
 type DescribeCrossCloudRegionResponseBodyCrossCloudRegionListCrossCloudZoneList struct {
+	// The ID of the third-party cloud zone.
+	//
 	// example:
 	//
 	// cn-east-3-1
 	CrossCloudZoneId *string `json:"CrossCloudZoneId,omitempty" xml:"CrossCloudZoneId,omitempty"`
+	// The name of the third-party cloud zone.
+	//
 	// example:
 	//
 	// cn-east-3-1

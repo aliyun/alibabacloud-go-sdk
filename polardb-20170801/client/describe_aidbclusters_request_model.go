@@ -38,45 +38,98 @@ type iDescribeAIDBClustersRequest interface {
 }
 
 type DescribeAIDBClustersRequest struct {
+	// The node type. To specify multiple types, separate them with a comma. Valid values:
+	//
+	// - **vnode**: a node managed by Kubernetes
+	//
+	// - **container**: a container that you can log on to
+	//
+	// - **maas**: model service
+	//
 	// example:
 	//
 	// vnode,container
 	AiNodeType *string `json:"AiNodeType,omitempty" xml:"AiNodeType,omitempty"`
+	// The cluster description. Fuzzy search is supported.
+	//
 	// example:
 	//
 	// pc-****************
 	DBClusterDescription *string `json:"DBClusterDescription,omitempty" xml:"DBClusterDescription,omitempty"`
+	// The cluster ID. To specify multiple clusters, separate their IDs with a comma.
+	//
 	// example:
 	//
 	// pc-***************
 	DBClusterIds *string `json:"DBClusterIds,omitempty" xml:"DBClusterIds,omitempty"`
+	// The cluster status. Valid values:
+	//
+	// - **Creating**: The cluster is being created.
+	//
+	// - **Running**: The cluster is running.
+	//
+	// - **Deleting**: The cluster is being released.
+	//
+	// - **Rebooting**: The cluster is restarting.
+	//
+	// - **DBNodeCreating**: A node is being added.
+	//
+	// - **DBNodeDeleting**: A node is being deleted.
+	//
+	// - **ClassChanging**: The node specifications are being changed.
+	//
+	// - **NetAddressCreating**: A network connection is being created.
+	//
+	// - **NetAddressDeleting**: A network connection is being deleted.
+	//
+	// - **NetAddressModifying**: A network connection is being modified.
+	//
+	// - **Deleted**: The cluster is released.
+	//
+	// 	- **ClassChanged**: Resources are being reclaimed after the upgrade or downgrade.
+	//
 	// example:
 	//
 	// Running
 	DBClusterStatus *string `json:"DBClusterStatus,omitempty" xml:"DBClusterStatus,omitempty"`
 	OwnerAccount    *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values: **30**, **50**, and **100**.
+	//
+	// Default value: **30**.
+	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The billing method. Valid values:
+	//
+	// - **Postpaid**: pay-as-you-go
+	//
+	// - **Prepaid**: subscription
+	//
 	// example:
 	//
 	// Prepaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId             *string                           `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string                           `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                            `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Tag                  []*DescribeAIDBClustersRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// A list of tags.
+	Tag []*DescribeAIDBClustersRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DescribeAIDBClustersRequest) String() string {
@@ -218,7 +271,17 @@ func (s *DescribeAIDBClustersRequest) Validate() error {
 }
 
 type DescribeAIDBClustersRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key. Use this parameter with `Tag.n.Value` to filter clusters by tag. You can specify up to 20 tag pairs. The index n must be a unique, consecutive integer starting from 1.
+	//
+	// example:
+	//
+	// testKey
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// testValueData
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

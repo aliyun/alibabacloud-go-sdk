@@ -18,13 +18,18 @@ type iAddPolarFsPathMappingRequest interface {
 }
 
 type AddPolarFsPathMappingRequest struct {
+	// A list of objects, each containing a bucket and its corresponding path.
 	CustomBucketPathList []*AddPolarFsPathMappingRequestCustomBucketPathList `json:"CustomBucketPathList,omitempty" xml:"CustomBucketPathList,omitempty" type:"Repeated"`
+	// The ID of the cluster.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pc-**************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The ID of the PolarFS instance.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -82,10 +87,14 @@ func (s *AddPolarFsPathMappingRequest) Validate() error {
 }
 
 type AddPolarFsPathMappingRequestCustomBucketPathList struct {
+	// The name of the bucket.
+	//
 	// example:
 	//
 	// Bucket1
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	// The custom storage path.
+	//
 	// example:
 	//
 	// /data1

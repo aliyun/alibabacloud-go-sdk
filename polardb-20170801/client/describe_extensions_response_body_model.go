@@ -20,10 +20,21 @@ type iDescribeExtensionsResponseBody interface {
 }
 
 type DescribeExtensionsResponseBody struct {
+	// The extensions that are installed in the specified database.
 	InstalledExtensions []*DescribeExtensionsResponseBodyInstalledExtensions `json:"InstalledExtensions,omitempty" xml:"InstalledExtensions,omitempty" type:"Repeated"`
-	Overview            *string                                              `json:"Overview,omitempty" xml:"Overview,omitempty"`
-	// Id of the request
-	RequestId             *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The overview of the extension.
+	//
+	// example:
+	//
+	// 测试建单，请忽略
+	Overview *string `json:"Overview,omitempty" xml:"Overview,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 309073D4-9C99-511C-AF84-0C67A6F52E67
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The extensions that are not installed in the specified database.
 	UninstalledExtensions []*DescribeExtensionsResponseBodyUninstalledExtensions `json:"UninstalledExtensions,omitempty" xml:"UninstalledExtensions,omitempty" type:"Repeated"`
 }
 
@@ -94,38 +105,56 @@ func (s *DescribeExtensionsResponseBody) Validate() error {
 }
 
 type DescribeExtensionsResponseBodyInstalledExtensions struct {
+	// The extension type.
+	//
 	// example:
 	//
 	// geography_space, self_develop
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The description of the extension.
+	//
 	// example:
 	//
 	// OK
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The default version of the extension.
+	//
 	// example:
 	//
 	// 7.7
 	DefaultVersion *string `json:"DefaultVersion,omitempty" xml:"DefaultVersion,omitempty"`
+	// The currently installed version of the extension.
+	//
 	// example:
 	//
 	// 7.7
 	InstalledVersion *string `json:"InstalledVersion,omitempty" xml:"InstalledVersion,omitempty"`
+	// The extension name.
+	//
 	// example:
 	//
 	// jueming
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The owner of the extension.
+	//
 	// example:
 	//
 	// alton
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The priority of the extension.
+	//
 	// example:
 	//
 	// 1
 	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The extensions on which this extension depends.
+	//
 	// example:
 	//
 	// ganos_networking
 	Requires *string `json:"Requires,omitempty" xml:"Requires,omitempty"`
+	// Specifies whether to restart the application. \\`true\\`: The application is restarted. \\`false\\`: The application is not restarted.
+	//
 	// example:
 	//
 	// true
@@ -226,38 +255,56 @@ func (s *DescribeExtensionsResponseBodyInstalledExtensions) Validate() error {
 }
 
 type DescribeExtensionsResponseBodyUninstalledExtensions struct {
+	// The extension type.
+	//
 	// example:
 	//
 	// geography_space, self_develop
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The purpose of the extension.
+	//
 	// example:
 	//
 	// OK
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The default version of the extension.
+	//
 	// example:
 	//
 	// 7.7
 	DefaultVersion *string `json:"DefaultVersion,omitempty" xml:"DefaultVersion,omitempty"`
+	// The currently installed version of the extension.
+	//
 	// example:
 	//
 	// 7.7
 	InstalledVersion *string `json:"InstalledVersion,omitempty" xml:"InstalledVersion,omitempty"`
+	// The extension name.
+	//
 	// example:
 	//
 	// jueming
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The owner of the extension.
+	//
 	// example:
 	//
 	// alton
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The priority of the extension.
+	//
 	// example:
 	//
 	// 1
 	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The extensions on which this extension depends.
+	//
 	// example:
 	//
 	// ganos_networking
 	Requires *string `json:"Requires,omitempty" xml:"Requires,omitempty"`
+	// Specifies whether to restart the application. \\`true\\`: The application is restarted. \\`false\\`: The application is not restarted.
+	//
 	// example:
 	//
 	// true

@@ -24,6 +24,8 @@ type iDeleteFirewallRulesRequest interface {
 }
 
 type DeleteFirewallRulesRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -34,6 +36,10 @@ type DeleteFirewallRulesRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The names of the firewall rules to delete. You can specify multiple rule names. Separate the names with commas (,).
+	//
+	// > Call the [DescribeFirewallRules](https://help.aliyun.com/document_detail/212573.html) operation to query the details of all firewall rules for the cluster, including the rule names.
+	//
 	// This parameter is required.
 	//
 	// example:

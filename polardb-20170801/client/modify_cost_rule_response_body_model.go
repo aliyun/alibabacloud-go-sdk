@@ -16,11 +16,13 @@ type iModifyCostRuleResponseBody interface {
 }
 
 type ModifyCostRuleResponseBody struct {
+	// The cost rule ID.
+	//
 	// example:
 	//
 	// 924d450014e64e88ac6e8486f8e990**
 	CostRuleId *string `json:"CostRuleId,omitempty" xml:"CostRuleId,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

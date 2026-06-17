@@ -16,11 +16,13 @@ type iEnableDBClusterOrcaResponseBody interface {
 }
 
 type EnableDBClusterOrcaResponseBody struct {
+  // The cluster ID.
+  // 
   // example:
   // 
   // pc-***************
   DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-  // Id of the request
+  // The request ID.
   // 
   // example:
   // 

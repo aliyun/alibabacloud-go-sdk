@@ -18,19 +18,28 @@ type iDeleteCostRuleRequest interface {
 }
 
 type DeleteCostRuleRequest struct {
+	// The ID of the cost rule.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 924d450014e64e88ac6e8486f8e990**
 	CostRuleId *string `json:"CostRuleId,omitempty" xml:"CostRuleId,omitempty"`
+	// The ID of the gateway instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pg-xxxxxxxx
 	GwClusterId *string `json:"GwClusterId,omitempty" xml:"GwClusterId,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DeleteCostRuleRequest) String() string {

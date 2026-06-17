@@ -30,9 +30,9 @@ type iUntagResourcesRequest interface {
 }
 
 type UntagResourcesRequest struct {
-	// Specifies whether to detach all tags from the cluster. Valid values: **true*	- and **false**. Default value: **false**.
+	// Specifies whether to detach all tags. Valid values: **true*	- and **false**. Default value: **false**.
 	//
-	// >  This parameter takes effect only if `TagKey.n` is empty.
+	// > This parameter takes effect only when the `TagKey.n` parameter is empty.
 	//
 	// example:
 	//
@@ -40,9 +40,9 @@ type UntagResourcesRequest struct {
 	All          *bool   `json:"All,omitempty" xml:"All,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	//
-	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query the available regions.
+	// > Call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to view available regions.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +50,7 @@ type UntagResourcesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The IDs of the clusters.
+	// The ID of the target cluster.
 	//
 	// This parameter is required.
 	//
@@ -60,7 +60,7 @@ type UntagResourcesRequest struct {
 	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The type of the resource. Set the value to **cluster**.
+	// The resource type. Set the value to **cluster**.
 	//
 	// This parameter is required.
 	//
@@ -68,7 +68,7 @@ type UntagResourcesRequest struct {
 	//
 	// cluster
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The keys of the tags.
+	// The tag key.
 	//
 	// example:
 	//

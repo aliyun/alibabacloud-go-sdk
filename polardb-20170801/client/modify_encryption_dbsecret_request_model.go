@@ -28,16 +28,26 @@ type iModifyEncryptionDBSecretRequest interface {
 }
 
 type ModifyEncryptionDBSecretRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pc-****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The status of the key. Valid values:
+	//
+	// - **Enabled**
+	//
+	// - **Disabled**
+	//
 	// example:
 	//
 	// Enabled
 	EncryptionDBStatus *string `json:"EncryptionDBStatus,omitempty" xml:"EncryptionDBStatus,omitempty"`
+	// The key ID.
+	//
 	// example:
 	//
 	// 749c1df7-****-****-****-*********
@@ -46,6 +56,8 @@ type ModifyEncryptionDBSecretRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The Global Resource Descriptor (GRD) of the role. For more information, see [Overview of RAM roles](https://help.aliyun.com/document_detail/93689.html).
+	//
 	// example:
 	//
 	// acs:ram::1406926*****:role/aliyunrdsinstanceencryptiondefaultrole

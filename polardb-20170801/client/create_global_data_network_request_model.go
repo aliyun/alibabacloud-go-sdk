@@ -32,45 +32,79 @@ type iCreateGlobalDataNetworkRequest interface {
 }
 
 type CreateGlobalDataNetworkRequest struct {
+	// The description or remarks for the GDN.
+	//
 	// example:
 	//
 	// mygdn
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Destination path
+	//
 	// example:
 	//
 	// /
 	DestinationFileSystemPath *string `json:"DestinationFileSystemPath,omitempty" xml:"DestinationFileSystemPath,omitempty"`
+	// Target PolarFileSystem (PolarFS) instance
+	//
 	// example:
 	//
 	// pfs-xxx
 	DestinationId *string `json:"DestinationId,omitempty" xml:"DestinationId,omitempty"`
+	// The region of the destination PolarFS instance.
+	//
 	// example:
 	//
 	// cn-beijing
 	DestinationRegion *string `json:"DestinationRegion,omitempty" xml:"DestinationRegion,omitempty"`
+	// The type of the destination instance. Valid values:
+	//
+	// - **pfs**: PolarFS High-Performance Edition.
+	//
+	// - **pcs**: PolarFS Cold Storage Edition.
+	//
 	// example:
 	//
 	// pfs
 	DestinationType *string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
+	// Whether to freeze the source path during transmission. Valid values:
+	//
+	// - **true**: Freeze.
+	//
+	// - **false**: Do not freeze.
+	//
+	// > Currently only supports oss source.
+	//
 	// example:
 	//
 	// true
 	FreezeSourceDuringSync *string `json:"FreezeSourceDuringSync,omitempty" xml:"FreezeSourceDuringSync,omitempty"`
+	// The source path.
+	//
 	// example:
 	//
 	// /
 	SourceFileSystemPath *string `json:"SourceFileSystemPath,omitempty" xml:"SourceFileSystemPath,omitempty"`
+	// Source PolarFileSystem (PolarFS) instance.
+	//
 	// example:
 	//
-	// oss-xxx
+	// pcs-xxx
 	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	// The region of the source PolarFS instance.
+	//
 	// example:
 	//
 	// cn-wulanchabu
 	SourceRegion *string `json:"SourceRegion,omitempty" xml:"SourceRegion,omitempty"`
+	// The type of the source instance. Valid values:
+	//
+	// - **pfs**: PolarFS High-Performance Edition.
+	//
+	// - **pcs**: PolarFS Cold Storage Edition.
+	//
 	// example:
 	//
-	// oss
+	// pcs
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 }
 

@@ -24,19 +24,19 @@ type iDescribeParameterTemplatesResponseBody interface {
 }
 
 type DescribeParameterTemplatesResponseBody struct {
-	// The type of the database engine.
+	// The database engine type.
 	//
 	// example:
 	//
 	// MySQL
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
-	// The version of the database engine.
+	// The database engine version.
 	//
 	// example:
 	//
 	// 5.7
 	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
-	// The database engine of the cluster.
+	// The database engine.
 	//
 	// example:
 	//

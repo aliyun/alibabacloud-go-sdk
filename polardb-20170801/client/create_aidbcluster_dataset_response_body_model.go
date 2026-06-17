@@ -24,27 +24,37 @@ type iCreateAIDBClusterDatasetResponseBody interface {
 }
 
 type CreateAIDBClusterDatasetResponseBody struct {
+	// The ID of the PolarDB database cluster.
+	//
 	// example:
 	//
 	// pc-****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The dataset management service ID.
+	//
 	// example:
 	//
 	// pcs-2zeei***
 	DataServiceId *string `json:"DataServiceId,omitempty" xml:"DataServiceId,omitempty"`
+	// The dataset ID.
+	//
 	// example:
 	//
 	// pds-2ze88***
 	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	// The dataset name.
+	//
 	// example:
 	//
 	// dataset01
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The path to the dataset.
+	//
 	// example:
 	//
 	// polardb_ai/datasets/train/sft/dataset01
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

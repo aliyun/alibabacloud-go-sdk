@@ -22,27 +22,27 @@ type iDescribeActivationCodesResponseBody interface {
 }
 
 type DescribeActivationCodesResponseBody struct {
-	// The queried activation codes.
+	// List of activation codes
 	Items []*DescribeActivationCodesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The page number.
+	// Current page number
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned on the current page.
+	// Number of records on the current page
 	//
 	// example:
 	//
 	// 1
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	// The request ID.
+	// The unique ID generated for this request.
 	//
 	// example:
 	//
 	// 65D7ACE6-4A61-4B6E-B357-8CB24A******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// Total number of records
 	//
 	// example:
 	//
@@ -117,55 +117,55 @@ func (s *DescribeActivationCodesResponseBody) Validate() error {
 }
 
 type DescribeActivationCodesResponseBodyItems struct {
-	// The time when the activation code takes effect.
+	// Effective period
 	//
 	// example:
 	//
 	// 2024-10-16 16:46:20
 	ActivateAt *string `json:"ActivateAt,omitempty" xml:"ActivateAt,omitempty"`
-	// The description of the activation code.
+	// Activation code description
 	//
 	// example:
 	//
 	// testCode
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time when the activation code expires.
+	// Expiration time
 	//
 	// example:
 	//
 	// 2054-10-16 16:46:20
 	ExpireAt *string `json:"ExpireAt,omitempty" xml:"ExpireAt,omitempty"`
-	// The time when the activation code was generated.
+	// Creation time
 	//
 	// example:
 	//
 	// 2024-10-16 16:46:20
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// The time when the activation code was updated.
+	// Update time
 	//
 	// example:
 	//
 	// 2024-10-16 16:46:20
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The activation code ID.
+	// Activation code ID
 	//
 	// example:
 	//
 	// 123
 	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The media access control (MAC) address used in the generation of the activation code.
+	// MAC address
 	//
 	// example:
 	//
 	// 12:34:56:78:98:00
 	MacAddress *string `json:"MacAddress,omitempty" xml:"MacAddress,omitempty"`
-	// The name of the activation code.
+	// Activation code name
 	//
 	// example:
 	//
 	// testName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The unique identifier of the database.
+	// Unique identifier in the database
 	//
 	// example:
 	//

@@ -34,7 +34,7 @@ type ModifyDBNodeHotReplicaModeRequest struct {
 	//
 	// example:
 	//
-	// pc-2vc327c2a14a3u858
+	// pc-*****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The ID of the node in the cluster.
 	//
@@ -42,7 +42,7 @@ type ModifyDBNodeHotReplicaModeRequest struct {
 	//
 	// example:
 	//
-	// pi-2ze28275h9x5r4wt1
+	// pi-*****************
 	DBNodeId *string `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty"`
 	// Specifies whether to enable the hot standby feature. Valid values:
 	//

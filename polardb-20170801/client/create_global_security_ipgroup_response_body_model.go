@@ -16,9 +16,9 @@ type iCreateGlobalSecurityIPGroupResponseBody interface {
 }
 
 type CreateGlobalSecurityIPGroupResponseBody struct {
-	// The details of the global IP whitelist template.
+	// The information about the global IP whitelist template.
 	GlobalSecurityIPGroup []*CreateGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup `json:"GlobalSecurityIPGroup,omitempty" xml:"GlobalSecurityIPGroup,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -66,9 +66,9 @@ func (s *CreateGlobalSecurityIPGroupResponseBody) Validate() error {
 }
 
 type CreateGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup struct {
-	// The IP address in the whitelist template.
+	// The IP addresses in the whitelist template.
 	//
-	// >  Separate multiple IP addresses with commas (,). You can add up to 1,000 IP addresses or CIDR blocks to all IP whitelists.
+	// > Separate multiple IP addresses with commas (,). You can add a total of up to 1,000 IP addresses or CIDR blocks to all IP whitelists.
 	//
 	// example:
 	//
@@ -76,11 +76,11 @@ type CreateGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup struct {
 	GIpList *string `json:"GIpList,omitempty" xml:"GIpList,omitempty"`
 	// The name of the IP whitelist template. The name must meet the following requirements:
 	//
-	// 	- The name can contain lowercase letters, digits, and underscores (_).
+	// - It can contain lowercase letters, digits, and underscores (_).
 	//
-	// 	- The name must start with a letter and end with a letter or a digit.
+	// - It must start with a letter and end with a letter or digit.
 	//
-	// 	- The name must be 2 to 120 characters in length.
+	// - It must be 2 to 120 characters in length.
 	//
 	// example:
 	//
@@ -92,7 +92,7 @@ type CreateGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup struct {
 	//
 	// g-zsldxfiwjmti0kcm****
 	GlobalSecurityGroupId *string `json:"GlobalSecurityGroupId,omitempty" xml:"GlobalSecurityGroupId,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	//
 	// example:
 	//

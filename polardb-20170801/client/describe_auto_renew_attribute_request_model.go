@@ -32,11 +32,13 @@ type iDescribeAutoRenewAttributeRequest interface {
 }
 
 type DescribeAutoRenewAttributeRequest struct {
+	// The cloud provider of the instance.
+	//
 	// example:
 	//
 	// ENS
 	CloudProvider *string `json:"CloudProvider,omitempty" xml:"CloudProvider,omitempty"`
-	// The ID of the cluster. If you need to specify multiple cluster IDs, separate the cluster IDs with commas (,).
+	// The ID of the cluster. You can specify multiple cluster IDs, separated by commas (,).
 	//
 	// example:
 	//
@@ -44,21 +46,21 @@ type DescribeAutoRenewAttributeRequest struct {
 	DBClusterIds *string `json:"DBClusterIds,omitempty" xml:"DBClusterIds,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. The value must be an integer that is greater than 0. Default value: 1.
+	// The page number. The value must be an integer that is greater than 0 and does not exceed the maximum value of the integer data type. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: 30, 50, and 100. Default value: 30.
+	// The number of entries to return on each page. Valid values: 30, 50, and 100. Default value: 30.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	//
-	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query the region ID details.
+	// > For more information, see [DescribeRegions](https://help.aliyun.com/document_detail/98041.html).
 	//
 	// This parameter is required.
 	//

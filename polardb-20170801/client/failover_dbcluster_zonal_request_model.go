@@ -30,10 +30,14 @@ type iFailoverDBClusterZonalRequest interface {
 }
 
 type FailoverDBClusterZonalRequest struct {
+	// A client token to ensure the idempotence of the request. The client generates this token. It must be unique across requests. The token is case-sensitive and cannot exceed 64 ASCII characters.
+	//
 	// example:
 	//
 	// 6000170000591aed949d0f54a343f1a4233c1e7d1c5******
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -44,14 +48,28 @@ type FailoverDBClusterZonalRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// Specifies whether to fail back to the original primary zone after a failover. Valid values:
+	//
+	// - true: Yes.
+	//
+	// - false: No.
+	//
 	// example:
 	//
 	// false
 	RollBackForDisaster *bool `json:"RollBackForDisaster,omitempty" xml:"RollBackForDisaster,omitempty"`
+	// The ID of the node to promote to the primary node. If you do not specify this parameter, the system automatically selects a node. Call the DescribeDBClusters operation to query node information, such as node IDs.
+	//
 	// example:
 	//
 	// pi-***********
 	TargetDBNodeId *string `json:"TargetDBNodeId,omitempty" xml:"TargetDBNodeId,omitempty"`
+	// The type of failover. Valid values:
+	//
+	// - Primary: A primary/secondary failover within the primary zone.
+	//
+	// - Standby: A switch to the hot standby storage cluster.
+	//
 	// example:
 	//
 	// Primary

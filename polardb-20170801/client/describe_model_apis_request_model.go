@@ -32,41 +32,86 @@ type iDescribeModelApisRequest interface {
 }
 
 type DescribeModelApisRequest struct {
+	// The ID of the gateway instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pg-xxxxxxxxxx
 	GwClusterId *string `json:"GwClusterId,omitempty" xml:"GwClusterId,omitempty"`
+	// The IDs of the model APIs. Separate multiple IDs with a comma.
+	//
 	// example:
 	//
 	// mi-xxx,mi-xxxx
 	ModelApiIds *string `json:"ModelApiIds,omitempty" xml:"ModelApiIds,omitempty"`
+	// The model category. Valid values:
+	//
+	// - **text**
+	//
+	// - **embedding**
+	//
+	// - **rerank**
+	//
 	// example:
 	//
 	// text
 	ModelCategory *string `json:"ModelCategory,omitempty" xml:"ModelCategory,omitempty"`
+	// The name of the model API.
+	//
 	// example:
 	//
 	// testName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values:
+	//
+	// - **30**
+	//
+	// - **50**
+	//
+	// - **100**
+	//
+	//   The default value is **30**.
+	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The API path prefix.
+	//
 	// example:
 	//
 	// /test
 	PathPrefix *string `json:"PathPrefix,omitempty" xml:"PathPrefix,omitempty"`
+	// The protocol. Valid values:
+	//
+	// - **openai**
+	//
+	// - **anthropic**
+	//
+	// - **bailian**
+	//
+	// - **vllm**
+	//
 	// example:
 	//
 	// openai
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The model API status.
+	//
 	// example:
 	//
 	// Enable

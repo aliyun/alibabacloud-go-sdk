@@ -26,39 +26,39 @@ type iDescribeMetaListResponseBody interface {
 }
 
 type DescribeMetaListResponseBody struct {
-	// The ID of the cluster.
+	// The cluster ID.
 	//
 	// example:
 	//
 	// pc-bp1s826a1up******
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The details of databases and tables that can be restored.
+	// The details of recoverable databases and tables.
 	Items []*DescribeMetaListResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of records on the current page.
 	//
 	// example:
 	//
 	// 30
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// AA815DE7-B576-4B22-B33C-3FB31A******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of returned pages.
+	// The total number of pages.
 	//
 	// example:
 	//
 	// 1
 	TotalPageCount *string `json:"TotalPageCount,omitempty" xml:"TotalPageCount,omitempty"`
-	// The total number of entries.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -151,14 +151,15 @@ func (s *DescribeMetaListResponseBody) Validate() error {
 }
 
 type DescribeMetaListResponseBodyItems struct {
-	// The name of the database that can be restored.
+	// The name of the database that can be recovered.
 	//
 	// example:
 	//
 	// test_db
-	Database *string  `json:"Database,omitempty" xml:"Database,omitempty"`
-	Size     []*int64 `json:"Size,omitempty" xml:"Size,omitempty" type:"Repeated"`
-	// The name of the table that can be restored.
+	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	// The size of the database or table, in bytes.
+	Size []*int64 `json:"Size,omitempty" xml:"Size,omitempty" type:"Repeated"`
+	// The names of the tables that can be recovered.
 	Tables []*string `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
 }
 

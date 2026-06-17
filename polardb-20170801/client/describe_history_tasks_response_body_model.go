@@ -22,19 +22,28 @@ type iDescribeHistoryTasksResponseBody interface {
 }
 
 type DescribeHistoryTasksResponseBody struct {
+	// The list of tasks.
 	Items []*DescribeHistoryTasksResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The page number of the query result.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of records per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The unique ID of the request.
+	//
 	// example:
 	//
 	// F90D7C14-2D1C-5B88-9CD1-23AB2CF89***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of tasks that meet the conditions, regardless of paging factors.
+	//
 	// example:
 	//
 	// 2
@@ -108,82 +117,144 @@ func (s *DescribeHistoryTasksResponseBody) Validate() error {
 }
 
 type DescribeHistoryTasksResponseBodyItems struct {
+	// The allowed operation information.
+	//
+	// > This feature is not supported yet.
+	//
 	// example:
 	//
 	// {}
 	ActionInfo *string `json:"ActionInfo,omitempty" xml:"ActionInfo,omitempty"`
+	// The request source. Valid values:
+	//
+	// - **System**: system
+	//
+	// - **User**: user
+	//
 	// example:
 	//
 	// User
 	CallerSource *string `json:"CallerSource,omitempty" xml:"CallerSource,omitempty"`
+	// The ID of the requesting user. If `CallerSource` is `User`, this is the user\\"s UID.
+	//
 	// example:
 	//
 	// 1816563541899***
 	CallerUid *string `json:"CallerUid,omitempty" xml:"CallerUid,omitempty"`
+	// The name of the current step being executed. If this parameter is empty, the task has not started.
+	//
 	// example:
 	//
 	// finish_task
 	CurrentStepName *string `json:"CurrentStepName,omitempty" xml:"CurrentStepName,omitempty"`
+	// The database type.
+	//
 	// example:
 	//
 	// polardb_mysql
 	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	// The end time of the task.
+	//
 	// example:
 	//
 	// 2025-03-03T07:30:57Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The resource ID.
+	//
 	// example:
 	//
 	// pc-2zed3m89cw***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The resource name.
+	//
 	// example:
 	//
 	// pc-2zed3m89cw***
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The resource type.
+	//
 	// example:
 	//
 	// Instance
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The product.
+	//
 	// example:
 	//
 	// polardb
 	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	// The completion progress of the task, from 0.0 to 100.0.
+	//
 	// example:
 	//
 	// 100.0
 	Progress *float32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// The reason for initiating the current task.
+	//
 	// example:
 	//
 	// ""
 	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The estimated remaining execution time, in seconds (s).
+	//
+	// > This value is for reference only. The actual execution time prevails.
+	//
 	// example:
 	//
 	// 0
 	RemainTime *int32 `json:"RemainTime,omitempty" xml:"RemainTime,omitempty"`
+	// The start time of the task.
+	//
 	// example:
 	//
 	// 2025-03-03T07:25:16Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The final status of the task.
+	//
+	// - Scheduled: waiting for execution
+	//
+	// - Running: executing
+	//
+	// - Succeed: executed successfully
+	//
+	// - Failed: execution failed
+	//
+	// - Cancelling: stopping
+	//
+	// - Canceled: stopped
+	//
+	// - Waiting: waiting for preset time
+	//
 	// example:
 	//
 	// Succeed
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The task details.
+	//
 	// example:
 	//
 	// {\\"steps\\":[{\\"step_name\\":\\"init_task\\"},{\\"step_name\\":\\"exec_task\\"},{\\"step_name\\":\\"finish_task\\"}]}
 	TaskDetail *string `json:"TaskDetail,omitempty" xml:"TaskDetail,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// t-0mqt8qhnw04ipz0***
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The task type.
+	//
 	// example:
 	//
 	// ChangeVariable
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// The UID of the account that owns the resource.
+	//
 	// example:
 	//
 	// 1816563541899***

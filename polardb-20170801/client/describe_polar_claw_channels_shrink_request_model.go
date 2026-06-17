@@ -16,12 +16,16 @@ type iDescribePolarClawChannelsShrinkRequest interface {
 }
 
 type DescribePolarClawChannelsShrinkRequest struct {
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The channel IDs to query. Leave this parameter empty to return all channels.
+	//
 	// example:
 	//
 	// feishu,telegram

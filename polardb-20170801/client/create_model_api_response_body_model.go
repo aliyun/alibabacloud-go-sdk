@@ -20,20 +20,26 @@ type iCreateModelApiResponseBody interface {
 }
 
 type CreateModelApiResponseBody struct {
+	// The invocation endpoint.
+	//
 	// example:
 	//
 	// xxx
 	InvokeEndpoint *string `json:"InvokeEndpoint,omitempty" xml:"InvokeEndpoint,omitempty"`
+	// The model API ID.
+	//
 	// example:
 	//
 	// mi-xxxxxx
 	ModelApiId *string `json:"ModelApiId,omitempty" xml:"ModelApiId,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 6BD9CDE4-5E7B-4BF3-9BB8-83C73E******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The model API status.
+	//
 	// example:
 	//
 	// Enable

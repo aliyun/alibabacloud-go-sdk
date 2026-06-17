@@ -26,25 +26,25 @@ type iDescribeDBClusterPerformanceResponseBody interface {
 }
 
 type DescribeDBClusterPerformanceResponseBody struct {
-	// The cluster ID.
+	// The database cluster ID.
 	//
 	// example:
 	//
 	// pc-*****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The type of the database engine.
+	// The compatible database type.
 	//
 	// example:
 	//
 	// MySQL
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
-	// The version of the database engine.
+	// The compatible database version.
 	//
 	// example:
 	//
 	// 8.0
 	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
-	// The end time of the query. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+	// The end of the time range. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format and is displayed in UTC.
 	//
 	// example:
 	//
@@ -57,7 +57,7 @@ type DescribeDBClusterPerformanceResponseBody struct {
 	//
 	// 35D3E3DA-4650-407A-BFF5-59BFF1******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The start time of the query. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+	// The beginning of the time range. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format and is displayed in UTC.
 	//
 	// example:
 	//

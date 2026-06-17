@@ -26,29 +26,40 @@ type iDescribeAIDBClusterTaskLogFilesResponseBody interface {
 }
 
 type DescribeAIDBClusterTaskLogFilesResponseBody struct {
+	// The end of the time range to query.
+	//
 	// example:
 	//
 	// 2026-01-15T15:00:00Z
-	EndTime *string                                           `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Items   *DescribeAIDBClusterTaskLogFilesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The list of logs.
+	Items *DescribeAIDBClusterTaskLogFilesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	// The page number of the returned page. The default value is 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The total number of entries that meet the query conditions. This parameter is optional and may not be returned.
+	//
 	// example:
 	//
 	// 7
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	// The maximum number of records returned for the current request.
+	//
 	// example:
 	//
 	// 30
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 7E2FE3BB-C677-5FF9-9FC5-9CF364BD6BE5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The start of the time range to query. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format and is displayed in UTC.
+	//
 	// example:
 	//
 	// 2026-01-15T14:00:00Z
@@ -136,6 +147,7 @@ func (s *DescribeAIDBClusterTaskLogFilesResponseBody) Validate() error {
 }
 
 type DescribeAIDBClusterTaskLogFilesResponseBodyItems struct {
+	// The SLS log information.
 	SlsLogItems []*DescribeAIDBClusterTaskLogFilesResponseBodyItemsSlsLogItems `json:"SlsLogItems,omitempty" xml:"SlsLogItems,omitempty" type:"Repeated"`
 }
 
@@ -170,14 +182,20 @@ func (s *DescribeAIDBClusterTaskLogFilesResponseBodyItems) Validate() error {
 }
 
 type DescribeAIDBClusterTaskLogFilesResponseBodyItemsSlsLogItems struct {
+	// The time when the log was recorded.
+	//
 	// example:
 	//
 	// 2026-01-15T14:13:50.830295892Z
 	LogTime *string `json:"LogTime,omitempty" xml:"LogTime,omitempty"`
+	// The log message.
+	//
 	// example:
 	//
 	// test
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The specific point in time when the metric was recorded. The value is a UNIX timestamp. Unit: seconds.
+	//
 	// example:
 	//
 	// 1765677660

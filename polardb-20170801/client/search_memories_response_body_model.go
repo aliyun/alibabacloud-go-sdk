@@ -16,11 +16,14 @@ type iSearchMemoriesResponseBody interface {
 }
 
 type SearchMemoriesResponseBody struct {
+	// The unique request ID.
+	//
 	// example:
 	//
 	// 3E5CD764-FCCA-5C9C-838E-20E0DE84B2AF
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Results   []*SearchMemoriesResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// An array of search results.
+	Results []*SearchMemoriesResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
 }
 
 func (s SearchMemoriesResponseBody) String() string {
@@ -63,31 +66,50 @@ func (s *SearchMemoriesResponseBody) Validate() error {
 }
 
 type SearchMemoriesResponseBodyResults struct {
+	// The creation time of the memory.
+	//
 	// example:
 	//
 	// 2025-09-26T08:25:44Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The unique ID of the memory.
+	//
 	// example:
 	//
 	// 423
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The content of the memory.
+	//
 	// example:
 	//
 	// xxx
 	Memory *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// The agent ID that owns the memory.
+	//
 	// example:
 	//
 	// agent1
 	MemoryAgentId *string `json:"MemoryAgentId,omitempty" xml:"MemoryAgentId,omitempty"`
+	// The user ID that owns the memory.
+	//
 	// example:
 	//
 	// user1
 	MemoryUserId *string `json:"MemoryUserId,omitempty" xml:"MemoryUserId,omitempty"`
-	Metadata     *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// Additional metadata associated with the memory.
+	//
+	// example:
+	//
+	// {\\"tags\\":\\"Issue_date_2023-11-30,VD_现行有效\\"}
+	Metadata *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// The relevance score of the result.
+	//
 	// example:
 	//
 	// 12
 	Score *string `json:"Score,omitempty" xml:"Score,omitempty"`
+	// The update time of the memory.
+	//
 	// example:
 	//
 	// 2025-10-16T02:27:33Z

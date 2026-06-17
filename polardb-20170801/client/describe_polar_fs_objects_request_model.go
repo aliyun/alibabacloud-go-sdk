@@ -16,12 +16,16 @@ type iDescribePolarFsObjectsRequest interface {
 }
 
 type DescribePolarFsObjectsRequest struct {
+	// The absolute path of the directory.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// /test
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The PolarFs instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

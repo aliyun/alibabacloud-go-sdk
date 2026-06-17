@@ -18,16 +18,20 @@ type iModifyModelServiceResponseBody interface {
 }
 
 type ModifyModelServiceResponseBody struct {
+	// The ID of the model service.
+	//
 	// example:
 	//
 	// ms-xxxxxx
 	ModelServiceId *string `json:"ModelServiceId,omitempty" xml:"ModelServiceId,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 6A2EE5B4-CC9F-46E1-A747-E43BC9******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status of the model service.
+	//
 	// example:
 	//
 	// Enable

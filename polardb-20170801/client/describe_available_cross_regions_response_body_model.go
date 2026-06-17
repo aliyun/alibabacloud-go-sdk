@@ -16,10 +16,14 @@ type iDescribeAvailableCrossRegionsResponseBody interface {
 }
 
 type DescribeAvailableCrossRegionsResponseBody struct {
+	// The list of regions available for cross-region backup.
+	//
 	// example:
 	//
 	// [\\"cn-beijing\\", \\"cn-shanghai\\", \\"cn-qingdao\\", \\"cn-shenzhen\\", \\"cn-hongkong\\"]
 	Regions []*string `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// D685D479-B36E-52B9-98FF-8402EA01F***

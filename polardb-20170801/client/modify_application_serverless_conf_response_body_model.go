@@ -16,10 +16,14 @@ type iModifyApplicationServerlessConfResponseBody interface {
 }
 
 type ModifyApplicationServerlessConfResponseBody struct {
+	// The application ID.
+	//
 	// example:
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// D0CEC6AC-7760-409A-A0D5-E6CD86******

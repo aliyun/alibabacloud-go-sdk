@@ -14,6 +14,8 @@ type iDeleteDBClusterEndpointZonalResponseBody interface {
 }
 
 type DeleteDBClusterEndpointZonalResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// CD3FA5F3-FAF3-44CA-AFFF-BAF869******

@@ -26,11 +26,11 @@ type iCloseDBClusterMigrationRequest interface {
 type CloseDBClusterMigrationRequest struct {
 	// Specifies whether to continue to enable binary logging. Valid values:
 	//
-	// 	- **true**: continues to enable binary logging.
+	// - **True**: continues to enable binary logging.
 	//
-	// 	- **false**: disables binary logging.
+	// - **False**: disables binary logging.
 	//
-	// Default value: **true**.
+	// Default value: **True**.
 	//
 	// > If binary logging is disabled, your PolarDB cluster is restarted.
 	//

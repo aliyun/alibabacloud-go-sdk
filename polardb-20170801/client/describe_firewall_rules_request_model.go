@@ -24,6 +24,8 @@ type iDescribeFirewallRulesRequest interface {
 }
 
 type DescribeFirewallRulesRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -34,6 +36,10 @@ type DescribeFirewallRulesRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The names of the firewall rules to query. To query multiple rules, separate the rule names with commas (,).
+	//
+	// > Call the [DescribeFirewallRules](https://help.aliyun.com/document_detail/212573.html) operation to view the details of all firewall rules for the target cluster, including the rule names.
+	//
 	// example:
 	//
 	// testrule

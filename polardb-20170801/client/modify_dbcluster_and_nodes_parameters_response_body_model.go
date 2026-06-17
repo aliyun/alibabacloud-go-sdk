@@ -14,7 +14,7 @@ type iModifyDBClusterAndNodesParametersResponseBody interface {
 }
 
 type ModifyDBClusterAndNodesParametersResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

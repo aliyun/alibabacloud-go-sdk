@@ -14,6 +14,8 @@ type iDeleteApplicationRequest interface {
 }
 
 type DeleteApplicationRequest struct {
+	// Application ID
+	//
 	// This parameter is required.
 	//
 	// example:

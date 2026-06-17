@@ -18,15 +18,15 @@ type iEnableFirewallRulesResponseBody interface {
 }
 
 type EnableFirewallRulesResponseBody struct {
-  // The message that is returned for the request.
+  // The message returned.
   // 
-  // > If the request was successful, Successful is returned. If the request failed, an error message that contains information such as an error code is returned.
+  // > Typically returns `Successful` on success. When the request fails, this parameter returns exception information such as error codes.
   // 
   // example:
   // 
   // Message
   Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-  // Id of the request
+  // The unique ID of the request.
   // 
   // example:
   // 
@@ -34,9 +34,9 @@ type EnableFirewallRulesResponseBody struct {
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
   // Indicates whether the request was successful. Valid values:
   // 
-  // 	- **true**
+  // - **true**: The request was successful.
   // 
-  // 	- **false**
+  // - **false**: The request failed.
   // 
   // example:
   // 

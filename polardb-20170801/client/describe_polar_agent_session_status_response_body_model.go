@@ -16,10 +16,18 @@ type iDescribePolarAgentSessionStatusResponseBody interface {
 }
 
 type DescribePolarAgentSessionStatusResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// CDB3258F-B5DE-43C4-8935-CBA0CA******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status of the session. Valid values:
+	//
+	// - **1**: Enabled
+	//
+	// - **0**: Disabled
+	//
 	// example:
 	//
 	// 1

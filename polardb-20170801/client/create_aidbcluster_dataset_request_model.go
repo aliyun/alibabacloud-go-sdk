@@ -32,30 +32,54 @@ type iCreateAIDBClusterDatasetRequest interface {
 }
 
 type CreateAIDBClusterDatasetRequest struct {
+	// The ID of the PolarDB database cluster.
+	//
 	// example:
 	//
 	// pc-2ze88***
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The dataset name.
+	//
 	// example:
 	//
 	// dataset01
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The type of the dataset. Valid values:
+	//
+	// - **train**: training set
+	//
+	// - **eval**: evaluation set
+	//
 	// example:
 	//
 	// train
 	DatasetType *string `json:"DatasetType,omitempty" xml:"DatasetType,omitempty"`
+	// The import method. Valid values:
+	//
+	// - **LocalImport**: local import
+	//
 	// example:
 	//
 	// LocalImport
 	ImportMode   *string `json:"ImportMode,omitempty" xml:"ImportMode,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The training mode for the dataset. The dataset format depends on the mode. Valid values:
+	//
+	// - **sft**: supervised fine-tuning. For training sets only.
+	//
+	// - **grpo**: reinforcement learning optimization. For training sets only.
+	//
+	// - **text**: text generation. For validation sets only.
+	//
 	// example:
 	//
 	// sft

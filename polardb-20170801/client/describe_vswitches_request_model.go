@@ -36,9 +36,9 @@ type iDescribeVSwitchesRequest interface {
 }
 
 type DescribeVSwitchesRequest struct {
-	// The dedicated cluster ID.
+	// The ID of the dedicated cluster.
 	//
-	// >  You must specify at least one of the **VpcId*	- and **DedicatedHostGroupId*	- parameters.
+	// > Specify at least one of the **VpcId*	- and **DedicatedHostGroupId*	- parameters.
 	//
 	// example:
 	//
@@ -46,19 +46,19 @@ type DescribeVSwitchesRequest struct {
 	DedicatedHostGroupId *string `json:"DedicatedHostGroupId,omitempty" xml:"DedicatedHostGroupId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number of the page to return. Default value: 1.
+	// The page number of the list. The default value is 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Maximum value: 50. The default value is 50.
+	// The number of entries to return on each page for a paged query. The maximum value is 50. The default value is 50.
 	//
 	// example:
 	//
 	// 50
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region where the vSwitch is deployed.
+	// The region ID of the vSwitch.
 	//
 	// example:
 	//
@@ -73,15 +73,15 @@ type DescribeVSwitchesRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The ID of the virtual private type (VPC) to which the vSwitch belongs.
+	// The ID of the virtual private cloud (VPC) to which the vSwitch belongs.
 	//
-	// >  You must specify at least one of the **VpcId*	- and **DedicatedHostGroupId*	- parameters.
+	// > Specify at least one of the **VpcId*	- and **DedicatedHostGroupId*	- parameters.
 	//
 	// example:
 	//
 	// vpc-25cdvfeq58pl****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The ID of the zone to which the vSwitch belongs.
+	// The zone ID of the vSwitch.
 	//
 	// example:
 	//

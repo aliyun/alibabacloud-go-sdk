@@ -26,28 +26,39 @@ type iCreatePolarClawCronJobResponseBody interface {
 }
 
 type CreatePolarClawCronJobResponseBody struct {
+	// The application ID.
+	//
 	// example:
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The response status code.
+	//
 	// example:
 	//
 	// 200
-	Code *int32                                 `json:"Code,omitempty" xml:"Code,omitempty"`
-	Job  *CreatePolarClawCronJobResponseBodyJob `json:"Job,omitempty" xml:"Job,omitempty" type:"Struct"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Details of the created cron job.
+	Job *CreatePolarClawCronJobResponseBodyJob `json:"Job,omitempty" xml:"Job,omitempty" type:"Struct"`
+	// The response message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Indicates whether the operation was successful.
+	//
 	// example:
 	//
 	// true
 	Ok *bool `json:"Ok,omitempty" xml:"Ok,omitempty"`
+	// Indicates whether the job ran immediately after creation.
+	//
 	// example:
 	//
 	// false
 	RanImmediately *bool `json:"RanImmediately,omitempty" xml:"RanImmediately,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -136,51 +147,78 @@ func (s *CreatePolarClawCronJobResponseBody) Validate() error {
 }
 
 type CreatePolarClawCronJobResponseBodyJob struct {
+	// The ID of the executing agent.
+	//
 	// example:
 	//
 	// main
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	// The creation timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1777368967284
 	CreatedAtMs *int64 `json:"CreatedAtMs,omitempty" xml:"CreatedAtMs,omitempty"`
+	// Indicates whether the cron job is deleted after its first run.
+	//
 	// example:
 	//
 	// false
-	DeleteAfterRun *bool                                          `json:"DeleteAfterRun,omitempty" xml:"DeleteAfterRun,omitempty"`
-	Delivery       *CreatePolarClawCronJobResponseBodyJobDelivery `json:"Delivery,omitempty" xml:"Delivery,omitempty" type:"Struct"`
+	DeleteAfterRun *bool `json:"DeleteAfterRun,omitempty" xml:"DeleteAfterRun,omitempty"`
+	// The delivery configuration.
+	Delivery *CreatePolarClawCronJobResponseBodyJobDelivery `json:"Delivery,omitempty" xml:"Delivery,omitempty" type:"Struct"`
+	// The job description.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Indicates whether the cron job is enabled.
+	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The job ID (UUID).
+	//
 	// example:
 	//
 	// e2c57423-12f0-45cc-a387-6155168b3201
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The job name.
+	//
 	// example:
 	//
 	// test
-	Name     *string                                        `json:"Name,omitempty" xml:"Name,omitempty"`
-	Payload  *CreatePolarClawCronJobResponseBodyJobPayload  `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
-	Runs     []*CreatePolarClawCronJobResponseBodyJobRuns   `json:"Runs,omitempty" xml:"Runs,omitempty" type:"Repeated"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The execution payload.
+	Payload *CreatePolarClawCronJobResponseBodyJobPayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
+	// The run history.
+	Runs []*CreatePolarClawCronJobResponseBodyJobRuns `json:"Runs,omitempty" xml:"Runs,omitempty" type:"Repeated"`
+	// The schedule configuration.
 	Schedule *CreatePolarClawCronJobResponseBodyJobSchedule `json:"Schedule,omitempty" xml:"Schedule,omitempty" type:"Struct"`
+	// The session key.
+	//
 	// example:
 	//
 	// agent:main:feishu:direct:***
 	SessionKey *string `json:"SessionKey,omitempty" xml:"SessionKey,omitempty"`
+	// The session target. Valid values: `main`, `isolated`, and `current`.
+	//
 	// example:
 	//
 	// main
-	SessionTarget *string                                     `json:"SessionTarget,omitempty" xml:"SessionTarget,omitempty"`
-	State         *CreatePolarClawCronJobResponseBodyJobState `json:"State,omitempty" xml:"State,omitempty" type:"Struct"`
+	SessionTarget *string `json:"SessionTarget,omitempty" xml:"SessionTarget,omitempty"`
+	// The current state of the job.
+	State *CreatePolarClawCronJobResponseBodyJobState `json:"State,omitempty" xml:"State,omitempty" type:"Struct"`
+	// The update timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1777370572517
 	UpdatedAtMs *int64 `json:"UpdatedAtMs,omitempty" xml:"UpdatedAtMs,omitempty"`
+	// The wake mode. Valid values: `now` and `next-heartbeat`.
+	//
 	// example:
 	//
 	// now
@@ -373,22 +411,32 @@ func (s *CreatePolarClawCronJobResponseBodyJob) Validate() error {
 }
 
 type CreatePolarClawCronJobResponseBodyJobDelivery struct {
+	// The channel account ID.
+	//
 	// example:
 	//
 	// default
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// Specifies whether to ignore delivery failures.
+	//
 	// example:
 	//
 	// false
 	BestEffort *bool `json:"BestEffort,omitempty" xml:"BestEffort,omitempty"`
+	// The delivery channel.
+	//
 	// example:
 	//
 	// feishu
 	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
+	// The delivery mode. Valid values: `none`, `announce`, and `webhook`.
+	//
 	// example:
 	//
 	// announce
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The recipient.
+	//
 	// example:
 	//
 	// ou_***
@@ -453,42 +501,62 @@ func (s *CreatePolarClawCronJobResponseBodyJobDelivery) Validate() error {
 }
 
 type CreatePolarClawCronJobResponseBodyJobPayload struct {
+	// Specifies whether to ignore delivery failures.
+	//
 	// example:
 	//
 	// false
 	BestEffortDeliver *bool `json:"BestEffortDeliver,omitempty" xml:"BestEffortDeliver,omitempty"`
+	// The delivery channel ID.
+	//
 	// example:
 	//
 	// feishu
 	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
+	// Indicates whether to deliver the output to the delivery channel.
+	//
 	// example:
 	//
 	// false
 	Deliver *bool `json:"Deliver,omitempty" xml:"Deliver,omitempty"`
+	// The payload type. Valid values: `agentTurn` and `systemEvent`.
+	//
 	// example:
 	//
 	// agentTurn
 	Kind *string `json:"Kind,omitempty" xml:"Kind,omitempty"`
+	// Indicates whether to use a light context.
+	//
 	// example:
 	//
 	// false
 	LightContext *bool `json:"LightContext,omitempty" xml:"LightContext,omitempty"`
+	// The agent prompt.
+	//
 	// example:
 	//
 	// Generate the daily report.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The overriding model.
+	//
 	// example:
 	//
 	// bailian/qwen3.5-plus
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// The system event text.
+	//
 	// example:
 	//
 	// Generate the daily report.
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// The execution timeout in seconds.
+	//
 	// example:
 	//
 	// 10
 	TimeoutSeconds *int32 `json:"TimeoutSeconds,omitempty" xml:"TimeoutSeconds,omitempty"`
+	// The recipient.
+	//
 	// example:
 	//
 	// ou_***
@@ -598,62 +666,91 @@ func (s *CreatePolarClawCronJobResponseBodyJobPayload) Validate() error {
 }
 
 type CreatePolarClawCronJobResponseBodyJobRuns struct {
+	// The action performed. Valid values: `finished`, `error`, and `skipped`.
+	//
 	// example:
 	//
 	// finished
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// Specifies whether the results were delivered.
+	//
 	// example:
 	//
 	// false
 	Delivered *bool `json:"Delivered,omitempty" xml:"Delivered,omitempty"`
+	// The delivery status.
+	//
 	// example:
 	//
 	// not-requested
 	DeliveryStatus *string `json:"DeliveryStatus,omitempty" xml:"DeliveryStatus,omitempty"`
+	// The execution duration in milliseconds.
+	//
 	// example:
 	//
 	// 27586
 	DurationMs *int64 `json:"DurationMs,omitempty" xml:"DurationMs,omitempty"`
+	// The associated job ID.
+	//
 	// example:
 	//
 	// f83f5278-1abe-40a6-b10e-ad3ecdc05de2
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The job name.
+	//
 	// example:
 	//
 	// test
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// The model used for the run.
+	//
 	// example:
 	//
 	// bailian/qwen3.5-plus
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// The next run timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1777424400000
 	NextRunAtMs *int64 `json:"NextRunAtMs,omitempty" xml:"NextRunAtMs,omitempty"`
+	// The model provider.
+	//
 	// example:
 	//
 	// bailian
 	Provider *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
+	// The actual execution timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1777370544931
 	RunAtMs *int64 `json:"RunAtMs,omitempty" xml:"RunAtMs,omitempty"`
+	// The associated session ID.
+	//
 	// example:
 	//
 	// ***
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// The status of the run. Valid values: `ok`, `error`, and `skipped`.
+	//
 	// example:
 	//
 	// ok
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The run summary.
+	//
 	// example:
 	//
 	// Generate the daily report.
 	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// The run timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1777370572518
-	Ts    *int64                                          `json:"Ts,omitempty" xml:"Ts,omitempty"`
+	Ts *int64 `json:"Ts,omitempty" xml:"Ts,omitempty"`
+	// The token usage details.
 	Usage *CreatePolarClawCronJobResponseBodyJobRunsUsage `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
 }
 
@@ -810,14 +907,20 @@ func (s *CreatePolarClawCronJobResponseBodyJobRuns) Validate() error {
 }
 
 type CreatePolarClawCronJobResponseBodyJobRunsUsage struct {
+	// The number of input tokens.
+	//
 	// example:
 	//
 	// 30250
 	InputTokens *int32 `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
+	// The number of output tokens.
+	//
 	// example:
 	//
 	// 30250
 	OutputTokens *int32 `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
+	// The total number of tokens.
+	//
 	// example:
 	//
 	// 60500
@@ -864,26 +967,38 @@ func (s *CreatePolarClawCronJobResponseBodyJobRunsUsage) Validate() error {
 }
 
 type CreatePolarClawCronJobResponseBodyJobSchedule struct {
+	// The anchor timestamp for interval alignment.
+	//
 	// example:
 	//
 	// 1777370572518
 	AnchorMs *int64 `json:"AnchorMs,omitempty" xml:"AnchorMs,omitempty"`
+	// The ISO 8601 timestamp.
+	//
 	// example:
 	//
 	// 2026-04-10T09:00:00+08:00
 	At *string `json:"At,omitempty" xml:"At,omitempty"`
+	// The interval in milliseconds.
+	//
 	// example:
 	//
 	// 1000
 	EveryMs *int64 `json:"EveryMs,omitempty" xml:"EveryMs,omitempty"`
+	// The cron expression.
+	//
 	// example:
 	//
 	// 0 9 	- 	- *
 	Expr *string `json:"Expr,omitempty" xml:"Expr,omitempty"`
+	// The schedule type. Valid values: `cron`, `every`, and `at`.
+	//
 	// example:
 	//
 	// cron
 	Kind *string `json:"Kind,omitempty" xml:"Kind,omitempty"`
+	// The IANA time zone.
+	//
 	// example:
 	//
 	// Asia/Shanghai
@@ -957,18 +1072,26 @@ func (s *CreatePolarClawCronJobResponseBodyJobSchedule) Validate() error {
 }
 
 type CreatePolarClawCronJobResponseBodyJobState struct {
+	// The number of consecutive execution failures.
+	//
 	// example:
 	//
 	// 0
 	ConsecutiveErrors *int32 `json:"ConsecutiveErrors,omitempty" xml:"ConsecutiveErrors,omitempty"`
+	// The last run timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1777370544931
 	LastRunAtMs *int64 `json:"LastRunAtMs,omitempty" xml:"LastRunAtMs,omitempty"`
+	// The last run status.
+	//
 	// example:
 	//
 	// ok
 	LastRunStatus *string `json:"LastRunStatus,omitempty" xml:"LastRunStatus,omitempty"`
+	// The next run timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1777424400000

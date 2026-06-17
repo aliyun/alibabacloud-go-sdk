@@ -36,38 +36,80 @@ type iGenerateUpgradeReportForSyncCloneRequest interface {
 }
 
 type GenerateUpgradeReportForSyncCloneRequest struct {
+	// The product series. Valid values:
+	//
+	// - **Normal**: Cluster Edition (default)
+	//
+	// - **SENormal**: Standard Edition
+	//
+	// See [Product series](https://help.aliyun.com/document_detail/183258.html).
+	//
 	// example:
 	//
 	// Normal
 	CreationCategory *string `json:"CreationCategory,omitempty" xml:"CreationCategory,omitempty"`
+	// The creation method. Valid values:
+	//
+	// - **MigrationFromRDS**: Migrate data from an existing RDS instance to a new PolarDB cluster. The created PolarDB cluster is in read-only mode and has binary logging enabled by default. For operations in the console, see [Upgrade an ApsaraDB RDS for MySQL instance to PolarDB for MySQL](https://help.aliyun.com/document_detail/121582.html).
+	//
+	// - **UpgradeFromPolarDB**: Upgrade and migrate data from a PolarDB cluster. See [Upgrade the major version](https://help.aliyun.com/document_detail/459712.html).
+	//
 	// example:
 	//
 	// MigrationFromRDS
 	CreationOption *string `json:"CreationOption,omitempty" xml:"CreationOption,omitempty"`
+	// The name of the database. You can specify only one database name.
+	//
+	// > This parameter is supported only for PolarDB for PostgreSQL (Oracle Compatible) clusters.
+	//
 	// example:
 	//
 	// testDB
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
+	// The type of the database engine. Valid values:
+	//
+	// - **MySQL**
+	//
+	// - **Oracle**
+	//
 	// example:
 	//
 	// PostgreSQL
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
+	// The version of the destination database engine.
+	//
+	// - Valid values for MySQL:
+	//
+	//   - **5.6**
+	//
+	//   - **5.7**
+	//
+	//   - **8.0**
+	//
+	// - Valid value for Oracle: **14**.
+	//
 	// example:
 	//
 	// 5.6
 	DBVersion    *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// A reserved parameter in the JSON string format.
+	//
 	// example:
 	//
 	// {\\"targetTableMode\\":2}
 	Reserve              *string `json:"Reserve,omitempty" xml:"Reserve,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The ID of the source instance.
+	//
 	// example:
 	//
 	// pc-k2j96w169uhu868l8

@@ -14,6 +14,8 @@ type iDescribeBatchTaskRequest interface {
 }
 
 type DescribeBatchTaskRequest struct {
+	// The ID of the batch task.
+	//
 	// example:
 	//
 	// pcb-xxx

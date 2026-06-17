@@ -24,12 +24,20 @@ type iDescribeDBClusterVersionZonalRequest interface {
 }
 
 type DescribeDBClusterVersionZonalRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pc-****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// Specifies whether to return information about the latest version or a list of upgradable versions. Valid values:
+	//
+	// - LATEST_VERSION: Queries information about the latest version.
+	//
+	// - AVAILABLE_VERSION: Queries the list of upgradable versions.
+	//
 	// example:
 	//
 	// LATEST_VERSION

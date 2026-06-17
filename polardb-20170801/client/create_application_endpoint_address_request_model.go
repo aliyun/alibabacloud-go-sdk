@@ -18,18 +18,24 @@ type iCreateApplicationEndpointAddressRequest interface {
 }
 
 type CreateApplicationEndpointAddressRequest struct {
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The service endpoint ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pa-**************
 	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
+	// The network type of the new connection address. The value must be `Public`, which indicates an Internet address.
+	//
 	// This parameter is required.
 	//
 	// example:

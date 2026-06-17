@@ -14,7 +14,7 @@ type iUpdateExtensionsResponseBody interface {
 }
 
 type UpdateExtensionsResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

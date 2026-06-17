@@ -22,7 +22,7 @@ type iDescribeGlobalDatabaseNetworksResponseBody interface {
 }
 
 type DescribeGlobalDatabaseNetworksResponseBody struct {
-	// Details about the GDNs.
+	// A list of GDNs.
 	Items []*DescribeGlobalDatabaseNetworksResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -36,13 +36,13 @@ type DescribeGlobalDatabaseNetworksResponseBody struct {
 	//
 	// 30
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 69A85BAF-1089-4CDF-A82F-0A140F******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of returned entries.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -117,41 +117,41 @@ func (s *DescribeGlobalDatabaseNetworksResponseBody) Validate() error {
 }
 
 type DescribeGlobalDatabaseNetworksResponseBodyItems struct {
-	// The time when the GDN was created. The time is in the `YYYY-MM-DDThh:mm:ssZ` format. The time is displayed in UTC.
+	// The time at which the GDN was created, in UTC. The format is `YYYY-MM-DDTHH:mm:ssZ`.
 	//
 	// example:
 	//
 	// 2020-03-23T05:46:54Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Details about clusters in the GDN.
+	// A list of clusters in the GDN.
 	DBClusters []*DescribeGlobalDatabaseNetworksResponseBodyItemsDBClusters `json:"DBClusters,omitempty" xml:"DBClusters,omitempty" type:"Repeated"`
-	// The type of the database engine. Only **MySQL*	- is supported.
+	// The database engine type. Only **MySQL*	- is supported.
 	//
 	// example:
 	//
 	// MySQL
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
-	// The version of the database engine. Only the **8.0*	- version is supported.
+	// The database engine version. Only version **8.0*	- is supported.
 	//
 	// example:
 	//
 	// 8.0
 	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
-	// The description of the GDN. The description must meet the following requirements:
+	// The GDN description. Requirements:
 	//
-	// 	- It cannot start with `http://` or `https://`.
+	// - Cannot start with http\\:// or https\\://.
 	//
-	// 	- It must start with a letter.
+	// - Must start with a letter or a Chinese character.
 	//
-	// 	- It can contain letters, digits, underscores (_), and hyphens (-).
+	// - Can contain letters, Chinese characters, digits, underscores (_), or hyphens (-).
 	//
-	// 	- It must be 2 to 126 characters in length.
+	// - Must be 2 to 126 characters long.
 	//
 	// example:
 	//
 	// test
 	GDNDescription *string `json:"GDNDescription,omitempty" xml:"GDNDescription,omitempty"`
-	// The ID of the GDN.
+	// The GDN ID.
 	//
 	// example:
 	//
@@ -159,21 +159,22 @@ type DescribeGlobalDatabaseNetworksResponseBodyItems struct {
 	GDNId *string `json:"GDNId,omitempty" xml:"GDNId,omitempty"`
 	// The status of the GDN. Valid values:
 	//
-	// 	- **Creating**: The GDN is being created.
+	// - **creating**: The GDN is being created.
 	//
-	// 	- **active**: The GDN is running.
+	// - **active**: The GDN is running.
 	//
-	// 	- **deleting**: The GDN is being deleted.
+	// - **deleting**: The GDN is being deleted.
 	//
-	// 	- **locked**: The GDN is locked. If the GDN is locked, you cannot perform operations on clusters in the GDN.
+	// - **locked**: The GDN is locked. This status prevents any operations on clusters in the GDN.
 	//
-	// 	- **removing_member**: The secondary cluster is being removed from the GDN.
+	// - **removing_member**: A standby cluster is being removed from the GDN.
 	//
 	// example:
 	//
 	// active
-	GDNStatus *string                                                `json:"GDNStatus,omitempty" xml:"GDNStatus,omitempty"`
-	Labels    *DescribeGlobalDatabaseNetworksResponseBodyItemsLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Struct"`
+	GDNStatus *string `json:"GDNStatus,omitempty" xml:"GDNStatus,omitempty"`
+	// The tags applied to the GDN.
+	Labels *DescribeGlobalDatabaseNetworksResponseBodyItemsLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Struct"`
 }
 
 func (s DescribeGlobalDatabaseNetworksResponseBodyItems) String() string {
@@ -275,13 +276,13 @@ func (s *DescribeGlobalDatabaseNetworksResponseBodyItems) Validate() error {
 }
 
 type DescribeGlobalDatabaseNetworksResponseBodyItemsDBClusters struct {
-	// The ID of the cluster.
+	// The cluster ID.
 	//
 	// example:
 	//
 	// pc-****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The region ID of the cluster.
+	// The region ID.
 	//
 	// example:
 	//
@@ -289,11 +290,11 @@ type DescribeGlobalDatabaseNetworksResponseBodyItemsDBClusters struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The role of the cluster. Valid values:
 	//
-	// 	- **Primary**: the primary cluster
+	// - **primary**: The primary cluster.
 	//
-	// 	- **standby**: the secondary cluster
+	// - **standby**: The standby cluster.
 	//
-	// > A GDN consists of one primary cluster and up to four secondary clusters. For more information, see [GDN](https://help.aliyun.com/document_detail/160381.html).
+	// > A GDN consists of one primary cluster and up to four standby clusters. For more information, see [Global Database Network](https://help.aliyun.com/document_detail/160381.html).
 	//
 	// example:
 	//
@@ -341,6 +342,11 @@ func (s *DescribeGlobalDatabaseNetworksResponseBodyItemsDBClusters) Validate() e
 }
 
 type DescribeGlobalDatabaseNetworksResponseBodyItemsLabels struct {
+	// The GDN version.
+	//
+	// example:
+	//
+	// 2.0
 	GDNVersion *string `json:"GDNVersion,omitempty" xml:"GDNVersion,omitempty"`
 }
 

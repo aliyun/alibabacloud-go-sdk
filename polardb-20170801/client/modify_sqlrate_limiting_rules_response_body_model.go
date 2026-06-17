@@ -18,16 +18,26 @@ type iModifySQLRateLimitingRulesResponseBody interface {
 }
 
 type ModifySQLRateLimitingRulesResponseBody struct {
+	// The response message.
+	//
+	// > If the request is successful, \\`Successful\\` is returned. If the request fails, an error message is returned, such as an error code.
+	//
 	// example:
 	//
 	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 35D3E3DA-4650-407A-BFF5-59BFF1******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - **true**: The request was successful.
+	//
+	// - **false**: The request failed.
+	//
 	// example:
 	//
 	// true

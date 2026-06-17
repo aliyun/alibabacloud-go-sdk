@@ -22,9 +22,9 @@ type iDescribeBackupPolicyRequest interface {
 }
 
 type DescribeBackupPolicyRequest struct {
-	// The ID of the cluster.
+	// The cluster ID.
 	//
-	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/2319131.html) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
+	// > Call the [DescribeDBClusters](https://help.aliyun.com/document_detail/2319131.html) operation to query the details of all clusters in a region, including the cluster IDs.
 	//
 	// This parameter is required.
 	//

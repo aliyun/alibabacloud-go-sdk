@@ -131,11 +131,11 @@ type DescribePendingMaintenanceActionResponseBodyItems struct {
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The type of the database engine. Valid values:
 	//
-	// 	- **MySQL**
+	// - **MySQL**
 	//
-	// 	- **PostgreSQL**
+	// - **PostgreSQL**
 	//
-	// 	- **Oracle**
+	// - **Oracle**
 	//
 	// example:
 	//
@@ -143,21 +143,21 @@ type DescribePendingMaintenanceActionResponseBodyItems struct {
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
 	// The version of the database engine.
 	//
-	// 	- Valid values for the MySQL database engine:
+	// - Valid values for the MySQL database engine:
 	//
-	//     	- **5.6**
+	//   - **5.6**
 	//
-	//     	- **5.7**
+	//   - **5.7**
 	//
-	//     	- **8.0**
+	//   - **8.0**
 	//
-	// 	- Valid values for the PostgreSQL database engine:
+	// - Valid values for the PostgreSQL database engine:
 	//
-	//     	- **11**
+	//   - **11**
 	//
-	//     	- **14**
+	//   - **14**
 	//
-	// 	- Valid value for the Oracle database engine: **11**
+	// - Valid value for the Oracle database engine: **11**
 	//
 	// example:
 	//
@@ -195,9 +195,9 @@ type DescribePendingMaintenanceActionResponseBodyItems struct {
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The execution result of the task. Valid values:
 	//
-	// 	- **manualCancel**: The task is manually canceled.
+	// - **manualCancel**: The task is manually canceled.
 	//
-	// 	- **paramCheckNotPass**: The task fails to pass the parameter check.
+	// - **paramCheckNotPass**: The task fails to pass the parameter check.
 	//
 	// > This parameter is returned only when the value of the `Status` parameter is **6*	- or **7**. The value 6 indicates that the task is completed but fails to be executed. The value 7 indicates that the task is canceled.
 	//
@@ -213,21 +213,21 @@ type DescribePendingMaintenanceActionResponseBodyItems struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The status of the pending task.
 	//
-	// 	- If you set the `IsHistory` parameter to **0**, the status of the pending task is returned. Valid values:
+	// - If you set the `IsHistory` parameter to **0**, the status of the pending task is returned. Valid values:
 	//
-	//     	- **2**: The start time of the task is to be specified.
+	//   - **2**: The start time of the task is to be specified.
 	//
-	//     	- **3**: The task is pending.
+	//   - **3**: The task is pending.
 	//
-	//     	- **4**: The task is running. In this case, you cannot modify the execution time.
+	//   - **4**: The task is running. In this case, you cannot modify the execution time.
 	//
-	// 	- If you set the `IsHistory` parameter to **1**, the details of the historical tasks are returned. Valid values:
+	// - If you set the `IsHistory` parameter to **1**, the details of the historical tasks are returned. Valid values:
 	//
-	//     	- **5**: The task is completed and executed.
+	//   - **5**: The task is completed and executed.
 	//
-	//     	- **6**: The task is completed but fails to be executed.
+	//   - **6**: The task is completed but fails to be executed.
 	//
-	//     	- **7**: The task is canceled.
+	//   - **7**: The task is canceled.
 	//
 	// example:
 	//

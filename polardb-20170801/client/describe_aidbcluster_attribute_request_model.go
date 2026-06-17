@@ -22,6 +22,8 @@ type iDescribeAIDBClusterAttributeRequest interface {
 }
 
 type DescribeAIDBClusterAttributeRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -16,10 +16,14 @@ type iModifyResourcePackageRequest interface {
 }
 
 type ModifyResourcePackageRequest struct {
+	// Indicates whether to enable automatic quotas.
+	//
 	// example:
 	//
 	// true
 	AutoQuota *bool `json:"AutoQuota,omitempty" xml:"AutoQuota,omitempty"`
+	// The ID of the cross-cloud resource plan.
+	//
 	// This parameter is required.
 	//
 	// example:

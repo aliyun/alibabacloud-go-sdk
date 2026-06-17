@@ -22,21 +22,34 @@ type iDescribeEncryptionDBRolePrivilegeResponseBody interface {
 }
 
 type DescribeEncryptionDBRolePrivilegeResponseBody struct {
+	// The cluster ID.
+	//
 	// example:
 	//
 	// pc-****************
-	DBClusterId *string                                            `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	Data        *DescribeEncryptionDBRolePrivilegeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The result set.
+	Data *DescribeEncryptionDBRolePrivilegeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The response message.
+	//
+	// > If the request is successful, \\`Successful\\` is returned. If the request fails, an error message, such as an error code, is returned.
+	//
 	// example:
 	//
 	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// D0CEC6AC-7760-409A-A0D5-E6CD86******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - **true**: The request was successful.
+	//
+	// - **false**: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -106,6 +119,7 @@ func (s *DescribeEncryptionDBRolePrivilegeResponseBody) Validate() error {
 }
 
 type DescribeEncryptionDBRolePrivilegeResponseBodyData struct {
+	// A list of role access policies.
 	RolePrivilegeList []*DescribeEncryptionDBRolePrivilegeResponseBodyDataRolePrivilegeList `json:"RolePrivilegeList,omitempty" xml:"RolePrivilegeList,omitempty" type:"Repeated"`
 }
 
@@ -140,18 +154,26 @@ func (s *DescribeEncryptionDBRolePrivilegeResponseBodyData) Validate() error {
 }
 
 type DescribeEncryptionDBRolePrivilegeResponseBodyDataRolePrivilegeList struct {
+	// The regular users.
+	//
 	// example:
 	//
 	// [alton01]
 	Encryption *string `json:"Encryption,omitempty" xml:"Encryption,omitempty"`
+	// Other users.
+	//
 	// example:
 	//
 	// test
 	Negation *string `json:"Negation,omitempty" xml:"Negation,omitempty"`
+	// The privileged users.
+	//
 	// example:
 	//
 	// [alton]
 	NotEncryption *string `json:"NotEncryption,omitempty" xml:"NotEncryption,omitempty"`
+	// The name of the role permission.
+	//
 	// example:
 	//
 	// test

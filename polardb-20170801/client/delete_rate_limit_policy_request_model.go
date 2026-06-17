@@ -18,18 +18,27 @@ type iDeleteRateLimitPolicyRequest interface {
 }
 
 type DeleteRateLimitPolicyRequest struct {
+	// The gateway instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pg-xxxxxxxxxx
 	GwClusterId *string `json:"GwClusterId,omitempty" xml:"GwClusterId,omitempty"`
+	// The policy ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 02eccf7c61cf4d05a543075ee907f3**
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 

@@ -14,7 +14,7 @@ type iCreateServiceLinkedRoleResponseBody interface {
 }
 
 type CreateServiceLinkedRoleResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

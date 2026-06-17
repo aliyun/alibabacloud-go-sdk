@@ -34,19 +34,19 @@ type iCreateDBEndpointAddressRequest interface {
 }
 
 type CreateDBEndpointAddressRequest struct {
-	// The prefix of the new endpoint. The prefix of the endpoint must meet the following requirements:
+	// The prefix of the new endpoint. The prefix must meet the following requirements:
 	//
-	// 	- The prefix can contain lowercase letters, digits, and hyphens (-).
+	// - Consist of lowercase letters, digits, and hyphens (-).
 	//
-	// 	- The prefix must start with a letter and end with a digit or a letter.
+	// - Start with a letter and end with a digit or a letter.
 	//
-	// 	- The prefix must be 6 to 40 characters in length.
+	// - Be 6 to 40 characters in length.
 	//
 	// example:
 	//
 	// test-1
 	ConnectionStringPrefix *string `json:"ConnectionStringPrefix,omitempty" xml:"ConnectionStringPrefix,omitempty"`
-	// The ID of the cluster.
+	// The cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -54,15 +54,15 @@ type CreateDBEndpointAddressRequest struct {
 	//
 	// pc-**************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The ID of the endpoint.
+	// The endpoint ID.
 	//
-	// >  You can call the [DescribeDBClusterEndpoints](https://help.aliyun.com/document_detail/98205.html) operation to query endpoint details.
+	// > For more information, see [DescribeDBClusterEndpoints](https://help.aliyun.com/document_detail/98205.html).
 	//
 	// example:
 	//
 	// pe-**************
 	DBEndpointId *string `json:"DBEndpointId,omitempty" xml:"DBEndpointId,omitempty"`
-	// The network type of the endpoint. Set the value to **Public**.
+	// The network type of the new endpoint. Set the value to **Public**.
 	//
 	// This parameter is required.
 	//
@@ -86,7 +86,7 @@ type CreateDBEndpointAddressRequest struct {
 	//
 	// vpc-**********
 	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	// The details of the zones.
+	// The zone information.
 	ZoneInfo []*CreateDBEndpointAddressRequestZoneInfo `json:"ZoneInfo,omitempty" xml:"ZoneInfo,omitempty" type:"Repeated"`
 }
 
@@ -211,13 +211,13 @@ func (s *CreateDBEndpointAddressRequest) Validate() error {
 }
 
 type CreateDBEndpointAddressRequestZoneInfo struct {
-	// The ID of the vSwitch.
+	// The virtual switch ID.
 	//
 	// example:
 	//
 	// vsw-**********
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the zone.
+	// The zone ID.
 	//
 	// example:
 	//

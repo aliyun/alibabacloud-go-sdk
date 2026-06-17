@@ -22,21 +22,28 @@ type iDescribeBatchTasksResponseBody interface {
 }
 
 type DescribeBatchTasksResponseBody struct {
+	// The page number of the returned results.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 925B84D9-CA72-432C-95CF-738C22******
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskList  []*DescribeBatchTasksResponseBodyTaskList `json:"TaskList,omitempty" xml:"TaskList,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task list.
+	TaskList []*DescribeBatchTasksResponseBodyTaskList `json:"TaskList,omitempty" xml:"TaskList,omitempty" type:"Repeated"`
+	// The total number of tasks that match the query, ignoring pagination.
+	//
 	// example:
 	//
 	// 6
@@ -110,34 +117,50 @@ func (s *DescribeBatchTasksResponseBody) Validate() error {
 }
 
 type DescribeBatchTasksResponseBodyTaskList struct {
+	// The batch ID.
+	//
 	// example:
 	//
 	// pcb-xxx
 	BatchId *string `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
+	// The task status.
+	//
 	// example:
 	//
 	// RUNNING
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The number of successfully completed subtasks in the batch.
+	//
 	// example:
 	//
 	// 4
 	SuccessCount *int32 `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
+	// The task start time.
+	//
 	// example:
 	//
 	// 2026-04-06 20:51:44
 	TaskBegin *string `json:"TaskBegin,omitempty" xml:"TaskBegin,omitempty"`
+	// The task end time.
+	//
 	// example:
 	//
 	// 2026-04-06 22:43:26
 	TaskEnd *string `json:"TaskEnd,omitempty" xml:"TaskEnd,omitempty"`
+	// The task name.
+	//
 	// example:
 	//
 	// batch_task_test
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// The task type.
+	//
 	// example:
 	//
 	// polarclaw_install_skills
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// The total number of subtasks in the batch.
+	//
 	// example:
 	//
 	// 8

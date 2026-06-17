@@ -24,10 +24,20 @@ type iDisableDBClusterOrcaRequest interface {
 }
 
 type DisableDBClusterOrcaRequest struct {
+	// Specifies whether to clean up data. Valid values:
+	//
+	// - **Enable**
+	//
+	// - **Disable**
+	//
 	// example:
 	//
 	// Enable
 	CleanData *string `json:"CleanData,omitempty" xml:"CleanData,omitempty"`
+	// The cluster ID.
+	//
+	// > Call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of all clusters in a specific region, including cluster IDs.
+	//
 	// This parameter is required.
 	//
 	// example:

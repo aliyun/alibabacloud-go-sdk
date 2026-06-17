@@ -28,38 +28,54 @@ type iUpdatePolarClawAgentShrinkRequest interface {
 }
 
 type UpdatePolarClawAgentShrinkRequest struct {
+	// The ID of the agent to update.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// work
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The new avatar for the agent.
+	//
 	// example:
 	//
 	// test
 	Avatar *string `json:"Avatar,omitempty" xml:"Avatar,omitempty"`
+	// The file list to update.
+	//
 	// example:
 	//
 	// [{"FileName":"SOUL.md","FileContent":"You are a helpful assistant."}]
 	FilesShrink *string `json:"Files,omitempty" xml:"Files,omitempty"`
+	// The model to override the agent\\"s default setting.
+	//
 	// example:
 	//
 	// claude-sonnet-4-5
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// The new display name for the agent.
+	//
 	// example:
 	//
 	// Work Bot
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Specifies whether to restart the gateway after the update. The default value is true.
+	//
 	// example:
 	//
 	// true
 	Restart *bool `json:"Restart,omitempty" xml:"Restart,omitempty"`
+	// The new path for the agent\\"s workspace.
+	//
 	// example:
 	//
 	// /home/node/.openclaw/workspace-work-v2

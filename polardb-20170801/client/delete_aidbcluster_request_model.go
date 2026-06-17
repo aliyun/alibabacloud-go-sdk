@@ -14,6 +14,8 @@ type iDeleteAIDBClusterRequest interface {
 }
 
 type DeleteAIDBClusterRequest struct {
+	// The ID of the AI cluster.
+	//
 	// This parameter is required.
 	//
 	// example:

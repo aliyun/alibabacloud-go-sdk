@@ -22,13 +22,13 @@ type iDescribeVSwitchesResponseBody interface {
 }
 
 type DescribeVSwitchesResponseBody struct {
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries on the current page.
 	//
 	// example:
 	//
@@ -40,13 +40,13 @@ type DescribeVSwitchesResponseBody struct {
 	//
 	// 9A572171-4E27-40D1-BD36-D26C9E71E29E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of returned entries.
+	// The number of entries in the list.
 	//
 	// example:
 	//
 	// 1
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The vSwitches.
+	// The list of vSwitches.
 	VSwitchs []*DescribeVSwitchesResponseBodyVSwitchs `json:"VSwitchs,omitempty" xml:"VSwitchs,omitempty" type:"Repeated"`
 }
 
@@ -137,15 +137,15 @@ type DescribeVSwitchesResponseBodyVSwitchs struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Indicates whether the vSwitch is the default vSwitch. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The vSwitch is the default vSwitch.
 	//
-	// 	- **false**
+	// - **false**: The vSwitch is not the default vSwitch.
 	//
 	// example:
 	//
 	// true
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	// The zone to which the NAT gateway belongs.
+	// The zone where the NAT Gateway is located.
 	//
 	// example:
 	//
@@ -153,15 +153,15 @@ type DescribeVSwitchesResponseBodyVSwitchs struct {
 	IzNo *string `json:"IzNo,omitempty" xml:"IzNo,omitempty"`
 	// The status of the vSwitch. Valid values:
 	//
-	// 	- **Pending**: The vSwitch is being configured.
+	// - **Pending**: The vSwitch is being configured.
 	//
-	// 	- **Available**: The vSwitch is available.
+	// - **Available**: The vSwitch is active.
 	//
 	// example:
 	//
 	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The vSwitch ID.
+	// The ID of the vSwitch.
 	//
 	// example:
 	//

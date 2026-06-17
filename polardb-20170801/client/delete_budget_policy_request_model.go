@@ -18,19 +18,28 @@ type iDeleteBudgetPolicyRequest interface {
 }
 
 type DeleteBudgetPolicyRequest struct {
+	// The ID of the cost budget policy.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 023aacc1effc4b56bb154bfbec6baxxx
 	BudgetPolicyId *string `json:"BudgetPolicyId,omitempty" xml:"BudgetPolicyId,omitempty"`
+	// The gateway instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pg-xxxxxxx
 	GwClusterId *string `json:"GwClusterId,omitempty" xml:"GwClusterId,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DeleteBudgetPolicyRequest) String() string {

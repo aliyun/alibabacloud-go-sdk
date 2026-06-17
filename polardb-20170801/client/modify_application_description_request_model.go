@@ -16,12 +16,16 @@ type iModifyApplicationDescriptionRequest interface {
 }
 
 type ModifyApplicationDescriptionRequest struct {
+	// The ID of the application.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The description of the application.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -22,19 +22,28 @@ type iDescribeGlobalDataNetworkListResponseBody interface {
 }
 
 type DescribeGlobalDataNetworkListResponseBody struct {
+	// The details of the Global Data Networks (GDNs).
 	Items *DescribeGlobalDataNetworkListResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of records on the current page.
+	//
 	// example:
 	//
 	// 1
 	PageRecordCount *string `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CD35F3-F3-44CA-AFFF-BAF869******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 1
@@ -104,6 +113,7 @@ func (s *DescribeGlobalDataNetworkListResponseBody) Validate() error {
 }
 
 type DescribeGlobalDataNetworkListResponseBodyItems struct {
+	// The list of GDN networks.
 	Networks []*DescribeGlobalDataNetworkListResponseBodyItemsNetworks `json:"Networks,omitempty" xml:"Networks,omitempty" type:"Repeated"`
 }
 
@@ -138,25 +148,61 @@ func (s *DescribeGlobalDataNetworkListResponseBodyItems) Validate() error {
 }
 
 type DescribeGlobalDataNetworkListResponseBodyItemsNetworks struct {
+	// The synchronization channels.
 	Channels []*DescribeGlobalDataNetworkListResponseBodyItemsNetworksChannels `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Repeated"`
+	// The time when the GDN was created.
+	//
 	// example:
 	//
 	// 2025-03-25T09:37:10Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the GDN.
+	//
 	// example:
 	//
 	// mygdn
 	NetworkDescription *string `json:"NetworkDescription,omitempty" xml:"NetworkDescription,omitempty"`
-	// GDN ID
+	// The ID of the GDN.
 	//
 	// example:
 	//
 	// gdn-xxx
 	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	// The status of the GDN. Valid values:
+	//
+	// - **Creating**: The GDN is being created.
+	//
+	// - **Running**: The GDN is running.
+	//
+	// - **Syncing**: The GDN is synchronizing data.
+	//
+	// - **SyncFinished**: Data synchronization is complete.
+	//
+	// - **SyncFailed**: Data synchronization failed.
+	//
+	// - **SyncPartialFailed**: Data synchronization partially failed.
+	//
+	// - **Stopped**: The GDN is stopped.
+	//
+	// - **Maintaining**: The GDN is under maintenance.
+	//
+	// - **Restarting**: The GDN is restarting.
+	//
+	// - **Locking**: The GDN is being locked.
+	//
+	// - **Locked**: The GDN is locked.
+	//
+	// - **Unlocking**: The GDN is being unlocked.
+	//
+	// - **Deleting**: The GDN is being deleted.
+	//
+	// - **Deleted**: The GDN is deleted.
+	//
 	// example:
 	//
 	// Running
-	NetworkStatus   *string                                                                `json:"NetworkStatus,omitempty" xml:"NetworkStatus,omitempty"`
+	NetworkStatus *string `json:"NetworkStatus,omitempty" xml:"NetworkStatus,omitempty"`
+	// The network topology of the GDN.
 	NetworkTopology *DescribeGlobalDataNetworkListResponseBodyItemsNetworksNetworkTopology `json:"NetworkTopology,omitempty" xml:"NetworkTopology,omitempty" type:"Struct"`
 }
 
@@ -241,18 +287,56 @@ func (s *DescribeGlobalDataNetworkListResponseBodyItemsNetworks) Validate() erro
 }
 
 type DescribeGlobalDataNetworkListResponseBodyItemsNetworksChannels struct {
+	// The ID of the synchronization channel.
+	//
 	// example:
 	//
 	// gdc-xxx
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// The status of the synchronization channel. Valid values:
+	//
+	// - **Creating**: The channel is being created.
+	//
+	// - **Running**: The channel is running.
+	//
+	// - **Syncing**: The channel is synchronizing data.
+	//
+	// - **SyncFinished**: Data synchronization is complete.
+	//
+	// - **SyncFailed**: Data synchronization failed.
+	//
+	// - **SyncPartialFailed**: Data synchronization partially failed.
+	//
+	// - **Stopped**: The channel is stopped.
+	//
+	// - **Maintaining**: The channel is under maintenance.
+	//
+	// - **Restarting**: The channel is restarting.
+	//
+	// - **Locking**: The channel is being locked.
+	//
+	// - **Locked**: The channel is locked.
+	//
+	// - **Unlocking**: The channel is being unlocked.
+	//
+	// - **Deleting**: The channel is being deleted.
+	//
+	// - **Deleted**: The channel is deleted.
+	//
 	// example:
 	//
 	// Syncing
 	ChannelStatus *string `json:"ChannelStatus,omitempty" xml:"ChannelStatus,omitempty"`
+	// Indicates whether the source path is frozen during data transmission.
+	//
 	// example:
 	//
 	// true
 	FreezeSourceDuringSync *bool `json:"FreezeSourceDuringSync,omitempty" xml:"FreezeSourceDuringSync,omitempty"`
+	// The synchronization progress.
+	//
+	// > The value is a percentage that is accurate to two decimal places.
+	//
 	// example:
 	//
 	// 11.45%
@@ -308,8 +392,10 @@ func (s *DescribeGlobalDataNetworkListResponseBodyItemsNetworksChannels) Validat
 }
 
 type DescribeGlobalDataNetworkListResponseBodyItemsNetworksNetworkTopology struct {
+	// The synchronization destinations.
 	Destinations []*DescribeGlobalDataNetworkListResponseBodyItemsNetworksNetworkTopologyDestinations `json:"Destinations,omitempty" xml:"Destinations,omitempty" type:"Repeated"`
-	Sources      []*DescribeGlobalDataNetworkListResponseBodyItemsNetworksNetworkTopologySources      `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
+	// The synchronization sources.
+	Sources []*DescribeGlobalDataNetworkListResponseBodyItemsNetworksNetworkTopologySources `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
 }
 
 func (s DescribeGlobalDataNetworkListResponseBodyItemsNetworksNetworkTopology) String() string {
@@ -361,18 +447,30 @@ func (s *DescribeGlobalDataNetworkListResponseBodyItemsNetworksNetworkTopology) 
 }
 
 type DescribeGlobalDataNetworkListResponseBodyItemsNetworksNetworkTopologyDestinations struct {
+	// The destination path.
+	//
 	// example:
 	//
 	// /
 	DestinationFileSystemPath *string `json:"DestinationFileSystemPath,omitempty" xml:"DestinationFileSystemPath,omitempty"`
+	// Destination PolarDB instance
+	//
 	// example:
 	//
 	// pfs-xxx
 	DestinationId *string `json:"DestinationId,omitempty" xml:"DestinationId,omitempty"`
+	// The region of the destination.
+	//
 	// example:
 	//
 	// cn-beijing
 	DestinationRegion *string `json:"DestinationRegion,omitempty" xml:"DestinationRegion,omitempty"`
+	// The type of the destination. Valid values:
+	//
+	// - **pfs**: Polarlakebase High-performance Edition.
+	//
+	// - **pcs**: Polarlakebase Cold Storage Edition.
+	//
 	// example:
 	//
 	// pfs
@@ -428,21 +526,33 @@ func (s *DescribeGlobalDataNetworkListResponseBodyItemsNetworksNetworkTopologyDe
 }
 
 type DescribeGlobalDataNetworkListResponseBodyItemsNetworksNetworkTopologySources struct {
+	// The source path.
+	//
 	// example:
 	//
 	// /
 	SourceFileSystemPath *string `json:"SourceFileSystemPath,omitempty" xml:"SourceFileSystemPath,omitempty"`
+	// The ID of the source Polarlakebase instance.
+	//
 	// example:
 	//
-	// oss-xxx
+	// pcs-xxx
 	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	// The region of the source.
+	//
 	// example:
 	//
 	// cn-wulanchabu
 	SourceRegion *string `json:"SourceRegion,omitempty" xml:"SourceRegion,omitempty"`
+	// The type of the source. Valid values:
+	//
+	// - **pfs**: Polarlakebase High-performance Edition.
+	//
+	// - **pcs**: Polarlakebase Cold Storage Edition.
+	//
 	// example:
 	//
-	// oss
+	// pcs
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 }
 

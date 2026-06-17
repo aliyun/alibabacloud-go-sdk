@@ -22,24 +22,34 @@ type iDescribePolarClawCronJobsRequest interface {
 }
 
 type DescribePolarClawCronJobsRequest struct {
+	// Application ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// Include disabled tasks. Default is true.
+	//
 	// example:
 	//
 	// true
 	IncludeDisabled *bool `json:"IncludeDisabled,omitempty" xml:"IncludeDisabled,omitempty"`
+	// Include run history. Default is false.
+	//
 	// example:
 	//
 	// true
 	IncludeRuns *bool `json:"IncludeRuns,omitempty" xml:"IncludeRuns,omitempty"`
+	// Filter by Job ID list
+	//
 	// example:
 	//
 	// 0ee00f56-f467-4d41-858c-ca4ede2c770e,1ee00f56-f467-4d41-858c-ca4ede2c770f
 	JobIdList []*string `json:"JobIdList,omitempty" xml:"JobIdList,omitempty" type:"Repeated"`
+	// Maximum number of run history entries per task. Default is 10.
+	//
 	// example:
 	//
 	// 10

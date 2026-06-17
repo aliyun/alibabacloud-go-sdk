@@ -16,11 +16,13 @@ type iDeleteAIDBClusterResponseBody interface {
 }
 
 type DeleteAIDBClusterResponseBody struct {
+	// The ID of the AI cluster.
+	//
 	// example:
 	//
 	// pc-*****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//

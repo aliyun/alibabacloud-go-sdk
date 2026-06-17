@@ -32,42 +32,62 @@ type iCreatePolarClawChannelResponseBody interface {
 }
 
 type CreatePolarClawChannelResponseBody struct {
+	// **The application ID.**
+	//
 	// example:
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The ID of the channel that was created.
+	//
 	// example:
 	//
 	// feishu
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// The response status code.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The name of the installed npm package.
+	//
 	// example:
 	//
 	// @larksuite/openclaw-lark@2026.4.7
 	NpmPackage *string `json:"NpmPackage,omitempty" xml:"NpmPackage,omitempty"`
+	// Indicates whether the operation was successful.
+	//
 	// example:
 	//
 	// true
 	Ok *bool `json:"Ok,omitempty" xml:"Ok,omitempty"`
+	// **The plugin ID.**
+	//
 	// example:
 	//
 	// openclaw-lark
 	PluginId *string `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
+	// Indicates whether a new plugin was installed.
+	//
 	// example:
 	//
 	// true
 	PluginInstalled *bool `json:"PluginInstalled,omitempty" xml:"PluginInstalled,omitempty"`
+	// **The request ID.**
+	//
 	// example:
 	//
 	// 2281C6C9-CBAB-1AFD-8400-670750CF6025_2212
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the gateway was restarted.
+	//
 	// example:
 	//
 	// true

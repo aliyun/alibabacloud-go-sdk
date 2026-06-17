@@ -42,50 +42,88 @@ type iDescribeColdStorageInstanceRequest interface {
 }
 
 type DescribeColdStorageInstanceRequest struct {
+	// The ID of the PolarDB cluster.
+	//
 	// example:
 	//
 	// pc-wz9062015ly7526jc
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The name of the database.
+	//
 	// example:
 	//
 	// test_db
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
+	// The type of the supported engine. The return value is the sum of the values of the supported engine types.
+	//
+	// - 1: Search engine
+	//
+	// - 2: LindormTSDB
+	//
+	// - 4: LindormTable
+	//
+	// - 8: File engine
+	//
+	// > For example, if \\`EngineType\\` is 15 (8 + 4 + 2 + 1), the instance supports the search engine, LindormTSDB, LindormTable, and file engine. If \\`EngineType\\` is 6 (4 + 2), the instance supports LindormTSDB and LindormTable.
+	//
 	// example:
 	//
 	// 2
 	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
+	// The expiration time of the cluster. Note: This parameter is returned only for subscription clusters. An empty value is returned for pay-as-you-go clusters.
+	//
 	// example:
 	//
 	// 2020-11-14T16:00:00Z
 	ExpireTime *int32 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// - If you do not specify the **MaxResults*	- parameter, the query is not paged. The value of the **MaxResults*	- parameter in the response indicates the total number of entries.
+	//
+	// - If you specify the **MaxResults*	- parameter, the query is paged. **MaxResults*	- specifies the number of entries to return on each page. Valid values: **1*	- to **100**. The value of the **MaxResults*	- parameter in the response indicates the number of entries on the current page. The recommended value is **20**.
+	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// A token to retrieve the next page of results. Set this parameter to the \\`NextToken\\` value from a previous call. You do not need to specify this parameter for the first call.
+	//
 	// example:
 	//
 	// c2FpXzIwMjIwNjI5X2Jhay9zYWlfc3VtbWVyX3RyZWFzdXJlX3Bvb2xfbG9nLkNTVg==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The object type. Valid values: \\`TABLE\\`, \\`PARTITION_TABLE\\`, and \\`LOB\\`.
+	//
 	// example:
 	//
 	// TABLE
 	ObjectType   *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 1
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
+	// > - For more information, see [DescribeRegions](https://help.aliyun.com/document_detail/98041.html).
+	//
+	// - If you do not specify this parameter, the operation queries scheduled tasks in all regions within your account.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The name of the data table.
+	//
 	// example:
 	//
 	// account_log

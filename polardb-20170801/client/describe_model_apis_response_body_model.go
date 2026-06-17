@@ -24,25 +24,36 @@ type iDescribeModelApisResponseBody interface {
 }
 
 type DescribeModelApisResponseBody struct {
+	// A list of Model API objects.
 	Items []*DescribeModelApisResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of records returned on the current page.
+	//
 	// example:
 	//
 	// 30
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	// The number of records to return on each page. Valid values: **30**, **50**, and **100**.
+	//
+	// Default value: **30**.
+	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// C61892A4-0850-4516-9E26-44D96C1782DE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of records that match the query.
+	//
 	// example:
 	//
 	// 1
@@ -125,38 +136,70 @@ func (s *DescribeModelApisResponseBody) Validate() error {
 }
 
 type DescribeModelApisResponseBodyItems struct {
+	// The model category. Valid values:
+	//
+	// - **text**
+	//
+	// - **embedding**
+	//
+	// - **rerank**
+	//
 	// example:
 	//
 	// text
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2024-10-16 16:46:20
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	// The Model API ID.
+	//
 	// example:
 	//
 	// mi-xxxx
 	ModelApiId *string `json:"ModelApiId,omitempty" xml:"ModelApiId,omitempty"`
+	// The Model API name.
+	//
 	// example:
 	//
 	// testName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The API path prefix.
+	//
 	// example:
 	//
 	// tests/models/
 	PathPrefix *string `json:"PathPrefix,omitempty" xml:"PathPrefix,omitempty"`
+	// The protocol. Valid values:
+	//
+	// - **openai**
+	//
+	// - **anthropic**
+	//
+	// - **bailian**
+	//
+	// - **vllm**
+	//
 	// example:
 	//
 	// openai
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The number of input records.
+	//
 	// example:
 	//
 	// 10
 	RecordInput *string `json:"RecordInput,omitempty" xml:"RecordInput,omitempty"`
+	// The number of output records.
+	//
 	// example:
 	//
 	// 10
 	RecordOutput *string `json:"RecordOutput,omitempty" xml:"RecordOutput,omitempty"`
+	// A JSON array of routing rules, formatted as a string.
+	//
 	// example:
 	//
 	// [
@@ -207,6 +250,8 @@ type DescribeModelApisResponseBodyItems struct {
 	//
 	// ]
 	RouteRules *string `json:"RouteRules,omitempty" xml:"RouteRules,omitempty"`
+	// The Model API status.
+	//
 	// example:
 	//
 	// Enable

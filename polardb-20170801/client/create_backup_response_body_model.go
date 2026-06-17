@@ -16,7 +16,7 @@ type iCreateBackupResponseBody interface {
 }
 
 type CreateBackupResponseBody struct {
-	// The ID of the backup set.
+	// The backup job ID.
 	//
 	// example:
 	//

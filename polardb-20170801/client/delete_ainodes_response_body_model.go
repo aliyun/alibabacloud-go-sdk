@@ -18,14 +18,20 @@ type iDeleteAINodesResponseBody interface {
 }
 
 type DeleteAINodesResponseBody struct {
+	// The cluster ID.
+	//
 	// example:
 	//
 	// pm-xxxxxx
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The order ID.
+	//
 	// example:
 	//
 	// 2035629******
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 9B7BFB11-C077-4FE3-B051-F69CEB******

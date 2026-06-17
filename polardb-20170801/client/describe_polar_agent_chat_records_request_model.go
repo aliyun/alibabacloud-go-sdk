@@ -16,12 +16,16 @@ type iDescribePolarAgentChatRecordsRequest interface {
 }
 
 type DescribePolarAgentChatRecordsRequest struct {
+	// The session ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1e28530a0da2c4755f165b1b8b9a73c9
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// The product source. Valid value: polardb-console.
+	//
 	// example:
 	//
 	// polardb-console

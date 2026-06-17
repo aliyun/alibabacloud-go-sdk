@@ -28,33 +28,46 @@ type iCreatePolarClawAgentResponseBody interface {
 }
 
 type CreatePolarClawAgentResponseBody struct {
+	// Details of the new agent.
 	Agent *CreatePolarClawAgentResponseBodyAgent `json:"Agent,omitempty" xml:"Agent,omitempty" type:"Struct"`
-	// Agent ID
+	// The agent ID.
 	//
 	// example:
 	//
 	// work
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	// The application ID.
+	//
 	// example:
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The status code.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The display name of the agent.
+	//
 	// example:
 	//
 	// work
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 3E5CD764-FCCA-5C9C-838E-20E0DE84B2AF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The workspace path.
+	//
 	// example:
 	//
 	// /home/node/.openclaw/workspace-work
@@ -151,17 +164,22 @@ func (s *CreatePolarClawAgentResponseBody) Validate() error {
 }
 
 type CreatePolarClawAgentResponseBodyAgent struct {
-	// Agent ID
+	// The agent ID.
 	//
 	// example:
 	//
 	// work
-	Id       *string                                        `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The agent\\"s identity.
 	Identity *CreatePolarClawAgentResponseBodyAgentIdentity `json:"Identity,omitempty" xml:"Identity,omitempty" type:"Struct"`
+	// The display name of the agent.
+	//
 	// example:
 	//
 	// work
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The workspace path.
+	//
 	// example:
 	//
 	// /home/node/.openclaw/workspace-work
@@ -222,22 +240,32 @@ func (s *CreatePolarClawAgentResponseBodyAgent) Validate() error {
 }
 
 type CreatePolarClawAgentResponseBodyAgentIdentity struct {
+	// The avatar\\"s path or content.
+	//
 	// example:
 	//
 	// test
 	Avatar *string `json:"Avatar,omitempty" xml:"Avatar,omitempty"`
+	// The avatar URL.
+	//
 	// example:
 	//
 	// test
 	AvatarUrl *string `json:"AvatarUrl,omitempty" xml:"AvatarUrl,omitempty"`
+	// The emoji identifier.
+	//
 	// example:
 	//
 	// U+1F99E
 	Emoji *string `json:"Emoji,omitempty" xml:"Emoji,omitempty"`
+	// The identity name.
+	//
 	// example:
 	//
 	// work
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The theme.
+	//
 	// example:
 	//
 	// work

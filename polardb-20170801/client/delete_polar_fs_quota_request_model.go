@@ -18,16 +18,24 @@ type iDeletePolarFsQuotaRequest interface {
 }
 
 type DeletePolarFsQuotaRequest struct {
+	// The cluster ID.
+	//
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to view the details of all clusters under your account, including the cluster ID.
+	//
 	// example:
 	//
 	// pc-************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The ID of the Polarlakebase instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pfs-2ze0i74ka607*****
 	PolarFsInstanceId *string `json:"PolarFsInstanceId,omitempty" xml:"PolarFsInstanceId,omitempty"`
+	// The details of the quota rules.
+	//
 	// This parameter is required.
 	Quotas []*DeletePolarFsQuotaRequestQuotas `json:"Quotas,omitempty" xml:"Quotas,omitempty" type:"Repeated"`
 }
@@ -81,12 +89,16 @@ func (s *DeletePolarFsQuotaRequest) Validate() error {
 }
 
 type DeletePolarFsQuotaRequestQuotas struct {
+	// The ID of the quota.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 73
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the quota.
+	//
 	// This parameter is required.
 	//
 	// example:

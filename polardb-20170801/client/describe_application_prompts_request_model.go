@@ -18,16 +18,30 @@ type iDescribeApplicationPromptsRequest interface {
 }
 
 type DescribeApplicationPromptsRequest struct {
+	// The Application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values:
+	//
+	// - **30**
+	//
+	// - **50**
+	//
+	// - **100**
+	//
+	// Default value: **30**.
+	//
 	// example:
 	//
 	// 50

@@ -36,15 +36,15 @@ type iDescribeGlobalDatabaseNetworksRequest interface {
 }
 
 type DescribeGlobalDatabaseNetworksRequest struct {
-	// The ID of the cluster.
+	// The cluster ID.
 	//
-	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query information about all clusters that are deployed in a specified region, such as the cluster ID.
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to find the IDs of all clusters in a region.
 	//
 	// example:
 	//
 	// pc-**************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// Specify the region in which you want to query GDNs. You can create secondary clusters for the GDNs.
+	// Returns only GDNs that support creating a secondary cluster in the specified region.
 	//
 	// example:
 	//
@@ -52,19 +52,19 @@ type DescribeGlobalDatabaseNetworksRequest struct {
 	FilterRegion *string `json:"FilterRegion,omitempty" xml:"FilterRegion,omitempty"`
 	// The description of the GDN. The description must meet the following requirements:
 	//
-	// 	- It cannot start with `http://` or `https://`.
+	// - It cannot start with `http://` or `https://`.
 	//
-	// 	- It must start with a letter.
+	// - It must start with a letter or a Chinese character.
 	//
-	// 	- It can contain letters, digits, underscores (_), and hyphens (-).
+	// - It can contain letters, Chinese characters, digits, underscores (_), and hyphens (-).
 	//
-	// 	- It must be 2 to 126 characters in length.
+	// - It must be 2 to 126 characters in length.
 	//
 	// example:
 	//
 	// test
 	GDNDescription *string `json:"GDNDescription,omitempty" xml:"GDNDescription,omitempty"`
-	// The ID of the GDN.
+	// The GDN ID.
 	//
 	// example:
 	//
@@ -72,25 +72,25 @@ type DescribeGlobalDatabaseNetworksRequest struct {
 	GDNId        *string `json:"GDNId,omitempty" xml:"GDNId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. Default value: 1. The value must be an integer that is greater than 0.
+	// The page number. The value must be greater than 0. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: 30. Valid values:
+	// The number of entries to return on each page. Default value: 30. Valid values:
 	//
-	// 	- 30
+	// - 30
 	//
-	// 	- 50
+	// - 50
 	//
-	// 	- 100
+	// - 100
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//

@@ -20,20 +20,32 @@ type iModifyEncryptionDBSecretResponseBody interface {
 }
 
 type ModifyEncryptionDBSecretResponseBody struct {
+	// The cluster ID.
+	//
 	// example:
 	//
 	// pc-***************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The returned message.
+	//
+	// > If the request is successful, \\`Successful\\` is returned. If the request fails, an error message is returned, such as an error code.
+	//
 	// example:
 	//
 	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 4CE6DF97-AEA4-484F-906F-C407EE******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - **true**
+	//
+	// - **false**
+	//
 	// example:
 	//
 	// true

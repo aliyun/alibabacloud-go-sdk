@@ -14,6 +14,8 @@ type iDescribeApplicationServerlessConfRequest interface {
 }
 
 type DescribeApplicationServerlessConfRequest struct {
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -24,9 +24,9 @@ type iDescribeDBClusterAttributeRequest interface {
 }
 
 type DescribeDBClusterAttributeRequest struct {
-	// Cluster ID.
+	// The cluster ID.
 	//
-	// > You can view detailed information about all clusters under your account, including the cluster ID, through the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) interface.
+	// > Call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of all clusters in your account, including the cluster IDs.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type DescribeDBClusterAttributeRequest struct {
 	//
 	// pc-*****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// Whether to obtain information about AI-related nodes.
+	// Specifies whether to query information about AI nodes.
 	//
 	// example:
 	//

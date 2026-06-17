@@ -22,33 +22,33 @@ type iDescribeDBNodesParametersResponseBody interface {
 }
 
 type DescribeDBNodesParametersResponseBody struct {
-	// The IDs of the nodes.
+	// The list of node IDs.
 	DBNodeIds []*DescribeDBNodesParametersResponseBodyDBNodeIds `json:"DBNodeIds,omitempty" xml:"DBNodeIds,omitempty" type:"Repeated"`
-	// The type of the database engine. Set the value to **MySQL**.
+	// The type of the database. The value is fixed as **MySQL**.
 	//
 	// example:
 	//
 	// MySQL
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
-	// The version of the MySQL database engine. Valid values:
+	// The version of the MySQL database. Valid values:
 	//
-	// 	- **5.6**
+	// - **5.6**
 	//
-	// 	- **5.7**
+	// - **5.7**
 	//
-	// 	- **8.0**
+	// - **8.0**
 	//
 	// example:
 	//
 	// 5.6
 	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
-	// The cluster engine.
+	// The database engine of the cluster.
 	//
 	// example:
 	//
 	// POLARDB
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -129,7 +129,7 @@ type DescribeDBNodesParametersResponseBodyDBNodeIds struct {
 	//
 	// pi-bp1r4qe3s534*****
 	DBNodeId *string `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty"`
-	// The parameters of the current node.
+	// The list of parameters that are running on the node.
 	RunningParameters []*DescribeDBNodesParametersResponseBodyDBNodeIdsRunningParameters `json:"RunningParameters,omitempty" xml:"RunningParameters,omitempty" type:"Repeated"`
 }
 
@@ -179,13 +179,13 @@ type DescribeDBNodesParametersResponseBodyDBNodeIdsRunningParameters struct {
 	//
 	// [utf8|latin1|gbk|utf8mb4]
 	CheckingCode *string `json:"CheckingCode,omitempty" xml:"CheckingCode,omitempty"`
-	// The data type of the parameter value. Valid values:
+	// The data type of the parameter. Valid values:
 	//
-	// 	- **INT**
+	// - **INT**: Integer
 	//
-	// 	- **STRING**
+	// - **STRING**: String
 	//
-	// 	- **B**
+	// - **B**: Byte
 	//
 	// example:
 	//
@@ -197,17 +197,17 @@ type DescribeDBNodesParametersResponseBodyDBNodeIdsRunningParameters struct {
 	//
 	// utf8
 	DefaultParameterValue *string `json:"DefaultParameterValue,omitempty" xml:"DefaultParameterValue,omitempty"`
-	// A divisor of the parameter. For a parameter of the integer or byte type, the valid values must be a multiple of Factor unless you set Factor to 0.
+	// The divisor. For integer and byte type parameters, the parameter value must be a multiple of this factor. The factor cannot be 0.
 	//
 	// example:
 	//
 	// 20
 	Factor *string `json:"Factor,omitempty" xml:"Factor,omitempty"`
-	// Indicates whether a cluster restart is required to allow the parameter modification to take effect. Valid values:
+	// Indicates whether a restart is required for the parameter modification to take effect. Valid values:
 	//
-	// 	- **false**
+	// - **false**: No
 	//
-	// 	- **true**
+	// - **true**: Yes
 	//
 	// example:
 	//
@@ -215,9 +215,9 @@ type DescribeDBNodesParametersResponseBodyDBNodeIdsRunningParameters struct {
 	ForceRestart *bool `json:"ForceRestart,omitempty" xml:"ForceRestart,omitempty"`
 	// Indicates whether the parameter can be modified. Valid values:
 	//
-	// 	- **false**
+	// - **false**: No
 	//
-	// 	- **true**
+	// - **true**: Yes
 	//
 	// example:
 	//
@@ -225,15 +225,15 @@ type DescribeDBNodesParametersResponseBodyDBNodeIdsRunningParameters struct {
 	IsModifiable *bool `json:"IsModifiable,omitempty" xml:"IsModifiable,omitempty"`
 	// Indicates whether the parameter is a global parameter. Valid values:
 	//
-	// 	- **0**: yes. The modified parameter value is synchronized to other nodes.
+	// - **0**: The parameter is a global parameter. Modifications to the parameter are applied to other nodes by default and cannot be canceled.
 	//
-	// 	- **1**: no. You can customize the nodes to which the modified parameter value can be synchronized to.
+	// - **1**: The parameter is not a global parameter. You can specify the nodes to which you want to apply the parameter modifications.
 	//
 	// example:
 	//
 	// 1
 	IsNodeAvailable *string `json:"IsNodeAvailable,omitempty" xml:"IsNodeAvailable,omitempty"`
-	// The dependencies of the parameter.
+	// The dependency of the parameter.
 	//
 	// example:
 	//
@@ -253,9 +253,9 @@ type DescribeDBNodesParametersResponseBodyDBNodeIdsRunningParameters struct {
 	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
 	// The status of the parameter. Valid values:
 	//
-	// 	- **normal**
+	// - **normal**: Normal
 	//
-	// 	- **modifying**
+	// - **modifying**: Modifying
 	//
 	// example:
 	//

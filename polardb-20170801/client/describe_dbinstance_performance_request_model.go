@@ -28,18 +28,24 @@ type iDescribeDBInstancePerformanceRequest interface {
 }
 
 type DescribeDBInstancePerformanceRequest struct {
+	// The node ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pi-*************
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The end time of the query. The time is in the yyyy-MM-ddTHH:mmZ format in UTC.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2020-01-15T17:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The performance metrics. Separate multiple metrics with commas (,). For more information, see [Performance parameters](https://help.aliyun.com/document_detail/141787.html).
+	//
 	// example:
 	//
 	// PolarDBCPUForPCU,PolarDBPCU,PolarDBMemoryForPCU,PolarDBQPSTPS,PolarDBConnections
@@ -48,6 +54,8 @@ type DescribeDBInstancePerformanceRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The start time of the query. The time is in the yyyy-MM-ddTHH:mmZ format in UTC.
+	//
 	// This parameter is required.
 	//
 	// example:

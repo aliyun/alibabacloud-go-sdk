@@ -16,10 +16,14 @@ type iModifyApplicationPromptResponseBody interface {
 }
 
 type ModifyApplicationPromptResponseBody struct {
+	// The ID of the modified prompt.
+	//
 	// example:
 	//
 	// papt-f9lajgw765f4fnrzn1
 	PromptId *string `json:"PromptId,omitempty" xml:"PromptId,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 7E2FE3BB-C677-5FF9-9FC5-9CF364BD6BE5

@@ -30,7 +30,7 @@ type iResetGlobalDatabaseNetworkRequest interface {
 type ResetGlobalDatabaseNetworkRequest struct {
 	// The ID of the cluster in the GDN.
 	//
-	// >  You can call the [DescribeGlobalDatabaseNetwork](https://help.aliyun.com/document_detail/264580.html) operation to view the ID of the cluster in the GDN.
+	// > Call the [DescribeGlobalDatabaseNetwork](https://help.aliyun.com/document_detail/264580.html) operation to query the IDs of clusters in the GDN.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type ResetGlobalDatabaseNetworkRequest struct {
 	//
 	// pc-wz9fb5nn44u1d****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The ID of the GDN.
+	// The ID of the Global Database Network (GDN).
 	//
 	// This parameter is required.
 	//

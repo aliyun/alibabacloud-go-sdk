@@ -26,14 +26,20 @@ type iGetPolarClawConfigResponseBody interface {
 }
 
 type GetPolarClawConfigResponseBody struct {
+	// The application ID.
+	//
 	// example:
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The response status code.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The configuration object.
+	//
 	// example:
 	//
 	// {
@@ -42,19 +48,25 @@ type GetPolarClawConfigResponseBody struct {
 	//
 	// }
 	Config map[string]interface{} `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The configuration hash.
+	//
 	// example:
 	//
 	// 005b55a8e870aaf866598e48a6af0bdbfa3fef704770c5e1cbad99648beaa661
 	Hash *string `json:"Hash,omitempty" xml:"Hash,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The version of OpenClaw.
+	//
 	// example:
 	//
 	// 2026.3.28
 	OpenclawVersion *string `json:"OpenclawVersion,omitempty" xml:"OpenclawVersion,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

@@ -34,54 +34,100 @@ type iCreateGatewayRequest interface {
 }
 
 type CreateGatewayRequest struct {
+	// Specifies whether to enable auto-renewal. Valid values:
+	//
+	// - **true**: enables auto-renewal.
+	//
+	// - **false**: disables auto-renewal.
+	//
+	// Default value: **false**.
+	//
+	// > This parameter applies only when **PayType*	- is set to **Prepaid**.
+	//
 	// example:
 	//
 	// false
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// The cluster specification.
+	//
 	// example:
 	//
 	// polar.app.g2.medium
 	DBClusterClass *string `json:"DBClusterClass,omitempty" xml:"DBClusterClass,omitempty"`
+	// The database engine type. Valid values:
+	//
+	// - MySQL
+	//
+	// - PostgreSQL
+	//
 	// example:
 	//
 	// MySQL
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
+	// The billing method. Valid values:
+	//
+	// - **Postpaid**: pay-as-you-go
+	//
+	// - **Prepaid**: subscription
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Prepaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// The unit of the subscription duration. This parameter is required when **PayType*	- is set to **Prepaid**.
+	//
+	// - **Year**: The subscription duration is measured in years.
+	//
+	// - **Month**: The subscription duration is measured in months.
+	//
 	// example:
 	//
 	// Month
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The security group ID.
+	//
 	// example:
 	//
 	// sg-bp**************
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// The subscription duration. This parameter is required when **PayType*	- is set to **Prepaid**.
+	//
+	// - If **Period*	- is set to **Month**, the value must be an integer from `1` to `9`.
+	//
+	// - If **Period*	- is set to **Year**, the value must be an integer from `1` to `3`.
+	//
 	// example:
 	//
 	// 3
 	UsedTime *string `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
+	// The ID of the virtual private cloud (VPC).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// vpc-*******************
 	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
+	// The vSwitch ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// vsw-*********************
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The availability zone ID.
+	//
 	// example:
 	//
 	// cn-beijing-l

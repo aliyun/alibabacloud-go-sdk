@@ -28,31 +28,57 @@ type iDescribeDBInstancePerformanceResponseBody interface {
 }
 
 type DescribeDBInstancePerformanceResponseBody struct {
+	// The node ID.
+	//
 	// example:
 	//
 	// pi-*************
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The database engine type. Valid values:
+	//
+	// - **MySQL**
+	//
+	// - **PostgreSQL**
+	//
+	// - **Oracle**
+	//
 	// example:
 	//
 	// MySQL
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
+	// The MySQL version number. Valid values:
+	//
+	// - **5.6**
+	//
+	// - **5.7**
+	//
+	// - **8.0**
+	//
 	// example:
 	//
 	// 5.6
 	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
+	// The end time of the query. The time is in the `yyyy-MM-ddTHH:mmZ` format in UTC.
+	//
 	// example:
 	//
 	// 2020-09-23T01:01Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The database engine type.
+	//
 	// example:
 	//
 	// POLARDB
 	Engine          *string                                                   `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	PerformanceKeys *DescribeDBInstancePerformanceResponseBodyPerformanceKeys `json:"PerformanceKeys,omitempty" xml:"PerformanceKeys,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// F2A9EFA7-915F-4572-8299-85A307******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The start time of the query. The time is in the `yyyy-MM-ddTHH:mmZ` format in UTC.
+	//
 	// example:
 	//
 	// 2020-09-23T01:01Z

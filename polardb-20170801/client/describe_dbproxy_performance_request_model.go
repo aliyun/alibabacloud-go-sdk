@@ -46,7 +46,7 @@ type DescribeDBProxyPerformanceRequest struct {
 	//
 	// example:
 	//
-	// pi-******************
+	// pi-****************
 	DBNodeId *string `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty"`
 	// The end of the time range to query. Specify the time in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
 	//

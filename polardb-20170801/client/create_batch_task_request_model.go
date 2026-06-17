@@ -9,6 +9,8 @@ type iCreateBatchTaskRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetApplicationType(v string) *CreateBatchTaskRequest
+	GetApplicationType() *string
 	SetInstanceIds(v []*string) *CreateBatchTaskRequest
 	GetInstanceIds() []*string
 	SetParam(v string) *CreateBatchTaskRequest
@@ -22,24 +24,37 @@ type iCreateBatchTaskRequest interface {
 }
 
 type CreateBatchTaskRequest struct {
+	ApplicationType *string `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
+	// The instance IDs.
+	//
 	// This parameter is required.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// The task parameters.
+	//
 	// example:
 	//
 	// [{"skillName":"github","version":"1.0.0"},{"skillName":"skill-vetter","version":"1.0.1"}]
 	Param *string `json:"Param,omitempty" xml:"Param,omitempty"`
+	// The region ID.
+	//
+	// > Call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query the regions of all clusters in your account.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the batch task.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// batch_task_test
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// The task type.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -54,6 +69,10 @@ func (s CreateBatchTaskRequest) String() string {
 
 func (s CreateBatchTaskRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateBatchTaskRequest) GetApplicationType() *string {
+	return s.ApplicationType
 }
 
 func (s *CreateBatchTaskRequest) GetInstanceIds() []*string {
@@ -74,6 +93,11 @@ func (s *CreateBatchTaskRequest) GetTaskName() *string {
 
 func (s *CreateBatchTaskRequest) GetTaskType() *string {
 	return s.TaskType
+}
+
+func (s *CreateBatchTaskRequest) SetApplicationType(v string) *CreateBatchTaskRequest {
+	s.ApplicationType = &v
+	return s
 }
 
 func (s *CreateBatchTaskRequest) SetInstanceIds(v []*string) *CreateBatchTaskRequest {

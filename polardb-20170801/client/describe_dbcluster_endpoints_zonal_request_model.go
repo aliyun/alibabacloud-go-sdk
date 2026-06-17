@@ -26,16 +26,22 @@ type iDescribeDBClusterEndpointsZonalRequest interface {
 }
 
 type DescribeDBClusterEndpointsZonalRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pc-*************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The cluster endpoint ID.
+	//
 	// example:
 	//
 	// pe-*************
 	DBEndpointId *string `json:"DBEndpointId,omitempty" xml:"DBEndpointId,omitempty"`
+	// Specifies whether to return information about AI nodes.
+	//
 	// example:
 	//
 	// AI

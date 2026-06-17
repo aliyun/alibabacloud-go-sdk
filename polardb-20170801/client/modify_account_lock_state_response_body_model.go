@@ -14,6 +14,8 @@ type iModifyAccountLockStateResponseBody interface {
 }
 
 type ModifyAccountLockStateResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// B762E8C5-0129-51DB-80C8-********

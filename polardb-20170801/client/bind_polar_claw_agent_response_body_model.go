@@ -26,33 +26,40 @@ type iBindPolarClawAgentResponseBody interface {
 }
 
 type BindPolarClawAgentResponseBody struct {
-	// Agent ID
+	// The agent ID.
 	//
 	// example:
 	//
 	// work
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	// The application ID.
+	//
 	// example:
 	//
 	// pa-********************
-	ApplicationId *string                                `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	Binding       *BindPolarClawAgentResponseBodyBinding `json:"Binding,omitempty" xml:"Binding,omitempty" type:"Struct"`
-	// 200
+	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// Details of the newly created binding.
+	Binding *BindPolarClawAgentResponseBodyBinding `json:"Binding,omitempty" xml:"Binding,omitempty" type:"Struct"`
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// successful
+	// A message that indicates the request result.
 	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 2281C6C9-CBAB-1AFD-8400-670750CF6025_2212
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of global bindings after the operation.
+	//
 	// example:
 	//
 	// 1
@@ -140,16 +147,20 @@ func (s *BindPolarClawAgentResponseBody) Validate() error {
 }
 
 type BindPolarClawAgentResponseBodyBinding struct {
+	// The account ID.
+	//
 	// example:
 	//
 	// default
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// Agent ID
+	// The agent ID.
 	//
 	// example:
 	//
 	// work
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	// The channel ID.
+	//
 	// example:
 	//
 	// feishu

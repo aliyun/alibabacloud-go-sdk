@@ -20,16 +20,21 @@ type iDescribeModifyParameterLogResponseBody interface {
 }
 
 type DescribeModifyParameterLogResponseBody struct {
+	// The cluster engine.
+	//
 	// example:
 	//
 	// polardb_mysql
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The engine version.
+	//
 	// example:
 	//
 	// 8.0
-	EngineVersion *string                                        `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	Items         []*DescribeModifyParameterLogResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// Id of the request
+	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	// The list of parameter modification history.
+	Items []*DescribeModifyParameterLogResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -95,22 +100,32 @@ func (s *DescribeModifyParameterLogResponseBody) Validate() error {
 }
 
 type DescribeModifyParameterLogResponseBodyItems struct {
+	// The time when the parameter was last modified.
+	//
 	// example:
 	//
 	// 2024-10-29T09:31:37Z
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The parameter value after the modification.
+	//
 	// example:
 	//
 	// test01
 	NewParameterValue *string `json:"NewParameterValue,omitempty" xml:"NewParameterValue,omitempty"`
+	// The parameter value before the modification.
+	//
 	// example:
 	//
 	// test
 	OldParameterValue *string `json:"OldParameterValue,omitempty" xml:"OldParameterValue,omitempty"`
+	// The parameter name.
+	//
 	// example:
 	//
 	// hz
 	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
+	// Indicates whether the modification was applied successfully.
+	//
 	// example:
 	//
 	// True

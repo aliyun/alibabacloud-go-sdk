@@ -16,6 +16,8 @@ type iDeletePolarFsQuotaResponseBody interface {
 }
 
 type DeletePolarFsQuotaResponseBody struct {
+	// The ID of the Polarlakebase instance.
+	//
 	// example:
 	//
 	// pfs-2ze0i74ka607*****

@@ -34,29 +34,31 @@ type iModifyDBClusterAccessWhitelistRequest interface {
 }
 
 type ModifyDBClusterAccessWhitelistRequest struct {
-	// The attributes of the IP whitelist group. Set this parameter to **hidden*	- to hide the IP whitelist group in the console.
+	// The attribute of the IP address whitelist group. If you set this parameter to \\`hidden\\`, the whitelist group is not visible in the console.
 	//
-	// > 	- The IP whitelist group that has appeared in the console cannot be hidden.
+	// > - You cannot hide an IP address whitelist group that is already visible in the console.
 	//
-	// > 	- This parameter can be specified only when the **WhiteListType*	- parameter is set to **IP**.
+	// >
+	//
+	// > - This parameter is available only when **WhiteListType*	- is set to **IP**.
 	//
 	// example:
 	//
 	// hidden
 	DBClusterIPArrayAttribute *string `json:"DBClusterIPArrayAttribute,omitempty" xml:"DBClusterIPArrayAttribute,omitempty"`
-	// The name of the IP whitelist group. The group name must be 2 to 120 characters in length and consists of lowercase letters and digits. It must start with a letter, and end with a letter or a digit.
+	// The name of the IP address whitelist group. The name must be 2 to 120 characters in length. It must consist of lowercase letters and digits. The name must start with a letter and end with a letter or a digit.
 	//
-	// 	- If the specified whitelist group name does not exist, the whitelist group is created.
+	// - If the specified whitelist group name does not exist, a new whitelist group is created.
 	//
-	// 	- If the specified whitelist group name exists, the whitelist group is modified.
+	// - If the specified whitelist group name already exists, the whitelist group is modified.
 	//
-	// 	- If you do not specify this parameter, the default group is modified.
+	// - If you do not specify this parameter, the \\`default\\` group is modified.
+	//
+	// > 	- A cluster can have up to 50 IP address whitelist groups.
 	//
 	// >
 	//
-	// 	- You can create a maximum of 50 IP whitelist groups for a cluster.
-	//
-	// 	- This parameter can be specified only when the **WhiteListType*	- parameter is set to **IP**.
+	// > 	- This parameter is available only when **WhiteListType*	- is set to **IP**.
 	//
 	// example:
 	//
@@ -70,15 +72,15 @@ type ModifyDBClusterAccessWhitelistRequest struct {
 	//
 	// pc-*************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The method used to modify the IP whitelist. Valid values:
+	// The method used to modify the IP address whitelist. Valid values:
 	//
-	// 	- **Cover*	- (default): overwrites the original IP whitelist.
+	// - **Cover**: Overwrites the original IP address whitelist. This is the default value.
 	//
-	// 	- **Append**: appends IP addresses to the original whitelist.
+	// - **Append**: Appends IP addresses to the whitelist.
 	//
-	// 	- **Delete**: deletes IP addresses.
+	// - **Delete**: Deletes IP addresses from the whitelist.
 	//
-	// >  This parameter can be specified only when the **WhiteListType*	- parameter is set to **IP**.
+	// > This parameter is available only when **WhiteListType*	- is set to **IP**.
 	//
 	// example:
 	//
@@ -88,23 +90,25 @@ type ModifyDBClusterAccessWhitelistRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the security group. Separate multiple security groups with commas (,).
+	// The security group ID. Separate multiple security group IDs with commas (,).
 	//
-	// > 	- You can add a maximum of three security groups to a cluster.
+	// > - A cluster can be associated with up to three security groups.
 	//
-	// > 	- This parameter can be specified only when the **WhiteListType*	- parameter is set to **SecurityGroup**.
+	// >
+	//
+	// > - This parameter is available only when **WhiteListType*	- is set to **SecurityGroup**.
 	//
 	// example:
 	//
 	// sg-*********
 	SecurityGroupIds *string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty"`
-	// The IP addresses or Classless Inter-Domain Routing (CIDR) blocks in the IP whitelist group. You can add 1,000 IP addresses or CIDR blocks to all the IP whitelist groups. Separate multiple IP addresses with commas (,). The following two formats are supported:
+	// The IP addresses or CIDR blocks in the IP address whitelist group. All IP address whitelist groups can contain a total of 1,000 IP addresses or CIDR blocks. Separate multiple IP addresses with commas (,). The following formats are supported:
 	//
-	// 	- IP addresses. Example: 10.23.12.24.
+	// - IP address format. For example: 10.23.12.24.
 	//
-	// 	- CIDR blocks. Example: 10.23.12.24/24. 24 indicates the length of the prefix of the CIDR block. The length is the range of 1 to 32.
+	// - CIDR format. For example: 10.23.12.24/24. The number 24 indicates the prefix length of the IP address. The prefix length can range from 1 to 32.
 	//
-	// >  This parameter can be specified only when the **WhiteListType*	- parameter is set to **IP**.
+	// > This parameter is available only when **WhiteListType*	- is set to **IP**.
 	//
 	// example:
 	//
@@ -112,11 +116,11 @@ type ModifyDBClusterAccessWhitelistRequest struct {
 	SecurityIps *string `json:"SecurityIps,omitempty" xml:"SecurityIps,omitempty"`
 	// The type of the whitelist. Valid values:
 	//
-	// 	- **IP**: IP whitelist group.
+	// - **IP**: IP address whitelist group.
 	//
-	// 	- **SecurityGroup**: security group.
+	// - **SecurityGroup**: Security group.
 	//
-	// Default value: **IP**.
+	// The default value is **IP**.
 	//
 	// example:
 	//

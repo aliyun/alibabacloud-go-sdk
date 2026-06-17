@@ -24,25 +24,36 @@ type iDescribeBudgetPoliciesResponseBody interface {
 }
 
 type DescribeBudgetPoliciesResponseBody struct {
+	// A list of budget policies.
 	Items []*DescribeBudgetPoliciesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of records on the current page.
+	//
 	// example:
 	//
 	// 1
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	// The number of records to return on each page. Valid values: **30**, **50**, and **100**.
+	//
+	// Default value: **30**.
+	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 24A1990B-4F6E-482B-B8CB-75C612******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 2
@@ -125,53 +136,104 @@ func (s *DescribeBudgetPoliciesResponseBody) Validate() error {
 }
 
 type DescribeBudgetPoliciesResponseBodyItems struct {
+	// The alert threshold, as a percentage (0 to 100).
+	//
 	// example:
 	//
 	// 80
 	AlertThresholdPct *string `json:"AlertThresholdPct,omitempty" xml:"AlertThresholdPct,omitempty"`
-	AlertTriggered    *bool   `json:"AlertTriggered,omitempty" xml:"AlertTriggered,omitempty"`
+	// Indicates whether the alert threshold was triggered.
+	//
+	// example:
+	//
+	// false
+	AlertTriggered *bool `json:"AlertTriggered,omitempty" xml:"AlertTriggered,omitempty"`
+	// The ID of the dimension object. This parameter is required when `BudgetDimensionType` is set to `ConsumerGroup` or `Consumer`.
+	//
 	// example:
 	//
 	// cg-p3gk2oh55c**
 	BudgetDimensionRefId *string `json:"BudgetDimensionRefId,omitempty" xml:"BudgetDimensionRefId,omitempty"`
+	// The dimension of the budget policy. Valid values:
+	//
+	// - **ConsumerGroup**: consumer group
+	//
+	// - **Consumer**: consumer
+	//
 	// example:
 	//
 	// ConsumerGroup
 	BudgetDimensionType *string `json:"BudgetDimensionType,omitempty" xml:"BudgetDimensionType,omitempty"`
+	// The number of budget points.
+	//
 	// example:
 	//
 	// 10000
 	BudgetPoints *string `json:"BudgetPoints,omitempty" xml:"BudgetPoints,omitempty"`
+	// The budget policy ID.
+	//
 	// example:
 	//
 	// 023aacc1effc4b56bb154bfbec6ba9**
 	BudgetPolicyId *string `json:"BudgetPolicyId,omitempty" xml:"BudgetPolicyId,omitempty"`
+	// The budget type. Valid values:
+	//
+	// - **GlobalTotal**: Global budget
+	//
+	// - **ConsumerTotal**: Consumer budget
+	//
+	// - **ConsumerGroupTotal**: Consumer group budget
+	//
 	// example:
 	//
 	// GlobalTotal
 	BudgetType *string `json:"BudgetType,omitempty" xml:"BudgetType,omitempty"`
-	Exceeded   *string `json:"Exceeded,omitempty" xml:"Exceeded,omitempty"`
+	// Indicates whether the budget was exceeded.
+	//
+	// example:
+	//
+	// false
+	Exceeded *string `json:"Exceeded,omitempty" xml:"Exceeded,omitempty"`
+	// The time when the policy was created.
+	//
 	// example:
 	//
 	// 2025-03-19T14:13:53+08:00
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	// The time when the policy was last modified.
+	//
 	// example:
 	//
 	// 2025-04-08T10:43:28+08:00
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The gateway cluster ID.
+	//
 	// example:
 	//
 	// pg-xxxxxxxx
 	GwClusterId *string `json:"GwClusterId,omitempty" xml:"GwClusterId,omitempty"`
+	// The day of the month (1 to 28) on which the budget is reset.
+	//
 	// example:
 	//
 	// 2
 	ResetDayOfMonth *string `json:"ResetDayOfMonth,omitempty" xml:"ResetDayOfMonth,omitempty"`
+	// The status of the policy. Valid values:
+	//
+	// - **Enabled**: enabled
+	//
+	// - **Disabled**: disabled
+	//
 	// example:
 	//
 	// Enabled
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	UsedPoints *int32  `json:"UsedPoints,omitempty" xml:"UsedPoints,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The number of used points.
+	//
+	// example:
+	//
+	// 10
+	UsedPoints *int32 `json:"UsedPoints,omitempty" xml:"UsedPoints,omitempty"`
 }
 
 func (s DescribeBudgetPoliciesResponseBodyItems) String() string {

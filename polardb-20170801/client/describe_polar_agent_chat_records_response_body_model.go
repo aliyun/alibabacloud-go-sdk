@@ -16,7 +16,10 @@ type iDescribePolarAgentChatRecordsResponseBody interface {
 }
 
 type DescribePolarAgentChatRecordsResponseBody struct {
+	// The result set.
 	Data []*DescribePolarAgentChatRecordsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// A7E6A8FD-C50B-46B2-BA85-D8B8D3******
@@ -63,24 +66,32 @@ func (s *DescribePolarAgentChatRecordsResponseBody) Validate() error {
 }
 
 type DescribePolarAgentChatRecordsResponseBodyData struct {
+	// The answer.
+	//
 	// example:
 	//
 	// xxx
 	Answer *string `json:"Answer,omitempty" xml:"Answer,omitempty"`
+	// The feedback type.
+	//
 	// example:
 	//
 	// 0
 	FeedbackType *string `json:"FeedbackType,omitempty" xml:"FeedbackType,omitempty"`
+	// The session query. Obtain this value from the response of the API call to start a digital human.
+	//
 	// example:
 	//
 	// xxx
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
-	// Query ID。
+	// The query ID.
 	//
 	// example:
 	//
 	// sq202506261002hz8b24fe80067683
 	QueryId *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
+	// The session ID.
+	//
 	// example:
 	//
 	// 44dcdf31-04cd-4a44-9bae-834dd6657e29

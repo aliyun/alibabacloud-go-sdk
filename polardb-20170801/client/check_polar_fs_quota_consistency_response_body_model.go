@@ -18,11 +18,16 @@ type iCheckPolarFsQuotaConsistencyResponseBody interface {
 }
 
 type CheckPolarFsQuotaConsistencyResponseBody struct {
+	// The ID of the PolarFS instance.
+	//
 	// example:
 	//
 	// pfs-2ze0i74ka607*****
-	PolarFsInstanceId *string                                            `json:"PolarFsInstanceId,omitempty" xml:"PolarFsInstanceId,omitempty"`
-	QuotaItem         *CheckPolarFsQuotaConsistencyResponseBodyQuotaItem `json:"QuotaItem,omitempty" xml:"QuotaItem,omitempty" type:"Struct"`
+	PolarFsInstanceId *string `json:"PolarFsInstanceId,omitempty" xml:"PolarFsInstanceId,omitempty"`
+	// An object that contains details about the quota.
+	QuotaItem *CheckPolarFsQuotaConsistencyResponseBodyQuotaItem `json:"QuotaItem,omitempty" xml:"QuotaItem,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// E56531A4-E552-40BA-9C58-137B80******
@@ -74,24 +79,32 @@ func (s *CheckPolarFsQuotaConsistencyResponseBody) Validate() error {
 }
 
 type CheckPolarFsQuotaConsistencyResponseBodyQuotaItem struct {
+	// The storage capacity quota.
+	//
 	// example:
 	//
 	// 104857600
 	Capacity *int64 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
-	// Inodes
+	// The inode quota.
 	//
 	// example:
 	//
 	// 50000
 	Inodes *int64 `json:"Inodes,omitempty" xml:"Inodes,omitempty"`
+	// The directory path.
+	//
 	// example:
 	//
 	// /zookeepertest718
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The used capacity, in bytes.
+	//
 	// example:
 	//
 	// 104857600
 	UsedCapacity *int64 `json:"UsedCapacity,omitempty" xml:"UsedCapacity,omitempty"`
+	// The number of used inodes.
+	//
 	// example:
 	//
 	// 1

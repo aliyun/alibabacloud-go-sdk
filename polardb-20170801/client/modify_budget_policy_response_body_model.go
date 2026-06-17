@@ -16,11 +16,13 @@ type iModifyBudgetPolicyResponseBody interface {
 }
 
 type ModifyBudgetPolicyResponseBody struct {
+	// The ID of the gateway instance.
+	//
 	// example:
 	//
 	// pg-xxxxxxxx
 	GwClusterId *string `json:"GwClusterId,omitempty" xml:"GwClusterId,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//

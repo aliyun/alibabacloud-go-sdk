@@ -16,10 +16,14 @@ type iDescribePolarClawAgentsShrinkRequest interface {
 }
 
 type DescribePolarClawAgentsShrinkRequest struct {
+	// A list of agent IDs to query.
+	//
 	// example:
 	//
 	// work,research
 	AgentListShrink *string `json:"AgentList,omitempty" xml:"AgentList,omitempty"`
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:

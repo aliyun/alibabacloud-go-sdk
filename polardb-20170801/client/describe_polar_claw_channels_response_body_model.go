@@ -22,19 +22,28 @@ type iDescribePolarClawChannelsResponseBody interface {
 }
 
 type DescribePolarClawChannelsResponseBody struct {
+	// The application ID.
+	//
 	// example:
 	//
 	// pa-**************
-	ApplicationId *string                                          `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	Channels      []*DescribePolarClawChannelsResponseBodyChannels `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Repeated"`
+	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// A list of PolarClaw channel objects.
+	Channels []*DescribePolarClawChannelsResponseBodyChannels `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Repeated"`
+	// The returned status code.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response message. A value of `successful` indicates that the request succeeded.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 2281C6C9-CBAB-1AFD-8400-670750CF6025_2212
@@ -108,19 +117,28 @@ func (s *DescribePolarClawChannelsResponseBody) Validate() error {
 }
 
 type DescribePolarClawChannelsResponseBodyChannels struct {
+	// A list of account objects for the channel.
 	Accounts []*DescribePolarClawChannelsResponseBodyChannelsAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Repeated"`
+	// The channel ID.
+	//
 	// example:
 	//
 	// feishu
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// Indicates whether the channel is configured.
+	//
 	// example:
 	//
 	// true
 	Configured *bool `json:"Configured,omitempty" xml:"Configured,omitempty"`
+	// The default account ID for the channel.
+	//
 	// example:
 	//
 	// default
 	DefaultAccountId *string `json:"DefaultAccountId,omitempty" xml:"DefaultAccountId,omitempty"`
+	// Indicates whether the channel is enabled.
+	//
 	// example:
 	//
 	// true
@@ -194,27 +212,40 @@ func (s *DescribePolarClawChannelsResponseBodyChannels) Validate() error {
 }
 
 type DescribePolarClawChannelsResponseBodyChannelsAccounts struct {
+	// The account ID.
+	//
 	// example:
 	//
 	// default
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// Indicates whether the account is configured.
+	//
 	// example:
 	//
 	// true
 	Configured *bool `json:"Configured,omitempty" xml:"Configured,omitempty"`
+	// Indicates whether the account is connected.
+	//
 	// example:
 	//
 	// true
 	Connected *bool `json:"Connected,omitempty" xml:"Connected,omitempty"`
+	// Indicates whether the account is enabled.
+	//
 	// example:
 	//
 	// true
-	Enabled *bool     `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	Issues  []*string `json:"Issues,omitempty" xml:"Issues,omitempty" type:"Repeated"`
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// A list of issues related to the account.
+	Issues []*string `json:"Issues,omitempty" xml:"Issues,omitempty" type:"Repeated"`
+	// The timestamp (in milliseconds) of the last inbound message.
+	//
 	// example:
 	//
 	// 0
 	LastInboundAt *int64 `json:"LastInboundAt,omitempty" xml:"LastInboundAt,omitempty"`
+	// The timestamp (in milliseconds) of the last outbound message.
+	//
 	// example:
 	//
 	// 0

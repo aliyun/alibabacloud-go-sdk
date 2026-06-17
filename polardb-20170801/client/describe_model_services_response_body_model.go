@@ -24,25 +24,42 @@ type iDescribeModelServicesResponseBody interface {
 }
 
 type DescribeModelServicesResponseBody struct {
+	// The details of the model services.
 	Items []*DescribeModelServicesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of records on the current page.
+	//
 	// example:
 	//
 	// 30
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	// The number of records to return on each page. Valid values:
+	//
+	// - **30**
+	//
+	// - **50**
+	//
+	// - **100**
+	//
+	// Default value: **30**.
+	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 24A1990B-4F6E-482B-B8CB-75C612******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 2
@@ -125,50 +142,85 @@ func (s *DescribeModelServicesResponseBody) Validate() error {
 }
 
 type DescribeModelServicesResponseBodyItems struct {
+	// The API key for the model service.
+	//
 	// example:
 	//
 	// xxxx
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	// The base URL of the upstream service.
+	//
 	// example:
 	//
 	// https://xxxxxx
 	BaseUrl *string `json:"BaseUrl,omitempty" xml:"BaseUrl,omitempty"`
+	// The time when the model service was created.
+	//
 	// example:
 	//
 	// 2026-03-31T14:40:48Z
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	// The cost in points per million input tokens.
+	//
 	// example:
 	//
 	// 10
 	InputCostPointsPerMillion *string `json:"InputCostPointsPerMillion,omitempty" xml:"InputCostPointsPerMillion,omitempty"`
+	// The model category.
+	//
 	// example:
 	//
 	// text
 	ModelCategory *string `json:"ModelCategory,omitempty" xml:"ModelCategory,omitempty"`
+	// The model service ID.
+	//
 	// example:
 	//
 	// ms-xxxxxx
 	ModelServiceId *string `json:"ModelServiceId,omitempty" xml:"ModelServiceId,omitempty"`
+	// The model service name.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The cost in points per million output tokens.
+	//
 	// example:
 	//
 	// 10
 	OutputCostPointsPerMillion *string `json:"OutputCostPointsPerMillion,omitempty" xml:"OutputCostPointsPerMillion,omitempty"`
+	// The protocol. Valid values:
+	//
+	// - **OpenAI**
+	//
+	// - **Anthropic**
+	//
+	// - **bailian**: Alibaba Cloud Model Studio.
+	//
+	// - **vLLM**
+	//
 	// example:
 	//
 	// openai
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The cost in points per request.
+	//
 	// example:
 	//
 	// 10
 	RequestCostPoints *string `json:"RequestCostPoints,omitempty" xml:"RequestCostPoints,omitempty"`
+	// The status of the model service.
+	//
 	// example:
 	//
 	// Enable
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The vendor of the model service.
+	//
+	// example:
+	//
+	// bailian
 	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 }
 

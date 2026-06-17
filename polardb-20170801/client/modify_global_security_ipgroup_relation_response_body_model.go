@@ -18,15 +18,15 @@ type iModifyGlobalSecurityIPGroupRelationResponseBody interface {
 }
 
 type ModifyGlobalSecurityIPGroupRelationResponseBody struct {
-	// The ID of the cluster.
+	// The cluster ID.
 	//
 	// example:
 	//
 	// pc-*****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The details of the global IP whitelist template.
+	// Details of the global IP address whitelist template.
 	GlobalSecurityIPGroupRel []*ModifyGlobalSecurityIPGroupRelationResponseBodyGlobalSecurityIPGroupRel `json:"GlobalSecurityIPGroupRel,omitempty" xml:"GlobalSecurityIPGroupRel,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -83,33 +83,33 @@ func (s *ModifyGlobalSecurityIPGroupRelationResponseBody) Validate() error {
 }
 
 type ModifyGlobalSecurityIPGroupRelationResponseBodyGlobalSecurityIPGroupRel struct {
-	// The IP address in the whitelist template.
+	// The IP addresses in the whitelist template.
 	//
-	// >  Separate multiple IP addresses with commas (,). You can add up to 1,000 IP addresses or CIDR blocks to all IP whitelists.
+	// > Separate multiple IP addresses with a comma. A maximum of 1,000 IP addresses or CIDR blocks can be added to all IP address whitelists.
 	//
 	// example:
 	//
 	// 192.168.0.1
 	GIpList *string `json:"GIpList,omitempty" xml:"GIpList,omitempty"`
-	// The name of the IP whitelist template. The name must meet the following requirements:
+	// The name of the IP address whitelist template. The name must meet the following requirements:
 	//
-	// 	- The name can contain lowercase letters, digits, and underscores (_).
+	// - Consists of lowercase letters, digits, and underscores (_).
 	//
-	// 	- The name must start with a letter and end with a letter or a digit.
+	// - Starts with a letter and ends with a letter or a digit.
 	//
-	// 	- The name must be 2 to 120 characters in length.
+	// - Is 2 to 120 characters in length.
 	//
 	// example:
 	//
 	// test_123
 	GlobalIgName *string `json:"GlobalIgName,omitempty" xml:"GlobalIgName,omitempty"`
-	// The ID of the IP whitelist template.
+	// The ID of the IP address whitelist template.
 	//
 	// example:
 	//
 	// g-zsldxfiwjmti0kcm****
 	GlobalSecurityGroupId *string `json:"GlobalSecurityGroupId,omitempty" xml:"GlobalSecurityGroupId,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	//
 	// example:
 	//

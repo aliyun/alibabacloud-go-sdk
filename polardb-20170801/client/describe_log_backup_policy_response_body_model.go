@@ -27,39 +27,49 @@ type DescribeLogBackupPolicyResponseBody struct {
 	AdvancedLogPolicies *DescribeLogBackupPolicyResponseBodyAdvancedLogPolicies `json:"AdvancedLogPolicies,omitempty" xml:"AdvancedLogPolicies,omitempty" type:"Struct"`
 	// Indicates whether the log backup feature is enabled. Valid values:
 	//
-	// 	- 0: The log backup feature is disabled.
+	// - 0: The feature is disabled.
 	//
-	// 	- 1: The log backup feature is enabled. By default, the log backup feature is enabled and cannot be disabled.
+	// - 1: The feature is enabled. By default, the log backup feature is enabled and cannot be disabled.
+	//
+	// > If the advanced backup feature is enabled, this parameter is not recommended. Use the AdvancedLogPolicies parameter instead.
 	//
 	// example:
 	//
 	// 1
 	EnableBackupLog *int32 `json:"EnableBackupLog,omitempty" xml:"EnableBackupLog,omitempty"`
-	// The region in which you want to store cross-region log backups. For more information about regions that support the cross-region backup feature, see [Overview](https://help.aliyun.com/document_detail/72672.html).
+	// The region in which the cross-region log backup is stored. For information about the regions that support cross-region backup, see [Overview](https://help.aliyun.com/document_detail/72672.html).
+	//
+	// > If the advanced backup feature is enabled, this parameter is not recommended. Use the AdvancedLogPolicies parameter instead.
 	//
 	// example:
 	//
 	// cn-beijing
 	LogBackupAnotherRegionRegion *string `json:"LogBackupAnotherRegionRegion,omitempty" xml:"LogBackupAnotherRegionRegion,omitempty"`
-	// The retention period of cross-region log backups. Valid values:
+	// The retention period of the cross-region log backup. Valid values:
 	//
-	// 	- **0**: The cross-region backup feature is disabled.
+	// - **0**: The cross-region log backup feature is disabled.
 	//
-	// 	- **30 to 7300**: Cross-region log backups are retained for 30 to 7,300 days.
+	// - **30 to 7300**: The cross-region log backup is retained for 30 to 7300 days.
 	//
-	// 	- **-1**: The log backups are permanently retained.
+	// - **-1**: The cross-region log backups are retained permanently.
 	//
-	// >  When you create a cluster, the default value of this parameter is **0**.
+	// > 	- 	- When you create a cluster, the default value is **0**. This value indicates that the cross-region log backup feature is disabled.
+	//
+	// >
+	//
+	// > 	- - If the advanced backup feature is enabled, this parameter is not recommended. Use the AdvancedLogPolicies parameter instead.
 	//
 	// example:
 	//
 	// 0
 	LogBackupAnotherRegionRetentionPeriod *string `json:"LogBackupAnotherRegionRetentionPeriod,omitempty" xml:"LogBackupAnotherRegionRetentionPeriod,omitempty"`
-	// The retention period of the log backups. Valid values:
+	// The retention period of the log backup. Valid values:
 	//
-	// 	- 3 to 7300: The log backups are retained for 3 to 7,300 days.
+	// - 3 to 7300: The log backup is retained for 3 to 7300 days.
 	//
-	// 	- \\-1: The log backups are permanently retained.
+	// - -1: The log backups are retained permanently.
+	//
+	// > 	- If the advanced backup feature is enabled, this parameter is not recommended. Use the AdvancedLogPolicies parameter instead.
 	//
 	// example:
 	//

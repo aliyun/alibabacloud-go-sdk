@@ -30,40 +30,60 @@ type iCreateCronJobPolicyServerlessResponseBody interface {
 }
 
 type CreateCronJobPolicyServerlessResponseBody struct {
+	// The action of the scheduled task. The value is fixed as `ModifyDBClusterServerlessConf`.
+	//
 	// example:
 	//
 	// ModifyDBClusterServerlessConf
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// The Cron expression.
+	//
 	// example:
 	//
 	// 0 0 8 	- 	- ?
 	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
+	// The cluster ID.
+	//
 	// example:
 	//
 	// pc-****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The end time of the task. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format and in UTC.
+	//
 	// example:
 	//
 	// 2021-04-07T04:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the scheduled task.
+	//
 	// example:
 	//
 	// 1fa3c0e7-b568-4f41-b703-463c96a91bd8
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 45D24263-7E3A-4140-9472-************
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The start time of the task. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format and in UTC.
+	//
 	// example:
 	//
 	// 2020-05-01T00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The status of the task. Valid values:
+	//
+	// - `working`: The scheduled task is running.
+	//
+	// - `finish`: The scheduled task is complete.
+	//
 	// example:
 	//
 	// working

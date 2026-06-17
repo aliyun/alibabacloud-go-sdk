@@ -24,23 +24,34 @@ type iDescribeAccountsZonalResponseBody interface {
 }
 
 type DescribeAccountsZonalResponseBody struct {
+	// The details of the accounts.
 	Accounts []*DescribeAccountsZonalResponseBodyAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Repeated"`
+	// The maximum number of entries returned in the request.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token to retrieve the next page of results. If the results are not fully returned, this token is returned. You can use this token in the next request to retrieve the remaining results.
+	//
 	// example:
 	//
 	// 212db86sca4384811e0b5e8707e******
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries on the current page.
+	//
 	// example:
 	//
 	// 1
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 155462B9-205F-4FFC-BB43-4855FE******
@@ -123,30 +134,59 @@ func (s *DescribeAccountsZonalResponseBody) Validate() error {
 }
 
 type DescribeAccountsZonalResponseBodyAccounts struct {
+	// The description of the account.
+	//
 	// example:
 	//
 	// test
 	AccountDescription *string `json:"AccountDescription,omitempty" xml:"AccountDescription,omitempty"`
+	// The lock state of the account. Valid values:
+	//
+	// - UnLock: The account is not locked.
+	//
+	// - Lock: The account is locked.
+	//
 	// example:
 	//
 	// UnLock
 	AccountLockState *string `json:"AccountLockState,omitempty" xml:"AccountLockState,omitempty"`
+	// The name of the account.
+	//
 	// example:
 	//
 	// test_acc
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The time when the password expires.
+	//
 	// example:
 	//
 	// undefined
 	AccountPasswordValidTime *string `json:"AccountPasswordValidTime,omitempty" xml:"AccountPasswordValidTime,omitempty"`
+	// The status of the account. Valid values:
+	//
+	// Creating: The account is being created.
+	//
+	// Available: The account is active.
+	//
+	// Deleting: The account is being deleted.
+	//
 	// example:
 	//
 	// Available
 	AccountStatus *string `json:"AccountStatus,omitempty" xml:"AccountStatus,omitempty"`
+	// The type of the account. Valid values:
+	//
+	// - Normal: A standard account.
+	//
+	// - Super: A privileged account.
+	//
+	// - ReadOnly: A global read-only account.
+	//
 	// example:
 	//
 	// Normal
-	AccountType        *string                                                        `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	// The details of the database permissions that the account has.
 	DatabasePrivileges []*DescribeAccountsZonalResponseBodyAccountsDatabasePrivileges `json:"DatabasePrivileges,omitempty" xml:"DatabasePrivileges,omitempty" type:"Repeated"`
 }
 
@@ -235,10 +275,14 @@ func (s *DescribeAccountsZonalResponseBodyAccounts) Validate() error {
 }
 
 type DescribeAccountsZonalResponseBodyAccountsDatabasePrivileges struct {
+	// The permissions of the account.
+	//
 	// example:
 	//
 	// ReadOnly
 	AccountPrivilege *string `json:"AccountPrivilege,omitempty" xml:"AccountPrivilege,omitempty"`
+	// The name of the database.
+	//
 	// example:
 	//
 	// DBtest

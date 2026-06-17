@@ -22,6 +22,8 @@ type iDescribeBackupRegionsRequest interface {
 }
 
 type DescribeBackupRegionsRequest struct {
+	// The cluster ID.
+	//
 	// example:
 	//
 	// pc-uf64u64fln9039***

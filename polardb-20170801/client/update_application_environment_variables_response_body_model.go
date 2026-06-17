@@ -28,37 +28,50 @@ type iUpdateApplicationEnvironmentVariablesResponseBody interface {
 }
 
 type UpdateApplicationEnvironmentVariablesResponseBody struct {
+	// The application ID.
+	//
 	// example:
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The response status code.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Indicates whether the operation succeeded.
+	//
 	// example:
 	//
 	// true
 	Ok *bool `json:"Ok,omitempty" xml:"Ok,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 6A2EE5B4-CC9F-46E1-A747-E43BC9******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the gateway was restarted.
+	//
 	// example:
 	//
 	// true
 	Restarted *bool `json:"Restarted,omitempty" xml:"Restarted,omitempty"`
+	// The total number of environment variables for the application after the update.
+	//
 	// example:
 	//
 	// 1
-	TotalVariables *int32    `json:"TotalVariables,omitempty" xml:"TotalVariables,omitempty"`
-	UpdatedKeys    []*string `json:"UpdatedKeys,omitempty" xml:"UpdatedKeys,omitempty" type:"Repeated"`
+	TotalVariables *int32 `json:"TotalVariables,omitempty" xml:"TotalVariables,omitempty"`
+	// A list of the environment variable names that were added or updated.
+	UpdatedKeys []*string `json:"UpdatedKeys,omitempty" xml:"UpdatedKeys,omitempty" type:"Repeated"`
 }
 
 func (s UpdateApplicationEnvironmentVariablesResponseBody) String() string {

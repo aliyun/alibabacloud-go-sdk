@@ -22,15 +22,15 @@ type iDescribeLicenseOrdersResponseBody interface {
 }
 
 type DescribeLicenseOrdersResponseBody struct {
-	// The queried orders.
+	// The list of orders.
 	Items []*DescribeLicenseOrdersResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned on the current page.
+	// The number of records on the current page.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type DescribeLicenseOrdersResponseBody struct {
 	//
 	// 34458CD3-33E0-4624-BFEF-840C15******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -117,89 +117,89 @@ func (s *DescribeLicenseOrdersResponseBody) Validate() error {
 }
 
 type DescribeLicenseOrdersResponseBodyItems struct {
-	// The number of generated activation codes.
+	// The number of activation codes that have been generated.
 	//
 	// example:
 	//
 	// 10
 	ActivatedCodeCount *int32 `json:"ActivatedCodeCount,omitempty" xml:"ActivatedCodeCount,omitempty"`
-	// The maximum number of activation codes that you can apply for.
+	// The quota for requesting activation codes.
 	//
 	// example:
 	//
 	// 10
 	ActivationCodeQuota *int32 `json:"ActivationCodeQuota,omitempty" xml:"ActivationCodeQuota,omitempty"`
-	// The ID of the Alibaba Cloud order. The ID of a virtual order may be returned.
+	// The Alibaba Cloud order ID or virtual order ID.
 	//
 	// example:
 	//
 	// 227638319690519
 	AliyunOrderId *string `json:"AliyunOrderId,omitempty" xml:"AliyunOrderId,omitempty"`
-	// Indicates whether the SystemIdentifier parameter can be left empty when the system generates an activation code.
+	// Specifies whether the System Identifier can be left empty when an activation code is generated.
 	//
 	// example:
 	//
 	// false
 	AllowEmptySystemIdentifier *bool `json:"AllowEmptySystemIdentifier,omitempty" xml:"AllowEmptySystemIdentifier,omitempty"`
-	// The engine of the PolarDB cluster. Valid values: PG, Oracle, and MySQL.
+	// The database type, such as PG, Oracle, or MySQL.
 	//
 	// example:
 	//
 	// PG
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The time when the order was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2022-02-11 03:14:15
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// The time when the order was updated.
+	// The update time.
 	//
 	// example:
 	//
 	// 2022-02-11 03:14:15
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// Indicates whether the order is a virtual order. Pre-generation of activation codes is allowed for virtual orders.
+	// Indicates whether the order is a virtual order. Virtual orders allow for pre-generating activation codes.
 	//
 	// example:
 	//
 	// false
 	IsVirtualOrder *bool `json:"IsVirtualOrder,omitempty" xml:"IsVirtualOrder,omitempty"`
-	// Indicates whether the virtual order is frozen. Generation of activation codes is not allowed for frozen virtual orders.
+	// Indicates whether the virtual order is frozen. No more activation codes can be generated from a frozen order.
 	//
 	// example:
 	//
 	// false
 	IsVirtualOrderFrozen *bool `json:"IsVirtualOrderFrozen,omitempty" xml:"IsVirtualOrderFrozen,omitempty"`
-	// The type of the package. Valid values:
+	// The package type. Valid values:
 	//
-	// 	- single_node_subscribe: Single-node Edition (Subscription).
+	// - single_node_subscribe: single node (subscription)
 	//
-	// 	- single_node_long_term: Single-node Edition (Long-term).
+	// - single_node_long_term: single node (long-term)
 	//
-	// 	- primary_backup_subscribe: HA Edition (Subscription).
+	// - primary_backup_subscribe: primary/standby (subscription)
 	//
-	// 	- primary_backup_long_term: HA Edition (Long-term).
+	// - primary_backup_long_term: primary/standby (long-term)
 	//
-	// 	- pre_generation_long_term: Pre-generated (Long-term).
+	// - pre_generation_long_term: pre-generated (long-term)
 	//
 	// example:
 	//
 	// single_node_subscribe
 	PackageType *string `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
-	// The validity period of the package. Valid values: 1 year and 30 years.
+	// The validity period of the package. Common options are one year or long-term (30 years).
 	//
 	// example:
 	//
 	// 1 year
 	PackageValidity *string `json:"PackageValidity,omitempty" xml:"PackageValidity,omitempty"`
-	// The purchase channel. Valid values: aliyun_market and aliyun_public. aliyun_market indicates Alibaba Cloud Marketplace. aliyun_public indicates the PolarDB buy page.
+	// The purchase channel. Valid values: \\`aliyun_market\\` (Alibaba Cloud Marketplace) and \\`aliyun_public\\` (standard purchase page).
 	//
 	// example:
 	//
 	// aliyun_public
 	PurchaseChannel *string `json:"PurchaseChannel,omitempty" xml:"PurchaseChannel,omitempty"`
-	// The ID of the virtual order.
+	// The virtual order ID.
 	//
 	// example:
 	//

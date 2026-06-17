@@ -30,7 +30,7 @@ type DescribeActivationCodeDetailsRequest struct {
 	//
 	// 123
 	ActivationCodeId *int32 `json:"ActivationCodeId,omitempty" xml:"ActivationCodeId,omitempty"`
-	// The Alibaba Cloud order ID (including the virtual order ID).
+	// The Alibaba Cloud order ID, including virtual orders.
 	//
 	// This parameter is required.
 	//

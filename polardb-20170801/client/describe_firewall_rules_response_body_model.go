@@ -22,21 +22,34 @@ type iDescribeFirewallRulesResponseBody interface {
 }
 
 type DescribeFirewallRulesResponseBody struct {
+	// The cluster ID.
+	//
 	// example:
 	//
 	// pc-*****************
-	DBClusterId *string                                `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	Data        *DescribeFirewallRulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The result set.
+	Data *DescribeFirewallRulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The response message.
+	//
+	// > If the request is successful, **Successful*	- is returned. If the request fails, an error message is returned, such as an error code.
+	//
 	// example:
 	//
 	// Message
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 84D7DCD2-54F7-5BD2-B055-F5DE9D2B5264
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - **true**: The request was successful.
+	//
+	// - **false**: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -106,6 +119,7 @@ func (s *DescribeFirewallRulesResponseBody) Validate() error {
 }
 
 type DescribeFirewallRulesResponseBodyData struct {
+	// The list of firewall rules.
 	RuleList []*string `json:"RuleList,omitempty" xml:"RuleList,omitempty" type:"Repeated"`
 }
 

@@ -20,18 +20,26 @@ type iClonePolarFsBasicSnapshotRequest interface {
 }
 
 type ClonePolarFsBasicSnapshotRequest struct {
+	// The ID of the database cluster.
+	//
 	// example:
 	//
 	// pc-**************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The ID of the Polarlakebase instance.
+	//
 	// example:
 	//
 	// pfs-test*****
 	PolarFsInstanceId *string `json:"PolarFsInstanceId,omitempty" xml:"PolarFsInstanceId,omitempty"`
+	// The source path of the file resource. This parameter is empty if the type is local.
+	//
 	// example:
 	//
 	// /test
 	SourcePath *string `json:"SourcePath,omitempty" xml:"SourcePath,omitempty"`
+	// The destination path.
+	//
 	// example:
 	//
 	// /testclone

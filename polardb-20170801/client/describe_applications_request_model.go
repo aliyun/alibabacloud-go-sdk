@@ -26,30 +26,49 @@ type iDescribeApplicationsRequest interface {
 }
 
 type DescribeApplicationsRequest struct {
+	// A list of application IDs. If specified, this operation returns information only about the specified applications.
+	//
 	// example:
 	//
 	// pa-**************
 	ApplicationIds   *string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty"`
 	ApplicationTypes *string `json:"ApplicationTypes,omitempty" xml:"ApplicationTypes,omitempty"`
+	// The ID of the PolarDB instance. If specified, this operation returns information only about applications associated with this instance.
+	//
 	// example:
 	//
 	// pc-**************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Valid values:
+	//
+	// - **30**
+	//
+	// - **50**
+	//
+	// - **100**
+	//
+	// Default value: **30**.
+	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the region.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-beijing
-	RegionId *string                           `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Tag      []*DescribeApplicationsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// A list of tags. A tag is a key-value pair.
+	Tag []*DescribeApplicationsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DescribeApplicationsRequest) String() string {
@@ -137,10 +156,14 @@ func (s *DescribeApplicationsRequest) Validate() error {
 }
 
 type DescribeApplicationsRequestTag struct {
+	// The key of the tag.
+	//
 	// example:
 	//
 	// testKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag.
+	//
 	// example:
 	//
 	// testValue

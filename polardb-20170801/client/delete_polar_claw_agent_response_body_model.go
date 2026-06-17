@@ -24,26 +24,38 @@ type iDeletePolarClawAgentResponseBody interface {
 }
 
 type DeletePolarClawAgentResponseBody struct {
+	// The ID of the deleted agent.
+	//
 	// example:
 	//
 	// work
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	// The application ID.
+	//
 	// example:
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The status code.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The number of automatically removed bindings.
+	//
 	// example:
 	//
 	// 1
 	RemovedBindings *int32 `json:"RemovedBindings,omitempty" xml:"RemovedBindings,omitempty"`
+	// **The request ID.**
+	//
 	// example:
 	//
 	// 2281C6C9-CBAB-1AFD-8400-670750CF6025_2212

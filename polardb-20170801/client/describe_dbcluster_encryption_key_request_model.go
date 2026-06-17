@@ -16,10 +16,16 @@ type iDescribeDBClusterEncryptionKeyRequest interface {
 }
 
 type DescribeDBClusterEncryptionKeyRequest struct {
+	// A client token to ensure the idempotence of the request.
+	//
 	// example:
 	//
 	// 6000170000591aed949d0f******************
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The cluster ID.
+	//
+	// > Call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html)Operation to query the details of all clusters in your account, including cluster IDs.
+	//
 	// example:
 	//
 	// pc-***

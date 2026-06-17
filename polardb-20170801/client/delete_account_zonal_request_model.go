@@ -24,12 +24,16 @@ type iDeleteAccountZonalRequest interface {
 }
 
 type DeleteAccountZonalRequest struct {
+	// The account name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test_acc
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:

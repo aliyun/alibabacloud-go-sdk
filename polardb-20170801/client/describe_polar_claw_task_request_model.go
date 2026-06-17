@@ -16,12 +16,16 @@ type iDescribePolarClawTaskRequest interface {
 }
 
 type DescribePolarClawTaskRequest struct {
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The asynchronous task ID.
+	//
 	// This parameter is required.
 	//
 	// example:

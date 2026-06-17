@@ -26,6 +26,8 @@ type iModifySQLRateLimitingRulesRequest interface {
 }
 
 type ModifySQLRateLimitingRulesRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -36,12 +38,28 @@ type ModifySQLRateLimitingRulesRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The configuration parameters and their values for the SQL throttling rule to be modified. This must be a JSON string, and the parameter values must be strings. For example: `{"id":"test","enabled":"true","match_mode":"0","template":"dXBkYXRlIHQgc2V0IGEgPSAxIHdoZXJlIGlkID0gMQ==","user":"","database":"","waiting":1024,"endpoint":"[{"EndpointName":"pe-***********","EndpointType":"Cluster","DBEndpointDescription":"Cluster Address"}]","throttle_mode":0,"concurrency":1}`. The JSON string contains the following parameters:
+	//
+	// - `"id"`: Required. The name of the throttling rule. The name must meet the following requirements:
+	//
+	//   - Cannot exceed 30 characters.
+	//
+	//   - Must consist of uppercase letters, lowercase letters, and digits.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// {"id":"test","enabled":"true","match_mode":"0","template":"dXBkYXRlIHQgc2V0IGEgPSAxIHdoZXJlIGlkID0gMQ==","user":"","database":"","waiting":1024,"endpoint":"[{"EndpointName":"pe-***********","EndpointType":"Cluster","DBEndpointDescription":"Cluster Address"}]","throttle_mode":0,"concurrency":1}
 	RuleConfig *string `json:"RuleConfig,omitempty" xml:"RuleConfig,omitempty"`
+	// The name of the SQL throttling rule. Only one rule name can be specified at a time.
+	//
+	// > - Call the [DescribeSQLRateLimitingRules](https://help.aliyun.com/document_detail/212573.html) operation to view the details of all SQL throttling rules for the target cluster, including the rule names.
+	//
+	// >
+	//
+	// > - If the specified rule name does not exist in the cluster, the system automatically creates a new SQL throttling rule based on the rule name and the value of the `RuleConfig` parameter.
+	//
 	// This parameter is required.
 	//
 	// example:

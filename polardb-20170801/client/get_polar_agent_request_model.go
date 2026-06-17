@@ -20,20 +20,28 @@ type iGetPolarAgentRequest interface {
 }
 
 type GetPolarAgentRequest struct {
+	// Additional information, as a JSON string.
+	//
 	// example:
 	//
 	// {}
 	ExtraInfo *string `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
+	// The session query. Get this value from the return value of the "Start a digital human" API.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// c4d242f3-c909-4846-91d9-f84c238a9820
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// The session ID. Get this value from the return value of the "Start a digital human" API.
+	//
 	// example:
 	//
 	// c4d242f3-c909-4846-91d9-f84c238a9820
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// The product type source. Valid value: polardb-console.
+	//
 	// example:
 	//
 	// polardb-console

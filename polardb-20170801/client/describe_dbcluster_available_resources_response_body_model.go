@@ -16,9 +16,9 @@ type iDescribeDBClusterAvailableResourcesResponseBody interface {
 }
 
 type DescribeDBClusterAvailableResourcesResponseBody struct {
-	// The available zones of the cluster.
+	// The list of available resources.
 	AvailableZones []*DescribeDBClusterAvailableResourcesResponseBodyAvailableZones `json:"AvailableZones,omitempty" xml:"AvailableZones,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -66,15 +66,15 @@ func (s *DescribeDBClusterAvailableResourcesResponseBody) Validate() error {
 }
 
 type DescribeDBClusterAvailableResourcesResponseBodyAvailableZones struct {
-	// The region ID of the cluster.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The database engines that the available resources support.
+	// The list of available engines.
 	SupportedEngines []*DescribeDBClusterAvailableResourcesResponseBodyAvailableZonesSupportedEngines `json:"SupportedEngines,omitempty" xml:"SupportedEngines,omitempty" type:"Repeated"`
-	// The zone ID of the cluster.
+	// The zone ID.
 	//
 	// example:
 	//
@@ -183,19 +183,21 @@ func (s *DescribeDBClusterAvailableResourcesResponseBodyAvailableZonesSupportedE
 type DescribeDBClusterAvailableResourcesResponseBodyAvailableZonesSupportedEnginesAvailableResources struct {
 	// The edition of the cluster. Valid values:
 	//
-	// 	- **Normal**: Cluster Edition.
+	// - **Normal**: Cluster Edition.
 	//
-	// 	- **Basic**: Single Node Edition.
+	// - **Basic**: Single Node Edition.
 	//
-	// 	- **ArchiveNormal**: X-Engine.
+	// - **ArchiveNormal**: X-Engine.
 	//
-	// 	- **NormalMultimaster**: Multi-master Cluster (Database/Table) Edition.
+	// - **NormalMultimaster**: Multi-master Cluster (Database/Table) Edition.
 	//
-	// 	- **SENormal**: Standard Edition.
+	// - **SENormal**: Standard Edition.
 	//
-	// >- Only PolarDB for MySQL supports Single Node Edition.
+	// > 	- Only PolarDB for MySQL supports Single Node Edition.
 	//
-	// >- Only PolarDB for MySQL 8.0 supports X-Engine Edition and Multi-master Cluster (Database/Table) Edition.
+	// >
+	//
+	// > 	- Only PolarDB for MySQL 8.0 supports X-Engine Edition and Multi-master Cluster (Database/Table) Edition.
 	//
 	// example:
 	//

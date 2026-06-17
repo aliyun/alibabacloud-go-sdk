@@ -20,24 +20,32 @@ type iUnbindPolarClawAgentRequest interface {
 }
 
 type UnbindPolarClawAgentRequest struct {
+	// The agent ID to unbind.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// work
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The channel plugin ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// feishu
 	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
+	// The channel account ID. Omit this parameter to remove all bindings for the specified agent ID and channel plugin ID.
+	//
 	// example:
 	//
 	// default

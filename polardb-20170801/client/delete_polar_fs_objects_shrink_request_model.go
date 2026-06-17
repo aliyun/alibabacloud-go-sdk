@@ -18,12 +18,18 @@ type iDeletePolarFsObjectsShrinkRequest interface {
 }
 
 type DeletePolarFsObjectsShrinkRequest struct {
+	// The cluster ID.
+	//
 	// example:
 	//
 	// pc-***
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The list of objects to delete.
+	//
 	// This parameter is required.
 	ObjectsToDeleteShrink *string `json:"ObjectsToDelete,omitempty" xml:"ObjectsToDelete,omitempty"`
+	// The PolarLakebase instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

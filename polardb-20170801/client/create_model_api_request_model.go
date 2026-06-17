@@ -32,46 +32,86 @@ type iCreateModelApiRequest interface {
 }
 
 type CreateModelApiRequest struct {
+	// The model to which requests are forcibly routed.
+	//
+	// example:
+	//
+	// xxx
 	ForceModel *string `json:"ForceModel,omitempty" xml:"ForceModel,omitempty"`
+	// The gateway instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pg-xxxxxxxxxx
 	GwClusterId *string `json:"GwClusterId,omitempty" xml:"GwClusterId,omitempty"`
+	// The model API category. Valid values:
+	//
+	// - **text**
+	//
+	// - **embedding**
+	//
+	// - **rerank**
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// text
 	ModelCategory *string `json:"ModelCategory,omitempty" xml:"ModelCategory,omitempty"`
+	// The model API name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The path prefix.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// /test
 	PathPrefix *string `json:"PathPrefix,omitempty" xml:"PathPrefix,omitempty"`
+	// The model API protocol. Valid values:
+	//
+	// - **OpenAI**
+	//
+	// - **Anthropic**
+	//
+	// - **Model Studio**
+	//
+	// - **vLLM**
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// openai
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// Specifies whether to record input for billing.
+	//
 	// example:
 	//
 	// 10
 	RecordInput *string `json:"RecordInput,omitempty" xml:"RecordInput,omitempty"`
+	// Specifies whether to record output for billing.
+	//
 	// example:
 	//
 	// 10
 	RecordOutput *string `json:"RecordOutput,omitempty" xml:"RecordOutput,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// A list of routing rules, provided as a JSON array string.
+	//
 	// This parameter is required.
 	//
 	// example:

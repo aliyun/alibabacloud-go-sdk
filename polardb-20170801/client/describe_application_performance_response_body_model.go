@@ -24,23 +24,34 @@ type iDescribeApplicationPerformanceResponseBody interface {
 }
 
 type DescribeApplicationPerformanceResponseBody struct {
+	// The application cluster ID.
+	//
 	// example:
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The application type.
+	//
 	// example:
 	//
 	// supabase
 	ApplicationType *string `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
+	// The end time of the query. The time is in UTC and follows the `yyyy-MM-ddTHH:mm:ssZ` format.
+	//
 	// example:
 	//
 	// 2025-05-23T02:21:00Z
-	EndTime         *string                                                    `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The performance metrics.
 	PerformanceKeys *DescribeApplicationPerformanceResponseBodyPerformanceKeys `json:"PerformanceKeys,omitempty" xml:"PerformanceKeys,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CDB3258F-B5DE-43C4-8935-CBA0CA******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The start time of the query. The time is in UTC and follows the `yyyy-MM-ddTHH:mm:ssZ` format.
+	//
 	// example:
 	//
 	// 2022-11-15T16:00Z

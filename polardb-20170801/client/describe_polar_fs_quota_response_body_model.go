@@ -30,34 +30,48 @@ type iDescribePolarFsQuotaResponseBody interface {
 }
 
 type DescribePolarFsQuotaResponseBody struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned on the current page.
+	//
 	// example:
 	//
 	// 5
 	PageRecordCount *string `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	// The number of entries per page. Valid values: 5 to 50. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The path of the directory.
+	//
 	// example:
 	//
 	// /data
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The PolarFS instance ID.
+	//
 	// example:
 	//
 	// pfs-2ze0i74ka607*****
-	PolarFsInstanceId *string                                        `json:"PolarFsInstanceId,omitempty" xml:"PolarFsInstanceId,omitempty"`
-	PolicyItems       []*DescribePolarFsQuotaResponseBodyPolicyItems `json:"PolicyItems,omitempty" xml:"PolicyItems,omitempty" type:"Repeated"`
-	QuotaItems        []*DescribePolarFsQuotaResponseBodyQuotaItems  `json:"QuotaItems,omitempty" xml:"QuotaItems,omitempty" type:"Repeated"`
-	// Id of the request
+	PolarFsInstanceId *string `json:"PolarFsInstanceId,omitempty" xml:"PolarFsInstanceId,omitempty"`
+	// The details of the rules.
+	PolicyItems []*DescribePolarFsQuotaResponseBodyPolicyItems `json:"PolicyItems,omitempty" xml:"PolicyItems,omitempty" type:"Repeated"`
+	// The quota information.
+	QuotaItems []*DescribePolarFsQuotaResponseBodyQuotaItems `json:"QuotaItems,omitempty" xml:"QuotaItems,omitempty" type:"Repeated"`
+	// The request ID.
 	//
 	// example:
 	//
 	// 2FED790E-FB61-4721-8C1C-07C627******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 5
@@ -176,46 +190,78 @@ func (s *DescribePolarFsQuotaResponseBody) Validate() error {
 }
 
 type DescribePolarFsQuotaResponseBodyPolicyItems struct {
+	// The TTL of the access time. Unit: seconds.
+	//
 	// example:
 	//
 	// 7200
 	AccessTTL *int64 `json:"AccessTTL,omitempty" xml:"AccessTTL,omitempty"`
+	// The TTL of the change time. Unit: seconds.
+	//
 	// example:
 	//
 	// 7200
 	ChangeTTL *int64 `json:"ChangeTTL,omitempty" xml:"ChangeTTL,omitempty"`
+	// The rule description.
+	//
 	// example:
 	//
 	// NULL
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Indicates whether the rule is enabled. Valid values:
+	//
+	// - **true**: The rule takes effect immediately for new events. This is the default value.
+	//
+	// - **false**: The rule does not take effect for new events.
+	//
 	// example:
 	//
 	// false
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The glob pattern of paths to exclude.
+	//
+	// - The pattern must start with `/` and supports glob syntax, including `*`, `?`, and `**`.
+	//
 	// example:
 	//
 	// NULL
 	Exclude *string `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
+	// The maximum number of files in the directory.
+	//
 	// example:
 	//
 	// 77
 	FileCountLimit *int64 `json:"FileCountLimit,omitempty" xml:"FileCountLimit,omitempty"`
+	// The rule ID.
+	//
 	// example:
 	//
 	// 73
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The glob pattern for paths to include.
+	//
+	// - The pattern must start with `/` and supports glob syntax, including `*`, `?`, and `**`.
+	//
 	// example:
 	//
 	// /a*
 	Include *string `json:"Include,omitempty" xml:"Include,omitempty"`
+	// The rule name.
+	//
 	// example:
 	//
 	// xxxxx
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The priority of the quota rule.
+	//
 	// example:
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The maximum total size of files in the directory. Unit: GB.
+	//
+	// - The value must be greater than or equal to 1.
+	//
 	// example:
 	//
 	// 1
@@ -334,22 +380,32 @@ func (s *DescribePolarFsQuotaResponseBodyPolicyItems) Validate() error {
 }
 
 type DescribePolarFsQuotaResponseBodyQuotaItems struct {
+	// The capacity. Unit: bytes.
+	//
 	// example:
 	//
 	// 1073741824
 	Capacity *int64 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
+	// The total number of inodes.
+	//
 	// example:
 	//
 	// 100
 	Inodes *int64 `json:"Inodes,omitempty" xml:"Inodes,omitempty"`
+	// The directory path.
+	//
 	// example:
 	//
 	// /data
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The used capacity. Unit: bytes.
+	//
 	// example:
 	//
 	// 104857600
 	UsedCapacity *int64 `json:"UsedCapacity,omitempty" xml:"UsedCapacity,omitempty"`
+	// The number of used inodes.
+	//
 	// example:
 	//
 	// 1

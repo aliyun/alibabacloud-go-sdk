@@ -36,22 +36,30 @@ type iUpdateExtensionsRequest interface {
 }
 
 type UpdateExtensionsRequest struct {
+	// A client token used to ensure the idempotence of the request. The client generates this value. Make sure that the value is unique for each request. The token is case-sensitive and cannot exceed 64 ASCII characters.
+	//
 	// example:
 	//
 	// 6000170000591aed949d0f5********************
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The name of the source instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pc-**************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The name of the database.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// auto_test_db
 	DBNames *string `json:"DBNames,omitempty" xml:"DBNames,omitempty"`
+	// The extensions to update. Separate multiple extensions with commas (,).
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -66,10 +74,14 @@ type UpdateExtensionsRequest struct {
 	//
 	// 1234567890123456
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	//
 	// example:
 	//
 	// rg-**********
@@ -86,6 +98,8 @@ type UpdateExtensionsRequest struct {
 	//
 	// 7.7
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The ID of the virtual private cloud (VPC) where the endpoint is located.
+	//
 	// example:
 	//
 	// vpc-bp1qpo0kug3a20qqe****

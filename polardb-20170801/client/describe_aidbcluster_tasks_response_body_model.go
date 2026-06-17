@@ -24,25 +24,34 @@ type iDescribeAIDBClusterTasksResponseBody interface {
 }
 
 type DescribeAIDBClusterTasksResponseBody struct {
+	// The engine.
+	//
 	// example:
 	//
 	// polardb_ai
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The engine version.
+	//
 	// example:
 	//
 	// 3.1
-	EngineVersion *string                                      `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	Items         []*DescribeAIDBClusterTasksResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	// A list of model operators.
+	Items []*DescribeAIDBClusterTasksResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The PolarDB cluster ID.
+	//
 	// example:
 	//
 	// pc-2ze***
 	RelativeDBClusterId *string `json:"RelativeDBClusterId,omitempty" xml:"RelativeDBClusterId,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 925B84D9-CA72-432C-95CF-738C22******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task type.
+	//
 	// example:
 	//
 	// train
@@ -125,66 +134,98 @@ func (s *DescribeAIDBClusterTasksResponseBody) Validate() error {
 }
 
 type DescribeAIDBClusterTasksResponseBodyItems struct {
+	// The completion time.
+	//
 	// example:
 	//
 	// 2020-06-09T18:00:00Z
 	CompletedTime *string `json:"CompletedTime,omitempty" xml:"CompletedTime,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2025-03-25T09:37:10Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The node description.
+	//
 	// example:
 	//
 	// test
 	DBNodeDescription *string `json:"DBNodeDescription,omitempty" xml:"DBNodeDescription,omitempty"`
+	// The model operator instance ID.
+	//
 	// example:
 	//
 	// pm-2ze***
 	DBNodeId *string `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty"`
+	// The instance status. This parameter is not always returned.
+	//
 	// example:
 	//
 	// RUNNING
 	DBNodeStatus *string `json:"DBNodeStatus,omitempty" xml:"DBNodeStatus,omitempty"`
+	// The description of the instance status.
+	//
 	// example:
 	//
 	// RUNNING
 	DBNodeStatusDesc *string `json:"DBNodeStatusDesc,omitempty" xml:"DBNodeStatusDesc,omitempty"`
+	// The availability zone.
+	//
 	// example:
 	//
 	// cn-beijing-i
 	DataZoneId *string `json:"DataZoneId,omitempty" xml:"DataZoneId,omitempty"`
+	// The engine.
+	//
 	// example:
 	//
 	// polardb_ai
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The engine version.
+	//
 	// example:
 	//
 	// 3.1
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	// The model name.
+	//
 	// example:
 	//
 	// ***
 	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	// The model path.
+	//
 	// example:
 	//
 	// ***
 	ModelPath *string `json:"ModelPath,omitempty" xml:"ModelPath,omitempty"`
+	// The model source.
+	//
 	// example:
 	//
 	// public
 	ModelSource *string `json:"ModelSource,omitempty" xml:"ModelSource,omitempty"`
+	// The runtime parameters.
+	//
 	// example:
 	//
 	// xxx
 	RunningTimes *string `json:"RunningTimes,omitempty" xml:"RunningTimes,omitempty"`
+	// The start time.
+	//
 	// example:
 	//
 	// 2020-06-09T18:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The training mode.
+	//
 	// example:
 	//
 	// sft
 	TrainMode *string `json:"TrainMode,omitempty" xml:"TrainMode,omitempty"`
+	// The training type.
+	//
 	// example:
 	//
 	// lora

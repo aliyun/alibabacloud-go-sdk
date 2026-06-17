@@ -25,17 +25,17 @@ type iModifyDBClusterArchRequest interface {
 
 type ModifyDBClusterArchRequest struct {
 	AutoUseCoupon *bool `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
-	// The ID of the cluster.
+	// The cluster ID.
 	//
 	// example:
 	//
 	// pc-****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// Specifies whether to enable the hot standby storage cluster feature. Valid values:
+	// Specifies whether to enable a hot standby cluster. Valid values:
 	//
-	// 	- **on**: enables hot standby storage cluster.
+	// - **on**: Enables a hot standby cluster.
 	//
-	// 	- **equal**: Enable a peer-to-peer cluster.
+	// - **equal**: Enables a peer cluster.
 	//
 	// example:
 	//
@@ -47,17 +47,17 @@ type ModifyDBClusterArchRequest struct {
 	PromotionCode *string `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
 	// The region ID.
 	//
-	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query information about regions.
+	// > For more information, see [DescribeRegions](https://help.aliyun.com/document_detail/98041.html).
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The zone of the hot standby storage cluster. Valid values:
+	// The zone for the hot standby storage cluster. Valid values:
 	//
-	// 	- **auto*	- (default): The zone is automatically selected.
+	// - **auto*	- (default): The system automatically selects a zone.
 	//
-	// >  You can use the default value when HotStandbyCluster is set to on. If HotStandbyCluster is set to equal, specify the zone of the hot standby storage cluster. You can call the [DescribeZones](https://help.aliyun.com/document_detail/98041.html) operation to query information about zones.
+	// > The default value is valid only when \\`HotStandbyCluster\\` is set to \\`on\\`. A specific zone is required when \\`HotStandbyCluster\\` is set to \\`equal\\`. For more information about zones, see [DescribeZones](https://help.aliyun.com/document_detail/98041.html).
 	//
 	// example:
 	//

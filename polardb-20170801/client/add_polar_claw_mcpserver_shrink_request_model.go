@@ -18,12 +18,16 @@ type iAddPolarClawMCPServerShrinkRequest interface {
 }
 
 type AddPolarClawMCPServerShrinkRequest struct {
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The configuration object for the MCP server.
+	//
 	// example:
 	//
 	// {
@@ -40,6 +44,8 @@ type AddPolarClawMCPServerShrinkRequest struct {
 	//
 	// }
 	ServerConfigShrink *string `json:"ServerConfig,omitempty" xml:"ServerConfig,omitempty"`
+	// The unique identifier for the MCP server.
+	//
 	// This parameter is required.
 	//
 	// example:

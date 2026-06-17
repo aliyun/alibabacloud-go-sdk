@@ -14,7 +14,7 @@ type iEnableDBClusterDynamoDBResponseBody interface {
 }
 
 type EnableDBClusterDynamoDBResponseBody struct {
-  // Id of the request
+  // The ID of the request
   // 
   // example:
   // 

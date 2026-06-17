@@ -32,15 +32,15 @@ type iModifyDBClusterMigrationRequest interface {
 }
 
 type ModifyDBClusterMigrationRequest struct {
-	// The endpoints to be switched. The endpoints are in the JSON format.
+	// The specific endpoints to be switched. The value is a JSON string that specifies the endpoints to be swapped.
 	//
-	// > This parameter is valid when the SwapConnectionString parameter is set to true.
+	// > This parameter is valid only when SwapConnectionString is set to true.
 	//
 	// example:
 	//
 	// {"rm-2ze73el581cs*****.mysql.pre.rds.aliyuncs.com":"pc-2ze8200s298e*****.mysql.polardb.pre.rds.aliyuncs.com","rm-2ze73el581cs86*****.mysql.pre.rds.aliyuncs.com":"test-p*****.mysql.polardb.pre.rds.aliyuncs.com"}
 	ConnectionStrings *string `json:"ConnectionStrings,omitempty" xml:"ConnectionStrings,omitempty"`
-	// The ID of cluster.
+	// The ID of the PolarDB cluster.
 	//
 	// This parameter is required.
 	//
@@ -48,11 +48,11 @@ type ModifyDBClusterMigrationRequest struct {
 	//
 	// pc-**************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The ID of the new instance or new cluster. Valid values:
+	// The ID of the new instance or cluster. Valid values:
 	//
-	// 	- To perform a data migration, enter the ID of the PolarDB cluster.
+	// - Before the switch, enter the PolarDB cluster ID to perform a switch.
 	//
-	// 	- To perform a migration rollback, enter the ID of the ApsaraDB for RDS instance.
+	// - After the switch, enter the RDS instance ID to perform a rollback.
 	//
 	// This parameter is required.
 	//
@@ -65,7 +65,7 @@ type ModifyDBClusterMigrationRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The ID of the source ApsaraDB RDS instance.
+	// The ID of the source RDS instance.
 	//
 	// This parameter is required.
 	//
@@ -73,11 +73,11 @@ type ModifyDBClusterMigrationRequest struct {
 	//
 	// rm-************
 	SourceRDSDBInstanceId *string `json:"SourceRDSDBInstanceId,omitempty" xml:"SourceRDSDBInstanceId,omitempty"`
-	// Specifies whether to switch the endpoints. Valid values:
+	// Specifies whether to switch the endpoint. Valid values:
 	//
-	// 	- **true**: switches the endpoints. If you select this option, you do not need the change the endpoint in your applications.
+	// - **true**: Switches the endpoint. The application can connect to the database without changing its connection configuration.
 	//
-	// 	- **false**: does not switch the endpoints. If you select this option, you must specify the endpoint of the PolarDB cluster in your applications.
+	// - **false**: Does not switch the endpoint. The application must be changed to use the new PolarDB endpoint.
 	//
 	// Default value: **false**.
 	//

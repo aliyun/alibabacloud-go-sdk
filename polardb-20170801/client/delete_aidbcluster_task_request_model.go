@@ -26,16 +26,22 @@ type iDeleteAIDBClusterTaskRequest interface {
 }
 
 type DeleteAIDBClusterTaskRequest struct {
+	// The task ID.
+	//
 	// example:
 	//
 	// pm-2ze9***
 	DBClusterId  *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the PolarDB database instance for the AI model service.
+	//
 	// example:
 	//
 	// pc-2zejpr***

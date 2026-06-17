@@ -24,12 +24,22 @@ type iCheckConnectionStringRequest interface {
 }
 
 type CheckConnectionStringRequest struct {
+	// The prefix of the new connection string. The prefix must meet the following requirements:
+	//
+	// - It must consist of lowercase letters, digits, and periods (.).
+	//
+	// - It must start with a letter and end with a letter or a digit.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pc-****************.pg.polardb.pre.rds.aliyuncs.com:5432
 	ConnectionStringPrefix *string `json:"ConnectionStringPrefix,omitempty" xml:"ConnectionStringPrefix,omitempty"`
+	// The ID of the cluster.
+	//
+	// > Call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to view the details of all clusters in your account, including cluster IDs.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -24,12 +24,16 @@ type iDescribeDbClusterAttributeZonalRequest interface {
 }
 
 type DescribeDbClusterAttributeZonalRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pc-**************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// Specifies whether to obtain information about AI-related nodes.
+	//
 	// example:
 	//
 	// AI

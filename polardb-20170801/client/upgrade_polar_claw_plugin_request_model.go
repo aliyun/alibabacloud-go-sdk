@@ -20,24 +20,32 @@ type iUpgradePolarClawPluginRequest interface {
 }
 
 type UpgradePolarClawPluginRequest struct {
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pa-********************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The name and version of the new npm package.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// @larksuite/openclaw-lark@2026.4.7
 	NpmPackage *string `json:"NpmPackage,omitempty" xml:"NpmPackage,omitempty"`
+	// The ID of the plugin to upgrade.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// openclaw-lark
 	PluginId *string `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
+	// Specifies whether to restart the gateway after the upgrade. The default is true.
+	//
 	// example:
 	//
 	// true

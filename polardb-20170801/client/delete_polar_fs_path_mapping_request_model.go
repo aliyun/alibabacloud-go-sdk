@@ -18,13 +18,18 @@ type iDeletePolarFsPathMappingRequest interface {
 }
 
 type DeletePolarFsPathMappingRequest struct {
+	// The list of bucket-path mappings to delete.
 	CustomBucketPathList []*DeletePolarFsPathMappingRequestCustomBucketPathList `json:"CustomBucketPathList,omitempty" xml:"CustomBucketPathList,omitempty" type:"Repeated"`
+	// The ID of the cluster.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pc-****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The ID of the PolarFS instance.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -82,10 +87,14 @@ func (s *DeletePolarFsPathMappingRequest) Validate() error {
 }
 
 type DeletePolarFsPathMappingRequestCustomBucketPathList struct {
+	// The name of the bucket.
+	//
 	// example:
 	//
 	// Bucket
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	// The path in the bucket.
+	//
 	// example:
 	//
 	// /data

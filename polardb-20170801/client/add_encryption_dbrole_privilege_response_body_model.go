@@ -16,11 +16,15 @@ type iAddEncryptionDBRolePrivilegeResponseBody interface {
 }
 
 type AddEncryptionDBRolePrivilegeResponseBody struct {
+	// The cluster ID.
+	//
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query information about all clusters in a destination region, including cluster IDs.
+	//
 	// example:
 	//
 	// pc-bp10gr51qasnl****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

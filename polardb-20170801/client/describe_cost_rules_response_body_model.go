@@ -24,25 +24,34 @@ type iDescribeCostRulesResponseBody interface {
 }
 
 type DescribeCostRulesResponseBody struct {
+	// A list of cost rules.
 	Items []*DescribeCostRulesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of records on the current page.
+	//
 	// example:
 	//
 	// 30
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	// The number of entries returned per page.
+	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 24A1990B-4F6E-482B-B8CB-75C612******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 1
@@ -125,38 +134,56 @@ func (s *DescribeCostRulesResponseBody) Validate() error {
 }
 
 type DescribeCostRulesResponseBodyItems struct {
+	// The cost in points per one million cached tokens.
+	//
 	// example:
 	//
 	// 0
 	CacheCostPointsPerMillion *string `json:"CacheCostPointsPerMillion,omitempty" xml:"CacheCostPointsPerMillion,omitempty"`
+	// The cost rule ID.
+	//
 	// example:
 	//
 	// 924d450014e64e88ac6e8486f8e990**
 	CostRuleId *string `json:"CostRuleId,omitempty" xml:"CostRuleId,omitempty"`
+	// The time when the cost rule was created.
+	//
 	// example:
 	//
 	// 2026-01-04T16:09:29+08:00
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	// The time when the cost rule was last updated.
+	//
 	// example:
 	//
 	// 2024-10-16 16:46:20
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The gateway instance ID.
+	//
 	// example:
 	//
 	// pg-xxxxxxxxxx
 	GwClusterId *string `json:"GwClusterId,omitempty" xml:"GwClusterId,omitempty"`
+	// The cost in points per one million input tokens.
+	//
 	// example:
 	//
 	// 0
 	InputCostPointsPerMillion *string `json:"InputCostPointsPerMillion,omitempty" xml:"InputCostPointsPerMillion,omitempty"`
+	// The model name.
+	//
 	// example:
 	//
 	// gpt-4
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// The model service ID.
+	//
 	// example:
 	//
 	// ms-xxxxxxxxx
 	ModelServiceId *string `json:"ModelServiceId,omitempty" xml:"ModelServiceId,omitempty"`
+	// The cost in points per one million output tokens.
+	//
 	// example:
 	//
 	// 0

@@ -36,18 +36,34 @@ type iDescribeVpcsRequest interface {
 type DescribeVpcsRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page number. The value must be an integer that is greater than 0 and does not exceed the maximum value of the integer data type. Default value: **1**.
+	//
 	// example:
 	//
 	// 3
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values:
+	//
+	// - **30**
+	//
+	// - **50**
+	//
+	// - **100**
+	//
+	// Default value: **30**.
+	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The name of the cloud product.
+	//
 	// example:
 	//
 	// VPN
 	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	// The ID of the resource group to which the VPC belongs.
+	//
 	// example:
 	//
 	// rg-acfmzh544n3j3bi
@@ -55,10 +71,18 @@ type DescribeVpcsRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The ID of the VPC.
+	//
+	// > You can call the [DescribeVpcs](https://help.aliyun.com/document_detail/35739.html) operation to query the details of VPCs.
+	//
 	// example:
 	//
 	// vpc-*************
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The ID of the zone.
+	//
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query zones.
+	//
 	// example:
 	//
 	// cn-hangzhou-i

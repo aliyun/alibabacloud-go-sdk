@@ -18,18 +18,24 @@ type iDeletePolarClawAgentRequest interface {
 }
 
 type DeletePolarClawAgentRequest struct {
+	// The ID of the agent to delete. This parameter cannot be set to `main`.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// work
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// Specifies whether to delete the working directory and session files. Default value: `true`.
+	//
 	// example:
 	//
 	// true

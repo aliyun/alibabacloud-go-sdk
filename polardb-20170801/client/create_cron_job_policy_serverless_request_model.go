@@ -52,22 +52,34 @@ type iCreateCronJobPolicyServerlessRequest interface {
 }
 
 type CreateCronJobPolicyServerlessRequest struct {
+	// Specifies whether to enable no-activity suspension. Valid values:
+	//
+	// - **true**: Enables the feature.
+	//
+	// - **false*	- (default): Disables the feature.
+	//
 	// example:
 	//
 	// true
 	AllowShutDown *string `json:"AllowShutDown,omitempty" xml:"AllowShutDown,omitempty"`
+	// The Cron expression.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0 0 13 	- 	- ?
 	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pc-xxxxxxxxxx
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The end time of the task. Use the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -76,6 +88,8 @@ type CreateCronJobPolicyServerlessRequest struct {
 	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -84,46 +98,72 @@ type CreateCronJobPolicyServerlessRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The maximum number of read-only column store nodes. Valid values: 0 to 15.
+	//
 	// example:
 	//
 	// 1
 	ScaleApRoNumMax *string `json:"ScaleApRoNumMax,omitempty" xml:"ScaleApRoNumMax,omitempty"`
+	// The minimum number of read-only column store nodes. Valid values: 0 to 15.
+	//
 	// example:
 	//
 	// 1
 	ScaleApRoNumMin *string `json:"ScaleApRoNumMin,omitempty" xml:"ScaleApRoNumMin,omitempty"`
+	// The maximum number of PCUs. The value must be from 1 to 32.
+	//
 	// example:
 	//
 	// 3
 	ScaleMax *string `json:"ScaleMax,omitempty" xml:"ScaleMax,omitempty"`
+	// The minimum number of PolarDB Capacity Units (PCUs). The value must be from 0.25 to 32 and must be less than or equal to the value of ScaleMax.
+	//
 	// example:
 	//
 	// 1
 	ScaleMin *string `json:"ScaleMin,omitempty" xml:"ScaleMin,omitempty"`
+	// The maximum number of read-only nodes. Valid values: 0 to 15. The value must be greater than or equal to the value of ScaleRoNumMin.
+	//
 	// example:
 	//
 	// 4
 	ScaleRoNumMax *string `json:"ScaleRoNumMax,omitempty" xml:"ScaleRoNumMax,omitempty"`
+	// The minimum number of read-only nodes. Valid values: 0 to 15.
+	//
 	// example:
 	//
 	// 2
 	ScaleRoNumMin *string `json:"ScaleRoNumMin,omitempty" xml:"ScaleRoNumMin,omitempty"`
+	// The period of inactivity in minutes before the cluster is automatically paused. The value must be a multiple of 5 and range from 5 to 1440.
+	//
 	// example:
 	//
 	// 10
 	SecondsUntilAutoPause *string `json:"SecondsUntilAutoPause,omitempty" xml:"SecondsUntilAutoPause,omitempty"`
+	// The CPU utilization percentage that triggers a scale-up. Valid values: 40 to 100.
+	//
 	// example:
 	//
 	// 60
 	ServerlessRuleCpuEnlargeThreshold *string `json:"ServerlessRuleCpuEnlargeThreshold,omitempty" xml:"ServerlessRuleCpuEnlargeThreshold,omitempty"`
+	// The CPU utilization percentage that triggers a scale-down. Valid values: 10 to 100. The value of ServerlessRuleCpuEnlargeThreshold minus the value of this parameter must be 30 or greater.
+	//
 	// example:
 	//
 	// 30
 	ServerlessRuleCpuShrinkThreshold *string `json:"ServerlessRuleCpuShrinkThreshold,omitempty" xml:"ServerlessRuleCpuShrinkThreshold,omitempty"`
+	// The scaling sensitivity. Valid values:
+	//
+	// - normal: standard
+	//
+	// - flexible: flexible
+	//
 	// example:
 	//
 	// normal
 	ServerlessRuleMode *string `json:"ServerlessRuleMode,omitempty" xml:"ServerlessRuleMode,omitempty"`
+	// The start time of the task. Use the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in Coordinated Universal Time (UTC).
+	//
 	// example:
 	//
 	// 2020-11-14T00:00Z

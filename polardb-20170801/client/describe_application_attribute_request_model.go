@@ -14,6 +14,8 @@ type iDescribeApplicationAttributeRequest interface {
 }
 
 type DescribeApplicationAttributeRequest struct {
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:

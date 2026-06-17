@@ -24,26 +24,38 @@ type iEnablePolarClawCronJobResponseBody interface {
 }
 
 type EnablePolarClawCronJobResponseBody struct {
+  // **The application ID.**
+  // 
   // example:
   // 
   // pa-**************
   ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+  // The response status code.
+  // 
   // example:
   // 
   // 200
   Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+  // The ID of the enabled job.
+  // 
   // example:
   // 
   // 8006e51c-dab3-4602-bc69-4f728002c6ce
   JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+  // The response message.
+  // 
   // example:
   // 
   // successful
   Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+  // Indicates whether the operation was successful.
+  // 
   // example:
   // 
   // true
   Ok *bool `json:"Ok,omitempty" xml:"Ok,omitempty"`
+  // **The request ID.**
+  // 
   // example:
   // 
   // 2281C6C9-CBAB-1AFD-8400-670750CF6025_2212

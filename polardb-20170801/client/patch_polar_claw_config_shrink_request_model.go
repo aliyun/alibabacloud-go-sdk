@@ -18,12 +18,16 @@ type iPatchPolarClawConfigShrinkRequest interface {
 }
 
 type PatchPolarClawConfigShrinkRequest struct {
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// A JSON merge-patch object.
+	//
 	// example:
 	//
 	// {
@@ -44,6 +48,8 @@ type PatchPolarClawConfigShrinkRequest struct {
 	//
 	// }
 	ConfigPatchShrink *string `json:"ConfigPatch,omitempty" xml:"ConfigPatch,omitempty"`
+	// Specifies whether to restart the gateway after applying the patch. The default is `true`.
+	//
 	// example:
 	//
 	// true

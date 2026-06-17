@@ -16,7 +16,10 @@ type iDescribeCrossCloudLevelsResponseBody interface {
 }
 
 type DescribeCrossCloudLevelsResponseBody struct {
+	// The list of supported cross-cloud specifications.
 	CrossCloudLevelList []*DescribeCrossCloudLevelsResponseBodyCrossCloudLevelList `json:"CrossCloudLevelList,omitempty" xml:"CrossCloudLevelList,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// E56531A4-E552-40BA-9C58-137B80******
@@ -63,14 +66,23 @@ func (s *DescribeCrossCloudLevelsResponseBody) Validate() error {
 }
 
 type DescribeCrossCloudLevelsResponseBodyCrossCloudLevelList struct {
+	// The database engine type.
+	//
 	// example:
 	//
 	// MySQL
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
+	// The specification code.
+	//
 	// example:
 	//
 	// polar.mysql.g4.medium.c
 	LevelCode *string `json:"LevelCode,omitempty" xml:"LevelCode,omitempty"`
+	// The CPU and memory.
+	//
+	// example:
+	//
+	// 2 core 8 GB
 	LevelName *string `json:"LevelName,omitempty" xml:"LevelName,omitempty"`
 }
 

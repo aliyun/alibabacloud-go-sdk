@@ -38,28 +38,29 @@ type iModifyDBClusterAndNodesParametersRequest interface {
 }
 
 type ModifyDBClusterAndNodesParametersRequest struct {
+	// Specifies whether to clear binlog. This parameter is valid only when binlog is disabled.
 	ClearBinlog *bool `json:"ClearBinlog,omitempty" xml:"ClearBinlog,omitempty"`
-	// The ID of the cluster.
+	// The cluster ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// pc-****************
+	// pc-**********
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The IDs of nodes. You can specify this parameter, or leave this parameter empty. Separate multiple node IDs with commas (,).
+	// The IDs of the nodes. By setting this parameter, you can modify the parameters of the cluster and specified nodes. Separate multiple node IDs with commas (,).
 	//
-	// >  If you do not specify this parameter, only the cluster parameters are modified.
+	// > If this parameter is not specified, only the cluster parameters are modified.
 	//
 	// example:
 	//
-	// pi-****************,pi-**********,
+	// pi-**********,pi-**********
 	DBNodeIds *string `json:"DBNodeIds,omitempty" xml:"DBNodeIds,omitempty"`
-	// Specifies an immediate or scheduled task to modify parameters and restart the cluster. Default value: false. Valid values:
+	// Specifies whether to immediately or scheduledly modify parameters and restart the cluster. Valid values:
 	//
-	// 	- **false**: runs the kernel upgrade task in a scheduled manner.
+	// - **false*	- (default): scheduled execution
 	//
-	// 	- **true**: immediately runs the kernel upgrade task.
+	// - **true**: immediate execution
 	//
 	// example:
 	//
@@ -71,33 +72,33 @@ type ModifyDBClusterAndNodesParametersRequest struct {
 	//
 	// example:
 	//
-	// pcpg-**************
+	// pcpg-**********
 	ParameterGroupId *string `json:"ParameterGroupId,omitempty" xml:"ParameterGroupId,omitempty"`
-	// The JSON string for the parameter and its value.
+	// The JSON string that consists of parameters and their values.
 	//
 	// example:
 	//
 	// {"wait_timeout":"86","innodb_old_blocks_time":"10"}
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	// The latest start time to run the task. Specify the time in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
+	// The latest time to start the scheduled task. Specify the time in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
+	//
+	// > - The latest start time must be 30 minutes or more later than the earliest start time.
 	//
 	// >
 	//
-	// 	- The value of this parameter must be at least 30 minutes later than the value of the PlannedStartTime parameter.
-	//
-	// 	- By default, if you specify the `PlannedStartTime` parameter but do not specify the PlannedEndTime parameter, the latest start time of the task is set to a value that is calculated by using the following formula: `Value of the PlannedEndTime parameter + 30 minutes`. For example, if you set the `PlannedStartTime` parameter to `2021-01-14T09:00:00Z` and you do not specify the PlannedEndTime parameter, the latest start time of the task is set to `2021-01-14T09:30:00Z`.
+	// > - If you specify `PlannedStartTime` but not this parameter, the latest start time of the task is `the earliest start time + 30 minutes` by default. For example, if you set `PlannedStartTime` to `2021-01-14T09:00:00Z` and leave this parameter empty, the task will start no later than `2021-01-14T09:30:00Z`.
 	//
 	// example:
 	//
 	// 2021-01-14T09:30:00Z
 	PlannedEndTime *string `json:"PlannedEndTime,omitempty" xml:"PlannedEndTime,omitempty"`
-	// The earliest time to upgrade the specifications within the scheduled time period. Specify the time in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
+	// The earliest time to start the scheduled task. Specify the time in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
+	//
+	// > - The start time can be any time within the next 24 hours. For example, if the current time is `2021-01-14T09:00:00Z`, you can specify a time that ranges from `2021-01-14T09:00:00Z` to `2021-01-15T09:00:00Z`.
 	//
 	// >
 	//
-	// 	- The earliest start time of the task can be a point in time within the next 24 hours. For example, if the current time is `2021-01-14T09:00:00Z`, you can specify a point in the time range from `2021-01-14T09:00:00Z` to `2021-01-15T09:00:00Z`.
-	//
-	// 	- If this parameter is empty, the upgrade task is immediately performed.
+	// > - If you leave this parameter empty, the task is immediately executed.
 	//
 	// example:
 	//
@@ -105,7 +106,7 @@ type ModifyDBClusterAndNodesParametersRequest struct {
 	PlannedStartTime     *string `json:"PlannedStartTime,omitempty" xml:"PlannedStartTime,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The secondary clusters in the GDN to which the parameter settings are synchronized.
+	// The list of GDN standby clusters to which you want to synchronize the parameter settings.
 	//
 	// example:
 	//

@@ -16,10 +16,18 @@ type iModifyScheduleTaskResponseBody interface {
 }
 
 type ModifyScheduleTaskResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// E56531A4-E552-40BA-9C58-137B80******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The result of the request. Valid values:
+	//
+	// - **true**: The request was successful.
+	//
+	// - **false**: The request failed.
+	//
 	// example:
 	//
 	// True

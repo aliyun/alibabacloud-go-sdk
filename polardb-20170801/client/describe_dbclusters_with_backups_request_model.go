@@ -38,51 +38,55 @@ type iDescribeDBClustersWithBackupsRequest interface {
 }
 
 type DescribeDBClustersWithBackupsRequest struct {
-	// The name of the cluster. The name must meet the following requirements:
+	// The cluster name. The cluster name must meet the following requirements:
 	//
-	// 	- It cannot start with `http://` or `https://`.
+	// - It cannot start with `http://` or `https://`.
 	//
-	// 	- It must be 2 to 256 characters in length.
+	// - It must be 2 to 256 characters in length.
 	//
 	// example:
 	//
 	// test
 	DBClusterDescription *string `json:"DBClusterDescription,omitempty" xml:"DBClusterDescription,omitempty"`
-	// The ID of the cluster. If you need to specify multiple cluster IDs, separate the cluster IDs with commas (,).
+	// The ID of the cluster. You can specify multiple cluster IDs. Separate the IDs with a comma (,).
 	//
 	// example:
 	//
 	// pc-**************
 	DBClusterIds *string `json:"DBClusterIds,omitempty" xml:"DBClusterIds,omitempty"`
-	// The type of the database engine. Valid values:
+	// The database engine type. Valid values:
 	//
-	// 	- **MySQL**
+	// - **MySQL**
 	//
-	// 	- **PostgreSQL**
+	// - **PostgreSQL**
 	//
-	// 	- **Oracle**
+	// - **Oracle**
 	//
 	// example:
 	//
 	// MySQL
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
-	// The version of the database engine.
+	// The database engine version.
 	//
-	// 	- Valid values for the MySQL database engine:
+	// - Valid values for MySQL:
 	//
-	//     	- **5.6**
+	//   - **5.6**
 	//
-	//     	- **5.7**
+	//   - **5.7**
 	//
-	//     	- **8.0**
+	//   - **8.0**
 	//
-	// 	- Valid values for the PostgreSQL database engine:
+	// - Valid values for PostgreSQL:
 	//
-	//     	- **11**
+	//   - **11**
 	//
-	//     	- **14**
+	//   - **14**
 	//
-	// 	- Valid value for the Oracle database engine: **11**
+	// - Valid values for Oracle:
+	//
+	//   - **11**
+	//
+	//   - **14**
 	//
 	// example:
 	//
@@ -90,9 +94,9 @@ type DescribeDBClustersWithBackupsRequest struct {
 	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
 	// Specifies whether the cluster is deleted. Valid values:
 	//
-	// 	- **0**: not deleted
+	// - **0**: The cluster is not deleted.
 	//
-	// 	- **1**: deleted
+	// - **1**: The cluster is deleted.
 	//
 	// example:
 	//
@@ -100,19 +104,19 @@ type DescribeDBClustersWithBackupsRequest struct {
 	IsDeleted    *int32  `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. The value must be a positive integer that does not exceed the maximum value of the INTEGER data type. Default value: **1**.
+	// The page number. The value must be an integer that is greater than 0 and does not exceed the maximum value of the Integer data type. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values:
+	// The number of records on each page. Valid values:
 	//
-	// 	- **30**
+	// - **30**
 	//
-	// 	- **50**
+	// - **50**
 	//
-	// 	- **100**
+	// - **100**
 	//
 	// Default value: 30.
 	//
@@ -120,9 +124,9 @@ type DescribeDBClustersWithBackupsRequest struct {
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the cluster.
+	// The region ID.
 	//
-	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query information about regions.
+	// > Call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to view details about regions.
 	//
 	// This parameter is required.
 	//
@@ -130,7 +134,7 @@ type DescribeDBClustersWithBackupsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//

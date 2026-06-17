@@ -30,22 +30,38 @@ type iContinueDBClusterMigrationRequest interface {
 }
 
 type ContinueDBClusterMigrationRequest struct {
+	// The ID of the cluster.
+	//
+	// > Call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query information about all clusters in the destination region, including cluster IDs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pc-k2ju1lnl5i4ohv501
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// Specifies whether to skip the current error. Valid values:
+	//
+	// **true**: Skips the error.
+	//
+	// **false**: Does not skip the error.
+	//
 	// example:
 	//
 	// false
 	ForceSwitch  *string `json:"ForceSwitch,omitempty" xml:"ForceSwitch,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region.
+	//
+	// > For more information, see [DescribeRegions](https://help.aliyun.com/document_detail/98041.html).
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	//
 	// example:
 	//
 	// rg-************

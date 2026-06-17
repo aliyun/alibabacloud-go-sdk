@@ -42,61 +42,102 @@ type iDescribeAIDBClusterDatasetsResponseBody interface {
 }
 
 type DescribeAIDBClusterDatasetsResponseBody struct {
+	// The continuation token from the request.
+	//
 	// example:
 	//
 	// EFSDF-DF-***
 	ContinuationToken *string `json:"ContinuationToken,omitempty" xml:"ContinuationToken,omitempty"`
+	// The data service ID.
+	//
 	// example:
 	//
 	// pcs-2zeei***
 	DataServiceId *string `json:"DataServiceId,omitempty" xml:"DataServiceId,omitempty"`
+	// The dataset ID.
+	//
 	// example:
 	//
 	// pds-2ze88***
 	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	// The training mode. Valid values:
+	//
+	// - **sft**: Supervised Fine-Tuning (SFT).
+	//
+	// - **grpo**: Reinforcement Learning (RL).
+	//
+	// - **text**: Text generation.
+	//
 	// example:
 	//
 	// stf
 	DatasetMode *string `json:"DatasetMode,omitempty" xml:"DatasetMode,omitempty"`
+	// The dataset type. Valid values:
+	//
+	// - **train**: The training set.
+	//
+	// - **eval**: The evaluation set.
+	//
 	// example:
 	//
 	// train
-	DatasetType *string                                            `json:"DatasetType,omitempty" xml:"DatasetType,omitempty"`
-	Datasets    []*DescribeAIDBClusterDatasetsResponseBodyDatasets `json:"Datasets,omitempty" xml:"Datasets,omitempty" type:"Repeated"`
+	DatasetType *string `json:"DatasetType,omitempty" xml:"DatasetType,omitempty"`
+	// An array of dataset objects.
+	Datasets []*DescribeAIDBClusterDatasetsResponseBodyDatasets `json:"Datasets,omitempty" xml:"Datasets,omitempty" type:"Repeated"`
+	// The total number of files in the dataset.
+	//
 	// example:
 	//
 	// 6
 	FileCount *string `json:"FileCount,omitempty" xml:"FileCount,omitempty"`
+	// Indicates if more datasets are available. Valid values:
+	//
+	// - **true**: More datasets are available.
+	//
+	// - **false**: All datasets have been listed.
+	//
 	// example:
 	//
 	// true
 	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
+	// The token for retrieving the next page of results. This parameter is returned only if `IsTruncated` is `true`.
+	//
 	// example:
 	//
 	// EFSDF-DF-***
 	NextContinuationToken *string `json:"NextContinuationToken,omitempty" xml:"NextContinuationToken,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 30
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The relative DB cluster ID.
+	//
 	// example:
 	//
 	// pc-2ze88***
 	RelativeDBClusterId *string `json:"RelativeDBClusterId,omitempty" xml:"RelativeDBClusterId,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 2921D843-433A-5FB3-A03B-4EC093B219F8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total count of datasets.
+	//
 	// example:
 	//
 	// 6
 	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 6
@@ -260,42 +301,74 @@ func (s *DescribeAIDBClusterDatasetsResponseBody) Validate() error {
 }
 
 type DescribeAIDBClusterDatasetsResponseBodyDatasets struct {
+	// The bucket name.
+	//
 	// example:
 	//
 	// pcs-2ze22***-q7***
 	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
+	// The file size in bytes.
+	//
 	// example:
 	//
 	// 2845904
 	Capacity *string `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
+	// The time the file was created, in UTC and formatted as ISO 8601.
+	//
 	// example:
 	//
 	// 2025-11-06T06:50:43Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The dataset ID.
+	//
 	// example:
 	//
 	// pds-2ze88***
 	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	// The dataset type. Valid values:
+	//
+	// - **train**: The training set.
+	//
+	// - **eval**: The evaluation set.
+	//
 	// example:
 	//
 	// train
 	DatasetType *string `json:"DatasetType,omitempty" xml:"DatasetType,omitempty"`
+	// The file name.
+	//
 	// example:
 	//
 	// train-***.json
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The time the file was last modified, in UTC and formatted as ISO 8601.
+	//
 	// example:
 	//
 	// 2025-11-06T06:50:43Z
 	LastModified *string `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
+	// The file path.
+	//
 	// example:
 	//
 	// polardb_ai/datasets/train/sft/dataset01/train-***.json
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The storage type. The only valid value is:
+	//
+	// - **Standard**.
+	//
 	// example:
 	//
 	// Standard
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	// The training mode. Valid values:
+	//
+	// - **sft**: Supervised Fine-Tuning (SFT).
+	//
+	// - **grpo**: Reinforcement Learning (RL).
+	//
+	// - **text**: Text generation.
+	//
 	// example:
 	//
 	// stf

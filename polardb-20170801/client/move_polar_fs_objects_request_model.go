@@ -16,7 +16,10 @@ type iMovePolarFsObjectsRequest interface {
 }
 
 type MovePolarFsObjectsRequest struct {
+	// A list of files to move or rename.
 	ObjectsToMove []*MovePolarFsObjectsRequestObjectsToMove `json:"ObjectsToMove,omitempty" xml:"ObjectsToMove,omitempty" type:"Repeated"`
+	// The PolarFs instance ID.
+	//
 	// example:
 	//
 	// pfs-test*****
@@ -63,10 +66,14 @@ func (s *MovePolarFsObjectsRequest) Validate() error {
 }
 
 type MovePolarFsObjectsRequestObjectsToMove struct {
+	// The destination path.
+	//
 	// example:
 	//
 	// /test1
 	DestinationPath *string `json:"DestinationPath,omitempty" xml:"DestinationPath,omitempty"`
+	// The source path.
+	//
 	// example:
 	//
 	// /test

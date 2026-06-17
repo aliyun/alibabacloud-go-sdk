@@ -18,18 +18,24 @@ type iDisablePolarClawChannelRequest interface {
 }
 
 type DisablePolarClawChannelRequest struct {
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The unique ID of the channel.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// feishu
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// Specifies whether to restart the gateway after the channel is disabled. Defaults to true.
+	//
 	// example:
 	//
 	// true

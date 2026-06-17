@@ -22,26 +22,36 @@ type iDeletePolarClawChannelRequest interface {
 }
 
 type DeletePolarClawChannelRequest struct {
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The channel ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// feishu
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// The plugin ID. This parameter is required if `UninstallPlugin` is set to `true`.
+	//
 	// example:
 	//
 	// openclaw-lark
 	PluginId *string `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
+	// Specifies whether to restart the gateway after the channel is deleted. Default value: `true`.
+	//
 	// example:
 	//
 	// true
 	Restart *bool `json:"Restart,omitempty" xml:"Restart,omitempty"`
+	// Specifies whether to uninstall the channel plugin. Default value: `false`.
+	//
 	// example:
 	//
 	// true

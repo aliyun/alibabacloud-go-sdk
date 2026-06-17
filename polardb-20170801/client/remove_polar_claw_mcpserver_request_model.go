@@ -16,12 +16,16 @@ type iRemovePolarClawMCPServerRequest interface {
 }
 
 type RemovePolarClawMCPServerRequest struct {
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The ID of the MCP server to delete.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -30,9 +30,7 @@ type DeleteParameterGroupRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The parameter template ID.
 	//
-	//
-	//
-	// >  You can call the [DescribeParameterGroups](https://help.aliyun.com/document_detail/207178.html) operation to query the parameter template ID.
+	// > You can call the [DescribeParameterGroups](https://help.aliyun.com/document_detail/207178.html) operation to view parameter template IDs.
 	//
 	// This parameter is required.
 	//
@@ -42,9 +40,7 @@ type DeleteParameterGroupRequest struct {
 	ParameterGroupId *string `json:"ParameterGroupId,omitempty" xml:"ParameterGroupId,omitempty"`
 	// The region ID.
 	//
-	//
-	//
-	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query available regions.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to view available regions.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +48,7 @@ type DeleteParameterGroupRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//

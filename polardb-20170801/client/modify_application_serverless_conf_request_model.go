@@ -16,12 +16,16 @@ type iModifyApplicationServerlessConfRequest interface {
 }
 
 type ModifyApplicationServerlessConfRequest struct {
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The list of Serverless configurations.
+	//
 	// This parameter is required.
 	ServerlessConfList []*ModifyApplicationServerlessConfRequestServerlessConfList `json:"ServerlessConfList,omitempty" xml:"ServerlessConfList,omitempty" type:"Repeated"`
 }
@@ -66,14 +70,26 @@ func (s *ModifyApplicationServerlessConfRequest) Validate() error {
 }
 
 type ModifyApplicationServerlessConfRequestServerlessConfList struct {
+	// The type of the application sub-component.
+	//
+	// For Supabase, valid values are:
+	//
+	// - gateway
+	//
+	// - backend
+	//
 	// example:
 	//
 	// gateway
 	ComponentType *string `json:"ComponentType,omitempty" xml:"ComponentType,omitempty"`
+	// The maximum number of PCUs for a single node. Valid values: 0 to 16.
+	//
 	// example:
 	//
 	// 16
 	ScaleMax *string `json:"ScaleMax,omitempty" xml:"ScaleMax,omitempty"`
+	// The minimum number of PolarDB Capacity Units (PCUs) for a single node. Valid values: 0 to 16.
+	//
 	// example:
 	//
 	// 1

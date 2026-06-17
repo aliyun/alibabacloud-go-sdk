@@ -16,11 +16,13 @@ type iMovePolarFsObjectsResponseBody interface {
 }
 
 type MovePolarFsObjectsResponseBody struct {
+	// The PolarFs instance ID.
+	//
 	// example:
 	//
 	// pfs-2ze0i74ka607*****
 	PolarFsInstanceId *string `json:"PolarFsInstanceId,omitempty" xml:"PolarFsInstanceId,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

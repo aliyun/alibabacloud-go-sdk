@@ -16,10 +16,14 @@ type iListPolarClawBindingsShrinkRequest interface {
 }
 
 type ListPolarClawBindingsShrinkRequest struct {
+	// A list of agent IDs to filter the bindings.
+	//
 	// example:
 	//
 	// work,research
 	AgentListShrink *string `json:"AgentList,omitempty" xml:"AgentList,omitempty"`
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:

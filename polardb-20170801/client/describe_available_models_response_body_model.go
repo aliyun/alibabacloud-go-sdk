@@ -20,16 +20,21 @@ type iDescribeAvailableModelsResponseBody interface {
 }
 
 type DescribeAvailableModelsResponseBody struct {
+	// The database engine.
+	//
 	// example:
 	//
 	// polardb_ai
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The engine version.
+	//
 	// example:
 	//
 	// 3.0
-	EngineVersion *string                                     `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	Items         []*DescribeAvailableModelsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// Id of the request
+	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	// The list of models.
+	Items []*DescribeAvailableModelsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -95,23 +100,33 @@ func (s *DescribeAvailableModelsResponseBody) Validate() error {
 }
 
 type DescribeAvailableModelsResponseBodyItems struct {
+	// The required GPU configurations.
 	GpuRequired []*DescribeAvailableModelsResponseBodyItemsGpuRequired `json:"GpuRequired,omitempty" xml:"GpuRequired,omitempty" type:"Repeated"`
+	// The minimum number of CPU cores required.
+	//
 	// example:
 	//
 	// 8
 	MinimumCpu *int64 `json:"MinimumCpu,omitempty" xml:"MinimumCpu,omitempty"`
+	// The minimum memory required, in MiB.
+	//
 	// example:
 	//
 	// 16384
 	MinimumMemory *int64 `json:"MinimumMemory,omitempty" xml:"MinimumMemory,omitempty"`
+	// The model name.
+	//
 	// example:
 	//
 	// Qwen3-32B-GPTQ-Int4
 	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	// The model series.
+	//
 	// example:
 	//
 	// BERT
-	ModelSeries        *string   `json:"ModelSeries,omitempty" xml:"ModelSeries,omitempty"`
+	ModelSeries *string `json:"ModelSeries,omitempty" xml:"ModelSeries,omitempty"`
+	// The supported GPU models.
 	SupportedGpuModels []*string `json:"SupportedGpuModels,omitempty" xml:"SupportedGpuModels,omitempty" type:"Repeated"`
 }
 
@@ -191,10 +206,14 @@ func (s *DescribeAvailableModelsResponseBodyItems) Validate() error {
 }
 
 type DescribeAvailableModelsResponseBodyItemsGpuRequired struct {
+	// The minimum number of GPUs required.
+	//
 	// example:
 	//
 	// xx
 	GpuMinCount *string `json:"GpuMinCount,omitempty" xml:"GpuMinCount,omitempty"`
+	// The GPU model.
+	//
 	// example:
 	//
 	// xxx

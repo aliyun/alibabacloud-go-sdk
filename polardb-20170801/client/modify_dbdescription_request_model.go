@@ -26,7 +26,7 @@ type iModifyDBDescriptionRequest interface {
 }
 
 type ModifyDBDescriptionRequest struct {
-	// The ID of cluster.
+	// The cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -36,9 +36,9 @@ type ModifyDBDescriptionRequest struct {
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The description of the database. The description must meet the following requirements:
 	//
-	// 	- It cannot start with `http://` or `https://`.
+	// - Cannot start with `http://` or `https://`.
 	//
-	// 	- It must be 2 to 256 characters in length.
+	// - Must be 2 to 256 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type ModifyDBDescriptionRequest struct {
 	//
 	// DBDesc
 	DBDescription *string `json:"DBDescription,omitempty" xml:"DBDescription,omitempty"`
-	// The name of the database.
+	// The database name.
 	//
 	// This parameter is required.
 	//

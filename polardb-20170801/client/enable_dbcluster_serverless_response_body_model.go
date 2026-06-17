@@ -16,7 +16,7 @@ type iEnableDBClusterServerlessResponseBody interface {
 }
 
 type EnableDBClusterServerlessResponseBody struct {
-  // The ID of the serverless cluster.
+  // The serverless cluster ID.
   // 
   // example:
   // 

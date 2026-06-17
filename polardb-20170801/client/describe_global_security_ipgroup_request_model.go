@@ -28,7 +28,7 @@ type iDescribeGlobalSecurityIPGroupRequest interface {
 }
 
 type DescribeGlobalSecurityIPGroupRequest struct {
-	// The ID of the IP whitelist template.
+	// The ID of the IP allowlist template.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type DescribeGlobalSecurityIPGroupRequest struct {
 	GlobalSecurityGroupId *string `json:"GlobalSecurityGroupId,omitempty" xml:"GlobalSecurityGroupId,omitempty"`
 	OwnerAccount          *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the IP whitelist template.
+	// The region ID.
 	//
 	// This parameter is required.
 	//

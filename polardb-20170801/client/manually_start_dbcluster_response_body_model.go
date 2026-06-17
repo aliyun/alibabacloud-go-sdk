@@ -14,7 +14,7 @@ type iManuallyStartDBClusterResponseBody interface {
 }
 
 type ManuallyStartDBClusterResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

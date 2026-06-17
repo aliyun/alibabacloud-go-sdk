@@ -20,20 +20,27 @@ type iModifyApplicationParameterShrinkRequest interface {
 }
 
 type ModifyApplicationParameterShrinkRequest struct {
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The parameter name.
+	//
 	// example:
 	//
 	// name
 	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
+	// The parameter value.
+	//
 	// example:
 	//
 	// value
-	ParameterValue   *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
+	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
+	// The list of parameter names and values for modifying multiple parameters.
 	ParametersShrink *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 }
 

@@ -44,24 +44,29 @@ type iDescribeDBClusterServerlessConfResponseBody interface {
 }
 
 type DescribeDBClusterServerlessConfResponseBody struct {
+	// The maximum capacity, in PCUs, for a cluster in agile mode. In agile mode, the cluster consists of only serverless nodes.
+	//
+	// example:
+	//
+	// 32
 	AgileScaleMax *string `json:"AgileScaleMax,omitempty" xml:"AgileScaleMax,omitempty"`
-	// Whether to enable idle shutdown. Values:
+	// Indicates whether the no-activity suspension feature is enabled. Valid values:
 	//
-	// - **true**: Enable
+	// - **true**: Enabled
 	//
-	// - **false**: Disable (default)
+	// - **false**: Disabled (Default)
 	//
 	// example:
 	//
 	// true
 	AllowShutDown *string `json:"AllowShutDown,omitempty" xml:"AllowShutDown,omitempty"`
-	// Serverless cluster ID.
+	// The ID of the serverless cluster.
 	//
 	// example:
 	//
 	// pc-bp10gr51qasnl****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
@@ -79,59 +84,59 @@ type DescribeDBClusterServerlessConfResponseBody struct {
 	//
 	// 1
 	ScaleApRoNumMin *string `json:"ScaleApRoNumMin,omitempty" xml:"ScaleApRoNumMin,omitempty"`
-	// Maximum scaling limit for a single node. Range: 1 PCU~32 PCU.
+	// The maximum compute capacity of a single node in PCUs. Valid values: 1 to 32.
 	//
 	// example:
 	//
 	// 3
 	ScaleMax *string `json:"ScaleMax,omitempty" xml:"ScaleMax,omitempty"`
-	// Minimum scaling limit for a single node. Range: 1 PCU~31 PCU.
+	// The minimum compute capacity of a single node in PolarDB Capacity Units (PCUs). Valid values: 1 to 31.
 	//
 	// example:
 	//
 	// 1
 	ScaleMin *string `json:"ScaleMin,omitempty" xml:"ScaleMin,omitempty"`
-	// Maximum scaling limit for the number of read-only nodes. Range: 0~15.
+	// The maximum number of read-only nodes for scaling. Valid values: 0 to 15.
 	//
 	// example:
 	//
 	// 4
 	ScaleRoNumMax *string `json:"ScaleRoNumMax,omitempty" xml:"ScaleRoNumMax,omitempty"`
-	// Minimum scaling limit for the number of read-only nodes. Range: 0~15.
+	// The minimum number of read-only nodes for scaling. Valid values: 0 to 15.
 	//
 	// example:
 	//
 	// 2
 	ScaleRoNumMin *string `json:"ScaleRoNumMin,omitempty" xml:"ScaleRoNumMin,omitempty"`
-	// Detection duration for idle shutdown. Range: 300~86,400. Unit: seconds. The detection duration must be a multiple of 300 seconds.
+	// The detection period for no-activity suspension, in seconds. The value must be an integer from 300 to 86,400 and must be a multiple of 300.
 	//
 	// example:
 	//
 	// 10
 	SecondsUntilAutoPause *string `json:"SecondsUntilAutoPause,omitempty" xml:"SecondsUntilAutoPause,omitempty"`
-	// CPU upscale threshold.
+	// The CPU scale-up threshold.
 	//
 	// example:
 	//
 	// 60
 	ServerlessRuleCpuEnlargeThreshold *string `json:"ServerlessRuleCpuEnlargeThreshold,omitempty" xml:"ServerlessRuleCpuEnlargeThreshold,omitempty"`
-	// CPU downscale threshold.
+	// The CPU scale-down threshold.
 	//
 	// example:
 	//
 	// 30
 	ServerlessRuleCpuShrinkThreshold *string `json:"ServerlessRuleCpuShrinkThreshold,omitempty" xml:"ServerlessRuleCpuShrinkThreshold,omitempty"`
-	// Elasticity sensitivity. Values:
+	// The elasticity sensitivity. Valid values:
 	//
 	// - normal: Standard
 	//
-	// - flexible: Sensitive
+	// - flexible: Flexible
 	//
 	// example:
 	//
 	// normal
 	ServerlessRuleMode *string `json:"ServerlessRuleMode,omitempty" xml:"ServerlessRuleMode,omitempty"`
-	// Whether steady state is enabled. Values:
+	// Indicates whether the steady-state mode is enabled. Valid values:
 	//
 	// 1: Enabled
 	//
@@ -140,7 +145,12 @@ type DescribeDBClusterServerlessConfResponseBody struct {
 	// example:
 	//
 	// 1
-	Switchs                      *string `json:"Switchs,omitempty" xml:"Switchs,omitempty"`
+	Switchs *string `json:"Switchs,omitempty" xml:"Switchs,omitempty"`
+	// The maximum capacity, in PCUs, for a cluster in steady-state mode. Steady-state mode adds serverless capabilities to nodes that have fixed specifications.
+	//
+	// example:
+	//
+	// 16
 	TraditionalScaleMaxThreshold *string `json:"TraditionalScaleMaxThreshold,omitempty" xml:"TraditionalScaleMaxThreshold,omitempty"`
 }
 

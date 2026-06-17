@@ -28,43 +28,62 @@ type iModifyCostRuleRequest interface {
 }
 
 type ModifyCostRuleRequest struct {
+	// The cost in points per million cache tokens. Default value: 0.
+	//
 	// example:
 	//
 	// 0
 	CacheCostPointsPerMillion *string `json:"CacheCostPointsPerMillion,omitempty" xml:"CacheCostPointsPerMillion,omitempty"`
+	// The cost rule ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 924d450014e64e88ac6e8486f8e990**
 	CostRuleId *string `json:"CostRuleId,omitempty" xml:"CostRuleId,omitempty"`
+	// The gateway instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pg-xxxxxxxxxx
 	GwClusterId *string `json:"GwClusterId,omitempty" xml:"GwClusterId,omitempty"`
+	// The cost in points per million input tokens. Default value: 0.
+	//
 	// example:
 	//
 	// 0
 	InputCostPointsPerMillion *string `json:"InputCostPointsPerMillion,omitempty" xml:"InputCostPointsPerMillion,omitempty"`
+	// The model name, such as gpt-4 or qwen-turbo.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// gpt-4
 	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	// The model service ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ms-xxxxxx
 	ModelServiceId *string `json:"ModelServiceId,omitempty" xml:"ModelServiceId,omitempty"`
+	// The cost in points per million output tokens. Default value: 0.
+	//
 	// example:
 	//
 	// 10
 	OutputCostPointsPerMillion *string `json:"OutputCostPointsPerMillion,omitempty" xml:"OutputCostPointsPerMillion,omitempty"`
-	RegionId                   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ModifyCostRuleRequest) String() string {

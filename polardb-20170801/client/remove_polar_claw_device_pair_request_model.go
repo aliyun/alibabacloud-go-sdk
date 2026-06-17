@@ -16,12 +16,16 @@ type iRemovePolarClawDevicePairRequest interface {
 }
 
 type RemovePolarClawDevicePairRequest struct {
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The device ID.
+	//
 	// This parameter is required.
 	//
 	// example:

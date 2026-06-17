@@ -16,12 +16,16 @@ type iGetPolarClawConfigRequest interface {
 }
 
 type GetPolarClawConfigRequest struct {
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The path to the configuration section to retrieve, specified in JSONPath dot notation. If this parameter is empty, the entire configuration is returned.
+	//
 	// example:
 	//
 	// models

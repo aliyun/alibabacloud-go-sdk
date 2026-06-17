@@ -18,19 +18,28 @@ type iDeleteModelServiceRequest interface {
 }
 
 type DeleteModelServiceRequest struct {
+	// The ID of the gateway instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pg-xxxxxxxxxx
 	GwClusterId *string `json:"GwClusterId,omitempty" xml:"GwClusterId,omitempty"`
+	// The name of the model.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test
 	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DeleteModelServiceRequest) String() string {

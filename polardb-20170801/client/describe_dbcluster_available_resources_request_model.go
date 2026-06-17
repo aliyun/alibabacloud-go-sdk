@@ -40,33 +40,39 @@ type DescribeDBClusterAvailableResourcesRequest struct {
 	DBNodeClass *string `json:"DBNodeClass,omitempty" xml:"DBNodeClass,omitempty"`
 	// The type of the database engine. Valid values:
 	//
-	// 	- **MySQL**
+	// - **MySQL**
 	//
-	// 	- **PostgreSQL**
+	// - **PostgreSQL**
 	//
-	// 	- **Oracle**
+	// - **Oracle**
 	//
 	// example:
 	//
 	// MySQL
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
-	// The version of the database engine. Valid values for the MySQL database engine:
+	// The version of the database engine.
 	//
-	// 	- **5.6**
+	// Valid values for MySQL:
 	//
-	// 	- **5.7**
+	// - **5.6**
 	//
-	// 	- **8.0**
+	// - **5.7**
 	//
-	// Valid values for the PostgreSQL database engine:
+	// - **8.0**
 	//
-	// 	- **11**
+	// Valid values for PostgreSQL:
 	//
-	// 	- **14**
+	// - **11**
 	//
-	// Valid value for the Oracle database engine: **11**
+	// - **14**
 	//
-	// > This parameter is required when you specify the **DBType*	- parameter.
+	// Valid values for Oracle:
+	//
+	// - **11**
+	//
+	// - **14**
+	//
+	// > This parameter is required when the **DBType*	- parameter is specified.
 	//
 	// example:
 	//
@@ -74,11 +80,11 @@ type DescribeDBClusterAvailableResourcesRequest struct {
 	DBVersion    *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The billing method of the cluster. Valid values:
+	// The billing method. Valid values:
 	//
-	// 	- **Postpaid**: pay-as-you-go
+	// - **Postpaid**: pay-as-you-go (also known as postpaid or hourly billing).
 	//
-	// 	- **Prepaid**: subscription
+	// - **Prepaid**: subscription (also known as prepaid).
 	//
 	// This parameter is required.
 	//
@@ -86,7 +92,7 @@ type DescribeDBClusterAvailableResourcesRequest struct {
 	//
 	// Postpaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The region ID of the cluster. Default value: **cn-hangzhou**.
+	// The region ID. The default value is **cn-hangzhou**.
 	//
 	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query the available regions.
 	//
@@ -96,7 +102,7 @@ type DescribeDBClusterAvailableResourcesRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The zone ID of the cluster.
+	// The zone ID.
 	//
 	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query the available zones.
 	//

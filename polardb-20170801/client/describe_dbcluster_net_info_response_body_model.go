@@ -20,12 +20,16 @@ type iDescribeDBClusterNetInfoResponseBody interface {
 }
 
 type DescribeDBClusterNetInfoResponseBody struct {
+	// The network type of the cluster. The value is fixed as **VPC**.
+	//
 	// example:
 	//
 	// VPC
 	ClusterNetworkType *string                                                `json:"ClusterNetworkType,omitempty" xml:"ClusterNetworkType,omitempty"`
 	DBClusterNetInfos  *DescribeDBClusterNetInfoResponseBodyDBClusterNetInfos `json:"DBClusterNetInfos,omitempty" xml:"DBClusterNetInfos,omitempty" type:"Struct"`
 	DBNodeNetInfos     *DescribeDBClusterNetInfoResponseBodyDBNodeNetInfos    `json:"DBNodeNetInfos,omitempty" xml:"DBNodeNetInfos,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 72D99256-ACF1-5F86-831F-8CB53E9C23ED

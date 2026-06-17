@@ -18,18 +18,24 @@ type iEnablePolarClawPluginRequest interface {
 }
 
 type EnablePolarClawPluginRequest struct {
+  // The ID of the application.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // pa-**************
   ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+  // The ID of the plugin to enable.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // openclaw-lark
   PluginId *string `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
+  // Indicates whether to restart the gateway after the plugin is enabled. Default value: `true`.
+  // 
   // example:
   // 
   // true

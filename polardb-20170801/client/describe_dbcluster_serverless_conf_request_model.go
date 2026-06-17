@@ -22,7 +22,7 @@ type iDescribeDBClusterServerlessConfRequest interface {
 }
 
 type DescribeDBClusterServerlessConfRequest struct {
-	// Serverless cluster ID.
+	// The ID of the serverless cluster.
 	//
 	// This parameter is required.
 	//

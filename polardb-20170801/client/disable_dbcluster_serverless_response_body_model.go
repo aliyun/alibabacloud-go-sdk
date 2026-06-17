@@ -16,7 +16,7 @@ type iDisableDBClusterServerlessResponseBody interface {
 }
 
 type DisableDBClusterServerlessResponseBody struct {
-	// The ID of the serverless cluster.
+	// The serverless cluster ID.
 	//
 	// example:
 	//

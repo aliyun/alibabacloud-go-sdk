@@ -50,76 +50,116 @@ type iCreateAIDBClusterTaskRequest interface {
 }
 
 type CreateAIDBClusterTaskRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pc-****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The instance type.
+	//
 	// example:
 	//
 	// polar.pg.g6.4xlarge.guh
 	DBInstanceClass *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
+	// The ID of the training dataset. This parameter is required for fine-tuning.
+	//
 	// example:
 	//
 	// pds-2zetrain***
 	DatasetPath *string `json:"DatasetPath,omitempty" xml:"DatasetPath,omitempty"`
+	// The ID of the validation dataset. This parameter is required for evaluation.
+	//
 	// example:
 	//
 	// pds-2zetrain***
 	EvalDatasetPath *string `json:"EvalDatasetPath,omitempty" xml:"EvalDatasetPath,omitempty"`
+	// The type of model service. Valid values:
+	//
+	// - **aitrain**: For model operator tuning.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// aitrain
 	KubeType *string `json:"KubeType,omitempty" xml:"KubeType,omitempty"`
+	// The model name.
+	//
+	// - For a **preset model**, specify the model name.
+	//
+	// - For a **custom model**, specify the path to the model. This option is for models trained in a cold storage edition instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Qwen3-8B
 	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	// The model source. Valid values:
+	//
+	// - **public**: A preset model.
+	//
+	// - **custom**: A custom model.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// public
 	ModelSource *string `json:"ModelSource,omitempty" xml:"ModelSource,omitempty"`
+	// The type of the custom model.
+	//
 	// example:
 	//
 	// qwen3
 	ModelType    *string `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The runtime parameters, specified as a JSON string.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// {"split_dataset_ratio": 0.1,"train_mode": "grpo","train_type": "lora","num_epochs": 1,"batch_size": 2,"eval_batch_size": 2, "num_generations": 2, "learning_rate": "1e-6", "data_file_list": "test-00000-of-00001.jsonl#1000", "lora_rank": 8, "lora_alpha": 32, "external_plugins": "/plugin/train/plugin.py", "reward_funcs": "format,external_countdown", "gpu_memory_utilization": 0.4}
 	RunningParameter *string `json:"RunningParameter,omitempty" xml:"RunningParameter,omitempty"`
+	// The security group ID.
+	//
 	// example:
 	//
 	// sg-bp**************
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// The name of the task.
+	//
 	// example:
 	//
 	// xxxx
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// The VPC ID.
+	//
 	// example:
 	//
 	// vpc-*******************
 	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
+	// The vSwitch ID.
+	//
 	// example:
 	//
 	// vsw-*********************
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The zone ID.
+	//
 	// example:
 	//
 	// cn-hangzhou-k

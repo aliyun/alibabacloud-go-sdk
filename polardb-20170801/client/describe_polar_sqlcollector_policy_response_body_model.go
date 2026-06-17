@@ -18,7 +18,7 @@ type iDescribePolarSQLCollectorPolicyResponseBody interface {
 }
 
 type DescribePolarSQLCollectorPolicyResponseBody struct {
-	// The IDs of the clusters.
+	// The ID of the cluster.
 	//
 	// example:
 	//
@@ -32,9 +32,9 @@ type DescribePolarSQLCollectorPolicyResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the SQL Explorer feature is enabled. Valid values:
 	//
-	// 	- **Enable**
+	// - **Enable**: The feature is enabled.
 	//
-	// 	- **Disabled**
+	// - **Disabled**: The feature is disabled.
 	//
 	// example:
 	//

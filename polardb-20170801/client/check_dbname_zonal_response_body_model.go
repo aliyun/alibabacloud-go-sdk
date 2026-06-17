@@ -16,10 +16,14 @@ type iCheckDBNameZonalResponseBody interface {
 }
 
 type CheckDBNameZonalResponseBody struct {
+	// The name of the database.
+	//
 	// example:
 	//
 	// test_db
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// CDB3258F-B5DE-43C4-8935-CBA0CA******

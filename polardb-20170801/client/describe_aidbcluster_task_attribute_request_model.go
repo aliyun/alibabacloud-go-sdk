@@ -26,16 +26,24 @@ type iDescribeAIDBClusterTaskAttributeRequest interface {
 }
 
 type DescribeAIDBClusterTaskAttributeRequest struct {
+	// The ID of the cluster.
+	//
 	// example:
 	//
 	// pm-2ze99***
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The query mode. Valid value:
+	//
+	// - **RelatedAITask**: Returns the task details.
+	//
 	// example:
 	//
 	// RelatedAITask
 	DescribeType *string `json:"DescribeType,omitempty" xml:"DescribeType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing

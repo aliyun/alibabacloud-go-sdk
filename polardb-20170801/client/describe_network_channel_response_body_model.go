@@ -16,8 +16,9 @@ type iDescribeNetworkChannelResponseBody interface {
 }
 
 type DescribeNetworkChannelResponseBody struct {
+	// A list of network channels.
 	ChannelInfos []*DescribeNetworkChannelResponseBodyChannelInfos `json:"ChannelInfos,omitempty" xml:"ChannelInfos,omitempty" type:"Repeated"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -65,38 +66,56 @@ func (s *DescribeNetworkChannelResponseBody) Validate() error {
 }
 
 type DescribeNetworkChannelResponseBodyChannelInfos struct {
+	// The channel name.
+	//
 	// example:
 	//
 	// ch4
 	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
+	// The ID of the source cluster.
+	//
 	// example:
 	//
 	// pc-*************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The notes about the channel.
+	//
 	// example:
 	//
 	// test update
 	Notes *string `json:"Notes,omitempty" xml:"Notes,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the target cluster.
+	//
 	// example:
 	//
 	// pc-*************
 	TargetDBClusterId *string `json:"TargetDBClusterId,omitempty" xml:"TargetDBClusterId,omitempty"`
+	// The IP address of the target cluster.
+	//
 	// example:
 	//
 	// 33.*.*.240
 	TargetIp *string `json:"TargetIp,omitempty" xml:"TargetIp,omitempty"`
+	// The port of the target cluster.
+	//
 	// example:
 	//
 	// 3389
 	TargetPort *string `json:"TargetPort,omitempty" xml:"TargetPort,omitempty"`
+	// The type of the target cluster.
+	//
 	// example:
 	//
 	// polardb_for_postgresql
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	// The ID of the VPC that contains the endpoint.
+	//
 	// example:
 	//
 	// vpc-2ze13g2c6j7j2jl*******

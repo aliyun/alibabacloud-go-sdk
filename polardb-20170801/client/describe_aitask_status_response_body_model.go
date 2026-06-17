@@ -22,7 +22,7 @@ type iDescribeAITaskStatusResponseBody interface {
 }
 
 type DescribeAITaskStatusResponseBody struct {
-	// The name of the database account that is used to connect to the AI nodes in the cluster.
+	// The most recently configured account name.
 	//
 	// example:
 	//
@@ -42,19 +42,19 @@ type DescribeAITaskStatusResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The status of the PolarDB for AI feature. Valid values:
 	//
-	// 	- **1**: enabled.
+	// - **1**: Enabled
 	//
-	// 	- **2**: disabled.
+	// - **2**: Disabled
 	//
 	// example:
 	//
 	// 1
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The description of the status of the PolarDB for AI feature.
+	// A description of the feature status.
 	//
 	// example:
 	//
-	// Closed State
+	// 关闭状态
 	StatusName *string `json:"StatusName,omitempty" xml:"StatusName,omitempty"`
 }
 

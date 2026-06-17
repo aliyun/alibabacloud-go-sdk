@@ -16,7 +16,10 @@ type iDescribeDBClusterEncryptionKeyResponseBody interface {
 }
 
 type DescribeDBClusterEncryptionKeyResponseBody struct {
+	// The list of keys.
 	EncryptionKeyList []*DescribeDBClusterEncryptionKeyResponseBodyEncryptionKeyList `json:"EncryptionKeyList,omitempty" xml:"EncryptionKeyList,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 137ECCC0-920E-5B3B-9F8E-B81632108BBE
@@ -63,46 +66,82 @@ func (s *DescribeDBClusterEncryptionKeyResponseBody) Validate() error {
 }
 
 type DescribeDBClusterEncryptionKeyResponseBodyEncryptionKeyList struct {
+	// The alias of the key.
+	//
 	// example:
 	//
 	// alias/your_default_key
 	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	// The UID of the Alibaba Cloud account that created the key.
+	//
 	// example:
 	//
 	// 1****1
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// The scheduled time to delete the key. The format is yyyy-MM-ddTHH:mm:ssZ (UTC).
+	//
+	// - This field is empty if the key is not scheduled for deletion.
+	//
 	// example:
 	//
 	// 2026-05-08T08:14:16Z
 	DeleteDate *string `json:"DeleteDate,omitempty" xml:"DeleteDate,omitempty"`
+	// The description of the key.
+	//
 	// example:
 	//
 	// Description of the key
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The key ID.
+	//
 	// example:
 	//
 	// 51858179-afb3-4369-8329-*********
 	EncryptionKey *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
+	// The status of the key. Valid values:
+	//
+	// - Enabled: The key is enabled.
+	//
+	// - Disabled: The key is not enabled.
+	//
 	// example:
 	//
 	// Enabled
 	EncryptionKeyStatus *string `json:"EncryptionKeyStatus,omitempty" xml:"EncryptionKeyStatus,omitempty"`
+	// The type of the key. Valid values:
+	//
+	// - CMK: customer master key
+	//
+	// - ServiceKey: service key
+	//
 	// example:
 	//
 	// ServiceKey
 	KeyType *string `json:"KeyType,omitempty" xml:"KeyType,omitempty"`
+	// The purpose of the key.
+	//
 	// example:
 	//
 	// ENCRYPT/DECRYPT
 	KeyUsage *string `json:"KeyUsage,omitempty" xml:"KeyUsage,omitempty"`
+	// The expiration time of the key. The format is yyyy-MM-ddTHH:mm:ssZ (UTC).
+	//
 	// example:
 	//
 	// 2025-10-18T08:14:16Z
 	MaterialExpireTime *string `json:"MaterialExpireTime,omitempty" xml:"MaterialExpireTime,omitempty"`
+	// The source of the key.
+	//
 	// example:
 	//
 	// Aliyun_KMS
 	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
+	// The service that uses the key. Valid values:
+	//
+	// - TDE: transparent data encryption (TDE).
+	//
+	// - DiskEncryption: disk encryption.
+	//
 	// example:
 	//
 	// DiskEncryption

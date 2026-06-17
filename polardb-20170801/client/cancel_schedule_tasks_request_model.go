@@ -28,7 +28,7 @@ type iCancelScheduleTasksRequest interface {
 type CancelScheduleTasksRequest struct {
 	// The cluster ID.
 	//
-	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the information of all clusters that are deployed in a specified region, such as the cluster IDs.
+	// > Call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to view information about all clusters in the destination region, including cluster IDs.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type CancelScheduleTasksRequest struct {
 	DBClusterId  *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//
@@ -46,11 +46,13 @@ type CancelScheduleTasksRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the scheduled task that you want to cancel.
+	// The ID of the scheduled task to cancel.
 	//
-	// > 	- You can call the [DescribeScheduleTasks](https://help.aliyun.com/document_detail/199648.html) operation to query the details of all scheduled tasks that belong to the current account, such as the task IDs.
+	// > - Call the [DescribeScheduleTasks](https://help.aliyun.com/document_detail/199648.html) operation to view information about all scheduled tasks for your account, including task IDs.
 	//
-	// >	- You can cancel only the tasks whose status is `pending`.``
+	// >
+	//
+	// > - You can cancel only tasks that are in the pending state. The `Status` parameter for these tasks returns `pending`.
 	//
 	// This parameter is required.
 	//

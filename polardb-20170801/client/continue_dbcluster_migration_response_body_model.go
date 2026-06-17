@@ -14,6 +14,8 @@ type iContinueDBClusterMigrationResponseBody interface {
 }
 
 type ContinueDBClusterMigrationResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// D2056BBE-FF76-5825-AB63-5CB1ABB46218

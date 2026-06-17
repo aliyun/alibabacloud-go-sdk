@@ -26,19 +26,24 @@ type iDeleteDBClusterRequest interface {
 }
 
 type DeleteDBClusterRequest struct {
-	// The retention policy applied to the backup sets when the cluster is released. Valid values:
+	// The retention policy for backup sets when the cluster is deleted. Valid values:
 	//
-	// 	- **ALL**: permanently retains all backup sets.
+	// - **ALL**: permanently retains all backup sets.
 	//
-	// 	- **LATEST**: permanently retains the most recent backup set that is automatically created before the cluster is released.
+	// - **LATEST**: permanently retains the last backup set. The system automatically creates a new backup before the cluster is deleted.
 	//
-	// 	- **NONE**: does not retain backup sets.
+	// - **NONE**: does not retain any backup sets after the cluster is deleted.
 	//
 	// example:
 	//
 	// NONE
 	BackupRetentionPolicyOnClusterDeletion *string `json:"BackupRetentionPolicyOnClusterDeletion,omitempty" xml:"BackupRetentionPolicyOnClusterDeletion,omitempty"`
-	CloudProvider                          *string `json:"CloudProvider,omitempty" xml:"CloudProvider,omitempty"`
+	// The cloud service provider of the instance.
+	//
+	// example:
+	//
+	// ENS
+	CloudProvider *string `json:"CloudProvider,omitempty" xml:"CloudProvider,omitempty"`
 	// The cluster ID.
 	//
 	// This parameter is required.

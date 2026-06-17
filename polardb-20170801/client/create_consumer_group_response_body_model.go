@@ -16,11 +16,13 @@ type iCreateConsumerGroupResponseBody interface {
 }
 
 type CreateConsumerGroupResponseBody struct {
+	// The ID of the created consumer group.
+	//
 	// example:
 	//
 	// cg-xxxxxx
 	ConsumerGroupId *string `json:"ConsumerGroupId,omitempty" xml:"ConsumerGroupId,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

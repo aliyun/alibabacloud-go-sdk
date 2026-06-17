@@ -26,7 +26,7 @@ type iDescribeGlobalDatabaseNetworkRequest interface {
 }
 
 type DescribeGlobalDatabaseNetworkRequest struct {
-	// The ID of the GDN.
+	// The ID of the Global Database Network (GDN).
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type DescribeGlobalDatabaseNetworkRequest struct {
 	GDNId        *string `json:"GDNId,omitempty" xml:"GDNId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//

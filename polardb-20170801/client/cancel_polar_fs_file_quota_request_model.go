@@ -18,16 +18,22 @@ type iCancelPolarFsFileQuotaRequest interface {
 }
 
 type CancelPolarFsFileQuotaRequest struct {
+	// The ID of the PolarDB cluster that the application depends on.
+	//
 	// example:
 	//
 	// pc-**************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The file paths. Separate multiple paths with a comma (`,`).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// /path1,/path2
 	FilePathIds *string `json:"FilePathIds,omitempty" xml:"FilePathIds,omitempty"`
+	// The ID of the Polarlakebase instance.
+	//
 	// This parameter is required.
 	//
 	// example:

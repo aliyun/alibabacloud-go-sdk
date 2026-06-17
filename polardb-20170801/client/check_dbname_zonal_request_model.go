@@ -24,12 +24,16 @@ type iCheckDBNameZonalRequest interface {
 }
 
 type CheckDBNameZonalRequest struct {
+	// The ID of the cluster.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pc-****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The name of the database.
+	//
 	// This parameter is required.
 	//
 	// example:

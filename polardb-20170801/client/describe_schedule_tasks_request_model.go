@@ -42,7 +42,7 @@ type iDescribeScheduleTasksRequest interface {
 }
 
 type DescribeScheduleTasksRequest struct {
-	// The description of the cluster.
+	// The cluster description.
 	//
 	// example:
 	//
@@ -50,19 +50,19 @@ type DescribeScheduleTasksRequest struct {
 	DBClusterDescription *string `json:"DBClusterDescription,omitempty" xml:"DBClusterDescription,omitempty"`
 	// The cluster ID.
 	//
+	// > - You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of all clusters in a specific region, including cluster IDs.
+	//
 	// >
 	//
-	// 	- You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the information of all PolarDB clusters that are deployed in a specific region, such as the cluster IDs.
-	//
-	// 	- If you do not specify this parameter, all scheduled tasks on your clusters are queried.
+	// > - If this parameter is omitted, scheduled tasks for all clusters in your account are queried.
 	//
 	// example:
 	//
 	// pc-**************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The ID of the order.
+	// The order ID.
 	//
-	// >  The order ID can contain only digits.
+	// > The order ID can contain only digits.
 	//
 	// example:
 	//
@@ -70,43 +70,43 @@ type DescribeScheduleTasksRequest struct {
 	OrderId      *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number of the page to return. Set this parameter to an integer that is greater than 0. Default value: **1**.
+	// The number of the page to return. The value must be an integer that is greater than 0. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Valid values: **30**, **50**, and **100**. Default value: 30.
+	// The number of entries to return on each page. Valid values: **30*	- (default), **50**, and **100**.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The latest start time of the task that you specified when you created the scheduled task. The time is displayed in UTC.
+	// The latest start time of the task. The time is in UTC. If the task does not start by this time, it expires.
 	//
 	// example:
 	//
 	// 2021-01-28T12:30Z
 	PlannedEndTime *string `json:"PlannedEndTime,omitempty" xml:"PlannedEndTime,omitempty"`
-	// The earliest start time of the task that you specified when you created the scheduled task. The time is displayed in UTC.
+	// The earliest start time of the task. The time is in UTC.
 	//
 	// example:
 	//
 	// 2021-01-28T12:00Z
 	PlannedStartTime *string `json:"PlannedStartTime,omitempty" xml:"PlannedStartTime,omitempty"`
-	// The ID of the region.
+	// The region ID.
+	//
+	// > - You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query the available regions.
 	//
 	// >
 	//
-	// 	- You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query the region information of all clusters in a specific account.
-	//
-	// 	- If you do not specify this parameter, scheduled tasks on your clusters that are deployed in all regions are queried.
+	// > - If this parameter is omitted, scheduled tasks in all regions in your account are queried.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//
@@ -114,43 +114,43 @@ type DescribeScheduleTasksRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The state of the tasks that you want to query. Valid values:
+	// The task status. Valid values:
 	//
-	// 	- **pending**: The tasks are pending execution.
+	// - **pending**: The task is waiting to be executed.
 	//
-	// 	- **executing**: The tasks are being executed.
+	// - **executing**: The task is being executed.
 	//
-	// 	- **failure**: The tasks failed and need to be run again.
+	// - **failure**: The task failed and is waiting for a retry.
 	//
-	// 	- **finish**: The tasks are complete.
+	// - **finish**: The task is complete.
 	//
-	// 	- **cancel**: The tasks are canceled.
+	// - **cancel**: The task is canceled.
 	//
-	// 	- **expired**: The tasks are expired. The tasks are not started within the time periods that are specified to start the tasks.
+	// - **expired**: The task has expired because it did not start within the scheduled time window.
 	//
-	// 	- **rollback**: The tasks are being rolled back.
+	// - **rollback**: The task is being rolled back.
 	//
-	// >  If you do not specify this parameter, all scheduled tasks in all states are queried.
+	// > If this parameter is omitted, scheduled tasks in all states are queried.
 	//
 	// example:
 	//
 	// finish
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of scheduled tasks that you want to query. Valid values:
+	// The action of the scheduled task. Valid values:
 	//
-	// 	- **CreateDBNodes**
+	// - **CreateDBNodes**
 	//
-	// 	- **ModifyDBNodeClass**
+	// - **ModifyDBNodeClass**
 	//
-	// 	- **UpgradeDBClusterVersion**
+	// - **UpgradeDBClusterVersion**
 	//
-	// 	- **ModifyDBClusterPrimaryZone**
+	// - **ModifyDBClusterPrimaryZone**
+	//
+	// > 	- Task details are returned only if you specify the `PlannedStartTime` parameter when you call one of the preceding API operations. Otherwise, the `TimerInfos` field in the response is empty.
 	//
 	// >
 	//
-	// 	- If you specify the `PlannedStartTime` parameter when you call the four preceding operations, the details of each task are returned. Otherwise, an empty string is returned for the `TimerInfos` parameter.
-	//
-	// 	- If you do not specify this parameter, all types of scheduled tasks on you clusters are queried.
+	// > 	- If this parameter is omitted, scheduled tasks of all types are queried.
 	//
 	// example:
 	//

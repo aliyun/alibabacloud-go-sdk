@@ -30,45 +30,80 @@ type iModifyModelApiRequest interface {
 }
 
 type ModifyModelApiRequest struct {
+	// The gateway instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pg-xxxxxxxxxx
 	GwClusterId *string `json:"GwClusterId,omitempty" xml:"GwClusterId,omitempty"`
+	// The model API ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// mi-xxxxx
 	ModelApiId *string `json:"ModelApiId,omitempty" xml:"ModelApiId,omitempty"`
+	// The model category. Valid values:
+	//
+	// - `text`
+	//
+	// - `embedding`
+	//
+	// - `rerank`
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// text
 	ModelCategory *string `json:"ModelCategory,omitempty" xml:"ModelCategory,omitempty"`
+	// The API path prefix.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// /test
 	PathPrefix *string `json:"PathPrefix,omitempty" xml:"PathPrefix,omitempty"`
+	// The protocol. Valid values:
+	//
+	// - `openai`
+	//
+	// - `anthropic`
+	//
+	// - `Model Studio`
+	//
+	// - `vllm`
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// openai
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The number of input units.
+	//
 	// example:
 	//
 	// 10
 	RecordInput *string `json:"RecordInput,omitempty" xml:"RecordInput,omitempty"`
+	// The number of output units.
+	//
 	// example:
 	//
 	// 10
 	RecordOutput *string `json:"RecordOutput,omitempty" xml:"RecordOutput,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// A JSON array of routing rules, provided as a string.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -26,6 +26,8 @@ type iModifyEncryptionDBRolePrivilegeRequest interface {
 }
 
 type ModifyEncryptionDBRolePrivilegeRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -36,10 +38,14 @@ type ModifyEncryptionDBRolePrivilegeRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The role access policy.
+	//
 	// example:
 	//
 	// {"notEncryption":["alton"],"encryption":["alton01"]}
 	RolePrivilegeConfig *string `json:"RolePrivilegeConfig,omitempty" xml:"RolePrivilegeConfig,omitempty"`
+	// The role permission name.
+	//
 	// example:
 	//
 	// test

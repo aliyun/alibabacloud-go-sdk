@@ -8,6 +8,16 @@ import (
 	"github.com/alibabacloud-go/tea/dara"
 )
 
+// Summary:
+//
+// Aborts an upgrade or migration task.
+//
+// Description:
+//
+// - Aborts an upgrade or migration task.
+//
+// > Before you call this operation, create an upgrade task for the cluster by calling the [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) operation and setting the **CreationOption*	- parameter to **MigrationFromRDS**. For more information, see [Upgrade an ApsaraDB RDS for MySQL instance to a PolarDB for MySQL cluster](https://help.aliyun.com/document_detail/121582.html).
+//
 // @param request - AbortDBClusterMigrationRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -74,7 +84,7 @@ func (client *Client) AbortDBClusterMigrationWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 添加角色权限
+// Grants permissions to a role.
 //
 // @param request - AddEncryptionDBRolePrivilegeRequest
 //
@@ -142,7 +152,7 @@ func (client *Client) AddEncryptionDBRolePrivilegeWithContext(ctx context.Contex
 
 // Summary:
 //
-// 添加sql防火墙配置
+// Adds SQL firewall rules.
 //
 // @param request - AddFirewallRulesRequest
 //
@@ -214,7 +224,21 @@ func (client *Client) AddFirewallRulesWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 添加PolarClaw MCP Server
+// Adds an MCP server to a specified PolarClaw application.
+//
+// Description:
+//
+// ## Description
+//
+// - The `ApplicationId` and `ServerName` parameters are required.
+//
+// - The `ApplicationId` parameter specifies the application ID.
+//
+// - The `ServerName` parameter specifies the MCP server name to add.
+//
+// - A successful response returns the request ID, a message, a status code, the application ID, and the server name.
+//
+// - If the request fails, the API may return a 500 error code with a detailed error message.
 //
 // @param tmpReq - AddPolarClawMCPServerRequest
 //
@@ -272,7 +296,7 @@ func (client *Client) AddPolarClawMCPServerWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// 新增polarfs bucket路径
+// Adds a transparent acceleration path.
 //
 // @param request - AddPolarFsPathMappingRequest
 //
@@ -324,7 +348,23 @@ func (client *Client) AddPolarFsPathMappingWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 新增PolarFs Quota规则
+// Adds a new directory quota rule to a Polarlakebase instance.
+//
+// Description:
+//
+// ## Request description
+//
+// - This operation adds a new path policy—a directory quota rule—to a specified Polarlakebase instance.
+//
+// - The `Quotas` parameter is a list. Each element represents a new quota rule. You can add up to 11 rules in a single request.
+//
+// - Each rule must include the `Name` and `Include` fields. Other fields, such as `Description` and `Exclude`, are optional.
+//
+// - To define the quota limit, specify at least one of the following parameters: `SizeLimit`, `FileCountLimit`, `AccessTTL`, or `ChangeTTL`.
+//
+// - The `Priority` field specifies the rule priority. A larger value indicates higher priority. The default value is 0.
+//
+// - The `Enabled` field determines whether the rule takes effect immediately. The default value is true.
 //
 // @param request - AddPolarFsQuotaRequest
 //
@@ -376,7 +416,7 @@ func (client *Client) AddPolarFsQuotaWithContext(ctx context.Context, request *A
 
 // Summary:
 //
-// 添加SQL限流规则
+// Adds SQL throttling rules.
 //
 // @param request - AddSQLRateLimitingRulesRequest
 //
@@ -444,7 +484,13 @@ func (client *Client) AddSQLRateLimitingRulesWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 应用提示词策略到实例
+// Applies prompts to an application instance.
+//
+// Description:
+//
+// ## Request
+//
+// - Applies prompts to a specified application instance.
 //
 // @param tmpReq - ApplyApplicationPromptsRequest
 //
@@ -506,7 +552,7 @@ func (client *Client) ApplyApplicationPromptsWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// 批准PolarClaw设备配对
+// Approves a PolarClaw device pairing.
 //
 // @param request - ApprovePolarClawDevicePairRequest
 //
@@ -554,7 +600,7 @@ func (client *Client) ApprovePolarClawDevicePairWithContext(ctx context.Context,
 
 // Summary:
 //
-// 挂载PolarFS到PolarDB应用
+// Attaches a specified PolarLakeBase cold-storage instance to a PolarDB application.
 //
 // @param request - AttachApplicationPolarFSRequest
 //
@@ -610,7 +656,13 @@ func (client *Client) AttachApplicationPolarFSWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 绑定PolarClaw Agent
+// Binds a PolarClaw Agent to a channel.
+//
+// Description:
+//
+// ## Request
+//
+// This API associates an agent from a PolarClaw application with a communication channel. You specify the application with `ApplicationId`, the agent with `AgentId`, and the channel with `Channel`. You can optionally specify an account ID for the channel with `ChannelAccountId`.
 //
 // @param request - BindPolarClawAgentRequest
 //
@@ -734,7 +786,7 @@ func (client *Client) CancelActiveOperationTasksWithContext(ctx context.Context,
 
 // Summary:
 //
-// 取消周期任务策略
+// Cancels an auto triggered task policy.
 //
 // @param request - CancelCronJobPolicyServerlessRequest
 //
@@ -802,7 +854,17 @@ func (client *Client) CancelCronJobPolicyServerlessWithContext(ctx context.Conte
 
 // Summary:
 //
-// 取消目录的配额
+// Deletes quota rules for one or more file paths within a specified Polarlakebase instance.
+//
+// Description:
+//
+// ## Request description
+//
+// - The `PolarFsInstanceId` parameter is required. It specifies the Polarlakebase instance for the operation.
+//
+// - The `FilePathIds` parameter is required. It accepts a string containing the IDs of the file paths for which you want to delete quota rules. Ensure that each ID is valid and belongs to the specified Polarlakebase instance.
+//
+// - A single API call can delete quotas for multiple file paths. However, limit the number of paths in a single request to avoid performance issues.
 //
 // @param request - CancelPolarFsFileQuotaRequest
 //
@@ -854,7 +916,7 @@ func (client *Client) CancelPolarFsFileQuotaWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Cancels scheduled tasks that are not yet started.
+// Cancels scheduled tasks that have not started.
 //
 // @param request - CancelScheduleTasksRequest
 //
@@ -986,7 +1048,7 @@ func (client *Client) CheckAccountNameWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 检查PolarDB账号名称
+// Checks a PolarDB account name.
 //
 // @param request - CheckAccountNameZonalRequest
 //
@@ -1050,7 +1112,7 @@ func (client *Client) CheckAccountNameZonalWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 检查连接串
+// Checks the connection string of a cluster.
 //
 // @param request - CheckConnectionStringRequest
 //
@@ -1114,7 +1176,7 @@ func (client *Client) CheckConnectionStringWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Checks whether a database name is valid or whether the name is already used by another database in the current cluster.
+// Checks whether a database name is valid or if a database with the same name already exists in the current cluster.
 //
 // @param request - CheckDBNameRequest
 //
@@ -1178,7 +1240,7 @@ func (client *Client) CheckDBNameWithContext(ctx context.Context, request *Check
 
 // Summary:
 //
-// 检查PolarDB边缘云数据库名
+// Checks the name of a database in an edge cluster for PolarDB on ENS.
 //
 // @param request - CheckDBNameZonalRequest
 //
@@ -1242,7 +1304,7 @@ func (client *Client) CheckDBNameZonalWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries whether the cluster is authorized to use Key Management Service (KMS).
+// Checks whether a user is authorized to use Key Management Service (KMS).
 //
 // @param request - CheckKMSAuthorizedRequest
 //
@@ -1310,23 +1372,23 @@ func (client *Client) CheckKMSAuthorizedWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 用于检查PolarFS实例中配额设置的一致性状态。
+// Checks the consistency of quota settings in a PolarFS instance.
 //
 // Description:
 //
-// ## 请求说明
+// ## Description
 //
-// 该API允许用户验证指定PolarFS实例内的配额配置是否一致，包括但不限于目录路径上的存储容量和inode限制。如果存在不一致的情况，将返回具体的不一致路径列表及可能的错误信息。
+// This operation verifies the consistency of quota configurations within a specified PolarFS instance. These configurations include storage capacity and inode limits on directory paths. If inconsistencies are found, the operation returns a list of the inconsistent paths and any related error information.
 //
-// ### 注意事项
+// ### Usage notes
 //
-// - 确保`PolarFsInstanceId`参数正确无误地指向了目标PolarFS实例。
+// - Ensure that the `PolarFsInstanceId` parameter correctly identifies the target PolarFS instance.
 //
-// - 当系统检测到配额不一致时，除了返回`IsConsistent=false`外，还会提供`InconsistentPaths`数组来指示具体哪些路径存在问题。
+// - When the system detects quota inconsistencies, it returns `IsConsistent=false` and populates the `InconsistentPaths` array.
 //
-// - 如果请求成功但没有发现任何不一致，则`InconsistentPaths`为空数组，并且`IsConsistent=true`。
+// - If the request is successful and no inconsistencies are found, the `InconsistentPaths` array is empty and `IsConsistent` is set to `true`.
 //
-// - 错误处理：若请求过程中遇到权限不足、资源不存在等问题，请参考提供的错误码定义部分以获取更详细的错误信息。
+// - For errors such as insufficient permissions or a non-existent resource, see the error codes for details.
 //
 // @param request - CheckPolarFsQuotaConsistencyRequest
 //
@@ -1382,7 +1444,7 @@ func (client *Client) CheckPolarFsQuotaConsistencyWithContext(ctx context.Contex
 
 // Summary:
 //
-// Checks whether a service-linked role (SLR) is created.
+// Checks whether a service-linked role has been created.
 //
 // @param request - CheckServiceLinkedRoleRequest
 //
@@ -1438,7 +1500,13 @@ func (client *Client) CheckServiceLinkedRoleWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 支持基础版支持clone文件或目录快照
+// Clones a snapshot of a file or folder for a Basic Edition instance.
+//
+// Description:
+//
+// ## Request description
+//
+// - `PolarFsInstanceId` is required. It specifies the PolarDB instance for the operation.
 //
 // @param request - ClonePolarFsBasicSnapshotRequest
 //
@@ -1494,7 +1562,7 @@ func (client *Client) ClonePolarFsBasicSnapshotWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Disables the PolarDB for AI feature for a cluster.
+// Disables the PolarDB for AI feature.
 //
 // @param request - CloseAITaskRequest
 //
@@ -1562,11 +1630,11 @@ func (client *Client) CloseAITaskWithContext(ctx context.Context, request *Close
 //
 // Description:
 //
-//	  You can call this operation to cancel the migration task before data migration.
+// - Cancel the migration task before data migration.
 //
-//		- You can call this operation to perform the migration task after data migration.
+// - Perform the migration task after data migration.
 //
-// > Before you call this operation, ensure that a one-click upgrade task has been created for the cluster. You can call the [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) operation to create an upgrade task. Set the **CreationOption*	- parameter to **MigrationFromRDS**. For more information, see [Create a PolarDB for MySQL cluster by using the Migration from RDS method](https://help.aliyun.com/document_detail/121582.html).
+// > Before you call this operation, ensure that a one-click upgrade task has been created for the cluster. You can call the [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html)Operation to create an upgrade task. Set the **CreationOption**Parameter to **MigrationFromRDS**. For more information, see [Create a PolarDB for MySQL cluster by using the Migration from RDS method](https://help.aliyun.com/document_detail/121582.html).
 //
 // @param request - CloseDBClusterMigrationRequest
 //
@@ -1628,6 +1696,10 @@ func (client *Client) CloseDBClusterMigrationWithContext(ctx context.Context, re
 	return _result, _err
 }
 
+// Summary:
+//
+// Continues the current migration or upgrade task.
+//
 // @param request - ContinueDBClusterMigrationRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1702,7 +1774,7 @@ func (client *Client) ContinueDBClusterMigrationWithContext(ctx context.Context,
 
 // Summary:
 //
-// 创建AI集群
+// This topic describes how to create an AI cluster.
 //
 // @param request - CreateAIDBClusterRequest
 //
@@ -1777,8 +1849,8 @@ func (client *Client) CreateAIDBClusterWithContext(ctx context.Context, request 
 		query["ManagementMode"] = request.ManagementMode
 	}
 
-	if !dara.IsNil(request.ModeName) {
-		query["ModeName"] = request.ModeName
+	if !dara.IsNil(request.ModelName) {
+		query["ModelName"] = request.ModelName
 	}
 
 	if !dara.IsNil(request.OwnerAccount) {
@@ -1874,7 +1946,7 @@ func (client *Client) CreateAIDBClusterWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 创建数据集
+// Creates a dataset.
 //
 // @param request - CreateAIDBClusterDatasetRequest
 //
@@ -1954,7 +2026,7 @@ func (client *Client) CreateAIDBClusterDatasetWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 创建模型评测任务
+// Creates a model operator instance.
 //
 // @param request - CreateAIDBClusterTaskRequest
 //
@@ -2070,7 +2142,7 @@ func (client *Client) CreateAIDBClusterTaskWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 创建AI节点
+// Creates AI nodes.
 //
 // @param request - CreateAINodesRequest
 //
@@ -2214,7 +2286,7 @@ func (client *Client) CreateAccountWithContext(ctx context.Context, request *Cre
 
 // Summary:
 //
-// 创建边缘云账号
+// Creates an account for a PolarDB on ENS cluster.
 //
 // @param request - CreateAccountZonalRequest
 //
@@ -2310,7 +2382,7 @@ func (client *Client) CreateAccountZonalWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Generates a lightweight license activation code.
+// Generates activation codes for the lightweight version.
 //
 // @param request - CreateActivationCodeRequest
 //
@@ -2386,7 +2458,7 @@ func (client *Client) CreateActivationCodeWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 创建PolarDB应用
+// Creates an application attached to a PolarDB instance.
 //
 // @param tmpReq - CreateApplicationRequest
 //
@@ -2604,7 +2676,7 @@ func (client *Client) CreateApplicationWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// 创建PolarDB应用终端节点地址
+// Creates a connection address for a specified application.
 //
 // @param request - CreateApplicationEndpointAddressRequest
 //
@@ -2656,7 +2728,7 @@ func (client *Client) CreateApplicationEndpointAddressWithContext(ctx context.Co
 
 // Summary:
 //
-// 创建应用提示词策略
+// Creates a Prompt for an Application.
 //
 // @param request - CreateApplicationPromptRequest
 //
@@ -2716,13 +2788,15 @@ func (client *Client) CreateApplicationPromptWithContext(ctx context.Context, re
 //
 // Description:
 //
+// > - Each cluster can have up to three manually created backups at a time.
+//
 // >
 //
-//   - You can manually create up to three backups for each cluster.
+// > - If you receive the error message `Exceeding the daily backup times of this DB cluster`, this indicates that three manual backups already exist for your cluster. [Delete a backup](https://help.aliyun.com/document_detail/98101.html) before you call this operation again.
 //
-//   - The `Exceeding the daily backup times of this DB cluster` error message indicates that three manual backups already exist in your cluster. You must delete existing backups before you call this operation to manually create backups. For more information about how to delete backups, see [Delete backups](https://help.aliyun.com/document_detail/98101.html).
+// >
 //
-//   - After you call this operation, a backup task is created in the backend. The task may be time-consuming if you want to back up large amounts of data.
+// > - After you call this operation, a backup job is created in the background. The job may take a long time to complete if the data volume is large.
 //
 // @param request - CreateBackupRequest
 //
@@ -2786,7 +2860,7 @@ func (client *Client) CreateBackupWithContext(ctx context.Context, request *Crea
 
 // Summary:
 //
-// 创建批量任务
+// Creates a batch task.
 //
 // @param tmpReq - CreateBatchTaskRequest
 //
@@ -2807,6 +2881,10 @@ func (client *Client) CreateBatchTaskWithContext(ctx context.Context, tmpReq *Cr
 	}
 
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationType) {
+		query["ApplicationType"] = request.ApplicationType
+	}
+
 	if !dara.IsNil(request.InstanceIdsShrink) {
 		query["InstanceIds"] = request.InstanceIdsShrink
 	}
@@ -2852,7 +2930,7 @@ func (client *Client) CreateBatchTaskWithContext(ctx context.Context, tmpReq *Cr
 
 // Summary:
 //
-// 创建预算策略
+// Creates a budget policy.
 //
 // @param request - CreateBudgetPolicyRequest
 //
@@ -2920,7 +2998,7 @@ func (client *Client) CreateBudgetPolicyWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Creates a cluster that is used to store cold data.
+// Creates a cold storage instance.
 //
 // @param request - CreateColdStorageInstanceRequest
 //
@@ -2992,7 +3070,7 @@ func (client *Client) CreateColdStorageInstanceWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 创建消费者
+// Creates a consumer.
 //
 // @param request - CreateConsumerRequest
 //
@@ -3056,7 +3134,7 @@ func (client *Client) CreateConsumerWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// 创建消费者组
+// Creates a consumer group.
 //
 // @param request - CreateConsumerGroupRequest
 //
@@ -3116,7 +3194,7 @@ func (client *Client) CreateConsumerGroupWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 创建限流策略
+// Creates a cost rule.
 //
 // @param request - CreateCostRuleRequest
 //
@@ -3184,7 +3262,7 @@ func (client *Client) CreateCostRuleWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// serverless创建周期任务策略
+// Creates a scheduled task policy for a serverless cluster.
 //
 // @param request - CreateCronJobPolicyServerlessRequest
 //
@@ -3304,7 +3382,7 @@ func (client *Client) CreateCronJobPolicyServerlessWithContext(ctx context.Conte
 
 // Summary:
 //
-// CreateDBCluster.
+// Creates a db cluster.
 //
 // @param request - CreateDBClusterRequest
 //
@@ -3708,7 +3786,7 @@ func (client *Client) CreateDBClusterEndpointWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 边缘云创建链接地址接口
+// Edge Cloud API: Create Link Address
 //
 // @param request - CreateDBClusterEndpointZonalRequest
 //
@@ -3808,11 +3886,11 @@ func (client *Client) CreateDBClusterEndpointZonalWithContext(ctx context.Contex
 
 // Summary:
 //
-// Creates a public endpoint for the primary endpoint, the default cluster endpoint, or a custom cluster endpoint.
+// Creates a public endpoint for the primary endpoint, the default cluster endpoint, or a custom cluster endpoint of a PolarDB cluster.
 //
 // Description:
 //
-// > You can create a public endpoint for the primary endpoint, the default cluster endpoint, or a custom cluster endpoint.
+// > You can create a public endpoint for the primary endpoint, the default cluster endpoint, or a custom cluster endpoint of a PolarDB cluster.
 //
 // @param request - CreateDBEndpointAddressRequest
 //
@@ -3896,17 +3974,21 @@ func (client *Client) CreateDBEndpointAddressWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Creates a database link.
+// Creates a DBLink.
 //
 // Description:
 //
-// A database link can be used to connect two PolarDB for PostgreSQL(Compatible with Oracle) clusters, or connect a PolarDB for PostgreSQL(Compatible with Oracle) cluster to a user-created PostgreSQL database that is hosted on an Elastic Compute Service (ECS) instance. You can use database links to query data across clusters.
+// A DBLink provides connectivity between two PolarDB for PostgreSQL (Oracle-compatible) clusters, or between a PolarDB for PostgreSQL (Oracle-compatible) cluster and a self-managed PostgreSQL database on an Elastic Compute Service (ECS) instance. This lets you query data across clusters.
 //
-// > 	- You can create up to 10 database links for a cluster.
+// > - Each cluster supports a maximum of 10 DBLinks.
 //
-// > 	- Each database link connects a source cluster and a destination cluster.
+// >
 //
-// > 	- The source cluster and the destination cluster or the destination ECS instance must be located in the same region.
+// > - A DBLink consumes one DBLink quota from both the source cluster and the destination cluster.
+//
+// >
+//
+// > - The source cluster and the destination cluster or destination ECS instance must be in the same region.
 //
 // @param request - CreateDBLinkRequest
 //
@@ -4014,7 +4096,7 @@ func (client *Client) CreateDBLinkWithContext(ctx context.Context, request *Crea
 
 // Summary:
 //
-// Adds a read-only node to a PolarDB cluster.
+// Add read-only nodes to a PolarDB cluster.
 //
 // @param request - CreateDBNodesRequest
 //
@@ -4214,7 +4296,7 @@ func (client *Client) CreateDatabaseWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// 创建PolarDB边缘云数据库
+// Creates a database of an edge cluster for PolarDB on ENS.
 //
 // @param request - CreateDatabaseZonalRequest
 //
@@ -4306,7 +4388,7 @@ func (client *Client) CreateDatabaseZonalWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 创建插件
+// Creates one or more extensions.
 //
 // @param request - CreateExtensionsRequest
 //
@@ -4402,7 +4484,7 @@ func (client *Client) CreateExtensionsWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 创建网关地址
+// Creates a gateway instance.
 //
 // @param request - CreateGatewayRequest
 //
@@ -4486,7 +4568,11 @@ func (client *Client) CreateGatewayWithContext(ctx context.Context, request *Cre
 
 // Summary:
 //
-// Creates a global data network (GDN).
+// Create a new PolarLakeBase Global Data Network (GDN).
+//
+// Description:
+//
+// > This API creates a PolarFileSystem (PolarFS) Global Data Network (GDN). Do not confuse it with the CreateGlobalDatabaseNetwork API, which operates on a PolarDB cluster. Ensure you are using the correct API to avoid unintended actions.
 //
 // @param request - CreateGlobalDataNetworkRequest
 //
@@ -4566,11 +4652,11 @@ func (client *Client) CreateGlobalDataNetworkWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Creates a global database network (GDN).
+// Creates a new global database network (GDN).
 //
 // Description:
 //
-// >  A cluster belongs to only one GDN.
+// > A cluster can belong to only one GDN.
 //
 // @param request - CreateGlobalDatabaseNetworkRequest
 //
@@ -4726,7 +4812,7 @@ func (client *Client) CreateGlobalSecurityIPGroupWithContext(ctx context.Context
 
 // Summary:
 //
-// 创建路由规则
+// Creates a model API.
 //
 // @param request - CreateModelApiRequest
 //
@@ -4806,7 +4892,7 @@ func (client *Client) CreateModelApiWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// 创建模型服务
+// Creates a model service.
 //
 // @param request - CreateModelServiceRequest
 //
@@ -4890,7 +4976,7 @@ func (client *Client) CreateModelServiceWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 创建网络通道
+// Creates a network channel.
 //
 // @param request - CreateNetworkChannelRequest
 //
@@ -5046,13 +5132,13 @@ func (client *Client) CreateOrGetVirtualLicenseOrderWithContext(ctx context.Cont
 
 // Summary:
 //
-// Creates a parameter template.
+// Creates a PolarDB parameter template.
 //
 // Description:
 //
-// You can use parameter templates to manage multiple parameters at a time and apply existing parameters to a PolarDB cluster. For more information, see [Use a parameter template](https://help.aliyun.com/document_detail/207009.html).
+// Parameter templates allow you to manage cluster parameters in batches. You can use this feature to quickly apply parameter templates to PolarDB clusters. For more information, see [Use parameter templates](https://help.aliyun.com/document_detail/207009.html).
 //
-// > You can call this operation only on a PolarDB for MySQL cluster.
+// > This feature is available only for PolarDB for MySQL clusters.
 //
 // @param request - CreateParameterGroupRequest
 //
@@ -5136,7 +5222,13 @@ func (client *Client) CreateParameterGroupWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 创建PolarClaw Agent
+// Creates a PolarClaw Agent.
+//
+// Description:
+//
+// ## Description
+//
+// Use this operation to create a PolarClaw Agent. You can optionally specify an `emoji` and an `avatar`.
 //
 // @param request - CreatePolarClawAgentRequest
 //
@@ -5200,7 +5292,11 @@ func (client *Client) CreatePolarClawAgentWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 创建PolarClaw Channel
+// Creates a channel in PolarClaw.
+//
+// Description:
+//
+// ## Request
 //
 // @param tmpReq - CreatePolarClawChannelRequest
 //
@@ -5270,7 +5366,13 @@ func (client *Client) CreatePolarClawChannelWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// 创建PolarClaw定时任务
+// Creates a PolarClaw scheduled task.
+//
+// Description:
+//
+// ## Request
+//
+// Use this API to create a cron job. You can configure the job\\"s payload, execution frequency, timezone, target channel, recipients, and a failure alert mechanism.
 //
 // @param tmpReq - CreatePolarClawCronJobRequest
 //
@@ -5388,21 +5490,21 @@ func (client *Client) CreatePolarClawCronJobWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// 用于在指定PolarFS实例中创建新的目录。
+// Creates a new directory in a specified PolarFS instance.
 //
 // Description:
 //
-// ## 请求说明
+// ## Description
 //
-// - **Path**：需要创建的目录绝对路径。
+// - **Path**: The absolute path of the directory to create.
 //
-// - **Recursive**：是否递归创建父目录，默认为 `false`。
+// - **Recursive**: Specifies whether to recursively create parent directories. The default value is `false`.
 //
-// - 该接口支持在指定的PolarFS实例中创建单个或多个层级的目录结构。
+// - This operation creates a directory structure with one or more levels in the specified PolarFS instance.
 //
-// - 如果设置 `Recursive` 为 `true`，则会自动创建所有不存在的父目录。
+// - Setting `Recursive` to `true` automatically creates all non-existent parent directories.
 //
-// - 创建目录时，请确保具有足够的权限。
+// - Ensure that you have sufficient permissions to create the directory.
 //
 // @param request - CreatePolarFsObjectRequest
 //
@@ -5450,7 +5552,7 @@ func (client *Client) CreatePolarFsObjectWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 创建限流策略
+// Creates a rate limiting policy.
 //
 // @param request - CreateRateLimitPolicyRequest
 //
@@ -5514,7 +5616,7 @@ func (client *Client) CreateRateLimitPolicyWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Creates a service-linked role (SLR).
+// Ccreates a service-linked role.
 //
 // @param request - CreateServiceLinkedRoleRequest
 //
@@ -5654,7 +5756,7 @@ func (client *Client) CreateStoragePlanWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 删除AI集群实例
+// Deletes an AI cluster instance.
 //
 // @param request - DeleteAIDBClusterRequest
 //
@@ -5698,7 +5800,7 @@ func (client *Client) DeleteAIDBClusterWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 删除数据集
+// Deletes a dataset.
 //
 // @param request - DeleteAIDBClusterDatasetRequest
 //
@@ -5766,7 +5868,7 @@ func (client *Client) DeleteAIDBClusterDatasetWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 删除任务实例
+// Deletes a task instance.
 //
 // @param request - DeleteAIDBClusterTaskRequest
 //
@@ -5834,7 +5936,7 @@ func (client *Client) DeleteAIDBClusterTaskWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 删除ai实例子节点
+// Deletes child nodes of an AI instance.
 //
 // @param request - DeleteAINodesRequest
 //
@@ -5882,11 +5984,11 @@ func (client *Client) DeleteAINodesWithContext(ctx context.Context, request *Del
 
 // Summary:
 //
-// Deletes a database account for a PolarDB cluster.
+// Deletes a PolarDB database account.
 //
 // Description:
 //
-// > Before you call this operation, make sure that the cluster is in the Running state. Otherwise, the operation fails.
+// > The cluster must be in the running state for this operation to succeed.
 //
 // @param request - DeleteAccountRequest
 //
@@ -5950,7 +6052,7 @@ func (client *Client) DeleteAccountWithContext(ctx context.Context, request *Del
 
 // Summary:
 //
-// 删除PolarDB边缘云集群账号
+// Deletes an account from an edge cluster for PolarDB on ENS.
 //
 // @param request - DeleteAccountZonalRequest
 //
@@ -6014,7 +6116,17 @@ func (client *Client) DeleteAccountZonalWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 删除PolarDB应用
+// Deletes the specified PolarDB application. This operation does not delete the associated PolarDB instance.
+//
+// Description:
+//
+// ## Important
+//
+// - This operation deletes a PolarDB application but does not affect the associated PolarDB instance.
+//
+// - The delete operation is irreversible and permanently deletes the application. Proceed with caution.
+//
+// - Ensure that you have backed up all critical data before proceeding.Before you delete an application, make sure that you have backed up all important data.
 //
 // @param request - DeleteApplicationRequest
 //
@@ -6058,7 +6170,7 @@ func (client *Client) DeleteApplicationWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 删除PolarDB应用终端地址
+// Deletes a specified connection address for a PolarDB application.
 //
 // @param request - DeleteApplicationEndpointAddressRequest
 //
@@ -6110,7 +6222,7 @@ func (client *Client) DeleteApplicationEndpointAddressWithContext(ctx context.Co
 
 // Summary:
 //
-// 删除应用提示词策略
+// Deletes an application prompt.
 //
 // @param request - DeleteApplicationPromptRequest
 //
@@ -6234,7 +6346,7 @@ func (client *Client) DeleteBackupWithContext(ctx context.Context, request *Dele
 
 // Summary:
 //
-// 删除预算策略
+// Deletes a cost budget policy.
 //
 // @param request - DeleteBudgetPolicyRequest
 //
@@ -6286,7 +6398,7 @@ func (client *Client) DeleteBudgetPolicyWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 删除消费者
+// Deletes a consumer.
 //
 // @param request - DeleteConsumerRequest
 //
@@ -6338,7 +6450,7 @@ func (client *Client) DeleteConsumerWithContext(ctx context.Context, request *De
 
 // Summary:
 //
-// 删除消费者组
+// Deletes a consumer group.
 //
 // @param request - DeleteConsumerGroupRequest
 //
@@ -6390,7 +6502,7 @@ func (client *Client) DeleteConsumerGroupWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 删除限流策略
+// Deletes a cost rule.
 //
 // @param request - DeleteCostRuleRequest
 //
@@ -6442,7 +6554,7 @@ func (client *Client) DeleteCostRuleWithContext(ctx context.Context, request *De
 
 // Summary:
 //
-// Releases a pay-as-you-go PolarDB cluster.
+// Deletes a pay-as-you-go PolarDB cluster.
 //
 // @param request - DeleteDBClusterRequest
 //
@@ -6510,7 +6622,7 @@ func (client *Client) DeleteDBClusterWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// Releases a custom cluster endpoint of a PolarDB cluster.
+// Deletes a custom cluster endpoint for a PolarDB cluster.
 //
 // @param request - DeleteDBClusterEndpointRequest
 //
@@ -6578,7 +6690,7 @@ func (client *Client) DeleteDBClusterEndpointWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 删除PolarDB 边缘云集群的链接地址
+// Deletes a cluster endpoint of a PolarDB for Edge cluster.
 //
 // @param request - DeleteDBClusterEndpointZonalRequest
 //
@@ -6646,9 +6758,11 @@ func (client *Client) DeleteDBClusterEndpointZonalWithContext(ctx context.Contex
 //
 // Description:
 //
-// > 	- You can delete a public-facing or classic network endpoint of the primary endpoint, the default cluster endpoint, or a custom cluster endpoint.
+// > - You can delete a public-facing or classic network endpoint of the primary endpoint, the default cluster endpoint, or a custom cluster endpoint.
 //
-// > 	- Classic network endpoints are supported only on the China site (aliyun.com). Therefore, you do not need to delete classic network endpoints on the International site (alibabacloud.com).
+// >
+//
+// > - Classic network endpoints are supported only on the China site (aliyun.com). Therefore, you do not need to delete classic network endpoints on the International site (alibabacloud.com).
 //
 // @param request - DeleteDBEndpointAddressRequest
 //
@@ -6716,7 +6830,7 @@ func (client *Client) DeleteDBEndpointAddressWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Deletes a database link from a PolarDB for PostgreSQL (Compatible with Oracle) cluster.
+// Deletes a DBLink from a PolarDB for PostgreSQL (Compatible with Oracle) cluster.
 //
 // @param request - DeleteDBLinkRequest
 //
@@ -6780,7 +6894,7 @@ func (client *Client) DeleteDBLinkWithContext(ctx context.Context, request *Dele
 
 // Summary:
 //
-// Deletes a read-only node from a PolarDB cluster.
+// Deletes read-only nodes from a PolarDB cluster.
 //
 // @param request - DeleteDBNodesRequest
 //
@@ -6926,7 +7040,7 @@ func (client *Client) DeleteDatabaseWithContext(ctx context.Context, request *De
 
 // Summary:
 //
-// 删除PolarDB边缘云集群数据库
+// Deletes a database from a PolarDB edge cloud cluster.
 //
 // @param request - DeleteDatabaseZonalRequest
 //
@@ -6990,7 +7104,7 @@ func (client *Client) DeleteDatabaseZonalWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 删除角色
+// Deletes a role.
 //
 // @param request - DeleteEncryptionDBRolePrivilegeRequest
 //
@@ -7054,7 +7168,7 @@ func (client *Client) DeleteEncryptionDBRolePrivilegeWithContext(ctx context.Con
 
 // Summary:
 //
-// 删除插件
+// Deletes an extension.
 //
 // @param request - DeleteExtensionsRequest
 //
@@ -7138,7 +7252,7 @@ func (client *Client) DeleteExtensionsWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 删除sql防火墙
+// Deletes the specified SQL firewall rules.
 //
 // @param request - DeleteFirewallRulesRequest
 //
@@ -7202,7 +7316,7 @@ func (client *Client) DeleteFirewallRulesWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 删除网关实例
+// Deletes a gateway instance.
 //
 // @param request - DeleteGatewayRequest
 //
@@ -7250,7 +7364,11 @@ func (client *Client) DeleteGatewayWithContext(ctx context.Context, request *Del
 
 // Summary:
 //
-// Deletes a global data network (GDN).
+// Deletes a Polarlakebase Global Data Network (GDN).
+//
+// Description:
+//
+// > This API deletes the Global Data Network (GDN) for PolarFS. Do not confuse it with the DeleteGlobalDatabaseNetwork API, which applies to PolarDB clusters.
 //
 // @param request - DeleteGlobalDataNetworkRequest
 //
@@ -7298,7 +7416,7 @@ func (client *Client) DeleteGlobalDataNetworkWithContext(ctx context.Context, re
 //
 // Description:
 //
-// >  You can delete a GDN only when the GDN includes only a primary cluster.
+// > A GDN can be deleted only if it contains a single primary cluster.
 //
 // @param request - DeleteGlobalDatabaseNetworkRequest
 //
@@ -7442,7 +7560,7 @@ func (client *Client) DeleteGlobalSecurityIPGroupWithContext(ctx context.Context
 
 // Summary:
 //
-// Deletes a data masking rule.
+// Deletes the specified data masking rules.
 //
 // @param request - DeleteMaskingRulesRequest
 //
@@ -7494,7 +7612,7 @@ func (client *Client) DeleteMaskingRulesWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 删除路由规则
+// Deletes a model API.
 //
 // @param request - DeleteModelApiRequest
 //
@@ -7546,7 +7664,7 @@ func (client *Client) DeleteModelApiWithContext(ctx context.Context, request *De
 
 // Summary:
 //
-// 删除模型服务
+// Deletes a specified model service.
 //
 // @param request - DeleteModelServiceRequest
 //
@@ -7598,7 +7716,7 @@ func (client *Client) DeleteModelServiceWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 删除网络通道
+// Deletes a network channel.
 //
 // @param request - DeleteNetworkChannelRequest
 //
@@ -7678,13 +7796,13 @@ func (client *Client) DeleteNetworkChannelWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Deletes a parameter template from a PolarDB cluster.
+// Deletes a PolarDB parameter template.
 //
 // Description:
 //
-// You can use parameter templates to manage multiple parameters at a time and quickly apply existing parameters to a PolarDB cluster. For more information, see [Use a parameter template](https://help.aliyun.com/document_detail/207009.html).
+// Parameter templates help you manage cluster parameters in batches. You can quickly apply a template to PolarDB clusters. For more information, see [Use parameter templates](https://help.aliyun.com/document_detail/207009.html).
 //
-// >  When you delete a parameter template, the parameter settings that are applied to PolarDB clusters are not affected.
+// > Deleting a parameter template does not affect PolarDB clusters to which the template has been applied.
 //
 // @param request - DeleteParameterGroupRequest
 //
@@ -7752,7 +7870,15 @@ func (client *Client) DeleteParameterGroupWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 删除PolarClaw Agent
+// This operation removes an agent and its associated bindings from a specified PolarClaw.
+//
+// Description:
+//
+// ## Usage notes
+//
+// - A successful operation returns the ID of the deleted agent and the number of removed bindings.
+//
+// - Ensure you provide the correct target `AgentId`. An incorrect ID can cause the operation to fail or affect an unintended agent.
 //
 // @param request - DeletePolarClawAgentRequest
 //
@@ -7804,7 +7930,13 @@ func (client *Client) DeletePolarClawAgentWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 删除PolarClaw Channel
+// Deletes a PolarClaw Channel.
+//
+// Description:
+//
+// ## Description
+//
+// Use the `DeletePolarClawChannel` operation to delete a specified PolarClaw Channel. You can also uninstall the associated channel plugin. Before you delete the channel, back up all important data and ensure that no critical tasks are running on it.
 //
 // @param request - DeletePolarClawChannelRequest
 //
@@ -7864,7 +7996,15 @@ func (client *Client) DeletePolarClawChannelWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 删除PolarClaw定时任务
+// Deletes a PolarClaw cron job.
+//
+// Description:
+//
+// ## Description
+//
+// To delete a PolarClaw cron job, provide its `ApplicationId` and `JobId`. Ensure that the IDs are correct to prevent accidental deletion of other jobs.
+//
+// **Note**: This operation is irreversible. Proceed with caution.
 //
 // @param request - DeletePolarClawCronJobRequest
 //
@@ -7916,7 +8056,7 @@ func (client *Client) DeletePolarClawCronJobWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 删除PolarFs文件
+// Deletes objects from PolarLakebase. This operation supports only Basic Edition and Cold Storage Edition instances.
 //
 // Description:
 //
@@ -7984,7 +8124,7 @@ func (client *Client) DeletePolarFsObjectsWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// 删除polar fs bucket路径
+// Deletes a path mapping for transparent acceleration.
 //
 // @param request - DeletePolarFsPathMappingRequest
 //
@@ -8036,7 +8176,17 @@ func (client *Client) DeletePolarFsPathMappingWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 删除PolarFs Quota规则
+// Deletes one or more quota rules from a specified Polarlakebase instance.
+//
+// Description:
+//
+// ## Request description
+//
+// - You must specify the `PolarFsInstanceId` parameter to identify the Polarlakebase instance.
+//
+// - The `Quotas` parameter is a list of quota rules to delete. Each rule is uniquely identified by its `Name` and `Id`. You can delete up to 21 rules in a single request.
+//
+// - For each quota rule, provide both the `Name` and `Id`. This information must match an existing rule.
 //
 // @param request - DeletePolarFsQuotaRequest
 //
@@ -8088,7 +8238,7 @@ func (client *Client) DeletePolarFsQuotaWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 删除限流策略
+// Deletes a throttling policy.
 //
 // @param request - DeleteRateLimitPolicyRequest
 //
@@ -8140,7 +8290,7 @@ func (client *Client) DeleteRateLimitPolicyWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 删除SQL限流规则
+// Deletes SQL throttling rules.
 //
 // @param request - DeleteSQLRateLimitingRulesRequest
 //
@@ -8204,7 +8354,7 @@ func (client *Client) DeleteSQLRateLimitingRulesWithContext(ctx context.Context,
 
 // Summary:
 //
-// 查看custom实例详情
+// Gets the details of a custom instance.
 //
 // @param request - DescribeAIDBClusterAttributeRequest
 //
@@ -8264,7 +8414,7 @@ func (client *Client) DescribeAIDBClusterAttributeWithContext(ctx context.Contex
 
 // Summary:
 //
-// 查询数据集列表
+// # Query datasets
 //
 // @param request - DescribeAIDBClusterDatasetsRequest
 //
@@ -8352,7 +8502,7 @@ func (client *Client) DescribeAIDBClusterDatasetsWithContext(ctx context.Context
 
 // Summary:
 //
-// 获取ai容器性能指标
+// Retrieves the performance metrics of an AI container.
 //
 // @param request - DescribeAIDBClusterPerformanceRequest
 //
@@ -8412,7 +8562,7 @@ func (client *Client) DescribeAIDBClusterPerformanceWithContext(ctx context.Cont
 
 // Summary:
 //
-// 获取任务实例详情
+// # Get task instance details
 //
 // @param request - DescribeAIDBClusterTaskAttributeRequest
 //
@@ -8480,7 +8630,7 @@ func (client *Client) DescribeAIDBClusterTaskAttributeWithContext(ctx context.Co
 
 // Summary:
 //
-// 查询模型算子日志
+// Queries the logs of model operators.
 //
 // @param request - DescribeAIDBClusterTaskLogFilesRequest
 //
@@ -8552,7 +8702,11 @@ func (client *Client) DescribeAIDBClusterTaskLogFilesWithContext(ctx context.Con
 
 // Summary:
 //
-// 查询模型算子指标
+// Queries the metrics of model operators.
+//
+// Description:
+//
+// > For more information about kernel versions for PolarDB for MySQL clusters, see [Kernel versions](https://help.aliyun.com/document_detail/471239.html) and [Kernel release notes](https://help.aliyun.com/document_detail/423884.html).
 //
 // @param request - DescribeAIDBClusterTaskMetricsRequest
 //
@@ -8624,7 +8778,15 @@ func (client *Client) DescribeAIDBClusterTaskMetricsWithContext(ctx context.Cont
 
 // Summary:
 //
-// 获取任务实例列表
+// Retrieves a list of model operators for a specified PolarDB instance.
+//
+// Description:
+//
+// ## Request
+//
+// - This API returns a list of model operators filtered by the `RelativeDBClusterId` and `KubeType` parameters.
+//
+// - Note: Ensure the provided `RelativeDBClusterId` matches the ID of an existing PolarDB database instance. Otherwise, no data will be returned.
 //
 // @param request - DescribeAIDBClusterTasksRequest
 //
@@ -8692,7 +8854,7 @@ func (client *Client) DescribeAIDBClusterTasksWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 查看custom集群列表
+// View custom clusters.
 //
 // @param request - DescribeAIDBClustersRequest
 //
@@ -8784,7 +8946,7 @@ func (client *Client) DescribeAIDBClustersWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the status of the PolarDB for AI feature.
+// Retrieves the status of the PolarDB for AI feature.
 //
 // @param request - DescribeAITaskStatusRequest
 //
@@ -8824,7 +8986,7 @@ func (client *Client) DescribeAITaskStatusWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries information about a database account of a PolarDB cluster.
+// Queries a database account of a PolarDB cluster.
 //
 // @param request - DescribeAccountsRequest
 //
@@ -8900,7 +9062,7 @@ func (client *Client) DescribeAccountsWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 查询PolarDB边缘云集群列表
+// Queries the edge clusters for PolarDB on ENS.
 //
 // @param request - DescribeAccountsZonalRequest
 //
@@ -8984,7 +9146,7 @@ func (client *Client) DescribeAccountsZonalWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the details of an activation code.
+// Queries an activation code.
 //
 // @param request - DescribeActivationCodeDetailsRequest
 //
@@ -9048,7 +9210,7 @@ func (client *Client) DescribeActivationCodeDetailsWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries a list of activation codes.
+// Retrieves a paginated list of activation codes associated with your account. You can filter the results by order ID or specific hardware identifiers.
 //
 // @param request - DescribeActivationCodesRequest
 //
@@ -9124,7 +9286,7 @@ func (client *Client) DescribeActivationCodesWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 获取用户的运维配置信息，目前包括主动运维窗口信息
+// Queries the Operations and Maintenance (O&M) configuration for a user, including the active O&M window.
 //
 // @param request - DescribeActiveOperationMaintainConfRequest
 //
@@ -9192,7 +9354,7 @@ func (client *Client) DescribeActiveOperationMaintainConfWithContext(ctx context
 
 // Summary:
 //
-// Queries the O\\\\\\&M event details of an instance.
+// Queries operation and maintenance events for instances.
 //
 // @param request - DescribeActiveOperationTasksRequest
 //
@@ -9292,7 +9454,11 @@ func (client *Client) DescribeActiveOperationTasksWithContext(ctx context.Contex
 
 // Summary:
 //
-// 获取应用详情
+// Retrieves the details of a specific application in a PolarDB instance.
+//
+// Description:
+//
+// Retrieves all information about a specific PolarDB application, such as component details and endpoints.
 //
 // @param request - DescribeApplicationAttributeRequest
 //
@@ -9336,7 +9502,7 @@ func (client *Client) DescribeApplicationAttributeWithContext(ctx context.Contex
 
 // Summary:
 //
-// # AI 应用日志明细
+// # AI Application Log Details
 //
 // @param request - DescribeApplicationLogsRequest
 //
@@ -9432,7 +9598,7 @@ func (client *Client) DescribeApplicationLogsWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 获取应用组件参数
+// Retrieves the current parameters and template information for a specified application and its components.
 //
 // @param tmpReq - DescribeApplicationParametersRequest
 //
@@ -9486,7 +9652,7 @@ func (client *Client) DescribeApplicationParametersWithContext(ctx context.Conte
 
 // Summary:
 //
-// 查询PolarDB AI应用性能
+// Querying PolarDB AI application performance.
 //
 // @param request - DescribeApplicationPerformanceRequest
 //
@@ -9558,7 +9724,7 @@ func (client *Client) DescribeApplicationPerformanceWithContext(ctx context.Cont
 
 // Summary:
 //
-// 查询当前应用下所有的应用提示词策略列表
+// Lists the Application Prompts for a specific Application.
 //
 // @param request - DescribeApplicationPromptsRequest
 //
@@ -9610,7 +9776,7 @@ func (client *Client) DescribeApplicationPromptsWithContext(ctx context.Context,
 
 // Summary:
 //
-// 获取应用serverless配置
+// Queries the Serverless configuration for a PolarDB application.
 //
 // @param request - DescribeApplicationServerlessConfRequest
 //
@@ -9654,7 +9820,7 @@ func (client *Client) DescribeApplicationServerlessConfWithContext(ctx context.C
 
 // Summary:
 //
-// 获取当前地域所有PolarDB实例的应用列表
+// Gets the list of applications for all PolarDB instances in a specified region.
 //
 // @param request - DescribeApplicationsRequest
 //
@@ -9722,7 +9888,7 @@ func (client *Client) DescribeApplicationsWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the auto-renewal attributes of a subscription PolarDB cluster.
+// Describes the auto-renewal status of a subscription PolarDB cluster.
 //
 // @param request - DescribeAutoRenewAttributeRequest
 //
@@ -9802,7 +9968,7 @@ func (client *Client) DescribeAutoRenewAttributeWithContext(ctx context.Context,
 
 // Summary:
 //
-// 查询可用跨地域备份地域列表
+// Retrieves a list of regions available for cross-region backup.
 //
 // @param request - DescribeAvailableCrossRegionsRequest
 //
@@ -9862,7 +10028,7 @@ func (client *Client) DescribeAvailableCrossRegionsWithContext(ctx context.Conte
 
 // Summary:
 //
-// 获取ai集群模型列表
+// Lists the available models in an AI cluster.
 //
 // @param request - DescribeAvailableModelsRequest
 //
@@ -9910,7 +10076,7 @@ func (client *Client) DescribeAvailableModelsWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries backup logs and the URLs to download the backup logs.
+// Queries a list of backup logs and returns their download URLs.
 //
 // @param request - DescribeBackupLogsRequest
 //
@@ -10050,7 +10216,7 @@ func (client *Client) DescribeBackupPolicyWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 查询备份集所在地域信息
+// Queries the regions that store backup sets.
 //
 // @param request - DescribeBackupRegionsRequest
 //
@@ -10110,7 +10276,7 @@ func (client *Client) DescribeBackupRegionsWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the details of backup tasks of a cluster.
+// Retrieves a list of backup jobs and their details for a cluster.
 //
 // @param request - DescribeBackupTasksRequest
 //
@@ -10178,7 +10344,7 @@ func (client *Client) DescribeBackupTasksWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries the backup details of a PolarDB cluster.
+// Queries backup information for a PolarDB cluster.
 //
 // @param request - DescribeBackupsRequest
 //
@@ -10270,7 +10436,7 @@ func (client *Client) DescribeBackupsWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// 查询批量任务状态详情
+// Queries the status of a batch task.
 //
 // @param request - DescribeBatchTaskRequest
 //
@@ -10314,7 +10480,7 @@ func (client *Client) DescribeBatchTaskWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 查询批量任务状态
+// Queries the status of batch tasks.
 //
 // @param tmpReq - DescribeBatchTasksRequest
 //
@@ -10384,7 +10550,7 @@ func (client *Client) DescribeBatchTasksWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// 查询预算策略
+// # Querying budget policies
 //
 // @param request - DescribeBudgetPoliciesRequest
 //
@@ -10456,7 +10622,7 @@ func (client *Client) DescribeBudgetPoliciesWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries character sets that are supported by a PolarDB for MySQL cluster.
+// Queries the character sets supported by PolarDB for MySQL.
 //
 // @param request - DescribeCharacterSetNameRequest
 //
@@ -10520,7 +10686,7 @@ func (client *Client) DescribeCharacterSetNameWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the specifications of a cluster.
+// Lists the available cluster specifications.
 //
 // @param request - DescribeClassListRequest
 //
@@ -10596,7 +10762,7 @@ func (client *Client) DescribeClassListWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 查询冷存储实例信息
+// Queries cold storage instances.
 //
 // @param request - DescribeColdStorageInstanceRequest
 //
@@ -10696,7 +10862,7 @@ func (client *Client) DescribeColdStorageInstanceWithContext(ctx context.Context
 
 // Summary:
 //
-// 查询消费者组列表
+// Retrieves a list of consumer groups.
 //
 // @param request - DescribeConsumerGroupsRequest
 //
@@ -10756,7 +10922,7 @@ func (client *Client) DescribeConsumerGroupsWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 查询消费者列表
+// Returns a list of consumers.
 //
 // @param request - DescribeConsumersRequest
 //
@@ -10820,7 +10986,7 @@ func (client *Client) DescribeConsumersWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 查询限流策略
+// Queries cost rules.
 //
 // @param request - DescribeCostRulesRequest
 //
@@ -10884,7 +11050,7 @@ func (client *Client) DescribeCostRulesWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 查询周期任务策略
+// Queries the policies for automatically triggered tasks.
 //
 // @param request - DescribeCronJobPolicyServerlessRequest
 //
@@ -10960,7 +11126,7 @@ func (client *Client) DescribeCronJobPolicyServerlessWithContext(ctx context.Con
 
 // Summary:
 //
-// 查询跨云支持的规格列表
+// Queries the supported cross-cloud specifications.
 //
 // @param request - DescribeCrossCloudLevelsRequest
 //
@@ -11016,7 +11182,7 @@ func (client *Client) DescribeCrossCloudLevelsWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 查看跨云开区信息
+// Queries cross-cloud regions.
 //
 // @param request - DescribeCrossCloudRegionRequest
 //
@@ -11068,7 +11234,7 @@ func (client *Client) DescribeCrossCloudRegionWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 查询跨云地域映射
+// This operation queries cross-cloud region mappings.
 //
 // @param request - DescribeCrossCloudRegionMappingToAliyunRequest
 //
@@ -11120,7 +11286,7 @@ func (client *Client) DescribeCrossCloudRegionMappingToAliyunWithContext(ctx con
 
 // Summary:
 //
-// Queries the IP address whitelists and security groups of a PolarDB cluster.
+// Queries the IP whitelists and security groups that are allowed to access a database cluster.
 //
 // @param request - DescribeDBClusterAccessWhitelistRequest
 //
@@ -11180,7 +11346,7 @@ func (client *Client) DescribeDBClusterAccessWhitelistWithContext(ctx context.Co
 
 // Summary:
 //
-// Queries information about a PolarDB cluster.
+// Queries the attributes of a specified cluster.
 //
 // @param request - DescribeDBClusterAttributeRequest
 //
@@ -11304,7 +11470,7 @@ func (client *Client) DescribeDBClusterAuditLogCollectorWithContext(ctx context.
 
 // Summary:
 //
-// Queries available resources in a PolarDB cluster.
+// Queries the available resources of a PolarDB cluster.
 //
 // @param request - DescribeDBClusterAvailableResourcesRequest
 //
@@ -11384,7 +11550,7 @@ func (client *Client) DescribeDBClusterAvailableResourcesWithContext(ctx context
 
 // Summary:
 //
-// Queries whether the source IP address can access a cluster.
+// Checks whether a database cluster is accessible from a source IP address.
 //
 // @param request - DescribeDBClusterConnectivityRequest
 //
@@ -11456,7 +11622,17 @@ func (client *Client) DescribeDBClusterConnectivityWithContext(ctx context.Conte
 
 // Summary:
 //
-// # DescribeDBClusterEncryptionKey
+// Queries the key usage details for a specified PolarDB cluster.
+//
+// Description:
+//
+// ## Description
+//
+// - Query the key usage details for a PolarDB cluster, such as the key ID, status, and type.
+//
+// - The `DBClusterId`Parameter is required. It specifies the ID of the PolarDB cluster to query.
+//
+// - Before you call this operation, make sure that the required Resource Access Management (RAM) roles and policies are configured.
 //
 // @param request - DescribeDBClusterEncryptionKeyRequest
 //
@@ -11576,7 +11752,7 @@ func (client *Client) DescribeDBClusterEndpointsWithContext(ctx context.Context,
 
 // Summary:
 //
-// 查询PolarDB边缘集群的链接地址
+// Queries the endpoints of an edge cluster for PolarDB on ENS.
 //
 // @param request - DescribeDBClusterEndpointsZonalRequest
 //
@@ -11644,11 +11820,13 @@ func (client *Client) DescribeDBClusterEndpointsZonalWithContext(ctx context.Con
 
 // Summary:
 //
-// The ID of the synchronous task.
+// Queries the migration status of a PolarDB cluster.
 //
 // Description:
 //
-// The ID of the request.
+// - You can use this operation to query the status of a one-click migration from an ApsaraDB RDS for MySQL instance to a PolarDB for MySQL cluster. For more information, see [Upgrade an ApsaraDB RDS for MySQL instance to PolarDB for MySQL](https://help.aliyun.com/document_detail/121582.html).
+//
+// - Before you call this operation, you must create a one-click upgrade task for the cluster by calling the [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) operation and setting the **CreationOption*	- parameter to **MigrationFromRDS**.
 //
 // @param request - DescribeDBClusterMigrationRequest
 //
@@ -11766,6 +11944,10 @@ func (client *Client) DescribeDBClusterMonitorWithContext(ctx context.Context, r
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries database endpoints.
+//
 // @param request - DescribeDBClusterNetInfoRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -11828,7 +12010,7 @@ func (client *Client) DescribeDBClusterNetInfoWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the parameters of a PolarDB cluster.
+// Queries the list of running parameters for a PolarDB cluster.
 //
 // @param request - DescribeDBClusterParametersRequest
 //
@@ -11896,29 +12078,29 @@ func (client *Client) DescribeDBClusterParametersWithContext(ctx context.Context
 //
 // Description:
 //
-//	  When the monitoring data is collected every 5 seconds:
+// - If the monitoring frequency is once every 5 seconds:
 //
-//	    	- If the query time range is less than or equal to 1 hour, the data is displayed at intervals of 5 seconds.
+//   - If the query time range is 1 hour or less, the data granularity is 5 seconds.
 //
-//	    	- If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
+//   - If the query time range is 1 day or less, the data granularity is 1 minute.
 //
-//	    	- If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
+//   - If the query time range is 7 days or less, the data granularity is 10 minutes.
 //
-//	    	- If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
+//   - If the query time range is 30 days or less, the data granularity is 1 hour.
 //
-//	    	- When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
+//   - If the query time range is more than 30 days, the data granularity is 1 day.
 //
-//		- When the monitoring data is collected every 60 seconds:
+// - If the monitoring frequency is once every 60 seconds:
 //
-//	    	- If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
+//   - If the query time range is 1 day or less, the data granularity is 1 minute.
 //
-//	    	- If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
+//   - If the query time range is 7 days or less, the data granularity is 10 minutes.
 //
-//	    	- If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
+//   - If the query time range is 30 days or less, the data granularity is 1 hour.
 //
-//	    	- When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
+//   - If the query time range is more than 30 days, the data granularity is 1 day.
 //
-// >  By default, the monitoring data is collected once every 60 seconds. You can call the [ModifyDBClusterMonitor](https://help.aliyun.com/document_detail/159557.html) operation to set the data collection interval to every 5 seconds.
+// > The default monitoring frequency is once every 60 seconds. You can call the [ModifyDBClusterMonitor](https://help.aliyun.com/document_detail/159557.html) operation to set the frequency to once every 5 seconds.
 //
 // @param request - DescribeDBClusterPerformanceRequest
 //
@@ -11986,7 +12168,7 @@ func (client *Client) DescribeDBClusterPerformanceWithContext(ctx context.Contex
 
 // Summary:
 //
-// 查询代理详情
+// Queries a database cluster proxy.
 //
 // @param request - DescribeDBClusterProxyRequest
 //
@@ -12054,7 +12236,7 @@ func (client *Client) DescribeDBClusterProxyWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the Secure Sockets Layer (SSL) settings of a PolarDB cluster.
+// Queries the SSL settings of a PolarDB cluster.
 //
 // @param request - DescribeDBClusterSSLRequest
 //
@@ -12114,7 +12296,7 @@ func (client *Client) DescribeDBClusterSSLWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the serverless configurations of a serverless cluster.
+// Queries the configuration of a serverless cluster.
 //
 // @param request - DescribeDBClusterServerlessConfRequest
 //
@@ -12174,7 +12356,7 @@ func (client *Client) DescribeDBClusterServerlessConfWithContext(ctx context.Con
 
 // Summary:
 //
-// Queries the transparent data encryption (TDE) settings of a PolarDB cluster.
+// Queries the transparent data encryption (TDE) settings for a specified PolarDB cluster.
 //
 // @param request - DescribeDBClusterTDERequest
 //
@@ -12234,7 +12416,11 @@ func (client *Client) DescribeDBClusterTDEWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the information about the database engine version of a PolarDB for MySQL cluster.
+// Retrieves the details of the current kernel version for a PolarDB for MySQL cluster.
+//
+// Description:
+//
+// > For more information about the kernel versions of PolarDB for MySQL clusters, see [Kernel version guide](https://help.aliyun.com/document_detail/471239.html) and [Kernel release notes](https://help.aliyun.com/document_detail/423884.html).
 //
 // @param request - DescribeDBClusterVersionRequest
 //
@@ -12298,7 +12484,7 @@ func (client *Client) DescribeDBClusterVersionWithContext(ctx context.Context, r
 
 // Summary:
 //
-// # PolarDB边缘集群查询版本
+// Queries the version of a PolarDB edge cluster.
 //
 // @param request - DescribeDBClusterVersionZonalRequest
 //
@@ -12362,7 +12548,7 @@ func (client *Client) DescribeDBClusterVersionZonalWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries PolarDB clusters or the clusters that can be accessed by an authorized RAM user.
+// Queries the details of PolarDB clusters, including clusters that you are authorized to access through Resource Access Management (RAM).
 //
 // @param request - DescribeDBClustersRequest
 //
@@ -12486,7 +12672,7 @@ func (client *Client) DescribeDBClustersWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries the information about PolarDB clusters that contain backup sets in a region.
+// Queries PolarDB clusters in a region that have backup sets.
 //
 // @param request - DescribeDBClustersWithBackupsRequest
 //
@@ -12578,7 +12764,7 @@ func (client *Client) DescribeDBClustersWithBackupsWithContext(ctx context.Conte
 
 // Summary:
 //
-// # MyBase中的PolarDB列表
+// Lists the PolarDB clusters in MyBase.
 //
 // @param request - DescribeDBClustersZonalRequest
 //
@@ -12714,7 +12900,7 @@ func (client *Client) DescribeDBClustersZonalWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries attributes such as character sets and collations supported by a database in a PolarDB cluster.
+// Queries the supported character sets, collations, and other properties of a PolarDB database.
 //
 // @param request - DescribeDBInitializeVariableRequest
 //
@@ -12774,7 +12960,7 @@ func (client *Client) DescribeDBInitializeVariableWithContext(ctx context.Contex
 
 // Summary:
 //
-// 查询实例性能数据
+// Queries the performance monitoring data for a compute node.
 //
 // @param request - DescribeDBInstancePerformanceRequest
 //
@@ -12914,7 +13100,7 @@ func (client *Client) DescribeDBLinksWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// Queries logs for a PolarDB cluster such as primary/secondary switchover logs.
+// Queries the logs of a PolarDB cluster, such as primary/secondary failover logs.
 //
 // @param request - DescribeDBLogFilesRequest
 //
@@ -13014,7 +13200,7 @@ func (client *Client) DescribeDBLogFilesWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 查询可用内核小版本列表
+// Queries the available minor engine versions.
 //
 // @param request - DescribeDBMiniEngineVersionsRequest
 //
@@ -13082,33 +13268,33 @@ func (client *Client) DescribeDBMiniEngineVersionsWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries the performance data of a node in a PolarDB cluster.
+// Queries performance data for a node in a PolarDB cluster.
 //
 // Description:
 //
-//	  When the monitoring data is collected every 5 seconds:
+// - If the monitoring frequency is 5 seconds:
 //
-//	    	- If the query time range is less than or equal to 1 hour, the data is displayed at intervals of 5 seconds.
+//   - If the query time range is 1 hour or less, the data granularity is 5 seconds.
 //
-//	    	- If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
+//   - If the query time range is 1 day or less, the data granularity is 1 minute.
 //
-//	    	- If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
+//   - If the query time range is 7 days or less, the data granularity is 10 minutes.
 //
-//	    	- If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
+//   - If the query time range is 30 days or less, the data granularity is 1 hour.
 //
-//	    	- When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
+//   - If the query time range is more than 30 days, the data granularity is 1 day.
 //
-//		- When the monitoring data is collected every 60 seconds:
+// - If the monitoring frequency is 60 seconds:
 //
-//	    	- If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
+//   - If the query time range is 1 day or less, the data granularity is 1 minute.
 //
-//	    	- If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
+//   - If the query time range is 7 days or less, the data granularity is 10 minutes.
 //
-//	    	- If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
+//   - If the query time range is 30 days or less, the data granularity is 1 hour.
 //
-//	    	- When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
+//   - If the query time range is more than 30 days, the data granularity is 1 day.
 //
-// >  By default, the monitoring data is collected once every 60 seconds. You can call the [ModifyDBClusterMonitor](https://help.aliyun.com/document_detail/159557.html) operation to set the data collection interval to every 5 seconds.
+// > The default monitoring frequency is 60 seconds. Call the [ModifyDBClusterMonitor](https://help.aliyun.com/document_detail/159557.html) operation to set it to 5 seconds.
 //
 // @param request - DescribeDBNodePerformanceRequest
 //
@@ -13176,7 +13362,7 @@ func (client *Client) DescribeDBNodePerformanceWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the parameters of a specified node in a cluster.
+// Queries the parameters for specified nodes in a cluster.
 //
 // @param request - DescribeDBNodesParametersRequest
 //
@@ -13376,7 +13562,7 @@ func (client *Client) DescribeDasConfigWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries the information about databases in a PolarDB cluster.
+// Queries for the details of databases in a specified PolarDB cluster.
 //
 // @param request - DescribeDatabasesRequest
 //
@@ -13448,7 +13634,7 @@ func (client *Client) DescribeDatabasesWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 查询PolarDB边缘云数据库
+// Describes the databases in a PolarDB on ENS cluster.
 //
 // @param request - DescribeDatabasesZonalRequest
 //
@@ -13528,7 +13714,7 @@ func (client *Client) DescribeDatabasesZonalWithContext(ctx context.Context, req
 
 // Summary:
 //
-// # PolarDB的MyBase集群
+// Queries the attributes of an PolarDB on ENS cluster.
 //
 // @param request - DescribeDbClusterAttributeZonalRequest
 //
@@ -13690,7 +13876,7 @@ func (client *Client) DescribeDetachedBackupsWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 获取角色权限列表
+// Queries a list of permissions for a database role.
 //
 // @param request - DescribeEncryptionDBRolePrivilegeRequest
 //
@@ -13754,7 +13940,7 @@ func (client *Client) DescribeEncryptionDBRolePrivilegeWithContext(ctx context.C
 
 // Summary:
 //
-// 获取加密信息
+// Queries encryption key information.
 //
 // @param request - DescribeEncryptionDBSecretRequest
 //
@@ -13798,7 +13984,7 @@ func (client *Client) DescribeEncryptionDBSecretWithContext(ctx context.Context,
 
 // Summary:
 //
-// 查询插件详情
+// Retrieves the details of extensions.
 //
 // @param request - DescribeExtensionsRequest
 //
@@ -13866,7 +14052,7 @@ func (client *Client) DescribeExtensionsWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 查询sql防火墙信息
+// Describes SQL firewall rules.
 //
 // @param request - DescribeFirewallRulesRequest
 //
@@ -13930,7 +14116,7 @@ func (client *Client) DescribeFirewallRulesWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 查询网关实例详情
+// # Viewing gateway instance details
 //
 // @param request - DescribeGatewayAttributeRequest
 //
@@ -13978,7 +14164,7 @@ func (client *Client) DescribeGatewayAttributeWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 查询网关实例列表
+// Queries a list of gateway instances.
 //
 // @param request - DescribeGatewayListRequest
 //
@@ -14038,7 +14224,7 @@ func (client *Client) DescribeGatewayListWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries the PolarFS global data network (GDN) details in all regions.
+// Retrieves details for Polarlakebase Global Data Networks (GDNs) across all regions in your account.
 //
 // @param request - DescribeGlobalDataNetworkListRequest
 //
@@ -14086,7 +14272,7 @@ func (client *Client) DescribeGlobalDataNetworkListWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries the information about a Global Database Network (GDN).
+// Retrieves details for a Global Database Network (GDN).
 //
 // @param request - DescribeGlobalDatabaseNetworkRequest
 //
@@ -14154,7 +14340,7 @@ func (client *Client) DescribeGlobalDatabaseNetworkWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries the information about all Global Database Networks (GDNs) that belong to an account.
+// View details for all Global Database Networks (GDNs) in your account.
 //
 // @param request - DescribeGlobalDatabaseNetworksRequest
 //
@@ -14242,7 +14428,7 @@ func (client *Client) DescribeGlobalDatabaseNetworksWithContext(ctx context.Cont
 
 // Summary:
 //
-// Queries global IP whitelist templates.
+// Queries the list of global IP allowlist templates.
 //
 // @param request - DescribeGlobalSecurityIPGroupRequest
 //
@@ -14386,7 +14572,11 @@ func (client *Client) DescribeGlobalSecurityIPGroupRelationWithContext(ctx conte
 
 // Summary:
 //
-// Queries the HA logs of a cluster.
+// Queries high availability (HA) logs for an instance.
+//
+// Description:
+//
+// > - Only PolarDB for MySQL supports this operation.
 //
 // @param request - DescribeHALogsRequest
 //
@@ -14454,7 +14644,7 @@ func (client *Client) DescribeHALogsWithContext(ctx context.Context, request *De
 
 // Summary:
 //
-// 事件中心事件列表
+// Lists the historical events in Event Center.
 //
 // @param request - DescribeHistoryEventsRequest
 //
@@ -14554,7 +14744,7 @@ func (client *Client) DescribeHistoryEventsWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries historical tasks.
+// Retrieves a list of historical administrative tasks for PolarDB for MySQL instances, such as parameter changes, and instance restarts.
 //
 // @param request - DescribeHistoryTasksRequest
 //
@@ -14662,7 +14852,7 @@ func (client *Client) DescribeHistoryTasksWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 任务中心任务统计
+// Queries task statistics in Task Center.
 //
 // @param request - DescribeHistoryTasksStatRequest
 //
@@ -14758,7 +14948,7 @@ func (client *Client) DescribeHistoryTasksStatWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the information of a license order.
+// Queries a license order.
 //
 // @param request - DescribeLicenseOrderDetailsRequest
 //
@@ -14818,7 +15008,7 @@ func (client *Client) DescribeLicenseOrderDetailsWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries a list of license orders.
+// This operation queries a list of license orders.
 //
 // @param request - DescribeLicenseOrdersRequest
 //
@@ -14898,7 +15088,7 @@ func (client *Client) DescribeLicenseOrdersWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 查询库表恢复可恢复时间范围
+// Queries the available time range to recover from a backup.
 //
 // @param request - DescribeLocalAvailableRecoveryTimeRequest
 //
@@ -14962,7 +15152,7 @@ func (client *Client) DescribeLocalAvailableRecoveryTimeWithContext(ctx context.
 
 // Summary:
 //
-// Queries the retention policy of log backups in a PolarDB cluster.
+// Queries the data retention policy for the log backups of a PolarDB cluster.
 //
 // @param request - DescribeLogBackupPolicyRequest
 //
@@ -15074,7 +15264,7 @@ func (client *Client) DescribeMaskingRulesWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the details of the databases or tables that can be restored.
+// Queries recoverable databases and tables.
 //
 // @param request - DescribeMetaListRequest
 //
@@ -15162,7 +15352,7 @@ func (client *Client) DescribeMetaListWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 查询路由规则列表
+// # Model Query API
 //
 // @param request - DescribeModelApisRequest
 //
@@ -15242,7 +15432,7 @@ func (client *Client) DescribeModelApisWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 查询模型服务列表
+// # List model services
 //
 // @param request - DescribeModelServicesRequest
 //
@@ -15318,7 +15508,7 @@ func (client *Client) DescribeModelServicesWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 查询参数修改历史
+// Queries the modification history of parameters.
 //
 // @param request - DescribeModifyParameterLogRequest
 //
@@ -15386,7 +15576,7 @@ func (client *Client) DescribeModifyParameterLogWithContext(ctx context.Context,
 
 // Summary:
 //
-// 查询网络通道
+// Queries network channels.
 //
 // @param request - DescribeNetworkChannelRequest
 //
@@ -15466,13 +15656,13 @@ func (client *Client) DescribeNetworkChannelWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the information about a parameter template.
+// Retrieves the details of a specified parameter template.
 //
 // Description:
 //
-// You can use parameter templates to manage multiple parameters at a time and apply existing parameters to a PolarDB cluster. For more information, see [Use a parameter template](https://help.aliyun.com/document_detail/207009.html).
+// Parameter templates let you centrally manage parameters for multiple clusters. You can quickly apply a parameter template to PolarDB clusters. For more information, see [Use parameter templates](https://help.aliyun.com/document_detail/207009.html).
 //
-// > This parameter is valid only for a PolarDB for MySQL cluster.
+// > This feature currently supports only PolarDB for MySQL clusters.
 //
 // @param request - DescribeParameterGroupRequest
 //
@@ -15544,13 +15734,13 @@ func (client *Client) DescribeParameterGroupWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries parameter templates that are available in a specified region.
+// This operation queries the parameter templates in a specified region.
 //
 // Description:
 //
-// You can use parameter templates to manage multiple parameters at a time and apply existing parameters to a PolarDB cluster. For more information, see [Use a parameter template](https://help.aliyun.com/document_detail/207009.html).
+// Parameter templates allow you to manage cluster parameters in batches and quickly apply them to PolarDB clusters. For more information, see [Use parameter templates](https://help.aliyun.com/document_detail/207009.html).
 //
-// > This operation is applicable only to PolarDB for MySQL clusters.
+// > This feature is available only for PolarDB for MySQL clusters.
 //
 // @param request - DescribeParameterGroupsRequest
 //
@@ -15622,7 +15812,7 @@ func (client *Client) DescribeParameterGroupsWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the default parameters in a cluster.
+// Queries the default parameters of a database cluster.
 //
 // @param request - DescribeParameterTemplatesRequest
 //
@@ -15778,7 +15968,7 @@ func (client *Client) DescribePendingMaintenanceActionWithContext(ctx context.Co
 
 // Summary:
 //
-// Queries the numbers of scheduled events for different types of tasks.
+// Retrieves a count of pending events for various task types.
 //
 // @param request - DescribePendingMaintenanceActionsRequest
 //
@@ -15850,7 +16040,7 @@ func (client *Client) DescribePendingMaintenanceActionsWithContext(ctx context.C
 
 // Summary:
 //
-// 查询指定会话明细
+// Queries the chat records of a specified session.
 //
 // @param request - DescribePolarAgentChatRecordsRequest
 //
@@ -15898,7 +16088,7 @@ func (client *Client) DescribePolarAgentChatRecordsWithContext(ctx context.Conte
 
 // Summary:
 //
-// 查询会话状态
+// Queries the status of a session.
 //
 // @param request - DescribePolarAgentSessionStatusRequest
 //
@@ -15946,7 +16136,7 @@ func (client *Client) DescribePolarAgentSessionStatusWithContext(ctx context.Con
 
 // Summary:
 //
-// 查看历史会话记录
+// Queries historical session records.
 //
 // @param request - DescribePolarAgentUserSessionsRequest
 //
@@ -15990,7 +16180,7 @@ func (client *Client) DescribePolarAgentUserSessionsWithContext(ctx context.Cont
 
 // Summary:
 //
-// 查询PolarClaw Agent列表
+// Queries the details of agents installed in a specified application.
 //
 // @param tmpReq - DescribePolarClawAgentsRequest
 //
@@ -16044,7 +16234,7 @@ func (client *Client) DescribePolarClawAgentsWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// 查询PolarClaw Channels
+// Lists all installed PolarClaw channels and their status information.
 //
 // @param tmpReq - DescribePolarClawChannelsRequest
 //
@@ -16098,7 +16288,15 @@ func (client *Client) DescribePolarClawChannelsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 查询PolarClaw定时任务列表
+// Query all or specific scheduled tasks in PolarClaw and their details.
+//
+// Description:
+//
+// ## Request description
+//
+// - You can use this API to retrieve all scheduled tasks in a PolarClaw application or filter specific tasks using the `JobIdList` parameter.
+//
+// - If you do not specify the `JobIdList` parameter, the API returns all scheduled tasks in the application.
 //
 // @param tmpReq - DescribePolarClawCronJobsRequest
 //
@@ -16164,7 +16362,7 @@ func (client *Client) DescribePolarClawCronJobsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 查询PolarClaw MCP Servers
+// Lists all installed PolarClaw MCP services and their configurations.
 //
 // @param request - DescribePolarClawMCPServersRequest
 //
@@ -16212,7 +16410,15 @@ func (client *Client) DescribePolarClawMCPServersWithContext(ctx context.Context
 
 // Summary:
 //
-// 查询PolarClaw Plugins
+// Lists all installed PolarClaw plugins and their status.
+//
+// Description:
+//
+// ## Request
+//
+// - This API gets information about all plugins for a given application, including built-in and user-installed plugins.
+//
+// - Use the `PluginList` parameter to request information for specific plugins. If you omit this parameter, the API returns details for all plugins.
 //
 // @param request - DescribePolarClawPluginsRequest
 //
@@ -16260,7 +16466,7 @@ func (client *Client) DescribePolarClawPluginsWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 查询PolarClaw异步任务状态
+// Queries the status of a PolarClaw asynchronous task.
 //
 // @param request - DescribePolarClawTaskRequest
 //
@@ -16308,7 +16514,7 @@ func (client *Client) DescribePolarClawTaskWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 获取PolarFS实例详情
+// Gets the details of a PolarFS instance.
 //
 // @param request - DescribePolarFsAttributeRequest
 //
@@ -16360,19 +16566,19 @@ func (client *Client) DescribePolarFsAttributeWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 列出指定路径下的文件和子目录信息。
+// Lists the files and subdirectories at a specified path.
 //
 // Description:
 //
-// ## 请求说明
+// ## Usage notes
 //
-// - **Path*	- 参数必须提供一个绝对路径。
+// - The **Path*	- parameter must be an absolute path.
 //
-// - **Recursive*	- 参数默认为 `false`，如果设置为 `true`，则会递归列出所有子目录的内容。
+// - The **Recursive*	- parameter defaults to `false`. If set to `true`, the operation recursively lists the contents of all subdirectories.
 //
-// - **Depth*	- 参数用于限制递归深度，默认值为 `1`。
+// - The **Depth*	- parameter limits the recursive depth. The default value is `1`.
 //
-// - **Filter*	- 参数支持通配符或正则表达式过滤结果。
+// - The **Filter*	- parameter supports filtering with wildcards or regular expressions.
 //
 // @param request - DescribePolarFsObjectsRequest
 //
@@ -16420,7 +16626,21 @@ func (client *Client) DescribePolarFsObjectsWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 查询配额规则
+// Retrieves all quota rules for a specified PolarFileSystem (PolarFS) instance.
+//
+// Description:
+//
+// ## Request
+//
+// - This operation queries all quota rules for a specific PolarFS instance. It supports wildcard matching with the `QuotaNameMatch` and `PatternMatch` parameters.
+//
+// - Paging is not yet available and will be released in a future kernel update.
+//
+// - The `PolarFsInstanceId` parameter is required to specify the PolarFS instance to query.
+//
+// - You can use optional parameters, such as `QuotaNameMatch` and `PatternMatch`, to filter quota rules.
+//
+// - The returned data includes the total number of quota rules, the number of rules on the current page, and details for each rule, such as the rule ID, name, description, and capacity limit.
 //
 // @param request - DescribePolarFsQuotaRequest
 //
@@ -16480,7 +16700,7 @@ func (client *Client) DescribePolarFsQuotaWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 查询配额列表
+// Retrieves the quota list.
 //
 // @param request - DescribePolarFsQuotaListRequest
 //
@@ -16544,7 +16764,13 @@ func (client *Client) DescribePolarFsQuotaListWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries whether the SQL Explorer feature is enabled for the cluster.
+// Checks whether the SQL Explorer feature is enabled for a target cluster.
+//
+// Description:
+//
+// *Note:**
+//
+// This API operation is deprecated. Use [Query the configurations of DAS Enterprise Edition](https://help.aliyun.com/document_detail/2778837.html) instead.
 //
 // @param request - DescribePolarSQLCollectorPolicyRequest
 //
@@ -16584,7 +16810,7 @@ func (client *Client) DescribePolarSQLCollectorPolicyWithContext(ctx context.Con
 
 // Summary:
 //
-// 查询限流策略
+// Queries rate limit policies.
 //
 // @param request - DescribeRateLimitPolicyRequest
 //
@@ -16650,6 +16876,10 @@ func (client *Client) DescribeRateLimitPolicyWithContext(ctx context.Context, re
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of vSwitches.
+//
 // @param request - DescribeRdsVSwitchsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -16720,7 +16950,7 @@ func (client *Client) DescribeRdsVSwitchsWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 查询vpc
+// Describes a list of VPCs.
 //
 // @param request - DescribeRdsVpcsRequest
 //
@@ -16848,7 +17078,7 @@ func (client *Client) DescribeRegionsWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// 查询SQL限流规则信息
+// Returns the details of SQL throttling rules.
 //
 // @param request - DescribeSQLRateLimitingRulesRequest
 //
@@ -16920,7 +17150,7 @@ func (client *Client) DescribeSQLRateLimitingRulesWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries the details of all scheduled tasks.
+// Retrieves the details of all scheduled tasks.
 //
 // @param request - DescribeScheduleTasksRequest
 //
@@ -17020,7 +17250,7 @@ func (client *Client) DescribeScheduleTasksWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 查询共享备份集
+// Queries shared backup sets.
 //
 // @param request - DescribeSharedBackupsRequest
 //
@@ -17108,13 +17338,19 @@ func (client *Client) DescribeSharedBackupsWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// # Slow Log Details
+// Queries the details of slow query logs for a PolarDB cluster.
 //
 // Description:
 //
-// >- Only PolarDB MySQL Edition clusters support calling this interface.
+// > - This operation is supported only for PolarDB for MySQL clusters.
 //
-// >- Starting from September 1, 2024, due to the optimization of the SQL template algorithm, when calling this interface, the value of the SQLHash field will change. For more details, please refer to [Notice] Optimization of Slow SQL Template Algorithm (~~2845725~~).
+// >
+//
+// > - For PolarDB for PostgreSQL and PolarDB for PostgreSQL (Oracle Compatible) clusters, use the [DAS API to query slow log records](https://help.aliyun.com/document_detail/2922426.html).
+//
+// >
+//
+// > - Starting September 1, 2024, the value of the `SQLHash` field will change due to an optimization of the SQL templating algorithm. For more information, see [[Notice\\] Optimization of the templating algorithm for slow SQL queries](~~2845725~~).
 //
 // @param request - DescribeSlowLogRecordsRequest
 //
@@ -17206,11 +17442,15 @@ func (client *Client) DescribeSlowLogRecordsWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the statistics about the slow query logs of a PolarDB cluster.
+// Queries the slow query log statistics for a PolarDB cluster.
 //
 // Description:
 //
-// > This operation is applicable only to PolarDB for MySQL clusters.
+// > - This API is available only for PolarDB for MySQL.
+//
+// >
+//
+// > - Effective September 1, 2024, the SQLHash field value will change when you call this API due to an optimization to the SQL templating algorithm. For more information, see [Optimization of the templating algorithm for slow SQL queries](https://help.aliyun.com/document_detail/2845725.html).
 //
 // @param request - DescribeSlowLogsRequest
 //
@@ -17294,13 +17534,13 @@ func (client *Client) DescribeSlowLogsWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries the status of the tasks that are generated based on API operations, such as the status of instance creation tasks.
+// Queries the progress details of tasks generated by API calls, such as creating a cluster.
 //
 // Description:
 //
-//	  You can call this operation to view the details of a task that is generated by a specific API operation or in the PolarDB console. The system calls the specific API operation when you perform an operation in the PolarDB console. For example, you can view the details of the task when you call the [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) operation or [create a cluster](https://help.aliyun.com/document_detail/58769.html) in the PolarDB console.
+// - You can view the progress details of tasks generated by either direct API calls, such as [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html), or operations in the PolarDB console, such as [creating a cluster](https://help.aliyun.com/document_detail/58769.html).
 //
-//		- You can view the details of tasks that are generated only when you call the [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) operation to create a cluster and `CreationOption` is not set to `CreateGdnStandby`.
+// - Currently, this operation supports viewing the progress details only for tasks generated when you create a cluster by calling the [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) operation, provided that the `CreationOption` parameter is not set to `CreateGdnStandby`.
 //
 // @param request - DescribeTasksRequest
 //
@@ -17384,7 +17624,7 @@ func (client *Client) DescribeTasksWithContext(ctx context.Context, request *Des
 
 // Summary:
 //
-// 查询校验报告
+// Queries the verification reports.
 //
 // @param request - DescribeUpgradeReportRequest
 //
@@ -17480,7 +17720,7 @@ func (client *Client) DescribeUpgradeReportWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the Key Management Service (KMS)-managed customer master keys (CMKs) that are used to encrypt data in a PolarDB cluster.
+// Retrieves a list of Key Management Service (KMS) keys.
 //
 // @param request - DescribeUserEncryptionKeyListRequest
 //
@@ -17556,7 +17796,7 @@ func (client *Client) DescribeUserEncryptionKeyListWithContext(ctx context.Conte
 
 // Summary:
 //
-// 查询交换机信息
+// Retrieves information about vSwitches.
 //
 // @param request - DescribeVSwitchListRequest
 //
@@ -17640,7 +17880,7 @@ func (client *Client) DescribeVSwitchListWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries a vSwitch.
+// Queries one or more vSwitches.
 //
 // @param request - DescribeVSwitchesRequest
 //
@@ -17728,7 +17968,7 @@ func (client *Client) DescribeVSwitchesWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 查询vpc
+// Queries one or more VPCs.
 //
 // @param request - DescribeVpcsRequest
 //
@@ -17812,7 +18052,7 @@ func (client *Client) DescribeVpcsWithContext(ctx context.Context, request *Desc
 
 // Summary:
 //
-// 获取可用区
+// Queries the available zones.
 //
 // @param request - DescribeZonesRequest
 //
@@ -17868,7 +18108,7 @@ func (client *Client) DescribeZonesWithContext(ctx context.Context, request *Des
 
 // Summary:
 //
-// 关闭DynamoDB兼容性能力
+// Disables DynamoDB compatibility.
 //
 // @param request - DisableDBClusterDynamoDBRequest
 //
@@ -17912,7 +18152,7 @@ func (client *Client) DisableDBClusterDynamoDBWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 关闭集群的关系性
+// Disables the Orca (Redis-compatible) feature for a PolarDB cluster.
 //
 // @param request - DisableDBClusterOrcaRequest
 //
@@ -17976,7 +18216,7 @@ func (client *Client) DisableDBClusterOrcaWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Disables a stable serverless cluster.
+// Disables steady-state serverless.
 //
 // @param request - DisableDBClusterServerlessRequest
 //
@@ -17995,12 +18235,24 @@ func (client *Client) DisableDBClusterServerlessWithContext(ctx context.Context,
 		query["DBClusterId"] = request.DBClusterId
 	}
 
+	if !dara.IsNil(request.FromTimeService) {
+		query["FromTimeService"] = request.FromTimeService
+	}
+
 	if !dara.IsNil(request.OwnerAccount) {
 		query["OwnerAccount"] = request.OwnerAccount
 	}
 
 	if !dara.IsNil(request.OwnerId) {
 		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PlannedEndTime) {
+		query["PlannedEndTime"] = request.PlannedEndTime
+	}
+
+	if !dara.IsNil(request.PlannedStartTime) {
+		query["PlannedStartTime"] = request.PlannedStartTime
 	}
 
 	if !dara.IsNil(request.ResourceOwnerAccount) {
@@ -18036,7 +18288,13 @@ func (client *Client) DisableDBClusterServerlessWithContext(ctx context.Context,
 
 // Summary:
 //
-// 禁用PolarClaw Channel
+// This API disables a specified PolarClaw channel.
+//
+// Description:
+//
+// ## Description
+//
+// Call the`DisablePolarClawChannel` API to disable a PolarClaw channel for a specific application. Before you perform this operation, make sure you have the target channel ID and the application ID.
 //
 // @param request - DisablePolarClawChannelRequest
 //
@@ -18088,7 +18346,7 @@ func (client *Client) DisablePolarClawChannelWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 禁用PolarClaw定时任务
+// Disables a PolarClaw cron job.
 //
 // @param request - DisablePolarClawCronJobRequest
 //
@@ -18140,7 +18398,7 @@ func (client *Client) DisablePolarClawCronJobWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 禁用PolarClaw Plugin
+// Disables the PolarClaw plugin.
 //
 // @param request - DisablePolarClawPluginRequest
 //
@@ -18192,7 +18450,7 @@ func (client *Client) DisablePolarClawPluginWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 开启DynamoDB兼容性能力
+// Enables DynamoDB compatibility.
 //
 // @param request - EnableDBClusterDynamoDBRequest
 //
@@ -18236,7 +18494,7 @@ func (client *Client) EnableDBClusterDynamoDBWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 开启集群的关系性
+// Enables the Orca (Redis-compatible) feature for a PolarDB cluster.
 //
 // @param request - EnableDBClusterOrcaRequest
 //
@@ -18296,7 +18554,7 @@ func (client *Client) EnableDBClusterOrcaWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Enables a stable serverless cluster.
+// Enables steady-state serverless.
 //
 // @param request - EnableDBClusterServerlessRequest
 //
@@ -18315,12 +18573,24 @@ func (client *Client) EnableDBClusterServerlessWithContext(ctx context.Context, 
 		query["DBClusterId"] = request.DBClusterId
 	}
 
+	if !dara.IsNil(request.FromTimeService) {
+		query["FromTimeService"] = request.FromTimeService
+	}
+
 	if !dara.IsNil(request.OwnerAccount) {
 		query["OwnerAccount"] = request.OwnerAccount
 	}
 
 	if !dara.IsNil(request.OwnerId) {
 		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PlannedEndTime) {
+		query["PlannedEndTime"] = request.PlannedEndTime
+	}
+
+	if !dara.IsNil(request.PlannedStartTime) {
+		query["PlannedStartTime"] = request.PlannedStartTime
 	}
 
 	if !dara.IsNil(request.ResourceOwnerAccount) {
@@ -18448,7 +18718,7 @@ func (client *Client) EnableFirewallRulesWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 启用PolarClaw Channel
+// Enables a PolarClaw channel.
 //
 // @param request - EnablePolarClawChannelRequest
 //
@@ -18500,7 +18770,13 @@ func (client *Client) EnablePolarClawChannelWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 启用PolarClaw定时任务
+// Enables a cron job in PolarClaw.
+//
+// Description:
+//
+// ## Request
+//
+// This operation enables a cron job in a PolarClaw application to run tasks on a schedule. Specify the correct `ApplicationId` to associate the job with the target application.
 //
 // @param request - EnablePolarClawCronJobRequest
 //
@@ -18552,7 +18828,7 @@ func (client *Client) EnablePolarClawCronJobWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 启用PolarClaw Plugin
+// Enables a PolarClaw plugin.
 //
 // @param request - EnablePolarClawPluginRequest
 //
@@ -18604,7 +18880,7 @@ func (client *Client) EnablePolarClawPluginWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 启用/禁用SQL限流规则
+// Enables or disables SQL throttling rules.
 //
 // @param request - EnableSQLRateLimitingRulesRequest
 //
@@ -18672,7 +18948,7 @@ func (client *Client) EnableSQLRateLimitingRulesWithContext(ctx context.Context,
 
 // Summary:
 //
-// Evaluates available resources.
+// Evaluates the resources in a region.
 //
 // @param request - EvaluateRegionResourceRequest
 //
@@ -18768,7 +19044,7 @@ func (client *Client) EvaluateRegionResourceWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 调用跨云 OpenAPI
+// Calls a cross-cloud OpenAPI.
 //
 // @param request - ExecuteCrossCloudOpenAPIRequest
 //
@@ -18888,7 +19164,7 @@ func (client *Client) FailoverDBClusterWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 角色切换
+// Initiates a zonal failover for a PolarDB cluster, promoting a secondary node to primary.
 //
 // @param request - FailoverDBClusterZonalRequest
 //
@@ -18964,7 +19240,7 @@ func (client *Client) FailoverDBClusterZonalWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 生成校验报告
+// Generates a report for a pre-upgrade check.
 //
 // @param request - GenerateUpgradeReportForSyncCloneRequest
 //
@@ -19052,7 +19328,7 @@ func (client *Client) GenerateUpgradeReportForSyncCloneWithContext(ctx context.C
 
 // Summary:
 //
-// 创建聊天记录
+// Creates a chat record.
 //
 // @param request - GetPolarAgentRequest
 //
@@ -19067,7 +19343,7 @@ func (client *Client) GetPolarAgentWithSSECtx(ctx context.Context, request *GetP
 
 // Summary:
 //
-// 创建聊天记录
+// Creates a chat record.
 //
 // @param request - GetPolarAgentRequest
 //
@@ -19123,7 +19399,7 @@ func (client *Client) GetPolarAgentWithContext(ctx context.Context, request *Get
 
 // Summary:
 //
-// 获取PolarClaw配置
+// Retrieves the PolarClaw configuration.
 //
 // @param request - GetPolarClawConfigRequest
 //
@@ -19175,15 +19451,23 @@ func (client *Client) GetPolarClawConfigWithContext(ctx context.Context, request
 //
 // Description:
 //
-// > 	- An account can be authorized to access one or more databases.
+// > - An account can be authorized to access one or more databases.
 //
-// > 	- If the specified account already has the access permissions on the specified databases, the operation returns a successful response.
+// >
 //
-// > 	- Before you call this operation, make sure that the cluster is in the Running state. Otherwise, the operation fails.
+// > - If the specified account already has the access permissions on the specified databases, the operation returns a successful response.
 //
-// > 	- You can call this operation only on a PolarDB for MySQL cluster.
+// >
 //
-// > 	- By default, a privileged account for a cluster has all the permissions on the databases in the cluster.
+// > - Before you call this operation, make sure that the cluster is in the Running state. Otherwise, the operation fails.
+//
+// >
+//
+// > - This operation is supported only for PolarDB for MySQL clusters.
+//
+// >
+//
+// > - By default, a privileged account for a cluster has all the permissions on the databases in the cluster.
 //
 // @param request - GrantAccountPrivilegeRequest
 //
@@ -19255,7 +19539,7 @@ func (client *Client) GrantAccountPrivilegeWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 修改PolarDB边缘集群的账号权限
+// Modifies the account permissions on a PolarDB for Xscale cluster.
 //
 // @param request - GrantAccountPrivilegeZonalRequest
 //
@@ -19331,7 +19615,7 @@ func (client *Client) GrantAccountPrivilegeZonalWithContext(ctx context.Context,
 
 // Summary:
 //
-// 安装PolarClaw Plugin
+// Installs a PolarClaw plugin.
 //
 // @param request - InstallPolarClawPluginRequest
 //
@@ -19387,7 +19671,7 @@ func (client *Client) InstallPolarClawPluginWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 查询订单
+// Queries a list of orders.
 //
 // @param request - ListOrdersRequest
 //
@@ -19467,7 +19751,7 @@ func (client *Client) ListOrdersWithContext(ctx context.Context, request *ListOr
 
 // Summary:
 //
-// 查询PolarClaw绑定关系列表
+// Lists PolarClaw bindings.
 //
 // @param tmpReq - ListPolarClawBindingsRequest
 //
@@ -19521,7 +19805,7 @@ func (client *Client) ListPolarClawBindingsWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// 列出PolarClaw设备配对
+// # List PolarClaw device pairings
 //
 // @param request - ListPolarClawDevicePairsRequest
 //
@@ -19565,7 +19849,7 @@ func (client *Client) ListPolarClawDevicePairsWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the tags that are added to one or more PolarDB clusters, or the PolarDB clusters to which one or more tags are added.
+// Queries the tags that are attached to one or more PolarDB clusters, or the PolarDB clusters that are attached to one or more tags.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -19639,6 +19923,10 @@ func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the tags that are attached to resources in a specified region.
+//
 // @param request - ListTagResourcesForRegionRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -19705,7 +19993,7 @@ func (client *Client) ListTagResourcesForRegionWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 登录PolarClaw Channel
+// Logs into a PolarClaw channel.
 //
 // @param request - LoginPolarClawChannelRequest
 //
@@ -19753,7 +20041,7 @@ func (client *Client) LoginPolarClawChannelWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Manually starts a cluster.
+// Starts a DB cluster.
 //
 // @param request - ManuallyStartDBClusterRequest
 //
@@ -19817,7 +20105,7 @@ func (client *Client) ManuallyStartDBClusterWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 修改AI实例名称
+// # Modify the name of an AI instance
 //
 // @param request - ModifyAIDBClusterDescriptionRequest
 //
@@ -19881,7 +20169,7 @@ func (client *Client) ModifyAIDBClusterDescriptionWithContext(ctx context.Contex
 
 // Summary:
 //
-// Modifies the description of a database account of a PolarDB cluster.
+// Modifies the description of a PolarDB database account.
 //
 // @param request - ModifyAccountDescriptionRequest
 //
@@ -19949,7 +20237,7 @@ func (client *Client) ModifyAccountDescriptionWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 修改PolarDB边缘云账号的描述
+// Modifies the description of a PolarDB on ENS account.
 //
 // @param request - ModifyAccountDescriptionZonalRequest
 //
@@ -20019,6 +20307,10 @@ func (client *Client) ModifyAccountDescriptionZonalWithContext(ctx context.Conte
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the lock status of a PolarDB database account.
+//
 // @param request - ModifyAccountLockStateRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -20161,7 +20453,7 @@ func (client *Client) ModifyAccountPasswordWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 修改PolarDB边缘的账号密码
+// Modifies the password of an account in a PolarDB for Xscale cluster.
 //
 // @param request - ModifyAccountPasswordZonalRequest
 //
@@ -20237,7 +20529,7 @@ func (client *Client) ModifyAccountPasswordZonalWithContext(ctx context.Context,
 
 // Summary:
 //
-// 配置用户的运维信息，目前包括主动运维窗口信息
+// Configures the operations and maintenance (O&M) settings for a user. These settings include the active maintenance window.
 //
 // @param request - ModifyActiveOperationMaintainConfRequest
 //
@@ -20405,7 +20697,7 @@ func (client *Client) ModifyActiveOperationTasksWithContext(ctx context.Context,
 
 // Summary:
 //
-// 修改应用描述
+// Updates the description of a PolarDB application.
 //
 // @param request - ModifyApplicationDescriptionRequest
 //
@@ -20453,7 +20745,7 @@ func (client *Client) ModifyApplicationDescriptionWithContext(ctx context.Contex
 
 // Summary:
 //
-// 修改PolarDB应用参数
+// Modifies the configuration parameters of a sub-component within a specified PolarDB application.
 //
 // @param tmpReq - ModifyApplicationParameterRequest
 //
@@ -20515,7 +20807,7 @@ func (client *Client) ModifyApplicationParameterWithContext(ctx context.Context,
 
 // Summary:
 //
-// 修改应用提示词策略
+// Modifies the prompt for a specified application.
 //
 // @param request - ModifyApplicationPromptRequest
 //
@@ -20571,7 +20863,7 @@ func (client *Client) ModifyApplicationPromptWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 修改应用serverless配置
+// Modifies the Serverless configuration of a PolarDB application.
 //
 // @param request - ModifyApplicationServerlessConfRequest
 //
@@ -20619,7 +20911,7 @@ func (client *Client) ModifyApplicationServerlessConfWithContext(ctx context.Con
 
 // Summary:
 //
-// 修改应用白名单
+// Modifies the IP address whitelist and security group configuration for a PolarDB application.
 //
 // @param request - ModifyApplicationWhitelistRequest
 //
@@ -20683,7 +20975,7 @@ func (client *Client) ModifyApplicationWhitelistWithContext(ctx context.Context,
 
 // Summary:
 //
-// Modifies the auto-renewal attributes of a subscription PolarDB cluster.
+// Sets the auto-renewal status for a subscription PolarDB cluster.
 //
 // @param request - ModifyAutoRenewAttributeRequest
 //
@@ -20767,11 +21059,11 @@ func (client *Client) ModifyAutoRenewAttributeWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Modifies the automatic backup policy of a PolarDB cluster.
+// Modifies the automatic backup policy for a PolarDB cluster.
 //
 // Description:
 //
-// > You can also modify the automatic backup policy of a PolarDB cluster in the console. For more information, see [Backup settings](https://help.aliyun.com/document_detail/280422.html).
+// > You can also modify the automatic backup policy for a PolarDB cluster in the console. For more information, see [backup settings](https://help.aliyun.com/document_detail/280422.html).
 //
 // @param tmpReq - ModifyBackupPolicyRequest
 //
@@ -20893,7 +21185,7 @@ func (client *Client) ModifyBackupPolicyWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// 修改预算策略
+// Modifies a budget policy.
 //
 // @param request - ModifyBudgetPolicyRequest
 //
@@ -20957,7 +21249,7 @@ func (client *Client) ModifyBudgetPolicyWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 修改消费者
+// Modifies the properties of a consumer.
 //
 // @param request - ModifyConsumerRequest
 //
@@ -21021,7 +21313,7 @@ func (client *Client) ModifyConsumerWithContext(ctx context.Context, request *Mo
 
 // Summary:
 //
-// 修改消费者组
+// Modifies a consumer group.
 //
 // @param request - ModifyConsumerGroupRequest
 //
@@ -21081,7 +21373,7 @@ func (client *Client) ModifyConsumerGroupWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 修改限流策略
+// Modifies a cost rule.
 //
 // @param request - ModifyCostRuleRequest
 //
@@ -21153,7 +21445,7 @@ func (client *Client) ModifyCostRuleWithContext(ctx context.Context, request *Mo
 
 // Summary:
 //
-// 修改周期任务策略
+// Modifies the policy for a scheduled task.
 //
 // @param request - ModifyCronJobPolicyServerlessRequest
 //
@@ -21277,7 +21569,7 @@ func (client *Client) ModifyCronJobPolicyServerlessWithContext(ctx context.Conte
 
 // Summary:
 //
-// Modifies the configurations of a PolarDB for MySQL cluster.
+// Modify the feature configuration of a PolarDB MySQL cluster.
 //
 // @param request - ModifyDBClusterRequest
 //
@@ -21381,7 +21673,7 @@ func (client *Client) ModifyDBClusterWithContext(ctx context.Context, request *M
 
 // Summary:
 //
-// Creates or modifies the whitelists (IP whitelists and security groups) of a specified cluster.
+// Creates or modifies the access whitelist for a cluster. The whitelist can be an IP address whitelist or a security group.
 //
 // @param request - ModifyDBClusterAccessWhitelistRequest
 //
@@ -21465,7 +21757,7 @@ func (client *Client) ModifyDBClusterAccessWhitelistWithContext(ctx context.Cont
 
 // Summary:
 //
-// Modifies cluster parameters and applies them to specified nodes.
+// Modify cluster parameters and apply them to specified nodes.
 //
 // @param request - ModifyDBClusterAndNodesParametersRequest
 //
@@ -21557,7 +21849,7 @@ func (client *Client) ModifyDBClusterAndNodesParametersWithContext(ctx context.C
 
 // Summary:
 //
-// Changes the high availability mode of the cluster.
+// Modifies the high-availability mode of a cluster.
 //
 // @param request - ModifyDBClusterArchRequest
 //
@@ -21623,6 +21915,12 @@ func (client *Client) ModifyDBClusterArchWithContext(ctx context.Context, reques
 //
 // Enables or disables SQL collector for a PolarDB cluster. The features related to SQL collector include Audit Logs and SQL Explorer.
 //
+// Description:
+//
+// *Note:*	- This API has been deprecated and is no longer maintained. We recommend that you use [Enable or configure DAS Enterprise Edition](https://help.aliyun.com/document_detail/2778835.html).
+//
+// > If DAS Enterprise Edition is available in the region of the cluster, calling this API to enable SQL Audit automatically enables the latest DAS Enterprise Edition available in that region. For information about database engines and regions supported by each DAS Enterprise Edition version, see [Supported database engines and regions for DAS Enterprise Edition](https://help.aliyun.com/document_detail/156204.html).
+//
 // @param request - ModifyDBClusterAuditLogCollectorRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -21685,7 +21983,7 @@ func (client *Client) ModifyDBClusterAuditLogCollectorWithContext(ctx context.Co
 
 // Summary:
 //
-// Enables or disables the cluster lock feature for a PolarDB cluster.
+// Enables or disables the cluster lock.
 //
 // @param request - ModifyDBClusterDeletionRequest
 //
@@ -21749,7 +22047,7 @@ func (client *Client) ModifyDBClusterDeletionWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Modifies the name of a PolarDB cluster.
+// Modifies the description of a PolarDB cluster.
 //
 // @param request - ModifyDBClusterDescriptionRequest
 //
@@ -21813,7 +22111,7 @@ func (client *Client) ModifyDBClusterDescriptionWithContext(ctx context.Context,
 
 // Summary:
 //
-// 修改集群描述
+// Modifies the description of a cluster.
 //
 // @param request - ModifyDBClusterDescriptionZonalRequest
 //
@@ -21881,7 +22179,7 @@ func (client *Client) ModifyDBClusterDescriptionZonalWithContext(ctx context.Con
 
 // Summary:
 //
-// Modifies the attributes of a specified PolarDB cluster endpoint. For example, you can modify the following attributes for the specified cluster endpoint: read/write mode, consistency level, transaction splitting, primary node accepts read requests, and connection pool. You can also call the operation to specify whether newly added nodes are automatically associated with the specified cluster endpoint.
+// This operation modifies the properties of a PolarDB cluster endpoint. You can configure settings such as the read/write mode, automatic node addition, consistency level, transaction splitting, the connection pool, and whether the primary node accepts read requests.
 //
 // @param request - ModifyDBClusterEndpointRequest
 //
@@ -21977,7 +22275,7 @@ func (client *Client) ModifyDBClusterEndpointWithContext(ctx context.Context, re
 
 // Summary:
 //
-// # PolarDB边缘集群修改链接地址
+// Modifies the connection string for an edge cluster for PolarDB on ENS.
 //
 // @param request - ModifyDBClusterEndpointZonalRequest
 //
@@ -22077,11 +22375,11 @@ func (client *Client) ModifyDBClusterEndpointZonalWithContext(ctx context.Contex
 
 // Summary:
 //
-// Modifies the maintenance window of a PolarDB cluster.
+// Modifies the routine maintenance window for a PolarDB cluster.
 //
 // Description:
 //
-// >  We recommend that you set the routine maintenance window to off-peak hours. Alibaba Cloud maintains your cluster within the specified maintenance window to minimize the negative impacts on your business.
+// > Set the routine maintenance window for the cluster to a time during off-peak hours. Alibaba Cloud performs cluster maintenance during this window to minimize the impact on your business.
 //
 // @param request - ModifyDBClusterMaintainTimeRequest
 //
@@ -22145,15 +22443,15 @@ func (client *Client) ModifyDBClusterMaintainTimeWithContext(ctx context.Context
 
 // Summary:
 //
-// Switches or rolls back the task that migrates data from ApsaraDB for RDS to PolarDB.
+// Switches or rolls back a migration task for a one-click upgrade from RDS to PolarDB.
 //
 // Description:
 //
-//	  You can call this operation to switch the task that migrates data from ApsaraDB for RDS to PolarDB.
+// - If this operation is called before the switchover, it performs a switchover.
 //
-//		- You can call this operation to roll back the task that migrates data from ApsaraDB for RDS to PolarDB.
+// - If this operation is called after the switchover is complete, it performs a rollback.
 //
-// > Before you call this operation, ensure that a one-click upgrade task has been created for the cluster. You can call the [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) operation to create an upgrade task. Set the **CreationOption*	- parameter to **MigrationFromRDS**. For more information, see [Create a PolarDB for MySQL cluster by using the Migration from RDS method](https://help.aliyun.com/document_detail/121582.html).
+// > A one-click upgrade task must be created for the cluster before you call this operation. To create the task, call the [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) operation and set the **CreationOption*	- parameter to **MigrationFromRDS**. For more information, see [One-click upgrade from RDS MySQL to PolarDB for MySQL](https://help.aliyun.com/document_detail/121582.html).
 //
 // @param request - ModifyDBClusterMigrationRequest
 //
@@ -22233,7 +22531,7 @@ func (client *Client) ModifyDBClusterMigrationWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 修改dts源实例、目标实例
+// Modifies the source and target instances of a Data Transmission Service (DTS) task.
 //
 // @param request - ModifyDBClusterMigrationEndpointRequest
 //
@@ -22385,15 +22683,13 @@ func (client *Client) ModifyDBClusterMonitorWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Modifies the parameters of a specified PolarDB cluster or applies existing parameter templates to a specified cluster.
+// Modifies the parameters of a PolarDB cluster or applies an existing parameter template to a destination cluster.
 //
 // Description:
 //
-// PolarDB supports the parameter template feature to centrally manage clusters. You can configure a number of parameters at a time by using a parameter template and apply the template to a PolarDB cluster. For more information, see [Use a parameter template](https://help.aliyun.com/document_detail/207009.html).
+// The parameter template feature in PolarDB lets you centrally manage parameters and apply them to your clusters. For more information, see [Use parameter templates](https://help.aliyun.com/document_detail/207009.html).
 //
-// **
-//
-// **Only PolarDB for MySQL clusters support parameter templates.
+// > The parameter template feature is available only for PolarDB for MySQL.
 //
 // @param request - ModifyDBClusterParametersRequest
 //
@@ -22569,7 +22865,7 @@ func (client *Client) ModifyDBClusterPrimaryZoneWithContext(ctx context.Context,
 
 // Summary:
 //
-// Modifies the configurations of a resource group for a database cluster.
+// Modifies the resource group of a database cluster.
 //
 // @param request - ModifyDBClusterResourceGroupRequest
 //
@@ -22637,7 +22933,7 @@ func (client *Client) ModifyDBClusterResourceGroupWithContext(ctx context.Contex
 
 // Summary:
 //
-// Enables or disables the SSL encryption feature for a PolarDB cluster, or updates the CA certificate of the cluster.
+// Enables or disables SSL encryption for a PolarDB cluster, or updates its CA certificate.
 //
 // @param request - ModifyDBClusterSSLRequest
 //
@@ -22713,7 +23009,7 @@ func (client *Client) ModifyDBClusterSSLWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Modifies the configurations of a serverless cluster.
+// Modifies the configuration of a serverless cluster.
 //
 // @param request - ModifyDBClusterServerlessConfRequest
 //
@@ -22837,7 +23133,7 @@ func (client *Client) ModifyDBClusterServerlessConfWithContext(ctx context.Conte
 
 // Summary:
 //
-// Changes the storage performance of a PolarDB for MySQL cluster.
+// Modifies the storage performance of a PolarDB for MySQL cluster.
 //
 // @param request - ModifyDBClusterStoragePerformanceRequest
 //
@@ -22913,7 +23209,11 @@ func (client *Client) ModifyDBClusterStoragePerformanceWithContext(ctx context.C
 
 // Summary:
 //
-// Changes the storage capacity of a pay-as-you-go cluster of Enterprise Edition or a cluster of Standard Edition.
+// This operation modifies the storage space for pay-as-you-go enterprise edition and standard edition clusters.
+//
+// Description:
+//
+// > You cannot scale down the storage space of PolarDB for PostgreSQL clusters.
 //
 // @param request - ModifyDBClusterStorageSpaceRequest
 //
@@ -23005,13 +23305,15 @@ func (client *Client) ModifyDBClusterStorageSpaceWithContext(ctx context.Context
 
 // Summary:
 //
-// Enables the transparent data encryption (TDE) feature for a PolarDB cluster.
+// # ModifyDBClusterTDE
 //
 // Description:
 //
-// > 	- To perform this operation, you must activate KMS first. For more information, see [Purchase a dedicated KMS instance](https://help.aliyun.com/document_detail/153781.html).
+// > - You must activate Key Management Service (KMS) before you perform this operation. For more information, see [Purchase a dedicated KMS instance](https://help.aliyun.com/document_detail/153781.html).
 //
-// > 	- After TDE is enabled, you cannot disable TDE.
+// >
+//
+// > - You cannot disable transparent data encryption (TDE) after you enable it.
 //
 // @param request - ModifyDBClusterTDERequest
 //
@@ -23091,7 +23393,7 @@ func (client *Client) ModifyDBClusterTDEWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 修改集群VSwitch参数
+// Modifies the vSwitch parameters for a cluster.
 //
 // @param request - ModifyDBClusterVpcRequest
 //
@@ -23231,7 +23533,7 @@ func (client *Client) ModifyDBDescriptionWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 修改PolarDB边缘云集群数据库描述
+// Modifies the database description of an edge cluster for PolarDB on ENS.
 //
 // @param request - ModifyDBDescriptionZonalRequest
 //
@@ -23303,7 +23605,7 @@ func (client *Client) ModifyDBDescriptionZonalWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Modifies the endpoints of a PolarDB cluster, including the primary endpoint, default cluster endpoint, custom cluster endpoint, and private domain name.
+// Modifies the connection address of a PolarDB cluster. The address can be a primary address, default cluster address, custom cluster address, or private domain name.
 //
 // @param request - ModifyDBEndpointAddressRequest
 //
@@ -23387,7 +23689,7 @@ func (client *Client) ModifyDBEndpointAddressWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Changes the node specifications of a PolarDB cluster.
+// Modifies the node specifications of a PolarDB cluster.
 //
 // @param request - ModifyDBNodeClassRequest
 //
@@ -23489,6 +23791,10 @@ func (client *Client) ModifyDBNodeClassWithContext(ctx context.Context, request 
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the configuration of a node in a PolarDB cluster.
+//
 // @param request - ModifyDBNodeConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -23563,7 +23869,7 @@ func (client *Client) ModifyDBNodeConfigWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 修改物理节点描述
+// Modifies the name of a node in a PolarDB cluster.
 //
 // @param request - ModifyDBNodeDescriptionRequest
 //
@@ -23699,7 +24005,7 @@ func (client *Client) ModifyDBNodeHotReplicaModeWithContext(ctx context.Context,
 
 // Summary:
 //
-// 修改节点的Scc
+// Modifies the Snapshot Consistency Cluster (SCC) mode for a specified node in a PolarDB cluster.
 //
 // @param request - ModifyDBNodeSccModeRequest
 //
@@ -23767,7 +24073,7 @@ func (client *Client) ModifyDBNodeSccModeWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Changes the specifications of a node in a PolarDB cluster.
+// Modifies the specifications of a single node in a PolarDB cluster.
 //
 // @param request - ModifyDBNodesClassRequest
 //
@@ -23867,7 +24173,7 @@ func (client *Client) ModifyDBNodesClassWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Modifies the parameters of a node and applies them to specified nodes.
+// Modifies and applies the parameters of one or more nodes.
 //
 // @param request - ModifyDBNodesParametersRequest
 //
@@ -23951,7 +24257,7 @@ func (client *Client) ModifyDBNodesParametersWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 变更角色权限
+// Modifies role permissions.
 //
 // @param request - ModifyEncryptionDBRolePrivilegeRequest
 //
@@ -24019,7 +24325,7 @@ func (client *Client) ModifyEncryptionDBRolePrivilegeWithContext(ctx context.Con
 
 // Summary:
 //
-// 变更加密策略
+// Modifies an encryption policy.
 //
 // @param request - ModifyEncryptionDBSecretRequest
 //
@@ -24091,7 +24397,7 @@ func (client *Client) ModifyEncryptionDBSecretWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 修改sql防火墙配置
+// Modifies the configuration of the SQL firewall.
 //
 // @param request - ModifyFirewallRulesRequest
 //
@@ -24235,7 +24541,7 @@ func (client *Client) ModifyGlobalDatabaseNetworkWithContext(ctx context.Context
 
 // Summary:
 //
-// Modifies an IP whitelist template.
+// Modifies an IP address whitelist template.
 //
 // @param request - ModifyGlobalSecurityIPGroupRequest
 //
@@ -24315,7 +24621,7 @@ func (client *Client) ModifyGlobalSecurityIPGroupWithContext(ctx context.Context
 
 // Summary:
 //
-// Modifies the name of a global IP whitelist template.
+// Modifies the name of a global IP address whitelist template.
 //
 // @param request - ModifyGlobalSecurityIPGroupNameRequest
 //
@@ -24391,7 +24697,7 @@ func (client *Client) ModifyGlobalSecurityIPGroupNameWithContext(ctx context.Con
 
 // Summary:
 //
-// Modifies the relationship between a cluster and a global IP whitelist template.
+// Modifies the association between a cluster and a global IP address whitelist template.
 //
 // @param request - ModifyGlobalSecurityIPGroupRelationRequest
 //
@@ -24467,7 +24773,7 @@ func (client *Client) ModifyGlobalSecurityIPGroupRelationWithContext(ctx context
 
 // Summary:
 //
-// Modifies the retention policy of the log backups in a PolarDB cluster.
+// Modifies the log backup retention policy for a PolarDB cluster.
 //
 // @param tmpReq - ModifyLogBackupPolicyRequest
 //
@@ -24549,7 +24855,7 @@ func (client *Client) ModifyLogBackupPolicyWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// Modifies or adds a data masking rule.
+// Modifies or creates data masking rules.
 //
 // @param request - ModifyMaskingRulesRequest
 //
@@ -24625,7 +24931,7 @@ func (client *Client) ModifyMaskingRulesWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 修改模型API
+// Modifies a model API.
 //
 // @param request - ModifyModelApiRequest
 //
@@ -24701,7 +25007,7 @@ func (client *Client) ModifyModelApiWithContext(ctx context.Context, request *Mo
 
 // Summary:
 //
-// 修改模型服务
+// Modifies a model service.
 //
 // @param request - ModifyModelServiceRequest
 //
@@ -24861,7 +25167,7 @@ func (client *Client) ModifyPendingMaintenanceActionWithContext(ctx context.Cont
 
 // Summary:
 //
-// 修改限流策略
+// Modifies a rate limit policy.
 //
 // @param request - ModifyRateLimitPolicyRequest
 //
@@ -24921,7 +25227,7 @@ func (client *Client) ModifyRateLimitPolicyWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 配置资源包
+// Modifies a cross-cloud resource plan.
 //
 // @param request - ModifyResourcePackageRequest
 //
@@ -24969,7 +25275,7 @@ func (client *Client) ModifyResourcePackageWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 修改SQL限流规则
+// Modifies SQL throttling rules.
 //
 // @param request - ModifySQLRateLimitingRulesRequest
 //
@@ -25037,7 +25343,7 @@ func (client *Client) ModifySQLRateLimitingRulesWithContext(ctx context.Context,
 
 // Summary:
 //
-// 修改目标计划任务
+// Modifies the specified scheduled task.
 //
 // @param request - ModifyScheduleTaskRequest
 //
@@ -25113,7 +25419,7 @@ func (client *Client) ModifyScheduleTaskWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 重命名或移动文件
+// Renames or moves files in a PolarFs instance.
 //
 // @param request - MovePolarFsObjectsRequest
 //
@@ -25161,7 +25467,7 @@ func (client *Client) MovePolarFsObjectsWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Enables the PolarDB for AI feature for a cluster.
+// Enables the PolarDB for AI feature.
 //
 // @param request - OpenAITaskRequest
 //
@@ -25241,7 +25547,55 @@ func (client *Client) OpenAITaskWithContext(ctx context.Context, request *OpenAI
 
 // Summary:
 //
-// 更新PolarClaw配置
+// Restarts, pauses, or starts an application on a PolarDB instance without deleting the instance.
+//
+// @param request - OperateApplicationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OperateApplicationResponse
+func (client *Client) OperateApplicationWithContext(ctx context.Context, request *OperateApplicationRequest, runtime *dara.RuntimeOptions) (_result *OperateApplicationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.Operation) {
+		query["Operation"] = request.Operation
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("OperateApplication"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &OperateApplicationResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates a PolarClaw configuration.
 //
 // @param tmpReq - PatchPolarClawConfigRequest
 //
@@ -25343,7 +25697,7 @@ func (client *Client) ReactivateDBClusterBackupWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Updates the storage usage of a cluster.
+// Refreshes the storage usage for a cluster instance.
 //
 // @param request - RefreshDBClusterStorageUsageRequest
 //
@@ -25403,7 +25757,7 @@ func (client *Client) RefreshDBClusterStorageUsageWithContext(ctx context.Contex
 
 // Summary:
 //
-// 拒绝PolarClaw设备配对
+// Rejects a PolarClaw device pairing request.
 //
 // @param request - RejectPolarClawDevicePairRequest
 //
@@ -25451,7 +25805,7 @@ func (client *Client) RejectPolarClawDevicePairWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 删除应用环境变量
+// Removes application environment variables. This operation supports only PolarClaw.
 //
 // @param tmpReq - RemoveApplicationEnvironmentVariablesRequest
 //
@@ -25509,11 +25863,11 @@ func (client *Client) RemoveApplicationEnvironmentVariablesWithContext(ctx conte
 
 // Summary:
 //
-// Removes a secondary cluster from a GDN.
+// Removes a secondary cluster from a Global Database Network (GDN).
 //
 // Description:
 //
-// >  You cannot remove the primary cluster from a GDN.
+// > The primary cluster in a GDN cannot be removed.
 //
 // @param request - RemoveDBClusterFromGDNRequest
 //
@@ -25589,7 +25943,7 @@ func (client *Client) RemoveDBClusterFromGDNWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 移除PolarClaw已配对设备
+// Unpairs a PolarClaw device.
 //
 // @param request - RemovePolarClawDevicePairRequest
 //
@@ -25637,7 +25991,7 @@ func (client *Client) RemovePolarClawDevicePairWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 删除PolarClaw MCP Server
+// Deletes a PolarClaw MCP server.
 //
 // @param request - RemovePolarClawMCPServerRequest
 //
@@ -25689,9 +26043,11 @@ func (client *Client) RemovePolarClawMCPServerWithContext(ctx context.Context, r
 //
 // Description:
 //
-// >- Only PolarDB for MySQL clusters support this operation.
+// > - Only PolarDB for MySQL clusters support this operation.
 //
-// >- If the privileged account of your cluster encounters exceptions, you can call this operation to reset the permissions. For example, the permissions are accidentally revoked.
+// >
+//
+// > - If the privileged account of your cluster encounters exceptions, you can reset the permissions by using this operation. For example, the permissions are accidentally revoked.
 //
 // @param request - ResetAccountRequest
 //
@@ -25757,6 +26113,10 @@ func (client *Client) ResetAccountWithContext(ctx context.Context, request *Rese
 	return _result, _err
 }
 
+// Summary:
+//
+// Resets the password for a PolarDB database account.
+//
 // @param request - ResetAccountPasswordRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -25823,7 +26183,7 @@ func (client *Client) ResetAccountPasswordWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 重置PolarDB边缘集群账号
+// Resets an account in a PolarDB for Xscale cluster.
 //
 // @param request - ResetAccountZonalRequest
 //
@@ -25895,7 +26255,7 @@ func (client *Client) ResetAccountZonalWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 重置API密钥
+// Resets an api key.
 //
 // @param request - ResetConsumerApiKeyRequest
 //
@@ -25947,7 +26307,7 @@ func (client *Client) ResetConsumerApiKeyWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Rebuilds a secondary cluster in a Global Database Network (GDN).
+// Resets the network of a secondary cluster in a Global Database Network (GDN).
 //
 // @param request - ResetGlobalDatabaseNetworkRequest
 //
@@ -26083,7 +26443,7 @@ func (client *Client) RestartDBLinkWithContext(ctx context.Context, request *Res
 
 // Summary:
 //
-// Restarts a node in a PolarDB cluster.
+// Restarts a node of a PolarDB cluster.
 //
 // @param request - RestartDBNodeRequest
 //
@@ -26159,7 +26519,7 @@ func (client *Client) RestartDBNodeWithContext(ctx context.Context, request *Res
 
 // Summary:
 //
-// 重启poalrdb边缘云集群节点
+// Restarts a node of an edge cluster for PolarDB on ENS.
 //
 // @param request - RestartDBNodeZonalRequest
 //
@@ -26227,7 +26587,7 @@ func (client *Client) RestartDBNodeZonalWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Restores PolarDB databases and tables.
+// Restores databases or tables to a PolarDB cluster.
 //
 // @param request - RestoreTableRequest
 //
@@ -26303,7 +26663,7 @@ func (client *Client) RestoreTableWithContext(ctx context.Context, request *Rest
 
 // Summary:
 //
-// Revokes the access permissions on one or more databases from a specified PolarDB standard account.
+// Revokes access permissions on a database from a PolarDB standard account.
 //
 // @param request - RevokeAccountPrivilegeRequest
 //
@@ -26371,7 +26731,7 @@ func (client *Client) RevokeAccountPrivilegeWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 撤销账号权限
+// Revokes permissions from an account.
 //
 // @param request - RevokeAccountPrivilegeZonalRequest
 //
@@ -26443,7 +26803,7 @@ func (client *Client) RevokeAccountPrivilegeZonalWithContext(ctx context.Context
 
 // Summary:
 //
-// 手动执行PolarClaw定时任务
+// Runs a PolarClaw cron job.
 //
 // @param request - RunPolarClawCronJobRequest
 //
@@ -26499,7 +26859,7 @@ func (client *Client) RunPolarClawCronJobWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 检索记忆
+// Retrieves memories based on a search query.
 //
 // @param request - SearchMemoriesRequest
 //
@@ -26567,7 +26927,19 @@ func (client *Client) SearchMemoriesWithContext(ctx context.Context, request *Se
 
 // Summary:
 //
-// 为目录配置配额或应用配额规则
+// Sets file quota rules for specific directories in a PolarFS instance.
+//
+// Description:
+//
+// ## Request
+//
+// This operation sets file quota rules for specific directories in a PolarFS instance. Use the `FilePathQuotas` parameter to define the target directories and their properties. The path for `FilePathId` must be an absolute path from the root directory, not from a mount target. The `Strategy` parameter controls how the rule applies to existing files. By default, the operation applies a rule only if one does not already exist.
+//
+// ### Notes
+//
+// - The `FilePathQuotas` list can contain up to 21 items.
+//
+// - To apply the rule to subdirectories at multiple levels under `FilePathId`, set the `MaxDepth` parameter. To traverse to the deepest level, set this value to 0.
 //
 // @param request - SetPolarFsFileQuotaRequest
 //
@@ -26699,7 +27071,7 @@ func (client *Client) SwitchOverGlobalDatabaseNetworkWithContext(ctx context.Con
 
 // Summary:
 //
-// Creates tags for a PolarDB cluster.
+// Adds tags to PolarDB clusters.
 //
 // @param request - TagResourcesRequest
 //
@@ -26771,7 +27143,7 @@ func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagR
 
 // Summary:
 //
-// Temporarily changes the node configurations.
+// Temporarily Modifies the configuration of a node.
 //
 // @param request - TempModifyDBNodeRequest
 //
@@ -26863,13 +27235,15 @@ func (client *Client) TempModifyDBNodeWithContext(ctx context.Context, request *
 //
 // Description:
 //
+// > - PolarDB clusters support two billing methods: subscription and pay-as-you-go. You can change the billing method of a cluster from subscription to pay-as-you-go, or from pay-as-you-go to subscription. For more information, see [Change the billing method from subscription to pay-as-you-go](https://help.aliyun.com/document_detail/172886.html) and [Change the billing method from pay-as-you-go to subscription](https://help.aliyun.com/document_detail/84076.html).
+//
 // >
 //
-//   - PolarDB clusters support the subscription and pay-as-you-go billing methods. You can change the billing method from subscription to pay-as-you-go or from pay-as-you-go to subscription based on your business requirements. For more information, see [Change the billing method from subscription to pay-as-you-go](https://help.aliyun.com/document_detail/172886.html) and [Change the billing method from pay-as-you-go to subscription](https://help.aliyun.com/document_detail/84076.html).
+// > - You cannot change the billing method from pay-as-you-go to subscription if your Alibaba Cloud account has an insufficient balance.
 //
-//   - You cannot change the billing method from pay-as-you-go to subscription if your account balance is insufficient.
+// >
 //
-//   - If you change the billing method from subscription to pay-as-you-go, the system automatically refunds the balance of the prepaid subscription fees.
+// > - When you change the billing method from subscription to pay-as-you-go, the system automatically refunds your remaining prepaid fees.
 //
 // @param request - TransformDBClusterPayTypeRequest
 //
@@ -26961,7 +27335,7 @@ func (client *Client) TransformDBClusterPayTypeWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 解绑PolarClaw Agent通道
+// Unbinds a PolarClaw Agent.
 //
 // @param request - UnbindPolarClawAgentRequest
 //
@@ -27017,7 +27391,7 @@ func (client *Client) UnbindPolarClawAgentWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 卸载PolarClaw Plugin
+// Uninstalls a PolarClaw plugin.
 //
 // @param request - UninstallPolarClawPluginRequest
 //
@@ -27069,7 +27443,7 @@ func (client *Client) UninstallPolarClawPluginWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Unbinds tags from PolarDB clusters.
+// Detaches tags from a PolarDB cluster.
 //
 // @param request - UntagResourcesRequest
 //
@@ -27145,7 +27519,7 @@ func (client *Client) UntagResourcesWithContext(ctx context.Context, request *Un
 
 // Summary:
 //
-// 更新应用环境变量
+// Updates the environment variables of an application. This operation is only supported for PolarClaw.
 //
 // @param tmpReq - UpdateApplicationEnvironmentVariablesRequest
 //
@@ -27203,7 +27577,7 @@ func (client *Client) UpdateApplicationEnvironmentVariablesWithContext(ctx conte
 
 // Summary:
 //
-// 更新插件
+// Updates one or more extensions.
 //
 // @param request - UpdateExtensionsRequest
 //
@@ -27291,7 +27665,7 @@ func (client *Client) UpdateExtensionsWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 更新PolarClaw Agent
+// # Update PolarClaw Agent
 //
 // @param tmpReq - UpdatePolarClawAgentRequest
 //
@@ -27369,7 +27743,7 @@ func (client *Client) UpdatePolarClawAgentWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// 更新PolarClaw定时任务
+// Updates the configuration of a PolarClaw scheduled task, allowing for partial field updates.
 //
 // @param tmpReq - UpdatePolarClawCronJobRequest
 //
@@ -27585,7 +27959,7 @@ func (client *Client) UpgradeDBClusterVersionWithContext(ctx context.Context, re
 
 // Summary:
 //
-// # PolarDB边缘云集群小版本升级
+// Upgrades the minor version of a PolarDB cluster.
 //
 // @param request - UpgradeDBClusterVersionZonalRequest
 //
@@ -27681,7 +28055,7 @@ func (client *Client) UpgradeDBClusterVersionZonalWithContext(ctx context.Contex
 
 // Summary:
 //
-// 升级PolarClaw Channel
+// Upgrades a PolarClaw channel.
 //
 // @param tmpReq - UpgradePolarClawChannelRequest
 //
@@ -27751,7 +28125,7 @@ func (client *Client) UpgradePolarClawChannelWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// 升级PolarClaw Plugin
+// Upgrades a PolarClaw plugin.
 //
 // @param request - UpgradePolarClawPluginRequest
 //
@@ -27807,7 +28181,7 @@ func (client *Client) UpgradePolarClawPluginWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 执行自定义命令
+// Upgrades the PolarClaw feature.
 //
 // @param request - UpgradePolarClawSkillsRequest
 //

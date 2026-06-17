@@ -22,6 +22,8 @@ type iDescribeAvailableCrossRegionsRequest interface {
 }
 
 type DescribeAvailableCrossRegionsRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:

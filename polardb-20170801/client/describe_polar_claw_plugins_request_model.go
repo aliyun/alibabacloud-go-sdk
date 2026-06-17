@@ -16,13 +16,16 @@ type iDescribePolarClawPluginsRequest interface {
 }
 
 type DescribePolarClawPluginsRequest struct {
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pa-**************
-	ApplicationId *string   `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	PluginList    []*string `json:"PluginList,omitempty" xml:"PluginList,omitempty" type:"Repeated"`
+	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// A list of plugin IDs. If omitted, all plugins are returned.
+	PluginList []*string `json:"PluginList,omitempty" xml:"PluginList,omitempty" type:"Repeated"`
 }
 
 func (s DescribePolarClawPluginsRequest) String() string {

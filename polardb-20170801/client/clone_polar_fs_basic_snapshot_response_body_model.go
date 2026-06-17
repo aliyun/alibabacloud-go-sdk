@@ -22,24 +22,32 @@ type iClonePolarFsBasicSnapshotResponseBody interface {
 }
 
 type ClonePolarFsBasicSnapshotResponseBody struct {
+	// The cluster ID.
+	//
 	// example:
 	//
 	// pc-bp150t3****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The ID of the Polarlakebase instance.
+	//
 	// example:
 	//
 	// pfs-2ze0i7*****
 	PolarFsInstanceId *string `json:"PolarFsInstanceId,omitempty" xml:"PolarFsInstanceId,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// CED079B7-A408-41A1-BFF1-EC608E******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The source path of the file resource.
+	//
 	// example:
 	//
 	// /test
 	SourcePath *string `json:"SourcePath,omitempty" xml:"SourcePath,omitempty"`
+	// The destination path.
+	//
 	// example:
 	//
 	// /testclone

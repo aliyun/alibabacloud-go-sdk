@@ -28,11 +28,11 @@ type iDescribePendingMaintenanceActionsRequest interface {
 }
 
 type DescribePendingMaintenanceActionsRequest struct {
-	// Specifies whether to return the historical tasks. Valid values:
+	// Specifies whether to return historical tasks. Valid values:
 	//
-	// 	- **0**: returns the current task.
+	// - **0**: returns current tasks.
 	//
-	// 	- **1**: returns the historical tasks.
+	// - **1**: returns historical tasks.
 	//
 	// Default value: **0**.
 	//
@@ -42,7 +42,7 @@ type DescribePendingMaintenanceActionsRequest struct {
 	IsHistory    *int32  `json:"IsHistory,omitempty" xml:"IsHistory,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +50,7 @@ type DescribePendingMaintenanceActionsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//

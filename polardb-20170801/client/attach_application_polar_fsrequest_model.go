@@ -20,20 +20,32 @@ type iAttachApplicationPolarFSRequest interface {
 }
 
 type AttachApplicationPolarFSRequest struct {
+	// Application ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// AccessKey ID of the Alibaba Cloud account or RAM user. Ensure that you granted permissions to this account or user when you created the PolarLakeBase instance.
+	//
 	// example:
 	//
 	// LT**********************
 	PolarFSAccessKeyId *string `json:"PolarFSAccessKeyId,omitempty" xml:"PolarFSAccessKeyId,omitempty"`
+	// AccessKey secret of the Alibaba Cloud account or RAM user
+	//
 	// example:
 	//
 	// H3****************************
 	PolarFSAccessKeySecret *string `json:"PolarFSAccessKeySecret,omitempty" xml:"PolarFSAccessKeySecret,omitempty"`
+	// PolarLakeBase cold-storage instance ID
+	//
+	// Only the following applications support cold-storage instances:
+	//
+	// - Supabase
+	//
 	// This parameter is required.
 	//
 	// example:

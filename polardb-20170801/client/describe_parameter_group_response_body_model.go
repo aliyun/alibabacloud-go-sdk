@@ -16,9 +16,9 @@ type iDescribeParameterGroupResponseBody interface {
 }
 
 type DescribeParameterGroupResponseBody struct {
-	// Details about the parameter templates.
+	// A list of parameter templates.
 	ParameterGroup []*DescribeParameterGroupResponseBodyParameterGroup `json:"ParameterGroup,omitempty" xml:"ParameterGroup,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -66,29 +66,29 @@ func (s *DescribeParameterGroupResponseBody) Validate() error {
 }
 
 type DescribeParameterGroupResponseBodyParameterGroup struct {
-	// The time when the parameter template was created. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+	// The creation time of the parameter template, in `yyyy-MM-ddTHH:mm:ssZ` format (UTC).
 	//
 	// example:
 	//
 	// 2023-03-10T08:40:39Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The type of the database engine.
+	// The database engine type.
 	//
 	// example:
 	//
 	// MySQL
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
-	// The version of the database engine.
+	// The database engine version.
 	//
 	// example:
 	//
 	// 8.0
 	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
-	// Indicates whether to restart the cluster when this parameter template is applied. Valid values:
+	// Specifies whether a cluster restart is required for the parameter template to take effect. Valid values:
 	//
-	// 	- **0**: A restart is not required.
+	// - **0**: No restart is required.
 	//
-	// 	- **1**: A restart is required.
+	// - **1**: A restart is required.
 	//
 	// example:
 	//
@@ -100,7 +100,7 @@ type DescribeParameterGroupResponseBodyParameterGroup struct {
 	//
 	// 2
 	ParameterCounts *int32 `json:"ParameterCounts,omitempty" xml:"ParameterCounts,omitempty"`
-	// Details about the parameters.
+	// A list of parameters.
 	ParameterDetail []*DescribeParameterGroupResponseBodyParameterGroupParameterDetail `json:"ParameterDetail,omitempty" xml:"ParameterDetail,omitempty" type:"Repeated"`
 	// The description of the parameter template.
 	//
@@ -122,11 +122,11 @@ type DescribeParameterGroupResponseBodyParameterGroup struct {
 	ParameterGroupName *string `json:"ParameterGroupName,omitempty" xml:"ParameterGroupName,omitempty"`
 	// The type of the parameter template. Valid values:
 	//
-	// 	- **0**: the default parameter template.
+	// - **0**: default template
 	//
-	// 	- **1**: a custom parameter template.
+	// - **1**: custom template
 	//
-	// 	- **2**: an automatic backup parameter template. After you apply this type of template, the system automatically backs up the original parameter settings and saves the backup as a template.
+	// - **2**: automatic backup template. This type of template is an automatic backup of the previous settings, created when you apply a new template.
 	//
 	// example:
 	//
@@ -246,13 +246,13 @@ func (s *DescribeParameterGroupResponseBodyParameterGroup) Validate() error {
 }
 
 type DescribeParameterGroupResponseBodyParameterGroupParameterDetail struct {
-	// The name of the parameter.
+	// The parameter name.
 	//
 	// example:
 	//
 	// back_log
 	ParamName *string `json:"ParamName,omitempty" xml:"ParamName,omitempty"`
-	// The value of the parameter.
+	// The parameter value.
 	//
 	// example:
 	//

@@ -30,9 +30,9 @@ type iRemoveDBClusterFromGDNRequest interface {
 }
 
 type RemoveDBClusterFromGDNRequest struct {
-	// The ID of the cluster in the GDN.
+	// The ID of the secondary cluster that you want to remove from the GDN.
 	//
-	// >  You can call the [DescribeGlobalDatabaseNetwork](https://help.aliyun.com/document_detail/264580.html) operation to view the ID of the cluster in the GDN.
+	// > You can call the [DescribeGlobalDatabaseNetwork](https://help.aliyun.com/document_detail/264580.html) operation to query the IDs of clusters in the GDN.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,12 @@ type RemoveDBClusterFromGDNRequest struct {
 	//
 	// pc-wz9fb5nn44u1d****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	Force       *bool   `json:"Force,omitempty" xml:"Force,omitempty"`
+	// Specifies whether to forcibly remove the cluster.
+	//
+	// example:
+	//
+	// false
+	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
 	// The ID of the GDN.
 	//
 	// This parameter is required.
@@ -54,7 +59,12 @@ type RemoveDBClusterFromGDNRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	TargetDBClusterId    *string `json:"TargetDBClusterId,omitempty" xml:"TargetDBClusterId,omitempty"`
+	// The ID of the target cluster.
+	//
+	// example:
+	//
+	// pc-wz9fb5nn44u1d****
+	TargetDBClusterId *string `json:"TargetDBClusterId,omitempty" xml:"TargetDBClusterId,omitempty"`
 }
 
 func (s RemoveDBClusterFromGDNRequest) String() string {

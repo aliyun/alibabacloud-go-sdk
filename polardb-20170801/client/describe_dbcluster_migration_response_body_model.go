@@ -40,79 +40,87 @@ type iDescribeDBClusterMigrationResponseBody interface {
 }
 
 type DescribeDBClusterMigrationResponseBody struct {
-	// The mode of the source ApsaraDB RDS instance. Valid values:
-	//
-	// 	- **rw**: read and write mode
-	//
-	// 	- **ro**: read-only mode
+	// The comments on the migration exception. If no exception occurs during the migration, an empty value is returned.
 	//
 	// example:
 	//
 	// test
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The port number.
+	// The details of the PolarDB endpoints.
 	DBClusterEndpointList []*DescribeDBClusterMigrationResponseBodyDBClusterEndpointList `json:"DBClusterEndpointList,omitempty" xml:"DBClusterEndpointList,omitempty" type:"Repeated"`
-	// The replication latency between the ApsaraDB RDS instance and the PolarDB cluster. Unit: seconds.
+	// The cluster ID.
 	//
 	// example:
 	//
 	// pc-****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// Details about the endpoints.
+	// The read/write mode of the cluster. Valid values:
+	//
+	// - **rw**: Read and write.
+	//
+	// - **ro**: Read-only.
 	//
 	// example:
 	//
 	// ro
 	DBClusterReadWriteMode *string `json:"DBClusterReadWriteMode,omitempty" xml:"DBClusterReadWriteMode,omitempty"`
-	// The vSwitch ID.
+	// The replication delay between the ApsaraDB RDS instance and the PolarDB cluster, in seconds.
 	//
 	// example:
 	//
 	// 0
 	DelayedSeconds *int32 `json:"DelayedSeconds,omitempty" xml:"DelayedSeconds,omitempty"`
-	// The network type of the endpoint. Valid values:
-	//
-	// 	- **Public**: the public endpoint
-	//
-	// 	- **Private**: the internal endpoint (VPC)
-	//
-	// 	- **Inner**: the internal endpoint (classic network)
+	// The ID of the sync task.
 	//
 	// example:
 	//
 	// dts**********618bs
 	DtsInstanceId *string `json:"DtsInstanceId,omitempty" xml:"DtsInstanceId,omitempty"`
-	// The mode of the PolarDB cluster. Valid values:
-	//
-	// 	- **rw**: read and write mode
-	//
-	// 	- **ro**: read-only mode
+	// The time when the replication relationship between the ApsaraDB RDS instance and the PolarDB cluster expires. The time is in the `YYYY-MM-DDThh:mm:ssZ` format and is displayed in UTC.
 	//
 	// example:
 	//
 	// 2020-06-17T01:56:36Z
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	// The endpoint.
+	// The migration status of the PolarDB cluster. Valid values:
+	//
+	// - **NO_MIGRATION**: No migration task is created.
+	//
+	// - **RDS2POLARDB_CLONING**: Data is being cloned.
+	//
+	// - **RDS2POLARDB_SYNCING**: Data is being synchronized. In this state, the PolarDB cluster is read-only, and the ApsaraDB RDS instance is read-write.
+	//
+	// - **SWITCHING**: The database is being switched.
+	//
+	// - **POLARDB2RDS_SYNCING**: The database switch is complete. In this state, the PolarDB cluster is read-write, and the ApsaraDB RDS instance is read-only. Change the endpoints in your application.
+	//
+	// - **ROLLBACK**: The migration is being rolled back. After the rollback is complete, the migration status changes to **RDS2POLARDB_SYNCING**.
+	//
+	// - **CLOSING_MIGRATION**: The migration task is being shut down.
 	//
 	// example:
 	//
 	// RDS2POLARDB_SYNCING
 	MigrationStatus *string `json:"MigrationStatus,omitempty" xml:"MigrationStatus,omitempty"`
-	// The endpoints of the ApsaraDB RDS instance.
+	// The details of the ApsaraDB RDS endpoints.
 	RdsEndpointList []*DescribeDBClusterMigrationResponseBodyRdsEndpointList `json:"RdsEndpointList,omitempty" xml:"RdsEndpointList,omitempty" type:"Repeated"`
-	// The ID of the synchronous task.
+	// The read/write mode of the source ApsaraDB RDS instance. Valid values:
+	//
+	// - **rw**: Read and write.
+	//
+	// - **ro**: Read-only.
 	//
 	// example:
 	//
 	// rw
 	RdsReadWriteMode *string `json:"RdsReadWriteMode,omitempty" xml:"RdsReadWriteMode,omitempty"`
-	// The ID of the source ApsaraDB RDS instance.
+	// The request ID.
 	//
 	// example:
 	//
 	// F2A9EFA7-915F-4572-8299-85A307******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The endpoints of the ApsaraDB RDS instance.
+	// The ID of the source ApsaraDB RDS instance.
 	//
 	// example:
 	//
@@ -120,29 +128,19 @@ type DescribeDBClusterMigrationResponseBody struct {
 	SourceRDSDBInstanceId *string `json:"SourceRDSDBInstanceId,omitempty" xml:"SourceRDSDBInstanceId,omitempty"`
 	// The type of the source database. Valid values:
 	//
-	// - **PolarDBMySQL**: The source database is a PolarDB for MySQL database when the major version of your PolarDB cluster is upgraded.
+	// - **PolarDBMySQL**: The source database for a major version upgrade of a PolarDB cluster.
 	//
-	// - **RDS**: The source database is an ApsaraDB RDS database when data is migrated from ApsaraDB RDS to PolarDB for MySQL.
+	// - **RDS**: The source database for migrating data from an ApsaraDB RDS instance to a PolarDB for MySQL cluster.
 	//
 	// example:
 	//
 	// PolarDBMySQL
 	SrcDbType *string `json:"SrcDbType,omitempty" xml:"SrcDbType,omitempty"`
-	// The migration state of the PolarDB cluster. Valid values:
+	// The data synchronization relationship. Valid values:
 	//
-	// 	- **NO_MIGRATION**: No migration task is running.
+	// - **RDS2POLARDB**: Data is synchronized from the ApsaraDB RDS instance to the PolarDB cluster.
 	//
-	// 	- **RDS2POLARDB_CLONING**: Data is being replicated.
-	//
-	// 	- **RDS2POLARDB_SYNCING**: Data is being replicated. During the replication, the PolarDB cluster is running in read-only mode and the source ApsaraDB RDS instance is running in read and write mode.
-	//
-	// 	- **SWITCHING**: Databases are being switched.
-	//
-	// 	- **POLARDB2RDS_SYNCING**: Databases are switched. The PolarDB cluster is running in read and write mode and the source ApsaraDB RDS instance is running in read-only mode. In this state, you can modify the endpoints for your applications.
-	//
-	// 	- **ROLLBACK**: The migration is being rolled back. After the rollback is complete, the value **RDS2POLARDB_SYNCING*	- is returned.
-	//
-	// 	- **CLOSING_MIGRATION**: The migration task is being terminated.
+	// - **POLARDB2RDS**: Data is synchronized from the PolarDB cluster to the ApsaraDB RDS instance.
 	//
 	// example:
 	//
@@ -307,25 +305,31 @@ func (s *DescribeDBClusterMigrationResponseBody) Validate() error {
 }
 
 type DescribeDBClusterMigrationResponseBodyDBClusterEndpointList struct {
-	// The VPC ID.
+	// The details of the connection strings.
 	AddressItems []*DescribeDBClusterMigrationResponseBodyDBClusterEndpointListAddressItems `json:"AddressItems,omitempty" xml:"AddressItems,omitempty" type:"Repeated"`
-	// The expiration time of the replication between ApsaraDB RDS and PolarDB. The time is in the `YYYY-MM-DDThh:mm:ssZ` format. The time is displayed in UTC.
+	// The endpoint ID.
 	//
 	// example:
 	//
 	// pe-***********
 	DBEndpointId *string `json:"DBEndpointId,omitempty" xml:"DBEndpointId,omitempty"`
-	// The ID of the cluster.
+	// The type of the endpoint. Valid values:
+	//
+	// - **Cluster**: The default cluster endpoint.
+	//
+	// - **Primary**: The primary endpoint.
+	//
+	// - **Custom**: A custom cluster endpoint.
 	//
 	// example:
 	//
 	// Cluster
 	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
-	// The synchronization direction. Valid values:
+	// The read/write mode. Valid values:
 	//
-	// 	- **RDS2POLARDB**: Data is replicated from an ApsaraDB RDS instance to a PolarDB cluster.
+	// - ReadWrite: Read and write (automatic read/write splitting).
 	//
-	// 	- **POLARDB2RDS**: Data is replicated from a PolarDB cluster to an ApsaraDB RDS instance.
+	// - ReadOnly (Default): Read-only.
 	//
 	// example:
 	//
@@ -391,57 +395,53 @@ func (s *DescribeDBClusterMigrationResponseBodyDBClusterEndpointList) Validate()
 }
 
 type DescribeDBClusterMigrationResponseBodyDBClusterEndpointListAddressItems struct {
-	// Indicates whether SSL encryption is enabled. Valid values:
-	//
-	// 	- **Enabled**
-	//
-	// 	- **Disabled**
+	// The connection string.
 	//
 	// example:
 	//
 	// pc-**************.rwlb.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	// The description of a migration exception. If no exception occurs during the migration, an empty string is returned.
+	// The IP address.
 	//
 	// example:
 	//
 	// 192.***.***.10
 	IPAddress *string `json:"IPAddress,omitempty" xml:"IPAddress,omitempty"`
-	// The ID of the endpoint.
+	// The network type of the endpoint. Valid values:
+	//
+	// - **Public**: An endpoint for the Internet.
+	//
+	// - **Private**: A private endpoint.
+	//
+	// - **Inner**: A private endpoint in a classic network.
 	//
 	// example:
 	//
 	// Private
 	NetType *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
-	// The type of the endpoint. Valid values:
-	//
-	// 	- **Cluster**: the default cluster endpoint
-	//
-	// 	- **Primary**: the primary endpoint
-	//
-	// 	- **Custom**: the custom endpoint
+	// The port.
 	//
 	// example:
 	//
 	// 3306
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The ID of the request.
+	// Indicates whether Secure Sockets Layer (SSL) encryption is enabled. Valid values:
+	//
+	// - **Enabled**: SSL encryption is enabled.
+	//
+	// - **Disabled**: SSL encryption is disabled.
 	//
 	// example:
 	//
 	// Enabled
 	SSLEnabled *string `json:"SSLEnabled,omitempty" xml:"SSLEnabled,omitempty"`
-	// The read/write mode. Valid values:
-	//
-	// 	- ReadWrite: receives and forwards read and write requests (automatic read-write splitting).
-	//
-	// 	- ReadOnly (default): receives and forwards read requests only.
+	// The ID of the virtual private cloud (VPC).
 	//
 	// example:
 	//
 	// vpc-**********
 	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	// The IP address of the endpoint.
+	// The ID of the virtual switch.
 	//
 	// example:
 	//
@@ -525,7 +525,7 @@ func (s *DescribeDBClusterMigrationResponseBodyDBClusterEndpointListAddressItems
 }
 
 type DescribeDBClusterMigrationResponseBodyRdsEndpointList struct {
-	// The VPC ID.
+	// The details of the connection strings.
 	AddressItems []*DescribeDBClusterMigrationResponseBodyRdsEndpointListAddressItems `json:"AddressItems,omitempty" xml:"AddressItems,omitempty" type:"Repeated"`
 	// The instance type.
 	//
@@ -537,7 +537,7 @@ type DescribeDBClusterMigrationResponseBodyRdsEndpointList struct {
 	//
 	// Primary
 	CustinsType *string `json:"CustinsType,omitempty" xml:"CustinsType,omitempty"`
-	// The ID of the endpoint.
+	// The endpoint ID.
 	//
 	// example:
 	//
@@ -545,9 +545,9 @@ type DescribeDBClusterMigrationResponseBodyRdsEndpointList struct {
 	DBEndpointId *string `json:"DBEndpointId,omitempty" xml:"DBEndpointId,omitempty"`
 	// The type of the endpoint. Valid values:
 	//
-	// - **Normal**: the standard endpoint
+	// - **Normal**: A regular endpoint.
 	//
-	// - **ReadWriteSplitting**: the read/write splitting endpoint
+	// - **ReadWriteSplitting**: A read/write splitting endpoint.
 	//
 	// example:
 	//
@@ -613,37 +613,31 @@ func (s *DescribeDBClusterMigrationResponseBodyRdsEndpointList) Validate() error
 }
 
 type DescribeDBClusterMigrationResponseBodyRdsEndpointListAddressItems struct {
-	// Indicates whether SSL encryption is enabled. Valid values:
-	//
-	// 	- **Enabled**
-	//
-	// 	- **Disabled**
+	// The connection string.
 	//
 	// example:
 	//
 	// rm-***********.mysql.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	// The type of the source database. Valid values:
-	//
-	// 	- **PolarDBMySQL**: The source database is a PolarDB for MySQL database when the major version of your PolarDB cluster is upgraded.
-	//
-	// 	- **RDS**: The source database is an ApsaraDB RDS database when data is migrated from ApsaraDB RDS to PolarDB for MySQL.
+	// The IP address.
 	//
 	// example:
 	//
 	// 172.***.***.173
 	IPAddress *string `json:"IPAddress,omitempty" xml:"IPAddress,omitempty"`
-	// The ID of the endpoint.
+	// The network type of the endpoint. Valid values:
+	//
+	// - **Public**: An endpoint for the Internet.
+	//
+	// - **Private**: A private endpoint.
+	//
+	// - **Inner**: A private endpoint in a classic network.
 	//
 	// example:
 	//
 	// Private
 	NetType *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
-	// The type of the endpoint. Valid values:
-	//
-	// 	- **Normal**: the standard endpoint
-	//
-	// 	- **ReadWriteSplitting**: the read/write splitting endpoint
+	// The port.
 	//
 	// example:
 	//
@@ -651,21 +645,21 @@ type DescribeDBClusterMigrationResponseBodyRdsEndpointListAddressItems struct {
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
 	// Indicates whether SSL encryption is enabled. Valid values:
 	//
-	// - **Enabled**
+	// - **Enabled**: SSL encryption is enabled.
 	//
-	// - **Disabled**
+	// - **Disabled**: SSL encryption is disabled.
 	//
 	// example:
 	//
 	// Enabled
 	SSLEnabled *string `json:"SSLEnabled,omitempty" xml:"SSLEnabled,omitempty"`
-	// The instance type.
+	// The ID of the VPC.
 	//
 	// example:
 	//
 	// vpc-************
 	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	// The IP address of the endpoint.
+	// The ID of the vSwitch.
 	//
 	// example:
 	//

@@ -14,6 +14,8 @@ type iCreateDatabaseZonalResponseBody interface {
 }
 
 type CreateDatabaseZonalResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 93E98F25-BE02-40DA-83E3-F77F8D******

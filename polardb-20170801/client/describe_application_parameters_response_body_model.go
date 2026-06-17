@@ -18,8 +18,12 @@ type iDescribeApplicationParametersResponseBody interface {
 }
 
 type DescribeApplicationParametersResponseBody struct {
+	// The details of the parameter template.
 	ParameterTemplates *DescribeApplicationParametersResponseBodyParameterTemplates `json:"ParameterTemplates,omitempty" xml:"ParameterTemplates,omitempty" type:"Struct"`
-	Parameters         *DescribeApplicationParametersResponseBodyParameters         `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Struct"`
+	// The parameter details.
+	Parameters *DescribeApplicationParametersResponseBodyParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 3E5CD764-FCCA-5C9C-838E-20E0DE84B2AF
@@ -76,6 +80,7 @@ func (s *DescribeApplicationParametersResponseBody) Validate() error {
 }
 
 type DescribeApplicationParametersResponseBodyParameterTemplates struct {
+	// A list of subcomponents that contain lists of parameter template details.
 	ComponentParameterTemplates []*DescribeApplicationParametersResponseBodyParameterTemplatesComponentParameterTemplates `json:"ComponentParameterTemplates,omitempty" xml:"ComponentParameterTemplates,omitempty" type:"Repeated"`
 }
 
@@ -110,15 +115,20 @@ func (s *DescribeApplicationParametersResponseBodyParameterTemplates) Validate()
 }
 
 type DescribeApplicationParametersResponseBodyParameterTemplatesComponentParameterTemplates struct {
+	// The subcomponent ID or application ID.
+	//
 	// example:
 	//
 	// pac-**************
 	ComponentId *string `json:"ComponentId,omitempty" xml:"ComponentId,omitempty"`
+	// The type of the subcomponent.
+	//
 	// example:
 	//
 	// supabase
-	ComponentType *string                                                                                             `json:"ComponentType,omitempty" xml:"ComponentType,omitempty"`
-	Parameters    []*DescribeApplicationParametersResponseBodyParameterTemplatesComponentParameterTemplatesParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
+	ComponentType *string `json:"ComponentType,omitempty" xml:"ComponentType,omitempty"`
+	// A list of parameter template details.
+	Parameters []*DescribeApplicationParametersResponseBodyParameterTemplatesComponentParameterTemplatesParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
 }
 
 func (s DescribeApplicationParametersResponseBodyParameterTemplatesComponentParameterTemplates) String() string {
@@ -170,30 +180,44 @@ func (s *DescribeApplicationParametersResponseBodyParameterTemplatesComponentPar
 }
 
 type DescribeApplicationParametersResponseBodyParameterTemplatesComponentParameterTemplatesParameters struct {
+	// The default value of the parameter.
+	//
 	// example:
 	//
 	// default
 	Default *string `json:"Default,omitempty" xml:"Default,omitempty"`
+	// The parameter description.
+	//
 	// example:
 	//
 	// The name of the parameter
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The parameter name.
+	//
 	// example:
 	//
 	// name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Indicates whether the application needs to be restarted after you modify the parameter.
+	//
 	// example:
 	//
 	// false
 	NeedRestart *bool `json:"NeedRestart,omitempty" xml:"NeedRestart,omitempty"`
+	// The regular expression for the parameter.
+	//
 	// example:
 	//
 	// ^[a-zA-Z0-9]{1,20}$
 	Pattern *string `json:"Pattern,omitempty" xml:"Pattern,omitempty"`
+	// Indicates whether the parameter is read-only.
+	//
 	// example:
 	//
 	// false
 	ReadOnly *bool `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
+	// The parameter type.
+	//
 	// example:
 	//
 	// string
@@ -276,6 +300,7 @@ func (s *DescribeApplicationParametersResponseBodyParameterTemplatesComponentPar
 }
 
 type DescribeApplicationParametersResponseBodyParameters struct {
+	// A list of subcomponents that contain lists of parameter details.
 	ComponentParameters []*DescribeApplicationParametersResponseBodyParametersComponentParameters `json:"ComponentParameters,omitempty" xml:"ComponentParameters,omitempty" type:"Repeated"`
 }
 
@@ -310,15 +335,20 @@ func (s *DescribeApplicationParametersResponseBodyParameters) Validate() error {
 }
 
 type DescribeApplicationParametersResponseBodyParametersComponentParameters struct {
+	// The subcomponent ID or application ID.
+	//
 	// example:
 	//
 	// pac-**************
 	ComponentId *string `json:"ComponentId,omitempty" xml:"ComponentId,omitempty"`
+	// The type of the subcomponent.
+	//
 	// example:
 	//
 	// supabase
-	ComponentType *string                                                                             `json:"ComponentType,omitempty" xml:"ComponentType,omitempty"`
-	Parameters    []*DescribeApplicationParametersResponseBodyParametersComponentParametersParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
+	ComponentType *string `json:"ComponentType,omitempty" xml:"ComponentType,omitempty"`
+	// A list of parameter details.
+	Parameters []*DescribeApplicationParametersResponseBodyParametersComponentParametersParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
 }
 
 func (s DescribeApplicationParametersResponseBodyParametersComponentParameters) String() string {
@@ -370,38 +400,56 @@ func (s *DescribeApplicationParametersResponseBodyParametersComponentParameters)
 }
 
 type DescribeApplicationParametersResponseBodyParametersComponentParametersParameters struct {
+	// The default value of the parameter.
+	//
 	// example:
 	//
 	// default value
 	Default *string `json:"Default,omitempty" xml:"Default,omitempty"`
+	// The parameter description.
+	//
 	// example:
 	//
 	// The name of the parameter
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The parameter name.
+	//
 	// example:
 	//
 	// name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Indicates whether the application needs to be restarted after you modify the parameter.
+	//
 	// example:
 	//
 	// false
 	NeedRestart *bool `json:"NeedRestart,omitempty" xml:"NeedRestart,omitempty"`
+	// The regular expression for the parameter.
+	//
 	// example:
 	//
 	// ^[a-zA-Z0-9]{1,20}$
 	Pattern *string `json:"Pattern,omitempty" xml:"Pattern,omitempty"`
+	// Indicates whether the parameter is read-only.
+	//
 	// example:
 	//
 	// false
 	ReadOnly *bool `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
+	// The status.
+	//
 	// example:
 	//
 	// Applied
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The parameter type.
+	//
 	// example:
 	//
 	// string
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The current value of the parameter.
+	//
 	// example:
 	//
 	// value

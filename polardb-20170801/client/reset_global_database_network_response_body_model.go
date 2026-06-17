@@ -14,7 +14,7 @@ type iResetGlobalDatabaseNetworkResponseBody interface {
 }
 
 type ResetGlobalDatabaseNetworkResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

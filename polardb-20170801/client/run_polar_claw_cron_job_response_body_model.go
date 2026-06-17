@@ -26,31 +26,43 @@ type iRunPolarClawCronJobResponseBody interface {
 }
 
 type RunPolarClawCronJobResponseBody struct {
+	// The application ID.
+	//
 	// example:
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The status code.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The unique ID for this job execution.
+	//
 	// example:
 	//
 	// 8006e51c-dab3-4602-bc69-4f728002c6ce
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Indicates whether the operation was successful.
+	//
 	// example:
 	//
 	// true
 	Ok *bool `json:"Ok,omitempty" xml:"Ok,omitempty"`
+	// Indicates whether the job actually ran.
+	//
 	// example:
 	//
 	// true
 	Ran *bool `json:"Ran,omitempty" xml:"Ran,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

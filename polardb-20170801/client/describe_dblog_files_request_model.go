@@ -42,24 +42,45 @@ type iDescribeDBLogFilesRequest interface {
 }
 
 type DescribeDBLogFilesRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pc-*************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The ID of the node in the PolarDB cluster.
+	//
 	// example:
 	//
 	// pi-*************
-	DBNodeId                   *string `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty"`
+	DBNodeId *string `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty"`
+	// The mode to query simulation records. Valid values:
+	//
+	// - **0**: Queries the simulation records of a logical instance. You can specify the simulation ID.
+	//
+	// - **1**: Queries the simulation records of a physical instance based on a specified `SimulateListId`.
+	//
+	// - **2**: Queries the records of the most recent simulation in progress.
+	//
+	// example:
+	//
+	// 0
 	DescribeSimulateSwitchMode *string `json:"DescribeSimulateSwitchMode,omitempty" xml:"DescribeSimulateSwitchMode,omitempty"`
+	// The end of the time range to query. The time must be in UTC and formatted as `yyyy-MM-ddTHH:mm:ssZ`.
+	//
 	// example:
 	//
 	// 2023-09-20T16:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The log type. Valid values:
 	//
-	// 	- **HaSwitchLogList**: failover logs.
+	// - **HaSwitchLogList**: A list of failover logs.
+	//
+	// - **HaSwitchLogInfo**: Details of a failover log.
+	//
+	// - **SimulateSwitchLogs**: Failover simulation logs.
 	//
 	// This parameter is required.
 	//
@@ -69,19 +90,60 @@ type DescribeDBLogFilesRequest struct {
 	LogType      *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page number. The value must be an integer that is greater than 0. The default value is **1**.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The page size. Valid values: 5 to 50. The default value is 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SimulateListId       *string `json:"SimulateListId,omitempty" xml:"SimulateListId,omitempty"`
-	SimulateModeList     *string `json:"SimulateModeList,omitempty" xml:"SimulateModeList,omitempty"`
-	SimulateStatusList   *string `json:"SimulateStatusList,omitempty" xml:"SimulateStatusList,omitempty"`
+	// The ID of a logical instance simulation record.
+	//
+	// example:
+	//
+	// "95"
+	SimulateListId *string `json:"SimulateListId,omitempty" xml:"SimulateListId,omitempty"`
+	// Filters the results by one or more simulation modes. Specify multiple modes as a comma-separated string. Valid values:
+	//
+	// - **0**: Fault is injected into the primary availability zone.
+	//
+	// - **1**: Fault is injected into the DB instance.
+	//
+	// - **2**: Fault is injected into the disaster recovery data center.
+	//
+	// example:
+	//
+	// 0,1,2
+	SimulateModeList *string `json:"SimulateModeList,omitempty" xml:"SimulateModeList,omitempty"`
+	// Filters the results by one or more simulation statuses. Specify multiple statuses as a comma-separated string. Valid values:
+	//
+	// - **0**: Waiting for scheduling
+	//
+	// - **1**: Succeeded
+	//
+	// - **2**: Running
+	//
+	// - **3**: Failed
+	//
+	// - **4**: Interrupted
+	//
+	// - **5**: Waiting for switchback
+	//
+	// - **6**: Canceled
+	//
+	// example:
+	//
+	// "0,1,2,3,4,5"
+	SimulateStatusList *string `json:"SimulateStatusList,omitempty" xml:"SimulateStatusList,omitempty"`
+	// The start of the time range to query. The time must be in UTC and formatted as `yyyy-MM-ddTHH:mm:ssZ`.
+	//
 	// example:
 	//
 	// 2023-08-20T16:00:00Z

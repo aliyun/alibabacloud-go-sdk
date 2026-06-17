@@ -14,6 +14,8 @@ type iListPolarClawDevicePairsRequest interface {
 }
 
 type ListPolarClawDevicePairsRequest struct {
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:

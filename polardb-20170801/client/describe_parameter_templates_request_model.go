@@ -28,7 +28,7 @@ type iDescribeParameterTemplatesRequest interface {
 }
 
 type DescribeParameterTemplatesRequest struct {
-	// The type of the database engine. Only **MySQL*	- is supported.
+	// The database engine type. Only **MySQL*	- is supported.
 	//
 	// This parameter is required.
 	//
@@ -36,13 +36,13 @@ type DescribeParameterTemplatesRequest struct {
 	//
 	// MySQL
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
-	// The version of the database. Valid values:
+	// The database version. Valid values:
 	//
-	// 	- **5.6**
+	// - **5.6**
 	//
-	// 	- **5.7**
+	// - **5.7**
 	//
-	// 	- **8.0**
+	// - **8.0**
 	//
 	// This parameter is required.
 	//
@@ -54,7 +54,7 @@ type DescribeParameterTemplatesRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID.
 	//
-	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query all regions that are available within your account, such as the region IDs.
+	// > Call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query the IDs of available regions.
 	//
 	// This parameter is required.
 	//
@@ -62,7 +62,7 @@ type DescribeParameterTemplatesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//

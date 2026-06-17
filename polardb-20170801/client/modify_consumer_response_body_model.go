@@ -16,11 +16,13 @@ type iModifyConsumerResponseBody interface {
 }
 
 type ModifyConsumerResponseBody struct {
+	// The ID of the consumer.
+	//
 	// example:
 	//
 	// c-mqveroemc***
 	ConsumerId *string `json:"ConsumerId,omitempty" xml:"ConsumerId,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

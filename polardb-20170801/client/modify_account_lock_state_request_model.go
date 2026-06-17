@@ -28,22 +28,36 @@ type iModifyAccountLockStateRequest interface {
 }
 
 type ModifyAccountLockStateRequest struct {
+	// The lock status of the account. Valid values:
+	//
+	// - **UnLock**: The account is not locked.
+	//
+	// - **Lock**: The account is locked.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Lock
 	AccountLockState *string `json:"AccountLockState,omitempty" xml:"AccountLockState,omitempty"`
+	// The name of the database account.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// your_account_name
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The expiration time of the account. The time must be in the \\`YYYY-MM-DDThh:mm:ssZ\\` format.
+	//
 	// example:
 	//
-	// 2026-09-17 10:00:00
+	// 2026-09-17T10:00:00Z
 	AccountPasswordValidTime *string `json:"AccountPasswordValidTime,omitempty" xml:"AccountPasswordValidTime,omitempty"`
+	// The ID of the cluster.
+	//
+	// > Call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to view the details of all clusters in a region, including cluster IDs.
+	//
 	// This parameter is required.
 	//
 	// example:

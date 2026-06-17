@@ -22,26 +22,43 @@ type iCreateConsumerGroupRequest interface {
 }
 
 type CreateConsumerGroupRequest struct {
+	// The name of the consumer group.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test
 	ConsumerGroupName *string `json:"ConsumerGroupName,omitempty" xml:"ConsumerGroupName,omitempty"`
+	// The ID of the gateway instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pg-xxxxxxx
 	GwClusterId *string `json:"GwClusterId,omitempty" xml:"GwClusterId,omitempty"`
+	// Indicates whether the consumer group is the default group. Valid values:
+	//
+	// - **0**: No
+	//
+	// - **1**: Yes
+	//
 	// example:
 	//
 	// 0
 	IsDefault *string `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// The nickname of the consumer group.
+	//
 	// example:
 	//
 	// test
 	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
+	// The ID of the region where the consumer group will be created.
+	//
+	// example:
+	//
+	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 

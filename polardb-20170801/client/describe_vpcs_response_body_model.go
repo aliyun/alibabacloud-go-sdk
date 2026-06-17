@@ -22,23 +22,40 @@ type iDescribeVpcsResponseBody interface {
 }
 
 type DescribeVpcsResponseBody struct {
+	// The page number of the returned page. The default value is 1.
+	//
 	// example:
 	//
 	// 2
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page. Valid values:
+	//
+	// - **30**
+	//
+	// - **50**
+	//
+	// - **100**
+	//
+	//   **30**
+	//
 	// example:
 	//
 	// 50
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 11FDB5A0-84F5-5361-B729-5770B0AEB9D5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 50
-	TotalCount *int32                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	Vpcs       []*DescribeVpcsResponseBodyVpcs `json:"Vpcs,omitempty" xml:"Vpcs,omitempty" type:"Repeated"`
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// A list of VPCs.
+	Vpcs []*DescribeVpcsResponseBodyVpcs `json:"Vpcs,omitempty" xml:"Vpcs,omitempty" type:"Repeated"`
 }
 
 func (s DescribeVpcsResponseBody) String() string {
@@ -108,43 +125,74 @@ func (s *DescribeVpcsResponseBody) Validate() error {
 }
 
 type DescribeVpcsResponseBodyVpcs struct {
+	// The ID of the Alibaba Cloud account.
+	//
 	// example:
 	//
 	// 1868512340232755
 	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// Indicates whether the account is an Alibaba Finance Cloud account, an Alibaba Gov Cloud account, or a public cloud account.
+	//
 	// example:
 	//
 	// 26842
 	Bid *string `json:"Bid,omitempty" xml:"Bid,omitempty"`
+	// The IPv4 CIDR block of the VPC.
+	//
 	// example:
 	//
 	// 57.100.6.59/32
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	// The time when the VPC was created.
+	//
 	// example:
 	//
 	// 2021-04-18T15:02:37Z
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The time when the VPC was last modified.
+	//
 	// example:
 	//
 	// 2021-04-18T15:02:37Z
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// Indicates whether the VPC is the default VPC. Valid values:
+	//
+	// - **true**: The VPC is the default VPC.
+	//
+	// - **false**: The VPC is not the default VPC.
+	//
 	// example:
 	//
 	// true
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// The ID of the region to which the VPC belongs.
+	//
 	// example:
 	//
 	// cn-chengdu-wt97-a01
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	// The status of the VPC. Valid values:
+	//
+	// - `Pending`: The VPC is being configured.
+	//
+	// - `Available`: The VPC is active.
+	//
 	// example:
 	//
 	// Pending
-	Status   *string                                 `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// A list of vSwitches.
 	VSwitchs []*DescribeVpcsResponseBodyVpcsVSwitchs `json:"VSwitchs,omitempty" xml:"VSwitchs,omitempty" type:"Repeated"`
+	// The ID of the VPC.
+	//
+	// > You can call the [DescribeVpcs](https://help.aliyun.com/document_detail/35739.html) operation to query the details of VPCs.
+	//
 	// example:
 	//
 	// vpc-bp16efwqjzyumc23c647v
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The name of the VPC.
+	//
 	// example:
 	//
 	// vpc-e2e-10341f3
@@ -272,34 +320,58 @@ func (s *DescribeVpcsResponseBodyVpcs) Validate() error {
 }
 
 type DescribeVpcsResponseBodyVpcsVSwitchs struct {
+	// The IPv4 CIDR block of the vSwitch.
+	//
 	// example:
 	//
 	// 47.118.126.0/25
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	// The time when the vSwitch was created.
+	//
 	// example:
 	//
 	// 2021-04-18T15:02:37Z
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The time when the vSwitch was last modified.
+	//
 	// example:
 	//
 	// 2021-04-18T15:02:37Z
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// Indicates whether the vSwitch is the default vSwitch. Valid values:
+	//
+	// - **true**: The vSwitch is the default vSwitch.
+	//
+	// - **false**: The vSwitch is not the default vSwitch.
+	//
 	// example:
 	//
 	// false
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// The zone to which the vSwitch belongs.
+	//
 	// example:
 	//
 	// cn-shenzhen-f
 	IzNo *string `json:"IzNo,omitempty" xml:"IzNo,omitempty"`
+	// The status of the vSwitch. Valid values:
+	//
+	// - **Pending**: The vSwitch is being configured.
+	//
+	// - **Available**: The vSwitch is active.
+	//
 	// example:
 	//
 	// Pending
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the vSwitch.
+	//
 	// example:
 	//
 	// vsw-uf6fus5py6hbvxqwzwnk8
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The name of the vSwitch.
+	//
 	// example:
 	//
 	// default-sw

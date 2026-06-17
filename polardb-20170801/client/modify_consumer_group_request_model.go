@@ -22,26 +22,39 @@ type iModifyConsumerGroupRequest interface {
 }
 
 type ModifyConsumerGroupRequest struct {
+	// The ID of the consumer group.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cg-xxxxxx
 	ConsumerGroupName *string `json:"ConsumerGroupName,omitempty" xml:"ConsumerGroupName,omitempty"`
+	// The ID of the gateway instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pg-xxxxxxxx
 	GwClusterId *string `json:"GwClusterId,omitempty" xml:"GwClusterId,omitempty"`
+	// Indicates whether the consumer group is the default group. Valid values: `0` (false) and `1` (true).
+	//
 	// example:
 	//
 	// 0
 	IsDefault *string `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// The nickname of the consumer group.
+	//
 	// example:
 	//
 	// yonghu
 	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 

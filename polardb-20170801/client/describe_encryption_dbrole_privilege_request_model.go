@@ -24,6 +24,8 @@ type iDescribeEncryptionDBRolePrivilegeRequest interface {
 }
 
 type DescribeEncryptionDBRolePrivilegeRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -34,6 +36,10 @@ type DescribeEncryptionDBRolePrivilegeRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The name of the role permission to query. To query multiple permissions at a time, enter multiple permission names and separate them with commas (,).
+	//
+	// > - Call the [DescribeEncryptionDBRolePrivilege](https://help.aliyun.com/document_detail/212573.html) operation to view the details of all role access policy rules for the cluster. The details include the permission names.
+	//
 	// example:
 	//
 	// test

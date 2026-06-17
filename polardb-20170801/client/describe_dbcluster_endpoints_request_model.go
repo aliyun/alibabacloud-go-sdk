@@ -30,7 +30,7 @@ type iDescribeDBClusterEndpointsRequest interface {
 type DescribeDBClusterEndpointsRequest struct {
 	// The ID of the cluster.
 	//
-	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of the clusters that belong to your Alibaba Cloud account, such as cluster IDs.
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to find the IDs of all clusters in your account.
 	//
 	// This parameter is required.
 	//
@@ -38,18 +38,22 @@ type DescribeDBClusterEndpointsRequest struct {
 	//
 	// pc-*************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The ID of the endpoint.
+	// The ID of the cluster endpoint.
 	//
 	// example:
 	//
 	// pe-*************
 	DBEndpointId *string `json:"DBEndpointId,omitempty" xml:"DBEndpointId,omitempty"`
+	// Specifies whether to return information about AI nodes.
+	//
 	// example:
 	//
 	// AI
 	DescribeType *string `json:"DescribeType,omitempty" xml:"DescribeType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the PolarFS instance.
+	//
 	// example:
 	//
 	// pfs-test*****

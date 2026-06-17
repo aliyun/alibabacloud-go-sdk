@@ -30,24 +30,36 @@ type iModifyDBNodeConfigRequest interface {
 }
 
 type ModifyDBNodeConfigRequest struct {
+	// The name of the node configuration.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// FailoverPriority
 	ConfigName *string `json:"ConfigName,omitempty" xml:"ConfigName,omitempty"`
+	// The configuration of the node.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// perfdb
 	ConfigValue *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
+	// The cluster ID.
+	//
+	// > Call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of all clusters in your account, including the cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pc-**************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The ID of the cluster node.
+	//
+	// > Call the [DescribeDBClusters](https://help.aliyun.com/document_detail/185342.html) operation to query the details of all clusters in your account, including the node ID.
+	//
 	// This parameter is required.
 	//
 	// example:

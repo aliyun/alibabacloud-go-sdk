@@ -19,13 +19,13 @@ type iDescribeCharacterSetNameResponseBody interface {
 
 type DescribeCharacterSetNameResponseBody struct {
 	CharacterSetNameItems *DescribeCharacterSetNameResponseBodyCharacterSetNameItems `json:"CharacterSetNameItems,omitempty" xml:"CharacterSetNameItems,omitempty" type:"Struct"`
-	// The type of the database engine.
+	// The cluster engine.
 	//
 	// example:
 	//
 	// POLARDB
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

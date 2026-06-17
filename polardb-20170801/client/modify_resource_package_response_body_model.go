@@ -14,6 +14,8 @@ type iModifyResourcePackageResponseBody interface {
 }
 
 type ModifyResourcePackageResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// E56531A4-E552-40BA-9C58-137B80******

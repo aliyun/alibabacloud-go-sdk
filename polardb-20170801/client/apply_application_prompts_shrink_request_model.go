@@ -18,16 +18,22 @@ type iApplyApplicationPromptsShrinkRequest interface {
 }
 
 type ApplyApplicationPromptsShrinkRequest struct {
+	// The ID of the application.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// An array of prompt IDs to disable.
+	//
 	// example:
 	//
 	// papt-************
 	DisabledPromptIdsShrink *string `json:"DisabledPromptIds,omitempty" xml:"DisabledPromptIds,omitempty"`
+	// An array of prompt IDs to enable.
+	//
 	// example:
 	//
 	// papt-************

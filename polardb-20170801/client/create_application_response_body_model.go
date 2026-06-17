@@ -26,27 +26,40 @@ type iCreateApplicationResponseBody interface {
 }
 
 type CreateApplicationResponseBody struct {
+	// The ID of the application.
+	//
 	// example:
 	//
 	// pa-********************
-	ApplicationId *string                                    `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	Components    []*CreateApplicationResponseBodyComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
+	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// A list of child components.
+	Components []*CreateApplicationResponseBodyComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
+	// The description of the application.
+	//
 	// example:
 	//
 	// myapp
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the generated order.
+	//
 	// example:
 	//
 	// 2148126708*****
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 3E5CD764-FCCA-5C9C-838E-20E0DE84B2AF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the resources are sufficient. This parameter is returned only when `DryRun` is set to `true`.
+	//
 	// example:
 	//
 	// true
 	ResourceAvailable *bool `json:"ResourceAvailable,omitempty" xml:"ResourceAvailable,omitempty"`
+	// The ID of the resource group.
+	//
 	// example:
 	//
 	// rg-********************
@@ -138,6 +151,8 @@ func (s *CreateApplicationResponseBody) Validate() error {
 }
 
 type CreateApplicationResponseBodyComponents struct {
+	// The ID of the child component.
+	//
 	// example:
 	//
 	// pac-********************

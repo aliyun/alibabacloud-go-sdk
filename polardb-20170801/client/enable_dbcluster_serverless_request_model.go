@@ -11,10 +11,16 @@ type iEnableDBClusterServerlessRequest interface {
   GoString() string
   SetDBClusterId(v string) *EnableDBClusterServerlessRequest
   GetDBClusterId() *string 
+  SetFromTimeService(v bool) *EnableDBClusterServerlessRequest
+  GetFromTimeService() *bool 
   SetOwnerAccount(v string) *EnableDBClusterServerlessRequest
   GetOwnerAccount() *string 
   SetOwnerId(v int64) *EnableDBClusterServerlessRequest
   GetOwnerId() *int64 
+  SetPlannedEndTime(v string) *EnableDBClusterServerlessRequest
+  GetPlannedEndTime() *string 
+  SetPlannedStartTime(v string) *EnableDBClusterServerlessRequest
+  GetPlannedStartTime() *string 
   SetResourceOwnerAccount(v string) *EnableDBClusterServerlessRequest
   GetResourceOwnerAccount() *string 
   SetResourceOwnerId(v int64) *EnableDBClusterServerlessRequest
@@ -42,41 +48,53 @@ type EnableDBClusterServerlessRequest struct {
   // 
   // pc-**************
   DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+  // example:
+  // 
+  // false
+  FromTimeService *bool `json:"FromTimeService,omitempty" xml:"FromTimeService,omitempty"`
   OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
   OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+  // example:
+  // 
+  // 2022-04-28T14:30:00Z
+  PlannedEndTime *string `json:"PlannedEndTime,omitempty" xml:"PlannedEndTime,omitempty"`
+  // example:
+  // 
+  // 2022-04-28T14:00:00Z
+  PlannedStartTime *string `json:"PlannedStartTime,omitempty" xml:"PlannedStartTime,omitempty"`
   ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
   ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-  // The maximum number of stable AP read-only nodes. Valid values: 0 to 7.
+  // The maximum number of steady-state AP read-only nodes. Valid values: 0 to 7.
   // 
   // example:
   // 
   // 1
   ScaleApRoNumMax *string `json:"ScaleApRoNumMax,omitempty" xml:"ScaleApRoNumMax,omitempty"`
-  // The minimum number of stable AP read-only nodes. Valid values: 0 to 7.
+  // The minimum number of steady-state AP read-only nodes. Valid values: 0 to 7.
   // 
   // example:
   // 
   // 1
   ScaleApRoNumMin *string `json:"ScaleApRoNumMin,omitempty" xml:"ScaleApRoNumMin,omitempty"`
-  // The maximum number of PCUs per node for scaling. Valid values: 1 to 8 PCUs.
+  // The maximum scaling limit per node. Valid values: 0 PCU to 16 PCU.
   // 
   // example:
   // 
   // 2
   ScaleMax *string `json:"ScaleMax,omitempty" xml:"ScaleMax,omitempty"`
-  // The minimum number of PolarDB capacity units (PCUs) per node for scaling. Valid values: 1 to 8 PCUs.
+  // The minimum scaling limit per node. Valid values: 0 PCU to 16 PCU.
   // 
   // example:
   // 
   // 1
   ScaleMin *string `json:"ScaleMin,omitempty" xml:"ScaleMin,omitempty"`
-  // The maximum number of read-only nodes for scaling. Valid values: 0 to 7.
+  // The maximum number of read-only nodes for scaling. Valid values: 0 to 15.
   // 
   // example:
   // 
   // 2
   ScaleRoNumMax *string `json:"ScaleRoNumMax,omitempty" xml:"ScaleRoNumMax,omitempty"`
-  // The minimum number of read-only nodes for scaling. Valid values: 0 to 7.
+  // The minimum number of read-only nodes for scaling. Valid values: 0 to 15.
   // 
   // example:
   // 
@@ -96,12 +114,24 @@ func (s *EnableDBClusterServerlessRequest) GetDBClusterId() *string  {
   return s.DBClusterId
 }
 
+func (s *EnableDBClusterServerlessRequest) GetFromTimeService() *bool  {
+  return s.FromTimeService
+}
+
 func (s *EnableDBClusterServerlessRequest) GetOwnerAccount() *string  {
   return s.OwnerAccount
 }
 
 func (s *EnableDBClusterServerlessRequest) GetOwnerId() *int64  {
   return s.OwnerId
+}
+
+func (s *EnableDBClusterServerlessRequest) GetPlannedEndTime() *string  {
+  return s.PlannedEndTime
+}
+
+func (s *EnableDBClusterServerlessRequest) GetPlannedStartTime() *string  {
+  return s.PlannedStartTime
 }
 
 func (s *EnableDBClusterServerlessRequest) GetResourceOwnerAccount() *string  {
@@ -141,6 +171,11 @@ func (s *EnableDBClusterServerlessRequest) SetDBClusterId(v string) *EnableDBClu
   return s
 }
 
+func (s *EnableDBClusterServerlessRequest) SetFromTimeService(v bool) *EnableDBClusterServerlessRequest {
+  s.FromTimeService = &v
+  return s
+}
+
 func (s *EnableDBClusterServerlessRequest) SetOwnerAccount(v string) *EnableDBClusterServerlessRequest {
   s.OwnerAccount = &v
   return s
@@ -148,6 +183,16 @@ func (s *EnableDBClusterServerlessRequest) SetOwnerAccount(v string) *EnableDBCl
 
 func (s *EnableDBClusterServerlessRequest) SetOwnerId(v int64) *EnableDBClusterServerlessRequest {
   s.OwnerId = &v
+  return s
+}
+
+func (s *EnableDBClusterServerlessRequest) SetPlannedEndTime(v string) *EnableDBClusterServerlessRequest {
+  s.PlannedEndTime = &v
+  return s
+}
+
+func (s *EnableDBClusterServerlessRequest) SetPlannedStartTime(v string) *EnableDBClusterServerlessRequest {
+  s.PlannedStartTime = &v
   return s
 }
 

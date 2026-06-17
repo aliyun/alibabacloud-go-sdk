@@ -30,13 +30,13 @@ type iModifyGlobalSecurityIPGroupNameRequest interface {
 }
 
 type ModifyGlobalSecurityIPGroupNameRequest struct {
-	// The name of the IP whitelist template. The name must meet the following requirements:
+	// The name of the IP address whitelist template. The name must meet the following requirements:
 	//
-	// 	- The name can contain lowercase letters, digits, and underscores (_).
+	// - It must consist of lowercase letters, digits, and underscores (_).
 	//
-	// 	- The name must start with a letter and end with a letter or digit.
+	// - It must start with a letter and end with a letter or a digit.
 	//
-	// 	- The name must be 2 to 120 characters in length.
+	// - It must be 2 to 120 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type ModifyGlobalSecurityIPGroupNameRequest struct {
 	//
 	// test_123
 	GlobalIgName *string `json:"GlobalIgName,omitempty" xml:"GlobalIgName,omitempty"`
-	// The ID of the IP whitelist template.
+	// The ID of the IP address whitelist template.
 	//
 	// This parameter is required.
 	//
@@ -62,7 +62,7 @@ type ModifyGlobalSecurityIPGroupNameRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//

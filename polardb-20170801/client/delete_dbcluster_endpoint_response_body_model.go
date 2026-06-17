@@ -14,7 +14,7 @@ type iDeleteDBClusterEndpointResponseBody interface {
 }
 
 type DeleteDBClusterEndpointResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

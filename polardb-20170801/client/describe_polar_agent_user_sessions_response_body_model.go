@@ -16,7 +16,10 @@ type iDescribePolarAgentUserSessionsResponseBody interface {
 }
 
 type DescribePolarAgentUserSessionsResponseBody struct {
+	// The result set.
 	Data []*DescribePolarAgentUserSessionsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// E2FDB684-751D-424D-98B9-704BEA******
@@ -63,14 +66,24 @@ func (s *DescribePolarAgentUserSessionsResponseBody) Validate() error {
 }
 
 type DescribePolarAgentUserSessionsResponseBodyData struct {
+	// The session ID.
+	//
 	// example:
 	//
 	// 01IC17MLISBB98SL345H7B5AES1E8VB1
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// The status of the session. Valid values:
+	//
+	// - **1**: Active
+	//
+	// - **0**: Closed
+	//
 	// example:
 	//
 	// 1
 	SessionStatus *int64 `json:"SessionStatus,omitempty" xml:"SessionStatus,omitempty"`
+	// The content.
+	//
 	// example:
 	//
 	// content

@@ -28,40 +28,60 @@ type iDescribeAIDBClusterTaskLogFilesRequest interface {
 }
 
 type DescribeAIDBClusterTaskLogFilesRequest struct {
+	// The ID of the model operator instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pm-bp10gr***
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The end of the time range to query. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format and is displayed in UTC.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2026-01-15T15:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The log type. Set the value to:
+	//
+	// - **sls**
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// sls
 	LogType *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of records to return on each page. Valid values: **30**, **50**, and **100**.
+	//
+	// The default value is **100**.
+	//
 	// example:
 	//
 	// 100
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the PolarDB cluster.
+	//
 	// example:
 	//
 	// pc-bp10ze***
 	RelativeDBClusterId *string `json:"RelativeDBClusterId,omitempty" xml:"RelativeDBClusterId,omitempty"`
+	// Specifies whether to return the results in reverse order. The default value is *false*.
+	//
 	// example:
 	//
 	// false
 	Reverse *bool `json:"Reverse,omitempty" xml:"Reverse,omitempty"`
+	// The start of the time range to query. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format and is displayed in UTC.
+	//
 	// This parameter is required.
 	//
 	// example:

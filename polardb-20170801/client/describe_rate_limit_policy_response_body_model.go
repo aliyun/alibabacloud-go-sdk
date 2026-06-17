@@ -24,25 +24,34 @@ type iDescribeRateLimitPolicyResponseBody interface {
 }
 
 type DescribeRateLimitPolicyResponseBody struct {
+	// An array of rate limit policy objects.
 	Items []*DescribeRateLimitPolicyResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The returned page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned on the current page.
+	//
 	// example:
 	//
 	// 30
 	PageRecordCount *string `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	// The number of entries returned per page.
+	//
 	// example:
 	//
 	// 30
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// CED079B7-A408-41A1-BFF1-EC608E******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of matching entries.
+	//
 	// example:
 	//
 	// 1
@@ -125,42 +134,70 @@ func (s *DescribeRateLimitPolicyResponseBody) Validate() error {
 }
 
 type DescribeRateLimitPolicyResponseBodyItems struct {
+	// The creation time.
+	//
 	// example:
 	//
 	// 2025-12-01T17:52:05+08:00
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	// The modification time.
+	//
 	// example:
 	//
 	// 2026-01-19T16:47:25+08:00
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The ID of the gateway instance.
+	//
 	// example:
 	//
 	// pg-xxxxxxxx
 	GwClusterId *string `json:"GwClusterId,omitempty" xml:"GwClusterId,omitempty"`
+	// The ID of the rate limit policy.
+	//
 	// example:
 	//
 	// 02eccf7c61cf4d05a543075ee907f3**
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// The policy type.
+	//
 	// example:
 	//
 	// RateLimit
 	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	// The maximum requests per minute (RPM).
+	//
 	// example:
 	//
 	// 10
 	RateLimitRpm *string `json:"RateLimitRpm,omitempty" xml:"RateLimitRpm,omitempty"`
+	// The maximum tokens per minute (TPM).
+	//
 	// example:
 	//
 	// 10
 	RateLimitTpm *string `json:"RateLimitTpm,omitempty" xml:"RateLimitTpm,omitempty"`
+	// The ID of the object within the policy\\"s scope, such as a consumer group or a consumer.
+	//
 	// example:
 	//
 	// cg-xxxxxxx
 	ScopeRefId *string `json:"ScopeRefId,omitempty" xml:"ScopeRefId,omitempty"`
+	// The scope of the policy. Valid values:
+	//
+	// - **ConsumerGroup**: The policy applies to a consumer group.
+	//
+	// - **Consumer**: The policy applies to a specific consumer.
+	//
 	// example:
 	//
 	// ConsumerGroup
 	ScopeType *string `json:"ScopeType,omitempty" xml:"ScopeType,omitempty"`
+	// The status of the policy. Valid values:
+	//
+	// - **Enabled**: The policy is enabled.
+	//
+	// - **Disabled**: The policy is disabled.
+	//
 	// example:
 	//
 	// Enabled

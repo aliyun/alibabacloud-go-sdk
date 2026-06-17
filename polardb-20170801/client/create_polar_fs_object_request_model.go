@@ -16,12 +16,16 @@ type iCreatePolarFsObjectRequest interface {
 }
 
 type CreatePolarFsObjectRequest struct {
+	// The absolute path of the directory to create.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// /test
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The PolarFS instance id.
+	//
 	// This parameter is required.
 	//
 	// example:

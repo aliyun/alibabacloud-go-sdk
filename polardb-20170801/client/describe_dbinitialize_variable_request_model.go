@@ -22,9 +22,9 @@ type iDescribeDBInitializeVariableRequest interface {
 }
 
 type DescribeDBInitializeVariableRequest struct {
-	// The ID of cluster.
+	// The cluster ID.
 	//
-	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query information about all clusters that are deployed in a specified region, such as the cluster ID.
+	// > Call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to view information about all clusters in the destination region, including cluster IDs.
 	//
 	// This parameter is required.
 	//

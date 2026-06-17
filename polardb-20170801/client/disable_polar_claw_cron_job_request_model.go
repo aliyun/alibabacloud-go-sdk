@@ -18,18 +18,24 @@ type iDisablePolarClawCronJobRequest interface {
 }
 
 type DisablePolarClawCronJobRequest struct {
+	// The ID of the application.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The ID of the cron job to disable.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0ee00f56-f467-4d41-858c-ca4ede2c770e
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// Specifies whether to restart the gateway after the job is disabled. The default value is `true`.
+	//
 	// example:
 	//
 	// true

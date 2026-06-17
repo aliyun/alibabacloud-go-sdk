@@ -34,53 +34,86 @@ type iModifyModelServiceRequest interface {
 }
 
 type ModifyModelServiceRequest struct {
+	// The API key for the model service.
+	//
 	// example:
 	//
 	// xxx
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	// The address of the upstream service.
+	//
 	// example:
 	//
 	// https://dashscope.aliyuncs.com/compatible-mode/v1
 	BaseUrl *string `json:"BaseUrl,omitempty" xml:"BaseUrl,omitempty"`
+	// The ID of the gateway instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pg-xxxxxxxxxx
 	GwClusterId *string `json:"GwClusterId,omitempty" xml:"GwClusterId,omitempty"`
+	// The cost in points per million input tokens.
+	//
 	// example:
 	//
 	// 10
 	InputCostPointsPerMillion *string `json:"InputCostPointsPerMillion,omitempty" xml:"InputCostPointsPerMillion,omitempty"`
+	// The model category.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// text
 	ModelCategory *string `json:"ModelCategory,omitempty" xml:"ModelCategory,omitempty"`
+	// The ID of the model service.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ms-xxxxxx
 	ModelServiceId *string `json:"ModelServiceId,omitempty" xml:"ModelServiceId,omitempty"`
+	// The name of the model service.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The cost in points per million output tokens.
+	//
 	// example:
 	//
 	// 10
 	OutputCostPointsPerMillion *string `json:"OutputCostPointsPerMillion,omitempty" xml:"OutputCostPointsPerMillion,omitempty"`
+	// The protocol type. Valid values:
+	//
+	// - **openai**
+	//
+	// - **anthropic**
+	//
+	// - **bailian**
+	//
+	// - **vllm**
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// openai
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The cost in points per request.
+	//
 	// example:
 	//
 	// 10

@@ -18,15 +18,15 @@ type iDescribeClassListResponseBody interface {
 }
 
 type DescribeClassListResponseBody struct {
-	// The cluster specifications.
+	// The list of cluster specifications.
 	Items []*DescribeClassListResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The region ID of the cluster.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -83,51 +83,51 @@ func (s *DescribeClassListResponseBody) Validate() error {
 }
 
 type DescribeClassListResponseBodyItems struct {
-	// The specifications of the cluster.
+	// The cluster specifications.
 	//
 	// example:
 	//
 	// polar.mysql.x4.medium
 	ClassCode *string `json:"ClassCode,omitempty" xml:"ClassCode,omitempty"`
-	// The instance family of the cluster. Valid values:
+	// The family of the cluster specifications. Valid values:
 	//
-	// 	- Exclusive package: dedicated
+	// - Exclusive package
 	//
-	// 	- Exclusive physical machine: dedicated host
+	// - Exclusive physical machine
 	//
-	// 	- Beginner: starter
+	// - Beginner
 	//
-	// 	- Historical specifications: historical
+	// - Historical specifications
 	//
 	// example:
 	//
 	// Exclusive package
 	ClassGroup *string `json:"ClassGroup,omitempty" xml:"ClassGroup,omitempty"`
-	// The specification type of the cluster.
+	// The specification type.
 	//
 	// example:
 	//
 	// enterprise
 	ClassTypeLevel *string `json:"ClassTypeLevel,omitempty" xml:"ClassTypeLevel,omitempty"`
-	// The number of vCPU cores. Unit: cores.
+	// The number of CPU cores. Unit: cores.
 	//
 	// example:
 	//
 	// 8
 	Cpu *string `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// The maximum ESSD storage capacity. Unit: TB.
+	// The maximum storage capacity of an ESSD. Unit: TB.
 	//
 	// example:
 	//
 	// 64
 	EssdMaxStorageCapacity *string `json:"EssdMaxStorageCapacity,omitempty" xml:"EssdMaxStorageCapacity,omitempty"`
-	// The maximum number of concurrent connections in the cluster.
+	// The maximum number of concurrent connections to the cluster.
 	//
 	// example:
 	//
 	// 8000
 	MaxConnections *string `json:"MaxConnections,omitempty" xml:"MaxConnections,omitempty"`
-	// The maximum IOPS. Unit: operations per second.
+	// The maximum IOPS. Unit: IOPS.
 	//
 	// example:
 	//
@@ -139,43 +139,43 @@ type DescribeClassListResponseBodyItems struct {
 	//
 	// 20
 	MaxStorageCapacity *string `json:"MaxStorageCapacity,omitempty" xml:"MaxStorageCapacity,omitempty"`
-	// The memory size. Unit: GB.
+	// The memory capacity. Unit: GB.
 	//
 	// example:
 	//
 	// 32
 	MemoryClass *string `json:"MemoryClass,omitempty" xml:"MemoryClass,omitempty"`
-	// The maximum IOPS of an enhanced SSD (ESSD) of performance level 1 (PL1). Unit: operations per second.
+	// The maximum IOPS of an Enhanced SSD (ESSD) at performance level 1 (PL1). Unit: IOPS.
 	//
 	// example:
 	//
 	// 50000
 	Pl1MaxIOPS *string `json:"Pl1MaxIOPS,omitempty" xml:"Pl1MaxIOPS,omitempty"`
-	// The maximum IOPS of an ESSD of performance level 2 (PL2). Unit: operations per second.
+	// The maximum IOPS of an ESSD at PL2. Unit: IOPS.
 	//
 	// example:
 	//
 	// 100000
 	Pl2MaxIOPS *string `json:"Pl2MaxIOPS,omitempty" xml:"Pl2MaxIOPS,omitempty"`
-	// The maximum IOPS of an ESSD of performance level 3 (PL3). Unit: operations per second.
+	// The maximum IOPS of an ESSD at PL3. Unit: IOPS.
 	//
 	// example:
 	//
 	// 1000000
 	Pl3MaxIOPS *string `json:"Pl3MaxIOPS,omitempty" xml:"Pl3MaxIOPS,omitempty"`
-	// The maximum PSL4/PSL5 storage capacity. Unit: TB.
+	// The maximum storage capacity of PSL4/PSL5. Unit: TB.
 	//
 	// example:
 	//
 	// 500
 	PolarStoreMaxStorageCapacity *string `json:"PolarStoreMaxStorageCapacity,omitempty" xml:"PolarStoreMaxStorageCapacity,omitempty"`
-	// The maximum Input/output operations per second (IOPS) for PolarStore Level 4 (PSL4). Unit: operations per second.
+	// The maximum input/output operations per second (IOPS) of PSL4. Unit: IOPS.
 	//
 	// example:
 	//
 	// 48000
 	Psl4MaxIOPS *string `json:"Psl4MaxIOPS,omitempty" xml:"Psl4MaxIOPS,omitempty"`
-	// The maximum IOPS for PolarStore Level 5 (PSL5). Unit: operations per second.
+	// The maximum IOPS of PSL5. Unit: IOPS.
 	//
 	// example:
 	//
@@ -183,11 +183,15 @@ type DescribeClassListResponseBodyItems struct {
 	Psl5MaxIOPS *string `json:"Psl5MaxIOPS,omitempty" xml:"Psl5MaxIOPS,omitempty"`
 	// The additional price.
 	//
-	// Unit: cents (USD).
+	// <props="china">Unit: cents (CNY).
 	//
-	// >- If you set MasterHa to cluster or single, the value of ReferenceExtPrice is the same as the value of ReferencePrice.
+	// <props="intl">Unit: cents (USD).
 	//
-	// >- If you set MasterHa to cluster or single, the value of ReferenceExtPrice is the price of the single-node cluster.
+	// > - If you set the MasterHa parameter to cluster or single, the value of this parameter is the same as the value of the ReferencePrice parameter.
+	//
+	// >
+	//
+	// > - If you set the MasterHa parameter to cluster or single, the price for a single-node commodity is returned.
 	//
 	// example:
 	//
@@ -195,11 +199,15 @@ type DescribeClassListResponseBodyItems struct {
 	ReferenceExtPrice *string `json:"ReferenceExtPrice,omitempty" xml:"ReferenceExtPrice,omitempty"`
 	// The price.
 	//
-	// Unit: cents (USD).
+	// <props="china">Unit: cents (CNY).
 	//
-	// >- If you set CommodityCode to a commodity that uses the pay-as-you-go billing method, ReferencePrice indicates the hourly fee that you need to pay.
+	// <props="intl">Unit: cents (USD).
 	//
-	// >- If you set CommodityCode to a commodity that uses the subscription billing method, ReferencePrice indicates the monthly fee that you need to pay.
+	// > - If you set the CommodityCode parameter to a pay-as-you-go commodity code, the hourly price is returned.
+	//
+	// >
+	//
+	// > - If you set the CommodityCode parameter to a subscription commodity code, the monthly price is returned.
 	//
 	// example:
 	//

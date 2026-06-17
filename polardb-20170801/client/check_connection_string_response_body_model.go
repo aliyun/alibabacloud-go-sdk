@@ -14,6 +14,8 @@ type iCheckConnectionStringResponseBody interface {
 }
 
 type CheckConnectionStringResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// CD3FA5F3-FAF3-44CA-AFFF-BAF869******

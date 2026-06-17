@@ -28,9 +28,9 @@ type iModifyAccountDescriptionRequest interface {
 type ModifyAccountDescriptionRequest struct {
 	// The description of the account. The description must meet the following requirements:
 	//
-	// 	- The description cannot start with `http://` or `https://`.
+	// - It cannot start with `http://` or `https://`.
 	//
-	// 	- The description must be 2 to 256 characters in length.
+	// - It must be 2 to 256 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type ModifyAccountDescriptionRequest struct {
 	//
 	// test
 	AccountDescription *string `json:"AccountDescription,omitempty" xml:"AccountDescription,omitempty"`
-	// The name of the account.
+	// The account name.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type ModifyAccountDescriptionRequest struct {
 	//
 	// testacc
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The ID of the cluster.
+	// The cluster ID.
 	//
 	// This parameter is required.
 	//

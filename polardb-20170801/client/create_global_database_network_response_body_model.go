@@ -22,7 +22,7 @@ type CreateGlobalDatabaseNetworkResponseBody struct {
 	//
 	// gd-m5ex5wqfqbou*****
 	GDNId *string `json:"GDNId,omitempty" xml:"GDNId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

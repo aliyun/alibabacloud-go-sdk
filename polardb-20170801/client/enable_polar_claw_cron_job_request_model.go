@@ -18,18 +18,24 @@ type iEnablePolarClawCronJobRequest interface {
 }
 
 type EnablePolarClawCronJobRequest struct {
+  // The application ID.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // pa-**************
   ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+  // The ID of the cron job to enable.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // 0ee00f56-f467-4d41-858c-ca4ede2c770e
   JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+  // Specifies whether to restart the gateway after the job is enabled. The default value is `true`.
+  // 
   // example:
   // 
   // true

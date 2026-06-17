@@ -22,7 +22,7 @@ type CloseAITaskResponseBody struct {
 	//
 	// 936C7025-27A5-4CB1-BB31-540E1F0CCA12
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the task for disabling the PolarDB for AI feature.
+	// The ID of the task.
 	//
 	// example:
 	//

@@ -72,15 +72,15 @@ type DescribePendingMaintenanceActionsResponseBodyTypeList struct {
 	//
 	// 1
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The task type of pending events. Valid values:
+	// The task type of the pending event. Valid values:
 	//
-	// 	- **DatabaseSoftwareUpgrading**: database software upgrades
+	// - **DatabaseSoftwareUpgrading**: database software upgrade
 	//
-	// 	- **DatabaseHardwareMaintenance**: hardware maintenance and upgrades
+	// - **DatabaseHardwareMaintenance**: hardware maintenance and upgrade
 	//
-	// 	- **DatabaseStorageUpgrading**: database storage upgrades
+	// - **DatabaseStorageUpgrading**: database storage upgrade
 	//
-	// 	- **DatabaseProxyUpgrading**: minor version upgrades of the proxy
+	// - **DatabaseProxyUpgrading**: proxy minor version upgrade
 	//
 	// example:
 	//

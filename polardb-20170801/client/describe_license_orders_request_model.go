@@ -32,7 +32,7 @@ type iDescribeLicenseOrdersRequest interface {
 }
 
 type DescribeLicenseOrdersRequest struct {
-	// The ID of the Alibaba Cloud order. The value can be the ID of a virtual order.
+	// The Alibaba Cloud order ID. This can be a virtual order ID.
 	//
 	// example:
 	//
@@ -40,35 +40,35 @@ type DescribeLicenseOrdersRequest struct {
 	AliyunOrderId *string `json:"AliyunOrderId,omitempty" xml:"AliyunOrderId,omitempty"`
 	OwnerAccount  *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The plan type. Valid values:
+	// The package type. Valid values:
 	//
-	// 	- single_node_subscribe: Single-node Edition (Subscription).
+	// - single_node_subscribe: single node (subscription)
 	//
-	// 	- single_node_long_term: Single-node Edition (Long-term).
+	// - single_node_long_term: single node (long-term)
 	//
-	// 	- primary_backup_subscribe: HA Edition (Subscription).
+	// - primary_backup_subscribe: primary/standby (subscription)
 	//
-	// 	- primary_backup_long_term: HA Edition (Long-term).
+	// - primary_backup_long_term: primary/standby (long-term)
 	//
-	// 	- pre_generation_long_term: Pre-generated (Long-term).
+	// - pre_generation_long_term: pre-generated (long-term)
 	//
 	// example:
 	//
 	// single_node_subscribe
 	PackageType *string `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
-	// The page number.
+	// The page number to query.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of records to return on each page.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The purchase channel. Valid values: aliyun_market and aliyun_public. aliyun_market specifies Alibaba Cloud Marketplace. aliyun_public specifies the PolarDB buy page.
+	// The purchase channel. Valid values: \\`aliyun_market\\` (Alibaba Cloud Marketplace) and \\`aliyun_public\\` (standard purchase page).
 	//
 	// example:
 	//

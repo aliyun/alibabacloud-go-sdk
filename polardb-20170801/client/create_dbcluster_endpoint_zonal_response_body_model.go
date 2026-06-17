@@ -14,6 +14,8 @@ type iCreateDBClusterEndpointZonalResponseBody interface {
 }
 
 type CreateDBClusterEndpointZonalResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// CD35F3-F3-44CA-AFFF-BAF869******

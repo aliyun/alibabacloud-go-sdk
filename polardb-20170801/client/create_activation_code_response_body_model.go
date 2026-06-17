@@ -40,7 +40,7 @@ type CreateActivationCodeResponseBody struct {
 	//
 	// 2024-10-16 16:46:20
 	ActivateAt *string `json:"ActivateAt,omitempty" xml:"ActivateAt,omitempty"`
-	// The activation code in the base64 format. The activation code is decoded and stored into a file named license.lic. PolarDB can access and read the license.lic file upon startup to validate the license or perform related operations.
+	// The content of the activation code. Decode this Base64-encoded content and save it to the \\`license.lic\\` file. PolarDB reads this file on startup.
 	//
 	// example:
 	//
@@ -52,25 +52,25 @@ type CreateActivationCodeResponseBody struct {
 	//
 	// testCode
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time when the activation code expires.
+	// The expiration time.
 	//
 	// example:
 	//
 	// 2054-10-09 16:46:20
 	ExpireAt *string `json:"ExpireAt,omitempty" xml:"ExpireAt,omitempty"`
-	// The time when the activation code was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2024-10-16 16:46:20
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// The time when the activation code was last updated.
+	// The update time.
 	//
 	// example:
 	//
 	// 2024-10-16 16:46:20
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The activation code ID.
+	// The ID of the activation code.
 	//
 	// example:
 	//
@@ -88,13 +88,13 @@ type CreateActivationCodeResponseBody struct {
 	//
 	// testName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
 	// 4CE6DF97-AEA4-484F-906F-C407EE******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The system identifier of the database.
+	// The unique system identifier of the database.
 	//
 	// example:
 	//

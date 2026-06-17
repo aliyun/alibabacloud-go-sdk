@@ -22,31 +22,31 @@ type iTransformDBClusterPayTypeResponseBody interface {
 }
 
 type TransformDBClusterPayTypeResponseBody struct {
-	// The billing method of the cluster. Valid values:
+	// The billing method of the instance. Valid values:
 	//
-	// 	- **Postpaid**: pay-as-you-go.
+	// - **Postpaid**: pay-as-you-go
 	//
-	// 	- **Prepaid**: subscription.
+	// - **Prepaid**: subscription
 	//
 	// example:
 	//
 	// Prepaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The cluster ID.
+	// The ID of the PolarDB cluster.
 	//
 	// example:
 	//
 	// pc-bp10gr51qasnl****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The time when the cluster expires.
+	// The expiration time of the instance.
 	//
-	// >  This parameter is returned if you set the **PayType*	- parameter to **Prepaid**.
+	// > This parameter is returned only when **PayType*	- is set to **Prepaid**.
 	//
 	// example:
 	//
 	// 2020-04-20T10:00:00Z
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	// The ID of the order.
+	// The order ID.
 	//
 	// example:
 	//

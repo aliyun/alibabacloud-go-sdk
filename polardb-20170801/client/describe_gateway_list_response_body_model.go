@@ -24,25 +24,42 @@ type iDescribeGatewayListResponseBody interface {
 }
 
 type DescribeGatewayListResponseBody struct {
+	// A list of gateway instances.
 	Items []*DescribeGatewayListResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned on the current page.
+	//
 	// example:
 	//
 	// 30
 	PageRecordCount *string `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	// The number of entries per page.
+	//
+	// - **30**
+	//
+	// - **50**
+	//
+	// - **100**
+	//
+	// Default value: 30.
+	//
 	// example:
 	//
 	// 30
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// CED079B7-A408-41A1-BFF1-EC608E******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 1
@@ -125,44 +142,90 @@ func (s *DescribeGatewayListResponseBody) Validate() error {
 }
 
 type DescribeGatewayListResponseBodyItems struct {
+	// The time when the gateway instance was created.
+	//
 	// example:
 	//
 	// 2020-08-14T05:58:42Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The database type.
+	//
 	// example:
 	//
 	// polardb_mysql
-	DbType     *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	// The expiration time of the gateway instance.
+	//
+	// - For subscription instances, this parameter indicates the expiration time.
+	//
+	// - This parameter is empty for pay-as-you-go instances.
+	//
+	// example:
+	//
+	// 2028-09-01T16:00:00Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	Expired    *bool   `json:"Expired,omitempty" xml:"Expired,omitempty"`
+	// Indicates whether the gateway instance has expired. Valid values:
+	//
+	// - **true**
+	//
+	// - **false**
+	//
+	// example:
+	//
+	// false
+	Expired *bool `json:"Expired,omitempty" xml:"Expired,omitempty"`
+	// The gateway instance ID.
+	//
 	// example:
 	//
 	// pg-xxxxxxx
 	GwClusterId *string `json:"GwClusterId,omitempty" xml:"GwClusterId,omitempty"`
+	// The description of the gateway instance.
+	//
 	// example:
 	//
 	// pg-xxxxxx
 	GwDescription *string `json:"GwDescription,omitempty" xml:"GwDescription,omitempty"`
+	// The time when the gateway instance was last modified.
+	//
 	// example:
 	//
 	// 2024-10-29T09:31:37Z
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The billing method. Valid values:
+	//
+	// - **Postpaid**: pay-as-you-go
+	//
+	// - **Prepaid**: subscription
+	//
 	// example:
 	//
 	// Postpaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The status of the gateway instance. Valid values:
+	//
+	// - **CREATE**: creating
+	//
+	// - **ACTIVATION**: running
+	//
 	// example:
 	//
 	// ACTIVATION
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The vSwitch ID.
+	//
 	// example:
 	//
 	// vsw-wz9u0v2yuskt1gth3uuju
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The ID of the virtual private cloud (VPC).
+	//
 	// example:
 	//
 	// vpc-****************

@@ -36,38 +36,68 @@ type iDescribeSharedBackupsRequest interface {
 }
 
 type DescribeSharedBackupsRequest struct {
+	// The backup set ID.
+	//
 	// example:
 	//
 	// 111111111
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
+	// The cluster ID.
+	//
 	// example:
 	//
 	// pc-**************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The database type. Valid values:
+	//
+	// - **MySQL**
+	//
+	// - **PostgreSQL**
+	//
+	// - **Oracle**
+	//
+	// To specify multiple types, separate them with a comma.
+	//
 	// example:
 	//
 	// MySQL,PostgreSQL,Oracle
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
+	// The database version.
+	//
 	// example:
 	//
 	// 8.0
 	DBVersion    *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page number. The value must be an integer that is greater than 0. Default value: **1**.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values: 30 to 100. Default value: **30**.
+	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query the available regions.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The share type. Valid values:
+	//
+	// - **ShareIncoming**: backups shared with you.
+	//
+	// - **ShareOutgoing**: backups you shared.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -18,14 +18,20 @@ type iModifyDBClusterStoragePerformanceResponseBody interface {
 }
 
 type ModifyDBClusterStoragePerformanceResponseBody struct {
+	// The cluster ID.
+	//
 	// example:
 	//
 	// pc-************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The ID of the order.
+	//
 	// example:
 	//
 	// 2035629******
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// E56531A4-E552-40BA-9C58-137B80******

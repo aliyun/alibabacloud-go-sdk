@@ -22,20 +22,27 @@ type iListPolarClawBindingsResponseBody interface {
 }
 
 type ListPolarClawBindingsResponseBody struct {
+	// The application ID.
+	//
 	// example:
 	//
 	// pa-**************
-	ApplicationId *string                                      `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	Bindings      []*ListPolarClawBindingsResponseBodyBindings `json:"Bindings,omitempty" xml:"Bindings,omitempty" type:"Repeated"`
+	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The list of bindings.
+	Bindings []*ListPolarClawBindingsResponseBodyBindings `json:"Bindings,omitempty" xml:"Bindings,omitempty" type:"Repeated"`
+	// The status code.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -110,19 +117,19 @@ func (s *ListPolarClawBindingsResponseBody) Validate() error {
 }
 
 type ListPolarClawBindingsResponseBodyBindings struct {
-	// Agent ID
+	// The agent ID.
 	//
 	// example:
 	//
 	// work
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
-	// Channel ID
+	// The channel ID.
 	//
 	// example:
 	//
 	// feishu
 	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
-	// Account ID
+	// The account ID.
 	//
 	// example:
 	//

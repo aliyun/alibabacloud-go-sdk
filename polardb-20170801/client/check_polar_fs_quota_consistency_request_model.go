@@ -20,18 +20,34 @@ type iCheckPolarFsQuotaConsistencyRequest interface {
 }
 
 type CheckPolarFsQuotaConsistencyRequest struct {
+	// Specifies whether to repair an inconsistent quota. Valid values:
+	//
+	// - false
+	//
+	// - true
+	//
 	// example:
 	//
 	// false
 	EnableRepair *bool `json:"EnableRepair,omitempty" xml:"EnableRepair,omitempty"`
+	// Specifies whether to calculate the total usage of the directory in strict mode. Valid values:
+	//
+	// - false
+	//
+	// - true
+	//
 	// example:
 	//
 	// false
 	EnableStrictCalculate *bool `json:"EnableStrictCalculate,omitempty" xml:"EnableStrictCalculate,omitempty"`
+	// The directory path.
+	//
 	// example:
 	//
 	// /test
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The ID of the PolarFS instance.
+	//
 	// This parameter is required.
 	//
 	// example:

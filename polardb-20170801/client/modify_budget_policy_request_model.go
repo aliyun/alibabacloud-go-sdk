@@ -24,27 +24,42 @@ type iModifyBudgetPolicyRequest interface {
 }
 
 type ModifyBudgetPolicyRequest struct {
+	// The budget usage percentage that triggers an alert. Valid values: 0 to 100.
+	//
 	// example:
 	//
 	// 80
 	AlertThresholdPct *string `json:"AlertThresholdPct,omitempty" xml:"AlertThresholdPct,omitempty"`
+	// The budget amount in points.
+	//
 	// example:
 	//
 	// 10000
 	BudgetPoints *string `json:"BudgetPoints,omitempty" xml:"BudgetPoints,omitempty"`
+	// The ID of the budget policy.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 023aacc1effc4b56bb154bfbec6ba9**
 	BudgetPolicyId *string `json:"BudgetPolicyId,omitempty" xml:"BudgetPolicyId,omitempty"`
+	// The ID of the gateway instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pg-xxxxxxxx
 	GwClusterId *string `json:"GwClusterId,omitempty" xml:"GwClusterId,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The day of the month when the budget is reset. Valid values: 1 to 28.
+	//
 	// example:
 	//
 	// 2

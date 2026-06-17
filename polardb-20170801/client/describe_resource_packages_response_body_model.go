@@ -16,10 +16,13 @@ type iDescribeResourcePackagesResponseBody interface {
 }
 
 type DescribeResourcePackagesResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// E56531A4-E552-40BA-9C58-137B80******
-	RequestId           *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// A list of cross-cloud resource plans.
 	ResourcePackageList []*DescribeResourcePackagesResponseBodyResourcePackageList `json:"ResourcePackageList,omitempty" xml:"ResourcePackageList,omitempty" type:"Repeated"`
 }
 
@@ -63,36 +66,58 @@ func (s *DescribeResourcePackagesResponseBody) Validate() error {
 }
 
 type DescribeResourcePackagesResponseBodyResourcePackageList struct {
+	// Indicates whether automatic quota allocation is enabled.
+	//
 	// example:
 	//
 	// true
 	AutoQuota *bool `json:"AutoQuota,omitempty" xml:"AutoQuota,omitempty"`
+	// The time when the resource plan was created.
+	//
 	// example:
 	//
 	// 1744621511000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the resource plan expires.
+	//
 	// example:
 	//
 	// 1747238400000
 	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The ID of the cross-cloud resource plan.
+	//
 	// example:
 	//
 	// pm-bp11b0i9389******
-	ResourcePackageId        *string                                                                            `json:"ResourcePackageId,omitempty" xml:"ResourcePackageId,omitempty"`
+	ResourcePackageId *string `json:"ResourcePackageId,omitempty" xml:"ResourcePackageId,omitempty"`
+	// The quota allocation details.
 	ResourcePackageQuotaList []*DescribeResourcePackagesResponseBodyResourcePackageListResourcePackageQuotaList `json:"ResourcePackageQuotaList,omitempty" xml:"ResourcePackageQuotaList,omitempty" type:"Repeated"`
+	// The type of the cross-cloud resource plan.
+	//
 	// example:
 	//
 	// MySQL
 	ResourcePackageType *string `json:"ResourcePackageType,omitempty" xml:"ResourcePackageType,omitempty"`
+	// The status of the cross-cloud resource plan. Valid values:
+	//
+	// - Normal: Normal.
+	//
+	// - Maintaining: Under maintenance.
+	//
 	// example:
 	//
 	// Normal
-	Status *string                                                        `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags   []*DescribeResourcePackagesResponseBodyResourcePackageListTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The list of tags.
+	Tags []*DescribeResourcePackagesResponseBodyResourcePackageListTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The total capacity.
+	//
 	// example:
 	//
 	// 8
 	TotalCapacity *int64 `json:"TotalCapacity,omitempty" xml:"TotalCapacity,omitempty"`
+	// The used capacity.
+	//
 	// example:
 	//
 	// 4
@@ -220,14 +245,20 @@ func (s *DescribeResourcePackagesResponseBodyResourcePackageList) Validate() err
 }
 
 type DescribeResourcePackagesResponseBodyResourcePackageListResourcePackageQuotaList struct {
+	// The capacity allocated to the resource pool.
+	//
 	// example:
 	//
 	// 6
 	AllocatedCapacity *int64 `json:"AllocatedCapacity,omitempty" xml:"AllocatedCapacity,omitempty"`
+	// The ID of the resource pool.
+	//
 	// example:
 	//
 	// pj-87681rbcef6******
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The used capacity of the resource pool.
+	//
 	// example:
 	//
 	// 2
@@ -274,10 +305,14 @@ func (s *DescribeResourcePackagesResponseBodyResourcePackageListResourcePackageQ
 }
 
 type DescribeResourcePackagesResponseBodyResourcePackageListTags struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// Key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// Value

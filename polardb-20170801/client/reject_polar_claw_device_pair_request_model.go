@@ -16,12 +16,16 @@ type iRejectPolarClawDevicePairRequest interface {
 }
 
 type RejectPolarClawDevicePairRequest struct {
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The pairing request ID.
+	//
 	// This parameter is required.
 	//
 	// example:

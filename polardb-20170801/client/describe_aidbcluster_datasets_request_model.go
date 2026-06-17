@@ -36,38 +36,66 @@ type iDescribeAIDBClusterDatasetsRequest interface {
 }
 
 type DescribeAIDBClusterDatasetsRequest struct {
+	// The token used to retrieve the next page of results. This value is obtained from the response of a previous request. For the first request, leave this parameter empty.
+	//
 	// example:
 	//
 	// EFSDF-DF-***
 	ContinuationToken *string `json:"ContinuationToken,omitempty" xml:"ContinuationToken,omitempty"`
+	// The ID of the PolarDB cluster for AI model services.
+	//
 	// example:
 	//
 	// pc-2ze88***
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The dataset ID.
+	//
 	// example:
 	//
 	// pds-2ze88***
 	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	// The type of the dataset. Valid values:
+	//
+	// - **train**: The training set.
+	//
+	// - **eval**: The evaluation set.
+	//
 	// example:
 	//
 	// train
 	DatasetType  *string `json:"DatasetType,omitempty" xml:"DatasetType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page number to return. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Valid values: **30**, **50**, and **100**.
+	//
+	// Default value: **30**.
+	//
 	// example:
 	//
 	// 30
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The training mode. Valid values:
+	//
+	// - **sft**: supervised fine-tuning.
+	//
+	// - **grpo**: reinforcement learning.
+	//
+	// - **text**: text generation.
+	//
 	// example:
 	//
 	// grpo

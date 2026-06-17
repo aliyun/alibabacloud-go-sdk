@@ -90,117 +90,244 @@ type iCreateApplicationRequest interface {
 }
 
 type CreateApplicationRequest struct {
+	// The ID of an existing model operator instance to associate. This parameter is effective only when ApplicationType is set to polarclaw.
+	//
 	// example:
 	//
 	// pm-xxxxxx
 	AIDBClusterId *string `json:"AIDBClusterId,omitempty" xml:"AIDBClusterId,omitempty"`
+	// The type of the application. Valid values:
+	//
+	// - supabase: Creates a managed Supabase application.
+	//
+	// - raycluster: Creates a managed Ray Cluster application.
+	//
+	// - polarclaw: Creates a managed PolarClaw application.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// supabase
 	ApplicationType *string `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
+	// The CPU architecture. Valid value:
+	//
+	// - x86
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// x86
 	Architecture *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
+	// The authentication service provider.
+	//
 	// example:
 	//
 	// feishu
 	AuthProvider *string `json:"AuthProvider,omitempty" xml:"AuthProvider,omitempty"`
+	// The configuration of the authentication provider.
+	//
 	// example:
 	//
 	// xxx
-	AuthProviderConfig    *string `json:"AuthProviderConfig,omitempty" xml:"AuthProviderConfig,omitempty"`
-	AutoAllocatePublicEip *bool   `json:"AutoAllocatePublicEip,omitempty" xml:"AutoAllocatePublicEip,omitempty"`
-	AutoCreatePolarFs     *bool   `json:"AutoCreatePolarFs,omitempty" xml:"AutoCreatePolarFs,omitempty"`
+	AuthProviderConfig *string `json:"AuthProviderConfig,omitempty" xml:"AuthProviderConfig,omitempty"`
+	// Specifies whether to automatically create and bind an Elastic IP Address (EIP).
+	//
+	// example:
+	//
+	// qwen3-max
+	AutoAllocatePublicEip *bool `json:"AutoAllocatePublicEip,omitempty" xml:"AutoAllocatePublicEip,omitempty"`
+	// Specifies whether to automatically create a PolarFS cold storage instance. Valid values:
+	//
+	// - false (default): Does not automatically create the instance.
+	//
+	// - true: Automatically creates the instance.
+	//
+	// example:
+	//
+	// false
+	AutoCreatePolarFs *bool `json:"AutoCreatePolarFs,omitempty" xml:"AutoCreatePolarFs,omitempty"`
+	// Specifies whether to enable auto-renewal.
+	//
 	// example:
 	//
 	// true
-	AutoRenew     *bool                                 `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	AutoUseCoupon *bool                                 `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
-	Components    []*CreateApplicationRequestComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
+	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// Specifies whether to automatically use a coupon. Valid values:
+	//
+	// - true (default): Uses a coupon.
+	//
+	// - false: Does not use a coupon.
+	//
+	// example:
+	//
+	// true
+	AutoUseCoupon *bool `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
+	// A list of custom child components for the application.
+	Components []*CreateApplicationRequestComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
+	// The ID of the PolarDB instance that the application depends on.
+	//
 	// example:
 	//
 	// pc-**************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The description of the application.
+	//
 	// example:
 	//
 	// myapp
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The default value is `false`. If you set this parameter to `true`, the system only checks the parameters and resources without creating the actual resources.
+	//
 	// example:
 	//
 	// false
-	DryRun                   *bool                                             `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	Endpoints                []*CreateApplicationRequestEndpoints              `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// A list of custom server-side endpoints. By default, a VPC Endpoint is created.
+	Endpoints []*CreateApplicationRequestEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
+	// This parameter is required for knowledge applications.
 	KnowledgeApplicationSpec *CreateApplicationRequestKnowledgeApplicationSpec `json:"KnowledgeApplicationSpec,omitempty" xml:"KnowledgeApplicationSpec,omitempty" type:"Struct"`
-	MemApplicationSpec       *CreateApplicationRequestMemApplicationSpec       `json:"MemApplicationSpec,omitempty" xml:"MemApplicationSpec,omitempty" type:"Struct"`
+	// This parameter is required for mem0 applications.
+	MemApplicationSpec *CreateApplicationRequestMemApplicationSpec `json:"MemApplicationSpec,omitempty" xml:"MemApplicationSpec,omitempty" type:"Struct"`
+	// The model API. This parameter is effective only when ApplicationType is set to polarclaw.
+	//
 	// example:
 	//
 	// openai-completions
 	ModelApi *string `json:"ModelApi,omitempty" xml:"ModelApi,omitempty"`
+	// The API key for the model. This parameter is effective only when ApplicationType is set to polarclaw.
+	//
 	// example:
 	//
 	// sk-xxxxxx
 	ModelApiKey *string `json:"ModelApiKey,omitempty" xml:"ModelApiKey,omitempty"`
+	// The URL of the model. This parameter is effective only when ApplicationType is set to polarclaw.
+	//
 	// example:
 	//
 	// https://dashscope.aliyuncs.com/compatible-mode/v1
 	ModelBaseUrl *string `json:"ModelBaseUrl,omitempty" xml:"ModelBaseUrl,omitempty"`
+	// The source of the model. Valid values:
+	//
+	// - bailian: Alibaba Cloud Model Studio model.
+	//
+	// - custom: A custom model.
+	//
+	// - maas: PolarDB model operator.
+	//
 	// example:
 	//
 	// bailian
 	ModelFrom *string `json:"ModelFrom,omitempty" xml:"ModelFrom,omitempty"`
+	// The name of the model. This parameter is effective only when ApplicationType is set to polarclaw.
+	//
 	// example:
 	//
 	// qwen3-max
-	ModelName  *string                               `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	// A list of parameters.
 	Parameters []*CreateApplicationRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
+	// The billing method.
+	//
 	// example:
 	//
 	// Postpaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// The subscription period type.
+	//
 	// example:
 	//
 	// Year
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The ID of the PolarFileSystem (PolarFS) cold storage or high-performance instance. This parameter is empty by default. If you specify this parameter, the corresponding storage is mounted to the application.
+	//
+	// This feature is currently supported only by the following applications:
+	//
+	// - supabase
+	//
+	// - raycluster
+	//
 	// example:
 	//
 	// pcs-********************
 	PolarFSInstanceId *string `json:"PolarFSInstanceId,omitempty" xml:"PolarFSInstanceId,omitempty"`
+	// The coupon code. If you do not specify this parameter, the default coupon is used.
+	//
 	// example:
 	//
 	// 727xxxxxx934
 	PromotionCode *string `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
+	// The region. The default value is the region of the instance.
+	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	//
 	// example:
 	//
 	// rg-********************
-	ResourceGroupId     *string                        `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SecurityGroupId     *string                        `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	SecurityIPArrayName *string                        `json:"SecurityIPArrayName,omitempty" xml:"SecurityIPArrayName,omitempty"`
-	SecurityIPList      *string                        `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
-	SecurityIPType      *string                        `json:"SecurityIPType,omitempty" xml:"SecurityIPType,omitempty"`
-	SkillTemplateId     *string                        `json:"SkillTemplateId,omitempty" xml:"SkillTemplateId,omitempty"`
-	Tag                 []*CreateApplicationRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The ID of the security group.
+	//
+	// example:
+	//
+	// sg-********************
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// The name of the IP address whitelist group. The default value is `default`.
+	//
+	// example:
+	//
+	// default
+	SecurityIPArrayName *string `json:"SecurityIPArrayName,omitempty" xml:"SecurityIPArrayName,omitempty"`
+	// The IP address whitelist. If you do not specify this parameter, the default value `127.0.0.1` is used.
+	//
+	// example:
+	//
+	// 127.0.0.1,172.17.0.0/24
+	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
+	// The type of the IP address.
+	//
+	// example:
+	//
+	// ipv4
+	SecurityIPType *string `json:"SecurityIPType,omitempty" xml:"SecurityIPType,omitempty"`
+	// The ID of the skill template.
+	//
+	// example:
+	//
+	// xxx
+	SkillTemplateId *string `json:"SkillTemplateId,omitempty" xml:"SkillTemplateId,omitempty"`
+	// The tag.
+	Tag []*CreateApplicationRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The target version.
+	//
 	// example:
 	//
 	// latest
 	TargetVersion *string `json:"TargetVersion,omitempty" xml:"TargetVersion,omitempty"`
+	// The subscription duration.
+	//
 	// example:
 	//
 	// 1
 	UsedTime *string `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
+	// The vSwitch. The default value is the current vSwitch in the primary zone of the instance.
+	//
 	// example:
 	//
 	// vsw-*********************
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VpcId     *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The ID of the Virtual Private Cloud (VPC).
+	//
+	// example:
+	//
+	// vpc-********************
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The zone. The default value is the primary zone of the instance.
+	//
 	// example:
 	//
 	// cn-beijing-k
@@ -617,36 +744,78 @@ func (s *CreateApplicationRequest) Validate() error {
 }
 
 type CreateApplicationRequestComponents struct {
+	// The specifications of the child component.
+	//
 	// example:
 	//
 	// polar.app.g2.medium
 	ComponentClass *string `json:"ComponentClass,omitempty" xml:"ComponentClass,omitempty"`
+	// The maximum number of child components with the same specifications. The default value is the value of ComponentReplica.
+	//
+	// - This parameter is supported only for raycluster.
+	//
 	// example:
 	//
 	// 1
 	ComponentMaxReplica *int64 `json:"ComponentMaxReplica,omitempty" xml:"ComponentMaxReplica,omitempty"`
+	// The number of replicas for the child component. The default value is 1.
+	//
 	// example:
 	//
 	// 1
 	ComponentReplica *int64 `json:"ComponentReplica,omitempty" xml:"ComponentReplica,omitempty"`
+	// The type of the child component.
+	//
+	// For supabase, valid values are:
+	//
+	// - gateway
+	//
+	// - backend
+	//
+	// For raycluster, valid values are:
+	//
+	// - head
+	//
+	// - worker
+	//
+	// - gpuworker
+	//
 	// example:
 	//
 	// gateway
 	ComponentType *string `json:"ComponentType,omitempty" xml:"ComponentType,omitempty"`
-	ScaleMax      *string `json:"ScaleMax,omitempty" xml:"ScaleMax,omitempty"`
-	ScaleMin      *string `json:"ScaleMin,omitempty" xml:"ScaleMin,omitempty"`
+	// The maximum number of component replicas for scaling.
+	//
+	// example:
+	//
+	// 16
+	ScaleMax *string `json:"ScaleMax,omitempty" xml:"ScaleMax,omitempty"`
+	// The minimum number of component replicas for scaling.
+	//
+	// example:
+	//
+	// 1
+	ScaleMin *string `json:"ScaleMin,omitempty" xml:"ScaleMin,omitempty"`
+	// The security groups for the child component. Separate multiple security group IDs with commas (,).
+	//
 	// example:
 	//
 	// sg-********************
 	SecurityGroups *string `json:"SecurityGroups,omitempty" xml:"SecurityGroups,omitempty"`
+	// The name of the IP address whitelist group for the child component. The default value is default.
+	//
 	// example:
 	//
 	// default
 	SecurityIPArrayName *string `json:"SecurityIPArrayName,omitempty" xml:"SecurityIPArrayName,omitempty"`
+	// The IP address whitelist for the child component. Separate multiple IP addresses with commas (,).
+	//
 	// example:
 	//
 	// 127.0.0.1
 	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
+	// The type of the IP address in the whitelist for the child component. The default value is ipv4.
+	//
 	// example:
 	//
 	// ipv4
@@ -756,10 +925,14 @@ func (s *CreateApplicationRequestComponents) Validate() error {
 }
 
 type CreateApplicationRequestEndpoints struct {
+	// The description of the server-side endpoint.
+	//
 	// example:
 	//
 	// my_endpoint
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The type of the server-side endpoint. This value is fixed to Primary.
+	//
 	// example:
 	//
 	// Primary
@@ -797,9 +970,12 @@ func (s *CreateApplicationRequestEndpoints) Validate() error {
 }
 
 type CreateApplicationRequestKnowledgeApplicationSpec struct {
+	// The password for the dashboard.
 	DashboardPassword *string `json:"DashboardPassword,omitempty" xml:"DashboardPassword,omitempty"`
-	DbPassword        *string `json:"DbPassword,omitempty" xml:"DbPassword,omitempty"`
-	LlmModel          *string `json:"LlmModel,omitempty" xml:"LlmModel,omitempty"`
+	// The password.
+	DbPassword *string `json:"DbPassword,omitempty" xml:"DbPassword,omitempty"`
+	// This parameter is required for knowledge applications. It specifies the name of the LLM, such as qwen3-max.
+	LlmModel *string `json:"LlmModel,omitempty" xml:"LlmModel,omitempty"`
 }
 
 func (s CreateApplicationRequestKnowledgeApplicationSpec) String() string {
@@ -842,16 +1018,66 @@ func (s *CreateApplicationRequestKnowledgeApplicationSpec) Validate() error {
 }
 
 type CreateApplicationRequestMemApplicationSpec struct {
-	DbName                 *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	DbPassword             *string `json:"DbPassword,omitempty" xml:"DbPassword,omitempty"`
-	DbUser                 *string `json:"DbUser,omitempty" xml:"DbUser,omitempty"`
-	EmbedderModel          *string `json:"EmbedderModel,omitempty" xml:"EmbedderModel,omitempty"`
-	EmbedderModelDimension *int32  `json:"EmbedderModelDimension,omitempty" xml:"EmbedderModelDimension,omitempty"`
-	GraphLlmModel          *string `json:"GraphLlmModel,omitempty" xml:"GraphLlmModel,omitempty"`
-	LlmModel               *string `json:"LlmModel,omitempty" xml:"LlmModel,omitempty"`
-	ProjectName            *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	RerankerModel          *string `json:"RerankerModel,omitempty" xml:"RerankerModel,omitempty"`
-	Shard                  *int32  `json:"Shard,omitempty" xml:"Shard,omitempty"`
+	// The name of the database.
+	//
+	// example:
+	//
+	// test-database-name
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The password.
+	//
+	// example:
+	//
+	// test-user-password
+	DbPassword *string `json:"DbPassword,omitempty" xml:"DbPassword,omitempty"`
+	// The username.
+	//
+	// example:
+	//
+	// test-user
+	DbUser *string `json:"DbUser,omitempty" xml:"DbUser,omitempty"`
+	// This parameter is required for mem0 applications. It specifies the name of the embedder model, such as text-embedding-v4.
+	//
+	// example:
+	//
+	// text-embedding-v4
+	EmbedderModel *string `json:"EmbedderModel,omitempty" xml:"EmbedderModel,omitempty"`
+	// The vector dimensions.
+	//
+	// example:
+	//
+	// 1024
+	EmbedderModelDimension *int32 `json:"EmbedderModelDimension,omitempty" xml:"EmbedderModelDimension,omitempty"`
+	// The graph LLM.
+	//
+	// example:
+	//
+	// qwen-plus
+	GraphLlmModel *string `json:"GraphLlmModel,omitempty" xml:"GraphLlmModel,omitempty"`
+	// This parameter is required for mem0 applications. It specifies the name of the large language model (LLM), such as qwen3-max.
+	//
+	// example:
+	//
+	// qwen3-max
+	LlmModel *string `json:"LlmModel,omitempty" xml:"LlmModel,omitempty"`
+	// The project name. This corresponds to the schema in the database where project data is stored.
+	//
+	// example:
+	//
+	// test-project-name
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// This parameter is required for mem0 applications. It specifies the name of the reranker model, such as qwen3-rerank.
+	//
+	// example:
+	//
+	// qwen3-rerank
+	RerankerModel *string `json:"RerankerModel,omitempty" xml:"RerankerModel,omitempty"`
+	// The number of sharded tables.
+	//
+	// example:
+	//
+	// 1
+	Shard *int32 `json:"Shard,omitempty" xml:"Shard,omitempty"`
 }
 
 func (s CreateApplicationRequestMemApplicationSpec) String() string {
@@ -957,7 +1183,17 @@ func (s *CreateApplicationRequestMemApplicationSpec) Validate() error {
 }
 
 type CreateApplicationRequestParameters struct {
-	ParameterName  *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
+	// The name of the parameter.
+	//
+	// example:
+	//
+	// secret.gateway.auth.token
+	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
+	// The value of the parameter.
+	//
+	// example:
+	//
+	// TK***
 	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
 }
 
@@ -992,10 +1228,14 @@ func (s *CreateApplicationRequestParameters) Validate() error {
 }
 
 type CreateApplicationRequestTag struct {
+	// The key of the tag.
+	//
 	// example:
 	//
 	// testKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag.
+	//
 	// example:
 	//
 	// testValue

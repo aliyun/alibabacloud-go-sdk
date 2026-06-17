@@ -14,6 +14,8 @@ type iExecuteCrossCloudOpenAPIRequest interface {
 }
 
 type ExecuteCrossCloudOpenAPIRequest struct {
+  // The information required to call the cross-cloud OpenAPI.
+  // 
   // example:
   // 
   // {"Action":"DescribeDBClusters"}

@@ -26,16 +26,22 @@ type iDescribeAIDBClusterTasksRequest interface {
 }
 
 type DescribeAIDBClusterTasksRequest struct {
+	// The model operator type.
+	//
 	// example:
 	//
 	// aitrain
 	KubeType     *string `json:"KubeType,omitempty" xml:"KubeType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the PolarDB instance.
+	//
 	// example:
 	//
 	// pc-2ze88***

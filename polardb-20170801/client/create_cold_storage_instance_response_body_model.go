@@ -16,7 +16,7 @@ type iCreateColdStorageInstanceResponseBody interface {
 }
 
 type CreateColdStorageInstanceResponseBody struct {
-	// The cluster ID.
+	// The ID of the cold storage instance.
 	//
 	// example:
 	//

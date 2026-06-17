@@ -60,89 +60,144 @@ type iDescribeDBClustersZonalRequest interface {
 }
 
 type DescribeDBClustersZonalRequest struct {
+	// The cloud service provider.
+	//
 	// example:
 	//
 	// AlibabaCloud
 	CloudProvider *string `json:"CloudProvider,omitempty" xml:"CloudProvider,omitempty"`
+	// The database endpoint.
+	//
 	// example:
 	//
 	// ********.rwlb.polardb-pg-public.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
+	// The description of the cluster. Fuzzy search is supported.
+	//
 	// example:
 	//
 	// pc-****************
 	DBClusterDescription *string `json:"DBClusterDescription,omitempty" xml:"DBClusterDescription,omitempty"`
+	// The cluster ID. To specify multiple cluster IDs, separate them with commas (,).
+	//
 	// example:
 	//
 	// pc-****************
 	DBClusterIds *string `json:"DBClusterIds,omitempty" xml:"DBClusterIds,omitempty"`
+	// The status of the cluster.
+	//
 	// example:
 	//
 	// Running
 	DBClusterStatus *string `json:"DBClusterStatus,omitempty" xml:"DBClusterStatus,omitempty"`
+	// The node ID. You can specify multiple node IDs. Separate them with commas (,).
+	//
 	// example:
 	//
 	// pi-***************
 	DBNodeIds *string `json:"DBNodeIds,omitempty" xml:"DBNodeIds,omitempty"`
+	// The database type. Valid values:
+	//
+	// - MySQL
+	//
+	// - PostgreSQL
+	//
+	// - Oracle
+	//
 	// example:
 	//
 	// MySQL
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
+	// The database version.
+	//
 	// example:
 	//
 	// 5.6
 	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
+	// The query mode. Set the value to \\`Simple\\`. In this mode, only the basic metadata of the clusters is returned.
+	//
 	// example:
 	//
 	// Simple
 	DescribeType *string `json:"DescribeType,omitempty" xml:"DescribeType,omitempty"`
+	// Specifies whether the cluster has expired. Valid values:
+	//
+	// - true
+	//
+	// - false
+	//
 	// example:
 	//
 	// true
 	Expired *string `json:"Expired,omitempty" xml:"Expired,omitempty"`
+	// The maximum number of entries to return for the current request. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// A token used to retrieve the next page of results. Set this parameter to the \\`NextToken\\` value returned from the previous API call. You do not need to specify this parameter for the first call.
+	//
 	// example:
 	//
 	// 212db86sca4384811e0b5e8707e******
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page number. The value must be an integer that is greater than 0 and does not exceed the maximum value of the Integer data type. Default value: 1.
+	//
 	// example:
 	//
 	// 10
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Valid values: 30, 50, and 100.
+	//
+	// Default value: 30.
+	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The billing method. Valid values:
+	//
+	// - Postpaid: pay-as-you-go
+	//
+	// - Prepaid: subscription
+	//
 	// example:
 	//
 	// Postpaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// Filters for clusters created in the last N days. Valid values: 0 to 15.
+	//
 	// example:
 	//
 	// 7
 	RecentCreationInterval *int32 `json:"RecentCreationInterval,omitempty" xml:"RecentCreationInterval,omitempty"`
+	// Filters for clusters that expire in N days. Valid values: 0 to 15.
+	//
 	// example:
 	//
 	// 6
 	RecentExpirationInterval *int32 `json:"RecentExpirationInterval,omitempty" xml:"RecentExpirationInterval,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg-**********
-	ResourceGroupId      *string                              `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceOwnerAccount *string                              `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                               `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Tag                  []*DescribeDBClustersZonalRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The list of tags.
+	Tag []*DescribeDBClustersZonalRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DescribeDBClustersZonalRequest) String() string {
@@ -383,10 +438,14 @@ func (s *DescribeDBClustersZonalRequest) Validate() error {
 }
 
 type DescribeDBClustersZonalRequestTag struct {
+	// The key of tag \\`n\\`. You can filter clusters by specifying up to 20 tags. The \\`n\\` must be a unique and consecutive integer that starts from 1. \\`Tag.n.Key\\` corresponds to \\`Tag.n.Value\\`.
+	//
 	// example:
 	//
 	// MySQL
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag key.
+	//
 	// example:
 	//
 	// 5.6

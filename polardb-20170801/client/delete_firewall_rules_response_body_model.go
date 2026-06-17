@@ -18,16 +18,26 @@ type iDeleteFirewallRulesResponseBody interface {
 }
 
 type DeleteFirewallRulesResponseBody struct {
+	// The response message.
+	//
+	// > If the request is successful, Successful is returned. If the request fails, an error message is returned.
+	//
 	// example:
 	//
 	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 049A1520-6BD7-5572-8923-79215D2B4A94
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - **true**: The request was successful.
+	//
+	// - **false**: The request failed.
+	//
 	// example:
 	//
 	// true

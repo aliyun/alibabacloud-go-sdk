@@ -16,11 +16,14 @@ type iDescribeZonesResponseBody interface {
 }
 
 type DescribeZonesResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// E2FDB684-751D-424D-98B9-704BEA******
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Zones     []*DescribeZonesResponseBodyZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// A list of zones.
+	Zones []*DescribeZonesResponseBodyZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
 }
 
 func (s DescribeZonesResponseBody) String() string {
@@ -63,18 +66,36 @@ func (s *DescribeZonesResponseBody) Validate() error {
 }
 
 type DescribeZonesResponseBodyZones struct {
+	// The enumeration of statuses. Valid values:
+	//
+	// - **UnSet**: The zone is not open for use.
+	//
+	// - **SoldOut**: The resources in the zone are sold out.
+	//
+	// - **WithStock**: The zone has available resources.
+	//
 	// example:
 	//
 	// UnSet
 	ModeCode *string `json:"ModeCode,omitempty" xml:"ModeCode,omitempty"`
+	// The priority.
+	//
 	// example:
 	//
 	// 50
 	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The status of the zone. Valid values:
+	//
+	// - **ON**: The zone is available.
+	//
+	// - **OFF**: The zone is unavailable.
+	//
 	// example:
 	//
 	// ON
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the zone.
+	//
 	// example:
 	//
 	// cn-beijing-h

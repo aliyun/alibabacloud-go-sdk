@@ -26,9 +26,9 @@ type iModifyDBClusterAuditLogCollectorRequest interface {
 type ModifyDBClusterAuditLogCollectorRequest struct {
 	// Specifies whether to enable or disable SQL collector. Valid values:
 	//
-	// 	- Enable
+	// - Enable
 	//
-	// 	- Disable
+	// - Disable
 	//
 	// This parameter is required.
 	//

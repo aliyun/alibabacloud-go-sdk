@@ -24,30 +24,45 @@ type iCreateConsumerRequest interface {
 }
 
 type CreateConsumerRequest struct {
+	// The consumer group name.
+	//
 	// example:
 	//
 	// cg-p3gk2oh55c**
 	ConsumerGroupName *string `json:"ConsumerGroupName,omitempty" xml:"ConsumerGroupName,omitempty"`
+	// The gateway instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pg-xxxxxxxxxx
 	GwClusterId *string `json:"GwClusterId,omitempty" xml:"GwClusterId,omitempty"`
+	// The key type. The only supported value is ApiKey.
+	//
 	// example:
 	//
 	// ApiKey
 	KeyType *string `json:"KeyType,omitempty" xml:"KeyType,omitempty"`
+	// The user name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The user nickname.
+	//
 	// example:
 	//
 	// test
 	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 

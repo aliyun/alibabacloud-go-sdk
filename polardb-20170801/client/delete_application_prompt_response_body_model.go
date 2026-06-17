@@ -16,10 +16,14 @@ type iDeleteApplicationPromptResponseBody interface {
 }
 
 type DeleteApplicationPromptResponseBody struct {
+	// The Prompt ID.
+	//
 	// example:
 	//
 	// papt-f9lajgw765f4fnrzn1
 	PromptId *string `json:"PromptId,omitempty" xml:"PromptId,omitempty"`
+	// The Request ID.
+	//
 	// example:
 	//
 	// 3E5CD764-FCCA-5C9C-838E-20E0DE84B2AF

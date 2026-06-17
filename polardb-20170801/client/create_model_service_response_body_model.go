@@ -18,16 +18,20 @@ type iCreateModelServiceResponseBody interface {
 }
 
 type CreateModelServiceResponseBody struct {
+	// The model service ID.
+	//
 	// example:
 	//
 	// ms-xxxxxx
 	ModelServiceId *string `json:"ModelServiceId,omitempty" xml:"ModelServiceId,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 69A85BAF-1089-4CDF-A82F-0A140F******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status of the model service.
+	//
 	// example:
 	//
 	// Enable
