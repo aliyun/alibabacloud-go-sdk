@@ -40,7 +40,7 @@ type iGetConsumerAuthorizationRuleResponseBody interface {
 type GetConsumerAuthorizationRuleResponseBody struct {
 	// The API information.
 	ApiInfo *HttpApiApiInfo `json:"apiInfo,omitempty" xml:"apiInfo,omitempty"`
-	// Filters the list of operations by a specific consumer authorization rule ID. Only authorized operations are returned in the response.
+	// The consumer authorization rule ID used to filter the API list. The API list in the response contains only authorized APIs.
 	//
 	// example:
 	//
@@ -58,21 +58,25 @@ type GetConsumerAuthorizationRuleResponseBody struct {
 	//
 	// 1750852089975
 	CreateTimestamp *int64 `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
-	// The publishing status of the API in the current environment.
+	// The publish status of the API in the current environment.
 	//
 	// example:
 	//
 	// ""
 	DeployStatus *string `json:"deployStatus,omitempty" xml:"deployStatus,omitempty"`
-	// The environment information.
+	// The environment context.
 	EnvironmentInfo *EnvironmentInfo `json:"environmentInfo,omitempty" xml:"environmentInfo,omitempty"`
-	// The expiry mode. Valid values: LongTerm and ShortTerm.
+	// The expiration mode. Valid values:
+	//
+	// - LongTerm
+	//
+	// - ShortTerm.
 	//
 	// example:
 	//
 	// LongTerm
 	ExpireMode *string `json:"expireMode,omitempty" xml:"expireMode,omitempty"`
-	// The rule status.
+	// The expiration status.
 	//
 	// example:
 	//
@@ -86,7 +90,7 @@ type GetConsumerAuthorizationRuleResponseBody struct {
 	ExpireTimestamp *int64 `json:"expireTimestamp,omitempty" xml:"expireTimestamp,omitempty"`
 	// The gateway information.
 	GatewayInfo *GatewayInfo `json:"gatewayInfo,omitempty" xml:"gatewayInfo,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//

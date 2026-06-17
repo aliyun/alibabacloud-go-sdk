@@ -19,6 +19,8 @@ type iDomainInfo interface {
 	GetCreateTimestamp() *int64
 	SetDomainId(v string) *DomainInfo
 	GetDomainId() *string
+	SetDomainScope(v string) *DomainInfo
+	GetDomainScope() *string
 	SetForceHttps(v bool) *DomainInfo
 	GetForceHttps() *bool
 	SetMTLSEnabled(v bool) *DomainInfo
@@ -36,7 +38,7 @@ type iDomainInfo interface {
 }
 
 type DomainInfo struct {
-	// The certificate identifier.
+	// The China Security certificate identity.
 	//
 	// example:
 	//
@@ -56,13 +58,7 @@ type DomainInfo struct {
 	//
 	// -----END CERTIFICATE-----
 	ClientCACert *string `json:"clientCACert,omitempty" xml:"clientCACert,omitempty"`
-	// The creation source of the domain name.
-	//
-	// Valid values:
-	//
-	// 	- Console
-	//
-	// 	- Ingress
+	// The source from which the domain name was created.
 	//
 	// example:
 	//
@@ -79,14 +75,15 @@ type DomainInfo struct {
 	// example:
 	//
 	// d-cq1lthllhtgja4dk54eg
-	DomainId *string `json:"domainId,omitempty" xml:"domainId,omitempty"`
-	// Specifies whether to enable forcible HTTPS redirection when HTTPS is used as the protocol.
+	DomainId    *string `json:"domainId,omitempty" xml:"domainId,omitempty"`
+	DomainScope *string `json:"domainScope,omitempty" xml:"domainScope,omitempty"`
+	// Specifies whether to enable forced HTTPS redirect when the HTTPS protocol type is configured.
 	//
 	// example:
 	//
 	// false
 	ForceHttps *bool `json:"forceHttps,omitempty" xml:"forceHttps,omitempty"`
-	// Specifies whether to enable mutual authentication.
+	// Specifies whether to enable mTLS mutual authentication.
 	//
 	// example:
 	//
@@ -98,11 +95,11 @@ type DomainInfo struct {
 	//
 	// abc.com
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The supported protocol. Valid values:
+	// The protocol type supported by the domain name. Valid values:
 	//
-	// 	- HTTP
+	// - HTTP: Only HTTP is supported.
 	//
-	// 	- HTTPS
+	// - HTTPS: Only HTTPS is supported.
 	//
 	// example:
 	//
@@ -115,12 +112,6 @@ type DomainInfo struct {
 	// rg-xxxx
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// The domain name status.
-	//
-	// Valid values:
-	//
-	// 	- UnPublished
-	//
-	// 	- Published
 	//
 	// example:
 	//
@@ -160,6 +151,10 @@ func (s *DomainInfo) GetCreateTimestamp() *int64 {
 
 func (s *DomainInfo) GetDomainId() *string {
 	return s.DomainId
+}
+
+func (s *DomainInfo) GetDomainScope() *string {
+	return s.DomainScope
 }
 
 func (s *DomainInfo) GetForceHttps() *bool {
@@ -212,6 +207,11 @@ func (s *DomainInfo) SetCreateTimestamp(v int64) *DomainInfo {
 
 func (s *DomainInfo) SetDomainId(v string) *DomainInfo {
 	s.DomainId = &v
+	return s
+}
+
+func (s *DomainInfo) SetDomainScope(v string) *DomainInfo {
+	s.DomainScope = &v
 	return s
 }
 

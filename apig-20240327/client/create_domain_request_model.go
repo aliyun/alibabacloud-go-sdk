@@ -15,6 +15,8 @@ type iCreateDomainRequest interface {
 	GetCertIdentifier() *string
 	SetClientCACert(v string) *CreateDomainRequest
 	GetClientCACert() *string
+	SetDomainScope(v string) *CreateDomainRequest
+	GetDomainScope() *string
 	SetForceHttps(v bool) *CreateDomainRequest
 	GetForceHttps() *bool
 	SetGatewayType(v string) *CreateDomainRequest
@@ -38,7 +40,7 @@ type iCreateDomainRequest interface {
 }
 
 type CreateDomainRequest struct {
-	// The CA certificate ID.
+	// The CA certificate identifier.
 	//
 	// example:
 	//
@@ -50,7 +52,7 @@ type CreateDomainRequest struct {
 	//
 	// 1ef1da5f-38ed-69b3-****-037781890265
 	CertIdentifier *string `json:"certIdentifier,omitempty" xml:"certIdentifier,omitempty"`
-	// The client CA certificate content.
+	// The client CA certificate.
 	//
 	// example:
 	//
@@ -64,7 +66,11 @@ type CreateDomainRequest struct {
 	//
 	// -----END CERTIFICATE-----
 	ClientCACert *string `json:"clientCACert,omitempty" xml:"clientCACert,omitempty"`
-	// Specifies whether to enable forced HTTP to HTTPS redirection.
+	// example:
+	//
+	// Serverless
+	DomainScope *string `json:"domainScope,omitempty" xml:"domainScope,omitempty"`
+	// Specifies whether to enable forced HTTPS redirect when the protocol type is set to HTTPS.
 	//
 	// example:
 	//
@@ -72,31 +78,17 @@ type CreateDomainRequest struct {
 	ForceHttps *bool `json:"forceHttps,omitempty" xml:"forceHttps,omitempty"`
 	// The gateway type.
 	//
-	// Valid values:
-	//
-	// 	- AI
-	//
-	// 	- API
-	//
 	// example:
 	//
 	// API
 	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
-	// HTTP/2 configuration options.
-	//
-	// Valid values:
-	//
-	// 	- GlobalConfig
-	//
-	// 	- Close
-	//
-	// 	- Open
+	// The HTTP/2 setting.
 	//
 	// example:
 	//
 	// Open
 	Http2Option *string `json:"http2Option,omitempty" xml:"http2Option,omitempty"`
-	// Specifies whether to enable mutual Transport Layer Security (mTLS) authentication.
+	// Specifies whether to enable mutual TLS (mTLS) authentication.
 	MTLSEnabled *bool `json:"mTLSEnabled,omitempty" xml:"mTLSEnabled,omitempty"`
 	// The domain name.
 	//
@@ -108,11 +100,9 @@ type CreateDomainRequest struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The protocol type supported by the domain name.
 	//
-	// 	- HTTP: HTTP only
+	// - HTTP: supports only HTTP.
 	//
-	// 	- HTTPS: HTTPS only
-	//
-	// This parameter is required.
+	// - HTTPS: supports only HTTPS.
 	//
 	// example:
 	//
@@ -126,13 +116,13 @@ type CreateDomainRequest struct {
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// The cipher suite configuration.
 	TlsCipherSuitesConfig *TlsCipherSuitesConfig `json:"tlsCipherSuitesConfig,omitempty" xml:"tlsCipherSuitesConfig,omitempty"`
-	// The maximum TLS protocol version (up to TLS 1.3).
+	// The maximum TLS version. TLS 1.3 is the maximum supported version.
 	//
 	// example:
 	//
 	// TLS1.3
 	TlsMax *string `json:"tlsMax,omitempty" xml:"tlsMax,omitempty"`
-	// The minimum TLS protocol version (minimum TLS 1.0).
+	// The minimum TLS version. TLS 1.0 is the minimum supported version.
 	//
 	// example:
 	//
@@ -158,6 +148,10 @@ func (s *CreateDomainRequest) GetCertIdentifier() *string {
 
 func (s *CreateDomainRequest) GetClientCACert() *string {
 	return s.ClientCACert
+}
+
+func (s *CreateDomainRequest) GetDomainScope() *string {
+	return s.DomainScope
 }
 
 func (s *CreateDomainRequest) GetForceHttps() *bool {
@@ -212,6 +206,11 @@ func (s *CreateDomainRequest) SetCertIdentifier(v string) *CreateDomainRequest {
 
 func (s *CreateDomainRequest) SetClientCACert(v string) *CreateDomainRequest {
 	s.ClientCACert = &v
+	return s
+}
+
+func (s *CreateDomainRequest) SetDomainScope(v string) *CreateDomainRequest {
+	s.DomainScope = &v
 	return s
 }
 

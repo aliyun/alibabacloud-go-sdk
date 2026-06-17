@@ -535,10 +535,6 @@ func (client *Client) CreateConsumerAuthorizationRulesWithContext(ctx context.Co
 //
 // Creates a domain name.
 //
-// Description:
-//
-// Create Domain.
-//
 // @param request - CreateDomainRequest
 //
 // @param headers - map
@@ -564,6 +560,10 @@ func (client *Client) CreateDomainWithContext(ctx context.Context, request *Crea
 
 	if !dara.IsNil(request.ClientCACert) {
 		body["clientCACert"] = request.ClientCACert
+	}
+
+	if !dara.IsNil(request.DomainScope) {
+		body["domainScope"] = request.DomainScope
 	}
 
 	if !dara.IsNil(request.ForceHttps) {
@@ -2420,7 +2420,7 @@ func (client *Client) GetConsumerWithContext(ctx context.Context, consumerId *st
 
 // Summary:
 //
-// Obtains a consumer authentication rule.
+// Retrieves a consumer authorization rule.
 //
 // @param headers - map
 //
@@ -2538,7 +2538,7 @@ func (client *Client) GetDashboardWithContext(ctx context.Context, gatewayId *st
 
 // Summary:
 //
-// Queries the information about a domain name.
+// Queries a domain name.
 //
 // @param request - GetDomainRequest
 //
@@ -2851,7 +2851,7 @@ func (client *Client) GetHttpApiOperationWithContext(ctx context.Context, httpAp
 
 // Summary:
 //
-// Queries the details of a route of an HTTP API.
+// Retrieves the route details of an HTTP API.
 //
 // @param headers - map
 //
@@ -2921,7 +2921,7 @@ func (client *Client) GetMcpServerWithContext(ctx context.Context, mcpServerId *
 
 // Summary:
 //
-// Queries a plug-in attachment.
+// Queries a plugin attachment.
 //
 // @param headers - map
 //
@@ -3174,7 +3174,7 @@ func (client *Client) GetServiceWithContext(ctx context.Context, serviceId *stri
 
 // Summary:
 //
-// Obtains the details of a service source.
+// Queries the details of a service source.
 //
 // @param headers - map
 //
@@ -3404,7 +3404,7 @@ func (client *Client) InstallPluginWithContext(ctx context.Context, request *Ins
 
 // Summary:
 //
-// Obtains a list of consumer authentication rules.
+// Retrieves the list of consumer authorization rules.
 //
 // @param request - ListConsumerAuthorizationRulesRequest
 //
@@ -3535,6 +3535,10 @@ func (client *Client) ListDomainsWithContext(ctx context.Context, request *ListD
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.DomainScope) {
+		query["domainScope"] = request.DomainScope
+	}
+
 	if !dara.IsNil(request.GatewayId) {
 		query["gatewayId"] = request.GatewayId
 	}
@@ -3587,7 +3591,7 @@ func (client *Client) ListDomainsWithContext(ctx context.Context, request *ListD
 //
 // Summary:
 //
-// # ListEnvironments
+// Queries a list of environments.
 //
 // @param request - ListEnvironmentsRequest
 //
@@ -4005,7 +4009,7 @@ func (client *Client) ListHttpApiOperationsWithContext(ctx context.Context, http
 
 // Summary:
 //
-// Gets the route list for an HTTP API.
+// Queries the route list of an HTTP API.
 //
 // @param request - ListHttpApiRoutesRequest
 //
@@ -4874,7 +4878,7 @@ func (client *Client) ListServicesWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// Queries SSL certificates.
+// Retrieves a list of certificates.
 //
 // @param request - ListSslCertsRequest
 //
@@ -4966,7 +4970,7 @@ func (client *Client) ListZonesWithContext(ctx context.Context, headers map[stri
 
 // Summary:
 //
-// Queries a list of consumer authentication rules.
+// Queries a list of consumer authorization rules.
 //
 // @param request - QueryConsumerAuthorizationRulesRequest
 //
@@ -5587,7 +5591,7 @@ func (client *Client) UpdateConsumerAuthorizationRuleWithContext(ctx context.Con
 //
 // Description:
 //
-// You can update the listening Ingress only for sources whose types are **ACK**.
+// Only sources of the **Container Service*	- type can update the listener Ingress configuration.
 //
 // @param request - UpdateDomainRequest
 //
@@ -5614,6 +5618,10 @@ func (client *Client) UpdateDomainWithContext(ctx context.Context, domainId *str
 
 	if !dara.IsNil(request.ClientCACert) {
 		body["clientCACert"] = request.ClientCACert
+	}
+
+	if !dara.IsNil(request.DomainScope) {
+		body["domainScope"] = request.DomainScope
 	}
 
 	if !dara.IsNil(request.ForceHttps) {
@@ -6060,7 +6068,7 @@ func (client *Client) UpdateHttpApiWithContext(ctx context.Context, httpApiId *s
 
 // Summary:
 //
-// Updates an operation of an HTTP API.
+// Updates an API operation.
 //
 // @param request - UpdateHttpApiOperationRequest
 //

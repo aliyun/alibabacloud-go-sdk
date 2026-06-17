@@ -20,21 +20,21 @@ type iUpdateDomainResponseBody interface {
 }
 
 type UpdateDomainResponseBody struct {
-	// The status code.
+	// The response code.
 	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The response parameters.
+	// The returned data.
 	Data *UpdateDomainResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The returned message.
+	// The response message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The request ID. You can use this value to trace the API call.
+	// The request ID, which is used to trace the API call chain.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ func (s *UpdateDomainResponseBody) Validate() error {
 }
 
 type UpdateDomainResponseBodyData struct {
-	// The released version ID.
+	// The publish version ID.
 	//
 	// example:
 	//

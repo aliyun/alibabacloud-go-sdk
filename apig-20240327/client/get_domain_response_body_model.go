@@ -20,7 +20,7 @@ type iGetDomainResponseBody interface {
 }
 
 type GetDomainResponseBody struct {
-	// The status code returned.
+	// The response code.
 	//
 	// example:
 	//
@@ -28,13 +28,13 @@ type GetDomainResponseBody struct {
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// The response data.
 	Data *GetDomainResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The response message returned.
+	// The response message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The request ID, which is used to trace the API call link.
+	// The request ID, which is used to trace the API call chain.
 	//
 	// example:
 	//
@@ -96,19 +96,19 @@ func (s *GetDomainResponseBody) Validate() error {
 }
 
 type GetDomainResponseBodyData struct {
-	// The encryption algorithm.
+	// The encryption algorithm name.
 	//
 	// example:
 	//
 	// RSA
 	Algorithm *string `json:"algorithm,omitempty" xml:"algorithm,omitempty"`
-	// The CA certificate ID.
+	// The CA certificate identifier.
 	//
 	// example:
 	//
 	// 8237***-cn-hangzhou
 	CaCertIdentifier *string `json:"caCertIdentifier,omitempty" xml:"caCertIdentifier,omitempty"`
-	// The certificate ID.
+	// The certificate identifier.
 	//
 	// example:
 	//
@@ -140,13 +140,7 @@ type GetDomainResponseBodyData struct {
 	//
 	// -----END CERTIFICATE-----
 	ClientCACert *string `json:"clientCACert,omitempty" xml:"clientCACert,omitempty"`
-	// The creation source.
-	//
-	// Valid values:
-	//
-	// 	- Console
-	//
-	// 	- Ingress
+	// The source from which the domain name was created.
 	//
 	// example:
 	//
@@ -158,51 +152,41 @@ type GetDomainResponseBodyData struct {
 	//
 	// 1719386834548
 	CreateTimestamp *int64 `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
-	// Indicates whether the domain name is the default domain name.
+	// Indicates whether this is the default domain name.
 	//
 	// example:
 	//
 	// false
 	Default *bool `json:"default,omitempty" xml:"default,omitempty"`
-	// The ID of the domain name.
+	// The domain name ID.
 	//
 	// example:
 	//
 	// d-cq1m3utlhtgvgkv7sitg
 	DomainId *string `json:"domainId,omitempty" xml:"domainId,omitempty"`
-	// Indicates whether forcible HTTPS redirection is enabled.
+	// example:
+	//
+	// Serverless
+	DomainScope *string `json:"domainScope,omitempty" xml:"domainScope,omitempty"`
+	// Specifies whether to enable forced HTTPS redirect when the HTTPS protocol type is configured.
 	//
 	// example:
 	//
 	// false
 	ForceHttps *bool `json:"forceHttps,omitempty" xml:"forceHttps,omitempty"`
-	// The HTTP/2 configuration.
-	//
-	// Valid values:
-	//
-	// 	- GlobalConfig
-	//
-	// 	- Close
-	//
-	// 	- Open
+	// The HTTP/2 setting.
 	//
 	// example:
 	//
 	// Open
 	Http2Option *string `json:"http2Option,omitempty" xml:"http2Option,omitempty"`
-	// The certificate issuer.
+	// The certification authority.
 	//
 	// example:
 	//
 	// Alibaba
 	Issuer *string `json:"issuer,omitempty" xml:"issuer,omitempty"`
-	// Indicates whether mutual authentication is enabled.
-	//
-	// Valid values:
-	//
-	// 	- false
-	//
-	// 	- true
+	// Indicates whether mutual TLS (mTLS) authentication is enabled.
 	//
 	// example:
 	//
@@ -214,23 +198,23 @@ type GetDomainResponseBodyData struct {
 	//
 	// abc.com
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The expiration time of the certificate.
+	// The certificate expiration time.
 	//
 	// example:
 	//
 	// 1719386834548
 	NotAfterTimstamp *int64 `json:"notAfterTimstamp,omitempty" xml:"notAfterTimstamp,omitempty"`
-	// The time when the certificate started to take effect.
+	// The certificate effective period.
 	//
 	// example:
 	//
 	// 1719386834548
 	NotBeforeTimestamp *int64 `json:"notBeforeTimestamp,omitempty" xml:"notBeforeTimestamp,omitempty"`
-	// The supported protocol. Valid values:
+	// The protocol type supported by the domain name. Valid values:
 	//
-	// 	- HTTP: Only HTTP is supported.
+	// - HTTP: only HTTP is supported.
 	//
-	// 	- HTTPS: Only HTTPS is supported.
+	// - HTTPS: only HTTPS is supported.
 	//
 	// example:
 	//
@@ -242,23 +226,23 @@ type GetDomainResponseBodyData struct {
 	//
 	// rg-aekztduhoagat4y
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// All domain names that are bound to the certificate.
+	// All domain names bound to the certificate.
 	//
 	// example:
 	//
 	// aliyun.com
 	Sans *string `json:"sans,omitempty" xml:"sans,omitempty"`
-	// The information about online resources.
+	// The online resource information.
 	StatisticsInfo *GetDomainResponseBodyDataStatisticsInfo `json:"statisticsInfo,omitempty" xml:"statisticsInfo,omitempty" type:"Struct"`
 	// The cipher suite configuration.
 	TlsCipherSuitesConfig *TlsCipherSuitesConfig `json:"tlsCipherSuitesConfig,omitempty" xml:"tlsCipherSuitesConfig,omitempty"`
-	// The maximum version of the TLS protocol. Up to TLS 1.3 is supported.
+	// The maximum TLS protocol version. TLS 1.3 is the maximum supported version.
 	//
 	// example:
 	//
 	// TLS 1.3
 	TlsMax *string `json:"tlsMax,omitempty" xml:"tlsMax,omitempty"`
-	// The minimum version of the TLS protocol. Down to TLS 1.0 is supported.
+	// The minimum TLS protocol version. TLS 1.0 is the minimum supported version.
 	//
 	// example:
 	//
@@ -314,6 +298,10 @@ func (s *GetDomainResponseBodyData) GetDefault() *bool {
 
 func (s *GetDomainResponseBodyData) GetDomainId() *string {
 	return s.DomainId
+}
+
+func (s *GetDomainResponseBodyData) GetDomainScope() *string {
+	return s.DomainScope
 }
 
 func (s *GetDomainResponseBodyData) GetForceHttps() *bool {
@@ -421,6 +409,11 @@ func (s *GetDomainResponseBodyData) SetDomainId(v string) *GetDomainResponseBody
 	return s
 }
 
+func (s *GetDomainResponseBodyData) SetDomainScope(v string) *GetDomainResponseBodyData {
+	s.DomainScope = &v
+	return s
+}
+
 func (s *GetDomainResponseBodyData) SetForceHttps(v bool) *GetDomainResponseBodyData {
 	s.ForceHttps = &v
 	return s
@@ -513,7 +506,7 @@ func (s *GetDomainResponseBodyData) Validate() error {
 type GetDomainResponseBodyDataStatisticsInfo struct {
 	// The resource statistics.
 	ResourceStatistics []*ResourceStatistic `json:"resourceStatistics,omitempty" xml:"resourceStatistics,omitempty" type:"Repeated"`
-	// The total number of resources.
+	// The total count.
 	//
 	// example:
 	//

@@ -20,7 +20,7 @@ type iCreateDomainResponseBody interface {
 }
 
 type CreateDomainResponseBody struct {
-	// The status code returned.
+	// The response code.
 	//
 	// example:
 	//
@@ -28,13 +28,13 @@ type CreateDomainResponseBody struct {
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// The response data.
 	Data *CreateDomainResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The response message returned.
+	// The response message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The request ID, which is used to trace the API call link.
+	// The request ID, which is used to trace the API call chain.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ func (s *CreateDomainResponseBody) Validate() error {
 }
 
 type CreateDomainResponseBodyData struct {
-	// The ID of the domain name.
+	// The domain name ID.
 	//
 	// example:
 	//

@@ -24,7 +24,34 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = dara.String("")
+	client.EndpointRule = dara.String("regional")
+	client.EndpointMap = map[string]*string{
+		"us-west-1":      dara.String("apig.us-west-1.aliyuncs.com"),
+		"us-east-1":      dara.String("apig.us-east-1.aliyuncs.com"),
+		"me-east-1":      dara.String("apig.me-east-1.aliyuncs.com"),
+		"me-central-1":   dara.String("apig.me-central-1.aliyuncs.com"),
+		"eu-west-1":      dara.String("apig.eu-west-1.aliyuncs.com"),
+		"eu-central-1":   dara.String("apig.eu-central-1.aliyuncs.com"),
+		"cn-zhangjiakou": dara.String("apig.cn-zhangjiakou.aliyuncs.com"),
+		"cn-wulanchabu":  dara.String("apig.cn-wulanchabu.aliyuncs.com"),
+		"cn-shenzhen":    dara.String("apig.cn-shenzhen.aliyuncs.com"),
+		"cn-shanghai":    dara.String("apig.cn-shanghai.aliyuncs.com"),
+		"cn-qingdao":     dara.String("apig.cn-qingdao.aliyuncs.com"),
+		"cn-hongkong":    dara.String("apig.cn-hongkong.aliyuncs.com"),
+		"cn-heyuan":      dara.String("apig.cn-heyuan.aliyuncs.com"),
+		"cn-hangzhou":    dara.String("apig.cn-hangzhou.aliyuncs.com"),
+		"cn-guangzhou":   dara.String("apig.cn-guangzhou.aliyuncs.com"),
+		"cn-chengdu":     dara.String("apig.cn-chengdu.aliyuncs.com"),
+		"cn-beijing":     dara.String("apig.cn-beijing.aliyuncs.com"),
+		"ap-southeast-7": dara.String("apig.ap-southeast-7.aliyuncs.com"),
+		"ap-southeast-6": dara.String("apig.ap-southeast-6.aliyuncs.com"),
+		"ap-southeast-5": dara.String("apig.ap-southeast-5.aliyuncs.com"),
+		"ap-southeast-3": dara.String("apig.ap-southeast-3.aliyuncs.com"),
+		"ap-southeast-2": dara.String("apig.ap-southeast-2.aliyuncs.com"),
+		"ap-southeast-1": dara.String("apig.ap-southeast-1.aliyuncs.com"),
+		"ap-northeast-2": dara.String("apig.ap-northeast-2.aliyuncs.com"),
+		"ap-northeast-1": dara.String("apig.ap-northeast-1.aliyuncs.com"),
+	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -756,10 +783,6 @@ func (client *Client) CreateConsumerAuthorizationRules(request *CreateConsumerAu
 //
 // Creates a domain name.
 //
-// Description:
-//
-// Create Domain.
-//
 // @param request - CreateDomainRequest
 //
 // @param headers - map
@@ -785,6 +808,10 @@ func (client *Client) CreateDomainWithOptions(request *CreateDomainRequest, head
 
 	if !dara.IsNil(request.ClientCACert) {
 		body["clientCACert"] = request.ClientCACert
+	}
+
+	if !dara.IsNil(request.DomainScope) {
+		body["domainScope"] = request.DomainScope
 	}
 
 	if !dara.IsNil(request.ForceHttps) {
@@ -854,10 +881,6 @@ func (client *Client) CreateDomainWithOptions(request *CreateDomainRequest, head
 // Summary:
 //
 // Creates a domain name.
-//
-// Description:
-//
-// Create Domain.
 //
 // @param request - CreateDomainRequest
 //
@@ -3330,7 +3353,7 @@ func (client *Client) GetConsumer(consumerId *string) (_result *GetConsumerRespo
 
 // Summary:
 //
-// Obtains a consumer authentication rule.
+// Retrieves a consumer authorization rule.
 //
 // @param headers - map
 //
@@ -3363,7 +3386,7 @@ func (client *Client) GetConsumerAuthorizationRuleWithOptions(consumerAuthorizat
 
 // Summary:
 //
-// Obtains a consumer authentication rule.
+// Retrieves a consumer authorization rule.
 //
 // @return GetConsumerAuthorizationRuleResponse
 func (client *Client) GetConsumerAuthorizationRule(consumerAuthorizationRuleId *string, consumerId *string) (_result *GetConsumerAuthorizationRuleResponse, _err error) {
@@ -3484,7 +3507,7 @@ func (client *Client) GetDashboard(gatewayId *string, request *GetDashboardReque
 
 // Summary:
 //
-// Queries the information about a domain name.
+// Queries a domain name.
 //
 // @param request - GetDomainRequest
 //
@@ -3531,7 +3554,7 @@ func (client *Client) GetDomainWithOptions(domainId *string, request *GetDomainR
 
 // Summary:
 //
-// Queries the information about a domain name.
+// Queries a domain name.
 //
 // @param request - GetDomainRequest
 //
@@ -3935,7 +3958,7 @@ func (client *Client) GetHttpApiOperation(httpApiId *string, operationId *string
 
 // Summary:
 //
-// Queries the details of a route of an HTTP API.
+// Retrieves the route details of an HTTP API.
 //
 // @param headers - map
 //
@@ -3968,7 +3991,7 @@ func (client *Client) GetHttpApiRouteWithOptions(httpApiId *string, routeId *str
 
 // Summary:
 //
-// Queries the details of a route of an HTTP API.
+// Retrieves the route details of an HTTP API.
 //
 // @return GetHttpApiRouteResponse
 func (client *Client) GetHttpApiRoute(httpApiId *string, routeId *string) (_result *GetHttpApiRouteResponse, _err error) {
@@ -4043,7 +4066,7 @@ func (client *Client) GetMcpServer(mcpServerId *string) (_result *GetMcpServerRe
 
 // Summary:
 //
-// Queries a plug-in attachment.
+// Queries a plugin attachment.
 //
 // @param headers - map
 //
@@ -4076,7 +4099,7 @@ func (client *Client) GetPluginAttachmentWithOptions(pluginAttachmentId *string,
 
 // Summary:
 //
-// Queries a plug-in attachment.
+// Queries a plugin attachment.
 //
 // @return GetPluginAttachmentResponse
 func (client *Client) GetPluginAttachment(pluginAttachmentId *string) (_result *GetPluginAttachmentResponse, _err error) {
@@ -4425,7 +4448,7 @@ func (client *Client) GetService(serviceId *string) (_result *GetServiceResponse
 
 // Summary:
 //
-// Obtains the details of a service source.
+// Queries the details of a service source.
 //
 // @param headers - map
 //
@@ -4458,7 +4481,7 @@ func (client *Client) GetSourceWithOptions(sourceId *string, headers map[string]
 
 // Summary:
 //
-// Obtains the details of a service source.
+// Queries the details of a service source.
 //
 // @return GetSourceResponse
 func (client *Client) GetSource(sourceId *string) (_result *GetSourceResponse, _err error) {
@@ -4729,7 +4752,7 @@ func (client *Client) InstallPlugin(request *InstallPluginRequest) (_result *Ins
 
 // Summary:
 //
-// Obtains a list of consumer authentication rules.
+// Retrieves the list of consumer authorization rules.
 //
 // @param request - ListConsumerAuthorizationRulesRequest
 //
@@ -4784,7 +4807,7 @@ func (client *Client) ListConsumerAuthorizationRulesWithOptions(consumerId *stri
 
 // Summary:
 //
-// Obtains a list of consumer authentication rules.
+// Retrieves the list of consumer authorization rules.
 //
 // @param request - ListConsumerAuthorizationRulesRequest
 //
@@ -4898,6 +4921,10 @@ func (client *Client) ListDomainsWithOptions(request *ListDomainsRequest, header
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.DomainScope) {
+		query["domainScope"] = request.DomainScope
+	}
+
 	if !dara.IsNil(request.GatewayId) {
 		query["gatewayId"] = request.GatewayId
 	}
@@ -4969,7 +4996,7 @@ func (client *Client) ListDomains(request *ListDomainsRequest) (_result *ListDom
 //
 // Summary:
 //
-// # ListEnvironments
+// Queries a list of environments.
 //
 // @param request - ListEnvironmentsRequest
 //
@@ -5046,7 +5073,7 @@ func (client *Client) ListEnvironmentsWithOptions(request *ListEnvironmentsReque
 //
 // Summary:
 //
-// # ListEnvironments
+// Queries a list of environments.
 //
 // @param request - ListEnvironmentsRequest
 //
@@ -5510,7 +5537,7 @@ func (client *Client) ListHttpApiOperations(httpApiId *string, request *ListHttp
 
 // Summary:
 //
-// Gets the route list for an HTTP API.
+// Queries the route list of an HTTP API.
 //
 // @param request - ListHttpApiRoutesRequest
 //
@@ -5613,7 +5640,7 @@ func (client *Client) ListHttpApiRoutesWithOptions(httpApiId *string, request *L
 
 // Summary:
 //
-// Gets the route list for an HTTP API.
+// Queries the route list of an HTTP API.
 //
 // @param request - ListHttpApiRoutesRequest
 //
@@ -6604,7 +6631,7 @@ func (client *Client) ListServices(request *ListServicesRequest) (_result *ListS
 
 // Summary:
 //
-// Queries SSL certificates.
+// Retrieves a list of certificates.
 //
 // @param request - ListSslCertsRequest
 //
@@ -6663,7 +6690,7 @@ func (client *Client) ListSslCertsWithOptions(request *ListSslCertsRequest, head
 
 // Summary:
 //
-// Queries SSL certificates.
+// Retrieves a list of certificates.
 //
 // @param request - ListSslCertsRequest
 //
@@ -6732,7 +6759,7 @@ func (client *Client) ListZones() (_result *ListZonesResponse, _err error) {
 
 // Summary:
 //
-// Queries a list of consumer authentication rules.
+// Queries a list of consumer authorization rules.
 //
 // @param request - QueryConsumerAuthorizationRulesRequest
 //
@@ -6819,7 +6846,7 @@ func (client *Client) QueryConsumerAuthorizationRulesWithOptions(request *QueryC
 
 // Summary:
 //
-// Queries a list of consumer authentication rules.
+// Queries a list of consumer authorization rules.
 //
 // @param request - QueryConsumerAuthorizationRulesRequest
 //
@@ -7574,7 +7601,7 @@ func (client *Client) UpdateConsumerAuthorizationRule(consumerId *string, consum
 //
 // Description:
 //
-// You can update the listening Ingress only for sources whose types are **ACK**.
+// Only sources of the **Container Service*	- type can update the listener Ingress configuration.
 //
 // @param request - UpdateDomainRequest
 //
@@ -7601,6 +7628,10 @@ func (client *Client) UpdateDomainWithOptions(domainId *string, request *UpdateD
 
 	if !dara.IsNil(request.ClientCACert) {
 		body["clientCACert"] = request.ClientCACert
+	}
+
+	if !dara.IsNil(request.DomainScope) {
+		body["domainScope"] = request.DomainScope
 	}
 
 	if !dara.IsNil(request.ForceHttps) {
@@ -7661,7 +7692,7 @@ func (client *Client) UpdateDomainWithOptions(domainId *string, request *UpdateD
 //
 // Description:
 //
-// You can update the listening Ingress only for sources whose types are **ACK**.
+// Only sources of the **Container Service*	- type can update the listener Ingress configuration.
 //
 // @param request - UpdateDomainRequest
 //
@@ -8209,7 +8240,7 @@ func (client *Client) UpdateHttpApi(httpApiId *string, request *UpdateHttpApiReq
 
 // Summary:
 //
-// Updates an operation of an HTTP API.
+// Updates an API operation.
 //
 // @param request - UpdateHttpApiOperationRequest
 //
@@ -8256,7 +8287,7 @@ func (client *Client) UpdateHttpApiOperationWithOptions(httpApiId *string, opera
 
 // Summary:
 //
-// Updates an operation of an HTTP API.
+// Updates an API operation.
 //
 // @param request - UpdateHttpApiOperationRequest
 //

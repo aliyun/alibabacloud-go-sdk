@@ -11,6 +11,8 @@ type iGatewayInfo interface {
 	GoString() string
 	SetEngineVersion(v string) *GatewayInfo
 	GetEngineVersion() *string
+	SetGatewayEdition(v string) *GatewayInfo
+	GetGatewayEdition() *string
 	SetGatewayId(v string) *GatewayInfo
 	GetGatewayId() *string
 	SetName(v string) *GatewayInfo
@@ -20,25 +22,29 @@ type iGatewayInfo interface {
 }
 
 type GatewayInfo struct {
-	// The instance engine version.
+	// The gateway DPI engine database engine version.
 	//
 	// example:
 	//
 	// 2.0.7
 	EngineVersion *string `json:"engineVersion,omitempty" xml:"engineVersion,omitempty"`
-	// The instance ID.
+	// example:
+	//
+	// MultiTenantServerless
+	GatewayEdition *string `json:"gatewayEdition,omitempty" xml:"gatewayEdition,omitempty"`
+	// The gateway ID.
 	//
 	// example:
 	//
 	// gw-cq7og15lhtgi6qasrj60
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// The instance name.
+	// The gateway name.
 	//
 	// example:
 	//
 	// apitest-gw
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The virtual private cloud (VPC) information.
+	// The VPC information.
 	VpcInfo *GatewayInfoVpcInfo `json:"vpcInfo,omitempty" xml:"vpcInfo,omitempty" type:"Struct"`
 }
 
@@ -52,6 +58,10 @@ func (s GatewayInfo) GoString() string {
 
 func (s *GatewayInfo) GetEngineVersion() *string {
 	return s.EngineVersion
+}
+
+func (s *GatewayInfo) GetGatewayEdition() *string {
+	return s.GatewayEdition
 }
 
 func (s *GatewayInfo) GetGatewayId() *string {
@@ -68,6 +78,11 @@ func (s *GatewayInfo) GetVpcInfo() *GatewayInfoVpcInfo {
 
 func (s *GatewayInfo) SetEngineVersion(v string) *GatewayInfo {
 	s.EngineVersion = &v
+	return s
+}
+
+func (s *GatewayInfo) SetGatewayEdition(v string) *GatewayInfo {
+	s.GatewayEdition = &v
 	return s
 }
 

@@ -28,49 +28,49 @@ type iListEnvironmentsRequest interface {
 }
 
 type ListEnvironmentsRequest struct {
-	// Environment alias, fuzzy search.
+	// The environment alias. Fuzzy match is supported.
 	//
 	// example:
 	//
 	// 测试
 	AliasLike *string `json:"aliasLike,omitempty" xml:"aliasLike,omitempty"`
-	// Gateway ID, exact search.
+	// The gateway ID. Exact match is supported.
 	//
 	// example:
 	//
 	// gw-cptv6ktlhtgnqr73h8d1
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// Gateway name, fuzzy search.
+	// The gateway name. Fuzzy match is supported.
 	//
 	// example:
 	//
 	// test-gw
 	GatewayNameLike *string `json:"gatewayNameLike,omitempty" xml:"gatewayNameLike,omitempty"`
-	// The gateway type
+	// The gateway type.
 	//
 	// example:
 	//
 	// APIGateway
 	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
-	// Environment name, fuzzy search.
+	// The environment name. Fuzzy match is supported.
 	//
 	// example:
 	//
 	// test
 	NameLike *string `json:"nameLike,omitempty" xml:"nameLike,omitempty"`
-	// Page number, default is 1.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// Page size, default is 10.
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Resource group ID.
+	// The resource group ID.
 	//
 	// example:
 	//

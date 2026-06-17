@@ -58,19 +58,19 @@ type QueryConsumerAuthorizationRulesRequest struct {
 	//
 	// env-cpqnr6tlhtgubc***
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
-	// Specifies whether to group the results by API.
+	// Specifies whether to group results by API.
 	//
 	// example:
 	//
 	// true
 	GroupByApi *bool `json:"groupByApi,omitempty" xml:"groupByApi,omitempty"`
-	// The number of the page to return.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
@@ -94,7 +94,7 @@ type QueryConsumerAuthorizationRulesRequest struct {
 	//
 	// HttpApiRoute
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	// The resource types.
+	// The service source type.
 	//
 	// example:
 	//

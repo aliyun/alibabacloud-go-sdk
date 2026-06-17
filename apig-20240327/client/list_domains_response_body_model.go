@@ -20,21 +20,21 @@ type iListDomainsResponseBody interface {
 }
 
 type ListDomainsResponseBody struct {
-	// The status code returned.
+	// The response code.
 	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Response parameters.
+	// The response data.
 	Data *ListDomainsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The message returned.
+	// The response description.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The request ID, which is used to trace the API call link.
+	// The request ID, which is used to trace the API call chain.
 	//
 	// example:
 	//
@@ -96,9 +96,9 @@ func (s *ListDomainsResponseBody) Validate() error {
 }
 
 type ListDomainsResponseBodyData struct {
-	// The list of domain information.
+	// 域名信息列表。
 	Items []*DomainInfo `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
@@ -110,7 +110,7 @@ type ListDomainsResponseBodyData struct {
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//

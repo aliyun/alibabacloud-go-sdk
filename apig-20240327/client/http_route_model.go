@@ -409,6 +409,10 @@ func (s *HttpRouteEnvironmentInfo) Validate() error {
 }
 
 type HttpRouteEnvironmentInfoGatewayInfo struct {
+	// example:
+	//
+	// MultiTenantServerless
+	GatewayEdition *string `json:"gatewayEdition,omitempty" xml:"gatewayEdition,omitempty"`
 	// The gateway ID
 	//
 	// example:
@@ -431,12 +435,21 @@ func (s HttpRouteEnvironmentInfoGatewayInfo) GoString() string {
 	return s.String()
 }
 
+func (s *HttpRouteEnvironmentInfoGatewayInfo) GetGatewayEdition() *string {
+	return s.GatewayEdition
+}
+
 func (s *HttpRouteEnvironmentInfoGatewayInfo) GetGatewayId() *string {
 	return s.GatewayId
 }
 
 func (s *HttpRouteEnvironmentInfoGatewayInfo) GetName() *string {
 	return s.Name
+}
+
+func (s *HttpRouteEnvironmentInfoGatewayInfo) SetGatewayEdition(v string) *HttpRouteEnvironmentInfoGatewayInfo {
+	s.GatewayEdition = &v
+	return s
 }
 
 func (s *HttpRouteEnvironmentInfoGatewayInfo) SetGatewayId(v string) *HttpRouteEnvironmentInfoGatewayInfo {

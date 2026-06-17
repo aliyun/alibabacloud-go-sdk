@@ -96,21 +96,21 @@ func (s *ListHttpApiRoutesResponseBody) Validate() error {
 }
 
 type ListHttpApiRoutesResponseBodyData struct {
-	// An array of route objects.
+	// 路由列表。
 	Items []*HttpRoute `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// The current page number.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The total number of available entries.
+	// The total number of entries.
 	//
 	// example:
 	//

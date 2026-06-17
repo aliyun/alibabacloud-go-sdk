@@ -9,6 +9,8 @@ type iListDomainsRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetDomainScope(v string) *ListDomainsRequest
+	GetDomainScope() *string
 	SetGatewayId(v string) *ListDomainsRequest
 	GetGatewayId() *string
 	SetGatewayType(v string) *ListDomainsRequest
@@ -24,25 +26,29 @@ type iListDomainsRequest interface {
 }
 
 type ListDomainsRequest struct {
-	// The instance ID.
+	// example:
+	//
+	// Serverless
+	DomainScope *string `json:"domainScope,omitempty" xml:"domainScope,omitempty"`
+	// The gateway ID.
 	//
 	// example:
 	//
 	// gw-xxxxxx
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// The gateway type to filter. Valid values: **AI*	- and **API**.
+	// The gateway type used for filtering. Valid values: **AI*	- and **API**.
 	//
 	// example:
 	//
 	// API
 	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
-	// The domain name keyword for fuzzy search.
+	// The domain name. Fuzzy match is supported.
 	//
 	// example:
 	//
 	// test
 	NameLike *string `json:"nameLike,omitempty" xml:"nameLike,omitempty"`
-	// The page number of the page to return. Default value: 1.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
@@ -54,7 +60,7 @@ type ListDomainsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//
@@ -68,6 +74,10 @@ func (s ListDomainsRequest) String() string {
 
 func (s ListDomainsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListDomainsRequest) GetDomainScope() *string {
+	return s.DomainScope
 }
 
 func (s *ListDomainsRequest) GetGatewayId() *string {
@@ -92,6 +102,11 @@ func (s *ListDomainsRequest) GetPageSize() *int32 {
 
 func (s *ListDomainsRequest) GetResourceGroupId() *string {
 	return s.ResourceGroupId
+}
+
+func (s *ListDomainsRequest) SetDomainScope(v string) *ListDomainsRequest {
+	s.DomainScope = &v
+	return s
 }
 
 func (s *ListDomainsRequest) SetGatewayId(v string) *ListDomainsRequest {

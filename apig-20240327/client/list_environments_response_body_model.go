@@ -20,21 +20,21 @@ type iListEnvironmentsResponseBody interface {
 }
 
 type ListEnvironmentsResponseBody struct {
-	// Response code.
+	// The response code.
 	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Paged query environment list response.
+	// The paged query response for the environment list.
 	Data *ListEnvironmentsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// Response message.
+	// The response message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Request ID, used for tracing the call chain.
+	// The request ID, which is used to trace the call chain.
 	//
 	// example:
 	//
@@ -96,21 +96,21 @@ func (s *ListEnvironmentsResponseBody) Validate() error {
 }
 
 type ListEnvironmentsResponseBodyData struct {
-	// List of environment information.
+	// 环境信息列表。
 	Items []*EnvironmentInfo `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// Page number.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// Number of items per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Total number of items.
+	// The total number of entries.
 	//
 	// example:
 	//

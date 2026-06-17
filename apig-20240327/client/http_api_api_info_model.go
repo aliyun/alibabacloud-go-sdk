@@ -545,6 +545,10 @@ func (s *HttpApiApiInfoEnvironments) Validate() error {
 }
 
 type HttpApiApiInfoEnvironmentsGatewayInfo struct {
+	// example:
+	//
+	// MultiTenantServerless
+	GatewayEdition *string `json:"gatewayEdition,omitempty" xml:"gatewayEdition,omitempty"`
 	// The instance ID.
 	//
 	// example:
@@ -567,12 +571,21 @@ func (s HttpApiApiInfoEnvironmentsGatewayInfo) GoString() string {
 	return s.String()
 }
 
+func (s *HttpApiApiInfoEnvironmentsGatewayInfo) GetGatewayEdition() *string {
+	return s.GatewayEdition
+}
+
 func (s *HttpApiApiInfoEnvironmentsGatewayInfo) GetGatewayId() *string {
 	return s.GatewayId
 }
 
 func (s *HttpApiApiInfoEnvironmentsGatewayInfo) GetName() *string {
 	return s.Name
+}
+
+func (s *HttpApiApiInfoEnvironmentsGatewayInfo) SetGatewayEdition(v string) *HttpApiApiInfoEnvironmentsGatewayInfo {
+	s.GatewayEdition = &v
+	return s
 }
 
 func (s *HttpApiApiInfoEnvironmentsGatewayInfo) SetGatewayId(v string) *HttpApiApiInfoEnvironmentsGatewayInfo {

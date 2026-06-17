@@ -15,6 +15,8 @@ type iUpdateDomainRequest interface {
 	GetCertIdentifier() *string
 	SetClientCACert(v string) *UpdateDomainRequest
 	GetClientCACert() *string
+	SetDomainScope(v string) *UpdateDomainRequest
+	GetDomainScope() *string
 	SetForceHttps(v bool) *UpdateDomainRequest
 	GetForceHttps() *bool
 	SetHttp2Option(v string) *UpdateDomainRequest
@@ -32,13 +34,13 @@ type iUpdateDomainRequest interface {
 }
 
 type UpdateDomainRequest struct {
-	// The CA certificate ID.
+	// The CA certificate identifier.
 	//
 	// example:
 	//
 	// 1ef1da5f-38ed-69b3-****-037781890265
 	CaCertIdentifier *string `json:"caCertIdentifier,omitempty" xml:"caCertIdentifier,omitempty"`
-	// The certificate ID.
+	// The certificate identifier.
 	//
 	// example:
 	//
@@ -58,35 +60,29 @@ type UpdateDomainRequest struct {
 	//
 	// -----END CERTIFICATE-----
 	ClientCACert *string `json:"clientCACert,omitempty" xml:"clientCACert,omitempty"`
-	// Specifies whether to enable forcible HTTPS redirection. If protocol is set to HTTPS, forceHttps is required.
+	// example:
+	//
+	// Serverless
+	DomainScope *string `json:"domainScope,omitempty" xml:"domainScope,omitempty"`
+	// Specifies whether to enable forced HTTPS redirect when the protocol type is set to HTTPS. This parameter is required when the protocol is HTTPS.
 	//
 	// example:
 	//
 	// false
 	ForceHttps *bool `json:"forceHttps,omitempty" xml:"forceHttps,omitempty"`
-	// The HTTP/2 configuration.
-	//
-	// Enumerated values:
-	//
-	// 	- GlobalConfig
-	//
-	// 	- Close
-	//
-	// 	- Open
+	// The HTTP/2 settings.
 	//
 	// example:
 	//
 	// Open
 	Http2Option *string `json:"http2Option,omitempty" xml:"http2Option,omitempty"`
-	// Specifies whether to enable mutual TLS (mTLS) authentication.
+	// Specifies whether to enable mTLS mutual authentication.
 	MTLSEnabled *bool `json:"mTLSEnabled,omitempty" xml:"mTLSEnabled,omitempty"`
-	// The protocol type to be supported by the domain name. Valid values:
+	// The protocol type supported by the domain name.
 	//
-	// 	- HTTP
+	// - HTTP: Only HTTP is supported.
 	//
-	// 	- HTTPS
-	//
-	// This parameter is required.
+	// - HTTPS: Only HTTPS is supported.
 	//
 	// example:
 	//
@@ -94,13 +90,13 @@ type UpdateDomainRequest struct {
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
 	// The cipher suite configuration.
 	TlsCipherSuitesConfig *TlsCipherSuitesConfig `json:"tlsCipherSuitesConfig,omitempty" xml:"tlsCipherSuitesConfig,omitempty"`
-	// The maximum TLS version. Up to TLS 1.3 is supported.
+	// The maximum TLS protocol version. TLS 1.3 is the maximum supported version.
 	//
 	// example:
 	//
 	// TLS 1.3
 	TlsMax *string `json:"tlsMax,omitempty" xml:"tlsMax,omitempty"`
-	// The minimum TLS version. Down to TLS 1.0 is supported.
+	// The minimum TLS protocol version. TLS 1.0 is the minimum supported version.
 	//
 	// example:
 	//
@@ -126,6 +122,10 @@ func (s *UpdateDomainRequest) GetCertIdentifier() *string {
 
 func (s *UpdateDomainRequest) GetClientCACert() *string {
 	return s.ClientCACert
+}
+
+func (s *UpdateDomainRequest) GetDomainScope() *string {
+	return s.DomainScope
 }
 
 func (s *UpdateDomainRequest) GetForceHttps() *bool {
@@ -168,6 +168,11 @@ func (s *UpdateDomainRequest) SetCertIdentifier(v string) *UpdateDomainRequest {
 
 func (s *UpdateDomainRequest) SetClientCACert(v string) *UpdateDomainRequest {
 	s.ClientCACert = &v
+	return s
+}
+
+func (s *UpdateDomainRequest) SetDomainScope(v string) *UpdateDomainRequest {
+	s.DomainScope = &v
 	return s
 }
 

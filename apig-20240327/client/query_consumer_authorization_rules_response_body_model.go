@@ -20,21 +20,21 @@ type iQueryConsumerAuthorizationRulesResponseBody interface {
 }
 
 type QueryConsumerAuthorizationRulesResponseBody struct {
-	// The status code.
+	// The response status code.
 	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The response payload.
+	// The response data.
 	Data *QueryConsumerAuthorizationRulesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The returned message.
+	// The response message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
@@ -96,21 +96,21 @@ func (s *QueryConsumerAuthorizationRulesResponseBody) Validate() error {
 }
 
 type QueryConsumerAuthorizationRulesResponseBodyData struct {
-	// The rules.
+	// 消费者规则列表。
 	Items []*QueryConsumerAuthorizationRulesResponseBodyDataItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -176,71 +176,71 @@ func (s *QueryConsumerAuthorizationRulesResponseBodyData) Validate() error {
 }
 
 type QueryConsumerAuthorizationRulesResponseBodyDataItems struct {
-	// The API details.
+	// API信息详情。
 	ApiInfo *HttpApiApiInfo `json:"apiInfo,omitempty" xml:"apiInfo,omitempty"`
-	// The rule ID.
+	// 消费者授权规则ID。
 	//
 	// example:
 	//
 	// car-csgeka5lhtggrjcprok0
 	ConsumerAuthorizationRuleId *string `json:"consumerAuthorizationRuleId,omitempty" xml:"consumerAuthorizationRuleId,omitempty"`
-	// The consumer ID.
+	// 消费者ID。
 	//
 	// example:
 	//
 	// cs-csheiftlhtgmp0j0hp4g
 	ConsumerId *string `json:"consumerId,omitempty" xml:"consumerId,omitempty"`
-	// The consumer information.
+	// 消费者信息详情。
 	ConsumerInfo *ConsumerInfo `json:"consumerInfo,omitempty" xml:"consumerInfo,omitempty"`
-	// The creation timestamp. Unit: milliseconds.
+	// 创建时间戳。单位: 毫秒。
 	//
 	// example:
 	//
 	// 1719386834548
 	CreateTimestamp *int64 `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
-	// The deployment status of the API in the current environment.
+	// API在当前环境的发布状态
 	//
 	// example:
 	//
 	// {}
 	DeployStatus *string `json:"deployStatus,omitempty" xml:"deployStatus,omitempty"`
-	// The environment information.
+	// 环境信息。
 	EnvironmentInfo *EnvironmentInfo `json:"environmentInfo,omitempty" xml:"environmentInfo,omitempty"`
-	// The expiry mode. Valid values: LongTerm and ShortTerm.
+	// 失效模式。LongTerm、ShortTerm，二选一。
 	//
 	// example:
 	//
 	// ShortTerm
 	ExpireMode *string `json:"expireMode,omitempty" xml:"expireMode,omitempty"`
-	// The rule status.
+	// 失效状态。
 	//
 	// example:
 	//
 	// InEffect
 	ExpireStatus *string `json:"expireStatus,omitempty" xml:"expireStatus,omitempty"`
-	// The time when the rule expires.
+	// 到期时间。
 	//
 	// example:
 	//
 	// 172086834548
 	ExpireTimestamp *int64 `json:"expireTimestamp,omitempty" xml:"expireTimestamp,omitempty"`
-	// The instance information.
+	// 网关信息。
 	GatewayInfo *GatewayInfo `json:"gatewayInfo,omitempty" xml:"gatewayInfo,omitempty"`
-	// The resource IDs.
+	// 资源ID。
 	//
 	// example:
 	//
 	// 2351944
 	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
-	// The resource information.
+	// 资源信息详情。
 	ResourceInfo *QueryConsumerAuthorizationRulesResponseBodyDataItemsResourceInfo `json:"resourceInfo,omitempty" xml:"resourceInfo,omitempty" type:"Struct"`
-	// The resource type.
+	// 资源类型。
 	//
 	// example:
 	//
 	// HttpApiRoute
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	// The update timestamp. Unit: milliseconds.
+	// 更新时间戳。单位: 毫秒。
 	//
 	// example:
 	//
@@ -421,9 +421,9 @@ func (s *QueryConsumerAuthorizationRulesResponseBodyDataItems) Validate() error 
 }
 
 type QueryConsumerAuthorizationRulesResponseBodyDataItemsResourceInfo struct {
-	// The operation information.
+	// 接口信息。
 	OperationInfo *HttpApiOperationInfo `json:"operationInfo,omitempty" xml:"operationInfo,omitempty"`
-	// The route.
+	// 路由规则。
 	Route *HttpRoute `json:"route,omitempty" xml:"route,omitempty"`
 }
 

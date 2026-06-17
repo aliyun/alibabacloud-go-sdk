@@ -20,7 +20,7 @@ type iListSslCertsRequest interface {
 }
 
 type ListSslCertsRequest struct {
-	// The name keyword for matching.
+	// The keyword for fuzzy match of the certificate name.
 	//
 	// example:
 	//
@@ -32,7 +32,7 @@ type ListSslCertsRequest struct {
 	//
 	// fun.iot.evideocloud.com.cn
 	DomainName *string `json:"domainName,omitempty" xml:"domainName,omitempty"`
-	// The page number of the page to return. Default value: 1.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
