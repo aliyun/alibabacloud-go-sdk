@@ -24,7 +24,7 @@ type iDescribeUnhealthyHostAvailabilityResponseBody interface {
 type DescribeUnhealthyHostAvailabilityResponseBody struct {
 	// The status code.
 	//
-	// >  The status code 200 indicates that the request was successful.
+	// > A value of 200 indicates that the request was successful.
 	//
 	// example:
 	//
@@ -42,11 +42,7 @@ type DescribeUnhealthyHostAvailabilityResponseBody struct {
 	//
 	// ACBDBB40-DFB6-4F4C-8957-51FFB233969C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
+	// Indicates whether the operation was successful. Valid values: -true: The operation was successful. -false: The operation failed.
 	//
 	// example:
 	//

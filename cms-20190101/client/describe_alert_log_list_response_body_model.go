@@ -26,11 +26,11 @@ type iDescribeAlertLogListResponseBody interface {
 }
 
 type DescribeAlertLogListResponseBody struct {
-	// The queried alert logs.
+	// The list of alert history entries.
 	AlertLogList []*DescribeAlertLogListResponseBodyAlertLogList `json:"AlertLogList,omitempty" xml:"AlertLogList,omitempty" type:"Repeated"`
 	// The HTTP status code.
 	//
-	// > The status code 200 indicates that the request was successful.
+	// > The status code 200 indicates that the call was successful.
 	//
 	// example:
 	//
@@ -60,11 +60,11 @@ type DescribeAlertLogListResponseBody struct {
 	//
 	// 1C4A3709-BF52-42EE-87B5-7435F0929585
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// 	- true
+	// - true: The call was successful.
 	//
-	// 	- false
+	// - false: The call failed.
 	//
 	// example:
 	//
@@ -157,7 +157,7 @@ func (s *DescribeAlertLogListResponseBody) Validate() error {
 }
 
 type DescribeAlertLogListResponseBodyAlertLogList struct {
-	// The timestamp that was generated when the alert was triggered.
+	// The timestamp when the alert was triggered.
 	//
 	// Unit: milliseconds.
 	//
@@ -165,42 +165,49 @@ type DescribeAlertLogListResponseBodyAlertLogList struct {
 	//
 	// 1610043776621
 	AlertTime *string `json:"AlertTime,omitempty" xml:"AlertTime,omitempty"`
-	// The details of the blacklist policy.
+	// The details of the matched alert blacklist.
 	//
 	// example:
 	//
-	// BlackListDetail
+	// {"id":12****,"metricProject":"acs_ecs_dashboard","userId":173651113438****,"uuid":"8410dbbd-7d30-41c5-94cb-****","name":"alert-****","productCategory":"ecs","instances":[{"instanceId":"i-m5e1qg6uo38rztr4****"}],"metrics":null,"scopeType":"USER","scopeValue":"","startTime":"0001-01-01T00:00:00Z","endTime":"9999-12-31T23:59:59.999999999+08:00","effectiveTime":null,"isEnable":true,"status":1,"gmtCreate":"2021-11-02T16:35:59+08:00","gmtModified":"2021-11-02T16:35:59+08:00","loadTime":"2021-11-02T16:36:15.213072177+08:00"}
 	BlackListDetail *string `json:"BlackListDetail,omitempty" xml:"BlackListDetail,omitempty"`
-	// The name of the blacklist policy.
+	// The name of the matched alert blacklist.
 	//
 	// example:
 	//
-	// {"id":123,"metricProject":"acs_ecs_dashboard","userId":1736511134389110,"uuid":"8410dbbd-7d30-41c5-94cb-***","name":"alert-***","productCategory":"ecs","instances":[{"instanceId":"host-***"}],"metrics":null,"scopeType":"USER","scopeValue":"","startTime":"0001-01-01T00:00:00Z","endTime":"9999-12-31T23:59:59.999999999+08:00","effectiveTime":null,"isEnable":true,"status":1,"gmtCreate":"2021-11-02T16:35:59+08:00","gmtModified":"2021-11-02T16:35:59+08:00","loadTime":"2021-11-02T16:36:15.213072177+08:00"}
+	// Black_Test
 	BlackListName *string `json:"BlackListName,omitempty" xml:"BlackListName,omitempty"`
-	// The ID of the blacklist policy.
+	// The UUID of the matched alert blacklist.
 	//
 	// example:
 	//
-	// 8410dbbd-7d30-41c5-94cb-*****
-	BlackListUUID     *string   `json:"BlackListUUID,omitempty" xml:"BlackListUUID,omitempty"`
+	// 8410dbbd-7d30-41c5-94cb-****
+	BlackListUUID *string `json:"BlackListUUID,omitempty" xml:"BlackListUUID,omitempty"`
+	// The list of Wangwang IDs of the alert contact.
 	ContactALIIWWList []*string `json:"ContactALIIWWList,omitempty" xml:"ContactALIIWWList,omitempty" type:"Repeated"`
-	ContactDingList   []*string `json:"ContactDingList,omitempty" xml:"ContactDingList,omitempty" type:"Repeated"`
-	ContactGroups     []*string `json:"ContactGroups,omitempty" xml:"ContactGroups,omitempty" type:"Repeated"`
-	ContactMailList   []*string `json:"ContactMailList,omitempty" xml:"ContactMailList,omitempty" type:"Repeated"`
+	// The list of DingTalk accounts of the alert contact.
+	ContactDingList []*string `json:"ContactDingList,omitempty" xml:"ContactDingList,omitempty" type:"Repeated"`
+	// The list of alert contact groups.
+	ContactGroups []*string `json:"ContactGroups,omitempty" xml:"ContactGroups,omitempty" type:"Repeated"`
+	// The list of email addresses of the alert contact.
+	ContactMailList []*string `json:"ContactMailList,omitempty" xml:"ContactMailList,omitempty" type:"Repeated"`
+	// The list of phone numbers of the alert contact.
 	ContactOnCallList []*string `json:"ContactOnCallList,omitempty" xml:"ContactOnCallList,omitempty" type:"Repeated"`
-	ContactSMSList    []*string `json:"ContactSMSList,omitempty" xml:"ContactSMSList,omitempty" type:"Repeated"`
-	// The dimensions of the resource that triggered alerts.
-	Dimensions          []*DescribeAlertLogListResponseBodyAlertLogListDimensions `json:"Dimensions,omitempty" xml:"Dimensions,omitempty" type:"Repeated"`
-	DingdingWebhookList []*string                                                 `json:"DingdingWebhookList,omitempty" xml:"DingdingWebhookList,omitempty" type:"Repeated"`
-	// The alert rule based on which the alert is triggered.
+	// The list of phone numbers that receive text messages of the alert contact.
+	ContactSMSList []*string `json:"ContactSMSList,omitempty" xml:"ContactSMSList,omitempty" type:"Repeated"`
+	// The dimensions of the resource for which the alert is triggered.
+	Dimensions []*DescribeAlertLogListResponseBodyAlertLogListDimensions `json:"Dimensions,omitempty" xml:"Dimensions,omitempty" type:"Repeated"`
+	// The list of webhook URLs of DingTalk chatbots for the alert contact.
+	DingdingWebhookList []*string `json:"DingdingWebhookList,omitempty" xml:"DingdingWebhookList,omitempty" type:"Repeated"`
+	// The rule that triggers the alert.
 	Escalation *DescribeAlertLogListResponseBodyAlertLogListEscalation `json:"Escalation,omitempty" xml:"Escalation,omitempty" type:"Struct"`
-	// The event name.
+	// The name of the event.
 	//
 	// example:
 	//
 	// IOHang
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
-	// The extended fields.
+	// The extended information of the alert.
 	ExtendedInfo []*DescribeAlertLogListResponseBodyAlertLogListExtendedInfo `json:"ExtendedInfo,omitempty" xml:"ExtendedInfo,omitempty" type:"Repeated"`
 	// The ID of the application group.
 	//
@@ -214,33 +221,45 @@ type DescribeAlertLogListResponseBodyAlertLogList struct {
 	//
 	// ECS_Instances
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The resource ID.
+	// The ID of the resource.
 	//
 	// example:
 	//
 	// i-m5e1qg6uo38rztr4****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The resource name.
+	// The name of the resource.
 	//
 	// example:
 	//
 	// portalHost
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The alert level and the methods that are used to send alert notifications. Valid values:
+	// The alert level and notification methods. Valid values:
 	//
-	// 	- P4: Alert notifications are sent by using emails and DingTalk chatbots.
+	// <props="china">- P2: phone calls, text messages, emails, and DingTalk chatbots.
 	//
-	// 	- OK: No alert is generated.
+	// <props="china">- P3: text messages, emails, and DingTalk chatbots.
+	//
+	// <props="china">- P4: emails and DingTalk chatbots.
+	//
+	// <props="china">- OK: no alerts.
+	//
+	// <props="intl">- P4: emails and DingTalk chatbots.
+	//
+	// <props="intl">- OK: no alerts.
+	//
+	// <props="partner">- P4: emails and DingTalk chatbots.
+	//
+	// <props="partner">- OK: no alerts.
 	//
 	// example:
 	//
 	// P4
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// Indicates whether the alert level was changed. Valid values:
+	// The change of the alert level. Valid values:
 	//
-	// 	- `P4->OK`: The alert level was changed from P4 to OK.
+	// - `P4->OK`: The alert level changes from P4 to OK, which indicates that the alert is cleared.
 	//
-	// 	- `P4->P4`: The alert level was still P4.
+	// - `P4->P4`: indicates a P4-level alert.
 	//
 	// example:
 	//
@@ -250,15 +269,15 @@ type DescribeAlertLogListResponseBodyAlertLogList struct {
 	//
 	// example:
 	//
-	// 7818361[1523]@1671593992[1]
+	// 7510****::e8a472a0-46ae-4ac0-84b1-e46be368****
 	LogId *string `json:"LogId,omitempty" xml:"LogId,omitempty"`
-	// The alert information in a JSON string.
+	// The alert-related information, which is a JSON string.
 	//
 	// example:
 	//
 	// {"alertName":"e47aa0ac-4076-44db-a47d-d1083968****_Availability"}
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The metric name.
+	// The name of the metric.
 	//
 	// example:
 	//
@@ -270,11 +289,11 @@ type DescribeAlertLogListResponseBodyAlertLogList struct {
 	//
 	// acs_ecs_dashboard
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The identifier of the cloud service. Valid values:
+	// The cloud service identifier. Valid values:
 	//
-	// 	- If the cloud service is provided by Alibaba Cloud, the abbreviation of the service name is returned. Example: ECS.
+	// - For an Alibaba Cloud service, the value is the abbreviation of the cloud service name. Example: ECS.
 	//
-	// 	- If the cloud service is not provided by Alibaba Cloud, a value in the `acs_Service keyword` format is returned. Example: acs_networkmonitor.
+	// - For a non-Alibaba Cloud service, the value is in the format of `acs_Product keyword`. Example: acs_networkmonitor.
 	//
 	// example:
 	//
@@ -287,30 +306,38 @@ type DescribeAlertLogListResponseBodyAlertLogList struct {
 	// d582b9e9-b1c1-4f17-9279-0fe7333a****_ResponseTime
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	// The name of the alert rule.
+	//
+	// example:
+	//
+	// CPU utilization
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The details about the sending results of alert notifications.
+	// The details of the alert pushing result.
 	SendDetail *DescribeAlertLogListResponseBodyAlertLogListSendDetail `json:"SendDetail,omitempty" xml:"SendDetail,omitempty" type:"Struct"`
-	// The sending results of alert notifications.
+	// The list of alert sending results.
 	SendResultList []*DescribeAlertLogListResponseBodyAlertLogListSendResultList `json:"SendResultList,omitempty" xml:"SendResultList,omitempty" type:"Repeated"`
-	// The status of the alert. Valid values:
+	// The alert status. Valid values:
 	//
-	// 	- 0: The alert is triggered or cleared.
+	// - 0: An alert is triggered or cleared.
 	//
-	// 	- 1: The alert is ineffective.
+	// - 1: The current time is not within the effective period of the alert.
 	//
-	// 	- 2: The alert is muted.
+	// - 2: The current time is within the channel silence period.
 	//
-	// 	- 3: The host is restarting.
+	// - 3: The host is being restarted.
 	//
-	// 	- 4: No alert notification is sent.
+	// - 4: No alerts are sent.
 	//
-	// If the value of the SendStatus parameter is 0, the value P4 of the Level parameter indicates a triggered alert and the value OK indicates a cleared alert.
+	// <props="china">When the alert status is 0, an alert is triggered if Level is set to P2, P3, or P4; the alert is cleared if Level is set to OK.
+	//
+	// <props="intl">When the alert status is 0, an alert is triggered if Level is set to P4; the alert is cleared if Level is set to OK.
+	//
+	// <props="partner">When the alert status is 0, an alert is triggered if Level is set to P4; the alert is cleared if Level is set to OK.
 	//
 	// example:
 	//
 	// 0
 	SendStatus *string `json:"SendStatus,omitempty" xml:"SendStatus,omitempty"`
-	// The callback URLs.
+	// The list of URLs that are called back when the alert is triggered.
 	WebhookList []*DescribeAlertLogListResponseBodyAlertLogListWebhookList `json:"WebhookList,omitempty" xml:"WebhookList,omitempty" type:"Repeated"`
 }
 
@@ -661,13 +688,13 @@ func (s *DescribeAlertLogListResponseBodyAlertLogList) Validate() error {
 }
 
 type DescribeAlertLogListResponseBodyAlertLogListDimensions struct {
-	// The key of the dimension.
+	// The key of the alerting resource.
 	//
 	// example:
 	//
 	// instanceId
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the dimension.
+	// The value of the alerting resource.
 	//
 	// example:
 	//
@@ -706,25 +733,37 @@ func (s *DescribeAlertLogListResponseBodyAlertLogListDimensions) Validate() erro
 }
 
 type DescribeAlertLogListResponseBodyAlertLogListEscalation struct {
-	// The description of the alert rule.
+	// The description of the rule that triggers the alert.
 	//
-	// >  The content of the alert rule. This parameter indicates the conditions that trigger an alert.
+	// > The body of the alert rule. An alert rule is triggered when the monitoring data meets the alert conditions.
 	//
 	// example:
 	//
 	// $Average<90
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
-	// The alert level and the methods that are used to send alert notifications. Valid values:
+	// The alert level and notification methods. Valid values:
 	//
-	// 	- P4: Alert notifications are sent by using emails and DingTalk chatbots.
+	// <props="china">- P2: phone calls, text messages, emails, and DingTalk chatbots.
 	//
-	// 	- OK: No alert is generated.
+	// <props="china">- P3: text messages, emails, and DingTalk chatbots.
+	//
+	// <props="china">- P4: emails and DingTalk chatbots.
+	//
+	// <props="china">- OK: no alerts.
+	//
+	// <props="intl">- P4: emails and DingTalk chatbots.
+	//
+	// <props="intl">- OK: no alerts.
+	//
+	// <props="partner">- P4: emails and DingTalk chatbots.
+	//
+	// <props="partner">- OK: no alerts.
 	//
 	// example:
 	//
 	// P4
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The consecutive number of times for which the metric value meets the alert condition before an alert is triggered.
+	// The number of times that the alert is retried.
 	//
 	// example:
 	//
@@ -772,17 +811,17 @@ func (s *DescribeAlertLogListResponseBodyAlertLogListEscalation) Validate() erro
 }
 
 type DescribeAlertLogListResponseBodyAlertLogListExtendedInfo struct {
-	// The name of the extended field.
+	// The name of the extension field.
 	//
 	// example:
 	//
 	// userId
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The value of the extended field.
+	// The value of the extension field.
 	//
 	// example:
 	//
-	// 120886317861****
+	// 100931896542****
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -817,13 +856,13 @@ func (s *DescribeAlertLogListResponseBodyAlertLogListExtendedInfo) Validate() er
 }
 
 type DescribeAlertLogListResponseBodyAlertLogListSendDetail struct {
-	// The list of sending results that are categorized by notification method.
+	// The list of alert pushing results by alert channel.
 	ChannelResultList []*DescribeAlertLogListResponseBodyAlertLogListSendDetailChannelResultList `json:"ChannelResultList,omitempty" xml:"ChannelResultList,omitempty" type:"Repeated"`
-	// Indicates whether the alert notifications are sent.
+	// The pushing status of the alert information.
 	//
-	// 	- If the alert notifications are sent, the value "success" is returned.
+	// - success: The alert was pushed.
 	//
-	// 	- If the configuration is invalid, no alert notification is sent and an error code is returned.
+	// - error code: If a configuration error occurs and the pushing list is empty, an error code is displayed.
 	//
 	// example:
 	//
@@ -871,27 +910,27 @@ func (s *DescribeAlertLogListResponseBodyAlertLogListSendDetail) Validate() erro
 }
 
 type DescribeAlertLogListResponseBodyAlertLogListSendDetailChannelResultList struct {
-	// The method that is used to send alert notifications. Valid values:
+	// The alert pushing channel. Valid values:
 	//
-	// 	- MAIL: email
+	// - MAIL: email.
 	//
-	// 	- SMS: text message
+	// - SMS: text message.
 	//
-	// 	- WEBHOOK: alert callback
+	// - WEBHOOK: alert callback.
 	//
-	// 	- SLS: Simple Log Service
+	// - SLS: Log Service.
 	//
-	// 	- ONCALL: phone call
+	// - ONCALL: phone call.
 	//
-	// 	- FC: Function Compute
+	// - FC: Function Compute.
 	//
-	// 	- MNS: Message Service queue
+	// - MNS: Message Service (MNS).
 	//
 	// example:
 	//
 	// MAIL
 	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
-	// The sending results of alert notifications.
+	// The list of alert information results that CloudMonitor sends to the alert channel.
 	ResultList []*DescribeAlertLogListResponseBodyAlertLogListSendDetailChannelResultListResultList `json:"ResultList,omitempty" xml:"ResultList,omitempty" type:"Repeated"`
 }
 
@@ -935,38 +974,39 @@ func (s *DescribeAlertLogListResponseBodyAlertLogListSendDetailChannelResultList
 }
 
 type DescribeAlertLogListResponseBodyAlertLogListSendDetailChannelResultListResultList struct {
-	// The HTTP status code.
+	// The status code.
 	//
-	// 	- If the value of the `Channel` parameter is `WEBHOOK`, the status code is 200 or 500.
+	// - If `Channel` is set to `WEBHOOK`, the status code is 200 or 500.
 	//
-	// 	- If the value of the `Channel` parameter is `MAIL`, `SMS`, `SLS`, `ONCALL`, `FC`, or `MNS`, this parameter is empty or not returned.
+	// - If `Channel` is set to `MAIL`, `SMS`, `SLS`, `ONCALL`, `FC`, or `MNS`, this parameter is unavailable or empty.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The details of the returned results.
+	// The details of the returned result.
 	//
 	// example:
 	//
 	// { }
 	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	// The request ID returned when CloudMonitor calls another cloud service.
+	// The request ID returned by calling another cloud service.
 	//
 	// example:
 	//
 	// 0BDAF8A8-04DC-5F0C-90E4-724D42C4****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// The result of calling the target.
 	//
-	// 	- true
+	// - true: The call was successful.
 	//
-	// 	- false
+	// - false: The call failed.
 	//
 	// example:
 	//
 	// true
-	Success          *bool     `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The list of channel notifications.
 	NotifyTargetList []*string `json:"notifyTargetList,omitempty" xml:"notifyTargetList,omitempty" type:"Repeated"`
 }
 
@@ -1028,25 +1068,25 @@ func (s *DescribeAlertLogListResponseBodyAlertLogListSendDetailChannelResultList
 }
 
 type DescribeAlertLogListResponseBodyAlertLogListSendResultList struct {
-	// The category of the alert notification method. Valid values:
+	// The channel that sends the alert. Valid values:
 	//
-	// 	- MAIL: email
+	// - MAIL: email.
 	//
-	// 	- ALIIM: TradeManager
+	// - ALIIM: Wangwang.
 	//
-	// 	- SMS: text message
+	// - SMS: text message.
 	//
-	// 	- CALL: phone call
+	// - CALL: phone call.
 	//
-	// 	- DING: DingTalk chatbot
+	// - DING: DingTalk chatbot.
 	//
-	// 	- Merged: alert merging
+	// - Merged: alert combination.
 	//
 	// example:
 	//
-	// Mail
+	// MAIL
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The notification object corresponding to the alert notification method.
+	// The notification target that corresponds to the alert channel.
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 
@@ -1081,19 +1121,19 @@ func (s *DescribeAlertLogListResponseBodyAlertLogListSendResultList) Validate() 
 }
 
 type DescribeAlertLogListResponseBodyAlertLogListWebhookList struct {
-	// The status code of the alert callback.
+	// The status code returned for the alert callback.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The message returned for the alert callback.
+	// The information returned for the alert callback.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The callback URL.
+	// The URL that is called back when the alert is triggered.
 	//
 	// example:
 	//

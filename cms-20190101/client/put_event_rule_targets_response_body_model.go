@@ -28,9 +28,9 @@ type iPutEventRuleTargetsResponseBody interface {
 }
 
 type PutEventRuleTargetsResponseBody struct {
-	// The HTTP status code.
+	// The status code.
 	//
-	// >  The status code 200 indicates that the request was successful.
+	// >The value 200 indicates success.
 	//
 	// example:
 	//
@@ -39,7 +39,7 @@ type PutEventRuleTargetsResponseBody struct {
 	FailedContactParameters *PutEventRuleTargetsResponseBodyFailedContactParameters `json:"FailedContactParameters,omitempty" xml:"FailedContactParameters,omitempty" type:"Struct"`
 	FailedFcParameters      *PutEventRuleTargetsResponseBodyFailedFcParameters      `json:"FailedFcParameters,omitempty" xml:"FailedFcParameters,omitempty" type:"Struct"`
 	FailedMnsParameters     *PutEventRuleTargetsResponseBodyFailedMnsParameters     `json:"FailedMnsParameters,omitempty" xml:"FailedMnsParameters,omitempty" type:"Struct"`
-	// The number of resources that failed to be created or modified.
+	// The number of failed parameters.
 	//
 	// example:
 	//
@@ -57,7 +57,7 @@ type PutEventRuleTargetsResponseBody struct {
 	//
 	// 409C64DA-CF14-45DF-B463-471C790DD15A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values: true and false.
+	// Indicates whether the operation was successful. The value true indicates success. The value false indicates failure.
 	//
 	// example:
 	//

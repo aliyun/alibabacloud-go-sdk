@@ -28,9 +28,9 @@ type iDescribeMonitoringAgentConfigResponseBody interface {
 type DescribeMonitoringAgentConfigResponseBody struct {
 	// Indicates whether the CloudMonitor agent is automatically installed on existing Elastic Compute Service (ECS) instances. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type DescribeMonitoringAgentConfigResponseBody struct {
 	AutoInstall *bool `json:"AutoInstall,omitempty" xml:"AutoInstall,omitempty"`
 	// The status code.
 	//
-	// >  The status code 200 indicates that the request was successful.
+	// > The status code 200 indicates that the request was successful.
 	//
 	// example:
 	//
@@ -52,9 +52,9 @@ type DescribeMonitoringAgentConfigResponseBody struct {
 	EnableActiveAlert *string `json:"EnableActiveAlert,omitempty" xml:"EnableActiveAlert,omitempty"`
 	// Indicates whether the CloudMonitor agent is automatically installed on newly purchased ECS instances. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
@@ -74,9 +74,9 @@ type DescribeMonitoringAgentConfigResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//

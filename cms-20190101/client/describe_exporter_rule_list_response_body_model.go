@@ -26,9 +26,9 @@ type iDescribeExporterRuleListResponseBody interface {
 }
 
 type DescribeExporterRuleListResponseBody struct {
-	// The HTTP status code.
+	// The status code.
 	//
-	// > The status code 200 indicates that the request was successful. Other status codes indicate that the request failed.
+	// > A value of 200 indicates success. Any other value indicates failure.
 	//
 	// example:
 	//
@@ -39,9 +39,9 @@ type DescribeExporterRuleListResponseBody struct {
 	//
 	// example:
 	//
-	// susscess
+	// The specified resource is not found.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The page number of the returned page.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
@@ -53,17 +53,17 @@ type DescribeExporterRuleListResponseBody struct {
 	//
 	// 6BA047CA-8BC6-40BC-BC8F-FBECF35F1993
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// 	- `true`
+	// - `true`: Successful.
 	//
-	// 	- `false`
+	// - `false`: Failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of returned entries.
+	// The total number of records.
 	//
 	// example:
 	//

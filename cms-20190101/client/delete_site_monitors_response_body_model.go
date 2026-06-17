@@ -24,27 +24,27 @@ type iDeleteSiteMonitorsResponseBody interface {
 type DeleteSiteMonitorsResponseBody struct {
 	// The HTTP status code.
 	//
-	// >  The status code 200 indicates that the call was successful.
+	// > The value 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The information about the site monitoring tasks that were deleted.
+	// The number of affected rows.
 	Data *DeleteSiteMonitorsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned message. If the call was successful, the value success is returned. If the call failed, an error message such as `TaskId not found` is returned.
+	// The returned message. If the request is successful, a success message is returned. If the request fails, the failure reason is returned, such as `TaskId not found`.
 	//
 	// example:
 	//
-	// successful
+	// Request succeeded.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 123BCC5D-8B63-48EA-B747-9A8995BE7AA6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. The value true indicates success. The value false indicates failure.
+	// Indicates whether the operation is successful. The value true indicates success. The value false indicates failure.
 	//
 	// example:
 	//
@@ -115,7 +115,7 @@ func (s *DeleteSiteMonitorsResponseBody) Validate() error {
 }
 
 type DeleteSiteMonitorsResponseBodyData struct {
-	// The number of the site monitoring tasks that were deleted.
+	// The number of affected rows.
 	//
 	// example:
 	//

@@ -22,20 +22,28 @@ type iDescribeSyntheticProbeListResponseBody interface {
 }
 
 type DescribeSyntheticProbeListResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The queried detection points.
+	// The list of detection points.
 	IspCityList []*DescribeSyntheticProbeListResponseBodyIspCityList `json:"IspCityList,omitempty" xml:"IspCityList,omitempty" type:"Repeated"`
+	// The error message.
+	//
 	// example:
 	//
 	// The specified resource is not found.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 87170bc7-e28a-4c93-b9bf-90a1dbe84736
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation was successful. Valid values: true: The operation was successful. false: The operation failed.
+	//
 	// example:
 	//
 	// true
@@ -109,63 +117,112 @@ func (s *DescribeSyntheticProbeListResponseBody) Validate() error {
 }
 
 type DescribeSyntheticProbeListResponseBodyIspCityList struct {
+	// The name of the area in Chinese.
+	//
+	// example:
+	//
+	// 华北
 	AreaCn *string `json:"AreaCn,omitempty" xml:"AreaCn,omitempty"`
+	// The name of the area in English.
+	//
 	// example:
 	//
 	// Huabei
 	AreaEn *string `json:"AreaEn,omitempty" xml:"AreaEn,omitempty"`
+	// The city ID.
+	//
 	// example:
 	//
 	// 738
-	City   *string `json:"City,omitempty" xml:"City,omitempty"`
+	City *string `json:"City,omitempty" xml:"City,omitempty"`
+	// The name of the city in Chinese.
+	//
+	// example:
+	//
+	// 北京
 	CityCn *string `json:"CityCn,omitempty" xml:"CityCn,omitempty"`
+	// The name of the city in English.
+	//
 	// example:
 	//
 	// Beijing
 	CityEn *string `json:"CityEn,omitempty" xml:"CityEn,omitempty"`
+	// The country code.
+	//
 	// example:
 	//
 	// 629
-	Country   *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	// The name of the country in Chinese.
+	//
+	// example:
+	//
+	// 中国
 	CountryCn *string `json:"CountryCn,omitempty" xml:"CountryCn,omitempty"`
+	// The name of the country or region in English.
+	//
 	// example:
 	//
 	// China
 	CountryEn *string `json:"CountryEn,omitempty" xml:"CountryEn,omitempty"`
+	// The number of IPv4 detection points in data centers.
+	//
 	// example:
 	//
 	// 1
 	IdcV4ProbeCount *int32 `json:"IdcV4ProbeCount,omitempty" xml:"IdcV4ProbeCount,omitempty"`
-	// The number of IPv6 nodes in data centers.
+	// The number of IDC IPv6 nodes.
 	//
 	// example:
 	//
 	// 1
 	IdcV6ProbeCount *int32 `json:"IdcV6ProbeCount,omitempty" xml:"IdcV6ProbeCount,omitempty"`
-	// The IP addresses of the monitored nodes.
+	// The list of node IP addresses.
 	IpPool []*string `json:"IpPool,omitempty" xml:"IpPool,omitempty" type:"Repeated"`
+	// The carrier ID.
+	//
 	// example:
 	//
 	// 232
-	Isp   *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
+	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
+	// The name of the carrier in Chinese.
+	//
+	// example:
+	//
+	// 联通
 	IspCn *string `json:"IspCn,omitempty" xml:"IspCn,omitempty"`
+	// The name of the carrier in English.
+	//
 	// example:
 	//
 	// China-Unicom
 	IspEn *string `json:"IspEn,omitempty" xml:"IspEn,omitempty"`
+	// The number of last-mile detection points.
+	//
 	// example:
 	//
 	// 1
 	LmProbeCount *int32 `json:"LmProbeCount,omitempty" xml:"LmProbeCount,omitempty"`
+	// The number of mobile detection points.
+	//
 	// example:
 	//
 	// 1
 	MbProbeCount *int32 `json:"MbProbeCount,omitempty" xml:"MbProbeCount,omitempty"`
+	// The province code.
+	//
 	// example:
 	//
 	// 264
-	Region   *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The name of the province in Chinese.
+	//
+	// example:
+	//
+	// 江西省
 	RegionCn *string `json:"RegionCn,omitempty" xml:"RegionCn,omitempty"`
+	// The name of the province in English.
+	//
 	// example:
 	//
 	// Jiangxi

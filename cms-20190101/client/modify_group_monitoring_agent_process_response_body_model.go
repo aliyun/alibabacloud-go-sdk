@@ -20,9 +20,9 @@ type iModifyGroupMonitoringAgentProcessResponseBody interface {
 }
 
 type ModifyGroupMonitoringAgentProcessResponseBody struct {
-	// The HTTP status code.
+	// The status code.
 	//
-	// >  The status code 200 indicates that the call was successful.
+	// > A status code of 200 indicates that the request was successful.
 	//
 	// example:
 	//
@@ -34,17 +34,17 @@ type ModifyGroupMonitoringAgentProcessResponseBody struct {
 	//
 	// The Request is not authorization.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 7985D471-3FA8-4EE9-8F4B-45C19DF3D36F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// 	- true: The call was successful.
+	// - true: The operation was successful.
 	//
-	// 	- false: The call failed.
+	// - false: The operation failed.
 	//
 	// example:
 	//

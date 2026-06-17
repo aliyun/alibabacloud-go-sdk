@@ -38,54 +38,63 @@ type iDescribeSiteMonitorLogRequest interface {
 }
 
 type DescribeSiteMonitorLogRequest struct {
+	// The type of the browser.
+	//
 	// example:
 	//
 	// Chrome
-	Browser     *string `json:"Browser,omitempty" xml:"Browser,omitempty"`
+	Browser *string `json:"Browser,omitempty" xml:"Browser,omitempty"`
+	// This parameter is deprecated. You do not need to specify this parameter.
+	//
+	// example:
+	//
+	// 无
 	BrowserInfo *string `json:"BrowserInfo,omitempty" xml:"BrowserInfo,omitempty"`
-	// The city identification code.
+	// The city ID.
 	//
 	// example:
 	//
 	// 546
 	City *string `json:"City,omitempty" xml:"City,omitempty"`
+	// The type of the device. This parameter specifies the screen size for impersonation.
+	//
 	// example:
 	//
 	// laptop
 	Device *string `json:"Device,omitempty" xml:"Device,omitempty"`
-	// The end of the time range to query. Valid values:
+	// The end of the time range to query. The following formats are supported:
 	//
-	// 	- UNIX timestamp: the number of milliseconds that have elapsed since 00:00:00 Thursday, January 1, 1970
+	// - UNIX timestamp: the number of milliseconds that have elapsed since January 1, 1970.
 	//
-	// 	- UTC time: the UTC time that follows the YYYY-MM-DDThh:mm:ssZ format
+	// - UTC format: YYYY-MM-DDThh:mm:ssZ.
 	//
-	// >  We recommend that you use UNIX timestamps to prevent time zone-related issues.
+	// > Use UNIX timestamps to prevent time zone-related issues.
 	//
 	// example:
 	//
 	// 1638422475687
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The filter condition.
+	// The filter expression for detection results.
 	//
-	// You can specify a simple expression, for example, `TotalTime>100`. In this case, the operation returns only the data for instant test tasks whose total response time exceeds 100 milliseconds.
+	// Simple expressions are supported. For example, you can use the `TotalTime>100` expression to query the detection data whose total response time exceeds 100 milliseconds.
 	//
 	// example:
 	//
 	// TotalTime>100
 	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	// The carrier identification code.
+	// The carrier ID.
 	//
 	// example:
 	//
 	// 465
 	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
-	// The number of entries to return on each page. Valid values: 1 to 1440.
+	// The number of entries to return on each page for a paged query. Valid values: 1 to 1440.
 	//
 	// example:
 	//
 	// 1000
 	Length *int32 `json:"Length,omitempty" xml:"Length,omitempty"`
-	// The name of the metric.
+	// The metric.
 	//
 	// Only the `ProbeLog` metric is supported.
 	//
@@ -93,30 +102,26 @@ type DescribeSiteMonitorLogRequest struct {
 	//
 	// ProbeLog
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The token that is used to initiate the next request if the response of the current request is truncated. You can use the token to initiate another request and obtain the remaining records.``
+	// If the response is truncated, use the `NextToken` parameter to retrieve the next page of results.
 	//
 	// example:
 	//
 	// IWBjqMYSy0is7zSMGu16****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The start of the time range to query. The following formats are supported:
+	// The beginning of the time range to query. The following formats are supported:
 	//
-	// 	- UNIX timestamp: the number of milliseconds that have elapsed since 00:00:00 Thursday, January 1, 1970
+	// - UNIX timestamp: the number of milliseconds that have elapsed since January 1, 1970.
 	//
-	// 	- UTC time: the UTC time that follows the YYYY-MM-DDThh:mm:ssZ format
+	// - UTC format: YYYY-MM-DDThh:mm:ssZ.
 	//
-	// >
-	//
-	// 	- The specified time range includes the end time and excludes the start time. The start time must be earlier than the end time.\\
-	//
-	//     We recommend that you use UNIX timestamps to prevent time zone-related issues.
+	// > 	- The start time and end time follow the (StartTime, EndTime] pattern. The value of StartTime cannot be the same as or later than the value of EndTime.<br> - Use UNIX timestamps to prevent time zone-related issues.<br>
 	//
 	// example:
 	//
 	// 1638422474389
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The IDs of the instant test tasks. Separate multiple task IDs with commas (,).
+	// The ID of the detection task. You can specify multiple task IDs. Separate them with commas (,).
 	//
 	// This parameter is required.
 	//

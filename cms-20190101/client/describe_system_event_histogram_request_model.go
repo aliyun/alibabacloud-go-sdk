@@ -42,7 +42,7 @@ type DescribeSystemEventHistogramRequest struct {
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The event type.
 	//
-	// >  You can call the [DescribeSystemEventMetaList](https://help.aliyun.com/document_detail/114972.html) operation to query the types of system events.
+	// > You can call the [DescribeSystemEventMetaList](https://help.aliyun.com/document_detail/114972.html) operation to query the types of system events.
 	//
 	// example:
 	//
@@ -56,11 +56,11 @@ type DescribeSystemEventHistogramRequest struct {
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The level of the event. Valid values:
 	//
-	// 	- CRITICAL
+	// - CRITICAL
 	//
-	// 	- WARN
+	// - WARN
 	//
-	// 	- INFO
+	// - INFO
 	//
 	// example:
 	//
@@ -68,7 +68,7 @@ type DescribeSystemEventHistogramRequest struct {
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
 	// The event name.
 	//
-	// >  You can call the [DescribeSystemEventMetaList](https://help.aliyun.com/document_detail/114972.html) operation to query the names of system events.
+	// > You can call the [DescribeSystemEventMetaList](https://help.aliyun.com/document_detail/114972.html) operation to query the names of system events.
 	//
 	// example:
 	//
@@ -76,7 +76,7 @@ type DescribeSystemEventHistogramRequest struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The abbreviation of the service name.
 	//
-	// >  You can call the [DescribeSystemEventMetaList](https://help.aliyun.com/document_detail/114972.html) operation to query the abbreviations of service names.
+	// > You can call the [DescribeSystemEventMetaList](https://help.aliyun.com/document_detail/114972.html) operation to query the abbreviations of service names.
 	//
 	// example:
 	//
@@ -85,9 +85,9 @@ type DescribeSystemEventHistogramRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The keywords that are used to search for the system event. Valid values:
 	//
-	// 	- If you want to search for the system event whose content contains a and b, set the value to `a and b`.
+	// - If you want to search for the system event whose content contains a and b, set the value to `a and b`.
 	//
-	// 	- If you want to search for the system event whose content contains a or b, set the value to `a or b`.
+	// - If you want to search for the system event whose content contains a or b, set the value to `a or b`.
 	//
 	// example:
 	//
@@ -103,7 +103,7 @@ type DescribeSystemEventHistogramRequest struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The event status.
 	//
-	// >  You can call the [DescribeSystemEventMetaList](https://help.aliyun.com/document_detail/114972.html) operation to query the status of system events.
+	// > You can call the [DescribeSystemEventMetaList](https://help.aliyun.com/document_detail/114972.html) operation to query the status of system events.
 	//
 	// example:
 	//

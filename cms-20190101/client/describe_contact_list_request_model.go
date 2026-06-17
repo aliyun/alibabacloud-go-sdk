@@ -26,17 +26,21 @@ type iDescribeContactListRequest interface {
 type DescribeContactListRequest struct {
 	// The alert notification method. Valid values:
 	//
-	// 	- Mail: emails
+	// <props="china">- SMS: text message.
 	//
-	// 	- DingWebHook: DingTalk chatbots
+	// <props="china">- AliIM: TradeManager.
+	//
+	// - Mail: email.
+	//
+	// - DingWebHook: DingTalk chatbot.
 	//
 	// example:
 	//
 	// Mail
 	ChanelType *string `json:"ChanelType,omitempty" xml:"ChanelType,omitempty"`
-	// The value specified for the alert notification method.
+	// The value of the alert notification method.
 	//
-	// >  This parameter is required only if you set the `ChanelType` parameter to `Mail`.
+	// > This parameter is required only when `ChanelType` is set to `Mail`.
 	//
 	// example:
 	//
@@ -48,7 +52,7 @@ type DescribeContactListRequest struct {
 	//
 	// Alice
 	ContactName *string `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
-	// The page number.
+	// The current page number.
 	//
 	// Default value: 1.
 	//

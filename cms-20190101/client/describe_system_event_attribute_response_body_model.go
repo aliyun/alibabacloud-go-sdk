@@ -24,7 +24,7 @@ type iDescribeSystemEventAttributeResponseBody interface {
 type DescribeSystemEventAttributeResponseBody struct {
 	// The HTTP status code.
 	//
-	// >  The status code 200 indicates that the call is successful.
+	// > The status code 200 indicates that the call is successful.
 	//
 	// example:
 	//

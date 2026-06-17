@@ -22,9 +22,9 @@ type iPutGroupMetricRuleResponseBody interface {
 }
 
 type PutGroupMetricRuleResponseBody struct {
-	// The HTTP status code.
+	// The status code.
 	//
-	// >  The status code 200 indicates that the request was successful.
+	// >A value of 200 indicates success.
 	//
 	// example:
 	//
@@ -42,13 +42,13 @@ type PutGroupMetricRuleResponseBody struct {
 	//
 	// 461CF2CD-2FC3-4B26-8645-7BD27E7D0F1D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result of the request.
+	// The result of creating or modifying the alert rule.
 	Result *PutGroupMetricRuleResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// 	- true
+	// - true: The operation was successful.
 	//
-	// 	- false
+	// - false: The operation failed.
 	//
 	// example:
 	//
@@ -119,7 +119,7 @@ func (s *PutGroupMetricRuleResponseBody) Validate() error {
 }
 
 type PutGroupMetricRuleResponseBodyResult struct {
-	// The ID of the alert rule.
+	// The alert rule ID.
 	//
 	// example:
 	//

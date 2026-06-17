@@ -22,13 +22,13 @@ type iPutContactGroupResponseBody interface {
 type PutContactGroupResponseBody struct {
 	// The status code.
 	//
-	// >  The status code 200 indicates that the request was successful.
+	// > 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error message.
+	// The returned message.
 	//
 	// example:
 	//
@@ -40,11 +40,11 @@ type PutContactGroupResponseBody struct {
 	//
 	// B4E30DB6-F069-5D0B-A589-2A89F7D62A57
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the operation is successful. Valid values:
 	//
-	// 	- true
+	// - true: Successful.
 	//
-	// 	- false
+	// - false: Failed.
 	//
 	// example:
 	//

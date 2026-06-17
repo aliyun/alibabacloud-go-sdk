@@ -38,7 +38,7 @@ type ModifyMetricRuleTemplateRequest struct {
 	//
 	// example:
 	//
-	// test123
+	// Template_123
 	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The version of the alert template. The version changes with the number of times that the alert template is modified.
@@ -49,7 +49,7 @@ type ModifyMetricRuleTemplateRequest struct {
 	//
 	// example:
 	//
-	// 0
+	// 1
 	RestVersion *int64 `json:"RestVersion,omitempty" xml:"RestVersion,omitempty"`
 	// The ID of the alert template.
 	//
@@ -186,7 +186,7 @@ type ModifyMetricRuleTemplateRequestAlertTemplates struct {
 	//
 	// example:
 	//
-	// rule1
+	// Rule_123
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// The dimension of the alert. It is an extended field.
 	//
@@ -208,7 +208,7 @@ type ModifyMetricRuleTemplateRequestAlertTemplates struct {
 	//
 	// example:
 	//
-	// https://apiwebhook.hipac.cn/api/v1/alarm/aly/eregfeeferrtbnmkdszp
+	// http://www.aliyun.com
 	Webhook *string `json:"Webhook,omitempty" xml:"Webhook,omitempty"`
 }
 
@@ -364,27 +364,27 @@ func (s *ModifyMetricRuleTemplateRequestAlertTemplatesEscalations) Validate() er
 type ModifyMetricRuleTemplateRequestAlertTemplatesEscalationsCritical struct {
 	// The operator that is used to compare the metric value with the threshold for Critical-level alerts. Valid values:
 	//
-	// 	- GreaterThanOrEqualToThreshold: greater than or equal to the threshold
+	// - GreaterThanOrEqualToThreshold: greater than or equal to the threshold
 	//
-	// 	- GreaterThanThreshold: greater than the threshold
+	// - GreaterThanThreshold: greater than the threshold
 	//
-	// 	- LessThanOrEqualToThreshold: less than or equal to the threshold
+	// - LessThanOrEqualToThreshold: less than or equal to the threshold
 	//
-	// 	- LessThanThreshold: less than the threshold
+	// - LessThanThreshold: less than the threshold
 	//
-	// 	- NotEqualToThreshold: not equal to the threshold
+	// - NotEqualToThreshold: not equal to the threshold
 	//
-	// 	- GreaterThanYesterday: greater than the metric value at the same time yesterday
+	// - GreaterThanYesterday: greater than the metric value at the same time yesterday
 	//
-	// 	- LessThanYesterday: less than the metric value at the same time yesterday
+	// - LessThanYesterday: less than the metric value at the same time yesterday
 	//
-	// 	- GreaterThanLastWeek: greater than the metric value at the same time last week
+	// - GreaterThanLastWeek: greater than the metric value at the same time last week
 	//
-	// 	- LessThanLastWeek: less than the metric value at the same time last week
+	// - LessThanLastWeek: less than the metric value at the same time last week
 	//
-	// 	- GreaterThanLastPeriod: greater than the metric value in the last monitoring cycle
+	// - GreaterThanLastPeriod: greater than the metric value in the last monitoring cycle
 	//
-	// 	- LessThanLastPeriod: less than the metric value in the last monitoring cycle
+	// - LessThanLastPeriod: less than the metric value in the last monitoring cycle
 	//
 	// Valid values of N: 1 to 200.
 	//
@@ -489,27 +489,27 @@ func (s *ModifyMetricRuleTemplateRequestAlertTemplatesEscalationsCritical) Valid
 type ModifyMetricRuleTemplateRequestAlertTemplatesEscalationsInfo struct {
 	// The operator that is used to compare the metric value with the threshold for Info-level alerts. Valid values:
 	//
-	// 	- GreaterThanOrEqualToThreshold: greater than or equal to the threshold
+	// - GreaterThanOrEqualToThreshold: greater than or equal to the threshold
 	//
-	// 	- GreaterThanThreshold: greater than the threshold
+	// - GreaterThanThreshold: greater than the threshold
 	//
-	// 	- LessThanOrEqualToThreshold: less than or equal to the threshold
+	// - LessThanOrEqualToThreshold: less than or equal to the threshold
 	//
-	// 	- LessThanThreshold: less than the threshold
+	// - LessThanThreshold: less than the threshold
 	//
-	// 	- NotEqualToThreshold: not equal to the threshold
+	// - NotEqualToThreshold: not equal to the threshold
 	//
-	// 	- GreaterThanYesterday: greater than the metric value at the same time yesterday
+	// - GreaterThanYesterday: greater than the metric value at the same time yesterday
 	//
-	// 	- LessThanYesterday: less than the metric value at the same time yesterday
+	// - LessThanYesterday: less than the metric value at the same time yesterday
 	//
-	// 	- GreaterThanLastWeek: greater than the metric value at the same time last week
+	// - GreaterThanLastWeek: greater than the metric value at the same time last week
 	//
-	// 	- LessThanLastWeek: less than the metric value at the same time last week
+	// - LessThanLastWeek: less than the metric value at the same time last week
 	//
-	// 	- GreaterThanLastPeriod: greater than the metric value in the last monitoring cycle
+	// - GreaterThanLastPeriod: greater than the metric value in the last monitoring cycle
 	//
-	// 	- LessThanLastPeriod: less than the metric value in the last monitoring cycle
+	// - LessThanLastPeriod: less than the metric value in the last monitoring cycle
 	//
 	// Valid values of N: 1 to 200.
 	//
@@ -614,27 +614,27 @@ func (s *ModifyMetricRuleTemplateRequestAlertTemplatesEscalationsInfo) Validate(
 type ModifyMetricRuleTemplateRequestAlertTemplatesEscalationsWarn struct {
 	// The operator that is used to compare the metric value with the threshold for Warn-level alerts. Valid values:
 	//
-	// 	- GreaterThanOrEqualToThreshold: greater than or equal to the threshold
+	// - GreaterThanOrEqualToThreshold: greater than or equal to the threshold
 	//
-	// 	- GreaterThanThreshold: greater than the threshold
+	// - GreaterThanThreshold: greater than the threshold
 	//
-	// 	- LessThanOrEqualToThreshold: less than or equal to the threshold
+	// - LessThanOrEqualToThreshold: less than or equal to the threshold
 	//
-	// 	- LessThanThreshold: less than the threshold
+	// - LessThanThreshold: less than the threshold
 	//
-	// 	- NotEqualToThreshold: not equal to the threshold
+	// - NotEqualToThreshold: not equal to the threshold
 	//
-	// 	- GreaterThanYesterday: greater than the metric value at the same time yesterday
+	// - GreaterThanYesterday: greater than the metric value at the same time yesterday
 	//
-	// 	- LessThanYesterday: less than the metric value at the same time yesterday
+	// - LessThanYesterday: less than the metric value at the same time yesterday
 	//
-	// 	- GreaterThanLastWeek: greater than the metric value at the same time last week
+	// - GreaterThanLastWeek: greater than the metric value at the same time last week
 	//
-	// 	- LessThanLastWeek: less than the metric value at the same time last week
+	// - LessThanLastWeek: less than the metric value at the same time last week
 	//
-	// 	- GreaterThanLastPeriod: greater than the metric value in the last monitoring cycle
+	// - GreaterThanLastPeriod: greater than the metric value in the last monitoring cycle
 	//
-	// 	- LessThanLastPeriod: less than the metric value in the last monitoring cycle
+	// - LessThanLastPeriod: less than the metric value in the last monitoring cycle
 	//
 	// Valid values of N: 1 to 200.
 	//

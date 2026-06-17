@@ -20,9 +20,9 @@ type iDeleteGroupMonitoringAgentProcessResponseBody interface {
 }
 
 type DeleteGroupMonitoringAgentProcessResponseBody struct {
-	// The status code.
+	// The HTTP status code.
 	//
-	// >  The status code 200 indicates that the request was successful.
+	// >The value 200 indicates success.
 	//
 	// example:
 	//
@@ -40,11 +40,11 @@ type DeleteGroupMonitoringAgentProcessResponseBody struct {
 	//
 	// 3F6150F9-45C7-43F9-9578-A58B2E726C90
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// 	- true
+	// - true: The operation was successful.
 	//
-	// 	- false
+	// - false: The operation failed.
 	//
 	// example:
 	//

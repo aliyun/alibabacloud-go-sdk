@@ -22,15 +22,15 @@ type iCreateInstantSiteMonitorResponseBody interface {
 }
 
 type CreateInstantSiteMonitorResponseBody struct {
-	// The error code.
+	// The status code.
 	//
-	// > The status code 200 indicates that the call was successful.
+	// > A value of 200 indicates that the call is successful.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The results for creating the instant test task.
+	// The results of the one-time detection task.
 	CreateResultList []*CreateInstantSiteMonitorResponseBodyCreateResultList `json:"CreateResultList,omitempty" xml:"CreateResultList,omitempty" type:"Repeated"`
 	// The returned message.
 	//
@@ -38,17 +38,17 @@ type CreateInstantSiteMonitorResponseBody struct {
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 68192f5d-0d45-4b98-9724-892813f86c71
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// 	- true: The request was successful.
+	// - true: The operation was successful.
 	//
-	// 	- false: The request failed.
+	// - false: The operation failed.
 	//
 	// example:
 	//
@@ -123,13 +123,13 @@ func (s *CreateInstantSiteMonitorResponseBody) Validate() error {
 }
 
 type CreateInstantSiteMonitorResponseBodyCreateResultList struct {
-	// The ID of the instant test task.
+	// The ID of the detection task.
 	//
 	// example:
 	//
 	// 2c8dbdf9-a3ab-46a1-85a4-f094965e****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The name of the instant test task.
+	// The name of the detection task.
 	//
 	// example:
 	//

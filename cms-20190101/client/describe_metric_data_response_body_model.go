@@ -24,7 +24,7 @@ type iDescribeMetricDataResponseBody interface {
 type DescribeMetricDataResponseBody struct {
 	// The HTTP status code.
 	//
-	// >  The status code 200 indicates that the request was successful.
+	// > The status code 200 indicates that the request was successful.
 	//
 	// example:
 	//
@@ -32,13 +32,13 @@ type DescribeMetricDataResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The monitoring data. The value includes the following fields:
 	//
-	// 	- `timestamp`: the time when the alert was triggered.
+	// - `timestamp`: the time when the alert was triggered.
 	//
-	// 	- `userId`: the ID of the user for which the alert was triggered.
+	// - `userId`: the ID of the user for which the alert was triggered.
 	//
-	// 	- `instanceId`: the ID of the instance for which the alert was triggered.
+	// - `instanceId`: the ID of the instance for which the alert was triggered.
 	//
-	// 	- `Minimum`, `Average`, and `Maximum`: the aggregation methods.
+	// - `Minimum`, `Average`, and `Maximum`: the aggregation methods.
 	//
 	// example:
 	//

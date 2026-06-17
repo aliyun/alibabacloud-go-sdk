@@ -24,16 +24,16 @@ type iDescribeContactListResponseBody interface {
 }
 
 type DescribeContactListResponseBody struct {
-	// The HTTP status code.
+	// The status code.
 	//
-	// >  The status code 200 indicates that the request was successful.
+	// > 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code     *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
 	Contacts *DescribeContactListResponseBodyContacts `json:"Contacts,omitempty" xml:"Contacts,omitempty" type:"Struct"`
-	// The error message returned.
+	// The error message.
 	//
 	// example:
 	//
@@ -45,17 +45,17 @@ type DescribeContactListResponseBody struct {
 	//
 	// 06D5ECC2-B9BE-42A4-8FA3-1A610FB08B83
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// 	- true: The request was successful.
+	// - true: Successful.
 	//
-	// 	- false: The request failed.
+	// - false: Failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of entries returned.
+	// The total number of records.
 	//
 	// example:
 	//

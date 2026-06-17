@@ -28,9 +28,9 @@ type iDescribeDynamicTagRuleListResponseBody interface {
 }
 
 type DescribeDynamicTagRuleListResponseBody struct {
-	// The HTTP status code.
+	// The status code.
 	//
-	// >  The status code 200 indicates that the call was successful.
+	// > A status code of 200 indicates that the operation was successful.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type DescribeDynamicTagRuleListResponseBody struct {
 	//
 	// The specified resource is not found.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
@@ -54,24 +54,24 @@ type DescribeDynamicTagRuleListResponseBody struct {
 	//
 	// 30
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 0D50523D-8D59-4A61-B58E-E2286ECFB3A9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// 	- true: The call was successful.
+	// - true: The operation was successful.
 	//
-	// 	- false: The call failed.
+	// - false: The operation failed.
 	//
 	// example:
 	//
 	// true
 	Success      *bool                                               `json:"Success,omitempty" xml:"Success,omitempty"`
 	TagGroupList *DescribeDynamicTagRuleListResponseBodyTagGroupList `json:"TagGroupList,omitempty" xml:"TagGroupList,omitempty" type:"Struct"`
-	// The total number of returned entries.
+	// The total number of entries in the tag list.
 	//
 	// example:
 	//

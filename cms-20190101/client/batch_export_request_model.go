@@ -22,11 +22,11 @@ type iBatchExportRequest interface {
 }
 
 type BatchExportRequest struct {
-	// When you call this operation to export data, you must specify the `Cursor` parameter. You can obtain the value of the `Cursor` parameter by using one of the following methods:
+	// When you call this operation in a loop to export data, you must specify the value of `Cursor`. You can obtain the value of `Cursor` by using the following methods:
 	//
-	// 	- When you call this operation for the first time, you must call the Cursor operation to obtain the `Cursor` value. For more information, see [Cursor](https://help.aliyun.com/document_detail/2330730.html).
+	// - When you call this operation for the first time, you must first call the Cursor operation to obtain the value of `Cursor`. For more information, see [Cursor](https://help.aliyun.com/document_detail/2330730.html).
 	//
-	// 	- When you call this operation again, you can obtain the `Cursor` value from the returned data of the last call.
+	// - When you call this operation again, you can obtain the value of `Cursor` from the response of the last call.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type BatchExportRequest struct {
 	//
 	// eyJidWNrZXRzIjo0LCJjdXJzb3IiOiIxNjQxNDU0MzIwMDAwMWUxY2YxNWY0NTU0MTliZjllYTY4OWQ2ODI1OTU1Yzc1NmZjMDQ2OTMxMzczMzM2MzUzMTMxMzEzMzM0MzMzODM5MzEzMTMwMjQyYzY5MmQ3NTY2MzYzMjY3NmI2ZjM5MzU2YjY4MzAzMTYyNzg3MTcwNjkzMTM3MjQyYyIsImN1cnNvclZlcnNpb24iOiJxdWVyeSIsImVuZFRpbWUiOjE2NDE0NTQ3OTU4MjMsImV4cG9ydEVuZFRpbWUiOjE2NDE0NTQ3OTU4MjMsImV4cG9ydFN0YXJ0VGltZSI6MTY0MTQ1NDE5NTgyMywiZXhwcmVzc1JhbmdlIjpmYWxzZSwiaGFzTmV4dCI6dHJ1ZSwiaW5wdXRNZXRyaWMiOiJDUFVVdGlsaXphdGlvbiIsImlucHV0TmFtZXNwYWNlIjoiYWNzX2Vjc19kYXNoYm9hcmQiLCJsaW1pdCI6MTAwMCwibG9nVGltZU1vZGUiOnRydWUsIm1hdGNoZXJzIjp7ImNoYWluIjpbeyJsYWJlbCI6InVzZXJJZCIsIm9wZXJhdG9yIjoiRVFVQUxTIiwidmFsdWUiOiIxNzM2NTExMTM0Mzg5MTEwIn1dfSwibWV0cmljIjoiQ1BVVXRpbGl6YXRpb24iLCJtZXRyaWNUeXBlIjoiTUVUUklDIiwibmFtZXNwYWNlIjoiYWNzX2Vjc19kYXNoYm9hcmQiLCJuZXh0UGtBZGFwdGVyIjp7fSwib2Zmc2V0IjowLCJwYXJlbnRVaWQiOjEyNzA2NzY2Nzk1NDY3MDQsInN0YXJ0VGltZSI6MTY0MTQ1NDE5NTgyMywic3RlcCI6LTEsInRpbWVvdXQiOjEyMCwid2luZG93Ijo2****
 	Cursor *string `json:"Cursor,omitempty" xml:"Cursor,omitempty"`
-	// The maximum number of data entries that can be returned in each response.
+	// The maximum number of data entries to return each time.
 	//
 	// Valid values: 1 to 10000.
 	//
@@ -44,17 +44,17 @@ type BatchExportRequest struct {
 	//
 	// 1000
 	Length *int32 `json:"Length,omitempty" xml:"Length,omitempty"`
-	// The statistical methods used to customize the returned data. By default, the measurements based on all statistical methods are returned.
+	// The measurements that are used to customize the returned data. By default, all measurements are returned.
 	//
-	// For example, the `cpu_idle` metric of ECS (`acs_ecs_dashboard`) has three statistical methods: `Average`, `Maximum`, and `Minimum`. If you want to return only the measurements based on the `Average` and `Maximum` statistical methods, set this parameter to `["Average", "Maximum"]`.
+	// For example, the metric `cpu_idle` of the cloud service `acs_ecs_dashboard` has three measurement columns: `Average`, `Maximum`, and `Minimum`. If you only need to return the `Average` and `Maximum` columns, set this parameter to the array `["Average", "Maximum"]`.
 	//
-	// The statistical methods of metrics are displayed in the `Statistics` column on the Metrics page of each cloud service. For more information, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
+	// For information about how to obtain the measurements of a metric of a cloud service, see the `statistics` column of [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
 	Measurements []*string `json:"Measurements,omitempty" xml:"Measurements,omitempty" type:"Repeated"`
-	// The metric that is used to monitor the cloud service.
+	// The name of the metric of the cloud service.
 	//
-	// For more information about the metrics of cloud services, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
+	// For information about how to obtain the name of a metric of a cloud service, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
 	//
-	// >  The value of this parameter must be the same as the value of the request parameter `Metric` in the Cursor operation.
+	// > This parameter must be the same as the request parameter `Metric` in the Cursor operation.
 	//
 	// This parameter is required.
 	//
@@ -62,11 +62,11 @@ type BatchExportRequest struct {
 	//
 	// cpu_idle
 	Metric *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
-	// The namespace of the cloud service.
+	// The data namespace of the cloud service.
 	//
-	// For more information about the namespaces of cloud services, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
+	// For information about how to obtain the data namespace of a cloud service, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
 	//
-	// >  The value of this parameter must be the same as the value of the request parameter `Namespace` in the Cursor operation.
+	// > This parameter must be the same as the request parameter `Namespace` in the Cursor operation.
 	//
 	// This parameter is required.
 	//

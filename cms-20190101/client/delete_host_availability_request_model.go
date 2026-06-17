@@ -16,7 +16,7 @@ type iDeleteHostAvailabilityRequest interface {
 }
 
 type DeleteHostAvailabilityRequest struct {
-	// The task ID. Valid values of N: 1 to 20.
+	// The IDs of the tasks.
 	//
 	// This parameter is required.
 	//

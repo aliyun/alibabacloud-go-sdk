@@ -42,25 +42,25 @@ type iDescribeMonitorGroupsRequest interface {
 }
 
 type DescribeMonitorGroupsRequest struct {
-	// The ID of the tag rule.
+	// The ID of the dynamic tag rule.
 	//
 	// example:
 	//
 	// 6b882d9a-5117-42e2-9d0c-4749a0c6****
 	DynamicTagRuleId *string `json:"DynamicTagRuleId,omitempty" xml:"DynamicTagRuleId,omitempty"`
-	// The tag key that is created for the application group by using the tag rule.
+	// The tag key of the application group that is created using a dynamic tag rule.
 	//
 	// example:
 	//
 	// GroupKey1
 	GroupFounderTagKey *string `json:"GroupFounderTagKey,omitempty" xml:"GroupFounderTagKey,omitempty"`
-	// The tag value that is created for the application group by using the tag rule.
+	// The tag value of the application group that is created using a dynamic tag rule.
 	//
 	// example:
 	//
 	// GroupValue1
 	GroupFounderTagValue *string `json:"GroupFounderTagValue,omitempty" xml:"GroupFounderTagValue,omitempty"`
-	// The ID of the application group. Separate multiple application group IDs with commas (,).
+	// The IDs of the application groups. Separate multiple IDs with commas (,).
 	//
 	// example:
 	//
@@ -72,29 +72,29 @@ type DescribeMonitorGroupsRequest struct {
 	//
 	// testGroup124
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// Specifies whether to include the historical alert templates that are applied to the application group in the response. Valid values:
+	// Specifies whether to include the history of alert templates that are applied to the application group in the response. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
 	// true
 	IncludeTemplateHistory *bool `json:"IncludeTemplateHistory,omitempty" xml:"IncludeTemplateHistory,omitempty"`
-	// The instance ID. This parameter is used to query the application group to which the specified instance belongs.
+	// The ID of the instance. This parameter is used to query the application group to which the specified instance belongs.
 	//
 	// example:
 	//
 	// i-abcdefgh12****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The keyword that is used for the search.
+	// The keyword for the search.
 	//
 	// example:
 	//
 	// test
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// The number of the page to return.
+	// The page number.
 	//
 	// Pages start from page 1. Default value: 1.
 	//
@@ -111,11 +111,11 @@ type DescribeMonitorGroupsRequest struct {
 	// 30
 	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Specifies whether to include the alert contact groups in the response. Valid values:
+	// Specifies whether to include alert contact groups in the response. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
@@ -125,11 +125,11 @@ type DescribeMonitorGroupsRequest struct {
 	Tag []*DescribeMonitorGroupsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The type of the application group. Valid values:
 	//
-	// 	- custom: a self-managed application group
+	// - custom: a custom application group.
 	//
-	// 	- ehpc_cluster: an application group that is synchronized from an E-HPC cluster
+	// - ehpc_cluster: an application group that is synchronized from an E-HPC cluster.
 	//
-	// 	- kubernetes: an application group that is synchronized from an ACK cluster
+	// - kubernetes: an application group that is synchronized from a Container Service for Kubernetes (ACK) cluster.
 	//
 	// example:
 	//
@@ -137,17 +137,17 @@ type DescribeMonitorGroupsRequest struct {
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The type of the application group. Valid values:
 	//
-	// 	- custom: a self-managed application group
+	// - custom: a custom application group.
 	//
-	// 	- ehpc_cluster: an application group that is synchronized from an Elastic High Performance Computing (E-HPC) cluster
+	// - ehpc_cluster: an application group that is synchronized from an E-HPC cluster.
 	//
-	// 	- kubernetes: an application group that is synchronized from a Container Service for Kubernetes (ACK) cluster
+	// - kubernetes: an application group that is synchronized from a Container Service for Kubernetes (ACK) cluster.
 	//
-	// 	- tag: an application group that is automatically created by using tags
+	// - tag: an application group that is automatically created based on tags.
 	//
-	// 	- resMgr: an application group that is created by using resource groups
+	// - resMgr: an application group that is created based on a resource group.
 	//
-	// 	- ess: an application group that is synchronized from Auto Scaling (ESS)
+	// - ess: an application group that is synchronized from Auto Scaling (ESS).
 	//
 	// example:
 	//
@@ -312,13 +312,13 @@ func (s *DescribeMonitorGroupsRequest) Validate() error {
 }
 
 type DescribeMonitorGroupsRequestTag struct {
-	// The tag key of the application group. Valid values of N: 1 to 5.
+	// The key of tag N. Valid values of N: 1 to 5.
 	//
 	// example:
 	//
 	// tagKey1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value of the application group. Valid values of N: 1 to 5.
+	// The value of tag N. Valid values of N: 1 to 5.
 	//
 	// example:
 	//

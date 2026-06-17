@@ -24,15 +24,19 @@ type iDescribeSiteMonitorISPCityListRequest interface {
 }
 
 type DescribeSiteMonitorISPCityListRequest struct {
-	// The name or ID of the city.
+	// The name or ID of the city where the carrier detection point resides.
 	//
-	// > City names support fuzzy match.
+	// > Fuzzy match is supported for city names.
+	//
+	// example:
+	//
+	// Guiyang
 	City *string `json:"City,omitempty" xml:"City,omitempty"`
 	// Specifies whether to query IPv4 probes. Valid values:
 	//
-	// 	- true (default): IPv4 probes are queried.
+	// - true (default): Queries IPv4 probes.
 	//
-	// 	- false: IPv4 probes are not queried.
+	// - false: Does not query IPv4 probes.
 	//
 	// example:
 	//
@@ -40,24 +44,28 @@ type DescribeSiteMonitorISPCityListRequest struct {
 	IPV4 *bool `json:"IPV4,omitempty" xml:"IPV4,omitempty"`
 	// Specifies whether to query IPv6 probes. Valid values:
 	//
-	// 	- true (default): IPv6 probes are queried.
+	// - true (default): Queries IPv6 probes.
 	//
-	// 	- false: IPv6 probes are not queried.
+	// - false: Does not query IPv6 probes.
 	//
 	// example:
 	//
 	// true
 	IPV6 *bool `json:"IPV6,omitempty" xml:"IPV6,omitempty"`
-	// The name or ID of the carrier.
+	// The name or ID of the carrier detection point.
 	//
-	// > Carrier names support fuzzy match.
+	// > Fuzzy match is supported for carrier names.
+	//
+	// example:
+	//
+	// China Unicom
 	Isp      *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// Specifies whether to return all detection points. Valid values:
 	//
-	// 	- true (default): returns all detection points.
+	// - true (default): Returns all detection points.
 	//
-	// 	- false: returns only available detection points.
+	// - false: Returns only available detection points.
 	//
 	// example:
 	//

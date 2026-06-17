@@ -24,7 +24,7 @@ type iDescribeMonitorGroupDynamicRulesResponseBody interface {
 type DescribeMonitorGroupDynamicRulesResponseBody struct {
 	// The responses code.
 	//
-	// >  The status code 200 indicates that the request was successful.
+	// > The status code 200 indicates that the request was successful.
 	//
 	// example:
 	//
@@ -45,9 +45,9 @@ type DescribeMonitorGroupDynamicRulesResponseBody struct {
 	Resource  *DescribeMonitorGroupDynamicRulesResponseBodyResource `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Struct"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//

@@ -30,29 +30,55 @@ type iDescribeSyntheticProbeListRequest interface {
 }
 
 type DescribeSyntheticProbeListRequest struct {
+	// The name or ID of the city where the carrier detection point is located.
+	//
+	// example:
+	//
+	// Beijing
 	City *string `json:"City,omitempty" xml:"City,omitempty"`
+	// Specifies whether to return only detection points in data centers.
+	//
 	// example:
 	//
 	// false
 	IdcProbe *bool `json:"IdcProbe,omitempty" xml:"IdcProbe,omitempty"`
+	// Specifies whether to return only IPv4 detection points.
+	//
 	// example:
 	//
 	// false
 	Ipv4 *bool `json:"Ipv4,omitempty" xml:"Ipv4,omitempty"`
+	// Specifies whether to return only IPv6 detection points.
+	//
 	// example:
 	//
 	// false
-	Ipv6 *bool   `json:"Ipv6,omitempty" xml:"Ipv6,omitempty"`
-	Isp  *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
+	Ipv6 *bool `json:"Ipv6,omitempty" xml:"Ipv6,omitempty"`
+	// The name or ID of the carrier.
+	//
+	// example:
+	//
+	// China Unicom
+	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
+	// Specifies whether to return only last-mile detection points.
+	//
 	// example:
 	//
 	// false
 	LmProbe *bool `json:"LmProbe,omitempty" xml:"LmProbe,omitempty"`
+	// Specifies whether to return only mobile detection points.
+	//
 	// example:
 	//
 	// false
 	MbProbe  *bool   `json:"MbProbe,omitempty" xml:"MbProbe,omitempty"`
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Specifies whether to return all detection points. Valid values:
+	//
+	// - false (default): Returns the detection points that are available to you.
+	//
+	// - true: Returns all detection points.
+	//
 	// example:
 	//
 	// true

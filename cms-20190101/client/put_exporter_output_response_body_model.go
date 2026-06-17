@@ -20,9 +20,9 @@ type iPutExporterOutputResponseBody interface {
 }
 
 type PutExporterOutputResponseBody struct {
-	// The HTTP status code.
+	// The status code.
 	//
-	// > The status code 200 indicates that the request was successful.
+	// > The value 200 indicates that the call is successful.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type PutExporterOutputResponseBody struct {
 	//
 	// 6A5F022D-AC7C-460E-94AE-B9E75083D027
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. true: The request was successful. false: The request failed.
+	// Indicates whether the call was successful. The value true indicates that the call was successful. The value false indicates that the call failed.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type iDeleteMonitoringAgentProcessResponseBody interface {
 type DeleteMonitoringAgentProcessResponseBody struct {
 	// The status code.
 	//
-	// > The status code 200 indicates that the request was successful.
+	// > 200 indicates success.
 	//
 	// example:
 	//
@@ -40,11 +40,11 @@ type DeleteMonitoringAgentProcessResponseBody struct {
 	//
 	// 971CC023-5A96-452A-BB7C-2483F948BCFD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// 	- true
+	// - true: Successful.
 	//
-	// 	- false
+	// - false: Failed.
 	//
 	// example:
 	//

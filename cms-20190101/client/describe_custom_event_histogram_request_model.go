@@ -50,11 +50,11 @@ type DescribeCustomEventHistogramRequest struct {
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The severity level of the event. Valid values:
 	//
-	// 	- CRITICAL
+	// - CRITICAL
 	//
-	// 	- WARN
+	// - WARN
 	//
-	// 	- INFO
+	// - INFO
 	//
 	// example:
 	//
@@ -69,9 +69,9 @@ type DescribeCustomEventHistogramRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The keywords that are used to search for the event.
 	//
-	// 	- If you need to query the custom event whose content contains a and b, set the value to "a and b".
+	// - If you need to query the custom event whose content contains a and b, set the value to "a and b".
 	//
-	// 	- If you need to query the custom event whose content contains a or b, set the value to "a or b".
+	// - If you need to query the custom event whose content contains a or b, set the value to "a or b".
 	//
 	// example:
 	//

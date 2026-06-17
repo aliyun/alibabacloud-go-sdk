@@ -32,9 +32,9 @@ type iDescribeSiteMonitorDataRequest interface {
 type DescribeSiteMonitorDataRequest struct {
 	// The end of the time range to query. The following formats are supported:
 	//
-	// 	- UNIX timestamp: the number of milliseconds that have elapsed since 00:00:00 UTC on Thursday, January 1, 1970.
+	// - UNIX timestamp: the number of milliseconds that have elapsed since 00:00:00 UTC on Thursday, January 1, 1970.
 	//
-	// 	- UTC time: the UTC time that follows the YYYY-MM-DDThh:mm:ssZ format.
+	// - UTC time: the UTC time that follows the YYYY-MM-DDThh:mm:ssZ format.
 	//
 	// example:
 	//
@@ -48,9 +48,9 @@ type DescribeSiteMonitorDataRequest struct {
 	Length *int32 `json:"Length,omitempty" xml:"Length,omitempty"`
 	// The metric name. Valid values:
 	//
-	// 	- Availability
+	// - Availability
 	//
-	// 	- ResponseTime
+	// - ResponseTime
 	//
 	// This parameter is required.
 	//
@@ -66,7 +66,7 @@ type DescribeSiteMonitorDataRequest struct {
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The statistical period. The value is an integral multiple of 60. Unit: seconds.
 	//
-	// >  The default value equals the minimum interval at which detection requests are sent to the monitored address.
+	// > The default value equals the minimum interval at which detection requests are sent to the monitored address.
 	//
 	// example:
 	//
@@ -75,9 +75,9 @@ type DescribeSiteMonitorDataRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The start of the time range to query. The following formats are supported:
 	//
-	// 	- UNIX timestamp: the number of milliseconds that have elapsed since 00:00:00 UTC on Thursday, January 1, 1970.
+	// - UNIX timestamp: the number of milliseconds that have elapsed since 00:00:00 UTC on Thursday, January 1, 1970.
 	//
-	// 	- UTC time: the UTC time that follows the YYYY-MM-DDThh:mm:ssZ format.
+	// - UTC time: the UTC time that follows the YYYY-MM-DDThh:mm:ssZ format.
 	//
 	// example:
 	//
@@ -93,9 +93,9 @@ type DescribeSiteMonitorDataRequest struct {
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// The type of the monitored object whose monitoring data is to be queried. Valid values:
 	//
-	// 	- metric
+	// - metric
 	//
-	// 	- event
+	// - event
 	//
 	// example:
 	//

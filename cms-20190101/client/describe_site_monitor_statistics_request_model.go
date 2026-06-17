@@ -22,13 +22,13 @@ type iDescribeSiteMonitorStatisticsRequest interface {
 }
 
 type DescribeSiteMonitorStatisticsRequest struct {
-	// The metric name. Valid values:
+	// The name of the metric. Valid values:
 	//
-	// 	- Availability
+	// - Availability: the availability.
 	//
-	// 	- ErrorRate
+	// - ErrorRate: the error rate.
 	//
-	// 	- ResponseTime
+	// - ResponseTime: the response time.
 	//
 	// This parameter is required.
 	//
@@ -39,7 +39,7 @@ type DescribeSiteMonitorStatisticsRequest struct {
 	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The beginning of the time range to query.
 	//
-	// Unit: milliseconds. The default value is 1 hour ahead of the current time.
+	// Unit: milliseconds. Default value: 1 hour before the current time.
 	//
 	// example:
 	//
@@ -47,7 +47,7 @@ type DescribeSiteMonitorStatisticsRequest struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The ID of the site monitoring task.
 	//
-	// For more information about how to obtain the ID of a site monitoring task, see [DescribeSiteMonitorList](https://help.aliyun.com/document_detail/115052.html).
+	// For information about how to obtain the ID of a site monitoring task, see [DescribeSiteMonitorList](https://help.aliyun.com/document_detail/115052.html).
 	//
 	// This parameter is required.
 	//
@@ -57,7 +57,8 @@ type DescribeSiteMonitorStatisticsRequest struct {
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// The statistical period.
 	//
-	// Unit: minutes. Default value: 1440 (one day). Maximum value: 43200 (30 days).
+	//
+	// Unit: minutes. Default value: 1440 (1 day). Maximum value: 43200 (30 days).
 	//
 	// example:
 	//

@@ -26,9 +26,9 @@ type PutMonitoringConfigRequest struct {
 	AutoInstall *bool `json:"AutoInstall,omitempty" xml:"AutoInstall,omitempty"`
 	// Specifies whether to automatically install the CloudMonitor agent on new ECS instances. Valid values:
 	//
-	// 	- true (default): The CloudMonitor agent is automatically installed on new ECS instances.
+	// - true (default): The CloudMonitor agent is automatically installed on new ECS instances.
 	//
-	// 	- false: The CloudMonitor agent is not automatically installed on new ECS instances.
+	// - false: The CloudMonitor agent is not automatically installed on new ECS instances.
 	//
 	// example:
 	//

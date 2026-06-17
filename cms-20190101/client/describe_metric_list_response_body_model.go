@@ -26,15 +26,15 @@ type iDescribeMetricListResponseBody interface {
 }
 
 type DescribeMetricListResponseBody struct {
-	// The HTTP status code.
+	// The status code.
 	//
-	// >  The status code 200 indicates that the call was successful.
+	// > A value of 200 indicates that the call was successful.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The monitoring data.
+	// The list of monitoring data.
 	//
 	// example:
 	//
@@ -46,29 +46,29 @@ type DescribeMetricListResponseBody struct {
 	//
 	// The specified resource is not found.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The paging token.
+	// The pagination cursor.
 	//
 	// example:
 	//
 	// 15761441850009dd70bb64cff1f0fff6d0b08ffff073be5fb1e785e2b020f7fed9b5e137bd810a6d6cff5ae****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The interval at which the monitoring data is queried. Unit: seconds. Valid values: 60, 300, and 900.
+	// The statistical period. Unit: seconds. Valid values: 60, 300, and 900.
 	//
 	// example:
 	//
 	// 60
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 3121AE7D-4AFF-4C25-8F1D-C8226EBB1F42
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// 	- true: The call was successful.
+	// - true: The operation was successful.
 	//
-	// 	- false: The call failed.
+	// - false: The operation failed.
 	//
 	// example:
 	//

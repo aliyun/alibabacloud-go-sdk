@@ -22,17 +22,21 @@ type iDescribeSiteMonitorQuotaResponseBody interface {
 }
 
 type DescribeSiteMonitorQuotaResponseBody struct {
-	// The responses code.
+	// The HTTP status code.
 	//
-	// >  The status code 200 indicates that the request was successful.
+	// > The value 200 indicates that the request was successful.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The quota.
+	// The quota information.
 	Data *DescribeSiteMonitorQuotaResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
+	//
+	// example:
+	//
+	// Request succeeded.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
@@ -40,11 +44,11 @@ type DescribeSiteMonitorQuotaResponseBody struct {
 	//
 	// 26860260-76C6-404E-AB7A-EB98D36A6885
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// 	- true
+	// - true: The operation was successful.
 	//
-	// 	- false
+	// - false: The operation failed.
 	//
 	// example:
 	//
@@ -117,33 +121,33 @@ func (s *DescribeSiteMonitorQuotaResponseBody) Validate() error {
 type DescribeSiteMonitorQuotaResponseBodyData struct {
 	// Indicates whether second-level monitoring is enabled. Valid values:
 	//
-	// 	- true: Second-level monitoring is enabled.
+	// - true: enabled.
 	//
-	// 	- false: Second-level monitoring is disabled.
+	// - false: disabled.
 	//
 	// example:
 	//
 	// false
 	SecondMonitor *bool `json:"SecondMonitor,omitempty" xml:"SecondMonitor,omitempty"`
-	// The quota of detection points that are provided by Alibaba Cloud. Five detection points are provided for free.
+	// The quota of Alibaba detection points. The free quota is 5.
 	//
 	// example:
 	//
 	// 5
 	SiteMonitorIdcQuota *int32 `json:"SiteMonitorIdcQuota,omitempty" xml:"SiteMonitorIdcQuota,omitempty"`
-	// The quota of detection points that are not provided by Alibaba Cloud. Default value: 0.
+	// The quota of non-Alibaba detection points. Default value: 0.
 	//
 	// example:
 	//
 	// 0
 	SiteMonitorOperatorQuotaQuota *int32 `json:"SiteMonitorOperatorQuotaQuota,omitempty" xml:"SiteMonitorOperatorQuotaQuota,omitempty"`
-	// The used quota of site monitoring tasks.
+	// The number of used site monitoring detection task quotas.
 	//
 	// example:
 	//
 	// 6
 	SiteMonitorQuotaTaskUsed *int32 `json:"SiteMonitorQuotaTaskUsed,omitempty" xml:"SiteMonitorQuotaTaskUsed,omitempty"`
-	// The quota of site monitoring tasks.
+	// The quota of site monitoring detection tasks.
 	//
 	// example:
 	//
@@ -151,9 +155,11 @@ type DescribeSiteMonitorQuotaResponseBodyData struct {
 	SiteMonitorTaskQuota *int32 `json:"SiteMonitorTaskQuota,omitempty" xml:"SiteMonitorTaskQuota,omitempty"`
 	// The version of site monitoring. Valid values:
 	//
-	// 	- V1
+	// - V1: the old version.
 	//
-	// 	- V2
+	//
+	//
+	// - V2: the new version.
 	//
 	// example:
 	//

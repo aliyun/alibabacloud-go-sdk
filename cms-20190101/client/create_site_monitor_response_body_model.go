@@ -24,24 +24,24 @@ type iCreateSiteMonitorResponseBody interface {
 }
 
 type CreateSiteMonitorResponseBody struct {
-	// The HTTP status code.
+	// The status code of the operation.
 	//
-	// > The status code 200 indicates that the request was successful.
+	// > A value of \\`200\\` indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code             *string                                        `json:"Code,omitempty" xml:"Code,omitempty"`
 	CreateResultList *CreateSiteMonitorResponseBodyCreateResultList `json:"CreateResultList,omitempty" xml:"CreateResultList,omitempty" type:"Struct"`
-	// The result of the site monitoring task.
+	// The results of the monitoring task.
 	Data *CreateSiteMonitorResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned message.
+	// The message returned for the request.
 	//
 	// example:
 	//
 	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -49,9 +49,9 @@ type CreateSiteMonitorResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true
+	// - true: The request was successful.
 	//
-	// 	- false
+	// - false: The request failed.
 	//
 	// example:
 	//

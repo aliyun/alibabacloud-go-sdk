@@ -22,7 +22,7 @@ type iDeleteHostAvailabilityResponseBody interface {
 type DeleteHostAvailabilityResponseBody struct {
 	// The status code.
 	//
-	// >  The status code 200 indicates that the request was successful.
+	// > A status code of 200 indicates that the request was successful.
 	//
 	// example:
 	//
@@ -32,7 +32,7 @@ type DeleteHostAvailabilityResponseBody struct {
 	//
 	// example:
 	//
-	// success
+	// The specified resource is not found.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
@@ -40,7 +40,7 @@ type DeleteHostAvailabilityResponseBody struct {
 	//
 	// 57C782E6-B235-4842-AD2B-DB94961761EB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values: true and false.
+	// Indicates whether the operation was successful. \\`true\\`: The operation was successful. \\`false\\`: The operation failed.
 	//
 	// example:
 	//

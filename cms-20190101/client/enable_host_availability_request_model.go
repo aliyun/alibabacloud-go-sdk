@@ -16,13 +16,9 @@ type iEnableHostAvailabilityRequest interface {
 }
 
 type EnableHostAvailabilityRequest struct {
-  // The ID of the availability monitoring task. Valid values of N: 1 to 20.
+  // The ID of the availability monitoring task.
   // 
   // This parameter is required.
-  // 
-  // example:
-  // 
-  // 123456
   Id []*int64 `json:"Id,omitempty" xml:"Id,omitempty" type:"Repeated"`
   RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }

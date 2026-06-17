@@ -19,9 +19,9 @@ type DescribeMonitorResourceQuotaAttributeRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// Specifies whether to return information about used quotas. Valid values:
 	//
-	// 	- true (default): yes
+	// - true (default): yes
 	//
-	// 	- false: no
+	// - false: no
 	//
 	// example:
 	//

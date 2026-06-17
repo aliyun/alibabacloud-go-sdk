@@ -22,9 +22,9 @@ type iDescribeMetricRuleTargetsResponseBody interface {
 }
 
 type DescribeMetricRuleTargetsResponseBody struct {
-	// The HTTP status code.
+	// The status code.
 	//
-	// >  The status code 200 indicates that the call was successful.
+	// > The value 200 indicates success.
 	//
 	// example:
 	//
@@ -36,17 +36,17 @@ type DescribeMetricRuleTargetsResponseBody struct {
 	//
 	// User not authorized to operate on the specified resource.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 786E92D2-AC66-4250-B76F-F1E2FCDDBA1C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// 	- true: The call was successful.
+	// - true: The operation was successful.
 	//
-	// 	- false: The call failed.
+	// - false: The operation failed.
 	//
 	// example:
 	//

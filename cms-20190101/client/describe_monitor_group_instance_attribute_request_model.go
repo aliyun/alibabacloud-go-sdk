@@ -79,9 +79,9 @@ type DescribeMonitorGroupInstanceAttributeRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// Specifies whether to return the total number of resources in the specified application group. Valid values:
 	//
-	// 	- true (default)
+	// - true (default)
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//

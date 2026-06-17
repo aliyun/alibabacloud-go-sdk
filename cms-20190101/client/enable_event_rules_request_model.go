@@ -17,6 +17,8 @@ type iEnableEventRulesRequest interface {
 
 type EnableEventRulesRequest struct {
   RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+  // The names of the event rules to enable.
+  // 
   // This parameter is required.
   // 
   // example:

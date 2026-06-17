@@ -22,15 +22,15 @@ type iDisableSiteMonitorsResponseBody interface {
 }
 
 type DisableSiteMonitorsResponseBody struct {
-	// The responses code.
+	// The status code.
 	//
-	// >  The status code 200 indicates that the request was successful.
+	// > The value 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The number of detection points that are affected by the site monitoring tasks.
+	// The number of detection point records affected by the site monitoring task.
 	Data *DisableSiteMonitorsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
@@ -44,11 +44,11 @@ type DisableSiteMonitorsResponseBody struct {
 	//
 	// 3fcd12e7-d387-42ee-b77e-661c775bb17f
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// 	- true
+	// - true: The operation was successful.
 	//
-	// 	- false
+	// - false: The operation failed.
 	//
 	// example:
 	//
@@ -119,7 +119,7 @@ func (s *DisableSiteMonitorsResponseBody) Validate() error {
 }
 
 type DisableSiteMonitorsResponseBodyData struct {
-	// The number of detection points.
+	// The number of detection point records.
 	//
 	// example:
 	//

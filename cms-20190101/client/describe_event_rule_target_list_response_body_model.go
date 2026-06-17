@@ -30,9 +30,9 @@ type iDescribeEventRuleTargetListResponseBody interface {
 }
 
 type DescribeEventRuleTargetListResponseBody struct {
-	// The HTTP status code.
+	// The status code.
 	//
-	// >  The status code 200 indicates that the call was successful.
+	// > A value of 200 indicates success.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type DescribeEventRuleTargetListResponseBody struct {
 	Message           *string                                                   `json:"Message,omitempty" xml:"Message,omitempty"`
 	MnsParameters     *DescribeEventRuleTargetListResponseBodyMnsParameters     `json:"MnsParameters,omitempty" xml:"MnsParameters,omitempty" type:"Struct"`
 	OpenApiParameters *DescribeEventRuleTargetListResponseBodyOpenApiParameters `json:"OpenApiParameters,omitempty" xml:"OpenApiParameters,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

@@ -22,31 +22,27 @@ type iDescribeTagKeyListResponseBody interface {
 }
 
 type DescribeTagKeyListResponseBody struct {
-	// The status code.
+	// 状态码。
 	//
-	// >  The status code 200 indicates that the request was successful.
+	// >200表示成功。
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error message.
+	// 错误信息。
 	//
 	// example:
 	//
 	// Specified parameter PageSize is not valid.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// 请求ID。
 	//
 	// example:
 	//
 	// B04B8CF3-4489-432D-83BA-6F128E5F2293
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
+	// 用于标识本次调用是否成功
 	//
 	// example:
 	//

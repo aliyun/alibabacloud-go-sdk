@@ -32,76 +32,76 @@ type iDescribeSystemEventCountRequest interface {
 }
 
 type DescribeSystemEventCountRequest struct {
-	// The end of the time range to query. Unit: milliseconds.
+	// The timestamp of the end time for the event query. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1635993921000
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The type of the system event.
+	// The event type.
 	//
-	// You can call the DescribeSystemEventMetaList operation to obtain the value of the response parameter `EventType`. The value of the EventType parameter indicates the types of system events that occurred for all cloud services in your Alibaba Cloud account. For more information, see [DescribeSystemEventMetaList](https://help.aliyun.com/document_detail/114972.html).
+	// Call the DescribeSystemEventMetaList operation to obtain the value of the `EventType` response parameter, which provides the event types for all Alibaba Cloud services under the current Alibaba Cloud account. For more information, see [DescribeSystemEventMetaList](https://help.aliyun.com/document_detail/114972.html).
 	//
 	// example:
 	//
 	// StatusNotification
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	// The ID of the application group.
+	// The application group ID.
 	//
 	// example:
 	//
 	// 17285****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The level of the system event. Valid values:
+	// The event level. Valid values:
 	//
-	// 	- Critical
+	// - Critical: critical.
 	//
-	// 	- Warn
+	// - Warn: warning.
 	//
-	// 	- Info
+	// - Info: information.
 	//
-	// You can call the DescribeSystemEventMetaList operation to obtain the value of the response parameter `Level`. The value of the Level parameter indicates the levels of system events that occurred for all cloud services in your Alibaba Cloud account. For more information, see [DescribeSystemEventMetaList](https://help.aliyun.com/document_detail/114972.html).
+	// Call the DescribeSystemEventMetaList operation to obtain the value of the `Level` response parameter, which provides the event levels for all Alibaba Cloud services under the current Alibaba Cloud account. For more information, see [DescribeSystemEventMetaList](https://help.aliyun.com/document_detail/114972.html).
 	//
 	// example:
 	//
 	// Info
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The name of the system event.
+	// The event name.
 	//
-	// You can call the DescribeSystemEventMetaList operation to obtain the value of the response parameter `Name`. The value of the Name parameter indicates the names of system events that occurred for all cloud services in your Alibaba Cloud account. For more information, see [DescribeSystemEventMetaList](https://help.aliyun.com/document_detail/114972.html).
+	// Call the DescribeSystemEventMetaList operation to obtain the value of the `Name` response parameter, which provides the event names for all Alibaba Cloud services under the current Alibaba Cloud account. For more information, see [DescribeSystemEventMetaList](https://help.aliyun.com/document_detail/114972.html).
 	//
 	// example:
 	//
 	// Instance:StateChange
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The name of the cloud service.
+	// The name of the Alibaba Cloud service.
 	//
-	// You can call the DescribeSystemEventMetaList operation to obtain the value of the response parameter `Product`. The value of the Product parameter indicates the names of all cloud services in which the system events of your Alibaba Cloud account occurred. For more information, see [DescribeSystemEventMetaList](https://help.aliyun.com/document_detail/114972.html).
+	// Call the DescribeSystemEventMetaList operation to obtain the value of the `Product` response parameter, which provides the Alibaba Cloud service names for all events under the current Alibaba Cloud account. For more information, see [DescribeSystemEventMetaList](https://help.aliyun.com/document_detail/114972.html).
 	//
 	// example:
 	//
 	// ECS
 	Product  *string `json:"Product,omitempty" xml:"Product,omitempty"`
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The keywords that are used to search for the system event. Valid values:
+	// The keywords contained in the event content for searching. Valid values:
 	//
-	// 	- If you want to search for the system event whose content contains a and b, set the value to `a and b`.
+	// - To search for event content that contains both a and b, search for `a and b`.
 	//
-	// 	- If you want to search for the system event whose content contains a or b, set the value to `a or b`.
+	// - To search for event content that contains either a or b, search for `a or b`.
 	//
 	// example:
 	//
 	// ECS
 	SearchKeywords *string `json:"SearchKeywords,omitempty" xml:"SearchKeywords,omitempty"`
-	// The beginning of the time range to query. Unit: milliseconds.
+	// The timestamp of the start time for the event query. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1635993541000
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the system event.
+	// The event status.
 	//
-	// You can call the DescribeSystemEventMetaList operation to obtain the value of the response parameter `Status`. The value of the Status parameter indicates the status of system events that occurred for all cloud services in your Alibaba Cloud account. For more information, see [DescribeSystemEventMetaList](https://help.aliyun.com/document_detail/114972.html).
+	// Call the DescribeSystemEventMetaList operation to obtain the value of the `Status` response parameter, which provides the event statuses for all Alibaba Cloud services under the current Alibaba Cloud account. For more information, see [DescribeSystemEventMetaList](https://help.aliyun.com/document_detail/114972.html).
 	//
 	// example:
 	//

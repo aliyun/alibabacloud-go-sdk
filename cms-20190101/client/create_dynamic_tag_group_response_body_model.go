@@ -22,9 +22,9 @@ type iCreateDynamicTagGroupResponseBody interface {
 }
 
 type CreateDynamicTagGroupResponseBody struct {
-	// The HTTP status code.
+	// The status code.
 	//
-	// >  The status code 200 indicates that the call is successful.
+	// > A status code of 200 indicates that the request was successful.
 	//
 	// example:
 	//
@@ -42,17 +42,17 @@ type CreateDynamicTagGroupResponseBody struct {
 	//
 	// The specified resource is not found.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 84AC6F0B-7945-466A-AA44-99BB5A561F86
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// 	- true: The call is successful.
+	// - true: The operation was successful.
 	//
-	// 	- false: The call fails.
+	// - false: The operation failed.
 	//
 	// example:
 	//

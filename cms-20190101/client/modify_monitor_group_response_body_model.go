@@ -20,9 +20,9 @@ type iModifyMonitorGroupResponseBody interface {
 }
 
 type ModifyMonitorGroupResponseBody struct {
-	// The HTTP status code.
+	// The status code.
 	//
-	// >  The status code 200 indicates that the call was successful.
+	// > A value of 200 indicates that the request was successful.
 	//
 	// example:
 	//
@@ -34,17 +34,13 @@ type ModifyMonitorGroupResponseBody struct {
 	//
 	// The specified resource is not found.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// C85A2870-5DF4-4269-BC50-ECB5E4591A80
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. Valid values:
-	//
-	// 	- true: The call was successful.
-	//
-	// 	- false: The call failed.
+	// Indicates whether the operation was successful. A value of true indicates success. A value of false indicates failure.
 	//
 	// example:
 	//

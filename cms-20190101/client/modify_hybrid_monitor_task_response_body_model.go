@@ -22,7 +22,7 @@ type iModifyHybridMonitorTaskResponseBody interface {
 type ModifyHybridMonitorTaskResponseBody struct {
 	// The status code.
 	//
-	// > The status code 200 indicates that the request was successful.
+	// > 200 indicates success.
 	//
 	// example:
 	//
@@ -40,11 +40,11 @@ type ModifyHybridMonitorTaskResponseBody struct {
 	//
 	// 11145B76-566A-5D80-A8A3-FAD98D310079
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// 	- true
+	// - true: The operation was successful.
 	//
-	// 	- false
+	// - false: The operation failed.
 	//
 	// example:
 	//

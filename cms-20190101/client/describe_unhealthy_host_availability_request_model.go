@@ -16,7 +16,7 @@ type iDescribeUnhealthyHostAvailabilityRequest interface {
 }
 
 type DescribeUnhealthyHostAvailabilityRequest struct {
-	// The ID of the availability monitoring task. Valid values of N: 1 to 20.
+	// The task ID.
 	//
 	// This parameter is required.
 	//

@@ -26,33 +26,23 @@ type iPutExporterRuleRequest interface {
 }
 
 type PutExporterRuleRequest struct {
-	// The description of the data export rule.
+	// The description of the export rules.
 	//
 	// example:
 	//
-	// Export CPU metrics
+	// desc_******
 	Describe *string `json:"Describe,omitempty" xml:"Describe,omitempty"`
-	// The destination to which the data is exported. Valid values of N: 1 to 20.
+	// The destination for data export.
 	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// distName1
 	DstNames []*string `json:"DstNames,omitempty" xml:"DstNames,omitempty" type:"Repeated"`
-	// The name of the metric.
-	//
-	// >
-	//
-	// For more information, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
+	// The metric name. For more information, see [Cloud service metrics](https://help.aliyun.com/document_detail/163515.html).
 	//
 	// example:
 	//
-	// cpu_total
+	// CPUUtilization
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The namespace of the cloud service.
-	//
-	// > For more information, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
+	// The namespace of the Alibaba Cloud service. For more information, see [Cloud service metrics](https://help.aliyun.com/document_detail/163515.html).
 	//
 	// example:
 	//
@@ -61,19 +51,17 @@ type PutExporterRuleRequest struct {
 	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The name of the rule.
 	//
-	// > If the specified rule exists, the existing rule is modified. Otherwise, a rule is created.
+	// > If the rule name already exists, the existing rule is modified. Otherwise, a new rule is created.
 	//
 	// example:
 	//
-	// MyRuleName
+	// rule1_****
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The time window of the exported data. Unit: seconds.
+	// The time windows for data export. Unit: seconds.
 	//
-	// >
+	// > - To export data for multiple windows, separate the windows with commas (,).
 	//
-	// 	- Separate multiple time windows with commas (,).
-	//
-	// 	- Data in a time window of less than 60 seconds cannot be exported.
+	// - Exporting data at intervals of less than 60 seconds is not supported.
 	//
 	// example:
 	//

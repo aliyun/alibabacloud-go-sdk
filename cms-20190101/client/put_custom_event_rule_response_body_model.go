@@ -20,9 +20,9 @@ type iPutCustomEventRuleResponseBody interface {
 }
 
 type PutCustomEventRuleResponseBody struct {
-	// The HTTP status code.
+	// The status code.
 	//
-	// >  The value 200 indicates that the call was successful.
+	// > The value 200 indicates that the call was successful.
 	//
 	// example:
 	//
@@ -42,9 +42,9 @@ type PutCustomEventRuleResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call was successful. Valid values:
 	//
-	// 	- true: The call was successful.
+	// - true: The call was successful.
 	//
-	// 	- false: The call failed.
+	// - false: The call failed.
 	//
 	// example:
 	//

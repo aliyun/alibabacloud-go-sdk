@@ -28,28 +28,34 @@ type iPutEventRuleRequest interface {
 }
 
 type PutEventRuleRequest struct {
-	// The description of the event-triggered alert rule.
+	// The description of the Event-triggered Alert Rule.
+	//
+	// example:
+	//
+	// Event alert test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The pattern of the Event-triggered Alert Rule.
+	//
 	// This parameter is required.
 	EventPattern []*PutEventRuleRequestEventPattern `json:"EventPattern,omitempty" xml:"EventPattern,omitempty" type:"Repeated"`
-	// The type of the event-triggered alert rule. Valid values:
+	// The type of the Event-triggered Alert Rule. Valid values:
 	//
-	// 	- SYSTEM: system event-triggered alert rule
+	// - SYSTEM: system event.
 	//
-	// 	- CUSTOM: custom event-triggered alert rule
+	// - CUSTOM: custom event.
 	//
 	// example:
 	//
 	// SYSTEM
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	// The ID of the application group to which the event-triggered alert rule belongs.
+	// The ID of the application group to which the Event-triggered Alert Rule belongs.
 	//
 	// example:
 	//
 	// 7378****
 	GroupId  *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the event-triggered alert rule.
+	// The name of the Event-triggered Alert Rule.
 	//
 	// This parameter is required.
 	//
@@ -57,17 +63,17 @@ type PutEventRuleRequest struct {
 	//
 	// myRuleName
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The mute period during which new alerts are not sent even if the trigger conditions are met. Unit: seconds.
+	// The mute period. Unit: seconds.
 	//
 	// example:
 	//
 	// 86400
 	SilenceTime *int64 `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
-	// The status of the event-triggered alert rule. Valid values:
+	// The status of the Event-triggered Alert Rule. Valid values:
 	//
-	// 	- ENABLED: enabled
+	// - ENABLED: enabled.
 	//
-	// 	- DISABLED: disabled
+	// - DISABLED: disabled.
 	//
 	// example:
 	//
@@ -169,27 +175,49 @@ func (s *PutEventRuleRequest) Validate() error {
 }
 
 type PutEventRuleRequestEventPattern struct {
-	// The keyword that is used to filter events. If the content of an event contains the specified keyword, an alert is automatically triggered.
+	// The keyword for event filtering. When the event content contains this keyword, an alert is automatically triggered.
 	//
 	// example:
 	//
 	// Stopping
 	CustomFilters *string `json:"CustomFilters,omitempty" xml:"CustomFilters,omitempty"`
+	// The type of the Event-triggered Alert Rule. Valid values of N: 1 to 50. Valid values:
+	//
+	// - StatusNotification: fault notification.
+	//
+	// - Exception: exception.
+	//
+	// - Maintenance: O&M.
+	//
+	// - \\*: unlimited.
+	//
 	// example:
 	//
 	// Exception
 	EventTypeList []*string `json:"EventTypeList,omitempty" xml:"EventTypeList,omitempty" type:"Repeated"`
+	// The level of the Event-triggered Alert Rule. Valid values of N: 1 to 50. Valid values:
+	//
+	// - CRITICAL: critical.
+	//
+	// - WARN: warning.
+	//
+	// - INFO: information.
+	//
+	// - \\*: all levels.
+	//
 	// example:
 	//
 	// CRITICAL
 	LevelList []*string `json:"LevelList,omitempty" xml:"LevelList,omitempty" type:"Repeated"`
+	// The name of the Event-triggered Alert Rule. Valid values of N: 1 to 50.
+	//
 	// example:
 	//
 	// Agent_Status_Stopped
 	NameList []*string `json:"NameList,omitempty" xml:"NameList,omitempty" type:"Repeated"`
-	// The type of the cloud service. Valid values of N: 1 to 50.
+	// The Alibaba Cloud service type. Valid values of N: 1 to 50.
 	//
-	// >  You can call the DescribeSystemEventMetaList operation to query the cloud services that support event-triggered alerts. For more information, see [DescribeSystemEventMetaList](https://help.aliyun.com/document_detail/114972.html).
+	// >For information about the Alibaba Cloud services supported by Event-triggered Alert Rules, see [DescribeSystemEventMetaList](https://help.aliyun.com/document_detail/114972.html).
 	//
 	// This parameter is required.
 	//
@@ -197,14 +225,16 @@ type PutEventRuleRequestEventPattern struct {
 	//
 	// ecs
 	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
-	// The SQL condition that is used to filter events. If the content of an event meets the specified SQL condition, an alert is automatically triggered.
+	// The SQL filter for events. When the event content meets the SQL condition, an alert is automatically triggered.
 	//
-	// >  The syntax of SQL event filtering is consistent with the query syntax of Log Service.
+	// > The syntax of the SQL event filter is consistent with the query syntax of Simple Log Service (SLS).
 	//
 	// example:
 	//
 	// 192.168.XX.XX and Executed
 	SQLFilter *string `json:"SQLFilter,omitempty" xml:"SQLFilter,omitempty"`
+	// The status of the Event-triggered Alert Rule. Valid values of N: 1 to 50.
+	//
 	// example:
 	//
 	// Failed

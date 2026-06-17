@@ -22,9 +22,9 @@ type iDescribeSystemEventCountResponseBody interface {
 }
 
 type DescribeSystemEventCountResponseBody struct {
-	// The HTTP status codes.
+	// The status code.
 	//
-	// >  The status code 200 indicates that the request was successful.
+	// >A value of 200 indicates success.
 	//
 	// example:
 	//
@@ -32,7 +32,7 @@ type DescribeSystemEventCountResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned message.
 	//
-	// If the request was successful, a success message is returned. If the request failed, an error message is returned.
+	// If the request is successful, a success message is returned. If the request fails, the failure reason is returned.
 	//
 	// example:
 	//
@@ -44,11 +44,11 @@ type DescribeSystemEventCountResponseBody struct {
 	//
 	// C7A7B776-0ACE-5A93-9B07-DE8008D9CCDF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the operation is successful. Valid values:
 	//
-	// 	- true
+	// - true: The operation is successful.
 	//
-	// 	- false
+	// - false: The operation failed.
 	//
 	// example:
 	//

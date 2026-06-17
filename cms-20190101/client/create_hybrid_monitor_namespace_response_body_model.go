@@ -26,7 +26,7 @@ type CreateHybridMonitorNamespaceResponseBody struct {
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error message returned.
+	// The error message.
 	//
 	// example:
 	//
@@ -38,11 +38,11 @@ type CreateHybridMonitorNamespaceResponseBody struct {
 	//
 	// 3843D23A-FB9E-5DC8-BCCC-458768B79296
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// 	- true
+	// - true: Successful.
 	//
-	// 	- false
+	// - false: Failed.
 	//
 	// example:
 	//

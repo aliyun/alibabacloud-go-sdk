@@ -24,15 +24,15 @@ type iDescribeDynamicTagRuleListRequest interface {
 }
 
 type DescribeDynamicTagRuleListRequest struct {
-	// The ID of the tag rule.
+	// The ID of the dynamic tag rule.
 	//
 	// example:
 	//
 	// 004155fa-15ba-466d-b61a-***********
 	DynamicTagRuleId *string `json:"DynamicTagRuleId,omitempty" xml:"DynamicTagRuleId,omitempty"`
-	// The number of the page to return.
+	// The page number.
 	//
-	// Pages start from page 1. Default value: 1.
+	// Start value: 1. Default value: 1.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type DescribeDynamicTagRuleListRequest struct {
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page.
 	//
-	// Minimum value: 1. Default value: 30.
+	// Start value: 1. Default value: 30.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type DescribeDynamicTagRuleListRequest struct {
 	//
 	// tagkey1
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The ID of the region to which the tags belong.
+	// The region ID of the tag.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type DescribeDynamicTagRuleListRequest struct {
 	TagRegionId *string `json:"TagRegionId,omitempty" xml:"TagRegionId,omitempty"`
 	// The tag value.
 	//
-	// For more information about how to obtain a tag value, see [DescribeTagKeyList](https://help.aliyun.com/document_detail/145557.html).
+	// For more information about how to obtain a tag value, see [DescribeTagValueList](https://help.aliyun.com/document_detail/145557.html).
 	//
 	// example:
 	//

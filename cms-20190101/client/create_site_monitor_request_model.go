@@ -34,59 +34,64 @@ type iCreateSiteMonitorRequest interface {
 }
 
 type CreateSiteMonitorRequest struct {
-	// The URL or IP address that is monitored by the task.
+	// The URL or IP address to monitor.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// https://www.aliyun.com
-	Address    *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// The group of detection points for the network probe task. \\`PC\\` indicates detection points on PCs. \\`MOBILE\\` indicates detection points on mobile devices. \\`FC\\` indicates detection points in a VPC. The default value is \\`PC\\`.
+	//
+	// example:
+	//
+	// PC
 	AgentGroup *string `json:"AgentGroup,omitempty" xml:"AgentGroup,omitempty"`
 	// The ID of the alert rule.
 	//
-	// For more information about how to obtain the ID of an alert rule, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
+	// For more information, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
 	//
 	// example:
 	//
 	// SystemDefault_acs_ecs_dashboard_InternetOutRate_Percent
 	AlertIds *string `json:"AlertIds,omitempty" xml:"AlertIds,omitempty"`
-	// The custom detection period. You can only select a time period from Monday to Sunday for detection.
+	// The custom detection schedule. Specify a time period and the days of the week for detection.
 	//
 	// example:
 	//
 	// {"start_hour":0,"end_hour":24, "days":[0], "time_zone":"Local"}
 	CustomSchedule *string `json:"CustomSchedule,omitempty" xml:"CustomSchedule,omitempty"`
-	// The interval at which detection requests are sent.
+	// The monitoring frequency in minutes.
 	//
-	// Valid values: 1, 5, 15, 30, and 60. Unit: minutes.
+	// Valid values: 1, 5, 15, 30, and 60.
 	//
-	// Default value: 1.
+	// Default: 1.
 	//
 	// example:
 	//
 	// 1
 	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The information of the detection points. If you leave this parameter empty, the system randomly selects three detection points.
+	// The detection points. If you do not specify this parameter, the system randomly selects three detection points from different Internet Service Providers (ISPs).
 	//
-	// The value is a JSON array. Example: `[{"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}]`. The values of the city field indicate Beijing, Hangzhou, and Qingdao.
+	// The value must be a JSON array. Example: `[{"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}]`. The values correspond to Beijing, Hangzhou, and Qingdao.
 	//
-	// For information about how to obtain detection points, see [DescribeSiteMonitorISPCityList](https://help.aliyun.com/document_detail/115045.html).
+	// For more information, see [DescribeSiteMonitorISPCityList](https://help.aliyun.com/document_detail/115045.html).
 	//
 	// example:
 	//
 	// [{"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}]
 	IspCities *string `json:"IspCities,omitempty" xml:"IspCities,omitempty"`
-	// The extended options of the protocol that is used by the site monitoring task. The options vary based on the protocol.
+	// The advanced options for the specified protocol. The available options vary based on the protocol type.
 	//
 	// example:
 	//
 	// {"time_out":5000}
 	OptionsJson *string `json:"OptionsJson,omitempty" xml:"OptionsJson,omitempty"`
 	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the site monitoring task.
+	// The name of the monitoring task.
 	//
-	// The name must be 4 to 100 characters in length, and can contain letters, digits, and underscores (_).
+	// The name must be 4 to 100 characters long and can contain letters, digits, underscores (_), and Chinese characters.
 	//
 	// This parameter is required.
 	//
@@ -94,16 +99,18 @@ type CreateSiteMonitorRequest struct {
 	//
 	// HanZhou_ECS1
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// The protocol that is used by the site monitoring task.
+	// The type of monitoring task.
 	//
-	// Valid values: HTTP, HTTPS, PING, TCP, UDP, DNS, SMTP, POP3, FTP, and WEBSOCKET.
+	// Valid protocols include HTTP(S), PING, TCP, UDP, DNS, SMTP, POP3, FTP, and WEBSOCKET.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// HTTPS
+	// HTTP
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// The network information required to create a network probe task in a VPC. This must be a JSON object that contains the \\`vpcId\\`, \\`vswitchId\\`, \\`securityGroupId\\`, and \\`region\\` fields.
+	//
 	// example:
 	//
 	// {"vpcId": "vpc-xxxxxx", "vswitchId": "vsw-xxxxxx", "securityGroupId": "sg-xxxxxx", "region": "cn-beijing"}

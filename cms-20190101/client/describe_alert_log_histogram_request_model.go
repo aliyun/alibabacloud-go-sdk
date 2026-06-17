@@ -62,9 +62,9 @@ type DescribeAlertLogHistogramRequest struct {
 	//
 	// >
 	//
-	// 	- You can query only the alert logs within the last year.
+	// - You can query only the alert logs within the last year.
 	//
-	// 	- The interval between the start time (`StartTime`) and end time (`EndTime`) must be less than or equal to 15 days.
+	// - The interval between the start time (`StartTime`) and end time (`EndTime`) must be less than or equal to 15 days.
 	//
 	// example:
 	//
@@ -72,9 +72,9 @@ type DescribeAlertLogHistogramRequest struct {
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The type of the alert event. Valid values:
 	//
-	// 	- TRIGGERED: The alert is triggered.
+	// - TRIGGERED: The alert is triggered.
 	//
-	// 	- RESOLVED: The alert is resolved.
+	// - RESOLVED: The alert is resolved.
 	//
 	// example:
 	//
@@ -82,15 +82,15 @@ type DescribeAlertLogHistogramRequest struct {
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
 	// The dimensions based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL. Valid values:
 	//
-	// 	- `product`: aggregates data by cloud service.
+	// - `product`: aggregates data by cloud service.
 	//
-	// 	- `level`: aggregates data by alert level.
+	// - `level`: aggregates data by alert level.
 	//
-	// 	- `groupId`: aggregates data by application group.
+	// - `groupId`: aggregates data by application group.
 	//
-	// 	- `contactGroup`: aggregates data by alert contact group.
+	// - `contactGroup`: aggregates data by alert contact group.
 	//
-	// 	- `product,metricName`: aggregates data both by cloud service and by metric.
+	// - `product,metricName`: aggregates data both by cloud service and by metric.
 	//
 	// example:
 	//
@@ -110,9 +110,9 @@ type DescribeAlertLogHistogramRequest struct {
 	LastMin *string `json:"LastMin,omitempty" xml:"LastMin,omitempty"`
 	// The severity level and notification methods of the alert. Valid values:
 	//
-	// 	- P4: Alert notifications are sent by using emails and DingTalk chatbots.
+	// - P4: Alert notifications are sent by using emails and DingTalk chatbots.
 	//
-	// 	- OK: No alert is generated.
+	// - OK: No alert is generated.
 	//
 	// example:
 	//
@@ -120,7 +120,7 @@ type DescribeAlertLogHistogramRequest struct {
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
 	// The metric name.
 	//
-	// >  For more information about the metrics of different cloud services, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
+	// > For more information about the metrics of different cloud services, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
 	//
 	// example:
 	//
@@ -128,7 +128,7 @@ type DescribeAlertLogHistogramRequest struct {
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
 	// The namespace of the Alibaba Cloud service.
 	//
-	// >  For more information about the namespaces of different cloud services, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
+	// > For more information about the namespaces of different cloud services, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
 	//
 	// example:
 	//
@@ -179,15 +179,15 @@ type DescribeAlertLogHistogramRequest struct {
 	SearchKey *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
 	// The alert status. Valid values:
 	//
-	// 	- 0: The alert is triggered or cleared.
+	// - 0: The alert is triggered or cleared.
 	//
-	// 	- 1: The alert is ineffective.
+	// - 1: The alert is ineffective.
 	//
-	// 	- 2: The alert is muted and not triggered in a specified period.
+	// - 2: The alert is muted and not triggered in a specified period.
 	//
-	// 	- 3: The host is restarting.
+	// - 3: The host is restarting.
 	//
-	// 	- 4: No alert notification is sent.
+	// - 4: No alert notification is sent.
 	//
 	// If the value of the SendStatus parameter is 0, the value P4 of the Level parameter indicates a triggered alert and the value OK indicates a cleared alert.
 	//
@@ -199,7 +199,7 @@ type DescribeAlertLogHistogramRequest struct {
 	//
 	// example:
 	//
-	// None
+	// 无
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 	// The start timestamp of the alert logs to be queried.
 	//
@@ -207,9 +207,9 @@ type DescribeAlertLogHistogramRequest struct {
 	//
 	// >
 	//
-	// 	- You can query only the alert logs within the last year.
+	// - You can query only the alert logs within the last year.
 	//
-	// 	- The interval between the start time (`StartTime`) and end time (`EndTime`) must be less than or equal to 15 days.
+	// - The interval between the start time (`StartTime`) and end time (`EndTime`) must be less than or equal to 15 days.
 	//
 	// example:
 	//

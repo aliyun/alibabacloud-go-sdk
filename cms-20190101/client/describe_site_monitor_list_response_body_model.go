@@ -28,9 +28,9 @@ type iDescribeSiteMonitorListResponseBody interface {
 }
 
 type DescribeSiteMonitorListResponseBody struct {
-	// The status code.
+	// The HTTP status code.
 	//
-	// >  The status code 200 indicates that the request was successful.
+	// > The value 200 indicates success.
 	//
 	// example:
 	//
@@ -61,17 +61,17 @@ type DescribeSiteMonitorListResponseBody struct {
 	// A80DB41C-AF6C-50E1-ADB5-66DCBA3D266B
 	RequestId    *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SiteMonitors *DescribeSiteMonitorListResponseBodySiteMonitors `json:"SiteMonitors,omitempty" xml:"SiteMonitors,omitempty" type:"Struct"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// 	- true
+	// - true: Successful.
 	//
-	// 	- false
+	// - false: Failed.
 	//
 	// example:
 	//
 	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//

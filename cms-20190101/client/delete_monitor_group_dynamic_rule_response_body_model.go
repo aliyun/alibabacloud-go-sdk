@@ -22,7 +22,7 @@ type iDeleteMonitorGroupDynamicRuleResponseBody interface {
 type DeleteMonitorGroupDynamicRuleResponseBody struct {
 	// The status code.
 	//
-	// >  The status code 200 indicates that the request was successful.
+	// > The status code 200 indicates that the request was successful.
 	//
 	// example:
 	//

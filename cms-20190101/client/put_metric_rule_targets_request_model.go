@@ -21,7 +21,7 @@ type PutMetricRuleTargetsRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the alert rule.
 	//
-	// For information about how to obtain the ID of an alert rule, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
+	// For information about how to obtain the alert rule ID, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
 	//
 	// This parameter is required.
 	//
@@ -84,39 +84,39 @@ func (s *PutMetricRuleTargetsRequest) Validate() error {
 }
 
 type PutMetricRuleTargetsRequestTargets struct {
-	// The Alibaba Cloud Resource Name (ARN) of the resource. Simple Message Queue (formerly MNS) (SMQ), Auto Scaling, Simple Log Service, and Function Compute are supported.
+	// The Alibaba Cloud Resource Name (ARN) of the resource. Simple Message Queue (formerly MNS), elastic scaling (ESS), Simple Log Service (SLS), and Function Compute (FC) are supported.
 	//
-	// The following part describes the ARN of SMQ and the parameters in the ARN:
+	// The following section describes the ARN parameter metric description for Simple Message Queue (formerly MNS):
 	//
-	// `acs:mns:{regionId}:{userId}:/{Resource type}/{Resource name}/message`.
+	// `acs:mns:{regionId}:{userId}:/{Resource type}/{Resource name}/message`
 	//
-	// 	- {regionId}: the region ID of the SMQ queue or topic.
+	// - {regionId}: the region where the MSMQ or topic of Simple Message Queue (formerly MNS) resides.
 	//
-	// 	- {userId}: the ID of the Alibaba Cloud account that owns the resource.
+	// - {userId}: the Alibaba Cloud account that owns the resource.
 	//
-	// 	- {Resource type}: the type of the resource for which alerts are triggered. Valid values:
+	// - {Resource type}: the type of the resource that accepts alert notifications. Valid values:
 	//
-	//     	- **queues**
+	//   - **queues**: queue.
 	//
-	//     	- **topics**
+	//   - **topics**: topic.
 	//
-	// 	- {Resource name}: the resource name.
+	// - {Resource name}: the name of the resource.
 	//
-	//     	- If the resource type is **queues**, the resource name is the queue name.
+	//   - If the resource type is **queues**, the resource name is the queue name.
 	//
-	//     	- If the resource type is **topics**, the resource name is the topic name.
+	//   - If the resource type is **topics**, the resource name is the topic name.
 	//
-	// ARN of Auto Scaling:
+	// ARN for elastic scaling:
 	//
 	// acs:ess:{regionId}:{userId}:scalingGroupId/{Scaling group ID}:scalingRuleId/{Scaling rule ID}
 	//
-	// ARN of Simple Log Service:
+	// ARN for Simple Log Service:
 	//
 	// acs:log:{regionId}:{userId}:project/{Project name}/logstore/{Logstore name}
 	//
-	// ARN of Function Compute:
+	// ARN for Function Compute:
 	//
-	// acs:fc:{regionId}:{userId}:services/{Service name}/functions/{Function name}
+	// acs:fc:{regionId}:{userId}:services/{Service name}/functions/{Function name}.
 	//
 	// This parameter is required.
 	//
@@ -124,9 +124,9 @@ type PutMetricRuleTargetsRequestTargets struct {
 	//
 	// acs:mns:cn-hangzhou:120886317861****:/queues/test/message
 	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	// The ID of the resource for which alerts are triggered.
+	// The ID of the alert trigger target.
 	//
-	// For more information about how to obtain the ID of the resource for which alerts are triggered, see [DescribeMetricRuleTargets](https://help.aliyun.com/document_detail/121592.html).
+	// For information about how to obtain the alert trigger target ID, see [DescribeMetricRuleTargets](https://help.aliyun.com/document_detail/121592.html).
 	//
 	// This parameter is required.
 	//
@@ -134,7 +134,7 @@ type PutMetricRuleTargetsRequestTargets struct {
 	//
 	// 1
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The parameters of the alert callback. The parameters are in the JSON format.
+	// The JSON-formatted parameters of the alert callback.
 	//
 	// example:
 	//
@@ -142,11 +142,11 @@ type PutMetricRuleTargetsRequestTargets struct {
 	JsonParams *string `json:"JsonParams,omitempty" xml:"JsonParams,omitempty"`
 	// The alert level. Valid values:
 	//
-	// 	- INFO
+	// - INFO: information.
 	//
-	// 	- WARN
+	// - WARN: warning.
 	//
-	// 	- CRITICAL
+	// - CRITICAL: critical.
 	//
 	// example:
 	//

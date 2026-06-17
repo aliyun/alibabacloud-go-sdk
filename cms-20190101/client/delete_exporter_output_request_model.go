@@ -16,7 +16,7 @@ type iDeleteExporterOutputRequest interface {
 }
 
 type DeleteExporterOutputRequest struct {
-	// The name of the configuration set.
+	// The name of the destination configuration.
 	//
 	// This parameter is required.
 	//

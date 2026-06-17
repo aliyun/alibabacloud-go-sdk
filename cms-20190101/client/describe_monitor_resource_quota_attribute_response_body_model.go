@@ -136,11 +136,11 @@ type DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuota struct {
 	SiteMonitorTask *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaSiteMonitorTask `json:"SiteMonitorTask,omitempty" xml:"SiteMonitorTask,omitempty" type:"Struct"`
 	// The current edition of CloudMonitor. Valid values:
 	//
-	// 	- free: Free Edition
+	// - free: Free Edition
 	//
-	// 	- pro: Pro Edition
+	// - pro: Pro Edition
 	//
-	// 	- cms_post: pay-as-you-go
+	// - cms_post: pay-as-you-go
 	//
 	// example:
 	//

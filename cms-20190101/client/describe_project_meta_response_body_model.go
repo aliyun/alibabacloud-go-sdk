@@ -30,7 +30,7 @@ type iDescribeProjectMetaResponseBody interface {
 type DescribeProjectMetaResponseBody struct {
 	// The status code.
 	//
-	// > The status code 200 indicates that the request was successful.
+	// >The value 200 indicates success.
 	//
 	// example:
 	//
@@ -61,13 +61,13 @@ type DescribeProjectMetaResponseBody struct {
 	// 4C2061B2-3B1B-43BF-A4A4-C53426F479C0
 	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Resources *DescribeProjectMetaResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Struct"`
-	// Indicates whether the request was successful. Valid values: true: The request was successful. false: The request failed.
+	// Indicates whether the operation was successful. Valid values: true and false. The value true indicates success, and the value false indicates failure.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//

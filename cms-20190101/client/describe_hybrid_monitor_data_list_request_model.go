@@ -54,7 +54,7 @@ type DescribeHybridMonitorDataListRequest struct {
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
 	// The metric name.
 	//
-	// >  PromQL statements are supported.
+	// > PromQL statements are supported.
 	//
 	// This parameter is required.
 	//

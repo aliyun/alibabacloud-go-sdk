@@ -26,22 +26,22 @@ type iDescribeExporterOutputListResponseBody interface {
 }
 
 type DescribeExporterOutputListResponseBody struct {
-	// The HTTP status code.
+	// The status code.
 	//
-	// > The status code 200 indicates that the request was successful. Other status codes indicate that the request failed.
+	// > The status code 200 indicates that the call was successful. Other status codes indicate that the call failed.
 	//
 	// example:
 	//
 	// 200
 	Code       *string                                           `json:"Code,omitempty" xml:"Code,omitempty"`
 	Datapoints *DescribeExporterOutputListResponseBodyDatapoints `json:"Datapoints,omitempty" xml:"Datapoints,omitempty" type:"Struct"`
-	// The returned message.
+	// The error message.
 	//
 	// example:
 	//
 	// sucess
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The page number of the returned page.
+	// The current page number.
 	//
 	// example:
 	//
@@ -53,17 +53,17 @@ type DescribeExporterOutputListResponseBody struct {
 	//
 	// 0E657631-CD6C-4C24-9637-98D000B9272C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// 	- `true`
+	// - `true`: successful
 	//
-	// 	- `false`
+	// - `false`: failed
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of returned entries.
+	// The total number of records.
 	//
 	// example:
 	//

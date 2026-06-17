@@ -50,9 +50,9 @@ type DeleteMonitorGroupNotifyPolicyResponseBody struct {
 	Result *int32 `json:"Result,omitempty" xml:"Result,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//

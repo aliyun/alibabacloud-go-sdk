@@ -22,32 +22,32 @@ type iPutResourceMetricRulesResponseBody interface {
 }
 
 type PutResourceMetricRulesResponseBody struct {
-	// The response code.
+	// 状态码。
 	//
-	// >  The status code 200 indicates that the request was successful.
+	// >200表示成功。
 	//
 	// example:
 	//
 	// 200
 	Code             *string                                             `json:"Code,omitempty" xml:"Code,omitempty"`
 	FailedListResult *PutResourceMetricRulesResponseBodyFailedListResult `json:"FailedListResult,omitempty" xml:"FailedListResult,omitempty" type:"Struct"`
-	// The error message returned.
+	// 错误信息。
 	//
 	// example:
 	//
 	// The request processing has failed due to some unknown error.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// 请求ID。
 	//
 	// example:
 	//
 	// 15D1440E-BF24-5A41-93E4-36864635179E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// 操作是否成功。取值：
 	//
-	// 	- true
+	// - true：成功。
 	//
-	// 	- false
+	// - false：失败。
 	//
 	// example:
 	//

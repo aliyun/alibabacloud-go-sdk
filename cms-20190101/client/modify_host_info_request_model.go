@@ -18,13 +18,13 @@ type iModifyHostInfoRequest interface {
 }
 
 type ModifyHostInfoRequest struct {
-	// The name of the host.
+	// The host name.
 	//
 	// example:
 	//
 	// portalHost
 	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// The ID of the instance. Only hosts not on Alibaba Cloud are supported.
+	// The instance ID. Only non-Alibaba Cloud hosts are supported.
 	//
 	// This parameter is required.
 	//

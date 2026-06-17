@@ -28,7 +28,7 @@ type iDescribeHybridMonitorNamespaceListResponseBody interface {
 }
 
 type DescribeHybridMonitorNamespaceListResponseBody struct {
-	// The response code.
+	// The status code.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type DescribeHybridMonitorNamespaceListResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The details of the namespaces.
 	DescribeHybridMonitorNamespace []*DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespace `json:"DescribeHybridMonitorNamespace,omitempty" xml:"DescribeHybridMonitorNamespace,omitempty" type:"Repeated"`
-	// The returned message.
+	// The error message.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type DescribeHybridMonitorNamespaceListResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
@@ -60,17 +60,17 @@ type DescribeHybridMonitorNamespaceListResponseBody struct {
 	//
 	// 1EC450A4-3221-5148-B77E-2827576CFE48
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// 	- true
+	// - true: The operation was successful.
 	//
-	// 	- false
+	// - false: The operation failed.
 	//
 	// example:
 	//
 	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -172,9 +172,9 @@ func (s *DescribeHybridMonitorNamespaceListResponseBody) Validate() error {
 }
 
 type DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespace struct {
-	// The configuration details of metric import tasks for Alibaba Cloud services.
+	// The configuration details of data import tasks for Alibaba Cloud services.
 	AliyunProductMetricList []*DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceAliyunProductMetricList `json:"AliyunProductMetricList,omitempty" xml:"AliyunProductMetricList,omitempty" type:"Repeated"`
-	// The timestamp that was generated when the namespace was created.
+	// The timestamp when the namespace was created.
 	//
 	// Unit: milliseconds.
 	//
@@ -188,9 +188,9 @@ type DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespac
 	//
 	// aliyun-test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The details of the data retention period.
+	// The details of the data storage duration.
 	Detail *DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceDetail `json:"Detail,omitempty" xml:"Detail,omitempty" type:"Struct"`
-	// The ID of the namespace.
+	// The namespace ID.
 	//
 	// example:
 	//
@@ -198,15 +198,15 @@ type DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespac
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// Indicates whether the namespace is deleted. Valid values:
 	//
-	// 	- 0: The namespace is not deleted.
+	// - 0: The namespace is not deleted.
 	//
-	// 	- 1: The namespace is deleted.
+	// - 1: The namespace is deleted.
 	//
 	// example:
 	//
 	// 0
 	IsDelete *int32 `json:"IsDelete,omitempty" xml:"IsDelete,omitempty"`
-	// The timestamp that was generated when the namespace was last modified.
+	// The timestamp when the namespace was last modified. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -218,17 +218,19 @@ type DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespac
 	//
 	// aliyun-test
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The storage scheme of metric data. Valid values:
+	// The storage solution for monitoring data. Valid values:
 	//
-	// 	- m_prom_user: The metric data is stored in Simple Log Service.
+	// - m_prom_user: The monitoring data is stored in SLS.
 	//
-	// 	- m_prom_pool: The metric data is stored in the storage space provided by CloudMonitor.
+	// - m_prom_pool: The monitoring data is stored in the storage space provided by Cloud Monitor.
+	//
+	// - aliyun_prometheus: The monitoring data is stored in a Prometheus instance.
 	//
 	// example:
 	//
-	// m_prom_user
+	// aliyun_prometheus
 	NamespaceType *string `json:"NamespaceType,omitempty" xml:"NamespaceType,omitempty"`
-	// The number of metric import tasks for third-party services.
+	// The number of data import tasks for non-Alibaba Cloud services.
 	//
 	// example:
 	//
@@ -353,7 +355,7 @@ func (s *DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorName
 }
 
 type DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceAliyunProductMetricList struct {
-	// The namespaces.
+	// The list of namespaces.
 	NamespaceList []*DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceAliyunProductMetricListNamespaceList `json:"NamespaceList,omitempty" xml:"NamespaceList,omitempty" type:"Repeated"`
 	// The account that is used to create the namespace.
 	//
@@ -361,13 +363,13 @@ type DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespac
 	//
 	// 120886317861****
 	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The configuration file of the Alibaba Cloud service that you want to monitor by using Hybrid Cloud Monitoring.
+	// The configuration file for the Alibaba Cloud service that is connected to Hybrid Cloud Monitoring.
 	//
-	// 	- namespace: the namespace of the Alibaba Cloud service.
+	// - namespace: the namespace of the Alibaba Cloud service.
 	//
-	// 	- metric_list: the metrics of the Alibaba Cloud service.
+	// - metric_list: the metrics of the Alibaba Cloud service.
 	//
-	// 	- dimension: the resources of the Alibaba Cloud service that you want to monitor by using Hybrid Cloud Monitoring. If you do not specify a dimension, all resources of the Alibaba Cloud service are monitored.
+	// - dimension: the resources of the Alibaba Cloud service that can be queried in Hybrid Cloud Monitoring. If this parameter is empty, all resources are monitored.
 	//
 	// example:
 	//
@@ -424,9 +426,9 @@ func (s *DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorName
 }
 
 type DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceAliyunProductMetricListNamespaceList struct {
-	// The metrics for the Alibaba Cloud service.
+	// The list of metrics for the Alibaba Cloud service.
 	MetricList []*DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceAliyunProductMetricListNamespaceListMetricList `json:"MetricList,omitempty" xml:"MetricList,omitempty" type:"Repeated"`
-	// The namespace for the Alibaba Cloud service.
+	// The data namespace of the Alibaba Cloud service.
 	//
 	// example:
 	//
@@ -474,7 +476,7 @@ func (s *DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorName
 }
 
 type DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceAliyunProductMetricListNamespaceListMetricList struct {
-	// The metrics.
+	// The list of metrics.
 	List []*string `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
 	// The collection period of the metric.
 	//
@@ -517,36 +519,43 @@ func (s *DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorName
 }
 
 type DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceDetail struct {
-	// The region where the metric data is stored.
+	// The region where the monitoring data is stored.
 	//
-	// >  This parameter is returned if you select `m_prom_user` for `NamespaceType` when you create a namespace.
+	// > This parameter is returned if you set `NamespaceType` to `m_prom_user` when you create the namespace.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	NamespaceRegion      *string `json:"NamespaceRegion,omitempty" xml:"NamespaceRegion,omitempty"`
-	PrometheusInstanceId *string `json:"PrometheusInstanceId,omitempty" xml:"PrometheusInstanceId,omitempty"`
-	// The project where the metric data is located.
+	NamespaceRegion *string `json:"NamespaceRegion,omitempty" xml:"NamespaceRegion,omitempty"`
+	// The Prometheus instance where the monitoring data is stored.
 	//
-	// >  This parameter is returned if you select `m_prom_user` for `NamespaceType` when you create a namespace.
+	// > This parameter is returned if you set `NamespaceType` to `aliyun_prometheus` when you create the namespace.
+	//
+	// example:
+	//
+	// rw-57******************7f
+	PrometheusInstanceId *string `json:"PrometheusInstanceId,omitempty" xml:"PrometheusInstanceId,omitempty"`
+	// The Simple Log Service (SLS) project where the monitoring data is stored.
+	//
+	// > This parameter is returned if you set `NamespaceType` to `m_prom_user` when you create the namespace.
 	//
 	// example:
 	//
 	// cms-hybrid-120886317861****-cn-hangzhou-a83d
 	SLSProject *string `json:"SLSProject,omitempty" xml:"SLSProject,omitempty"`
-	// The data retention period. Valid values:
+	// The data storage duration. Valid values:
 	//
-	// 	- cms.s1.large (Retention Period 15 Days)
+	// - cms.s1.large: 15 days.
 	//
-	// 	- cms.s1.xlarge (Retention Period 32 Days)
+	// - cms.s1.xlarge: 32 days.
 	//
-	// 	- cms.s1.2xlarge (Retention Period 63 Days)
+	// - cms.s1.2xlarge: 63 days.
 	//
-	// 	- cms.s1.3xlarge (Retention Period 93 Days)
+	// - cms.s1.3xlarge: 93 days.
 	//
-	// 	- cms.s1.6xlarge (Retention Period 185 Days)
+	// - cms.s1.6xlarge: 185 days.
 	//
-	// 	- cms.s1.12xlarge (Retention Period 367 Days)
+	// - cms.s1.12xlarge: 376 days.
 	//
 	// example:
 	//

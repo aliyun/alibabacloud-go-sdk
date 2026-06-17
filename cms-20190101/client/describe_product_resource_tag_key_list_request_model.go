@@ -16,7 +16,7 @@ type iDescribeProductResourceTagKeyListRequest interface {
 }
 
 type DescribeProductResourceTagKeyListRequest struct {
-	// The pagination token.
+	// The token that is used to retrieve the next page of results.
 	//
 	// example:
 	//

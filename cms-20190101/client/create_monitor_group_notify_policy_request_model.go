@@ -22,9 +22,9 @@ type iCreateMonitorGroupNotifyPolicyRequest interface {
 }
 
 type CreateMonitorGroupNotifyPolicyRequest struct {
-	// The end time of the validity period for the policy.
+	// The end timestamp for pausing notifications.
 	//
-	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The value is a UNIX timestamp, which represents the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type CreateMonitorGroupNotifyPolicyRequest struct {
 	//
 	// 1623208500000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the application group.
+	// The application group ID.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type CreateMonitorGroupNotifyPolicyRequest struct {
 	//
 	// 7301****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The policy type. Valid value: PauseNotify.
+	// The type of the pause notification. Currently, only PauseNotify is supported.
 	//
 	// This parameter is required.
 	//
@@ -49,9 +49,9 @@ type CreateMonitorGroupNotifyPolicyRequest struct {
 	// PauseNotify
 	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
 	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The start time of the validity period for the policy.
+	// The start timestamp for pausing notifications.
 	//
-	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The value is a UNIX timestamp, which represents the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// This parameter is required.
 	//

@@ -24,7 +24,7 @@ type iDescribeHybridMonitorNamespaceListRequest interface {
 }
 
 type DescribeHybridMonitorNamespaceListRequest struct {
-	// The search keyword.
+	// The keyword for the search.
 	//
 	// example:
 	//
@@ -32,7 +32,7 @@ type DescribeHybridMonitorNamespaceListRequest struct {
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	// The name of the namespace.
 	//
-	// The name can contain letters, digits, and hyphens (-).
+	// The name can contain uppercase letters, lowercase letters, digits, and hyphens (-).
 	//
 	// example:
 	//
@@ -40,26 +40,26 @@ type DescribeHybridMonitorNamespaceListRequest struct {
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The page number.
 	//
-	// Page numbers start from 1. Default value: 1.
+	// Minimum value: 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries to return on each page.
 	//
-	// Page numbers start from 1. Default value: 10.
+	// Minimum value: 1. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Specifies whether to return the configuration details of metric import tasks for Alibaba Cloud services and the number of metric import tasks for third-party services. Valid values:
+	// Specifies whether to display the configuration details of data import tasks for Alibaba Cloud services and the number of data import tasks for non-Alibaba Cloud services. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false (default)
+	// - false (default)
 	//
 	// example:
 	//

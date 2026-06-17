@@ -22,7 +22,7 @@ type iDescribeHybridMonitorSLSGroupRequest interface {
 }
 
 type DescribeHybridMonitorSLSGroupRequest struct {
-	// The keyword that is used to search for Logstore groups.
+	// The search keyword.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type DescribeHybridMonitorSLSGroupRequest struct {
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	// The page number.
 	//
-	// Pages start from page 1. Default value: 1.
+	// Minimum value: 1. Default value: 1.
 	//
 	// example:
 	//

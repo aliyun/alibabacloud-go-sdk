@@ -20,7 +20,7 @@ type DeleteContactRequest struct {
 	//
 	// example:
 	//
-	// test-01
+	// John Doe
 	ContactName *string `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
 }
 

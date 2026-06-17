@@ -30,7 +30,7 @@ type iDescribeMonitorGroupInstancesResponseBody interface {
 type DescribeMonitorGroupInstancesResponseBody struct {
 	// The responses code.
 	//
-	// >  The status code 200 indicates that the request was successful.
+	// > The status code 200 indicates that the request was successful.
 	//
 	// example:
 	//

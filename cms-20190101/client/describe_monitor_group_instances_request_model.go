@@ -28,7 +28,7 @@ type iDescribeMonitorGroupInstancesRequest interface {
 type DescribeMonitorGroupInstancesRequest struct {
 	// The abbreviation of the cloud service name. Valid values of N: 1 to 200.
 	//
-	// >  For more information about how to obtain the abbreviation of a cloud service name, see `metricCategory` in the response parameter `Labels` of the [DescribeProjectMeta](https://help.aliyun.com/document_detail/114916.html) operation.
+	// > For more information about how to obtain the abbreviation of a cloud service name, see `metricCategory` in the response parameter `Labels` of the [DescribeProjectMeta](https://help.aliyun.com/document_detail/114916.html) operation.
 	//
 	// example:
 	//
@@ -40,19 +40,19 @@ type DescribeMonitorGroupInstancesRequest struct {
 	//
 	// example:
 	//
-	// 12345
+	// 123****
 	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The instance ID. You can query multiple instances by specifying multiple IDs.
 	//
 	// example:
 	//
-	// i-x1234568
+	// i-bp12g4xbl4i0brkn****
 	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
 	// The keyword used to search for instances. Fuzzy search based on instance names is supported.
 	//
 	// example:
 	//
-	// s1
+	// test-s1
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	// The page number. Default value: 1.
 	//

@@ -22,17 +22,17 @@ type iPutExporterOutputRequest interface {
 }
 
 type PutExporterOutputRequest struct {
-	// The configuration set for exporting monitoring data. It is a JSON object string. The string must include the following fields:
+	// The configuration of the data export. The value is a JSONObject string that must contain the following fields:
 	//
-	// 	- endpoint: the endpoint of Log Service.
+	// - endpoint: the domain name that corresponds to the data of Log Service (SLS).
 	//
-	// 	- project: the Log Service project to which monitoring data is exported.
+	// - project: the project.
 	//
-	// 	- logstore: the Log Service Logstore to which the monitoring data is exported.
+	// - logstore: the Logstore.
 	//
-	// 	- ak: the AccessKey ID.
+	// - ak: the AccessKey ID.
 	//
-	// 	- as: the AccessKey secret.
+	// - as: the AccessKey secret.
 	//
 	// This parameter is required.
 	//
@@ -40,13 +40,13 @@ type PutExporterOutputRequest struct {
 	//
 	// { "endpoint": "http://cn-qingdao-share.log.aliyuncs.com", "project": "exporter", "logstore": "exporter","ak": "LTAIp*******", "userId": "17754********", "as": "TxHwuJ8yAb3AU******"}
 	ConfigJson *string `json:"ConfigJson,omitempty" xml:"ConfigJson,omitempty"`
-	// The description of the configuration set.
+	// The description of the configuration.
 	//
 	// example:
 	//
-	// Export CPU metrics
+	// CPU metric export
 	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
-	// The name of the configuration set.
+	// The name of the configuration.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +54,7 @@ type PutExporterOutputRequest struct {
 	//
 	// exporterConfig
 	DestName *string `json:"DestName,omitempty" xml:"DestName,omitempty"`
-	// The service to which the monitoring data is exported.
+	// The product to which the data is exported.
 	//
 	// example:
 	//

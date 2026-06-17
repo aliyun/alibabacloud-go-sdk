@@ -20,31 +20,31 @@ type iPutCustomMetricRuleResponseBody interface {
 }
 
 type PutCustomMetricRuleResponseBody struct {
-	// The status code.
+	// 状态码。
 	//
-	// >  The status code 200 indicates that the request was successful.
+	// > 200表示成功。
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned message. If the request was successful, the return value is null. If the request failed, an error message is returned.
+	// 返回信息。接口调用成功时，返回为空；接口调用失败时，返回失败原因。
 	//
 	// example:
 	//
 	// ComparisonOperator is mandatory for this action.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// 请求ID。
 	//
 	// example:
 	//
 	// 65D50468-ECEF-48F1-A6E1-D952E89D9432
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// 操作是否成功。取值：
 	//
-	// 	- true
+	// - true：成功。
 	//
-	// 	- false
+	// - false：失败。
 	//
 	// example:
 	//

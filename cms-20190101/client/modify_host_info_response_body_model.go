@@ -20,9 +20,9 @@ type iModifyHostInfoResponseBody interface {
 }
 
 type ModifyHostInfoResponseBody struct {
-	// The HTTP status code.
+	// The status code.
 	//
-	// >  The status code 200 indicates that the call was successful.
+	// > The value 200 indicates that the call was successful.
 	//
 	// example:
 	//
@@ -34,13 +34,13 @@ type ModifyHostInfoResponseBody struct {
 	//
 	// The specified resource is not found.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// EBB5215C-44AB-4000-A2D7-48634FDC4F04
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. The value true indicates a success. The value false indicates a failure.
+	// Indicates whether the call was successful. The value true indicates that the call was successful. The value false indicates that the call failed.
 	//
 	// example:
 	//

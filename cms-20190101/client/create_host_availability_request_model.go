@@ -34,11 +34,11 @@ type iCreateHostAvailabilityRequest interface {
 type CreateHostAvailabilityRequest struct {
 	AlertConfig *CreateHostAvailabilityRequestAlertConfig `json:"AlertConfig,omitempty" xml:"AlertConfig,omitempty" type:"Struct"`
 	TaskOption  *CreateHostAvailabilityRequestTaskOption  `json:"TaskOption,omitempty" xml:"TaskOption,omitempty" type:"Struct"`
-	// None
+	// None.
 	//
 	// This parameter is required.
 	AlertConfigEscalationList []*CreateHostAvailabilityRequestAlertConfigEscalationList `json:"AlertConfigEscalationList,omitempty" xml:"AlertConfigEscalationList,omitempty" type:"Repeated"`
-	// The resources for which alerts are triggered.
+	// The alert trigger targets.
 	AlertConfigTargetList []*CreateHostAvailabilityRequestAlertConfigTargetList `json:"AlertConfigTargetList,omitempty" xml:"AlertConfigTargetList,omitempty" type:"Repeated"`
 	// The ID of the application group.
 	//
@@ -48,16 +48,16 @@ type CreateHostAvailabilityRequest struct {
 	//
 	// 123456
 	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The ECS instances that are monitored. Valid values of N: 1 to 21.
+	// The list of ECS instances that initiate detection. Valid values of N: 1 to 21.
 	//
-	// > This parameter must be specified when `TaskScope` is set to `GROUP_SPEC_INSTANCE`.
+	// > Set this parameter when `TaskScope` is set to `GROUP_SPEC_INSTANCE`.
 	//
 	// example:
 	//
 	// i-absdfkwl321****
 	InstanceList []*string `json:"InstanceList,omitempty" xml:"InstanceList,omitempty" type:"Repeated"`
 	RegionId     *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the availability monitoring task. The name must be 4 to 100 characters in length, and can contain letters, digits, and underscores (_).
+	// The name of the availability monitoring task. The name must be 4 to 100 characters in length and can contain letters, digits, underscores (_), and Chinese characters.
 	//
 	// This parameter is required.
 	//
@@ -65,23 +65,23 @@ type CreateHostAvailabilityRequest struct {
 	//
 	// task1
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// The range of instances that are monitored by the availability monitoring task. Valid values:
+	// The detection scope of the availability monitoring task. Valid values:
 	//
-	// 	- GROUP: All ECS instances in the application group are monitored.
+	// - GROUP: uses all ECS instances in the current application group as detection probes.
 	//
-	// 	- GROUP_SPEC_INSTANCE: Specified ECS instances in the application group are monitored. The TaskScope parameter must be used in combination with the InstanceList parameter. The InstanceList parameter specifies the ECS instances to be monitored.
+	// - GROUP_SPEC_INSTANCE: uses specified ECS instances in the current application group as detection probes. If you set this parameter to GROUP_SPEC_INSTANCE, you must also set InstanceList to specify the ECS instances that initiate detection.
 	//
 	// example:
 	//
 	// GROUP
 	TaskScope *string `json:"TaskScope,omitempty" xml:"TaskScope,omitempty"`
-	// The monitoring type of the availability monitoring task. Valid values:
+	// The detection type of the availability monitoring task. Valid values:
 	//
-	// 	- PING
+	// - PING
 	//
-	// 	- TELNET
+	// - TELNET
 	//
-	// 	- HTTP
+	// - HTTP.
 	//
 	// This parameter is required.
 	//
@@ -222,19 +222,28 @@ func (s *CreateHostAvailabilityRequest) Validate() error {
 }
 
 type CreateHostAvailabilityRequestAlertConfig struct {
-	// The end of the time range during which the alert rule is effective. Valid values: 0 to 23.
+	// 报警生效的结束时间。取值范围：0~23。
 	//
-	// For example, if the `AlertConfig.StartTime` parameter is set to 0 and the `AlertConfig.EndTime` parameter is set to 22, the alert rule is effective from 00:00:00 to 22:00:00.
+	// 例如：`AlertConfig.StartTime`为0，`AlertConfig.EndTime`为22，表示报警生效时间为00:00:00至22:00:00。
 	//
-	// > Alert notifications are sent based on the specified threshold only if the alert rule is effective.
+	// >如果报警不在生效时间内，则超过阈值也不会发送报警通知。
 	//
 	// example:
 	//
 	// 22
 	EndTime *int32 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The alert notification methods. Valid values:
+	// 报警通知类型。取值：
 	//
-	// 0: Alert notifications are sent by using emails and DingTalk chatbots.
+	// <props="china">- 2：电话+短信+邮件+钉钉机器人。
+	//
+	// <props="china">- 1：短信+邮件+钉钉机器人。
+	//
+	// <props="china">- 0：邮件+钉钉机器人。
+	//
+	//
+	// <props="intl">0：邮件+钉钉机器人。
+	//
+	// <props="partner">0：邮件+钉钉机器人。
 	//
 	// This parameter is required.
 	//
@@ -242,23 +251,23 @@ type CreateHostAvailabilityRequestAlertConfig struct {
 	//
 	// 0
 	NotifyType *int32 `json:"NotifyType,omitempty" xml:"NotifyType,omitempty"`
-	// The mute period during which new alerts are not sent even if the trigger conditions are met. Unit: seconds. Default value: 86400. The default value indicates one day.
+	// 通道沉默时间。单位：秒，默认值：86400（1天）。
 	//
 	// example:
 	//
 	// 86400
 	SilenceTime *int32 `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
-	// The beginning of the time range during which the alert rule is effective. Valid values: 0 to 23.
+	// 报警生效的开始时间。取值范围：0~23。
 	//
-	// For example, if the `AlertConfig.StartTime` parameter is set to 0 and the `AlertConfig.EndTime` parameter is set to 22, the alert rule is effective from 00:00:00 to 22:00:00.
+	// 例如：`AlertConfig.StartTime`为0，`AlertConfig.EndTime`为22，表示报警生效时间为00:00:00至22:00:00。
 	//
-	// > Alert notifications are sent based on the specified threshold only if the alert rule is effective.
+	// >如果报警不在生效时间内，则超过阈值也不会发送报警通知。
 	//
 	// example:
 	//
 	// 0
 	StartTime *int32 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The callback URL.
+	// URL回调地址。
 	//
 	// example:
 	//
@@ -324,79 +333,85 @@ func (s *CreateHostAvailabilityRequestAlertConfig) Validate() error {
 }
 
 type CreateHostAvailabilityRequestTaskOption struct {
-	// The header of the HTTP request. Format: `Parameter name:Parameter value`. Separate multiple parameters with carriage return characters. Example:
+	// HTTP请求的Header。格式为`参数名:参数`，多个参数之间用回车符分隔，例如：
 	//
-	//     params1:value1
+	// ```
 	//
-	//     params2:value2
+	// params1:value1
+	//
+	// params2:value2
+	//
+	// ```
 	//
 	// example:
 	//
 	// token:testTokenValue
 	HttpHeader *string `json:"HttpHeader,omitempty" xml:"HttpHeader,omitempty"`
-	// The HTTP request method. Valid values:
+	// 探测类型的方法。取值：
 	//
-	// 	- GET
+	// - GET
 	//
-	// 	- POST
+	// - POST
 	//
-	// 	- HEAD
+	// - HEAD
 	//
-	// > This parameter must be specified when TaskType is set to HTTP.
+	// >如果任务的探测类型为HTTP，则需要设置该参数。
 	//
 	// example:
 	//
 	// GET
 	HttpMethod *string `json:"HttpMethod,omitempty" xml:"HttpMethod,omitempty"`
-	// The method to trigger an alert. The alert can be triggered based on whether the specified alert rule is included in the response body. Valid values:
+	// 匹配HTTP响应内容的报警规则。取值：
 	//
-	// 	- true: If the HTTP response body includes the alert rule, an alert is triggered.
+	// - true：如果HTTP响应内容包含设置的报警规则，则报警。
 	//
-	// 	- false: If the HTTP response does not include the alert rule, an alert is triggered.
+	// - false：如果HTTP响应内容不包含设置的报警规则，则报警。
 	//
-	// > This parameter must be specified when TaskType is set to HTTP.
+	// >如果任务的探测类型为HTTP，则该参数生效。
 	//
 	// example:
 	//
 	// true
 	HttpNegative *bool `json:"HttpNegative,omitempty" xml:"HttpNegative,omitempty"`
-	// The content of the HTTP POST request.
+	// HTTP探测类型探测请求的Post内容。
 	//
 	// example:
 	//
 	// params1=paramsValue1
 	HttpPostContent *string `json:"HttpPostContent,omitempty" xml:"HttpPostContent,omitempty"`
-	// The character set that is used in the HTTP response.
+	// HTTP探测类型的响应字符集。
 	//
-	// > Only UTF-8 is supported.
+	// > 仅支持UTF-8。
 	//
 	// example:
 	//
 	// UTF-8
 	HttpResponseCharset *string `json:"HttpResponseCharset,omitempty" xml:"HttpResponseCharset,omitempty"`
-	// The response to the HTTP request.
+	// 匹配响应的内容。
 	//
 	// example:
 	//
 	// ok
 	HttpResponseMatchContent *string `json:"HttpResponseMatchContent,omitempty" xml:"HttpResponseMatchContent,omitempty"`
-	// The URI that you want to monitor. This parameter is required if the TaskType parameter is set to HTTP or Telnet.
+	// HTTP、Telnet探测类型的探测URI地址。
 	//
 	// example:
 	//
 	// https://www.aliyun.com
-	HttpURI *string `json:"HttpURI,omitempty" xml:"HttpURI,omitempty"`
-	// The interval at which detection requests are sent. Unit: seconds. Valid values: 15, 30, 60, 120, 300, 900, 1800, and 3600.
 	//
-	// > This parameter is available only for the CloudMonitor agent V3.5.1 or later.
+	// telnet://127.0.0.1:80
+	HttpURI *string `json:"HttpURI,omitempty" xml:"HttpURI,omitempty"`
+	// 探测频率。单位：秒。取值：15、30、60、120、300、900、1800和3600。
+	//
+	// > 仅3.5.1及以上版本的云监控插件支持该参数。
 	//
 	// example:
 	//
 	// 60
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The domain name or IP address that you want to monitor.
+	// 探测的域名或地址。
 	//
-	// >  This parameter is required if the TaskType parameter is set to PING.
+	// >如果探测任务类型为PING，则需要设置该参数。
 	//
 	// example:
 	//
@@ -498,35 +513,35 @@ func (s *CreateHostAvailabilityRequestTaskOption) Validate() error {
 }
 
 type CreateHostAvailabilityRequestAlertConfigEscalationList struct {
-	// The method used to calculate the metric values that trigger alerts. Valid values of N: 1 to 21. Valid values:
+	// The statistical method for the alert. Valid values of N: 1 to 21. The valid values vary based on the metric:
 	//
-	// 	- HttpStatus: Value
+	// - HttpStatus: Value.
 	//
-	// 	- HttpLatency: Average
+	// - HttpLatency: Average.
 	//
-	// 	- TelnetStatus: Value
+	// - TelnetStatus: Value.
 	//
-	// 	- TelnetLatency: Average
+	// - TelnetLatency: Average.
 	//
-	// 	- PingLostRate: Average
+	// - PingLostRate: Average.
 	//
-	// > The value Value indicates the original value and is used for metrics such as status codes. The value Average indicates the average value and is used for metrics such as the latency and packet loss rate.
+	// > The statistical method for status code metrics is the raw value (Value). The statistical method for latency or packet loss rate metrics is the average value (Average).
 	//
 	// example:
 	//
 	// Value
 	Aggregate *string `json:"Aggregate,omitempty" xml:"Aggregate,omitempty"`
-	// The metric for which the alert feature is enabled. Valid values of N: 1 to 21. Valid values:
+	// The metric for the alert. Valid values of N: 1 to 21. Valid values:
 	//
-	// 	- HttpStatus: HTTP status code
+	// - HttpStatus: HTTP status code.
 	//
-	// 	- HttpLatency: HTTP response time
+	// - HttpLatency: HTTP latency.
 	//
-	// 	- TelnetStatus: Telnet status code
+	// - TelnetStatus: Telnet status code.
 	//
-	// 	- TelnetLatency: Telnet response time
+	// - TelnetLatency: Telnet latency.
 	//
-	// 	- PingLostRate: Ping packet loss rate
+	// - PingLostRate: Ping packet loss rate.
 	//
 	// This parameter is required.
 	//
@@ -534,23 +549,23 @@ type CreateHostAvailabilityRequestAlertConfigEscalationList struct {
 	//
 	// HttpStatus
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The comparison operator that is used in the alert rule. Valid values of N: 1 to 21. Valid values:
+	// The comparison operator for the alert rule. Valid values of N: 1 to 21. Valid values:
 	//
-	// 	- `>`
+	// - `>`
 	//
-	// 	- `>=`
+	// - `>=`
 	//
-	// 	- `<`
+	// - `<`
 	//
-	// 	- `<=`
+	// - `<=`
 	//
-	// 	- `=`
+	// - `=`.
 	//
 	// example:
 	//
 	// >
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	// The consecutive number of times for which the metric value meets the alert condition before an alert is triggered. Valid values of N: 1 to 21.
+	// The number of alert retries. Valid values of N: 1 to 21.
 	//
 	// example:
 	//
@@ -622,37 +637,37 @@ func (s *CreateHostAvailabilityRequestAlertConfigEscalationList) Validate() erro
 }
 
 type CreateHostAvailabilityRequestAlertConfigTargetList struct {
-	// The Alibaba Cloud Resource Name (ARN) of the resource. Format: `acs:{Service name abbreviation}:{regionId}:{userId}:/{Resource type}/{Resource name}/message`. Example: `acs:mns:cn-hangzhou:120886317861****:/queues/test123/message`. Fields:
+	// The Alibaba Cloud Resource Name (ARN) of the resource. Format: `acs:{AbbreviatedServiceName}:{regionId}:{userId}:/{ResourceType}/{ResourceName}/message`. Example: `acs:mns:ap-southeast-1:120886317861****:/queues/test123/message`. The following list describes the parameters:
 	//
-	// 	- {Service name abbreviation}: the abbreviation of the service name. Set the value to Simple Message Queue (formerly MNS) (SMQ).
+	// - {AbbreviatedServiceName}: Only Simple Message Queue (formerly MNS) is supported.
 	//
-	// 	- {userId}: the ID of the Alibaba Cloud account.
+	// - {userId}: The Alibaba Cloud account ID.
 	//
-	// 	- {regionId}: the region ID of the SMQ queue or topic.
+	// - {regionId}: The region where the Simple Message Queue (formerly MNS) queue or topic resides.
 	//
-	// 	- {Resource type}: the type of the resource for which alerts are triggered. Valid values:
+	// - {ResourceType}: The type of the resource that accepts alerts. Valid values:
 	//
-	//     	- **queues**
+	//   - **queues**: queue.
 	//
-	//     	- **topics**
+	//   - **topics**: topic.
 	//
-	// 	- {Resource name}: the resource name.
+	// - {ResourceName}: The name of the resource.
 	//
-	//     	- If the resource type is **queues**, the resource name is the queue name.
+	//   - If the resource type is **queues**, the resource name is the queue name.
 	//
-	//     	- If the resource type is **topics**, the resource name is the topic name.
+	//   - If the resource type is **topics**, the resource name is the topic name.
 	//
 	// example:
 	//
 	// acs:mns:cn-hangzhou:120886317861****:/queues/test/message
 	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	// The ID of the resource for which alerts are triggered.
+	// The ID of the alert trigger target.
 	//
 	// example:
 	//
 	// 1
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The parameters of the alert callback. The parameters are in the JSON format.
+	// The JSON-formatted parameters for the alert callback.
 	//
 	// example:
 	//
@@ -660,11 +675,11 @@ type CreateHostAvailabilityRequestAlertConfigTargetList struct {
 	JsonParams *string `json:"JsonParams,omitempty" xml:"JsonParams,omitempty"`
 	// The alert level. Valid values:
 	//
-	// 	- INFO
+	// - INFO: information.
 	//
-	// 	- WARN
+	// - WARN: warning.
 	//
-	// 	- CRITICAL
+	// - CRITICAL: critical.
 	//
 	// example:
 	//

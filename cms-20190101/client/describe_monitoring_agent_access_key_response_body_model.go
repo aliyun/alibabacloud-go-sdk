@@ -58,9 +58,9 @@ type DescribeMonitoringAgentAccessKeyResponseBody struct {
 	SecretKey *string `json:"SecretKey,omitempty" xml:"SecretKey,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//

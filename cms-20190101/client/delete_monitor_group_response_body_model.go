@@ -24,7 +24,7 @@ type iDeleteMonitorGroupResponseBody interface {
 type DeleteMonitorGroupResponseBody struct {
 	// The HTTP status code.
 	//
-	// >  The status code 200 indicates that the call was successful.
+	// > The status code 200 indicates that the call was successful.
 	//
 	// example:
 	//

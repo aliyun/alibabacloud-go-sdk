@@ -18,15 +18,15 @@ type iPutHybridMonitorMetricDataRequest interface {
 }
 
 type PutHybridMonitorMetricDataRequest struct {
-	// The monitoring data.
+	// The list of monitoring data.
 	//
 	// Valid values of N: 1 to 100.
 	//
 	// This parameter is required.
 	MetricList []*PutHybridMonitorMetricDataRequestMetricList `json:"MetricList,omitempty" xml:"MetricList,omitempty" type:"Repeated"`
-	// The name of the namespace.
+	// The name of the metric namespace.
 	//
-	// For information about how to obtain the name of a namespace, see [DescribeHybridMonitorNamespaceList](https://help.aliyun.com/document_detail/428880.html).
+	// For information about how to obtain the name of a metric namespace, see [DescribeHybridMonitorNamespaceList](https://help.aliyun.com/document_detail/428880.html).
 	//
 	// This parameter is required.
 	//
@@ -86,19 +86,19 @@ func (s *PutHybridMonitorMetricDataRequest) Validate() error {
 }
 
 type PutHybridMonitorMetricDataRequestMetricList struct {
-	// The tags of the metric.
+	// The list of labels of the metric.
 	//
 	// Valid values of N: 1 to 100.
 	//
 	// example:
 	//
-	// app、ip、hostName等标识信息
+	// [{"Key":"app","Value":"testApp"},{"Key":"ip","Value":"192.168.XX.XX"},{"Key":"hostName","Value":"host01"}]
 	Labels []*PutHybridMonitorMetricDataRequestMetricListLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	// The metric name.
+	// The name of the metric.
 	//
 	// Valid values of N: 1 to 100.
 	//
-	// The name can contain letters, digits, and underscores (_). The name must start with a letter.
+	// Format: The name can contain uppercase letters, lowercase letters, digits, and underscores (_). The name must start with an uppercase letter or a lowercase letter.
 	//
 	// This parameter is required.
 	//
@@ -106,11 +106,11 @@ type PutHybridMonitorMetricDataRequestMetricList struct {
 	//
 	// CPU_Usage
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The time when the monitoring data is imported. The value is a timestamp.
+	// The timestamp when the monitoring data was reported.
 	//
 	// Valid values of N: 1 to 100.
 	//
-	// Unit: milliseconds. By default, the current time is used.
+	// Unit: milliseconds. Default value: the current time.
 	//
 	// example:
 	//
@@ -120,7 +120,7 @@ type PutHybridMonitorMetricDataRequestMetricList struct {
 	//
 	// Valid values of N: 1 to 100.
 	//
-	// The value must be an integer or a floating-point number.
+	// Format: an integer or a floating-point number.
 	//
 	// This parameter is required.
 	//
@@ -188,23 +188,23 @@ func (s *PutHybridMonitorMetricDataRequestMetricList) Validate() error {
 }
 
 type PutHybridMonitorMetricDataRequestMetricListLabels struct {
-	// The tag key of the metric.
+	// The key of the label of the metric.
 	//
 	// Valid values of N: 1 to 100.
 	//
-	// The key can contain letters, digits, and underscores (_). The key must start with a letter or an underscore (_).
+	// Format: The key can contain uppercase letters, lowercase letters, digits, and underscores (_). The key must start with an uppercase letter, a lowercase letter, or an underscore (_).
 	//
-	// >  You must specify both the Key and Value parameters.
+	// > Key and Value must be set at the same time.
 	//
 	// example:
 	//
 	// IP
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value of the metric.
+	// The value of the label of the metric.
 	//
 	// Valid values of N: 1 to 100.
 	//
-	// >  You must specify both the Key and Value parameters.
+	// > Key and Value must be set at the same time.
 	//
 	// example:
 	//

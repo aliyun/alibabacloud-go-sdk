@@ -18,27 +18,27 @@ type iEnableActiveMetricRuleRequest interface {
 type EnableActiveMetricRuleRequest struct {
   // The cloud service for which you want to enable initiative alert. Valid values:
   // 
-  // 	- ECS: Elastic Compute Service (ECS)
+  // - ECS: Elastic Compute Service (ECS)
   // 
-  // 	- rds: ApsaraDB RDS
+  // - rds: ApsaraDB RDS
   // 
-  // 	- slb: Server Load Balancer (SLB)
+  // - slb: Server Load Balancer (SLB)
   // 
-  // 	- redis_standard: Redis Open-Source Edition (standard architecture)
+  // - redis_standard: Redis Open-Source Edition (standard architecture)
   // 
-  // 	- redis_sharding: Redis Open-Source Edition (cluster architecture)
+  // - redis_sharding: Redis Open-Source Edition (cluster architecture)
   // 
-  // 	- redis_splitrw: Redis Open-Source Edition (read/write splitting architecture)
+  // - redis_splitrw: Redis Open-Source Edition (read/write splitting architecture)
   // 
-  // 	- mongodb: ApsaraDB for MongoDB of the replica set architecture
+  // - mongodb: ApsaraDB for MongoDB of the replica set architecture
   // 
-  // 	- mongodb_sharding: ApsaraDB for MongoDB of the sharded cluster architecture
+  // - mongodb_sharding: ApsaraDB for MongoDB of the sharded cluster architecture
   // 
-  // 	- hbase: ApsaraDB for HBase
+  // - hbase: ApsaraDB for HBase
   // 
-  // 	- elasticsearch: Elasticsearch
+  // - elasticsearch: Elasticsearch
   // 
-  // 	- opensearch: OpenSearch
+  // - opensearch: OpenSearch
   // 
   // This parameter is required.
   // 

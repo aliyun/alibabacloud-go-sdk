@@ -24,19 +24,19 @@ type iDescribeLogMonitorAttributeResponseBody interface {
 type DescribeLogMonitorAttributeResponseBody struct {
 	// The status code.
 	//
-	// >  The status code 200 indicates that the request was successful.
+	// > A status code of 200 indicates a successful request.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The details of the log monitoring metric.
+	// The details of the Log Monitoring task.
 	LogMonitor *DescribeLogMonitorAttributeResponseBodyLogMonitor `json:"LogMonitor,omitempty" xml:"LogMonitor,omitempty" type:"Struct"`
-	// The returned message. If the request was successful, a success message is returned. If the request failed, an error message is returned.
+	// The returned message.
 	//
 	// example:
 	//
-	// successful
+	// The specified resource is not found.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
@@ -44,11 +44,11 @@ type DescribeLogMonitorAttributeResponseBody struct {
 	//
 	// C6718537-E673-4A58-8EE1-24B8B38C7AAE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// 	- true
+	// - true: The operation was successful.
 	//
-	// 	- false
+	// - false: The operation failed.
 	//
 	// example:
 	//
@@ -119,71 +119,71 @@ func (s *DescribeLogMonitorAttributeResponseBody) Validate() error {
 }
 
 type DescribeLogMonitorAttributeResponseBodyLogMonitor struct {
-	// The aggregation logic.
+	// The definitions of aggregations.
 	Aggregates []*DescribeLogMonitorAttributeResponseBodyLogMonitorAggregates `json:"Aggregates,omitempty" xml:"Aggregates,omitempty" type:"Repeated"`
-	// The time when the metric was created.
+	// The time when the task was created.
 	//
-	// This value is a UNIX timestamp that represents the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// This value is a UNIX timestamp that represents the number of milliseconds that have elapsed since January 1, 1970.
 	//
 	// example:
 	//
-	// 1547431398000
+	// 1678440033000
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	// The ID of the application group.
 	//
 	// example:
 	//
-	// 12345
-	GroupId  *int64    `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// 123******
+	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The dimension based on which log data is aggregated. This parameter is equivalent to the \\`GROUP BY\\` clause in an SQL statement. You can specify a dimension to group monitoring data. If you do not specify this parameter, all monitoring data is aggregated based on the aggregation method.
 	Groupbys []*string `json:"Groupbys,omitempty" xml:"Groupbys,omitempty" type:"Repeated"`
-	// The ID of the log.
+	// The ID of the Log Monitoring task.
 	//
 	// example:
 	//
-	// 1234
+	// 123******
 	LogId *int64 `json:"LogId,omitempty" xml:"LogId,omitempty"`
-	// The extended field. The extended field allows you to perform basic operations on the aggregation results.
-	//
-	// For example, if you have calculated TotalNumber and 5XXNumber by aggregating the data. TotalNumber indicates the total number of HTTP requests, and 5XXNumber indicates the number of HTTP requests whose status code is greater than 499. You can calculate the server error rate by adding the following formula to the extended field: 5XXNumber/TotalNumber\\*100.
+	// The metric expression.
 	//
 	// example:
 	//
-	// {"extend":{"errorPercent":"5XXNumber/TotalNumber*100"}}
+	// {}
 	MetricExpress *string `json:"MetricExpress,omitempty" xml:"MetricExpress,omitempty"`
-	// The metric name. For more information, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
+	// The name of the metric.
 	//
 	// example:
 	//
-	// cpu_total
+	// cpu_total_******
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
 	// The name of the Simple Log Service Logstore.
 	//
 	// example:
 	//
-	// test-logstore
+	// logstore_******
 	SlsLogstore *string `json:"SlsLogstore,omitempty" xml:"SlsLogstore,omitempty"`
-	// The name of the SLS project.
+	// The name of the Simple Log Service project.
 	//
 	// example:
 	//
-	// test-project
+	// project_******
 	SlsProject *string `json:"SlsProject,omitempty" xml:"SlsProject,omitempty"`
-	// The ID of the region where the Simple Log Service (SLS) Logstore resides.
+	// The ID of the region where Simple Log Service resides.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	SlsRegionId     *string   `json:"SlsRegionId,omitempty" xml:"SlsRegionId,omitempty"`
+	SlsRegionId *string `json:"SlsRegionId,omitempty" xml:"SlsRegionId,omitempty"`
+	// The pre-aggregation window. Unit: seconds. Cloud Monitor aggregates data in the specified pre-aggregation window.
 	Tumblingwindows []*string `json:"Tumblingwindows,omitempty" xml:"Tumblingwindows,omitempty" type:"Repeated"`
-	// The condition that is used to filter logs. The ValueFilter and ValueFilterRelation parameters are used in pair. The filter condition is equivalent to the WHERE clause in SQL statements.
+	// The filter conditions. This parameter is used with \\`ValueFilterRelation\\`. This parameter is equivalent to the \\`WHERE\\` clause in an SQL statement.
 	//
-	// If no filter condition is specified, all logs are processed. For example, logs contain the Level and Error fields. If you need to calculate the number of times that logs of the Error level appear every minute, you can set the filter condition to Level=Error and count the number of logs that meet this condition.
+	// If you do not specify this parameter, all data is processed. For example, if a log contains a \\`Level\\` field and you want to count the number of logs where the value of \\`Level\\` is \\`Error\\`, you can set the aggregation function to \\`count\\` and specify a filter condition where \\`Level\\` equals \\`Error\\`.
 	ValueFilter []*DescribeLogMonitorAttributeResponseBodyLogMonitorValueFilter `json:"ValueFilter,omitempty" xml:"ValueFilter,omitempty" type:"Repeated"`
-	// The logical operator that is used between log filter conditions. The ValueFilter and ValueFilterRelation parameters must be used in pair. Valid values:
+	// The logical operator for the filter conditions. This parameter is used with \\`ValueFilter\\`. Valid values:
 	//
-	// 	- and
+	// - and: The logical AND operator.
 	//
-	// 	- or
+	// - or: The logical OR operator.
 	//
 	// example:
 	//
@@ -343,31 +343,31 @@ type DescribeLogMonitorAttributeResponseBodyLogMonitorAggregates struct {
 	//
 	// example:
 	//
-	// HostName
+	// alias_******
 	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
-	// The name of the field in logs.
+	// The original name of the field in the log.
 	//
 	// example:
 	//
-	// hostName
+	// field_******
 	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
-	// The function that is used to aggregate the monitoring data of logs within a statistical period. Valid values:
+	// The function that is used to aggregate log data in a statistical period. Valid values:
 	//
-	// 	- count: counts the number
+	// - count: Counts the number of logs.
 	//
-	// 	- sum: calculates the total value
+	// - sum: Calculates the sum of values in a field.
 	//
-	// 	- avg: calculates the average value
+	// - avg: Calculates the average of values in a field.
 	//
-	// 	- max: calculates the maximum value
+	// - max: Selects the maximum value in a field.
 	//
-	// 	- min: calculates the minimum value
+	// - min: Selects the minimum value in a field.
 	//
-	// 	- countps: calculates the number of values of the specified field divided by the total number of seconds within a statistical period
+	// - countps: Calculates the average number of logs that are generated per second in a statistical period.
 	//
-	// 	- sumps: calculates the sum of the values of the specified field divided by the total number of seconds within a statistical period
+	// - sumps: Calculates the average sum of values in a field per second in a statistical period.
 	//
-	// 	- distinct: calculates the number of unique values of the specified field within a statistical period
+	// - distinct: Counts the number of unique values in a field in a statistical period.
 	//
 	// example:
 	//
@@ -377,7 +377,7 @@ type DescribeLogMonitorAttributeResponseBodyLogMonitorAggregates struct {
 	//
 	// example:
 	//
-	// 10
+	// 0
 	Max *string `json:"Max,omitempty" xml:"Max,omitempty"`
 	// The minimum value.
 	//
@@ -445,35 +445,35 @@ func (s *DescribeLogMonitorAttributeResponseBodyLogMonitorAggregates) Validate()
 }
 
 type DescribeLogMonitorAttributeResponseBodyLogMonitorValueFilter struct {
-	// The name of the log field used for matching in the filter condition.
+	// The key.
 	//
 	// example:
 	//
-	// hostName
+	// key_******
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The method that is used to match the field value. Valid values:
+	// The operator that is used to match the field value. Valid values:
 	//
-	// 	- `contain`: contains
+	// - `contain`: contains.
 	//
-	// 	- `notContain`: does not contain
+	// - `notContain`: does not contain.
 	//
-	// 	- `>`: greater than
+	// - `>`: greater than.
 	//
-	// 	- `<`: less than
+	// - `<`: less than.
 	//
-	// 	- `>=`: greater than or equal to
+	// - `>=`: greater than or equal to.
 	//
-	// 	- `<=`: less than or equal to
+	// - `<=`: less than or equal to.
 	//
 	// example:
 	//
 	// contain
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	// The field value to be matched in the filter condition.
+	// The value.
 	//
 	// example:
 	//
-	// portal
+	// value_******
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

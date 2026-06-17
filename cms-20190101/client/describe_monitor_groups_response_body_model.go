@@ -28,21 +28,21 @@ type iDescribeMonitorGroupsResponseBody interface {
 }
 
 type DescribeMonitorGroupsResponseBody struct {
-	// The HTTP status code.
+	// The status code.
 	//
-	// > The status code 200 indicates that the request was successful.
+	// > A value of 200 indicates that the operation was successful.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned message.
+	// The error message.
 	//
 	// example:
 	//
 	// The specified resource is not found.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
@@ -61,17 +61,17 @@ type DescribeMonitorGroupsResponseBody struct {
 	// F02B299A-D374-4595-9F55-7534D604F132
 	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Resources *DescribeMonitorGroupsResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Struct"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// 	- true
+	// - true: The operation was successful.
 	//
-	// 	- false
+	// - false: The operation failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of returned entries.
+	// The total number of entries.
 	//
 	// example:
 	//

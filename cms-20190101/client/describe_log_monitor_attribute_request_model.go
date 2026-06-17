@@ -16,15 +16,13 @@ type iDescribeLogMonitorAttributeRequest interface {
 }
 
 type DescribeLogMonitorAttributeRequest struct {
-	// The metric name. Exact match is supported.
-	//
-	// For more information, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
+	// The name of the metric.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// cpu_total
+	// cpu_total_******
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
 	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }

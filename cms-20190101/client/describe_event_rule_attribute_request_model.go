@@ -29,11 +29,11 @@ type DescribeEventRuleAttributeRequest struct {
 	//
 	// testRule
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The mute period during which new alert notifications are not sent even if the trigger conditions are met.
+	// The mute period.
 	//
-	// Unit: seconds. Default value: 86400, which indicates one day.
+	// Unit: seconds. Default value: 86400 (1 day).
 	//
-	// >  Only one alert notification is sent during each mute period even if the metric value exceeds the alert threshold several times.
+	// > When monitoring data continuously exceeds the alert rule threshold, only one alert notification is sent within each mute period.
 	//
 	// example:
 	//

@@ -40,15 +40,15 @@ type CreateGroupMonitoringAgentProcessResponseBody struct {
 	//
 	// example:
 	//
-	// 3F6150F9-45C7-43F9-9578-A58B2E726C90
+	// 718FEA81-64C3-4F23-8F90-0531F7489FC1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The group process information.
 	Resource *CreateGroupMonitoringAgentProcessResponseBodyResource `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Struct"`
 	// Indicates whether the call is successful. Valid values:
 	//
-	// 	- true: The call is successful.
+	// - true: The call is successful.
 	//
-	// 	- false: The call fails.
+	// - false: The call fails.
 	//
 	// example:
 	//

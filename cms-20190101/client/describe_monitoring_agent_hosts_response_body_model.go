@@ -30,9 +30,9 @@ type iDescribeMonitoringAgentHostsResponseBody interface {
 }
 
 type DescribeMonitoringAgentHostsResponseBody struct {
-	// The HTTP status code.
+	// The status code.
 	//
-	// > The status code 200 indicates that the call is successful.
+	// > A status code of 200 indicates a successful response.
 	//
 	// example:
 	//
@@ -45,41 +45,41 @@ type DescribeMonitoringAgentHostsResponseBody struct {
 	//
 	// The Request is not authorization.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of returned pages.
+	// The number of pages.
 	//
 	// example:
 	//
 	// 50
 	PageTotal *int32 `json:"PageTotal,omitempty" xml:"PageTotal,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 63EEBB2A-9E51-41E4-9E83-5DE7F3B292E0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// 	- true: The call is successful.
+	// - true: The operation was successful.
 	//
-	// 	- false: The call fails.
+	// - false: The operation failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of returned entries.
+	// The total number of entries.
 	//
 	// example:
 	//

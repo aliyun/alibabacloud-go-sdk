@@ -28,21 +28,21 @@ type iDescribeSiteMonitorListRequest interface {
 }
 
 type DescribeSiteMonitorListRequest struct {
-	// Task network type. Valid values:
+	// The type of detection points used by the task. Valid values:
 	//
-	// - PC: Cable Network
+	// - PC: PC-based detection points.
 	//
-	// - MOBILE: Mobile Cellular Network
+	// - MOBILE: mobile-based detection points.
 	//
-	// - FC: Alibaba Cloud VPC Network
+	// - FC: internal detection points.
 	//
 	// example:
 	//
 	// PC
 	AgentGroup *string `json:"AgentGroup,omitempty" xml:"AgentGroup,omitempty"`
-	// The keyword to be matched.
+	// The keyword used to search for site monitoring tasks.
 	//
-	// >  You can search for tasks by name or address. Fuzzy search is supported.
+	// > Fuzzy match is supported based on the task name or task address.
 	//
 	// example:
 	//
@@ -69,15 +69,15 @@ type DescribeSiteMonitorListRequest struct {
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// The task status. Valid values:
 	//
-	// 	- 1: The task is enabled.
+	// - 1: Normal.
 	//
-	// 	- 2: The task is disabled.
+	// - 2: Disabled.
 	//
 	// example:
 	//
 	// 1
 	TaskState *string `json:"TaskState,omitempty" xml:"TaskState,omitempty"`
-	// The protocol that is used by the site monitoring task. Valid values: HTTP, PING, TCP, UDP, DNS, SMTP, POP3, and FTP.
+	// The type of the site monitoring task. CloudMonitor supports the following types: HTTP, PING, TCP, UDP, DNS, SMTP, POP3, and FTP.
 	//
 	// example:
 	//

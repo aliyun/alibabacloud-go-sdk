@@ -22,15 +22,15 @@ type iDescribeMonitoringAgentProcessesResponseBody interface {
 }
 
 type DescribeMonitoringAgentProcessesResponseBody struct {
-	// The HTTP status code.
+	// The status code.
 	//
-	// >  The value 200 indicates that the call was successful.
+	// > A status code of 200 indicates that the request was successful.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned message.
+	// The error message.
 	//
 	// example:
 	//
@@ -43,11 +43,11 @@ type DescribeMonitoringAgentProcessesResponseBody struct {
 	//
 	// C11C0E85-6862-4F25-8D66-D6A5E0882984
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// 	- true: The call was successful.
+	// - true: The operation was successful.
 	//
-	// 	- false: The call failed.
+	// - false: The operation failed.
 	//
 	// example:
 	//

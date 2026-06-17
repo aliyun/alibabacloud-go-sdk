@@ -26,7 +26,7 @@ type DescribeAlertLogHistogramResponseBody struct {
 	AlertLogHistogramList []*DescribeAlertLogHistogramResponseBodyAlertLogHistogramList `json:"AlertLogHistogramList,omitempty" xml:"AlertLogHistogramList,omitempty" type:"Repeated"`
 	// The response code.
 	//
-	// >  The status code 200 indicates that the request was successful.
+	// > The status code 200 indicates that the request was successful.
 	//
 	// example:
 	//
@@ -46,9 +46,9 @@ type DescribeAlertLogHistogramResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//

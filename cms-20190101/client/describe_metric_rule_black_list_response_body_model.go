@@ -24,13 +24,15 @@ type iDescribeMetricRuleBlackListResponseBody interface {
 }
 
 type DescribeMetricRuleBlackListResponseBody struct {
-	// The categories of the Alibaba Cloud service. For example, ApsaraDB for Redis includes the following categories: ApsaraDB for Redis (standard architecture), ApsaraDB for Redis (cluster architecture), and ApsaraDB for Redis (read/write splitting architecture). In this case, the valid values of this parameter for ApsaraDB for Redis include `kvstore_standard`, `kvstore_sharding`, and `kvstore_splitrw`.
+	// The status code.
+	//
+	// > A value of 200 indicates that the request was successful.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The queried blacklist policies.
+	// The blacklist policies.
 	DescribeMetricRuleBlackList []*DescribeMetricRuleBlackListResponseBodyDescribeMetricRuleBlackList `json:"DescribeMetricRuleBlackList,omitempty" xml:"DescribeMetricRuleBlackList,omitempty" type:"Repeated"`
 	// The error message.
 	//
@@ -38,23 +40,23 @@ type DescribeMetricRuleBlackListResponseBody struct {
 	//
 	// The Request is not authorization.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The namespace of the cloud service.
+	// The request ID.
 	//
 	// example:
 	//
 	// D63E76CB-29AA-5B9F-88CE-400A6F28D428
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The namespace of the cloud service.
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// For more information about the namespaces of different cloud services, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
+	// - true: The operation was successful.
+	//
+	// - false: The operation failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The timestamp when the blacklist policy was created.
-	//
-	// Unit: milliseconds.
+	// The total number of blacklist policies.
 	//
 	// example:
 	//
@@ -138,13 +140,13 @@ func (s *DescribeMetricRuleBlackListResponseBody) Validate() error {
 }
 
 type DescribeMetricRuleBlackListResponseBodyDescribeMetricRuleBlackList struct {
-	// The category of the cloud service. For example, ApsaraDB for Redis includes the following categories: ApsaraDB for Redis (standard architecture), ApsaraDB for Redis (cluster architecture), and ApsaraDB for Redis (read/write splitting architecture). In this case, the valid values of this parameter for ApsaraDB for Redis include `kvstore_standard`, `kvstore_sharding`, and `kvstore_splitrw`.
+	// The category of the Alibaba Cloud service. For example, Redis has different editions, such as `kvstore_standard` (Standard Edition), `kvstore_sharding` (Cluster Edition), and `kvstore_splitrw` (Read/write Splitting Edition).
 	//
 	// example:
 	//
 	// ecs
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The timestamp when the blacklist policy was created.
+	// The timestamp that indicates when the blacklist policy was created.
 	//
 	// Unit: milliseconds.
 	//
@@ -152,23 +154,23 @@ type DescribeMetricRuleBlackListResponseBodyDescribeMetricRuleBlackList struct {
 	//
 	// 1665714561000
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time range within which the blacklist policy is effective.
+	// The time range during which the blacklist policy is effective.
 	//
 	// example:
 	//
 	// 00:00-23:59
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
-	// The timestamp when the blacklist policy started to take effect.
+	// The timestamp that indicates when the alert blacklist policy is no longer in effect.
 	//
-	// Unit: milliseconds.
+	// The timestamp is measured in milliseconds.
 	//
 	// example:
 	//
 	// 1640608200000
 	EnableEndTime *int64 `json:"EnableEndTime,omitempty" xml:"EnableEndTime,omitempty"`
-	// The timestamp when the blacklist policy expired.
+	// The time when the alert blacklist policy expires.
 	//
-	// Unit: milliseconds.
+	// This is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -180,13 +182,13 @@ type DescribeMetricRuleBlackListResponseBodyDescribeMetricRuleBlackList struct {
 	//
 	// 93514c96-ceb8-47d8-8ee3-93b6d98b****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The IDs of the instances that belong to the specified cloud service.
+	// The instances of the Alibaba Cloud service in the blacklist policy.
 	Instances []*string `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
 	// The status of the blacklist policy. Valid values:
 	//
-	// 	- true: The blacklist policy is enabled.
+	// - true: enabled.
 	//
-	// 	- false: The blacklist policy is disabled.
+	// - false: disabled.
 	//
 	// example:
 	//
@@ -200,17 +202,17 @@ type DescribeMetricRuleBlackListResponseBodyDescribeMetricRuleBlackList struct {
 	//
 	// Blacklist-01
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The namespace of the cloud service.
+	// The namespace of the Alibaba Cloud service.
 	//
 	// example:
 	//
 	// acs_ecs_dashboard
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The effective scope of the blacklist policy. Valid values:
+	// The scope of the blacklist policy. Valid values:
 	//
-	// 	- USER: The blacklist policy takes effect only within the current Alibaba Cloud account.
+	// - USER: The blacklist policy takes effect only for the current Alibaba Cloud account.
 	//
-	// 	- GROUP: The blacklist policy takes effect only within the specified application group.
+	// - GROUP: The blacklist policy takes effect for the specified application groups.
 	//
 	// example:
 	//
@@ -218,7 +220,7 @@ type DescribeMetricRuleBlackListResponseBodyDescribeMetricRuleBlackList struct {
 	ScopeType *string `json:"ScopeType,omitempty" xml:"ScopeType,omitempty"`
 	// The IDs of the application groups.
 	ScopeValue []*string `json:"ScopeValue,omitempty" xml:"ScopeValue,omitempty" type:"Repeated"`
-	// The timestamp when the blacklist policy was modified.
+	// The timestamp that indicates when the blacklist policy was modified.
 	//
 	// Unit: milliseconds.
 	//
@@ -376,13 +378,13 @@ func (s *DescribeMetricRuleBlackListResponseBodyDescribeMetricRuleBlackList) Val
 }
 
 type DescribeMetricRuleBlackListResponseBodyDescribeMetricRuleBlackListMetrics struct {
-	// The metric name.
+	// The name of the metric.
 	//
 	// example:
 	//
 	// disk_utilization
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The extended dimension of the instance. For example, `{"device":"C:"}` specifies that the blacklist policy is applied to all C disks of the specified Elastic Compute Service (ECS) instance.
+	// The extended dimension of the instance. For example, `{"device":"C:"}` means that the blacklist policy is applied to all C drives of an Elastic Compute Service (ECS) instance.
 	//
 	// example:
 	//

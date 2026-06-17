@@ -24,9 +24,9 @@ type iDescribeMonitorGroupNotifyPolicyListResponseBody interface {
 }
 
 type DescribeMonitorGroupNotifyPolicyListResponseBody struct {
-	// The status code.
+	// The HTTP status code.
 	//
-	// > The status code 200 indicates that the request was successful.
+	// > The value 200 indicates success.
 	//
 	// example:
 	//
@@ -45,17 +45,17 @@ type DescribeMonitorGroupNotifyPolicyListResponseBody struct {
 	//
 	// 6072F026-C441-41A6-B114-35A1E8F8FDD3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// 	- true
+	// - true: The operation was successful.
 	//
-	// 	- false
+	// - false: The operation failed.
 	//
 	// example:
 	//
 	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of entries returned.
+	// The total number of records.
 	//
 	// example:
 	//

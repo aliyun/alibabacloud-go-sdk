@@ -62,7 +62,7 @@ type DescribeAlertLogCountRequest struct {
 	//
 	// You can query only the alert logs within the last year. If the query time is longer than one year, the return value of the `AlertLogCount` parameter is empty.
 	//
-	// >  The interval between the start time (StartTime) and end time (EndTime) must be less than or equal to 15 days. The start time and end time must be specified or left empty at the same time. If you do not specify the start time and end time, the alert logs within the last 15 minutes are queried by default.
+	// > The interval between the start time (StartTime) and end time (EndTime) must be less than or equal to 15 days. The start time and end time must be specified or left empty at the same time. If you do not specify the start time and end time, the alert logs within the last 15 minutes are queried by default.
 	//
 	// example:
 	//
@@ -70,9 +70,9 @@ type DescribeAlertLogCountRequest struct {
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The type of the alert event. Valid values:
 	//
-	// 	- TRIGGERED: The alert is triggered.
+	// - TRIGGERED: The alert is triggered.
 	//
-	// 	- RESOLVED: The alert is resolved.
+	// - RESOLVED: The alert is resolved.
 	//
 	// example:
 	//
@@ -80,15 +80,15 @@ type DescribeAlertLogCountRequest struct {
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
 	// The dimension based on which data is aggregated. This parameter is similar to the Group By clause of SQL statements. Valid values:
 	//
-	// 	- `product`: aggregates data by cloud service.
+	// - `product`: aggregates data by cloud service.
 	//
-	// 	- `level`: aggregates data by alert level.
+	// - `level`: aggregates data by alert level.
 	//
-	// 	- `groupId`: aggregates data by application group.
+	// - `groupId`: aggregates data by application group.
 	//
-	// 	- `contactGroup`: aggregates data by alert group.
+	// - `contactGroup`: aggregates data by alert group.
 	//
-	// 	- `product,metricName`: aggregates data both by cloud service and by metric.
+	// - `product,metricName`: aggregates data both by cloud service and by metric.
 	//
 	// This parameter is required.
 	//
@@ -110,9 +110,9 @@ type DescribeAlertLogCountRequest struct {
 	LastMin *string `json:"LastMin,omitempty" xml:"LastMin,omitempty"`
 	// The level and notification method of the alert. Valid values:
 	//
-	// 	- P4: Alert notifications are sent by using emails and DingTalk chatbots.
+	// - P4: Alert notifications are sent by using emails and DingTalk chatbots.
 	//
-	// 	- OK: No alert is generated.
+	// - OK: No alert is generated.
 	//
 	// example:
 	//
@@ -120,7 +120,7 @@ type DescribeAlertLogCountRequest struct {
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
 	// The name of the metric.
 	//
-	// >  For more information about the metrics of different cloud services, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
+	// > For more information about the metrics of different cloud services, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
 	//
 	// example:
 	//
@@ -128,7 +128,7 @@ type DescribeAlertLogCountRequest struct {
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
 	// The namespace of the cloud service.
 	//
-	// >  For more information about the namespaces of cloud services, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
+	// > For more information about the namespaces of cloud services, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
 	//
 	// example:
 	//
@@ -136,15 +136,15 @@ type DescribeAlertLogCountRequest struct {
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL. Valid values:
 	//
-	// 	- `product`: aggregates data by cloud service.
+	// - `product`: aggregates data by cloud service.
 	//
-	// 	- `level`: aggregates data by alert level.
+	// - `level`: aggregates data by alert level.
 	//
-	// 	- `groupId`: aggregates data by application group.
+	// - `groupId`: aggregates data by application group.
 	//
-	// 	- `contactGroup`: aggregates data by alert contact group.
+	// - `contactGroup`: aggregates data by alert contact group.
 	//
-	// 	- `product,metricName`: aggregates data both by cloud service and by metric.
+	// - `product,metricName`: aggregates data both by cloud service and by metric.
 	//
 	// example:
 	//
@@ -185,15 +185,15 @@ type DescribeAlertLogCountRequest struct {
 	SearchKey *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
 	// The status of the alert. Valid values:
 	//
-	// 	- 0: The alert is triggered or cleared.
+	// - 0: The alert is triggered or cleared.
 	//
-	// 	- 1: The alert is generated not during the effective period.
+	// - 1: The alert is generated not during the effective period.
 	//
-	// 	- 2: The alert is muted and not triggered in a specified period.
+	// - 2: The alert is muted and not triggered in a specified period.
 	//
-	// 	- 3: The host is restarting.
+	// - 3: The host is restarting.
 	//
-	// 	- 4: Notifications are not sent for the alert.
+	// - 4: Notifications are not sent for the alert.
 	//
 	// When the value of the SendStatus parameter is 0, the value P4 of the Level parameter indicates a triggered alert and the value OK indicates a cleared alert.
 	//
@@ -205,7 +205,7 @@ type DescribeAlertLogCountRequest struct {
 	//
 	// example:
 	//
-	// None
+	// 无
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 	// The start timestamp of the alert logs to be queried.
 	//
@@ -213,7 +213,7 @@ type DescribeAlertLogCountRequest struct {
 	//
 	// You can query only the alert logs within the last year. If the query time is longer than one year, the return value of the `AlertLogCount` parameter is empty.
 	//
-	// >  The interval between the start time (StartTime) and end time (EndTime) must be less than or equal to 15 days. The start time and end time must be specified or left empty at the same time. If you do not specify the start time and end time, the alert logs within the last 15 minutes are queried by default.
+	// > The interval between the start time (StartTime) and end time (EndTime) must be less than or equal to 15 days. The start time and end time must be specified or left empty at the same time. If you do not specify the start time and end time, the alert logs within the last 15 minutes are queried by default.
 	//
 	// example:
 	//

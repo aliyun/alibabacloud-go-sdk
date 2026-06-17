@@ -17,7 +17,7 @@ type iDeleteMetricRuleTemplateRequest interface {
 
 type DeleteMetricRuleTemplateRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the alert template.
+	// The ID of the alert rule template.
 	//
 	// This parameter is required.
 	//

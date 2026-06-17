@@ -24,19 +24,19 @@ type iDescribeMetricMetaListRequest interface {
 type DescribeMetricMetaListRequest struct {
 	// The tags for filtering metrics. Specify a JSON string.
 	//
-	// Format: ` [{"name":"tag key","value":"tag value"},{"name":"tag key","value":"tag value"}]  `. The following tags are available:
+	// Format: `[{"name":"tag key","value":"tag value"},{"name":"tag key","value":"tag value"}] `. The following tags are available:
 	//
-	// 	- metricCategory: the category of the metric.
+	// - metricCategory: the category of the metric.
 	//
-	// 	- alertEnable: specifies whether to report alerts for the metric.
+	// - alertEnable: specifies whether to report alerts for the metric.
 	//
-	// 	- alertUnit: the unit of the metric in the alerts.
+	// - alertUnit: the unit of the metric in the alerts.
 	//
-	// 	- unitFactor: the factor for metric unit conversion.
+	// - unitFactor: the factor for metric unit conversion.
 	//
-	// 	- minAlertPeriod: the minimum interval at which the alert is reported.
+	// - minAlertPeriod: the minimum interval at which the alert is reported.
 	//
-	// 	- productCategory: the category of the service.
+	// - productCategory: the category of the service.
 	//
 	// example:
 	//

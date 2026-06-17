@@ -24,11 +24,11 @@ type DescribeExporterRuleListRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: 1000.
+	// The number of entries per page.
 	//
 	// example:
 	//
-	// 1000
+	// 10
 	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }

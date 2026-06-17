@@ -32,9 +32,9 @@ type iDescribeMetricRuleTemplateListRequest interface {
 type DescribeMetricRuleTemplateListRequest struct {
 	// Specifies whether to display the history of applying the alert templates to application groups. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false (default)
+	// - false (default)
 	//
 	// example:
 	//
@@ -54,9 +54,9 @@ type DescribeMetricRuleTemplateListRequest struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The sorting order. Valid values:
 	//
-	// 	- true (default): ascending order
+	// - true (default): ascending order
 	//
-	// 	- false: descending order
+	// - false: descending order
 	//
 	// example:
 	//
@@ -64,9 +64,9 @@ type DescribeMetricRuleTemplateListRequest struct {
 	Order *bool `json:"Order,omitempty" xml:"Order,omitempty"`
 	// The sorting basis. Valid values:
 	//
-	// 	- gmtMotified: sorts alert templates by modification time
+	// - gmtMotified: sorts alert templates by modification time
 	//
-	// 	- gmtCreate (default): sorts alert templates by creation time
+	// - gmtCreate (default): sorts alert templates by creation time
 	//
 	// example:
 	//

@@ -17,7 +17,7 @@ type iDisableMetricRulesRequest interface {
 
 type DisableMetricRulesRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the alert rule. Valid values of N: 1 to 20.
+	// The IDs of the alert rules.
 	//
 	// This parameter is required.
 	//

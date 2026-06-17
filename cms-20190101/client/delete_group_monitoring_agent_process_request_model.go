@@ -26,7 +26,7 @@ type DeleteGroupMonitoringAgentProcessRequest struct {
 	//
 	// 123456
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The ID of the process monitoring task.
+	// The ID of the group process.
 	//
 	// This parameter is required.
 	//

@@ -34,9 +34,9 @@ type PutMonitorGroupDynamicRuleRequest struct {
 	GroupRules []*PutMonitorGroupDynamicRuleRequestGroupRules `json:"GroupRules,omitempty" xml:"GroupRules,omitempty" type:"Repeated"`
 	// The mode for creating the alert rule. Valid values:
 	//
-	// 	- true: creates asynchronously
+	// - true: creates asynchronously
 	//
-	// 	- false (default): creates synchronously
+	// - false (default): creates synchronously
 	//
 	// example:
 	//
@@ -105,11 +105,11 @@ func (s *PutMonitorGroupDynamicRuleRequest) Validate() error {
 type PutMonitorGroupDynamicRuleRequestGroupRules struct {
 	// The cloud service to which the alert rule is applied. Valid values of N: 1 to 3. Valid values:
 	//
-	// 	- ecs: Elastic Compute Service (ECS)
+	// - ecs: Elastic Compute Service (ECS)
 	//
-	// 	- rds: ApsaraDB RDS
+	// - rds: ApsaraDB RDS
 	//
-	// 	- slb: Server Load Balancer (SLB)
+	// - slb: Server Load Balancer (SLB)
 	//
 	// This parameter is required.
 	//
@@ -119,9 +119,9 @@ type PutMonitorGroupDynamicRuleRequestGroupRules struct {
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The logical operator used between conditional expressions in the alert rule. Valid values of N: 1 to 3. Valid values:
 	//
-	// 	- and: The instances that meet all the conditional expressions are automatically added to the application group.
+	// - and: The instances that meet all the conditional expressions are automatically added to the application group.
 	//
-	// 	- or: The instances that meet one of the conditional expressions are automatically added to the application group.
+	// - or: The instances that meet one of the conditional expressions are automatically added to the application group.
 	//
 	// This parameter is required.
 	//
@@ -186,13 +186,13 @@ func (s *PutMonitorGroupDynamicRuleRequestGroupRules) Validate() error {
 type PutMonitorGroupDynamicRuleRequestGroupRulesFilters struct {
 	// The method that is used to filter instances. Valid values of N: 1 to 3. Valid values:
 	//
-	// 	- contains: contains
+	// - contains: contains
 	//
-	// 	- notContains: does not contain
+	// - notContains: does not contain
 	//
-	// 	- startWith: starts with a prefix
+	// - startWith: starts with a prefix
 	//
-	// 	- endWith: ends with a suffix
+	// - endWith: ends with a suffix
 	//
 	// This parameter is required.
 	//

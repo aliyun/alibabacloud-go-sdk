@@ -22,15 +22,15 @@ type iModifySiteMonitorResponseBody interface {
 }
 
 type ModifySiteMonitorResponseBody struct {
-	// The HTTP status code.
+	// The status code.
 	//
-	// > The status code 200 indicates that the request was successful.
+	// > The value 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The result of modifying the task.
+	// The details of the node task result.
 	Data *ModifySiteMonitorResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
@@ -44,11 +44,11 @@ type ModifySiteMonitorResponseBody struct {
 	//
 	// 68192f5d-0d45-4b98-9724-892813f86c71
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// 	- true
+	// - true: The operation was successful.
 	//
-	// 	- false
+	// - false: The operation failed.
 	//
 	// example:
 	//
@@ -119,7 +119,7 @@ func (s *ModifySiteMonitorResponseBody) Validate() error {
 }
 
 type ModifySiteMonitorResponseBodyData struct {
-	// The number of site monitoring tasks.
+	// The number of monitoring tasks.
 	//
 	// example:
 	//

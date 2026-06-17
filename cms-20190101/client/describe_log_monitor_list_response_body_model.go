@@ -30,7 +30,7 @@ type iDescribeLogMonitorListResponseBody interface {
 type DescribeLogMonitorListResponseBody struct {
 	// The status code.
 	//
-	// >  The status code 200 indicates that the request was successful.
+	// > The status code 200 indicates that the request was successful.
 	//
 	// example:
 	//
@@ -64,9 +64,9 @@ type DescribeLogMonitorListResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
@@ -222,9 +222,9 @@ type DescribeLogMonitorListResponseBodyLogMonitorList struct {
 	ValueFilter []*DescribeLogMonitorListResponseBodyLogMonitorListValueFilter `json:"ValueFilter,omitempty" xml:"ValueFilter,omitempty" type:"Repeated"`
 	// The logical operator that is used between log filter conditions. The ValueFilter and ValueFilterRelation parameters are used in pair. Valid values:
 	//
-	// 	- and
+	// - and
 	//
-	// 	- or
+	// - or
 	//
 	// example:
 	//
@@ -343,17 +343,17 @@ type DescribeLogMonitorListResponseBodyLogMonitorListValueFilter struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The method that is used to match the field value. Valid values:
 	//
-	// 	- contain: contains
+	// - contain: contains
 	//
-	// 	- notContain: does not contain
+	// - notContain: does not contain
 	//
-	// 	- `>`: greater than
+	// - `>`: greater than
 	//
-	// 	- `<`: less than
+	// - `<`: less than
 	//
-	// 	- `>=`: greater than or equal to
+	// - `>=`: greater than or equal to
 	//
-	// 	- `<=`: less than or equal to
+	// - `<=`: less than or equal to
 	//
 	// example:
 	//

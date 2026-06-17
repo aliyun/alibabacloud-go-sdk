@@ -32,9 +32,9 @@ type EnableMetricRuleBlackListRequest struct {
   Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
   // Specifies whether to enable the blacklist policy. Valid values:
   // 
-  // 	- true: The blacklist policy is enabled.
+  // - true: The blacklist policy is enabled.
   // 
-  // 	- false (default): The blacklist policy is disabled.
+  // - false (default): The blacklist policy is disabled.
   // 
   // This parameter is required.
   // 

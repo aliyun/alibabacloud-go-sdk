@@ -22,7 +22,7 @@ type iDeleteContactResponseBody interface {
 type DeleteContactResponseBody struct {
 	// The status code.
 	//
-	// >  The status code 200 indicates that the request was successful.
+	// > 200 indicates success.
 	//
 	// example:
 	//
@@ -40,7 +40,11 @@ type DeleteContactResponseBody struct {
 	//
 	// 50D4CFE1-01E5-4543-939C-18BC01E3EC1C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values: true and false.
+	// Indicates whether the operation was successful. Valid values:
+	//
+	// - true: Successful.
+	//
+	// - false: Failed.
 	//
 	// example:
 	//

@@ -22,9 +22,9 @@ type iCreateGroupMetricRulesResponseBody interface {
 }
 
 type CreateGroupMetricRulesResponseBody struct {
-	// The HTTP status code.
+	// The status code.
 	//
-	// >  The status code 200 indicates that the call is successful.
+	// >A value of 200 indicates success.
 	//
 	// example:
 	//
@@ -36,18 +36,18 @@ type CreateGroupMetricRulesResponseBody struct {
 	//
 	// The Request is not authorization.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 461CF2CD-2FC3-4B26-8645-7BD27E7D0F1D
 	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Resources *CreateGroupMetricRulesResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Struct"`
-	// Indicates whether the call is successful. Valid value:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// - true: The call is successful.
+	// - true: Successful.
 	//
-	// - false: The call fails.
+	// - false: Failed.
 	//
 	// example:
 	//

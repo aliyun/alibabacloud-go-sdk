@@ -22,9 +22,9 @@ type iDescribeEventRuleAttributeResponseBody interface {
 }
 
 type DescribeEventRuleAttributeResponseBody struct {
-	// The HTTP status code.
+	// The status code.
 	//
-	// >  The status code 200 indicates that the request was successful.
+	// > 200 indicates success.
 	//
 	// example:
 	//
@@ -44,11 +44,11 @@ type DescribeEventRuleAttributeResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The details of the event-triggered alert rule.
 	Result *DescribeEventRuleAttributeResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// 	- true
+	// - true: The operation was successful.
 	//
-	// 	- false
+	// - false: The operation failed.
 	//
 	// example:
 	//
@@ -125,19 +125,19 @@ type DescribeEventRuleAttributeResponseBodyResult struct {
 	//
 	// Default group event rule.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The event pattern. This parameter describes the trigger conditions of an event.
+	// The event pattern. Describes the trigger conditions of the event.
 	EventPattern *DescribeEventRuleAttributeResponseBodyResultEventPattern `json:"EventPattern,omitempty" xml:"EventPattern,omitempty" type:"Struct"`
 	// The event type. Valid values:
 	//
-	// 	- SYSTEM: system event
+	// - SYSTEM: system event.
 	//
-	// 	- CUSTOM: custom event
+	// - CUSTOM: custom event.
 	//
 	// example:
 	//
 	// SYSTEM
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	// The ID of the application group.
+	// The application group ID.
 	//
 	// example:
 	//
@@ -151,9 +151,9 @@ type DescribeEventRuleAttributeResponseBodyResult struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The status of the event-triggered alert rule. Valid values:
 	//
-	// 	- ENABLED
+	// - ENABLED: enabled.
 	//
-	// 	- DISABLED
+	// - DISABLED: disabled.
 	//
 	// example:
 	//
@@ -234,7 +234,7 @@ func (s *DescribeEventRuleAttributeResponseBodyResult) Validate() error {
 
 type DescribeEventRuleAttributeResponseBodyResultEventPattern struct {
 	EventTypeList *DescribeEventRuleAttributeResponseBodyResultEventPatternEventTypeList `json:"EventTypeList,omitempty" xml:"EventTypeList,omitempty" type:"Struct"`
-	// The keyword for filtering.
+	// The filter keyword.
 	KeywordFilterObj *DescribeEventRuleAttributeResponseBodyResultEventPatternKeywordFilterObj `json:"KeywordFilterObj,omitempty" xml:"KeywordFilterObj,omitempty" type:"Struct"`
 	LevelList        *DescribeEventRuleAttributeResponseBodyResultEventPatternLevelList        `json:"LevelList,omitempty" xml:"LevelList,omitempty" type:"Struct"`
 	NameList         *DescribeEventRuleAttributeResponseBodyResultEventPatternNameList         `json:"NameList,omitempty" xml:"NameList,omitempty" type:"Struct"`
@@ -244,7 +244,7 @@ type DescribeEventRuleAttributeResponseBodyResultEventPattern struct {
 	//
 	// CloudMonitor
 	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
-	// Indicates that logs are filtered based on the specified SQL statement. If the specified conditions are met, an alert is triggered.
+	// Filters logs by using SQL statements. An alert is triggered if the filter conditions are met.
 	//
 	// example:
 	//
@@ -380,11 +380,11 @@ func (s *DescribeEventRuleAttributeResponseBodyResultEventPatternEventTypeList) 
 
 type DescribeEventRuleAttributeResponseBodyResultEventPatternKeywordFilterObj struct {
 	Keywords *DescribeEventRuleAttributeResponseBodyResultEventPatternKeywordFilterObjKeywords `json:"Keywords,omitempty" xml:"Keywords,omitempty" type:"Struct"`
-	// The relationship between multiple keywords in a condition. Valid values:
+	// The condition for multiple keywords. Valid values:
 	//
-	// 	- OR: The relationship between keywords is OR.
+	// - OR: The relationship between multiple keywords is OR.
 	//
-	// 	- NOT: The keyword is excluded. The value NOT indicates that all events that do not contain the keywords are matched.
+	// - NOT: Does not contain the keyword. Matches all events that are not in the keyword list.
 	//
 	// example:
 	//

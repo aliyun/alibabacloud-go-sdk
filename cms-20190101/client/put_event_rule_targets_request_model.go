@@ -28,13 +28,13 @@ type iPutEventRuleTargetsRequest interface {
 }
 
 type PutEventRuleTargetsRequest struct {
-	// The information about the alert contact groups that receive alert notifications.
+	// The alert contact group notification method.
 	ContactParameters []*PutEventRuleTargetsRequestContactParameters `json:"ContactParameters,omitempty" xml:"ContactParameters,omitempty" type:"Repeated"`
-	// The information about the recipients in Function Compute.
+	// The Function Compute notification method.
 	FcParameters []*PutEventRuleTargetsRequestFcParameters `json:"FcParameters,omitempty" xml:"FcParameters,omitempty" type:"Repeated"`
-	// The notifications of Simple Message Queue (formerly MNS) (SMQ).
+	// The Simple Message Queue (formerly MNS) notification method.
 	MnsParameters []*PutEventRuleTargetsRequestMnsParameters `json:"MnsParameters,omitempty" xml:"MnsParameters,omitempty" type:"Repeated"`
-	// The parameters of API callback notification.
+	// The list of API callback notification parameters.
 	OpenApiParameters []*PutEventRuleTargetsRequestOpenApiParameters `json:"OpenApiParameters,omitempty" xml:"OpenApiParameters,omitempty" type:"Repeated"`
 	RegionId          *string                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The name of the alert rule.
@@ -45,9 +45,9 @@ type PutEventRuleTargetsRequest struct {
 	//
 	// testEventRule
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The information about the recipients in Simple Log Service.
+	// The Simple Log Service notification method.
 	SlsParameters []*PutEventRuleTargetsRequestSlsParameters `json:"SlsParameters,omitempty" xml:"SlsParameters,omitempty" type:"Repeated"`
-	// The information about the callback URLs that are used to receive alert notifications.
+	// The URL callback notification method.
 	WebhookParameters []*PutEventRuleTargetsRequestWebhookParameters `json:"WebhookParameters,omitempty" xml:"WebhookParameters,omitempty" type:"Repeated"`
 }
 
@@ -191,20 +191,32 @@ func (s *PutEventRuleTargetsRequest) Validate() error {
 
 type PutEventRuleTargetsRequestContactParameters struct {
 	// The name of the alert contact group. Valid values of N: 1 to 5.
+	//
+	// example:
+	//
+	// Default alert contact group
 	ContactGroupName *string `json:"ContactGroupName,omitempty" xml:"ContactGroupName,omitempty"`
-	// The ID of the recipient that receives alert notifications. Valid values of N: 1 to 5.
+	// The unique identifier of the rule target. Valid values of N: 1 to 5.
 	//
 	// example:
 	//
 	// 2
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The alert notification methods. Valid values of N: 1 to 5. Valid values:
+	// The alert notification level. Valid values of N: 1 to 5. Valid values:
 	//
-	// 4: Alert notifications are sent by using DingTalk and emails.
+	// <props="china">- 2: phone call, text message, DingTalk, and email
+	//
+	// <props="china">- 3: text message, DingTalk, and email
+	//
+	// <props="china">- 4: DingTalk and email
+	//
+	// <props="intl">4: DingTalk and email
+	//
+	// <props="partner">4: DingTalk and email.
 	//
 	// example:
 	//
-	// 3
+	// 4
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
 }
 
@@ -254,19 +266,19 @@ type PutEventRuleTargetsRequestFcParameters struct {
 	//
 	// fc-test
 	FunctionName *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
-	// The ID of the recipient that receives alert notifications. Valid values of N: 1 to 5.
+	// The unique identifier of the rule target. Valid values of N: 1 to 5.
 	//
 	// example:
 	//
 	// 1
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The region where Function Compute is deployed. Valid values of N: 1 to 5.
+	// The region where the Function Compute service resides. Valid values of N: 1 to 5.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The name of the Function Compute service. Valid values of N: 1 to 5.
+	// The service name of the Function Compute service. Valid values of N: 1 to 5.
 	//
 	// example:
 	//
@@ -323,25 +335,25 @@ func (s *PutEventRuleTargetsRequestFcParameters) Validate() error {
 }
 
 type PutEventRuleTargetsRequestMnsParameters struct {
-	// The ID of the recipient that receives alert notifications. Valid values of N: 1 to 5.
+	// The unique identifier of the rule target. Valid values of N: 1 to 5.
 	//
 	// example:
 	//
 	// 3
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the SMQ queue. Valid values of N: 1 to 5.
+	// The name of the queue. Valid values of N: 1 to 5.
 	//
 	// example:
 	//
 	// queue1
 	Queue *string `json:"Queue,omitempty" xml:"Queue,omitempty"`
-	// The region for SMQ. Valid values of N: 1 to 5.
+	// The region where Simple Message Queue (formerly MNS) resides. Valid values of N: 1 to 5.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The SMQ topic.
+	// The topic of Simple Message Queue (formerly MNS).
 	//
 	// example:
 	//
@@ -404,31 +416,33 @@ type PutEventRuleTargetsRequestOpenApiParameters struct {
 	//
 	// PutLogs
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	// The Alibaba Cloud Resource Name (ARN) of the resource. Valid values of N: 1 to 5. Format: `arn:acs:${Service}:${Region}:${Account}:${ResourceType}/${ResourceId}`. Fields:
+	// The Alibaba Cloud Resource Name (ARN) of the resource. Valid values of N: 1 to 5.
 	//
-	// 	- Service: the code of a cloud service
+	// Format: `arn:acs:${Service}:${Region}:${Account}:${ResourceType}/${ResourceId}`. The fields are described as follows:
 	//
-	// 	- Region: the region ID
+	//   - Service: the Alibaba Cloud service.
 	//
-	// 	- Account: the ID of an Alibaba Cloud account
+	//   - Region: the region ID.
 	//
-	// 	- ResourceType: the resource type
+	//   - Account: the Alibaba Cloud account ID.
 	//
-	// 	- ResourceId: the resource ID
+	//   - ResourceType: the resource type.
+	//
+	//   - ResourceId: the resource ID.
 	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	// The ID of the recipient that receives alert notifications sent by an API callback.
+	// The unique identifier of the API callback notification method.
 	//
 	// example:
 	//
 	// 3
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The parameters of the alert callback. Specify the parameters in the JSON format.
+	// The JSON-formatted parameters of the alert callback.
 	//
 	// example:
 	//
 	// {"customField1":"value1","customField2":"$.name"}
 	JsonParams *string `json:"JsonParams,omitempty" xml:"JsonParams,omitempty"`
-	// The ID of the cloud service to which the API operation belongs.
+	// The ID of the Alibaba Cloud service to which the API belongs.
 	//
 	// example:
 	//
@@ -440,13 +454,13 @@ type PutEventRuleTargetsRequestOpenApiParameters struct {
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The name of the role.
+	// The role name.
 	//
 	// example:
 	//
 	// MyRole
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// The version of the API.
+	// The API version.
 	//
 	// example:
 	//
@@ -539,25 +553,25 @@ func (s *PutEventRuleTargetsRequestOpenApiParameters) Validate() error {
 }
 
 type PutEventRuleTargetsRequestSlsParameters struct {
-	// The ID of the recipient that receives alert notifications. Valid values of N: 1 to 5.
+	// The unique identifier of the rule target. Valid values of N: 1 to 5.
 	//
 	// example:
 	//
 	// 5
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the Simple Log Service Logstore. Valid values of N: 1 to 5.
+	// The Logstore of Simple Log Service. Valid values of N: 1 to 5.
 	//
 	// example:
 	//
 	// testlogstore
 	LogStore *string `json:"LogStore,omitempty" xml:"LogStore,omitempty"`
-	// The name of the Simple Log Service project. Valid values of N: 1 to 5.
+	// The project of Simple Log Service. Valid values of N: 1 to 5.
 	//
 	// example:
 	//
 	// testproject
 	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
-	// The region where Simple Log Service is deployed. Valid values of N: 1 to 5.
+	// The region where Simple Log Service resides. Valid values of N: 1 to 5.
 	//
 	// example:
 	//
@@ -614,27 +628,27 @@ func (s *PutEventRuleTargetsRequestSlsParameters) Validate() error {
 }
 
 type PutEventRuleTargetsRequestWebhookParameters struct {
-	// The ID of the recipient that receives alert notifications. Valid values of N: 1 to 5.
+	// The unique identifier of the rule target. Valid values of N: 1 to 5.
 	//
 	// example:
 	//
 	// 4
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The HTTP request method. Valid values of N: 1 to 5.
+	// The request method of the HTTP callback. Valid values of N: 1 to 5.
 	//
-	// Valid values: GET and POST.
+	// Only GET and POST are supported.
 	//
 	// example:
 	//
 	// GET
 	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
-	// The name of the protocol. Valid values of N: 1 to 5. Valid values:
+	// The protocol name. Valid values of N: 1 to 5. Valid values:
 	//
-	// 	- http
+	// - http
 	//
-	// 	- telnet
+	// - telnet
 	//
-	// 	- ping
+	// - ping.
 	//
 	// example:
 	//

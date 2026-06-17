@@ -17,7 +17,7 @@ type iDeleteExporterRuleRequest interface {
 
 type DeleteExporterRuleRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the data export rule.
+	// The name of the export rules.
 	//
 	// This parameter is required.
 	//

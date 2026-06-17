@@ -18,17 +18,13 @@ type iDescribeTagKeyListRequest interface {
 }
 
 type DescribeTagKeyListRequest struct {
-	// The page number.
-	//
-	// Pages start from page 1. Default value: 1.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page.
-	//
-	// Maximum value: 100. Default value: 10.
 	//
 	// example:
 	//

@@ -22,15 +22,15 @@ type iDescribeSiteMonitorStatisticsResponseBody interface {
 }
 
 type DescribeSiteMonitorStatisticsResponseBody struct {
-	// The responses code.
+	// The HTTP status code.
 	//
-	// >  The status code 200 indicates that the request was successful.
+	// > The value 200 indicates that the call is successful.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The statistics.
+	// The statistical result.
 	//
 	// example:
 	//
@@ -40,19 +40,19 @@ type DescribeSiteMonitorStatisticsResponseBody struct {
 	//
 	// example:
 	//
-	// Succcessful
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 3AD2724D-E317-4BFB-B422-D6691D071BE1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call is successful. Valid values:
 	//
-	// 	- true
+	// - true: The call is successful.
 	//
-	// 	- false
+	// - false: The call failed.
 	//
 	// example:
 	//

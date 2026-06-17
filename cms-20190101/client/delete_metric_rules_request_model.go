@@ -16,6 +16,8 @@ type iDeleteMetricRulesRequest interface {
 }
 
 type DeleteMetricRulesRequest struct {
+	// The IDs of the alert rules to delete.
+	//
 	// This parameter is required.
 	//
 	// example:

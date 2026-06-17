@@ -22,15 +22,15 @@ type iCreateHybridMonitorTaskResponseBody interface {
 }
 
 type CreateHybridMonitorTaskResponseBody struct {
-	// The response code.
+	// The status code.
 	//
-	// >  The status code 200 indicates that the request was successful.
+	// > 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error message returned.
+	// The error message.
 	//
 	// example:
 	//
@@ -42,11 +42,11 @@ type CreateHybridMonitorTaskResponseBody struct {
 	//
 	// 28CEA2E0-3E90-51B2-A7E8-B1ED75534E49
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// 	- true
+	// - true: successful.
 	//
-	// 	- false
+	// - false: failed.
 	//
 	// example:
 	//

@@ -20,9 +20,7 @@ type iDeleteMetricRulesResponseBody interface {
 }
 
 type DeleteMetricRulesResponseBody struct {
-	// The status code.
-	//
-	// >  The status code 200 indicates a success.
+	// The status code. A value of 200 indicates that the request was successful.
 	//
 	// example:
 	//
@@ -32,19 +30,19 @@ type DeleteMetricRulesResponseBody struct {
 	//
 	// example:
 	//
-	// The specified resource is not found.
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The ID of the request. Alibaba Cloud generates a unique ID for each request. Use this ID to troubleshoot issues.
 	//
 	// example:
 	//
-	// E5599964-8D0D-40DC-8E90-27A619384B81
+	// 09B3A484-1A2B-5743-BB6B-D796416F2677
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the operation was successful. Valid values:
 	//
-	// 	- true: successful.
+	// - true: The operation was successful.
 	//
-	// 	- false: failed.
+	// - false: The operation failed.
 	//
 	// example:
 	//

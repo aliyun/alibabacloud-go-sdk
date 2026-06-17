@@ -34,22 +34,23 @@ type iDescribeMetricRuleBlackListRequest interface {
 }
 
 type DescribeMetricRuleBlackListRequest struct {
-	// The ID of the blacklist policy.
+	// The category of the Alibaba Cloud service. For example, Redis has different editions, such as `kvstore_standard` (Standard Edition), `kvstore_sharding` (Cluster Edition), and `kvstore_splitrw` (Read/write Splitting Edition).
 	//
 	// example:
 	//
 	// ecs
-	Category *string   `json:"Category,omitempty" xml:"Category,omitempty"`
-	Ids      []*string `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
-	// The IDs of the instances in the blacklist policy.
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The IDs of the blacklist policies.
+	Ids []*string `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
+	// The IDs of instances in the blacklist policy.
 	//
-	// Valid values of N: 0 to 10.
+	// The value of N can be an integer from 0 to 10.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	// The status of the blacklist policy. Valid values:
 	//
-	// 	- true: The blacklist policy is enabled.
+	// - true: enabled.
 	//
-	// 	- false: The blacklist policy is disabled.
+	// - false: disabled.
 	//
 	// example:
 	//
@@ -57,46 +58,52 @@ type DescribeMetricRuleBlackListRequest struct {
 	IsEnable *bool `json:"IsEnable,omitempty" xml:"IsEnable,omitempty"`
 	// The name of the blacklist policy.
 	//
-	// This parameter supports fuzzy match.
+	// Fuzzy queries are supported.
 	//
 	// example:
 	//
 	// Blacklist-01
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The timestamp when the blacklist policy expired.
+	// The namespace of the Alibaba Cloud service.
 	//
-	// Unit: milliseconds.
+	// For more information, see [Metrics](https://help.aliyun.com/document_detail/163515.html).
 	//
 	// example:
 	//
 	// acs_ecs_dashboard
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The HTTP status code.
+	// The order in which to sort the results by time. Valid values:
 	//
-	// >  The status code 200 indicates that the call was successful.
+	// - DESC (default): descending order.
+	//
+	// - ASC: ascending order.
 	//
 	// example:
 	//
 	// DESC
 	Order *int32 `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The name of the metric.
+	// The page number.
+	//
+	// Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The categories of the Alibaba Cloud service. For example, ApsaraDB for Redis includes the following categories: ApsaraDB for Redis (standard architecture), ApsaraDB for Redis (cluster architecture), and ApsaraDB for Redis (read/write splitting architecture). In this case, the valid values of this parameter for ApsaraDB for Redis include `kvstore_standard`, `kvstore_sharding`, and `kvstore_splitrw`.
+	// The number of entries to return on each page.
+	//
+	// Default value: 10.
 	//
 	// example:
 	//
 	// 100
 	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The effective scope of the blacklist policy. Valid values:
+	// The scope of the blacklist policy. Valid values:
 	//
-	// 	- USER: The blacklist policy takes effect only within the current Alibaba Cloud account.
+	// - USER: The blacklist policy takes effect only for the current Alibaba Cloud account.
 	//
-	// 	- GROUP: The blacklist policy takes effect only within the specified application group.
+	// - GROUP: The blacklist policy takes effect for the specified application groups.
 	//
 	// example:
 	//

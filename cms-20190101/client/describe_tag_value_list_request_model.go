@@ -22,15 +22,13 @@ type iDescribeTagValueListRequest interface {
 type DescribeTagValueListRequest struct {
 	// The page number.
 	//
-	// Pages start from page 1. Default value: 1.
+	// Starts from 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page.
-	//
-	// Valid values: 1 to 100. Default value: 50.
 	//
 	// example:
 	//
@@ -39,7 +37,7 @@ type DescribeTagValueListRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The tag key.
 	//
-	// For more information about how to obtain a tag key, see [DescribeTagKeyList](https://help.aliyun.com/document_detail/145558.html).
+	// For more information about how to obtain the tag key, see [DescribeTagKeyList](https://help.aliyun.com/document_detail/145558.html).
 	//
 	// This parameter is required.
 	//

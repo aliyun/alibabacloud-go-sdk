@@ -46,7 +46,7 @@ type DescribeSystemEventAttributeRequest struct {
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The type of the system event.
 	//
-	// >  You can call the [DescribeSystemEventMetaList](https://help.aliyun.com/document_detail/114972.html) operation to query the types of system events.
+	// > You can call the [DescribeSystemEventMetaList](https://help.aliyun.com/document_detail/114972.html) operation to query the types of system events.
 	//
 	// example:
 	//
@@ -60,11 +60,11 @@ type DescribeSystemEventAttributeRequest struct {
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The level of the system event. Valid values:
 	//
-	// 	- CRITICAL: critical
+	// - CRITICAL: critical
 	//
-	// 	- WARN: warning
+	// - WARN: warning
 	//
-	// 	- INFO: information
+	// - INFO: information
 	//
 	// example:
 	//
@@ -72,7 +72,7 @@ type DescribeSystemEventAttributeRequest struct {
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
 	// The name of the system event.
 	//
-	// >  You can call the [DescribeSystemEventMetaList](https://help.aliyun.com/document_detail/114972.html) operation to query the names of system events.
+	// > You can call the [DescribeSystemEventMetaList](https://help.aliyun.com/document_detail/114972.html) operation to query the names of system events.
 	//
 	// example:
 	//
@@ -100,7 +100,7 @@ type DescribeSystemEventAttributeRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The abbreviation of the service name.
 	//
-	// >  You can call the [DescribeSystemEventMetaList](https://help.aliyun.com/document_detail/114972.html) operation to query the abbreviations of service names.
+	// > You can call the [DescribeSystemEventMetaList](https://help.aliyun.com/document_detail/114972.html) operation to query the abbreviations of service names.
 	//
 	// example:
 	//
@@ -109,9 +109,9 @@ type DescribeSystemEventAttributeRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The keywords that are used to search for the system event. Valid values:
 	//
-	// 	- If you want to search for the system event whose content contains a and b, set the value to `a and b`.
+	// - If you want to search for the system event whose content contains a and b, set the value to `a and b`.
 	//
-	// 	- If you want to search for the system event whose content contains a or b, set the value to `a or b`.
+	// - If you want to search for the system event whose content contains a or b, set the value to `a or b`.
 	//
 	// example:
 	//
@@ -127,7 +127,7 @@ type DescribeSystemEventAttributeRequest struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The status of the system event.
 	//
-	// >  You can call the [DescribeSystemEventMetaList](https://help.aliyun.com/document_detail/114972.html) operation to query the statuses of system events.
+	// > You can call the [DescribeSystemEventMetaList](https://help.aliyun.com/document_detail/114972.html) operation to query the statuses of system events.
 	//
 	// example:
 	//

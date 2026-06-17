@@ -42,9 +42,9 @@ type DescribeHybridMonitorTaskListRequest struct {
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// Specifies whether the returned result includes metric import tasks for Alibaba Cloud services. Valid values:
 	//
-	// 	- true (default): The returned result includes metric import tasks for Alibaba Cloud services.
+	// - true (default): The returned result includes metric import tasks for Alibaba Cloud services.
 	//
-	// 	- false: The returned result excludes metric import tasks for Alibaba Cloud services.
+	// - false: The returned result excludes metric import tasks for Alibaba Cloud services.
 	//
 	// example:
 	//
@@ -97,9 +97,9 @@ type DescribeHybridMonitorTaskListRequest struct {
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// The type of the metric import task. Valid values:
 	//
-	// 	- aliyun_fc: metric import tasks for Alibaba Cloud services
+	// - aliyun_fc: metric import tasks for Alibaba Cloud services
 	//
-	// 	- aliyun_sls: metrics for logs imported from Log Service
+	// - aliyun_sls: metrics for logs imported from Log Service
 	//
 	// example:
 	//

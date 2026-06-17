@@ -18,7 +18,7 @@ type iRemoveTagsRequest interface {
 }
 
 type RemoveTagsRequest struct {
-	// The IDs of the application groups.
+	// The ID of the application group.
 	//
 	// This parameter is required.
 	//
@@ -27,7 +27,7 @@ type RemoveTagsRequest struct {
 	// 12345
 	GroupIds []*string `json:"GroupIds,omitempty" xml:"GroupIds,omitempty" type:"Repeated"`
 	RegionId *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The tags.
+	// The list of tags.
 	//
 	// This parameter is required.
 	Tag []*RemoveTagsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -84,7 +84,7 @@ func (s *RemoveTagsRequest) Validate() error {
 type RemoveTagsRequestTag struct {
 	// The tag key.
 	//
-	// > The tag key (`Tag.N.Key`) and tag value (`Tag.N.Value`) must be specified at the same time.
+	// > You must specify both the tag key (`Tag.N.Key`) and the tag value (`Tag.N.Value`).
 	//
 	// This parameter is required.
 	//
@@ -94,7 +94,7 @@ type RemoveTagsRequestTag struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value.
 	//
-	// > The tag key (`Tag.N.Key`) and tag value (`Tag.N.Value`) must be specified at the same time.
+	// > You must specify both the tag key (`Tag.N.Key`) and the tag value (`Tag.N.Value`).
 	//
 	// This parameter is required.
 	//

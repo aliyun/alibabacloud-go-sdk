@@ -75,9 +75,9 @@ type ModifyHostAvailabilityRequest struct {
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 	// The range of instances that are monitored by the availability monitoring task. Valid values:
 	//
-	// 	- GROUP: All ECS instances in the application group are monitored.
+	// - GROUP: All ECS instances in the application group are monitored.
 	//
-	// 	- GROUP_SPEC_INSTANCE: Specified ECS instances in the application group are monitored. The TaskScope parameter must be used in combination with the InstanceList parameter. The InstanceList parameter specifies the ECS instances to be monitored.
+	// - GROUP_SPEC_INSTANCE: Specified ECS instances in the application group are monitored. The TaskScope parameter must be used in combination with the InstanceList parameter. The InstanceList parameter specifies the ECS instances to be monitored.
 	//
 	// example:
 	//
@@ -320,9 +320,13 @@ func (s *ModifyHostAvailabilityRequestAlertConfig) Validate() error {
 type ModifyHostAvailabilityRequestTaskOption struct {
 	// The header of the HTTP request. Format: `Parameter name:Parameter value`. Separate multiple parameters with carriage return characters. Example:
 	//
-	//     params1:value1
+	// ```
 	//
-	//     params2:value2
+	// params1:value1
+	//
+	// params2:value2
+	//
+	// ```
 	//
 	// example:
 	//
@@ -330,11 +334,11 @@ type ModifyHostAvailabilityRequestTaskOption struct {
 	HttpHeader *string `json:"HttpHeader,omitempty" xml:"HttpHeader,omitempty"`
 	// The HTTP request method. Valid values:
 	//
-	// 	- GET
+	// - GET
 	//
-	// 	- POST
+	// - POST
 	//
-	// 	- HEAD
+	// - HEAD
 	//
 	// > This parameter must be specified when TaskType is set to HTTP. For more information about how to configure the TaskType parameter, see [CreateHostAvailability](https://help.aliyun.com/document_detail/115317.html).
 	//
@@ -344,9 +348,9 @@ type ModifyHostAvailabilityRequestTaskOption struct {
 	HttpMethod *string `json:"HttpMethod,omitempty" xml:"HttpMethod,omitempty"`
 	// The method to trigger an alert. The alert can be triggered based on whether the specified alert rule is included in the response body. Valid values:
 	//
-	// 	- true: If the HTTP response body includes the alert rule, an alert is triggered.
+	// - true: If the HTTP response body includes the alert rule, an alert is triggered.
 	//
-	// 	- false: If the HTTP response does not include the alert rule, an alert is triggered.
+	// - false: If the HTTP response does not include the alert rule, an alert is triggered.
 	//
 	// > This parameter must be specified when TaskType is set to HTTP. For more information about how to configure the TaskType parameter, see [CreateHostAvailability](https://help.aliyun.com/document_detail/115317.html).
 	//
@@ -379,6 +383,8 @@ type ModifyHostAvailabilityRequestTaskOption struct {
 	// example:
 	//
 	// https://www.aliyun.com
+	//
+	// telnet://127.0.0.1:80
 	HttpURI *string `json:"HttpURI,omitempty" xml:"HttpURI,omitempty"`
 	// The interval at which detection requests are sent. Unit: seconds. Valid values: 15, 30, 60, 120, 300, 900, 1800, and 3600.
 	//
@@ -390,7 +396,7 @@ type ModifyHostAvailabilityRequestTaskOption struct {
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	// The domain name or IP address that you want to monitor.
 	//
-	// >  This parameter is required if the TaskType parameter is set to PING. For more information about how to set the TaskType parameter, see [CreateHostAvailability](https://help.aliyun.com/document_detail/115317.html).
+	// > This parameter is required if the TaskType parameter is set to PING. For more information about how to set the TaskType parameter, see [CreateHostAvailability](https://help.aliyun.com/document_detail/115317.html).
 	//
 	// example:
 	//
@@ -494,15 +500,15 @@ func (s *ModifyHostAvailabilityRequestTaskOption) Validate() error {
 type ModifyHostAvailabilityRequestAlertConfigEscalationList struct {
 	// The method used to calculate the metric values that trigger alerts. Valid values of N: 1 to 21. The value of this parameter varies based on the metric. The following items show the correspondence between metrics and calculation methods:
 	//
-	// 	- HttpStatus: Value
+	// - HttpStatus: Value
 	//
-	// 	- HttpLatency: Average
+	// - HttpLatency: Average
 	//
-	// 	- TelnetStatus: Value
+	// - TelnetStatus: Value
 	//
-	// 	- TelnetLatency: Average
+	// - TelnetLatency: Average
 	//
-	// 	- PingLostRate: Average
+	// - PingLostRate: Average
 	//
 	// > The value Value indicates the original value and is used for metrics such as status codes. The value Average indicates the average value and is used for metrics such as the latency and packet loss rate.
 	//
@@ -512,15 +518,15 @@ type ModifyHostAvailabilityRequestAlertConfigEscalationList struct {
 	Aggregate *string `json:"Aggregate,omitempty" xml:"Aggregate,omitempty"`
 	// The metric for which the alert feature is enabled. Valid values of N: 1 to 21. Valid values:
 	//
-	// 	- HttpStatus: HTTP status code
+	// - HttpStatus: HTTP status code
 	//
-	// 	- HttpLatency: HTTP response time
+	// - HttpLatency: HTTP response time
 	//
-	// 	- TelnetStatus: Telnet status code
+	// - TelnetStatus: Telnet status code
 	//
-	// 	- TelnetLatency: Telnet response time
+	// - TelnetLatency: Telnet response time
 	//
-	// 	- PingLostRate: Ping packet loss rate
+	// - PingLostRate: Ping packet loss rate
 	//
 	// This parameter is required.
 	//
@@ -530,15 +536,15 @@ type ModifyHostAvailabilityRequestAlertConfigEscalationList struct {
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
 	// The comparison operator that is used in the alert rule. Valid values of N: 1 to 21. Valid values:
 	//
-	// 	- `>`
+	// - `>`
 	//
-	// 	- `>=`
+	// - `>=`
 	//
-	// 	- `<`
+	// - `<`
 	//
-	// 	- `<=`
+	// - `<=`
 	//
-	// 	- `=`
+	// - `=`
 	//
 	// example:
 	//
@@ -620,23 +626,23 @@ type ModifyHostAvailabilityRequestAlertConfigTargetList struct {
 	//
 	// Format: `acs:{Service name abbreviation}:{regionId}:{userId}:/{Resource type}/{Resource name}/message`. Example: `acs:mns:cn-hangzhou:120886317861****:/queues/test123/message`. Fields:
 	//
-	// 	- {Service name abbreviation}: the abbreviation of the service name. Set the value to Simple Message Queue (formerly MNS) (SMQ).
+	// - {Service name abbreviation}: the abbreviation of the service name. Set the value to Simple Message Queue (formerly MNS) (SMQ).
 	//
-	// 	- {userId}: the ID of the Alibaba Cloud account.
+	// - {userId}: the ID of the Alibaba Cloud account.
 	//
-	// 	- {regionId}: the region ID of the SMQ queue or topic.
+	// - {regionId}: the region ID of the SMQ queue or topic.
 	//
-	// 	- {Resource type}: the type of the resource for which alerts are triggered. Valid values:
+	// - {Resource type}: the type of the resource for which alerts are triggered. Valid values:
 	//
-	//     	- **queues**
+	//   - **queues**
 	//
-	//     	- **topics**
+	//   - **topics**
 	//
-	// 	- {Resource name}: the resource name.
+	// - {Resource name}: the resource name.
 	//
-	//     	- If the resource type is **queues**, the resource name is the queue name.
+	//   - If the resource type is **queues**, the resource name is the queue name.
 	//
-	//     	- If the resource type is **topics**, the resource name is the topic name.
+	//   - If the resource type is **topics**, the resource name is the topic name.
 	//
 	// example:
 	//
@@ -656,11 +662,11 @@ type ModifyHostAvailabilityRequestAlertConfigTargetList struct {
 	JsonParams *string `json:"JsonParams,omitempty" xml:"JsonParams,omitempty"`
 	// The alert level. Valid values:
 	//
-	// 	- INFO
+	// - INFO
 	//
-	// 	- WARN
+	// - WARN
 	//
-	// 	- CRITICAL
+	// - CRITICAL
 	//
 	// example:
 	//

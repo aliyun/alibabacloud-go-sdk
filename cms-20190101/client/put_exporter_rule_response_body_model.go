@@ -22,17 +22,17 @@ type iPutExporterRuleResponseBody interface {
 type PutExporterRuleResponseBody struct {
 	// The HTTP status code.
 	//
-	// > The status code 200 indicates that the request was successful.
+	// > 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
+	// The returned message.
 	//
 	// example:
 	//
-	// success
+	// The specified resource is not found.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
@@ -40,11 +40,11 @@ type PutExporterRuleResponseBody struct {
 	//
 	// 461CF2CD-2FC3-4B26-8645-7BD27E7D0F1D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// 	- true
+	// - true: The operation was successful.
 	//
-	// 	- false
+	// - false: The operation failed.
 	//
 	// example:
 	//

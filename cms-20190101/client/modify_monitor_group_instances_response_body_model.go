@@ -20,9 +20,9 @@ type iModifyMonitorGroupInstancesResponseBody interface {
 }
 
 type ModifyMonitorGroupInstancesResponseBody struct {
-	// The HTTP status code.
+	// The status code.
 	//
-	// >  The status code 200 indicates that the call was successful.
+	// > A value of 200 indicates that the request was successful.
 	//
 	// example:
 	//
@@ -34,13 +34,13 @@ type ModifyMonitorGroupInstancesResponseBody struct {
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// FEC7EDB3-9B08-4AC0-A42A-329F5D14B95A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. The value true indicates a success. The value false indicates a failure.
+	// Indicates whether the operation was successful. A value of true indicates a success. A value of false indicates a failure.
 	//
 	// example:
 	//

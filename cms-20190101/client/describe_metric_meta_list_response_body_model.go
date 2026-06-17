@@ -26,7 +26,7 @@ type iDescribeMetricMetaListResponseBody interface {
 type DescribeMetricMetaListResponseBody struct {
 	// The response code.
 	//
-	// >  The status code 200 indicates that the request was successful.
+	// > The status code 200 indicates that the request was successful.
 	//
 	// example:
 	//
@@ -42,14 +42,14 @@ type DescribeMetricMetaListResponseBody struct {
 	//
 	// example:
 	//
-	// 0CCE0AF0-053C-4B13-A583-DC9A85785D49
+	// CDE9EAFF-D54E-4024-BBFC-B0AAC883143B
 	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Resources *DescribeMetricMetaListResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Struct"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
@@ -59,7 +59,7 @@ type DescribeMetricMetaListResponseBody struct {
 	//
 	// example:
 	//
-	// 12
+	// 10
 	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 

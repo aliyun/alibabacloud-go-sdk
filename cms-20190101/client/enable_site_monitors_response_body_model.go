@@ -24,7 +24,7 @@ type iEnableSiteMonitorsResponseBody interface {
 type EnableSiteMonitorsResponseBody struct {
   // The responses code.
   // 
-  // >  The status code 200 indicates that the request was successful.
+  // > The status code 200 indicates that the request was successful.
   // 
   // example:
   // 
@@ -46,9 +46,9 @@ type EnableSiteMonitorsResponseBody struct {
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
   // Indicates whether the request was successful. Valid values:
   // 
-  // 	- true
+  // - true
   // 
-  // 	- false
+  // - false
   // 
   // example:
   // 

@@ -26,6 +26,8 @@ type ModifyMonitorGroupInstancesRequest struct {
 	//
 	// 12345
 	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The list of instances. You can specify up to 2,000 instances.
+	//
 	// This parameter is required.
 	Instances []*ModifyMonitorGroupInstancesRequestInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
 	RegionId  *string                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -80,79 +82,75 @@ func (s *ModifyMonitorGroupInstancesRequest) Validate() error {
 }
 
 type ModifyMonitorGroupInstancesRequestInstances struct {
-	// The abbreviation of the name of the service to which the instances to be added to the application group belong. Valid values:
+	// The cloud service to which the resource instance belongs. The following cloud services are supported:
 	//
-	// 	- ECS: Elastic Compute Service (ECS) instances provided by Alibaba Cloud and hosts not provided by Alibaba Cloud
+	// - ECS (including Alibaba Cloud and third-party hosts)
 	//
-	// 	- RDS: ApsaraDB for RDS
+	// - ApsaraDB RDS
 	//
-	// 	- ADS: AnalyticDB
+	// - AnalyticDB
 	//
-	// 	- SLB: Server Load Balancer (SLB)
+	// - SLB
 	//
-	// 	- VPC: Virtual Private Cloud (VPC)
+	// - VPC (Elastic IP)
 	//
-	// 	- APIGATEWAY: API Gateway
+	// - API Gateway
 	//
-	// 	- CDN: Alibaba Cloud Content Delivery Network (CDN)
+	// - Alibaba Cloud CDN
 	//
-	// 	- CS: Container Service for Swarm
+	// - Container Service for Swarm
 	//
-	// 	- DCDN: Dynamic Route for CDN
+	// - DCDN
 	//
-	// 	- DDoS: Anti-DDoS Pro
+	// - Anti-DDoS
 	//
-	// 	- EIP: Elastic IP Address (EIP)
+	// - EIP
 	//
-	// 	- ELASTICSEARCH: Elasticsearch
+	// - Elasticsearch
 	//
-	// 	- EMR: E-MapReduce
+	// - E-MapReduce
 	//
-	// 	- ESS: Auto Scaling
+	// - Auto Scaling
 	//
-	// 	- HBASE: ApsaraDB for Hbase
+	// - ApsaraDB for HBase
 	//
-	// 	- IOT_EDGE: IoT Edge
+	// - IoT Edge
 	//
-	// 	- K8S_POD: pods in Container Service for Kubernetes
+	// - Kubernetes pod
 	//
-	// 	- KVSTORE_SHARDING: ApsaraDB for Redis of the cluster architecture
+	// - ApsaraDB for Redis (sharded cluster)
 	//
-	// 	- KVSTORE_SPLITRW: ApsaraDB for Redis of the read/write splitting architecture
+	// - ApsaraDB for Redis (read/write splitting)
 	//
-	// 	- KVSTORE_STANDARD: ApsaraDB for Redis of the standard architecture
+	// - ApsaraDB for Redis (Standard Edition)
 	//
-	// 	- MEMCACHE: ApsaraDB for Memcache
+	// - ApsaraDB for Memcache
 	//
-	// 	- MNS: Message Service (MNS)
+	// - MNS
 	//
-	// 	- MONGODB: ApsaraDB for MongoDB of the replica set architecture
+	// - ApsaraDB for MongoDB (replica set)
 	//
-	// 	- MONGODB_CLUSTER: ApsaraDB for MongoDB of the cluster architecture
+	// - ApsaraDB for MongoDB (sharded cluster)
 	//
-	// 	- MONGODB_SHARDING: ApsaraDB for MongoDB of the sharded cluster architecture
+	// - ApsaraDB for MongoDB (sharded cluster)
 	//
-	// 	- MQ_TOPIC: MNS topics
+	// - MNS topic
 	//
-	// 	- OCS: ApsaraDB for Memcache of earlier versions
+	// - OCS (ApsaraDB for Memcache of earlier versions)
 	//
-	// 	- OPENSEARCH: Open Search
+	// - OpenSearch
 	//
-	// 	- OSS: Object Storage Service (OSS)
+	// - OSS
 	//
-	// 	- POLARDB: PolarDB
+	// - PolarDB
 	//
-	// 	- PETADATA: HybridDB for MySQL
+	// - HybridDB for MySQL
 	//
-	// 	- SCDN: Secure Content Delivery Network (SCDN)
+	// - Internet Shared Bandwidth
 	//
-	// 	- SHAREBANDWIDTHPACKAGES: EIP Bandwidth Plan
+	// - SLS
 	//
-	// 	- SLS: Log Service
-	//
-	// 	- VPN: VPN Gateway
-	//
-	//     Valid values of N: 1 to 2000.
+	// - VPN Gateway
 	//
 	// This parameter is required.
 	//
@@ -160,7 +158,7 @@ type ModifyMonitorGroupInstancesRequestInstances struct {
 	//
 	// ECS
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The ID of the instance. Valid values of N: 1 to 2000.
+	// The ID of the resource instance.
 	//
 	// This parameter is required.
 	//
@@ -168,7 +166,7 @@ type ModifyMonitorGroupInstancesRequestInstances struct {
 	//
 	// i-a2d5q7pm12****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the instance. Valid values of N: 1 to 2000.
+	// The name of the instance.
 	//
 	// This parameter is required.
 	//
@@ -176,7 +174,7 @@ type ModifyMonitorGroupInstancesRequestInstances struct {
 	//
 	// HostName
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The ID of the region where the instance resides. Valid values of N: 1 to 2000.
+	// The region ID.
 	//
 	// This parameter is required.
 	//

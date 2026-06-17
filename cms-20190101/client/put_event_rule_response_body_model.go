@@ -22,15 +22,15 @@ type iPutEventRuleResponseBody interface {
 }
 
 type PutEventRuleResponseBody struct {
-	// The HTTP status code.
+	// The status code.
 	//
-	// >  The status code 200 indicates that the call was successful.
+	// >A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The number of event-triggered alert rules that were created or modified.
+	// The number of rows affected when the Event-triggered Alert Rule is created or modified.
 	//
 	// example:
 	//
@@ -42,17 +42,17 @@ type PutEventRuleResponseBody struct {
 	//
 	// The Request is not authorization.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 0B47C47B-E68A-4429-BB23-370E91889C7D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// 	- true: The call was successful.
+	// - true: The operation was successful.
 	//
-	// 	- false: The call failed.
+	// - false: The operation failed.
 	//
 	// example:
 	//

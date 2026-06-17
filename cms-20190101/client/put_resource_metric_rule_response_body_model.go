@@ -20,15 +20,15 @@ type iPutResourceMetricRuleResponseBody interface {
 }
 
 type PutResourceMetricRuleResponseBody struct {
-	// The responses code.
+	// The HTTP status code.
 	//
-	// >  The status code 200 indicates that the request was successful.
+	// > A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned message.
+	// The error message.
 	//
 	// example:
 	//
@@ -40,11 +40,11 @@ type PutResourceMetricRuleResponseBody struct {
 	//
 	// 65D50468-ECEF-48F1-A6E1-D952E89D9436
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// 	- true
+	// - true: The operation was successful.
 	//
-	// 	- false
+	// - false: The operation failed.
 	//
 	// example:
 	//

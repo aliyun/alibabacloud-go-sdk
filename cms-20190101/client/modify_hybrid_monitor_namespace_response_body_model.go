@@ -20,7 +20,7 @@ type iModifyHybridMonitorNamespaceResponseBody interface {
 }
 
 type ModifyHybridMonitorNamespaceResponseBody struct {
-	// The returned message.
+	// The response code.
 	//
 	// example:
 	//
@@ -38,11 +38,11 @@ type ModifyHybridMonitorNamespaceResponseBody struct {
 	//
 	// E190AB2E-7BF9-59B7-9DDC-7CB1782C5ECD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// 	- true
+	// - true: Successful.
 	//
-	// 	- false
+	// - false: Failed.
 	//
 	// example:
 	//

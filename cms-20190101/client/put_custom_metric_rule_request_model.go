@@ -44,19 +44,19 @@ type iPutCustomMetricRuleRequest interface {
 }
 
 type PutCustomMetricRuleRequest struct {
-	// The operator that is used to compare the metric value with the threshold. Valid values:
+	// The comparison operator for the threshold. Valid values:
 	//
-	// 	- `>=`
+	// - `>=`
 	//
-	// 	- `=`
+	// - `=`
 	//
-	// 	- `<=`
+	// - `<=`
 	//
-	// 	- `>`
+	// - `>`
 	//
-	// 	- `<`
+	// - `<`
 	//
-	// 	- `!=`
+	// - `!=`.
 	//
 	// This parameter is required.
 	//
@@ -64,7 +64,7 @@ type PutCustomMetricRuleRequest struct {
 	//
 	// >=
 	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
-	// The alert contact groups. Separate multiple alert contact groups with commas (,).
+	// The alert contact group. Separate multiple alert contact groups with commas (,).
 	//
 	// This parameter is required.
 	//
@@ -72,15 +72,19 @@ type PutCustomMetricRuleRequest struct {
 	//
 	// ECS_Group
 	ContactGroups *string `json:"ContactGroups,omitempty" xml:"ContactGroups,omitempty"`
-	// The period of time during which the alert rule is effective. Valid values: 00:00 to 23:59.
+	// The effective time range of the alert rule. Valid values: 00:00-23:59.
 	//
 	// example:
 	//
 	// 00:00-23:59
 	EffectiveInterval *string `json:"EffectiveInterval,omitempty" xml:"EffectiveInterval,omitempty"`
-	// The subject of the alert notification email.
+	// The subject of the alert email.
+	//
+	// example:
+	//
+	// ECS instance
 	EmailSubject *string `json:"EmailSubject,omitempty" xml:"EmailSubject,omitempty"`
-	// The consecutive number of times for which the metric value meets the alert condition before an alert is triggered.
+	// The number of alert retries.
 	//
 	// This parameter is required.
 	//
@@ -90,7 +94,7 @@ type PutCustomMetricRuleRequest struct {
 	EvaluationCount *int32 `json:"EvaluationCount,omitempty" xml:"EvaluationCount,omitempty"`
 	// The ID of the application group to which the custom monitoring data belongs.
 	//
-	// >  The value 0 indicates that the reported custom monitoring data does not belong to an application group.
+	// > A value of 0 indicates that the reported custom monitoring data does not belong to any application group.
 	//
 	// example:
 	//
@@ -98,11 +102,11 @@ type PutCustomMetricRuleRequest struct {
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The alert level. Valid values:
 	//
-	// 	- CRITICAL
+	// - CRITICAL: critical.
 	//
-	// 	- WARN
+	// - WARN: warning.
 	//
-	// 	- INFO
+	// - INFO: information.
 	//
 	// This parameter is required.
 	//
@@ -112,7 +116,7 @@ type PutCustomMetricRuleRequest struct {
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
 	// The metric name.
 	//
-	// >  For more information about how to obtain the metric name, see [DescribeCustomMetricList](https://help.aliyun.com/document_detail/115005.html).
+	// > For more information about how to obtain the metric name, see [DescribeCustomMetricList](https://help.aliyun.com/document_detail/115005.html).
 	//
 	// This parameter is required.
 	//
@@ -120,13 +124,13 @@ type PutCustomMetricRuleRequest struct {
 	//
 	// cpu_total
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The cycle that is used to aggregate custom monitoring data. Unit: seconds Set the value to an integral multiple of 60. The original reporting cycle of custom monitoring data is used by default.
+	// The aggregation period of the custom monitoring data. Unit: seconds. Set the value to 60 or a multiple of 60. Default value: the original reporting period of the custom monitoring data.
 	//
 	// example:
 	//
 	// 300
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The custom monitoring data to which the alert rule applies. The value includes the application group ID to which the custom monitoring data belongs and the dimension to which the metric belongs.
+	// The custom monitoring data to which the alert rule applies. The value consists of the application group ID to which the custom monitoring data belongs and the dimensions of the metric.
 	//
 	// This parameter is required.
 	//
@@ -136,7 +140,7 @@ type PutCustomMetricRuleRequest struct {
 	Resources *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
 	// The ID of the alert rule.
 	//
-	// >  You can specify an existing ID to modify the corresponding alert rule or specify a new ID to create an alert rule.
+	// > If the alert rule ID already exists, the alert rule is modified. If the alert rule ID does not exist, an alert rule is created.
 	//
 	// This parameter is required.
 	//
@@ -150,15 +154,15 @@ type PutCustomMetricRuleRequest struct {
 	//
 	// CpuUsage
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The mute period during which new alert notifications are not sent even if the trigger conditions are met. Unit: seconds. Default value: 86400, which is equivalent to one day.
+	// The mute for period. Unit: seconds. Default value: 86400 (1 day).
 	//
-	// >  Only one alert notification is sent during each mute period even if the metric value exceeds the alert threshold several times.
+	// > If the monitoring data continuously exceeds the alert threshold, only one alert notification is sent within each mute for period.
 	//
 	// example:
 	//
 	// 86400
 	SilenceTime *int32 `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
-	// The method used to calculate the metric value based on which alerts are triggered.
+	// The statistical method for alerts.
 	//
 	// This parameter is required.
 	//
@@ -174,7 +178,7 @@ type PutCustomMetricRuleRequest struct {
 	//
 	// 90
 	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	// The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
+	// The alert callback URL. An HTTP POST request is sent to the specified URL when an alert is triggered.
 	//
 	// example:
 	//

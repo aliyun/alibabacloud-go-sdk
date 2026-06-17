@@ -24,7 +24,7 @@ type DescribeExporterOutputListRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: 10.
+	// The number of records per page. Default value: 10.
 	//
 	// example:
 	//

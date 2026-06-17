@@ -38,9 +38,9 @@ type DescribeHybridMonitorTaskListResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned message.
 	//
-	// 	- If the request was successful, the value `successful` is returned.
+	// - If the request was successful, the value `successful` is returned.
 	//
-	// 	- If the request failed, an error message is returned.
+	// - If the request failed, an error message is returned.
 	//
 	// example:
 	//
@@ -66,9 +66,9 @@ type DescribeHybridMonitorTaskListResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
@@ -182,11 +182,11 @@ type DescribeHybridMonitorTaskListResponseBodyTaskList struct {
 	AttachLabels []*DescribeHybridMonitorTaskListResponseBodyTaskListAttachLabels `json:"AttachLabels,omitempty" xml:"AttachLabels,omitempty" type:"Repeated"`
 	// The interval at which the CloudMonitor agent collects host monitoring data. Valid values:
 	//
-	// 	- 15
+	// - 15
 	//
-	// 	- 30
+	// - 30
 	//
-	// 	- 60
+	// - 60
 	//
 	// Unit: seconds.
 	//
@@ -214,13 +214,13 @@ type DescribeHybridMonitorTaskListResponseBodyTaskList struct {
 	CollectTargetType *string `json:"CollectTargetType,omitempty" xml:"CollectTargetType,omitempty"`
 	// The timeout period during which the CloudMonitor agent collects host monitoring data. Valid values:
 	//
-	// 	- 0
+	// - 0
 	//
-	// 	- 15
+	// - 15
 	//
-	// 	- 30
+	// - 30
 	//
-	// 	- 60
+	// - 60
 	//
 	// Unit: seconds.
 	//
@@ -284,9 +284,9 @@ type DescribeHybridMonitorTaskListResponseBodyTaskList struct {
 	MatchExpress []*DescribeHybridMonitorTaskListResponseBodyTaskListMatchExpress `json:"MatchExpress,omitempty" xml:"MatchExpress,omitempty" type:"Repeated"`
 	// The relationship between the conditions that are used to filter metric import tasks. Valid values:
 	//
-	// 	- or
+	// - or
 	//
-	// 	- and
+	// - and
 	//
 	// example:
 	//
@@ -300,9 +300,9 @@ type DescribeHybridMonitorTaskListResponseBodyTaskList struct {
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The network type of the host. Valid values:
 	//
-	// 	- `vpc`
+	// - `vpc`
 	//
-	// 	- `Internet`
+	// - `Internet`
 	//
 	// example:
 	//
@@ -340,9 +340,9 @@ type DescribeHybridMonitorTaskListResponseBodyTaskList struct {
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 	// The type of the metric import task. Valid values:
 	//
-	// 	- aliyun_fc: metric import tasks for Alibaba Cloud services
+	// - aliyun_fc: metric import tasks for Alibaba Cloud services
 	//
-	// 	- aliyun_sls: metrics for logs imported from Log Service
+	// - aliyun_sls: metrics for logs imported from Log Service
 	//
 	// example:
 	//
@@ -356,9 +356,9 @@ type DescribeHybridMonitorTaskListResponseBodyTaskList struct {
 	UploadRegion *string `json:"UploadRegion,omitempty" xml:"UploadRegion,omitempty"`
 	// The configuration file of the Alibaba Cloud service that you want to monitor by using Hybrid Cloud Monitoring.
 	//
-	// 	- namespace: the namespace of the Alibaba Cloud service.
+	// - namespace: the namespace of the Alibaba Cloud service.
 	//
-	// 	- metric_list: the metrics of the Alibaba Cloud service.
+	// - metric_list: the metrics of the Alibaba Cloud service.
 	//
 	// example:
 	//
@@ -692,17 +692,17 @@ func (s *DescribeHybridMonitorTaskListResponseBodyTaskListAttachLabels) Validate
 type DescribeHybridMonitorTaskListResponseBodyTaskListMatchExpress struct {
 	// The method that is used to match the instance name. Valid values:
 	//
-	// 	- startWith: starts with a prefix
+	// - startWith: starts with a prefix
 	//
-	// 	- endWith: ends with a suffix
+	// - endWith: ends with a suffix
 	//
-	// 	- all: matches all
+	// - all: matches all
 	//
-	// 	- equals: equals
+	// - equals: equals
 	//
-	// 	- contains: contains
+	// - contains: contains
 	//
-	// 	- notContains: does not contain
+	// - notContains: does not contain
 	//
 	// example:
 	//
@@ -902,9 +902,9 @@ type DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfigFilter str
 	Filters []*DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfigFilterFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
 	// The relationship between multiple filter conditions. Valid values:
 	//
-	// 	- and (default): Logs are processed only if all filter conditions are met.
+	// - and (default): Logs are processed only if all filter conditions are met.
 	//
-	// 	- or: Logs are processed if one of the filter conditions is met.
+	// - or: Logs are processed if one of the filter conditions is met.
 	//
 	// example:
 	//
@@ -954,21 +954,21 @@ func (s *DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfigFilter
 type DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfigFilterFilters struct {
 	// The method that is used to filter logs imported from Log Service. Valid values:
 	//
-	// 	- `contain`: contains
+	// - `contain`: contains
 	//
-	// 	- `notContain`: does not contain
+	// - `notContain`: does not contain
 	//
-	// 	- `>`: greater than
+	// - `>`: greater than
 	//
-	// 	- `<`: less than
+	// - `<`: less than
 	//
-	// 	- `=`: equal to
+	// - `=`: equal to
 	//
-	// 	- `! =`: not equal to
+	// - `! =`: not equal to
 	//
-	// 	- `>=`: greater than or equal to
+	// - `>=`: greater than or equal to
 	//
-	// 	- `<=`: less than or equal to
+	// - `<=`: less than or equal to
 	//
 	// example:
 	//
@@ -1081,27 +1081,27 @@ type DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfigStatistics
 	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
 	// The function that is used to aggregate log data within a statistical period. Valid values:
 	//
-	// 	- count: counts the number.
+	// - count: counts the number.
 	//
-	// 	- sum: calculates the total value.
+	// - sum: calculates the total value.
 	//
-	// 	- avg: calculates the average value.
+	// - avg: calculates the average value.
 	//
-	// 	- max: calculates the maximum value.
+	// - max: calculates the maximum value.
 	//
-	// 	- min: calculates the minimum value.
+	// - min: calculates the minimum value.
 	//
-	// 	- value: collects samples within the statistical period.
+	// - value: collects samples within the statistical period.
 	//
-	// 	- countps: calculates the average number of the specified field per second by using the following formula: Counted number of the specified field/Total number of seconds within the statistical period.
+	// - countps: calculates the average number of the specified field per second by using the following formula: Counted number of the specified field/Total number of seconds within the statistical period.
 	//
-	// 	- sumps: calculates the average number of the specified field per second by using the following formula: Total value of the specified field/Total number of seconds within the statistical period.
+	// - sumps: calculates the average number of the specified field per second by using the following formula: Total value of the specified field/Total number of seconds within the statistical period.
 	//
-	// 	- distinct: counts the number of logs where the specified field appears within the statistical period.
+	// - distinct: counts the number of logs where the specified field appears within the statistical period.
 	//
-	// 	- distribution: counts the number of logs that meet a specified condition within the statistical period.
+	// - distribution: counts the number of logs that meet a specified condition within the statistical period.
 	//
-	// 	- percentile: sorts the values of the specified field in ascending order, and then returns the value that is at the specified percentile within the statistical period. Example: P50.
+	// - percentile: sorts the values of the specified field in ascending order, and then returns the value that is at the specified percentile within the statistical period. Example: P50.
 	//
 	// example:
 	//
@@ -1109,9 +1109,9 @@ type DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfigStatistics
 	Function *string `json:"Function,omitempty" xml:"Function,omitempty"`
 	// The value of the function that is used to aggregate logs imported from Log Service.
 	//
-	// 	- If the `Function` parameter is set to `distribution`, this parameter indicates the lower limit of the statistical interval. For example, 200 indicates that the number of HTTP requests whose status code is 2XX is calculated.
+	// - If the `Function` parameter is set to `distribution`, this parameter indicates the lower limit of the statistical interval. For example, 200 indicates that the number of HTTP requests whose status code is 2XX is calculated.
 	//
-	// 	- If the `Function` parameter is set to `percentile`, this parameter specifies the percentile at which the expected value is. For example, 0.5 specifies P50.
+	// - If the `Function` parameter is set to `percentile`, this parameter specifies the percentile at which the expected value is. For example, 0.5 specifies P50.
 	//
 	// example:
 	//

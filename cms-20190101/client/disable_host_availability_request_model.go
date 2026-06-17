@@ -16,7 +16,7 @@ type iDisableHostAvailabilityRequest interface {
 }
 
 type DisableHostAvailabilityRequest struct {
-	// The ID of the availability monitoring task. Valid values of N: 1 to 20.
+	// The IDs of the availability monitoring jobs.
 	//
 	// This parameter is required.
 	//

@@ -17,7 +17,7 @@ type iDisableSiteMonitorsRequest interface {
 
 type DisableSiteMonitorsRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the site monitoring task. Separate multiple IDs with commas (,).
+	// The IDs of site monitoring tasks. Separate multiple IDs with commas (,).
 	//
 	// This parameter is required.
 	//

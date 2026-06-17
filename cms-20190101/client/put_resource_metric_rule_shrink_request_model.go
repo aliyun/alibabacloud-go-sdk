@@ -51,13 +51,13 @@ type iPutResourceMetricRuleShrinkRequest interface {
 
 type PutResourceMetricRuleShrinkRequest struct {
 	Escalations *PutResourceMetricRuleShrinkRequestEscalations `json:"Escalations,omitempty" xml:"Escalations,omitempty" type:"Struct"`
-	// The trigger conditions for multiple metrics.
+	// The alert conditions for multiple metrics.
 	//
-	// >  The trigger conditions for a single metric and multiple metrics are mutually exclusive. You cannot specify trigger conditions for a single metric and multiple metrics at the same time.
+	// > Single-metric and multi-metric alert conditions are mutually exclusive and cannot be set at the same time.
 	CompositeExpressionShrink *string `json:"CompositeExpression,omitempty" xml:"CompositeExpression,omitempty"`
-	// The alert contact groups. Alert notifications are sent to the alert contacts in the alert contact group.
+	// The alert contact group. Alert notifications are sent to the alert contacts in this alert contact group.
 	//
-	// >  An alert contact group can contain one or more alert contacts. For information about how to create alert contacts and alert contact groups, see [PutContact](https://help.aliyun.com/document_detail/114923.html) and [PutContactGroup](https://help.aliyun.com/document_detail/114929.html).
+	// > An alert contact group contains one or more alert contacts. For information about how to create alert contacts and alert contact groups, see [PutContact](https://help.aliyun.com/document_detail/114923.html) and [PutContactGroup](https://help.aliyun.com/document_detail/114929.html).
 	//
 	// This parameter is required.
 	//
@@ -65,29 +65,33 @@ type PutResourceMetricRuleShrinkRequest struct {
 	//
 	// ECS_Group
 	ContactGroups *string `json:"ContactGroups,omitempty" xml:"ContactGroups,omitempty"`
-	// The period of time during which the alert rule is effective.
+	// The effective period of the alert rule.
 	//
 	// example:
 	//
 	// 00:00-23:59
 	EffectiveInterval *string `json:"EffectiveInterval,omitempty" xml:"EffectiveInterval,omitempty"`
-	// The subject of the alert notification email.
-	EmailSubject *string `json:"EmailSubject,omitempty" xml:"EmailSubject,omitempty"`
-	// The interval at which alerts are triggered based on the alert rule. Unit: seconds.
+	// The subject of the alert email.
 	//
-	// >  For more information about how to query the statistical periods of metrics, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
+	// example:
+	//
+	// ECS instance alert
+	EmailSubject *string `json:"EmailSubject,omitempty" xml:"EmailSubject,omitempty"`
+	// The trigger period of the alert rule. Unit: seconds.
+	//
+	// > For information about how to query the statistical period of a metric, see [Alibaba Cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
 	//
 	// example:
 	//
 	// 60
 	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// If the metric meets the specified condition in the alert rule and CloudMonitor sends an alert notification, the tag is also written to the metric and displayed in the alert notification.
+	// The labels that are written to the metric and displayed in alert notifications when the metric meets the alert condition.
 	//
-	// >  This parameter is equivalent to the Label parameter of Prometheus alerts.
+	// > This feature is the same as the Label feature in Prometheus alerting.
 	Labels []*PutResourceMetricRuleShrinkRequestLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	// The metric name. For more information about how to query metric names, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
+	// The name of the metric. For information about how to query metric names, see [Alibaba Cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
 	//
-	// >  If you create a Prometheus alert rule for Hybrid Cloud Monitoring, you must set this parameter to the name of the namespace. For more information about how to query the names of namespaces, see [DescribeHybridMonitorNamespaceList](https://help.aliyun.com/document_detail/428880.html).
+	// > If you create a Prometheus alert rule for Hybrid Cloud Monitoring, this parameter specifies the name of the metric repository. For information about how to obtain the metric repository name, see [DescribeHybridMonitorNamespaceList](https://help.aliyun.com/document_detail/428880.html).
 	//
 	// This parameter is required.
 	//
@@ -95,9 +99,9 @@ type PutResourceMetricRuleShrinkRequest struct {
 	//
 	// cpu_total
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The namespace of the cloud service. For more information about how to query the namespaces of cloud services, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
+	// The namespace of the Alibaba Cloud service. For information about how to query the namespace of an Alibaba Cloud service, see [Alibaba Cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
 	//
-	// >  If you create a Prometheus alert rule for Hybrid Cloud Monitoring, you must set this parameter to `acs_prometheus`.
+	// > If you create a Prometheus alert rule for Hybrid Cloud Monitoring, set this parameter to `acs_prometheus`.
 	//
 	// This parameter is required.
 	//
@@ -105,39 +109,39 @@ type PutResourceMetricRuleShrinkRequest struct {
 	//
 	// acs_ecs_dashboard
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The method that is used to handle alerts when no monitoring data is found. Valid value:
+	// The processing method when no monitoring data is found. Valid values:
 	//
-	// 	- KEEP_LAST_STATE (default): No operation is performed.
+	// - KEEP_LAST_STATE (default): No action is taken.
 	//
-	// 	- INSUFFICIENT_DATA: An alert whose content is "Insufficient data" is triggered.
+	// - INSUFFICIENT_DATA: An alert whose content is "Insufficient data" is triggered.
 	//
-	// 	- OK: The status is considered normal.
+	// - OK: The status is considered normal.
 	//
 	// example:
 	//
 	// KEEP_LAST_STATE
 	NoDataPolicy *string `json:"NoDataPolicy,omitempty" xml:"NoDataPolicy,omitempty"`
-	// The period of time during which the alert rule is ineffective.
+	// The time range during which the alert rule is ineffective.
 	//
 	// example:
 	//
 	// 00:00-06:00
 	NoEffectiveInterval *string `json:"NoEffectiveInterval,omitempty" xml:"NoEffectiveInterval,omitempty"`
-	// The statistical period of the metric. Unit: seconds. The default value is the interval at which the monitoring data of the metric is collected.
+	// The statistical period of the metric. Unit: seconds. The default value is the original reporting period of the metric.
 	//
-	// >  For more information about how to query the statistical periods of metrics, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
+	// > For information about how to query the statistical period of a metric, see [Alibaba Cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
 	//
 	// example:
 	//
 	// 60
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	// Prometheus alerts.
+	// The Prometheus alert configuration.
 	//
-	// >  This parameter is required only if you create a Prometheus alert rule for Hybrid Cloud Monitoring.
+	// > Set this parameter only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
 	PrometheusShrink *string `json:"Prometheus,omitempty" xml:"Prometheus,omitempty"`
-	// The resource information. Examples: `[{"instanceId":"i-uf6j91r34rnwawoo****"}]` and `[{"userId":"100931896542****"}]`.
+	// The resource information, such as `[{"instanceId":"i-uf6j91r34rnwawoo****"}]` or `[{"userId":"100931896542****"}]`.
 	//
-	// For more information about the supported dimensions that are used to query resources, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
+	// For information about the supported monitoring dimensions, see [Alibaba Cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
 	//
 	// example:
 	//
@@ -145,9 +149,9 @@ type PutResourceMetricRuleShrinkRequest struct {
 	Resources *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
 	// The ID of the alert rule.
 	//
-	// You can specify a new ID or the ID of an existing alert rule. For more information about how to query the IDs of alert rules, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
+	// You can enter a new alert rule ID or use the ID of an existing alert rule in CloudMonitor. For information about how to query alert rule IDs, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
 	//
-	// >  If you specify a new ID, a threshold-triggered alert rule is created.
+	// > If you enter a new alert rule ID, a threshold alert rule is created.
 	//
 	// This parameter is required.
 	//
@@ -157,9 +161,9 @@ type PutResourceMetricRuleShrinkRequest struct {
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	// The name of the alert rule.
 	//
-	// You can specify a new name or the name of an existing alert rule. For more information about how to query the names of alert rules, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
+	// You can enter a new alert rule name or use the name of an existing alert rule in CloudMonitor. For information about how to query alert rule names, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
 	//
-	// >  If you specify a new name, a threshold-triggered alert rule is created.
+	// > If you enter a new alert rule name, a threshold alert rule is created.
 	//
 	// This parameter is required.
 	//
@@ -167,16 +171,21 @@ type PutResourceMetricRuleShrinkRequest struct {
 	//
 	// test123
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	SendOK   *bool   `json:"SendOK,omitempty" xml:"SendOK,omitempty"`
-	// The mute period during which new alert notifications are not sent even if the trigger conditions are met. Unit: seconds. Default value: 86400.
+	// Specifies whether to send a recovery notification.
 	//
-	// >  If an alert is not cleared after the mute period ends, CloudMonitor resends an alert notification.
+	// example:
+	//
+	// true
+	SendOK *bool `json:"SendOK,omitempty" xml:"SendOK,omitempty"`
+	// The mute period. Unit: seconds. Default value: 86400.
+	//
+	// > The mute period specifies the interval at which an alert notification is re-sent if the alert does not recover to Normal.
 	//
 	// example:
 	//
 	// 86400
 	SilenceTime *int32 `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
-	// The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
+	// The callback URL to which a POST request is sent when an alert is triggered.
 	//
 	// example:
 	//
@@ -442,59 +451,60 @@ func (s *PutResourceMetricRuleShrinkRequestEscalations) Validate() error {
 }
 
 type PutResourceMetricRuleShrinkRequestEscalationsCritical struct {
-	// The operator that is used to compare the metric value with the threshold for Critical-level alerts. Valid value:
+	// Critical级别阈值比较符。取值：
 	//
-	// 	- GreaterThanOrEqualToThreshold: greater than or equal to the threshold
+	// - GreaterThanOrEqualToThreshold：大于等于。
 	//
-	// 	- GreaterThanThreshold: greater than the threshold
+	// - GreaterThanThreshold：大于。
 	//
-	// 	- LessThanOrEqualToThreshold: less than or equal to the threshold
+	// - LessThanOrEqualToThreshold：小于等于。
 	//
-	// 	- LessThanThreshold: less than the threshold
+	// - LessThanThreshold：小于。
 	//
-	// 	- NotEqualToThreshold: not equal to the threshold
+	// - NotEqualToThreshold：不等于。
 	//
-	// 	- EqualToThreshold: equal to the threshold
+	// - EqualToThreshold：等于。
 	//
-	// 	- GreaterThanYesterday: greater than the metric value at the same time yesterday
+	// - GreaterThanYesterday：同比昨天时间上涨。
 	//
-	// 	- LessThanYesterday: less than the metric value at the same time yesterday
+	// - LessThanYesterday：同比昨天时间下降。
 	//
-	// 	- GreaterThanLastWeek: greater than the metric value at the same time last week
+	// - GreaterThanLastWeek：同比上周同一时间上涨。
 	//
-	// 	- LessThanLastWeek: less than the metric value at the same time last week
+	// - LessThanLastWeek：同比上周同一时间下降。
 	//
-	// 	- GreaterThanLastPeriod: greater than the metric value in the last monitoring cycle
+	// - GreaterThanLastPeriod：环比上周期上涨。
 	//
-	// 	- LessThanLastPeriod: less than the metric value in the last monitoring cycle
+	// - LessThanLastPeriod：环比上周期下降。
 	//
-	// >  You must select at least one of the Critical, Warn, and Info alert levels and specify the Statistics, ComparisonOperator, Threshold, and Times parameters for each alert level.
+	// > 报警级别Critical（严重）、Warn（警告）或Info（信息）至少设置一个，且该报警级别中的参数Statistics、ComparisonOperator、Threshold和Times必须同时设置。
 	//
 	// example:
 	//
 	// GreaterThanOrEqualToThreshold
 	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
-	// The statistical methods for Critical-level alerts.
+	// Critical级别报警统计方法。
 	//
-	// The value of this parameter is determined by the `Statistics` column corresponding to the `MetricName` parameter of the specified cloud service. The value of this parameter can be Maximum, Minimum, or Average. For more information about how to obtain the value of this parameter, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
+	// 该参数的取值由指定云产品的`MetricName`对应的`Statistics`列决定，例如：Maximum、Minimum和Average。关于如何获取该参数的取值，请参见[云产品监控项](https://help.aliyun.com/document_detail/163515.html)。
 	//
-	// >  You must select at least one of the Critical, Warn, and Info alert levels and specify the Statistics, ComparisonOperator, Threshold, and Times parameters for each alert level.
+	// > 报警级别Critical（严重）、Warn（警告）或Info（信息）至少设置一个，且该报警级别中的参数Statistics、ComparisonOperator、Threshold和Times必须同时设置。
 	//
 	// example:
 	//
 	// Average
 	Statistics *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
-	// The threshold for Critical-level alerts.
+	// Critical级别报警阈值。
 	//
-	// >  You must select at least one of the Critical, Warn, and Info alert levels and specify the Statistics, ComparisonOperator, Threshold, and Times parameters for each alert level.
+	//
+	// > 报警级别Critical（严重）、Warn（警告）或Info（信息）至少设置一个，且该报警级别中的参数Statistics、ComparisonOperator、Threshold和Times必须同时设置。
 	//
 	// example:
 	//
 	// 90
 	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	// The consecutive number of times for which the metric value meets the alert condition before a Critical-level alert is triggered.
+	// Critical级别报警重试次数。
 	//
-	// >  You must select at least one of the Critical, Warn, and Info alert levels and specify the Statistics, ComparisonOperator, Threshold, and Times parameters for each alert level.
+	// > 报警级别Critical（严重）、Warn（警告）或Info（信息）至少设置一个，且该报警级别中的参数Statistics、ComparisonOperator、Threshold和Times必须同时设置。
 	//
 	// example:
 	//
@@ -551,59 +561,59 @@ func (s *PutResourceMetricRuleShrinkRequestEscalationsCritical) Validate() error
 }
 
 type PutResourceMetricRuleShrinkRequestEscalationsInfo struct {
-	// The operator that is used to compare the metric value with the threshold for Info-level alerts. Valid value:
+	// Info级别阈值比较符。取值：
 	//
-	// 	- GreaterThanOrEqualToThreshold: greater than or equal to the threshold
+	// - GreaterThanOrEqualToThreshold：大于等于。
 	//
-	// 	- GreaterThanThreshold: greater than the threshold
+	// - GreaterThanThreshold：大于。
 	//
-	// 	- LessThanOrEqualToThreshold: less than or equal to the threshold
+	// - LessThanOrEqualToThreshold：小于等于。
 	//
-	// 	- LessThanThreshold: less than the threshold
+	// - LessThanThreshold：小于。
 	//
-	// 	- NotEqualToThreshold: not equal to the threshold
+	// - NotEqualToThreshold：不等于。
 	//
-	// 	- EqualToThreshold: equal to the threshold
+	// - EqualToThreshold：等于。
 	//
-	// 	- GreaterThanYesterday: greater than the metric value at the same time yesterday
+	// - GreaterThanYesterday：同比昨天时间上涨。
 	//
-	// 	- LessThanYesterday: less than the metric value at the same time yesterday
+	// - LessThanYesterday：同比昨天时间下降。
 	//
-	// 	- GreaterThanLastWeek: greater than the metric value at the same time last week
+	// - GreaterThanLastWeek：同比上周同一时间上涨。
 	//
-	// 	- LessThanLastWeek: less than the metric value at the same time last week
+	// - LessThanLastWeek：同比上周同一时间下降。
 	//
-	// 	- GreaterThanLastPeriod: greater than the metric value in the last monitoring cycle
+	// - GreaterThanLastPeriod：环比上周期上涨。
 	//
-	// 	- LessThanLastPeriod: less than the metric value in the last monitoring cycle
+	// - LessThanLastPeriod：环比上周期下降。
 	//
-	// >  You must select at least one of the Critical, Warn, and Info alert levels and specify the Statistics, ComparisonOperator, Threshold, and Times parameters for each alert level.
+	// > 报警级别Critical（严重）、Warn（警告）或Info（信息）至少设置一个，且该报警级别中的参数Statistics、ComparisonOperator、Threshold和Times必须同时设置。
 	//
 	// example:
 	//
 	// GreaterThanOrEqualToThreshold
 	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
-	// The statistical methods for Info-level alerts.
+	// Info级别报警统计方法。
 	//
-	// The value of this parameter is determined by the `Statistics` column corresponding to the `MetricName` parameter of the specified cloud service. The value of this parameter can be Maximum, Minimum, or Average. For more information about how to obtain the value of this parameter, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
+	// 该参数的取值由指定云产品的`MetricName`对应的`Statistics`列决定，例如：Maximum、Minimum和Average。关于如何获取该参数的取值，请参见[云产品监控项](https://help.aliyun.com/document_detail/163515.html)。
 	//
-	// >  You must select at least one of the Critical, Warn, and Info alert levels and specify the Statistics, ComparisonOperator, Threshold, and Times parameters for each alert level.
+	// > 报警级别Critical（严重）、Warn（警告）或Info（信息）至少设置一个，且该报警级别中的参数Statistics、ComparisonOperator、Threshold和Times必须同时设置。
 	//
 	// example:
 	//
 	// Average
 	Statistics *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
-	// The threshold for Info-level alerts.
+	// Info级别报警阈值。
 	//
-	// >  You must select at least one of the Critical, Warn, and Info alert levels and specify the Statistics, ComparisonOperator, Threshold, and Times parameters for each alert level.
+	// > 报警级别Critical（严重）、Warn（警告）或Info（信息）至少设置一个，且该报警级别中的参数Statistics、ComparisonOperator、Threshold和Times必须同时设置。
 	//
 	// example:
 	//
 	// 90
 	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	// The consecutive number of times for which the metric value meets the alert condition before an Info-level alert is triggered.
+	// Info级别报警重试次数。
 	//
-	// >  You must select at least one of the Critical, Warn, and Info alert levels and specify the Statistics, ComparisonOperator, Threshold, and Times parameters for each alert level.
+	// > 报警级别Critical（严重）、Warn（警告）或Info（信息）至少设置一个，且该报警级别中的参数Statistics、ComparisonOperator、Threshold和Times必须同时设置。
 	//
 	// example:
 	//
@@ -660,59 +670,59 @@ func (s *PutResourceMetricRuleShrinkRequestEscalationsInfo) Validate() error {
 }
 
 type PutResourceMetricRuleShrinkRequestEscalationsWarn struct {
-	// The operator that is used to compare the metric value with the threshold for Warn-level alerts. Valid value:
+	// Warn级别阈值比较符。取值：
 	//
-	// 	- GreaterThanOrEqualToThreshold: greater than or equal to the threshold
+	// - GreaterThanOrEqualToThreshold：大于等于。
 	//
-	// 	- GreaterThanThreshold: greater than the threshold
+	// - GreaterThanThreshold：大于。
 	//
-	// 	- LessThanOrEqualToThreshold: less than or equal to the threshold
+	// - LessThanOrEqualToThreshold：小于等于。
 	//
-	// 	- LessThanThreshold: less than the threshold
+	// - LessThanThreshold：小于。
 	//
-	// 	- NotEqualToThreshold: not equal to the threshold
+	// - NotEqualToThreshold：不等于。
 	//
-	// 	- EqualToThreshold: equal to the threshold
+	// - EqualToThreshold：等于。
 	//
-	// 	- GreaterThanYesterday: greater than the metric value at the same time yesterday
+	// - GreaterThanYesterday：同比昨天时间上涨。
 	//
-	// 	- LessThanYesterday: less than the metric value at the same time yesterday
+	// - LessThanYesterday：同比昨天时间下降。
 	//
-	// 	- GreaterThanLastWeek: greater than the metric value at the same time last week
+	// - GreaterThanLastWeek：同比上周同一时间上涨。
 	//
-	// 	- LessThanLastWeek: less than the metric value at the same time last week
+	// - LessThanLastWeek：同比上周同一时间下降。
 	//
-	// 	- GreaterThanLastPeriod: greater than the metric value in the last monitoring cycle
+	// - GreaterThanLastPeriod：环比上周期上涨。
 	//
-	// 	- LessThanLastPeriod: less than the metric value in the last monitoring cycle
+	// - LessThanLastPeriod：环比上周期下降。
 	//
-	// >  You must select at least one of the Critical, Warn, and Info alert levels and specify the Statistics, ComparisonOperator, Threshold, and Times parameters for each alert level.
+	// > 报警级别Critical（严重）、Warn（警告）或Info（信息）至少设置一个，且该报警级别中的参数Statistics、ComparisonOperator、Threshold和Times必须同时设置。
 	//
 	// example:
 	//
 	// GreaterThanOrEqualToThreshold
 	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
-	// The statistical methods for Warn-level alerts.
+	// Warn级别报警统计方法。
 	//
-	// The value of this parameter is determined by the `Statistics` column corresponding to the `MetricName` parameter of the specified cloud service. The value of this parameter can be Maximum, Minimum, or Average. For more information about how to obtain the value of this parameter, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
+	// 该参数的取值由指定云产品的`MetricName`对应的`Statistics`列决定，例如：Maximum、Minimum和Average。关于如何获取该参数的取值，请参见[云产品监控项](https://help.aliyun.com/document_detail/163515.html)。
 	//
-	// >  You must select at least one of the Critical, Warn, and Info alert levels and specify the Statistics, ComparisonOperator, Threshold, and Times parameters for each alert level.
+	// > 报警级别Critical（严重）、Warn（警告）或Info（信息）至少设置一个，且该报警级别中的参数Statistics、ComparisonOperator、Threshold和Times必须同时设置。
 	//
 	// example:
 	//
 	// Average
 	Statistics *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
-	// The threshold for Warn-level alerts.
+	// Warn级别报警阈值。
 	//
-	// >  You must select at least one of the Critical, Warn, and Info alert levels and specify the Statistics, ComparisonOperator, Threshold, and Times parameters for each alert level.
+	// > 报警级别Critical（严重）、Warn（警告）或Info（信息）至少设置一个，且该报警级别中的参数Statistics、ComparisonOperator、Threshold和Times必须同时设置。
 	//
 	// example:
 	//
 	// 90
 	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	// The consecutive number of times for which the metric value meets the alert condition before a Warn-level alert is triggered.
+	// Warn级别报警重试次数。
 	//
-	// >  You must select at least one of the Critical, Warn, and Info alert levels and specify the Statistics, ComparisonOperator, Threshold, and Times parameters for each alert level.
+	// > 报警级别Critical（严重）、Warn（警告）或Info（信息）至少设置一个，且该报警级别中的参数Statistics、ComparisonOperator、Threshold和Times必须同时设置。
 	//
 	// example:
 	//
@@ -769,15 +779,15 @@ func (s *PutResourceMetricRuleShrinkRequestEscalationsWarn) Validate() error {
 }
 
 type PutResourceMetricRuleShrinkRequestLabels struct {
-	// The tag key.
+	// The label key.
 	//
 	// example:
 	//
 	// tagKey1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The label value.
 	//
-	// >  You can use a template parameter to specify a tag value. CloudMonitor replaces the value of the template parameter with an actual tag value.
+	// > The label value supports template parameters. Template parameters are replaced with actual label values.
 	//
 	// example:
 	//

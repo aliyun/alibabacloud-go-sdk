@@ -20,9 +20,9 @@ type iDeleteExporterRuleResponseBody interface {
 }
 
 type DeleteExporterRuleResponseBody struct {
-	// The HTTP status code.
+	// The status code.
 	//
-	// > The status code 200 indicates that the request was successful. Other status codes indicate that the request failed.
+	// > A value of 200 indicates success. Any other value indicates failure.
 	//
 	// example:
 	//
@@ -40,11 +40,11 @@ type DeleteExporterRuleResponseBody struct {
 	//
 	// 6A5F022D-AC7C-460E-94AE-B9E75083D023
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// 	- `true`
+	// - `true`: Successful.
 	//
-	// 	- `false`
+	// - `false`: Failed.
 	//
 	// example:
 	//

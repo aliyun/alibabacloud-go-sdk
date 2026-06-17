@@ -20,7 +20,7 @@ type iModifyMonitorGroupRequest interface {
 }
 
 type ModifyMonitorGroupRequest struct {
-	// The alert groups that can receive alert notifications for the application group.
+	// The alert contact group.
 	//
 	// example:
 	//

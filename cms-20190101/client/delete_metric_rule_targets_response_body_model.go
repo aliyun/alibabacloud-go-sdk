@@ -24,7 +24,7 @@ type iDeleteMetricRuleTargetsResponseBody interface {
 type DeleteMetricRuleTargetsResponseBody struct {
 	// The HTTP status code.
 	//
-	// **
+	// \\*\\*
 	//
 	// **Description*	- The status code 200 indicates that the request was successful.
 	//
@@ -48,9 +48,9 @@ type DeleteMetricRuleTargetsResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//

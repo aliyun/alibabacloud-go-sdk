@@ -47,9 +47,9 @@ type DescribeAlertingMetricRuleResourcesResponseBody struct {
 	Resources *DescribeAlertingMetricRuleResourcesResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Struct"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//

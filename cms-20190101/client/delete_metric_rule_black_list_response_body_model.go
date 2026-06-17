@@ -24,13 +24,13 @@ type iDeleteMetricRuleBlackListResponseBody interface {
 type DeleteMetricRuleBlackListResponseBody struct {
 	// The HTTP status code.
 	//
-	// >  The status code 200 indicates that the request was successful.
+	// >200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The number of blacklist policies that are deleted.
+	// The number of alert blacklist policies that were successfully deleted.
 	//
 	// example:
 	//
@@ -48,11 +48,11 @@ type DeleteMetricRuleBlackListResponseBody struct {
 	//
 	// B88D233C-A004-3AB8-AD9C-30CBDD4440C5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// 	- true
+	// - true: The operation was successful.
 	//
-	// 	- false
+	// - false: The operation failed.
 	//
 	// example:
 	//

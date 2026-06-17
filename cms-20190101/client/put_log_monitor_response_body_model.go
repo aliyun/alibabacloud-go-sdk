@@ -24,7 +24,7 @@ type iPutLogMonitorResponseBody interface {
 type PutLogMonitorResponseBody struct {
 	// The HTTP status code.
 	//
-	// >  The status code 200 indicates that the request was successful.
+	// > 200 indicates success.
 	//
 	// example:
 	//
@@ -36,11 +36,11 @@ type PutLogMonitorResponseBody struct {
 	//
 	// 16****
 	LogId *string `json:"LogId,omitempty" xml:"LogId,omitempty"`
-	// The returned message.
+	// The returned message. Results:
 	//
-	// 	- If the request was successful, `successful` is returned.
+	// - If the operation is successful, `successful` is returned.
 	//
-	// 	- If the request failed, an error message is returned. Example: `alias of aggreate must be set value.`
+	// - If the operation fails, an error message is returned, such as `alias of aggreate must be set value.`.
 	//
 	// example:
 	//
@@ -52,11 +52,11 @@ type PutLogMonitorResponseBody struct {
 	//
 	// 91561287-0802-5F9C-9BDE-404C50D41B06
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the operation is successful. Valid values:
 	//
-	// 	- true
+	// - true: The operation is successful.
 	//
-	// 	- false
+	// - false: The operation failed.
 	//
 	// example:
 	//

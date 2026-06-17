@@ -38,7 +38,7 @@ type CreateGroupMonitoringAgentProcessRequest struct {
 	//
 	// example:
 	//
-	// 123456
+	// 3607****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The expressions used to match instances.
 	//
@@ -46,11 +46,11 @@ type CreateGroupMonitoringAgentProcessRequest struct {
 	MatchExpress []*CreateGroupMonitoringAgentProcessRequestMatchExpress `json:"MatchExpress,omitempty" xml:"MatchExpress,omitempty" type:"Repeated"`
 	// The logical operator used between conditional expressions that are used to match instances. Valid values:
 	//
-	// 	- all
+	// - all
 	//
-	// 	- and
+	// - and
 	//
-	// 	- or
+	// - or
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type CreateGroupMonitoringAgentProcessRequest struct {
 	//
 	// example:
 	//
-	// test1
+	// Process_Java
 	ProcessName *string `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
 	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
@@ -154,27 +154,27 @@ func (s *CreateGroupMonitoringAgentProcessRequest) Validate() error {
 type CreateGroupMonitoringAgentProcessRequestAlertConfig struct {
 	// The operator that is used to compare the metric value with the threshold. Valid values:
 	//
-	// 	- GreaterThanOrEqualToThreshold: greater than or equal to the threshold
+	// - GreaterThanOrEqualToThreshold: greater than or equal to the threshold
 	//
-	// 	- GreaterThanThreshold: greater than the threshold
+	// - GreaterThanThreshold: greater than the threshold
 	//
-	// 	- LessThanOrEqualToThreshold: less than or equal to the threshold
+	// - LessThanOrEqualToThreshold: less than or equal to the threshold
 	//
-	// 	- LessThanThreshold: less than the threshold
+	// - LessThanThreshold: less than the threshold
 	//
-	// 	- NotEqualToThreshold: not equal to the threshold
+	// - NotEqualToThreshold: not equal to the threshold
 	//
-	// 	- GreaterThanYesterday: greater than the metric value at the same time yesterday
+	// - GreaterThanYesterday: greater than the metric value at the same time yesterday
 	//
-	// 	- LessThanYesterday: less than the metric value at the same time yesterday
+	// - LessThanYesterday: less than the metric value at the same time yesterday
 	//
-	// 	- GreaterThanLastWeek: greater than the metric value at the same time last week
+	// - GreaterThanLastWeek: greater than the metric value at the same time last week
 	//
-	// 	- LessThanLastWeek: less than the metric value at the same time last week
+	// - LessThanLastWeek: less than the metric value at the same time last week
 	//
-	// 	- GreaterThanLastPeriod: greater than the metric value in the last monitoring cycle
+	// - GreaterThanLastPeriod: greater than the metric value in the last monitoring cycle
 	//
-	// 	- LessThanLastPeriod: less than the metric value in the previous monitoring cycle
+	// - LessThanLastPeriod: less than the metric value in the previous monitoring cycle
 	//
 	// Valid values of N: 1 to 3.
 	//
@@ -190,15 +190,15 @@ type CreateGroupMonitoringAgentProcessRequestAlertConfig struct {
 	//
 	// example:
 	//
-	// 00:00-23:59
+	// 07:00-22:59
 	EffectiveInterval *string `json:"EffectiveInterval,omitempty" xml:"EffectiveInterval,omitempty"`
 	// The alert level. Valid values:
 	//
-	// 	- critical (default)
+	// - critical (default)
 	//
-	// 	- warn
+	// - warn
 	//
-	// 	- info
+	// - info
 	//
 	// Valid values of N: 1 to 3.
 	//
@@ -212,13 +212,13 @@ type CreateGroupMonitoringAgentProcessRequestAlertConfig struct {
 	//
 	// example:
 	//
-	// 00:00-23:59
+	// 00:00-05:30
 	NoEffectiveInterval *string `json:"NoEffectiveInterval,omitempty" xml:"NoEffectiveInterval,omitempty"`
 	// The mute period during which new alert notifications are not sent even if the trigger conditions are met. Unit: seconds. Minimum value: 3600, which is equivalent to one hour. Default value: 86400, which is equivalent to one day.
 	//
 	// Valid values of N: 1 to 3.
 	//
-	// >  Only one alert notification is sent during a mute period even if the metric value exceeds the alert threshold during consecutive checks.
+	// > Only one alert notification is sent during a mute period even if the metric value exceeds the alert threshold during consecutive checks.
 	//
 	// example:
 	//
@@ -228,7 +228,7 @@ type CreateGroupMonitoringAgentProcessRequestAlertConfig struct {
 	//
 	// Valid values of N: 1 to 3.
 	//
-	// >  Set the value to Average.
+	// > Set the value to Average.
 	//
 	// This parameter is required.
 	//
@@ -252,7 +252,7 @@ type CreateGroupMonitoringAgentProcessRequestAlertConfig struct {
 	//
 	// Valid values of N: 1 to 3.
 	//
-	// >  A metric triggers an alert only after the metric value reaches the threshold consecutively for the specified times.
+	// > A metric triggers an alert only after the metric value reaches the threshold consecutively for the specified times.
 	//
 	// This parameter is required.
 	//
@@ -266,7 +266,7 @@ type CreateGroupMonitoringAgentProcessRequestAlertConfig struct {
 	//
 	// example:
 	//
-	// http://www.aliyun.com
+	// https://www.aliyun.com
 	Webhook *string `json:"Webhook,omitempty" xml:"Webhook,omitempty"`
 }
 
@@ -388,23 +388,23 @@ type CreateGroupMonitoringAgentProcessRequestAlertConfigTargetList struct {
 	//
 	// Format: `acs:{Service name abbreviation}:{regionId}:{userId}:/{Resource type}/{Resource name}/message`. Example: `acs:mns:cn-hangzhou:120886317861****:/queues/test123/message`. Fields:
 	//
-	// 	- {Service name abbreviation}: the abbreviation of the service name. Set the value to Simple Message Queue (formerly MNS) (SMQ).
+	// - {Service name abbreviation}: the abbreviation of the service name. Set the value to Simple Message Queue (formerly MNS) (SMQ).
 	//
-	// 	- {userId}: the ID of the Alibaba Cloud account.
+	// - {userId}: the ID of the Alibaba Cloud account.
 	//
-	// 	- {regionId}: the region ID of the SMQ queue or topic.
+	// - {regionId}: the region ID of the SMQ queue or topic.
 	//
-	// 	- {Resource type}: the type of the resource that triggers the alert. Valid values:
+	// - {Resource type}: the type of the resource that triggers the alert. Valid values:
 	//
-	//     	- **queues**
+	//   - **queues**
 	//
-	//     	- **topics**
+	//   - **topics**
 	//
-	// 	- {Resource name}: the resource name.
+	// - {Resource name}: the resource name.
 	//
-	//     	- If the resource type is **queues**, the resource name is the queue name.
+	//   - If the resource type is **queues**, the resource name is the queue name.
 	//
-	//     	- If the resource type is **topics**, the resource name is the topic name.
+	//   - If the resource type is **topics**, the resource name is the topic name.
 	//
 	// example:
 	//
@@ -426,11 +426,11 @@ type CreateGroupMonitoringAgentProcessRequestAlertConfigTargetList struct {
 	JsonParams *string `json:"JsonParams,omitempty" xml:"JsonParams,omitempty"`
 	// The alert level. Valid values:
 	//
-	// 	- INFO
+	// - INFO
 	//
-	// 	- WARN
+	// - WARN
 	//
-	// 	- CRITICAL
+	// - CRITICAL
 	//
 	// example:
 	//
@@ -489,17 +489,17 @@ func (s *CreateGroupMonitoringAgentProcessRequestAlertConfigTargetList) Validate
 type CreateGroupMonitoringAgentProcessRequestMatchExpress struct {
 	// The matching condition. Valid values:
 	//
-	// 	- all (default value): matches all
+	// - all (default value): matches all
 	//
-	// 	- startWith: starts with a prefix
+	// - startWith: starts with a prefix
 	//
-	// 	- endWith: ends with a suffix
+	// - endWith: ends with a suffix
 	//
-	// 	- contains: contains
+	// - contains: contains
 	//
-	// 	- notContains: does not contain
+	// - notContains: does not contain
 	//
-	// 	- equals: equals
+	// - equals: equals
 	//
 	// Valid values of N: 1 to 3.
 	//

@@ -20,7 +20,7 @@ type DeleteContactGroupRequest struct {
 	//
 	// example:
 	//
-	// contact_group_2019_templatedfkXQ
+	// My alert group
 	ContactGroupName *string `json:"ContactGroupName,omitempty" xml:"ContactGroupName,omitempty"`
 }
 

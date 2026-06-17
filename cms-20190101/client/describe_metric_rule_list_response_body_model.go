@@ -25,9 +25,9 @@ type iDescribeMetricRuleListResponseBody interface {
 
 type DescribeMetricRuleListResponseBody struct {
 	Alarms *DescribeMetricRuleListResponseBodyAlarms `json:"Alarms,omitempty" xml:"Alarms,omitempty" type:"Struct"`
-	// The HTTP status code.
+	// The status code.
 	//
-	// >  The status code 200 indicates that the call is successful.
+	// >A value of 200 indicates success.
 	//
 	// example:
 	//
@@ -39,23 +39,23 @@ type DescribeMetricRuleListResponseBody struct {
 	//
 	// The specified resource is not found.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 386C6712-335F-5054-930A-CC92B851ECBA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// 	- true: The call is successful.
+	// - true: The operation was successful.
 	//
-	// 	- false: The call fails.
+	// - false: The operation failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of returned entries.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -192,9 +192,15 @@ type DescribeMetricRuleListResponseBodyAlarmsAlarm struct {
 	Resources           *string                                                           `json:"Resources,omitempty" xml:"Resources,omitempty"`
 	RuleId              *string                                                           `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	RuleName            *string                                                           `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	SilenceTime         *int32                                                            `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
-	SourceType          *string                                                           `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	Webhook             *string                                                           `json:"Webhook,omitempty" xml:"Webhook,omitempty"`
+	// 是否关闭恢复告警。取值：true（是）、false（否）。
+	//
+	// example:
+	//
+	// true
+	SendOK      *bool   `json:"SendOK,omitempty" xml:"SendOK,omitempty"`
+	SilenceTime *int32  `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
+	SourceType  *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	Webhook     *string `json:"Webhook,omitempty" xml:"Webhook,omitempty"`
 }
 
 func (s DescribeMetricRuleListResponseBodyAlarmsAlarm) String() string {
@@ -295,6 +301,10 @@ func (s *DescribeMetricRuleListResponseBodyAlarmsAlarm) GetRuleId() *string {
 
 func (s *DescribeMetricRuleListResponseBodyAlarmsAlarm) GetRuleName() *string {
 	return s.RuleName
+}
+
+func (s *DescribeMetricRuleListResponseBodyAlarmsAlarm) GetSendOK() *bool {
+	return s.SendOK
 }
 
 func (s *DescribeMetricRuleListResponseBodyAlarmsAlarm) GetSilenceTime() *int32 {
@@ -421,6 +431,11 @@ func (s *DescribeMetricRuleListResponseBodyAlarmsAlarm) SetRuleId(v string) *Des
 
 func (s *DescribeMetricRuleListResponseBodyAlarmsAlarm) SetRuleName(v string) *DescribeMetricRuleListResponseBodyAlarmsAlarm {
 	s.RuleName = &v
+	return s
+}
+
+func (s *DescribeMetricRuleListResponseBodyAlarmsAlarm) SetSendOK(v bool) *DescribeMetricRuleListResponseBodyAlarmsAlarm {
+	s.SendOK = &v
 	return s
 }
 

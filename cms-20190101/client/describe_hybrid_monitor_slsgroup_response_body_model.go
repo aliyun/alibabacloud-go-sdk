@@ -28,15 +28,15 @@ type iDescribeHybridMonitorSLSGroupResponseBody interface {
 }
 
 type DescribeHybridMonitorSLSGroupResponseBody struct {
-	// The HTTP status code.
+	// The status code.
 	//
-	// > The status code 200 indicates that the request was successful.
+	// > A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The queried Logstore groups.
+	// The list of Logstore groups.
 	List []*DescribeHybridMonitorSLSGroupResponseBodyList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
 	// The error message.
 	//
@@ -62,13 +62,17 @@ type DescribeHybridMonitorSLSGroupResponseBody struct {
 	//
 	// 66683237-7126-50F8-BBF8-D67ACC919A17
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// 	- true
+	// - true: Successful.
 	//
-	// 	- false
+	// - false: Failed.
+	//
+	// example:
+	//
+	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -170,7 +174,7 @@ func (s *DescribeHybridMonitorSLSGroupResponseBody) Validate() error {
 }
 
 type DescribeHybridMonitorSLSGroupResponseBodyList struct {
-	// The time when the Logstore group was created.
+	// The timestamp when the Logstore group was created.
 	//
 	// Unit: milliseconds.
 	//
@@ -178,9 +182,13 @@ type DescribeHybridMonitorSLSGroupResponseBodyList struct {
 	//
 	// 1652845630000
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The configurations of the Logstore group.
+	// The configuration information of the Logstore group.
 	SLSGroupConfig []*DescribeHybridMonitorSLSGroupResponseBodyListSLSGroupConfig `json:"SLSGroupConfig,omitempty" xml:"SLSGroupConfig,omitempty" type:"Repeated"`
 	// The description of the Logstore group.
+	//
+	// example:
+	//
+	// Logstore group of Alibaba Cloud products.
 	SLSGroupDescription *string `json:"SLSGroupDescription,omitempty" xml:"SLSGroupDescription,omitempty"`
 	// The name of the Logstore group.
 	//
@@ -188,7 +196,7 @@ type DescribeHybridMonitorSLSGroupResponseBodyList struct {
 	//
 	// Logstore_test
 	SLSGroupName *string `json:"SLSGroupName,omitempty" xml:"SLSGroupName,omitempty"`
-	// The time when the Logstore group was modified.
+	// The timestamp when the Logstore group was last modified.
 	//
 	// Unit: milliseconds.
 	//
@@ -277,7 +285,7 @@ type DescribeHybridMonitorSLSGroupResponseBodyListSLSGroupConfig struct {
 	//
 	// aliyun-project
 	SLSProject *string `json:"SLSProject,omitempty" xml:"SLSProject,omitempty"`
-	// The region ID.
+	// The region.
 	//
 	// example:
 	//
@@ -285,7 +293,7 @@ type DescribeHybridMonitorSLSGroupResponseBodyListSLSGroupConfig struct {
 	SLSRegion *string `json:"SLSRegion,omitempty" xml:"SLSRegion,omitempty"`
 	// The member ID.
 	//
-	// **Description*	- This parameter is returned when you call the operation by using an administrative account.
+	// > This parameter is returned only when you call this operation by using a management account.
 	//
 	// example:
 	//

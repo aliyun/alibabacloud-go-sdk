@@ -24,13 +24,13 @@ type iDescribeMetricRuleTemplateAttributeResponseBody interface {
 type DescribeMetricRuleTemplateAttributeResponseBody struct {
 	// The HTTP status code.
 	//
-	// >  The status code 200 indicates that the request was successful.
+	// > The value 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error message returned.
+	// The error message.
 	//
 	// example:
 	//
@@ -44,11 +44,11 @@ type DescribeMetricRuleTemplateAttributeResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The details of the alert template.
 	Resource *DescribeMetricRuleTemplateAttributeResponseBodyResource `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Struct"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// 	- true
+	// - true: The operation was successful.
 	//
-	// 	- false
+	// - false: The operation failed.
 	//
 	// example:
 	//
@@ -121,6 +121,10 @@ func (s *DescribeMetricRuleTemplateAttributeResponseBody) Validate() error {
 type DescribeMetricRuleTemplateAttributeResponseBodyResource struct {
 	AlertTemplates *DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplates `json:"AlertTemplates,omitempty" xml:"AlertTemplates,omitempty" type:"Struct"`
 	// The description of the alert template.
+	//
+	// example:
+	//
+	// ECS template
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The name of the alert template.
 	//

@@ -24,7 +24,7 @@ type iDescribeSystemEventHistogramResponseBody interface {
 type DescribeSystemEventHistogramResponseBody struct {
 	// The response code.
 	//
-	// >  The status code 200 indicates that the request was successful.
+	// > The status code 200 indicates that the request was successful.
 	//
 	// example:
 	//

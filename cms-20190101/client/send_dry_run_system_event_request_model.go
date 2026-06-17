@@ -24,7 +24,7 @@ type iSendDryRunSystemEventRequest interface {
 type SendDryRunSystemEventRequest struct {
 	// The content of the system event.
 	//
-	// >  The value of this parameter is a JSON object. We recommend that you include the `product`, `resourceId`, and `regionId` fields in the JSON object.
+	// > The value of this parameter is a JSON object. We recommend that you include the `product`, `resourceId`, and `regionId` fields in the JSON object.
 	//
 	// example:
 	//
@@ -32,7 +32,7 @@ type SendDryRunSystemEventRequest struct {
 	EventContent *string `json:"EventContent,omitempty" xml:"EventContent,omitempty"`
 	// The name of the system event.
 	//
-	// >  For more information, see [DescribeSystemEventMetaList](https://help.aliyun.com/document_detail/114972.html).
+	// > For more information, see [DescribeSystemEventMetaList](https://help.aliyun.com/document_detail/114972.html).
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type SendDryRunSystemEventRequest struct {
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The name of the cloud service.
 	//
-	// >  For information about the Alibaba Cloud services that are supported by CloudMonitor, see [Supported cloud services and their system events](https://help.aliyun.com/document_detail/167388.html).
+	// > For information about the Alibaba Cloud services that are supported by CloudMonitor, see [Supported cloud services and their system events](https://help.aliyun.com/document_detail/167388.html).
 	//
 	// This parameter is required.
 	//

@@ -20,9 +20,9 @@ type iModifyHybridMonitorSLSGroupResponseBody interface {
 }
 
 type ModifyHybridMonitorSLSGroupResponseBody struct {
-	// The HTTP status code.
+	// The status code.
 	//
-	// > The status code 200 indicates that the request was successful.
+	// > 200 indicates success.
 	//
 	// example:
 	//
@@ -40,11 +40,11 @@ type ModifyHybridMonitorSLSGroupResponseBody struct {
 	//
 	// 66683237-7126-50F8-BBF8-D67ACC919A17
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the operation is successful. Valid values:
 	//
-	// 	- true
+	// - true: Successful.
 	//
-	// 	- false
+	// - false: Failed.
 	//
 	// example:
 	//

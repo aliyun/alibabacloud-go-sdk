@@ -14,7 +14,7 @@ type iDeleteEventRulesRequest interface {
 }
 
 type DeleteEventRulesRequest struct {
-	// The name of the alert rule. Valid values of N: 1 to 20.
+	// The names of the event-triggered alert rules to delete.
 	//
 	// This parameter is required.
 	//

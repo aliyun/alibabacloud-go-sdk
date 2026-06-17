@@ -30,7 +30,7 @@ type DeleteMonitoringAgentProcessRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The process ID.
 	//
-	// > You must configure either `ProcessId` or `ProcessName`.
+	// > You must specify either ProcessId or ProcessName.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type DeleteMonitoringAgentProcessRequest struct {
 	ProcessId *string `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
 	// The process name.
 	//
-	// > You must configure either `ProcessId` or `ProcessName`.
+	// > You must specify either ProcessId or ProcessName.
 	//
 	// example:
 	//
