@@ -13,24 +13,27 @@ type iNotifyAppNotificationForAdminRequest interface {
 	GetBizId() *string
 	SetEnv(v string) *NotifyAppNotificationForAdminRequest
 	GetEnv() *string
+	SetPayload(v string) *NotifyAppNotificationForAdminRequest
+	GetPayload() *string
 	SetSceneId(v string) *NotifyAppNotificationForAdminRequest
 	GetSceneId() *string
 }
 
 type NotifyAppNotificationForAdminRequest struct {
-	// Business ID.
+	// The business ID.
 	//
 	// example:
 	//
 	// WS20260206134746000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// Environment identifier.
+	// The environment identifier.
 	//
 	// example:
 	//
 	// staging
-	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
-	// Scene ID.
+	Env     *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	Payload *string `json:"Payload,omitempty" xml:"Payload,omitempty"`
+	// The scene ID.
 	//
 	// example:
 	//
@@ -54,6 +57,10 @@ func (s *NotifyAppNotificationForAdminRequest) GetEnv() *string {
 	return s.Env
 }
 
+func (s *NotifyAppNotificationForAdminRequest) GetPayload() *string {
+	return s.Payload
+}
+
 func (s *NotifyAppNotificationForAdminRequest) GetSceneId() *string {
 	return s.SceneId
 }
@@ -65,6 +72,11 @@ func (s *NotifyAppNotificationForAdminRequest) SetBizId(v string) *NotifyAppNoti
 
 func (s *NotifyAppNotificationForAdminRequest) SetEnv(v string) *NotifyAppNotificationForAdminRequest {
 	s.Env = &v
+	return s
+}
+
+func (s *NotifyAppNotificationForAdminRequest) SetPayload(v string) *NotifyAppNotificationForAdminRequest {
+	s.Payload = &v
 	return s
 }
 

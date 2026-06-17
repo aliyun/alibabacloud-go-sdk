@@ -15,6 +15,10 @@ type iAppInstanceProfile interface {
 	GetApplicationTypeText() *string
 	SetBizId(v string) *AppInstanceProfile
 	GetBizId() *string
+	SetChatbiTaskId(v string) *AppInstanceProfile
+	GetChatbiTaskId() *string
+	SetChatbiTaskStatus(v string) *AppInstanceProfile
+	GetChatbiTaskStatus() *string
 	SetCommodityCode(v string) *AppInstanceProfile
 	GetCommodityCode() *string
 	SetCustomerService(v string) *AppInstanceProfile
@@ -23,6 +27,8 @@ type iAppInstanceProfile interface {
 	GetDeployArea() *string
 	SetInstanceId(v string) *AppInstanceProfile
 	GetInstanceId() *string
+	SetOpenChatBi(v bool) *AppInstanceProfile
+	GetOpenChatBi() *bool
 	SetOrdTime(v string) *AppInstanceProfile
 	GetOrdTime() *string
 	SetOrderId(v string) *AppInstanceProfile
@@ -43,20 +49,19 @@ type iAppInstanceProfile interface {
 	GetTemplateEtag() *string
 	SetTemplateId(v string) *AppInstanceProfile
 	GetTemplateId() *string
-	SetChatbiTaskId(v string) *AppInstanceProfile
-	GetChatbiTaskId() *string
-	SetChatbiTaskStatus(v string) *AppInstanceProfile
-	GetChatbiTaskStatus() *string
 }
 
 type AppInstanceProfile struct {
 	ApplicationType     *string `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
 	ApplicationTypeText *string `json:"ApplicationTypeText,omitempty" xml:"ApplicationTypeText,omitempty"`
 	BizId               *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	ChatbiTaskId        *string `json:"ChatbiTaskId,omitempty" xml:"ChatbiTaskId,omitempty"`
+	ChatbiTaskStatus    *string `json:"ChatbiTaskStatus,omitempty" xml:"ChatbiTaskStatus,omitempty"`
 	CommodityCode       *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
 	CustomerService     *string `json:"CustomerService,omitempty" xml:"CustomerService,omitempty"`
 	DeployArea          *string `json:"DeployArea,omitempty" xml:"DeployArea,omitempty"`
 	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OpenChatBi          *bool   `json:"OpenChatBi,omitempty" xml:"OpenChatBi,omitempty"`
 	OrdTime             *string `json:"OrdTime,omitempty" xml:"OrdTime,omitempty"`
 	OrderId             *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	PayTime             *string `json:"PayTime,omitempty" xml:"PayTime,omitempty"`
@@ -67,8 +72,6 @@ type AppInstanceProfile struct {
 	Source              *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	TemplateEtag        *string `json:"TemplateEtag,omitempty" xml:"TemplateEtag,omitempty"`
 	TemplateId          *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	ChatbiTaskId        *string `json:"chatbiTaskId,omitempty" xml:"chatbiTaskId,omitempty"`
-	ChatbiTaskStatus    *string `json:"chatbiTaskStatus,omitempty" xml:"chatbiTaskStatus,omitempty"`
 }
 
 func (s AppInstanceProfile) String() string {
@@ -91,6 +94,14 @@ func (s *AppInstanceProfile) GetBizId() *string {
 	return s.BizId
 }
 
+func (s *AppInstanceProfile) GetChatbiTaskId() *string {
+	return s.ChatbiTaskId
+}
+
+func (s *AppInstanceProfile) GetChatbiTaskStatus() *string {
+	return s.ChatbiTaskStatus
+}
+
 func (s *AppInstanceProfile) GetCommodityCode() *string {
 	return s.CommodityCode
 }
@@ -105,6 +116,10 @@ func (s *AppInstanceProfile) GetDeployArea() *string {
 
 func (s *AppInstanceProfile) GetInstanceId() *string {
 	return s.InstanceId
+}
+
+func (s *AppInstanceProfile) GetOpenChatBi() *bool {
+	return s.OpenChatBi
 }
 
 func (s *AppInstanceProfile) GetOrdTime() *string {
@@ -147,14 +162,6 @@ func (s *AppInstanceProfile) GetTemplateId() *string {
 	return s.TemplateId
 }
 
-func (s *AppInstanceProfile) GetChatbiTaskId() *string {
-	return s.ChatbiTaskId
-}
-
-func (s *AppInstanceProfile) GetChatbiTaskStatus() *string {
-	return s.ChatbiTaskStatus
-}
-
 func (s *AppInstanceProfile) SetApplicationType(v string) *AppInstanceProfile {
 	s.ApplicationType = &v
 	return s
@@ -167,6 +174,16 @@ func (s *AppInstanceProfile) SetApplicationTypeText(v string) *AppInstanceProfil
 
 func (s *AppInstanceProfile) SetBizId(v string) *AppInstanceProfile {
 	s.BizId = &v
+	return s
+}
+
+func (s *AppInstanceProfile) SetChatbiTaskId(v string) *AppInstanceProfile {
+	s.ChatbiTaskId = &v
+	return s
+}
+
+func (s *AppInstanceProfile) SetChatbiTaskStatus(v string) *AppInstanceProfile {
+	s.ChatbiTaskStatus = &v
 	return s
 }
 
@@ -187,6 +204,11 @@ func (s *AppInstanceProfile) SetDeployArea(v string) *AppInstanceProfile {
 
 func (s *AppInstanceProfile) SetInstanceId(v string) *AppInstanceProfile {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *AppInstanceProfile) SetOpenChatBi(v bool) *AppInstanceProfile {
+	s.OpenChatBi = &v
 	return s
 }
 
@@ -237,16 +259,6 @@ func (s *AppInstanceProfile) SetTemplateEtag(v string) *AppInstanceProfile {
 
 func (s *AppInstanceProfile) SetTemplateId(v string) *AppInstanceProfile {
 	s.TemplateId = &v
-	return s
-}
-
-func (s *AppInstanceProfile) SetChatbiTaskId(v string) *AppInstanceProfile {
-	s.ChatbiTaskId = &v
-	return s
-}
-
-func (s *AppInstanceProfile) SetChatbiTaskStatus(v string) *AppInstanceProfile {
-	s.ChatbiTaskStatus = &v
 	return s
 }
 

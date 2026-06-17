@@ -590,11 +590,11 @@ func (client *Client) CheckUserResourceMeasure(request *CheckUserResourceMeasure
 
 // Summary:
 //
-// 试用转正
+// Converts a trial instance to a paid instance.
 //
 // Description:
 //
-// 查询应用实例信息
+// Queries application instance information.
 //
 // @param request - ConfirmAppInstanceRequest
 //
@@ -682,11 +682,11 @@ func (client *Client) ConfirmAppInstanceWithOptions(request *ConfirmAppInstanceR
 
 // Summary:
 //
-// 试用转正
+// Converts a trial instance to a paid instance.
 //
 // Description:
 //
-// 查询应用实例信息
+// Queries application instance information.
 //
 // @param request - ConfirmAppInstanceRequest
 //
@@ -7224,7 +7224,7 @@ func (client *Client) MoveMaterialFile(request *MoveMaterialFileRequest) (_resul
 
 // Summary:
 //
-// Data change notification trigger (for admin)
+// Triggers a data change notification (for admin).
 //
 // Description:
 //
@@ -7249,6 +7249,10 @@ func (client *Client) NotifyAppNotificationForAdminWithOptions(request *NotifyAp
 
 	if !dara.IsNil(request.Env) {
 		query["Env"] = request.Env
+	}
+
+	if !dara.IsNil(request.Payload) {
+		query["Payload"] = request.Payload
 	}
 
 	if !dara.IsNil(request.SceneId) {
@@ -7280,7 +7284,7 @@ func (client *Client) NotifyAppNotificationForAdminWithOptions(request *NotifyAp
 
 // Summary:
 //
-// Data change notification trigger (for admin)
+// Triggers a data change notification (for admin).
 //
 // Description:
 //

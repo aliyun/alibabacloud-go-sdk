@@ -410,11 +410,11 @@ func (client *Client) CheckUserResourceMeasureWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 试用转正
+// Converts a trial instance to a paid instance.
 //
 // Description:
 //
-// 查询应用实例信息
+// Queries application instance information.
 //
 // @param request - ConfirmAppInstanceRequest
 //
@@ -5208,7 +5208,7 @@ func (client *Client) MoveMaterialFileWithContext(ctx context.Context, tmpReq *M
 
 // Summary:
 //
-// Data change notification trigger (for admin)
+// Triggers a data change notification (for admin).
 //
 // Description:
 //
@@ -5233,6 +5233,10 @@ func (client *Client) NotifyAppNotificationForAdminWithContext(ctx context.Conte
 
 	if !dara.IsNil(request.Env) {
 		query["Env"] = request.Env
+	}
+
+	if !dara.IsNil(request.Payload) {
+		query["Payload"] = request.Payload
 	}
 
 	if !dara.IsNil(request.SceneId) {

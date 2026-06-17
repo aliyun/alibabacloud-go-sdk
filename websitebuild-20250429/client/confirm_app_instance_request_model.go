@@ -36,46 +36,76 @@ type iConfirmAppInstanceRequest interface {
 }
 
 type ConfirmAppInstanceRequest struct {
+	// The application type.
+	//
 	// example:
 	//
 	// PC_WebSite
 	ApplicationType *string `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
+	// Specifies whether to enable auto-renewal upon expiration.
+	//
 	// example:
 	//
 	// false
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. Generate a unique value from your client. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 123456
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The deployment region.
+	//
 	// example:
 	//
 	// HongKong
 	DeployArea *string `json:"DeployArea,omitempty" xml:"DeployArea,omitempty"`
+	// Required. The number of subscription periods.
+	//
 	// example:
 	//
 	// 1
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The extended information.
+	//
 	// example:
 	//
 	// {\\"deliveryNodeName\\":\\"视觉设计确认\\",\\"deliveryNodeStatus\\":\\"Reject\\",\\"deliveryOperatorRole\\":\\"Customer\\"}
 	Extend *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
+	// The payment type.
+	//
 	// example:
 	//
 	// AUTO_PAY
 	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	// Required. The unit of the subscription period. Valid values:
+	//
+	// - Year: year
+	//
+	// - Month: month
+	//
+	// - Day: day
+	//
+	// - Hour: hour.
+	//
 	// example:
 	//
 	// Month
 	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	// Required. The number of instances to purchase.
+	//
 	// example:
 	//
 	// 1
 	Quantity *int32 `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
+	// The website version.
+	//
 	// example:
 	//
 	// Basic_Edition
 	SiteVersion *string `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	// The business ID of the trial instance.
+	//
 	// example:
 	//
 	// WS123456
