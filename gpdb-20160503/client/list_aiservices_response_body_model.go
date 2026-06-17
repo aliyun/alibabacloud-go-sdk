@@ -22,19 +22,28 @@ type iListAIServicesResponseBody interface {
 }
 
 type ListAIServicesResponseBody struct {
+	// The page number of the current page.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries on the current page.
+	//
 	// example:
 	//
 	// 1
 	PageRecordCount *string `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Services  []*ListAIServicesResponseBodyServices `json:"Services,omitempty" xml:"Services,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of AI services.
+	Services []*ListAIServicesResponseBodyServices `json:"Services,omitempty" xml:"Services,omitempty" type:"Repeated"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 1
@@ -108,42 +117,66 @@ func (s *ListAIServicesResponseBody) Validate() error {
 }
 
 type ListAIServicesResponseBodyServices struct {
+	// The time when the AI service was created.
+	//
 	// example:
 	//
 	// 2026-03-01T00:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the AI service.
+	//
 	// example:
 	//
 	// dramatest
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The private endpoint for API debugging.
+	//
 	// example:
 	//
 	// 192.168.0.1/api-docs
 	PrivateApiDevUrl *string `json:"PrivateApiDevUrl,omitempty" xml:"PrivateApiDevUrl,omitempty"`
+	// The private endpoint of the Workbench.
+	//
 	// example:
 	//
 	// 192.168.0.1
 	PrivateWorkbenchUrl *string `json:"PrivateWorkbenchUrl,omitempty" xml:"PrivateWorkbenchUrl,omitempty"`
+	// The public endpoint for API debugging.
+	//
 	// example:
 	//
 	// 8.8.8.8/api-docs
 	PublicApiDevUrl *string `json:"PublicApiDevUrl,omitempty" xml:"PublicApiDevUrl,omitempty"`
+	// The public endpoint of the Workbench.
+	//
 	// example:
 	//
 	// 8.8.8.8
 	PublicWorkbenchUrl *string `json:"PublicWorkbenchUrl,omitempty" xml:"PublicWorkbenchUrl,omitempty"`
+	// The list of IP addresses in the IP address whitelist group. Separate multiple IP addresses with commas.
+	//
 	// example:
 	//
 	// 127.0.0.1
 	SecurityIpList *string `json:"SecurityIpList,omitempty" xml:"SecurityIpList,omitempty"`
+	// The service account.
+	//
 	// example:
 	//
 	// dramauser
 	ServiceAccount *string `json:"ServiceAccount,omitempty" xml:"ServiceAccount,omitempty"`
+	// The ID of the AI service.
+	//
 	// example:
 	//
 	// drama-123456
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The status of the AI service. Valid values:
+	//
+	// - deploying
+	//
+	// - active
+	//
 	// example:
 	//
 	// active

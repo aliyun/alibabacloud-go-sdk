@@ -32,6 +32,10 @@ type ModifyStreamingDataServiceRequest struct {
 	//
 	// gp-bp10g78o9807yv9h3
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The region ID.
+	//
+	// > You can invoke the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) API to view available region IDs.
+	//
 	// example:
 	//
 	// cn-beijing

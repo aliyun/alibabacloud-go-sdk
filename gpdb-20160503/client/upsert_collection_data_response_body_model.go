@@ -22,7 +22,7 @@ type UpsertCollectionDataResponseBody struct {
 	//
 	// example:
 	//
-	// Successful
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//

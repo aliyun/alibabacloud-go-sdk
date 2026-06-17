@@ -20,24 +20,38 @@ type iModifyAIServiceSecurityIpsRequest interface {
 }
 
 type ModifyAIServiceSecurityIpsRequest struct {
+	// The ID of the instance.
+	//
+	// > To view details of all instances in a destination region, including their IDs, call the [DescribeDBInstances](https://help.aliyun.com/document_detail/196830.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// A comma-separated list of IP addresses or CIDR blocks in the IP address whitelist group. You can specify up to 1000 entries. To block all external IP addresses, set this parameter to 127.0.0.1. Valid formats include the following:
+	//
+	// - 10.23.12.24 (an IPv4 address)
+	//
+	// - 10.23.12.24/24 (a CIDR block. The number after the slash indicates the prefix length and must be between 1 and 32.)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 127.0.0.1
 	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
+	// The ID of the service.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// drama-123456
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The service type. Only drama is supported.
+	//
 	// This parameter is required.
 	//
 	// example:

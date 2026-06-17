@@ -42,7 +42,7 @@ type DescribeDBInstanceIndexUsageRequest struct {
 	//
 	// example:
 	//
-	// {Field: TableName, Type: Desc}
+	// {Field: SchemaName, Type: Desc}
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
 	// The page number. Pages start from page 1. Default value: **1**.
 	//
@@ -62,7 +62,7 @@ type DescribeDBInstanceIndexUsageRequest struct {
 	//
 	// example:
 	//
-	// 20
+	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 

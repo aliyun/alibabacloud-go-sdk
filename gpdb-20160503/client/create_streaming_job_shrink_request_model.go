@@ -122,7 +122,7 @@ type CreateStreamingJobShrinkRequest struct {
 	//
 	// example:
 	//
-	// group_name.
+	// group_name。
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// Job configuration file, required for professional mode.
 	//

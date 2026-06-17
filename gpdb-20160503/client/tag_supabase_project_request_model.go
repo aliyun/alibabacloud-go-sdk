@@ -20,16 +20,22 @@ type iTagSupabaseProjectRequest interface {
 }
 
 type TagSupabaseProjectRequest struct {
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query available region IDs.
+	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId   *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The IDs of the instances. You can specify up to 50 instance IDs.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// The resource type. Set this parameter to `instance`.
+	//
 	// example:
 	//
 	// instance
-	ResourceType *string                         `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tag          []*TagSupabaseProjectRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tags to add. You can specify up to 20 tags.
+	Tag []*TagSupabaseProjectRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s TagSupabaseProjectRequest) String() string {
@@ -90,10 +96,14 @@ func (s *TagSupabaseProjectRequest) Validate() error {
 }
 
 type TagSupabaseProjectRequestTag struct {
+	// The tag key. The key cannot be empty and can be up to 64 characters long. It cannot start with `aliyun` or `acs:`, or contain `http://` or `https://`.
+	//
 	// example:
 	//
 	// test-key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value. The value can be empty or up to 128 characters long. It cannot contain `http://` or `https://`.
+	//
 	// example:
 	//
 	// test-value

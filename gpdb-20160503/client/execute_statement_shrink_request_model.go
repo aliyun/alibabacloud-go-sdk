@@ -55,6 +55,9 @@ type ExecuteStatementShrinkRequest struct {
   OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
   // The configuration parameters.
   ParametersShrink *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+  // Parameters for the vector dataset.  
+  // 
+  // > When WorkspaceId is not empty, you must also pass this parameter.
   RagWorkspaceCollectionShrink *string `json:"RagWorkspaceCollection,omitempty" xml:"RagWorkspaceCollection,omitempty"`
   // The region ID of the instance.
   // 
@@ -98,6 +101,11 @@ type ExecuteStatementShrinkRequest struct {
   // 
   // test
   StatementName *string `json:"StatementName,omitempty" xml:"StatementName,omitempty"`
+  // The ID of a workspace composed of multiple database instances. This parameter and DBInstanceId cannot both be empty. If both are specified, this parameter takes precedence.
+  // 
+  // example:
+  // 
+  // gp-ws-*****
   WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 

@@ -16,7 +16,7 @@ type iDescribeDownloadRecordsResponseBody interface {
 }
 
 type DescribeDownloadRecordsResponseBody struct {
-	// The URL that is used to download the file.
+	// An array of download records.
 	Records []*DescribeDownloadRecordsResponseBodyRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -72,31 +72,31 @@ type DescribeDownloadRecordsResponseBodyRecords struct {
 	//
 	// 1150
 	DownloadId *int64 `json:"DownloadId,omitempty" xml:"DownloadId,omitempty"`
-	// The URL that can be used to download the file.
+	// The download URL.
 	//
 	// example:
 	//
 	// https://perth-download-task.oss-cn-beijing.aliyuncs.com/*****
 	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
-	// The error message returned.
+	// The error message.
 	//
 	// example:
 	//
 	// Error message
 	ExceptionMsg *string `json:"ExceptionMsg,omitempty" xml:"ExceptionMsg,omitempty"`
-	// The name of the file.
+	// The file name.
 	//
 	// example:
 	//
 	// 20220509113448-20220509173448.csv
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// The state of the upload task. After you call the DownloadDiagnosisRecords operation, query diagnostic information is first uploaded to Object Storage Service (OSS). After the upload task is complete, the query diagnostic information can be downloaded. Valid values:
+	// The status of the task that uploads the query diagnostic information file to Object Storage Service (OSS). You can download the file after the upload is complete. Valid values:
 	//
-	// 	- **running**: uploading
+	// - **running**: The file is being uploaded.
 	//
-	// 	- **finished**: uploaded
+	// - **finished**: The file upload is complete.
 	//
-	// 	- **failed**: failed
+	// - **failed**: The file upload failed.
 	//
 	// example:
 	//

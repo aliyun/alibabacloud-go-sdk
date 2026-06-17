@@ -18,18 +18,26 @@ type iDeleteAIServiceRequest interface {
 }
 
 type DeleteAIServiceRequest struct {
+	// The instance ID.
+	//
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to view the details of all AnalyticDB PostgreSQL instances in the destination region, including the instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The service ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// drama-123456
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The service type. Only drama is supported.
+	//
 	// This parameter is required.
 	//
 	// example:

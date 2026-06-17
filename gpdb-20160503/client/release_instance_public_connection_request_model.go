@@ -26,7 +26,7 @@ type ReleaseInstancePublicConnectionRequest struct {
 	//
 	// example:
 	//
-	// Intranet
+	// primary
 	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
 	// The public endpoint of the instance.
 	//

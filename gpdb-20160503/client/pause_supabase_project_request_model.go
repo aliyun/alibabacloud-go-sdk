@@ -16,12 +16,18 @@ type iPauseSupabaseProjectRequest interface {
 }
 
 type PauseSupabaseProjectRequest struct {
+	// The Supabase instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// sbp-180****
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The region ID.
+	//
+	// > Call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the available region IDs.
+	//
 	// example:
 	//
 	// cn-hangzhou

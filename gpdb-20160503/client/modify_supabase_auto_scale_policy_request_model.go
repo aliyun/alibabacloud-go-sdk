@@ -18,18 +18,28 @@ type iModifySupabaseAutoScalePolicyRequest interface {
 }
 
 type ModifySupabaseAutoScalePolicyRequest struct {
+	// Specifies whether to enable auto-scaling. Valid values:
+	//
+	// - `true`: Enables auto-scaling. The Supabase instance automatically pauses and resumes based on traffic.
+	//
+	// - `false`: Disables auto-scaling.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// false
 	AutoScale *bool `json:"AutoScale,omitempty" xml:"AutoScale,omitempty"`
+	// The ID of the Supabase project. To obtain the workspace ID, log in to the console and go to the Supabase page.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// sbp-tyarplz****
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The region ID of the instance.
+	//
 	// example:
 	//
 	// cn-beijing

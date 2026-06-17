@@ -57,6 +57,10 @@ type CreateIndexRequest struct {
 	// 	- b-tree: To create a B-tree index, set the fillFactor parameter to a value between 10 and 100. Default value: 90.
 	//
 	// 	- gin: To create a GIN index, set the fastUpdate parameter to true or false. Default value: true.
+	//
+	// example:
+	//
+	// {"b-tree":{"fillFactor":90}} or {"gin":{"fastUpdate":false}}
 	IndexConfig *string `json:"IndexConfig,omitempty" xml:"IndexConfig,omitempty"`
 	// The index field. Only a single field is supported, and it must be a key defined in metadata.
 	//

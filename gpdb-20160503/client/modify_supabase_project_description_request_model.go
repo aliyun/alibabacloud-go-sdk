@@ -18,14 +18,20 @@ type iModifySupabaseProjectDescriptionRequest interface {
 }
 
 type ModifySupabaseProjectDescriptionRequest struct {
+	// The detailed description of the Supabase project.
+	//
 	// example:
 	//
 	// for-test-project
 	ProjectDescription *string `json:"ProjectDescription,omitempty" xml:"ProjectDescription,omitempty"`
+	// The Supabase instance ID.
+	//
 	// example:
 	//
 	// sbp-twmoe9bakow
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou

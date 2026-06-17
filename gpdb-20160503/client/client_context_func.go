@@ -438,19 +438,19 @@ func (client *Client) CancelUpsertCollectionDataJobWithContext(ctx context.Conte
 
 // Summary:
 //
-// Provides intelligent question-and-answer services by combining a knowledge base with a large language model.
+// Combines a knowledge base with a large language model for intelligent Q&A.
 //
 // Description:
 //
-// This API enables users to query a large language model with answers grounded in a specified knowledge base collection. You can configure multiple parameters to customize requests, including but not limited to database instance IDs, knowledge retrieval parameters, and model inference parameters. In addition, a default system prompt template is provided and users are allowed to customize the system prompt.
+// This API lets you interact with a large language model using specific knowledge base collections to ensure responses are grounded in their content. You can customize requests by configuring parameters, including the database instance ID, knowledge retrieval parameters, and model inference parameters. The API provides a default system prompt template and supports custom system prompts.
 //
-//   - **DBInstanceId**: Required. This parameter specifies the ID of the database instance.
+// - **DBInstanceId**: Required. Specifies the ID of the database instance.
 //
-//   - **KnowledgeParams**: optional. It contains parameters related to knowledge retrieval, such as retrieval content and merge policy.
+// - **KnowledgeParams**: Optional. Contains parameters for knowledge retrieval, such as retrieval content and merge policies.
 //
-//   - **ModelParams**: required. It contains parameters related to model inference, such as the message list and the name of the model.
+// - **ModelParams**: Required. Contains parameters for model inference, such as the message list and the model name.
 //
-//   - **PromptTemplate**: optional. It is used to customize the system prompt template.
+// - **PromptTemplate**: Optional. Specifies a custom system prompt template.
 //
 // @param tmpReq - ChatWithKnowledgeBaseRequest
 //
@@ -528,19 +528,19 @@ func (client *Client) ChatWithKnowledgeBaseWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// Provides intelligent question-and-answer services by combining a knowledge base with a large language model. A streaming API, which is called by using the SSE or the Java asynchronous SDK.
+// This service combines a knowledge base with a large model to provide intelligent Q&A. You can access the streaming interface using Server-Sent Events (SSE) or the Java asynchronous SDK.
 //
 // Description:
 //
-// This API enables users to query a large language model with answers grounded in a specified knowledge base collection. You can configure multiple parameters to customize requests, including but not limited to database instance IDs, knowledge retrieval parameters, and model inference parameters. In addition, a default system prompt template is provided and users are allowed to customize the system prompt.
+// Use this API to retrieve answers from a large language model based on content from a specified knowledge base. You can customize the request by configuring various parameters, including the database instance ID, knowledge retrieval parameters, and model inference parameters. The API includes a default system prompt template, and you can also specify a custom one.
 //
-//   - DBInstanceId: required. This parameter specifies the ID of the database instance.
+// - DBInstanceId: Required. The ID of the database instance.
 //
-//   - KnowledgeParams: optional. It contains parameters related to knowledge retrieval, such as retrieval content and merge policy.
+// - KnowledgeParams: Optional. Parameters for knowledge retrieval, such as retrieval content and the merge policy.
 //
-//   - ModelParams: required. It contains parameters related to model inference, such as the message list and the name of the model.
+// - ModelParams: Required. Parameters for model inference, such as the message list and the model name.
 //
-//   - PromptTemplate: optional. It is used to customize a system prompt template.
+// - PromptTemplate: Optional. A custom system prompt template.
 //
 // @param tmpReq - ChatWithKnowledgeBaseStreamRequest
 //
@@ -555,19 +555,19 @@ func (client *Client) ChatWithKnowledgeBaseStreamWithSSECtx(ctx context.Context,
 
 // Summary:
 //
-// Provides intelligent question-and-answer services by combining a knowledge base with a large language model. A streaming API, which is called by using the SSE or the Java asynchronous SDK.
+// This service combines a knowledge base with a large model to provide intelligent Q&A. You can access the streaming interface using Server-Sent Events (SSE) or the Java asynchronous SDK.
 //
 // Description:
 //
-// This API enables users to query a large language model with answers grounded in a specified knowledge base collection. You can configure multiple parameters to customize requests, including but not limited to database instance IDs, knowledge retrieval parameters, and model inference parameters. In addition, a default system prompt template is provided and users are allowed to customize the system prompt.
+// Use this API to retrieve answers from a large language model based on content from a specified knowledge base. You can customize the request by configuring various parameters, including the database instance ID, knowledge retrieval parameters, and model inference parameters. The API includes a default system prompt template, and you can also specify a custom one.
 //
-//   - DBInstanceId: required. This parameter specifies the ID of the database instance.
+// - DBInstanceId: Required. The ID of the database instance.
 //
-//   - KnowledgeParams: optional. It contains parameters related to knowledge retrieval, such as retrieval content and merge policy.
+// - KnowledgeParams: Optional. Parameters for knowledge retrieval, such as retrieval content and the merge policy.
 //
-//   - ModelParams: required. It contains parameters related to model inference, such as the message list and the name of the model.
+// - ModelParams: Required. Parameters for model inference, such as the message list and the model name.
 //
-//   - PromptTemplate: optional. It is used to customize a system prompt template.
+// - PromptTemplate: Optional. A custom system prompt template.
 //
 // @param tmpReq - ChatWithKnowledgeBaseStreamRequest
 //
@@ -909,7 +909,7 @@ func (client *Client) CloneDBInstanceWithContext(ctx context.Context, request *C
 
 // Summary:
 //
-// 创建 AI 服务
+// Creates an AI service.
 //
 // @param request - CreateAIServiceRequest
 //
@@ -1095,7 +1095,7 @@ func (client *Client) CreateBackupWithContext(ctx context.Context, request *Crea
 
 // Summary:
 //
-// Creates a vector collection.
+// Create a vector dataset.
 //
 // @param tmpReq - CreateCollectionRequest
 //
@@ -1233,11 +1233,11 @@ func (client *Client) CreateCollectionWithContext(ctx context.Context, tmpReq *C
 
 // Summary:
 //
-// # Create Instance
+// Create an AnalyticDB for PostgreSQL instance.
 //
 // Description:
 //
-// Before using this interface, please make sure you have fully understood the [billing method](https://help.aliyun.com/document_detail/35406.html) and <props="china">[pricing](https://www.aliyun.com/price/product#/gpdb/detail/GreenplumPost)<props="intl">[pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing) of the AnalyticDB for PostgreSQL product.
+// Before you call this operation, review the [billing methods](https://help.aliyun.com/document_detail/35406.html) and <props="china">[pricing](https://www.aliyun.com/price/product#/gpdb/detail/GreenplumPost)<props="intl">[pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing) for AnalyticDB for PostgreSQL.
 //
 // @param request - CreateDBInstanceRequest
 //
@@ -1731,7 +1731,7 @@ func (client *Client) CreateDatabaseWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// Creates a document collection.
+// # Create a knowledge base
 //
 // @param tmpReq - CreateDocumentCollectionRequest
 //
@@ -2265,7 +2265,7 @@ func (client *Client) CreateJDBCDataSourceWithContext(ctx context.Context, reque
 //
 // Description:
 //
-// Before you call this operation, make sure that you fully understand the [billing methods](https://help.aliyun.com/document_detail/35406.html) and [pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing) of AnalyticDB for PostgreSQL.
+// Before you call this operation, review the [billing methods](https://help.aliyun.com/document_detail/35406.html) and <props="china">[pricing](https://www.aliyun.com/price/product#/gpdb/detail/GreenplumPost)<props="intl">[pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing) of AnalyticDB for PostgreSQL.
 //
 // @param tmpReq - CreateModelServiceRequest
 //
@@ -2503,6 +2503,82 @@ func (client *Client) CreateRemoteADBDataSourceWithContext(ctx context.Context, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateRemoteADBDataSourceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a SaaS service.
+//
+// Description:
+//
+// Before you call this operation, make sure that you are familiar with the [billing methods](https://help.aliyun.com/document_detail/35406.html) and <props="china">[pricing](https://www.aliyun.com/price/product#/gpdb/detail/GreenplumPost)<props="intl">[pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing) of AnalyticDB for PostgreSQL.
+//
+// @param request - CreateSaasServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSaasServiceResponse
+func (client *Client) CreateSaasServiceWithContext(ctx context.Context, request *CreateSaasServiceRequest, runtime *dara.RuntimeOptions) (_result *CreateSaasServiceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Cu) {
+		query["Cu"] = request.Cu
+	}
+
+	if !dara.IsNil(request.PayType) {
+		query["PayType"] = request.PayType
+	}
+
+	if !dara.IsNil(request.Period) {
+		query["Period"] = request.Period
+	}
+
+	if !dara.IsNil(request.Plan) {
+		query["Plan"] = request.Plan
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ServiceType) {
+		query["ServiceType"] = request.ServiceType
+	}
+
+	if !dara.IsNil(request.UsedTime) {
+		query["UsedTime"] = request.UsedTime
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateSaasService"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateSaasServiceResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2971,7 +3047,7 @@ func (client *Client) CreateStreamingJobWithContext(ctx context.Context, tmpReq 
 //
 // Description:
 //
-//	You can call this operation to create a Supabase project.
+// - This operation is used to create a Supabase instance.
 //
 // @param request - CreateSupabaseProjectRequest
 //
@@ -3000,6 +3076,10 @@ func (client *Client) CreateSupabaseProjectWithContext(ctx context.Context, requ
 
 	if !dara.IsNil(request.DiskPerformanceLevel) {
 		query["DiskPerformanceLevel"] = request.DiskPerformanceLevel
+	}
+
+	if !dara.IsNil(request.EngineVersion) {
+		query["EngineVersion"] = request.EngineVersion
 	}
 
 	if !dara.IsNil(request.PayType) {
@@ -3071,7 +3151,7 @@ func (client *Client) CreateSupabaseProjectWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// # Create Vector Index
+// Creates an index for a vector collection.
 //
 // @param request - CreateVectorIndexRequest
 //
@@ -3179,6 +3259,58 @@ func (client *Client) CreateVectorIndexWithContext(ctx context.Context, request 
 
 // Summary:
 //
+// Creates a SaaS workspace.
+//
+// Description:
+//
+// Creates a context service workspace.
+//
+// @param request - CreateWorkspaceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateWorkspaceResponse
+func (client *Client) CreateWorkspaceWithContext(ctx context.Context, request *CreateWorkspaceRequest, runtime *dara.RuntimeOptions) (_result *CreateWorkspaceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.WorkspaceName) {
+		query["WorkspaceName"] = request.WorkspaceName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateWorkspace"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateWorkspaceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Delete AI Node
 //
 // Description:
@@ -3241,7 +3373,7 @@ func (client *Client) DeleteAINodeWithContext(ctx context.Context, request *Dele
 
 // Summary:
 //
-// 删除 AI 服务
+// Deletes an AI service.
 //
 // @param request - DeleteAIServiceRequest
 //
@@ -3389,7 +3521,7 @@ func (client *Client) DeleteBackupWithContext(ctx context.Context, request *Dele
 
 // Summary:
 //
-// 删除文本块
+// Deletes chunks from a document collection.
 //
 // @param tmpReq - DeleteChunksRequest
 //
@@ -4117,7 +4249,7 @@ func (client *Client) DeleteExternalDataServiceWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Deletes a Hadoop external data source.
+// Delete a Hadoop external data source.
 //
 // @param request - DeleteHadoopDataSourceRequest
 //
@@ -4509,6 +4641,58 @@ func (client *Client) DeleteRemoteADBDataSourceWithContext(ctx context.Context, 
 
 // Summary:
 //
+// Deletes a SaaS service.
+//
+// Description:
+//
+// Deletes a SaaS service.
+//
+// @param request - DeleteSaasServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSaasServiceResponse
+func (client *Client) DeleteSaasServiceWithContext(ctx context.Context, request *DeleteSaasServiceRequest, runtime *dara.RuntimeOptions) (_result *DeleteSaasServiceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ServiceId) {
+		query["ServiceId"] = request.ServiceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteSaasService"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteSaasServiceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes the access credentials of an AnalyticDB for PostgreSQL instance.
 //
 // @param request - DeleteSecretRequest
@@ -4573,7 +4757,7 @@ func (client *Client) DeleteSecretWithContext(ctx context.Context, request *Dele
 
 // Summary:
 //
-// Deletes the configurations of an external data source.
+// Delete a real-time data service.
 //
 // @param request - DeleteStreamingDataServiceRequest
 //
@@ -4625,7 +4809,7 @@ func (client *Client) DeleteStreamingDataServiceWithContext(ctx context.Context,
 
 // Summary:
 //
-// Deletes a real-time data source.
+// Delete a real-time data source.
 //
 // @param request - DeleteStreamingDataSourceRequest
 //
@@ -4677,7 +4861,7 @@ func (client *Client) DeleteStreamingDataSourceWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Deletes a real-time data synchronization job.
+// Delete a real-time data synchronization task.
 //
 // @param request - DeleteStreamingJobRequest
 //
@@ -4853,13 +5037,65 @@ func (client *Client) DeleteVectorIndexWithContext(ctx context.Context, request 
 
 // Summary:
 //
+// 删除SaaS工作空间
+//
+// Description:
+//
+// 此接口为删除上下文服务工作空间
+//
+// @param request - DeleteWorkspaceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteWorkspaceResponse
+func (client *Client) DeleteWorkspaceWithContext(ctx context.Context, request *DeleteWorkspaceRequest, runtime *dara.RuntimeOptions) (_result *DeleteWorkspaceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteWorkspace"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteWorkspaceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Deploy a private RAG service.
 //
 // Description:
 //
-// 1.  Before you deploy the private RAG service, create an initial account.
+// 1. 部署私有RAG服务前，请先创建初始账号。
 //
-// 2.  The private RAG service supports vector interfaces. When you call this operation, you must configure a CA certificate.
+// 2. 私有RAG服务支持向量接口，调用时请配置CA证书。
 //
 // @param request - DeployPrivateRAGServiceRequest
 //
@@ -4911,7 +5147,7 @@ func (client *Client) DeployPrivateRAGServiceWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 获取 AI 服务详情
+// Retrieves the details of an AI service.
 //
 // @param request - DescribeAIServiceRequest
 //
@@ -5099,11 +5335,11 @@ func (client *Client) DescribeActiveSQLRecordsWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the information about available resources of AnalyticDB for PostgreSQL.
+// Gets the purchasable resources for AnalyticDB for PostgreSQL.
 //
 // Description:
 //
-// When you create an AnalyticDB for PostgreSQL instance, you can call this operation to query the available resources within a zone.
+// Before creating an AnalyticDB for PostgreSQL instance, you can use this operation to query the available instance offerings in a specified availability zone.
 //
 // @param request - DescribeAvailableResourcesRequest
 //
@@ -5453,11 +5689,11 @@ func (client *Client) DescribeDBClusterNodeWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the information about performance metrics of an AnalyticDB for PostgreSQL instance within a time range.
+// View the Performance Monitoring of an AnalyticDB for PostgreSQL instance over a specified time period.
 //
 // Description:
 //
-// You can query monitoring information only within the last 30 days.
+// Monitoring information can only be queried for the last 30 days.
 //
 // @param request - DescribeDBClusterPerformanceRequest
 //
@@ -5525,19 +5761,19 @@ func (client *Client) DescribeDBClusterPerformanceWithContext(ctx context.Contex
 
 // Summary:
 //
-// Query detailed information about the instance.
+// Query the details of an AnalyticDB for PostgreSQL instance.
 //
 // Description:
 //
-// ## Usage Instructions
+// ## How-To
 //
-// This interface is generally used to view information such as the specifications, network type, and instance status of AnalyticDB for PostgreSQL instances.
+// This API is typically used to view information such as the specifications, network type, and instance status of an AnalyticDB for PostgreSQL instance.
 //
-// ## QPS Limitation
+// ## Queries per second (QPS) limit
 //
-// The default single-user QPS limit for this interface is 1000 times/second. If the limit is exceeded, API calls will be throttled, which may affect your business. Please use it reasonably.
+// The default QPS limit for this API is 1000 queries per second per user. If this limit is exceeded, API calls will be rate-limited, which may affect your business operations. Please invoke the API appropriately.
 //
-// <props="china">The QPS in this document is only a default reference value. For accurate information, please refer to the [API Rate Quota List](https://quotas.console.aliyun.com/flow-control-products/gpdb/quotas).
+// <props="china">The QPS value provided in this document is for reference only. For accurate information, see [API rate limit list](https://quotas.console.aliyun.com/flow-control-products/gpdb/quotas).
 //
 // @param request - DescribeDBInstanceAttributeRequest
 //
@@ -6283,17 +6519,21 @@ func (client *Client) DescribeDBInstanceSupportMaxPerformanceWithContext(ctx con
 
 // Summary:
 //
-// Queries a list of AnalyticDB for PostgreSQL instances.
+// Lists AnalyticDB for PostgreSQL instances.
 //
 // Description:
 //
-// ##
+// ## Usage
 //
-// You can call this operation to query the instance types, network types, and states of AnalyticDB for PostgreSQL instances within a region.
+// This API retrieves details for AnalyticDB for PostgreSQL instances in a specified region, such as instance type, network type, and instance status.
 //
-// ## Limits
+// ## QPS limit
 //
-// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The default QPS limit for this API is 1,000 requests per second per user. Calls exceeding this limit are throttled, which can impact your business. Plan your API calls accordingly.
+//
+// <props="china">
+//
+// The QPS limit specified in this document is for reference only. For the latest rate limits, see the [API rate quota list](https://quotas.console.aliyun.com/flow-control-products/gpdb/quotas).
 //
 // @param tmpReq - DescribeDBInstancesRequest
 //
@@ -6407,7 +6647,7 @@ func (client *Client) DescribeDBInstancesWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// Queries the information about resource groups.
+// Retrieves the details of one or more resource groups.
 //
 // @param request - DescribeDBResourceGroupRequest
 //
@@ -6763,15 +7003,11 @@ func (client *Client) DescribeDataShareInstancesWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries the information about data sharing performance metrics.
+// Queries the performance metrics of data sharing.
 //
 // Description:
 //
-// You can call this operation to query the details of data sharing performance metrics for an AnalyticDB for PostgreSQL instance in Serverless mode, such as the number of shared topics and the amount of data shared.
-//
-// ## Limits
-//
-// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// Only serverless instances support the data sharing feature.
 //
 // @param request - DescribeDataSharePerformanceRequest
 //
@@ -7217,13 +7453,13 @@ func (client *Client) DescribeDocumentWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries the download records of query diagnostic information for an AnalyticDB for PostgreSQL instance.
+// Queries the download records for query diagnostic information for AnalyticDB for PostgreSQL.
 //
 // Description:
 //
-// You must call the [DownloadDiagnosisRecords](https://help.aliyun.com/document_detail/447700.html) operation to download the query diagnostic information before you can call this operation to query the download records and download URLs.
+// To view download records, you must first call the [DownloadDiagnosisRecords](https://help.aliyun.com/document_detail/447700.html) operation to download the query diagnostic information.
 //
-// This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For information about how to view and update the minor version of an instance, see [View the minor engine version](https://help.aliyun.com/document_detail/277424.html) and [Update the minor engine version](https://help.aliyun.com/document_detail/139271.html).
+// This feature is available only for storage-elastic instances that run kernel minor version V6.3.10.1 or later. For more information about how to view and update the kernel minor version, see [View the kernel minor version](https://help.aliyun.com/document_detail/277424.html) and [Upgrade the kernel version](https://help.aliyun.com/document_detail/139271.html).
 //
 // @param request - DescribeDownloadRecordsRequest
 //
@@ -7419,7 +7655,7 @@ func (client *Client) DescribeExternalDataServiceWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries a list of E-MapReduce (EMR) clusters in a virtual private cloud (VPC).
+// Retrieves E-MapReduce (EMR) clusters in the same Virtual Private Cloud (VPC).
 //
 // @param request - DescribeHadoopClustersInSameNetRequest
 //
@@ -8345,15 +8581,11 @@ func (client *Client) DescribeRebalanceStatusWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries a list of regions and zones where AnalyticDB for PostgreSQL is available.
+// Queries the regions and zones where you can create AnalyticDB for PostgreSQL instances.
 //
 // Description:
 //
-// Before you create an AnalyticDB for PostgreSQL instance, you must call this operation to query available regions and zones.
-//
-// ## Limit
-//
-// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered and may affect your business. We recommend that you take note of the limit when you call this operation.
+// Before you create an AnalyticDB for PostgreSQL instance, call this operation to query the available regions and zones.
 //
 // @param request - DescribeRegionsRequest
 //
@@ -8445,11 +8677,11 @@ func (client *Client) DescribeRolesWithContext(ctx context.Context, request *Des
 
 // Summary:
 //
-// Queries the number of audit logs for an AnalyticDB for PostgreSQL instance.
+// Obtain the quantity of audit logs for an AnalyticDB for PostgreSQL instance.
 //
 // Description:
 //
-// This operation is not available for instances in reserved storage mode.
+// This API does not support instances of the storage-reserved type.
 //
 // @param request - DescribeSQLLogCountRequest
 //
@@ -9017,7 +9249,7 @@ func (client *Client) DescribeSupportFeaturesWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the information about a table.
+// View table details.
 //
 // @param request - DescribeTableRequest
 //
@@ -9881,7 +10113,7 @@ func (client *Client) EnableDBResourceGroupWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Executes SQL statements.
+// Execute an SQL statement.
 //
 // @param tmpReq - ExecuteStatementRequest
 //
@@ -10101,6 +10333,58 @@ func (client *Client) GetGraphRAGJobWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
+// 获取SaaS服务信息
+//
+// Description:
+//
+// 删除模型服务。
+//
+// @param request - GetSaasServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSaasServiceResponse
+func (client *Client) GetSaasServiceWithContext(ctx context.Context, request *GetSaasServiceRequest, runtime *dara.RuntimeOptions) (_result *GetSaasServiceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ServiceId) {
+		query["ServiceId"] = request.ServiceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetSaasService"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetSaasServiceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the information about an access credential.
 //
 // @param request - GetSecretValueRequest
@@ -10155,6 +10439,64 @@ func (client *Client) GetSecretValueWithContext(ctx context.Context, request *Ge
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetSecretValueResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取SaaS服务访问信息
+//
+// Description:
+//
+// ## 使用说明
+//
+// 本接口用于查看所有模型服务信息。
+//
+// ## QPS限制
+//
+// 本接口的单用户QPS限制默认为1000次/秒。超过限制，API调用会被限流，这可能会影响您的业务，请合理调用。
+//
+// @param request - GetServiceAccessInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetServiceAccessInfoResponse
+func (client *Client) GetServiceAccessInfoWithContext(ctx context.Context, request *GetServiceAccessInfoRequest, runtime *dara.RuntimeOptions) (_result *GetServiceAccessInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ServiceId) {
+		query["ServiceId"] = request.ServiceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetServiceAccessInfo"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetServiceAccessInfoResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -10229,11 +10571,11 @@ func (client *Client) GetStatementResultWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Retrieves the detailed configuration and status information for a specific Supabase instance.
+// Retrieves details of a Supabase instance.
 //
 // Description:
 //
-// This interface is used to query the details of a Supabase instance.
+// Gets the details of a Supabase instance.
 //
 // @param request - GetSupabaseProjectRequest
 //
@@ -10281,11 +10623,11 @@ func (client *Client) GetSupabaseProjectWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries the API keys and JWT secrets of a Supabase instance.
+// Queries the API keys and JWT secrets for a Supabase instance.
 //
 // Description:
 //
-// You can call this operation to query a list of API keys for a Supabase project.
+// This operation queries the API keys and JWT secrets for a Supabase instance.
 //
 // @param request - GetSupabaseProjectApiKeysRequest
 //
@@ -10735,11 +11077,11 @@ func (client *Client) InitVectorDatabaseWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries a list of AI nodes.
+// Queries a list of AINode resource pools.
 //
 // Description:
 //
-//	This operation queries a list of AI nodes.
+// - This operation lists the AINode resource pools for the specified instance.
 //
 // @param request - ListAINodePoolsRequest
 //
@@ -10787,7 +11129,7 @@ func (client *Client) ListAINodePoolsWithContext(ctx context.Context, request *L
 
 // Summary:
 //
-// 获取 AI 服务列表
+// Lists AI services.
 //
 // @param request - ListAIServicesRequest
 //
@@ -10891,7 +11233,7 @@ func (client *Client) ListBackupJobsWithContext(ctx context.Context, request *Li
 
 // Summary:
 //
-// 获取文本块详情
+// # Get document chunk details
 //
 // @param request - ListChunksRequest
 //
@@ -11151,7 +11493,7 @@ func (client *Client) ListDatabasesWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// Queries a list of document collections.
+// Lists document collections.
 //
 // @param request - ListDocumentCollectionsRequest
 //
@@ -11761,6 +12103,72 @@ func (client *Client) ListRemoteADBDataSourcesWithContext(ctx context.Context, r
 
 // Summary:
 //
+// # Query SaaS Service List
+//
+// Description:
+//
+// ## Usage Notes
+//
+// This API operation is used to view information about all SaaS services.
+//
+// @param request - ListSaasServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSaasServiceResponse
+func (client *Client) ListSaasServiceWithContext(ctx context.Context, request *ListSaasServiceRequest, runtime *dara.RuntimeOptions) (_result *ListSaasServiceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ServiceType) {
+		query["ServiceType"] = request.ServiceType
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListSaasService"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListSaasServiceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a list of schemas.
 //
 // @param request - ListSchemasRequest
@@ -11833,7 +12241,7 @@ func (client *Client) ListSchemasWithContext(ctx context.Context, request *ListS
 
 // Summary:
 //
-// Queries a list of access credentials.
+// View the access credential list.
 //
 // @param request - ListSecretsRequest
 //
@@ -12145,7 +12553,11 @@ func (client *Client) ListStreamingJobsWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// # Query the label List of Supabase instances
+// Lists the tags of Supabase instances.
+//
+// Description:
+//
+// - This operation queries the tags of Supabase instances.
 //
 // @param request - ListSupabaseProjectTagsRequest
 //
@@ -12205,11 +12617,11 @@ func (client *Client) ListSupabaseProjectTagsWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Retrieves a paginated list of Supabase instances in your account. You can filter the list by region.
+// Returns a list of Supabase instances.
 //
 // Description:
 //
-//	You can call this operation to query Supabase instances.
+// - Lists Supabase instances.
 //
 // @param request - ListSupabaseProjectsRequest
 //
@@ -12409,7 +12821,7 @@ func (client *Client) ListTablesWithContext(ctx context.Context, request *ListTa
 
 // Summary:
 //
-// Queries a list of AnalyticDB for PostgreSQL instances that have specific tags added.
+// List all tag resources.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -12485,7 +12897,73 @@ func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 修改 AI 服务白名单
+// Queries the list of SaaS workspaces.
+//
+// Description:
+//
+// ## Operation description
+//
+// This operation is used to query information about all workspaces.
+//
+// @param request - ListWorkspacesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListWorkspacesResponse
+func (client *Client) ListWorkspacesWithContext(ctx context.Context, request *ListWorkspacesRequest, runtime *dara.RuntimeOptions) (_result *ListWorkspacesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListWorkspaces"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListWorkspacesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the IP address whitelist for an AI service.
 //
 // @param request - ModifyAIServiceSecurityIpsRequest
 //
@@ -12661,7 +13139,7 @@ func (client *Client) ModifyBackupPolicyWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Updates a collection.
+// Updates a vector collection.
 //
 // @param request - ModifyCollectionRequest
 //
@@ -13881,7 +14359,7 @@ func (client *Client) ModifySecurityIpsWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Modifies the configurations of an external data source.
+// Modify a real-time data service.
 //
 // @param request - ModifyStreamingDataServiceRequest
 //
@@ -14139,7 +14617,11 @@ func (client *Client) ModifyStreamingJobWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// Modify the auto pause/resume policy of Supabase.
+// Modifies the auto-scaling policy of an ADBPG Supabase instance.
+//
+// Description:
+//
+// - This operation applies only to ADBPG Supabase instances.
 //
 // @param request - ModifySupabaseAutoScalePolicyRequest
 //
@@ -14191,7 +14673,11 @@ func (client *Client) ModifySupabaseAutoScalePolicyWithContext(ctx context.Conte
 
 // Summary:
 //
-// # Modify the Supabase project description
+// # Change the Supabase project description
+//
+// Description:
+//
+// *Before you use this operation, make sure you fully understand the billing methods and [pricing](https://help.aliyun.com/zh/analyticdb/analyticdb-for-postgresql/product-overview/pricing-1?spm=a2c4g.11186623.help-menu-92664.d_0_1_2.45b3601145cikn\\&scm=20140722.H_88098._.OR_help-T_cn~zh-V_1#9eefcc7b5acz1) of AnalyticDB for PostgreSQL (Supabase)**.
 //
 // @param request - ModifySupabaseProjectDescriptionRequest
 //
@@ -14243,7 +14729,11 @@ func (client *Client) ModifySupabaseProjectDescriptionWithContext(ctx context.Co
 
 // Summary:
 //
-// Modify the resources of a Supabase instance. You can upgrade or decrease the quota of compute resources and scale out storage resources (disk size).
+// Scales the compute resource or expands the storage resource (cloud disk size) for a Supabase project.
+//
+// Description:
+//
+// *Before calling this operation, ensure you understand the billing methods and [pricing](https://help.aliyun.com/zh/analyticdb/analyticdb-for-postgresql/product-overview/pricing-1?spm=a2c4g.11186623.help-menu-92664.d_0_1_2.45b3601145cikn\\&scm=20140722.H_88098._.OR_help-T_cn~zh-V_1#9eefcc7b5acz1) for AnalyticDB PostgreSQL Supabase.**
 //
 // @param request - ModifySupabaseProjectResourceRequest
 //
@@ -14303,11 +14793,11 @@ func (client *Client) ModifySupabaseProjectResourceWithContext(ctx context.Conte
 
 // Summary:
 //
-// Sets or replaces the IP address whitelist for a specified Supabase project.
+// Modifies the IP address whitelist for a Supabase project.
 //
 // Description:
 //
-// Before you can connect to a Supabase project, you must add your client\\"s IP address or CIDR block to the project\\"s whitelist.
+// Before you use a Supabase instance, you must add the client\\"s IP address or IP address segment to the instance\\"s whitelist.
 //
 // @param request - ModifySupabaseProjectSecurityIpsRequest
 //
@@ -14527,7 +15017,11 @@ func (client *Client) PauseInstanceWithContext(ctx context.Context, request *Pau
 
 // Summary:
 //
-// 暂停Supabase实例
+// Pauses a Supabase instance.
+//
+// Description:
+//
+// This operation pauses a Supabase instance.
 //
 // @param request - PauseSupabaseProjectRequest
 //
@@ -14575,7 +15069,7 @@ func (client *Client) PauseSupabaseProjectWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// # Query Vector Data
+// Retrieving vector data.
 //
 // @param tmpReq - QueryCollectionDataRequest
 //
@@ -14719,7 +15213,7 @@ func (client *Client) QueryCollectionDataWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// Retrieves vector data and metadata from a document collection by using natural statements.
+// Query a document collection with natural language to retrieve vectors and metadata.
 //
 // @param tmpReq - QueryContentRequest
 //
@@ -14883,7 +15377,7 @@ func (client *Client) QueryContentWithContext(ctx context.Context, tmpReq *Query
 
 // Summary:
 //
-// Retrieves vectors and metadata from multiple specified document collections using natural language queries, then merge and return the results from all retrieval paths.
+// Retrieve vectors and metadata from specified knowledge bases using a natural-language query, returning the merged results from a multi-channel recall.
 //
 // @param tmpReq - QueryKnowledgeBasesContentRequest
 //
@@ -15485,7 +15979,11 @@ func (client *Client) ResumeInstanceWithContext(ctx context.Context, request *Re
 
 // Summary:
 //
-// 恢复Supabase实例
+// Resumes a Supabase instance.
+//
+// Description:
+//
+// This operation retrieves details about a Supabase instance.
 //
 // @param request - ResumeSupabaseProjectRequest
 //
@@ -15597,15 +16095,11 @@ func (client *Client) SetDBInstancePlanStatusWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Enables or disables data sharing for an AnalyticDB for PostgreSQL instance.
+// Add or remove an AnalyticDB for PostgreSQL instance from data sharing.
 //
 // Description:
 //
-// This operation is called to enable or disable data sharing for an AnalyticDB for PostgreSQL instance in Serverless mode.
-//
-// ## Limits
-//
-// You can call this operation up to 1,000 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// Only Serverless instances support the data sharing feature.
 //
 // @param tmpReq - SetDataShareInstanceRequest
 //
@@ -15723,7 +16217,7 @@ func (client *Client) SwitchDBInstanceNetTypeWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Creates and adds tags to AnalyticDB for PostgreSQL instances.
+// Create and attach tags.
 //
 // @param request - TagResourcesRequest
 //
@@ -15795,7 +16289,11 @@ func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagR
 
 // Summary:
 //
-// # Supabase project labeling
+// Adds tags to Supabase project instances.
+//
+// Description:
+//
+// Adds or overwrites tags on one or more Supabase instances. If a specified tag key already exists, its value is overwritten with the new value.
 //
 // @param request - TagSupabaseProjectRequest
 //
@@ -16117,7 +16615,11 @@ func (client *Client) UntagResourcesWithContext(ctx context.Context, request *Un
 
 // Summary:
 //
-// # Detach labels from a Supabase instance
+// Removes tags from one or more Supabase instances.
+//
+// Description:
+//
+// This operation removes one or more specified tags from Supabase instances.
 //
 // @param request - UntagSupabaseProjectRequest
 //
@@ -16347,13 +16849,13 @@ func (client *Client) UpdateDBInstancePlanWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Changes the configurations of an AnalyticDB for PostgreSQL instance.
+// Changes the specifications of an AnalyticDB for PostgreSQL instance.
 //
 // Description:
 //
-// This operation is not available for instances in reserved storage mode.
+// This operation does not support modifying instances in storage-reserved mode.
 //
-// Before you call this operation, make sure that you are familiar with the billing of AnalyticDB for PostgreSQL. For more information, see [Billing methods](https://help.aliyun.com/document_detail/35406.html) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
+// Before you call this operation, ensure you understand the [billing methods](https://help.aliyun.com/document_detail/35406.html) and <props="china">[pricing](https://www.aliyun.com/price/product#/gpdb/detail/GreenplumPost)<props="intl">[pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing) of AnalyticDB for PostgreSQL.
 //
 // @param request - UpgradeDBInstanceRequest
 //
@@ -16816,6 +17318,20 @@ func (client *Client) UpsertChunksWithContext(ctx context.Context, tmpReq *Upser
 // Summary:
 //
 // Uploads vector data to a vector collection.
+//
+// Description:
+//
+//	Notice:
+//
+// **SDK于2023-11-8日升级，从最大512KB数据请求量升级到10MB。**
+//
+// 请使用最新版SDK或不低于此版本：
+//
+// - Java：1.2.1
+//
+// - Go：v3.3.1
+//
+// - Python：3.3.1
 //
 // @param tmpReq - UpsertCollectionDataRequest
 //

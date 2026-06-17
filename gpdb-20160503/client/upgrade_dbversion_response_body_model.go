@@ -24,7 +24,7 @@ type UpgradeDBVersionResponseBody struct {
 	//
 	// example:
 	//
-	// gp-wz9kmr708m155j***
+	// null
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The name of the instance.
 	//

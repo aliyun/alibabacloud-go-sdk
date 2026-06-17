@@ -22,26 +22,36 @@ type iModifySupabaseProjectResourceRequest interface {
 }
 
 type ModifySupabaseProjectResourceRequest struct {
+	// The modification type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// UPGRADE,DOWNGRADE
 	ModifyType *string `json:"ModifyType,omitempty" xml:"ModifyType,omitempty"`
+	// The Supabase project ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// sbp-tyarplz****
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The new project specifications.
+	//
 	// example:
 	//
 	// 2C4G
 	ProjectSpec *string `json:"ProjectSpec,omitempty" xml:"ProjectSpec,omitempty"`
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query available region IDs.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The storage size, in GB.
+	//
 	// example:
 	//
 	// 100

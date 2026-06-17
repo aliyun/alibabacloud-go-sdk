@@ -14,6 +14,8 @@ type iModifySupabaseAutoScalePolicyResponseBody interface {
 }
 
 type ModifySupabaseAutoScalePolicyResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 07F6177E-6DE4-408A-BB4F-0723301340F3

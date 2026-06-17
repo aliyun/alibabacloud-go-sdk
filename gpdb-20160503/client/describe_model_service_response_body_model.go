@@ -63,6 +63,10 @@ type DescribeModelServiceResponseBody struct {
 	// Qwen3-Embedding-8B
 	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
 	// Model parameters.
+	//
+	// example:
+	//
+	// Not yet available.
 	ModelParams map[string]interface{} `json:"ModelParams,omitempty" xml:"ModelParams,omitempty"`
 	// The model service ID.
 	//

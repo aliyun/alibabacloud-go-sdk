@@ -16,6 +16,8 @@ type iResumeSupabaseProjectRequest interface {
 }
 
 type ResumeSupabaseProjectRequest struct {
+	// Supabase instance ID
+	//
 	// This parameter is required.
 	//
 	// example:

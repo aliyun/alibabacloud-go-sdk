@@ -20,7 +20,7 @@ type DescribeRebalanceStatusRequest struct {
 	//
 	// example:
 	//
-	// gp-xxxxxxxxx
+	// gp-uf671c65jhszj****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 }
 

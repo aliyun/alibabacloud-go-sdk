@@ -78,7 +78,12 @@ type DescribeTableRequest struct {
 	// example:
 	//
 	// mytable
-	Table       *string `json:"Table,omitempty" xml:"Table,omitempty"`
+	Table *string `json:"Table,omitempty" xml:"Table,omitempty"`
+	// The ID of the workspace composed of multiple database instances. This parameter and the DBInstanceId parameter cannot both be empty. If both parameters are specified, this parameter takes precedence.
+	//
+	// example:
+	//
+	// gp-ws-*****
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 

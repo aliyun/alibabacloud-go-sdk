@@ -16,7 +16,7 @@ type iGetSupabaseProjectApiKeysResponseBody interface {
 }
 
 type GetSupabaseProjectApiKeysResponseBody struct {
-	// The queried API keys.
+	// A list of API keys.
 	ApiKeys []*GetSupabaseProjectApiKeysResponseBodyApiKeys `json:"ApiKeys,omitempty" xml:"ApiKeys,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -66,13 +66,13 @@ func (s *GetSupabaseProjectApiKeysResponseBody) Validate() error {
 }
 
 type GetSupabaseProjectApiKeysResponseBodyApiKeys struct {
-	// The queried API key.
+	// The value of the API key.
 	//
 	// example:
 	//
 	// Tmz2Z59caMDeq/Xi9vuc****
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
-	// The name of the API key, including the Anon key and the service role key.
+	// The name of the API key, such as anon key, service role key, or JWT secret.
 	//
 	// example:
 	//

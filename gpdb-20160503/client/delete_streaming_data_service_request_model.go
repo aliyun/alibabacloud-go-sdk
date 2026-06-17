@@ -26,6 +26,8 @@ type DeleteStreamingDataServiceRequest struct {
 	//
 	// gp-bp10g78o9807yv9h3
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The region ID of the instance.
+	//
 	// example:
 	//
 	// cn-beijing

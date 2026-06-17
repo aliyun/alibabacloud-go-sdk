@@ -23,18 +23,26 @@ type iListChunksResponseBody interface {
 
 type ListChunksResponseBody struct {
 	Chunks *ListChunksResponseBodyChunks `json:"Chunks,omitempty" xml:"Chunks,omitempty" type:"Struct"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of records on the current page.
+	//
 	// example:
 	//
 	// 20
 	PageRecordCount *int64 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 34b32a0a-08ef-4a87-b6be-cdd9f56fc3ad
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 30

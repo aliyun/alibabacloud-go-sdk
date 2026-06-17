@@ -61,6 +61,10 @@ type EnableCollectionGraphRAGRequest struct {
   // > If the knowledge graph construction is enabled, this parameter is required.
   // 
   // This parameter is required.
+  // 
+  // example:
+  // 
+  // Location
   EntityTypes []*string `json:"EntityTypes,omitempty" xml:"EntityTypes,omitempty" type:"Repeated"`
   // The name of the LLM model.
   // 
@@ -140,6 +144,10 @@ type EnableCollectionGraphRAGRequest struct {
   // > If the knowledge graph construction is enabled, this parameter is required.
   // 
   // This parameter is required.
+  // 
+  // example:
+  // 
+  // Occurred
   RelationshipTypes []*string `json:"RelationshipTypes,omitempty" xml:"RelationshipTypes,omitempty" type:"Repeated"`
 }
 

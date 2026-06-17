@@ -22,6 +22,7 @@ type iDescribeDBInstancesResponseBody interface {
 }
 
 type DescribeDBInstancesResponseBody struct {
+	// A collection of instances.
 	Items *DescribeDBInstancesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The page number.
 	//
@@ -29,7 +30,7 @@ type DescribeDBInstancesResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries returned on the current page.
 	//
 	// example:
 	//
@@ -41,7 +42,7 @@ type DescribeDBInstancesResponseBody struct {
 	//
 	// 53EA07B7-FC2A-521B-AB7C-27**********
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//

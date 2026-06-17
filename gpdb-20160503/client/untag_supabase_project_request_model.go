@@ -22,20 +22,38 @@ type iUntagSupabaseProjectRequest interface {
 }
 
 type UntagSupabaseProjectRequest struct {
+	// Specifies whether to remove all tags from the instance. This parameter takes effect only when `TagKey.N` is not specified. Valid values:
+	//
+	// - true
+	//
+	// - false
+	//
+	// Default value: false
+	//
 	// example:
 	//
 	// false
 	All *bool `json:"All,omitempty" xml:"All,omitempty"`
+	// The region ID of the instance.
+	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId   *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The instance IDs. You can specify up to 50 instance IDs.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// The resource type. Valid values:
+	//
+	// - `instance`: a reserved mode instance.
+	//
+	// - `ALIYUN::GPDB::INSTANCE`: an elastic mode instance.
+	//
 	// example:
 	//
 	// instance
-	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKey       []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The keys of the tags that you want to remove. You can specify up to 20 tag keys.
+	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 
 func (s UntagSupabaseProjectRequest) String() string {

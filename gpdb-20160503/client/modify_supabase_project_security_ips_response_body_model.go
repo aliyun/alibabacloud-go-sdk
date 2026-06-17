@@ -14,7 +14,7 @@ type iModifySupabaseProjectSecurityIpsResponseBody interface {
 }
 
 type ModifySupabaseProjectSecurityIpsResponseBody struct {
-	// The unique ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

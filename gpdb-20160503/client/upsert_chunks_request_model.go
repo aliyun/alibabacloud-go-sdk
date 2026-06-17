@@ -233,7 +233,7 @@ type UpsertChunksRequestTextChunks struct {
 	//
 	// example:
 	//
-	// Cloud-native data warehouse AnalyticDB PostgreSQL Edition provides a simple, fast, and cost-effective PB-level cloud data warehouse solution.
+	// AnalyticDB for PostgreSQL provides a simple, fast, and cost-effective PB-level cloud data warehousing solution.
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The condition that is used to filter the data to be updated. Specify this parameter in a format that is the same as the WHERE clause.
 	//

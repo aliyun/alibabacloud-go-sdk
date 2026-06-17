@@ -22,22 +22,32 @@ type iListSupabaseProjectTagsRequest interface {
 }
 
 type ListSupabaseProjectTagsRequest struct {
+	// The token for the next page of results. This token is returned in the `NextToken` parameter of a previous request.
+	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Region ID
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId   *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The instance ID.
+	//
+	// > You must specify at least one of the `ResourceId` and `Tag` parameters.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// The resource type. Set the value to `instance`.
+	//
 	// example:
 	//
 	// instance
-	ResourceType *string                              `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tag          []*ListSupabaseProjectTagsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// A list of tags.
+	//
+	// > You must specify at least one of the `ResourceId` and `Tag` parameters.
+	Tag []*ListSupabaseProjectTagsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListSupabaseProjectTagsRequest) String() string {
@@ -107,10 +117,24 @@ func (s *ListSupabaseProjectTagsRequest) Validate() error {
 }
 
 type ListSupabaseProjectTagsRequestTag struct {
+	// The tag key. The key can be 1 to 64 characters in length.
+	//
+	// The `Tag.N` parameter specifies a key-value pair to filter Supabase instances.
+	//
+	// N is an integer from 1 to 20.
+	//
+	// - If you specify only `Tag.N.Key`, the operation returns all instances that have the specified tag key.
+	//
+	// - If you specify only `Tag.N.Value`, an `InvalidParameter.TagValue` error is returned.
+	//
+	// - If you specify multiple tag key-value pairs, the operation returns only Supabase instances that match all the specified pairs.
+	//
 	// example:
 	//
 	// test-key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value. The value can be 1 to 128 characters in length.
+	//
 	// example:
 	//
 	// TestValue

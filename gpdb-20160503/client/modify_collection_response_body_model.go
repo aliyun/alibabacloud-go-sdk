@@ -20,19 +20,19 @@ type iModifyCollectionResponseBody interface {
 }
 
 type ModifyCollectionResponseBody struct {
-	// The returned message.
+	// The response message.
 	//
 	// example:
 	//
 	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The metadata of the vector data, which is a JSON string in the MAP format. The key specifies the field name, and the value specifies the data type.
+	// The metadata schema of the collection, returned as a JSON string. This string represents a map where keys are field names and values are their data types.
+	//
+	// > - See [Data types](https://help.aliyun.com/document_detail/424383.html) for the list of supported data types.
 	//
 	// >
 	//
-	// 	- For information about the supported data types, see [Data types](https://help.aliyun.com/document_detail/424383.html).
-	//
-	// 	- The money data type is not supported.
+	// > - The \\"money\\" data type is not supported.
 	//
 	// example:
 	//
@@ -44,11 +44,11 @@ type ModifyCollectionResponseBody struct {
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// The status of the API request. Valid values:
 	//
-	// 	- **false**
+	// - **Other values**: The request failed.
 	//
-	// 	- **true**
+	// - **success**: The request was successful.
 	//
 	// example:
 	//

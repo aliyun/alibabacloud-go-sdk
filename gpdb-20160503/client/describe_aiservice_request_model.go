@@ -18,18 +18,26 @@ type iDescribeAIServiceRequest interface {
 }
 
 type DescribeAIServiceRequest struct {
+	// The ID of the instance.
+	//
+	// > To view details of all instances in a region, including their IDs, call the [DescribeDBInstances](https://help.aliyun.com/document_detail/196830.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The ID of the service.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// drama-123456
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The type of service. Only drama is supported.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -22,9 +22,9 @@ type iListDocumentCollectionsRequest interface {
 }
 
 type ListDocumentCollectionsRequest struct {
-	// The instance ID.
+	// The ID of the instance.
 	//
-	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	// > To view details of all AnalyticDB for PostgreSQL instances in a region, including their IDs, call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -32,17 +32,17 @@ type ListDocumentCollectionsRequest struct {
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The name of the namespace. Default value: public.
+	// The namespace. Default value: public.
 	//
-	// >  You can call the CreateNamespace operation to create a namespace and call the ListNamespaces operation to query a list of namespaces.
+	// > To create a namespace, call the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation. To list namespaces, call the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation.
 	//
 	// example:
 	//
 	// mynamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The password of the namespace.
+	// The password for the namespace.
 	//
-	// >  This value is specified when you call the CreateNamespace operation.
+	// > You set this password when you call the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -51,7 +51,7 @@ type ListDocumentCollectionsRequest struct {
 	// testpassword
 	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the instance.
+	// The ID of the region where the instance resides.
 	//
 	// This parameter is required.
 	//

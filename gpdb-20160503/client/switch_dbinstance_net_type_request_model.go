@@ -28,7 +28,7 @@ type SwitchDBInstanceNetTypeRequest struct {
 	//
 	// example:
 	//
-	// test1234
+	// gp-bp12ga6v69h86****
 	ConnectionStringPrefix *string `json:"ConnectionStringPrefix,omitempty" xml:"ConnectionStringPrefix,omitempty"`
 	// The instance ID.
 	//
@@ -38,7 +38,7 @@ type SwitchDBInstanceNetTypeRequest struct {
 	//
 	// example:
 	//
-	// rm-uf6wjk5xxxxxxx
+	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The port number.
 	//
@@ -46,7 +46,7 @@ type SwitchDBInstanceNetTypeRequest struct {
 	//
 	// example:
 	//
-	// 3306
+	// 5432
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
 }
 

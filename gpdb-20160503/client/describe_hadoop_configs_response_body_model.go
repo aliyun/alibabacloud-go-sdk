@@ -38,11 +38,27 @@ type DescribeHadoopConfigsResponseBody struct {
 	//
 	// example:
 	//
-	// <?xml version="1.0"?>
+	// <?xml version="1.0" ?>
 	//
 	// <configuration>
 	//
 	//     <property>
+	//
+	//         <name>hive.exec.reducers.bytes.per.reducer</name>
+	//
+	//         <value>256000000</value>
+	//
+	//     </property>
+	//
+	//     <property>
+	//
+	//         <name>hive.stats.column.autogather</name>
+	//
+	//         <value>false</value>
+	//
+	//     </property>
+	//
+	// </configuration>
 	ConfigValue *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
 	// The request ID.
 	//

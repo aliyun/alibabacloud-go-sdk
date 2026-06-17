@@ -30,9 +30,9 @@ type iQueryContentResponseBody interface {
 }
 
 type QueryContentResponseBody struct {
-	// Number of tokens used for vectorization.
+	// The number of tokens used for vectorization.
 	//
-	// > A token refers to the smallest unit into which the input text is divided; a token can be a word, a phrase, a punctuation mark, or a character, etc.
+	// > A token is the smallest unit into which the input text is divided. A token can be a word, a phrase, a punctuation mark, or a character.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type QueryContentResponseBody struct {
 	EmbeddingTokens *string                           `json:"EmbeddingTokens,omitempty" xml:"EmbeddingTokens,omitempty"`
 	Entities        *QueryContentResponseBodyEntities `json:"Entities,omitempty" xml:"Entities,omitempty" type:"Struct"`
 	Matches         *QueryContentResponseBodyMatches  `json:"Matches,omitempty" xml:"Matches,omitempty" type:"Struct"`
-	// Return message.
+	// The response message.
 	//
 	// example:
 	//
@@ -53,17 +53,17 @@ type QueryContentResponseBody struct {
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The execution state of the operation. Valid values:
+	// The status. Valid values:
 	//
-	// 	- **false**: The operation fails.
+	// - **success**: The operation was successful.
 	//
-	// 	- **true**: The operation is successful.
+	// - **fail**: The operation failed.
 	//
 	// example:
 	//
 	// success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Resource usage for this query.
+	// The resource usage for the query.
 	Usage         *QueryContentResponseBodyUsage         `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
 	WindowMatches *QueryContentResponseBodyWindowMatches `json:"WindowMatches,omitempty" xml:"WindowMatches,omitempty" type:"Struct"`
 }
@@ -566,15 +566,15 @@ func (s *QueryContentResponseBodyRelationsRelations) Validate() error {
 type QueryContentResponseBodyUsage struct {
 	// The number of entries used for vectorization.
 	//
-	// > An entry refers to the number of processing items when performing vectorization on text or images. For example, processing one piece of text counts as 1 entry, while processing one image counts as 2 entries.
+	// > An entry is the number of operations during vectorization for text or images. For example, processing text once counts as 1 entry, and processing an image once counts as 2 entries.
 	//
 	// example:
 	//
 	// 10
 	EmbeddingEntries *string `json:"EmbeddingEntries,omitempty" xml:"EmbeddingEntries,omitempty"`
-	// Number of tokens used for vectorization.
+	// The number of tokens used for vectorization.
 	//
-	// > A token refers to the smallest unit into which the input text is divided; a token can be a word, a phrase, a punctuation mark, or a character, etc.
+	// > A token is the smallest unit into which the input text is divided. A token can be a word, a phrase, a punctuation mark, or a character.
 	//
 	// example:
 	//

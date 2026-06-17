@@ -24,30 +24,50 @@ type iDeleteChunksRequest interface {
 }
 
 type DeleteChunksRequest struct {
+	// A list of chunk IDs.
+	//
 	// This parameter is required.
 	ChunkIds []*string `json:"ChunkIds,omitempty" xml:"ChunkIds,omitempty" type:"Repeated"`
+	// The name of the document collection.
+	//
+	// > You create this document collection by calling the [CreateDocumentCollection](https://help.aliyun.com/document_detail/2618448.html) operation. To view existing document collections, call the [ListDocumentCollections](https://help.aliyun.com/document_detail/2618452.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testcollection
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// The instance ID.
+	//
+	// > Call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to view details for all AnalyticDB for PostgreSQL instances in a specific region, including their instance IDs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The name of the namespace. The default value is public.
+	//
+	// > Call the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation to view a list of namespaces.
+	//
 	// example:
 	//
 	// mynamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The password for the namespace.
+	//
+	// > This password is set when you call the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testpassword
 	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
+	// The region ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -28,7 +28,7 @@ type ModifyDBInstancePayTypeResponseBody struct {
 	//
 	// example:
 	//
-	// 50578361067****
+	// 22719089834****
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	// Id of the request
 	//

@@ -22,27 +22,27 @@ type iDescribeDataSharePerformanceResponseBody interface {
 }
 
 type DescribeDataSharePerformanceResponseBody struct {
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// gp-bp12ga6v69h86****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The end time of the query.
+	// The end of the queried time range.
 	//
 	// example:
 	//
 	// 2022-08-03T15:10Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Details of data sharing performance metrics.
+	// The list of performance metrics.
 	PerformanceKeys []*DescribeDataSharePerformanceResponseBodyPerformanceKeys `json:"PerformanceKeys,omitempty" xml:"PerformanceKeys,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// BBE00C04-A3E8-4114-881D-0480A72CB92E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The start time of the query.
+	// The start of the queried time range.
 	//
 	// example:
 	//
@@ -123,7 +123,7 @@ type DescribeDataSharePerformanceResponseBodyPerformanceKeys struct {
 	//
 	// adbpg_datashare_topic_count
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Details of the performance metric.
+	// The details of the time series data for the metric.
 	Series []*DescribeDataSharePerformanceResponseBodyPerformanceKeysSeries `json:"Series,omitempty" xml:"Series,omitempty" type:"Repeated"`
 	// The unit of the performance metric.
 	//
@@ -188,7 +188,7 @@ type DescribeDataSharePerformanceResponseBodyPerformanceKeysSeries struct {
 	//
 	// adbpg_datashare_topic_count
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// One or more values of the performance metric.
+	// The data points of the time series.
 	Values []*DescribeDataSharePerformanceResponseBodyPerformanceKeysSeriesValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -232,7 +232,7 @@ func (s *DescribeDataSharePerformanceResponseBodyPerformanceKeysSeries) Validate
 }
 
 type DescribeDataSharePerformanceResponseBodyPerformanceKeysSeriesValues struct {
-	// The value of the performance metric at a point in time.
+	// An array that contains the timestamp and the corresponding metric value.
 	Point []*string `json:"Point,omitempty" xml:"Point,omitempty" type:"Repeated"`
 }
 

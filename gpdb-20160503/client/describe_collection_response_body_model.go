@@ -42,7 +42,7 @@ type DescribeCollectionResponseBody struct {
 	//
 	// example:
 	//
-	// gp-xxxxxxxxx
+	// gp-bp152460513z****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The number of vector dimensions.
 	//
@@ -60,7 +60,7 @@ type DescribeCollectionResponseBody struct {
 	//
 	// example:
 	//
-	// Successful
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The metadata of vector data, which is a JSON string in the MAP format. The key specifies the field name, and the value specifies the data type.
 	//

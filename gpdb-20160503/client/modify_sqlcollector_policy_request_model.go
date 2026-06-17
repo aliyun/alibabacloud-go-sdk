@@ -22,7 +22,7 @@ type ModifySQLCollectorPolicyRequest struct {
 	//
 	// example:
 	//
-	// gp-xxxxxxxx
+	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// Specifies whether to enable or disable SQL collection.
 	//

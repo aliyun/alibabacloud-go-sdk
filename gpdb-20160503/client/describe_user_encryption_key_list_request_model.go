@@ -28,7 +28,7 @@ type DescribeUserEncryptionKeyListRequest struct {
 	//
 	// example:
 	//
-	// 10
+	// 30
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the region.
 	//
@@ -36,7 +36,7 @@ type DescribeUserEncryptionKeyListRequest struct {
 	//
 	// example:
 	//
-	// ap-southeast-1
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 

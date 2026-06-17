@@ -22,35 +22,35 @@ type iCreateDBInstanceResponseBody interface {
 }
 
 type CreateDBInstanceResponseBody struct {
-	// This parameter is deprecated and will not return a value.
+	// This parameter is deprecated and is no longer returned.
 	//
-	// You can use the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/86910.html) interface to view the connection address of the instance.
+	// You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/86910.html) operation to query the connection string of the instance.
 	//
 	// example:
 	//
 	// gp-bp12ga6v69h86****.gpdb.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	// Instance ID.
+	// The instance ID.
 	//
 	// example:
 	//
 	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// Order ID.
+	// The order ID.
 	//
 	// example:
 	//
 	// 111111111111
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// This parameter is deprecated and will not return a value.
+	// This parameter is deprecated and is no longer returned.
 	//
-	// You can use the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/86910.html) interface to view the port number of the instance.
+	// You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/86910.html) operation to query the port number of the instance.
 	//
 	// example:
 	//
 	// 3432
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

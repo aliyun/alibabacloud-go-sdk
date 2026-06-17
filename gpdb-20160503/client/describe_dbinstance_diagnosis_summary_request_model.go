@@ -52,7 +52,7 @@ type DescribeDBInstanceDiagnosisSummaryRequest struct {
 	//
 	// example:
 	//
-	// 20
+	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The role state of the node. It specifies whether a primary/secondary switchover occurs. Valid values:
 	//

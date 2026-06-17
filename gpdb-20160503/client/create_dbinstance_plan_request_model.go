@@ -65,7 +65,7 @@ type CreateDBInstancePlanRequest struct {
 	//
 	// example:
 	//
-	// 2023-04-17T23:00Z
+	// 2023-04-17T23:00:00Z
 	PlanEndDate *string `json:"PlanEndDate,omitempty" xml:"PlanEndDate,omitempty"`
 	// The name of the plan.
 	//
@@ -97,7 +97,7 @@ type CreateDBInstancePlanRequest struct {
 	//
 	// example:
 	//
-	// 2022-04-17T23:00Z
+	// 2022-04-17T23:00:00Z
 	PlanStartDate *string `json:"PlanStartDate,omitempty" xml:"PlanStartDate,omitempty"`
 	// The type of the plan. Valid values:
 	//

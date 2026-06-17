@@ -18,14 +18,23 @@ type iDescribeDownloadRecordsRequest interface {
 type DescribeDownloadRecordsRequest struct {
 	// The instance ID.
 	//
-	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// gp-bp12ga6v69h86****
-	DBInstanceId     *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The download task type. Valid values:
+	//
+	// - `SQL_DIAGNOSE`: SQL diagnosis.
+	//
+	// - `SLOW_SQL`: slow SQL query.
+	//
+	// example:
+	//
+	// SLOW_SQL
 	DownloadTaskType *string `json:"DownloadTaskType,omitempty" xml:"DownloadTaskType,omitempty"`
 }
 

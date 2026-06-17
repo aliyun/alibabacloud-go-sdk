@@ -43,6 +43,10 @@ type RerankRequest struct {
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// List of documents to be re-ordered.
+	//
+	// example:
+	//
+	// ADBPG is an Alibaba Cloud OLAP database.
 	Documents []*string `json:"Documents,omitempty" xml:"Documents,omitempty" type:"Repeated"`
 	// example:
 	//

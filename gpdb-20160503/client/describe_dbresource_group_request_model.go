@@ -20,7 +20,7 @@ type iDescribeDBResourceGroupRequest interface {
 type DescribeDBResourceGroupRequest struct {
 	// The instance ID.
 	//
-	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the instance IDs of all AnalyticDB for PostgreSQL instances in a specified region.
 	//
 	// This parameter is required.
 	//
@@ -31,7 +31,7 @@ type DescribeDBResourceGroupRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The name of the resource group.
 	//
-	// >  If you specify this parameter, the information about the specified resource group is returned. If you do not specify this parameter, the information about all resource groups is returned.
+	// > If this parameter is omitted, details for all resource groups are returned. Otherwise, only details for the specified resource group are returned.
 	//
 	// example:
 	//

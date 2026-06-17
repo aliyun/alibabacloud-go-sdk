@@ -32,7 +32,7 @@ type DescribeDBInstanceNetInfoRequest struct {
 	//
 	// example:
 	//
-	// gp-xxxxxxxxxx
+	// gp-0xin9q82c33xc****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 }
 

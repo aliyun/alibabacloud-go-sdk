@@ -42,7 +42,7 @@ type ModifyDBInstanceMaintainTimeRequest struct {
 	//
 	// example:
 	//
-	// rg-bp67acfmxazb4p****
+	// null
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The start time of the maintenance window. Specify the time in the HH:mmZ format. The time must be in UTC.
 	//

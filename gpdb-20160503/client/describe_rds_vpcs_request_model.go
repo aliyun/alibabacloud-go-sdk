@@ -42,7 +42,7 @@ type DescribeRdsVpcsRequest struct {
 	//
 	// example:
 	//
-	// rg-bp67acfmxazb4p****
+	// null
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

@@ -55,6 +55,9 @@ type ExecuteStatementRequest struct {
   OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
   // The configuration parameters.
   Parameters []interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
+  // Parameters for the vector dataset.  
+  // 
+  // > When WorkspaceId is not empty, you must also pass this parameter.
   RagWorkspaceCollection *ExecuteStatementRequestRagWorkspaceCollection `json:"RagWorkspaceCollection,omitempty" xml:"RagWorkspaceCollection,omitempty" type:"Struct"`
   // The region ID of the instance.
   // 
@@ -98,6 +101,11 @@ type ExecuteStatementRequest struct {
   // 
   // test
   StatementName *string `json:"StatementName,omitempty" xml:"StatementName,omitempty"`
+  // The ID of a workspace composed of multiple database instances. This parameter and DBInstanceId cannot both be empty. If both are specified, this parameter takes precedence.
+  // 
+  // example:
+  // 
+  // gp-ws-*****
   WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -227,7 +235,21 @@ func (s *ExecuteStatementRequest) Validate() error {
 }
 
 type ExecuteStatementRequestRagWorkspaceCollection struct {
+  // Collection name.  
+  // 
+  // > You can view the list by using the [ListCollections](https://help.aliyun.com/document_detail/2401503.html) API.
+  // 
+  // example:
+  // 
+  // mycollection
   Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+  // Namespace.  
+  // 
+  // > You can view the list by using the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) API.
+  // 
+  // example:
+  // 
+  // mynamespace
   Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 }
 

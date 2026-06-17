@@ -46,7 +46,7 @@ type DeleteVectorIndexRequest struct {
 	//
 	// example:
 	//
-	// gp-xxxxxxxxx
+	// gp-bp152460513z****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The name of the manager account that has the rds_superuser permission.
 	//

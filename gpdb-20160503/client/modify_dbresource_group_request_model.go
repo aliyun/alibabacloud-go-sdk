@@ -102,7 +102,7 @@ type ModifyDBResourceGroupRequestResourceGroupItems struct {
 	//
 	// example:
 	//
-	// {"CpuRateLimit":"10","MemoryLimit":"12","MemorySharedQuota":"20","MemorySpillRatio":"75","Concurrency":"3"}
+	// {"CpuRateLimit":10,"MemoryLimit":12,"MemorySharedQuota":20,"MemorySpillRatio":75,"Concurrency":3}
 	ResourceGroupConfig *string `json:"ResourceGroupConfig,omitempty" xml:"ResourceGroupConfig,omitempty"`
 	// The name of the resource group.
 	//

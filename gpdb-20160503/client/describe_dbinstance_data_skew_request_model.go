@@ -42,7 +42,7 @@ type DescribeDBInstanceDataSkewRequest struct {
 	//
 	// example:
 	//
-	// {Field: TableSkew, Type: Desc}
+	// {Field: TableSize, Type: Desc}
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
 	// The number of the page to return. The value must be an integer that is greater than 0. Default value: **1**.
 	//
@@ -62,7 +62,7 @@ type DescribeDBInstanceDataSkewRequest struct {
 	//
 	// example:
 	//
-	// 20
+	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 

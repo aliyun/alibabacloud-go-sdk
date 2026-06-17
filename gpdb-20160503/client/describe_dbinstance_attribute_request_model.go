@@ -20,7 +20,7 @@ type iDescribeDBInstanceAttributeRequest interface {
 type DescribeDBInstanceAttributeRequest struct {
 	// Instance ID.
 	//
-	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) interface to view the instance IDs of all AnalyticDB for PostgreSQL instances in the target region.
+	// > You can invoke the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) API to view the instance IDs of all AnalyticDB for PostgreSQL instances in the destination region.
 	//
 	// This parameter is required.
 	//
@@ -29,7 +29,7 @@ type DescribeDBInstanceAttributeRequest struct {
 	// gp-bp13ue79qk8y1****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// This parameter is deprecated and should not be passed.
+	// This parameter is deprecated and does not need to be specified.
 	//
 	// example:
 	//

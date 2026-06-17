@@ -32,13 +32,17 @@ type iQueryKnowledgeBasesContentShrinkRequest interface {
 }
 
 type QueryKnowledgeBasesContentShrinkRequest struct {
-	// The text content for retrieval.
+	// The text content to search for.
 	//
 	// This parameter is required.
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The cluster ID.
 	//
-	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	// example:
+	//
+	// What is ADBPG?
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The instance ID.
+	//
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to view the details of all AnalyticDB for PostgreSQL instances in a specific region, including their instance IDs.
 	//
 	// This parameter is required.
 	//
@@ -46,20 +50,20 @@ type QueryKnowledgeBasesContentShrinkRequest struct {
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The method used to merge multiple knowledge bases. Default value: RRF. Valid values:
+	// The method for merging results from multiple knowledge bases. The default value is `RRF`. Valid values:
 	//
-	// 	- RRF
+	// - RRF
 	//
-	// 	- Weight
+	// - Weight
 	//
 	// example:
 	//
 	// RRF
 	MergeMethod *string `json:"MergeMethod,omitempty" xml:"MergeMethod,omitempty"`
-	// The parameters of the merge method for each SourceCollection.
+	// The arguments for the specified `MergeMethod`.
 	MergeMethodArgsShrink *string `json:"MergeMethodArgs,omitempty" xml:"MergeMethodArgs,omitempty"`
 	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID.
+	// The region ID of the instance.
 	//
 	// This parameter is required.
 	//
@@ -67,24 +71,25 @@ type QueryKnowledgeBasesContentShrinkRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The rerank factor. If you specify this parameter, the vector retrieval results are reranked once more. Valid values: 1\\<RerankFactor<=5.
+	// The reranking factor. If specified, the system reranks the final merged results. Valid values: 1 < RerankFactor <= 5.
+	//
+	// > - Sparse document chunking reduces reranking efficiency.
 	//
 	// >
 	//
-	// 	- If the document is segmented into sparse parts, reranking is inefficient.
-	//
-	// 	- We recommend that the number of reranked results (the ceiling of TopK × RerankFactor) not exceed 50.
+	// > - We recommend that the number of items to rerank (TopK × Factor, rounded up) does not exceed 50.
 	//
 	// example:
 	//
 	// 2
-	RerankFactor      *float64 `json:"RerankFactor,omitempty" xml:"RerankFactor,omitempty"`
-	RerankModelShrink *string  `json:"RerankModel,omitempty" xml:"RerankModel,omitempty"`
-	// The information about collections to retrieve from.
+	RerankFactor *float64 `json:"RerankFactor,omitempty" xml:"RerankFactor,omitempty"`
+	// Parameters for the rerank model applied to the final merged results.
+	RerankModelShrink *string `json:"RerankModel,omitempty" xml:"RerankModel,omitempty"`
+	// The source collections to search.
 	//
 	// This parameter is required.
 	SourceCollectionShrink *string `json:"SourceCollection,omitempty" xml:"SourceCollection,omitempty"`
-	// Set the number of top results to be returned after merging results from multiple path retrieval.
+	// The number of top results to return after the results from all recall paths are merged.
 	//
 	// example:
 	//

@@ -90,7 +90,7 @@ type DownloadDiagnosisRecordsRequest struct {
 	//
 	// example:
 	//
-	// rg-bp67acfmxazb4p****
+	// null
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The beginning of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
 	//

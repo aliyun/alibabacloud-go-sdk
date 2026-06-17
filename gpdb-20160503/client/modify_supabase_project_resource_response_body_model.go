@@ -18,14 +18,20 @@ type iModifySupabaseProjectResourceResponseBody interface {
 }
 
 type ModifySupabaseProjectResourceResponseBody struct {
+	// The order ID.
+	//
 	// example:
 	//
 	// *********
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The Supabase project ID.
+	//
 	// example:
 	//
 	// sbp-tyarplz****
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521

@@ -16,13 +16,13 @@ type iCreateModelServiceResponseBody interface {
 }
 
 type CreateModelServiceResponseBody struct {
-	// The model service ID.
+	// The ID of the model service.
 	//
 	// example:
 	//
 	// ms-xxxxxxxxx
 	ModelServiceId *string `json:"ModelServiceId,omitempty" xml:"ModelServiceId,omitempty"`
-	// The unique ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

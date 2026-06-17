@@ -144,6 +144,10 @@ type ListModelServicesResponseBodyModelServices struct {
 	// sambert-zhiying-v1
 	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
 	// Model service parameters (not available).
+	//
+	// example:
+	//
+	// Not yet available.
 	ModelParams map[string]*string `json:"ModelParams,omitempty" xml:"ModelParams,omitempty"`
 	// Model service ID.
 	//

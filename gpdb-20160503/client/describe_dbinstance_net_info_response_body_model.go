@@ -27,7 +27,7 @@ type DescribeDBInstanceNetInfoResponseBody struct {
 	//
 	// example:
 	//
-	// Classic
+	// VPC
 	InstanceNetworkType *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
 	// The request ID.
 	//

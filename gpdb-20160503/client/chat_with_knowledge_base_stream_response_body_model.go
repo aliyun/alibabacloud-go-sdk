@@ -22,27 +22,27 @@ type iChatWithKnowledgeBaseStreamResponseBody interface {
 }
 
 type ChatWithKnowledgeBaseStreamResponseBody struct {
-	// model response.
+	// The model response.
 	ChatCompletion *ChatWithKnowledgeBaseStreamResponseBodyChatCompletion `json:"ChatCompletion,omitempty" xml:"ChatCompletion,omitempty" type:"Struct"`
-	// The returned information.
+	// The response message.
 	//
 	// example:
 	//
 	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Retrieve information from multiple knowledge bases.
+	// The retrieval results from multiple knowledge bases.
 	MultiCollectionRecallResult *ChatWithKnowledgeBaseStreamResponseBodyMultiCollectionRecallResult `json:"MultiCollectionRecallResult,omitempty" xml:"MultiCollectionRecallResult,omitempty" type:"Struct"`
-	// The unique ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the operation. Valid values:
+	// The status of the request. Valid values:
 	//
-	// 	- **success**.
+	// - **success**: The request succeeded.
 	//
-	// 	- **fail**.
+	// - **fail**: The request failed.
 	//
 	// example:
 	//
@@ -118,27 +118,27 @@ func (s *ChatWithKnowledgeBaseStreamResponseBody) Validate() error {
 }
 
 type ChatWithKnowledgeBaseStreamResponseBodyChatCompletion struct {
-	// Text content generated in real time.
+	// The streaming output content.
 	Choices []*ChatWithKnowledgeBaseStreamResponseBodyChatCompletionChoices `json:"Choices,omitempty" xml:"Choices,omitempty" type:"Repeated"`
-	// The creation time.
+	// The creation time, in Unix timestamp format.
 	//
 	// example:
 	//
 	// 1758529748
 	Created *int64 `json:"Created,omitempty" xml:"Created,omitempty"`
-	// The ID of the response.
+	// The response ID.
 	//
 	// example:
 	//
 	// 273e3fc7-8f56-4167-a1bb-d35d2f3b9043
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the model.
+	// The name of the model used.
 	//
 	// example:
 	//
 	// qwen-plus
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// The number of tokens used in LLM output.
+	// The token usage statistics for the completion.
 	Usage *ChatWithKnowledgeBaseStreamResponseBodyChatCompletionUsage `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
 }
 
@@ -214,19 +214,19 @@ func (s *ChatWithKnowledgeBaseStreamResponseBodyChatCompletion) Validate() error
 }
 
 type ChatWithKnowledgeBaseStreamResponseBodyChatCompletionChoices struct {
-	// Finish reason.
+	// The reason the model stopped generating output.
 	//
 	// example:
 	//
 	// finish
 	FinishReason *string `json:"FinishReason,omitempty" xml:"FinishReason,omitempty"`
-	// The sequence number of the reply.
+	// The index of the choice.
 	//
 	// example:
 	//
 	// 0
 	Index *int64 `json:"Index,omitempty" xml:"Index,omitempty"`
-	// LLM response.
+	// The response from the large language model (LLM).
 	Message *ChatWithKnowledgeBaseStreamResponseBodyChatCompletionChoicesMessage `json:"Message,omitempty" xml:"Message,omitempty" type:"Struct"`
 }
 
@@ -275,27 +275,31 @@ func (s *ChatWithKnowledgeBaseStreamResponseBodyChatCompletionChoices) Validate(
 }
 
 type ChatWithKnowledgeBaseStreamResponseBodyChatCompletionChoicesMessage struct {
-	// The content of the document.
+	// The message content.
+	//
+	// example:
+	//
+	// The weather in Hangzhou is sunny.
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// Model reasoning chain content.
+	// The model\\"s chain of thought (CoT) content.
 	//
 	// example:
 	//
 	// Logical reasoning process
 	ReasoningContent *string `json:"ReasoningContent,omitempty" xml:"ReasoningContent,omitempty"`
-	// Message role:
+	// The role of the message author. Valid values:
 	//
-	// 	- system
+	// - `system`
 	//
-	// 	- user
+	// - `user`
 	//
-	// 	- assistant
+	// - `assistant`
 	//
 	// example:
 	//
 	// user
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// Tool call response.
+	// The tool call responses.
 	ToolCalls []*ChatWithKnowledgeBaseStreamResponseBodyChatCompletionChoicesMessageToolCalls `json:"ToolCalls,omitempty" xml:"ToolCalls,omitempty" type:"Repeated"`
 }
 
@@ -357,15 +361,15 @@ func (s *ChatWithKnowledgeBaseStreamResponseBodyChatCompletionChoicesMessage) Va
 }
 
 type ChatWithKnowledgeBaseStreamResponseBodyChatCompletionChoicesMessageToolCalls struct {
-	// Function call information.
+	// Details of the function that the model wants to call.
 	Function *ChatWithKnowledgeBaseStreamResponseBodyChatCompletionChoicesMessageToolCallsFunction `json:"Function,omitempty" xml:"Function,omitempty" type:"Struct"`
-	// The ID.
+	// The ID of the tool call.
 	//
 	// example:
 	//
 	// "chatcmpl-c1bebafa-cc48-44e2-88c6-1a3572952f8e"
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The position of this tool in the \\"input\\" request parameter, which starts from 0.
+	// The index of the tool in the `Input` parameter of the request, starting from 0.
 	//
 	// example:
 	//
@@ -418,13 +422,13 @@ func (s *ChatWithKnowledgeBaseStreamResponseBodyChatCompletionChoicesMessageTool
 }
 
 type ChatWithKnowledgeBaseStreamResponseBodyChatCompletionChoicesMessageToolCallsFunction struct {
-	// Arguments of the called function.
+	// The arguments for the function call, generated by the model in JSON format.
 	//
 	// example:
 	//
 	// {"city":"hangzhou"}
 	Arguments *string `json:"Arguments,omitempty" xml:"Arguments,omitempty"`
-	// The name of the called function.
+	// The name of the function to call.
 	//
 	// example:
 	//
@@ -463,19 +467,19 @@ func (s *ChatWithKnowledgeBaseStreamResponseBodyChatCompletionChoicesMessageTool
 }
 
 type ChatWithKnowledgeBaseStreamResponseBodyChatCompletionUsage struct {
-	// The number of tokens consumed by the generated content.
+	// The number of tokens in the generated response.
 	//
 	// example:
 	//
 	// 42
 	CompletionTokens *int64 `json:"CompletionTokens,omitempty" xml:"CompletionTokens,omitempty"`
-	// The number of tokens consumed by the prompt.
+	// The number of tokens in the input prompt.
 	//
 	// example:
 	//
 	// 42
 	PromptTokens *int64 `json:"PromptTokens,omitempty" xml:"PromptTokens,omitempty"`
-	// The details about the prompt token.
+	// Details about the prompt token usage.
 	PromptTokensDetails *ChatWithKnowledgeBaseStreamResponseBodyChatCompletionUsagePromptTokensDetails `json:"PromptTokensDetails,omitempty" xml:"PromptTokensDetails,omitempty" type:"Struct"`
 	// The total number of tokens.
 	//
@@ -539,7 +543,7 @@ func (s *ChatWithKnowledgeBaseStreamResponseBodyChatCompletionUsage) Validate() 
 }
 
 type ChatWithKnowledgeBaseStreamResponseBodyChatCompletionUsagePromptTokensDetails struct {
-	// The number of tokens from cache hits.
+	// The number of prompt tokens served from the cache.
 	//
 	// example:
 	//
@@ -569,35 +573,35 @@ func (s *ChatWithKnowledgeBaseStreamResponseBodyChatCompletionUsagePromptTokensD
 }
 
 type ChatWithKnowledgeBaseStreamResponseBodyMultiCollectionRecallResult struct {
-	// The details of the entity.
+	// A list of retrieved entities.
 	Entities []*string `json:"Entities,omitempty" xml:"Entities,omitempty" type:"Repeated"`
-	// The retrieved item.
+	// A list of retrieved matches.
 	Matches []*ChatWithKnowledgeBaseStreamResponseBodyMultiCollectionRecallResultMatches `json:"Matches,omitempty" xml:"Matches,omitempty" type:"Repeated"`
-	// The relationship name.
+	// A list of relationship edges.
 	Relations []*string `json:"Relations,omitempty" xml:"Relations,omitempty" type:"Repeated"`
-	// The unique ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the operation. Valid values:
+	// The status of the API call. Valid values:
 	//
-	// 	- **success**.
+	// - **success**: The call succeeded.
 	//
-	// 	- **fail**.
+	// - **fail**: The call failed.
 	//
 	// example:
 	//
 	// success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The number of tokens that are consumed.
+	// The number of tokens consumed.
 	//
 	// example:
 	//
 	// 42
 	Tokens *int64 `json:"Tokens,omitempty" xml:"Tokens,omitempty"`
-	// The number of tokens that are consumed during document understanding or embedding.
+	// The number of tokens consumed for embedding.
 	Usage *ChatWithKnowledgeBaseStreamResponseBodyMultiCollectionRecallResultUsage `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
 }
 
@@ -691,7 +695,11 @@ func (s *ChatWithKnowledgeBaseStreamResponseBodyMultiCollectionRecallResult) Val
 }
 
 type ChatWithKnowledgeBaseStreamResponseBodyMultiCollectionRecallResultMatches struct {
-	// The content of the document.
+	// The document content.
+	//
+	// example:
+	//
+	// AnalyticDB PostgreSQL vector database.
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The file name.
 	//
@@ -699,29 +707,29 @@ type ChatWithKnowledgeBaseStreamResponseBodyMultiCollectionRecallResultMatches s
 	//
 	// a14b0221-e3f2-4cf2-96cd-b3c293510770.jpg
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// The URL of the image result. By default, the URL is valid for 2 hours.
+	// The public URL of the retrieved image. By default, the URL is valid for 2 hours.
 	//
-	// You can use the UrlExpiration parameter to specify a validity period.
+	// You can use the `UrlExpiration` parameter to specify a custom validity period.
 	//
 	// example:
 	//
 	// http://dailyshort-sh.oss-cn-shanghai.aliyuncs.com/vod-8efba5/f06147795c6c71f080605420848d0302/0ca34d5743a84bf7c68f489a60715dac-ld.mp4
 	FileURL *string `json:"FileURL,omitempty" xml:"FileURL,omitempty"`
-	// The unique ID of the vector data.
+	// The unique ID of the vector record.
 	//
-	// >  If you leave this parameter empty, a unique ID is automatically generated by using uuidgen. If it is not empty and conflicts with an existing ID in the database, the value in the database will be updated with the data from the API.
+	// > If this parameter is left empty, the database automatically generates a UUID. If you provide an ID that conflicts with an existing one, the existing record is updated with the data from the request.
 	//
 	// example:
 	//
 	// 273e3fc7-8f56-4167-a1bb-d35d2f3b9043
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Document loader metadata.
+	// Metadata from the document loader, captured during document ingestion.
 	//
 	// example:
 	//
 	// {"page":1}
 	LoaderMetadata interface{} `json:"LoaderMetadata,omitempty" xml:"LoaderMetadata,omitempty"`
-	// Metadata.
+	// The user-defined metadata.
 	Metadata map[string]interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
 	// The rerank score.
 	//
@@ -729,13 +737,13 @@ type ChatWithKnowledgeBaseStreamResponseBodyMultiCollectionRecallResultMatches s
 	//
 	// 0.12
 	RerankScore *float64 `json:"RerankScore,omitempty" xml:"RerankScore,omitempty"`
-	// The source of the retrieved results. 1 indicates vector retrieval, 2 indicates full-text retrieval, and 3 indicates dual-path retrieval.
+	// The source of the match. `1` indicates vector search, `2` indicates full-text search, and `3` indicates hybrid recall.
 	//
 	// example:
 	//
 	// 0.12
 	RetrievalSource *int64 `json:"RetrievalSource,omitempty" xml:"RetrievalSource,omitempty"`
-	// The similarity score of the data. It is related to the `l2, ip, or cosine` algorithm that is specified when you create an index.
+	// The similarity score. The score is calculated based on the distance metric specified when the index was created (`l2/ip/cosine`).
 	//
 	// example:
 	//
@@ -848,9 +856,9 @@ func (s *ChatWithKnowledgeBaseStreamResponseBodyMultiCollectionRecallResultMatch
 }
 
 type ChatWithKnowledgeBaseStreamResponseBodyMultiCollectionRecallResultUsage struct {
-	// The number of tokens that are used during vectorization.
+	// The number of tokens used for embedding.
 	//
-	// >  A token is the minimum unit for splitting text. A token can be a word, phrase, punctuation, or character.
+	// > A token is the smallest unit created by splitting the input text. A token can be a unit such as a word, a phrase, a punctuation mark, or a character.
 	//
 	// example:
 	//

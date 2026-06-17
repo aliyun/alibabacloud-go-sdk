@@ -36,7 +36,12 @@ type ListSecretsRequest struct {
 	// example:
 	//
 	// cn-beijing
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the workspace composed of multiple database instances. This parameter and the DBInstanceId parameter cannot both be empty. If both are specified, this parameter takes precedence.
+	//
+	// example:
+	//
+	// gp-ws-*****
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 

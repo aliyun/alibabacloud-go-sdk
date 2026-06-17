@@ -14,7 +14,7 @@ type iUntagSupabaseProjectResponseBody interface {
 }
 
 type UntagSupabaseProjectResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iListAINodePoolsResponseBody interface {
 }
 
 type ListAINodePoolsResponseBody struct {
-	// Details of the AI node resource pool.
+	// The details of the AINode resource pools.
 	AINodePoolInfos []*ListAINodePoolsResponseBodyAINodePoolInfos `json:"AINodePoolInfos,omitempty" xml:"AINodePoolInfos,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -66,9 +66,9 @@ func (s *ListAINodePoolsResponseBody) Validate() error {
 }
 
 type ListAINodePoolsResponseBodyAINodePoolInfos struct {
-	// AI node details.
+	// The details of AINodes.
 	AINodeInfos []*ListAINodePoolsResponseBodyAINodePoolInfosAINodeInfos `json:"AINodeInfos,omitempty" xml:"AINodeInfos,omitempty" type:"Repeated"`
-	// The ID of the resource pool to which the AI node belongs.
+	// The ID of the AINode resource pool.
 	//
 	// example:
 	//
@@ -131,17 +131,21 @@ func (s *ListAINodePoolsResponseBodyAINodePoolInfos) Validate() error {
 }
 
 type ListAINodePoolsResponseBodyAINodePoolInfosAINodeInfos struct {
-	// The binding type of the AI node.
+	// The type of the bound object.
 	//
 	// example:
 	//
 	// model_serving
 	BindObject *string `json:"BindObject,omitempty" xml:"BindObject,omitempty"`
-	// The status of the AI node.
+	// The binding status.
 	//
-	// 	- unbound: The node is not bound.
+	// - `unbound`: The node is not bound.
 	//
-	// 	- bound: The node is bound.
+	// - `bound`: The node is bound.
+	//
+	// example:
+	//
+	// bound
 	BindStatus *string `json:"BindStatus,omitempty" xml:"BindStatus,omitempty"`
 	// The creation time.
 	//
@@ -155,67 +159,71 @@ type ListAINodePoolsResponseBodyAINodePoolInfosAINodeInfos struct {
 	//
 	// adbpg-ainode
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The name of the AI node.
+	// The name of the AINode.
 	//
 	// example:
 	//
 	// ai-xxxxxxxxx
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	// The AI node specifications. The list of supported specifications is shown below.
+	// The AINode specification. The following specifications are supported:
 	//
-	//     ADB.AIMedium.1
+	// ```
 	//
-	//     ADB.AILarge.1
+	// ADB.AIMedium.1
 	//
-	//     ADB.AIStandard.2
+	// ADB.AILarge.1
 	//
-	//     ADB.AIMedium.2
+	// ADB.AIStandard.2
 	//
-	//     ADB.AILarge.2
+	// ADB.AIMedium.2
 	//
-	//     ADB.AIXLarge.2
+	// ADB.AILarge.2
 	//
-	//     ADB.AIStandard.6
+	// ADB.AIXLarge.2
 	//
-	//     ADB.AIMedium.6
+	// ADB.AIStandard.6
 	//
-	//     ADB.AILarge.6
+	// ADB.AIMedium.6
 	//
-	//     ADB.AIXLarge.6
+	// ADB.AILarge.6
 	//
-	//     ADB.AIStandard.3
+	// ADB.AIXLarge.6
 	//
-	//     ADB.AIMedium.3
+	// ADB.AIStandard.3
 	//
-	//     ADB.AILarge.3
+	// ADB.AIMedium.3
 	//
-	//     ADB.AIXLarge.3
+	// ADB.AILarge.3
 	//
-	//     ADB.AIStandard.4
+	// ADB.AIXLarge.3
 	//
-	//     ADB.AIMedium.4
+	// ADB.AIStandard.4
 	//
-	//     ADB.AILarge.4
+	// ADB.AIMedium.4
 	//
-	//     ADB.AIXLarge.4
+	// ADB.AILarge.4
 	//
-	//     ADB.AIStandard.5
+	// ADB.AIXLarge.4
 	//
-	//     ADB.AIMedium.5
+	// ADB.AIStandard.5
 	//
-	//     ADB.AILarge.5
+	// ADB.AIMedium.5
 	//
-	//     ADB.AIXLarge.5
+	// ADB.AILarge.5
 	//
-	//     ADB.AIStandard.8
+	// ADB.AIXLarge.5
 	//
-	//     ADB.AIMedium.8
+	// ADB.AIStandard.8
 	//
-	//     ADB.AILarge.8
+	// ADB.AIMedium.8
 	//
-	//     ADB.AIXLarge.8
+	// ADB.AILarge.8
 	//
-	//     ADB.AI2XLarge.8
+	// ADB.AIXLarge.8
+	//
+	// ADB.AI2XLarge.8
+	//
+	// ```
 	//
 	// example:
 	//
@@ -227,7 +235,12 @@ type ListAINodePoolsResponseBodyAINodePoolInfosAINodeInfos struct {
 	//
 	// 2025-06-16T02:04:42Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	ZoneId     *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The zone ID.
+	//
+	// example:
+	//
+	// cn-hangzhou-j
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s ListAINodePoolsResponseBodyAINodePoolInfosAINodeInfos) String() string {

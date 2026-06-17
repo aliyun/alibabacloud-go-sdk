@@ -209,7 +209,7 @@ type DescribeSQLLogsV2ResponseBodyItems struct {
 	//
 	// example:
 	//
-	// efc33bd7-f1dc-4b24-b4fb-ab0d5329b7bb
+	// 3a74656836ec5255a4793def0a447b02
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
 	// The source IP address.
 	//

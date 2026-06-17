@@ -43,6 +43,10 @@ type TextEmbeddingRequest struct {
 	// 1024
 	Dimension *int32 `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
 	// A list of text content to be embedded. The list length must not exceed 100.
+	//
+	// example:
+	//
+	// What is ADBPG?
 	Input []*string `json:"Input,omitempty" xml:"Input,omitempty" type:"Repeated"`
 	// The text embedding model. Valid values:
 	//
@@ -60,7 +64,7 @@ type TextEmbeddingRequest struct {
 	//
 	// example:
 	//
-	// text-embedding-v2
+	// text-embedding-v3
 	Model   *string `json:"Model,omitempty" xml:"Model,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the cluster.

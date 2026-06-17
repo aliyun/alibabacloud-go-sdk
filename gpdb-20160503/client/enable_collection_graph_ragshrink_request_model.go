@@ -61,6 +61,10 @@ type EnableCollectionGraphRAGShrinkRequest struct {
   // > If the knowledge graph construction is enabled, this parameter is required.
   // 
   // This parameter is required.
+  // 
+  // example:
+  // 
+  // Location
   EntityTypesShrink *string `json:"EntityTypes,omitempty" xml:"EntityTypes,omitempty"`
   // The name of the LLM model.
   // 
@@ -140,6 +144,10 @@ type EnableCollectionGraphRAGShrinkRequest struct {
   // > If the knowledge graph construction is enabled, this parameter is required.
   // 
   // This parameter is required.
+  // 
+  // example:
+  // 
+  // Occurred
   RelationshipTypesShrink *string `json:"RelationshipTypes,omitempty" xml:"RelationshipTypes,omitempty"`
 }
 

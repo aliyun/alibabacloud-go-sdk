@@ -64,89 +64,111 @@ type iGetSupabaseProjectResponseBody interface {
 }
 
 type GetSupabaseProjectResponseBody struct {
+	// Indicates whether the **auto pause and resume*	- feature is enabled.
+	//
+	// Valid values:
+	//
+	// - `true`: The feature is enabled. The project automatically pauses and resumes based on traffic.
+	//
+	// - `false`: The feature is disabled.
+	//
 	// example:
 	//
 	// false
 	AutoScale *string `json:"AutoScale,omitempty" xml:"AutoScale,omitempty"`
-	// The creation time.
+	// The creation time of the project.
 	//
 	// example:
 	//
 	// 2019-09-08T16:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The database IP address whitelist, specified as a comma-separated string.
+	//
 	// example:
 	//
 	// 127.0.0.1,100.64.XX.XX/10
 	DBSecurityIpList *string `json:"DBSecurityIpList,omitempty" xml:"DBSecurityIpList,omitempty"`
-	// The Supabase Dashboard password (Not Used)
+	// The password for the Supabase Dashboard. This parameter is not used.
 	//
 	// example:
 	//
 	// xxpassword
 	DashboardPassword *string `json:"DashboardPassword,omitempty" xml:"DashboardPassword,omitempty"`
-	// The Supabase Dashboard user name (Not Used)
+	// The username for the Supabase Dashboard. This parameter is not used.
 	//
 	// example:
 	//
 	// username
 	DashboardUserName *string `json:"DashboardUserName,omitempty" xml:"DashboardUserName,omitempty"`
-	// The Enterprise SSD (ESSD) performance level of the cluster. Valid values:
+	// The performance level (PL) of the cloud disk. Valid values:
 	//
-	// 	- PL0
+	// - PL0
 	//
-	// 	- PL1
+	// - PL1
 	//
 	// example:
 	//
 	// PL0
 	DiskPerformanceLevel *string `json:"DiskPerformanceLevel,omitempty" xml:"DiskPerformanceLevel,omitempty"`
-	// The type of the database engine.
+	// The database engine.
 	//
 	// example:
 	//
 	// postgres
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The version of the database engine.
+	// The engine version.
 	//
 	// example:
 	//
 	// 15
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	// The elastic network interface (ENI) ID.
+	//
 	// example:
 	//
 	// eni-xxxxxx
 	Eni *string `json:"Eni,omitempty" xml:"Eni,omitempty"`
+	// The current instance version.
+	//
 	// example:
 	//
 	// v1.0.3
 	InstanceVersion *string `json:"InstanceVersion,omitempty" xml:"InstanceVersion,omitempty"`
+	// The billing method. Valid values:
+	//
+	// - `POSTPAY`: pay-as-you-go
+	//
+	// - `PREPAY`: subscription
+	//
 	// example:
 	//
 	// POSTPAY
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The private (VPC) connection URL for the Supabase Dashboard.
+	// The private connection URL for the Supabase Dashboard.
 	//
 	// example:
 	//
 	// 192.168.0.11
 	PrivateConnectUrl *string `json:"PrivateConnectUrl,omitempty" xml:"PrivateConnectUrl,omitempty"`
+	// The description of the Supabase project.
+	//
 	// example:
 	//
 	// for-test-project
 	ProjectDescription *string `json:"ProjectDescription,omitempty" xml:"ProjectDescription,omitempty"`
-	// The Supabase instance ID.
+	// The Supabase project ID.
 	//
 	// example:
 	//
 	// sbp-545434
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The name of the Supabase project.
+	// The Supabase project name.
 	//
 	// example:
 	//
 	// supabase_project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The performance level of the Supabase instance.
+	// The Supabase instance specification.
 	//
 	// example:
 	//
@@ -158,43 +180,53 @@ type GetSupabaseProjectResponseBody struct {
 	//
 	// 10.154.11.10
 	PublicConnectUrl *string `json:"PublicConnectUrl,omitempty" xml:"PublicConnectUrl,omitempty"`
-	// The region ID of the cluster.
+	// The region ID.
 	//
-	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the available regions.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The unique ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// A comma-separated list of IP addresses and CIDR blocks allowed to connect.
+	// The IP address whitelist, specified as a comma-separated string.
 	//
 	// example:
 	//
 	// 127.0.0.1
 	SecurityIpList *string `json:"SecurityIpList,omitempty" xml:"SecurityIpList,omitempty"`
-	// The status of the Supabase instance.
+	// The Supabase instance status.
 	//
 	// example:
 	//
 	// running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The storage capacity of the instance. Unit: GB.
+	// The storage space, in GB.
 	//
 	// example:
 	//
 	// 2
 	StorageSize *int64 `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
+	// The storage type. Valid values:
+	//
+	// - **cloud_essd_pl0**
+	//
+	// - **cloud_essd_pl1**
+	//
+	// - **cloud_essd_pl2**
+	//
+	// - **cloud_essd_pl3**
+	//
 	// example:
 	//
 	// cloud_essd_pl0
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	// The vSwitch ID of the instance. This parameter must be specified when VPCId is specified.
+	// The vSwitch ID.
 	//
 	// example:
 	//
@@ -202,11 +234,11 @@ type GetSupabaseProjectResponseBody struct {
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The VPC ID.
 	//
+	// > - You can call the [DescribeRdsVpcs](https://help.aliyun.com/document_detail/208327.html) operation to query the available VPCs.
+	//
 	// >
 	//
-	// 	- You can call the [DescribeRdsVpcs](https://help.aliyun.com/document_detail/208327.html) operation to query the available VPC IDs.
-	//
-	// 	- This parameter is required.
+	// > - This parameter is required.
 	//
 	// example:
 	//
@@ -214,7 +246,7 @@ type GetSupabaseProjectResponseBody struct {
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// The zone ID.
 	//
-	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list and zone list.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the available zones.
 	//
 	// example:
 	//

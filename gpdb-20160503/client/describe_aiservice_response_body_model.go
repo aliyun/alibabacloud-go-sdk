@@ -34,46 +34,72 @@ type iDescribeAIServiceResponseBody interface {
 }
 
 type DescribeAIServiceResponseBody struct {
+	// The time when the service was created.
+	//
 	// example:
 	//
 	// 2026-03-01T00:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the service.
+	//
 	// example:
 	//
 	// dramatest
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The internal endpoint for API debugging.
+	//
 	// example:
 	//
 	// 192.168.0.1/api-docs
 	PrivateApiDevUrl *string `json:"PrivateApiDevUrl,omitempty" xml:"PrivateApiDevUrl,omitempty"`
+	// The internal endpoint of the Workbench.
+	//
 	// example:
 	//
 	// 192.168.0.1
 	PrivateWorkbenchUrl *string `json:"PrivateWorkbenchUrl,omitempty" xml:"PrivateWorkbenchUrl,omitempty"`
+	// The public endpoint for API debugging.
+	//
 	// example:
 	//
 	// 8.8.8.8/api-docs
 	PublicApiDevUrl *string `json:"PublicApiDevUrl,omitempty" xml:"PublicApiDevUrl,omitempty"`
+	// The public endpoint of the Workbench.
+	//
 	// example:
 	//
 	// 8.8.8.8
 	PublicWorkbenchUrl *string `json:"PublicWorkbenchUrl,omitempty" xml:"PublicWorkbenchUrl,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// A comma-separated list of IP addresses in the IP address whitelist group.
+	//
 	// example:
 	//
 	// 127.0.0.1
 	SecurityIpList *string `json:"SecurityIpList,omitempty" xml:"SecurityIpList,omitempty"`
+	// The service account.
+	//
 	// example:
 	//
 	// dramauser
 	ServiceAccount *string `json:"ServiceAccount,omitempty" xml:"ServiceAccount,omitempty"`
+	// The ID of the service.
+	//
 	// example:
 	//
 	// drama-123456
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The status of the service. Valid values:
+	//
+	// - deploying: The service is being deployed.
+	//
+	// - active: The service is running.
+	//
 	// example:
 	//
 	// active

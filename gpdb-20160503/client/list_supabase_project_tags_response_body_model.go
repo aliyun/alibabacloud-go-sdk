@@ -18,16 +18,19 @@ type iListSupabaseProjectTagsResponseBody interface {
 }
 
 type ListSupabaseProjectTagsResponseBody struct {
+	// The pagination token for the next page of results. This parameter is not returned if no more results are available.
+	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 34b32a0a-08ef-4a87-b6be-cdd9f56fc3ad
-	RequestId    *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// A list of tagged resources.
 	TagResources []*ListSupabaseProjectTagsResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
 }
 
@@ -80,18 +83,26 @@ func (s *ListSupabaseProjectTagsResponseBody) Validate() error {
 }
 
 type ListSupabaseProjectTagsResponseBodyTagResources struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// spb-xxxxxxxxxx
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The resource type.
+	//
 	// example:
 	//
 	// instance
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tag key.
+	//
 	// example:
 	//
 	// TestKey
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// TestValue

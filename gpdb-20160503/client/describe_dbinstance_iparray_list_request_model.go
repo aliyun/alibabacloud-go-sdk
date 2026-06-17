@@ -40,7 +40,7 @@ type DescribeDBInstanceIPArrayListRequest struct {
 	//
 	// example:
 	//
-	// rg-bp67acfmxazb4p****
+	// null
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 

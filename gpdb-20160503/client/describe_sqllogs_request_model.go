@@ -82,7 +82,7 @@ type DescribeSQLLogsRequest struct {
 	//
 	// example:
 	//
-	// success
+	// 1
 	ExecuteState *string `json:"ExecuteState,omitempty" xml:"ExecuteState,omitempty"`
 	// The maximum amount of time consumed by a slow query. Unit: seconds. Minimum value: 0.
 	//

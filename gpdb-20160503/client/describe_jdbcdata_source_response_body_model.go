@@ -78,7 +78,7 @@ type DescribeJDBCDataSourceResponseBody struct {
 	//
 	// example:
 	//
-	// MySQL
+	// mysql
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
 	// The id of the external data service
 	//
@@ -90,25 +90,25 @@ type DescribeJDBCDataSourceResponseBody struct {
 	//
 	// example:
 	//
-	// xxxxxx
+	// jdbc:mysql://rm-xxx.mysql.rds.aliyuncs.com:3306/testadmin
 	JDBCConnectionString *string `json:"JDBCConnectionString,omitempty" xml:"JDBCConnectionString,omitempty"`
 	// The password of the database account.
 	//
 	// example:
 	//
-	// xxxxxx
+	// testpasswd
 	JDBCPassword *string `json:"JDBCPassword,omitempty" xml:"JDBCPassword,omitempty"`
 	// The name of the database account.
 	//
 	// example:
 	//
-	// xxxxxx
+	// testuser
 	JDBCUserName *string `json:"JDBCUserName,omitempty" xml:"JDBCUserName,omitempty"`
 	// The time when the data source was last modified.
 	//
 	// example:
 	//
-	// 2024-08-27T02:01:10Z
+	// 2024-09-04T02:27:55Z
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 	// The request ID.
 	//

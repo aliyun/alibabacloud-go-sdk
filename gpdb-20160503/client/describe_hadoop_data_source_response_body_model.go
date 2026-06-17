@@ -108,19 +108,71 @@ type DescribeHadoopDataSourceResponseBody struct {
 	//
 	// example:
 	//
-	// 2988
+	// 2952
 	ExternalDataServiceId *string `json:"ExternalDataServiceId,omitempty" xml:"ExternalDataServiceId,omitempty"`
 	// The content of the Hadoop hdfs-site.xml file.
 	//
 	// example:
 	//
-	// xxxxxx
+	// <?xml version="1.0" ?>
+	//
+	// <!-- Created at 2023-08-15 13:52:43.945 -->
+	//
+	// <configuration>
+	//
+	//     <property>
+	//
+	//         <name>dfs.datanode.cache.revocation.timeout.ms</name>
+	//
+	//         <value>900000</value>
+	//
+	//     </property>
+	//
+	//     <property>
+	//
+	//         <name>dfs.namenode.resource.check.interval</name>
+	//
+	//         <value>5000</value>
+	//
+	//     </property>
+	//
+	// </configuration>
 	HDFSConf *string `json:"HDFSConf,omitempty" xml:"HDFSConf,omitempty"`
 	// The content of the Hadoop core-site.xml file.
 	//
 	// example:
 	//
-	// xxxxxx
+	// <?xml version="1.0" ?>
+	//
+	// <!-- Created at 2023-08-15 13:52:39.527 -->
+	//
+	// <configuration>
+	//
+	//     <property>
+	//
+	//         <name>hadoop.http.authentication.kerberos.keytab</name>
+	//
+	//         <value>/etc/emr/hadoop-conf/http.keytab</value>
+	//
+	//     </property>
+	//
+	//     <property>
+	//
+	//         <name>fs.oss.idle.timeout.millisecond</name>
+	//
+	//         <value>30000</value>
+	//
+	//     </property>
+	//
+	//     <property>
+	//
+	//         <name>fs.oss.download.thread.concurrency</name>
+	//
+	//         <value>32</value>
+	//
+	//     </property>
+	//
+	// </configuration>
 	HadoopCoreConf *string `json:"HadoopCoreConf,omitempty" xml:"HadoopCoreConf,omitempty"`
 	// The type of the external service. Valid values:
 	//
@@ -130,7 +182,7 @@ type DescribeHadoopDataSourceResponseBody struct {
 	//
 	// example:
 	//
-	// HDFS
+	// emr
 	HadoopCreateType *string `json:"HadoopCreateType,omitempty" xml:"HadoopCreateType,omitempty"`
 	// The IP address and hostname of the Hadoop cluster (data source) in the /etc/hosts file.
 	//
@@ -142,19 +194,63 @@ type DescribeHadoopDataSourceResponseBody struct {
 	//
 	// example:
 	//
-	// xxxxxx
+	// <?xml version="1.0" ?>
+	//
+	// <!-- Created at 2023-08-15 13:52:50.646 -->
+	//
+	// <configuration>
+	//
+	//     <property>
+	//
+	//         <name>hive.exec.reducers.bytes.per.reducer</name>
+	//
+	//         <value>256000000</value>
+	//
+	//     </property>
+	//
+	//     <property>
+	//
+	//         <name>hive.stats.column.autogather</name>
+	//
+	//         <value>false</value>
+	//
+	//     </property>
+	//
+	// </configuration>
 	HiveConf *string `json:"HiveConf,omitempty" xml:"HiveConf,omitempty"`
 	// The content of the Hadoop mapred-site.xml file.
 	//
 	// example:
 	//
-	// xxxxxx
+	// <?xml version="1.0" ?>
+	//
+	// <!-- Created at 2023-08-15 13:53:28.962 -->
+	//
+	// <configuration>
+	//
+	//     <property>
+	//
+	//         <name>mapreduce.map.speculative</name>
+	//
+	//         <value>true</value>
+	//
+	//     </property>
+	//
+	//     <property>
+	//
+	//         <name>mapreduce.jobhistory.keytab</name>
+	//
+	//         <value></value>
+	//
+	//     </property>
+	//
+	// </configuration>
 	MapReduceConf *string `json:"MapReduceConf,omitempty" xml:"MapReduceConf,omitempty"`
 	// The time when the data source was last modified.
 	//
 	// example:
 	//
-	// 2024-08-23T02:11:47Z
+	// 2024-09-28T02:18:39Z
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 	// The request ID.
 	//
@@ -172,7 +268,29 @@ type DescribeHadoopDataSourceResponseBody struct {
 	//
 	// example:
 	//
-	// xxxxxx
+	// <?xml version="1.0" ?>
+	//
+	// <!-- Created at 2023-08-15 13:53:29.021 -->
+	//
+	// <configuration>
+	//
+	//     <property>
+	//
+	//         <name>yarn.nodemanager.linux-container-executor.nonsecure-mode.local-user</name>
+	//
+	//         <value>hadoop</value>
+	//
+	//     </property>
+	//
+	//     <property>
+	//
+	//         <name>yarn.scheduler.fair.dynamic.max.assign</name>
+	//
+	//         <value>true</value>
+	//
+	//     </property>
+	//
+	// </configuration>
 	YarnConf *string `json:"YarnConf,omitempty" xml:"YarnConf,omitempty"`
 }
 

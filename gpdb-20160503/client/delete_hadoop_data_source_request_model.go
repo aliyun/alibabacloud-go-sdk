@@ -34,6 +34,10 @@ type DeleteHadoopDataSourceRequest struct {
 	//
 	// 123
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// The region ID.
+	//
+	// > You can invoke the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) API to view available region IDs.
+	//
 	// example:
 	//
 	// cn-hangzhou

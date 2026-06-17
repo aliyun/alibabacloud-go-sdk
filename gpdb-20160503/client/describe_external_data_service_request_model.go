@@ -24,7 +24,7 @@ type DescribeExternalDataServiceRequest struct {
 	//
 	// example:
 	//
-	// gp-bp10g78o9807yv9h3
+	// gp-xxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The region ID.
 	//

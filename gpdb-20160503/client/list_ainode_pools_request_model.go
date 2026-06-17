@@ -16,7 +16,7 @@ type iListAINodePoolsRequest interface {
 }
 
 type ListAINodePoolsRequest struct {
-	// The cluster ID.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type ListAINodePoolsRequest struct {
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// Region ID
+	// The region ID.
 	//
 	// example:
 	//

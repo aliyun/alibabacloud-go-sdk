@@ -36,7 +36,7 @@ type DescribeDBVersionInfosRequest struct {
 	//
 	// example:
 	//
-	// 6.3.10.20
+	// 6.3.10.20。
 	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the instance.

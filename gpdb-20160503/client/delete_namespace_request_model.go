@@ -32,7 +32,7 @@ type DeleteNamespaceRequest struct {
 	//
 	// example:
 	//
-	// gp-xxxxxxxxx
+	// gp-bp152460513z7****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The name of the manager account that has the rds_superuser permission.
 	//

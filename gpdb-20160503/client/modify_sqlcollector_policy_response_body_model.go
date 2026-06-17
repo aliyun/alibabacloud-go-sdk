@@ -18,7 +18,7 @@ type ModifySQLCollectorPolicyResponseBody struct {
 	//
 	// example:
 	//
-	// 4FA1F1D1-50A6-4F60-9A78-5752F2076A53
+	// API-48109b5c-a157-44e3-9f54-eb27f02bdd15
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

@@ -70,7 +70,7 @@ type ModifyBackupPolicyRequest struct {
 	//
 	// example:
 	//
-	// Tuesday, Thursday, Saturday
+	// Tuesday,Thursday,Saturday
 	PreferredBackupPeriod *string `json:"PreferredBackupPeriod,omitempty" xml:"PreferredBackupPeriod,omitempty"`
 	// The backup window. Specify the backup window in the HH:mmZ-HH:mmZ format. The backup window must be in UTC. Default value: 00:00-01:00.
 	//

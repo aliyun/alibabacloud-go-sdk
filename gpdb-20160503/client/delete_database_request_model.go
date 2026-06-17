@@ -24,7 +24,7 @@ type DeleteDatabaseRequest struct {
 	//
 	// example:
 	//
-	// gp-xxxxxxxxxxx
+	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The name of the queried database.
 	//

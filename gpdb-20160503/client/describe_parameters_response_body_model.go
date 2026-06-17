@@ -102,7 +102,7 @@ type DescribeParametersResponseBodyParameters struct {
 	//
 	// example:
 	//
-	// Sets the maximum allowed duration of any statement, A value of 0 turns off the timeout.
+	// Sets the maximum allowed duration of any statement，A value of 0 turns off the timeout.
 	ParameterDescription *string `json:"ParameterDescription,omitempty" xml:"ParameterDescription,omitempty"`
 	// The name of the configuration parameter.
 	//
