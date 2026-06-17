@@ -26,30 +26,44 @@ type iGetAccessTokenResponseBody interface {
 }
 
 type GetAccessTokenResponseBody struct {
+	// The details of the authentication failure.
+	//
 	// example:
 	//
 	// null
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The JWT used as the Authorization query parameter for the Chat operation. The token is valid for a limited period of time.
+	//
 	// example:
 	//
 	// "eyJhbGc****.eyJ********.****TCk"
 	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
+	// The business status code.
+	//
 	// example:
 	//
 	// "200"
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error details. This parameter is returned only when the request fails.
+	//
 	// example:
 	//
 	// null
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID, in UUID format. The first and last characters are retained for illustration purposes.
+	//
 	// example:
 	//
 	// "EA12****-****-****-****-****E5C"
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true

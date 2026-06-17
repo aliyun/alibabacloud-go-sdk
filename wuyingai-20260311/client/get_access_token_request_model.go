@@ -16,10 +16,14 @@ type iGetAccessTokenRequest interface {
 }
 
 type GetAccessTokenRequest struct {
+	// The unique identifier of the user in the external system.
+	//
 	// example:
 	//
 	// "user-38764"
 	ExternalUserId *string `json:"ExternalUserId,omitempty" xml:"ExternalUserId,omitempty"`
+	// The ID of the agent template.
+	//
 	// example:
 	//
 	// 1600112233445566

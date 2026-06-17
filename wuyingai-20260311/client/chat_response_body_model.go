@@ -39,68 +39,107 @@ type iChatResponseBody interface {
 	GetSuccess() *bool
 	SetText(v string) *ChatResponseBody
 	GetText() *string
+	SetTraceId(v string) *ChatResponseBody
+	GetTraceId() *string
 	SetType(v string) *ChatResponseBody
 	GetType() *string
 }
 
 type ChatResponseBody struct {
+	// The business status code.
+	//
 	// example:
 	//
 	// 200
-	Code    *string                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The content block list (included only when Status is completed).
 	Content []*ChatResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Repeated"`
+	// （已废弃）创建时间戳
+	//
 	// example:
 	//
 	// 1773380609
 	Created *string `json:"Created,omitempty" xml:"Created,omitempty"`
+	// The creation timestamp (Unix seconds).
+	//
 	// example:
 	//
 	// 1773380609
 	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The unique message identifier.
+	//
 	// example:
 	//
 	// msg_xxx
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The error details (returned on failure).
+	//
 	// example:
 	//
 	// null
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The event object type.
+	//
 	// example:
 	//
 	// response
 	Object *string `json:"Object,omitempty" xml:"Object,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// EA12****-****-****-****-****E5C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The role (user / assistant / system / tool).
+	//
 	// example:
 	//
 	// user
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// The event sequence number (an incrementing integer in string format, used to guarantee ordering). Note: When StreamOptions filters out certain event types, the filtered events still consume sequence numbers. Therefore, the sequence numbers received by the client may not be contiguous.
+	//
 	// example:
 	//
 	// 1
 	SequenceNumber *string `json:"SequenceNumber,omitempty" xml:"SequenceNumber,omitempty"`
+	// The session ID.
+	//
 	// example:
 	//
 	// 176405663****961
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// The reply status (created / in_progress / completed).
+	//
 	// example:
 	//
 	// in_progress
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The incremental text content (included in Object=content events).
+	//
+	// [_single.resp.200.props.Created.desc](Deprecated) The creation timestamp.
+	//
 	// example:
 	//
 	// "hello"
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// example:
+	//
+	// 0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+	// The message type (reasoning (model thinking process) / message (formal reply)).
+	//
 	// example:
 	//
 	// message / text
@@ -173,6 +212,10 @@ func (s *ChatResponseBody) GetSuccess() *bool {
 
 func (s *ChatResponseBody) GetText() *string {
 	return s.Text
+}
+
+func (s *ChatResponseBody) GetTraceId() *string {
+	return s.TraceId
 }
 
 func (s *ChatResponseBody) GetType() *string {
@@ -254,6 +297,11 @@ func (s *ChatResponseBody) SetText(v string) *ChatResponseBody {
 	return s
 }
 
+func (s *ChatResponseBody) SetTraceId(v string) *ChatResponseBody {
+	s.TraceId = &v
+	return s
+}
+
 func (s *ChatResponseBody) SetType(v string) *ChatResponseBody {
 	s.Type = &v
 	return s
@@ -273,18 +321,26 @@ func (s *ChatResponseBody) Validate() error {
 }
 
 type ChatResponseBodyContent struct {
+	// The structured data (such as tool invocation). Example: {"call_id":"call_xxx","name":"get_weather", "output":"Tool output details in text format"}.
+	//
 	// example:
 	//
 	// {"call_id":"call_xxx","name":"get_weather","arguments":"{"city":"Beijing"}"}
 	Data map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The object type.
+	//
 	// example:
 	//
 	// ""
 	Object *string `json:"Object,omitempty" xml:"Object,omitempty"`
+	// The text content.
+	//
 	// example:
 	//
 	// 您好
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// The content type ("text" / "data").
+	//
 	// example:
 	//
 	// text

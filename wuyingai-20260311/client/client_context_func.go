@@ -10,7 +10,27 @@ import (
 
 // Summary:
 //
-// 与 JVS Crew 进行流式对话，采用 Server-Sent Events (SSE) 协议实时推送对话内容。
+// Conducts a streaming conversation with JVS Crew, using the Server-Sent Events (SSE) protocol to push conversation content in real time.
+//
+// Description:
+//
+// *Features**
+//
+// - Real-time streaming response that reduces time to first token.
+//
+// - Supports multimodal input (text, images, and files).
+//
+// - Session persistence for multi-turn conversations.
+//
+// - Event-driven architecture for precise message status control.
+//
+// **Request information**
+//
+// - **Request method**: `POST`
+//
+// - **Content-Type**: `application/json`
+//
+// - **Response Content-Type**: `text/event-stream`.
 //
 // @param tmpReq - ChatRequest
 //
@@ -25,7 +45,27 @@ func (client *Client) ChatWithSSECtx(ctx context.Context, tmpReq *ChatRequest, r
 
 // Summary:
 //
-// 与 JVS Crew 进行流式对话，采用 Server-Sent Events (SSE) 协议实时推送对话内容。
+// Conducts a streaming conversation with JVS Crew, using the Server-Sent Events (SSE) protocol to push conversation content in real time.
+//
+// Description:
+//
+// *Features**
+//
+// - Real-time streaming response that reduces time to first token.
+//
+// - Supports multimodal input (text, images, and files).
+//
+// - Session persistence for multi-turn conversations.
+//
+// - Event-driven architecture for precise message status control.
+//
+// **Request information**
+//
+// - **Request method**: `POST`
+//
+// - **Content-Type**: `application/json`
+//
+// - **Response Content-Type**: `text/event-stream`.
 //
 // @param tmpReq - ChatRequest
 //
@@ -71,6 +111,14 @@ func (client *Client) ChatWithContext(ctx context.Context, tmpReq *ChatRequest, 
 		body["Input"] = request.InputShrink
 	}
 
+	if !dara.IsNil(request.Model) {
+		body["Model"] = request.Model
+	}
+
+	if !dara.IsNil(request.Resume) {
+		body["Resume"] = request.Resume
+	}
+
 	if !dara.IsNil(request.RoutingKey) {
 		body["RoutingKey"] = request.RoutingKey
 	}
@@ -113,7 +161,17 @@ func (client *Client) ChatWithContext(ctx context.Context, tmpReq *ChatRequest, 
 
 // Summary:
 //
-// 获取用户进行对话所需的访问令牌（AccessToken），用于后续调用 Chat 接口进行身份验证。
+// Obtains an access token (AccessToken) for user conversations, which is used to authenticate when invoking the Chat operation.
+//
+// Description:
+//
+// *Token format**: The AccessToken is a **JWT*	- consisting of **Header.Payload.Signature*	- segments, each Base64URL-encoded and concatenated with `.` into a single line. The examples in the following table are masked for illustration purposes. The actual RequestId and JWT segments are longer.
+//
+// **Token validity**: The AccessToken **is valid for a limited period of time**. After it expires, call this operation again to obtain a new token.
+//
+// **Authentication method**: POP V1 signature (AK/SK)
+//
+// **Action**: `GetAccessToken`.
 //
 // @param request - GetAccessTokenRequest
 //
@@ -197,6 +255,14 @@ func (client *Client) chatWithSSECtx_opYieldFunc(_yield chan *ChatResponse, _yie
 
 	if !dara.IsNil(request.InputShrink) {
 		body["Input"] = request.InputShrink
+	}
+
+	if !dara.IsNil(request.Model) {
+		body["Model"] = request.Model
+	}
+
+	if !dara.IsNil(request.Resume) {
+		body["Resume"] = request.Resume
 	}
 
 	if !dara.IsNil(request.RoutingKey) {

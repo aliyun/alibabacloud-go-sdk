@@ -15,6 +15,10 @@ type iChatShrinkRequest interface {
 	GetExternalUserId() *string
 	SetInputShrink(v string) *ChatShrinkRequest
 	GetInputShrink() *string
+	SetModel(v string) *ChatShrinkRequest
+	GetModel() *string
+	SetResume(v bool) *ChatShrinkRequest
+	GetResume() *bool
 	SetRoutingKey(v string) *ChatShrinkRequest
 	GetRoutingKey() *string
 	SetSessionId(v string) *ChatShrinkRequest
@@ -28,34 +32,52 @@ type iChatShrinkRequest interface {
 }
 
 type ChatShrinkRequest struct {
+	// Bearer + JWT returned by GetAccessToken. URL-encode the entire string and pass it as a query parameter.
+	//
 	// example:
 	//
 	// Bearer%20eyJhb****...****k
 	Authorization *string `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+	// The user ID from the external system.
+	//
 	// example:
 	//
 	// test-user
 	ExternalUserId *string `json:"ExternalUserId,omitempty" xml:"ExternalUserId,omitempty"`
+	// The message list (JSON string), sorted in chronological order.
+	//
 	// example:
 	//
 	// [{"Role":"user","Content":[{"Type":"text","Text":"你好"}]}]
 	InputShrink *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	Model       *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	Resume      *bool   `json:"Resume,omitempty" xml:"Resume,omitempty"`
+	// The routing key that specifies the backend instance to process the request.
+	//
 	// example:
 	//
 	// ""
 	RoutingKey *string `json:"RoutingKey,omitempty" xml:"RoutingKey,omitempty"`
+	// The session ID for multi-turn conversation context persistence.
+	//
 	// example:
 	//
 	// test-session-001
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// The additional settings. Contains the output file mode control parameter OutputFileMode (string, valid values: url or base64. Defaults to base64 for legacy compatibility. We recommend url).
+	//
 	// example:
 	//
 	// {"OutputFileMode": "url"}
 	SettingsShrink *string `json:"Settings,omitempty" xml:"Settings,omitempty"`
+	// The streaming output control options. Contains IncludeReasoning (boolean, default true, specifies whether to include the model thinking process) and IncludeToolCalls (boolean, default true, specifies whether to include tool invocation details). If not specified or set to a null object, the behavior is consistent with the legacy version.
+	//
 	// example:
 	//
 	// {"IncludeReasoning": false, "IncludeToolCalls": false}
 	StreamOptionsShrink *string `json:"StreamOptions,omitempty" xml:"StreamOptions,omitempty"`
+	// The agent template ID.
+	//
 	// example:
 	//
 	// template-abc123
@@ -80,6 +102,14 @@ func (s *ChatShrinkRequest) GetExternalUserId() *string {
 
 func (s *ChatShrinkRequest) GetInputShrink() *string {
 	return s.InputShrink
+}
+
+func (s *ChatShrinkRequest) GetModel() *string {
+	return s.Model
+}
+
+func (s *ChatShrinkRequest) GetResume() *bool {
+	return s.Resume
 }
 
 func (s *ChatShrinkRequest) GetRoutingKey() *string {
@@ -114,6 +144,16 @@ func (s *ChatShrinkRequest) SetExternalUserId(v string) *ChatShrinkRequest {
 
 func (s *ChatShrinkRequest) SetInputShrink(v string) *ChatShrinkRequest {
 	s.InputShrink = &v
+	return s
+}
+
+func (s *ChatShrinkRequest) SetModel(v string) *ChatShrinkRequest {
+	s.Model = &v
+	return s
+}
+
+func (s *ChatShrinkRequest) SetResume(v bool) *ChatShrinkRequest {
+	s.Resume = &v
 	return s
 }
 
