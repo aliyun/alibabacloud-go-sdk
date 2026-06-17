@@ -36,7 +36,7 @@ type DescribeVpcFirewallDetailResponseBody struct {
 	//
 	// 2
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The connection type of the VPC firewall. The value is fixed as **expressconnect**, which indicates Express Connect circuits.
+	// The connection type of the VPC firewall. The value is fixed as **expressconnect**, which indicates Express Connect.
 	//
 	// example:
 	//
@@ -44,29 +44,29 @@ type DescribeVpcFirewallDetailResponseBody struct {
 	ConnectType *string `json:"ConnectType,omitempty" xml:"ConnectType,omitempty"`
 	// The status of the VPC firewall. Valid values:
 	//
-	// 	- **opened**: The VPC firewall is enabled.
+	// - **opened**: The firewall is enabled.
 	//
-	// 	- **closed**: The VPC firewall is disabled.
+	// - **closed**: The firewall is disabled.
 	//
-	// 	- **notconfigured**: The VPC firewall is not configured.
+	// - **notconfigured**: The firewall is not configured.
 	//
-	// 	- **configured**: The VPC firewall is configured.
+	// - **configured**: The firewall is configured.
 	//
 	// example:
 	//
 	// opened
 	FirewallSwitchStatus *string `json:"FirewallSwitchStatus,omitempty" xml:"FirewallSwitchStatus,omitempty"`
-	// The details about the local VPC.
+	// The details of the local VPC.
 	LocalVpc *DescribeVpcFirewallDetailResponseBodyLocalVpc `json:"LocalVpc,omitempty" xml:"LocalVpc,omitempty" type:"Struct"`
-	// The UID of the member that is managed by your Alibaba Cloud account.
+	// The UID of the Cloud Firewall member account.
 	//
 	// example:
 	//
 	// 258039427902****
 	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
-	// The details about the peer VPC.
+	// The details of the peer VPC.
 	PeerVpc *DescribeVpcFirewallDetailResponseBodyPeerVpc `json:"PeerVpc,omitempty" xml:"PeerVpc,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -82,7 +82,7 @@ type DescribeVpcFirewallDetailResponseBody struct {
 	//
 	// example:
 	//
-	// tf-test
+	// vpc-firewall-test
 	VpcFirewallName *string `json:"VpcFirewallName,omitempty" xml:"VpcFirewallName,omitempty"`
 }
 
@@ -190,13 +190,13 @@ func (s *DescribeVpcFirewallDetailResponseBody) Validate() error {
 }
 
 type DescribeVpcFirewallDetailResponseBodyLocalVpc struct {
-	// The ID of the ENI for the local VPC.
+	// The instance ID of the ENI in the local VPC.
 	//
 	// example:
 	//
 	// eni-8vbhfosfqv2rff42****
 	EniId *string `json:"EniId,omitempty" xml:"EniId,omitempty"`
-	// The private IP address of the elastic network interface (ENI) for the local VPC.
+	// The private IP address of the elastic network interface (ENI) in the local VPC.
 	//
 	// example:
 	//
@@ -208,25 +208,25 @@ type DescribeVpcFirewallDetailResponseBodyLocalVpc struct {
 	//
 	// cn-hangzhou
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	// The router interface ID of the local VPC.
+	// The ID of the router interface in the local VPC.
 	//
 	// example:
 	//
 	// vrt-m5eb5me6c3l5sezae****
 	RouterInterfaceId *string `json:"RouterInterfaceId,omitempty" xml:"RouterInterfaceId,omitempty"`
-	// The CIDR blocks of the local VPC.
+	// A list of CIDR blocks for the local VPC.
 	VpcCidrTableList []*DescribeVpcFirewallDetailResponseBodyLocalVpcVpcCidrTableList `json:"VpcCidrTableList,omitempty" xml:"VpcCidrTableList,omitempty" type:"Repeated"`
-	// The ID of the local VPC.
+	// The instance ID of the local VPC.
 	//
 	// example:
 	//
 	// vpc-8vbwbo90rq0anm6t****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The name of the local VPC.
+	// The instance name of the local VPC.
 	//
 	// example:
 	//
-	// Vitasoy
+	// vpc-test-instancel
 	VpcName *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
 }
 
@@ -315,7 +315,7 @@ func (s *DescribeVpcFirewallDetailResponseBodyLocalVpc) Validate() error {
 }
 
 type DescribeVpcFirewallDetailResponseBodyLocalVpcVpcCidrTableList struct {
-	// The route entries of the local VPC.
+	// A list of routes for the local VPC.
 	RouteEntryList []*DescribeVpcFirewallDetailResponseBodyLocalVpcVpcCidrTableListRouteEntryList `json:"RouteEntryList,omitempty" xml:"RouteEntryList,omitempty" type:"Repeated"`
 	// The ID of the route table for the local VPC.
 	//
@@ -371,7 +371,7 @@ type DescribeVpcFirewallDetailResponseBodyLocalVpcVpcCidrTableListRouteEntryList
 	//
 	// 192.168.XX.XX/24
 	DestinationCidr *string `json:"DestinationCidr,omitempty" xml:"DestinationCidr,omitempty"`
-	// The instance ID of the next hop for the local VPC.
+	// The ID of the next hop instance in the local VPC.
 	//
 	// example:
 	//
@@ -410,13 +410,13 @@ func (s *DescribeVpcFirewallDetailResponseBodyLocalVpcVpcCidrTableListRouteEntry
 }
 
 type DescribeVpcFirewallDetailResponseBodyPeerVpc struct {
-	// The ID of the ENI for the peer VPC.
+	// The instance ID of the ENI in the peer VPC.
 	//
 	// example:
 	//
 	// eni-8vbhfosfqv2rff42****
 	EniId *string `json:"EniId,omitempty" xml:"EniId,omitempty"`
-	// The private IP address of the ENI for the peer VPC.
+	// The private IP address of the ENI in the peer VPC.
 	//
 	// example:
 	//
@@ -428,25 +428,25 @@ type DescribeVpcFirewallDetailResponseBodyPeerVpc struct {
 	//
 	// cn-hangzhou
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	// The router interface ID of the peer VPC.
+	// The ID of the router interface in the peer VPC.
 	//
 	// example:
 	//
 	// vrt-m5eb5me6c3l5sezae****
 	RouterInterfaceId *string `json:"RouterInterfaceId,omitempty" xml:"RouterInterfaceId,omitempty"`
-	// The CIDR blocks of the peer VPC.
+	// A list of CIDR blocks for the peer VPC.
 	VpcCidrTableList []*DescribeVpcFirewallDetailResponseBodyPeerVpcVpcCidrTableList `json:"VpcCidrTableList,omitempty" xml:"VpcCidrTableList,omitempty" type:"Repeated"`
-	// The ID of the peer VPC.
+	// The instance ID of the peer VPC.
 	//
 	// example:
 	//
 	// vpc-90rq0anm6t8vbwbo****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The name of the peer VPC.
+	// The instance name of the peer VPC.
 	//
 	// example:
 	//
-	// zcy_prod
+	// test-vpc2
 	VpcName *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
 }
 
@@ -535,7 +535,7 @@ func (s *DescribeVpcFirewallDetailResponseBodyPeerVpc) Validate() error {
 }
 
 type DescribeVpcFirewallDetailResponseBodyPeerVpcVpcCidrTableList struct {
-	// The route entries of the peer VPC.
+	// A list of routes for the peer VPC.
 	RouteEntryList []*DescribeVpcFirewallDetailResponseBodyPeerVpcVpcCidrTableListRouteEntryList `json:"RouteEntryList,omitempty" xml:"RouteEntryList,omitempty" type:"Repeated"`
 	// The ID of the route table for the peer VPC.
 	//
@@ -591,7 +591,7 @@ type DescribeVpcFirewallDetailResponseBodyPeerVpcVpcCidrTableListRouteEntryList 
 	//
 	// 192.168.XX.XX/24
 	DestinationCidr *string `json:"DestinationCidr,omitempty" xml:"DestinationCidr,omitempty"`
-	// The instance ID of the next hop for the peer VPC.
+	// The ID of the next hop instance in the peer VPC.
 	//
 	// example:
 	//

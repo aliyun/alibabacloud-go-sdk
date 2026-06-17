@@ -14,6 +14,8 @@ type iDisableSdlProtectedAssetResponseBody interface {
 }
 
 type DisableSdlProtectedAssetResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// F93A490D-9E92-5AA4-BA79-600FFC09****

@@ -22,33 +22,35 @@ type iModifyNatFirewallControlPolicyPositionRequest interface {
 }
 
 type ModifyNatFirewallControlPolicyPositionRequest struct {
-	// The UUID of the access control policy.
+	// The unique ID of the access control policy.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 66961eea-e659-4225-84c9-9b6da76ec401
+	// 66461eea-e659-4225-84c9-*****
 	AclUuid *string `json:"AclUuid,omitempty" xml:"AclUuid,omitempty"`
-	// The direction of the traffic to which the access control policy applies.
+	// The traffic direction of the access control policy.
 	//
-	// 	- Set the value to **out**.
+	// Valid value:
+	//
+	// - **out**: outbound traffic.
 	//
 	// example:
 	//
 	// out
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	// The language of the content within the response. Valid values:
+	// The language of the response message. Valid values:
 	//
-	// 	- **zh**: Chinese (default)
+	// - **zh*	- (default): Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The ID of the NAT gateway.
+	// The ID of the NAT Gateway.
 	//
 	// This parameter is required.
 	//
@@ -56,11 +58,13 @@ type ModifyNatFirewallControlPolicyPositionRequest struct {
 	//
 	// ngw-xxxxxx
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
-	// The new priority of the IPv4 access control policy. You must specify a numeric value for this parameter. The value 1 indicates the highest priority. A larger value indicates a lower priority.
+	// The new priority for the IPv4 access control policy of the NAT firewall.
 	//
-	// > Make sure that the value of this parameter is within the priority range of existing IPv4 access control policies. Otherwise, an error occurs when you call this operation.
+	// Priorities are represented by numbers. A smaller number indicates a higher priority. The value 1 indicates the highest priority.
 	//
-	// Before you call this operation, we recommend that you call the DescribeNatFirewallPolicyPriorUsed operation to query the priority range of the IPv4 access control policies in the specified traffic direction.
+	// > The new priority must be within the range of existing priorities for IPv4 policies of the NAT firewall. Otherwise, the call fails.
+	//
+	// Before calling this operation, call the DescribeNatFirewallPolicyPriorUsed operation to query the priority range of existing IPv4 policies for the specified traffic direction of the NAT firewall.
 	//
 	// This parameter is required.
 	//

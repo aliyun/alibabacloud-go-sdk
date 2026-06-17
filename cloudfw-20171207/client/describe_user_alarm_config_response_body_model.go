@@ -17,21 +17,25 @@ type iDescribeUserAlarmConfigResponseBody interface {
 	GetContactConfig() []*DescribeUserAlarmConfigResponseBodyContactConfig
 	SetDefaultContact(v *DescribeUserAlarmConfigResponseBodyDefaultContact) *DescribeUserAlarmConfigResponseBody
 	GetDefaultContact() *DescribeUserAlarmConfigResponseBodyDefaultContact
-	SetNotifyConfig(v []*DescribeUserAlarmConfigResponseBodyNotifyConfig) *DescribeUserAlarmConfigResponseBody
-	GetNotifyConfig() []*DescribeUserAlarmConfigResponseBodyNotifyConfig
 	SetRequestId(v string) *DescribeUserAlarmConfigResponseBody
 	GetRequestId() *string
 }
 
 type DescribeUserAlarmConfigResponseBody struct {
+	// The alarm configuration.
 	AlarmConfig []*DescribeUserAlarmConfigResponseBodyAlarmConfig `json:"AlarmConfig,omitempty" xml:"AlarmConfig,omitempty" type:"Repeated"`
+	// The language of the alarm notifications.
+	//
 	// example:
 	//
 	// zh
-	AlarmLang      *string                                             `json:"AlarmLang,omitempty" xml:"AlarmLang,omitempty"`
-	ContactConfig  []*DescribeUserAlarmConfigResponseBodyContactConfig `json:"ContactConfig,omitempty" xml:"ContactConfig,omitempty" type:"Repeated"`
-	DefaultContact *DescribeUserAlarmConfigResponseBodyDefaultContact  `json:"DefaultContact,omitempty" xml:"DefaultContact,omitempty" type:"Struct"`
-	NotifyConfig   []*DescribeUserAlarmConfigResponseBodyNotifyConfig  `json:"NotifyConfig,omitempty" xml:"NotifyConfig,omitempty" type:"Repeated"`
+	AlarmLang *string `json:"AlarmLang,omitempty" xml:"AlarmLang,omitempty"`
+	// The contact information.
+	ContactConfig []*DescribeUserAlarmConfigResponseBodyContactConfig `json:"ContactConfig,omitempty" xml:"ContactConfig,omitempty" type:"Repeated"`
+	// Information about the default alarm contact.
+	DefaultContact *DescribeUserAlarmConfigResponseBodyDefaultContact `json:"DefaultContact,omitempty" xml:"DefaultContact,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 9D250177-4F11-58B8-9AFE-A4624FF1****
@@ -62,10 +66,6 @@ func (s *DescribeUserAlarmConfigResponseBody) GetDefaultContact() *DescribeUserA
 	return s.DefaultContact
 }
 
-func (s *DescribeUserAlarmConfigResponseBody) GetNotifyConfig() []*DescribeUserAlarmConfigResponseBodyNotifyConfig {
-	return s.NotifyConfig
-}
-
 func (s *DescribeUserAlarmConfigResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
@@ -87,11 +87,6 @@ func (s *DescribeUserAlarmConfigResponseBody) SetContactConfig(v []*DescribeUser
 
 func (s *DescribeUserAlarmConfigResponseBody) SetDefaultContact(v *DescribeUserAlarmConfigResponseBodyDefaultContact) *DescribeUserAlarmConfigResponseBody {
 	s.DefaultContact = v
-	return s
-}
-
-func (s *DescribeUserAlarmConfigResponseBody) SetNotifyConfig(v []*DescribeUserAlarmConfigResponseBodyNotifyConfig) *DescribeUserAlarmConfigResponseBody {
-	s.NotifyConfig = v
 	return s
 }
 
@@ -124,39 +119,42 @@ func (s *DescribeUserAlarmConfigResponseBody) Validate() error {
 			return err
 		}
 	}
-	if s.NotifyConfig != nil {
-		for _, item := range s.NotifyConfig {
-			if item != nil {
-				if err := item.Validate(); err != nil {
-					return err
-				}
-			}
-		}
-	}
 	return nil
 }
 
 type DescribeUserAlarmConfigResponseBodyAlarmConfig struct {
+	// The alarm threshold.
+	//
 	// example:
 	//
 	// 0
 	AlarmHour *int32 `json:"AlarmHour,omitempty" xml:"AlarmHour,omitempty"`
+	// The notification method.
+	//
 	// example:
 	//
 	// 1
 	AlarmNotify *int32 `json:"AlarmNotify,omitempty" xml:"AlarmNotify,omitempty"`
+	// The alarm period.
+	//
 	// example:
 	//
 	// 30
 	AlarmPeriod *int32 `json:"AlarmPeriod,omitempty" xml:"AlarmPeriod,omitempty"`
+	// The alarm type.
+	//
 	// example:
 	//
 	// bandwidth
 	AlarmType *string `json:"AlarmType,omitempty" xml:"AlarmType,omitempty"`
+	// The value that triggers the alarm.
+	//
 	// example:
 	//
 	// 80
 	AlarmValue *string `json:"AlarmValue,omitempty" xml:"AlarmValue,omitempty"`
+	// The alarm retry count.
+	//
 	// example:
 	//
 	// 0
@@ -230,15 +228,26 @@ func (s *DescribeUserAlarmConfigResponseBodyAlarmConfig) Validate() error {
 }
 
 type DescribeUserAlarmConfigResponseBodyContactConfig struct {
+	// The email address.
+	//
 	// example:
 	//
 	// 1530811****@qq.com
-	Email       *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// The mobile number.
+	//
+	// example:
+	//
+	// zhangsan
 	MobilePhone *string `json:"MobilePhone,omitempty" xml:"MobilePhone,omitempty"`
+	// The contact name.
+	//
 	// example:
 	//
 	// 1531123****
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The status of the contact. Valid values: **0*	- (Disabled) and **1*	- (Enabled).
+	//
 	// example:
 	//
 	// 1
@@ -294,15 +303,26 @@ func (s *DescribeUserAlarmConfigResponseBodyContactConfig) Validate() error {
 }
 
 type DescribeUserAlarmConfigResponseBodyDefaultContact struct {
+	// The email address of the default contact.
+	//
 	// example:
 	//
 	// 1530811****@qq.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// The mobile number of the default contact.
+	//
 	// example:
 	//
 	// 1531123****
 	MobilePhone *string `json:"MobilePhone,omitempty" xml:"MobilePhone,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the default contact.
+	//
+	// example:
+	//
+	// zhangsan
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The status. Valid values: **normal*	- (Normal) and **disable*	- (Disabled).
+	//
 	// example:
 	//
 	// 0
@@ -354,46 +374,5 @@ func (s *DescribeUserAlarmConfigResponseBodyDefaultContact) SetStatus(v string) 
 }
 
 func (s *DescribeUserAlarmConfigResponseBodyDefaultContact) Validate() error {
-	return dara.Validate(s)
-}
-
-type DescribeUserAlarmConfigResponseBodyNotifyConfig struct {
-	// example:
-	//
-	// mail
-	NotifyType *string `json:"NotifyType,omitempty" xml:"NotifyType,omitempty"`
-	// example:
-	//
-	// 0
-	NotifyValue *string `json:"NotifyValue,omitempty" xml:"NotifyValue,omitempty"`
-}
-
-func (s DescribeUserAlarmConfigResponseBodyNotifyConfig) String() string {
-	return dara.Prettify(s)
-}
-
-func (s DescribeUserAlarmConfigResponseBodyNotifyConfig) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeUserAlarmConfigResponseBodyNotifyConfig) GetNotifyType() *string {
-	return s.NotifyType
-}
-
-func (s *DescribeUserAlarmConfigResponseBodyNotifyConfig) GetNotifyValue() *string {
-	return s.NotifyValue
-}
-
-func (s *DescribeUserAlarmConfigResponseBodyNotifyConfig) SetNotifyType(v string) *DescribeUserAlarmConfigResponseBodyNotifyConfig {
-	s.NotifyType = &v
-	return s
-}
-
-func (s *DescribeUserAlarmConfigResponseBodyNotifyConfig) SetNotifyValue(v string) *DescribeUserAlarmConfigResponseBodyNotifyConfig {
-	s.NotifyValue = &v
-	return s
-}
-
-func (s *DescribeUserAlarmConfigResponseBodyNotifyConfig) Validate() error {
 	return dara.Validate(s)
 }

@@ -18,17 +18,17 @@ type iPutEnableAllFwSwitchRequest interface {
 }
 
 type PutEnableAllFwSwitchRequest struct {
-	// The instance ID of your Cloud Firewall.
+	// The ID of the Cloud Firewall instance.
 	//
 	// example:
 	//
 	// i-2ze8v2x5kd9qyvp2****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The language of the content within the request and response. Valid values:
+	// The language of the request and response. Valid values:
 	//
-	// 	- **zh**: Chinese (default)
+	// - **zh*	- (default): Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type PutEnableAllFwSwitchRequest struct {
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// Deprecated
 	//
-	// The source IP address of the request.
+	// The source IP address of the visitor.
 	//
 	// example:
 	//

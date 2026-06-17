@@ -24,32 +24,61 @@ type iDescribeAclAppsRequest interface {
 }
 
 type DescribeAclAppsRequest struct {
+	// The ACL type. Valid values:
+	//
+	// - **Internet**
+	//
+	// - **NAT**
+	//
+	// - **VPC**
+	//
+	// - **All**
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// VPC
 	AclType *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
+	// The language of the response. Valid values:
+	//
+	// - **zh*	- (default): Chinese
+	//
+	// - **en**: English
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The page number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The page size.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Specifies whether the application is common. Valid values:
+	//
+	// - **1**: common
+	//
+	// - **0**: not common
+	//
+	// - If you omit this parameter (the default), all applications are returned.
+	//
 	// example:
 	//
 	// 1
-	Popular   *int32    `json:"Popular,omitempty" xml:"Popular,omitempty"`
+	Popular *int32 `json:"Popular,omitempty" xml:"Popular,omitempty"`
+	// The list of protocol types.
 	Protocols []*string `json:"Protocols,omitempty" xml:"Protocols,omitempty" type:"Repeated"`
 }
 

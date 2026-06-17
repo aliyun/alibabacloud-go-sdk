@@ -18,16 +18,22 @@ type iUseAclBackupDataRequest interface {
 }
 
 type UseAclBackupDataRequest struct {
+	// The backup time. This value is a Unix timestamp in seconds. For example: 1672502400.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1743683400
 	BackUpTime *string `json:"BackUpTime,omitempty" xml:"BackUpTime,omitempty"`
+	// The language of the response.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The source IP address.
+	//
 	// example:
 	//
 	// 123.113.99.XXX

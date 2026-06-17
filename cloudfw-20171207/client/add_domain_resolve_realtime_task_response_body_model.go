@@ -14,6 +14,8 @@ type iAddDomainResolveRealtimeTaskResponseBody interface {
 }
 
 type AddDomainResolveRealtimeTaskResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 337A4DBA-8A01-5E9C-99CA-84293E13****

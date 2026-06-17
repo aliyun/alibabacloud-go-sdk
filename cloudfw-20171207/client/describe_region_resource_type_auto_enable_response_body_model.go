@@ -16,8 +16,9 @@ type iDescribeRegionResourceTypeAutoEnableResponseBody interface {
 }
 
 type DescribeRegionResourceTypeAutoEnableResponseBody struct {
+	// The automatic traffic redirection settings for asset types in the region.
 	RegionResourceAutoEnable map[string]map[string]interface{} `json:"RegionResourceAutoEnable,omitempty" xml:"RegionResourceAutoEnable,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//

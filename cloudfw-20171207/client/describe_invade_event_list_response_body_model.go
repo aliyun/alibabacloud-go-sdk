@@ -24,7 +24,7 @@ type iDescribeInvadeEventListResponseBody interface {
 }
 
 type DescribeInvadeEventListResponseBody struct {
-	// An array that consists of breach awareness events.
+	// The list of breach detection events.
 	EventList []*DescribeInvadeEventListResponseBodyEventList `json:"EventList,omitempty" xml:"EventList,omitempty" type:"Repeated"`
 	// The percentage of high-risk events.
 	//
@@ -46,7 +46,7 @@ type DescribeInvadeEventListResponseBody struct {
 	MiddleLevelPercent *int32 `json:"MiddleLevelPercent,omitempty" xml:"MiddleLevelPercent,omitempty"`
 	// The pagination information.
 	PageInfo *DescribeInvadeEventListResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -135,7 +135,7 @@ func (s *DescribeInvadeEventListResponseBody) Validate() error {
 }
 
 type DescribeInvadeEventListResponseBodyEventList struct {
-	// The ID of the affected asset.
+	// The instance ID of the affected asset.
 	//
 	// example:
 	//
@@ -149,83 +149,83 @@ type DescribeInvadeEventListResponseBodyEventList struct {
 	AssetsInstanceName *string `json:"AssetsInstanceName,omitempty" xml:"AssetsInstanceName,omitempty"`
 	// The type of the affected asset. Valid values:
 	//
-	// 	- **BastionHostIP**: the egress IP address of a bastion host
+	// - **BastionHostIP**: the egress IP address of a bastion host.
 	//
-	// 	- **BastionHostIngressIP**: the ingress IP address of a bastion host
+	// - **BastionHostIngressIP**: the ingress IP address of a bastion host.
 	//
-	// 	- **EcsEIP**: the elastic IP address (EIP) of an Elastic Compute Service (ECS) instance
+	// - **EcsEIP**: the EIP of an ECS instance.
 	//
-	// 	- **EcsPublicIP**: the public IP address of an ECS instance
+	// - **EcsPublicIP**: the public IP address of an ECS instance.
 	//
-	// 	- **EIP**: the EIP
+	// - **EIP**: an EIP.
 	//
-	// 	- **EniEIP**: the EIP of an elastic network interface (ENI)
+	// - **EniEIP**: the EIP of an ENI.
 	//
-	// 	- **NatEIP**: the EIP of a NAT gateway
+	// - **NatEIP**: the EIP of a NAT gateway.
 	//
-	// 	- **SlbEIP**: the EIP of a Server Load Balancer (SLB) instance
+	// - **SlbEIP**: the EIP of a CLB instance.
 	//
-	// 	- **SlbPublicIP**: the public IP address of an SLB instance
+	// - **SlbPublicIP**: the public IP address of a CLB instance.
 	//
-	// 	- **NatPublicIP**: the public IP address of a NAT gateway
+	// - **NatPublicIP**: the public IP address of a NAT gateway.
 	//
-	// 	- **HAVIP**: the high-availability virtual IP address (HAVIP)
+	// - **HAVIP**: an HAVIP.
 	//
 	// example:
 	//
 	// EcsPublicIp
 	AssetsType *string `json:"AssetsType,omitempty" xml:"AssetsType,omitempty"`
-	// The ID of the breach awareness event.
+	// The ID of the breach detection event.
 	//
 	// example:
 	//
 	// 69d189e2-ec17-4676-a2fe-02969234****
 	EventKey *string `json:"EventKey,omitempty" xml:"EventKey,omitempty"`
-	// The name of the breach awareness event.
+	// The name of the breach detection event.
 	//
 	// example:
 	//
 	// event_test
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
-	// The type of the breach awareness event. Valid values:
+	// The source of the breach detection event. Valid values:
 	//
-	// 	- **IPS**: intrusion prevention event
+	// - **IPS**: an intrusion prevention system event.
 	//
-	// 	- **offline**: disconnection event
+	// - **offline**: an offline event.
 	//
 	// example:
 	//
 	// IPS
 	EventSrc *string `json:"EventSrc,omitempty" xml:"EventSrc,omitempty"`
-	// The UUID of the breach awareness event.
+	// The UUID of the breach detection event.
 	//
 	// example:
 	//
 	// fadd-dfdd-****
 	EventUuid *string `json:"EventUuid,omitempty" xml:"EventUuid,omitempty"`
-	// The time when the breach awareness event first occurred. The value is a UNIX timestamp. Unit: seconds.
+	// The time when the breach detection event first occurred. This value is a UNIX timestamp. Unit: seconds.
 	//
 	// example:
 	//
 	// 1656750960
 	FirstTime *int32 `json:"FirstTime,omitempty" xml:"FirstTime,omitempty"`
-	// Indicates whether the breach awareness event is ignored. Valid values:
+	// Indicates whether the breach detection event is ignored. Valid values:
 	//
-	// 	- **true**: The breach awareness event is ignored.
+	// - **true**: The event is ignored.
 	//
-	// 	- **false**: The breach awareness event is not ignored.
+	// - **false**: The event is not ignored.
 	//
 	// example:
 	//
 	// true
 	IsIgnore *bool `json:"IsIgnore,omitempty" xml:"IsIgnore,omitempty"`
-	// The time when the breach awareness event last occurred. The value is a UNIX timestamp. Unit: seconds.
+	// The time when the breach detection event last occurred. This value is a UNIX timestamp. Unit: seconds.
 	//
 	// example:
 	//
 	// 1656837360
 	LastTime *int32 `json:"LastTime,omitempty" xml:"LastTime,omitempty"`
-	// The ID of the member.
+	// The UID of the member.
 	//
 	// example:
 	//
@@ -237,11 +237,11 @@ type DescribeInvadeEventListResponseBodyEventList struct {
 	//
 	// 192.168.XX.XX
 	PrivateIP *string `json:"PrivateIP,omitempty" xml:"PrivateIP,omitempty"`
-	// The handling status of the breach awareness event. Valid values:
+	// The handling status of the breach detection event. Valid values:
 	//
-	// 	- **0**: unhandled
+	// - **0**: pending
 	//
-	// 	- **20**: handled
+	// - **20**: handled
 	//
 	// example:
 	//
@@ -255,27 +255,27 @@ type DescribeInvadeEventListResponseBodyEventList struct {
 	PublicIP *string `json:"PublicIP,omitempty" xml:"PublicIP,omitempty"`
 	// The type of the affected asset. Valid values:
 	//
-	// 	- **BastionHostIP**: the egress IP address of a bastion host
+	// - **BastionHostIP**: the egress IP address of a bastion host.
 	//
-	// 	- **BastionHostIngressIP**: the ingress IP address of a bastion host
+	// - **BastionHostIngressIP**: the ingress IP address of a bastion host.
 	//
-	// 	- **EcsEIP**: the EIP of an ECS instance
+	// - **EcsEIP**: the EIP of an ECS instance.
 	//
-	// 	- **EcsPublicIP**: the public IP address of an ECS instance
+	// - **EcsPublicIP**: the public IP address of an ECS instance.
 	//
-	// 	- **EIP**: the EIP
+	// - **EIP**: an EIP.
 	//
-	// 	- **EniEIP**: the EIP of an ENI
+	// - **EniEIP**: the EIP of an ENI.
 	//
-	// 	- **NatEIP**: the EIP of a NAT gateway
+	// - **NatEIP**: the EIP of a NAT gateway.
 	//
-	// 	- **SlbEIP**: the EIP of an SLB instance
+	// - **SlbEIP**: the EIP of a CLB instance.
 	//
-	// 	- **SlbPublicIP**: the public IP address of an SLB instance
+	// - **SlbPublicIP**: the public IP address of a CLB instance.
 	//
-	// 	- **NatPublicIP**: the public IP address of a NAT gateway
+	// - **NatPublicIP**: the public IP address of a NAT gateway.
 	//
-	// 	- **HAVIP**: the HAVIP
+	// - **HAVIP**: an HAVIP.
 	//
 	// example:
 	//
@@ -283,11 +283,11 @@ type DescribeInvadeEventListResponseBodyEventList struct {
 	PublicIpType *string `json:"PublicIpType,omitempty" xml:"PublicIpType,omitempty"`
 	// The risk level. Valid values:
 	//
-	// 	- **1**: low
+	// - **1**: low
 	//
-	// 	- **2**: medium
+	// - **2**: medium
 	//
-	// 	- **3**: high
+	// - **3**: high
 	//
 	// example:
 	//
@@ -464,7 +464,7 @@ type DescribeInvadeEventListResponseBodyPageInfo struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of breach awareness events.
+	// The total number of breach detection events.
 	//
 	// example:
 	//

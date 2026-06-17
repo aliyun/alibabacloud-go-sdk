@@ -18,14 +18,20 @@ type iDescribeNatFirewallPrecheckDetailRequest interface {
 }
 
 type DescribeNatFirewallPrecheckDetailRequest struct {
+	// The language of the request and response messages.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The ID of the NAT Gateway.
+	//
 	// example:
 	//
 	// ngw-bp1okz6k7dge****
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou

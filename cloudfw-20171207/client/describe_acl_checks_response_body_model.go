@@ -16,7 +16,10 @@ type iDescribeAclChecksResponseBody interface {
 }
 
 type DescribeAclChecksResponseBody struct {
+	// The list of ACL check records.
 	CheckRecords *DescribeAclChecksResponseBodyCheckRecords `json:"CheckRecords,omitempty" xml:"CheckRecords,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 9AABB1B7-C81F-5158-9EF9-B2DD5D3D****
@@ -59,10 +62,13 @@ func (s *DescribeAclChecksResponseBody) Validate() error {
 }
 
 type DescribeAclChecksResponseBodyCheckRecords struct {
+	// The type of ACL check.
+	//
 	// example:
 	//
 	// Internet
-	AclType *string                                             `json:"AclType,omitempty" xml:"AclType,omitempty"`
+	AclType *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
+	// The list of ACL check records.
 	Records []*DescribeAclChecksResponseBodyCheckRecordsRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
 }
 
@@ -106,34 +112,50 @@ func (s *DescribeAclChecksResponseBodyCheckRecords) Validate() error {
 }
 
 type DescribeAclChecksResponseBodyCheckRecordsRecords struct {
+	// The number of pending ACL check tasks.
+	//
 	// example:
 	//
 	// 1
 	AclPendingCount *int64 `json:"AclPendingCount,omitempty" xml:"AclPendingCount,omitempty"`
+	// The total number of ACL checks.
+	//
 	// example:
 	//
 	// 10
 	AclTotalCount *int64 `json:"AclTotalCount,omitempty" xml:"AclTotalCount,omitempty"`
+	// The name of the ACL check.
+	//
 	// example:
 	//
 	// AddressBookDomainValid
 	CheckName *string `json:"CheckName,omitempty" xml:"CheckName,omitempty"`
+	// The status of the ACL check item.
+	//
 	// example:
 	//
 	// Checked
 	CheckStatus *string `json:"CheckStatus,omitempty" xml:"CheckStatus,omitempty"`
+	// The type of ACL check.
+	//
 	// example:
 	//
 	// AddressBookGather
 	CheckType *string `json:"CheckType,omitempty" xml:"CheckType,omitempty"`
+	// The UNIX timestamp of the last check, in seconds.
+	//
 	// example:
 	//
 	// 1724982259
 	LastCheckTime *string `json:"LastCheckTime,omitempty" xml:"LastCheckTime,omitempty"`
+	// The risk level.
+	//
 	// example:
 	//
 	// Medium
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The ID of the ACL check task.
+	//
 	// example:
 	//
 	// task-c92d4544ef7b6a42

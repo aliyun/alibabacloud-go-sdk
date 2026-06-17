@@ -26,30 +26,44 @@ type iDescribeInstanceRdAccountsRequest interface {
 }
 
 type DescribeInstanceRdAccountsRequest struct {
+	// The number of the page to return.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The language of the request and response.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The description of the member account.
+	//
 	// example:
 	//
 	// renewal
 	MemberDesc *string `json:"MemberDesc,omitempty" xml:"MemberDesc,omitempty"`
+	// The display name of the member account.
+	//
 	// example:
 	//
 	// cloudfirewall_2
 	MemberDisplayName *string `json:"MemberDisplayName,omitempty" xml:"MemberDisplayName,omitempty"`
+	// The UID of the member account.
+	//
 	// example:
 	//
 	// 258039427902****
 	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
+	// The number of the page to return.
+	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The source IP address of the request.
+	//
 	// example:
 	//
 	// 47.100.170.XXX

@@ -20,22 +20,30 @@ type iDescribeFirewallVswitchResourcesRequest interface {
 }
 
 type DescribeFirewallVswitchResourcesRequest struct {
+	// The type of the Cloud Firewall.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// internet
 	FirewallType *string `json:"FirewallType,omitempty" xml:"FirewallType,omitempty"`
+	// The language of the response message.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The region.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	// The ID of the VPC instance.
+	//
 	// This parameter is required.
 	//
 	// example:

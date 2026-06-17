@@ -20,18 +20,30 @@ type iCreateVpcFirewallTaskRequest interface {
 }
 
 type CreateVpcFirewallTaskRequest struct {
+	// The content of the task.
+	//
 	// example:
 	//
 	// test
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The language of the response message. Valid values:
+	//
+	// - **zh*	- (default): Chinese
+	//
+	// - **en**: English
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The priority of the rule.
+	//
 	// example:
 	//
 	// 1
 	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The name of the task.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -22,19 +22,28 @@ type iDescribeOutgoingRiskTrendResponseBody interface {
 }
 
 type DescribeOutgoingRiskTrendResponseBody struct {
+	// The list of returned data.
 	DataList []*DescribeOutgoingRiskTrendResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
+	// The time interval.
+	//
 	// example:
 	//
 	// 60
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 1CA8D98E-A71B-5856-A658-3E8B3152E****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of threat domain names.
+	//
 	// example:
 	//
 	// 7
 	TotalRiskDomain *int32 `json:"TotalRiskDomain,omitempty" xml:"TotalRiskDomain,omitempty"`
+	// The total number of threat IP addresses.
+	//
 	// example:
 	//
 	// 6
@@ -108,14 +117,20 @@ func (s *DescribeOutgoingRiskTrendResponseBody) Validate() error {
 }
 
 type DescribeOutgoingRiskTrendResponseBodyDataList struct {
+	// The number of threat domain names.
+	//
 	// example:
 	//
 	// 20
 	RiskDomain *int32 `json:"RiskDomain,omitempty" xml:"RiskDomain,omitempty"`
+	// The number of threat IP addresses.
+	//
 	// example:
 	//
 	// 5
 	RiskIp *int32 `json:"RiskIp,omitempty" xml:"RiskIp,omitempty"`
+	// The timestamp.
+	//
 	// example:
 	//
 	// 1659405600

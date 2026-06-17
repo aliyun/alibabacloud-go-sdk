@@ -22,25 +22,25 @@ type iDescribeVpcZoneRequest interface {
 type DescribeVpcZoneRequest struct {
 	// The environment. Valid values:
 	//
-	// 	- **VPC**
+	// - **VPC**: VPC
 	//
-	// 	- **TransitRouter**
+	// - **TransitRouter**: Transit Router
 	//
 	// example:
 	//
 	// VPC
 	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
-	// The language of the content within the request and response. Valid values:
+	// The language of the request and response. Valid values:
 	//
-	// 	- **zh*	- (default): Chinese
+	// - **zh*	- (default): Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The UID of the member in Cloud Firewall.
+	// The UID of the Cloud Firewall member account.
 	//
 	// example:
 	//

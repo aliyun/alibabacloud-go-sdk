@@ -26,19 +26,19 @@ type iModifyObjectGroupOperationRequest interface {
 }
 
 type ModifyObjectGroupOperationRequest struct {
-	// The remarks of the operation.
+	// The remarks for the operation.
 	//
 	// example:
 	//
 	// test
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The direction of the traffic to which the access control policy applies.
+	// The traffic direction that is controlled by the access control policy.
 	//
 	// Valid values:
 	//
-	// 	- **in**: inbound.
+	// - **in**: Inbound traffic.
 	//
-	// 	- **out**: outbound.
+	// - **out**: Outbound traffic.
 	//
 	// This parameter is required.
 	//
@@ -46,29 +46,29 @@ type ModifyObjectGroupOperationRequest struct {
 	//
 	// out
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	// The language of the content within the response. Valid values:
+	// The language of the response. Valid values:
 	//
-	// 	- **zh*	- (default)
+	// - **zh*	- (default): Chinese
 	//
-	// 	- **en**
+	// - **en**: English
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The operation objects.
+	// The list of objects.
 	//
 	// This parameter is required.
 	ObjectList []*string `json:"ObjectList,omitempty" xml:"ObjectList,omitempty" type:"Repeated"`
-	// The operation. Valid values:
+	// The operation to perform. Valid values:
 	//
-	// 	- **ignore**: adds the operation object to the whitelist.
+	// - **subscribe**: Follows the object.
 	//
-	// 	- **cancelIgnore**: removes the operation object from the whitelist.
+	// - **unsubscribe**: Unfollows the object.
 	//
-	// 	- **subscribe**: follows the operation object.
+	// - **ignore**: Adds the object to the whitelist.
 	//
-	// 	- **unsubscribe**: unfollows the operation object.
+	// - **cancelIgnore**: Removes the object from the whitelist.
 	//
 	// This parameter is required.
 	//
@@ -76,17 +76,17 @@ type ModifyObjectGroupOperationRequest struct {
 	//
 	// ignore
 	ObjectOperation *string `json:"ObjectOperation,omitempty" xml:"ObjectOperation,omitempty"`
-	// The type of the operation object.
+	// The type of object to add to the whitelist or follow.
 	//
 	// Valid values:
 	//
-	// 	- **assetsIp**: the asset IP address.
+	// - **assetsIp**: Asset IP address.
 	//
-	// 	- **destinationIp**: the destination IP address.
+	// - **destinationIp**: Destination IP address.
 	//
-	// 	- **destinationPort**: the destination port.
+	// - **destinationPort**: Destination port.
 	//
-	// 	- **destinationDomain**: the destination domain name.
+	// - **destinationDomain**: Destination domain name.
 	//
 	// This parameter is required.
 	//
@@ -94,7 +94,7 @@ type ModifyObjectGroupOperationRequest struct {
 	//
 	// destinationDomain
 	ObjectType *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
-	// The source IP address of the request.
+	// The source IP address of the visitor.
 	//
 	// example:
 	//

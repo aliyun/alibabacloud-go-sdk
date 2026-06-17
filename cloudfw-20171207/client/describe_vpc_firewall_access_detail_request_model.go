@@ -46,74 +46,138 @@ type iDescribeVpcFirewallAccessDetailRequest interface {
 }
 
 type DescribeVpcFirewallAccessDetailRequest struct {
+	// The IP address of the local asset.
+	//
 	// example:
 	//
 	// 192.0.XX.XX
 	AssetIP *string `json:"AssetIP,omitempty" xml:"AssetIP,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The traffic direction. Valid values:
+	//
+	// - **in**: inbound
+	//
+	// - **out**: outbound
+	//
+	// > If you do not specify this parameter, traffic in all directions is queried.
+	//
 	// example:
 	//
 	// in
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	// The end of the time range to query. This value is a UNIX timestamp that is accurate to the second.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1729042555
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The protocol type. Valid values:
+	//
+	// - **tcp**: TCP
+	//
+	// - **udp**: UDP
+	//
 	// example:
 	//
 	// tcp
 	IPProtocol *string `json:"IPProtocol,omitempty" xml:"IPProtocol,omitempty"`
+	// The language of the response. Valid values:
+	//
+	// - **zh*	- (default): Chinese
+	//
+	// - **en**: English
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The sort order. Valid values:
+	//
+	// - **asc**: ascending
+	//
+	// - **desc*	- (default): descending
+	//
 	// example:
 	//
 	// desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The IP address of the peer asset.
+	//
 	// example:
 	//
 	// 10.125.1.XX
 	PeerAssetIP *string `json:"PeerAssetIP,omitempty" xml:"PeerAssetIP,omitempty"`
+	// The instance ID of the peer asset.
+	//
 	// example:
 	//
 	// i-123451
 	PeerAssetInstanceId *string `json:"PeerAssetInstanceId,omitempty" xml:"PeerAssetInstanceId,omitempty"`
+	// The instance name of the peer asset.
+	//
 	// example:
 	//
 	// ecs22
 	PeerAssetInstanceName *string `json:"PeerAssetInstanceName,omitempty" xml:"PeerAssetInstanceName,omitempty"`
+	// The ID of the peer VPC.
+	//
 	// example:
 	//
 	// vpc-90rq0anm6t8vbwbo****
 	PeerVpcId *string `json:"PeerVpcId,omitempty" xml:"PeerVpcId,omitempty"`
+	// The port number.
+	//
 	// example:
 	//
 	// 80
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The risk level.
+	//
 	// example:
 	//
 	// 3
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The sorting criterion. Valid values are:
+	//
+	// - **InBytes**
+	//
+	// - **OutBytes**
+	//
+	// - **TotalBytes**
+	//
+	// - **InPackets**
+	//
+	// - **OutPackets**
+	//
+	// - **SessionCount**
+	//
 	// example:
 	//
 	// InBytes
 	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	// The start of the time range to query. This value is a UNIX timestamp that is accurate to the second.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1655778046
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The ID of the VPC.
+	//
 	// This parameter is required.
 	//
 	// example:

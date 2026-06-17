@@ -24,19 +24,19 @@ type DescribePostpayUserVpcStatusResponseBody struct {
 	//
 	// 7447795A-39AB-52CB-8F92-128DF******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the VPC Firewall feature. Valid values:
+	// The status of the VPC border firewall for Cloud Firewall. Valid values:
 	//
-	// 	- **open**: enabled
+	// - **open**: The firewall is enabled.
 	//
-	// 	- **init**: being enabled
+	// - **init**: The firewall is being enabled.
 	//
-	// 	- **closed**: disabled
+	// - **closed**: The firewall is disabled.
 	//
 	// example:
 	//
 	// open
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The number of days during which no asset is added to the VPC Firewall feature for protection. This parameter is valid only when the value of Status is open.
+	// The number of days that protection was disabled. This parameter is valid only when the firewall is enabled.
 	//
 	// example:
 	//

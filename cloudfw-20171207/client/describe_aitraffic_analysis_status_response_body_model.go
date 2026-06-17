@@ -16,10 +16,18 @@ type iDescribeAITrafficAnalysisStatusResponseBody interface {
 }
 
 type DescribeAITrafficAnalysisStatusResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 4E7F94C7-781F-5192-86CF-DB085****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The enabling status. Valid values:
+	//
+	// - **open**
+	//
+	// - **close**
+	//
 	// example:
 	//
 	// open

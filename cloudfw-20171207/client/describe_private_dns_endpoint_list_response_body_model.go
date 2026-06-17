@@ -22,19 +22,28 @@ type iDescribePrivateDnsEndpointListResponseBody interface {
 }
 
 type DescribePrivateDnsEndpointListResponseBody struct {
+	// A list of private instances.
 	AccessInstanceList []*DescribePrivateDnsEndpointListResponseBodyAccessInstanceList `json:"AccessInstanceList,omitempty" xml:"AccessInstanceList,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries to return on each page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 850A84D6-0DE4-4797-A1E8-00090****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 3
@@ -108,63 +117,118 @@ func (s *DescribePrivateDnsEndpointListResponseBody) Validate() error {
 }
 
 type DescribePrivateDnsEndpointListResponseBodyAccessInstanceList struct {
+	// The ID of the instance.
+	//
 	// example:
 	//
 	// 123
 	AccessInstanceId *string `json:"AccessInstanceId,omitempty" xml:"AccessInstanceId,omitempty"`
+	// The name of the private instance.
+	//
 	// example:
 	//
 	// test
 	AccessInstanceName *string `json:"AccessInstanceName,omitempty" xml:"AccessInstanceName,omitempty"`
+	// The UID of the Alibaba Cloud account that owns the Cloud Firewall.
+	//
 	// example:
 	//
 	// 1379490574415****
 	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// The number of domain names.
+	//
 	// example:
 	//
 	// 3
-	DomainNameCount *int64    `json:"DomainNameCount,omitempty" xml:"DomainNameCount,omitempty"`
-	FirewallType    []*string `json:"FirewallType,omitempty" xml:"FirewallType,omitempty" type:"Repeated"`
+	DomainNameCount *int64 `json:"DomainNameCount,omitempty" xml:"DomainNameCount,omitempty"`
+	// The type of Cloud Firewall. Valid values:
+	//
+	// - **internet**
+	//
+	// - **vpc**
+	//
+	// - **nat**
+	FirewallType []*string `json:"FirewallType,omitempty" xml:"FirewallType,omitempty" type:"Repeated"`
+	// The time when the instance was created. The value is a UNIX timestamp measured in seconds.
+	//
 	// example:
 	//
 	// 1715075765
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The IP protocol. Valid values:
+	//
+	// - **TCP**
+	//
+	// - **UDP**
+	//
 	// example:
 	//
 	// tcp
 	IpProtocol *int32 `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
+	// The UID of the Cloud Firewall member account.
+	//
 	// example:
 	//
 	// 1844802493****
 	MemberUid *int64 `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
+	// The port number.
+	//
 	// example:
 	//
 	// 443
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The primary DNS server.
+	//
 	// example:
 	//
 	// 1.1.1.1
 	PrimaryDns *string `json:"PrimaryDns,omitempty" xml:"PrimaryDns,omitempty"`
+	// The type of private DNS. Valid values:
+	//
+	// - **PrivateZone**
+	//
+	// - **Custom*	- (default)
+	//
 	// example:
 	//
 	// Custom
 	PrivateDnsType *string `json:"PrivateDnsType,omitempty" xml:"PrivateDnsType,omitempty"`
+	// The ID of the region where the instance resides.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	// The standby DNS server.
+	//
 	// example:
 	//
 	// 1.1.1.2
 	StandbyDns *string `json:"StandbyDns,omitempty" xml:"StandbyDns,omitempty"`
+	// The status of the instance. Valid values:
+	//
+	// - **creating**: The instance is being created.
+	//
+	// - **deleting**: The instance is being deleted.
+	//
+	// - **normal**: The instance is running as expected.
+	//
+	// - **updating**: The instance is being updated.
+	//
+	// - **abnormal**: The instance is in an abnormal state.
+	//
 	// example:
 	//
 	// normal
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The unique ID of the task.
+	//
 	// example:
 	//
 	// 123
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The ID of the VPC.
+	//
 	// example:
 	//
 	// vpc-2zelphbaourpun****

@@ -24,23 +24,34 @@ type iDescribeInvadeEcsTrendResponseBody interface {
 }
 
 type DescribeInvadeEcsTrendResponseBody struct {
+	// The data list.
 	DataList []*DescribeInvadeEcsTrendResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
+	// The end of the time range. This is a UNIX timestamp. Unit: seconds.
+	//
 	// example:
 	//
 	// 1736820365
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The time interval.
+	//
 	// example:
 	//
 	// 60
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The total number of compromised hosts.
+	//
 	// example:
 	//
 	// 2
 	InvadeEcsCount *int32 `json:"InvadeEcsCount,omitempty" xml:"InvadeEcsCount,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// F90E816D-BEE7-5BD6-95ED-474F54****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The start of the time range. This is a UNIX timestamp. Unit: seconds.
+	//
 	// example:
 	//
 	// 1742177725
@@ -123,10 +134,14 @@ func (s *DescribeInvadeEcsTrendResponseBody) Validate() error {
 }
 
 type DescribeInvadeEcsTrendResponseBodyDataList struct {
+	// The number of ECS instances.
+	//
 	// example:
 	//
 	// 27
 	EcsCount *int32 `json:"EcsCount,omitempty" xml:"EcsCount,omitempty"`
+	// The timestamp.
+	//
 	// example:
 	//
 	// 1659405600

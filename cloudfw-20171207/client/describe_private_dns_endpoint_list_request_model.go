@@ -30,35 +30,70 @@ type iDescribePrivateDnsEndpointListRequest interface {
 }
 
 type DescribePrivateDnsEndpointListRequest struct {
+	// The ID of the instance.
+	//
 	// example:
 	//
 	// pd-12345
-	AccessInstanceId   *string `json:"AccessInstanceId,omitempty" xml:"AccessInstanceId,omitempty"`
+	AccessInstanceId *string `json:"AccessInstanceId,omitempty" xml:"AccessInstanceId,omitempty"`
+	// The name of the private instance.
+	//
+	// example:
+	//
+	// test
 	AccessInstanceName *string `json:"AccessInstanceName,omitempty" xml:"AccessInstanceName,omitempty"`
+	// The type of Cloud Firewall. Valid values:
+	//
+	// - **internet**
+	//
+	// - **vpc**
+	//
+	// - **nat**
+	//
 	// example:
 	//
 	// vpc
 	FirewallType *string `json:"FirewallType,omitempty" xml:"FirewallType,omitempty"`
+	// The UID of the member account.
+	//
 	// example:
 	//
 	// 135809047715****
 	MemberUid *int64 `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of the page to return.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the region.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	// The status of the instance. Valid values:
+	//
+	// - **creating**: The instance is being created.
+	//
+	// - **deleting**: The instance is being deleted.
+	//
+	// - **normal**: The instance is running as expected.
+	//
+	// - **updating**: The instance is being updated.
+	//
 	// example:
 	//
 	// normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the VPC.
+	//
 	// example:
 	//
 	// vpc-8vbwbo90rq0anm6t****

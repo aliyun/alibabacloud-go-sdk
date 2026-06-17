@@ -16,10 +16,14 @@ type iCreateVpcFirewallPrecheckResponseBody interface {
 }
 
 type CreateVpcFirewallPrecheckResponseBody struct {
+	// The ID of the precheck task.
+	//
 	// example:
 	//
 	// 4197
 	PrecheckId *string `json:"PrecheckId,omitempty" xml:"PrecheckId,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// C5BE1AA4-934A-5085-89CC-9AD1CAC3****

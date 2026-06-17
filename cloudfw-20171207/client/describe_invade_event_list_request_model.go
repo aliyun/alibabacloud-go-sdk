@@ -50,13 +50,13 @@ type DescribeInvadeEventListRequest struct {
 	//
 	// 10.0.XX.XX
 	AssetsIP *string `json:"AssetsIP,omitempty" xml:"AssetsIP,omitempty"`
-	// The ID of the instance.
+	// The ID of the affected instance.
 	//
 	// example:
 	//
 	// ins_1321_asedb_****
 	AssetsInstanceId *string `json:"AssetsInstanceId,omitempty" xml:"AssetsInstanceId,omitempty"`
-	// The name of the instance.
+	// The name of the affected instance.
 	//
 	// example:
 	//
@@ -64,19 +64,19 @@ type DescribeInvadeEventListRequest struct {
 	AssetsInstanceName *string `json:"AssetsInstanceName,omitempty" xml:"AssetsInstanceName,omitempty"`
 	// The number of the page to return.
 	//
-	// Default value: 1.
+	// Default: 1.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds. If you do not specify this parameter, the query ends at the current time.
+	// The end of the time range to query. This must be a UNIX timestamp in seconds. If you omit this parameter, the query defaults to the current time.
 	//
 	// example:
 	//
 	// 1656837360
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the breach awareness event.
+	// A unique identifier for the breach awareness event.
 	//
 	// example:
 	//
@@ -88,59 +88,63 @@ type DescribeInvadeEventListRequest struct {
 	//
 	// event_test
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
-	// The UUID of the breach awareness event.
+	// The universally unique identifier (UUID) of the breach awareness event.
 	//
 	// example:
 	//
 	// fadd-dfdd-****
 	EventUuid *string `json:"EventUuid,omitempty" xml:"EventUuid,omitempty"`
-	// Specifies whether the breach awareness event is ignored. Valid values:
+	// Specifies whether to query for ignored breach awareness events. Valid values:
 	//
-	// 	- **true**: The breach awareness event is ignored.
+	// - **true**: Ignored.
 	//
-	// 	- **false**: The breach awareness event is not ignored.
+	// - **false**: Not ignored.
 	//
 	// example:
 	//
 	// true
 	IsIgnore *string `json:"IsIgnore,omitempty" xml:"IsIgnore,omitempty"`
-	// The language of the content within the response. Valid values:
+	// The language of the response. Valid values:
 	//
-	// 	- **zh**: Chinese (default)
+	// - **zh*	- (default): Chinese.
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The ID of the member.
+	// The UID of the member account.
 	//
 	// example:
 	//
 	// 135809047715****
 	MemberUid *int64 `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries to return per page.
 	//
-	// Default value: 6. Maximum value: 10.
+	// Default: 6. Maximum: 10.
 	//
 	// example:
 	//
 	// 1
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The handling status of breach awareness events.
+	// An array of processing statuses to filter events by. Only events with a status specified in this array are returned.
+	//
+	// example:
+	//
+	// 1358090477156271
 	ProcessStatusList []*int32 `json:"ProcessStatusList,omitempty" xml:"ProcessStatusList,omitempty" type:"Repeated"`
-	// The risk levels.
+	// An array of risk levels to filter events by. Only events with a risk level specified in this array are returned.
 	RiskLevel []*int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty" type:"Repeated"`
 	// Deprecated
 	//
-	// The source IP address of the request.
+	// The source IP address that initiated the event.
 	//
 	// example:
 	//
 	// 192.0.XX.XX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds. If you do not specify this parameter, the query starts from 30 days before the current time.
+	// The start of the time range to query. This must be a UNIX timestamp in seconds. If you omit this parameter, the query defaults to the last 30 days.
 	//
 	// example:
 	//

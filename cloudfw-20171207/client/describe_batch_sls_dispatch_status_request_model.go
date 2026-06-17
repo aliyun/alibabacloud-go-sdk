@@ -14,6 +14,8 @@ type iDescribeBatchSlsDispatchStatusRequest interface {
 }
 
 type DescribeBatchSlsDispatchStatusRequest struct {
+	// The language of the response message.
+	//
 	// example:
 	//
 	// zh

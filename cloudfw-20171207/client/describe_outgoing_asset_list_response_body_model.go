@@ -18,11 +18,16 @@ type iDescribeOutgoingAssetListResponseBody interface {
 }
 
 type DescribeOutgoingAssetListResponseBody struct {
+	// The list of assets.
 	AssetList []*DescribeOutgoingAssetListResponseBodyAssetList `json:"AssetList,omitempty" xml:"AssetList,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 7A515672-FAAE-584F-B51C-B2586E****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 2
@@ -78,71 +83,106 @@ func (s *DescribeOutgoingAssetListResponseBody) Validate() error {
 }
 
 type DescribeOutgoingAssetListResponseBodyAssetList struct {
+	// The ID of the asset instance.
+	//
 	// example:
 	//
 	// i-8vbcmllue4d94nto****
 	AssetInstanceId *string `json:"AssetInstanceId,omitempty" xml:"AssetInstanceId,omitempty"`
+	// The name of the asset instance.
+	//
 	// example:
 	//
 	// test
 	AssetInstanceName *string `json:"AssetInstanceName,omitempty" xml:"AssetInstanceName,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	AssetsRegion *string `json:"AssetsRegion,omitempty" xml:"AssetsRegion,omitempty"`
+	// The follow status.
+	//
 	// example:
 	//
 	// subscribe
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The inbound traffic, which is the response traffic. Unit: bytes.
+	//
 	// example:
 	//
 	// 244438.0
 	InBytes *int64 `json:"InBytes,omitempty" xml:"InBytes,omitempty"`
+	// The number of IPS hits.
+	//
 	// example:
 	//
 	// 12
 	IpsHitCnt *int64 `json:"IpsHitCnt,omitempty" xml:"IpsHitCnt,omitempty"`
+	// The ID of the NAT Gateway.
+	//
 	// example:
 	//
 	// ngw-bp1utx6wj4x9qu9tl****
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	// The name of the NAT Gateway.
+	//
 	// example:
 	//
 	// ngw-test
 	NatGatewayName *string `json:"NatGatewayName,omitempty" xml:"NatGatewayName,omitempty"`
+	// The outbound traffic, which is the request traffic. Unit: bytes.
+	//
 	// example:
 	//
 	// 100
 	OutBytes *int64 `json:"OutBytes,omitempty" xml:"OutBytes,omitempty"`
+	// The number of outbound domains.
+	//
 	// example:
 	//
 	// 10
 	OutgoingDomainCnt *int64 `json:"OutgoingDomainCnt,omitempty" xml:"OutgoingDomainCnt,omitempty"`
+	// The number of outbound destination IP addresses.
+	//
 	// example:
 	//
 	// 12
 	OutgoingDstIPCnt *int64 `json:"OutgoingDstIPCnt,omitempty" xml:"OutgoingDstIPCnt,omitempty"`
+	// The private IP address.
+	//
 	// example:
 	//
 	// 10.21.242XXX
-	PrivateIP     *string   `json:"PrivateIP,omitempty" xml:"PrivateIP,omitempty"`
+	PrivateIP *string `json:"PrivateIP,omitempty" xml:"PrivateIP,omitempty"`
+	// The list of private IP addresses.
 	PrivateIPList []*string `json:"PrivateIPList,omitempty" xml:"PrivateIPList,omitempty" type:"Repeated"`
+	// The public IP address.
+	//
 	// example:
 	//
 	// 47.96.181.XXX
 	PublicIP *string `json:"PublicIP,omitempty" xml:"PublicIP,omitempty"`
+	// The type of the public IP address of the asset.
+	//
 	// example:
 	//
 	// EcsPublicIP
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The security risk.
+	//
 	// example:
 	//
 	// risk
 	SecurityRisk *string `json:"SecurityRisk,omitempty" xml:"SecurityRisk,omitempty"`
+	// The number of sessions.
+	//
 	// example:
 	//
 	// 2
 	SessionCount *int64 `json:"SessionCount,omitempty" xml:"SessionCount,omitempty"`
+	// The total traffic.
+	//
 	// example:
 	//
 	// 12498767

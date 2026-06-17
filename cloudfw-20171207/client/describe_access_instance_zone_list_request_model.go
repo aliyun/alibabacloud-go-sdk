@@ -18,14 +18,20 @@ type iDescribeAccessInstanceZoneListRequest interface {
 }
 
 type DescribeAccessInstanceZoneListRequest struct {
+	// The type of the access instance.
+	//
 	// example:
 	//
 	// AckClusterConnector
 	AccessInstanceType *string `json:"AccessInstanceType,omitempty" xml:"AccessInstanceType,omitempty"`
+	// The language of the response.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The region of the access instance.
+	//
 	// example:
 	//
 	// cn-hangzhou

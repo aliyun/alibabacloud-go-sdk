@@ -24,7 +24,7 @@ type DescribeDownloadTaskResponseBody struct {
 	//
 	// 3F2BED13-F3D0-5984-80D6-D5F298CFEA88
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The tasks.
+	// The list of tasks.
 	Tasks []*DescribeDownloadTaskResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
 	// The total number of tasks.
 	//
@@ -83,13 +83,13 @@ func (s *DescribeDownloadTaskResponseBody) Validate() error {
 }
 
 type DescribeDownloadTaskResponseBodyTasks struct {
-	// The time when the task was created. The value is a UNIX timestamp. Unit: seconds.
+	// The time when the task was created. This is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1706595827
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the task expires. The value is a UNIX timestamp. Unit: seconds.
+	// The time when the task expires. This is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
@@ -101,7 +101,7 @@ type DescribeDownloadTaskResponseBodyTasks struct {
 	//
 	// 24.04KB
 	FileSize *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
-	// The URL of the OSS file.
+	// The URL of the Object Storage Service (OSS) file.
 	//
 	// example:
 	//
@@ -109,13 +109,13 @@ type DescribeDownloadTaskResponseBodyTasks struct {
 	FileURL *string `json:"FileURL,omitempty" xml:"FileURL,omitempty"`
 	// The status of the task. Valid values:
 	//
-	// 	- **finish**
+	// - **finish**: The task is complete.
 	//
-	// 	- **start**
+	// - **start**: The task has started.
 	//
-	// 	- **error**
+	// - **error**: The task failed.
 	//
-	// 	- **expire**: The task file is invalid and cannot be downloaded.
+	// - **expire**: The task has expired. The task file is no longer valid and cannot be downloaded.
 	//
 	// example:
 	//
@@ -131,7 +131,7 @@ type DescribeDownloadTaskResponseBodyTasks struct {
 	//
 	// example:
 	//
-	// Internet Boundary Firewall Assets - IPv4
+	// Internet Border Firewall Assets-IPv4
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 	// The type of the task.
 	//

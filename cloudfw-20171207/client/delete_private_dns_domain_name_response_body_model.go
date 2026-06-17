@@ -14,6 +14,8 @@ type iDeletePrivateDnsDomainNameResponseBody interface {
 }
 
 type DeletePrivateDnsDomainNameResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 850A84D6-0DE4-4797-A1E8-0009012****

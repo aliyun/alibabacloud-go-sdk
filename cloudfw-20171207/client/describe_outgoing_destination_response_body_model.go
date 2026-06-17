@@ -18,11 +18,16 @@ type iDescribeOutgoingDestinationResponseBody interface {
 }
 
 type DescribeOutgoingDestinationResponseBody struct {
+	// The information about the destination addresses.
 	DstList []*DescribeOutgoingDestinationResponseBodyDstList `json:"DstList,omitempty" xml:"DstList,omitempty" type:"Repeated"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// A2845BA9-1642-5B27-9F04-8014DD94****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 42
@@ -78,63 +83,92 @@ func (s *DescribeOutgoingDestinationResponseBody) Validate() error {
 }
 
 type DescribeOutgoingDestinationResponseBodyDstList struct {
+	// The recommended Access Control List (ACL) details.
+	//
 	// example:
 	//
 	// test
 	AclRecommendDetail *string `json:"AclRecommendDetail,omitempty" xml:"AclRecommendDetail,omitempty"`
+	// The policy status.
+	//
 	// example:
 	//
 	// Normal
 	AclStatus *string `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
+	// The business to which the domain name belongs.
+	//
 	// example:
 	//
 	// example.com
 	Business *string `json:"Business,omitempty" xml:"Business,omitempty"`
+	// The category ID.
+	//
 	// example:
 	//
 	// AliYun
 	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// The category name of the service.
+	//
 	// example:
 	//
 	// categor_test
 	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
+	// The destination domain name.
+	//
 	// example:
 	//
 	// example.com
 	DstDomain *string `json:"DstDomain,omitempty" xml:"DstDomain,omitempty"`
+	// The destination IP address.
+	//
 	// example:
 	//
 	// 101.6.15.XXX
 	DstIP *string `json:"DstIP,omitempty" xml:"DstIP,omitempty"`
+	// The destination type.
+	//
 	// example:
 	//
 	// domain
 	DstType *string `json:"DstType,omitempty" xml:"DstType,omitempty"`
+	// The group name.
+	//
 	// example:
 	//
 	// test
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// Indicates whether a recommended ACL exists.
+	//
 	// example:
 	//
 	// false
 	HasAclRecommend *bool `json:"HasAclRecommend,omitempty" xml:"HasAclRecommend,omitempty"`
+	// The inbound traffic. Unit: bytes.
+	//
 	// example:
 	//
 	// 0.0
 	InBytes *int64 `json:"InBytes,omitempty" xml:"InBytes,omitempty"`
+	// Indicates whether the destination is manually marked as normal.
+	//
 	// example:
 	//
 	// false
 	IsMarkNormal *bool `json:"IsMarkNormal,omitempty" xml:"IsMarkNormal,omitempty"`
+	// The outbound traffic. Unit: bytes.
+	//
 	// example:
 	//
 	// 0.0
 	OutBytes *int64 `json:"OutBytes,omitempty" xml:"OutBytes,omitempty"`
+	// The number of sessions.
+	//
 	// example:
 	//
 	// 10
-	SessionCount *int64                                                   `json:"SessionCount,omitempty" xml:"SessionCount,omitempty"`
-	TagList      []*DescribeOutgoingDestinationResponseBodyDstListTagList `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Repeated"`
+	SessionCount *int64 `json:"SessionCount,omitempty" xml:"SessionCount,omitempty"`
+	// The list of tags.
+	TagList []*DescribeOutgoingDestinationResponseBodyDstListTagList `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Repeated"`
 }
 
 func (s DescribeOutgoingDestinationResponseBodyDstList) String() string {
@@ -294,18 +328,26 @@ func (s *DescribeOutgoingDestinationResponseBodyDstList) Validate() error {
 }
 
 type DescribeOutgoingDestinationResponseBodyDstListTagList struct {
+	// The risk assessment level.
+	//
 	// example:
 	//
 	// 1
 	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The tag description.
+	//
 	// example:
 	//
 	// test
 	TagDescribe *string `json:"TagDescribe,omitempty" xml:"TagDescribe,omitempty"`
+	// The tag ID.
+	//
 	// example:
 	//
 	// FirstFlow
 	TagId *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
+	// The tag name.
+	//
 	// example:
 	//
 	// verify

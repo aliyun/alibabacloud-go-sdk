@@ -40,58 +40,104 @@ type iCreatePrivateDnsEndpointRequest interface {
 }
 
 type CreatePrivateDnsEndpointRequest struct {
+	// The name of the private instance.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	AccessInstanceName *string `json:"AccessInstanceName,omitempty" xml:"AccessInstanceName,omitempty"`
+	// The type of the Cloud Firewall. Valid values:
+	//
+	// - **internet**
+	//
+	// - **vpc**
+	//
+	// - **nat**
+	//
 	// This parameter is required.
 	FirewallType []*string `json:"FirewallType,omitempty" xml:"FirewallType,omitempty" type:"Repeated"`
+	// The IP protocol. Valid values:
+	//
+	// - **TCP**
+	//
+	// - **UDP**
+	//
 	// example:
 	//
 	// UDP
 	IpProtocol *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
+	// The UID of the member account.
+	//
 	// example:
 	//
 	// 258039427902****
 	MemberUid *int64 `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
+	// The port number.
+	//
 	// example:
 	//
 	// 80
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The primary DNS server.
+	//
 	// example:
 	//
 	// 1.1.1.1
 	PrimaryDns *string `json:"PrimaryDns,omitempty" xml:"PrimaryDns,omitempty"`
+	// The ID of the primary vSwitch.
+	//
 	// example:
 	//
 	// vsw-uf6b0dkyryer8******
 	PrimaryVSwitchId *string `json:"PrimaryVSwitchId,omitempty" xml:"PrimaryVSwitchId,omitempty"`
+	// The IP address of the primary vSwitch.
+	//
 	// example:
 	//
 	// 10.1.1.1
 	PrimaryVSwitchIp *string `json:"PrimaryVSwitchIp,omitempty" xml:"PrimaryVSwitchIp,omitempty"`
+	// The type of the private DNS. Valid values:
+	//
+	// - **PrivateZone**
+	//
+	// - **Custom*	- (default)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Custom
 	PrivateDnsType *string `json:"PrivateDnsType,omitempty" xml:"PrivateDnsType,omitempty"`
+	// The region ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	// The standby DNS server.
+	//
 	// example:
 	//
 	// 1.1.1.2
 	StandbyDns *string `json:"StandbyDns,omitempty" xml:"StandbyDns,omitempty"`
+	// The ID of the standby vSwitch.
+	//
 	// example:
 	//
 	// vsw-8vb6jk75wfcwn******
 	StandbyVSwitchId *string `json:"StandbyVSwitchId,omitempty" xml:"StandbyVSwitchId,omitempty"`
+	// The IP address of the standby vSwitch.
+	//
 	// example:
 	//
 	// 10.2.2.2
 	StandbyVSwitchIp *string `json:"StandbyVSwitchIp,omitempty" xml:"StandbyVSwitchIp,omitempty"`
+	// The ID of the VPC instance.
+	//
 	// This parameter is required.
 	//
 	// example:

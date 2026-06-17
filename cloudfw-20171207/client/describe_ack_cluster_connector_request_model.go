@@ -16,12 +16,18 @@ type iDescribeAckClusterConnectorRequest interface {
 }
 
 type DescribeAckClusterConnectorRequest struct {
+	// The ID of the ACK cluster connector. You can obtain the ID by calling the [DescribeAckClusterConnectors](~~DescribeAckClusterConnectors~~) operation to query a list of ACK cluster connectors.
+	//
+	// - [DescribeAckClusterConnectors](~~DescribeAckClusterConnectors~~): Queries a list of ACK cluster connectors.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ac-7c1bad6c3cc84c33baab
 	ConnectorId *string `json:"ConnectorId,omitempty" xml:"ConnectorId,omitempty"`
+	// The language of the error messages that are returned for the health check status of the ACK cluster connector.
+	//
 	// example:
 	//
 	// zh

@@ -20,18 +20,26 @@ type iDescribeOutgoingRiskDomainAndIpCountResponseBody interface {
 }
 
 type DescribeOutgoingRiskDomainAndIpCountResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// EE258AC0-6EDD-5929-AB47-165E9B54****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of risk domain names.
+	//
 	// example:
 	//
 	// 6
 	RiskDomainCount *int64 `json:"RiskDomainCount,omitempty" xml:"RiskDomainCount,omitempty"`
+	// The number of risk IP addresses.
+	//
 	// example:
 	//
 	// 47
 	RiskIpCount *int64 `json:"RiskIpCount,omitempty" xml:"RiskIpCount,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 6

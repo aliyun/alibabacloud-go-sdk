@@ -20,23 +20,23 @@ type iDescribeVpcFirewallDetailRequest interface {
 }
 
 type DescribeVpcFirewallDetailRequest struct {
-	// The natural language of the request and response. Valid values:
+	// The language of the request and response. Valid values:
 	//
-	// 	- **zh**: Chinese (default)
+	// - **zh*	- (default): Chinese.
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The ID of the local VPC.
+	// The instance ID of the local VPC.
 	//
 	// example:
 	//
 	// vpc-8vbwbo90rq0anm6t****
 	LocalVpcId *string `json:"LocalVpcId,omitempty" xml:"LocalVpcId,omitempty"`
-	// The ID of the peer VPC.
+	// The instance ID of the peer VPC.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type DescribeVpcFirewallDetailRequest struct {
 	PeerVpcId *string `json:"PeerVpcId,omitempty" xml:"PeerVpcId,omitempty"`
 	// The instance ID of the VPC firewall.
 	//
-	// >  You can call the [DescribeVpcFirewallList](https://help.aliyun.com/document_detail/342932.html) operation to query the instance IDs of VPC firewalls.
+	// > Call the [DescribeVpcFirewallList](https://help.aliyun.com/document_detail/342932.html) operation to query the instance ID of the VPC firewall.
 	//
 	// This parameter is required.
 	//

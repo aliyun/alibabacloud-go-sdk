@@ -18,14 +18,20 @@ type iDescribeSdlStatisticRequest interface {
 }
 
 type DescribeSdlStatisticRequest struct {
+	// The end time. The value is a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1748916368
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The language of the request and response.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The start time. The value is a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1656664560

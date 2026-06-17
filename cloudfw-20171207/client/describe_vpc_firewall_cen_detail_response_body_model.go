@@ -26,7 +26,7 @@ type iDescribeVpcFirewallCenDetailResponseBody interface {
 }
 
 type DescribeVpcFirewallCenDetailResponseBody struct {
-	// The connection type of the VPC firewall. The value is fixed as **cen**, which indicates CEN instances.
+	// The connection type of the VPC firewall. The value is fixed as **cen**, which indicates CEN.
 	//
 	// example:
 	//
@@ -34,19 +34,19 @@ type DescribeVpcFirewallCenDetailResponseBody struct {
 	ConnectType *string `json:"ConnectType,omitempty" xml:"ConnectType,omitempty"`
 	// The status of the VPC firewall. Valid values:
 	//
-	// 	- **opened**: enabled
+	// - **opened**: The firewall is enabled.
 	//
-	// 	- **closed**: disabled
+	// - **closed**: The firewall is disabled.
 	//
-	// 	- **notconfigured**: not configured
+	// - **notconfigured**: The firewall is not configured.
 	//
 	// example:
 	//
 	// opened
 	FirewallSwitchStatus *string `json:"FirewallSwitchStatus,omitempty" xml:"FirewallSwitchStatus,omitempty"`
-	// The firewall VPC.
+	// The VPC that is used by the firewall.
 	FirewallVpc *DescribeVpcFirewallCenDetailResponseBodyFirewallVpc `json:"FirewallVpc,omitempty" xml:"FirewallVpc,omitempty" type:"Struct"`
-	// The details about the VPC.
+	// The details of the VPC.
 	LocalVpc *DescribeVpcFirewallCenDetailResponseBodyLocalVpc `json:"LocalVpc,omitempty" xml:"LocalVpc,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -64,7 +64,7 @@ type DescribeVpcFirewallCenDetailResponseBody struct {
 	//
 	// example:
 	//
-	// Test firewall
+	// vpc-firewall-test
 	VpcFirewallName *string `json:"VpcFirewallName,omitempty" xml:"VpcFirewallName,omitempty"`
 }
 
@@ -154,17 +154,17 @@ func (s *DescribeVpcFirewallCenDetailResponseBody) Validate() error {
 }
 
 type DescribeVpcFirewallCenDetailResponseBodyFirewallVpc struct {
-	// Indicates whether you can specify a CIDR block when you create a VPC firewall for a Basic Edition transit router of a CEN instance. Valid values:
+	// Indicates whether you can specify a CIDR block for the firewall VPC when you create a VPC firewall for a Basic Edition transit router. Valid values:
 	//
-	// 	- **1**: yes
+	// - **1**: yes.
 	//
-	// 	- **0**: no
+	// - **0**: no.
 	//
 	// example:
 	//
 	// 0
 	AllowConfiguration *int32 `json:"AllowConfiguration,omitempty" xml:"AllowConfiguration,omitempty"`
-	// Firewall backup availability zone ID.
+	// The ID of the secondary zone for the firewall.
 	//
 	// example:
 	//
@@ -176,31 +176,31 @@ type DescribeVpcFirewallCenDetailResponseBodyFirewallVpc struct {
 	//
 	// 10.0.0.0/8
 	VpcCidr *string `json:"VpcCidr,omitempty" xml:"VpcCidr,omitempty"`
-	// The VPC ID.
+	// The VPC instance ID.
 	//
 	// example:
 	//
 	// vpc-bp1245k5oagy2bp74****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The CIDR block of the vSwitch.
+	// The CIDR block of the virtual switch.
 	//
 	// example:
 	//
 	// 10.0.0.1/24
 	VswitchCidr *string `json:"VswitchCidr,omitempty" xml:"VswitchCidr,omitempty"`
-	// The vSwitch ID.
+	// The virtual switch ID.
 	//
 	// example:
 	//
 	// vsw-bp1sqg9wms9wxcs1****
 	VswitchId *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
-	// The availability zone ID of the virtual switch.
+	// The zone ID of the virtual switch.
 	//
 	// example:
 	//
 	// cn-hangzhou-i
 	VswitchZoneId *string `json:"VswitchZoneId,omitempty" xml:"VswitchZoneId,omitempty"`
-	// The zone ID.
+	// The ID of the primary zone for the firewall.
 	//
 	// example:
 	//
@@ -293,29 +293,29 @@ func (s *DescribeVpcFirewallCenDetailResponseBodyFirewallVpc) Validate() error {
 }
 
 type DescribeVpcFirewallCenDetailResponseBodyLocalVpc struct {
-	// The ID of the connection between two network instances.
+	// The ID of the network instance connection.
 	//
 	// example:
 	//
 	// tr-attach-sxig7bye51fid5****
 	AttachmentId *string `json:"AttachmentId,omitempty" xml:"AttachmentId,omitempty"`
-	// The name of the connection between two network instances.
+	// The name of the network instance connection.
 	//
 	// example:
 	//
-	// Local test
+	// local-test
 	AttachmentName *string `json:"AttachmentName,omitempty" xml:"AttachmentName,omitempty"`
-	// An array consisting of the CIDR blocks that are protected by the VPC firewall.
+	// The list of CIDR blocks that are protected by the VPC firewall.
 	DefendCidrList []*string `json:"DefendCidrList,omitempty" xml:"DefendCidrList,omitempty" type:"Repeated"`
-	// The Elastic Network Interfaces (ENIs).
+	// The list of elastic network interfaces (ENIs).
 	EniList []*DescribeVpcFirewallCenDetailResponseBodyLocalVpcEniList `json:"EniList,omitempty" xml:"EniList,omitempty" type:"Repeated"`
-	// The ID of the specified vSwitch when the routing mode is manual.
+	// The ID of the vSwitch that is specified for the manual routing mode.
 	//
 	// example:
 	//
 	// vsw-zeq4o875u****
 	ManualVSwitchId *string `json:"ManualVSwitchId,omitempty" xml:"ManualVSwitchId,omitempty"`
-	// The ID of the VPC for which the VPC firewall is created.
+	// The ID of the VPC instance for which the VPC firewall is created.
 	//
 	// example:
 	//
@@ -325,7 +325,7 @@ type DescribeVpcFirewallCenDetailResponseBodyLocalVpc struct {
 	//
 	// example:
 	//
-	// Test VPC
+	// test-vpc
 	NetworkInstanceName *string `json:"NetworkInstanceName,omitempty" xml:"NetworkInstanceName,omitempty"`
 	// The type of the network instance. The value is fixed as **VPC**.
 	//
@@ -339,7 +339,7 @@ type DescribeVpcFirewallCenDetailResponseBodyLocalVpc struct {
 	//
 	// 158039427902****
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region in which the VPC resides.
+	// The region ID of the VPC.
 	//
 	// example:
 	//
@@ -347,9 +347,9 @@ type DescribeVpcFirewallCenDetailResponseBodyLocalVpc struct {
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
 	// The routing mode. Valid values:
 	//
-	// 	- auto: automatic mode
+	// - auto: automatic mode.
 	//
-	// 	- manual: manual mode
+	// - manual: manual mode.
 	//
 	// example:
 	//
@@ -357,9 +357,9 @@ type DescribeVpcFirewallCenDetailResponseBodyLocalVpc struct {
 	RouteMode *string `json:"RouteMode,omitempty" xml:"RouteMode,omitempty"`
 	// Indicates whether the manual routing mode is supported. Valid values:
 	//
-	// 	- **1**: yes
+	// - **1**: yes.
 	//
-	// 	- **0**: no
+	// - **0**: no.
 	//
 	// example:
 	//
@@ -373,27 +373,27 @@ type DescribeVpcFirewallCenDetailResponseBodyLocalVpc struct {
 	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
 	// The edition of the CEN transit router. Valid values:
 	//
-	// 	- **Basic**: Basic Edition
+	// - **Basic**: Basic Edition.
 	//
-	// 	- **Enterprise**: Enterprise Edition
+	// - **Enterprise**: Enterprise Edition.
 	//
 	// example:
 	//
 	// Basic
 	TransitRouterType *string `json:"TransitRouterType,omitempty" xml:"TransitRouterType,omitempty"`
-	// An array that consists of the CIDR blocks of the VPC.
+	// The list of CIDR blocks for the VPC.
 	VpcCidrTableList []*DescribeVpcFirewallCenDetailResponseBodyLocalVpcVpcCidrTableList `json:"VpcCidrTableList,omitempty" xml:"VpcCidrTableList,omitempty" type:"Repeated"`
-	// The ID of the VPC.
+	// The instance ID of the VPC.
 	//
 	// example:
 	//
 	// vpc-8vbwbo90rq0anm6t****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The name of the VPC.
+	// The instance name of the VPC.
 	//
 	// example:
 	//
-	// Test instance
+	// vpc-firewall-test
 	VpcName *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
 }
 
@@ -581,19 +581,19 @@ func (s *DescribeVpcFirewallCenDetailResponseBodyLocalVpc) Validate() error {
 }
 
 type DescribeVpcFirewallCenDetailResponseBodyLocalVpcEniList struct {
-	// The ID of the ENI that belongs to the VPC.
+	// The instance ID of the ENI in the VPC.
 	//
 	// example:
 	//
 	// eni-8vbhfosfqv2rff42****
 	EniId *string `json:"EniId,omitempty" xml:"EniId,omitempty"`
-	// The private IP address of the ENI that belongs to the VPC.
+	// The private IP address of the ENI in the VPC.
 	//
 	// example:
 	//
 	// 192.168.XX.XX
 	EniPrivateIpAddress *string `json:"EniPrivateIpAddress,omitempty" xml:"EniPrivateIpAddress,omitempty"`
-	// The ID of the vSwitch to which the ENI is connected.
+	// The ID of the vSwitch for the ENI in the VPC.
 	//
 	// example:
 	//
@@ -641,9 +641,9 @@ func (s *DescribeVpcFirewallCenDetailResponseBodyLocalVpcEniList) Validate() err
 }
 
 type DescribeVpcFirewallCenDetailResponseBodyLocalVpcVpcCidrTableList struct {
-	// The route entries for the VPC.
+	// The list of route entries for the VPC.
 	RouteEntryList []*DescribeVpcFirewallCenDetailResponseBodyLocalVpcVpcCidrTableListRouteEntryList `json:"RouteEntryList,omitempty" xml:"RouteEntryList,omitempty" type:"Repeated"`
-	// The route table ID of the VPC.
+	// The ID of the route table for the VPC.
 	//
 	// example:
 	//
@@ -697,7 +697,7 @@ type DescribeVpcFirewallCenDetailResponseBodyLocalVpcVpcCidrTableListRouteEntryL
 	//
 	// 192.168.XX.XX/24
 	DestinationCidr *string `json:"DestinationCidr,omitempty" xml:"DestinationCidr,omitempty"`
-	// The instance ID of the next hop for the VPC.
+	// The ID of the next hop instance in the VPC.
 	//
 	// example:
 	//

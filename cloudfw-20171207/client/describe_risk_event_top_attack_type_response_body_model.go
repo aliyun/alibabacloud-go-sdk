@@ -20,15 +20,22 @@ type iDescribeRiskEventTopAttackTypeResponseBody interface {
 }
 
 type DescribeRiskEventTopAttackTypeResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// BECDBF66-91DA-5B40-8B05-0D26541A****
-	RequestId         *string                                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// A list of the top attack types.
 	TopAttackTypeList []*DescribeRiskEventTopAttackTypeResponseBodyTopAttackTypeList `json:"TopAttackTypeList,omitempty" xml:"TopAttackTypeList,omitempty" type:"Repeated"`
+	// The total number of attacks.
+	//
 	// example:
 	//
 	// 47
 	TotalAttackCnt *int64 `json:"TotalAttackCnt,omitempty" xml:"TotalAttackCnt,omitempty"`
+	// The total number of protection triggers.
+	//
 	// example:
 	//
 	// 65
@@ -93,14 +100,48 @@ func (s *DescribeRiskEventTopAttackTypeResponseBody) Validate() error {
 }
 
 type DescribeRiskEventTopAttackTypeResponseBodyTopAttackTypeList struct {
+	// The number of attacks.
+	//
 	// example:
 	//
 	// 38
 	AttackCnt *int64 `json:"AttackCnt,omitempty" xml:"AttackCnt,omitempty"`
+	// The attack type of the intrusion prevention event. Valid values:
+	//
+	// - **1**: abnormal connection
+	//
+	// - **2**: command execution
+	//
+	// - **3**: brute-force attack
+	//
+	// - **4**: scan
+	//
+	// - **5**: other
+	//
+	// - **6**: information leakage
+	//
+	// - **7**: DoS attack
+	//
+	// - **8**: overflow attack
+	//
+	// - **9**: web attack
+	//
+	// - **10**: trojan and backdoor
+	//
+	// - **11**: virus and worm
+	//
+	// - **12**: cryptomining
+	//
+	// - **13**: reverse shell
+	//
+	// > By default, this API queries for all attack types.
+	//
 	// example:
 	//
 	// 2
 	AttackType *int64 `json:"AttackType,omitempty" xml:"AttackType,omitempty"`
+	// The number of protection triggers.
+	//
 	// example:
 	//
 	// 42

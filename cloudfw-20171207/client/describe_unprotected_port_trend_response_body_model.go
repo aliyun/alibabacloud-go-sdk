@@ -18,11 +18,16 @@ type iDescribeUnprotectedPortTrendResponseBody interface {
 }
 
 type DescribeUnprotectedPortTrendResponseBody struct {
+	// The list of data.
 	DataList []*DescribeUnprotectedPortTrendResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
+	// The time interval.
+	//
 	// example:
 	//
 	// 60
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// E599A84E-CD22-5E42-A2A9-01A254AC****
@@ -78,10 +83,14 @@ func (s *DescribeUnprotectedPortTrendResponseBody) Validate() error {
 }
 
 type DescribeUnprotectedPortTrendResponseBodyDataList struct {
+	// The number of blocks.
+	//
 	// example:
 	//
 	// 1
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The timestamp.
+	//
 	// example:
 	//
 	// 1659405600

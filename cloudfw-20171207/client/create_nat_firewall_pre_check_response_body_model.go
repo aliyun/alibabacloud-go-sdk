@@ -16,10 +16,14 @@ type iCreateNatFirewallPreCheckResponseBody interface {
 }
 
 type CreateNatFirewallPreCheckResponseBody struct {
+	// The ID of the precheck.
+	//
 	// example:
 	//
 	// 2122
 	PreCheckId *string `json:"PreCheckId,omitempty" xml:"PreCheckId,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// A426611F-04FA-5205-8D04-4F6DCF09****

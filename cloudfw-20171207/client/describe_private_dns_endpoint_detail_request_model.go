@@ -16,12 +16,16 @@ type iDescribePrivateDnsEndpointDetailRequest interface {
 }
 
 type DescribePrivateDnsEndpointDetailRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pd-12345
 	AccessInstanceId *string `json:"AccessInstanceId,omitempty" xml:"AccessInstanceId,omitempty"`
+	// The ID of the region where the instance is located.
+	//
 	// This parameter is required.
 	//
 	// example:

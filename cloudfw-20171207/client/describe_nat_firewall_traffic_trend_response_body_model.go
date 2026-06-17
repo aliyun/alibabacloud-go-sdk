@@ -22,27 +22,27 @@ type iDescribeNatFirewallTrafficTrendResponseBody interface {
 }
 
 type DescribeNatFirewallTrafficTrendResponseBody struct {
-	// The statistics on traffic.
+	// A list of traffic statistics.
 	DataList []*DescribeNatFirewallTrafficTrendResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
-	// The maximum inbound network throughput, which indicates the maximum number of bits that are sent inbound per second. Unit: bit/s.
+	// The peak inbound network throughput. Unit: bps.
 	//
 	// example:
 	//
 	// 18038632
 	MaxInBps *int64 `json:"MaxInBps,omitempty" xml:"MaxInBps,omitempty"`
-	// The maximum outbound network throughput, which indicates the maximum number of bits that are sent outbound per second. Unit: bit/s.
+	// The peak outbound network throughput. Unit: bps.
 	//
 	// example:
 	//
 	// 122596487
 	MaxOutBps *int64 `json:"MaxOutBps,omitempty" xml:"MaxOutBps,omitempty"`
-	// The total maximum inbound and outbound network throughput, which indicates the maximum number of bits that are sent inbound and outbound per second. Unit: bit/s.
+	// The peak total network throughput for inbound and outbound traffic. Unit: bps.
 	//
 	// example:
 	//
 	// 66953194
 	MaxTotalBps *int64 `json:"MaxTotalBps,omitempty" xml:"MaxTotalBps,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -117,25 +117,25 @@ func (s *DescribeNatFirewallTrafficTrendResponseBody) Validate() error {
 }
 
 type DescribeNatFirewallTrafficTrendResponseBodyDataList struct {
-	// The maximum inbound network throughput, which indicates the maximum number of bits that are sent inbound per second. Unit: bit/s.
+	// The peak inbound network throughput. Unit: bps.
 	//
 	// example:
 	//
 	// 18038632
 	MaxInBps *int64 `json:"MaxInBps,omitempty" xml:"MaxInBps,omitempty"`
-	// The maximum outbound network throughput, which indicates the maximum number of bits that are sent outbound per second. Unit: bit/s.
+	// The peak outbound network throughput. Unit: bps.
 	//
 	// example:
 	//
 	// 122596487
 	MaxOutBps *int64 `json:"MaxOutBps,omitempty" xml:"MaxOutBps,omitempty"`
-	// The total maximum inbound and outbound network throughput, which indicates the maximum number of bits that are sent inbound and outbound per second. Unit: bit/s.
+	// The peak total network throughput for inbound and outbound traffic. Unit: bps.
 	//
 	// example:
 	//
 	// 66953194
 	MaxTotalBps *int64 `json:"MaxTotalBps,omitempty" xml:"MaxTotalBps,omitempty"`
-	// The time range to query. The value is a UNIX timestamp. Unit: seconds.
+	// The time of the query. This value is a UNIX timestamp. Unit: seconds.
 	//
 	// example:
 	//

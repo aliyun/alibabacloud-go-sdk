@@ -18,23 +18,23 @@ type iDeleteFirewallV2RoutePoliciesRequest interface {
 }
 
 type DeleteFirewallV2RoutePoliciesRequest struct {
-	// The instance ID of the VPC firewall.
+	// The ID of the VPC firewall instance.
 	//
 	// example:
 	//
 	// vfw-tr-d5ba592ac6c84aff****
 	FirewallId *string `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
-	// The language of the content within the response. Valid values:
+	// The language of the response message. Valid values:
 	//
-	// 	- **zh*	- (default): Chinese
+	// - **zh*	- (default): Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The ID of the routing policy.
+	// The ID of the firewall routing policy.
 	//
 	// example:
 	//

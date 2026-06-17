@@ -14,6 +14,8 @@ type iModifyCfwInstanceResponseBody interface {
 }
 
 type ModifyCfwInstanceResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// F0F82705-CFC7-5F83-86C8-A063892F****

@@ -22,25 +22,25 @@ type iDescribeInstanceMembersRequest interface {
 }
 
 type DescribeInstanceMembersRequest struct {
-	// The page number. Default value: **1**.
+	// The page number. The default value is **1**.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The remarks of the member. The remarks must be 1 to 256 characters in length.
+	// The description of the Cloud Firewall member account. The description must be 1 to 256 characters in length.
 	//
 	// example:
 	//
 	// renewal
 	MemberDesc *string `json:"MemberDesc,omitempty" xml:"MemberDesc,omitempty"`
-	// The name of the member.
+	// The name of the Cloud Firewall member account.
 	//
 	// example:
 	//
 	// cloudfirewall_2
 	MemberDisplayName *string `json:"MemberDisplayName,omitempty" xml:"MemberDisplayName,omitempty"`
-	// The UID of the member.
+	// The UID of the Cloud Firewall member account.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type DescribeInstanceMembersRequest struct {
 	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
 	// The number of entries per page.
 	//
-	// Default value: **20**.
+	// The default value is **20**.
 	//
 	// example:
 	//

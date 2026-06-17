@@ -24,32 +24,44 @@ type iModifyIpsRulesRequest interface {
 }
 
 type ModifyIpsRulesRequest struct {
+	// The type of the Cloud Firewall.
+	//
 	// example:
 	//
 	// VpcFirewall
 	FirewallType *string `json:"FirewallType,omitempty" xml:"FirewallType,omitempty"`
+	// The language of the request and response.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The action of the rule.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// alert
 	RuleAction *string `json:"RuleAction,omitempty" xml:"RuleAction,omitempty"`
+	// The type of the rule.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// basicRule
 	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	// The list of rules.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// [\\"4664138c-4f81-4650-9c8d-2230ea0d****\\"]
 	Rules *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
+	// The source IP address of the request.
+	//
 	// example:
 	//
 	// 218.1.147.XXX

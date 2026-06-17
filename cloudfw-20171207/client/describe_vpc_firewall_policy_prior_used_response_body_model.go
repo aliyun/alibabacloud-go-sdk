@@ -18,19 +18,19 @@ type iDescribeVpcFirewallPolicyPriorUsedResponseBody interface {
 }
 
 type DescribeVpcFirewallPolicyPriorUsedResponseBody struct {
-	// The lowest priority for the access control policies.
+	// The lowest priority of the policies.
 	//
 	// example:
 	//
 	// 150
 	End *int32 `json:"End,omitempty" xml:"End,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// CBF1E9B7-D6A0-4E9E-AD3E-2B47E6C2837D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The highest priority for the access control policies.
+	// The highest priority of the policies.
 	//
 	// example:
 	//

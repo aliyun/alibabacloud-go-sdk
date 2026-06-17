@@ -20,20 +20,28 @@ type iModifyUserSlsLogStorageTimeRequest interface {
 }
 
 type ModifyUserSlsLogStorageTimeRequest struct {
+	// The ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// vipcloudfw-cn-uqm3fz****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The log version.
+	//
 	// example:
 	//
 	// 1
 	LogVersion *int32 `json:"LogVersion,omitempty" xml:"LogVersion,omitempty"`
+	// The region ID of Log Service (SLS).
+	//
 	// example:
 	//
 	// ap-southeast-1
 	SlsRegionId *string `json:"SlsRegionId,omitempty" xml:"SlsRegionId,omitempty"`
+	// The retention period, in days.
+	//
 	// This parameter is required.
 	//
 	// example:

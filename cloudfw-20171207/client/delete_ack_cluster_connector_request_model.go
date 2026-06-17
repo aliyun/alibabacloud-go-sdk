@@ -14,6 +14,8 @@ type iDeleteAckClusterConnectorRequest interface {
 }
 
 type DeleteAckClusterConnectorRequest struct {
+	// The ID of the ACK cluster connector.
+	//
 	// This parameter is required.
 	//
 	// example:

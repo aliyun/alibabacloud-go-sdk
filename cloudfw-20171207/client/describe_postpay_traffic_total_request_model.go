@@ -14,11 +14,11 @@ type iDescribePostpayTrafficTotalRequest interface {
 }
 
 type DescribePostpayTrafficTotalRequest struct {
-	// The language of the content within the response. Valid values:
+	// The language of the response. Valid values:
 	//
-	// 	- **zh*	- (default): Chinese
+	// - **zh*	- (default): Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//

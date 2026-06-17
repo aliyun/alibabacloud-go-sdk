@@ -20,15 +20,22 @@ type iDescribeNatFirewallDropTrafficTrendResponseBody interface {
 }
 
 type DescribeNatFirewallDropTrafficTrendResponseBody struct {
+	// The list of data for the Overview page.
 	DataList []*DescribeNatFirewallDropTrafficTrendResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
+	// The peak number of dropped sessions for the specified period.
+	//
 	// example:
 	//
 	// 62436
 	DropSessionMax *int64 `json:"DropSessionMax,omitempty" xml:"DropSessionMax,omitempty"`
+	// The timestamp that corresponds to the peak number of dropped sessions. The value is a UNIX timestamp. Unit: seconds.
+	//
 	// example:
 	//
 	// 1525662720
 	DropSessionMaxTime *string `json:"DropSessionMaxTime,omitempty" xml:"DropSessionMaxTime,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// F0F82705-CFC7-5F83-86C8-A063892F****
@@ -93,14 +100,20 @@ func (s *DescribeNatFirewallDropTrafficTrendResponseBody) Validate() error {
 }
 
 type DescribeNatFirewallDropTrafficTrendResponseBodyDataList struct {
+	// The number of blocked sessions.
+	//
 	// example:
 	//
 	// 10
 	DropSession *int64 `json:"DropSession,omitempty" xml:"DropSession,omitempty"`
+	// The data timestamp. The value is a UNIX timestamp. Unit: seconds.
+	//
 	// example:
 	//
 	// 1659405600
 	Time *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
+	// The total number of requests.
+	//
 	// example:
 	//
 	// 153188

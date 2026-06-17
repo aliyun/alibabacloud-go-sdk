@@ -18,11 +18,11 @@ type iDescribeInternetOpenIpResponseBody interface {
 }
 
 type DescribeInternetOpenIpResponseBody struct {
-	// The data returned.
+	// The list of returned data.
 	DataList []*DescribeInternetOpenIpResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
 	// The pagination information.
 	PageInfo *DescribeInternetOpenIpResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -84,15 +84,15 @@ func (s *DescribeInternetOpenIpResponseBody) Validate() error {
 }
 
 type DescribeInternetOpenIpResponseBodyDataList struct {
-	// The reason why recommended intelligent policies are unavailable. Valid values:
+	// The reason why no intelligent policy is recommended. Valid values:
 	//
-	// 	- No recommended intelligent policies are available.
+	// - No intelligent policy is recommended.
 	//
-	// 	- This feature is available only to some users.
+	// - This feature is available only to specific users.
 	//
-	// 	- The policy configuration has been modified. No recommended intelligent policies are available.
+	// - The policy configuration has been modified. No intelligent policy is recommended.
 	//
-	// 	- The recommended intelligent policies have been configured. No new recommended intelligent policies are available.
+	// - An intelligent policy has been configured. No new intelligent policy is recommended.
 	//
 	// example:
 	//
@@ -116,35 +116,35 @@ type DescribeInternetOpenIpResponseBodyDataList struct {
 	//
 	// EcsEIP
 	AssetsType *string `json:"AssetsType,omitempty" xml:"AssetsType,omitempty"`
-	// The total number of ports.
+	// The total number of port details.
 	//
 	// example:
 	//
 	// 5
 	DetailNum *int32 `json:"DetailNum,omitempty" xml:"DetailNum,omitempty"`
-	// Specifies whether an access control policy is recommended. Valid values:
+	// Indicates whether an access control list (ACL) is recommended. Valid values:
 	//
-	// 	- **true**
+	// - **true**: yes
 	//
-	// 	- **false**
+	// - **false**: no
 	//
 	// example:
 	//
 	// true
 	HasAclRecommend *bool `json:"HasAclRecommend,omitempty" xml:"HasAclRecommend,omitempty"`
-	// The inbound network throughput, which indicates the total number of bytes that are sent inbound. Unit: bytes.
+	// The inbound network throughput, which indicates the total number of bytes received. Unit: bytes.
 	//
 	// example:
 	//
 	// 235
 	InBytes *int64 `json:"InBytes,omitempty" xml:"InBytes,omitempty"`
-	// The UID of the member that is managed by your Alibaba Cloud account.
+	// The UID of the Cloud Firewall member account.
 	//
 	// example:
 	//
 	// 14151892****7022
 	MemberUid *int64 `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
-	// The outbound network throughput, which indicates the total number of bytes that are sent outbound. Unit: bytes.
+	// The outbound network throughput, which indicates the total number of bytes sent. Unit: bytes.
 	//
 	// example:
 	//
@@ -166,13 +166,13 @@ type DescribeInternetOpenIpResponseBodyDataList struct {
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
 	// The risk level. Valid values:
 	//
-	// 	- **3**: high risk
+	// - **3**: high
 	//
-	// 	- **2**: medium risk
+	// - **2**: medium
 	//
-	// 	- **1**: low risk
+	// - **1**: low
 	//
-	// 	- **0**: no risk
+	// - **0**: none
 	//
 	// example:
 	//
@@ -186,43 +186,43 @@ type DescribeInternetOpenIpResponseBodyDataList struct {
 	RiskReason *string `json:"RiskReason,omitempty" xml:"RiskReason,omitempty"`
 	// The list of applications.
 	ServiceNameList []*string `json:"ServiceNameList,omitempty" xml:"ServiceNameList,omitempty" type:"Repeated"`
-	// Number of source IPs.
+	// The number of source IP addresses.
 	//
 	// example:
 	//
 	// 22
 	SrcIpCnt *int64 `json:"SrcIpCnt,omitempty" xml:"SrcIpCnt,omitempty"`
-	// The total inbound and outbound network throughput, which indicates the total number of bytes that are sent inbound and outbound. Unit: bytes.
+	// The total traffic. Unit: bytes.
 	//
 	// example:
 	//
 	// 253023143
 	TotalBytes *int64 `json:"TotalBytes,omitempty" xml:"TotalBytes,omitempty"`
-	// Outbound traffic in the last 7 days.
+	// The total response traffic in the last 7 days.
 	//
 	// example:
 	//
 	// 100000
 	TotalReplyBytes *int64 `json:"TotalReplyBytes,omitempty" xml:"TotalReplyBytes,omitempty"`
-	// For detailed traffic information, see the TotalBytes field.
+	// For details about the traffic, see the TotalBytes field.
 	//
 	// example:
 	//
 	// 0
 	TrafficPercent1Day *string `json:"TrafficPercent1Day,omitempty" xml:"TrafficPercent1Day,omitempty"`
-	// For detailed traffic information, see the TotalBytes field.
+	// For details about the traffic, see the TotalBytes field.
 	//
 	// example:
 	//
 	// 0
 	TrafficPercent30Day *string `json:"TrafficPercent30Day,omitempty" xml:"TrafficPercent30Day,omitempty"`
-	// For detailed traffic information, see the TotalBytes field.
+	// For details about the traffic, see the TotalBytes field.
 	//
 	// example:
 	//
 	// 0
 	TrafficPercent7Day *string `json:"TrafficPercent7Day,omitempty" xml:"TrafficPercent7Day,omitempty"`
-	// Reasons for not analyzing the protocol when the protocol is identified as Unknown.
+	// The reason why the protocol is not identified when the protocol is Unknown.
 	UnknownReason []*string `json:"UnknownReason,omitempty" xml:"UnknownReason,omitempty" type:"Repeated"`
 }
 
@@ -437,13 +437,13 @@ func (s *DescribeInternetOpenIpResponseBodyDataList) Validate() error {
 }
 
 type DescribeInternetOpenIpResponseBodyPageInfo struct {
-	// The page number.
+	// The page number of the returned page.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries per page.
+	// The number of entries returned per page.
 	//
 	// example:
 	//

@@ -40,61 +40,61 @@ type iDescribeOutgoingDestinationIPRequest interface {
 }
 
 type DescribeOutgoingDestinationIPRequest struct {
-	// The application type in the access control policy. Valid values:
+	// The application type supported by the access control policy.
 	//
-	// 	- **FTP**
+	// - **FTP**
 	//
-	// 	- **HTTP**
+	// - **HTTP**
 	//
-	// 	- **HTTPS**
+	// - **HTTPS**
 	//
-	// 	- **Memcache**
+	// - **Memcache**
 	//
-	// 	- **MongoDB**
+	// - **MongoDB**
 	//
-	// 	- **MQTT**
+	// - **MQTT**
 	//
-	// 	- **MySQL**
+	// - **MySQL**
 	//
-	// 	- **RDP**
+	// - **RDP**
 	//
-	// 	- **Redis**
+	// - **Redis**
 	//
-	// 	- **SMTP**
+	// - **SMTP**
 	//
-	// 	- **SMTPS**
+	// - **SMTPS**
 	//
-	// 	- **SSH**
+	// - **SSH**
 	//
-	// 	- **SSL_No_Cert**
+	// - **SSL_No_Cert**
 	//
-	// 	- **SSL**
+	// - **SSL**
 	//
-	// 	- **VNC**
+	// - **VNC**
 	//
-	// >  The value of this parameter depends on the value of Proto. If you set Proto to TCP, you can set ApplicationNameList to any valid value. If you specify both ApplicationNameList and ApplicationName, only the value of ApplicationNameList is used.
+	// > The supported application types depend on the protocol type specified in the Proto parameter. If Proto is set to TCP, all application types listed above are supported. If both ApplicationName and ApplicationNameList are specified, the value of ApplicationNameList takes precedence.
 	//
 	// example:
 	//
 	// FTP
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
-	// The ID of the service to which the destination IP address belongs. This parameter is left empty by default. Valid values:
+	// The ID of the service category. Valid values:
 	//
-	// 	- **All**: all services
+	// - **All**: all categories
 	//
-	// 	- **RiskDomain**: risky domain names
+	// - **RiskDomain**: risk domains
 	//
-	// 	- **RiskIP**: risky IP addresses
+	// - **RiskIP**: risk IPs
 	//
-	// 	- **AliYun**: Alibaba Cloud services
+	// - **AliYun**: Alibaba Cloud services
 	//
-	// 	- **NotAliYun**: third-party services
+	// - **NotAliYun**: services other than Alibaba Cloud services
 	//
 	// example:
 	//
 	// All
 	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	// The number of the page to return.
+	// The page number to return.
 	//
 	// Default value: 1.
 	//
@@ -102,13 +102,13 @@ type DescribeOutgoingDestinationIPRequest struct {
 	//
 	// 1
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The destination IP address in the outbound connection that is initiated to access a domain name.
+	// The destination IP address of the outbound connection.
 	//
 	// example:
 	//
 	// 10.0.XX.XX
 	DstIP *string `json:"DstIP,omitempty" xml:"DstIP,omitempty"`
-	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	// The end of the time range to query. The value is a timestamp in seconds.
 	//
 	// This parameter is required.
 	//
@@ -116,21 +116,21 @@ type DescribeOutgoingDestinationIPRequest struct {
 	//
 	// 1656923760
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The language of the content within the response. Valid values:
+	// The language of the response. Valid values:
 	//
-	// 	- **zh*	- (default)
+	// - **zh*	- (default): Chinese.
 	//
-	// 	- **en**
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The method that you want to use to sort the query results. Valid values:
+	// The sort order. Valid values:
 	//
-	// 	- **asc**
+	// - **asc**: ascending order.
 	//
-	// 	- **desc*	- (default)
+	// - **desc*	- (default): descending order.
 	//
 	// example:
 	//
@@ -156,23 +156,23 @@ type DescribeOutgoingDestinationIPRequest struct {
 	//
 	// 192.168.XX.XX
 	PrivateIP *string `json:"PrivateIP,omitempty" xml:"PrivateIP,omitempty"`
-	// The public IP address of the Elastic Compute Service (ECS) instance that initiates the outbound connection.
+	// The public IP address of the ECS instance that initiates the outbound connection.
 	//
 	// example:
 	//
 	// 192.0.XX.XX
 	PublicIP *string `json:"PublicIP,omitempty" xml:"PublicIP,omitempty"`
-	// The field based on which you want to sort the query results. Valid values:
+	// The field by which to sort the results. Valid values:
 	//
-	// 	- **SessionCount*	- (default): the number of requests.
+	// - **SessionCount*	- (default): request count.
 	//
-	// 	- **TotalBytes**: the total volume of traffic.
+	// - **TotalBytes**: total traffic.
 	//
 	// example:
 	//
 	// SessionCount
 	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	// The start of the time range to query. The value is a timestamp in seconds.
 	//
 	// This parameter is required.
 	//
@@ -180,81 +180,81 @@ type DescribeOutgoingDestinationIPRequest struct {
 	//
 	// 1656837360
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The ID of the tag. Valid values:
+	// The ID of the threat intelligence tag. Valid values:
 	//
-	// 	- **AliYun**: Alibaba Cloud service
+	// - **AliYun**: Alibaba Cloud service
 	//
-	// 	- **RiskDomain**: risky domain name
+	// - **RiskDomain**: risk domain
 	//
-	// 	- **RiskIP**: risky IP address
+	// - **RiskIP**: risk IP
 	//
-	// 	- **TrustedDomain**: trusted website
+	// - **TrustedDomain**: trusted website
 	//
-	// 	- **AliPay**: Alipay
+	// - **AliPay**: Alipay
 	//
-	// 	- **DingDing**: DingTalk
+	// - **DingDing**: DingTalk
 	//
-	// 	- **WeChat**: WeChat
+	// - **WeChat**: WeChat
 	//
-	// 	- **QQ**: Tencent QQ
+	// - **QQ**: Tencent QQ
 	//
-	// 	- **SecurityService**: security service
+	// - **SecurityService**: security service
 	//
-	// 	- **Microsoft**: Microsoft
+	// - **Microsoft**: Microsoft
 	//
-	// 	- **Amazon**: Amazon Web Services (AWS)
+	// - **Amazon**: Amazon
 	//
-	// 	- **Pan**: cloud disk
+	// - **Pan**: cloud drive
 	//
-	// 	- **Map**: map
+	// - **Map**: map
 	//
-	// 	- **Code**: code hosting
+	// - **Code**: code hosting
 	//
-	// 	- **SystemService**: system service
+	// - **SystemService**: system service
 	//
-	// 	- **Taobao**: Taobao
+	// - **Taobao**: Taobao
 	//
-	// 	- **Google**: Google
+	// - **Google**: Google
 	//
-	// 	- **ThirdPartyService**: third-party service
+	// - **ThirdPartyService**: third-party service
 	//
-	// 	- **FirstFlow**: the first time
+	// - **FirstFlow**: first access
 	//
-	// 	- **Downloader**: malicious download
+	// - **Downloader**: malicious downloader
 	//
-	// 	- **Alexa Top1M**: popular website
+	// - **Alexa Top1M**: popular website
 	//
-	// 	- **Miner**: mining pool
+	// - **Miner**: mining pool
 	//
-	// 	- **Intelligence**: threat intelligence
+	// - **Intelligence**: threat intelligence
 	//
-	// 	- **DDoS**: DDoS trojan
+	// - **DDoS**: DDoS trojan
 	//
-	// 	- **Ransomware**: ransomware
+	// - **Ransomware**: ransomware
 	//
-	// 	- **Spyware**: spyware
+	// - **Spyware**: spyware
 	//
-	// 	- **Rogue**: rogue software
+	// - **Rogue**: rogue software
 	//
-	// 	- **Botnet**: botnet
+	// - **Botnet**: botnet
 	//
-	// 	- **Suspicious**: suspicious website
+	// - **Suspicious**: suspicious website
 	//
-	// 	- **C\\&C**: command and control (C\\&C)
+	// - **C\\&C**: command and control (C\\&C)
 	//
-	// 	- **Gang**: gang
+	// - **Gang**: threat actor group
 	//
-	// 	- **CVE**: Common Vulnerabilities and Exposures (CVE)
+	// - **CVE**: CVE
 	//
-	// 	- **Backdoor**: webshell
+	// - **Backdoor**: backdoor
 	//
-	// 	- **Phishing**: phishing website
+	// - **Phishing**: phishing website
 	//
-	// 	- **APT**: advanced persistent threat (APT) attack
+	// - **APT**: APT attack
 	//
-	// 	- **Supply Chain Attack**: supply chain attack
+	// - **Supply Chain Attack**: supply chain attack
 	//
-	// 	- **Malicious software**: malware
+	// - **Malicious software**: malware
 	//
 	// example:
 	//

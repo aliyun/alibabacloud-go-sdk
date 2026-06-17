@@ -14,11 +14,11 @@ type iModifyControlPolicyPriorityResponseBody interface {
 }
 
 type ModifyControlPolicyPriorityResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
-	// 586F34E8-3F16-4C08-9FFC-8FFDC64B9D0D
+	// 586F34E8-3F16-4C08-9FFC-8FFDC64B****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

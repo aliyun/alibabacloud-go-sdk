@@ -16,10 +16,14 @@ type iDescribePrivateDnsStatisticsRequest interface {
 }
 
 type DescribePrivateDnsStatisticsRequest struct {
+	// The end of the domain name creation time. The value is a UNIX timestamp.
+	//
 	// example:
 	//
 	// 1726305596
 	DomainNameCreatedEndTime *int64 `json:"DomainNameCreatedEndTime,omitempty" xml:"DomainNameCreatedEndTime,omitempty"`
+	// The start of the domain name creation time. The value is a UNIX timestamp.
+	//
 	// example:
 	//
 	// 1725864531

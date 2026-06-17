@@ -32,11 +32,11 @@ type iCreateVpcFirewallConfigureRequest interface {
 }
 
 type CreateVpcFirewallConfigureRequest struct {
-	// The status of the VPC firewall after you create the firewall. Valid values:
+	// The status of the VPC firewall after it is created. Valid values:
 	//
-	// 	- **open**: After you create the VPC firewall, the VPC firewall is automatically enabled. This is the default value.
+	// - **open*	- (default): The VPC firewall is automatically enabled after it is created.
 	//
-	// 	- **close**: After you create the VPC firewall, the VPC firewall is disabled. To enable the firewall, you can call the [ModifyVpcFirewallSwitchStatus](https://help.aliyun.com/document_detail/342935.html) operation.
+	// - **close**: The VPC firewall is not automatically enabled after it is created. To enable the firewall, call the [ModifyVpcFirewallSwitchStatus](https://help.aliyun.com/document_detail/342935.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -44,11 +44,11 @@ type CreateVpcFirewallConfigureRequest struct {
 	//
 	// open
 	FirewallSwitch *string `json:"FirewallSwitch,omitempty" xml:"FirewallSwitch,omitempty"`
-	// The language of the content within the request and the response. Valid values:
+	// The language of the request and response. Valid values:
 	//
-	// 	- **zh**: Chinese (default)
+	// - **zh*	- (default): Chinese.
 	//
-	// 	- **en**: English.
+	// - **en**: English.
 	//
 	// example:
 	//
@@ -56,9 +56,9 @@ type CreateVpcFirewallConfigureRequest struct {
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The CIDR blocks of the local VPC. The value is a JSON string that contains the following parameters:
 	//
-	// 	- **RouteTableId**: the ID of the route table for the local VPC.
+	// - **RouteTableId**: The ID of the route table for the local VPC.
 	//
-	// 	- **RouteEntryList**: The value is a JSON string that contains the DestinationCidr and NextHopInstanceId parameters. The DestinationCidr parameter indicates the destination CIDR block of the local VPC. The NextHopInstanceId parameter indicates the instance ID of the next hop for the local VPC.
+	// - RouteEntryList: The route entries. The value is a JSON string that contains DestinationCidr (the destination CIDR block of the local VPC) and **NextHopInstanceId*	- (the ID of the next hop instance of the local VPC).
 	//
 	// This parameter is required.
 	//
@@ -66,7 +66,7 @@ type CreateVpcFirewallConfigureRequest struct {
 	//
 	// [{"RouteTableId":"vtb-1234","RouteEntryList":[{"DestinationCidr":"192.168.XX.XX/24","NextHopInstanceId":"vrt-m5eb5me6c3l5sezae****"}]},{"RouteTableId":"vtb-1235","RouteEntryList":[{"DestinationCidr":"192.168.XX.XX/24","NextHopInstanceId":"vrt-m5eb5me6c3l5sezae****"}]}]
 	LocalVpcCidrTableList *string `json:"LocalVpcCidrTableList,omitempty" xml:"LocalVpcCidrTableList,omitempty"`
-	// The ID of the local VPC.
+	// The instance ID of the local VPC.
 	//
 	// This parameter is required.
 	//
@@ -76,7 +76,7 @@ type CreateVpcFirewallConfigureRequest struct {
 	LocalVpcId *string `json:"LocalVpcId,omitempty" xml:"LocalVpcId,omitempty"`
 	// The region ID of the local VPC.
 	//
-	// >  For more information about the regions in which Cloud Firewall is available, see [Supported regions](https://help.aliyun.com/document_detail/195657.html).
+	// > For more information about the regions where Cloud Firewall is available, see [Supported regions](https://help.aliyun.com/document_detail/195657.html).
 	//
 	// This parameter is required.
 	//
@@ -84,7 +84,7 @@ type CreateVpcFirewallConfigureRequest struct {
 	//
 	// cn-hangzhou
 	LocalVpcRegion *string `json:"LocalVpcRegion,omitempty" xml:"LocalVpcRegion,omitempty"`
-	// The UID of the member that is managed by your Alibaba Cloud account.
+	// The UID of the member account.
 	//
 	// example:
 	//
@@ -92,9 +92,9 @@ type CreateVpcFirewallConfigureRequest struct {
 	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
 	// The CIDR blocks of the peer VPC. The value is a JSON string that contains the following parameters:
 	//
-	// 	- **RouteTableId**: the ID of the route table for the peer VPC.
+	// - **RouteTableId**: The ID of the route table for the peer VPC.
 	//
-	// 	- **RouteEntryList**: The value is a JSON string that contains the DestinationCidr and NextHopInstanceId parameters. The DestinationCidr parameter indicates the destination CIDR block of the peer VPC. The NextHopInstanceId parameter indicates the instance ID of the next hop for the peer VPC.
+	// - RouteEntryList: The route entries. The value is a JSON string that contains DestinationCidr (the destination CIDR block of the peer VPC) and **NextHopInstanceId*	- (the ID of the next hop instance of the peer VPC).
 	//
 	// This parameter is required.
 	//
@@ -102,7 +102,7 @@ type CreateVpcFirewallConfigureRequest struct {
 	//
 	// [{"RouteTableId":"vtb-1234","RouteEntryList":[{"DestinationCidr":"192.168.XX.XX/24","NextHopInstanceId":"vrt-m5eb5me6c3l5sezae****"}]},{"RouteTableId":"vtb-1235","RouteEntryList":[{"DestinationCidr":"192.168.XX.XX/24","NextHopInstanceId":"vrt-m5eb5me6c3l5sezae****"}]}]
 	PeerVpcCidrTableList *string `json:"PeerVpcCidrTableList,omitempty" xml:"PeerVpcCidrTableList,omitempty"`
-	// The ID of the peer VPC.
+	// The instance ID of the peer VPC.
 	//
 	// This parameter is required.
 	//
@@ -112,7 +112,7 @@ type CreateVpcFirewallConfigureRequest struct {
 	PeerVpcId *string `json:"PeerVpcId,omitempty" xml:"PeerVpcId,omitempty"`
 	// The region ID of the peer VPC.
 	//
-	// >  For more information about Cloud Firewall supported regions, see [Supported regions](https://help.aliyun.com/document_detail/195657.html).
+	// > For more information about the regions where Cloud Firewall is available, see [Supported regions](https://help.aliyun.com/document_detail/195657.html).
 	//
 	// This parameter is required.
 	//
@@ -126,7 +126,7 @@ type CreateVpcFirewallConfigureRequest struct {
 	//
 	// example:
 	//
-	// my-vpc-firewall
+	// test-vpc-firewall
 	VpcFirewallName *string `json:"VpcFirewallName,omitempty" xml:"VpcFirewallName,omitempty"`
 }
 

@@ -26,55 +26,55 @@ type iDescribeDefaultIPSConfigResponseBody interface {
 }
 
 type DescribeDefaultIPSConfigResponseBody struct {
-	// Indicates whether basic protection is enabled. Valid values:
+	// The status of the basic policies feature. Valid values:
 	//
-	// 	- **1**: yes
+	// - **1**: enabled
 	//
-	// 	- **0**: no
+	// - **0**: disabled
 	//
 	// example:
 	//
 	// 0
 	BasicRules *int32 `json:"BasicRules,omitempty" xml:"BasicRules,omitempty"`
-	// Indicates whether threat intelligence is enabled. Valid values:
+	// The status of the threat intelligence feature. Valid values:
 	//
-	// 	- **1**: yes
+	// - **1**: enabled
 	//
-	// 	- **0**: no
+	// - **0**: disabled
 	//
 	// example:
 	//
 	// 0
 	CtiRules *int32 `json:"CtiRules,omitempty" xml:"CtiRules,omitempty"`
-	// The maximum amount of traffic that can be processed by the sensitive data leak detection feature each day.
+	// The maximum daily traffic that can be scanned for sensitive data.
 	//
 	// example:
 	//
 	// 10
 	MaxSdl *int64 `json:"MaxSdl,omitempty" xml:"MaxSdl,omitempty"`
-	// Indicates whether virtual patching is enabled. Valid values:
+	// The status of the virtual patching feature. Valid values:
 	//
-	// 	- **1**: yes
+	// - **1**: enabled
 	//
-	// 	- **0**: no
+	// - **0**: disabled
 	//
 	// example:
 	//
 	// 0
 	PatchRules *int32 `json:"PatchRules,omitempty" xml:"PatchRules,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 133173B9-8010-5DF5-8B93-********
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The level of the rule group for the IPS. Valid values:
+	// The strictness level of the intrusion prevention system (IPS) rules. Valid values:
 	//
-	// 	- **1**: loose
+	// - **1**: Loose
 	//
-	// 	- **2**: medium
+	// - **2**: Medium
 	//
-	// 	- **3**: strict
+	// - **3**: Strict
 	//
 	// example:
 	//
@@ -82,9 +82,9 @@ type DescribeDefaultIPSConfigResponseBody struct {
 	RuleClass *int32 `json:"RuleClass,omitempty" xml:"RuleClass,omitempty"`
 	// The mode of the IPS. Valid values:
 	//
-	// 	- **1**: block mode
+	// - **1**: Block Mode
 	//
-	// 	- **0**: monitor mode
+	// - **0**: Monitor Mode
 	//
 	// example:
 	//

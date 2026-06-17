@@ -16,7 +16,10 @@ type iDisableSdlProtectedAssetRequest interface {
 }
 
 type DisableSdlProtectedAssetRequest struct {
+	// The list of IP assets.
 	IpList []*string `json:"IpList,omitempty" xml:"IpList,omitempty" type:"Repeated"`
+	// The language of the response message.
+	//
 	// example:
 	//
 	// zh

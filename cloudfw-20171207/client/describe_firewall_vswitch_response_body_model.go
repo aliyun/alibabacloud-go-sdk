@@ -18,14 +18,19 @@ type iDescribeFirewallVSwitchResponseBody interface {
 }
 
 type DescribeFirewallVSwitchResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// A1562A68-99FA-5D6B-BD5B-2F959F25****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 20
-	TotalCount  *int32                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The list of vSwitches.
 	VswitchList []*DescribeFirewallVSwitchResponseBodyVswitchList `json:"VswitchList,omitempty" xml:"VswitchList,omitempty" type:"Repeated"`
 }
 
@@ -78,39 +83,58 @@ func (s *DescribeFirewallVSwitchResponseBody) Validate() error {
 }
 
 type DescribeFirewallVSwitchResponseBodyVswitchList struct {
+	// The number of available IP addresses.
+	//
 	// example:
 	//
 	// 10
 	AvailableIpCount *string `json:"AvailableIpCount,omitempty" xml:"AvailableIpCount,omitempty"`
+	// The IPv4 CIDR block.
+	//
 	// example:
 	//
 	// 192.168.0.XX/16
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	// The number of intrusion prevention events.
+	//
 	// example:
 	//
 	// 10
-	FirewallCount *string                                                       `json:"FirewallCount,omitempty" xml:"FirewallCount,omitempty"`
-	FirewallList  []*DescribeFirewallVSwitchResponseBodyVswitchListFirewallList `json:"FirewallList,omitempty" xml:"FirewallList,omitempty" type:"Repeated"`
+	FirewallCount *string `json:"FirewallCount,omitempty" xml:"FirewallCount,omitempty"`
+	// The list of firewalls.
+	FirewallList []*DescribeFirewallVSwitchResponseBodyVswitchListFirewallList `json:"FirewallList,omitempty" xml:"FirewallList,omitempty" type:"Repeated"`
+	// The UID of the member account.
+	//
 	// example:
 	//
 	// 184480249330****
 	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-shanghai
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	// The ID of the VPC instance.
+	//
 	// example:
 	//
 	// vpc-2zeez7gymz5r4pi****am
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The ID of the vSwitch.
+	//
 	// example:
 	//
 	// vsw-bp10qla9mgi42eo****
 	VswitchId *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
+	// The name of the vSwitch.
+	//
 	// example:
 	//
 	// vsw-test
 	VswitchName *string `json:"VswitchName,omitempty" xml:"VswitchName,omitempty"`
+	// The zone ID.
+	//
 	// example:
 	//
 	// cn-shanghai-b
@@ -229,10 +253,14 @@ func (s *DescribeFirewallVSwitchResponseBodyVswitchList) Validate() error {
 }
 
 type DescribeFirewallVSwitchResponseBodyVswitchListFirewallList struct {
+	// The instance ID of the firewall.
+	//
 	// example:
 	//
 	// vfw-tr-37145c8f5ede45e9****
 	FirewallId *string `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
+	// The name of the Cloud Firewall.
+	//
 	// example:
 	//
 	// test-Firewall

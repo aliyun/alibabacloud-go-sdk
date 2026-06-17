@@ -18,27 +18,27 @@ type iUpdatePostpayUserVpcStatusRequest interface {
 }
 
 type UpdatePostpayUserVpcStatusRequest struct {
-	// The instance ID of Cloud Firewall.
+	// The ID of the Cloud Firewall instance.
 	//
 	// example:
 	//
 	// cfw_elasticity_public_cn-************
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The language of the content within the request and response.
+	// The language of the request and response.
 	//
 	// Valid values:
 	//
-	// 	- **zh*	- (default)
+	// - **zh*	- (default): Chinese
 	//
-	// 	- **en**
+	// - en: English
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The operation type.
+	// The operation to perform. Currently, only the open operation is supported.
 	//
-	// 	- Set the value to open.
+	// - open: Enables the VPC border firewall.
 	//
 	// example:
 	//

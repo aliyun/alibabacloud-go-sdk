@@ -22,22 +22,48 @@ type iModifySlsDispatchStatusRequest interface {
 }
 
 type ModifySlsDispatchStatusRequest struct {
+	// The key for the log category. Valid values:
+	//
+	// **internet_log**
+	//
+	// **vpc_firewall_log**
+	//
+	// **nat_firewall_log**
+	//
+	// **ipv6_firewall_log**
+	//
+	// **dns_firewall_log**.
+	//
 	// example:
 	//
 	// internet_log
 	DispatchValue *string `json:"DispatchValue,omitempty" xml:"DispatchValue,omitempty"`
+	// Specifies whether to deliver logs. A value of \\`true\\` enables delivery, and \\`false\\` disables it.
+	//
 	// example:
 	//
 	// true
 	EnableStatus *bool `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	// The supported filter conditions. Valid values:
+	//
+	// **attack**
+	//
+	// **acl**
+	//
+	// **other**.
+	//
 	// example:
 	//
 	// attack,acl
 	FilterKeys *string `json:"FilterKeys,omitempty" xml:"FilterKeys,omitempty"`
+	// The region.
+	//
 	// example:
 	//
 	// cn-shanghai
 	NewRegionId *string `json:"NewRegionId,omitempty" xml:"NewRegionId,omitempty"`
+	// The site to modify. If the log version is 1, leave this parameter empty or set it to \\`global\\`. If the log version is 2, set this parameter to \\`cn\\` or \\`intl\\`.
+	//
 	// example:
 	//
 	// cn

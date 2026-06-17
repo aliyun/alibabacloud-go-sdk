@@ -20,22 +20,30 @@ type iUpdateAclCheckDetailStatusRequest interface {
 }
 
 type UpdateAclCheckDetailStatusRequest struct {
+	// The language of the response. Valid values:
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The new status of the ACL policy. Valid values:
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Pending
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the ACL check task.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// task-c92d4544ef7b6a42
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The unique ID of the ACL policy whose status you want to update.
+	//
 	// This parameter is required.
 	//
 	// example:

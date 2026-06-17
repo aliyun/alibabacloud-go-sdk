@@ -24,24 +24,46 @@ type iModifyIpsRulesToDefaultRequest interface {
 }
 
 type ModifyIpsRulesToDefaultRequest struct {
+	// The application that is affected by the attack.
+	//
 	// example:
 	//
 	// PHP
 	AttackApp *string `json:"AttackApp,omitempty" xml:"AttackApp,omitempty"`
+	// The type of the Cloud Firewall. Valid values:
+	//
+	// - **VpcFirewall**: VPC firewall.
+	//
+	// - **InternetFirewall*	- (default): Internet firewall.
+	//
 	// example:
 	//
 	// InternetFirewall
 	FirewallType *string `json:"FirewallType,omitempty" xml:"FirewallType,omitempty"`
+	// The language of the content. Valid values:
+	//
+	// - **zh*	- (default): Chinese.
+	//
+	// - **en**: English.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The type of the rule. Valid values:
+	//
+	// - **basicRule**
+	//
+	// - **customize**
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// customize
 	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	// The list of rules.
+	//
 	// example:
 	//
 	// [
@@ -52,6 +74,8 @@ type ModifyIpsRulesToDefaultRequest struct {
 	//
 	// ]
 	Rules *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
+	// The source IP address of the visitor.
+	//
 	// example:
 	//
 	// 140.205.118.XXX

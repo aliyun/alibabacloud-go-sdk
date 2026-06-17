@@ -16,13 +16,13 @@ type iDescribeInstanceRiskLevelsRequest interface {
 }
 
 type DescribeInstanceRiskLevelsRequest struct {
-	// The information about the instances.
+	// The list of instances.
 	Instances []*DescribeInstanceRiskLevelsRequestInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
-	// The language of the content within the response. Valid values:
+	// The language of the response. Valid values:
 	//
-	// 	- **zh*	- (default): Chinese
+	// - **zh*	- (default): Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//
@@ -70,13 +70,13 @@ func (s *DescribeInstanceRiskLevelsRequest) Validate() error {
 }
 
 type DescribeInstanceRiskLevelsRequestInstances struct {
-	// The instance ID of your Cloud Firewall.
+	// The ID of the Cloud Firewall instance.
 	//
 	// example:
 	//
 	// vipcloudfw-cn-7mz2fj8nm0u
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The public IP addresses of instances.
+	// The public IP address of the instance.
 	InternetIp []*string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty" type:"Repeated"`
 	// The private IP address of the instance.
 	//

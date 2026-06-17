@@ -18,11 +18,16 @@ type iListTlsInspectCACertificatesResponseBody interface {
 }
 
 type ListTlsInspectCACertificatesResponseBody struct {
+	// The list of certificates.
 	Certificates []*ListTlsInspectCACertificatesResponseBodyCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// CBF1E9B7-D6A0-4E9E-AD3E-******837D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 1
@@ -78,38 +83,70 @@ func (s *ListTlsInspectCACertificatesResponseBody) Validate() error {
 }
 
 type ListTlsInspectCACertificatesResponseBodyCertificates struct {
+	// The encryption algorithm of the CA certificate. Valid values:
+	//
+	// - **RSA**: the RSA algorithm.
+	//
+	// - **ECC**: the ECC algorithm.
+	//
+	// - **SM2**: the SM2 algorithm.
+	//
 	// example:
 	//
 	// RSA
 	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	// The alias of the certificate.
+	//
 	// example:
 	//
 	// rsa_ml_***_root
 	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	// The ID of the CA certificate.
+	//
 	// example:
 	//
 	// 2732BB48-2969-5716-B5D9-******CA85
 	CaCertId *string `json:"CaCertId,omitempty" xml:"CaCertId,omitempty"`
+	// The type of the CA certificate. Valid values:
+	//
+	// - **ROOT**: a root CA certificate.
+	//
+	// - **SUB_ROOT**: a subordinate CA certificate.
+	//
 	// example:
 	//
 	// ROOT
 	CaCertType *string `json:"CaCertType,omitempty" xml:"CaCertType,omitempty"`
+	// The expiration timestamp.
+	//
 	// example:
 	//
 	// 1934***149
 	ExpirationTime *int64 `json:"ExpirationTime,omitempty" xml:"ExpirationTime,omitempty"`
+	// The key length of the CA certificate.
+	//
 	// example:
 	//
 	// 2048
 	KeySize *int32 `json:"KeySize,omitempty" xml:"KeySize,omitempty"`
+	// The ID of the parent CA certificate.
+	//
 	// example:
 	//
 	// 340BB48-2969-5716-B5D9-****ACA85
 	ParentCaCertId *string `json:"ParentCaCertId,omitempty" xml:"ParentCaCertId,omitempty"`
+	// The signature algorithm of the CA certificate.
+	//
 	// example:
 	//
 	// SHA256WITHRSA
 	SignAlgorithm *string `json:"SignAlgorithm,omitempty" xml:"SignAlgorithm,omitempty"`
+	// The status of the certificate. Valid values:
+	//
+	// - **ISSUE**: enabled.
+	//
+	// - **REVOKE**: revoked.
+	//
 	// example:
 	//
 	// ISSUE

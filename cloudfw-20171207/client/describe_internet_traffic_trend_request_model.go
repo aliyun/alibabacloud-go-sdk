@@ -30,19 +30,17 @@ type iDescribeInternetTrafficTrendRequest interface {
 }
 
 type DescribeInternetTrafficTrendRequest struct {
-	// The direction of the internet traffic.
+	// The direction of the Internet traffic. Valid values:
 	//
-	// Valid values:
+	// - **in**: inbound
 	//
-	// 	- **in**: inbound traffic
-	//
-	// 	- **out**: outbound traffic
+	// - **out**: outbound
 	//
 	// example:
 	//
 	// in
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	// The end of the time range to query. This value is a UNIX timestamp in seconds.
 	//
 	// This parameter is required.
 	//
@@ -50,17 +48,17 @@ type DescribeInternetTrafficTrendRequest struct {
 	//
 	// 1674958929
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The language of the content in the request and response. Valid values:
+	// The language of the request and response. Valid values:
 	//
-	// 	- **zh*	- (default): Chinese
+	// - **zh*	- (default): Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The source code.
+	// The source tracking code.
 	//
 	// This parameter is required.
 	//
@@ -70,25 +68,25 @@ type DescribeInternetTrafficTrendRequest struct {
 	SourceCode *string `json:"SourceCode,omitempty" xml:"SourceCode,omitempty"`
 	// Deprecated
 	//
-	// The IP address of the access source.
+	// The source IP address of the visitor.
 	//
 	// example:
 	//
 	// 101.80.171.196
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The private IP address of the source.
+	// The source private IP address.
 	//
 	// example:
 	//
 	// 10.100.134.60
 	SrcPrivateIP *string `json:"SrcPrivateIP,omitempty" xml:"SrcPrivateIP,omitempty"`
-	// The public IP address of the source.
+	// The source public IP address.
 	//
 	// example:
 	//
 	// 47.112.210.136
 	SrcPublicIP *string `json:"SrcPublicIP,omitempty" xml:"SrcPublicIP,omitempty"`
-	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	// The start of the time range to query. This value is a UNIX timestamp in seconds.
 	//
 	// This parameter is required.
 	//
@@ -96,11 +94,11 @@ type DescribeInternetTrafficTrendRequest struct {
 	//
 	// 1670307484
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The type of the traffic that is captured. Valid values:
+	// The type of traffic to query. Valid values:
 	//
-	// 	- **max*	- (default): peak traffic
+	// - **max*	- (default): peak traffic
 	//
-	// 	- **avg**: average traffic
+	// - **avg**: average traffic
 	//
 	// example:
 	//

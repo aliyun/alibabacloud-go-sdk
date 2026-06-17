@@ -14,6 +14,10 @@ type iGetTlsInspectCertificateDownloadUrlRequest interface {
 }
 
 type GetTlsInspectCertificateDownloadUrlRequest struct {
+	// The ID of the CA certificate.
+	//
+	// > Call the ListTlsInspectCACertificates operation to query existing CA certificates.
+	//
 	// This parameter is required.
 	//
 	// example:

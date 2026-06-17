@@ -14,7 +14,7 @@ type iModifyInstanceMemberAttributesRequest interface {
 }
 
 type ModifyInstanceMemberAttributesRequest struct {
-	// The members that to be modified.
+	// The member accounts in Cloud Firewall.
 	//
 	// This parameter is required.
 	Members []*ModifyInstanceMemberAttributesRequestMembers `json:"Members,omitempty" xml:"Members,omitempty" type:"Repeated"`
@@ -51,7 +51,7 @@ func (s *ModifyInstanceMemberAttributesRequest) Validate() error {
 }
 
 type ModifyInstanceMemberAttributesRequestMembers struct {
-	// The remarks of the member in Cloud Firewall.
+	// The description of the member account.
 	//
 	// This parameter is required.
 	//
@@ -59,7 +59,7 @@ type ModifyInstanceMemberAttributesRequestMembers struct {
 	//
 	// renewal
 	MemberDesc *string `json:"MemberDesc,omitempty" xml:"MemberDesc,omitempty"`
-	// The UID of the member in Cloud Firewall.
+	// The UID of the member account.
 	//
 	// This parameter is required.
 	//

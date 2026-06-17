@@ -22,19 +22,35 @@ type iDescribeNetworkInstanceRelationListRequest interface {
 }
 
 type DescribeNetworkInstanceRelationListRequest struct {
+	// The connection type.
+	//
 	// example:
 	//
 	// cen
 	ConnectType *string `json:"ConnectType,omitempty" xml:"ConnectType,omitempty"`
+	// The configuration status of Cloud Firewall.
+	//
 	// example:
 	//
 	// notconfigured
 	FirewallConfigureStatus *string `json:"FirewallConfigureStatus,omitempty" xml:"FirewallConfigureStatus,omitempty"`
+	// The language of the response.
+	//
 	// example:
 	//
 	// zh
-	Lang                  *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	NetworkInstanceId     *string `json:"NetworkInstanceId,omitempty" xml:"NetworkInstanceId,omitempty"`
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The ID of the local network instance.
+	//
+	// example:
+	//
+	// vpc-2vcwkr****
+	NetworkInstanceId *string `json:"NetworkInstanceId,omitempty" xml:"NetworkInstanceId,omitempty"`
+	// The ID of the peer network instance.
+	//
+	// example:
+	//
+	// vpc-dsf232d****
 	PeerNetworkInstanceId *string `json:"PeerNetworkInstanceId,omitempty" xml:"PeerNetworkInstanceId,omitempty"`
 }
 

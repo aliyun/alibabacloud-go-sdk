@@ -16,7 +16,7 @@ type iAddControlPolicyResponseBody interface {
 }
 
 type AddControlPolicyResponseBody struct {
-	// The ID of the access control policy that is created on the Internet firewall.
+	// The unique ID of the access control policy for the Internet firewall.
 	//
 	// example:
 	//

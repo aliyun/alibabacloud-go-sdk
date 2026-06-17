@@ -20,18 +20,26 @@ type iDescribeUnprotectedPortTrendRequest interface {
 }
 
 type DescribeUnprotectedPortTrendRequest struct {
+	// The end time. Use a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1751210395
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The language of the response message.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The source IP address of the visitor.
+	//
 	// example:
 	//
 	// 61.155.60.XXX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// The start time. Use a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1655778046

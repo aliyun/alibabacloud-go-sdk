@@ -22,22 +22,32 @@ type iDescribeControlPolicyDomainResolveRequest interface {
 }
 
 type DescribeControlPolicyDomainResolveRequest struct {
+	// The domain name.
+	//
 	// example:
 	//
 	// example.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The type of the Cloud Firewall instance.
+	//
 	// example:
 	//
 	// internet
 	FirewallType *string `json:"FirewallType,omitempty" xml:"FirewallType,omitempty"`
+	// The supported ip version.
+	//
 	// example:
 	//
 	// 4
 	IpVersion *int32 `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	// The language of the request and response.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing

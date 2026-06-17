@@ -38,51 +38,80 @@ type iDescribeSdlEventListRequest interface {
 }
 
 type DescribeSdlEventListRequest struct {
+	// The page number of the returned page.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The destination IP address.
+	//
 	// example:
 	//
 	// 47.100.102.XXX
 	DstIp *string `json:"DstIp,omitempty" xml:"DstIp,omitempty"`
+	// The end of the time range to query. This value is a UNIX timestamp representing seconds.
+	//
 	// example:
 	//
 	// 1756433077
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The language of the response.
+	//
 	// example:
 	//
 	// zh
-	Lang     *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The region.
+	//
+	// example:
+	//
+	// Zhangjiakou
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// Specifies whether to return only events detected by AI.
+	//
 	// example:
 	//
 	// 0
 	OnlyAiEvt *int32 `json:"OnlyAiEvt,omitempty" xml:"OnlyAiEvt,omitempty"`
+	// The sort order. Valid values: `asc` (ascending) and `desc` (descending).
+	//
 	// example:
 	//
 	// desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The sensitivity level of the data in the event.
+	//
 	// example:
 	//
 	// S3
 	SensitiveLevel *string `json:"SensitiveLevel,omitempty" xml:"SensitiveLevel,omitempty"`
+	// The field to sort by.
+	//
 	// example:
 	//
 	// TotalBytes
 	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	// The source IP address.
+	//
 	// example:
 	//
 	// 172.16.0.XXX
 	SrcIp *string `json:"SrcIp,omitempty" xml:"SrcIp,omitempty"`
+	// The start of the time range to query. This value is a UNIX timestamp representing seconds.
+	//
 	// example:
 	//
 	// 1759198702
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The unique ID of the event.
+	//
 	// example:
 	//
 	// aa58cdf6-6cf8-493c-912d-97619a24****

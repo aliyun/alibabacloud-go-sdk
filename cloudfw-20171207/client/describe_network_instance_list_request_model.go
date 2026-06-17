@@ -18,14 +18,20 @@ type iDescribeNetworkInstanceListRequest interface {
 }
 
 type DescribeNetworkInstanceListRequest struct {
+	// The ID of the CEN instance.
+	//
 	// example:
 	//
 	// cen-x5jayxou71ad73****
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	// The type of connection.
+	//
 	// example:
 	//
 	// expressconnect
 	ConnectType *string `json:"ConnectType,omitempty" xml:"ConnectType,omitempty"`
+	// The language of the response.
+	//
 	// example:
 	//
 	// zh

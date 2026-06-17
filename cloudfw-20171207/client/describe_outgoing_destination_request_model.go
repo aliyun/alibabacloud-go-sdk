@@ -48,78 +48,114 @@ type iDescribeOutgoingDestinationRequest interface {
 }
 
 type DescribeOutgoingDestinationRequest struct {
+	// The policy coverage status.
+	//
 	// example:
 	//
 	// FullCoverage
 	AclCoverage *string `json:"AclCoverage,omitempty" xml:"AclCoverage,omitempty"`
+	// The application name.
+	//
 	// example:
 	//
 	// HTTP
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
+	// The category ID.
+	//
 	// example:
 	//
 	// AliYun
 	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// The number of the page to return.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The destination IP address.
+	//
 	// example:
 	//
 	// 47.100.111XXX
 	DstIP *string `json:"DstIP,omitempty" xml:"DstIP,omitempty"`
+	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1749089441
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Specifies whether to count only the traffic to AI services. The default value is false.
+	//
 	// example:
 	//
 	// true
 	IsAITraffic *string `json:"IsAITraffic,omitempty" xml:"IsAITraffic,omitempty"`
+	// The language of the response message.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The sorting order.
+	//
 	// example:
 	//
 	// desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The number of the page to return.
+	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The port number.
+	//
 	// example:
 	//
 	// 3306
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The private IP address.
+	//
 	// example:
 	//
 	// 10.111.53XXX
 	PrivateIP *string `json:"PrivateIP,omitempty" xml:"PrivateIP,omitempty"`
+	// The public IP address.
+	//
 	// example:
 	//
 	// 47.96.74.XXX
 	PublicIP *string `json:"PublicIP,omitempty" xml:"PublicIP,omitempty"`
+	// The security policy for the outbound connection.
+	//
 	// example:
 	//
 	// pass
 	SecuritySuggest *string `json:"SecuritySuggest,omitempty" xml:"SecuritySuggest,omitempty"`
+	// The field to use for sorting.
+	//
 	// example:
 	//
 	// InBytes
 	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	// The source IP address of the visitor.
+	//
 	// example:
 	//
 	// 106.3.198.XXX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// The start of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1749657600
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The tag ID.
+	//
 	// example:
 	//
 	// FirstFlow

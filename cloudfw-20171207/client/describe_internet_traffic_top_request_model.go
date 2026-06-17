@@ -36,56 +36,80 @@ type iDescribeInternetTrafficTopRequest interface {
 }
 
 type DescribeInternetTrafficTopRequest struct {
+	// The type of traffic data.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// in_src_ip
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// The traffic direction.
+	//
 	// example:
 	//
 	// in
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	// The end time. The value is a UNIX timestamp. Unit: seconds.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1734055824
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The language of the response.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The maximum number of top entries to return. The default value is 50. Valid values: 1 to 50.
+	//
 	// example:
 	//
 	// 50
 	Limit *string `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// The action of the rule.
+	//
 	// example:
 	//
 	// 1
 	RuleResult *string `json:"RuleResult,omitempty" xml:"RuleResult,omitempty"`
+	// The source of the rule.
+	//
 	// example:
 	//
 	// 1
 	RuleSource *string `json:"RuleSource,omitempty" xml:"RuleSource,omitempty"`
+	// The name of the country to display.
+	//
 	// example:
 	//
 	// China
 	ShowCountryName *string `json:"ShowCountryName,omitempty" xml:"ShowCountryName,omitempty"`
+	// The sorting method.
+	//
 	// example:
 	//
 	// in_bytes
 	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	// The tracing code for the source.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// yundun
 	SourceCode *string `json:"SourceCode,omitempty" xml:"SourceCode,omitempty"`
+	// The source IP address.
+	//
 	// example:
 	//
 	// 117.82.14.XXX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// The start time. The value is a UNIX timestamp. Unit: seconds.
+	//
 	// This parameter is required.
 	//
 	// example:

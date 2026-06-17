@@ -24,9 +24,9 @@ type iDescribeVpcFirewallDefaultIPSConfigResponseBody interface {
 type DescribeVpcFirewallDefaultIPSConfigResponseBody struct {
 	// Indicates whether basic policies are enabled. Valid values:
 	//
-	// 	- **1**: yes
+	// - **1**: On.
 	//
-	// 	- **0**: no
+	// - **0**: Off.
 	//
 	// example:
 	//
@@ -34,9 +34,9 @@ type DescribeVpcFirewallDefaultIPSConfigResponseBody struct {
 	BasicRules *int32 `json:"BasicRules,omitempty" xml:"BasicRules,omitempty"`
 	// Indicates whether virtual patching is enabled. Valid values:
 	//
-	// 	- **1**: yes
+	// - **1**: On.
 	//
-	// 	- **0**: no
+	// - **0**: Off.
 	//
 	// example:
 	//
@@ -46,15 +46,15 @@ type DescribeVpcFirewallDefaultIPSConfigResponseBody struct {
 	//
 	// example:
 	//
-	// 850A84D6-0DE4-4797-A1E8-00090125adf1
+	// 850A84D6-****-00090125adf1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The level of the rule group for the IPS. Valid values:
+	// The IPS rule group. Valid values:
 	//
-	// 	- **1**: loose.
+	// - **1**: Loose rule group.
 	//
-	// 	- **2**: medium.
+	// - **2**: Medium rule group.
 	//
-	// 	- **3**: strict.
+	// - **3**: Strict rule group.
 	//
 	// example:
 	//
@@ -62,9 +62,9 @@ type DescribeVpcFirewallDefaultIPSConfigResponseBody struct {
 	RuleClass *int32 `json:"RuleClass,omitempty" xml:"RuleClass,omitempty"`
 	// The mode of the intrusion prevention system (IPS). Valid values:
 	//
-	// 	- **1**: block mode
+	// - **1**: Block Mode.
 	//
-	// 	- **0**: monitor mode
+	// - **0**: Monitor Mode.
 	//
 	// example:
 	//

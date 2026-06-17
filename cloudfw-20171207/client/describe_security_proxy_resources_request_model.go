@@ -18,14 +18,20 @@ type iDescribeSecurityProxyResourcesRequest interface {
 }
 
 type DescribeSecurityProxyResourcesRequest struct {
+	// The language of the response.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The UID of the member account.
+	//
 	// example:
 	//
 	// 136481150091****
 	MemberUid *int64 `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
+	// The ID of the NAT Gateway.
+	//
 	// example:
 	//
 	// ngw-uf6y16l23fm8hq0****

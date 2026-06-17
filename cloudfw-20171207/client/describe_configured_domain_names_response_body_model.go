@@ -20,15 +20,22 @@ type iDescribeConfiguredDomainNamesResponseBody interface {
 }
 
 type DescribeConfiguredDomainNamesResponseBody struct {
+	// The list of domain names.
 	DomainNames []*DescribeConfiguredDomainNamesResponseBodyDomainNames `json:"DomainNames,omitempty" xml:"DomainNames,omitempty" type:"Repeated"`
+	// The application module.
+	//
 	// example:
 	//
 	// sg_server
 	Module *string `json:"Module,omitempty" xml:"Module,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 09A2D6F1-EA1B-56D9-977D-74878405****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 16
@@ -93,18 +100,26 @@ func (s *DescribeConfiguredDomainNamesResponseBody) Validate() error {
 }
 
 type DescribeConfiguredDomainNamesResponseBodyDomainNames struct {
+	// The comment.
+	//
 	// example:
 	//
 	// test
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The domain name.
+	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// Indicates whether the domain name is malicious. Valid values: `0` (not malicious) and `1` (malicious).
+	//
 	// example:
 	//
 	// 0
 	IsMalicious *bool `json:"IsMalicious,omitempty" xml:"IsMalicious,omitempty"`
+	// The time of the operation, specified as a Unix timestamp in seconds. Example: `1672502400`.
+	//
 	// example:
 	//
 	// 1534408189

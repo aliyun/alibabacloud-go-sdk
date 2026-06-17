@@ -26,59 +26,59 @@ type iModifyDefaultIPSConfigRequest interface {
 }
 
 type ModifyDefaultIPSConfigRequest struct {
-	// Specifies whether to enable basic protection. Valid values:
+	// The switch for basic policies. Valid values:
 	//
-	// 	- **1**: yes
+	// - **1**: Enable.
 	//
-	// 	- **0**: no
+	// - **0**: Disable.
 	//
 	// example:
 	//
 	// 1
 	BasicRules *int32 `json:"BasicRules,omitempty" xml:"BasicRules,omitempty"`
-	// Specifies whether to enable threat intelligence. Valid values:
+	// The switch for threat intelligence. Valid values:
 	//
-	// 	- **1**: yes
+	// - **1**: Enable.
 	//
-	// 	- **0**: no
+	// - **0**: Disable.
 	//
 	// example:
 	//
 	// 0
 	CtiRules *int32 `json:"CtiRules,omitempty" xml:"CtiRules,omitempty"`
-	// The language of the content within the request and response. Valid values:
+	// The language of the request and response. Valid values:
 	//
-	// 	- **zh*	- (default)
+	// - **zh*	- (default): Chinese.
 	//
-	// 	- **en**
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The maximum amount of traffic that can be processed by the sensitive data leak detection feature each day.
+	// The daily traffic limit for sensitive data detection.
 	//
 	// example:
 	//
 	// 100
 	MaxSdl *int64 `json:"MaxSdl,omitempty" xml:"MaxSdl,omitempty"`
-	// Specifies whether to enable virtual patching. Valid values:
+	// The switch for virtual patching. Valid values:
 	//
-	// 	- **1**: yes
+	// - **1**: Enable.
 	//
-	// 	- **0**: no
+	// - **0**: Disable.
 	//
 	// example:
 	//
 	// 1
 	PatchRules *int32 `json:"PatchRules,omitempty" xml:"PatchRules,omitempty"`
-	// The level of the rule group for the IPS. Valid values:
+	// The IPS rule group. Valid values:
 	//
-	// 	- **1**: loose
+	// - **1**: Loose rule group.
 	//
-	// 	- **2**: medium
+	// - **2**: Medium rule group.
 	//
-	// 	- **3**: strict
+	// - **3**: Strict rule group.
 	//
 	// example:
 	//
@@ -86,9 +86,9 @@ type ModifyDefaultIPSConfigRequest struct {
 	RuleClass *int32 `json:"RuleClass,omitempty" xml:"RuleClass,omitempty"`
 	// The mode of the IPS. Valid values:
 	//
-	// 	- **1**: block mode
+	// - **1**: Block Mode.
 	//
-	// 	- **0**: monitor mode
+	// - **0**: Monitor Mode.
 	//
 	// This parameter is required.
 	//

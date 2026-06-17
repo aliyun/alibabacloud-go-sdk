@@ -16,7 +16,10 @@ type iDescribeCreatedNatFirewallResponseBody interface {
 }
 
 type DescribeCreatedNatFirewallResponseBody struct {
+	// A list of the created NAT firewalls.
 	CreatedNatFirewalls []*DescribeCreatedNatFirewallResponseBodyCreatedNatFirewalls `json:"CreatedNatFirewalls,omitempty" xml:"CreatedNatFirewalls,omitempty" type:"Repeated"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 072B5287-8A85-529E-BD47-F8AC2DB1****
@@ -63,14 +66,20 @@ func (s *DescribeCreatedNatFirewallResponseBody) Validate() error {
 }
 
 type DescribeCreatedNatFirewallResponseBodyCreatedNatFirewalls struct {
+	// The ID of the NAT firewall.
+	//
 	// example:
 	//
 	// cfw-adk2ad45sf4t8****
 	NatFirewallId *string `json:"NatFirewallId,omitempty" xml:"NatFirewallId,omitempty"`
+	// The ID of the NAT Gateway.
+	//
 	// example:
 	//
 	// ngw-uf6i0zkjtz4t2sttf****
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	// The name of the NAT Gateway.
+	//
 	// example:
 	//
 	// ngw-text

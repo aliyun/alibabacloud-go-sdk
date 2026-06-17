@@ -14,7 +14,7 @@ type iDeleteInstanceMembersRequest interface {
 }
 
 type DeleteInstanceMembersRequest struct {
-	// The UIDs of the members.
+	// The UIDs of the member accounts.
 	//
 	// This parameter is required.
 	//

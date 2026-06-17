@@ -20,15 +20,22 @@ type iDescribeInternetTimeTopResponseBody interface {
 }
 
 type DescribeInternetTimeTopResponseBody struct {
+	// The number of entries returned.
+	//
 	// example:
 	//
 	// 19
-	DataCount *int32                                         `json:"DataCount,omitempty" xml:"DataCount,omitempty"`
-	DataList  []*DescribeInternetTimeTopResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
+	DataCount *int32 `json:"DataCount,omitempty" xml:"DataCount,omitempty"`
+	// The list of data entries.
+	DataList []*DescribeInternetTimeTopResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 7F2D5C04-731F-50B0-ADE1-01637B3C****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The timestamp of the traffic data. Unit: seconds.
+	//
 	// example:
 	//
 	// 1734399660
@@ -93,74 +100,110 @@ func (s *DescribeInternetTimeTopResponseBody) Validate() error {
 }
 
 type DescribeInternetTimeTopResponseBodyDataList struct {
+	// The public IP address.
+	//
 	// example:
 	//
 	// 183.60.164.XXX
 	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
+	// The inbound bandwidth. Unit: bit/s.
+	//
 	// example:
 	//
 	// 187
 	InBps *int64 `json:"InBps,omitempty" xml:"InBps,omitempty"`
+	// The inbound packet forwarding rate. Unit: pps.
+	//
 	// example:
 	//
 	// 2
 	InPps *int64 `json:"InPps,omitempty" xml:"InPps,omitempty"`
+	// The ID of the NAT gateway.
+	//
 	// example:
 	//
 	// ngw-wz98eedr5l5hkb8****e7
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	// The name of the NAT gateway.
+	//
 	// example:
 	//
 	// ngw-test
 	NatGatewayName *string `json:"NatGatewayName,omitempty" xml:"NatGatewayName,omitempty"`
+	// The public IP address of the NAT gateway.
+	//
 	// example:
 	//
 	// 47.97.66.XXX
 	NatIP *string `json:"NatIP,omitempty" xml:"NatIP,omitempty"`
+	// The number of new connections.
+	//
 	// example:
 	//
 	// 27
 	NewConn *int64 `json:"NewConn,omitempty" xml:"NewConn,omitempty"`
+	// The outbound traffic. Unit: bit/s.
+	//
 	// example:
 	//
 	// 45
 	OutBps *int64 `json:"OutBps,omitempty" xml:"OutBps,omitempty"`
+	// The outbound packet forwarding rate. Unit: pps.
+	//
 	// example:
 	//
 	// 2
 	OutPps *int64 `json:"OutPps,omitempty" xml:"OutPps,omitempty"`
+	// The private IP address.
+	//
 	// example:
 	//
 	// 10.21.186.XXX
 	PrivateIP *string `json:"PrivateIP,omitempty" xml:"PrivateIP,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-shenzhen
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	// The ID of the asset instance.
+	//
 	// example:
 	//
 	// lb-bp14ue2rgktunncq****
 	ResourceInstanceId *string `json:"ResourceInstanceId,omitempty" xml:"ResourceInstanceId,omitempty"`
+	// The name of the asset.
+	//
 	// example:
 	//
 	// test
 	ResourceInstanceName *string `json:"ResourceInstanceName,omitempty" xml:"ResourceInstanceName,omitempty"`
+	// The type of the public IP address.
+	//
 	// example:
 	//
 	// EcsPublicIP
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The number of sessions.
+	//
 	// example:
 	//
 	// 27
 	SessionCount *int64 `json:"SessionCount,omitempty" xml:"SessionCount,omitempty"`
+	// The total bandwidth. Unit: bit/s.
+	//
 	// example:
 	//
 	// 232
 	TotalBps *int64 `json:"TotalBps,omitempty" xml:"TotalBps,omitempty"`
+	// The total number of packets.
+	//
 	// example:
 	//
 	// 88
 	TotalPps *int64 `json:"TotalPps,omitempty" xml:"TotalPps,omitempty"`
+	// The ID of the virtual private cloud (VPC) instance.
+	//
 	// example:
 	//
 	// vpc-wz9o0uzfjuj81fx7m****

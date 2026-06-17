@@ -18,7 +18,7 @@ type iResetNatFirewallRuleHitCountRequest interface {
 }
 
 type ResetNatFirewallRuleHitCountRequest struct {
-	// The UUID of the access control policy.
+	// The unique ID of the access control policy.
 	//
 	// This parameter is required.
 	//
@@ -26,17 +26,17 @@ type ResetNatFirewallRuleHitCountRequest struct {
 	//
 	// 3de3aed5-6de7-4ecd-9106-cfe994b9c49f
 	AclUuid *string `json:"AclUuid,omitempty" xml:"AclUuid,omitempty"`
-	// The language of the content within the request and response. Valid values:
+	// The language of the request and response. Valid values:
 	//
-	// 	- **zh*	- (default): Chinese
+	// - **zh*	- (default): Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The ID of the NAT gateway.
+	// The ID of the NAT Gateway.
 	//
 	// example:
 	//

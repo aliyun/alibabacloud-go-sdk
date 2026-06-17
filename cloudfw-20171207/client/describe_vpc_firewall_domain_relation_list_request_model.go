@@ -36,49 +36,84 @@ type iDescribeVpcFirewallDomainRelationListRequest interface {
 }
 
 type DescribeVpcFirewallDomainRelationListRequest struct {
+	// The number of the page to return.
+	//
 	// example:
 	//
 	// 1
-	CurrentPage *string   `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	DomainList  []*string `json:"DomainList,omitempty" xml:"DomainList,omitempty" type:"Repeated"`
+	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The list of domain names.
+	DomainList []*string `json:"DomainList,omitempty" xml:"DomainList,omitempty" type:"Repeated"`
+	// The destination IP address to query.
+	//
 	// example:
 	//
 	// 34.136.111.XXX
 	DstIP *string `json:"DstIP,omitempty" xml:"DstIP,omitempty"`
+	// The ID of the destination VPC.
+	//
 	// example:
 	//
 	// vpc-bp10w5nb30r4jzfyc****
 	DstVpcId *string `json:"DstVpcId,omitempty" xml:"DstVpcId,omitempty"`
+	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1656750960
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The language of the response. Valid values:
+	//
+	// - **zh*	- (default): Chinese
+	//
+	// - **en**: English
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The order in which to sort the queried entries. Valid values:
+	//
 	// example:
 	//
 	// desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The number of entries to return on each page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The field by which to sort the queried entries. Valid values:
+	//
+	// Default value: TotalBytes.
+	//
+	// Valid values:
+	//
+	// TotalBytes: Order by total traffic.
+	//
+	// SessionCount: Order by session count.
+	//
 	// example:
 	//
 	// TotalBytes
 	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	// The source IP address to query.
+	//
 	// example:
 	//
 	// 47.92.x.x
 	SrcIP *string `json:"SrcIP,omitempty" xml:"SrcIP,omitempty"`
+	// The ID of the source VPC.
+	//
 	// example:
 	//
 	// vpc-t4nlt09olhpazpoeg****
 	SrcVpcId *string `json:"SrcVpcId,omitempty" xml:"SrcVpcId,omitempty"`
+	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	//
 	// This parameter is required.
 	//
 	// example:

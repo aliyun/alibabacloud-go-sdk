@@ -16,7 +16,7 @@ type iDescribeInstanceRiskLevelsResponseBody interface {
 }
 
 type DescribeInstanceRiskLevelsResponseBody struct {
-	// The information about the instances.
+	// The list of instance threats.
 	InstanceRisks []*DescribeInstanceRiskLevelsResponseBodyInstanceRisks `json:"InstanceRisks,omitempty" xml:"InstanceRisks,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//
@@ -66,17 +66,17 @@ func (s *DescribeInstanceRiskLevelsResponseBody) Validate() error {
 }
 
 type DescribeInstanceRiskLevelsResponseBodyInstanceRisks struct {
-	// The risk levels of the Elastic Compute Service (ECS) instance.
+	// The list of threats for the ECS instances.
 	Details []*DescribeInstanceRiskLevelsResponseBodyInstanceRisksDetails `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
-	// The instance ID of your Cloud Firewall.
+	// The ID of the Cloud Firewall instance.
 	//
 	// example:
 	//
 	// vipcloudfw-cn-7mz2fj8nm0u
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The risk levels. Valid values:
+	// The threat level. Valid value:
 	//
-	// 	- **medium**
+	// - **medium**: medium
 	//
 	// example:
 	//
@@ -133,15 +133,15 @@ func (s *DescribeInstanceRiskLevelsResponseBodyInstanceRisks) Validate() error {
 }
 
 type DescribeInstanceRiskLevelsResponseBodyInstanceRisksDetails struct {
-	// The IP addresses of servers.
+	// The IP address of the server.
 	//
 	// example:
 	//
 	// 203.107.XX.XX
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// The risk levels. Valid values:
+	// The threat level. Valid value:
 	//
-	// 	- **medium**
+	// - **medium**: medium
 	//
 	// example:
 	//

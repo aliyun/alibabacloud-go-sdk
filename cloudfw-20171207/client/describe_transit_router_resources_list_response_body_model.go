@@ -16,10 +16,13 @@ type iDescribeTransitRouterResourcesListResponseBody interface {
 }
 
 type DescribeTransitRouterResourcesListResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// A61A2516-0A22-5B3F-986B-3D4BF2A****
-	RequestId                      *string                                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of Transit Router resources.
 	TransitRouterAttachedResources []*DescribeTransitRouterResourcesListResponseBodyTransitRouterAttachedResources `json:"TransitRouterAttachedResources,omitempty" xml:"TransitRouterAttachedResources,omitempty" type:"Repeated"`
 }
 
@@ -63,14 +66,20 @@ func (s *DescribeTransitRouterResourcesListResponseBody) Validate() error {
 }
 
 type DescribeTransitRouterResourcesListResponseBodyTransitRouterAttachedResources struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// eas-r-8k1a6jjofkp0cq****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The instance name.
+	//
 	// example:
 	//
 	// test
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// The asset type.
+	//
 	// example:
 	//
 	// VPC

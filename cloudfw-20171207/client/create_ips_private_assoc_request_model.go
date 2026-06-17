@@ -16,10 +16,14 @@ type iCreateIpsPrivateAssocRequest interface {
 }
 
 type CreateIpsPrivateAssocRequest struct {
+	// The language of the request and response messages.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// ngw-c5vhmjdfp5t****

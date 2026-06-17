@@ -26,30 +26,48 @@ type iDescribeIpsPrivateAssocRequest interface {
 }
 
 type DescribeIpsPrivateAssocRequest struct {
+	// The number of the page to return.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The language of the response. Valid values:
+	//
+	// - **zh*	- (default): Chinese.
+	//
+	// - **en**: English.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The Alibaba Cloud account ID of the resource owner.
+	//
 	// example:
 	//
 	// 258039427902****
 	MemberUid *int64 `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
+	// The number of entries to return on each page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The public IP address of the instance.
+	//
 	// example:
 	//
 	// 203.0.113.1
 	PublicIp *string `json:"PublicIp,omitempty" xml:"PublicIp,omitempty"`
+	// The ID of the resource.
+	//
 	// example:
 	//
 	// ngw-c5vhmjdfp5t****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The status of the asset.
+	//
 	// example:
 	//
 	// close

@@ -18,11 +18,16 @@ type iDescribeVpcFirewallDomainListResponseBody interface {
 }
 
 type DescribeVpcFirewallDomainListResponseBody struct {
+	// The list of returned data.
 	DataList []*DescribeVpcFirewallDomainListResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 133173B9-8010-5DF5-8B93-********
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 132
@@ -78,39 +83,58 @@ func (s *DescribeVpcFirewallDomainListResponseBody) Validate() error {
 }
 
 type DescribeVpcFirewallDomainListResponseBodyDataList struct {
+	// The list of application layer protocols.
 	ApplicationNameList []*string `json:"ApplicationNameList,omitempty" xml:"ApplicationNameList,omitempty" type:"Repeated"`
+	// The business to which the domain name belongs.
+	//
 	// example:
 	//
 	// Google
 	Business *string `json:"Business,omitempty" xml:"Business,omitempty"`
+	// The domain name.
+	//
 	// example:
 	//
 	// www.a.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The organization to which the domain name belongs.
+	//
 	// example:
 	//
 	// Google
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The volume of request traffic to the domain name. Unit: bytes.
+	//
 	// example:
 	//
 	// 3214
 	RequestBytes *int64 `json:"RequestBytes,omitempty" xml:"RequestBytes,omitempty"`
+	// The volume of response traffic. Unit: bytes.
+	//
 	// example:
 	//
 	// 4582
 	ResponseBytes *int64 `json:"ResponseBytes,omitempty" xml:"ResponseBytes,omitempty"`
+	// The number of sessions.
+	//
 	// example:
 	//
 	// 12
 	SessionCount *int64 `json:"SessionCount,omitempty" xml:"SessionCount,omitempty"`
+	// The number of source IP addresses that are used to access the domain name.
+	//
 	// example:
 	//
 	// 2
 	SrcIpCount *int64 `json:"SrcIpCount,omitempty" xml:"SrcIpCount,omitempty"`
+	// The number of source VPCs that are used to access the domain name.
+	//
 	// example:
 	//
 	// 1
 	SrcVpcCount *int64 `json:"SrcVpcCount,omitempty" xml:"SrcVpcCount,omitempty"`
+	// The total traffic volume. Unit: bytes.
+	//
 	// example:
 	//
 	// 8111126106

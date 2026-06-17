@@ -20,22 +20,36 @@ type iCreateNatFirewallPreCheckRequest interface {
 }
 
 type CreateNatFirewallPreCheckRequest struct {
+	// The language of the response message. Valid values:
+	//
+	// - **zh*	- (default): Chinese
+	//
+	// - **en**: English
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The ID of the NAT Gateway.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ngw-uf69hlxv5c817iqrk****
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	// The region ID of the NAT Gateway.
+	//
+	// > For more information about the regions where Cloud Firewall is available, see [Supported regions](https://help.aliyun.com/document_detail/195657.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	// The ID of the VPC instance.
+	//
 	// This parameter is required.
 	//
 	// example:

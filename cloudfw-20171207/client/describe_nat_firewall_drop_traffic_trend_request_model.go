@@ -18,14 +18,20 @@ type iDescribeNatFirewallDropTrafficTrendRequest interface {
 }
 
 type DescribeNatFirewallDropTrafficTrendRequest struct {
+	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	//
 	// example:
 	//
 	// 1758334822
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The source IP address.
+	//
 	// example:
 	//
 	// 122.190.56.XXX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// The start of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	//
 	// example:
 	//
 	// 1740968766

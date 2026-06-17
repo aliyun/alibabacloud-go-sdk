@@ -24,37 +24,37 @@ type iModifyTrFirewallV2RoutePolicyScopeRequest interface {
 }
 
 type ModifyTrFirewallV2RoutePolicyScopeRequest struct {
-	// The secondary traffic redirection instances.
+	// The destination instances.
 	DestCandidateList []*ModifyTrFirewallV2RoutePolicyScopeRequestDestCandidateList `json:"DestCandidateList,omitempty" xml:"DestCandidateList,omitempty" type:"Repeated"`
-	// The instance ID of the virtual private cloud (VPC) firewall.
+	// The ID of the TR firewall instance.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// vfw-tr-6520de0253bc4669bbd9
+	// vfw-tr-6520de0253bc4669****
 	FirewallId *string `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
-	// The language of the content within the response. Valid values:
+	// The language of the response. Valid values:
 	//
-	// 	- **zh*	- (default): Chinese
+	// - **zh*	- (default): Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Specifies whether to restore the traffic redirection configurations. Valid values:
+	// Specifies whether to restore the traffic redirection configuration. Valid values:
 	//
-	// 	- true: roll back
+	// - true: Rolls back the routes.
 	//
-	// 	- false: withdraw
+	// - false: Revokes the routes.
 	//
 	// example:
 	//
 	// false
 	ShouldRecover *string `json:"ShouldRecover,omitempty" xml:"ShouldRecover,omitempty"`
-	// The primary traffic redirection instances.
+	// The source instances.
 	SrcCandidateList []*ModifyTrFirewallV2RoutePolicyScopeRequestSrcCandidateList `json:"SrcCandidateList,omitempty" xml:"SrcCandidateList,omitempty" type:"Repeated"`
 	// The ID of the routing policy.
 	//
@@ -62,7 +62,7 @@ type ModifyTrFirewallV2RoutePolicyScopeRequest struct {
 	//
 	// example:
 	//
-	// policy-4d724d0139df48f18091
+	// policy-4d724d0139df48f1****
 	TrFirewallRoutePolicyId *string `json:"TrFirewallRoutePolicyId,omitempty" xml:"TrFirewallRoutePolicyId,omitempty"`
 }
 
@@ -151,13 +151,13 @@ func (s *ModifyTrFirewallV2RoutePolicyScopeRequest) Validate() error {
 }
 
 type ModifyTrFirewallV2RoutePolicyScopeRequestDestCandidateList struct {
-	// The ID of the traffic redirection instance.
+	// The ID of the instance.
 	//
 	// example:
 	//
-	// vpc-2ze9epancaw8t4shajuzi
+	// vpc-2ze9epancaw8t4uzi****
 	CandidateId *string `json:"CandidateId,omitempty" xml:"CandidateId,omitempty"`
-	// The type of the traffic redirection instance.
+	// The type of the instance.
 	//
 	// example:
 	//
@@ -196,13 +196,13 @@ func (s *ModifyTrFirewallV2RoutePolicyScopeRequestDestCandidateList) Validate() 
 }
 
 type ModifyTrFirewallV2RoutePolicyScopeRequestSrcCandidateList struct {
-	// The ID of the traffic redirection instance.
+	// The ID of the instance.
 	//
 	// example:
 	//
-	// vpc-2ze9epancaw8t4shajuzi
+	// vpc-2ze9epancaw8t4sha****
 	CandidateId *string `json:"CandidateId,omitempty" xml:"CandidateId,omitempty"`
-	// The type of the traffic redirection instance.
+	// The type of the instance.
 	//
 	// example:
 	//

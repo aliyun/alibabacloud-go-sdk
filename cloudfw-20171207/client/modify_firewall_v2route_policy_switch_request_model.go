@@ -22,43 +22,43 @@ type iModifyFirewallV2RoutePolicySwitchRequest interface {
 }
 
 type ModifyFirewallV2RoutePolicySwitchRequest struct {
-	// The instance ID of the virtual private cloud (VPC) firewall.
+	// The instance ID of the VPC boundary firewall.
 	//
 	// example:
 	//
 	// vfw-tr-5b202e7f0be64611****
 	FirewallId *string `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
-	// The language of the content within the response. Valid values:
+	// The language of the response. Valid values:
 	//
-	// 	- **zh*	- (default): Chinese
+	// - **zh*	- (default): Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Specifies whether to restore the traffic redirection configurations. Valid values:
+	// Specifies whether to restore the traffic redirection configuration. Valid values:
 	//
-	// 	- true: roll back
+	// - true: Rolls back the route.
 	//
-	// 	- false: withdraw
+	// - false: Revokes the route.
 	//
 	// example:
 	//
 	// false
 	ShouldRecover *string `json:"ShouldRecover,omitempty" xml:"ShouldRecover,omitempty"`
-	// The ID of the routing policy.
+	// The ID of the routing policy for the firewall.
 	//
 	// example:
 	//
 	// policy-93684cc5caa44b2e****
 	TrFirewallRoutePolicyId *string `json:"TrFirewallRoutePolicyId,omitempty" xml:"TrFirewallRoutePolicyId,omitempty"`
-	// The status of the routing policy. Valid values:
+	// The status of the policy. Valid values:
 	//
-	// 	- open: enabled
+	// - open: Enables the policy.
 	//
-	// 	- close: disabled
+	// - close: Disables the policy.
 	//
 	// example:
 	//

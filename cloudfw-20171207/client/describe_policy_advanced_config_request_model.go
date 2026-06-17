@@ -16,11 +16,11 @@ type iDescribePolicyAdvancedConfigRequest interface {
 }
 
 type DescribePolicyAdvancedConfigRequest struct {
-	// The natural language of the request and response. Valid values:
+	// The language of the request and response. Valid values:
 	//
-	// 	- **zh**: Chinese (default)
+	// - **zh*	- (default): Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//
@@ -28,7 +28,7 @@ type DescribePolicyAdvancedConfigRequest struct {
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// Deprecated
 	//
-	// The source IP address of the request.
+	// The source IP address of the requester.
 	//
 	// example:
 	//

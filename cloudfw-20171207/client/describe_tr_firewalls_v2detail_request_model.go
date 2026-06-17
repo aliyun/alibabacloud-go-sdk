@@ -16,17 +16,17 @@ type iDescribeTrFirewallsV2DetailRequest interface {
 }
 
 type DescribeTrFirewallsV2DetailRequest struct {
-	// The instance ID of the VPC firewall.
+	// The ID of the VPC firewall instance.
 	//
 	// example:
 	//
 	// vfw-tr-a5a6b89f46764928****
 	FirewallId *string `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
-	// The language of the content within the response. Valid values:
+	// The language of the response. Valid values:
 	//
-	// 	- **zh**: Chinese (default)
+	// - **zh*	- (default): Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//

@@ -14,11 +14,11 @@ type iDescribeDefaultIPSConfigRequest interface {
 }
 
 type DescribeDefaultIPSConfigRequest struct {
-	// The language of the content within the response. Valid values:
+	// The language of the response. Valid values:
 	//
-	// 	- **zh*	- (default)
+	// - **zh**: Chinese. This is the default value.
 	//
-	// 	- **en**
+	// - **en**: English
 	//
 	// example:
 	//

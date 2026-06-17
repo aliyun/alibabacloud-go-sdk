@@ -20,15 +20,22 @@ type iDescribeInternetTrafficTopResponseBody interface {
 }
 
 type DescribeInternetTrafficTopResponseBody struct {
+	// The number of traffic data entries.
+	//
 	// example:
 	//
 	// 10
-	DataCount *int32                                            `json:"DataCount,omitempty" xml:"DataCount,omitempty"`
-	DataList  []*DescribeInternetTrafficTopResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
+	DataCount *int32 `json:"DataCount,omitempty" xml:"DataCount,omitempty"`
+	// The list of traffic data.
+	DataList []*DescribeInternetTrafficTopResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
+	// The type of traffic data.
+	//
 	// example:
 	//
 	// in_src_ip
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 15FCCC52-1E23-57AE-B5EF-3E00A3******
@@ -93,23 +100,34 @@ func (s *DescribeInternetTrafficTopResponseBody) Validate() error {
 }
 
 type DescribeInternetTrafficTopResponseBodyDataList struct {
+	// The name of the country.
+	//
 	// example:
 	//
 	// US
 	DataName *string `json:"DataName,omitempty" xml:"DataName,omitempty"`
+	// The inbound traffic percentage.
+	//
 	// example:
 	//
 	// 47.12
 	DataValue *string `json:"DataValue,omitempty" xml:"DataValue,omitempty"`
+	// Indicates whether the data is subscribed.
+	//
 	// example:
 	//
 	// false
-	IsSubscribed *bool     `json:"IsSubscribed,omitempty" xml:"IsSubscribed,omitempty"`
-	LabelList    []*string `json:"LabelList,omitempty" xml:"LabelList,omitempty" type:"Repeated"`
+	IsSubscribed *bool `json:"IsSubscribed,omitempty" xml:"IsSubscribed,omitempty"`
+	// The list of labels.
+	LabelList []*string `json:"LabelList,omitempty" xml:"LabelList,omitempty" type:"Repeated"`
+	// The number of sessions.
+	//
 	// example:
 	//
 	// 27
 	SessionCount *int64 `json:"SessionCount,omitempty" xml:"SessionCount,omitempty"`
+	// The total traffic. Unit: bytes.
+	//
 	// example:
 	//
 	// 0

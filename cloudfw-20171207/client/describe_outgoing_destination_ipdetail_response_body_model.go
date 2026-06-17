@@ -22,13 +22,28 @@ type iDescribeOutgoingDestinationIPDetailResponseBody interface {
 }
 
 type DescribeOutgoingDestinationIPDetailResponseBody struct {
-	AssetList    []*DescribeOutgoingDestinationIPDetailResponseBodyAssetList `json:"AssetList,omitempty" xml:"AssetList,omitempty" type:"Repeated"`
-	IspName      *string                                                     `json:"IspName,omitempty" xml:"IspName,omitempty"`
-	LocationName *string                                                     `json:"LocationName,omitempty" xml:"LocationName,omitempty"`
+	// The list of assets.
+	AssetList []*DescribeOutgoingDestinationIPDetailResponseBodyAssetList `json:"AssetList,omitempty" xml:"AssetList,omitempty" type:"Repeated"`
+	// The ISP of the destination IP address.
+	//
+	// example:
+	//
+	// telecom
+	IspName *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
+	// The name of the region.
+	//
+	// example:
+	//
+	// Hangzhou
+	LocationName *string `json:"LocationName,omitempty" xml:"LocationName,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// F0F82705-CFC7-5F83-86C8-A063892F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 25
@@ -102,77 +117,124 @@ func (s *DescribeOutgoingDestinationIPDetailResponseBody) Validate() error {
 }
 
 type DescribeOutgoingDestinationIPDetailResponseBodyAssetList struct {
+	// The status of the access control policy.
+	//
 	// example:
 	//
 	// FullCoverage
 	AclCoverage *string `json:"AclCoverage,omitempty" xml:"AclCoverage,omitempty"`
+	// The time of the first access. This is a UNIX timestamp. Unit: seconds.
+	//
 	// example:
 	//
 	// 1744682438
 	FirstTime *int32 `json:"FirstTime,omitempty" xml:"FirstTime,omitempty"`
+	// The inbound traffic. Unit: bytes.
+	//
 	// example:
 	//
 	// 0.0
-	InBytes *int64  `json:"InBytes,omitempty" xml:"InBytes,omitempty"`
+	InBytes *int64 `json:"InBytes,omitempty" xml:"InBytes,omitempty"`
+	// The ISP of the destination IP address.
+	//
+	// example:
+	//
+	// telecom
 	IspName *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
+	// The time of the last access. This is a UNIX timestamp. Unit: seconds.
+	//
 	// example:
 	//
 	// 1739326614
-	LastTime     *int32  `json:"LastTime,omitempty" xml:"LastTime,omitempty"`
+	LastTime *int32 `json:"LastTime,omitempty" xml:"LastTime,omitempty"`
+	// The name of the region where the destination IP address is located.
+	//
+	// example:
+	//
+	// Hangzhou
 	LocationName *string `json:"LocationName,omitempty" xml:"LocationName,omitempty"`
+	// The ID of the NAT Gateway.
+	//
 	// example:
 	//
 	// ngw-bp1utx6wj4x9qu9tl****
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	// The name of the NAT Gateway.
+	//
 	// example:
 	//
 	// ngw-test
 	NatGatewayName *string `json:"NatGatewayName,omitempty" xml:"NatGatewayName,omitempty"`
+	// The outbound traffic. Unit: bytes.
+	//
 	// example:
 	//
 	// 0.0
 	OutBytes *int64 `json:"OutBytes,omitempty" xml:"OutBytes,omitempty"`
+	// The private IP address.
+	//
 	// example:
 	//
 	// 10.21.242XXX
 	PrivateIP *string `json:"PrivateIP,omitempty" xml:"PrivateIP,omitempty"`
+	// The public IP address.
+	//
 	// example:
 	//
 	// 47.96.181.XXX
 	PublicIP *string `json:"PublicIP,omitempty" xml:"PublicIP,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-shanghai
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	// The instance ID of the cloud product.
+	//
 	// example:
 	//
 	// i-uf63wjhyoohc1g4z****
 	ResourceInstanceId *string `json:"ResourceInstanceId,omitempty" xml:"ResourceInstanceId,omitempty"`
+	// The name of the asset instance.
+	//
 	// example:
 	//
 	// test
 	ResourceInstanceName *string `json:"ResourceInstanceName,omitempty" xml:"ResourceInstanceName,omitempty"`
+	// The type of the public IP address of the asset.
+	//
 	// example:
 	//
 	// EcsPublicIP
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The rule ID.
+	//
 	// example:
 	//
 	// 08a58465-ff4d-4c47-8782-eb008301****
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The rule name.
+	//
 	// example:
 	//
 	// test
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The number of sessions.
+	//
 	// example:
 	//
 	// 2
-	SessionCount *int64                                                             `json:"SessionCount,omitempty" xml:"SessionCount,omitempty"`
-	TagList      []*DescribeOutgoingDestinationIPDetailResponseBodyAssetListTagList `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Repeated"`
+	SessionCount *int64 `json:"SessionCount,omitempty" xml:"SessionCount,omitempty"`
+	// The list of tags.
+	TagList []*DescribeOutgoingDestinationIPDetailResponseBodyAssetListTagList `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Repeated"`
+	// The total traffic.
+	//
 	// example:
 	//
 	// 458681
 	TotalBytes *string `json:"TotalBytes,omitempty" xml:"TotalBytes,omitempty"`
+	// The ID of the VPC instance.
+	//
 	// example:
 	//
 	// vpc-9dp16jgwgyvn****
@@ -390,22 +452,32 @@ func (s *DescribeOutgoingDestinationIPDetailResponseBodyAssetList) Validate() er
 }
 
 type DescribeOutgoingDestinationIPDetailResponseBodyAssetListTagList struct {
+	// The classification ID.
+	//
 	// example:
 	//
 	// 1
 	ClassId *string `json:"ClassId,omitempty" xml:"ClassId,omitempty"`
+	// The risk level.
+	//
 	// example:
 	//
 	// 0
 	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The description of the tag.
+	//
 	// example:
 	//
 	// test
 	TagDescribe *string `json:"TagDescribe,omitempty" xml:"TagDescribe,omitempty"`
+	// The ID of the tag.
+	//
 	// example:
 	//
 	// FirstFlow
 	TagId *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
+	// The name of the tag.
+	//
 	// example:
 	//
 	// test

@@ -16,7 +16,7 @@ type iCreateVpcFirewallControlPolicyResponseBody interface {
 }
 
 type CreateVpcFirewallControlPolicyResponseBody struct {
-	// The ID of the access control policy.
+	// The unique ID of the access control policy.
 	//
 	// example:
 	//

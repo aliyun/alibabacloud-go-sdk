@@ -18,14 +18,19 @@ type iDescribeVpcFirewallManualVSwitchListResponseBody interface {
 }
 
 type DescribeVpcFirewallManualVSwitchListResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 6EED3674-74E7-54DC-8FD4-6A374133****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 3
-	TotalCount  *int32                                                         `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The list of vSwitches.
 	VSwitchList []*DescribeVpcFirewallManualVSwitchListResponseBodyVSwitchList `json:"VSwitchList,omitempty" xml:"VSwitchList,omitempty" type:"Repeated"`
 }
 
@@ -78,46 +83,70 @@ func (s *DescribeVpcFirewallManualVSwitchListResponseBody) Validate() error {
 }
 
 type DescribeVpcFirewallManualVSwitchListResponseBodyVSwitchList struct {
+	// The UID of the Alibaba Cloud account.
+	//
+	// > The root account of the Cloud Firewall member account.
+	//
 	// example:
 	//
 	// 122167357026****
 	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// The number of available IP addresses in the vSwitch.
+	//
 	// example:
 	//
 	// 10
 	AvailableIpAddressCount *int64 `json:"AvailableIpAddressCount,omitempty" xml:"AvailableIpAddressCount,omitempty"`
+	// The IPv4 CIDR block.
+	//
 	// example:
 	//
 	// 10.0.31.0/24
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	// The ID of the owner.
+	//
 	// example:
 	//
 	// 137578716100****
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the instance.
+	//
 	// example:
 	//
 	// cn-beijing
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	// The ID of the associated route table.
+	//
 	// example:
 	//
 	// vtb-2zet3gyk01o07so****
 	RouteTableId *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
+	// The status.
+	//
 	// example:
 	//
 	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the vSwitch.
+	//
 	// example:
 	//
 	// vsw-bp10d0kcp907721z****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The name of the vSwitch.
+	//
 	// example:
 	//
 	// vsw-test
 	VSwitchName *string `json:"VSwitchName,omitempty" xml:"VSwitchName,omitempty"`
+	// The ID of the VPC instance.
+	//
 	// example:
 	//
 	// vpc-uf62kq7c364sil2z2****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The zone ID.
+	//
 	// example:
 	//
 	// cn-hangzhou-a

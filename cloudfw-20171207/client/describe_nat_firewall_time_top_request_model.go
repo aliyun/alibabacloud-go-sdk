@@ -28,34 +28,50 @@ type iDescribeNatFirewallTimeTopRequest interface {
 }
 
 type DescribeNatFirewallTimeTopRequest struct {
+	// The time interval.
+	//
 	// example:
 	//
 	// 60
 	Interval *int64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The language of the content within the request and response.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The maximum number of top entries to return. The default value is 200. Valid values: 1 to 500.
+	//
 	// example:
 	//
 	// 20
 	Limit *int64 `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// The ID of the NAT Gateway.
+	//
 	// example:
 	//
 	// ngw-uf62zzi7000bca7zn****
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	// The sorting method.
+	//
 	// example:
 	//
 	// total_max_bps
 	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	// The private IP address of the NAT Gateway.
+	//
 	// example:
 	//
 	// 10.100.134.XXX
 	SrcPrivateIP *string `json:"SrcPrivateIP,omitempty" xml:"SrcPrivateIP,omitempty"`
+	// The public IP address of the NAT Gateway.
+	//
 	// example:
 	//
 	// 47.93.47.XXX
 	SrcPublicIP *string `json:"SrcPublicIP,omitempty" xml:"SrcPublicIP,omitempty"`
+	// The point in time to query the traffic data. This is a UNIX timestamp. Unit: seconds.
+	//
 	// This parameter is required.
 	//
 	// example:

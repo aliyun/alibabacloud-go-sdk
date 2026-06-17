@@ -16,9 +16,9 @@ type iDescribeTrFirewallPolicyBackUpAssociationListResponseBody interface {
 }
 
 type DescribeTrFirewallPolicyBackUpAssociationListResponseBody struct {
-	// The route tables.
+	// The list of route tables to recover.
 	PolicyAssociationBackupConfigs []*DescribeTrFirewallPolicyBackUpAssociationListResponseBodyPolicyAssociationBackupConfigs `json:"PolicyAssociationBackupConfigs,omitempty" xml:"PolicyAssociationBackupConfigs,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -76,7 +76,7 @@ type DescribeTrFirewallPolicyBackUpAssociationListResponseBodyPolicyAssociationB
 	//
 	// example:
 	//
-	// test
+	// vpc-instance
 	CandidateName *string `json:"CandidateName,omitempty" xml:"CandidateName,omitempty"`
 	// The type of the traffic redirection instance.
 	//
@@ -84,13 +84,13 @@ type DescribeTrFirewallPolicyBackUpAssociationListResponseBodyPolicyAssociationB
 	//
 	// VPC
 	CandidateType *string `json:"CandidateType,omitempty" xml:"CandidateType,omitempty"`
-	// The route table that is used after traffic redirection.
+	// The ID of the route table used after traffic redirection.
 	//
 	// example:
 	//
 	// vtb-wz9898grickmh5j09****
 	CurrentRouteTableId *string `json:"CurrentRouteTableId,omitempty" xml:"CurrentRouteTableId,omitempty"`
-	// The ID of the route table.
+	// The ID of the original route table.
 	//
 	// example:
 	//

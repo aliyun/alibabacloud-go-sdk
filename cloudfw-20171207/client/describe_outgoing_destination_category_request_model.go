@@ -26,34 +26,48 @@ type iDescribeOutgoingDestinationCategoryRequest interface {
 }
 
 type DescribeOutgoingDestinationCategoryRequest struct {
+	// The category ID.
+	//
 	// example:
 	//
 	// All
 	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// The destination type.
+	//
 	// example:
 	//
 	// domain
 	DstType *string `json:"DstType,omitempty" xml:"DstType,omitempty"`
+	// The end time of the query. This is a UNIX timestamp. Unit: seconds.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1750818370
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The language of the response message.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The source IP address of the visitor.
+	//
 	// example:
 	//
 	// 59.82.45.XXX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// The start time of the query. This is a UNIX timestamp. Unit: seconds.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1749657600
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The fixed category ID.
+	//
 	// example:
 	//
 	// All

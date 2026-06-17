@@ -16,7 +16,10 @@ type iDescribeAckClusterNamespacesResponseBody interface {
 }
 
 type DescribeAckClusterNamespacesResponseBody struct {
+	// The list of ACK cluster namespaces.
 	AckNamespaces []*string `json:"AckNamespaces,omitempty" xml:"AckNamespaces,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 133173B9-8010-5DF5-8B93-********

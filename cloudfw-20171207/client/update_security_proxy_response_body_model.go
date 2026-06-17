@@ -16,10 +16,14 @@ type iUpdateSecurityProxyResponseBody interface {
 }
 
 type UpdateSecurityProxyResponseBody struct {
+	// The application module.
+	//
 	// example:
 	//
 	// ips_server
 	Module *string `json:"Module,omitempty" xml:"Module,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 9E2CCAB4-E789-5BC9-88DC-5CE0358E****

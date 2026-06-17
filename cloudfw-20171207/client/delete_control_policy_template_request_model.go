@@ -18,17 +18,17 @@ type iDeleteControlPolicyTemplateRequest interface {
 }
 
 type DeleteControlPolicyTemplateRequest struct {
-	// The language of the content within the request and response. Valid values:
+	// The language of the request and response. Valid values:
 	//
-	// 	- **zh*	- (default): Chinese
+	// - **zh*	- (default): Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The source IP address of the request.
+	// The source IP address.
 	//
 	// example:
 	//

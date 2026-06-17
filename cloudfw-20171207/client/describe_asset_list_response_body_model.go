@@ -18,15 +18,15 @@ type iDescribeAssetListResponseBody interface {
 }
 
 type DescribeAssetListResponseBody struct {
-	// The assets that are protected by Cloud Firewall.
+	// The details of the assets protected by Cloud Firewall.
 	Assets []*DescribeAssetListResponseBodyAssets `json:"Assets,omitempty" xml:"Assets,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// CBF1E9B7-D6A0-4E9E-AD3E-2B47E6C2837D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of the assets that are protected by Cloud Firewall.
+	// The total number of assets protected by Cloud Firewall.
 	//
 	// example:
 	//
@@ -85,125 +85,125 @@ func (s *DescribeAssetListResponseBody) Validate() error {
 type DescribeAssetListResponseBodyAssets struct {
 	// The UID of the Alibaba Cloud account.
 	//
-	// >  The value of this parameter indicates the management account to which the member is added.
+	// > The UID of the management account to which the member account belongs.
 	//
 	// example:
 	//
 	// 158039427902****
 	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// The ID of the cloud resource with which the asset is associated.
+	// The ID of the instance that is associated with the asset.
 	//
 	// example:
 	//
 	// i-8vbdrjrxzt78****
 	BindInstanceId *string `json:"BindInstanceId,omitempty" xml:"BindInstanceId,omitempty"`
-	// The instance name of the asset.
+	// The name of the instance that is associated with the asset.
 	//
 	// example:
 	//
 	// instance01
 	BindInstanceName *string `json:"BindInstanceName,omitempty" xml:"BindInstanceName,omitempty"`
-	// The timestamp when the asset is added to Cloud Firewall.
+	// The time when the asset was discovered by Cloud Firewall, in YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2023-02-28 10:29:58
 	CreateTimeStamp *string `json:"CreateTimeStamp,omitempty" xml:"CreateTimeStamp,omitempty"`
-	// The public IP address of the server.
+	// The public IP address of the asset.
 	//
 	// example:
 	//
 	// 192.0.XX.XX
 	InternetAddress *string `json:"InternetAddress,omitempty" xml:"InternetAddress,omitempty"`
-	// The internal IP address of the server.
+	// The private IP address of the asset.
 	//
 	// example:
 	//
 	// 192.168.XX.XX
 	IntranetAddress *string `json:"IntranetAddress,omitempty" xml:"IntranetAddress,omitempty"`
-	// The IP version of the asset that is protected by Cloud Firewall.
+	// The IP version of the asset. Valid values:
 	//
-	// Valid values:
+	// Values:
 	//
-	// 	- **4**: IPv4
+	// - **4**: An IPv4 address.
 	//
-	// 	- **6**: IPv6
+	// - **6**: An IPv6 address.
 	//
 	// example:
 	//
 	// 4
 	IpVersion *int32 `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	// Outbound traffic in the last 7 days.
+	// The amount of outbound traffic from the asset in the last 7 days, in bytes.
 	//
 	// example:
 	//
 	// 0
 	Last7DayOutTrafficBytes *int64 `json:"Last7DayOutTrafficBytes,omitempty" xml:"Last7DayOutTrafficBytes,omitempty"`
-	// The UID of the member.
+	// The UID of the Cloud Firewall member account.
 	//
 	// example:
 	//
 	// 258039427902****
 	MemberUid *int64 `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
-	// The instance name of the asset that is protected by Cloud Firewall.
+	// The name of the asset instance.
 	//
 	// example:
 	//
 	// instance01
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The time when the asset was added. Valid values:
+	// A tag that indicates how recently the asset was discovered. Valid values:
 	//
-	// 	- **discovered in 1 hour**: within one hour.
+	// - **discovered in 1 hour**: The asset was discovered within the last hour.
 	//
-	// 	- **discovered in 1 day**: within one day.
+	// - **discovered in 1 day**: The asset was discovered within the last 24 hours.
 	//
-	// 	- **discovered in 7 days**: within seven days.
+	// - **discovered in 7 days**: The asset was discovered within the last 7 days.
 	//
 	// example:
 	//
 	// discovered in 1 hour
 	NewResourceTag *string `json:"NewResourceTag,omitempty" xml:"NewResourceTag,omitempty"`
-	// The remarks of the asset. Valid values:
+	// Additional information about the asset. Valid values:
 	//
-	// 	- **REGION_NOT_SUPPORT**: The region is not supported.
+	// - **REGION_NOT_SUPPORT**: The region is not supported.
 	//
-	// 	- **NETWORK_NOT_SUPPORT**: The network is not supported.
+	// - **NETWORK_NOT_SUPPORT**: The network type is not supported.
 	//
 	// example:
 	//
 	// REGION_NOT_SUPPORT
 	Note *string `json:"Note,omitempty" xml:"Note,omitempty"`
-	// The status of the firewall. Valid values:
+	// The protection status of the asset. Valid values:
 	//
-	// 	- **open**: enabled.
+	// - **open**: Protected.
 	//
-	// 	- **opening**: being enabled.
+	// - **opening**: Enabling protection.
 	//
-	// 	- **closed**: disabled.
+	// - **closed**: Not protected.
 	//
-	// 	- **closing**: being disabled.
+	// - **closing**: Disabling protection.
 	//
 	// example:
 	//
 	// open
 	ProtectStatus *string `json:"ProtectStatus,omitempty" xml:"ProtectStatus,omitempty"`
-	// The ID of the region in which the asset resides.
+	// The region ID of the asset.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionID *string `json:"RegionID,omitempty" xml:"RegionID,omitempty"`
-	// Indicates whether the firewall is supported in the region in which the asset resides. Valid values:
+	// Indicates whether the asset\\"s region supports Cloud Firewall protection. Valid values:
 	//
-	// 	- **enable**: yes
+	// - **enable**: Supported.
 	//
-	// 	- **disable**: no
+	// - **disable**: Not supported.
 	//
 	// example:
 	//
 	// enable
 	RegionStatus *string `json:"RegionStatus,omitempty" xml:"RegionStatus,omitempty"`
-	// The instance ID of the asset.
+	// The ID of the asset instance.
 	//
 	// example:
 	//
@@ -211,27 +211,43 @@ type DescribeAssetListResponseBodyAssets struct {
 	ResourceInstanceId *string `json:"ResourceInstanceId,omitempty" xml:"ResourceInstanceId,omitempty"`
 	// The type of the asset. Valid values:
 	//
-	// 	- **BastionHostEgressIP**: the egress IP address of a bastion host
+	// - **BastionHostEgressIP**: The egress IP address of a bastion host.
 	//
-	// 	- **BastionHostIngressIP**: the ingress IP address of a bastion host
+	// - **BastionHostIngressIP**: The ingress IP address of a bastion host.
 	//
-	// 	- **EcsEIP**: the elastic IP address (EIP) of an Elastic Compute Service (ECS) instance
+	// - **EcsEIP**: The EIP of an ECS instance.
 	//
-	// 	- **EcsPublicIP**: the public IP address of an ECS instance
+	// - **EcsPublicIP**: The public IP address of an ECS instance.
 	//
-	// 	- **EIP**: the EIP
+	// - **EIP**: A standalone EIP.
 	//
-	// 	- **EniEIP**: the EIP of an elastic network interface (ENI)
+	// - **EniEIP**: The EIP of an elastic network interface (ENI).
 	//
-	// 	- **NatEIP**: the EIP of a NAT gateway
+	// - **NatEIP**: The EIP of a NAT gateway.
 	//
-	// 	- **SlbEIP**: the EIP of a Server Load Balancer (SLB) instance
+	// - **SlbEIP**: The EIP of a Classic Load Balancer (CLB) instance.
 	//
-	// 	- **SlbPublicIP**: the public IP address of an SLB instance
+	// - **SlbPublicIP**: The public IP address of a Classic Load Balancer (CLB) instance.
 	//
-	// 	- **NatPublicIP**: the public IP address of a NAT gateway
+	// - **NatPublicIP**: The public IP address of a NAT gateway.
 	//
-	// 	- **HAVIP**: the high-availability virtual IP address (HAVIP)
+	// - **HAVIP**: A high-availability virtual IP (HAVIP).
+	//
+	// - **NlbEIP**: The EIP of a Network Load Balancer (NLB) instance.
+	//
+	// - **ApiGatewayEIP**: The EIP of an API Gateway instance.
+	//
+	// - **AlbEIP**: The EIP of an Application Load Balancer (ALB) instance.
+	//
+	// - **AiGatewayEIP**: The EIP of an AI Gateway instance.
+	//
+	// - **GaEIP**: The EIP of a Global Accelerator (GA) instance.
+	//
+	// - **SwasEIP**: The public IP address of a Simple Application Server instance.
+	//
+	// - **EcdEIP**: The public IP address of an Elastic Desktop Service (EDS) instance.
+	//
+	// - **BastionHostIP**: The IP address of a bastion host.
 	//
 	// example:
 	//
@@ -239,19 +255,19 @@ type DescribeAssetListResponseBodyAssets struct {
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The risk level of the asset. Valid values:
 	//
-	// 	- **low**: low
+	// - **low**: Low risk.
 	//
-	// 	- **middle**: medium
+	// - **middle**: Medium risk.
 	//
-	// 	- **hight**: high
+	// - **high**: High risk.
 	//
-	// >  The value of this parameter is returned only when the UserType parameter is set to free.
+	// > This parameter is returned only if the `UserType` parameter is set to `free`.
 	//
 	// example:
 	//
 	// low
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// Data leakage detection enabled status.
+	// Indicates whether data leak prevention is enabled.
 	//
 	// example:
 	//
@@ -259,27 +275,27 @@ type DescribeAssetListResponseBodyAssets struct {
 	SensitiveDataStatus *string `json:"SensitiveDataStatus,omitempty" xml:"SensitiveDataStatus,omitempty"`
 	// The status of the security group policy. Valid values:
 	//
-	// 	- **pass**: applied
+	// - **pass**: The policy is applied.
 	//
-	// 	- **block**: not applied
+	// - **block**: The policy is not applied.
 	//
-	// 	- **unsupport**: unsupported
+	// - **unsupport**: Not supported.
 	//
 	// example:
 	//
 	// block
 	SgStatus *string `json:"SgStatus,omitempty" xml:"SgStatus,omitempty"`
-	// The time when the status of the security group was last checked. The value is a UNIX timestamp. Unit: seconds.
+	// The timestamp of the last security group status check. Unit: seconds.
 	//
 	// example:
 	//
 	// 1615082937
 	SgStatusTime *int64 `json:"SgStatusTime,omitempty" xml:"SgStatusTime,omitempty"`
-	// Indicates whether traffic redirection is supported for the asset. Valid values:
+	// Indicates whether the asset supports traffic redirection. Valid values:
 	//
-	// 	- **enable**: yes
+	// - **enable**: Traffic redirection is supported.
 	//
-	// 	- **disable**: no
+	// - **disable**: Traffic redirection is not supported.
 	//
 	// example:
 	//

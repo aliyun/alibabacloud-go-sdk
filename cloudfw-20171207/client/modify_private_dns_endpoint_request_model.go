@@ -24,30 +24,50 @@ type iModifyPrivateDnsEndpointRequest interface {
 }
 
 type ModifyPrivateDnsEndpointRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pd-12345
 	AccessInstanceId *string `json:"AccessInstanceId,omitempty" xml:"AccessInstanceId,omitempty"`
+	// The name of the private instance.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// Test
 	AccessInstanceName *string `json:"AccessInstanceName,omitempty" xml:"AccessInstanceName,omitempty"`
+	// The primary DNS server.
+	//
 	// example:
 	//
 	// 1.1.1.1
 	PrimaryDns *string `json:"PrimaryDns,omitempty" xml:"PrimaryDns,omitempty"`
+	// The private DNS type. Valid values:
+	//
+	// - **PrivateZone**
+	//
+	// - **Custom**
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Custom
 	PrivateDnsType *string `json:"PrivateDnsType,omitempty" xml:"PrivateDnsType,omitempty"`
+	// The region ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	// The secondary DNS server.
+	//
 	// example:
 	//
 	// 1.1.1.2

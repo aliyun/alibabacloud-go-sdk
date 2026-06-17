@@ -20,22 +20,38 @@ type iUpdateSecurityProxyRequest interface {
 }
 
 type UpdateSecurityProxyRequest struct {
+	// The language of the response. Valid values:
+	//
+	// - **zh*	- (default): Chinese.
+	//
+	// - **en**: English.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The ID of the NAT firewall.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// proxy-natfdc73073e031****8e0d
 	ProxyId *string `json:"ProxyId,omitempty" xml:"ProxyId,omitempty"`
+	// The name of the NAT firewall. The name must be 4 to 50 characters long. It can contain letters, digits, Chinese characters, and underscores (_). The name cannot start with an underscore (_).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// proxy_auto_heyuan
 	ProxyName *string `json:"ProxyName,omitempty" xml:"ProxyName,omitempty"`
+	// Specifies whether to enable strict mode. Valid values:
+	//
+	// - 1: strict mode
+	//
+	// - 0: loose mode
+	//
 	// example:
 	//
 	// 1

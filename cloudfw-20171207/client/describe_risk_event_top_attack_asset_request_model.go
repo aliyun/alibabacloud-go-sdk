@@ -26,29 +26,42 @@ type iDescribeRiskEventTopAttackAssetRequest interface {
 }
 
 type DescribeRiskEventTopAttackAssetRequest struct {
+	// The list of attack applications.
 	AttackApp []*string `json:"AttackApp,omitempty" xml:"AttackApp,omitempty" type:"Repeated"`
+	// The type of the attack application.
+	//
 	// example:
 	//
 	// 3
 	AttackType *string `json:"AttackType,omitempty" xml:"AttackType,omitempty"`
+	// The edition of Cloud Firewall.
+	//
 	// example:
 	//
 	// 10
 	BuyVersion *string `json:"BuyVersion,omitempty" xml:"BuyVersion,omitempty"`
+	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1742955867
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The language of the content that is returned.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The source IP address of the visitor.
+	//
 	// example:
 	//
 	// 125.33.253.XX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// The start of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	//
 	// This parameter is required.
 	//
 	// example:

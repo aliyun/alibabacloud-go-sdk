@@ -26,32 +26,46 @@ type iDescribeAccessInstanceVSwitchListRequest interface {
 }
 
 type DescribeAccessInstanceVSwitchListRequest struct {
+	// The UID of the Alibaba Cloud account to which the resource belongs.
+	//
 	// example:
 	//
 	// 135809047715****
 	MemberUid *int64 `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	// The ID of the vSwitch.
+	//
 	// example:
 	//
 	// vsw-qzeaol304m***
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The ID of the VPC.
+	//
 	// example:
 	//
 	// vpc-uf6b5lyul0x******
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The zone ID.
+	//
 	// example:
 	//
 	// cn-hangzhou-i

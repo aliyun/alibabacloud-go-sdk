@@ -18,14 +18,20 @@ type iListTlsInspectCACertificatesRequest interface {
 }
 
 type ListTlsInspectCACertificatesRequest struct {
+	// The ID of the CA certificate.
+	//
 	// example:
 	//
 	// C3E91391-16CD-1BFC-A133-******D429
 	CaCertId *string `json:"CaCertId,omitempty" xml:"CaCertId,omitempty"`
+	// The page number for a paged query. The default value is 1.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The maximum number of entries to return on each page for a paged query. The default value is 20.
+	//
 	// example:
 	//
 	// 10

@@ -18,11 +18,16 @@ type iDescribeVpcFirewallAssetListResponseBody interface {
 }
 
 type DescribeVpcFirewallAssetListResponseBody struct {
+	// The data returned.
 	DataList []*DescribeVpcFirewallAssetListResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 924A6CCC-4EAD-5554-8AD0-45F5ED56****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 30
@@ -78,47 +83,70 @@ func (s *DescribeVpcFirewallAssetListResponseBody) Validate() error {
 }
 
 type DescribeVpcFirewallAssetListResponseBodyDataList struct {
+	// The IP address of the asset.
+	//
 	// example:
 	//
 	// 192.0.XX.XX
 	AssetIP *string `json:"AssetIP,omitempty" xml:"AssetIP,omitempty"`
+	// The ID of the asset instance.
+	//
 	// example:
 	//
 	// i-hp3ez3rs9bxwt034****
 	AssetInstanceId *string `json:"AssetInstanceId,omitempty" xml:"AssetInstanceId,omitempty"`
+	// The name of the asset instance.
+	//
 	// example:
 	//
 	// ecs-test
 	AssetInstanceName *string `json:"AssetInstanceName,omitempty" xml:"AssetInstanceName,omitempty"`
+	// The inbound traffic. Unit: bytes.
+	//
 	// example:
 	//
 	// 0.0
 	InBytes *int64 `json:"InBytes,omitempty" xml:"InBytes,omitempty"`
+	// The number of intrusion prevention system (IPS) hits.
+	//
 	// example:
 	//
 	// 10
 	IpsHitCnt *int64 `json:"IpsHitCnt,omitempty" xml:"IpsHitCnt,omitempty"`
+	// The outbound traffic. Unit: bytes.
+	//
 	// example:
 	//
 	// 0.0
-	OutBytes *int64    `json:"OutBytes,omitempty" xml:"OutBytes,omitempty"`
+	OutBytes *int64 `json:"OutBytes,omitempty" xml:"OutBytes,omitempty"`
+	// The list of ports.
 	PortList []*string `json:"PortList,omitempty" xml:"PortList,omitempty" type:"Repeated"`
+	// The region.
+	//
 	// example:
 	//
 	// cn-beijing
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	// The threat level.
+	//
 	// example:
 	//
 	// 3
 	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The reason for the threat.
+	//
 	// example:
 	//
 	// test
 	RiskReason *string `json:"RiskReason,omitempty" xml:"RiskReason,omitempty"`
+	// The total number of sessions.
+	//
 	// example:
 	//
 	// 27
 	SessionCount *int64 `json:"SessionCount,omitempty" xml:"SessionCount,omitempty"`
+	// The total traffic. Unit: bytes.
+	//
 	// example:
 	//
 	// 0

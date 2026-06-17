@@ -42,68 +42,98 @@ type iDescribeOutgoingDestinationIPDetailRequest interface {
 }
 
 type DescribeOutgoingDestinationIPDetailRequest struct {
+	// The status of the access control policy.
+	//
 	// example:
 	//
 	// FullCoverage
 	AclCoverage *string `json:"AclCoverage,omitempty" xml:"AclCoverage,omitempty"`
+	// The number of the page to return.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The destination IP address.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 34.136.111.XXX
 	DstIP *string `json:"DstIP,omitempty" xml:"DstIP,omitempty"`
+	// The end of the time range to query. This is a UNIX timestamp. Unit: seconds.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1733710383
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Describes the outbound connections from a private network through a NAT gateway.
+	//
 	// example:
 	//
 	// NatPrivate
 	IPType *string `json:"IPType,omitempty" xml:"IPType,omitempty"`
+	// The language of the response message.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The ID of the NAT Gateway.
+	//
 	// example:
 	//
 	// ngw-2zed6z6qkd7ogc****
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	// The sort order.
+	//
 	// example:
 	//
 	// desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The number of the page to return.
+	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The private IP address.
+	//
 	// example:
 	//
 	// 10.210.0.XXX
 	PrivateIP *string `json:"PrivateIP,omitempty" xml:"PrivateIP,omitempty"`
+	// The public IP address.
+	//
 	// example:
 	//
 	// 192.0.XX.XX
 	PublicIP *string `json:"PublicIP,omitempty" xml:"PublicIP,omitempty"`
+	// The field to use for sorting.
+	//
 	// example:
 	//
 	// InBytes
 	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	// The source IP address of the visitor.
+	//
 	// example:
 	//
 	// 1.202.193.XXX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// The start of the time range to query. This is a UNIX timestamp. Unit: seconds.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1749434787
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The ID of the tag.
+	//
 	// example:
 	//
 	// FirstFlow

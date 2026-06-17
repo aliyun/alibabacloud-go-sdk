@@ -16,7 +16,10 @@ type iDescribeAckClusterPodLabelsResponseBody interface {
 }
 
 type DescribeAckClusterPodLabelsResponseBody struct {
+	// A list of ACK labels.
 	AckLabels []*DescribeAckClusterPodLabelsResponseBodyAckLabels `json:"AckLabels,omitempty" xml:"AckLabels,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6169C0A4-B91A-5D48-AE4D-B9432D15****
@@ -63,10 +66,14 @@ func (s *DescribeAckClusterPodLabelsResponseBody) Validate() error {
 }
 
 type DescribeAckClusterPodLabelsResponseBodyAckLabels struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// app
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// storage-operator

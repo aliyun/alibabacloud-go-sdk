@@ -38,15 +38,15 @@ type iDescribeVpcFirewallControlPolicyRequest interface {
 }
 
 type DescribeVpcFirewallControlPolicyRequest struct {
-	// The action that Cloud Firewall performs on the traffic. Valid values:
+	// The action that is performed on traffic. Valid values:
 	//
-	// 	- **accept**: allows the traffic.
+	// - **accept**: allows the traffic.
 	//
-	// 	- **drop**: blocks the traffic.
+	// - **drop**: denies the traffic.
 	//
-	// 	- **log**: monitors the traffic.
+	// - **log**: monitors the traffic.
 	//
-	// > If you do not specify this parameter, access control policies are queried based on all actions.
+	// > If you do not set this parameter, policies of all actions are queried.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type DescribeVpcFirewallControlPolicyRequest struct {
 	//
 	// 4037fbf7-3e39-4634-92a4-d0155247****
 	AclUuid *string `json:"AclUuid,omitempty" xml:"AclUuid,omitempty"`
-	// The number of the page to return.
+	// The page number.
 	//
 	// example:
 	//
@@ -72,19 +72,19 @@ type DescribeVpcFirewallControlPolicyRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The destination address in the access control policy. Fuzzy match is supported.
 	//
-	// > The value of this parameter can be a CIDR block or an address book name.
+	// > The value can be a CIDR block, a domain name, or an address book.
 	//
 	// example:
 	//
 	// 192.0.XX.XX/24
 	Destination *string `json:"Destination,omitempty" xml:"Destination,omitempty"`
-	// The language of the content within the request and response.
+	// The language of the request and response.
 	//
 	// Valid values:
 	//
-	// 	- **zh**: Chinese (default)
+	// - **zh*	- (default): Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ type DescribeVpcFirewallControlPolicyRequest struct {
 	//
 	// 258039427902****
 	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page.
 	//
 	// Maximum value: 50.
 	//
@@ -106,15 +106,15 @@ type DescribeVpcFirewallControlPolicyRequest struct {
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The protocol type in the access control policy. Valid values:
 	//
-	// 	- **TCP**
+	// - **TCP**
 	//
-	// 	- **UDP**
+	// - **UDP**
 	//
-	// 	- **ICMP**
+	// - **ICMP**
 	//
-	// 	- **ANY**: all protocol types
+	// - **ANY**: all protocols
 	//
-	// > If you do not specify this parameter, access control policies of all protocol types are queried.
+	// > If you do not set this parameter, policies of all protocols are queried.
 	//
 	// example:
 	//
@@ -122,25 +122,25 @@ type DescribeVpcFirewallControlPolicyRequest struct {
 	Proto *string `json:"Proto,omitempty" xml:"Proto,omitempty"`
 	// The status of the access control policy. Valid values:
 	//
-	// 	- **true**: enabled
+	// - **true**: enabled
 	//
-	// 	- **false**: disabled
+	// - **false**: disabled
 	//
 	// example:
 	//
 	// true
 	Release *string `json:"Release,omitempty" xml:"Release,omitempty"`
-	// The recurrence type for the access control policy to take effect. Valid values:
+	// The recurrence type of the access control policy. Valid values:
 	//
-	// 	- **Permanent*	- (default): The policy always takes effect.
+	// - **Permanent*	- (default): The policy is always in effect.
 	//
-	// 	- **None**: The policy takes effect for only once.
+	// - **None**: The policy is a one-time policy.
 	//
-	// 	- **Daily**: The policy takes effect on a daily basis.
+	// - **Daily**: The policy recurs daily.
 	//
-	// 	- **Weekly**: The policy takes effect on a weekly basis.
+	// - **Weekly**: The policy recurs weekly.
 	//
-	// 	- **Monthly**: The policy takes effect on a monthly basis.
+	// - **Monthly**: The policy recurs monthly.
 	//
 	// example:
 	//
@@ -148,19 +148,19 @@ type DescribeVpcFirewallControlPolicyRequest struct {
 	RepeatType *string `json:"RepeatType,omitempty" xml:"RepeatType,omitempty"`
 	// The source address in the access control policy. Fuzzy match is supported.
 	//
-	// > The value of this parameter can be a CIDR block or an address book name.
+	// > The value can be a CIDR block or an address book.
 	//
 	// example:
 	//
 	// 192.0.XX.XX/24
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The instance ID of the VPC firewall. Valid values:
+	// The instance ID of the VPC boundary firewall. You can specify one of the following IDs:
 	//
-	// 	- If the VPC firewall protects the traffic between two VPCs that are connected by using a CEN instance, the value of this parameter must be the ID of the CEN instance.
+	// - The ID of a Cloud Enterprise Network (CEN) instance if the firewall protects traffic between two VPCs connected via the CEN instance.
 	//
-	// 	- If the VPC firewall protects the traffic between two VPCs that are connected by using an Express Connect circuit, the value of this parameter must be the instance ID of the VPC firewall.
+	// - The instance ID of the VPC boundary firewall if the firewall protects traffic between two VPCs connected via an Express Connect circuit.
 	//
-	// > You can call the [DescribeVpcFirewallAclGroupList](https://help.aliyun.com/document_detail/159760.html) operation to query the ID.
+	// > You can call the [DescribeVpcFirewallList](https://help.aliyun.com/document_detail/159760.html) operation to obtain the ID.
 	//
 	// This parameter is required.
 	//

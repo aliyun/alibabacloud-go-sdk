@@ -36,25 +36,27 @@ type iModifyAddressBookRequest interface {
 }
 
 type ModifyAddressBookRequest struct {
-	AckLabels     []*ModifyAddressBookRequestAckLabels `json:"AckLabels,omitempty" xml:"AckLabels,omitempty" type:"Repeated"`
-	AckNamespaces []*string                            `json:"AckNamespaces,omitempty" xml:"AckNamespaces,omitempty" type:"Repeated"`
-	// The addresses in the address book. Separate multiple addresses with commas (,). If you set GroupType to **ip**, **port**, or **domain**, you must specify this parameter.
+	// A list of ACK cluster pod labels.
 	//
-	// 	- If you set GroupType to **ip**, you must specify IP addresses for the address book. Example: 1.2.XX.XX/32,1.2.XX.XX/24.
+	// > Up to 10 labels are allowed.
+	AckLabels []*ModifyAddressBookRequestAckLabels `json:"AckLabels,omitempty" xml:"AckLabels,omitempty" type:"Repeated"`
+	// A list of ACK cluster pod namespaces.
 	//
-	// 	- If you set GroupType to **port**, you must specify port numbers or port ranges for the address book. Example: 80/80,100/200.
+	// > Up to 10 namespaces are allowed.
+	AckNamespaces []*string `json:"AckNamespaces,omitempty" xml:"AckNamespaces,omitempty" type:"Repeated"`
+	// A list of addresses in the address book. Separate multiple addresses with commas. Within each address element, separate the address and its description with a space. You must specify this parameter when GroupType is **ip**, **port**, or **domain**.
 	//
-	// 	- If you set GroupType to **domain**, you must specify domain names for the address book. Example: demo1.aliyun.com,demo2.aliyun.com.
+	// - When GroupType is **ip**, specify IP addresses. Example: 1.2.XX.XX/32 development CIDR block, 10.0.0.X/24,1.2.XX.XX/24 test CIDR block.
+	//
+	// - When GroupType is **port**, specify ports or port ranges. Example: 80/80 HTTP port, 100/200,3306 database port.
+	//
+	// - When GroupType is **domain**, specify domain names. Example: demo1.aliyun.com test domain, demo2.aliyun.com,www\\.aliyun.com Alibaba Cloud official website.
 	//
 	// example:
 	//
-	// 192.0.XX.XX/32, 192.0.XX.XX/24
+	// 192.0.XX.XX/32 ,192.0.XX.XX/24
 	AddressList *string `json:"AddressList,omitempty" xml:"AddressList,omitempty"`
-	// Specifies whether to automatically add public IP addresses of Elastic Compute Service (ECS) instances to the address book if the instances match the specified tags. Valid values:
-	//
-	// 	- **1**: yes
-	//
-	// 	- **0**: no
+	// Specifies whether to automatically add public IP addresses of new ECS instances that match the specified tags to the address book.
 	//
 	// example:
 	//
@@ -76,9 +78,9 @@ type ModifyAddressBookRequest struct {
 	//
 	// bj-001
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The ID of the address book.
+	// The unique ID of the address book.
 	//
-	// >  To modify the address book, you must provide the ID of the address book. You can call the [DescribeAddressBook](https://help.aliyun.com/document_detail/138869.html) operation to query the ID.
+	// > Obtain this value from [DescribeAddressBook](~~DescribeAddressBook~~).
 	//
 	// This parameter is required.
 	//
@@ -86,27 +88,17 @@ type ModifyAddressBookRequest struct {
 	//
 	// 0657ab9d-fe8b-4174-b2a6-6baf358e****
 	GroupUuid *string `json:"GroupUuid,omitempty" xml:"GroupUuid,omitempty"`
-	// The language of the content within the request and response. Valid values:
-	//
-	// 	- **zh**: Chinese (default)
-	//
-	// 	- **en**: English
+	// The language type.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Modification mode with the following values:
+	// The modification mode.
 	//
-	// - **Cover**: Use the value of the AddressList parameter to overwrite the original address book.
+	// > When GroupType is **ip**, **ipv6**, **port**, or **domain**, the default mode is **Cover*	- if this parameter is not specified.
 	//
-	// - **Append**: After the original address book, append addresses using the value of the AddressList parameter.
-	//
-	// - **Delete**: Delete addresses using the value of the AddressList parameter from the address book.
-	//
-	// >When GroupType is **ip**, **ipv6**, **port**, or **domain**, if this parameter is not configured, the default is to use the **Cover*	- method to modify the address book.
-	//
-	// 	Notice: When GroupType is **tag**, this parameter must be empty.</notice>
+	// > 	Notice: When GroupType is **tag**, this parameter must be empty.
 	//
 	// example:
 	//
@@ -114,19 +106,15 @@ type ModifyAddressBookRequest struct {
 	ModifyMode *string `json:"ModifyMode,omitempty" xml:"ModifyMode,omitempty"`
 	// Deprecated
 	//
-	// The source IP address of the request.
+	// The source IP address of the requester.
 	//
 	// example:
 	//
 	// 192.0.XX.XX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The ECS tags that you want to match.
+	// A list of ECS tags.
 	TagList []*ModifyAddressBookRequestTagList `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Repeated"`
-	// The logical relationship among ECS tags. Valid values:
-	//
-	// 	- **and**: Only the public IP addresses of ECS instances that match all the specified tags can be added to the address book.
-	//
-	// 	- **or**: The public IP addresses of ECS instances that match one of the specified tags can be added to the address book.
+	// The relationship between multiple ECS tags.
 	//
 	// example:
 	//
@@ -273,10 +261,14 @@ func (s *ModifyAddressBookRequest) Validate() error {
 }
 
 type ModifyAddressBookRequestAckLabels struct {
+	// The key of the ACK cluster pod label.
+	//
 	// example:
 	//
 	// app
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the ACK cluster pod label.
+	//
 	// example:
 	//
 	// storage-operator
@@ -314,13 +306,13 @@ func (s *ModifyAddressBookRequestAckLabels) Validate() error {
 }
 
 type ModifyAddressBookRequestTagList struct {
-	// The key of ECS tag N that you want to match.
+	// The tag key of the ECS instance.
 	//
 	// example:
 	//
 	// TXY
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The value of ECS tag N that you want to match.
+	// The tag value of the ECS instance.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type DescribeVpcListLiteResponseBody struct {
 	//
 	// 55E56A55-D93A-5614-AE00-BE2F8077F891
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the VPCs.
+	// The list of VPCs.
 	VpcList []*DescribeVpcListLiteResponseBodyVpcList `json:"VpcList,omitempty" xml:"VpcList,omitempty" type:"Repeated"`
 }
 
@@ -66,19 +66,19 @@ func (s *DescribeVpcListLiteResponseBody) Validate() error {
 }
 
 type DescribeVpcListLiteResponseBodyVpcList struct {
-	// The region ID of the VPC.
+	// The ID of the region to which the VPC belongs.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	// The ID of the VPC.
+	// The instance ID of the VPC.
 	//
 	// example:
 	//
 	// vpc-wz9dqhljd10fk0b4eh885
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The name of the VPC.
+	// The instance name of the VPC.
 	//
 	// example:
 	//

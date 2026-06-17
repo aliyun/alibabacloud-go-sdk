@@ -14,11 +14,11 @@ type iModifyNatFirewallControlPolicyResponseBody interface {
 }
 
 type ModifyNatFirewallControlPolicyResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
-	// 3868197C-E6E8-52CD-8358-05E3308430E2
+	// 3768197C-E6E8-52CD-8358-*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

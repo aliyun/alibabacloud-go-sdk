@@ -18,11 +18,16 @@ type iDescribeVpcFirewallPrecheckDetailResponseBody interface {
 }
 
 type DescribeVpcFirewallPrecheckDetailResponseBody struct {
+	// Indicates whether a task exists.
+	//
 	// example:
 	//
 	// false
-	IsFound        *bool                                                        `json:"IsFound,omitempty" xml:"IsFound,omitempty"`
+	IsFound *bool `json:"IsFound,omitempty" xml:"IsFound,omitempty"`
+	// The details of the precheck.
 	PrecheckDetail *DescribeVpcFirewallPrecheckDetailResponseBodyPrecheckDetail `json:"PrecheckDetail,omitempty" xml:"PrecheckDetail,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 4FB718F0-CC04-5A12-B17B-188CFC3F****
@@ -74,23 +79,40 @@ func (s *DescribeVpcFirewallPrecheckDetailResponseBody) Validate() error {
 }
 
 type DescribeVpcFirewallPrecheckDetailResponseBodyPrecheckDetail struct {
+	// The ID of the firewall instance.
+	//
 	// example:
 	//
 	// vfw-tr-7a9c8901ed394****
 	FirewallId *string `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
+	// The ID of the network instance.
+	//
 	// example:
 	//
 	// vpc-m5emh0w6v2e15****
-	NetworkInstanceId    *string                                                                            `json:"NetworkInstanceId,omitempty" xml:"NetworkInstanceId,omitempty"`
+	NetworkInstanceId *string `json:"NetworkInstanceId,omitempty" xml:"NetworkInstanceId,omitempty"`
+	// The list of precheck item groups.
 	PrecheckEntityGroups []*DescribeVpcFirewallPrecheckDetailResponseBodyPrecheckDetailPrecheckEntityGroups `json:"PrecheckEntityGroups,omitempty" xml:"PrecheckEntityGroups,omitempty" type:"Repeated"`
+	// The status of the precheck. Valid values:
+	//
+	// - **running**: The precheck is in progress.
+	//
+	// - **passed**: The precheck is passed.
+	//
+	// - **failed**: The precheck failed.
+	//
 	// example:
 	//
 	// failed
 	PrecheckStatus *string `json:"PrecheckStatus,omitempty" xml:"PrecheckStatus,omitempty"`
+	// The timestamp of the precheck.
+	//
 	// example:
 	//
 	// 1715136000
 	PrecheckTimestamp *string `json:"PrecheckTimestamp,omitempty" xml:"PrecheckTimestamp,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-shanghai
@@ -173,15 +195,28 @@ func (s *DescribeVpcFirewallPrecheckDetailResponseBodyPrecheckDetail) Validate()
 }
 
 type DescribeVpcFirewallPrecheckDetailResponseBodyPrecheckDetailPrecheckEntityGroups struct {
+	// The number of rules that failed the precheck.
+	//
 	// example:
 	//
 	// 3
 	FailedCount *int32 `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
+	// The name of the precheck instance.
+	//
 	// example:
 	//
 	// test
-	Name             *string                                                                                            `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The execution status of each precheck item.
 	PrecheckEntities []*DescribeVpcFirewallPrecheckDetailResponseBodyPrecheckDetailPrecheckEntityGroupsPrecheckEntities `json:"PrecheckEntities,omitempty" xml:"PrecheckEntities,omitempty" type:"Repeated"`
+	// The status of the precheck group. Valid values:
+	//
+	// - **running**
+	//
+	// - **passed**
+	//
+	// - **failed**
+	//
 	// example:
 	//
 	// running
@@ -246,15 +281,35 @@ func (s *DescribeVpcFirewallPrecheckDetailResponseBodyPrecheckDetailPrecheckEnti
 }
 
 type DescribeVpcFirewallPrecheckDetailResponseBodyPrecheckDetailPrecheckEntityGroupsPrecheckEntities struct {
+	// The information about the failed precheck.
+	//
+	// example:
+	//
+	// VPC Firewall Quota Full
 	Info *string `json:"Info,omitempty" xml:"Info,omitempty"`
+	// The name of the precheck item.
+	//
 	// example:
 	//
 	// Precheck test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The status of the precheck item. Valid values:
+	//
+	// - **running**: The precheck is in progress.
+	//
+	// - **passed**: The precheck is passed.
+	//
+	// - **failed**: The precheck failed.
+	//
 	// example:
 	//
 	// passed
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The suggested solution.
+	//
+	// example:
+	//
+	// The VPC firewall quota is full. We recommend that you increase the firewall quota
 	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
 }
 

@@ -18,11 +18,15 @@ type iDescribeUserIPSWhitelistResponseBody interface {
 }
 
 type DescribeUserIPSWhitelistResponseBody struct {
+	// The list of IPv6 whitelists for the IPS on the Internet Border.
 	Ipv6Whitelists []*DescribeUserIPSWhitelistResponseBodyIpv6Whitelists `json:"Ipv6Whitelists,omitempty" xml:"Ipv6Whitelists,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 04F788A5-6A47-5EA9-AC30-CA4DB98AD520
-	RequestId  *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of IPv4 whitelists for the IPS on the Internet Border.
 	Whitelists []*DescribeUserIPSWhitelistResponseBodyWhitelists `json:"Whitelists,omitempty" xml:"Whitelists,omitempty" type:"Repeated"`
 }
 
@@ -84,19 +88,32 @@ func (s *DescribeUserIPSWhitelistResponseBody) Validate() error {
 }
 
 type DescribeUserIPSWhitelistResponseBodyIpv6Whitelists struct {
+	// The direction of IPv6 traffic on the Internet Border.
+	//
 	// example:
 	//
 	// 1
 	Direction *int64 `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	// The type of address in the IPv6 whitelist for the Internet.
+	//
 	// example:
 	//
 	// 0
 	ListType *int64 `json:"ListType,omitempty" xml:"ListType,omitempty"`
+	// The value of the IPv6 whitelist on the Internet Border.
+	//
+	// - If the whitelist type is `custom input`: the name of the address book.
+	//
+	// - If the whitelist type is `address book reference`: an IPv6 address.
+	//
 	// example:
 	//
 	// 2408:400a:81a:7900:a77d:ea36:fcbf:de40/128
-	ListValue      *string   `json:"ListValue,omitempty" xml:"ListValue,omitempty"`
+	ListValue *string `json:"ListValue,omitempty" xml:"ListValue,omitempty"`
+	// The list of IPv6 whitelists for the Internet.
 	WhiteListValue []*string `json:"WhiteListValue,omitempty" xml:"WhiteListValue,omitempty" type:"Repeated"`
+	// The type of source or destination for which the IPv6 whitelist on the Internet Border takes effect.
+	//
 	// example:
 	//
 	// 2
@@ -161,19 +178,32 @@ func (s *DescribeUserIPSWhitelistResponseBodyIpv6Whitelists) Validate() error {
 }
 
 type DescribeUserIPSWhitelistResponseBodyWhitelists struct {
+	// The direction of IPv4 traffic on the Internet Border.
+	//
 	// example:
 	//
 	// 1
 	Direction *int64 `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	// The type of address in the IPv4 whitelist for the Internet.
+	//
 	// example:
 	//
 	// 1
 	ListType *int64 `json:"ListType,omitempty" xml:"ListType,omitempty"`
+	// The value of the IPv4 whitelist on the Internet Border.
+	//
+	// - If the whitelist type is `custom input`: the name of the address book.
+	//
+	// - If the whitelist type is `address book reference`: an IPv4 address.
+	//
 	// example:
 	//
 	// 10.10.200.4/32,10.10.200.25/32
-	ListValue      *string   `json:"ListValue,omitempty" xml:"ListValue,omitempty"`
+	ListValue *string `json:"ListValue,omitempty" xml:"ListValue,omitempty"`
+	// The list of IPv4 whitelists for the Internet.
 	WhiteListValue []*string `json:"WhiteListValue,omitempty" xml:"WhiteListValue,omitempty" type:"Repeated"`
+	// The type of source or destination for which the IPv4 whitelist on the Internet Border takes effect.
+	//
 	// example:
 	//
 	// 1

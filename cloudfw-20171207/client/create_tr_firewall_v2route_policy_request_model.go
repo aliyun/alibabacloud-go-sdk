@@ -26,49 +26,49 @@ type iCreateTrFirewallV2RoutePolicyRequest interface {
 }
 
 type CreateTrFirewallV2RoutePolicyRequest struct {
-	// The secondary traffic redirection instances.
+	// The list of destination network instances.
 	DestCandidateList []*CreateTrFirewallV2RoutePolicyRequestDestCandidateList `json:"DestCandidateList,omitempty" xml:"DestCandidateList,omitempty" type:"Repeated"`
-	// The instance ID of the VPC firewall.
+	// The ID of the VPC firewall instance.
 	//
 	// example:
 	//
 	// vfw-tr-f8ce36689b224f77****
 	FirewallId *string `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
-	// The language of the content within the response. Valid values:
+	// The language of the response. Valid values:
 	//
-	// 	- **zh*	- (default): Chinese
+	// - **zh*	- (default): Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The description of the traffic redirection instance.
+	// The description of the routing policy.
 	//
 	// example:
 	//
-	// test
+	// Singapore Point to Multipoint
 	PolicyDescription *string `json:"PolicyDescription,omitempty" xml:"PolicyDescription,omitempty"`
-	// The name of the traffic redirection instance.
+	// The name of the routing policy.
 	//
 	// example:
 	//
-	// TEST_VPC_FW
+	// Singapore Point to Multipoint
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	// The type of the traffic redirection scenario of the VPC firewall. Valid values:
+	// The traffic redirection scenario of the Enterprise Edition transit router. Valid values:
 	//
-	// 	- **fullmesh**: interconnected instances
+	// - **fullmesh**: full-mesh
 	//
-	// 	- **one_to_one**: instance to instance
+	// - **one_to_one**: point-to-point
 	//
-	// 	- **end_to_end**: instance to instances
+	// - **end_to_end**: point-to-multipoint
 	//
 	// example:
 	//
 	// fullmesh
 	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
-	// The primary traffic redirection instances.
+	// The list of source network instances.
 	SrcCandidateList []*CreateTrFirewallV2RoutePolicyRequestSrcCandidateList `json:"SrcCandidateList,omitempty" xml:"SrcCandidateList,omitempty" type:"Repeated"`
 }
 
@@ -166,13 +166,13 @@ func (s *CreateTrFirewallV2RoutePolicyRequest) Validate() error {
 }
 
 type CreateTrFirewallV2RoutePolicyRequestDestCandidateList struct {
-	// The ID of the traffic redirection instance.
+	// The ID of the network instance.
 	//
 	// example:
 	//
 	// vpc-2ze9epancaw8t4sha****
 	CandidateId *string `json:"CandidateId,omitempty" xml:"CandidateId,omitempty"`
-	// The type of the traffic redirection instance.
+	// The type of the network instance.
 	//
 	// example:
 	//
@@ -211,13 +211,13 @@ func (s *CreateTrFirewallV2RoutePolicyRequestDestCandidateList) Validate() error
 }
 
 type CreateTrFirewallV2RoutePolicyRequestSrcCandidateList struct {
-	// The ID of the traffic redirection instance.
+	// The ID of the network instance.
 	//
 	// example:
 	//
 	// vpc-2ze9epancaw8t4sha****
 	CandidateId *string `json:"CandidateId,omitempty" xml:"CandidateId,omitempty"`
-	// The type of the traffic redirection instance.
+	// The type of the network instance.
 	//
 	// example:
 	//

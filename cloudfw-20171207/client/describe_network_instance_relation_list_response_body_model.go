@@ -18,11 +18,16 @@ type iDescribeNetworkInstanceRelationListResponseBody interface {
 }
 
 type DescribeNetworkInstanceRelationListResponseBody struct {
+	// The information about the network instances.
 	NetworkInstanceList []*DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceList `json:"NetworkInstanceList,omitempty" xml:"NetworkInstanceList,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 284FF89D-4F70-546F-8EF6-77E0A530****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 12
@@ -78,24 +83,36 @@ func (s *DescribeNetworkInstanceRelationListResponseBody) Validate() error {
 }
 
 type DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceList struct {
+	// The associated CEN instance.
 	AssociatedCen []*DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceListAssociatedCen `json:"AssociatedCen,omitempty" xml:"AssociatedCen,omitempty" type:"Repeated"`
+	// The connection type.
+	//
 	// example:
 	//
 	// cen
 	ConnectType *string `json:"ConnectType,omitempty" xml:"ConnectType,omitempty"`
+	// The ID of the network instance.
+	//
 	// example:
 	//
 	// vpc-2vcwfqbrh4kr****
 	NetworkInstanceId *string `json:"NetworkInstanceId,omitempty" xml:"NetworkInstanceId,omitempty"`
+	// The name of the network instance.
+	//
 	// example:
 	//
 	// vpc-test
 	NetworkInstanceName *string `json:"NetworkInstanceName,omitempty" xml:"NetworkInstanceName,omitempty"`
+	// The type of the network instance.
+	//
 	// example:
 	//
 	// VPC
-	NetworkInstanceType     *string                                                                                      `json:"NetworkInstanceType,omitempty" xml:"NetworkInstanceType,omitempty"`
+	NetworkInstanceType *string `json:"NetworkInstanceType,omitempty" xml:"NetworkInstanceType,omitempty"`
+	// The list of peer network instances.
 	PeerNetworkInstanceList []*DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceListPeerNetworkInstanceList `json:"PeerNetworkInstanceList,omitempty" xml:"PeerNetworkInstanceList,omitempty" type:"Repeated"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-shanghai
@@ -196,10 +213,39 @@ func (s *DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceList) Val
 }
 
 type DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceListAssociatedCen struct {
-	AttachmentId      *string `json:"AttachmentId,omitempty" xml:"AttachmentId,omitempty"`
-	AttachmentName    *string `json:"AttachmentName,omitempty" xml:"AttachmentName,omitempty"`
-	CenId             *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	CenName           *string `json:"CenName,omitempty" xml:"CenName,omitempty"`
+	// The ID of the network instance connection.
+	//
+	// example:
+	//
+	// tr-attach-b92yqn***
+	AttachmentId *string `json:"AttachmentId,omitempty" xml:"AttachmentId,omitempty"`
+	// The name of the network instance connection.
+	//
+	// example:
+	//
+	// att-test1
+	AttachmentName *string `json:"AttachmentName,omitempty" xml:"AttachmentName,omitempty"`
+	// The ID of the CEN instance.
+	//
+	// example:
+	//
+	// cen-sdij1***
+	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	// The name of the CEN instance.
+	//
+	// example:
+	//
+	// test
+	CenName *string `json:"CenName,omitempty" xml:"CenName,omitempty"`
+	// The type of the transit router. Valid values:
+	//
+	// - **Basic**: Basic Edition transit router.
+	//
+	// - **Enterprise**: Enterprise Edition transit router.
+	//
+	// example:
+	//
+	// Enterprise
 	TransitRouterType *string `json:"TransitRouterType,omitempty" xml:"TransitRouterType,omitempty"`
 }
 
@@ -261,19 +307,28 @@ func (s *DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceListAssoc
 }
 
 type DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceListPeerNetworkInstanceList struct {
+	// The associated CEN instance.
 	AssociatedCen []*DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceListPeerNetworkInstanceListAssociatedCen `json:"AssociatedCen,omitempty" xml:"AssociatedCen,omitempty" type:"Repeated"`
+	// The ID of the network instance.
+	//
 	// example:
 	//
 	// vpc-dsf232d****
 	NetworkInstanceId *string `json:"NetworkInstanceId,omitempty" xml:"NetworkInstanceId,omitempty"`
+	// The name of the network instance.
+	//
 	// example:
 	//
 	// vpc-test
 	NetworkInstanceName *string `json:"NetworkInstanceName,omitempty" xml:"NetworkInstanceName,omitempty"`
+	// The type of the network instance.
+	//
 	// example:
 	//
 	// vpc
 	NetworkInstanceType *string `json:"NetworkInstanceType,omitempty" xml:"NetworkInstanceType,omitempty"`
+	// The region.
+	//
 	// example:
 	//
 	// cn-shenzhen
@@ -347,10 +402,39 @@ func (s *DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceListPeerN
 }
 
 type DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceListPeerNetworkInstanceListAssociatedCen struct {
-	AttachmentId      *string `json:"AttachmentId,omitempty" xml:"AttachmentId,omitempty"`
-	AttachmentName    *string `json:"AttachmentName,omitempty" xml:"AttachmentName,omitempty"`
-	CenId             *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	CenName           *string `json:"CenName,omitempty" xml:"CenName,omitempty"`
+	// The ID of the network instance connection.
+	//
+	// example:
+	//
+	// tr-attach-b9dyqn***
+	AttachmentId *string `json:"AttachmentId,omitempty" xml:"AttachmentId,omitempty"`
+	// The name of the network instance connection.
+	//
+	// example:
+	//
+	// att-test2
+	AttachmentName *string `json:"AttachmentName,omitempty" xml:"AttachmentName,omitempty"`
+	// The ID of the CEN instance.
+	//
+	// example:
+	//
+	// cen-sdij1***
+	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	// The name of the CEN instance.
+	//
+	// example:
+	//
+	// test
+	CenName *string `json:"CenName,omitempty" xml:"CenName,omitempty"`
+	// The version of the transit router. Valid values:
+	//
+	// - **Basic**: Basic Edition transit router.
+	//
+	// - **Enterprise**: Enterprise Edition transit router.
+	//
+	// example:
+	//
+	// Enterprise
 	TransitRouterType *string `json:"TransitRouterType,omitempty" xml:"TransitRouterType,omitempty"`
 }
 

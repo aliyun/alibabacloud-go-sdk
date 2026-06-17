@@ -18,11 +18,16 @@ type iDescribeSdlEventSdListResponseBody interface {
 }
 
 type DescribeSdlEventSdListResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 15FCCC52-1E23-57AE-B5EF-3E00A3******
-	RequestId                 *string                                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// A list of sensitive data from the data breach.
 	SdlEventSensitiveDataList []*DescribeSdlEventSdListResponseBodySdlEventSensitiveDataList `json:"SdlEventSensitiveDataList,omitempty" xml:"SdlEventSensitiveDataList,omitempty" type:"Repeated"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 6
@@ -78,23 +83,38 @@ func (s *DescribeSdlEventSdListResponseBody) Validate() error {
 }
 
 type DescribeSdlEventSdListResponseBodySdlEventSensitiveDataList struct {
+	// The sensitive data.
+	//
 	// example:
 	//
 	// sk-N***************************SxiJ
 	SensitiveData *string `json:"SensitiveData,omitempty" xml:"SensitiveData,omitempty"`
+	// The number of times the sensitive data appears.
+	//
 	// example:
 	//
 	// 6
 	SensitiveDataCnt *int64 `json:"SensitiveDataCnt,omitempty" xml:"SensitiveDataCnt,omitempty"`
+	// The sensitivity level of the data.
+	//
 	// example:
 	//
 	// S3
 	SensitiveLevel *string `json:"SensitiveLevel,omitempty" xml:"SensitiveLevel,omitempty"`
-	SensitiveType  *string `json:"SensitiveType,omitempty" xml:"SensitiveType,omitempty"`
+	// The type of sensitive data.
+	//
+	// example:
+	//
+	// id_card
+	SensitiveType *string `json:"SensitiveType,omitempty" xml:"SensitiveType,omitempty"`
+	// The source IP address.
+	//
 	// example:
 	//
 	// 172.23.191.XXX
 	SrcIp *string `json:"SrcIp,omitempty" xml:"SrcIp,omitempty"`
+	// The start time. The value is a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1753928907

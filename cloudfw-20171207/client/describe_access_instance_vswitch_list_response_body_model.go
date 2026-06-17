@@ -22,23 +22,32 @@ type iDescribeAccessInstanceVSwitchListResponseBody interface {
 }
 
 type DescribeAccessInstanceVSwitchListResponseBody struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 450D47F5-956E-543E-8502-2F71C8C54E72
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 1
-	TotalCount *int64                                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	Zones      []*DescribeAccessInstanceVSwitchListResponseBodyZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The list of zones.
+	Zones []*DescribeAccessInstanceVSwitchListResponseBodyZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
 }
 
 func (s DescribeAccessInstanceVSwitchListResponseBody) String() string {
@@ -108,7 +117,10 @@ func (s *DescribeAccessInstanceVSwitchListResponseBody) Validate() error {
 }
 
 type DescribeAccessInstanceVSwitchListResponseBodyZones struct {
+	// The list of vSwitches.
 	VSwitchList []*DescribeAccessInstanceVSwitchListResponseBodyZonesVSwitchList `json:"VSwitchList,omitempty" xml:"VSwitchList,omitempty" type:"Repeated"`
+	// The zone ID.
+	//
 	// example:
 	//
 	// cn-hangzhou-i
@@ -155,26 +167,38 @@ func (s *DescribeAccessInstanceVSwitchListResponseBodyZones) Validate() error {
 }
 
 type DescribeAccessInstanceVSwitchListResponseBodyZonesVSwitchList struct {
+	// The number of available IP addresses in the vSwitch.
+	//
 	// example:
 	//
 	// 254
 	AvailableIpAddressCount *int64 `json:"AvailableIpAddressCount,omitempty" xml:"AvailableIpAddressCount,omitempty"`
+	// The IPv4 CIDR block of the vSwitch.
+	//
 	// example:
 	//
 	// 192.168.0.0/16
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	// Indicates whether the vSwitch is in a VPC that is managed by Cloud Firewall.
+	//
 	// example:
 	//
 	// false
 	FirewallVSwitch *bool `json:"FirewallVSwitch,omitempty" xml:"FirewallVSwitch,omitempty"`
+	// The ID of the vSwitch.
+	//
 	// example:
 	//
 	// vsw-qzeaol304m***
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The name of the vSwitch.
+	//
 	// example:
 	//
 	// ManagedVSW
 	VSwitchName *string `json:"VSwitchName,omitempty" xml:"VSwitchName,omitempty"`
+	// The ID of the VPC to which the vSwitch belongs.
+	//
 	// example:
 	//
 	// vpc-uf6b5lyul0x******

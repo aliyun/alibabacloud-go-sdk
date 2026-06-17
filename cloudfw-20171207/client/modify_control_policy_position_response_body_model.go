@@ -14,7 +14,7 @@ type iModifyControlPolicyPositionResponseBody interface {
 }
 
 type ModifyControlPolicyPositionResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

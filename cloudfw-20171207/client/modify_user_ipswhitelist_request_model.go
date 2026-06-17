@@ -26,30 +26,48 @@ type iModifyUserIPSWhitelistRequest interface {
 }
 
 type ModifyUserIPSWhitelistRequest struct {
+	// The traffic direction for the Internet Border.
+	//
 	// example:
 	//
 	// 1
 	Direction *int64 `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	// The IP version.
+	//
 	// example:
 	//
 	// ipv4
 	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	// The language.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The type of address in the Internet Border whitelist.
+	//
 	// example:
 	//
 	// 2
 	ListType *int64 `json:"ListType,omitempty" xml:"ListType,omitempty"`
+	// The value of the Internet Border whitelist.
+	//
+	// - If ListType is set to `Custom`: the name of the address book.
+	//
+	// - If ListType is set to `Address book`: the IPv4 address.
+	//
 	// example:
 	//
 	// 115.236.36.114/32
 	ListValue *string `json:"ListValue,omitempty" xml:"ListValue,omitempty"`
+	// The source IP address of the visitor.
+	//
 	// example:
 	//
 	// 47.100.XX.XX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// The type of source or destination for which the Internet Border whitelist takes effect.
+	//
 	// example:
 	//
 	// 2

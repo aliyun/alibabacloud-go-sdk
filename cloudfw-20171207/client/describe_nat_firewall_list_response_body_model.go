@@ -18,9 +18,9 @@ type iDescribeNatFirewallListResponseBody interface {
 }
 
 type DescribeNatFirewallListResponseBody struct {
-	// The NAT firewalls.
+	// The list of Cloud Firewalls.
 	NatFirewallList []*DescribeNatFirewallListResponseBodyNatFirewallList `json:"NatFirewallList,omitempty" xml:"NatFirewallList,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -85,7 +85,7 @@ func (s *DescribeNatFirewallListResponseBody) Validate() error {
 type DescribeNatFirewallListResponseBodyNatFirewallList struct {
 	// The UID of the Alibaba Cloud account.
 	//
-	// >  The value of this parameter indicates the management account to which the member is added.
+	// > This is the primary account of the Cloud Firewall member account.
 	//
 	// example:
 	//
@@ -95,27 +95,27 @@ type DescribeNatFirewallListResponseBodyNatFirewallList struct {
 	//
 	// example:
 	//
-	// Create Failed.
+	// Firewall creation failed
 	ErrorDetail *string `json:"ErrorDetail,omitempty" xml:"ErrorDetail,omitempty"`
-	// The UID of the member in Cloud Firewall.
+	// The UID of the Cloud Firewall member account.
 	//
 	// example:
 	//
 	// 19106481******
 	MemberUid *int64 `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
-	// The ID of the NAT gateway.
+	// The ID of the NAT Gateway to query.
 	//
 	// example:
 	//
 	// ngw-uf6tnblxip4qcxg******
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
-	// The name of the NAT gateway.
+	// The name of the NAT Gateway.
 	//
 	// example:
 	//
-	// nat-******
+	// nat-gateway-test
 	NatGatewayName *string `json:"NatGatewayName,omitempty" xml:"NatGatewayName,omitempty"`
-	// The default route entries of the NAT gateway.
+	// The list of default route entries for the NAT Gateway.
 	NatRouteEntryList []*DescribeNatFirewallListResponseBodyNatFirewallListNatRouteEntryList `json:"NatRouteEntryList,omitempty" xml:"NatRouteEntryList,omitempty" type:"Repeated"`
 	// The ID of the NAT firewall.
 	//
@@ -127,56 +127,75 @@ type DescribeNatFirewallListResponseBodyNatFirewallList struct {
 	//
 	// example:
 	//
-	// proxy-******
-	ProxyName               *string `json:"ProxyName,omitempty" xml:"ProxyName,omitempty"`
+	// nat-firewall-test
+	ProxyName *string `json:"ProxyName,omitempty" xml:"ProxyName,omitempty"`
+	// The ID of the Elastic Network Interface (ENI) that the firewall uses.
+	//
+	// example:
+	//
+	// eni-bp127llmo4v5qju******
 	ProxyNetworkInterfaceId *string `json:"ProxyNetworkInterfaceId,omitempty" xml:"ProxyNetworkInterfaceId,omitempty"`
-	ProxyRouteTableId       *string `json:"ProxyRouteTableId,omitempty" xml:"ProxyRouteTableId,omitempty"`
-	// The status of the NAT firewall. Valid values:
+	// The ID of the route table that the firewall uses.
 	//
-	// 	- configuring
+	// example:
 	//
-	// 	- deleting
+	// vtb-bp1pmyga7p4j10a******
+	ProxyRouteTableId *string `json:"ProxyRouteTableId,omitempty" xml:"ProxyRouteTableId,omitempty"`
+	// The status of the Cloud Firewall. Valid values:
 	//
-	// 	- normal
+	// - configuring: The firewall is being created.
 	//
-	// 	- abnormal
+	// - deleting: The firewall is being deleted.
 	//
-	// 	- opening
+	// - normal: The firewall is working as expected.
 	//
-	// 	- closing
+	// - abnormal: The firewall is not working as expected.
 	//
-	// 	- closed
+	// - opening: The firewall is being enabled.
+	//
+	// - closing: The firewall is being disabled.
+	//
+	// - closed: The firewall is disabled.
 	//
 	// example:
 	//
 	// normal
-	ProxyStatus    *string `json:"ProxyStatus,omitempty" xml:"ProxyStatus,omitempty"`
-	ProxyVSwitchId *string `json:"ProxyVSwitchId,omitempty" xml:"ProxyVSwitchId,omitempty"`
-	// The region ID of your Cloud Firewall.
+	ProxyStatus *string `json:"ProxyStatus,omitempty" xml:"ProxyStatus,omitempty"`
+	// The ID of the vSwitch that the firewall uses.
 	//
-	// >  For more information about the supported regions of Cloud Firewall, see [Supported regions](https://help.aliyun.com/document_detail/195657.html).
+	// example:
+	//
+	// vsw-bp1amn3t1ktjjy8******
+	ProxyVSwitchId *string `json:"ProxyVSwitchId,omitempty" xml:"ProxyVSwitchId,omitempty"`
+	// The region ID where the Cloud Firewall is located.
+	//
+	// > For more information about the regions where Cloud Firewall is available, see [Supported regions](https://help.aliyun.com/document_detail/195657.html).
 	//
 	// example:
 	//
 	// cn-qingdao
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Indicates whether the strict mode is enabled. Valid values: 1, which specifies yes, and 0, which specifies no.
+	// Indicates whether strict mode is enabled.
+	//
+	// - 1: Strict mode is enabled.
+	//
+	// - 0: Strict mode is disabled.
 	//
 	// example:
 	//
 	// 0
 	StrictMode *int32 `json:"StrictMode,omitempty" xml:"StrictMode,omitempty"`
-	// The ID of the VPC.
+	// The ID of the VPC instance.
 	//
 	// example:
 	//
 	// vpc-2ze26ya******
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The name of the VPC.
+	// The name of the VPC instance.
 	//
 	// example:
 	//
-	// vpc-******
+	// vpc-test-instance
 	VpcName *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
 }
 
@@ -352,19 +371,19 @@ type DescribeNatFirewallListResponseBodyNatFirewallListNatRouteEntryList struct 
 	//
 	// 0.0.0.0/0
 	DestinationCidr *string `json:"DestinationCidr,omitempty" xml:"DestinationCidr,omitempty"`
-	// The next hop of the original NAT gateway.
+	// The next hop of the original NAT Gateway.
 	//
 	// example:
 	//
 	// ngw-2ze0s284r9atg5******
 	NextHopId *string `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
-	// The network type of the next hop. The value is fixed as NatGateway.
+	// The network type of the next hop. The value is \\`NatGateway\\`.
 	//
 	// example:
 	//
 	// NatGateway
 	NextHopType *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
-	// The route table to which the default route of the NAT gateway belongs.
+	// The route table that contains the default route of the NAT Gateway.
 	//
 	// example:
 	//

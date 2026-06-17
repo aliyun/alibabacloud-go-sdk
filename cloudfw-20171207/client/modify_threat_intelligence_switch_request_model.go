@@ -14,6 +14,7 @@ type iModifyThreatIntelligenceSwitchRequest interface {
 }
 
 type ModifyThreatIntelligenceSwitchRequest struct {
+	// The list of threat intelligence categories.
 	CategoryList []*ModifyThreatIntelligenceSwitchRequestCategoryList `json:"CategoryList,omitempty" xml:"CategoryList,omitempty" type:"Repeated"`
 }
 
@@ -48,14 +49,28 @@ func (s *ModifyThreatIntelligenceSwitchRequest) Validate() error {
 }
 
 type ModifyThreatIntelligenceSwitchRequestCategoryList struct {
+	// The action of the rule. Valid values:
+	//
+	// - **alert**: observation
+	//
+	// - **drop**: block
+	//
 	// example:
 	//
 	// alert
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// The ID of the threat intelligence category.
+	//
 	// example:
 	//
 	// IpOutThreatTorExit
 	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// The status of the switch. Valid values:
+	//
+	// - **1**: enabled
+	//
+	// - **0**: disabled
+	//
 	// example:
 	//
 	// 1

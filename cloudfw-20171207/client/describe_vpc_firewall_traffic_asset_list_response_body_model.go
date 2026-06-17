@@ -18,11 +18,16 @@ type iDescribeVpcFirewallTrafficAssetListResponseBody interface {
 }
 
 type DescribeVpcFirewallTrafficAssetListResponseBody struct {
+	// The returned data.
 	DataList []*DescribeVpcFirewallTrafficAssetListResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// C5BE1AA4-934A-5085-89CC-9AD1CAC3****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 132
@@ -78,26 +83,38 @@ func (s *DescribeVpcFirewallTrafficAssetListResponseBody) Validate() error {
 }
 
 type DescribeVpcFirewallTrafficAssetListResponseBodyDataList struct {
+	// The IP address of the asset.
+	//
 	// example:
 	//
 	// a.com
 	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
+	// The number of intrusion prevention system (IPS) hits.
+	//
 	// example:
 	//
 	// 10
 	IpsHitCnt *int64 `json:"IpsHitCnt,omitempty" xml:"IpsHitCnt,omitempty"`
+	// The number of sessions.
+	//
 	// example:
 	//
 	// 12
 	SessionCount *int64 `json:"SessionCount,omitempty" xml:"SessionCount,omitempty"`
+	// The total traffic in bytes.
+	//
 	// example:
 	//
 	// 253023143
 	TotalBytes *int64 `json:"TotalBytes,omitempty" xml:"TotalBytes,omitempty"`
+	// The VPC where the asset resides.
+	//
 	// example:
 	//
 	// a.com
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The name of the VPC where the asset resides.
+	//
 	// example:
 	//
 	// vpc-bp1mos0vhefmx5ah6****

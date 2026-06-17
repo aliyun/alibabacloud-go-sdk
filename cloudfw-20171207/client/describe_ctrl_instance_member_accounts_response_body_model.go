@@ -18,14 +18,20 @@ type iDescribeCtrlInstanceMemberAccountsResponseBody interface {
 }
 
 type DescribeCtrlInstanceMemberAccountsResponseBody struct {
+	// The number of Cloud Firewall member accounts.
+	//
 	// example:
 	//
 	// 3
 	InstanceMemberCount *int64 `json:"InstanceMemberCount,omitempty" xml:"InstanceMemberCount,omitempty"`
+	// The maximum number of member accounts supported by Cloud Firewall.
+	//
 	// example:
 	//
 	// 1000
 	MaxInstanceMemberNum *int64 `json:"MaxInstanceMemberNum,omitempty" xml:"MaxInstanceMemberNum,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 9CC69FDA-69F6-585B-9262-A306F425****

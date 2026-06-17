@@ -58,88 +58,158 @@ type iDescribePrivateDnsEndpointDetailResponseBody interface {
 }
 
 type DescribePrivateDnsEndpointDetailResponseBody struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// pd-12345
-	AccessInstanceId   *string `json:"AccessInstanceId,omitempty" xml:"AccessInstanceId,omitempty"`
+	AccessInstanceId *string `json:"AccessInstanceId,omitempty" xml:"AccessInstanceId,omitempty"`
+	// The name of the access instance.
+	//
+	// example:
+	//
+	// test
 	AccessInstanceName *string `json:"AccessInstanceName,omitempty" xml:"AccessInstanceName,omitempty"`
+	// The UID of the Alibaba Cloud account.
+	//
 	// example:
 	//
 	// 119898001566xxxx
 	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// The endpoint ID.
+	//
 	// example:
 	//
 	// ep-1nmi412c28c374****
-	EndpointId   *string   `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
+	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
+	// The type of the Cloud Firewall. Valid values:
+	//
+	// - **internet**
+	//
+	// - **vpc**
+	//
+	// - **nat**
 	FirewallType []*string `json:"FirewallType,omitempty" xml:"FirewallType,omitempty" type:"Repeated"`
+	// The time when the endpoint was created. This is a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1715075765
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The IP protocol. Valid values:
+	//
+	// - **TCP**
+	//
+	// - **UDP**
+	//
 	// example:
 	//
 	// tcp
 	IpProtocol *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
+	// The UID of the member account.
+	//
 	// example:
 	//
 	// 258039427902****
 	MemberUid *int64 `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
+	// The port number.
+	//
 	// example:
 	//
 	// 80
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The primary DNS server.
+	//
 	// example:
 	//
 	// 1.1.1.1
 	PrimaryDns *string `json:"PrimaryDns,omitempty" xml:"PrimaryDns,omitempty"`
+	// The ID of the primary vSwitch.
+	//
 	// example:
 	//
 	// vsw-8vbno9zxz8j9qiot****
 	PrimaryVSwitchId *string `json:"PrimaryVSwitchId,omitempty" xml:"PrimaryVSwitchId,omitempty"`
+	// The IP address of the primary vSwitch.
+	//
 	// example:
 	//
 	// 10.1.1.1
 	PrimaryVSwitchIp *string `json:"PrimaryVSwitchIp,omitempty" xml:"PrimaryVSwitchIp,omitempty"`
+	// The zone of the primary vSwitch.
+	//
 	// example:
 	//
 	// cn-shenzhen-d
 	PrimaryZoneId *string `json:"PrimaryZoneId,omitempty" xml:"PrimaryZoneId,omitempty"`
+	// The type of the private DNS. Valid values:
+	//
+	// - **PrivateZone**
+	//
+	// - **Custom*	- (Default)
+	//
 	// example:
 	//
 	// Custom
 	PrivateDnsType *string `json:"PrivateDnsType,omitempty" xml:"PrivateDnsType,omitempty"`
+	// The ID of the region where the instance is located.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 4E7F94C7-781F-5192-86CF-DB0850****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The standby DNS server.
+	//
 	// example:
 	//
 	// 1.1.1.2
 	StandbyDns *string `json:"StandbyDns,omitempty" xml:"StandbyDns,omitempty"`
+	// The ID of the standby vSwitch.
+	//
 	// example:
 	//
 	// vsw-8vb6jk75wfcwnuq****
 	StandbyVSwitchId *string `json:"StandbyVSwitchId,omitempty" xml:"StandbyVSwitchId,omitempty"`
+	// The IP address of the standby vSwitch.
+	//
 	// example:
 	//
 	// 10.1.1.2
 	StandbyVSwitchIp *string `json:"StandbyVSwitchIp,omitempty" xml:"StandbyVSwitchIp,omitempty"`
+	// The zone of the standby vSwitch.
+	//
 	// example:
 	//
 	// cn-shenzhen-e
 	StandbyZoneId *string `json:"StandbyZoneId,omitempty" xml:"StandbyZoneId,omitempty"`
+	// The instance status. Valid values:
+	//
+	// - **creating**: Creating.
+	//
+	// - **deleting**: Deleting.
+	//
+	// - **normal**: Normal.
+	//
+	// - **updating**: Updating.
+	//
 	// example:
 	//
 	// normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the task.
+	//
 	// example:
 	//
 	// 132
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The ID of the VPC.
+	//
 	// example:
 	//
 	// vpc-uf6b5lyul0x******

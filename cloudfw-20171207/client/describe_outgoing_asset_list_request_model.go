@@ -44,68 +44,100 @@ type iDescribeOutgoingAssetListRequest interface {
 }
 
 type DescribeOutgoingAssetListRequest struct {
+	// The region ID of the asset.
+	//
 	// example:
 	//
 	// cn-beijing
 	AssetsRegion *string `json:"AssetsRegion,omitempty" xml:"AssetsRegion,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1736438400
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The follow status.
+	//
 	// example:
 	//
 	// subscribe
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// Queries outbound connections routed from a private network through a NAT gateway.
+	//
 	// example:
 	//
 	// NatPrivate
 	IPType *string `json:"IPType,omitempty" xml:"IPType,omitempty"`
+	// The language of the content.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The ID of the NAT Gateway.
+	//
 	// example:
 	//
 	// ngw-bp123456g******
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	// The name of the NAT Gateway.
+	//
 	// example:
 	//
 	// ngw-test
 	NatGatewayName *string `json:"NatGatewayName,omitempty" xml:"NatGatewayName,omitempty"`
+	// The sorting order.
+	//
 	// example:
 	//
 	// desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The number of entries to return on each page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The private IP address.
+	//
 	// example:
 	//
 	// 10.200.33.XXX
 	PrivateIP *string `json:"PrivateIP,omitempty" xml:"PrivateIP,omitempty"`
+	// The public IP address.
+	//
 	// example:
 	//
 	// 47.116.70.XXX
 	PublicIP *string `json:"PublicIP,omitempty" xml:"PublicIP,omitempty"`
+	// The type of the public IP address of the asset.
+	//
 	// example:
 	//
 	// NatEIP
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The security risk.
+	//
 	// example:
 	//
 	// risk
 	SecurityRisk *string `json:"SecurityRisk,omitempty" xml:"SecurityRisk,omitempty"`
+	// The sorting basis.
+	//
 	// example:
 	//
 	// InBytes
 	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	// The start of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	//
 	// This parameter is required.
 	//
 	// example:

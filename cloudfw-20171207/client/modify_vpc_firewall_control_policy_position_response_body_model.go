@@ -14,7 +14,7 @@ type iModifyVpcFirewallControlPolicyPositionResponseBody interface {
 }
 
 type ModifyVpcFirewallControlPolicyPositionResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

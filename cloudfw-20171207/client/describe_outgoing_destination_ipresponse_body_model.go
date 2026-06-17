@@ -18,15 +18,15 @@ type iDescribeOutgoingDestinationIPResponseBody interface {
 }
 
 type DescribeOutgoingDestinationIPResponseBody struct {
-	// The IP addresses in outbound connections.
+	// A list of destination IP addresses for outgoing connections.
 	DstIPList []*DescribeOutgoingDestinationIPResponseBodyDstIPList `json:"DstIPList,omitempty" xml:"DstIPList,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// F0F82705-CFC7-5F83-86C8-A063892F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of destination IP addresses in outbound connections.
+	// The total number of outgoing IPs.
 	//
 	// example:
 	//
@@ -83,167 +83,167 @@ func (s *DescribeOutgoingDestinationIPResponseBody) Validate() error {
 }
 
 type DescribeOutgoingDestinationIPResponseBodyDstIPList struct {
-	// Indicates whether an access control policy is configured. Valid values:
+	// Indicates whether an access control policy is applied. Valid values:
 	//
-	// 	- **Uncovered**: no
+	// - **Uncovered**: No policy is applied.
 	//
-	// 	- **FullCoverage**: yes
+	// - **FullCoverage**: A policy is applied.
 	//
 	// example:
 	//
 	// Uncovered
 	AclCoverage *string `json:"AclCoverage,omitempty" xml:"AclCoverage,omitempty"`
-	// The suggestion to configure an access control policy.
+	// Details of the ACL recommendation.
 	//
 	// example:
 	//
-	// Allows the traffic.
+	// 建议放行
 	AclRecommendDetail *string `json:"AclRecommendDetail,omitempty" xml:"AclRecommendDetail,omitempty"`
-	// The status of the access control policy. Valid values:
+	// The health status of the access control policy. Valid values:
 	//
-	// 	- **normal**: healthy
+	// - **Normal**: Healthy.
 	//
-	// 	- **Abnormal**: unhealthy
+	// - **Abnormal**: Unhealthy.
 	//
 	// example:
 	//
 	// Normal
 	AclStatus *string `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
-	// The information about the address book.
+	// A list of address books that contain this destination IP address.
 	AddressGroupList []*DescribeOutgoingDestinationIPResponseBodyDstIPListAddressGroupList `json:"AddressGroupList,omitempty" xml:"AddressGroupList,omitempty" type:"Repeated"`
-	// The application ports.
+	// The list of application ports.
 	//
-	// >  Only the first 100 application ports are displayed.
+	// > This response returns a maximum of 99 application ports. If more than 99 ports exist, only the first 99 are returned.
 	ApplicationPortList []*DescribeOutgoingDestinationIPResponseBodyDstIPListApplicationPortList `json:"ApplicationPortList,omitempty" xml:"ApplicationPortList,omitempty" type:"Repeated"`
-	// The outbound asset count.
+	// The total number of assets that initiated outgoing connections to this destination IP.
 	//
 	// example:
 	//
 	// 20
 	AssetCount *int64 `json:"AssetCount,omitempty" xml:"AssetCount,omitempty"`
-	// The type of the tag. Valid values:
+	// The threat intelligence category of the destination IP address. Valid values:
 	//
-	// 	- **Suspicious**
+	// - **Suspicious**
 	//
-	// 	- **Malicious**
+	// - **Malicious**
 	//
-	// 	- **Trusted**
+	// - **Trusted**
 	//
 	// example:
 	//
 	// Trusted
 	CategoryClassId *string `json:"CategoryClassId,omitempty" xml:"CategoryClassId,omitempty"`
-	// The ID of the service type. Valid values:
+	// The ID of the service category. Valid values:
 	//
-	// 	- **Aliyun**: Alibaba Cloud services
+	// - **Aliyun**: The destination is an Alibaba Cloud product.
 	//
-	// 	- **NotAliyun**: third-party services
+	// - **NotAliyun**: The destination is a non-Alibaba Cloud product.
 	//
 	// example:
 	//
 	// Aliyun
 	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	// The type of the service to which the destination IP address belongs. Valid values:
+	// The service category of the destination IP address. Valid values:
 	//
-	// 	- **Alibaba Cloud services**
+	// - **Alibaba Cloud product**
 	//
-	// 	- **Third-party services**
+	// - **non-Alibaba Cloud product**
 	//
 	// example:
 	//
-	// Alibaba Cloud services
+	// 阿里云产品
 	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
-	// The destination IP addresses in outbound connections.
+	// The destination IP address of the outgoing connection.
 	//
 	// example:
 	//
 	// 10.0.XX.XX
 	DstIP *string `json:"DstIP,omitempty" xml:"DstIP,omitempty"`
-	// The name of the group to which the access control policy belongs.
+	// The name of the rule group.
 	//
 	// example:
 	//
-	// Rule_test
+	// rules_test
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// Indicates whether an access control policy is configured. Valid values:
+	// Indicates whether an access control rule exists. Valid values:
 	//
-	// 	- **true**
+	// - **true**: An access control rule exists.
 	//
-	// 	- **false**
+	// - **false**: No access control rule exists.
 	//
 	// example:
 	//
 	// true
 	HasAcl *string `json:"HasAcl,omitempty" xml:"HasAcl,omitempty"`
-	// Indicates whether an access control policy is recommended. Valid values:
+	// Indicates whether an ACL is recommended. Valid values:
 	//
-	// 	- **true**
+	// - **true**: An ACL is recommended.
 	//
-	// 	- **false**
+	// - **false**: No ACL is recommended.
 	//
 	// example:
 	//
 	// true
 	HasAclRecommend *bool `json:"HasAclRecommend,omitempty" xml:"HasAclRecommend,omitempty"`
-	// The inbound traffic. Unit: bytes.
+	// The total inbound traffic in bytes.
 	//
 	// example:
 	//
 	// 472
 	InBytes *int64 `json:"InBytes,omitempty" xml:"InBytes,omitempty"`
-	// Indicates whether the destination IP address is added to a whitelist. Valid values:
+	// Indicates whether the destination IP address is added to the allowlist. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The destination IP address is on the allowlist.
 	//
-	// 	- **false**
+	// - **false**: The destination IP address is not on the allowlist.
 	//
 	// example:
 	//
 	// true
 	IsMarkNormal *bool `json:"IsMarkNormal,omitempty" xml:"IsMarkNormal,omitempty"`
-	// Location name.
+	// The geographical location of the destination IP address.
 	//
 	// example:
 	//
-	// Qingdao, Shandong
+	// 山东省青岛市
 	LocationName *string `json:"LocationName,omitempty" xml:"LocationName,omitempty"`
-	// The outbound traffic. Unit: bytes.
+	// The total outbound traffic in bytes.
 	//
 	// example:
 	//
 	// 965
 	OutBytes *int64 `json:"OutBytes,omitempty" xml:"OutBytes,omitempty"`
-	// The outbound private asset count.
+	// The total number of private assets that initiated outgoing connections to this destination IP.
 	//
 	// example:
 	//
 	// 20
 	PrivateAssetCount *int64 `json:"PrivateAssetCount,omitempty" xml:"PrivateAssetCount,omitempty"`
-	// The UUID of the access control policy.
+	// The UUID of the ACL rule.
 	//
 	// example:
 	//
 	// fadsfd-dfadf-df****
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The name of the access control policy.
+	// The name of the ACL rule.
 	//
 	// example:
 	//
-	// Default rule
+	// 默认规则
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The reason why the domain name is secure.
+	// The reason for the security recommendation.
 	//
 	// example:
 	//
-	// Intelligent policy: The destination domain name belongs to Alibaba Cloud Computing Co., Ltd. The domain name mainly provides services for Alibaba Cloud. No security risks are found, and you can add the domain name to the whitelist.
+	// 智能策略：该目的域名所属组织为阿里云计算有限公司，主要业务为阿里云，未发现安全风险，可用于配置外联白名单。
 	SecurityReason *string `json:"SecurityReason,omitempty" xml:"SecurityReason,omitempty"`
-	// The suggestion to handle the traffic of the domain name in outbound connections. Valid values:
+	// The recommended security action for the outgoing connection. Valid values:
 	//
-	// 	- **pass**: allow
+	// - **pass**: Allows the connection.
 	//
-	// 	- **alert**: deny
+	// - **alert**: Rejects the connection.
 	//
-	// 	- **drop**: monitor
+	// - **drop**: Drops the connection.
 	//
 	// example:
 	//
@@ -255,9 +255,9 @@ type DescribeOutgoingDestinationIPResponseBodyDstIPList struct {
 	//
 	// 4
 	SessionCount *int64 `json:"SessionCount,omitempty" xml:"SessionCount,omitempty"`
-	// The tags.
+	// A list of tags associated with the destination IP.
 	TagList []*DescribeOutgoingDestinationIPResponseBodyDstIPListTagList `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Repeated"`
-	// The total traffic. Unit: bytes
+	// The total traffic volume in bytes.
 	//
 	// example:
 	//
@@ -534,7 +534,7 @@ type DescribeOutgoingDestinationIPResponseBodyDstIPListAddressGroupList struct {
 	//
 	// example:
 	//
-	// IP address book
+	// IP地址簿
 	AddressGroupName *string `json:"AddressGroupName,omitempty" xml:"AddressGroupName,omitempty"`
 	// The UUID of the address book.
 	//
@@ -575,39 +575,39 @@ func (s *DescribeOutgoingDestinationIPResponseBodyDstIPListAddressGroupList) Val
 }
 
 type DescribeOutgoingDestinationIPResponseBodyDstIPListApplicationPortList struct {
-	// The application type used in the access control policy. Valid values:
+	// The application protocol detected for the connection. Valid values:
 	//
-	// 	- **FTP**
+	// - **FTP**
 	//
-	// 	- **HTTP**
+	// - **HTTP**
 	//
-	// 	- **HTTPS**
+	// - **HTTPS**
 	//
-	// 	- **Memcache**
+	// - **Memcache**
 	//
-	// 	- **MongoDB**
+	// - **MongoDB**
 	//
-	// 	- **MQTT**
+	// - **MQTT**
 	//
-	// 	- **MySQL**
+	// - **MySQL**
 	//
-	// 	- **RDP**
+	// - **RDP**
 	//
-	// 	- **Redis**
+	// - **Redis**
 	//
-	// 	- **SMTP**
+	// - **SMTP**
 	//
-	// 	- **SMTPS**
+	// - **SMTPS**
 	//
-	// 	- **SSH**
+	// - **SSH**
 	//
-	// 	- **SSL_No_Cert**
+	// - **SSL_No_Cert**
 	//
-	// 	- **SSL**
+	// - **SSL**
 	//
-	// 	- **VNC**
+	// - **VNC**
 	//
-	// >  The value of this parameter depends on the value of the Proto parameter. If you set Proto to TCP, you can set ApplicationNameList to any valid value. If you configure both ApplicationNameList and ApplicationName, only the value of ApplicationNameList is used.
+	// >
 	//
 	// example:
 	//
@@ -619,7 +619,7 @@ type DescribeOutgoingDestinationIPResponseBodyDstIPListApplicationPortList struc
 	//
 	// 80
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// List of reasons for failing to analyze the protocol when it is identified as Unknown.
+	// A list of reasons why the application protocol was not identified.
 	UnknownReason []*string `json:"UnknownReason,omitempty" xml:"UnknownReason,omitempty" type:"Repeated"`
 }
 
@@ -663,13 +663,13 @@ func (s *DescribeOutgoingDestinationIPResponseBodyDstIPListApplicationPortList) 
 }
 
 type DescribeOutgoingDestinationIPResponseBodyDstIPListTagList struct {
-	// The type of the tag. Valid values:
+	// The category of the threat intelligence tag. Valid values:
 	//
-	// 	- **Suspicious**
+	// - **Suspicious**
 	//
-	// 	- **Malicious**
+	// - **Malicious**
 	//
-	// 	- **Trusted**
+	// - **Trusted**
 	//
 	// example:
 	//
@@ -677,33 +677,33 @@ type DescribeOutgoingDestinationIPResponseBodyDstIPListTagList struct {
 	ClassId *string `json:"ClassId,omitempty" xml:"ClassId,omitempty"`
 	// The risk level. Valid values:
 	//
-	// 	- **1**: low.
+	// - **1**: Low
 	//
-	// 	- **2**: medium.
+	// - **2**: Medium
 	//
-	// 	- **3**: high.
+	// - **3**: High
 	//
 	// example:
 	//
 	// 1
 	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The description of the tag.
+	// The description of the threat intelligence tag.
 	//
 	// example:
 	//
-	// Tag that indicates traffic is allowed
+	// ReleaseLabel
 	TagDescribe *string `json:"TagDescribe,omitempty" xml:"TagDescribe,omitempty"`
-	// The ID of the tag.
+	// The ID of the threat intelligence tag.
 	//
 	// example:
 	//
-	// AliYun
+	// ReleaseLabel
 	TagId *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
-	// The name of the tag.
+	// The name of the threat intelligence tag.
 	//
 	// example:
 	//
-	// Tag that indicates traffic is allowed
+	// ReleaseLabel
 	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
 }
 

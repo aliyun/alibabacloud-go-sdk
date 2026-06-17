@@ -58,55 +58,55 @@ type DescribeTrFirewallsV2DetailResponseBody struct {
 	//
 	// cen-37nddhri7jf0d2****
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The description of the VPC firewall.
+	// The description of the firewall.
 	//
 	// example:
 	//
-	// VPC Firewall
+	// vpc-firewall-description
 	FirewallDescription *string `json:"FirewallDescription,omitempty" xml:"FirewallDescription,omitempty"`
-	// The ID of the Elastic Network Interface (ENI) with which the VPC firewall is associated.
+	// The ID of the elastic network interface (ENI) of the firewall.
 	//
 	// example:
 	//
 	// eni-uf621u00nafypeex****
 	FirewallEniId *string `json:"FirewallEniId,omitempty" xml:"FirewallEniId,omitempty"`
-	// The ID of the VPC to which the ENI is attached.
+	// The ID of the VPC to which the ENI of the firewall belongs.
 	//
 	// example:
 	//
 	// vpc-2zeppcci782zeh2bk****
 	FirewallEniVpcId *string `json:"FirewallEniVpcId,omitempty" xml:"FirewallEniVpcId,omitempty"`
-	// The ID of the vSwitch with which the ENI is associated.
+	// The ID of the vSwitch to which the ENI of the firewall belongs.
 	//
 	// example:
 	//
 	// vsw-uf6ptq1kl1c1d9pw9****
 	FirewallEniVswitchId *string `json:"FirewallEniVswitchId,omitempty" xml:"FirewallEniVswitchId,omitempty"`
-	// The instance ID of the VPC firewall.
+	// The ID of the VPC firewall instance.
 	//
 	// example:
 	//
 	// vfw-tr-9c7c711abdfa4d80****
 	FirewallId *string `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
-	// The name of the VPC firewall.
+	// The name of the VPC firewall instance.
 	//
 	// example:
 	//
 	// cloudfirewall-manual
 	FirewallName *string `json:"FirewallName,omitempty" xml:"FirewallName,omitempty"`
-	// The status of the VPC firewall. Valid values:
+	// The status of the firewall. Valid values:
 	//
-	// 	- Creating
+	// - Creating: The firewall is being created.
 	//
-	// 	- Deleting
+	// - Deleting: The firewall is being deleted.
 	//
-	// 	- Ready
+	// - Ready: The firewall is ready.
 	//
 	// example:
 	//
 	// Ready
 	FirewallStatus *string `json:"FirewallStatus,omitempty" xml:"FirewallStatus,omitempty"`
-	// The subnet CIDR block of the VPC in which the ENI of the firewall is stored in automatic mode.
+	// The CIDR block of the vSwitch that is automatically created in the firewall VPC to host the ENI of the firewall in automatic mode.
 	//
 	// example:
 	//
@@ -114,19 +114,19 @@ type DescribeTrFirewallsV2DetailResponseBody struct {
 	FirewallSubnetCidr *string `json:"FirewallSubnetCidr,omitempty" xml:"FirewallSubnetCidr,omitempty"`
 	// The status of the VPC firewall. Valid values:
 	//
-	// 	- **opened**: The VPC firewall is enabled.
+	// - **opened**: The firewall is enabled.
 	//
-	// 	- **closed**: The VPC firewall is disabled.
+	// - **closed**: The firewall is disabled.
 	//
-	// 	- **notconfigured**: The VPC firewall is not created.
+	// - **notconfigured**: The firewall is not configured.
 	//
-	// 	- **configured**: The VPC firewall is created but is not enabled.
+	// - **configured**: The firewall is configured.
 	//
-	// 	- **creating**: The VPC firewall is being created.
+	// - **creating**: The firewall is being created.
 	//
-	// 	- **opening**: The VPC firewall is being enabled.
+	// - **opening**: The firewall is being enabled.
 	//
-	// 	- **deleting**: The VPC firewall is being deleted.
+	// - **deleting**: The firewall is being deleted.
 	//
 	// > If you do not specify this parameter, VPC firewalls in all states are queried.
 	//
@@ -134,60 +134,65 @@ type DescribeTrFirewallsV2DetailResponseBody struct {
 	//
 	// opened
 	FirewallSwitchStatus *string `json:"FirewallSwitchStatus,omitempty" xml:"FirewallSwitchStatus,omitempty"`
-	// The CIDR block that is allocated to the VPC created for the VPC firewall in automatic mode.
+	// The CIDR block of the VPC that is automatically created for the firewall in automatic mode.
 	//
 	// example:
 	//
 	// 10.0.0.0/16
 	FirewallVpcCidr *string `json:"FirewallVpcCidr,omitempty" xml:"FirewallVpcCidr,omitempty"`
-	// The region ID of the transit router.
+	// The region ID of the transit router instance.
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 7E53A7FB-3EB9-5E33-8E50-B8F417D1E02B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The routing mode of the VPC firewall. Valid values:
+	// The routing mode. Valid values:
 	//
-	// 	- **managed**: automatic mode
+	// - **managed**: automatic mode
 	//
-	// 	- **manual**: manual mode
+	// - **manual**: manual mode
 	//
 	// example:
 	//
 	// managed
-	RouteMode      *string `json:"RouteMode,omitempty" xml:"RouteMode,omitempty"`
+	RouteMode *string `json:"RouteMode,omitempty" xml:"RouteMode,omitempty"`
+	// The ID of the transit router attachment.
+	//
+	// example:
+	//
+	// tr-attach-r1llaxxeha71jsm36v
 	TrAttachmentId *string `json:"TrAttachmentId,omitempty" xml:"TrAttachmentId,omitempty"`
-	// The primary subnet CIDR block that the VPC uses to connect to the transit router in automatic mode.
+	// The primary CIDR block of the vSwitch that is automatically created in the firewall VPC to connect to the transit router in automatic mode.
 	//
 	// example:
 	//
 	// 10.0.2.0/24
 	TrAttachmentMasterCidr *string `json:"TrAttachmentMasterCidr,omitempty" xml:"TrAttachmentMasterCidr,omitempty"`
-	// In automatic mode, the primary availability zone of the subnet in the firewall VPC used for connecting to TR.
+	// The primary zone of the vSwitch that is automatically created in the firewall VPC to connect to the transit router in automatic mode.
 	//
 	// example:
 	//
 	// cn-hangzhou-h
 	TrAttachmentMasterZone *string `json:"TrAttachmentMasterZone,omitempty" xml:"TrAttachmentMasterZone,omitempty"`
-	// The secondary subnet CIDR block that the VPC uses to connect to the transit router in automatic mode.
+	// The secondary CIDR block of the vSwitch that is automatically created in the firewall VPC to connect to the transit router in automatic mode.
 	//
 	// example:
 	//
 	// 10.0.3.0/24
 	TrAttachmentSlaveCidr *string `json:"TrAttachmentSlaveCidr,omitempty" xml:"TrAttachmentSlaveCidr,omitempty"`
-	// In automatic mode, the backup availability zone for the subnet used to connect TR in the firewall VPC.
+	// The secondary zone of the vSwitch that is automatically created in the firewall VPC to connect to the transit router in automatic mode.
 	//
 	// example:
 	//
 	// cn-hangzhou-i
 	TrAttachmentSlaveZone *string `json:"TrAttachmentSlaveZone,omitempty" xml:"TrAttachmentSlaveZone,omitempty"`
-	// The ID of the transit router.
+	// The ID of the transit router instance.
 	//
 	// example:
 	//

@@ -62,63 +62,71 @@ type iDescribeUserBuyVersionResponseBody interface {
 }
 
 type DescribeUserBuyVersionResponseBody struct {
+	// The quota for ACK cluster connectors.
+	//
 	// example:
 	//
 	// 5
 	AckClusterConnectorQuota *int64 `json:"AckClusterConnectorQuota,omitempty" xml:"AckClusterConnectorQuota,omitempty"`
-	// The ID of the Alibaba Cloud account that is used to purchase Cloud Firewall.
+	// The ID of the Alibaba Cloud account.
 	//
 	// example:
 	//
 	// 119898001566xxxx
 	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// The default bandwidth of the edition.
+	//
 	// example:
 	//
 	// 1000
 	DefaultBandwidth *int64 `json:"DefaultBandwidth,omitempty" xml:"DefaultBandwidth,omitempty"`
-	// The time when Cloud Firewall expires.
+	// The expiration time of the Cloud Firewall instance.
 	//
-	// >  The value is a timestamp in milliseconds.
+	// > The value is a UNIX timestamp in milliseconds.
 	//
-	// >  If you use Cloud Firewall that uses the pay-as-you-go billing method, ignore this parameter.
+	// > This parameter does not apply to pay-as-you-go editions.
 	//
 	// example:
 	//
 	// 1726934400000
 	Expire *int64 `json:"Expire,omitempty" xml:"Expire,omitempty"`
+	// The extended bandwidth.
+	//
 	// example:
 	//
 	// 1000
 	ExtensionBandwidth *int64 `json:"ExtensionBandwidth,omitempty" xml:"ExtensionBandwidth,omitempty"`
+	// The number of general-purpose instances.
+	//
 	// example:
 	//
 	// 10
 	GeneralInstance *int64 `json:"GeneralInstance,omitempty" xml:"GeneralInstance,omitempty"`
-	// The instance ID of Cloud Firewall.
+	// The ID of the Cloud Firewall instance.
 	//
-	// >  If you use a trial of Cloud Firewall, ignore this parameter.
+	// > This parameter does not apply to trial editions.
 	//
 	// example:
 	//
 	// vipcloudfw-cn-xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The status of Cloud Firewall. Valid values:
+	// The operational status of the Cloud Firewall instance. Valid values:
 	//
-	// 	- **normal**: Cloud Firewall is running as expected.
+	// - **normal**: The instance is running as expected.
 	//
-	// 	- **init**: Cloud Firewall is being initialized.
+	// - **init**: The instance is being initialized.
 	//
-	// 	- **deleting**: Cloud Firewall is being deleted.
+	// - **deleting**: The instance is being deleted.
 	//
-	// 	- **abnormal**: An exception occurs in Cloud Firewall.
+	// - **abnormal**: The instance is in an abnormal state.
 	//
-	// 	- **free**: Cloud Firewall is invalid.
+	// - **free**: No valid instance is available.
 	//
 	// example:
 	//
 	// normal
 	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	// The peak Internet traffic that can be protected.
+	// The purchased traffic processing capability for the Internet firewall.
 	//
 	// example:
 	//
@@ -126,7 +134,7 @@ type DescribeUserBuyVersionResponseBody struct {
 	InternetBandwidth *int64 `json:"InternetBandwidth,omitempty" xml:"InternetBandwidth,omitempty"`
 	// The number of public IP addresses that can be protected.
 	//
-	// >  This parameter takes effect only for Cloud Firewall that uses the subscription billing method.
+	// > This parameter applies only to subscription instances.
 	//
 	// example:
 	//
@@ -134,107 +142,117 @@ type DescribeUserBuyVersionResponseBody struct {
 	IpNumber *int64 `json:"IpNumber,omitempty" xml:"IpNumber,omitempty"`
 	// Indicates whether log delivery is enabled. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Enabled
 	//
-	// 	- **false**
+	// - **false**: Disabled
 	//
 	// example:
 	//
 	// true
 	LogStatus *bool `json:"LogStatus,omitempty" xml:"LogStatus,omitempty"`
-	// The log storage capacity.
+	// The purchased log storage capacity.
 	//
-	// >  This parameter takes effect only for Cloud Firewall that uses the subscription billing method.
+	// > This parameter applies only to subscription instances.
 	//
 	// example:
 	//
 	// 3000
 	LogStorage *int64 `json:"LogStorage,omitempty" xml:"LogStorage,omitempty"`
+	// The major version.
+	//
 	// example:
 	//
 	// 1
 	MajorVersion *int64 `json:"MajorVersion,omitempty" xml:"MajorVersion,omitempty"`
-	// The status of the burstable protected traffic feature. Valid values:
+	// Indicates whether elastic billing for excess traffic is enabled. Valid values:
 	//
-	// 	- **1000000**: enabled.
+	// - **1000000**: Enabled
 	//
-	// 	- **0**: disabled.
+	// - **0**: Disabled
 	//
-	// >  This parameter takes effect only for Cloud Firewall that uses the subscription billing method.
+	// > This parameter applies only to subscription instances.
 	//
 	// example:
 	//
 	// 0
 	MaxOverflow *int64 `json:"MaxOverflow,omitempty" xml:"MaxOverflow,omitempty"`
-	// The peak traffic of NAT private network that can be protected.
+	// The purchased traffic processing capability for the NAT firewall.
 	//
 	// example:
 	//
 	// 3000
 	NatBandwidth *int64 `json:"NatBandwidth,omitempty" xml:"NatBandwidth,omitempty"`
+	// The quota for private DNS connectors.
+	//
 	// example:
 	//
 	// 5
 	PrivateDnsConnectorQuota *int64 `json:"PrivateDnsConnectorQuota,omitempty" xml:"PrivateDnsConnectorQuota,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// F71B03EE-xxxxx-91D79CC6AA1A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether data leakage prevention is enabled.
+	//
 	// example:
 	//
 	// 1
 	Sdl *int64 `json:"Sdl,omitempty" xml:"Sdl,omitempty"`
-	// The time when Cloud Firewall was activated.
+	// The time when the Cloud Firewall instance was enabled.
 	//
-	// >  The value is a timestamp in milliseconds.
+	// > The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1692504764000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The temporary bandwidth.
+	//
 	// example:
 	//
 	// 1000
 	TemporaryBandwidth *int64 `json:"TemporaryBandwidth,omitempty" xml:"TemporaryBandwidth,omitempty"`
+	// Indicates whether threat intelligence is enabled.
+	//
 	// example:
 	//
 	// 1
 	ThreatIntelligence *int64 `json:"ThreatIntelligence,omitempty" xml:"ThreatIntelligence,omitempty"`
-	// Indicates whether Cloud Firewall is valid. Valid values:
+	// The status of the Cloud Firewall instance. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The instance is valid.
 	//
-	// 	- **false**
+	// - **false**: The instance is invalid.
 	//
 	// example:
 	//
 	// true
 	UserStatus *bool `json:"UserStatus,omitempty" xml:"UserStatus,omitempty"`
-	// The edition of Cloud Firewall. Valid values:
+	// The edition of the Cloud Firewall instance. Valid values:
 	//
-	// 	- **2**: Premium Edition.
+	// - **2**: Premium Edition
 	//
-	// 	- **3**: Enterprise Edition.
+	// - **3**: Enterprise Edition
 	//
-	// 	- **4**: Ultimate Edition.
+	// - **4**: Ultimate Edition
 	//
-	// 	- **10**: Cloud Firewall that uses the pay-as-you-go billing method.
+	// - **10**: Pay-as-you-go
 	//
 	// example:
 	//
 	// 2
 	Version *int32 `json:"Version,omitempty" xml:"Version,omitempty"`
-	// The peak cross-VPC traffic that can be protected.
+	// The purchased traffic processing capability for the VPC firewall.
 	//
 	// example:
 	//
 	// 3000
 	VpcBandwidth *int64 `json:"VpcBandwidth,omitempty" xml:"VpcBandwidth,omitempty"`
-	// The number of virtual private clouds (VPCs) that can be protected.
+	// The number of purchased VPC firewalls.
 	//
-	// >  This parameter takes effect only for Cloud Firewall that uses the subscription billing method.
+	// > This parameter applies only to subscription instances.
 	//
 	// example:
 	//

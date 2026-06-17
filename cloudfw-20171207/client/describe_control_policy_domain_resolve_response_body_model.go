@@ -16,10 +16,13 @@ type iDescribeControlPolicyDomainResolveResponseBody interface {
 }
 
 type DescribeControlPolicyDomainResolveResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// F0F82705-CFC7-5F83-86C8-A063892F****
-	RequestId     *string                                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The domain resolution results.
 	ResolveResult []*DescribeControlPolicyDomainResolveResponseBodyResolveResult `json:"ResolveResult,omitempty" xml:"ResolveResult,omitempty" type:"Repeated"`
 }
 
@@ -63,15 +66,22 @@ func (s *DescribeControlPolicyDomainResolveResponseBody) Validate() error {
 }
 
 type DescribeControlPolicyDomainResolveResponseBodyResolveResult struct {
+	// The domain name.
+	//
 	// example:
 	//
 	// example.com
-	Domain     *string   `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The list of ip addresses.
 	IpAddrList []*string `json:"IpAddrList,omitempty" xml:"IpAddrList,omitempty" type:"Repeated"`
+	// The supported ip version.
+	//
 	// example:
 	//
 	// 4
 	IpVersion *int32 `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	// The update time, provided as a unix timestamp in seconds.
+	//
 	// example:
 	//
 	// 1579091739

@@ -28,38 +28,58 @@ type iDescribeAckClusterConnectorsRequest interface {
 }
 
 type DescribeAckClusterConnectorsRequest struct {
+	// The ID of the ACK cluster.
+	//
 	// example:
 	//
 	// 0E0C30C977463****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The name of the ACK cluster connector.
+	//
 	// example:
 	//
 	// test
 	ConnectorName *string `json:"ConnectorName,omitempty" xml:"ConnectorName,omitempty"`
+	// The language type for displaying the error reason for the ACK cluster connector\\"s health status.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The Alibaba Cloud UID to which the ACK cluster resource belongs.
+	//
 	// example:
 	//
 	// 135809047715****
 	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
+	// The page number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNo *string `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID of the ACK cluster connector. Source of values:
+	//
+	// - [DescribeAccessInstanceRegionList](~~DescribeAccessInstanceRegionList~~): Query the list of synchronization node regions.
+	//
+	// > For more information about the regions supported by Cloud Firewall for ACK cluster connectors, see [ACK Cluster Synchronization Nodes](https://help.aliyun.com/document_detail/2865120.html).
+	//
 	// example:
 	//
 	// cn-shenzhen
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	// The VPC instance ID to which the ACK cluster belongs.
+	//
 	// example:
 	//
 	// vpc-uf6b5lyul0x******

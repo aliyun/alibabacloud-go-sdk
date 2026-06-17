@@ -18,11 +18,11 @@ type iDescribeInstanceMembersResponseBody interface {
 }
 
 type DescribeInstanceMembersResponseBody struct {
-	// The information about the member.
+	// The information about the Cloud Firewall member accounts.
 	Members []*DescribeInstanceMembersResponseBodyMembers `json:"Members,omitempty" xml:"Members,omitempty" type:"Repeated"`
 	// The pagination information.
 	PageInfo *DescribeInstanceMembersResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -84,41 +84,41 @@ func (s *DescribeInstanceMembersResponseBody) Validate() error {
 }
 
 type DescribeInstanceMembersResponseBodyMembers struct {
-	// The time when the member was added to Cloud Firewall. The value is a timestamp. Unit: seconds.
+	// The time when the member account was added to Cloud Firewall. This value is a UNIX timestamp. Unit: seconds.
 	//
 	// example:
 	//
 	// 1615189819
 	CreateTime *int32 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The remarks of the member.
+	// The description of the Cloud Firewall member account.
 	//
 	// example:
 	//
 	// renewal
 	MemberDesc *string `json:"MemberDesc,omitempty" xml:"MemberDesc,omitempty"`
-	// The name of the member.
+	// The name of the Cloud Firewall member account.
 	//
 	// example:
 	//
 	// cloudfirewall_2
 	MemberDisplayName *string `json:"MemberDisplayName,omitempty" xml:"MemberDisplayName,omitempty"`
-	// The status of the member. Valid values:
+	// The status of the Cloud Firewall member account. Valid values:
 	//
-	// 	- **normal**
+	// - **normal**: Normal
 	//
-	// 	- **deleting**
+	// - **deleting**: Deleting
 	//
 	// example:
 	//
 	// normal
 	MemberStatus *string `json:"MemberStatus,omitempty" xml:"MemberStatus,omitempty"`
-	// The UID of the member.
+	// The UID of the Cloud Firewall member account.
 	//
 	// example:
 	//
 	// 258039427902****
 	MemberUid *int64 `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
-	// The time when the member was last modified. The value is a timestamp. Unit: seconds.
+	// The time when the member account was last modified. This value is a UNIX timestamp. Unit: seconds.
 	//
 	// example:
 	//
@@ -193,19 +193,19 @@ func (s *DescribeInstanceMembersResponseBodyMembers) Validate() error {
 }
 
 type DescribeInstanceMembersResponseBodyPageInfo struct {
-	// The page number.
+	// The page number of the returned page.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries per page.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of the members.
+	// The total number of Cloud Firewall member accounts.
 	//
 	// example:
 	//

@@ -18,16 +18,26 @@ type iResetRuleHitCountRequest interface {
 }
 
 type ResetRuleHitCountRequest struct {
+	// The unique ID of the access control policy.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 211fd804-30f5-470f-ab26-c465a4****
 	AclUuid *string `json:"AclUuid,omitempty" xml:"AclUuid,omitempty"`
+	// The language of the response. Valid values:
+	//
+	// - **zh**: Chinese (default)
+	//
+	// - **en**: English
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The source IP address of the requester.
+	//
 	// example:
 	//
 	// 112.64.126.XXX

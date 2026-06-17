@@ -18,11 +18,16 @@ type iDescribeVpcFirewallDropTrafficTrendResponseBody interface {
 }
 
 type DescribeVpcFirewallDropTrafficTrendResponseBody struct {
+	// The list of returned data.
 	DataList []*DescribeVpcFirewallDropTrafficTrendResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
+	// The maximum number of blocked connections.
+	//
 	// example:
 	//
 	// 0
 	DropSessionMax *int64 `json:"DropSessionMax,omitempty" xml:"DropSessionMax,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// C87C1797-02E6-5EEB-A943-4416207D****
@@ -78,26 +83,38 @@ func (s *DescribeVpcFirewallDropTrafficTrendResponseBody) Validate() error {
 }
 
 type DescribeVpcFirewallDropTrafficTrendResponseBodyDataList struct {
+	// The number of sessions blocked by the access control list (ACL).
+	//
 	// example:
 	//
 	// 12
 	AclDrop *int64 `json:"AclDrop,omitempty" xml:"AclDrop,omitempty"`
+	// The data timestamp. The value is a string in the YYYY-MM-DD HH:mm:ss format.
+	//
 	// example:
 	//
 	// 2018-08-25 12:00:00
 	DataTime *string `json:"DataTime,omitempty" xml:"DataTime,omitempty"`
+	// The number of blocked sessions.
+	//
 	// example:
 	//
 	// 10
 	DropSession *int64 `json:"DropSession,omitempty" xml:"DropSession,omitempty"`
+	// The number of sessions blocked by the intrusion prevention system (IPS).
+	//
 	// example:
 	//
 	// 5
 	IpsDrop *int64 `json:"IpsDrop,omitempty" xml:"IpsDrop,omitempty"`
+	// The data timestamp. This value is a UNIX timestamp. Unit: seconds.
+	//
 	// example:
 	//
 	// 1659405600
 	Time *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
+	// The total number of sessions.
+	//
 	// example:
 	//
 	// 153188

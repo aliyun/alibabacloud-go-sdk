@@ -28,40 +28,56 @@ type iDescribeConfiguredDomainNamesRequest interface {
 }
 
 type DescribeConfiguredDomainNamesRequest struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The traffic direction.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// out
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	// The domain name.
+	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The group name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ignore
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The language of the response.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The trace code.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// yundun
 	SourceCode *string `json:"SourceCode,omitempty" xml:"SourceCode,omitempty"`
+	// The source IP address.
+	//
 	// example:
 	//
 	// 1.202.149.XXX

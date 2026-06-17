@@ -34,50 +34,84 @@ type iDescribeVpcFirewallTrafficAssetListRequest interface {
 }
 
 type DescribeVpcFirewallTrafficAssetListRequest struct {
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The domain name.
+	//
 	// example:
 	//
 	// www.****.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The end time. The value is a Unix timestamp that is accurate to the second.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1656750960
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The IP address of the asset.
+	//
 	// example:
 	//
 	// 47.92.x.x
 	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
+	// Specifies whether to count only the traffic that is used to access AI services.
+	//
 	// example:
 	//
 	// true
 	IsAITraffic *string `json:"IsAITraffic,omitempty" xml:"IsAITraffic,omitempty"`
+	// The language of the content within the request and response. Valid values:
+	//
+	// - **zh*	- (default): Chinese
+	//
+	// - **en**: English
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The field to sort by.
+	//
+	// Default value: TotalBytes.
+	//
+	// Valid values:
+	//
+	// TotalBytes: Sorts by total traffic.
+	//
+	// SessionCount: Sorts by the number of sessions.
+	//
 	// example:
 	//
 	// SessionCount
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The number of entries to return on each page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The sort order. Valid values: \\`asc\\`, \\`desc\\`.
+	//
 	// example:
 	//
 	// desc
 	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	// The start time. The value is a Unix timestamp that is accurate to the second.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1656664560
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The VPC where the asset resides.
+	//
 	// example:
 	//
 	// vpc-m5ewlqkuf7orclr1****

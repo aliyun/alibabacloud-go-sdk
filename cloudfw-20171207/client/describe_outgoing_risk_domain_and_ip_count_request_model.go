@@ -16,10 +16,14 @@ type iDescribeOutgoingRiskDomainAndIpCountRequest interface {
 }
 
 type DescribeOutgoingRiskDomainAndIpCountRequest struct {
+	// The end of the time range to query. The value is a UNIX timestamp that is accurate to the second.
+	//
 	// example:
 	//
 	// 1751595213
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The beginning of the time range to query. The value is a UNIX timestamp that is accurate to the second.
+	//
 	// example:
 	//
 	// 1749434787

@@ -20,20 +20,32 @@ type iDescribeOutgoingStatisticRequest interface {
 }
 
 type DescribeOutgoingStatisticRequest struct {
+	// The end time. Use a UNIX timestamp in seconds.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1734920543
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The language of the response. Valid values:
+	//
+	// - **zh*	- (default): Chinese
+	//
+	// - **en**: English
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The source IP address of the visitor.
+	//
 	// example:
 	//
 	// 117.32.136.XXX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// The start time. Use a UNIX timestamp in seconds.
+	//
 	// This parameter is required.
 	//
 	// example:

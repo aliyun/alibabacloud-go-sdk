@@ -16,11 +16,11 @@ type iDeleteSecurityProxyRequest interface {
 }
 
 type DeleteSecurityProxyRequest struct {
-	// The language of the content within the response. Valid values:
+	// The language of the request and response. Valid values:
 	//
-	// 	- **zh*	- (default): Chinese
+	// - **zh*	- (default): Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//
@@ -32,7 +32,7 @@ type DeleteSecurityProxyRequest struct {
 	//
 	// example:
 	//
-	// proxy-nat00ab412ef93d4275a6b5
+	// proxy-nat00ab******
 	ProxyId *string `json:"ProxyId,omitempty" xml:"ProxyId,omitempty"`
 }
 

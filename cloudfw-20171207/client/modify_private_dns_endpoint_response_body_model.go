@@ -14,6 +14,8 @@ type iModifyPrivateDnsEndpointResponseBody interface {
 }
 
 type ModifyPrivateDnsEndpointResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 6B780BD6-282C-51A9-A8E6-59F636BAFA54

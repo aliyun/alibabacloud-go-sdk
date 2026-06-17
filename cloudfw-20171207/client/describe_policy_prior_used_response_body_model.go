@@ -18,9 +18,9 @@ type iDescribePolicyPriorUsedResponseBody interface {
 }
 
 type DescribePolicyPriorUsedResponseBody struct {
-	// The lowest priority of existing access control policies.
+	// The lowest priority of your access control policies.
 	//
-	// >  The value -1 indicates the lowest priority.
+	// > A larger value indicates a lower priority.
 	//
 	// example:
 	//
@@ -32,9 +32,9 @@ type DescribePolicyPriorUsedResponseBody struct {
 	//
 	// CBF1E9B7-D6A0-4E9E-AD3E-2B47E6C2837D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The highest priority of existing access control policies.
+	// The highest priority of your access control policies.
 	//
-	// >  The value 0 indicates the highest priority.
+	// > A smaller value indicates a higher priority.
 	//
 	// example:
 	//

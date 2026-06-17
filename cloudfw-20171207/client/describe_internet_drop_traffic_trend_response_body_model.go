@@ -22,19 +22,28 @@ type iDescribeInternetDropTrafficTrendResponseBody interface {
 }
 
 type DescribeInternetDropTrafficTrendResponseBody struct {
+	// The data list.
 	DataList []*DescribeInternetDropTrafficTrendResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
+	// The peak number of dropped sessions in the specified period.
+	//
 	// example:
 	//
 	// 8090
 	DropSessionMax *int64 `json:"DropSessionMax,omitempty" xml:"DropSessionMax,omitempty"`
+	// The average drop ratio for the entire query period, expressed as a percentage.
+	//
 	// example:
 	//
 	// 12.34
 	RatioAverage *string `json:"RatioAverage,omitempty" xml:"RatioAverage,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// F0F82705-CFC7-5F83-86C8-A063892F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The average drop ratio from the previous cycle, expressed as a percentage.
+	//
 	// example:
 	//
 	// 1.23
@@ -108,46 +117,68 @@ func (s *DescribeInternetDropTrafficTrendResponseBody) Validate() error {
 }
 
 type DescribeInternetDropTrafficTrendResponseBodyDataList struct {
+	// The number of sessions dropped by access control list (ACL) rules.
+	//
 	// example:
 	//
 	// 12
 	AclDrop *int64 `json:"AclDrop,omitempty" xml:"AclDrop,omitempty"`
+	// The current time point. The time is in the `YYYY-MM-DD HH:mm:ss` format.
+	//
 	// example:
 	//
 	// 2018-08-25 12:00:00
 	DataTime *string `json:"DataTime,omitempty" xml:"DataTime,omitempty"`
+	// The ratio of dropped sessions to total sessions for this data point.
+	//
 	// example:
 	//
 	// 1
 	DropRatio *string `json:"DropRatio,omitempty" xml:"DropRatio,omitempty"`
+	// The number of dropped sessions for the corresponding data point in the previous cycle.
+	//
 	// example:
 	//
 	// 0
 	DropRing *int64 `json:"DropRing,omitempty" xml:"DropRing,omitempty"`
+	// The drop ratio for the corresponding data point in the previous cycle.
+	//
 	// example:
 	//
 	// 1
 	DropRingRatio *string `json:"DropRingRatio,omitempty" xml:"DropRingRatio,omitempty"`
+	// The number of dropped sessions.
+	//
 	// example:
 	//
 	// 12
 	DropSession *int64 `json:"DropSession,omitempty" xml:"DropSession,omitempty"`
+	// The number of sessions dropped by the intrusion prevention system (IPS).
+	//
 	// example:
 	//
 	// 5
 	IpsDrop *int64 `json:"IpsDrop,omitempty" xml:"IpsDrop,omitempty"`
+	// The corresponding time point in the previous cycle. The time is in the `YYYY-MM-DD HH:mm:ss` format.
+	//
 	// example:
 	//
 	// 2018-08-25 12:00:00
 	RingDataTime *string `json:"RingDataTime,omitempty" xml:"RingDataTime,omitempty"`
+	// The timestamp for the corresponding data point in the previous cycle. This value is a Unix timestamp that represents the number of seconds that have elapsed since 00:00:00 UTC on January 1, 1970.
+	//
 	// example:
 	//
 	// 1724982259
 	RingTime *int64 `json:"RingTime,omitempty" xml:"RingTime,omitempty"`
+	// The timestamp.
+	//
 	// example:
 	//
 	// 1659405600
 	Time *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
+	// The total number of sessions.
+	//
 	// example:
 	//
 	// 10

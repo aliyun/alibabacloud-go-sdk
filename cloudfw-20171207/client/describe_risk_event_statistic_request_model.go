@@ -26,29 +26,70 @@ type iDescribeRiskEventStatisticRequest interface {
 }
 
 type DescribeRiskEventStatisticRequest struct {
+	// The attacked application.
 	AttackApp []*string `json:"AttackApp,omitempty" xml:"AttackApp,omitempty" type:"Repeated"`
+	// The attack type of the intrusion prevention event. Valid values:
+	//
+	// - **1**: anomalous connection
+	//
+	// - **2**: command execution
+	//
+	// - **3**: brute-force attack
+	//
+	// - **4**: scanning
+	//
+	// - **5**: other
+	//
+	// - **6**: information leakage
+	//
+	// - **7**: DoS attack
+	//
+	// - **8**: overflow attack
+	//
+	// - **9**: web attack
+	//
+	// - **10**: trojan backdoor
+	//
+	// - **11**: virus and worm
+	//
+	// - **12**: mining
+	//
+	// - **13**: reverse shell
+	//
+	// > If you do not specify this parameter, all attack types are queried.
+	//
 	// example:
 	//
 	// 1
 	AttackType *string `json:"AttackType,omitempty" xml:"AttackType,omitempty"`
+	// The edition of Cloud Firewall.
+	//
 	// example:
 	//
 	// 10
 	BuyVersion *string `json:"BuyVersion,omitempty" xml:"BuyVersion,omitempty"`
+	// The end time. The value is a UNIX timestamp. Unit: seconds.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1534408267
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The language of the response.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The source IP address of the visitor.
+	//
 	// example:
 	//
 	// 218.76.30.XXX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// The start time. The value is a UNIX timestamp. Unit: seconds.
+	//
 	// This parameter is required.
 	//
 	// example:

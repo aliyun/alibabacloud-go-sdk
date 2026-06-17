@@ -20,15 +20,22 @@ type iDescribeNetworkTrafficTopRatioResponseBody interface {
 }
 
 type DescribeNetworkTrafficTopRatioResponseBody struct {
+	// The number of results returned.
+	//
 	// example:
 	//
 	// 1
-	DataCount *int32                                                `json:"DataCount,omitempty" xml:"DataCount,omitempty"`
-	DataList  []*DescribeNetworkTrafficTopRatioResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
+	DataCount *int32 `json:"DataCount,omitempty" xml:"DataCount,omitempty"`
+	// The list of data values.
+	DataList []*DescribeNetworkTrafficTopRatioResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
+	// The data type.
+	//
 	// example:
 	//
 	// in_src_ip
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// C05D58A1-28A9-563A-BB59-5F7D1867****
@@ -93,10 +100,14 @@ func (s *DescribeNetworkTrafficTopRatioResponseBody) Validate() error {
 }
 
 type DescribeNetworkTrafficTopRatioResponseBodyDataList struct {
+	// The data name.
+	//
 	// example:
 	//
 	// test
 	DataName *string `json:"DataName,omitempty" xml:"DataName,omitempty"`
+	// The ratio.
+	//
 	// example:
 	//
 	// 12

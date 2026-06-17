@@ -16,7 +16,10 @@ type iDescribeNatFirewallAclGroupListResponseBody interface {
 }
 
 type DescribeNatFirewallAclGroupListResponseBody struct {
+	// The list of NAT firewalls.
 	NatFirewalls []*DescribeNatFirewallAclGroupListResponseBodyNatFirewalls `json:"NatFirewalls,omitempty" xml:"NatFirewalls,omitempty" type:"Repeated"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// F06DE24D-6EB9-5F55-B588-7BB946DF****
@@ -63,22 +66,32 @@ func (s *DescribeNatFirewallAclGroupListResponseBody) Validate() error {
 }
 
 type DescribeNatFirewallAclGroupListResponseBodyNatFirewalls struct {
+	// The number of policies in the access control policy group of the NAT firewall.
+	//
 	// example:
 	//
 	// 32
 	AclRuleCount *int32 `json:"AclRuleCount,omitempty" xml:"AclRuleCount,omitempty"`
+	// Indicates whether the NAT firewall is the default one.
+	//
 	// example:
 	//
 	// true
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// The ID of the NAT Gateway.
+	//
 	// example:
 	//
 	// ngw-2zed6z6qkd7ogc****
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	// The name of the NAT Gateway.
+	//
 	// example:
 	//
 	// ngw-test
 	NatGatewayName *string `json:"NatGatewayName,omitempty" xml:"NatGatewayName,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing

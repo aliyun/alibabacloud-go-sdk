@@ -16,9 +16,9 @@ type iPutEnableFwSwitchResponseBody interface {
 }
 
 type PutEnableFwSwitchResponseBody struct {
-	// The status information of the asset when it is not synchronized to Cloud Firewall.
+	// Information about unsynchronized assets.
 	AbnormalResourceStatusList []*PutEnableFwSwitchResponseBodyAbnormalResourceStatusList `json:"AbnormalResourceStatusList,omitempty" xml:"AbnormalResourceStatusList,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -66,9 +66,9 @@ func (s *PutEnableFwSwitchResponseBody) Validate() error {
 }
 
 type PutEnableFwSwitchResponseBodyAbnormalResourceStatusList struct {
-	// The message displayed when the asset is not synchronized to Cloud Firewall. Valid values:
+	// A message that provides details about why an asset was not synchronized. Valid value:
 	//
-	// 	- cloudfirewall do not sync this ip address: This IP address is not synchronized to Cloud Firewall.
+	// - `cloudfirewall do not sync this ip address`: Cloud Firewall does not synchronize the IP address of the asset.
 	//
 	// example:
 	//
@@ -80,9 +80,9 @@ type PutEnableFwSwitchResponseBodyAbnormalResourceStatusList struct {
 	//
 	// 203.0.113.0
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
-	// The status of the asset when it is not synchronized to Cloud Firewall. Valid values:
+	// The synchronization status of the asset. Valid value:
 	//
-	// 	- ip_not_sync: The asset is not synchronized.
+	// - `ip_not_sync`: The asset is not synchronized.
 	//
 	// example:
 	//

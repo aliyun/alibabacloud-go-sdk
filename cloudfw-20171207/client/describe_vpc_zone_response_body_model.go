@@ -22,7 +22,7 @@ type DescribeVpcZoneResponseBody struct {
 	//
 	// 694DFBF3-C060-529F-92D0-7FC7E0DA1E21
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The zones.
+	// The list of zones.
 	ZoneList []*DescribeVpcZoneResponseBodyZoneList `json:"ZoneList,omitempty" xml:"ZoneList,omitempty" type:"Repeated"`
 }
 
@@ -70,15 +70,15 @@ type DescribeVpcZoneResponseBodyZoneList struct {
 	//
 	// example:
 	//
-	// Hangzhou Zone B
+	// China East 1 Zone B
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	// The zone ID.
+	// The ID of the zone.
 	//
 	// example:
 	//
 	// cn-hangzhou-b
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	// The zone type. Default value: AvailabilityZone. This value indicates Alibaba Cloud zones.
+	// The type of the zone. The default value is \\`AvailabilityZone\\`, which indicates a standard cloud zone.
 	//
 	// example:
 	//

@@ -16,10 +16,18 @@ type iDescribeAclRuleCountRequest interface {
 }
 
 type DescribeAclRuleCountRequest struct {
+	// The language of the response. Valid values:
+	//
+	// - **zh*	- (default): Chinese
+	//
+	// - **en**: English
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The source IP address of the requester.
+	//
 	// example:
 	//
 	// 27.151.85.XX

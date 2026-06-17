@@ -26,7 +26,7 @@ type ModifyTrFirewallV2RoutePolicyScopeResponseBody struct {
 	//
 	// example:
 	//
-	// policy-4d724d0139df48f18091
+	// policy-4d724d0139df48f1****
 	TrFirewallRoutePolicyId *string `json:"TrFirewallRoutePolicyId,omitempty" xml:"TrFirewallRoutePolicyId,omitempty"`
 }
 

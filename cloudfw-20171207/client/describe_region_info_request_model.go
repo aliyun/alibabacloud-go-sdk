@@ -18,16 +18,26 @@ type iDescribeRegionInfoRequest interface {
 }
 
 type DescribeRegionInfoRequest struct {
+	// The language of the request and response. Valid values:
+	//
+	// - **zh*	- (default): Chinese.
+	//
+	// - **en**: English.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The source tracking code.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// yundun
 	SourceCode *string `json:"SourceCode,omitempty" xml:"SourceCode,omitempty"`
+	// The source IP address of the visitor.
+	//
 	// example:
 	//
 	// 59.82.59.XX

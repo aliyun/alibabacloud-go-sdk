@@ -14,6 +14,8 @@ type iDeleteIpsPrivateAssocResponseBody interface {
 }
 
 type DeleteIpsPrivateAssocResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 133173B9-8010-5DF5*****

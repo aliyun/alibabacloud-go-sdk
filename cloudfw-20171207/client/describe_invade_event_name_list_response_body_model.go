@@ -18,8 +18,12 @@ type iDescribeInvadeEventNameListResponseBody interface {
 }
 
 type DescribeInvadeEventNameListResponseBody struct {
+	// A list of anomalous activity names.
 	EventNameList []*DescribeInvadeEventNameListResponseBodyEventNameList `json:"EventNameList,omitempty" xml:"EventNameList,omitempty" type:"Repeated"`
-	NameList      []*string                                               `json:"NameList,omitempty" xml:"NameList,omitempty" type:"Repeated"`
+	// A list of vulnerability names.
+	NameList []*string `json:"NameList,omitempty" xml:"NameList,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6ABAA264-E7B5-5D66-8FC3-9253100****
@@ -75,10 +79,17 @@ func (s *DescribeInvadeEventNameListResponseBody) Validate() error {
 }
 
 type DescribeInvadeEventNameListResponseBodyEventNameList struct {
+	// The unique identifier of the vulnerability event.
+	//
 	// example:
 	//
 	// CActivity
-	EventKey  *string `json:"EventKey,omitempty" xml:"EventKey,omitempty"`
+	EventKey *string `json:"EventKey,omitempty" xml:"EventKey,omitempty"`
+	// The name of the vulnerability event.
+	//
+	// example:
+	//
+	// Suspicious central control communication
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
 }
 

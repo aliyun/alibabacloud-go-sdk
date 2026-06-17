@@ -16,10 +16,13 @@ type iDescribeSdlStatisticResponseBody interface {
 }
 
 type DescribeSdlStatisticResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 337A4DBA-8A01-5E9C-99CA-84293E13****
-	RequestId        *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The details of the sensitive data.
 	SdlStatisticResp *DescribeSdlStatisticResponseBodySdlStatisticResp `json:"SdlStatisticResp,omitempty" xml:"SdlStatisticResp,omitempty" type:"Struct"`
 }
 
@@ -59,8 +62,11 @@ func (s *DescribeSdlStatisticResponseBody) Validate() error {
 }
 
 type DescribeSdlStatisticResponseBodySdlStatisticResp struct {
-	SdlAssetTopList       []*DescribeSdlStatisticResponseBodySdlStatisticRespSdlAssetTopList       `json:"SdlAssetTopList,omitempty" xml:"SdlAssetTopList,omitempty" type:"Repeated"`
-	SdlDstTopList         []*DescribeSdlStatisticResponseBodySdlStatisticRespSdlDstTopList         `json:"SdlDstTopList,omitempty" xml:"SdlDstTopList,omitempty" type:"Repeated"`
+	// A ranked list of sensitive data assets.
+	SdlAssetTopList []*DescribeSdlStatisticResponseBodySdlStatisticRespSdlAssetTopList `json:"SdlAssetTopList,omitempty" xml:"SdlAssetTopList,omitempty" type:"Repeated"`
+	// A ranked list of sensitive data destinations.
+	SdlDstTopList []*DescribeSdlStatisticResponseBodySdlStatisticRespSdlDstTopList `json:"SdlDstTopList,omitempty" xml:"SdlDstTopList,omitempty" type:"Repeated"`
+	// A list of counts for each sensitive data event type.
 	SdlEventTypeCountList []*DescribeSdlStatisticResponseBodySdlStatisticRespSdlEventTypeCountList `json:"SdlEventTypeCountList,omitempty" xml:"SdlEventTypeCountList,omitempty" type:"Repeated"`
 }
 
@@ -131,14 +137,20 @@ func (s *DescribeSdlStatisticResponseBodySdlStatisticResp) Validate() error {
 }
 
 type DescribeSdlStatisticResponseBodySdlStatisticRespSdlAssetTopList struct {
+	// The asset type.
+	//
 	// example:
 	//
 	// EIP
 	AssetType *string `json:"AssetType,omitempty" xml:"AssetType,omitempty"`
+	// The public IP address.
+	//
 	// example:
 	//
 	// 116.62.66.XXX
 	PublicIp *string `json:"PublicIp,omitempty" xml:"PublicIp,omitempty"`
+	// The amount of traffic in bytes.
+	//
 	// example:
 	//
 	// 0
@@ -185,10 +197,14 @@ func (s *DescribeSdlStatisticResponseBodySdlStatisticRespSdlAssetTopList) Valida
 }
 
 type DescribeSdlStatisticResponseBodySdlStatisticRespSdlDstTopList struct {
+	// The public IP address.
+	//
 	// example:
 	//
 	// 47.101.68.XXX
 	PublicIp *string `json:"PublicIp,omitempty" xml:"PublicIp,omitempty"`
+	// The amount of traffic in bytes.
+	//
 	// example:
 	//
 	// 0
@@ -226,10 +242,17 @@ func (s *DescribeSdlStatisticResponseBodySdlStatisticRespSdlDstTopList) Validate
 }
 
 type DescribeSdlStatisticResponseBodySdlStatisticRespSdlEventTypeCountList struct {
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 9
-	Count     *string `json:"Count,omitempty" xml:"Count,omitempty"`
+	Count *string `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The event type.
+	//
+	// example:
+	//
+	// id_card
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
 }
 

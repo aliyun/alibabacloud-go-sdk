@@ -16,10 +16,14 @@ type iCreateVpcFirewallTaskResponseBody interface {
 }
 
 type CreateVpcFirewallTaskResponseBody struct {
+	// The application module.
+	//
 	// example:
 	//
 	// ips_server
 	Module *string `json:"Module,omitempty" xml:"Module,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 53252B14-BF7C-5A2D-9750-56F827EB****

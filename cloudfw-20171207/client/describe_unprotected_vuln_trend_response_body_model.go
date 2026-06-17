@@ -26,27 +26,40 @@ type iDescribeUnprotectedVulnTrendResponseBody interface {
 }
 
 type DescribeUnprotectedVulnTrendResponseBody struct {
+	// The number of protected vulnerabilities.
+	//
 	// example:
 	//
 	// 7
 	CurProtectedCnt *int32 `json:"CurProtectedCnt,omitempty" xml:"CurProtectedCnt,omitempty"`
+	// The number of unprotected vulnerabilities.
+	//
 	// example:
 	//
 	// 8
-	CurUnprotectedCnt *int32                                              `json:"CurUnprotectedCnt,omitempty" xml:"CurUnprotectedCnt,omitempty"`
-	DataList          []*DescribeUnprotectedVulnTrendResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
+	CurUnprotectedCnt *int32 `json:"CurUnprotectedCnt,omitempty" xml:"CurUnprotectedCnt,omitempty"`
+	// The list of returned data.
+	DataList []*DescribeUnprotectedVulnTrendResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
+	// The end time. The value is a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1731551104
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The time interval.
+	//
 	// example:
 	//
 	// 60
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 05BEF2B5-EAAA-509D-9824-E3C7DC17****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The start time. The value is a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1749434787
@@ -138,14 +151,20 @@ func (s *DescribeUnprotectedVulnTrendResponseBody) Validate() error {
 }
 
 type DescribeUnprotectedVulnTrendResponseBodyDataList struct {
+	// The number of protected vulnerabilities.
+	//
 	// example:
 	//
 	// 3
 	ProtectedVulnCnt *int32 `json:"ProtectedVulnCnt,omitempty" xml:"ProtectedVulnCnt,omitempty"`
+	// The timestamp of the vulnerability scan.
+	//
 	// example:
 	//
 	// 1525833105
 	Time *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
+	// The number of unprotected vulnerabilities.
+	//
 	// example:
 	//
 	// 2

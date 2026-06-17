@@ -14,6 +14,8 @@ type iModifyUserSlsLogStorageTimeResponseBody interface {
 }
 
 type ModifyUserSlsLogStorageTimeResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 337A4DBA-8A01-5E9C-99CA-84293E13****

@@ -18,11 +18,16 @@ type iDescribeSdlEventDetailResponseBody interface {
 }
 
 type DescribeSdlEventDetailResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// D19D8F70-D64B-5A95-905A-6073BF4A****
-	RequestId          *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of events.
 	SdlEventDetailList []*DescribeSdlEventDetailResponseBodySdlEventDetailList `json:"SdlEventDetailList,omitempty" xml:"SdlEventDetailList,omitempty" type:"Repeated"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 8
@@ -78,19 +83,32 @@ func (s *DescribeSdlEventDetailResponseBody) Validate() error {
 }
 
 type DescribeSdlEventDetailResponseBodySdlEventDetailList struct {
+	// The name of the event.
+	//
 	// example:
 	//
 	// event-test
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
+	// The amount of sensitive data.
+	//
 	// example:
 	//
 	// 10
 	SensitiveDataCnt *int64 `json:"SensitiveDataCnt,omitempty" xml:"SensitiveDataCnt,omitempty"`
+	// The sensitivity level.
+	//
 	// example:
 	//
 	// S3
 	SensitiveLevel *string `json:"SensitiveLevel,omitempty" xml:"SensitiveLevel,omitempty"`
-	SensitiveType  *string `json:"SensitiveType,omitempty" xml:"SensitiveType,omitempty"`
+	// The type of sensitive data.
+	//
+	// example:
+	//
+	// Identity Card
+	SensitiveType *string `json:"SensitiveType,omitempty" xml:"SensitiveType,omitempty"`
+	// The time when the event occurred.
+	//
 	// example:
 	//
 	// 1753928907

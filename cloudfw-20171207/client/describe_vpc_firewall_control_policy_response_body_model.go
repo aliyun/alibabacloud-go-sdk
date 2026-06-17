@@ -18,15 +18,15 @@ type iDescribeVpcFirewallControlPolicyResponseBody interface {
 }
 
 type DescribeVpcFirewallControlPolicyResponseBody struct {
-	// The details of the access control policies.
+	// The VPC firewall access control policies.
 	Policys []*DescribeVpcFirewallControlPolicyResponseBodyPolicys `json:"Policys,omitempty" xml:"Policys,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// CBF1E9B7-D6A0-4E9E-AD3E-2B47E6C2837D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of access control policies returned.
+	// The total number of VPC firewall access control policies.
 	//
 	// example:
 	//
@@ -83,295 +83,293 @@ func (s *DescribeVpcFirewallControlPolicyResponseBody) Validate() error {
 }
 
 type DescribeVpcFirewallControlPolicyResponseBodyPolicys struct {
-	// The action that Cloud Firewall performs on the traffic. Valid values:
+	// The action to perform on traffic that matches the access control policy. Valid values:
 	//
-	// 	- **accept**: allows the traffic.
+	// - **accept**: allows the traffic.
 	//
-	// 	- **drop**: denies the traffic.
+	// - **drop**: denies the traffic.
 	//
-	// 	- **log**: monitors the traffic.
+	// - **log**: logs the traffic.
 	//
 	// example:
 	//
 	// accept
 	AclAction *string `json:"AclAction,omitempty" xml:"AclAction,omitempty"`
-	// The UUID of the access control policy.
+	// The unique identifier of the access control policy.
 	//
 	// example:
 	//
 	// 4037fbf7-3e39-4634-92a4-d0155247****
 	AclUuid *string `json:"AclUuid,omitempty" xml:"AclUuid,omitempty"`
-	// The application ID in the access control policy.
+	// The ID of the application.
 	//
 	// example:
 	//
 	// 10**
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The application types supported by the access control policy. We recommend that you specify ApplicationNameList. Valid values:
+	// The application type. We recommend that you use `ApplicationNameList` instead. Valid values:
 	//
-	// 	- **HTTP**
+	// - **HTTP**
 	//
-	// 	- **HTTPS**
+	// - **HTTPS**
 	//
-	// 	- **MySQL**
+	// - **MySQL**
 	//
-	// 	- **SMTP**
+	// - **SMTP**
 	//
-	// 	- **SMTPS**
+	// - **SMTPS**
 	//
-	// 	- **RDP**
+	// - **RDP**
 	//
-	// 	- **VNC**
+	// - **VNC**
 	//
-	// 	- **SSH**
+	// - **SSH**
 	//
-	// 	- **Redis**
+	// - **Redis**
 	//
-	// 	- **MQTT**
+	// - **MQTT**
 	//
-	// 	- **MongoDB**
+	// - **MongoDB**
 	//
-	// 	- **Memcache**
+	// - **Memcache**
 	//
-	// 	- **SSL**
+	// - **SSL**
 	//
-	// 	- **ANY**: all application types
+	// - **ANY*	- (all application types)
 	//
 	// example:
 	//
 	// HTTP
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
-	// The application types supported by the access control policy.
+	// The list of application names.
 	ApplicationNameList []*string `json:"ApplicationNameList,omitempty" xml:"ApplicationNameList,omitempty" type:"Repeated"`
-	// The time when the access control policy was created. The value is a UNIX timestamp. Unit: seconds.
+	// The UNIX timestamp, in seconds, of when the policy was created.
 	//
 	// example:
 	//
 	// 1761062400
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The description of the access control policy.
+	// The policy description.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The destination port in the access control policy.
+	// The destination port.
 	//
 	// example:
 	//
 	// 80
 	DestPort *string `json:"DestPort,omitempty" xml:"DestPort,omitempty"`
-	// The name of the destination port address book in the access control policy.
+	// The name of the destination port address book.
 	//
 	// example:
 	//
 	// my_port_group
 	DestPortGroup *string `json:"DestPortGroup,omitempty" xml:"DestPortGroup,omitempty"`
-	// The ports in the destination port address book of the access control policy.
+	// The ports in the destination port address book.
 	DestPortGroupPorts []*string `json:"DestPortGroupPorts,omitempty" xml:"DestPortGroupPorts,omitempty" type:"Repeated"`
-	// The type of the destination port in the access control policy. Valid values:
+	// The type of the destination port. Valid values:
 	//
-	// 	- **port**: port
+	// - **port**: a single port
 	//
-	// 	- **group**: port address book
+	// - **group**: a port address book
 	//
 	// example:
 	//
 	// port
 	DestPortType *string `json:"DestPortType,omitempty" xml:"DestPortType,omitempty"`
-	// The destination address in the access control policy. Valid values:
+	// The destination address for the access control policy. The value depends on `DestinationType`.
 	//
-	// 	- If **DestinationType*	- is set to `net`, the value of this parameter is a CIDR block.
+	// - If `DestinationType` is `net`, the value is a destination CIDR block.
 	//
-	// 	- If **DestinationType*	- is set to `domain`, the value of this parameter is a domain name.
+	// - If `DestinationType` is `domain`, the value is a destination domain name.
 	//
-	// 	- If **DestinationType*	- is set to `group`, the value of this parameter is an address book name.
+	// - If `DestinationType` is `group`, the value is the name of a destination address book.
 	//
 	// example:
 	//
 	// 192.0.XX.XX/24
 	Destination *string `json:"Destination,omitempty" xml:"Destination,omitempty"`
-	// The CIDR blocks in the destination address book of the access control policy.
+	// The CIDR blocks in the destination address book.
 	DestinationGroupCidrs []*string `json:"DestinationGroupCidrs,omitempty" xml:"DestinationGroupCidrs,omitempty" type:"Repeated"`
-	// The type of the destination address book in the access control policy. Valid values:
+	// The type of the destination address book. Valid values:
 	//
-	// 	- **ip**: an address book that includes one or more CIDR blocks
+	// - **ip**: an address book of IP addresses or CIDR blocks.
 	//
-	// 	- **domain**: an address book that includes one or more domain names
+	// - **domain**: an address book of domain names.
 	//
 	// example:
 	//
 	// ip
 	DestinationGroupType *string `json:"DestinationGroupType,omitempty" xml:"DestinationGroupType,omitempty"`
-	// The type of the destination address in the access control policy. Valid values:
+	// The type of the destination address. Valid values:
 	//
-	// 	- **net**: CIDR block
+	// - **net**: a destination CIDR block
 	//
-	// 	- **group**: address book
+	// - **group**: a destination address book
 	//
-	// 	- **domain**: domain name
+	// - **domain**: a destination domain name
 	//
 	// example:
 	//
 	// net
 	DestinationType *string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
-	// The domain name resolution method of the access control policy. By default, an access control policy is enabled after the policy is created. Valid values:
+	// The domain name resolution mode. Valid values:
 	//
-	// 	- **FQDN**: fully qualified domain name (FQDN)-based resolution
+	// - **FQDN**: FQDN-based resolution
 	//
-	// 	- **DNS**: DNS-based dynamic resolution
+	// - **DNS**: DNS-based dynamic resolution
 	//
-	// 	- **FQDN_AND_DNS**: FQDN and DNS-based dynamic resolution
+	// - **FQDN_AND_DNS**: FQDN-based and DNS-based dynamic resolution
 	//
 	// example:
 	//
 	// FQDN
 	DomainResolveType *string `json:"DomainResolveType,omitempty" xml:"DomainResolveType,omitempty"`
-	// The time when the access control policy stops taking effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes later than the value of StartTime.
+	// The UNIX timestamp, in seconds, for the end of the policy\\"s effective period. The time must be on the hour or half-hour and at least 30 minutes after the start time.
 	//
-	// >  If RepeatType is set to Permanent, EndTime is left empty. If RepeatType is set to None, Daily, Weekly, or Monthly, EndTime must be specified.
+	// > This parameter is not used if `RepeatType` is `Permanent`. It is required for `None`, `Daily`, `Weekly`, or `Monthly` recurrence.
 	//
 	// example:
 	//
 	// 1694764800
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The time when the access control policy was last hit. The value is a UNIX timestamp. Unit: seconds.
+	// The UNIX timestamp, in seconds, of the last policy hit.
 	//
 	// example:
 	//
 	// 1579261141
 	HitLastTime *int64 `json:"HitLastTime,omitempty" xml:"HitLastTime,omitempty"`
-	// The number of hits for the access control policy.
+	// The number of policy hits.
 	//
 	// example:
 	//
 	// 100
 	HitTimes *int64 `json:"HitTimes,omitempty" xml:"HitTimes,omitempty"`
-	// The UID of the member that is managed by your Alibaba Cloud account.
+	// The UID of the member account.
 	//
 	// example:
 	//
 	// 258039427902****
 	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
-	// The time when the access control policy was modified. The value is a UNIX timestamp. Unit: seconds.
+	// The UNIX timestamp, in seconds, of when the policy was last modified.
 	//
 	// example:
 	//
 	// 1761062400
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The priority of the access control policy.
-	//
-	// The priority value starts from 1. A smaller priority value indicates a higher priority.
+	// The priority of the access control policy, starting from 1. A smaller value indicates a higher priority.
 	//
 	// example:
 	//
 	// 1
 	Order *int32 `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The protocol type in the access control policy. Valid values:
+	// The protocol type. Valid values:
 	//
-	// 	- **TCP**
+	// - **TCP**
 	//
-	// 	- **UDP**
+	// - **UDP**
 	//
-	// 	- **ICMP**
+	// - **ICMP**
 	//
-	// 	- **ANY**: all protocol types
+	// - **ANY*	- (all protocol types)
 	//
 	// example:
 	//
 	// TCP
 	Proto *string `json:"Proto,omitempty" xml:"Proto,omitempty"`
-	// Indicates whether the access control policy is enabled. By default, an access control policy is enabled after it is created. Valid values:
+	// The enabled status of the access control policy. A policy is enabled by default after it is created. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The policy is enabled.
 	//
-	// 	- **false**
+	// - **false**: The policy is disabled.
 	//
 	// example:
 	//
 	// true
 	Release *string `json:"Release,omitempty" xml:"Release,omitempty"`
-	// The days of a week or of a month on which the access control policy takes effect.
+	// The days of the week or month on which the policy recurs.
 	//
-	// 	- If RepeatType is set to `Permanent`, `None`, or `Daily`, RepeatDays is left empty. Example: [].
+	// - If `RepeatType` is set to `Permanent`, `None`, or `Daily`, this parameter is empty. Example: `[]`
 	//
-	// 	- If RepeatType is set to Weekly, RepeatDays must be specified. Example: [0, 6].
+	// - If `RepeatType` is set to `Weekly`, this parameter is required. Example: `[0, 6]`
 	//
-	// >  If RepeatType is set to Weekly, the fields in the value of RepeatDays cannot be repeated.
+	// > If `RepeatType` is set to `Weekly`, do not specify duplicate values for this parameter.
 	//
-	// 	- If RepeatType is set to `Monthly`, RepeatDays must be specified. Example: [1, 31].
+	// - If `RepeatType` is set to `Monthly`, this parameter is required. Example: `[1, 31]`
 	//
-	// >  If RepeatType is set to Monthly, the fields in the value of RepeatDays cannot be repeated.
+	// > If `RepeatType` is set to `Monthly`, do not specify duplicate values for this parameter.
 	RepeatDays []*int64 `json:"RepeatDays,omitempty" xml:"RepeatDays,omitempty" type:"Repeated"`
-	// The point in time when the recurrence ends. Example: 23:30. The value must be on the hour or on the half hour, and at least 30 minutes later than the value of RepeatStartTime.
+	// The recurrence end time. The time is in the `HH:mm` 24-hour format, such as `23:30`.
 	//
-	// >  If RepeatType is set to Permanent or None, RepeatEndTime is left empty. If RepeatType is set to Daily, Weekly, or Monthly, RepeatEndTime must be specified.
+	// > This parameter is not used if `RepeatType` is `Permanent` or `None`. It is required for `Daily`, `Weekly`, or `Monthly` recurrence.
 	//
 	// example:
 	//
 	// 23:30
 	RepeatEndTime *string `json:"RepeatEndTime,omitempty" xml:"RepeatEndTime,omitempty"`
-	// The point in time when the recurrence starts. Example: 08:00. The value must be on the hour or on the half hour, and at least 30 minutes earlier than the value of RepeatEndTime.
+	// The recurrence start time. The time is in the `HH:mm` 24-hour format, such as `08:00`.
 	//
-	// >  If RepeatType is set to Permanent or None, RepeatStartTime is left empty. If RepeatType is set to Daily, Weekly, or Monthly, this parameter must be specified.
+	// > This parameter is not used if `RepeatType` is `Permanent` or `None`. It is required for `Daily`, `Weekly`, or `Monthly` recurrence.
 	//
 	// example:
 	//
 	// 08:00
 	RepeatStartTime *string `json:"RepeatStartTime,omitempty" xml:"RepeatStartTime,omitempty"`
-	// The recurrence type for the access control policy to take effect. Valid values:
+	// The recurrence type for the policy\\"s effective period. Valid values:
 	//
-	// 	- **Permanent*	- (default): The policy always takes effect.
+	// - **Permanent*	- (default): The policy is always active.
 	//
-	// 	- **None**: The policy takes effect for only once.
+	// - **None**: The policy applies only once.
 	//
-	// 	- **Daily**: The policy takes effect on a daily basis.
+	// - **Daily**: The policy recurs daily.
 	//
-	// 	- **Weekly**: The policy takes effect on a weekly basis.
+	// - **Weekly**: The policy recurs weekly.
 	//
-	// 	- **Monthly**: The policy takes effect on a monthly basis.
+	// - **Monthly**: The policy recurs monthly.
 	//
 	// example:
 	//
 	// Permanent
 	RepeatType *string `json:"RepeatType,omitempty" xml:"RepeatType,omitempty"`
-	// The source address in the access control policy. Valid values:
+	// The source address for the access control policy. The value depends on `SourceType`.
 	//
-	// 	- If **SourceType*	- is set to `net`, the value of this parameter is a CIDR block.
+	// - If `SourceType` is `net`, the value is a source CIDR block.
 	//
-	// 	- If **SourceType*	- is set to `group`, the value of this parameter is an address book name.
+	// - If `SourceType` is `group`, the value is the name of a source address book.
 	//
 	// example:
 	//
 	// 192.0.XX.XX/24
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The CIDR blocks in the source address book of the access control policy.
+	// The CIDR blocks in the source address book.
 	SourceGroupCidrs []*string `json:"SourceGroupCidrs,omitempty" xml:"SourceGroupCidrs,omitempty" type:"Repeated"`
-	// The type of the source address book in the access control policy. The value is fixed as **ip**. The value indicates an address book that includes one or more CIDR blocks.
+	// The type of the source address book. The value is always **ip**, which indicates an address book that contains IP addresses or CIDR blocks.
 	//
 	// example:
 	//
 	// ip
 	SourceGroupType *string `json:"SourceGroupType,omitempty" xml:"SourceGroupType,omitempty"`
-	// The type of the source address in the access control policy. Valid values:
+	// The type of the source address. Valid values:
 	//
-	// 	- **net**: CIDR block
+	// - **net**: a source CIDR block
 	//
-	// 	- **group**: address book
+	// - **group**: a source address book
 	//
 	// example:
 	//
 	// net
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The total quota consumed by the returned access control policies, which is the sum of the quota consumed by each policy. The quota that is consumed by an access control policy is calculated by using the following formula: Quota that is consumed by an access control policy = Number of source addresses × Number of destination addresses (number of CIDR blocks or domain names) × Number of applications × Number of port ranges.
+	// The number of rule capacity units that the access control policy consumes. This is calculated as: Number of source addresses × Number of destination addresses × Number of applications × Number of port ranges.
 	//
 	// example:
 	//
-	// 10,000
+	// 10000
 	SpreadCnt *int64 `json:"SpreadCnt,omitempty" xml:"SpreadCnt,omitempty"`
-	// The time when the access control policy starts to take effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes earlier than the value of EndTime.
+	// The UNIX timestamp, in seconds, for the start of the policy\\"s effective period. The time must be on the hour or half-hour and at least 30 minutes before the end time.
 	//
-	// >  If RepeatType is set to Permanent, StartTime is left empty. If RepeatType is set to None, Daily, Weekly, or Monthly, StartTime must be specified.
+	// > This parameter is not used if `RepeatType` is `Permanent`. It is required for `None`, `Daily`, `Weekly`, or `Monthly` recurrence.
 	//
 	// example:
 	//

@@ -20,13 +20,13 @@ type iDescribePolicyPriorUsedRequest interface {
 }
 
 type DescribePolicyPriorUsedRequest struct {
-	// The direction of the traffic to which the access control policy applies.
+	// The traffic direction of the access control policy.
 	//
 	// Valid values:
 	//
-	// 	- **in**: inbound.
+	// - **in**: Inbound traffic
 	//
-	// 	- **out**: outbound.
+	// - **out**: Outbound traffic
 	//
 	// This parameter is required.
 	//
@@ -34,25 +34,25 @@ type DescribePolicyPriorUsedRequest struct {
 	//
 	// in
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	// The IP version of the asset that is protected by Cloud Firewall.
+	// The IP version for assets protected by Cloud Firewall.
 	//
 	// Valid values:
 	//
-	// 	- **4*	- (default): IPv4.
+	// - **4*	- (Default): IPv4
 	//
-	// 	- **6**: IPv6.
+	// - **6**: IPv6
 	//
 	// example:
 	//
 	// 6
 	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	// The language of the content within the request and response.
+	// The language of the request and response.
 	//
 	// Valid values:
 	//
-	// 	- **zh*	- (default)
+	// - **zh*	- (Default): Chinese
 	//
-	// 	- **en**
+	// - **en**: English
 	//
 	// example:
 	//

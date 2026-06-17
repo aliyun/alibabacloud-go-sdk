@@ -14,11 +14,11 @@ type iDescribeNatAclPageStatusRequest interface {
 }
 
 type DescribeNatAclPageStatusRequest struct {
-	// The language of the content within the request and response. Valid values:
+	// The language of the request and the response. Valid values:
 	//
-	// 	- **zh*	- (default): Chinese
+	// - **zh*	- (default): Chinese.
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//

@@ -22,23 +22,32 @@ type iDescribeAccessInstanceVpcListResponseBody interface {
 }
 
 type DescribeAccessInstanceVpcListResponseBody struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 450D47F5-956E-543E-8502-2F71C8C54E72
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 10
-	TotalCount *int64                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	VpcList    []*DescribeAccessInstanceVpcListResponseBodyVpcList `json:"VpcList,omitempty" xml:"VpcList,omitempty" type:"Repeated"`
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The list of VPCs.
+	VpcList []*DescribeAccessInstanceVpcListResponseBodyVpcList `json:"VpcList,omitempty" xml:"VpcList,omitempty" type:"Repeated"`
 }
 
 func (s DescribeAccessInstanceVpcListResponseBody) String() string {
@@ -108,14 +117,20 @@ func (s *DescribeAccessInstanceVpcListResponseBody) Validate() error {
 }
 
 type DescribeAccessInstanceVpcListResponseBodyVpcList struct {
+	// Indicates whether the VPC is managed by Cloud Firewall.
+	//
 	// example:
 	//
 	// false
 	FirewallVpc *bool `json:"FirewallVpc,omitempty" xml:"FirewallVpc,omitempty"`
+	// The ID of the VPC instance.
+	//
 	// example:
 	//
 	// vpc-2ze1t4irqj0fljlbb****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The name of the VPC instance.
+	//
 	// example:
 	//
 	// Cloud_Firewall_VPC

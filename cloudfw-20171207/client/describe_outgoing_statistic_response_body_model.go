@@ -50,78 +50,116 @@ type iDescribeOutgoingStatisticResponseBody interface {
 }
 
 type DescribeOutgoingStatisticResponseBody struct {
+	// The number of assets that are ignored.
+	//
 	// example:
 	//
 	// 0
 	IgnoreAssetCount *int32 `json:"IgnoreAssetCount,omitempty" xml:"IgnoreAssetCount,omitempty"`
+	// The number of domain names that are ignored.
+	//
 	// example:
 	//
 	// 10
 	IgnoreDomainCount *int32 `json:"IgnoreDomainCount,omitempty" xml:"IgnoreDomainCount,omitempty"`
+	// The number of destination IP addresses that are ignored.
+	//
 	// example:
 	//
 	// 0
 	IgnoreDstIPCount *int32 `json:"IgnoreDstIPCount,omitempty" xml:"IgnoreDstIPCount,omitempty"`
+	// The number of risky assets with outbound connections over a private network.
+	//
 	// example:
 	//
 	// 0
 	PrivateRiskAssetCount *int64 `json:"PrivateRiskAssetCount,omitempty" xml:"PrivateRiskAssetCount,omitempty"`
+	// The number of assets with outbound connections over a private network.
+	//
 	// example:
 	//
 	// 0
 	PrivateTotalAssetCount *int64 `json:"PrivateTotalAssetCount,omitempty" xml:"PrivateTotalAssetCount,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// E2BD70F4-48BF-5EFD-B103-F0763E27*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of risky assets.
+	//
 	// example:
 	//
 	// 0
 	RiskAssetCount *int32 `json:"RiskAssetCount,omitempty" xml:"RiskAssetCount,omitempty"`
+	// The number of risky domain names for outbound connections.
+	//
 	// example:
 	//
 	// 1
 	RiskDomainCount *int32 `json:"RiskDomainCount,omitempty" xml:"RiskDomainCount,omitempty"`
+	// The number of risky destination IP addresses for outbound connections.
+	//
 	// example:
 	//
 	// 1
 	RiskDstIPCount *int32 `json:"RiskDstIPCount,omitempty" xml:"RiskDstIPCount,omitempty"`
+	// The number of assets that you follow.
+	//
 	// example:
 	//
 	// 0
 	SubscribeAssetCount *int32 `json:"SubscribeAssetCount,omitempty" xml:"SubscribeAssetCount,omitempty"`
+	// The number of domain names that you follow.
+	//
 	// example:
 	//
 	// 10
 	SubscribeDomainCount *int32 `json:"SubscribeDomainCount,omitempty" xml:"SubscribeDomainCount,omitempty"`
+	// The number of destination IP addresses that you follow.
+	//
 	// example:
 	//
 	// 10
 	SubscribeDstIPCount *int32 `json:"SubscribeDstIPCount,omitempty" xml:"SubscribeDstIPCount,omitempty"`
+	// The total number of assets that have outbound connections.
+	//
 	// example:
 	//
 	// 13
 	TotalAssetCount *int32 `json:"TotalAssetCount,omitempty" xml:"TotalAssetCount,omitempty"`
+	// The total number of outbound domain names.
+	//
 	// example:
 	//
 	// 10
 	TotalDomainCount *int32 `json:"TotalDomainCount,omitempty" xml:"TotalDomainCount,omitempty"`
+	// The total number of destination IP addresses for outbound connections.
+	//
 	// example:
 	//
 	// 107
 	TotalDstIPCount *int32 `json:"TotalDstIPCount,omitempty" xml:"TotalDstIPCount,omitempty"`
+	// The number of outbound connection protocols.
+	//
 	// example:
 	//
 	// 10
 	TotalProtocolCount *int32 `json:"TotalProtocolCount,omitempty" xml:"TotalProtocolCount,omitempty"`
+	// The number of domain names that are not covered by a policy.
+	//
 	// example:
 	//
 	// 0
 	UncoveredAclDomain *int32 `json:"UncoveredAclDomain,omitempty" xml:"UncoveredAclDomain,omitempty"`
+	// The number of destination IP addresses that are not covered by a policy.
+	//
 	// example:
 	//
 	// 10
 	UncoveredAclDstIP *int32 `json:"UncoveredAclDstIP,omitempty" xml:"UncoveredAclDstIP,omitempty"`
+	// The percentage of traffic from unidentified protocols.
+	//
 	// example:
 	//
 	// 20.13

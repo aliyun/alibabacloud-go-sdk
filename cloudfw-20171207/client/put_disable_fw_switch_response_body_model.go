@@ -14,7 +14,7 @@ type iPutDisableFwSwitchResponseBody interface {
 }
 
 type PutDisableFwSwitchResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

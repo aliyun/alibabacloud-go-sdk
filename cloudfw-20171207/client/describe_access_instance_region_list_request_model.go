@@ -16,10 +16,18 @@ type iDescribeAccessInstanceRegionListRequest interface {
 }
 
 type DescribeAccessInstanceRegionListRequest struct {
+	// The status of the synchronization node.
+	//
 	// example:
 	//
 	// ready
 	AccessInstanceStatus *string `json:"AccessInstanceStatus,omitempty" xml:"AccessInstanceStatus,omitempty"`
+	// The type of the synchronization node. Valid values:
+	//
+	// - **PrivateDns**: private DNS.
+	//
+	// - **AckClusterConnector**: ACK cluster connector.
+	//
 	// example:
 	//
 	// AckClusterConnector

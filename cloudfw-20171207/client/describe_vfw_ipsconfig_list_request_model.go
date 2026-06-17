@@ -20,22 +20,30 @@ type iDescribeVfwIPSConfigListRequest interface {
 }
 
 type DescribeVfwIPSConfigListRequest struct {
+	// The language of the response.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The number of the page to return.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of the page to return.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The instance ID of the VPC firewall.
+	//
 	// example:
 	//
 	// vfw-m5e7dbc4y****

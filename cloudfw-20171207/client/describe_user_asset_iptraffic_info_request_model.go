@@ -26,17 +26,17 @@ type DescribeUserAssetIPTrafficInfoRequest struct {
 	//
 	// 192.0.XX.XX
 	AssetIP *string `json:"AssetIP,omitempty" xml:"AssetIP,omitempty"`
-	// The language of the content within the response. Valid values:
+	// The language of the response. Valid values:
 	//
-	// 	- **zh*	- (default): Chinese
+	// - **zh**: Chinese (default).
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The time range to query. The value is a UNIX timestamp. Unit: seconds.
+	// The time of the traffic query, specified as a UNIX timestamp in seconds.
 	//
 	// This parameter is required.
 	//

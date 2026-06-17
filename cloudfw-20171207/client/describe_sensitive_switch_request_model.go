@@ -28,31 +28,50 @@ type iDescribeSensitiveSwitchRequest interface {
 }
 
 type DescribeSensitiveSwitchRequest struct {
+	// The name of the category.
+	//
+	// example:
+	//
+	// Identity card
 	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
+	// The number of the page to return.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The language of the request and response.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The number of the page to return.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The parent class.
+	//
 	// example:
 	//
 	// universal_industry_template
 	ParentCategory *string `json:"ParentCategory,omitempty" xml:"ParentCategory,omitempty"`
+	// The type of the sensitive credential.
+	//
 	// example:
 	//
 	// id_card
 	SensitiveCategory *string `json:"SensitiveCategory,omitempty" xml:"SensitiveCategory,omitempty"`
+	// The sensitivity level.
+	//
 	// example:
 	//
 	// S3
 	SensitiveLevel *string `json:"SensitiveLevel,omitempty" xml:"SensitiveLevel,omitempty"`
+	// The status of the sensitive data detection switch.
+	//
 	// example:
 	//
 	// 1

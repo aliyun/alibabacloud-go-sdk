@@ -28,38 +28,54 @@ type iDescribeAckClustersRequest interface {
 }
 
 type DescribeAckClustersRequest struct {
+	// The ID of the ACK cluster.
+	//
 	// example:
 	//
 	// cb0f5640b1b2d404cad6ba21509d7847b
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The name of the ACK cluster.
+	//
 	// example:
 	//
 	// ack-cluster-name
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// The specification of the ACK cluster.
+	//
 	// example:
 	//
 	// ack.pro.small
 	ClusterSpec *string `json:"ClusterSpec,omitempty" xml:"ClusterSpec,omitempty"`
+	// The status of the ACK cluster connector.
+	//
 	// example:
 	//
 	// ready
 	ConnectorStatus *string `json:"ConnectorStatus,omitempty" xml:"ConnectorStatus,omitempty"`
+	// The Alibaba Cloud UID of the account to which the ACK cluster resources belong.
+	//
 	// example:
 	//
 	// 135809047715****
 	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
+	// The page number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNo *string `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID of the ACK cluster.
+	//
 	// This parameter is required.
 	//
 	// example:

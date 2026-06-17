@@ -18,7 +18,7 @@ type ResetVpcFirewallRuleHitCountResponseBody struct {
 	//
 	// example:
 	//
-	// A918B4F6-482F-5A91-8F65-AFFFF1FC04EA
+	// CBF1E9B7-D6A0-4E9E-AD3E-2B47E6C2837D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

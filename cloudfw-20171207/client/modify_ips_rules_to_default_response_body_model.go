@@ -14,6 +14,8 @@ type iModifyIpsRulesToDefaultResponseBody interface {
 }
 
 type ModifyIpsRulesToDefaultResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// B713361D-62E2-5FF0-9D29-BBFAAF40****

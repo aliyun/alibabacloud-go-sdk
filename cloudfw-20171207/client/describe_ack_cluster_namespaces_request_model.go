@@ -14,6 +14,10 @@ type iDescribeAckClusterNamespacesRequest interface {
 }
 
 type DescribeAckClusterNamespacesRequest struct {
+	// The ID of the ACK cluster connector. To obtain this ID, call the [DescribeAckClusterConnectors](~~DescribeAckClusterConnectors~~) operation.
+	//
+	// - [DescribeAckClusterConnectors](~~DescribeAckClusterConnectors~~): Queries a list of ACK cluster connectors.
+	//
 	// This parameter is required.
 	//
 	// example:

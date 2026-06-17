@@ -18,9 +18,9 @@ type iDeleteVpcFirewallControlPolicyRequest interface {
 }
 
 type DeleteVpcFirewallControlPolicyRequest struct {
-	// The ID of the access control policy.
+	// The UUID of the access control policy for the VPC firewall.
 	//
-	// To delete an access control policy, you must provide the ID of the policy. You can call the **DescribeVpcFirewallControlPolicy*	- operation to query the ID.
+	// When you delete an access control policy, you must provide the UUID of the policy. You can call the [DescribeVpcFirewallControlPolicy](https://help.aliyun.com/document_detail/159758.html) operation to query the UUID.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type DeleteVpcFirewallControlPolicyRequest struct {
 	//
 	// 00281255-d220-4db1-8f4f-c4df2214****
 	AclUuid *string `json:"AclUuid,omitempty" xml:"AclUuid,omitempty"`
-	// The natural language of the request and response. Valid values:
+	// The language of the content within the request and response.
 	//
 	// - **zh**: Chinese
 	//
@@ -38,17 +38,17 @@ type DeleteVpcFirewallControlPolicyRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The ID of the group to which the access control policy belongs. You can call the **DescribeVpcFirewallAclGroupList*	- operation to query the ID.
+	// The ID of the policy group for the VPC firewall. You can call the [DescribeVpcFirewallAclGroupList](https://help.aliyun.com/document_detail/159760.html) operation to query the ID.
 	//
 	// Valid values:
 	//
-	// - If the VPC firewall is used to protect a CEN instance, the value of this parameter is the ID of the CEN instance.
+	// - If the VPC firewall is used to protect a Cloud Enterprise Network (CEN) instance, the value of this parameter is the ID of the CEN instance.
 	//
-	// Example: cen-ervw0g12b5jbw****
+	//   Example: cen-ervw0g12b5jbw\\*\\*\\*\\*
 	//
-	// - If the VPC firewall is used to protect an Express Connect circuit, the value of this parameter is the ID of the VPC firewall.
+	// - If the VPC firewall is used to protect an Express Connect circuit, the value of this parameter is the ID of the VPC firewall instance.
 	//
-	// Example: vfw-a42bbb7b887148c9****
+	//   Example: vfw-a42bbb7b887148c9\\*\\*\\*\\*
 	//
 	// This parameter is required.
 	//

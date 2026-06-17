@@ -16,17 +16,17 @@ type iDeleteTrFirewallV2Request interface {
 }
 
 type DeleteTrFirewallV2Request struct {
-	// The instance ID of the VPC firewall.
+	// The ID of the VPC firewall for the transit router.
 	//
 	// example:
 	//
 	// vfw-tr-99bc4f0fc88b4d00****
 	FirewallId *string `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
-	// The language of the content within the response. Valid values:
+	// The language of the response message. Valid values:
 	//
-	// 	- **zh**: Chinese (default)
+	// - **zh*	- (default): Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//

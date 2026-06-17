@@ -14,6 +14,8 @@ type iDescribePostpayEnabledProtectionRequest interface {
 }
 
 type DescribePostpayEnabledProtectionRequest struct {
+	// The language of the response message.
+	//
 	// example:
 	//
 	// zh

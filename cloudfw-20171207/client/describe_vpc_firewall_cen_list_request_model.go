@@ -44,9 +44,9 @@ type DescribeVpcFirewallCenListRequest struct {
 	//
 	// cen-x5jayxou71ad73****
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The number of the page to return.
+	// The page number to return.
 	//
-	// Pages start from page 1. Default value: 1.
+	// Default value: 1.
 	//
 	// example:
 	//
@@ -54,31 +54,31 @@ type DescribeVpcFirewallCenListRequest struct {
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The status of the VPC firewall. Valid values:
 	//
-	// 	- **opened**: The VPC firewall is enabled.
+	// - **opened**: The firewall is enabled.
 	//
-	// 	- **closed**: The VPC firewall is disabled.
+	// - **closed**: The firewall is disabled.
 	//
-	// 	- **notconfigured**: The VPC firewall is not configured.
+	// - **notconfigured**: The firewall is not configured.
 	//
-	// 	- **configured**: The VPC firewall is configured but is not enabled.
+	// - **configured**: The firewall is configured but is disabled.
 	//
-	// > If you do not specify this parameter, VPC firewalls in all states are queried.
+	// > If you leave this parameter empty, VPC firewalls in all states are queried.
 	//
 	// example:
 	//
 	// opened
 	FirewallSwitchStatus *string `json:"FirewallSwitchStatus,omitempty" xml:"FirewallSwitchStatus,omitempty"`
-	// The language of the content within the response. Valid values:
+	// The language of the response. Valid values:
 	//
-	// 	- **zh**: Chinese (default)
+	// - **zh*	- (default): Chinese.
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The UID of the member that is managed by your Alibaba Cloud account. The member is also an Alibaba Cloud account.
+	// The UID of a member account that is managed by your Alibaba Cloud account.
 	//
 	// example:
 	//
@@ -101,19 +101,19 @@ type DescribeVpcFirewallCenListRequest struct {
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region ID of the VPC.
 	//
-	// > For more information about the regions, see [Supported regions](https://help.aliyun.com/document_detail/195657.html).
+	// > For more information about the regions that Cloud Firewall supports, see [Supported regions](https://help.aliyun.com/document_detail/195657.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	// The routing mode of the VPC firewall. Valid values:
+	// The routing mode. Valid values:
 	//
-	// 	- **auto**: automatic mode
+	// - **auto**: automatic mode.
 	//
-	// 	- **manual**: manual mode
+	// - **manual**: manual mode.
 	//
-	// > If you do not specify this parameter, VPC firewalls in all routing modes are queried.
+	// > If you leave this parameter empty, VPC firewalls that use all routing modes are queried.
 	//
 	// example:
 	//
@@ -121,9 +121,9 @@ type DescribeVpcFirewallCenListRequest struct {
 	RouteMode *string `json:"RouteMode,omitempty" xml:"RouteMode,omitempty"`
 	// The type of the transit router. Valid values:
 	//
-	// 	- **Basic**: Basic Edition transit router
+	// - **Basic**: Basic Edition transit router.
 	//
-	// 	- **Enterprise**: Enterprise Edition transit router
+	// - **Enterprise**: Enterprise Edition transit router.
 	//
 	// example:
 	//
@@ -139,7 +139,7 @@ type DescribeVpcFirewallCenListRequest struct {
 	//
 	// example:
 	//
-	// Test firewall
+	// vpc-firewall-test
 	VpcFirewallName *string `json:"VpcFirewallName,omitempty" xml:"VpcFirewallName,omitempty"`
 }
 

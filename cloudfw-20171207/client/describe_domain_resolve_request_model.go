@@ -20,7 +20,7 @@ type iDescribeDomainResolveRequest interface {
 }
 
 type DescribeDomainResolveRequest struct {
-	// The domain name whose DNS record you want to query.
+	// The domain name to resolve.
 	//
 	// This parameter is required.
 	//
@@ -30,21 +30,21 @@ type DescribeDomainResolveRequest struct {
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The IP version of the asset that is protected by Cloud Firewall. Valid values:
 	//
-	// 	- **4**: IPv4 (default)
+	// - **4*	- (default): IPv4
 	//
-	// 	- **6**: IPv6
+	// - **6**: IPv6
 	//
 	// example:
 	//
 	// 6
 	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	// The language of the content within the response.
+	// The language of the response message.
 	//
 	// Valid values:
 	//
-	// 	- **zh**: Chinese (default)
+	// - **zh*	- (default): Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type DescribeDomainResolveRequest struct {
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// Deprecated
 	//
-	// The source IP address of the request.
+	// The source IP address of the visitor.
 	//
 	// example:
 	//

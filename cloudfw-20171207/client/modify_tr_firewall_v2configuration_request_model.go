@@ -18,23 +18,23 @@ type iModifyTrFirewallV2ConfigurationRequest interface {
 }
 
 type ModifyTrFirewallV2ConfigurationRequest struct {
-	// The instance ID of the VPC firewall.
+	// The ID of the VPC firewall instance.
 	//
 	// example:
 	//
 	// vfw-tr-bcdf89d405ce4bd2****
 	FirewallId *string `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
-	// The instance name of the VPC firewall.
+	// The name of the VPC firewall instance.
 	//
 	// example:
 	//
-	// Test instance
+	// vpc-firewall
 	FirewallName *string `json:"FirewallName,omitempty" xml:"FirewallName,omitempty"`
-	// The language of the content within the response. Valid values:
+	// The language of the response. Valid values:
 	//
-	// 	- **zh*	- (default): Chinese
+	// - **zh*	- (default): Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//

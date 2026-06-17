@@ -14,11 +14,11 @@ type iDeleteNatFirewallControlPolicyResponseBody interface {
 }
 
 type DeleteNatFirewallControlPolicyResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
-	// 31306869-C4BC-56F3-BBE6-C377CF9C8E1C
+	// 31306819-C4BC-56F3-BBE6-*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

@@ -22,19 +22,28 @@ type iDescribePrivateDnsDomainNameListResponseBody interface {
 }
 
 type DescribePrivateDnsDomainNameListResponseBody struct {
+	// The list of domain names.
 	DomainNameList []*string `json:"DomainNameList,omitempty" xml:"DomainNameList,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries on the current page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 822B9125-6E1A-551C-8EAF-6E7AE74****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of private DNS domain names.
+	//
 	// example:
 	//
 	// 132

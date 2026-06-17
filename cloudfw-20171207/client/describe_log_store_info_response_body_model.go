@@ -36,62 +36,71 @@ type iDescribeLogStoreInfoResponseBody interface {
 }
 
 type DescribeLogStoreInfoResponseBody struct {
+	// The information list.
 	InfoList []*DescribeLogStoreInfoResponseBodyInfoList `json:"InfoList,omitempty" xml:"InfoList,omitempty" type:"Repeated"`
+	// The number of times the log storage mode can be changed.
+	//
 	// example:
 	//
 	// 2
 	LogModifyQuota *int32 `json:"LogModifyQuota,omitempty" xml:"LogModifyQuota,omitempty"`
-	// The name of the SLS LogStore in the log service.
+	// The name of the SLS Logstore.
 	//
 	// example:
 	//
 	// xxx-logstore
 	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
+	// The log version. 1: indicates one Logstore. 2: indicates two Logstores.
+	//
 	// example:
 	//
 	// 2
 	LogVersion *int32 `json:"LogVersion,omitempty" xml:"LogVersion,omitempty"`
-	// The Project name of the log service.
+	// The name of the Simple Log Service project.
 	//
 	// example:
 	//
 	// project-xxx-cn-hangzhou
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// Available log storage capacity. Unit: Byte.
+	// The available log storage capacity, in bytes.
 	//
 	// example:
 	//
 	// 50000000
 	Quota *int64 `json:"Quota,omitempty" xml:"Quota,omitempty"`
-	// The region ID for log delivery.
+	// The ID of the region where logs are delivered.
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of this request.
+	// The request ID.
 	//
 	// example:
 	//
 	// C6C3B72B********E95FB0A161
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
-	// 用户进行日志修改所产生的任务id。
+	// 132
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The total purchased log storage capacity, in bytes.
+	//
 	// example:
 	//
 	// 50000000
 	TotalQuota *int64 `json:"TotalQuota,omitempty" xml:"TotalQuota,omitempty"`
-	// Log storage duration. Unit: days.
+	// The storage duration of logs, in days.
 	//
 	// example:
 	//
 	// 20
 	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
-	// Used storage capacity. Unit: Byte.
+	// The used storage capacity, in bytes.
 	//
-	// > The statistics of the log service have a delay of approximately two hours.
+	// > Statistics from Simple Log Service may be delayed by up to two hours.
 	//
 	// example:
 	//
@@ -229,38 +238,56 @@ func (s *DescribeLogStoreInfoResponseBody) Validate() error {
 }
 
 type DescribeLogStoreInfoResponseBodyInfoList struct {
+	// The name of the SLS Logstore.
+	//
 	// example:
 	//
 	// xxx-logstore
 	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
+	// The maximum number of shards supported for scaling.
+	//
 	// example:
 	//
 	// 4
 	MaxSplitShard *int32 `json:"MaxSplitShard,omitempty" xml:"MaxSplitShard,omitempty"`
+	// The name of the Simple Log Service project.
+	//
 	// example:
 	//
 	// cloudfirewall-project-14151892848****-cn-hangzhou
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The storage capacity threshold, in bytes.
+	//
 	// example:
 	//
 	// 50000000
 	Quota *int64 `json:"Quota,omitempty" xml:"Quota,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-qingdao
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The number of shards in use.
+	//
 	// example:
 	//
 	// 2
 	Shard *int32 `json:"Shard,omitempty" xml:"Shard,omitempty"`
+	// The location of the Logstore. Valid values: \\`cn\\` for the Chinese mainland and \\`intl\\` for regions outside the Chinese mainland.
+	//
 	// example:
 	//
 	// cn
 	Site *string `json:"Site,omitempty" xml:"Site,omitempty"`
+	// The storage duration of logs, in days.
+	//
 	// example:
 	//
 	// 180
 	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+	// The amount of stored logs, in bytes.
+	//
 	// example:
 	//
 	// 21852955752

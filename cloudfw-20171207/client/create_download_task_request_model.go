@@ -20,31 +20,31 @@ type iCreateDownloadTaskRequest interface {
 }
 
 type CreateDownloadTaskRequest struct {
-	// The language of the content within the response.
+	// The language of the response message.
 	//
 	// Valid values:
 	//
-	// 	- **zh**: Chinese (default)
+	// - **zh**: Chinese (default)
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The query condition of the download task.
+	// The query conditions for the download task.
 	//
 	// example:
 	//
 	// {\\"SearchItem\\":\\"\\",\\"UserType\\":\\"buy\\",\\"IpVersion\\":\\"4\\"}
 	TaskData *string `json:"TaskData,omitempty" xml:"TaskData,omitempty"`
-	// The type of the task. For more information about task types, see the descriptions in the "DescribeDownloadTaskType" topic.
+	// The type of the task. For a list of valid values, see the API for querying file download task types.
 	//
 	// example:
 	//
 	// InternetFirewallAsset
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	// The time zone of the time information in the downloaded file. The value must be an identifier of a time zone in the Internet Assigned Numbers Authority (IANA) database. The default value is Asia/Shanghai, which indicates UTC+8.
+	// The time zone of the time information in the downloaded file. The value is an IANA time zone identifier. The default value is Asia/Shanghai, which corresponds to UTC+8.
 	//
 	// example:
 	//

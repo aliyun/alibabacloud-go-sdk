@@ -16,7 +16,7 @@ type iCreateVpcFirewallConfigureResponseBody interface {
 }
 
 type CreateVpcFirewallConfigureResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

@@ -20,15 +20,22 @@ type iDescribeNatFirewallTimeTopResponseBody interface {
 }
 
 type DescribeNatFirewallTimeTopResponseBody struct {
+	// The number of results.
+	//
 	// example:
 	//
 	// 2
-	DataCount *int64                                            `json:"DataCount,omitempty" xml:"DataCount,omitempty"`
-	DataList  []*DescribeNatFirewallTimeTopResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
+	DataCount *int64 `json:"DataCount,omitempty" xml:"DataCount,omitempty"`
+	// The list of data.
+	DataList []*DescribeNatFirewallTimeTopResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// C5DDD596-1191-5F36-A504-8733045A****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The point in time when the traffic data was collected. This is a UNIX timestamp. Unit: seconds.
+	//
 	// example:
 	//
 	// 1656923760
@@ -93,54 +100,80 @@ func (s *DescribeNatFirewallTimeTopResponseBody) Validate() error {
 }
 
 type DescribeNatFirewallTimeTopResponseBodyDataList struct {
+	// The inbound bandwidth. Unit: bps.
+	//
 	// example:
 	//
 	// 187
 	InBps *int64 `json:"InBps,omitempty" xml:"InBps,omitempty"`
+	// The IP address.
+	//
 	// example:
 	//
 	// 10.66.231.XXX
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The ID of the NAT firewall.
+	//
 	// example:
 	//
 	// vfw-tr-7a9c8901ed394****
 	NatFirewallId *string `json:"NatFirewallId,omitempty" xml:"NatFirewallId,omitempty"`
+	// The name of the NAT firewall.
+	//
 	// example:
 	//
 	// vfw-test
 	NatFirewallName *string `json:"NatFirewallName,omitempty" xml:"NatFirewallName,omitempty"`
+	// The ID of the NAT Gateway.
+	//
 	// example:
 	//
 	// ngw-uf6pnry5vpawb****
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	// The name of the NAT Gateway.
+	//
 	// example:
 	//
 	// ngw-test
 	NatGatewayName *string `json:"NatGatewayName,omitempty" xml:"NatGatewayName,omitempty"`
+	// The number of new connections.
+	//
 	// example:
 	//
 	// 27
 	NewConn *string `json:"NewConn,omitempty" xml:"NewConn,omitempty"`
+	// The outbound bandwidth. Unit: bps.
+	//
 	// example:
 	//
 	// 45
 	OutBps *int64 `json:"OutBps,omitempty" xml:"OutBps,omitempty"`
+	// The region.
+	//
 	// example:
 	//
 	// cn-qingdao
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	// The ID of the asset instance.
+	//
 	// example:
 	//
 	// i-bp130nn8h6157dir****
 	ResourceInstanceId *string `json:"ResourceInstanceId,omitempty" xml:"ResourceInstanceId,omitempty"`
+	// The name of the asset instance.
+	//
 	// example:
 	//
 	// test
 	ResourceInstanceName *string `json:"ResourceInstanceName,omitempty" xml:"ResourceInstanceName,omitempty"`
+	// The total number of sessions.
+	//
 	// example:
 	//
 	// 27
 	SessionCount *string `json:"SessionCount,omitempty" xml:"SessionCount,omitempty"`
+	// The total bandwidth. Unit: bps.
+	//
 	// example:
 	//
 	// 232

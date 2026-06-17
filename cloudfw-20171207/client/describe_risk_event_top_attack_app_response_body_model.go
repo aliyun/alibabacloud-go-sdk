@@ -16,7 +16,10 @@ type iDescribeRiskEventTopAttackAppResponseBody interface {
 }
 
 type DescribeRiskEventTopAttackAppResponseBody struct {
+	// The list of attacked applications.
 	AttackApps []*DescribeRiskEventTopAttackAppResponseBodyAttackApps `json:"AttackApps,omitempty" xml:"AttackApps,omitempty" type:"Repeated"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// C9DDAD29-C6B3-5997-B757-FFB3F1C3****
@@ -63,14 +66,20 @@ func (s *DescribeRiskEventTopAttackAppResponseBody) Validate() error {
 }
 
 type DescribeRiskEventTopAttackAppResponseBodyAttackApps struct {
+	// The name of the application.
+	//
 	// example:
 	//
 	// live
 	App *string `json:"App,omitempty" xml:"App,omitempty"`
+	// The number of attacks.
+	//
 	// example:
 	//
 	// 20
 	AttackCnt *int32 `json:"AttackCnt,omitempty" xml:"AttackCnt,omitempty"`
+	// The number of intercepted attacks.
+	//
 	// example:
 	//
 	// 15

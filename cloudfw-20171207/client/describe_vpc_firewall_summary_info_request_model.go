@@ -16,10 +16,22 @@ type iDescribeVpcFirewallSummaryInfoRequest interface {
 }
 
 type DescribeVpcFirewallSummaryInfoRequest struct {
+	// The language of the content. Valid values:
+	//
+	// - **zh*	- (default): Chinese.
+	//
+	// - **en**: English.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The type of the user. Valid values:
+	//
+	// **buy**: Paid user
+	//
+	// **free**: Free user
+	//
 	// example:
 	//
 	// buy

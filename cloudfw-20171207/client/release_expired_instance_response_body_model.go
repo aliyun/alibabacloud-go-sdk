@@ -20,18 +20,30 @@ type iReleaseExpiredInstanceResponseBody interface {
 }
 
 type ReleaseExpiredInstanceResponseBody struct {
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Indicates whether the instance was released:
+	//
+	// - **true**: Successful.
+	//
+	// - **false**: Failed.
+	//
 	// example:
 	//
 	// true
 	ReleaseStatus *string `json:"ReleaseStatus,omitempty" xml:"ReleaseStatus,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 9EC1DB0F-EE53-5D36-B5DA-71CB******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true

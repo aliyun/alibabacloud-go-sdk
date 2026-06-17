@@ -16,10 +16,18 @@ type iDescribeSlsAnalyzeOpenStatusResponseBody interface {
 }
 
 type DescribeSlsAnalyzeOpenStatusResponseBody struct {
+	// The enabled status of SLS. Valid values:
+	//
+	// **true**: enabled.
+	//
+	// **false**: disabled.
+	//
 	// example:
 	//
 	// false
 	OpenStatus *string `json:"OpenStatus,omitempty" xml:"OpenStatus,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6CC01A2B-92FB-535C-9415-9A951C20****

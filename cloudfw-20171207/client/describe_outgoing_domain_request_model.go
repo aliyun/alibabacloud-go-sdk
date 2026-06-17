@@ -38,23 +38,23 @@ type iDescribeOutgoingDomainRequest interface {
 }
 
 type DescribeOutgoingDomainRequest struct {
-	// The type of the service. This parameter is empty by default. Valid values:
+	// The asset category. If you leave this parameter empty, assets in all categories are queried. Valid values:
 	//
-	// 	- **All**: all services
+	// - **All**: all categories
 	//
-	// 	- **RiskDomain**: risky domain names
+	// - **RiskDomain**: risky domain names
 	//
-	// 	- **RiskIP**: risky IP addresses
+	// - **RiskIP**: risky IP addresses
 	//
-	// 	- **AliYun**: Alibaba Cloud services
+	// - **AliYun**: Alibaba Cloud services
 	//
-	// 	- **NotAliYun**: third-party services
+	// - **NotAliYun**: third-party services
 	//
 	// example:
 	//
 	// All
 	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	// The number of the page to return.
+	// The page number to return.
 	//
 	// Default value: 1.
 	//
@@ -62,23 +62,23 @@ type DescribeOutgoingDomainRequest struct {
 	//
 	// 1
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The source of traffic for statistics. Valid values:
+	// The source of traffic statistics. The default value is \\`internet\\`, which indicates Internet Firewall. Valid values:
 	//
-	// 	- **internet*	- (default): the Internet firewall.
+	// - **internet**: Internet Firewall
 	//
-	// 	- **nat**: NAT firewalls.
+	// - **nat**: NAT Firewall
 	//
 	// example:
 	//
 	// nat
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	// The domain name in outbound connections.
+	// The outbound domain name.
 	//
 	// example:
 	//
 	// www.aliyundoc.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	// The end of the time range to query. This is a UNIX timestamp. Unit: seconds.
 	//
 	// This parameter is required.
 	//
@@ -86,31 +86,31 @@ type DescribeOutgoingDomainRequest struct {
 	//
 	// 1656750960
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Specifies whether to collect statistics only on AI service access traffic. Valid values:
+	// Specifies whether to count only traffic from accessing AI services. The default value is \\`false\\`. Valid values:
 	//
-	// 	- **true**
+	// - **true**: yes
 	//
-	// 	- **false*	- (default)
+	// - **false**: no
 	//
 	// example:
 	//
 	// true
 	IsAITraffic *string `json:"IsAITraffic,omitempty" xml:"IsAITraffic,omitempty"`
-	// The language of the content within the request. Valid values:
+	// The language of the request and response. Valid values:
 	//
-	// 	- **zh**: Chinese (default)
+	// - **zh*	- (default): Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The method that you want to use to sort the query results. Valid values:
+	// The sorting order. Valid values:
 	//
-	// 	- **asc**
+	// - **asc**: ascending
 	//
-	// 	- **desc*	- (default)
+	// - **desc*	- (default): descending
 	//
 	// example:
 	//
@@ -124,23 +124,23 @@ type DescribeOutgoingDomainRequest struct {
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The public IP address of the Elastic Compute Service (ECS) instance that initiates outbound connections.
+	// The public IP address of the Elastic Compute Service (ECS) instance that initiates the outbound connections.
 	//
 	// example:
 	//
 	// 192.0.XX.XX
 	PublicIP *string `json:"PublicIP,omitempty" xml:"PublicIP,omitempty"`
-	// The field based on which you want to sort the query results. Valid values:
+	// The field to sort by. Valid values:
 	//
-	// 	- **SessionCount*	- (default): the number of requests.
+	// - **SessionCount*	- (default): the number of requests
 	//
-	// 	- **TotalBytes**: the total volume of traffic.
+	// - **TotalBytes**: the total traffic
 	//
 	// example:
 	//
 	// SessionCount
 	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	// The beginning of the time range to query. This is a UNIX timestamp. Unit: seconds.
 	//
 	// This parameter is required.
 	//
@@ -148,81 +148,81 @@ type DescribeOutgoingDomainRequest struct {
 	//
 	// 1656664560
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The ID of the tag. Valid values:
+	// The ID of the intelligence tag. Valid values:
 	//
-	// 	- **AliYun**: Alibaba Cloud service
+	// - **AliYun**: Alibaba Cloud service
 	//
-	// 	- **RiskDomain**: risky domain name
+	// - **RiskDomain**: Risky domain name
 	//
-	// 	- **RiskIP**: risky IP address
+	// - **RiskIP**: Risky IP address
 	//
-	// 	- **TrustedDomain**: trusted website
+	// - **TrustedDomain**: Trusted website
 	//
-	// 	- **AliPay**: Alipay
+	// - **AliPay**: Alipay
 	//
-	// 	- **DingDing**: DingTalk
+	// - **DingDing**: DingTalk
 	//
-	// 	- **WeChat**: WeChat
+	// - **WeChat**: WeChat
 	//
-	// 	- **QQ**: Tencent QQ
+	// - **QQ**: Tencent QQ
 	//
-	// 	- **SecurityService**: security service
+	// - **SecurityService**: Security service
 	//
-	// 	- **Microsoft**: Microsoft
+	// - **Microsoft**: Microsoft
 	//
-	// 	- **Amazon**: Amazon Web Services (AWS)
+	// - **Amazon**: Amazon
 	//
-	// 	- **Pan**: cloud disk
+	// - **Pan**: Cloud storage service
 	//
-	// 	- **Map**: map
+	// - **Map**: Map service
 	//
-	// 	- **Code**: code hosting
+	// - **Code**: Code hosting service
 	//
-	// 	- **SystemService**: system service
+	// - **SystemService**: System service
 	//
-	// 	- **Taobao**: Taobao
+	// - **Taobao**: Taobao
 	//
-	// 	- **Google**: Google
+	// - **Google**: Google
 	//
-	// 	- **ThirdPartyService**: third-party service
+	// - **ThirdPartyService**: Third-party service
 	//
-	// 	- **FirstFlow**: the first time when an outbound connection is initiated
+	// - **FirstFlow**: First-time access
 	//
-	// 	- **Downloader**: malicious download
+	// - **Downloader**: Malicious downloader
 	//
-	// 	- **Alexa Top1M**: popular website
+	// - **Alexa Top 1M**: Popular website
 	//
-	// 	- **Miner**: mining pool
+	// - **Miner**: Mining pool
 	//
-	// 	- **Intelligence**: threat intelligence
+	// - **Intelligence**: Threat intelligence
 	//
-	// 	- **DDoS**: DDoS trojan
+	// - **DDoS**: DDoS trojan
 	//
-	// 	- **Ransomware**: ransomware
+	// - **Ransomware**: Ransomware
 	//
-	// 	- **Spyware**: spyware
+	// - **Spyware**: Spyware
 	//
-	// 	- **Rogue**: rogue software
+	// - **Rogue**: Rogue software
 	//
-	// 	- **Botnet**: botnet
+	// - **Botnet**: Botnet
 	//
-	// 	- **Suspicious**: suspicious website
+	// - **Suspicious**: Suspicious website
 	//
-	// 	- **C\\&C**: command and control (C\\&C)
+	// - **C\\&C**: Command and control (C\\&C)
 	//
-	// 	- **Gang**: gang
+	// - **Gang**: Gang-related activity
 	//
-	// 	- **CVE**: Common Vulnerabilities and Exposures (CVE)
+	// - **CVE**: CVE vulnerability
 	//
-	// 	- **Backdoor**: webshell
+	// - **Backdoor**: Backdoor
 	//
-	// 	- **Phishing**: phishing website
+	// - **Phishing**: Phishing website
 	//
-	// 	- **APT**: advanced persistent threat (APT) attack
+	// - **APT**: Advanced Persistent Threat (APT) attack
 	//
-	// 	- **Supply Chain Attack**: supply chain attack
+	// - **Supply Chain Attack**: Supply chain attack
 	//
-	// 	- **Malicious software**: malware
+	// - **Malware**: Malicious software
 	//
 	// example:
 	//

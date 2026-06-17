@@ -18,11 +18,16 @@ type iDescribeSecurityProxyResponseBody interface {
 }
 
 type DescribeSecurityProxyResponseBody struct {
+	// The list of NAT firewalls.
 	ProxyList []*DescribeSecurityProxyResponseBodyProxyList `json:"ProxyList,omitempty" xml:"ProxyList,omitempty" type:"Repeated"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// F0F82705-CFC7-5F83-86C8-A063892F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 5
@@ -78,55 +83,96 @@ func (s *DescribeSecurityProxyResponseBody) Validate() error {
 }
 
 type DescribeSecurityProxyResponseBodyProxyList struct {
+	// The IPv4 CIDR block of the VPC.
+	//
 	// example:
 	//
 	// 192.168.0.0/16
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	// The details of the exception.
+	//
 	// example:
 	//
 	// “”
 	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	// The UID of the Cloud Firewall member account.
+	//
 	// example:
 	//
 	// 1797733170015112
 	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
+	// The ID of the NAT Gateway.
+	//
 	// example:
 	//
 	// ngw-2zex8sf4s5vus8rq3rjqo
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	// The name of the NAT Gateway.
+	//
 	// example:
 	//
 	// ecs-slb-eip-waf
 	NatGatewayName *string `json:"NatGatewayName,omitempty" xml:"NatGatewayName,omitempty"`
+	// The ID of the NAT firewall.
+	//
 	// example:
 	//
 	// proxy-nat4921f192b6cf438d93f8
 	ProxyId *string `json:"ProxyId,omitempty" xml:"ProxyId,omitempty"`
+	// The name of the NAT firewall.
+	//
 	// example:
 	//
 	// nat-idmp-fir
 	ProxyName *string `json:"ProxyName,omitempty" xml:"ProxyName,omitempty"`
+	// The region ID of the VPC.
+	//
 	// example:
 	//
 	// ap-southeast-1
-	RegionNo   *string   `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	// The list of SNAT IP addresses.
 	SnatIpList []*string `json:"SnatIpList,omitempty" xml:"SnatIpList,omitempty" type:"Repeated"`
+	// The status of the Cloud Firewall. Valid values:
+	//
+	// - **configuring**: The firewall is being created.
+	//
+	// - **deleting**: The firewall is being deleted.
+	//
+	// - **normal**: The firewall is running.
+	//
+	// - **abnormal**: The firewall is not running as expected.
+	//
+	// - **opening**: The firewall is being enabled.
+	//
+	// - **closing**: The firewall is being disabled.
+	//
+	// - **closed**: The firewall is disabled.
+	//
 	// example:
 	//
 	// normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the strict mode is enabled. 1: The strict mode is enabled. 0: The strict mode is disabled.
+	//
 	// example:
 	//
 	// 0
 	StrictMode *int32 `json:"StrictMode,omitempty" xml:"StrictMode,omitempty"`
+	// The ID of the vSwitch to which the Cloud Firewall instance belongs.
+	//
 	// example:
 	//
 	// vsw-5gu2qqfmjmwl8ktzgfekl
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The ID of the VPC instance.
+	//
 	// example:
 	//
 	// vpc-wz9xn35tq33hunzvpu0se
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The instance name of the VPC.
+	//
 	// example:
 	//
 	// vpc-bp1kw9igsq0yyzeanqamx

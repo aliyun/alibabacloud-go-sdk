@@ -46,67 +46,100 @@ type iDescribeInternetOpenDetailRequest interface {
 }
 
 type DescribeInternetOpenDetailRequest struct {
+	// The ID of the asset. Fuzzy search is supported.
+	//
 	// example:
 	//
 	// i-uf6faknmuby7ezht****
 	AssetsInstanceId *string `json:"AssetsInstanceId,omitempty" xml:"AssetsInstanceId,omitempty"`
+	// The name of the asset. Fuzzy search is supported.
+	//
 	// example:
 	//
 	// instance_test
 	AssetsInstanceName *string `json:"AssetsInstanceName,omitempty" xml:"AssetsInstanceName,omitempty"`
+	// The type of the asset for an exact match. If you leave this parameter empty, all asset types are queried.
+	//
 	// example:
 	//
 	// EcsPublicIP
 	AssetsType *string `json:"AssetsType,omitempty" xml:"AssetsType,omitempty"`
+	// The page number of the returned page.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	//
 	// example:
 	//
 	// 1745251200
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The language of the content.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The number of the page to return.
+	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The port for an exact match. The value must be an integer from 1 to 65535. If you leave this parameter empty, all ports are queried.
+	//
 	// example:
 	//
 	// 9100
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The public IP address for an exact match. If you leave this parameter empty, all public IP addresses are queried.
+	//
 	// example:
 	//
 	// 203.0.13.XX
 	PublicIp *string `json:"PublicIp,omitempty" xml:"PublicIp,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-shanghai
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	// The risk level. If you leave this parameter empty, all risk levels are queried.
+	//
 	// example:
 	//
 	// 3
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The name of the application for an exact match. If you leave this parameter empty, all applications are queried.
+	//
 	// example:
 	//
 	// SMB
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// The name of the application for a fuzzy match. If you leave this parameter empty, all applications are queried.
+	//
 	// example:
 	//
 	// SMB
-	ServiceNameFuzzy *string                                      `json:"ServiceNameFuzzy,omitempty" xml:"ServiceNameFuzzy,omitempty"`
-	SortList         []*DescribeInternetOpenDetailRequestSortList `json:"SortList,omitempty" xml:"SortList,omitempty" type:"Repeated"`
+	ServiceNameFuzzy *string `json:"ServiceNameFuzzy,omitempty" xml:"ServiceNameFuzzy,omitempty"`
+	// The sorting conditions.
+	SortList []*DescribeInternetOpenDetailRequestSortList `json:"SortList,omitempty" xml:"SortList,omitempty" type:"Repeated"`
+	// The source IP address of the access request.
+	//
 	// example:
 	//
 	// 222.212.86.7XXX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// The start of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	//
 	// example:
 	//
 	// 1656837360
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The recommended policy level.
+	//
 	// example:
 	//
 	// 10
@@ -288,10 +321,14 @@ func (s *DescribeInternetOpenDetailRequest) Validate() error {
 }
 
 type DescribeInternetOpenDetailRequestSortList struct {
+	// The sort order.
+	//
 	// example:
 	//
 	// asc
 	Dir *string `json:"Dir,omitempty" xml:"Dir,omitempty"`
+	// The sorting key.
+	//
 	// example:
 	//
 	// ServiceName

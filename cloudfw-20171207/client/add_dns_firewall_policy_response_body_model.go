@@ -16,10 +16,14 @@ type iAddDnsFirewallPolicyResponseBody interface {
 }
 
 type AddDnsFirewallPolicyResponseBody struct {
+	// The ID of the access control list.
+	//
 	// example:
 	//
 	// f88dae6f-XXX-XXX-613de9ab2be8
 	AclUuid *string `json:"AclUuid,omitempty" xml:"AclUuid,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 71209DFE-XXX-XXX-52B4A4E9DA3B

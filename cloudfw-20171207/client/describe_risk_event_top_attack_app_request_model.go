@@ -26,29 +26,42 @@ type iDescribeRiskEventTopAttackAppRequest interface {
 }
 
 type DescribeRiskEventTopAttackAppRequest struct {
+	// The list of attacked applications.
 	AttackApp []*string `json:"AttackApp,omitempty" xml:"AttackApp,omitempty" type:"Repeated"`
+	// The type of attack.
+	//
 	// example:
 	//
 	// 3
 	AttackType *string `json:"AttackType,omitempty" xml:"AttackType,omitempty"`
+	// The purchased edition.
+	//
 	// example:
 	//
 	// 10
 	BuyVersion *string `json:"BuyVersion,omitempty" xml:"BuyVersion,omitempty"`
+	// The end time of the query. The value is a UNIX timestamp in seconds.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1735784888
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The language of the response.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The source IP address of the visitor.
+	//
 	// example:
 	//
 	// 182.150.22.XXX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// The start time of the query. The value is a UNIX timestamp in seconds.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -16,13 +16,13 @@ type iCreateTrFirewallV2ResponseBody interface {
 }
 
 type CreateTrFirewallV2ResponseBody struct {
-	// The instance ID of the VPC firewall.
+	// The ID of the VPC firewall instance.
 	//
 	// example:
 	//
 	// vfw-tr-37e22bf0d9b34870****
 	FirewallId *string `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

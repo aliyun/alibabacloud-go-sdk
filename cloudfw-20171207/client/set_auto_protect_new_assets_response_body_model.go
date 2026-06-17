@@ -16,10 +16,14 @@ type iSetAutoProtectNewAssetsResponseBody interface {
 }
 
 type SetAutoProtectNewAssetsResponseBody struct {
+	// The firewall module.
+	//
 	// example:
 	//
 	// api_server
 	Module *string `json:"Module,omitempty" xml:"Module,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// F0F82705-CFC7-5F83-86C8-A063892F****

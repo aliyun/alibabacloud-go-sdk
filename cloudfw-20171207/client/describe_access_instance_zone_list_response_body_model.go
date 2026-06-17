@@ -18,12 +18,16 @@ type iDescribeAccessInstanceZoneListResponseBody interface {
 }
 
 type DescribeAccessInstanceZoneListResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 31306819-C4BC-56F3-BBE6-*****
-	RequestId *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ZoneList  []*string                                          `json:"ZoneList,omitempty" xml:"ZoneList,omitempty" type:"Repeated"`
-	Zones     []*DescribeAccessInstanceZoneListResponseBodyZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of zones.
+	ZoneList []*string `json:"ZoneList,omitempty" xml:"ZoneList,omitempty" type:"Repeated"`
+	// The list of zones.
+	Zones []*DescribeAccessInstanceZoneListResponseBodyZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
 }
 
 func (s DescribeAccessInstanceZoneListResponseBody) String() string {
@@ -75,7 +79,14 @@ func (s *DescribeAccessInstanceZoneListResponseBody) Validate() error {
 }
 
 type DescribeAccessInstanceZoneListResponseBodyZones struct {
+	// The name of the zone in the local language.
+	//
+	// example:
+	//
+	// Beijing Area G
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	// The zone ID.
+	//
 	// example:
 	//
 	// cn-beijing-g

@@ -14,7 +14,7 @@ type iAddInstanceMembersRequest interface {
 }
 
 type AddInstanceMembersRequest struct {
-	// The members.
+	// The members that you want to add to Cloud Firewall.
 	//
 	// This parameter is required.
 	Members []*AddInstanceMembersRequestMembers `json:"Members,omitempty" xml:"Members,omitempty" type:"Repeated"`
@@ -51,13 +51,13 @@ func (s *AddInstanceMembersRequest) Validate() error {
 }
 
 type AddInstanceMembersRequestMembers struct {
-	// The remarks of the member. The value must be 1 to 256 characters in length.
+	// The remarks of the member. The remarks must be 1 to 256 characters in length. You can add up to 20 members at a time.
 	//
 	// example:
 	//
 	// renewal
 	MemberDesc *string `json:"MemberDesc,omitempty" xml:"MemberDesc,omitempty"`
-	// The UID of the member. You can add up to 20 members to Cloud Firewall at a time.
+	// The UID of the member. You can add up to 20 members at a time.
 	//
 	// This parameter is required.
 	//

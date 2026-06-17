@@ -18,11 +18,16 @@ type iDescribeSdlEventListResponseBody interface {
 }
 
 type DescribeSdlEventListResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// F06DE24D-6EB9-5F55-B588-7BB946DF****
-	RequestId          *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// An array of data leakage events.
 	SdlEventDetailList []*DescribeSdlEventListResponseBodySdlEventDetailList `json:"SdlEventDetailList,omitempty" xml:"SdlEventDetailList,omitempty" type:"Repeated"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 6
@@ -78,102 +83,172 @@ func (s *DescribeSdlEventListResponseBody) Validate() error {
 }
 
 type DescribeSdlEventListResponseBodySdlEventDetailList struct {
+	// The asset name.
+	//
 	// example:
 	//
 	// test
 	AssetName *string `json:"AssetName,omitempty" xml:"AssetName,omitempty"`
+	// The private IP address of the asset.
+	//
 	// example:
 	//
 	// 47.100.102.XXX
 	AssetPrivateIp *string `json:"AssetPrivateIp,omitempty" xml:"AssetPrivateIp,omitempty"`
+	// The asset type.
+	//
 	// example:
 	//
 	// EIP
 	AssetType *string `json:"AssetType,omitempty" xml:"AssetType,omitempty"`
+	// The intelligence tag category. Valid values:
+	//
+	// - **Suspicious**: suspicious
+	//
+	// - **Malicious**: malicious
+	//
+	// - **Trusted**: trusted
+	//
 	// example:
 	//
 	// Trusted
 	CategoryClassId *string `json:"CategoryClassId,omitempty" xml:"CategoryClassId,omitempty"`
+	// The category name.
+	//
 	// example:
 	//
 	// Trusted
 	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
+	// The city ID.
+	//
 	// example:
 	//
 	// 000
 	CityId *string `json:"CityId,omitempty" xml:"CityId,omitempty"`
+	// The country ID.
+	//
 	// example:
 	//
 	// cn
 	CountryId *string `json:"CountryId,omitempty" xml:"CountryId,omitempty"`
+	// The destination IP address.
+	//
 	// example:
 	//
 	// 106.14.74.XXX
 	DstIp *string `json:"DstIp,omitempty" xml:"DstIp,omitempty"`
+	// The destination port.
+	//
 	// example:
 	//
 	// 22
 	DstPortList *string `json:"DstPortList,omitempty" xml:"DstPortList,omitempty"`
+	// The number of events.
+	//
 	// example:
 	//
 	// 1
 	EventCnt *int64 `json:"EventCnt,omitempty" xml:"EventCnt,omitempty"`
+	// The event\\"s risk level.
+	//
 	// example:
 	//
 	// high
 	EventLevel *string `json:"EventLevel,omitempty" xml:"EventLevel,omitempty"`
-	EventName  *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
+	// The event name.
+	//
+	// example:
+	//
+	// Sensitive ID card data leakage
+	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
+	// The first time the event occurred, as a Unix timestamp in seconds.
+	//
 	// example:
 	//
 	// 1735697768
 	FirstTime *int64 `json:"FirstTime,omitempty" xml:"FirstTime,omitempty"`
+	// The last time the event occurred, as a Unix timestamp in seconds.
+	//
 	// example:
 	//
 	// 1738636157
-	LastTime     *int64  `json:"LastTime,omitempty" xml:"LastTime,omitempty"`
+	LastTime *int64 `json:"LastTime,omitempty" xml:"LastTime,omitempty"`
+	// The location of the destination IP address.
+	//
+	// example:
+	//
+	// Yuhang District, Hangzhou City, Zhejiang Province
 	LocationName *string `json:"LocationName,omitempty" xml:"LocationName,omitempty"`
+	// The payload of the intrusion prevention event.
+	//
 	// example:
 	//
 	// 3082002f02010004067075626c6963a082002002044c33a756020100020100308200103082000c06082b060102010105000500
 	Payload *string `json:"Payload,omitempty" xml:"Payload,omitempty"`
+	// The protocol.
+	//
 	// example:
 	//
 	// TCP
 	ProtoList *string `json:"ProtoList,omitempty" xml:"ProtoList,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource ID.
+	//
 	// example:
 	//
 	// ce347a98f41e849188aa51c56b02a****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The resource type.
+	//
 	// example:
 	//
 	// 0
 	ResourceIdType *int32 `json:"ResourceIdType,omitempty" xml:"ResourceIdType,omitempty"`
+	// The number of sensitive data items.
+	//
 	// example:
 	//
 	// 10
-	SensitiveDataCnt  *int64    `json:"SensitiveDataCnt,omitempty" xml:"SensitiveDataCnt,omitempty"`
+	SensitiveDataCnt *int64 `json:"SensitiveDataCnt,omitempty" xml:"SensitiveDataCnt,omitempty"`
+	// An array of sensitive data.
 	SensitiveDataList []*string `json:"SensitiveDataList,omitempty" xml:"SensitiveDataList,omitempty" type:"Repeated"`
+	// The sensitive data level.
+	//
 	// example:
 	//
 	// S3
 	SensitiveLevel *string `json:"SensitiveLevel,omitempty" xml:"SensitiveLevel,omitempty"`
-	SensitiveType  *string `json:"SensitiveType,omitempty" xml:"SensitiveType,omitempty"`
+	// The sensitive data type.
+	//
+	// example:
+	//
+	// Identity Card
+	SensitiveType *string `json:"SensitiveType,omitempty" xml:"SensitiveType,omitempty"`
+	// The source IP address.
+	//
 	// example:
 	//
 	// 104.28.226.XX
 	SrcIp *string `json:"SrcIp,omitempty" xml:"SrcIp,omitempty"`
+	// The source port.
+	//
 	// example:
 	//
 	// 443
 	SrcPortList *string `json:"SrcPortList,omitempty" xml:"SrcPortList,omitempty"`
+	// The traffic volume in bytes.
+	//
 	// example:
 	//
 	// 0
 	TrafficBytes *int64 `json:"TrafficBytes,omitempty" xml:"TrafficBytes,omitempty"`
+	// The unique identifier for the event.
+	//
 	// example:
 	//
 	// b91035dc-8be4-411d-bec5-e6320af9****

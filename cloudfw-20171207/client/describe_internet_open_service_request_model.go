@@ -34,46 +34,68 @@ type iDescribeInternetOpenServiceRequest interface {
 }
 
 type DescribeInternetOpenServiceRequest struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The end of the time range to query. The value is a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1753804800
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The language of the response.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The port number.
+	//
 	// example:
 	//
 	// 3389
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The risk level.
+	//
 	// example:
 	//
 	// 2
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The name of the application for an exact match. If you do not specify this parameter, all applications are queried.
+	//
 	// example:
 	//
 	// SMB
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// The name of the application for a fuzzy match. If you do not specify this parameter, all applications are queried.
+	//
 	// example:
 	//
 	// SMB
 	ServiceNameFuzzy *string `json:"ServiceNameFuzzy,omitempty" xml:"ServiceNameFuzzy,omitempty"`
+	// The source IP address of the visitor.
+	//
 	// example:
 	//
 	// 122.200.64.XXX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// The start of the time range to query. The value is a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1755742107
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The recommended policy level.
+	//
 	// example:
 	//
 	// 10

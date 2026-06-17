@@ -20,18 +20,30 @@ type iDescribeUnprotectedVulnTrendRequest interface {
 }
 
 type DescribeUnprotectedVulnTrendRequest struct {
+	// The end time. Use a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1754878752
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The language of the response. Valid values:
+	//
+	// - **zh*	- (default): Chinese
+	//
+	// - **en**: English
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The source IP address of the visitor.
+	//
 	// example:
 	//
 	// 112.15.190.XX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// The start time. Use a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1740623016

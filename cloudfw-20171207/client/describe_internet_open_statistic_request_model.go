@@ -20,18 +20,26 @@ type iDescribeInternetOpenStatisticRequest interface {
 }
 
 type DescribeInternetOpenStatisticRequest struct {
+	// The end of the time range to query. This value is a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1736386501
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The language of the request and response.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The source IP address of the visitor.
+	//
 	// example:
 	//
 	// 202.109.244.XX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// The start of the time range to query. This value is a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1734386501

@@ -18,25 +18,25 @@ type iUpdatePostpayUserInternetStatusRequest interface {
 }
 
 type UpdatePostpayUserInternetStatusRequest struct {
-	// The instance ID of Cloud Firewall.
+	// The ID of the Cloud Firewall instance.
 	//
 	// example:
 	//
 	// cfw_elasticity_public_cn-zsk39m******
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The language of the content within the response. Valid values:
+	// The language of the response messages. Valid values:
 	//
-	// 	- **zh*	- (default)
+	// - **zh*	- (default): Chinese
 	//
-	// 	- **en**
+	// - **en**: English
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The operation type.
+	// The type of operation. Currently, only the \\`open\\` operation is supported.
 	//
-	// 	- Set the value to open.
+	// - open: enables the firewall.
 	//
 	// example:
 	//

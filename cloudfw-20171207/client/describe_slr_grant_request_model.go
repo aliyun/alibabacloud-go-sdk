@@ -16,10 +16,14 @@ type iDescribeSlrGrantRequest interface {
 }
 
 type DescribeSlrGrantRequest struct {
+	// The language of the request and response.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The source IP address of the request.
+	//
 	// example:
 	//
 	// 113.225.22.XXX

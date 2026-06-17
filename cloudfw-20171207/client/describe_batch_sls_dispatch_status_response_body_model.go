@@ -24,20 +24,30 @@ type iDescribeBatchSlsDispatchStatusResponseBody interface {
 }
 
 type DescribeBatchSlsDispatchStatusResponseBody struct {
+	// A list of detailed information about the Logstores.
 	InfoList []*DescribeBatchSlsDispatchStatusResponseBodyInfoList `json:"InfoList,omitempty" xml:"InfoList,omitempty" type:"Repeated"`
+	// A list of Simple Log Service projects.
 	ItemList []*DescribeBatchSlsDispatchStatusResponseBodyItemList `json:"ItemList,omitempty" xml:"ItemList,omitempty" type:"Repeated"`
+	// The log version. A value of 1 indicates that there is one Logstore. A value of 2 indicates that there are two Logstores.
+	//
 	// example:
 	//
 	// 1
 	LogVersion *string `json:"LogVersion,omitempty" xml:"LogVersion,omitempty"`
+	// The name of the Logstore in Simple Log Service.
+	//
 	// example:
 	//
 	// rs-stats
 	LogstoreName *string `json:"LogstoreName,omitempty" xml:"LogstoreName,omitempty"`
+	// The name of the project in Simple Log Service.
+	//
 	// example:
 	//
 	// cloudfirewallnew-project-199053910542****-cn-hangzhou
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 7036EBAB-F85F-5AAE-976F-C75AEE59****
@@ -129,15 +139,22 @@ func (s *DescribeBatchSlsDispatchStatusResponseBody) Validate() error {
 }
 
 type DescribeBatchSlsDispatchStatusResponseBodyInfoList struct {
+	// The details of the log delivery configuration.
 	ItemList []*DescribeBatchSlsDispatchStatusResponseBodyInfoListItemList `json:"ItemList,omitempty" xml:"ItemList,omitempty" type:"Repeated"`
+	// The name of the Logstore in Simple Log Service.
+	//
 	// example:
 	//
 	// cloudfirewall-logstore
 	LogstoreName *string `json:"LogstoreName,omitempty" xml:"LogstoreName,omitempty"`
+	// The name of the project in Simple Log Service.
+	//
 	// example:
 	//
 	// cloudfirewall-project-1204872307283650-cn-hangzhou
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// \\`cn\\` indicates the Chinese mainland. \\`intl\\` indicates regions outside the Chinese mainland. \\`global\\` indicates global.
+	//
 	// example:
 	//
 	// cn
@@ -202,23 +219,44 @@ func (s *DescribeBatchSlsDispatchStatusResponseBodyInfoList) Validate() error {
 }
 
 type DescribeBatchSlsDispatchStatusResponseBodyInfoListItemList struct {
+	// The configuration status.
+	//
 	// example:
 	//
 	// success_finished
 	ConfigStatus *string `json:"ConfigStatus,omitempty" xml:"ConfigStatus,omitempty"`
+	// The name of the delivery type.
+	//
 	// example:
 	//
-	// 互联网流量日志、VPC流量日志、NAT流量日志
+	// internet-traffic-log
 	DispatchName *string `json:"DispatchName,omitempty" xml:"DispatchName,omitempty"`
+	// The key for the log categorization. Valid values:
+	//
+	// **internet_log**
+	//
+	// **vpc_firewall_log**
+	//
+	// **nat_firewall_log**
+	//
+	// **ipv6_firewall_log**
+	//
+	// **dns_firewall_log**
+	//
 	// example:
 	//
 	// ipv6_firewall_log
 	DispatchValue *string `json:"DispatchValue,omitempty" xml:"DispatchValue,omitempty"`
+	// Indicates whether this delivery type is enabled.
+	//
 	// example:
 	//
 	// true
-	Enable     *bool     `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The detailed delivery configurations for the Internet and VPCs.
 	FilterKeys []*string `json:"FilterKeys,omitempty" xml:"FilterKeys,omitempty" type:"Repeated"`
+	// The value is fixed to log_type. You can ignore this parameter.
+	//
 	// example:
 	//
 	// log_type
@@ -292,23 +330,34 @@ func (s *DescribeBatchSlsDispatchStatusResponseBodyInfoListItemList) Validate() 
 }
 
 type DescribeBatchSlsDispatchStatusResponseBodyItemList struct {
+	// The status of the delivery configuration.
+	//
 	// example:
 	//
 	// success_finished
 	ConfigStatus *string `json:"ConfigStatus,omitempty" xml:"ConfigStatus,omitempty"`
+	// The name of the log delivery.
+	//
 	// example:
 	//
-	// 互联网流量日志、VPC流量日志、NAT流量日志
+	// internet-traffic-log
 	DispatchName *string `json:"DispatchName,omitempty" xml:"DispatchName,omitempty"`
+	// The value of the log to be delivered.
+	//
 	// example:
 	//
 	// internet_log
 	DispatchValue *string `json:"DispatchValue,omitempty" xml:"DispatchValue,omitempty"`
+	// The delivery status.
+	//
 	// example:
 	//
 	// true
-	Enable     *bool     `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The supported filter conditions.
 	FilterKeys []*string `json:"FilterKeys,omitempty" xml:"FilterKeys,omitempty" type:"Repeated"`
+	// The name of the search type.
+	//
 	// example:
 	//
 	// log_type

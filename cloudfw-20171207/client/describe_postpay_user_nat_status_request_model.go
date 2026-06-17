@@ -16,17 +16,17 @@ type iDescribePostpayUserNatStatusRequest interface {
 }
 
 type DescribePostpayUserNatStatusRequest struct {
-	// The instance ID of Cloud Firewall.
+	// The ID of the Cloud Firewall instance.
 	//
 	// example:
 	//
 	// cfw_elasticity_public_cn-zsk39m******
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The language of the content within the response. Valid values:
+	// The language of the response message. Valid values:
 	//
-	// 	- **zh*	- (default)
+	// - **zh*	- (default): Chinese
 	//
-	// 	- **en**
+	// - **en**: English
 	//
 	// example:
 	//

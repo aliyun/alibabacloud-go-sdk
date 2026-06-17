@@ -28,38 +28,58 @@ type iDescribeRiskSecurityGroupDetailRequest interface {
 }
 
 type DescribeRiskSecurityGroupDetailRequest struct {
+	// The ID of the security group instance.
+	//
 	// example:
 	//
 	// sg-2vc0p803vgxumn6r****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the instance.
+	//
 	// example:
 	//
 	// test-instance-name
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The language of the response. Valid values:
+	//
+	// - **zh*	- (default): Chinese
+	//
+	// - **en**: English
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The page number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNo *string `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of the page to return.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The UUID of the rule.
+	//
 	// example:
 	//
 	// 3b1adf8d-1949-4c8e-809b-fb92ee11****
 	RuleUuid *string `json:"RuleUuid,omitempty" xml:"RuleUuid,omitempty"`
+	// The source IP address of the visitor.
+	//
 	// example:
 	//
 	// 220.189.117.XXX

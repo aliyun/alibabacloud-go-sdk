@@ -22,22 +22,32 @@ type iDescribeFirewallDropStatisticsResponseBody interface {
 }
 
 type DescribeFirewallDropStatisticsResponseBody struct {
+	// The number of packets blocked by access control list (ACL) policies.
+	//
 	// example:
 	//
 	// 20
 	AclDropCnt *int64 `json:"AclDropCnt,omitempty" xml:"AclDropCnt,omitempty"`
+	// The number of packets blocked by the intrusion prevention system (IPS).
+	//
 	// example:
 	//
 	// 20
 	IpsDropCnt *int64 `json:"IpsDropCnt,omitempty" xml:"IpsDropCnt,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// BEA1D173-D5DB-582E-9637-438D5CE3****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of blocked packets.
+	//
 	// example:
 	//
 	// 50
 	TotalDropCnt *int64 `json:"TotalDropCnt,omitempty" xml:"TotalDropCnt,omitempty"`
+	// The number of packets blocked by the vulnerability prevention feature.
+	//
 	// example:
 	//
 	// 10

@@ -16,7 +16,14 @@ type iEnableSdlProtectedAssetRequest interface {
 }
 
 type EnableSdlProtectedAssetRequest struct {
+  // The list of IP assets.
   IpList []*string `json:"IpList,omitempty" xml:"IpList,omitempty" type:"Repeated"`
+  // The language of the request and response. Valid values:
+  // 
+  // - **zh*	- (default): Chinese
+  // 
+  // - **en**: English
+  // 
   // example:
   // 
   // zh

@@ -16,10 +16,13 @@ type iDescribeSecurityProxyResourcesResponseBody interface {
 }
 
 type DescribeSecurityProxyResourcesResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// A8E8D50E-9F45-5662-B116-A1D0807F****
-	RequestId    *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of resources.
 	ResourceList []*DescribeSecurityProxyResourcesResponseBodyResourceList `json:"ResourceList,omitempty" xml:"ResourceList,omitempty" type:"Repeated"`
 }
 
@@ -63,11 +66,14 @@ func (s *DescribeSecurityProxyResourcesResponseBody) Validate() error {
 }
 
 type DescribeSecurityProxyResourcesResponseBodyResourceList struct {
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing
-	RegionNo *string                                                          `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	VpcList  []*DescribeSecurityProxyResourcesResponseBodyResourceListVpcList `json:"VpcList,omitempty" xml:"VpcList,omitempty" type:"Repeated"`
+	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	// The list of VPCs.
+	VpcList []*DescribeSecurityProxyResourcesResponseBodyResourceListVpcList `json:"VpcList,omitempty" xml:"VpcList,omitempty" type:"Repeated"`
 }
 
 func (s DescribeSecurityProxyResourcesResponseBodyResourceList) String() string {
@@ -110,19 +116,28 @@ func (s *DescribeSecurityProxyResourcesResponseBodyResourceList) Validate() erro
 }
 
 type DescribeSecurityProxyResourcesResponseBodyResourceListVpcList struct {
+	// The IPv4 CIDR block of the VPC.
+	//
 	// example:
 	//
 	// 192.168.0.0/16
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	// The UID of the member account.
+	//
 	// example:
 	//
 	// 157862808111****
-	MemberUid   *string                                                                     `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
+	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
+	// The list of NAT gateways.
 	NatGateways []*DescribeSecurityProxyResourcesResponseBodyResourceListVpcListNatGateways `json:"NatGateways,omitempty" xml:"NatGateways,omitempty" type:"Repeated"`
+	// The ID of the VPC.
+	//
 	// example:
 	//
 	// vpc-8vbuzirdl3w1r7exw****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The name of the VPC.
+	//
 	// example:
 	//
 	// vpc-wz94a4q37rgl7g****
@@ -196,19 +211,28 @@ func (s *DescribeSecurityProxyResourcesResponseBodyResourceListVpcList) Validate
 }
 
 type DescribeSecurityProxyResourcesResponseBodyResourceListVpcListNatGateways struct {
+	// The status of the NAT Gateway.
+	//
 	// example:
 	//
 	// Available
 	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	// The ID of the NAT Gateway.
+	//
 	// example:
 	//
 	// ngw-bp1bm0k2t8i6ooxu****
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	// The name of the NAT Gateway.
+	//
 	// example:
 	//
 	// ngw-test
-	NatGatewayName    *string                                                                                      `json:"NatGatewayName,omitempty" xml:"NatGatewayName,omitempty"`
+	NatGatewayName *string `json:"NatGatewayName,omitempty" xml:"NatGatewayName,omitempty"`
+	// The list of NAT route tables.
 	NatRouteEntryList []*DescribeSecurityProxyResourcesResponseBodyResourceListVpcListNatGatewaysNatRouteEntryList `json:"NatRouteEntryList,omitempty" xml:"NatRouteEntryList,omitempty" type:"Repeated"`
+	// The status of the NAT Gateway.
+	//
 	// example:
 	//
 	// Available
@@ -282,18 +306,26 @@ func (s *DescribeSecurityProxyResourcesResponseBodyResourceListVpcListNatGateway
 }
 
 type DescribeSecurityProxyResourcesResponseBodyResourceListVpcListNatGatewaysNatRouteEntryList struct {
+	// The destination CIDR block.
+	//
 	// example:
 	//
 	// 10.0.70.XX/24
 	DestinationCidr *string `json:"DestinationCidr,omitempty" xml:"DestinationCidr,omitempty"`
+	// The ID of the next hop.
+	//
 	// example:
 	//
 	// ngw-2zey0w2u02u1x584m****
 	NextHopId *string `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
+	// The network type of the next hop.
+	//
 	// example:
 	//
 	// NatGateway
 	NextHopType *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
+	// The ID of the route table.
+	//
 	// example:
 	//
 	// vtb-2ze409pp09d994a****

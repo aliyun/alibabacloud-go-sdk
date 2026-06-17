@@ -14,6 +14,8 @@ type iDeleteDnsFirewallPolicyResponseBody interface {
 }
 
 type DeleteDnsFirewallPolicyResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 32314C1E-82CF-582C-853A-B1773F******

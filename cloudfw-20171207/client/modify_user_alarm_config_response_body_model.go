@@ -14,6 +14,8 @@ type iModifyUserAlarmConfigResponseBody interface {
 }
 
 type ModifyUserAlarmConfigResponseBody struct {
+	// Request ID of the response.
+	//
 	// example:
 	//
 	// 3B168A0F-A43D-5FD0-8059-B51BDD6E****

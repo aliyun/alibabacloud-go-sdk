@@ -18,11 +18,16 @@ type iDescribeVpcFirewallCenSummaryListResponseBody interface {
 }
 
 type DescribeVpcFirewallCenSummaryListResponseBody struct {
+	// The list of CEN instances.
 	CenList []*DescribeVpcFirewallCenSummaryListResponseBodyCenList `json:"CenList,omitempty" xml:"CenList,omitempty" type:"Repeated"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 432D6CCA-5186-5B91-A2B8-10C8994B****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 5
@@ -78,14 +83,19 @@ func (s *DescribeVpcFirewallCenSummaryListResponseBody) Validate() error {
 }
 
 type DescribeVpcFirewallCenSummaryListResponseBodyCenList struct {
+	// The ID of the CEN instance.
+	//
 	// example:
 	//
 	// cen-maqfw3abcmjy56****
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	// The name of the CEN instance.
+	//
 	// example:
 	//
 	// test
-	CenName      *string   `json:"CenName,omitempty" xml:"CenName,omitempty"`
+	CenName *string `json:"CenName,omitempty" xml:"CenName,omitempty"`
+	// The list of region IDs for the VPC border firewall.
 	RegionNoList []*string `json:"RegionNoList,omitempty" xml:"RegionNoList,omitempty" type:"Repeated"`
 }
 

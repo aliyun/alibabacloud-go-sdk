@@ -30,37 +30,37 @@ type iDescribeUserAssetIPTrafficInfoResponseBody interface {
 }
 
 type DescribeUserAssetIPTrafficInfoResponseBody struct {
-	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	// The end time of the query, as a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1656923760
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The network throughput, which indicates the inbound traffic rate. Unit: bit/s.
+	// The inbound network throughput, in bits per second (bps).
 	//
 	// example:
 	//
 	// 4520
 	InBps *int64 `json:"InBps,omitempty" xml:"InBps,omitempty"`
-	// The inbound network throughput, which indicates the number of packets that are sent inbound per second. Unit: packets per second (pps).
+	// The inbound packet rate, in packets per second (pps).
 	//
 	// example:
 	//
 	// 233
 	InPps *int64 `json:"InPps,omitempty" xml:"InPps,omitempty"`
-	// The new connection creation rate.
+	// The number of new connections.
 	//
 	// example:
 	//
 	// 43
 	NewConn *int64 `json:"NewConn,omitempty" xml:"NewConn,omitempty"`
-	// The network throughput, which indicates the outbound traffic rate. Unit: bit/s.
+	// The outbound network throughput, in bits per second (bps).
 	//
 	// example:
 	//
 	// 4180
 	OutBps *int64 `json:"OutBps,omitempty" xml:"OutBps,omitempty"`
-	// The outbound network throughput, which indicates the number of packets that are sent outbound per second. Unit: pps.
+	// The outbound packet rate, in packets per second (pps).
 	//
 	// example:
 	//
@@ -72,13 +72,13 @@ type DescribeUserAssetIPTrafficInfoResponseBody struct {
 	//
 	// F0F82705-CFC7-5F83-86C8-A063892F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of requests.
+	// The number of sessions.
 	//
 	// example:
 	//
 	// 50
 	SessionCount *int64 `json:"SessionCount,omitempty" xml:"SessionCount,omitempty"`
-	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	// The start time of the query, as a UNIX timestamp in seconds.
 	//
 	// example:
 	//

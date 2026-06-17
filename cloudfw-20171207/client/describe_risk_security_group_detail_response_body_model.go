@@ -22,19 +22,28 @@ type iDescribeRiskSecurityGroupDetailResponseBody interface {
 }
 
 type DescribeRiskSecurityGroupDetailResponseBody struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 33C94306-2064-5A06-9645-01419967****
-	RequestId    *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The details of the risk security group.
 	RiskSgDetail []*DescribeRiskSecurityGroupDetailResponseBodyRiskSgDetail `json:"RiskSgDetail,omitempty" xml:"RiskSgDetail,omitempty" type:"Repeated"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 5
@@ -108,28 +117,42 @@ func (s *DescribeRiskSecurityGroupDetailResponseBody) Validate() error {
 }
 
 type DescribeRiskSecurityGroupDetailResponseBodyRiskSgDetail struct {
+	// The number of associated ECS instances.
+	//
 	// example:
 	//
 	// 10
-	EcsCount *int32                                                            `json:"EcsCount,omitempty" xml:"EcsCount,omitempty"`
-	EcsInfo  []*DescribeRiskSecurityGroupDetailResponseBodyRiskSgDetailEcsInfo `json:"EcsInfo,omitempty" xml:"EcsInfo,omitempty" type:"Repeated"`
+	EcsCount *int32 `json:"EcsCount,omitempty" xml:"EcsCount,omitempty"`
+	// The ECS information.
+	EcsInfo []*DescribeRiskSecurityGroupDetailResponseBodyRiskSgDetailEcsInfo `json:"EcsInfo,omitempty" xml:"EcsInfo,omitempty" type:"Repeated"`
+	// The ID of the security group instance.
+	//
 	// example:
 	//
 	// sg-2vc0p803vgxumn6r****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The instance name.
+	//
 	// example:
 	//
 	// test-instance-name
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-shanghai
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	// The risk level of the rule.
+	//
 	// example:
 	//
 	// high
-	RiskLevel *string                                                            `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	RuleInfo  []*DescribeRiskSecurityGroupDetailResponseBodyRiskSgDetailRuleInfo `json:"RuleInfo,omitempty" xml:"RuleInfo,omitempty" type:"Repeated"`
+	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The information about the risk security group rule.
+	RuleInfo []*DescribeRiskSecurityGroupDetailResponseBodyRiskSgDetailRuleInfo `json:"RuleInfo,omitempty" xml:"RuleInfo,omitempty" type:"Repeated"`
+	// The ID of the VPC instance.
+	//
 	// example:
 	//
 	// vpc-8vbuzirdl3w1r7exw****
@@ -239,18 +262,26 @@ func (s *DescribeRiskSecurityGroupDetailResponseBodyRiskSgDetail) Validate() err
 }
 
 type DescribeRiskSecurityGroupDetailResponseBodyRiskSgDetailEcsInfo struct {
+	// The ID of the ECS instance.
+	//
 	// example:
 	//
 	// i-bp1gra23yai47d8e****
 	EcsInstanceId *string `json:"EcsInstanceId,omitempty" xml:"EcsInstanceId,omitempty"`
+	// The name of the ECS instance.
+	//
 	// example:
 	//
 	// tyf_test
 	EcsInstanceName *string `json:"EcsInstanceName,omitempty" xml:"EcsInstanceName,omitempty"`
+	// The private IP address of the ECS instance.
+	//
 	// example:
 	//
 	// 172.24.121.XXX
 	PrivateIp *string `json:"PrivateIp,omitempty" xml:"PrivateIp,omitempty"`
+	// The public IP address of the ECS instance.
+	//
 	// example:
 	//
 	// 47.107.141.XXX
@@ -306,26 +337,38 @@ func (s *DescribeRiskSecurityGroupDetailResponseBodyRiskSgDetailEcsInfo) Validat
 }
 
 type DescribeRiskSecurityGroupDetailResponseBodyRiskSgDetailRuleInfo struct {
+	// The description of the rule.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The risk level of the rule.
+	//
 	// example:
 	//
 	// high
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The name of the rule.
+	//
 	// example:
 	//
 	// test
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The status of the rule.
+	//
 	// example:
 	//
 	// enable
 	RuleStatus *string `json:"RuleStatus,omitempty" xml:"RuleStatus,omitempty"`
+	// The UUID of the rule.
+	//
 	// example:
 	//
 	// 4c1e72c9-6690-408b-9048-065f0f10****
 	RuleUuid *string `json:"RuleUuid,omitempty" xml:"RuleUuid,omitempty"`
+	// The optimization suggestion.
+	//
 	// example:
 	//
 	// test

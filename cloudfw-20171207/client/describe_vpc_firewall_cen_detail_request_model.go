@@ -18,17 +18,17 @@ type iDescribeVpcFirewallCenDetailRequest interface {
 }
 
 type DescribeVpcFirewallCenDetailRequest struct {
-	// The language of the content within the request and response. Valid values:
+	// The language of the request and response. Valid values:
 	//
-	// 	- **zh**: Chinese (default)
+	// - **zh*	- (default): Chinese.
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The ID of the VPC for which the VPC firewall is created.
+	// The ID of the VPC instance for which the VPC firewall is created.
 	//
 	// example:
 	//

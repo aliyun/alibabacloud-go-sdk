@@ -22,19 +22,28 @@ type iDescribeAckClustersResponseBody interface {
 }
 
 type DescribeAckClustersResponseBody struct {
+	// A list of ACK clusters.
 	Clusters []*DescribeAckClustersResponseBodyClusters `json:"Clusters,omitempty" xml:"Clusters,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// C5DDD596-1191-5F36-A504-8733045A****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 1
@@ -108,42 +117,70 @@ func (s *DescribeAckClustersResponseBody) Validate() error {
 }
 
 type DescribeAckClustersResponseBodyClusters struct {
+	// The ID of the ACK cluster.
+	//
 	// example:
 	//
 	// cb0f5640b1b2d404cad6ba21509d7847b
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The name of the ACK cluster.
+	//
 	// example:
 	//
 	// ack-cluster-name
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// The specification of the ACK cluster.
+	//
 	// example:
 	//
 	// ack.pro.small
 	ClusterSpec *string `json:"ClusterSpec,omitempty" xml:"ClusterSpec,omitempty"`
+	// The type of the ACK cluster. For more information about the valid values, see [DescribeClustersV1](~~DescribeClustersV1~~).
+	//
+	// - [DescribeClustersV1](~~DescribeClustersV1~~): Returns a list of ACK clusters in your account that meet specific criteria, such as the cluster type and specifications.
+	//
 	// example:
 	//
 	// ManagedKubernetes
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	// The Alibaba Cloud UID of the account to which the ACK cluster resources belong.
+	//
 	// example:
 	//
 	// 135809047715****
 	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
+	// The network plugin of the ACK cluster. For more information about the valid values, see [DescribeClustersV1](~~DescribeClustersV1~~).
+	//
+	// - [DescribeClustersV1](~~DescribeClustersV1~~): Lists the ACK clusters in your account that meet specified conditions, such as cluster type and specifications.
+	//
 	// example:
 	//
 	// terway-eniip
 	Network *string `json:"Network,omitempty" xml:"Network,omitempty"`
+	// The subtype of the cluster. This parameter is available only when `ClusterType` is set to `ManagedKubernetes`. For more information about the valid values, see [DescribeClustersV1](~~DescribeClustersV1~~).
+	//
+	// - [DescribeClustersV1](~~DescribeClustersV1~~): Lists ACK clusters in your account that meet specified conditions, such as cluster type and specifications.
+	//
 	// example:
 	//
 	// Default
 	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	// The region ID of the ACK cluster.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The running status of the ACK cluster. For more information about the valid values, see [DescribeClustersV1](~~DescribeClustersV1~~).
+	//
+	// - [DescribeClustersV1](~~DescribeClustersV1~~): Retrieves a list of ACK clusters in your account that meet specified conditions, such as cluster type and specifications.
+	//
 	// example:
 	//
 	// running
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The ID of the VPC where the ACK cluster is deployed.
+	//
 	// example:
 	//
 	// vpc-2vcg932hsxsxuqbgl****

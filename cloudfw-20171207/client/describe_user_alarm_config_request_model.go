@@ -16,10 +16,14 @@ type iDescribeUserAlarmConfigRequest interface {
 }
 
 type DescribeUserAlarmConfigRequest struct {
+	// The language of the response. Valid values: zh and en. Default value: zh.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The source IP address of the request.
+	//
 	// example:
 	//
 	// 59.82.135.XXX

@@ -14,6 +14,8 @@ type iDescribeMemberInfoRequest interface {
 }
 
 type DescribeMemberInfoRequest struct {
+	// The UID of the member account.
+	//
 	// example:
 	//
 	// 150795602499****

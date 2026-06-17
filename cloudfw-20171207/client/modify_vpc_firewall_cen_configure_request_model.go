@@ -20,17 +20,17 @@ type iModifyVpcFirewallCenConfigureRequest interface {
 }
 
 type ModifyVpcFirewallCenConfigureRequest struct {
-	// The language of the content within the request and response. Valid values:
+	// The language of the request and response. Valid values:
 	//
-	// 	- **zh**: Chinese (default)
+	// - **zh*	- (default): Chinese.
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The UID of the member that is managed by your Alibaba Cloud account.
+	// The UID of the member account of the current Alibaba Cloud account.
 	//
 	// example:
 	//

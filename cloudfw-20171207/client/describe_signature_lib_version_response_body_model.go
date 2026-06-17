@@ -18,7 +18,7 @@ type iDescribeSignatureLibVersionResponseBody interface {
 }
 
 type DescribeSignatureLibVersionResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -83,47 +83,19 @@ func (s *DescribeSignatureLibVersionResponseBody) Validate() error {
 }
 
 type DescribeSignatureLibVersionResponseBodyVersion struct {
-	// The type.
-	//
-	// Valid values:
-	//
-	// 	- ips
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     Basic Rules and Virtual Patching
-	//
-	//     <!-- -->
-	//
-	//     .
-	//
-	// 	- intelligence
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     Threat Intelligence
-	//
-	//     <!-- -->
+	// The type of the signature library.
 	//
 	// example:
 	//
 	// ips
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// Update time.
+	// The time when the signature library was updated. This value is a Unix timestamp in seconds.
 	//
 	// example:
 	//
 	// 1741067915
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The version number.
+	// The version number of the signature library.
 	//
 	// example:
 	//

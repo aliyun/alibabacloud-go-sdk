@@ -16,10 +16,18 @@ type iDescribeSecurityModeRequest interface {
 }
 
 type DescribeSecurityModeRequest struct {
+	// The language of the response. Valid values:
+	//
+	// - **zh*	- (default): Chinese.
+	//
+	// - **en**: English.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The source IP address of the visitor.
+	//
 	// example:
 	//
 	// 218.108.54.XX

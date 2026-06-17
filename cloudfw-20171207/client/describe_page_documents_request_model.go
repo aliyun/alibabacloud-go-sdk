@@ -22,26 +22,36 @@ type iDescribePageDocumentsRequest interface {
 }
 
 type DescribePageDocumentsRequest struct {
+	// The language.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The page name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// overview
 	PageName *string `json:"PageName,omitempty" xml:"PageName,omitempty"`
+	// The tracing code for the source.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// yundun
 	SourceCode *string `json:"SourceCode,omitempty" xml:"SourceCode,omitempty"`
+	// The source IP address of the visitor.
+	//
 	// example:
 	//
 	// 223.167.221.XXX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// The name of the protected object in the access control policy.
+	//
 	// This parameter is required.
 	//
 	// example:

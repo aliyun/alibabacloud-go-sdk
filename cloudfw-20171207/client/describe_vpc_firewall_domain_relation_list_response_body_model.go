@@ -20,12 +20,18 @@ type iDescribeVpcFirewallDomainRelationListResponseBody interface {
 }
 
 type DescribeVpcFirewallDomainRelationListResponseBody struct {
-	DataList   []*DescribeVpcFirewallDomainRelationListResponseBodyDataList   `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
+	// The list of data entries.
+	DataList []*DescribeVpcFirewallDomainRelationListResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
+	// A list of destination VPCs.
 	DstVpcList []*DescribeVpcFirewallDomainRelationListResponseBodyDstVpcList `json:"DstVpcList,omitempty" xml:"DstVpcList,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// C5DDD596-1191-5F36-A504-8733045A****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 132
@@ -99,74 +105,110 @@ func (s *DescribeVpcFirewallDomainRelationListResponseBody) Validate() error {
 }
 
 type DescribeVpcFirewallDomainRelationListResponseBodyDataList struct {
+	// The business category of the website.
+	//
 	// example:
 	//
 	// Google
 	Business *string `json:"Business,omitempty" xml:"Business,omitempty"`
+	// The domain name.
+	//
 	// example:
 	//
 	// www.example.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The destination IP address.
+	//
 	// example:
 	//
 	// 192.0.XX.XX
 	DstIP *string `json:"DstIP,omitempty" xml:"DstIP,omitempty"`
+	// The ID of the destination region.
+	//
 	// example:
 	//
 	// cn-beijing
 	DstRegionId *string `json:"DstRegionId,omitempty" xml:"DstRegionId,omitempty"`
+	// The ID of the destination VPC.
+	//
 	// example:
 	//
 	// vpc-bp10w5nb30r4jzfyc****
 	DstVpcId *string `json:"DstVpcId,omitempty" xml:"DstVpcId,omitempty"`
+	// The name of the destination VPC.
+	//
 	// example:
 	//
 	// vpc-****
 	DstVpcName *string `json:"DstVpcName,omitempty" xml:"DstVpcName,omitempty"`
+	// The Unix timestamp for the first access, in seconds.
+	//
 	// example:
 	//
 	// 1767147003
 	FirstTime *int64 `json:"FirstTime,omitempty" xml:"FirstTime,omitempty"`
+	// The name of the organization.
+	//
 	// example:
 	//
 	// Google
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The IPS hit count.
+	//
 	// example:
 	//
 	// 10
 	IpsHitCnt *int64 `json:"IpsHitCnt,omitempty" xml:"IpsHitCnt,omitempty"`
+	// The Unix timestamp for the last access, in seconds.
+	//
 	// example:
 	//
 	// 1767147003
 	LastTime *int64 `json:"LastTime,omitempty" xml:"LastTime,omitempty"`
+	// The request traffic, in bytes.
+	//
 	// example:
 	//
 	// 10000
 	RequestBytes *int64 `json:"RequestBytes,omitempty" xml:"RequestBytes,omitempty"`
+	// The response traffic, in bytes.
+	//
 	// example:
 	//
 	// 10000
 	ResponseBytes *int64 `json:"ResponseBytes,omitempty" xml:"ResponseBytes,omitempty"`
+	// The total number of sessions.
+	//
 	// example:
 	//
 	// 27
 	SessionCount *int64 `json:"SessionCount,omitempty" xml:"SessionCount,omitempty"`
+	// The source IP address.
+	//
 	// example:
 	//
 	// 192.0.XX.XX
 	SrcIP *string `json:"SrcIP,omitempty" xml:"SrcIP,omitempty"`
+	// The ID of the source region.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	SrcRegionId *string `json:"SrcRegionId,omitempty" xml:"SrcRegionId,omitempty"`
+	// The ID of the source VPC.
+	//
 	// example:
 	//
 	// vpc-t4nlt09olhpazpoeg****
 	SrcVpcId *string `json:"SrcVpcId,omitempty" xml:"SrcVpcId,omitempty"`
+	// The name of the source VPC.
+	//
 	// example:
 	//
 	// vpc-****
 	SrcVpcName *string `json:"SrcVpcName,omitempty" xml:"SrcVpcName,omitempty"`
+	// The total traffic, in bytes.
+	//
 	// example:
 	//
 	// 16287823
@@ -348,10 +390,14 @@ func (s *DescribeVpcFirewallDomainRelationListResponseBodyDataList) Validate() e
 }
 
 type DescribeVpcFirewallDomainRelationListResponseBodyDstVpcList struct {
+	// The ID of the destination VPC.
+	//
 	// example:
 	//
 	// vpc-bp10w5nb30r4jzfyc****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The name of the destination VPC.
+	//
 	// example:
 	//
 	// vpc-****

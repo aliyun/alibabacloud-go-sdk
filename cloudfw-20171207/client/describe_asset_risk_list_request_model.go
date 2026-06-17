@@ -20,21 +20,21 @@ type iDescribeAssetRiskListRequest interface {
 }
 
 type DescribeAssetRiskListRequest struct {
-	// The IP addresses to query. Separate the IP addresses with commas (,). You can specify up to 20 IP addresses at a time.
+	// The IP addresses to query. Separate multiple IP addresses with commas (,). You can query a maximum of 20 IP addresses at a time.
+	//
+	// > - Example of an IPv4 address: 47.97.XX.XX.
 	//
 	// >
 	//
-	// 	- Example IPv4 address: 47.97.XX.XX.
-	//
-	// 	- Example IPv6 address: 2001:db8:ffff:ffff:ffff:XXXX:ffff.
+	// > - Example of an IPv6 address: 2001:db8:ffff:ffff:ffff:XXXX:ffff.
 	IpAddrList []*string `json:"IpAddrList,omitempty" xml:"IpAddrList,omitempty" type:"Repeated"`
 	// The IP version of the asset that is protected by Cloud Firewall.
 	//
 	// Valid values:
 	//
-	// 	- **4*	- (default): IPv4
+	// - **4*	- (default): IPv4
 	//
-	// 	- **6**: IPv6
+	// - **6**: IPv6
 	//
 	// This parameter is required.
 	//
@@ -42,17 +42,17 @@ type DescribeAssetRiskListRequest struct {
 	//
 	// 4
 	IpVersion *int32 `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	// The language of the content within the response. Valid values:
+	// The language of the response message. Valid values:
 	//
-	// 	- **zh*	- (default): Chinese
+	// - **zh*	- (default): Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The source IP address of the request.
+	// The source IP address of the visitor.
 	//
 	// example:
 	//

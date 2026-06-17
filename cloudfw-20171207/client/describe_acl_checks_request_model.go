@@ -16,12 +16,16 @@ type iDescribeAclChecksRequest interface {
 }
 
 type DescribeAclChecksRequest struct {
+	// The type of ACL check.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// VPC
 	AclType *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
+	// The language.
+	//
 	// example:
 	//
 	// zh

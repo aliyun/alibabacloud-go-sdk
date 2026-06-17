@@ -16,7 +16,10 @@ type iDescribeAclCheckQuotaResponseBody interface {
 }
 
 type DescribeAclCheckQuotaResponseBody struct {
+	// The quota.
 	Quota *DescribeAclCheckQuotaResponseBodyQuota `json:"Quota,omitempty" xml:"Quota,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 7D5483BF-2262-586D-8706-BDDB8B42****
@@ -59,18 +62,26 @@ func (s *DescribeAclCheckQuotaResponseBody) Validate() error {
 }
 
 type DescribeAclCheckQuotaResponseBodyQuota struct {
+	// The available quota.
+	//
 	// example:
 	//
 	// 500
 	AvailableQuota *int64 `json:"AvailableQuota,omitempty" xml:"AvailableQuota,omitempty"`
+	// The consumed quota.
+	//
 	// example:
 	//
 	// 1500
 	ConsumedQuota *int64 `json:"ConsumedQuota,omitempty" xml:"ConsumedQuota,omitempty"`
+	// The total quota.
+	//
 	// example:
 	//
 	// 2000
 	TotalQuota *int64 `json:"TotalQuota,omitempty" xml:"TotalQuota,omitempty"`
+	// The time when the quota was last updated. This value is a UNIX timestamp. Unit: seconds.
+	//
 	// example:
 	//
 	// 1724982259

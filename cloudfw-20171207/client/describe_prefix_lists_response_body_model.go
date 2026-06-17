@@ -16,9 +16,9 @@ type iDescribePrefixListsResponseBody interface {
 }
 
 type DescribePrefixListsResponseBody struct {
-	// Details about the prefix lists.
+	// An array of prefix lists.
 	PrefixList []*DescribePrefixListsResponseBodyPrefixList `json:"PrefixList,omitempty" xml:"PrefixList,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -66,11 +66,11 @@ func (s *DescribePrefixListsResponseBody) Validate() error {
 }
 
 type DescribePrefixListsResponseBodyPrefixList struct {
-	// The IP address family of the prefix list. Valid values:
+	// The address family of the prefix list. Valid values:
 	//
-	// 	- IPv4
+	// - IPv4
 	//
-	// 	- IPv6
+	// - IPv6
 	//
 	// example:
 	//
@@ -82,13 +82,13 @@ type DescribePrefixListsResponseBodyPrefixList struct {
 	//
 	// 2
 	AssociationCount *int32 `json:"AssociationCount,omitempty" xml:"AssociationCount,omitempty"`
-	// The creation time.
+	// The time the prefix list was created. The timestamp is in ISO 8601 format: `yyyy-MM-ddTHH:mm:ssZ`.
 	//
 	// example:
 	//
 	// 2023-10-16T08:31:06Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The description.
+	// The description of the prefix list.
 	//
 	// example:
 	//
@@ -100,13 +100,13 @@ type DescribePrefixListsResponseBodyPrefixList struct {
 	//
 	// 20
 	MaxEntries *int32 `json:"MaxEntries,omitempty" xml:"MaxEntries,omitempty"`
-	// The ID of the prefix list.
+	// The prefix list ID.
 	//
 	// example:
 	//
 	// pl-uf64nco3ujjqchx6aaji
 	PrefixListId *string `json:"PrefixListId,omitempty" xml:"PrefixListId,omitempty"`
-	// The name of the prefix list.
+	// The prefix list name.
 	//
 	// example:
 	//

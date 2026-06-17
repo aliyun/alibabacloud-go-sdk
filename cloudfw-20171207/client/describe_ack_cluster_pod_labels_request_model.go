@@ -14,6 +14,10 @@ type iDescribeAckClusterPodLabelsRequest interface {
 }
 
 type DescribeAckClusterPodLabelsRequest struct {
+	// The ID of the ACK cluster connector. You can obtain the ID by calling the following operation:
+	//
+	// - [DescribeAckClusterConnectors](~~DescribeAckClusterConnectors~~): queries a list of ACK cluster connectors.
+	//
 	// This parameter is required.
 	//
 	// example:

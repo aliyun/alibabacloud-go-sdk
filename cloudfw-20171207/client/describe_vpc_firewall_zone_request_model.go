@@ -26,30 +26,44 @@ type iDescribeVpcFirewallZoneRequest interface {
 }
 
 type DescribeVpcFirewallZoneRequest struct {
+	// The ID of the CEN instance.
+	//
 	// example:
 	//
 	// cen-4xbjup276au29r****
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	// The environment.
+	//
 	// example:
 	//
 	// TransitRouter
 	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
+	// The language of the response.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The UID of the Cloud Firewall member account.
+	//
 	// example:
 	//
 	// 135809047715****
 	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	// The source IP address of the request.
+	//
 	// example:
 	//
 	// 222.212.86.7XXX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// The ID of the TransitRouter instance.
+	//
 	// example:
 	//
 	// tr-m5etmb2q7e0mxcur****

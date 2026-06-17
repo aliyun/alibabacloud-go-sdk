@@ -24,17 +24,26 @@ type iDescribeLocationInfoResponseBody interface {
 }
 
 type DescribeLocationInfoResponseBody struct {
+	// The number of regions in China.
+	//
 	// example:
 	//
 	// 340
-	CnCount        *int32                                            `json:"CnCount,omitempty" xml:"CnCount,omitempty"`
-	CnList         []*DescribeLocationInfoResponseBodyCnList         `json:"CnList,omitempty" xml:"CnList,omitempty" type:"Repeated"`
+	CnCount *int32 `json:"CnCount,omitempty" xml:"CnCount,omitempty"`
+	// The list of regions in China.
+	CnList []*DescribeLocationInfoResponseBodyCnList `json:"CnList,omitempty" xml:"CnList,omitempty" type:"Repeated"`
+	// The information about provinces and cities in China.
 	CnProvinceList []*DescribeLocationInfoResponseBodyCnProvinceList `json:"CnProvinceList,omitempty" xml:"CnProvinceList,omitempty" type:"Repeated"`
+	// The number of regions outside China.
+	//
 	// example:
 	//
 	// 238
-	OverseasCount *int32                                          `json:"OverseasCount,omitempty" xml:"OverseasCount,omitempty"`
-	OverseasList  []*DescribeLocationInfoResponseBodyOverseasList `json:"OverseasList,omitempty" xml:"OverseasList,omitempty" type:"Repeated"`
+	OverseasCount *int32 `json:"OverseasCount,omitempty" xml:"OverseasCount,omitempty"`
+	// The list of regions outside China.
+	OverseasList []*DescribeLocationInfoResponseBodyOverseasList `json:"OverseasList,omitempty" xml:"OverseasList,omitempty" type:"Repeated"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// CD3BE433-FAB0-55D8-918A-69B306****
@@ -135,10 +144,17 @@ func (s *DescribeLocationInfoResponseBody) Validate() error {
 }
 
 type DescribeLocationInfoResponseBodyCnList struct {
+	// The ID of the region.
+	//
 	// example:
 	//
 	// 3301
-	LocId   *string `json:"LocId,omitempty" xml:"LocId,omitempty"`
+	LocId *string `json:"LocId,omitempty" xml:"LocId,omitempty"`
+	// The name of the region.
+	//
+	// example:
+	//
+	// Hangzhou City
 	LocName *string `json:"LocName,omitempty" xml:"LocName,omitempty"`
 }
 
@@ -173,8 +189,14 @@ func (s *DescribeLocationInfoResponseBodyCnList) Validate() error {
 }
 
 type DescribeLocationInfoResponseBodyCnProvinceList struct {
-	Cities       []*DescribeLocationInfoResponseBodyCnProvinceListCities `json:"Cities,omitempty" xml:"Cities,omitempty" type:"Repeated"`
-	ProvinceName *string                                                 `json:"ProvinceName,omitempty" xml:"ProvinceName,omitempty"`
+	// The list of city codes.
+	Cities []*DescribeLocationInfoResponseBodyCnProvinceListCities `json:"Cities,omitempty" xml:"Cities,omitempty" type:"Repeated"`
+	// The name of the province.
+	//
+	// example:
+	//
+	// Zhejiang
+	ProvinceName *string `json:"ProvinceName,omitempty" xml:"ProvinceName,omitempty"`
 }
 
 func (s DescribeLocationInfoResponseBodyCnProvinceList) String() string {
@@ -217,10 +239,17 @@ func (s *DescribeLocationInfoResponseBodyCnProvinceList) Validate() error {
 }
 
 type DescribeLocationInfoResponseBodyCnProvinceListCities struct {
+	// The ID of the region.
+	//
 	// example:
 	//
 	// 123
-	LocId   *string `json:"LocId,omitempty" xml:"LocId,omitempty"`
+	LocId *string `json:"LocId,omitempty" xml:"LocId,omitempty"`
+	// The name of the region.
+	//
+	// example:
+	//
+	// Hangzhou
 	LocName *string `json:"LocName,omitempty" xml:"LocName,omitempty"`
 }
 
@@ -255,10 +284,17 @@ func (s *DescribeLocationInfoResponseBodyCnProvinceListCities) Validate() error 
 }
 
 type DescribeLocationInfoResponseBodyOverseasList struct {
+	// The ID of the region.
+	//
 	// example:
 	//
 	// US
-	LocId   *string `json:"LocId,omitempty" xml:"LocId,omitempty"`
+	LocId *string `json:"LocId,omitempty" xml:"LocId,omitempty"`
+	// The name of the region.
+	//
+	// example:
+	//
+	// United States
 	LocName *string `json:"LocName,omitempty" xml:"LocName,omitempty"`
 }
 

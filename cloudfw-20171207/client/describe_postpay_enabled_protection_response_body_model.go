@@ -22,22 +22,32 @@ type iDescribePostpayEnabledProtectionResponseBody interface {
 }
 
 type DescribePostpayEnabledProtectionResponseBody struct {
+	// The number of days that protection has been disabled.
+	//
 	// example:
 	//
 	// 6
 	DisabledDays *int64 `json:"DisabledDays,omitempty" xml:"DisabledDays,omitempty"`
+	// The type of asset for which protection is disabled.
+	//
 	// example:
 	//
 	// nat
 	DisabledType *string `json:"DisabledType,omitempty" xml:"DisabledType,omitempty"`
+	// Indicates whether the protection feature is enabled.
+	//
 	// example:
 	//
 	// false
 	IsEnabledProtection *bool `json:"IsEnabledProtection,omitempty" xml:"IsEnabledProtection,omitempty"`
+	// Indicates whether the protection feature is activated but currently disabled.
+	//
 	// example:
 	//
 	// false
 	IsOpenButDisabled *bool `json:"IsOpenButDisabled,omitempty" xml:"IsOpenButDisabled,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 95CA5E2B-E5FB-5838-BC50-6A2C763C****

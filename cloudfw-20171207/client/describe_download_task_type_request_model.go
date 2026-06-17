@@ -20,23 +20,23 @@ type iDescribeDownloadTaskTypeRequest interface {
 }
 
 type DescribeDownloadTaskTypeRequest struct {
-	// The page number. Pages start from page 1. Default value: **1**.
+	// The page number. The default value is **1**.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The language of the content within the response. Valid values:
+	// The language of the response. Valid values:
 	//
-	// 	- **zh*	- (default): Chinese
+	// - **zh*	- (default): Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of entries per page. Default value: 10. Maximum value: 50.
+	// The number of entries to return on each page. Default value: 10. Maximum value: 50.
 	//
 	// example:
 	//

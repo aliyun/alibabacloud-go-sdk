@@ -16,12 +16,16 @@ type iDeletePrivateDnsAllDomainNameRequest interface {
 }
 
 type DeletePrivateDnsAllDomainNameRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pd-12345
 	AccessInstanceId *string `json:"AccessInstanceId,omitempty" xml:"AccessInstanceId,omitempty"`
+	// The region ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -48,78 +48,114 @@ type iDescribeVpcFirewallAssetListRequest interface {
 }
 
 type DescribeVpcFirewallAssetListRequest struct {
+	// The application name.
+	//
 	// example:
 	//
 	// test
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The IP address of the asset.
+	//
 	// example:
 	//
 	// 192.0.XX.XX
 	AssetIP *string `json:"AssetIP,omitempty" xml:"AssetIP,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The traffic direction.
+	//
 	// example:
 	//
 	// in
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	// The ID of the ECS instance.
+	//
 	// example:
 	//
 	// i-hp3ez3rs9bxwt034****
 	EcsInstanceId *string `json:"EcsInstanceId,omitempty" xml:"EcsInstanceId,omitempty"`
+	// The name of the asset instance.
+	//
 	// example:
 	//
 	// test-ecs
 	EcsInstanceName *string `json:"EcsInstanceName,omitempty" xml:"EcsInstanceName,omitempty"`
+	// The end time. The value is a UNIX timestamp. Unit: seconds.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1756952150
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The protocol type.
+	//
 	// example:
 	//
 	// tcp
 	IPProtocol *string `json:"IPProtocol,omitempty" xml:"IPProtocol,omitempty"`
+	// Specifies whether to count only the traffic to AI services.
+	//
 	// example:
 	//
 	// true
 	IsAITraffic *string `json:"IsAITraffic,omitempty" xml:"IsAITraffic,omitempty"`
+	// The language of the request and response.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The sort order.
+	//
 	// example:
 	//
 	// desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the peer VPC instance.
+	//
 	// example:
 	//
 	// vpc-90rq0anm6t8vbwbo****
 	PeerVpcId *string `json:"PeerVpcId,omitempty" xml:"PeerVpcId,omitempty"`
+	// The port number.
+	//
 	// example:
 	//
 	// 5234
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The threat level.
+	//
 	// example:
 	//
 	// 3
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The sorting method.
+	//
 	// example:
 	//
 	// SessionCount
 	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	// The start time. The value is a UNIX timestamp. Unit: seconds.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1534408189
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The ID of the VPC instance.
+	//
 	// This parameter is required.
 	//
 	// example:

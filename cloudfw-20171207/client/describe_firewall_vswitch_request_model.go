@@ -28,34 +28,50 @@ type iDescribeFirewallVSwitchRequest interface {
 }
 
 type DescribeFirewallVSwitchRequest struct {
+	// The instance ID of the VPC border firewall.
+	//
 	// example:
 	//
 	// vfw-tr-5b202e7f0be64611****
 	FirewallId *string `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
+	// The language of the response. Valid values:
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The UID of the member account.
+	//
 	// example:
 	//
 	// 102910763545****
 	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNo *string `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of the page to return.
+	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	// The ID of the VPC instance.
+	//
 	// example:
 	//
 	// vpc-uf6b5lyul0x******
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The ID of the vSwitch.
+	//
 	// example:
 	//
 	// vsw-bp1sqg9w******

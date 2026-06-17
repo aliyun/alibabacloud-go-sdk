@@ -60,71 +60,73 @@ type iDescribeRiskEventGroupRequest interface {
 }
 
 type DescribeRiskEventGroupRequest struct {
-	// The names of the attacked applications. Set the value in the `["AttackApp1","AttackApp2"]` format.
+	// A list of names of the attacked applications. Use the `["AttackApp1","AttackApp2"]` format.
 	//
 	// example:
 	//
 	// ["MySql","DNS"]
 	AttackApp []*string `json:"AttackApp,omitempty" xml:"AttackApp,omitempty" type:"Repeated"`
-	// A list of categories of attacked applications, expressed in the format ["AttackAppCategory1","AttackAppCategory2"].
+	// A list of categories of the attacked applications. Use the ["AttackAppCategory1","AttackAppCategory2"] format.
 	AttackAppCategory []*string `json:"AttackAppCategory,omitempty" xml:"AttackAppCategory,omitempty" type:"Repeated"`
-	// The attack type of the intrusion events. Valid values:
+	// The type of the attack. Valid values:
 	//
-	// 	- **1**: suspicious connection
+	// - **1**: abnormal connection
 	//
-	// 	- **2**: command execution
+	// - **2**: command execution
 	//
-	// 	- **3**: brute-force attack
+	// - **3**: brute-force attack
 	//
-	// 	- **4**: scanning
+	// - **4**: scan
 	//
-	// 	- **5**: others
+	// - **5**: other
 	//
-	// 	- **6**: information leak
+	// - **6**: information leakage
 	//
-	// 	- **7**: DoS attack
+	// - **7**: DoS attack
 	//
-	// 	- **8**: buffer overflow attack
+	// - **8**: overflow attack
 	//
-	// 	- **9**: web attack
+	// - **9**: web attack
 	//
-	// 	- **10**: trojan backdoor
+	// - **10**: backdoor trojan
 	//
-	// 	- **11**: computer worm
+	// - **11**: virus or worm
 	//
-	// 	- **12**: mining
+	// - **12**: mining behavior
 	//
-	// 	- **13**: reverse shell
+	// - **13**: reverse shell
 	//
-	// > If you do not specify this parameter, the intrusion events of all attack types are queried.
+	// > If you do not set this parameter, events of all attack types are queried.
 	//
 	// example:
 	//
 	// 1
 	AttackType *string `json:"AttackType,omitempty" xml:"AttackType,omitempty"`
-	// The edition of Cloud Firewall that you purchase. Valid values:
+	// The edition of Cloud Firewall. Valid values:
 	//
-	// 	- **2**: Premium Edition
+	// - **2**: Premium Edition
 	//
-	// 	- **3**: Enterprise Edition
+	// - **3**: Enterprise Edition
 	//
-	// 	- **4**: Ultimate Edition
+	// - **4**: Ultimate Edition
 	//
-	// 	- **10**: Cloud Firewall that uses the pay-as-you-go billing method
+	// - **10**: pay-as-you-go
 	//
 	// example:
 	//
 	// 10
 	BuyVersion *int64 `json:"BuyVersion,omitempty" xml:"BuyVersion,omitempty"`
-	// The number of the page to return. Default value: **1**.
+	// The page number of the returned data.
+	//
+	// Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The type of the risk events.\\
+	// The type of the risk event.<br>
 	//
-	// Set the value to **session**, which indicates intrusion events.
+	// Set the value to **session**, which indicates intrusion prevention events.<br>
 	//
 	// This parameter is required.
 	//
@@ -132,19 +134,19 @@ type DescribeRiskEventGroupRequest struct {
 	//
 	// session
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	// The direction of the traffic for the intrusion events. Valid values:
+	// The traffic direction of the intrusion prevention event. Valid values:
 	//
-	// 	- **in**: inbound
+	// - **in**: inbound
 	//
-	// 	- **out**: outbound
+	// - **out**: outbound
 	//
-	// > If you do not specify this parameter, the intrusion events that are recorded for both inbound and outbound traffic are queried.
+	// > If you do not set this parameter, events in all traffic directions are queried.
 	//
 	// example:
 	//
 	// in
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	// The destination IP address to query. If you specify this parameter, all intrusion events with the specified destination IP address are queried.
+	// The destination IP address to query. If you set this parameter, only intrusion prevention events that contain the specified destination IP address are queried.
 	//
 	// example:
 	//
@@ -152,7 +154,7 @@ type DescribeRiskEventGroupRequest struct {
 	DstIP *string `json:"DstIP,omitempty" xml:"DstIP,omitempty"`
 	// The ID of the destination VPC.
 	//
-	// > If the FirewallType parameter is set to VpcFirewall, you must specify this parameter.
+	// > This parameter is required only when \\`FirewallType\\` is set to \\`VpcFirewall\\`.
 	//
 	// example:
 	//
@@ -166,53 +168,53 @@ type DescribeRiskEventGroupRequest struct {
 	//
 	// 1534408267
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The name of the intrusion event.
+	// The name of the intrusion prevention event.
 	//
 	// example:
 	//
-	// Webshell communication
+	// wooden horse rear door communication
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
 	// The type of the firewall. Valid values:
 	//
-	// 	- **VpcFirewall**: virtual private cloud (VPC) firewall
+	// - **VpcFirewall**: VPC firewall
 	//
-	// 	- **InternetFirewall**: Internet firewall (default)
+	// - **InternetFirewall*	- (default): Internet firewall
 	//
 	// example:
 	//
 	// InternetFirewall
 	FirewallType *string `json:"FirewallType,omitempty" xml:"FirewallType,omitempty"`
-	// Whether to query only the data that has completed private network tracing.
+	// Specifies whether to query only the data that is traced to private IP addresses.
 	//
 	// example:
 	//
 	// true
 	IsOnlyPrivateAssoc *string `json:"IsOnlyPrivateAssoc,omitempty" xml:"IsOnlyPrivateAssoc,omitempty"`
-	// The language of the content within the request and response. Valid values:
+	// The language of the request and response. Valid values:
 	//
-	// 	- **zh**: Chinese (default)
+	// - **zh*	- (default): Chinese.
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Specifies whether to query the information about the geographical locations of IP addresses.
+	// Specifies whether to query the IP address location information. Valid values:
 	//
-	// 	- **true**: does not query the information about the geographical locations of IP addresses.
+	// - **true**: Does not query the IP geolocation information.
 	//
-	// 	- **false**: queries the information about the geographical locations of IP addresses. This is the default value.
+	// - **false*	- (default): Queries the IP geolocation information.
 	//
 	// example:
 	//
 	// false
 	NoLocation *string `json:"NoLocation,omitempty" xml:"NoLocation,omitempty"`
-	// The order in which you want to sort the results. Valid values:
+	// The sorting order. Valid values:
 	//
-	// 	- **asc**: the ascending order.
+	// - **asc**: ascending
 	//
-	// 	- **desc**: the descending order. This is the default value.
+	// - **desc*	- (default): descending
 	//
 	// example:
 	//
@@ -226,43 +228,43 @@ type DescribeRiskEventGroupRequest struct {
 	//
 	// 6
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The status of the firewall. Valid values:
+	// The handling status of Cloud Firewall. Valid values:
 	//
-	// 	- **1**: alerting
+	// - **1**: Alert
 	//
-	// 	- **2**: blocking
+	// - **2**: Block
 	//
-	// > If you do not specify this parameter, all intrusion events that are detected by the firewall are queried, regardless of the firewall status.
+	// > If you do not set this parameter, events in all handling statuses are queried.
 	//
 	// example:
 	//
 	// 1
 	RuleResult *string `json:"RuleResult,omitempty" xml:"RuleResult,omitempty"`
-	// The module of the rule that is used to detect the intrusion events. Valid values:
+	// The source of the rule that is used to detect the intrusion prevention event. Valid values:
 	//
-	// 	- **1**: basic protection
+	// - **1**: basic protection
 	//
-	// 	- **2**: virtual patching
+	// - **2**: virtual patching
 	//
-	// 	- **4**: threat intelligence
+	// - **4**: threat intelligence
 	//
-	// > If you do not specify this parameter, the intrusion events that are detected by all rules are queried.
+	// > If you do not set this parameter, events detected based on all types of rules are queried.
 	//
 	// example:
 	//
 	// 1
 	RuleSource *string `json:"RuleSource,omitempty" xml:"RuleSource,omitempty"`
-	// The field based on which you want to sort the results. Valid values:
+	// The field to use for sorting. Valid values:
 	//
-	// 	- **VulLevel**: The results are sorted based on the risk level field. This is the default value.
+	// - **VulLevel*	- (default): Sorts by risk level.
 	//
-	// 	- **LastTime**: The results are sorted based on the most recent occurrence time.
+	// - **LastTime**: Sorts by the most recent occurrence time.
 	//
 	// example:
 	//
 	// LastTime
 	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	// The source IP address to query. If you specify this parameter, all intrusion events with the specified source IP address are queried.
+	// The source IP address to query. If you set this parameter, only intrusion prevention events that contain the specified source IP address are queried.
 	//
 	// example:
 	//
@@ -270,13 +272,13 @@ type DescribeRiskEventGroupRequest struct {
 	SrcIP *string `json:"SrcIP,omitempty" xml:"SrcIP,omitempty"`
 	// The ID of the source VPC.
 	//
-	// > If the FirewallType parameter is set to VpcFirewall, you must specify this parameter.
+	// > This parameter is required only when \\`FirewallType\\` is set to \\`VpcFirewall\\`.
 	//
 	// example:
 	//
 	// vpc-uf6e9a9zyokj2ywuo****
 	SrcNetworkInstanceId *string `json:"SrcNetworkInstanceId,omitempty" xml:"SrcNetworkInstanceId,omitempty"`
-	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	// The start of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// This parameter is required.
 	//
@@ -284,15 +286,15 @@ type DescribeRiskEventGroupRequest struct {
 	//
 	// 1534408189
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The risk level of the intrusion events. Valid values:
+	// The risk level of the intrusion prevention event. Valid values:
 	//
-	// 	- **1**: low
+	// - **1**: low
 	//
-	// 	- **2**: medium
+	// - **2**: medium
 	//
-	// 	- **3**: high
+	// - **3**: high
 	//
-	// > If you do not specify this parameter, the intrusion events that are at all risk levels are queried.
+	// > If you do not set this parameter, events of all risk levels are queried.
 	//
 	// example:
 	//

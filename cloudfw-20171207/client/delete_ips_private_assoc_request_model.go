@@ -16,10 +16,18 @@ type iDeleteIpsPrivateAssocRequest interface {
 }
 
 type DeleteIpsPrivateAssocRequest struct {
+	// The language of the request and response messages. Valid values:
+	//
+	// - **zh*	- (default): Chinese.
+	//
+	// - **en**: English.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// ngw-c5vhmjdfp5t****

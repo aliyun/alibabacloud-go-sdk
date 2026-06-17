@@ -93,9 +93,9 @@ type DescribeAssetRiskListResponseBodyAssetList struct {
 	//
 	// Valid values:
 	//
-	// 	- **4**: IPv4
+	// - **4**: IPv4 address
 	//
-	// 	- **6**: IPv6
+	// - **6**: IPv6 address
 	//
 	// example:
 	//
@@ -109,11 +109,11 @@ type DescribeAssetRiskListResponseBodyAssetList struct {
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 	// The risk level. Valid values:
 	//
-	// 	- **low**
+	// - **low**: low risk
 	//
-	// 	- **middle**
+	// - **middle**: medium risk
 	//
-	// 	- **high**
+	// - **high**: high risk
 	//
 	// example:
 	//

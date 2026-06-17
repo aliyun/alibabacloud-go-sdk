@@ -16,11 +16,14 @@ type iCreateAclCheckResponseBody interface {
 }
 
 type CreateAclCheckResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 4FB718F0-CC04-5A12-B17B-188CFC3F****
-	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskIds   []*string `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of task IDs.
+	TaskIds []*string `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
 }
 
 func (s CreateAclCheckResponseBody) String() string {

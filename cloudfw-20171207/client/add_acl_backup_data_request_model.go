@@ -20,20 +20,28 @@ type iAddAclBackupDataRequest interface {
 }
 
 type AddAclBackupDataRequest struct {
+	// The backup time, specified as a Unix timestamp (the number of seconds that have elapsed since 00:00:00 UTC on January 1, 1970).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1743683400
 	BackUpTime *string `json:"BackUpTime,omitempty" xml:"BackUpTime,omitempty"`
+	// The description of the backup data.
+	//
 	// example:
 	//
 	// bj-001
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The language of the request and response.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The source IP address of the request.
+	//
 	// example:
 	//
 	// 115.194.124.XXX

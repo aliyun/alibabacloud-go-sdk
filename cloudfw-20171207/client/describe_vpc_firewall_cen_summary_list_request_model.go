@@ -22,22 +22,40 @@ type iDescribeVpcFirewallCenSummaryListRequest interface {
 }
 
 type DescribeVpcFirewallCenSummaryListRequest struct {
+	// The page number for a paged query. The default value is 1.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The language of the content. Valid values:
+	//
+	// - **zh*	- (default): Chinese.
+	//
+	// - **en**: English.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The UID of the member account.
+	//
 	// example:
 	//
 	// 135809047715****
 	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
+	// The number of entries to return on each page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The type of the CEN transit router. Valid values:
+	//
+	// **Basic**: Basic Edition
+	//
+	// **Enterprise**: Enterprise Edition
+	//
 	// example:
 	//
 	// Basic

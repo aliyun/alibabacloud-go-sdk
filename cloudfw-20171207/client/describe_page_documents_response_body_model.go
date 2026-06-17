@@ -22,16 +22,24 @@ type iDescribePageDocumentsResponseBody interface {
 }
 
 type DescribePageDocumentsResponseBody struct {
+	// The list of documents.
 	Docs []*DescribePageDocumentsResponseBodyDocs `json:"Docs,omitempty" xml:"Docs,omitempty" type:"Repeated"`
+	// The URL of the image.
+	//
 	// example:
 	//
 	// https://img.alicdn.com/tfs/TB1E4FCAuT2gK0jSZFvXXXnFXXa-3399-662.png
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// The application module.
+	//
 	// example:
 	//
 	// sg_server
-	Module *string                                `json:"Module,omitempty" xml:"Module,omitempty"`
-	More   *DescribePageDocumentsResponseBodyMore `json:"More,omitempty" xml:"More,omitempty" type:"Struct"`
+	Module *string `json:"Module,omitempty" xml:"Module,omitempty"`
+	// Additional information.
+	More *DescribePageDocumentsResponseBodyMore `json:"More,omitempty" xml:"More,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 7C81E1AD-08C0-5E09-853B-FDC77B90****
@@ -110,10 +118,14 @@ func (s *DescribePageDocumentsResponseBody) Validate() error {
 }
 
 type DescribePageDocumentsResponseBodyDocs struct {
+	// The title.
+	//
 	// example:
 	//
 	// test
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The URL of the document.
+	//
 	// example:
 	//
 	// https://notify-center-test.ybaobx.com/webhook/arms
@@ -151,10 +163,14 @@ func (s *DescribePageDocumentsResponseBodyDocs) Validate() error {
 }
 
 type DescribePageDocumentsResponseBodyMore struct {
+	// The title.
+	//
 	// example:
 	//
 	// test
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The URL of the document.
+	//
 	// example:
 	//
 	// https://zjysfy.womanhospital.cn/pub/hos/0/noneBackGround.png

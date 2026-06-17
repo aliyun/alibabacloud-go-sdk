@@ -26,27 +26,40 @@ type iDescribePrivateDnsStatisticsResponseBody interface {
 }
 
 type DescribePrivateDnsStatisticsResponseBody struct {
+	// The number of private DNS instances in an abnormal state.
+	//
 	// example:
 	//
 	// 12
 	AbnormalPrivateDnsCount *int64 `json:"AbnormalPrivateDnsCount,omitempty" xml:"AbnormalPrivateDnsCount,omitempty"`
+	// The number of created private DNS instances.
+	//
 	// example:
 	//
 	// 6
 	CreatedPrivateDnsCount *int64 `json:"CreatedPrivateDnsCount,omitempty" xml:"CreatedPrivateDnsCount,omitempty"`
+	// The total number of configured domain names.
+	//
 	// example:
 	//
 	// 5
 	DomainNameTotalCount *int64 `json:"DomainNameTotalCount,omitempty" xml:"DomainNameTotalCount,omitempty"`
+	// The number of configured domain names that were created within the specified time range.
+	//
 	// example:
 	//
 	// 2
 	NewDomainNameTotalCount *int64 `json:"NewDomainNameTotalCount,omitempty" xml:"NewDomainNameTotalCount,omitempty"`
+	// The number of private DNS instances in a normal state.
+	//
 	// example:
 	//
 	// 21
-	NormalPrivateDnsCount *int64                                                          `json:"NormalPrivateDnsCount,omitempty" xml:"NormalPrivateDnsCount,omitempty"`
-	PrivateDnsRegionList  []*DescribePrivateDnsStatisticsResponseBodyPrivateDnsRegionList `json:"PrivateDnsRegionList,omitempty" xml:"PrivateDnsRegionList,omitempty" type:"Repeated"`
+	NormalPrivateDnsCount *int64 `json:"NormalPrivateDnsCount,omitempty" xml:"NormalPrivateDnsCount,omitempty"`
+	// A list of DNS regions.
+	PrivateDnsRegionList []*DescribePrivateDnsStatisticsResponseBodyPrivateDnsRegionList `json:"PrivateDnsRegionList,omitempty" xml:"PrivateDnsRegionList,omitempty" type:"Repeated"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 5716ED52-1B82-5DE1-8695-EFEC453D****
@@ -138,18 +151,26 @@ func (s *DescribePrivateDnsStatisticsResponseBody) Validate() error {
 }
 
 type DescribePrivateDnsStatisticsResponseBodyPrivateDnsRegionList struct {
+	// The number of configured domain names for private DNS in the region.
+	//
 	// example:
 	//
 	// 10
 	DomainNameCount *int64 `json:"DomainNameCount,omitempty" xml:"DomainNameCount,omitempty"`
+	// The number of configured domain names that were created in the region within the specified time range.
+	//
 	// example:
 	//
 	// 1
 	NewDomainNameCount *int64 `json:"NewDomainNameCount,omitempty" xml:"NewDomainNameCount,omitempty"`
+	// The number of private DNS instances in the region.
+	//
 	// example:
 	//
 	// 1
 	PrivateDnsCount *int64 `json:"PrivateDnsCount,omitempty" xml:"PrivateDnsCount,omitempty"`
+	// The region.
+	//
 	// example:
 	//
 	// cn-hangzhou

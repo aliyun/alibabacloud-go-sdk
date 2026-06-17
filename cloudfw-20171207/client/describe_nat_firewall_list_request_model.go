@@ -32,27 +32,27 @@ type iDescribeNatFirewallListRequest interface {
 }
 
 type DescribeNatFirewallListRequest struct {
-	// The language of the content within the response. Valid values:
+	// The language of the response message. Valid values:
 	//
-	// 	- **zh*	- (default)
+	// - **zh*	- (default): Chinese
 	//
-	// 	- **en**
+	// - **en**: English
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The UID of the member that is managed by your Alibaba Cloud account.
+	// The UID of the member account.
 	//
 	// example:
 	//
 	// 147783******
 	MemberUid *int64 `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
-	// The ID of the NAT gateway.
+	// The ID of the NAT Gateway.
 	//
 	// example:
 	//
-	// nat-bp123456g******
+	// ngw-bp123456g******
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
 	// The page number.
 	//
@@ -60,9 +60,9 @@ type DescribeNatFirewallListRequest struct {
 	//
 	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries per page.
+	// The number of NAT firewalls to return on each page for a paged query.
 	//
-	// Default value: **10**.***	- Maximum value: **50**.
+	// The default value is **10**. The maximum value is **50**.
 	//
 	// example:
 	//
@@ -74,39 +74,41 @@ type DescribeNatFirewallListRequest struct {
 	//
 	// proxy-nat97a******
 	ProxyId *string `json:"ProxyId,omitempty" xml:"ProxyId,omitempty"`
-	// The name of the NAT firewall. The name must be 4 to 50 characters in length, and can contain letters, digits, and underscores (_). The name cannot start with an underscore.
+	// The name of the NAT firewall. The name must be 4 to 50 characters in length. It can contain letters, digits, and underscores (_). It cannot start with an underscore (_).
 	//
 	// example:
 	//
-	// proxy-******
+	// nat-firewall
 	ProxyName *string `json:"ProxyName,omitempty" xml:"ProxyName,omitempty"`
-	// The region ID of the virtual private cloud (VPC).
+	// The region ID of the VPC.
+	//
+	// > For more information about the regions where Cloud Firewall is available, see [Supported regions](https://help.aliyun.com/document_detail/195657.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	// The status of the NAT firewall. Valid values:
+	// The status of the Cloud Firewall. Valid values:
 	//
-	// 	- configuring
+	// - configuring: The firewall is being created.
 	//
-	// 	- deleting
+	// - deleting: The firewall is being deleted.
 	//
-	// 	- normal
+	// - normal: The firewall is working as expected.
 	//
-	// 	- abnormal
+	// - abnormal: The firewall is not working as expected.
 	//
-	// 	- opening
+	// - opening: The firewall is being enabled.
 	//
-	// 	- closing
+	// - closing: The firewall is being disabled.
 	//
-	// 	- closed
+	// - closed: The firewall is disabled.
 	//
 	// example:
 	//
 	// normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the VPC.
+	// The ID of the VPC instance.
 	//
 	// example:
 	//

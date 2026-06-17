@@ -16,10 +16,14 @@ type iResetRuleHitCountResponseBody interface {
 }
 
 type ResetRuleHitCountResponseBody struct {
+	// The application module.
+	//
 	// example:
 	//
 	// sg_server
 	Module *string `json:"Module,omitempty" xml:"Module,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 706B2093-CBA0-51B2-BEBF-58903FC6****

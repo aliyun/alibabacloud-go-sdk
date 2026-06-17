@@ -18,8 +18,12 @@ type iDescribeInternetOpenServiceResponseBody interface {
 }
 
 type DescribeInternetOpenServiceResponseBody struct {
+	// The list of data.
 	DataList []*DescribeInternetOpenServiceResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
-	PageInfo *DescribeInternetOpenServiceResponseBodyPageInfo   `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	// The paging information.
+	PageInfo *DescribeInternetOpenServiceResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 99A65AA0-C5B5-5092-BFCF-8111B436****
@@ -80,68 +84,100 @@ func (s *DescribeInternetOpenServiceResponseBody) Validate() error {
 }
 
 type DescribeInternetOpenServiceResponseBodyDataList struct {
+	// The number of details.
+	//
 	// example:
 	//
 	// 5
 	DetailNum *int32 `json:"DetailNum,omitempty" xml:"DetailNum,omitempty"`
+	// The inbound traffic.
+	//
 	// example:
 	//
 	// 447458.0
 	InBytes *int64 `json:"InBytes,omitempty" xml:"InBytes,omitempty"`
+	// The outbound traffic.
+	//
 	// example:
 	//
 	// 1123
-	OutBytes *int64    `json:"OutBytes,omitempty" xml:"OutBytes,omitempty"`
+	OutBytes *int64 `json:"OutBytes,omitempty" xml:"OutBytes,omitempty"`
+	// The list of open ports.
 	PortList []*string `json:"PortList,omitempty" xml:"PortList,omitempty" type:"Repeated"`
+	// The security threat.
+	//
 	// example:
 	//
 	// test
 	ProbRisk *string `json:"ProbRisk,omitempty" xml:"ProbRisk,omitempty"`
+	// The description of the security threat.
+	//
 	// example:
 	//
 	// test
 	ProbRiskDesc *string `json:"ProbRiskDesc,omitempty" xml:"ProbRiskDesc,omitempty"`
+	// The protocol type.
+	//
 	// example:
 	//
 	// tcp
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The number of exposed public IP addresses.
+	//
 	// example:
 	//
 	// 3
 	PublicIpNum *int32 `json:"PublicIpNum,omitempty" xml:"PublicIpNum,omitempty"`
+	// The risk level.
+	//
 	// example:
 	//
 	// 3
 	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The description of the risk.
+	//
 	// example:
 	//
 	// test
 	RiskReason *string `json:"RiskReason,omitempty" xml:"RiskReason,omitempty"`
+	// The application name.
+	//
 	// example:
 	//
 	// SMB
 	ServiceName *int32 `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// The recommended policy level.
+	//
 	// example:
 	//
 	// 20
 	SuggestLevel *int32 `json:"SuggestLevel,omitempty" xml:"SuggestLevel,omitempty"`
+	// The total traffic.
+	//
 	// example:
 	//
 	// 621404
 	TotalBytes *int64 `json:"TotalBytes,omitempty" xml:"TotalBytes,omitempty"`
+	// The traffic percentage over the last 24 hours.
+	//
 	// example:
 	//
 	// 0
 	TrafficPercent1Day *string `json:"TrafficPercent1Day,omitempty" xml:"TrafficPercent1Day,omitempty"`
+	// The traffic percentage over the last 30 days.
+	//
 	// example:
 	//
 	// 0
 	TrafficPercent30Day *string `json:"TrafficPercent30Day,omitempty" xml:"TrafficPercent30Day,omitempty"`
+	// The traffic percentage over the last 7 days.
+	//
 	// example:
 	//
 	// 77
-	TrafficPercent7Day *string   `json:"TrafficPercent7Day,omitempty" xml:"TrafficPercent7Day,omitempty"`
-	UnknownReason      []*string `json:"UnknownReason,omitempty" xml:"UnknownReason,omitempty" type:"Repeated"`
+	TrafficPercent7Day *string `json:"TrafficPercent7Day,omitempty" xml:"TrafficPercent7Day,omitempty"`
+	// The reason why the protocol is not identified if the detected protocol is \\`Unknown\\`.
+	UnknownReason []*string `json:"UnknownReason,omitempty" xml:"UnknownReason,omitempty" type:"Repeated"`
 }
 
 func (s DescribeInternetOpenServiceResponseBodyDataList) String() string {
@@ -310,14 +346,20 @@ func (s *DescribeInternetOpenServiceResponseBodyDataList) Validate() error {
 }
 
 type DescribeInternetOpenServiceResponseBodyPageInfo struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 10

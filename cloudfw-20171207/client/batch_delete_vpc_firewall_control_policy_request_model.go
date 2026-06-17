@@ -16,7 +16,7 @@ type iBatchDeleteVpcFirewallControlPolicyRequest interface {
 }
 
 type BatchDeleteVpcFirewallControlPolicyRequest struct {
-	// The UUIDs of access control policies.
+	// The list of UUIDs of the access control policies.
 	//
 	// This parameter is required.
 	AclUuidList []*string `json:"AclUuidList,omitempty" xml:"AclUuidList,omitempty" type:"Repeated"`

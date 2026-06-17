@@ -18,16 +18,26 @@ type iDeleteAclBackupDataRequest interface {
 }
 
 type DeleteAclBackupDataRequest struct {
+	// The time of the backup, specified as a UNIX timestamp (the number of seconds that have elapsed since 00:00:00 UTC on January 1, 1970).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1743683400
 	BackUpTime *string `json:"BackUpTime,omitempty" xml:"BackUpTime,omitempty"`
+	// The language of the request and response. Valid values:
+	//
+	// - **zh*	- (default): Chinese.
+	//
+	// - **en**: English.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The source IP address.
+	//
 	// example:
 	//
 	// 192.0.XX.XX

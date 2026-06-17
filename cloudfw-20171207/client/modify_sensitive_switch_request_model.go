@@ -18,14 +18,28 @@ type iModifySensitiveSwitchRequest interface {
 }
 
 type ModifySensitiveSwitchRequest struct {
+	// The language of the response. Valid values:
+	//
+	// - **zh*	- (default): Chinese
+	//
+	// - **en**: English
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The type of sensitive data.
+	//
 	// example:
 	//
 	// id_card
 	SensitiveCategory *string `json:"SensitiveCategory,omitempty" xml:"SensitiveCategory,omitempty"`
+	// The status of the switch. Valid values:
+	//
+	// - **1**: on.
+	//
+	// - **0**: off.
+	//
 	// example:
 	//
 	// 1

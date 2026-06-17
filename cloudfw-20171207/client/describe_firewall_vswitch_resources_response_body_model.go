@@ -18,14 +18,19 @@ type iDescribeFirewallVswitchResourcesResponseBody interface {
 }
 
 type DescribeFirewallVswitchResourcesResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// A81E99DF-07CF-5EE4-966A-9FF9F2F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 10
-	TotalCount  *int32                                                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The list of vSwitches.
 	VswitchList []*DescribeFirewallVswitchResourcesResponseBodyVswitchList `json:"VswitchList,omitempty" xml:"VswitchList,omitempty" type:"Repeated"`
 }
 
@@ -78,39 +83,62 @@ func (s *DescribeFirewallVswitchResourcesResponseBody) Validate() error {
 }
 
 type DescribeFirewallVswitchResourcesResponseBodyVswitchList struct {
+	// The number of available IP addresses in the zone.
+	//
 	// example:
 	//
 	// 10
 	AvailableIpCount *string `json:"AvailableIpCount,omitempty" xml:"AvailableIpCount,omitempty"`
+	// The IPv4 CIDR block.
+	//
 	// example:
 	//
 	// 192.168.0.XX/16
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	// The details of the event.
+	//
 	// example:
 	//
 	// []
-	Detail       *string                                                                `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	// The list of firewalls.
 	FirewallList []*DescribeFirewallVswitchResourcesResponseBodyVswitchListFirewallList `json:"FirewallList,omitempty" xml:"FirewallList,omitempty" type:"Repeated"`
+	// The ID of the route table.
+	//
 	// example:
 	//
 	// vtb-uf6ml7rgw5gzzdr****
 	RouteTableId *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
+	// The type of the route table. Valid values:
+	//
+	// - **Custom**: a custom route table.
+	//
+	// - **System**: a system route table.
+	//
 	// example:
 	//
 	// Custom
 	RouteTableType *string `json:"RouteTableType,omitempty" xml:"RouteTableType,omitempty"`
+	// The configuration status.
+	//
 	// example:
 	//
 	// open
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the vSwitch.
+	//
 	// example:
 	//
 	// vsw-bp10qla9mgi42eo****
 	VswitchId *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
+	// The name of the vSwitch.
+	//
 	// example:
 	//
 	// vsw-test
 	VswitchName *string `json:"VswitchName,omitempty" xml:"VswitchName,omitempty"`
+	// The ID of the zone.
+	//
 	// example:
 	//
 	// cn-shanghai-b
@@ -229,14 +257,20 @@ func (s *DescribeFirewallVswitchResourcesResponseBodyVswitchList) Validate() err
 }
 
 type DescribeFirewallVswitchResourcesResponseBodyVswitchListFirewallList struct {
+	// The ID of the firewall instance.
+	//
 	// example:
 	//
 	// vfw-tr-37145c8f5ede45e9****
 	FirewallId *string `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
+	// The name of the Cloud Firewall.
+	//
 	// example:
 	//
 	// test-Firewall
 	FirewallName *string `json:"FirewallName,omitempty" xml:"FirewallName,omitempty"`
+	// The type of the Cloud Firewall.
+	//
 	// example:
 	//
 	// NatFirewall

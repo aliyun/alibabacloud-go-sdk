@@ -28,32 +28,50 @@ type iDescribeAccessInstanceTaskResponseBody interface {
 }
 
 type DescribeAccessInstanceTaskResponseBody struct {
+	// Indicates whether the task exists.
+	//
 	// example:
 	//
 	// true
 	IsFound *bool `json:"IsFound,omitempty" xml:"IsFound,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 15FCCC52-1E23-57AE-B5EF-3E00A3******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The time when the task was completed.
+	//
 	// example:
 	//
 	// 17151381075
 	TaskFinishTimestamp *int64 `json:"TaskFinishTimestamp,omitempty" xml:"TaskFinishTimestamp,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// 3c9d576f-fce0-4caa-9116-15033509bdb6
-	TaskId   *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The task name.
+	//
+	// example:
+	//
+	// Create an ACK cluster connector
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// The time when the task was created.
+	//
 	// example:
 	//
 	// 17151361285
 	TaskStartTimestamp *int64 `json:"TaskStartTimestamp,omitempty" xml:"TaskStartTimestamp,omitempty"`
+	// The task status.
+	//
 	// example:
 	//
 	// running
-	TaskStatus *string                                            `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	TaskSteps  []*DescribeAccessInstanceTaskResponseBodyTaskSteps `json:"TaskSteps,omitempty" xml:"TaskSteps,omitempty" type:"Repeated"`
+	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// The steps of the task.
+	TaskSteps []*DescribeAccessInstanceTaskResponseBodyTaskSteps `json:"TaskSteps,omitempty" xml:"TaskSteps,omitempty" type:"Repeated"`
 }
 
 func (s DescribeAccessInstanceTaskResponseBody) String() string {
@@ -150,11 +168,20 @@ func (s *DescribeAccessInstanceTaskResponseBody) Validate() error {
 }
 
 type DescribeAccessInstanceTaskResponseBodyTaskSteps struct {
+	// The name of the step.
+	//
+	// example:
+	//
+	// Obtain ACK cluster information
 	StepName *string `json:"StepName,omitempty" xml:"StepName,omitempty"`
+	// The progress of the step.
+	//
 	// example:
 	//
 	// 100%
 	StepProgress *string `json:"StepProgress,omitempty" xml:"StepProgress,omitempty"`
+	// The status of the step.
+	//
 	// example:
 	//
 	// finished

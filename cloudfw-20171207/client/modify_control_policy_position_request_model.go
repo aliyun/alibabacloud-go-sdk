@@ -22,11 +22,11 @@ type iModifyControlPolicyPositionRequest interface {
 }
 
 type ModifyControlPolicyPositionRequest struct {
-	// The direction of the traffic to which the IPv4 access control policy applies. Valid values:
+	// The traffic direction of the IPv4 access control policy for the Internet firewall. Valid values:
 	//
-	// 	- in: inbound traffic
+	// - in: inbound traffic.
 	//
-	// 	- out: outbound traffic
+	// - out: outbound traffic.
 	//
 	// This parameter is required.
 	//
@@ -34,19 +34,19 @@ type ModifyControlPolicyPositionRequest struct {
 	//
 	// in
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	// The language of the content within the response. Valid values:
+	// The language of the response message. Valid values:
 	//
-	// 	- zh: Chinese (default)
+	// - zh (default): Chinese.
 	//
-	// 	- en: English
+	// - en: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The new priority of the IPv4 access control policy. You must specify a numeric value for this parameter. The value 1 indicates the highest priority. A larger value indicates a lower priority.
+	// The new priority for the IPv4 access control policy of the Internet firewall. The priority is a number. A smaller number indicates a higher priority. The value 1 indicates the highest priority.
 	//
-	// >  The new priority cannot exceed the priority range of the IPv4 access control policy. Otherwise, an error occurs when you call this operation. Before you call this operation, we recommend that you use the [DescribePolicyPriorUsed](https://help.aliyun.com/document_detail/138862.html) operation to query the priority range of the IPv4 access control policy in the specified direction.
+	// > The new priority value cannot be outside the range of existing priorities for IPv4 policies. Otherwise, the API call fails. Before you call this operation, call [DescribePolicyPriorUsed](https://help.aliyun.com/document_detail/138862.html) to query the priority range of IPv4 policies for a specific traffic direction.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +54,7 @@ type ModifyControlPolicyPositionRequest struct {
 	//
 	// 1
 	NewOrder *string `json:"NewOrder,omitempty" xml:"NewOrder,omitempty"`
-	// The original priority of the IPv4 access control policy.
+	// The current priority of the IPv4 access control policy that you want to modify.
 	//
 	// This parameter is required.
 	//
@@ -64,7 +64,7 @@ type ModifyControlPolicyPositionRequest struct {
 	OldOrder *string `json:"OldOrder,omitempty" xml:"OldOrder,omitempty"`
 	// Deprecated
 	//
-	// The source IP address of the request.
+	// The source IP address of the visitor.
 	//
 	// example:
 	//

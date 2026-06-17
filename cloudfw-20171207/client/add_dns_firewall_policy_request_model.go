@@ -36,66 +36,134 @@ type iAddDnsFirewallPolicyRequest interface {
 }
 
 type AddDnsFirewallPolicyRequest struct {
+	// Specifies the action to take on traffic that matches the access control policy. Valid values:
+	//
+	// - **accept**: Allows the traffic.
+	//
+	// - **drop**: Denies the traffic.
+	//
+	// - **log**: Monitors the traffic.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// log
 	AclAction *string `json:"AclAction,omitempty" xml:"AclAction,omitempty"`
+	// The description of the access control policy.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The destination address in the access control policy.
+	//
+	// - When **DestinationType*	- is `net`, this parameter specifies the destination CIDR block. Example: `1.2.3.4/24`.
+	//
+	// - When **DestinationType*	- is `group`, this parameter specifies the name of the destination address book. Example: `db_group`.
+	//
+	// - When **DestinationType*	- is `domain`, this parameter specifies the destination domain name. Example: `*.aliyuncs.com`.
+	//
+	// - When **DestinationType*	- is `location`, this parameter specifies the destination region. For more information about location codes, see the documentation. Example: `["BJ11", "ZB"]`.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// db_group
 	Destination *string `json:"Destination,omitempty" xml:"Destination,omitempty"`
+	// The type of the destination address in the access control policy.
+	//
+	// Valid values:
+	//
+	// - **net**: destination CIDR block
+	//
+	// - **group**: destination address book
+	//
+	// - **domain**: destination domain name
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// domain
 	DestinationType *string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
+	// The traffic direction for the access control policy. Valid values:
+	//
+	// - **in**: inbound traffic
+	//
+	// - **out**: outbound traffic
+	//
 	// example:
 	//
 	// out
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	// The IP version supported by the policy.
+	//
+	// Valid values:
+	//
+	// - **4**: IPv4
+	//
+	// - **6**: IPv6
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 4
 	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	// The language of the request and response. Valid values:<br>-**zh**: Chinese<br>-**en**: English<br><br>
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The priority of the access control policy. A smaller value indicates a higher priority.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// Specifies whether to enable the access control policy. Valid values:
+	//
+	// - **true**: Enables the access control policy.
+	//
+	// - **false**: Disables the access control policy.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// true
 	Release *string `json:"Release,omitempty" xml:"Release,omitempty"`
+	// The source address in the access control policy.
+	//
+	// - When **SourceType*	- is `net`, this parameter specifies the source CIDR block. Example: `10.2.XX.XX/24`.
+	//
+	// - When **SourceType*	- is `group`, this parameter specifies the name of the source address book. Example: `db_group`.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 192.168.0.223/32
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The source IP address of the request.
+	//
 	// example:
 	//
 	// 140.205.118.97
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// The type of the source address in the access control policy. Valid values:
+	//
+	// - **net**: source CIDR block
+	//
+	// - **group**: source address book
+	//
 	// This parameter is required.
 	//
 	// example:

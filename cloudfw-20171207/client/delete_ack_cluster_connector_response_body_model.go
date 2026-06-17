@@ -14,6 +14,8 @@ type iDeleteAckClusterConnectorResponseBody interface {
 }
 
 type DeleteAckClusterConnectorResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 133173B9-8010-5DF5-8B93-********

@@ -24,30 +24,50 @@ type iDescribeOutgoingTagRequest interface {
 }
 
 type DescribeOutgoingTagRequest struct {
+	// The type of the destination. Valid values:
+	//
+	// - **Domain**: domain name.
+	//
+	// - **DstIP**: IP address.
+	//
 	// example:
 	//
 	// Domain
 	DstType *string `json:"DstType,omitempty" xml:"DstType,omitempty"`
+	// The end of the time range to query. This value is a UNIX timestamp. Unit: seconds.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1749003483
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The language of the content. Valid values:
+	//
+	// - **zh*	- (default): Chinese.
+	//
+	// - **en**: English.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The source IP address of the visitor.
+	//
 	// example:
 	//
 	// 60.179.226.XXX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// The beginning of the time range to query. This value is a UNIX timestamp. Unit: seconds.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1743646544
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The ID of the tag.
+	//
 	// example:
 	//
 	// 103208

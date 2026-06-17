@@ -18,16 +18,24 @@ type iSetAutoProtectNewAssetsRequest interface {
 }
 
 type SetAutoProtectNewAssetsRequest struct {
+	// Specifies whether to enable automatic traffic redirection. Valid values:
+	//
+	// **true****false**
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// true
 	AutoProtect *bool `json:"AutoProtect,omitempty" xml:"AutoProtect,omitempty"`
+	// The language. Valid values are zh (Chinese) and **en*	- (English). The default value is **zh**.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The source IP address of the visitor.
+	//
 	// example:
 	//
 	// 60.182.79.XXX

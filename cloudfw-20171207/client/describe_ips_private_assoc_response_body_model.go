@@ -20,15 +20,22 @@ type iDescribeIpsPrivateAssocResponseBody interface {
 }
 
 type DescribeIpsPrivateAssocResponseBody struct {
+	// A list of details about private IP tracing for the intrusion prevention system (IPS).
 	IpsPrivateAssoc []*DescribeIpsPrivateAssocResponseBodyIpsPrivateAssoc `json:"IpsPrivateAssoc,omitempty" xml:"IpsPrivateAssoc,omitempty" type:"Repeated"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// B2841452-CB8D-4F7D-B247-38E1CF7334F8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 6
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The total number of assets that have private IP tracing for the IPS enabled.
+	//
 	// example:
 	//
 	// 0
@@ -93,40 +100,60 @@ func (s *DescribeIpsPrivateAssocResponseBody) Validate() error {
 }
 
 type DescribeIpsPrivateAssocResponseBodyIpsPrivateAssoc struct {
+	// The status of private IP tracing.
+	//
 	// example:
 	//
 	// close
 	AssocInfoStatus *string `json:"AssocInfoStatus,omitempty" xml:"AssocInfoStatus,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// aliuid:1096080848305847 assumeOssRole not exist,serviceName:aliyunesarealtimelogpushossrole
 	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// The Alibaba Cloud account ID of the resource owner.
+	//
 	// example:
 	//
 	// 1507956024994407
-	MemberUid       *int64    `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
+	MemberUid *int64 `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
+	// A list of protected IP addresses.
 	ProtectedIpList []*string `json:"ProtectedIpList,omitempty" xml:"ProtectedIpList,omitempty" type:"Repeated"`
+	// The ID of the region.
+	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the instance.
+	//
 	// example:
 	//
 	// cba48ec510bb640559c6f5161cde58014
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The name of the instance.
+	//
 	// example:
 	//
 	// job-0000000061279FB000001BBB31F9D673
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// The status of the association.
+	//
 	// example:
 	//
 	// closed
-	Status            *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// A list of unprotected IP addresses.
 	UnprotectedIpList []*string `json:"UnprotectedIpList,omitempty" xml:"UnprotectedIpList,omitempty" type:"Repeated"`
+	// The ID of the VPC.
+	//
 	// example:
 	//
 	// vpc-wz92dxepli2pgnut796tf
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The name of the VPC.
+	//
 	// example:
 	//
 	// vpc-uf62vdtifj7kffpxrydqd

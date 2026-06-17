@@ -22,15 +22,15 @@ type iDescribeAddressBookResponseBody interface {
 }
 
 type DescribeAddressBookResponseBody struct {
-	// The information about the address book.
+	// A list of address books.
 	Acls []*DescribeAddressBookResponseBodyAcls `json:"Acls,omitempty" xml:"Acls,omitempty" type:"Repeated"`
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNo *string `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries per page.
+	// The number of address books returned per page.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type DescribeAddressBookResponseBody struct {
 	//
 	// B36F150A-1E27-43AA-B72C-D2AC712F09DA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of the returned address books.
+	// The total number of address books.
 	//
 	// example:
 	//
@@ -117,17 +117,23 @@ func (s *DescribeAddressBookResponseBody) Validate() error {
 }
 
 type DescribeAddressBookResponseBodyAcls struct {
+	// The ID of the ACK cluster connector.
+	//
 	// example:
 	//
-	// ac-7c1bad6c3cc84c33baab1
+	// ac-7c1bad6c3cc84c33baab
 	AckClusterConnectorId *string `json:"AckClusterConnectorId,omitempty" xml:"AckClusterConnectorId,omitempty"`
+	// The name of the ACK cluster connector.
+	//
 	// example:
 	//
-	// ACK集群连接器
-	AckClusterConnectorName *string                                         `json:"AckClusterConnectorName,omitempty" xml:"AckClusterConnectorName,omitempty"`
-	AckLabels               []*DescribeAddressBookResponseBodyAclsAckLabels `json:"AckLabels,omitempty" xml:"AckLabels,omitempty" type:"Repeated"`
-	AckNamespaces           []*string                                       `json:"AckNamespaces,omitempty" xml:"AckNamespaces,omitempty" type:"Repeated"`
-	// The addresses in the address book.
+	// ack-cluster-connector-name
+	AckClusterConnectorName *string `json:"AckClusterConnectorName,omitempty" xml:"AckClusterConnectorName,omitempty"`
+	// A list of ACK pod labels.
+	AckLabels []*DescribeAddressBookResponseBodyAclsAckLabels `json:"AckLabels,omitempty" xml:"AckLabels,omitempty" type:"Repeated"`
+	// A list of ACK namespaces.
+	AckNamespaces []*string `json:"AckNamespaces,omitempty" xml:"AckNamespaces,omitempty" type:"Repeated"`
+	// A list of CIDR blocks in the address book.
 	AddressList []*string `json:"AddressList,omitempty" xml:"AddressList,omitempty" type:"Repeated"`
 	// The number of addresses in the address book.
 	//
@@ -135,13 +141,9 @@ type DescribeAddressBookResponseBodyAcls struct {
 	//
 	// 2
 	AddressListCount *int32 `json:"AddressListCount,omitempty" xml:"AddressListCount,omitempty"`
-	// A list of addresses in the address book, each with a single address description.
+	// A list of addresses, each with a description.
 	Addresses []*DescribeAddressBookResponseBodyAclsAddresses `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
-	// Indicates whether the public IP addresses of ECS instances are automatically added to the address book if the instances match the specified tags. The setting takes effect on both newly purchased ECS instances whose tag settings are complete and ECS instances whose tag settings are modified. Valid values:
-	//
-	// 	- **1**: yes
-	//
-	// 	- **0**: no
+	// Indicates whether to automatically add the public IPs of tagged ECS instances to the address book. This applies to newly purchased instances and existing instances whose tags are modified to match.
 	//
 	// example:
 	//
@@ -151,7 +153,7 @@ type DescribeAddressBookResponseBodyAcls struct {
 	//
 	// example:
 	//
-	// my address book
+	// DEMO
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The name of the address book.
 	//
@@ -160,18 +162,6 @@ type DescribeAddressBookResponseBodyAcls struct {
 	// demo_address_book
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The type of the address book. Valid values:
-	//
-	// 	- **ip**: IP address book
-	//
-	// 	- **domain**: domain address book
-	//
-	// 	- **port**: port address book
-	//
-	// 	- **tag**: ECS tag-based address book
-	//
-	// 	- **allCloud**: cloud service address book
-	//
-	// 	- **threat**: threat intelligence address book
 	//
 	// example:
 	//
@@ -183,23 +173,21 @@ type DescribeAddressBookResponseBodyAcls struct {
 	//
 	// f04ac7ce-628b-4cb7-be61-310222b7****
 	GroupUuid *string `json:"GroupUuid,omitempty" xml:"GroupUuid,omitempty"`
-	// The number of times that the address book is referenced.
+	// The number of times the address book is referenced.
 	//
 	// example:
 	//
 	// 3
 	ReferenceCount *int32 `json:"ReferenceCount,omitempty" xml:"ReferenceCount,omitempty"`
+	// The region where the ACK cluster connector is deployed. This parameter is returned only when the GroupType parameter is "ack".
+	//
 	// example:
 	//
 	// cn-beijing
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	// The details about the ECS tags that can be automatically added to the address book.
+	// A list of ECS tags.
 	TagList []*DescribeAddressBookResponseBodyAclsTagList `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Repeated"`
-	// The logical relationship among ECS tags. Valid values:
-	//
-	// 	- **and**: Only the public IP addresses of ECS instances that match all the specified tags can be added to the address book.
-	//
-	// 	- **or**: The public IP addresses of ECS instances that match any of the specified tags can be added to the address book.
+	// The logical relationship among multiple ECS tags. Valid values:
 	//
 	// example:
 	//
@@ -391,10 +379,14 @@ func (s *DescribeAddressBookResponseBodyAcls) Validate() error {
 }
 
 type DescribeAddressBookResponseBodyAclsAckLabels struct {
+	// The key of the ACK pod label.
+	//
 	// example:
 	//
 	// app
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the ACK pod label.
+	//
 	// example:
 	//
 	// storage-operator
@@ -432,17 +424,17 @@ func (s *DescribeAddressBookResponseBodyAclsAckLabels) Validate() error {
 }
 
 type DescribeAddressBookResponseBodyAclsAddresses struct {
-	// Address information in the address book.
+	// The IP address or CIDR block.
 	//
 	// example:
 	//
 	// 192.168.0.1/32
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// Single address description.
+	// The note for the address.
 	//
 	// example:
 	//
-	// description
+	// Single Address Description
 	Note *string `json:"Note,omitempty" xml:"Note,omitempty"`
 }
 
@@ -477,17 +469,17 @@ func (s *DescribeAddressBookResponseBodyAclsAddresses) Validate() error {
 }
 
 type DescribeAddressBookResponseBodyAclsTagList struct {
-	// The key of the ECS tag.
+	// The key of the tag.
 	//
 	// example:
 	//
 	// company
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The value of the ECS tag.
+	// The value of the tag.
 	//
 	// example:
 	//
-	// admin
+	// ALL VALUE
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 

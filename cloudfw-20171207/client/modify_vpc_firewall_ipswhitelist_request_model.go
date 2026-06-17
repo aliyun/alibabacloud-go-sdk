@@ -24,11 +24,11 @@ type iModifyVpcFirewallIPSWhitelistRequest interface {
 }
 
 type ModifyVpcFirewallIPSWhitelistRequest struct {
-	// The language of the content within the request and response. Valid values:
+	// The language of the request and response. Valid values:
 	//
-	// 	- **zh*	- (default): Chinese
+	// - **zh*	- (default): Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//
@@ -36,9 +36,9 @@ type ModifyVpcFirewallIPSWhitelistRequest struct {
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The type of the list. Valid values:
 	//
-	// 	- **1**: user-defined
+	// - **1**: user-defined
 	//
-	// 	- **2**: address book
+	// - **2**: address book
 	//
 	// This parameter is required.
 	//
@@ -46,13 +46,13 @@ type ModifyVpcFirewallIPSWhitelistRequest struct {
 	//
 	// 1
 	ListType *int64 `json:"ListType,omitempty" xml:"ListType,omitempty"`
-	// The entry in the list.
+	// The value that corresponds to the list type.
 	//
 	// example:
 	//
 	// 10.130.0.0/20,10.130.17.11/32
 	ListValue *string `json:"ListValue,omitempty" xml:"ListValue,omitempty"`
-	// The UID of the member that is managed by your Alibaba Cloud account.
+	// The UID of the member account.
 	//
 	// example:
 	//
@@ -68,9 +68,9 @@ type ModifyVpcFirewallIPSWhitelistRequest struct {
 	VpcFirewallId *string `json:"VpcFirewallId,omitempty" xml:"VpcFirewallId,omitempty"`
 	// The type of the whitelist. Valid values:
 	//
-	// 	- **1**: destination
+	// - **1**: destination
 	//
-	// 	- **2**: source
+	// - **2**: source
 	//
 	// This parameter is required.
 	//

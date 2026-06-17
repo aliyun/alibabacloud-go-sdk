@@ -18,11 +18,16 @@ type iDescribeRegionInfoResponseBody interface {
 }
 
 type DescribeRegionInfoResponseBody struct {
+	// The list of data.
 	DataList []*DescribeRegionInfoResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 25E655B0-CAED-53D4-8054-F983126****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 8
@@ -78,10 +83,17 @@ func (s *DescribeRegionInfoResponseBody) Validate() error {
 }
 
 type DescribeRegionInfoResponseBodyDataList struct {
+	// The ID of the region.
+	//
 	// example:
 	//
 	// cn-shanghai
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the region.
+	//
+	// example:
+	//
+	// Shanghai
 	RegionName *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
 }
 

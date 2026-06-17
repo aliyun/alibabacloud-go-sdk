@@ -22,22 +22,32 @@ type iDescribeInvadeEventStatisticResponseBody interface {
 }
 
 type DescribeInvadeEventStatisticResponseBody struct {
+	// The number of open high-risk vulnerabilities.
+	//
 	// example:
 	//
 	// 1
 	HighOpenEventCnt *int32 `json:"HighOpenEventCnt,omitempty" xml:"HighOpenEventCnt,omitempty"`
+	// The number of open low-risk vulnerabilities.
+	//
 	// example:
 	//
 	// 1
 	LowOpenEventCnt *int32 `json:"LowOpenEventCnt,omitempty" xml:"LowOpenEventCnt,omitempty"`
+	// The number of open medium-risk vulnerabilities.
+	//
 	// example:
 	//
 	// 0
 	MiddleOpenEventCnt *int32 `json:"MiddleOpenEventCnt,omitempty" xml:"MiddleOpenEventCnt,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1530A01A-6901-5B72-AB88-28B6E96B****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of open vulnerabilities.
+	//
 	// example:
 	//
 	// 2

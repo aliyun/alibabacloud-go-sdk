@@ -18,11 +18,16 @@ type iDescribeOpenIpAccessSrcStatResponseBody interface {
 }
 
 type DescribeOpenIpAccessSrcStatResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 0DC783F1-B3A7-578D-8A63-*****
-	RequestId *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	StatList  []*DescribeOpenIpAccessSrcStatResponseBodyStatList `json:"StatList,omitempty" xml:"StatList,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of statistics.
+	StatList []*DescribeOpenIpAccessSrcStatResponseBodyStatList `json:"StatList,omitempty" xml:"StatList,omitempty" type:"Repeated"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 20
@@ -78,18 +83,26 @@ func (s *DescribeOpenIpAccessSrcStatResponseBody) Validate() error {
 }
 
 type DescribeOpenIpAccessSrcStatResponseBodyStatList struct {
+	// The number of abnormal source IP addresses.
+	//
 	// example:
 	//
 	// 12
 	AbnormalSrcIp *int64 `json:"AbnormalSrcIp,omitempty" xml:"AbnormalSrcIp,omitempty"`
+	// The application type.
+	//
 	// example:
 	//
 	// HTTP
 	App *string `json:"App,omitempty" xml:"App,omitempty"`
+	// The number of normal source IP addresses.
+	//
 	// example:
 	//
 	// 21
 	NormalSrcIp *int64 `json:"NormalSrcIp,omitempty" xml:"NormalSrcIp,omitempty"`
+	// The port number.
+	//
 	// example:
 	//
 	// 6163

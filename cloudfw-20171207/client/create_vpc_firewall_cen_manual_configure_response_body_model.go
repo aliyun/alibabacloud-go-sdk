@@ -16,10 +16,14 @@ type iCreateVpcFirewallCenManualConfigureResponseBody interface {
 }
 
 type CreateVpcFirewallCenManualConfigureResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// B14757D0-4640-4B44-AC67-7F558F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the VPC border firewall.
+	//
 	// example:
 	//
 	// vfw-m5e7dbc4y****

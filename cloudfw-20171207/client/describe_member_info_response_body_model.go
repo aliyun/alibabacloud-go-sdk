@@ -22,19 +22,32 @@ type iDescribeMemberInfoResponseBody interface {
 }
 
 type DescribeMemberInfoResponseBody struct {
+	// The name of the Alibaba Cloud account.
+	//
+	// example:
+	//
+	// tianzhuang
 	AdminName *string `json:"AdminName,omitempty" xml:"AdminName,omitempty"`
+	// The UID of the Alibaba Cloud account.
+	//
 	// example:
 	//
 	// 164705101205****
 	AdminUid *string `json:"AdminUid,omitempty" xml:"AdminUid,omitempty"`
+	// Indicates whether the account is a member account.
+	//
 	// example:
 	//
 	// true
 	IsMember *bool `json:"IsMember,omitempty" xml:"IsMember,omitempty"`
+	// The UID of the member account.
+	//
 	// example:
 	//
 	// 128720273643****
 	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// F2665618-3C41-51A4-8DAF-586FB68****

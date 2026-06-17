@@ -16,10 +16,14 @@ type iDescribeUserIPSWhitelistRequest interface {
 }
 
 type DescribeUserIPSWhitelistRequest struct {
+	// The language.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The source IP address of the visitor.
+	//
 	// example:
 	//
 	// 47.100.XX.XX

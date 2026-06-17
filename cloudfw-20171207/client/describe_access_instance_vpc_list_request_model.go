@@ -22,24 +22,34 @@ type iDescribeAccessInstanceVpcListRequest interface {
 }
 
 type DescribeAccessInstanceVpcListRequest struct {
+	// The UID of the Alibaba Cloud account that owns the resource.
+	//
 	// example:
 	//
 	// 135809047715****
 	MemberUid *int64 `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	// The ID of the VPC instance.
+	//
 	// example:
 	//
 	// vpc-j6cvhdscntzuvr0x****

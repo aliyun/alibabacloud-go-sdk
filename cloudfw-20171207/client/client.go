@@ -26,8 +26,32 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	}
 	client.EndpointRule = dara.String("central")
 	client.EndpointMap = map[string]*string{
-		"ap-southeast-1": dara.String("cloudfw.ap-southeast-1.aliyuncs.com"),
-		"cn-hangzhou":    dara.String("cloudfw.cn-hangzhou.aliyuncs.com"),
+		"ap-southeast-1":        dara.String("cloudfw.ap-southeast-1.aliyuncs.com"),
+		"cn-hangzhou":           dara.String("cloudfw.cn-hangzhou.aliyuncs.com"),
+		"us-west-1":             dara.String("cloudfw.aliyuncs.com"),
+		"us-east-1":             dara.String("cloudfw.aliyuncs.com"),
+		"me-east-1":             dara.String("cloudfw.aliyuncs.com"),
+		"eu-west-1":             dara.String("cloudfw.aliyuncs.com"),
+		"eu-central-1":          dara.String("cloudfw.aliyuncs.com"),
+		"cn-zhangjiakou":        dara.String("cloudfw.aliyuncs.com"),
+		"cn-wulanchabu":         dara.String("cloudfw.aliyuncs.com"),
+		"cn-shenzhen-finance-1": dara.String("cloudfw.aliyuncs.com"),
+		"cn-shenzhen":           dara.String("cloudfw.aliyuncs.com"),
+		"cn-shanghai-finance-1": dara.String("cloudfw.aliyuncs.com"),
+		"cn-shanghai":           dara.String("cloudfw.aliyuncs.com"),
+		"cn-qingdao":            dara.String("cloudfw.aliyuncs.com"),
+		"cn-north-2-gov-1":      dara.String("cloudfw.aliyuncs.com"),
+		"cn-huhehaote":          dara.String("cloudfw.aliyuncs.com"),
+		"cn-hongkong":           dara.String("cloudfw.aliyuncs.com"),
+		"cn-heyuan":             dara.String("cloudfw.aliyuncs.com"),
+		"cn-hangzhou-finance":   dara.String("cloudfw.aliyuncs.com"),
+		"cn-guangzhou":          dara.String("cloudfw.aliyuncs.com"),
+		"cn-chengdu":            dara.String("cloudfw.aliyuncs.com"),
+		"cn-beijing-finance-1":  dara.String("cloudfw.aliyuncs.com"),
+		"cn-beijing":            dara.String("cloudfw.aliyuncs.com"),
+		"ap-southeast-5":        dara.String("cloudfw.aliyuncs.com"),
+		"ap-southeast-3":        dara.String("cloudfw.aliyuncs.com"),
+		"ap-northeast-1":        dara.String("cloudfw.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -62,7 +86,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 备份ACL
+// Creates an access control backup.
 //
 // @param request - AddAclBackupDataRequest
 //
@@ -118,7 +142,7 @@ func (client *Client) AddAclBackupDataWithOptions(request *AddAclBackupDataReque
 
 // Summary:
 //
-// 备份ACL
+// Creates an access control backup.
 //
 // @param request - AddAclBackupDataRequest
 //
@@ -136,15 +160,15 @@ func (client *Client) AddAclBackupData(request *AddAclBackupDataRequest) (_resul
 
 // Summary:
 //
-// Creates an address book for access control. Supported address book types are IP address books, Elastic Compute Service (ECS) tag-based address books, port address books, and domain address books. An ECS tag-based address book includes the public IP addresses of the ECS instances that have specific tags.
+// Creates an address book. You can create an IPv4 address book, an ECS tag-based address book, an IPv6 address book, a domain name address book, or an ACK address book.
 //
 // Description:
 //
-// You can call the AddAddressBook operation to create an address book for access control. The address book can be an IP address book, an ECS tag-based address book, a port address book, or a domain address book.
+// This operation creates an address book. You can create an IPv4 address book, an ECS tag-based address book, an IPv6 address book, a domain name address book, or an ACK address book.
 //
-// ## [](#qps)Limits
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// This operation has a queries per second (QPS) limit of 10 for each user. If you exceed this limit, API calls are throttled, which can affect your business. Call this operation at a reasonable rate.
 //
 // @param request - AddAddressBookRequest
 //
@@ -232,15 +256,15 @@ func (client *Client) AddAddressBookWithOptions(request *AddAddressBookRequest, 
 
 // Summary:
 //
-// Creates an address book for access control. Supported address book types are IP address books, Elastic Compute Service (ECS) tag-based address books, port address books, and domain address books. An ECS tag-based address book includes the public IP addresses of the ECS instances that have specific tags.
+// Creates an address book. You can create an IPv4 address book, an ECS tag-based address book, an IPv6 address book, a domain name address book, or an ACK address book.
 //
 // Description:
 //
-// You can call the AddAddressBook operation to create an address book for access control. The address book can be an IP address book, an ECS tag-based address book, a port address book, or a domain address book.
+// This operation creates an address book. You can create an IPv4 address book, an ECS tag-based address book, an IPv6 address book, a domain name address book, or an ACK address book.
 //
-// ## [](#qps)Limits
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// This operation has a queries per second (QPS) limit of 10 for each user. If you exceed this limit, API calls are throttled, which can affect your business. Call this operation at a reasonable rate.
 //
 // @param request - AddAddressBookRequest
 //
@@ -258,15 +282,15 @@ func (client *Client) AddAddressBook(request *AddAddressBookRequest) (_result *A
 
 // Summary:
 //
-// Creates an access control policy.
+// Adds an access control policy.
 //
 // Description:
 //
-// You can call the AddControlPolicy operation to create an access control policy to allow, block, or monitor traffic that reaches Cloud Firewall.
+// You can use this API to create a policy that allows, denies, or monitors traffic that passes through Cloud Firewall.
 //
-// ## Limits
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// This API has a queries per second (QPS) limit of 10 for each user. If you exceed this limit, your API calls are throttled. This throttling may affect your business. Call this API at a reasonable rate.
 //
 // @param request - AddControlPolicyRequest
 //
@@ -406,15 +430,15 @@ func (client *Client) AddControlPolicyWithOptions(request *AddControlPolicyReque
 
 // Summary:
 //
-// Creates an access control policy.
+// Adds an access control policy.
 //
 // Description:
 //
-// You can call the AddControlPolicy operation to create an access control policy to allow, block, or monitor traffic that reaches Cloud Firewall.
+// You can use this API to create a policy that allows, denies, or monitors traffic that passes through Cloud Firewall.
 //
-// ## Limits
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// This API has a queries per second (QPS) limit of 10 for each user. If you exceed this limit, your API calls are throttled. This throttling may affect your business. Call this API at a reasonable rate.
 //
 // @param request - AddControlPolicyRequest
 //
@@ -432,7 +456,11 @@ func (client *Client) AddControlPolicy(request *AddControlPolicyRequest) (_resul
 
 // Summary:
 //
-// 添加DNS防火墙ACL
+// # Add a DNS firewall ACL
+//
+// Description:
+//
+// Use this API to create a policy that allows, denies, or observes traffic passing through a NAT firewall.
 //
 // @param request - AddDnsFirewallPolicyRequest
 //
@@ -520,7 +548,11 @@ func (client *Client) AddDnsFirewallPolicyWithOptions(request *AddDnsFirewallPol
 
 // Summary:
 //
-// 添加DNS防火墙ACL
+// # Add a DNS firewall ACL
+//
+// Description:
+//
+// Use this API to create a policy that allows, denies, or observes traffic passing through a NAT firewall.
 //
 // @param request - AddDnsFirewallPolicyRequest
 //
@@ -538,7 +570,7 @@ func (client *Client) AddDnsFirewallPolicy(request *AddDnsFirewallPolicyRequest)
 
 // Summary:
 //
-// 新增域名解析实时任务
+// Creates a real-time domain name resolution task.
 //
 // @param request - AddDomainResolveRealtimeTaskRequest
 //
@@ -590,7 +622,7 @@ func (client *Client) AddDomainResolveRealtimeTaskWithOptions(request *AddDomain
 
 // Summary:
 //
-// 新增域名解析实时任务
+// Creates a real-time domain name resolution task.
 //
 // @param request - AddDomainResolveRealtimeTaskRequest
 //
@@ -608,15 +640,15 @@ func (client *Client) AddDomainResolveRealtimeTask(request *AddDomainResolveReal
 
 // Summary:
 //
-// Adds members to Cloud Firewall.
+// Adds member accounts to Cloud Firewall.
 //
 // Description:
 //
-// You can call this operation to add members to Cloud Firewall.
+// This operation is used to add member accounts to Cloud Firewall.
 //
-// ## [](#qps-)Limits
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. This may affect your business. We recommend that you take note of the limit when you call this operation.
 //
 // @param request - AddInstanceMembersRequest
 //
@@ -660,15 +692,15 @@ func (client *Client) AddInstanceMembersWithOptions(request *AddInstanceMembersR
 
 // Summary:
 //
-// Adds members to Cloud Firewall.
+// Adds member accounts to Cloud Firewall.
 //
 // Description:
 //
-// You can call this operation to add members to Cloud Firewall.
+// This operation is used to add member accounts to Cloud Firewall.
 //
-// ## [](#qps-)Limits
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. This may affect your business. We recommend that you take note of the limit when you call this operation.
 //
 // @param request - AddInstanceMembersRequest
 //
@@ -686,7 +718,15 @@ func (client *Client) AddInstanceMembers(request *AddInstanceMembersRequest) (_r
 
 // Summary:
 //
-// 添加私网DNS域名
+// Adds a private DNS domain name.
+//
+// Description:
+//
+// This operation retrieves the DNS resolution results for a domain name. The domain name that you query must use Alibaba Cloud DNS because this operation can retrieve results only from Alibaba Cloud DNS.
+//
+// ## QPS limit
+//
+// The queries per second (QPS) limit for this operation is 10 calls per second for each user. If you exceed this limit, your API calls are throttled, which may affect your business. Call this operation at a reasonable frequency to prevent throttling.
 //
 // @param request - AddPrivateDnsDomainNameRequest
 //
@@ -738,7 +778,15 @@ func (client *Client) AddPrivateDnsDomainNameWithOptions(request *AddPrivateDnsD
 
 // Summary:
 //
-// 添加私网DNS域名
+// Adds a private DNS domain name.
+//
+// Description:
+//
+// This operation retrieves the DNS resolution results for a domain name. The domain name that you query must use Alibaba Cloud DNS because this operation can retrieve results only from Alibaba Cloud DNS.
+//
+// ## QPS limit
+//
+// The queries per second (QPS) limit for this operation is 10 calls per second for each user. If you exceed this limit, your API calls are throttled, which may affect your business. Call this operation at a reasonable frequency to prevent throttling.
 //
 // @param request - AddPrivateDnsDomainNameRequest
 //
@@ -758,21 +806,21 @@ func (client *Client) AddPrivateDnsDomainName(request *AddPrivateDnsDomainNameRe
 //
 // Summary:
 //
-// Copies all access control policies from a policy group of a source virtual private cloud (VPC) firewall to a policy group of a destination VPC firewall.
+// Copies all policies from a source VPC firewall policy group to a destination VPC firewall policy group.
 //
 // Description:
 //
-// You can call the BatchCopyVpcFirewallControlPolicy operation to copy all access control policies from a policy group of a source VPC firewall to a policy group of a destination VPC firewall.
+// This API copies all policies from a source VPC firewall policy group to a destination VPC firewall policy group.
 //
-// Before you call this operation, we recommend that you back up access control policies. For more information about how to back up an access control policy, see [Back up an access control policy](https://www.alibabacloud.com/help/en/cloud-firewall/latest/back-up-and-roll-back-an-access-control-policy).
+// Back up your policies before you run this operation. For more information about policy backups, see [Policy backup](https://help.aliyun.com/document_detail/170363.html).
 //
-// After you call this operation, all the access control policies in the policy group of the destination VPC firewall are replaced.
+// After this operation is complete, the policies in the destination VPC firewall policy group are completely replaced by the policies from the source VPC firewall policy group.
 //
-// The policy groups of the source VPC firewall and the destination VPC firewall must belong to the same Alibaba Cloud account.
+// The source and destination VPC firewall policy groups must belong to the same Alibaba Cloud account.
 //
-// ## Limits
+// ## QPS limits
 //
-// You can call this operation up to 10 times per second per account. When the number of calls to this operation per second exceeds the limit, throttling is triggered. Throttling may affect your business. We recommend that you take note of the limit on this operation.
+// The queries per second (QPS) limit for a single user is 10 calls per second. If the number of calls to the API exceeds this limit, your calls are throttled. This may affect your business. Ensure that you call this API within the limit.
 //
 // @param request - BatchCopyVpcFirewallControlPolicyRequest
 //
@@ -830,21 +878,21 @@ func (client *Client) BatchCopyVpcFirewallControlPolicyWithOptions(request *Batc
 //
 // Summary:
 //
-// Copies all access control policies from a policy group of a source virtual private cloud (VPC) firewall to a policy group of a destination VPC firewall.
+// Copies all policies from a source VPC firewall policy group to a destination VPC firewall policy group.
 //
 // Description:
 //
-// You can call the BatchCopyVpcFirewallControlPolicy operation to copy all access control policies from a policy group of a source VPC firewall to a policy group of a destination VPC firewall.
+// This API copies all policies from a source VPC firewall policy group to a destination VPC firewall policy group.
 //
-// Before you call this operation, we recommend that you back up access control policies. For more information about how to back up an access control policy, see [Back up an access control policy](https://www.alibabacloud.com/help/en/cloud-firewall/latest/back-up-and-roll-back-an-access-control-policy).
+// Back up your policies before you run this operation. For more information about policy backups, see [Policy backup](https://help.aliyun.com/document_detail/170363.html).
 //
-// After you call this operation, all the access control policies in the policy group of the destination VPC firewall are replaced.
+// After this operation is complete, the policies in the destination VPC firewall policy group are completely replaced by the policies from the source VPC firewall policy group.
 //
-// The policy groups of the source VPC firewall and the destination VPC firewall must belong to the same Alibaba Cloud account.
+// The source and destination VPC firewall policy groups must belong to the same Alibaba Cloud account.
 //
-// ## Limits
+// ## QPS limits
 //
-// You can call this operation up to 10 times per second per account. When the number of calls to this operation per second exceeds the limit, throttling is triggered. Throttling may affect your business. We recommend that you take note of the limit on this operation.
+// The queries per second (QPS) limit for a single user is 10 calls per second. If the number of calls to the API exceeds this limit, your calls are throttled. This may affect your business. Ensure that you call this API within the limit.
 //
 // @param request - BatchCopyVpcFirewallControlPolicyRequest
 //
@@ -863,7 +911,7 @@ func (client *Client) BatchCopyVpcFirewallControlPolicy(request *BatchCopyVpcFir
 
 // Summary:
 //
-// Deletes multiple access control policies for a virtual private cloud (VPC) firewall at a time.
+// Deletes access control policies for a VPC firewall in a batch.
 //
 // @param request - BatchDeleteVpcFirewallControlPolicyRequest
 //
@@ -911,7 +959,7 @@ func (client *Client) BatchDeleteVpcFirewallControlPolicyWithOptions(request *Ba
 
 // Summary:
 //
-// Deletes multiple access control policies for a virtual private cloud (VPC) firewall at a time.
+// Deletes access control policies for a VPC firewall in a batch.
 //
 // @param request - BatchDeleteVpcFirewallControlPolicyRequest
 //
@@ -929,7 +977,7 @@ func (client *Client) BatchDeleteVpcFirewallControlPolicy(request *BatchDeleteVp
 
 // Summary:
 //
-// 清空防火墙日志
+// Clears the storage for firewall logs.
 //
 // @param request - ClearLogStoreStorageRequest
 //
@@ -973,7 +1021,7 @@ func (client *Client) ClearLogStoreStorageWithOptions(request *ClearLogStoreStor
 
 // Summary:
 //
-// 清空防火墙日志
+// Clears the storage for firewall logs.
 //
 // @param request - ClearLogStoreStorageRequest
 //
@@ -991,7 +1039,13 @@ func (client *Client) ClearLogStoreStorage(request *ClearLogStoreStorageRequest)
 
 // Summary:
 //
-// 创建ACK集群连接器
+// Creates an ACK cluster connector.
+//
+// Description:
+//
+// ## QPS limits
+//
+// Each user is limited to 10 queries per second (QPS) for this API. If this limit is exceeded, API calls are throttled. To avoid service disruptions, plan your calls accordingly.
 //
 // @param request - CreateAckClusterConnectorRequest
 //
@@ -1067,7 +1121,13 @@ func (client *Client) CreateAckClusterConnectorWithOptions(request *CreateAckClu
 
 // Summary:
 //
-// 创建ACK集群连接器
+// Creates an ACK cluster connector.
+//
+// Description:
+//
+// ## QPS limits
+//
+// Each user is limited to 10 queries per second (QPS) for this API. If this limit is exceeded, API calls are throttled. To avoid service disruptions, plan your calls accordingly.
 //
 // @param request - CreateAckClusterConnectorRequest
 //
@@ -1085,7 +1145,7 @@ func (client *Client) CreateAckClusterConnector(request *CreateAckClusterConnect
 
 // Summary:
 //
-// 创建ACL检查
+// Creates an access control list (ACL) check.
 //
 // @param request - CreateAclCheckRequest
 //
@@ -1137,7 +1197,7 @@ func (client *Client) CreateAclCheckWithOptions(request *CreateAclCheckRequest, 
 
 // Summary:
 //
-// 创建ACL检查
+// Creates an access control list (ACL) check.
 //
 // @param request - CreateAclCheckRequest
 //
@@ -1229,7 +1289,7 @@ func (client *Client) CreateDownloadTask(request *CreateDownloadTaskRequest) (_r
 
 // Summary:
 //
-// 创建实例资产同步任务
+// Creates a sync task for Internet assets.
 //
 // @param request - CreateInstanceSyncTaskRequest
 //
@@ -1277,7 +1337,7 @@ func (client *Client) CreateInstanceSyncTaskWithOptions(request *CreateInstanceS
 
 // Summary:
 //
-// 创建实例资产同步任务
+// Creates a sync task for Internet assets.
 //
 // @param request - CreateInstanceSyncTaskRequest
 //
@@ -1295,7 +1355,7 @@ func (client *Client) CreateInstanceSyncTask(request *CreateInstanceSyncTaskRequ
 
 // Summary:
 //
-// 创建IPS私网关联信息
+// Creates an association for private IP traffic tracing with the Intrusion Prevention System (IPS).
 //
 // @param request - CreateIpsPrivateAssocRequest
 //
@@ -1343,7 +1403,7 @@ func (client *Client) CreateIpsPrivateAssocWithOptions(request *CreateIpsPrivate
 
 // Summary:
 //
-// 创建IPS私网关联信息
+// Creates an association for private IP traffic tracing with the Intrusion Prevention System (IPS).
 //
 // @param request - CreateIpsPrivateAssocRequest
 //
@@ -1361,11 +1421,11 @@ func (client *Client) CreateIpsPrivateAssoc(request *CreateIpsPrivateAssocReques
 
 // Summary:
 //
-// Creates an access control policy for a NAT firewall.
+// Add an access control policy to a NAT firewall.
 //
 // Description:
 //
-// You can call this operation to create a policy that allows, denies, or monitors the traffic that passes through the NAT firewall.
+// This API creates a policy to allow, deny, or observe traffic through the NAT Firewall.
 //
 // @param request - CreateNatFirewallControlPolicyRequest
 //
@@ -1501,11 +1561,11 @@ func (client *Client) CreateNatFirewallControlPolicyWithOptions(request *CreateN
 
 // Summary:
 //
-// Creates an access control policy for a NAT firewall.
+// Add an access control policy to a NAT firewall.
 //
 // Description:
 //
-// You can call this operation to create a policy that allows, denies, or monitors the traffic that passes through the NAT firewall.
+// This API creates a policy to allow, deny, or observe traffic through the NAT Firewall.
 //
 // @param request - CreateNatFirewallControlPolicyRequest
 //
@@ -1523,7 +1583,11 @@ func (client *Client) CreateNatFirewallControlPolicy(request *CreateNatFirewallC
 
 // Summary:
 //
-// 创建NAT防火墙预检查
+// Runs a precheck for NAT firewall creation.
+//
+// Description:
+//
+// This operation runs a precheck to verify that a NAT firewall can be created.
 //
 // @param request - CreateNatFirewallPreCheckRequest
 //
@@ -1581,7 +1645,11 @@ func (client *Client) CreateNatFirewallPreCheckWithOptions(request *CreateNatFir
 
 // Summary:
 //
-// 创建NAT防火墙预检查
+// Runs a precheck for NAT firewall creation.
+//
+// Description:
+//
+// This operation runs a precheck to verify that a NAT firewall can be created.
 //
 // @param request - CreateNatFirewallPreCheckRequest
 //
@@ -1599,7 +1667,7 @@ func (client *Client) CreateNatFirewallPreCheck(request *CreateNatFirewallPreChe
 
 // Summary:
 //
-// 创建NAT防火墙资产同步任务
+// Creates a sync task for NAT firewall assets.
 //
 // @param request - CreateNatFirewallSyncTaskRequest
 //
@@ -1643,7 +1711,7 @@ func (client *Client) CreateNatFirewallSyncTaskWithOptions(request *CreateNatFir
 
 // Summary:
 //
-// 创建NAT防火墙资产同步任务
+// Creates a sync task for NAT firewall assets.
 //
 // @param request - CreateNatFirewallSyncTaskRequest
 //
@@ -1661,7 +1729,11 @@ func (client *Client) CreateNatFirewallSyncTask(request *CreateNatFirewallSyncTa
 
 // Summary:
 //
-// 创建私网DNS终端节点
+// Creates a private DNS endpoint.
+//
+// Description:
+//
+// You can call the CreatePrivateDnsEndpoint operation to create a private Domain Name System (DNS) endpoint.
 //
 // @param request - CreatePrivateDnsEndpointRequest
 //
@@ -1757,7 +1829,11 @@ func (client *Client) CreatePrivateDnsEndpointWithOptions(request *CreatePrivate
 
 // Summary:
 //
-// 创建私网DNS终端节点
+// Creates a private DNS endpoint.
+//
+// Description:
+//
+// You can call the CreatePrivateDnsEndpoint operation to create a private Domain Name System (DNS) endpoint.
 //
 // @param request - CreatePrivateDnsEndpointRequest
 //
@@ -1943,7 +2019,7 @@ func (client *Client) CreateSlsLogDispatch(request *CreateSlsLogDispatchRequest)
 
 // Summary:
 //
-// Creates a virtual private cloud (VPC) firewall for a transit router.
+// Creates a VPC firewall for a transit router.
 //
 // @param request - CreateTrFirewallV2Request
 //
@@ -2043,7 +2119,7 @@ func (client *Client) CreateTrFirewallV2WithOptions(request *CreateTrFirewallV2R
 
 // Summary:
 //
-// Creates a virtual private cloud (VPC) firewall for a transit router.
+// Creates a VPC firewall for a transit router.
 //
 // @param request - CreateTrFirewallV2Request
 //
@@ -2061,7 +2137,7 @@ func (client *Client) CreateTrFirewallV2(request *CreateTrFirewallV2Request) (_r
 
 // Summary:
 //
-// Creates a routing policy for a VPC firewall of a transit router.
+// Creates a routing rule for a VPC firewall for a transit router.
 //
 // @param tmpReq - CreateTrFirewallV2RoutePolicyRequest
 //
@@ -2139,7 +2215,7 @@ func (client *Client) CreateTrFirewallV2RoutePolicyWithOptions(tmpReq *CreateTrF
 
 // Summary:
 //
-// Creates a routing policy for a VPC firewall of a transit router.
+// Creates a routing rule for a VPC firewall for a transit router.
 //
 // @param request - CreateTrFirewallV2RoutePolicyRequest
 //
@@ -2157,15 +2233,15 @@ func (client *Client) CreateTrFirewallV2RoutePolicy(request *CreateTrFirewallV2R
 
 // Summary:
 //
-// Creates a virtual private cloud (VPC) firewall to protect traffic between a specified VPC and a network instance that is attached to a Cloud Enterprise Network (CEN) instance.
+// Creates a VPC firewall to protect traffic between a network instance in a Cloud Enterprise Network (CEN) and a specified VPC.
 //
 // Description:
 //
-// You can call the CreateVpcFirewallCenConfigure operation to create a VPC firewall. The VPC firewall protects mutual access traffic between a specified VPC and a network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance. The VPC firewall cannot protect mutual access traffic between VBRs, between CCN instances, or between VBRs and CCN instances. For more information, see [VPC firewall limits](https://help.aliyun.com/document_detail/172295.html).
+// This operation creates a VPC firewall for a VPC that is connected to a Cloud Enterprise Network (CEN). The VPC firewall protects traffic between the VPC and other network instances in the CEN, such as virtual private clouds (VPCs), virtual border routers (VBRs), and Cloud Connect Network (CCN) instances. The VPC firewall does not protect traffic between VBRs, between CCNs, or between VBRs and CCNs. For more information, see [Limits on VPC firewalls](https://help.aliyun.com/document_detail/172295.html).
 //
-// ## Limits
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The queries per second (QPS) limit for this operation is 10 calls per second per user. If you exceed this limit, your API calls are throttled. This can affect your business. Plan your calls accordingly.
 //
 // @param request - CreateVpcFirewallCenConfigureRequest
 //
@@ -2253,15 +2329,15 @@ func (client *Client) CreateVpcFirewallCenConfigureWithOptions(request *CreateVp
 
 // Summary:
 //
-// Creates a virtual private cloud (VPC) firewall to protect traffic between a specified VPC and a network instance that is attached to a Cloud Enterprise Network (CEN) instance.
+// Creates a VPC firewall to protect traffic between a network instance in a Cloud Enterprise Network (CEN) and a specified VPC.
 //
 // Description:
 //
-// You can call the CreateVpcFirewallCenConfigure operation to create a VPC firewall. The VPC firewall protects mutual access traffic between a specified VPC and a network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance. The VPC firewall cannot protect mutual access traffic between VBRs, between CCN instances, or between VBRs and CCN instances. For more information, see [VPC firewall limits](https://help.aliyun.com/document_detail/172295.html).
+// This operation creates a VPC firewall for a VPC that is connected to a Cloud Enterprise Network (CEN). The VPC firewall protects traffic between the VPC and other network instances in the CEN, such as virtual private clouds (VPCs), virtual border routers (VBRs), and Cloud Connect Network (CCN) instances. The VPC firewall does not protect traffic between VBRs, between CCNs, or between VBRs and CCNs. For more information, see [Limits on VPC firewalls](https://help.aliyun.com/document_detail/172295.html).
 //
-// ## Limits
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The queries per second (QPS) limit for this operation is 10 calls per second per user. If you exceed this limit, your API calls are throttled. This can affect your business. Plan your calls accordingly.
 //
 // @param request - CreateVpcFirewallCenConfigureRequest
 //
@@ -2281,7 +2357,15 @@ func (client *Client) CreateVpcFirewallCenConfigure(request *CreateVpcFirewallCe
 //
 // Summary:
 //
-// 创建VPC防火墙手动配置
+// Manually creates a VPC border firewall.
+//
+// Description:
+//
+// This operation creates a VPC border firewall for a VPC within a Cloud Enterprise Network (CEN) instance. The VPC border firewall protects traffic between the specified VPC and other network instances that are connected to the CEN instance. These network instances include virtual private clouds (VPCs), virtual border routers (VBRs), and Cloud Connect Network (CCN) instances. The VPC border firewall does not protect traffic between VBRs, between CCN instances, or between VBRs and CCN instances. For more information, see [VPC border firewall limits](https://help.aliyun.com/document_detail/172295.html).
+//
+// ## QPS limit
+//
+// The queries per second (QPS) limit for a single user is 10. If you exceed this limit, API calls are throttled. This can affect your business operations. We recommend that you adhere to this limit.
 //
 // @param request - CreateVpcFirewallCenManualConfigureRequest
 //
@@ -2347,7 +2431,15 @@ func (client *Client) CreateVpcFirewallCenManualConfigureWithOptions(request *Cr
 //
 // Summary:
 //
-// 创建VPC防火墙手动配置
+// Manually creates a VPC border firewall.
+//
+// Description:
+//
+// This operation creates a VPC border firewall for a VPC within a Cloud Enterprise Network (CEN) instance. The VPC border firewall protects traffic between the specified VPC and other network instances that are connected to the CEN instance. These network instances include virtual private clouds (VPCs), virtual border routers (VBRs), and Cloud Connect Network (CCN) instances. The VPC border firewall does not protect traffic between VBRs, between CCN instances, or between VBRs and CCN instances. For more information, see [VPC border firewall limits](https://help.aliyun.com/document_detail/172295.html).
+//
+// ## QPS limit
+//
+// The queries per second (QPS) limit for a single user is 10. If you exceed this limit, API calls are throttled. This can affect your business operations. We recommend that you adhere to this limit.
 //
 // @param request - CreateVpcFirewallCenManualConfigureRequest
 //
@@ -2366,15 +2458,15 @@ func (client *Client) CreateVpcFirewallCenManualConfigure(request *CreateVpcFire
 
 // Summary:
 //
-// Creates a Virtual Private Cloud (VPC) firewall to protect traffic between two VPCs that are connected by using an Express Connect.
+// Creates a VPC firewall to protect traffic between two VPCs that are connected using Express Connect.
 //
 // Description:
 //
-// You can call this operation to create a VPC firewall. The VPC firewall controls traffic between two VPCs that are connected by using an Express Connect circuit. The VPC firewall does not control the mutual access traffic between VPCs that reside in different regions or belong to different Alibaba Cloud accounts. The firewall also does not control the mutual access traffic between VPCs and virtual border routers (VBRs). For more information, see [VPC firewall limits](https://help.aliyun.com/document_detail/172295.html).
+// This operation creates a VPC firewall that protects traffic between two VPCs connected by an Express Connect circuit. This VPC firewall does not protect cross-region traffic, cross-account traffic, or traffic between a VPC and a Virtual Border Router (VBR). For more information, see [Limits on VPC firewalls](https://help.aliyun.com/document_detail/172295.html).
 //
-// ### [](#qps)QPS limit
+// ### QPS limits
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The limit on queries per second (QPS) for this operation is 10 for each user. If you exceed the limit, API calls are throttled, which may affect your business. Call the operation at a reasonable rate.
 //
 // @param request - CreateVpcFirewallConfigureRequest
 //
@@ -2454,15 +2546,15 @@ func (client *Client) CreateVpcFirewallConfigureWithOptions(request *CreateVpcFi
 
 // Summary:
 //
-// Creates a Virtual Private Cloud (VPC) firewall to protect traffic between two VPCs that are connected by using an Express Connect.
+// Creates a VPC firewall to protect traffic between two VPCs that are connected using Express Connect.
 //
 // Description:
 //
-// You can call this operation to create a VPC firewall. The VPC firewall controls traffic between two VPCs that are connected by using an Express Connect circuit. The VPC firewall does not control the mutual access traffic between VPCs that reside in different regions or belong to different Alibaba Cloud accounts. The firewall also does not control the mutual access traffic between VPCs and virtual border routers (VBRs). For more information, see [VPC firewall limits](https://help.aliyun.com/document_detail/172295.html).
+// This operation creates a VPC firewall that protects traffic between two VPCs connected by an Express Connect circuit. This VPC firewall does not protect cross-region traffic, cross-account traffic, or traffic between a VPC and a Virtual Border Router (VBR). For more information, see [Limits on VPC firewalls](https://help.aliyun.com/document_detail/172295.html).
 //
-// ### [](#qps)QPS limit
+// ### QPS limits
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The limit on queries per second (QPS) for this operation is 10 for each user. If you exceed the limit, API calls are throttled, which may affect your business. Call the operation at a reasonable rate.
 //
 // @param request - CreateVpcFirewallConfigureRequest
 //
@@ -2480,15 +2572,15 @@ func (client *Client) CreateVpcFirewallConfigure(request *CreateVpcFirewallConfi
 
 // Summary:
 //
-// Creates an access control policy in a specified policy group for a virtual private cloud (VPC) firewall.
+// Adds an access control policy to a policy group for a specified VPC firewall.
 //
 // Description:
 //
-// You can call the CreateVpcFirewallControlPolicy operation to create an access control policy in a specified policy group for a VPC firewall. Different access control policies are used when a VPC firewall is used to protect traffic between two VPCs that are connected by using a Cloud Enterprise Network (CEN) instance or an Express Connect circuit.
+// This operation adds an access control policy to a policy group for a specified VPC border firewall. A VPC border firewall uses access control policies to protect traffic between two VPCs that are connected through a Cloud Enterprise Network (CEN) instance or an Express Connect circuit.
 //
-// ## Limits
+// ## QPS limits
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// This operation is limited to 10 queries per second (QPS) per user. Calls that exceed this limit are throttled. Throttling can affect your business. We recommend that you call this operation at a reasonable rate.
 //
 // @param request - CreateVpcFirewallControlPolicyRequest
 //
@@ -2624,15 +2716,15 @@ func (client *Client) CreateVpcFirewallControlPolicyWithOptions(request *CreateV
 
 // Summary:
 //
-// Creates an access control policy in a specified policy group for a virtual private cloud (VPC) firewall.
+// Adds an access control policy to a policy group for a specified VPC firewall.
 //
 // Description:
 //
-// You can call the CreateVpcFirewallControlPolicy operation to create an access control policy in a specified policy group for a VPC firewall. Different access control policies are used when a VPC firewall is used to protect traffic between two VPCs that are connected by using a Cloud Enterprise Network (CEN) instance or an Express Connect circuit.
+// This operation adds an access control policy to a policy group for a specified VPC border firewall. A VPC border firewall uses access control policies to protect traffic between two VPCs that are connected through a Cloud Enterprise Network (CEN) instance or an Express Connect circuit.
 //
-// ## Limits
+// ## QPS limits
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// This operation is limited to 10 queries per second (QPS) per user. Calls that exceed this limit are throttled. Throttling can affect your business. We recommend that you call this operation at a reasonable rate.
 //
 // @param request - CreateVpcFirewallControlPolicyRequest
 //
@@ -2650,7 +2742,11 @@ func (client *Client) CreateVpcFirewallControlPolicy(request *CreateVpcFirewallC
 
 // Summary:
 //
-// 创建VPC防火墙开墙前置任务
+// Creates a precheck task before you create a VPC firewall.
+//
+// Description:
+//
+// This operation creates a policy to accept, deny, or monitor traffic that passes through a NAT firewall.
 //
 // @param request - CreateVpcFirewallPrecheckRequest
 //
@@ -2718,7 +2814,11 @@ func (client *Client) CreateVpcFirewallPrecheckWithOptions(request *CreateVpcFir
 
 // Summary:
 //
-// 创建VPC防火墙开墙前置任务
+// Creates a precheck task before you create a VPC firewall.
+//
+// Description:
+//
+// This operation creates a policy to accept, deny, or monitor traffic that passes through a NAT firewall.
 //
 // @param request - CreateVpcFirewallPrecheckRequest
 //
@@ -2736,7 +2836,15 @@ func (client *Client) CreateVpcFirewallPrecheck(request *CreateVpcFirewallPreche
 
 // Summary:
 //
-// 创建VPC防火墙资产同步任务
+// Creates a sync task for VPC firewall assets.
+//
+// Description:
+//
+// This operation creates a VPC firewall that protects traffic between two VPCs connected by an Express Connect circuit. The VPC firewall does not protect cross-region traffic, cross-account traffic, or traffic between a VPC and a Virtual Border Router (VBR). For more information, see [Limits on VPC firewalls](https://help.aliyun.com/document_detail/172295.html).
+//
+// ### QPS limits
+//
+// The queries per second (QPS) limit for a single user is 10 calls per second. If you exceed this limit, your API calls will be throttled. Plan your calls accordingly.
 //
 // @param request - CreateVpcFirewallTaskRequest
 //
@@ -2792,7 +2900,15 @@ func (client *Client) CreateVpcFirewallTaskWithOptions(request *CreateVpcFirewal
 
 // Summary:
 //
-// 创建VPC防火墙资产同步任务
+// Creates a sync task for VPC firewall assets.
+//
+// Description:
+//
+// This operation creates a VPC firewall that protects traffic between two VPCs connected by an Express Connect circuit. The VPC firewall does not protect cross-region traffic, cross-account traffic, or traffic between a VPC and a Virtual Border Router (VBR). For more information, see [Limits on VPC firewalls](https://help.aliyun.com/document_detail/172295.html).
+//
+// ### QPS limits
+//
+// The queries per second (QPS) limit for a single user is 10 calls per second. If you exceed this limit, your API calls will be throttled. Plan your calls accordingly.
 //
 // @param request - CreateVpcFirewallTaskRequest
 //
@@ -2810,7 +2926,13 @@ func (client *Client) CreateVpcFirewallTask(request *CreateVpcFirewallTaskReques
 
 // Summary:
 //
-// 删除ACK集群连接器
+// Deletes an ACK cluster connector.
+//
+// Description:
+//
+// ## QPS limit
+//
+// The queries per second (QPS) limit for this API is 10 calls per second for each user. If you exceed this limit, API calls are throttled. This can impact your business. Plan your calls accordingly.
 //
 // @param request - DeleteAckClusterConnectorRequest
 //
@@ -2854,7 +2976,13 @@ func (client *Client) DeleteAckClusterConnectorWithOptions(request *DeleteAckClu
 
 // Summary:
 //
-// 删除ACK集群连接器
+// Deletes an ACK cluster connector.
+//
+// Description:
+//
+// ## QPS limit
+//
+// The queries per second (QPS) limit for this API is 10 calls per second for each user. If you exceed this limit, API calls are throttled. This can impact your business. Plan your calls accordingly.
 //
 // @param request - DeleteAckClusterConnectorRequest
 //
@@ -2872,7 +3000,15 @@ func (client *Client) DeleteAckClusterConnector(request *DeleteAckClusterConnect
 
 // Summary:
 //
-// 删除ACL备份
+// Deletes an ACL backup.
+//
+// Description:
+//
+// This operation deletes a backup of an access control address book.
+//
+// ## QPS limit
+//
+// This operation is limited to 10 queries per second (QPS) per user. Calls that exceed this limit are throttled, which may affect your business. Plan your calls accordingly.
 //
 // @param request - DeleteAclBackupDataRequest
 //
@@ -2924,7 +3060,15 @@ func (client *Client) DeleteAclBackupDataWithOptions(request *DeleteAclBackupDat
 
 // Summary:
 //
-// 删除ACL备份
+// Deletes an ACL backup.
+//
+// Description:
+//
+// This operation deletes a backup of an access control address book.
+//
+// ## QPS limit
+//
+// This operation is limited to 10 queries per second (QPS) per user. Calls that exceed this limit are throttled, which may affect your business. Plan your calls accordingly.
 //
 // @param request - DeleteAclBackupDataRequest
 //
@@ -2942,15 +3086,15 @@ func (client *Client) DeleteAclBackupData(request *DeleteAclBackupDataRequest) (
 
 // Summary:
 //
-// Deletes an address book for access control.
+// Deletes an address book.
 //
 // Description:
 //
-// You can call the DeleteAddressBook operation to delete an address book for access control.
+// This operation deletes an address book for access control.
 //
-// ## Limits
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The queries per second (QPS) limit for a single user is 10 calls per second. If you exceed the limit, API calls are throttled. This may affect your business. Plan your calls accordingly.
 //
 // @param request - DeleteAddressBookRequest
 //
@@ -3002,15 +3146,15 @@ func (client *Client) DeleteAddressBookWithOptions(request *DeleteAddressBookReq
 
 // Summary:
 //
-// Deletes an address book for access control.
+// Deletes an address book.
 //
 // Description:
 //
-// You can call the DeleteAddressBook operation to delete an address book for access control.
+// This operation deletes an address book for access control.
 //
-// ## Limits
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The queries per second (QPS) limit for a single user is 10 calls per second. If you exceed the limit, API calls are throttled. This may affect your business. Plan your calls accordingly.
 //
 // @param request - DeleteAddressBookRequest
 //
@@ -3032,11 +3176,11 @@ func (client *Client) DeleteAddressBook(request *DeleteAddressBookRequest) (_res
 //
 // Description:
 //
-// You can call the DeleteControlPolicy operation to delete an access control policy that applies to inbound or outbound traffic.
+// This operation deletes access control policies for inbound or outbound traffic.
 //
-// ## [](#qps-)Limits
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The queries per second (QPS) limit for a single user is 10. If you exceed this limit, API calls are throttled. This may affect your business operations. We recommend that you call this operation at a reasonable rate.
 //
 // @param request - DeleteControlPolicyRequest
 //
@@ -3096,11 +3240,11 @@ func (client *Client) DeleteControlPolicyWithOptions(request *DeleteControlPolic
 //
 // Description:
 //
-// You can call the DeleteControlPolicy operation to delete an access control policy that applies to inbound or outbound traffic.
+// This operation deletes access control policies for inbound or outbound traffic.
 //
-// ## [](#qps-)Limits
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The queries per second (QPS) limit for a single user is 10. If you exceed this limit, API calls are throttled. This may affect your business operations. We recommend that you call this operation at a reasonable rate.
 //
 // @param request - DeleteControlPolicyRequest
 //
@@ -3192,7 +3336,11 @@ func (client *Client) DeleteControlPolicyTemplate(request *DeleteControlPolicyTe
 
 // Summary:
 //
-// 删除DNS防火墙规则
+// Deletes a DNS firewall policy.
+//
+// Description:
+//
+// You can call this operation to delete a DNS firewall policy.
 //
 // @param request - DeleteDnsFirewallPolicyRequest
 //
@@ -3244,7 +3392,11 @@ func (client *Client) DeleteDnsFirewallPolicyWithOptions(request *DeleteDnsFirew
 
 // Summary:
 //
-// 删除DNS防火墙规则
+// Deletes a DNS firewall policy.
+//
+// Description:
+//
+// You can call this operation to delete a DNS firewall policy.
 //
 // @param request - DeleteDnsFirewallPolicyRequest
 //
@@ -3262,15 +3414,11 @@ func (client *Client) DeleteDnsFirewallPolicy(request *DeleteDnsFirewallPolicyRe
 
 // Summary:
 //
-// Deletes file download tasks.
+// Deletes a file download task.
 //
 // Description:
 //
-// You can call this operation to delete file download tasks and delete the files.
-//
-// **
-//
-// **Warning*	- Both tasks and involved files are deleted. You can no longer download the involved files by using the download links. This operation is irreversible. Proceed with caution.
+// This operation deletes a file download task and its corresponding file.	Danger:  The deletion is immediate and permanent. **The file can no longer be downloaded using the existing download link. This operation is irreversible. Proceed with caution.**
 //
 // @param request - DeleteDownloadTaskRequest
 //
@@ -3318,15 +3466,11 @@ func (client *Client) DeleteDownloadTaskWithOptions(request *DeleteDownloadTaskR
 
 // Summary:
 //
-// Deletes file download tasks.
+// Deletes a file download task.
 //
 // Description:
 //
-// You can call this operation to delete file download tasks and delete the files.
-//
-// **
-//
-// **Warning*	- Both tasks and involved files are deleted. You can no longer download the involved files by using the download links. This operation is irreversible. Proceed with caution.
+// This operation deletes a file download task and its corresponding file.	Danger:  The deletion is immediate and permanent. **The file can no longer be downloaded using the existing download link. This operation is irreversible. Proceed with caution.**
 //
 // @param request - DeleteDownloadTaskRequest
 //
@@ -3344,7 +3488,7 @@ func (client *Client) DeleteDownloadTask(request *DeleteDownloadTaskRequest) (_r
 
 // Summary:
 //
-// Deletes routing policies for a virtual private cloud (VPC) firewall of a transit router.
+// Deletes a routing policy for a VPC firewall for a transit router.
 //
 // @param request - DeleteFirewallV2RoutePoliciesRequest
 //
@@ -3396,7 +3540,7 @@ func (client *Client) DeleteFirewallV2RoutePoliciesWithOptions(request *DeleteFi
 
 // Summary:
 //
-// Deletes routing policies for a virtual private cloud (VPC) firewall of a transit router.
+// Deletes a routing policy for a VPC firewall for a transit router.
 //
 // @param request - DeleteFirewallV2RoutePoliciesRequest
 //
@@ -3414,15 +3558,15 @@ func (client *Client) DeleteFirewallV2RoutePolicies(request *DeleteFirewallV2Rou
 
 // Summary:
 //
-// Removes members from Cloud Firewall.
+// Deletes Cloud Firewall member accounts.
 //
 // Description:
 //
-// You can call this operation to remove up to 20 members from Cloud Firewall at a time. Separate multiple members with commas (,). After a member is removed, Cloud Firewall can no longer access the cloud resources of the member. Proceed with caution. Before you call this operation, call the [DescribeInstanceMembers](https://help.aliyun.com/document_detail/271704.html) operation to obtain the information about the members that are added to Cloud Firewall.
+// You can delete up to 20 Cloud Firewall member accounts in a single call. Separate the UIDs of multiple member accounts with commas (,). After a member account is deleted, Cloud Firewall can no longer access the cloud resources of that account. Use this operation with caution. Before deleting member accounts, call the [DescribeInstanceMembers](https://help.aliyun.com/document_detail/271704.html) operation to retrieve information about the member accounts.
 //
-// ## [](#qps-)Limits
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The queries per second (QPS) limit for this operation is 10 calls per second for each user. If you exceed the limit, API calls are throttled. This can affect your business operations. Plan your calls accordingly.
 //
 // @param request - DeleteInstanceMembersRequest
 //
@@ -3466,15 +3610,15 @@ func (client *Client) DeleteInstanceMembersWithOptions(request *DeleteInstanceMe
 
 // Summary:
 //
-// Removes members from Cloud Firewall.
+// Deletes Cloud Firewall member accounts.
 //
 // Description:
 //
-// You can call this operation to remove up to 20 members from Cloud Firewall at a time. Separate multiple members with commas (,). After a member is removed, Cloud Firewall can no longer access the cloud resources of the member. Proceed with caution. Before you call this operation, call the [DescribeInstanceMembers](https://help.aliyun.com/document_detail/271704.html) operation to obtain the information about the members that are added to Cloud Firewall.
+// You can delete up to 20 Cloud Firewall member accounts in a single call. Separate the UIDs of multiple member accounts with commas (,). After a member account is deleted, Cloud Firewall can no longer access the cloud resources of that account. Use this operation with caution. Before deleting member accounts, call the [DescribeInstanceMembers](https://help.aliyun.com/document_detail/271704.html) operation to retrieve information about the member accounts.
 //
-// ## [](#qps-)Limits
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The queries per second (QPS) limit for this operation is 10 calls per second for each user. If you exceed the limit, API calls are throttled. This can affect your business operations. Plan your calls accordingly.
 //
 // @param request - DeleteInstanceMembersRequest
 //
@@ -3492,7 +3636,7 @@ func (client *Client) DeleteInstanceMembers(request *DeleteInstanceMembersReques
 
 // Summary:
 //
-// 创建IPS私网关联信息
+// Creates a private network association for an IPS.
 //
 // @param request - DeleteIpsPrivateAssocRequest
 //
@@ -3540,7 +3684,7 @@ func (client *Client) DeleteIpsPrivateAssocWithOptions(request *DeleteIpsPrivate
 
 // Summary:
 //
-// 创建IPS私网关联信息
+// Creates a private network association for an IPS.
 //
 // @param request - DeleteIpsPrivateAssocRequest
 //
@@ -3558,11 +3702,11 @@ func (client *Client) DeleteIpsPrivateAssoc(request *DeleteIpsPrivateAssocReques
 
 // Summary:
 //
-// Deletes an access control policy that is created for a NAT firewall.
+// Deletes an access control policy for a NAT firewall.
 //
 // Description:
 //
-// You can use this operation to delete an outbound access control policy that is created for a NAT firewall.
+// This operation deletes access control policies for outbound traffic from a NAT firewall.
 //
 // @param request - DeleteNatFirewallControlPolicyRequest
 //
@@ -3618,11 +3762,11 @@ func (client *Client) DeleteNatFirewallControlPolicyWithOptions(request *DeleteN
 
 // Summary:
 //
-// Deletes an access control policy that is created for a NAT firewall.
+// Deletes an access control policy for a NAT firewall.
 //
 // Description:
 //
-// You can use this operation to delete an outbound access control policy that is created for a NAT firewall.
+// This operation deletes access control policies for outbound traffic from a NAT firewall.
 //
 // @param request - DeleteNatFirewallControlPolicyRequest
 //
@@ -3640,7 +3784,7 @@ func (client *Client) DeleteNatFirewallControlPolicy(request *DeleteNatFirewallC
 
 // Summary:
 //
-// Deletes access control policies that are created for a NAT firewall at a time.
+// Deletes a batch of NAT firewall policies.
 //
 // @param request - DeleteNatFirewallControlPolicyBatchRequest
 //
@@ -3696,7 +3840,7 @@ func (client *Client) DeleteNatFirewallControlPolicyBatchWithOptions(request *De
 
 // Summary:
 //
-// Deletes access control policies that are created for a NAT firewall at a time.
+// Deletes a batch of NAT firewall policies.
 //
 // @param request - DeleteNatFirewallControlPolicyBatchRequest
 //
@@ -3714,7 +3858,15 @@ func (client *Client) DeleteNatFirewallControlPolicyBatch(request *DeleteNatFire
 
 // Summary:
 //
-// 清空私网DNS域名
+// Deletes all private DNS domain names.
+//
+// Description:
+//
+// This API call is used to delete all private domain names.
+//
+// ## QPS limit
+//
+// Each user is limited to 10 queries per second (QPS) for this API call. If you exceed this limit, API calls are throttled, which may impact your business. We recommend that you plan your API calls accordingly.
 //
 // @param request - DeletePrivateDnsAllDomainNameRequest
 //
@@ -3762,7 +3914,15 @@ func (client *Client) DeletePrivateDnsAllDomainNameWithOptions(request *DeletePr
 
 // Summary:
 //
-// 清空私网DNS域名
+// Deletes all private DNS domain names.
+//
+// Description:
+//
+// This API call is used to delete all private domain names.
+//
+// ## QPS limit
+//
+// Each user is limited to 10 queries per second (QPS) for this API call. If you exceed this limit, API calls are throttled, which may impact your business. We recommend that you plan your API calls accordingly.
 //
 // @param request - DeletePrivateDnsAllDomainNameRequest
 //
@@ -3780,7 +3940,11 @@ func (client *Client) DeletePrivateDnsAllDomainName(request *DeletePrivateDnsAll
 
 // Summary:
 //
-// 删除私网DNS域名
+// Deletes private DNS domain names.
+//
+// Description:
+//
+// This operation deletes domain names that require private DNS resolution.
 //
 // @param request - DeletePrivateDnsDomainNameRequest
 //
@@ -3832,7 +3996,11 @@ func (client *Client) DeletePrivateDnsDomainNameWithOptions(request *DeletePriva
 
 // Summary:
 //
-// 删除私网DNS域名
+// Deletes private DNS domain names.
+//
+// Description:
+//
+// This operation deletes domain names that require private DNS resolution.
 //
 // @param request - DeletePrivateDnsDomainNameRequest
 //
@@ -3850,7 +4018,11 @@ func (client *Client) DeletePrivateDnsDomainName(request *DeletePrivateDnsDomain
 
 // Summary:
 //
-// 删除私网DNS终端节点
+// Deletes a private DNS endpoint.
+//
+// Description:
+//
+// You can use this operation to create a policy that allows, denies, or monitors traffic that passes through a NAT firewall.
 //
 // @param request - DeletePrivateDnsEndpointRequest
 //
@@ -3898,7 +4070,11 @@ func (client *Client) DeletePrivateDnsEndpointWithOptions(request *DeletePrivate
 
 // Summary:
 //
-// 删除私网DNS终端节点
+// Deletes a private DNS endpoint.
+//
+// Description:
+//
+// You can use this operation to create a policy that allows, denies, or monitors traffic that passes through a NAT firewall.
 //
 // @param request - DeletePrivateDnsEndpointRequest
 //
@@ -3916,7 +4092,7 @@ func (client *Client) DeletePrivateDnsEndpoint(request *DeletePrivateDnsEndpoint
 
 // Summary:
 //
-// Deletes a NAT firewall.
+// Deletes the specified NAT firewall.
 //
 // @param request - DeleteSecurityProxyRequest
 //
@@ -3964,7 +4140,7 @@ func (client *Client) DeleteSecurityProxyWithOptions(request *DeleteSecurityProx
 
 // Summary:
 //
-// Deletes a NAT firewall.
+// Deletes the specified NAT firewall.
 //
 // @param request - DeleteSecurityProxyRequest
 //
@@ -3982,7 +4158,7 @@ func (client *Client) DeleteSecurityProxy(request *DeleteSecurityProxyRequest) (
 
 // Summary:
 //
-// Deletes a virtual private cloud (VPC) firewall that is created for a transit router.
+// Deletes a VPC firewall for a transit router.
 //
 // @param request - DeleteTrFirewallV2Request
 //
@@ -4030,7 +4206,7 @@ func (client *Client) DeleteTrFirewallV2WithOptions(request *DeleteTrFirewallV2R
 
 // Summary:
 //
-// Deletes a virtual private cloud (VPC) firewall that is created for a transit router.
+// Deletes a VPC firewall for a transit router.
 //
 // @param request - DeleteTrFirewallV2Request
 //
@@ -4048,15 +4224,15 @@ func (client *Client) DeleteTrFirewallV2(request *DeleteTrFirewallV2Request) (_r
 
 // Summary:
 //
-// Deletes a virtual private cloud (VPC) firewall. The VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a Cloud Enterprise Network (CEN) instance.
+// Deletes a VPC firewall that protects traffic between a network instance in a Cloud Enterprise Network (CEN) and a specified VPC.
 //
 // Description:
 //
-// You can call the DeleteVpcFirewallCenConfigure operation to delete a VPC firewall. The VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance. Before you call this operation, make sure that you have created a VPC firewall by calling the [CreateVpcFirewallCenConfigure](https://help.aliyun.com/document_detail/345772.html) operation.
+// You can call this operation to delete a VPC firewall. The VPC firewall protects traffic between a network instance in a Cloud Enterprise Network (CEN) and a specified VPC. Network instances include VPCs, virtual border routers (VBRs), and Cloud Connect Network (CCN) instances. Before you call this operation, you must create a VPC firewall by calling the [CreateVpcFirewallCenConfigure](https://help.aliyun.com/document_detail/345772.html) operation.
 //
-// ## Limits
+// ## QPS limits
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The limit for this operation is 10 queries per second (QPS) per Alibaba Cloud account. If you exceed this limit, your calls are throttled. This may impact your business. Plan your calls accordingly.
 //
 // @param request - DeleteVpcFirewallCenConfigureRequest
 //
@@ -4108,15 +4284,15 @@ func (client *Client) DeleteVpcFirewallCenConfigureWithOptions(request *DeleteVp
 
 // Summary:
 //
-// Deletes a virtual private cloud (VPC) firewall. The VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a Cloud Enterprise Network (CEN) instance.
+// Deletes a VPC firewall that protects traffic between a network instance in a Cloud Enterprise Network (CEN) and a specified VPC.
 //
 // Description:
 //
-// You can call the DeleteVpcFirewallCenConfigure operation to delete a VPC firewall. The VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance. Before you call this operation, make sure that you have created a VPC firewall by calling the [CreateVpcFirewallCenConfigure](https://help.aliyun.com/document_detail/345772.html) operation.
+// You can call this operation to delete a VPC firewall. The VPC firewall protects traffic between a network instance in a Cloud Enterprise Network (CEN) and a specified VPC. Network instances include VPCs, virtual border routers (VBRs), and Cloud Connect Network (CCN) instances. Before you call this operation, you must create a VPC firewall by calling the [CreateVpcFirewallCenConfigure](https://help.aliyun.com/document_detail/345772.html) operation.
 //
-// ## Limits
+// ## QPS limits
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The limit for this operation is 10 queries per second (QPS) per Alibaba Cloud account. If you exceed this limit, your calls are throttled. This may impact your business. Plan your calls accordingly.
 //
 // @param request - DeleteVpcFirewallCenConfigureRequest
 //
@@ -4134,15 +4310,15 @@ func (client *Client) DeleteVpcFirewallCenConfigure(request *DeleteVpcFirewallCe
 
 // Summary:
 //
-// Deletes a virtual private cloud (VPC) firewall that controls traffic between two VPCs. The VPCs are connected by using an Express Connect circuit.
+// Deletes a VPC firewall that protects traffic between two VPCs that are connected by an Express Connect circuit.
 //
 // Description:
 //
-// You can call the DeleteVpcFirewallConfigure operation to delete a VPC firewall. The VPC firewall controls traffic between two VPCs that are connected by using an Express Connect circuit. Before you call the operation, make sure that you created a VPC firewall by calling the [CreateVpcFirewallConfigure](https://help.aliyun.com/document_detail/342893.html) operation.
+// This operation deletes a VPC firewall that protects traffic between two VPCs connected by an Express Connect circuit. Before you call this operation, you must call the [CreateVpcFirewallConfigure](https://help.aliyun.com/document_detail/342893.html) operation to create a VPC firewall.
 //
-// ## Limits
+// ## QPS limits
 //
-// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The queries per second (QPS) limit for this operation is 10 for a single user. If this limit is exceeded, the API call is throttled. This may affect your business. We recommend that you take note of this limit when you call this operation.
 //
 // @param request - DeleteVpcFirewallConfigureRequest
 //
@@ -4194,15 +4370,15 @@ func (client *Client) DeleteVpcFirewallConfigureWithOptions(request *DeleteVpcFi
 
 // Summary:
 //
-// Deletes a virtual private cloud (VPC) firewall that controls traffic between two VPCs. The VPCs are connected by using an Express Connect circuit.
+// Deletes a VPC firewall that protects traffic between two VPCs that are connected by an Express Connect circuit.
 //
 // Description:
 //
-// You can call the DeleteVpcFirewallConfigure operation to delete a VPC firewall. The VPC firewall controls traffic between two VPCs that are connected by using an Express Connect circuit. Before you call the operation, make sure that you created a VPC firewall by calling the [CreateVpcFirewallConfigure](https://help.aliyun.com/document_detail/342893.html) operation.
+// This operation deletes a VPC firewall that protects traffic between two VPCs connected by an Express Connect circuit. Before you call this operation, you must call the [CreateVpcFirewallConfigure](https://help.aliyun.com/document_detail/342893.html) operation to create a VPC firewall.
 //
-// ## Limits
+// ## QPS limits
 //
-// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The queries per second (QPS) limit for this operation is 10 for a single user. If this limit is exceeded, the API call is throttled. This may affect your business. We recommend that you take note of this limit when you call this operation.
 //
 // @param request - DeleteVpcFirewallConfigureRequest
 //
@@ -4220,15 +4396,15 @@ func (client *Client) DeleteVpcFirewallConfigure(request *DeleteVpcFirewallConfi
 
 // Summary:
 //
-// Deletes an access control policy from a specific policy group for a virtual private cloud (VPC) firewall.
+// Deletes an access control policy from a specific VPC firewall policy group.
 //
 // Description:
 //
-// You can call the DeleteVpcFirewallControlPolicy operation to delete an access control policy from a specific policy group for a VPC firewall. Different access control policies are used for the VPC firewall that is used to protect each Cloud Enterprise Network (CEN) instance and the VPC firewall that is used to protect each Express Connect circuit.
+// You can call this operation to delete an access control policy from a specific VPC firewall policy group. VPC firewall instances that protect Cloud Enterprise Network (CEN) instances use different access control policies than those that protect Express Connect circuits.
 //
-// ## Limits
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The queries per second (QPS) limit for a single user is 10. If the number of calls per second exceeds the limit, throttling is triggered. This may affect your business. We recommend that you take this limit into consideration when you call this operation.
 //
 // @param request - DeleteVpcFirewallControlPolicyRequest
 //
@@ -4280,15 +4456,15 @@ func (client *Client) DeleteVpcFirewallControlPolicyWithOptions(request *DeleteV
 
 // Summary:
 //
-// Deletes an access control policy from a specific policy group for a virtual private cloud (VPC) firewall.
+// Deletes an access control policy from a specific VPC firewall policy group.
 //
 // Description:
 //
-// You can call the DeleteVpcFirewallControlPolicy operation to delete an access control policy from a specific policy group for a VPC firewall. Different access control policies are used for the VPC firewall that is used to protect each Cloud Enterprise Network (CEN) instance and the VPC firewall that is used to protect each Express Connect circuit.
+// You can call this operation to delete an access control policy from a specific VPC firewall policy group. VPC firewall instances that protect Cloud Enterprise Network (CEN) instances use different access control policies than those that protect Express Connect circuits.
 //
-// ## Limits
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The queries per second (QPS) limit for a single user is 10. If the number of calls per second exceeds the limit, throttling is triggered. This may affect your business. We recommend that you take this limit into consideration when you call this operation.
 //
 // @param request - DeleteVpcFirewallControlPolicyRequest
 //
@@ -4306,7 +4482,7 @@ func (client *Client) DeleteVpcFirewallControlPolicy(request *DeleteVpcFirewallC
 
 // Summary:
 //
-// Queries the statistics on the requests that are blocked by the access control list (ACL) feature.
+// Shows the trend of traffic intercepted by internet access control.
 //
 // @param request - DescribeACLProtectTrendRequest
 //
@@ -4323,6 +4499,14 @@ func (client *Client) DescribeACLProtectTrendWithOptions(request *DescribeACLPro
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
 		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.FirewallType) {
+		query["FirewallType"] = request.FirewallType
+	}
+
+	if !dara.IsNil(request.Interval) {
+		query["Interval"] = request.Interval
 	}
 
 	if !dara.IsNil(request.Lang) {
@@ -4366,7 +4550,7 @@ func (client *Client) DescribeACLProtectTrendWithOptions(request *DescribeACLPro
 
 // Summary:
 //
-// Queries the statistics on the requests that are blocked by the access control list (ACL) feature.
+// Shows the trend of traffic intercepted by internet access control.
 //
 // @param request - DescribeACLProtectTrendRequest
 //
@@ -4384,9 +4568,11 @@ func (client *Client) DescribeACLProtectTrend(request *DescribeACLProtectTrendRe
 
 // Summary:
 //
-// 查询AI流量分析开启状态
+// Queries the enabling status of AI-powered traffic analysis.
 //
-// @param request - DescribeAITrafficAnalysisStatusRequest
+// Description:
+//
+// The statistics apply to the current Cloud Firewall instance and include all data from the date of purchase.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -4415,7 +4601,11 @@ func (client *Client) DescribeAITrafficAnalysisStatusWithOptions(runtime *dara.R
 
 // Summary:
 //
-// 查询AI流量分析开启状态
+// Queries the enabling status of AI-powered traffic analysis.
+//
+// Description:
+//
+// The statistics apply to the current Cloud Firewall instance and include all data from the date of purchase.
 //
 // @return DescribeAITrafficAnalysisStatusResponse
 func (client *Client) DescribeAITrafficAnalysisStatus() (_result *DescribeAITrafficAnalysisStatusResponse, _err error) {
@@ -4431,7 +4621,7 @@ func (client *Client) DescribeAITrafficAnalysisStatus() (_result *DescribeAITraf
 
 // Summary:
 //
-// 查询接入实例地域列表
+// Queries the regions that contain synchronization nodes.
 //
 // @param request - DescribeAccessInstanceRegionListRequest
 //
@@ -4471,7 +4661,7 @@ func (client *Client) DescribeAccessInstanceRegionListWithOptions(request *Descr
 
 // Summary:
 //
-// 查询接入实例地域列表
+// Queries the regions that contain synchronization nodes.
 //
 // @param request - DescribeAccessInstanceRegionListRequest
 //
@@ -4489,7 +4679,7 @@ func (client *Client) DescribeAccessInstanceRegionList(request *DescribeAccessIn
 
 // Summary:
 //
-// 查询接入实例任务
+// Queries the progress of a synchronization task on a node.
 //
 // @param request - DescribeAccessInstanceTaskRequest
 //
@@ -4529,7 +4719,7 @@ func (client *Client) DescribeAccessInstanceTaskWithOptions(request *DescribeAcc
 
 // Summary:
 //
-// 查询接入实例任务
+// Queries the progress of a synchronization task on a node.
 //
 // @param request - DescribeAccessInstanceTaskRequest
 //
@@ -4547,7 +4737,7 @@ func (client *Client) DescribeAccessInstanceTask(request *DescribeAccessInstance
 
 // Summary:
 //
-// 查询接入实例的交换机列表
+// Queries the vSwitches for synchronization nodes.
 //
 // @param request - DescribeAccessInstanceVSwitchListRequest
 //
@@ -4587,7 +4777,7 @@ func (client *Client) DescribeAccessInstanceVSwitchListWithOptions(request *Desc
 
 // Summary:
 //
-// 查询接入实例的交换机列表
+// Queries the vSwitches for synchronization nodes.
 //
 // @param request - DescribeAccessInstanceVSwitchListRequest
 //
@@ -4605,7 +4795,7 @@ func (client *Client) DescribeAccessInstanceVSwitchList(request *DescribeAccessI
 
 // Summary:
 //
-// 查询接入实例VPC列表
+// Queries the VPCs associated with synchronization nodes.
 //
 // @param request - DescribeAccessInstanceVpcListRequest
 //
@@ -4645,7 +4835,7 @@ func (client *Client) DescribeAccessInstanceVpcListWithOptions(request *Describe
 
 // Summary:
 //
-// 查询接入实例VPC列表
+// Queries the VPCs associated with synchronization nodes.
 //
 // @param request - DescribeAccessInstanceVpcListRequest
 //
@@ -4663,7 +4853,7 @@ func (client *Client) DescribeAccessInstanceVpcList(request *DescribeAccessInsta
 
 // Summary:
 //
-// 查询接入实例支持的可用区列表
+// Returns a list of available zones for access instances.
 //
 // @param request - DescribeAccessInstanceZoneListRequest
 //
@@ -4703,7 +4893,7 @@ func (client *Client) DescribeAccessInstanceZoneListWithOptions(request *Describ
 
 // Summary:
 //
-// 查询接入实例支持的可用区列表
+// Returns a list of available zones for access instances.
 //
 // @param request - DescribeAccessInstanceZoneListRequest
 //
@@ -4721,7 +4911,7 @@ func (client *Client) DescribeAccessInstanceZoneList(request *DescribeAccessInst
 
 // Summary:
 //
-// 查询指定ACK集群连接器
+// Retrieves the details of a specified ACK cluster connector.
 //
 // @param request - DescribeAckClusterConnectorRequest
 //
@@ -4769,7 +4959,7 @@ func (client *Client) DescribeAckClusterConnectorWithOptions(request *DescribeAc
 
 // Summary:
 //
-// 查询指定ACK集群连接器
+// Retrieves the details of a specified ACK cluster connector.
 //
 // @param request - DescribeAckClusterConnectorRequest
 //
@@ -4787,7 +4977,13 @@ func (client *Client) DescribeAckClusterConnector(request *DescribeAckClusterCon
 
 // Summary:
 //
-// 批量查询ACK集群连接器列表
+// Queries a list of ACK cluster connectors in batches.
+//
+// Description:
+//
+// ## QPS limit
+//
+// This API has a per-user limit of 10 queries per second (QPS). If you exceed this limit, API calls are rate-limited. This may affect your business, so pace your calls accordingly.
 //
 // @param request - DescribeAckClusterConnectorsRequest
 //
@@ -4859,7 +5055,13 @@ func (client *Client) DescribeAckClusterConnectorsWithOptions(request *DescribeA
 
 // Summary:
 //
-// 批量查询ACK集群连接器列表
+// Queries a list of ACK cluster connectors in batches.
+//
+// Description:
+//
+// ## QPS limit
+//
+// This API has a per-user limit of 10 queries per second (QPS). If you exceed this limit, API calls are rate-limited. This may affect your business, so pace your calls accordingly.
 //
 // @param request - DescribeAckClusterConnectorsRequest
 //
@@ -4877,7 +5079,7 @@ func (client *Client) DescribeAckClusterConnectors(request *DescribeAckClusterCo
 
 // Summary:
 //
-// 查询阿里云K8S容器服务（ACK）集群命名空间
+// Queries the namespaces in an Alibaba Cloud Container Service for Kubernetes (ACK) cluster.
 //
 // @param request - DescribeAckClusterNamespacesRequest
 //
@@ -4921,7 +5123,7 @@ func (client *Client) DescribeAckClusterNamespacesWithOptions(request *DescribeA
 
 // Summary:
 //
-// 查询阿里云K8S容器服务（ACK）集群命名空间
+// Queries the namespaces in an Alibaba Cloud Container Service for Kubernetes (ACK) cluster.
 //
 // @param request - DescribeAckClusterNamespacesRequest
 //
@@ -4939,7 +5141,7 @@ func (client *Client) DescribeAckClusterNamespaces(request *DescribeAckClusterNa
 
 // Summary:
 //
-// 查询阿里云K8S容器服务（ACK）集群标签
+// Queries the labels within an Alibaba Cloud Container Service for Kubernetes (ACK) cluster.
 //
 // @param request - DescribeAckClusterPodLabelsRequest
 //
@@ -4983,7 +5185,7 @@ func (client *Client) DescribeAckClusterPodLabelsWithOptions(request *DescribeAc
 
 // Summary:
 //
-// 查询阿里云K8S容器服务（ACK）集群标签
+// Queries the labels within an Alibaba Cloud Container Service for Kubernetes (ACK) cluster.
 //
 // @param request - DescribeAckClusterPodLabelsRequest
 //
@@ -5001,7 +5203,7 @@ func (client *Client) DescribeAckClusterPodLabels(request *DescribeAckClusterPod
 
 // Summary:
 //
-// 查询阿里云K8S容器服务（ACK）集群，查询符合条件的ACK集群（例如指定集群类型、集群规格）列表信息
+// Queries for Container Service for Kubernetes (ACK) clusters based on specified conditions, such as cluster type and specifications.
 //
 // @param request - DescribeAckClustersRequest
 //
@@ -5073,7 +5275,7 @@ func (client *Client) DescribeAckClustersWithOptions(request *DescribeAckCluster
 
 // Summary:
 //
-// 查询阿里云K8S容器服务（ACK）集群，查询符合条件的ACK集群（例如指定集群类型、集群规格）列表信息
+// Queries for Container Service for Kubernetes (ACK) clusters based on specified conditions, such as cluster type and specifications.
 //
 // @param request - DescribeAckClustersRequest
 //
@@ -5091,7 +5293,13 @@ func (client *Client) DescribeAckClusters(request *DescribeAckClustersRequest) (
 
 // Summary:
 //
-// 批量查询访问控制应用
+// Queries multiple ACL applications.
+//
+// Description:
+//
+// ## QPS limit
+//
+// The single-user QPS limit for this operation is 10 requests per second. Calls that exceed this limit are throttled, which may impact your business.
 //
 // @param request - DescribeAclAppsRequest
 //
@@ -5131,7 +5339,13 @@ func (client *Client) DescribeAclAppsWithOptions(request *DescribeAclAppsRequest
 
 // Summary:
 //
-// 批量查询访问控制应用
+// Queries multiple ACL applications.
+//
+// Description:
+//
+// ## QPS limit
+//
+// The single-user QPS limit for this operation is 10 requests per second. Calls that exceed this limit are throttled, which may impact your business.
 //
 // @param request - DescribeAclAppsRequest
 //
@@ -5149,7 +5363,7 @@ func (client *Client) DescribeAclApps(request *DescribeAclAppsRequest) (_result 
 
 // Summary:
 //
-// 获取ACL备份列表
+// Queries a list of ACL backups.
 //
 // @param request - DescribeAclBackupListRequest
 //
@@ -5205,7 +5419,7 @@ func (client *Client) DescribeAclBackupListWithOptions(request *DescribeAclBacku
 
 // Summary:
 //
-// 获取ACL备份列表
+// Queries a list of ACL backups.
 //
 // @param request - DescribeAclBackupListRequest
 //
@@ -5223,7 +5437,13 @@ func (client *Client) DescribeAclBackupList(request *DescribeAclBackupListReques
 
 // Summary:
 //
-// 查询ACL检查详情
+// Queries the details of an Access Control List (ACL) check.
+//
+// Description:
+//
+// ## QPS limit
+//
+// This API is limited to 10 queries per second (QPS) per user. Calls exceeding this limit are throttled.
 //
 // @param request - DescribeAclCheckRequest
 //
@@ -5263,7 +5483,13 @@ func (client *Client) DescribeAclCheckWithOptions(request *DescribeAclCheckReque
 
 // Summary:
 //
-// 查询ACL检查详情
+// Queries the details of an Access Control List (ACL) check.
+//
+// Description:
+//
+// ## QPS limit
+//
+// This API is limited to 10 queries per second (QPS) per user. Calls exceeding this limit are throttled.
 //
 // @param request - DescribeAclCheckRequest
 //
@@ -5281,7 +5507,13 @@ func (client *Client) DescribeAclCheck(request *DescribeAclCheckRequest) (_resul
 
 // Summary:
 //
-// 查询NAT防火墙预检查结果
+// Queries the quota for access control list (ACL) checks.
+//
+// Description:
+//
+// ## QPS limits
+//
+// Each user can make up to 10 queries per second (QPS). If you exceed this limit, API calls are throttled, which may affect your business. Call this operation at a reasonable rate.
 //
 // @param request - DescribeAclCheckQuotaRequest
 //
@@ -5321,7 +5553,13 @@ func (client *Client) DescribeAclCheckQuotaWithOptions(request *DescribeAclCheck
 
 // Summary:
 //
-// 查询NAT防火墙预检查结果
+// Queries the quota for access control list (ACL) checks.
+//
+// Description:
+//
+// ## QPS limits
+//
+// Each user can make up to 10 queries per second (QPS). If you exceed this limit, API calls are throttled, which may affect your business. Call this operation at a reasonable rate.
 //
 // @param request - DescribeAclCheckQuotaRequest
 //
@@ -5339,7 +5577,13 @@ func (client *Client) DescribeAclCheckQuota(request *DescribeAclCheckQuotaReques
 
 // Summary:
 //
-// 批量查询ACL检查条目
+// Queries Access Control List (ACL) checks in batches.
+//
+// Description:
+//
+// ## QPS limit
+//
+// The queries per second (QPS) limit for a single user is 10 calls per second. If this limit is exceeded, your API calls are throttled. This may affect your business. We recommend that you plan your calls accordingly.
 //
 // @param request - DescribeAclChecksRequest
 //
@@ -5379,7 +5623,13 @@ func (client *Client) DescribeAclChecksWithOptions(request *DescribeAclChecksReq
 
 // Summary:
 //
-// 批量查询ACL检查条目
+// Queries Access Control List (ACL) checks in batches.
+//
+// Description:
+//
+// ## QPS limit
+//
+// The queries per second (QPS) limit for a single user is 10 calls per second. If this limit is exceeded, your API calls are throttled. This may affect your business. We recommend that you plan your calls accordingly.
 //
 // @param request - DescribeAclChecksRequest
 //
@@ -5397,7 +5647,13 @@ func (client *Client) DescribeAclChecks(request *DescribeAclChecksRequest) (_res
 
 // Summary:
 //
-// 获取总ACL配置数
+// Retrieves the total number of access control list (ACL) configurations.
+//
+// Description:
+//
+// ## QPS limit
+//
+// The queries per second (QPS) limit for this API is 10 for each user. If you exceed this limit, your API calls are throttled. Throttling can affect your business. Plan your API calls accordingly.
 //
 // @param request - DescribeAclRuleCountRequest
 //
@@ -5445,7 +5701,13 @@ func (client *Client) DescribeAclRuleCountWithOptions(request *DescribeAclRuleCo
 
 // Summary:
 //
-// 获取总ACL配置数
+// Retrieves the total number of access control list (ACL) configurations.
+//
+// Description:
+//
+// ## QPS limit
+//
+// The queries per second (QPS) limit for this API is 10 for each user. If you exceed this limit, your API calls are throttled. Throttling can affect your business. Plan your API calls accordingly.
 //
 // @param request - DescribeAclRuleCountRequest
 //
@@ -5463,7 +5725,13 @@ func (client *Client) DescribeAclRuleCount(request *DescribeAclRuleCountRequest)
 
 // Summary:
 //
-// 获取ACL白名单
+// Queries the Access Control List (ACL) whitelist.
+//
+// Description:
+//
+// ## QPS limit
+//
+// The queries per second (QPS) limit for this API is 10 for each user. If you exceed this limit, API calls are throttled, which may affect your business. We recommend that you call the API at a reasonable rate.
 //
 // @param request - DescribeAclWhitelistRequest
 //
@@ -5511,7 +5779,13 @@ func (client *Client) DescribeAclWhitelistWithOptions(request *DescribeAclWhitel
 
 // Summary:
 //
-// 获取ACL白名单
+// Queries the Access Control List (ACL) whitelist.
+//
+// Description:
+//
+// ## QPS limit
+//
+// The queries per second (QPS) limit for this API is 10 for each user. If you exceed this limit, API calls are throttled, which may affect your business. We recommend that you call the API at a reasonable rate.
 //
 // @param request - DescribeAclWhitelistRequest
 //
@@ -5529,15 +5803,15 @@ func (client *Client) DescribeAclWhitelist(request *DescribeAclWhitelistRequest)
 
 // Summary:
 //
-// Queries the details about an address book for an access control policy.
+// Queries address books in a batch.
 //
 // Description:
 //
-// You can call this operation to query the details about an address book for an access control policy.
+// Use this API to query the details of an access control policy address book.
 //
-// ## [](#qps)Limits
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The per-user QPS limit for this API is 10. Exceeding this limit throttles your API calls and may impact your business. Plan your calls accordingly.
 //
 // @param request - DescribeAddressBookRequest
 //
@@ -5605,15 +5879,15 @@ func (client *Client) DescribeAddressBookWithOptions(request *DescribeAddressBoo
 
 // Summary:
 //
-// Queries the details about an address book for an access control policy.
+// Queries address books in a batch.
 //
 // Description:
 //
-// You can call this operation to query the details about an address book for an access control policy.
+// Use this API to query the details of an access control policy address book.
 //
-// ## [](#qps)Limits
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The per-user QPS limit for this API is 10. Exceeding this limit throttles your API calls and may impact your business. Plan your calls accordingly.
 //
 // @param request - DescribeAddressBookRequest
 //
@@ -5631,15 +5905,15 @@ func (client *Client) DescribeAddressBook(request *DescribeAddressBookRequest) (
 
 // Summary:
 //
-// Queries the assets that are protected by Cloud Firewall.
+// Queries information about assets protected by Cloud Firewall.
 //
 // Description:
 //
-// You can call the DescribeAssetList operation to query the assets that are protected by Cloud Firewall.
+// Use this API to query a paginated list of assets protected by Cloud Firewall.
 //
-// ## Limits
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The QPS limit for this API is 10 calls per second for a single user. If you exceed this limit, API calls are throttled.
 //
 // @param request - DescribeAssetListRequest
 //
@@ -5739,15 +6013,15 @@ func (client *Client) DescribeAssetListWithOptions(request *DescribeAssetListReq
 
 // Summary:
 //
-// Queries the assets that are protected by Cloud Firewall.
+// Queries information about assets protected by Cloud Firewall.
 //
 // Description:
 //
-// You can call the DescribeAssetList operation to query the assets that are protected by Cloud Firewall.
+// Use this API to query a paginated list of assets protected by Cloud Firewall.
 //
-// ## Limits
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The QPS limit for this API is 10 calls per second for a single user. If you exceed this limit, API calls are throttled.
 //
 // @param request - DescribeAssetListRequest
 //
@@ -5765,7 +6039,7 @@ func (client *Client) DescribeAssetList(request *DescribeAssetListRequest) (_res
 
 // Summary:
 //
-// Queries the risk levels of assets.
+// Retrieves a list of asset risk levels.
 //
 // @param request - DescribeAssetRiskListRequest
 //
@@ -5821,7 +6095,7 @@ func (client *Client) DescribeAssetRiskListWithOptions(request *DescribeAssetRis
 
 // Summary:
 //
-// Queries the risk levels of assets.
+// Retrieves a list of asset risk levels.
 //
 // @param request - DescribeAssetRiskListRequest
 //
@@ -5839,7 +6113,7 @@ func (client *Client) DescribeAssetRiskList(request *DescribeAssetRiskListReques
 
 // Summary:
 //
-// Queries statistics on the assets that are protected by Cloud Firewall.
+// Queries performance statistics for assets protected by Cloud Firewall.
 //
 // @param request - DescribeAssetStatisticRequest
 //
@@ -5891,7 +6165,7 @@ func (client *Client) DescribeAssetStatisticWithOptions(request *DescribeAssetSt
 
 // Summary:
 //
-// Queries statistics on the assets that are protected by Cloud Firewall.
+// Queries performance statistics for assets protected by Cloud Firewall.
 //
 // @param request - DescribeAssetStatisticRequest
 //
@@ -5909,7 +6183,15 @@ func (client *Client) DescribeAssetStatistic(request *DescribeAssetStatisticRequ
 
 // Summary:
 //
-// 获取敏感数据类别开关
+// Queries a list of attack categories.
+//
+// Description:
+//
+// You can call this operation to perform a paged query for a list of attack categories.
+//
+// ## QPS limit
+//
+// The queries per second (QPS) limit for this operation is 10 for each user. If you exceed this limit, API calls are throttled. Throttling may affect your business. Plan your calls accordingly.
 //
 // @param request - DescribeAttackAppCategoryRequest
 //
@@ -5953,7 +6235,15 @@ func (client *Client) DescribeAttackAppCategoryWithOptions(request *DescribeAtta
 
 // Summary:
 //
-// 获取敏感数据类别开关
+// Queries a list of attack categories.
+//
+// Description:
+//
+// You can call this operation to perform a paged query for a list of attack categories.
+//
+// ## QPS limit
+//
+// The queries per second (QPS) limit for this operation is 10 for each user. If you exceed this limit, API calls are throttled. Throttling may affect your business. Plan your calls accordingly.
 //
 // @param request - DescribeAttackAppCategoryRequest
 //
@@ -5971,7 +6261,7 @@ func (client *Client) DescribeAttackAppCategory(request *DescribeAttackAppCatego
 
 // Summary:
 //
-// 获取日志分发状态
+// Queries the status of log delivery.
 //
 // @param request - DescribeBatchSlsDispatchStatusRequest
 //
@@ -6019,7 +6309,7 @@ func (client *Client) DescribeBatchSlsDispatchStatusWithOptions(request *Describ
 
 // Summary:
 //
-// 获取日志分发状态
+// Queries the status of log delivery.
 //
 // @param request - DescribeBatchSlsDispatchStatusRequest
 //
@@ -6039,7 +6329,7 @@ func (client *Client) DescribeBatchSlsDispatchStatus(request *DescribeBatchSlsDi
 //
 // Summary:
 //
-// Queries the firewall risk level.
+// Queries a summary of threat levels for Cloud Firewall.
 //
 // @param request - DescribeCfwRiskLevelSummaryRequest
 //
@@ -6093,7 +6383,7 @@ func (client *Client) DescribeCfwRiskLevelSummaryWithOptions(request *DescribeCf
 //
 // Summary:
 //
-// Queries the firewall risk level.
+// Queries a summary of threat levels for Cloud Firewall.
 //
 // @param request - DescribeCfwRiskLevelSummaryRequest
 //
@@ -6112,9 +6402,13 @@ func (client *Client) DescribeCfwRiskLevelSummary(request *DescribeCfwRiskLevelS
 
 // Summary:
 //
-// 获取清空授权信息
+// Retrieves information about cleared authorizations.
 //
-// @param request - DescribeClearAuthInfoRequest
+// Description:
+//
+// ### QPS limits
+//
+// The queries per second (QPS) limit for this API is 10 per user. Exceeding this limit triggers throttling, which may impact your business. Call this API at a reasonable rate.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -6143,7 +6437,13 @@ func (client *Client) DescribeClearAuthInfoWithOptions(runtime *dara.RuntimeOpti
 
 // Summary:
 //
-// 获取清空授权信息
+// Retrieves information about cleared authorizations.
+//
+// Description:
+//
+// ### QPS limits
+//
+// The queries per second (QPS) limit for this API is 10 per user. Exceeding this limit triggers throttling, which may impact your business. Call this API at a reasonable rate.
 //
 // @return DescribeClearAuthInfoResponse
 func (client *Client) DescribeClearAuthInfo() (_result *DescribeClearAuthInfoResponse, _err error) {
@@ -6159,7 +6459,7 @@ func (client *Client) DescribeClearAuthInfo() (_result *DescribeClearAuthInfoRes
 
 // Summary:
 //
-// 获取已配置的目的IP
+// Queries outbound IPs.
 //
 // @param request - DescribeConfiguredDestinationIPRequest
 //
@@ -6243,7 +6543,7 @@ func (client *Client) DescribeConfiguredDestinationIPWithOptions(request *Descri
 
 // Summary:
 //
-// 获取已配置的目的IP
+// Queries outbound IPs.
 //
 // @param request - DescribeConfiguredDestinationIPRequest
 //
@@ -6261,7 +6561,7 @@ func (client *Client) DescribeConfiguredDestinationIP(request *DescribeConfigure
 
 // Summary:
 //
-// 获取已配置的域名
+// Lists the active outbound domain names.
 //
 // @param request - DescribeConfiguredDomainNamesRequest
 //
@@ -6337,7 +6637,7 @@ func (client *Client) DescribeConfiguredDomainNamesWithOptions(request *Describe
 
 // Summary:
 //
-// 获取已配置的域名
+// Lists the active outbound domain names.
 //
 // @param request - DescribeConfiguredDomainNamesRequest
 //
@@ -6355,15 +6655,15 @@ func (client *Client) DescribeConfiguredDomainNames(request *DescribeConfiguredD
 
 // Summary:
 //
-// Queries the details about all access control policies.
+// Retrieves information about all access control policies.
 //
 // Description:
 //
-// You can call the DescribeControlPolicy operation to query the details about access control policies by page.
+// This operation performs a paged query for information about access control policies.
 //
-// ## Limits
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The queries per second (QPS) limit for this operation is 10 for a single user. If you exceed this limit, API calls are throttled. This may affect your business. Plan your calls accordingly.
 //
 // @param request - DescribeControlPolicyRequest
 //
@@ -6459,15 +6759,15 @@ func (client *Client) DescribeControlPolicyWithOptions(request *DescribeControlP
 
 // Summary:
 //
-// Queries the details about all access control policies.
+// Retrieves information about all access control policies.
 //
 // Description:
 //
-// You can call the DescribeControlPolicy operation to query the details about access control policies by page.
+// This operation performs a paged query for information about access control policies.
 //
-// ## Limits
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The queries per second (QPS) limit for this operation is 10 for a single user. If you exceed this limit, API calls are throttled. This may affect your business. Plan your calls accordingly.
 //
 // @param request - DescribeControlPolicyRequest
 //
@@ -6485,7 +6785,7 @@ func (client *Client) DescribeControlPolicy(request *DescribeControlPolicyReques
 
 // Summary:
 //
-// 查询访问控制策略的域名解析结果
+// Retrieves the domain resolution results for an access control policy.
 //
 // @param request - DescribeControlPolicyDomainResolveRequest
 //
@@ -6525,7 +6825,7 @@ func (client *Client) DescribeControlPolicyDomainResolveWithOptions(request *Des
 
 // Summary:
 //
-// 查询访问控制策略的域名解析结果
+// Retrieves the domain resolution results for an access control policy.
 //
 // @param request - DescribeControlPolicyDomainResolveRequest
 //
@@ -6543,7 +6843,7 @@ func (client *Client) DescribeControlPolicyDomainResolve(request *DescribeContro
 
 // Summary:
 //
-// 获取已经创建的 NAT 防火墙
+// Retrieves a list of created NAT firewalls.
 //
 // @param request - DescribeCreatedNatFirewallRequest
 //
@@ -6583,7 +6883,7 @@ func (client *Client) DescribeCreatedNatFirewallWithOptions(request *DescribeCre
 
 // Summary:
 //
-// 获取已经创建的 NAT 防火墙
+// Retrieves a list of created NAT firewalls.
 //
 // @param request - DescribeCreatedNatFirewallRequest
 //
@@ -6601,9 +6901,15 @@ func (client *Client) DescribeCreatedNatFirewall(request *DescribeCreatedNatFire
 
 // Summary:
 //
-// 获取成员账号列表
+// Queries a list of member accounts.
 //
-// @param request - DescribeCtrlInstanceMemberAccountsRequest
+// Description:
+//
+// This operation queries information about the member accounts of Cloud Firewall.
+//
+// ## QPS limits
+//
+// This operation is limited to 10 queries per second (QPS) for each user. If you exceed this limit, API calls are throttled. Throttling may affect your business. We recommend that you call this operation at a reasonable rate.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -6632,7 +6938,15 @@ func (client *Client) DescribeCtrlInstanceMemberAccountsWithOptions(runtime *dar
 
 // Summary:
 //
-// 获取成员账号列表
+// Queries a list of member accounts.
+//
+// Description:
+//
+// This operation queries information about the member accounts of Cloud Firewall.
+//
+// ## QPS limits
+//
+// This operation is limited to 10 queries per second (QPS) for each user. If you exceed this limit, API calls are throttled. Throttling may affect your business. We recommend that you call this operation at a reasonable rate.
 //
 // @return DescribeCtrlInstanceMemberAccountsResponse
 func (client *Client) DescribeCtrlInstanceMemberAccounts() (_result *DescribeCtrlInstanceMemberAccountsResponse, _err error) {
@@ -6648,7 +6962,7 @@ func (client *Client) DescribeCtrlInstanceMemberAccounts() (_result *DescribeCtr
 
 // Summary:
 //
-// Queries the default intrusion prevention system (IPS) configurations.
+// Provides Intrusion Prevention System (IPS) protection for internet traffic.
 //
 // @param request - DescribeDefaultIPSConfigRequest
 //
@@ -6692,7 +7006,7 @@ func (client *Client) DescribeDefaultIPSConfigWithOptions(request *DescribeDefau
 
 // Summary:
 //
-// Queries the default intrusion prevention system (IPS) configurations.
+// Provides Intrusion Prevention System (IPS) protection for internet traffic.
 //
 // @param request - DescribeDefaultIPSConfigRequest
 //
@@ -6710,7 +7024,7 @@ func (client *Client) DescribeDefaultIPSConfig(request *DescribeDefaultIPSConfig
 
 // Summary:
 //
-// 获取DNS防火墙ACL列表
+// Queries the list of access control lists (ACLs) for the DNS firewall.
 //
 // @param request - DescribeDnsFirewallPolicyRequest
 //
@@ -6798,7 +7112,7 @@ func (client *Client) DescribeDnsFirewallPolicyWithOptions(request *DescribeDnsF
 
 // Summary:
 //
-// 获取DNS防火墙ACL列表
+// Queries the list of access control lists (ACLs) for the DNS firewall.
 //
 // @param request - DescribeDnsFirewallPolicyRequest
 //
@@ -6818,15 +7132,15 @@ func (client *Client) DescribeDnsFirewallPolicy(request *DescribeDnsFirewallPoli
 //
 // Summary:
 //
-// Queries Domain Name System (DNS) records.
+// Retrieves the Domain Name System (DNS) resolution results for a domain name.
 //
 // Description:
 //
-// You can use this operation to query the DNS record of a domain name. This operation can retrieve DNS records only from Alibaba Cloud DNS. Before you can call this operation, make sure that your domain name is hosted on Alibaba Cloud DNS.
+// This operation retrieves the DNS resolution result for a domain name. You can retrieve resolution results only for domain names that use Alibaba Cloud DNS.
 //
-// ## Limits
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The queries per second (QPS) limit for this operation is 10 calls per second per user. If you exceed this limit, your API calls are throttled, which may impact your business. Call this operation at a reasonable rate to avoid throttling.
 //
 // @param request - DescribeDomainResolveRequest
 //
@@ -6888,15 +7202,15 @@ func (client *Client) DescribeDomainResolveWithOptions(request *DescribeDomainRe
 //
 // Summary:
 //
-// Queries Domain Name System (DNS) records.
+// Retrieves the Domain Name System (DNS) resolution results for a domain name.
 //
 // Description:
 //
-// You can use this operation to query the DNS record of a domain name. This operation can retrieve DNS records only from Alibaba Cloud DNS. Before you can call this operation, make sure that your domain name is hosted on Alibaba Cloud DNS.
+// This operation retrieves the DNS resolution result for a domain name. You can retrieve resolution results only for domain names that use Alibaba Cloud DNS.
 //
-// ## Limits
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The queries per second (QPS) limit for this operation is 10 calls per second per user. If you exceed this limit, your API calls are throttled, which may impact your business. Call this operation at a reasonable rate to avoid throttling.
 //
 // @param request - DescribeDomainResolveRequest
 //
@@ -6915,7 +7229,7 @@ func (client *Client) DescribeDomainResolve(request *DescribeDomainResolveReques
 
 // Summary:
 //
-// Queries file download tasks, including the task information and download URLs.
+// Queries the information and download URLs of file download tasks.
 //
 // @param request - DescribeDownloadTaskRequest
 //
@@ -6971,7 +7285,7 @@ func (client *Client) DescribeDownloadTaskWithOptions(request *DescribeDownloadT
 
 // Summary:
 //
-// Queries file download tasks, including the task information and download URLs.
+// Queries the information and download URLs of file download tasks.
 //
 // @param request - DescribeDownloadTaskRequest
 //
@@ -6989,7 +7303,7 @@ func (client *Client) DescribeDownloadTask(request *DescribeDownloadTaskRequest)
 
 // Summary:
 //
-// Queries the types of download tasks. The type corresponds to the TaskType fields in the download task-related operations.
+// Queries the types of download tasks. The returned types correspond to the TaskType field in other download-related API operations.
 //
 // @param request - DescribeDownloadTaskTypeRequest
 //
@@ -7045,7 +7359,7 @@ func (client *Client) DescribeDownloadTaskTypeWithOptions(request *DescribeDownl
 
 // Summary:
 //
-// Queries the types of download tasks. The type corresponds to the TaskType fields in the download task-related operations.
+// Queries the types of download tasks. The returned types correspond to the TaskType field in other download-related API operations.
 //
 // @param request - DescribeDownloadTaskTypeRequest
 //
@@ -7065,9 +7379,13 @@ func (client *Client) DescribeDownloadTaskType(request *DescribeDownloadTaskType
 //
 // Summary:
 //
-// 获取防火墙DROP数据统计
+// Retrieves statistics on packets dropped by the firewall.
 //
-// @param request - DescribeFirewallDropStatisticsRequest
+// Description:
+//
+// ### QPS limit
+//
+// The queries per second (QPS) limit for this API is 10 per user. If you exceed this limit, your API calls are throttled. This may affect your business operations. We recommend that you make API calls at a reasonable rate.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -7099,7 +7417,13 @@ func (client *Client) DescribeFirewallDropStatisticsWithOptions(runtime *dara.Ru
 //
 // Summary:
 //
-// 获取防火墙DROP数据统计
+// Retrieves statistics on packets dropped by the firewall.
+//
+// Description:
+//
+// ### QPS limit
+//
+// The queries per second (QPS) limit for this API is 10 per user. If you exceed this limit, your API calls are throttled. This may affect your business operations. We recommend that you make API calls at a reasonable rate.
 //
 // @return DescribeFirewallDropStatisticsResponse
 // Deprecated
@@ -7116,7 +7440,13 @@ func (client *Client) DescribeFirewallDropStatistics() (_result *DescribeFirewal
 
 // Summary:
 //
-// 获取防火墙任务
+// Retrieves the details of a firewall task.
+//
+// Description:
+//
+// ### QPS limit
+//
+// You can make up to 10 queries per second (QPS). If you exceed this limit, API calls are throttled, which may impact your business. We recommend that you plan your calls accordingly.
 //
 // @param request - DescribeFirewallTaskRequest
 //
@@ -7176,7 +7506,13 @@ func (client *Client) DescribeFirewallTaskWithOptions(request *DescribeFirewallT
 
 // Summary:
 //
-// 获取防火墙任务
+// Retrieves the details of a firewall task.
+//
+// Description:
+//
+// ### QPS limit
+//
+// You can make up to 10 queries per second (QPS). If you exceed this limit, API calls are throttled, which may impact your business. We recommend that you plan your calls accordingly.
 //
 // @param request - DescribeFirewallTaskRequest
 //
@@ -7194,7 +7530,13 @@ func (client *Client) DescribeFirewallTask(request *DescribeFirewallTaskRequest)
 
 // Summary:
 //
-// 获取防火墙创建的交换机
+// Queries the vSwitches that are created by Cloud Firewall.
+//
+// Description:
+//
+// ### QPS limit
+//
+// The queries per second (QPS) limit for this operation is 10 per user. If you exceed the limit, API calls are throttled, which may affect your business. Therefore, call this operation at a reasonable rate.
 //
 // @param request - DescribeFirewallVSwitchRequest
 //
@@ -7270,7 +7612,13 @@ func (client *Client) DescribeFirewallVSwitchWithOptions(request *DescribeFirewa
 
 // Summary:
 //
-// 获取防火墙创建的交换机
+// Queries the vSwitches that are created by Cloud Firewall.
+//
+// Description:
+//
+// ### QPS limit
+//
+// The queries per second (QPS) limit for this operation is 10 per user. If you exceed the limit, API calls are throttled, which may affect your business. Therefore, call this operation at a reasonable rate.
 //
 // @param request - DescribeFirewallVSwitchRequest
 //
@@ -7288,7 +7636,7 @@ func (client *Client) DescribeFirewallVSwitch(request *DescribeFirewallVSwitchRe
 
 // Summary:
 //
-// 获取防火墙交换机资源
+// Queries the vSwitch resources for Cloud Firewall.
 //
 // @param request - DescribeFirewallVswitchResourcesRequest
 //
@@ -7348,7 +7696,7 @@ func (client *Client) DescribeFirewallVswitchResourcesWithOptions(request *Descr
 
 // Summary:
 //
-// 获取防火墙交换机资源
+// Queries the vSwitch resources for Cloud Firewall.
 //
 // @param request - DescribeFirewallVswitchResourcesRequest
 //
@@ -7366,15 +7714,161 @@ func (client *Client) DescribeFirewallVswitchResources(request *DescribeFirewall
 
 // Summary:
 //
-// Queries the information about members in Cloud Firewall.
+// # Query IPS rules
+//
+// @param request - DescribeIPSRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeIPSRulesResponse
+func (client *Client) DescribeIPSRulesWithOptions(request *DescribeIPSRulesRequest, runtime *dara.RuntimeOptions) (_result *DescribeIPSRulesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AttackApp) {
+		query["AttackApp"] = request.AttackApp
+	}
+
+	if !dara.IsNil(request.AttackAppCategory) {
+		query["AttackAppCategory"] = request.AttackAppCategory
+	}
+
+	if !dara.IsNil(request.AttackApps) {
+		query["AttackApps"] = request.AttackApps
+	}
+
+	if !dara.IsNil(request.AttackType) {
+		query["AttackType"] = request.AttackType
+	}
+
+	if !dara.IsNil(request.Cve) {
+		query["Cve"] = request.Cve
+	}
+
+	if !dara.IsNil(request.DefaultAction) {
+		query["DefaultAction"] = request.DefaultAction
+	}
+
+	if !dara.IsNil(request.FirewallType) {
+		query["FirewallType"] = request.FirewallType
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Order) {
+		query["Order"] = request.Order
+	}
+
+	if !dara.IsNil(request.PageNo) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.QueryModify) {
+		query["QueryModify"] = request.QueryModify
+	}
+
+	if !dara.IsNil(request.RuleAction) {
+		query["RuleAction"] = request.RuleAction
+	}
+
+	if !dara.IsNil(request.RuleClass) {
+		query["RuleClass"] = request.RuleClass
+	}
+
+	if !dara.IsNil(request.RuleId) {
+		query["RuleId"] = request.RuleId
+	}
+
+	if !dara.IsNil(request.RuleLevel) {
+		query["RuleLevel"] = request.RuleLevel
+	}
+
+	if !dara.IsNil(request.RuleName) {
+		query["RuleName"] = request.RuleName
+	}
+
+	if !dara.IsNil(request.RuleType) {
+		query["RuleType"] = request.RuleType
+	}
+
+	if !dara.IsNil(request.Sort) {
+		query["Sort"] = request.Sort
+	}
+
+	if !dara.IsNil(request.SourceIp) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !dara.IsNil(request.VpcFirewallId) {
+		query["VpcFirewallId"] = request.VpcFirewallId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeIPSRules"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeIPSRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Query IPS rules
+//
+// @param request - DescribeIPSRulesRequest
+//
+// @return DescribeIPSRulesResponse
+func (client *Client) DescribeIPSRules(request *DescribeIPSRulesRequest) (_result *DescribeIPSRulesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeIPSRulesResponse{}
+	_body, _err := client.DescribeIPSRulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves information about the member accounts of Cloud Firewall.
 //
 // Description:
 //
-// You can use this operation to query the information about members in Cloud Firewall.
+// You can call this operation to query information about the member accounts of Cloud Firewall.
 //
-// ## Limits
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The queries per second (QPS) limit for this operation is 10 calls per second per user. If you exceed the limit, API calls are throttled. This may affect your business. Call this operation at a reasonable rate.
 //
 // @param request - DescribeInstanceMembersRequest
 //
@@ -7434,15 +7928,15 @@ func (client *Client) DescribeInstanceMembersWithOptions(request *DescribeInstan
 
 // Summary:
 //
-// Queries the information about members in Cloud Firewall.
+// Retrieves information about the member accounts of Cloud Firewall.
 //
 // Description:
 //
-// You can use this operation to query the information about members in Cloud Firewall.
+// You can call this operation to query information about the member accounts of Cloud Firewall.
 //
-// ## Limits
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The queries per second (QPS) limit for this operation is 10 calls per second per user. If you exceed the limit, API calls are throttled. This may affect your business. Call this operation at a reasonable rate.
 //
 // @param request - DescribeInstanceMembersRequest
 //
@@ -7460,7 +7954,7 @@ func (client *Client) DescribeInstanceMembers(request *DescribeInstanceMembersRe
 
 // Summary:
 //
-// 获取实例RD账号
+// Queries the member accounts in a resource directory for a Cloud Firewall instance.
 //
 // @param request - DescribeInstanceRdAccountsRequest
 //
@@ -7528,7 +8022,7 @@ func (client *Client) DescribeInstanceRdAccountsWithOptions(request *DescribeIns
 
 // Summary:
 //
-// 获取实例RD账号
+// Queries the member accounts in a resource directory for a Cloud Firewall instance.
 //
 // @param request - DescribeInstanceRdAccountsRequest
 //
@@ -7612,7 +8106,13 @@ func (client *Client) DescribeInstanceRiskLevels(request *DescribeInstanceRiskLe
 
 // Summary:
 //
-// 获取互联网方向删除会话趋势图
+// # Internet security trends
+//
+// Description:
+//
+// ## QPS limit
+//
+// This API is limited to 10 requests per second per user. Exceeding this limit triggers throttling, which can disrupt your service. Plan your API calls accordingly.
 //
 // @param request - DescribeInternetDropTrafficTrendRequest
 //
@@ -7680,7 +8180,13 @@ func (client *Client) DescribeInternetDropTrafficTrendWithOptions(request *Descr
 
 // Summary:
 //
-// 获取互联网方向删除会话趋势图
+// # Internet security trends
+//
+// Description:
+//
+// ## QPS limit
+//
+// This API is limited to 10 requests per second per user. Exceeding this limit triggers throttling, which can disrupt your service. Plan your API calls accordingly.
 //
 // @param request - DescribeInternetDropTrafficTrendRequest
 //
@@ -7698,7 +8204,7 @@ func (client *Client) DescribeInternetDropTrafficTrend(request *DescribeInternet
 
 // Summary:
 //
-// 获取互联网开放详情
+// You can obtain details about Internet access.
 //
 // @param request - DescribeInternetOpenDetailRequest
 //
@@ -7810,7 +8316,7 @@ func (client *Client) DescribeInternetOpenDetailWithOptions(request *DescribeInt
 
 // Summary:
 //
-// 获取互联网开放详情
+// You can obtain details about Internet access.
 //
 // @param request - DescribeInternetOpenDetailRequest
 //
@@ -7828,7 +8334,7 @@ func (client *Client) DescribeInternetOpenDetail(request *DescribeInternetOpenDe
 
 // Summary:
 //
-// Queries the IP addresses that are open to the Internet.
+// Describes a Cloud Firewall access control policy group.
 //
 // @param request - DescribeInternetOpenIpRequest
 //
@@ -7920,7 +8426,7 @@ func (client *Client) DescribeInternetOpenIpWithOptions(request *DescribeInterne
 
 // Summary:
 //
-// Queries the IP addresses that are open to the Internet.
+// Describes a Cloud Firewall access control policy group.
 //
 // @param request - DescribeInternetOpenIpRequest
 //
@@ -7938,7 +8444,13 @@ func (client *Client) DescribeInternetOpenIp(request *DescribeInternetOpenIpRequ
 
 // Summary:
 //
-// 获取互联网开放端口
+// Queries the ports that are open to the Internet.
+//
+// Description:
+//
+// ## QPS limit
+//
+// The queries per second (QPS) limit for this operation is 10 calls per second for each user. If you exceed this limit, API calls are throttled. This may affect your business. Plan your calls accordingly.
 //
 // @param request - DescribeInternetOpenPortRequest
 //
@@ -8026,7 +8538,13 @@ func (client *Client) DescribeInternetOpenPortWithOptions(request *DescribeInter
 
 // Summary:
 //
-// 获取互联网开放端口
+// Queries the ports that are open to the Internet.
+//
+// Description:
+//
+// ## QPS limit
+//
+// The queries per second (QPS) limit for this operation is 10 calls per second for each user. If you exceed this limit, API calls are throttled. This may affect your business. Plan your calls accordingly.
 //
 // @param request - DescribeInternetOpenPortRequest
 //
@@ -8044,7 +8562,13 @@ func (client *Client) DescribeInternetOpenPort(request *DescribeInternetOpenPort
 
 // Summary:
 //
-// 获取互联网开放服务
+// Queries services exposed to the Internet.
+//
+// Description:
+//
+// ## QPS limits
+//
+// You can make up to 10 queries per second (QPS). If you exceed this limit, API calls are throttled. This may affect your business. We recommend that you make API calls at a reasonable rate.
 //
 // @param request - DescribeInternetOpenServiceRequest
 //
@@ -8132,7 +8656,13 @@ func (client *Client) DescribeInternetOpenServiceWithOptions(request *DescribeIn
 
 // Summary:
 //
-// 获取互联网开放服务
+// Queries services exposed to the Internet.
+//
+// Description:
+//
+// ## QPS limits
+//
+// You can make up to 10 queries per second (QPS). If you exceed this limit, API calls are throttled. This may affect your business. We recommend that you make API calls at a reasonable rate.
 //
 // @param request - DescribeInternetOpenServiceRequest
 //
@@ -8150,7 +8680,7 @@ func (client *Client) DescribeInternetOpenService(request *DescribeInternetOpenS
 
 // Summary:
 //
-// 获取互联网开放统计
+// Retrieves statistics about assets exposed to the Internet.
 //
 // @param request - DescribeInternetOpenStatisticRequest
 //
@@ -8210,7 +8740,7 @@ func (client *Client) DescribeInternetOpenStatisticWithOptions(request *Describe
 
 // Summary:
 //
-// 获取互联网开放统计
+// Retrieves statistics about assets exposed to the Internet.
 //
 // @param request - DescribeInternetOpenStatisticRequest
 //
@@ -8228,7 +8758,7 @@ func (client *Client) DescribeInternetOpenStatistic(request *DescribeInternetOpe
 
 // Summary:
 //
-// 获取互联网服务名称列表
+// Retrieves a list of Internet service names.
 //
 // @param request - DescribeInternetServiceNameListRequest
 //
@@ -8280,7 +8810,7 @@ func (client *Client) DescribeInternetServiceNameListWithOptions(request *Descri
 
 // Summary:
 //
-// 获取互联网服务名称列表
+// Retrieves a list of Internet service names.
 //
 // @param request - DescribeInternetServiceNameListRequest
 //
@@ -8298,7 +8828,7 @@ func (client *Client) DescribeInternetServiceNameList(request *DescribeInternetS
 
 // Summary:
 //
-// 获取互联网SLB
+// Retrieves the details of Internet-facing SLB instances.
 //
 // @param request - DescribeInternetSlbRequest
 //
@@ -8386,7 +8916,7 @@ func (client *Client) DescribeInternetSlbWithOptions(request *DescribeInternetSl
 
 // Summary:
 //
-// 获取互联网SLB
+// Retrieves the details of Internet-facing SLB instances.
 //
 // @param request - DescribeInternetSlbRequest
 //
@@ -8404,7 +8934,7 @@ func (client *Client) DescribeInternetSlb(request *DescribeInternetSlbRequest) (
 
 // Summary:
 //
-// 获取互联网流量时间TOP
+// This operation queries the Top-N internet traffic over time.
 //
 // @param request - DescribeInternetTimeTopRequest
 //
@@ -8508,7 +9038,7 @@ func (client *Client) DescribeInternetTimeTopWithOptions(request *DescribeIntern
 
 // Summary:
 //
-// 获取互联网流量时间TOP
+// This operation queries the Top-N internet traffic over time.
 //
 // @param request - DescribeInternetTimeTopRequest
 //
@@ -8526,7 +9056,7 @@ func (client *Client) DescribeInternetTimeTop(request *DescribeInternetTimeTopRe
 
 // Summary:
 //
-// 获取互联网流量TOP趋势图
+// Queries the top Internet traffic trends.
 //
 // @param request - DescribeInternetTrafficTopRequest
 //
@@ -8618,7 +9148,7 @@ func (client *Client) DescribeInternetTrafficTopWithOptions(request *DescribeInt
 
 // Summary:
 //
-// 获取互联网流量TOP趋势图
+// Queries the top Internet traffic trends.
 //
 // @param request - DescribeInternetTrafficTopRequest
 //
@@ -8636,7 +9166,7 @@ func (client *Client) DescribeInternetTrafficTop(request *DescribeInternetTraffi
 
 // Summary:
 //
-// Queries the trends of Internet traffic.
+// Queries Internet traffic trends.
 //
 // @param request - DescribeInternetTrafficTrendRequest
 //
@@ -8716,7 +9246,7 @@ func (client *Client) DescribeInternetTrafficTrendWithOptions(request *DescribeI
 
 // Summary:
 //
-// Queries the trends of Internet traffic.
+// Queries Internet traffic trends.
 //
 // @param request - DescribeInternetTrafficTrendRequest
 //
@@ -8734,7 +9264,7 @@ func (client *Client) DescribeInternetTrafficTrend(request *DescribeInternetTraf
 
 // Summary:
 //
-// 获取ECS漏洞趋势
+// Queries the trend of vulnerabilities on ECS instances.
 //
 // @param request - DescribeInvadeEcsTrendRequest
 //
@@ -8794,7 +9324,7 @@ func (client *Client) DescribeInvadeEcsTrendWithOptions(request *DescribeInvadeE
 
 // Summary:
 //
-// 获取ECS漏洞趋势
+// Queries the trend of vulnerabilities on ECS instances.
 //
 // @param request - DescribeInvadeEcsTrendRequest
 //
@@ -8812,7 +9342,7 @@ func (client *Client) DescribeInvadeEcsTrend(request *DescribeInvadeEcsTrendRequ
 
 // Summary:
 //
-// 获取漏洞事件详情
+// Retrieves the details of a threat detection event.
 //
 // @param request - DescribeInvadeEventDetailRequest
 //
@@ -8876,7 +9406,7 @@ func (client *Client) DescribeInvadeEventDetailWithOptions(request *DescribeInva
 
 // Summary:
 //
-// 获取漏洞事件详情
+// Retrieves the details of a threat detection event.
 //
 // @param request - DescribeInvadeEventDetailRequest
 //
@@ -8894,7 +9424,7 @@ func (client *Client) DescribeInvadeEventDetail(request *DescribeInvadeEventDeta
 
 // Summary:
 //
-// Queries the information about the breach awareness events of a firewall.
+// Queries Cloud Firewall threat detection events.
 //
 // @param request - DescribeInvadeEventListRequest
 //
@@ -9002,7 +9532,7 @@ func (client *Client) DescribeInvadeEventListWithOptions(request *DescribeInvade
 
 // Summary:
 //
-// Queries the information about the breach awareness events of a firewall.
+// Queries Cloud Firewall threat detection events.
 //
 // @param request - DescribeInvadeEventListRequest
 //
@@ -9020,7 +9550,7 @@ func (client *Client) DescribeInvadeEventList(request *DescribeInvadeEventListRe
 
 // Summary:
 //
-// 获取漏洞名称列表
+// Retrieves a list of vulnerability names.
 //
 // @param request - DescribeInvadeEventNameListRequest
 //
@@ -9080,7 +9610,7 @@ func (client *Client) DescribeInvadeEventNameListWithOptions(request *DescribeIn
 
 // Summary:
 //
-// 获取漏洞名称列表
+// Retrieves a list of vulnerability names.
 //
 // @param request - DescribeInvadeEventNameListRequest
 //
@@ -9098,7 +9628,7 @@ func (client *Client) DescribeInvadeEventNameList(request *DescribeInvadeEventNa
 
 // Summary:
 //
-// 获取漏洞事件统计
+// Queries statistics about intrusion events.
 //
 // @param request - DescribeInvadeEventStatisticRequest
 //
@@ -9158,7 +9688,7 @@ func (client *Client) DescribeInvadeEventStatisticWithOptions(request *DescribeI
 
 // Summary:
 //
-// 获取漏洞事件统计
+// Queries statistics about intrusion events.
 //
 // @param request - DescribeInvadeEventStatisticRequest
 //
@@ -9176,7 +9706,15 @@ func (client *Client) DescribeInvadeEventStatistic(request *DescribeInvadeEventS
 
 // Summary:
 //
-// 查询IPS私网关联信息
+// Queries the list of IPS Private IP Tracing associations.
+//
+// Description:
+//
+// This operation queries information about assets that are protected by Cloud Firewall. The results are paginated.
+//
+// ## Limits
+//
+// This operation is limited to 10 queries per second (QPS) per user. If you exceed the limit, API calls are throttled. This may affect your business. Call this operation at a reasonable rate.
 //
 // @param request - DescribeIpsPrivateAssocRequest
 //
@@ -9244,7 +9782,15 @@ func (client *Client) DescribeIpsPrivateAssocWithOptions(request *DescribeIpsPri
 
 // Summary:
 //
-// 查询IPS私网关联信息
+// Queries the list of IPS Private IP Tracing associations.
+//
+// Description:
+//
+// This operation queries information about assets that are protected by Cloud Firewall. The results are paginated.
+//
+// ## Limits
+//
+// This operation is limited to 10 queries per second (QPS) per user. If you exceed the limit, API calls are throttled. This may affect your business. Call this operation at a reasonable rate.
 //
 // @param request - DescribeIpsPrivateAssocRequest
 //
@@ -9262,7 +9808,7 @@ func (client *Client) DescribeIpsPrivateAssoc(request *DescribeIpsPrivateAssocRe
 
 // Summary:
 //
-// 获取ISP信息
+// Retrieves information about ISPs.
 //
 // @param request - DescribeIspInfoRequest
 //
@@ -9318,7 +9864,7 @@ func (client *Client) DescribeIspInfoWithOptions(request *DescribeIspInfoRequest
 
 // Summary:
 //
-// 获取ISP信息
+// Retrieves information about ISPs.
 //
 // @param request - DescribeIspInfoRequest
 //
@@ -9336,7 +9882,7 @@ func (client *Client) DescribeIspInfo(request *DescribeIspInfoRequest) (_result 
 
 // Summary:
 //
-// 获取位置信息
+// Retrieves information about geographic locations.
 //
 // @param request - DescribeLocationInfoRequest
 //
@@ -9392,7 +9938,7 @@ func (client *Client) DescribeLocationInfoWithOptions(request *DescribeLocationI
 
 // Summary:
 //
-// 获取位置信息
+// Retrieves information about geographic locations.
 //
 // @param request - DescribeLocationInfoRequest
 //
@@ -9410,9 +9956,7 @@ func (client *Client) DescribeLocationInfo(request *DescribeLocationInfoRequest)
 
 // Summary:
 //
-// # Get Log Service Information
-//
-// @param request - DescribeLogStoreInfoRequest
+// Retrieves the details of the Logstore in Simple Log Service.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -9441,7 +9985,7 @@ func (client *Client) DescribeLogStoreInfoWithOptions(runtime *dara.RuntimeOptio
 
 // Summary:
 //
-// # Get Log Service Information
+// Retrieves the details of the Logstore in Simple Log Service.
 //
 // @return DescribeLogStoreInfoResponse
 func (client *Client) DescribeLogStoreInfo() (_result *DescribeLogStoreInfoResponse, _err error) {
@@ -9457,7 +10001,7 @@ func (client *Client) DescribeLogStoreInfo() (_result *DescribeLogStoreInfoRespo
 
 // Summary:
 //
-// 免费版获取成员信息
+// Describes member information.
 //
 // @param request - DescribeMemberInfoRequest
 //
@@ -9497,7 +10041,7 @@ func (client *Client) DescribeMemberInfoWithOptions(request *DescribeMemberInfoR
 
 // Summary:
 //
-// 免费版获取成员信息
+// Describes member information.
 //
 // @param request - DescribeMemberInfoRequest
 //
@@ -9515,7 +10059,7 @@ func (client *Client) DescribeMemberInfo(request *DescribeMemberInfoRequest) (_r
 
 // Summary:
 //
-// Queries the pagination status of NAT firewalls.
+// Queries the paging status of the NAT firewall.
 //
 // @param request - DescribeNatAclPageStatusRequest
 //
@@ -9559,7 +10103,7 @@ func (client *Client) DescribeNatAclPageStatusWithOptions(request *DescribeNatAc
 
 // Summary:
 //
-// Queries the pagination status of NAT firewalls.
+// Queries the paging status of the NAT firewall.
 //
 // @param request - DescribeNatAclPageStatusRequest
 //
@@ -9577,7 +10121,7 @@ func (client *Client) DescribeNatAclPageStatus(request *DescribeNatAclPageStatus
 
 // Summary:
 //
-// 查询Nat防火墙分组列表
+// Queries the access control policy groups for NAT firewalls.
 //
 // @param request - DescribeNatFirewallAclGroupListRequest
 //
@@ -9621,7 +10165,7 @@ func (client *Client) DescribeNatFirewallAclGroupListWithOptions(request *Descri
 
 // Summary:
 //
-// 查询Nat防火墙分组列表
+// Queries the access control policy groups for NAT firewalls.
 //
 // @param request - DescribeNatFirewallAclGroupListRequest
 //
@@ -9639,11 +10183,11 @@ func (client *Client) DescribeNatFirewallAclGroupList(request *DescribeNatFirewa
 
 // Summary:
 //
-// Queries the information about all access control policies that are created for NAT firewalls.
+// Queries the access control policies for NAT firewalls.
 //
 // Description:
 //
-// You can use this operation to query the information about all access control policies that are created for NAT firewalls by page.
+// This operation queries access control policies for NAT firewalls and returns the results in a paginated list.
 //
 // @param request - DescribeNatFirewallControlPolicyRequest
 //
@@ -9735,11 +10279,11 @@ func (client *Client) DescribeNatFirewallControlPolicyWithOptions(request *Descr
 
 // Summary:
 //
-// Queries the information about all access control policies that are created for NAT firewalls.
+// Queries the access control policies for NAT firewalls.
 //
 // Description:
 //
-// You can use this operation to query the information about all access control policies that are created for NAT firewalls by page.
+// This operation queries access control policies for NAT firewalls and returns the results in a paginated list.
 //
 // @param request - DescribeNatFirewallControlPolicyRequest
 //
@@ -9757,7 +10301,7 @@ func (client *Client) DescribeNatFirewallControlPolicy(request *DescribeNatFirew
 
 // Summary:
 //
-// 概览页-nat防火墙拦截趋势
+// # Overview - NAT firewall blocking trends
 //
 // @param request - DescribeNatFirewallDropTrafficTrendRequest
 //
@@ -9797,7 +10341,7 @@ func (client *Client) DescribeNatFirewallDropTrafficTrendWithOptions(request *De
 
 // Summary:
 //
-// 概览页-nat防火墙拦截趋势
+// # Overview - NAT firewall blocking trends
 //
 // @param request - DescribeNatFirewallDropTrafficTrendRequest
 //
@@ -9815,7 +10359,7 @@ func (client *Client) DescribeNatFirewallDropTrafficTrend(request *DescribeNatFi
 
 // Summary:
 //
-// Queries details of NAT firewalls.
+// Queries NAT firewall details.
 //
 // @param request - DescribeNatFirewallListRequest
 //
@@ -9899,7 +10443,7 @@ func (client *Client) DescribeNatFirewallListWithOptions(request *DescribeNatFir
 
 // Summary:
 //
-// Queries details of NAT firewalls.
+// Queries NAT firewall details.
 //
 // @param request - DescribeNatFirewallListRequest
 //
@@ -9917,11 +10461,11 @@ func (client *Client) DescribeNatFirewallList(request *DescribeNatFirewallListRe
 
 // Summary:
 //
-// Queries the priority range of access control policies that are created for a NAT firewall.
+// Queries the priority range of an access control policy for a NAT firewall.
 //
 // Description:
 //
-// You can use this operation to query the priority range of access control policies that are created for a NAT firewall.
+// You can call this operation to query the priority range of an access control policy for outbound traffic on a NAT firewall.
 //
 // @param request - DescribeNatFirewallPolicyPriorUsedRequest
 //
@@ -9977,11 +10521,11 @@ func (client *Client) DescribeNatFirewallPolicyPriorUsedWithOptions(request *Des
 
 // Summary:
 //
-// Queries the priority range of access control policies that are created for a NAT firewall.
+// Queries the priority range of an access control policy for a NAT firewall.
 //
 // Description:
 //
-// You can use this operation to query the priority range of access control policies that are created for a NAT firewall.
+// You can call this operation to query the priority range of an access control policy for outbound traffic on a NAT firewall.
 //
 // @param request - DescribeNatFirewallPolicyPriorUsedRequest
 //
@@ -9999,7 +10543,7 @@ func (client *Client) DescribeNatFirewallPolicyPriorUsed(request *DescribeNatFir
 
 // Summary:
 //
-// 查询NAT防火墙预检查结果
+// Queries the precheck details for a NAT firewall.
 //
 // @param request - DescribeNatFirewallPrecheckDetailRequest
 //
@@ -10039,7 +10583,7 @@ func (client *Client) DescribeNatFirewallPrecheckDetailWithOptions(request *Desc
 
 // Summary:
 //
-// 查询NAT防火墙预检查结果
+// Queries the precheck details for a NAT firewall.
 //
 // @param request - DescribeNatFirewallPrecheckDetailRequest
 //
@@ -10057,7 +10601,7 @@ func (client *Client) DescribeNatFirewallPrecheckDetail(request *DescribeNatFire
 
 // Summary:
 //
-// 获取NAT防火墙配额
+// Retrieves the quotas for a NAT firewall.
 //
 // @param request - DescribeNatFirewallQuotaRequest
 //
@@ -10097,7 +10641,7 @@ func (client *Client) DescribeNatFirewallQuotaWithOptions(request *DescribeNatFi
 
 // Summary:
 //
-// 获取NAT防火墙配额
+// Retrieves the quotas for a NAT firewall.
 //
 // @param request - DescribeNatFirewallQuotaRequest
 //
@@ -10115,7 +10659,7 @@ func (client *Client) DescribeNatFirewallQuota(request *DescribeNatFirewallQuota
 
 // Summary:
 //
-// 查询NAT防火墙时间点流量详情列表
+// Queries the top traffic data of a NAT firewall at a specific point in time.
 //
 // @param request - DescribeNatFirewallTimeTopRequest
 //
@@ -10155,7 +10699,7 @@ func (client *Client) DescribeNatFirewallTimeTopWithOptions(request *DescribeNat
 
 // Summary:
 //
-// 查询NAT防火墙时间点流量详情列表
+// Queries the top traffic data of a NAT firewall at a specific point in time.
 //
 // @param request - DescribeNatFirewallTimeTopRequest
 //
@@ -10173,7 +10717,7 @@ func (client *Client) DescribeNatFirewallTimeTop(request *DescribeNatFirewallTim
 
 // Summary:
 //
-// Queries the traffic trend of NAT gateways.
+// Overview: NAT Traffic Trend
 //
 // @param request - DescribeNatFirewallTrafficTrendRequest
 //
@@ -10213,7 +10757,7 @@ func (client *Client) DescribeNatFirewallTrafficTrendWithOptions(request *Descri
 
 // Summary:
 //
-// Queries the traffic trend of NAT gateways.
+// Overview: NAT Traffic Trend
 //
 // @param request - DescribeNatFirewallTrafficTrendRequest
 //
@@ -10231,7 +10775,7 @@ func (client *Client) DescribeNatFirewallTrafficTrend(request *DescribeNatFirewa
 
 // Summary:
 //
-// 获取网络实例列表
+// Queries a list of network instances.
 //
 // @param request - DescribeNetworkInstanceListRequest
 //
@@ -10287,7 +10831,7 @@ func (client *Client) DescribeNetworkInstanceListWithOptions(request *DescribeNe
 
 // Summary:
 //
-// 获取网络实例列表
+// Queries a list of network instances.
 //
 // @param request - DescribeNetworkInstanceListRequest
 //
@@ -10305,7 +10849,7 @@ func (client *Client) DescribeNetworkInstanceList(request *DescribeNetworkInstan
 
 // Summary:
 //
-// 获取网络实例关系列表
+// Queries the relationships between network instances.
 //
 // @param request - DescribeNetworkInstanceRelationListRequest
 //
@@ -10369,7 +10913,7 @@ func (client *Client) DescribeNetworkInstanceRelationListWithOptions(request *De
 
 // Summary:
 //
-// 获取网络实例关系列表
+// Queries the relationships between network instances.
 //
 // @param request - DescribeNetworkInstanceRelationListRequest
 //
@@ -10387,7 +10931,7 @@ func (client *Client) DescribeNetworkInstanceRelationList(request *DescribeNetwo
 
 // Summary:
 //
-// 获取网络流量TOP环比
+// Queries the ratio of the top network traffic.
 //
 // @param request - DescribeNetworkTrafficTopRatioRequest
 //
@@ -10503,7 +11047,7 @@ func (client *Client) DescribeNetworkTrafficTopRatioWithOptions(request *Describ
 
 // Summary:
 //
-// 获取网络流量TOP环比
+// Queries the ratio of the top network traffic.
 //
 // @param request - DescribeNetworkTrafficTopRatioRequest
 //
@@ -10521,7 +11065,7 @@ func (client *Client) DescribeNetworkTrafficTopRatio(request *DescribeNetworkTra
 
 // Summary:
 //
-// 获取公网IP通过的源状态
+// Retrieves statistics about access sources for public IP addresses.
 //
 // @param request - DescribeOpenIpAccessSrcStatRequest
 //
@@ -10581,7 +11125,7 @@ func (client *Client) DescribeOpenIpAccessSrcStatWithOptions(request *DescribeOp
 
 // Summary:
 //
-// 获取公网IP通过的源状态
+// Retrieves statistics about access sources for public IP addresses.
 //
 // @param request - DescribeOpenIpAccessSrcStatRequest
 //
@@ -10599,7 +11143,7 @@ func (client *Client) DescribeOpenIpAccessSrcStat(request *DescribeOpenIpAccessS
 
 // Summary:
 //
-// 获取外联资产列表
+// Retrieves a list of assets with outbound connections.
 //
 // @param request - DescribeOutgoingAssetListRequest
 //
@@ -10707,7 +11251,7 @@ func (client *Client) DescribeOutgoingAssetListWithOptions(request *DescribeOutg
 
 // Summary:
 //
-// 获取外联资产列表
+// Retrieves a list of assets with outbound connections.
 //
 // @param request - DescribeOutgoingAssetListRequest
 //
@@ -10725,7 +11269,7 @@ func (client *Client) DescribeOutgoingAssetList(request *DescribeOutgoingAssetLi
 
 // Summary:
 //
-// 获取外联目的
+// This operation queries outbound destinations.
 //
 // @param request - DescribeOutgoingDestinationRequest
 //
@@ -10841,7 +11385,7 @@ func (client *Client) DescribeOutgoingDestinationWithOptions(request *DescribeOu
 
 // Summary:
 //
-// 获取外联目的
+// This operation queries outbound destinations.
 //
 // @param request - DescribeOutgoingDestinationRequest
 //
@@ -10859,7 +11403,7 @@ func (client *Client) DescribeOutgoingDestination(request *DescribeOutgoingDesti
 
 // Summary:
 //
-// 获取外联目的分类
+// Queries the categories of outbound connection destinations.
 //
 // @param request - DescribeOutgoingDestinationCategoryRequest
 //
@@ -10931,7 +11475,7 @@ func (client *Client) DescribeOutgoingDestinationCategoryWithOptions(request *De
 
 // Summary:
 //
-// 获取外联目的分类
+// Queries the categories of outbound connection destinations.
 //
 // @param request - DescribeOutgoingDestinationCategoryRequest
 //
@@ -10949,7 +11493,7 @@ func (client *Client) DescribeOutgoingDestinationCategory(request *DescribeOutgo
 
 // Summary:
 //
-// # Get details of outgoing destination IPs
+// Displays the destination IP of an active outbound connection.
 //
 // @param request - DescribeOutgoingDestinationIPRequest
 //
@@ -11045,7 +11589,7 @@ func (client *Client) DescribeOutgoingDestinationIPWithOptions(request *Describe
 
 // Summary:
 //
-// # Get details of outgoing destination IPs
+// Displays the destination IP of an active outbound connection.
 //
 // @param request - DescribeOutgoingDestinationIPRequest
 //
@@ -11063,7 +11607,7 @@ func (client *Client) DescribeOutgoingDestinationIP(request *DescribeOutgoingDes
 
 // Summary:
 //
-// 获取外联目的IP详情
+// Retrieves the details of an outbound destination IP address.
 //
 // @param request - DescribeOutgoingDestinationIPDetailRequest
 //
@@ -11167,7 +11711,7 @@ func (client *Client) DescribeOutgoingDestinationIPDetailWithOptions(request *De
 
 // Summary:
 //
-// 获取外联目的IP详情
+// Retrieves the details of an outbound destination IP address.
 //
 // @param request - DescribeOutgoingDestinationIPDetailRequest
 //
@@ -11185,7 +11729,7 @@ func (client *Client) DescribeOutgoingDestinationIPDetail(request *DescribeOutgo
 
 // Summary:
 //
-// Queries the information about the domain names in outbound connections.
+// Retrieves information about outbound domain names.
 //
 // @param request - DescribeOutgoingDomainRequest
 //
@@ -11277,7 +11821,7 @@ func (client *Client) DescribeOutgoingDomainWithOptions(request *DescribeOutgoin
 
 // Summary:
 //
-// Queries the information about the domain names in outbound connections.
+// Retrieves information about outbound domain names.
 //
 // @param request - DescribeOutgoingDomainRequest
 //
@@ -11295,7 +11839,7 @@ func (client *Client) DescribeOutgoingDomain(request *DescribeOutgoingDomainRequ
 
 // Summary:
 //
-// 获取外联域名详情
+// Retrieves details about an outbound domain.
 //
 // @param request - DescribeOutgoingDomainDetailRequest
 //
@@ -11403,7 +11947,7 @@ func (client *Client) DescribeOutgoingDomainDetailWithOptions(request *DescribeO
 
 // Summary:
 //
-// 获取外联域名详情
+// Retrieves details about an outbound domain.
 //
 // @param request - DescribeOutgoingDomainDetailRequest
 //
@@ -11421,7 +11965,7 @@ func (client *Client) DescribeOutgoingDomainDetail(request *DescribeOutgoingDoma
 
 // Summary:
 //
-// 获取外联风险域名与IP数
+// Queries the number of intrusion prevention threats.
 //
 // @param request - DescribeOutgoingRiskDomainAndIpCountRequest
 //
@@ -11461,7 +12005,7 @@ func (client *Client) DescribeOutgoingRiskDomainAndIpCountWithOptions(request *D
 
 // Summary:
 //
-// 获取外联风险域名与IP数
+// Queries the number of intrusion prevention threats.
 //
 // @param request - DescribeOutgoingRiskDomainAndIpCountRequest
 //
@@ -11479,7 +12023,7 @@ func (client *Client) DescribeOutgoingRiskDomainAndIpCount(request *DescribeOutg
 
 // Summary:
 //
-// 获取外联风险趋势图
+// Queries the trend of outgoing connection threats.
 //
 // @param request - DescribeOutgoingRiskTrendRequest
 //
@@ -11539,7 +12083,7 @@ func (client *Client) DescribeOutgoingRiskTrendWithOptions(request *DescribeOutg
 
 // Summary:
 //
-// 获取外联风险趋势图
+// Queries the trend of outgoing connection threats.
 //
 // @param request - DescribeOutgoingRiskTrendRequest
 //
@@ -11557,7 +12101,7 @@ func (client *Client) DescribeOutgoingRiskTrend(request *DescribeOutgoingRiskTre
 
 // Summary:
 //
-// 获取外联统计
+// Retrieves outbound connection statistics.
 //
 // @param request - DescribeOutgoingStatisticRequest
 //
@@ -11617,7 +12161,7 @@ func (client *Client) DescribeOutgoingStatisticWithOptions(request *DescribeOutg
 
 // Summary:
 //
-// 获取外联统计
+// Retrieves outbound connection statistics.
 //
 // @param request - DescribeOutgoingStatisticRequest
 //
@@ -11635,7 +12179,13 @@ func (client *Client) DescribeOutgoingStatistic(request *DescribeOutgoingStatist
 
 // Summary:
 //
-// 获取外联标签
+// Queries outbound connection tags.
+//
+// Description:
+//
+// ## QPS limit
+//
+// The queries per second (QPS) limit for this operation is 10 per user. If you exceed the limit, API calls are throttled, which may affect your business. We recommend that you call this operation at a reasonable rate.
 //
 // @param request - DescribeOutgoingTagRequest
 //
@@ -11703,7 +12253,13 @@ func (client *Client) DescribeOutgoingTagWithOptions(request *DescribeOutgoingTa
 
 // Summary:
 //
-// 获取外联标签
+// Queries outbound connection tags.
+//
+// Description:
+//
+// ## QPS limit
+//
+// The queries per second (QPS) limit for this operation is 10 per user. If you exceed the limit, API calls are throttled, which may affect your business. We recommend that you call this operation at a reasonable rate.
 //
 // @param request - DescribeOutgoingTagRequest
 //
@@ -11723,7 +12279,13 @@ func (client *Client) DescribeOutgoingTag(request *DescribeOutgoingTagRequest) (
 //
 // Summary:
 //
-// 获取文档
+// Queries the frequently asked questions (FAQ) for a page.
+//
+// Description:
+//
+// ## QPS limit
+//
+// The queries per second (QPS) limit for this operation is 10 for each user. If you exceed the limit, API calls are throttled. This can affect your business. Plan your calls accordingly.
 //
 // @param request - DescribePageDocumentsRequest
 //
@@ -11789,7 +12351,13 @@ func (client *Client) DescribePageDocumentsWithOptions(request *DescribePageDocu
 //
 // Summary:
 //
-// 获取文档
+// Queries the frequently asked questions (FAQ) for a page.
+//
+// Description:
+//
+// ## QPS limit
+//
+// The queries per second (QPS) limit for this operation is 10 for each user. If you exceed the limit, API calls are throttled. This can affect your business. Plan your calls accordingly.
 //
 // @param request - DescribePageDocumentsRequest
 //
@@ -11808,15 +12376,15 @@ func (client *Client) DescribePageDocuments(request *DescribePageDocumentsReques
 
 // Summary:
 //
-// Queries whether the strict mode is enabled for an access control policy.
+// Queries the status of strict mode for access control policies.
 //
 // Description:
 //
-// You can call the DescribePolicyAdvancedConfig operation to query whether the strict mode is enabled for an access control policy.
+// You can call this operation to query the status of strict mode for access control policies.
 //
-// ## Limits
+// ## QPS limits
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// This operation is limited to 10 queries per second (QPS) for each user. API calls that exceed this limit are throttled, which may affect your business. Plan your calls accordingly.
 //
 // @param request - DescribePolicyAdvancedConfigRequest
 //
@@ -11868,15 +12436,15 @@ func (client *Client) DescribePolicyAdvancedConfigWithOptions(request *DescribeP
 
 // Summary:
 //
-// Queries whether the strict mode is enabled for an access control policy.
+// Queries the status of strict mode for access control policies.
 //
 // Description:
 //
-// You can call the DescribePolicyAdvancedConfig operation to query whether the strict mode is enabled for an access control policy.
+// You can call this operation to query the status of strict mode for access control policies.
 //
-// ## Limits
+// ## QPS limits
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// This operation is limited to 10 queries per second (QPS) for each user. API calls that exceed this limit are throttled, which may affect your business. Plan your calls accordingly.
 //
 // @param request - DescribePolicyAdvancedConfigRequest
 //
@@ -11894,15 +12462,15 @@ func (client *Client) DescribePolicyAdvancedConfig(request *DescribePolicyAdvanc
 
 // Summary:
 //
-// Queries the priority range of access control policies.
+// Queries the effective priority range of access control policies.
 //
 // Description:
 //
-// You can call this operation to query the priority range of the access control policies that match specific query conditions.
+// This operation queries the effective priority range of access control policies for inbound and outbound traffic.
 //
-// ## [](#qps-)Limits
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The QPS limit for this operation is 10 requests per second per user. Calls that exceed this limit are throttled, which may affect your business. Plan your calls accordingly.
 //
 // @param request - DescribePolicyPriorUsedRequest
 //
@@ -11958,15 +12526,15 @@ func (client *Client) DescribePolicyPriorUsedWithOptions(request *DescribePolicy
 
 // Summary:
 //
-// Queries the priority range of access control policies.
+// Queries the effective priority range of access control policies.
 //
 // Description:
 //
-// You can call this operation to query the priority range of the access control policies that match specific query conditions.
+// This operation queries the effective priority range of access control policies for inbound and outbound traffic.
 //
-// ## [](#qps-)Limits
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The QPS limit for this operation is 10 requests per second per user. Calls that exceed this limit are throttled, which may affect your business. Plan your calls accordingly.
 //
 // @param request - DescribePolicyPriorUsedRequest
 //
@@ -11984,7 +12552,7 @@ func (client *Client) DescribePolicyPriorUsed(request *DescribePolicyPriorUsedRe
 
 // Summary:
 //
-// 按量付费是否开启过防护
+// Queries the status of pay-as-you-go protection.
 //
 // @param request - DescribePostpayEnabledProtectionRequest
 //
@@ -12024,7 +12592,7 @@ func (client *Client) DescribePostpayEnabledProtectionWithOptions(request *Descr
 
 // Summary:
 //
-// 按量付费是否开启过防护
+// Queries the status of pay-as-you-go protection.
 //
 // @param request - DescribePostpayEnabledProtectionRequest
 //
@@ -12042,11 +12610,11 @@ func (client *Client) DescribePostpayEnabledProtection(request *DescribePostpayE
 
 // Summary:
 //
-// Queries the details of traffic billed based on the pay-as-you-go billing method.
+// Queries traffic details for pay-as-you-go billing.
 //
 // Description:
 //
-// If you use Cloud Firewall that uses the pay-as-you-go billing method, you can call this operation to query traffic details accurate to the granularity of specific resource instances. If you use Cloud Firewall that uses the subscription billing method, you can call this operation to query the overall traffic details.
+// For pay-as-you-go users, details are provided at the instance level. For subscription users, only overall queries are supported.
 //
 // @param request - DescribePostpayTrafficDetailRequest
 //
@@ -12122,11 +12690,11 @@ func (client *Client) DescribePostpayTrafficDetailWithOptions(request *DescribeP
 
 // Summary:
 //
-// Queries the details of traffic billed based on the pay-as-you-go billing method.
+// Queries traffic details for pay-as-you-go billing.
 //
 // Description:
 //
-// If you use Cloud Firewall that uses the pay-as-you-go billing method, you can call this operation to query traffic details accurate to the granularity of specific resource instances. If you use Cloud Firewall that uses the subscription billing method, you can call this operation to query the overall traffic details.
+// For pay-as-you-go users, details are provided at the instance level. For subscription users, only overall queries are supported.
 //
 // @param request - DescribePostpayTrafficDetailRequest
 //
@@ -12144,11 +12712,11 @@ func (client *Client) DescribePostpayTrafficDetail(request *DescribePostpayTraff
 
 // Summary:
 //
-// Queries the total volume of traffic that is billed based on the pay-as-you-go billing method, including all firewalls within the current account.
+// Queries the total pay-as-you-go traffic for all border firewalls.
 //
 // Description:
 //
-// You can call this operation to query statistics of the current Cloud Firewall from the date of purchase.
+// The statistics are for the current Cloud Firewall instance and include all data from the date of purchase.
 //
 // @param request - DescribePostpayTrafficTotalRequest
 //
@@ -12192,11 +12760,11 @@ func (client *Client) DescribePostpayTrafficTotalWithOptions(request *DescribePo
 
 // Summary:
 //
-// Queries the total volume of traffic that is billed based on the pay-as-you-go billing method, including all firewalls within the current account.
+// Queries the total pay-as-you-go traffic for all border firewalls.
 //
 // Description:
 //
-// You can call this operation to query statistics of the current Cloud Firewall from the date of purchase.
+// The statistics are for the current Cloud Firewall instance and include all data from the date of purchase.
 //
 // @param request - DescribePostpayTrafficTotalRequest
 //
@@ -12214,7 +12782,7 @@ func (client *Client) DescribePostpayTrafficTotal(request *DescribePostpayTraffi
 
 // Summary:
 //
-// Queries the status of the Internet Firewall feature in Cloud Firewall that uses the pay-as-you-go billing method.
+// Queries the status of the Internet Border firewall for a pay-as-you-go instance.
 //
 // @param request - DescribePostpayUserInternetStatusRequest
 //
@@ -12254,7 +12822,7 @@ func (client *Client) DescribePostpayUserInternetStatusWithOptions(request *Desc
 
 // Summary:
 //
-// Queries the status of the Internet Firewall feature in Cloud Firewall that uses the pay-as-you-go billing method.
+// Queries the status of the Internet Border firewall for a pay-as-you-go instance.
 //
 // @param request - DescribePostpayUserInternetStatusRequest
 //
@@ -12272,7 +12840,7 @@ func (client *Client) DescribePostpayUserInternetStatus(request *DescribePostpay
 
 // Summary:
 //
-// Queries the status of the NAT Firewall feature in Cloud Firewall that use the pay-as-you-go billing method.
+// Queries the NAT border firewall status for a pay-as-you-go Cloud Firewall.
 //
 // @param request - DescribePostpayUserNatStatusRequest
 //
@@ -12312,7 +12880,7 @@ func (client *Client) DescribePostpayUserNatStatusWithOptions(request *DescribeP
 
 // Summary:
 //
-// Queries the status of the NAT Firewall feature in Cloud Firewall that use the pay-as-you-go billing method.
+// Queries the NAT border firewall status for a pay-as-you-go Cloud Firewall.
 //
 // @param request - DescribePostpayUserNatStatusRequest
 //
@@ -12330,7 +12898,7 @@ func (client *Client) DescribePostpayUserNatStatus(request *DescribePostpayUserN
 
 // Summary:
 //
-// Queries the status of the virtual private cloud (VPC) Firewall feature in Cloud Firewall that uses the pay-as-you-go billing method.
+// Queries the VPC border firewall status for a pay-as-you-go user.
 //
 // @param request - DescribePostpayUserVpcStatusRequest
 //
@@ -12370,7 +12938,7 @@ func (client *Client) DescribePostpayUserVpcStatusWithOptions(request *DescribeP
 
 // Summary:
 //
-// Queries the status of the virtual private cloud (VPC) Firewall feature in Cloud Firewall that uses the pay-as-you-go billing method.
+// Queries the VPC border firewall status for a pay-as-you-go user.
 //
 // @param request - DescribePostpayUserVpcStatusRequest
 //
@@ -12388,7 +12956,7 @@ func (client *Client) DescribePostpayUserVpcStatus(request *DescribePostpayUserV
 
 // Summary:
 //
-// Queries prefix lists.
+// Describes one or more prefix lists.
 //
 // @param request - DescribePrefixListsRequest
 //
@@ -12428,7 +12996,7 @@ func (client *Client) DescribePrefixListsWithOptions(request *DescribePrefixList
 
 // Summary:
 //
-// Queries prefix lists.
+// Describes one or more prefix lists.
 //
 // @param request - DescribePrefixListsRequest
 //
@@ -12446,7 +13014,11 @@ func (client *Client) DescribePrefixLists(request *DescribePrefixListsRequest) (
 
 // Summary:
 //
-// 查询私网DNS域名列表
+// Queries a list of private DNS domain names.
+//
+// Description:
+//
+// Queries the list of domain names that use a private DNS endpoint for domain name resolution.
 //
 // @param request - DescribePrivateDnsDomainNameListRequest
 //
@@ -12486,7 +13058,11 @@ func (client *Client) DescribePrivateDnsDomainNameListWithOptions(request *Descr
 
 // Summary:
 //
-// 查询私网DNS域名列表
+// Queries a list of private DNS domain names.
+//
+// Description:
+//
+// Queries the list of domain names that use a private DNS endpoint for domain name resolution.
 //
 // @param request - DescribePrivateDnsDomainNameListRequest
 //
@@ -12504,7 +13080,11 @@ func (client *Client) DescribePrivateDnsDomainNameList(request *DescribePrivateD
 
 // Summary:
 //
-// 查询私网DNS终端节点详情
+// Retrieves the details of a private DNS endpoint.
+//
+// Description:
+//
+// This operation queries the details of a private DNS endpoint.
 //
 // @param request - DescribePrivateDnsEndpointDetailRequest
 //
@@ -12544,7 +13124,11 @@ func (client *Client) DescribePrivateDnsEndpointDetailWithOptions(request *Descr
 
 // Summary:
 //
-// 查询私网DNS终端节点详情
+// Retrieves the details of a private DNS endpoint.
+//
+// Description:
+//
+// This operation queries the details of a private DNS endpoint.
 //
 // @param request - DescribePrivateDnsEndpointDetailRequest
 //
@@ -12562,7 +13146,7 @@ func (client *Client) DescribePrivateDnsEndpointDetail(request *DescribePrivateD
 
 // Summary:
 //
-// 查询私网DNS终端节点列表
+// Queries a list of private DNS endpoints.
 //
 // @param request - DescribePrivateDnsEndpointListRequest
 //
@@ -12602,7 +13186,7 @@ func (client *Client) DescribePrivateDnsEndpointListWithOptions(request *Describ
 
 // Summary:
 //
-// 查询私网DNS终端节点列表
+// Queries a list of private DNS endpoints.
 //
 // @param request - DescribePrivateDnsEndpointListRequest
 //
@@ -12620,7 +13204,7 @@ func (client *Client) DescribePrivateDnsEndpointList(request *DescribePrivateDns
 
 // Summary:
 //
-// 查询私有DNS的统计信息
+// Returns statistics about private DNS.
 //
 // @param request - DescribePrivateDnsStatisticsRequest
 //
@@ -12668,7 +13252,7 @@ func (client *Client) DescribePrivateDnsStatisticsWithOptions(request *DescribeP
 
 // Summary:
 //
-// 查询私有DNS的统计信息
+// Returns statistics about private DNS.
 //
 // @param request - DescribePrivateDnsStatisticsRequest
 //
@@ -12686,7 +13270,13 @@ func (client *Client) DescribePrivateDnsStatistics(request *DescribePrivateDnsSt
 
 // Summary:
 //
-// 获取地域信息
+// Retrieves information about regions.
+//
+// Description:
+//
+// ## QPS limit
+//
+// The queries per second (QPS) limit for this API is 10 for each user. If you exceed the limit, API calls are throttled, which can affect your business. Call this API at a reasonable rate.
 //
 // @param request - DescribeRegionInfoRequest
 //
@@ -12742,7 +13332,13 @@ func (client *Client) DescribeRegionInfoWithOptions(request *DescribeRegionInfoR
 
 // Summary:
 //
-// 获取地域信息
+// Retrieves information about regions.
+//
+// Description:
+//
+// ## QPS limit
+//
+// The queries per second (QPS) limit for this API is 10 for each user. If you exceed the limit, API calls are throttled, which can affect your business. Call this API at a reasonable rate.
 //
 // @param request - DescribeRegionInfoRequest
 //
@@ -12760,7 +13356,15 @@ func (client *Client) DescribeRegionInfo(request *DescribeRegionInfoRequest) (_r
 
 // Summary:
 //
-// 查询地域和资产类型引流设置
+// Queries the traffic redirection settings for a region and resource type.
+//
+// Description:
+//
+// This operation retrieves DNS resolution results for a domain name. It supports only Alibaba Cloud DNS. To obtain resolution results, the domain name must use Alibaba Cloud DNS.
+//
+// ## QPS limit
+//
+// You can make up to 10 API calls per second. Exceeding this limit triggers throttling, which may affect your business. Call this operation at a reasonable rate.
 //
 // @param request - DescribeRegionResourceTypeAutoEnableRequest
 //
@@ -12804,7 +13408,15 @@ func (client *Client) DescribeRegionResourceTypeAutoEnableWithOptions(request *D
 
 // Summary:
 //
-// 查询地域和资产类型引流设置
+// Queries the traffic redirection settings for a region and resource type.
+//
+// Description:
+//
+// This operation retrieves DNS resolution results for a domain name. It supports only Alibaba Cloud DNS. To obtain resolution results, the domain name must use Alibaba Cloud DNS.
+//
+// ## QPS limit
+//
+// You can make up to 10 API calls per second. Exceeding this limit triggers throttling, which may affect your business. Call this operation at a reasonable rate.
 //
 // @param request - DescribeRegionResourceTypeAutoEnableRequest
 //
@@ -12822,7 +13434,15 @@ func (client *Client) DescribeRegionResourceTypeAutoEnable(request *DescribeRegi
 
 // Summary:
 //
-// 查询资产类型默认引流
+// Queries the default traffic redirection settings for an asset type.
+//
+// Description:
+//
+// You can call this operation to obtain the DNS resolution result for a domain name. You can obtain resolution results only for domain names that use Alibaba Cloud DNS.
+//
+// ## QPS limits
+//
+// The queries per second (QPS) limit for this operation is 10 for a single user. If you exceed this limit, API calls are throttled. This may affect your business. We recommend that you call this operation at a reasonable rate.
 //
 // @param request - DescribeResourceTypeAutoEnableRequest
 //
@@ -12866,7 +13486,15 @@ func (client *Client) DescribeResourceTypeAutoEnableWithOptions(request *Describ
 
 // Summary:
 //
-// 查询资产类型默认引流
+// Queries the default traffic redirection settings for an asset type.
+//
+// Description:
+//
+// You can call this operation to obtain the DNS resolution result for a domain name. You can obtain resolution results only for domain names that use Alibaba Cloud DNS.
+//
+// ## QPS limits
+//
+// The queries per second (QPS) limit for this operation is 10 for a single user. If you exceed this limit, API calls are throttled. This may affect your business. We recommend that you call this operation at a reasonable rate.
 //
 // @param request - DescribeResourceTypeAutoEnableRequest
 //
@@ -12884,15 +13512,15 @@ func (client *Client) DescribeResourceTypeAutoEnable(request *DescribeResourceTy
 
 // Summary:
 //
-// Queries the details of intrusion events.
+// Retrieves the details of intrusion prevention events.
 //
 // Description:
 //
-// You can call the DescribeRiskEventGroup operation to query and download the details of intrusion events. We recommend that you query the details of 5 to 10 intrusion events at a time. If you do not need to query the geographical information about IP addresses, you can set the NoLocation parameter to true to prevent query timeout.
+// You can use this operation to query and download the details of intrusion prevention events. We recommend querying 5 to 10 entries at a time. To prevent query timeouts, set the NoLocation parameter to true if you do not need IP geolocation information.
 //
-// ## Limits
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The queries per second (QPS) limit for a single user is 10. If you exceed the limit, your API calls are throttled. This may affect your business. Make calls to this operation at a reasonable rate.
 //
 // @param request - DescribeRiskEventGroupRequest
 //
@@ -13032,15 +13660,15 @@ func (client *Client) DescribeRiskEventGroupWithOptions(request *DescribeRiskEve
 
 // Summary:
 //
-// Queries the details of intrusion events.
+// Retrieves the details of intrusion prevention events.
 //
 // Description:
 //
-// You can call the DescribeRiskEventGroup operation to query and download the details of intrusion events. We recommend that you query the details of 5 to 10 intrusion events at a time. If you do not need to query the geographical information about IP addresses, you can set the NoLocation parameter to true to prevent query timeout.
+// You can use this operation to query and download the details of intrusion prevention events. We recommend querying 5 to 10 entries at a time. To prevent query timeouts, set the NoLocation parameter to true if you do not need IP geolocation information.
 //
-// ## Limits
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The queries per second (QPS) limit for a single user is 10. If you exceed the limit, your API calls are throttled. This may affect your business. Make calls to this operation at a reasonable rate.
 //
 // @param request - DescribeRiskEventGroupRequest
 //
@@ -13152,7 +13780,7 @@ func (client *Client) DescribeRiskEventPayload(request *DescribeRiskEventPayload
 
 // Summary:
 //
-// 获取风险事件统计
+// Provides statistics for intrusion prevention events.
 //
 // @param request - DescribeRiskEventStatisticRequest
 //
@@ -13224,7 +13852,7 @@ func (client *Client) DescribeRiskEventStatisticWithOptions(request *DescribeRis
 
 // Summary:
 //
-// 获取风险事件统计
+// Provides statistics for intrusion prevention events.
 //
 // @param request - DescribeRiskEventStatisticRequest
 //
@@ -13242,7 +13870,7 @@ func (client *Client) DescribeRiskEventStatistic(request *DescribeRiskEventStati
 
 // Summary:
 //
-// 获取Top风险事件攻击APP
+// Retrieves the ranking of applications that are targeted by intrusion prevention attacks.
 //
 // @param request - DescribeRiskEventTopAttackAppRequest
 //
@@ -13314,7 +13942,7 @@ func (client *Client) DescribeRiskEventTopAttackAppWithOptions(request *Describe
 
 // Summary:
 //
-// 获取Top风险事件攻击APP
+// Retrieves the ranking of applications that are targeted by intrusion prevention attacks.
 //
 // @param request - DescribeRiskEventTopAttackAppRequest
 //
@@ -13332,7 +13960,13 @@ func (client *Client) DescribeRiskEventTopAttackApp(request *DescribeRiskEventTo
 
 // Summary:
 //
-// 获取Top风险事件资产
+// Queries the top assets targeted by attacks.
+//
+// Description:
+//
+// ## QPS limits
+//
+// You can make up to 10 queries per second (QPS) to this API. If you exceed this limit, your API calls are throttled. This may affect your business. Plan your calls accordingly.
 //
 // @param request - DescribeRiskEventTopAttackAssetRequest
 //
@@ -13404,7 +14038,13 @@ func (client *Client) DescribeRiskEventTopAttackAssetWithOptions(request *Descri
 
 // Summary:
 //
-// 获取Top风险事件资产
+// Queries the top assets targeted by attacks.
+//
+// Description:
+//
+// ## QPS limits
+//
+// You can make up to 10 queries per second (QPS) to this API. If you exceed this limit, your API calls are throttled. This may affect your business. Plan your calls accordingly.
 //
 // @param request - DescribeRiskEventTopAttackAssetRequest
 //
@@ -13422,7 +14062,7 @@ func (client *Client) DescribeRiskEventTopAttackAsset(request *DescribeRiskEvent
 
 // Summary:
 //
-// 获取Top风险事件类型
+// Retrieves a ranked list of attack types from intrusion prevention events.
 //
 // @param request - DescribeRiskEventTopAttackTypeRequest
 //
@@ -13486,7 +14126,7 @@ func (client *Client) DescribeRiskEventTopAttackTypeWithOptions(request *Describ
 
 // Summary:
 //
-// 获取Top风险事件类型
+// Retrieves a ranked list of attack types from intrusion prevention events.
 //
 // @param request - DescribeRiskEventTopAttackTypeRequest
 //
@@ -13506,7 +14146,7 @@ func (client *Client) DescribeRiskEventTopAttackType(request *DescribeRiskEventT
 //
 // Summary:
 //
-// 获取风险安全组详情
+// Retrieves the details of a risk security group.
 //
 // @param request - DescribeRiskSecurityGroupDetailRequest
 //
@@ -13584,7 +14224,7 @@ func (client *Client) DescribeRiskSecurityGroupDetailWithOptions(request *Descri
 //
 // Summary:
 //
-// 获取风险安全组详情
+// Retrieves the details of a risk security group.
 //
 // @param request - DescribeRiskSecurityGroupDetailRequest
 //
@@ -13603,7 +14243,7 @@ func (client *Client) DescribeRiskSecurityGroupDetail(request *DescribeRiskSecur
 
 // Summary:
 //
-// 获取数据泄露的敏感数据事件列表
+// Retrieves the details of a data leak event.
 //
 // @param request - DescribeSdlEventDetailRequest
 //
@@ -13675,7 +14315,7 @@ func (client *Client) DescribeSdlEventDetailWithOptions(request *DescribeSdlEven
 
 // Summary:
 //
-// 获取数据泄露的敏感数据事件列表
+// Retrieves the details of a data leak event.
 //
 // @param request - DescribeSdlEventDetailRequest
 //
@@ -13693,7 +14333,7 @@ func (client *Client) DescribeSdlEventDetail(request *DescribeSdlEventDetailRequ
 
 // Summary:
 //
-// 获取数据泄露事件列表
+// Query data breach events.
 //
 // @param request - DescribeSdlEventListRequest
 //
@@ -13785,7 +14425,7 @@ func (client *Client) DescribeSdlEventListWithOptions(request *DescribeSdlEventL
 
 // Summary:
 //
-// 获取数据泄露事件列表
+// Query data breach events.
 //
 // @param request - DescribeSdlEventListRequest
 //
@@ -13803,7 +14443,7 @@ func (client *Client) DescribeSdlEventList(request *DescribeSdlEventListRequest)
 
 // Summary:
 //
-// 获取数据泄露的敏感数据列表
+// Retrieves the list of sensitive data from a data breach.
 //
 // @param request - DescribeSdlEventSdListRequest
 //
@@ -13875,7 +14515,7 @@ func (client *Client) DescribeSdlEventSdListWithOptions(request *DescribeSdlEven
 
 // Summary:
 //
-// 获取数据泄露的敏感数据列表
+// Retrieves the list of sensitive data from a data breach.
 //
 // @param request - DescribeSdlEventSdListRequest
 //
@@ -13893,7 +14533,7 @@ func (client *Client) DescribeSdlEventSdList(request *DescribeSdlEventSdListRequ
 
 // Summary:
 //
-// 获取数据泄露事件统计数据
+// Queries statistics about data leaks.
 //
 // @param request - DescribeSdlEventStatisticRequest
 //
@@ -13945,7 +14585,7 @@ func (client *Client) DescribeSdlEventStatisticWithOptions(request *DescribeSdlE
 
 // Summary:
 //
-// 获取数据泄露事件统计数据
+// Queries statistics about data leaks.
 //
 // @param request - DescribeSdlEventStatisticRequest
 //
@@ -13963,7 +14603,7 @@ func (client *Client) DescribeSdlEventStatistic(request *DescribeSdlEventStatist
 
 // Summary:
 //
-// 获取数据泄露事件类型分布/资产TOP/目的TOP
+// Retrieves the details of sensitive data.
 //
 // @param request - DescribeSdlStatisticRequest
 //
@@ -14015,7 +14655,7 @@ func (client *Client) DescribeSdlStatisticWithOptions(request *DescribeSdlStatis
 
 // Summary:
 //
-// 获取数据泄露事件类型分布/资产TOP/目的TOP
+// Retrieves the details of sensitive data.
 //
 // @param request - DescribeSdlStatisticRequest
 //
@@ -14033,7 +14673,15 @@ func (client *Client) DescribeSdlStatistic(request *DescribeSdlStatisticRequest)
 
 // Summary:
 //
-// 获取安全模式
+// Queries the settings of the safe mode.
+//
+// Description:
+//
+// You can use this operation to query the safe mode of Cloud Firewall.
+//
+// ## QPS limits
+//
+// This operation is limited to 10 queries per second (QPS) for each user. If you exceed this limit, your API calls are throttled. Throttling can affect your business operations. We recommend that you plan your API calls accordingly.
 //
 // @param request - DescribeSecurityModeRequest
 //
@@ -14081,7 +14729,15 @@ func (client *Client) DescribeSecurityModeWithOptions(request *DescribeSecurityM
 
 // Summary:
 //
-// 获取安全模式
+// Queries the settings of the safe mode.
+//
+// Description:
+//
+// You can use this operation to query the safe mode of Cloud Firewall.
+//
+// ## QPS limits
+//
+// This operation is limited to 10 queries per second (QPS) for each user. If you exceed this limit, your API calls are throttled. Throttling can affect your business operations. We recommend that you plan your API calls accordingly.
 //
 // @param request - DescribeSecurityModeRequest
 //
@@ -14101,7 +14757,7 @@ func (client *Client) DescribeSecurityMode(request *DescribeSecurityModeRequest)
 //
 // Summary:
 //
-// Queries information about NAT firewalls.
+// Retrieves the details of NAT firewalls.
 //
 // @param request - DescribeSecurityProxyRequest
 //
@@ -14187,7 +14843,7 @@ func (client *Client) DescribeSecurityProxyWithOptions(request *DescribeSecurity
 //
 // Summary:
 //
-// Queries information about NAT firewalls.
+// Retrieves the details of NAT firewalls.
 //
 // @param request - DescribeSecurityProxyRequest
 //
@@ -14206,7 +14862,7 @@ func (client *Client) DescribeSecurityProxy(request *DescribeSecurityProxyReques
 
 // Summary:
 //
-// 获取正向代理资源
+// Describes NAT firewall resources.
 //
 // @param request - DescribeSecurityProxyResourcesRequest
 //
@@ -14258,7 +14914,7 @@ func (client *Client) DescribeSecurityProxyResourcesWithOptions(request *Describ
 
 // Summary:
 //
-// 获取正向代理资源
+// Describes NAT firewall resources.
 //
 // @param request - DescribeSecurityProxyResourcesRequest
 //
@@ -14276,7 +14932,7 @@ func (client *Client) DescribeSecurityProxyResources(request *DescribeSecurityPr
 
 // Summary:
 //
-// 获取敏感数据类别开关
+// Queries the status of the sensitive data detection switch.
 //
 // @param request - DescribeSensitiveSwitchRequest
 //
@@ -14348,7 +15004,7 @@ func (client *Client) DescribeSensitiveSwitchWithOptions(request *DescribeSensit
 
 // Summary:
 //
-// 获取敏感数据类别开关
+// Queries the status of the sensitive data detection switch.
 //
 // @param request - DescribeSensitiveSwitchRequest
 //
@@ -14366,9 +15022,7 @@ func (client *Client) DescribeSensitiveSwitch(request *DescribeSensitiveSwitchRe
 
 // Summary:
 //
-// Queries the information about signature library versions.
-//
-// @param request - DescribeSignatureLibVersionRequest
+// Queries the version information of the signature library.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -14397,7 +15051,7 @@ func (client *Client) DescribeSignatureLibVersionWithOptions(runtime *dara.Runti
 
 // Summary:
 //
-// Queries the information about signature library versions.
+// Queries the version information of the signature library.
 //
 // @return DescribeSignatureLibVersionResponse
 func (client *Client) DescribeSignatureLibVersion() (_result *DescribeSignatureLibVersionResponse, _err error) {
@@ -14413,7 +15067,7 @@ func (client *Client) DescribeSignatureLibVersion() (_result *DescribeSignatureL
 
 // Summary:
 //
-// 获取用户SLR授权信息
+// Queries the authorization information of a service-linked role (SLR) for a user.
 //
 // @param request - DescribeSlrGrantRequest
 //
@@ -14461,7 +15115,7 @@ func (client *Client) DescribeSlrGrantWithOptions(request *DescribeSlrGrantReque
 
 // Summary:
 //
-// 获取用户SLR授权信息
+// Queries the authorization information of a service-linked role (SLR) for a user.
 //
 // @param request - DescribeSlrGrantRequest
 //
@@ -14479,7 +15133,7 @@ func (client *Client) DescribeSlrGrant(request *DescribeSlrGrantRequest) (_resul
 
 // Summary:
 //
-// 获取SLS开启状态
+// Queries the enabled status of Log Service (SLS).
 //
 // @param request - DescribeSlsAnalyzeOpenStatusRequest
 //
@@ -14523,7 +15177,7 @@ func (client *Client) DescribeSlsAnalyzeOpenStatusWithOptions(request *DescribeS
 
 // Summary:
 //
-// 获取SLS开启状态
+// Queries the enabled status of Log Service (SLS).
 //
 // @param request - DescribeSlsAnalyzeOpenStatusRequest
 //
@@ -14541,9 +15195,11 @@ func (client *Client) DescribeSlsAnalyzeOpenStatus(request *DescribeSlsAnalyzeOp
 
 // Summary:
 //
-// 查询威胁情报配置的信息
+// Retrieves information about threat intelligence configurations.
 //
-// @param request - DescribeThreatIntelligenceSwitchRequest
+// Description:
+//
+// This operation queries access control policies for NAT firewalls by page.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -14572,7 +15228,11 @@ func (client *Client) DescribeThreatIntelligenceSwitchWithOptions(runtime *dara.
 
 // Summary:
 //
-// 查询威胁情报配置的信息
+// Retrieves information about threat intelligence configurations.
+//
+// Description:
+//
+// This operation queries access control policies for NAT firewalls by page.
 //
 // @return DescribeThreatIntelligenceSwitchResponse
 func (client *Client) DescribeThreatIntelligenceSwitch() (_result *DescribeThreatIntelligenceSwitchResponse, _err error) {
@@ -14588,7 +15248,7 @@ func (client *Client) DescribeThreatIntelligenceSwitch() (_result *DescribeThrea
 
 // Summary:
 //
-// Queries information about the transit routers that are associated with a virtual private cloud (VPC) firewall created for a transit router.
+// You can obtain an ACL backup for a VPC firewall for a transit router.
 //
 // @param tmpReq - DescribeTrFirewallPolicyBackUpAssociationListRequest
 //
@@ -14650,7 +15310,7 @@ func (client *Client) DescribeTrFirewallPolicyBackUpAssociationListWithOptions(t
 
 // Summary:
 //
-// Queries information about the transit routers that are associated with a virtual private cloud (VPC) firewall created for a transit router.
+// You can obtain an ACL backup for a VPC firewall for a transit router.
 //
 // @param request - DescribeTrFirewallPolicyBackUpAssociationListRequest
 //
@@ -14668,7 +15328,7 @@ func (client *Client) DescribeTrFirewallPolicyBackUpAssociationList(request *Des
 
 // Summary:
 //
-// Queries the routing policies of a virtual private cloud (VPC) firewall that is created for a transit router.
+// Queries the list of routing policies for a VPC firewall for a transit router.
 //
 // @param request - DescribeTrFirewallV2RoutePolicyListRequest
 //
@@ -14728,7 +15388,7 @@ func (client *Client) DescribeTrFirewallV2RoutePolicyListWithOptions(request *De
 
 // Summary:
 //
-// Queries the routing policies of a virtual private cloud (VPC) firewall that is created for a transit router.
+// Queries the list of routing policies for a VPC firewall for a transit router.
 //
 // @param request - DescribeTrFirewallV2RoutePolicyListRequest
 //
@@ -14746,7 +15406,7 @@ func (client *Client) DescribeTrFirewallV2RoutePolicyList(request *DescribeTrFir
 
 // Summary:
 //
-// Queries the details of the virtual private cloud (VPC) firewalls that are created for transit routers.
+// Retrieves the details of a VPC firewall for a transit router.
 //
 // @param request - DescribeTrFirewallsV2DetailRequest
 //
@@ -14794,7 +15454,7 @@ func (client *Client) DescribeTrFirewallsV2DetailWithOptions(request *DescribeTr
 
 // Summary:
 //
-// Queries the details of the virtual private cloud (VPC) firewalls that are created for transit routers.
+// Retrieves the details of a VPC firewall for a transit router.
 //
 // @param request - DescribeTrFirewallsV2DetailRequest
 //
@@ -14812,7 +15472,7 @@ func (client *Client) DescribeTrFirewallsV2Detail(request *DescribeTrFirewallsV2
 
 // Summary:
 //
-// Queries the virtual private cloud (VPC) firewalls that are created for transit routers.
+// Queries the list of VPC firewalls for a transit router.
 //
 // @param request - DescribeTrFirewallsV2ListRequest
 //
@@ -14896,7 +15556,7 @@ func (client *Client) DescribeTrFirewallsV2ListWithOptions(request *DescribeTrFi
 
 // Summary:
 //
-// Queries the virtual private cloud (VPC) firewalls that are created for transit routers.
+// Queries the list of VPC firewalls for a transit router.
 //
 // @param request - DescribeTrFirewallsV2ListRequest
 //
@@ -14914,7 +15574,7 @@ func (client *Client) DescribeTrFirewallsV2List(request *DescribeTrFirewallsV2Li
 
 // Summary:
 //
-// Queries the route tables of the VPC firewalls that are created for transit routers.
+// Queries the route tables for a VPC firewall for a transit router.
 //
 // @param request - DescribeTrFirewallsV2RouteListRequest
 //
@@ -14974,7 +15634,7 @@ func (client *Client) DescribeTrFirewallsV2RouteListWithOptions(request *Describ
 
 // Summary:
 //
-// Queries the route tables of the VPC firewalls that are created for transit routers.
+// Queries the route tables for a VPC firewall for a transit router.
 //
 // @param request - DescribeTrFirewallsV2RouteListRequest
 //
@@ -14992,7 +15652,7 @@ func (client *Client) DescribeTrFirewallsV2RouteList(request *DescribeTrFirewall
 
 // Summary:
 //
-// 查询日志
+// Queries information about log traffic.
 //
 // @param request - DescribeTrafficLogRequest
 //
@@ -15127,6 +15787,10 @@ func (client *Client) DescribeTrafficLogWithOptions(request *DescribeTrafficLogR
 		query["RuleSource"] = request.RuleSource
 	}
 
+	if !dara.IsNil(request.RuleSourceFinal) {
+		query["RuleSourceFinal"] = request.RuleSourceFinal
+	}
+
 	if !dara.IsNil(request.SourceCode) {
 		query["SourceCode"] = request.SourceCode
 	}
@@ -15196,7 +15860,7 @@ func (client *Client) DescribeTrafficLogWithOptions(request *DescribeTrafficLogR
 
 // Summary:
 //
-// 查询日志
+// Queries information about log traffic.
 //
 // @param request - DescribeTrafficLogRequest
 //
@@ -15214,7 +15878,7 @@ func (client *Client) DescribeTrafficLog(request *DescribeTrafficLogRequest) (_r
 
 // Summary:
 //
-// 获取TR交换机资源列表
+// Queries a list of Transit Router resources.
 //
 // @param request - DescribeTransitRouterResourcesListRequest
 //
@@ -15282,7 +15946,7 @@ func (client *Client) DescribeTransitRouterResourcesListWithOptions(request *Des
 
 // Summary:
 //
-// 获取TR交换机资源列表
+// Queries a list of Transit Router resources.
 //
 // @param request - DescribeTransitRouterResourcesListRequest
 //
@@ -15300,7 +15964,7 @@ func (client *Client) DescribeTransitRouterResourcesList(request *DescribeTransi
 
 // Summary:
 //
-// 获取未保护的端口趋势
+// Queries the trends of unprotected ports.
 //
 // @param request - DescribeUnprotectedPortTrendRequest
 //
@@ -15360,7 +16024,7 @@ func (client *Client) DescribeUnprotectedPortTrendWithOptions(request *DescribeU
 
 // Summary:
 //
-// 获取未保护的端口趋势
+// Queries the trends of unprotected ports.
 //
 // @param request - DescribeUnprotectedPortTrendRequest
 //
@@ -15378,7 +16042,13 @@ func (client *Client) DescribeUnprotectedPortTrend(request *DescribeUnprotectedP
 
 // Summary:
 //
-// 获取未保护漏洞趋势
+// Queries the trend of unprotected vulnerabilities.
+//
+// Description:
+//
+// ## QPS limit
+//
+// The queries per second (QPS) limit for a single user is 10. If you exceed this limit, API calls are throttled, which may impact your business. We recommend that you call this operation at a reasonable rate.
 //
 // @param request - DescribeUnprotectedVulnTrendRequest
 //
@@ -15438,7 +16108,13 @@ func (client *Client) DescribeUnprotectedVulnTrendWithOptions(request *DescribeU
 
 // Summary:
 //
-// 获取未保护漏洞趋势
+// Queries the trend of unprotected vulnerabilities.
+//
+// Description:
+//
+// ## QPS limit
+//
+// The queries per second (QPS) limit for a single user is 10. If you exceed this limit, API calls are throttled, which may impact your business. We recommend that you call this operation at a reasonable rate.
 //
 // @param request - DescribeUnprotectedVulnTrendRequest
 //
@@ -15456,7 +16132,13 @@ func (client *Client) DescribeUnprotectedVulnTrend(request *DescribeUnprotectedV
 
 // Summary:
 //
-// 获取用户告警配置
+// Retrieves the user\\"s alert configuration.
+//
+// Description:
+//
+// ## QPS limit
+//
+// The QPS limit for this interface is 10 calls per second per user. Exceeding this limit throttles API calls and may affect your service. Plan your calls accordingly.
 //
 // @param request - DescribeUserAlarmConfigRequest
 //
@@ -15508,7 +16190,13 @@ func (client *Client) DescribeUserAlarmConfigWithOptions(request *DescribeUserAl
 
 // Summary:
 //
-// 获取用户告警配置
+// Retrieves the user\\"s alert configuration.
+//
+// Description:
+//
+// ## QPS limit
+//
+// The QPS limit for this interface is 10 calls per second per user. Exceeding this limit throttles API calls and may affect your service. Plan your calls accordingly.
 //
 // @param request - DescribeUserAlarmConfigRequest
 //
@@ -15528,7 +16216,7 @@ func (client *Client) DescribeUserAlarmConfig(request *DescribeUserAlarmConfigRe
 //
 // Summary:
 //
-// Queries the information about the traffic of a specified asset that belongs to your Alibaba Cloud account.
+// Queries the traffic information for a specified asset.
 //
 // @param request - DescribeUserAssetIPTrafficInfoRequest
 //
@@ -15570,7 +16258,7 @@ func (client *Client) DescribeUserAssetIPTrafficInfoWithOptions(request *Describ
 //
 // Summary:
 //
-// Queries the information about the traffic of a specified asset that belongs to your Alibaba Cloud account.
+// Queries the traffic information for a specified asset.
 //
 // @param request - DescribeUserAssetIPTrafficInfoRequest
 //
@@ -15589,15 +16277,15 @@ func (client *Client) DescribeUserAssetIPTrafficInfo(request *DescribeUserAssetI
 
 // Summary:
 //
-// Queries the edition information about Cloud Firewall.
+// Retrieves version information for a user.
 //
 // Description:
 //
-// You can call this operation to query the edition information about Cloud Firewall.
+// This operation queries information about your Cloud Firewall instance.
 //
-// ## [](#qps-)Limits
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// This operation is limited to 10 queries per second (QPS) per user. If you exceed this limit, API calls are throttled, which may affect your business. We recommend that you call this operation at a reasonable frequency.
 //
 // @param request - DescribeUserBuyVersionRequest
 //
@@ -15641,15 +16329,15 @@ func (client *Client) DescribeUserBuyVersionWithOptions(request *DescribeUserBuy
 
 // Summary:
 //
-// Queries the edition information about Cloud Firewall.
+// Retrieves version information for a user.
 //
 // Description:
 //
-// You can call this operation to query the edition information about Cloud Firewall.
+// This operation queries information about your Cloud Firewall instance.
 //
-// ## [](#qps-)Limits
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// This operation is limited to 10 queries per second (QPS) per user. If you exceed this limit, API calls are throttled, which may affect your business. We recommend that you call this operation at a reasonable frequency.
 //
 // @param request - DescribeUserBuyVersionRequest
 //
@@ -15667,7 +16355,13 @@ func (client *Client) DescribeUserBuyVersion(request *DescribeUserBuyVersionRequ
 
 // Summary:
 //
-// 获取用户IPS白名单
+// Queries the intrusion prevention system (IPS) whitelist for the Internet Border.
+//
+// Description:
+//
+// ## QPS limits
+//
+// The queries per second (QPS) limit for this API is 10 calls per second for each user. If you exceed this limit, API calls are throttled, which can impact your business. We recommend that you call this API at a reasonable rate.
 //
 // @param request - DescribeUserIPSWhitelistRequest
 //
@@ -15719,7 +16413,13 @@ func (client *Client) DescribeUserIPSWhitelistWithOptions(request *DescribeUserI
 
 // Summary:
 //
-// 获取用户IPS白名单
+// Queries the intrusion prevention system (IPS) whitelist for the Internet Border.
+//
+// Description:
+//
+// ## QPS limits
+//
+// The queries per second (QPS) limit for this API is 10 calls per second for each user. If you exceed this limit, API calls are throttled, which can impact your business. We recommend that you call this API at a reasonable rate.
 //
 // @param request - DescribeUserIPSWhitelistRequest
 //
@@ -15737,7 +16437,7 @@ func (client *Client) DescribeUserIPSWhitelist(request *DescribeUserIPSWhitelist
 
 // Summary:
 //
-// # VPC防火墙IP配置列表
+// Queries the intrusion prevention system (IPS) configurations for VPC firewalls.
 //
 // @param request - DescribeVfwIPSConfigListRequest
 //
@@ -15777,7 +16477,7 @@ func (client *Client) DescribeVfwIPSConfigListWithOptions(request *DescribeVfwIP
 
 // Summary:
 //
-// # VPC防火墙IP配置列表
+// Queries the intrusion prevention system (IPS) configurations for VPC firewalls.
 //
 // @param request - DescribeVfwIPSConfigListRequest
 //
@@ -15795,7 +16495,13 @@ func (client *Client) DescribeVfwIPSConfigList(request *DescribeVfwIPSConfigList
 
 // Summary:
 //
-// 获取VPC防火墙通过详情
+// Queries the access details of a VPC firewall.
+//
+// Description:
+//
+// ## QPS limits
+//
+// The queries per second (QPS) limit for this API is 10 for each user. If you exceed this limit, API calls are throttled, which can affect your business. We recommend that you call this API at a reasonable rate.
 //
 // @param request - DescribeVpcFirewallAccessDetailRequest
 //
@@ -15907,7 +16613,13 @@ func (client *Client) DescribeVpcFirewallAccessDetailWithOptions(request *Descri
 
 // Summary:
 //
-// 获取VPC防火墙通过详情
+// Queries the access details of a VPC firewall.
+//
+// Description:
+//
+// ## QPS limits
+//
+// The queries per second (QPS) limit for this API is 10 for each user. If you exceed this limit, API calls are throttled, which can affect your business. We recommend that you call this API at a reasonable rate.
 //
 // @param request - DescribeVpcFirewallAccessDetailRequest
 //
@@ -15925,15 +16637,15 @@ func (client *Client) DescribeVpcFirewallAccessDetail(request *DescribeVpcFirewa
 
 // Summary:
 //
-// Queries the information about all policy groups of access control policies that are created for virtual private cloud (VPC) firewalls.
+// Queries information about all access control policy groups for VPC firewalls.
 //
 // Description:
 //
-// You can call the DescribeVpcFirewallAclGroupList operation to query the information about all policy groups of access control policies that are created for VPC firewalls.
+// This operation queries information about all access control policy groups for VPC firewalls.
 //
-// ## Limits
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The QPS limit for this operation is 10 requests per second per user. API calls that exceed this limit are throttled, potentially affecting your business. Plan your calls accordingly.
 //
 // @param request - DescribeVpcFirewallAclGroupListRequest
 //
@@ -15993,15 +16705,15 @@ func (client *Client) DescribeVpcFirewallAclGroupListWithOptions(request *Descri
 
 // Summary:
 //
-// Queries the information about all policy groups of access control policies that are created for virtual private cloud (VPC) firewalls.
+// Queries information about all access control policy groups for VPC firewalls.
 //
 // Description:
 //
-// You can call the DescribeVpcFirewallAclGroupList operation to query the information about all policy groups of access control policies that are created for VPC firewalls.
+// This operation queries information about all access control policy groups for VPC firewalls.
 //
-// ## Limits
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The QPS limit for this operation is 10 requests per second per user. API calls that exceed this limit are throttled, potentially affecting your business. Plan your calls accordingly.
 //
 // @param request - DescribeVpcFirewallAclGroupListRequest
 //
@@ -16019,7 +16731,7 @@ func (client *Client) DescribeVpcFirewallAclGroupList(request *DescribeVpcFirewa
 
 // Summary:
 //
-// 获取VPC防火墙资产列表
+// Queries the assets protected by the VPC firewall.
 //
 // @param request - DescribeVpcFirewallAssetListRequest
 //
@@ -16135,7 +16847,7 @@ func (client *Client) DescribeVpcFirewallAssetListWithOptions(request *DescribeV
 
 // Summary:
 //
-// 获取VPC防火墙资产列表
+// Queries the assets protected by the VPC firewall.
 //
 // @param request - DescribeVpcFirewallAssetListRequest
 //
@@ -16153,7 +16865,7 @@ func (client *Client) DescribeVpcFirewallAssetList(request *DescribeVpcFirewallA
 
 // Summary:
 //
-// 查询VPC防火墙资产地域
+// Returns a list of regions in which the VPC firewall is enabled.
 //
 // @param request - DescribeVpcFirewallAssetRegionListRequest
 //
@@ -16193,7 +16905,7 @@ func (client *Client) DescribeVpcFirewallAssetRegionListWithOptions(request *Des
 
 // Summary:
 //
-// 查询VPC防火墙资产地域
+// Returns a list of regions in which the VPC firewall is enabled.
 //
 // @param request - DescribeVpcFirewallAssetRegionListRequest
 //
@@ -16211,15 +16923,15 @@ func (client *Client) DescribeVpcFirewallAssetRegionList(request *DescribeVpcFir
 
 // Summary:
 //
-// Queries the details about a virtual private cloud (VPC) firewall. The VPC firewall protects access traffic between a VPC and a network instance that is attached to a Cloud Enterprise Network (CEN) instance.
+// Retrieves the details of a VPC firewall that protects traffic between a network instance in a Cloud Enterprise Network (CEN) and a specified VPC.
 //
 // Description:
 //
-// You can call the DescribeVpcFirewallCenDetail operation to query the details about a VPC firewall. The VPC firewall protects access traffic between a specified VPC and a network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance.
+// You can call this operation to query the details of a VPC firewall. The VPC firewall protects traffic between a specified VPC and a network instance in a Cloud Enterprise Network (CEN). The network instance can be a VPC, a Virtual Border Router (VBR), or a Cloud Connect Network (CCN) instance.
 //
-// ## Limits
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// This operation has a queries per second (QPS) limit of 10 for each user. If you exceed the limit, your API calls are throttled. This may affect your business. We recommend that you call this operation at a reasonable rate.
 //
 // @param request - DescribeVpcFirewallCenDetailRequest
 //
@@ -16275,15 +16987,15 @@ func (client *Client) DescribeVpcFirewallCenDetailWithOptions(request *DescribeV
 
 // Summary:
 //
-// Queries the details about a virtual private cloud (VPC) firewall. The VPC firewall protects access traffic between a VPC and a network instance that is attached to a Cloud Enterprise Network (CEN) instance.
+// Retrieves the details of a VPC firewall that protects traffic between a network instance in a Cloud Enterprise Network (CEN) and a specified VPC.
 //
 // Description:
 //
-// You can call the DescribeVpcFirewallCenDetail operation to query the details about a VPC firewall. The VPC firewall protects access traffic between a specified VPC and a network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance.
+// You can call this operation to query the details of a VPC firewall. The VPC firewall protects traffic between a specified VPC and a network instance in a Cloud Enterprise Network (CEN). The network instance can be a VPC, a Virtual Border Router (VBR), or a Cloud Connect Network (CCN) instance.
 //
-// ## Limits
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// This operation has a queries per second (QPS) limit of 10 for each user. If you exceed the limit, your API calls are throttled. This may affect your business. We recommend that you call this operation at a reasonable rate.
 //
 // @param request - DescribeVpcFirewallCenDetailRequest
 //
@@ -16301,15 +17013,15 @@ func (client *Client) DescribeVpcFirewallCenDetail(request *DescribeVpcFirewallC
 
 // Summary:
 //
-// Queries virtual private cloud (VPC) firewalls. Each VPC firewall protects mutual access traffic between a specified VPC and a network instance that is attached to a Cloud Enterprise Network (CEN) instance.
+// Retrieves the details of VPC firewalls that protect traffic between a specified VPC and network instances in a Cloud Enterprise Network (CEN) instance.
 //
 // Description:
 //
-// You can call the DescribeVpcFirewallCenList operation to query VPC firewalls. A VPC firewall protects mutual access traffic between a specified VPC and a network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance.
+// This operation queries the details of a VPC firewall. The firewall protects traffic between a specified VPC and a network instance that is attached to a Cloud Enterprise Network (CEN) instance. The network instance can be a VPC, a Virtual Border Router (VBR), or a Cloud Connect Network (CCN) instance.
 //
 // ## Limits
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. This may affect your business. We recommend that you plan your calls accordingly.
 //
 // @param request - DescribeVpcFirewallCenListRequest
 //
@@ -16405,15 +17117,15 @@ func (client *Client) DescribeVpcFirewallCenListWithOptions(request *DescribeVpc
 
 // Summary:
 //
-// Queries virtual private cloud (VPC) firewalls. Each VPC firewall protects mutual access traffic between a specified VPC and a network instance that is attached to a Cloud Enterprise Network (CEN) instance.
+// Retrieves the details of VPC firewalls that protect traffic between a specified VPC and network instances in a Cloud Enterprise Network (CEN) instance.
 //
 // Description:
 //
-// You can call the DescribeVpcFirewallCenList operation to query VPC firewalls. A VPC firewall protects mutual access traffic between a specified VPC and a network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance.
+// This operation queries the details of a VPC firewall. The firewall protects traffic between a specified VPC and a network instance that is attached to a Cloud Enterprise Network (CEN) instance. The network instance can be a VPC, a Virtual Border Router (VBR), or a Cloud Connect Network (CCN) instance.
 //
 // ## Limits
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. This may affect your business. We recommend that you plan your calls accordingly.
 //
 // @param request - DescribeVpcFirewallCenListRequest
 //
@@ -16431,7 +17143,13 @@ func (client *Client) DescribeVpcFirewallCenList(request *DescribeVpcFirewallCen
 
 // Summary:
 //
-// 获取VPC的CEN列表
+// Queries a list of Cloud Enterprise Network (CEN) instances for a VPC.
+//
+// Description:
+//
+// ## QPS limit
+//
+// The queries per second (QPS) limit for a single user is 10. If you exceed this limit, API calls are throttled, which can affect your business. Plan your calls accordingly.
 //
 // @param request - DescribeVpcFirewallCenSummaryListRequest
 //
@@ -16495,7 +17213,13 @@ func (client *Client) DescribeVpcFirewallCenSummaryListWithOptions(request *Desc
 
 // Summary:
 //
-// 获取VPC的CEN列表
+// Queries a list of Cloud Enterprise Network (CEN) instances for a VPC.
+//
+// Description:
+//
+// ## QPS limit
+//
+// The queries per second (QPS) limit for a single user is 10. If you exceed this limit, API calls are throttled, which can affect your business. Plan your calls accordingly.
 //
 // @param request - DescribeVpcFirewallCenSummaryListRequest
 //
@@ -16513,15 +17237,15 @@ func (client *Client) DescribeVpcFirewallCenSummaryList(request *DescribeVpcFire
 
 // Summary:
 //
-// Queries the information about the access control policies for a specified virtual private cloud (VPC) firewall.
+// Retrieves all access control policies for a specific VPC boundary firewall.
 //
 // Description:
 //
-// You can call the DescribeVpcFirewallControlPolicy operation to query the information about all access control policies that are created for a specified VPC firewall. Different access control policies are used when a VPC firewall is used to protect traffic between two VPCs that are connected by using a Cloud Enterprise Network (CEN) instance or an Express Connect circuit.
+// This operation queries the access control policies for a VPC firewall. A VPC firewall uses different access control policies to protect traffic between two VPCs that are connected via Cloud Enterprise Network (CEN) or Express Connect.
 //
-// ## Limits
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The QPS limit for this operation is 10 requests per second per account. If you exceed this limit, your API calls are throttled.
 //
 // @param request - DescribeVpcFirewallControlPolicyRequest
 //
@@ -16613,15 +17337,15 @@ func (client *Client) DescribeVpcFirewallControlPolicyWithOptions(request *Descr
 
 // Summary:
 //
-// Queries the information about the access control policies for a specified virtual private cloud (VPC) firewall.
+// Retrieves all access control policies for a specific VPC boundary firewall.
 //
 // Description:
 //
-// You can call the DescribeVpcFirewallControlPolicy operation to query the information about all access control policies that are created for a specified VPC firewall. Different access control policies are used when a VPC firewall is used to protect traffic between two VPCs that are connected by using a Cloud Enterprise Network (CEN) instance or an Express Connect circuit.
+// This operation queries the access control policies for a VPC firewall. A VPC firewall uses different access control policies to protect traffic between two VPCs that are connected via Cloud Enterprise Network (CEN) or Express Connect.
 //
-// ## Limits
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The QPS limit for this operation is 10 requests per second per account. If you exceed this limit, your API calls are throttled.
 //
 // @param request - DescribeVpcFirewallControlPolicyRequest
 //
@@ -16639,15 +17363,15 @@ func (client *Client) DescribeVpcFirewallControlPolicy(request *DescribeVpcFirew
 
 // Summary:
 //
-// Queries the intrusion prevention configurations of a virtual private cloud (VPC) firewall.
+// Queries the intrusion prevention configuration of a specified VPC firewall.
 //
 // Description:
 //
-// You can call the DescribeVpcFirewallDefaultIPSConfig operation to query the intrusion prevention configurations of a VPC firewall.
+// This operation queries the intrusion prevention configuration of a specified VPC firewall. Before you call this operation, you must create a VPC firewall instance.
 //
-// ## Limits
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// This API operation has a limit of 10 queries per second (QPS) per user. If you exceed this limit, your calls are throttled. This may affect your business. Plan your calls accordingly.
 //
 // @param request - DescribeVpcFirewallDefaultIPSConfigRequest
 //
@@ -16695,15 +17419,15 @@ func (client *Client) DescribeVpcFirewallDefaultIPSConfigWithOptions(request *De
 
 // Summary:
 //
-// Queries the intrusion prevention configurations of a virtual private cloud (VPC) firewall.
+// Queries the intrusion prevention configuration of a specified VPC firewall.
 //
 // Description:
 //
-// You can call the DescribeVpcFirewallDefaultIPSConfig operation to query the intrusion prevention configurations of a VPC firewall.
+// This operation queries the intrusion prevention configuration of a specified VPC firewall. Before you call this operation, you must create a VPC firewall instance.
 //
-// ## Limits
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// This API operation has a limit of 10 queries per second (QPS) per user. If you exceed this limit, your calls are throttled. This may affect your business. Plan your calls accordingly.
 //
 // @param request - DescribeVpcFirewallDefaultIPSConfigRequest
 //
@@ -16721,17 +17445,15 @@ func (client *Client) DescribeVpcFirewallDefaultIPSConfig(request *DescribeVpcFi
 
 // Summary:
 //
-// Queries the details about a virtual private cloud (VPC) firewall. The VPC firewall controls traffic between two VPCs that are connected by using an Express Connect circuit.
+// Retrieves the details of a VPC firewall that protects traffic between two VPCs connected by an Express Connect circuit.
 //
 // Description:
 //
-// You can call the DescribeVpcFirewallDetail operation to query the details about a VPC firewall. The VPC firewall controls traffic between two VPCs that are connected by using an Express Connect circuit.
+// This operation queries the details of a VPC firewall. The VPC firewall protects traffic between two VPCs that are connected by an Express Connect circuit. Before you call this operation, you must create a VPC firewall by calling the [CreateVpcFirewallConfigure](https://help.aliyun.com/document_detail/342893.html) operation.
 //
-// Before you call the operation, make sure that you created a VPC firewall by calling the [CreateVpcFirewallConfigure](https://www.alibabacloud.com/help/en/cloud-firewall/latest/createvpcfirewallconfigure) operation.
+// ## QPS limit
 //
-// ## Limits
-//
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// This operation has a queries per second (QPS) limit of 10 calls per second for each user. If you exceed this limit, your API calls are throttled. This can affect your business. Plan your calls accordingly.
 //
 // @param request - DescribeVpcFirewallDetailRequest
 //
@@ -16791,17 +17513,15 @@ func (client *Client) DescribeVpcFirewallDetailWithOptions(request *DescribeVpcF
 
 // Summary:
 //
-// Queries the details about a virtual private cloud (VPC) firewall. The VPC firewall controls traffic between two VPCs that are connected by using an Express Connect circuit.
+// Retrieves the details of a VPC firewall that protects traffic between two VPCs connected by an Express Connect circuit.
 //
 // Description:
 //
-// You can call the DescribeVpcFirewallDetail operation to query the details about a VPC firewall. The VPC firewall controls traffic between two VPCs that are connected by using an Express Connect circuit.
+// This operation queries the details of a VPC firewall. The VPC firewall protects traffic between two VPCs that are connected by an Express Connect circuit. Before you call this operation, you must create a VPC firewall by calling the [CreateVpcFirewallConfigure](https://help.aliyun.com/document_detail/342893.html) operation.
 //
-// Before you call the operation, make sure that you created a VPC firewall by calling the [CreateVpcFirewallConfigure](https://www.alibabacloud.com/help/en/cloud-firewall/latest/createvpcfirewallconfigure) operation.
+// ## QPS limit
 //
-// ## Limits
-//
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// This operation has a queries per second (QPS) limit of 10 calls per second for each user. If you exceed this limit, your API calls are throttled. This can affect your business. Plan your calls accordingly.
 //
 // @param request - DescribeVpcFirewallDetailRequest
 //
@@ -16819,7 +17539,13 @@ func (client *Client) DescribeVpcFirewallDetail(request *DescribeVpcFirewallDeta
 
 // Summary:
 //
-// 查询VPC互访的域名信息
+// Queries a list of domain names accessed through a VPC firewall.
+//
+// Description:
+//
+// ###
+//
+// The queries per second (QPS) limit for this operation is 10 calls per second for each user. If you exceed this limit, API calls are throttled. Throttling can affect your business. Call this operation at a reasonable rate.
 //
 // @param request - DescribeVpcFirewallDomainListRequest
 //
@@ -16903,7 +17629,13 @@ func (client *Client) DescribeVpcFirewallDomainListWithOptions(request *Describe
 
 // Summary:
 //
-// 查询VPC互访的域名信息
+// Queries a list of domain names accessed through a VPC firewall.
+//
+// Description:
+//
+// ###
+//
+// The queries per second (QPS) limit for this operation is 10 calls per second for each user. If you exceed this limit, API calls are throttled. Throttling can affect your business. Call this operation at a reasonable rate.
 //
 // @param request - DescribeVpcFirewallDomainListRequest
 //
@@ -16921,7 +17653,7 @@ func (client *Client) DescribeVpcFirewallDomainList(request *DescribeVpcFirewall
 
 // Summary:
 //
-// 查询VPC互访的域名信息
+// Queries connections to a specified domain name through VPC Firewall.
 //
 // @param request - DescribeVpcFirewallDomainRelationListRequest
 //
@@ -17009,7 +17741,7 @@ func (client *Client) DescribeVpcFirewallDomainRelationListWithOptions(request *
 
 // Summary:
 //
-// 查询VPC互访的域名信息
+// Queries connections to a specified domain name through VPC Firewall.
 //
 // @param request - DescribeVpcFirewallDomainRelationListRequest
 //
@@ -17027,7 +17759,7 @@ func (client *Client) DescribeVpcFirewallDomainRelationList(request *DescribeVpc
 
 // Summary:
 //
-// 概览页-vpc防火墙拦截趋势
+// Queries the blocked traffic trend for the VPC firewall.
 //
 // @param request - DescribeVpcFirewallDropTrafficTrendRequest
 //
@@ -17067,7 +17799,7 @@ func (client *Client) DescribeVpcFirewallDropTrafficTrendWithOptions(request *De
 
 // Summary:
 //
-// 概览页-vpc防火墙拦截趋势
+// Queries the blocked traffic trend for the VPC firewall.
 //
 // @param request - DescribeVpcFirewallDropTrafficTrendRequest
 //
@@ -17085,7 +17817,7 @@ func (client *Client) DescribeVpcFirewallDropTrafficTrend(request *DescribeVpcFi
 
 // Summary:
 //
-// Queries the IPS whitelist of a virtual private cloud (VPC) firewall.
+// Describes the intrusion prevention system (IPS) whitelist for a VPC firewall.
 //
 // @param request - DescribeVpcFirewallIPSWhitelistRequest
 //
@@ -17137,7 +17869,7 @@ func (client *Client) DescribeVpcFirewallIPSWhitelistWithOptions(request *Descri
 
 // Summary:
 //
-// Queries the IPS whitelist of a virtual private cloud (VPC) firewall.
+// Describes the intrusion prevention system (IPS) whitelist for a VPC firewall.
 //
 // @param request - DescribeVpcFirewallIPSWhitelistRequest
 //
@@ -17155,15 +17887,15 @@ func (client *Client) DescribeVpcFirewallIPSWhitelist(request *DescribeVpcFirewa
 
 // Summary:
 //
-// Queries the details about virtual private cloud (VPC) firewalls by page. Each VPC firewall protects traffic between two VPCs that are connected by using an Express Connect circuit.
+// Retrieves information about a VPC firewall that protects traffic between two VPCs connected by an Express Connect circuit.
 //
 // Description:
 //
-// You can call the DescribeVpcFirewallList operation to query the details about VPC firewalls by page. Each VPC firewall protects traffic between two VPCs that are connected by using an Express Connect circuit.
+// This operation queries a paginated list of VPC firewalls. These firewalls protect traffic between two VPCs that are connected using Express Connect.
 //
-// ### Limits
+// ### QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// Each Alibaba Cloud account can send up to 10 queries per second (QPS). If this limit is exceeded, API calls are throttled. This may affect your business. Plan your calls accordingly.
 //
 // @param request - DescribeVpcFirewallListRequest
 //
@@ -17251,15 +17983,15 @@ func (client *Client) DescribeVpcFirewallListWithOptions(request *DescribeVpcFir
 
 // Summary:
 //
-// Queries the details about virtual private cloud (VPC) firewalls by page. Each VPC firewall protects traffic between two VPCs that are connected by using an Express Connect circuit.
+// Retrieves information about a VPC firewall that protects traffic between two VPCs connected by an Express Connect circuit.
 //
 // Description:
 //
-// You can call the DescribeVpcFirewallList operation to query the details about VPC firewalls by page. Each VPC firewall protects traffic between two VPCs that are connected by using an Express Connect circuit.
+// This operation queries a paginated list of VPC firewalls. These firewalls protect traffic between two VPCs that are connected using Express Connect.
 //
-// ### Limits
+// ### QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// Each Alibaba Cloud account can send up to 10 queries per second (QPS). If this limit is exceeded, API calls are throttled. This may affect your business. Plan your calls accordingly.
 //
 // @param request - DescribeVpcFirewallListRequest
 //
@@ -17277,7 +18009,7 @@ func (client *Client) DescribeVpcFirewallList(request *DescribeVpcFirewallListRe
 
 // Summary:
 //
-// 获取防火墙手动交换机列表
+// Queries the list of vSwitches for a VPC firewall created in manual mode.
 //
 // @param request - DescribeVpcFirewallManualVSwitchListRequest
 //
@@ -17341,7 +18073,7 @@ func (client *Client) DescribeVpcFirewallManualVSwitchListWithOptions(request *D
 
 // Summary:
 //
-// 获取防火墙手动交换机列表
+// Queries the list of vSwitches for a VPC firewall created in manual mode.
 //
 // @param request - DescribeVpcFirewallManualVSwitchListRequest
 //
@@ -17359,15 +18091,15 @@ func (client *Client) DescribeVpcFirewallManualVSwitchList(request *DescribeVpcF
 
 // Summary:
 //
-// Queries the priority range of access control policies that are created for a virtual private cloud (VPC) firewall in a specific policy group.
+// Queries the effective priority range for access control policies in a specified VPC firewall policy group.
 //
 // Description:
 //
-// You can call this operation to query the priority range of access control policies that are created for a VPC firewall in a specific policy group.
+// This operation queries the effective priority range for access control policies in a specified VPC firewall policy group.
 //
-// ## [](#qps-)Limits
+// ## Limits
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The queries per second (QPS) limit for this operation is 10 for each user. If you exceed the limit, API calls are throttled. This may impact your business. Call this operation an appropriate number of times to prevent interruptions.
 //
 // @param request - DescribeVpcFirewallPolicyPriorUsedRequest
 //
@@ -17415,15 +18147,15 @@ func (client *Client) DescribeVpcFirewallPolicyPriorUsedWithOptions(request *Des
 
 // Summary:
 //
-// Queries the priority range of access control policies that are created for a virtual private cloud (VPC) firewall in a specific policy group.
+// Queries the effective priority range for access control policies in a specified VPC firewall policy group.
 //
 // Description:
 //
-// You can call this operation to query the priority range of access control policies that are created for a VPC firewall in a specific policy group.
+// This operation queries the effective priority range for access control policies in a specified VPC firewall policy group.
 //
-// ## [](#qps-)Limits
+// ## Limits
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The queries per second (QPS) limit for this operation is 10 for each user. If you exceed the limit, API calls are throttled. This may impact your business. Call this operation an appropriate number of times to prevent interruptions.
 //
 // @param request - DescribeVpcFirewallPolicyPriorUsedRequest
 //
@@ -17441,7 +18173,13 @@ func (client *Client) DescribeVpcFirewallPolicyPriorUsed(request *DescribeVpcFir
 
 // Summary:
 //
-// 获取VPC防火墙预检查详情
+// Retrieves the details of a VPC firewall precheck.
+//
+// Description:
+//
+// ## QPS limit
+//
+// The queries per second (QPS) limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled. This may impact your business. Plan your calls accordingly.
 //
 // @param request - DescribeVpcFirewallPrecheckDetailRequest
 //
@@ -17513,7 +18251,13 @@ func (client *Client) DescribeVpcFirewallPrecheckDetailWithOptions(request *Desc
 
 // Summary:
 //
-// 获取VPC防火墙预检查详情
+// Retrieves the details of a VPC firewall precheck.
+//
+// Description:
+//
+// ## QPS limit
+//
+// The queries per second (QPS) limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled. This may impact your business. Plan your calls accordingly.
 //
 // @param request - DescribeVpcFirewallPrecheckDetailRequest
 //
@@ -17531,7 +18275,13 @@ func (client *Client) DescribeVpcFirewallPrecheckDetail(request *DescribeVpcFire
 
 // Summary:
 //
-// 获取VPC防火墙总结信息
+// Retrieves a summary of VPC firewalls.
+//
+// Description:
+//
+// ### QPS limit
+//
+// The queries per second (QPS) limit for this API operation is 10 for each user. If you exceed this limit, API calls are throttled. This can affect your business. Plan your API calls accordingly.
 //
 // @param request - DescribeVpcFirewallSummaryInfoRequest
 //
@@ -17583,7 +18333,13 @@ func (client *Client) DescribeVpcFirewallSummaryInfoWithOptions(request *Describ
 
 // Summary:
 //
-// 获取VPC防火墙总结信息
+// Retrieves a summary of VPC firewalls.
+//
+// Description:
+//
+// ### QPS limit
+//
+// The queries per second (QPS) limit for this API operation is 10 for each user. If you exceed this limit, API calls are throttled. This can affect your business. Plan your API calls accordingly.
 //
 // @param request - DescribeVpcFirewallSummaryInfoRequest
 //
@@ -17601,7 +18357,7 @@ func (client *Client) DescribeVpcFirewallSummaryInfo(request *DescribeVpcFirewal
 
 // Summary:
 //
-// 查询VPC互访的资产信息
+// Retrieves a list of assets that access domain names through a VPC firewall.
 //
 // @param request - DescribeVpcFirewallTrafficAssetListRequest
 //
@@ -17685,7 +18441,7 @@ func (client *Client) DescribeVpcFirewallTrafficAssetListWithOptions(request *De
 
 // Summary:
 //
-// 查询VPC互访的资产信息
+// Retrieves a list of assets that access domain names through a VPC firewall.
 //
 // @param request - DescribeVpcFirewallTrafficAssetListRequest
 //
@@ -17703,7 +18459,7 @@ func (client *Client) DescribeVpcFirewallTrafficAssetList(request *DescribeVpcFi
 
 // Summary:
 //
-// 查询VPC防火墙资源可用区
+// Describes the available zones for a VPC firewall.
 //
 // @param request - DescribeVpcFirewallZoneRequest
 //
@@ -17771,7 +18527,7 @@ func (client *Client) DescribeVpcFirewallZoneWithOptions(request *DescribeVpcFir
 
 // Summary:
 //
-// 查询VPC防火墙资源可用区
+// Describes the available zones for a VPC firewall.
 //
 // @param request - DescribeVpcFirewallZoneRequest
 //
@@ -17789,7 +18545,7 @@ func (client *Client) DescribeVpcFirewallZone(request *DescribeVpcFirewallZoneRe
 
 // Summary:
 //
-// Queries virtual private clouds (VPCs).
+// Queries a list of Virtual Private Clouds (VPCs).
 //
 // @param request - DescribeVpcListLiteRequest
 //
@@ -17849,7 +18605,7 @@ func (client *Client) DescribeVpcListLiteWithOptions(request *DescribeVpcListLit
 
 // Summary:
 //
-// Queries virtual private clouds (VPCs).
+// Queries a list of Virtual Private Clouds (VPCs).
 //
 // @param request - DescribeVpcListLiteRequest
 //
@@ -17867,7 +18623,7 @@ func (client *Client) DescribeVpcListLite(request *DescribeVpcListLiteRequest) (
 
 // Summary:
 //
-// Queries virtual private cloud (VPC) zones.
+// Queries the zones that are available for VPCs.
 //
 // @param request - DescribeVpcZoneRequest
 //
@@ -17923,7 +18679,7 @@ func (client *Client) DescribeVpcZoneWithOptions(request *DescribeVpcZoneRequest
 
 // Summary:
 //
-// Queries virtual private cloud (VPC) zones.
+// Queries the zones that are available for VPCs.
 //
 // @param request - DescribeVpcZoneRequest
 //
@@ -17941,7 +18697,7 @@ func (client *Client) DescribeVpcZone(request *DescribeVpcZoneRequest) (_result 
 
 // Summary:
 //
-// Queries the vulnerabilities that are supported by Cloud Firewall.
+// Queries a list of vulnerabilities that Cloud Firewall can protect against.
 //
 // @param request - DescribeVulnerabilityProtectedListRequest
 //
@@ -18057,7 +18813,7 @@ func (client *Client) DescribeVulnerabilityProtectedListWithOptions(request *Des
 
 // Summary:
 //
-// Queries the vulnerabilities that are supported by Cloud Firewall.
+// Queries a list of vulnerabilities that Cloud Firewall can protect against.
 //
 // @param request - DescribeVulnerabilityProtectedListRequest
 //
@@ -18075,7 +18831,7 @@ func (client *Client) DescribeVulnerabilityProtectedList(request *DescribeVulner
 
 // Summary:
 //
-// 关闭资产数据泄漏保护
+// Disables sensitive data discovery for a protected asset.
 //
 // @param request - DisableSdlProtectedAssetRequest
 //
@@ -18123,7 +18879,7 @@ func (client *Client) DisableSdlProtectedAssetWithOptions(request *DisableSdlPro
 
 // Summary:
 //
-// 关闭资产数据泄漏保护
+// Disables sensitive data discovery for a protected asset.
 //
 // @param request - DisableSdlProtectedAssetRequest
 //
@@ -18141,7 +18897,7 @@ func (client *Client) DisableSdlProtectedAsset(request *DisableSdlProtectedAsset
 
 // Summary:
 //
-// 开启资产数据泄露保护
+// Enables data breach protection for assets.
 //
 // @param request - EnableSdlProtectedAssetRequest
 //
@@ -18189,7 +18945,7 @@ func (client *Client) EnableSdlProtectedAssetWithOptions(request *EnableSdlProte
 
 // Summary:
 //
-// 开启资产数据泄露保护
+// Enables data breach protection for assets.
 //
 // @param request - EnableSdlProtectedAssetRequest
 //
@@ -18207,7 +18963,11 @@ func (client *Client) EnableSdlProtectedAsset(request *EnableSdlProtectedAssetRe
 
 // Summary:
 //
-// 下载TLS证书
+// Retrieves the download path for the certificate of a Transport Layer Security (TLS) inspection policy.
+//
+// Description:
+//
+// This operation returns a temporary download link for the Certificate Authority (CA) certificate. The link is valid for one minute. After the link expires, call this operation again to obtain a new download link.
 //
 // @param request - GetTlsInspectCertificateDownloadUrlRequest
 //
@@ -18251,7 +19011,11 @@ func (client *Client) GetTlsInspectCertificateDownloadUrlWithOptions(request *Ge
 
 // Summary:
 //
-// 下载TLS证书
+// Retrieves the download path for the certificate of a Transport Layer Security (TLS) inspection policy.
+//
+// Description:
+//
+// This operation returns a temporary download link for the Certificate Authority (CA) certificate. The link is valid for one minute. After the link expires, call this operation again to obtain a new download link.
 //
 // @param request - GetTlsInspectCertificateDownloadUrlRequest
 //
@@ -18269,7 +19033,7 @@ func (client *Client) GetTlsInspectCertificateDownloadUrl(request *GetTlsInspect
 
 // Summary:
 //
-// 查询TLS检查证书
+// This operation lists the Transport Layer Security (TLS) inspection certificate authority (CA) certificates.
 //
 // @param request - ListTlsInspectCACertificatesRequest
 //
@@ -18321,7 +19085,7 @@ func (client *Client) ListTlsInspectCACertificatesWithOptions(request *ListTlsIn
 
 // Summary:
 //
-// 查询TLS检查证书
+// This operation lists the Transport Layer Security (TLS) inspection certificate authority (CA) certificates.
 //
 // @param request - ListTlsInspectCACertificatesRequest
 //
@@ -18339,15 +19103,15 @@ func (client *Client) ListTlsInspectCACertificates(request *ListTlsInspectCACert
 
 // Summary:
 //
-// Modifies the address book that is specified in an access control policy.
+// Modifies an address book.
 //
 // Description:
 //
-// You can call the ModifyAddressBook operation to modify the address book that is configured for access control.
+// This API is used to modify an address book.
 //
-// ## Limits
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The QPS limit for this API is 10 requests per second per user. Exceeding this limit triggers rate limiting, which can affect your business. Call this API only as needed.
 //
 // @param request - ModifyAddressBookRequest
 //
@@ -18435,15 +19199,15 @@ func (client *Client) ModifyAddressBookWithOptions(request *ModifyAddressBookReq
 
 // Summary:
 //
-// Modifies the address book that is specified in an access control policy.
+// Modifies an address book.
 //
 // Description:
 //
-// You can call the ModifyAddressBook operation to modify the address book that is configured for access control.
+// This API is used to modify an address book.
 //
-// ## Limits
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The QPS limit for this API is 10 requests per second per user. Exceeding this limit triggers rate limiting, which can affect your business. Call this API only as needed.
 //
 // @param request - ModifyAddressBookRequest
 //
@@ -18461,7 +19225,11 @@ func (client *Client) ModifyAddressBook(request *ModifyAddressBookRequest) (_res
 
 // Summary:
 //
-// 更新用户版本信息
+// Updates instance information for pay-as-you-go 2.0 users.
+//
+// Description:
+//
+// Before calling this operation, ensure that you understand the billing methods and [pricing](https://help.aliyun.com/zh/cloud-firewall/cloudfirewall/product-overview/pay-as-you-go) for the pay-as-you-go edition of Cloud Firewall.
 //
 // @param request - ModifyCfwInstanceRequest
 //
@@ -18509,7 +19277,11 @@ func (client *Client) ModifyCfwInstanceWithOptions(request *ModifyCfwInstanceReq
 
 // Summary:
 //
-// 更新用户版本信息
+// Updates instance information for pay-as-you-go 2.0 users.
+//
+// Description:
+//
+// Before calling this operation, ensure that you understand the billing methods and [pricing](https://help.aliyun.com/zh/cloud-firewall/cloudfirewall/product-overview/pay-as-you-go) for the pay-as-you-go edition of Cloud Firewall.
 //
 // @param request - ModifyCfwInstanceRequest
 //
@@ -18531,11 +19303,11 @@ func (client *Client) ModifyCfwInstance(request *ModifyCfwInstanceRequest) (_res
 //
 // Description:
 //
-// You can call this operation to modify the configurations of an access control policy. The policy allows Cloud Firewall to allow, deny, or monitor the traffic that passes through Cloud Firewall.
+// This operation modifies the configurations of an access control policy that allows, denies, or monitors traffic passing through Cloud Firewall.
 //
-// ## [](#qps)Limit
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// Each user can call this operation up to 10 times per second. If the limit is exceeded, API calls are throttled. This may affect your business. Plan your calls accordingly.
 //
 // @param request - ModifyControlPolicyRequest
 //
@@ -18671,11 +19443,11 @@ func (client *Client) ModifyControlPolicyWithOptions(request *ModifyControlPolic
 //
 // Description:
 //
-// You can call this operation to modify the configurations of an access control policy. The policy allows Cloud Firewall to allow, deny, or monitor the traffic that passes through Cloud Firewall.
+// This operation modifies the configurations of an access control policy that allows, denies, or monitors traffic passing through Cloud Firewall.
 //
-// ## [](#qps)Limit
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// Each user can call this operation up to 10 times per second. If the limit is exceeded, API calls are throttled. This may affect your business. Plan your calls accordingly.
 //
 // @param request - ModifyControlPolicyRequest
 //
@@ -18695,15 +19467,15 @@ func (client *Client) ModifyControlPolicy(request *ModifyControlPolicyRequest) (
 //
 // Summary:
 //
-// Modifies the priority of an IPv4 access control policy for the Internet firewall. An IPv4 access control policy refers to a policy whose source IP address and destination IP address are IPv4 addresses.
+// Modifies the priority of an IPv4 access control policy for the Internet firewall. For this type of policy, the source and destination IP addresses are in IPv4 format.
 //
 // Description:
 //
-// You can use this operation to modify the priority of an IPv4 access control policy for the Internet firewall. No API operations are provided for you to modify the priority of an IPv6 access control policy for the Internet firewall.
+// You can call this operation to modify the priority of an IPv4 access control policy for the Internet firewall. This operation does not support modifying the priority of IPv6 access control policies.
 //
-// ## [](#qps)Limits
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The queries per second (QPS) limit for this operation is 10 for each user. If you exceed the limit, API calls are throttled, which can affect your business. We recommend that you call this operation within this limit.
 //
 // @param request - ModifyControlPolicyPositionRequest
 //
@@ -18765,15 +19537,15 @@ func (client *Client) ModifyControlPolicyPositionWithOptions(request *ModifyCont
 //
 // Summary:
 //
-// Modifies the priority of an IPv4 access control policy for the Internet firewall. An IPv4 access control policy refers to a policy whose source IP address and destination IP address are IPv4 addresses.
+// Modifies the priority of an IPv4 access control policy for the Internet firewall. For this type of policy, the source and destination IP addresses are in IPv4 format.
 //
 // Description:
 //
-// You can use this operation to modify the priority of an IPv4 access control policy for the Internet firewall. No API operations are provided for you to modify the priority of an IPv6 access control policy for the Internet firewall.
+// You can call this operation to modify the priority of an IPv4 access control policy for the Internet firewall. This operation does not support modifying the priority of IPv6 access control policies.
 //
-// ## [](#qps)Limits
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The queries per second (QPS) limit for this operation is 10 for each user. If you exceed the limit, API calls are throttled, which can affect your business. We recommend that you call this operation within this limit.
 //
 // @param request - ModifyControlPolicyPositionRequest
 //
@@ -18793,6 +19565,14 @@ func (client *Client) ModifyControlPolicyPosition(request *ModifyControlPolicyPo
 // Summary:
 //
 // Modifies the priority of an access control policy.
+//
+// Description:
+//
+// You can call this operation to modify the priority of an access control policy. An access control policy determines whether to allow, deny, or monitor traffic that passes through Cloud Firewall.
+//
+// ## QPS limit
+//
+// The queries per second (QPS) limit for this operation is 10 calls per second per user. Exceeding this limit triggers throttling, which may affect your business. We recommend that you plan your calls accordingly.
 //
 // @param request - ModifyControlPolicyPriorityRequest
 //
@@ -18842,6 +19622,14 @@ func (client *Client) ModifyControlPolicyPriorityWithOptions(request *ModifyCont
 //
 // Modifies the priority of an access control policy.
 //
+// Description:
+//
+// You can call this operation to modify the priority of an access control policy. An access control policy determines whether to allow, deny, or monitor traffic that passes through Cloud Firewall.
+//
+// ## QPS limit
+//
+// The queries per second (QPS) limit for this operation is 10 calls per second per user. Exceeding this limit triggers throttling, which may affect your business. We recommend that you plan your calls accordingly.
+//
 // @param request - ModifyControlPolicyPriorityRequest
 //
 // @return ModifyControlPolicyPriorityResponse
@@ -18858,7 +19646,7 @@ func (client *Client) ModifyControlPolicyPriority(request *ModifyControlPolicyPr
 
 // Summary:
 //
-// Modifies the default configuration of the intrusion prevention system (IPS).
+// Modifies the default intrusion prevention system (IPS) configuration.
 //
 // @param request - ModifyDefaultIPSConfigRequest
 //
@@ -18926,7 +19714,7 @@ func (client *Client) ModifyDefaultIPSConfigWithOptions(request *ModifyDefaultIP
 
 // Summary:
 //
-// Modifies the default configuration of the intrusion prevention system (IPS).
+// Modifies the default intrusion prevention system (IPS) configuration.
 //
 // @param request - ModifyDefaultIPSConfigRequest
 //
@@ -18944,7 +19732,11 @@ func (client *Client) ModifyDefaultIPSConfig(request *ModifyDefaultIPSConfigRequ
 
 // Summary:
 //
-// 修改DNS防火墙规则
+// Modifies a DNS firewall rule.
+//
+// Description:
+//
+// You can use this operation to modify a DNS firewall policy to accept, deny, or monitor traffic.
 //
 // @param request - ModifyDnsFirewallPolicyRequest
 //
@@ -19028,7 +19820,11 @@ func (client *Client) ModifyDnsFirewallPolicyWithOptions(request *ModifyDnsFirew
 
 // Summary:
 //
-// 修改DNS防火墙规则
+// Modifies a DNS firewall rule.
+//
+// Description:
+//
+// You can use this operation to modify a DNS firewall policy to accept, deny, or monitor traffic.
 //
 // @param request - ModifyDnsFirewallPolicyRequest
 //
@@ -19046,7 +19842,7 @@ func (client *Client) ModifyDnsFirewallPolicy(request *ModifyDnsFirewallPolicyRe
 
 // Summary:
 //
-// Modifies the status of a routing policy.
+// Enables or disables a routing policy.
 //
 // @param request - ModifyFirewallV2RoutePolicySwitchRequest
 //
@@ -19106,7 +19902,7 @@ func (client *Client) ModifyFirewallV2RoutePolicySwitchWithOptions(request *Modi
 
 // Summary:
 //
-// Modifies the status of a routing policy.
+// Enables or disables a routing policy.
 //
 // @param request - ModifyFirewallV2RoutePolicySwitchRequest
 //
@@ -19124,15 +19920,15 @@ func (client *Client) ModifyFirewallV2RoutePolicySwitch(request *ModifyFirewallV
 
 // Summary:
 //
-// Updates the information about members in Cloud Firewall.
+// Updates the attributes of member accounts in Cloud Firewall.
 //
 // Description:
 //
-// You can call the ModifyInstanceMemberAttributes operation to update the information about members in Cloud Firewall.
+// This operation updates the attributes of member accounts in Cloud Firewall.
 //
-// ## Limits
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second for each account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// This operation has a queries per second (QPS) limit of 10 for each user. If you exceed this limit, API calls are rate-limited. This may affect your business operations. Plan your calls accordingly.
 //
 // @param request - ModifyInstanceMemberAttributesRequest
 //
@@ -19176,15 +19972,15 @@ func (client *Client) ModifyInstanceMemberAttributesWithOptions(request *ModifyI
 
 // Summary:
 //
-// Updates the information about members in Cloud Firewall.
+// Updates the attributes of member accounts in Cloud Firewall.
 //
 // Description:
 //
-// You can call the ModifyInstanceMemberAttributes operation to update the information about members in Cloud Firewall.
+// This operation updates the attributes of member accounts in Cloud Firewall.
 //
-// ## Limits
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second for each account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// This operation has a queries per second (QPS) limit of 10 for each user. If you exceed this limit, API calls are rate-limited. This may affect your business operations. Plan your calls accordingly.
 //
 // @param request - ModifyInstanceMemberAttributesRequest
 //
@@ -19202,7 +19998,7 @@ func (client *Client) ModifyInstanceMemberAttributes(request *ModifyInstanceMemb
 
 // Summary:
 //
-// 修改IPS规则
+// Modifies Intrusion Prevention System (IPS) rules.
 //
 // @param request - ModifyIpsRulesRequest
 //
@@ -19270,7 +20066,7 @@ func (client *Client) ModifyIpsRulesWithOptions(request *ModifyIpsRulesRequest, 
 
 // Summary:
 //
-// 修改IPS规则
+// Modifies Intrusion Prevention System (IPS) rules.
 //
 // @param request - ModifyIpsRulesRequest
 //
@@ -19288,7 +20084,7 @@ func (client *Client) ModifyIpsRules(request *ModifyIpsRulesRequest) (_result *M
 
 // Summary:
 //
-// 修改IPS规则为默认
+// Resets Intrusion Prevention System (IPS) rules to the default settings.
 //
 // @param request - ModifyIpsRulesToDefaultRequest
 //
@@ -19356,7 +20152,7 @@ func (client *Client) ModifyIpsRulesToDefaultWithOptions(request *ModifyIpsRules
 
 // Summary:
 //
-// 修改IPS规则为默认
+// Resets Intrusion Prevention System (IPS) rules to the default settings.
 //
 // @param request - ModifyIpsRulesToDefaultRequest
 //
@@ -19374,11 +20170,11 @@ func (client *Client) ModifyIpsRulesToDefault(request *ModifyIpsRulesToDefaultRe
 
 // Summary:
 //
-// Modifies the configurations of an access control policy that is created for a NAT firewall.
+// Modify a NAT Firewall security access control policy.
 //
 // Description:
 //
-// You can use this operation to modify the configurations of an access control policy. The policy is used to allow, deny, or monitor traffic that reaches a NAT firewall.
+// This API modifies the configuration of an access control policy that allows, denies, or observes traffic passing through a NAT Firewall.
 //
 // @param request - ModifyNatFirewallControlPolicyRequest
 //
@@ -19510,11 +20306,11 @@ func (client *Client) ModifyNatFirewallControlPolicyWithOptions(request *ModifyN
 
 // Summary:
 //
-// Modifies the configurations of an access control policy that is created for a NAT firewall.
+// Modify a NAT Firewall security access control policy.
 //
 // Description:
 //
-// You can use this operation to modify the configurations of an access control policy. The policy is used to allow, deny, or monitor traffic that reaches a NAT firewall.
+// This API modifies the configuration of an access control policy that allows, denies, or observes traffic passing through a NAT Firewall.
 //
 // @param request - ModifyNatFirewallControlPolicyRequest
 //
@@ -19532,7 +20328,7 @@ func (client *Client) ModifyNatFirewallControlPolicy(request *ModifyNatFirewallC
 
 // Summary:
 //
-// Modifies the priority of an access control policy that is created for a NAT firewall.
+// Modifies the priority of an access control policy for a NAT firewall.
 //
 // @param request - ModifyNatFirewallControlPolicyPositionRequest
 //
@@ -19592,7 +20388,7 @@ func (client *Client) ModifyNatFirewallControlPolicyPositionWithOptions(request 
 
 // Summary:
 //
-// Modifies the priority of an access control policy that is created for a NAT firewall.
+// Modifies the priority of an access control policy for a NAT firewall.
 //
 // @param request - ModifyNatFirewallControlPolicyPositionRequest
 //
@@ -19610,7 +20406,7 @@ func (client *Client) ModifyNatFirewallControlPolicyPosition(request *ModifyNatF
 
 // Summary:
 //
-// Modifies information about an operation on an object group.
+// Modifies the operation for an object group.
 //
 // @param request - ModifyObjectGroupOperationRequest
 //
@@ -19678,7 +20474,7 @@ func (client *Client) ModifyObjectGroupOperationWithOptions(request *ModifyObjec
 
 // Summary:
 //
-// Modifies information about an operation on an object group.
+// Modifies the operation for an object group.
 //
 // @param request - ModifyObjectGroupOperationRequest
 //
@@ -19696,15 +20492,15 @@ func (client *Client) ModifyObjectGroupOperation(request *ModifyObjectGroupOpera
 
 // Summary:
 //
-// Enables or disables the strict mode for an access control policy.
+// Enables or disables the strict mode for access control policies.
 //
 // Description:
 //
-// You can call the ModifyPolicyAdvancedConfig operation to enable or disable the strict mode for an access control policy.
+// This operation enables or disables the strict mode for access control policies.
 //
-// ## Limits
+// ## QPS limits
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The queries per second (QPS) limit for this operation is 10 calls per second per user. If you exceed the limit, API calls are throttled, which can affect your business. We recommend that you call this operation at a reasonable rate.
 //
 // @param request - ModifyPolicyAdvancedConfigRequest
 //
@@ -19760,15 +20556,15 @@ func (client *Client) ModifyPolicyAdvancedConfigWithOptions(request *ModifyPolic
 
 // Summary:
 //
-// Enables or disables the strict mode for an access control policy.
+// Enables or disables the strict mode for access control policies.
 //
 // Description:
 //
-// You can call the ModifyPolicyAdvancedConfig operation to enable or disable the strict mode for an access control policy.
+// This operation enables or disables the strict mode for access control policies.
 //
-// ## Limits
+// ## QPS limits
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The queries per second (QPS) limit for this operation is 10 calls per second per user. If you exceed the limit, API calls are throttled, which can affect your business. We recommend that you call this operation at a reasonable rate.
 //
 // @param request - ModifyPolicyAdvancedConfigRequest
 //
@@ -19786,7 +20582,7 @@ func (client *Client) ModifyPolicyAdvancedConfig(request *ModifyPolicyAdvancedCo
 
 // Summary:
 //
-// 修改私网DNS终端节点
+// Modifies a private DNS endpoint.
 //
 // @param request - ModifyPrivateDnsEndpointRequest
 //
@@ -19850,7 +20646,7 @@ func (client *Client) ModifyPrivateDnsEndpointWithOptions(request *ModifyPrivate
 
 // Summary:
 //
-// 修改私网DNS终端节点
+// Modifies a private DNS endpoint.
 //
 // @param request - ModifyPrivateDnsEndpointRequest
 //
@@ -19868,7 +20664,7 @@ func (client *Client) ModifyPrivateDnsEndpoint(request *ModifyPrivateDnsEndpoint
 
 // Summary:
 //
-// 开启资产类型默认引流
+// Modifies the automatic protection settings for new assets.
 //
 // @param request - ModifyResourceTypeAutoEnableRequest
 //
@@ -19920,7 +20716,7 @@ func (client *Client) ModifyResourceTypeAutoEnableWithOptions(request *ModifyRes
 
 // Summary:
 //
-// 开启资产类型默认引流
+// Modifies the automatic protection settings for new assets.
 //
 // @param request - ModifyResourceTypeAutoEnableRequest
 //
@@ -19938,7 +20734,7 @@ func (client *Client) ModifyResourceTypeAutoEnable(request *ModifyResourceTypeAu
 
 // Summary:
 //
-// 修改敏感数据开关
+// Modifies the status of the sensitive data detection switch.
 //
 // @param request - ModifySensitiveSwitchRequest
 //
@@ -19990,7 +20786,7 @@ func (client *Client) ModifySensitiveSwitchWithOptions(request *ModifySensitiveS
 
 // Summary:
 //
-// 修改敏感数据开关
+// Modifies the status of the sensitive data detection switch.
 //
 // @param request - ModifySensitiveSwitchRequest
 //
@@ -20008,7 +20804,13 @@ func (client *Client) ModifySensitiveSwitch(request *ModifySensitiveSwitchReques
 
 // Summary:
 //
-// 修改SLS投递
+// Modifies the log delivery settings for Simple Log Service (SLS).
+//
+// Description:
+//
+// ## QPS limit
+//
+// You can call this API up to 10 times per second per user. If you exceed this limit, API calls are throttled, which may affect your business. Plan your calls accordingly.
 //
 // @param request - ModifySlsDispatchStatusRequest
 //
@@ -20068,7 +20870,13 @@ func (client *Client) ModifySlsDispatchStatusWithOptions(request *ModifySlsDispa
 
 // Summary:
 //
-// 修改SLS投递
+// Modifies the log delivery settings for Simple Log Service (SLS).
+//
+// Description:
+//
+// ## QPS limit
+//
+// You can call this API up to 10 times per second per user. If you exceed this limit, API calls are throttled, which may affect your business. Plan your calls accordingly.
 //
 // @param request - ModifySlsDispatchStatusRequest
 //
@@ -20086,7 +20894,7 @@ func (client *Client) ModifySlsDispatchStatus(request *ModifySlsDispatchStatusRe
 
 // Summary:
 //
-// 修改威胁情报配置的信息
+// Modifies the threat intelligence configuration.
 //
 // @param request - ModifyThreatIntelligenceSwitchRequest
 //
@@ -20130,7 +20938,7 @@ func (client *Client) ModifyThreatIntelligenceSwitchWithOptions(request *ModifyT
 
 // Summary:
 //
-// 修改威胁情报配置的信息
+// Modifies the threat intelligence configuration.
 //
 // @param request - ModifyThreatIntelligenceSwitchRequest
 //
@@ -20148,7 +20956,7 @@ func (client *Client) ModifyThreatIntelligenceSwitch(request *ModifyThreatIntell
 
 // Summary:
 //
-// Modifies the configuration of a virtual private cloud (VPC) firewall that is created for a transit router.
+// Modifies the configuration of a VPC firewall for a transit router.
 //
 // @param request - ModifyTrFirewallV2ConfigurationRequest
 //
@@ -20200,7 +21008,7 @@ func (client *Client) ModifyTrFirewallV2ConfigurationWithOptions(request *Modify
 
 // Summary:
 //
-// Modifies the configuration of a virtual private cloud (VPC) firewall that is created for a transit router.
+// Modifies the configuration of a VPC firewall for a transit router.
 //
 // @param request - ModifyTrFirewallV2ConfigurationRequest
 //
@@ -20218,7 +21026,11 @@ func (client *Client) ModifyTrFirewallV2Configuration(request *ModifyTrFirewallV
 
 // Summary:
 //
-// Modifies the effective scope of the routing policy created for the VPC firewall for a transit router.
+// Modifies the scope of a routing policy for a VPC firewall that is created for a Transit Router (TR).
+//
+// Description:
+//
+// You can modify the policy scope for *point-to-multipoint	- and *multipoint-to-multipoint	- scenarios, but not for *point-to-point	- scenarios.
 //
 // @param tmpReq - ModifyTrFirewallV2RoutePolicyScopeRequest
 //
@@ -20292,7 +21104,11 @@ func (client *Client) ModifyTrFirewallV2RoutePolicyScopeWithOptions(tmpReq *Modi
 
 // Summary:
 //
-// Modifies the effective scope of the routing policy created for the VPC firewall for a transit router.
+// Modifies the scope of a routing policy for a VPC firewall that is created for a Transit Router (TR).
+//
+// Description:
+//
+// You can modify the policy scope for *point-to-multipoint	- and *multipoint-to-multipoint	- scenarios, but not for *point-to-point	- scenarios.
 //
 // @param request - ModifyTrFirewallV2RoutePolicyScopeRequest
 //
@@ -20310,20 +21126,26 @@ func (client *Client) ModifyTrFirewallV2RoutePolicyScope(request *ModifyTrFirewa
 
 // Summary:
 //
-// 修改用户告警配置
+// Modifies user alert configuration.
 //
-// @param request - ModifyUserAlarmConfigRequest
+// @param tmpReq - ModifyUserAlarmConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyUserAlarmConfigResponse
-func (client *Client) ModifyUserAlarmConfigWithOptions(request *ModifyUserAlarmConfigRequest, runtime *dara.RuntimeOptions) (_result *ModifyUserAlarmConfigResponse, _err error) {
+func (client *Client) ModifyUserAlarmConfigWithOptions(tmpReq *ModifyUserAlarmConfigRequest, runtime *dara.RuntimeOptions) (_result *ModifyUserAlarmConfigResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &ModifyUserAlarmConfigShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ContactConfig) {
+		request.ContactConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ContactConfig, dara.String("ContactConfig"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AlarmConfig) {
 		query["AlarmConfig"] = request.AlarmConfig
@@ -20333,8 +21155,8 @@ func (client *Client) ModifyUserAlarmConfigWithOptions(request *ModifyUserAlarmC
 		query["AlarmLang"] = request.AlarmLang
 	}
 
-	if !dara.IsNil(request.ContactConfig) {
-		query["ContactConfig"] = request.ContactConfig
+	if !dara.IsNil(request.ContactConfigShrink) {
+		query["ContactConfig"] = request.ContactConfigShrink
 	}
 
 	if !dara.IsNil(request.Lang) {
@@ -20343,10 +21165,6 @@ func (client *Client) ModifyUserAlarmConfigWithOptions(request *ModifyUserAlarmC
 
 	if !dara.IsNil(request.Lang) {
 		query["Lang"] = request.Lang
-	}
-
-	if !dara.IsNil(request.NotifyConfig) {
-		query["NotifyConfig"] = request.NotifyConfig
 	}
 
 	if !dara.IsNil(request.SourceIp) {
@@ -20382,7 +21200,7 @@ func (client *Client) ModifyUserAlarmConfigWithOptions(request *ModifyUserAlarmC
 
 // Summary:
 //
-// 修改用户告警配置
+// Modifies user alert configuration.
 //
 // @param request - ModifyUserAlarmConfigRequest
 //
@@ -20400,7 +21218,13 @@ func (client *Client) ModifyUserAlarmConfig(request *ModifyUserAlarmConfigReques
 
 // Summary:
 //
-// 修改用户IPS白名单
+// Modifies the intrusion prevention system (IPS) whitelist for the Internet Border.
+//
+// Description:
+//
+// ## QPS limit
+//
+// This API is limited to 10 queries per second (QPS) for each user. If you exceed this limit, API calls are throttled. This can affect your business. We recommend that you call the API at a reasonable rate.
 //
 // @param request - ModifyUserIPSWhitelistRequest
 //
@@ -20472,7 +21296,13 @@ func (client *Client) ModifyUserIPSWhitelistWithOptions(request *ModifyUserIPSWh
 
 // Summary:
 //
-// 修改用户IPS白名单
+// Modifies the intrusion prevention system (IPS) whitelist for the Internet Border.
+//
+// Description:
+//
+// ## QPS limit
+//
+// This API is limited to 10 queries per second (QPS) for each user. If you exceed this limit, API calls are throttled. This can affect your business. We recommend that you call the API at a reasonable rate.
 //
 // @param request - ModifyUserIPSWhitelistRequest
 //
@@ -20490,7 +21320,13 @@ func (client *Client) ModifyUserIPSWhitelist(request *ModifyUserIPSWhitelistRequ
 
 // Summary:
 //
-// 修改用户日志存储时间
+// Modifies the retention period of user logs.
+//
+// Description:
+//
+// ## QPS limit
+//
+// The queries per second (QPS) limit for this operation is 10 per user. Calls that exceed this limit are rate-limited, which may affect your business. Plan your calls accordingly.
 //
 // @param request - ModifyUserSlsLogStorageTimeRequest
 //
@@ -20546,7 +21382,13 @@ func (client *Client) ModifyUserSlsLogStorageTimeWithOptions(request *ModifyUser
 
 // Summary:
 //
-// 修改用户日志存储时间
+// Modifies the retention period of user logs.
+//
+// Description:
+//
+// ## QPS limit
+//
+// The queries per second (QPS) limit for this operation is 10 per user. Calls that exceed this limit are rate-limited, which may affect your business. Plan your calls accordingly.
 //
 // @param request - ModifyUserSlsLogStorageTimeRequest
 //
@@ -20564,7 +21406,13 @@ func (client *Client) ModifyUserSlsLogStorageTime(request *ModifyUserSlsLogStora
 
 // Summary:
 //
-// 修改VPC防火墙ACL引擎模式
+// Modifies the ACL engine mode for a VPC firewall.
+//
+// Description:
+//
+// ## QPS limit
+//
+// This API is limited to 10 queries per second (QPS) per user. Calls that exceed this limit are throttled. This may affect your business. Plan your API calls accordingly.
 //
 // @param request - ModifyVpcFirewallAclEngineModeRequest
 //
@@ -20616,7 +21464,13 @@ func (client *Client) ModifyVpcFirewallAclEngineModeWithOptions(request *ModifyV
 
 // Summary:
 //
-// 修改VPC防火墙ACL引擎模式
+// Modifies the ACL engine mode for a VPC firewall.
+//
+// Description:
+//
+// ## QPS limit
+//
+// This API is limited to 10 queries per second (QPS) per user. Calls that exceed this limit are throttled. This may affect your business. Plan your API calls accordingly.
 //
 // @param request - ModifyVpcFirewallAclEngineModeRequest
 //
@@ -20634,15 +21488,15 @@ func (client *Client) ModifyVpcFirewallAclEngineMode(request *ModifyVpcFirewallA
 
 // Summary:
 //
-// Modifies the configurations of a virtual private cloud (VPC) firewall. The VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a Cloud Enterprise Network (CEN) instance.
+// Modifies the configuration of a VPC firewall that protects traffic between network instances in a Cloud Enterprise Network (CEN) and a specified VPC.
 //
 // Description:
 //
-// You can call the ModifyVpcFirewallCenConfigure operation to modify the configurations of a VPC firewall. The VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance. Before you call this operation, make sure that you have created a VPC firewall by calling the [CreateVpcFirewallCenConfigure](https://help.aliyun.com/document_detail/345772.html) operation.
+// This operation modifies the configuration of a VPC firewall. The VPC firewall protects traffic between network instances in a Cloud Enterprise Network (CEN) and a specified VPC. The network instances include VPCs, virtual border routers (VBRs), and Cloud Connect Network (CCN) instances. Before you call this operation, you must call the [CreateVpcFirewallCenConfigure](https://help.aliyun.com/document_detail/345772.html) operation to create a VPC firewall.
 //
-// ## Limits
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The queries per second (QPS) limit for this operation is 10 for a single user. If the limit is exceeded, API calls are throttled. This may affect your business. Please plan your API calls accordingly.
 //
 // @param request - ModifyVpcFirewallCenConfigureRequest
 //
@@ -20698,15 +21552,15 @@ func (client *Client) ModifyVpcFirewallCenConfigureWithOptions(request *ModifyVp
 
 // Summary:
 //
-// Modifies the configurations of a virtual private cloud (VPC) firewall. The VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a Cloud Enterprise Network (CEN) instance.
+// Modifies the configuration of a VPC firewall that protects traffic between network instances in a Cloud Enterprise Network (CEN) and a specified VPC.
 //
 // Description:
 //
-// You can call the ModifyVpcFirewallCenConfigure operation to modify the configurations of a VPC firewall. The VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance. Before you call this operation, make sure that you have created a VPC firewall by calling the [CreateVpcFirewallCenConfigure](https://help.aliyun.com/document_detail/345772.html) operation.
+// This operation modifies the configuration of a VPC firewall. The VPC firewall protects traffic between network instances in a Cloud Enterprise Network (CEN) and a specified VPC. The network instances include VPCs, virtual border routers (VBRs), and Cloud Connect Network (CCN) instances. Before you call this operation, you must call the [CreateVpcFirewallCenConfigure](https://help.aliyun.com/document_detail/345772.html) operation to create a VPC firewall.
 //
-// ## Limits
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The queries per second (QPS) limit for this operation is 10 for a single user. If the limit is exceeded, API calls are throttled. This may affect your business. Please plan your API calls accordingly.
 //
 // @param request - ModifyVpcFirewallCenConfigureRequest
 //
@@ -20724,17 +21578,17 @@ func (client *Client) ModifyVpcFirewallCenConfigure(request *ModifyVpcFirewallCe
 
 // Summary:
 //
-// Enables or disables a virtual private cloud (VPC) firewall. The VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a Cloud Enterprise Network (CEN) instance.
+// Modifies the status of a VPC firewall that protects traffic between network instances in a Cloud Enterprise Network (CEN) and a specified VPC.
 //
 // Description:
 //
-// You can call the ModifyVpcFirewallCenSwitchStatus operation to enable or disable a VPC firewall. A VPC firewall protects mutual access traffic between a specified VPC and a network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance. After you enable the VPC firewall, the VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a CEN instance. After you disable the VPC firewall, the VPC firewall no longer protects mutual access traffic between a VPC and a specified network instance that is attached to a CEN instance.
+// This operation modifies the status of a VPC firewall. The firewall protects traffic between network instances in a Cloud Enterprise Network (CEN) and a specified Virtual Private Cloud (VPC). The network instances include VPCs, Virtual Border Routers (VBRs), and Cloud Connect Network (CCN) instances. If the firewall is enabled, it protects traffic between the network instances in the CEN and the specified VPC. If the firewall is disabled, it no longer protects this traffic.
 //
-// Before you call this operation, make sure that you have created a VPC firewall by calling the [CreateVpcFirewallCenConfigure](https://help.aliyun.com/document_detail/345772.html) operation.
+// Before you call this operation, you must create a VPC firewall by calling the [CreateVpcFirewallCenConfigure](https://help.aliyun.com/document_detail/345772.html) operation.
 //
 // ## Limits
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// This operation is limited to 10 queries per second (QPS) per user. If you exceed this limit, API calls are throttled. Throttling may affect your business. Plan your calls accordingly.
 //
 // @param request - ModifyVpcFirewallCenSwitchStatusRequest
 //
@@ -20790,17 +21644,17 @@ func (client *Client) ModifyVpcFirewallCenSwitchStatusWithOptions(request *Modif
 
 // Summary:
 //
-// Enables or disables a virtual private cloud (VPC) firewall. The VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a Cloud Enterprise Network (CEN) instance.
+// Modifies the status of a VPC firewall that protects traffic between network instances in a Cloud Enterprise Network (CEN) and a specified VPC.
 //
 // Description:
 //
-// You can call the ModifyVpcFirewallCenSwitchStatus operation to enable or disable a VPC firewall. A VPC firewall protects mutual access traffic between a specified VPC and a network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance. After you enable the VPC firewall, the VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a CEN instance. After you disable the VPC firewall, the VPC firewall no longer protects mutual access traffic between a VPC and a specified network instance that is attached to a CEN instance.
+// This operation modifies the status of a VPC firewall. The firewall protects traffic between network instances in a Cloud Enterprise Network (CEN) and a specified Virtual Private Cloud (VPC). The network instances include VPCs, Virtual Border Routers (VBRs), and Cloud Connect Network (CCN) instances. If the firewall is enabled, it protects traffic between the network instances in the CEN and the specified VPC. If the firewall is disabled, it no longer protects this traffic.
 //
-// Before you call this operation, make sure that you have created a VPC firewall by calling the [CreateVpcFirewallCenConfigure](https://help.aliyun.com/document_detail/345772.html) operation.
+// Before you call this operation, you must create a VPC firewall by calling the [CreateVpcFirewallCenConfigure](https://help.aliyun.com/document_detail/345772.html) operation.
 //
 // ## Limits
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// This operation is limited to 10 queries per second (QPS) per user. If you exceed this limit, API calls are throttled. Throttling may affect your business. Plan your calls accordingly.
 //
 // @param request - ModifyVpcFirewallCenSwitchStatusRequest
 //
@@ -20818,15 +21672,15 @@ func (client *Client) ModifyVpcFirewallCenSwitchStatus(request *ModifyVpcFirewal
 
 // Summary:
 //
-// Modifies the configurations of a virtual private cloud (VPC) firewall. The VPC firewall controls traffic between two VPCs that are connected by using an Express Connect circuit.
+// Modifies the configuration of a VPC firewall that protects traffic between two VPCs connected by an Express Connect circuit.
 //
 // Description:
 //
-// You can call the ModifyVpcFirewallConfigure operation to modify the configurations of a VPC firewall. The VPC firewall controls traffic between two VPCs that are connected by using an Express Connect circuit. Before you call the operation, make sure that you created a VPC firewall by calling the [CreateVpcFirewallConfigure](https://help.aliyun.com/document_detail/342893.html) operation.
+// This operation modifies the configuration of a VPC firewall that protects traffic between two VPCs connected by an Express Connect circuit. Before you call this operation, you must create a VPC firewall by calling the [CreateVpcFirewallConfigure](https://help.aliyun.com/document_detail/342893.html) operation.
 //
-// ## Limits
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The queries per second (QPS) limit for this operation is 10 calls per second for each user. If the number of calls per second exceeds the limit, throttling is triggered. Throttling may affect your business. You should plan your calls accordingly.
 //
 // @param request - ModifyVpcFirewallConfigureRequest
 //
@@ -20890,15 +21744,15 @@ func (client *Client) ModifyVpcFirewallConfigureWithOptions(request *ModifyVpcFi
 
 // Summary:
 //
-// Modifies the configurations of a virtual private cloud (VPC) firewall. The VPC firewall controls traffic between two VPCs that are connected by using an Express Connect circuit.
+// Modifies the configuration of a VPC firewall that protects traffic between two VPCs connected by an Express Connect circuit.
 //
 // Description:
 //
-// You can call the ModifyVpcFirewallConfigure operation to modify the configurations of a VPC firewall. The VPC firewall controls traffic between two VPCs that are connected by using an Express Connect circuit. Before you call the operation, make sure that you created a VPC firewall by calling the [CreateVpcFirewallConfigure](https://help.aliyun.com/document_detail/342893.html) operation.
+// This operation modifies the configuration of a VPC firewall that protects traffic between two VPCs connected by an Express Connect circuit. Before you call this operation, you must create a VPC firewall by calling the [CreateVpcFirewallConfigure](https://help.aliyun.com/document_detail/342893.html) operation.
 //
-// ## Limits
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The queries per second (QPS) limit for this operation is 10 calls per second for each user. If the number of calls per second exceeds the limit, throttling is triggered. Throttling may affect your business. You should plan your calls accordingly.
 //
 // @param request - ModifyVpcFirewallConfigureRequest
 //
@@ -20916,15 +21770,15 @@ func (client *Client) ModifyVpcFirewallConfigure(request *ModifyVpcFirewallConfi
 
 // Summary:
 //
-// Modifies the configurations of an access control policy that is created for a virtual private cloud (VPC) firewall in a specified policy group.
+// Modifies the configuration of an access control policy for a specified VPC firewall policy group.
 //
 // Description:
 //
-// You can call the ModifyVpcFirewallControlPolicy operation to modify the configurations of an access control policy that is created for a VPC firewall in a specified policy group. Different access control policies are used for the VPC firewalls that are used to protect each Cloud Enterprise Network (CEN) instance and the VPC firewalls that are used to protect each Express Connect circuit.
+// This operation modifies the configuration of an access control policy for a specified VPC firewall policy group. VPC firewall instances use different access control policies to protect Cloud Enterprise Network (CEN) instances and Express Connect circuits.
 //
-// ## Limits
+// ## QPS limits
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The queries per second (QPS) limit for this operation is 10 for a single user. If the number of calls to this operation per second exceeds the limit, rate limiting is triggered. This may affect your business. Plan your calls accordingly.
 //
 // @param request - ModifyVpcFirewallControlPolicyRequest
 //
@@ -21056,15 +21910,15 @@ func (client *Client) ModifyVpcFirewallControlPolicyWithOptions(request *ModifyV
 
 // Summary:
 //
-// Modifies the configurations of an access control policy that is created for a virtual private cloud (VPC) firewall in a specified policy group.
+// Modifies the configuration of an access control policy for a specified VPC firewall policy group.
 //
 // Description:
 //
-// You can call the ModifyVpcFirewallControlPolicy operation to modify the configurations of an access control policy that is created for a VPC firewall in a specified policy group. Different access control policies are used for the VPC firewalls that are used to protect each Cloud Enterprise Network (CEN) instance and the VPC firewalls that are used to protect each Express Connect circuit.
+// This operation modifies the configuration of an access control policy for a specified VPC firewall policy group. VPC firewall instances use different access control policies to protect Cloud Enterprise Network (CEN) instances and Express Connect circuits.
 //
-// ## Limits
+// ## QPS limits
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The queries per second (QPS) limit for this operation is 10 for a single user. If the number of calls to this operation per second exceeds the limit, rate limiting is triggered. This may affect your business. Plan your calls accordingly.
 //
 // @param request - ModifyVpcFirewallControlPolicyRequest
 //
@@ -21082,15 +21936,15 @@ func (client *Client) ModifyVpcFirewallControlPolicy(request *ModifyVpcFirewallC
 
 // Summary:
 //
-// Modifies the priority of an access control policy that is created for a virtual private cloud (VPC) firewall in a specific policy group.
+// Modifies the priority of an access control policy in a policy group for a VPC firewall.
 //
 // Description:
 //
-// You can use this operation to modify the priority of an access control policy that is created for a VPC firewall in a specific policy group.
+// You can call this operation to modify the priority of an access control policy in a policy group for a VPC firewall.
 //
-// ## Limits
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The limit on the number of queries per second (QPS) for a single user is 10. If you exceed this limit, API calls are throttled. This may affect your business. Plan your calls accordingly.
 //
 // @param request - ModifyVpcFirewallControlPolicyPositionRequest
 //
@@ -21150,15 +22004,15 @@ func (client *Client) ModifyVpcFirewallControlPolicyPositionWithOptions(request 
 
 // Summary:
 //
-// Modifies the priority of an access control policy that is created for a virtual private cloud (VPC) firewall in a specific policy group.
+// Modifies the priority of an access control policy in a policy group for a VPC firewall.
 //
 // Description:
 //
-// You can use this operation to modify the priority of an access control policy that is created for a VPC firewall in a specific policy group.
+// You can call this operation to modify the priority of an access control policy in a policy group for a VPC firewall.
 //
-// ## Limits
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The limit on the number of queries per second (QPS) for a single user is 10. If you exceed this limit, API calls are throttled. This may affect your business. Plan your calls accordingly.
 //
 // @param request - ModifyVpcFirewallControlPolicyPositionRequest
 //
@@ -21176,15 +22030,15 @@ func (client *Client) ModifyVpcFirewallControlPolicyPosition(request *ModifyVpcF
 
 // Summary:
 //
-// Modifies the intrusion prevention configurations of a virtual private cloud (VPC) firewall.
+// Modifies the intrusion prevention configuration of a VPC firewall.
 //
 // Description:
 //
-// You can call this operation to modify the intrusion prevention configurations of a VPC firewall.
+// You can call this operation to modify the intrusion prevention configuration of a VPC firewall.
 //
-// ## [](#qps-)Limits
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The queries per second (QPS) limit for this operation is 10 per user. If the QPS limit is exceeded, API calls are throttled. This may affect your business. We recommend that you take this limit into consideration when you call this operation.
 //
 // @param request - ModifyVpcFirewallDefaultIPSConfigRequest
 //
@@ -21256,15 +22110,15 @@ func (client *Client) ModifyVpcFirewallDefaultIPSConfigWithOptions(request *Modi
 
 // Summary:
 //
-// Modifies the intrusion prevention configurations of a virtual private cloud (VPC) firewall.
+// Modifies the intrusion prevention configuration of a VPC firewall.
 //
 // Description:
 //
-// You can call this operation to modify the intrusion prevention configurations of a VPC firewall.
+// You can call this operation to modify the intrusion prevention configuration of a VPC firewall.
 //
-// ## [](#qps-)Limits
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The queries per second (QPS) limit for this operation is 10 per user. If the QPS limit is exceeded, API calls are throttled. This may affect your business. We recommend that you take this limit into consideration when you call this operation.
 //
 // @param request - ModifyVpcFirewallDefaultIPSConfigRequest
 //
@@ -21282,7 +22136,7 @@ func (client *Client) ModifyVpcFirewallDefaultIPSConfig(request *ModifyVpcFirewa
 
 // Summary:
 //
-// Modifies the IPS whitelist of a virtual private cloud (VPC) firewall.
+// Modifies the intrusion prevention system (IPS) whitelist for a VPC firewall.
 //
 // @param request - ModifyVpcFirewallIPSWhitelistRequest
 //
@@ -21346,7 +22200,7 @@ func (client *Client) ModifyVpcFirewallIPSWhitelistWithOptions(request *ModifyVp
 
 // Summary:
 //
-// Modifies the IPS whitelist of a virtual private cloud (VPC) firewall.
+// Modifies the intrusion prevention system (IPS) whitelist for a VPC firewall.
 //
 // @param request - ModifyVpcFirewallIPSWhitelistRequest
 //
@@ -21364,17 +22218,17 @@ func (client *Client) ModifyVpcFirewallIPSWhitelist(request *ModifyVpcFirewallIP
 
 // Summary:
 //
-// Enables or disables a virtual private cloud (VPC) firewall. The VPC firewall protects traffic between two VPCs that are connected by using an Express Connect circuit.
+// Enables or disables a VPC firewall. A VPC firewall protects traffic between two VPCs that are connected by an Express Connect circuit.
 //
 // Description:
 //
-// You can call the ModifyVpcFirewallSwitchStatus operation to enable or disable a VPC firewall. The VPC firewall protects traffic between two VPCs that are connected by using an Express Connect circuit. After you enable the VPC firewall, the VPC firewall protects access traffic between two VPCs that are connected by using an Express Connect circuit. After you disable the VPC firewall, the VPC firewall no longer protects access traffic between two VPCs that are connected by using an Express Connect circuit.
+// This API call modifies the status of a VPC firewall. A VPC firewall protects traffic between two virtual private clouds (VPCs) that are connected by an Express Connect circuit. When the VPC firewall is enabled, it protects traffic between the two VPCs. When the VPC firewall is disabled, it no longer protects traffic between the two VPCs.
 //
-// Before you call the operation, make sure that you created a VPC firewall by calling the [CreateVpcFirewallConfigure](https://help.aliyun.com/document_detail/342893.html) operation.
+// Before you make this API call, you must create a VPC firewall using the [CreateVpcFirewallConfigure](https://help.aliyun.com/document_detail/342893.html) API call.
 //
-// ## Limits
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The queries per second (QPS) limit for this API call is 10 for each Alibaba Cloud account. If you exceed the limit, your API calls are throttled, which may affect your business. Plan your API calls accordingly.
 //
 // @param request - ModifyVpcFirewallSwitchStatusRequest
 //
@@ -21430,17 +22284,17 @@ func (client *Client) ModifyVpcFirewallSwitchStatusWithOptions(request *ModifyVp
 
 // Summary:
 //
-// Enables or disables a virtual private cloud (VPC) firewall. The VPC firewall protects traffic between two VPCs that are connected by using an Express Connect circuit.
+// Enables or disables a VPC firewall. A VPC firewall protects traffic between two VPCs that are connected by an Express Connect circuit.
 //
 // Description:
 //
-// You can call the ModifyVpcFirewallSwitchStatus operation to enable or disable a VPC firewall. The VPC firewall protects traffic between two VPCs that are connected by using an Express Connect circuit. After you enable the VPC firewall, the VPC firewall protects access traffic between two VPCs that are connected by using an Express Connect circuit. After you disable the VPC firewall, the VPC firewall no longer protects access traffic between two VPCs that are connected by using an Express Connect circuit.
+// This API call modifies the status of a VPC firewall. A VPC firewall protects traffic between two virtual private clouds (VPCs) that are connected by an Express Connect circuit. When the VPC firewall is enabled, it protects traffic between the two VPCs. When the VPC firewall is disabled, it no longer protects traffic between the two VPCs.
 //
-// Before you call the operation, make sure that you created a VPC firewall by calling the [CreateVpcFirewallConfigure](https://help.aliyun.com/document_detail/342893.html) operation.
+// Before you make this API call, you must create a VPC firewall using the [CreateVpcFirewallConfigure](https://help.aliyun.com/document_detail/342893.html) API call.
 //
-// ## Limits
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The queries per second (QPS) limit for this API call is 10 for each Alibaba Cloud account. If you exceed the limit, your API calls are throttled, which may affect your business. Plan your API calls accordingly.
 //
 // @param request - ModifyVpcFirewallSwitchStatusRequest
 //
@@ -21458,15 +22312,15 @@ func (client *Client) ModifyVpcFirewallSwitchStatus(request *ModifyVpcFirewallSw
 
 // Summary:
 //
-// Turns off all firewall switches.
+// Disables all firewall switches.
 //
 // Description:
 //
-// You can call the PutDisableAllFwSwitch operation to turn off all firewall switches.
+// This operation disables all firewall switches.
 //
-// ## [](#qps-)QPS limits
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// Each user can send up to 10 queries per second (QPS). If you exceed this limit, API calls are throttled, which may affect your business. Plan your calls accordingly.
 //
 // @param request - PutDisableAllFwSwitchRequest
 //
@@ -21518,15 +22372,15 @@ func (client *Client) PutDisableAllFwSwitchWithOptions(request *PutDisableAllFwS
 
 // Summary:
 //
-// Turns off all firewall switches.
+// Disables all firewall switches.
 //
 // Description:
 //
-// You can call the PutDisableAllFwSwitch operation to turn off all firewall switches.
+// This operation disables all firewall switches.
 //
-// ## [](#qps-)QPS limits
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// Each user can send up to 10 queries per second (QPS). If you exceed this limit, API calls are throttled, which may affect your business. Plan your calls accordingly.
 //
 // @param request - PutDisableAllFwSwitchRequest
 //
@@ -21544,15 +22398,15 @@ func (client *Client) PutDisableAllFwSwitch(request *PutDisableAllFwSwitchReques
 
 // Summary:
 //
-// Disable a firewall for specific assets.
+// Disables a firewall switch.
 //
 // Description:
 //
-// You can call the PutDisableFwSwitch operation to disable a firewall for specific assets. After you disable the firewall, traffic does not pass through Cloud Firewall.
+// This operation disables a firewall switch. After a firewall switch is disabled, traffic is no longer routed through Cloud Firewall.
 //
-// ## Limits
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The QPS limit for this operation is 10 requests per second per user. Calls that exceed this limit are throttled, which may affect your business.
 //
 // @param request - PutDisableFwSwitchRequest
 //
@@ -21620,15 +22474,15 @@ func (client *Client) PutDisableFwSwitchWithOptions(request *PutDisableFwSwitchR
 
 // Summary:
 //
-// Disable a firewall for specific assets.
+// Disables a firewall switch.
 //
 // Description:
 //
-// You can call the PutDisableFwSwitch operation to disable a firewall for specific assets. After you disable the firewall, traffic does not pass through Cloud Firewall.
+// This operation disables a firewall switch. After a firewall switch is disabled, traffic is no longer routed through Cloud Firewall.
 //
-// ## Limits
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The QPS limit for this operation is 10 requests per second per user. Calls that exceed this limit are throttled, which may affect your business.
 //
 // @param request - PutDisableFwSwitchRequest
 //
@@ -21646,15 +22500,15 @@ func (client *Client) PutDisableFwSwitch(request *PutDisableFwSwitchRequest) (_r
 
 // Summary:
 //
-// Enables a firewall for all public IP addresses within your Alibaba Cloud account.
+// Enables all firewall switches.
 //
 // Description:
 //
-// You can call the PutEnableAllFwSwitch operation to enable a firewall for all public IP addresses within your Alibaba Cloud account.
+// This API operation protects all public IP addresses of your Alibaba Cloud account.
 //
-// ## Limits
+// ## QPS limits
 //
-// You can call this operation up to 10 times per second per account. You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// This API operation is limited to 10 queries per second (QPS) per user. If you exceed this limit, API calls are throttled, which may affect your business. We recommend that you call this API operation at a reasonable rate.
 //
 // @param request - PutEnableAllFwSwitchRequest
 //
@@ -21706,15 +22560,15 @@ func (client *Client) PutEnableAllFwSwitchWithOptions(request *PutEnableAllFwSwi
 
 // Summary:
 //
-// Enables a firewall for all public IP addresses within your Alibaba Cloud account.
+// Enables all firewall switches.
 //
 // Description:
 //
-// You can call the PutEnableAllFwSwitch operation to enable a firewall for all public IP addresses within your Alibaba Cloud account.
+// This API operation protects all public IP addresses of your Alibaba Cloud account.
 //
-// ## Limits
+// ## QPS limits
 //
-// You can call this operation up to 10 times per second per account. You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// This API operation is limited to 10 queries per second (QPS) per user. If you exceed this limit, API calls are throttled, which may affect your business. We recommend that you call this API operation at a reasonable rate.
 //
 // @param request - PutEnableAllFwSwitchRequest
 //
@@ -21732,15 +22586,15 @@ func (client *Client) PutEnableAllFwSwitch(request *PutEnableAllFwSwitchRequest)
 
 // Summary:
 //
-// Enables firewalls for specific assets.
+// Enable the firewall.
 //
 // Description:
 //
-// You can call this operation to enable a firewall. After you enable a firewall, traffic passes through Cloud Firewall.
+// This API enables the firewall switch. Once enabled, traffic is routed through Cloud Firewall.
 //
-// ## [](#qps-)Limits
+// ## QPS limit
 //
-// You can call this operation up to five times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The QPS limit for this API is 5 requests per second for a single user. If you exceed this limit, the system throttles API calls, which may affect your business.
 //
 // @param request - PutEnableFwSwitchRequest
 //
@@ -21808,15 +22662,15 @@ func (client *Client) PutEnableFwSwitchWithOptions(request *PutEnableFwSwitchReq
 
 // Summary:
 //
-// Enables firewalls for specific assets.
+// Enable the firewall.
 //
 // Description:
 //
-// You can call this operation to enable a firewall. After you enable a firewall, traffic passes through Cloud Firewall.
+// This API enables the firewall switch. Once enabled, traffic is routed through Cloud Firewall.
 //
-// ## [](#qps-)Limits
+// ## QPS limit
 //
-// You can call this operation up to five times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The QPS limit for this API is 5 requests per second for a single user. If you exceed this limit, the system throttles API calls, which may affect your business.
 //
 // @param request - PutEnableFwSwitchRequest
 //
@@ -21834,7 +22688,7 @@ func (client *Client) PutEnableFwSwitch(request *PutEnableFwSwitchRequest) (_res
 
 // Summary:
 //
-// 释放已过期的实例
+// Releases an expired instance.
 //
 // @param request - ReleaseExpiredInstanceRequest
 //
@@ -21878,7 +22732,7 @@ func (client *Client) ReleaseExpiredInstanceWithOptions(request *ReleaseExpiredI
 
 // Summary:
 //
-// 释放已过期的实例
+// Releases an expired instance.
 //
 // @param request - ReleaseExpiredInstanceRequest
 //
@@ -21896,7 +22750,7 @@ func (client *Client) ReleaseExpiredInstance(request *ReleaseExpiredInstanceRequ
 
 // Summary:
 //
-// Releases Cloud Firewall that uses the pay-as-you-go billing method.
+// Releases a pay-as-you-go firewall.
 //
 // @param request - ReleasePostInstanceRequest
 //
@@ -21940,7 +22794,7 @@ func (client *Client) ReleasePostInstanceWithOptions(request *ReleasePostInstanc
 
 // Summary:
 //
-// Releases Cloud Firewall that uses the pay-as-you-go billing method.
+// Releases a pay-as-you-go firewall.
 //
 // @param request - ReleasePostInstanceRequest
 //
@@ -21958,7 +22812,7 @@ func (client *Client) ReleasePostInstance(request *ReleasePostInstanceRequest) (
 
 // Summary:
 //
-// Resets the number of NAT firewall hits.
+// Resets the hit count of a NAT firewall rule.
 //
 // @param request - ResetNatFirewallRuleHitCountRequest
 //
@@ -22010,7 +22864,7 @@ func (client *Client) ResetNatFirewallRuleHitCountWithOptions(request *ResetNatF
 
 // Summary:
 //
-// Resets the number of NAT firewall hits.
+// Resets the hit count of a NAT firewall rule.
 //
 // @param request - ResetNatFirewallRuleHitCountRequest
 //
@@ -22028,7 +22882,15 @@ func (client *Client) ResetNatFirewallRuleHitCount(request *ResetNatFirewallRule
 
 // Summary:
 //
-// 重置规则命中数
+// Resets the hit count of a rule.
+//
+// Description:
+//
+// This operation resets the hit count of an access control policy in a VPC firewall policy group.
+//
+// ## QPS limit
+//
+// This operation is limited to 10 queries per second (QPS) per user. If you exceed this limit, API calls are throttled, which may impact your business. Plan your calls accordingly.
 //
 // @param request - ResetRuleHitCountRequest
 //
@@ -22080,7 +22942,15 @@ func (client *Client) ResetRuleHitCountWithOptions(request *ResetRuleHitCountReq
 
 // Summary:
 //
-// 重置规则命中数
+// Resets the hit count of a rule.
+//
+// Description:
+//
+// This operation resets the hit count of an access control policy in a VPC firewall policy group.
+//
+// ## QPS limit
+//
+// This operation is limited to 10 queries per second (QPS) per user. If you exceed this limit, API calls are throttled, which may impact your business. Plan your calls accordingly.
 //
 // @param request - ResetRuleHitCountRequest
 //
@@ -22098,15 +22968,15 @@ func (client *Client) ResetRuleHitCount(request *ResetRuleHitCountRequest) (_res
 
 // Summary:
 //
-// Clears the count on hits of an access control policy that is created for a virtual private cloud (VPC) firewall in a specific policy group.
+// Resets the hit count of an access control policy in a specified VPC firewall policy group to zero.
 //
 // Description:
 //
-// You can call the ResetVpcFirewallRuleHitCount operation to clear the count on hits of an access control policy that is created for a VPC firewall in a specific policy group.
+// This operation resets the hit count of a specific access control policy in a VPC firewall policy group to zero.
 //
-// ## Limits
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// This operation has a queries per second (QPS) limit of 10 per user. Calls that exceed this limit are throttled, which may affect your business. Call this operation at a reasonable rate.
 //
 // @param request - ResetVpcFirewallRuleHitCountRequest
 //
@@ -22154,15 +23024,15 @@ func (client *Client) ResetVpcFirewallRuleHitCountWithOptions(request *ResetVpcF
 
 // Summary:
 //
-// Clears the count on hits of an access control policy that is created for a virtual private cloud (VPC) firewall in a specific policy group.
+// Resets the hit count of an access control policy in a specified VPC firewall policy group to zero.
 //
 // Description:
 //
-// You can call the ResetVpcFirewallRuleHitCount operation to clear the count on hits of an access control policy that is created for a VPC firewall in a specific policy group.
+// This operation resets the hit count of a specific access control policy in a VPC firewall policy group to zero.
 //
-// ## Limits
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// This operation has a queries per second (QPS) limit of 10 per user. Calls that exceed this limit are throttled, which may affect your business. Call this operation at a reasonable rate.
 //
 // @param request - ResetVpcFirewallRuleHitCountRequest
 //
@@ -22180,7 +23050,11 @@ func (client *Client) ResetVpcFirewallRuleHitCount(request *ResetVpcFirewallRule
 
 // Summary:
 //
-// 开启自动保护新入资产
+// Enables automatic protection for new assets.
+//
+// Description:
+//
+// Each Cloud Firewall instance supports up to 100 associations with TLS inspection policies.
 //
 // @param request - SetAutoProtectNewAssetsRequest
 //
@@ -22232,7 +23106,11 @@ func (client *Client) SetAutoProtectNewAssetsWithOptions(request *SetAutoProtect
 
 // Summary:
 //
-// 开启自动保护新入资产
+// Enables automatic protection for new assets.
+//
+// Description:
+//
+// Each Cloud Firewall instance supports up to 100 associations with TLS inspection policies.
 //
 // @param request - SetAutoProtectNewAssetsRequest
 //
@@ -22320,7 +23198,11 @@ func (client *Client) SwitchSecurityProxy(request *SwitchSecurityProxyRequest) (
 
 // Summary:
 //
-// 修改AI流量分析开启状态
+// Changes the enabling status of AI-powered traffic analysis.
+//
+// Description:
+//
+// The analysis covers all data for your Cloud Firewall instance from the date of purchase.
 //
 // @param request - UpdateAITrafficAnalysisStatusRequest
 //
@@ -22364,7 +23246,11 @@ func (client *Client) UpdateAITrafficAnalysisStatusWithOptions(request *UpdateAI
 
 // Summary:
 //
-// 修改AI流量分析开启状态
+// Changes the enabling status of AI-powered traffic analysis.
+//
+// Description:
+//
+// The analysis covers all data for your Cloud Firewall instance from the date of purchase.
 //
 // @param request - UpdateAITrafficAnalysisStatusRequest
 //
@@ -22382,7 +23268,7 @@ func (client *Client) UpdateAITrafficAnalysisStatus(request *UpdateAITrafficAnal
 
 // Summary:
 //
-// 修改ACK集群连接器
+// Updates an ACK cluster connector.
 //
 // @param request - UpdateAckClusterConnectorRequest
 //
@@ -22434,7 +23320,7 @@ func (client *Client) UpdateAckClusterConnectorWithOptions(request *UpdateAckClu
 
 // Summary:
 //
-// 修改ACK集群连接器
+// Updates an ACK cluster connector.
 //
 // @param request - UpdateAckClusterConnectorRequest
 //
@@ -22452,7 +23338,13 @@ func (client *Client) UpdateAckClusterConnector(request *UpdateAckClusterConnect
 
 // Summary:
 //
-// 修改ACL检查状态
+// Updates the status of an access control list (ACL) check detail.
+//
+// Description:
+//
+// ## QPS limit
+//
+// The QPS limit for a single user is 10 requests per second. To avoid service disruptions from throttling, ensure your API calls do not exceed this limit.
 //
 // @param request - UpdateAclCheckDetailStatusRequest
 //
@@ -22508,7 +23400,13 @@ func (client *Client) UpdateAclCheckDetailStatusWithOptions(request *UpdateAclCh
 
 // Summary:
 //
-// 修改ACL检查状态
+// Updates the status of an access control list (ACL) check detail.
+//
+// Description:
+//
+// ## QPS limit
+//
+// The QPS limit for a single user is 10 requests per second. To avoid service disruptions from throttling, ensure your API calls do not exceed this limit.
 //
 // @param request - UpdateAclCheckDetailStatusRequest
 //
@@ -22526,7 +23424,7 @@ func (client *Client) UpdateAclCheckDetailStatus(request *UpdateAclCheckDetailSt
 
 // Summary:
 //
-// Updates the status of the NAT firewall feature for Cloud Firewall that uses the pay-as-you-go billing method.
+// Updates the Internet Border firewall status for a pay-as-you-go user.
 //
 // @param request - UpdatePostpayUserInternetStatusRequest
 //
@@ -22578,7 +23476,7 @@ func (client *Client) UpdatePostpayUserInternetStatusWithOptions(request *Update
 
 // Summary:
 //
-// Updates the status of the NAT firewall feature for Cloud Firewall that uses the pay-as-you-go billing method.
+// Updates the Internet Border firewall status for a pay-as-you-go user.
 //
 // @param request - UpdatePostpayUserInternetStatusRequest
 //
@@ -22596,7 +23494,7 @@ func (client *Client) UpdatePostpayUserInternetStatus(request *UpdatePostpayUser
 
 // Summary:
 //
-// Updates the status of the NAT Firewall feature for Cloud Firewall that uses the pay-as-you-go billing method.
+// Updates the status of a NAT border firewall for a pay-as-you-go instance.
 //
 // @param request - UpdatePostpayUserNatStatusRequest
 //
@@ -22648,7 +23546,7 @@ func (client *Client) UpdatePostpayUserNatStatusWithOptions(request *UpdatePostp
 
 // Summary:
 //
-// Updates the status of the NAT Firewall feature for Cloud Firewall that uses the pay-as-you-go billing method.
+// Updates the status of a NAT border firewall for a pay-as-you-go instance.
 //
 // @param request - UpdatePostpayUserNatStatusRequest
 //
@@ -22666,7 +23564,7 @@ func (client *Client) UpdatePostpayUserNatStatus(request *UpdatePostpayUserNatSt
 
 // Summary:
 //
-// Updates the status of the virtual private cloud (VPC) Firewall feature for Cloud Firewall that uses the pay-as-you-go billing method.
+// Updates the status of the VPC border firewall for a pay-as-you-go user.
 //
 // @param request - UpdatePostpayUserVpcStatusRequest
 //
@@ -22718,7 +23616,7 @@ func (client *Client) UpdatePostpayUserVpcStatusWithOptions(request *UpdatePostp
 
 // Summary:
 //
-// Updates the status of the virtual private cloud (VPC) Firewall feature for Cloud Firewall that uses the pay-as-you-go billing method.
+// Updates the status of the VPC border firewall for a pay-as-you-go user.
 //
 // @param request - UpdatePostpayUserVpcStatusRequest
 //
@@ -22736,7 +23634,7 @@ func (client *Client) UpdatePostpayUserVpcStatus(request *UpdatePostpayUserVpcSt
 
 // Summary:
 //
-// 更新安全正向代理
+// Updates a NAT firewall.
 //
 // @param request - UpdateSecurityProxyRequest
 //
@@ -22792,7 +23690,7 @@ func (client *Client) UpdateSecurityProxyWithOptions(request *UpdateSecurityProx
 
 // Summary:
 //
-// 更新安全正向代理
+// Updates a NAT firewall.
 //
 // @param request - UpdateSecurityProxyRequest
 //
@@ -22810,7 +23708,7 @@ func (client *Client) UpdateSecurityProxy(request *UpdateSecurityProxyRequest) (
 
 // Summary:
 //
-// 使用ACL备份
+// Restores an access control backup.
 //
 // @param request - UseAclBackupDataRequest
 //
@@ -22862,7 +23760,7 @@ func (client *Client) UseAclBackupDataWithOptions(request *UseAclBackupDataReque
 
 // Summary:
 //
-// 使用ACL备份
+// Restores an access control backup.
 //
 // @param request - UseAclBackupDataRequest
 //

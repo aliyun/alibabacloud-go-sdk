@@ -18,14 +18,20 @@ type iDescribeSlrGrantResponseBody interface {
 }
 
 type DescribeSlrGrantResponseBody struct {
+	// Indicates whether the authorization is successful.
+	//
 	// example:
 	//
 	// true
 	IsGranted *bool `json:"IsGranted,omitempty" xml:"IsGranted,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 1BD3D277-AE2F-5609-893F-FF7A72A****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The type of the account.
+	//
 	// example:
 	//
 	// sub

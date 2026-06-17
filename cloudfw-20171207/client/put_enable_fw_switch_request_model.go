@@ -26,67 +26,87 @@ type iPutEnableFwSwitchRequest interface {
 }
 
 type PutEnableFwSwitchRequest struct {
+	// The IP version.
+	//
 	// example:
 	//
 	// 4
 	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	// The IP addresses.
+	// The list of IP addresses.
 	//
-	// > You must specify at least one of the IpaddrList, RegionList, and ResourceTypeList parameters.
+	// > You must specify at least one of the `IpaddrList`, `RegionList`, and `ResourceTypeList` parameters.
 	//
 	// example:
 	//
 	// ["192.0.X.X","192.0.X.X"]
 	IpaddrList []*string `json:"IpaddrList,omitempty" xml:"IpaddrList,omitempty" type:"Repeated"`
-	// The language of the content within the response.
+	// The language of the response. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The UID of the member.
+	//
 	// example:
 	//
 	// 1234
 	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
-	// The regions.
+	// The list of regions.
 	//
-	// > You must specify at least one of the IpaddrList, RegionList, and ResourceTypeList parameters.
+	// > You must specify at least one of the `IpaddrList`, `RegionList`, and `ResourceTypeList` parameters.
 	//
 	// example:
 	//
 	// ["cn-hangzhou","cn-shanghai"]
 	RegionList []*string `json:"RegionList,omitempty" xml:"RegionList,omitempty" type:"Repeated"`
-	// The types of the assets.
+	// The list of asset types.
 	//
 	// Valid values:
 	//
-	// 	- BastionHostIP: the egress IP address of a bastion host
+	// - **BastionHostEgressIP**: the egress IP address of a bastion host.
 	//
-	// 	- BastionHostIngressIP: the ingress IP address of a bastion host
+	// - **BastionHostIngressIP**: the ingress IP address of a bastion host.
 	//
-	// 	- EcsEIP: the elastic IP address (EIP) of an Elastic Compute Service (ECS) instance
+	// - **EcsEIP**: the EIP of an ECS instance.
 	//
-	// 	- EcsPublicIP: the public IP address of an ECS instance
+	// - **EcsPublicIP**: the public IP address of an ECS instance.
 	//
-	// 	- EIP: the EIP
+	// - **EIP**: an EIP.
 	//
-	// 	- EniEIP: the EIP of an elastic network interface (ENI)
+	// - **EniEIP**: the EIP of an ENI.
 	//
-	// 	- NatEIP: the EIP of a NAT gateway
+	// - **NatEIP**: the EIP of a NAT gateway.
 	//
-	// 	- SlbEIP: the EIP of a Server Load Balancer (SLB) instance
+	// - **SlbEIP**: the EIP of an SLB instance or a CLB instance.
 	//
-	// 	- SlbPublicIP: the public IP address of an SLB instance
+	// - **SlbPublicIP**: the public IP address of an SLB instance or a CLB instance.
 	//
-	// 	- NatPublicIP: the public IP address of a NAT gateway
+	// - **NatPublicIP**: the public IP address of a NAT gateway.
 	//
-	// 	- HAVIP: the high-availability virtual IP address (HAVIP)
+	// - **HAVIP**: an HAVIP.
 	//
-	// > You must specify at least one of the IpaddrList, RegionList, and ResourceTypeList parameters.
+	// - **NlbEIP**: the EIP of an NLB instance.
+	//
+	// - **ApiGatewayEIP**: the public IP address of an API gateway.
+	//
+	// - **AlbEIP**: the EIP of an ALB instance.
+	//
+	// - **AiGatewayEIP**: the public IP address of an AI gateway.
+	//
+	// - **GaEIP**: the EIP of a GA instance.
+	//
+	// - **SwasEIP**: the public IP address of a Simple Application Server instance.
+	//
+	// - **EcdEIP**: the public IP address of an Elastic Desktop Service instance.
+	//
+	// - **BastionHostIP**: the IP address of a bastion host.
+	//
+	// > You must specify at least one of the `IpaddrList`, `RegionList`, and `ResourceTypeList` parameters.
 	//
 	// example:
 	//
@@ -98,7 +118,7 @@ type PutEnableFwSwitchRequest struct {
 	//
 	// example:
 	//
-	// 192.0.X.X
+	// 192.0.XX.XX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 

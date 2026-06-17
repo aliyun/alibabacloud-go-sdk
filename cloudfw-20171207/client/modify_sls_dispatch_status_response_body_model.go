@@ -14,6 +14,8 @@ type iModifySlsDispatchStatusResponseBody interface {
 }
 
 type ModifySlsDispatchStatusResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// CE901E31-4AE9-579D-AC37-D2F1BB43****

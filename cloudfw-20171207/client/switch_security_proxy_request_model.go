@@ -18,11 +18,11 @@ type iSwitchSecurityProxyRequest interface {
 }
 
 type SwitchSecurityProxyRequest struct {
-	// The language of the content within the request and the response. Valid values:
+	// The language of the request and response. Valid values:
 	//
-	// 	- **zh*	- (default)
+	// - **zh*	- (default): Chinese
 	//
-	// 	- **en**
+	// - **en**: English
 	//
 	// example:
 	//
@@ -34,13 +34,13 @@ type SwitchSecurityProxyRequest struct {
 	//
 	// example:
 	//
-	// proxy-natbfd2fafbb77042308d1b
+	// proxy-natbf******
 	ProxyId *string `json:"ProxyId,omitempty" xml:"ProxyId,omitempty"`
-	// Specifies whether to enable the NAT firewall. Valid values:
+	// The security protection switch. Valid values:
 	//
-	// 	- open: yes
+	// - open: Enables security protection.
 	//
-	// 	- close: no
+	// - close: Disables security protection.
 	//
 	// This parameter is required.
 	//

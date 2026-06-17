@@ -18,7 +18,7 @@ type iDescribeRiskEventGroupResponseBody interface {
 }
 
 type DescribeRiskEventGroupResponseBody struct {
-	// An array that consists of the details of the intrusion events.
+	// The list of returned data.
 	DataList []*DescribeRiskEventGroupResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//
@@ -89,143 +89,145 @@ type DescribeRiskEventGroupResponseBodyDataList struct {
 	//
 	// MySql
 	AttackApp *string `json:"AttackApp,omitempty" xml:"AttackApp,omitempty"`
-	// The attack type of the intrusion event. Valid values:
+	// The type of the attack. Valid values:
 	//
-	// 	- **1**: suspicious connection
+	// - **1**: abnormal connection
 	//
-	// 	- **2**: command execution
+	// - **2**: command execution
 	//
-	// 	- **3**: brute-force attack
+	// - **3**: brute-force attack
 	//
-	// 	- **4**: scanning
+	// - **4**: scan
 	//
-	// 	- **5**: others
+	// - **5**: other
 	//
-	// 	- **6**: information leak
+	// - **6**: information leakage
 	//
-	// 	- **7**: DoS attack
+	// - **7**: DoS attack
 	//
-	// 	- **8**: buffer overflow attack
+	// - **8**: overflow attack
 	//
-	// 	- **9**: web attack
+	// - **9**: web attack
 	//
-	// 	- **10**: trojan backdoor
+	// - **10**: backdoor trojan
 	//
-	// 	- **11**: computer worm
+	// - **11**: virus or worm
 	//
-	// 	- **12**: mining
+	// - **12**: mining behavior
 	//
-	// 	- **13**: reverse shell
+	// - **13**: reverse shell
 	//
 	// example:
 	//
 	// 1
 	AttackType *int32 `json:"AttackType,omitempty" xml:"AttackType,omitempty"`
-	// The description of the intrusion event.
+	// The description of the intrusion prevention event.
 	//
 	// example:
 	//
-	// Path traversal attacks are detected in the web access requests over HTTP.
+	// A directory traversal attack was detected in Web access for HTTP requests
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The direction of the traffic for the intrusion event. Valid values:
+	// The traffic direction of the intrusion prevention event. Valid values:
 	//
-	// 	- **in**: inbound
+	// - **in**: inbound
 	//
-	// 	- **out**: outbound
+	// - **out**: outbound
 	//
 	// example:
 	//
 	// in
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	// The destination IP address that is included in the intrusion event.
+	// The destination IP address. The intrusion prevention event contains this destination IP address.
 	//
 	// example:
 	//
 	// 192.0.XX.XX
 	DstIP *string `json:"DstIP,omitempty" xml:"DstIP,omitempty"`
-	// The number of intrusion events.
+	// The number of intrusion prevention events.
 	//
 	// example:
 	//
 	// 100
 	EventCount *int32 `json:"EventCount,omitempty" xml:"EventCount,omitempty"`
-	// The ID of the intrusion event.
+	// The ID of the intrusion prevention event.
 	//
 	// example:
 	//
 	// 2b58efae-4c4b-4d96-9544-a586fb1f****
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	// The name of the intrusion event.
+	// The name of the intrusion prevention event.
 	//
 	// example:
 	//
-	// Path traversal attack
+	// Web Directory Traversal Attack
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
-	// The time when the intrusion event was first detected. The value is a UNIX timestamp. Unit: seconds.
+	// The time when the intrusion event first occurred. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// example:
 	//
 	// 1534408189
 	FirstEventTime *int32 `json:"FirstEventTime,omitempty" xml:"FirstEventTime,omitempty"`
-	// The geographical information about the IP address. The value is a struct that contains the following parameters: **CityId**, **CityName**, **CountryId**, and **CountryName**.\\
+	// The geolocation information of the IP address. This struct contains the **CityId**, **CityName**, **CountryId**, and **CountryName*	- parameters.<br>
 	//
-	// ****************
+	// **CityId*	- indicates the city ID of the IP address. **CityName*	- indicates the city name of the IP address. **CountryId*	- indicates the country ID of the IP address. **CountryName*	- indicates the country name of the IP address.<br>
 	IPLocationInfo *DescribeRiskEventGroupResponseBodyDataListIPLocationInfo `json:"IPLocationInfo,omitempty" xml:"IPLocationInfo,omitempty" type:"Struct"`
-	// The time when the intrusion event was last detected. The value is a UNIX timestamp. Unit: seconds.
+	// The time when the intrusion prevention event last occurred. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// example:
 	//
 	// 1534408267
 	LastEventTime *int32 `json:"LastEventTime,omitempty" xml:"LastEventTime,omitempty"`
-	// The information about the private IP address in the intrusion event. The value is an array that contains the following parameters: **RegionNo**, **ResourceInstanceId**, **ResourceInstanceName**, and **ResourcePrivateIP**.\\
+	// The information about the private IP address in the intrusion prevention event. The value is an array that consists of the **RegionNo**, **ResourceInstanceId**, **ResourceInstanceName**, and **ResourcePrivateIP*	- parameters.<br>
 	//
-	// ****************
+	// **RegionNo*	- indicates the region ID of the IP address. **ResourceInstanceId*	- indicates the ID of the instance to which the IP address belongs. **ResourceInstanceName*	- indicates the name of the instance to which the IP address belongs. **ResourcePrivateIP*	- indicates the IP address.<br>
 	ResourcePrivateIPList []*DescribeRiskEventGroupResponseBodyDataListResourcePrivateIPList `json:"ResourcePrivateIPList,omitempty" xml:"ResourcePrivateIPList,omitempty" type:"Repeated"`
-	// The type of the public IP address in the intrusion event. Valid values:
+	// The type of the public IP address. Valid values:
 	//
-	// 	- **EIP**: the elastic IP address (EIP)
+	// - **EIP**: an elastic IP address (EIP)
 	//
-	// 	- **EcsPublicIP**: the public IP address of an Elastic Compute Service (ECS) instance
+	// - **EcsPublicIP**: an ECS public IP address
 	//
-	// 	- **EcsEIP**: the EIP of an ECS instance
+	// - **EcsEIP**: an ECS EIP
 	//
-	// 	- **NatPublicIP**: the public IP address of a NAT gateway
+	// - **NatPublicIP**: a NAT public IP address
 	//
-	// 	- **NatEIP**: the EIP of a NAT gateway
+	// - **NatEIP**: a NAT EIP
+	//
+	// - **SlbPublicIp**: an SLB public IP address
 	//
 	// example:
 	//
 	// EcsPublicIP
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The ID of the rule that is used to detect the intrusion event.
+	// The ID of the rule that is used to defend against the intrusion prevention event.
 	//
 	// example:
 	//
 	// 1000****
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The status of the firewall. Valid values:
+	// The handling status. Valid values:
 	//
-	// 	- **1**: alerting
+	// - **1**: Alert
 	//
-	// 	- **2**: blocking
+	// - **2**: Block
 	//
 	// example:
 	//
 	// 2
 	RuleResult *int32 `json:"RuleResult,omitempty" xml:"RuleResult,omitempty"`
-	// The module of the rule that is used to detect the intrusion event. Valid values:
+	// The source of the rule that is used to detect the intrusion prevention event. Valid values:
 	//
-	// 	- **1**: basic protection
+	// - **1**: basic protection
 	//
-	// 	- **2**: virtual patching
+	// - **2**: virtual patching
 	//
-	// 	- **4**: threat intelligence
+	// - **4**: threat intelligence
 	//
 	// example:
 	//
 	// 1
 	RuleSource *int32 `json:"RuleSource,omitempty" xml:"RuleSource,omitempty"`
-	// The source IP address that is included in the intrusion event.
+	// The source IP address. The intrusion prevention event contains this source IP address.
 	//
 	// example:
 	//
@@ -233,36 +235,37 @@ type DescribeRiskEventGroupResponseBodyDataList struct {
 	SrcIP *string `json:"SrcIP,omitempty" xml:"SrcIP,omitempty"`
 	// Deprecated
 	//
-	// The tag added to the source IP address. The tag helps identify whether the source IP address is a back-to-origin IP address for a cloud service.
+	// The tag of the source IP address. This tag is used to identify whether the IP address is a back-to-origin IP address of an Alibaba Cloud service.
 	//
 	// example:
 	//
 	// WAF Back-to-origin Address
-	SrcIPTag  *string   `json:"SrcIPTag,omitempty" xml:"SrcIPTag,omitempty"`
+	SrcIPTag *string `json:"SrcIPTag,omitempty" xml:"SrcIPTag,omitempty"`
+	// The list of IP address tags.
 	SrcIPTags []*string `json:"SrcIPTags,omitempty" xml:"SrcIPTags,omitempty" type:"Repeated"`
-	// An array that consists of the source private IP addresses in the intrusion event.
+	// The list of source private IP addresses in the intrusion prevention event.
 	SrcPrivateIPList []*string `json:"SrcPrivateIPList,omitempty" xml:"SrcPrivateIPList,omitempty" type:"Repeated"`
-	// The tag added to the threat intelligence that is provided for major events.
+	// The tag for major event support.
 	//
 	// example:
 	//
-	// Threat intelligence provided for major events
+	// test-tag
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	// The information about the destination VPC of the intrusion event. The value is a struct that contains the following parameters: **EcsInstanceId**, **EcsInstanceName**, **NetworkInstanceId**, **NetworkInstanceName**, and **RegionNo**.\\
+	// The information about the destination VPC of the intrusion prevention event. This struct contains the **EcsInstanceId**, **EcsInstanceName**, **NetworkInstanceId**, **NetworkInstanceName**, and **RegionNo*	- parameters.<br>
 	//
-	// ********************
+	// **EcsInstanceId*	- indicates the ID of the ECS instance in the VPC. **EcsInstanceName*	- indicates the name of the ECS instance in the VPC. **NetworkInstanceId*	- indicates the ID of the VPC. **NetworkInstanceName*	- indicates the name of the VPC. **RegionNo*	- indicates the region ID of the VPC.<br>
 	VpcDstInfo *DescribeRiskEventGroupResponseBodyDataListVpcDstInfo `json:"VpcDstInfo,omitempty" xml:"VpcDstInfo,omitempty" type:"Struct"`
-	// The information about the source VPC of the intrusion event. The value is a struct that contains the following parameters: **EcsInstanceId**, **EcsInstanceName**, **NetworkInstanceId**, **NetworkInstanceName**, and **RegionNo**.\\
+	// The information about the source VPC of the intrusion prevention event. This struct contains the **EcsInstanceId**, **EcsInstanceName**, **NetworkInstanceId**, **NetworkInstanceName**, and **RegionNo*	- parameters.<br>
 	//
-	// ********************
+	// **EcsInstanceId*	- indicates the ID of the ECS instance in the VPC. **EcsInstanceName*	- indicates the name of the ECS instance in the VPC. **NetworkInstanceId*	- indicates the ID of the VPC. **NetworkInstanceName*	- indicates the name of the VPC. **RegionNo*	- indicates the region ID of the VPC.<br>
 	VpcSrcInfo *DescribeRiskEventGroupResponseBodyDataListVpcSrcInfo `json:"VpcSrcInfo,omitempty" xml:"VpcSrcInfo,omitempty" type:"Struct"`
-	// The risk level of the intrusion event. Valid values:
+	// The risk level of the intrusion prevention event. Valid values:
 	//
-	// 	- **1**: low
+	// - **1**: low
 	//
-	// 	- **2**: medium
+	// - **2**: medium
 	//
-	// 	- **3**: high
+	// - **3**: high
 	//
 	// example:
 	//
@@ -523,25 +526,25 @@ func (s *DescribeRiskEventGroupResponseBodyDataList) Validate() error {
 }
 
 type DescribeRiskEventGroupResponseBodyDataListIPLocationInfo struct {
-	// The ID of the city to which the IP address belongs.
+	// The city ID.
 	//
 	// example:
 	//
 	// 510100
 	CityId *string `json:"CityId,omitempty" xml:"CityId,omitempty"`
-	// The name of the city to which the IP address belongs.
+	// The city name.
 	//
 	// example:
 	//
-	// Chengdu, Sichuan Province
+	// Chengdu
 	CityName *string `json:"CityName,omitempty" xml:"CityName,omitempty"`
-	// The ID of the country to which the IP address belongs.
+	// The country ID.
 	//
 	// example:
 	//
 	// CN
 	CountryId *string `json:"CountryId,omitempty" xml:"CountryId,omitempty"`
-	// The name of the country to which the IP address belongs.
+	// The country name.
 	//
 	// example:
 	//
@@ -598,19 +601,19 @@ func (s *DescribeRiskEventGroupResponseBodyDataListIPLocationInfo) Validate() er
 }
 
 type DescribeRiskEventGroupResponseBodyDataListResourcePrivateIPList struct {
-	// The ID of the region to which the private IP address belongs.
+	// The region ID. This parameter indicates the region ID of the private IP address.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	// The ID of the instance that uses the private IP address.
+	// The ID of the instance.
 	//
 	// example:
 	//
 	// i-wz92jf4scg2zb74p****
 	ResourceInstanceId *string `json:"ResourceInstanceId,omitempty" xml:"ResourceInstanceId,omitempty"`
-	// The name of the instance that uses the private IP address.
+	// The name of the instance.
 	//
 	// example:
 	//
@@ -697,7 +700,7 @@ type DescribeRiskEventGroupResponseBodyDataListVpcDstInfo struct {
 	//
 	// VPC-SH-TX****
 	NetworkInstanceName *string `json:"NetworkInstanceName,omitempty" xml:"NetworkInstanceName,omitempty"`
-	// The ID of the region in which the destination VPC resides.
+	// The region ID. This parameter indicates the region ID of the destination VPC.
 	//
 	// example:
 	//
@@ -787,7 +790,7 @@ type DescribeRiskEventGroupResponseBodyDataListVpcSrcInfo struct {
 	//
 	// VPC-SH-TX****
 	NetworkInstanceName *string `json:"NetworkInstanceName,omitempty" xml:"NetworkInstanceName,omitempty"`
-	// The ID of the region in which the source VPC resides.
+	// The region ID. This parameter indicates the region ID of the source VPC.
 	//
 	// example:
 	//

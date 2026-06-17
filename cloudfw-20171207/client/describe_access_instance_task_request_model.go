@@ -22,22 +22,32 @@ type iDescribeAccessInstanceTaskRequest interface {
 }
 
 type DescribeAccessInstanceTaskRequest struct {
+	// The ID of the synchronization node.
+	//
 	// example:
 	//
 	// pdi-3bc2f91695ee48bd9377
 	AccessInstanceId *string `json:"AccessInstanceId,omitempty" xml:"AccessInstanceId,omitempty"`
+	// The type of the synchronization node.
+	//
 	// example:
 	//
 	// AckClusterConnector
 	AccessInstanceType *string `json:"AccessInstanceType,omitempty" xml:"AccessInstanceType,omitempty"`
+	// The language of the response messages.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// task-c92d4544ef7b6a42

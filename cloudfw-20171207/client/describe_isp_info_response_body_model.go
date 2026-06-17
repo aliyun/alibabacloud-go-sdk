@@ -18,11 +18,16 @@ type iDescribeIspInfoResponseBody interface {
 }
 
 type DescribeIspInfoResponseBody struct {
+	// The list of ISPs.
 	DataList []*DescribeIspInfoResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// F0F82705-CFC7-5F83-86C8-A063892F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 5
@@ -78,10 +83,17 @@ func (s *DescribeIspInfoResponseBody) Validate() error {
 }
 
 type DescribeIspInfoResponseBodyDataList struct {
+	// The ID of the ISP.
+	//
 	// example:
 	//
 	// isp-dhyw2lxfpc****
-	IspId   *int32  `json:"IspId,omitempty" xml:"IspId,omitempty"`
+	IspId *int32 `json:"IspId,omitempty" xml:"IspId,omitempty"`
+	// The name of the ISP.
+	//
+	// example:
+	//
+	// telecom
 	IspName *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
 }
 

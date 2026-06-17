@@ -20,12 +20,18 @@ type iDescribeOutgoingDomainDetailResponseBody interface {
 }
 
 type DescribeOutgoingDomainDetailResponseBody struct {
-	ApplicationNameList []*string                                            `json:"ApplicationNameList,omitempty" xml:"ApplicationNameList,omitempty" type:"Repeated"`
-	AssetList           []*DescribeOutgoingDomainDetailResponseBodyAssetList `json:"AssetList,omitempty" xml:"AssetList,omitempty" type:"Repeated"`
+	// The list of application names.
+	ApplicationNameList []*string `json:"ApplicationNameList,omitempty" xml:"ApplicationNameList,omitempty" type:"Repeated"`
+	// The list of assets.
+	AssetList []*DescribeOutgoingDomainDetailResponseBodyAssetList `json:"AssetList,omitempty" xml:"AssetList,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 98AF5888-9606-59CF-888F-032A9ED0****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 8
@@ -90,83 +96,124 @@ func (s *DescribeOutgoingDomainDetailResponseBody) Validate() error {
 }
 
 type DescribeOutgoingDomainDetailResponseBodyAssetList struct {
+	// The policy coverage status.
+	//
 	// example:
 	//
 	// FullCoverage
 	AclCoverage *string `json:"AclCoverage,omitempty" xml:"AclCoverage,omitempty"`
+	// The domain name.
+	//
 	// example:
 	//
 	// example.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The first access time, as a Unix timestamp in seconds.
+	//
 	// example:
 	//
 	// 1738548990
 	FirstTime *int32 `json:"FirstTime,omitempty" xml:"FirstTime,omitempty"`
+	// The inbound traffic (response traffic), in bytes.
+	//
 	// example:
 	//
 	// 244438.0
 	InBytes *int64 `json:"InBytes,omitempty" xml:"InBytes,omitempty"`
+	// The IPS hit count.
+	//
 	// example:
 	//
 	// 32
 	IpsHitCnt *int64 `json:"IpsHitCnt,omitempty" xml:"IpsHitCnt,omitempty"`
+	// The last access time, as a Unix timestamp in seconds.
+	//
 	// example:
 	//
 	// 1739326614
 	LastTime *int32 `json:"LastTime,omitempty" xml:"LastTime,omitempty"`
+	// The NAT Gateway ID.
+	//
 	// example:
 	//
 	// ngw-bp1utx6wj4x9qu9tl****
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	// The NAT Gateway name.
+	//
 	// example:
 	//
 	// ngw-test
 	NatGatewayName *string `json:"NatGatewayName,omitempty" xml:"NatGatewayName,omitempty"`
+	// The outbound traffic (request traffic), in bytes.
+	//
 	// example:
 	//
 	// 100
 	OutBytes *int64 `json:"OutBytes,omitempty" xml:"OutBytes,omitempty"`
+	// The private IP address.
+	//
 	// example:
 	//
 	// 10.21.242XXX
 	PrivateIP *string `json:"PrivateIP,omitempty" xml:"PrivateIP,omitempty"`
+	// The public IP address.
+	//
 	// example:
 	//
 	// 47.96.181.XXX
 	PublicIP *string `json:"PublicIP,omitempty" xml:"PublicIP,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	// The asset instance ID.
+	//
 	// example:
 	//
 	// i-uf63wjhyoohc1g4z****
 	ResourceInstanceId *string `json:"ResourceInstanceId,omitempty" xml:"ResourceInstanceId,omitempty"`
+	// The asset instance name.
+	//
 	// example:
 	//
 	// test
 	ResourceInstanceName *string `json:"ResourceInstanceName,omitempty" xml:"ResourceInstanceName,omitempty"`
+	// The type of the asset\\"s public IP address.
+	//
 	// example:
 	//
 	// NatEIP
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The ACL rule ID.
+	//
 	// example:
 	//
 	// 08a58465-ff4d-4c47-8782-eb008301****
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The rule name.
+	//
 	// example:
 	//
 	// test
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The session count.
+	//
 	// example:
 	//
 	// 10
-	SessionCount *int64                                                      `json:"SessionCount,omitempty" xml:"SessionCount,omitempty"`
-	TagList      []*DescribeOutgoingDomainDetailResponseBodyAssetListTagList `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Repeated"`
+	SessionCount *int64 `json:"SessionCount,omitempty" xml:"SessionCount,omitempty"`
+	// The list of tags.
+	TagList []*DescribeOutgoingDomainDetailResponseBodyAssetListTagList `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Repeated"`
+	// The total traffic, in bytes.
+	//
 	// example:
 	//
 	// 321120825843
 	TotalBytes *string `json:"TotalBytes,omitempty" xml:"TotalBytes,omitempty"`
+	// The VPC ID.
+	//
 	// example:
 	//
 	// vpc-9dp16jgwgyvn****
@@ -384,22 +431,32 @@ func (s *DescribeOutgoingDomainDetailResponseBodyAssetList) Validate() error {
 }
 
 type DescribeOutgoingDomainDetailResponseBodyAssetListTagList struct {
+	// The risk classification ID.
+	//
 	// example:
 	//
 	// 3
 	ClassId *string `json:"ClassId,omitempty" xml:"ClassId,omitempty"`
+	// The risk level.
+	//
 	// example:
 	//
 	// 0
 	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The tag description.
+	//
 	// example:
 	//
 	// test
 	TagDescribe *string `json:"TagDescribe,omitempty" xml:"TagDescribe,omitempty"`
+	// The tag ID.
+	//
 	// example:
 	//
 	// FirstFlow
 	TagId *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
+	// The tag name.
+	//
 	// example:
 	//
 	// test

@@ -18,14 +18,20 @@ type iAddDomainResolveRealtimeTaskRequest interface {
 }
 
 type AddDomainResolveRealtimeTaskRequest struct {
+	// The domain name.
+	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The type of the Cloud Firewall.
+	//
 	// example:
 	//
 	// internet
 	FirewallType *string `json:"FirewallType,omitempty" xml:"FirewallType,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-shanghai

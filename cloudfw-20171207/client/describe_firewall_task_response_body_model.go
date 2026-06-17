@@ -30,35 +30,62 @@ type iDescribeFirewallTaskResponseBody interface {
 }
 
 type DescribeFirewallTaskResponseBody struct {
+	// Indicates whether the task exists.
+	//
 	// example:
 	//
 	// false
 	IsFound *bool `json:"IsFound,omitempty" xml:"IsFound,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 7D5483BF-2262-586D-8706-BDDB8B42****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The timestamp when the task was completed.
+	//
 	// example:
 	//
 	// 17151381075
 	TaskFinishTimestamp *string `json:"TaskFinishTimestamp,omitempty" xml:"TaskFinishTimestamp,omitempty"`
+	// The ID of the task.
+	//
 	// example:
 	//
 	// 189997648
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The name of the task.
+	//
 	// example:
 	//
 	// egressgw
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// The timestamp when the task started.
+	//
 	// example:
 	//
 	// 17151361285
 	TaskStartTimestamp *string `json:"TaskStartTimestamp,omitempty" xml:"TaskStartTimestamp,omitempty"`
+	// The status of the task. Valid values:
+	//
+	// - **init**
+	//
+	// - **running**
+	//
+	// - **finished**
+	//
+	// - **rollback**
+	//
+	// - **rollbackDone**
+	//
 	// example:
 	//
 	// init
-	TaskStatus *string                                      `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	TaskSteps  []*DescribeFirewallTaskResponseBodyTaskSteps `json:"TaskSteps,omitempty" xml:"TaskSteps,omitempty" type:"Repeated"`
+	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// The steps of the task.
+	TaskSteps []*DescribeFirewallTaskResponseBodyTaskSteps `json:"TaskSteps,omitempty" xml:"TaskSteps,omitempty" type:"Repeated"`
+	// The waiting time in minutes.
+	//
 	// example:
 	//
 	// 30
@@ -168,18 +195,34 @@ func (s *DescribeFirewallTaskResponseBody) Validate() error {
 }
 
 type DescribeFirewallTaskResponseBodyTaskSteps struct {
+	// The information about the task step.
+	//
 	// example:
 	//
 	// abcd
 	StepInfo *string `json:"StepInfo,omitempty" xml:"StepInfo,omitempty"`
+	// Creating the Cloud Firewall.
+	//
 	// example:
 	//
 	// Create Firewall
 	StepName *string `json:"StepName,omitempty" xml:"StepName,omitempty"`
+	// The progress of the task step.
+	//
 	// example:
 	//
 	// 80
 	StepProgress *string `json:"StepProgress,omitempty" xml:"StepProgress,omitempty"`
+	// The status of the task step. Valid values:
+	//
+	// - **init**
+	//
+	// - **running**
+	//
+	// - **finished**
+	//
+	// - **failed**
+	//
 	// example:
 	//
 	// init

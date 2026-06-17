@@ -28,13 +28,13 @@ type CreateDownloadTaskResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The status of the task. Valid values:
 	//
-	// finish: The task finished. You can query the task to obtain the download link of the file.
+	// finish: The task is complete. You can query the task to get the file download link.
 	//
-	// start: The task start.
+	// start: The task has started.
 	//
-	// error: An error occurred.
+	// error: The task failed.
 	//
-	// expire: The task file is invalid and cannot be downloaded.
+	// expire: The task expired. The task file is invalid and cannot be downloaded.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type CreateDownloadTaskResponseBody struct {
 	//
 	// example:
 	//
-	// Internet Boundary Firewall Assets - IPv4
+	// test-IPv4
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 }
 

@@ -22,22 +22,32 @@ type iDescribeNatFirewallQuotaResponseBody interface {
 }
 
 type DescribeNatFirewallQuotaResponseBody struct {
+	// The number of nodes that are in an abnormal state.
+	//
 	// example:
 	//
 	// 1
 	ExceptionCount *int64 `json:"ExceptionCount,omitempty" xml:"ExceptionCount,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// F98BAA59-5863-5B61-8FD4-C5E96813****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of quotas.
+	//
 	// example:
 	//
 	// 6
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The number of unprotected assets.
+	//
 	// example:
 	//
 	// 20
 	UnprotectedCount *int64 `json:"UnprotectedCount,omitempty" xml:"UnprotectedCount,omitempty"`
+	// The number of used quotas.
+	//
 	// example:
 	//
 	// 10

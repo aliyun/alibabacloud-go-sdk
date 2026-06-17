@@ -18,11 +18,16 @@ type iDescribeThreatIntelligenceSwitchResponseBody interface {
 }
 
 type DescribeThreatIntelligenceSwitchResponseBody struct {
+	// The list of threat intelligence categories.
 	CategoryList []*DescribeThreatIntelligenceSwitchResponseBodyCategoryList `json:"CategoryList,omitempty" xml:"CategoryList,omitempty" type:"Repeated"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 6B8E0379-2629-59A1-B811-96F3E****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 24
@@ -78,20 +83,46 @@ func (s *DescribeThreatIntelligenceSwitchResponseBody) Validate() error {
 }
 
 type DescribeThreatIntelligenceSwitchResponseBodyCategoryList struct {
+	// The action of the rule. Valid values:
+	//
+	// **alert**: Monitor.
+	//
+	// **drop**: Block.
+	//
 	// example:
 	//
 	// alert
-	Action           *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// The description of the category.
+	//
+	// example:
+	//
+	// Tor Export Malicious IP
 	CategoryDescribe *string `json:"CategoryDescribe,omitempty" xml:"CategoryDescribe,omitempty"`
+	// The ID of the threat intelligence category.
+	//
 	// example:
 	//
 	// 3000037
-	CategoryId   *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// The name of the category.
+	//
+	// example:
+	//
+	// Tor Export Malicious IP
 	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
+	// The ID of the parent threat intelligence category.
+	//
 	// example:
 	//
 	// 123
 	CategoryParentId *string `json:"CategoryParentId,omitempty" xml:"CategoryParentId,omitempty"`
+	// The status of the switch. Valid values:
+	//
+	// **1**: enabled.
+	//
+	// **0**: disabled.
+	//
 	// example:
 	//
 	// 1

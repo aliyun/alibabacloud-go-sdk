@@ -20,29 +20,29 @@ type iDeleteNatFirewallControlPolicyBatchRequest interface {
 }
 
 type DeleteNatFirewallControlPolicyBatchRequest struct {
-	// The UUIDs of access control policies.
+	// A list of access control list (ACL) UUIDs.
 	//
 	// This parameter is required.
 	AclUuidList []*string `json:"AclUuidList,omitempty" xml:"AclUuidList,omitempty" type:"Repeated"`
-	// The direction of the traffic to which the access control policy applies. Valid values:
+	// The traffic direction for the access control policy. Valid value:
 	//
-	// 	- **out**: outbound traffic
+	// - **out**: outbound traffic.
 	//
 	// example:
 	//
 	// out
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	// The language of the content within the request and response. Valid values:
+	// The language of the request and response. Valid values:
 	//
-	// 	- **zh*	- (default): Chinese
+	// - **zh*	- (default): Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The ID of the NAT gateway.
+	// The ID of the NAT Gateway.
 	//
 	// This parameter is required.
 	//

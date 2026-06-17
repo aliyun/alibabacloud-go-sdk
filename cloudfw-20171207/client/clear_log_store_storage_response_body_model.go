@@ -18,14 +18,20 @@ type iClearLogStoreStorageResponseBody interface {
 }
 
 type ClearLogStoreStorageResponseBody struct {
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 21C27710-2DB1-5F2A-8588-72D0541B****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true

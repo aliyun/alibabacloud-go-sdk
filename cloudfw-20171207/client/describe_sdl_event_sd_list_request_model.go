@@ -28,34 +28,50 @@ type iDescribeSdlEventSdListRequest interface {
 }
 
 type DescribeSdlEventSdListRequest struct {
+	// The number of the page to return.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The destination IP address.
+	//
 	// example:
 	//
 	// 47.100.102.XXX
 	DstIp *string `json:"DstIp,omitempty" xml:"DstIp,omitempty"`
+	// The end time. The value is a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1761185080
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The language of the response.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The number of the page to return.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The source IP address.
+	//
 	// example:
 	//
 	// 172.16.0.XXX
 	SrcIp *string `json:"SrcIp,omitempty" xml:"SrcIp,omitempty"`
+	// The start time. The value is a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1656664560
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The unique ID.
+	//
 	// example:
 	//
 	// aa58cdf6-6cf8-493c-912d-97619a24****

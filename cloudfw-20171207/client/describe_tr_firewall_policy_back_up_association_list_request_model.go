@@ -20,25 +20,25 @@ type iDescribeTrFirewallPolicyBackUpAssociationListRequest interface {
 }
 
 type DescribeTrFirewallPolicyBackUpAssociationListRequest struct {
-	// The traffic redirection instances.
+	// The list of traffic redirection instances.
 	CandidateList []*DescribeTrFirewallPolicyBackUpAssociationListRequestCandidateList `json:"CandidateList,omitempty" xml:"CandidateList,omitempty" type:"Repeated"`
-	// The instance ID of the VPC firewall.
+	// The instance ID of the VPC firewall for a transit router.
 	//
 	// example:
 	//
 	// vfw-tr-8b268ce1b26e4c68****
 	FirewallId *string `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
-	// The language of the content within the response. Valid values:
+	// The language of the response. Valid values:
 	//
-	// 	- **zh*	- (default): Chinese
+	// - **zh*	- (default): Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The ID of the routing policy.
+	// The ID of the firewall routing policy.
 	//
 	// example:
 	//

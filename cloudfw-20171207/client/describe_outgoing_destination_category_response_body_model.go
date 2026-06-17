@@ -18,15 +18,20 @@ type iDescribeOutgoingDestinationCategoryResponseBody interface {
 }
 
 type DescribeOutgoingDestinationCategoryResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// C1ED80BC-FFC8-57DB-8151-705DC31****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 10
-	TotalCount *int32                                                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	TypeList   []*DescribeOutgoingDestinationCategoryResponseBodyTypeList `json:"TypeList,omitempty" xml:"TypeList,omitempty" type:"Repeated"`
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The list of outbound connection categories.
+	TypeList []*DescribeOutgoingDestinationCategoryResponseBodyTypeList `json:"TypeList,omitempty" xml:"TypeList,omitempty" type:"Repeated"`
 }
 
 func (s DescribeOutgoingDestinationCategoryResponseBody) String() string {
@@ -78,12 +83,25 @@ func (s *DescribeOutgoingDestinationCategoryResponseBody) Validate() error {
 }
 
 type DescribeOutgoingDestinationCategoryResponseBodyTypeList struct {
+	// The list of outbound connection categories.
 	CategoryList []*DescribeOutgoingDestinationCategoryResponseBodyTypeListCategoryList `json:"CategoryList,omitempty" xml:"CategoryList,omitempty" type:"Repeated"`
-	TypeDescribe *string                                                                `json:"TypeDescribe,omitempty" xml:"TypeDescribe,omitempty"`
+	// The description of the fixed category.
+	//
+	// example:
+	//
+	// AliYun
+	TypeDescribe *string `json:"TypeDescribe,omitempty" xml:"TypeDescribe,omitempty"`
+	// The fixed category ID.
+	//
 	// example:
 	//
 	// All
-	TypeId   *string `json:"TypeId,omitempty" xml:"TypeId,omitempty"`
+	TypeId *string `json:"TypeId,omitempty" xml:"TypeId,omitempty"`
+	// The name of the fixed category.
+	//
+	// example:
+	//
+	// AliYun
 	TypeName *string `json:"TypeName,omitempty" xml:"TypeName,omitempty"`
 }
 
@@ -145,12 +163,26 @@ func (s *DescribeOutgoingDestinationCategoryResponseBodyTypeList) Validate() err
 }
 
 type DescribeOutgoingDestinationCategoryResponseBodyTypeListCategoryList struct {
-	CategoryDescribe *string `json:"CategoryDescribe,omitempty" xml:"CategoryDescribe,omitempty"`
+	// The description of the outbound connection category.
+	//
 	// example:
 	//
 	// AliYun
-	CategoryId   *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	CategoryDescribe *string `json:"CategoryDescribe,omitempty" xml:"CategoryDescribe,omitempty"`
+	// The ID of the outbound connection category.
+	//
+	// example:
+	//
+	// 123
+	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// The name of the outbound connection category.
+	//
+	// example:
+	//
+	// AliYun
 	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
+	// The classification ID of the outbound connection category.
+	//
 	// example:
 	//
 	// Trusted

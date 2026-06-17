@@ -16,7 +16,10 @@ type iDescribeRiskEventTopAttackAssetResponseBody interface {
 }
 
 type DescribeRiskEventTopAttackAssetResponseBody struct {
+	// The statistics of the assets.
 	Assets []*DescribeRiskEventTopAttackAssetResponseBodyAssets `json:"Assets,omitempty" xml:"Assets,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// B9BF7C33-9A23-5096-8568-A3DACAF0****
@@ -63,30 +66,44 @@ func (s *DescribeRiskEventTopAttackAssetResponseBody) Validate() error {
 }
 
 type DescribeRiskEventTopAttackAssetResponseBodyAssets struct {
+	// The number of attacks.
+	//
 	// example:
 	//
 	// 12
 	AttackCnt *int32 `json:"AttackCnt,omitempty" xml:"AttackCnt,omitempty"`
+	// The number of dropped attempts.
+	//
 	// example:
 	//
 	// 8
 	DropCnt *int32 `json:"DropCnt,omitempty" xml:"DropCnt,omitempty"`
+	// The IP address.
+	//
 	// example:
 	//
 	// 10.3.54.XXX
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-chengdu
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	// The ID of the asset instance.
+	//
 	// example:
 	//
 	// i-8vbdrjrxzt78****
 	ResourceInstanceId *string `json:"ResourceInstanceId,omitempty" xml:"ResourceInstanceId,omitempty"`
+	// The name of the resource instance.
+	//
 	// example:
 	//
 	// test_resource
 	ResourceInstanceName *string `json:"ResourceInstanceName,omitempty" xml:"ResourceInstanceName,omitempty"`
+	// The type of the resource instance.
+	//
 	// example:
 	//
 	// EcsPublicIP

@@ -16,11 +16,14 @@ type iDescribeVpcFirewallZoneResponseBody interface {
 }
 
 type DescribeVpcFirewallZoneResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 337A4DBA-8A01-5E9C-99CA-84293E13****
-	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ZoneList  [][]*DescribeVpcFirewallZoneResponseBodyZoneList `json:"ZoneList,omitempty" xml:"ZoneList,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of zones.
+	ZoneList [][]*DescribeVpcFirewallZoneResponseBodyZoneList `json:"ZoneList,omitempty" xml:"ZoneList,omitempty" type:"Repeated"`
 }
 
 func (s DescribeVpcFirewallZoneResponseBody) String() string {
@@ -54,10 +57,17 @@ func (s *DescribeVpcFirewallZoneResponseBody) Validate() error {
 }
 
 type DescribeVpcFirewallZoneResponseBodyZoneList struct {
+	// The zone ID.
+	//
 	// example:
 	//
 	// cn-hangzhou-c
-	ZoneId    *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The name of the zone.
+	//
+	// example:
+	//
+	// Hangzhou Zone C
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 }
 

@@ -18,8 +18,12 @@ type iDescribeInternetOpenDetailResponseBody interface {
 }
 
 type DescribeInternetOpenDetailResponseBody struct {
+	// The list of returned data.
 	DataList []*DescribeInternetOpenDetailResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
-	PageInfo *DescribeInternetOpenDetailResponseBodyPageInfo   `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	// The pagination information.
+	PageInfo *DescribeInternetOpenDetailResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 3495E758-BB4B-5F5C-8AE0-897489F****
@@ -80,87 +84,128 @@ func (s *DescribeInternetOpenDetailResponseBody) Validate() error {
 }
 
 type DescribeInternetOpenDetailResponseBodyDataList struct {
+	// The ID of the asset instance.
+	//
 	// example:
 	//
 	// i-bp1ix9w22kv6aew9****
 	AssetsInstanceId *string `json:"AssetsInstanceId,omitempty" xml:"AssetsInstanceId,omitempty"`
+	// The instance name.
+	//
 	// example:
 	//
 	// launch-advisor-2023****
 	AssetsName *string `json:"AssetsName,omitempty" xml:"AssetsName,omitempty"`
+	// The asset type of the instance.
+	//
 	// example:
 	//
 	// EcsEIP
 	AssetsType *string `json:"AssetsType,omitempty" xml:"AssetsType,omitempty"`
+	// The ID of the details.
+	//
 	// example:
 	//
 	// 1123
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The inbound traffic. Unit: bytes.
+	//
 	// example:
 	//
 	// 0.0
 	InBytes *int64 `json:"InBytes,omitempty" xml:"InBytes,omitempty"`
+	// The outbound traffic. Unit: bytes.
+	//
 	// example:
 	//
 	// 0.0
 	OutBytes *int64 `json:"OutBytes,omitempty" xml:"OutBytes,omitempty"`
+	// The port that is exposed to the Internet.
+	//
 	// example:
 	//
 	// 3389
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The security threat.
+	//
 	// example:
 	//
 	// test
 	ProbRisk *string `json:"ProbRisk,omitempty" xml:"ProbRisk,omitempty"`
+	// The description of the security threat.
+	//
 	// example:
 	//
 	// test
 	ProbRiskDesc *string `json:"ProbRiskDesc,omitempty" xml:"ProbRiskDesc,omitempty"`
+	// The protocol type.
+	//
 	// example:
 	//
 	// tcp
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The public IP address.
+	//
 	// example:
 	//
 	// 39.101.167.XX
 	PublicIp *string `json:"PublicIp,omitempty" xml:"PublicIp,omitempty"`
+	// The region ID of the instance.
+	//
 	// example:
 	//
 	// cn-shenzhen
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	// The risk level.
+	//
 	// example:
 	//
 	// 3
 	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The cause of the risk.
+	//
 	// example:
 	//
 	// test
 	RiskReason *string `json:"RiskReason,omitempty" xml:"RiskReason,omitempty"`
+	// The application name.
+	//
 	// example:
 	//
 	// Redis
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// The recommended policy level.
+	//
 	// example:
 	//
 	// 20
 	SuggestLevel *int32 `json:"SuggestLevel,omitempty" xml:"SuggestLevel,omitempty"`
+	// The total traffic.
+	//
 	// example:
 	//
 	// 0
 	TotalBytes *int64 `json:"TotalBytes,omitempty" xml:"TotalBytes,omitempty"`
+	// The percentage of traffic in the last 24 hours.
+	//
 	// example:
 	//
 	// 10
 	TrafficPercent1Day *string `json:"TrafficPercent1Day,omitempty" xml:"TrafficPercent1Day,omitempty"`
+	// The percentage of traffic in the last 30 days.
+	//
 	// example:
 	//
 	// 48
 	TrafficPercent30Day *string `json:"TrafficPercent30Day,omitempty" xml:"TrafficPercent30Day,omitempty"`
+	// The percentage of traffic in the last 7 days.
+	//
 	// example:
 	//
 	// 30
-	TrafficPercent7Day *string   `json:"TrafficPercent7Day,omitempty" xml:"TrafficPercent7Day,omitempty"`
-	UnknownReason      []*string `json:"UnknownReason,omitempty" xml:"UnknownReason,omitempty" type:"Repeated"`
+	TrafficPercent7Day *string `json:"TrafficPercent7Day,omitempty" xml:"TrafficPercent7Day,omitempty"`
+	// The reason why the protocol is not detected when the protocol is identified as Unknown.
+	UnknownReason []*string `json:"UnknownReason,omitempty" xml:"UnknownReason,omitempty" type:"Repeated"`
 }
 
 func (s DescribeInternetOpenDetailResponseBodyDataList) String() string {
@@ -365,14 +410,20 @@ func (s *DescribeInternetOpenDetailResponseBodyDataList) Validate() error {
 }
 
 type DescribeInternetOpenDetailResponseBodyPageInfo struct {
+	// The page number of the returned page.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The number of entries returned per page.
+	//
 	// example:
 	//
 	// 50
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 5

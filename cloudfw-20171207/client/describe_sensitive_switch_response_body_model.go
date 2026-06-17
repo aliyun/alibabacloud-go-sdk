@@ -20,18 +20,25 @@ type iDescribeSensitiveSwitchResponseBody interface {
 }
 
 type DescribeSensitiveSwitchResponseBody struct {
+	// The total number of enabled items.
+	//
 	// example:
 	//
 	// 80
 	OpenCount *int64 `json:"OpenCount,omitempty" xml:"OpenCount,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// A7F3ED45-5556-5AF3-ADE3-EE48FFF0****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 10
-	TotalCount                  *int64                                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The list of sensitive data detection switches.
 	UserSensitiveDataSwitchList []*DescribeSensitiveSwitchResponseBodyUserSensitiveDataSwitchList `json:"UserSensitiveDataSwitchList,omitempty" xml:"UserSensitiveDataSwitchList,omitempty" type:"Repeated"`
 }
 
@@ -93,16 +100,32 @@ func (s *DescribeSensitiveSwitchResponseBody) Validate() error {
 }
 
 type DescribeSensitiveSwitchResponseBodyUserSensitiveDataSwitchList struct {
+	// The name of the sensitive credential category.
+	//
+	// example:
+	//
+	// Identity card
 	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The description of the sensitive credential.
+	//
+	// example:
+	//
+	// Sensitive ID card data leakage
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The type of the sensitive credential.
+	//
 	// example:
 	//
 	// id_card
 	SensitiveCategory *string `json:"SensitiveCategory,omitempty" xml:"SensitiveCategory,omitempty"`
+	// The sensitivity level.
+	//
 	// example:
 	//
 	// S3
 	SensitiveLevel *string `json:"SensitiveLevel,omitempty" xml:"SensitiveLevel,omitempty"`
+	// The status of the sensitive data detection switch.
+	//
 	// example:
 	//
 	// 1

@@ -16,10 +16,13 @@ type iDescribeResourceTypeAutoEnableResponseBody interface {
 }
 
 type DescribeResourceTypeAutoEnableResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 7447795A-39AB-52CB-8F92-128DF******
-	RequestId              *string          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether traffic redirection is enabled by default.
 	ResourceTypeAutoEnable map[string]*bool `json:"ResourceTypeAutoEnable,omitempty" xml:"ResourceTypeAutoEnable,omitempty"`
 }
 

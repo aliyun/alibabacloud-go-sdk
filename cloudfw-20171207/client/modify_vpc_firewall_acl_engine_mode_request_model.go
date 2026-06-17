@@ -18,16 +18,26 @@ type iModifyVpcFirewallAclEngineModeRequest interface {
 }
 
 type ModifyVpcFirewallAclEngineModeRequest struct {
+	// The UID of the Cloud Firewall member account.
+	//
 	// example:
 	//
 	// 258039427902****
 	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
+	// Specifies whether to enable strict mode.
+	//
+	// - 1: strict mode
+	//
+	// - 0: loose mode
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0
 	StrictMode *string `json:"StrictMode,omitempty" xml:"StrictMode,omitempty"`
+	// The instance ID of the VPC border firewall.
+	//
 	// This parameter is required.
 	//
 	// example:

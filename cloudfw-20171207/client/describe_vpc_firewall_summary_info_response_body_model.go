@@ -90,158 +90,236 @@ type iDescribeVpcFirewallSummaryInfoResponseBody interface {
 }
 
 type DescribeVpcFirewallSummaryInfoResponseBody struct {
+	// The remaining quota for VPC firewalls.
+	//
 	// example:
 	//
 	// 4
 	AvailableVpcFirewallQuota *int32 `json:"AvailableVpcFirewallQuota,omitempty" xml:"AvailableVpcFirewallQuota,omitempty"`
+	// The number of VPCs connected using Cloud Enterprise Network (CEN) and Express Connect.
+	//
 	// example:
 	//
 	// 7
 	CenExpressConnectVpcCount *int32 `json:"CenExpressConnectVpcCount,omitempty" xml:"CenExpressConnectVpcCount,omitempty"`
+	// The number of CEN VPCs.
+	//
 	// example:
 	//
 	// 10
 	CenFirewallVpcCount *int32 `json:"CenFirewallVpcCount,omitempty" xml:"CenFirewallVpcCount,omitempty"`
+	// The number of VPCs on the CEN transit router.
+	//
 	// example:
 	//
 	// 13
 	CenTrVpcCount *int32 `json:"CenTrVpcCount,omitempty" xml:"CenTrVpcCount,omitempty"`
+	// The number of configured CEN firewalls that are disabled.
+	//
 	// example:
 	//
 	// 1
 	ClosedCenFirewallCount *int32 `json:"ClosedCenFirewallCount,omitempty" xml:"ClosedCenFirewallCount,omitempty"`
+	// The number of configured Express Connect firewalls that are disabled.
+	//
 	// example:
 	//
 	// 10
 	ClosedExpressConnectFirewallCount *int32 `json:"ClosedExpressConnectFirewallCount,omitempty" xml:"ClosedExpressConnectFirewallCount,omitempty"`
+	// The number of configured VPC firewalls that are disabled.
+	//
 	// example:
 	//
 	// 5
 	ClosedVpcFirewallCount *int32 `json:"ClosedVpcFirewallCount,omitempty" xml:"ClosedVpcFirewallCount,omitempty"`
+	// The number of configured CEN firewall instances of the Basic Edition.
+	//
 	// example:
 	//
 	// 5
 	ConfiguredCenFirewallCount *int32 `json:"ConfiguredCenFirewallCount,omitempty" xml:"ConfiguredCenFirewallCount,omitempty"`
+	// The number of regions where CEN firewalls are configured.
+	//
 	// example:
 	//
 	// 2
 	ConfiguredCenFirewallRegionCount *int32 `json:"ConfiguredCenFirewallRegionCount,omitempty" xml:"ConfiguredCenFirewallRegionCount,omitempty"`
+	// The number of VPCs for which CEN firewalls are configured.
+	//
 	// example:
 	//
 	// 18
 	ConfiguredCenFirewallVpcCount *int32 `json:"ConfiguredCenFirewallVpcCount,omitempty" xml:"ConfiguredCenFirewallVpcCount,omitempty"`
+	// The number of configured CEN transit router firewall instances.
+	//
 	// example:
 	//
 	// 2
 	ConfiguredCenTrFirewallCount *int32 `json:"ConfiguredCenTrFirewallCount,omitempty" xml:"ConfiguredCenTrFirewallCount,omitempty"`
+	// The number of configured Express Connect circuits.
+	//
 	// example:
 	//
 	// 2
 	ConfiguredExpressConnectFirewallCount *int32 `json:"ConfiguredExpressConnectFirewallCount,omitempty" xml:"ConfiguredExpressConnectFirewallCount,omitempty"`
+	// The number of VPCs for which Express Connect firewalls are configured.
+	//
 	// example:
 	//
 	// 2
 	ConfiguredExpressConnectVpcCount *int32 `json:"ConfiguredExpressConnectVpcCount,omitempty" xml:"ConfiguredExpressConnectVpcCount,omitempty"`
+	// The number of configured VPC firewalls.
+	//
 	// example:
 	//
 	// 5
 	ConfiguredVpcFirewallCount *int32 `json:"ConfiguredVpcFirewallCount,omitempty" xml:"ConfiguredVpcFirewallCount,omitempty"`
+	// The number of VPCs for which VPC firewalls are configured.
+	//
 	// example:
 	//
 	// 1
 	ConfiguredVpcFirewallVpcCount *int32 `json:"ConfiguredVpcFirewallVpcCount,omitempty" xml:"ConfiguredVpcFirewallVpcCount,omitempty"`
+	// The number of Express Connect VPCs.
+	//
 	// example:
 	//
 	// 2
 	ExpressConnectVpcCount *int32 `json:"ExpressConnectVpcCount,omitempty" xml:"ExpressConnectVpcCount,omitempty"`
+	// The number of CEN firewalls that are not configured.
+	//
 	// example:
 	//
 	// 0
 	NotConfiguredCenFirewallCount *int32 `json:"NotConfiguredCenFirewallCount,omitempty" xml:"NotConfiguredCenFirewallCount,omitempty"`
+	// The number of CEN transit router firewall instances that are not configured.
+	//
 	// example:
 	//
 	// 6
 	NotConfiguredCenTrFirewallCount *int32 `json:"NotConfiguredCenTrFirewallCount,omitempty" xml:"NotConfiguredCenTrFirewallCount,omitempty"`
+	// The number of Express Connect firewalls that are not configured.
+	//
 	// example:
 	//
 	// 7
 	NotConfiguredExpressConnectFirewallCount *int32 `json:"NotConfiguredExpressConnectFirewallCount,omitempty" xml:"NotConfiguredExpressConnectFirewallCount,omitempty"`
+	// The number of VPC firewalls that are not configured.
+	//
 	// example:
 	//
 	// 12
 	NotConfiguredVpcFirewallCount *int32 `json:"NotConfiguredVpcFirewallCount,omitempty" xml:"NotConfiguredVpcFirewallCount,omitempty"`
+	// The number of VPCs that are connected using CEN and Express Connect and have the firewall enabled.
+	//
 	// example:
 	//
 	// 10
 	OpenedCenExpressConnectVpcCount *int32 `json:"OpenedCenExpressConnectVpcCount,omitempty" xml:"OpenedCenExpressConnectVpcCount,omitempty"`
+	// The number of enabled CEN firewalls.
+	//
 	// example:
 	//
 	// 4
 	OpenedCenFirewallCount *int32 `json:"OpenedCenFirewallCount,omitempty" xml:"OpenedCenFirewallCount,omitempty"`
+	// The number of VPCs protected by CEN firewalls.
+	//
 	// example:
 	//
 	// 0
 	OpenedCenFirewallVpcCount *int32 `json:"OpenedCenFirewallVpcCount,omitempty" xml:"OpenedCenFirewallVpcCount,omitempty"`
+	// The number of VPCs protected by the CEN transit router firewall.
+	//
 	// example:
 	//
 	// 4
 	OpenedCenTrFirewallVpcCount *int32 `json:"OpenedCenTrFirewallVpcCount,omitempty" xml:"OpenedCenTrFirewallVpcCount,omitempty"`
+	// The number of enabled CEN Express Connect Routers (ECRs).
+	//
 	// example:
 	//
 	// 0
 	OpenedEcrCount *int32 `json:"OpenedEcrCount,omitempty" xml:"OpenedEcrCount,omitempty"`
+	// The number of enabled Express Connect firewalls.
+	//
 	// example:
 	//
 	// 15
 	OpenedExpressConnectFirewallCount *int32 `json:"OpenedExpressConnectFirewallCount,omitempty" xml:"OpenedExpressConnectFirewallCount,omitempty"`
+	// The number of VPCs protected by Express Connect firewalls.
+	//
 	// example:
 	//
 	// 2
 	OpenedExpressConnectVpcCount *int32 `json:"OpenedExpressConnectVpcCount,omitempty" xml:"OpenedExpressConnectVpcCount,omitempty"`
+	// The number of inter-region connections protected by the CEN transit router firewall.
+	//
 	// example:
 	//
 	// 3
 	OpenedPeerTrCount *int32 `json:"OpenedPeerTrCount,omitempty" xml:"OpenedPeerTrCount,omitempty"`
+	// The number of Virtual Border Routers (VBRs) protected by the CEN transit router firewall.
+	//
 	// example:
 	//
 	// 0
 	OpenedVbrCount *int32 `json:"OpenedVbrCount,omitempty" xml:"OpenedVbrCount,omitempty"`
+	// The number of protected VPCs.
+	//
 	// example:
 	//
 	// 17
 	OpenedVpcCount *int32 `json:"OpenedVpcCount,omitempty" xml:"OpenedVpcCount,omitempty"`
+	// The number of enabled VPC firewalls.
+	//
 	// example:
 	//
 	// 9
 	OpenedVpcFirewallCount *int32 `json:"OpenedVpcFirewallCount,omitempty" xml:"OpenedVpcFirewallCount,omitempty"`
+	// The number of VPN gateways protected by the CEN transit router firewall.
+	//
 	// example:
 	//
 	// 6
 	OpenedVpnCount *int32 `json:"OpenedVpnCount,omitempty" xml:"OpenedVpnCount,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 8AABEF64-7ABF-52CB-BA6C-0598E3DB****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of ECRs.
+	//
 	// example:
 	//
 	// 2
 	TotalEcrCount *int32 `json:"TotalEcrCount,omitempty" xml:"TotalEcrCount,omitempty"`
+	// The number of inter-region connections on the CEN transit router.
+	//
 	// example:
 	//
 	// 6
 	TotalPeerTrCount *int32 `json:"TotalPeerTrCount,omitempty" xml:"TotalPeerTrCount,omitempty"`
+	// The number of VBRs on the CEN transit router.
+	//
 	// example:
 	//
 	// 5
 	TotalVbrCount *int32 `json:"TotalVbrCount,omitempty" xml:"TotalVbrCount,omitempty"`
+	// The number of interconnected VPCs.
+	//
 	// example:
 	//
 	// 2
 	TotalVpcCount *int32 `json:"TotalVpcCount,omitempty" xml:"TotalVpcCount,omitempty"`
+	// The total quota for VPC firewalls.
+	//
 	// example:
 	//
 	// 5
 	TotalVpcFirewallQuota *int32 `json:"TotalVpcFirewallQuota,omitempty" xml:"TotalVpcFirewallQuota,omitempty"`
+	// The number of VPN gateways on the CEN transit router.
+	//
 	// example:
 	//
 	// 1

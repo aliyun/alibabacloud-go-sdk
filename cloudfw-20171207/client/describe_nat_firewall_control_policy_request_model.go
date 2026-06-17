@@ -42,55 +42,55 @@ type DescribeNatFirewallControlPolicyRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- **accept**: allows the traffic.
+	// - **accept**: Allow
 	//
-	// 	- **drop**: denies the traffic.
+	// - **drop**: Deny
 	//
-	// 	- **log**: monitors the traffic.
+	// - **log**: Monitor
 	//
 	// example:
 	//
 	// accept
 	AclAction *string `json:"AclAction,omitempty" xml:"AclAction,omitempty"`
-	// The UUID of the access control policy.
+	// The unique ID of the access control policy.
 	//
 	// example:
 	//
-	// 303f0697-2a21-4e43-b142-4a77adf7b358
+	// 323f0697-2a21-4e43-b142-*****
 	AclUuid *string `json:"AclUuid,omitempty" xml:"AclUuid,omitempty"`
-	// The page number.
+	// The page number of the current page for a paged query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The description of the access control policy. Fuzzy match is supported.
+	// The description of the access control policy. Fuzzy queries are supported.
 	//
-	// > If you do not specify this parameter, the descriptions of all policies are queried.
+	// > If you do not set this parameter, the descriptions of all policies are queried.
 	//
 	// example:
 	//
-	// test
+	// test-description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The destination address in the access control policy. Fuzzy match is supported. The value of this parameter varies based on the value of the DestinationType parameter.
+	// The destination address in the access control policy. Fuzzy queries are supported. The value of this parameter varies based on the value of the DestinationType parameter.
 	//
-	// 	- If DestinationType is set to `net`, the value of Destination must be a CIDR block. Example: 10.0.3.0/24.
+	// - If DestinationType is set to `net`, the value of this parameter is a CIDR block. Example: 10.0.3.0/24.
 	//
-	// 	- If DestinationType is set to `domain`, the value of Destination must be a domain name. Example: aliyun.
+	// - If DestinationType is set to `domain`, the value of this parameter is a domain name. Example: aliyun.
 	//
-	// 	- If DestinationType is set to `group`, the value of Destination must be the name of an address book. Example: db_group.
+	// - If DestinationType is set to `group`, the value of this parameter is the name of an address book. Example: db_group.
 	//
-	// 	- If DestinationType is set to `location`, the value of Destination is a location. For more information about location codes, see [AddControlPolicy](https://help.aliyun.com/document_detail/474128.html). Example: ["BJ11", "ZB"].
+	// - If DestinationType is set to `location`, the value of this parameter is a region name. For more information, see [AddControlPolicy](https://help.aliyun.com/document_detail/474128.html). Example: ["BJ11", "ZB"].
 	//
-	// > If you do not specify this parameter, all types of destination addresses are queried.
+	// > If you do not set this parameter, all types of destination addresses are queried.
 	//
 	// example:
 	//
 	// x.x.x.x/32
 	Destination *string `json:"Destination,omitempty" xml:"Destination,omitempty"`
-	// The direction of the traffic to which the access control policy applies. Valid values:
+	// The traffic direction of the access control policy. Valid values:
 	//
-	// 	- **out**: outbound traffic
+	// - **out**: outbound traffic
 	//
 	// This parameter is required.
 	//
@@ -98,17 +98,17 @@ type DescribeNatFirewallControlPolicyRequest struct {
 	//
 	// out
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	// The language of the content within the response. Valid values:
+	// The language of the response. Valid values:
 	//
-	// 	- **zh**: Chinese (default)
+	// - **zh*	- (default): Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The ID of the NAT gateway.
+	// The ID of the NAT Gateway.
 	//
 	// This parameter is required.
 	//
@@ -116,63 +116,63 @@ type DescribeNatFirewallControlPolicyRequest struct {
 	//
 	// ngw-xxxxxx
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
-	// The number of entries per page. Default value: 10.
+	// The maximum number of entries to return on each page for a paged query. The default value is 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The type of the protocol in the access control policy. Valid values:
+	// The protocol type of the traffic in the access control policy. Valid values:
 	//
-	// 	- **TCP**
+	// - **TCP**
 	//
-	// 	- **UDP**
+	// - **UDP**
 	//
-	// 	- **ICMP**
+	// - **ICMP**
 	//
-	// 	- **ANY**: all types of protocols
+	// - **ANY*	- (all protocol types)
 	//
-	// > If you do not specify this parameter, access control policies of all protocol types are queried.
+	// > If you do not set this parameter, all protocol types are queried.
 	//
 	// example:
 	//
 	// ANY
 	Proto *string `json:"Proto,omitempty" xml:"Proto,omitempty"`
-	// Specifies whether the access control policy is enabled. By default, an access control policy is enabled after it is created. Valid values:
+	// The status of the access control policy. By default, an access control policy is enabled after it is created. Valid values:
 	//
-	// 	- **true**
+	// - **true**: enabled
 	//
-	// 	- **false**
+	// - **false**: disabled
 	//
 	// example:
 	//
 	// true
 	Release *string `json:"Release,omitempty" xml:"Release,omitempty"`
-	// The recurrence type for the access control policy to take effect. Valid values:
+	// The recurrence type for the policy validity period. Valid values:
 	//
-	// 	- **Permanent*	- (default): The policy always takes effect.
+	// - **Permanent*	- (default): always
 	//
-	// 	- **None**: The policy takes effect only once.
+	// - **None**: one-time
 	//
-	// 	- **Daily**: The policy takes effect on a daily basis.
+	// - **Daily**: daily
 	//
-	// 	- **Weekly**: The policy takes effect on a weekly basis.
+	// - **Weekly**: weekly
 	//
-	// 	- **Monthly**: The policy takes effect on a monthly basis.
+	// - **Monthly**: monthly
 	//
 	// example:
 	//
 	// Permanent
 	RepeatType *string `json:"RepeatType,omitempty" xml:"RepeatType,omitempty"`
-	// The source address in the access control policy. Fuzzy match is supported. The value of this parameter varies based on the value of the SourceType parameter.
+	// The source address in the access control policy. Fuzzy queries are supported. The value of this parameter varies based on the value of the SourceType parameter.
 	//
-	// 	- If SourceType is set to `net`, the value of Source must be a CIDR block. Example: 192.0.XX.XX/24.
+	// - If SourceType is set to `net`, the value of this parameter is a CIDR block. Example: 192.0.XX.XX/24.
 	//
-	// 	- If SourceType is set to `group`, the value of Source must be the name of an address book. Example: db_group. If the db_group address book does not contain addresses, all source addresses are queried.
+	// - If SourceType is set to `group`, the value of this parameter is the name of an address book. Example: db_group. If you leave this parameter empty, all source addresses are queried.
 	//
-	// 	- If SourceType is set to `location`, the value of Source must be a location. Example: beijing.
+	// - If SourceType is set to `location`, the value of this parameter is a source region. Example: Beijing or beijing. You can use either Chinese or English to specify the region.
 	//
-	// > If you do not specify this parameter, all types of source addresses are queried.
+	// > If you do not set this parameter, all types of source addresses are queried.
 	//
 	// example:
 	//

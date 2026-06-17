@@ -24,26 +24,38 @@ type iDescribeSdlEventStatisticResponseBody interface {
 }
 
 type DescribeSdlEventStatisticResponseBody struct {
+	// The number of AI-related leak threats.
+	//
 	// example:
 	//
 	// 1
 	AiSensitiveDataCount *int64 `json:"AiSensitiveDataCount,omitempty" xml:"AiSensitiveDataCount,omitempty"`
+	// The total number of assets.
+	//
 	// example:
 	//
 	// 32
 	AssetCount *int64 `json:"AssetCount,omitempty" xml:"AssetCount,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// C5DDD596-1191-5F36-A504-8733045A****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of sensitive data leak events.
+	//
 	// example:
 	//
 	// 2
 	SensitiveDataCount *int64 `json:"SensitiveDataCount,omitempty" xml:"SensitiveDataCount,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 2
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The total traffic. Unit: bytes.
+	//
 	// example:
 	//
 	// 0

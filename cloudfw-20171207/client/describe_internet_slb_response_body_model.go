@@ -18,8 +18,12 @@ type iDescribeInternetSlbResponseBody interface {
 }
 
 type DescribeInternetSlbResponseBody struct {
+	// The list of data.
 	DataList []*DescribeInternetSlbResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
-	PageInfo *DescribeInternetSlbResponseBodyPageInfo   `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	// The pagination information.
+	PageInfo *DescribeInternetSlbResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 135BF83A-0416-5A11-96BB-FA7604D4****
@@ -80,47 +84,68 @@ func (s *DescribeInternetSlbResponseBody) Validate() error {
 }
 
 type DescribeInternetSlbResponseBodyDataList struct {
+	// The access control ID.
+	//
 	// example:
 	//
 	// acl-uf66n6l9mf3fgq8xs****
 	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	// The status of access control.
+	//
 	// example:
 	//
 	// on
 	AclStatus *string `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
+	// The access control type.
+	//
 	// example:
 	//
 	// white
 	AclType *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
+	// The health check status.
+	//
 	// example:
 	//
 	// normal
 	HealthStatus *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
+	// The ID of the SLB instance.
+	//
 	// example:
 	//
 	// lb-2ze8v2x5kd9qyvp2****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the SLB instance.
+	//
 	// example:
 	//
 	// buyerpro1
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The protocol type.
+	//
 	// example:
 	//
 	// tcp
 	IpProtocol *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
+	// The port number.
+	//
 	// example:
 	//
 	// 1883
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The public IP address.
+	//
 	// example:
 	//
 	// 39.108.57.XXX
 	PublicIp *string `json:"PublicIp,omitempty" xml:"PublicIp,omitempty"`
+	// The region.
+	//
 	// example:
 	//
 	// cn-shanghai
-	RegionNo *string   `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	Tags     []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	// The list of tags.
+	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s DescribeInternetSlbResponseBodyDataList) String() string {
@@ -235,14 +260,20 @@ func (s *DescribeInternetSlbResponseBodyDataList) Validate() error {
 }
 
 type DescribeInternetSlbResponseBodyPageInfo struct {
+	// The page number of the returned page.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The number of entries returned on the current page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 0

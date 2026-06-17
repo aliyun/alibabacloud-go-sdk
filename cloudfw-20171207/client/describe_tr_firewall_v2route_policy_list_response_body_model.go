@@ -24,13 +24,13 @@ type DescribeTrFirewallV2RoutePolicyListResponseBody struct {
 	//
 	// 95EB5F3A-67FE-5780-92BD-5ECBA772AB7E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 1
 	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The routing policies.
+	// The list of firewall routing policies.
 	TrFirewallRoutePolicies []*DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePolicies `json:"TrFirewallRoutePolicies,omitempty" xml:"TrFirewallRoutePolicies,omitempty" type:"Repeated"`
 }
 
@@ -83,53 +83,53 @@ func (s *DescribeTrFirewallV2RoutePolicyListResponseBody) Validate() error {
 }
 
 type DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePolicies struct {
-	// The secondary traffic redirection instances.
+	// The list of destination traffic redirection instances.
 	DestCandidateList []*DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePoliciesDestCandidateList `json:"DestCandidateList,omitempty" xml:"DestCandidateList,omitempty" type:"Repeated"`
-	// The description of the routing policy.
+	// The description of the policy.
 	//
 	// example:
 	//
-	// test
+	// Point to multipoint
 	PolicyDescription *string `json:"PolicyDescription,omitempty" xml:"PolicyDescription,omitempty"`
-	// The name of the routing policy.
+	// The name of the policy.
 	//
 	// example:
 	//
-	// TEST_VPC_FW
+	// Singapore Point to Multipoint
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	// The status of the routing policy. Valid values:
+	// The status of the policy. Valid values:
 	//
-	// 	- creating: The policy is being created.
+	// - creating: The policy is being created.
 	//
-	// 	- deleting: The policy is being deleted.
+	// - deleting: The policy is being deleted.
 	//
-	// 	- opening: The policy is being enabled.
+	// - opening: The policy is being enabled.
 	//
-	// 	- opened: The policy is enabled.
+	// - opened: The policy is enabled.
 	//
-	// 	- closing: The policy is being disabled.
+	// - closing: The policy is being disabled.
 	//
-	// 	- closed: The policy is disabled.
+	// - closed: The policy is disabled.
 	//
 	// example:
 	//
 	// opened
 	PolicyStatus *string `json:"PolicyStatus,omitempty" xml:"PolicyStatus,omitempty"`
-	// The type of the traffic redirection scenario of the VPC firewall. Valid values:
+	// The type of traffic redirection scenario for the VPC firewall. The firewall is created for a transit router that belongs to an Enterprise Edition Cloud Enterprise Network (CEN) instance. Valid values:
 	//
-	// 	- **fullmesh**: interconnected instances
+	// - **fullmesh**: full-mesh
 	//
-	// 	- **one_to_one**: instance to instance
+	// - **one_to_one**: point-to-point
 	//
-	// 	- **end_to_end**: instance to instances
+	// - **end_to_end**: point-to-multipoint
 	//
 	// example:
 	//
 	// fullmesh
 	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
-	// The primary traffic redirection instances.
+	// The list of source traffic redirection instances.
 	SrcCandidateList []*DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePoliciesSrcCandidateList `json:"SrcCandidateList,omitempty" xml:"SrcCandidateList,omitempty" type:"Repeated"`
-	// The ID of the routing policy.
+	// The ID of the firewall routing policy.
 	//
 	// example:
 	//
@@ -231,13 +231,13 @@ func (s *DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePolicies)
 }
 
 type DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePoliciesDestCandidateList struct {
-	// The ID of the secondary traffic redirection instance.
+	// The ID of the traffic redirection instance.
 	//
 	// example:
 	//
 	// vpc-2ze9epancaw8t4sha****
 	CandidateId *string `json:"CandidateId,omitempty" xml:"CandidateId,omitempty"`
-	// The type of the secondary traffic redirection instance.
+	// The type of the traffic redirection instance.
 	//
 	// example:
 	//
@@ -276,13 +276,13 @@ func (s *DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePoliciesD
 }
 
 type DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePoliciesSrcCandidateList struct {
-	// The ID of the primary traffic redirection instance.
+	// The ID of the traffic redirection instance.
 	//
 	// example:
 	//
 	// vpc-2ze9epancaw8t4sha****
 	CandidateId *string `json:"CandidateId,omitempty" xml:"CandidateId,omitempty"`
-	// The type of the primary traffic redirection instance.
+	// The type of the traffic redirection instance.
 	//
 	// example:
 	//

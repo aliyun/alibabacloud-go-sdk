@@ -14,6 +14,8 @@ type iCreateNatFirewallSyncTaskResponseBody interface {
 }
 
 type CreateNatFirewallSyncTaskResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 3E048D45-A563-5F81-9D97-536B4A84****

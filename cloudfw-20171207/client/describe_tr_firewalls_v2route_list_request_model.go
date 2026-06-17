@@ -28,17 +28,17 @@ type DescribeTrFirewallsV2RouteListRequest struct {
 	//
 	// 1
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The instance ID of the virtual private cloud (VPC) firewall.
+	// The instance ID of the VPC firewall for the transit router.
 	//
 	// example:
 	//
 	// vfw-tr-8bcfa0f2f12d411e****
 	FirewallId *string `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
-	// The language of the content within the response. Valid values:
+	// The language of the response. Valid values:
 	//
-	// 	- **zh*	- (default): Chinese
+	// - **zh*	- (default): Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type DescribeTrFirewallsV2RouteListRequest struct {
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the routing policy.
+	// The ID of the firewall routing policy.
 	//
 	// example:
 	//

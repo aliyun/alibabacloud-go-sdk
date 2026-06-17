@@ -14,6 +14,8 @@ type iReleaseExpiredInstanceRequest interface {
 }
 
 type ReleaseExpiredInstanceRequest struct {
+	// The ID of the Cloud Firewall instance.
+	//
 	// This parameter is required.
 	//
 	// example:

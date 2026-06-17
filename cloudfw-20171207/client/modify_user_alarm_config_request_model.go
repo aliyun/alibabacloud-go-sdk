@@ -17,8 +17,6 @@ type iModifyUserAlarmConfigRequest interface {
 	GetContactConfig() []*ModifyUserAlarmConfigRequestContactConfig
 	SetLang(v string) *ModifyUserAlarmConfigRequest
 	GetLang() *string
-	SetNotifyConfig(v []*ModifyUserAlarmConfigRequestNotifyConfig) *ModifyUserAlarmConfigRequest
-	GetNotifyConfig() []*ModifyUserAlarmConfigRequestNotifyConfig
 	SetSourceIp(v string) *ModifyUserAlarmConfigRequest
 	GetSourceIp() *string
 	SetUseDefaultContact(v int32) *ModifyUserAlarmConfigRequest
@@ -26,22 +24,35 @@ type iModifyUserAlarmConfigRequest interface {
 }
 
 type ModifyUserAlarmConfigRequest struct {
+	// Alert configuration.
+	//
 	// This parameter is required.
 	AlarmConfig []*ModifyUserAlarmConfigRequestAlarmConfig `json:"AlarmConfig,omitempty" xml:"AlarmConfig,omitempty" type:"Repeated"`
+	// Language for message notifications.
+	//
 	// example:
 	//
 	// zh
-	AlarmLang     *string                                      `json:"AlarmLang,omitempty" xml:"AlarmLang,omitempty"`
+	AlarmLang *string `json:"AlarmLang,omitempty" xml:"AlarmLang,omitempty"`
+	// Contact configuration.
+	//
+	// if can be null:
+	// false
 	ContactConfig []*ModifyUserAlarmConfigRequestContactConfig `json:"ContactConfig,omitempty" xml:"ContactConfig,omitempty" type:"Repeated"`
+	// Language used for requests and responses.
+	//
 	// example:
 	//
 	// zh
-	Lang         *string                                     `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	NotifyConfig []*ModifyUserAlarmConfigRequestNotifyConfig `json:"NotifyConfig,omitempty" xml:"NotifyConfig,omitempty" type:"Repeated"`
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Source IP address of the requester.
+	//
 	// example:
 	//
 	// 117.129.64.XXX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// Use default contact method.
+	//
 	// example:
 	//
 	// 1
@@ -72,10 +83,6 @@ func (s *ModifyUserAlarmConfigRequest) GetLang() *string {
 	return s.Lang
 }
 
-func (s *ModifyUserAlarmConfigRequest) GetNotifyConfig() []*ModifyUserAlarmConfigRequestNotifyConfig {
-	return s.NotifyConfig
-}
-
 func (s *ModifyUserAlarmConfigRequest) GetSourceIp() *string {
 	return s.SourceIp
 }
@@ -101,11 +108,6 @@ func (s *ModifyUserAlarmConfigRequest) SetContactConfig(v []*ModifyUserAlarmConf
 
 func (s *ModifyUserAlarmConfigRequest) SetLang(v string) *ModifyUserAlarmConfigRequest {
 	s.Lang = &v
-	return s
-}
-
-func (s *ModifyUserAlarmConfigRequest) SetNotifyConfig(v []*ModifyUserAlarmConfigRequestNotifyConfig) *ModifyUserAlarmConfigRequest {
-	s.NotifyConfig = v
 	return s
 }
 
@@ -138,39 +140,42 @@ func (s *ModifyUserAlarmConfigRequest) Validate() error {
 			}
 		}
 	}
-	if s.NotifyConfig != nil {
-		for _, item := range s.NotifyConfig {
-			if item != nil {
-				if err := item.Validate(); err != nil {
-					return err
-				}
-			}
-		}
-	}
 	return nil
 }
 
 type ModifyUserAlarmConfigRequestAlarmConfig struct {
+	// Hour for alert notifications.
+	//
 	// example:
 	//
 	// 10
 	AlarmHour *string `json:"AlarmHour,omitempty" xml:"AlarmHour,omitempty"`
+	// Notification method.
+	//
 	// example:
 	//
 	// 0
 	AlarmNotify *string `json:"AlarmNotify,omitempty" xml:"AlarmNotify,omitempty"`
+	// Alert period.
+	//
 	// example:
 	//
 	// 0
 	AlarmPeriod *string `json:"AlarmPeriod,omitempty" xml:"AlarmPeriod,omitempty"`
+	// Alarm metric.
+	//
 	// example:
 	//
 	// bandwidth
 	AlarmType *string `json:"AlarmType,omitempty" xml:"AlarmType,omitempty"`
+	// Alert notification message.
+	//
 	// example:
 	//
 	// on
 	AlarmValue *string `json:"AlarmValue,omitempty" xml:"AlarmValue,omitempty"`
+	// Day of the week for alert notifications.
+	//
 	// example:
 	//
 	// 2
@@ -244,22 +249,30 @@ func (s *ModifyUserAlarmConfigRequestAlarmConfig) Validate() error {
 }
 
 type ModifyUserAlarmConfigRequestContactConfig struct {
+	// Mailbox.
+	//
 	// example:
 	//
 	// 91632****@qq.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// Mobile number.
+	//
 	// example:
 	//
 	// 1351234****
 	MobilePhone *string `json:"MobilePhone,omitempty" xml:"MobilePhone,omitempty"`
+	// Alert notification recipient.
+	//
 	// example:
 	//
 	// Ben
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Alert status.
+	//
 	// example:
 	//
 	// 1
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ModifyUserAlarmConfigRequestContactConfig) String() string {
@@ -282,7 +295,7 @@ func (s *ModifyUserAlarmConfigRequestContactConfig) GetName() *string {
 	return s.Name
 }
 
-func (s *ModifyUserAlarmConfigRequestContactConfig) GetStatus() *string {
+func (s *ModifyUserAlarmConfigRequestContactConfig) GetStatus() *int32 {
 	return s.Status
 }
 
@@ -301,52 +314,11 @@ func (s *ModifyUserAlarmConfigRequestContactConfig) SetName(v string) *ModifyUse
 	return s
 }
 
-func (s *ModifyUserAlarmConfigRequestContactConfig) SetStatus(v string) *ModifyUserAlarmConfigRequestContactConfig {
+func (s *ModifyUserAlarmConfigRequestContactConfig) SetStatus(v int32) *ModifyUserAlarmConfigRequestContactConfig {
 	s.Status = &v
 	return s
 }
 
 func (s *ModifyUserAlarmConfigRequestContactConfig) Validate() error {
-	return dara.Validate(s)
-}
-
-type ModifyUserAlarmConfigRequestNotifyConfig struct {
-	// example:
-	//
-	// mail
-	NotifyType *string `json:"NotifyType,omitempty" xml:"NotifyType,omitempty"`
-	// example:
-	//
-	// 1351234****
-	NotifyValue *string `json:"NotifyValue,omitempty" xml:"NotifyValue,omitempty"`
-}
-
-func (s ModifyUserAlarmConfigRequestNotifyConfig) String() string {
-	return dara.Prettify(s)
-}
-
-func (s ModifyUserAlarmConfigRequestNotifyConfig) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyUserAlarmConfigRequestNotifyConfig) GetNotifyType() *string {
-	return s.NotifyType
-}
-
-func (s *ModifyUserAlarmConfigRequestNotifyConfig) GetNotifyValue() *string {
-	return s.NotifyValue
-}
-
-func (s *ModifyUserAlarmConfigRequestNotifyConfig) SetNotifyType(v string) *ModifyUserAlarmConfigRequestNotifyConfig {
-	s.NotifyType = &v
-	return s
-}
-
-func (s *ModifyUserAlarmConfigRequestNotifyConfig) SetNotifyValue(v string) *ModifyUserAlarmConfigRequestNotifyConfig {
-	s.NotifyValue = &v
-	return s
-}
-
-func (s *ModifyUserAlarmConfigRequestNotifyConfig) Validate() error {
 	return dara.Validate(s)
 }

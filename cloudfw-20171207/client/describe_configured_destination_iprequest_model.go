@@ -32,45 +32,68 @@ type iDescribeConfiguredDestinationIPRequest interface {
 }
 
 type DescribeConfiguredDestinationIPRequest struct {
+	// The page number of the returned page.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The destination IP address.
+	//
 	// example:
 	//
 	// 1.1.1.1
-	DestinationIP  *string `json:"DestinationIP,omitempty" xml:"DestinationIP,omitempty"`
+	DestinationIP *string `json:"DestinationIP,omitempty" xml:"DestinationIP,omitempty"`
+	// The destination ISP.
+	//
+	// example:
+	//
+	// telecom
 	DestinationISP *string `json:"DestinationISP,omitempty" xml:"DestinationISP,omitempty"`
+	// The destination region.
+	//
 	// example:
 	//
 	// cn-shenzhen
 	DestinationRegion *string `json:"DestinationRegion,omitempty" xml:"DestinationRegion,omitempty"`
+	// The traffic direction.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// out
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	// The group name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ignore
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The language of the response.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The number of entries to return on each page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The trace code.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// yundun
 	SourceCode *string `json:"SourceCode,omitempty" xml:"SourceCode,omitempty"`
+	// The source IP address of the visitor.
+	//
 	// example:
 	//
 	// 123.113.99.XXX

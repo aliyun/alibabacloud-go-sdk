@@ -48,74 +48,116 @@ type iDescribeNetworkTrafficTopRatioRequest interface {
 }
 
 type DescribeNetworkTrafficTopRatioRequest struct {
+	// The application name.
+	//
 	// example:
 	//
 	// HTTP
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The IP address of the asset.
+	//
 	// example:
 	//
 	// 192.0.XX.XX
 	AssetIP *string `json:"AssetIP,omitempty" xml:"AssetIP,omitempty"`
+	// The region where the asset resides.
+	//
 	// example:
 	//
 	// cn-beijing
 	AssetRegion *string `json:"AssetRegion,omitempty" xml:"AssetRegion,omitempty"`
+	// The data type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// in_src_ip
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// The traffic direction.
+	//
 	// example:
 	//
 	// in
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	// The destination IP address.
+	//
 	// example:
 	//
 	// 39.144.124.XXX
 	DstIP *string `json:"DstIP,omitempty" xml:"DstIP,omitempty"`
+	// The destination port.
+	//
 	// example:
 	//
 	// 8080
 	DstPort *string `json:"DstPort,omitempty" xml:"DstPort,omitempty"`
+	// The end of the time range to query. The value is a UNIX timestamp in seconds.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1757433863
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The IP address property.
+	//
 	// example:
 	//
 	// proxy
 	IpProperty *string `json:"IpProperty,omitempty" xml:"IpProperty,omitempty"`
-	Isp        *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
+	// The Internet Service Provider (ISP).
+	//
+	// example:
+	//
+	// telecom
+	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
+	// The language of the response.
+	//
 	// example:
 	//
 	// zh
-	Lang     *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The area.
+	//
+	// example:
+	//
+	// Hangzhou City
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// The action triggered by the rule.
+	//
 	// example:
 	//
 	// 1
 	RuleResult *string `json:"RuleResult,omitempty" xml:"RuleResult,omitempty"`
+	// The sorting method.
+	//
 	// example:
 	//
 	// in_bytes
 	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	// The source identifier.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// yundun
 	SourceCode *string `json:"SourceCode,omitempty" xml:"SourceCode,omitempty"`
+	// The source IP address of the visitor.
+	//
 	// example:
 	//
 	// 60.12.220.XXX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// The source IP address.
+	//
 	// example:
 	//
 	// 172.16.169.XXX
 	SrcIP *string `json:"SrcIP,omitempty" xml:"SrcIP,omitempty"`
+	// The beginning of the time range to query. The value is a UNIX timestamp in seconds.
+	//
 	// This parameter is required.
 	//
 	// example:

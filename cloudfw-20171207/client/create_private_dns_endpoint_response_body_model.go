@@ -18,16 +18,20 @@ type iCreatePrivateDnsEndpointResponseBody interface {
 }
 
 type CreatePrivateDnsEndpointResponseBody struct {
+	// The ID of the instance.
+	//
 	// example:
 	//
 	// pd-12345
 	AccessInstanceId *string `json:"AccessInstanceId,omitempty" xml:"AccessInstanceId,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 850A84D6************00090125EEB1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The unique ID of the task.
+	//
 	// example:
 	//
 	// 132

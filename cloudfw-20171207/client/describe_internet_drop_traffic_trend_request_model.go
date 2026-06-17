@@ -24,30 +24,42 @@ type iDescribeInternetDropTrafficTrendRequest interface {
 }
 
 type DescribeInternetDropTrafficTrendRequest struct {
+	// The traffic direction.
+	//
 	// example:
 	//
 	// out
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	// The end time of the query, specified as a timestamp in seconds.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1756346821
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The language of the response.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The traceability code.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// yundun
 	SourceCode *string `json:"SourceCode,omitempty" xml:"SourceCode,omitempty"`
+	// The source IP address.
+	//
 	// example:
 	//
 	// 120.136.21.XXX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// The start time, specified as a timestamp in seconds.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -22,22 +22,32 @@ type iDescribeRiskEventStatisticResponseBody interface {
 }
 
 type DescribeRiskEventStatisticResponseBody struct {
+	// The number of attacked applications.
+	//
 	// example:
 	//
 	// 10
 	AttackAppCnt *int32 `json:"AttackAppCnt,omitempty" xml:"AttackAppCnt,omitempty"`
+	// The attack count.
+	//
 	// example:
 	//
 	// 5
 	AttackCnt *int32 `json:"AttackCnt,omitempty" xml:"AttackCnt,omitempty"`
+	// The number of attacked assets.
+	//
 	// example:
 	//
 	// 10
 	AttackIpCnt *int32 `json:"AttackIpCnt,omitempty" xml:"AttackIpCnt,omitempty"`
+	// The drop count.
+	//
 	// example:
 	//
 	// 20
 	DropCnt *int32 `json:"DropCnt,omitempty" xml:"DropCnt,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// F93A490D-9E92-5AA4-BA79-600FFC09****

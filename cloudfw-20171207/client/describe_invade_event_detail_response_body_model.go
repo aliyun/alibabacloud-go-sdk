@@ -50,75 +50,111 @@ type iDescribeInvadeEventDetailResponseBody interface {
 }
 
 type DescribeInvadeEventDetailResponseBody struct {
+	// The instance ID of the asset.
+	//
 	// example:
 	//
 	// i-8vb2nmm070m****
 	AssetsInstanceId *string `json:"AssetsInstanceId,omitempty" xml:"AssetsInstanceId,omitempty"`
+	// The name of the asset.
+	//
 	// example:
 	//
 	// ECS_test
 	AssetsInstanceName *string `json:"AssetsInstanceName,omitempty" xml:"AssetsInstanceName,omitempty"`
+	// The description of the event.
+	//
 	// example:
 	//
 	// test
 	EventDesc *string `json:"EventDesc,omitempty" xml:"EventDesc,omitempty"`
+	// The details of the event.
+	//
 	// example:
 	//
 	// test
 	EventDetail *string `json:"EventDetail,omitempty" xml:"EventDetail,omitempty"`
+	// The key of the event.
+	//
 	// example:
 	//
 	// C&CActivity
 	EventKey *string `json:"EventKey,omitempty" xml:"EventKey,omitempty"`
+	// The name of the event.
+	//
 	// example:
 	//
 	// event_test
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
+	// The UUID of the threat detection event.
+	//
 	// example:
 	//
 	// aa6e786c-5034-457a-8e05-1c63fab****
 	EventUuid *string `json:"EventUuid,omitempty" xml:"EventUuid,omitempty"`
+	// The time when the event first occurred. This value is a UNIX timestamp. Unit: seconds.
+	//
 	// example:
 	//
 	// 1735006706
 	FirstTime *int32 `json:"FirstTime,omitempty" xml:"FirstTime,omitempty"`
+	// Indicates whether the event is ignored.
+	//
 	// example:
 	//
 	// false
 	IsIgnore *bool `json:"IsIgnore,omitempty" xml:"IsIgnore,omitempty"`
+	// The time when the event last occurred. This value is a UNIX timestamp. Unit: seconds.
+	//
 	// example:
 	//
 	// 1740104108
-	LastTime      *int32                                                `json:"LastTime,omitempty" xml:"LastTime,omitempty"`
+	LastTime *int32 `json:"LastTime,omitempty" xml:"LastTime,omitempty"`
+	// The list of remediation operations.
 	OperationList []*DescribeInvadeEventDetailResponseBodyOperationList `json:"OperationList,omitempty" xml:"OperationList,omitempty" type:"Repeated"`
+	// The private IP address.
+	//
 	// example:
 	//
 	// 10.21.186.XXX
 	PrivateIP *string `json:"PrivateIP,omitempty" xml:"PrivateIP,omitempty"`
+	// The handling status of the event.
+	//
 	// example:
 	//
 	// 1
 	ProcessStatus *int32 `json:"ProcessStatus,omitempty" xml:"ProcessStatus,omitempty"`
+	// The public IP address.
+	//
 	// example:
 	//
 	// 106.15.185.XXX
 	PublicIP *string `json:"PublicIP,omitempty" xml:"PublicIP,omitempty"`
+	// The reference information.
+	//
 	// example:
 	//
 	// test
 	Reference *string `json:"Reference,omitempty" xml:"Reference,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 8022D695-4A35-50BC-8697-EA9C233A****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The risk level of the event.
+	//
 	// example:
 	//
 	// 2
-	RiskLevel             *int32                                                        `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The list of unhandled operations.
 	UnhandleOperationList []*DescribeInvadeEventDetailResponseBodyUnhandleOperationList `json:"UnhandleOperationList,omitempty" xml:"UnhandleOperationList,omitempty" type:"Repeated"`
 }
 
@@ -324,10 +360,14 @@ func (s *DescribeInvadeEventDetailResponseBody) Validate() error {
 }
 
 type DescribeInvadeEventDetailResponseBodyOperationList struct {
+	// The parameters for the operation.
+	//
 	// example:
 	//
 	// test
 	Args *string `json:"Args,omitempty" xml:"Args,omitempty"`
+	// The operation.
+	//
 	// example:
 	//
 	// RunMode
@@ -365,10 +405,14 @@ func (s *DescribeInvadeEventDetailResponseBodyOperationList) Validate() error {
 }
 
 type DescribeInvadeEventDetailResponseBodyUnhandleOperationList struct {
+	// The parameters for the operation.
+	//
 	// example:
 	//
 	// test
 	Args *string `json:"Args,omitempty" xml:"Args,omitempty"`
+	// The operation.
+	//
 	// example:
 	//
 	// RunMode

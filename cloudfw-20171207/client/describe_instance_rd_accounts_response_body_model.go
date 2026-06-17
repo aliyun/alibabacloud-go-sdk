@@ -16,7 +16,10 @@ type iDescribeInstanceRdAccountsResponseBody interface {
 }
 
 type DescribeInstanceRdAccountsResponseBody struct {
+	// The information about the accounts.
 	Accounts []*DescribeInstanceRdAccountsResponseBodyAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Repeated"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 06D1EC07-C9EB-58AC-A750-C87C9A0****
@@ -63,10 +66,14 @@ func (s *DescribeInstanceRdAccountsResponseBody) Validate() error {
 }
 
 type DescribeInstanceRdAccountsResponseBodyAccounts struct {
+	// The ID of the member account.
+	//
 	// example:
 	//
 	// 171054237268****
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The display name of the member.
+	//
 	// example:
 	//
 	// test

@@ -22,19 +22,28 @@ type iDescribeConfiguredDestinationIPResponseBody interface {
 }
 
 type DescribeConfiguredDestinationIPResponseBody struct {
+	// The list of destinations.
 	Destinations []*DescribeConfiguredDestinationIPResponseBodyDestinations `json:"Destinations,omitempty" xml:"Destinations,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// F0AE91F8-E6C5-50D4-983F-FC53672****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 32
@@ -108,16 +117,32 @@ func (s *DescribeConfiguredDestinationIPResponseBody) Validate() error {
 }
 
 type DescribeConfiguredDestinationIPResponseBodyDestinations struct {
+	// The remarks.
+	//
+	// example:
+	//
+	// test
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The destination IP address.
+	//
 	// example:
 	//
 	// 1.1.1.1
-	DestinationIP  *string `json:"DestinationIP,omitempty" xml:"DestinationIP,omitempty"`
+	DestinationIP *string `json:"DestinationIP,omitempty" xml:"DestinationIP,omitempty"`
+	// The ISP of the destination.
+	//
+	// example:
+	//
+	// telecom
 	DestinationISP *string `json:"DestinationISP,omitempty" xml:"DestinationISP,omitempty"`
+	// The destination region.
+	//
 	// example:
 	//
 	// cn-shenzhen
 	DestinationRegion *string `json:"DestinationRegion,omitempty" xml:"DestinationRegion,omitempty"`
+	// The time of the operation. The value is a UNIX timestamp. Unit: seconds.
+	//
 	// example:
 	//
 	// 1534408189

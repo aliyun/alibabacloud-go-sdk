@@ -26,30 +26,44 @@ type iDescribeTransitRouterResourcesListRequest interface {
 }
 
 type DescribeTransitRouterResourcesListRequest struct {
+	// The ID of the Cloud Enterprise Network (CEN) instance.
+	//
 	// example:
 	//
 	// cen-djz1i6p8shzioz****
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	// The instance ID of the border firewall.
+	//
 	// example:
 	//
 	// vfw-tr-741de4c8956341****
 	FirewallId *string `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
+	// The language of the request and response.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-shenzhen
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	// The asset type.
+	//
 	// example:
 	//
 	// TR
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The ID of the TransitRouter.
+	//
 	// example:
 	//
 	// tr-2zefgvkcl2qcexbb7****
 	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
+	// The ID of the VPC instance.
+	//
 	// example:
 	//
 	// vpc-wz9lllsbftdm0svpj****

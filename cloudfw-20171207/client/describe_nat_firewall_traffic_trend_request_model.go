@@ -24,41 +24,41 @@ type iDescribeNatFirewallTrafficTrendRequest interface {
 }
 
 type DescribeNatFirewallTrafficTrendRequest struct {
-	// The end of the time range to query. The value is a UNIX timestamp that is accurate to seconds.
+	// The end of the time range to query. This value is a UNIX timestamp. Unit: seconds.
 	//
 	// example:
 	//
 	// 1739330580
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The time interval between the data entries to return. Unit: seconds. Valid values:
+	// The time granularity for the query. Unit: seconds. Valid values:
 	//
-	// 	- **60**: 1 minute
+	// - **60**: 1 minute.
 	//
-	// 	- **1800**: 30 minutes
+	// - **1800**: 30 minutes.
 	//
 	// example:
 	//
 	// 60
 	Interval *int64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The ID of the NAT gateway.
+	// The ID of the NAT Gateway.
 	//
 	// example:
 	//
 	// ngw-xxxxxx
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
-	// The private IP address of the source.
+	// The private source IP address.
 	//
 	// example:
 	//
 	// 10.100.134.60
 	SrcPrivateIP *string `json:"SrcPrivateIP,omitempty" xml:"SrcPrivateIP,omitempty"`
-	// The public IP address of the source.
+	// The source IP address on the Internet.
 	//
 	// example:
 	//
 	// 47.112.210.136
 	SrcPublicIP *string `json:"SrcPublicIP,omitempty" xml:"SrcPublicIP,omitempty"`
-	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	// The start of the time range to query. This value is a UNIX timestamp. Unit: seconds.
 	//
 	// example:
 	//

@@ -42,66 +42,96 @@ type iDescribeInternetTimeTopRequest interface {
 }
 
 type DescribeInternetTimeTopRequest struct {
+	// The direction of the traffic.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// out
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	// The end of the query time range, specified as a Unix timestamp in seconds.
+	//
 	// example:
 	//
 	// 1733796528
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The network type of the IP address.
+	//
 	// example:
 	//
 	// Public
 	IPType *string `json:"IPType,omitempty" xml:"IPType,omitempty"`
+	// The time interval in seconds.
+	//
 	// example:
 	//
 	// 60
 	Interval *int64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The language of the response.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The maximum number of entries to return. The value must be between 1 and 50. Default value: 50.
+	//
 	// example:
 	//
 	// 5
 	Limit *string `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// The NAT public IP address. If omitted, traffic data for all assets is returned.
+	//
 	// example:
 	//
 	// 47.97.66.XXX
 	NatIP *string `json:"NatIP,omitempty" xml:"NatIP,omitempty"`
+	// The sort order.
+	//
 	// example:
 	//
 	// desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The metric by which to sort the results.
+	//
 	// example:
 	//
 	// in_bps
 	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	// The identifier for the trace source.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// yundun
 	SourceCode *string `json:"SourceCode,omitempty" xml:"SourceCode,omitempty"`
+	// The source IP address.
+	//
 	// example:
 	//
 	// 60.179.179.XXX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// The source IP address.
+	//
 	// example:
 	//
 	// 8.153.18.XX
 	SrcIP *string `json:"SrcIP,omitempty" xml:"SrcIP,omitempty"`
+	// The start of the query time range, specified as a Unix timestamp in seconds.
+	//
 	// example:
 	//
 	// 1749434787
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The traffic timestamp to query, specified as a Unix timestamp in seconds.
+	//
 	// example:
 	//
 	// 1745222880
 	TrafficTime *string `json:"TrafficTime,omitempty" xml:"TrafficTime,omitempty"`
+	// The traffic type.
+	//
 	// example:
 	//
 	// EIP_TRAFFIC

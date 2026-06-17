@@ -16,10 +16,18 @@ type iDescribeAclWhitelistRequest interface {
 }
 
 type DescribeAclWhitelistRequest struct {
+	// The language of the response message. Valid values:
+	//
+	// - **zh*	- (default): Chinese
+	//
+	// - **en**: English
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The source IP address of the visitor.
+	//
 	// example:
 	//
 	// 101.36.65.XX

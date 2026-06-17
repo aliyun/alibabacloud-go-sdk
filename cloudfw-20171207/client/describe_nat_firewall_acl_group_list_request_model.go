@@ -14,6 +14,8 @@ type iDescribeNatFirewallAclGroupListRequest interface {
 }
 
 type DescribeNatFirewallAclGroupListRequest struct {
+	// The language of the request and response.
+	//
 	// example:
 	//
 	// zh

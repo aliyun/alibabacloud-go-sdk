@@ -52,65 +52,65 @@ type CreateTrFirewallV2Request struct {
 	//
 	// example:
 	//
-	// vfw-sz
+	// vpc-firewall-description
 	FirewallDescription *string `json:"FirewallDescription,omitempty" xml:"FirewallDescription,omitempty"`
 	// The name of the firewall.
 	//
 	// example:
 	//
-	// cfw_test2
+	// vpc-firewall-test
 	FirewallName *string `json:"FirewallName,omitempty" xml:"FirewallName,omitempty"`
-	// The subnet CIDR block of the VPC in which the ENI of the firewall is stored in automatic mode.
+	// The CIDR block of the vSwitch in the firewall VPC that hosts the firewall\\"s elastic network interface (ENI). This parameter applies only in automatic mode.
 	//
 	// example:
 	//
 	// 10.0.1.0/24
 	FirewallSubnetCidr *string `json:"FirewallSubnetCidr,omitempty" xml:"FirewallSubnetCidr,omitempty"`
-	// The CIDR block that is allocated to the VPC created for the VPC firewall in automatic mode.
+	// The CIDR block of the firewall VPC in automatic mode.
 	//
 	// example:
 	//
 	// 10.0.0.0/16
 	FirewallVpcCidr *string `json:"FirewallVpcCidr,omitempty" xml:"FirewallVpcCidr,omitempty"`
-	// The ID of the VPC in which the ENI associated with the VPC firewall is created in manual mode.
+	// The ID of the VPC where the firewall ENI is created. This parameter applies only in manual mode.
 	//
 	// example:
 	//
 	// vpc-wz9r5qvryn0lg3atb****
 	FirewallVpcId *string `json:"FirewallVpcId,omitempty" xml:"FirewallVpcId,omitempty"`
-	// The ID of the vSwitch that is used to create the ENI in manual mode.
+	// The ID of the vSwitch where the firewall ENI is created. This parameter applies only in manual mode.
 	//
 	// example:
 	//
 	// vsw-uf6ydz3vqj77mr5l6****
 	FirewallVswitchId *string `json:"FirewallVswitchId,omitempty" xml:"FirewallVswitchId,omitempty"`
-	// The language of the content within the response. Valid values:
+	// The language of the response message. Valid values:
 	//
-	// 	- **zh**: Chinese (default)
+	// - **zh*	- (default): Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The region ID of the route router.
+	// The region ID of the transit router instance.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	// The routing mode of the VPC firewall. Valid values:
+	// The routing mode. Valid values:
 	//
-	// 	- **managed**: automatic mode
+	// - **managed**: automatic mode
 	//
-	// 	- **manual**: manual mode
+	// - **manual**: manual mode
 	//
 	// example:
 	//
 	// managed
 	RouteMode *string `json:"RouteMode,omitempty" xml:"RouteMode,omitempty"`
-	// The primary subnet CIDR block that the VPC uses to connect to the transit router in automatic mode.
+	// The CIDR block of the primary vSwitch used to connect to the transit router. This parameter applies only in automatic mode.
 	//
 	// example:
 	//
@@ -122,7 +122,7 @@ type CreateTrFirewallV2Request struct {
 	//
 	// cn-chengdu-a
 	TrAttachmentMasterZone *string `json:"TrAttachmentMasterZone,omitempty" xml:"TrAttachmentMasterZone,omitempty"`
-	// The secondary subnet CIDR block that the VPC uses to connect to the transit router in automatic mode.
+	// The CIDR block of the secondary vSwitch used to connect to the transit router. This parameter applies only in automatic mode.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ type CreateTrFirewallV2Request struct {
 	//
 	// cn-chengdu-b
 	TrAttachmentSlaveZone *string `json:"TrAttachmentSlaveZone,omitempty" xml:"TrAttachmentSlaveZone,omitempty"`
-	// The ID of the transit router.
+	// The ID of the transit router instance.
 	//
 	// example:
 	//

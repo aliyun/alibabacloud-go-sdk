@@ -14,11 +14,11 @@ type iDeleteSecurityProxyResponseBody interface {
 }
 
 type DeleteSecurityProxyResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
-	// 7447795A-39AB-52CB-8F92-128DF4898F36
+	// 7447795A-39AB-52CB-8F92-128DF******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

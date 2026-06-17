@@ -18,11 +18,16 @@ type iDescribeNetworkInstanceListResponseBody interface {
 }
 
 type DescribeNetworkInstanceListResponseBody struct {
+	// The details of the network instances.
 	NetworkInstanceList []*DescribeNetworkInstanceListResponseBodyNetworkInstanceList `json:"NetworkInstanceList,omitempty" xml:"NetworkInstanceList,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// D2373503-3921-59F2-93A6-3DA7FB7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 21
@@ -78,18 +83,26 @@ func (s *DescribeNetworkInstanceListResponseBody) Validate() error {
 }
 
 type DescribeNetworkInstanceListResponseBodyNetworkInstanceList struct {
+	// The ID of the network instance.
+	//
 	// example:
 	//
 	// vpc-m5ewlqkuf7or****
 	NetworkInstanceId *string `json:"NetworkInstanceId,omitempty" xml:"NetworkInstanceId,omitempty"`
+	// The name of the network instance.
+	//
 	// example:
 	//
 	// vpc-test
 	NetworkInstanceName *string `json:"NetworkInstanceName,omitempty" xml:"NetworkInstanceName,omitempty"`
+	// The type of the network instance.
+	//
 	// example:
 	//
 	// vpc
 	NetworkInstanceType *string `json:"NetworkInstanceType,omitempty" xml:"NetworkInstanceType,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-shanghai

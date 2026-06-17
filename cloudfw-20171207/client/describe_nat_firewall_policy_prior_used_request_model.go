@@ -20,11 +20,11 @@ type iDescribeNatFirewallPolicyPriorUsedRequest interface {
 }
 
 type DescribeNatFirewallPolicyPriorUsedRequest struct {
-	// The direction of the traffic to which the access control policy applies.
+	// The traffic direction of the access control policy.
 	//
-	// Valid values:
+	// Valid value:
 	//
-	// 	- **out**: outbound traffic
+	// - **out**: outbound traffic.
 	//
 	// This parameter is required.
 	//
@@ -32,25 +32,25 @@ type DescribeNatFirewallPolicyPriorUsedRequest struct {
 	//
 	// out
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	// The IP version supported by the access control policy. Valid values:
+	// The IP version. Valid value:
 	//
-	// 	- **4**: IPv4 (default)
+	// - **4*	- (default): IPv4
 	//
 	// example:
 	//
 	// 4
 	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	// The language of the content within the request and the response. Valid values:
+	// The language of the request and response. Valid values:
 	//
-	// 	- **zh**: Chinese (default)
+	// - **zh*	- (default): Chinese.
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The ID of the NAT gateway.
+	// The ID of the NAT Gateway.
 	//
 	// This parameter is required.
 	//

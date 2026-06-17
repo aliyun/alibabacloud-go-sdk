@@ -24,30 +24,42 @@ type iDescribeRiskEventTopAttackTypeRequest interface {
 }
 
 type DescribeRiskEventTopAttackTypeRequest struct {
+	// The edition of Cloud Firewall.
+	//
 	// example:
 	//
 	// 2
 	BuyVersion *string `json:"BuyVersion,omitempty" xml:"BuyVersion,omitempty"`
+	// The traffic direction.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// out
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	// The end of the time range for the query. The value must be a Unix timestamp in seconds.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1743387943
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The language of the request and response.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The source IP address.
+	//
 	// example:
 	//
 	// 140.210.153.XXX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// The start of the time range for the query. The value must be a Unix timestamp in seconds.
+	//
 	// This parameter is required.
 	//
 	// example:

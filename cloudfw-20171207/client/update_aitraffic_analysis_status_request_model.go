@@ -14,6 +14,12 @@ type iUpdateAITrafficAnalysisStatusRequest interface {
 }
 
 type UpdateAITrafficAnalysisStatusRequest struct {
+	// The enabling status. Valid values:
+	//
+	// - **open**: Enables the feature.
+	//
+	// - **close**: Disables the feature.
+	//
 	// example:
 	//
 	// normal

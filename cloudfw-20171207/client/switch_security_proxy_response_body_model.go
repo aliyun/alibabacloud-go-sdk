@@ -14,11 +14,11 @@ type iSwitchSecurityProxyResponseBody interface {
 }
 
 type SwitchSecurityProxyResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
-	// F1E55690-3ABA-58FA-90E3-593EF05B73ED
+	// F1E55690-3ABA-58FA-90E3-593EF******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

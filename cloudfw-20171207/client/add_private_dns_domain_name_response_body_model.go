@@ -14,7 +14,7 @@ type iAddPrivateDnsDomainNameResponseBody interface {
 }
 
 type AddPrivateDnsDomainNameResponseBody struct {
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//

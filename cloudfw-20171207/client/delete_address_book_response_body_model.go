@@ -14,7 +14,7 @@ type iDeleteAddressBookResponseBody interface {
 }
 
 type DeleteAddressBookResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

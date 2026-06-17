@@ -18,11 +18,16 @@ type iDescribeAclAppsResponseBody interface {
 }
 
 type DescribeAclAppsResponseBody struct {
+	// The list of ACL applications.
 	AclApps []*DescribeAclAppsResponseBodyAclApps `json:"AclApps,omitempty" xml:"AclApps,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 9063AB86-6FFA-5B2D-A16D-697C966D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total count.
+	//
 	// example:
 	//
 	// 20
@@ -78,23 +83,50 @@ func (s *DescribeAclAppsResponseBody) Validate() error {
 }
 
 type DescribeAclAppsResponseBodyAclApps struct {
+	// The application ID.
+	//
 	// example:
 	//
 	// 1.0
 	AppId *int32 `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The application name.
+	//
 	// example:
 	//
 	// test
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// Indicates whether the application is common. Valid values:
+	//
+	// - **1**: common
+	//
+	// - **0**: not common
+	//
+	// -
+	//
 	// example:
 	//
 	// 1
-	Popular   *int32    `json:"Popular,omitempty" xml:"Popular,omitempty"`
+	Popular *int32 `json:"Popular,omitempty" xml:"Popular,omitempty"`
+	// The protocols supported by the application.
 	Protocols []*string `json:"Protocols,omitempty" xml:"Protocols,omitempty" type:"Repeated"`
+	// The risk level. Valid values:
+	//
+	// - **1**: Low
+	//
+	// - **2**: Medium
+	//
+	// - **3**: High
+	//
 	// example:
 	//
 	// 1
 	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// Indicates whether the application supports `FQDN`. Valid values:
+	//
+	// - **0**: No
+	//
+	// - **1**: Yes
+	//
 	// example:
 	//
 	// 1

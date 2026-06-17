@@ -16,13 +16,13 @@ type iDescribeDomainResolveResponseBody interface {
 }
 
 type DescribeDomainResolveResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// CBF1E9B7-D6A0-4E9E-AD3E-2B47E6C2837D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The details about the DNS record of the domain name.
+	// The result of the domain name resolution.
 	ResolveResult *DescribeDomainResolveResponseBodyResolveResult `json:"ResolveResult,omitempty" xml:"ResolveResult,omitempty" type:"Struct"`
 }
 
@@ -62,13 +62,13 @@ func (s *DescribeDomainResolveResponseBody) Validate() error {
 }
 
 type DescribeDomainResolveResponseBodyResolveResult struct {
-	// The IP address to which the domain name is resolved. Multiple IP addresses are separated by commas (,).
+	// The resolution result of the domain name. Multiple IP addresses are separated by commas (,).
 	//
 	// example:
 	//
 	// 11.1.X.X,12.1.X.X
 	IpAddrs *string `json:"IpAddrs,omitempty" xml:"IpAddrs,omitempty"`
-	// The time when the domain name was resolved. The value of this parameter is a timestamp. Unit: seconds.
+	// The timestamp of the resolution. Unit: seconds.
 	//
 	// example:
 	//
