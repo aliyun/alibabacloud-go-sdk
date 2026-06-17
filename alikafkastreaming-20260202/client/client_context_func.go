@@ -88,6 +88,10 @@ func (client *Client) DeleteComputeInstanceWithContext(ctx context.Context, requ
 		query["RegionId"] = request.RegionId
 	}
 
+	if !dara.IsNil(request.ResourceType) {
+		query["ResourceType"] = request.ResourceType
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}

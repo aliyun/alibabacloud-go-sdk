@@ -13,13 +13,16 @@ type iDeleteComputeInstanceRequest interface {
 	GetInstanceId() *string
 	SetRegionId(v string) *DeleteComputeInstanceRequest
 	GetRegionId() *string
+	SetResourceType(v string) *DeleteComputeInstanceRequest
+	GetResourceType() *string
 }
 
 type DeleteComputeInstanceRequest struct {
 	// This parameter is required.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// This parameter is required.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s DeleteComputeInstanceRequest) String() string {
@@ -38,6 +41,10 @@ func (s *DeleteComputeInstanceRequest) GetRegionId() *string {
 	return s.RegionId
 }
 
+func (s *DeleteComputeInstanceRequest) GetResourceType() *string {
+	return s.ResourceType
+}
+
 func (s *DeleteComputeInstanceRequest) SetInstanceId(v string) *DeleteComputeInstanceRequest {
 	s.InstanceId = &v
 	return s
@@ -45,6 +52,11 @@ func (s *DeleteComputeInstanceRequest) SetInstanceId(v string) *DeleteComputeIns
 
 func (s *DeleteComputeInstanceRequest) SetRegionId(v string) *DeleteComputeInstanceRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteComputeInstanceRequest) SetResourceType(v string) *DeleteComputeInstanceRequest {
+	s.ResourceType = &v
 	return s
 }
 
