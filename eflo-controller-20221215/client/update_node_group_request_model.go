@@ -28,44 +28,49 @@ type iUpdateNodeGroupRequest interface {
 }
 
 type UpdateNodeGroupRequest struct {
-	// Whether file storage mounting is supported
+	// Specifies whether to mount file storage on nodes.
 	//
 	// example:
 	//
 	// True
 	FileSystemMountEnabled *bool `json:"FileSystemMountEnabled,omitempty" xml:"FileSystemMountEnabled,omitempty"`
-	// The default image ID of the node group. If not set, it will not change.
+	// The ID of the image for the node group. If you omit this parameter, the image remains unchanged.
 	//
 	// example:
 	//
 	// i1232142432432
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// Key pair name.
+	// The name of the key pair.
 	//
 	// example:
 	//
 	// test
 	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
-	// Login password for machines within the node group
+	// The login password for the nodes in the node group.
 	//
 	// example:
 	//
-	// LoginPassword
+	// Password
 	LoginPassword *string `json:"LoginPassword,omitempty" xml:"LoginPassword,omitempty"`
-	// Node group name
+	// The new name of the node group.
 	//
 	// example:
 	//
 	// test-update
 	NewNodeGroupName *string `json:"NewNodeGroupName,omitempty" xml:"NewNodeGroupName,omitempty"`
-	// Node group ID
+	// The ID of the node group.
 	//
 	// example:
 	//
 	// i120021051733814190732
 	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
+	// To query the RAM roles that you have created, call the ListRoles operation in the RAM API. The trust policy for the role must specify Intelligent Computing Lingjun as the trusted entity. Note: You cannot remove a role by clearing this parameter.
+	//
+	// example:
+	//
+	// xianwen-test-ram-role
 	RamRoleName *string `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
-	// User-defined script
+	// The user data. This script runs at node startup.
 	//
 	// example:
 	//

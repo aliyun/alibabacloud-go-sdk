@@ -18,7 +18,7 @@ type iListTagResourcesResponseBody interface {
 }
 
 type ListTagResourcesResponseBody struct {
-	// The token that is used in the next request to retrieve a new page of results.
+	// The token to retrieve the next page of results. If the response is paged, this parameter is returned. To retrieve the next page, include this token in the next request.
 	//
 	// example:
 	//
