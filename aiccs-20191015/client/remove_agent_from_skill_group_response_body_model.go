@@ -22,19 +22,32 @@ type iRemoveAgentFromSkillGroupResponseBody interface {
 }
 
 type RemoveAgentFromSkillGroupResponseBody struct {
+	// The status code. A value of "Success" indicates that the request succeeded.
+	//
 	// example:
 	//
 	// Success
-	Code *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Returned data.
 	Data *RemoveAgentFromSkillGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Description of the status code.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the API invocation succeeded. Valid values:
+	//
+	// - **true**: Succeeded.
+	//
+	// - **false**: Failed.
+	//
 	// example:
 	//
 	// true
@@ -104,6 +117,8 @@ func (s *RemoveAgentFromSkillGroupResponseBody) Validate() error {
 }
 
 type RemoveAgentFromSkillGroupResponseBodyData struct {
+	// The number of agents successfully removed.
+	//
 	// example:
 	//
 	// 2

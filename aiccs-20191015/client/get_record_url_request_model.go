@@ -18,18 +18,30 @@ type iGetRecordUrlRequest interface {
 }
 
 type GetRecordUrlRequest struct {
+	// The session ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1001067****
 	Acid *string `json:"Acid,omitempty" xml:"Acid,omitempty"`
+	// The Artificial Intelligence Cloud Call Service (AICCS) instance ID. You can obtain it in the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview) > Instance Management.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc_xp_pre-cn-****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The call type. Valid values:
+	//
+	// - **DUP_CALL**: Incoming and outgoing calls.
+	//
+	// - **IVR_CALL**: IVR outbound call.
+	//
+	// - **SMART_CALL**: Intelligent outbound call.
+	//
 	// This parameter is required.
 	//
 	// example:

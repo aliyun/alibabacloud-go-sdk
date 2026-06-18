@@ -24,23 +24,38 @@ type iAddInboundNumberResponseBody interface {
 }
 
 type AddInboundNumberResponseBody struct {
+	// Details about why access was denied.
+	//
 	// example:
 	//
 	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The status code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data []*AddInboundNumberResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The status code description.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// D6A51251-F7C4-596A-9F45-3C3219A5450D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the API call succeeded.
+	//
+	// - **true**: The call succeeded.
+	//
+	// - **false**: The call failed.
+	//
 	// example:
 	//
 	// false
@@ -123,14 +138,20 @@ func (s *AddInboundNumberResponseBody) Validate() error {
 }
 
 type AddInboundNumberResponseBodyData struct {
+	// The inbound number.
+	//
 	// example:
 	//
 	// 234234238**33
 	InboundNumber *string `json:"InboundNumber,omitempty" xml:"InboundNumber,omitempty"`
+	// The error description.
+	//
 	// example:
 	//
-	// 示例值
+	// 号码不合法
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Indicates whether the number was added successfully. `true` indicates success, and `false` indicates failure.
+	//
 	// example:
 	//
 	// false

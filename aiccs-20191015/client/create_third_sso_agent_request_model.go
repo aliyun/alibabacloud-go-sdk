@@ -28,36 +28,53 @@ type iCreateThirdSsoAgentRequest interface {
 }
 
 type CreateThirdSsoAgentRequest struct {
+	// Account ID to synchronize.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// accountId1
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// Account name to synchronize.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// accountName1
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The client ID issued to the tenant instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 46c1341e-2648-447a-9b11-70b6a298d94d
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// Unique ID for the customer request. Used for idempotency validation and can be generated using UUID.
+	//
 	// example:
 	//
 	// 46c1341e-2648-447a-9b11-70b6a298d94d
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Agent display name.
+	//
+	// example:
+	//
+	// 张三
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// AICCS instance ID. You can obtain it from the Artificial Intelligence Cloud Call Service console.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc_xp_pre***
-	InstanceId    *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RoleIds       []*int64 `json:"RoleIds,omitempty" xml:"RoleIds,omitempty" type:"Repeated"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// List of role IDs.
+	RoleIds []*int64 `json:"RoleIds,omitempty" xml:"RoleIds,omitempty" type:"Repeated"`
+	// List of skill group IDs.
 	SkillGroupIds []*int64 `json:"SkillGroupIds,omitempty" xml:"SkillGroupIds,omitempty" type:"Repeated"`
 }
 

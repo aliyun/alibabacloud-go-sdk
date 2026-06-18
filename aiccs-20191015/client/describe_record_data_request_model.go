@@ -28,25 +28,35 @@ type iDescribeRecordDataRequest interface {
 }
 
 type DescribeRecordDataRequest struct {
+	// AccountId.
+	//
 	// example:
 	//
 	// 2235****
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// Account type.
+	//
 	// example:
 	//
 	// BUC_TYPE
 	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	// Session ID.
+	//
 	// example:
 	//
 	// 1004849****
 	Acid    *string `json:"Acid,omitempty" xml:"Acid,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Product name. Default value: **aiccs**.
+	//
 	// example:
 	//
 	// aiccs
 	ProdCode             *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// Recording desensitization level. Valid values: **1–4**.
+	//
 	// example:
 	//
 	// 2

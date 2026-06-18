@@ -22,19 +22,32 @@ type iGetAiOutboundTaskListResponseBody interface {
 }
 
 type GetAiOutboundTaskListResponseBody struct {
+	// Status code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Job list.
 	Data *GetAiOutboundTaskListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Description of the status code.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the API call succeeded.
+	//
+	// - **true**: Succeeded.
+	//
+	// - **false**: Failed.
+	//
 	// example:
 	//
 	// true
@@ -104,19 +117,32 @@ func (s *GetAiOutboundTaskListResponseBody) Validate() error {
 }
 
 type GetAiOutboundTaskListResponseBodyData struct {
+	// Current page number.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// Indicates whether there is a next page. Valid values:
+	//
+	// - **true**: Yes.
+	//
+	// - **false**: No.
+	//
 	// example:
 	//
 	// false
-	HasNextPage *bool                                        `json:"HasNextPage,omitempty" xml:"HasNextPage,omitempty"`
-	List        []*GetAiOutboundTaskListResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	HasNextPage *bool `json:"HasNextPage,omitempty" xml:"HasNextPage,omitempty"`
+	// Job information.
+	List []*GetAiOutboundTaskListResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// Page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Total number of data entries.
+	//
 	// example:
 	//
 	// 10
@@ -190,47 +216,88 @@ func (s *GetAiOutboundTaskListResponseBodyData) Validate() error {
 }
 
 type GetAiOutboundTaskListResponseBodyDataList struct {
+	// Concurrent outbound calls.
+	//
+	// > Parameter specific to auto dialing.
+	//
 	// example:
 	//
 	// 1
 	ConcurrentRate *int32 `json:"ConcurrentRate,omitempty" xml:"ConcurrentRate,omitempty"`
+	// The deadline for job creation. UNIX timestamp format, in milliseconds.
+	//
 	// example:
 	//
 	// 1615083365000
-	CreateTime  *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Job description.
+	//
+	// example:
+	//
+	// 房产销售
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The number of completed tasks.
+	//
 	// example:
 	//
 	// 70
 	FinishCount *int32 `json:"FinishCount,omitempty" xml:"FinishCount,omitempty"`
+	// Job completion rate.
+	//
 	// example:
 	//
 	// 0.7
 	FinishRate *float32 `json:"FinishRate,omitempty" xml:"FinishRate,omitempty"`
+	// Skill group ID (for predictive dialing) or IVR ID (for auto dialing).
+	//
 	// example:
 	//
 	// 2468****
 	HandlerId *int64 `json:"HandlerId,omitempty" xml:"HandlerId,omitempty"`
+	// Skill group name or IVR name.
+	//
 	// example:
 	//
 	// 热线技能组
 	HandlerName *string `json:"HandlerName,omitempty" xml:"HandlerName,omitempty"`
+	// Job name.
+	//
 	// example:
 	//
-	// xx外呼任务
+	// xxxx外呼任务
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Task Status. Valid values:
+	//
+	// - **0**: Not started.
+	//
+	// - **1**: In progress.
+	//
+	// - **2**: System paused.
+	//
+	// - **3**: Manually paused.
+	//
+	// - **4**: Completed.
+	//
+	// - **5**: Stopped.
+	//
 	// example:
 	//
 	// 0
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Task status description.
+	//
 	// example:
 	//
 	// 未开始
 	StatusDesc *string `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
+	// Job ID.
+	//
 	// example:
 	//
 	// 1763****
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Total number of jobs.
+	//
 	// example:
 	//
 	// 100

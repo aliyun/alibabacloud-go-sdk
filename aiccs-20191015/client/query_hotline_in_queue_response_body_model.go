@@ -22,22 +22,32 @@ type iQueryHotlineInQueueResponseBody interface {
 }
 
 type QueryHotlineInQueueResponseBody struct {
+	// Status code. A return value of 200 indicates that the request succeeded.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Hotline agent data.
+	//
 	// example:
 	//
 	// {"n_online_now":10,"n_idle_now":3,"n_resttype_now":3,"n_acw_now":1}
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Status code description.
+	//
 	// example:
 	//
 	// xxxx
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Whether the API call succeeded.
+	//
 	// example:
 	//
 	// true

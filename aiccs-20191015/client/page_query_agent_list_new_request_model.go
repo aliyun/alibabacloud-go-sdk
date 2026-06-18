@@ -24,28 +24,38 @@ type iPageQueryAgentListNewRequest interface {
 }
 
 type PageQueryAgentListNewRequest struct {
-	// Agent ID
+	// The agent ID.
 	//
 	// example:
 	//
 	// 12345
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	// The agent name.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// 智能客服助手
 	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
+	// Indicates whether the agent is available for outbound calls. The value is `true` if the agent\\"s current deployment branch has a published version.
+	//
 	// example:
 	//
 	// true
 	IsAvailable *bool `json:"IsAvailable,omitempty" xml:"IsAvailable,omitempty"`
+	// The page index. This parameter is deprecated. Use `PageNo` instead.
+	//
 	// example:
 	//
 	// 1
 	PageIndex *int64 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 20

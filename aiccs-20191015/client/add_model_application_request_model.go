@@ -58,7 +58,7 @@ type iAddModelApplicationRequest interface {
 }
 
 type AddModelApplicationRequest struct {
-	// 应用并发请求数
+	// The number of concurrent requests per second (CPS).
 	//
 	// This parameter is required.
 	//
@@ -66,120 +66,128 @@ type AddModelApplicationRequest struct {
 	//
 	// 25
 	ApplicationCps *int64 `json:"ApplicationCps,omitempty" xml:"ApplicationCps,omitempty"`
-	// 模型应用名称
+	// The name of the model application.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值
+	// 测试应用
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
+	// Specifies whether to push an event notification when a call is connected. The default value is false.
+	//
 	// example:
 	//
 	// false
 	CallConnectedTriggerModel *bool `json:"CallConnectedTriggerModel,omitempty" xml:"CallConnectedTriggerModel,omitempty"`
-	// 场景名称
+	// The scene name.
 	//
 	// example:
 	//
-	// 示例值示例值
+	// 测试场景
 	DyvmsSceneName *string `json:"DyvmsSceneName,omitempty" xml:"DyvmsSceneName,omitempty"`
-	// 模型编码
+	// The model code.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值示例值
+	// 1234
 	ModelCode *string `json:"ModelCode,omitempty" xml:"ModelCode,omitempty"`
-	// 模型版本
+	// The model version.
 	//
 	// example:
 	//
-	// 示例值示例值
+	// 1
 	ModelVersion *string `json:"ModelVersion,omitempty" xml:"ModelVersion,omitempty"`
-	// 第一个静音是否唤起模型
+	// Specifies whether the first mute event triggers the model.
 	//
 	// example:
 	//
 	// false
 	MuteActive *bool `json:"MuteActive,omitempty" xml:"MuteActive,omitempty"`
-	// 静音时长
+	// The mute duration.
 	//
 	// example:
 	//
 	// 70
 	MuteDuration *int64 `json:"MuteDuration,omitempty" xml:"MuteDuration,omitempty"`
-	// 连续多少个静音事件主动挂机
+	// The number of consecutive mute events that trigger an automatic hang-up.
 	//
 	// example:
 	//
 	// 5
 	MuteHangupNum *int64 `json:"MuteHangupNum,omitempty" xml:"MuteHangupNum,omitempty"`
 	OwnerId       *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// 提示词
+	// The prompt.
 	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// 测试提示词。
 	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
-	// 资质ID
+	// The qualification ID.
 	//
 	// example:
 	//
 	// 85
 	QualificationId *int64 `json:"QualificationId,omitempty" xml:"QualificationId,omitempty"`
-	// 资质名称
+	// The name of the qualification.
 	//
 	// example:
 	//
-	// 示例值
+	// 测试资质
 	QualificationName *string `json:"QualificationName,omitempty" xml:"QualificationName,omitempty"`
+	// The URL of the audio file for the opening line. This parameter is required if `StartWordType` is set to `1`.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// https://xxxxxxxx.wav
 	RecordingFile        *string `json:"RecordingFile,omitempty" xml:"RecordingFile,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// 来源
+	// The source. The value must be `USER`.
 	//
 	// example:
 	//
 	// USER
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// 话术内容
+	// The speech script content.
 	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// 测试话术。
 	SpeechContent *string `json:"SpeechContent,omitempty" xml:"SpeechContent,omitempty"`
-	// 话束id
+	// The speech script ID.
 	//
 	// example:
 	//
 	// 88
 	SpeechId *int64 `json:"SpeechId,omitempty" xml:"SpeechId,omitempty"`
-	// 开场白
+	// The opening line.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// 你好，这是一句开场白。
 	StartWord *string `json:"StartWord,omitempty" xml:"StartWord,omitempty"`
+	// The type of the opening line.
+	//
 	// example:
 	//
-	// 1
+	// 0：文本
+	//
+	// 1：录音
 	StartWordType *int64 `json:"StartWordType,omitempty" xml:"StartWordType,omitempty"`
-	// tts配置，包括音色、音量、音速等。
+	// The TTS configuration, including voice, volume, speech speed, and more.
 	//
 	// This parameter is required.
 	TtsConfig *AddModelApplicationRequestTtsConfig `json:"TtsConfig,omitempty" xml:"TtsConfig,omitempty" type:"Struct"`
-	// 用途
+	// The purpose of the application.
 	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// 测试用途
 	UsageDesc *string `json:"UsageDesc,omitempty" xml:"UsageDesc,omitempty"`
 }
 
@@ -408,14 +416,20 @@ func (s *AddModelApplicationRequest) Validate() error {
 }
 
 type AddModelApplicationRequestTtsConfig struct {
+	// Specifies whether to enable background sound.
+	//
 	// example:
 	//
 	// true
 	BackgroundEnabled *bool `json:"BackgroundEnabled,omitempty" xml:"BackgroundEnabled,omitempty"`
+	// The background sound ID.
+	//
 	// example:
 	//
 	// 111
 	BackgroundSound *int64 `json:"BackgroundSound,omitempty" xml:"BackgroundSound,omitempty"`
+	// The background sound volume.
+	//
 	// example:
 	//
 	// 0：low
@@ -424,51 +438,69 @@ type AddModelApplicationRequestTtsConfig struct {
 	//
 	// 2：high
 	BackgroundVolume *int64 `json:"BackgroundVolume,omitempty" xml:"BackgroundVolume,omitempty"`
+	// The account ID.
+	//
 	// example:
 	//
 	// 45
 	CustomerAccountId *int64 `json:"CustomerAccountId,omitempty" xml:"CustomerAccountId,omitempty"`
+	// Specifies whether to enable mixing.
+	//
 	// example:
 	//
 	// true
 	MixingEnabled *bool `json:"MixingEnabled,omitempty" xml:"MixingEnabled,omitempty"`
+	// The mixing template ID.
+	//
 	// example:
 	//
 	// 111
 	MixingTemplate *int64 `json:"MixingTemplate,omitempty" xml:"MixingTemplate,omitempty"`
+	// The resource ID.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// example
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// TTS 变量播放时的声音速度。取值范围：-200~200，默认值为 0。
+	// The speech speed for TTS playback. Valid values: -200–200. The default value is 0.
 	//
 	// example:
 	//
 	// 13
 	TtsSpeed *int64 `json:"TtsSpeed,omitempty" xml:"TtsSpeed,omitempty"`
-	// 声音风格
+	// The voice style.
 	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// 龙小夏
 	TtsStyle *string `json:"TtsStyle,omitempty" xml:"TtsStyle,omitempty"`
-	// TTS 变量播放的音量。取值范围：0~100，默认值为 0。
+	// The volume for TTS playback. Valid values: 0–100. The default value is 0.
 	//
 	// example:
 	//
 	// 55
 	TtsVolume *int64 `json:"TtsVolume,omitempty" xml:"TtsVolume,omitempty"`
-	// 音色code
+	// The voice code.
 	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// ddddfd
 	VoiceCode *string `json:"VoiceCode,omitempty" xml:"VoiceCode,omitempty"`
-	// 声音类型
+	// The voice type.
+	//
+	// ```
+	//
+	// SYSTEM: System voice
+	//
+	// COSYCLONE: Cloned voice
+	//
+	// BL-CUSTOM: Premium custom cloned voice
+	//
+	// ```
 	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// SYSTEM
 	VoiceType *string `json:"VoiceType,omitempty" xml:"VoiceType,omitempty"`
 }
 

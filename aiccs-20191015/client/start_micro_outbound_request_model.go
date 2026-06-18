@@ -34,35 +34,51 @@ type iStartMicroOutboundRequest interface {
 }
 
 type StartMicroOutboundRequest struct {
+	// Account ID.
+	//
 	// example:
 	//
 	// 223457****
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// Account type.
+	//
 	// example:
 	//
 	// BUC_TYPE
 	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	// Custom AppName for the business.
+	//
 	// example:
 	//
 	// aliyun
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// Called number.
+	//
 	// example:
 	//
 	// 0571456****
 	CalledNumber *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	// Calling number.
+	//
 	// example:
 	//
 	// 1367123****
 	CallingNumber *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
+	// Instruction code.
+	//
 	// example:
 	//
 	// outBound_Call
 	CommandCode *string `json:"CommandCode,omitempty" xml:"CommandCode,omitempty"`
+	// Business information.
+	//
 	// example:
 	//
 	// {"caseId":23232****}
 	ExtInfo *string `json:"ExtInfo,omitempty" xml:"ExtInfo,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Product name. Default value: **aiccs**.
+	//
 	// example:
 	//
 	// aiccs

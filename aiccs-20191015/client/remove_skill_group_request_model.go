@@ -18,16 +18,26 @@ type iRemoveSkillGroupRequest interface {
 }
 
 type RemoveSkillGroupRequest struct {
+	// Unique ID for the customer request. Used for idempotency validation. You can generate it using UUID.
+	//
 	// example:
 	//
-	// 46c1341e-2648-447a-9b11-70b6a298d94d
+	// 46c1341e-2648-447a-****-70b6a298d94d
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// AICCS instance ID.
+	//
+	// You can obtain it from **Instance Management*	- in the left-side navigation pane of the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc_xp_pre-cn-***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Skill group ID.
+	//
+	// You can invoke the [QuerySkillGroups](https://help.aliyun.com/zh/aiccs/developer-reference/api-aiccs-2019-10-15-queryskillgroups) API and check the **SkillGroupId*	- field in the response to obtain the skill group ID.
+	//
 	// This parameter is required.
 	//
 	// example:

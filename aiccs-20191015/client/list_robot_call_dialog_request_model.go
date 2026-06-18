@@ -22,12 +22,16 @@ type iListRobotCallDialogRequest interface {
 }
 
 type ListRobotCallDialogRequest struct {
+	// Unique call ID. You can invoke the [RobotCall](https://help.aliyun.com/document_detail/2717996.html) API and check the **Data*	- field in the response to obtain it.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 125165515022^11195613****
+	// 12516551****^11195613****
 	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	// Creation Time. Format: YYYY-MM-DD hh:mm:ss. The time must be precise. You can invoke the [RobotCall](https://help.aliyun.com/document_detail/2717996.html) API and view the **date*	- parameter in the **Response Header*	- of the response to obtain this value.
+	//
 	// This parameter is required.
 	//
 	// example:

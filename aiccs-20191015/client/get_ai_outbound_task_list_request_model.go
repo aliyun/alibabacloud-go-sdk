@@ -28,40 +28,76 @@ type iGetAiOutboundTaskListRequest interface {
 }
 
 type GetAiOutboundTaskListRequest struct {
+	// The end time for job creation. The value is a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1617761765000
 	CreateTimeEnd *int64 `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
+	// The start time for job creation. The value is a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1615083365000
 	CreateTimeStart *int64 `json:"CreateTimeStart,omitempty" xml:"CreateTimeStart,omitempty"`
+	// The page number to query.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// Artificial Intelligence Cloud Call Service (AICCS) instance ID.
+	//
+	// You can obtain it from **Instance Management*	- in the left-side navigation pane of the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// agent_****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Page size. The value must be greater than **0**. Default value: **20**.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Filter condition.
+	//
+	// > Matches job ID or performs fuzzy matching on job name.
+	//
 	// example:
 	//
 	// 1763****
 	SearchKey *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
+	// Job status. Valid values:
+	//
+	// - **0**: Not started.
+	//
+	// - **1**: In progress.
+	//
+	// - **2**: Paused by the system.
+	//
+	// - **3**: Manually paused.
+	//
+	// - **4**: Completed.
+	//
+	// - **5**: Stopped.
+	//
 	// example:
 	//
 	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Task Type. Valid values:
+	//
+	// - **2**: Predictive outbound call.
+	//
+	// - **3**: Automated outbound call.
+	//
 	// This parameter is required.
 	//
 	// example:

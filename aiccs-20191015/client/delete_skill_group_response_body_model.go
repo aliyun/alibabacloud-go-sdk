@@ -22,22 +22,32 @@ type iDeleteSkillGroupResponseBody interface {
 }
 
 type DeleteSkillGroupResponseBody struct {
+	// Fault encoding
+	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data
+	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Fault description
+	//
 	// example:
 	//
 	// xxxx
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID, used to trail the cause of an error
+	//
 	// example:
 	//
 	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the API call succeeded
+	//
 	// example:
 	//
 	// true

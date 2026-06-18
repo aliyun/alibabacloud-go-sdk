@@ -16,8 +16,18 @@ type iCreateDepartmentRequest interface {
 }
 
 type CreateDepartmentRequest struct {
+	// Department name.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 部门A
 	DepartmentName *string `json:"DepartmentName,omitempty" xml:"DepartmentName,omitempty"`
+	// Artificial Intelligence Cloud Call Service (AICCS) instance ID.
+	//
+	// You can obtain it from **Instance Management*	- in the left-side navigation pane of the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview).
+	//
 	// This parameter is required.
 	//
 	// example:

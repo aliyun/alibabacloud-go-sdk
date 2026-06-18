@@ -16,12 +16,16 @@ type iQueryHotlineInQueueRequest interface {
 }
 
 type QueryHotlineInQueueRequest struct {
+	// External skill group ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123456
 	OuterGroupId *string `json:"OuterGroupId,omitempty" xml:"OuterGroupId,omitempty"`
+	// External skill group type.
+	//
 	// This parameter is required.
 	//
 	// example:

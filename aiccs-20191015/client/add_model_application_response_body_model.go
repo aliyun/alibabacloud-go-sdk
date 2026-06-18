@@ -24,26 +24,38 @@ type iAddModelApplicationResponseBody interface {
 }
 
 type AddModelApplicationResponseBody struct {
+	// The detailed reason for the access denied error.
+	//
 	// example:
 	//
 	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The status code. A value of OK indicates a successful request.
+	//
 	// example:
 	//
-	// 示例值
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned application code.
+	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// 325****2D2
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The message that explains the status code.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// 8C93B345-F702-5449-BA7E-7D110D4BF798
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the API call was successful.
+	//
 	// example:
 	//
 	// true

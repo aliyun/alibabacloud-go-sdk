@@ -22,19 +22,32 @@ type iQueryHotlineNumberResponseBody interface {
 }
 
 type QueryHotlineNumberResponseBody struct {
+	// The status code. A value of Success indicates that the request succeeded.
+	//
 	// example:
 	//
 	// Success
-	Code *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Hotline number configuration information.
 	Data *QueryHotlineNumberResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Status code description.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// EE339D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the API call succeeded.
+	//
+	// - **true**: Succeeded.
+	//
+	// - **false**: Failed.
+	//
 	// example:
 	//
 	// true
@@ -104,15 +117,22 @@ func (s *QueryHotlineNumberResponseBody) Validate() error {
 }
 
 type QueryHotlineNumberResponseBodyData struct {
+	// Current page.
+	//
 	// example:
 	//
 	// 1
-	CurrentPage    *int64                                              `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// Number list.
 	HotlineNumList []*QueryHotlineNumberResponseBodyDataHotlineNumList `json:"HotlineNumList,omitempty" xml:"HotlineNumList,omitempty" type:"Repeated"`
+	// Page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Total amount of data.
+	//
 	// example:
 	//
 	// 123
@@ -177,43 +197,72 @@ func (s *QueryHotlineNumberResponseBodyData) Validate() error {
 }
 
 type QueryHotlineNumberResponseBodyDataHotlineNumList struct {
+	// Outbound calls apply to all departments.
+	//
 	// example:
 	//
 	// true
-	CalloutAllDepartment *bool                                                               `json:"CalloutAllDepartment,omitempty" xml:"CalloutAllDepartment,omitempty"`
-	CalloutRangeList     []*QueryHotlineNumberResponseBodyDataHotlineNumListCalloutRangeList `json:"CalloutRangeList,omitempty" xml:"CalloutRangeList,omitempty" type:"Repeated"`
+	CalloutAllDepartment *bool `json:"CalloutAllDepartment,omitempty" xml:"CalloutAllDepartment,omitempty"`
+	// List of departments for which outbound calls are effective.
+	CalloutRangeList []*QueryHotlineNumberResponseBodyDataHotlineNumListCalloutRangeList `json:"CalloutRangeList,omitempty" xml:"CalloutRangeList,omitempty" type:"Repeated"`
+	// Number description.
+	//
 	// example:
 	//
 	// 测试
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Satisfaction status. Valid values:
+	//
+	// - **0**: Neither inbound nor outbound calls are enabled.
+	//
+	// - **1**: Inbound calls are enabled.
+	//
+	// - **2**: Outbound calls are enabled.
+	//
+	// - **3**: Both inbound and outbound calls are enabled.
+	//
 	// example:
 	//
 	// 0
 	EvaluationStatus *int32 `json:"EvaluationStatus,omitempty" xml:"EvaluationStatus,omitempty"`
+	// Incoming call flow ID.
+	//
 	// example:
 	//
 	// 12
 	FlowId *int64 `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	// Inbound flow name.
+	//
 	// example:
 	//
 	// 测试流程
 	FlowName *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
+	// Hotline number.
+	//
 	// example:
 	//
 	// 0571****2211
 	HotlineNumber *string `json:"HotlineNumber,omitempty" xml:"HotlineNumber,omitempty"`
+	// Indicates whether the number is used for inbound calls.
+	//
 	// example:
 	//
 	// true
 	InBoundEnabled *bool `json:"InBoundEnabled,omitempty" xml:"InBoundEnabled,omitempty"`
+	// Number location.
+	//
 	// example:
 	//
 	// 浙江杭州
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// Indicates whether the number is used for outbound calls.
+	//
 	// example:
 	//
 	// true
 	OutboundEnabled *bool `json:"OutboundEnabled,omitempty" xml:"OutboundEnabled,omitempty"`
+	// Carrier.
+	//
 	// example:
 	//
 	// 电信
@@ -341,12 +390,20 @@ func (s *QueryHotlineNumberResponseBodyDataHotlineNumList) Validate() error {
 }
 
 type QueryHotlineNumberResponseBodyDataHotlineNumListCalloutRangeList struct {
+	// Department ID.
+	//
 	// example:
 	//
 	// 2256****
-	DepartmentId   *int64                                                                         `json:"DepartmentId,omitempty" xml:"DepartmentId,omitempty"`
-	DepartmentName *string                                                                        `json:"DepartmentName,omitempty" xml:"DepartmentName,omitempty"`
-	GroupDOList    []*QueryHotlineNumberResponseBodyDataHotlineNumListCalloutRangeListGroupDOList `json:"GroupDOList,omitempty" xml:"GroupDOList,omitempty" type:"Repeated"`
+	DepartmentId *int64 `json:"DepartmentId,omitempty" xml:"DepartmentId,omitempty"`
+	// The department name.
+	//
+	// example:
+	//
+	// 部门A
+	DepartmentName *string `json:"DepartmentName,omitempty" xml:"DepartmentName,omitempty"`
+	// The skill group list.
+	GroupDOList []*QueryHotlineNumberResponseBodyDataHotlineNumListCalloutRangeListGroupDOList `json:"GroupDOList,omitempty" xml:"GroupDOList,omitempty" type:"Repeated"`
 }
 
 func (s QueryHotlineNumberResponseBodyDataHotlineNumListCalloutRangeList) String() string {
@@ -398,10 +455,17 @@ func (s *QueryHotlineNumberResponseBodyDataHotlineNumListCalloutRangeList) Valid
 }
 
 type QueryHotlineNumberResponseBodyDataHotlineNumListCalloutRangeListGroupDOList struct {
+	// The skill group ID.
+	//
 	// example:
 	//
 	// 6083****
-	GroupId   *int64  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The skill group name.
+	//
+	// example:
+	//
+	// 技能组A
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 }
 

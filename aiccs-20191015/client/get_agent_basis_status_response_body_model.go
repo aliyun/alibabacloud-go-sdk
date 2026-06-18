@@ -22,19 +22,32 @@ type iGetAgentBasisStatusResponseBody interface {
 }
 
 type GetAgentBasisStatusResponseBody struct {
+	// The status code. A return value of 200 indicates that the request succeeded.
+	//
 	// example:
 	//
 	// 200
-	Code *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data list.
 	Data *GetAgentBasisStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Status code description.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the API was invoked successfully. Valid values:
+	//
+	// - **true**: Succeeded.
+	//
+	// - **false**: Failed.
+	//
 	// example:
 	//
 	// true
@@ -104,15 +117,26 @@ func (s *GetAgentBasisStatusResponseBody) Validate() error {
 }
 
 type GetAgentBasisStatusResponseBodyData struct {
+	// Current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// Page size.
+	//
 	// example:
 	//
 	// 2000
-	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Rows     *string `json:"Rows,omitempty" xml:"Rows,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The information is a JSON string of the List<Map> type.
+	//
+	// example:
+	//
+	// {"tenant_id":"905","servicer_id":"73****","tenant_name":"测试","recordgmtmodified":"2021-04-01 11:36:50","pk_id":"7320372021****","statusstarttime":"2021-04-01 11:36:50","recordgmtcreate":"2021-04-01 10:06:24","department_id":"94****","department_name":"测试技能组","lstlogintime":"2021-04-01 10:06:24","date_id":"20210401","triggerreason":"3","servicer_status":"D","assignstatus":"1","servicerreal_name":"xx","servicerstatusname":"签出","fstlogintime":"2021-04-01 10:06:24","servicer_name":"xx"}
+	Rows *string `json:"Rows,omitempty" xml:"Rows,omitempty"`
+	// Total number of records.
+	//
 	// example:
 	//
 	// 4

@@ -52,77 +52,150 @@ type iQueryAiCallDetailPageRequest interface {
 }
 
 type QueryAiCallDetailPageRequest struct {
+	// The batch ID. You can find this ID by clicking Details on the **Call Task Management*	- page.
+	//
 	// example:
 	//
-	// 1212131231****
+	// 1183**************
 	BatchId *string `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
+	// The call result. Valid values:
+	//
+	// - CALL_FORWARDING: Call Forwarding.
+	//
+	// - INCOMING_CALL_BARRED: Incoming Call Barred.
+	//
+	// - CALL_REJECTED: Call Rejected.
+	//
+	// - ANSWERED: Answered.
+	//
+	// - USER_BUSY: User Busy.
+	//
+	// - POWERED_OFF: Powered Off.
+	//
+	// - NO_USER_RESPONSE: No User Response.
+	//
+	// - OPERATOR_BLOCK: Operator Block.
+	//
+	// - OTHERS: Others.
+	//
+	// - SUSPEND: Suspend.
+	//
+	// - CANCEL: Canceled by the caller.
+	//
+	// - INVALID_NUMBER: Invalid Number.
+	//
+	// - UNAVAILABLE: Unavailable.
+	//
+	// - NETWORK_BUSY: Network Busy.
+	//
+	// - NO_ANSWER: No Answer.
+	//
 	// example:
 	//
 	// ANSWERED
 	CallResult *string `json:"CallResult,omitempty" xml:"CallResult,omitempty"`
+	// The called number.
+	//
 	// example:
 	//
 	// 053714454****
-	CalledNumber *string  `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
-	DetailIds    []*int64 `json:"DetailIds,omitempty" xml:"DetailIds,omitempty" type:"Repeated"`
+	CalledNumber *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	// A list of up to 100 detail IDs.
+	//
 	// example:
 	//
-	// 73
+	// Sample value Sample value
+	DetailIds []*int64 `json:"DetailIds,omitempty" xml:"DetailIds,omitempty" type:"Repeated"`
+	// The encryption method. Valid values: 0 (None), 1 (MD5), 2 (SHA256), and 3 (SM3).
+	//
+	// example:
+	//
+	// 1
 	EncryptionType *int64 `json:"EncryptionType,omitempty" xml:"EncryptionType,omitempty"`
+	// The end of the call time range. This value is a timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1748948749000
 	EndCallingTime *int64 `json:"EndCallingTime,omitempty" xml:"EndCallingTime,omitempty"`
+	// The end of the import time range. This value is a timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1748948749000
 	EndImportedTime *int64 `json:"EndImportedTime,omitempty" xml:"EndImportedTime,omitempty"`
+	// The major intent. You can find this intent by clicking Agent Details on the [Communication Agent Management](https://aiccs.console.aliyun.com/agent/customize) page.
+	//
 	// example:
 	//
 	// A
 	MajorIntent *string `json:"MajorIntent,omitempty" xml:"MajorIntent,omitempty"`
+	// The maximum conversation duration, in minutes.
+	//
 	// example:
 	//
 	// 20
 	MaxConversationDuration *int64 `json:"MaxConversationDuration,omitempty" xml:"MaxConversationDuration,omitempty"`
+	// The minimum conversation duration, in minutes.
+	//
 	// example:
 	//
 	// 0
 	MinConversationDuration *int64 `json:"MinConversationDuration,omitempty" xml:"MinConversationDuration,omitempty"`
+	// A custom ID provided by the caller. This ID is returned in the receipt message for request tracking.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// 94ba739b-c01a-ef91-335d-4be006c34899
 	OutId   *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page number. The value must be greater than **0**. The default value is **1**.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page. The default value is **10**.
+	//
 	// example:
 	//
 	// 10
 	PageSize             *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The start of the call time range. This value is a timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1748948749000
 	StartCallingTime *int64 `json:"StartCallingTime,omitempty" xml:"StartCallingTime,omitempty"`
+	// The start of the import time range. This value is a timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1748948749000
 	StartImportedTime *int64 `json:"StartImportedTime,omitempty" xml:"StartImportedTime,omitempty"`
+	// The task status. Valid values:
+	//
+	// - 0: Pending.
+	//
+	// - 1: Completed.
+	//
+	// - 2: Failed.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0
 	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The task ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 1212131231****
+	// 1187**************
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 

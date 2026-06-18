@@ -22,19 +22,32 @@ type iGetHotlineGroupDetailReportResponseBody interface {
 }
 
 type GetHotlineGroupDetailReportResponseBody struct {
+	// Status code. A return value of "Success" indicates that the request succeeded.
+	//
 	// example:
 	//
 	// Success
-	Code *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Query result data.
 	Data *GetHotlineGroupDetailReportResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Description of the status code.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the API was invoked successfully. Valid values:
+	//
+	// - **true**: Succeeded.
+	//
+	// - **false**: Failed.
+	//
 	// example:
 	//
 	// Public
@@ -104,16 +117,24 @@ func (s *GetHotlineGroupDetailReportResponseBody) Validate() error {
 }
 
 type GetHotlineGroupDetailReportResponseBodyData struct {
+	// Description of returned columns.
 	Columns []*GetHotlineGroupDetailReportResponseBodyDataColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
+	// Current page.
+	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// Number of records per page.
+	//
 	// example:
 	//
 	// 10
-	PageSize *int32                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Rows     []map[string]interface{} `json:"Rows,omitempty" xml:"Rows,omitempty" type:"Repeated"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Returned data results.
+	Rows []map[string]interface{} `json:"Rows,omitempty" xml:"Rows,omitempty" type:"Repeated"`
+	// Total number of records.
+	//
 	// example:
 	//
 	// 9
@@ -187,10 +208,17 @@ func (s *GetHotlineGroupDetailReportResponseBodyData) Validate() error {
 }
 
 type GetHotlineGroupDetailReportResponseBodyDataColumns struct {
+	// Metric.
+	//
 	// example:
 	//
 	// skillGroupName
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Metric description.
+	//
+	// example:
+	//
+	// 技能组名称
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 

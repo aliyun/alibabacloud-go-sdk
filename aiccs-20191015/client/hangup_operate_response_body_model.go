@@ -20,18 +20,30 @@ type iHangupOperateResponseBody interface {
 }
 
 type HangupOperateResponseBody struct {
+	// The status code. A value of \\"OK\\" indicates that the request was successful.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The status message.
+	//
 	// example:
 	//
 	// OK
 	Mesage *string `json:"Mesage,omitempty" xml:"Mesage,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// EFD543DD-E087-54A2-AC0B-54E0656511D7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The result of the operation. Valid values:
+	//
+	// - **true**: The hang-up was successful.
+	//
+	// - **false**: The hang-up operation failed.
+	//
 	// example:
 	//
 	// true

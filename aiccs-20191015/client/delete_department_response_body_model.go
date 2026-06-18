@@ -24,26 +24,46 @@ type iDeleteDepartmentResponseBody interface {
 }
 
 type DeleteDepartmentResponseBody struct {
+	// The status code. A value of 200 indicates that the request succeeded.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the operation succeeded. Valid values:
+	//
+	// - **true**: Succeeded
+	//
+	// - **false**: Failed.
+	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int64 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Description of the status code.
+	//
 	// example:
 	//
 	// seccessful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 98B032F5-6473-4EAC-8BA8-C28993513A1F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the API was invoked successfully. Valid values:
+	//
+	// - **true**: Succeeded.
+	//
+	// - **false**: Failed.
+	//
 	// example:
 	//
 	// true

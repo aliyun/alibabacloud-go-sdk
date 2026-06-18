@@ -24,24 +24,57 @@ type iUpdateSkillGroupRequest interface {
 }
 
 type UpdateSkillGroupRequest struct {
+	// Unique ID of the customer request. Used for idempotency validation. You can generate it by using a UUID.
+	//
 	// example:
 	//
-	// 46c1341e-2648-447a-9b11-70b6a298d94d
+	// 46c1341e-2648-447a-****-70b6a298d94d
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Skill group description.
+	//
+	// > This parameter can be updated.
+	//
+	// example:
+	//
+	// 自动化测试
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Display name of the skill group.
+	//
+	// > This parameter can be updated.
+	//
+	// example:
+	//
+	// 自动化测试
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// AICCS instance ID.
+	//
+	// You can obtain it from **Instance Management*	- in the left-side navigation pane of the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc_xp_pre-cn-***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Skill group ID.
+	//
+	// You can invoke the [QuerySkillGroups](https://help.aliyun.com/zh/aiccs/developer-reference/api-aiccs-2019-10-15-queryskillgroups) API and check the **SkillGroupId*	- field in the response to obtain the skill group ID.
+	//
+	// > This parameter cannot be updated.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123456
-	SkillGroupId   *int64  `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
+	SkillGroupId *int64 `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
+	// Skill group name.
+	//
+	// > This parameter cannot be updated.
+	//
+	// example:
+	//
+	// 自动化测试
 	SkillGroupName *string `json:"SkillGroupName,omitempty" xml:"SkillGroupName,omitempty"`
 }
 

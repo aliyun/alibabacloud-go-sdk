@@ -22,19 +22,32 @@ type iGetHotlineCallActionResponseBody interface {
 }
 
 type GetHotlineCallActionResponseBody struct {
+	// Status code.
+	//
 	// example:
 	//
 	// Success
-	Code *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Returned data.
 	Data *GetHotlineCallActionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Description of the status code.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// EE339D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the API call succeeded. Valid values:
+	//
+	// - **true**: Succeeded.
+	//
+	// - **false**: Failed.
+	//
 	// example:
 	//
 	// true
@@ -104,61 +117,108 @@ func (s *GetHotlineCallActionResponseBody) Validate() error {
 }
 
 type GetHotlineCallActionResponseBodyData struct {
+	// Customer ID.
+	//
 	// example:
 	//
 	// 8999****
 	ActionId *int64 `json:"ActionId,omitempty" xml:"ActionId,omitempty"`
+	// Tenant ID.
+	//
 	// example:
 	//
 	// 2367****
 	BuId *int64 `json:"BuId,omitempty" xml:"BuId,omitempty"`
+	// Callout ID.
+	//
 	// example:
 	//
 	// 1122****
-	CalloutId   *int64  `json:"CalloutId,omitempty" xml:"CalloutId,omitempty"`
+	CalloutId *int64 `json:"CalloutId,omitempty" xml:"CalloutId,omitempty"`
+	// Call name.
+	//
+	// example:
+	//
+	// 王XX
 	CalloutName *string `json:"CalloutName,omitempty" xml:"CalloutName,omitempty"`
+	// Ticket ID.
+	//
 	// example:
 	//
 	// 1138902****
 	CaseId *int64 `json:"CaseId,omitempty" xml:"CaseId,omitempty"`
+	// Channel ID.
+	//
 	// example:
 	//
 	// 2377****
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// Channel Type. Valid values:
+	//
+	// - **1**: Hotline.
+	//
+	// - **2**: Online.
+	//
 	// example:
 	//
 	// 2
 	ChannelType *int64 `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
+	// Department ID.
+	//
 	// example:
 	//
 	// 1223****
 	DepId *int64 `json:"DepId,omitempty" xml:"DepId,omitempty"`
+	// Indicates whether the call is transferred.
+	//
 	// example:
 	//
 	// true
 	IsTransfer *string `json:"IsTransfer,omitempty" xml:"IsTransfer,omitempty"`
+	// Membership ID.
+	//
 	// example:
 	//
 	// 7856876****
 	MemberId *int64 `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
+	// Membership List.
+	//
 	// example:
 	//
 	// 8900****
 	MemberList *string `json:"MemberList,omitempty" xml:"MemberList,omitempty"`
+	// Membership name.
+	//
+	// example:
+	//
+	// 匿名会员
 	MemberName *string `json:"MemberName,omitempty" xml:"MemberName,omitempty"`
+	// Agent ID.
+	//
 	// example:
 	//
 	// 1332****
-	ServicerId   *int64  `json:"ServicerId,omitempty" xml:"ServicerId,omitempty"`
+	ServicerId *int64 `json:"ServicerId,omitempty" xml:"ServicerId,omitempty"`
+	// Agent name.
+	//
+	// example:
+	//
+	// XX测试
 	ServicerName *string `json:"ServicerName,omitempty" xml:"ServicerName,omitempty"`
+	// Sub-touch ID.
+	//
 	// example:
 	//
 	// 3423****
 	SubTouchId *int64 `json:"SubTouchId,omitempty" xml:"SubTouchId,omitempty"`
+	// Job ID.
+	//
 	// example:
 	//
 	// 12345****
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Touch ID.
+	//
 	// example:
 	//
 	// 2235****

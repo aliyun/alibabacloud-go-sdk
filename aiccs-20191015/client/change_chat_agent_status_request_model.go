@@ -20,22 +20,30 @@ type iChangeChatAgentStatusRequest interface {
 }
 
 type ChangeChatAgentStatusRequest struct {
+	// Agent account.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// account1
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// Unique ID for the customer request. Used for idempotency validation. You can generate it using UUID.
+	//
 	// example:
 	//
 	// 46c1341e-2648-447a-9b11-70b6a298d94d
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Artificial Intelligence Cloud Call Service (AICCS) instance ID. You can obtain it from the Artificial Intelligence Cloud Call Service console.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc_xp_pre-cn-***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The target online status to switch to. Currently, only **requestLogout*	- (request offline) is supported.
+	//
 	// This parameter is required.
 	//
 	// example:

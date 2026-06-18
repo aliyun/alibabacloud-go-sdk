@@ -22,19 +22,32 @@ type iGetOnlineServiceVolumeResponseBody interface {
 }
 
 type GetOnlineServiceVolumeResponseBody struct {
+	// Status code. A return value of 200 indicates that the request succeeded.
+	//
 	// example:
 	//
 	// 200
-	Code *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data list.
 	Data *GetOnlineServiceVolumeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Status code description.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the API call succeeded. Valid values:
+	//
+	// - **true**: Succeeded.
+	//
+	// - **false**: Failed.
+	//
 	// example:
 	//
 	// true
@@ -104,18 +117,26 @@ func (s *GetOnlineServiceVolumeResponseBody) Validate() error {
 }
 
 type GetOnlineServiceVolumeResponseBodyData struct {
+	// Current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// Page size.
+	//
 	// example:
 	//
 	// 2000
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// A JSON string of type List<Map>.
+	//
 	// example:
 	//
 	// {"tenant_id":"905","online_40s_transfer_ready_cnt":109,"minute_id":"-1","wait_time_len":1215,"pickup_rate":"63.09%","thirty_seconds_to_pickUp":"2560","date_id":"-1","online_over_out_cnt":0,"online_20s_transfer_ready_cnt":109,"thirty_seconds_response_rate":"63.09%","abandonment_rate":"63.09%","service_time_len":68378,"service_pickup":"2560","hour_id":"-1","online_10s_transfer_ready_cnt":109}
 	Rows *string `json:"Rows,omitempty" xml:"Rows,omitempty"`
+	// Total number of records.
+	//
 	// example:
 	//
 	// 4

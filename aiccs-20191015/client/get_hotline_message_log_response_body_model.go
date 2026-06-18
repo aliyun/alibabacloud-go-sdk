@@ -22,19 +22,28 @@ type iGetHotlineMessageLogResponseBody interface {
 }
 
 type GetHotlineMessageLogResponseBody struct {
+	// Status code. A return value of "Success" indicates that the request succeeded.
+	//
 	// example:
 	//
 	// Success
-	Code *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Voice messages.
 	Data []*GetHotlineMessageLogResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Description of the status code.
+	//
 	// example:
 	//
 	// xxxx
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the API call succeeded.
+	//
 	// example:
 	//
 	// true
@@ -108,23 +117,42 @@ func (s *GetHotlineMessageLogResponseBody) Validate() error {
 }
 
 type GetHotlineMessageLogResponseBodyData struct {
+	// The session ID.
+	//
 	// example:
 	//
 	// 100****2077
-	Acid    *string `json:"Acid,omitempty" xml:"Acid,omitempty"`
+	Acid *string `json:"Acid,omitempty" xml:"Acid,omitempty"`
+	// The session content.
+	//
+	// example:
+	//
+	// 您好。
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The end time.
+	//
 	// example:
 	//
 	// 1623738027480
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The record ID.
+	//
 	// example:
 	//
 	// 11deca999****
 	Mid *string `json:"Mid,omitempty" xml:"Mid,omitempty"`
+	// The sender type. Valid values:
+	//
+	// - **1**: Membership
+	//
+	// - **2**: Agent
+	//
 	// example:
 	//
 	// 1
 	SenderType *int32 `json:"SenderType,omitempty" xml:"SenderType,omitempty"`
+	// The start time.
+	//
 	// example:
 	//
 	// 1623738026460

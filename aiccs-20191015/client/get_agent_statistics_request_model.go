@@ -32,38 +32,70 @@ type iGetAgentStatisticsRequest interface {
 }
 
 type GetAgentStatisticsRequest struct {
+	// List of agent IDs.
 	AgentIds []*int64 `json:"AgentIds,omitempty" xml:"AgentIds,omitempty" type:"Repeated"`
+	// Current page number. The value must be greater than **0**. Default value: **1**.
+	//
 	// example:
 	//
 	// 1
-	CurrentPage *int32   `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	DepIds      []*int64 `json:"DepIds,omitempty" xml:"DepIds,omitempty" type:"Repeated"`
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// List of department IDs.
+	DepIds []*int64 `json:"DepIds,omitempty" xml:"DepIds,omitempty" type:"Repeated"`
+	// End Datetime Variable as a UNIX timestamp. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1617761765000
 	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// Whether to query by agent group. Valid values:
+	//
+	// - **true**: Yes.
+	//
+	// - **false**: No.
+	//
 	// example:
 	//
 	// false
 	ExistAgentGrouping *bool `json:"ExistAgentGrouping,omitempty" xml:"ExistAgentGrouping,omitempty"`
+	// Indicates whether to query by department grouping. Valid values:
+	//
+	// - **true**: Yes
+	//
+	// - **false**: No
+	//
 	// example:
 	//
 	// false
 	ExistDepartmentGrouping *bool `json:"ExistDepartmentGrouping,omitempty" xml:"ExistDepartmentGrouping,omitempty"`
+	// AICCS instance ID.
+	//
+	// You can obtain it from **Instance Management*	- in the left-side navigation pane of the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc_xp_pre-cn-***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Page size. The value must be greater than **0**. Default value: **20**.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Start UNIX timestamp, in milliseconds.
+	//
 	// example:
 	//
 	// 1615083365000
 	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// Time latitude type. Valid values:
+	//
+	// - **minute**: minute
+	//
+	// - **hour**: hour
+	//
 	// example:
 	//
 	// minute

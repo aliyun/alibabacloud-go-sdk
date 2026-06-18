@@ -16,12 +16,20 @@ type iDeleteDepartmentRequest interface {
 }
 
 type DeleteDepartmentRequest struct {
+	// The department ID.
+	//
+	// You can call the [GetAllDepartment](https://help.aliyun.com/document_detail/2717975.html) API and check the **DepartmentId*	- field in the response to obtain the department ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 123456
+	// 12****
 	DepartmentId *int64 `json:"DepartmentId,omitempty" xml:"DepartmentId,omitempty"`
+	// The AICCS instance ID.
+	//
+	// You can obtain it from **Instance Management*	- in the left-side navigation pane of the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview).
+	//
 	// This parameter is required.
 	//
 	// example:

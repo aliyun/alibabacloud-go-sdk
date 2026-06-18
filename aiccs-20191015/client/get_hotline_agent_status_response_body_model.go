@@ -24,23 +24,60 @@ type iGetHotlineAgentStatusResponseBody interface {
 }
 
 type GetHotlineAgentStatusResponseBody struct {
+	// Status code. A value of "Success" indicates that the request succeeded.
+	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Agent status. Valid values:
+	//
+	// - **Offline*	-
+	//
+	// - **Idle*	-
+	//
+	// - **Post-processing*	-
+	//
+	// - **In Call*	-
+	//
+	// - **Break - Rest*	-
+	//
+	// - **Break - Meal*	-
+	//
+	// - **Break - Meeting*	-
+	//
+	// - **Break - Training*	-
+	//
+	// - **Break - Coaching**
+	//
+	// example:
+	//
+	// 通话中
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int64 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Description of the status code.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the API call succeeded. Valid values:
+	//
+	// - **true**: Succeeded.
+	//
+	// - **false**: Failed.
+	//
 	// example:
 	//
 	// true

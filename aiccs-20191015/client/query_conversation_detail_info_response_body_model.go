@@ -24,23 +24,38 @@ type iQueryConversationDetailInfoResponseBody interface {
 }
 
 type QueryConversationDetailInfoResponseBody struct {
+	// The details of the access denial.
+	//
 	// example:
 	//
-	// Access Denied
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The status code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response data.
 	Data *QueryConversationDetailInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The status code message.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// 成功
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// F2051E18-FF3F-5C08-8D24-6F150D2AF757
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - **true**: The request was successful.
+	//
+	// - **false**: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -119,26 +134,182 @@ func (s *QueryConversationDetailInfoResponseBody) Validate() error {
 }
 
 type QueryConversationDetailInfoResponseBodyData struct {
+	// The unique call ID.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// 1231231231213^11231231231
 	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	// The call result. Valid values:
+	//
+	// - `CALL_FORWARDING`: Call forwarding.
+	//
+	// - `INCOMING_CALL_BARRED`: Incoming call barred.
+	//
+	// - `CALL_REJECTED`: Call rejected.
+	//
+	// - `ANSWERED`: Answered by user.
+	//
+	// - `USER_BUSY`: Called party busy.
+	//
+	// - `POWERED_OFF`: Powered off.
+	//
+	// - `NO_USER_RESPONSE`: Out of service area.
+	//
+	// - `OPERATOR_BLOCK`: Blocked by carrier.
+	//
+	// - `OTHERS`: Other.
+	//
+	// - `SUSPEND`: Suspended.
+	//
+	// - `CANCEL`: Canceled by caller.
+	//
+	// - `INVALID_NUMBER`: Invalid number.
+	//
+	// - `UNAVAILABLE`: Temporarily unavailable.
+	//
+	// - `NETWORK_BUSY`: Network busy.
+	//
+	// - `NO_ANSWER`: No answer.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// ANSWERED
 	CallResult *string `json:"CallResult,omitempty" xml:"CallResult,omitempty"`
+	// The called number.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// 186******
 	CalledPhone *string `json:"CalledPhone,omitempty" xml:"CalledPhone,omitempty"`
+	// The caller number.
+	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// 0571*******
 	CallerPhone *string `json:"CallerPhone,omitempty" xml:"CallerPhone,omitempty"`
+	// The conversation record. The structure is a JSON array in which entries are sorted by time. Example:
+	//
+	// ```json
+	//
+	// [
+	//
+	//     {
+	//
+	//         "content":"Conversation content",
+	//
+	//         "role":"Role", // Valid values: user, assistant
+	//
+	//     }
+	//
+	// ]
+	//
+	// ```
+	//
 	// example:
 	//
-	// 示例值示例值
+	// [
+	//
+	//   {
+	//
+	//     "content": "111您好，年龄222，性别男，我这边是**汽车的官方顾问，我们新出了一款车型为**；**已经上市了，售价**万元起，**分钟破*台，您看要不了解一下？",
+	//
+	//     "role": "assistant"
+	//
+	//   },
+	//
+	//   {
+	//
+	//     "content": "<客户打断>哎，你是谁？",
+	//
+	//     "role": "user"
+	//
+	//   },
+	//
+	//   {
+	//
+	//     "content": "<客户打断>你再说一遍。",
+	//
+	//     "role": "user"
+	//
+	//   },
+	//
+	//   {
+	//
+	//     "content": "哎，我没听清。",
+	//
+	//     "role": "user"
+	//
+	//   },
+	//
+	//   {
+	//
+	//     "content": "你在说什么？",
+	//
+	//     "role": "user"
+	//
+	//   },
+	//
+	//   {
+	//
+	//     "content": "您好，",
+	//
+	//     "role": "assistant"
+	//
+	//   },
+	//
+	//   {
+	//
+	//     "content": "我是**汽车总部销售服务顾问。",
+	//
+	//     "role": "assistant"
+	//
+	//   },
+	//
+	//   {
+	//
+	//     "content": "我们最近推出了一款新车**，想了解一下您是否对这款车型感兴趣？",
+	//
+	//     "role": "assistant"
+	//
+	//   },
+	//
+	//   {
+	//
+	//     "content": "<客户打断>哎，那我是谁？",
+	//
+	//     "role": "user"
+	//
+	//   },
+	//
+	//   {
+	//
+	//     "content": "你在说什么呢？",
+	//
+	//     "role": "user"
+	//
+	//   },
+	//
+	//   {
+	//
+	//     "content": "抱歉打扰了，111先生。",
+	//
+	//     "role": "assistant"
+	//
+	//   },
+	//
+	//   {
+	//
+	//     "content": "祝您生活愉快！再见！",
+	//
+	//     "role": "assistant"
+	//
+	//   }
+	//
+	// ]
 	ConversationRecord *string `json:"ConversationRecord,omitempty" xml:"ConversationRecord,omitempty"`
+	// The duration of the call, in seconds. If the call was not connected, the value is 0.
+	//
 	// example:
 	//
 	// 16
@@ -147,47 +318,73 @@ type QueryConversationDetailInfoResponseBodyData struct {
 	//
 	// 示例值示例值示例值
 	EncryptionType *string `json:"EncryptionType,omitempty" xml:"EncryptionType,omitempty"`
+	// The failure reason.
+	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// 主动取消
 	FailedReason *string `json:"FailedReason,omitempty" xml:"FailedReason,omitempty"`
+	// The party that hung up. Valid values:
+	//
+	// - **0**: user.
+	//
+	// - **1**: assistant.
+	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// 用户
 	HangupDirection *string `json:"HangupDirection,omitempty" xml:"HangupDirection,omitempty"`
+	// The primary intent.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// D
 	MajorIntent *string `json:"MajorIntent,omitempty" xml:"MajorIntent,omitempty"`
+	// The business-specific ID that is passed in. You can use this unique ID to associate the call with your business.
+	//
 	// example:
 	//
-	// 示例值示例值示例值
-	OutId      *string                                                  `json:"OutId,omitempty" xml:"OutId,omitempty"`
+	// bb3bc32d-54b8-49c4-80d3-61583417d22e
+	OutId *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
+	// A list of output tags.
 	OutputTags []*QueryConversationDetailInfoResponseBodyDataOutputTags `json:"OutputTags,omitempty" xml:"OutputTags,omitempty" type:"Repeated"`
+	// The timestamp when the call was answered, in milliseconds.
+	//
 	// example:
 	//
-	// 1212131231231
+	// 1754617273000
 	PickUpTime *int64 `json:"PickUpTime,omitempty" xml:"PickUpTime,omitempty"`
+	// The download URL for the recording file. This parameter is returned only after the recording file is generated.
+	//
 	// example:
 	//
 	// https://********
 	RecordingFileDownloadUrl *string `json:"RecordingFileDownloadUrl,omitempty" xml:"RecordingFileDownloadUrl,omitempty"`
+	// The timestamp when the call ended, in milliseconds.
+	//
 	// example:
 	//
 	// 98
 	ReleaseTime *int64 `json:"ReleaseTime,omitempty" xml:"ReleaseTime,omitempty"`
+	// The timestamp when the call was initiated, in milliseconds.
+	//
 	// example:
 	//
-	// 23
+	// 123123123123123
 	StartCallTime *int64 `json:"StartCallTime,omitempty" xml:"StartCallTime,omitempty"`
+	// The call status code. For more information, see [Call status codes](https://help.aliyun.com/document_detail/112804.html) for the voice service.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// 200005
 	StatusCode *string `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// The status message returned by the carrier.
+	//
 	// example:
 	//
-	// 示例值
-	StatusMsg *string                                                 `json:"StatusMsg,omitempty" xml:"StatusMsg,omitempty"`
+	// 呼叫结束（双呼）
+	StatusMsg *string `json:"StatusMsg,omitempty" xml:"StatusMsg,omitempty"`
+	// A list of variables associated with the call task.
 	Variables []*QueryConversationDetailInfoResponseBodyDataVariables `json:"Variables,omitempty" xml:"Variables,omitempty" type:"Repeated"`
 }
 
@@ -393,21 +590,29 @@ func (s *QueryConversationDetailInfoResponseBodyData) Validate() error {
 }
 
 type QueryConversationDetailInfoResponseBodyDataOutputTags struct {
+	// The tag ID.
+	//
 	// example:
 	//
-	// d7f3e92b-7947-4c20-bf37-ef66fc71007b
+	// 9ca2*****************************
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The tag description.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// 评估客户对车型的兴趣和购买可能性
 	OutputTagDescription *string `json:"OutputTagDescription,omitempty" xml:"OutputTagDescription,omitempty"`
+	// The tag name.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// 客户意向度
 	OutputTagName *string `json:"OutputTagName,omitempty" xml:"OutputTagName,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// ["高（非常积极，大概率转化）"]
 	OutputTagValue *string `json:"OutputTagValue,omitempty" xml:"OutputTagValue,omitempty"`
 }
 
@@ -460,29 +665,43 @@ func (s *QueryConversationDetailInfoResponseBodyDataOutputTags) Validate() error
 }
 
 type QueryConversationDetailInfoResponseBodyDataVariables struct {
+	// The variable ID.
+	//
 	// example:
 	//
-	// 示例值
+	// 22
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The variable key.
+	//
 	// example:
 	//
 	// name
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The variable name.
+	//
 	// example:
 	//
-	// 示例值
+	// 姓名
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Indicates whether the variable is required. Valid values:
+	//
+	// - `true`: The variable is required.
+	//
+	// - `false`: The variable is optional.
+	//
 	// example:
 	//
 	// false
 	Required *bool `json:"Required,omitempty" xml:"Required,omitempty"`
 	// example:
 	//
-	// 示例值示例值
+	// 示例值
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The variable value.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// 张三
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

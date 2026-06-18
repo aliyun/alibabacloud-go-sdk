@@ -22,19 +22,32 @@ type iListRobotNodeResponseBody interface {
 }
 
 type ListRobotNodeResponseBody struct {
+	// Request status code. A return value of OK indicates that the request succeeded.
+	//
 	// example:
 	//
 	// Ok
-	Code *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// List of robot nodes.
 	Data []*ListRobotNodeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Description of the status code.
+	//
 	// example:
 	//
 	// Ok
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// D9CB3933-9FE3-4870-BA8E-2BEE91B69D23
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Whether the API invocation succeeded. Valid values:
+	//
+	// - **true**: Succeeded.
+	//
+	// - **false**: Failed.
+	//
 	// example:
 	//
 	// true
@@ -108,17 +121,40 @@ func (s *ListRobotNodeResponseBody) Validate() error {
 }
 
 type ListRobotNodeResponseBodyData struct {
+	// Whether it is an output. Valid values:
+	//
+	// - **1**: Yes.
+	//
+	// - **0**: No.
+	//
 	// example:
 	//
 	// 1
-	IsOutput  *int32  `json:"IsOutput,omitempty" xml:"IsOutput,omitempty"`
-	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	IsOutput *int32 `json:"IsOutput,omitempty" xml:"IsOutput,omitempty"`
+	// Model name.
+	//
 	// example:
 	//
-	// 123456
+	// 模型一
+	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	// Output ID.
+	//
+	// example:
+	//
+	// 12****
 	NodeIdentifier *string `json:"NodeIdentifier,omitempty" xml:"NodeIdentifier,omitempty"`
-	NodeName       *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	ProcessName    *string `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
+	// Node name.
+	//
+	// example:
+	//
+	// 理财
+	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// Flow name.
+	//
+	// example:
+	//
+	// 开场白
+	ProcessName *string `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
 }
 
 func (s ListRobotNodeResponseBodyData) String() string {

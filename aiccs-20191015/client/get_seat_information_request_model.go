@@ -26,29 +26,48 @@ type iGetSeatInformationRequest interface {
 }
 
 type GetSeatInformationRequest struct {
+	// AICCS instance ID.
+	//
+	// You can obtain it from **Instance Management*	- in the left-side navigation pane of the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc_xp_pre-cn-***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Current page number. The value must be greater than **0**. Default value: **1**.
+	//
 	// example:
 	//
 	// 1
-	CurrentPage *int32   `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
-	DepIds      []*int64 `json:"depIds,omitempty" xml:"depIds,omitempty" type:"Repeated"`
+	CurrentPage *int32 `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
+	// List of department IDs.
+	DepIds []*int64 `json:"depIds,omitempty" xml:"depIds,omitempty" type:"Repeated"`
+	// End UNIX timestamp. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1617761765000
 	EndDate *int64 `json:"endDate,omitempty" xml:"endDate,omitempty"`
+	// Specifies whether to query by department grouping. Default value: **false**. Valid values:
+	//
+	// - **true**: Yes.
+	//
+	// - **false**: No.
+	//
 	// example:
 	//
 	// true
 	ExistDepartmentGrouping *bool `json:"existDepartmentGrouping,omitempty" xml:"existDepartmentGrouping,omitempty"`
+	// Page size. The value must be greater than **0**. Default value: **20**.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// Start UNIX timestamp. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1615083365000

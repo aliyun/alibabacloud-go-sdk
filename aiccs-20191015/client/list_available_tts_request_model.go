@@ -25,15 +25,23 @@ type ListAvailableTtsRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// 复刻音色编码
+	// The voice code for a custom voice. You can find it on the [Custom Voice](https://aiccs.console.aliyun.com/engine/voiceprint) page.
 	//
 	// example:
 	//
-	// V123456789
+	// V9A******
 	TtsVoiceCode *string `json:"TtsVoiceCode,omitempty" xml:"TtsVoiceCode,omitempty"`
+	// The type of the TTS voice. Valid values:
+	//
+	// `SYSTEM`: system voice.
+	//
+	// `COSYCLONE`: cloned voice.
+	//
+	// `BL-CUSTOM`: premium custom voice.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// SYSTEM
 	VoiceType *string `json:"VoiceType,omitempty" xml:"VoiceType,omitempty"`
 }
 

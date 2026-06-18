@@ -34,48 +34,88 @@ type iCreateAiOutboundTaskRequest interface {
 }
 
 type CreateAiOutboundTaskRequest struct {
+	// Concurrent call rate for automated outbound calls.
+	//
 	// example:
 	//
 	// 10
-	ConcurrentRate *int32  `json:"ConcurrentRate,omitempty" xml:"ConcurrentRate,omitempty"`
-	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ConcurrentRate *int32 `json:"ConcurrentRate,omitempty" xml:"ConcurrentRate,omitempty"`
+	// Job description. Length: 0 to 100 characters.
+	//
+	// example:
+	//
+	// 房产销售
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Job execution time, in JSON format.
+	//
+	// > The end time must be later than the start time.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// {"TUESDAY":[{"start":"06:00","end":"06:05"}],"MONDAY":[{"start":"09:00","end":"18:00"},{"start":"20:30","end":"21:45"},{"start":"22:30","end":"22:50"}],"WEDNESDAY":[{"start":"09:00","end":"18:00"}],"THURSDAY":[{"start":"09:00","end":"18:00"}],"FRIDAY":[{"start":"09:00","end":"18:00"}],"SATURDAY":[{"start":"09:00","end":"18:00"}],"SUNDAY":[{"start":"17:00","end":"23:45"}]}
 	ExecutionTime *string `json:"ExecutionTime,omitempty" xml:"ExecutionTime,omitempty"`
+	// Fixed outbound ratio for predictive dialing. Valid values: **≥1**.
+	//
 	// example:
 	//
 	// 1.5
 	ForecastCallRate *float32 `json:"ForecastCallRate,omitempty" xml:"ForecastCallRate,omitempty"`
+	// The skill group ID (for predictive outbound calls) or IVR ID (for automated outbound calls). You can obtain this information in the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123456
 	HandlerId *int64 `json:"HandlerId,omitempty" xml:"HandlerId,omitempty"`
+	// AICCS instance ID.
+	//
+	// You can obtain it from **Instance Management*	- in the left-side navigation pane of the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cc_xp_pre-cn-***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Job name. Length: 1 to 15 characters.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// xx外呼任务
+	// 测试任务
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Called number deduplication policy. Valid values:
+	//
+	// - **0**: Remove duplicates within the job.
+	//
+	// - **1**: Do not remove duplicates.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	NumRepeated *int32 `json:"NumRepeated,omitempty" xml:"NumRepeated,omitempty"`
+	// Outbound caller numbers.
+	//
+	// > Must be purchased numbers. Separate multiple numbers with commas (,).
+	//
 	// This parameter is required.
-	OutboundNums []*string                              `json:"OutboundNums,omitempty" xml:"OutboundNums,omitempty" type:"Repeated"`
-	RecallRule   *CreateAiOutboundTaskRequestRecallRule `json:"RecallRule,omitempty" xml:"RecallRule,omitempty" type:"Struct"`
+	OutboundNums []*string `json:"OutboundNums,omitempty" xml:"OutboundNums,omitempty" type:"Repeated"`
+	// Failed call retry policy.
+	//
+	// > If empty, no retries are performed.
+	RecallRule *CreateAiOutboundTaskRequestRecallRule `json:"RecallRule,omitempty" xml:"RecallRule,omitempty" type:"Struct"`
+	// Task Type. Valid values:
+	//
+	// - **2**: Predictive outbound call.
+	//
+	// - **3**: Automated outbound call.
+	//
 	// This parameter is required.
 	//
 	// if can be null:
@@ -204,10 +244,14 @@ func (s *CreateAiOutboundTaskRequest) Validate() error {
 }
 
 type CreateAiOutboundTaskRequestRecallRule struct {
+	// Number of retries. Valid values: **1 to 3**.
+	//
 	// example:
 	//
 	// 1
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// Retry interval. Valid values: **1 to 60**, unit: minutes.
+	//
 	// example:
 	//
 	// 1

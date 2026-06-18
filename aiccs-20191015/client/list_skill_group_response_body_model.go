@@ -22,19 +22,32 @@ type iListSkillGroupResponseBody interface {
 }
 
 type ListSkillGroupResponseBody struct {
+	// Status code. A value of "Success" indicates that the request succeeded.
+	//
 	// example:
 	//
 	// Success
-	Code *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Skill group information.
 	Data []*ListSkillGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Description of the status code.
+	//
 	// example:
 	//
-	// xxxx
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the API call succeeded. Valid values:
+	//
+	// - **true**: Succeeded.
+	//
+	// - **false**: Failed.
+	//
 	// example:
 	//
 	// true
@@ -108,13 +121,32 @@ func (s *ListSkillGroupResponseBody) Validate() error {
 }
 
 type ListSkillGroupResponseBodyData struct {
+	// Channel type of the skill group.
+	//
 	// example:
 	//
 	// 2
-	ChannelType *int32  `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
+	ChannelType *int32 `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
+	// Skill group description.
+	//
+	// example:
+	//
+	// 自动化技能组
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Display name of the skill group.
+	//
+	// example:
+	//
+	// 自动化技能组
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Name of the skill group.
+	//
+	// example:
+	//
+	// 自动化技能组
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Skill group ID.
+	//
 	// example:
 	//
 	// 123456

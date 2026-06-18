@@ -24,34 +24,48 @@ type iMakeDoubleCallRequest interface {
 }
 
 type MakeDoubleCallRequest struct {
+	// Account name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 12345
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// Business data carried in the request. The value must be in JSON format.
+	//
 	// example:
 	//
 	// {"bizId": 123456}
 	BizData *string `json:"BizData,omitempty" xml:"BizData,omitempty"`
+	// Artificial Intelligence Cloud Call Service (AICCS) instance ID. You can obtain it from the Artificial Intelligence Cloud Call Service console.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// agent_***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// User\\"s phone number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1502123****
 	MemberPhone *string `json:"MemberPhone,omitempty" xml:"MemberPhone,omitempty"`
+	// Outbound caller number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0571000****
 	OutboundCallNumber *string `json:"OutboundCallNumber,omitempty" xml:"OutboundCallNumber,omitempty"`
+	// Agent\\"s phone number.
+	//
+	// > This parameter is required only if the call needs to be placed through the agent\\"s phone.
+	//
 	// example:
 	//
 	// 150****1234

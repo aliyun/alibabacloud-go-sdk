@@ -22,19 +22,32 @@ type iGetAgentStatisticsResponseBody interface {
 }
 
 type GetAgentStatisticsResponseBody struct {
+	// Status code. A return value of 200 indicates that the request succeeded.
+	//
 	// example:
 	//
 	// 200
-	Code *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data list.
 	Data *GetAgentStatisticsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Description of the status code.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the API was invoked successfully. Valid values:
+	//
+	// - **true**: Succeeded.
+	//
+	// - **false**: Failed.
+	//
 	// example:
 	//
 	// true
@@ -104,18 +117,26 @@ func (s *GetAgentStatisticsResponseBody) Validate() error {
 }
 
 type GetAgentStatisticsResponseBodyData struct {
+	// Current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// Page size.
+	//
 	// example:
 	//
 	// 2000
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Information is a JSON string of type List<Map>.
+	//
 	// example:
 	//
 	// {"n_resttype_1":15,"t_outcall_speak":829747,"average_incoming_time":"8451.29","n_resttype_3":0,"minute_id":"-1","n_conference_speak":0,"n_resttype_2":0,"n_resttype_5":0,"n_resttype_4":0,"n_resttype_7":0,"n_resttype_6":0,"n_resttype_9":0,"n_resttype_8":0,"n_outcall_dial":25,"total_break_time":"58555","n_internal_speak":0,"n_send_step_transfer":7,"n_consulted_internal_speak":0}
 	Rows *string `json:"Rows,omitempty" xml:"Rows,omitempty"`
+	// Total number of records.
+	//
 	// example:
 	//
 	// 4

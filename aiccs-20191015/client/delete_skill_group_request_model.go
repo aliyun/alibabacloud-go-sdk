@@ -16,10 +16,14 @@ type iDeleteSkillGroupRequest interface {
 }
 
 type DeleteSkillGroupRequest struct {
+	// External skill group ID
+	//
 	// example:
 	//
 	// 123456
 	OuterGroupId *string `json:"OuterGroupId,omitempty" xml:"OuterGroupId,omitempty"`
+	// External skill group type. Valid enumeration values are: 1: Hotline, 2: Online, 4: Ticket
+	//
 	// example:
 	//
 	// 2

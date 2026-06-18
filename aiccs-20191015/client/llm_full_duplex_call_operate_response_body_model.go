@@ -24,26 +24,46 @@ type iLlmFullDuplexCallOperateResponseBody interface {
 }
 
 type LlmFullDuplexCallOperateResponseBody struct {
+	// The details about the access denial. This parameter is returned only when RAM authentication fails.
+	//
 	// example:
 	//
 	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The status code. A value of Success indicates that the request was successful.
+	//
 	// example:
 	//
 	// 示例值示例值
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The result of the command execution. Valid values:
+	//
+	// - **true**: The command was executed.
+	//
+	// - **false**: The command failed to be executed.
+	//
 	// example:
 	//
 	// false
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The description of the status code.
+	//
 	// example:
 	//
 	// 示例值示例值示例值
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 示例值示例值示例值
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. Valid values:
+	//
+	// - **true**: The call was successful.
+	//
+	// - **false**: The call failed.
+	//
 	// example:
 	//
 	// false

@@ -24,23 +24,38 @@ type iQueryAiCallTaskDetailResponseBody interface {
 }
 
 type QueryAiCallTaskDetailResponseBody struct {
+	// The access denial details. This parameter is returned only if RAM validation fails.
+	//
 	// example:
 	//
-	// Access Denied
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The status code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
 	Data *QueryAiCallTaskDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message. This parameter is returned only if the call fails.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// 参数无效
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 23822ECB-8CAA-5C52-9C9E-807FD82A5A7F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - **true**
+	//
+	// - **false**
+	//
 	// example:
 	//
 	// false
@@ -119,13 +134,17 @@ func (s *QueryAiCallTaskDetailResponseBody) Validate() error {
 }
 
 type QueryAiCallTaskDetailResponseBodyData struct {
+	// The ID of the deployed agent.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// 1180**************
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	// The name of the agent.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// 测试智能体
 	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
 	// example:
 	//
@@ -134,61 +153,92 @@ type QueryAiCallTaskDetailResponseBodyData struct {
 	// example:
 	//
 	// 示例值
-	ApplicationName *string                                           `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
-	CallDays        []*string                                         `json:"CallDays,omitempty" xml:"CallDays,omitempty" type:"Repeated"`
-	CallTimes       []*QueryAiCallTaskDetailResponseBodyDataCallTimes `json:"CallTimes,omitempty" xml:"CallTimes,omitempty" type:"Repeated"`
+	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
+	// The days of the week on which calls are permitted.
+	CallDays []*string `json:"CallDays,omitempty" xml:"CallDays,omitempty" type:"Repeated"`
+	// The allowed call time windows.
+	CallTimes []*QueryAiCallTaskDetailResponseBodyDataCallTimes `json:"CallTimes,omitempty" xml:"CallTimes,omitempty" type:"Repeated"`
+	// The caller ID.
+	//
 	// example:
 	//
 	// 05370124****
 	CallerNumber *string `json:"CallerNumber,omitempty" xml:"CallerNumber,omitempty"`
+	// The number of concurrent tasks.
+	//
 	// example:
 	//
 	// 10
 	ConcurrentCount *int64 `json:"ConcurrentCount,omitempty" xml:"ConcurrentCount,omitempty"`
 	// example:
 	//
-	// 示例值示例值
+	// 示例值
 	LineEncoding *string `json:"LineEncoding,omitempty" xml:"LineEncoding,omitempty"`
 	// example:
 	//
-	// 示例值示例值示例值
+	// 示例值
 	LinePhoneNum *string `json:"LinePhoneNum,omitempty" xml:"LinePhoneNum,omitempty"`
 	// example:
 	//
 	// 17
 	PhoneType *int64 `json:"PhoneType,omitempty" xml:"PhoneType,omitempty"`
+	// The actual start time of the task. This value is a Unix timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1748932499000
 	RealStartTime *int64 `json:"RealStartTime,omitempty" xml:"RealStartTime,omitempty"`
+	// The number of retries.
+	//
 	// example:
 	//
 	// 2
 	RetryCount *int64 `json:"RetryCount,omitempty" xml:"RetryCount,omitempty"`
+	// Indicates whether call retry is enabled. Valid values:
+	//
+	// - `true`
+	//
+	// - `false`
+	//
 	// example:
 	//
 	// true
 	RetryEnable *bool `json:"RetryEnable,omitempty" xml:"RetryEnable,omitempty"`
+	// The retry interval. Unit: minutes.
+	//
 	// example:
 	//
 	// 1
-	RetryInterval *int64    `json:"RetryInterval,omitempty" xml:"RetryInterval,omitempty"`
-	RetryReasons  []*string `json:"RetryReasons,omitempty" xml:"RetryReasons,omitempty" type:"Repeated"`
+	RetryInterval *int64 `json:"RetryInterval,omitempty" xml:"RetryInterval,omitempty"`
+	// The reasons for which a failed call can be retried.
+	RetryReasons []*string `json:"RetryReasons,omitempty" xml:"RetryReasons,omitempty" type:"Repeated"`
+	// The scheduled start time of the task. This value is a Unix timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1748932499000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The start mode. Valid values:
+	//
+	// - `IMMEDIATE`: The task starts immediately.
+	//
+	// - `SCHEDULE`: The task starts at a scheduled time.
+	//
 	// example:
 	//
 	// IMMEDIATE
 	StartType *string `json:"StartType,omitempty" xml:"StartType,omitempty"`
+	// The ID of the task.
+	//
 	// example:
 	//
-	// 11121232222****
+	// 1187**************
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The name of the task.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// 测试任务
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 }
 
@@ -394,10 +444,14 @@ func (s *QueryAiCallTaskDetailResponseBodyData) Validate() error {
 }
 
 type QueryAiCallTaskDetailResponseBodyDataCallTimes struct {
+	// The end of the time window.
+	//
 	// example:
 	//
 	// 09:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The beginning of the time window.
+	//
 	// example:
 	//
 	// 12:00:00

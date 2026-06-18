@@ -22,12 +22,18 @@ type iGetCallDialogContentRequest interface {
 }
 
 type GetCallDialogContentRequest struct {
+	// The outbound call date, in yyyy-MM-dd format. You can only query data from the last 30 days.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2025-06-06
 	CallDate *string `json:"CallDate,omitempty" xml:"CallDate,omitempty"`
+	// The unique identifier for a call.
+	//
+	// > The LlmSmartCall API returns this ID in the CallId parameter of its response.
+	//
 	// This parameter is required.
 	//
 	// example:

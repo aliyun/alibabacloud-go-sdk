@@ -24,23 +24,34 @@ type iGetRecordDataResponseBody interface {
 }
 
 type GetRecordDataResponseBody struct {
+	// Status code. A return value of 200 indicates that the request succeeded.
+	//
 	// example:
 	//
 	// 200
-	Code *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data list.
 	Data *GetRecordDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int64 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Description of the status code.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the API call succeeded.
+	//
 	// example:
 	//
 	// true
@@ -119,10 +130,14 @@ func (s *GetRecordDataResponseBody) Validate() error {
 }
 
 type GetRecordDataResponseBodyData struct {
+	// Session ID.
+	//
 	// example:
 	//
 	// 1001067****
 	Acid *string `json:"Acid,omitempty" xml:"Acid,omitempty"`
+	// Recording file URL.
+	//
 	// example:
 	//
 	// http://aliccrec-shvpc.oss-cn-shanghai.aliyuncs.com/accrec_tmp/10010679716-12-01-56.wav?***

@@ -28,25 +28,35 @@ type iPageQueryAgentListRequest interface {
 }
 
 type PageQueryAgentListRequest struct {
+	// The unique identifier for the agent.
+	//
 	// example:
 	//
 	// 1231*******
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	// The name of the agent.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// 测试智能体
 	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page number. Pages start from 1. The default value is 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries to return per page. The default value is 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize             *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The status of the agent.
+	//
 	// example:
 	//
 	// 7

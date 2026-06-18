@@ -16,12 +16,16 @@ type iGetCustomerInfoRequest interface {
 }
 
 type GetCustomerInfoRequest struct {
+	// AICCS instance ID. You can obtain it from the Artificial Intelligence Cloud Call Service console.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc_xp_pre-cn-***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Membership ID.
+	//
 	// This parameter is required.
 	//
 	// example:

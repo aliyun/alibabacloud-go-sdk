@@ -23,11 +23,13 @@ type CancelTaskRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The unique job ID of the robot calling task. You can view it in the [Task Management](https://aiccs.console.aliyun.com/job/list) interface or obtain it by using the [CreateTask](https://help.aliyun.com/document_detail/223556.html) API.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 123456
+	// 12****
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 

@@ -14,6 +14,8 @@ type iGetMcuLvsIpRequest interface {
 }
 
 type GetMcuLvsIpRequest struct {
+	// The Artificial Intelligence Cloud Call Service (AICCS) instance ID. You can obtain it from the Intelligent Cloud Call console.
+	//
 	// This parameter is required.
 	//
 	// example:

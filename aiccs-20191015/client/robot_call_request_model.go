@@ -32,39 +32,72 @@ type iRobotCallRequest interface {
 }
 
 type RobotCallRequest struct {
+	// Called number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 131****2204
 	CalledNumber *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	// Outbound caller number. View it in the Voice Service [Real Number Management](https://dyvmsnext.console.aliyun.com/number/list/normal) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 0571****5678
+	// 132****0849
 	CalledShowNumber *string `json:"CalledShowNumber,omitempty" xml:"CalledShowNumber,omitempty"`
+	// Whether to enable the number status detection identity. Valid values:
+	//
+	// - **false*	- (Default Value): Disable.
+	//
+	// - **true**: Enable.
+	//
+	// > When enabled, the reason for unanswered calls will be recorded.
+	//
 	// example:
 	//
 	// false
 	EarlyMediaAsr *bool `json:"EarlyMediaAsr,omitempty" xml:"EarlyMediaAsr,omitempty"`
+	// An ID reserved for the caller. This ID will be returned to the caller through the receipt message. It must be 1 to 15 bytes in length.
+	//
 	// example:
 	//
-	// abcdefgh
+	// 222356****
 	OutId   *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Params  *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	// Parameter list for the robot, in JSON format. The total length must not exceed 512 bytes. You can view the parameters in [Script Management](https://aiccs.console.aliyun.com/patter/list) > **Details*	- > **Input Parameters**, or by using the [ListRobotParams](https://help.aliyun.com/document_detail/2717999.html) API.
+	//
+	// example:
+	//
+	// {
+	//
+	//   "name": "张三",
+	//
+	//   "age": "25"
+	//
+	// }
+	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	// Whether to record the call. Valid values:
+	//
+	// - **false*	- (default): Do not record.
+	//
+	// - **true**: Record.
+	//
 	// example:
 	//
 	// true
 	RecordFlag           *bool   `json:"RecordFlag,omitempty" xml:"RecordFlag,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// Robot ID, which is the script ID. View the reviewed and approved script ID in the [Script Management](https://aiccs.console.aliyun.com/patter/list) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 350000****
+	// 1000035******
 	RobotId *int64 `json:"RobotId,omitempty" xml:"RobotId,omitempty"`
 }
 

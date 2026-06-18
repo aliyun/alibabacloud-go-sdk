@@ -22,19 +22,32 @@ type iGetSeatInformationResponseBody interface {
 }
 
 type GetSeatInformationResponseBody struct {
+	// Status code. A return value of 200 indicates that the request succeeded.
+	//
 	// example:
 	//
 	// 200
-	Code *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data list.
 	Data *GetSeatInformationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Description of the status code.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the API invocation succeeded. Valid values:
+	//
+	// - **true**: Succeeded.
+	//
+	// - **false**: Failed.
+	//
 	// example:
 	//
 	// true
@@ -104,15 +117,26 @@ func (s *GetSeatInformationResponseBody) Validate() error {
 }
 
 type GetSeatInformationResponseBodyData struct {
+	// Current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// Page size.
+	//
 	// example:
 	//
 	// 2000
-	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Rowr     *string `json:"Rowr,omitempty" xml:"Rowr,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The information is a JSON string of the List<Map> type.
+	//
+	// example:
+	//
+	// {"tenant_id": "905", "tenant_name": "非单元测试化BU", "department_id": "-1", "svc_avai_capacity": 7,      "svc_current_capacity": 0, "department_name": "-1",  "svc_online_cnt": 3, "svc_ask_offline_servicer_num": 0,      "date_id": "20210401",  "svc_max_capacity": 7, "svc_rest_cnt": 0, "current_speci_ability_num": 0, "servicer_rest_cnt": 122, "max_speci_ability_num": 3,      "svc_offline_cnt": 0,  "svc_no_client_cnt": 3, "svc_ask_rest_servicer_num": 0}
+	Rowr *string `json:"Rowr,omitempty" xml:"Rowr,omitempty"`
+	// Total number of records.
+	//
 	// example:
 	//
 	// 4

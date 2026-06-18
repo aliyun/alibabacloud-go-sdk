@@ -35,10 +35,16 @@ type iUpdateModelApplicationRequest interface {
 	GetDtmfRetryPlayTimes() *int64
 	SetDtmfRetryPromptText(v string) *UpdateModelApplicationRequest
 	GetDtmfRetryPromptText() *string
+	SetDtmfSendMaxCount(v int64) *UpdateModelApplicationRequest
+	GetDtmfSendMaxCount() *int64
+	SetDtmfSendWaitTimeout(v int64) *UpdateModelApplicationRequest
+	GetDtmfSendWaitTimeout() *int64
 	SetDyvmsSceneName(v string) *UpdateModelApplicationRequest
 	GetDyvmsSceneName() *string
 	SetEnableDtmfReceive(v bool) *UpdateModelApplicationRequest
 	GetEnableDtmfReceive() *bool
+	SetEnableDtmfSend(v bool) *UpdateModelApplicationRequest
+	GetEnableDtmfSend() *bool
 	SetEnableMorse(v bool) *UpdateModelApplicationRequest
 	GetEnableMorse() *bool
 	SetInterruptConfig(v *UpdateModelApplicationRequestInterruptConfig) *UpdateModelApplicationRequest
@@ -53,6 +59,8 @@ type iUpdateModelApplicationRequest interface {
 	GetMuteDuration() *int64
 	SetMuteHangupNum(v int64) *UpdateModelApplicationRequest
 	GetMuteHangupNum() *int64
+	SetMutePushMode(v string) *UpdateModelApplicationRequest
+	GetMutePushMode() *string
 	SetOwnerId(v int64) *UpdateModelApplicationRequest
 	GetOwnerId() *int64
 	SetPrompt(v string) *UpdateModelApplicationRequest
@@ -86,180 +94,226 @@ type iUpdateModelApplicationRequest interface {
 }
 
 type UpdateModelApplicationRequest struct {
-	// 应用编码
+	// The application code.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值示例值
+	// DKSDLSA
 	ApplicationCode *string `json:"ApplicationCode,omitempty" xml:"ApplicationCode,omitempty"`
-	// 应用并发请求数
+	// The number of concurrent requests for the application.
 	//
 	// example:
 	//
 	// 12
 	ApplicationCps *int64 `json:"ApplicationCps,omitempty" xml:"ApplicationCps,omitempty"`
-	// 模型应用名称
+	// The name of the model application.
 	//
 	// example:
 	//
-	// 示例值示例值
+	// 测试应用
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
+	// Specifies whether to hang up the call when a call assistant is detected.
+	//
 	// example:
 	//
 	// false
 	CallAssistantHangup *bool `json:"CallAssistantHangup,omitempty" xml:"CallAssistantHangup,omitempty"`
-	// 通话助手识别
+	// Specifies whether to enable call assistant recognition.
 	//
 	// example:
 	//
-	// 示例值
+	// true
 	CallAssistantRecognize *bool `json:"CallAssistantRecognize,omitempty" xml:"CallAssistantRecognize,omitempty"`
+	// Specifies whether to trigger the model immediately after the call is connected.
+	//
 	// example:
 	//
 	// false
 	CallConnectedTriggerModel *bool `json:"CallConnectedTriggerModel,omitempty" xml:"CallConnectedTriggerModel,omitempty"`
+	// The allowed DTMF digits, specified as a comma-separated string such as `1,2,3`. You can specify a maximum of 20 digits.
+	//
 	// example:
 	//
-	// 示例值
+	// 1
 	DtmfAllowedDigits *string `json:"DtmfAllowedDigits,omitempty" xml:"DtmfAllowedDigits,omitempty"`
+	// Specifies whether to automatically validate the DTMF digits.
+	//
 	// example:
 	//
 	// true
 	DtmfAutoValidateEnable *bool `json:"DtmfAutoValidateEnable,omitempty" xml:"DtmfAutoValidateEnable,omitempty"`
+	// The number of DTMF digits to collect. The value must be between 1 and 12.
+	//
 	// example:
 	//
 	// 1
 	DtmfDigitCount *int64 `json:"DtmfDigitCount,omitempty" xml:"DtmfDigitCount,omitempty"`
+	// The timeout for DTMF input, in seconds. The value must be between 1 and 10.
+	//
 	// example:
 	//
 	// 1
 	DtmfInputTimeout *int64 `json:"DtmfInputTimeout,omitempty" xml:"DtmfInputTimeout,omitempty"`
+	// The action to take when the input is outside the allowed range. Valid values: `RETURN_MODEL` and `AUTO_RETRY`.
+	//
 	// example:
 	//
 	// RETURN_MODEL
 	DtmfOutOfRangeAction *string `json:"DtmfOutOfRangeAction,omitempty" xml:"DtmfOutOfRangeAction,omitempty"`
+	// The number of retry attempts. The value must be between 1 and 3. This parameter is effective only when `DtmfOutOfRangeAction` is set to `AUTO_RETRY`.
+	//
 	// example:
 	//
 	// 1
 	DtmfRetryPlayTimes *int64 `json:"DtmfRetryPlayTimes,omitempty" xml:"DtmfRetryPlayTimes,omitempty"`
+	// The custom text for the retry prompt. The text can contain a maximum of 50 characters. If this parameter is empty, the system uses the default prompt: "Invalid input. Please try again."
+	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// 测试文本
 	DtmfRetryPromptText *string `json:"DtmfRetryPromptText,omitempty" xml:"DtmfRetryPromptText,omitempty"`
-	// 场景名称
+	// example:
+	//
+	// 90
+	DtmfSendMaxCount *int64 `json:"DtmfSendMaxCount,omitempty" xml:"DtmfSendMaxCount,omitempty"`
+	// example:
+	//
+	// 58
+	DtmfSendWaitTimeout *int64 `json:"DtmfSendWaitTimeout,omitempty" xml:"DtmfSendWaitTimeout,omitempty"`
+	// The scene name.
 	//
 	// example:
 	//
-	// 示例值示例值
+	// 测试场景
 	DyvmsSceneName *string `json:"DyvmsSceneName,omitempty" xml:"DyvmsSceneName,omitempty"`
+	// Specifies whether to enable the collection of DTMF signals. The default value is `false`.
+	//
 	// example:
 	//
 	// false
 	EnableDtmfReceive *bool `json:"EnableDtmfReceive,omitempty" xml:"EnableDtmfReceive,omitempty"`
 	// example:
 	//
+	// true
+	EnableDtmfSend *bool `json:"EnableDtmfSend,omitempty" xml:"EnableDtmfSend,omitempty"`
+	// Specifies whether to enable the Morse code configuration. The default value is `false`.
+	//
+	// example:
+	//
 	// false
 	EnableMorse *bool `json:"EnableMorse,omitempty" xml:"EnableMorse,omitempty"`
-	// 打断配置
+	// The interruption configuration.
 	InterruptConfig *UpdateModelApplicationRequestInterruptConfig `json:"InterruptConfig,omitempty" xml:"InterruptConfig,omitempty" type:"Struct"`
-	// 模型编码
+	// The model code.
 	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// 1231
 	ModelCode *string `json:"ModelCode,omitempty" xml:"ModelCode,omitempty"`
-	// 模型版本
+	// The model version.
 	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// 1
 	ModelVersion *string `json:"ModelVersion,omitempty" xml:"ModelVersion,omitempty"`
-	// 第一个静音是否唤起模型
+	// Specifies whether the first mute event triggers the model.
 	//
 	// example:
 	//
 	// true
 	MuteActive *bool `json:"MuteActive,omitempty" xml:"MuteActive,omitempty"`
-	// 静音时长
+	// The mute duration.
 	//
 	// example:
 	//
 	// 85
 	MuteDuration *int64 `json:"MuteDuration,omitempty" xml:"MuteDuration,omitempty"`
-	// 连续多少个静音事件主动挂机
+	// The number of consecutive mute events that trigger an automatic hang-up.
 	//
 	// example:
 	//
 	// 70
 	MuteHangupNum *int64 `json:"MuteHangupNum,omitempty" xml:"MuteHangupNum,omitempty"`
-	OwnerId       *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// 提示词
+	// 静音事件推送模式
 	//
 	// example:
 	//
-	// 示例值示例值
+	// FIRST_ONLY
+	MutePushMode *string `json:"MutePushMode,omitempty" xml:"MutePushMode,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The prompt.
+	//
+	// example:
+	//
+	// 测试提示词
 	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
-	// 资质ID
+	// The qualification ID.
 	//
 	// example:
 	//
 	// 61
 	QualificationId *int64 `json:"QualificationId,omitempty" xml:"QualificationId,omitempty"`
-	// 资质名称
+	// The name of the qualification.
 	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// 测试质检
 	QualificationName *string `json:"QualificationName,omitempty" xml:"QualificationName,omitempty"`
+	// The URL of the recording file.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// https://xxxxxxxxxxxxxxx.wav
 	RecordingFile        *string `json:"RecordingFile,omitempty" xml:"RecordingFile,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// 最大通话时长
+	// The session timeout, which is the maximum duration of a call.
 	//
 	// example:
 	//
 	// 49
 	SessionTimeout *int64 `json:"SessionTimeout,omitempty" xml:"SessionTimeout,omitempty"`
-	// 来源
+	// The value must be `USER`.
 	//
 	// example:
 	//
-	// 示例值示例值
+	// USER
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// 话术内容
+	// The content of the speech.
 	//
 	// example:
 	//
-	// 示例值
+	// 测试话术
 	SpeechContent *string `json:"SpeechContent,omitempty" xml:"SpeechContent,omitempty"`
-	// 话束id
+	// The speech ID.
 	//
 	// example:
 	//
 	// 15
 	SpeechId *int64 `json:"SpeechId,omitempty" xml:"SpeechId,omitempty"`
-	// 开场白
+	// The opening statement.
 	//
 	// example:
 	//
-	// 示例值示例值
+	// 你好，这是个测试开场白
 	StartWord *string `json:"StartWord,omitempty" xml:"StartWord,omitempty"`
+	// The type of the opening statement. Valid values:
+	//
 	// example:
 	//
-	// 1
+	// 0：文本
+	//
+	// 1：录音
 	StartWordType *int64 `json:"StartWordType,omitempty" xml:"StartWordType,omitempty"`
-	// tts配置，包括音色、音量、音速等。
+	// The TTS configuration, such as voice, volume, and speech rate.
 	TtsConfig *UpdateModelApplicationRequestTtsConfig `json:"TtsConfig,omitempty" xml:"TtsConfig,omitempty" type:"Struct"`
-	// 用途
+	// The purpose of the application.
 	//
 	// example:
 	//
-	// 示例值示例值
+	// 测试用途
 	UsageDesc *string `json:"UsageDesc,omitempty" xml:"UsageDesc,omitempty"`
 }
 
@@ -323,12 +377,24 @@ func (s *UpdateModelApplicationRequest) GetDtmfRetryPromptText() *string {
 	return s.DtmfRetryPromptText
 }
 
+func (s *UpdateModelApplicationRequest) GetDtmfSendMaxCount() *int64 {
+	return s.DtmfSendMaxCount
+}
+
+func (s *UpdateModelApplicationRequest) GetDtmfSendWaitTimeout() *int64 {
+	return s.DtmfSendWaitTimeout
+}
+
 func (s *UpdateModelApplicationRequest) GetDyvmsSceneName() *string {
 	return s.DyvmsSceneName
 }
 
 func (s *UpdateModelApplicationRequest) GetEnableDtmfReceive() *bool {
 	return s.EnableDtmfReceive
+}
+
+func (s *UpdateModelApplicationRequest) GetEnableDtmfSend() *bool {
+	return s.EnableDtmfSend
 }
 
 func (s *UpdateModelApplicationRequest) GetEnableMorse() *bool {
@@ -357,6 +423,10 @@ func (s *UpdateModelApplicationRequest) GetMuteDuration() *int64 {
 
 func (s *UpdateModelApplicationRequest) GetMuteHangupNum() *int64 {
 	return s.MuteHangupNum
+}
+
+func (s *UpdateModelApplicationRequest) GetMutePushMode() *string {
+	return s.MutePushMode
 }
 
 func (s *UpdateModelApplicationRequest) GetOwnerId() *int64 {
@@ -484,6 +554,16 @@ func (s *UpdateModelApplicationRequest) SetDtmfRetryPromptText(v string) *Update
 	return s
 }
 
+func (s *UpdateModelApplicationRequest) SetDtmfSendMaxCount(v int64) *UpdateModelApplicationRequest {
+	s.DtmfSendMaxCount = &v
+	return s
+}
+
+func (s *UpdateModelApplicationRequest) SetDtmfSendWaitTimeout(v int64) *UpdateModelApplicationRequest {
+	s.DtmfSendWaitTimeout = &v
+	return s
+}
+
 func (s *UpdateModelApplicationRequest) SetDyvmsSceneName(v string) *UpdateModelApplicationRequest {
 	s.DyvmsSceneName = &v
 	return s
@@ -491,6 +571,11 @@ func (s *UpdateModelApplicationRequest) SetDyvmsSceneName(v string) *UpdateModel
 
 func (s *UpdateModelApplicationRequest) SetEnableDtmfReceive(v bool) *UpdateModelApplicationRequest {
 	s.EnableDtmfReceive = &v
+	return s
+}
+
+func (s *UpdateModelApplicationRequest) SetEnableDtmfSend(v bool) *UpdateModelApplicationRequest {
+	s.EnableDtmfSend = &v
 	return s
 }
 
@@ -526,6 +611,11 @@ func (s *UpdateModelApplicationRequest) SetMuteDuration(v int64) *UpdateModelApp
 
 func (s *UpdateModelApplicationRequest) SetMuteHangupNum(v int64) *UpdateModelApplicationRequest {
 	s.MuteHangupNum = &v
+	return s
+}
+
+func (s *UpdateModelApplicationRequest) SetMutePushMode(v string) *UpdateModelApplicationRequest {
+	s.MutePushMode = &v
 	return s
 }
 
@@ -619,27 +709,29 @@ func (s *UpdateModelApplicationRequest) Validate() error {
 }
 
 type UpdateModelApplicationRequestInterruptConfig struct {
-	// 防止连续抢话功能配置
+	// The configuration to prevent consecutive barge-ins.
 	AvoidInterruptDTO *UpdateModelApplicationRequestInterruptConfigAvoidInterruptDTO `json:"AvoidInterruptDTO,omitempty" xml:"AvoidInterruptDTO,omitempty" type:"Struct"`
-	// 防止连续抢话功能是否开启
+	// Specifies whether to prevent consecutive barge-ins.
 	//
 	// example:
 	//
 	// true
 	EnableAvoidInterrupt *bool `json:"EnableAvoidInterrupt,omitempty" xml:"EnableAvoidInterrupt,omitempty"`
+	// Specifies whether to enable the backchannel configuration for interruptions.
+	//
 	// example:
 	//
 	// true
 	EnableInterruptBackchannel *bool `json:"EnableInterruptBackchannel,omitempty" xml:"EnableInterruptBackchannel,omitempty"`
-	// 开场白全程不打断
+	// Specifies whether to make the entire opening statement non-interruptible.
 	//
 	// example:
 	//
 	// true
 	EnableStartwordEntireNotInterrupt *bool `json:"EnableStartwordEntireNotInterrupt,omitempty" xml:"EnableStartwordEntireNotInterrupt,omitempty"`
-	// 开场白不打断配置是否开启
+	// Specifies whether to make the opening statement non-interruptible.
 	EnableStartwordNotInterrupt *bool `json:"EnableStartwordNotInterrupt,omitempty" xml:"EnableStartwordNotInterrupt,omitempty"`
-	// 开场白保护时长
+	// The protection duration for the opening statement, in seconds.
 	//
 	// example:
 	//
@@ -719,10 +811,14 @@ func (s *UpdateModelApplicationRequestInterruptConfig) Validate() error {
 }
 
 type UpdateModelApplicationRequestInterruptConfigAvoidInterruptDTO struct {
+	// The number of consecutive interruptions.
+	//
 	// example:
 	//
 	// 3
 	InterruptNum *int64 `json:"InterruptNum,omitempty" xml:"InterruptNum,omitempty"`
+	// The interruption protection duration, in seconds.
+	//
 	// example:
 	//
 	// 16.417547
@@ -760,69 +856,87 @@ func (s *UpdateModelApplicationRequestInterruptConfigAvoidInterruptDTO) Validate
 }
 
 type UpdateModelApplicationRequestTtsConfig struct {
+	// Specifies whether to enable background sound.
+	//
 	// example:
 	//
 	// true
 	BackgroundEnabled *bool `json:"BackgroundEnabled,omitempty" xml:"BackgroundEnabled,omitempty"`
-	// 背景音id
+	// The background sound ID.
 	//
 	// example:
 	//
 	// 111
 	BackgroundSound *int64 `json:"BackgroundSound,omitempty" xml:"BackgroundSound,omitempty"`
-	// 背景音音量(id)
+	// The volume of the background sound. Valid values: `0` (low), `1` (medium), and `2` (high).
 	//
 	// example:
 	//
 	// 1
 	BackgroundVolume *int64 `json:"BackgroundVolume,omitempty" xml:"BackgroundVolume,omitempty"`
+	// The account ID.
+	//
 	// example:
 	//
 	// 47
 	CustomerAccountId *int64 `json:"CustomerAccountId,omitempty" xml:"CustomerAccountId,omitempty"`
+	// Specifies whether to enable audio mixing.
+	//
 	// example:
 	//
 	// true
 	MixingEnabled *bool `json:"MixingEnabled,omitempty" xml:"MixingEnabled,omitempty"`
-	// 混音模版id
+	// The mixing template ID.
 	//
 	// example:
 	//
 	// 111
 	MixingTemplate *int64 `json:"MixingTemplate,omitempty" xml:"MixingTemplate,omitempty"`
+	// The resource ID.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// 122
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// TTS 变量播放时的声音速度。取值范围：-200~200，默认值为 0。
+	// The TTS playback speech rate. Valid values range from -200 to 200. The default value is 0.
 	//
 	// example:
 	//
 	// 7
 	TtsSpeed *int64 `json:"TtsSpeed,omitempty" xml:"TtsSpeed,omitempty"`
-	// 声音风格
+	// The voice style.
 	//
 	// example:
 	//
 	// voice
 	TtsStyle *string `json:"TtsStyle,omitempty" xml:"TtsStyle,omitempty"`
-	// TTS 变量播放的音量。取值范围：0~100，默认值为 0。
+	// The TTS playback volume. Valid values range from 0 to 100. The default value is 0.
 	//
 	// example:
 	//
 	// 11
 	TtsVolume *int64 `json:"TtsVolume,omitempty" xml:"TtsVolume,omitempty"`
-	// 声音编码
+	// The voice code.
 	//
 	// example:
 	//
-	// 示例值示例值
+	// 12123213123
 	VoiceCode *string `json:"VoiceCode,omitempty" xml:"VoiceCode,omitempty"`
-	// 声音类型
+	// The voice type. Valid values:
+	//
+	// ```
+	//
+	// SYSTEM: System voice.
+	//
+	// COSYCLONE: Cloned voice.
+	//
+	// BL-CUSTOM: Premium custom-cloned voice.
+	//
+	// ```
 	//
 	// example:
 	//
-	// 示例值示例值
+	// SYSTEM
 	VoiceType *string `json:"VoiceType,omitempty" xml:"VoiceType,omitempty"`
 }
 

@@ -20,15 +20,22 @@ type iGetRecordUrlResponseBody interface {
 }
 
 type GetRecordUrlResponseBody struct {
+	// The data list.
 	Data *GetRecordUrlResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Description of the status code.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the API call succeeded.
+	//
 	// example:
 	//
 	// true
@@ -89,10 +96,14 @@ func (s *GetRecordUrlResponseBody) Validate() error {
 }
 
 type GetRecordUrlResponseBodyData struct {
+	// The session ID.
+	//
 	// example:
 	//
 	// 1001067****
 	Acid *string `json:"Acid,omitempty" xml:"Acid,omitempty"`
+	// The recording link.
+	//
 	// example:
 	//
 	// http://aliccrec-shvpc.oss-cn-shanghai.aliyuncs.com/accrec_tmp/10010679716-12-01-56.wav?***

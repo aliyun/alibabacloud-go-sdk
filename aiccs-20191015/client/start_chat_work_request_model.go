@@ -16,12 +16,16 @@ type iStartChatWorkRequest interface {
 }
 
 type StartChatWorkRequest struct {
+	// Agent logon name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123@123.com
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// Artificial Intelligence Cloud Call Service (AICCS) instance ID. You can obtain it from the Artificial Intelligence Cloud Call Service console.
+	//
 	// This parameter is required.
 	//
 	// example:

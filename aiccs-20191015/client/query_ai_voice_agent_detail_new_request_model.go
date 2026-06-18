@@ -18,16 +18,22 @@ type iQueryAiVoiceAgentDetailNewRequest interface {
 }
 
 type QueryAiVoiceAgentDetailNewRequest struct {
+	// The ID of the agent.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 12345678
+	// 1234***5678
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	// The ID of the branch. If you do not specify this parameter, the active branch is used.
+	//
 	// example:
 	//
 	// 12
 	BranchId *string `json:"BranchId,omitempty" xml:"BranchId,omitempty"`
+	// The ID of the version. If you do not specify this parameter, the system uses the latest published version for the specified branch. You must specify BranchId when you use this parameter.
+	//
 	// example:
 	//
 	// 21

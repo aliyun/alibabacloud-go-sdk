@@ -24,18 +24,26 @@ type iCreateThirdSsoAgentResponseBody interface {
 }
 
 type CreateThirdSsoAgentResponseBody struct {
+	// Status code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The ID of the created agent.
+	//
 	// example:
 	//
 	// 123456
 	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int64 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Description of the status code.
+	//
 	// example:
 	//
 	// Success
@@ -46,6 +54,8 @@ type CreateThirdSsoAgentResponseBody struct {
 	//
 	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the API call succeeded.
+	//
 	// example:
 	//
 	// true

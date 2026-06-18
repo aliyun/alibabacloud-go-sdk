@@ -22,19 +22,32 @@ type iGetSkillGroupServiceStatusResponseBody interface {
 }
 
 type GetSkillGroupServiceStatusResponseBody struct {
+	// Status code. A return value of 200 indicates that the request succeeded.
+	//
 	// example:
 	//
 	// 200
-	Code *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// List of data.
 	Data *GetSkillGroupServiceStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Description of the status code.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the API was invoked successfully. Valid values:
+	//
+	// - **true**: Succeeded.
+	//
+	// - **false**: Failed.
+	//
 	// example:
 	//
 	// true
@@ -104,15 +117,26 @@ func (s *GetSkillGroupServiceStatusResponseBody) Validate() error {
 }
 
 type GetSkillGroupServiceStatusResponseBodyData struct {
+	// Current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// Page size. The value must be greater than **0**. Default value: **20**.
+	//
 	// example:
 	//
 	// 2000
-	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Rows     *string `json:"Rows,omitempty" xml:"Rows,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Information in the form of a JSON string of type List<Map>.
+	//
+	// example:
+	//
+	// {"online_40s_transfer_ready_cnt":382,"minute_id":"-1","online_unsatis_cnt":0,"online_simple_cnt":0,"average_queue_time":"0.39","service_pickup":"7752","online_service_time_len":220753,"online_direct_give_up_len":1187,"channel_instance_name":"-1","servicer_id":"-1","tenant_name":"非单元测试化BU","group_name":"-1","online_30s_transfer_ready_cnt":382}
+	Rows *string `json:"Rows,omitempty" xml:"Rows,omitempty"`
+	// Total number of records.
+	//
 	// example:
 	//
 	// 4

@@ -18,7 +18,7 @@ type iLlmFullDuplexCallOperateRequest interface {
 }
 
 type LlmFullDuplexCallOperateRequest struct {
-	// 通话的唯一回执 ID。可通过 llmSmartCallFullDuplex 接口获取。
+	// The unique receipt ID of the call. You can obtain this ID by calling the LlmSmartCallFullDuplex operation.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type LlmFullDuplexCallOperateRequest struct {
 	//
 	// 示例值
 	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
-	// 动作指令：play / flush / hangup / sendDtmf
+	// The action command: play / flush / hangup / sendDtmf.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type LlmFullDuplexCallOperateRequest struct {
 	//
 	// 示例值
 	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
-	// 扩展参数，JSON 字符串。各 command 参数说明：
+	// The extension parameter, a JSON character string. The metric description for each command:
 	//
 	// example:
 	//

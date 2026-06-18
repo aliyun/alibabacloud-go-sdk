@@ -24,23 +24,38 @@ type iGetAllDepartmentResponseBody interface {
 }
 
 type GetAllDepartmentResponseBody struct {
+	// Status code. A return value of 200 indicates that the request succeeded.
+	//
 	// example:
 	//
 	// 200
-	Code *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Department information.
 	Data []*GetAllDepartmentResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Description of the status code.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 98B032F5-6473-4EAC-8BA8-C28993513A1F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the API invocation succeeded. Valid values:
+	//
+	// - **true**: Succeeded.
+	//
+	// - **false**: Failed.
+	//
 	// example:
 	//
 	// true
@@ -123,10 +138,17 @@ func (s *GetAllDepartmentResponseBody) Validate() error {
 }
 
 type GetAllDepartmentResponseBodyData struct {
+	// Department ID.
+	//
 	// example:
 	//
 	// 10
-	DepartmentId   *int64  `json:"DepartmentId,omitempty" xml:"DepartmentId,omitempty"`
+	DepartmentId *int64 `json:"DepartmentId,omitempty" xml:"DepartmentId,omitempty"`
+	// Department name.
+	//
+	// example:
+	//
+	// 部门A
 	DepartmentName *string `json:"DepartmentName,omitempty" xml:"DepartmentName,omitempty"`
 }
 

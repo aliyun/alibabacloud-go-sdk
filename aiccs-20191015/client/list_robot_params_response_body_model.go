@@ -22,19 +22,32 @@ type iListRobotParamsResponseBody interface {
 }
 
 type ListRobotParamsResponseBody struct {
+	// Status code. A value of 200 indicates that the request succeeded.
+	//
 	// example:
 	//
 	// 200
-	Code *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Parameter information.
 	Data []*ListRobotParamsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Description of the status code.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// FF67D4D5-4E90-1DF5-BB8F-060BBFAD72DB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the API invocation succeeded. Valid values:
+	//
+	// - **true**: Succeeded.
+	//
+	// - **false**: Failed.
+	//
 	// example:
 	//
 	// true
@@ -108,14 +121,27 @@ func (s *ListRobotParamsResponseBody) Validate() error {
 }
 
 type ListRobotParamsResponseBodyData struct {
+	// Indicates whether the parameter is required. Valid values:
+	//
+	// - 0: Not required.
+	//
+	// - 1: Required.
+	//
 	// example:
 	//
 	// 0
 	IsEmpty *int32 `json:"IsEmpty,omitempty" xml:"IsEmpty,omitempty"`
+	// Parameter ID.
+	//
 	// example:
 	//
-	// name
+	// 1
 	ParamCode *string `json:"ParamCode,omitempty" xml:"ParamCode,omitempty"`
+	// Parameter name.
+	//
+	// example:
+	//
+	// 名称
 	ParamName *string `json:"ParamName,omitempty" xml:"ParamName,omitempty"`
 }
 

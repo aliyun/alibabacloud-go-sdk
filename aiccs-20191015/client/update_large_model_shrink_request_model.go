@@ -34,52 +34,52 @@ type iUpdateLargeModelShrinkRequest interface {
 }
 
 type UpdateLargeModelShrinkRequest struct {
-	// 授权码
+	// The authorization code.
 	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// sk-sxxxxx*********xx
 	AuthCode *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
-	// 基础模型
+	// A list of base models.
 	BaseModelShrink *string `json:"BaseModel,omitempty" xml:"BaseModel,omitempty"`
-	// 模型编码
+	// The model code.
 	//
 	// example:
 	//
 	// Test Model Name
 	ModelCode *string `json:"ModelCode,omitempty" xml:"ModelCode,omitempty"`
-	// 模型名称
+	// The model name.
 	//
 	// example:
 	//
-	// 示例值
+	// Test model
 	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
-	// 模型地址
+	// The model URL.
 	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// https://xxxxxxxxx
 	ModelUrl             *string `json:"ModelUrl,omitempty" xml:"ModelUrl,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// 温度
+	// Controls the randomness of the model\\"s output. A higher value increases randomness, and a lower value makes the output more deterministic.
 	//
 	// example:
 	//
-	// 49.29
+	// 0.1
 	Temperature *float64 `json:"Temperature,omitempty" xml:"Temperature,omitempty"`
-	// topK
+	// Restricts token selection to the top k most probable tokens.
 	//
 	// example:
 	//
-	// 20
+	// 2
 	TopK *int64 `json:"TopK,omitempty" xml:"TopK,omitempty"`
-	// topP
+	// Controls output diversity by using nucleus sampling. It defines a cumulative probability threshold for token selection, considering only the most likely tokens.
 	//
 	// example:
 	//
-	// 84.38427
+	// 0.1
 	TopP *float64 `json:"TopP,omitempty" xml:"TopP,omitempty"`
 }
 

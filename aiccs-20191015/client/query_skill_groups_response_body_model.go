@@ -24,23 +24,34 @@ type iQuerySkillGroupsResponseBody interface {
 }
 
 type QuerySkillGroupsResponseBody struct {
+	// Current page.
+	//
 	// example:
 	//
 	// 1
-	CurrentPage *int32                              `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Data        []*QuerySkillGroupsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// Data.
+	Data []*QuerySkillGroupsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Number of items per page.
+	//
 	// example:
 	//
 	// 20
 	OnePageSize *int32 `json:"OnePageSize,omitempty" xml:"OnePageSize,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total number of pages.
+	//
 	// example:
 	//
 	// 4
 	TotalPage *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	// Total number of records.
+	//
 	// example:
 	//
 	// 76
@@ -123,16 +134,35 @@ func (s *QuerySkillGroupsResponseBody) Validate() error {
 }
 
 type QuerySkillGroupsResponseBodyData struct {
+	// Skill group channel type.
+	//
 	// example:
 	//
 	// 2
-	ChannelType *int32  `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
+	ChannelType *int32 `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
+	// Skill group description.
+	//
+	// example:
+	//
+	// 自动化技能组
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Skill group display name.
+	//
+	// example:
+	//
+	// 自动化技能组
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// Skill group ID.
+	//
 	// example:
 	//
 	// 123456
-	SkillGroupId   *int64  `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
+	SkillGroupId *int64 `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
+	// Skill group name.
+	//
+	// example:
+	//
+	// 自动化技能组
 	SkillGroupName *string `json:"SkillGroupName,omitempty" xml:"SkillGroupName,omitempty"`
 }
 

@@ -24,23 +24,34 @@ type iGetOutbounNumListResponseBody interface {
 }
 
 type GetOutbounNumListResponseBody struct {
+	// Status code.
+	//
 	// example:
 	//
 	// Success
-	Code *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Information about the number list.
 	Data *GetOutbounNumListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int64 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Description of the status code.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the API call succeeded.
+	//
 	// example:
 	//
 	// true
@@ -119,7 +130,9 @@ func (s *GetOutbounNumListResponseBody) Validate() error {
 }
 
 type GetOutbounNumListResponseBodyData struct {
-	Num      []*GetOutbounNumListResponseBodyDataNum      `json:"Num,omitempty" xml:"Num,omitempty" type:"Repeated"`
+	// Caller number information.
+	Num []*GetOutbounNumListResponseBodyDataNum `json:"Num,omitempty" xml:"Num,omitempty" type:"Repeated"`
+	// Number group information.
 	NumGroup []*GetOutbounNumListResponseBodyDataNumGroup `json:"NumGroup,omitempty" xml:"NumGroup,omitempty" type:"Repeated"`
 }
 
@@ -172,11 +185,24 @@ func (s *GetOutbounNumListResponseBodyData) Validate() error {
 }
 
 type GetOutbounNumListResponseBodyDataNum struct {
+	// Description of the caller number (geographic location information).
+	//
+	// example:
+	//
+	// 浙江省杭州市
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Caller number type. Valid values:
+	//
+	// - **1**: Number.
+	//
+	// - **2**: Number group.
+	//
 	// example:
 	//
 	// 1
 	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Caller number.
+	//
 	// example:
 	//
 	// 07512234****
@@ -223,14 +249,24 @@ func (s *GetOutbounNumListResponseBodyDataNum) Validate() error {
 }
 
 type GetOutbounNumListResponseBodyDataNumGroup struct {
+	// Number group description (number group name).
+	//
 	// example:
 	//
 	// Jella
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Number group type. Valid values:
+	//
+	// - **1**: Number.
+	//
+	// - **2**: Number group.
+	//
 	// example:
 	//
 	// 2
 	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Number group ID.
+	//
 	// example:
 	//
 	// 7688****

@@ -50,48 +50,76 @@ type iQueryTouchListRequest interface {
 }
 
 type QueryTouchListRequest struct {
-	ChannelId   []*string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty" type:"Repeated"`
-	ChannelType []*int32  `json:"ChannelType,omitempty" xml:"ChannelType,omitempty" type:"Repeated"`
+	// List of session IDs for term query.
+	ChannelId []*string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty" type:"Repeated"`
+	// Channel Type.
+	ChannelType []*int32 `json:"ChannelType,omitempty" xml:"ChannelType,omitempty" type:"Repeated"`
+	// The right boundary of the time range for session end. The value is a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1614600500000
 	CloseTimeEnd *int64 `json:"CloseTimeEnd,omitempty" xml:"CloseTimeEnd,omitempty"`
+	// The left boundary of the time range for session end. The value is a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1614600400000
 	CloseTimeStart *int64 `json:"CloseTimeStart,omitempty" xml:"CloseTimeStart,omitempty"`
+	// Current page. The value must be greater than **0**. Default Value: **1**.
+	//
 	// example:
 	//
 	// 1
-	CurrentPage      *int32   `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	EvaluationLevel  []*int32 `json:"EvaluationLevel,omitempty" xml:"EvaluationLevel,omitempty" type:"Repeated"`
-	EvaluationScore  []*int32 `json:"EvaluationScore,omitempty" xml:"EvaluationScore,omitempty" type:"Repeated"`
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// Satisfaction level.
+	EvaluationLevel []*int32 `json:"EvaluationLevel,omitempty" xml:"EvaluationLevel,omitempty" type:"Repeated"`
+	// Satisfaction score.
+	EvaluationScore []*int32 `json:"EvaluationScore,omitempty" xml:"EvaluationScore,omitempty" type:"Repeated"`
+	// Evaluation status.
 	EvaluationStatus []*int32 `json:"EvaluationStatus,omitempty" xml:"EvaluationStatus,omitempty" type:"Repeated"`
+	// The right boundary of the time range for session start. The value is a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1614599400000
 	FirstTimeEnd *int64 `json:"FirstTimeEnd,omitempty" xml:"FirstTimeEnd,omitempty"`
+	// The left boundary of the time range for session start. UNIX timestamp format (unit: ms).
+	//
 	// example:
 	//
 	// 1614596400000
 	FirstTimeStart *int64 `json:"FirstTimeStart,omitempty" xml:"FirstTimeStart,omitempty"`
+	// Artificial Intelligence Cloud Call Service (AICCS) instance ID.
+	//
+	// You can obtain it from **Instance Management*	- in the left-side navigation pane of the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc_xp_pre-cn-***
-	InstanceId *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MemberId   []*int64  `json:"MemberId,omitempty" xml:"MemberId,omitempty" type:"Repeated"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// List of membership IDs to query.
+	MemberId []*int64 `json:"MemberId,omitempty" xml:"MemberId,omitempty" type:"Repeated"`
+	// A list of membership names to query.
 	MemberName []*string `json:"MemberName,omitempty" xml:"MemberName,omitempty" type:"Repeated"`
+	// Number of entries per page. The value must be greater than **0**. Default value: **20**.
+	//
 	// example:
 	//
 	// 20
-	PageSize     *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	QueueId      []*int64  `json:"QueueId,omitempty" xml:"QueueId,omitempty" type:"Repeated"`
-	ServicerId   []*int64  `json:"ServicerId,omitempty" xml:"ServicerId,omitempty" type:"Repeated"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// List of inbound skill group IDs.
+	QueueId []*int64 `json:"QueueId,omitempty" xml:"QueueId,omitempty" type:"Repeated"`
+	// A list of service agent IDs to query.
+	ServicerId []*int64 `json:"ServicerId,omitempty" xml:"ServicerId,omitempty" type:"Repeated"`
+	// List of service agent names to query.
 	ServicerName []*string `json:"ServicerName,omitempty" xml:"ServicerName,omitempty" type:"Repeated"`
-	TouchId      []*int64  `json:"TouchId,omitempty" xml:"TouchId,omitempty" type:"Repeated"`
-	TouchType    []*int32  `json:"TouchType,omitempty" xml:"TouchType,omitempty" type:"Repeated"`
+	// List of touch IDs for term query.
+	TouchId []*int64 `json:"TouchId,omitempty" xml:"TouchId,omitempty" type:"Repeated"`
+	// Touch type.
+	TouchType []*int32 `json:"TouchType,omitempty" xml:"TouchType,omitempty" type:"Repeated"`
 }
 
 func (s QueryTouchListRequest) String() string {

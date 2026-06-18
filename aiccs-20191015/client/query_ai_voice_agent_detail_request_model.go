@@ -20,6 +20,8 @@ type iQueryAiVoiceAgentDetailRequest interface {
 }
 
 type QueryAiVoiceAgentDetailRequest struct {
+	// The agent ID.
+	//
 	// example:
 	//
 	// 123123********

@@ -24,26 +24,42 @@ type iAddLargeModelResponseBody interface {
 }
 
 type AddLargeModelResponseBody struct {
+	// The reason for the authentication failure.
+	//
 	// example:
 	//
 	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The status code. A value of `OK` indicates that the request was successful.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The result of the operation.
+	//
 	// example:
 	//
 	// false
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// B1B8E483-372F-5AA8-A4B2-CA82EC967B0C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - **true**: The request succeeded.
+	//
+	// - **false**: The request failed.
+	//
 	// example:
 	//
 	// false

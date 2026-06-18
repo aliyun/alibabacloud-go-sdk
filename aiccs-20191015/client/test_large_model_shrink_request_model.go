@@ -24,9 +24,9 @@ type iTestLargeModelShrinkRequest interface {
 }
 
 type TestLargeModelShrinkRequest struct {
-	// 基础模型
+	// The base models.
 	BaseModelShrink *string `json:"BaseModel,omitempty" xml:"BaseModel,omitempty"`
-	// 场景ID
+	// The ID of the test scenario.
 	//
 	// example:
 	//
@@ -35,11 +35,11 @@ type TestLargeModelShrinkRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// 用户对话内容
+	// The user dialog content.
 	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// 你好。
 	UserDialogContent *string `json:"UserDialogContent,omitempty" xml:"UserDialogContent,omitempty"`
 }
 

@@ -22,19 +22,28 @@ type iEncryptPhoneNumResponseBody interface {
 }
 
 type EncryptPhoneNumResponseBody struct {
+  // The status code. A return value of 200 indicates that the Request Succeeded.
+  // 
   // example:
   // 
   // 200
   Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+  // The ciphertext after encryption.
   Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+  // Description of the status code.
+  // 
   // example:
   // 
   // xxxx
   Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+  // The request ID.
+  // 
   // example:
   // 
   // EE338D98-9BD3-4413-B165
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+  // Indicates whether the API Call Succeeded.
+  // 
   // example:
   // 
   // true

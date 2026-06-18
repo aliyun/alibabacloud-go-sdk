@@ -16,12 +16,16 @@ type iEncryptPhoneNumRequest interface {
 }
 
 type EncryptPhoneNumRequest struct {
+  // AICCS instance ID. You can obtain it from the Artificial Intelligence Cloud Call Service console.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // ccc_xp_pre***
   InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+  // The plaintext phone number.
+  // 
   // This parameter is required.
   // 
   // example:

@@ -23,11 +23,13 @@ type ListRobotParamsRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// Robot ID, which is also the script ID. You can view it on the [Script Management](https://aiccs.console.aliyun.com/patter/list) interface or obtain it by using the [ListAiccsRobot](https://help.aliyun.com/document_detail/2717998.html) API.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 123456
+	// 12****
 	RobotId *int64 `json:"RobotId,omitempty" xml:"RobotId,omitempty"`
 }
 

@@ -24,23 +24,34 @@ type iListChatRecordDetailResponseBody interface {
 }
 
 type ListChatRecordDetailResponseBody struct {
+	// Status code. A return value of 200 indicates that the request succeeded.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Description of the status code.
+	//
 	// example:
 	//
 	// xxxx
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// EE338D98-9BD3-4413-B165
-	RequestId  *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Returned data.
 	ResultData *ListChatRecordDetailResponseBodyResultData `json:"ResultData,omitempty" xml:"ResultData,omitempty" type:"Struct"`
+	// Indicates whether the API call succeeded.
+	//
 	// example:
 	//
 	// true
@@ -119,19 +130,28 @@ func (s *ListChatRecordDetailResponseBody) Validate() error {
 }
 
 type ListChatRecordDetailResponseBodyResultData struct {
+	// Current page number.
+	//
 	// example:
 	//
 	// 1
-	CurrentPage *int64                                            `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Data        []*ListChatRecordDetailResponseBodyResultDataData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// Query result data.
+	Data []*ListChatRecordDetailResponseBodyResultDataData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Page size
+	//
 	// example:
 	//
 	// 10
 	OnePageSize *int64 `json:"OnePageSize,omitempty" xml:"OnePageSize,omitempty"`
+	// Total number of pages.
+	//
 	// example:
 	//
 	// 10
 	TotalPage *int64 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	// Total number of records.
+	//
 	// example:
 	//
 	// 100
@@ -205,15 +225,22 @@ func (s *ListChatRecordDetailResponseBodyResultData) Validate() error {
 }
 
 type ListChatRecordDetailResponseBodyResultDataData struct {
+	// Online End Time.
+	//
 	// example:
 	//
 	// 1614578410000
-	EndTime     *int64                                                       `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// A list of detailed online session information.
 	MessageList []*ListChatRecordDetailResponseBodyResultDataDataMessageList `json:"MessageList,omitempty" xml:"MessageList,omitempty" type:"Repeated"`
+	// Servicer Account
+	//
 	// example:
 	//
 	// 123@123.com
 	ServicerName *string `json:"ServicerName,omitempty" xml:"ServicerName,omitempty"`
+	// The start time of the online session.
+	//
 	// example:
 	//
 	// 1614578400000
@@ -278,19 +305,36 @@ func (s *ListChatRecordDetailResponseBodyResultDataData) Validate() error {
 }
 
 type ListChatRecordDetailResponseBodyResultDataDataMessageList struct {
+	// The content of the sent message.
+	//
+	// example:
+	//
+	// 你好
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The time when the message was sent.
+	//
 	// example:
 	//
 	// 1614578400000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Message type.
+	//
 	// example:
 	//
 	// MSG
 	MsgType *string `json:"MsgType,omitempty" xml:"MsgType,omitempty"`
+	// The account that sent the message.
+	//
 	// example:
 	//
 	// account1
 	SenderName *string `json:"SenderName,omitempty" xml:"SenderName,omitempty"`
+	// The type of sender. Valid values:
+	//
+	// - **1**: Membership
+	//
+	// - **2**: Customer service
+	//
 	// example:
 	//
 	// 2

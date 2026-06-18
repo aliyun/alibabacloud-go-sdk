@@ -24,23 +24,34 @@ type iListHotlineRecordDetailResponseBody interface {
 }
 
 type ListHotlineRecordDetailResponseBody struct {
+	// Status code. A return value of 200 indicates that the request succeeded.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Description of the status code.
+	//
 	// example:
 	//
 	// xxxx
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// EE338D98-9BD3-4413-B165
-	RequestId  *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Returned data.
 	ResultData *ListHotlineRecordDetailResponseBodyResultData `json:"ResultData,omitempty" xml:"ResultData,omitempty" type:"Struct"`
+	// Indicates whether the API call succeeded.
+	//
 	// example:
 	//
 	// true
@@ -119,19 +130,28 @@ func (s *ListHotlineRecordDetailResponseBody) Validate() error {
 }
 
 type ListHotlineRecordDetailResponseBodyResultData struct {
+	// Current page.
+	//
 	// example:
 	//
 	// 1
-	CurrentPage *int64                                               `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Data        []*ListHotlineRecordDetailResponseBodyResultDataData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// Query result data.
+	Data []*ListHotlineRecordDetailResponseBodyResultDataData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Page size.
+	//
 	// example:
 	//
 	// 100
 	OnePageSize *int64 `json:"OnePageSize,omitempty" xml:"OnePageSize,omitempty"`
+	// Total number of pages.
+	//
 	// example:
 	//
 	// 10
 	TotalPage *int64 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	// Total number of records.
+	//
 	// example:
 	//
 	// 945
@@ -205,18 +225,26 @@ func (s *ListHotlineRecordDetailResponseBodyResultData) Validate() error {
 }
 
 type ListHotlineRecordDetailResponseBodyResultDataData struct {
+	// Hotline End Time.
+	//
 	// example:
 	//
 	// 1614578410000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// OSS URL of the hotline call recording.
+	//
 	// example:
 	//
 	// http://xxx.xxxxx/xx.wav
 	OssUrl *string `json:"OssUrl,omitempty" xml:"OssUrl,omitempty"`
+	// Servicer Account.
+	//
 	// example:
 	//
 	// 123@123.com
 	ServicerName *string `json:"ServicerName,omitempty" xml:"ServicerName,omitempty"`
+	// Start Time of the hotline call.
+	//
 	// example:
 	//
 	// 1614578400000

@@ -26,12 +26,18 @@ type iSendCcoSmartCallOperateRequest interface {
 }
 
 type SendCcoSmartCallOperateRequest struct {
+	// Unique receipt ID of the call. This can be obtained from the response of the [SendCcoSmartCall](https://help.aliyun.com/document_detail/311247.html) API.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 116012854210^102814279****
 	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	// Specifies the action to be performed for the called number during an Intelligent Outbound Call.
+	//
+	// > Currently, only the **parallelBridge*	- parameter is supported, which indicates bridging the called number with a call center agent.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -39,10 +45,14 @@ type SendCcoSmartCallOperateRequest struct {
 	// parallelBridge
 	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Extension field.
+	//
 	// example:
 	//
 	// Param
 	Param *string `json:"Param,omitempty" xml:"Param,omitempty"`
+	// Product name. Default value: **aiccs**.
+	//
 	// example:
 	//
 	// aiccs

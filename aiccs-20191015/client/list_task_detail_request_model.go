@@ -32,38 +32,58 @@ type iListTaskDetailRequest interface {
 }
 
 type ListTaskDetailRequest struct {
+	// The callee number. You can view the callee number on the **Detail*	- interface of [**Task Management**](https://aiccs.console.aliyun.com/job/list).
+	//
 	// example:
 	//
 	// 186****0000
 	Called *string `json:"Called,omitempty" xml:"Called,omitempty"`
+	// The detail ID. You can view the detail ID on the **Detail*	- interface of [**Task Management**](https://aiccs.console.aliyun.com/job/list).
+	//
 	// example:
 	//
-	// 123456
+	// 12****
 	Id      *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The current page number. The value must be greater than **0**. Default value: **1**.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page. The value must be greater than **0**. Default value: **20**.
+	//
 	// example:
 	//
 	// 20
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// Detail status. Valid values:
+	//
+	// - **SUCCESS**: The outbound call succeeded.
+	//
+	// - **FAIL**: The outbound call failed.
+	//
+	// - **INIT**: The outbound call has not been made.
+	//
 	// example:
 	//
 	// SUCCESS
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The call status code. For more information, see [Call Status Codes](https://help.aliyun.com/document_detail/112804.html) in Voice Service.
+	//
 	// example:
 	//
-	// 000001
+	// 200100
 	StatusCode *string `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// The job ID. You can view the job ID on the [Task Management](https://aiccs.console.aliyun.com/job/list) page or obtain it by using the [ListTask](https://help.aliyun.com/document_detail/2718008.html) API.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 123456
+	// 12****
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 

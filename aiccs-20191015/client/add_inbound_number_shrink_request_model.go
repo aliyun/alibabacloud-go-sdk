@@ -26,20 +26,28 @@ type iAddInboundNumberShrinkRequest interface {
 }
 
 type AddInboundNumberShrinkRequest struct {
+	// The code of the large model application.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// DLWERWLD
 	ApplicationCode *string `json:"ApplicationCode,omitempty" xml:"ApplicationCode,omitempty"`
+	// A list of inbound numbers.
+	//
 	// This parameter is required.
 	InboundNumbersShrink *string `json:"InboundNumbers,omitempty" xml:"InboundNumbers,omitempty"`
+	// The line type. Valid values: `1` (cloud communication resource) and `2` (customer-owned line).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 8
 	InboundType *int64 `json:"InboundType,omitempty" xml:"InboundType,omitempty"`
+	// The code for the custom line.
+	//
 	// example:
 	//
 	// JILIANG_*****_TEST_NET

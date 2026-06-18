@@ -22,22 +22,32 @@ type iQueryTicketsResponseBody interface {
 }
 
 type QueryTicketsResponseBody struct {
+	// Status code. A return value of 200 indicates that the request succeeded.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Ticket information.
+	//
 	// example:
 	//
 	// { "totalResults":1 "previousPage":1 "data":[ 0:{ "serviceType":1 "lastUrgeTime":0 "queueId":0 "sopCateId":252011 "totalUrgeMemo":"" "taskGmtModified":0 "departmentId":10 "groupId":0 "channelType":1 "questionInfo":"" "templateId":0 "deadLine":0 "srType":30701 "caseId":2000000001165962}
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Description of the status code.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the API call succeeded.
+	//
 	// example:
 	//
 	// true

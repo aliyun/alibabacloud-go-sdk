@@ -24,23 +24,38 @@ type iImportOneTaskPhoneNumberResponseBody interface {
 }
 
 type ImportOneTaskPhoneNumberResponseBody struct {
+	// The detailed reason why the access is denied.
+	//
 	// example:
 	//
 	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The status code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *ImportOneTaskPhoneNumberResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The description of the status code.
+	//
 	// example:
 	//
-	// 示例值
+	// 成功
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// D6A51251-F7C4-596A-9F45-3C3219A5450D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the API call was successful. Valid values:
+	//
+	// - **true**: The API call was successful.
+	//
+	// - **false**: The API call failed.
+	//
 	// example:
 	//
 	// false
@@ -119,6 +134,8 @@ func (s *ImportOneTaskPhoneNumberResponseBody) Validate() error {
 }
 
 type ImportOneTaskPhoneNumberResponseBodyData struct {
+	// The task detail ID.
+	//
 	// example:
 	//
 	// 92304322323*****

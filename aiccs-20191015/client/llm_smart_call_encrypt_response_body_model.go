@@ -24,20 +24,38 @@ type iLlmSmartCallEncryptResponseBody interface {
 }
 
 type LlmSmartCallEncryptResponseBody struct {
+	// Details about the access denied error.
+	//
 	// example:
 	//
 	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The request status code. A value of \\"ok\\" indicates that the request succeeded.
+	//
 	// example:
 	//
 	// ok
-	Code    *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data    *LlmSmartCallEncryptResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response data.
+	Data *LlmSmartCallEncryptResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// A description of the status code.
+	//
+	// example:
+	//
+	// 成功
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// F92F9749-105E-518F-8B08-CF16EF36A0E2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the API call was successful. Valid values:
+	//
+	// - **true**: The API call was successful.
+	//
+	// - **false**: The API call failed.
+	//
 	// example:
 	//
 	// true
@@ -116,9 +134,11 @@ func (s *LlmSmartCallEncryptResponseBody) Validate() error {
 }
 
 type LlmSmartCallEncryptResponseBodyData struct {
+	// The call ID.
+	//
 	// example:
 	//
-	// 149922088206^136666368206
+	// 149******206
 	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
 }
 

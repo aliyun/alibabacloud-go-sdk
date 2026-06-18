@@ -22,19 +22,28 @@ type iGetCustomerInfoResponseBody interface {
 }
 
 type GetCustomerInfoResponseBody struct {
+	// Status code.
+	//
 	// example:
 	//
 	// 200
-	Code *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Membership information.
 	Data *GetCustomerInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Description of the status code.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// DF6A3FB7-A5AA-43BE-A65B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the API call succeeded.
+	//
 	// example:
 	//
 	// true
@@ -104,17 +113,34 @@ func (s *GetCustomerInfoResponseBody) Validate() error {
 }
 
 type GetCustomerInfoResponseBodyData struct {
+	// Custom fields.
 	CustomizeFields map[string]interface{} `json:"CustomizeFields,omitempty" xml:"CustomizeFields,omitempty"`
-	Nick            *string                `json:"Nick,omitempty" xml:"Nick,omitempty"`
+	// Nickname.
+	//
+	// example:
+	//
+	// 测试会员
+	Nick *string `json:"Nick,omitempty" xml:"Nick,omitempty"`
+	// External ID.
+	//
 	// example:
 	//
 	// 6666666
 	OuterId *string `json:"OuterId,omitempty" xml:"OuterId,omitempty"`
+	// Profile picture.
+	//
 	// example:
 	//
 	// https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLSW7XPFlJDwVunXP8pr84TvltwtLlNqTlOVSFeM3bCgn57mAB4JuZZmvMW0qicqW0PyzyUdZpxiaFQ
-	Photo    *string `json:"Photo,omitempty" xml:"Photo,omitempty"`
+	Photo *string `json:"Photo,omitempty" xml:"Photo,omitempty"`
+	// Real name.
+	//
+	// example:
+	//
+	// 刘测试
 	RealName *string `json:"RealName,omitempty" xml:"RealName,omitempty"`
+	// Membership ID.
+	//
 	// example:
 	//
 	// 823456789023

@@ -18,14 +18,20 @@ type iGetConfigNumListRequest interface {
 }
 
 type GetConfigNumListRequest struct {
+	// The agent account name. It is unique within the instance (logon name).
+	//
 	// example:
 	//
 	// 123@123.com
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The department ID.
+	//
 	// example:
 	//
 	// 12345
 	DepartmentId *int64 `json:"DepartmentId,omitempty" xml:"DepartmentId,omitempty"`
+	// The Artificial Intelligence Cloud Call Service (AICCS) instance ID. You can obtain it from the Artificial Intelligence Cloud Call Service console.
+	//
 	// This parameter is required.
 	//
 	// example:

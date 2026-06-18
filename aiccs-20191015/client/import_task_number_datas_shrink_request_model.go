@@ -28,6 +28,17 @@ type iImportTaskNumberDatasShrinkRequest interface {
 }
 
 type ImportTaskNumberDatasShrinkRequest struct {
+	// The data type. Valid values:
+	//
+	// - EXCEL
+	//
+	// - JSON
+	//
+	//
+	//   	Notice:
+	//
+	//   API calls currently support only the JSON data type.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -38,19 +49,26 @@ type ImportTaskNumberDatasShrinkRequest struct {
 	//
 	// 1
 	EncryptionType *int64 `json:"EncryptionType,omitempty" xml:"EncryptionType,omitempty"`
+	// The OSS file path. This parameter is optional.
+	//
+	// > Importing data by specifying an OSS file path is not available because API calls currently support only the JSON data type.
+	//
 	// example:
 	//
 	// 123dsdfsdfsdf.xlsx
-	OssFileName           *string `json:"OssFileName,omitempty" xml:"OssFileName,omitempty"`
-	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	OssFileName *string `json:"OssFileName,omitempty" xml:"OssFileName,omitempty"`
+	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// If `DataType` is set to `JSON`, you must use this parameter to upload the data. You can import up to 1,000 records per request.
 	PhoneNumberListShrink *string `json:"PhoneNumberList,omitempty" xml:"PhoneNumberList,omitempty"`
 	ResourceOwnerAccount  *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId       *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The ID of the call task.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 12131213132123*****
+	// 119181071278******
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 

@@ -36,43 +36,82 @@ type iGetHotlineServiceStatisticsRequest interface {
 }
 
 type GetHotlineServiceStatisticsRequest struct {
+	// List of agent IDs.
 	AgentIds []*int64 `json:"AgentIds,omitempty" xml:"AgentIds,omitempty" type:"Repeated"`
+	// Current page. The value must be greater than **0**. Default value: **1**.
+	//
 	// example:
 	//
 	// 1
-	CurrentPage *int32   `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	DepIds      []*int64 `json:"DepIds,omitempty" xml:"DepIds,omitempty" type:"Repeated"`
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// List of department IDs.
+	DepIds []*int64 `json:"DepIds,omitempty" xml:"DepIds,omitempty" type:"Repeated"`
+	// End Datetime Variable as a UNIX timestamp. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1617761765000
 	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// Specifies whether to query by agent group. Valid values:
+	//
+	// - **true**: Yes
+	//
+	// - **false**: No
+	//
 	// example:
 	//
 	// true
 	ExistAgentGrouping *bool `json:"ExistAgentGrouping,omitempty" xml:"ExistAgentGrouping,omitempty"`
+	// Specifies whether to query by department group. Valid values:
+	//
+	// - **true**: Yes
+	//
+	// - **false**: No
+	//
 	// example:
 	//
 	// true
 	ExistDepartmentGrouping *bool `json:"ExistDepartmentGrouping,omitempty" xml:"ExistDepartmentGrouping,omitempty"`
+	// Indicates whether to query by skill group grouping. Valid values:
+	//
+	// - **true**: Yes.
+	//
+	// - **false**: No.
+	//
 	// example:
 	//
 	// true
-	ExistSkillGroupGrouping *bool    `json:"ExistSkillGroupGrouping,omitempty" xml:"ExistSkillGroupGrouping,omitempty"`
-	GroupIds                []*int64 `json:"GroupIds,omitempty" xml:"GroupIds,omitempty" type:"Repeated"`
+	ExistSkillGroupGrouping *bool `json:"ExistSkillGroupGrouping,omitempty" xml:"ExistSkillGroupGrouping,omitempty"`
+	// List of skill group IDs.
+	GroupIds []*int64 `json:"GroupIds,omitempty" xml:"GroupIds,omitempty" type:"Repeated"`
+	// AICCS instance ID.
+	//
+	// You can obtain it from **Instance Management*	- in the left-side navigation pane of the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc_xp_pre-cn-***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Page size. The value must be greater than **0**. Default value: **20**.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Start date UNIX timestamp. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1615083365000
 	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// Time latitude type for grouped queries. Valid values:
+	//
+	// - **minute**: minute
+	//
+	// - **hour**: hour
+	//
 	// example:
 	//
 	// minute

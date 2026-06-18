@@ -24,26 +24,42 @@ type iCreateDepartmentResponseBody interface {
 }
 
 type CreateDepartmentResponseBody struct {
+	// Status code. A return value of 200 indicates that the request succeeded.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Department ID.
+	//
 	// example:
 	//
 	// 123456
 	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
+	// HTTP status code. A return value of 200 indicates that the request succeeded.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Description of the status code.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 98B032F5-6473-4EAC-8BA8-C28993513A1F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the API invocation succeeded. Valid values:
+	//
+	// - **true**: Succeeded.
+	//
+	// - **false**: Failed.
+	//
 	// example:
 	//
 	// true

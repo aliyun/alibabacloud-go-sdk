@@ -50,17 +50,26 @@ type iUpdateAiCallTaskShrinkRequest interface {
 }
 
 type UpdateAiCallTaskShrinkRequest struct {
+	// The days of the week when calls can be made.
+	//
 	// This parameter is required.
 	CallDayShrink *string `json:"CallDay,omitempty" xml:"CallDay,omitempty"`
+	// The retry interval in minutes. The maximum value is 120.
+	//
 	// example:
 	//
 	// 25
-	CallRetryInterval     *int64  `json:"CallRetryInterval,omitempty" xml:"CallRetryInterval,omitempty"`
+	CallRetryInterval *int64 `json:"CallRetryInterval,omitempty" xml:"CallRetryInterval,omitempty"`
+	// The call failure statuses that trigger a retry.
 	CallRetryReasonShrink *string `json:"CallRetryReason,omitempty" xml:"CallRetryReason,omitempty"`
+	// The number of retries. The maximum value is 3.
+	//
 	// example:
 	//
 	// 2
 	CallRetryTimes *int64 `json:"CallRetryTimes,omitempty" xml:"CallRetryTimes,omitempty"`
+	// The callable time windows.
+	//
 	// This parameter is required.
 	CallTimeShrink *string `json:"CallTime,omitempty" xml:"CallTime,omitempty"`
 	// example:
@@ -71,6 +80,12 @@ type UpdateAiCallTaskShrinkRequest struct {
 	//
 	// 示例值示例值
 	LinePhoneNum *string `json:"LinePhoneNum,omitempty" xml:"LinePhoneNum,omitempty"`
+	// Specifies whether to enable retry. Valid values:
+	//
+	// - `true`: Yes.
+	//
+	// - `false` (default): No.
+	//
 	// example:
 	//
 	// true
@@ -86,34 +101,50 @@ type UpdateAiCallTaskShrinkRequest struct {
 	//
 	// 31
 	Source *int64 `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The startup method. Valid values:
+	//
+	// - `IMMEDIATE`: Start immediately.
+	//
+	// - `SCHEDULE`: Start at a specified time.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// IMMEDIATE
 	StartType *string `json:"StartType,omitempty" xml:"StartType,omitempty"`
+	// The number of concurrent calls per second (CPS) for the task. The maximum value is 500.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 57
 	TaskCps *int64 `json:"TaskCps,omitempty" xml:"TaskCps,omitempty"`
+	// The ID of the task to update.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 1152311212312***
+	// 1187**************
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The task name. The name must be unique within an Alibaba Cloud account.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值示例值
+	// 测试任务
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// The scheduled start time for the task, specified as a Unix timestamp in milliseconds. This parameter is required when `StartType` is set to `SCHEDULE`.
+	//
 	// example:
 	//
 	// 1748923429000
 	TaskStartTime *int64 `json:"TaskStartTime,omitempty" xml:"TaskStartTime,omitempty"`
+	// The service instance used for outbound calls.
+	//
 	// example:
 	//
 	// 0537022*****

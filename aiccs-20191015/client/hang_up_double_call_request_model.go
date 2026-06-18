@@ -16,10 +16,14 @@ type iHangUpDoubleCallRequest interface {
 }
 
 type HangUpDoubleCallRequest struct {
+	// Session ID.
+	//
 	// example:
 	//
 	// 68255155****
 	Acid *string `json:"Acid,omitempty" xml:"Acid,omitempty"`
+	// Artificial Intelligence Cloud Call Service instance ID. You can obtain it from the Artificial Intelligence Cloud Call Service console.
+	//
 	// example:
 	//
 	// ccc_xp_pre-cn-***

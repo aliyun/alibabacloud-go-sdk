@@ -22,19 +22,32 @@ type iGetAiOutboundTaskProgressResponseBody interface {
 }
 
 type GetAiOutboundTaskProgressResponseBody struct {
+	// Status code.
+	//
 	// example:
 	//
 	// ok
-	Code *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Job progress.
 	Data *GetAiOutboundTaskProgressResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Description of the status code.
+	//
 	// example:
 	//
 	// ok
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// D9CB3933-9FE3-4870-BA8E-2BEE91B69D23
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the API call succeeded.
+	//
+	// - **true**: Succeeded.
+	//
+	// - **false**: Failed.
+	//
 	// example:
 	//
 	// true
@@ -104,12 +117,22 @@ func (s *GetAiOutboundTaskProgressResponseBody) Validate() error {
 }
 
 type GetAiOutboundTaskProgressResponseBodyData struct {
+	// Progress by outbound call dimension.
 	CalloutProgress *GetAiOutboundTaskProgressResponseBodyDataCalloutProgress `json:"CalloutProgress,omitempty" xml:"CalloutProgress,omitempty" type:"Struct"`
+	// The job ID.
+	//
 	// example:
 	//
 	// 123456
-	TaskId       *int64                                                 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Job dimension progress.
 	TaskProgress *GetAiOutboundTaskProgressResponseBodyDataTaskProgress `json:"TaskProgress,omitempty" xml:"TaskProgress,omitempty" type:"Struct"`
+	// Task Type. Valid values:
+	//
+	// - **2**: Predictive.
+	//
+	// - **3**: Automatic.
+	//
 	// example:
 	//
 	// 2
@@ -175,38 +198,72 @@ func (s *GetAiOutboundTaskProgressResponseBodyData) Validate() error {
 }
 
 type GetAiOutboundTaskProgressResponseBodyDataCalloutProgress struct {
+	// Call loss count.
+	//
+	// > A parameter specific to predictive outbound calls.
+	//
 	// example:
 	//
 	// 1
 	CallLossCount *int32 `json:"CallLossCount,omitempty" xml:"CallLossCount,omitempty"`
+	// Call Loss Rate.
+	//
+	// > A parameter exclusive to predictive outbound calls.
+	//
 	// example:
 	//
 	// 0.01
 	CallLossRate *float32 `json:"CallLossRate,omitempty" xml:"CallLossRate,omitempty"`
+	// Number of successful outbound call connections.
+	//
+	// > This parameter is specific to automatic outbound calls.
+	//
 	// example:
 	//
 	// 5
 	CallOutConnectCount *int32 `json:"CallOutConnectCount,omitempty" xml:"CallOutConnectCount,omitempty"`
+	// Outbound Call Connection Rate.
+	//
+	// > A parameter exclusive to automated outbound calls.
+	//
 	// example:
 	//
 	// 0.5
 	CallOutConnectRate *float32 `json:"CallOutConnectRate,omitempty" xml:"CallOutConnectRate,omitempty"`
+	// Number of outbound calls.
+	//
 	// example:
 	//
 	// 10
 	CallOutCount *int32 `json:"CallOutCount,omitempty" xml:"CallOutCount,omitempty"`
+	// Agent Pickup Count.
+	//
+	// > A parameter exclusive to predictive outbound calls.
+	//
 	// example:
 	//
 	// 4
 	CallOutServicerPickupCount *int32 `json:"CallOutServicerPickupCount,omitempty" xml:"CallOutServicerPickupCount,omitempty"`
+	// Agent pickup rate.
+	//
+	// > A parameter specific to predictive outbound calls.
+	//
 	// example:
 	//
 	// 0.4
 	CallOutServicerPickupRate *float32 `json:"CallOutServicerPickupRate,omitempty" xml:"CallOutServicerPickupRate,omitempty"`
+	// Customer Pickup Count.
+	//
+	// > A parameter exclusive to predictive outbound calls.
+	//
 	// example:
 	//
 	// 5
 	CallOutUserPickupCount *int32 `json:"CallOutUserPickupCount,omitempty" xml:"CallOutUserPickupCount,omitempty"`
+	// Customer Pickup Rate.
+	//
+	// > A parameter exclusive to predictive outbound calls.
+	//
 	// example:
 	//
 	// 0.5
@@ -307,54 +364,92 @@ func (s *GetAiOutboundTaskProgressResponseBodyDataCalloutProgress) Validate() er
 }
 
 type GetAiOutboundTaskProgressResponseBodyDataTaskProgress struct {
+	// Number of jobs in calling status.
+	//
 	// example:
 	//
 	// 2
 	CallingCount *int32 `json:"CallingCount,omitempty" xml:"CallingCount,omitempty"`
+	// Number of connected jobs.
+	//
+	// > Parameter specific to auto dialing.
+	//
 	// example:
 	//
 	// 2
 	ConnectCount *int32 `json:"ConnectCount,omitempty" xml:"ConnectCount,omitempty"`
+	// Job connection rate.
+	//
+	// > A parameter specific to automatic outbound calls.
+	//
 	// example:
 	//
 	// 0.2
 	ConnectRate *float32 `json:"ConnectRate,omitempty" xml:"ConnectRate,omitempty"`
+	// Number of completed jobs.
+	//
 	// example:
 	//
 	// 2
 	FinishCount *int32 `json:"FinishCount,omitempty" xml:"FinishCount,omitempty"`
+	// Job completion rate.
+	//
 	// example:
 	//
 	// 0.20
 	FinishRate *float32 `json:"FinishRate,omitempty" xml:"FinishRate,omitempty"`
+	// Number of agent pickups.
+	//
+	// > Parameter specific to predictive dialing.
+	//
 	// example:
 	//
 	// 2
 	ServicerPickupCount *int32 `json:"ServicerPickupCount,omitempty" xml:"ServicerPickupCount,omitempty"`
+	// Agent pickup rate.
+	//
+	// > Exclusive parameter for predictive outbound calls.
+	//
 	// example:
 	//
 	// 0.2
 	ServicerPickupRate *float32 `json:"ServicerPickupRate,omitempty" xml:"ServicerPickupRate,omitempty"`
+	// Number of stopped jobs.
+	//
 	// example:
 	//
 	// 2
 	TerminateCount *int32 `json:"TerminateCount,omitempty" xml:"TerminateCount,omitempty"`
+	// Total number of jobs.
+	//
 	// example:
 	//
 	// 10
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// Number of customer pickups.
+	//
+	// > Parameter specific to predictive dialing.
+	//
 	// example:
 	//
 	// 2
 	UserPickupCount *int32 `json:"UserPickupCount,omitempty" xml:"UserPickupCount,omitempty"`
+	// Customer pickup rate.
+	//
+	// > Exclusive parameter for predictive outbound calls.
+	//
 	// example:
 	//
 	// 0.2
 	UserPickupRate *float32 `json:"UserPickupRate,omitempty" xml:"UserPickupRate,omitempty"`
+	// Number of pending call jobs.
+	//
 	// example:
 	//
 	// 2
 	WaitingCallCount *int32 `json:"WaitingCallCount,omitempty" xml:"WaitingCallCount,omitempty"`
+	// Number of jobs pending redial.
+	//
 	// example:
 	//
 	// 2

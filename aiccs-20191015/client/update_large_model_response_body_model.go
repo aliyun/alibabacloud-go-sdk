@@ -24,26 +24,38 @@ type iUpdateLargeModelResponseBody interface {
 }
 
 type UpdateLargeModelResponseBody struct {
+	// Details about an authentication error.
+	//
 	// example:
 	//
 	// Access Denied
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The status code returned for the request.
+	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The result of the update operation.
+	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The description of the status code.
+	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// example
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// example
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the API call was successful.
+	//
 	// example:
 	//
 	// true

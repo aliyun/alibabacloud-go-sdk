@@ -22,19 +22,32 @@ type iGetAgentIndexRealTimeResponseBody interface {
 }
 
 type GetAgentIndexRealTimeResponseBody struct {
+	// Status code. A return value of 200 indicates that the request succeeded.
+	//
 	// example:
 	//
 	// 200
-	Code *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data list.
 	Data *GetAgentIndexRealTimeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Description of the status code.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the API call succeeded. Valid values:
+	//
+	// - **true**: Succeeded.
+	//
+	// - **false**: Failed.
+	//
 	// example:
 	//
 	// true
@@ -104,16 +117,24 @@ func (s *GetAgentIndexRealTimeResponseBody) Validate() error {
 }
 
 type GetAgentIndexRealTimeResponseBodyData struct {
+	// Description of returned columns.
 	Columns []*GetAgentIndexRealTimeResponseBodyDataColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
+	// Current page number.
+	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// Page size.
+	//
 	// example:
 	//
 	// 20
-	PageSize *int32                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Rows     []map[string]interface{} `json:"Rows,omitempty" xml:"Rows,omitempty" type:"Repeated"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Returned data results.
+	Rows []map[string]interface{} `json:"Rows,omitempty" xml:"Rows,omitempty" type:"Repeated"`
+	// Total number of records.
+	//
 	// example:
 	//
 	// 4
@@ -187,7 +208,14 @@ func (s *GetAgentIndexRealTimeResponseBodyData) Validate() error {
 }
 
 type GetAgentIndexRealTimeResponseBodyDataColumns struct {
+	// Metric.
+	//
+	// example:
+	//
+	// 客服ID
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Metric description.
+	//
 	// example:
 	//
 	// servicerId

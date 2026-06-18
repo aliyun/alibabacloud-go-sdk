@@ -22,19 +22,32 @@ type iGetAgentResponseBody interface {
 }
 
 type GetAgentResponseBody struct {
+	// Status code. A return value of Success indicates that the request succeeded.
+	//
 	// example:
 	//
 	// Success
-	Code *string                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Agent data.
 	Data *GetAgentResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int64 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the API invocation succeeded. Valid values:
+	//
+	// - **true**: Succeeded.
+	//
+	// - **false**: Failed.
+	//
 	// example:
 	//
 	// true
@@ -104,20 +117,42 @@ func (s *GetAgentResponseBody) Validate() error {
 }
 
 type GetAgentResponseBodyData struct {
+	// Agent account name, which is the phone number or mailbox entered during account registration. Unique within the instance.
+	//
 	// example:
 	//
-	// 123@123.com
+	// username@example.com
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// Agent ID.
+	//
 	// example:
 	//
 	// 222222
-	AgentId     *int64                               `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
-	DisplayName *string                              `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	GroupList   []*GetAgentResponseBodyDataGroupList `json:"GroupList,omitempty" xml:"GroupList,omitempty" type:"Repeated"`
+	AgentId *int64 `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	// Agent display name shown externally.
+	//
+	// example:
+	//
+	// XX测试
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// Skill group information to which the agent belongs.
+	GroupList []*GetAgentResponseBodyDataGroupList `json:"GroupList,omitempty" xml:"GroupList,omitempty" type:"Repeated"`
+	// Agent status. Valid values:
+	//
+	// - **0**: Normal
+	//
+	// - **1**: Freeze
+	//
+	// - **2**: Delete
+	//
+	// > Only agents with a Normal status can perform Business Activities.
+	//
 	// example:
 	//
 	// 0
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Tenant ID to which the agent belongs, corresponding to the instance ID in the request parameters.
+	//
 	// example:
 	//
 	// 0
@@ -200,13 +235,32 @@ func (s *GetAgentResponseBodyData) Validate() error {
 }
 
 type GetAgentResponseBodyDataGroupList struct {
+	// Skill group channel type.
+	//
 	// example:
 	//
 	// 1
-	ChannelType *int32  `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
+	ChannelType *int32 `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
+	// Skill group description.
+	//
+	// example:
+	//
+	// 自动化技能组
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Display name of the skill group.
+	//
+	// example:
+	//
+	// 自动化技能组
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Skill group name.
+	//
+	// example:
+	//
+	// 自动化技能组
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Skill group ID.
+	//
 	// example:
 	//
 	// 123456

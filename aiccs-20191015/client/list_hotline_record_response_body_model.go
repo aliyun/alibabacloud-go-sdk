@@ -22,19 +22,28 @@ type iListHotlineRecordResponseBody interface {
 }
 
 type ListHotlineRecordResponseBody struct {
+	// Status code. A return value of Success indicates that the request succeeded.
+	//
 	// example:
 	//
 	// Success
-	Code *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Hotline session information.
 	Data []*ListHotlineRecordResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Description of the status code.
+	//
 	// example:
 	//
 	// xxxx
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Whether the API call succeeded.
+	//
 	// example:
 	//
 	// true
@@ -108,22 +117,32 @@ func (s *ListHotlineRecordResponseBody) Validate() error {
 }
 
 type ListHotlineRecordResponseBodyData struct {
+	// Session ID. This corresponds to the acid in WebSocket after an inbound call.
+	//
 	// example:
 	//
 	// 100365558
 	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	// Connection ID.
+	//
 	// example:
 	//
 	// 100365548
 	ConnectionId *string `json:"ConnectionId,omitempty" xml:"ConnectionId,omitempty"`
+	// Recording end UNIX timestamp. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 16128694810
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Recording start UNIX timestamp. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 16128694110
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// Recording file URL.
+	//
 	// example:
 	//
 	// http://aliccrec-shvpc.oss-cn-shanghai.aliyuncs.com

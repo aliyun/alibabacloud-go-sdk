@@ -16,12 +16,16 @@ type iDeleteOuterAccountRequest interface {
 }
 
 type DeleteOuterAccountRequest struct {
+	// External Account ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123456
 	OuterAccountId *string `json:"OuterAccountId,omitempty" xml:"OuterAccountId,omitempty"`
+	// Type of the external account.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -22,22 +22,32 @@ type iGetHotlineWaitingNumberResponseBody interface {
 }
 
 type GetHotlineWaitingNumberResponseBody struct {
+	// Error encoding
+	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Queue length of hotline members
+	//
 	// example:
 	//
 	// 2
 	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Fault description
+	//
 	// example:
 	//
 	// xxxx
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID, used to trail the cause of an error
+	//
 	// example:
 	//
 	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Whether the API call succeeded
+	//
 	// example:
 	//
 	// true

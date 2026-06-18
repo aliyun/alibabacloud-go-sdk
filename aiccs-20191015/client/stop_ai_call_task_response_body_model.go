@@ -24,26 +24,46 @@ type iStopAiCallTaskResponseBody interface {
 }
 
 type StopAiCallTaskResponseBody struct {
+	// The detailed reason for the access denial.
+	//
 	// example:
 	//
 	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The request status code. A value of `OK` indicates that the request was successful.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the task was stopped successfully. Valid values:
+	//
+	// - **true**: The operation was successful.
+	//
+	// - **false**: The operation failed.
+	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The description of the status code.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// 成功
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 7124F972-BAB8-5D1E-90FC-01CB10713B29
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the API call was successful. Valid values:
+	//
+	// - **true**: The call was successful.
+	//
+	// - **false**: The call failed.
+	//
 	// example:
 	//
 	// true

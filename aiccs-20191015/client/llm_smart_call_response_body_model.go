@@ -20,14 +20,20 @@ type iLlmSmartCallResponseBody interface {
 }
 
 type LlmSmartCallResponseBody struct {
+	// Unique receipt ID for this call.
+	//
 	// example:
 	//
 	// 125165515***^11195613****
 	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	// Request status code. A return value of "OK" indicates that the request succeeded.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Description of the status code.
+	//
 	// example:
 	//
 	// OK
@@ -36,7 +42,7 @@ type LlmSmartCallResponseBody struct {
 	//
 	// example:
 	//
-	// EE338D98-9BD3-XX13-B165
+	// D6A51251-F7C4-596A-9F45-3C3219A5450D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

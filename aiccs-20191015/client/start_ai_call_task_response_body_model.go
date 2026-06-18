@@ -24,26 +24,46 @@ type iStartAiCallTaskResponseBody interface {
 }
 
 type StartAiCallTaskResponseBody struct {
+	// The detailed reason why access is denied.
+	//
 	// example:
 	//
-	// Access Denied
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The status code. OK indicates that the request was successful.
+	//
 	// example:
 	//
-	// 示例值
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the task was successfully started. Valid values:
+	//
+	// - **true**: Success.
+	//
+	// - **false**: Failure.
+	//
 	// example:
 	//
 	// false
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The status message.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// 成功
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 58A32FFF-86EE-5CF0-B365-97E8C574C7F4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the API call was successful. Valid values:
+	//
+	// - **true**: Success.
+	//
+	// - **false**: Failure.
+	//
 	// example:
 	//
 	// false

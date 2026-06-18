@@ -24,34 +24,50 @@ type iStartCallV2Request interface {
 }
 
 type StartCallV2Request struct {
+	// Agent account name (agent logon name).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123@123.com
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// Callee number for hotline outbound calls.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 136****1111
 	Callee *string `json:"Callee,omitempty" xml:"Callee,omitempty"`
+	// Caller number for hotline outbound calls.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 9065****
 	Caller *string `json:"Caller,omitempty" xml:"Caller,omitempty"`
+	// Call type. Valid values:
+	//
+	// - **1**: Inbound
+	//
+	// - **2**: Outbound
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	CallerType *int32 `json:"CallerType,omitempty" xml:"CallerType,omitempty"`
+	// Unique customer request ID. Used for idempotency validation. You can generate it using UUID.
+	//
 	// example:
 	//
 	// 46c1341e-2648-447a-9b11-70b6a298d94d
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// AICCS instance ID. You can obtain it from the Artificial Intelligence Cloud Call Service console.
+	//
 	// This parameter is required.
 	//
 	// example:

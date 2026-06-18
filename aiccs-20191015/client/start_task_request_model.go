@@ -25,15 +25,23 @@ type StartTaskRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// Indicates whether to start immediately. Valid values:
+	//
+	// - **true**: Yes.
+	//
+	// - **false**: No, which means the job will not be started.
+	//
 	// example:
 	//
 	// true
 	StartNow *bool `json:"StartNow,omitempty" xml:"StartNow,omitempty"`
+	// The unique job ID of the robot calling task. You can view it on the [Task Management](https://aiccs.console.aliyun.com/job/list) page or obtain it by using the [CreateTask](https://help.aliyun.com/document_detail/223556.html) API.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 123456
+	// 12****
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 

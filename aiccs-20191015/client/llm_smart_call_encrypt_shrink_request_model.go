@@ -30,35 +30,50 @@ type iLlmSmartCallEncryptShrinkRequest interface {
 }
 
 type LlmSmartCallEncryptShrinkRequest struct {
+	// The application code for the large language model.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// ADDFA32145
+	// AD******45
 	ApplicationCode *string `json:"ApplicationCode,omitempty" xml:"ApplicationCode,omitempty"`
+	// The caller number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// ADDFA32145
+	// 132******65
 	CallerNumber *string `json:"CallerNumber,omitempty" xml:"CallerNumber,omitempty"`
+	// The encrypted called number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 140432432432243
+	// 140*********243
 	EncryptCalledNumber *string `json:"EncryptCalledNumber,omitempty" xml:"EncryptCalledNumber,omitempty"`
+	// A user-defined ID for the outbound call.
+	//
 	// example:
 	//
-	// dsadsaasfdsad
+	// dsa*******sad
 	OutId   *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Parameters for the large language model\\"s prompt.
+	//
 	// example:
 	//
-	// {}
+	// {"prompt":"推荐一部电影"}
 	PromptParamShrink    *string `json:"PromptParam,omitempty" xml:"PromptParam,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// Parameters for the large language model\\"s opening statement.
+	//
+	// example:
+	//
+	// {"name":"小明","address":"浙江省杭州市"}
 	StartWordParamShrink *string `json:"StartWordParam,omitempty" xml:"StartWordParam,omitempty"`
 }
 

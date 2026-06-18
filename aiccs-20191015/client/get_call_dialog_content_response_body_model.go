@@ -24,23 +24,38 @@ type iGetCallDialogContentResponseBody interface {
 }
 
 type GetCallDialogContentResponseBody struct {
+	// Details about the access denial. Returned only when RAM authentication fails.
+	//
 	// example:
 	//
 	// Access Denied
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response data.
 	Data *GetCallDialogContentResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The response message.
+	//
 	// example:
 	//
-	// 示例值
+	// 成功
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// FB0B0481-F13E-16E0-8A7A-1AD2FXXXEF55
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded.
+	//
+	// - **true**: The request was successful.
+	//
+	// - **false**: The request failed.
+	//
 	// example:
 	//
 	// false
@@ -119,17 +134,37 @@ func (s *GetCallDialogContentResponseBody) Validate() error {
 }
 
 type GetCallDialogContentResponseBodyData struct {
+	// The call ID.
+	//
 	// example:
 	//
 	// 123456^123478
 	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	// The call status.
+	//
+	// > Valid values:
+	//
+	// >
+	//
+	// > - `0`: Not connected
+	//
+	// >
+	//
+	// > - `1`: Connected
+	//
+	// >
+	//
+	// > - `2`: Disconnected
+	//
 	// example:
 	//
 	// 2
 	CallStatus *int64 `json:"CallStatus,omitempty" xml:"CallStatus,omitempty"`
+	// The dialog content.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// [{\\"content\\":\\"您好。\\",\\"role\\":\\"assistant\\"},{\\"content\\":\\"不用了。\\",\\"role\\":\\"user\\"},{\\"content\\":\\"呃，不用了，再见，谢谢。\\",\\"role\\":\\"user\\"}]
 	DialogContent *string `json:"DialogContent,omitempty" xml:"DialogContent,omitempty"`
 }
 

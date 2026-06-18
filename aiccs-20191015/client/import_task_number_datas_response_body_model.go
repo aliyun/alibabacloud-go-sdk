@@ -24,29 +24,45 @@ type iImportTaskNumberDatasResponseBody interface {
 }
 
 type ImportTaskNumberDatasResponseBody struct {
+	// The detailed reason why access was denied.
+	//
 	// example:
 	//
 	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The request status code. `OK` indicates that the request was successful.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The import batch ID.
+	//
 	// example:
 	//
-	// 1223123132123*****
+	// 123497836486******
 	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CFC2F07E-F763-7C48-1A32-6EFFB6EA344E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - **true**: The request succeeded.
+	//
+	// - **false**: The request failed.
+	//
 	// example:
 	//
-	// false
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 

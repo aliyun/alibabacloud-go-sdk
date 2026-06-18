@@ -22,19 +22,32 @@ type iInsertAiOutboundPhoneNumsResponseBody interface {
 }
 
 type InsertAiOutboundPhoneNumsResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Import result.
 	Data *InsertAiOutboundPhoneNumsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Description of the status code.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// D9CB3933-9FE3-4870-BA8E-2BEE91B69D23
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the API call succeeded.
+	//
+	// - **true**: Succeeded.
+	//
+	// - **false**: Failed.
+	//
 	// example:
 	//
 	// true
@@ -104,11 +117,16 @@ func (s *InsertAiOutboundPhoneNumsResponseBody) Validate() error {
 }
 
 type InsertAiOutboundPhoneNumsResponseBodyData struct {
+	// Details of failed numbers.
 	FailInfo []*InsertAiOutboundPhoneNumsResponseBodyDataFailInfo `json:"FailInfo,omitempty" xml:"FailInfo,omitempty" type:"Repeated"`
+	// Number of successfully imported entries.
+	//
 	// example:
 	//
 	// 7
 	SuccessCount *int32 `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
+	// Total number of imported entries.
+	//
 	// example:
 	//
 	// 10
@@ -164,14 +182,20 @@ func (s *InsertAiOutboundPhoneNumsResponseBodyData) Validate() error {
 }
 
 type InsertAiOutboundPhoneNumsResponseBodyDataFailInfo struct {
+	// Custom business information.
+	//
 	// example:
 	//
 	// xxxx
 	BizData *string `json:"BizData,omitempty" xml:"BizData,omitempty"`
+	// Description of the failure reason.
+	//
 	// example:
 	//
 	// 号码格式异常
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// The callee number for outbound calls.
+	//
 	// example:
 	//
 	// 150****0000

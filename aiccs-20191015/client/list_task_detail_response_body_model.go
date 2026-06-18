@@ -22,19 +22,32 @@ type iListTaskDetailResponseBody interface {
 }
 
 type ListTaskDetailResponseBody struct {
+	// The request status code. A return value of OK indicates that the request succeeded.
+	//
 	// example:
 	//
 	// OK
-	Code *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Detailed job information.
 	Data *ListTaskDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Description of the status code.
+	//
 	// example:
 	//
-	// Ok
+	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// D9CB3933-9FE3-4870-BA8E-2BEE91B69D23
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the API invocation succeeded. Valid values:
+	//
+	// - **true**: Succeeded.
+	//
+	// - **false**: Failed.
+	//
 	// example:
 	//
 	// true
@@ -104,15 +117,22 @@ func (s *ListTaskDetailResponseBody) Validate() error {
 }
 
 type ListTaskDetailResponseBodyData struct {
+	// Number of items per page.
+	//
 	// example:
 	//
 	// 20
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// Current page number.
+	//
 	// example:
 	//
 	// 1
-	PageSize *int64                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Record   []*ListTaskDetailResponseBodyDataRecord `json:"Record,omitempty" xml:"Record,omitempty" type:"Repeated"`
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// List of job information.
+	Record []*ListTaskDetailResponseBodyDataRecord `json:"Record,omitempty" xml:"Record,omitempty" type:"Repeated"`
+	// Total number of jobs.
+	//
 	// example:
 	//
 	// 50
@@ -177,49 +197,88 @@ func (s *ListTaskDetailResponseBodyData) Validate() error {
 }
 
 type ListTaskDetailResponseBodyDataRecord struct {
+	// Called number.
+	//
 	// example:
 	//
 	// 186****0000
 	Called *string `json:"Called,omitempty" xml:"Called,omitempty"`
+	// Calling number.
+	//
 	// example:
 	//
 	// 136****0000
-	Caller    *string `json:"Caller,omitempty" xml:"Caller,omitempty"`
+	Caller *string `json:"Caller,omitempty" xml:"Caller,omitempty"`
+	// Hang-up direction. Valid values:
+	//
+	// - **User**.
+	//
+	// - **Machine**.
+	//
+	// example:
+	//
+	// 用户
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	// Call duration. Unit: seconds.
+	//
 	// example:
 	//
 	// 30
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// End time.
+	//
 	// example:
 	//
 	// 2021-05-20 00:03:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Record ID.
+	//
 	// example:
 	//
-	// 123456
+	// 12****
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Current retry count.
+	//
 	// example:
 	//
 	// 1
 	RetryCurTimes *int32 `json:"RetryCurTimes,omitempty" xml:"RetryCurTimes,omitempty"`
+	// Retry Count.
+	//
 	// example:
 	//
 	// 1
 	RetryTimes *int32 `json:"RetryTimes,omitempty" xml:"RetryTimes,omitempty"`
+	// Start Time.
+	//
 	// example:
 	//
 	// 2021-05-20 00:00:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// Detail status.
+	//
 	// example:
 	//
 	// SUCCESS
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Call status code.
+	//
 	// example:
 	//
-	// 00001
-	StatusCode     *string `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// 200100
+	StatusCode *string `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// Call status code description.
+	//
+	// example:
+	//
+	// 呼叫成功
 	StatusCodeDesc *string `json:"StatusCodeDesc,omitempty" xml:"StatusCodeDesc,omitempty"`
-	Tags           *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// Intent tags.
+	//
+	// example:
+	//
+	// 肯定
+	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s ListTaskDetailResponseBodyDataRecord) String() string {

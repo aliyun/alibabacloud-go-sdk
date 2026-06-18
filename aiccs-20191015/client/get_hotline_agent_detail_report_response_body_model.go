@@ -24,23 +24,38 @@ type iGetHotlineAgentDetailReportResponseBody interface {
 }
 
 type GetHotlineAgentDetailReportResponseBody struct {
+	// The status code. A value of "Success" indicates that the request succeeded.
+	//
 	// example:
 	//
 	// Success
-	Code *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Query result data.
 	Data *GetHotlineAgentDetailReportResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int64 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Description of the status code.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the API was invoked successfully. Valid values:
+	//
+	// - **true**: Succeeded.
+	//
+	// - **false**: Failed.
+	//
 	// example:
 	//
 	// true
@@ -119,16 +134,24 @@ func (s *GetHotlineAgentDetailReportResponseBody) Validate() error {
 }
 
 type GetHotlineAgentDetailReportResponseBodyData struct {
+	// Description of returned columns.
 	Columns []*GetHotlineAgentDetailReportResponseBodyDataColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
+	// Current page.
+	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// Number of records per page.
+	//
 	// example:
 	//
 	// 10
-	PageSize *int32                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Rows     []map[string]interface{} `json:"Rows,omitempty" xml:"Rows,omitempty" type:"Repeated"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The returned data result.
+	Rows []map[string]interface{} `json:"Rows,omitempty" xml:"Rows,omitempty" type:"Repeated"`
+	// Total number of records.
+	//
 	// example:
 	//
 	// 7
@@ -202,10 +225,17 @@ func (s *GetHotlineAgentDetailReportResponseBodyData) Validate() error {
 }
 
 type GetHotlineAgentDetailReportResponseBodyDataColumns struct {
+	// Metric.
+	//
 	// example:
 	//
 	// realName
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Metric description.
+	//
+	// example:
+	//
+	// 客服姓名
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 

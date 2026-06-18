@@ -24,23 +24,38 @@ type iPageQueryAgentListResponseBody interface {
 }
 
 type PageQueryAgentListResponseBody struct {
+	// The detailed reason for the access denial.
+	//
 	// example:
 	//
 	// Access Denied
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The status code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *PageQueryAgentListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The description of the status code.
+	//
 	// example:
 	//
-	// 示例值
+	// 成功
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 742C9243-2870-B8D6-0C68-C60BEB2DF09A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - **true**: The request was successful.
+	//
+	// - **false**: The request failed.
+	//
 	// example:
 	//
 	// false
@@ -119,15 +134,22 @@ func (s *PageQueryAgentListResponseBody) Validate() error {
 }
 
 type PageQueryAgentListResponseBodyData struct {
+	// A list of agents.
 	List []*PageQueryAgentListResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total count of entries.
+	//
 	// example:
 	//
 	// 14
@@ -192,46 +214,68 @@ func (s *PageQueryAgentListResponseBodyData) Validate() error {
 }
 
 type PageQueryAgentListResponseBodyDataList struct {
+	// The agent ID.
+	//
 	// example:
 	//
 	// 121312*******
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	// The agent name.
+	//
 	// example:
 	//
-	// 示例值
+	// 测试智能体
 	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
+	// The application code.
+	//
 	// example:
 	//
 	// DFAS*****
 	ApplicationCode *string `json:"ApplicationCode,omitempty" xml:"ApplicationCode,omitempty"`
+	// The reason for the review failure.
+	//
 	// example:
 	//
-	// 示例值
+	// 请补充流程说明
 	AuditReason *string `json:"AuditReason,omitempty" xml:"AuditReason,omitempty"`
+	// The reason for the build failure.
+	//
 	// example:
 	//
-	// 构建失败原因
+	// 系统错误
 	BuildFailReason *string `json:"BuildFailReason,omitempty" xml:"BuildFailReason,omitempty"`
+	// The business scenario name.
+	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// 个人客户线索转化
 	BusinessTypeName *string `json:"BusinessTypeName,omitempty" xml:"BusinessTypeName,omitempty"`
+	// The time the agent was created.
+	//
 	// example:
 	//
 	// 2025-10-28 17:10:17
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The agent description.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// 用于日常测试
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The time the agent was last online.
+	//
 	// example:
 	//
 	// 2025-10-28 14:38:15
 	LastOnlineTime *string `json:"LastOnlineTime,omitempty" xml:"LastOnlineTime,omitempty"`
+	// The time the agent was last modified.
+	//
 	// example:
 	//
 	// 2025-10-28 17:10:17
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The agent status.
+	//
 	// example:
 	//
 	// 7
@@ -240,6 +284,8 @@ type PageQueryAgentListResponseBodyDataList struct {
 	//
 	// false
 	WithActivePrompt *bool `json:"WithActivePrompt,omitempty" xml:"WithActivePrompt,omitempty"`
+	// Indicates whether the agent has been configured.
+	//
 	// example:
 	//
 	// false

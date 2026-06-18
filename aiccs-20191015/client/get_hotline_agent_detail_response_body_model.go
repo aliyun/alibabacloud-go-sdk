@@ -24,23 +24,38 @@ type iGetHotlineAgentDetailResponseBody interface {
 }
 
 type GetHotlineAgentDetailResponseBody struct {
+	// Status code.
+	//
 	// example:
 	//
 	// Success
-	Code *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Agent service data.
 	Data *GetHotlineAgentDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int64 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Description of the status code.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the API call succeeded. Valid values:
+	//
+	// - **true**: Succeeded.
+	//
+	// - **false**: Failed.
+	//
 	// example:
 	//
 	// true
@@ -119,30 +134,68 @@ func (s *GetHotlineAgentDetailResponseBody) Validate() error {
 }
 
 type GetHotlineAgentDetailResponseBodyData struct {
+	// Agent ID.
+	//
 	// example:
 	//
 	// 2235****
 	AgentId *int64 `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	// Agent status. Valid values: **1~6**.
+	//
 	// example:
 	//
 	// 1
 	AgentStatus *int32 `json:"AgentStatus,omitempty" xml:"AgentStatus,omitempty"`
+	// Agent status code. Valid values:
+	//
+	// - **AgentCheckout**: Agent logged off.
+	//
+	// - **AgentReady**: Agent idle.
+	//
+	// - **AgentBreak**: Agent on break.
+	//
+	// - **AgentAcw**: Post-processing after a call.
+	//
+	// - **AgentBusyForCall**: In a call.
+	//
 	// example:
 	//
 	// AgentCheckout
 	AgentStatusCode *string `json:"AgentStatusCode,omitempty" xml:"AgentStatusCode,omitempty"`
+	// Indicates whether the agent is assigned. Valid values:
+	//
+	// **false**: Not assigned (no call).
+	//
+	// **true**: Assigned (in a call).
+	//
 	// example:
 	//
 	// false
 	Assigned *bool `json:"Assigned,omitempty" xml:"Assigned,omitempty"`
+	// Break type. Valid values:
+	//
+	// - **1**: Short break.
+	//
+	// - **2**: Meal break.
+	//
+	// - **3**: Meeting.
+	//
+	// - **4**: Coaching.
+	//
+	// - **5**: Training.
+	//
 	// example:
 	//
 	// 1
 	RestType *int32 `json:"RestType,omitempty" xml:"RestType,omitempty"`
+	// Tenant ID to which the agent belongs, corresponding to the instance ID in the input parameter.
+	//
 	// example:
 	//
 	// ccc_xp_pre-cn-***
 	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// Heartbeat signature.
+	//
 	// example:
 	//
 	// dnthF_oinHg7JMJDmKqex3Ux****

@@ -24,30 +24,42 @@ type iHangupCallRequest interface {
 }
 
 type HangupCallRequest struct {
+	// Agent account name (agent logon name).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123@123.com
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// Hotline session ID.
+	//
 	// example:
 	//
 	// 7719786
 	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	// Unique customer request ID. Used for idempotency validation and can be generated using UUID.
+	//
 	// example:
 	//
 	// 46c1341e-2648-447a-9b11-70b6a298d94d
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The connId from the WebSocket after an inbound call.
+	//
 	// example:
 	//
 	// 7719788
 	ConnectionId *string `json:"ConnectionId,omitempty" xml:"ConnectionId,omitempty"`
+	// AICCS instance ID. You can obtain it from the Artificial Intelligence Cloud Call Service console.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc_xp_pre-cn-***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The jobId from the WebSocket after an inbound call.
+	//
 	// example:
 	//
 	// 7719787

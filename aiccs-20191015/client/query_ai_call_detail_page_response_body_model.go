@@ -24,23 +24,38 @@ type iQueryAiCallDetailPageResponseBody interface {
 }
 
 type QueryAiCallDetailPageResponseBody struct {
+	// The reason why the access request was denied.
+	//
 	// example:
 	//
 	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The status code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *QueryAiCallDetailPageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// A description of the status code.
+	//
 	// example:
 	//
-	// 示例值
+	// 成功
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// A57441B2-8EB6-5B93-9F37-0A51B8E2C9F5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values are:
+	//
+	// - **true**: The request was successful.
+	//
+	// - **false**: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -119,15 +134,22 @@ func (s *QueryAiCallDetailPageResponseBody) Validate() error {
 }
 
 type QueryAiCallDetailPageResponseBodyData struct {
+	// A list of task details.
 	List []*QueryAiCallDetailPageResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 60
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 5
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 2
@@ -192,9 +214,11 @@ func (s *QueryAiCallDetailPageResponseBodyData) Validate() error {
 }
 
 type QueryAiCallDetailPageResponseBodyDataList struct {
+	// The batch ID.
+	//
 	// example:
 	//
-	// 12121211111*****
+	// 1183**************
 	BatchId *string `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
 	// example:
 	//
@@ -202,79 +226,253 @@ type QueryAiCallDetailPageResponseBodyDataList struct {
 	BranchId *int64 `json:"BranchId,omitempty" xml:"BranchId,omitempty"`
 	// example:
 	//
-	// 示例值
+	// example
 	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
 	// example:
 	//
 	// 9
 	BranchVersionId *int64 `json:"BranchVersionId,omitempty" xml:"BranchVersionId,omitempty"`
+	// The call result.
+	//
 	// example:
 	//
-	// 示例值
+	// 用户接通
 	CallResult *string `json:"CallResult,omitempty" xml:"CallResult,omitempty"`
+	// The called number.
+	//
 	// example:
 	//
 	// 0537101****
 	CalledNumber *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	// The call time, formatted as a timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1748948749000
 	CallingTime *int64 `json:"CallingTime,omitempty" xml:"CallingTime,omitempty"`
+	// The conversation duration, in seconds.
+	//
 	// example:
 	//
 	// 100
 	ConversationDuration *int64 `json:"ConversationDuration,omitempty" xml:"ConversationDuration,omitempty"`
+	// The conversation record, formatted as a chronologically sorted JSON array. Each object has the following structure:
+	//
+	// ```json
+	//
+	// [
+	//
+	//     {
+	//
+	//         "content":"The content of the message.",
+	//
+	//         "role":"The role of the speaker.", // Valid values: user, assistant
+	//
+	//     }
+	//
+	// ]
+	//
+	// ```
+	//
 	// example:
 	//
-	// 示例值示例值
+	// [
+	//
+	//     {
+	//
+	//         "content": "111您好，年龄222，性别男，我这边是**汽车的官方顾问，我们新出了一款车型为**；**已经上市了，售价**万元起，**分钟破*台，您看要不了解一下？",
+	//
+	//         "role": "assistant"
+	//
+	//     },
+	//
+	//     {
+	//
+	//         "content": "<客户打断>哎，你是谁？",
+	//
+	//         "role": "user",
+	//
+	//     },
+	//
+	//     {
+	//
+	//         "content": "<客户打断>你再说一遍。",
+	//
+	//         "role": "user",
+	//
+	//     },
+	//
+	//     {
+	//
+	//         "content": "哎，我没听清。",
+	//
+	//         "role": "user",
+	//
+	//     },
+	//
+	//     {
+	//
+	//         "content": "你在说什么？",
+	//
+	//         "role": "user",
+	//
+	//     },
+	//
+	//     {
+	//
+	//         "content": "您好，",
+	//
+	//         "role": "assistant",
+	//
+	//     },
+	//
+	//     {
+	//
+	//         "content": "我是**汽车总部销售服务顾问。",
+	//
+	//         "role": "assistant",
+	//
+	//     },
+	//
+	//     {
+	//
+	//         "content": "我们最近推出了一款新车**，想了解一下您是否对这款车型感兴趣？",
+	//
+	//         "role": "assistant",
+	//
+	//     },
+	//
+	//     {
+	//
+	//         "content": "<客户打断>哎，那我是谁？",
+	//
+	//         "role": "user",
+	//
+	//     },
+	//
+	//     {
+	//
+	//         "content": "你在说什么呢？",
+	//
+	//         "role": "user",
+	//
+	//     },
+	//
+	//     {
+	//
+	//         "content": "抱歉打扰了，111先生。",
+	//
+	//         "role": "assistant",
+	//
+	//     },
+	//
+	//     {
+	//
+	//         "content": "祝您生活愉快！再见！",
+	//
+	//         "role": "assistant",
+	//
+	//     }
+	//
+	// ]
 	ConversationRecord *string `json:"ConversationRecord,omitempty" xml:"ConversationRecord,omitempty"`
+	// The conversation turn count.
+	//
 	// example:
 	//
 	// 10
 	ConversationTurnCount *int64 `json:"ConversationTurnCount,omitempty" xml:"ConversationTurnCount,omitempty"`
+	// The task detail ID.
+	//
 	// example:
 	//
-	// 12121211111*****
+	// 9662*************
 	DetailId *string `json:"DetailId,omitempty" xml:"DetailId,omitempty"`
+	// The encryption type. Valid values are: 0 (no encryption), 1 (MD5), 2 (SHA256), and 3 (SM3).
+	//
 	// example:
 	//
-	// 21
+	// 1
 	EncryptionType *int64 `json:"EncryptionType,omitempty" xml:"EncryptionType,omitempty"`
+	// The failure reason. Provided only if the call fails.
+	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// 账户停机
 	FailedReason *string `json:"FailedReason,omitempty" xml:"FailedReason,omitempty"`
+	// The import time, formatted as a timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1748948749000
 	ImportedTime *int64 `json:"ImportedTime,omitempty" xml:"ImportedTime,omitempty"`
+	// The major intent.
+	//
 	// example:
 	//
 	// A
 	MajorIntent *string `json:"MajorIntent,omitempty" xml:"MajorIntent,omitempty"`
+	// A JSON object of key-value pairs for runtime variables.
+	//
 	// example:
 	//
-	// 示例值
+	// {
+	//
+	//   "date": "666",
+	//
+	//   "phoneNumber": "777",
+	//
+	//   "distance": "555",
+	//
+	//   "mendian": "444",
+	//
+	//   "sex": "男",
+	//
+	//   "name": "111",
+	//
+	//   "age": "222"
+	//
+	// }
 	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
 	// example:
 	//
 	// outId
 	OutId *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
+	// The recording file path. Provided only after the recording file is generated.
+	//
 	// example:
 	//
 	// https://*******
 	RecordingFilePath *string `json:"RecordingFilePath,omitempty" xml:"RecordingFilePath,omitempty"`
+	// The task detail status.
+	//
+	// - 0: Initializing
+	//
+	// - 1: Waiting to call
+	//
+	// - 2: Waiting to retry
+	//
+	// - 3: Calling
+	//
+	// - 4: Call ended
+	//
+	// - 5: Call failed
+	//
+	// Only statuses 4 and 5 are terminal states.
+	//
 	// example:
 	//
-	// 51
+	// 4
 	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
-	// 12121211111*****
+	// 1187**************
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// example:
 	//
-	// 示例值示例值
+	// example
 	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
 	// example:
 	//

@@ -22,19 +22,32 @@ type iGetAgentServiceStatusResponseBody interface {
 }
 
 type GetAgentServiceStatusResponseBody struct {
+	// Status code. A return value of 200 indicates that the request succeeded.
+	//
 	// example:
 	//
 	// 200
-	Code *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data list.
 	Data *GetAgentServiceStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Status code description.
+	//
 	// example:
 	//
-	// xxxx
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the API call succeeded. Valid values:
+	//
+	// - **true**: Succeeded.
+	//
+	// - **false**: Failed.
+	//
 	// example:
 	//
 	// true
@@ -104,18 +117,26 @@ func (s *GetAgentServiceStatusResponseBody) Validate() error {
 }
 
 type GetAgentServiceStatusResponseBodyData struct {
+	// Current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// Page size.
+	//
 	// example:
 	//
 	// 2000
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Information provided as a JSON string of type List<Map>.
+	//
 	// example:
 	//
 	// {"online_40s_transfer_ready_cnt":81,"minute_id":"-1","online_unsatis_cnt":0,"online_simple_cnt":0,"average_queue_time":-1,"service_pickup":"2086","total_waiting_time":"981","online_service_time_len":58208,"online_direct_give_up_len":0,"break_ratio":"2%"}
 	Rows *string `json:"Rows,omitempty" xml:"Rows,omitempty"`
+	// Total number of records.
+	//
 	// example:
 	//
 	// 4

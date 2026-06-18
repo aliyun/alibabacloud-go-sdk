@@ -22,19 +22,32 @@ type iGetAiOutboundTaskBizDataResponseBody interface {
 }
 
 type GetAiOutboundTaskBizDataResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The business information associated with this call.
 	Data *GetAiOutboundTaskBizDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Description of the status code.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the API call succeeded.
+	//
+	// - **true**: Succeeded.
+	//
+	// - **false**: Failed.
+	//
 	// example:
 	//
 	// true
@@ -104,18 +117,26 @@ func (s *GetAiOutboundTaskBizDataResponseBody) Validate() error {
 }
 
 type GetAiOutboundTaskBizDataResponseBodyData struct {
+	// Custom business information.
+	//
 	// example:
 	//
 	// {"customer":123}
 	BizData *string `json:"BizData,omitempty" xml:"BizData,omitempty"`
+	// The Activity ID associated with this outbound call.
+	//
 	// example:
 	//
 	// 123
 	CaseId *int64 `json:"CaseId,omitempty" xml:"CaseId,omitempty"`
+	// The outbound phone number.
+	//
 	// example:
 	//
 	// 158****0000
 	PhoneNum *string `json:"PhoneNum,omitempty" xml:"PhoneNum,omitempty"`
+	// The job ID.
+	//
 	// example:
 	//
 	// 123456

@@ -22,22 +22,32 @@ type iGetMcuLvsIpResponseBody interface {
 }
 
 type GetMcuLvsIpResponseBody struct {
+	// Status code. A return value of 200 indicates that the request succeeded.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// IP information. The value is a JSON string of the List type.
+	//
 	// example:
 	//
 	// { "xmculvs":[ 0:{ "port":00 "ip":"0.0.0.0" "name":"lvs1" } ]}
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Description of the status code.
+	//
 	// example:
 	//
 	// xxxx
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the API call succeeded.
+	//
 	// example:
 	//
 	// true

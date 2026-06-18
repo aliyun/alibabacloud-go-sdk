@@ -32,41 +32,70 @@ type iAddOuterAccountRequest interface {
 }
 
 type AddOuterAccountRequest struct {
+	// Profile picture.
+	//
 	// example:
 	//
 	// http://****
 	Avatar *string `json:"Avatar,omitempty" xml:"Avatar,omitempty"`
-	Ext    *string `json:"Ext,omitempty" xml:"Ext,omitempty"`
+	// Extension field, in JSON string format.
+	//
+	// example:
+	//
+	// {"备注":"临时技能组"}
+	Ext *string `json:"Ext,omitempty" xml:"Ext,omitempty"`
+	// External Account ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1212
-	OuterAccountId   *string `json:"OuterAccountId,omitempty" xml:"OuterAccountId,omitempty"`
+	OuterAccountId *string `json:"OuterAccountId,omitempty" xml:"OuterAccountId,omitempty"`
+	// External account name.
+	//
+	// example:
+	//
+	// 测试
 	OuterAccountName *string `json:"OuterAccountName,omitempty" xml:"OuterAccountName,omitempty"`
+	// External account type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// alipay
 	OuterAccountType *string `json:"OuterAccountType,omitempty" xml:"OuterAccountType,omitempty"`
+	// External department ID.
+	//
 	// example:
 	//
 	// 3
 	OuterDepartmentId *string `json:"OuterDepartmentId,omitempty" xml:"OuterDepartmentId,omitempty"`
+	// External department type: Invalid department type.
+	//
 	// example:
 	//
 	// type_invalid
 	OuterDepartmentType *string `json:"OuterDepartmentType,omitempty" xml:"OuterDepartmentType,omitempty"`
+	// List of external skill group IDs. Separate multiple IDs with commas (,).
+	//
 	// example:
 	//
 	// ["222","333","444"]
 	OuterGroupIds *string `json:"OuterGroupIds,omitempty" xml:"OuterGroupIds,omitempty"`
+	// Skill group type.
+	//
 	// example:
 	//
 	// mybank
 	OuterGroupType *string `json:"OuterGroupType,omitempty" xml:"OuterGroupType,omitempty"`
-	RealName       *string `json:"RealName,omitempty" xml:"RealName,omitempty"`
+	// Real name of the account.
+	//
+	// example:
+	//
+	// 张三
+	RealName *string `json:"RealName,omitempty" xml:"RealName,omitempty"`
 }
 
 func (s AddOuterAccountRequest) String() string {

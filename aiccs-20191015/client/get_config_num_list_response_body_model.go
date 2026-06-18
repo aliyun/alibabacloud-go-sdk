@@ -22,19 +22,28 @@ type iGetConfigNumListResponseBody interface {
 }
 
 type GetConfigNumListResponseBody struct {
+	// The status code. A return value of "Success" indicates that the request succeeded.
+	//
 	// example:
 	//
 	// Success
-	Code *string   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The number list.
 	Data []*string `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Description of the status code.
+	//
 	// example:
 	//
 	// xxxx
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// EE339D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the API call succeeded.
+	//
 	// example:
 	//
 	// true

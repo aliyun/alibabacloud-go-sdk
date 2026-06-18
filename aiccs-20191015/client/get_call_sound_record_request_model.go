@@ -22,12 +22,22 @@ type iGetCallSoundRecordRequest interface {
 }
 
 type GetCallSoundRecordRequest struct {
+	// Unique call ID.
+	//
+	//
+	// You can invoke the [RobotCall](https://help.aliyun.com/document_detail/2717996.html) API and check the **Data*	- field in the response parameters to obtain this value.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 125165515022^11195613****
 	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	// Call creation time. Format: YYYY-MM-DD hh:mm:ss.
+	//
+	//
+	// You can invoke the [RobotCall](https://help.aliyun.com/document_detail/2717996.html) API and check the **date*	- parameter in the **Response Header*	- to obtain this value.
+	//
 	// This parameter is required.
 	//
 	// example:

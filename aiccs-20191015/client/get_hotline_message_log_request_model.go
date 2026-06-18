@@ -16,12 +16,16 @@ type iGetHotlineMessageLogRequest interface {
 }
 
 type GetHotlineMessageLogRequest struct {
+	// Session ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 100****2077
 	Acid *string `json:"Acid,omitempty" xml:"Acid,omitempty"`
+	// Artificial Intelligence Cloud Call Service (AICCS) instance ID. You can obtain it from the Artificial Intelligence Cloud Call Service console.
+	//
 	// This parameter is required.
 	//
 	// example:

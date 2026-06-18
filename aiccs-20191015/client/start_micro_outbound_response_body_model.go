@@ -24,26 +24,38 @@ type iStartMicroOutboundResponseBody interface {
 }
 
 type StartMicroOutboundResponseBody struct {
+	// Status code. A return value of 200 indicates that the request succeeded.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Customer information.
+	//
 	// example:
 	//
 	// {\\"caseId\\":2323****}
 	CustomerInfo *string `json:"CustomerInfo,omitempty" xml:"CustomerInfo,omitempty"`
+	// Command ID.
+	//
 	// example:
 	//
 	// 8883f165-4a0d-4da2-a2d2
 	InvokeCmdId *string `json:"InvokeCmdId,omitempty" xml:"InvokeCmdId,omitempty"`
+	// Creation Time
+	//
 	// example:
 	//
 	// 2019-05-23 17:30:32.525
 	InvokeCreateTime *string `json:"InvokeCreateTime,omitempty" xml:"InvokeCreateTime,omitempty"`
+	// Description of the status code.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// EE338D98-9BD3-4413-B165

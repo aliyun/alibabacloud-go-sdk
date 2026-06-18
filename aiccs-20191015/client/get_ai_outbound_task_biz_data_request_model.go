@@ -16,12 +16,18 @@ type iGetAiOutboundTaskBizDataRequest interface {
 }
 
 type GetAiOutboundTaskBizDataRequest struct {
+	// Session ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123456
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// The Artificial Intelligence Cloud Call Service (AICCS) instance ID.
+	//
+	// You can obtain it in the <b>Instance Management</b> section of the left-side navigation pane in the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview).
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -22,19 +22,28 @@ type iGetQualityProjectListResponseBody interface {
 }
 
 type GetQualityProjectListResponseBody struct {
+	// Status code. A return value of 200 indicates that the request succeeded.
+	//
 	// example:
 	//
 	// 200
-	Code *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Quality inspection job information.
 	Data *GetQualityProjectListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Description of the status code.
+	//
 	// example:
 	//
 	// xxxx
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the API call succeeded.
+	//
 	// example:
 	//
 	// true
@@ -104,15 +113,22 @@ func (s *GetQualityProjectListResponseBody) Validate() error {
 }
 
 type GetQualityProjectListResponseBodyData struct {
+	// Current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// Page size.
+	//
 	// example:
 	//
 	// 10
-	PageSize           *int32                                                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// List of quality inspection jobs.
 	QualityProjectList []*GetQualityProjectListResponseBodyDataQualityProjectList `json:"QualityProjectList,omitempty" xml:"QualityProjectList,omitempty" type:"Repeated"`
+	// Total number of records.
+	//
 	// example:
 	//
 	// 35
@@ -177,35 +193,58 @@ func (s *GetQualityProjectListResponseBodyData) Validate() error {
 }
 
 type GetQualityProjectListResponseBodyDataQualityProjectList struct {
+	// Quality inspection job frequency.
+	//
 	// example:
 	//
 	// 1
 	CheckFreqType *int32 `json:"CheckFreqType,omitempty" xml:"CheckFreqType,omitempty"`
+	// Creation Time.
+	//
 	// example:
 	//
 	// 2021-04-07 18:07:18
-	CreateTime *string  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DepList    []*int64 `json:"DepList,omitempty" xml:"DepList,omitempty" type:"Repeated"`
-	GroupList  []*int64 `json:"GroupList,omitempty" xml:"GroupList,omitempty" type:"Repeated"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Quality inspection sampling scope.
+	DepList []*int64 `json:"DepList,omitempty" xml:"DepList,omitempty" type:"Repeated"`
+	// Quality inspection sampling scope.
+	GroupList []*int64 `json:"GroupList,omitempty" xml:"GroupList,omitempty" type:"Repeated"`
+	// Quality inspection job ID.
+	//
 	// example:
 	//
 	// 15977801
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Updated At.
+	//
 	// example:
 	//
 	// 2021-04-07 18:07:19
-	ModifyTime     *string  `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	ProjectName    *string  `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// Quality inspection job name.
+	//
+	// example:
+	//
+	// 自动化质检任务
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// Quality inspection rule IDs.
 	QualityRuleIds []*int64 `json:"QualityRuleIds,omitempty" xml:"QualityRuleIds,omitempty" type:"Repeated"`
+	// Quality inspection type. Fixed value is **1*	- (Consultation).
+	//
 	// example:
 	//
 	// 1
-	QualityType  *int32   `json:"QualityType,omitempty" xml:"QualityType,omitempty"`
+	QualityType *int32 `json:"QualityType,omitempty" xml:"QualityType,omitempty"`
+	// Scope of quality inspection sampling.
 	ServicerList []*int64 `json:"ServicerList,omitempty" xml:"ServicerList,omitempty" type:"Repeated"`
+	// Status of the quality inspection job.
+	//
 	// example:
 	//
 	// 0
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Quality inspection job version number.
+	//
 	// example:
 	//
 	// 1

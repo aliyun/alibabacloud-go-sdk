@@ -28,24 +28,30 @@ type iCancelAiCallDetailsRequest interface {
 }
 
 type CancelAiCallDetailsRequest struct {
+	// The batch ID. This ID is returned when you import callee data. You can find the task batch ID on the **Call Task Management**>**Details**>**Execution Record*	- page, or use the import batch ID that is returned by the [ImportTaskNumberDatas](https://help.aliyun.com/document_detail/2926815.html) API operation. If DetailIdList is specified, this parameter is invalid.
+	//
 	// example:
 	//
 	// 4253331213*****
-	BatchId      *string   `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
+	BatchId *string `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
+	// A list of detail IDs. If you specify this parameter, `BatchId` and `PhoneNumbers` are ignored.
 	DetailIdList []*string `json:"DetailIdList,omitempty" xml:"DetailIdList,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 36
-	EncryptionType       *int64    `json:"EncryptionType,omitempty" xml:"EncryptionType,omitempty"`
-	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	EncryptionType *int64 `json:"EncryptionType,omitempty" xml:"EncryptionType,omitempty"`
+	OwnerId        *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// A list of phone numbers. This parameter takes effect only when `BatchId` is also specified.
 	PhoneNumbers         []*string `json:"PhoneNumbers,omitempty" xml:"PhoneNumbers,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The task ID. You can view the task ID on the **Call Task Management*	- page or obtain it by calling the [QueryAiCallTaskPage](https://help.aliyun.com/document_detail/2926799.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 1223123123****
+	// 138************
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 

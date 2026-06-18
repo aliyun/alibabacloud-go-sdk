@@ -24,23 +24,38 @@ type iCancelAiCallDetailsResponseBody interface {
 }
 
 type CancelAiCallDetailsResponseBody struct {
+	// The detailed reason why the access was denied.
+	//
 	// example:
 	//
-	// Access Denied
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The status code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *CancelAiCallDetailsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The message returned for the request.
+	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// 成功
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 46C98E28-9239-5D95-AC76-648B8FD4889A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - **true**: The request succeeded.
+	//
+	// - **false**: The request failed.
+	//
 	// example:
 	//
 	// false
@@ -119,19 +134,42 @@ func (s *CancelAiCallDetailsResponseBody) Validate() error {
 }
 
 type CancelAiCallDetailsResponseBodyData struct {
+	// The number of calls that could not be canceled.
+	//
 	// example:
 	//
 	// 75
-	FailedCount   *int64                 `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
-	FailedDetails map[string]interface{} `json:"FailedDetails,omitempty" xml:"FailedDetails,omitempty"`
+	FailedCount *int64 `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
+	// Details about the failed cancellations. This is a map where the key is the failed detail ID or phone number, and the value is the reason for the failure.
+	//
 	// example:
 	//
-	// ALL_SUCCEED
+	// {
+	//
+	//   "176********": "明细记录当前状态不可取消"
+	//
+	// }
+	FailedDetails map[string]interface{} `json:"FailedDetails,omitempty" xml:"FailedDetails,omitempty"`
+	// The result code of the cancellation. Valid values:
+	//
+	// - ALL_FAILED: All cancellations failed.
+	//
+	// - ALL_SUCCEED: All cancellations succeeded.
+	//
+	// - PART_FAILED: Some cancellations failed.
+	//
+	// example:
+	//
+	// PART_FAILED
 	ResultCode *string `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	// The number of calls that were successfully canceled.
+	//
 	// example:
 	//
 	// 81
 	SucceedCount *int64 `json:"SucceedCount,omitempty" xml:"SucceedCount,omitempty"`
+	// The total number of items.
+	//
 	// example:
 	//
 	// 50

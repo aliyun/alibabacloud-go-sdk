@@ -20,18 +20,30 @@ type iUpdateSkillGroupResponseBody interface {
 }
 
 type UpdateSkillGroupResponseBody struct {
+	// Status code. A return value of "Success" indicates that the request succeeded.
+	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Description of the status code.
+	//
 	// example:
 	//
-	// xxxx
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the API call succeeded. Valid values:
+	//
+	// - **true**: Succeeded.
+	//
+	// - **false**: Failed.
+	//
 	// example:
 	//
 	// true

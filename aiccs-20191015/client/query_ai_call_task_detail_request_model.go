@@ -23,11 +23,13 @@ type QueryAiCallTaskDetailRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The task ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 112123123******
+	// 1187**************
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 

@@ -22,19 +22,32 @@ type iListRobotCallDialogResponseBody interface {
 }
 
 type ListRobotCallDialogResponseBody struct {
+	// Request status code. A return value of OK indicates that the request succeeded.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Conversation records.
 	Data []*ListRobotCallDialogResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Description of the status code.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// D9CB3933-9FE3-4870-BA8E-2BEE91B69D23
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the API invocation succeeded. Valid values:
+	//
+	// - **true**: Succeeded.
+	//
+	// - **false**: Failed.
+	//
 	// example:
 	//
 	// true
@@ -108,16 +121,32 @@ func (s *ListRobotCallDialogResponseBody) Validate() error {
 }
 
 type ListRobotCallDialogResponseBodyData struct {
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Script content.
+	//
 	// example:
 	//
-	// normal
+	// 我是某某的客服，看您之前在我们家找过工作，做个回访，现在工作怎么样？
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// File Type.
+	//
+	// example:
+	//
+	// 开场白
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	// Role in the conversation content.
+	//
 	// example:
 	//
 	// robot
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	Tag  *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// Intent label.
+	//
+	// example:
+	//
+	// 拒绝
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// Start Time. UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1621483557000

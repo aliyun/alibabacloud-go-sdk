@@ -32,46 +32,46 @@ type iAddLargeModelShrinkRequest interface {
 }
 
 type AddLargeModelShrinkRequest struct {
-	// 授权码
+	// The authorization code.
 	//
 	// example:
 	//
-	// 示例值
+	// sk-xxxxxxxxxxx*******xx
 	AuthCode *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
-	// 基础模型
+	// The base model.
 	BaseModelShrink *string `json:"BaseModel,omitempty" xml:"BaseModel,omitempty"`
-	// 模型名称
+	// The model name.
 	//
 	// example:
 	//
 	// Test Model Name
 	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
-	// 模型地址
+	// The model URL.
 	//
 	// example:
 	//
-	// 示例值示例值
+	// https://xxxxxxxxxxx
 	ModelUrl             *string `json:"ModelUrl,omitempty" xml:"ModelUrl,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// 温度
+	// The temperature.
 	//
 	// example:
 	//
-	// 16.46
+	// 0.1
 	Temperature *float64 `json:"Temperature,omitempty" xml:"Temperature,omitempty"`
-	// topK
+	// The `top-k` value.
 	//
 	// example:
 	//
-	// 87
+	// 1
 	TopK *int64 `json:"TopK,omitempty" xml:"TopK,omitempty"`
-	// topP
+	// The `top-p` value.
 	//
 	// example:
 	//
-	// 73.64386
+	// 0.1
 	TopP *float64 `json:"TopP,omitempty" xml:"TopP,omitempty"`
 }
 

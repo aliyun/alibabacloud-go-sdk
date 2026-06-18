@@ -22,19 +22,32 @@ type iGetDepGroupTreeDataResponseBody interface {
 }
 
 type GetDepGroupTreeDataResponseBody struct {
+	// The status code. A value of Success indicates that the request succeeded.
+	//
 	// example:
 	//
 	// Success
-	Code *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Department information.
 	Data []*GetDepGroupTreeDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Description of the status code.
+	//
 	// example:
 	//
-	// xxxx
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the API call succeeded. Valid values:
+	//
+	// - **true**: Succeeded.
+	//
+	// - **false**: Failed.
+	//
 	// example:
 	//
 	// true
@@ -108,12 +121,20 @@ func (s *GetDepGroupTreeDataResponseBody) Validate() error {
 }
 
 type GetDepGroupTreeDataResponseBodyData struct {
+	// The department ID.
+	//
 	// example:
 	//
-	// 10
-	DepGroupId   *string                                         `json:"DepGroupId,omitempty" xml:"DepGroupId,omitempty"`
-	DepGroupName *string                                         `json:"DepGroupName,omitempty" xml:"DepGroupName,omitempty"`
-	GroupDTOS    []*GetDepGroupTreeDataResponseBodyDataGroupDTOS `json:"GroupDTOS,omitempty" xml:"GroupDTOS,omitempty" type:"Repeated"`
+	// 10****
+	DepGroupId *string `json:"DepGroupId,omitempty" xml:"DepGroupId,omitempty"`
+	// The department name.
+	//
+	// example:
+	//
+	// 部门A
+	DepGroupName *string `json:"DepGroupName,omitempty" xml:"DepGroupName,omitempty"`
+	// Skill group data.
+	GroupDTOS []*GetDepGroupTreeDataResponseBodyDataGroupDTOS `json:"GroupDTOS,omitempty" xml:"GroupDTOS,omitempty" type:"Repeated"`
 }
 
 func (s GetDepGroupTreeDataResponseBodyData) String() string {
@@ -165,10 +186,17 @@ func (s *GetDepGroupTreeDataResponseBodyData) Validate() error {
 }
 
 type GetDepGroupTreeDataResponseBodyDataGroupDTOS struct {
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the skill group.
+	//
 	// example:
 	//
-	// 555555
+	// 自动化技能组
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The skill group ID.
+	//
+	// example:
+	//
+	// 55****
 	SkillGroupId *int64 `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
 }
 

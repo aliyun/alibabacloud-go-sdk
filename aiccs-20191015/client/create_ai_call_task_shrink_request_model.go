@@ -52,35 +52,52 @@ type iCreateAiCallTaskShrinkRequest interface {
 }
 
 type CreateAiCallTaskShrinkRequest struct {
+	// The ID of a published agent.
+	//
 	// example:
 	//
-	// 121223123123****
+	// 1180**************
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
 	// example:
 	//
-	// 示例值示例值
+	// 025****C98
 	ApplicationCode *string `json:"ApplicationCode,omitempty" xml:"ApplicationCode,omitempty"`
+	// The list of callable days.
+	//
 	// This parameter is required.
 	CallDayShrink *string `json:"CallDay,omitempty" xml:"CallDay,omitempty"`
+	// The retry interval, in minutes. The maximum value is 720.
+	//
 	// example:
 	//
 	// 32
-	CallRetryInterval     *int64  `json:"CallRetryInterval,omitempty" xml:"CallRetryInterval,omitempty"`
+	CallRetryInterval *int64 `json:"CallRetryInterval,omitempty" xml:"CallRetryInterval,omitempty"`
+	// The failure reasons that trigger a retry.
 	CallRetryReasonShrink *string `json:"CallRetryReason,omitempty" xml:"CallRetryReason,omitempty"`
+	// The number of retries. The maximum value is 3.
+	//
 	// example:
 	//
 	// 2
 	CallRetryTimes *int64 `json:"CallRetryTimes,omitempty" xml:"CallRetryTimes,omitempty"`
+	// The list of callable time periods.
+	//
 	// This parameter is required.
 	CallTimeShrink *string `json:"CallTime,omitempty" xml:"CallTime,omitempty"`
 	// example:
 	//
-	// 示例值示例值
+	// JILIANG_***_***_NET
 	LineEncoding *string `json:"LineEncoding,omitempty" xml:"LineEncoding,omitempty"`
 	// example:
 	//
-	// 示例值示例值
+	// 152****3120
 	LinePhoneNum *string `json:"LinePhoneNum,omitempty" xml:"LinePhoneNum,omitempty"`
+	// Specifies whether to enable retry. Valid values:
+	//
+	// - `true`: Enables retry.
+	//
+	// - `false` (default): Disables retry.
+	//
 	// example:
 	//
 	// false
@@ -88,34 +105,48 @@ type CreateAiCallTaskShrinkRequest struct {
 	OwnerId       *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// example:
 	//
-	// 54
+	// 0
 	PhoneType            *int64  `json:"PhoneType,omitempty" xml:"PhoneType,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// example:
 	//
-	// 92
+	// 0
 	Source *int64 `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The startup mode. Valid values:
+	//
+	// - `IMMEDIATE`: Starts the task immediately.
+	//
+	// - `SCHEDULE`: Starts the task at a scheduled time.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// SCHEDULE
 	StartType *string `json:"StartType,omitempty" xml:"StartType,omitempty"`
+	// The task concurrency. The maximum value is 500.
+	//
 	// example:
 	//
 	// 75
 	TaskCps *int64 `json:"TaskCps,omitempty" xml:"TaskCps,omitempty"`
+	// The name of the task. It must be unique within an account.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值示例值
+	// 测试任务
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// The scheduled start time for the task, specified as a timestamp in milliseconds. This parameter is required and applies only when `StartType` is set to `SCHEDULE`.
+	//
 	// example:
 	//
 	// 12313123133
 	TaskStartTime *int64 `json:"TaskStartTime,omitempty" xml:"TaskStartTime,omitempty"`
+	// The service instance used for outbound calls.
+	//
 	// example:
 	//
 	// 032712122*****

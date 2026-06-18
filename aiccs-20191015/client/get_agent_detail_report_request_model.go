@@ -32,38 +32,72 @@ type iGetAgentDetailReportRequest interface {
 }
 
 type GetAgentDetailReportRequest struct {
+	// A list of agent IDs.
 	AgentIds []*int64 `json:"AgentIds,omitempty" xml:"AgentIds,omitempty" type:"Repeated"`
+	// The current page number. The value must be greater than **0**. Default value: **1**.
+	//
 	// example:
 	//
 	// 1
-	CurrentPage *int32   `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	DepIds      []*int64 `json:"DepIds,omitempty" xml:"DepIds,omitempty" type:"Repeated"`
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// A list of department IDs.
+	DepIds []*int64 `json:"DepIds,omitempty" xml:"DepIds,omitempty" type:"Repeated"`
+	// End UNIX timestamp. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1617761765000
 	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// Specifies whether to query by agent group. Default value: **false**. Valid values:
+	//
+	// - **true**: Yes.
+	//
+	// - **false**: No.
+	//
 	// example:
 	//
-	// true/false
+	// false
 	ExistAgentGrouping *bool `json:"ExistAgentGrouping,omitempty" xml:"ExistAgentGrouping,omitempty"`
+	// Specifies whether to query by department group. Default value: **false**. Valid values:
+	//
+	// - **true**: Yes.
+	//
+	// - **false**: No.
+	//
 	// example:
 	//
-	// true/false
+	// false
 	ExistDepartmentGrouping *bool `json:"ExistDepartmentGrouping,omitempty" xml:"ExistDepartmentGrouping,omitempty"`
+	// The Artificial Intelligence Cloud Call Service (AICCS) instance ID.
+	//
+	// You can obtain it from **Instance Management*	- in the left-side navigation pane of the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc_xp_pre-cn-***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The number of entries per page. The value must be greater than **0**. Default value: **20**.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The start date as a UNIX timestamp. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1615083365000
 	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// The time latitude type. Valid values:
+	//
+	// - **minute**: Minute.
+	//
+	// - **hour**: Hour.
+	//
+	// - **day**: Day.
+	//
 	// example:
 	//
 	// day

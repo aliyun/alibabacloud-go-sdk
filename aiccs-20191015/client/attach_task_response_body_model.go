@@ -22,22 +22,36 @@ type iAttachTaskResponseBody interface {
 }
 
 type AttachTaskResponseBody struct {
+	// The request status code. A value of OK indicates that the request succeeded.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The quantity of successfully appended entries.
+	//
 	// example:
 	//
 	// 10
 	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Description of the status code.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// D9CB3933-9FE3-4870-BA8E-2BEE91B69D23
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the API call succeeded. Valid values:
+	//
+	// - **true**: Succeeded.
+	//
+	// - **false**: Failed.
+	//
 	// example:
 	//
 	// true

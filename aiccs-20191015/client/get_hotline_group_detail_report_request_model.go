@@ -26,28 +26,42 @@ type iGetHotlineGroupDetailReportRequest interface {
 }
 
 type GetHotlineGroupDetailReportRequest struct {
+	// Current page number. The value must be greater than **0**. Default value: **1**.
+	//
 	// example:
 	//
 	// 1
-	CurrentPage *int32   `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	DepIds      []*int64 `json:"DepIds,omitempty" xml:"DepIds,omitempty" type:"Repeated"`
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// List of department IDs.
+	DepIds []*int64 `json:"DepIds,omitempty" xml:"DepIds,omitempty" type:"Repeated"`
+	// End date as a UNIX timestamp. Unit: milliseconds.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1614824972
-	EndDate  *int64   `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// List of skill group IDs.
 	GroupIds []*int64 `json:"GroupIds,omitempty" xml:"GroupIds,omitempty" type:"Repeated"`
+	// Artificial Intelligence Cloud Call Service (AICCS) instance ID.
+	//
+	// You can obtain it from **Instance Management*	- in the left-side navigation pane of the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc_xp_pre-cn-***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Page size. The value must be greater than **0**. Default value: **20**.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Start date as a UNIX timestamp. Unit: milliseconds.
+	//
 	// This parameter is required.
 	//
 	// example:

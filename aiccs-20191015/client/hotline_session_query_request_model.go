@@ -66,83 +66,164 @@ type iHotlineSessionQueryRequest interface {
 }
 
 type HotlineSessionQueryRequest struct {
+	// Session ID. The acid received via WebSocket after an inbound call.
+	//
 	// example:
 	//
 	// 7719786****
-	Acid     *string   `json:"Acid,omitempty" xml:"Acid,omitempty"`
+	Acid *string `json:"Acid,omitempty" xml:"Acid,omitempty"`
+	// Session ID List.
 	AcidList []*string `json:"AcidList,omitempty" xml:"AcidList,omitempty" type:"Repeated"`
+	// Call result. Valid values:
+	//
+	// - **normal**: Normal hang-up.
+	//
+	// - **touchRouteError**: Queue hang-up.
+	//
+	// - **touchInQueue**: Queue hang-up.
+	//
+	// - **touchInLoss**: Queue hang-up.
+	//
+	// - **userHangup**: User hang-up or IVR hang-up.
+	//
+	// - **sysHangup**: System hang-up or IVR hang-up.
+	//
+	// - **transferAgent**: User hang-up or IVR hang-up.
+	//
+	// - **dailing**: Agent hang-up during ringing.
+	//
+	// - **TouchRingCallLoss**: Queue hang-up during ringing.
+	//
 	// example:
 	//
 	// normal
-	CallResult     *string   `json:"CallResult,omitempty" xml:"CallResult,omitempty"`
+	CallResult *string `json:"CallResult,omitempty" xml:"CallResult,omitempty"`
+	// List of call results.
 	CallResultList []*string `json:"CallResultList,omitempty" xml:"CallResultList,omitempty" type:"Repeated"`
+	// Call Type. Valid values:
+	//
+	// - **1**: Outbound call.
+	//
+	// - **2**: Inbound call.
+	//
+	// - **3**: Change owner.
+	//
 	// example:
 	//
 	// 1
-	CallType     *int32   `json:"CallType,omitempty" xml:"CallType,omitempty"`
+	CallType *int32 `json:"CallType,omitempty" xml:"CallType,omitempty"`
+	// Call Type List.
 	CallTypeList []*int32 `json:"CallTypeList,omitempty" xml:"CallTypeList,omitempty" type:"Repeated"`
+	// Calling party number, such as a user\\"s phone number, agent number, or machine number.
+	//
 	// example:
 	//
 	// 135615****
-	CalledNumber     *string   `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	CalledNumber *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	// List of called numbers.
 	CalledNumberList []*string `json:"CalledNumberList,omitempty" xml:"CalledNumberList,omitempty" type:"Repeated"`
+	// Calling party number, such as a user\\"s phone number, customer service agent number, or machine number.
+	//
 	// example:
 	//
 	// 057177****
-	CallingNumber     *string   `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
+	CallingNumber *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
+	// List of calling numbers.
 	CallingNumberList []*string `json:"CallingNumberList,omitempty" xml:"CallingNumberList,omitempty" type:"Repeated"`
+	// Skill group ID.
+	//
 	// example:
 	//
 	// 123456
-	GroupId     *int64   `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// List of skill group IDs.
 	GroupIdList []*int64 `json:"GroupIdList,omitempty" xml:"GroupIdList,omitempty" type:"Repeated"`
-	GroupName   *string  `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// Skill group name.
+	//
 	// example:
 	//
-	// acc1c58dab4a4dd280e3813c66
+	// 自动化技能组
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// Global unique ID (GUID) of the call detail.
+	//
+	// example:
+	//
+	// acc1c58dab4a4****0e3813c66
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// AICCS instance ID.
+	//
+	// You can obtain it in the **Instance Management*	- section of the left-side navigation pane in the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc_xp_pre-cn-***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Membership ID.
+	//
 	// example:
 	//
 	// 7856****
-	MemberId     *string   `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
+	MemberId *string `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
+	// Membership List.
 	MemberIdList []*string `json:"MemberIdList,omitempty" xml:"MemberIdList,omitempty" type:"Repeated"`
-	MemberName   *string   `json:"MemberName,omitempty" xml:"MemberName,omitempty"`
+	// Membership name.
+	//
+	// example:
+	//
+	// 匿名会员
+	MemberName *string `json:"MemberName,omitempty" xml:"MemberName,omitempty"`
+	// Current page number. The value must be greater than **0**. Default Value: **1**.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// Page size. The value must be greater than **0**. Default value: **20**.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Extension parameters.
+	//
 	// example:
 	//
 	// xxxx
 	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	// End UNIX timestamp. Unit: milliseconds.
+	//
 	// example:
 	//
-	// 161482972
+	// 1614829721
 	QueryEndTime *int64 `json:"QueryEndTime,omitempty" xml:"QueryEndTime,omitempty"`
+	// Start UNIX timestamp. Unit: ms.
+	//
 	// example:
 	//
-	// 161482872
+	// 1614828721
 	QueryStartTime *int64 `json:"QueryStartTime,omitempty" xml:"QueryStartTime,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Agent ID.
+	//
 	// example:
 	//
 	// 555555
-	ServicerId     *string   `json:"ServicerId,omitempty" xml:"ServicerId,omitempty"`
+	ServicerId *string `json:"ServicerId,omitempty" xml:"ServicerId,omitempty"`
+	// List of agent IDs.
 	ServicerIdList []*string `json:"ServicerIdList,omitempty" xml:"ServicerIdList,omitempty" type:"Repeated"`
-	ServicerName   *string   `json:"ServicerName,omitempty" xml:"ServicerName,omitempty"`
+	// Agent Name.
+	//
+	// example:
+	//
+	// 刘测试
+	ServicerName *string `json:"ServicerName,omitempty" xml:"ServicerName,omitempty"`
 }
 
 func (s HotlineSessionQueryRequest) String() string {

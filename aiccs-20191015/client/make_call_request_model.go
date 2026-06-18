@@ -24,34 +24,46 @@ type iMakeCallRequest interface {
 }
 
 type MakeCallRequest struct {
+	// Called number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 130****0000
 	CalledNumber *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	// Calling number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0571456****
 	CallingNumber *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
+	// Operation code.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// outBound_Call
 	CommandCode *string `json:"CommandCode,omitempty" xml:"CommandCode,omitempty"`
+	// Pass-through business information.
+	//
 	// example:
 	//
 	// {"bizId": 23323}
 	ExtInfo *string `json:"ExtInfo,omitempty" xml:"ExtInfo,omitempty"`
+	// External account ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123456
 	OuterAccountId *string `json:"OuterAccountId,omitempty" xml:"OuterAccountId,omitempty"`
+	// External account type.
+	//
 	// This parameter is required.
 	//
 	// example:

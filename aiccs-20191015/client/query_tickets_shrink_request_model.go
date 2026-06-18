@@ -38,53 +38,90 @@ type iQueryTicketsShrinkRequest interface {
 }
 
 type QueryTicketsShrinkRequest struct {
+	// Ticket ID.
+	//
 	// example:
 	//
 	// 223468****
 	CaseId *int64 `json:"CaseId,omitempty" xml:"CaseId,omitempty"`
+	// Ticket status code.
+	//
 	// example:
 	//
 	// 2
 	CaseStatus *int32 `json:"CaseStatus,omitempty" xml:"CaseStatus,omitempty"`
+	// Ticket type code (assigned by the system).
+	//
 	// example:
 	//
 	// 1223
 	CaseType *int32 `json:"CaseType,omitempty" xml:"CaseType,omitempty"`
+	// Channel ID.
+	//
 	// example:
 	//
 	// 02acfefd3fa14049826ac1a89e1xxxxx
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// Channel Type. Valid values:
+	//
+	// - **0**: Not filled in
+	//
+	// - **1**: Hotline
+	//
+	// - **2**: Online
+	//
 	// example:
 	//
 	// 1
 	ChannelType *int32 `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
+	// Current page. Default Value: **1**.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// Assignee ID.
+	//
 	// example:
 	//
 	// 123456
-	DealId      *int64  `json:"DealId,omitempty" xml:"DealId,omitempty"`
+	DealId *int64 `json:"DealId,omitempty" xml:"DealId,omitempty"`
+	// Additional information.
+	//
+	// example:
+	//
+	// 无
 	ExtraShrink *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
+	// Instance ID.
+	//
+	// Log on to the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview) and view the instance ID in **Instance Management**.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc_xp_pre-cn-***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Page size. Default Value: **10**.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Template ID.
+	//
 	// example:
 	//
 	// 29506
 	SrType *int64 `json:"SrType,omitempty" xml:"SrType,omitempty"`
+	// Job status.
+	//
 	// example:
 	//
 	// 3
 	TaskStatus *int32 `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// Touch ID.
+	//
 	// example:
 	//
 	// 15030609

@@ -22,19 +22,32 @@ type iListTaskResponseBody interface {
 }
 
 type ListTaskResponseBody struct {
+	// Request status code. A return value of OK indicates that the request succeeded.
+	//
 	// example:
 	//
 	// OK
-	Code *string                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// List of job data.
 	Data *ListTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Description of the status code.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// D9CB3933-9FE3-4870-BA8E-2BEE91B69D23
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the API was invoked successfully. Valid values:
+	//
+	// - **true**: Succeeded.
+	//
+	// - **false**: Failed.
+	//
 	// example:
 	//
 	// true
@@ -104,15 +117,22 @@ func (s *ListTaskResponseBody) Validate() error {
 }
 
 type ListTaskResponseBodyData struct {
+	// Current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// Number of entries per page.
+	//
 	// example:
 	//
 	// 20
-	PageSize *int64                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Record   []*ListTaskResponseBodyDataRecord `json:"Record,omitempty" xml:"Record,omitempty" type:"Repeated"`
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// List of job information.
+	Record []*ListTaskResponseBodyDataRecord `json:"Record,omitempty" xml:"Record,omitempty" type:"Repeated"`
+	// Total number of jobs.
+	//
 	// example:
 	//
 	// 50
@@ -177,32 +197,56 @@ func (s *ListTaskResponseBodyData) Validate() error {
 }
 
 type ListTaskResponseBodyDataRecord struct {
+	// Number of completed calls.
+	//
 	// example:
 	//
 	// 1
 	CompleteCount *int32 `json:"CompleteCount,omitempty" xml:"CompleteCount,omitempty"`
+	// Job start time. The value is a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1618477232000
 	FireTime *string `json:"FireTime,omitempty" xml:"FireTime,omitempty"`
+	// Creation Time of the job. Format: UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1618477232000
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The unique job ID for the robot calling task.
+	//
 	// example:
 	//
-	// 123456
+	// 12****
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the specified robot, which is the script ID.
+	//
 	// example:
 	//
-	// 123456
-	RobotId   *int64  `json:"RobotId,omitempty" xml:"RobotId,omitempty"`
+	// 12****
+	RobotId *int64 `json:"RobotId,omitempty" xml:"RobotId,omitempty"`
+	// Robot Name.
+	//
+	// example:
+	//
+	// 机器人
 	RobotName *string `json:"RobotName,omitempty" xml:"RobotName,omitempty"`
+	// Task Status.
+	//
 	// example:
 	//
 	// RELEASE
-	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Task Name.
+	//
+	// example:
+	//
+	// 测试任务
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// Total number of processed calls.
+	//
 	// example:
 	//
 	// 1

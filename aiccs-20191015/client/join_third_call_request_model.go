@@ -26,34 +26,48 @@ type iJoinThirdCallRequest interface {
 }
 
 type JoinThirdCallRequest struct {
+	// Agent account name (agent logon name)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123@123.com
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// acid from WebSocket after an inbound call
+	//
 	// example:
 	//
 	// 7719786
 	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	// Unique customer request ID used for idempotency validation; can be generated using UUID
+	//
 	// example:
 	//
 	// 46c1341e-2648-447a-9b11-70b6a298d94d
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// connId from WebSocket after an inbound call
+	//
 	// example:
 	//
 	// 7719788
 	ConnectionId *string `json:"ConnectionId,omitempty" xml:"ConnectionId,omitempty"`
+	// holdConnId from WebSocket after an inbound call (only provided during two-step transfer)
+	//
 	// example:
 	//
 	// 0
 	HoldConnectionId *string `json:"HoldConnectionId,omitempty" xml:"HoldConnectionId,omitempty"`
+	// AICCS instance ID, visible in the Artificial Intelligence Cloud Call Service console
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc_xp_pre-cn-***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// jobId from WebSocket after an inbound call
+	//
 	// example:
 	//
 	// 7719787

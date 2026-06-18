@@ -22,19 +22,28 @@ type iMakeDoubleCallResponseBody interface {
 }
 
 type MakeDoubleCallResponseBody struct {
+	// Status code.
+	//
 	// example:
 	//
 	// 200
-	Code *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Returned data.
 	Data *MakeDoubleCallResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Description of the status code.
+	//
 	// example:
 	//
 	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the API call succeeded.
+	//
 	// example:
 	//
 	// true
@@ -104,6 +113,8 @@ func (s *MakeDoubleCallResponseBody) Validate() error {
 }
 
 type MakeDoubleCallResponseBodyData struct {
+	// Session ID.
+	//
 	// example:
 	//
 	// 68255155365620598

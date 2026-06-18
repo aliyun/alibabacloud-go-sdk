@@ -26,29 +26,48 @@ type iGetDepartmentalLatitudeAgentStatusShrinkRequest interface {
 }
 
 type GetDepartmentalLatitudeAgentStatusShrinkRequest struct {
+	// Current page number. The value must be greater than **0**. Default value: **1**.
+	//
 	// example:
 	//
 	// 1
-	CurrentPage  *int64  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// List of department IDs.
 	DepIdsShrink *string `json:"DepIds,omitempty" xml:"DepIds,omitempty"`
+	// End UNIX timestamp. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1617761765000
 	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// Indicates whether to query by department grouping. Valid values:
+	//
+	// - **true**: Yes.
+	//
+	// - **false**: No.
+	//
 	// example:
 	//
 	// true
 	ExistDepartmentGrouping *bool `json:"ExistDepartmentGrouping,omitempty" xml:"ExistDepartmentGrouping,omitempty"`
+	// AICCS instance ID.
+	//
+	// You can obtain it from **Instance Management*	- in the left-side navigation pane of the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc_xp_pre-cn-***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Page size. The value must be greater than **0**. Default value: **20**.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Start date UNIX timestamp. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1615083365000

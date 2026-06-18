@@ -16,12 +16,18 @@ type iGetRecordDataRequest interface {
 }
 
 type GetRecordDataRequest struct {
+	// Session ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1001067****
 	Acid *string `json:"Acid,omitempty" xml:"Acid,omitempty"`
+	// Instance ID.
+	//
+	// Log on to the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview) and view the instance ID in **Instance Management**.
+	//
 	// This parameter is required.
 	//
 	// example:

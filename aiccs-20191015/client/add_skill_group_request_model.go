@@ -22,22 +22,36 @@ type iAddSkillGroupRequest interface {
 }
 
 type AddSkillGroupRequest struct {
+	// ID of the external department.
+	//
 	// example:
 	//
 	// 123456
 	OuterDepartmentId *string `json:"OuterDepartmentId,omitempty" xml:"OuterDepartmentId,omitempty"`
+	// Type of the external department.
+	//
 	// example:
 	//
 	// type_invalid
 	OuterDepartmentType *string `json:"OuterDepartmentType,omitempty" xml:"OuterDepartmentType,omitempty"`
+	// ID of the external skill group.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123456
 	OuterGroupId *string `json:"OuterGroupId,omitempty" xml:"OuterGroupId,omitempty"`
+	// Name of the external skill group.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 热线技能组
 	OuterGroupName *string `json:"OuterGroupName,omitempty" xml:"OuterGroupName,omitempty"`
+	// Type of the external skill group.
+	//
 	// This parameter is required.
 	//
 	// example:

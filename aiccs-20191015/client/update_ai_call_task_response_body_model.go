@@ -24,26 +24,46 @@ type iUpdateAiCallTaskResponseBody interface {
 }
 
 type UpdateAiCallTaskResponseBody struct {
+	// The reason why access was denied.
+	//
 	// example:
 	//
 	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The status code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the task was updated successfully. Valid values:
+	//
+	// - **true**: The update is successful.
+	//
+	// - **false**: The update failed.
+	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error message that is returned when an error occurs.
+	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// 参数不合法
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// FCD94A7F-316D-54D1-9BFC-814006CB1C34
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the API call was successful. Valid values:
+	//
+	// - **true**: Successful.
+	//
+	// - **false**: Failed.
+	//
 	// example:
 	//
 	// false

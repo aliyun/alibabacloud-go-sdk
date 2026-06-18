@@ -16,12 +16,16 @@ type iGetQualityProjectDetailRequest interface {
 }
 
 type GetQualityProjectDetailRequest struct {
+	// The Artificial Intelligence Cloud Call Service (AICCS) instance ID. You can obtain it from the console of Artificial Intelligence Cloud Call Service.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc_xp_pre***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The quality inspection job ID.
+	//
 	// This parameter is required.
 	//
 	// example:

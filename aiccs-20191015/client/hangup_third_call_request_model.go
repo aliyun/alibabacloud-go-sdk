@@ -24,30 +24,42 @@ type iHangupThirdCallRequest interface {
 }
 
 type HangupThirdCallRequest struct {
+	// Agent account name (agent logon name)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123@123.com
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The acid from the WebSocket after an incoming call
+	//
 	// example:
 	//
 	// 7719786
 	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	// Unique ID of the customer request, used for idempotency validation; can be generated using UUID
+	//
 	// example:
 	//
 	// 46c1341e-2648-447a-9b11-70b6a298d94d
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The connId from the WebSocket after an incoming call
+	//
 	// example:
 	//
 	// 7719788
 	ConnectionId *string `json:"ConnectionId,omitempty" xml:"ConnectionId,omitempty"`
+	// Artificial Intelligence Cloud Call Service (AICCS) instance ID, visible in the Artificial Intelligence Cloud Call Service console
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc_xp_pre-cn-***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The jobId from the WebSocket after an incoming call
+	//
 	// example:
 	//
 	// 7719787

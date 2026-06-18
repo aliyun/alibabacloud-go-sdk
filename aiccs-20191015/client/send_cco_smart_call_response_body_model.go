@@ -20,18 +20,26 @@ type iSendCcoSmartCallResponseBody interface {
 }
 
 type SendCcoSmartCallResponseBody struct {
-	// example:
+	// Request status code. A return value of "OK" indicates that the request succeeded.
 	//
-	// 16012854210^10281427****
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// example:
 	//
 	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Unique receipt ID for this call.
+	//
+	// example:
+	//
+	// 16012854210^10281427****
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Description of the status code.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// A90E4451-FED7-49D2-87C8-00700A8C4D0D

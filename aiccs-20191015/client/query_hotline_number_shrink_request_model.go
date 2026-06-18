@@ -24,27 +24,40 @@ type iQueryHotlineNumberShrinkRequest interface {
 }
 
 type QueryHotlineNumberShrinkRequest struct {
+	// The current page number. The value must be greater than **0**. Default value: **1**.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The department ID.
+	//
 	// example:
 	//
 	// 2256****
-	DepartmentId   *int64  `json:"DepartmentId,omitempty" xml:"DepartmentId,omitempty"`
+	DepartmentId *int64 `json:"DepartmentId,omitempty" xml:"DepartmentId,omitempty"`
+	// The list of skill groups.
 	GroupIdsShrink *string `json:"GroupIds,omitempty" xml:"GroupIds,omitempty"`
+	// The hotline number. Fuzzy query is supported.
+	//
 	// example:
 	//
 	// 0571****2211
 	HotlineNumber *string `json:"HotlineNumber,omitempty" xml:"HotlineNumber,omitempty"`
+	// The Artificial Intelligence Cloud Call Service (AICCS) instance ID.
+	//
+	// You can obtain it from **Instance Management*	- in the left-side navigation pane of the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc_xp_pre-cn-***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The number of entries per page. The value must be greater than **0**. Default value: **20**.
+	//
 	// This parameter is required.
 	//
 	// example:

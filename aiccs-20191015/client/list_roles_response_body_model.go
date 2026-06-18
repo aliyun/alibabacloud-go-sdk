@@ -22,19 +22,28 @@ type iListRolesResponseBody interface {
 }
 
 type ListRolesResponseBody struct {
+	// Role information.
 	Data []*ListRolesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Status code. A return value of 200 indicates that the request succeeded.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Status code description.
+	//
 	// example:
 	//
 	// xxxx
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the API call succeeded.
+	//
 	// example:
 	//
 	// true
@@ -108,32 +117,54 @@ func (s *ListRolesResponseBody) Validate() error {
 }
 
 type ListRolesResponseBodyData struct {
+	// Tenant ID.
+	//
 	// example:
 	//
 	// 1
 	BuId *int64 `json:"BuId,omitempty" xml:"BuId,omitempty"`
+	// Role code.
+	//
 	// example:
 	//
 	// admin
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Creation Time. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
+	//
 	// example:
 	//
 	// 2020-01-03T20:25:33Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Role description.
+	//
 	// example:
 	//
 	// Admin
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// ID of the group to which the role belongs.
+	//
 	// example:
 	//
 	// 0
-	RoleGroupId   *int64  `json:"RoleGroupId,omitempty" xml:"RoleGroupId,omitempty"`
+	RoleGroupId *int64 `json:"RoleGroupId,omitempty" xml:"RoleGroupId,omitempty"`
+	// Name of the role group to which the role belongs.
+	//
+	// example:
+	//
+	// 角色组名称
 	RoleGroupName *string `json:"RoleGroupName,omitempty" xml:"RoleGroupName,omitempty"`
+	// Role ID.
+	//
 	// example:
 	//
 	// 1
-	RoleId *int64  `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
-	Title  *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	RoleId *int64 `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	// Role name.
+	//
+	// example:
+	//
+	// 企业管理员
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s ListRolesResponseBodyData) String() string {

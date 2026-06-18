@@ -20,14 +20,22 @@ type iLlmSmartCallFullDuplexResponseBody interface {
 }
 
 type LlmSmartCallFullDuplexResponseBody struct {
+	// The call record ID that identifies a call record.
+	//
+	// > When you call the LlmSmartCall operation to initiate an LLM-based outbound call, this call record ID (CallId) is returned.
+	//
 	// example:
 	//
 	// 153955119976^140696759976
 	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	// The error code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// OK

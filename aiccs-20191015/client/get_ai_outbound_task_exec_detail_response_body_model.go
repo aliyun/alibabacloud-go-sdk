@@ -22,19 +22,32 @@ type iGetAiOutboundTaskExecDetailResponseBody interface {
 }
 
 type GetAiOutboundTaskExecDetailResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// List of task executions.
 	Data *GetAiOutboundTaskExecDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Status code description.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// D9CB3933-9FE3-4870-BA8E-2BEE91B69D23
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the API was invoked successfully.
+	//
+	// - **true**: Succeeded.
+	//
+	// - **false**: Failed.
+	//
 	// example:
 	//
 	// true
@@ -104,19 +117,28 @@ func (s *GetAiOutboundTaskExecDetailResponseBody) Validate() error {
 }
 
 type GetAiOutboundTaskExecDetailResponseBodyData struct {
+	// Current page number.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// Indicates whether a next page exists.
+	//
 	// example:
 	//
 	// true
-	HasNextPage *bool                                              `json:"HasNextPage,omitempty" xml:"HasNextPage,omitempty"`
-	List        []*GetAiOutboundTaskExecDetailResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	HasNextPage *bool `json:"HasNextPage,omitempty" xml:"HasNextPage,omitempty"`
+	// List of outbound call executions.
+	List []*GetAiOutboundTaskExecDetailResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// Page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Total number of jobs.
+	//
 	// example:
 	//
 	// 199
@@ -190,38 +212,66 @@ func (s *GetAiOutboundTaskExecDetailResponseBodyData) Validate() error {
 }
 
 type GetAiOutboundTaskExecDetailResponseBodyDataList struct {
+	// Job batch.
+	//
 	// example:
 	//
 	// 1
 	BatchVersion *int32 `json:"BatchVersion,omitempty" xml:"BatchVersion,omitempty"`
+	// Custom business information
+	//
 	// example:
 	//
 	// 123
 	BizData *string `json:"BizData,omitempty" xml:"BizData,omitempty"`
+	// The number of outbound calls.
+	//
 	// example:
 	//
 	// 1
 	CallCount *int32 `json:"CallCount,omitempty" xml:"CallCount,omitempty"`
+	// The activity ID associated with this outbound call.
+	//
 	// example:
 	//
 	// 123456
 	CaseId *int64 `json:"CaseId,omitempty" xml:"CaseId,omitempty"`
+	// Number import time. UNIX timestamp format, unit: milliseconds.
+	//
 	// example:
 	//
 	// 1632289999000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Result of the last outbound call.
+	//
 	// example:
 	//
 	// 未接通
 	LastCallResult *string `json:"LastCallResult,omitempty" xml:"LastCallResult,omitempty"`
+	// Outbound phone number.
+	//
 	// example:
 	//
 	// 150****0000
 	PhoneNum *string `json:"PhoneNum,omitempty" xml:"PhoneNum,omitempty"`
+	// Execution status. Valid values:
+	//
+	// - **1**: Pending call.
+	//
+	// - **2**: Calling.
+	//
+	// - **3**: Completed.
+	//
+	// - **4**: Stopped.
+	//
+	// - **5**: Pending retry.
+	//
 	// example:
 	//
 	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Execution status description.
+	//
 	// example:
 	//
 	// 待呼叫

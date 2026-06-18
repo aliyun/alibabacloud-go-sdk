@@ -34,19 +34,25 @@ type iQueryAiCallTaskPageRequest interface {
 }
 
 type QueryAiCallTaskPageRequest struct {
+	// The agent name. The system performs a fuzzy search based on this name.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// 测试智能体
 	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
 	// example:
 	//
 	// 示例值示例值示例值
 	ApplicationCode *string `json:"ApplicationCode,omitempty" xml:"ApplicationCode,omitempty"`
 	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page number. The value must be greater than **0**. The default value is **1**.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
@@ -57,17 +63,31 @@ type QueryAiCallTaskPageRequest struct {
 	//
 	// 68
 	Source *int64 `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The task status. Valid values:
+	//
+	// - **INIT**: The task is initialized but has not started.
+	//
+	// - **FAILED**: The task failed to start.
+	//
+	// - **RUNNING**: The task is running.
+	//
+	// - **STOPPED**: The task is stopped.
+	//
 	// example:
 	//
 	// INIT
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The unique ID of the task.
+	//
 	// example:
 	//
-	// 112212312*****
+	// 1187**************
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The task name. The system performs a fuzzy search based on this name.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// 测试任务
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 }
 

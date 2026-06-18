@@ -24,26 +24,38 @@ type iDescribeRecordDataResponseBody interface {
 }
 
 type DescribeRecordDataResponseBody struct {
+	// Session ID.
+	//
 	// example:
 	//
 	// 1004849****
 	Acid *string `json:"Acid,omitempty" xml:"Acid,omitempty"`
+	// Agent ID.
+	//
 	// example:
 	//
 	// 1212****
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	// Status code. A return value of 200 indicates that the request succeeded.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Status code description.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Recording file link.
+	//
 	// example:
 	//
 	// https://****
 	OssLink *string `json:"OssLink,omitempty" xml:"OssLink,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// EE338D98-9BD3-4413-B165

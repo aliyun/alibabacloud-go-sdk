@@ -24,23 +24,38 @@ type iPageQueryAgentListNewResponseBody interface {
 }
 
 type PageQueryAgentListNewResponseBody struct {
+	// The access denied detail.
+	//
 	// example:
 	//
 	// Access denied due to insufficient permissions
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The status code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
 	Data *PageQueryAgentListNewResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The message that describes the status code.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 12345678-1234-1234-1234-123456789012
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Specifies whether the request succeeded.
+	//
+	// - **`true`**: The request succeeded.
+	//
+	// - **`false`**: The request failed.
+	//
 	// example:
 	//
 	// false
@@ -119,15 +134,22 @@ func (s *PageQueryAgentListNewResponseBody) Validate() error {
 }
 
 type PageQueryAgentListNewResponseBodyData struct {
+	// The data list.
 	List []*PageQueryAgentListNewResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 28
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 41
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total count.
+	//
 	// example:
 	//
 	// 6
@@ -192,61 +214,91 @@ func (s *PageQueryAgentListNewResponseBodyData) Validate() error {
 }
 
 type PageQueryAgentListNewResponseBodyDataList struct {
+	// The agent ID.
+	//
 	// example:
 	//
 	// 51
 	AgentId *int64 `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	// The agent creation mode. Valid values:<br>
+	//
+	// `0`: Prompt mode (`PROMPT`). `1`: Conversation flow mode (`CONVERSATION`).<br>
+	//
 	// example:
 	//
 	// 0
 	AgentMode *int64 `json:"AgentMode,omitempty" xml:"AgentMode,omitempty"`
+	// The agent name.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// 智能客服助手
 	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
+	// The application code.
+	//
 	// example:
 	//
 	// aicc_demo_app
 	ApplicationCode *string `json:"ApplicationCode,omitempty" xml:"ApplicationCode,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2024-01-20 12:00:00
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The deployment branch ID.
+	//
 	// example:
 	//
 	// 24
 	DeployBranchId *int64 `json:"DeployBranchId,omitempty" xml:"DeployBranchId,omitempty"`
+	// The effective branch name.
+	//
 	// example:
 	//
 	// master
 	DeployBranchName *string `json:"DeployBranchName,omitempty" xml:"DeployBranchName,omitempty"`
+	// The agent description.
+	//
 	// example:
 	//
-	// 示例值
+	// 智能客服助手，提供自动化的客户服务支持
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The effective version ID.
+	//
 	// example:
 	//
 	// 71
 	EffectiveVersionId *int64 `json:"EffectiveVersionId,omitempty" xml:"EffectiveVersionId,omitempty"`
+	// The effective version name.
+	//
 	// example:
 	//
 	// v1.0.0
 	EffectiveVersionName *string `json:"EffectiveVersionName,omitempty" xml:"EffectiveVersionName,omitempty"`
+	// Specifies whether the agent can be used for outbound calls. A value of `true` means the agent\\"s current deployment branch has a published version.
+	//
 	// example:
 	//
 	// true
 	IsAvailable *bool `json:"IsAvailable,omitempty" xml:"IsAvailable,omitempty"`
+	// The most recent publish time.
+	//
 	// example:
 	//
 	// 2024-01-20 12:00:00
 	LatestPublishTime *string `json:"LatestPublishTime,omitempty" xml:"LatestPublishTime,omitempty"`
+	// The last modified time.
+	//
 	// example:
 	//
 	// 2024-01-15 10:30:00
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The scene.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// 个人线索转化
 	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
 }
 

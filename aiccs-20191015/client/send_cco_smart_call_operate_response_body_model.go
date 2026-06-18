@@ -20,18 +20,30 @@ type iSendCcoSmartCallOperateResponseBody interface {
 }
 
 type SendCcoSmartCallOperateResponseBody struct {
+	// Request status code. A return value of OK indicates that the request succeeded.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Result of the command execution.
+	//
+	// - **true**: The command executed successfully.
+	//
+	// - **false**: The command execution failed.
+	//
 	// example:
 	//
 	// true
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Description of the status code.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// A90E4451-FED7-49D2-87C8-00700A8C4D0D

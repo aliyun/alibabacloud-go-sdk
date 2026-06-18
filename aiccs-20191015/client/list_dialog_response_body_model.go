@@ -22,19 +22,32 @@ type iListDialogResponseBody interface {
 }
 
 type ListDialogResponseBody struct {
+	// Request status code. A return value of OK indicates that the request succeeded.
+	//
 	// example:
 	//
 	// OK
-	Code *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Call interaction content.
 	Data []*ListDialogResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Status code description.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// D9CB3933-9FE3-4870-BA8E-2BEE91B69D23
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the API invocation succeeded. Valid values:
+	//
+	// - **true**: Succeeded.
+	//
+	// - **false**: Failed.
+	//
 	// example:
 	//
 	// true
@@ -108,16 +121,36 @@ func (s *ListDialogResponseBody) Validate() error {
 }
 
 type ListDialogResponseBodyData struct {
+	// Dialogue content.
+	//
+	// example:
+	//
+	// 您好
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// File Type.
+	//
 	// example:
 	//
 	// normal
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	// Speaking role. Valid values:
+	//
+	// - robot: Bot.
+	//
+	// - user: User.
+	//
 	// example:
 	//
 	// robot
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	Tag  *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// Intent label.
+	//
+	// example:
+	//
+	// 肯定
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// Start Time. UNIX timestamp format, in milliseconds.
+	//
 	// example:
 	//
 	// 1619763900718

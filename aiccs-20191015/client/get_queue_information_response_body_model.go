@@ -22,19 +22,32 @@ type iGetQueueInformationResponseBody interface {
 }
 
 type GetQueueInformationResponseBody struct {
+	// The request status code. A return value of 200 indicates that the request succeeded.
+	//
 	// example:
 	//
 	// 200
-	Code *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data list.
 	Data *GetQueueInformationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Description of the status code.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the API invocation succeeded. Valid values:
+	//
+	// - **true**: Succeeded.
+	//
+	// - **false**: Failed.
+	//
 	// example:
 	//
 	// true
@@ -104,15 +117,26 @@ func (s *GetQueueInformationResponseBody) Validate() error {
 }
 
 type GetQueueInformationResponseBodyData struct {
+	// Current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// Page size.
+	//
 	// example:
 	//
 	// 2000
-	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Rows     *string `json:"Rows,omitempty" xml:"Rows,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The information is a JSON string of the List<Map> type.
+	//
+	// example:
+	//
+	// {"tenant_id":"905","tenant_name":"非单元测试化BU","group_id":"-1","group_name":"-1","department_id":"-1","department_name":"-1","current_session_wait_cnt":0,"current_session_service_cnt":0,"date_id":"20210327","maximum_queuing_time":-1}
+	Rows *string `json:"Rows,omitempty" xml:"Rows,omitempty"`
+	// Total number of records.
+	//
 	// example:
 	//
 	// 4

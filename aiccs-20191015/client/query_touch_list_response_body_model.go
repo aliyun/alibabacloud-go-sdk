@@ -22,19 +22,32 @@ type iQueryTouchListResponseBody interface {
 }
 
 type QueryTouchListResponseBody struct {
+	// Status code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Description of the status code.
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 865658FD-80DE-5D49-ABEB-F3CC9863F4F1
-	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Data result.
 	ResultData *QueryTouchListResponseBodyResultData `json:"ResultData,omitempty" xml:"ResultData,omitempty" type:"Struct"`
+	// Indicates whether the API call succeeded. Valid values:
+	//
+	// - **true**: Succeeded.
+	//
+	// - **false**: Failed.
+	//
 	// example:
 	//
 	// true
@@ -104,31 +117,46 @@ func (s *QueryTouchListResponseBody) Validate() error {
 }
 
 type QueryTouchListResponseBodyResultData struct {
+	// Current page number.
+	//
 	// example:
 	//
 	// 1
-	CurrentPage *int32                                      `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Data        []*QueryTouchListResponseBodyResultDataData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// Data.
+	Data []*QueryTouchListResponseBodyResultDataData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Indicates whether the result is empty.
+	//
 	// example:
 	//
 	// false
 	Empty *bool `json:"Empty,omitempty" xml:"Empty,omitempty"`
+	// The page number of the next page.
+	//
 	// example:
 	//
 	// 2
 	NextPage *int32 `json:"NextPage,omitempty" xml:"NextPage,omitempty"`
+	// Page size.
+	//
 	// example:
 	//
 	// 2
 	OnePageSize *int32 `json:"OnePageSize,omitempty" xml:"OnePageSize,omitempty"`
+	// Previous page number.
+	//
 	// example:
 	//
 	// 2
 	PreviousPage *int32 `json:"PreviousPage,omitempty" xml:"PreviousPage,omitempty"`
+	// Total number of pages.
+	//
 	// example:
 	//
 	// 4
 	TotalPage *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	// Total number of query results.
+	//
 	// example:
 	//
 	// 100
@@ -229,102 +257,188 @@ func (s *QueryTouchListResponseBodyResultData) Validate() error {
 }
 
 type QueryTouchListResponseBodyResultDataData struct {
+	// Tenant ID.
+	//
 	// example:
 	//
 	// 905
 	BuId *int64 `json:"BuId,omitempty" xml:"BuId,omitempty"`
+	// Session ID.
+	//
 	// example:
 	//
 	// 4f8807a9de024507a3090b5b66a8****
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// Contact channel.
+	//
 	// example:
 	//
 	// 1
 	ChannelType *int32 `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
+	// Session end time. UNIX timestamp format (unit: milliseconds).
+	//
 	// example:
 	//
 	// 1611207976000
-	CloseTime       *int64  `json:"CloseTime,omitempty" xml:"CloseTime,omitempty"`
+	CloseTime *int64 `json:"CloseTime,omitempty" xml:"CloseTime,omitempty"`
+	// Skill group name.
+	//
+	// example:
+	//
+	// 测试1
 	CommonQueueName *string `json:"CommonQueueName,omitempty" xml:"CommonQueueName,omitempty"`
+	// Department ID.
+	//
 	// example:
 	//
 	// 100
-	DepId          *int64                                            `json:"DepId,omitempty" xml:"DepId,omitempty"`
-	ExtAttrs       *QueryTouchListResponseBodyResultDataDataExtAttrs `json:"ExtAttrs,omitempty" xml:"ExtAttrs,omitempty" type:"Struct"`
-	ExtAttrsString map[string]interface{}                            `json:"ExtAttrsString,omitempty" xml:"ExtAttrsString,omitempty"`
+	DepId *int64 `json:"DepId,omitempty" xml:"DepId,omitempty"`
+	// Extension fields.
+	ExtAttrs *QueryTouchListResponseBodyResultDataDataExtAttrs `json:"ExtAttrs,omitempty" xml:"ExtAttrs,omitempty" type:"Struct"`
+	// Large object.
+	ExtAttrsString map[string]interface{} `json:"ExtAttrsString,omitempty" xml:"ExtAttrsString,omitempty"`
+	// Feedback.
+	//
 	// example:
 	//
 	// xxxx
 	Feedback *string `json:"Feedback,omitempty" xml:"Feedback,omitempty"`
+	// Conversation pickup time, in UNIX timestamp format (unit: milliseconds).
+	//
 	// example:
 	//
 	// 1611209971000
 	FirstTime *int64 `json:"FirstTime,omitempty" xml:"FirstTime,omitempty"`
+	// Conversation initiator.
+	//
 	// example:
 	//
 	// 6400665****
 	FromId *int64 `json:"FromId,omitempty" xml:"FromId,omitempty"`
+	// Creation Time, in UNIX timestamp format (unit: milliseconds).
+	//
 	// example:
 	//
 	// 1611209971000
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// Update Time. UNIX timestamp format (unit: milliseconds).
+	//
 	// example:
 	//
 	// 1611207979000
 	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// Membership ID.
+	//
 	// example:
 	//
 	// 6400665****
-	MemberId   *int64  `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
+	MemberId *int64 `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
+	// Membership name.
+	//
+	// example:
+	//
+	// 访客
 	MemberName *string `json:"MemberName,omitempty" xml:"MemberName,omitempty"`
+	// Parent contact ID.
+	//
 	// example:
 	//
 	// 0
 	ParentTouchId *int64 `json:"ParentTouchId,omitempty" xml:"ParentTouchId,omitempty"`
+	// Skill group ID.
+	//
 	// example:
 	//
 	// 111
 	QueueId *int64 `json:"QueueId,omitempty" xml:"QueueId,omitempty"`
+	// Service agent ID.
+	//
 	// example:
 	//
 	// 67****
 	ServicerId *int64 `json:"ServicerId,omitempty" xml:"ServicerId,omitempty"`
+	// Service agent name.
+	//
 	// example:
 	//
-	// 13900001234
+	// 1390000****
 	ServicerName *string `json:"ServicerName,omitempty" xml:"ServicerName,omitempty"`
+	// Contact status. Valid values:
+	//
+	// - **1**: Incoming call received.
+	//
+	// - **2**: Agent has joined.
+	//
+	// - **3**: In conversation.
+	//
+	// - **4**: Ended.
+	//
 	// example:
 	//
 	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Change owner list.
+	//
 	// example:
 	//
 	// null
 	SwitchUser *string `json:"SwitchUser,omitempty" xml:"SwitchUser,omitempty"`
+	// Conversation recipient.
+	//
 	// example:
 	//
-	// 678026
+	// 67****
 	ToId *int64 `json:"ToId,omitempty" xml:"ToId,omitempty"`
+	// The reason why the session ended. Valid values:
+	//
+	// - **0**: Unknown.
+	//
+	// - **1**: Contact failed.
+	//
+	// - **2**: Terminated by customer.
+	//
+	// - **3**: Terminated by agent.
+	//
+	// - **4**: Call abnormally interrupted.
+	//
+	// - **5**: Terminated due to change owner.
+	//
+	// - **6**: Terminated by system.
+	//
 	// example:
 	//
 	// 1
 	TouchContent *string `json:"TouchContent,omitempty" xml:"TouchContent,omitempty"`
+	// End reason.
+	//
 	// example:
 	//
 	// 2
 	TouchEndReason *int32 `json:"TouchEndReason,omitempty" xml:"TouchEndReason,omitempty"`
+	// Touch ID.
+	//
 	// example:
 	//
 	// 1386****
 	TouchId *string `json:"TouchId,omitempty" xml:"TouchId,omitempty"`
+	// Conversation duration (unit: seconds).
+	//
 	// example:
 	//
 	// 111
 	TouchTime *string `json:"TouchTime,omitempty" xml:"TouchTime,omitempty"`
+	// Touch type. Valid values:
+	//
+	// - **1**: Active touch.
+	//
+	// - **2**: Passive touch.
+	//
 	// example:
 	//
 	// 2
 	TouchType *int32 `json:"TouchType,omitempty" xml:"TouchType,omitempty"`
+	// User touch ID.
+	//
 	// example:
 	//
 	// 1386****
@@ -601,38 +715,80 @@ func (s *QueryTouchListResponseBodyResultDataData) Validate() error {
 }
 
 type QueryTouchListResponseBodyResultDataDataExtAttrs struct {
+	// Inbound call caller number.
+	//
 	// example:
 	//
 	// 187****0000
 	Ani *string `json:"Ani,omitempty" xml:"Ani,omitempty"`
+	// For outbound calls, this is the called number. For inbound calls, this is also the called number.
+	//
 	// example:
 	//
 	// 05712688****
 	Dnis *string `json:"Dnis,omitempty" xml:"Dnis,omitempty"`
+	// Satisfaction Level. Valid values:
+	//
+	// - **2**: Level 2 satisfaction.
+	//
+	// - **3**: Level 3 satisfaction.
+	//
+	// - **4**: Level 4 satisfaction.
+	//
+	// - **5**: Level 5 satisfaction.
+	//
 	// example:
 	//
 	// 2
 	EvaluationLevel *int32 `json:"EvaluationLevel,omitempty" xml:"EvaluationLevel,omitempty"`
+	// Satisfaction rating. Valid values:
+	//
+	// - **1**: Very dissatisfied.
+	//
+	// - **2**: Dissatisfied.
+	//
+	// - **3**: Neutral.
+	//
+	// - **4**: Satisfied.
+	//
+	// - **5**: Very satisfied.
+	//
 	// example:
 	//
 	// 1
 	EvaluationScore *int32 `json:"EvaluationScore,omitempty" xml:"EvaluationScore,omitempty"`
+	// Evaluation solution.
+	//
 	// example:
 	//
 	// 0
 	EvaluationSolution *int32 `json:"EvaluationSolution,omitempty" xml:"EvaluationSolution,omitempty"`
+	// Evaluation status. Valid values:
+	//
+	// - **-1**: Evaluation not initiated.
+	//
+	// - **0**: Not evaluated.
+	//
+	// - **1**: Evaluated.
+	//
 	// example:
 	//
 	// 1
 	EvaluationStatus *int32 `json:"EvaluationStatus,omitempty" xml:"EvaluationStatus,omitempty"`
+	// Duration until first response (unit: seconds).
+	//
 	// example:
 	//
 	// 1
 	OnlineJoinRespInterval *int32 `json:"OnlineJoinRespInterval,omitempty" xml:"OnlineJoinRespInterval,omitempty"`
+	// Online session source.
+	//
 	// example:
 	//
 	// 0
 	OnlineSessionSource *int32 `json:"OnlineSessionSource,omitempty" xml:"OnlineSessionSource,omitempty"`
+	// Outbound call caller number.
+	//
 	// example:
 	//
 	// 05712688****

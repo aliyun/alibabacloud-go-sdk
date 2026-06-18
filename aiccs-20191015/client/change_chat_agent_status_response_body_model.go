@@ -24,26 +24,42 @@ type iChangeChatAgentStatusResponseBody interface {
 }
 
 type ChangeChatAgentStatusResponseBody struct {
+	// Status code.
+	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Current agent status. Valid values:
+	//
+	// - **0**: Offline
+	//
+	// - **3**: On break
+	//
 	// example:
 	//
 	// 0
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Description of the status code.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// DF6A3FB7-A5AA-43BE-A65B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Whether the API call succeeded.
+	//
 	// example:
 	//
 	// true

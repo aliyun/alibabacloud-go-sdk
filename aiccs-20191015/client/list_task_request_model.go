@@ -31,22 +31,61 @@ type iListTaskRequest interface {
 
 type ListTaskRequest struct {
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The current page number. The value must be greater than **0**. Default value: **1**.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of items per page. The value must be greater than **0**. Default value: **20**.
+	//
 	// example:
 	//
 	// 20
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	RobotName            *string `json:"RobotName,omitempty" xml:"RobotName,omitempty"`
+	// The robot name, which is the script name. You can view the names of scripts that have passed Review in the [Script Management](https://aiccs.console.aliyun.com/patter/list) interface.
+	//
+	// example:
+	//
+	// 机器人
+	RobotName *string `json:"RobotName,omitempty" xml:"RobotName,omitempty"`
+	// Job Status. Valid values:
+	//
+	// - **INIT**: Not started.
+	//
+	// - **RELEASE**: Parsing.
+	//
+	// - **RUNNING**: Executing.
+	//
+	// - **STOP**: Paused manually.
+	//
+	// - **SYSTEM_STOP**: Paused by the system.
+	//
+	// - **READY**: Pending execution.
+	//
+	// - **CANCEL**: Stopped manually.
+	//
+	// - **SYSTEM_CANCEL**: Stopped by the system.
+	//
+	// - **DONE**: Completed.
+	//
 	// example:
 	//
 	// STOP
-	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskId   *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The unique job ID of the robot calling job. You can view it in the [Task Management](https://aiccs.console.aliyun.com/job/list) interface or obtain it by using the [CreateTask](https://help.aliyun.com/document_detail/223556.html) API.
+	//
+	// example:
+	//
+	// 12****
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The job name. You can view the names of created jobs in the [Task Management](https://aiccs.console.aliyun.com/job/list) interface.
+	//
+	// example:
+	//
+	// 任务测试
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 }
 
