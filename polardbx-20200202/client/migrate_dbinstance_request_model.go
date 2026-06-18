@@ -30,46 +30,74 @@ type iMigrateDBInstanceRequest interface {
 }
 
 type MigrateDBInstanceRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pxc-xxx
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The zone ID of the primary zone for a multi-zone instance. **This parameter is required if you want to create a multi-zone instance.**.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-zhangjiakou-b
 	PrimaryZoneId *string `json:"PrimaryZoneId,omitempty" xml:"PrimaryZoneId,omitempty"`
+	// The region ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The secondary zone ID.
+	//
+	// > This parameter cannot be set to the same value as ZoneId.
+	//
 	// example:
 	//
 	// cn-beijing-l
 	SecondaryZoneId *string `json:"SecondaryZoneId,omitempty" xml:"SecondaryZoneId,omitempty"`
+	// The switchover mode. Valid values:
+	//
+	// - 0: immediately switches over.
+	//
+	// - 1: switches over within the O&M window.
+	//
 	// example:
 	//
 	// 0
 	SwitchMode *string `json:"SwitchMode,omitempty" xml:"SwitchMode,omitempty"`
+	// The zone ID for Three-zone deployment.
+	//
 	// example:
 	//
 	// cn-beijing-h
 	TertiaryZoneId *string `json:"TertiaryZoneId,omitempty" xml:"TertiaryZoneId,omitempty"`
+	// The topology type. Valid values:
+	//
+	// - **3azones**: three-zone deployment.
+	//
+	// - **1azone**: single-zone deployment.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 3azones
 	TopologyType *string `json:"TopologyType,omitempty" xml:"TopologyType,omitempty"`
+	// The ID of the virtual private cloud (VPC) where the access endpoint resides.
+	//
 	// example:
 	//
 	// vpc-****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The vSwitch ID. This parameter is required when you create a DRDS instance of the VPC network type.
+	//
 	// example:
 	//
 	// vsw-****

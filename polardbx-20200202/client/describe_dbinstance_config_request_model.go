@@ -18,18 +18,24 @@ type iDescribeDBInstanceConfigRequest interface {
 }
 
 type DescribeDBInstanceConfigRequest struct {
+	// The configuration identifier. Default value: htap.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// htap
 	ConfigName *string `json:"ConfigName,omitempty" xml:"ConfigName,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pxc-*********
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The ID of the region in which the instance resides.
+	//
 	// This parameter is required.
 	//
 	// example:

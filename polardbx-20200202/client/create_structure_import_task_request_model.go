@@ -20,20 +20,28 @@ type iCreateStructureImportTaskRequest interface {
 }
 
 type CreateStructureImportTaskRequest struct {
+	// The configuration information.
+	//
 	// example:
 	//
 	// [{\\"schemaName\\":\\"transfer_test\\",\\"tableList\\":[]}]
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The instance ID. > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/196830.html) operation to query the details of all instances in the specified region, including instance IDs.
+	//
 	// example:
 	//
 	// pxc-********
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The region in which the instance resides.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the target task. > You can call the [DescribeSlinkTasks](https://help.aliyun.com/document_detail/196830.html) operation to query the execution status of the target task, including the task ID.
+	//
 	// This parameter is required.
 	//
 	// example:

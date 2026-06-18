@@ -22,20 +22,39 @@ type iDescribeDBInstanceTopologyRequest interface {
 }
 
 type DescribeDBInstanceTopologyRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pxc-********
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	MinuteSimple   *bool   `json:"MinuteSimple,omitempty" xml:"MinuteSimple,omitempty"`
+	// The end time of the time range for querying historical instances in the topology. Format: yyyy-MM-dd HH:mm:ss.
+	//
+	// example:
+	//
+	// 2021-10-22T10:30:45Z 04:00:00
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Specifies whether to query the historical topology.
+	//
+	// example:
+	//
+	// true
+	MinuteSimple *bool `json:"MinuteSimple,omitempty" xml:"MinuteSimple,omitempty"`
+	// The region ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The start time of the time range for querying historical instances in the topology. Format: yyyy-MM-dd HH:mm:ss.
+	//
+	// example:
+	//
+	// 2021-10-21T10:30:45Z 04:00:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 

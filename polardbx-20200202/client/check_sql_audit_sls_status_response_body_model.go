@@ -16,10 +16,18 @@ type iCheckSqlAuditSlsStatusResponseBody interface {
 }
 
 type CheckSqlAuditSlsStatusResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 173CA69A-3513-591D-8A09-C1EA37CBE2D9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The enabling status of the SQL audit feature. Valid values:
+	//
+	// 	- enabled: Enabled.
+	//
+	// 	- disabled: Not enabled.
+	//
 	// example:
 	//
 	// enabled

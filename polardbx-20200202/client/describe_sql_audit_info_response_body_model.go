@@ -16,7 +16,10 @@ type iDescribeSqlAuditInfoResponseBody interface {
 }
 
 type DescribeSqlAuditInfoResponseBody struct {
+	// The returned result set.
 	Data *DescribeSqlAuditInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// DC3ABA3E-0F8A-4596-9104-F5155C******
@@ -59,17 +62,23 @@ func (s *DescribeSqlAuditInfoResponseBody) Validate() error {
 }
 
 type DescribeSqlAuditInfoResponseBodyData struct {
+	// Indicates whether the SQL audit feature is enabled.
+	//
 	// example:
 	//
 	// true
 	IsEnabled *bool `json:"IsEnabled,omitempty" xml:"IsEnabled,omitempty"`
+	// The name of the Simple Log Service Logstore.
+	//
 	// example:
 	//
 	// polardbx-sqlaudit-log
 	SLSLogStore *string `json:"SLSLogStore,omitempty" xml:"SLSLogStore,omitempty"`
+	// The name of the Simple Log Service project.
+	//
 	// example:
 	//
-	// polardbx-sqlaudit-cn-hangzhou-123456789
+	// polardbx-sqlaudit-cn-hangzhou-1852045029120897
 	SLSProject *string `json:"SLSProject,omitempty" xml:"SLSProject,omitempty"`
 }
 

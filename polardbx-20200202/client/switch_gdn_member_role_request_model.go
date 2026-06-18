@@ -30,6 +30,8 @@ type iSwitchGdnMemberRoleRequest interface {
 }
 
 type SwitchGdnMemberRoleRequest struct {
+	// The instance ID of the primary instance.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -39,6 +41,8 @@ type SwitchGdnMemberRoleRequest struct {
 	DstMainConnectString *string `json:"DstMainConnectString,omitempty" xml:"DstMainConnectString,omitempty"`
 	DstMainPort          *string `json:"DstMainPort,omitempty" xml:"DstMainPort,omitempty"`
 	IsModifyEndpoint     *string `json:"IsModifyEndpoint,omitempty" xml:"IsModifyEndpoint,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -47,9 +51,22 @@ type SwitchGdnMemberRoleRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SrcMainConnectString *string `json:"SrcMainConnectString,omitempty" xml:"SrcMainConnectString,omitempty"`
 	SrcMainPort          *string `json:"SrcMainPort,omitempty" xml:"SrcMainPort,omitempty"`
+	// The switchover mode.
+	//
 	// This parameter is required.
-	SwitchMode  *string `json:"SwitchMode,omitempty" xml:"SwitchMode,omitempty"`
-	TaskTimeout *int64  `json:"TaskTimeout,omitempty" xml:"TaskTimeout,omitempty"`
+	//
+	// example:
+	//
+	// 常规切换：switch_over
+	//
+	// 强制切换：fail_over
+	SwitchMode *string `json:"SwitchMode,omitempty" xml:"SwitchMode,omitempty"`
+	// The timeout period of the switchover task. Unit: seconds.
+	//
+	// example:
+	//
+	// 10
+	TaskTimeout *int64 `json:"TaskTimeout,omitempty" xml:"TaskTimeout,omitempty"`
 }
 
 func (s SwitchGdnMemberRoleRequest) String() string {

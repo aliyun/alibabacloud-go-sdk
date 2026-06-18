@@ -22,22 +22,32 @@ type iUpgradeColumnarVersionRequest interface {
 }
 
 type UpgradeColumnarVersionRequest struct {
+	// The column store version.
+	//
 	// example:
 	//
 	// polarx-col-kernel-5.4.20-20250819_17555906
 	ColumnarVersion *string `json:"ColumnarVersion,omitempty" xml:"ColumnarVersion,omitempty"`
+	// The instance name.
+	//
 	// example:
 	//
 	// pxc-xxx
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The instance name.
+	//
 	// example:
 	//
 	// pxc-hzrh51fze****pon-cdc
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The region in which the instance resides.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The switch mode.
+	//
 	// example:
 	//
 	// 0

@@ -22,19 +22,28 @@ type iDescribePolarxDataNodesResponseBody interface {
 }
 
 type DescribePolarxDataNodesResponseBody struct {
+	// The list of node information.
 	DBInstanceDataNodes []*DescribePolarxDataNodesResponseBodyDBInstanceDataNodes `json:"DBInstanceDataNodes,omitempty" xml:"DBInstanceDataNodes,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 0
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// BD99340C-4A45-548B-****-27584B0BCFFF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of nodes.
+	//
 	// example:
 	//
 	// 0
@@ -108,11 +117,20 @@ func (s *DescribePolarxDataNodesResponseBody) Validate() error {
 }
 
 type DescribePolarxDataNodesResponseBodyDBInstanceDataNodes struct {
+	// The description of the node instance.
+	//
+	// example:
+	//
+	// pxc-z****nfxsxy728 : PROD-OMS-Auto-生产库克隆实例
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// pxc-hzrlcjc****sz9
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// pxc-hzrp5m****04w4

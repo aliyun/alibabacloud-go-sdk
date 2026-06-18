@@ -16,10 +16,14 @@ type iDescribeDBInstanceTDERequest interface {
 }
 
 type DescribeDBInstanceTDERequest struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// pxc-********
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The region ID of the instance.
+	//
 	// example:
 	//
 	// cn-hangzhou

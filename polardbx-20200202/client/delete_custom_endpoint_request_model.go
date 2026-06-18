@@ -18,14 +18,20 @@ type iDeleteCustomEndpointRequest interface {
 }
 
 type DeleteCustomEndpointRequest struct {
+	// The ID of the custom endpoint domain name.
+	//
 	// example:
 	//
 	// pxe-8if3zrfsu****hgw
 	CustomEndpointId *string `json:"CustomEndpointId,omitempty" xml:"CustomEndpointId,omitempty"`
+	// The name of the instance.
+	//
 	// example:
 	//
 	// pxc-hzravgpt8q****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The region in which the instance resides.
+	//
 	// example:
 	//
 	// cn-hangzhou

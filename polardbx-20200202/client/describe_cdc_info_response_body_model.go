@@ -20,7 +20,10 @@ type iDescribeCdcInfoResponseBody interface {
 }
 
 type DescribeCdcInfoResponseBody struct {
+	// The instance data.
 	Data *DescribeCdcInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code of the request.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -33,6 +36,8 @@ type DescribeCdcInfoResponseBody struct {
 	//
 	// 9B2F3840-5C98-475C-B269-2D5C3A31797C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -95,31 +100,42 @@ func (s *DescribeCdcInfoResponseBody) Validate() error {
 }
 
 type DescribeCdcInfoResponseBodyData struct {
+	// The number of days that binlogs are retained.
+	//
 	// example:
 	//
 	// 15
 	BinlogPersistTime *int32 `json:"BinlogPersistTime,omitempty" xml:"BinlogPersistTime,omitempty"`
+	// The size of the binlog.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 524288000
 	BinlogSize *int32 `json:"BinlogSize,omitempty" xml:"BinlogSize,omitempty"`
+	// The latest CDC version.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// polarx-cdc-kernel-***
 	CdcNewVersion *string `json:"CdcNewVersion,omitempty" xml:"CdcNewVersion,omitempty"`
+	// The checksum switch status.
+	//
 	// example:
 	//
 	// ON
 	CheckSumSwitch *string `json:"CheckSumSwitch,omitempty" xml:"CheckSumSwitch,omitempty"`
+	// Indicates whether bidirectional replication is supported.
+	//
 	// example:
 	//
 	// true
-	EnableCyclicReplication *bool                                                  `json:"EnableCyclicReplication,omitempty" xml:"EnableCyclicReplication,omitempty"`
-	InstanceTopologyList    []*DescribeCdcInfoResponseBodyDataInstanceTopologyList `json:"InstanceTopologyList,omitempty" xml:"InstanceTopologyList,omitempty" type:"Repeated"`
+	EnableCyclicReplication *bool `json:"EnableCyclicReplication,omitempty" xml:"EnableCyclicReplication,omitempty"`
+	// The list of instances.
+	InstanceTopologyList []*DescribeCdcInfoResponseBodyDataInstanceTopologyList `json:"InstanceTopologyList,omitempty" xml:"InstanceTopologyList,omitempty" type:"Repeated"`
 	// server id
 	//
 	// This parameter is required.
@@ -128,6 +144,8 @@ type DescribeCdcInfoResponseBodyData struct {
 	//
 	// 3014767486
 	ServerId *int32 `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	// Indicates whether multi-stream CDC is supported.
+	//
 	// example:
 	//
 	// true
@@ -228,27 +246,40 @@ func (s *DescribeCdcInfoResponseBodyData) Validate() error {
 }
 
 type DescribeCdcInfoResponseBodyDataInstanceTopologyList struct {
+	// The cluster type.
+	//
 	// example:
 	//
 	// BINLOG_X
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	// The remarks on the instance type.
+	//
 	// example:
 	//
 	// ***
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The name of the multi-stream group.
+	//
 	// example:
 	//
 	// test
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The split level.
+	//
 	// example:
 	//
 	// RECORD
 	HashLevel *string `json:"HashLevel,omitempty" xml:"HashLevel,omitempty"`
+	// The name of the instance.
+	//
 	// example:
 	//
 	// pxc-***
-	InstanceName  *string                                                             `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The array of nodes.
 	PhysicalNodes []*DescribeCdcInfoResponseBodyDataInstanceTopologyListPhysicalNodes `json:"PhysicalNodes,omitempty" xml:"PhysicalNodes,omitempty" type:"Repeated"`
+	// The number of splits.
+	//
 	// example:
 	//
 	// 2
@@ -340,30 +371,44 @@ func (s *DescribeCdcInfoResponseBodyDataInstanceTopologyList) Validate() error {
 }
 
 type DescribeCdcInfoResponseBodyDataInstanceTopologyListPhysicalNodes struct {
+	// The zone in which the instance resides.
+	//
 	// example:
 	//
 	// cn-hangzhou-h
 	AZone *string `json:"AZone,omitempty" xml:"AZone,omitempty"`
+	// The disk size. Unit: MB.
+	//
 	// example:
 	//
 	// 204800
 	Disk *int32 `json:"Disk,omitempty" xml:"Disk,omitempty"`
+	// The instance specifications.
+	//
 	// example:
 	//
 	// polarx.x4.large.2e.cdc
 	NodeClass *string `json:"NodeClass,omitempty" xml:"NodeClass,omitempty"`
+	// The node ID.
+	//
 	// example:
 	//
 	// ***
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The name of the node.
+	//
 	// example:
 	//
 	// pxc-c-***
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// The instance status.
+	//
 	// example:
 	//
 	// ACTIVATION
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The instance version.
+	//
 	// example:
 	//
 	// polarx-cdc-kernel-***

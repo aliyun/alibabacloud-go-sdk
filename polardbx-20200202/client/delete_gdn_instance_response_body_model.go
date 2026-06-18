@@ -20,7 +20,12 @@ type iDeleteGdnInstanceResponseBody interface {
 }
 
 type DeleteGdnInstanceResponseBody struct {
+	// The data struct.
 	Data *DeleteGdnInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The response message.
+	//
+	// > This parameter is empty when the request succeeds. If the request fails, an exception message is returned, such as an error code.
+	//
 	// example:
 	//
 	// ****
@@ -31,6 +36,8 @@ type DeleteGdnInstanceResponseBody struct {
 	//
 	// 14036EBE-CF2E-44DB-ACE9-AC6157D3A6FC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -91,6 +98,8 @@ func (s *DeleteGdnInstanceResponseBody) Validate() error {
 }
 
 type DeleteGdnInstanceResponseBodyData struct {
+	// The task ID.
+	//
 	// example:
 	//
 	// 2209883

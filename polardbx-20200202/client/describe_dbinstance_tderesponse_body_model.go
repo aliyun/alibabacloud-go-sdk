@@ -16,7 +16,10 @@ type iDescribeDBInstanceTDEResponseBody interface {
 }
 
 type DescribeDBInstanceTDEResponseBody struct {
+	// The data struct.
 	Data *DescribeDBInstanceTDEResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// C458B1E8-1683-3645-B154-6BA32080EEA
@@ -59,6 +62,12 @@ func (s *DescribeDBInstanceTDEResponseBody) Validate() error {
 }
 
 type DescribeDBInstanceTDEResponseBodyData struct {
+	// Indicates whether TDE is enabled. Valid values:
+	//
+	// - 0: TDE is disabled.
+	//
+	// - 1: TDE is enabled.
+	//
 	// example:
 	//
 	// 0

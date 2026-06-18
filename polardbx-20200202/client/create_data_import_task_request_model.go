@@ -34,41 +34,75 @@ type iCreateDataImportTaskRequest interface {
 }
 
 type CreateDataImportTaskRequest struct {
+	// The instance ID. > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/196830.html) operation to query the details of all instances in the specified region, including instance IDs.
+	//
 	// example:
 	//
 	// pxc-********
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The execution status of the target SQL import. Valid values: 	- **importing**: importing. 	- **success**: import succeeded. 	- **fail**: import failed.
+	//
 	// example:
 	//
 	// transfer_test3
-	DstDb       *string `json:"DstDb,omitempty" xml:"DstDb,omitempty"`
+	DstDb *string `json:"DstDb,omitempty" xml:"DstDb,omitempty"`
+	// The password of the privileged account for the target ApsaraDB RDS instance. > 	- You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/196830.html) operation to query the privileged account information of the target instance, including the password. 	- This parameter takes effect only when DstPassword is set to true.
+	//
+	// example:
+	//
+	// ******
 	DstPassword *string `json:"DstPassword,omitempty" xml:"DstPassword,omitempty"`
+	// The migration task ID.
+	//
 	// example:
 	//
 	// pxc-shr8****k36vrn
-	DstResId    *string `json:"DstResId,omitempty" xml:"DstResId,omitempty"`
+	DstResId *string `json:"DstResId,omitempty" xml:"DstResId,omitempty"`
+	// The username of the target.
+	//
+	// example:
+	//
+	// bbt_cms_prod
 	DstUserName *string `json:"DstUserName,omitempty" xml:"DstUserName,omitempty"`
+	// The region in which the instance resides. > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196841.html) operation to query the regions supported by PolarDB-X, including region IDs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The import task ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// etx-szr2rr6i*****
 	SlinkTaskId *string `json:"SlinkTaskId,omitempty" xml:"SlinkTaskId,omitempty"`
+	// The database information of the source when the source database is ApsaraDB RDS for MySQL. > The source database must be consistent with the target database.
+	//
 	// example:
 	//
 	// transfer_for_st
-	SrcDb       *string `json:"SrcDb,omitempty" xml:"SrcDb,omitempty"`
+	SrcDb *string `json:"SrcDb,omitempty" xml:"SrcDb,omitempty"`
+	// The read/write mode for executing the import task on the source. Valid values: 	- **rw**: read and write. 	- **ro**: read-only.
+	//
+	// example:
+	//
+	// ******
 	SrcPassword *string `json:"SrcPassword,omitempty" xml:"SrcPassword,omitempty"`
+	// The ID of the source ApsaraDB RDS instance. > You can call the [DescribeDrivingAccess](https://help.aliyun.com/document_detail/196830.html) operation to query the details of all source ApsaraDB RDS instances in the specified region, including instance IDs.
+	//
 	// example:
 	//
 	// pxc-shrnv****kh87z
-	SrcResId    *string `json:"SrcResId,omitempty" xml:"SrcResId,omitempty"`
+	SrcResId *string `json:"SrcResId,omitempty" xml:"SrcResId,omitempty"`
+	// The username of the source.
+	//
+	// example:
+	//
+	// drds_test
 	SrcUserName *string `json:"SrcUserName,omitempty" xml:"SrcUserName,omitempty"`
 }
 

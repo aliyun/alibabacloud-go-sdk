@@ -18,14 +18,24 @@ type iDescribeActiveOperationTaskCountResponseBody interface {
 }
 
 type DescribeActiveOperationTaskCountResponseBody struct {
+	// Indicates whether a pop-up notification is required. Valid values:
+	//
+	// - 1: Required.
+	//
+	// - 0: Not required.
+	//
 	// example:
 	//
 	// 1
 	NeedPop *int64 `json:"NeedPop,omitempty" xml:"NeedPop,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// EC7E27FC-58F8-4722-89BB-D1B6D0971956
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number.
+	//
 	// example:
 	//
 	// 20

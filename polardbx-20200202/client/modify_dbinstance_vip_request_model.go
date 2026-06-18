@@ -22,6 +22,8 @@ type iModifyDBInstanceVipRequest interface {
 }
 
 type ModifyDBInstanceVipRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -29,18 +31,24 @@ type ModifyDBInstanceVipRequest struct {
 	// pxc-********
 	DBInstanceName      *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
 	InstanceClusterName *string `json:"InstanceClusterName,omitempty" xml:"InstanceClusterName,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The vSwitch ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// vsw-*********
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The ID of the virtual private cloud (VPC) where the access endpoint resides.
+	//
 	// This parameter is required.
 	//
 	// example:

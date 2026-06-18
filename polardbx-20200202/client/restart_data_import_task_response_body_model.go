@@ -20,18 +20,26 @@ type iRestartDataImportTaskResponseBody interface {
 }
 
 type RestartDataImportTaskResponseBody struct {
+	// The returned result.
+	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The response message. > This parameter is empty if the request is successful. If the request fails, an exception message is returned, such as an error code.
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// FEA5DC20-6D8A-5979-97AA-FC57546ADC20
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true

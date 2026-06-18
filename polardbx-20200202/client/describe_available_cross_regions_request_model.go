@@ -16,10 +16,14 @@ type iDescribeAvailableCrossRegionsRequest interface {
 }
 
 type DescribeAvailableCrossRegionsRequest struct {
+	// The instance name.
+	//
 	// example:
 	//
 	// pxc-hzjasd****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The region in which the instance resides.
+	//
 	// example:
 	//
 	// cn-hangzhou

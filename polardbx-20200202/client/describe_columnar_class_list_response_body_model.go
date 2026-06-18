@@ -16,6 +16,7 @@ type iDescribeColumnarClassListResponseBody interface {
 }
 
 type DescribeColumnarClassListResponseBody struct {
+	// The data struct.
 	Data *DescribeColumnarClassListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -96,14 +97,20 @@ func (s *DescribeColumnarClassListResponseBodyData) Validate() error {
 }
 
 type DescribeColumnarClassListResponseBodyDataClassCodeList struct {
+	// The instance specification.
+	//
 	// example:
 	//
 	// polarx.n8.large.col
 	ClassCode *string `json:"ClassCode,omitempty" xml:"ClassCode,omitempty"`
+	// The number of CPU cores.
+	//
 	// example:
 	//
 	// 2
 	CpuCore *string `json:"CpuCore,omitempty" xml:"CpuCore,omitempty"`
+	// The memory size. Unit: GB.
+	//
 	// example:
 	//
 	// 2048

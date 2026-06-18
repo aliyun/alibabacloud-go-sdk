@@ -20,20 +20,28 @@ type iDescribeSqlAuditInfoRequest interface {
 }
 
 type DescribeSqlAuditInfoRequest struct {
+	// The name of the audit administrator account. > This parameter is required if the three-role mode is enabled. For more information, see [Three-role mode](https://help.aliyun.com/document_detail/213824.html).
+	//
 	// example:
 	//
 	// test_daa
 	AuditAccountName *string `json:"AuditAccountName,omitempty" xml:"AuditAccountName,omitempty"`
+	// The password of the audit administrator account. > This parameter is required if the three-role mode is enabled. For more information about the three-role mode, see [Three-role mode](https://help.aliyun.com/document_detail/213824.html).
+	//
 	// example:
 	//
-	// Pw@11111
+	// ******
 	AuditAccountPassword *string `json:"AuditAccountPassword,omitempty" xml:"AuditAccountPassword,omitempty"`
+	// The instance ID. > You can call [DescribeDBInstances](https://help.aliyun.com/document_detail/196830.html) to query the details of all instances in the specified region, including instance IDs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pxc-****************
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The ID of the region where the instance resides. > You can call [DescribeRegions](https://help.aliyun.com/document_detail/196841.html) to query the regions supported by PolarDB-X, including region IDs.
+	//
 	// This parameter is required.
 	//
 	// example:

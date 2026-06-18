@@ -20,15 +20,22 @@ type iDescribeRplInspectionTaskResponseBody interface {
 }
 
 type DescribeRplInspectionTaskResponseBody struct {
+	// The task details.
 	Data *DescribeRplInspectionTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message of the task.
+	//
 	// example:
 	//
 	// *****
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -89,7 +96,10 @@ func (s *DescribeRplInspectionTaskResponseBody) Validate() error {
 }
 
 type DescribeRplInspectionTaskResponseBodyData struct {
+	// The machine task information.
 	InspectionTaskList []*DescribeRplInspectionTaskResponseBodyDataInspectionTaskList `json:"InspectionTaskList,omitempty" xml:"InspectionTaskList,omitempty" type:"Repeated"`
+	// The slink status.
+	//
 	// example:
 	//
 	// PRE_CHECK
@@ -136,14 +146,20 @@ func (s *DescribeRplInspectionTaskResponseBodyData) Validate() error {
 }
 
 type DescribeRplInspectionTaskResponseBodyDataInspectionTaskList struct {
+	// The timestamp when the task was created.
+	//
 	// example:
 	//
 	// 2025-09-25T02:36:20.000+0000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the inspection task.
+	//
 	// example:
 	//
 	// For database: wms ,Found SIMPLE sequences in 1.0. PolarDB-X 2.0 does not support SIMPLE sequence any more， please use show sequence to check them.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// 10142
@@ -154,14 +170,20 @@ type DescribeRplInspectionTaskResponseBodyDataInspectionTaskList struct {
 	//
 	// etx-hzrez23btmb6aq
 	SlinkTaskId *string `json:"SlinkTaskId,omitempty" xml:"SlinkTaskId,omitempty"`
+	// The stage name.
+	//
 	// example:
 	//
 	// CONNECTIVITY
 	Stage *string `json:"Stage,omitempty" xml:"Stage,omitempty"`
+	// The task status.
+	//
 	// example:
 	//
 	// SUCCEEDED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The timestamp of the most recent task update.
+	//
 	// example:
 	//
 	// 2025-09-23T03:25:21.000+0000

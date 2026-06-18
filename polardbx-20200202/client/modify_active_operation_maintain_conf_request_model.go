@@ -24,36 +24,52 @@ type iModifyActiveOperationMaintainConfRequest interface {
 }
 
 type ModifyActiveOperationMaintainConfRequest struct {
+	// The day of the week. Valid values: 1 to 7.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1,2,3,4,5,6,7
 	CycleTime *string `json:"CycleTime,omitempty" xml:"CycleTime,omitempty"`
+	// The cycle mode. Set this parameter to Week.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Week
 	CycleType *string `json:"CycleType,omitempty" xml:"CycleType,omitempty"`
+	// The end time.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 02:00:00Z
 	MaintainEndTime *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
+	// The start time.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 02:00:00Z
 	MaintainStartTime *string `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Specifies whether to enable the configuration. Valid values:
+	//
+	// - **1**: Enabled.
+	//
+	// - **0**: Disabled.
+	//
 	// This parameter is required.
 	//
 	// example:

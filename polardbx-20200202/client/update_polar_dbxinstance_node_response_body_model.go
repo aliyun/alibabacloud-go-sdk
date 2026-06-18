@@ -16,10 +16,14 @@ type iUpdatePolarDBXInstanceNodeResponseBody interface {
 }
 
 type UpdatePolarDBXInstanceNodeResponseBody struct {
+	// The order ID generated when the number of instance nodes is changed.
+	//
 	// example:
 	//
 	// 20211103105558
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// FEA5DC20-6D8A-5979-97AA-FC57546ADC20

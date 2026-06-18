@@ -20,22 +20,30 @@ type iModifyDBInstanceMaintainTimeRequest interface {
 }
 
 type ModifyDBInstanceMaintainTimeRequest struct {
+	// The unique token.
+	//
 	// example:
 	//
 	// 73559800-3c8c-11ec-bd40-99cfcff3fe1e
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The name of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pxc-htri0ori2r4k9p
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The maintenance window in UTC. Valid values: 00:00Z-23:59Z.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 19:00Z-20:00Z
+	// 21:00Z-00:00Z
 	MaintainTime *string `json:"MaintainTime,omitempty" xml:"MaintainTime,omitempty"`
+	// The region ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:

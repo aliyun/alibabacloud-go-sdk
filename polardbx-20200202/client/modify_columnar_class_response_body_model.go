@@ -16,6 +16,7 @@ type iModifyColumnarClassResponseBody interface {
 }
 
 type ModifyColumnarClassResponseBody struct {
+	// The policy details returned.
 	Data *ModifyColumnarClassResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -61,6 +62,8 @@ func (s *ModifyColumnarClassResponseBody) Validate() error {
 }
 
 type ModifyColumnarClassResponseBodyData struct {
+	// The task ID.
+	//
 	// example:
 	//
 	// ******

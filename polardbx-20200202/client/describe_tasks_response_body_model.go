@@ -22,19 +22,28 @@ type iDescribeTasksResponseBody interface {
 }
 
 type DescribeTasksResponseBody struct {
+	// The list of result items.
 	Items []*DescribeTasksResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 30
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// D6045D78-C119-5A17-9DEA-0F810394E008
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 2
@@ -108,46 +117,72 @@ func (s *DescribeTasksResponseBody) Validate() error {
 }
 
 type DescribeTasksResponseBodyItems struct {
+	// The start time of the task, in the yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\" format.
+	//
 	// example:
 	//
 	// 2021-10-20T19:40:00Z
 	BeginTime *string `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	// The database name associated with the task. This parameter is generally empty.
+	//
 	// example:
 	//
 	// DBName
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
+	// The end time of the task, in the yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\" format.
+	//
 	// example:
 	//
 	// 2021-10-20T20:00:00Z
 	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// The task progress, in percentage.
+	//
 	// example:
 	//
 	// 80
 	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// The detailed progress information of the task. This parameter is generally empty.
+	//
 	// example:
 	//
 	// ProgressInfo
 	ProgressInfo *string `json:"ProgressInfo,omitempty" xml:"ProgressInfo,omitempty"`
+	// The scale-out ID if the task is a scale-out task. This value serves as a unique key in the backend.
+	//
 	// example:
 	//
 	// FEA5DC20-6D8A-5979-97AA-FC57546ADC20
 	ScaleOutToken *string `json:"ScaleOutToken,omitempty" xml:"ScaleOutToken,omitempty"`
+	// The task status. Valid values:
+	//
+	// - **RUNNING**: The task is running.
+	//
+	// - **FAILED**: The task failed.
+	//
 	// example:
 	//
 	// RUNNING
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The task action, which serves as the unique key for the backend task type.
+	//
 	// example:
 	//
 	// multi_scale_out
 	TaskAction *string `json:"TaskAction,omitempty" xml:"TaskAction,omitempty"`
+	// The error code of the failed task.
+	//
 	// example:
 	//
 	// TaskErrorCode
 	TaskErrorCode *string `json:"TaskErrorCode,omitempty" xml:"TaskErrorCode,omitempty"`
+	// The error message of the failed task.
+	//
 	// example:
 	//
 	// TaskErrorMessage
 	TaskErrorMessage *string `json:"TaskErrorMessage,omitempty" xml:"TaskErrorMessage,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// 20089398

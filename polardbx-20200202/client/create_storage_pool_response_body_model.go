@@ -16,6 +16,8 @@ type iCreateStoragePoolResponseBody interface {
 }
 
 type CreateStoragePoolResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200

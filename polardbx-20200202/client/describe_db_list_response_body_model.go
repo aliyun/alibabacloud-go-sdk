@@ -20,15 +20,22 @@ type iDescribeDbListResponseBody interface {
 }
 
 type DescribeDbListResponseBody struct {
+	// The list of databases.
 	Data []*DescribeDbListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The response message. "success" is returned if the request is successful. Otherwise, an error code is returned.
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// C458B1E8-1683-3645-B154-6BA32080EEA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true
@@ -93,19 +100,28 @@ func (s *DescribeDbListResponseBody) Validate() error {
 }
 
 type DescribeDbListResponseBodyData struct {
+	// The list of accounts.
 	Accounts []*DescribeDbListResponseBodyDataAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Repeated"`
+	// The character set.
+	//
 	// example:
 	//
 	// utf8mb4
 	CharacterSetName *string `json:"CharacterSetName,omitempty" xml:"CharacterSetName,omitempty"`
+	// The database description.
+	//
 	// example:
 	//
 	// test
 	DBDescription *string `json:"DBDescription,omitempty" xml:"DBDescription,omitempty"`
+	// The instance name.
+	//
 	// example:
 	//
 	// pxc-********
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The database name.
+	//
 	// example:
 	//
 	// test
@@ -179,10 +195,14 @@ func (s *DescribeDbListResponseBodyData) Validate() error {
 }
 
 type DescribeDbListResponseBodyDataAccounts struct {
+	// The account name.
+	//
 	// example:
 	//
 	// root4test
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The account privilege.
+	//
 	// example:
 	//
 	// ReadWrite

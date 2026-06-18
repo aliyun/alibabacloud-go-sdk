@@ -16,12 +16,16 @@ type iReleaseColdDataVolumeRequest interface {
 }
 
 type ReleaseColdDataVolumeRequest struct {
+	// The name of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pxc-hzravgpt8q****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The region in which the instance resides.
+	//
 	// This parameter is required.
 	//
 	// example:

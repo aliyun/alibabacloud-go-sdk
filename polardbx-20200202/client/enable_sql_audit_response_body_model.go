@@ -16,10 +16,14 @@ type iEnableSqlAuditResponseBody interface {
 }
 
 type EnableSqlAuditResponseBody struct {
+  // The request ID.
+  // 
   // example:
   // 
   // DC3ABA3E-0F8A-4596-9104-F5167C******
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+  // Indicates whether the request was successful.
+  // 
   // example:
   // 
   // true

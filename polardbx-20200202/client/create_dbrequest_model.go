@@ -34,52 +34,96 @@ type iCreateDBRequest interface {
 }
 
 type CreateDBRequest struct {
+	// The name of the account that is authorized to access the created database.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testaccount
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The permissions granted to the account on the database. Valid values:
+	//
+	// - **ReadWrite**: read and write permissions.
+	//
+	// - **ReadOnly**: read-only permissions.
+	//
+	// - **DMLOnly**: DML-only permissions.
+	//
+	// - **DDLOnly**: DDL-only permissions.
+	//
 	// example:
 	//
 	// ReadWrite
 	AccountPrivilege *string `json:"AccountPrivilege,omitempty" xml:"AccountPrivilege,omitempty"`
+	// The character set. Valid values:
+	//
+	// - **utf8**
+	//
+	// - **gbk**
+	//
+	// - **latin1**
+	//
+	// - **utf8mb4**.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// utf8mb4
 	Charset *string `json:"Charset,omitempty" xml:"Charset,omitempty"`
+	// The name of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pxc-**************
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The description of the database.
+	//
 	// example:
 	//
 	// db for test
 	DbDescription *string `json:"DbDescription,omitempty" xml:"DbDescription,omitempty"`
+	// The name of the database to create.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testdb
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The mode of the database. Valid values:
+	//
+	// - **auto**: The database supports automatic partitioning. You do not need to specify a partition key when you create a table.
+	//
+	// - **drds**: The database does not support automatic partitioning. You must use the dedicated sharding syntax to specify sharding keys when you create a table.
+	//
 	// example:
 	//
 	// auto
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The region where the instance resides.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the security administrator account.
+	//
+	// > If the three-role mode is enabled, this parameter is required. If the three-role mode is not enabled, this parameter is not required.
+	//
 	// example:
 	//
 	// securityAccount
 	SecurityAccountName *string `json:"SecurityAccountName,omitempty" xml:"SecurityAccountName,omitempty"`
+	// The password of the security administrator account.
+	//
+	// > If the three-role mode is enabled, this parameter is required. If the three-role mode is not enabled, this parameter is not required.
+	//
 	// example:
 	//
 	// securityPassword

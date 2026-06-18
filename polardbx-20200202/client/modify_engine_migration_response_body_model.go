@@ -24,15 +24,22 @@ type iModifyEngineMigrationResponseBody interface {
 }
 
 type ModifyEngineMigrationResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
-	Code *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *ModifyEngineMigrationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The additional information. The value success is returned if the request succeeds. Otherwise, an error code is returned.
+	//
 	// example:
 	//
 	// Success
@@ -43,6 +50,8 @@ type ModifyEngineMigrationResponseBody struct {
 	//
 	// C458B1E8-1683-3645-B154-6BA32080EEA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -121,10 +130,14 @@ func (s *ModifyEngineMigrationResponseBody) Validate() error {
 }
 
 type ModifyEngineMigrationResponseBodyData struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// pxc-*********
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// 42292****

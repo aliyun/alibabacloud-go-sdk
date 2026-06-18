@@ -20,24 +20,35 @@ type iDescribeComponentPropetiesRequest interface {
 }
 
 type DescribeComponentPropetiesRequest struct {
+	// The commodity code.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// learn_EasDedicatedPrepay_public_cn
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	// The resource group ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rg-xxxxx
 	ComponentName *string `json:"ComponentName,omitempty" xml:"ComponentName,omitempty"`
+	// The region in which the instance resides. > You can call the [describeregions](https://help.aliyun.com/document_detail/196841.html) operation to query the regions supported by PolarDB-X, including region IDs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The storage type.
+	//
+	// example:
+	//
+	// cloud_auto
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 }
 

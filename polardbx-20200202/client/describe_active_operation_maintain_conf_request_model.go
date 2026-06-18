@@ -14,6 +14,8 @@ type iDescribeActiveOperationMaintainConfRequest interface {
 }
 
 type DescribeActiveOperationMaintainConfRequest struct {
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:

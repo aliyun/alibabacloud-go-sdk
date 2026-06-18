@@ -16,10 +16,14 @@ type iModifyDBInstanceClassResponseBody interface {
 }
 
 type ModifyDBInstanceClassResponseBody struct {
+	// The order ID. An order is generated when you upgrade, downgrade, or change the specifications of an instance.
+	//
 	// example:
 	//
 	// 20211103105558
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// FEA5DC20-6D8A-5979-97AA-FC57546ADC20

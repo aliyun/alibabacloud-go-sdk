@@ -20,29 +20,37 @@ type iChangeResourceGroupRequest interface {
 }
 
 type ChangeResourceGroupRequest struct {
+	// The ID of the new resource group.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rg-acfmwolx3j4****
 	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pxc-szrwrbp693****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The resource type. Currently, only PolarDB-X 2.0 instances are supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// PolarDBXInstance
+	// polardbxinstance
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 

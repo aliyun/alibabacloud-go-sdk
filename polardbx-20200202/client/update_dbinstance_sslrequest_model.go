@@ -20,22 +20,30 @@ type iUpdateDBInstanceSSLRequest interface {
 }
 
 type UpdateDBInstanceSSLRequest struct {
+	// The domain name bound to the certificate.
+	//
 	// example:
 	//
 	// pxc-hzrqjarxdocd4t.polarx.rds.aliyuncs.com
 	CertCommonName *string `json:"CertCommonName,omitempty" xml:"CertCommonName,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pxc-hzjasd****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// Specifies whether to enable SSL.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// true
 	EnableSSL *bool `json:"EnableSSL,omitempty" xml:"EnableSSL,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou

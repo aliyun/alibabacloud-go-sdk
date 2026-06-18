@@ -16,12 +16,16 @@ type iDeleteEvaluateAndImportTaskRequest interface {
 }
 
 type DeleteEvaluateAndImportTaskRequest struct {
+	// The ID of the region where the instance resides. > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196841.html) operation to query the regions supported by PolarDB-X, including region IDs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the switch task.
+	//
 	// example:
 	//
 	// etx-szr2rr6i*****

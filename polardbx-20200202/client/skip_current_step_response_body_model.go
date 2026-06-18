@@ -20,7 +20,10 @@ type iSkipCurrentStepResponseBody interface {
 }
 
 type SkipCurrentStepResponseBody struct {
+	// The returned data.
 	Data *SkipCurrentStepResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The return message. This parameter is empty when the request succeeds. When the request fails, exception information such as error codes is returned.
+	//
 	// example:
 	//
 	// *****
@@ -31,6 +34,8 @@ type SkipCurrentStepResponseBody struct {
 	//
 	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// True
@@ -91,6 +96,8 @@ func (s *SkipCurrentStepResponseBody) Validate() error {
 }
 
 type SkipCurrentStepResponseBodyData struct {
+	// The Slink task ID.
+	//
 	// example:
 	//
 	// etx-szr2rr6i*****

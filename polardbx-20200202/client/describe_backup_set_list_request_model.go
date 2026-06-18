@@ -26,31 +26,48 @@ type iDescribeBackupSetListRequest interface {
 }
 
 type DescribeBackupSetListRequest struct {
+	// The name of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pxc-xxxxxx
-	DBInstanceName  *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The region where the backup sets reside. If you specify this parameter, backup sets in the specified region are returned. You can specify only one region at a time.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	DestCrossRegion *string `json:"DestCrossRegion,omitempty" xml:"DestCrossRegion,omitempty"`
+	// The end time. Specify a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1635707845000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The page number. The value starts from 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the region where the instance resides.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The start time. Specify a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1635707845000

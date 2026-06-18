@@ -16,12 +16,16 @@ type iDescribeRdsVpcsRequest interface {
 }
 
 type DescribeRdsVpcsRequest struct {
+	// The region ID of the instance. > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196841.html) operation to query the regions supported by PolarDB-X, including region IDs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-zhangjiakou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The zone ID.
+	//
 	// example:
 	//
 	// cn-beijing-h

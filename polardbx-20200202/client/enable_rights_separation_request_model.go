@@ -28,44 +28,60 @@ type iEnableRightsSeparationRequest interface {
 }
 
 type EnableRightsSeparationRequest struct {
+  // The description of the audit account.
+  // 
   // example:
   // 
   // test123
   AuditAccountDescription *string `json:"AuditAccountDescription,omitempty" xml:"AuditAccountDescription,omitempty"`
+  // The name of the audit account.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // account_audit
   AuditAccountName *string `json:"AuditAccountName,omitempty" xml:"AuditAccountName,omitempty"`
+  // The password of the audit account.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // ******
   AuditAccountPassword *string `json:"AuditAccountPassword,omitempty" xml:"AuditAccountPassword,omitempty"`
+  // The name of the instance.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // pxc-htri0ori2r4k9p
   DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+  // The region ID of the instance.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // cn-hangzhou
   RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+  // The description of the security administrator account.
+  // 
   // example:
   // 
   // test123
   SecurityAccountDescription *string `json:"SecurityAccountDescription,omitempty" xml:"SecurityAccountDescription,omitempty"`
+  // The name of the security administrator account.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // account_sec
   SecurityAccountName *string `json:"SecurityAccountName,omitempty" xml:"SecurityAccountName,omitempty"`
+  // The password of the security administrator account.
+  // 
   // This parameter is required.
   // 
   // example:

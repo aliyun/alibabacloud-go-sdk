@@ -18,16 +18,22 @@ type iConfirmNoConnectionRequest interface {
 }
 
 type ConfirmNoConnectionRequest struct {
+	// The instance name.
+	//
 	// example:
 	//
 	// pxc-hzravgpt8q****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The unique ID of the short-link task that identifies the task to be rolled back.
+	//
 	// This parameter is required.
 	//
 	// example:

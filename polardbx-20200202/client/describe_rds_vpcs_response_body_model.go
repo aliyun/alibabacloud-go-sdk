@@ -16,11 +16,14 @@ type iDescribeRdsVpcsResponseBody interface {
 }
 
 type DescribeRdsVpcsResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 4C1A7CFB-9F73-5041-8C74-27626E58985A
-	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Vpcs      *DescribeRdsVpcsResponseBodyVpcs `json:"Vpcs,omitempty" xml:"Vpcs,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The VPC information.
+	Vpcs *DescribeRdsVpcsResponseBodyVpcs `json:"Vpcs,omitempty" xml:"Vpcs,omitempty" type:"Struct"`
 }
 
 func (s DescribeRdsVpcsResponseBody) String() string {
@@ -59,6 +62,7 @@ func (s *DescribeRdsVpcsResponseBody) Validate() error {
 }
 
 type DescribeRdsVpcsResponseBodyVpcs struct {
+	// The VPC information.
 	Vpc []*DescribeRdsVpcsResponseBodyVpcsVpc `json:"Vpc,omitempty" xml:"Vpc,omitempty" type:"Repeated"`
 }
 
@@ -93,43 +97,64 @@ func (s *DescribeRdsVpcsResponseBodyVpcs) Validate() error {
 }
 
 type DescribeRdsVpcsResponseBodyVpcsVpc struct {
+	// The Alibaba Cloud account ID.
+	//
 	// example:
 	//
 	// 314****36
 	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// The VPC ID.
+	//
 	// example:
 	//
 	// 26842
 	Bid *string `json:"Bid,omitempty" xml:"Bid,omitempty"`
+	// The IPv4 CIDR block of the VPC.
+	//
 	// example:
 	//
 	// 47.121.246.0/24
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	// The time when the VPC was created.
+	//
 	// example:
 	//
 	// Mon May 12 10:13:14 CST 2025
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The time when the VPC was last modified.
+	//
 	// example:
 	//
 	// 2024-09-29 17:47:56
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// Indicates whether the VPC is the default VPC. Valid values: **true**: The VPC is the default VPC. **false**: The VPC is not the default VPC.
+	//
 	// example:
 	//
 	// False
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// The region in which the VPC resides.
+	//
 	// example:
 	//
 	// cn-shanghai
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	// The VPC status.
+	//
 	// example:
 	//
 	// True
-	Status   *string                                       `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The vSwitch information of the VPC.
 	VSwitchs []*DescribeRdsVpcsResponseBodyVpcsVpcVSwitchs `json:"VSwitchs,omitempty" xml:"VSwitchs,omitempty" type:"Repeated"`
+	// The ID of the VPC.
+	//
 	// example:
 	//
 	// vpc-2zekldxxy28nobay7o1f3
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The name of the VPC.
+	//
 	// example:
 	//
 	// cloud_auto_test
@@ -257,34 +282,50 @@ func (s *DescribeRdsVpcsResponseBodyVpcsVpc) Validate() error {
 }
 
 type DescribeRdsVpcsResponseBodyVpcsVpcVSwitchs struct {
+	// The vSwitch CIDR block.
+	//
 	// example:
 	//
 	// 10.0.0.0/24
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	// The time when the vSwitch was created. The value is a UNIX timestamp accurate to milliseconds.
+	//
 	// example:
 	//
 	// 1574156944000
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The time when the vSwitch was last modified. The value is a UNIX timestamp.
+	//
 	// example:
 	//
 	// 2025-09-03T19:19:13+08:00
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// Indicates whether the vSwitch is the default vSwitch.
+	//
 	// example:
 	//
 	// false
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// The zone ID.
+	//
 	// example:
 	//
 	// cn-beijing-g
 	IzNo *string `json:"IzNo,omitempty" xml:"IzNo,omitempty"`
+	// The vSwitch status.
+	//
 	// example:
 	//
 	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The vSwitch ID.
+	//
 	// example:
 	//
 	// vsw-8vbkwmpn****4nrd639ih
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The name of the vSwitch.
+	//
 	// example:
 	//
 	// cloud_auto_g

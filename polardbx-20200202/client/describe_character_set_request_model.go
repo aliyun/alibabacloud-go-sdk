@@ -16,12 +16,16 @@ type iDescribeCharacterSetRequest interface {
 }
 
 type DescribeCharacterSetRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pxc-*********
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The ID of the region where the instance resides.
+	//
 	// This parameter is required.
 	//
 	// example:

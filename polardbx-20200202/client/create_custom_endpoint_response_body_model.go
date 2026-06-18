@@ -16,6 +16,7 @@ type iCreateCustomEndpointResponseBody interface {
 }
 
 type CreateCustomEndpointResponseBody struct {
+	// The returned data.
 	Data *CreateCustomEndpointResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -61,10 +62,14 @@ func (s *CreateCustomEndpointResponseBody) Validate() error {
 }
 
 type CreateCustomEndpointResponseBodyData struct {
+	// The endpoint ID.
+	//
 	// example:
 	//
 	// pxe-c4gkgqg****7sgyg
 	CustomEndpointId *string `json:"CustomEndpointId,omitempty" xml:"CustomEndpointId,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// pxc-*********

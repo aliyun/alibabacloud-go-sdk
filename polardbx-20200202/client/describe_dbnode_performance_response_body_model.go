@@ -22,19 +22,27 @@ type iDescribeDBNodePerformanceResponseBody interface {
 }
 
 type DescribeDBNodePerformanceResponseBody struct {
+	// The instance name.
+	//
 	// example:
 	//
 	// pxc-********
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The end of the time range to query. The time is in the YYYY-MM-ddTHH:mm:ssZ format (UTC).
+	//
 	// example:
 	//
 	// 2021-10-20T02:00Z
 	EndTime         *string                                               `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	PerformanceKeys *DescribeDBNodePerformanceResponseBodyPerformanceKeys `json:"PerformanceKeys,omitempty" xml:"PerformanceKeys,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// EFB5E10B-5268-170F-A378-9AF86CCEACC8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The beginning of the time range to query. The time is in the YYYY-MM-ddTHH:mm:ssZ format (UTC).
+	//
 	// example:
 	//
 	// 2021-10-20T00:00Z

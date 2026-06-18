@@ -18,10 +18,13 @@ type iDescribeStoragePoolInfoResponseBody interface {
 }
 
 type DescribeStoragePoolInfoResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
-	Code *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The list of instance details.
 	Data *DescribeStoragePoolInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -76,6 +79,7 @@ func (s *DescribeStoragePoolInfoResponseBody) Validate() error {
 }
 
 type DescribeStoragePoolInfoResponseBodyData struct {
+	// The storage pools.
 	StoragePools []*DescribeStoragePoolInfoResponseBodyDataStoragePools `json:"StoragePools,omitempty" xml:"StoragePools,omitempty" type:"Repeated"`
 }
 
@@ -110,10 +114,14 @@ func (s *DescribeStoragePoolInfoResponseBodyData) Validate() error {
 }
 
 type DescribeStoragePoolInfoResponseBodyDataStoragePools struct {
+	// The specification type of the instance (the specification code).
+	//
 	// example:
 	//
 	// polar.mysql.x4.large
 	Class *string `json:"Class,omitempty" xml:"Class,omitempty"`
+	// The list of DN IDs.
+	//
 	// example:
 	//
 	// [pxc-xdb-s-pxcbj****xxnwp0wac2c4\\",\\"pxc-xdb-s-pxcbjr3b8****p0wa1589\\"]
@@ -124,26 +132,38 @@ type DescribeStoragePoolInfoResponseBodyDataStoragePools struct {
 	//
 	// pxc-xdb-s-pxcshr****rh7fn2654fc
 	DnIdString *string `json:"DnIdString,omitempty" xml:"DnIdString,omitempty"`
+	// The reserved field.
+	//
 	// example:
 	//
 	// {\\"appId\\":\\"APP_ETLUP1E5FMI5ND5IFO8W\\"}
 	Extra *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
+	// The time when the account was created.
+	//
 	// example:
 	//
 	// 2025-08-27 23:19:52.0
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	// The time when the storage pool was last modified, in timestamp format.
+	//
 	// example:
 	//
 	// 2025-09-02 16:52:47.0
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The list of idle DN IDs.
+	//
 	// example:
 	//
 	// none
 	IdleDNIdList []*string `json:"IdleDNIdList,omitempty" xml:"IdleDNIdList,omitempty" type:"Repeated"`
+	// The name.
+	//
 	// example:
 	//
 	// test-cacheapi
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The DN that cannot be deleted.
+	//
 	// example:
 	//
 	// pxc-xdb-s-hzr*****6j4se284344

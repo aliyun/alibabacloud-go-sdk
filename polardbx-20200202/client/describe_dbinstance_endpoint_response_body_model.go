@@ -29,8 +29,6 @@ type DescribeDBInstanceEndpointResponseBody struct {
 	//
 	// xxdds
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
-	//
 	// example:
 	//
 	// A501A191-BD70-5E50-98A9-C2A486A82****
@@ -422,8 +420,11 @@ type DescribeDBInstanceEndpointResponseBodyDataItemsRealServer struct {
 	// example:
 	//
 	// 3306
-	Port      *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	ReplicaId *int64  `json:"ReplicaId,omitempty" xml:"ReplicaId,omitempty"`
+	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// example:
+	//
+	// 节点id
+	ReplicaId *int64 `json:"ReplicaId,omitempty" xml:"ReplicaId,omitempty"`
 	// example:
 	//
 	// 255

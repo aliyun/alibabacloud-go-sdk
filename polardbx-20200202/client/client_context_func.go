@@ -65,7 +65,7 @@ func (client *Client) AlignStoragePrimaryAzoneWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 开通冷存储
+// Calls the AllocateColdDataVolume operation.
 //
 // @param request - AllocateColdDataVolumeRequest
 //
@@ -113,7 +113,7 @@ func (client *Client) AllocateColdDataVolumeWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 开通公网域名
+// Calls the AllocateInstancePublicConnection operation to create a public IP address.
 //
 // @param request - AllocateInstancePublicConnectionRequest
 //
@@ -187,6 +187,10 @@ func (client *Client) AllocateInstancePublicConnectionWithContext(ctx context.Co
 	return _result, _err
 }
 
+// Summary:
+//
+// Mounts a columnar instance to a specified primary database instance.
+//
 // @param request - AttachColumnarInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -233,7 +237,7 @@ func (client *Client) AttachColumnarInstanceWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 取消主动运维任务
+// Cancels active O&M event tasks by calling the CancelActiveOperationTasks operation.
 //
 // @param request - CancelActiveOperationTasksRequest
 //
@@ -273,7 +277,15 @@ func (client *Client) CancelActiveOperationTasksWithContext(ctx context.Context,
 
 // Summary:
 //
-// 修改实例所在资源组.
+// Modifies the resource group of an instance.
+//
+// Description:
+//
+// Note:
+//
+// - The **endpoint*	- differs from other operations. Use **polardbx.aliyuncs.com*	- for Chinese mainland regions and Singapore. For other regions, use **polardbx.{region id}.aliyunc.com**.
+//
+// - When testing this API operation, if a service unavailable error is returned, verify that the **endpoint*	- is correct. You can switch the **service address*	- to **Dubai*	- or **India*	- to change the **endpoint*	- to **polardbx.aliyuncs.com**.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -327,6 +339,10 @@ func (client *Client) ChangeResourceGroupWithContext(ctx context.Context, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// Checks whether a PolarDB-X instance is authorized to use Key Management Service (KMS).
+//
 // @param request - CheckCloudResourceAuthorizedRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -375,6 +391,16 @@ func (client *Client) CheckCloudResourceAuthorizedWithContext(ctx context.Contex
 	return _result, _err
 }
 
+// Summary:
+//
+// Checks whether SQL audit logs of a specified database instance have been successfully connected to Simple Log Service (SLS).
+//
+// After the call, the system returns the connection status between the SQL audit feature and SLS for the current instance, the project and Logstore configuration information, and whether synchronization is normal.
+//
+// Description:
+//
+// > 	- The SQL audit and analysis feature of PolarDB-X 2.0 is free of charge. However, Simple Log Service charges fees for storage space, read traffic, number of requests, data transformation, and data delivery. For more information about the SQL audit feature, see [Enable SQL audit and analysis](https://help.aliyun.com/document_detail/184619.html).
+//
 // @param request - CheckSqlAuditSlsStatusRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -417,7 +443,7 @@ func (client *Client) CheckSqlAuditSlsStatusWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 取消实例迁移
+// Closes the database engine migration process for a specified instance. After you start a data migration task from another database (such as a self-managed MySQL database or an ApsaraDB RDS instance) to PolarDB-X, you can call this operation to safely stop the migration process if you need to terminate or clean up the migration state.
 //
 // @param request - CloseEngineMigrationRequest
 //
@@ -469,7 +495,11 @@ func (client *Client) CloseEngineMigrationWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 回滚切换时确认无连接
+// Confirms that no active connections exist before performing a rollback switchover.
+//
+// Description:
+//
+// Confirms that no active connections exist before a rollback task to ensure operation safety.
 //
 // @param request - ConfirmNoConnectionRequest
 //
@@ -519,6 +549,10 @@ func (client *Client) ConfirmNoConnectionWithContext(ctx context.Context, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an account by calling the CreateAccount operation.
+//
 // @param request - CreateAccountRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -591,6 +625,10 @@ func (client *Client) CreateAccountWithContext(ctx context.Context, request *Cre
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls the CreateBackup operation to create a backup.
+//
 // @param request - CreateBackupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -641,7 +679,11 @@ func (client *Client) CreateBackupWithContext(ctx context.Context, request *Crea
 
 // Summary:
 //
-// 创建自定义endpoint
+// Creates a custom endpoint for a database instance.
+//
+// Description:
+//
+// <props="china">For more information about instance accounts, see [Account management](https://help.aliyun.com/document_detail/172163.html)..
 //
 // @param request - CreateCustomEndpointRequest
 //
@@ -711,6 +753,10 @@ func (client *Client) CreateCustomEndpointWithContext(ctx context.Context, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a database by calling the CreateDB operation.
+//
 // @param request - CreateDBRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -793,7 +839,11 @@ func (client *Client) CreateDBWithContext(ctx context.Context, request *CreateDB
 
 // Summary:
 //
-// Creates a PolarDB-X instance.
+// Calls the CreateDBInstance operation to create a PolarDB-X instance.
+//
+// Description:
+//
+// ***
 //
 // @param tmpReq - CreateDBInstanceRequest
 //
@@ -963,7 +1013,11 @@ func (client *Client) CreateDBInstanceWithContext(ctx context.Context, tmpReq *C
 
 // Summary:
 //
-// 创建评估升级的数据迁移任务
+// Creates a data import task to import external data files, such as SQL scripts and CSV files, into a target database instance.
+//
+// Description:
+//
+// Creates a data import task that imports SQL or CSV files stored in OSS or ECS, or directly provided files, into a target database instance. By specifying the instance ID, database name, engine type, data source (such as an OSS path), and import type, the system performs data write operations asynchronously or synchronously. This operation is applicable to scenarios such as data migration, initialization, and data backfill. A task ID is returned for subsequent status queries and management.
 //
 // @param request - CreateDataImportTaskRequest
 //
@@ -1047,7 +1101,7 @@ func (client *Client) CreateDataImportTaskWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 创建GDN实例
+// Creates a Global Database Network (GDN) instance.
 //
 // @param request - CreateGdnInstanceRequest
 //
@@ -1116,6 +1170,10 @@ func (client *Client) CreateGdnInstanceWithContext(ctx context.Context, request 
 // Summary:
 //
 // 创建GDN从实例
+//
+// Description:
+//
+// <props="china">更多关于实例账号的信息，请参见[账号管理](https://help.aliyun.com/document_detail/172163.html)。
 //
 // @param request - CreateGdnStandbyMemberRequest
 //
@@ -1251,7 +1309,11 @@ func (client *Client) CreateGdnStandbyMemberWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 创建mem0
+// # Enable Memory Engine
+//
+// Description:
+//
+// <props="china">For more information about instance accounts, see [Account management](https://help.aliyun.com/document_detail/172163.html).
 //
 // @param request - CreateMem0Request
 //
@@ -1299,7 +1361,11 @@ func (client *Client) CreateMem0WithContext(ctx context.Context, request *Create
 
 // Summary:
 //
-// 创建评估预检任务
+// Performs a health check on the replication task during data migration.
+//
+// Description:
+//
+// During the data synchronization phase, proactively initiates a diagnostic task for the replication task to check for issues such as latency, replication interruption, or data inconsistency.
 //
 // @param request - CreateRplInspectionTaskRequest
 //
@@ -1371,7 +1437,7 @@ func (client *Client) CreateRplInspectionTaskWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 创建评估升级的兼容性评估任务
+// Creates a SQL statement assessment task. You submit SQL statements through this operation, and the system performs static analysis and risk assessment to identify execution risks and compatibility issues on the target database instance.
 //
 // @param request - CreateSQLEvaluateTaskRequest
 //
@@ -1463,7 +1529,7 @@ func (client *Client) CreateSQLEvaluateTaskWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 创建 PolarDB-X 存储资源池
+// Creates a resource storage pool.
 //
 // @param request - CreateStoragePoolRequest
 //
@@ -1523,7 +1589,7 @@ func (client *Client) CreateStoragePoolWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 创建评估升级的结构迁移任务
+// Creates a database schema import task. This operation allows you to import SQL script files or text content that contains DDL statements into a target database instance, and automatically performs schema operations such as creating tables, indexes, views, and stored procedures.
 //
 // @param request - CreateStructureImportTaskRequest
 //
@@ -1639,6 +1705,10 @@ func (client *Client) CreateSubCNInstanceWithContext(ctx context.Context, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a privileged user. Each instance can have only one privileged user.
+//
 // @param request - CreateSuperAccountRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1697,7 +1767,7 @@ func (client *Client) CreateSuperAccountWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 创建标准版迁移到企业版的操作任务
+// Creates a conversion task to change a specific status or configuration of an instance.
 //
 // @param request - CreateTransformOperationRequest
 //
@@ -1747,6 +1817,10 @@ func (client *Client) CreateTransformOperationWithContext(ctx context.Context, r
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an account by calling the DeleteAccount operation.
+//
 // @param request - DeleteAccountRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1805,7 +1879,11 @@ func (client *Client) DeleteAccountWithContext(ctx context.Context, request *Del
 
 // Summary:
 //
-// 删除自定义endpoint
+// Deletes a custom endpoint domain name.
+//
+// Description:
+//
+// Deletes the custom endpoint of a specified database instance and disables access through the domain name.
 //
 // @param request - DeleteCustomEndpointRequest
 //
@@ -1855,6 +1933,10 @@ func (client *Client) DeleteCustomEndpointWithContext(ctx context.Context, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a database by calling the DeleteDB operation.
+//
 // @param request - DeleteDBRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1905,7 +1987,7 @@ func (client *Client) DeleteDBWithContext(ctx context.Context, request *DeleteDB
 
 // Summary:
 //
-// 释放实例
+// Calls the DeleteDBInstance operation to delete an instance.
 //
 // @param request - DeleteDBInstanceRequest
 //
@@ -1953,7 +2035,11 @@ func (client *Client) DeleteDBInstanceWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 删除评估导入任务
+// Deletes an evaluation import task.
+//
+// Description:
+//
+// Deletes a created evaluation task and performs subsequent data import operations.
 //
 // @param request - DeleteEvaluateAndImportTaskRequest
 //
@@ -2001,7 +2087,7 @@ func (client *Client) DeleteEvaluateAndImportTaskWithContext(ctx context.Context
 
 // Summary:
 //
-// 删除GDN实例
+// Deletes a global database network (GDN) instance.
 //
 // @param request - DeleteGdnInstanceRequest
 //
@@ -2049,7 +2135,11 @@ func (client *Client) DeleteGdnInstanceWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 删除mem0
+// Disables the memory engine.
+//
+// Description:
+//
+// Deletes the custom endpoint of a specified database instance and disables the access entry for the domain name.
 //
 // @param request - DeleteMem0Request
 //
@@ -2151,6 +2241,10 @@ func (client *Client) DeleteSubCNInstanceWithContext(ctx context.Context, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the list of accounts by calling the DescribeAccountList operation.
+//
 // @param request - DescribeAccountListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2205,7 +2299,7 @@ func (client *Client) DescribeAccountListWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 展示全局运维窗口配置
+// Calls the DescribeActiveOperationMaintainConf operation to display the O&M window configuration.
 //
 // @param request - DescribeActiveOperationMaintainConfRequest
 //
@@ -2249,7 +2343,7 @@ func (client *Client) DescribeActiveOperationMaintainConfWithContext(ctx context
 
 // Summary:
 //
-// 获取主动运维任务数量
+// Retrieves the total number of O&M events.
 //
 // @param request - DescribeActiveOperationTaskCountRequest
 //
@@ -2289,7 +2383,7 @@ func (client *Client) DescribeActiveOperationTaskCountWithContext(ctx context.Co
 
 // Summary:
 //
-// 获取待执行自动运维任务列表
+// Queries O&M events by calling the DescribeActiveOperationTasks operation.
 //
 // @param request - DescribeActiveOperationTasksRequest
 //
@@ -2329,7 +2423,7 @@ func (client *Client) DescribeActiveOperationTasksWithContext(ctx context.Contex
 
 // Summary:
 //
-// 冷存储表列表
+// Lists cold storage tables.
 //
 // @param request - DescribeArchiveTableListRequest
 //
@@ -2397,7 +2491,7 @@ func (client *Client) DescribeArchiveTableListWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 获取已开启跨地域备份的地域
+// Queries the list of available regions that support cross-region operations, typically used for multi-region deployment or data replication scenarios.
 //
 // @param request - DescribeAvailableCrossRegionsRequest
 //
@@ -2445,7 +2539,7 @@ func (client *Client) DescribeAvailableCrossRegionsWithContext(ctx context.Conte
 
 // Summary:
 //
-// 描述备份策略
+// Calls the DescribeBackupPolicy operation to query the backup settings of an instance.
 //
 // @param request - DescribeBackupPolicyRequest
 //
@@ -2493,7 +2587,7 @@ func (client *Client) DescribeBackupPolicyWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 备份集详情
+// Queries the details of a backup set by calling the DescribeBackupSet operation.
 //
 // @param request - DescribeBackupSetRequest
 //
@@ -2547,6 +2641,10 @@ func (client *Client) DescribeBackupSetWithContext(ctx context.Context, request 
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls the DescribeBackupSetList operation to query the list of backup sets.
+//
 // @param request - DescribeBackupSetListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2583,6 +2681,18 @@ func (client *Client) DescribeBackupSetListWithContext(ctx context.Context, requ
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls the DescribeBinaryLogList operation to query binlog logs.
+//
+// Description:
+//
+// - Binlog files are retained for 15 days by default.
+//
+// - The returned log list includes all logs whose record end time is after the query start time and whose record start time is before the query end time.
+//
+// - When the DownloadLink is not NULL, you can use this URL to download the backup file. This URL is valid for 2 days after it is generated. Download the file before the URL expires.
+//
 // @param request - DescribeBinaryLogListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2649,7 +2759,15 @@ func (client *Client) DescribeBinaryLogListWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 查询多流规格列表
+// Queries the list of instance specifications.
+//
+// Description:
+//
+// - Binary log files are retained for 15 days by default.
+//
+// - The returned log list includes all logs whose log record end time is after the query start time and whose log record start time is before the query end time.
+//
+// - If DownloadLink is not NULL, you can use this URL to download the backup file. This URL is valid for 2 days after it is generated. Download the file before the URL expires.
 //
 // @param request - DescribeCdcClassListRequest
 //
@@ -2701,7 +2819,7 @@ func (client *Client) DescribeCdcClassListWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 查询CDC信息
+// Queries CDC information.
 //
 // @param request - DescribeCdcInfoRequest
 //
@@ -2749,7 +2867,15 @@ func (client *Client) DescribeCdcInfoWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// 获取CDC版本列表
+// Retrieves the list of CDC versions.
+//
+// Description:
+//
+// - Binary log files are retained for 15 days by default.
+//
+// - The returned log list includes all logs whose log record end time is after the query start time and whose log record start time is before the query end time.
+//
+// - When DownloadLink is not NULL, you can download the backup file from this URL. The URL is valid for 2 days after it is generated. Download the file before the URL expires.
 //
 // @param request - DescribeCdcVersionListRequest
 //
@@ -2799,6 +2925,10 @@ func (client *Client) DescribeCdcVersionListWithContext(ctx context.Context, req
 	return _result, _err
 }
 
+// Summary:
+//
+// Invokes the DescribeCharacterSet operation to query the character set types supported by databases in a target instance.
+//
 // @param request - DescribeCharacterSetRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2845,7 +2975,7 @@ func (client *Client) DescribeCharacterSetWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 冷存储基础信息
+// The cold storage basic information.
 //
 // @param request - DescribeColdDataBasicInfoRequest
 //
@@ -2885,7 +3015,7 @@ func (client *Client) DescribeColdDataBasicInfoWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 查询列存规格列表
+// Queries the list of column store specifications for an instance.
 //
 // @param request - DescribeColumnarClassListRequest
 //
@@ -2937,7 +3067,7 @@ func (client *Client) DescribeColumnarClassListWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 查询Columnar信息
+// Queries column store information.
 //
 // @param request - DescribeColumnarInfoRequest
 //
@@ -2985,7 +3115,15 @@ func (client *Client) DescribeColumnarInfoWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 获取Columnar版本列表
+// Queries column store version information.
+//
+// Description:
+//
+// - Binary log files are retained for 15 days by default.
+//
+// - The returned log list includes all logs whose log record end time is after the query start time and whose log record start time is before the query end time.
+//
+// - When DownloadLink is not NULL, you can download the backup file from this URL. This URL is valid for 2 days after it is generated. Download the file before the expiration time.
 //
 // @param request - DescribeColumnarVersionListRequest
 //
@@ -3033,7 +3171,7 @@ func (client *Client) DescribeColumnarVersionListWithContext(ctx context.Context
 
 // Summary:
 //
-// 查询PolarDB-X 实例指定组件的属性列表
+// Retrieves the property information of a specified component, including property names and types.
 //
 // @param request - DescribeComponentPropetiesRequest
 //
@@ -3089,7 +3227,11 @@ func (client *Client) DescribeComponentPropetiesWithContext(ctx context.Context,
 
 // Summary:
 //
-// 查询自定义连接信息
+// Queries the list of custom endpoints defined by the user.
+//
+// Description:
+//
+// Queries the list of custom endpoints configured by the user. You can use this operation to manage and view the settings of private connections or VPC endpoint services.
 //
 // @param request - DescribeCustomEndpointListRequest
 //
@@ -3145,7 +3287,7 @@ func (client *Client) DescribeCustomEndpointListWithContext(ctx context.Context,
 
 // Summary:
 //
-// 获取实例详情
+// Calls the DescribeDBInstanceAttribute operation to retrieve instance attributes.
 //
 // @param request - DescribeDBInstanceAttributeRequest
 //
@@ -3197,7 +3339,7 @@ func (client *Client) DescribeDBInstanceAttributeWithContext(ctx context.Context
 
 // Summary:
 //
-// 查询实例配置信息
+// Calls the DescribeDBInstanceConfig operation to retrieve the configuration parameters of an instance.
 //
 // @param request - DescribeDBInstanceConfigRequest
 //
@@ -3250,6 +3392,10 @@ func (client *Client) DescribeDBInstanceConfigWithContext(ctx context.Context, r
 // Summary:
 //
 // 查询endpoint列表
+//
+// Description:
+//
+// 该接口用于获取用户已配置的自定义终端节点（Endpoint）列表，便于管理和查看私有连接或VPC终端服务的设置。
 //
 // @param request - DescribeDBInstanceEndpointRequest
 //
@@ -3305,7 +3451,7 @@ func (client *Client) DescribeDBInstanceEndpointWithContext(ctx context.Context,
 
 // Summary:
 //
-// 查询实例的HA信息
+// Queries the high availability (HA) information of an instance.
 //
 // @param request - DescribeDBInstanceHARequest
 //
@@ -3351,6 +3497,10 @@ func (client *Client) DescribeDBInstanceHAWithContext(ctx context.Context, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// Views SSL information.
+//
 // @param request - DescribeDBInstanceSSLRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3395,6 +3545,10 @@ func (client *Client) DescribeDBInstanceSSLWithContext(ctx context.Context, requ
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls the DescribeDBInstanceTDE operation to retrieve the details of Transparent Data Encryption (TDE) for an instance.
+//
 // @param request - DescribeDBInstanceTDERequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3441,7 +3595,7 @@ func (client *Client) DescribeDBInstanceTDEWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 查询实例拓扑
+// Calls the DescribeDBInstanceTopology operation to retrieve the topology information of an instance.
 //
 // @param request - DescribeDBInstanceTopologyRequest
 //
@@ -3501,7 +3655,7 @@ func (client *Client) DescribeDBInstanceTopologyWithContext(ctx context.Context,
 
 // Summary:
 //
-// 通过Endpoint查询实例
+// Retrieves the basic information about an instance by using the endpoint of the instance.
 //
 // @param request - DescribeDBInstanceViaEndpointRequest
 //
@@ -3549,7 +3703,7 @@ func (client *Client) DescribeDBInstanceViaEndpointWithContext(ctx context.Conte
 
 // Summary:
 //
-// 获取PolarDB-X实例列表
+// Calls the DescribeDBInstances operation to query a list of instances.
 //
 // @param request - DescribeDBInstancesRequest
 //
@@ -3629,7 +3783,15 @@ func (client *Client) DescribeDBInstancesWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 性能监控数据接口
+// Queries the performance data of an instance by calling the DescribeDBNodePerformance operation.
+//
+// Description:
+//
+// Note:
+//
+// - The **endpoint*	- differs from other API operations. Use **polardbx.aliyuncs.com*	- for Chinese regions and Singapore. For other regions, use **polardbx.{region id}.aliyunc.com**.
+//
+// - When debugging this API operation, if a service not active error is returned, confirm that the **endpoint*	- is correct. You can switch the **service address*	- to **Dubai*	- or **India*	- and change the **endpoint*	- to **polardbx.aliyuncs.com**.
 //
 // @param request - DescribeDBNodePerformanceRequest
 //
@@ -3701,7 +3863,7 @@ func (client *Client) DescribeDBNodePerformanceWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 导入任务详情
+// Queries the execution details of a data import task.
 //
 // @param request - DescribeDataImportTaskInfoRequest
 //
@@ -3763,6 +3925,10 @@ func (client *Client) DescribeDataImportTaskInfoWithContext(ctx context.Context,
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the list of databases by calling the DescribeDbList operation.
+//
 // @param request - DescribeDbListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3811,6 +3977,10 @@ func (client *Client) DescribeDbListWithContext(ctx context.Context, request *De
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls the DescribeDistributeTableList operation to retrieve the list of database tables.
+//
 // @param request - DescribeDistributeTableListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3861,7 +4031,7 @@ func (client *Client) DescribeDistributeTableListWithContext(ctx context.Context
 
 // Summary:
 //
-// 获取已开启跨地域备份的地域
+// Queries the currently enabled cross-zone configurations.
 //
 // @param request - DescribeEnabledCrossRegionsRequest
 //
@@ -3909,7 +4079,7 @@ func (client *Client) DescribeEnabledCrossRegionsWithContext(ctx context.Context
 
 // Summary:
 //
-// 查询单个评估迁移任务详情
+// Queries the list of PolarDB-X assessment import tasks. (Single).
 //
 // @param request - DescribeEvaluateAndImportTaskRequest
 //
@@ -3957,7 +4127,11 @@ func (client *Client) DescribeEvaluateAndImportTaskWithContext(ctx context.Conte
 
 // Summary:
 //
-// 请求评估导入任务列表
+// Queries a list of assessment import tasks for PolarDB-X.
+//
+// Description:
+//
+// Creates a data import task. You can use this operation to import SQL or CSV files stored in OSS or ECS, or directly provided files, into a destination database instance. By specifying the instance ID, database name, engine type, data source (such as an OSS path), and import type, the system performs data write operations asynchronously or synchronously. This operation is applicable to scenarios such as data migration, initialization, and data backfill. A task ID is returned for subsequent status queries and management.
 //
 // @param request - DescribeEvaluateAndImportTasksRequest
 //
@@ -4009,7 +4183,7 @@ func (client *Client) DescribeEvaluateAndImportTasksWithContext(ctx context.Cont
 
 // Summary:
 //
-// 历史事件
+// Retrieves historical events.
 //
 // @param request - DescribeEventsRequest
 //
@@ -4049,7 +4223,7 @@ func (client *Client) DescribeEventsWithContext(ctx context.Context, request *De
 
 // Summary:
 //
-// 获取GDN实例列表
+// Retrieves a list of global database network (GDN) instances.
 //
 // @param request - DescribeGdnInstancesRequest
 //
@@ -4113,7 +4287,11 @@ func (client *Client) DescribeGdnInstancesWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 查询mem0实例信息
+// # View Memory Engine Information
+//
+// Description:
+//
+// > 	- The SQL audit and analysis feature of PolarDB-X 2.0 is free of charge. However, Log Service charges fees for storage space, read traffic, the number of requests, data transformation, and data shipping. For more information about the SQL audit feature, see [Enable SQL audit and analysis](https://help.aliyun.com/document_detail/184619.html).
 //
 // @param request - DescribeMem0InfoRequest
 //
@@ -4161,7 +4339,59 @@ func (client *Client) DescribeMem0InfoWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 开放商业备份集
+// Queries the whitelist of a memory engine.
+//
+// Description:
+//
+// > 	- The SQL audit and analysis feature of PolarDB-X 2.0 is free of charge. However, Log Service charges fees for storage space, read traffic, number of requests, data processing, and data shipping. For more information about the SQL audit feature, see [Enable SQL Audit and Analysis](https://help.aliyun.com/document_detail/184619.html).
+//
+// @param request - DescribeMem0SecurityIpsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeMem0SecurityIpsResponse
+func (client *Client) DescribeMem0SecurityIpsWithContext(ctx context.Context, request *DescribeMem0SecurityIpsRequest, runtime *dara.RuntimeOptions) (_result *DescribeMem0SecurityIpsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeMem0SecurityIps"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeMem0SecurityIpsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Exposes instance topology information and download links for commercial backup sets to support offline restoration of cloud instances.
 //
 // @param request - DescribeOpenBackupSetRequest
 //
@@ -4213,7 +4443,7 @@ func (client *Client) DescribeOpenBackupSetWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 查询参数模版列表
+// Queries the list of database parameter templates created by users or supported by the system, including basic information, associated engine types, and modification times of each parameter template.
 //
 // @param request - DescribeParameterGroupsRequest
 //
@@ -4253,7 +4483,7 @@ func (client *Client) DescribeParameterGroupsWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 查看参数模版
+// Calls the DescribeParameterTemplates operation to retrieve the parameter template list for an instance.
 //
 // @param request - DescribeParameterTemplatesRequest
 //
@@ -4307,6 +4537,10 @@ func (client *Client) DescribeParameterTemplatesWithContext(ctx context.Context,
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls the DescribeParameters operation to retrieve instance parameters.
+//
 // @param request - DescribeParametersRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4357,7 +4591,7 @@ func (client *Client) DescribeParametersWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 查询数据节点列表
+// Queries the details of all data nodes (Data Nodes) in a PolarDB-X instance, including node status, storage usage, and network addresses, to facilitate operations management and monitoring.
 //
 // @param request - DescribePolarxDataNodesRequest
 //
@@ -4415,6 +4649,14 @@ func (client *Client) DescribePolarxDataNodesWithContext(ctx context.Context, re
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the list of VPCs available for PolarDB-X.
+//
+// Description:
+//
+// Queries the list of Virtual Private Clouds (VPCs) available under your account for database instances. You can use this operation to select an appropriate network environment when creating or managing database instances.
+//
 // @param request - DescribeRdsVpcsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4461,7 +4703,11 @@ func (client *Client) DescribeRdsVpcsWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// 查询Vswitch信息
+// Queries the list of available vSwitches in a virtual private cloud (VPC) for an ApsaraDB RDS instance.
+//
+// Description:
+//
+// Queries the list of available virtual private clouds (VPCs) under your account for an instance, so that you can select an appropriate network environment when creating or managing a database instance.
 //
 // @param request - DescribeRdsVswitchesRequest
 //
@@ -4513,7 +4759,11 @@ func (client *Client) DescribeRdsVswitchesWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 查询预检任务结果
+// Queries the details of a replication lag inspection task for an instance.
+//
+// Description:
+//
+// During the data synchronization phase, proactively initiates a diagnostic task for the replication task to check for exceptions such as latency, interruption, or data inconsistency.
 //
 // @param request - DescribeRplInspectionTaskRequest
 //
@@ -4575,6 +4825,10 @@ func (client *Client) DescribeRplInspectionTaskWithContext(ctx context.Context, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Display the ScaleOut migration task progress.
+//
 // @param request - DescribeScaleOutMigrateTaskListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4635,6 +4889,10 @@ func (client *Client) DescribeScaleOutMigrateTaskListWithContext(ctx context.Con
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls the DescribeSecurityIps operation to view the IP whitelist of an instance.
+//
 // @param request - DescribeSecurityIpsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4681,7 +4939,7 @@ func (client *Client) DescribeSecurityIpsWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 查询 PolarDB-X 存储节点信息
+// Queries the storage usage details of an instance, including the total capacity, used space, remaining space, and other information.
 //
 // @param request - DescribeShowStorageInfoRequest
 //
@@ -4733,7 +4991,7 @@ func (client *Client) DescribeShowStorageInfoWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 慢SQL明细
+// Queries the details of slow SQL statements on compute nodes and storage nodes of a PolarDB-X instance.
 //
 // @param request - DescribeSlowLogRecordsRequest
 //
@@ -4807,6 +5065,14 @@ func (client *Client) DescribeSlowLogRecordsWithContext(ctx context.Context, req
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries SQL audit information.
+//
+// Description:
+//
+// > 	- The SQL audit and analysis feature of PolarDB-X 2.0 is free of charge. However, Simple Log Service charges fees for storage space, read traffic, number of requests, data transformation, and data delivery. For more information about the SQL audit feature, see [Enable SQL audit and analysis](https://help.aliyun.com/document_detail/184619.html).
+//
 // @param request - DescribeSqlAuditInfoRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4861,7 +5127,7 @@ func (client *Client) DescribeSqlAuditInfoWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// # SQL闪回任务列表查询
+// Queries the list of SQL flashback tasks by calling the DescribeSqlFlashbackTaskList operation.
 //
 // @param request - DescribeSqlFlashbackTaskListRequest
 //
@@ -4909,7 +5175,7 @@ func (client *Client) DescribeSqlFlashbackTaskListWithContext(ctx context.Contex
 
 // Summary:
 //
-// 查询 PolarDB-X 存储资源池信息
+// Queries the details of a storage pool, including capacity, usage, and status.
 //
 // @param request - DescribeStoragePoolInfoRequest
 //
@@ -4961,7 +5227,11 @@ func (client *Client) DescribeStoragePoolInfoWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 查询结构迁移任务结果
+// Queries the details of a database schema import task.
+//
+// Description:
+//
+// The CreateDataImportTask operation creates a data import task. You can use this operation to import SQL or CSV files stored in OSS or ECS, or directly provided, into a destination database instance. Specify the instance ID, database name, engine type, data source (such as an OSS path), and import type. The system performs the data write operation asynchronously or synchronously. This operation is applicable to scenarios such as data migration, initialization, and data backfill. A task ID is returned for subsequent status queries and management.
 //
 // @param request - DescribeStructureImportTaskInfoRequest
 //
@@ -5009,7 +5279,7 @@ func (client *Client) DescribeStructureImportTaskInfoWithContext(ctx context.Con
 
 // Summary:
 //
-// 标签列表查询
+// Retrieves tag information.
 //
 // @param request - DescribeTagsRequest
 //
@@ -5059,6 +5329,10 @@ func (client *Client) DescribeTagsWithContext(ctx context.Context, request *Desc
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the task list of an instance.
+//
 // @param request - DescribeTasksRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5137,7 +5411,7 @@ func (client *Client) DescribeTasksWithContext(ctx context.Context, request *Des
 
 // Summary:
 //
-// 查询标准版迁移到企业版的任务状态
+// Queries the current status of a task that upgrades or converts a standard instance to an Enterprise instance.
 //
 // @param request - DescribeTransformStatusRequest
 //
@@ -5187,6 +5461,10 @@ func (client *Client) DescribeTransformStatusWithContext(ctx context.Context, re
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls the DescribeUserEncryptionKeyList operation to retrieve the list of Transparent Data Encryption (TDE) keys for a user.
+//
 // @param request - DescribeUserEncryptionKeyListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5231,6 +5509,10 @@ func (client *Client) DescribeUserEncryptionKeyListWithContext(ctx context.Conte
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables three-role mode.
+//
 // @param request - DisableRightsSeparationRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5283,6 +5565,14 @@ func (client *Client) DisableRightsSeparationWithContext(ctx context.Context, re
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables the SQL audit feature.
+//
+// Description:
+//
+// > After the SQL audit and analysis feature is disabled, data is no longer written to Simple Log Service. However, you can still view historical data, which incurs storage and indexing fees. You can delete all data to deactivate Simple Log Service. After Simple Log Service is deactivated, no further fees are incurred. For more information about deactivating Simple Log Service, see [Deactivate Simple Log Service](https://help.aliyun.com/document_detail/90650.html).
+//
 // @param request - DisableSqlAuditRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5337,7 +5627,7 @@ func (client *Client) DisableSqlAuditWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// 开启三权分立
+// Enables three-role mode.
 //
 // @param request - EnableRightsSeparationRequest
 //
@@ -5407,6 +5697,14 @@ func (client *Client) EnableRightsSeparationWithContext(ctx context.Context, req
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables the SQL audit feature.
+//
+// Description:
+//
+// > 	- The PolarDB-X 2.0 SQL audit and analysis feature itself is free of charge. However, Log Service charges fees for storage space, read traffic, number of requests, data transformation, data shipping, and other services. For more information about the SQL audit feature, see [Enable SQL Audit and Analysis](https://help.aliyun.com/document_detail/184619.html).
+//
 // @param request - EnableSqlAuditRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5465,7 +5763,7 @@ func (client *Client) EnableSqlAuditWithContext(ctx context.Context, request *En
 
 // Summary:
 //
-// 查标签接口
+// Retrieves a list of labels.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -5523,6 +5821,10 @@ func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *
 	return _result, _err
 }
 
+// Summary:
+//
+// Migrates an instance from one zone to another.
+//
 // @param request - MigrateDBInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5595,6 +5897,10 @@ func (client *Client) MigrateDBInstanceWithContext(ctx context.Context, request 
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls the ModifyAccountDescription operation to modify the description of an account.
+//
 // @param request - ModifyAccountDescriptionRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5647,6 +5953,10 @@ func (client *Client) ModifyAccountDescriptionWithContext(ctx context.Context, r
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the permissions of a standard account.
+//
 // @param request - ModifyAccountPrivilegeRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5713,7 +6023,7 @@ func (client *Client) ModifyAccountPrivilegeWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 修改全局运维窗口信息
+// Calls the ModifyActiveOperationMaintainConf operation to modify the time configuration of O&M events.
 //
 // @param request - ModifyActiveOperationMaintainConfRequest
 //
@@ -5753,7 +6063,7 @@ func (client *Client) ModifyActiveOperationMaintainConfWithContext(ctx context.C
 
 // Summary:
 //
-// 修改主动运维任务
+// Calls the ModifyActiveOperationTasks operation to modify the execution time of O&M events.
 //
 // @param request - ModifyActiveOperationTasksRequest
 //
@@ -5809,11 +6119,11 @@ func (client *Client) ModifyActiveOperationTasksWithContext(ctx context.Context,
 
 // Summary:
 //
-// # CDC变配
+// Modifies the CDC configuration.
 //
 // Description:
 //
-// ***
+// ***.
 //
 // @param request - ModifyCdcClassRequest
 //
@@ -5873,11 +6183,11 @@ func (client *Client) ModifyCdcClassWithContext(ctx context.Context, request *Mo
 
 // Summary:
 //
-// # Columnar变配
+// Modifies the column store specifications.
 //
 // Description:
 //
-// ***
+// ***.
 //
 // @param request - ModifyColumnarClassRequest
 //
@@ -5937,7 +6247,11 @@ func (client *Client) ModifyColumnarClassWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 修复自定连接基本信息
+// Modifies the configuration of a custom endpoint.
+//
+// Description:
+//
+// In PolarDB-X, in addition to the default primary endpoint and read-only endpoint, you can create custom endpoints to implement more flexible read/write splitting, load balancing, or business isolation strategies. The ModifyCustomEndpoint operation allows you to dynamically adjust the attributes of these custom endpoints without restarting the instance.
 //
 // @param request - ModifyCustomEndpointRequest
 //
@@ -6005,7 +6319,11 @@ func (client *Client) ModifyCustomEndpointWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 修复自定连接的网络信息
+// Modifies the network configurations of a custom network endpoint, such as the subnet, security group, and public network access settings.
+//
+// Description:
+//
+// Deletes the custom endpoint of a specified database instance and disables access through the domain name.
 //
 // @param request - ModifyCustomEndpointNetRequest
 //
@@ -6071,6 +6389,10 @@ func (client *Client) ModifyCustomEndpointNetWithContext(ctx context.Context, re
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls the ModifyDBInstanceClass operation to modify the specifications of an instance.
+//
 // @param request - ModifyDBInstanceClassRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6153,7 +6475,7 @@ func (client *Client) ModifyDBInstanceClassWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 修改实例配置
+// Calls the ModifyDBInstanceConfig operation to modify instance configuration items.
 //
 // @param request - ModifyDBInstanceConfigRequest
 //
@@ -6209,7 +6531,7 @@ func (client *Client) ModifyDBInstanceConfigWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 修改实例链接串
+// Modifies the connection string of an instance.
 //
 // @param request - ModifyDBInstanceConnectionStringRequest
 //
@@ -6267,6 +6589,10 @@ func (client *Client) ModifyDBInstanceConnectionStringWithContext(ctx context.Co
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls the ModifyDBInstanceDescription operation to modify the description of an instance.
+//
 // @param request - ModifyDBInstanceDescriptionRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6315,6 +6641,14 @@ func (client *Client) ModifyDBInstanceDescriptionWithContext(ctx context.Context
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the maintenance window of an instance.
+//
+// Description:
+//
+// ***.
+//
 // @param request - ModifyDBInstanceMaintainTimeRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6369,11 +6703,11 @@ func (client *Client) ModifyDBInstanceMaintainTimeWithContext(ctx context.Contex
 
 // Summary:
 //
-// 切换交换机
+// Modifies the virtual IP (VIP) address or network properties bound to a database instance. This operation supports changing the internal IP address, adjusting the vSwitch, migrating across zones, and other operations.
 //
 // Description:
 //
-// ***
+// ***.
 //
 // @param request - ModifyDBInstanceVipRequest
 //
@@ -6431,6 +6765,10 @@ func (client *Client) ModifyDBInstanceVipWithContext(ctx context.Context, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls the ModifyDatabaseDescription operation to modify the description of a database.
+//
 // @param request - ModifyDatabaseDescriptionRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6485,11 +6823,11 @@ func (client *Client) ModifyDatabaseDescriptionWithContext(ctx context.Context, 
 
 // Summary:
 //
-// # ModifyEngineMigration
+// Modifies the configuration or migration parameters of a database engine migration task, such as the source database, destination database, migration objects, or migration mode.
 //
 // Description:
 //
-// ***
+// ***.
 //
 // @param request - ModifyEngineMigrationRequest
 //
@@ -6551,6 +6889,74 @@ func (client *Client) ModifyEngineMigrationWithContext(ctx context.Context, requ
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the whitelist of a memory engine instance.
+//
+// Description:
+//
+// ***.
+//
+// @param request - ModifyMem0SecurityIpsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyMem0SecurityIpsResponse
+func (client *Client) ModifyMem0SecurityIpsWithContext(ctx context.Context, request *ModifyMem0SecurityIpsRequest, runtime *dara.RuntimeOptions) (_result *ModifyMem0SecurityIpsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.GroupName) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !dara.IsNil(request.ModifyMode) {
+		query["ModifyMode"] = request.ModifyMode
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SecurityIPList) {
+		query["SecurityIPList"] = request.SecurityIPList
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyMem0SecurityIps"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyMem0SecurityIpsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Calls the ModifyParameter operation to modify instance parameters, including compute layer and storage layer parameters.
+//
 // @param request - ModifyParameterRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6611,6 +7017,10 @@ func (client *Client) ModifyParameterWithContext(ctx context.Context, request *M
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls the ModifySecurityIps operation to modify the whitelist of an instance.
+//
 // @param request - ModifySecurityIpsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6669,7 +7079,7 @@ func (client *Client) ModifySecurityIpsWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// # SQL闪回任务预检
+// Performs a pre-check and feasibility assessment for a recovery task before you execute SQL flashback recovery.
 //
 // @param request - PreCheckSqlFlashbackTaskRequest
 //
@@ -6729,7 +7139,7 @@ func (client *Client) PreCheckSqlFlashbackTaskWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 刷新评估升级任务的导入元数据
+// Refreshes the metadata of an import task.
 //
 // @param request - RefreshImportMetaRequest
 //
@@ -6781,7 +7191,7 @@ func (client *Client) RefreshImportMetaWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 关闭冷存储
+// Calls the ReleaseColdDataVolume operation.
 //
 // @param request - ReleaseColdDataVolumeRequest
 //
@@ -6827,6 +7237,10 @@ func (client *Client) ReleaseColdDataVolumeWithContext(ctx context.Context, requ
 	return _result, _err
 }
 
+// Summary:
+//
+// Releases the public network connection of an instance by calling the ReleaseInstancePublicConnection operation.
+//
 // @param request - ReleaseInstancePublicConnectionRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6875,6 +7289,10 @@ func (client *Client) ReleaseInstancePublicConnectionWithContext(ctx context.Con
 	return _result, _err
 }
 
+// Summary:
+//
+// Resets the password of an account.
+//
 // @param request - ResetAccountPasswordRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6935,9 +7353,13 @@ func (client *Client) ResetAccountPasswordWithContext(ctx context.Context, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// Resets the password of an account.
+//
 // Description:
 //
-// ***
+// ***.
 //
 // @param request - ResetAccountPasswordRestrictRequest
 //
@@ -6999,6 +7421,66 @@ func (client *Client) ResetAccountPasswordRestrictWithContext(ctx context.Contex
 	return _result, _err
 }
 
+// Summary:
+//
+// Resets the API key of the memory engine.
+//
+// Description:
+//
+// ***.
+//
+// @param request - ResetMem0AccountPasswordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResetMem0AccountPasswordResponse
+func (client *Client) ResetMem0AccountPasswordWithContext(ctx context.Context, request *ResetMem0AccountPasswordRequest, runtime *dara.RuntimeOptions) (_result *ResetMem0AccountPasswordResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.Mem0ApiKey) {
+		query["Mem0ApiKey"] = request.Mem0ApiKey
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ResetMem0AccountPassword"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ResetMem0AccountPasswordResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Restarts an instance by calling the RestartDBInstance operation.
+//
 // @param request - RestartDBInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7045,7 +7527,7 @@ func (client *Client) RestartDBInstanceWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 重启数据导入任务
+// Restarts a data import task.
 //
 // @param request - RestartDataImportTaskRequest
 //
@@ -7269,7 +7751,7 @@ func (client *Client) RestoreDBInstanceWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 跳过评估迁移的当前步骤
+// This API is used to skip the current step.
 //
 // @param request - SkipCurrentStepRequest
 //
@@ -7321,7 +7803,7 @@ func (client *Client) SkipCurrentStepWithContext(ctx context.Context, request *S
 
 // Summary:
 //
-// 开始评估迁移切换
+// Starts a database cutover for a database migration or synchronization task.
 //
 // @param request - StartSwitchDatabaseRequest
 //
@@ -7393,7 +7875,7 @@ func (client *Client) StartSwitchDatabaseWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 暂停数据导入任务
+// Stops a data import task.
 //
 // @param request - StopDataImportTaskRequest
 //
@@ -7449,7 +7931,7 @@ func (client *Client) StopDataImportTaskWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 提交SQL闪回任务
+// Creates a SQL flashback task by calling the SubmitSqlFlashbackTask operation.
 //
 // @param request - SubmitSqlFlashbackTaskRequest
 //
@@ -7593,7 +8075,7 @@ func (client *Client) SwitchDBInstanceHAWithContext(ctx context.Context, request
 
 // Summary:
 //
-// # GDN主备切换
+// Performs a primary/secondary switchover for a global database network (GDN).
 //
 // @param request - SwitchGdnMemberRoleRequest
 //
@@ -7669,7 +8151,7 @@ func (client *Client) SwitchGdnMemberRoleWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 打标签接口
+// Calls the TagResources operation to add tags to resources.
 //
 // @param request - TagResourcesRequest
 //
@@ -7725,7 +8207,7 @@ func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagR
 
 // Summary:
 //
-// 删标签接口
+// Removes tags from a resource.
 //
 // @param request - UntagResourcesRequest
 //
@@ -7785,7 +8267,7 @@ func (client *Client) UntagResourcesWithContext(ctx context.Context, request *Un
 
 // Summary:
 //
-// 更新备份策略
+// Calls the UpdateBackupPolicy operation to modify the backup policy of an instance.
 //
 // @param request - UpdateBackupPolicyRequest
 //
@@ -7911,6 +8393,10 @@ func (client *Client) UpdateBackupPolicyWithContext(ctx context.Context, request
 //
 // 更新实例的管控参数
 //
+// Description:
+//
+// <props="china">更多关于实例账号的信息，请参见[账号管理](https://help.aliyun.com/document_detail/172163.html)。
+//
 // @param request - UpdateCustinsParamRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7963,6 +8449,10 @@ func (client *Client) UpdateCustinsParamWithContext(ctx context.Context, request
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the SSL configuration of an instance.
+//
 // @param request - UpdateDBInstanceSSLRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8015,6 +8505,10 @@ func (client *Client) UpdateDBInstanceSSLWithContext(ctx context.Context, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables Transparent Data Encryption (TDE) for an instance by calling the UpdateDBInstanceTDE operation.
+//
 // @param request - UpdateDBInstanceTDERequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8073,7 +8567,7 @@ func (client *Client) UpdateDBInstanceTDEWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 扩缩容实例节点数
+// Calls the UpdatePolarDBXInstanceNode operation to change the number of nodes for an instance, including scaling out and scaling in. This request generates a billable order.
 //
 // @param request - UpdatePolarDBXInstanceNodeRequest
 //
@@ -8149,7 +8643,7 @@ func (client *Client) UpdatePolarDBXInstanceNodeWithContext(ctx context.Context,
 
 // Summary:
 //
-// 升级CDC版本
+// Upgrades the CDC node version of a PolarDB-X instance.
 //
 // @param request - UpgradeCDCVersionRequest
 //
@@ -8213,7 +8707,7 @@ func (client *Client) UpgradeCDCVersionWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 升级Columnar版本
+// Updates the column store version.
 //
 // @param request - UpgradeColumnarVersionRequest
 //
@@ -8271,6 +8765,10 @@ func (client *Client) UpgradeColumnarVersionWithContext(ctx context.Context, req
 	return _result, _err
 }
 
+// Summary:
+//
+// Invokes the UpgradeDBInstanceKernelVersion operation to update the kernel version of an instance.
+//
 // @param request - UpgradeDBInstanceKernelVersionRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions

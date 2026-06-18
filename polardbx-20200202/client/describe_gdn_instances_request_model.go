@@ -24,32 +24,44 @@ type iDescribeGdnInstancesRequest interface {
 }
 
 type DescribeGdnInstancesRequest struct {
+	// The message filter type.
+	//
 	// example:
 	//
 	// gdn_id、
 	//
 	// polarx_id
 	FilterType *string `json:"FilterType,omitempty" xml:"FilterType,omitempty"`
+	// The filter value for querying resources.
+	//
+	// This parameter is used together with FilterKey.
+	//
 	// example:
 	//
 	// gdn-***、
 	//
 	// pxc-***
 	FilterValue *string `json:"FilterValue,omitempty" xml:"FilterValue,omitempty"`
-	// GDN ID。
+	// The GDN ID.
 	//
 	// example:
 	//
 	// gdn-***
 	GDNId *string `json:"GDNId,omitempty" xml:"GDNId,omitempty"`
+	// The page number. The value must be a positive integer that does not exceed the maximum value of the Integer data type. Default value: 1.
+	//
 	// example:
 	//
 	// 50
 	PageNum *string `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 30
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou

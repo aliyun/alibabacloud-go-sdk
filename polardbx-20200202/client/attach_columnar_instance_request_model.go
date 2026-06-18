@@ -16,12 +16,16 @@ type iAttachColumnarInstanceRequest interface {
 }
 
 type AttachColumnarInstanceRequest struct {
+	// The instance name or ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pxc-xxx
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The region in which the instance resides.
+	//
 	// This parameter is required.
 	//
 	// example:

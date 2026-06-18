@@ -20,20 +20,28 @@ type iStopDataImportTaskRequest interface {
 }
 
 type StopDataImportTaskRequest struct {
+	// The page number. The value must be a positive integer that does not exceed the maximum value of the integer data type. Default value: **1**.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values: ***30*****50*****100**. Default value: **30**.
+	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region where the instance resides.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// etx-szr2rr6i*****

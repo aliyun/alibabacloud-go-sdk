@@ -22,24 +22,32 @@ type iListTagResourcesRequest interface {
 }
 
 type ListTagResourcesRequest struct {
+	// The token for the next query. If this parameter is empty, no more results exist.
+	//
 	// example:
 	//
 	// xxdds
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId   *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource IDs. You can specify up to 50 subkeys.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// The resource type. Set this parameter to PolarDBXInstance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// PolarDBXInstance
-	ResourceType *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tag          []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The list of labels. You can specify up to 20 subkeys.
+	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListTagResourcesRequest) String() string {
@@ -109,10 +117,14 @@ func (s *ListTagResourcesRequest) Validate() error {
 }
 
 type ListTagResourcesRequestTag struct {
+	// The label key.
+	//
 	// example:
 	//
 	// 1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The label value.
+	//
 	// example:
 	//
 	// 2

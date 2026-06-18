@@ -20,15 +20,22 @@ type iDescribeCharacterSetResponseBody interface {
 }
 
 type DescribeCharacterSetResponseBody struct {
+	// The data struct.
 	Data *DescribeCharacterSetResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The response message. "success" is returned if the request is successful. Otherwise, an error code is returned.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 709C1E40-092D-4A3D-9958-6D7438******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true
@@ -89,7 +96,18 @@ func (s *DescribeCharacterSetResponseBody) Validate() error {
 }
 
 type DescribeCharacterSetResponseBodyData struct {
+	// The character sets supported by the instance. Valid values:
+	//
+	// - utf8mb4
+	//
+	// - gbk
+	//
+	// - latin1
+	//
+	// - utf8.
 	CharacterSet []*string `json:"CharacterSet,omitempty" xml:"CharacterSet,omitempty" type:"Repeated"`
+	// The storage type of databases in the target instance. Currently, only polarx is supported.
+	//
 	// example:
 	//
 	// polarx

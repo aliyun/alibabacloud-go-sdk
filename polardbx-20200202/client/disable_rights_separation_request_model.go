@@ -20,24 +20,32 @@ type iDisableRightsSeparationRequest interface {
 }
 
 type DisableRightsSeparationRequest struct {
+	// The name of the database instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pxc-sprcym7g7w****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The name of the DBA account.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// account_1
 	DbaAccountName *string `json:"DbaAccountName,omitempty" xml:"DbaAccountName,omitempty"`
+	// The password of the DBA account.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// *****
 	DbaAccountPassword *string `json:"DbaAccountPassword,omitempty" xml:"DbaAccountPassword,omitempty"`
+	// The region ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:

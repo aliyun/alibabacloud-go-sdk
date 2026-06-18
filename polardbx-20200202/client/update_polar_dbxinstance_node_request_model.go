@@ -31,29 +31,41 @@ type iUpdatePolarDBXInstanceNodeRequest interface {
 
 type UpdatePolarDBXInstanceNodeRequest struct {
 	AddDNSpec *string `json:"AddDNSpec,omitempty" xml:"AddDNSpec,omitempty"`
+	// The number of compute nodes.
+	//
 	// example:
 	//
 	// 2
 	CNNodeCount *int32 `json:"CNNodeCount,omitempty" xml:"CNNodeCount,omitempty"`
+	// The client token. You can set this parameter to any random string.
+	//
 	// example:
 	//
 	// FEA5DC20-6D8A-5979-97AA-FC57546ADC20
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The instance name ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pxc-hzjasdyuoo
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The number of storage nodes.
+	//
 	// example:
 	//
 	// 2
 	DNNodeCount *int32 `json:"DNNodeCount,omitempty" xml:"DNNodeCount,omitempty"`
+	// The target number of nodes for the instance. Valid values: 0 to 99.
+	//
 	// example:
 	//
 	// 3
 	DbInstanceNodeCount *int32  `json:"DbInstanceNodeCount,omitempty" xml:"DbInstanceNodeCount,omitempty"`
 	DeleteDNIds         *string `json:"DeleteDNIds,omitempty" xml:"DeleteDNIds,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:

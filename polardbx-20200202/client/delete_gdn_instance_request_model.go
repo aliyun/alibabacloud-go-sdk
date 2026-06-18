@@ -16,12 +16,16 @@ type iDeleteGdnInstanceRequest interface {
 }
 
 type DeleteGdnInstanceRequest struct {
+	// The name of the GDN instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// gdn-yq****dorhkzttoi
 	GdnInstanceName *string `json:"GdnInstanceName,omitempty" xml:"GdnInstanceName,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou

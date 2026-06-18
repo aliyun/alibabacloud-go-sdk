@@ -16,12 +16,16 @@ type iDescribeStructureImportTaskInfoRequest interface {
 }
 
 type DescribeStructureImportTaskInfoRequest struct {
+	// The region in which the instance resides.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the destination task.
+	//
 	// This parameter is required.
 	//
 	// example:

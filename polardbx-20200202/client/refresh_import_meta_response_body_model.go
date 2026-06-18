@@ -20,15 +20,22 @@ type iRefreshImportMetaResponseBody interface {
 }
 
 type RefreshImportMetaResponseBody struct {
+	// The monitoring data.
 	Data *RefreshImportMetaResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The result details of the import or export task. > This parameter is empty unless an exception occurs.
+	//
 	// example:
 	//
 	// *****
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// AE4F6C34-065F-45AA-B5DC-4B8D816F6305
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -89,6 +96,8 @@ func (s *RefreshImportMetaResponseBody) Validate() error {
 }
 
 type RefreshImportMetaResponseBodyData struct {
+	// The export task ID.
+	//
 	// example:
 	//
 	// etx-szr2rr6i*****

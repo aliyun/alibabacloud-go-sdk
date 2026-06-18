@@ -14,6 +14,8 @@ type iDisableSqlAuditResponseBody interface {
 }
 
 type DisableSqlAuditResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// DC3DAE3E-0F8A-4596-9104-F5167C******

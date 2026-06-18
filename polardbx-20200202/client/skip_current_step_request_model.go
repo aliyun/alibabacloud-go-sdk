@@ -18,14 +18,20 @@ type iSkipCurrentStepRequest interface {
 }
 
 type SkipCurrentStepRequest struct {
+	// The current operation step of the task.
+	//
 	// example:
 	//
 	// PRE_CHECK
 	CurrentStep *string `json:"CurrentStep,omitempty" xml:"CurrentStep,omitempty"`
+	// The region where the instance is located.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The import task ID.
+	//
 	// example:
 	//
 	// etx-szr2rr6i*****

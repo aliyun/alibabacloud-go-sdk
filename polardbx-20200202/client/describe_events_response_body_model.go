@@ -22,19 +22,28 @@ type iDescribeEventsResponseBody interface {
 }
 
 type DescribeEventsResponseBody struct {
+	// The event items.
 	EventItems []*DescribeEventsResponseBodyEventItems `json:"EventItems,omitempty" xml:"EventItems,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 4748127A-6D50-432C-B635-433467074C27
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of pages.
+	//
 	// example:
 	//
 	// 20
@@ -108,46 +117,68 @@ func (s *DescribeEventsResponseBody) Validate() error {
 }
 
 type DescribeEventsResponseBodyEventItems struct {
+	// The event ID.
+	//
 	// example:
 	//
 	// 50421290
 	EventId *int64 `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// The event name.
+	//
 	// example:
 	//
 	// ModifySecurityIps
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
+	// The supplementary information.
+	//
 	// example:
 	//
 	// {\\"Domain\\": \\"rds-cn-hangzhou.aliyuncs.com\\"}
 	EventPayload *string `json:"EventPayload,omitempty" xml:"EventPayload,omitempty"`
+	// The reason.
+	//
 	// example:
 	//
 	// FROM_USER
 	EventReason *string `json:"EventReason,omitempty" xml:"EventReason,omitempty"`
+	// The record time.
+	//
 	// example:
 	//
 	// 2021-10-15T06:39:49Z
 	EventRecordTime *string `json:"EventRecordTime,omitempty" xml:"EventRecordTime,omitempty"`
+	// The event time.
+	//
 	// example:
 	//
 	// 2021-10-15T06:35:00Z
 	EventTime *string `json:"EventTime,omitempty" xml:"EventTime,omitempty"`
+	// The event type.
+	//
 	// example:
 	//
 	// SecurityManagement
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
+	// The event user type.
+	//
 	// example:
 	//
 	// USRE
 	EventUserType *string `json:"EventUserType,omitempty" xml:"EventUserType,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource name.
+	//
 	// example:
 	//
 	// px-bp1v8udesc89g156g
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// The resource type.
+	//
 	// example:
 	//
 	// instance

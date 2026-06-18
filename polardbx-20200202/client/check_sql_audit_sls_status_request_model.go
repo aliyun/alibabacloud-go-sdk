@@ -14,6 +14,8 @@ type iCheckSqlAuditSlsStatusRequest interface {
 }
 
 type CheckSqlAuditSlsStatusRequest struct {
+	// The region in which the instance resides. > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196841.html) operation to query the regions supported by PolarDB-X, including region IDs.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -18,18 +18,24 @@ type iDescribeDistributeTableListRequest interface {
 }
 
 type DescribeDistributeTableListRequest struct {
+	// The name of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pxc-********
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The name of the database.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// sbtest1
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The region ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:

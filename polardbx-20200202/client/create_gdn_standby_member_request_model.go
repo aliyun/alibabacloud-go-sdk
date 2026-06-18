@@ -78,7 +78,10 @@ type CreateGdnStandbyMemberRequest struct {
 	//
 	// pxc-***
 	CloneInstanceName *string `json:"CloneInstanceName,omitempty" xml:"CloneInstanceName,omitempty"`
-	CnClass           *string `json:"CnClass,omitempty" xml:"CnClass,omitempty"`
+	// example:
+	//
+	// 4核32G
+	CnClass *string `json:"CnClass,omitempty" xml:"CnClass,omitempty"`
 	// example:
 	//
 	// 2
@@ -87,7 +90,10 @@ type CreateGdnStandbyMemberRequest struct {
 	//
 	// go-to-the-docks-for-french-fries
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DnClass     *string `json:"DnClass,omitempty" xml:"DnClass,omitempty"`
+	// example:
+	//
+	// 4核32G
+	DnClass *string `json:"DnClass,omitempty" xml:"DnClass,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -154,8 +160,6 @@ type CreateGdnStandbyMemberRequest struct {
 	//
 	// 1
 	UsedTime *int32 `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
-	// VPC ID。
-	//
 	// example:
 	//
 	// vpc-*****

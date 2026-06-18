@@ -26,35 +26,48 @@ type iCreateGdnInstanceRequest interface {
 }
 
 type CreateGdnInstanceRequest struct {
+	// The name of the primary instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pxc-********
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The description of the instance.
+	//
 	// example:
 	//
 	// FASTJSON 2.0.x has been released, faster and more secure, recommend you upgrade.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The GDN mode.
+	//
 	// example:
 	//
 	// gdn_mode_master_slave, gdn_mode_bidirectional
 	GdnMode *string `json:"GdnMode,omitempty" xml:"GdnMode,omitempty"`
+	// The region in which the instance resides.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The conflict strategy.
+	//
 	// example:
 	//
 	// DIRECT_OVERWRITE, OVERWRITE, IGNORE, INTERRUPT
 	RplConflictStrategy *string `json:"RplConflictStrategy,omitempty" xml:"RplConflictStrategy,omitempty"`
+	// The DML replication policy.
+	//
 	// example:
 	//
 	// MERGE,  SERIAL, TRANSACTION, SPLIT
 	RplDmlStrategy *string `json:"RplDmlStrategy,omitempty" xml:"RplDmlStrategy,omitempty"`
-	RplSyncDdl     *bool   `json:"RplSyncDdl,omitempty" xml:"RplSyncDdl,omitempty"`
+	// Specifies whether to synchronize DDL statements.
+	RplSyncDdl *bool `json:"RplSyncDdl,omitempty" xml:"RplSyncDdl,omitempty"`
 }
 
 func (s CreateGdnInstanceRequest) String() string {

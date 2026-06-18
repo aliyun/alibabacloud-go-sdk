@@ -16,6 +16,7 @@ type iDescribeColumnarVersionListResponseBody interface {
 }
 
 type DescribeColumnarVersionListResponseBody struct {
+	// The parameter details.
 	Data *DescribeColumnarVersionListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -61,6 +62,7 @@ func (s *DescribeColumnarVersionListResponseBody) Validate() error {
 }
 
 type DescribeColumnarVersionListResponseBodyData struct {
+	// The version list.
 	VersionList []*string `json:"VersionList,omitempty" xml:"VersionList,omitempty" type:"Repeated"`
 }
 

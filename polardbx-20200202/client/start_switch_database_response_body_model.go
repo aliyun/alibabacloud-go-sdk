@@ -20,7 +20,10 @@ type iStartSwitchDatabaseResponseBody interface {
 }
 
 type StartSwitchDatabaseResponseBody struct {
+	// The monitoring data.
 	Data *StartSwitchDatabaseResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The response message.
+	//
 	// example:
 	//
 	// *****
@@ -31,6 +34,8 @@ type StartSwitchDatabaseResponseBody struct {
 	//
 	// 9B2F3840-5C98-475C-B269-2D5C3A31797C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -91,6 +96,8 @@ func (s *StartSwitchDatabaseResponseBody) Validate() error {
 }
 
 type StartSwitchDatabaseResponseBodyData struct {
+	// The ID of the slink task.
+	//
 	// example:
 	//
 	// etx-szr2rr6i*****

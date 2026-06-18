@@ -54,69 +54,149 @@ type iUpdateBackupPolicyRequest interface {
 }
 
 type UpdateBackupPolicyRequest struct {
+	// The backup cycle. You must specify at least 2 days. The value is a 7-digit number. From left to right, each digit indicates whether backup is enabled from Monday to Sunday. A value of 0 indicates that backup is disabled, and a value of 1 indicates that backup is enabled:
+	//
+	// - First digit: Monday
+	//
+	// - Second digit: Tuesday
+	//
+	// - Third digit: Wednesday
+	//
+	// - Fourth digit: Thursday
+	//
+	// - Fifth digit: Friday
+	//
+	// - Sixth digit: Saturday
+	//
+	// - Seventh digit: Sunday.
+	//
 	// example:
 	//
 	// 1001000
 	BackupPeriod *string `json:"BackupPeriod,omitempty" xml:"BackupPeriod,omitempty"`
+	// The start time of the daily backup, in UTC.
+	//
 	// example:
 	//
 	// 03:00Z
 	BackupPlanBegin *string `json:"BackupPlanBegin,omitempty" xml:"BackupPlanBegin,omitempty"`
+	// The retention period of backup sets. Unit: days.
+	//
 	// example:
 	//
 	// 30
 	BackupSetRetention *int32 `json:"BackupSetRetention,omitempty" xml:"BackupSetRetention,omitempty"`
+	// The backup type. Currently, only "0" is supported, which indicates fast backup.
+	//
 	// example:
 	//
 	// 0
 	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	// The backup method. Valid values:
+	//
+	// - **P**: physical backup
+	//
+	// - **L**: logical backup.
+	//
 	// example:
 	//
 	// P
 	BackupWay *string `json:"BackupWay,omitempty" xml:"BackupWay,omitempty"`
+	// The interval for cold data backups. Unit: days. Valid values: 1 to 59.
+	//
 	// example:
 	//
 	// 30
 	ColdDataBackupInterval *int32 `json:"ColdDataBackupInterval,omitempty" xml:"ColdDataBackupInterval,omitempty"`
+	// The retention period for cold data backups. Unit: days. Valid values: 30 to 730.
+	//
 	// example:
 	//
 	// 30
-	ColdDataBackupRetention        *int32  `json:"ColdDataBackupRetention,omitempty" xml:"ColdDataBackupRetention,omitempty"`
+	ColdDataBackupRetention *int32 `json:"ColdDataBackupRetention,omitempty" xml:"ColdDataBackupRetention,omitempty"`
+	// The retention period for cross-region data backups. Unit: days.
+	//
+	// example:
+	//
+	// 30
 	CrossRegionDataBackupRetention *int32  `json:"CrossRegionDataBackupRetention,omitempty" xml:"CrossRegionDataBackupRetention,omitempty"`
 	CrossRegionFilterValue         *string `json:"CrossRegionFilterValue,omitempty" xml:"CrossRegionFilterValue,omitempty"`
-	CrossRegionLogBackupRetention  *int32  `json:"CrossRegionLogBackupRetention,omitempty" xml:"CrossRegionLogBackupRetention,omitempty"`
+	// The retention period for cross-region log backups. Unit: days.
+	//
+	// example:
+	//
+	// 30
+	CrossRegionLogBackupRetention *int32 `json:"CrossRegionLogBackupRetention,omitempty" xml:"CrossRegionLogBackupRetention,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pxc-hzjasdyuoo
-	DBInstanceName  *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The destination region for cross-region backup.
+	//
+	// example:
+	//
+	// cn-shanghai
 	DestCrossRegion *string `json:"DestCrossRegion,omitempty" xml:"DestCrossRegion,omitempty"`
+	// Specifies whether to forcibly clean up binary logs when the total space usage of the instance exceeds 80% or the remaining space is less than 50 GB. The cleanup starts from the earliest logs until the total space usage drops below 80% and the remaining space exceeds 50 GB. Valid values:
+	//
+	// - **1**: yes
+	//
+	// - **0**: no.
+	//
 	// example:
 	//
 	// 1
-	ForceCleanOnHighSpaceUsage     *int32 `json:"ForceCleanOnHighSpaceUsage,omitempty" xml:"ForceCleanOnHighSpaceUsage,omitempty"`
-	IsCrossRegionDataBackupEnabled *bool  `json:"IsCrossRegionDataBackupEnabled,omitempty" xml:"IsCrossRegionDataBackupEnabled,omitempty"`
-	IsCrossRegionLogBackupEnabled  *bool  `json:"IsCrossRegionLogBackupEnabled,omitempty" xml:"IsCrossRegionLogBackupEnabled,omitempty"`
+	ForceCleanOnHighSpaceUsage *int32 `json:"ForceCleanOnHighSpaceUsage,omitempty" xml:"ForceCleanOnHighSpaceUsage,omitempty"`
+	// Specifies whether to enable cross-region data backup. Default value: false.
+	//
+	// example:
+	//
+	// false
+	IsCrossRegionDataBackupEnabled *bool `json:"IsCrossRegionDataBackupEnabled,omitempty" xml:"IsCrossRegionDataBackupEnabled,omitempty"`
+	// Specifies whether to enable cross-region log backup. Default value: false.
+	//
+	// example:
+	//
+	// false
+	IsCrossRegionLogBackupEnabled *bool `json:"IsCrossRegionLogBackupEnabled,omitempty" xml:"IsCrossRegionLogBackupEnabled,omitempty"`
+	// Specifies whether to enable backup. The value is fixed to 1, which indicates that backup is enabled.
+	//
 	// example:
 	//
 	// 1
 	IsEnabled *int32 `json:"IsEnabled,omitempty" xml:"IsEnabled,omitempty"`
+	// The number of hours that log backups are retained locally. Valid values: 0 to 168 (7 × 24 hours). A value of 0 indicates that log backups are not retained locally. Default value: 7.
+	//
 	// example:
 	//
 	// 7
-	LocalLogRetention       *int32 `json:"LocalLogRetention,omitempty" xml:"LocalLogRetention,omitempty"`
+	LocalLogRetention *int32 `json:"LocalLogRetention,omitempty" xml:"LocalLogRetention,omitempty"`
+	// The number of binary logs retained locally. Default value: 60. Valid values: 6 to 100.
+	//
+	// example:
+	//
+	// 60
 	LocalLogRetentionNumber *int32 `json:"LocalLogRetentionNumber,omitempty" xml:"LocalLogRetentionNumber,omitempty"`
+	// The maximum space usage for binary logs, expressed as a percentage. Valid values: 0 to 50. This parameter specifies a loop space. Default value: 30.
+	//
 	// example:
 	//
 	// 30
 	LogLocalRetentionSpace *int32 `json:"LogLocalRetentionSpace,omitempty" xml:"LogLocalRetentionSpace,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The number of days that log backups are retained remotely. Valid values: 7 to 730. Unit: days. Default value: 7.
+	//
 	// example:
 	//
 	// 7

@@ -24,30 +24,42 @@ type iDescribeDataImportTaskInfoRequest interface {
 }
 
 type DescribeDataImportTaskInfoRequest struct {
+	// The page number of failed records.
+	//
 	// example:
 	//
 	// 1
 	FailPageNumber *int32 `json:"FailPageNumber,omitempty" xml:"FailPageNumber,omitempty"`
+	// The number of failed records to display per page.
+	//
 	// example:
 	//
 	// 10
 	FailPageSize *int32 `json:"FailPageSize,omitempty" xml:"FailPageSize,omitempty"`
+	// The region where the instance resides.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The task ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// etx-szr2rr6i*****
 	SlinkTaskId *string `json:"SlinkTaskId,omitempty" xml:"SlinkTaskId,omitempty"`
+	// The page number of successful records.
+	//
 	// example:
 	//
 	// 1
 	SuccessPageNumber *int64 `json:"SuccessPageNumber,omitempty" xml:"SuccessPageNumber,omitempty"`
+	// The number of successful records to display per page.
+	//
 	// example:
 	//
 	// 15

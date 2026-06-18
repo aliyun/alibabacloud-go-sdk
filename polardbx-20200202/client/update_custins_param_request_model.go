@@ -27,6 +27,10 @@ type UpdateCustinsParamRequest struct {
 	// pxc-********
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 数仓抽数地址
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// This parameter is required.
 	//

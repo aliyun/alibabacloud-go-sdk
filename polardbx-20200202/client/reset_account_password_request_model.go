@@ -24,34 +24,46 @@ type iResetAccountPasswordRequest interface {
 }
 
 type ResetAccountPasswordRequest struct {
+	// The name of the account.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// account
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The password of the account.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// *****
 	AccountPassword *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
+	// The name of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pxc-htri0ori2r4k9p
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The region ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the security administrator account.
+	//
 	// example:
 	//
 	// account_sec
 	SecurityAccountName *string `json:"SecurityAccountName,omitempty" xml:"SecurityAccountName,omitempty"`
+	// The password of the security administrator account.
+	//
 	// example:
 	//
 	// *****

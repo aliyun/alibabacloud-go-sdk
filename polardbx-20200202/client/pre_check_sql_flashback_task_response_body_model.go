@@ -20,15 +20,22 @@ type iPreCheckSqlFlashbackTaskResponseBody interface {
 }
 
 type PreCheckSqlFlashbackTaskResponseBody struct {
+	// The result set.
 	Data *PreCheckSqlFlashbackTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The response message. This parameter is empty when the request succeeds. If the request fails, an exception message is returned, such as an error code.
+	//
 	// example:
 	//
 	// successs
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 14036EBE-***-44DB-ACE9-AC6157D3A6FC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request result.
+	//
 	// example:
 	//
 	// true
@@ -89,6 +96,7 @@ func (s *PreCheckSqlFlashbackTaskResponseBody) Validate() error {
 }
 
 type PreCheckSqlFlashbackTaskResponseBodyData struct {
+	// The check result.
 	CheckResult *PreCheckSqlFlashbackTaskResponseBodyDataCheckResult `json:"CheckResult,omitempty" xml:"CheckResult,omitempty" type:"Struct"`
 }
 
@@ -119,11 +127,24 @@ func (s *PreCheckSqlFlashbackTaskResponseBodyData) Validate() error {
 }
 
 type PreCheckSqlFlashbackTaskResponseBodyDataCheckResult struct {
-	BinlogExists                          *bool `json:"BinlogExists,omitempty" xml:"BinlogExists,omitempty"`
-	BinlogRowQueryEventEnabled            *bool `json:"BinlogRowQueryEventEnabled,omitempty" xml:"BinlogRowQueryEventEnabled,omitempty"`
+	// Indicates whether valid binary log files exist. This value is used to determine whether operations such as flashback and synchronization can be performed.
+	BinlogExists *bool `json:"BinlogExists,omitempty" xml:"BinlogExists,omitempty"`
+	// Indicates whether the recording of original SQL query events is enabled. Valid values:
+	//
+	// - **true**: Enabled.
+	//
+	// - **false**: Disabled.
+	BinlogRowQueryEventEnabled *bool `json:"BinlogRowQueryEventEnabled,omitempty" xml:"BinlogRowQueryEventEnabled,omitempty"`
+	// Indicates whether the upgrade can succeed.
 	CanUpgradeSupportBinlogRowQueryEvents *bool `json:"CanUpgradeSupportBinlogRowQueryEvents,omitempty" xml:"CanUpgradeSupportBinlogRowQueryEvents,omitempty"`
-	HasTable                              *bool `json:"HasTable,omitempty" xml:"HasTable,omitempty"`
-	SupportBinlogRowQueryEvents           *bool `json:"SupportBinlogRowQueryEvents,omitempty" xml:"SupportBinlogRowQueryEvents,omitempty"`
+	// Indicates whether the table exists. Valid values: true and false.
+	HasTable *bool `json:"HasTable,omitempty" xml:"HasTable,omitempty"`
+	// Indicates whether log recording is supported. Valid values:
+	//
+	// - **true**: Supported.
+	//
+	// - **false**: Not supported.
+	SupportBinlogRowQueryEvents *bool `json:"SupportBinlogRowQueryEvents,omitempty" xml:"SupportBinlogRowQueryEvents,omitempty"`
 }
 
 func (s PreCheckSqlFlashbackTaskResponseBodyDataCheckResult) String() string {

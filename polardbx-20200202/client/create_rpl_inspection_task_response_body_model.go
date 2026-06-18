@@ -20,15 +20,22 @@ type iCreateRplInspectionTaskResponseBody interface {
 }
 
 type CreateRplInspectionTaskResponseBody struct {
+	// The task details.
 	Data *CreateRplInspectionTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message of the task. > This parameter is returned only when the task status is **stop**.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 9B2F3840-5C98-475C-B269-2D5C3A31797C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -89,6 +96,8 @@ func (s *CreateRplInspectionTaskResponseBody) Validate() error {
 }
 
 type CreateRplInspectionTaskResponseBodyData struct {
+	// The slink task ID.
+	//
 	// example:
 	//
 	// etx-szr2rr6i*****

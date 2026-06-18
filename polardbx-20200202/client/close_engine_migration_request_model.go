@@ -18,16 +18,30 @@ type iCloseEngineMigrationRequest interface {
 }
 
 type CloseEngineMigrationRequest struct {
+	// Specifies whether to keep binlog enabled. Valid values:
+	//
+	// 	- **true**: Keeps binlog enabled.
+	//
+	// 	- **false**: Disables binlog.
+	//
+	// Default value: **true**.
+	//
+	// > Disabling binlog restarts your PolarDB cluster.
+	//
 	// example:
 	//
 	// true
 	ContinueEnableBinlog *string `json:"ContinueEnableBinlog,omitempty" xml:"ContinueEnableBinlog,omitempty"`
+	// The name of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pxc-htri0****r4k9p
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou

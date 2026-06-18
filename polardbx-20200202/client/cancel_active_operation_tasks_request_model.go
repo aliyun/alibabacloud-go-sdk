@@ -16,12 +16,16 @@ type iCancelActiveOperationTasksRequest interface {
 }
 
 type CancelActiveOperationTasksRequest struct {
+	// The event IDs, separated by commas.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 111
 	Ids *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:

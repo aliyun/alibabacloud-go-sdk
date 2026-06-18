@@ -20,15 +20,25 @@ type iDescribeParameterTemplatesRequest interface {
 }
 
 type DescribeParameterTemplatesRequest struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// pxc-********
 	DBInstanceId  *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	// The parameter level. Valid values:
+	//
+	// - **compute**: compute layer.
+	//
+	// - **storage**: storage layer.
+	//
 	// example:
 	//
 	// compute
 	ParamLevel *string `json:"ParamLevel,omitempty" xml:"ParamLevel,omitempty"`
+	// The region ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:

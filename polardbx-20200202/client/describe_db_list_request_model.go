@@ -18,16 +18,22 @@ type iDescribeDbListRequest interface {
 }
 
 type DescribeDbListRequest struct {
+	// The instance name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pxc-********
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The database name.
+	//
 	// example:
 	//
 	// db_name
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
+	// The region ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -16,12 +16,16 @@ type iRestartDBInstanceRequest interface {
 }
 
 type RestartDBInstanceRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pxc-hzjasd****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -20,15 +20,22 @@ type iSubmitSqlFlashbackTaskResponseBody interface {
 }
 
 type SubmitSqlFlashbackTaskResponseBody struct {
+	// The data returned by the request.
 	Data *SubmitSqlFlashbackTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The description of the request result.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the API request was successful.
+	//
 	// example:
 	//
 	// true
@@ -89,6 +96,8 @@ func (s *SubmitSqlFlashbackTaskResponseBody) Validate() error {
 }
 
 type SubmitSqlFlashbackTaskResponseBodyData struct {
+	// The task ID.
+	//
 	// example:
 	//
 	// 1111

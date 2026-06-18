@@ -16,8 +16,10 @@ type iDescribeColdDataBasicInfoResponseBody interface {
 }
 
 type DescribeColdDataBasicInfoResponseBody struct {
-	Data      *DescribeColdDataBasicInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The details.
+	Data *DescribeColdDataBasicInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// requestId
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeColdDataBasicInfoResponseBody) String() string {
@@ -56,16 +58,22 @@ func (s *DescribeColdDataBasicInfoResponseBody) Validate() error {
 }
 
 type DescribeColdDataBasicInfoResponseBodyData struct {
-	BackupSetCount     *int32   `json:"BackupSetCount,omitempty" xml:"BackupSetCount,omitempty"`
+	// The number of backup sets.
+	BackupSetCount *int32 `json:"BackupSetCount,omitempty" xml:"BackupSetCount,omitempty"`
+	// The data size of valid backup sets.
 	BackupSetSpaceSize *float64 `json:"BackupSetSpaceSize,omitempty" xml:"BackupSetSpaceSize,omitempty"`
-	CloudProduct       *string  `json:"CloudProduct,omitempty" xml:"CloudProduct,omitempty"`
+	// The underlying storage cloud service.
+	CloudProduct *string `json:"CloudProduct,omitempty" xml:"CloudProduct,omitempty"`
+	// The data size of cold storage.
 	CurrentSpaceSize   *float64 `json:"CurrentSpaceSize,omitempty" xml:"CurrentSpaceSize,omitempty"`
 	DataRedundancyType *string  `json:"DataRedundancyType,omitempty" xml:"DataRedundancyType,omitempty"`
-	EnableStatus       *bool    `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
-	ReadAccessNum      *int64   `json:"ReadAccessNum,omitempty" xml:"ReadAccessNum,omitempty"`
-	RegionId           *string  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	VolumeName         *string  `json:"VolumeName,omitempty" xml:"VolumeName,omitempty"`
-	WriteAccessNum     *float64 `json:"WriteAccessNum,omitempty" xml:"WriteAccessNum,omitempty"`
+	// Indicates whether cold storage is enabled.
+	EnableStatus  *bool   `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	ReadAccessNum *int64  `json:"ReadAccessNum,omitempty" xml:"ReadAccessNum,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The storage volume name.
+	VolumeName     *string  `json:"VolumeName,omitempty" xml:"VolumeName,omitempty"`
+	WriteAccessNum *float64 `json:"WriteAccessNum,omitempty" xml:"WriteAccessNum,omitempty"`
 }
 
 func (s DescribeColdDataBasicInfoResponseBodyData) String() string {

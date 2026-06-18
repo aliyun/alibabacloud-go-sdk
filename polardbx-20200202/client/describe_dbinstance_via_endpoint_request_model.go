@@ -16,13 +16,21 @@ type iDescribeDBInstanceViaEndpointRequest interface {
 }
 
 type DescribeDBInstanceViaEndpointRequest struct {
+	// The endpoint of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pxc-hz*******.polarx.rds.aliyuncs.com
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 

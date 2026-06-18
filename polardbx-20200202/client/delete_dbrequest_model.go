@@ -18,18 +18,24 @@ type iDeleteDBRequest interface {
 }
 
 type DeleteDBRequest struct {
+	// The name of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pxc-********
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The name of the database to delete.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testdb
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The region where the instance resides.
+	//
 	// This parameter is required.
 	//
 	// example:

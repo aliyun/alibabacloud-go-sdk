@@ -34,30 +34,48 @@ type iSubmitSqlFlashbackTaskRequest interface {
 }
 
 type SubmitSqlFlashbackTaskRequest struct {
+	// The name of the database.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The end time for executing the flashback SQL.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2019-09-10 23:23:23
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The instance ID of the PolarDB-X instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pxc-*********
 	PolardbxInstanceId *string `json:"PolardbxInstanceId,omitempty" xml:"PolardbxInstanceId,omitempty"`
+	// The restoration type. Valid values:
+	//
+	// - **1**: Image-based restoration.
+	//
+	// - **0**: Reverse restoration.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0
 	RecallRestoreType *string `json:"RecallRestoreType,omitempty" xml:"RecallRestoreType,omitempty"`
+	// The matching mode. Valid values:
+	//
+	// - **0**: exact match.
+	//
+	// - **1**: fuzzy match.
+	//
 	// if can be null:
 	// true
 	//
@@ -65,12 +83,16 @@ type SubmitSqlFlashbackTaskRequest struct {
 	//
 	// 0
 	RecallType *string `json:"RecallType,omitempty" xml:"RecallType,omitempty"`
+	// The region where the instance resides.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The primary key of the flashback SQL.
+	//
 	// if can be null:
 	// true
 	//
@@ -78,6 +100,8 @@ type SubmitSqlFlashbackTaskRequest struct {
 	//
 	// 1111
 	SqlPk *string `json:"SqlPk,omitempty" xml:"SqlPk,omitempty"`
+	// The type of SQL. Valid values: INSERT, UPDATE, and DELETE. Separate multiple types with commas (,).
+	//
 	// if can be null:
 	// true
 	//
@@ -85,12 +109,16 @@ type SubmitSqlFlashbackTaskRequest struct {
 	//
 	// INSERT,UPDATE
 	SqlType *string `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
+	// The start time for executing the flashback SQL.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2019-09-10 20:23:23
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The name of the table on which the flashback SQL operation is performed.
+	//
 	// if can be null:
 	// true
 	//
@@ -98,6 +126,8 @@ type SubmitSqlFlashbackTaskRequest struct {
 	//
 	// test
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The trace ID of the flashback SQL.
+	//
 	// if can be null:
 	// true
 	//

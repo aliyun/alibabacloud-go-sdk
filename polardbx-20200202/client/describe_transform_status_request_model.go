@@ -18,14 +18,20 @@ type iDescribeTransformStatusRequest interface {
 }
 
 type DescribeTransformStatusRequest struct {
+	// The instance name.
+	//
 	// example:
 	//
 	// pxc-xxx
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The verification report.
+	//
 	// example:
 	//
 	// true
 	QueryReport *bool `json:"QueryReport,omitempty" xml:"QueryReport,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou

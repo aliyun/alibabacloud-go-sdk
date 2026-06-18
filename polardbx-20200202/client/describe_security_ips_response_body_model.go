@@ -20,15 +20,22 @@ type iDescribeSecurityIpsResponseBody interface {
 }
 
 type DescribeSecurityIpsResponseBody struct {
+	// The returned data.
 	Data *DescribeSecurityIpsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The additional information returned. If the request is successful, success is returned. If the request fails, the corresponding error code is returned.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 14036EBE-CF2E-44DB-ACE9-AC6157D3A6FC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true
@@ -89,11 +96,14 @@ func (s *DescribeSecurityIpsResponseBody) Validate() error {
 }
 
 type DescribeSecurityIpsResponseBodyData struct {
+	// The name of the instance.
+	//
 	// example:
 	//
 	// pxc-hzjasd****
-	DBInstanceName *string                                          `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	GroupItems     []*DescribeSecurityIpsResponseBodyDataGroupItems `json:"GroupItems,omitempty" xml:"GroupItems,omitempty" type:"Repeated"`
+	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The list of whitelist groups.
+	GroupItems []*DescribeSecurityIpsResponseBodyDataGroupItems `json:"GroupItems,omitempty" xml:"GroupItems,omitempty" type:"Repeated"`
 }
 
 func (s DescribeSecurityIpsResponseBodyData) String() string {
@@ -136,10 +146,14 @@ func (s *DescribeSecurityIpsResponseBodyData) Validate() error {
 }
 
 type DescribeSecurityIpsResponseBodyDataGroupItems struct {
+	// The name of the whitelist group.
+	//
 	// example:
 	//
 	// defaultGroup
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The details of the whitelist in the group.
+	//
 	// example:
 	//
 	// 127.0.0.1,172.168.0.0

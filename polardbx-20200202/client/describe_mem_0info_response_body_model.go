@@ -9,6 +9,8 @@ type iDescribeMem0InfoResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAccessDeniedDetail(v *DescribeMem0InfoResponseBodyAccessDeniedDetail) *DescribeMem0InfoResponseBody
+	GetAccessDeniedDetail() *DescribeMem0InfoResponseBodyAccessDeniedDetail
 	SetData(v *DescribeMem0InfoResponseBodyData) *DescribeMem0InfoResponseBody
 	GetData() *DescribeMem0InfoResponseBodyData
 	SetRequestId(v string) *DescribeMem0InfoResponseBody
@@ -16,7 +18,11 @@ type iDescribeMem0InfoResponseBody interface {
 }
 
 type DescribeMem0InfoResponseBody struct {
+	AccessDeniedDetail *DescribeMem0InfoResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
+	// Response data
 	Data *DescribeMem0InfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Request ID
+	//
 	// example:
 	//
 	// C457B28E-9CAB-4B77-B5C6-5D71B7870B6E
@@ -31,12 +37,21 @@ func (s DescribeMem0InfoResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeMem0InfoResponseBody) GetAccessDeniedDetail() *DescribeMem0InfoResponseBodyAccessDeniedDetail {
+	return s.AccessDeniedDetail
+}
+
 func (s *DescribeMem0InfoResponseBody) GetData() *DescribeMem0InfoResponseBodyData {
 	return s.Data
 }
 
 func (s *DescribeMem0InfoResponseBody) GetRequestId() *string {
 	return s.RequestId
+}
+
+func (s *DescribeMem0InfoResponseBody) SetAccessDeniedDetail(v *DescribeMem0InfoResponseBodyAccessDeniedDetail) *DescribeMem0InfoResponseBody {
+	s.AccessDeniedDetail = v
+	return s
 }
 
 func (s *DescribeMem0InfoResponseBody) SetData(v *DescribeMem0InfoResponseBodyData) *DescribeMem0InfoResponseBody {
@@ -50,6 +65,11 @@ func (s *DescribeMem0InfoResponseBody) SetRequestId(v string) *DescribeMem0InfoR
 }
 
 func (s *DescribeMem0InfoResponseBody) Validate() error {
+	if s.AccessDeniedDetail != nil {
+		if err := s.AccessDeniedDetail.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.Data != nil {
 		if err := s.Data.Validate(); err != nil {
 			return err
@@ -58,7 +78,93 @@ func (s *DescribeMem0InfoResponseBody) Validate() error {
 	return nil
 }
 
+type DescribeMem0InfoResponseBodyAccessDeniedDetail struct {
+	AuthAction               *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
+	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
+	AuthPrincipalOwnerId     *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
+	AuthPrincipalType        *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
+	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
+	NoPermissionType         *string `json:"NoPermissionType,omitempty" xml:"NoPermissionType,omitempty"`
+	PolicyType               *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+}
+
+func (s DescribeMem0InfoResponseBodyAccessDeniedDetail) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeMem0InfoResponseBodyAccessDeniedDetail) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMem0InfoResponseBodyAccessDeniedDetail) GetAuthAction() *string {
+	return s.AuthAction
+}
+
+func (s *DescribeMem0InfoResponseBodyAccessDeniedDetail) GetAuthPrincipalDisplayName() *string {
+	return s.AuthPrincipalDisplayName
+}
+
+func (s *DescribeMem0InfoResponseBodyAccessDeniedDetail) GetAuthPrincipalOwnerId() *string {
+	return s.AuthPrincipalOwnerId
+}
+
+func (s *DescribeMem0InfoResponseBodyAccessDeniedDetail) GetAuthPrincipalType() *string {
+	return s.AuthPrincipalType
+}
+
+func (s *DescribeMem0InfoResponseBodyAccessDeniedDetail) GetEncodedDiagnosticMessage() *string {
+	return s.EncodedDiagnosticMessage
+}
+
+func (s *DescribeMem0InfoResponseBodyAccessDeniedDetail) GetNoPermissionType() *string {
+	return s.NoPermissionType
+}
+
+func (s *DescribeMem0InfoResponseBodyAccessDeniedDetail) GetPolicyType() *string {
+	return s.PolicyType
+}
+
+func (s *DescribeMem0InfoResponseBodyAccessDeniedDetail) SetAuthAction(v string) *DescribeMem0InfoResponseBodyAccessDeniedDetail {
+	s.AuthAction = &v
+	return s
+}
+
+func (s *DescribeMem0InfoResponseBodyAccessDeniedDetail) SetAuthPrincipalDisplayName(v string) *DescribeMem0InfoResponseBodyAccessDeniedDetail {
+	s.AuthPrincipalDisplayName = &v
+	return s
+}
+
+func (s *DescribeMem0InfoResponseBodyAccessDeniedDetail) SetAuthPrincipalOwnerId(v string) *DescribeMem0InfoResponseBodyAccessDeniedDetail {
+	s.AuthPrincipalOwnerId = &v
+	return s
+}
+
+func (s *DescribeMem0InfoResponseBodyAccessDeniedDetail) SetAuthPrincipalType(v string) *DescribeMem0InfoResponseBodyAccessDeniedDetail {
+	s.AuthPrincipalType = &v
+	return s
+}
+
+func (s *DescribeMem0InfoResponseBodyAccessDeniedDetail) SetEncodedDiagnosticMessage(v string) *DescribeMem0InfoResponseBodyAccessDeniedDetail {
+	s.EncodedDiagnosticMessage = &v
+	return s
+}
+
+func (s *DescribeMem0InfoResponseBodyAccessDeniedDetail) SetNoPermissionType(v string) *DescribeMem0InfoResponseBodyAccessDeniedDetail {
+	s.NoPermissionType = &v
+	return s
+}
+
+func (s *DescribeMem0InfoResponseBodyAccessDeniedDetail) SetPolicyType(v string) *DescribeMem0InfoResponseBodyAccessDeniedDetail {
+	s.PolicyType = &v
+	return s
+}
+
+func (s *DescribeMem0InfoResponseBodyAccessDeniedDetail) Validate() error {
+	return dara.Validate(s)
+}
+
 type DescribeMem0InfoResponseBodyData struct {
+	// Instance information
 	Instance *DescribeMem0InfoResponseBodyDataInstance `json:"Instance,omitempty" xml:"Instance,omitempty" type:"Struct"`
 }
 
@@ -89,31 +195,46 @@ func (s *DescribeMem0InfoResponseBodyData) Validate() error {
 }
 
 type DescribeMem0InfoResponseBodyDataInstance struct {
+	// Instance specifications
+	//
 	// example:
 	//
 	// mysql.x2.large.2c
-	ClassCode *string                                              `json:"ClassCode,omitempty" xml:"ClassCode,omitempty"`
+	ClassCode *string `json:"ClassCode,omitempty" xml:"ClassCode,omitempty"`
+	// Connection address list
 	ConnAddrs []*DescribeMem0InfoResponseBodyDataInstanceConnAddrs `json:"ConnAddrs,omitempty" xml:"ConnAddrs,omitempty" type:"Repeated"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2026-02-17T02:00:20Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Instance ID
+	//
 	// example:
 	//
 	// pxc-spsil01pww4hfz-mem
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Number of nodes
+	//
 	// example:
 	//
 	// 1
 	NodeCount *int32 `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
+	// Region ID
+	//
 	// example:
 	//
 	// ap-southeast-1
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Instance status
+	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Storage type
+	//
 	// example:
 	//
 	// local_ssd
@@ -124,10 +245,14 @@ type DescribeMem0InfoResponseBodyDataInstance struct {
 	//
 	// vpc-t4n4hf9xey7ea3lp4bwwx
 	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
+	// vSwitch ID
+	//
 	// example:
 	//
 	// vsw-t4ny14pr37spmjsbv5dc2
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// Zone ID
+	//
 	// example:
 	//
 	// ap-southeast-1a
@@ -255,14 +380,20 @@ func (s *DescribeMem0InfoResponseBodyDataInstance) Validate() error {
 }
 
 type DescribeMem0InfoResponseBodyDataInstanceConnAddrs struct {
+	// Connection address
+	//
 	// example:
 	//
 	// pxc-spsil01pww4hfz.polarx.singapore.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
+	// Port
+	//
 	// example:
 	//
 	// 3306
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// Connection address type
+	//
 	// example:
 	//
 	// VPC
@@ -273,10 +404,14 @@ type DescribeMem0InfoResponseBodyDataInstanceConnAddrs struct {
 	//
 	// vpc-t4n4hf9xey7ea3lp4bwwx
 	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
+	// vSwitch ID
+	//
 	// example:
 	//
 	// vsw-t4ny14pr37spmjsbv5dc2
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// VPC instance ID
+	//
 	// example:
 	//
 	// pxc-spsil01pww4hfzjayd-cn-20251013180429

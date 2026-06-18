@@ -26,12 +26,16 @@ type iDescribeBinaryLogListRequest interface {
 }
 
 type DescribeBinaryLogListRequest struct {
+	// The name of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pxc-hz1fds
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The end time for querying the binlog list.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -39,20 +43,28 @@ type DescribeBinaryLogListRequest struct {
 	// 2021-11-09 10:27:46
 	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The page number when paginating through the current binlog list. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of binlog entries to return per page. Default value: 30.
+	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the region where the instance resides.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The start time for querying the binlog list.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -16,7 +16,10 @@ type iDescribeParameterTemplatesResponseBody interface {
 }
 
 type DescribeParameterTemplatesResponseBody struct {
+	// The data struct.
 	Data *DescribeParameterTemplatesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// C458B1E8-1683-3645-B154-6BA32080EEA
@@ -59,19 +62,26 @@ func (s *DescribeParameterTemplatesResponseBody) Validate() error {
 }
 
 type DescribeParameterTemplatesResponseBodyData struct {
+	// The engine. Default value: polarx.
+	//
 	// example:
 	//
 	// polarx
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The DPI engine version. Default value: 2.0.
+	//
 	// example:
 	//
 	// 2.0
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	// The number of parameters.
+	//
 	// example:
 	//
 	// 218
-	ParameterCount *int32                                                  `json:"ParameterCount,omitempty" xml:"ParameterCount,omitempty"`
-	Parameters     []*DescribeParameterTemplatesResponseBodyDataParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
+	ParameterCount *int32 `json:"ParameterCount,omitempty" xml:"ParameterCount,omitempty"`
+	// The parameter list.
+	Parameters []*DescribeParameterTemplatesResponseBodyDataParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
 }
 
 func (s DescribeParameterTemplatesResponseBodyData) String() string {
@@ -132,26 +142,46 @@ func (s *DescribeParameterTemplatesResponseBodyData) Validate() error {
 }
 
 type DescribeParameterTemplatesResponseBodyDataParameters struct {
+	// The validation constraint.
+	//
 	// example:
 	//
 	// [0|1]
 	CheckingCode *string `json:"CheckingCode,omitempty" xml:"CheckingCode,omitempty"`
+	// Indicates whether the parameter is dynamic. Valid values:
+	//
+	// - **0**: No.
+	//
+	// - **1**: Yes.
+	//
 	// example:
 	//
 	// 0
 	Dynamic *int32 `json:"Dynamic,omitempty" xml:"Dynamic,omitempty"`
+	// The parameter description.
+	//
 	// example:
 	//
 	// polarx hatp addition param
 	ParameterDescription *string `json:"ParameterDescription,omitempty" xml:"ParameterDescription,omitempty"`
+	// The parameter name.
+	//
 	// example:
 	//
 	// loose_enable_gts
 	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
+	// The parameter value.
+	//
 	// example:
 	//
 	// 1
 	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
+	// Indicates whether the parameter can be modified. Valid values:
+	//
+	// - **0**: The parameter cannot be modified.
+	//
+	// - **1**: The parameter can be modified.
+	//
 	// example:
 	//
 	// 0

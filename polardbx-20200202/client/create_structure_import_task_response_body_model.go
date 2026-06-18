@@ -20,15 +20,22 @@ type iCreateStructureImportTaskResponseBody interface {
 }
 
 type CreateStructureImportTaskResponseBody struct {
+	// The returned result.
 	Data *CreateStructureImportTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The response message. > This parameter is empty if the request is successful. If the request fails, an exception message is returned, such as an error code.
+	//
 	// example:
 	//
 	// *****
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 73559800-3c8c-****-bd40-99cfcff3fe1e
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true
@@ -89,6 +96,8 @@ func (s *CreateStructureImportTaskResponseBody) Validate() error {
 }
 
 type CreateStructureImportTaskResponseBodyData struct {
+	// The Slink task ID.
+	//
 	// example:
 	//
 	// etx-szr2rr6i*****

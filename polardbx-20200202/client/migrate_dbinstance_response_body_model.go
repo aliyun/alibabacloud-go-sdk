@@ -18,14 +18,20 @@ type iMigrateDBInstanceResponseBody interface {
 }
 
 type MigrateDBInstanceResponseBody struct {
+	// Returns success if the request was successful, or an error code if the request failed.
+	//
 	// example:
 	//
 	// *****
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// FEA5DC20-6D8A-5979-97AA-FC57546ADC20
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true

@@ -16,6 +16,7 @@ type iDescribeParameterGroupsResponseBody interface {
 }
 
 type DescribeParameterGroupsResponseBody struct {
+	// The instance details.
 	Data *DescribeParameterGroupsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -61,7 +62,10 @@ func (s *DescribeParameterGroupsResponseBody) Validate() error {
 }
 
 type DescribeParameterGroupsResponseBodyData struct {
+	// The parameter template name.
 	ParameterGroups []*DescribeParameterGroupsResponseBodyDataParameterGroups `json:"ParameterGroups,omitempty" xml:"ParameterGroups,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1E5DCFFC-A00D-****-836E-73318F8CA577
@@ -108,44 +112,72 @@ func (s *DescribeParameterGroupsResponseBodyData) Validate() error {
 }
 
 type DescribeParameterGroupsResponseBodyDataParameterGroups struct {
+	// Indicates whether a forced restart of CN is required.
 	CnForceRestart *bool `json:"CnForceRestart,omitempty" xml:"CnForceRestart,omitempty"`
+	// The number of CN parameters.
+	//
 	// example:
 	//
 	// 10
 	CnParamCount *int32 `json:"CnParamCount,omitempty" xml:"CnParamCount,omitempty"`
+	// The database type.
+	//
 	// example:
 	//
 	// polarx
 	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	// The database engine version.
+	//
 	// example:
 	//
 	// 5.7
-	DbVersion      *string `json:"DbVersion,omitempty" xml:"DbVersion,omitempty"`
-	DnForceRestart *bool   `json:"DnForceRestart,omitempty" xml:"DnForceRestart,omitempty"`
+	DbVersion *string `json:"DbVersion,omitempty" xml:"DbVersion,omitempty"`
+	// Indicates whether a forced restart of DN is required.
+	DnForceRestart *bool `json:"DnForceRestart,omitempty" xml:"DnForceRestart,omitempty"`
+	// The number of DN parameters.
+	//
 	// example:
 	//
 	// 10
 	DnParamCount *int32 `json:"DnParamCount,omitempty" xml:"DnParamCount,omitempty"`
+	// The time when the account was created.
+	//
 	// example:
 	//
 	// 2024-12-19T16:41:31+08:00
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	// The modification time, in timestamp format.
+	//
 	// example:
 	//
 	// 1605079985000
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The parameter template ID.
+	//
+	// > You can call the [DescribeParameterGroups](https://help.aliyun.com/document_detail/207178.html) operation to query the details of all parameter templates in the specified region, including the parameter template ID.
+	//
 	// example:
 	//
 	// rpg-s1y1xy06****fqs7y
 	ParameterGroupId *string `json:"ParameterGroupId,omitempty" xml:"ParameterGroupId,omitempty"`
+	// The parameter template name.
+	//
 	// example:
 	//
 	// dstest_api_new
 	ParameterGroupName *string `json:"ParameterGroupName,omitempty" xml:"ParameterGroupName,omitempty"`
+	// The parameter templatetype.
+	//
 	// example:
 	//
 	// 0
 	ParameterGroupType *string `json:"ParameterGroupType,omitempty" xml:"ParameterGroupType,omitempty"`
+	// The instance edition. Valid values:
+	//
+	// - **enterprise**: Enterprise Edition.
+	//
+	// - **standard**: Standard Edition.
+	//
 	// example:
 	//
 	// enterprise

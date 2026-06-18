@@ -20,22 +20,34 @@ type iUpgradeDBInstanceKernelVersionRequest interface {
 }
 
 type UpgradeDBInstanceKernelVersionRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pxc-hzjasd****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The kernel version.
+	//
 	// example:
 	//
 	// polarx-kernel_5.4.12-16349923_xcluster-20210926
 	MinorVersion *string `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The switch mode. Valid values:
+	//
+	// - 0: immediately.
+	//
+	// - 1: during the O&M window.
+	//
 	// example:
 	//
 	// 0

@@ -26,34 +26,48 @@ type iModifyCustomEndpointNetRequest interface {
 }
 
 type ModifyCustomEndpointNetRequest struct {
+	// The connection prefix.
+	//
 	// example:
 	//
 	// pxc-****
 	ConnPrefix *string `json:"ConnPrefix,omitempty" xml:"ConnPrefix,omitempty"`
+	// The ID of the custom endpoint.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cep-002
 	CustomEndpointId *string `json:"CustomEndpointId,omitempty" xml:"CustomEndpointId,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pxc-********
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The public endpoint port.
+	//
 	// example:
 	//
 	// 3306
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The region in which the instance resides.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The vSwitch ID.
+	//
 	// example:
 	//
 	// vsw-*********
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The ID of the virtual private cloud (VPC) in which the endpoint resides.
+	//
 	// example:
 	//
 	// vpc-bp1ndoug37dtwoedlmru0

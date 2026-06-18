@@ -20,15 +20,22 @@ type iDescribeAccountListResponseBody interface {
 }
 
 type DescribeAccountListResponseBody struct {
+	// The data struct.
 	Data []*DescribeAccountListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The response message. "success" is returned if the request is successful. Otherwise, the corresponding error code is returned.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 9B2F3840-5C98-475C-B269-2D5C3A31797C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true
@@ -93,30 +100,48 @@ func (s *DescribeAccountListResponseBody) Validate() error {
 }
 
 type DescribeAccountListResponseBodyData struct {
+	// The description of the account.
+	//
 	// example:
 	//
 	// testaccount desc
 	AccountDescription *string `json:"AccountDescription,omitempty" xml:"AccountDescription,omitempty"`
+	// The name of the account.
+	//
 	// example:
 	//
 	// testAccount
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The permissions granted to the account.
+	//
 	// example:
 	//
 	// ReadWrite
 	AccountPrivilege *string `json:"AccountPrivilege,omitempty" xml:"AccountPrivilege,omitempty"`
+	// The type of the account.
+	//
+	// - Before three-role mode is enabled: 0 indicates a standard account, and 1 indicates a privileged user account.
+	//
+	// - After three-role mode is enabled: 0 indicates a standard account, 2 indicates a system administrator account, 3 indicates a security administrator account, and 4 indicates an audit administrator account.
+	//
 	// example:
 	//
 	// 0
 	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	// The name of the instance.
+	//
 	// example:
 	//
 	// pxc-*********
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The database to which the account is granted permissions.
+	//
 	// example:
 	//
 	// testdb
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
+	// The time when the account was created.
+	//
 	// example:
 	//
 	// 2012-06-08T15:00Z

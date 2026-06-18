@@ -18,11 +18,20 @@ type iDescribeActiveOperationMaintainConfResponseBody interface {
 }
 
 type DescribeActiveOperationMaintainConfResponseBody struct {
+	// The configuration information.
 	Config *DescribeActiveOperationMaintainConfResponseBodyConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
+	// Indicates whether the O&M window has been configured. Valid values:
+	//
+	// - 1: configured.
+	//
+	// - 0: not configured.
+	//
 	// example:
 	//
 	// 1
 	HasConfig *int64 `json:"HasConfig,omitempty" xml:"HasConfig,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1A586DCB-39A6-4050-81CC-C7BD4CCDB49F
@@ -74,30 +83,44 @@ func (s *DescribeActiveOperationMaintainConfResponseBody) Validate() error {
 }
 
 type DescribeActiveOperationMaintainConfResponseBodyConfig struct {
+	// The creation time.
+	//
 	// example:
 	//
 	// 2021-08-11T10:08:27Z
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The cycle time.
+	//
 	// example:
 	//
 	// 1,2,3,4,5,6,7
 	CycleTime *string `json:"CycleTime,omitempty" xml:"CycleTime,omitempty"`
+	// The cycle type.
+	//
 	// example:
 	//
 	// Week
 	CycleType *string `json:"CycleType,omitempty" xml:"CycleType,omitempty"`
+	// The end time of the O&M window.
+	//
 	// example:
 	//
 	// 04:00:00Z
 	MaintainEndTime *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
+	// The start time of the O&M window.
+	//
 	// example:
 	//
 	// 04:00:00Z
 	MaintainStartTime *string `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
+	// The modification time.
+	//
 	// example:
 	//
 	// 2021-08-11T10:08:27Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The status.
+	//
 	// example:
 	//
 	// 1

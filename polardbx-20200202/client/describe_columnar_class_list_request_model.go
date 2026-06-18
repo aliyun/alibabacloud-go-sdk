@@ -18,16 +18,22 @@ type iDescribeColumnarClassListRequest interface {
 }
 
 type DescribeColumnarClassListRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pxc-********
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The instance name.
+	//
 	// example:
 	//
 	// pxc-shrvdc****wtf5uk-cdc
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The region in which the instance resides.
+	//
 	// This parameter is required.
 	//
 	// example:

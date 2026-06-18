@@ -20,7 +20,10 @@ type iUpgradeColumnarVersionResponseBody interface {
 }
 
 type UpgradeColumnarVersionResponseBody struct {
+	// The returned data.
 	Data *UpgradeColumnarVersionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
@@ -31,6 +34,8 @@ type UpgradeColumnarVersionResponseBody struct {
 	//
 	// AE4F6C34-****-45AA-B5DC-4B8D816F6305
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -91,11 +96,14 @@ func (s *UpgradeColumnarVersionResponseBody) Validate() error {
 }
 
 type UpgradeColumnarVersionResponseBodyData struct {
+	// The target version number.
+	//
 	// example:
 	//
 	// polardb-2.4.0_5.4.19-20250116_xcluster5.4.20-20241213
-	MinorVersion *string                                           `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
-	TaskList     []*UpgradeColumnarVersionResponseBodyDataTaskList `json:"TaskList,omitempty" xml:"TaskList,omitempty" type:"Repeated"`
+	MinorVersion *string `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
+	// The list of upgrade tasks.
+	TaskList []*UpgradeColumnarVersionResponseBodyDataTaskList `json:"TaskList,omitempty" xml:"TaskList,omitempty" type:"Repeated"`
 }
 
 func (s UpgradeColumnarVersionResponseBodyData) String() string {
@@ -138,10 +146,14 @@ func (s *UpgradeColumnarVersionResponseBodyData) Validate() error {
 }
 
 type UpgradeColumnarVersionResponseBodyDataTaskList struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// rm-uf68f345****88zf8
 	DbInstanceName *string `json:"DbInstanceName,omitempty" xml:"DbInstanceName,omitempty"`
+	// The target task ID.
+	//
 	// example:
 	//
 	// 1861190497624654848

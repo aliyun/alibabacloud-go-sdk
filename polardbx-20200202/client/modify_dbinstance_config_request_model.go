@@ -20,24 +20,32 @@ type iModifyDBInstanceConfigRequest interface {
 }
 
 type ModifyDBInstanceConfigRequest struct {
+	// The configuration item to modify. For more information, see [Compute layer variables](https://help.aliyun.com/document_detail/316576.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ENABLE_CONSISTENT_REPLICA_READ
 	ConfigName *string `json:"ConfigName,omitempty" xml:"ConfigName,omitempty"`
+	// If configName is set to ENABLE_CONSISTENT_REPLICA_READ, the valid values are "true" and "false".
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// true
 	ConfigValue *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pxc-hzjasd****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -32,35 +32,69 @@ type iDescribeDBInstancesRequest interface {
 }
 
 type DescribeDBInstancesRequest struct {
-	DbVersion   *string `json:"DbVersion,omitempty" xml:"DbVersion,omitempty"`
+	DbVersion *string `json:"DbVersion,omitempty" xml:"DbVersion,omitempty"`
+	// The description or remarks of the database.
+	//
+	// example:
+	//
+	// app-test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// dinga93c84f4d***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MustHasCdc *bool   `json:"MustHasCdc,omitempty" xml:"MustHasCdc,omitempty"`
+	// Specifies whether the instance must have a log engine.
+	//
+	// example:
+	//
+	// true
+	MustHasCdc *bool `json:"MustHasCdc,omitempty" xml:"MustHasCdc,omitempty"`
+	// The page number. Starts from 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values:
+	//
+	// - 30
+	//
+	// - 50
+	//
+	// - 100.
+	//
 	// example:
 	//
-	// 20
+	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
-	// rg-acfmyst47hjw***
+	// rg-acfmyst47******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The instance edition. Valid values:
+	//
+	// - **enterprise**: Enterprise Edition.
+	//
+	// - **standard**: Standard Edition.
+	//
 	// example:
 	//
 	// enterprise
 	Series *string `json:"Series,omitempty" xml:"Series,omitempty"`
+	// The list of tags.
+	//
 	// example:
 	//
 	// [{\\"TagKey\\":\\"test\\",\\"TagValue\\":\\"test-value\\"}]

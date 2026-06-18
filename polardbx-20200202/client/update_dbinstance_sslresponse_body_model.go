@@ -16,7 +16,10 @@ type iUpdateDBInstanceSSLResponseBody interface {
 }
 
 type UpdateDBInstanceSSLResponseBody struct {
+	// The data returned by the request.
 	Data *UpdateDBInstanceSSLResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// FEA5DC20-6D8A-5979-97AA-FC57546ADC20
@@ -59,6 +62,8 @@ func (s *UpdateDBInstanceSSLResponseBody) Validate() error {
 }
 
 type UpdateDBInstanceSSLResponseBodyData struct {
+	// The backend task ID.
+	//
 	// example:
 	//
 	// 2209883

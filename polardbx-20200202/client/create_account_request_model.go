@@ -30,46 +30,76 @@ type iCreateAccountRequest interface {
 }
 
 type CreateAccountRequest struct {
+	// The description of the account.
+	//
 	// example:
 	//
 	// test
 	AccountDescription *string `json:"AccountDescription,omitempty" xml:"AccountDescription,omitempty"`
+	// The name of the account to be created.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testAccount
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The password of the account to be created.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Test@1111
 	AccountPassword *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
+	// The permissions to be granted to the new account on the specified database. Valid values:
+	//
+	// - ReadWrite
+	//
+	// - ReadOnly
+	//
+	// - DMLOnly
+	//
+	// - DDLOnly.
+	//
 	// example:
 	//
 	// ReadWrite
 	AccountPrivilege *string `json:"AccountPrivilege,omitempty" xml:"AccountPrivilege,omitempty"`
+	// The name of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pxc-**************
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The name of the database to be authorized.
+	//
 	// example:
 	//
 	// testdb
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
+	// The region in which the instance resides.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the security administrator account.
+	//
+	// > If three-role mode is enabled, this parameter is required. If three-role mode is not enabled, this parameter is not required.
+	//
 	// example:
 	//
 	// securityAccount
 	SecurityAccountName *string `json:"SecurityAccountName,omitempty" xml:"SecurityAccountName,omitempty"`
+	// The password of the security administrator account.
+	//
+	// > If three-role mode is enabled, this parameter is required. If three-role mode is not enabled, this parameter is not required.
+	//
 	// example:
 	//
 	// securityPassword

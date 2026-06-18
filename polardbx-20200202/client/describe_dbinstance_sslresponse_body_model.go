@@ -16,7 +16,10 @@ type iDescribeDBInstanceSSLResponseBody interface {
 }
 
 type DescribeDBInstanceSSLResponseBody struct {
+	// The data structure.
 	Data *DescribeDBInstanceSSLResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// C458B1E8-1683-3645-B154-6BA32080EEA
@@ -59,14 +62,24 @@ func (s *DescribeDBInstanceSSLResponseBody) Validate() error {
 }
 
 type DescribeDBInstanceSSLResponseBodyData struct {
+	// The domain name bound to the certificate.
+	//
 	// example:
 	//
 	// pxc-sddddddcym7g7w****.polarx.singapore.rds.aliyuncs.com
 	CertCommonName *string `json:"CertCommonName,omitempty" xml:"CertCommonName,omitempty"`
+	// Indicates whether SSL is enabled for the instance:
+	//
+	// - **true**: enabled
+	//
+	// - **false**: disabled
+	//
 	// example:
 	//
 	// false
 	SSLEnabled *bool `json:"SSLEnabled,omitempty" xml:"SSLEnabled,omitempty"`
+	// The expiration time of the SSL certificate.
+	//
 	// example:
 	//
 	// 2022-11-04T09:39:07Z

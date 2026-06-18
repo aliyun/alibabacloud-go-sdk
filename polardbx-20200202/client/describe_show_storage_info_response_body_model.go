@@ -18,10 +18,13 @@ type iDescribeShowStorageInfoResponseBody interface {
 }
 
 type DescribeShowStorageInfoResponseBody struct {
+	// The return code of the request. This parameter is empty when the request is successful. When the request fails, exception information such as an error code is returned.
+	//
 	// example:
 	//
 	// 200
-	Code *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data.
 	Data *DescribeShowStorageInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -76,6 +79,7 @@ func (s *DescribeShowStorageInfoResponseBody) Validate() error {
 }
 
 type DescribeShowStorageInfoResponseBodyData struct {
+	// The list of storage information.
 	StorageInfos []*DescribeShowStorageInfoResponseBodyDataStorageInfos `json:"StorageInfos,omitempty" xml:"StorageInfos,omitempty" type:"Repeated"`
 }
 
@@ -110,38 +114,62 @@ func (s *DescribeShowStorageInfoResponseBodyData) Validate() error {
 }
 
 type DescribeShowStorageInfoResponseBodyDataStorageInfos struct {
+	// The specification type (specification code) of the instance.
+	//
 	// example:
 	//
 	// polar.mysql.x4.large
 	Class *string `json:"Class,omitempty" xml:"Class,omitempty"`
+	// The number of databases.
+	//
 	// example:
 	//
 	// 3
 	DbCount *int64 `json:"DbCount,omitempty" xml:"DbCount,omitempty"`
+	// Indicates whether the instance can be deleted.
+	//
 	// example:
 	//
 	// True
 	Deletable *bool `json:"Deletable,omitempty" xml:"Deletable,omitempty"`
+	// The number of node groups.
+	//
 	// example:
 	//
 	// 12
 	GroupCount *int64 `json:"GroupCount,omitempty" xml:"GroupCount,omitempty"`
+	// The role type of the instance. Valid values:
+	//
+	// MASTER: primary instance.
+	//
+	// READONLY: read-only instance.
+	//
+	// STANDBY: standby instance (high-availability scenario).
+	//
 	// example:
 	//
 	// MASTER
 	InstKind *string `json:"InstKind,omitempty" xml:"InstKind,omitempty"`
+	// Indicates whether the instance or cluster is currently in a healthy state.
+	//
 	// example:
 	//
 	// true
 	IsHealthy *bool `json:"IsHealthy,omitempty" xml:"IsHealthy,omitempty"`
+	// The identifier of the leader node.
+	//
 	// example:
 	//
 	// 11.117.237.205:3029
 	LeaderNode *string `json:"LeaderNode,omitempty" xml:"LeaderNode,omitempty"`
+	// The instance status.
+	//
 	// example:
 	//
 	// 0
 	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The instance name.
+	//
 	// example:
 	//
 	// pxc-xdb-m-pxcbjrylg49skcxb17394

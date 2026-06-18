@@ -71,6 +71,18 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		"eu-west-1-oxs":               dara.String("polardbx.aliyuncs.com"),
 		"me-east-1":                   dara.String("polardbx.aliyuncs.com"),
 		"rus-west-1-pop":              dara.String("polardbx.aliyuncs.com"),
+		"us-west-1":                   dara.String("polardbx.us-west-1.aliyuncs.com"),
+		"us-east-1":                   dara.String("polardbx.us-east-1.aliyuncs.com"),
+		"cn-zhangjiakou":              dara.String("polardbx.cn-zhangjiakou.aliyuncs.com"),
+		"cn-shenzhen":                 dara.String("polardbx.cn-shenzhen.aliyuncs.com"),
+		"cn-shanghai":                 dara.String("polardbx.cn-shanghai.aliyuncs.com"),
+		"cn-qingdao":                  dara.String("polardbx.cn-qingdao.aliyuncs.com"),
+		"cn-huhehaote":                dara.String("polardbx.cn-huhehaote.aliyuncs.com"),
+		"cn-hongkong":                 dara.String("polardbx.cn-hongkong.aliyuncs.com"),
+		"cn-hangzhou":                 dara.String("polardbx.cn-hangzhou.aliyuncs.com"),
+		"cn-chengdu":                  dara.String("polardbx.cn-chengdu.aliyuncs.com"),
+		"cn-beijing":                  dara.String("polardbx.cn-beijing.aliyuncs.com"),
+		"ap-southeast-1":              dara.String("polardbx.ap-southeast-1.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -175,7 +187,7 @@ func (client *Client) AlignStoragePrimaryAzone(request *AlignStoragePrimaryAzone
 
 // Summary:
 //
-// 开通冷存储
+// Calls the AllocateColdDataVolume operation.
 //
 // @param request - AllocateColdDataVolumeRequest
 //
@@ -223,7 +235,7 @@ func (client *Client) AllocateColdDataVolumeWithOptions(request *AllocateColdDat
 
 // Summary:
 //
-// 开通冷存储
+// Calls the AllocateColdDataVolume operation.
 //
 // @param request - AllocateColdDataVolumeRequest
 //
@@ -241,7 +253,7 @@ func (client *Client) AllocateColdDataVolume(request *AllocateColdDataVolumeRequ
 
 // Summary:
 //
-// 开通公网域名
+// Calls the AllocateInstancePublicConnection operation to create a public IP address.
 //
 // @param request - AllocateInstancePublicConnectionRequest
 //
@@ -317,7 +329,7 @@ func (client *Client) AllocateInstancePublicConnectionWithOptions(request *Alloc
 
 // Summary:
 //
-// 开通公网域名
+// Calls the AllocateInstancePublicConnection operation to create a public IP address.
 //
 // @param request - AllocateInstancePublicConnectionRequest
 //
@@ -333,6 +345,10 @@ func (client *Client) AllocateInstancePublicConnection(request *AllocateInstance
 	return _result, _err
 }
 
+// Summary:
+//
+// Mounts a columnar instance to a specified primary database instance.
+//
 // @param request - AttachColumnarInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -377,6 +393,10 @@ func (client *Client) AttachColumnarInstanceWithOptions(request *AttachColumnarI
 	return _result, _err
 }
 
+// Summary:
+//
+// Mounts a columnar instance to a specified primary database instance.
+//
 // @param request - AttachColumnarInstanceRequest
 //
 // @return AttachColumnarInstanceResponse
@@ -393,7 +413,7 @@ func (client *Client) AttachColumnarInstance(request *AttachColumnarInstanceRequ
 
 // Summary:
 //
-// 取消主动运维任务
+// Cancels active O&M event tasks by calling the CancelActiveOperationTasks operation.
 //
 // @param request - CancelActiveOperationTasksRequest
 //
@@ -433,7 +453,7 @@ func (client *Client) CancelActiveOperationTasksWithOptions(request *CancelActiv
 
 // Summary:
 //
-// 取消主动运维任务
+// Cancels active O&M event tasks by calling the CancelActiveOperationTasks operation.
 //
 // @param request - CancelActiveOperationTasksRequest
 //
@@ -451,7 +471,15 @@ func (client *Client) CancelActiveOperationTasks(request *CancelActiveOperationT
 
 // Summary:
 //
-// 修改实例所在资源组.
+// Modifies the resource group of an instance.
+//
+// Description:
+//
+// Note:
+//
+// - The **endpoint*	- differs from other operations. Use **polardbx.aliyuncs.com*	- for Chinese mainland regions and Singapore. For other regions, use **polardbx.{region id}.aliyunc.com**.
+//
+// - When testing this API operation, if a service unavailable error is returned, verify that the **endpoint*	- is correct. You can switch the **service address*	- to **Dubai*	- or **India*	- to change the **endpoint*	- to **polardbx.aliyuncs.com**.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -507,7 +535,15 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 
 // Summary:
 //
-// 修改实例所在资源组.
+// Modifies the resource group of an instance.
+//
+// Description:
+//
+// Note:
+//
+// - The **endpoint*	- differs from other operations. Use **polardbx.aliyuncs.com*	- for Chinese mainland regions and Singapore. For other regions, use **polardbx.{region id}.aliyunc.com**.
+//
+// - When testing this API operation, if a service unavailable error is returned, verify that the **endpoint*	- is correct. You can switch the **service address*	- to **Dubai*	- or **India*	- to change the **endpoint*	- to **polardbx.aliyuncs.com**.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -523,6 +559,10 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Checks whether a PolarDB-X instance is authorized to use Key Management Service (KMS).
+//
 // @param request - CheckCloudResourceAuthorizedRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -571,6 +611,10 @@ func (client *Client) CheckCloudResourceAuthorizedWithOptions(request *CheckClou
 	return _result, _err
 }
 
+// Summary:
+//
+// Checks whether a PolarDB-X instance is authorized to use Key Management Service (KMS).
+//
 // @param request - CheckCloudResourceAuthorizedRequest
 //
 // @return CheckCloudResourceAuthorizedResponse
@@ -585,6 +629,16 @@ func (client *Client) CheckCloudResourceAuthorized(request *CheckCloudResourceAu
 	return _result, _err
 }
 
+// Summary:
+//
+// Checks whether SQL audit logs of a specified database instance have been successfully connected to Simple Log Service (SLS).
+//
+// After the call, the system returns the connection status between the SQL audit feature and SLS for the current instance, the project and Logstore configuration information, and whether synchronization is normal.
+//
+// Description:
+//
+// > 	- The SQL audit and analysis feature of PolarDB-X 2.0 is free of charge. However, Simple Log Service charges fees for storage space, read traffic, number of requests, data transformation, and data delivery. For more information about the SQL audit feature, see [Enable SQL audit and analysis](https://help.aliyun.com/document_detail/184619.html).
+//
 // @param request - CheckSqlAuditSlsStatusRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -625,6 +679,16 @@ func (client *Client) CheckSqlAuditSlsStatusWithOptions(request *CheckSqlAuditSl
 	return _result, _err
 }
 
+// Summary:
+//
+// Checks whether SQL audit logs of a specified database instance have been successfully connected to Simple Log Service (SLS).
+//
+// After the call, the system returns the connection status between the SQL audit feature and SLS for the current instance, the project and Logstore configuration information, and whether synchronization is normal.
+//
+// Description:
+//
+// > 	- The SQL audit and analysis feature of PolarDB-X 2.0 is free of charge. However, Simple Log Service charges fees for storage space, read traffic, number of requests, data transformation, and data delivery. For more information about the SQL audit feature, see [Enable SQL audit and analysis](https://help.aliyun.com/document_detail/184619.html).
+//
 // @param request - CheckSqlAuditSlsStatusRequest
 //
 // @return CheckSqlAuditSlsStatusResponse
@@ -641,7 +705,7 @@ func (client *Client) CheckSqlAuditSlsStatus(request *CheckSqlAuditSlsStatusRequ
 
 // Summary:
 //
-// 取消实例迁移
+// Closes the database engine migration process for a specified instance. After you start a data migration task from another database (such as a self-managed MySQL database or an ApsaraDB RDS instance) to PolarDB-X, you can call this operation to safely stop the migration process if you need to terminate or clean up the migration state.
 //
 // @param request - CloseEngineMigrationRequest
 //
@@ -693,7 +757,7 @@ func (client *Client) CloseEngineMigrationWithOptions(request *CloseEngineMigrat
 
 // Summary:
 //
-// 取消实例迁移
+// Closes the database engine migration process for a specified instance. After you start a data migration task from another database (such as a self-managed MySQL database or an ApsaraDB RDS instance) to PolarDB-X, you can call this operation to safely stop the migration process if you need to terminate or clean up the migration state.
 //
 // @param request - CloseEngineMigrationRequest
 //
@@ -711,7 +775,11 @@ func (client *Client) CloseEngineMigration(request *CloseEngineMigrationRequest)
 
 // Summary:
 //
-// 回滚切换时确认无连接
+// Confirms that no active connections exist before performing a rollback switchover.
+//
+// Description:
+//
+// Confirms that no active connections exist before a rollback task to ensure operation safety.
 //
 // @param request - ConfirmNoConnectionRequest
 //
@@ -763,7 +831,11 @@ func (client *Client) ConfirmNoConnectionWithOptions(request *ConfirmNoConnectio
 
 // Summary:
 //
-// 回滚切换时确认无连接
+// Confirms that no active connections exist before performing a rollback switchover.
+//
+// Description:
+//
+// Confirms that no active connections exist before a rollback task to ensure operation safety.
 //
 // @param request - ConfirmNoConnectionRequest
 //
@@ -779,6 +851,10 @@ func (client *Client) ConfirmNoConnection(request *ConfirmNoConnectionRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an account by calling the CreateAccount operation.
+//
 // @param request - CreateAccountRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -851,6 +927,10 @@ func (client *Client) CreateAccountWithOptions(request *CreateAccountRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an account by calling the CreateAccount operation.
+//
 // @param request - CreateAccountRequest
 //
 // @return CreateAccountResponse
@@ -865,6 +945,10 @@ func (client *Client) CreateAccount(request *CreateAccountRequest) (_result *Cre
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls the CreateBackup operation to create a backup.
+//
 // @param request - CreateBackupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -913,6 +997,10 @@ func (client *Client) CreateBackupWithOptions(request *CreateBackupRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls the CreateBackup operation to create a backup.
+//
 // @param request - CreateBackupRequest
 //
 // @return CreateBackupResponse
@@ -929,7 +1017,11 @@ func (client *Client) CreateBackup(request *CreateBackupRequest) (_result *Creat
 
 // Summary:
 //
-// 创建自定义endpoint
+// Creates a custom endpoint for a database instance.
+//
+// Description:
+//
+// <props="china">For more information about instance accounts, see [Account management](https://help.aliyun.com/document_detail/172163.html)..
 //
 // @param request - CreateCustomEndpointRequest
 //
@@ -1001,7 +1093,11 @@ func (client *Client) CreateCustomEndpointWithOptions(request *CreateCustomEndpo
 
 // Summary:
 //
-// 创建自定义endpoint
+// Creates a custom endpoint for a database instance.
+//
+// Description:
+//
+// <props="china">For more information about instance accounts, see [Account management](https://help.aliyun.com/document_detail/172163.html)..
 //
 // @param request - CreateCustomEndpointRequest
 //
@@ -1017,6 +1113,10 @@ func (client *Client) CreateCustomEndpoint(request *CreateCustomEndpointRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a database by calling the CreateDB operation.
+//
 // @param request - CreateDBRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1097,6 +1197,10 @@ func (client *Client) CreateDBWithOptions(request *CreateDBRequest, runtime *dar
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a database by calling the CreateDB operation.
+//
 // @param request - CreateDBRequest
 //
 // @return CreateDBResponse
@@ -1113,7 +1217,11 @@ func (client *Client) CreateDB(request *CreateDBRequest) (_result *CreateDBRespo
 
 // Summary:
 //
-// Creates a PolarDB-X instance.
+// Calls the CreateDBInstance operation to create a PolarDB-X instance.
+//
+// Description:
+//
+// ***
 //
 // @param tmpReq - CreateDBInstanceRequest
 //
@@ -1283,7 +1391,11 @@ func (client *Client) CreateDBInstanceWithOptions(tmpReq *CreateDBInstanceReques
 
 // Summary:
 //
-// Creates a PolarDB-X instance.
+// Calls the CreateDBInstance operation to create a PolarDB-X instance.
+//
+// Description:
+//
+// ***
 //
 // @param request - CreateDBInstanceRequest
 //
@@ -1301,7 +1413,11 @@ func (client *Client) CreateDBInstance(request *CreateDBInstanceRequest) (_resul
 
 // Summary:
 //
-// 创建评估升级的数据迁移任务
+// Creates a data import task to import external data files, such as SQL scripts and CSV files, into a target database instance.
+//
+// Description:
+//
+// Creates a data import task that imports SQL or CSV files stored in OSS or ECS, or directly provided files, into a target database instance. By specifying the instance ID, database name, engine type, data source (such as an OSS path), and import type, the system performs data write operations asynchronously or synchronously. This operation is applicable to scenarios such as data migration, initialization, and data backfill. A task ID is returned for subsequent status queries and management.
 //
 // @param request - CreateDataImportTaskRequest
 //
@@ -1385,7 +1501,11 @@ func (client *Client) CreateDataImportTaskWithOptions(request *CreateDataImportT
 
 // Summary:
 //
-// 创建评估升级的数据迁移任务
+// Creates a data import task to import external data files, such as SQL scripts and CSV files, into a target database instance.
+//
+// Description:
+//
+// Creates a data import task that imports SQL or CSV files stored in OSS or ECS, or directly provided files, into a target database instance. By specifying the instance ID, database name, engine type, data source (such as an OSS path), and import type, the system performs data write operations asynchronously or synchronously. This operation is applicable to scenarios such as data migration, initialization, and data backfill. A task ID is returned for subsequent status queries and management.
 //
 // @param request - CreateDataImportTaskRequest
 //
@@ -1403,7 +1523,7 @@ func (client *Client) CreateDataImportTask(request *CreateDataImportTaskRequest)
 
 // Summary:
 //
-// 创建GDN实例
+// Creates a Global Database Network (GDN) instance.
 //
 // @param request - CreateGdnInstanceRequest
 //
@@ -1471,7 +1591,7 @@ func (client *Client) CreateGdnInstanceWithOptions(request *CreateGdnInstanceReq
 
 // Summary:
 //
-// 创建GDN实例
+// Creates a Global Database Network (GDN) instance.
 //
 // @param request - CreateGdnInstanceRequest
 //
@@ -1490,6 +1610,10 @@ func (client *Client) CreateGdnInstance(request *CreateGdnInstanceRequest) (_res
 // Summary:
 //
 // 创建GDN从实例
+//
+// Description:
+//
+// <props="china">更多关于实例账号的信息，请参见[账号管理](https://help.aliyun.com/document_detail/172163.html)。
 //
 // @param request - CreateGdnStandbyMemberRequest
 //
@@ -1627,6 +1751,10 @@ func (client *Client) CreateGdnStandbyMemberWithOptions(request *CreateGdnStandb
 //
 // 创建GDN从实例
 //
+// Description:
+//
+// <props="china">更多关于实例账号的信息，请参见[账号管理](https://help.aliyun.com/document_detail/172163.html)。
+//
 // @param request - CreateGdnStandbyMemberRequest
 //
 // @return CreateGdnStandbyMemberResponse
@@ -1643,7 +1771,11 @@ func (client *Client) CreateGdnStandbyMember(request *CreateGdnStandbyMemberRequ
 
 // Summary:
 //
-// 创建mem0
+// # Enable Memory Engine
+//
+// Description:
+//
+// <props="china">For more information about instance accounts, see [Account management](https://help.aliyun.com/document_detail/172163.html).
 //
 // @param request - CreateMem0Request
 //
@@ -1691,7 +1823,11 @@ func (client *Client) CreateMem0WithOptions(request *CreateMem0Request, runtime 
 
 // Summary:
 //
-// 创建mem0
+// # Enable Memory Engine
+//
+// Description:
+//
+// <props="china">For more information about instance accounts, see [Account management](https://help.aliyun.com/document_detail/172163.html).
 //
 // @param request - CreateMem0Request
 //
@@ -1709,7 +1845,11 @@ func (client *Client) CreateMem0(request *CreateMem0Request) (_result *CreateMem
 
 // Summary:
 //
-// 创建评估预检任务
+// Performs a health check on the replication task during data migration.
+//
+// Description:
+//
+// During the data synchronization phase, proactively initiates a diagnostic task for the replication task to check for issues such as latency, replication interruption, or data inconsistency.
 //
 // @param request - CreateRplInspectionTaskRequest
 //
@@ -1781,7 +1921,11 @@ func (client *Client) CreateRplInspectionTaskWithOptions(request *CreateRplInspe
 
 // Summary:
 //
-// 创建评估预检任务
+// Performs a health check on the replication task during data migration.
+//
+// Description:
+//
+// During the data synchronization phase, proactively initiates a diagnostic task for the replication task to check for issues such as latency, replication interruption, or data inconsistency.
 //
 // @param request - CreateRplInspectionTaskRequest
 //
@@ -1799,7 +1943,7 @@ func (client *Client) CreateRplInspectionTask(request *CreateRplInspectionTaskRe
 
 // Summary:
 //
-// 创建评估升级的兼容性评估任务
+// Creates a SQL statement assessment task. You submit SQL statements through this operation, and the system performs static analysis and risk assessment to identify execution risks and compatibility issues on the target database instance.
 //
 // @param request - CreateSQLEvaluateTaskRequest
 //
@@ -1891,7 +2035,7 @@ func (client *Client) CreateSQLEvaluateTaskWithOptions(request *CreateSQLEvaluat
 
 // Summary:
 //
-// 创建评估升级的兼容性评估任务
+// Creates a SQL statement assessment task. You submit SQL statements through this operation, and the system performs static analysis and risk assessment to identify execution risks and compatibility issues on the target database instance.
 //
 // @param request - CreateSQLEvaluateTaskRequest
 //
@@ -1909,7 +2053,7 @@ func (client *Client) CreateSQLEvaluateTask(request *CreateSQLEvaluateTaskReques
 
 // Summary:
 //
-// 创建 PolarDB-X 存储资源池
+// Creates a resource storage pool.
 //
 // @param request - CreateStoragePoolRequest
 //
@@ -1969,7 +2113,7 @@ func (client *Client) CreateStoragePoolWithOptions(request *CreateStoragePoolReq
 
 // Summary:
 //
-// 创建 PolarDB-X 存储资源池
+// Creates a resource storage pool.
 //
 // @param request - CreateStoragePoolRequest
 //
@@ -1987,7 +2131,7 @@ func (client *Client) CreateStoragePool(request *CreateStoragePoolRequest) (_res
 
 // Summary:
 //
-// 创建评估升级的结构迁移任务
+// Creates a database schema import task. This operation allows you to import SQL script files or text content that contains DDL statements into a target database instance, and automatically performs schema operations such as creating tables, indexes, views, and stored procedures.
 //
 // @param request - CreateStructureImportTaskRequest
 //
@@ -2045,7 +2189,7 @@ func (client *Client) CreateStructureImportTaskWithOptions(request *CreateStruct
 
 // Summary:
 //
-// 创建评估升级的结构迁移任务
+// Creates a database schema import task. This operation allows you to import SQL script files or text content that contains DDL statements into a target database instance, and automatically performs schema operations such as creating tables, indexes, views, and stored procedures.
 //
 // @param request - CreateStructureImportTaskRequest
 //
@@ -2143,6 +2287,10 @@ func (client *Client) CreateSubCNInstance(request *CreateSubCNInstanceRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a privileged user. Each instance can have only one privileged user.
+//
 // @param request - CreateSuperAccountRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2199,6 +2347,10 @@ func (client *Client) CreateSuperAccountWithOptions(request *CreateSuperAccountR
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a privileged user. Each instance can have only one privileged user.
+//
 // @param request - CreateSuperAccountRequest
 //
 // @return CreateSuperAccountResponse
@@ -2215,7 +2367,7 @@ func (client *Client) CreateSuperAccount(request *CreateSuperAccountRequest) (_r
 
 // Summary:
 //
-// 创建标准版迁移到企业版的操作任务
+// Creates a conversion task to change a specific status or configuration of an instance.
 //
 // @param request - CreateTransformOperationRequest
 //
@@ -2267,7 +2419,7 @@ func (client *Client) CreateTransformOperationWithOptions(request *CreateTransfo
 
 // Summary:
 //
-// 创建标准版迁移到企业版的操作任务
+// Creates a conversion task to change a specific status or configuration of an instance.
 //
 // @param request - CreateTransformOperationRequest
 //
@@ -2283,6 +2435,10 @@ func (client *Client) CreateTransformOperation(request *CreateTransformOperation
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an account by calling the DeleteAccount operation.
+//
 // @param request - DeleteAccountRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2339,6 +2495,10 @@ func (client *Client) DeleteAccountWithOptions(request *DeleteAccountRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an account by calling the DeleteAccount operation.
+//
 // @param request - DeleteAccountRequest
 //
 // @return DeleteAccountResponse
@@ -2355,7 +2515,11 @@ func (client *Client) DeleteAccount(request *DeleteAccountRequest) (_result *Del
 
 // Summary:
 //
-// 删除自定义endpoint
+// Deletes a custom endpoint domain name.
+//
+// Description:
+//
+// Deletes the custom endpoint of a specified database instance and disables access through the domain name.
 //
 // @param request - DeleteCustomEndpointRequest
 //
@@ -2407,7 +2571,11 @@ func (client *Client) DeleteCustomEndpointWithOptions(request *DeleteCustomEndpo
 
 // Summary:
 //
-// 删除自定义endpoint
+// Deletes a custom endpoint domain name.
+//
+// Description:
+//
+// Deletes the custom endpoint of a specified database instance and disables access through the domain name.
 //
 // @param request - DeleteCustomEndpointRequest
 //
@@ -2423,6 +2591,10 @@ func (client *Client) DeleteCustomEndpoint(request *DeleteCustomEndpointRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a database by calling the DeleteDB operation.
+//
 // @param request - DeleteDBRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2471,6 +2643,10 @@ func (client *Client) DeleteDBWithOptions(request *DeleteDBRequest, runtime *dar
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a database by calling the DeleteDB operation.
+//
 // @param request - DeleteDBRequest
 //
 // @return DeleteDBResponse
@@ -2487,7 +2663,7 @@ func (client *Client) DeleteDB(request *DeleteDBRequest) (_result *DeleteDBRespo
 
 // Summary:
 //
-// 释放实例
+// Calls the DeleteDBInstance operation to delete an instance.
 //
 // @param request - DeleteDBInstanceRequest
 //
@@ -2535,7 +2711,7 @@ func (client *Client) DeleteDBInstanceWithOptions(request *DeleteDBInstanceReque
 
 // Summary:
 //
-// 释放实例
+// Calls the DeleteDBInstance operation to delete an instance.
 //
 // @param request - DeleteDBInstanceRequest
 //
@@ -2553,7 +2729,11 @@ func (client *Client) DeleteDBInstance(request *DeleteDBInstanceRequest) (_resul
 
 // Summary:
 //
-// 删除评估导入任务
+// Deletes an evaluation import task.
+//
+// Description:
+//
+// Deletes a created evaluation task and performs subsequent data import operations.
 //
 // @param request - DeleteEvaluateAndImportTaskRequest
 //
@@ -2601,7 +2781,11 @@ func (client *Client) DeleteEvaluateAndImportTaskWithOptions(request *DeleteEval
 
 // Summary:
 //
-// 删除评估导入任务
+// Deletes an evaluation import task.
+//
+// Description:
+//
+// Deletes a created evaluation task and performs subsequent data import operations.
 //
 // @param request - DeleteEvaluateAndImportTaskRequest
 //
@@ -2619,7 +2803,7 @@ func (client *Client) DeleteEvaluateAndImportTask(request *DeleteEvaluateAndImpo
 
 // Summary:
 //
-// 删除GDN实例
+// Deletes a global database network (GDN) instance.
 //
 // @param request - DeleteGdnInstanceRequest
 //
@@ -2667,7 +2851,7 @@ func (client *Client) DeleteGdnInstanceWithOptions(request *DeleteGdnInstanceReq
 
 // Summary:
 //
-// 删除GDN实例
+// Deletes a global database network (GDN) instance.
 //
 // @param request - DeleteGdnInstanceRequest
 //
@@ -2685,7 +2869,11 @@ func (client *Client) DeleteGdnInstance(request *DeleteGdnInstanceRequest) (_res
 
 // Summary:
 //
-// 删除mem0
+// Disables the memory engine.
+//
+// Description:
+//
+// Deletes the custom endpoint of a specified database instance and disables the access entry for the domain name.
 //
 // @param request - DeleteMem0Request
 //
@@ -2733,7 +2921,11 @@ func (client *Client) DeleteMem0WithOptions(request *DeleteMem0Request, runtime 
 
 // Summary:
 //
-// 删除mem0
+// Disables the memory engine.
+//
+// Description:
+//
+// Deletes the custom endpoint of a specified database instance and disables the access entry for the domain name.
 //
 // @param request - DeleteMem0Request
 //
@@ -2827,6 +3019,10 @@ func (client *Client) DeleteSubCNInstance(request *DeleteSubCNInstanceRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the list of accounts by calling the DescribeAccountList operation.
+//
 // @param request - DescribeAccountListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2879,6 +3075,10 @@ func (client *Client) DescribeAccountListWithOptions(request *DescribeAccountLis
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the list of accounts by calling the DescribeAccountList operation.
+//
 // @param request - DescribeAccountListRequest
 //
 // @return DescribeAccountListResponse
@@ -2895,7 +3095,7 @@ func (client *Client) DescribeAccountList(request *DescribeAccountListRequest) (
 
 // Summary:
 //
-// 展示全局运维窗口配置
+// Calls the DescribeActiveOperationMaintainConf operation to display the O&M window configuration.
 //
 // @param request - DescribeActiveOperationMaintainConfRequest
 //
@@ -2939,7 +3139,7 @@ func (client *Client) DescribeActiveOperationMaintainConfWithOptions(request *De
 
 // Summary:
 //
-// 展示全局运维窗口配置
+// Calls the DescribeActiveOperationMaintainConf operation to display the O&M window configuration.
 //
 // @param request - DescribeActiveOperationMaintainConfRequest
 //
@@ -2957,7 +3157,7 @@ func (client *Client) DescribeActiveOperationMaintainConf(request *DescribeActiv
 
 // Summary:
 //
-// 获取主动运维任务数量
+// Retrieves the total number of O&M events.
 //
 // @param request - DescribeActiveOperationTaskCountRequest
 //
@@ -2997,7 +3197,7 @@ func (client *Client) DescribeActiveOperationTaskCountWithOptions(request *Descr
 
 // Summary:
 //
-// 获取主动运维任务数量
+// Retrieves the total number of O&M events.
 //
 // @param request - DescribeActiveOperationTaskCountRequest
 //
@@ -3015,7 +3215,7 @@ func (client *Client) DescribeActiveOperationTaskCount(request *DescribeActiveOp
 
 // Summary:
 //
-// 获取待执行自动运维任务列表
+// Queries O&M events by calling the DescribeActiveOperationTasks operation.
 //
 // @param request - DescribeActiveOperationTasksRequest
 //
@@ -3055,7 +3255,7 @@ func (client *Client) DescribeActiveOperationTasksWithOptions(request *DescribeA
 
 // Summary:
 //
-// 获取待执行自动运维任务列表
+// Queries O&M events by calling the DescribeActiveOperationTasks operation.
 //
 // @param request - DescribeActiveOperationTasksRequest
 //
@@ -3073,7 +3273,7 @@ func (client *Client) DescribeActiveOperationTasks(request *DescribeActiveOperat
 
 // Summary:
 //
-// 冷存储表列表
+// Lists cold storage tables.
 //
 // @param request - DescribeArchiveTableListRequest
 //
@@ -3141,7 +3341,7 @@ func (client *Client) DescribeArchiveTableListWithOptions(request *DescribeArchi
 
 // Summary:
 //
-// 冷存储表列表
+// Lists cold storage tables.
 //
 // @param request - DescribeArchiveTableListRequest
 //
@@ -3159,7 +3359,7 @@ func (client *Client) DescribeArchiveTableList(request *DescribeArchiveTableList
 
 // Summary:
 //
-// 获取已开启跨地域备份的地域
+// Queries the list of available regions that support cross-region operations, typically used for multi-region deployment or data replication scenarios.
 //
 // @param request - DescribeAvailableCrossRegionsRequest
 //
@@ -3207,7 +3407,7 @@ func (client *Client) DescribeAvailableCrossRegionsWithOptions(request *Describe
 
 // Summary:
 //
-// 获取已开启跨地域备份的地域
+// Queries the list of available regions that support cross-region operations, typically used for multi-region deployment or data replication scenarios.
 //
 // @param request - DescribeAvailableCrossRegionsRequest
 //
@@ -3225,7 +3425,7 @@ func (client *Client) DescribeAvailableCrossRegions(request *DescribeAvailableCr
 
 // Summary:
 //
-// 描述备份策略
+// Calls the DescribeBackupPolicy operation to query the backup settings of an instance.
 //
 // @param request - DescribeBackupPolicyRequest
 //
@@ -3273,7 +3473,7 @@ func (client *Client) DescribeBackupPolicyWithOptions(request *DescribeBackupPol
 
 // Summary:
 //
-// 描述备份策略
+// Calls the DescribeBackupPolicy operation to query the backup settings of an instance.
 //
 // @param request - DescribeBackupPolicyRequest
 //
@@ -3291,7 +3491,7 @@ func (client *Client) DescribeBackupPolicy(request *DescribeBackupPolicyRequest)
 
 // Summary:
 //
-// 备份集详情
+// Queries the details of a backup set by calling the DescribeBackupSet operation.
 //
 // @param request - DescribeBackupSetRequest
 //
@@ -3347,7 +3547,7 @@ func (client *Client) DescribeBackupSetWithOptions(request *DescribeBackupSetReq
 
 // Summary:
 //
-// 备份集详情
+// Queries the details of a backup set by calling the DescribeBackupSet operation.
 //
 // @param request - DescribeBackupSetRequest
 //
@@ -3363,6 +3563,10 @@ func (client *Client) DescribeBackupSet(request *DescribeBackupSetRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls the DescribeBackupSetList operation to query the list of backup sets.
+//
 // @param request - DescribeBackupSetListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3399,6 +3603,10 @@ func (client *Client) DescribeBackupSetListWithOptions(request *DescribeBackupSe
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls the DescribeBackupSetList operation to query the list of backup sets.
+//
 // @param request - DescribeBackupSetListRequest
 //
 // @return DescribeBackupSetListResponse
@@ -3413,6 +3621,18 @@ func (client *Client) DescribeBackupSetList(request *DescribeBackupSetListReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls the DescribeBinaryLogList operation to query binlog logs.
+//
+// Description:
+//
+// - Binlog files are retained for 15 days by default.
+//
+// - The returned log list includes all logs whose record end time is after the query start time and whose record start time is before the query end time.
+//
+// - When the DownloadLink is not NULL, you can use this URL to download the backup file. This URL is valid for 2 days after it is generated. Download the file before the URL expires.
+//
 // @param request - DescribeBinaryLogListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3477,6 +3697,18 @@ func (client *Client) DescribeBinaryLogListWithOptions(request *DescribeBinaryLo
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls the DescribeBinaryLogList operation to query binlog logs.
+//
+// Description:
+//
+// - Binlog files are retained for 15 days by default.
+//
+// - The returned log list includes all logs whose record end time is after the query start time and whose record start time is before the query end time.
+//
+// - When the DownloadLink is not NULL, you can use this URL to download the backup file. This URL is valid for 2 days after it is generated. Download the file before the URL expires.
+//
 // @param request - DescribeBinaryLogListRequest
 //
 // @return DescribeBinaryLogListResponse
@@ -3493,7 +3725,15 @@ func (client *Client) DescribeBinaryLogList(request *DescribeBinaryLogListReques
 
 // Summary:
 //
-// 查询多流规格列表
+// Queries the list of instance specifications.
+//
+// Description:
+//
+// - Binary log files are retained for 15 days by default.
+//
+// - The returned log list includes all logs whose log record end time is after the query start time and whose log record start time is before the query end time.
+//
+// - If DownloadLink is not NULL, you can use this URL to download the backup file. This URL is valid for 2 days after it is generated. Download the file before the URL expires.
 //
 // @param request - DescribeCdcClassListRequest
 //
@@ -3545,7 +3785,15 @@ func (client *Client) DescribeCdcClassListWithOptions(request *DescribeCdcClassL
 
 // Summary:
 //
-// 查询多流规格列表
+// Queries the list of instance specifications.
+//
+// Description:
+//
+// - Binary log files are retained for 15 days by default.
+//
+// - The returned log list includes all logs whose log record end time is after the query start time and whose log record start time is before the query end time.
+//
+// - If DownloadLink is not NULL, you can use this URL to download the backup file. This URL is valid for 2 days after it is generated. Download the file before the URL expires.
 //
 // @param request - DescribeCdcClassListRequest
 //
@@ -3563,7 +3811,7 @@ func (client *Client) DescribeCdcClassList(request *DescribeCdcClassListRequest)
 
 // Summary:
 //
-// 查询CDC信息
+// Queries CDC information.
 //
 // @param request - DescribeCdcInfoRequest
 //
@@ -3611,7 +3859,7 @@ func (client *Client) DescribeCdcInfoWithOptions(request *DescribeCdcInfoRequest
 
 // Summary:
 //
-// 查询CDC信息
+// Queries CDC information.
 //
 // @param request - DescribeCdcInfoRequest
 //
@@ -3629,7 +3877,15 @@ func (client *Client) DescribeCdcInfo(request *DescribeCdcInfoRequest) (_result 
 
 // Summary:
 //
-// 获取CDC版本列表
+// Retrieves the list of CDC versions.
+//
+// Description:
+//
+// - Binary log files are retained for 15 days by default.
+//
+// - The returned log list includes all logs whose log record end time is after the query start time and whose log record start time is before the query end time.
+//
+// - When DownloadLink is not NULL, you can download the backup file from this URL. The URL is valid for 2 days after it is generated. Download the file before the URL expires.
 //
 // @param request - DescribeCdcVersionListRequest
 //
@@ -3681,7 +3937,15 @@ func (client *Client) DescribeCdcVersionListWithOptions(request *DescribeCdcVers
 
 // Summary:
 //
-// 获取CDC版本列表
+// Retrieves the list of CDC versions.
+//
+// Description:
+//
+// - Binary log files are retained for 15 days by default.
+//
+// - The returned log list includes all logs whose log record end time is after the query start time and whose log record start time is before the query end time.
+//
+// - When DownloadLink is not NULL, you can download the backup file from this URL. The URL is valid for 2 days after it is generated. Download the file before the URL expires.
 //
 // @param request - DescribeCdcVersionListRequest
 //
@@ -3697,6 +3961,10 @@ func (client *Client) DescribeCdcVersionList(request *DescribeCdcVersionListRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Invokes the DescribeCharacterSet operation to query the character set types supported by databases in a target instance.
+//
 // @param request - DescribeCharacterSetRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3741,6 +4009,10 @@ func (client *Client) DescribeCharacterSetWithOptions(request *DescribeCharacter
 	return _result, _err
 }
 
+// Summary:
+//
+// Invokes the DescribeCharacterSet operation to query the character set types supported by databases in a target instance.
+//
 // @param request - DescribeCharacterSetRequest
 //
 // @return DescribeCharacterSetResponse
@@ -3757,7 +4029,7 @@ func (client *Client) DescribeCharacterSet(request *DescribeCharacterSetRequest)
 
 // Summary:
 //
-// 冷存储基础信息
+// The cold storage basic information.
 //
 // @param request - DescribeColdDataBasicInfoRequest
 //
@@ -3797,7 +4069,7 @@ func (client *Client) DescribeColdDataBasicInfoWithOptions(request *DescribeCold
 
 // Summary:
 //
-// 冷存储基础信息
+// The cold storage basic information.
 //
 // @param request - DescribeColdDataBasicInfoRequest
 //
@@ -3815,7 +4087,7 @@ func (client *Client) DescribeColdDataBasicInfo(request *DescribeColdDataBasicIn
 
 // Summary:
 //
-// 查询列存规格列表
+// Queries the list of column store specifications for an instance.
 //
 // @param request - DescribeColumnarClassListRequest
 //
@@ -3867,7 +4139,7 @@ func (client *Client) DescribeColumnarClassListWithOptions(request *DescribeColu
 
 // Summary:
 //
-// 查询列存规格列表
+// Queries the list of column store specifications for an instance.
 //
 // @param request - DescribeColumnarClassListRequest
 //
@@ -3885,7 +4157,7 @@ func (client *Client) DescribeColumnarClassList(request *DescribeColumnarClassLi
 
 // Summary:
 //
-// 查询Columnar信息
+// Queries column store information.
 //
 // @param request - DescribeColumnarInfoRequest
 //
@@ -3933,7 +4205,7 @@ func (client *Client) DescribeColumnarInfoWithOptions(request *DescribeColumnarI
 
 // Summary:
 //
-// 查询Columnar信息
+// Queries column store information.
 //
 // @param request - DescribeColumnarInfoRequest
 //
@@ -3951,7 +4223,15 @@ func (client *Client) DescribeColumnarInfo(request *DescribeColumnarInfoRequest)
 
 // Summary:
 //
-// 获取Columnar版本列表
+// Queries column store version information.
+//
+// Description:
+//
+// - Binary log files are retained for 15 days by default.
+//
+// - The returned log list includes all logs whose log record end time is after the query start time and whose log record start time is before the query end time.
+//
+// - When DownloadLink is not NULL, you can download the backup file from this URL. This URL is valid for 2 days after it is generated. Download the file before the expiration time.
 //
 // @param request - DescribeColumnarVersionListRequest
 //
@@ -3999,7 +4279,15 @@ func (client *Client) DescribeColumnarVersionListWithOptions(request *DescribeCo
 
 // Summary:
 //
-// 获取Columnar版本列表
+// Queries column store version information.
+//
+// Description:
+//
+// - Binary log files are retained for 15 days by default.
+//
+// - The returned log list includes all logs whose log record end time is after the query start time and whose log record start time is before the query end time.
+//
+// - When DownloadLink is not NULL, you can download the backup file from this URL. This URL is valid for 2 days after it is generated. Download the file before the expiration time.
 //
 // @param request - DescribeColumnarVersionListRequest
 //
@@ -4017,7 +4305,7 @@ func (client *Client) DescribeColumnarVersionList(request *DescribeColumnarVersi
 
 // Summary:
 //
-// 查询PolarDB-X 实例指定组件的属性列表
+// Retrieves the property information of a specified component, including property names and types.
 //
 // @param request - DescribeComponentPropetiesRequest
 //
@@ -4073,7 +4361,7 @@ func (client *Client) DescribeComponentPropetiesWithOptions(request *DescribeCom
 
 // Summary:
 //
-// 查询PolarDB-X 实例指定组件的属性列表
+// Retrieves the property information of a specified component, including property names and types.
 //
 // @param request - DescribeComponentPropetiesRequest
 //
@@ -4091,7 +4379,11 @@ func (client *Client) DescribeComponentPropeties(request *DescribeComponentPrope
 
 // Summary:
 //
-// 查询自定义连接信息
+// Queries the list of custom endpoints defined by the user.
+//
+// Description:
+//
+// Queries the list of custom endpoints configured by the user. You can use this operation to manage and view the settings of private connections or VPC endpoint services.
 //
 // @param request - DescribeCustomEndpointListRequest
 //
@@ -4147,7 +4439,11 @@ func (client *Client) DescribeCustomEndpointListWithOptions(request *DescribeCus
 
 // Summary:
 //
-// 查询自定义连接信息
+// Queries the list of custom endpoints defined by the user.
+//
+// Description:
+//
+// Queries the list of custom endpoints configured by the user. You can use this operation to manage and view the settings of private connections or VPC endpoint services.
 //
 // @param request - DescribeCustomEndpointListRequest
 //
@@ -4165,7 +4461,7 @@ func (client *Client) DescribeCustomEndpointList(request *DescribeCustomEndpoint
 
 // Summary:
 //
-// 获取实例详情
+// Calls the DescribeDBInstanceAttribute operation to retrieve instance attributes.
 //
 // @param request - DescribeDBInstanceAttributeRequest
 //
@@ -4217,7 +4513,7 @@ func (client *Client) DescribeDBInstanceAttributeWithOptions(request *DescribeDB
 
 // Summary:
 //
-// 获取实例详情
+// Calls the DescribeDBInstanceAttribute operation to retrieve instance attributes.
 //
 // @param request - DescribeDBInstanceAttributeRequest
 //
@@ -4235,7 +4531,7 @@ func (client *Client) DescribeDBInstanceAttribute(request *DescribeDBInstanceAtt
 
 // Summary:
 //
-// 查询实例配置信息
+// Calls the DescribeDBInstanceConfig operation to retrieve the configuration parameters of an instance.
 //
 // @param request - DescribeDBInstanceConfigRequest
 //
@@ -4287,7 +4583,7 @@ func (client *Client) DescribeDBInstanceConfigWithOptions(request *DescribeDBIns
 
 // Summary:
 //
-// 查询实例配置信息
+// Calls the DescribeDBInstanceConfig operation to retrieve the configuration parameters of an instance.
 //
 // @param request - DescribeDBInstanceConfigRequest
 //
@@ -4306,6 +4602,10 @@ func (client *Client) DescribeDBInstanceConfig(request *DescribeDBInstanceConfig
 // Summary:
 //
 // 查询endpoint列表
+//
+// Description:
+//
+// 该接口用于获取用户已配置的自定义终端节点（Endpoint）列表，便于管理和查看私有连接或VPC终端服务的设置。
 //
 // @param request - DescribeDBInstanceEndpointRequest
 //
@@ -4363,6 +4663,10 @@ func (client *Client) DescribeDBInstanceEndpointWithOptions(request *DescribeDBI
 //
 // 查询endpoint列表
 //
+// Description:
+//
+// 该接口用于获取用户已配置的自定义终端节点（Endpoint）列表，便于管理和查看私有连接或VPC终端服务的设置。
+//
 // @param request - DescribeDBInstanceEndpointRequest
 //
 // @return DescribeDBInstanceEndpointResponse
@@ -4379,7 +4683,7 @@ func (client *Client) DescribeDBInstanceEndpoint(request *DescribeDBInstanceEndp
 
 // Summary:
 //
-// 查询实例的HA信息
+// Queries the high availability (HA) information of an instance.
 //
 // @param request - DescribeDBInstanceHARequest
 //
@@ -4427,7 +4731,7 @@ func (client *Client) DescribeDBInstanceHAWithOptions(request *DescribeDBInstanc
 
 // Summary:
 //
-// 查询实例的HA信息
+// Queries the high availability (HA) information of an instance.
 //
 // @param request - DescribeDBInstanceHARequest
 //
@@ -4443,6 +4747,10 @@ func (client *Client) DescribeDBInstanceHA(request *DescribeDBInstanceHARequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Views SSL information.
+//
 // @param request - DescribeDBInstanceSSLRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4487,6 +4795,10 @@ func (client *Client) DescribeDBInstanceSSLWithOptions(request *DescribeDBInstan
 	return _result, _err
 }
 
+// Summary:
+//
+// Views SSL information.
+//
 // @param request - DescribeDBInstanceSSLRequest
 //
 // @return DescribeDBInstanceSSLResponse
@@ -4501,6 +4813,10 @@ func (client *Client) DescribeDBInstanceSSL(request *DescribeDBInstanceSSLReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls the DescribeDBInstanceTDE operation to retrieve the details of Transparent Data Encryption (TDE) for an instance.
+//
 // @param request - DescribeDBInstanceTDERequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4545,6 +4861,10 @@ func (client *Client) DescribeDBInstanceTDEWithOptions(request *DescribeDBInstan
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls the DescribeDBInstanceTDE operation to retrieve the details of Transparent Data Encryption (TDE) for an instance.
+//
 // @param request - DescribeDBInstanceTDERequest
 //
 // @return DescribeDBInstanceTDEResponse
@@ -4561,7 +4881,7 @@ func (client *Client) DescribeDBInstanceTDE(request *DescribeDBInstanceTDEReques
 
 // Summary:
 //
-// 查询实例拓扑
+// Calls the DescribeDBInstanceTopology operation to retrieve the topology information of an instance.
 //
 // @param request - DescribeDBInstanceTopologyRequest
 //
@@ -4621,7 +4941,7 @@ func (client *Client) DescribeDBInstanceTopologyWithOptions(request *DescribeDBI
 
 // Summary:
 //
-// 查询实例拓扑
+// Calls the DescribeDBInstanceTopology operation to retrieve the topology information of an instance.
 //
 // @param request - DescribeDBInstanceTopologyRequest
 //
@@ -4639,7 +4959,7 @@ func (client *Client) DescribeDBInstanceTopology(request *DescribeDBInstanceTopo
 
 // Summary:
 //
-// 通过Endpoint查询实例
+// Retrieves the basic information about an instance by using the endpoint of the instance.
 //
 // @param request - DescribeDBInstanceViaEndpointRequest
 //
@@ -4687,7 +5007,7 @@ func (client *Client) DescribeDBInstanceViaEndpointWithOptions(request *Describe
 
 // Summary:
 //
-// 通过Endpoint查询实例
+// Retrieves the basic information about an instance by using the endpoint of the instance.
 //
 // @param request - DescribeDBInstanceViaEndpointRequest
 //
@@ -4705,7 +5025,7 @@ func (client *Client) DescribeDBInstanceViaEndpoint(request *DescribeDBInstanceV
 
 // Summary:
 //
-// 获取PolarDB-X实例列表
+// Calls the DescribeDBInstances operation to query a list of instances.
 //
 // @param request - DescribeDBInstancesRequest
 //
@@ -4785,7 +5105,7 @@ func (client *Client) DescribeDBInstancesWithOptions(request *DescribeDBInstance
 
 // Summary:
 //
-// 获取PolarDB-X实例列表
+// Calls the DescribeDBInstances operation to query a list of instances.
 //
 // @param request - DescribeDBInstancesRequest
 //
@@ -4803,7 +5123,15 @@ func (client *Client) DescribeDBInstances(request *DescribeDBInstancesRequest) (
 
 // Summary:
 //
-// 性能监控数据接口
+// Queries the performance data of an instance by calling the DescribeDBNodePerformance operation.
+//
+// Description:
+//
+// Note:
+//
+// - The **endpoint*	- differs from other API operations. Use **polardbx.aliyuncs.com*	- for Chinese regions and Singapore. For other regions, use **polardbx.{region id}.aliyunc.com**.
+//
+// - When debugging this API operation, if a service not active error is returned, confirm that the **endpoint*	- is correct. You can switch the **service address*	- to **Dubai*	- or **India*	- and change the **endpoint*	- to **polardbx.aliyuncs.com**.
 //
 // @param request - DescribeDBNodePerformanceRequest
 //
@@ -4875,7 +5203,15 @@ func (client *Client) DescribeDBNodePerformanceWithOptions(request *DescribeDBNo
 
 // Summary:
 //
-// 性能监控数据接口
+// Queries the performance data of an instance by calling the DescribeDBNodePerformance operation.
+//
+// Description:
+//
+// Note:
+//
+// - The **endpoint*	- differs from other API operations. Use **polardbx.aliyuncs.com*	- for Chinese regions and Singapore. For other regions, use **polardbx.{region id}.aliyunc.com**.
+//
+// - When debugging this API operation, if a service not active error is returned, confirm that the **endpoint*	- is correct. You can switch the **service address*	- to **Dubai*	- or **India*	- and change the **endpoint*	- to **polardbx.aliyuncs.com**.
 //
 // @param request - DescribeDBNodePerformanceRequest
 //
@@ -4893,7 +5229,7 @@ func (client *Client) DescribeDBNodePerformance(request *DescribeDBNodePerforman
 
 // Summary:
 //
-// 导入任务详情
+// Queries the execution details of a data import task.
 //
 // @param request - DescribeDataImportTaskInfoRequest
 //
@@ -4957,7 +5293,7 @@ func (client *Client) DescribeDataImportTaskInfoWithOptions(request *DescribeDat
 
 // Summary:
 //
-// 导入任务详情
+// Queries the execution details of a data import task.
 //
 // @param request - DescribeDataImportTaskInfoRequest
 //
@@ -4973,6 +5309,10 @@ func (client *Client) DescribeDataImportTaskInfo(request *DescribeDataImportTask
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the list of databases by calling the DescribeDbList operation.
+//
 // @param request - DescribeDbListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5021,6 +5361,10 @@ func (client *Client) DescribeDbListWithOptions(request *DescribeDbListRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the list of databases by calling the DescribeDbList operation.
+//
 // @param request - DescribeDbListRequest
 //
 // @return DescribeDbListResponse
@@ -5035,6 +5379,10 @@ func (client *Client) DescribeDbList(request *DescribeDbListRequest) (_result *D
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls the DescribeDistributeTableList operation to retrieve the list of database tables.
+//
 // @param request - DescribeDistributeTableListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5083,6 +5431,10 @@ func (client *Client) DescribeDistributeTableListWithOptions(request *DescribeDi
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls the DescribeDistributeTableList operation to retrieve the list of database tables.
+//
 // @param request - DescribeDistributeTableListRequest
 //
 // @return DescribeDistributeTableListResponse
@@ -5099,7 +5451,7 @@ func (client *Client) DescribeDistributeTableList(request *DescribeDistributeTab
 
 // Summary:
 //
-// 获取已开启跨地域备份的地域
+// Queries the currently enabled cross-zone configurations.
 //
 // @param request - DescribeEnabledCrossRegionsRequest
 //
@@ -5147,7 +5499,7 @@ func (client *Client) DescribeEnabledCrossRegionsWithOptions(request *DescribeEn
 
 // Summary:
 //
-// 获取已开启跨地域备份的地域
+// Queries the currently enabled cross-zone configurations.
 //
 // @param request - DescribeEnabledCrossRegionsRequest
 //
@@ -5165,7 +5517,7 @@ func (client *Client) DescribeEnabledCrossRegions(request *DescribeEnabledCrossR
 
 // Summary:
 //
-// 查询单个评估迁移任务详情
+// Queries the list of PolarDB-X assessment import tasks. (Single).
 //
 // @param request - DescribeEvaluateAndImportTaskRequest
 //
@@ -5213,7 +5565,7 @@ func (client *Client) DescribeEvaluateAndImportTaskWithOptions(request *Describe
 
 // Summary:
 //
-// 查询单个评估迁移任务详情
+// Queries the list of PolarDB-X assessment import tasks. (Single).
 //
 // @param request - DescribeEvaluateAndImportTaskRequest
 //
@@ -5231,7 +5583,11 @@ func (client *Client) DescribeEvaluateAndImportTask(request *DescribeEvaluateAnd
 
 // Summary:
 //
-// 请求评估导入任务列表
+// Queries a list of assessment import tasks for PolarDB-X.
+//
+// Description:
+//
+// Creates a data import task. You can use this operation to import SQL or CSV files stored in OSS or ECS, or directly provided files, into a destination database instance. By specifying the instance ID, database name, engine type, data source (such as an OSS path), and import type, the system performs data write operations asynchronously or synchronously. This operation is applicable to scenarios such as data migration, initialization, and data backfill. A task ID is returned for subsequent status queries and management.
 //
 // @param request - DescribeEvaluateAndImportTasksRequest
 //
@@ -5283,7 +5639,11 @@ func (client *Client) DescribeEvaluateAndImportTasksWithOptions(request *Describ
 
 // Summary:
 //
-// 请求评估导入任务列表
+// Queries a list of assessment import tasks for PolarDB-X.
+//
+// Description:
+//
+// Creates a data import task. You can use this operation to import SQL or CSV files stored in OSS or ECS, or directly provided files, into a destination database instance. By specifying the instance ID, database name, engine type, data source (such as an OSS path), and import type, the system performs data write operations asynchronously or synchronously. This operation is applicable to scenarios such as data migration, initialization, and data backfill. A task ID is returned for subsequent status queries and management.
 //
 // @param request - DescribeEvaluateAndImportTasksRequest
 //
@@ -5301,7 +5661,7 @@ func (client *Client) DescribeEvaluateAndImportTasks(request *DescribeEvaluateAn
 
 // Summary:
 //
-// 历史事件
+// Retrieves historical events.
 //
 // @param request - DescribeEventsRequest
 //
@@ -5341,7 +5701,7 @@ func (client *Client) DescribeEventsWithOptions(request *DescribeEventsRequest, 
 
 // Summary:
 //
-// 历史事件
+// Retrieves historical events.
 //
 // @param request - DescribeEventsRequest
 //
@@ -5359,7 +5719,7 @@ func (client *Client) DescribeEvents(request *DescribeEventsRequest) (_result *D
 
 // Summary:
 //
-// 获取GDN实例列表
+// Retrieves a list of global database network (GDN) instances.
 //
 // @param request - DescribeGdnInstancesRequest
 //
@@ -5423,7 +5783,7 @@ func (client *Client) DescribeGdnInstancesWithOptions(request *DescribeGdnInstan
 
 // Summary:
 //
-// 获取GDN实例列表
+// Retrieves a list of global database network (GDN) instances.
 //
 // @param request - DescribeGdnInstancesRequest
 //
@@ -5441,7 +5801,11 @@ func (client *Client) DescribeGdnInstances(request *DescribeGdnInstancesRequest)
 
 // Summary:
 //
-// 查询mem0实例信息
+// # View Memory Engine Information
+//
+// Description:
+//
+// > 	- The SQL audit and analysis feature of PolarDB-X 2.0 is free of charge. However, Log Service charges fees for storage space, read traffic, the number of requests, data transformation, and data shipping. For more information about the SQL audit feature, see [Enable SQL audit and analysis](https://help.aliyun.com/document_detail/184619.html).
 //
 // @param request - DescribeMem0InfoRequest
 //
@@ -5489,7 +5853,11 @@ func (client *Client) DescribeMem0InfoWithOptions(request *DescribeMem0InfoReque
 
 // Summary:
 //
-// 查询mem0实例信息
+// # View Memory Engine Information
+//
+// Description:
+//
+// > 	- The SQL audit and analysis feature of PolarDB-X 2.0 is free of charge. However, Log Service charges fees for storage space, read traffic, the number of requests, data transformation, and data shipping. For more information about the SQL audit feature, see [Enable SQL audit and analysis](https://help.aliyun.com/document_detail/184619.html).
 //
 // @param request - DescribeMem0InfoRequest
 //
@@ -5507,7 +5875,81 @@ func (client *Client) DescribeMem0Info(request *DescribeMem0InfoRequest) (_resul
 
 // Summary:
 //
-// 开放商业备份集
+// Queries the whitelist of a memory engine.
+//
+// Description:
+//
+// > 	- The SQL audit and analysis feature of PolarDB-X 2.0 is free of charge. However, Log Service charges fees for storage space, read traffic, number of requests, data processing, and data shipping. For more information about the SQL audit feature, see [Enable SQL Audit and Analysis](https://help.aliyun.com/document_detail/184619.html).
+//
+// @param request - DescribeMem0SecurityIpsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeMem0SecurityIpsResponse
+func (client *Client) DescribeMem0SecurityIpsWithOptions(request *DescribeMem0SecurityIpsRequest, runtime *dara.RuntimeOptions) (_result *DescribeMem0SecurityIpsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeMem0SecurityIps"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeMem0SecurityIpsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the whitelist of a memory engine.
+//
+// Description:
+//
+// > 	- The SQL audit and analysis feature of PolarDB-X 2.0 is free of charge. However, Log Service charges fees for storage space, read traffic, number of requests, data processing, and data shipping. For more information about the SQL audit feature, see [Enable SQL Audit and Analysis](https://help.aliyun.com/document_detail/184619.html).
+//
+// @param request - DescribeMem0SecurityIpsRequest
+//
+// @return DescribeMem0SecurityIpsResponse
+func (client *Client) DescribeMem0SecurityIps(request *DescribeMem0SecurityIpsRequest) (_result *DescribeMem0SecurityIpsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeMem0SecurityIpsResponse{}
+	_body, _err := client.DescribeMem0SecurityIpsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Exposes instance topology information and download links for commercial backup sets to support offline restoration of cloud instances.
 //
 // @param request - DescribeOpenBackupSetRequest
 //
@@ -5559,7 +6001,7 @@ func (client *Client) DescribeOpenBackupSetWithOptions(request *DescribeOpenBack
 
 // Summary:
 //
-// 开放商业备份集
+// Exposes instance topology information and download links for commercial backup sets to support offline restoration of cloud instances.
 //
 // @param request - DescribeOpenBackupSetRequest
 //
@@ -5577,7 +6019,7 @@ func (client *Client) DescribeOpenBackupSet(request *DescribeOpenBackupSetReques
 
 // Summary:
 //
-// 查询参数模版列表
+// Queries the list of database parameter templates created by users or supported by the system, including basic information, associated engine types, and modification times of each parameter template.
 //
 // @param request - DescribeParameterGroupsRequest
 //
@@ -5617,7 +6059,7 @@ func (client *Client) DescribeParameterGroupsWithOptions(request *DescribeParame
 
 // Summary:
 //
-// 查询参数模版列表
+// Queries the list of database parameter templates created by users or supported by the system, including basic information, associated engine types, and modification times of each parameter template.
 //
 // @param request - DescribeParameterGroupsRequest
 //
@@ -5635,7 +6077,7 @@ func (client *Client) DescribeParameterGroups(request *DescribeParameterGroupsRe
 
 // Summary:
 //
-// 查看参数模版
+// Calls the DescribeParameterTemplates operation to retrieve the parameter template list for an instance.
 //
 // @param request - DescribeParameterTemplatesRequest
 //
@@ -5691,7 +6133,7 @@ func (client *Client) DescribeParameterTemplatesWithOptions(request *DescribePar
 
 // Summary:
 //
-// 查看参数模版
+// Calls the DescribeParameterTemplates operation to retrieve the parameter template list for an instance.
 //
 // @param request - DescribeParameterTemplatesRequest
 //
@@ -5707,6 +6149,10 @@ func (client *Client) DescribeParameterTemplates(request *DescribeParameterTempl
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls the DescribeParameters operation to retrieve instance parameters.
+//
 // @param request - DescribeParametersRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5755,6 +6201,10 @@ func (client *Client) DescribeParametersWithOptions(request *DescribeParametersR
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls the DescribeParameters operation to retrieve instance parameters.
+//
 // @param request - DescribeParametersRequest
 //
 // @return DescribeParametersResponse
@@ -5771,7 +6221,7 @@ func (client *Client) DescribeParameters(request *DescribeParametersRequest) (_r
 
 // Summary:
 //
-// 查询数据节点列表
+// Queries the details of all data nodes (Data Nodes) in a PolarDB-X instance, including node status, storage usage, and network addresses, to facilitate operations management and monitoring.
 //
 // @param request - DescribePolarxDataNodesRequest
 //
@@ -5831,7 +6281,7 @@ func (client *Client) DescribePolarxDataNodesWithOptions(request *DescribePolarx
 
 // Summary:
 //
-// 查询数据节点列表
+// Queries the details of all data nodes (Data Nodes) in a PolarDB-X instance, including node status, storage usage, and network addresses, to facilitate operations management and monitoring.
 //
 // @param request - DescribePolarxDataNodesRequest
 //
@@ -5847,6 +6297,14 @@ func (client *Client) DescribePolarxDataNodes(request *DescribePolarxDataNodesRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the list of VPCs available for PolarDB-X.
+//
+// Description:
+//
+// Queries the list of Virtual Private Clouds (VPCs) available under your account for database instances. You can use this operation to select an appropriate network environment when creating or managing database instances.
+//
 // @param request - DescribeRdsVpcsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5891,6 +6349,14 @@ func (client *Client) DescribeRdsVpcsWithOptions(request *DescribeRdsVpcsRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the list of VPCs available for PolarDB-X.
+//
+// Description:
+//
+// Queries the list of Virtual Private Clouds (VPCs) available under your account for database instances. You can use this operation to select an appropriate network environment when creating or managing database instances.
+//
 // @param request - DescribeRdsVpcsRequest
 //
 // @return DescribeRdsVpcsResponse
@@ -5907,7 +6373,11 @@ func (client *Client) DescribeRdsVpcs(request *DescribeRdsVpcsRequest) (_result 
 
 // Summary:
 //
-// 查询Vswitch信息
+// Queries the list of available vSwitches in a virtual private cloud (VPC) for an ApsaraDB RDS instance.
+//
+// Description:
+//
+// Queries the list of available virtual private clouds (VPCs) under your account for an instance, so that you can select an appropriate network environment when creating or managing a database instance.
 //
 // @param request - DescribeRdsVswitchesRequest
 //
@@ -5959,7 +6429,11 @@ func (client *Client) DescribeRdsVswitchesWithOptions(request *DescribeRdsVswitc
 
 // Summary:
 //
-// 查询Vswitch信息
+// Queries the list of available vSwitches in a virtual private cloud (VPC) for an ApsaraDB RDS instance.
+//
+// Description:
+//
+// Queries the list of available virtual private clouds (VPCs) under your account for an instance, so that you can select an appropriate network environment when creating or managing a database instance.
 //
 // @param request - DescribeRdsVswitchesRequest
 //
@@ -5975,6 +6449,10 @@ func (client *Client) DescribeRdsVswitches(request *DescribeRdsVswitchesRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls the DescribeRegions operation to obtain the list of regions.
+//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeRegionsResponse
@@ -6000,6 +6478,10 @@ func (client *Client) DescribeRegionsWithOptions(runtime *dara.RuntimeOptions) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls the DescribeRegions operation to obtain the list of regions.
+//
 // @return DescribeRegionsResponse
 func (client *Client) DescribeRegions() (_result *DescribeRegionsResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
@@ -6014,7 +6496,11 @@ func (client *Client) DescribeRegions() (_result *DescribeRegionsResponse, _err 
 
 // Summary:
 //
-// 查询预检任务结果
+// Queries the details of a replication lag inspection task for an instance.
+//
+// Description:
+//
+// During the data synchronization phase, proactively initiates a diagnostic task for the replication task to check for exceptions such as latency, interruption, or data inconsistency.
 //
 // @param request - DescribeRplInspectionTaskRequest
 //
@@ -6078,7 +6564,11 @@ func (client *Client) DescribeRplInspectionTaskWithOptions(request *DescribeRplI
 
 // Summary:
 //
-// 查询预检任务结果
+// Queries the details of a replication lag inspection task for an instance.
+//
+// Description:
+//
+// During the data synchronization phase, proactively initiates a diagnostic task for the replication task to check for exceptions such as latency, interruption, or data inconsistency.
 //
 // @param request - DescribeRplInspectionTaskRequest
 //
@@ -6094,6 +6584,10 @@ func (client *Client) DescribeRplInspectionTask(request *DescribeRplInspectionTa
 	return _result, _err
 }
 
+// Summary:
+//
+// Display the ScaleOut migration task progress.
+//
 // @param request - DescribeScaleOutMigrateTaskListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6154,6 +6648,10 @@ func (client *Client) DescribeScaleOutMigrateTaskListWithOptions(request *Descri
 	return _result, _err
 }
 
+// Summary:
+//
+// Display the ScaleOut migration task progress.
+//
 // @param request - DescribeScaleOutMigrateTaskListRequest
 //
 // @return DescribeScaleOutMigrateTaskListResponse
@@ -6168,6 +6666,10 @@ func (client *Client) DescribeScaleOutMigrateTaskList(request *DescribeScaleOutM
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls the DescribeSecurityIps operation to view the IP whitelist of an instance.
+//
 // @param request - DescribeSecurityIpsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6212,6 +6714,10 @@ func (client *Client) DescribeSecurityIpsWithOptions(request *DescribeSecurityIp
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls the DescribeSecurityIps operation to view the IP whitelist of an instance.
+//
 // @param request - DescribeSecurityIpsRequest
 //
 // @return DescribeSecurityIpsResponse
@@ -6228,7 +6734,7 @@ func (client *Client) DescribeSecurityIps(request *DescribeSecurityIpsRequest) (
 
 // Summary:
 //
-// 查询 PolarDB-X 存储节点信息
+// Queries the storage usage details of an instance, including the total capacity, used space, remaining space, and other information.
 //
 // @param request - DescribeShowStorageInfoRequest
 //
@@ -6280,7 +6786,7 @@ func (client *Client) DescribeShowStorageInfoWithOptions(request *DescribeShowSt
 
 // Summary:
 //
-// 查询 PolarDB-X 存储节点信息
+// Queries the storage usage details of an instance, including the total capacity, used space, remaining space, and other information.
 //
 // @param request - DescribeShowStorageInfoRequest
 //
@@ -6298,7 +6804,7 @@ func (client *Client) DescribeShowStorageInfo(request *DescribeShowStorageInfoRe
 
 // Summary:
 //
-// 慢SQL明细
+// Queries the details of slow SQL statements on compute nodes and storage nodes of a PolarDB-X instance.
 //
 // @param request - DescribeSlowLogRecordsRequest
 //
@@ -6374,7 +6880,7 @@ func (client *Client) DescribeSlowLogRecordsWithOptions(request *DescribeSlowLog
 
 // Summary:
 //
-// 慢SQL明细
+// Queries the details of slow SQL statements on compute nodes and storage nodes of a PolarDB-X instance.
 //
 // @param request - DescribeSlowLogRecordsRequest
 //
@@ -6390,6 +6896,14 @@ func (client *Client) DescribeSlowLogRecords(request *DescribeSlowLogRecordsRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries SQL audit information.
+//
+// Description:
+//
+// > 	- The SQL audit and analysis feature of PolarDB-X 2.0 is free of charge. However, Simple Log Service charges fees for storage space, read traffic, number of requests, data transformation, and data delivery. For more information about the SQL audit feature, see [Enable SQL audit and analysis](https://help.aliyun.com/document_detail/184619.html).
+//
 // @param request - DescribeSqlAuditInfoRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6442,6 +6956,14 @@ func (client *Client) DescribeSqlAuditInfoWithOptions(request *DescribeSqlAuditI
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries SQL audit information.
+//
+// Description:
+//
+// > 	- The SQL audit and analysis feature of PolarDB-X 2.0 is free of charge. However, Simple Log Service charges fees for storage space, read traffic, number of requests, data transformation, and data delivery. For more information about the SQL audit feature, see [Enable SQL audit and analysis](https://help.aliyun.com/document_detail/184619.html).
+//
 // @param request - DescribeSqlAuditInfoRequest
 //
 // @return DescribeSqlAuditInfoResponse
@@ -6458,7 +6980,7 @@ func (client *Client) DescribeSqlAuditInfo(request *DescribeSqlAuditInfoRequest)
 
 // Summary:
 //
-// # SQL闪回任务列表查询
+// Queries the list of SQL flashback tasks by calling the DescribeSqlFlashbackTaskList operation.
 //
 // @param request - DescribeSqlFlashbackTaskListRequest
 //
@@ -6506,7 +7028,7 @@ func (client *Client) DescribeSqlFlashbackTaskListWithOptions(request *DescribeS
 
 // Summary:
 //
-// # SQL闪回任务列表查询
+// Queries the list of SQL flashback tasks by calling the DescribeSqlFlashbackTaskList operation.
 //
 // @param request - DescribeSqlFlashbackTaskListRequest
 //
@@ -6524,7 +7046,7 @@ func (client *Client) DescribeSqlFlashbackTaskList(request *DescribeSqlFlashback
 
 // Summary:
 //
-// 查询 PolarDB-X 存储资源池信息
+// Queries the details of a storage pool, including capacity, usage, and status.
 //
 // @param request - DescribeStoragePoolInfoRequest
 //
@@ -6576,7 +7098,7 @@ func (client *Client) DescribeStoragePoolInfoWithOptions(request *DescribeStorag
 
 // Summary:
 //
-// 查询 PolarDB-X 存储资源池信息
+// Queries the details of a storage pool, including capacity, usage, and status.
 //
 // @param request - DescribeStoragePoolInfoRequest
 //
@@ -6594,7 +7116,11 @@ func (client *Client) DescribeStoragePoolInfo(request *DescribeStoragePoolInfoRe
 
 // Summary:
 //
-// 查询结构迁移任务结果
+// Queries the details of a database schema import task.
+//
+// Description:
+//
+// The CreateDataImportTask operation creates a data import task. You can use this operation to import SQL or CSV files stored in OSS or ECS, or directly provided, into a destination database instance. Specify the instance ID, database name, engine type, data source (such as an OSS path), and import type. The system performs the data write operation asynchronously or synchronously. This operation is applicable to scenarios such as data migration, initialization, and data backfill. A task ID is returned for subsequent status queries and management.
 //
 // @param request - DescribeStructureImportTaskInfoRequest
 //
@@ -6642,7 +7168,11 @@ func (client *Client) DescribeStructureImportTaskInfoWithOptions(request *Descri
 
 // Summary:
 //
-// 查询结构迁移任务结果
+// Queries the details of a database schema import task.
+//
+// Description:
+//
+// The CreateDataImportTask operation creates a data import task. You can use this operation to import SQL or CSV files stored in OSS or ECS, or directly provided, into a destination database instance. Specify the instance ID, database name, engine type, data source (such as an OSS path), and import type. The system performs the data write operation asynchronously or synchronously. This operation is applicable to scenarios such as data migration, initialization, and data backfill. A task ID is returned for subsequent status queries and management.
 //
 // @param request - DescribeStructureImportTaskInfoRequest
 //
@@ -6660,7 +7190,7 @@ func (client *Client) DescribeStructureImportTaskInfo(request *DescribeStructure
 
 // Summary:
 //
-// 标签列表查询
+// Retrieves tag information.
 //
 // @param request - DescribeTagsRequest
 //
@@ -6712,7 +7242,7 @@ func (client *Client) DescribeTagsWithOptions(request *DescribeTagsRequest, runt
 
 // Summary:
 //
-// 标签列表查询
+// Retrieves tag information.
 //
 // @param request - DescribeTagsRequest
 //
@@ -6728,6 +7258,10 @@ func (client *Client) DescribeTags(request *DescribeTagsRequest) (_result *Descr
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the task list of an instance.
+//
 // @param request - DescribeTasksRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6804,6 +7338,10 @@ func (client *Client) DescribeTasksWithOptions(request *DescribeTasksRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the task list of an instance.
+//
 // @param request - DescribeTasksRequest
 //
 // @return DescribeTasksResponse
@@ -6820,7 +7358,7 @@ func (client *Client) DescribeTasks(request *DescribeTasksRequest) (_result *Des
 
 // Summary:
 //
-// 查询标准版迁移到企业版的任务状态
+// Queries the current status of a task that upgrades or converts a standard instance to an Enterprise instance.
 //
 // @param request - DescribeTransformStatusRequest
 //
@@ -6872,7 +7410,7 @@ func (client *Client) DescribeTransformStatusWithOptions(request *DescribeTransf
 
 // Summary:
 //
-// 查询标准版迁移到企业版的任务状态
+// Queries the current status of a task that upgrades or converts a standard instance to an Enterprise instance.
 //
 // @param request - DescribeTransformStatusRequest
 //
@@ -6888,6 +7426,10 @@ func (client *Client) DescribeTransformStatus(request *DescribeTransformStatusRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls the DescribeUserEncryptionKeyList operation to retrieve the list of Transparent Data Encryption (TDE) keys for a user.
+//
 // @param request - DescribeUserEncryptionKeyListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6932,6 +7474,10 @@ func (client *Client) DescribeUserEncryptionKeyListWithOptions(request *Describe
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls the DescribeUserEncryptionKeyList operation to retrieve the list of Transparent Data Encryption (TDE) keys for a user.
+//
 // @param request - DescribeUserEncryptionKeyListRequest
 //
 // @return DescribeUserEncryptionKeyListResponse
@@ -6946,6 +7492,10 @@ func (client *Client) DescribeUserEncryptionKeyList(request *DescribeUserEncrypt
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables three-role mode.
+//
 // @param request - DisableRightsSeparationRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6998,6 +7548,10 @@ func (client *Client) DisableRightsSeparationWithOptions(request *DisableRightsS
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables three-role mode.
+//
 // @param request - DisableRightsSeparationRequest
 //
 // @return DisableRightsSeparationResponse
@@ -7012,6 +7566,14 @@ func (client *Client) DisableRightsSeparation(request *DisableRightsSeparationRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables the SQL audit feature.
+//
+// Description:
+//
+// > After the SQL audit and analysis feature is disabled, data is no longer written to Simple Log Service. However, you can still view historical data, which incurs storage and indexing fees. You can delete all data to deactivate Simple Log Service. After Simple Log Service is deactivated, no further fees are incurred. For more information about deactivating Simple Log Service, see [Deactivate Simple Log Service](https://help.aliyun.com/document_detail/90650.html).
+//
 // @param request - DisableSqlAuditRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7064,6 +7626,14 @@ func (client *Client) DisableSqlAuditWithOptions(request *DisableSqlAuditRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables the SQL audit feature.
+//
+// Description:
+//
+// > After the SQL audit and analysis feature is disabled, data is no longer written to Simple Log Service. However, you can still view historical data, which incurs storage and indexing fees. You can delete all data to deactivate Simple Log Service. After Simple Log Service is deactivated, no further fees are incurred. For more information about deactivating Simple Log Service, see [Deactivate Simple Log Service](https://help.aliyun.com/document_detail/90650.html).
+//
 // @param request - DisableSqlAuditRequest
 //
 // @return DisableSqlAuditResponse
@@ -7080,7 +7650,7 @@ func (client *Client) DisableSqlAudit(request *DisableSqlAuditRequest) (_result 
 
 // Summary:
 //
-// 开启三权分立
+// Enables three-role mode.
 //
 // @param request - EnableRightsSeparationRequest
 //
@@ -7152,7 +7722,7 @@ func (client *Client) EnableRightsSeparationWithOptions(request *EnableRightsSep
 
 // Summary:
 //
-// 开启三权分立
+// Enables three-role mode.
 //
 // @param request - EnableRightsSeparationRequest
 //
@@ -7168,6 +7738,14 @@ func (client *Client) EnableRightsSeparation(request *EnableRightsSeparationRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables the SQL audit feature.
+//
+// Description:
+//
+// > 	- The PolarDB-X 2.0 SQL audit and analysis feature itself is free of charge. However, Log Service charges fees for storage space, read traffic, number of requests, data transformation, data shipping, and other services. For more information about the SQL audit feature, see [Enable SQL Audit and Analysis](https://help.aliyun.com/document_detail/184619.html).
+//
 // @param request - EnableSqlAuditRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7224,6 +7802,14 @@ func (client *Client) EnableSqlAuditWithOptions(request *EnableSqlAuditRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables the SQL audit feature.
+//
+// Description:
+//
+// > 	- The PolarDB-X 2.0 SQL audit and analysis feature itself is free of charge. However, Log Service charges fees for storage space, read traffic, number of requests, data transformation, data shipping, and other services. For more information about the SQL audit feature, see [Enable SQL Audit and Analysis](https://help.aliyun.com/document_detail/184619.html).
+//
 // @param request - EnableSqlAuditRequest
 //
 // @return EnableSqlAuditResponse
@@ -7240,7 +7826,7 @@ func (client *Client) EnableSqlAudit(request *EnableSqlAuditRequest) (_result *E
 
 // Summary:
 //
-// 查标签接口
+// Retrieves a list of labels.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -7300,7 +7886,7 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 
 // Summary:
 //
-// 查标签接口
+// Retrieves a list of labels.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -7316,6 +7902,10 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Migrates an instance from one zone to another.
+//
 // @param request - MigrateDBInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7388,6 +7978,10 @@ func (client *Client) MigrateDBInstanceWithOptions(request *MigrateDBInstanceReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Migrates an instance from one zone to another.
+//
 // @param request - MigrateDBInstanceRequest
 //
 // @return MigrateDBInstanceResponse
@@ -7402,6 +7996,10 @@ func (client *Client) MigrateDBInstance(request *MigrateDBInstanceRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls the ModifyAccountDescription operation to modify the description of an account.
+//
 // @param request - ModifyAccountDescriptionRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7454,6 +8052,10 @@ func (client *Client) ModifyAccountDescriptionWithOptions(request *ModifyAccount
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls the ModifyAccountDescription operation to modify the description of an account.
+//
 // @param request - ModifyAccountDescriptionRequest
 //
 // @return ModifyAccountDescriptionResponse
@@ -7468,6 +8070,10 @@ func (client *Client) ModifyAccountDescription(request *ModifyAccountDescription
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the permissions of a standard account.
+//
 // @param request - ModifyAccountPrivilegeRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7532,6 +8138,10 @@ func (client *Client) ModifyAccountPrivilegeWithOptions(request *ModifyAccountPr
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the permissions of a standard account.
+//
 // @param request - ModifyAccountPrivilegeRequest
 //
 // @return ModifyAccountPrivilegeResponse
@@ -7548,7 +8158,7 @@ func (client *Client) ModifyAccountPrivilege(request *ModifyAccountPrivilegeRequ
 
 // Summary:
 //
-// 修改全局运维窗口信息
+// Calls the ModifyActiveOperationMaintainConf operation to modify the time configuration of O&M events.
 //
 // @param request - ModifyActiveOperationMaintainConfRequest
 //
@@ -7588,7 +8198,7 @@ func (client *Client) ModifyActiveOperationMaintainConfWithOptions(request *Modi
 
 // Summary:
 //
-// 修改全局运维窗口信息
+// Calls the ModifyActiveOperationMaintainConf operation to modify the time configuration of O&M events.
 //
 // @param request - ModifyActiveOperationMaintainConfRequest
 //
@@ -7606,7 +8216,7 @@ func (client *Client) ModifyActiveOperationMaintainConf(request *ModifyActiveOpe
 
 // Summary:
 //
-// 修改主动运维任务
+// Calls the ModifyActiveOperationTasks operation to modify the execution time of O&M events.
 //
 // @param request - ModifyActiveOperationTasksRequest
 //
@@ -7662,7 +8272,7 @@ func (client *Client) ModifyActiveOperationTasksWithOptions(request *ModifyActiv
 
 // Summary:
 //
-// 修改主动运维任务
+// Calls the ModifyActiveOperationTasks operation to modify the execution time of O&M events.
 //
 // @param request - ModifyActiveOperationTasksRequest
 //
@@ -7680,11 +8290,11 @@ func (client *Client) ModifyActiveOperationTasks(request *ModifyActiveOperationT
 
 // Summary:
 //
-// # CDC变配
+// Modifies the CDC configuration.
 //
 // Description:
 //
-// ***
+// ***.
 //
 // @param request - ModifyCdcClassRequest
 //
@@ -7744,11 +8354,11 @@ func (client *Client) ModifyCdcClassWithOptions(request *ModifyCdcClassRequest, 
 
 // Summary:
 //
-// # CDC变配
+// Modifies the CDC configuration.
 //
 // Description:
 //
-// ***
+// ***.
 //
 // @param request - ModifyCdcClassRequest
 //
@@ -7766,11 +8376,11 @@ func (client *Client) ModifyCdcClass(request *ModifyCdcClassRequest) (_result *M
 
 // Summary:
 //
-// # Columnar变配
+// Modifies the column store specifications.
 //
 // Description:
 //
-// ***
+// ***.
 //
 // @param request - ModifyColumnarClassRequest
 //
@@ -7830,11 +8440,11 @@ func (client *Client) ModifyColumnarClassWithOptions(request *ModifyColumnarClas
 
 // Summary:
 //
-// # Columnar变配
+// Modifies the column store specifications.
 //
 // Description:
 //
-// ***
+// ***.
 //
 // @param request - ModifyColumnarClassRequest
 //
@@ -7852,7 +8462,11 @@ func (client *Client) ModifyColumnarClass(request *ModifyColumnarClassRequest) (
 
 // Summary:
 //
-// 修复自定连接基本信息
+// Modifies the configuration of a custom endpoint.
+//
+// Description:
+//
+// In PolarDB-X, in addition to the default primary endpoint and read-only endpoint, you can create custom endpoints to implement more flexible read/write splitting, load balancing, or business isolation strategies. The ModifyCustomEndpoint operation allows you to dynamically adjust the attributes of these custom endpoints without restarting the instance.
 //
 // @param request - ModifyCustomEndpointRequest
 //
@@ -7920,7 +8534,11 @@ func (client *Client) ModifyCustomEndpointWithOptions(request *ModifyCustomEndpo
 
 // Summary:
 //
-// 修复自定连接基本信息
+// Modifies the configuration of a custom endpoint.
+//
+// Description:
+//
+// In PolarDB-X, in addition to the default primary endpoint and read-only endpoint, you can create custom endpoints to implement more flexible read/write splitting, load balancing, or business isolation strategies. The ModifyCustomEndpoint operation allows you to dynamically adjust the attributes of these custom endpoints without restarting the instance.
 //
 // @param request - ModifyCustomEndpointRequest
 //
@@ -7938,7 +8556,11 @@ func (client *Client) ModifyCustomEndpoint(request *ModifyCustomEndpointRequest)
 
 // Summary:
 //
-// 修复自定连接的网络信息
+// Modifies the network configurations of a custom network endpoint, such as the subnet, security group, and public network access settings.
+//
+// Description:
+//
+// Deletes the custom endpoint of a specified database instance and disables access through the domain name.
 //
 // @param request - ModifyCustomEndpointNetRequest
 //
@@ -8006,7 +8628,11 @@ func (client *Client) ModifyCustomEndpointNetWithOptions(request *ModifyCustomEn
 
 // Summary:
 //
-// 修复自定连接的网络信息
+// Modifies the network configurations of a custom network endpoint, such as the subnet, security group, and public network access settings.
+//
+// Description:
+//
+// Deletes the custom endpoint of a specified database instance and disables access through the domain name.
 //
 // @param request - ModifyCustomEndpointNetRequest
 //
@@ -8022,6 +8648,10 @@ func (client *Client) ModifyCustomEndpointNet(request *ModifyCustomEndpointNetRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls the ModifyDBInstanceClass operation to modify the specifications of an instance.
+//
 // @param request - ModifyDBInstanceClassRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8102,6 +8732,10 @@ func (client *Client) ModifyDBInstanceClassWithOptions(request *ModifyDBInstance
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls the ModifyDBInstanceClass operation to modify the specifications of an instance.
+//
 // @param request - ModifyDBInstanceClassRequest
 //
 // @return ModifyDBInstanceClassResponse
@@ -8118,7 +8752,7 @@ func (client *Client) ModifyDBInstanceClass(request *ModifyDBInstanceClassReques
 
 // Summary:
 //
-// 修改实例配置
+// Calls the ModifyDBInstanceConfig operation to modify instance configuration items.
 //
 // @param request - ModifyDBInstanceConfigRequest
 //
@@ -8174,7 +8808,7 @@ func (client *Client) ModifyDBInstanceConfigWithOptions(request *ModifyDBInstanc
 
 // Summary:
 //
-// 修改实例配置
+// Calls the ModifyDBInstanceConfig operation to modify instance configuration items.
 //
 // @param request - ModifyDBInstanceConfigRequest
 //
@@ -8192,7 +8826,7 @@ func (client *Client) ModifyDBInstanceConfig(request *ModifyDBInstanceConfigRequ
 
 // Summary:
 //
-// 修改实例链接串
+// Modifies the connection string of an instance.
 //
 // @param request - ModifyDBInstanceConnectionStringRequest
 //
@@ -8252,7 +8886,7 @@ func (client *Client) ModifyDBInstanceConnectionStringWithOptions(request *Modif
 
 // Summary:
 //
-// 修改实例链接串
+// Modifies the connection string of an instance.
 //
 // @param request - ModifyDBInstanceConnectionStringRequest
 //
@@ -8268,6 +8902,10 @@ func (client *Client) ModifyDBInstanceConnectionString(request *ModifyDBInstance
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls the ModifyDBInstanceDescription operation to modify the description of an instance.
+//
 // @param request - ModifyDBInstanceDescriptionRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8316,6 +8954,10 @@ func (client *Client) ModifyDBInstanceDescriptionWithOptions(request *ModifyDBIn
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls the ModifyDBInstanceDescription operation to modify the description of an instance.
+//
 // @param request - ModifyDBInstanceDescriptionRequest
 //
 // @return ModifyDBInstanceDescriptionResponse
@@ -8330,6 +8972,14 @@ func (client *Client) ModifyDBInstanceDescription(request *ModifyDBInstanceDescr
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the maintenance window of an instance.
+//
+// Description:
+//
+// ***.
+//
 // @param request - ModifyDBInstanceMaintainTimeRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8382,6 +9032,14 @@ func (client *Client) ModifyDBInstanceMaintainTimeWithOptions(request *ModifyDBI
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the maintenance window of an instance.
+//
+// Description:
+//
+// ***.
+//
 // @param request - ModifyDBInstanceMaintainTimeRequest
 //
 // @return ModifyDBInstanceMaintainTimeResponse
@@ -8398,11 +9056,11 @@ func (client *Client) ModifyDBInstanceMaintainTime(request *ModifyDBInstanceMain
 
 // Summary:
 //
-// 切换交换机
+// Modifies the virtual IP (VIP) address or network properties bound to a database instance. This operation supports changing the internal IP address, adjusting the vSwitch, migrating across zones, and other operations.
 //
 // Description:
 //
-// ***
+// ***.
 //
 // @param request - ModifyDBInstanceVipRequest
 //
@@ -8462,11 +9120,11 @@ func (client *Client) ModifyDBInstanceVipWithOptions(request *ModifyDBInstanceVi
 
 // Summary:
 //
-// 切换交换机
+// Modifies the virtual IP (VIP) address or network properties bound to a database instance. This operation supports changing the internal IP address, adjusting the vSwitch, migrating across zones, and other operations.
 //
 // Description:
 //
-// ***
+// ***.
 //
 // @param request - ModifyDBInstanceVipRequest
 //
@@ -8482,6 +9140,10 @@ func (client *Client) ModifyDBInstanceVip(request *ModifyDBInstanceVipRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls the ModifyDatabaseDescription operation to modify the description of a database.
+//
 // @param request - ModifyDatabaseDescriptionRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8534,6 +9196,10 @@ func (client *Client) ModifyDatabaseDescriptionWithOptions(request *ModifyDataba
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls the ModifyDatabaseDescription operation to modify the description of a database.
+//
 // @param request - ModifyDatabaseDescriptionRequest
 //
 // @return ModifyDatabaseDescriptionResponse
@@ -8550,11 +9216,11 @@ func (client *Client) ModifyDatabaseDescription(request *ModifyDatabaseDescripti
 
 // Summary:
 //
-// # ModifyEngineMigration
+// Modifies the configuration or migration parameters of a database engine migration task, such as the source database, destination database, migration objects, or migration mode.
 //
 // Description:
 //
-// ***
+// ***.
 //
 // @param request - ModifyEngineMigrationRequest
 //
@@ -8618,11 +9284,11 @@ func (client *Client) ModifyEngineMigrationWithOptions(request *ModifyEngineMigr
 
 // Summary:
 //
-// # ModifyEngineMigration
+// Modifies the configuration or migration parameters of a database engine migration task, such as the source database, destination database, migration objects, or migration mode.
 //
 // Description:
 //
-// ***
+// ***.
 //
 // @param request - ModifyEngineMigrationRequest
 //
@@ -8638,6 +9304,96 @@ func (client *Client) ModifyEngineMigration(request *ModifyEngineMigrationReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the whitelist of a memory engine instance.
+//
+// Description:
+//
+// ***.
+//
+// @param request - ModifyMem0SecurityIpsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyMem0SecurityIpsResponse
+func (client *Client) ModifyMem0SecurityIpsWithOptions(request *ModifyMem0SecurityIpsRequest, runtime *dara.RuntimeOptions) (_result *ModifyMem0SecurityIpsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.GroupName) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !dara.IsNil(request.ModifyMode) {
+		query["ModifyMode"] = request.ModifyMode
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SecurityIPList) {
+		query["SecurityIPList"] = request.SecurityIPList
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyMem0SecurityIps"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyMem0SecurityIpsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the whitelist of a memory engine instance.
+//
+// Description:
+//
+// ***.
+//
+// @param request - ModifyMem0SecurityIpsRequest
+//
+// @return ModifyMem0SecurityIpsResponse
+func (client *Client) ModifyMem0SecurityIps(request *ModifyMem0SecurityIpsRequest) (_result *ModifyMem0SecurityIpsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyMem0SecurityIpsResponse{}
+	_body, _err := client.ModifyMem0SecurityIpsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Calls the ModifyParameter operation to modify instance parameters, including compute layer and storage layer parameters.
+//
 // @param request - ModifyParameterRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8698,6 +9454,10 @@ func (client *Client) ModifyParameterWithOptions(request *ModifyParameterRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls the ModifyParameter operation to modify instance parameters, including compute layer and storage layer parameters.
+//
 // @param request - ModifyParameterRequest
 //
 // @return ModifyParameterResponse
@@ -8712,6 +9472,10 @@ func (client *Client) ModifyParameter(request *ModifyParameterRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls the ModifySecurityIps operation to modify the whitelist of an instance.
+//
 // @param request - ModifySecurityIpsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8768,6 +9532,10 @@ func (client *Client) ModifySecurityIpsWithOptions(request *ModifySecurityIpsReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls the ModifySecurityIps operation to modify the whitelist of an instance.
+//
 // @param request - ModifySecurityIpsRequest
 //
 // @return ModifySecurityIpsResponse
@@ -8784,7 +9552,7 @@ func (client *Client) ModifySecurityIps(request *ModifySecurityIpsRequest) (_res
 
 // Summary:
 //
-// # SQL闪回任务预检
+// Performs a pre-check and feasibility assessment for a recovery task before you execute SQL flashback recovery.
 //
 // @param request - PreCheckSqlFlashbackTaskRequest
 //
@@ -8844,7 +9612,7 @@ func (client *Client) PreCheckSqlFlashbackTaskWithOptions(request *PreCheckSqlFl
 
 // Summary:
 //
-// # SQL闪回任务预检
+// Performs a pre-check and feasibility assessment for a recovery task before you execute SQL flashback recovery.
 //
 // @param request - PreCheckSqlFlashbackTaskRequest
 //
@@ -8862,7 +9630,7 @@ func (client *Client) PreCheckSqlFlashbackTask(request *PreCheckSqlFlashbackTask
 
 // Summary:
 //
-// 刷新评估升级任务的导入元数据
+// Refreshes the metadata of an import task.
 //
 // @param request - RefreshImportMetaRequest
 //
@@ -8914,7 +9682,7 @@ func (client *Client) RefreshImportMetaWithOptions(request *RefreshImportMetaReq
 
 // Summary:
 //
-// 刷新评估升级任务的导入元数据
+// Refreshes the metadata of an import task.
 //
 // @param request - RefreshImportMetaRequest
 //
@@ -8932,7 +9700,7 @@ func (client *Client) RefreshImportMeta(request *RefreshImportMetaRequest) (_res
 
 // Summary:
 //
-// 关闭冷存储
+// Calls the ReleaseColdDataVolume operation.
 //
 // @param request - ReleaseColdDataVolumeRequest
 //
@@ -8980,7 +9748,7 @@ func (client *Client) ReleaseColdDataVolumeWithOptions(request *ReleaseColdDataV
 
 // Summary:
 //
-// 关闭冷存储
+// Calls the ReleaseColdDataVolume operation.
 //
 // @param request - ReleaseColdDataVolumeRequest
 //
@@ -8996,6 +9764,10 @@ func (client *Client) ReleaseColdDataVolume(request *ReleaseColdDataVolumeReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Releases the public network connection of an instance by calling the ReleaseInstancePublicConnection operation.
+//
 // @param request - ReleaseInstancePublicConnectionRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -9044,6 +9816,10 @@ func (client *Client) ReleaseInstancePublicConnectionWithOptions(request *Releas
 	return _result, _err
 }
 
+// Summary:
+//
+// Releases the public network connection of an instance by calling the ReleaseInstancePublicConnection operation.
+//
 // @param request - ReleaseInstancePublicConnectionRequest
 //
 // @return ReleaseInstancePublicConnectionResponse
@@ -9058,6 +9834,10 @@ func (client *Client) ReleaseInstancePublicConnection(request *ReleaseInstancePu
 	return _result, _err
 }
 
+// Summary:
+//
+// Resets the password of an account.
+//
 // @param request - ResetAccountPasswordRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -9118,6 +9898,10 @@ func (client *Client) ResetAccountPasswordWithOptions(request *ResetAccountPassw
 	return _result, _err
 }
 
+// Summary:
+//
+// Resets the password of an account.
+//
 // @param request - ResetAccountPasswordRequest
 //
 // @return ResetAccountPasswordResponse
@@ -9132,9 +9916,13 @@ func (client *Client) ResetAccountPassword(request *ResetAccountPasswordRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Resets the password of an account.
+//
 // Description:
 //
-// ***
+// ***.
 //
 // @param request - ResetAccountPasswordRestrictRequest
 //
@@ -9196,9 +9984,13 @@ func (client *Client) ResetAccountPasswordRestrictWithOptions(request *ResetAcco
 	return _result, _err
 }
 
+// Summary:
+//
+// Resets the password of an account.
+//
 // Description:
 //
-// ***
+// ***.
 //
 // @param request - ResetAccountPasswordRestrictRequest
 //
@@ -9214,6 +10006,88 @@ func (client *Client) ResetAccountPasswordRestrict(request *ResetAccountPassword
 	return _result, _err
 }
 
+// Summary:
+//
+// Resets the API key of the memory engine.
+//
+// Description:
+//
+// ***.
+//
+// @param request - ResetMem0AccountPasswordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResetMem0AccountPasswordResponse
+func (client *Client) ResetMem0AccountPasswordWithOptions(request *ResetMem0AccountPasswordRequest, runtime *dara.RuntimeOptions) (_result *ResetMem0AccountPasswordResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.Mem0ApiKey) {
+		query["Mem0ApiKey"] = request.Mem0ApiKey
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ResetMem0AccountPassword"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ResetMem0AccountPasswordResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Resets the API key of the memory engine.
+//
+// Description:
+//
+// ***.
+//
+// @param request - ResetMem0AccountPasswordRequest
+//
+// @return ResetMem0AccountPasswordResponse
+func (client *Client) ResetMem0AccountPassword(request *ResetMem0AccountPasswordRequest) (_result *ResetMem0AccountPasswordResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ResetMem0AccountPasswordResponse{}
+	_body, _err := client.ResetMem0AccountPasswordWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Restarts an instance by calling the RestartDBInstance operation.
+//
 // @param request - RestartDBInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -9258,6 +10132,10 @@ func (client *Client) RestartDBInstanceWithOptions(request *RestartDBInstanceReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Restarts an instance by calling the RestartDBInstance operation.
+//
 // @param request - RestartDBInstanceRequest
 //
 // @return RestartDBInstanceResponse
@@ -9274,7 +10152,7 @@ func (client *Client) RestartDBInstance(request *RestartDBInstanceRequest) (_res
 
 // Summary:
 //
-// 重启数据导入任务
+// Restarts a data import task.
 //
 // @param request - RestartDataImportTaskRequest
 //
@@ -9330,7 +10208,7 @@ func (client *Client) RestartDataImportTaskWithOptions(request *RestartDataImpor
 
 // Summary:
 //
-// 重启数据导入任务
+// Restarts a data import task.
 //
 // @param request - RestartDataImportTaskRequest
 //
@@ -9538,7 +10416,7 @@ func (client *Client) RestoreDBInstance(request *RestoreDBInstanceRequest) (_res
 
 // Summary:
 //
-// 跳过评估迁移的当前步骤
+// This API is used to skip the current step.
 //
 // @param request - SkipCurrentStepRequest
 //
@@ -9590,7 +10468,7 @@ func (client *Client) SkipCurrentStepWithOptions(request *SkipCurrentStepRequest
 
 // Summary:
 //
-// 跳过评估迁移的当前步骤
+// This API is used to skip the current step.
 //
 // @param request - SkipCurrentStepRequest
 //
@@ -9608,7 +10486,7 @@ func (client *Client) SkipCurrentStep(request *SkipCurrentStepRequest) (_result 
 
 // Summary:
 //
-// 开始评估迁移切换
+// Starts a database cutover for a database migration or synchronization task.
 //
 // @param request - StartSwitchDatabaseRequest
 //
@@ -9680,7 +10558,7 @@ func (client *Client) StartSwitchDatabaseWithOptions(request *StartSwitchDatabas
 
 // Summary:
 //
-// 开始评估迁移切换
+// Starts a database cutover for a database migration or synchronization task.
 //
 // @param request - StartSwitchDatabaseRequest
 //
@@ -9698,7 +10576,7 @@ func (client *Client) StartSwitchDatabase(request *StartSwitchDatabaseRequest) (
 
 // Summary:
 //
-// 暂停数据导入任务
+// Stops a data import task.
 //
 // @param request - StopDataImportTaskRequest
 //
@@ -9754,7 +10632,7 @@ func (client *Client) StopDataImportTaskWithOptions(request *StopDataImportTaskR
 
 // Summary:
 //
-// 暂停数据导入任务
+// Stops a data import task.
 //
 // @param request - StopDataImportTaskRequest
 //
@@ -9772,7 +10650,7 @@ func (client *Client) StopDataImportTask(request *StopDataImportTaskRequest) (_r
 
 // Summary:
 //
-// 提交SQL闪回任务
+// Creates a SQL flashback task by calling the SubmitSqlFlashbackTask operation.
 //
 // @param request - SubmitSqlFlashbackTaskRequest
 //
@@ -9856,7 +10734,7 @@ func (client *Client) SubmitSqlFlashbackTaskWithOptions(request *SubmitSqlFlashb
 
 // Summary:
 //
-// 提交SQL闪回任务
+// Creates a SQL flashback task by calling the SubmitSqlFlashbackTask operation.
 //
 // @param request - SubmitSqlFlashbackTaskRequest
 //
@@ -9948,7 +10826,7 @@ func (client *Client) SwitchDBInstanceHA(request *SwitchDBInstanceHARequest) (_r
 
 // Summary:
 //
-// # GDN主备切换
+// Performs a primary/secondary switchover for a global database network (GDN).
 //
 // @param request - SwitchGdnMemberRoleRequest
 //
@@ -10024,7 +10902,7 @@ func (client *Client) SwitchGdnMemberRoleWithOptions(request *SwitchGdnMemberRol
 
 // Summary:
 //
-// # GDN主备切换
+// Performs a primary/secondary switchover for a global database network (GDN).
 //
 // @param request - SwitchGdnMemberRoleRequest
 //
@@ -10042,7 +10920,7 @@ func (client *Client) SwitchGdnMemberRole(request *SwitchGdnMemberRoleRequest) (
 
 // Summary:
 //
-// 打标签接口
+// Calls the TagResources operation to add tags to resources.
 //
 // @param request - TagResourcesRequest
 //
@@ -10098,7 +10976,7 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 
 // Summary:
 //
-// 打标签接口
+// Calls the TagResources operation to add tags to resources.
 //
 // @param request - TagResourcesRequest
 //
@@ -10116,7 +10994,7 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 
 // Summary:
 //
-// 删标签接口
+// Removes tags from a resource.
 //
 // @param request - UntagResourcesRequest
 //
@@ -10176,7 +11054,7 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 
 // Summary:
 //
-// 删标签接口
+// Removes tags from a resource.
 //
 // @param request - UntagResourcesRequest
 //
@@ -10194,7 +11072,7 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 
 // Summary:
 //
-// 更新备份策略
+// Calls the UpdateBackupPolicy operation to modify the backup policy of an instance.
 //
 // @param request - UpdateBackupPolicyRequest
 //
@@ -10318,7 +11196,7 @@ func (client *Client) UpdateBackupPolicyWithOptions(request *UpdateBackupPolicyR
 
 // Summary:
 //
-// 更新备份策略
+// Calls the UpdateBackupPolicy operation to modify the backup policy of an instance.
 //
 // @param request - UpdateBackupPolicyRequest
 //
@@ -10337,6 +11215,10 @@ func (client *Client) UpdateBackupPolicy(request *UpdateBackupPolicyRequest) (_r
 // Summary:
 //
 // 更新实例的管控参数
+//
+// Description:
+//
+// <props="china">更多关于实例账号的信息，请参见[账号管理](https://help.aliyun.com/document_detail/172163.html)。
 //
 // @param request - UpdateCustinsParamRequest
 //
@@ -10394,6 +11276,10 @@ func (client *Client) UpdateCustinsParamWithOptions(request *UpdateCustinsParamR
 //
 // 更新实例的管控参数
 //
+// Description:
+//
+// <props="china">更多关于实例账号的信息，请参见[账号管理](https://help.aliyun.com/document_detail/172163.html)。
+//
 // @param request - UpdateCustinsParamRequest
 //
 // @return UpdateCustinsParamResponse
@@ -10408,6 +11294,10 @@ func (client *Client) UpdateCustinsParam(request *UpdateCustinsParamRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the SSL configuration of an instance.
+//
 // @param request - UpdateDBInstanceSSLRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10460,6 +11350,10 @@ func (client *Client) UpdateDBInstanceSSLWithOptions(request *UpdateDBInstanceSS
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the SSL configuration of an instance.
+//
 // @param request - UpdateDBInstanceSSLRequest
 //
 // @return UpdateDBInstanceSSLResponse
@@ -10474,6 +11368,10 @@ func (client *Client) UpdateDBInstanceSSL(request *UpdateDBInstanceSSLRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables Transparent Data Encryption (TDE) for an instance by calling the UpdateDBInstanceTDE operation.
+//
 // @param request - UpdateDBInstanceTDERequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10530,6 +11428,10 @@ func (client *Client) UpdateDBInstanceTDEWithOptions(request *UpdateDBInstanceTD
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables Transparent Data Encryption (TDE) for an instance by calling the UpdateDBInstanceTDE operation.
+//
 // @param request - UpdateDBInstanceTDERequest
 //
 // @return UpdateDBInstanceTDEResponse
@@ -10546,7 +11448,7 @@ func (client *Client) UpdateDBInstanceTDE(request *UpdateDBInstanceTDERequest) (
 
 // Summary:
 //
-// 扩缩容实例节点数
+// Calls the UpdatePolarDBXInstanceNode operation to change the number of nodes for an instance, including scaling out and scaling in. This request generates a billable order.
 //
 // @param request - UpdatePolarDBXInstanceNodeRequest
 //
@@ -10622,7 +11524,7 @@ func (client *Client) UpdatePolarDBXInstanceNodeWithOptions(request *UpdatePolar
 
 // Summary:
 //
-// 扩缩容实例节点数
+// Calls the UpdatePolarDBXInstanceNode operation to change the number of nodes for an instance, including scaling out and scaling in. This request generates a billable order.
 //
 // @param request - UpdatePolarDBXInstanceNodeRequest
 //
@@ -10640,7 +11542,7 @@ func (client *Client) UpdatePolarDBXInstanceNode(request *UpdatePolarDBXInstance
 
 // Summary:
 //
-// 升级CDC版本
+// Upgrades the CDC node version of a PolarDB-X instance.
 //
 // @param request - UpgradeCDCVersionRequest
 //
@@ -10704,7 +11606,7 @@ func (client *Client) UpgradeCDCVersionWithOptions(request *UpgradeCDCVersionReq
 
 // Summary:
 //
-// 升级CDC版本
+// Upgrades the CDC node version of a PolarDB-X instance.
 //
 // @param request - UpgradeCDCVersionRequest
 //
@@ -10722,7 +11624,7 @@ func (client *Client) UpgradeCDCVersion(request *UpgradeCDCVersionRequest) (_res
 
 // Summary:
 //
-// 升级Columnar版本
+// Updates the column store version.
 //
 // @param request - UpgradeColumnarVersionRequest
 //
@@ -10782,7 +11684,7 @@ func (client *Client) UpgradeColumnarVersionWithOptions(request *UpgradeColumnar
 
 // Summary:
 //
-// 升级Columnar版本
+// Updates the column store version.
 //
 // @param request - UpgradeColumnarVersionRequest
 //
@@ -10798,6 +11700,10 @@ func (client *Client) UpgradeColumnarVersion(request *UpgradeColumnarVersionRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Invokes the UpgradeDBInstanceKernelVersion operation to update the kernel version of an instance.
+//
 // @param request - UpgradeDBInstanceKernelVersionRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10850,6 +11756,10 @@ func (client *Client) UpgradeDBInstanceKernelVersionWithOptions(request *Upgrade
 	return _result, _err
 }
 
+// Summary:
+//
+// Invokes the UpgradeDBInstanceKernelVersion operation to update the kernel version of an instance.
+//
 // @param request - UpgradeDBInstanceKernelVersionRequest
 //
 // @return UpgradeDBInstanceKernelVersionResponse

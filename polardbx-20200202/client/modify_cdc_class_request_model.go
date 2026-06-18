@@ -22,28 +22,38 @@ type iModifyCdcClassRequest interface {
 }
 
 type ModifyCdcClassRequest struct {
+	// The number of CDC nodes.
+	//
 	// example:
 	//
 	// 1
 	CDCNodeCount *string `json:"CDCNodeCount,omitempty" xml:"CDCNodeCount,omitempty"`
+	// The instance type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// premium
 	CdcClass *string `json:"CdcClass,omitempty" xml:"CdcClass,omitempty"`
+	// The instance name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pxc-hzrh51fze****pon-cdc
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The switch mode.
+	//
 	// example:
 	//
 	// 0

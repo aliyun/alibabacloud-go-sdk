@@ -20,15 +20,22 @@ type iConfirmNoConnectionResponseBody interface {
 }
 
 type ConfirmNoConnectionResponseBody struct {
+	// The returned data.
 	Data *ConfirmNoConnectionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The additional information returned. The value success is returned if the request is successful. Otherwise, an error code is returned.
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6BA32080EEA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true
@@ -89,6 +96,8 @@ func (s *ConfirmNoConnectionResponseBody) Validate() error {
 }
 
 type ConfirmNoConnectionResponseBodyData struct {
+	// The original task ID, used to match the response with the request.
+	//
 	// example:
 	//
 	// etx-szr2rr6i*****

@@ -21,8 +21,9 @@ type DescribeTagsResponseBody struct {
 	// example:
 	//
 	// requestid
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TagInfos  []*DescribeTagsResponseBodyTagInfos `json:"TagInfos,omitempty" xml:"TagInfos,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of tag information.
+	TagInfos []*DescribeTagsResponseBodyTagInfos `json:"TagInfos,omitempty" xml:"TagInfos,omitempty" type:"Repeated"`
 }
 
 func (s DescribeTagsResponseBody) String() string {
@@ -65,11 +66,16 @@ func (s *DescribeTagsResponseBody) Validate() error {
 }
 
 type DescribeTagsResponseBodyTagInfos struct {
+	// The list of database instances associated with the tag.
 	DBInstanceIds []*string `json:"DBInstanceIds,omitempty" xml:"DBInstanceIds,omitempty" type:"Repeated"`
+	// The tag key.
+	//
 	// example:
 	//
 	// testKey
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// testValue

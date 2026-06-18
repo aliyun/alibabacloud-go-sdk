@@ -20,15 +20,22 @@ type iModifyDBInstanceConnectionStringResponseBody interface {
 }
 
 type ModifyDBInstanceConnectionStringResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
-	Code *int64                                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The new connection string information.
 	Data *ModifyDBInstanceConnectionStringResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The response message. This is typically an error message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID. It is a unique identifier.
+	//
 	// example:
 	//
 	// c3cf535c-a585-11ea-8263-00163e04d3a7
@@ -89,18 +96,26 @@ func (s *ModifyDBInstanceConnectionStringResponseBody) Validate() error {
 }
 
 type ModifyDBInstanceConnectionStringResponseBodyData struct {
+	// The connection string.
+	//
 	// example:
 	//
 	// test2.polarx.huhehaote.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// pxc-unrf5ssig0ecg8
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The network type of the connection string.
+	//
 	// example:
 	//
 	// 1
 	DBInstanceNetType *string `json:"DBInstanceNetType,omitempty" xml:"DBInstanceNetType,omitempty"`
+	// The port number.
+	//
 	// example:
 	//
 	// 3300

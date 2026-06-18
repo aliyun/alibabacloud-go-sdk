@@ -16,7 +16,10 @@ type iDescribeDBInstanceTopologyResponseBody interface {
 }
 
 type DescribeDBInstanceTopologyResponseBody struct {
+	// The data struct.
 	Data *DescribeDBInstanceTopologyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// C458B1E8-1683-3645-B154-6BA32080EEA
@@ -59,6 +62,7 @@ func (s *DescribeDBInstanceTopologyResponseBody) Validate() error {
 }
 
 type DescribeDBInstanceTopologyResponseBodyData struct {
+	// The topology information.
 	LogicInstanceTopology *DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopology `json:"LogicInstanceTopology,omitempty" xml:"LogicInstanceTopology,omitempty" type:"Struct"`
 }
 
@@ -89,57 +93,94 @@ func (s *DescribeDBInstanceTopologyResponseBodyData) Validate() error {
 }
 
 type DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopology struct {
+	// Indicates that LVS is used for load balancing.
+	//
 	// example:
 	//
 	// lvs
 	DBInstanceConnType *string `json:"DBInstanceConnType,omitempty" xml:"DBInstanceConnType,omitempty"`
+	// The time when the instance was created. Format: yyyy-MM-dd HH:mm:ss.
+	//
 	// example:
 	//
 	// 2021-10-21T10:30:45Z 04:00:00
 	DBInstanceCreateTime *string `json:"DBInstanceCreateTime,omitempty" xml:"DBInstanceCreateTime,omitempty"`
+	// The instance description.
+	//
 	// example:
 	//
-	// pxc-sprcym7g7wj7k
+	// pxc-sprcym7******
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// 304726047
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The instance name.
+	//
 	// example:
 	//
 	// pxc-sprcym7g7w****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The instance status.
+	//
 	// example:
 	//
 	// 8
 	DBInstanceStatus *int32 `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
+	// The description of the instance status.
+	//
 	// example:
 	//
 	// TDE_MODIFYING
 	DBInstanceStatusDescription *string `json:"DBInstanceStatusDescription,omitempty" xml:"DBInstanceStatusDescription,omitempty"`
+	// The number of storage nodes.
+	//
 	// example:
 	//
 	// 1
 	DBInstanceStorage *int32 `json:"DBInstanceStorage,omitempty" xml:"DBInstanceStorage,omitempty"`
+	// The engine type. Default value: polarx.
+	//
 	// example:
 	//
 	// polarx
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The engine version. Default value: 2.0.
+	//
 	// example:
 	//
 	// 2.0
-	EngineVersion *string                                                                        `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	HistoryItems  []*DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyHistoryItems `json:"HistoryItems,omitempty" xml:"HistoryItems,omitempty" type:"Repeated"`
-	Items         []*DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems        `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	// The list of historical nodes.
+	HistoryItems []*DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyHistoryItems `json:"HistoryItems,omitempty" xml:"HistoryItems,omitempty" type:"Repeated"`
+	// The list of nodes.
+	Items []*DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The lock status. Valid values:
+	//
+	// - **0**: Not locked.
+	//
+	// - **1**: Locked.
+	//
 	// example:
 	//
 	// 0
-	LockMode   *int32  `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
+	LockMode *int32 `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
+	// The reason why the instance is locked.
+	//
+	// example:
+	//
+	// 欠费
 	LockReason *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
+	// The end time of the O&M window. Format: HH:mm:ss.
+	//
 	// example:
 	//
 	// 05:00:00
 	MaintainEndTime *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
+	// The start time of the O&M window. Format: HH:mm:ss.
+	//
 	// example:
 	//
 	// 04:00:00
@@ -321,14 +362,64 @@ func (s *DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopology) Valida
 }
 
 type DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyHistoryItems struct {
-	Activated       *bool   `json:"Activated,omitempty" xml:"Activated,omitempty"`
-	Azone           *string `json:"Azone,omitempty" xml:"Azone,omitempty"`
-	CharacterType   *string `json:"CharacterType,omitempty" xml:"CharacterType,omitempty"`
-	DBInstanceId    *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	DBInstanceName  *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// Indicates whether the node is activated. For the compute layer, only the node in the primary zone is activated. After a primary/secondary switchover is performed on the instance, the standby compute node becomes the primary node. All storage layer nodes are activated.
+	//
+	// example:
+	//
+	// true
+	Activated *bool `json:"Activated,omitempty" xml:"Activated,omitempty"`
+	// The zone of the node. If the node is an RDS node, the zones of multiple child nodes are separated with a delimiter (,).
+	//
+	// example:
+	//
+	// cn-hangzhou-a
+	Azone *string `json:"Azone,omitempty" xml:"Azone,omitempty"`
+	// The node type. Valid values:
+	//
+	// - **polarx_cn**: compute node.
+	//
+	// - **polarx_store**: data node.
+	//
+	// - **polarx_gms**: GMS node.
+	//
+	// example:
+	//
+	// 节点角色
+	CharacterType *string `json:"CharacterType,omitempty" xml:"CharacterType,omitempty"`
+	// The instance ID.
+	//
+	// example:
+	//
+	// 304726049
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The instance name.
+	//
+	// example:
+	//
+	// pxc-sprcym7g7w****
+	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The physical instance name.
+	//
+	// example:
+	//
+	// pxc-unrbk8oyz**********
 	PhyInstanceName *string `json:"PhyInstanceName,omitempty" xml:"PhyInstanceName,omitempty"`
-	Region          *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	Role            *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// The region of the node. If the node is an RDS node, the regions of multiple child nodes are separated with a delimiter (,).
+	//
+	// example:
+	//
+	// cn-hangzhou
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The role of the node. Valid values:
+	//
+	// - **master**: primary node
+	//
+	// - **standby**: secondary node.
+	//
+	// example:
+	//
+	// master
+	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
 }
 
 func (s DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyHistoryItems) String() string {
@@ -416,83 +507,220 @@ func (s *DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyHistoryI
 }
 
 type DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems struct {
+	// Indicates whether the node is activated. For the compute layer, only the node in the primary zone is activated. After a primary/secondary switchover is performed on the instance, the standby compute node becomes the primary node. All storage layer nodes are activated.
+	//
 	// example:
 	//
 	// true
 	Activated *bool `json:"Activated,omitempty" xml:"Activated,omitempty"`
+	// The zone of the node. If the node is an RDS node, the zones of multiple child nodes are separated with a delimiter (,).
+	//
 	// example:
 	//
 	// cn-hangzhou-a
-	Azone              *string                                                                              `json:"Azone,omitempty" xml:"Azone,omitempty"`
-	AzoneRoleList      []*DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItemsAzoneRoleList `json:"AzoneRoleList,omitempty" xml:"AzoneRoleList,omitempty" type:"Repeated"`
-	CharacterType      *string                                                                              `json:"CharacterType,omitempty" xml:"CharacterType,omitempty"`
-	ConnectionIp       []*DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItemsConnectionIp  `json:"ConnectionIp,omitempty" xml:"ConnectionIp,omitempty" type:"Repeated"`
-	DBInstanceConnType *int32                                                                               `json:"DBInstanceConnType,omitempty" xml:"DBInstanceConnType,omitempty"`
+	Azone *string `json:"Azone,omitempty" xml:"Azone,omitempty"`
+	// The data information list of the RDS three-node cluster.
+	AzoneRoleList []*DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItemsAzoneRoleList `json:"AzoneRoleList,omitempty" xml:"AzoneRoleList,omitempty" type:"Repeated"`
+	// The node type. Valid values:
+	//
+	// - **polarx_cn**: compute node.
+	//
+	// - **polarx_store**: data node.
+	//
+	// - **polarx_gms**: GMS node.
+	//
+	// example:
+	//
+	// 节点角色
+	CharacterType *string `json:"CharacterType,omitempty" xml:"CharacterType,omitempty"`
+	// The data struct.
+	ConnectionIp []*DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItemsConnectionIp `json:"ConnectionIp,omitempty" xml:"ConnectionIp,omitempty" type:"Repeated"`
+	// The connection type.
+	//
+	// example:
+	//
+	// 不展示
+	DBInstanceConnType *int32 `json:"DBInstanceConnType,omitempty" xml:"DBInstanceConnType,omitempty"`
+	// The time when the instance was created.
+	//
 	// example:
 	//
 	// 2021-10-21T10:30:45Z
-	DBInstanceCreateTime  *string `json:"DBInstanceCreateTime,omitempty" xml:"DBInstanceCreateTime,omitempty"`
+	DBInstanceCreateTime *string `json:"DBInstanceCreateTime,omitempty" xml:"DBInstanceCreateTime,omitempty"`
+	// The instance description.
+	//
+	// example:
+	//
+	// 不展示
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// 304726049
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The instance name.
+	//
 	// example:
 	//
 	// pxc-i-tk6t4z****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The instance status.
+	//
 	// example:
 	//
 	// 8
-	DBInstanceStatus            *int32  `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
+	DBInstanceStatus *int32 `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
+	// The description of the instance status.
+	//
+	// example:
+	//
+	// 不展示
 	DBInstanceStatusDescription *string `json:"DBInstanceStatusDescription,omitempty" xml:"DBInstanceStatusDescription,omitempty"`
+	// The disk size.
+	//
 	// example:
 	//
 	// 3145728
 	DiskSize *int64 `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
+	// The engine type. Valid values:
+	//
+	// - **mysql**
+	//
+	// - **polarx_cdc**
+	//
+	// - **polarx_dn**
+	//
 	// example:
 	//
 	// mysql
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The engine version. Default value: 2.0.
+	//
 	// example:
 	//
 	// 5.7
 	EngineVersion       *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	InstanceClusterName *string `json:"InstanceClusterName,omitempty" xml:"InstanceClusterName,omitempty"`
+	// Indicates whether the node is locked. Valid values:
+	//
+	// - **0**: Not locked.
+	//
+	// - **1**: Locked.
+	//
 	// example:
 	//
 	// 0
-	LockMode          *int32  `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
-	LockReason        *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
-	MaintainEndTime   *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
+	LockMode *int32 `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
+	// The reason why the instance is locked.
+	//
+	// example:
+	//
+	// 不展示
+	LockReason *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
+	// The end time of the O&M window.
+	//
+	// example:
+	//
+	// 不展示
+	MaintainEndTime *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
+	// The start time of the O&M window.
+	//
+	// example:
+	//
+	// 不展示
 	MaintainStartTime *string `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
+	// The maximum number of connections.
+	//
 	// example:
 	//
 	// 4000
 	MaxConnections *int32 `json:"MaxConnections,omitempty" xml:"MaxConnections,omitempty"`
+	// The maximum IOPS.
+	//
 	// example:
 	//
 	// 7000
 	MaxIops *int32 `json:"MaxIops,omitempty" xml:"MaxIops,omitempty"`
+	// The node specifications. Valid values:
+	//
+	// - **polarx.x4.medium.2e**: 2 cores, 8 GB
+	//
+	// - **polarx.x4.large.2e**: 4 cores, 16 GB
+	//
+	// - **polarx.x8.large.2e**: 4 cores, 32 GB
+	//
+	// - **polarx.x4.xlarge.2e**: 8 cores, 32 GB
+	//
+	// - **polarx.x8.xlarge.2e**: 8 cores, 64 GB
+	//
+	// - **polarx.x4.2xlarge.2e**: 16 cores, 64 GB
+	//
+	// - **polarx.x8.2xlarge.2e**: 16 cores, 128 GB
+	//
+	// - **polarx.x4.4xlarge.2e**: 32 cores, 128 GB
+	//
+	// - **polarx.x8.4xlarge.2e**: 32 cores, 256 GB
+	//
+	// - **polarx.st.8xlarge.2e**: 60 cores, 470 GB
+	//
+	// - **polarx.st.12xlarge.2e**: 90 cores, 720 GB.
+	//
 	// example:
 	//
 	// polarx.x4.large.2e
-	NodeClass       *string `json:"NodeClass,omitempty" xml:"NodeClass,omitempty"`
+	NodeClass *string `json:"NodeClass,omitempty" xml:"NodeClass,omitempty"`
+	// The physical instance name.
+	//
+	// example:
+	//
+	// pxc-unrbk8oyz**********
 	PhyInstanceName *string `json:"PhyInstanceName,omitempty" xml:"PhyInstanceName,omitempty"`
 	ReadType        *string `json:"ReadType,omitempty" xml:"ReadType,omitempty"`
+	// The region of the node. If the node is an RDS node, the regions of multiple child nodes are separated with a delimiter (,).
+	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The role of the node. Valid values:
+	//
+	// - **master**: primary node
+	//
+	// - **standby**: secondary node.
+	//
 	// example:
 	//
 	// master
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// The node status. Valid values:
+	//
+	// - **0**: Running.
+	//
+	// - **1**: Creating.
+	//
+	// - **2**: Abnormal.
+	//
+	// - **3**: Expired.
+	//
+	// - **4**: Releasing.
+	//
+	// - **5**: Released.
+	//
+	// - **6**: Locked.
+	//
 	// example:
 	//
 	// 0
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The storage usage, in MB.
+	//
+	// example:
+	//
+	// 16681
 	StorageUsed *string `json:"StorageUsed,omitempty" xml:"StorageUsed,omitempty"`
+	// The logger node version.
+	//
 	// example:
 	//
 	// polarx-cdc-kernel-2.0.0-3985896
@@ -800,10 +1028,20 @@ func (s *DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems) V
 }
 
 type DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItemsAzoneRoleList struct {
+	// The zone of a node in the RDS three-node cluster.
+	//
 	// example:
 	//
 	// cn-hangzhou-a
 	Azone *string `json:"Azone,omitempty" xml:"Azone,omitempty"`
+	// The role of a node in the RDS three-node cluster. Valid values:
+	//
+	// - **leader**: primary node
+	//
+	// - **follower**: secondary node
+	//
+	// - **logger**: logger node.
+	//
 	// example:
 	//
 	// leader
@@ -841,14 +1079,20 @@ func (s *DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItemsAzo
 }
 
 type DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItemsConnectionIp struct {
+	// The connection information.
+	//
 	// example:
 	//
 	// pxc-xdb-m-pxcdym7g7w********.mysql.singapore.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
+	// The internal connection type. The value is fixed to 1, which indicates the classic network.
+	//
 	// example:
 	//
 	// 1
 	DBInstanceNetType *int32 `json:"DBInstanceNetType,omitempty" xml:"DBInstanceNetType,omitempty"`
+	// The port.
+	//
 	// example:
 	//
 	// 3306

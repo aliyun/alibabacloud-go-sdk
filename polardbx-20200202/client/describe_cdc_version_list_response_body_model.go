@@ -16,6 +16,7 @@ type iDescribeCdcVersionListResponseBody interface {
 }
 
 type DescribeCdcVersionListResponseBody struct {
+	// The data struct.
 	Data *DescribeCdcVersionListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -61,6 +62,7 @@ func (s *DescribeCdcVersionListResponseBody) Validate() error {
 }
 
 type DescribeCdcVersionListResponseBodyData struct {
+	// The ID of the associated legacy project. You can ignore this parameter.
 	VersionList []*string `json:"VersionList,omitempty" xml:"VersionList,omitempty" type:"Repeated"`
 }
 

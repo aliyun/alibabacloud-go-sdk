@@ -22,24 +22,34 @@ type iDescribeEventsRequest interface {
 }
 
 type DescribeEventsRequest struct {
+	// The end time.
+	//
 	// example:
 	//
 	// 2021-10-18T03:07:25Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The start time.
+	//
 	// example:
 	//
 	// 2021-10-18T03:07:25Z

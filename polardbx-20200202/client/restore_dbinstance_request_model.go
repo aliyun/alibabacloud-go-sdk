@@ -202,8 +202,6 @@ type RestoreDBInstanceRequest struct {
 	//
 	// 1
 	UsedTime *int32 `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
-	// VPC ID。
-	//
 	// example:
 	//
 	// vpc-*****

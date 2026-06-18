@@ -20,15 +20,22 @@ type iDescribeStructureImportTaskInfoResponseBody interface {
 }
 
 type DescribeStructureImportTaskInfoResponseBody struct {
+	// The returned result set.
 	Data *DescribeStructureImportTaskInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message. This parameter is empty if the request is successful. If the request fails, an error message is returned, such as an error code.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true
@@ -89,10 +96,13 @@ func (s *DescribeStructureImportTaskInfoResponseBody) Validate() error {
 }
 
 type DescribeStructureImportTaskInfoResponseBodyData struct {
+	// The slink status.
+	//
 	// example:
 	//
 	// STRUCTURE_IMPORT
-	SlinkStage            *string                                                               `json:"SlinkStage,omitempty" xml:"SlinkStage,omitempty"`
+	SlinkStage *string `json:"SlinkStage,omitempty" xml:"SlinkStage,omitempty"`
+	// The import result of the schema import task.
 	StructureImportResult *DescribeStructureImportTaskInfoResponseBodyDataStructureImportResult `json:"StructureImportResult,omitempty" xml:"StructureImportResult,omitempty" type:"Struct"`
 }
 
@@ -132,26 +142,38 @@ func (s *DescribeStructureImportTaskInfoResponseBodyData) Validate() error {
 }
 
 type DescribeStructureImportTaskInfoResponseBodyDataStructureImportResult struct {
+	// The cause of the exception.
+	//
 	// example:
 	//
 	// java.sql.SQLException: [1a7a5f22aa403000][10.239.190.4:3058][hash_realtime_new]ERR-CODE: [TDDL-5123][ERR_INSTANCE_READ_ONLY_OPTION_NOT_SUPPORT] server is running with the instance-read-only option so it cannot execute this statement
 	ExceptionDetail *string `json:"ExceptionDetail,omitempty" xml:"ExceptionDetail,omitempty"`
+	// The name of the table that encountered an exception.
+	//
 	// example:
 	//
 	// hash_realtime_new.wm_in_job_et
 	ExceptionFullTableName *string `json:"ExceptionFullTableName,omitempty" xml:"ExceptionFullTableName,omitempty"`
+	// The number of completed records.
+	//
 	// example:
 	//
 	// 118
 	FinishedNum *int32 `json:"FinishedNum,omitempty" xml:"FinishedNum,omitempty"`
+	// The current progress in percentage.
+	//
 	// example:
 	//
 	// 100
 	Percentage *int32 `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
+	// The import status.
+	//
 	// example:
 	//
 	// finish
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The total number of results.
+	//
 	// example:
 	//
 	// 1

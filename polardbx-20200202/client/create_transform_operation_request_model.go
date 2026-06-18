@@ -18,14 +18,20 @@ type iCreateTransformOperationRequest interface {
 }
 
 type CreateTransformOperationRequest struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// pxc-xxx
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The type of the operation.
+	//
 	// example:
 	//
 	// finish
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	// The ID of the region where the instance resides. > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196841.html) operation to query the regions supported by PolarDB-X, including region IDs.
+	//
 	// example:
 	//
 	// cn-hangzhou

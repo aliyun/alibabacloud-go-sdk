@@ -20,7 +20,10 @@ type iDescribeEnabledCrossRegionsResponseBody interface {
 }
 
 type DescribeEnabledCrossRegionsResponseBody struct {
+	// The parameter details.
 	Data []*DescribeEnabledCrossRegionsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The error message.
+	//
 	// example:
 	//
 	// *****
@@ -31,6 +34,8 @@ type DescribeEnabledCrossRegionsResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3WE34
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -95,6 +100,7 @@ func (s *DescribeEnabledCrossRegionsResponseBody) Validate() error {
 }
 
 type DescribeEnabledCrossRegionsResponseBodyData struct {
+	// Indicates whether VPC is supported.
 	Regions []*string `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
 }
 

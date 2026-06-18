@@ -16,6 +16,7 @@ type iDescribeComponentPropetiesResponseBody interface {
 }
 
 type DescribeComponentPropetiesResponseBody struct {
+	// The export parameters of the exception event.
 	Properties []*DescribeComponentPropetiesResponseBodyProperties `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Repeated"`
 	// Id of the request
 	//
@@ -65,15 +66,28 @@ func (s *DescribeComponentPropetiesResponseBody) Validate() error {
 }
 
 type DescribeComponentPropetiesResponseBodyProperties struct {
+	// The name.
+	//
+	// example:
+	//
+	// 4核32G
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The display order of the commodity module property.
+	//
+	// The returned content varies depending on the commodity module.
+	//
 	// example:
 	//
 	// 1
 	OrderIndex *string `json:"OrderIndex,omitempty" xml:"OrderIndex,omitempty"`
+	// The commodity module.
+	//
 	// example:
 	//
 	// dn_node_spec
 	PropertyCode *string `json:"PropertyCode,omitempty" xml:"PropertyCode,omitempty"`
+	// The label value.
+	//
 	// example:
 	//
 	// 172.27.35.

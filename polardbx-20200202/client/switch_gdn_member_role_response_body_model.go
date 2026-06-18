@@ -20,7 +20,10 @@ type iSwitchGdnMemberRoleResponseBody interface {
 }
 
 type SwitchGdnMemberRoleResponseBody struct {
+	// The data struct.
 	Data *SwitchGdnMemberRoleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The additional information returned. If the request is successful, success is returned. If the request fails, the corresponding error code is returned.
+	//
 	// example:
 	//
 	// success
@@ -31,6 +34,8 @@ type SwitchGdnMemberRoleResponseBody struct {
 	//
 	// 9B2F3840-5C98-475C-B269-2D5C3A31797C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true
@@ -91,6 +96,8 @@ func (s *SwitchGdnMemberRoleResponseBody) Validate() error {
 }
 
 type SwitchGdnMemberRoleResponseBodyData struct {
+	// The task ID.
+	//
 	// example:
 	//
 	// 2209883

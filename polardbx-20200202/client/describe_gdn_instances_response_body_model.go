@@ -20,15 +20,24 @@ type iDescribeGdnInstancesResponseBody interface {
 }
 
 type DescribeGdnInstancesResponseBody struct {
+	// The list of instance details.
 	Data *DescribeGdnInstancesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The response message.
+	//
+	// > This parameter is empty when the request succeeds. When the request fails, an exception message is returned, such as an error code.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 7B044BD1-6402-5DE9-9AED-63D15A994E37
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// True
@@ -89,15 +98,22 @@ func (s *DescribeGdnInstancesResponseBody) Validate() error {
 }
 
 type DescribeGdnInstancesResponseBodyData struct {
+	// The list of GDN instances.
 	GdnInstanceList []*DescribeGdnInstancesResponseBodyDataGdnInstanceList `json:"GdnInstanceList,omitempty" xml:"GdnInstanceList,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 30
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 130
@@ -162,20 +178,29 @@ func (s *DescribeGdnInstancesResponseBodyData) Validate() error {
 }
 
 type DescribeGdnInstancesResponseBodyDataGdnInstanceList struct {
+	// The description.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The GDN instance name.
+	//
 	// example:
 	//
 	// gdn-***
 	GdnInstanceName *string `json:"GdnInstanceName,omitempty" xml:"GdnInstanceName,omitempty"`
 	GdnMode         *string `json:"GdnMode,omitempty" xml:"GdnMode,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2025-01-02T13:11:10.000+0000
-	GmtCreated *string                                                          `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	// The list of members.
 	MemberList []*DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList `json:"MemberList,omitempty" xml:"MemberList,omitempty" type:"Repeated"`
+	// The MySQL version supported by the instance.
+	//
 	// example:
 	//
 	// 5.7
@@ -183,10 +208,14 @@ type DescribeGdnInstancesResponseBodyDataGdnInstanceList struct {
 	RplConflictStrategy *string `json:"RplConflictStrategy,omitempty" xml:"RplConflictStrategy,omitempty"`
 	RplDmlStrategy      *string `json:"RplDmlStrategy,omitempty" xml:"RplDmlStrategy,omitempty"`
 	RplSyncDdl          *bool   `json:"RplSyncDdl,omitempty" xml:"RplSyncDdl,omitempty"`
+	// The status.
+	//
 	// example:
 	//
 	// Creating
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The switchover log.
+	//
 	// example:
 	//
 	// ""
@@ -314,79 +343,184 @@ func (s *DescribeGdnInstancesResponseBodyDataGdnInstanceList) Validate() error {
 }
 
 type DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList struct {
+	// The instance type.
+	//
 	// example:
 	//
 	// polarx.x4.medium.2e
 	ClassCode *string `json:"ClassCode,omitempty" xml:"ClassCode,omitempty"`
+	// The CN node specifications. Valid values:
+	//
+	// - **polarx.x4.medium.2e**: 2 cores, 8 GB
+	//
+	// - **polarx.x4.large.2e**: 4 cores, 16 GB
+	//
+	// - **polarx.x8.large.2e**: 4 cores, 32 GB
+	//
+	// - **polarx.x4.xlarge.2e**: 8 cores, 32 GB
+	//
+	// - **polarx.x8.xlarge.2e**: 8 cores, 64 GB
+	//
+	// - **polarx.x4.2xlarge.2e**: 16 cores, 64 GB
+	//
+	// - **polarx.x8.2xlarge.2e**: 16 cores, 128 GB
+	//
+	// - **polarx.x4.4xlarge.2e**: 32 cores, 128 GB
+	//
+	// - **polarx.x8.4xlarge.2e**: 32 cores, 256 GB
+	//
+	// - **polarx.st.8xlarge.2e**: 60 cores, 470 GB
+	//
+	// - **polarx.st.12xlarge.2e**: 90 cores, 720 GB.
+	//
 	// example:
 	//
 	// polarx.x4.medium.2e
 	CnNodeClassCode *string `json:"CnNodeClassCode,omitempty" xml:"CnNodeClassCode,omitempty"`
+	// The number of CN nodes.
+	//
 	// example:
 	//
 	// 2
 	CnNodeCount *string `json:"CnNodeCount,omitempty" xml:"CnNodeCount,omitempty"`
+	// The commodity code.
+	//
 	// example:
 	//
 	// drds_polarxpre_public_cn
 	CommodityCode  *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
 	DataSyncStatus *string `json:"DataSyncStatus,omitempty" xml:"DataSyncStatus,omitempty"`
+	// The DN node specifications. Valid values:
+	//
+	// - **mysql.n2.medium.25**: 2 cores, 4 GB
+	//
+	// - **mysql.n4.medium.25**: 2 cores, 8 GB
+	//
+	// - **mysql.x8.medium.25**: 2 cores, 16 GB
+	//
+	// - **mysql.n2.large.25**: 4 cores, 8 GB
+	//
+	// - **mysql.n4.large.25**: 4 cores, 16 GB
+	//
+	// - **mysql.x8.large.25**: 4 cores, 32 GB
+	//
+	// - **mysql.n2.xlarge.25**: 8 cores, 16 GB
+	//
+	// - **mysql.n4.xlarge.25**: 8 cores, 32 GB
+	//
+	// - **mysql.x8.xlarge.25**: 8 cores, 64 GB
+	//
+	// - **mysql.n4.2xlarge.25**: 16 cores, 64 GB
+	//
+	// - **mysql.x8.2xlarge.25**: 16 cores, 128 GB
+	//
+	// - **mysql.x4.4xlarge.25**: 32 cores, 128 GB
+	//
+	// - **mysql.x8.4xlarge.25**: 32 cores, 256 GB
+	//
+	// - **mysql.st.8xlarge.25**: 60 cores, 470 GB
+	//
+	// - **mysql.st.12xlarge.25**: 90 cores, 720 GB.
+	//
 	// example:
 	//
 	// mysql.n4.medium.25
 	DnNodeClassCode *string `json:"DnNodeClassCode,omitempty" xml:"DnNodeClassCode,omitempty"`
+	// The number of DN nodes.
+	//
 	// example:
 	//
 	// 2
 	DnNodeCount *string `json:"DnNodeCount,omitempty" xml:"DnNodeCount,omitempty"`
+	// The expiration time.
+	//
 	// example:
 	//
 	// 2025-01-02T13:11:10.000+0000
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2025-01-02T13:11:10.000+0000
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	// The member name (PolarDB-X instance name).
+	//
 	// example:
 	//
 	// pxc-***
 	MemberName *string `json:"MemberName,omitempty" xml:"MemberName,omitempty"`
+	// The billing method of the instance. Valid values:
+	//
+	// - **Postpaid**: pay-as-you-go.
+	//
+	// - **Prepaid**: subscription.
+	//
 	// example:
 	//
 	// Prepaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// The primary zone.
+	//
 	// example:
 	//
 	// cn-zhangjiakou-a
 	PrimaryZone     *string `json:"PrimaryZone,omitempty" xml:"PrimaryZone,omitempty"`
 	ReadWriteStatus *string `json:"ReadWriteStatus,omitempty" xml:"ReadWriteStatus,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The member role.
+	//
 	// example:
 	//
 	// primary、
 	//
 	// standby
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// The secondary zone.
+	//
 	// example:
 	//
 	// cn-zhangjiakou-a
 	SecondaryZone *string `json:"SecondaryZone,omitempty" xml:"SecondaryZone,omitempty"`
+	// The data latency.
+	//
 	// example:
 	//
 	// 1s
 	SecondsBehindMaster *string `json:"SecondsBehindMaster,omitempty" xml:"SecondsBehindMaster,omitempty"`
+	// The member status.
+	//
 	// example:
 	//
 	// Creating
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The switchover task status.
+	//
+	// example:
+	//
+	// prepared：参数初始化完毕
+	//
+	// set_old_primary_readonly：原主实例已禁写
+	//
+	// set_new_primary_read_write：已切换
+	//
+	// timeout：任务超时
+	//
+	// rollback：已回滚
 	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// The zone for Three-zone deployment. This zone is active only when three-zone deployment is enabled.
+	//
 	// example:
 	//
 	// cn-zhangjiakou-a
 	TertiaryZone *string `json:"TertiaryZone,omitempty" xml:"TertiaryZone,omitempty"`
+	// The zone ID.
+	//
 	// example:
 	//
 	// cn-zhangjiakou-a

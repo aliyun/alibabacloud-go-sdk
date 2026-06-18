@@ -17,8 +17,6 @@ type iDeleteSubCNInstanceResponseBody interface {
 
 type DeleteSubCNInstanceResponseBody struct {
 	Data *DeleteSubCNInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Id of the request
-	//
 	// example:
 	//
 	// 1A586DCB-39A6-4050-81CC-C7BD4CCDB49F

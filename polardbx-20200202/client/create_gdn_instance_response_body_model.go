@@ -20,7 +20,12 @@ type iCreateGdnInstanceResponseBody interface {
 }
 
 type CreateGdnInstanceResponseBody struct {
+	// The instance details.
 	Data *CreateGdnInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	//
+	// > This parameter is empty when the request succeeds. If the request fails, an error message is returned, such as an error code.
+	//
 	// example:
 	//
 	// ****
@@ -31,6 +36,8 @@ type CreateGdnInstanceResponseBody struct {
 	//
 	// 0DBA1657-7607-56D6-BB6D-641BF17CCFDB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// True
@@ -91,6 +98,8 @@ func (s *CreateGdnInstanceResponseBody) Validate() error {
 }
 
 type CreateGdnInstanceResponseBodyData struct {
+	// The task ID.
+	//
 	// example:
 	//
 	// 2209883

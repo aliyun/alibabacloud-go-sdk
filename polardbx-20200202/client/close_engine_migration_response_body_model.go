@@ -24,15 +24,22 @@ type iCloseEngineMigrationResponseBody interface {
 }
 
 type CloseEngineMigrationResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
-	Code *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The new endpoint information.
 	Data *CloseEngineMigrationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message. This parameter is empty if the request is successful.
+	//
 	// example:
 	//
 	// *****
@@ -43,6 +50,8 @@ type CloseEngineMigrationResponseBody struct {
 	//
 	// C458B1E8-1683-3645-B154-6BA32080EEA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true
@@ -121,10 +130,14 @@ func (s *CloseEngineMigrationResponseBody) Validate() error {
 }
 
 type CloseEngineMigrationResponseBodyData struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// pxc-hzjasd****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The backend task ID.
+	//
 	// example:
 	//
 	// 2209883

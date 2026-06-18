@@ -24,28 +24,40 @@ type iDescribeRplInspectionTaskRequest interface {
 }
 
 type DescribeRplInspectionTaskRequest struct {
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	FailPageNumber *int32 `json:"FailPageNumber,omitempty" xml:"FailPageNumber,omitempty"`
+	// The number of records per page.
+	//
 	// example:
 	//
 	// 10
 	FailPageSize *int32 `json:"FailPageSize,omitempty" xml:"FailPageSize,omitempty"`
+	// The region where the instance resides.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The switchover task ID.
+	//
 	// example:
 	//
 	// etx-szr2rr6i*****
 	SlinkTaskId *string `json:"SlinkTaskId,omitempty" xml:"SlinkTaskId,omitempty"`
+	// The requested page number.
+	//
 	// example:
 	//
 	// 1
 	SuccessPageNumber *int64 `json:"SuccessPageNumber,omitempty" xml:"SuccessPageNumber,omitempty"`
+	// The number of records per page.
+	//
 	// example:
 	//
 	// 15

@@ -18,11 +18,15 @@ type iDescribeCdcVersionListRequest interface {
 }
 
 type DescribeCdcVersionListRequest struct {
+	// The name of the instance.
+	//
 	// example:
 	//
 	// pxc-bjrl7****k2vp7
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
 	InstanceName   *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The ID of the region in which the instance resides.
+	//
 	// example:
 	//
 	// cn-beijing

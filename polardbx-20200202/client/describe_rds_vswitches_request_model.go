@@ -18,14 +18,20 @@ type iDescribeRdsVswitchesRequest interface {
 }
 
 type DescribeRdsVswitchesRequest struct {
+	// The region in which the instance resides.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the VPC in which the endpoint resides.
+	//
 	// example:
 	//
 	// vpc-bp1ndou****twoedlmru0
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The zone ID.
+	//
 	// example:
 	//
 	// cn-hangzhou-a

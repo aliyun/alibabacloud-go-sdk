@@ -18,16 +18,22 @@ type iDescribeOpenBackupSetRequest interface {
 }
 
 type DescribeOpenBackupSetRequest struct {
+	// The instance name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pxc-********
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The region ID of the instance.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The point in time to which you want to restore the instance. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
+	//
 	// example:
 	//
 	// 2024-10-14T00:00:00Z

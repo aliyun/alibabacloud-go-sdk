@@ -18,16 +18,22 @@ type iDescribeTagsRequest interface {
 }
 
 type DescribeTagsRequest struct {
+	// The instance name.
+	//
 	// example:
 	//
 	// pxc-xxx
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The tag key.
+	//
 	// example:
 	//
 	// test

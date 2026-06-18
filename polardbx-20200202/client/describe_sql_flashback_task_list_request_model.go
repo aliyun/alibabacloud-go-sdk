@@ -16,12 +16,16 @@ type iDescribeSqlFlashbackTaskListRequest interface {
 }
 
 type DescribeSqlFlashbackTaskListRequest struct {
+	// The instance ID of the PolarDB-X instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pxc-**********
 	PolardbxInstanceId *string `json:"PolardbxInstanceId,omitempty" xml:"PolardbxInstanceId,omitempty"`
+	// The region in which the instance resides.
+	//
 	// This parameter is required.
 	//
 	// example:

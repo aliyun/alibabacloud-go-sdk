@@ -36,52 +36,100 @@ type iDescribeActiveOperationTasksRequest interface {
 }
 
 type DescribeActiveOperationTasksRequest struct {
+	// Specifies whether cancellation is allowed. Valid values:
+	//
+	// - **-1**: All O&M events can be canceled.
+	//
+	// - **0**: Not allowed.
+	//
+	// - **1**: Allowed.
+	//
 	// example:
 	//
 	// -1
 	AllowCancel *int64 `json:"AllowCancel,omitempty" xml:"AllowCancel,omitempty"`
+	// Specifies whether the time can be modified. Valid values:
+	//
+	// - **-1**: The time of all O&M events can be modified.
+	//
+	// - **0**: Not allowed.
+	//
+	// - **1**: Allowed.
+	//
 	// example:
 	//
 	// -1
 	AllowChange *int64 `json:"AllowChange,omitempty" xml:"AllowChange,omitempty"`
+	// The change level. Default value: all. Valid values:
+	//
+	// - **all**: All levels of exception recovery and system O&M.
+	//
+	// - **S0**: Exception recovery.
+	//
+	// - **S1**: System O&M.
+	//
 	// example:
 	//
 	// all
 	ChangeLevel *string `json:"ChangeLevel,omitempty" xml:"ChangeLevel,omitempty"`
+	// The database type. Set this parameter to polarx.
+	//
 	// example:
 	//
 	// polarx
 	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	// The instance name. Default value: empty string.
+	//
 	// example:
 	//
 	// pxc-xxxxx
 	InsName *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
+	// The page number. The value must be greater than 0. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 25.
+	//
 	// example:
 	//
 	// 25
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The product name. Default value: polarx.
+	//
 	// example:
 	//
 	// polarx
 	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	// The region.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The task status. Valid values:
+	//
+	// - **-1**: All pending and running tasks.
+	//
+	// - **3**: Pending.
+	//
+	// - **4**: Running.
+	//
 	// example:
 	//
 	// -1
 	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The task type. A value of all indicates that all tasks of the user are queried. Set this parameter to all.
+	//
 	// example:
 	//
 	// all

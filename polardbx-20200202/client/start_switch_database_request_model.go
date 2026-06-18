@@ -28,38 +28,54 @@ type iStartSwitchDatabaseRequest interface {
 }
 
 type StartSwitchDatabaseRequest struct {
+	// The name of the instance.
+	//
 	// example:
 	//
 	// pxc-xxx
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The endpoint of the primary node of the target instance.
+	//
 	// example:
 	//
 	// pxc-*********.polarx.rds.aliyuncs.com
 	DstMainConnectString *string `json:"DstMainConnectString,omitempty" xml:"DstMainConnectString,omitempty"`
+	// The port number of the target instance.
+	//
 	// example:
 	//
 	// 3313
 	DstMainPort *string `json:"DstMainPort,omitempty" xml:"DstMainPort,omitempty"`
+	// Specifies whether to modify the endpoint or port of the source or target instance.
+	//
 	// example:
 	//
 	// true
 	IsModifyEndpoint *string `json:"IsModifyEndpoint,omitempty" xml:"IsModifyEndpoint,omitempty"`
+	// The region ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the import task.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// etx-szr2rr6i*****
 	SlinkTaskId *string `json:"SlinkTaskId,omitempty" xml:"SlinkTaskId,omitempty"`
+	// The endpoint of the primary node of the source instance, which is typically the internal or public endpoint of the instance.
+	//
 	// example:
 	//
 	// rm-*********.mysql.rds.aliyuncs.com
 	SrcMainConnectString *string `json:"SrcMainConnectString,omitempty" xml:"SrcMainConnectString,omitempty"`
+	// The port number of the primary node of the source instance.
+	//
 	// example:
 	//
 	// 3308

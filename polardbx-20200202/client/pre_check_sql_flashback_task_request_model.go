@@ -22,30 +22,40 @@ type iPreCheckSqlFlashbackTaskRequest interface {
 }
 
 type PreCheckSqlFlashbackTaskRequest struct {
+	// The database name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The end time of the flashback SQL execution.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2025-09-21 14:41:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pxc-*********
 	PolardbxInstanceId *string `json:"PolardbxInstanceId,omitempty" xml:"PolardbxInstanceId,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The start time of the flashback SQL execution.
+	//
 	// This parameter is required.
 	//
 	// example:

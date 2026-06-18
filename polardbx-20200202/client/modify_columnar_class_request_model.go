@@ -22,28 +22,38 @@ type iModifyColumnarClassRequest interface {
 }
 
 type ModifyColumnarClassRequest struct {
+	// The column store specifications.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// polarx.n8.large.col
 	ColumnarClass *string `json:"ColumnarClass,omitempty" xml:"ColumnarClass,omitempty"`
+	// The number of column store nodes.
+	//
 	// example:
 	//
 	// **
 	ColumnarNodeCount *string `json:"ColumnarNodeCount,omitempty" xml:"ColumnarNodeCount,omitempty"`
+	// The instance name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pxc-hzrh51fze****pon-cdc
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The region in which the instance resides. > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196841.html) operation to query the regions supported by PolarDB-X, including region IDs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The switch mode.
+	//
 	// example:
 	//
 	// 0

@@ -18,14 +18,20 @@ type iModifySecurityIpsResponseBody interface {
 }
 
 type ModifySecurityIpsResponseBody struct {
+	// The response message. success is returned if the request is successful. Otherwise, an error code is returned.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// FEA5DC20-6D8A-5979-97AA-FC57546ADC20
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true

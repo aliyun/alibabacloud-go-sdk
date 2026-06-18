@@ -22,30 +22,40 @@ type iModifyDBInstanceConnectionStringRequest interface {
 }
 
 type ModifyDBInstanceConnectionStringRequest struct {
+	// The original connection string.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pxc-unrf5ssig0ecg8.polarx.huhehaote.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pxc-unrf5ssig0ecg8
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The new port number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 3300
 	NewPort *string `json:"NewPort,omitempty" xml:"NewPort,omitempty"`
+	// The new connection string prefix.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test2
 	NewPrefix *string `json:"NewPrefix,omitempty" xml:"NewPrefix,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:

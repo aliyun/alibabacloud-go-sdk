@@ -16,12 +16,16 @@ type iDescribeEvaluateAndImportTaskRequest interface {
 }
 
 type DescribeEvaluateAndImportTaskRequest struct {
+	// The region where the instance resides.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the link task.
+	//
 	// example:
 	//
 	// etx-szr2rr6i*****

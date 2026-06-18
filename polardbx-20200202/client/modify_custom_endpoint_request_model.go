@@ -26,36 +26,48 @@ type iModifyCustomEndpointRequest interface {
 }
 
 type ModifyCustomEndpointRequest struct {
+	// The ID of the custom endpoint.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cep-002
 	CustomEndpointId *string `json:"CustomEndpointId,omitempty" xml:"CustomEndpointId,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// mydatabase
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The name of the custom endpoint.
+	//
 	// example:
 	//
 	// secondary-endpoint
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Specifies whether a node automatically joins the cluster and starts providing services after it is added or recovered.
+	//
 	// example:
 	//
 	// true
 	NodeAutoEnter *bool `json:"NodeAutoEnter,omitempty" xml:"NodeAutoEnter,omitempty"`
-	// node ids
+	// The node IDs.
 	//
 	// example:
 	//
 	// node3
 	NodeIds *string `json:"NodeIds,omitempty" xml:"NodeIds,omitempty"`
+	// The role of the node.
+	//
 	// example:
 	//
 	// master
 	NodeRole *string `json:"NodeRole,omitempty" xml:"NodeRole,omitempty"`
+	// The region ID of the instance.
+	//
 	// example:
 	//
 	// cn-zhangjiakou

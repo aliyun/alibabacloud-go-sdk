@@ -16,6 +16,7 @@ type iDescribeRdsVswitchesResponseBody interface {
 }
 
 type DescribeRdsVswitchesResponseBody struct {
+	// The data struct.
 	Data *DescribeRdsVswitchesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -61,6 +62,7 @@ func (s *DescribeRdsVswitchesResponseBody) Validate() error {
 }
 
 type DescribeRdsVswitchesResponseBodyData struct {
+	// The vSwitch list.
 	VswitchList []*DescribeRdsVswitchesResponseBodyDataVswitchList `json:"VswitchList,omitempty" xml:"VswitchList,omitempty" type:"Repeated"`
 }
 
@@ -95,34 +97,54 @@ func (s *DescribeRdsVswitchesResponseBodyData) Validate() error {
 }
 
 type DescribeRdsVswitchesResponseBodyDataVswitchList struct {
+	// The number of available IP addresses.
+	//
 	// example:
 	//
 	// 16378
 	AvailabeIpCount *string `json:"AvailabeIpCount,omitempty" xml:"AvailabeIpCount,omitempty"`
+	// The CIDR block of the VPC.
+	//
 	// example:
 	//
 	// 172.16.0.0/24
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	// The description of the database.
+	//
 	// example:
 	//
 	// describe
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The node ID.
+	//
 	// example:
 	//
 	// babac91eff704edf9bdccfaa6ba4efce
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// drdshbgae0han226
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Indicates whether the VPC is the default VPC. Valid values:
+	//
+	// - **true**: The VPC is the default VPC.
+	//
+	// - **false**: The VPC is not the default VPC.
+	//
 	// example:
 	//
 	// true
 	IsDefault *string `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// The zone ID.
+	//
 	// example:
 	//
 	// cn-hangzhou-j
 	IzNo *string `json:"IzNo,omitempty" xml:"IzNo,omitempty"`
+	// The name.
+	//
 	// example:
 	//
 	// szt-backup

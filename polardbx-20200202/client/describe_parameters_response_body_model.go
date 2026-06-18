@@ -16,7 +16,10 @@ type iDescribeParametersResponseBody interface {
 }
 
 type DescribeParametersResponseBody struct {
+	// The parameter details.
 	Data *DescribeParametersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6BA32080EEA
@@ -59,16 +62,22 @@ func (s *DescribeParametersResponseBody) Validate() error {
 }
 
 type DescribeParametersResponseBodyData struct {
+	// The list of original parameters.
 	ConfigParameters []*DescribeParametersResponseBodyDataConfigParameters `json:"ConfigParameters,omitempty" xml:"ConfigParameters,omitempty" type:"Repeated"`
 	DBInstanceId     *string                                               `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The engine. Default value: polarx.
+	//
 	// example:
 	//
 	// polarx
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The DPI engine version. Default value: 2.0.
+	//
 	// example:
 	//
 	// 2.0
-	EngineVersion     *string                                                `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	// The list of running parameter details.
 	RunningParameters []*DescribeParametersResponseBodyDataRunningParameters `json:"RunningParameters,omitempty" xml:"RunningParameters,omitempty" type:"Repeated"`
 }
 
@@ -148,11 +157,20 @@ func (s *DescribeParametersResponseBodyData) Validate() error {
 }
 
 type DescribeParametersResponseBodyDataConfigParameters struct {
+	// The parameter description.
+	//
+	// example:
+	//
+	// 存储节点私有协议开关(-1关闭，0开启)
 	ParameterDescription *string `json:"ParameterDescription,omitempty" xml:"ParameterDescription,omitempty"`
+	// The parameter name.
+	//
 	// example:
 	//
 	// CONN_POOL_XPROTO_STORAGE_DB_PORT
 	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
+	// The parameter value.
+	//
 	// example:
 	//
 	// -1
@@ -199,11 +217,20 @@ func (s *DescribeParametersResponseBodyDataConfigParameters) Validate() error {
 }
 
 type DescribeParametersResponseBodyDataRunningParameters struct {
+	// The parameter description.
+	//
+	// example:
+	//
+	// 存储节点私有协议开关(-1关闭，0开启)
 	ParameterDescription *string `json:"ParameterDescription,omitempty" xml:"ParameterDescription,omitempty"`
+	// The parameter name.
+	//
 	// example:
 	//
 	// CONN_POOL_XPROTO_STORAGE_DB_PORT
 	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
+	// The parameter value.
+	//
 	// example:
 	//
 	// -1

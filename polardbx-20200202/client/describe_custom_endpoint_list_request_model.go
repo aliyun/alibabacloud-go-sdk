@@ -20,20 +20,28 @@ type iDescribeCustomEndpointListRequest interface {
 }
 
 type DescribeCustomEndpointListRequest struct {
+	// Specifies whether to check if the compute node (CN) has been deleted.
+	//
 	// example:
 	//
 	// true
 	CheckDeleteCN *bool `json:"CheckDeleteCN,omitempty" xml:"CheckDeleteCN,omitempty"`
+	// The IDs of custom endpoints.
+	//
 	// example:
 	//
 	// pxe-b6e****no4pfap1s
 	CustomEndpointIds *string `json:"CustomEndpointIds,omitempty" xml:"CustomEndpointIds,omitempty"`
+	// The name of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pxc-xxx
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The region in which the instance resides.
+	//
 	// example:
 	//
 	// cn-hangzhou

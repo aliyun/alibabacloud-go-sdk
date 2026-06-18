@@ -18,16 +18,26 @@ type iDescribeParametersRequest interface {
 }
 
 type DescribeParametersRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pxc-********
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The parameter level. Valid values:
+	//
+	// - compute: compute layer
+	//
+	// - storage: storage layer.
+	//
 	// example:
 	//
 	// compute
 	ParamLevel *string `json:"ParamLevel,omitempty" xml:"ParamLevel,omitempty"`
+	// The region to which the instance belongs.
+	//
 	// This parameter is required.
 	//
 	// example:

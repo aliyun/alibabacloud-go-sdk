@@ -16,10 +16,14 @@ type iDescribeDBInstanceSSLRequest interface {
 }
 
 type DescribeDBInstanceSSLRequest struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// pxc-*********
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The ID of the region where the instance resides.
+	//
 	// example:
 	//
 	// cn-hangzhou

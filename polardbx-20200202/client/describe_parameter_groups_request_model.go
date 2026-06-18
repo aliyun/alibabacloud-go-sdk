@@ -14,6 +14,8 @@ type iDescribeParameterGroupsRequest interface {
 }
 
 type DescribeParameterGroupsRequest struct {
+	// The region where the instance resides.
+	//
 	// example:
 	//
 	// cn-hangzhou

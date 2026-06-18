@@ -20,15 +20,22 @@ type iDescribeBackupSetListResponseBody interface {
 }
 
 type DescribeBackupSetListResponseBody struct {
+	// The data struct.
 	Data []*DescribeBackupSetListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The response message. "success" is returned if the request is successful. Otherwise, an error code is returned.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1A6D328C-84B8-40DC-BF49-6C73984D7494
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true
@@ -93,30 +100,58 @@ func (s *DescribeBackupSetListResponseBody) Validate() error {
 }
 
 type DescribeBackupSetListResponseBodyData struct {
+	// The backup mode. Valid values:
+	//
+	// - **0**: automatic backup.
+	//
+	// - **1**: manual backup.
+	//
 	// example:
 	//
 	// 0
 	BackupModel *int32 `json:"BackupModel,omitempty" xml:"BackupModel,omitempty"`
+	// The ID of the backup set.
+	//
 	// example:
 	//
 	// 111
 	BackupSetId *string `json:"BackupSetId,omitempty" xml:"BackupSetId,omitempty"`
+	// The size of the backup set. Unit: bytes.
+	//
 	// example:
 	//
 	// 88803195
 	BackupSetSize *int64 `json:"BackupSetSize,omitempty" xml:"BackupSetSize,omitempty"`
+	// The backup type. Valid values:
+	//
+	// - **0**: fast backup.
+	//
+	// - **1**: consistent backup.
+	//
 	// example:
 	//
 	// 1
 	BackupType *int32 `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	// The time when the backup started.
+	//
 	// example:
 	//
 	// 1635706960956
 	BeginTime *int64 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	// The time when the backup ended.
+	//
 	// example:
 	//
 	// 1635706960956
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The status of the backup set. Valid values:
+	//
+	// - **0**: Being backed up.
+	//
+	// - **1**: Backup succeeded.
+	//
+	// - **2**: Backup failed.
+	//
 	// example:
 	//
 	// 1

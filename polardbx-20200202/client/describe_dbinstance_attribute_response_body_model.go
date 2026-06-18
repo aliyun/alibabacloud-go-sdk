@@ -16,7 +16,10 @@ type iDescribeDBInstanceAttributeResponseBody interface {
 }
 
 type DescribeDBInstanceAttributeResponseBody struct {
+	// The database instance information.
 	DBInstance *DescribeDBInstanceAttributeResponseBodyDBInstance `json:"DBInstance,omitempty" xml:"DBInstance,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 9B2F3840-5C98-475C-B269-2D5C3A31797C
@@ -59,71 +62,190 @@ func (s *DescribeDBInstanceAttributeResponseBody) Validate() error {
 }
 
 type DescribeDBInstanceAttributeResponseBodyDBInstance struct {
+	// Indicates whether the In-Memory Column Index feature is supported.
+	//
+	// example:
+	//
+	// true
 	CanNotCreateColumnar *bool `json:"CanNotCreateColumnar,omitempty" xml:"CanNotCreateColumnar,omitempty"`
+	// The CN node specifications. Valid values:
+	//
+	// - **polarx.x4.medium.2e**: 2 cores, 8 GB
+	//
+	// - **polarx.x4.large.2e**: 4 cores, 16 GB
+	//
+	// - **polarx.x8.large.2e**: 4 cores, 32 GB
+	//
+	// - **polarx.x4.xlarge.2e**: 8 cores, 32 GB
+	//
+	// - **polarx.x8.xlarge.2e**: 8 cores, 64 GB
+	//
+	// - **polarx.x4.2xlarge.2e**: 16 cores, 64 GB
+	//
+	// - **polarx.x8.2xlarge.2e**: 16 cores, 128 GB
+	//
+	// - **polarx.x4.4xlarge.2e**: 32 cores, 128 GB
+	//
+	// - **polarx.x8.4xlarge.2e**: 32 cores, 256 GB
+	//
+	// - **polarx.st.8xlarge.2e**: 60 cores, 470 GB
+	//
+	// - **polarx.st.12xlarge.2e**: 90 cores, 720 GB.
+	//
 	// example:
 	//
 	// polarx.x4.xlarge.2e
 	CnNodeClassCode *string `json:"CnNodeClassCode,omitempty" xml:"CnNodeClassCode,omitempty"`
+	// The number of CN nodes.
+	//
 	// example:
 	//
 	// 2
-	CnNodeCount             *int32    `json:"CnNodeCount,omitempty" xml:"CnNodeCount,omitempty"`
-	ColumnarInstanceName    *string   `json:"ColumnarInstanceName,omitempty" xml:"ColumnarInstanceName,omitempty"`
+	CnNodeCount *int32 `json:"CnNodeCount,omitempty" xml:"CnNodeCount,omitempty"`
+	// The name of the column store engine instance.
+	//
+	// example:
+	//
+	// xxxx
+	ColumnarInstanceName *string `json:"ColumnarInstanceName,omitempty" xml:"ColumnarInstanceName,omitempty"`
+	// The column store read-only instance information.
 	ColumnarReadDBInstances []*string `json:"ColumnarReadDBInstances,omitempty" xml:"ColumnarReadDBInstances,omitempty" type:"Repeated"`
+	// The commodity code of the instance. The value is fixed as drds_polarxpost_public_cn.
+	//
 	// example:
 	//
 	// drds_polarxpost_public_cn
-	CommodityCode    *string                                                       `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	ConnAddrs        []*DescribeDBInstanceAttributeResponseBodyDBInstanceConnAddrs `json:"ConnAddrs,omitempty" xml:"ConnAddrs,omitempty" type:"Repeated"`
-	ConnectionString *string                                                       `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	CpuType          *string                                                       `json:"CpuType,omitempty" xml:"CpuType,omitempty"`
+	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	// The endpoint information.
+	ConnAddrs []*DescribeDBInstanceAttributeResponseBodyDBInstanceConnAddrs `json:"ConnAddrs,omitempty" xml:"ConnAddrs,omitempty" type:"Repeated"`
+	// The internal network connection string.
+	//
+	// example:
+	//
+	// pxc-sprpx766vo****.polarx.singapore.rds.aliyuncs.com
+	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
+	CpuType          *string `json:"CpuType,omitempty" xml:"CpuType,omitempty"`
+	// The time when the instance was created.
+	//
 	// example:
 	//
 	// 2021-08-31T08:56:25.000+0000
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The instance type. Valid values:
+	//
+	// - **ReadWrite**: primary instance.
+	//
+	// - **ReadOnly**: read-only instance.
+	//
 	// example:
 	//
 	// ReadWrite
 	DBInstanceType *string `json:"DBInstanceType,omitempty" xml:"DBInstanceType,omitempty"`
+	// The node specifications of the instance.
+	//
 	// example:
 	//
 	// polarx.x4.large.2e
 	DBNodeClass *string `json:"DBNodeClass,omitempty" xml:"DBNodeClass,omitempty"`
+	// The number of instance nodes.
+	//
 	// example:
 	//
 	// 2
-	DBNodeCount *int32                                                      `json:"DBNodeCount,omitempty" xml:"DBNodeCount,omitempty"`
-	DBNodes     []*DescribeDBInstanceAttributeResponseBodyDBInstanceDBNodes `json:"DBNodes,omitempty" xml:"DBNodes,omitempty" type:"Repeated"`
+	DBNodeCount *int32 `json:"DBNodeCount,omitempty" xml:"DBNodeCount,omitempty"`
+	// The database node information.
+	DBNodes []*DescribeDBInstanceAttributeResponseBodyDBInstanceDBNodes `json:"DBNodes,omitempty" xml:"DBNodes,omitempty" type:"Repeated"`
+	// The database type. The value is fixed as polarx.
+	//
 	// example:
 	//
 	// polarx
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
+	// The database engine version.
+	//
 	// example:
 	//
 	// 5.5
 	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
+	// The description of the instance.
+	//
 	// example:
 	//
 	// test instance
-	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DifferentDNSpec *bool   `json:"DifferentDNSpec,omitempty" xml:"DifferentDNSpec,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Indicates whether the DN nodes of the instance have different specifications. Valid values:
+	//
+	// - true: The specifications are different.
+	//
+	// - false: The specifications are the same.
+	//
+	// example:
+	//
+	// false
+	DifferentDNSpec *bool `json:"DifferentDNSpec,omitempty" xml:"DifferentDNSpec,omitempty"`
+	// The DN node specifications. Valid values:
+	//
+	// - **mysql.n2.medium.25**: 2 cores, 4 GB
+	//
+	// - **mysql.n4.medium.25**: 2 cores, 8 GB
+	//
+	// - **mysql.x8.medium.25**: 2 cores, 16 GB
+	//
+	// - **mysql.n2.large.25**: 4 cores, 8 GB
+	//
+	// - **mysql.n4.large.25**: 4 cores, 16 GB
+	//
+	// - **mysql.x8.large.25**: 4 cores, 32 GB
+	//
+	// - **mysql.n2.xlarge.25**: 8 cores, 16 GB
+	//
+	// - **mysql.n4.xlarge.25**: 8 cores, 32 GB
+	//
+	// - **mysql.x8.xlarge.25**: 8 cores, 64 GB
+	//
+	// - **mysql.n4.2xlarge.25**: 16 cores, 64 GB
+	//
+	// - **mysql.x8.2xlarge.25**: 16 cores, 128 GB
+	//
+	// - **mysql.x4.4xlarge.25**: 32 cores, 128 GB
+	//
+	// - **mysql.x8.4xlarge.25**: 32 cores, 256 GB
+	//
+	// - **mysql.st.8xlarge.25**: 60 cores, 470 GB
+	//
+	// - **mysql.st.12xlarge.25**: 90 cores, 720 GB.
+	//
 	// example:
 	//
 	// mysql.x8.large.25
 	DnNodeClassCode *string `json:"DnNodeClassCode,omitempty" xml:"DnNodeClassCode,omitempty"`
+	// The number of DN nodes.
+	//
 	// example:
 	//
 	// 2
 	DnNodeCount *int32 `json:"DnNodeCount,omitempty" xml:"DnNodeCount,omitempty"`
+	// The disk space of the DN data nodes, in GB.
+	DnStorageSpace *string `json:"DnStorageSpace,omitempty" xml:"DnStorageSpace,omitempty"`
+	// The database type. The value is fixed as polarx.
+	//
 	// example:
 	//
 	// polarx
 	Engine        *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	// The expiration time. The time is in the yyyy-MM-ddTHH:mm:ss.sss+0000 format (UTC).
+	//
 	// example:
 	//
 	// 2022-08-31T16:00:00.000+0000
 	ExpireDate *string `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
+	// Indicates whether the instance has expired. Valid values:
+	//
+	// - **true**: The instance has expired.
+	//
+	// - **false**: The instance is running normally.
+	//
 	// example:
 	//
 	// false
@@ -131,97 +253,187 @@ type DescribeDBInstanceAttributeResponseBodyDBInstance struct {
 	GdnInstanceName *string                                                           `json:"GdnInstanceName,omitempty" xml:"GdnInstanceName,omitempty"`
 	GdnMemberList   []*DescribeDBInstanceAttributeResponseBodyDBInstanceGdnMemberList `json:"GdnMemberList,omitempty" xml:"GdnMemberList,omitempty" type:"Repeated"`
 	GdnRole         *string                                                           `json:"GdnRole,omitempty" xml:"GdnRole,omitempty"`
+	// The ID of the primary instance. If this parameter is not returned, the instance is a primary instance.
+	//
 	// example:
 	//
 	// pxc-zkralxpc5d****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The instance DPI engine version code. This is an internal parameter.
+	//
 	// example:
 	//
 	// 18
 	KindCode *int32 `json:"KindCode,omitempty" xml:"KindCode,omitempty"`
 	// This parameter is required.
 	LTSVersions []*string `json:"LTSVersions,omitempty" xml:"LTSVersions,omitempty" type:"Repeated"`
+	// The latest kernel version supported by the instance.
+	//
 	// example:
 	//
 	// polarx-kernel_5.4.11-16301083_xcluster-20210805
 	LatestMinorVersion *string `json:"LatestMinorVersion,omitempty" xml:"LatestMinorVersion,omitempty"`
+	// The lock mode of the instance. Valid values:
+	//
+	// - **Unlock**: The instance is running normally.
+	//
+	// - **ManualLock**: The instance is manually locked.
+	//
+	// - **LockByExpiration**: The instance is automatically locked due to expiration.
+	//
+	// - **LockByRestoration**: The instance is automatically locked before a rollback.
+	//
+	// - **LockByDiskQuota**: The instance is automatically locked because the storage is full.
+	//
+	// - **LockReadInstanceByDiskQuota**: The read-only instance is automatically locked because the storage is full.
+	//
 	// example:
 	//
 	// Unlock
 	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
+	// The end time of the maintenance window. The time is in UTC. Add 8 hours to obtain the maintenance window displayed in the console.
+	//
 	// example:
 	//
 	// 06:00
 	MaintainEndTime *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
+	// The start time of the maintenance window. The time is in UTC. Add 8 hours to obtain the maintenance window displayed in the console.
+	//
 	// example:
 	//
 	// 06:00
 	MaintainStartTime *string `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
+	// The current kernel version.
+	//
 	// example:
 	//
 	// polarx-kernel_5.4.11-16301083_xcluster-20210805
 	MinorVersion *string `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
+	// The network type of the instance. Only VPC is supported, which indicates a virtual private cloud (VPC).
+	//
 	// example:
 	//
 	// VPC
 	Network *string `json:"Network,omitempty" xml:"Network,omitempty"`
+	// The billing method of the instance. Valid values:
+	//
+	// - **Postpaid**: pay-as-you-go.
+	//
+	// - **Prepaid**: subscription.
+	//
 	// example:
 	//
 	// Postpaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// The internal network connection port.
+	//
 	// example:
 	//
 	// 3306
 	Port              *string `json:"Port,omitempty" xml:"Port,omitempty"`
 	PrimaryInstanceId *string `json:"PrimaryInstanceId,omitempty" xml:"PrimaryInstanceId,omitempty"`
-	// 主可用区。
+	// The primary zone.
 	//
 	// This parameter is required.
-	PrimaryZone     *string   `json:"PrimaryZone,omitempty" xml:"PrimaryZone,omitempty"`
+	//
+	// example:
+	//
+	// cn-shenzhen-e
+	PrimaryZone *string `json:"PrimaryZone,omitempty" xml:"PrimaryZone,omitempty"`
+	// The list of read-only instance names.
 	ReadDBInstances []*string `json:"ReadDBInstances,omitempty" xml:"ReadDBInstances,omitempty" type:"Repeated"`
+	// The region in which the instance resides.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	//
 	// example:
 	//
-	// rg-xxxx
+	// rg-*********
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The three-role mode status. Valid values:
+	//
+	// - **false**: Disabled.
+	//
+	// - **true**: Enabled.
+	//
 	// example:
 	//
 	// false
 	RightsSeparationEnabled *bool `json:"RightsSeparationEnabled,omitempty" xml:"RightsSeparationEnabled,omitempty"`
+	// The three-role mode status. Valid values:
+	//
+	// - **disabled**: Disabled.
+	//
+	// - **enabled**: Enabled.
+	//
+	// - **processing**: Being processed.
+	//
+	// - **unknown**: Unknown. The instance may be disconnected.
+	//
 	// example:
 	//
 	// disabled
 	RightsSeparationStatus *string `json:"RightsSeparationStatus,omitempty" xml:"RightsSeparationStatus,omitempty"`
-	// 次可用区。
+	// The secondary zone.
+	//
+	// example:
+	//
+	// cn-shenzhen-a
 	SecondaryZone *string `json:"SecondaryZone,omitempty" xml:"SecondaryZone,omitempty"`
+	// The instance edition. Valid values:
+	//
+	// - **enterprise**: Enterprise Edition.
+	//
+	// - **standard**: Standard Edition.
+	//
 	// example:
 	//
 	// enterprise
 	Series       *string `json:"Series,omitempty" xml:"Series,omitempty"`
 	SpecCategory *string `json:"SpecCategory,omitempty" xml:"SpecCategory,omitempty"`
+	// The instance status. For more information, see [Instance status table](https://help.aliyun.com/document_detail/339826.html).
+	//
 	// example:
 	//
 	// Running
 	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	// The used storage space, in bytes.
+	//
 	// example:
 	//
 	// 17042505728
-	StorageUsed *int64                                                     `json:"StorageUsed,omitempty" xml:"StorageUsed,omitempty"`
-	TagSet      []*DescribeDBInstanceAttributeResponseBodyDBInstanceTagSet `json:"TagSet,omitempty" xml:"TagSet,omitempty" type:"Repeated"`
-	// 第三可用区。
+	StorageUsed *int64 `json:"StorageUsed,omitempty" xml:"StorageUsed,omitempty"`
+	// The tag set.
+	TagSet []*DescribeDBInstanceAttributeResponseBodyDBInstanceTagSet `json:"TagSet,omitempty" xml:"TagSet,omitempty" type:"Repeated"`
+	// The third zone.
+	//
+	// example:
+	//
+	// cn-shenzhen-e
 	TertiaryZone *string `json:"TertiaryZone,omitempty" xml:"TertiaryZone,omitempty"`
-	// 拓扑类型：
+	// The topology type. Valid values:
 	//
-	// - **3azones**：三可用区；
+	// - **3azones**: three-zone deployment.
 	//
-	// - **1azone**：单可用区。
+	// - **1azone**: single-zone deployment.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 3azones
 	TopologyType *string `json:"TopologyType,omitempty" xml:"TopologyType,omitempty"`
+	// The instance type. Valid values:
+	//
+	// - **ReadWrite**: primary instance.
+	//
+	// - **ReadOnly**: read-only instance.
+	//
 	// example:
 	//
 	// ReadWrite
@@ -231,8 +443,15 @@ type DescribeDBInstanceAttributeResponseBodyDBInstance struct {
 	// example:
 	//
 	// vpc-xxxxx
-	VPCId     *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
+	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
+	// The vSwitch ID.
+	//
+	// example:
+	//
+	// vsw-********
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The zone in which the instance resides.
+	//
 	// example:
 	//
 	// cn-hangzhou-a
@@ -325,6 +544,10 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstance) GetDnNodeClassCode()
 
 func (s *DescribeDBInstanceAttributeResponseBodyDBInstance) GetDnNodeCount() *int32 {
 	return s.DnNodeCount
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstance) GetDnStorageSpace() *string {
+	return s.DnStorageSpace
 }
 
 func (s *DescribeDBInstanceAttributeResponseBodyDBInstance) GetEngine() *string {
@@ -579,6 +802,11 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstance) SetDnNodeCount(v int
 	return s
 }
 
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstance) SetDnStorageSpace(v string) *DescribeDBInstanceAttributeResponseBodyDBInstance {
+	s.DnStorageSpace = &v
+	return s
+}
+
 func (s *DescribeDBInstanceAttributeResponseBodyDBInstance) SetEngine(v string) *DescribeDBInstanceAttributeResponseBodyDBInstance {
 	s.Engine = &v
 	return s
@@ -810,14 +1038,20 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstance) Validate() error {
 }
 
 type DescribeDBInstanceAttributeResponseBodyDBInstanceConnAddrs struct {
+	// The endpoint.
+	//
 	// example:
 	//
 	// polardbx-xxx.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
+	// The connection port number.
+	//
 	// example:
 	//
 	// 3306
 	Port *int64 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The connection type. **VPC*	- indicates an internal network connection. **PUBLIC*	- indicates a public network connection.
+	//
 	// example:
 	//
 	// VPC
@@ -827,8 +1061,15 @@ type DescribeDBInstanceAttributeResponseBodyDBInstanceConnAddrs struct {
 	// example:
 	//
 	// vpc-xxxxxx
-	VPCId     *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
+	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
+	// The vSwitch ID.
+	//
+	// example:
+	//
+	// vsw-*********
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The internal CloudInstanceId within the VPC. You can ignore this parameter.
+	//
 	// example:
 	//
 	// pxc-zkralxpc5d****
@@ -902,20 +1143,38 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstanceConnAddrs) Validate() 
 }
 
 type DescribeDBInstanceAttributeResponseBodyDBInstanceDBNodes struct {
+	// The name of the compute node.
+	//
+	// example:
+	//
+	// pxc-i-********
 	ComputeNodeId *string `json:"ComputeNodeId,omitempty" xml:"ComputeNodeId,omitempty"`
+	// The name of the storage node.
+	//
 	// example:
 	//
 	// pxc-xdb-xxxxxx
 	DataNodeId *string `json:"DataNodeId,omitempty" xml:"DataNodeId,omitempty"`
-	Id         *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The logical node ID.
+	//
+	// example:
+	//
+	// pxi-*********
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The node specifications.
+	//
 	// example:
 	//
 	// polarx.x4.large.2e
 	NodeClass *string `json:"NodeClass,omitempty" xml:"NodeClass,omitempty"`
+	// The region ID of the node.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The zone in which the node resides.
+	//
 	// example:
 	//
 	// cn-hangzhou-a
@@ -1034,10 +1293,14 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstanceGdnMemberList) Validat
 }
 
 type DescribeDBInstanceAttributeResponseBodyDBInstanceTagSet struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// key2
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// value2

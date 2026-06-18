@@ -20,15 +20,22 @@ type iDescribeSqlFlashbackTaskListResponseBody interface {
 }
 
 type DescribeSqlFlashbackTaskListResponseBody struct {
+	// The data returned by the request.
 	Data *DescribeSqlFlashbackTaskListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The description of the request result.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 9B2F3840-5C98-475C-B269-2D5C3A31797C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the API request was successful.
+	//
 	// example:
 	//
 	// true
@@ -89,6 +96,7 @@ func (s *DescribeSqlFlashbackTaskListResponseBody) Validate() error {
 }
 
 type DescribeSqlFlashbackTaskListResponseBodyData struct {
+	// The flashback task objects.
 	SqlFlashbackTasks []*DescribeSqlFlashbackTaskListResponseBodyDataSqlFlashbackTasks `json:"SqlFlashbackTasks,omitempty" xml:"SqlFlashbackTasks,omitempty" type:"Repeated"`
 }
 
@@ -123,74 +131,122 @@ func (s *DescribeSqlFlashbackTaskListResponseBodyData) Validate() error {
 }
 
 type DescribeSqlFlashbackTaskListResponseBodyDataSqlFlashbackTasks struct {
+	// The name of the database on which the flashback task was performed.
+	//
 	// example:
 	//
 	// test
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The download URL of the result file.
+	//
 	// example:
 	//
 	// http://...
 	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
+	// The expiration time of the download URL. Unit: ms.
+	//
 	// example:
 	//
 	// 1569216270000
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The creation time of the flashback task in the database. Unit: ms.
+	//
 	// example:
 	//
 	// 1568611408000
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The last modification time of the flashback task in the database. Unit: ms.
+	//
 	// example:
 	//
 	// 1568611469000
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The primary key ID.
+	//
 	// example:
 	//
 	// 111
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The instance ID of the PolarDB-X instance.
+	//
 	// example:
 	//
 	// pxc-********
 	InstId *string `json:"InstId,omitempty" xml:"InstId,omitempty"`
+	// The execution progress of the flashback task. Value range: 1 to 100.
+	//
 	// example:
 	//
 	// 10
 	RecallProgress *string `json:"RecallProgress,omitempty" xml:"RecallProgress,omitempty"`
+	// The SQL flashback restoration type. Valid values:
+	//
+	// - **1**: Image-based restoration.
+	//
+	// - **2**: Reverse restoration.
+	//
 	// example:
 	//
 	// 0
 	RecallRestoreType *string `json:"RecallRestoreType,omitempty" xml:"RecallRestoreType,omitempty"`
+	// The status of the data recall task. Valid values:
+	//
+	// - **1**: In progress.
+	//
+	// - **2**: Completed.
+	//
 	// example:
 	//
 	// 1
 	RecallStatus *string `json:"RecallStatus,omitempty" xml:"RecallStatus,omitempty"`
+	// The recall type. Valid values:
+	//
+	// - **0**: exact match.
+	//
+	// - **1**: fuzzy match.
+	//
 	// example:
 	//
 	// 0
 	RecallType *string `json:"RecallType,omitempty" xml:"RecallType,omitempty"`
+	// The end time specified when the SQL flashback task was submitted. Unit: ms.
+	//
 	// example:
 	//
 	// 1568609597000
 	SearchEndTime *string `json:"SearchEndTime,omitempty" xml:"SearchEndTime,omitempty"`
+	// The start time specified when the SQL flashback task was submitted. Unit: ms.
+	//
 	// example:
 	//
 	// 1568609597000
 	SearchStartTime *string `json:"SearchStartTime,omitempty" xml:"SearchStartTime,omitempty"`
+	// The number of recovered data rows.
+	//
 	// example:
 	//
 	// 100
 	SqlCounter *string `json:"SqlCounter,omitempty" xml:"SqlCounter,omitempty"`
+	// The primary key value involved in the SQL statement.
+	//
 	// example:
 	//
 	// id
 	SqlPk *string `json:"SqlPk,omitempty" xml:"SqlPk,omitempty"`
+	// The type of the SQL statement. Valid values: INSERT, UPDATE, and DELETE. Multiple types are separated by commas (,).
+	//
 	// example:
 	//
 	// INSERT,UPDATE
 	SqlType *string `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
+	// The name of the table to which the data belongs.
+	//
 	// example:
 	//
 	// test
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The trace_id of the SQL statement.
+	//
 	// example:
 	//
 	// 13ed05705f801000

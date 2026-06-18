@@ -20,7 +20,10 @@ type iDescribeAvailableCrossRegionsResponseBody interface {
 }
 
 type DescribeAvailableCrossRegionsResponseBody struct {
+	// The parameter details.
 	Data []*DescribeAvailableCrossRegionsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The additional information returned. If the request is successful, success is returned. If the request fails, the corresponding error code is returned.
+	//
 	// example:
 	//
 	// *****
@@ -31,6 +34,8 @@ type DescribeAvailableCrossRegionsResponseBody struct {
 	//
 	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true
@@ -95,6 +100,7 @@ func (s *DescribeAvailableCrossRegionsResponseBody) Validate() error {
 }
 
 type DescribeAvailableCrossRegionsResponseBodyData struct {
+	// The instance ID.
 	Regions []*string `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
 }
 

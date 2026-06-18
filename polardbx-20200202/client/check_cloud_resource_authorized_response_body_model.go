@@ -16,7 +16,10 @@ type iCheckCloudResourceAuthorizedResponseBody interface {
 }
 
 type CheckCloudResourceAuthorizedResponseBody struct {
+	// The response body.
 	Data *CheckCloudResourceAuthorizedResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// A501A191-BD70-5E50-98A9-C2A486A82****
@@ -59,10 +62,20 @@ func (s *CheckCloudResourceAuthorizedResponseBody) Validate() error {
 }
 
 type CheckCloudResourceAuthorizedResponseBodyData struct {
+	// The authorization status. Valid values:
+	//
+	// - **0**: not authorized.
+	//
+	// - **1**: authorized.
+	//
+	// - **2**: KMS is not activated.
+	//
 	// example:
 	//
 	// 0
 	AuthorizationState *string `json:"AuthorizationState,omitempty" xml:"AuthorizationState,omitempty"`
+	// The global resource descriptor ARN (Alibaba Cloud Resource Name) of the authorized role. After the authorization of this role is complete, the related KMS can be used. Format: acs:ram::$accountID:role/$roleName.
+	//
 	// example:
 	//
 	// acs:ram::123456789012****:role/AliyunRdsInstanceEncryptionDefaultRole

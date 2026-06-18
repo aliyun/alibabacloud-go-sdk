@@ -17,8 +17,6 @@ type iUpdateCustinsParamResponseBody interface {
 
 type UpdateCustinsParamResponseBody struct {
 	Data *UpdateCustinsParamResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Id of the request
-	//
 	// example:
 	//
 	// 73559800-3c8c-****-bd40-99cfcff3fe1e

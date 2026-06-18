@@ -18,16 +18,22 @@ type iCreateBackupRequest interface {
 }
 
 type CreateBackupRequest struct {
+	// The backup type. Currently, only "0" is supported, which indicates fast backup.
+	//
 	// example:
 	//
 	// 0
 	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	// The name of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pxc-**************
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The region where the instance resides.
+	//
 	// This parameter is required.
 	//
 	// example:

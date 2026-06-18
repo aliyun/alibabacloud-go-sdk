@@ -20,15 +20,22 @@ type iCreateDataImportTaskResponseBody interface {
 }
 
 type CreateDataImportTaskResponseBody struct {
+	// The returned result.
 	Data *CreateDataImportTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The response message.
+	//
 	// example:
 	//
 	// *****
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 173CA69A-3513-591D-8A09-C1EA37CBE2D9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -89,6 +96,8 @@ func (s *CreateDataImportTaskResponseBody) Validate() error {
 }
 
 type CreateDataImportTaskResponseBodyData struct {
+	// The import task ID.
+	//
 	// example:
 	//
 	// etx-szr2rr6i*****

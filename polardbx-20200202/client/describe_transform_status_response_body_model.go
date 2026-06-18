@@ -16,6 +16,7 @@ type iDescribeTransformStatusResponseBody interface {
 }
 
 type DescribeTransformStatusResponseBody struct {
+	// The monitoring data.
 	Data *DescribeTransformStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -61,29 +62,50 @@ func (s *DescribeTransformStatusResponseBody) Validate() error {
 }
 
 type DescribeTransformStatusResponseBodyData struct {
+	// Indicates whether the task can be canceled.
+	//
 	// example:
 	//
 	// true
 	CanCancel *bool `json:"CanCancel,omitempty" xml:"CanCancel,omitempty"`
+	// Indicates whether the current task is completed.
+	//
 	// example:
 	//
 	// true
-	CanFinish     *bool `json:"CanFinish,omitempty" xml:"CanFinish,omitempty"`
-	CanSwitch     *bool `json:"CanSwitch,omitempty" xml:"CanSwitch,omitempty"`
+	CanFinish *bool `json:"CanFinish,omitempty" xml:"CanFinish,omitempty"`
+	// Indicates whether the migration switchover can be performed. Valid values:
+	//
+	// - **true**: The migration switchover can be performed.
+	//
+	// - **false**: The migration switchover cannot be performed.
+	//
+	// > This parameter is used by the one-click upgrade feature of PolarDB.
+	CanSwitch *bool `json:"CanSwitch,omitempty" xml:"CanSwitch,omitempty"`
+	// Indicates whether the switchover operation can be reverted.
 	CanUndoSwitch *bool `json:"CanUndoSwitch,omitempty" xml:"CanUndoSwitch,omitempty"`
+	// The Enterprise Edition instance name.
+	//
 	// example:
 	//
 	// pxc-*****
 	EnterpriseInsName *string `json:"EnterpriseInsName,omitempty" xml:"EnterpriseInsName,omitempty"`
+	// The current migration or upgrade phase.
+	//
 	// example:
 	//
 	// none
-	Phase         *string                `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// The report summary.
 	ReportSummary map[string]interface{} `json:"ReportSummary,omitempty" xml:"ReportSummary,omitempty"`
+	// The date when the data report was generated.
+	//
 	// example:
 	//
 	// 2025-09-02 16:52:47.0
 	ReportTime *int64 `json:"ReportTime,omitempty" xml:"ReportTime,omitempty"`
+	// The standard instance name.
+	//
 	// example:
 	//
 	// pxc-*****

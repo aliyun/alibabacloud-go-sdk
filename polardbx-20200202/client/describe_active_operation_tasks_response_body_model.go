@@ -22,19 +22,28 @@ type iDescribeActiveOperationTasksResponseBody interface {
 }
 
 type DescribeActiveOperationTasksResponseBody struct {
+	// The list of parameters.
 	Items []*DescribeActiveOperationTasksResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 12
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// xxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 23
@@ -108,101 +117,172 @@ func (s *DescribeActiveOperationTasksResponseBody) Validate() error {
 }
 
 type DescribeActiveOperationTasksResponseBodyItems struct {
+	// Indicates whether cancellation is allowed. Valid values:
+	//
+	// - **0**: Not allowed.
+	//
+	// - **1**: Allowed.
+	//
 	// example:
 	//
 	// 0
 	AllowCancel *string `json:"AllowCancel,omitempty" xml:"AllowCancel,omitempty"`
+	// Indicates whether modification is allowed. Valid values:
+	//
+	// - **0**: Not allowed.
+	//
+	// - **1**: Allowed.
+	//
 	// example:
 	//
 	// 0
 	AllowChange *string `json:"AllowChange,omitempty" xml:"AllowChange,omitempty"`
+	// The change level. This parameter can be ignored.
+	//
 	// example:
 	//
 	// Risk
 	ChangeLevel *string `json:"ChangeLevel,omitempty" xml:"ChangeLevel,omitempty"`
+	// The change level in English.
+	//
 	// example:
 	//
 	// Risk repairment
 	ChangeLevelEn *string `json:"ChangeLevelEn,omitempty" xml:"ChangeLevelEn,omitempty"`
+	// The change level in Chinese.
+	//
+	// example:
+	//
+	// 风险修复
 	ChangeLevelZh *string `json:"ChangeLevelZh,omitempty" xml:"ChangeLevelZh,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2021-06-15T16:00:00Z
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The current availability zone.
+	//
 	// example:
 	//
 	// cn-shanghai-et-a
 	CurrentAVZ *string `json:"CurrentAVZ,omitempty" xml:"CurrentAVZ,omitempty"`
+	// The database type.
+	//
 	// example:
 	//
 	// polarx
 	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	// The database version.
+	//
 	// example:
 	//
 	// 2.0
 	DbVersion *string `json:"DbVersion,omitempty" xml:"DbVersion,omitempty"`
+	// The deadline.
+	//
 	// example:
 	//
 	// 2021-06-15T16:00:00Z
 	Deadline *string `json:"Deadline,omitempty" xml:"Deadline,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The impact. This parameter is not returned.
+	//
 	// example:
 	//
 	// --
 	Impact *string `json:"Impact,omitempty" xml:"Impact,omitempty"`
+	// The impact description in English.
+	//
 	// example:
 	//
 	// Transient instance disconnection
 	ImpactEn *string `json:"ImpactEn,omitempty" xml:"ImpactEn,omitempty"`
+	// The impact description in Chinese.
+	//
+	// example:
+	//
+	// 中断
 	ImpactZh *string `json:"ImpactZh,omitempty" xml:"ImpactZh,omitempty"`
+	// The description.
+	//
 	// example:
 	//
 	// xxx
 	InsComment *string `json:"InsComment,omitempty" xml:"InsComment,omitempty"`
+	// The instance name.
+	//
 	// example:
 	//
 	// pxc-dd
 	InsName *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
+	// The modification time.
+	//
 	// example:
 	//
 	// 2021-06-15T16:00:00Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The preparation interval.
+	//
 	// example:
 	//
 	// 03:00:00
 	PrepareInterval *string `json:"PrepareInterval,omitempty" xml:"PrepareInterval,omitempty"`
+	// The region.
+	//
 	// example:
 	//
 	// cn-shanghai-et15-b01
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The result information. This parameter can be ignored.
+	//
 	// example:
 	//
 	// --
 	ResultInfo *string `json:"ResultInfo,omitempty" xml:"ResultInfo,omitempty"`
+	// The start time.
+	//
 	// example:
 	//
 	// 2021-06-15T16:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The status. Valid values:
+	//
+	// - **3**: Pending.
+	//
+	// - **4**: Running.
+	//
 	// example:
 	//
 	// 3
-	Status      *int64    `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The list of child instances.
 	SubInsNames []*string `json:"SubInsNames,omitempty" xml:"SubInsNames,omitempty" type:"Repeated"`
+	// The switchover time.
+	//
 	// example:
 	//
 	// 2021-06-15T16:00:00Z
 	SwitchTime *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
+	// The task type.
+	//
 	// example:
 	//
 	// rds_apsaradb_transfer
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// The task type in English. This parameter can be ignored.
+	//
 	// example:
 	//
 	// --
 	TaskTypeEn *string `json:"TaskTypeEn,omitempty" xml:"TaskTypeEn,omitempty"`
+	// The task type in Chinese. This parameter can be ignored.
+	//
 	// example:
 	//
 	// --

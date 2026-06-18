@@ -22,26 +22,42 @@ type iModifySecurityIpsRequest interface {
 }
 
 type ModifySecurityIpsRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pxc-hzjasd****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The name of the whitelist group of the instance.
+	//
 	// example:
 	//
 	// default
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The modification mode of the whitelist. Valid values:
+	//
+	// - 0: overwrites the whitelist group.
+	//
+	// - 1: adds a whitelist group.
+	//
+	// - 2: deletes a whitelist group.
+	//
 	// example:
 	//
 	// 1
 	ModifyMode *string `json:"ModifyMode,omitempty" xml:"ModifyMode,omitempty"`
+	// The region ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The list of IP addresses in the whitelist group. Separate multiple IP addresses with commas (,).
+	//
 	// This parameter is required.
 	//
 	// example:

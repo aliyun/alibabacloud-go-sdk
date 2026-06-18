@@ -22,26 +22,36 @@ type iCreateStoragePoolRequest interface {
 }
 
 type CreateStoragePoolRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pxc-bjxxxxxxxx
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The region ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg-xxxxx
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The list of storage pool DNs.
+	//
 	// example:
 	//
 	// node6
 	StoragePoolDNList *string `json:"StoragePoolDNList,omitempty" xml:"StoragePoolDNList,omitempty"`
+	// The name of the storage pool.
+	//
 	// example:
 	//
 	// test

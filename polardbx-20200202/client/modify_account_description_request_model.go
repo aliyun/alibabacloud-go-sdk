@@ -20,19 +20,30 @@ type iModifyAccountDescriptionRequest interface {
 }
 
 type ModifyAccountDescriptionRequest struct {
+	// The description of the account.
+	//
+	// example:
+	//
+	// 测试账号
 	AccountDescription *string `json:"AccountDescription,omitempty" xml:"AccountDescription,omitempty"`
+	// The name of the instance account.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// account
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The name of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pxc-hzjasd****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The region ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -16,6 +16,7 @@ type iDescribeCdcClassListResponseBody interface {
 }
 
 type DescribeCdcClassListResponseBody struct {
+	// The data struct.
 	Data *DescribeCdcClassListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -96,14 +97,20 @@ func (s *DescribeCdcClassListResponseBodyData) Validate() error {
 }
 
 type DescribeCdcClassListResponseBodyDataClassCodeList struct {
+	// The instance specification.
+	//
 	// example:
 	//
 	// polarx.n2.small.2e.cdc
 	ClassCode *string `json:"ClassCode,omitempty" xml:"ClassCode,omitempty"`
+	// The number of CPU cores.
+	//
 	// example:
 	//
 	// 2
 	CpuCore *string `json:"CpuCore,omitempty" xml:"CpuCore,omitempty"`
+	// The total memory size of the tenant. Unit: GB.
+	//
 	// example:
 	//
 	// 2048

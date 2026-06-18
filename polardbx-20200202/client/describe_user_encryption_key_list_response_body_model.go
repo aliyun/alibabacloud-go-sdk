@@ -16,7 +16,10 @@ type iDescribeUserEncryptionKeyListResponseBody interface {
 }
 
 type DescribeUserEncryptionKeyListResponseBody struct {
+	// The returned data.
 	Data *DescribeUserEncryptionKeyListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// FEA5DC20-6D8A-5979-97AA-FC57546ADC20
@@ -59,6 +62,7 @@ func (s *DescribeUserEncryptionKeyListResponseBody) Validate() error {
 }
 
 type DescribeUserEncryptionKeyListResponseBodyData struct {
+	// The key list.
 	KeyIds []*string `json:"KeyIds,omitempty" xml:"KeyIds,omitempty" type:"Repeated"`
 }
 

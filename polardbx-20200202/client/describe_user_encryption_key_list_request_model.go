@@ -16,10 +16,14 @@ type iDescribeUserEncryptionKeyListRequest interface {
 }
 
 type DescribeUserEncryptionKeyListRequest struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// pxc-hzjasd****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou

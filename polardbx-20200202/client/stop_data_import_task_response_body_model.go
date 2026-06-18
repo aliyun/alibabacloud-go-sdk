@@ -20,18 +20,26 @@ type iStopDataImportTaskResponseBody interface {
 }
 
 type StopDataImportTaskResponseBody struct {
+	// Indicates whether the import task is successful.
+	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The response message. >This parameter is empty if the request is successful. If the request fails, an error message is returned, such as an error code.
+	//
 	// example:
 	//
 	// *****
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 14036EBE-***-44DB-ACE9-AC6157D3A6FC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true

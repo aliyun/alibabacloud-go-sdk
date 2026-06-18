@@ -18,16 +18,22 @@ type iDescribeCdcClassListRequest interface {
 }
 
 type DescribeCdcClassListRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pxc-hzjasd****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The instance name.
+	//
 	// example:
 	//
 	// pxc-hzrh51fze****pon-cdc
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The region in which the instance resides.
+	//
 	// This parameter is required.
 	//
 	// example:

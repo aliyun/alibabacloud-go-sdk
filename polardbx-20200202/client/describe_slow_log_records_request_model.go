@@ -30,46 +30,66 @@ type iDescribeSlowLogRecordsRequest interface {
 }
 
 type DescribeSlowLogRecordsRequest struct {
+	// The node type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// polarx_cn
 	CharacterType *string `json:"CharacterType,omitempty" xml:"CharacterType,omitempty"`
+	// The instance name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pxc-bjxxxxxxxx
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The database name.
+	//
 	// example:
 	//
 	// testdb
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
+	// The node ID. You can specify multiple node IDs separated by commas (`,`). This parameter is required when you query storage nodes.
+	//
 	// example:
 	//
 	// pxc-i-mezcj4ejdz
 	DBNodeIds *string `json:"DBNodeIds,omitempty" xml:"DBNodeIds,omitempty"`
+	// The start time of the query. Specify the time in the YYYY-MM-ddTHH:mmZ format (UTC).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2024-11-22T02:22Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// The number of entries per page. Default value: 100.
+	//
+	// Limit: A maximum of 100 entries can be returned at a time.
+	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The start time of the query. Specify the time in the YYYY-MM-ddTHH:mmZ format (UTC).
+	//
 	// This parameter is required.
 	//
 	// example:

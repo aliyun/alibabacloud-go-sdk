@@ -16,10 +16,14 @@ type iCancelActiveOperationTasksResponseBody interface {
 }
 
 type CancelActiveOperationTasksResponseBody struct {
+	// The event IDs, separated by commas.
+	//
 	// example:
 	//
 	// 111,1223
 	Ids *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// AE4F6C34-065F-45AA-B5DC-4B8D816F6305

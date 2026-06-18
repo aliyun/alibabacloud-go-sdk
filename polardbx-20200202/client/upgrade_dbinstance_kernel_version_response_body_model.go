@@ -20,18 +20,26 @@ type iUpgradeDBInstanceKernelVersionResponseBody interface {
 }
 
 type UpgradeDBInstanceKernelVersionResponseBody struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// pxc-hzjasd****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// FEA5DC20-6D8A-5979-97AA-FC57546ADC20
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The target version number.
+	//
 	// example:
 	//
 	// polarx-kernel_5.4.7-16001481_xcluster-20200910
 	TargetMinorVersion *string `json:"TargetMinorVersion,omitempty" xml:"TargetMinorVersion,omitempty"`
+	// The backend task ID.
+	//
 	// example:
 	//
 	// 422922413

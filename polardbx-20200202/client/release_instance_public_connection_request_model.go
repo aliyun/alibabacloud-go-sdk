@@ -18,18 +18,24 @@ type iReleaseInstancePublicConnectionRequest interface {
 }
 
 type ReleaseInstancePublicConnectionRequest struct {
+	// The connection string of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pxc-hzjasdyuoo.polarx.rds.aliyuncs.com
 	CurrentConnectionString *string `json:"CurrentConnectionString,omitempty" xml:"CurrentConnectionString,omitempty"`
+	// The instance name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pxc-hzjasd****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou

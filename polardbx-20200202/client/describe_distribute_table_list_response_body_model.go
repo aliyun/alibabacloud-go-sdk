@@ -20,15 +20,22 @@ type iDescribeDistributeTableListResponseBody interface {
 }
 
 type DescribeDistributeTableListResponseBody struct {
+	// The data struct.
 	Data *DescribeDistributeTableListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The response message. "success" is returned if the request is successful. Otherwise, an error code is returned.
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// C458B1E8-1683-3645-B154-6BA32080EEA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true
@@ -89,6 +96,7 @@ func (s *DescribeDistributeTableListResponseBody) Validate() error {
 }
 
 type DescribeDistributeTableListResponseBodyData struct {
+	// The list of tables.
 	Tables []*DescribeDistributeTableListResponseBodyDataTables `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
 }
 
@@ -123,18 +131,26 @@ func (s *DescribeDistributeTableListResponseBodyData) Validate() error {
 }
 
 type DescribeDistributeTableListResponseBodyDataTables struct {
+	// The data key.
+	//
 	// example:
 	//
 	// id
 	DbKey *string `json:"DbKey,omitempty" xml:"DbKey,omitempty"`
+	// The table name.
+	//
 	// example:
 	//
 	// sbtest1
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The table type.
+	//
 	// example:
 	//
 	// multi
 	TableType *string `json:"TableType,omitempty" xml:"TableType,omitempty"`
+	// The table key.
+	//
 	// example:
 	//
 	// “”

@@ -22,19 +22,28 @@ type iDescribeBinaryLogListResponseBody interface {
 }
 
 type DescribeBinaryLogListResponseBody struct {
+	// The list of binlog files.
 	LogList []*DescribeBinaryLogListResponseBodyLogList `json:"LogList,omitempty" xml:"LogList,omitempty" type:"Repeated"`
+	// The page number of the current query.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of binlog entries displayed on the current page.
+	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 2DFF784E-DC31-5BBC-9B25-9261CD9E0AA9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of binlog files found.
+	//
 	// example:
 	//
 	// 100
@@ -108,46 +117,78 @@ func (s *DescribeBinaryLogListResponseBody) Validate() error {
 }
 
 type DescribeBinaryLogListResponseBodyLogList struct {
+	// The start time of the log.
+	//
 	// example:
 	//
 	// 2021-09-09 10:27:46
 	BeginTime *string `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	// The creation time of the file.
+	//
 	// example:
 	//
 	// 2021-09-09 10:27:46
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The download link for the file. The link is valid for 2 days.
+	//
 	// example:
 	//
 	// http://polarx-cdc-binlog-cn-hangzhou.oss-cn-hangzhou.aliyuncs.com/polardbx_cdc/pxc-hzfd132143sfds1/binlog.000001?Expires=1636469502&OSSAccessKeyId=LT13fds12dsafddsf&Signature=fdpm%bdsfadsa%2F%bdsafdsaf%3D
 	DownloadLink *string `json:"DownloadLink,omitempty" xml:"DownloadLink,omitempty"`
+	// The end time of the current binlog.
+	//
 	// example:
 	//
 	// 2021-11-09 10:27:46
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The name of the binlog file.
+	//
 	// example:
 	//
 	// binlog.000001
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The unique ID of the current record.
+	//
 	// example:
 	//
 	// 100
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The size of the current log file.
+	//
 	// example:
 	//
 	// 536870912
 	LogSize *int64 `json:"LogSize,omitempty" xml:"LogSize,omitempty"`
+	// The last modification time.
+	//
 	// example:
 	//
 	// 2021-11-09 10:27:46
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The purge status. Valid values:
+	//
+	// - 0: Not deleted.
+	//
+	// - 1: Deleted.
+	//
 	// example:
 	//
 	// 0
 	PurgeStatus *int32 `json:"PurgeStatus,omitempty" xml:"PurgeStatus,omitempty"`
+	// The backup host.
+	//
 	// example:
 	//
 	// 10.110.88.9
 	UploadHost *string `json:"UploadHost,omitempty" xml:"UploadHost,omitempty"`
+	// The backup status. Valid values:
+	//
+	// - 0: Not backed up.
+	//
+	// - 1: Backing up.
+	//
+	// - 2: Backed up.
+	//
 	// example:
 	//
 	// 2

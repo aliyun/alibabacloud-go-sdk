@@ -18,14 +18,20 @@ type iDescribeActiveOperationTaskCountRequest interface {
 }
 
 type DescribeActiveOperationTaskCountRequest struct {
+	// A reserved parameter. You do not need to specify this parameter.
+	//
 	// example:
 	//
 	// Category
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The product. Default value: polarx.
+	//
 	// example:
 	//
 	// polarx
 	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:

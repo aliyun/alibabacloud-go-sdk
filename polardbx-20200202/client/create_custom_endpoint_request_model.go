@@ -28,44 +28,62 @@ type iCreateCustomEndpointRequest interface {
 }
 
 type CreateCustomEndpointRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pxc-hzjasd****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The name of the access control instance. The name must be 2 to 128 characters in length and must start with a letter or a Chinese character. The name can contain digits, underscores (_), and hyphens (-).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ext-win-live-17
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Specifies whether a node automatically joins the cluster and starts providing services after the node is added or recovered.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// true
 	NodeAutoEnter *bool `json:"NodeAutoEnter,omitempty" xml:"NodeAutoEnter,omitempty"`
+	// The IDs of the monitored nodes when RemindUnit (object type) is set to NODE (node). Separate multiple IDs with commas (,). A maximum of 50 nodes can be monitored per rule.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// r-bp1l5kfgw8****c3iv
 	NodeIds *string `json:"NodeIds,omitempty" xml:"NodeIds,omitempty"`
+	// To query the metrics of a read-only node in a cloud-native read/write splitting architecture instance, set this parameter to **READONLY*	- and specify the **NodeId*	- parameter.
+	//
+	// >  In other cases, you do not need to specify this parameter or you can set it to **MASTER**.
+	//
 	// example:
 	//
 	// READONLY
 	NodeRole *string `json:"NodeRole,omitempty" xml:"NodeRole,omitempty"`
+	// The region in which the instance resides.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The vSwitch ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// vsw-*********
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The ID of the virtual private cloud (VPC) in which the endpoint resides.
+	//
 	// This parameter is required.
 	//
 	// example:

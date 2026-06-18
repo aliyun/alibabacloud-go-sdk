@@ -30,12 +30,16 @@ type iAllocateInstancePublicConnectionRequest interface {
 }
 
 type AllocateInstancePublicConnectionRequest struct {
+	// The prefix of the public endpoint.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pxc-**************
 	ConnectionStringPrefix *string `json:"ConnectionStringPrefix,omitempty" xml:"ConnectionStringPrefix,omitempty"`
+	// The instance name.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -48,12 +52,16 @@ type AllocateInstancePublicConnectionRequest struct {
 	InstanceClusterName *string `json:"InstanceClusterName,omitempty" xml:"InstanceClusterName,omitempty"`
 	OwnerAccount        *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId             *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The port of the public endpoint.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 3306
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The region in which the instance resides.
+	//
 	// example:
 	//
 	// cn-hangzhou

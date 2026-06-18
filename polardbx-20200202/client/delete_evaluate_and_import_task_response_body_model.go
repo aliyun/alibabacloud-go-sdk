@@ -20,18 +20,26 @@ type iDeleteEvaluateAndImportTaskResponseBody interface {
 }
 
 type DeleteEvaluateAndImportTaskResponseBody struct {
+	// Indicates whether the task is deleted.
+	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message. > This parameter is empty when the request succeeds. If the request fails, an exception message is returned, such as an error code.
+	//
 	// example:
 	//
 	// msg
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 14036EBE-***-44DB-ACE9-AC6157D3A6FC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true

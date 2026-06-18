@@ -16,7 +16,10 @@ type iUpdateDBInstanceTDEResponseBody interface {
 }
 
 type UpdateDBInstanceTDEResponseBody struct {
+	// The response information.
 	Data *UpdateDBInstanceTDEResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// FEA5DC20-6D8A-5979-97AA-FC57546ADC20
@@ -59,6 +62,8 @@ func (s *UpdateDBInstanceTDEResponseBody) Validate() error {
 }
 
 type UpdateDBInstanceTDEResponseBodyData struct {
+	// The backend task ID.
+	//
 	// example:
 	//
 	// 42292****

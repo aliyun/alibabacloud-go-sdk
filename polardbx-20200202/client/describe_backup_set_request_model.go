@@ -20,19 +20,30 @@ type iDescribeBackupSetRequest interface {
 }
 
 type DescribeBackupSetRequest struct {
+	// The backup set ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 111
 	BackupSetId *string `json:"BackupSetId,omitempty" xml:"BackupSetId,omitempty"`
+	// The name of the PolarDB-X instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pxc-htri0ori2r****
-	DBInstanceName  *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The destination region for cross-region backup.
+	//
+	// example:
+	//
+	// cn-shanghai
 	DestCrossRegion *string `json:"DestCrossRegion,omitempty" xml:"DestCrossRegion,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou

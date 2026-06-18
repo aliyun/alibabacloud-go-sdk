@@ -20,20 +20,32 @@ type iDescribeAccountListRequest interface {
 }
 
 type DescribeAccountListRequest struct {
+	// The name of the account. Specify this parameter to query a specific account.
+	//
 	// example:
 	//
 	// testaccount
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The type of the account. Specify this parameter to query accounts of a specific type. If you set this parameter to null, all accounts are returned.
+	//
+	// - Before three-role mode is enabled: 0 indicates a standard account, and 1 indicates a privileged user account.
+	//
+	// - After three-role mode is enabled: 0 indicates a standard account, 2 indicates a system administrator account, 3 indicates a security administrator account, and 4 indicates an audit administrator account.
+	//
 	// example:
 	//
 	// 0
 	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	// The name of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pxc-********
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The region where the instance resides.
+	//
 	// This parameter is required.
 	//
 	// example:

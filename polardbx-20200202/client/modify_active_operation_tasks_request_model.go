@@ -20,22 +20,34 @@ type iModifyActiveOperationTasksRequest interface {
 }
 
 type ModifyActiveOperationTasksRequest struct {
+	// The O&M event ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	Ids *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+	// Specifies whether to immediately execute the event. Valid values:
+	//
+	// - 1: immediately execute
+	//
+	// - 0: execute at the specified time.
+	//
 	// example:
 	//
 	// 1
 	ImmediateStart *int64 `json:"ImmediateStart,omitempty" xml:"ImmediateStart,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The switchover start time in the YYYY-MM-DDThh:mm:ssZ format.
+	//
 	// example:
 	//
 	// 2021-08-15T12:00:00Z

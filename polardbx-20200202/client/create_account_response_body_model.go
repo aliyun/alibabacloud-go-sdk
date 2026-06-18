@@ -18,14 +18,20 @@ type iCreateAccountResponseBody interface {
 }
 
 type CreateAccountResponseBody struct {
+	// The error message. This parameter is empty if the request is successful.
+	//
 	// example:
 	//
 	// ****
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 9B2F3840-5C98-475C-B269-2D5C3A31797C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true

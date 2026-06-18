@@ -16,10 +16,14 @@ type iDescribeColumnarVersionListRequest interface {
 }
 
 type DescribeColumnarVersionListRequest struct {
+	// The name of the instance.
+	//
 	// example:
 	//
 	// pxc-hzjasd****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The region in which the instance resides.
+	//
 	// example:
 	//
 	// cn-hangzhou

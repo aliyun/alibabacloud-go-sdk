@@ -20,7 +20,10 @@ type iDescribeColumnarInfoResponseBody interface {
 }
 
 type DescribeColumnarInfoResponseBody struct {
+	// The data struct.
 	Data *DescribeColumnarInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -33,6 +36,8 @@ type DescribeColumnarInfoResponseBody struct {
 	//
 	// 14036EBE-****-44DB-ACE9-AC6157D3A6FC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -95,34 +100,47 @@ func (s *DescribeColumnarInfoResponseBody) Validate() error {
 }
 
 type DescribeColumnarInfoResponseBodyData struct {
+	// The number of days that binlogs are retained.
+	//
 	// example:
 	//
 	// 30
 	BinlogPersistTime *int32 `json:"BinlogPersistTime,omitempty" xml:"BinlogPersistTime,omitempty"`
+	// The binlog size.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 524288000
 	BinlogSize *int32 `json:"BinlogSize,omitempty" xml:"BinlogSize,omitempty"`
+	// The checksum switch.
+	//
 	// example:
 	//
 	// ON
 	CheckSumSwitch *string `json:"CheckSumSwitch,omitempty" xml:"CheckSumSwitch,omitempty"`
+	// The instance specifications.
+	//
 	// example:
 	//
 	// polarx.n8.medium.col
 	ClassCode *string `json:"ClassCode,omitempty" xml:"ClassCode,omitempty"`
+	// The new column store version.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// polarx-col-kernel-5.4.20-20250819_17555906
 	ColumnarNewVersion *string `json:"ColumnarNewVersion,omitempty" xml:"ColumnarNewVersion,omitempty"`
+	// The column store version.
+	//
 	// example:
 	//
 	// polarx-col-kernel-5.4.20-20250819_17555906
-	ColumnarVersion      *string                                                     `json:"ColumnarVersion,omitempty" xml:"ColumnarVersion,omitempty"`
+	ColumnarVersion *string `json:"ColumnarVersion,omitempty" xml:"ColumnarVersion,omitempty"`
+	// The instance list.
 	InstanceTopologyList []*DescribeColumnarInfoResponseBodyDataInstanceTopologyList `json:"InstanceTopologyList,omitempty" xml:"InstanceTopologyList,omitempty" type:"Repeated"`
 	// server id
 	//
@@ -228,14 +246,19 @@ func (s *DescribeColumnarInfoResponseBodyData) Validate() error {
 }
 
 type DescribeColumnarInfoResponseBodyDataInstanceTopologyList struct {
+	// The instance type description.
+	//
 	// example:
 	//
 	// ***
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The instance name.
+	//
 	// example:
 	//
 	// pxc-***
-	InstanceName  *string                                                                  `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The node array.
 	PhysicalNodes []*DescribeColumnarInfoResponseBodyDataInstanceTopologyListPhysicalNodes `json:"PhysicalNodes,omitempty" xml:"PhysicalNodes,omitempty" type:"Repeated"`
 }
 
@@ -288,26 +311,38 @@ func (s *DescribeColumnarInfoResponseBodyDataInstanceTopologyList) Validate() er
 }
 
 type DescribeColumnarInfoResponseBodyDataInstanceTopologyListPhysicalNodes struct {
+	// The zone in which the instance resides.
+	//
 	// example:
 	//
 	// cn-hangzhou-h
 	AZone *string `json:"AZone,omitempty" xml:"AZone,omitempty"`
+	// The disk size, in MB.
+	//
 	// example:
 	//
 	// 204800
 	Disk *int32 `json:"Disk,omitempty" xml:"Disk,omitempty"`
+	// The instance specifications.
+	//
 	// example:
 	//
 	// polarx.n8.medium.col
 	NodeClass *string `json:"NodeClass,omitempty" xml:"NodeClass,omitempty"`
+	// The node ID.
+	//
 	// example:
 	//
 	// ***
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The instance status.
+	//
 	// example:
 	//
 	// ACTIVATION
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The instance version.
+	//
 	// example:
 	//
 	// polarx-col-kernel-5.4.20-20250819_17555906

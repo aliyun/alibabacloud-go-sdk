@@ -14,6 +14,8 @@ type iReleaseColdDataVolumeResponseBody interface {
 }
 
 type ReleaseColdDataVolumeResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// EA330983-C895-57C0-AE82-5A63106EBB10

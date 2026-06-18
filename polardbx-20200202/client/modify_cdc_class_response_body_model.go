@@ -16,6 +16,7 @@ type iModifyCdcClassResponseBody interface {
 }
 
 type ModifyCdcClassResponseBody struct {
+	// The data struct.
 	Data *ModifyCdcClassResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -61,6 +62,8 @@ func (s *ModifyCdcClassResponseBody) Validate() error {
 }
 
 type ModifyCdcClassResponseBodyData struct {
+	// The task ID.
+	//
 	// example:
 	//
 	// 2209883

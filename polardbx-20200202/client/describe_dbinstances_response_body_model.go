@@ -22,19 +22,28 @@ type iDescribeDBInstancesResponseBody interface {
 }
 
 type DescribeDBInstancesResponseBody struct {
+	// The list of instances.
 	DBInstances []*DescribeDBInstancesResponseBodyDBInstances `json:"DBInstances,omitempty" xml:"DBInstances,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// C458B1E8-1683-3645-B154-6BA32080EEA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 30
@@ -108,141 +117,304 @@ func (s *DescribeDBInstancesResponseBody) Validate() error {
 }
 
 type DescribeDBInstancesResponseBodyDBInstances struct {
+	// The name of the log node.
+	//
 	// example:
 	//
 	// pxc-c-dmlgit****
 	CdcInstanceName *string `json:"CdcInstanceName,omitempty" xml:"CdcInstanceName,omitempty"`
+	// The CN node specifications. Valid values:
+	//
+	// - **polarx.x4.medium.2e**: 2 cores, 8 GB memory
+	//
+	// - **polarx.x4.large.2e**: 4 cores, 16 GB memory
+	//
+	// - **polarx.x8.large.2e**: 4 cores, 32 GB memory
+	//
+	// - **polarx.x4.xlarge.2e**: 8 cores, 32 GB memory
+	//
+	// - **polarx.x8.xlarge.2e**: 8 cores, 64 GB memory
+	//
+	// - **polarx.x4.2xlarge.2e**: 16 cores, 64 GB memory
+	//
+	// - **polarx.x8.2xlarge.2e**: 16 cores, 128 GB memory
+	//
+	// - **polarx.x4.4xlarge.2e**: 32 cores, 128 GB memory
+	//
+	// - **polarx.x8.4xlarge.2e**: 32 cores, 256 GB memory
+	//
+	// - **polarx.st.8xlarge.2e**: 60 cores, 470 GB memory
+	//
+	// - **polarx.st.12xlarge.2e**: 90 cores, 720 GB memory.
+	//
 	// example:
 	//
 	// polarx.x4.large.2e
 	CnNodeClassCode *string `json:"CnNodeClassCode,omitempty" xml:"CnNodeClassCode,omitempty"`
+	// The number of CN nodes.
+	//
 	// example:
 	//
 	// 2
-	CnNodeCount             *int32    `json:"CnNodeCount,omitempty" xml:"CnNodeCount,omitempty"`
-	ColumnarInstanceName    *string   `json:"ColumnarInstanceName,omitempty" xml:"ColumnarInstanceName,omitempty"`
+	CnNodeCount *int32 `json:"CnNodeCount,omitempty" xml:"CnNodeCount,omitempty"`
+	// The name of the column store engine instance.
+	//
+	// example:
+	//
+	// xxxxxxxx
+	ColumnarInstanceName *string `json:"ColumnarInstanceName,omitempty" xml:"ColumnarInstanceName,omitempty"`
+	// The column store read-only instance information.
 	ColumnarReadDBInstances []*string `json:"ColumnarReadDBInstances,omitempty" xml:"ColumnarReadDBInstances,omitempty" type:"Repeated"`
+	// The commodity code.
+	//
 	// example:
 	//
 	// drds_polarxpre_public_cn
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	// Indicates whether the instance contains the multi-stream log service. Valid values:
+	//
+	// - **true**: The instance contains the multi-stream log service.
+	//
+	// - **false**: The instance does not contain the multi-stream log service.
+	//
 	// example:
 	//
 	// true
 	ContainBinlogX *bool   `json:"ContainBinlogX,omitempty" xml:"ContainBinlogX,omitempty"`
 	CpuType        *string `json:"CpuType,omitempty" xml:"CpuType,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2021-11-01T03:49:50.000+0000
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The name of the database instance.
+	//
 	// example:
 	//
 	// pxc-xxxxx
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The database type.
+	//
 	// example:
 	//
 	// polarx
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
+	// The database version.
+	//
 	// example:
 	//
 	// 5.7
-	DBVersion   *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
+	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
+	// The database description.
+	//
+	// example:
+	//
+	// 测试
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The DN node specifications. Valid values:
+	//
+	// - **mysql.n2.medium.25**: 2 cores, 4 GB memory
+	//
+	// - **mysql.n4.medium.25**: 2 cores, 8 GB memory
+	//
+	// - **mysql.x8.medium.25**: 2 cores, 16 GB memory
+	//
+	// - **mysql.n2.large.25**: 4 cores, 8 GB memory
+	//
+	// - **mysql.n4.large.25**: 4 cores, 16 GB memory
+	//
+	// - **mysql.x8.large.25**: 4 cores, 32 GB memory
+	//
+	// - **mysql.n2.xlarge.25**: 8 cores, 16 GB memory
+	//
+	// - **mysql.n4.xlarge.25**: 8 cores, 32 GB memory
+	//
+	// - **mysql.x8.xlarge.25**: 8 cores, 64 GB memory
+	//
+	// - **mysql.n4.2xlarge.25**: 16 cores, 64 GB memory
+	//
+	// - **mysql.x8.2xlarge.25**: 16 cores, 128 GB memory
+	//
+	// - **mysql.x4.4xlarge.25**: 32 cores, 128 GB memory
+	//
+	// - **mysql.x8.4xlarge.25**: 32 cores, 256 GB memory
+	//
+	// - **mysql.st.8xlarge.25**: 60 cores, 470 GB memory
+	//
+	// - **mysql.st.12xlarge.25**: 90 cores, 720 GB memory.
+	//
 	// example:
 	//
 	// mysql.n4.medium.25
 	DnNodeClassCode *string `json:"DnNodeClassCode,omitempty" xml:"DnNodeClassCode,omitempty"`
+	// The number of DN nodes.
+	//
 	// example:
 	//
 	// 2
 	DnNodeCount *int32 `json:"DnNodeCount,omitempty" xml:"DnNodeCount,omitempty"`
+	// The engine type.
+	//
 	// example:
 	//
 	// polarx
 	Engine        *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	// The expiration time.
+	//
 	// example:
 	//
 	// 2021-12-01T16:00:00.000+0000
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// Indicates whether the instance has expired.
+	//
 	// example:
 	//
 	// false
 	Expired *bool `json:"Expired,omitempty" xml:"Expired,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
-	// pxc-hzr2yeov9jmg3z
+	// pxc-hzr2yeov******
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Indicates whether the instance is locked.
+	//
 	// example:
 	//
 	// Unlock
-	LockMode   *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
+	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
+	// The reason why the instance is locked.
+	//
+	// example:
+	//
+	// 欠费
 	LockReason *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
+	// The current Milvus version.
+	//
 	// example:
 	//
 	// polarx-kernel_5.4.12-16349923_xcluster-20210926
 	MinorVersion *string `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
+	// The network type.
+	//
 	// example:
 	//
 	// VPC
 	Network *string `json:"Network,omitempty" xml:"Network,omitempty"`
+	// The node specifications.
+	//
 	// example:
 	//
 	// polarx.x4.large.2e
 	NodeClass *string `json:"NodeClass,omitempty" xml:"NodeClass,omitempty"`
+	// The number of nodes.
+	//
 	// example:
 	//
 	// 5
-	NodeCount *int32                                             `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
-	Nodes     []*DescribeDBInstancesResponseBodyDBInstancesNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
+	NodeCount *int32 `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
+	// The list of nodes.
+	Nodes []*DescribeDBInstancesResponseBodyDBInstancesNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
+	// The billing method of the instance. Valid values:
+	//
+	// - **Postpaid**: pay-as-you-go.
+	//
+	// - **Prepaid**: subscription.
+	//
 	// example:
 	//
 	// Prepaid
 	PayType           *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	PrimaryInstanceId *string `json:"PrimaryInstanceId,omitempty" xml:"PrimaryInstanceId,omitempty"`
-	// 主可用区。
+	// The primary zone.
 	//
 	// This parameter is required.
-	PrimaryZone     *string   `json:"PrimaryZone,omitempty" xml:"PrimaryZone,omitempty"`
+	//
+	// example:
+	//
+	// cn-hangzhou-j
+	PrimaryZone *string `json:"PrimaryZone,omitempty" xml:"PrimaryZone,omitempty"`
+	// The list of read-only instances.
 	ReadDBInstances []*string `json:"ReadDBInstances,omitempty" xml:"ReadDBInstances,omitempty" type:"Repeated"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg-xxxxxx
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// 次可用区。
+	// The secondary zone.
+	//
+	// example:
+	//
+	// cn-hangzhou-l
 	SecondaryZone *string `json:"SecondaryZone,omitempty" xml:"SecondaryZone,omitempty"`
+	// The instance edition. Valid values:
+	//
+	// - **enterprise**: Enterprise Edition.
+	//
+	// - **standard**: Standard Edition.
+	//
 	// example:
 	//
 	// enterprise
 	Series *string `json:"Series,omitempty" xml:"Series,omitempty"`
+	// The instance status. For more information, see [Instance status table](https://help.aliyun.com/document_detail/339826.html).
+	//
 	// example:
 	//
 	// Running
 	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	// The storage usage.
+	//
 	// example:
 	//
 	// 40658534400
 	StorageUsed *int64 `json:"StorageUsed,omitempty" xml:"StorageUsed,omitempty"`
+	// Indicates whether the instance supports multi-stream. Valid values:
+	//
+	// - **true**: Yes.
+	//
+	// - **false**: No.
+	//
 	// example:
 	//
 	// true
-	SupportBinlogX *bool                                               `json:"SupportBinlogX,omitempty" xml:"SupportBinlogX,omitempty"`
-	TagSet         []*DescribeDBInstancesResponseBodyDBInstancesTagSet `json:"TagSet,omitempty" xml:"TagSet,omitempty" type:"Repeated"`
-	// 第三可用区。
+	SupportBinlogX *bool `json:"SupportBinlogX,omitempty" xml:"SupportBinlogX,omitempty"`
+	// The set of tags.
+	TagSet []*DescribeDBInstancesResponseBodyDBInstancesTagSet `json:"TagSet,omitempty" xml:"TagSet,omitempty" type:"Repeated"`
+	// The third zone in the three-zone deployment.
+	//
+	// example:
+	//
+	// cn-hangzhou-k
 	TertiaryZone *string `json:"TertiaryZone,omitempty" xml:"TertiaryZone,omitempty"`
-	// 拓扑类型：
+	// The topology type. Valid values:
 	//
-	// - **3azones**：三可用区；
+	// - **3azones**: three-zone deployment.
 	//
-	// - **1azone**：单可用区。
+	// - **1azone**: single-zone deployment.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 3azones
 	TopologyType *string `json:"TopologyType,omitempty" xml:"TopologyType,omitempty"`
+	// The instance type. Valid values:
+	//
+	// - **ReadWrite**: primary instance.
+	//
+	// - **ReadOnly**: read-only instance.
+	//
 	// example:
 	//
 	// ReadWrite
@@ -253,6 +425,8 @@ type DescribeDBInstancesResponseBodyDBInstances struct {
 	//
 	// VPCID
 	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
+	// The zone ID.
+	//
 	// example:
 	//
 	// cn-hangzhou-g
@@ -715,18 +889,29 @@ func (s *DescribeDBInstancesResponseBodyDBInstances) Validate() error {
 }
 
 type DescribeDBInstancesResponseBodyDBInstancesNodes struct {
+	// The instance specifications.
+	//
 	// example:
 	//
 	// polarx.x4.large.2e
 	ClassCode *string `json:"ClassCode,omitempty" xml:"ClassCode,omitempty"`
-	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The node ID.
+	//
+	// example:
+	//
+	// pxi-zd89wrzqh******
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// if can be null:
 	// true
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou-g-aliyun
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The zone ID.
+	//
 	// example:
 	//
 	// cn-hangzhou-g
@@ -791,10 +976,14 @@ func (s *DescribeDBInstancesResponseBodyDBInstancesNodes) Validate() error {
 }
 
 type DescribeDBInstancesResponseBodyDBInstancesTagSet struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// key1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// value1

@@ -18,14 +18,24 @@ type iModifyDBInstanceDescriptionRequest interface {
 }
 
 type ModifyDBInstanceDescriptionRequest struct {
+	// The description of the instance.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 测试实例
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pxc-hzjasd****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:

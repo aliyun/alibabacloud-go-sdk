@@ -26,8 +26,6 @@ type CreateGdnStandbyMemberResponseBody struct {
 	//
 	// 12345
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// Id of the request
-	//
 	// example:
 	//
 	// 173CA69A-3513-591D-8A09-C1EA37CBE2D9
