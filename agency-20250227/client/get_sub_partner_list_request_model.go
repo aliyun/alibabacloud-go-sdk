@@ -20,7 +20,7 @@ type iGetSubPartnerListRequest interface {
 }
 
 type GetSubPartnerListRequest struct {
-	// Page index, starting from the first page.
+	// The page number, starting from 1.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type GetSubPartnerListRequest struct {
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// Number of entries returned per page. Maximum value supported is 100.
+	// The number of entries per page. Maximum value: 100.
 	//
 	// This parameter is required.
 	//
@@ -36,13 +36,13 @@ type GetSubPartnerListRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Tier-2 partner company name
+	// The company name of the secondary partner.
 	//
 	// example:
 	//
 	// xxx有限公司
 	SubPartnerCompanyName *string `json:"SubPartnerCompanyName,omitempty" xml:"SubPartnerCompanyName,omitempty"`
-	// Tier-2 partner PID
+	// The PID of the secondary partner.
 	//
 	// example:
 	//

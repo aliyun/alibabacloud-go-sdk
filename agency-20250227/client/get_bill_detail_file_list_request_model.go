@@ -26,7 +26,7 @@ type iGetBillDetailFileListRequest interface {
 }
 
 type GetBillDetailFileListRequest struct {
-	// Month
+	// The billing month.
 	//
 	// This parameter is required.
 	//
@@ -34,37 +34,37 @@ type GetBillDetailFileListRequest struct {
 	//
 	// 202502
 	BillMonth *string `json:"BillMonth,omitempty" xml:"BillMonth,omitempty"`
-	// The AccessKeyID used to upload files to OSS.
+	// The AccessKey ID used to upload files to OSS.
 	//
 	// example:
 	//
 	// yourAccessKeyID
 	OssAccessKeyId *string `json:"OssAccessKeyId,omitempty" xml:"OssAccessKeyId,omitempty"`
-	// The AccessKeySecret used to upload files to OSS.
+	// The AccessKey secret used to upload files to OSS.
 	//
 	// example:
 	//
 	// yourAccessKeySecret
 	OssAccessKeySecret *string `json:"OssAccessKeySecret,omitempty" xml:"OssAccessKeySecret,omitempty"`
-	// OSS bucket.
+	// The OSS bucket.
 	//
 	// example:
 	//
 	// yourBucketName
 	OssBucketName *string `json:"OssBucketName,omitempty" xml:"OssBucketName,omitempty"`
-	// The Region of the edge zone where the OSS bucket corresponding to the file sharing is located.
+	// The endpoint of the region where the OSS bucket for file sharing is located.
 	//
 	// example:
 	//
 	// http://oss-cn-beijing.aliyuncs.com
 	OssEndpoint *string `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
-	// The Region to which the current OSS bucket belongs.
+	// The region where the OSS bucket is located.
 	//
 	// example:
 	//
 	// cn-beijing
 	OssRegion *string `json:"OssRegion,omitempty" xml:"OssRegion,omitempty"`
-	// STS token used to upload files to OSS
+	// The STS token used to upload files to OSS.
 	//
 	// example:
 	//

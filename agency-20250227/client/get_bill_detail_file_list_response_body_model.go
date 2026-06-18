@@ -24,21 +24,21 @@ type iGetBillDetailFileListResponseBody interface {
 }
 
 type GetBillDetailFileListResponseBody struct {
-	// Status code
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Returned data
+	// The returned data.
 	Data []*GetBillDetailFileListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Prompt message
+	// The message.
 	//
 	// example:
 	//
 	// 成功
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Same as message
+	// Same as Message.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type GetBillDetailFileListResponseBody struct {
 	//
 	// 210bc4b416874189683843905d9f9a
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation succeeded.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -134,31 +134,37 @@ func (s *GetBillDetailFileListResponseBody) Validate() error {
 }
 
 type GetBillDetailFileListResponseBodyData struct {
-	// Month
+	// The billing month.
 	//
 	// example:
 	//
 	// 202502
 	BillMonth *string `json:"BillMonth,omitempty" xml:"BillMonth,omitempty"`
-	// File Name
+	// The file name.
 	//
 	// example:
 	//
 	// 账单202502021112
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// File URL
+	// The file URL.
 	//
 	// example:
 	//
 	// aps.ailyun.com/file/download?resourceId=1234&type=1
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	// OSS file push status. 1: Pending, 2: Processing, 3: Succeeded
+	// The OSS file push status. Valid values:
+	//
+	// - 1: pending
+	//
+	// - 2: processing
+	//
+	// - 3: completed.
 	//
 	// example:
 	//
 	// 3
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Type: customer acquisition, channel expansion
+	// The type. Valid values: customer acquisition or channel expansion.
 	//
 	// example:
 	//

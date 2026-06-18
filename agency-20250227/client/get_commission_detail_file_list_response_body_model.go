@@ -28,9 +28,9 @@ type GetCommissionDetailFileListResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Returned data
+	// The returned data.
 	Data *GetCommissionDetailFileListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Message
+	// The message returned.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type GetCommissionDetailFileListResponseBody struct {
 	//
 	// 9C14ADFE-DF0A-54D4-8BD5-45D0839246B4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the invocation succeeded.
+	// Indicates whether the call was successful.
 	//
 	// example:
 	//
@@ -113,15 +113,15 @@ func (s *GetCommissionDetailFileListResponseBody) Validate() error {
 }
 
 type GetCommissionDetailFileListResponseBodyData struct {
-	// Bill month
+	// The billing month.
 	//
 	// example:
 	//
 	// 202502
 	BillMonth *string `json:"BillMonth,omitempty" xml:"BillMonth,omitempty"`
-	// File list
+	// The file list.
 	FileList []*GetCommissionDetailFileListResponseBodyDataFileList `json:"FileList,omitempty" xml:"FileList,omitempty" type:"Repeated"`
-	// Partner UID
+	// The UID of the partner.
 	//
 	// example:
 	//
@@ -178,31 +178,31 @@ func (s *GetCommissionDetailFileListResponseBodyData) Validate() error {
 }
 
 type GetCommissionDetailFileListResponseBodyDataFileList struct {
-	// OSS file push status: Processing, Succeeded, or failed
+	// The push status of the OSS file. Valid values: Processing, Succeeded, or Failed.
 	//
 	// example:
 	//
 	// 处理中
 	BucketSyncStatus *string `json:"BucketSyncStatus,omitempty" xml:"BucketSyncStatus,omitempty"`
-	// Policy name
+	// The policy name.
 	//
 	// example:
 	//
 	// 参考【APS佣金查询下载功能】的政策名称
 	CommissionPolicyName *string `json:"CommissionPolicyName,omitempty" xml:"CommissionPolicyName,omitempty"`
-	// File name
+	// The file name.
 	//
 	// example:
 	//
 	// 佣金202502021112
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// File type
+	// The file type.
 	//
 	// example:
 	//
 	// 总代政策为拓渠、普通政策为拓客
 	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
-	// File URL
+	// The file URL.
 	//
 	// example:
 	//

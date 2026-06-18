@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// Query bill export files.
+// Queries exported bill files.
 //
 // @param request - GetBillDetailFileListRequest
 //
@@ -77,7 +77,7 @@ func (client *Client) GetBillDetailFileListWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Query partner commission details.
+// Queries the commission details of a partner.
 //
 // @param request - GetCommissionDetailFileListRequest
 //
@@ -145,7 +145,7 @@ func (client *Client) GetCommissionDetailFileListWithContext(ctx context.Context
 
 // Summary:
 //
-// Query partner customer acquisition orders.
+// Queries partner customer acquisition orders.
 //
 // @param tmpReq - GetCustomerOrderListRequest
 //
@@ -263,7 +263,81 @@ func (client *Client) GetCustomerOrderListWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// Query partner renewal rate.
+// Downloads the commission details of an international partner.
+//
+// Description:
+//
+// Make sure that the current caller identity is a T1 distribution partner.
+//
+// <notice>Available only for international sites.</notice>.
+//
+// @param request - GetIntlCommissionDetailFileListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetIntlCommissionDetailFileListResponse
+func (client *Client) GetIntlCommissionDetailFileListWithContext(ctx context.Context, request *GetIntlCommissionDetailFileListRequest, runtime *dara.RuntimeOptions) (_result *GetIntlCommissionDetailFileListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BillMonth) {
+		query["BillMonth"] = request.BillMonth
+	}
+
+	if !dara.IsNil(request.OssAccessKeyId) {
+		query["OssAccessKeyId"] = request.OssAccessKeyId
+	}
+
+	if !dara.IsNil(request.OssAccessKeySecret) {
+		query["OssAccessKeySecret"] = request.OssAccessKeySecret
+	}
+
+	if !dara.IsNil(request.OssBucketName) {
+		query["OssBucketName"] = request.OssBucketName
+	}
+
+	if !dara.IsNil(request.OssEndpoint) {
+		query["OssEndpoint"] = request.OssEndpoint
+	}
+
+	if !dara.IsNil(request.OssRegion) {
+		query["OssRegion"] = request.OssRegion
+	}
+
+	if !dara.IsNil(request.OssSecurityToken) {
+		query["OssSecurityToken"] = request.OssSecurityToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetIntlCommissionDetailFileList"),
+		Version:     dara.String("2025-02-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetIntlCommissionDetailFileListResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the partner renewal rate.
 //
 // @param request - GetRenewalRateListRequest
 //
@@ -307,7 +381,7 @@ func (client *Client) GetRenewalRateListWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Query the list of second-tier distributors.
+// Queries the list of secondary distributors.
 //
 // @param request - GetSubPartnerListRequest
 //
@@ -363,7 +437,7 @@ func (client *Client) GetSubPartnerListWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Query channel expansion orders.
+// Queries channel expansion orders.
 //
 // @param tmpReq - GetSubPartnerOrderListRequest
 //

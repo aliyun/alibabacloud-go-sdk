@@ -26,19 +26,19 @@ type iGetSubPartnerListResponseBody interface {
 }
 
 type GetSubPartnerListResponseBody struct {
-	// Message
+	// The message returned.
 	//
 	// example:
 	//
 	// 成功
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Current page number
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNo *string `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// Number of second-tier distributors returned per page, up to 100
+	// The number of secondary distributors returned per page. Maximum value: 100.
 	//
 	// This parameter is required.
 	//
@@ -46,21 +46,21 @@ type GetSubPartnerListResponseBody struct {
 	//
 	// 100
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 9C14ADFE-DF0A-54D4-8BD5-45D0839246B4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// List of second-tier distributors
+	// The list of secondary distributors.
 	SubPartnerList []*GetSubPartnerListResponseBodySubPartnerList `json:"SubPartnerList,omitempty" xml:"SubPartnerList,omitempty" type:"Repeated"`
-	// Indicates whether the invocation succeeded.
+	// Indicates whether the call was successful.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// Total amount of data under the current request conditions
+	// The total number of entries that match the query conditions.
 	//
 	// example:
 	//
@@ -153,73 +153,73 @@ func (s *GetSubPartnerListResponseBody) Validate() error {
 }
 
 type GetSubPartnerListResponseBodySubPartnerList struct {
-	// Detailed address of registration
+	// The detailed registered address.
 	//
 	// example:
 	//
 	// xxx街道xxx号
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// Contract status encoding
+	// The agreement status code.
 	//
 	// example:
 	//
 	// ACTIVE_PERIOD
 	AgreementStatus *string `json:"AgreementStatus,omitempty" xml:"AgreementStatus,omitempty"`
-	// Agreement status description
+	// The description of the agreement status.
 	//
 	// example:
 	//
 	// 生效期
 	AgreementStatusDesc *string `json:"AgreementStatusDesc,omitempty" xml:"AgreementStatusDesc,omitempty"`
-	// City of registration
+	// The city of the registered address.
 	//
 	// example:
 	//
 	// 杭州市
 	City *string `json:"City,omitempty" xml:"City,omitempty"`
-	// Name of the second-tier distributor
+	// The name of the secondary distributor.
 	//
 	// example:
 	//
 	// xxx有限公司
 	CompanyName *string `json:"CompanyName,omitempty" xml:"CompanyName,omitempty"`
-	// Contact name
+	// The name of the contact.
 	//
 	// example:
 	//
 	// 张三
 	Contact *string `json:"Contact,omitempty" xml:"Contact,omitempty"`
-	// District or county of registration
+	// The district or county of the registered address.
 	//
 	// example:
 	//
 	// 西湖区
 	District *string `json:"District,omitempty" xml:"District,omitempty"`
-	// Initial onboarding time
+	// The time when the secondary distributor first joined.
 	//
 	// example:
 	//
 	// 2000-01-01
 	JoinTime *string `json:"JoinTime,omitempty" xml:"JoinTime,omitempty"`
-	// Master account name of the secondary distributor
+	// The name of the primary account of the secondary distributor.
 	//
 	// example:
 	//
 	// xxxxxx有限公司主账号
 	MasterAccount *string `json:"MasterAccount,omitempty" xml:"MasterAccount,omitempty"`
-	// UID of the Master account of the second-tier distributor
+	// The UID of the primary account of the secondary distributor.
 	//
 	// example:
 	//
 	// 123456
 	MasterUid *string `json:"MasterUid,omitempty" xml:"MasterUid,omitempty"`
-	// PID of the secondary distributor
+	// The PID of the secondary distributor.
 	//
 	// example:
 	//
 	// P123456
 	Pid *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
-	// Province of registration
+	// The province of the registered address.
 	//
 	// example:
 	//

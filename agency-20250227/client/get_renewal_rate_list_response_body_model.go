@@ -22,15 +22,15 @@ type iGetRenewalRateListResponseBody interface {
 }
 
 type GetRenewalRateListResponseBody struct {
-	// Status code
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Returned data
+	// The returned data.
 	Data []*GetRenewalRateListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Message
+	// The prompt message.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type GetRenewalRateListResponseBody struct {
 	//
 	// 9C14ADFE-DF0A-54D4-8BD5-45D0839246B4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the invocation succeeded.
+	// Indicates whether the call was successful.
 	//
 	// example:
 	//
@@ -117,157 +117,157 @@ func (s *GetRenewalRateListResponseBody) Validate() error {
 }
 
 type GetRenewalRateListResponseBodyData struct {
-	// Adjusted amount due for Gold customer renewal
+	// The adjusted customer acquisition amount due for renewal.
 	//
 	// example:
 	//
 	// 100
 	CustomerAdjustedRenewalAmountDue *float64 `json:"CustomerAdjustedRenewalAmountDue,omitempty" xml:"CustomerAdjustedRenewalAmountDue,omitempty"`
-	// Rewind amount for new customer acquisition upgrade
+	// The customer acquisition amount for new purchases, upgrades, and refunds.
 	//
 	// example:
 	//
 	// 100
 	CustomerOtherBillAmount *float64 `json:"CustomerOtherBillAmount,omitempty" xml:"CustomerOtherBillAmount,omitempty"`
-	// Amount due for Gold customer renewal
+	// The customer acquisition amount due for renewal.
 	//
 	// example:
 	//
 	// 100
 	FinalCustomerRenewalAmountDue *float64 `json:"FinalCustomerRenewalAmountDue,omitempty" xml:"FinalCustomerRenewalAmountDue,omitempty"`
-	// Gold customer commission renewal rate
+	// The customer acquisition commission renewal rate.
 	//
 	// example:
 	//
 	// 0.9
 	FinalCustomerRenewalRate *float64 `json:"FinalCustomerRenewalRate,omitempty" xml:"FinalCustomerRenewalRate,omitempty"`
-	// Renewed amount from customer acquisition
+	// The customer acquisition renewed amount.
 	//
 	// example:
 	//
 	// 100
 	FinalCustomerRenewedAmount *float64 `json:"FinalCustomerRenewedAmount,omitempty" xml:"FinalCustomerRenewedAmount,omitempty"`
-	// Total rewind amount for new upgrades
+	// The total amount for new purchases, upgrades, and refunds.
 	//
 	// example:
 	//
 	// 100
 	FinalOtherBillAmount *float64 `json:"FinalOtherBillAmount,omitempty" xml:"FinalOtherBillAmount,omitempty"`
-	// Final amount due for renewal
+	// The final amount due for renewal.
 	//
 	// example:
 	//
 	// 100
 	FinalRenewalAmountDue *float64 `json:"FinalRenewalAmountDue,omitempty" xml:"FinalRenewalAmountDue,omitempty"`
-	// Final commission renewal rate
+	// The final commission renewal rate.
 	//
 	// example:
 	//
 	// 0.9
 	FinalRenewalRate *float64 `json:"FinalRenewalRate,omitempty" xml:"FinalRenewalRate,omitempty"`
-	// Final renewed amount
+	// The final renewed amount.
 	//
 	// example:
 	//
 	// 100
 	FinalRenewedAmount *float64 `json:"FinalRenewedAmount,omitempty" xml:"FinalRenewedAmount,omitempty"`
-	// Renewal amount due from channel partner acquisition
+	// The sub-partner acquisition amount due for renewal.
 	//
 	// example:
 	//
 	// 100
 	FinalSubPartnerRenewalAmountDue *float64 `json:"FinalSubPartnerRenewalAmountDue,omitempty" xml:"FinalSubPartnerRenewalAmountDue,omitempty"`
-	// Channel expansion commission renewal rate
+	// The sub-partner acquisition commission renewal rate.
 	//
 	// example:
 	//
 	// 0.85
 	FinalSubPartnerRenewalRate *float64 `json:"FinalSubPartnerRenewalRate,omitempty" xml:"FinalSubPartnerRenewalRate,omitempty"`
-	// Renewed amount from channel partner acquisition
+	// The sub-partner acquisition renewed amount.
 	//
 	// example:
 	//
 	// 100
 	FinalSubPartnerRenewedAmount *float64 `json:"FinalSubPartnerRenewedAmount,omitempty" xml:"FinalSubPartnerRenewedAmount,omitempty"`
-	// Fiscal year and quarter
+	// The fiscal year and quarter.
 	//
 	// example:
 	//
 	// 2025Q4
 	FiscalYearAndQuarter *string `json:"FiscalYearAndQuarter,omitempty" xml:"FiscalYearAndQuarter,omitempty"`
-	// Partner PID
+	// The partner PID.
 	//
 	// example:
 	//
 	// P123423453
 	MasterPid *string `json:"MasterPid,omitempty" xml:"MasterPid,omitempty"`
-	// Partner PID name
+	// The partner PID name.
 	//
 	// example:
 	//
 	// XX有限公司
 	MasterPidName *string `json:"MasterPidName,omitempty" xml:"MasterPidName,omitempty"`
-	// Gold customer commission renewal rate including special approval
+	// The customer acquisition commission renewal rate including special approvals.
 	//
 	// example:
 	//
 	// 0.7
 	SpecialCustomerRenewRatio *float64 `json:"SpecialCustomerRenewRatio,omitempty" xml:"SpecialCustomerRenewRatio,omitempty"`
-	// Renewal amount due including specially approved customer acquisition
+	// The customer acquisition amount due for renewal including special approvals.
 	//
 	// example:
 	//
 	// 100
 	SpecialCustomerRenewalAmountDue *float64 `json:"SpecialCustomerRenewalAmountDue,omitempty" xml:"SpecialCustomerRenewalAmountDue,omitempty"`
-	// Renewed amount including specially approved customer acquisition
+	// The customer acquisition renewed amount including special approvals.
 	//
 	// example:
 	//
 	// 100
 	SpecialCustomerRenewedAmount *float64 `json:"SpecialCustomerRenewedAmount,omitempty" xml:"SpecialCustomerRenewedAmount,omitempty"`
-	// Renewal rate including specially approved final quarter commission
+	// The final quarterly commission renewal rate including special approvals.
 	//
 	// example:
 	//
 	// 0.7
 	SpecialFinalRenewRatio *float64 `json:"SpecialFinalRenewRatio,omitempty" xml:"SpecialFinalRenewRatio,omitempty"`
-	// Renewal amount due for final quarterly commission including special approvals
+	// The final quarterly commission amount due for renewal including special approvals.
 	//
 	// example:
 	//
 	// 100
 	SpecialFinalRenewalAmountDue *float64 `json:"SpecialFinalRenewalAmountDue,omitempty" xml:"SpecialFinalRenewalAmountDue,omitempty"`
-	// Renewed amount including specially approved final quarter commission
+	// The final quarterly commission renewed amount including special approvals.
 	//
 	// example:
 	//
 	// 100
 	SpecialFinalRenewedAmount *float64 `json:"SpecialFinalRenewedAmount,omitempty" xml:"SpecialFinalRenewedAmount,omitempty"`
-	// Channel expansion commission renewal rate including special approval
+	// The sub-partner acquisition commission renewal rate including special approvals.
 	//
 	// example:
 	//
 	// 0.8
 	SpecialSubPartnerRenewRatio *float64 `json:"SpecialSubPartnerRenewRatio,omitempty" xml:"SpecialSubPartnerRenewRatio,omitempty"`
-	// Amount due for renewal including specially approved channel partner
+	// The sub-partner acquisition amount due for renewal including special approvals.
 	//
 	// example:
 	//
 	// 100
 	SpecialSubPartnerRenewalAmountDue *float64 `json:"SpecialSubPartnerRenewalAmountDue,omitempty" xml:"SpecialSubPartnerRenewalAmountDue,omitempty"`
-	// Renewed amount including specially approved channel partner renewals
+	// The sub-partner acquisition renewed amount including special approvals.
 	//
 	// example:
 	//
 	// 100
 	SpecialSubPartnerRenewedAmount *float64 `json:"SpecialSubPartnerRenewedAmount,omitempty" xml:"SpecialSubPartnerRenewedAmount,omitempty"`
-	// Adjusted amount due for channel partner renewal
+	// The adjusted sub-partner acquisition amount due for renewal.
 	//
 	// example:
 	//
 	// 100
 	SubPartnerAdjustedRenewalAmountDue *float64 `json:"SubPartnerAdjustedRenewalAmountDue,omitempty" xml:"SubPartnerAdjustedRenewalAmountDue,omitempty"`
-	// Channel partner new upgrade rewind amount
+	// The sub-partner acquisition amount for new purchases, upgrades, and refunds.
 	//
 	// example:
 	//

@@ -28,27 +28,27 @@ type iGetSubPartnerOrderListResponseBody interface {
 }
 
 type GetSubPartnerOrderListResponseBody struct {
-	// Status code
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Returned data
+	// The returned data.
 	Data []*GetSubPartnerOrderListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Message
+	// The message returned.
 	//
 	// example:
 	//
 	// 成功
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Page number
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// Paging size
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -60,13 +60,13 @@ type GetSubPartnerOrderListResponseBody struct {
 	//
 	// 9C14ADFE-DF0A-54D4-8BD5-45D0839246B4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation succeeded
+	// Indicates whether the call was successful.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// TotalCount indicates the total amount of data under the current request conditions. This parameter is optional and is not returned by default.
+	// The total number of entries that meet the query conditions. This is an optional parameter and is not returned by default.
 	//
 	// example:
 	//
@@ -168,125 +168,125 @@ func (s *GetSubPartnerOrderListResponseBody) Validate() error {
 }
 
 type GetSubPartnerOrderListResponseBodyData struct {
-	// Order discount
+	// The order discount.
 	//
 	// example:
 	//
 	// 0.9
 	AmountDiscount *float64 `json:"AmountDiscount,omitempty" xml:"AmountDiscount,omitempty"`
-	// Actual payment amount
+	// The actual payment amount.
 	//
 	// example:
 	//
 	// 3750
 	AmountDue *float64 `json:"AmountDue,omitempty" xml:"AmountDue,omitempty"`
-	// Creation Time
+	// The creation time.
 	//
 	// example:
 	//
 	// 2024-07-07 07:52:22
 	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
-	// Customer classification
+	// The customer classification.
 	//
 	// example:
 	//
 	// C类
 	CustomerClassification *string `json:"CustomerClassification,omitempty" xml:"CustomerClassification,omitempty"`
-	// Coupon amount
+	// The coupon amount.
 	//
 	// example:
 	//
 	// 0
 	DeductedAmountByCoupons *float64 `json:"DeductedAmountByCoupons,omitempty" xml:"DeductedAmountByCoupons,omitempty"`
-	// Discounted price
+	// The discounted price.
 	//
 	// example:
 	//
 	// 3750
 	DiscountedPrice *float64 `json:"DiscountedPrice,omitempty" xml:"DiscountedPrice,omitempty"`
-	// Order ID
+	// The order ID.
 	//
 	// example:
 	//
 	// 236414227150922
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// Order status:
+	// The order status. Valid values:
 	//
-	// - 1 Unpaid
+	// - 1: unpaid
 	//
-	// - 2 Abandoned
+	// - 2: deprecated
 	//
-	// - 3 Paid
+	// - 3: paid.
 	//
 	// example:
 	//
 	// 3
 	OrderStatus *int32 `json:"OrderStatus,omitempty" xml:"OrderStatus,omitempty"`
-	// Order type:
+	// The order type. Valid values:
 	//
-	// - BUY: New purchase
+	// - BUY: new purchase
 	//
-	// - UPGRADE: Upgrade
+	// - UPGRADE: upgrade
 	//
-	// - DOWNGRADE: Downgrade
+	// - DOWNGRADE: downgrade
 	//
-	// - RENEW: Renewal
+	// - RENEW: renewal
 	//
-	// - REFUND: Refund
+	// - REFUND: refund
 	//
-	// - OTHERS: Others
+	// - OTHERS: other.
 	//
 	// example:
 	//
 	// BUY
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	// Payment Time
+	// The payment time.
 	//
 	// example:
 	//
 	// 2024-07-07 07:52:22
 	PaidAt *string `json:"PaidAt,omitempty" xml:"PaidAt,omitempty"`
-	// Payment type:
+	// The payment type. Valid values:
 	//
-	// 1: Non-agent payment
+	// - 1: non-delegated payment
 	//
-	// 2: Agent payment
+	// - 2: delegated payment.
 	//
 	// example:
 	//
 	// 1
 	PayType *int32 `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// Original price/List price
+	// The original price or list price.
 	//
 	// example:
 	//
 	// 3750
 	Price *float64 `json:"Price,omitempty" xml:"Price,omitempty"`
-	// Product code
+	// The product code.
 	//
 	// example:
 	//
 	// ecs
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// Product name.
+	// The product name.
 	//
 	// example:
 	//
 	// 弹性计算
 	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
-	// Opportunity ID
+	// The opportunity ID.
 	//
 	// example:
 	//
 	// 202502233443
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// Sub-partner Name
+	// The name of the secondary partner.
 	//
 	// example:
 	//
 	// xxx有限公司
 	SubPartnerName *string `json:"SubPartnerName,omitempty" xml:"SubPartnerName,omitempty"`
-	// Secondary partner UID
+	// The UID of the secondary partner.
 	//
 	// example:
 	//

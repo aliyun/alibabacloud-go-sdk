@@ -46,61 +46,53 @@ type iGetSubPartnerOrderListShrinkRequest interface {
 }
 
 type GetSubPartnerOrderListShrinkRequest struct {
-	// The UNIX timestamp of the start time for order creation. The time range must not exceed six months.
-	//
-	// The time range for order creation and the time range for order payment cannot both be empty.
+	// The start timestamp of the order creation time range. The time range cannot exceed 6 months. The order creation time range and the order payment time range cannot both be empty.
 	//
 	// example:
 	//
 	// 1727789348000
 	OrderCreateAfter *int64 `json:"OrderCreateAfter,omitempty" xml:"OrderCreateAfter,omitempty"`
-	// The UNIX timestamp of the end time for order creation. The time range must not exceed six months.
-	//
-	// The time range for order creation and the time range for order payment cannot both be empty.
+	// The end timestamp of the order creation time range. The time range cannot exceed 6 months. The order creation time range and the order payment time range cannot both be empty.
 	//
 	// example:
 	//
 	// 1741008566000
 	OrderCreateBefore *int64 `json:"OrderCreateBefore,omitempty" xml:"OrderCreateBefore,omitempty"`
-	// Order ID
+	// The order ID.
 	//
 	// example:
 	//
 	// 209335720330622
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The UNIX timestamp of the start time for order payment. The time range must not exceed six months.
-	//
-	// The time range for order creation and the time range for order payment cannot both be empty.
+	// The start timestamp of the order payment time range. The time range cannot exceed 6 months. The order creation time range and the order payment time range cannot both be empty.
 	//
 	// example:
 	//
 	// 1727789348000
 	OrderPayAfter *int64 `json:"OrderPayAfter,omitempty" xml:"OrderPayAfter,omitempty"`
-	// UNIX timestamp of the order payment deadline. The time range cannot exceed six months.
-	//
-	// The time range for order creation and the time range for order payment cannot both be empty.
+	// The end timestamp of the order payment time range. The time range cannot exceed 6 months. The order creation time range and the order payment time range cannot both be empty.
 	//
 	// example:
 	//
 	// 1741008566000
 	OrderPayBefore *int64 `json:"OrderPayBefore,omitempty" xml:"OrderPayBefore,omitempty"`
-	// Order status. Valid values:
+	// The order status. Valid values:
 	//
-	// 1: Unpaid
+	// - 1: unpaid
 	//
-	// 2: Paid
+	// - 2: paid
 	//
-	// 3: Canceled
+	// - 3: voided.
 	//
 	// example:
 	//
 	// 3
 	OrderStatus *int64 `json:"OrderStatus,omitempty" xml:"OrderStatus,omitempty"`
-	// List of order types.
+	// The list of order types.
 	//
-	// Valid order types include: BUY, UPGRADE, DOWNGRADE, RENEW, REFUND, OTHERS
+	// Valid values: BUY, UPGRADE, DOWNGRADE, RENEW, REFUND, and OTHERS.
 	OrderTypeListShrink *string `json:"OrderTypeList,omitempty" xml:"OrderTypeList,omitempty"`
-	// Page number
+	// The page number.
 	//
 	// This parameter is required.
 	//
@@ -108,7 +100,7 @@ type GetSubPartnerOrderListShrinkRequest struct {
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// Page size
+	// The number of entries per page.
 	//
 	// This parameter is required.
 	//
@@ -116,53 +108,53 @@ type GetSubPartnerOrderListShrinkRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Minimum paid amount
+	// The minimum actual payment amount.
 	//
 	// example:
 	//
 	// 1
 	PayAmountAfter *int64 `json:"PayAmountAfter,omitempty" xml:"PayAmountAfter,omitempty"`
-	// Maximum paid amount
+	// The maximum actual payment amount.
 	//
 	// example:
 	//
 	// 100
 	PayAmountBefore *int64 `json:"PayAmountBefore,omitempty" xml:"PayAmountBefore,omitempty"`
-	// Payment Type:
+	// The payment type. Valid values:
 	//
-	// 1: Non-agent payment
+	// - 1: non-delegated payment
 	//
-	// 2: Agent payment
+	// - 2: delegated payment.
 	//
 	// example:
 	//
 	// 1
 	PayType *int64 `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// Product code
+	// The product code.
 	//
 	// example:
 	//
 	// ecs
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// Product Name
+	// The product name.
 	//
 	// example:
 	//
 	// 弹性计算
 	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
-	// Opportunity ID
+	// The opportunity ID.
 	//
 	// example:
 	//
 	// 202501101023
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// Sub-partner name
+	// The name of the secondary partner.
 	//
 	// example:
 	//
 	// XXX有限公司
 	SubPartnerName *string `json:"SubPartnerName,omitempty" xml:"SubPartnerName,omitempty"`
-	// Sub-partner UID
+	// The UID of the secondary partner.
 	//
 	// example:
 	//

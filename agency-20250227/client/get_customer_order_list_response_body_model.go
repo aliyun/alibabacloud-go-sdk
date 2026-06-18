@@ -32,57 +32,57 @@ type iGetCustomerOrderListResponseBody interface {
 }
 
 type GetCustomerOrderListResponseBody struct {
-	// Access denied details
+	// The details of the access denial.
 	//
 	// example:
 	//
 	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Status Code
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Returned data
+	// The returned data.
 	Data []*GetCustomerOrderListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// HTTP status code
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 400
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Message
+	// The message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Page number
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// Page size
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 2103a30617045934095083027d88c5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation succeeded
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// Total number of entries
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -202,119 +202,119 @@ func (s *GetCustomerOrderListResponseBody) Validate() error {
 }
 
 type GetCustomerOrderListResponseBodyData struct {
-	// Order discount
+	// The order discount.
 	//
 	// example:
 	//
 	// 1
 	AmountDiscount *float64 `json:"AmountDiscount,omitempty" xml:"AmountDiscount,omitempty"`
-	// Actual payment amount
+	// The actual payment amount.
 	//
 	// example:
 	//
 	// 29137
 	AmountDue *float64 `json:"AmountDue,omitempty" xml:"AmountDue,omitempty"`
-	// Creation Time
+	// The creation time.
 	//
 	// example:
 	//
 	// 2019-01-24 14:20:40
 	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
-	// Customer Account
+	// The customer account.
 	//
 	// example:
 	//
 	// test_123
 	CustomerAccount *string `json:"CustomerAccount,omitempty" xml:"CustomerAccount,omitempty"`
-	// Customer categorization
+	// The customer classification.
 	//
 	// example:
 	//
 	// C类
 	CustomerClassification *string `json:"CustomerClassification,omitempty" xml:"CustomerClassification,omitempty"`
-	// Customer UID
+	// The customer UID.
 	//
 	// example:
 	//
 	// 123456
 	CustomerUid *int64 `json:"CustomerUid,omitempty" xml:"CustomerUid,omitempty"`
-	// Coupon amount
+	// The coupon amount.
 	//
 	// example:
 	//
 	// 0
 	DeductedAmountByCoupons *float64 `json:"DeductedAmountByCoupons,omitempty" xml:"DeductedAmountByCoupons,omitempty"`
-	// Discounted price
+	// The discounted price.
 	//
 	// example:
 	//
 	// 29137
 	DiscountedPrice *float64 `json:"DiscountedPrice,omitempty" xml:"DiscountedPrice,omitempty"`
-	// Order ID
+	// The order ID.
 	//
 	// example:
 	//
 	// 236414227150922
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// Order status. Values include:
+	// The order status. Valid values:
 	//
-	// 1: Unpaid
+	// - 1: unpaid
 	//
-	// 2: Paid
+	// - 2: paid
 	//
-	// 3: Voided
+	// - 3: canceled.
 	//
 	// example:
 	//
 	// 3
 	OrderStatus *int32 `json:"OrderStatus,omitempty" xml:"OrderStatus,omitempty"`
-	// Order type. Values include: BUY, UPGRADE, DOWNGRADE, RENEW, REFUND, OTHERS
+	// The order type. Valid values: BUY, UPGRADE, DOWNGRADE, RENEW, REFUND, OTHERS.
 	//
 	// example:
 	//
 	// BUY
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	// Payment Time
+	// The payment time.
 	//
 	// example:
 	//
 	// 2019-01-24 14:20:40
 	PaidAt *string `json:"PaidAt,omitempty" xml:"PaidAt,omitempty"`
-	// Payment type:
+	// The payment type. Valid values:
 	//
-	// 1: Non-agent payment
+	// - 1: non-delegated payment
 	//
-	// 2: Agent payment
+	// - 2: delegated payment.
 	//
 	// example:
 	//
 	// 1
 	PayType *int32 `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// Original Price/List Price
+	// The original price or list price.
 	//
 	// example:
 	//
 	// 29137
 	Price *float64 `json:"Price,omitempty" xml:"Price,omitempty"`
-	// Product code
+	// The product code.
 	//
 	// example:
 	//
 	// slb
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// Product name
+	// The product name.
 	//
 	// example:
 	//
 	// slb
 	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
-	// Opportunity ID
+	// The opportunity ID.
 	//
 	// example:
 	//
 	// 202502230421
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// Customer-facing staff
+	// The employee who follows up with the customer.
 	RamAccountForCustomerManagers []*string `json:"RamAccountForCustomerManagers,omitempty" xml:"RamAccountForCustomerManagers,omitempty" type:"Repeated"`
 }
 

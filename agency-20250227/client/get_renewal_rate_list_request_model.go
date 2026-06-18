@@ -14,7 +14,7 @@ type iGetRenewalRateListRequest interface {
 }
 
 type GetRenewalRateListRequest struct {
-	// Fiscal year and quarter
+	// The fiscal year and quarter.
 	//
 	// This parameter is required.
 	//

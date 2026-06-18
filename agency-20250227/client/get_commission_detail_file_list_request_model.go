@@ -26,43 +26,43 @@ type iGetCommissionDetailFileListRequest interface {
 }
 
 type GetCommissionDetailFileListRequest struct {
-	// Billing month
+	// The billing month.
 	//
 	// example:
 	//
 	// 202501
 	BillMonth *string `json:"BillMonth,omitempty" xml:"BillMonth,omitempty"`
-	// AccessKeyID used to upload files to OSS
+	// The AccessKey ID used to upload files to OSS.
 	//
 	// example:
 	//
 	// yourAccessKeyID
 	OssAccessKeyId *string `json:"OssAccessKeyId,omitempty" xml:"OssAccessKeyId,omitempty"`
-	// AccessKeySecret used to upload files to OSS
+	// The AccessKey secret used to upload files to OSS.
 	//
 	// example:
 	//
 	// yourAccessKeySecret
 	OssAccessKeySecret *string `json:"OssAccessKeySecret,omitempty" xml:"OssAccessKeySecret,omitempty"`
-	// OSS bucket
+	// The OSS bucket name.
 	//
 	// example:
 	//
 	// yourBucketName
 	OssBucketName *string `json:"OssBucketName,omitempty" xml:"OssBucketName,omitempty"`
-	// Edge zone of the Region where the OSS bucket for file sharing is located
+	// The endpoint of the region where the Object Storage Service (OSS) bucket corresponding to the file sharing resides.
 	//
 	// example:
 	//
 	// http://oss-cn-beijing.aliyuncs.com
 	OssEndpoint *string `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
-	// Region to which the current OSS bucket belongs
+	// The region where the OSS bucket resides.
 	//
 	// example:
 	//
 	// cn-beijing
 	OssRegion *string `json:"OssRegion,omitempty" xml:"OssRegion,omitempty"`
-	// STS token used to upload files to OSS
+	// The STS token used to upload files to OSS.
 	//
 	// example:
 	//
