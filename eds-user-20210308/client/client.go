@@ -25,6 +25,10 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		return _err
 	}
 	client.EndpointRule = dara.String("regional")
+	client.EndpointMap = map[string]*string{
+		"cn-shanghai":    dara.String("eds-user.cn-shanghai.aliyuncs.com"),
+		"ap-southeast-1": dara.String("eds-user.ap-southeast-1.aliyuncs.com"),
+	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -58,11 +62,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Grants or revokes the local administrator permissions on cloud computers for convenience accounts.
+// Add or remove local administrator permissions on a cloud computer for a convenience account.
 //
 // Description:
 //
-// Convenience accounts with the local administrator permissions on cloud computers can install software and modify system settings on cloud computers.
+// A convenience account with local administrator permissions can install software or modify certain system settings on the cloud computer.
 //
 // @param request - BatchSetDesktopManagerRequest
 //
@@ -114,11 +118,11 @@ func (client *Client) BatchSetDesktopManagerWithOptions(request *BatchSetDesktop
 
 // Summary:
 //
-// Grants or revokes the local administrator permissions on cloud computers for convenience accounts.
+// Add or remove local administrator permissions on a cloud computer for a convenience account.
 //
 // Description:
 //
-// Convenience accounts with the local administrator permissions on cloud computers can install software and modify system settings on cloud computers.
+// A convenience account with local administrator permissions can install software or modify certain system settings on the cloud computer.
 //
 // @param request - BatchSetDesktopManagerRequest
 //
@@ -136,7 +140,7 @@ func (client *Client) BatchSetDesktopManager(request *BatchSetDesktopManagerRequ
 
 // Summary:
 //
-// If the user is in administrator-activated mode, you can change the user logon password through this operation.
+// When the administrator activates the mode, you can use this API to modify the user logon password.
 //
 // @param request - ChangeUserPasswordRequest
 //
@@ -188,7 +192,7 @@ func (client *Client) ChangeUserPasswordWithOptions(request *ChangeUserPasswordR
 
 // Summary:
 //
-// If the user is in administrator-activated mode, you can change the user logon password through this operation.
+// When the administrator activates the mode, you can use this API to modify the user logon password.
 //
 // @param request - ChangeUserPasswordRequest
 //
@@ -206,7 +210,7 @@ func (client *Client) ChangeUserPassword(request *ChangeUserPasswordRequest) (_r
 
 // Summary:
 //
-// Queries whether a property is associated with one or more convenience users.
+// Query the number of convenience accounts associated with a specified custom property.
 //
 // @param request - CheckUsedPropertyRequest
 //
@@ -254,7 +258,7 @@ func (client *Client) CheckUsedPropertyWithOptions(request *CheckUsedPropertyReq
 
 // Summary:
 //
-// Queries whether a property is associated with one or more convenience users.
+// Query the number of convenience accounts associated with a specified custom property.
 //
 // @param request - CheckUsedPropertyRequest
 //
@@ -272,11 +276,7 @@ func (client *Client) CheckUsedProperty(request *CheckUsedPropertyRequest) (_res
 
 // Summary:
 //
-// Queries the number of convenience accounts that are associated with the specified custom property value.
-//
-// Description:
-//
-// Before you call the operation, you can call the [ListProperty](https://help.aliyun.com/document_detail/410890.html) operation to query the existing user properties and their IDs (PropertyId) and values (PropertyValueId).
+// Query the number of convenience accounts associated with a specified custom attribute value.
 //
 // @param request - CheckUsedPropertyValueRequest
 //
@@ -328,11 +328,7 @@ func (client *Client) CheckUsedPropertyValueWithOptions(request *CheckUsedProper
 
 // Summary:
 //
-// Queries the number of convenience accounts that are associated with the specified custom property value.
-//
-// Description:
-//
-// Before you call the operation, you can call the [ListProperty](https://help.aliyun.com/document_detail/410890.html) operation to query the existing user properties and their IDs (PropertyId) and values (PropertyValueId).
+// Query the number of convenience accounts associated with a specified custom attribute value.
 //
 // @param request - CheckUsedPropertyValueRequest
 //
@@ -350,7 +346,7 @@ func (client *Client) CheckUsedPropertyValue(request *CheckUsedPropertyValueRequ
 
 // Summary:
 //
-// Creates a user group.
+// Create a group.
 //
 // @param request - CreateGroupRequest
 //
@@ -414,7 +410,7 @@ func (client *Client) CreateGroupWithOptions(request *CreateGroupRequest, runtim
 
 // Summary:
 //
-// Creates a user group.
+// Create a group.
 //
 // @param request - CreateGroupRequest
 //
@@ -432,7 +428,7 @@ func (client *Client) CreateGroup(request *CreateGroupRequest) (_result *CreateG
 
 // Summary:
 //
-// Creates an organization.
+// Create an organization.
 //
 // @param request - CreateOrgRequest
 //
@@ -484,7 +480,7 @@ func (client *Client) CreateOrgWithOptions(request *CreateOrgRequest, runtime *d
 
 // Summary:
 //
-// Creates an organization.
+// Create an organization.
 //
 // @param request - CreateOrgRequest
 //
@@ -502,7 +498,13 @@ func (client *Client) CreateOrg(request *CreateOrgRequest) (_result *CreateOrgRe
 
 // Summary:
 //
-// Creates a user property.
+// Create a user attribute.
+//
+// Description:
+//
+// - You can create up to 10 different properties under one Alibaba Cloud account. Each property includes a property name (PropertyKey) and multiple attribute values (PropertyValue).
+//
+// - You can add up to 50 different attribute values to a single property.
 //
 // @param request - CreatePropertyRequest
 //
@@ -554,7 +556,13 @@ func (client *Client) CreatePropertyWithOptions(request *CreatePropertyRequest, 
 
 // Summary:
 //
-// Creates a user property.
+// Create a user attribute.
+//
+// Description:
+//
+// - You can create up to 10 different properties under one Alibaba Cloud account. Each property includes a property name (PropertyKey) and multiple attribute values (PropertyValue).
+//
+// - You can add up to 50 different attribute values to a single property.
 //
 // @param request - CreatePropertyRequest
 //
@@ -654,11 +662,17 @@ func (client *Client) CreateResourceGroup(request *CreateResourceGroupRequest) (
 
 // Summary:
 //
-// Creates a convenience user.
+// Easily create accounts for your end users.
 //
 // Description:
 //
-// Convenience users are dedicated Elastic Desktop Service (EDS) user accounts and are suitable for scenarios in which you do not need to connect to enterprise Active Directory (AD) systems. The information about a convenience user includes the username, email address, and mobile number. You must specify the username or email address.
+// <props="china">
+//
+// A convenience account is a dedicated account system in Wuying Workspace for simple use cases that do not require enterprise AD integration. Accounts require a username, and either an email or a phone number.
+//
+// <props="intl">
+//
+// A convenience account is a dedicated account system in Wuying Workspace for simple use cases that do not require enterprise AD integration. Accounts require both a username and an email.
 //
 // @param request - CreateUsersRequest
 //
@@ -724,11 +738,17 @@ func (client *Client) CreateUsersWithOptions(request *CreateUsersRequest, runtim
 
 // Summary:
 //
-// Creates a convenience user.
+// Easily create accounts for your end users.
 //
 // Description:
 //
-// Convenience users are dedicated Elastic Desktop Service (EDS) user accounts and are suitable for scenarios in which you do not need to connect to enterprise Active Directory (AD) systems. The information about a convenience user includes the username, email address, and mobile number. You must specify the username or email address.
+// <props="china">
+//
+// A convenience account is a dedicated account system in Wuying Workspace for simple use cases that do not require enterprise AD integration. Accounts require a username, and either an email or a phone number.
+//
+// <props="intl">
+//
+// A convenience account is a dedicated account system in Wuying Workspace for simple use cases that do not require enterprise AD integration. Accounts require both a username and an email.
 //
 // @param request - CreateUsersRequest
 //
@@ -746,7 +766,7 @@ func (client *Client) CreateUsers(request *CreateUsersRequest) (_result *CreateU
 
 // Summary:
 //
-// Deletes a resource group.
+// Delete a resource group.
 //
 // @param request - DeleteResourceGroupRequest
 //
@@ -798,7 +818,7 @@ func (client *Client) DeleteResourceGroupWithOptions(request *DeleteResourceGrou
 
 // Summary:
 //
-// Deletes a resource group.
+// Delete a resource group.
 //
 // @param request - DeleteResourceGroupRequest
 //
@@ -816,11 +836,7 @@ func (client *Client) DeleteResourceGroup(request *DeleteResourceGroupRequest) (
 
 // Summary:
 //
-// Dissociates a user property from a user.
-//
-// Description:
-//
-// Before you call this operation, you can call the FilterUsers operation to query the users that are associated with user properties.
+// Detach a user from a user attribute.
 //
 // @param request - DeleteUserPropertyValueRequest
 //
@@ -876,11 +892,7 @@ func (client *Client) DeleteUserPropertyValueWithOptions(request *DeleteUserProp
 
 // Summary:
 //
-// Dissociates a user property from a user.
-//
-// Description:
-//
-// Before you call this operation, you can call the FilterUsers operation to query the users that are associated with user properties.
+// Detach a user from a user attribute.
 //
 // @param request - DeleteUserPropertyValueRequest
 //
@@ -898,7 +910,7 @@ func (client *Client) DeleteUserPropertyValue(request *DeleteUserPropertyValueRe
 
 // Summary:
 //
-// Queries the members of a user group.
+// Query group members.
 //
 // @param request - DescribeGroupUserRequest
 //
@@ -966,7 +978,7 @@ func (client *Client) DescribeGroupUserWithOptions(request *DescribeGroupUserReq
 
 // Summary:
 //
-// Queries the members of a user group.
+// Query group members.
 //
 // @param request - DescribeGroupUserRequest
 //
@@ -984,7 +996,7 @@ func (client *Client) DescribeGroupUser(request *DescribeGroupUserRequest) (_res
 
 // Summary:
 //
-// Queries user groups.
+// Query user groups.
 //
 // @param request - DescribeGroupsRequest
 //
@@ -1068,7 +1080,7 @@ func (client *Client) DescribeGroupsWithOptions(request *DescribeGroupsRequest, 
 
 // Summary:
 //
-// Queries user groups.
+// Query user groups.
 //
 // @param request - DescribeGroupsRequest
 //
@@ -1086,7 +1098,7 @@ func (client *Client) DescribeGroups(request *DescribeGroupsRequest) (_result *D
 
 // Summary:
 //
-// Queries the information about virtual multi-factor authentication (MFA) devices that are bound to convenience accounts.
+// Lists virtual MFA devices bound to directory accounts.
 //
 // @param request - DescribeMfaDevicesRequest
 //
@@ -1154,7 +1166,7 @@ func (client *Client) DescribeMfaDevicesWithOptions(request *DescribeMfaDevicesR
 
 // Summary:
 //
-// Queries the information about virtual multi-factor authentication (MFA) devices that are bound to convenience accounts.
+// Lists virtual MFA devices bound to directory accounts.
 //
 // @param request - DescribeMfaDevicesRequest
 //
@@ -1172,7 +1184,7 @@ func (client *Client) DescribeMfaDevices(request *DescribeMfaDevicesRequest) (_r
 
 // Summary:
 //
-// Queries subordinate organizations.
+// Find subordinate organizations.
 //
 // @param request - DescribeOrgByLayerRequest
 //
@@ -1224,7 +1236,7 @@ func (client *Client) DescribeOrgByLayerWithOptions(request *DescribeOrgByLayerR
 
 // Summary:
 //
-// Queries subordinate organizations.
+// Find subordinate organizations.
 //
 // @param request - DescribeOrgByLayerRequest
 //
@@ -1242,11 +1254,11 @@ func (client *Client) DescribeOrgByLayer(request *DescribeOrgByLayerRequest) (_r
 
 // Summary:
 //
-// Queries organizations.
+// Queries a list of organizations.
 //
 // Description:
 //
-// An organization is in a tree structure. The root organization ID is in the following format: org-aliyun-wy-org-id.
+// Organizations are arranged in a tree-like structure. The root organization ID is org-aliyun-wy-org-id.
 //
 // @param tmpReq - DescribeOrgsRequest
 //
@@ -1320,11 +1332,11 @@ func (client *Client) DescribeOrgsWithOptions(tmpReq *DescribeOrgsRequest, runti
 
 // Summary:
 //
-// Queries organizations.
+// Queries a list of organizations.
 //
 // Description:
 //
-// An organization is in a tree structure. The root organization ID is in the following format: org-aliyun-wy-org-id.
+// Organizations are arranged in a tree-like structure. The root organization ID is org-aliyun-wy-org-id.
 //
 // @param request - DescribeOrgsRequest
 //
@@ -1342,7 +1354,7 @@ func (client *Client) DescribeOrgs(request *DescribeOrgsRequest) (_result *Descr
 
 // Summary:
 //
-// Queries resource groups.
+// View resource groups.
 //
 // @param request - DescribeResourceGroupsRequest
 //
@@ -1418,7 +1430,7 @@ func (client *Client) DescribeResourceGroupsWithOptions(request *DescribeResourc
 
 // Summary:
 //
-// Queries resource groups.
+// View resource groups.
 //
 // @param request - DescribeResourceGroupsRequest
 //
@@ -1436,7 +1448,7 @@ func (client *Client) DescribeResourceGroups(request *DescribeResourceGroupsRequ
 
 // Summary:
 //
-// # Query basic user information
+// # Query user basic information
 //
 // @param request - DescribeUserRequest
 //
@@ -1488,7 +1500,7 @@ func (client *Client) DescribeUserWithOptions(request *DescribeUserRequest, runt
 
 // Summary:
 //
-// # Query basic user information
+// # Query user basic information
 //
 // @param request - DescribeUserRequest
 //
@@ -1506,7 +1518,7 @@ func (client *Client) DescribeUser(request *DescribeUserRequest) (_result *Descr
 
 // Summary:
 //
-// Queries the information about convenience users. The information of a convenience user includes a username, an email address, and a description.
+// Retrieves directory account information, including the username, email address, and display name.
 //
 // @param tmpReq - DescribeUsersRequest
 //
@@ -1634,7 +1646,7 @@ func (client *Client) DescribeUsersWithOptions(tmpReq *DescribeUsersRequest, run
 
 // Summary:
 //
-// Queries the information about convenience users. The information of a convenience user includes a username, an email address, and a description.
+// Retrieves directory account information, including the username, email address, and display name.
 //
 // @param request - DescribeUsersRequest
 //
@@ -1652,7 +1664,7 @@ func (client *Client) DescribeUsers(request *DescribeUsersRequest) (_result *Des
 
 // Summary:
 //
-// Filters convenience accounts by property.
+// Filter account information by user attribute.
 //
 // @param tmpReq - FilterUsersRequest
 //
@@ -1778,7 +1790,7 @@ func (client *Client) FilterUsersWithOptions(tmpReq *FilterUsersRequest, runtime
 
 // Summary:
 //
-// Filters convenience accounts by property.
+// Filter account information by user attribute.
 //
 // @param request - FilterUsersRequest
 //
@@ -1858,7 +1870,7 @@ func (client *Client) GetManagerInfoByAuthCode(request *GetManagerInfoByAuthCode
 
 // Summary:
 //
-// Initializes an organization ID.
+// Initialize the organization ID.
 //
 // @param request - InitTenantAliasRequest
 //
@@ -1902,7 +1914,7 @@ func (client *Client) InitTenantAliasWithOptions(request *InitTenantAliasRequest
 
 // Summary:
 //
-// Initializes an organization ID.
+// Initialize the organization ID.
 //
 // @param request - InitTenantAliasRequest
 //
@@ -1920,7 +1932,7 @@ func (client *Client) InitTenantAlias(request *InitTenantAliasRequest) (_result 
 
 // Summary:
 //
-// Queries all user properties within an Alibaba Cloud account.
+// Query the list of existing user attributes under the current account.
 //
 // @param request - ListPropertyRequest
 //
@@ -1964,7 +1976,7 @@ func (client *Client) ListPropertyWithOptions(request *ListPropertyRequest, runt
 
 // Summary:
 //
-// Queries all user properties within an Alibaba Cloud account.
+// Query the list of existing user attributes under the current account.
 //
 // @param request - ListPropertyRequest
 //
@@ -1982,7 +1994,7 @@ func (client *Client) ListProperty(request *ListPropertyRequest) (_result *ListP
 
 // Summary:
 //
-// Queries property values of a user property.
+// Query the list of attribute values for a specific user attribute.
 //
 // @param request - ListPropertyValueRequest
 //
@@ -2030,7 +2042,7 @@ func (client *Client) ListPropertyValueWithOptions(request *ListPropertyValueReq
 
 // Summary:
 //
-// Queries property values of a user property.
+// Query the list of attribute values for a specific user attribute.
 //
 // @param request - ListPropertyValueRequest
 //
@@ -2048,11 +2060,11 @@ func (client *Client) ListPropertyValue(request *ListPropertyValueRequest) (_res
 
 // Summary:
 //
-// Locks a virtual multi-factor authentication (MFA) device that is bound to a convenience user.
+// Lock the virtual MFA device attached to a convenience account.
 //
 // Description:
 //
-// After a virtual MFA device is locked, the status of the virtual MFA device changes to LOCKED. The convenience user to which the MFA device is bound cannot log on to the cloud desktop that resides in the workspace with the MFA feature enabled because the identity of the convenience user cannot be verified based on the virtual MFA device. You can call the [UnlockMfaDevice](https://help.aliyun.com/document_detail/286534.html) operation to unlock the virtual MFA device.
+// After locking, the status of the virtual MFA device changes to LOCKED. When the associated convenience account attempts to log on to a WUYING Terminal through an office network with MFA enabled, authentication will fail due to the locked MFA device, preventing successful logon. You can invoke [UnlockMfaDevice](~~UnlockMfaDevice~~) to unlock it.
 //
 // @param request - LockMfaDeviceRequest
 //
@@ -2104,11 +2116,11 @@ func (client *Client) LockMfaDeviceWithOptions(request *LockMfaDeviceRequest, ru
 
 // Summary:
 //
-// Locks a virtual multi-factor authentication (MFA) device that is bound to a convenience user.
+// Lock the virtual MFA device attached to a convenience account.
 //
 // Description:
 //
-// After a virtual MFA device is locked, the status of the virtual MFA device changes to LOCKED. The convenience user to which the MFA device is bound cannot log on to the cloud desktop that resides in the workspace with the MFA feature enabled because the identity of the convenience user cannot be verified based on the virtual MFA device. You can call the [UnlockMfaDevice](https://help.aliyun.com/document_detail/286534.html) operation to unlock the virtual MFA device.
+// After locking, the status of the virtual MFA device changes to LOCKED. When the associated convenience account attempts to log on to a WUYING Terminal through an office network with MFA enabled, authentication will fail due to the locked MFA device, preventing successful logon. You can invoke [UnlockMfaDevice](~~UnlockMfaDevice~~) to unlock it.
 //
 // @param request - LockMfaDeviceRequest
 //
@@ -2126,7 +2138,13 @@ func (client *Client) LockMfaDevice(request *LockMfaDeviceRequest) (_result *Loc
 
 // Summary:
 //
-// Locks one or more convenience users.
+// Locks one or more convenience accounts. Locked convenience accounts cannot be used to sign in to Wuying clients.
+//
+// Description:
+//
+// For security purposes, you can lock convenience accounts. Locked convenience users cannot sign in to Wuying clients, and therefore cannot access any Wuying cloud resources.
+//
+// > Call the [DescribeUsers](https://help.aliyun.com/document_detail/283609.html) operation to check the lock status of convenience accounts. The `Status` value in the response is 0 for unlocked accounts and 9 for locked accounts.
 //
 // @param request - LockUsersRequest
 //
@@ -2180,7 +2198,13 @@ func (client *Client) LockUsersWithOptions(request *LockUsersRequest, runtime *d
 
 // Summary:
 //
-// Locks one or more convenience users.
+// Locks one or more convenience accounts. Locked convenience accounts cannot be used to sign in to Wuying clients.
+//
+// Description:
+//
+// For security purposes, you can lock convenience accounts. Locked convenience users cannot sign in to Wuying clients, and therefore cannot access any Wuying cloud resources.
+//
+// > Call the [DescribeUsers](https://help.aliyun.com/document_detail/283609.html) operation to check the lock status of convenience accounts. The `Status` value in the response is 0 for unlocked accounts and 9 for locked accounts.
 //
 // @param request - LockUsersRequest
 //
@@ -2198,7 +2222,7 @@ func (client *Client) LockUsers(request *LockUsersRequest) (_result *LockUsersRe
 
 // Summary:
 //
-// Modifies the name and description of a user group.
+// Modify the name and description of a group.
 //
 // @param request - ModifyGroupRequest
 //
@@ -2254,7 +2278,7 @@ func (client *Client) ModifyGroupWithOptions(request *ModifyGroupRequest, runtim
 
 // Summary:
 //
-// Modifies the name and description of a user group.
+// Modify the name and description of a group.
 //
 // @param request - ModifyGroupRequest
 //
@@ -2272,7 +2296,7 @@ func (client *Client) ModifyGroup(request *ModifyGroupRequest) (_result *ModifyG
 
 // Summary:
 //
-// Modifies an organization.
+// Modify an organization.
 //
 // @param request - ModifyOrgRequest
 //
@@ -2324,7 +2348,7 @@ func (client *Client) ModifyOrgWithOptions(request *ModifyOrgRequest, runtime *d
 
 // Summary:
 //
-// Modifies an organization.
+// Modify an organization.
 //
 // @param request - ModifyOrgRequest
 //
@@ -2342,7 +2366,7 @@ func (client *Client) ModifyOrg(request *ModifyOrgRequest) (_result *ModifyOrgRe
 
 // Summary:
 //
-// Modifies user information.
+// Modify the contact information of a convenience account.
 //
 // @param request - ModifyUserRequest
 //
@@ -2398,7 +2422,7 @@ func (client *Client) ModifyUserWithOptions(request *ModifyUserRequest, runtime 
 
 // Summary:
 //
-// Modifies user information.
+// Modify the contact information of a convenience account.
 //
 // @param request - ModifyUserRequest
 //
@@ -2416,7 +2440,7 @@ func (client *Client) ModifyUser(request *ModifyUserRequest) (_result *ModifyUse
 
 // Summary:
 //
-// Moves an organization.
+// Shift organization.
 //
 // @param request - MoveOrgRequest
 //
@@ -2468,7 +2492,7 @@ func (client *Client) MoveOrgWithOptions(request *MoveOrgRequest, runtime *dara.
 
 // Summary:
 //
-// Moves an organization.
+// Shift organization.
 //
 // @param request - MoveOrgRequest
 //
@@ -2486,7 +2510,7 @@ func (client *Client) MoveOrg(request *MoveOrgRequest) (_result *MoveOrgResponse
 
 // Summary:
 //
-// Moves users to a specific organization.
+// Shift users to the target organization architecture.
 //
 // @param request - MoveUserOrgRequest
 //
@@ -2538,7 +2562,7 @@ func (client *Client) MoveUserOrgWithOptions(request *MoveUserOrgRequest, runtim
 
 // Summary:
 //
-// Moves users to a specific organization.
+// Shift users to the target organization architecture.
 //
 // @param request - MoveUserOrgRequest
 //
@@ -2556,7 +2580,7 @@ func (client *Client) MoveUserOrg(request *MoveUserOrgRequest) (_result *MoveUse
 
 // Summary:
 //
-// Queries user synchronization status.
+// Query the user synchronization status.
 //
 // @param request - QuerySyncStatusByAliUidRequest
 //
@@ -2600,7 +2624,7 @@ func (client *Client) QuerySyncStatusByAliUidWithOptions(request *QuerySyncStatu
 
 // Summary:
 //
-// Queries user synchronization status.
+// Query the user synchronization status.
 //
 // @param request - QuerySyncStatusByAliUidRequest
 //
@@ -2618,7 +2642,7 @@ func (client *Client) QuerySyncStatusByAliUid(request *QuerySyncStatusByAliUidRe
 
 // Summary:
 //
-// Deletes a single user group or multiple user groups at a time.
+// Delete a group. Supports batch operations.
 //
 // @param request - RemoveGroupRequest
 //
@@ -2670,7 +2694,7 @@ func (client *Client) RemoveGroupWithOptions(request *RemoveGroupRequest, runtim
 
 // Summary:
 //
-// Deletes a single user group or multiple user groups at a time.
+// Delete a group. Supports batch operations.
 //
 // @param request - RemoveGroupRequest
 //
@@ -2688,11 +2712,11 @@ func (client *Client) RemoveGroup(request *RemoveGroupRequest) (_result *RemoveG
 
 // Summary:
 //
-// Removes a virtual multi-factor authentication (MFA) device that is bound to a convenience account.
+// Delete the virtual MFA device attached to a convenience account.
 //
 // Description:
 //
-// If you remove a virtual MFA device that is bound to a convenience account, the convenience account can no longer use the virtual MFA device to log on to cloud computers. Before the convenience account can log on to Alibaba Cloud Workspace terminals again, a new virtual MFA device must be bound to the convenience account.
+// Deleting the virtual MFA device attached to a convenience account unbinds the MFA device, which is equivalent to resetting or disabling it. The corresponding convenience account must reattach a new virtual MFA device when logging on to a WUYING Terminal.
 //
 // @param request - RemoveMfaDeviceRequest
 //
@@ -2744,11 +2768,11 @@ func (client *Client) RemoveMfaDeviceWithOptions(request *RemoveMfaDeviceRequest
 
 // Summary:
 //
-// Removes a virtual multi-factor authentication (MFA) device that is bound to a convenience account.
+// Delete the virtual MFA device attached to a convenience account.
 //
 // Description:
 //
-// If you remove a virtual MFA device that is bound to a convenience account, the convenience account can no longer use the virtual MFA device to log on to cloud computers. Before the convenience account can log on to Alibaba Cloud Workspace terminals again, a new virtual MFA device must be bound to the convenience account.
+// Deleting the virtual MFA device attached to a convenience account unbinds the MFA device, which is equivalent to resetting or disabling it. The corresponding convenience account must reattach a new virtual MFA device when logging on to a WUYING Terminal.
 //
 // @param request - RemoveMfaDeviceRequest
 //
@@ -2766,7 +2790,7 @@ func (client *Client) RemoveMfaDevice(request *RemoveMfaDeviceRequest) (_result 
 
 // Summary:
 //
-// Removes an organization.
+// Remove an organization.
 //
 // @param request - RemoveOrgRequest
 //
@@ -2814,7 +2838,7 @@ func (client *Client) RemoveOrgWithOptions(request *RemoveOrgRequest, runtime *d
 
 // Summary:
 //
-// Removes an organization.
+// Remove an organization.
 //
 // @param request - RemoveOrgRequest
 //
@@ -2832,7 +2856,7 @@ func (client *Client) RemoveOrg(request *RemoveOrgRequest) (_result *RemoveOrgRe
 
 // Summary:
 //
-// Deletes a user property.
+// Delete a set of user attributes.
 //
 // @param request - RemovePropertyRequest
 //
@@ -2882,7 +2906,7 @@ func (client *Client) RemovePropertyWithOptions(request *RemovePropertyRequest, 
 
 // Summary:
 //
-// Deletes a user property.
+// Delete a set of user attributes.
 //
 // @param request - RemovePropertyRequest
 //
@@ -2900,7 +2924,7 @@ func (client *Client) RemoveProperty(request *RemovePropertyRequest) (_result *R
 
 // Summary:
 //
-// Removes one or more convenience users.
+// Delete one or more convenience accounts.
 //
 // @param request - RemoveUsersRequest
 //
@@ -2948,7 +2972,7 @@ func (client *Client) RemoveUsersWithOptions(request *RemoveUsersRequest, runtim
 
 // Summary:
 //
-// Removes one or more convenience users.
+// Delete one or more convenience accounts.
 //
 // @param request - RemoveUsersRequest
 //
@@ -2966,7 +2990,7 @@ func (client *Client) RemoveUsers(request *RemoveUsersRequest) (_result *RemoveU
 
 // Summary:
 //
-// Resets the password for a convenience user. If you call this operation, a token that is used to reset the password is generated, and the system sends a password reset email that includes the token to the email address of the convenience user.
+// Reset the password of a convenience account, including generating a password reset token and sending a password reset email to the mailbox of the convenience account.
 //
 // @param request - ResetUserPasswordRequest
 //
@@ -3018,7 +3042,7 @@ func (client *Client) ResetUserPasswordWithOptions(request *ResetUserPasswordReq
 
 // Summary:
 //
-// Resets the password for a convenience user. If you call this operation, a token that is used to reset the password is generated, and the system sends a password reset email that includes the token to the email address of the convenience user.
+// Reset the password of a convenience account, including generating a password reset token and sending a password reset email to the mailbox of the convenience account.
 //
 // @param request - ResetUserPasswordRequest
 //
@@ -3036,7 +3060,7 @@ func (client *Client) ResetUserPassword(request *ResetUserPasswordRequest) (_res
 
 // Summary:
 //
-// Associates a user property with a convenience user.
+// Associate a user attribute with a specific user.
 //
 // @param request - SetUserPropertyValueRequest
 //
@@ -3096,7 +3120,7 @@ func (client *Client) SetUserPropertyValueWithOptions(request *SetUserPropertyVa
 
 // Summary:
 //
-// Associates a user property with a convenience user.
+// Associate a user attribute with a specific user.
 //
 // @param request - SetUserPropertyValueRequest
 //
@@ -3114,7 +3138,7 @@ func (client *Client) SetUserPropertyValue(request *SetUserPropertyValueRequest)
 
 // Summary:
 //
-// Synchronizes all education information.
+// Synchronize all education information.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -3143,7 +3167,7 @@ func (client *Client) SyncAllEduInfoWithOptions(runtime *dara.RuntimeOptions) (_
 
 // Summary:
 //
-// Synchronizes all education information.
+// Synchronize all education information.
 //
 // @return SyncAllEduInfoResponse
 func (client *Client) SyncAllEduInfo() (_result *SyncAllEduInfoResponse, _err error) {
@@ -3159,7 +3183,159 @@ func (client *Client) SyncAllEduInfo() (_result *SyncAllEduInfoResponse, _err er
 
 // Summary:
 //
-// Unlocks a virtual multi-factor authentication (MFA) device that is bound to a convenience user.
+// 将资源转移到资源组中
+//
+// @param request - TransferResourcesIntoGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TransferResourcesIntoGroupResponse
+func (client *Client) TransferResourcesIntoGroupWithOptions(request *TransferResourcesIntoGroupRequest, runtime *dara.RuntimeOptions) (_result *TransferResourcesIntoGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessChannel) {
+		query["BusinessChannel"] = request.BusinessChannel
+	}
+
+	if !dara.IsNil(request.Platform) {
+		query["Platform"] = request.Platform
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.Resources) {
+		query["Resources"] = request.Resources
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("TransferResourcesIntoGroup"),
+		Version:     dara.String("2021-03-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &TransferResourcesIntoGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 将资源转移到资源组中
+//
+// @param request - TransferResourcesIntoGroupRequest
+//
+// @return TransferResourcesIntoGroupResponse
+func (client *Client) TransferResourcesIntoGroup(request *TransferResourcesIntoGroupRequest) (_result *TransferResourcesIntoGroupResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &TransferResourcesIntoGroupResponse{}
+	_body, _err := client.TransferResourcesIntoGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 将资源从资源组中转出
+//
+// @param request - TransferResourcesOutofGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TransferResourcesOutofGroupResponse
+func (client *Client) TransferResourcesOutofGroupWithOptions(request *TransferResourcesOutofGroupRequest, runtime *dara.RuntimeOptions) (_result *TransferResourcesOutofGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessChannel) {
+		query["BusinessChannel"] = request.BusinessChannel
+	}
+
+	if !dara.IsNil(request.Platform) {
+		query["Platform"] = request.Platform
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.Resources) {
+		query["Resources"] = request.Resources
+	}
+
+	if !dara.IsNil(request.TargetResourceGroupId) {
+		query["TargetResourceGroupId"] = request.TargetResourceGroupId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("TransferResourcesOutofGroup"),
+		Version:     dara.String("2021-03-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &TransferResourcesOutofGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 将资源从资源组中转出
+//
+// @param request - TransferResourcesOutofGroupRequest
+//
+// @return TransferResourcesOutofGroupResponse
+func (client *Client) TransferResourcesOutofGroup(request *TransferResourcesOutofGroupRequest) (_result *TransferResourcesOutofGroupResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &TransferResourcesOutofGroupResponse{}
+	_body, _err := client.TransferResourcesOutofGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Unlock the virtual MFA device attached to a convenience account.
 //
 // @param request - UnlockMfaDeviceRequest
 //
@@ -3211,7 +3387,7 @@ func (client *Client) UnlockMfaDeviceWithOptions(request *UnlockMfaDeviceRequest
 
 // Summary:
 //
-// Unlocks a virtual multi-factor authentication (MFA) device that is bound to a convenience user.
+// Unlock the virtual MFA device attached to a convenience account.
 //
 // @param request - UnlockMfaDeviceRequest
 //
@@ -3229,7 +3405,13 @@ func (client *Client) UnlockMfaDevice(request *UnlockMfaDeviceRequest) (_result 
 
 // Summary:
 //
-// Unlocks one or more convenience users.
+// Unlock one or more convenience accounts. After being unlocked, the convenience accounts can log on to WUYING Terminal.
+//
+// Description:
+//
+// Locked convenience accounts cannot log on to WUYING Terminal and therefore cannot access any WUYING cloud resources. To allow a convenience account to log on to WUYING Terminal, you must first unlock it.
+//
+// > You can invoke [DescribeUsers](https://help.aliyun.com/document_detail/283609.html) to query convenience account information. If the value of `Status` in the returned data is 0, the convenience account is not locked. If the value of `Status` is 9, the convenience account is locked.
 //
 // @param request - UnlockUsersRequest
 //
@@ -3283,7 +3465,13 @@ func (client *Client) UnlockUsersWithOptions(request *UnlockUsersRequest, runtim
 
 // Summary:
 //
-// Unlocks one or more convenience users.
+// Unlock one or more convenience accounts. After being unlocked, the convenience accounts can log on to WUYING Terminal.
+//
+// Description:
+//
+// Locked convenience accounts cannot log on to WUYING Terminal and therefore cannot access any WUYING cloud resources. To allow a convenience account to log on to WUYING Terminal, you must first unlock it.
+//
+// > You can invoke [DescribeUsers](https://help.aliyun.com/document_detail/283609.html) to query convenience account information. If the value of `Status` in the returned data is 0, the convenience account is not locked. If the value of `Status` is 9, the convenience account is locked.
 //
 // @param request - UnlockUsersRequest
 //
@@ -3301,7 +3489,7 @@ func (client *Client) UnlockUsers(request *UnlockUsersRequest) (_result *UnlockU
 
 // Summary:
 //
-// Modifies a user property.
+// Modify User Attributes.
 //
 // @param request - UpdatePropertyRequest
 //
@@ -3359,7 +3547,7 @@ func (client *Client) UpdatePropertyWithOptions(request *UpdatePropertyRequest, 
 
 // Summary:
 //
-// Modifies a user property.
+// Modify User Attributes.
 //
 // @param request - UpdatePropertyRequest
 //
@@ -3377,7 +3565,7 @@ func (client *Client) UpdateProperty(request *UpdatePropertyRequest) (_result *U
 
 // Summary:
 //
-// Add multiple users to a user group at a time.
+// Add users to a group in batch.
 //
 // @param request - UserBatchJoinGroupRequest
 //
@@ -3429,7 +3617,7 @@ func (client *Client) UserBatchJoinGroupWithOptions(request *UserBatchJoinGroupR
 
 // Summary:
 //
-// Add multiple users to a user group at a time.
+// Add users to a group in batch.
 //
 // @param request - UserBatchJoinGroupRequest
 //
@@ -3447,7 +3635,7 @@ func (client *Client) UserBatchJoinGroup(request *UserBatchJoinGroupRequest) (_r
 
 // Summary:
 //
-// Removes multiple users from a user group at a time.
+// Remove users from a group in batch.
 //
 // @param request - UserBatchQuitGroupRequest
 //
@@ -3499,7 +3687,7 @@ func (client *Client) UserBatchQuitGroupWithOptions(request *UserBatchQuitGroupR
 
 // Summary:
 //
-// Removes multiple users from a user group at a time.
+// Remove users from a group in batch.
 //
 // @param request - UserBatchQuitGroupRequest
 //

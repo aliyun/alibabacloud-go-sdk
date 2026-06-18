@@ -18,14 +18,16 @@ type iDescribeGroupsResponseBody interface {
 }
 
 type DescribeGroupsResponseBody struct {
-	// The number of the entries returned.
+	// The total number of entries returned.
 	//
 	// example:
 	//
 	// 1
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The user groups.
+	// A list of user groups.
 	Groups []*DescribeGroupsResponseBodyGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
@@ -81,10 +83,11 @@ func (s *DescribeGroupsResponseBody) Validate() error {
 }
 
 type DescribeGroupsResponseBodyGroups struct {
+	// The logon policy attached to the user group.
 	AttachedLoginPolicy *DescribeGroupsResponseBodyGroupsAttachedLoginPolicy `json:"AttachedLoginPolicy,omitempty" xml:"AttachedLoginPolicy,omitempty" type:"Struct"`
-	// The type of the resource assigned to the user group.
+	// A list of authorized resources.
 	AuthedResources map[string]*string `json:"AuthedResources,omitempty" xml:"AuthedResources,omitempty"`
-	// The time when the user group is created.
+	// The time when the user group was created.
 	//
 	// example:
 	//
@@ -96,6 +99,8 @@ type DescribeGroupsResponseBodyGroups struct {
 	//
 	// A test group.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the user group.
+	//
 	// example:
 	//
 	// ug-2412ojkwtybd****
@@ -106,13 +111,13 @@ type DescribeGroupsResponseBodyGroups struct {
 	//
 	// TestGroup
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// Indicates whether the file approval feature is enabled.
+	// Indicates whether file transfer approval is enabled.
 	//
 	// example:
 	//
 	// false
 	TransferFileNeedApproval *bool `json:"TransferFileNeedApproval,omitempty" xml:"TransferFileNeedApproval,omitempty"`
-	// The number of users in the user group.
+	// The number of members in the user group.
 	//
 	// example:
 	//
@@ -210,7 +215,9 @@ func (s *DescribeGroupsResponseBodyGroups) Validate() error {
 }
 
 type DescribeGroupsResponseBodyGroupsAttachedLoginPolicy struct {
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the logon policy.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the logon policy.
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
 }
 

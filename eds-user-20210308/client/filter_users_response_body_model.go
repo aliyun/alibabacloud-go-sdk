@@ -18,19 +18,19 @@ type iFilterUsersResponseBody interface {
 }
 
 type FilterUsersResponseBody struct {
-	// The pagination token that is used in the next request to retrieve a new page of results. If not all results are returned in a query, a value is returned for the NextToken parameter. In this case, you can use the returned NextToken value to start the next query.
+	// The token for paginated results. If the response is truncated, this parameter is returned. To retrieve the next page of results, include this value in a subsequent request.
 	//
 	// example:
 	//
-	// caeba0bbb2be03f84eb48b699f0a4883
+	// caeba0bbb2be03f84eb48b699f0a****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The request ID.
 	//
 	// example:
 	//
-	// DBD276B5-00FF-5E04-8EF7-5CBA09BF112A
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the convenience accounts.
+	// A list of convenience accounts.
 	Users []*FilterUsersResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
 }
 
@@ -83,155 +83,107 @@ func (s *FilterUsersResponseBody) Validate() error {
 }
 
 type FilterUsersResponseBodyUsers struct {
-	// The date when a convenience account is automatically locked.
+	// The date the account will be automatically locked.
 	//
 	// example:
 	//
 	// 2023-03-03
 	AutoLockTime *string `json:"AutoLockTime,omitempty" xml:"AutoLockTime,omitempty"`
-	// The number of cloud desktops that are assigned to the convenience user.
+	// The number of cloud desktops assigned to the user.
 	//
 	// example:
 	//
 	// 1
 	DesktopCount *int64 `json:"DesktopCount,omitempty" xml:"DesktopCount,omitempty"`
-	// The number of cloud desktop pools that are assigned to the convenience user. This value is returned if you set `IncludeDesktopGroupCount` to `true`.
+	// The number of desktop groups the user can access. This parameter is returned only when `IncludeDesktopGroupCount` is set to `true`.
 	//
 	// example:
 	//
 	// 2
 	DesktopGroupCount *int64 `json:"DesktopGroupCount,omitempty" xml:"DesktopGroupCount,omitempty"`
-	// The email address of the convenience user.
+	// The email address.
 	//
 	// example:
 	//
-	// testName@example.com
+	// username@example.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	// Indicates whether the convenience user is a local administrator.
-	//
-	// Valid values:
-	//
-	// 	- true
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- false
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// Indicates whether the user has local administrator permissions.
 	//
 	// example:
 	//
 	// true
 	EnableAdminAccess *bool `json:"EnableAdminAccess,omitempty" xml:"EnableAdminAccess,omitempty"`
-	// The username of the convenience user.
+	// The user name.
 	//
 	// example:
 	//
-	// testName
+	// alice
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// The additional information about the convenience user.
+	// External user information.
 	ExternalInfo *FilterUsersResponseBodyUsersExternalInfo `json:"ExternalInfo,omitempty" xml:"ExternalInfo,omitempty" type:"Struct"`
 	Groups       []*FilterUsersResponseBodyUsersGroups     `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
-	// The ID of the convenience user.
+	// The user ID.
 	//
 	// example:
 	//
-	// 12345
+	// 4205**
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Indicates whether the convenience user is a tenant administrator.
-	//
-	// Valid values:
-	//
-	// 	- true
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- false
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// Indicates whether the user is a tenant administrator.
 	//
 	// example:
 	//
 	// true
 	IsTenantManager *bool `json:"IsTenantManager,omitempty" xml:"IsTenantManager,omitempty"`
-	// The organizations to which the user belongs.
+	// A list of organizations the user belongs to.
 	OrgList []*FilterUsersResponseBodyUsersOrgList `json:"OrgList,omitempty" xml:"OrgList,omitempty" type:"Repeated"`
-	// The type of the account ownership.
-	//
-	// Valid values:
-	//
-	// 	- CreateFromManager: administrator-activated
-	//
-	// 	- Normal: user-activated
+	// The account ownership type.
 	//
 	// example:
 	//
 	// Normal
 	OwnerType *string `json:"OwnerType,omitempty" xml:"OwnerType,omitempty"`
-	// By default, user account passwords do not expire. However, you can set a validity period between 30 and 365 days. Once the period expires, end users must change their password before they can log on to terminals.
+	// The password validity period in days. By default, passwords do not expire. Set this to a value from 30 to 365 to enforce an expiration policy. When a password expires, the user must change it before logging on again.
 	//
-	// >  The feature is in invitational preview. If you want to use this feature, submit a ticket.
+	// > This feature is in preview and available by invitation only. To use this feature, submit a ticket.
 	//
 	// example:
 	//
 	// 30
 	PasswordExpireDays *int32 `json:"PasswordExpireDays,omitempty" xml:"PasswordExpireDays,omitempty"`
-	// The number of days remaining until the account password expires.
+	// The number of days until the password expires.
 	//
 	// example:
 	//
 	// 10
 	PasswordExpireRestDays *int32 `json:"PasswordExpireRestDays,omitempty" xml:"PasswordExpireRestDays,omitempty"`
-	// The mobile number of the convenience user.
+	// The phone number.
 	//
 	// example:
 	//
 	// 1381111****
 	Phone *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
-	// The nickname of the convenience user.
+	// The user\\"s nickname.
 	//
 	// example:
 	//
-	// Oliver
+	// 小明
 	RealNickName *string `json:"RealNickName,omitempty" xml:"RealNickName,omitempty"`
-	// The remarks on the convenience user.
+	// The remark about the user.
 	//
 	// example:
 	//
-	// 1
+	// 测试专用
 	Remark             *string                                           `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	ResourcePolicyList []*FilterUsersResponseBodyUsersResourcePolicyList `json:"ResourcePolicyList,omitempty" xml:"ResourcePolicyList,omitempty" type:"Repeated"`
-	// The remarks on the convenience account.
-	//
-	// Valid values:
-	//
-	// 	- 0: The convenience account is normal.
-	//
-	// 	- 9: The convenience account is locked.
+	// The status of the convenience account.
 	//
 	// example:
 	//
 	// 0
 	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The supported identity provider logon methods.
+	// A list of identity providers (IdPs) that the user can use to log on.
 	SupportLoginIdps []*FilterUsersResponseBodyUsersSupportLoginIdps `json:"SupportLoginIdps,omitempty" xml:"SupportLoginIdps,omitempty" type:"Repeated"`
-	// The information about the properties.
+	// A list of user properties.
 	UserSetPropertiesModels []*FilterUsersResponseBodyUsersUserSetPropertiesModels `json:"UserSetPropertiesModels,omitempty" xml:"UserSetPropertiesModels,omitempty" type:"Repeated"`
 }
 
@@ -487,13 +439,13 @@ func (s *FilterUsersResponseBodyUsers) Validate() error {
 }
 
 type FilterUsersResponseBodyUsersExternalInfo struct {
-	// The account that is associated with the convenience user.
+	// The name of the mapped external account.
 	//
 	// example:
 	//
-	// test
+	// account
 	ExternalName *string `json:"ExternalName,omitempty" xml:"ExternalName,omitempty"`
-	// The account, student ID, or employee ID that is associated with the convenience user.
+	// The ID of the external account, such as a student ID or an employee ID.
 	//
 	// example:
 	//
@@ -650,9 +602,9 @@ func (s *FilterUsersResponseBodyUsersResourcePolicyList) Validate() error {
 }
 
 type FilterUsersResponseBodyUsersSupportLoginIdps struct {
-	// The enterprise identity provider ID.
+	// The ID of the identity provider (IdP).
 	IdpId *string `json:"IdpId,omitempty" xml:"IdpId,omitempty"`
-	// The enterprise identity provider name.
+	// The name of the identity provider (IdP).
 	IdpName *string `json:"IdpName,omitempty" xml:"IdpName,omitempty"`
 }
 
@@ -687,19 +639,19 @@ func (s *FilterUsersResponseBodyUsersSupportLoginIdps) Validate() error {
 }
 
 type FilterUsersResponseBodyUsersUserSetPropertiesModels struct {
-	// The property ID.
+	// The ID of the user property.
 	//
 	// example:
 	//
 	// 12
 	PropertyId *int64 `json:"PropertyId,omitempty" xml:"PropertyId,omitempty"`
-	// The property name.
+	// The name of the user property.
 	//
 	// example:
 	//
 	// department
 	PropertyKey *string `json:"PropertyKey,omitempty" xml:"PropertyKey,omitempty"`
-	// The property type.
+	// The type of the user property.
 	//
 	// example:
 	//
@@ -707,17 +659,17 @@ type FilterUsersResponseBodyUsersUserSetPropertiesModels struct {
 	PropertyType *int32 `json:"PropertyType,omitempty" xml:"PropertyType,omitempty"`
 	// The property values.
 	PropertyValues []*FilterUsersResponseBodyUsersUserSetPropertiesModelsPropertyValues `json:"PropertyValues,omitempty" xml:"PropertyValues,omitempty" type:"Repeated"`
-	// The ID of the convenience user that is bound to the property.
+	// The ID of the user associated with the property.
 	//
 	// example:
 	//
-	// 12345
+	// 4205**
 	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The username of the convenience user that is bound to the property.
+	// The user name associated with the property.
 	//
 	// example:
 	//
-	// testName
+	// alice
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
@@ -801,7 +753,7 @@ type FilterUsersResponseBodyUsersUserSetPropertiesModelsPropertyValues struct {
 	//
 	// example:
 	//
-	// A
+	// dev
 	PropertyValue *string `json:"PropertyValue,omitempty" xml:"PropertyValue,omitempty"`
 	// The ID of the property value.
 	//

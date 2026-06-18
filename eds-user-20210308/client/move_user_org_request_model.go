@@ -18,6 +18,8 @@ type iMoveUserOrgRequest interface {
 }
 
 type MoveUserOrgRequest struct {
+	// Channel
+	//
 	// example:
 	//
 	// ENTERPRISE

@@ -18,6 +18,8 @@ type iDeleteResourceGroupRequest interface {
 }
 
 type DeleteResourceGroupRequest struct {
+	// Channel
+	//
 	// example:
 	//
 	// ENTERPRISE

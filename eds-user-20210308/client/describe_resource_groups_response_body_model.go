@@ -24,7 +24,7 @@ type DescribeResourceGroupsResponseBody struct {
 	//
 	// 68BA1DF7-8814-5AED-B844-F8F7F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The resource groups.
+	// A list of resource groups.
 	ResourceGroup []*DescribeResourceGroupsResponseBodyResourceGroup `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty" type:"Repeated"`
 	// The total number of resource groups.
 	//
@@ -83,28 +83,34 @@ func (s *DescribeResourceGroupsResponseBody) Validate() error {
 }
 
 type DescribeResourceGroupsResponseBodyResourceGroup struct {
+	// The Alibaba Cloud resource group ID.
+	//
 	// example:
 	//
 	// rg-123456
 	AliyunResourceGroupId *string                                                    `json:"AliyunResourceGroupId,omitempty" xml:"AliyunResourceGroupId,omitempty"`
 	AppRules              []*DescribeResourceGroupsResponseBodyResourceGroupAppRules `json:"AppRules,omitempty" xml:"AppRules,omitempty" type:"Repeated"`
-	// The number of administrators that are authorized to access the resource group.
+	// The number of administrators authorized for the resource group.
 	//
 	// example:
 	//
 	// 3
 	AuthCount *string `json:"AuthCount,omitempty" xml:"AuthCount,omitempty"`
-	// The time when the resource group was created.
+	// The time the resource group was created.
 	//
 	// example:
 	//
 	// 2022-11-29T17:25:40.000000000Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// >  The policy that is associated with the resource group.
+	// > The policies associated with the resource group.
 	//
-	// 	- The policy applies to cloud computers in the resource group. If multiple policies exist, they are enforced in order of priority.
+	// >
 	//
-	// 	- If any of these cloud computers are already associated with other policies, the resource group\\"s policy takes precedence.
+	// > - These policies apply to the cloud computers in the resource group. If multiple policies are associated, they are applied in order of priority.
+	//
+	// >
+	//
+	// > - Policies associated with the resource group take precedence over policies assigned to individual cloud computers.
 	Policies []*DescribeResourceGroupsResponseBodyResourceGroupPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Repeated"`
 	// The number of resources in the resource group.
 	//
@@ -112,17 +118,23 @@ type DescribeResourceGroupsResponseBodyResourceGroup struct {
 	//
 	// 119
 	ResourceCount *string `json:"ResourceCount,omitempty" xml:"ResourceCount,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//
 	// rg-cyo0il2pzge1***
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The name of the resource group.
-	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
-	// >  The associated scheduled task.
 	//
-	// 	- The scheduled task applies to all cloud computers in the resource group. If any of these cloud computers are already associated with other scheduled tasks, the resource group\\"s scheduled task takes precedence.
+	// example:
+	//
+	// 测试资源组
+	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
+	// > The scheduled tasks associated with the resource group.
+	//
+	// >
+	//
+	// > - These scheduled tasks apply to cloud computers in the resource group and take precedence over any tasks associated with individual cloud computers.
 	Timers []*DescribeResourceGroupsResponseBodyResourceGroupTimers `json:"Timers,omitempty" xml:"Timers,omitempty" type:"Repeated"`
 }
 
@@ -298,13 +310,17 @@ type DescribeResourceGroupsResponseBodyResourceGroupPolicies struct {
 	//
 	// pl-a8jnatl8kjasb***
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Specifies whether to use the default policy.
+	// Specifies whether this is the default policy.
 	//
 	// example:
 	//
 	// False
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
 	// The policy name.
+	//
+	// example:
+	//
+	// 测试策略123
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -349,13 +365,17 @@ func (s *DescribeResourceGroupsResponseBodyResourceGroupPolicies) Validate() err
 
 type DescribeResourceGroupsResponseBodyResourceGroupTimers struct {
 	BindStatus *string `json:"BindStatus,omitempty" xml:"BindStatus,omitempty"`
-	// The ID of the scheduled task.
+	// The scheduled task ID.
 	//
 	// example:
 	//
 	// t-asdzx0mbjhg***
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the scheduled task.
+	// The scheduled task name.
+	//
+	// example:
+	//
+	// 测试任务123
 	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	TimerStatus *string `json:"TimerStatus,omitempty" xml:"TimerStatus,omitempty"`
 }

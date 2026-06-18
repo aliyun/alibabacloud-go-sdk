@@ -18,6 +18,8 @@ type iUserBatchQuitGroupRequest interface {
 }
 
 type UserBatchQuitGroupRequest struct {
+	// Channel
+	//
 	// example:
 	//
 	// ENTERPRISE

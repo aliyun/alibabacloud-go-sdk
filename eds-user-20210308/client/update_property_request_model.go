@@ -20,6 +20,8 @@ type iUpdatePropertyRequest interface {
 }
 
 type UpdatePropertyRequest struct {
+	// Channel
+	//
 	// example:
 	//
 	// ENTERPRISE

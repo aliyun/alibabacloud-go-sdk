@@ -22,8 +22,10 @@ type LockMfaDeviceRequest struct {
 	//
 	// example:
 	//
-	// pg-jifenn.com
+	// upower.vip
 	AdDomain *string `json:"AdDomain,omitempty" xml:"AdDomain,omitempty"`
+	// Channel
+	//
 	// example:
 	//
 	// ENTERPRISE

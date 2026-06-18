@@ -32,6 +32,8 @@ type DescribeGroupUserRequest struct {
 	//
 	// ENTERPRISE
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// Channel
+	//
 	// example:
 	//
 	// ENTERPRISE

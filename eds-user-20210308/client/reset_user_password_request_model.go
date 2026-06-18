@@ -18,6 +18,8 @@ type iResetUserPasswordRequest interface {
 }
 
 type ResetUserPasswordRequest struct {
+	// Channel
+	//
 	// example:
 	//
 	// ENTERPRISE

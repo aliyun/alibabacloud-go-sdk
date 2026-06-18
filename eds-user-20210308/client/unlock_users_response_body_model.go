@@ -112,7 +112,7 @@ type UnlockUsersResponseBodyUnlockUsersResultFailedUsers struct {
 	//
 	// example:
 	//
-	// test123
+	// alice
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
 	// The error code.
 	//

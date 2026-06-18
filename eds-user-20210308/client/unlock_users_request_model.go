@@ -24,6 +24,8 @@ type UnlockUsersRequest struct {
 	//
 	// 2023-03-03
 	AutoLockTime *string `json:"AutoLockTime,omitempty" xml:"AutoLockTime,omitempty"`
+	// Channel
+	//
 	// example:
 	//
 	// ENTERPRISE

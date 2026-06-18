@@ -20,6 +20,8 @@ type iDeleteUserPropertyValueRequest interface {
 }
 
 type DeleteUserPropertyValueRequest struct {
+	// Channel
+	//
 	// example:
 	//
 	// ENTERPRISE

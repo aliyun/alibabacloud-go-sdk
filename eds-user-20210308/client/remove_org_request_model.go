@@ -16,6 +16,8 @@ type iRemoveOrgRequest interface {
 }
 
 type RemoveOrgRequest struct {
+	// Channel
+	//
 	// example:
 	//
 	// ENTERPRISE

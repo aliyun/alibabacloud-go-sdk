@@ -46,68 +46,68 @@ type iDescribeUsersShrinkRequest interface {
 }
 
 type DescribeUsersShrinkRequest struct {
-	// example:
-	//
-	// null
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// Status
+	//
 	// example:
 	//
 	// ENTERPRISE
 	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
-	// The usernames that must be exactly matched.
+	// The list of usernames (EndUserId) that you want to exactly match.
 	EndUserIds []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
-	// The usernames that must be exactly excluded.
+	// The list of usernames (EndUserId) that you want to exactly exclude.
 	ExcludeEndUserIds []*string `json:"ExcludeEndUserIds,omitempty" xml:"ExcludeEndUserIds,omitempty" type:"Repeated"`
-	ExcludeGroupId    *string   `json:"ExcludeGroupId,omitempty" xml:"ExcludeGroupId,omitempty"`
-	// The string that is used for fuzzy search. You perform fuzzy search by username (EndUserId) and email address (Email). Wildcard characters (\\*) are supported. For example, if you set this parameter to `a*m`, usernames or email addresses that start with `a` and end with `m` are returned.
+	// The ID of the user group to exclude. If specified, the query returns users who are not in this user group.
+	ExcludeGroupId *string `json:"ExcludeGroupId,omitempty" xml:"ExcludeGroupId,omitempty"`
+	// The filter for a fuzzy search. The filter matches usernames (EndUserId) and email addresses (Email). This parameter supports the wildcard character (\\*). For example, if you set this parameter to `a*m`, all results whose usernames or email addresses start with `a` and end with `m` are returned.
 	//
 	// example:
 	//
 	// a*m
-	Filter                            *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	FilterMapShrink                   *string `json:"FilterMap,omitempty" xml:"FilterMap,omitempty"`
-	FilterWithAssignedResourceShrink  *string `json:"FilterWithAssignedResource,omitempty" xml:"FilterWithAssignedResource,omitempty"`
+	Filter          *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	FilterMapShrink *string `json:"FilterMap,omitempty" xml:"FilterMap,omitempty"`
+	// Filters users by whether a cloud resource is assigned.
+	FilterWithAssignedResourceShrink *string `json:"FilterWithAssignedResource,omitempty" xml:"FilterWithAssignedResource,omitempty"`
+	// > This parameter is not available to the public.
 	FilterWithAssignedResourcesShrink *string `json:"FilterWithAssignedResources,omitempty" xml:"FilterWithAssignedResources,omitempty"`
-	// The ID of the organization in which you want to query convenience users.
+	// Performs an exact match by user group ID to query the list of accounts that belong to the user group.
 	//
 	// example:
 	//
 	// ug-12341234****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// Queries extended information about the user.
+	//
 	// example:
 	//
 	// true
 	IsQueryAllSubOrgs *bool `json:"IsQueryAllSubOrgs,omitempty" xml:"IsQueryAllSubOrgs,omitempty"`
-	// The maximum number of entries per page.
+	// The number of entries to return on each page.
 	//
-	// 	- Valid values: 1 to 500.
+	// - Valid values: 1 to 500.
 	//
-	// 	- Default value: 500.
+	// - Default value: 200.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request.\\
-	//
-	// If not all results are returned in a query, a value is returned for the NextToken parameter. In this case, you can use the return value of NextToken to perform the next query.
+	// The token that is used to start the next query. If the number of entries returned exceeds the value of MaxResults, a token is returned. You can use this token in the next query to continue the query.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the organization in which you want to query users.
+	// Performs an exact match by organization ID to query the list of accounts that belong to the organization.
 	//
 	// example:
 	//
 	// org-4mdgc1cocc59z****
-	OrgId            *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	OrgId *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	// > This parameter is not available to the public.
 	ShowExtrasShrink *string `json:"ShowExtras,omitempty" xml:"ShowExtras,omitempty"`
-	// example:
-	//
-	// null
-	SolutionId *string `json:"SolutionId,omitempty" xml:"SolutionId,omitempty"`
-	// The status.
+	SolutionId       *string `json:"SolutionId,omitempty" xml:"SolutionId,omitempty"`
+	// Specifies whether to query users in suborganizations.
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 

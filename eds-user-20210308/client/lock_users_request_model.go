@@ -18,12 +18,14 @@ type iLockUsersRequest interface {
 }
 
 type LockUsersRequest struct {
+	// The channel.
+	//
 	// example:
 	//
 	// ENTERPRISE
 	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
 	LogoutSession   *bool   `json:"LogoutSession,omitempty" xml:"LogoutSession,omitempty"`
-	// The usernames of the convenience users that you want to lock.
+	// The usernames of the convenience accounts to lock.
 	//
 	// This parameter is required.
 	//

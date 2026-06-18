@@ -18,6 +18,8 @@ type iModifyOrgRequest interface {
 }
 
 type ModifyOrgRequest struct {
+	// Channel
+	//
 	// example:
 	//
 	// ENTERPRISE
@@ -33,6 +35,10 @@ type ModifyOrgRequest struct {
 	// The name of the organization.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 开发部。
 	OrgName *string `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
 }
 

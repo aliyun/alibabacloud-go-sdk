@@ -18,6 +18,8 @@ type iBatchSetDesktopManagerRequest interface {
 }
 
 type BatchSetDesktopManagerRequest struct {
+	// Channel
+	//
 	// example:
 	//
 	// ENTERPRISE

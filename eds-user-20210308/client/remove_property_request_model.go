@@ -16,6 +16,8 @@ type iRemovePropertyRequest interface {
 }
 
 type RemovePropertyRequest struct {
+	// Channel
+	//
 	// example:
 	//
 	// ENTERPRISE

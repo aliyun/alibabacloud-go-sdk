@@ -18,6 +18,8 @@ type iCheckUsedPropertyValueRequest interface {
 }
 
 type CheckUsedPropertyValueRequest struct {
+	// Channel
+	//
 	// example:
 	//
 	// ENTERPRISE

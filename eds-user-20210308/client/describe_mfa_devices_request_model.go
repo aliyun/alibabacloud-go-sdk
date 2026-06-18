@@ -26,38 +26,38 @@ type iDescribeMfaDevicesRequest interface {
 }
 
 type DescribeMfaDevicesRequest struct {
-	// The address of the AD office network.
+	// The AD domain name.
 	//
 	// example:
 	//
 	// cn.misumi.pri
 	AdDomain *string `json:"AdDomain,omitempty" xml:"AdDomain,omitempty"`
+	// The business channel.
+	//
 	// example:
 	//
 	// ENTERPRISE
 	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
-	// The usernames of the convenience accounts.
+	// An array of end user usernames.
 	//
 	// example:
 	//
 	// test
 	EndUserIds []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
 	Filter     *string   `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	// The maximum number of entries to return. Valid values: 1 to 500.\\
-	//
-	// Default value: 100.
+	// The maximum number of results to return per page. Valid range: 1–500.<br>Default value: 100.<br>
 	//
 	// example:
 	//
 	// 100
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. Set the value to the token that is obtained from the previous query.
+	// The token for the next page of results. This value is the `NextToken` returned from a previous call.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The serial numbers of the virtual MFA devices.
+	// An array of serial numbers for virtual MFA devices.
 	//
 	// example:
 	//

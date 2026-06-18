@@ -24,6 +24,8 @@ type UnlockMfaDeviceRequest struct {
 	//
 	// welab.co.id
 	AdDomain *string `json:"AdDomain,omitempty" xml:"AdDomain,omitempty"`
+	// Channel
+	//
 	// example:
 	//
 	// ENTERPRISE

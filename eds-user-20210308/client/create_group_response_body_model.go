@@ -20,8 +20,10 @@ type CreateGroupResponseBody struct {
 	//
 	// example:
 	//
-	// ug-12341234****
+	// ug-eld7uv7vtgqsz****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// AA8D67CB-345D-5CDA-986E-FFAC7D0****

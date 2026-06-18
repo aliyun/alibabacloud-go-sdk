@@ -112,6 +112,10 @@ type DescribeGroupUserResponseBodyGroups struct {
 	// ug-91mvbosdjsdfh****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The name of the user group.
+	//
+	// example:
+	//
+	// 开发组
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The number of members in the user group.
 	//
@@ -177,7 +181,7 @@ type DescribeGroupUserResponseBodyUsers struct {
 	//
 	// example:
 	//
-	// alex****@aliyun.com
+	// alex****@example.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	// The user name.
 	//
@@ -213,7 +217,7 @@ type DescribeGroupUserResponseBodyUsers struct {
 	//
 	// example:
 	//
-	// 188888****
+	// 138****1111
 	Phone *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
 	// The remarks on the user.
 	//

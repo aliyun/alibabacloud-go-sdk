@@ -14,6 +14,8 @@ type iListPropertyRequest interface {
 }
 
 type ListPropertyRequest struct {
+	// Channel
+	//
 	// example:
 	//
 	// ENTERPRISE

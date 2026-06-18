@@ -24,20 +24,20 @@ type iCreateResourceGroupRequest interface {
 }
 
 type CreateResourceGroupRequest struct {
+	// The business channel.
+	//
 	// example:
 	//
 	// ENTERPRISE
 	BusinessChannel           *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
 	EnableAliyunResourceGroup *bool   `json:"EnableAliyunResourceGroup,omitempty" xml:"EnableAliyunResourceGroup,omitempty"`
-	// >  This parameter is not publicly available.
+	// > This parameter is for internal use only.
 	//
 	// example:
 	//
 	// 0
 	IsResourceGroupWithOfficeSite *int64 `json:"IsResourceGroupWithOfficeSite,omitempty" xml:"IsResourceGroupWithOfficeSite,omitempty"`
-	// >  Set the value to AliyunConsole.
-	//
-	// 	- This parameter is not publicly available in other platforms.
+	// Set this parameter to `AliyunConsole` for Wuying Workspace Enterprise Edition.
 	//
 	// example:
 	//
@@ -45,6 +45,10 @@ type CreateResourceGroupRequest struct {
 	Platform               *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
 	ResourceClassification *string `json:"ResourceClassification,omitempty" xml:"ResourceClassification,omitempty"`
 	// The name of the resource group.
+	//
+	// example:
+	//
+	// 部门A资源组
 	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
 }
 

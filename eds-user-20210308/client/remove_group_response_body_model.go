@@ -14,6 +14,8 @@ type iRemoveGroupResponseBody interface {
 }
 
 type RemoveGroupResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 42FE70D8-4336-471B-8314-CCCFCE41****

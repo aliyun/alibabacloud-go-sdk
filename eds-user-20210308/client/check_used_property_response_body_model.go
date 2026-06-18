@@ -20,13 +20,13 @@ type CheckUsedPropertyResponseBody struct {
 	//
 	// example:
 	//
-	// 22C97624-2405-54AC-BD44-A63FBE97CC2D
+	// 22C97624-2405-54AC-BD44-A63FBE97****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The number of convenience users that are associated with the property.
 	//
 	// example:
 	//
-	// 7
+	// 2
 	UseCount *int64 `json:"UseCount,omitempty" xml:"UseCount,omitempty"`
 }
 

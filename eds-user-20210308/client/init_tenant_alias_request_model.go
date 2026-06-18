@@ -14,6 +14,8 @@ type iInitTenantAliasRequest interface {
 }
 
 type InitTenantAliasRequest struct {
+	// Channel
+	//
 	// example:
 	//
 	// ENTERPRISE

@@ -18,6 +18,8 @@ type iCreateOrgRequest interface {
 }
 
 type CreateOrgRequest struct {
+	// Channel
+	//
 	// example:
 	//
 	// ENTERPRISE
@@ -25,6 +27,10 @@ type CreateOrgRequest struct {
 	// The name of the organization.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 设计部门
 	OrgName *string `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
 	// The ID of the parent organization.
 	//

@@ -19,9 +19,9 @@ type iCreateUsersResponseBody interface {
 
 type CreateUsersResponseBody struct {
 	AllSucceed *bool `json:"AllSucceed,omitempty" xml:"AllSucceed,omitempty"`
-	// The result of user creation.
+	// The result of creating convenience accounts.
 	CreateResult *CreateUsersResponseBodyCreateResult `json:"CreateResult,omitempty" xml:"CreateResult,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -74,9 +74,9 @@ func (s *CreateUsersResponseBody) Validate() error {
 }
 
 type CreateUsersResponseBodyCreateResult struct {
-	// Details of the created convenience users.
+	// The convenience accounts that were successfully created.
 	CreatedUsers []*CreateUsersResponseBodyCreateResultCreatedUsers `json:"CreatedUsers,omitempty" xml:"CreatedUsers,omitempty" type:"Repeated"`
-	// Details of the convenience users that failed to be created.
+	// The convenience accounts that failed to be created.
 	FailedUsers []*CreateUsersResponseBodyCreateResultFailedUsers `json:"FailedUsers,omitempty" xml:"FailedUsers,omitempty" type:"Repeated"`
 }
 
@@ -129,31 +129,31 @@ func (s *CreateUsersResponseBodyCreateResult) Validate() error {
 }
 
 type CreateUsersResponseBodyCreateResultCreatedUsers struct {
-	// The email address of the end user.
+	// The email address.
 	//
 	// example:
 	//
 	// username@example.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	// The name of the end user.
+	// The user name.
 	//
 	// example:
 	//
 	// test1
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// The mobile number of the end user.
+	// The phone number.
 	//
 	// example:
 	//
 	// 1381111****
 	Phone *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
-	// The display name of the end user.
+	// The display name.
 	//
 	// example:
 	//
 	// Bean
 	RealNickName *string `json:"RealNickName,omitempty" xml:"RealNickName,omitempty"`
-	// The remarks of the end user.
+	// The user\\"s remark.
 	//
 	// example:
 	//
@@ -219,31 +219,31 @@ func (s *CreateUsersResponseBodyCreateResultCreatedUsers) Validate() error {
 }
 
 type CreateUsersResponseBodyCreateResultFailedUsers struct {
-	// The email address of the end user.
+	// The email address.
 	//
 	// example:
 	//
 	// username2@example.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	// The name of the end user.
+	// The user name.
 	//
 	// example:
 	//
 	// test2
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// The error code returned if the request failed.
+	// The error code.
 	//
 	// example:
 	//
 	// ExistedEndUserId
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned.
+	// The error message.
 	//
 	// example:
 	//
 	// The username test is used by another user.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The mobile number of the end user.
+	// The phone number.
 	//
 	// example:
 	//

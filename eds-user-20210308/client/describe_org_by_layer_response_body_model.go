@@ -73,6 +73,10 @@ type DescribeOrgByLayerResponseBodyOrgs struct {
 	// org-1mox****
 	OrgId *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
 	// The name of the organization.
+	//
+	// example:
+	//
+	// 开发部
 	OrgName *string `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
 	// The ID of the parent organization.
 	//

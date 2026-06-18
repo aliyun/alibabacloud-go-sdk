@@ -16,6 +16,8 @@ type iRemoveUsersRequest interface {
 }
 
 type RemoveUsersRequest struct {
+	// Channel
+	//
 	// example:
 	//
 	// ENTERPRISE

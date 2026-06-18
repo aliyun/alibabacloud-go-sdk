@@ -34,20 +34,20 @@ type iDescribeGroupsRequest interface {
 }
 
 type DescribeGroupsRequest struct {
-	// > This parameter is not publicly available.
+	// > This parameter is for internal use only.
 	//
 	// example:
 	//
 	// ENTERPRISE
 	BizType         *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
 	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
-	// 是否排除已关联登录策略的用户组。
+	// Specifies whether to exclude user groups that are already associated with a logon policy.
 	ExcludeAttachedLoginPolicyGroups *bool `json:"ExcludeAttachedLoginPolicyGroups,omitempty" xml:"ExcludeAttachedLoginPolicyGroups,omitempty"`
 	// The ID of the user group.
 	//
 	// example:
 	//
-	// ug-12341234****
+	// ug-16nf7xxh4o9gc****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The name of the user group.
 	//
@@ -56,27 +56,27 @@ type DescribeGroupsRequest struct {
 	// TestGroup
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	IdpId     *string `json:"IdpId,omitempty" xml:"IdpId,omitempty"`
-	// 指定关联的登录策略筛选。
+	// The ID of a logon policy. If you specify this parameter, the call returns only user groups associated with the policy.
 	LoginPolicyId *string `json:"LoginPolicyId,omitempty" xml:"LoginPolicyId,omitempty"`
-	// The number of the page to return.
+	// The page number to return.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Valid values: 1 to 100. Default value: 10.
+	// The number of entries per page. Maximum value: 100. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// > This parameter is not publicly available.
+	// > This parameter is for internal use only.
 	//
 	// example:
 	//
 	// co-0esnf80jab***
 	SolutionId *string `json:"SolutionId,omitempty" xml:"SolutionId,omitempty"`
-	// Indicates whether the file approval feature is enabled.
+	// Specifies whether file approval is enabled.
 	//
 	// example:
 	//

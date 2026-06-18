@@ -18,9 +18,9 @@ type iDescribeMfaDevicesResponseBody interface {
 }
 
 type DescribeMfaDevicesResponseBody struct {
-	// The information about the virtual MFA devices.
+	// A list of virtual MFA devices.
 	MfaDevices []*DescribeMfaDevicesResponseBodyMfaDevices `json:"MfaDevices,omitempty" xml:"MfaDevices,omitempty" type:"Repeated"`
-	// The pagination token that is used in the next request to retrieve a new page of results.
+	// The token that is used to retrieve the next page of results.
 	//
 	// example:
 	//
@@ -84,37 +84,37 @@ func (s *DescribeMfaDevicesResponseBody) Validate() error {
 
 type DescribeMfaDevicesResponseBodyMfaDevices struct {
 	AdUser *DescribeMfaDevicesResponseBodyMfaDevicesAdUser `json:"AdUser,omitempty" xml:"AdUser,omitempty" type:"Struct"`
-	// The number of consecutive failures to bind the virtual MFA device, or the number of authentication failures based on the virtual MFA device.
+	// The number of consecutive failed attempts to bind or authenticate the virtual MFA device.
 	//
 	// example:
 	//
 	// 0
 	ConsecutiveFails *int32 `json:"ConsecutiveFails,omitempty" xml:"ConsecutiveFails,omitempty"`
-	// The type of the virtual MFA device. The value can only be `TOTP_VIRTUAL`. This value indicates that the virtual MFA device follows the Time-based One-time Password (TOTP) algorithm.
+	// The type of the virtual MFA device. Set the value to `TOTP_VIRTUAL`, which indicates a virtual MFA device that complies with the Time-based One-time Password (TOTP) algorithm.
 	//
 	// example:
 	//
 	// TOTP_VIRTUAL
 	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
-	// >  This parameter is not publicly available.
+	// > This parameter is not in use.
 	//
 	// example:
 	//
 	// username@example.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	// The username of the convenience account that uses the virtual MFA device.
+	// The username of the convenience user who uses the virtual MFA device.
 	//
 	// example:
 	//
-	// test
+	// alice
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// The time when the virtual MFA device was enabled. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+	// The time when the virtual MFA device was enabled. The time is displayed in UTC and is formatted as `yyyy-MM-ddTHH:mm:ssZ`.
 	//
 	// example:
 	//
 	// 2021-06-22T06:20:49Z
 	GmtEnabled *string `json:"GmtEnabled,omitempty" xml:"GmtEnabled,omitempty"`
-	// The time when the locked virtual MFA device was automatically unlocked. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+	// The time when the locked virtual MFA device is automatically unlocked. The time is displayed in UTC and is formatted as `yyyy-MM-ddTHH:mm:ssZ`.
 	//
 	// example:
 	//
@@ -133,32 +133,6 @@ type DescribeMfaDevicesResponseBodyMfaDevices struct {
 	// dc856334-446b-4035-bfbc-18af261e****
 	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
 	// The status of the virtual MFA device.
-	//
-	// Valid values:
-	//
-	// 	- LOCKED
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- UNBOUND
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- NORMAL
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
 	//
 	// example:
 	//

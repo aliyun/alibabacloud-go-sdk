@@ -22,6 +22,8 @@ type iSetUserPropertyValueRequest interface {
 }
 
 type SetUserPropertyValueRequest struct {
+	// Channel
+	//
 	// example:
 	//
 	// ENTERPRISE
@@ -32,7 +34,7 @@ type SetUserPropertyValueRequest struct {
 	//
 	// example:
 	//
-	// 390
+	// 240**
 	PropertyId *int64 `json:"PropertyId,omitempty" xml:"PropertyId,omitempty"`
 	// The ID of the property value. You can call the [ListProperty](~~ListProperty~~) operation to query the ID of the property value.
 	//
@@ -40,7 +42,7 @@ type SetUserPropertyValueRequest struct {
 	//
 	// example:
 	//
-	// 978
+	// 2251**
 	PropertyValueId *int64 `json:"PropertyValueId,omitempty" xml:"PropertyValueId,omitempty"`
 	// The ID of the convenience user. You can call the [DescribeUsers](~~DescribeUsers~~) operation to query the user ID.
 	//
@@ -48,7 +50,7 @@ type SetUserPropertyValueRequest struct {
 	//
 	// example:
 	//
-	// 11
+	// 111****
 	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	// The username of the convenience user.
 	//
@@ -56,7 +58,7 @@ type SetUserPropertyValueRequest struct {
 	//
 	// example:
 	//
-	// test
+	// alice
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 

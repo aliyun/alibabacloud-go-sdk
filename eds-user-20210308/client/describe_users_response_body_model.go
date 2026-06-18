@@ -18,19 +18,19 @@ type iDescribeUsersResponseBody interface {
 }
 
 type DescribeUsersResponseBody struct {
-	// The token that determines the start point of the next query. If this parameter is left empty, all results are returned.
+	// The token to start the next query. If this parameter is empty, all results have been returned.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the convenience accounts.
+	// The details of the convenience accounts.
 	Users []*DescribeUsersResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
 }
 
@@ -83,101 +83,91 @@ func (s *DescribeUsersResponseBody) Validate() error {
 }
 
 type DescribeUsersResponseBodyUsers struct {
-	// The work address of the convenience user.
+	// The work address of the user.
 	//
 	// example:
 	//
-	// Hangzhou \\*\\*\\*
+	// 杭州市***
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// The profile picture of the convenience user.
+	// The URL of the user\\"s avatar.
 	//
 	// example:
 	//
 	// https://cdn.*****
 	Avatar *string `json:"Avatar,omitempty" xml:"Avatar,omitempty"`
-	// The email address of the convenience user.
+	// The email address.
 	//
 	// example:
 	//
 	// username@example.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	// Enables the administrator permissions.
+	// Indicates whether administrator access is enabled.
 	EnableAdminAccess *bool `json:"EnableAdminAccess,omitempty" xml:"EnableAdminAccess,omitempty"`
-	// The username of the convenience user.
+	// The end user ID.
 	//
 	// example:
 	//
 	// alice
-	EndUserId    *string                               `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	ExternalName *string                               `json:"ExternalName,omitempty" xml:"ExternalName,omitempty"`
-	Extras       *DescribeUsersResponseBodyUsersExtras `json:"Extras,omitempty" xml:"Extras,omitempty" type:"Struct"`
-	// The user groups to which the convenience user belongs.
+	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// The name of the user imported from an external system.
+	//
+	// > This parameter is for internal use only.
+	//
+	// example:
+	//
+	// 马**
+	ExternalName *string `json:"ExternalName,omitempty" xml:"ExternalName,omitempty"`
+	// The extended properties of the user.
+	Extras *DescribeUsersResponseBodyUsersExtras `json:"Extras,omitempty" xml:"Extras,omitempty" type:"Struct"`
+	// The user groups to which the convenience account belongs.
 	Groups []*DescribeUsersResponseBodyUsersGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
-	// The ID of the convenience user.
+	// The ID of the convenience account.
 	//
 	// example:
 	//
 	// 4205**
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Indicates whether the convenience user is an administrator. If the convenience user is of the administrator-activated type, you must specify a user administrator. Notifications such as password reset on a client are sent to the email address or mobile number of the user administrator. For more information, see [Create a convenience user](https://help.aliyun.com/document_detail/214472.html).
+	// Indicates whether the user is a tenant manager. When you create a convenience account of the `CreateFromManager` type, you must specify a tenant manager. Notifications, such as password resets initiated by an end user from a client, are sent to the tenant manager\\"s email or mobile phone. For more information, see [Create a convenience account](https://help.aliyun.com/document_detail/214472.html).
 	//
 	// example:
 	//
 	// true
 	IsTenantManager *bool `json:"IsTenantManager,omitempty" xml:"IsTenantManager,omitempty"`
-	// The employee number of the convenience user.
+	// The employee ID.
 	//
 	// example:
 	//
 	// A10000**
 	JobNumber *string `json:"JobNumber,omitempty" xml:"JobNumber,omitempty"`
-	// The nickname of the convenience user.
+	// The nickname of the user.<br>
+	//
+	// The value is determined from the following parameters, in order of priority:<br>
+	//
+	// - `RealNickName`
+	//
+	// - `Remark`
+	//
+	// - `EndUserId`
 	//
 	// example:
 	//
-	// Lee
+	// 李**
 	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
-	// The ID of the organization to which the convenience user belongs.
+	// The ID of the organization to which the convenience account belongs.
 	//
-	// >  This parameter will be deprecated in the future.
+	// > This parameter is deprecated and may be removed in a future release.
 	//
 	// example:
 	//
 	// org-4mdgc1cocc59z****
 	OrgId *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	// The organizations to which the convenience user belongs.
+	// The organizations to which the convenience account belongs.
 	Orgs []*DescribeUsersResponseBodyUsersOrgs `json:"Orgs,omitempty" xml:"Orgs,omitempty" type:"Repeated"`
-	// The type of the convenience account.
+	// The type of the convenience account. The account can be activated in one of the following ways:
 	//
-	// 	- Administrator-activated type: The administrator specifies the username and password of the convenience account. User notifications such as password reset notifications are sent to the email address or mobile number of the administrator.
+	// - Tenant manager-activated: The tenant manager sets the username and password. Notifications such as password resets are sent to the tenant manager\\"s email address or mobile phone.
 	//
-	// 	- User-activated type: The administrator specifies the username and the email address or mobile number of a convenience user. Notifications such as activation notifications that contain the default password are sent to the email address or mobile number of the convenience user.
-	//
-	// Valid values:
-	//
-	// 	- CreateFromManager
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     administrator-activated
-	//
-	//     <!-- -->
-	//
-	// 	- Normal
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     user-activated
-	//
-	//     <!-- -->
+	// - End user-activated: The tenant manager sets the username and the end user\\"s email address or mobile phone. Notifications for the end user, such as the initial password for the cloud desktop, are sent to the end user\\"s email address or mobile phone.
 	//
 	// example:
 	//
@@ -185,45 +175,33 @@ type DescribeUsersResponseBodyUsers struct {
 	OwnerType              *string `json:"OwnerType,omitempty" xml:"OwnerType,omitempty"`
 	PasswordExpireDays     *int32  `json:"PasswordExpireDays,omitempty" xml:"PasswordExpireDays,omitempty"`
 	PasswordExpireRestDays *int32  `json:"PasswordExpireRestDays,omitempty" xml:"PasswordExpireRestDays,omitempty"`
-	// The mobile number of the convenience user. If you leave this parameter empty, the value of this parameter is not returned.
+	// The phone number. This parameter is returned only if a phone number is set.
 	//
 	// example:
 	//
 	// 1381111****
-	Phone        *string                                     `json:"Phone,omitempty" xml:"Phone,omitempty"`
-	Properties   []*DescribeUsersResponseBodyUsersProperties `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Repeated"`
-	RealNickName *string                                     `json:"RealNickName,omitempty" xml:"RealNickName,omitempty"`
-	// The remarks on the convenience user.
+	Phone *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
+	// A list of custom properties for the user.
+	Properties []*DescribeUsersResponseBodyUsersProperties `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Repeated"`
+	// The display name of the user.
 	//
 	// example:
 	//
-	// TestUser
+	// 李**
+	RealNickName *string `json:"RealNickName,omitempty" xml:"RealNickName,omitempty"`
+	// The note about the convenience account.
+	//
+	// example:
+	//
+	// Test user.
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The status of the convenience user.
-	//
-	// Valid values:
-	//
-	// 	- 0: The convenience user is normal.
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- 9: The convenience user is locked.
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// The status of the convenience account.
 	//
 	// example:
 	//
 	// 0
 	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The globally unique ID of the convenience user.
+	// The globally unique ID of the convenience account.
 	//
 	// example:
 	//
@@ -483,6 +461,7 @@ func (s *DescribeUsersResponseBodyUsers) Validate() error {
 }
 
 type DescribeUsersResponseBodyUsersExtras struct {
+	// The number of assigned cloud resources.
 	AssignedResourceCount map[string]interface{}                                    `json:"AssignedResourceCount,omitempty" xml:"AssignedResourceCount,omitempty"`
 	ResourcePolicyList    []*DescribeUsersResponseBodyUsersExtrasResourcePolicyList `json:"ResourcePolicyList,omitempty" xml:"ResourcePolicyList,omitempty" type:"Repeated"`
 }
@@ -572,7 +551,7 @@ type DescribeUsersResponseBodyUsersGroups struct {
 	//
 	// example:
 	//
-	// User Group 1
+	// 用户组1
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 }
 
@@ -607,17 +586,17 @@ func (s *DescribeUsersResponseBodyUsersGroups) Validate() error {
 }
 
 type DescribeUsersResponseBodyUsersOrgs struct {
-	// The organization ID.
+	// The ID of the organization.
 	//
 	// example:
 	//
 	// org-4mdgc1cocc59z****
 	OrgId *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	// The organization name.
+	// The name of the organization.
 	//
 	// example:
 	//
-	// Organization 1
+	// 部门1
 	OrgName     *string `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
 	OrgNamePath *string `json:"OrgNamePath,omitempty" xml:"OrgNamePath,omitempty"`
 }
@@ -662,10 +641,14 @@ func (s *DescribeUsersResponseBodyUsersOrgs) Validate() error {
 }
 
 type DescribeUsersResponseBodyUsersProperties struct {
+	// The property key.
+	//
 	// example:
 	//
 	// Role
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The property value.
+	//
 	// example:
 	//
 	// Student

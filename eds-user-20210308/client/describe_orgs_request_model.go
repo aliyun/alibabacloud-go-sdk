@@ -26,36 +26,38 @@ type iDescribeOrgsRequest interface {
 }
 
 type DescribeOrgsRequest struct {
+	// The channel.
+	//
 	// example:
 	//
 	// ENTERPRISE
 	BusinessChannel *string   `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
 	IncludeOrgIds   []*string `json:"IncludeOrgIds,omitempty" xml:"IncludeOrgIds,omitempty" type:"Repeated"`
-	// The maximum number of entries to return. Valid values: 1 to 100.\\
+	// The maximum number of entries to return. Valid values: 1 to 100.<br>
 	//
-	// Default value: 100.
+	// Default value: 100.<br>
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that determines the start point of the query. The return value is the value of the NextToken response parameter that was returned last time the DescribeOrgs operation was called.
+	// The pagination token. To retrieve the next page of results, set this parameter to the `NextToken` value that was returned from a previous request.
 	//
 	// example:
 	//
 	// AAAAAV3MpHK****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The name of the organization.
+	// The organization name.
 	//
 	// example:
 	//
-	// org****
+	// 产品部
 	OrgName *string `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
 	// The parent organization ID.
 	//
 	// example:
 	//
-	// org-****
+	// org-11fs****
 	ParentOrgId *string                `json:"ParentOrgId,omitempty" xml:"ParentOrgId,omitempty"`
 	ShowExtras  map[string]interface{} `json:"ShowExtras,omitempty" xml:"ShowExtras,omitempty"`
 }

@@ -18,6 +18,8 @@ type iCreatePropertyRequest interface {
 }
 
 type CreatePropertyRequest struct {
+	// Channel
+	//
 	// example:
 	//
 	// ENTERPRISE

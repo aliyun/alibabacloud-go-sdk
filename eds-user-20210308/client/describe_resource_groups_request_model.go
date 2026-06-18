@@ -30,41 +30,50 @@ type iDescribeResourceGroupsRequest interface {
 }
 
 type DescribeResourceGroupsRequest struct {
+	// A list of Aliyun resource group IDs.
 	AliyunResourceGroupIds []*string `json:"AliyunResourceGroupIds,omitempty" xml:"AliyunResourceGroupIds,omitempty" type:"Repeated"`
+	// The business channel.
+	//
 	// example:
 	//
 	// ENTERPRISE
 	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
-	// >  This parameter is not publicly available.
+	// > This parameter is not publicly available.
 	//
 	// example:
 	//
 	// 0
 	NeedContainResourceGroupWithOfficeSite *int64 `json:"NeedContainResourceGroupWithOfficeSite,omitempty" xml:"NeedContainResourceGroupWithOfficeSite,omitempty"`
-	// The page number. Pages start from page 1.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries to return per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// >  Set the value to AliyunConsole.
+	// > The cloud platform.
 	//
-	// 	- This parameter is not publicly available on other platforms.
+	// >
+	//
+	// > - For Elastic Desktop Service (EDS) Enterprise Edition, this parameter must be set to AliyunConsole.
 	//
 	// example:
 	//
 	// AliyunConsole
 	Platform               *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
 	ResourceClassification *string `json:"ResourceClassification,omitempty" xml:"ResourceClassification,omitempty"`
-	// The IDs of the resource groups that you want to query.
+	// A list of resource group IDs.
 	ResourceGroupIds []*string `json:"ResourceGroupIds,omitempty" xml:"ResourceGroupIds,omitempty" type:"Repeated"`
 	// The name of the resource group.
+	//
+	// example:
+	//
+	// 部门A资源组
 	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
 }
 

@@ -16,11 +16,14 @@ type iDescribeUserResponseBody interface {
 }
 
 type DescribeUserResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
-	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	User      *DescribeUserResponseBodyUser `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// User information.
+	User *DescribeUserResponseBodyUser `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
 }
 
 func (s DescribeUserResponseBody) String() string {
@@ -59,36 +62,55 @@ func (s *DescribeUserResponseBody) Validate() error {
 }
 
 type DescribeUserResponseBodyUser struct {
+	// Mailbox.
+	//
 	// example:
 	//
 	// alex@test-email.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// Username.
+	//
 	// example:
 	//
 	// alex
-	EndUserId    *string                                   `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// Associated external user information.
 	ExternalInfo *DescribeUserResponseBodyUserExternalInfo `json:"ExternalInfo,omitempty" xml:"ExternalInfo,omitempty" type:"Struct"`
-	Extras       map[string]*string                        `json:"Extras,omitempty" xml:"Extras,omitempty"`
+	// Extension information.
+	Extras map[string]*string `json:"Extras,omitempty" xml:"Extras,omitempty"`
+	// Creation Time.
+	//
 	// example:
 	//
 	// 2025-01-01 12:00:00
-	GmtCreate *int64    `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	NickName  *string   `json:"NickName,omitempty" xml:"NickName,omitempty"`
-	OrgIds    []*string `json:"OrgIds,omitempty" xml:"OrgIds,omitempty" type:"Repeated"`
-	OrgPaths  []*string `json:"OrgPaths,omitempty" xml:"OrgPaths,omitempty" type:"Repeated"`
+	GmtCreate *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	NickName  *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
+	// List of organization IDs.
+	OrgIds []*string `json:"OrgIds,omitempty" xml:"OrgIds,omitempty" type:"Repeated"`
+	// List of organizations.
+	OrgPaths []*string `json:"OrgPaths,omitempty" xml:"OrgPaths,omitempty" type:"Repeated"`
+	// Phone number.
+	//
 	// example:
 	//
 	// 1888888****
-	Phone      *string                                   `json:"Phone,omitempty" xml:"Phone,omitempty"`
+	Phone *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
+	// User attributes.
 	Properties []*DescribeUserResponseBodyUserProperties `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Repeated"`
+	// Remarks.
+	//
 	// example:
 	//
 	// remark
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// User status.
+	//
 	// example:
 	//
 	// 0
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Unique ID of the Wuying user.
+	//
 	// example:
 	//
 	// aisdfumj****
@@ -239,18 +261,26 @@ func (s *DescribeUserResponseBodyUser) Validate() error {
 }
 
 type DescribeUserResponseBodyUserExternalInfo struct {
+	// External User ID.
+	//
 	// example:
 	//
 	// oijjnabsf****
 	ExternalId *string `json:"ExternalId,omitempty" xml:"ExternalId,omitempty"`
+	// External information name.
+	//
 	// example:
 	//
 	// Alex
 	ExternalName *string `json:"ExternalName,omitempty" xml:"ExternalName,omitempty"`
+	// Employee ID.
+	//
 	// example:
 	//
 	// 15412***
 	JobNumber *string `json:"JobNumber,omitempty" xml:"JobNumber,omitempty"`
+	// SSO logon type.
+	//
 	// example:
 	//
 	// OIDC
@@ -306,10 +336,14 @@ func (s *DescribeUserResponseBodyUserExternalInfo) Validate() error {
 }
 
 type DescribeUserResponseBodyUserProperties struct {
+	// Attribute key.
+	//
 	// example:
 	//
 	// role
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Attribute value.
+	//
 	// example:
 	//
 	// teacher

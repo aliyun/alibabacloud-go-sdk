@@ -20,6 +20,8 @@ type iModifyUserRequest interface {
 }
 
 type ModifyUserRequest struct {
+	// Channel
+	//
 	// example:
 	//
 	// ENTERPRISE
@@ -36,7 +38,7 @@ type ModifyUserRequest struct {
 	//
 	// example:
 	//
-	// Alice
+	// alice
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
 	// The mobile number of the convenience user. For a user-activated convenience user, the email address or mobile number must be verified. You can choose to verify the email address or the mobile number. For an administrator-activated convenience user, the email address and mobile number can be left empty.
 	//

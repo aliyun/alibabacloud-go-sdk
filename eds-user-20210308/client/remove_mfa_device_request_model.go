@@ -24,6 +24,8 @@ type RemoveMfaDeviceRequest struct {
 	//
 	// alpha.lftltd.net
 	AdDomain *string `json:"AdDomain,omitempty" xml:"AdDomain,omitempty"`
+	// Channel
+	//
 	// example:
 	//
 	// ENTERPRISE

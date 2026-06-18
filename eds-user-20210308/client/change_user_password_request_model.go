@@ -18,14 +18,20 @@ type iChangeUserPasswordRequest interface {
 }
 
 type ChangeUserPasswordRequest struct {
+	// Channel
+	//
 	// example:
 	//
 	// ENTERPRISE
 	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
+	// The username of the convenience account whose password is to be modified.
+	//
 	// example:
 	//
 	// alice***
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// The new password for the user.
+	//
 	// example:
 	//
 	// Admin@12***

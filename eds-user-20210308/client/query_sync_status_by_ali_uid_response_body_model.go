@@ -24,23 +24,34 @@ type iQuerySyncStatusByAliUidResponseBody interface {
 }
 
 type QuerySyncStatusByAliUidResponseBody struct {
+	// System status code.
+	//
 	// example:
 	//
 	// 200
-	Code *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *QuerySyncStatusByAliUidResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message returned when the request fails.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded.
+	//
 	// example:
 	//
 	// True
@@ -119,38 +130,56 @@ func (s *QuerySyncStatusByAliUidResponseBody) Validate() error {
 }
 
 type QuerySyncStatusByAliUidResponseBodyData struct {
+	// Alibaba Cloud account ID.
+	//
 	// example:
 	//
 	// 131239236086****
 	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// The enterprise ID.
+	//
 	// example:
 	//
 	// cdrs948144195608****
 	CorpId *string `json:"CorpId,omitempty" xml:"CorpId,omitempty"`
+	// Creation Time.
+	//
 	// example:
 	//
 	// 2020-06-30 07:50:42
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	// The updated at time.
+	//
 	// example:
 	//
 	// 2022-03-02 14:27:39
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// Auto increment ID.
+	//
 	// example:
 	//
 	// 18500
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The latest start time.
+	//
 	// example:
 	//
 	// 2022-03-02 14:31:39
 	LatestBeginTime *string `json:"LatestBeginTime,omitempty" xml:"LatestBeginTime,omitempty"`
+	// The latest end time, regardless of whether the operation succeeded or failed.
+	//
 	// example:
 	//
 	// 2022-03-02 16:13:12
 	LatestEndTime *string `json:"LatestEndTime,omitempty" xml:"LatestEndTime,omitempty"`
+	// The latest success time.
+	//
 	// example:
 	//
 	// 2022-03-02 18:24:01
 	LatestSuccessTime *string `json:"LatestSuccessTime,omitempty" xml:"LatestSuccessTime,omitempty"`
+	// The user synchronization status.
+	//
 	// example:
 	//
 	// success

@@ -24,10 +24,14 @@ type iCreateGroupRequest interface {
 }
 
 type CreateGroupRequest struct {
+	// > This parameter is not publicly available for use.
+	//
 	// example:
 	//
 	// ENTERPRISE
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// Channel
+	//
 	// example:
 	//
 	// ENTERPRISE
@@ -38,7 +42,12 @@ type CreateGroupRequest struct {
 	//
 	// TestGroup
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	GroupName   *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The group name.
+	//
+	// example:
+	//
+	// 开发组
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// > This parameter is not publicly available.
 	//
 	// example:
