@@ -18,11 +18,20 @@ type iCreateApiKeyRequest interface {
 }
 
 type CreateApiKeyRequest struct {
+	// The API key permission settings.
 	Auth *CreateApiKeyRequestAuth `json:"auth,omitempty" xml:"auth,omitempty" type:"Struct"`
+	// The description.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The workspace ID.
+	//
+	// >
+	//
+	// > - If you leave this parameter empty, the created API key is automatically assigned to the default workspace.
+	//
 	// example:
 	//
 	// ws-8af73c50f5596193
@@ -74,10 +83,21 @@ func (s *CreateApiKeyRequest) Validate() error {
 }
 
 type CreateApiKeyRequestAuth struct {
+	// The IP address whitelist.
+	//
+	// >
+	//
+	// > - When you use custom permissions, if you do not specify the IP address whitelist, the server sets it to IPv4 (0.0.0.0/0) and IPv6 (::/0) by default, which allows all traffic.
 	AccessIps []*string `json:"accessIps,omitempty" xml:"accessIps,omitempty" type:"Repeated"`
+	// Valid values:
+	//
+	// - All: all permissions.
+	//
+	// - Custom: custom permissions.
+	//
 	// example:
 	//
-	// All
+	// Custom
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 

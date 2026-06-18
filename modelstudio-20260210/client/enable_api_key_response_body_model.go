@@ -22,14 +22,20 @@ type iEnableApiKeyResponseBody interface {
 }
 
 type EnableApiKeyResponseBody struct {
+  // The status code.
+  // 
   // example:
   // 
   // 200
   Code *string `json:"code,omitempty" xml:"code,omitempty"`
+  // The HTTP status code.
+  // 
   // example:
   // 
   // 200
   HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+  // The response message.
+  // 
   // example:
   // 
   // ok
@@ -40,6 +46,8 @@ type EnableApiKeyResponseBody struct {
   // 
   // BB521414-5D38-5E66-AA66-963B2B4200E2
   RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+  // Indicates whether the API call was successful.
+  // 
   // example:
   // 
   // true

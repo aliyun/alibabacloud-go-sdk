@@ -24,15 +24,22 @@ type iGetApiKeyResponseBody interface {
 }
 
 type GetApiKeyResponseBody struct {
+	// The API key information.
 	ApiKey *GetApiKeyResponseBodyApiKey `json:"apiKey,omitempty" xml:"apiKey,omitempty" type:"Struct"`
+	// The response status code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
@@ -43,6 +50,12 @@ type GetApiKeyResponseBody struct {
 	//
 	// DFD55E7B-0615-5343-BDA0-FBEE86F29935
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - true: The request was successful.
+	//
+	// - false: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -127,27 +140,44 @@ type GetApiKeyResponseBodyApiKey struct {
 	//
 	// 2965964
 	ApiKeyId *int64 `json:"apiKeyId,omitempty" xml:"apiKeyId,omitempty"`
+	// The value of the API key.
+	//
 	// example:
 	//
 	// sk-ws-djI.mhU0D****testtestest
-	ApiKeyValue *string                          `json:"apiKeyValue,omitempty" xml:"apiKeyValue,omitempty"`
-	Auth        *GetApiKeyResponseBodyApiKeyAuth `json:"auth,omitempty" xml:"auth,omitempty" type:"Struct"`
+	ApiKeyValue *string `json:"apiKeyValue,omitempty" xml:"apiKeyValue,omitempty"`
+	// The permission settings.
+	Auth *GetApiKeyResponseBodyApiKeyAuth `json:"auth,omitempty" xml:"auth,omitempty" type:"Struct"`
+	// The creator.
+	//
 	// example:
 	//
 	// 1378030599924858
 	CreatedBy *string `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
+	// The description.
+	//
 	// example:
 	//
 	// v7
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Indicates whether the API key is disabled. Valid values:
+	//
+	// - **0**: Active.
+	//
+	// - **1**: Disabled.
+	//
 	// example:
 	//
 	// 0
 	Disabled *int32 `json:"disabled,omitempty" xml:"disabled,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 1774338222000
 	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// ws-b2d30f148c236908
@@ -244,10 +274,13 @@ func (s *GetApiKeyResponseBodyApiKey) Validate() error {
 }
 
 type GetApiKeyResponseBodyApiKeyAuth struct {
+	// The IP address whitelist.
 	AccessIps []*string `json:"accessIps,omitempty" xml:"accessIps,omitempty" type:"Repeated"`
+	// The permission type. Valid values: All: all permissions. Custom: custom permissions.
+	//
 	// example:
 	//
-	// All
+	// Custom
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 

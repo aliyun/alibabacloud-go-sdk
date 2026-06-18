@@ -16,7 +16,10 @@ type iUpdateApiKeyRequest interface {
 }
 
 type UpdateApiKeyRequest struct {
+	// The API key permission settings.
 	Auth *UpdateApiKeyRequestAuth `json:"auth,omitempty" xml:"auth,omitempty" type:"Struct"`
+	// The description.
+	//
 	// example:
 	//
 	// update description.
@@ -59,8 +62,22 @@ func (s *UpdateApiKeyRequest) Validate() error {
 }
 
 type UpdateApiKeyRequestAuth struct {
+	// The IP access whitelist.
+	//
+	// >
+	//
+	// > - When you set custom permissions and do not specify the IP access whitelist, the server sets the whitelist to IPv4 (0.0.0.0/0) and IPv6 (::/0) by default, which allows all traffic.
 	AccessIps []*string `json:"accessIps,omitempty" xml:"accessIps,omitempty" type:"Repeated"`
-	Type      *string   `json:"type,omitempty" xml:"type,omitempty"`
+	// Valid values:
+	//
+	// - All: all permissions.
+	//
+	// - Custom: custom permissions.
+	//
+	// example:
+	//
+	// Custom
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s UpdateApiKeyRequestAuth) String() string {

@@ -20,6 +20,8 @@ type CreateWorkspaceRequest struct {
 	//
 	// global
 	ServiceSite *string `json:"serviceSite,omitempty" xml:"serviceSite,omitempty"`
+	// The name of the business workspace.
+	//
 	// This parameter is required.
 	//
 	// example:

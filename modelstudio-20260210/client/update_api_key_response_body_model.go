@@ -22,14 +22,20 @@ type iUpdateApiKeyResponseBody interface {
 }
 
 type UpdateApiKeyResponseBody struct {
+	// The response status code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
@@ -40,6 +46,12 @@ type UpdateApiKeyResponseBody struct {
 	//
 	// 36045E0A-551D-592D-B1BC-4C56596CE59E
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the API call is successful. Valid values:
+	//
+	// - true: The call succeeded.
+	//
+	// - false: The call failed.
+	//
 	// example:
 	//
 	// true

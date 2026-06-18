@@ -24,14 +24,20 @@ type iCreateWorkspaceResponseBody interface {
 }
 
 type CreateWorkspaceResponseBody struct {
+	// The response status code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
@@ -42,10 +48,17 @@ type CreateWorkspaceResponseBody struct {
 	//
 	// BB521414-5D38-5E66-AA66-963B2B4200E2
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - true: Successful.
+	//
+	// - false: Failed.
+	//
 	// example:
 	//
 	// true
-	Success   *bool                                 `json:"success,omitempty" xml:"success,omitempty"`
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// The business workspace information.
 	Workspace *CreateWorkspaceResponseBodyWorkspace `json:"workspace,omitempty" xml:"workspace,omitempty" type:"Struct"`
 }
 
@@ -127,22 +140,32 @@ type CreateWorkspaceResponseBodyWorkspace struct {
 	//
 	// llm-34o9ts1dai60z5sf.cn-beijing.maas.aliyuncs.com
 	ApiHost *string `json:"apiHost,omitempty" xml:"apiHost,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 1742785623772
 	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
+	// The service deployment scope. For more information, see [documentation](https://www.alibabacloud.com/help/zh/model-studio/regions/).
+	//
 	// example:
 	//
 	// global
 	ServiceSite *string `json:"serviceSite,omitempty" xml:"serviceSite,omitempty"`
+	// The business workspace ID.
+	//
 	// example:
 	//
 	// ws-ac3ef438bec22dc5
 	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+	// The name of the business workspace.
+	//
 	// example:
 	//
 	// default

@@ -24,7 +24,13 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = dara.String("")
+	client.EndpointRule = dara.String("regional")
+	client.EndpointMap = map[string]*string{
+		"eu-central-1":   dara.String("modelstudio.eu-central-1.aliyuncs.com"),
+		"cn-hongkong":    dara.String("modelstudio.cn-hongkong.aliyuncs.com"),
+		"cn-beijing":     dara.String("modelstudio.cn-beijing.aliyuncs.com"),
+		"ap-southeast-1": dara.String("modelstudio.ap-southeast-1.aliyuncs.com"),
+	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -58,7 +64,183 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 创建ApiKey
+// Creates an account and directly adds it as a member.
+//
+// @param request - AddOrganizationMemberRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddOrganizationMemberResponse
+func (client *Client) AddOrganizationMemberWithOptions(request *AddOrganizationMemberRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AddOrganizationMemberResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AccountName) {
+		query["AccountName"] = request.AccountName
+	}
+
+	if !dara.IsNil(request.CallerUacAccountId) {
+		query["CallerUacAccountId"] = request.CallerUacAccountId
+	}
+
+	if !dara.IsNil(request.NamespaceId) {
+		query["NamespaceId"] = request.NamespaceId
+	}
+
+	if !dara.IsNil(request.OrgId) {
+		query["OrgId"] = request.OrgId
+	}
+
+	if !dara.IsNil(request.OrgRoleCode) {
+		query["OrgRoleCode"] = request.OrgRoleCode
+	}
+
+	if !dara.IsNil(request.SpecType) {
+		query["SpecType"] = request.SpecType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddOrganizationMember"),
+		Version:     dara.String("2026-02-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/tokenplan/organization/member-additions"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddOrganizationMemberResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates an account and directly adds it as a member.
+//
+// @param request - AddOrganizationMemberRequest
+//
+// @return AddOrganizationMemberResponse
+func (client *Client) AddOrganizationMember(request *AddOrganizationMemberRequest) (_result *AddOrganizationMemberResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &AddOrganizationMemberResponse{}
+	_body, _err := client.AddOrganizationMemberWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Assigns seats in bulk to the member level.
+//
+// @param request - BatchAssignSeatsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchAssignSeatsResponse
+func (client *Client) BatchAssignSeatsWithOptions(request *BatchAssignSeatsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *BatchAssignSeatsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AccountIds) {
+		query["AccountIds"] = request.AccountIds
+	}
+
+	if !dara.IsNil(request.AccountIdsStr) {
+		query["AccountIdsStr"] = request.AccountIdsStr
+	}
+
+	if !dara.IsNil(request.CallerUacAccountId) {
+		query["CallerUacAccountId"] = request.CallerUacAccountId
+	}
+
+	if !dara.IsNil(request.Locale) {
+		query["Locale"] = request.Locale
+	}
+
+	if !dara.IsNil(request.NamespaceId) {
+		query["NamespaceId"] = request.NamespaceId
+	}
+
+	if !dara.IsNil(request.SeatType) {
+		query["SeatType"] = request.SeatType
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BatchAssignSeats"),
+		Version:     dara.String("2026-02-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/tokenplan/subscription/seat-assignments"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &BatchAssignSeatsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Assigns seats in bulk to the member level.
+//
+// @param request - BatchAssignSeatsRequest
+//
+// @return BatchAssignSeatsResponse
+func (client *Client) BatchAssignSeats(request *BatchAssignSeatsRequest) (_result *BatchAssignSeatsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &BatchAssignSeatsResponse{}
+	_body, _err := client.BatchAssignSeatsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Before using large models or applications in Alibaba Cloud Model Studio, create an API key as an authentication credential.
 //
 // @param request - CreateApiKeyRequest
 //
@@ -115,7 +297,7 @@ func (client *Client) CreateApiKeyWithOptions(request *CreateApiKeyRequest, head
 
 // Summary:
 //
-// 创建ApiKey
+// Before using large models or applications in Alibaba Cloud Model Studio, create an API key as an authentication credential.
 //
 // @param request - CreateApiKeyRequest
 //
@@ -134,7 +316,89 @@ func (client *Client) CreateApiKey(request *CreateApiKeyRequest) (_result *Creat
 
 // Summary:
 //
-// 创建业务空间
+// Creates a UAC API key.
+//
+// @param request - CreateTokenPlanKeyRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateTokenPlanKeyResponse
+func (client *Client) CreateTokenPlanKeyWithOptions(request *CreateTokenPlanKeyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateTokenPlanKeyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AccountId) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !dara.IsNil(request.CallerUacAccountId) {
+		query["CallerUacAccountId"] = request.CallerUacAccountId
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.NamespaceId) {
+		query["NamespaceId"] = request.NamespaceId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateTokenPlanKey"),
+		Version:     dara.String("2026-02-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/tokenplan/api-keys"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateTokenPlanKeyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a UAC API key.
+//
+// @param request - CreateTokenPlanKeyRequest
+//
+// @return CreateTokenPlanKeyResponse
+func (client *Client) CreateTokenPlanKey(request *CreateTokenPlanKeyRequest) (_result *CreateTokenPlanKeyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateTokenPlanKeyResponse{}
+	_body, _err := client.CreateTokenPlanKeyWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a business workspace.
 //
 // @param request - CreateWorkspaceRequest
 //
@@ -185,7 +449,7 @@ func (client *Client) CreateWorkspaceWithOptions(request *CreateWorkspaceRequest
 
 // Summary:
 //
-// 创建业务空间
+// Creates a business workspace.
 //
 // @param request - CreateWorkspaceRequest
 //
@@ -204,7 +468,7 @@ func (client *Client) CreateWorkspace(request *CreateWorkspaceRequest) (_result 
 
 // Summary:
 //
-// 删除apiKey
+// Deletes an authentication credential API key.
 //
 // @param headers - map
 //
@@ -237,7 +501,7 @@ func (client *Client) DeleteApiKeyWithOptions(apiKeyId *string, headers map[stri
 
 // Summary:
 //
-// 删除apiKey
+// Deletes an authentication credential API key.
 //
 // @return DeleteApiKeyResponse
 func (client *Client) DeleteApiKey(apiKeyId *string) (_result *DeleteApiKeyResponse, _err error) {
@@ -254,7 +518,19 @@ func (client *Client) DeleteApiKey(apiKeyId *string) (_result *DeleteApiKeyRespo
 
 // Summary:
 //
-// 删除业务空间
+// Deletes a workspace.
+//
+// Description:
+//
+// A workspace can be deleted only if the following conditional requirements are met:
+//
+// 1. The workspace is not the default workspace.
+//
+// 2. The workspace is not used to purchase other products, such as AMB.
+//
+// 3. In permission management, the workspace is not granted to Resource Access Management (RAM) users or RAM roles.
+//
+// 4. The workspace does not contain any resources, such as API keys, model deployments, or knowledge bases.
 //
 // @param request - DeleteWorkspaceRequest
 //
@@ -295,7 +571,19 @@ func (client *Client) DeleteWorkspaceWithOptions(workspaceId *string, request *D
 
 // Summary:
 //
-// 删除业务空间
+// Deletes a workspace.
+//
+// Description:
+//
+// A workspace can be deleted only if the following conditional requirements are met:
+//
+// 1. The workspace is not the default workspace.
+//
+// 2. The workspace is not used to purchase other products, such as AMB.
+//
+// 3. In permission management, the workspace is not granted to Resource Access Management (RAM) users or RAM roles.
+//
+// 4. The workspace does not contain any resources, such as API keys, model deployments, or knowledge bases.
 //
 // @param request - DeleteWorkspaceRequest
 //
@@ -314,7 +602,11 @@ func (client *Client) DeleteWorkspace(workspaceId *string, request *DeleteWorksp
 
 // Summary:
 //
-// 禁用API Key
+// Disables an API key.
+//
+// Description:
+//
+// An API key cannot be disabled if it is already disabled.
 //
 // @param request - DisableApiKeyRequest
 //
@@ -355,7 +647,11 @@ func (client *Client) DisableApiKeyWithOptions(apiKeyId *string, request *Disabl
 
 // Summary:
 //
-// 禁用API Key
+// Disables an API key.
+//
+// Description:
+//
+// An API key cannot be disabled if it is already disabled.
 //
 // @param request - DisableApiKeyRequest
 //
@@ -374,7 +670,11 @@ func (client *Client) DisableApiKey(apiKeyId *string, request *DisableApiKeyRequ
 
 // Summary:
 //
-// 启用API Key
+// Enables an API key.
+//
+// Description:
+//
+// An API key that is already enabled cannot be enabled again.
 //
 // @param request - EnableApiKeyRequest
 //
@@ -415,7 +715,11 @@ func (client *Client) EnableApiKeyWithOptions(apiKeyId *string, request *EnableA
 
 // Summary:
 //
-// 启用API Key
+// Enables an API key.
+//
+// Description:
+//
+// An API key that is already enabled cannot be enabled again.
 //
 // @param request - EnableApiKeyRequest
 //
@@ -434,7 +738,7 @@ func (client *Client) EnableApiKey(apiKeyId *string, request *EnableApiKeyReques
 
 // Summary:
 //
-// 查询ApiKey详情
+// Retrieves the information of a specified authentication credential API key.
 //
 // @param headers - map
 //
@@ -467,7 +771,7 @@ func (client *Client) GetApiKeyWithOptions(apiKeyId *string, headers map[string]
 
 // Summary:
 //
-// 查询ApiKey详情
+// Retrieves the information of a specified authentication credential API key.
 //
 // @return GetApiKeyResponse
 func (client *Client) GetApiKey(apiKeyId *string) (_result *GetApiKeyResponse, _err error) {
@@ -484,7 +788,105 @@ func (client *Client) GetApiKey(apiKeyId *string) (_result *GetApiKeyResponse, _
 
 // Summary:
 //
-// 获取ApiKey列表
+// Queries seat details by paging.
+//
+// @param request - GetSubscriptionSeatDetailsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSubscriptionSeatDetailsResponse
+func (client *Client) GetSubscriptionSeatDetailsWithOptions(request *GetSubscriptionSeatDetailsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetSubscriptionSeatDetailsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CallerUacAccountId) {
+		query["CallerUacAccountId"] = request.CallerUacAccountId
+	}
+
+	if !dara.IsNil(request.NamespaceId) {
+		query["NamespaceId"] = request.NamespaceId
+	}
+
+	if !dara.IsNil(request.PageNo) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.QueryAssigned) {
+		query["QueryAssigned"] = request.QueryAssigned
+	}
+
+	if !dara.IsNil(request.SeatId) {
+		query["SeatId"] = request.SeatId
+	}
+
+	if !dara.IsNil(request.SeatType) {
+		query["SeatType"] = request.SeatType
+	}
+
+	if !dara.IsNil(request.StatusList) {
+		query["StatusList"] = request.StatusList
+	}
+
+	if !dara.IsNil(request.StatusListStr) {
+		query["StatusListStr"] = request.StatusListStr
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetSubscriptionSeatDetails"),
+		Version:     dara.String("2026-02-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/tokenplan/subscription/seat-detail"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetSubscriptionSeatDetailsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries seat details by paging.
+//
+// @param request - GetSubscriptionSeatDetailsRequest
+//
+// @return GetSubscriptionSeatDetailsResponse
+func (client *Client) GetSubscriptionSeatDetails(request *GetSubscriptionSeatDetailsRequest) (_result *GetSubscriptionSeatDetailsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetSubscriptionSeatDetailsResponse{}
+	_body, _err := client.GetSubscriptionSeatDetailsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Obtain the list of authentication credential API Key information.
 //
 // @param request - ListApiKeysRequest
 //
@@ -547,7 +949,7 @@ func (client *Client) ListApiKeysWithOptions(request *ListApiKeysRequest, header
 
 // Summary:
 //
-// 获取ApiKey列表
+// Obtain the list of authentication credential API Key information.
 //
 // @param request - ListApiKeysRequest
 //
@@ -566,7 +968,7 @@ func (client *Client) ListApiKeys(request *ListApiKeysRequest) (_result *ListApi
 
 // Summary:
 //
-// 业务空间列表
+// Retrieves the list of business workspaces.
 //
 // @param request - ListWorkspacesRequest
 //
@@ -625,7 +1027,7 @@ func (client *Client) ListWorkspacesWithOptions(request *ListWorkspacesRequest, 
 
 // Summary:
 //
-// 业务空间列表
+// Retrieves the list of business workspaces.
 //
 // @param request - ListWorkspacesRequest
 //
@@ -644,7 +1046,11 @@ func (client *Client) ListWorkspaces(request *ListWorkspacesRequest) (_result *L
 
 // Summary:
 //
-// 重置API Key
+// Resets an API key.
+//
+// Description:
+//
+// Only the API key value changes. The API key ID remains unchanged.
 //
 // @param request - ResetApiKeyRequest
 //
@@ -685,7 +1091,11 @@ func (client *Client) ResetApiKeyWithOptions(apiKeyId *string, request *ResetApi
 
 // Summary:
 //
-// 重置API Key
+// Resets an API key.
+//
+// Description:
+//
+// Only the API key value changes. The API key ID remains unchanged.
 //
 // @param request - ResetApiKeyRequest
 //
@@ -704,7 +1114,7 @@ func (client *Client) ResetApiKey(apiKeyId *string, request *ResetApiKeyRequest)
 
 // Summary:
 //
-// 编辑apiKey的描述
+// Edits the information of an authentication credential API key.
 //
 // @param request - UpdateApiKeyRequest
 //
@@ -757,7 +1167,7 @@ func (client *Client) UpdateApiKeyWithOptions(apiKeyId *string, request *UpdateA
 
 // Summary:
 //
-// 编辑apiKey的描述
+// Edits the information of an authentication credential API key.
 //
 // @param request - UpdateApiKeyRequest
 //

@@ -26,19 +26,32 @@ type iDeleteWorkspaceResponseBody interface {
 }
 
 type DeleteWorkspaceResponseBody struct {
+	// The response status code.
+	//
 	// example:
 	//
 	// 200
-	Code        *string                                   `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The list of failure reasons.
 	FailReasons []*DeleteWorkspaceResponseBodyFailReasons `json:"failReasons,omitempty" xml:"failReasons,omitempty" type:"Repeated"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// Indicates whether the workspace is successfully deleted. Valid values:
+	//
+	// - true: Succeeded.
+	//
+	// - false: Failed.
+	//
 	// example:
 	//
 	// true
 	IsDeleted *bool `json:"isDeleted,omitempty" xml:"isDeleted,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
@@ -49,6 +62,12 @@ type DeleteWorkspaceResponseBody struct {
 	//
 	// DFD55E7B-0615-5343-BDA0-FBEE86F29935
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the API call is successful. Valid values:
+	//
+	// - true: Succeeded.
+	//
+	// - false: Failed.
+	//
 	// example:
 	//
 	// true
@@ -140,10 +159,14 @@ func (s *DeleteWorkspaceResponseBody) Validate() error {
 }
 
 type DeleteWorkspaceResponseBodyFailReasons struct {
+	// The specific reason.
+	//
 	// example:
 	//
 	// API Key exists. Please clear them first.
 	Reason *string `json:"reason,omitempty" xml:"reason,omitempty"`
+	// The resource type.
+	//
 	// example:
 	//
 	// API Key

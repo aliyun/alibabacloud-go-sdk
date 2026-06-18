@@ -24,15 +24,22 @@ type iCreateApiKeyResponseBody interface {
 }
 
 type CreateApiKeyResponseBody struct {
+	// The API key information.
 	ApiKey *CreateApiKeyResponseBodyApiKey `json:"apiKey,omitempty" xml:"apiKey,omitempty" type:"Struct"`
+	// The response code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
@@ -43,6 +50,12 @@ type CreateApiKeyResponseBody struct {
 	//
 	// C0CDC72E-52D7-5BC8-9396-9276B4FDF6B3
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - true: Successful.
+	//
+	// - false: Failed.
+	//
 	// example:
 	//
 	// true
@@ -127,22 +140,34 @@ type CreateApiKeyResponseBodyApiKey struct {
 	//
 	// 1858636
 	ApiKeyId *int64 `json:"apiKeyId,omitempty" xml:"apiKeyId,omitempty"`
+	// The value of the API key.
+	//
+	// 	Notice: Copy your API key immediately. Keep it secure. Anyone who obtains this key can initiate service requests on your behalf and incur charges. If you lose the key, you can reset it or create a new one..
+	//
 	// example:
 	//
 	// sk-ws-djI.8O7dkfkW2aICctnid4u4
 	ApiKeyValue *string `json:"apiKeyValue,omitempty" xml:"apiKeyValue,omitempty"`
+	// The creator.
+	//
 	// example:
 	//
 	// 1378030599924858
 	CreatedBy *string `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
+	// The description.
+	//
 	// example:
 	//
 	// desc
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 1774338222000
 	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// ws-3fa048e86117d91f

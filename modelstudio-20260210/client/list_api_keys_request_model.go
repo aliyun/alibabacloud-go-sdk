@@ -22,22 +22,32 @@ type iListApiKeysRequest interface {
 }
 
 type ListApiKeysRequest struct {
+	// Exact search by API Key ID.
+	//
 	// example:
 	//
 	// 3076140
 	ApiKeyId *int64 `json:"apiKeyId,omitempty" xml:"apiKeyId,omitempty"`
+	// Fuzzy search by description keyword.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Page size.
+	//
 	// example:
 	//
 	// 30
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// Used to return more results. This parameter is not required for the first query. The token required for subsequent queries can be obtained from the returned results.
+	//
 	// example:
 	//
 	// w9Z+S5+TZyw=
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// Exact search by workspace ID.
+	//
 	// example:
 	//
 	// ws-ac3ef438bec22dc5

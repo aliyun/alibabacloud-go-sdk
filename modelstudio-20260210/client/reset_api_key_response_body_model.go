@@ -24,15 +24,22 @@ type iResetApiKeyResponseBody interface {
 }
 
 type ResetApiKeyResponseBody struct {
+	// The API key information.
 	ApiKey *ResetApiKeyResponseBodyApiKey `json:"apiKey,omitempty" xml:"apiKey,omitempty" type:"Struct"`
+	// The response status code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// ok
@@ -43,6 +50,12 @@ type ResetApiKeyResponseBody struct {
 	//
 	// 36045E0A-551D-592D-B1BC-4C56596CE59E
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - true: The request was successful.
+	//
+	// - false: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -127,10 +140,14 @@ type ResetApiKeyResponseBodyApiKey struct {
 	//
 	// 2965964
 	ApiKeyId *int64 `json:"apiKeyId,omitempty" xml:"apiKeyId,omitempty"`
+	// The value of the API key.
+	//
 	// example:
 	//
 	// sk-ws-djI.8O7dkfkW2aICctnid4u4
 	ApiKeyValue *string `json:"apiKeyValue,omitempty" xml:"apiKeyValue,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// ws-b2d30f148c236908

@@ -30,22 +30,32 @@ type iListWorkspacesResponseBody interface {
 }
 
 type ListWorkspacesResponseBody struct {
+	// The response status code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 100
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The pagination token used to retrieve more results. You do not need to specify this parameter for the first request. For subsequent requests, use the token returned in the previous response.
+	//
 	// example:
 	//
 	// TbB1IsZUSR4iE
@@ -56,14 +66,23 @@ type ListWorkspacesResponseBody struct {
 	//
 	// 75DD3695-77E0-5784-B8A6-C213A01781FE
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the API call was successful. Valid values:
+	//
+	// - true: Successful.
+	//
+	// - false: Failed.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 149
-	TotalCount *int32                                  `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	TotalCount *int32 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	// The list of business workspaces.
 	Workspaces []*ListWorkspacesResponseBodyWorkspaces `json:"workspaces,omitempty" xml:"workspaces,omitempty" type:"Repeated"`
 }
 
@@ -176,22 +195,32 @@ type ListWorkspacesResponseBodyWorkspaces struct {
 	//
 	// llm-34o9ts1dai60z5sf.cn-beijing.maas.aliyuncs.com
 	ApiHost *string `json:"apiHost,omitempty" xml:"apiHost,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 1742785623772
 	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
+	// The service deployment scope. For more information, see [documentation](https://www.alibabacloud.com/help/zh/model-studio/regions/).
+	//
 	// example:
 	//
 	// global
 	ServiceSite *string `json:"serviceSite,omitempty" xml:"serviceSite,omitempty"`
+	// The business workspace ID.
+	//
 	// example:
 	//
 	// ws-0759e7b7ea7f585b
 	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+	// The business workspace name.
+	//
 	// example:
 	//
 	// default
