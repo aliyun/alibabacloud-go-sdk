@@ -6136,6 +6136,10 @@ func (client *Client) ListAppInstancesWithOptions(tmpReq *ListAppInstancesReques
 	}
 	request := &ListAppInstancesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.BizIds) {
+		request.BizIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.BizIds, dara.String("BizIds"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.StatusList) {
 		request.StatusListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.StatusList, dara.String("StatusList"), dara.String("json"))
 	}
@@ -6143,6 +6147,10 @@ func (client *Client) ListAppInstancesWithOptions(tmpReq *ListAppInstancesReques
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizId) {
 		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.BizIdsShrink) {
+		query["BizIds"] = request.BizIdsShrink
 	}
 
 	if !dara.IsNil(request.EndTimeBegin) {

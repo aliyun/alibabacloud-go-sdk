@@ -58,7 +58,7 @@ type ListAppInstancesResponseBody struct {
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether retry is allowed.
+	// Indicates whether a retry is allowed.
 	//
 	// example:
 	//
@@ -106,7 +106,7 @@ type ListAppInstancesResponseBody struct {
 	//
 	// False
 	NextPage *bool `json:"NextPage,omitempty" xml:"NextPage,omitempty"`
-	// The token for the next query. This parameter is empty if no more results exist.
+	// The token for the next query. This parameter is empty if no more results are available.
 	//
 	// example:
 	//
@@ -130,7 +130,7 @@ type ListAppInstancesResponseBody struct {
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the result limit is reached. The server processes up to 1000 recent records excluding pagination limits. If the results exceed 1000 records, **ResultLimit*	- is **true*	- and you must narrow the time range and search again. Otherwise, **ResultLimit*	- is **false**.
+	// In addition to pagination limits, the server processes up to 1,000 recent records per query. If the result exceeds 1,000 records, **ResultLimit*	- is **true**. Narrow the time range and search again. Otherwise, **ResultLimit*	- is **false**.
 	//
 	// example:
 	//

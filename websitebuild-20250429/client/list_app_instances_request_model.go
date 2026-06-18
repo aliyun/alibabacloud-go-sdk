@@ -11,6 +11,8 @@ type iListAppInstancesRequest interface {
 	GoString() string
 	SetBizId(v string) *ListAppInstancesRequest
 	GetBizId() *string
+	SetBizIds(v []*string) *ListAppInstancesRequest
+	GetBizIds() []*string
 	SetEndTimeBegin(v string) *ListAppInstancesRequest
 	GetEndTimeBegin() *string
 	SetEndTimeEnd(v string) *ListAppInstancesRequest
@@ -41,7 +43,8 @@ type ListAppInstancesRequest struct {
 	// example:
 	//
 	// WS20250731233102000001
-	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	BizId  *string   `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	BizIds []*string `json:"BizIds,omitempty" xml:"BizIds,omitempty" type:"Repeated"`
 	// The start of the expiration time range.
 	//
 	// example:
@@ -68,19 +71,19 @@ type ListAppInstancesRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next query. This parameter is empty if no more results exist.
+	// The token for the next query. This parameter is empty if no more results are available.
 	//
 	// example:
 	//
 	// AAAAARbaCuN6hiD08qrLdwJ9Fh3BFw8paIJ7ylB6A7Qn9JjM
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The field by which to sort the results.
+	// The field used for sorting.
 	//
 	// example:
 	//
 	// gmtCreated
 	OrderColumn *string `json:"OrderColumn,omitempty" xml:"OrderColumn,omitempty"`
-	// The sort order. Valid values: ASC and DESC.
+	// The sort type. Valid values: ASC and DESC.
 	//
 	// example:
 	//
@@ -118,6 +121,10 @@ func (s ListAppInstancesRequest) GoString() string {
 
 func (s *ListAppInstancesRequest) GetBizId() *string {
 	return s.BizId
+}
+
+func (s *ListAppInstancesRequest) GetBizIds() []*string {
+	return s.BizIds
 }
 
 func (s *ListAppInstancesRequest) GetEndTimeBegin() *string {
@@ -166,6 +173,11 @@ func (s *ListAppInstancesRequest) GetStatusList() []*string {
 
 func (s *ListAppInstancesRequest) SetBizId(v string) *ListAppInstancesRequest {
 	s.BizId = &v
+	return s
+}
+
+func (s *ListAppInstancesRequest) SetBizIds(v []*string) *ListAppInstancesRequest {
+	s.BizIds = v
 	return s
 }
 

@@ -11,6 +11,8 @@ type iListAppInstancesShrinkRequest interface {
 	GoString() string
 	SetBizId(v string) *ListAppInstancesShrinkRequest
 	GetBizId() *string
+	SetBizIdsShrink(v string) *ListAppInstancesShrinkRequest
+	GetBizIdsShrink() *string
 	SetEndTimeBegin(v string) *ListAppInstancesShrinkRequest
 	GetEndTimeBegin() *string
 	SetEndTimeEnd(v string) *ListAppInstancesShrinkRequest
@@ -41,7 +43,8 @@ type ListAppInstancesShrinkRequest struct {
 	// example:
 	//
 	// WS20250731233102000001
-	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	BizId        *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	BizIdsShrink *string `json:"BizIds,omitempty" xml:"BizIds,omitempty"`
 	// The start of the expiration time range.
 	//
 	// example:
@@ -68,19 +71,19 @@ type ListAppInstancesShrinkRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next query. This parameter is empty if no more results exist.
+	// The token for the next query. This parameter is empty if no more results are available.
 	//
 	// example:
 	//
 	// AAAAARbaCuN6hiD08qrLdwJ9Fh3BFw8paIJ7ylB6A7Qn9JjM
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The field by which to sort the results.
+	// The field used for sorting.
 	//
 	// example:
 	//
 	// gmtCreated
 	OrderColumn *string `json:"OrderColumn,omitempty" xml:"OrderColumn,omitempty"`
-	// The sort order. Valid values: ASC and DESC.
+	// The sort type. Valid values: ASC and DESC.
 	//
 	// example:
 	//
@@ -118,6 +121,10 @@ func (s ListAppInstancesShrinkRequest) GoString() string {
 
 func (s *ListAppInstancesShrinkRequest) GetBizId() *string {
 	return s.BizId
+}
+
+func (s *ListAppInstancesShrinkRequest) GetBizIdsShrink() *string {
+	return s.BizIdsShrink
 }
 
 func (s *ListAppInstancesShrinkRequest) GetEndTimeBegin() *string {
@@ -166,6 +173,11 @@ func (s *ListAppInstancesShrinkRequest) GetStatusListShrink() *string {
 
 func (s *ListAppInstancesShrinkRequest) SetBizId(v string) *ListAppInstancesShrinkRequest {
 	s.BizId = &v
+	return s
+}
+
+func (s *ListAppInstancesShrinkRequest) SetBizIdsShrink(v string) *ListAppInstancesShrinkRequest {
+	s.BizIdsShrink = &v
 	return s
 }
 
