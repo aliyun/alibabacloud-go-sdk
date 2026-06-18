@@ -24,7 +24,7 @@ type iBatchGetExpressionFieldsRequest interface {
 }
 
 type BatchGetExpressionFieldsRequest struct {
-	// List of expressions.
+	// A list of expression objects to process.
 	//
 	// example:
 	//
@@ -32,14 +32,14 @@ type BatchGetExpressionFieldsRequest struct {
 	Expressions []*BatchGetExpressionFieldsRequestExpressions `json:"Expressions,omitempty" xml:"Expressions,omitempty" type:"Repeated"`
 	InstanceId  *string                                       `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Kind        *string                                       `json:"Kind,omitempty" xml:"Kind,omitempty"`
-	// WAF Phase
+	// The WAF phase.
 	//
 	// example:
 	//
 	// http_bot
 	Phase      *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
 	PlanNameEn *string `json:"PlanNameEn,omitempty" xml:"PlanNameEn,omitempty"`
-	// Site ID
+	// The ID of the site.
 	//
 	// example:
 	//
@@ -123,13 +123,13 @@ func (s *BatchGetExpressionFieldsRequest) Validate() error {
 }
 
 type BatchGetExpressionFieldsRequestExpressions struct {
-	// Content of the expression.
+	// The content of the expression.
 	//
 	// example:
 	//
 	// ip.src eq 1.1.1.1
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
-	// The sequence number of the expression.
+	// The ID of the expression. This ID is used to associate an expression in the request with its corresponding result in the response.
 	//
 	// example:
 	//

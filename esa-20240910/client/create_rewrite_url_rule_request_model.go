@@ -32,17 +32,17 @@ type iCreateRewriteUrlRuleRequest interface {
 }
 
 type CreateRewriteUrlRuleRequest struct {
-	// The query string after rewriting.
+	// The query string after the rewrite.
 	//
 	// example:
 	//
 	// example=123
 	QueryString *string `json:"QueryString,omitempty" xml:"QueryString,omitempty"`
-	// Query string rewrite type. Value range:
+	// The query string rewrite mode. Valid values:
 	//
-	// - static: static mode.
+	// - `static`: Static mode.
 	//
-	// - dynamic: dynamic mode.
+	// - `dynamic`: Dynamic mode.
 	//
 	// if can be null:
 	// false
@@ -51,11 +51,11 @@ type CreateRewriteUrlRuleRequest struct {
 	//
 	// static
 	RewriteQueryStringType *string `json:"RewriteQueryStringType,omitempty" xml:"RewriteQueryStringType,omitempty"`
-	// URI rewrite type. Value range:
+	// The URI rewrite mode. Valid values:
 	//
-	// - static: static mode.
+	// - `static`: Static mode.
 	//
-	// - dynamic: dynamic mode.
+	// - `dynamic`: Dynamic mode.
 	//
 	// if can be null:
 	// false
@@ -64,34 +64,39 @@ type CreateRewriteUrlRuleRequest struct {
 	//
 	// static
 	RewriteUriType *string `json:"RewriteUriType,omitempty" xml:"RewriteUriType,omitempty"`
-	// Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+	// The conditional expression used to match user requests. This parameter is not required when you add a global configuration. Two use cases are supported:
 	//
-	// - Match all incoming requests: set the value to true
+	// - To match all inbound requests, set the value to `true`.
 	//
-	// - Match specific requests: set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+	// - To match specific requests, set the value to a custom expression, such as `(http.host eq "video.example.com")`.
 	//
 	// example:
 	//
 	// (http.host eq "video.example.com")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// Rule switch. This parameter is not required when adding a global configuration. Value range:
+	// This parameter is not required when you add a global configuration. Valid values:
 	//
-	// - on: enable.
+	// - `on`: Enables the rule.
 	//
-	// - off: disable.
+	// - `off`: Disables the rule.
 	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	// Rule name. This parameter is not required when adding a global configuration.
+	// The rule name. This parameter is not required when you add a global configuration.
 	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	Sequence *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+	// The execution priority of the rule. A lower value indicates a higher priority.
+	//
+	// example:
+	//
+	// 1
+	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// The site ID. Obtain it by calling the [ListSites](~~ListSites~~) operation.
 	//
 	// This parameter is required.
 	//
@@ -99,13 +104,13 @@ type CreateRewriteUrlRuleRequest struct {
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the effective version of the site configuration, defaulting to version 0.
+	// If configuration versioning is enabled for the site, this parameter specifies the target version. The default value is 0.
 	//
 	// example:
 	//
 	// 0
 	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
-	// The target URI after rewriting.
+	// The target URI after the rewrite.
 	//
 	// example:
 	//

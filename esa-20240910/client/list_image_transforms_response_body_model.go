@@ -24,33 +24,33 @@ type iListImageTransformsResponseBody interface {
 }
 
 type ListImageTransformsResponseBody struct {
-	// Configuration list.
+	// A list of configurations.
 	Configs []*ListImageTransformsResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Page size. Range: **1~500**, default is **500**.
+	// The number of entries per page, ranging from **1 to 500**. The default is **500**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// CB1A380B-09F0-41BB-A198-72F8FD6DA2FE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Total number of records.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 16
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// Total number of pages.
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -142,23 +142,23 @@ type ListImageTransformsResponseBodyConfigs struct {
 	//
 	// on
 	AutoWebp *string `json:"AutoWebp,omitempty" xml:"AutoWebp,omitempty"`
-	// Configuration ID.
+	// The ID of the configuration.
 	//
 	// example:
 	//
 	// 395386449776640
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// Configuration type. Possible values:
+	// The type of the configuration. Valid values:
 	//
-	// - global: Global configuration;
+	// - `global`: A global configuration.
 	//
-	// - rule: Rule configuration;
+	// - `rule`: A rule-based configuration.
 	//
 	// example:
 	//
 	// global
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
-	// Switch. Possible values:
+	// Indicates whether the configuration is enabled. Valid values:
 	//
 	// - **on**: Enabled.
 	//
@@ -168,39 +168,39 @@ type ListImageTransformsResponseBodyConfigs struct {
 	//
 	// on
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+	// The conditional expression that defines the rule used to match user requests. This parameter is not applicable to global configurations.
 	//
-	// - Match all incoming requests: Set the value to true
+	// - A value of `true` matches all incoming requests.
 	//
-	// - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+	// - A custom expression, such as `(http.host eq "video.example.com")`, matches specific requests.
 	//
 	// example:
 	//
 	// (http.request.uri.path.file_name eq \\"jpg\\")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// Rule switch. This parameter is not required when adding a global configuration. Possible values:
+	// Indicates whether the rule is enabled. This parameter is not applicable to global configurations. Valid values:
 	//
-	// - on: Enabled.
+	// - **on**: Enabled.
 	//
-	// - off: Disabled.
+	// - **off**: Disabled.
 	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	// Rule name. This parameter is not required when adding a global configuration.
+	// The name of the rule. This parameter is not applicable to global configurations.
 	//
 	// example:
 	//
 	// test
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// Rule execution order. The smaller the value, the higher the priority.
+	// The execution order of the rule. A smaller value indicates a higher priority.
 	//
 	// example:
 	//
 	// 1
 	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	// Site configuration version number. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration takes effect. The default value is version 0.
+	// The version of the site configuration. For a site with version management enabled, this parameter specifies the site version to which the configuration applies. The default is 0.
 	//
 	// example:
 	//

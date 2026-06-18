@@ -26,43 +26,43 @@ type iListHttpResponseHeaderModificationRulesRequest interface {
 }
 
 type ListHttpResponseHeaderModificationRulesRequest struct {
-	// Configuration ID.
+	// The config ID.
 	//
 	// example:
 	//
 	// 35281609698****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// Configuration type, which can be used to query global or rule configurations. Possible values:
+	// The type of configuration to query. Valid values:
 	//
-	// - global: Query global configuration.
+	// - global: Returns only the global configuration.
 	//
-	// - rule: Query rule configuration.
+	// - rule: Returns only the rule configuration.
 	//
-	// This parameter is optional. If not provided, it does not distinguish between global and rule configurations.
+	// If you do not specify this parameter, the operation returns both global and rule configurations.
 	//
 	// example:
 	//
 	// rule
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
-	// Page number.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Page size, default is 500. The value range is any integer from 1 to 500.
+	// The number of entries to return on each page. Default value: 500. Valid values: an integer from 1 to 500.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Rule name. This parameter is not required when adding a global configuration.
+	// The rule name. This parameter applies only when you query for a rule configuration.
 	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
+	// The site ID. You can get this ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -70,7 +70,7 @@ type ListHttpResponseHeaderModificationRulesRequest struct {
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// Version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the effective version of the configuration, with the default being version 0.
+	// The site version. For sites that have configuration versioning enabled, you can use this parameter to query a configuration from a specific version. The default value is 0.
 	//
 	// example:
 	//

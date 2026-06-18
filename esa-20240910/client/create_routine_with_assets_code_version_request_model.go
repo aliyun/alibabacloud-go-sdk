@@ -15,6 +15,8 @@ type iCreateRoutineWithAssetsCodeVersionRequest interface {
 	GetCodeDescription() *string
 	SetConfOptions(v *CreateRoutineWithAssetsCodeVersionRequestConfOptions) *CreateRoutineWithAssetsCodeVersionRequest
 	GetConfOptions() *CreateRoutineWithAssetsCodeVersionRequestConfOptions
+	SetDeployEnv(v string) *CreateRoutineWithAssetsCodeVersionRequest
+	GetDeployEnv() *string
 	SetExtraInfo(v string) *CreateRoutineWithAssetsCodeVersionRequest
 	GetExtraInfo() *string
 	SetName(v string) *CreateRoutineWithAssetsCodeVersionRequest
@@ -25,6 +27,7 @@ type CreateRoutineWithAssetsCodeVersionRequest struct {
 	BuildId         *int64                                                `json:"BuildId,omitempty" xml:"BuildId,omitempty"`
 	CodeDescription *string                                               `json:"CodeDescription,omitempty" xml:"CodeDescription,omitempty"`
 	ConfOptions     *CreateRoutineWithAssetsCodeVersionRequestConfOptions `json:"ConfOptions,omitempty" xml:"ConfOptions,omitempty" type:"Struct"`
+	DeployEnv       *string                                               `json:"DeployEnv,omitempty" xml:"DeployEnv,omitempty"`
 	ExtraInfo       *string                                               `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
 	// This parameter is required.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -50,6 +53,10 @@ func (s *CreateRoutineWithAssetsCodeVersionRequest) GetConfOptions() *CreateRout
 	return s.ConfOptions
 }
 
+func (s *CreateRoutineWithAssetsCodeVersionRequest) GetDeployEnv() *string {
+	return s.DeployEnv
+}
+
 func (s *CreateRoutineWithAssetsCodeVersionRequest) GetExtraInfo() *string {
 	return s.ExtraInfo
 }
@@ -70,6 +77,11 @@ func (s *CreateRoutineWithAssetsCodeVersionRequest) SetCodeDescription(v string)
 
 func (s *CreateRoutineWithAssetsCodeVersionRequest) SetConfOptions(v *CreateRoutineWithAssetsCodeVersionRequestConfOptions) *CreateRoutineWithAssetsCodeVersionRequest {
 	s.ConfOptions = v
+	return s
+}
+
+func (s *CreateRoutineWithAssetsCodeVersionRequest) SetDeployEnv(v string) *CreateRoutineWithAssetsCodeVersionRequest {
+	s.DeployEnv = &v
 	return s
 }
 

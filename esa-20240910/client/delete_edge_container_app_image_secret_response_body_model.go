@@ -14,7 +14,7 @@ type iDeleteEdgeContainerAppImageSecretResponseBody interface {
 }
 
 type DeleteEdgeContainerAppImageSecretResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

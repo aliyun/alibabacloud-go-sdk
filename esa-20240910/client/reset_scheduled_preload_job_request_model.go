@@ -18,7 +18,7 @@ type ResetScheduledPreloadJobRequest struct {
 	//
 	// example:
 	//
-	// ResetScheduledPreloadJob
+	// 665d3af3621bccf3fe29e1a4
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 

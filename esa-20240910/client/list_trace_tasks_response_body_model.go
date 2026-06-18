@@ -22,19 +22,28 @@ type iListTraceTasksResponseBody interface {
 }
 
 type ListTraceTasksResponseBody struct {
+	// The number of pages.
+	//
 	// example:
 	//
 	// 10
-	Count *int64                            `json:"Count,omitempty" xml:"Count,omitempty"`
-	List  []*ListTraceTasksResponseBodyList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The returned list information.
+	List []*ListTraceTasksResponseBodyList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// The page number, starting from 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The page size. Valid values: any integer from 1 to 1000.
+	//
 	// example:
 	//
 	// 6
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 4E09C5D7-E1CF-4CAA-A45E-8727F4C8FD70
@@ -108,58 +117,100 @@ func (s *ListTraceTasksResponseBody) Validate() error {
 }
 
 type ListTraceTasksResponseBodyList struct {
+	// The Alibaba Cloud account ID.
+	//
 	// example:
 	//
 	// 1077********7468
 	Aliuid *string `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
+	// The IP address of the local DNS server.
+	//
 	// example:
 	//
 	// xx.xx.xx.xx
 	ClientAddr *string `json:"ClientAddr,omitempty" xml:"ClientAddr,omitempty"`
+	// The client IP address.
+	//
 	// example:
 	//
 	// xx.xx.xx.xx
 	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	// The time when the report was created. Format: yyyy-MM-dd HH:mm:ss. Time zone: UTC+8.
+	//
 	// example:
 	//
 	// 2022-12-10 15:11:47
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The diagnose ID.
+	//
 	// example:
 	//
 	// f2a18ad5
 	DiagnoseId *string `json:"DiagnoseId,omitempty" xml:"DiagnoseId,omitempty"`
+	// The diagnostic URL.
+	//
 	// example:
 	//
 	// http://cdn.dns-detect.alicdn.com/diagnose/xxxxxx
 	DiagnoseUrl *string `json:"DiagnoseUrl,omitempty" xml:"DiagnoseUrl,omitempty"`
+	// The domain name to diagnose.
+	//
 	// example:
 	//
 	// http://www.example.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The expiration time. The value is a UNIX timestamp. Unit: seconds.
+	//
 	// example:
 	//
 	// 1669285111
 	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The remaining number of available diagnostic attempts.
+	//
 	// example:
 	//
 	// 10
 	RemainDiagnoseTimes *int64 `json:"RemainDiagnoseTimes,omitempty" xml:"RemainDiagnoseTimes,omitempty"`
+	// The report generation status. Valid values:
+	//
+	// - 0: Succeeded.
+	//
+	// - 1: Failed.
+	//
+	// - 2: Timed out.
+	//
+	// - 3: Running.
+	//
+	// - 4: Waiting.
+	//
 	// example:
 	//
 	// 0
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The status of the diagnostic URL. Valid values:
+	//
+	// - 1: active
+	//
+	// - 0: expired.
+	//
 	// example:
 	//
 	// 1
 	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// 000000xxxxxxxxxxxxxxxxxxxxxxxxxxxx475e
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The time consumed to generate the report.
+	//
 	// example:
 	//
 	// 1
 	TimeConsuming *int64 `json:"TimeConsuming,omitempty" xml:"TimeConsuming,omitempty"`
+	// The diagnostic trace ID.
+	//
 	// example:
 	//
 	// 000000xxxxxxxxxxxxxxxxxxxxxx25941e

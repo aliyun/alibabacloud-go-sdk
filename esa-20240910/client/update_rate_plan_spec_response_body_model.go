@@ -18,15 +18,19 @@ type iUpdateRatePlanSpecResponseBody interface {
 }
 
 type UpdateRatePlanSpecResponseBody struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// xcdn-as23ds***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The order ID.
+	//
 	// example:
 	//
 	// 2223332122***
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

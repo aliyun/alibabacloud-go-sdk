@@ -22,9 +22,9 @@ type iListRoutineCodeVersionsResponseBody interface {
 }
 
 type ListRoutineCodeVersionsResponseBody struct {
-	// The code versions of the routine.
+	// The list of Edge Routine code versions.
 	CodeVersions []*ListRoutineCodeVersionsResponseBodyCodeVersions `json:"CodeVersions,omitempty" xml:"CodeVersions,omitempty" type:"Repeated"`
-	// The page number. Pages start from page 1. Default value: 1.
+	// The current page number.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListRoutineCodeVersionsResponseBody struct {
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE73368
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of code versions returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *ListRoutineCodeVersionsResponseBody) Validate() error {
 }
 
 type ListRoutineCodeVersionsResponseBodyCodeVersions struct {
-	// The ID of the code version build.
+	// The build ID of the code version.
 	//
 	// example:
 	//
@@ -129,13 +129,13 @@ type ListRoutineCodeVersionsResponseBodyCodeVersions struct {
 	//
 	// test desc
 	CodeDescription *string `json:"CodeDescription,omitempty" xml:"CodeDescription,omitempty"`
-	// The version of the code.
+	// The code version number.
 	//
 	// example:
 	//
 	// 1723599747213377175
 	CodeVersion *string `json:"CodeVersion,omitempty" xml:"CodeVersion,omitempty"`
-	// Code version configuration items.
+	// The configuration items of the code version.
 	ConfOptions *ListRoutineCodeVersionsResponseBodyCodeVersionsConfOptions `json:"ConfOptions,omitempty" xml:"ConfOptions,omitempty" type:"Struct"`
 	// The time when the code version was created.
 	//
@@ -143,12 +143,24 @@ type ListRoutineCodeVersionsResponseBodyCodeVersions struct {
 	//
 	// 2024-04-16T09:42:47Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Additional information about the code version.
+	// The deployment environment. Valid values:
+	//
+	// - **staging**: staging environment.
+	//
+	// - **production**: production environment.
+	//
+	// example:
+	//
+	// staging
+	DeployEnv *string `json:"DeployEnv,omitempty" xml:"DeployEnv,omitempty"`
+	// The additional information about the code version.
 	//
 	// example:
 	//
 	// {\\"approver\\":[\\"348678\\",\\"111133\\",\\"411544\\"]}
 	ExtraInfo *string `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
+	// Indicates whether environment variables exist.
+	HasEnvVars *bool `json:"HasEnvVars,omitempty" xml:"HasEnvVars,omitempty"`
 	// The status of the code version.
 	//
 	// example:
@@ -185,8 +197,16 @@ func (s *ListRoutineCodeVersionsResponseBodyCodeVersions) GetCreateTime() *strin
 	return s.CreateTime
 }
 
+func (s *ListRoutineCodeVersionsResponseBodyCodeVersions) GetDeployEnv() *string {
+	return s.DeployEnv
+}
+
 func (s *ListRoutineCodeVersionsResponseBodyCodeVersions) GetExtraInfo() *string {
 	return s.ExtraInfo
+}
+
+func (s *ListRoutineCodeVersionsResponseBodyCodeVersions) GetHasEnvVars() *bool {
+	return s.HasEnvVars
 }
 
 func (s *ListRoutineCodeVersionsResponseBodyCodeVersions) GetStatus() *string {
@@ -218,8 +238,18 @@ func (s *ListRoutineCodeVersionsResponseBodyCodeVersions) SetCreateTime(v string
 	return s
 }
 
+func (s *ListRoutineCodeVersionsResponseBodyCodeVersions) SetDeployEnv(v string) *ListRoutineCodeVersionsResponseBodyCodeVersions {
+	s.DeployEnv = &v
+	return s
+}
+
 func (s *ListRoutineCodeVersionsResponseBodyCodeVersions) SetExtraInfo(v string) *ListRoutineCodeVersionsResponseBodyCodeVersions {
 	s.ExtraInfo = &v
+	return s
+}
+
+func (s *ListRoutineCodeVersionsResponseBodyCodeVersions) SetHasEnvVars(v bool) *ListRoutineCodeVersionsResponseBodyCodeVersions {
+	s.HasEnvVars = &v
 	return s
 }
 
@@ -238,7 +268,7 @@ func (s *ListRoutineCodeVersionsResponseBodyCodeVersions) Validate() error {
 }
 
 type ListRoutineCodeVersionsResponseBodyCodeVersionsConfOptions struct {
-	// Code version configuration items NotFoundStrategy.
+	// The NotFoundStrategy configuration item of the code version.
 	//
 	// example:
 	//

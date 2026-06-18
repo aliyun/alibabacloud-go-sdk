@@ -22,19 +22,28 @@ type iGetClientCaCertificateHostnamesResponseBody interface {
 }
 
 type GetClientCaCertificateHostnamesResponseBody struct {
+	// A list of domain names.
 	Hostnames []*string `json:"Hostnames,omitempty" xml:"Hostnames,omitempty" type:"Repeated"`
+	// The client CA certificate ID.
+	//
 	// example:
 	//
 	// babaded901474b9693acf530e0fb****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 3558df77-8a7a-4060-a900-2d7949403836
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The site ID.
+	//
 	// example:
 	//
 	// 1234567890123
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The site name.
+	//
 	// example:
 	//
 	// example.com

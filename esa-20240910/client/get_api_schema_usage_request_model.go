@@ -16,13 +16,13 @@ type iGetApiSchemaUsageRequest interface {
 }
 
 type GetApiSchemaUsageRequest struct {
-	// The website ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
+	// The site ID. You can obtain this ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
 	//
 	// example:
 	//
 	// 1159101787****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The version of the website.
+	// The site version.
 	//
 	// example:
 	//

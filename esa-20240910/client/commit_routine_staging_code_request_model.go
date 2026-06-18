@@ -11,6 +11,8 @@ type iCommitRoutineStagingCodeRequest interface {
 	GoString() string
 	SetCodeDescription(v string) *CommitRoutineStagingCodeRequest
 	GetCodeDescription() *string
+	SetDeployEnv(v string) *CommitRoutineStagingCodeRequest
+	GetDeployEnv() *string
 	SetName(v string) *CommitRoutineStagingCodeRequest
 	GetName() *string
 }
@@ -22,13 +24,14 @@ type CommitRoutineStagingCodeRequest struct {
 	//
 	// description of this code ver
 	CodeDescription *string `json:"CodeDescription,omitempty" xml:"CodeDescription,omitempty"`
-	// The routine name.
+	DeployEnv       *string `json:"DeployEnv,omitempty" xml:"DeployEnv,omitempty"`
+	// The name of the edge function (Routine).
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// CommitRoutineStagingCode
+	// test-routine1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -44,12 +47,21 @@ func (s *CommitRoutineStagingCodeRequest) GetCodeDescription() *string {
 	return s.CodeDescription
 }
 
+func (s *CommitRoutineStagingCodeRequest) GetDeployEnv() *string {
+	return s.DeployEnv
+}
+
 func (s *CommitRoutineStagingCodeRequest) GetName() *string {
 	return s.Name
 }
 
 func (s *CommitRoutineStagingCodeRequest) SetCodeDescription(v string) *CommitRoutineStagingCodeRequest {
 	s.CodeDescription = &v
+	return s
+}
+
+func (s *CommitRoutineStagingCodeRequest) SetDeployEnv(v string) *CommitRoutineStagingCodeRequest {
+	s.DeployEnv = &v
 	return s
 }
 

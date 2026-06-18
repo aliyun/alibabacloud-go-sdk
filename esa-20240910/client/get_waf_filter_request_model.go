@@ -20,25 +20,25 @@ type iGetWafFilterRequest interface {
 }
 
 type GetWafFilterRequest struct {
-	// The WAF rule category to which the filter conditions to query belong.
+	// Specifies the WAF phase from which to retrieve the matching engine information.
 	//
 	// example:
 	//
 	// http_bot
 	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	// Specifies the ID of the site. You can get this ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
 	//
 	// example:
 	//
 	// 1
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The condition for matching incoming requests.
+	// Specifies the application target of the matching engine.
 	//
 	// example:
 	//
 	// characteristics
 	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
-	// The rule type.
+	// Specifies the rule type.
 	//
 	// example:
 	//

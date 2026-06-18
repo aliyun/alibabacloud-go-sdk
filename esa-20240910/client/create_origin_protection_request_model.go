@@ -16,11 +16,17 @@ type iCreateOriginProtectionRequest interface {
 }
 
 type CreateOriginProtectionRequest struct {
+	// Specifies whether to automatically enable the latest back-to-origin IP addresses list. Valid values:
+	//
+	// - off: Do not automatically enable.
+	//
+	// - on: Automatically enable.
+	//
 	// example:
 	//
 	// off
 	AutoConfirmIPList *string `json:"AutoConfirmIPList,omitempty" xml:"AutoConfirmIPList,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	// The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation. The plan associated with the site must support the origin protection feature.
 	//
 	// This parameter is required.
 	//

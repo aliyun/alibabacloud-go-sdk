@@ -102,11 +102,11 @@ type GetEdgeContainerAppVersionResponseBodyVersion struct {
 	Remarks *string `json:"Remarks,omitempty" xml:"Remarks,omitempty"`
 	// The status of the current version. Valid values:
 	//
-	// 	- created: The version is created.
+	// - created: The version is created.
 	//
-	// 	- failed: The version failed to be created.
+	// - failed: The version failed to be created.
 	//
-	// 	- creating: The version is being created.
+	// - creating: The version is being created.
 	//
 	// example:
 	//
@@ -280,7 +280,7 @@ type GetEdgeContainerAppVersionResponseBodyVersionContainers struct {
 	//
 	// example:
 	//
-	// {\\"exec\\":{\\"command\\":[\\"touch\\",\\"/home/admin/checkpoststartV1\\"]}}
+	// sh poststart.sh "echo hello world"
 	PostStart *string `json:"PostStart,omitempty" xml:"PostStart,omitempty"`
 	// The command that is run before the container is stopped.
 	//
@@ -303,6 +303,10 @@ type GetEdgeContainerAppVersionResponseBodyVersionContainers struct {
 	// 1C2G
 	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
 	// The storage capacity of the container. Valid values: 0.5G, 10G, 20G, and 30G.
+	//
+	// example:
+	//
+	// 0.5G, 标识存储空间，取值范围（0.5G | 10G | 20G | 30G）
 	Storage *string `json:"Storage,omitempty" xml:"Storage,omitempty"`
 }
 

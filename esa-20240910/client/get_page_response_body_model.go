@@ -30,7 +30,7 @@ type iGetPageResponseBody interface {
 }
 
 type GetPageResponseBody struct {
-	// The Base64-encoded content of the error page. The content type is specified by the Content-Type field.
+	// The Base64-encoded content of the custom response page.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type GetPageResponseBody struct {
 	//
 	// PGh0bWw+aGVsbG8gcGFnZTwvaHRtbD4=
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The Content-Type field in the HTTP header.
+	// The value for the page\\"s Content-Type HTTP header.
 	//
 	// This parameter is required.
 	//
@@ -46,13 +46,13 @@ type GetPageResponseBody struct {
 	//
 	// text/html
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	// The description of the custom error page.
+	// The description of the custom response page.
 	//
 	// example:
 	//
 	// a custom deny page
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the custom error page.[](~~2850223~~)
+	// The ID of the custom response page.
 	//
 	// example:
 	//
@@ -77,9 +77,10 @@ type GetPageResponseBody struct {
 	// example:
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
-	RequestId *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SiteIds   []*int64 `json:"SiteIds,omitempty" xml:"SiteIds,omitempty" type:"Repeated"`
-	// The time when the custom error page was last modified.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The sites to which the page is applied.
+	SiteIds []*int64 `json:"SiteIds,omitempty" xml:"SiteIds,omitempty" type:"Repeated"`
+	// The time the custom response page was last modified.
 	//
 	// example:
 	//

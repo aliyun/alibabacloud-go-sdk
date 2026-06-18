@@ -16,7 +16,7 @@ type iGetOriginPoolRequest interface {
 }
 
 type GetOriginPoolRequest struct {
-	// The ID of the origin pool, which can be obtained by calling the [ListOriginPools](https://help.aliyun.com/document_detail/2863947.html) interface.
+	// The origin pool ID. To get it, call [ListOriginPools](https://help.aliyun.com/document_detail/2863947.html).
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type GetOriginPoolRequest struct {
 	//
 	// 1038520525196928
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The ID of the site, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+	// The site ID. To get it, call [ListSites](https://help.aliyun.com/document_detail/2850189.html).
 	//
 	// This parameter is required.
 	//

@@ -16,7 +16,7 @@ type iGetKvResponseBody interface {
 }
 
 type GetKvResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

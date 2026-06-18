@@ -29,7 +29,8 @@ type ListPagesShrinkRequest struct {
 	// example:
 	//
 	// 20
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The query filters, specified as a JSON object.
 	QueryArgsShrink *string `json:"QueryArgs,omitempty" xml:"QueryArgs,omitempty"`
 }
 

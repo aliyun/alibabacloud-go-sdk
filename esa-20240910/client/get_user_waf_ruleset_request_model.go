@@ -16,12 +16,16 @@ type iGetUserWafRulesetRequest interface {
 }
 
 type GetUserWafRulesetRequest struct {
+	// The ID of the WAF ruleset.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10000001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the WAF instance.
+	//
 	// This parameter is required.
 	//
 	// example:

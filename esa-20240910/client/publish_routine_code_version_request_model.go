@@ -18,27 +18,10 @@ type iPublishRoutineCodeVersionRequest interface {
 }
 
 type PublishRoutineCodeVersionRequest struct {
-	// The code version to be released.
-	//
-	// example:
-	//
-	// 1710120201067203242
 	CodeVersion *string `json:"CodeVersion,omitempty" xml:"CodeVersion,omitempty"`
-	// The environment name.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// production
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
-	// The routine name.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// PublishRoutineCodeVersion
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

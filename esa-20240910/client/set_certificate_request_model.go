@@ -32,45 +32,54 @@ type iSetCertificateRequest interface {
 }
 
 type SetCertificateRequest struct {
-	// The certificate ID on Certificate Management Service.
+	// The cloud certificate ID. This parameter is required when Type is set to cas.
 	//
 	// example:
 	//
 	// 30000478
 	CasId *int64 `json:"CasId,omitempty" xml:"CasId,omitempty"`
-	// The certificate content.
+	// The certificate content. This parameter is required when Type is set to upload.
 	//
 	// example:
 	//
 	// -----BEGIN CERTIFICATE-----
 	Certificate *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
-	// The certificate ID on ESA.
+	// The certificate ID. Certificates of the free type (created by calling the ApplyCertificate operation) are not supported. Certificates of the cas and upload types are supported.
 	//
 	// example:
 	//
-	// 30001303
-	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// babae7c40fef412d887688b91c9e****
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The keyless server ID. This parameter takes effect only when Type is set to keyless.
+	//
+	// example:
+	//
+	// 1233112****
 	KeyServerId *string `json:"KeyServerId,omitempty" xml:"KeyServerId,omitempty"`
-	// The certificate name.
+	// The certificate name. This parameter is required when Type is set to upload.
 	//
 	// example:
 	//
 	// yourCertName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The private key of the certificate.
+	// The certificate private key. This parameter is required when Type is set to upload.
 	//
 	// example:
 	//
 	// -----BEGIN PRIVATE KEY-----
 	PrivateKey *string `json:"PrivateKey,omitempty" xml:"PrivateKey,omitempty"`
-	// The region.
+	// The region. This parameter is required when Type is set to cas. Valid values:
+	//
+	// - China site accounts: cn-hangzhou.
+	//
+	// - International site accounts: ap-southeast-1.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	Region        *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	// The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
 	//
 	// This parameter is required.
 	//
@@ -80,9 +89,11 @@ type SetCertificateRequest struct {
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 	// The certificate type. Valid values:
 	//
-	// 	- cas: a certificate purchased by using Certificate Management Service.
+	// - **cas**: certificate from SSL Certificates Service.
 	//
-	// 	- upload: a custom certificate that you upload.
+	// - **upload**: custom uploaded certificate.
+	//
+	// - **keyless**: keyless certificate.
 	//
 	// This parameter is required.
 	//

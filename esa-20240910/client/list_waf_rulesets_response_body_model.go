@@ -26,39 +26,39 @@ type iListWafRulesetsResponseBody interface {
 }
 
 type ListWafRulesetsResponseBody struct {
-	// Number of WAF rule sets used by the instance in this WAF operation phase.
+	// The number of WAF rulesets used by the instance in this WAF phase.
 	//
 	// example:
 	//
 	// 10
 	InstanceUsage *int64 `json:"InstanceUsage,omitempty" xml:"InstanceUsage,omitempty"`
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Page size.
+	// The page size.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// List of rule set information, containing detailed information about the rule sets.
+	// A list of rulesets.
 	Rulesets []*ListWafRulesetsResponseBodyRulesets `json:"Rulesets,omitempty" xml:"Rulesets,omitempty" type:"Repeated"`
-	// Number of WAF rule sets used by the site in this WAF operation phase.
+	// The number of WAF rulesets used by the site in this WAF phase.
 	//
 	// example:
 	//
 	// 5
 	SiteUsage *int64 `json:"SiteUsage,omitempty" xml:"SiteUsage,omitempty"`
-	// Total number of filtered records.
+	// The total number of entries returned after filtering.
 	//
 	// example:
 	//
@@ -151,41 +151,57 @@ func (s *ListWafRulesetsResponseBody) Validate() error {
 }
 
 type ListWafRulesetsResponseBodyRulesets struct {
-	// List of match objects.
+	// A list of match fields.
 	Fields []*string `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
-	// ID of the WAF rule set.
+	// The ID of the WAF ruleset. This value is returned by the [ListWafRulesets](https://help.aliyun.com/document_detail/2878359.html) operation.
 	//
 	// example:
 	//
 	// 10000001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Name of the rule set.
+	// The ruleset name.
 	//
 	// example:
 	//
 	// example
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// WAF operation phase.
+	// The execution phase of the ruleset. Valid values are:
+	//
+	// - `http_whitelist`: whitelist rule
+	//
+	// - `http_custom`: custom rule
+	//
+	// - `http_managed`: managed rule
+	//
+	// - `http_anti_scan`: scan protection rule
+	//
+	// - `http_ratelimit`: rate limiting rule
+	//
+	// - `ip_access_rule`: IP access rule
+	//
+	// - `http_bot`: advanced bot protection
+	//
+	// - `http_security_level_rule`: security rule
 	//
 	// example:
 	//
 	// http_bot
 	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	// Status of the rule set.
+	// The ruleset status.
 	//
 	// example:
 	//
 	// on
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Protection target type in http_bot.
+	// The protection target for the \\"http_bot\\" phase.
 	//
 	// example:
 	//
 	// web
 	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
-	// List of rule types.
+	// A list of rule types.
 	Types []*string `json:"Types,omitempty" xml:"Types,omitempty" type:"Repeated"`
-	// Last modification time of the rule set.
+	// The time the ruleset was last modified.
 	//
 	// example:
 	//

@@ -28,23 +28,25 @@ type iUpdateCustomScenePolicyResponseBody interface {
 }
 
 type UpdateCustomScenePolicyResponseBody struct {
-	// The time when the policy expires.
+	// The end time of the policy.
 	//
-	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The time is in UTC and in the ISO 8601 format: yyyy-MM-ddTHH:mm:ssZ.
 	//
 	// example:
 	//
 	// 2023-04-03T19:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The policy name.
+	// The name of the policy.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The IDs of websites associated.
+	// A list of associated site IDs.
+	//
+	// > This parameter is deprecated. We recommend that you use the `SiteIds` parameter instead.
 	Objects []*string `json:"Objects,omitempty" xml:"Objects,omitempty" type:"Repeated"`
-	// The policy ID.
+	// The ID of the policy.
 	//
 	// example:
 	//
@@ -56,18 +58,23 @@ type UpdateCustomScenePolicyResponseBody struct {
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE73368
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SiteIds   *string `json:"SiteIds,omitempty" xml:"SiteIds,omitempty"`
-	// The time when the policy takes effect.
+	// The associated site IDs. Multiple IDs are separated by a comma (,).
 	//
-	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// example:
+	//
+	// 123456****,123457****
+	SiteIds *string `json:"SiteIds,omitempty" xml:"SiteIds,omitempty"`
+	// The start time of the policy.
+	//
+	// The time is in UTC and in the ISO 8601 format: yyyy-MM-ddTHH:mm:ssZ.
 	//
 	// example:
 	//
 	// 2023-04-03T16:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The name of the policy template. Valid value:
+	// The name of the template. Valid value:
 	//
-	// 	- **promotion**: major events.
+	// - **promotion**: major promotion
 	//
 	// example:
 	//

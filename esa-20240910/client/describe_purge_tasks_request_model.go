@@ -36,7 +36,7 @@ type DescribePurgeTasksRequest struct {
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The end time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
-	// >  The end time must be later than the start time.
+	// > The end time must be later than the start time.
 	//
 	// example:
 	//
@@ -68,11 +68,11 @@ type DescribePurgeTasksRequest struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The task status. Valid values:
 	//
-	// 	- **Complete**: The task is complete.
+	// - **Complete**: The task is complete.
 	//
-	// 	- **Refreshing**: The task is in progress.
+	// - **Refreshing**: The task is in progress.
 	//
-	// 	- **Failed**: The task failed.
+	// - **Failed**: The task failed.
 	//
 	// example:
 	//
@@ -80,17 +80,17 @@ type DescribePurgeTasksRequest struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The task type. Valid values:
 	//
-	// 	- **file*	- (default): purges the cache by file.
+	// - **file*	- (default): purges the cache by file.
 	//
-	// 	- **cachetag**: purges the cache by cache tag.
+	// - **cachetag**: purges the cache by cache tag.
 	//
-	// 	- **directory**: purges the cache by directory.
+	// - **directory**: purges the cache by directory.
 	//
-	// 	- **ignoreParams**: purges the cache by URL with specified parameters ignored.
+	// - **ignoreParams**: purges the cache by URL with specified parameters ignored.
 	//
-	// 	- **hostname**: purges the cache by hostname.
+	// - **hostname**: purges the cache by hostname.
 	//
-	// 	- **purgeall**: purges all cache.
+	// - **purgeall**: purges all cache.
 	//
 	// example:
 	//

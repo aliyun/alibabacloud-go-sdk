@@ -18,15 +18,15 @@ type iListScheduledPreloadExecutionsResponseBody interface {
 }
 
 type ListScheduledPreloadExecutionsResponseBody struct {
-	// The information about prefetch plans returned.
+	// A list of execution plans.
 	Executions []*ListScheduledPreloadExecutionsResponseBodyExecutions `json:"Executions,omitempty" xml:"Executions,omitempty" type:"Repeated"`
-	// The request ID.
+	// The unique ID of the request.
 	//
 	// example:
 	//
 	// ET5BF670-09D5-4D0B-BEBY-D96A2A528000
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of execution plans.
 	//
 	// example:
 	//
@@ -89,53 +89,53 @@ type ListScheduledPreloadExecutionsResponseBodyExecutions struct {
 	//
 	// 15685865xxx14622
 	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// The end time of the prefetch plan.
+	// The end time of the execution plan.
 	//
 	// example:
 	//
 	// 2024-05-31T18:10:48.849+08:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the prefetch plan.
+	// The ID of the execution plan.
 	//
 	// example:
 	//
 	// 66599bd7397885b43804901c
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The time interval between each batch execution in the plan. Unit: seconds.
+	// The execution interval between batches, in seconds.
 	//
 	// example:
 	//
 	// 60
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The ID of the prefetch task.
+	// The ID of the scheduled preload task.
 	//
 	// example:
 	//
 	// 665d3af3621bccf3fe29e1a4
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The number of URLs prefetched in each batch.
+	// The number of URLs to preload in each batch.
 	//
 	// example:
 	//
 	// 10
 	SliceLen *int32 `json:"SliceLen,omitempty" xml:"SliceLen,omitempty"`
-	// The start time of the prefetch plan.
+	// The start time of the execution plan.
 	//
 	// example:
 	//
 	// 2024-05-31T17:10:48.849+08:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the prefetch plan. Valid values:
+	// The status of the execution plan. Valid values:
 	//
-	// 	- **waiting**
+	// - **waiting**: Pending execution.
 	//
-	// 	- **running**
+	// - **running**: Executing.
 	//
-	// 	- **finished**
+	// - **finished**: Completed.
 	//
-	// 	- **failed**
+	// - **failed**: Failed.
 	//
-	// 	- **stopped**
+	// - **stopped**: Paused.
 	//
 	// example:
 	//

@@ -24,33 +24,33 @@ type iListCustomResponseCodeRulesResponseBody interface {
 }
 
 type ListCustomResponseCodeRulesResponseBody struct {
-	// Modifies the list of response code configurations.
+	// You can modify the response code configuration list.
 	Configs []*ListCustomResponseCodeRulesResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
-	// The number of the returned page. Default value: **1**.
+	// The page number. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: 500. Valid values: 1 to 500.
+	// The page size. Default value: 500. Valid values: 1 to 500.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 10
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The total number of pages returned.
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -142,59 +142,59 @@ type ListCustomResponseCodeRulesResponseBodyConfigs struct {
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
 	// The configuration type. Valid values:
 	//
-	// 	- global: global configuration.
+	// - global: Global configuration.
 	//
-	// 	- rule: rule configuration.
+	// - rule: Rule configuration.
 	//
 	// example:
 	//
 	// global
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
-	// Response page.
+	// The response page.
 	//
 	// example:
 	//
 	// 0
 	PageId *string `json:"PageId,omitempty" xml:"PageId,omitempty"`
-	// Response code
+	// The response code.
 	//
 	// example:
 	//
 	// 200
 	ReturnCode *string `json:"ReturnCode,omitempty" xml:"ReturnCode,omitempty"`
-	// The content of the rule. A conditional expression is used to match a user request. You do not need to set this parameter when you add global configuration. Use cases:
+	// The rule content. Use a conditional expression to match user requests. Do not set this parameter when adding a global configuration. There are two scenarios:
 	//
-	// 	- true: Match all incoming requests.
+	// - Match all incoming requests: Set the value to true.
 	//
-	// 	- Set the value to a custom expression, for example, (http.host eq "video.example.com"): Match the specified request.
+	// - Match specific requests: Set the value to a custom expression, such as (http.host eq "video.example.com").
 	//
 	// example:
 	//
 	// (http.host eq "video.example.com")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// Specifies whether to enable the rule. Valid values: You do not need to set this parameter when you add global configuration. Valid values:
+	// The rule switch. Do not set this parameter when adding a global configuration. Valid values:
 	//
-	// 	- on
+	// - on: Enabled.
 	//
-	// 	- off
+	// - off: Disabled.
 	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	// The rule name. You do not need to set this parameter when you add global configuration.
+	// The rule name. Do not set this parameter when adding a global configuration.
 	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The order in which the rule is executed. A smaller value gives priority to the rule.
+	// The rule execution order. A smaller value indicates higher priority.
 	//
 	// example:
 	//
 	// 1
 	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	// The version number of the website configurations. You can use this parameter to specify a version of your website to apply the feature settings. By default, version 0 is used.
+	// The version number of the site configuration. For sites with configuration version control enabled, this parameter specifies the site version for which the configuration takes effect. The default value is version 0.
 	//
 	// example:
 	//

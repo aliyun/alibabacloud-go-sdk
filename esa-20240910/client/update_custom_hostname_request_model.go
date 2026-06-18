@@ -28,49 +28,65 @@ type iUpdateCustomHostnameRequest interface {
 }
 
 type UpdateCustomHostnameRequest struct {
-	// 云盾证书ID，使用云盾证书时必填
+	// The ID of the Alibaba Cloud Security certificate. This parameter is required when CertType is set to cas.
 	//
 	// example:
 	//
 	// 30000478
 	CasId *int64 `json:"CasId,omitempty" xml:"CasId,omitempty"`
-	// 云盾证书所在地域，使用云盾证书时必填
+	// The region of the Alibaba Cloud Security certificate. This parameter is required when CertType is set to cas.
+	//
+	// - cn-hangzhou: The value for accounts on the Alibaba Cloud China Website (www\\.aliyun.com).
+	//
+	// - ap-southeast-1: The value for accounts on the Alibaba Cloud International Website (www\\.alibabacloud.com).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	CasRegion *string `json:"CasRegion,omitempty" xml:"CasRegion,omitempty"`
-	// 证书类型，SSL 开启时必填
+	// The certificate type. This parameter is required when SslFlag is set to on.
+	//
+	// - **free**: Free certificate.
+	//
+	// - **upload**: Uploaded certificate.
+	//
+	// - **cas**: Alibaba Cloud Security certificate.
 	//
 	// example:
 	//
 	// cas
 	CertType *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
-	// 证书公钥，使用上传证书时必填
+	// The content of the certificate. This parameter is required when CertType is set to upload.
 	//
 	// example:
 	//
 	// -----BEGIN CERTIFICATE-----
 	Certificate *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
+	// The ID of the SaaS domain name. You can obtain the ID by calling the [ListCustomHostnames](https://help.aliyun.com/document_detail/3018667.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1234567890123
 	HostnameId *int64 `json:"HostnameId,omitempty" xml:"HostnameId,omitempty"`
-	// 证书私钥，使用上传证书时必填
+	// The private key of the certificate. This parameter is required when CertType is set to upload.
 	//
 	// example:
 	//
 	// -----BEGIN PRIVATE KEY-----
 	PrivateKey *string `json:"PrivateKey,omitempty" xml:"PrivateKey,omitempty"`
-	// 绑定的源站记录ID
+	// The ID of the record to attach. You can obtain the ID by calling the [ListRecords](https://help.aliyun.com/document_detail/2850265.html) operation.
 	//
 	// example:
 	//
 	// 1234567890123
 	RecordId *int64 `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	// SSL开关
+	// The SSL switch.
+	//
+	// - **on**: Enables SSL.
+	//
+	// - **off**: Disables SSL.
 	//
 	// example:
 	//

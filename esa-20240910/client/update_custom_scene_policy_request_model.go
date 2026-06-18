@@ -26,9 +26,9 @@ type iUpdateCustomScenePolicyRequest interface {
 }
 
 type UpdateCustomScenePolicyRequest struct {
-	// The time when the policy expires.
+	// The end time of the policy.
 	//
-	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The time must be in UTC and in the ISO 8601 format: yyyy-MM-ddTHH:mm:ssZ.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type UpdateCustomScenePolicyRequest struct {
 	//
 	// 2023-04-03T19:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The policy name.
+	// The name of the policy.
 	//
 	// This parameter is required.
 	//
@@ -44,24 +44,31 @@ type UpdateCustomScenePolicyRequest struct {
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The IDs of the websites that you want to associate with the policy. Separate multiple IDs with commas (,).
+	// The site IDs to associate with the policy. Use a comma (,) to separate multiple IDs.
+	//
+	// > This parameter is deprecated. We recommend using the `SiteIds` parameter instead. If the `SiteIds` parameter is specified, the `Objects` parameter is ignored. You must specify a value for either the `Objects` or `SiteIds` parameter.
 	//
 	// example:
 	//
-	// 123456****
+	// 123456****,123457****
 	Objects *string `json:"Objects,omitempty" xml:"Objects,omitempty"`
-	// The policy ID, which can be obtained by calling the [DescribeCustomScenePolicies](https://help.aliyun.com/document_detail/2850508.html) operation.
+	// To obtain the policy ID, call the [DescribeCustomScenePolicies](https://help.aliyun.com/document_detail/2850508.html) operation.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
-	PolicyId *int64  `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	SiteIds  *string `json:"SiteIds,omitempty" xml:"SiteIds,omitempty"`
-	// The time when the policy takes effect.
+	PolicyId *int64 `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// The site IDs to associate with the policy. Use a comma (,) to separate multiple IDs.
 	//
-	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// example:
+	//
+	// 123456****,123457****
+	SiteIds *string `json:"SiteIds,omitempty" xml:"SiteIds,omitempty"`
+	// The start time of the policy.
+	//
+	// The time must be in UTC and in the ISO 8601 format: yyyy-MM-ddTHH:mm:ssZ.
 	//
 	// This parameter is required.
 	//
@@ -69,9 +76,9 @@ type UpdateCustomScenePolicyRequest struct {
 	//
 	// 2023-04-03T16:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The name of the policy template. Valid value:
+	// The name of the template. Valid value:
 	//
-	// 	- **promotion**: major events.
+	// - **promotion**: major promotion
 	//
 	// This parameter is required.
 	//

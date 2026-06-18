@@ -24,34 +24,80 @@ type iUpdateRatePlanSpecRequest interface {
 }
 
 type UpdateRatePlanSpecRequest struct {
-	// Specifies whether to enable auto payment.
+	// Specifies whether to enable automatic payment.
 	//
 	// example:
 	//
 	// true
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// The billing type. Valid values:
+	//
+	// - PREPAY: Subscription.
+	//
+	// - POSTPAY: Pay-as-you-go.
+	//
 	// example:
 	//
 	// PREPAY
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// xcdn-91fknmb80f0g
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The specification update type. Valid values:
+	// The type of specification change. Valid values:
 	//
-	// 	- DOWNGRADE
-	//
-	// 	- UPGRADE
+	// - UPGRADE: Upgrade.
 	//
 	// example:
 	//
 	// UPGRADE
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	// The code of the target plan.
+	//
+	// Alibaba Cloud China Website (www.aliyun.com)
+	//
+	// - Free Edition: entranceplan
+	//
+	// - Basic Edition: basicplan
+	//
+	// - Standard Edition: standardplan
+	//
+	// - Premium Edition: advancedplan
+	//
+	// Alibaba Cloud International Website (www.alibabacloud.com)
+	//
+	// - Entrance: entranceplan
+	//
+	// - Pro: standardplan
+	//
+	// - Premium: advancedpla.
+	//
 	// example:
 	//
 	// entranceplan
 	TargetPlanCode *string `json:"TargetPlanCode,omitempty" xml:"TargetPlanCode,omitempty"`
+	// The name of the target plan.
+	//
+	// Alibaba Cloud China Website (www.aliyun.com)
+	//
+	// - Free Edition: entranceplan
+	//
+	// - Basic Edition: basic
+	//
+	// - Standard Edition: medium
+	//
+	// - Premium Edition: high
+	//
+	// Alibaba Cloud International Website (www.alibabacloud.com)
+	//
+	// - Entrance: entranceplan_intl
+	//
+	// - Pro: basicplan_intl
+	//
+	// - Premium: vipplan_intl.
+	//
 	// example:
 	//
 	// basic

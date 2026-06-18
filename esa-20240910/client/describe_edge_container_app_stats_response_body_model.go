@@ -30,49 +30,50 @@ type iDescribeEdgeContainerAppStatsResponseBody interface {
 }
 
 type DescribeEdgeContainerAppStatsResponseBody struct {
-	// Average CPU limit ratio
+	// The average CPU usage as a percentage of the limit.
 	//
 	// example:
 	//
 	// 0.1
 	CpuUsageSecondsQuotaRateAvg *float64 `json:"CpuUsageSecondsQuotaRateAvg,omitempty" xml:"CpuUsageSecondsQuotaRateAvg,omitempty"`
-	// Average number of CPU cores
+	// Average CPU core usage, in seconds.
 	//
 	// example:
 	//
 	// 2
 	CpuUsageSecondsTotalAvg *float64 `json:"CpuUsageSecondsTotalAvg,omitempty" xml:"CpuUsageSecondsTotalAvg,omitempty"`
-	// Average read IO
+	// The average read IO.
 	//
 	// example:
 	//
 	// 0
 	FsReadsBytesAvgAvg *float64 `json:"FsReadsBytesAvgAvg,omitempty" xml:"FsReadsBytesAvgAvg,omitempty"`
-	// Average write IO
+	// The average write IO.
 	//
 	// example:
 	//
 	// 0
 	FsWritesBytesAvgAvg *float64 `json:"FsWritesBytesAvgAvg,omitempty" xml:"FsWritesBytesAvgAvg,omitempty"`
-	// Average memory usage
+	// The average memory usage.
 	//
 	// example:
 	//
 	// 0.1
 	MemoryRssAvg *float64 `json:"MemoryRssAvg,omitempty" xml:"MemoryRssAvg,omitempty"`
-	// Average memory limit proportion
+	// The average memory usage as a percentage of the limit.
 	//
 	// example:
 	//
 	// 1
 	MemoryRssQuotaRateAvg *float64 `json:"MemoryRssQuotaRateAvg,omitempty" xml:"MemoryRssQuotaRateAvg,omitempty"`
-	// Average PodReady rate
+	// The average pod ready rate.
 	//
 	// example:
 	//
 	// 100
-	PodReadyRateAvg *float64                                           `json:"PodReadyRateAvg,omitempty" xml:"PodReadyRateAvg,omitempty"`
-	Points          []*DescribeEdgeContainerAppStatsResponseBodyPoints `json:"Points,omitempty" xml:"Points,omitempty" type:"Repeated"`
+	PodReadyRateAvg *float64 `json:"PodReadyRateAvg,omitempty" xml:"PodReadyRateAvg,omitempty"`
+	// The time and value of each data point for the chart.
+	Points []*DescribeEdgeContainerAppStatsResponseBodyPoints `json:"Points,omitempty" xml:"Points,omitempty" type:"Repeated"`
 	// Id of the request
 	//
 	// example:
@@ -184,34 +185,50 @@ func (s *DescribeEdgeContainerAppStatsResponseBody) Validate() error {
 }
 
 type DescribeEdgeContainerAppStatsResponseBodyPoints struct {
+	// The CPU usage as a percentage of the limit.
+	//
 	// example:
 	//
 	// 0.1
 	ContainerCpuUsageSecondsQuotaRate *float64 `json:"ContainerCpuUsageSecondsQuotaRate,omitempty" xml:"ContainerCpuUsageSecondsQuotaRate,omitempty"`
+	// The number of CPU cores.
+	//
 	// example:
 	//
 	// 2
 	ContainerCpuUsageSecondsTotal *float64 `json:"ContainerCpuUsageSecondsTotal,omitempty" xml:"ContainerCpuUsageSecondsTotal,omitempty"`
+	// The read IO.
+	//
 	// example:
 	//
 	// 0
 	ContainerFsReadsBytesAvg *float64 `json:"ContainerFsReadsBytesAvg,omitempty" xml:"ContainerFsReadsBytesAvg,omitempty"`
+	// The write IO.
+	//
 	// example:
 	//
 	// 0
 	ContainerFsWritesBytesAvg *float64 `json:"ContainerFsWritesBytesAvg,omitempty" xml:"ContainerFsWritesBytesAvg,omitempty"`
+	// The memory usage.
+	//
 	// example:
 	//
 	// 0.1
 	ContainerMemoryRss *float64 `json:"ContainerMemoryRss,omitempty" xml:"ContainerMemoryRss,omitempty"`
+	// The memory usage as a percentage of the limit.
+	//
 	// example:
 	//
 	// 1
 	ContainerMemoryRssQuotaRate *float64 `json:"ContainerMemoryRssQuotaRate,omitempty" xml:"ContainerMemoryRssQuotaRate,omitempty"`
+	// The pod ready rate.
+	//
 	// example:
 	//
 	// 100
 	PodReadyRate *float64 `json:"PodReadyRate,omitempty" xml:"PodReadyRate,omitempty"`
+	// The time of the data point. The format is yyyy-MM-ddTHH:mm:ssZ in UTC.
+	//
 	// example:
 	//
 	// 2024-01-18T15:04:05Z

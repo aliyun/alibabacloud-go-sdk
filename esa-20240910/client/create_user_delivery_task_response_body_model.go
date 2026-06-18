@@ -22,27 +22,27 @@ type iCreateUserDeliveryTaskResponseBody interface {
 type CreateUserDeliveryTaskResponseBody struct {
 	// The data center. Valid values:
 	//
-	// 	- cn: the Chinese mainland.
+	// - **cn**: Chinese mainland.
 	//
-	// 	- sg: outside the Chinese mainland.
+	// - **sg**: Global (excluding Chinese mainland).
 	//
 	// example:
 	//
 	// cn
 	DataCenter *string `json:"DataCenter,omitempty" xml:"DataCenter,omitempty"`
-	// The request ID.
+	// A unique identifier for the request.
 	//
 	// example:
 	//
 	// 2CCD40B1-3F20-5FF0-8A67-E3F34B87744F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the delivery task.
+	// The current status of the task.
 	//
 	// example:
 	//
 	// online
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The name of the delivery task.
+	// The name of the task.
 	//
 	// example:
 	//

@@ -30,27 +30,27 @@ type GetSiteOriginClientCertificateResponseBody struct {
 	//
 	// -----BEGIN CERTIFICATE-----
 	Certificate *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 34DCBC8A-****-****-****-6DAA11D7DDBD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The certificate information.
+	// The certificate details.
 	Result *GetSiteOriginClientCertificateResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	// The site ID.
 	//
 	// example:
 	//
 	// 123456789****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The website name.
+	// The site name.
 	//
 	// example:
 	//
 	// example.com
 	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
-	// The status of the certificate.
+	// The certificate status.
 	//
 	// example:
 	//
@@ -130,13 +130,13 @@ func (s *GetSiteOriginClientCertificateResponseBody) Validate() error {
 }
 
 type GetSiteOriginClientCertificateResponseBodyResult struct {
-	// The Common Name of the certificate.
+	// The common name of the certificate.
 	//
 	// example:
 	//
 	// www.example.com
 	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
-	// The time when the certificate was created.
+	// The time when the certificate record was created.
 	//
 	// example:
 	//
@@ -154,7 +154,7 @@ type GetSiteOriginClientCertificateResponseBodyResult struct {
 	//
 	// babaabcd****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The certificate authority (CA) that issued the certificate.
+	// The issuer of the certificate.
 	//
 	// example:
 	//
@@ -166,25 +166,25 @@ type GetSiteOriginClientCertificateResponseBodyResult struct {
 	//
 	// yourCertName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The time when the certificate expires.
+	// The time after which the certificate is not valid.
 	//
 	// example:
 	//
 	// 2024-03-31 02:08:00
 	NotAfter *string `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
-	// The time when the certificate takes effect.
+	// The time before which the certificate is not valid.
 	//
 	// example:
 	//
 	// 2023-03-31 02:08:00
 	NotBefore *string `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
-	// The public-key algorithm of the certificate.
+	// The public key algorithm of the certificate.
 	//
 	// example:
 	//
 	// RSA
 	PubkeyAlgorithm *string `json:"PubkeyAlgorithm,omitempty" xml:"PubkeyAlgorithm,omitempty"`
-	// The Subject Alternative Name (SAN) of the certificate.
+	// The subject alternative name (SAN) of the certificate.
 	//
 	// example:
 	//
@@ -202,7 +202,7 @@ type GetSiteOriginClientCertificateResponseBodyResult struct {
 	//
 	// SHA256-RSA
 	SignatureAlgorithm *string `json:"SignatureAlgorithm,omitempty" xml:"SignatureAlgorithm,omitempty"`
-	// The status of the certificate.
+	// The certificate status.
 	//
 	// example:
 	//
@@ -214,7 +214,7 @@ type GetSiteOriginClientCertificateResponseBodyResult struct {
 	//
 	// upload
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The time when the certificate was updated.
+	// The time when the certificate record was last updated.
 	//
 	// example:
 	//

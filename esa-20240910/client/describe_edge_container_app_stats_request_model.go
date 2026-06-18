@@ -26,35 +26,49 @@ type iDescribeEdgeContainerAppStatsRequest interface {
 }
 
 type DescribeEdgeContainerAppStatsRequest struct {
+	// Basic information about the application.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// app-xxxx
 	App *string `json:"App,omitempty" xml:"App,omitempty"`
+	// The end time to retrieve data. The date must be in ISO 8601 format and use UTC. The format is yyyy-MM-ddTHH:mm:ssZ.
+	//
+	// > The end time must be later than the start time.
+	//
 	// example:
 	//
 	// 2024-09-02T16:04:05Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The metric fields.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pod_ready_rate
 	Fields *string `json:"Fields,omitempty" xml:"Fields,omitempty"`
+	// The Internet Service Provider (ISP).
+	//
 	// example:
 	//
-	// telecom,unicom,cmcc
+	// telecom,unicom,mobile
 	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
+	// The region.
+	//
 	// example:
 	//
 	// huizhou
 	Locate *string `json:"Locate,omitempty" xml:"Locate,omitempty"`
+	// The start time. The date must be in ISO 8601 format and use UTC. The format is yyyy-MM-ddTHH:mm:ssZ.
+	//
 	// example:
 	//
 	// 2024-09-02T15:04:05Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The tenant ID.
+	// The tenant.
 	//
 	// example:
 	//

@@ -19,6 +19,10 @@ type iUpdateRecordShrinkRequest interface {
 	GetDataShrink() *string
 	SetHostPolicy(v string) *UpdateRecordShrinkRequest
 	GetHostPolicy() *string
+	SetHttpPorts(v string) *UpdateRecordShrinkRequest
+	GetHttpPorts() *string
+	SetHttpsPorts(v string) *UpdateRecordShrinkRequest
+	GetHttpsPorts() *string
 	SetProxied(v bool) *UpdateRecordShrinkRequest
 	GetProxied() *bool
 	SetRecordId(v int64) *UpdateRecordShrinkRequest
@@ -32,27 +36,27 @@ type iUpdateRecordShrinkRequest interface {
 }
 
 type UpdateRecordShrinkRequest struct {
-	// The origin authentication information of the CNAME record.
+	// The origin authentication settings for the CNAME record.
 	AuthConfShrink *string `json:"AuthConf,omitempty" xml:"AuthConf,omitempty"`
-	// The business scenario of the record for acceleration. Leave the parameter empty if your record is not proxied. Valid values:
+	// The use case for proxy acceleration. Omit this parameter if proxy acceleration is disabled. Valid values:
 	//
-	// 	- **video_image**: video and image.
+	// - **video_image**: Video and images.
 	//
-	// 	- **api**: API.
+	// - **api**: APIs.
 	//
-	// 	- **web**: web page.
+	// - **web**: Web pages.
 	//
 	// example:
 	//
 	// web
 	BizName *string `json:"BizName,omitempty" xml:"BizName,omitempty"`
-	// The comments of the record.
+	// A comment for the record.
 	//
 	// example:
 	//
 	// This is a remark.
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The DNS record information. The format of this field varies based on the record type. For more information, see [Add DNS records](https://www.alibabacloud.com/help/doc-detail/2708761.html).
+	// The DNS data for the record. The required content varies based on the record type. For more information, see <props="china">[Documentation](https://help.aliyun.com/document_detail/2708761.html)<props="intl">[Documentation](https://www.alibabacloud.com/help/doc-detail/2708761.html).
 	//
 	// This parameter is required.
 	//
@@ -64,27 +68,29 @@ type UpdateRecordShrinkRequest struct {
 	//
 	// }
 	DataShrink *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The origin host policy. This policy takes effect when the record type is CNAME. You can set the policy in two modes:
+	// The origin HOST policy. This policy, which applies only to CNAME records, determines the value of the `HOST` header in requests sent to the origin. Valid values:
 	//
-	// 	- **follow_hostname**: match the requested domain name.
+	// - **follow_hostname**: Follows the host record.
 	//
-	// 	- **follow_origin_domain**: match the origin\\"s domain name.
+	// - **follow_origin_domain**: Follows the origin domain name.
 	//
 	// example:
 	//
 	// follow_origin_domain
 	HostPolicy *string `json:"HostPolicy,omitempty" xml:"HostPolicy,omitempty"`
-	// Specifies whether to proxy the record. Only CNAME and A/AAAA records can be proxied. Valid values:
+	HttpPorts  *string `json:"HttpPorts,omitempty" xml:"HttpPorts,omitempty"`
+	HttpsPorts *string `json:"HttpsPorts,omitempty" xml:"HttpsPorts,omitempty"`
+	// Indicates whether to enable proxy acceleration for the record. Only CNAME and A/AAAA records support proxy acceleration. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Enables proxy acceleration.
 	//
-	// 	- **false**
+	// - **false**: Disables proxy acceleration.
 	//
 	// example:
 	//
 	// true
 	Proxied *bool `json:"Proxied,omitempty" xml:"Proxied,omitempty"`
-	// The record ID, which can be obtained by calling [ListRecords](https://help.aliyun.com/document_detail/2850265.html).
+	// The record ID. Call the [ListRecords](https://help.aliyun.com/document_detail/2850265.html) operation to get this ID.
 	//
 	// This parameter is required.
 	//
@@ -92,25 +98,25 @@ type UpdateRecordShrinkRequest struct {
 	//
 	// 1234567890123
 	RecordId *int64 `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	// The type of the origin for the CNAME record. This parameter is required when you add a CNAME record. Valid values:
+	// The origin type for the CNAME record. This parameter is required for CNAME records. Valid values:
 	//
-	// 	- **OSS*	- : OSS origin.
+	// - **OSS**: An OSS origin.
 	//
-	// 	- **S3*	- : S3 origin.
+	// - **S3**: An S3 origin.
 	//
-	// 	- **LB**: Load Balancer origin.
+	// - **LB**: A load balancer origin.
 	//
-	// 	- **OP**: origin in an origin pool.
+	// - **OP**: An origin address pool origin.
 	//
-	// 	- **Domain**: common domain name.
+	// - **Domain**: A standard domain name origin.
 	//
-	// If you leave the parameter empty or set its value as null, the default is Domain, which is common domain name.
+	// If this parameter is omitted or left empty, the default value is `Domain`.
 	//
 	// example:
 	//
 	// OSS
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The TTL of the record. Unit: seconds. The range is 30 to 86,400, or 1. If the value is 1, the TTL of the record is determined by the system.
+	// The record\\"s time to live (TTL) in seconds. The value must be an integer from **30 to 86400*	- or 1. A value of 1 sets the TTL to automatic.
 	//
 	// example:
 	//
@@ -145,6 +151,14 @@ func (s *UpdateRecordShrinkRequest) GetDataShrink() *string {
 
 func (s *UpdateRecordShrinkRequest) GetHostPolicy() *string {
 	return s.HostPolicy
+}
+
+func (s *UpdateRecordShrinkRequest) GetHttpPorts() *string {
+	return s.HttpPorts
+}
+
+func (s *UpdateRecordShrinkRequest) GetHttpsPorts() *string {
+	return s.HttpsPorts
 }
 
 func (s *UpdateRecordShrinkRequest) GetProxied() *bool {
@@ -189,6 +203,16 @@ func (s *UpdateRecordShrinkRequest) SetDataShrink(v string) *UpdateRecordShrinkR
 
 func (s *UpdateRecordShrinkRequest) SetHostPolicy(v string) *UpdateRecordShrinkRequest {
 	s.HostPolicy = &v
+	return s
+}
+
+func (s *UpdateRecordShrinkRequest) SetHttpPorts(v string) *UpdateRecordShrinkRequest {
+	s.HttpPorts = &v
+	return s
+}
+
+func (s *UpdateRecordShrinkRequest) SetHttpsPorts(v string) *UpdateRecordShrinkRequest {
+	s.HttpsPorts = &v
 	return s
 }
 

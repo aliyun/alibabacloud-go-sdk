@@ -30,7 +30,7 @@ type ListClientCertificatesRequest struct {
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The website ID.
+	// The site ID.
 	//
 	// This parameter is required.
 	//

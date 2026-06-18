@@ -14,13 +14,13 @@ type iGetScheduledPreloadJobRequest interface {
 }
 
 type GetScheduledPreloadJobRequest struct {
-	// The ID of the scheduled prefetch task.
+	// The task ID of the scheduled preload job.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// GetScheduledPreloadJob
+	// 665d3af3621bccf3fe29e1a4
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 

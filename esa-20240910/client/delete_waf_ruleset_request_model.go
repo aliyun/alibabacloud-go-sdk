@@ -18,7 +18,7 @@ type iDeleteWafRulesetRequest interface {
 }
 
 type DeleteWafRulesetRequest struct {
-	// ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2878359.html) interface.
+	// The ID of the WAF ruleset. Call the [ListWafRulesets](https://help.aliyun.com/document_detail/2878359.html) API to obtain this ID.
 	//
 	// This parameter is required.
 	//
@@ -26,13 +26,13 @@ type DeleteWafRulesetRequest struct {
 	//
 	// 10000001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+	// The site ID. Call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API to obtain this ID.
 	//
 	// example:
 	//
 	// 1
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// Site version.
+	// If version management is enabled for the site, use this parameter to specify the version to modify. The default value is 0.
 	//
 	// example:
 	//

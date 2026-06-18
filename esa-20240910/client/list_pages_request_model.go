@@ -29,7 +29,8 @@ type ListPagesRequest struct {
 	// example:
 	//
 	// 20
-	PageSize  *int32                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The query filters, specified as a JSON object.
 	QueryArgs *ListPagesRequestQueryArgs `json:"QueryArgs,omitempty" xml:"QueryArgs,omitempty" type:"Struct"`
 }
 
@@ -78,10 +79,17 @@ func (s *ListPagesRequest) Validate() error {
 }
 
 type ListPagesRequestQueryArgs struct {
+	// Filters the custom response pages by content type.
+	//
 	// example:
 	//
 	// application/json
-	ContentType         *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	// A keyword for a fuzzy search on the name or description of custom response pages.
+	//
+	// example:
+	//
+	// example
 	NameDescriptionLike *string `json:"NameDescriptionLike,omitempty" xml:"NameDescriptionLike,omitempty"`
 }
 

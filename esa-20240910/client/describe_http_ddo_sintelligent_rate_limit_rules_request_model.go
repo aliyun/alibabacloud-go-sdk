@@ -20,20 +20,28 @@ type iDescribeHttpDDoSIntelligentRateLimitRulesRequest interface {
 }
 
 type DescribeHttpDDoSIntelligentRateLimitRulesRequest struct {
+	// The current page number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The rule type.
+	//
 	// example:
 	//
 	// cc
 	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	// The site ID. Obtain this by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:

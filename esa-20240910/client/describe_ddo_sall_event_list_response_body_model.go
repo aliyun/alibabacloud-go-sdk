@@ -24,7 +24,7 @@ type iDescribeDDoSAllEventListResponseBody interface {
 }
 
 type DescribeDDoSAllEventListResponseBody struct {
-	// The DDoS attack events.
+	// A list of DDoS attack event details.
 	DataList []*DescribeDDoSAllEventListResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -32,7 +32,7 @@ type DescribeDDoSAllEventListResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type DescribeDDoSAllEventListResponseBody struct {
 	//
 	// D73A4243-CFBD-5110-876F-09237E77ECBD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The website ID.
+	// The site ID.
 	//
 	// example:
 	//
@@ -134,61 +134,83 @@ func (s *DescribeDDoSAllEventListResponseBody) Validate() error {
 }
 
 type DescribeDDoSAllEventListResponseBodyDataList struct {
-	// The peak of volumetric attacks. Unit: bit/s.
+	// The peak bits per second (Bps) of a volumetric attack.
 	//
 	// example:
 	//
 	// 800
-	Bps      *int64  `json:"Bps,omitempty" xml:"Bps,omitempty"`
+	Bps *int64 `json:"Bps,omitempty" xml:"Bps,omitempty"`
+	// The attack region. Valid values:
+	//
+	// - **domestic**: Chinese mainland.
+	//
+	// - **global**: Global.
+	//
+	// - **overseas**: global (excluding Chinese mainland).
+	//
+	// example:
+	//
+	// domestic
 	Coverage *string `json:"Coverage,omitempty" xml:"Coverage,omitempty"`
-	// The peak of connection flood attacks. Unit: connections per seconds (CPS).
+	// The peak connections per second (Cps) of a connection-based attack.
 	//
 	// example:
 	//
 	// 50
 	Cps *int64 `json:"Cps,omitempty" xml:"Cps,omitempty"`
-	// The time when the DDoS attack ends.
+	// The end time of the DDoS attack event.
 	//
-	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The time is in the `yyyy-MM-ddTHH:mm:ssZ` format and is in UTC.
 	//
 	// example:
 	//
 	// 2023-02-12T15:59:59Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The attack event ID.
+	// The event ID.
 	//
 	// example:
 	//
 	// web-cc_1
-	EventId     *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// The event result. Valid values:
+	//
+	// - **clean**: The attack was successfully cleaned.
+	//
+	// - **ratelimit**: Rate limiting was applied.
+	//
+	// - **blackhole**: Blackhole filtering was triggered.
+	//
+	// example:
+	//
+	// clean
 	EventResult *string `json:"EventResult,omitempty" xml:"EventResult,omitempty"`
-	// The type of DDoS attacks that was queried. Valid values:
+	// The type of the DDoS attack event. Valid values:
 	//
-	// 	- **web-cc**: web resource exhaustion attacks.
+	// - **web-cc**: A web resource exhaustion attack.
 	//
-	// 	- **cc**: connection flood attacks.
+	// - **cc**: A connection-based attack.
 	//
-	// 	- **traffic**: volumetric attacks.
+	// - **traffic**: A volumetric attack.
 	//
 	// example:
 	//
 	// web-cc
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	// The peak of volumetric attacks. Unit: packets per second (PPS).
+	// The peak packets per second (Pps) of a volumetric attack.
 	//
 	// example:
 	//
 	// 12000
 	Pps *int64 `json:"Pps,omitempty" xml:"Pps,omitempty"`
-	// The peak QPS of web resource exhaustion attacks.
+	// The peak queries per second (Qps) of a web resource exhaustion attack.
 	//
 	// example:
 	//
 	// 7692
 	Qps *int64 `json:"Qps,omitempty" xml:"Qps,omitempty"`
-	// The time when the DDoS attack starts.
+	// The start time of the DDoS attack event.
 	//
-	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The time is in the `yyyy-MM-ddTHH:mm:ssZ` format and is in UTC.
 	//
 	// example:
 	//
@@ -200,7 +222,7 @@ type DescribeDDoSAllEventListResponseBodyDataList struct {
 	//
 	// example.com
 	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
-	// The ID of the web resource exhaustion attack target.
+	// The ID of the attack target.
 	//
 	// example:
 	//

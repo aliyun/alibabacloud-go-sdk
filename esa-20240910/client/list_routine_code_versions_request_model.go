@@ -20,15 +20,15 @@ type iListRoutineCodeVersionsRequest interface {
 }
 
 type ListRoutineCodeVersionsRequest struct {
-	// The function name.
+	// The name of the Edge Routine program.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// ListRoutineCodeVersions
+	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The page number of the returned page. Default value: 1. Valid values: 1 and 2.
+	// The page number. Default value: 1. Maximum value: 2.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type ListRoutineCodeVersionsRequest struct {
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The keyword used for fuzzy search.
+	// The keyword for fuzzy match.
 	//
 	// example:
 	//

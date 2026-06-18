@@ -18,7 +18,7 @@ type iUploadOriginCaCertificateRequest interface {
 }
 
 type UploadOriginCaCertificateRequest struct {
-	// The certificate content.
+	// The content of the CA certificate.
 	//
 	// This parameter is required.
 	//
@@ -26,13 +26,13 @@ type UploadOriginCaCertificateRequest struct {
 	//
 	// -----BEGIN CERTIFICATE-----
 	Certificate *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
-	// The certificate name.
+	// The name of the certificate.
 	//
 	// example:
 	//
 	// example
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	// The site ID. You can call the [ListSites](~~ListSites~~) operation to get this ID.
 	//
 	// This parameter is required.
 	//

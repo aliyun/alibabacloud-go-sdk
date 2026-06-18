@@ -80,9 +80,9 @@ type ListWaitingRoomEventsResponseBodyWaitingRoomEvents struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Indicates whether session renewal is disabled. Valid values:
 	//
-	// 	- on
+	// - on
 	//
-	// 	- off
+	// - off
 	//
 	// example:
 	//
@@ -90,9 +90,9 @@ type ListWaitingRoomEventsResponseBodyWaitingRoomEvents struct {
 	DisableSessionRenewalEnable *string `json:"DisableSessionRenewalEnable,omitempty" xml:"DisableSessionRenewalEnable,omitempty"`
 	// The event status. Valid values:
 	//
-	// 	- on
+	// - on
 	//
-	// 	- off
+	// - off
 	//
 	// example:
 	//
@@ -106,9 +106,9 @@ type ListWaitingRoomEventsResponseBodyWaitingRoomEvents struct {
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// Indicates whether JOSN response is enabled. If JSON response is enabled, a JSON body is returned for requests to the waiting room with the header Accept: application/json. Valid values:
 	//
-	// 	- on
+	// - on
 	//
-	// 	- off
+	// - off
 	//
 	// example:
 	//
@@ -116,17 +116,21 @@ type ListWaitingRoomEventsResponseBodyWaitingRoomEvents struct {
 	JsonResponseEnable *string `json:"JsonResponseEnable,omitempty" xml:"JsonResponseEnable,omitempty"`
 	// The language of the waiting room page. This parameter is returned when the waiting room type is set to default. Valid values:
 	//
-	// 	- enus: English.
+	// - enus: English.
 	//
-	// 	- zhcn: Simplified Chinese.
+	// - zhcn: Simplified Chinese.
 	//
-	// 	- zhhk: Traditional Chinese.
+	// - zhhk: Traditional Chinese.
 	//
 	// example:
 	//
 	// zhcn
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	// The custom event name.
+	//
+	// example:
+	//
+	// Test event
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The maximum number of new users per minute.
 	//
@@ -136,9 +140,9 @@ type ListWaitingRoomEventsResponseBodyWaitingRoomEvents struct {
 	NewUsersPerMinute *string `json:"NewUsersPerMinute,omitempty" xml:"NewUsersPerMinute,omitempty"`
 	// Indicates whether pre-queuing is enabled. Valid values:
 	//
-	// 	- on
+	// - on
 	//
-	// 	- off
+	// - off
 	//
 	// example:
 	//
@@ -152,13 +156,13 @@ type ListWaitingRoomEventsResponseBodyWaitingRoomEvents struct {
 	PreQueueStartTime *string `json:"PreQueueStartTime,omitempty" xml:"PreQueueStartTime,omitempty"`
 	// The queuing method. Valid values:
 	//
-	// 	- random: Users gain access to the origin randomly, regardless of the arrival time.
+	// - random: Users gain access to the origin randomly, regardless of the arrival time.
 	//
-	// 	- fifo: Users gain access to the origin in order of arrival.
+	// - fifo: Users gain access to the origin in order of arrival.
 	//
-	// 	- passthrough: Users pass through the waiting room and go straight to the origin.
+	// - passthrough: Users pass through the waiting room and go straight to the origin.
 	//
-	// 	- reject-all: Users are blocked from reaching the origin.
+	// - reject-all: Users are blocked from reaching the origin.
 	//
 	// example:
 	//
@@ -166,11 +170,11 @@ type ListWaitingRoomEventsResponseBodyWaitingRoomEvents struct {
 	QueuingMethod *string `json:"QueuingMethod,omitempty" xml:"QueuingMethod,omitempty"`
 	// The HTTP status code to return while a user is in the queue. Valid values:
 	//
-	// 	- 200
+	// - 200
 	//
-	// 	- 202
+	// - 202
 	//
-	// 	- 429
+	// - 429
 	//
 	// example:
 	//
@@ -178,9 +182,9 @@ type ListWaitingRoomEventsResponseBodyWaitingRoomEvents struct {
 	QueuingStatusCode *string `json:"QueuingStatusCode,omitempty" xml:"QueuingStatusCode,omitempty"`
 	// Indicates whether random queuing is enabled. Valid values:
 	//
-	// 	- on
+	// - on
 	//
-	// 	- off
+	// - off
 	//
 	// example:
 	//
@@ -218,9 +222,9 @@ type ListWaitingRoomEventsResponseBodyWaitingRoomEvents struct {
 	WaitingRoomId *string `json:"WaitingRoomId,omitempty" xml:"WaitingRoomId,omitempty"`
 	// The type of the waiting room. Valid values:
 	//
-	// 	- default
+	// - default
 	//
-	// 	- custom
+	// - custom
 	//
 	// example:
 	//

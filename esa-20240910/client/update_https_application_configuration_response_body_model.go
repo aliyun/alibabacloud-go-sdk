@@ -14,7 +14,7 @@ type iUpdateHttpsApplicationConfigurationResponseBody interface {
 }
 
 type UpdateHttpsApplicationConfigurationResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

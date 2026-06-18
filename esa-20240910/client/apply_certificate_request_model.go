@@ -18,7 +18,7 @@ type iApplyCertificateRequest interface {
 }
 
 type ApplyCertificateRequest struct {
-	// List of domains, separated by commas.
+	// A comma-separated list of domain names.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type ApplyCertificateRequest struct {
 	//
 	// www.example.com,blog.example.com
 	Domains *string `json:"Domains,omitempty" xml:"Domains,omitempty"`
-	// Site ID.
+	// The site ID.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type ApplyCertificateRequest struct {
 	//
 	// 1234567890123
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The certificate type. Valid values: lets_encrypt, digicert_single, and digicert_wildcard.
+	// The certificate type. Valid values: `lets_encrypt` for a Let\\"s Encrypt certificate, `digicert_single` for a Digicert single-domain certificate, and `digicert_wildcard` for a Digicert wildcard certificate.
 	//
 	// example:
 	//

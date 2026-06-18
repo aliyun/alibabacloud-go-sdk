@@ -16,7 +16,7 @@ type iGetClientCertificateRequest interface {
 }
 
 type GetClientCertificateRequest struct {
-	// The certificate ID.
+	// The ID of the certificate.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type GetClientCertificateRequest struct {
 	//
 	// baba39055622c008b90285a8838ed09a
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The website ID.
+	// The ID of the site.
 	//
 	// This parameter is required.
 	//

@@ -16,7 +16,7 @@ type iGetSiteOriginClientCertificateRequest interface {
 }
 
 type GetSiteOriginClientCertificateRequest struct {
-	// The certificate ID.
+	// The ID of the client certificate.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type GetSiteOriginClientCertificateRequest struct {
 	//
 	// babaabcd****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	// The ID of the site.
 	//
 	// This parameter is required.
 	//

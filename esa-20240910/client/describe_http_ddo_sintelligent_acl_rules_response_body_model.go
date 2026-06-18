@@ -22,10 +22,14 @@ type iDescribeHttpDDoSIntelligentAclRulesResponseBody interface {
 }
 
 type DescribeHttpDDoSIntelligentAclRulesResponseBody struct {
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
@@ -35,8 +39,11 @@ type DescribeHttpDDoSIntelligentAclRulesResponseBody struct {
 	// example:
 	//
 	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
-	RequestId *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of rules.
 	RuleInfos []*DescribeHttpDDoSIntelligentAclRulesResponseBodyRuleInfos `json:"RuleInfos,omitempty" xml:"RuleInfos,omitempty" type:"Repeated"`
+	// The total number of rules.
+	//
 	// example:
 	//
 	// 100
@@ -110,30 +117,44 @@ func (s *DescribeHttpDDoSIntelligentAclRulesResponseBody) Validate() error {
 }
 
 type DescribeHttpDDoSIntelligentAclRulesResponseBodyRuleInfos struct {
+	// The protection action.
+	//
 	// example:
 	//
 	// deny
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// The rule trigger condition.
+	//
 	// example:
 	//
 	// {"$and":[{"key":"URI","opValue":"prefix-match","values":"/"}]}
 	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	// The ID of the protection rule for log records.
+	//
 	// example:
 	//
 	// 1000030
 	LogRuleId *int64 `json:"LogRuleId,omitempty" xml:"LogRuleId,omitempty"`
+	// The action duration. Unit: seconds.
+	//
 	// example:
 	//
 	// 1800
 	PunishTime *int64 `json:"PunishTime,omitempty" xml:"PunishTime,omitempty"`
+	// The record name.
+	//
 	// example:
 	//
 	// test.example.com
 	RecordName *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
+	// The rule ID.
+	//
 	// example:
 	//
 	// 20569929
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The rule name.
+	//
 	// example:
 	//
 	// smart_cc_***

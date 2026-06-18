@@ -26,43 +26,43 @@ type iCreateHttpIncomingResponseHeaderModificationRuleRequest interface {
 }
 
 type CreateHttpIncomingResponseHeaderModificationRuleRequest struct {
-	// The configurations of modifying response headers. You can add, delete, or modify a response header.
+	// Specifies the modifications for a response header. The supported operations are `add`, `del`, and `modify`.
 	//
 	// This parameter is required.
 	ResponseHeaderModification []*CreateHttpIncomingResponseHeaderModificationRuleRequestResponseHeaderModification `json:"ResponseHeaderModification,omitempty" xml:"ResponseHeaderModification,omitempty" type:"Repeated"`
-	// The content of the rule. A conditional expression is used to match a user request. You do not need to set this parameter when you add global configuration. Use cases:
+	// The conditional expression used to match an incoming request. This parameter is not required when adding a Global configuration. Two scenarios are supported:
 	//
-	// 	- true: Match all incoming requests.
+	// - To match all incoming requests, set the value to `true`.
 	//
-	// 	- Set the value to a custom expression, for example: (http.host eq "video.example.com"): Match the specified request
+	// - To match specific requests, use a custom expression. For example: `(http.host eq "video.example.com")`
 	//
 	// example:
 	//
 	// (http.host eq "video.example.com")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// Specifies whether to enable the rule. Valid values: You do not need to set this parameter when you add global configuration. Valid values:
+	// Indicates if the Rule is enabled. This parameter is not required when adding a Global configuration. Valid values:
 	//
-	// 	- on
+	// - `on`: Enables the Rule.
 	//
-	// 	- off
+	// - `off`: Disables the Rule.
 	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	// The rule name. You do not need to set this parameter when you add global configuration.
+	// The Rule name. This parameter is not required when adding a Global configuration.
 	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The order in which the rule is executed. A smaller value gives priority to the rule.
+	// The Rule execution order. A smaller value indicates a higher priority, and the Rule is executed sooner.
 	//
 	// example:
 	//
 	// 1
 	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	// The unique identifier for the Site. To get this ID, call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -70,7 +70,7 @@ type CreateHttpIncomingResponseHeaderModificationRuleRequest struct {
 	//
 	// 608665779308176
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The version number of the website configurations. You can use this parameter to specify a version of your website to apply the feature settings. By default, version 0 is used.
+	// The configuration Version for the Site. If version management is enabled, this parameter specifies the target Version. Defaults to 0.
 	//
 	// example:
 	//
@@ -171,13 +171,13 @@ type CreateHttpIncomingResponseHeaderModificationRuleRequestResponseHeaderModifi
 	//
 	// headerName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The action. Valid values:
+	// The operation to perform on the header. Valid values:
 	//
-	// 	- add: adds a response header.
+	// - `add`: Adds the header.
 	//
-	// 	- del: deletes a response header.
+	// - `del`: Deletes the header.
 	//
-	// 	- modify: modifies a response header.
+	// - `modify`: Modifies the header.
 	//
 	// This parameter is required.
 	//
@@ -185,11 +185,11 @@ type CreateHttpIncomingResponseHeaderModificationRuleRequestResponseHeaderModifi
 	//
 	// add
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
-	// The type of the value. Valid values:
+	// The type of the header value. Valid values:
 	//
-	// 	- static
+	// - `static`: The `Value` is a fixed string.
 	//
-	// 	- dynamic
+	// - `dynamic`: The `Value` can contain variables.
 	//
 	// example:
 	//

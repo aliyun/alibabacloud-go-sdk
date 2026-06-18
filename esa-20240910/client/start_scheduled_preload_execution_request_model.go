@@ -14,13 +14,13 @@ type iStartScheduledPreloadExecutionRequest interface {
 }
 
 type StartScheduledPreloadExecutionRequest struct {
-	// The ID of the prefetch plan.
+	// Prefetch plan ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// StartScheduledPreloadExecution
+	// 665d3b48621bccf3fe29e1a7
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 

@@ -24,7 +24,7 @@ type iListUserRatePlanInstancesResponseBody interface {
 }
 
 type ListUserRatePlanInstancesResponseBody struct {
-	// The queried plans.
+	// An array of plan instances that meet the specified criteria.
 	InstanceInfo []*ListUserRatePlanInstancesResponseBodyInstanceInfo `json:"InstanceInfo,omitempty" xml:"InstanceInfo,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -32,7 +32,7 @@ type ListUserRatePlanInstancesResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
@@ -44,13 +44,13 @@ type ListUserRatePlanInstancesResponseBody struct {
 	//
 	// CB1A380B-09F0-41BB-3C82-72F8FD6DA2FE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total count of entries.
 	//
 	// example:
 	//
 	// 68
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The total number of pages returned.
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -136,9 +136,9 @@ func (s *ListUserRatePlanInstancesResponseBody) Validate() error {
 type ListUserRatePlanInstancesResponseBodyInstanceInfo struct {
 	// The billing method. Valid values:
 	//
-	// 	- PREPAY: subscription.
+	// - **PREPAY**: subscription.
 	//
-	// 	- POSTPAY: pay-as-you-go.
+	// - **POSTPAY**: pay-as-you-go.
 	//
 	// example:
 	//
@@ -146,19 +146,19 @@ type ListUserRatePlanInstancesResponseBodyInstanceInfo struct {
 	BillingMode      *string `json:"BillingMode,omitempty" xml:"BillingMode,omitempty"`
 	BotInstanceLevel *string `json:"BotInstanceLevel,omitempty" xml:"BotInstanceLevel,omitempty"`
 	BotRequest       *string `json:"BotRequest,omitempty" xml:"BotRequest,omitempty"`
-	// The service locations for the websites that can be associated with the plan. Multiple values are separated by commas (,). Valid values:
+	// The acceleration regions covered by the plan instance. Multiple values are separated by commas (,). Valid values:
 	//
-	// 	- domestic: the Chinese mainland.
+	// - **domestic**: The Chinese mainland.
 	//
-	// 	- overseas: outside the Chinese mainland.
+	// - **overseas**: Regions outside the Chinese mainland.
 	//
-	// 	- global: global.
+	// - **global**: Global (including the Chinese mainland).
 	//
 	// example:
 	//
 	// domestic,overseas
 	Coverages *string `json:"Coverages,omitempty" xml:"Coverages,omitempty"`
-	// The time when the plan was purchased.
+	// The creation time.
 	//
 	// example:
 	//
@@ -168,7 +168,7 @@ type ListUserRatePlanInstancesResponseBodyInstanceInfo struct {
 	DdosBurstableDomesticProtection *string `json:"DdosBurstableDomesticProtection,omitempty" xml:"DdosBurstableDomesticProtection,omitempty"`
 	DdosBurstableOverseasProtection *string `json:"DdosBurstableOverseasProtection,omitempty" xml:"DdosBurstableOverseasProtection,omitempty"`
 	DdosInstanceLevel               *string `json:"DdosInstanceLevel,omitempty" xml:"DdosInstanceLevel,omitempty"`
-	// The subscription duration of the plan. Unit: month.
+	// The duration in months.
 	//
 	// example:
 	//
@@ -176,13 +176,13 @@ type ListUserRatePlanInstancesResponseBodyInstanceInfo struct {
 	Duration          *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	EdgeRoutineRquest *string `json:"EdgeRoutineRquest,omitempty" xml:"EdgeRoutineRquest,omitempty"`
 	EdgeWafRequest    *string `json:"EdgeWafRequest,omitempty" xml:"EdgeWafRequest,omitempty"`
-	// The time when the plan expires.
+	// The expiration time.
 	//
 	// example:
 	//
 	// YYYY-MM-DDThh:mm:ssZ
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The plan ID.
+	// The plan instance ID.
 	//
 	// example:
 	//
@@ -199,31 +199,39 @@ type ListUserRatePlanInstancesResponseBodyInstanceInfo struct {
 	PlanTraffic *string `json:"PlanTraffic,omitempty" xml:"PlanTraffic,omitempty"`
 	// The plan type. Valid values:
 	//
-	// 	- normal
+	// - **normal**: The normal plan.
 	//
-	// 	- enterprise
+	// - **enterprise**: The enterprise plan.
 	//
 	// example:
 	//
 	// normal
 	PlanType *string `json:"PlanType,omitempty" xml:"PlanType,omitempty"`
-	// The maximum number of websites that can be associated with the plan.
+	// example:
+	//
+	// 6
+	RenewalDuration *int64 `json:"RenewalDuration,omitempty" xml:"RenewalDuration,omitempty"`
+	// example:
+	//
+	// nomal
+	RenewalStatus *string `json:"RenewalStatus,omitempty" xml:"RenewalStatus,omitempty"`
+	// The site quota.
 	//
 	// example:
 	//
 	// 1
 	SiteQuota *string `json:"SiteQuota,omitempty" xml:"SiteQuota,omitempty"`
-	// The websites that have been associated with the plan.
+	// The sites associated with this plan instance.
 	Sites               []*ListUserRatePlanInstancesResponseBodyInstanceInfoSites `json:"Sites,omitempty" xml:"Sites,omitempty" type:"Repeated"`
 	SmartRoutingRequest *string                                                   `json:"SmartRoutingRequest,omitempty" xml:"SmartRoutingRequest,omitempty"`
 	StaticRequest       *string                                                   `json:"StaticRequest,omitempty" xml:"StaticRequest,omitempty"`
-	// The plan status. Valid values:
+	// The instance status. Valid values:
 	//
-	// 	- online: The plan is in service.
+	// - **online**: The plan instance is active.
 	//
-	// 	- offline: The plan has expired within an allowable period. In this state, the plan is unavailable.
+	// - **offline**: The plan instance is unavailable because it has expired but is still within the grace period.
 	//
-	// 	- disable: The plan is released.
+	// - **disable**: The plan instance is released.
 	//
 	// example:
 	//
@@ -314,6 +322,14 @@ func (s *ListUserRatePlanInstancesResponseBodyInstanceInfo) GetPlanTraffic() *st
 
 func (s *ListUserRatePlanInstancesResponseBodyInstanceInfo) GetPlanType() *string {
 	return s.PlanType
+}
+
+func (s *ListUserRatePlanInstancesResponseBodyInstanceInfo) GetRenewalDuration() *int64 {
+	return s.RenewalDuration
+}
+
+func (s *ListUserRatePlanInstancesResponseBodyInstanceInfo) GetRenewalStatus() *string {
+	return s.RenewalStatus
 }
 
 func (s *ListUserRatePlanInstancesResponseBodyInstanceInfo) GetSiteQuota() *string {
@@ -435,6 +451,16 @@ func (s *ListUserRatePlanInstancesResponseBodyInstanceInfo) SetPlanType(v string
 	return s
 }
 
+func (s *ListUserRatePlanInstancesResponseBodyInstanceInfo) SetRenewalDuration(v int64) *ListUserRatePlanInstancesResponseBodyInstanceInfo {
+	s.RenewalDuration = &v
+	return s
+}
+
+func (s *ListUserRatePlanInstancesResponseBodyInstanceInfo) SetRenewalStatus(v string) *ListUserRatePlanInstancesResponseBodyInstanceInfo {
+	s.RenewalStatus = &v
+	return s
+}
+
 func (s *ListUserRatePlanInstancesResponseBodyInstanceInfo) SetSiteQuota(v string) *ListUserRatePlanInstancesResponseBodyInstanceInfo {
 	s.SiteQuota = &v
 	return s
@@ -479,27 +505,27 @@ func (s *ListUserRatePlanInstancesResponseBodyInstanceInfo) Validate() error {
 }
 
 type ListUserRatePlanInstancesResponseBodyInstanceInfoSites struct {
-	// The website ID.
+	// The site ID.
 	//
 	// example:
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The website name.
+	// The site name.
 	//
 	// example:
 	//
 	// example.com
 	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
-	// The website status. Valid values:
+	// The site status. Valid values:
 	//
-	// 	- pending: The website is to be configured.
+	// - **pending**: The site is pending configuration.
 	//
-	// 	- active: The website is active.
+	// - **active**: The site is active.
 	//
-	// 	- offline: The website is suspended.
+	// - **offline**: The site is offline.
 	//
-	// 	- moved: The website has been added and verified by another Alibaba Cloud account.
+	// - **moved**: The site has been replaced.
 	//
 	// example:
 	//

@@ -212,7 +212,7 @@ type ListHttpsBasicConfigurationsResponseBodyConfigs struct {
 	//
 	// - Match all incoming requests: Set the value to true.
 	//
-	// - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+	// - Match specific requests: Set the value to a custom expression, for example: (http.host eq "video.example.com")
 	//
 	// example:
 	//

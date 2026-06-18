@@ -44,25 +44,25 @@ type iUpdateHttpsBasicConfigurationRequest interface {
 }
 
 type UpdateHttpsBasicConfigurationRequest struct {
-	// Custom cipher suite, indicating the specific encryption algorithm selected when CiphersuiteGroup is set to custom.
+	// The custom cipher suite to use when `CiphersuiteGroup` is set to `custom`.
 	//
 	// example:
 	//
 	// TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256
 	Ciphersuite *string `json:"Ciphersuite,omitempty" xml:"Ciphersuite,omitempty"`
-	// Cipher suite group. Default is all cipher suites. Value range:
+	// The cipher suite group. Default value: `all`. Valid values:
 	//
-	// - all: All cipher suites.
+	// - `all`: All cipher suites.
 	//
-	// - strict: Strong cipher suites.
+	// - `strict`: strong cipher suites.
 	//
-	// - custom: Custom cipher suites.
+	// - `custom`: custom cipher suites.
 	//
 	// example:
 	//
 	// all
 	CiphersuiteGroup *string `json:"CiphersuiteGroup,omitempty" xml:"CiphersuiteGroup,omitempty"`
-	// Configuration ID.
+	// The configuration ID.
 	//
 	// This parameter is required.
 	//
@@ -70,74 +70,79 @@ type UpdateHttpsBasicConfigurationRequest struct {
 	//
 	// 3528160969****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// Whether to enable HTTP2. Default is enabled. Value range:
+	// Indicates whether HTTP/2 is enabled. Default value: `on`. Valid values:
 	//
-	// - on: Enable.
+	// - `on`: Enabled.
 	//
-	// - off: Disable.
+	// - `off`: Disabled.
 	//
 	// example:
 	//
 	// on
 	Http2 *string `json:"Http2,omitempty" xml:"Http2,omitempty"`
-	// Whether to enable HTTP3. Default is enabled. Value range:
+	// Indicates whether HTTP/3 is enabled. Default value: `on`. Valid values:
 	//
-	// - on: Enable.
+	// - `on`: Enabled.
 	//
-	// - off: Disable.
+	// - `off`: Disabled.
 	//
 	// example:
 	//
 	// on
 	Http3 *string `json:"Http3,omitempty" xml:"Http3,omitempty"`
-	// Whether to enable HTTPS. Default is enabled. Value range:
+	// Indicates whether HTTPS is enabled. Default value: `on`. Valid values:
 	//
-	// - on: Enable.
+	// - `on`: Enabled.
 	//
-	// - off: Disable.
+	// - `off`: Disabled.
 	//
 	// example:
 	//
 	// on
 	Https *string `json:"Https,omitempty" xml:"Https,omitempty"`
-	// Whether to enable OCSP. Default is disabled. Value range:
+	// Indicates whether OCSP stapling is enabled. Default value: `off`. Valid values:
 	//
-	// - on: Enable.
+	// - `on`: Enabled.
 	//
-	// - off: Disable.
+	// - `off`: Disabled.
 	//
 	// example:
 	//
 	// on
 	OcspStapling *string `json:"OcspStapling,omitempty" xml:"OcspStapling,omitempty"`
-	// Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+	// The conditional expression used to match incoming requests. This parameter is not required when you add a global configuration. Use cases:
 	//
-	// - Match all incoming requests: Set the value to true
+	// - To match all incoming requests, set the value to `true`.
 	//
-	// - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+	// - To match specific requests, set the value to a custom expression, for example, `(http.host eq "video.example.com")`.
 	//
 	// example:
 	//
 	// (http.host eq \\"video.example.com\\")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// Rule switch. This parameter is not required when adding a global configuration. Value range:
+	// Indicates whether the rule is enabled. This parameter is not required when you add a global configuration. Valid values:
 	//
-	// - on: Enable.
+	// - `on`: Enabled.
 	//
-	// - off: Disable.
+	// - `off`: Disabled.
 	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	// Rule name. This parameter is not required when adding a global configuration.
+	// The rule name. This parameter is not required when you add a global configuration.
 	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	Sequence *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+	// The rule execution order. A smaller value indicates a higher priority.
+	//
+	// example:
+	//
+	// 1
+	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// The site ID. You can call the [ListSites](~~ListSites~~) operation to obtain the site ID.
 	//
 	// This parameter is required.
 	//
@@ -145,41 +150,41 @@ type UpdateHttpsBasicConfigurationRequest struct {
 	//
 	// 1231231221****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// Whether to enable TLS1.0. Default is disabled. Value range:
+	// Indicates whether TLS 1.0 is enabled. Default value: `off`. Valid values:
 	//
-	// - on: Enable.
+	// - `on`: Enabled.
 	//
-	// - off: Disable.
+	// - `off`: Disabled.
 	//
 	// example:
 	//
 	// on
 	Tls10 *string `json:"Tls10,omitempty" xml:"Tls10,omitempty"`
-	// Whether to enable TLS1.1. Default is disabled. Value range:
+	// Indicates whether TLS 1.1 is enabled. Default value: `off`. Valid values:
 	//
-	// - on: Enable.
+	// - `on`: Enabled.
 	//
-	// - off: Disable.
+	// - `off`: Disabled.
 	//
 	// example:
 	//
 	// on
 	Tls11 *string `json:"Tls11,omitempty" xml:"Tls11,omitempty"`
-	// Whether to enable TLS1.2. Default is disabled. Value range:
+	// Indicates whether TLS 1.2 is enabled. Default value: `off`. Valid values:
 	//
-	// - on: Enable.
+	// - `on`: Enabled.
 	//
-	// - off: Disable.
+	// - `off`: Disabled.
 	//
 	// example:
 	//
 	// on
 	Tls12 *string `json:"Tls12,omitempty" xml:"Tls12,omitempty"`
-	// Whether to enable TLS1.3. Default is disabled. Value range:
+	// Indicates whether TLS 1.3 is enabled. Default value: `off`. Valid values:
 	//
-	// - on: Enable.
+	// - `on`: Enabled.
 	//
-	// - off: Disable.
+	// - `off`: Disabled.
 	//
 	// example:
 	//

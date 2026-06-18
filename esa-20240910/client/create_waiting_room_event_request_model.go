@@ -52,29 +52,33 @@ type iCreateWaitingRoomEventRequest interface {
 }
 
 type CreateWaitingRoomEventRequest struct {
-	// The content of the custom waiting room page. You must specify this parameter if you set WaitingRoomType to custom. The content must be Base64-encoded.
+	// The custom waiting room page content. This parameter is required when the waiting room type is custom. The content must use Base64 encoding.
 	//
 	// example:
 	//
-	// Hello%20world!
+	// SGVsbG8gd29ybGQ=
 	CustomPageHtml *string `json:"CustomPageHtml,omitempty" xml:"CustomPageHtml,omitempty"`
 	// The description of the waiting room.
+	//
+	// example:
+	//
+	// 测试等候室
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Specifies whether to disable session renewal. Valid values:
 	//
-	// 	- on
+	// - **on**: Enabled.
 	//
-	// 	- off
+	// - **off**: Disabled.
 	//
 	// example:
 	//
 	// on
 	DisableSessionRenewalEnable *string `json:"DisableSessionRenewalEnable,omitempty" xml:"DisableSessionRenewalEnable,omitempty"`
-	// Specifies whether to enable the waiting room. Valid values:
+	// The waiting room switch. Valid values:
 	//
-	// 	- on
+	// - **on**: Enabled.
 	//
-	// 	- off
+	// - **off**: Disabled.
 	//
 	// This parameter is required.
 	//
@@ -82,7 +86,7 @@ type CreateWaitingRoomEventRequest struct {
 	//
 	// on
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The end time of the event. This value is a UNIX timestamp.
+	// The event end timestamp, such as 1705044735.
 	//
 	// This parameter is required.
 	//
@@ -90,23 +94,23 @@ type CreateWaitingRoomEventRequest struct {
 	//
 	// 1719849600
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Specifies whether to enable JSON response. If you set this parameter to on, a JSON body is returned for requests to the waiting room with the header Accept: application/json. Valid values:
+	// Specifies whether to enable JSON response. When enabled, requests with an Accept header containing "application/json" return JSON data. Valid values:
 	//
-	// 	- on
+	// - **on**: Enabled.
 	//
-	// 	- off
+	// - **off**: Disabled.
 	//
 	// example:
 	//
 	// on
 	JsonResponseEnable *string `json:"JsonResponseEnable,omitempty" xml:"JsonResponseEnable,omitempty"`
-	// The language of the waiting room page. You must specify this parameter if you set WaitingRoomType to default. Valid values:
+	// The language of the waiting room page. This parameter is required when the waiting room type is default. Valid values:
 	//
-	// 	- enus: English.
+	// - **enus**: English.
 	//
-	// 	- zhcn: Simplified Chinese.
+	// - **zhcn**: Simplified Chinese.
 	//
-	// 	- zhhk: Traditional Chinese.
+	// - **zhhk**: Traditional Chinese.
 	//
 	// example:
 	//
@@ -120,7 +124,7 @@ type CreateWaitingRoomEventRequest struct {
 	//
 	// waitingroom_example
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The maximum number of new users per minute.
+	// The number of new users per minute.
 	//
 	// This parameter is required.
 	//
@@ -128,17 +132,17 @@ type CreateWaitingRoomEventRequest struct {
 	//
 	// 10
 	NewUsersPerMinute *string `json:"NewUsersPerMinute,omitempty" xml:"NewUsersPerMinute,omitempty"`
-	// Specifies whether to enable pre-queuing.
+	// Specifies whether to enable pre-queuing. Valid values:
 	//
-	// 	- on
+	// - **on**: Enabled.
 	//
-	// 	- off
+	// - **off**: Disabled.
 	//
 	// example:
 	//
 	// on
 	PreQueueEnable *string `json:"PreQueueEnable,omitempty" xml:"PreQueueEnable,omitempty"`
-	// The start time for pre-queuing.
+	// The pre-queuing start timestamp, which must be at least 5 minutes earlier than the event start timestamp, such as 1705044735.
 	//
 	// example:
 	//
@@ -146,13 +150,13 @@ type CreateWaitingRoomEventRequest struct {
 	PreQueueStartTime *string `json:"PreQueueStartTime,omitempty" xml:"PreQueueStartTime,omitempty"`
 	// The queuing method. Valid values:
 	//
-	// 	- random: Users gain access to the origin randomly, regardless of the arrival time.
+	// - **random**: random.
 	//
-	// 	- fifo: Users gain access to the origin in order of arrival.
+	// - **fifo**: first-in, first-out.
 	//
-	// 	- passthrough: Users pass through the waiting room and go straight to the origin.
+	// - **passthrough**: passthrough.
 	//
-	// 	- reject-all: Users are blocked from reaching the origin.
+	// - **reject-all**: reject all.
 	//
 	// This parameter is required.
 	//
@@ -160,13 +164,13 @@ type CreateWaitingRoomEventRequest struct {
 	//
 	// random
 	QueuingMethod *string `json:"QueuingMethod,omitempty" xml:"QueuingMethod,omitempty"`
-	// The HTTP status code to return while a user is in the queue. Valid values:
+	// The waiting room status code. Valid values:
 	//
-	// 	- 200
+	// - **200**
 	//
-	// 	- 202
+	// - **202**
 	//
-	// 	- 429
+	// - **429**.
 	//
 	// This parameter is required.
 	//
@@ -174,17 +178,17 @@ type CreateWaitingRoomEventRequest struct {
 	//
 	// 202
 	QueuingStatusCode *string `json:"QueuingStatusCode,omitempty" xml:"QueuingStatusCode,omitempty"`
-	// Specifies whether to enable random queuing.
+	// Specifies whether to enable random pre-queuing. Valid values:
 	//
-	// 	- on
+	// - **on**: Enabled.
 	//
-	// 	- off
+	// - **off**: Disabled.
 	//
 	// example:
 	//
 	// on
 	RandomPreQueueEnable *string `json:"RandomPreQueueEnable,omitempty" xml:"RandomPreQueueEnable,omitempty"`
-	// The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
+	// The session duration, in minutes.
 	//
 	// This parameter is required.
 	//
@@ -192,7 +196,7 @@ type CreateWaitingRoomEventRequest struct {
 	//
 	// 5
 	SessionDuration *string `json:"SessionDuration,omitempty" xml:"SessionDuration,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	// The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
 	//
 	// This parameter is required.
 	//
@@ -200,7 +204,7 @@ type CreateWaitingRoomEventRequest struct {
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The start time of the event. This value is a UNIX timestamp.
+	// The event start timestamp, such as 1705044735.
 	//
 	// This parameter is required.
 	//
@@ -208,7 +212,7 @@ type CreateWaitingRoomEventRequest struct {
 	//
 	// 1719763200
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The maximum number of active users.
+	// The total number of active users.
 	//
 	// This parameter is required.
 	//
@@ -216,17 +220,17 @@ type CreateWaitingRoomEventRequest struct {
 	//
 	// 100
 	TotalActiveUsers *string `json:"TotalActiveUsers,omitempty" xml:"TotalActiveUsers,omitempty"`
-	// The ID of the waiting room, which can be obtained by calling the [ListWaitingRooms](https://help.aliyun.com/document_detail/2850279.html) operation.
+	// The waiting room ID. You can call the [ListWaitingRooms](https://help.aliyun.com/document_detail/2850279.html) operation to obtain the waiting room ID. The waiting room must belong to the site specified by SiteId.
 	//
 	// example:
 	//
 	// 6a51d5bc6460887abd1291dc7d4db28b
 	WaitingRoomId *string `json:"WaitingRoomId,omitempty" xml:"WaitingRoomId,omitempty"`
-	// The type of the waiting room. Valid values:
+	// The waiting room type. Valid values:
 	//
-	// 	- default
+	// - **default**: default type.
 	//
-	// 	- custom
+	// - **custom**: custom type.
 	//
 	// This parameter is required.
 	//

@@ -176,7 +176,7 @@ type DescribeSiteLogsResponseBodySiteLogDetailsLogInfos struct {
 	LogName *string `json:"LogName,omitempty" xml:"LogName,omitempty"`
 	// The log path.
 	//
-	// >  Take note of the Expires field (expiration timestamp) in this parameter. If the log download URL expires, you must reobtain the URL.
+	// > Take note of the Expires field (expiration timestamp) in this parameter. If the log download URL expires, you must reobtain the URL.
 	//
 	// example:
 	//

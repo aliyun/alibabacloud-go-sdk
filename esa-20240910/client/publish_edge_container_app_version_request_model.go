@@ -52,9 +52,9 @@ type PublishEdgeContainerAppVersionRequest struct {
 	Percentage *int32 `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
 	// The environment to which you want to release the version. Valid values:
 	//
-	// 	- prod: the production environment.
+	// - prod: the production environment.
 	//
-	// 	- staging: the staging environment.
+	// - staging: the staging environment.
 	//
 	// This parameter is required.
 	//
@@ -64,9 +64,9 @@ type PublishEdgeContainerAppVersionRequest struct {
 	PublishEnv *string `json:"PublishEnv,omitempty" xml:"PublishEnv,omitempty"`
 	// Specifies how the version is released. Valid values:
 	//
-	// 	- percentage: releases the version by percentage.
+	// - percentage: releases the version by percentage.
 	//
-	// 	- region: releases the version by region.
+	// - region: releases the version by region.
 	//
 	// If you do not specify this parameter, the version is released by percentage by default.
 	//

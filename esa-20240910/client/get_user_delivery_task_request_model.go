@@ -14,7 +14,7 @@ type iGetUserDeliveryTaskRequest interface {
 }
 
 type GetUserDeliveryTaskRequest struct {
-	// The name of the delivery task.
+	// The task name.
 	//
 	// This parameter is required.
 	//

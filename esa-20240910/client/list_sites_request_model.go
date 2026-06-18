@@ -36,103 +36,103 @@ type iListSitesRequest interface {
 }
 
 type ListSitesRequest struct {
-	// The DNS setup. Valid values:
+	// The access type. Valid values:
 	//
-	// 	- **NS**
+	// - **NS**: NS access.
 	//
-	// 	- **CNAME**
+	// - **CNAME**: CNAME access.
 	//
 	// example:
 	//
 	// NS
 	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
-	// The service location. Valid values:
+	// The acceleration region. Valid values:
 	//
-	// 	- **domestic**: the Chinese mainland
+	// - **domestic**: Chinese mainland only.
 	//
-	// 	- **global**: global
+	// - **global**: Global.
 	//
-	// 	- **overseas**: outside the Chinese mainland
+	// - **overseas**: Global (excluding the Chinese mainland).
 	//
 	// example:
 	//
 	// global
 	Coverage *string `json:"Coverage,omitempty" xml:"Coverage,omitempty"`
-	// Specifies whether to query only websites on Enterprise plans. Valid values: **true and false**.
+	// Specifies whether to return only sites that use the Enterprise Edition.
 	//
 	// example:
 	//
 	// false
 	OnlyEnterprise *bool `json:"OnlyEnterprise,omitempty" xml:"OnlyEnterprise,omitempty"`
-	// Sorting field. By default, it sorts by creation time, supporting the following options:
+	// The field to sort the results by. By default, results are sorted by creation time (gmtCreate). Supported values:
 	//
-	// - gmtCreate: website creation time
+	// - `gmtCreate`: site creation time
 	//
-	// - visitTime: website visit time
+	// - `visitTime`: site access time
 	//
 	// example:
 	//
 	// visitTime
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	// The page number. Default value: **1**.
+	// The number of the page to return. The default value is **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: **500**.
+	// The number of entries to return on each page. The default value is **500**.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The plan type. Valid values:
+	// The subscription plan type. Valid values:
 	//
-	// 	- **basicplan**: Entrance
+	// - **basicplan**: Basic Edition.
 	//
-	// 	- **standardplan**: Pro
+	// - **standardplan**: Standard Edition.
 	//
-	// 	- **advancedplan**: Premium
+	// - **advancedplan**: Advanced Edition.
 	//
-	// 	- **enterpriseplan**: Enterprise
+	// - **enterpriseplan**: Enterprise Edition.
 	//
 	// example:
 	//
 	// basicplan
 	PlanSubscribeType *string `json:"PlanSubscribeType,omitempty" xml:"PlanSubscribeType,omitempty"`
-	// The ID of the resource group. This parameter specifies a filter condition for the query.
+	// The resource group ID, used to filter query results.
 	//
 	// example:
 	//
 	// rg-aekzd3styujvyei
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The website name. This parameter specifies a filter condition for the query.
+	// The site name, used to filter query results.
 	//
 	// example:
 	//
 	// example.com
 	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
-	// The match mode to search for the website name. Default value: exact. Valid values:
+	// The match mode for the `SiteName` parameter. The default value is `exact`. Valid values:
 	//
-	// 	- **prefix**: match by prefix.
+	// - **prefix**: prefix match.
 	//
-	// 	- **suffix**: match by suffix.
+	// - **suffix**: suffix match.
 	//
-	// 	- **exact**: exact match.
+	// - **exact**: exact match.
 	//
-	// 	- **fuzzy**: fuzzy match.
+	// - **fuzzy**: fuzzy match.
 	//
 	// example:
 	//
 	// fuzzy
 	SiteSearchType *string `json:"SiteSearchType,omitempty" xml:"SiteSearchType,omitempty"`
-	// The website status. This parameter specifies a filter condition for the query.
+	// The site status, used to filter query results.
 	//
 	// example:
 	//
 	// pending
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tag filtering rule.
+	// A list of tags to use for filtering sites.
 	TagFilter []*ListSitesRequestTagFilter `json:"TagFilter,omitempty" xml:"TagFilter,omitempty" type:"Repeated"`
 }
 
@@ -266,13 +266,13 @@ func (s *ListSitesRequest) Validate() error {
 }
 
 type ListSitesRequestTagFilter struct {
-	// The tag key. This parameter specifies a filter condition for the query.
+	// The tag key, used to filter query results.
 	//
 	// example:
 	//
 	// tag1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value. This parameter specifies a filter condition for the query.
+	// The tag value, used to filter query results.
 	//
 	// example:
 	//

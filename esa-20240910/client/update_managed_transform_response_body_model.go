@@ -14,7 +14,7 @@ type iUpdateManagedTransformResponseBody interface {
 }
 
 type UpdateManagedTransformResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

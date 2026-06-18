@@ -18,7 +18,7 @@ type iBatchPutKvResponseBody interface {
 }
 
 type BatchPutKvResponseBody struct {
-	// The keys that failed to be written.
+	// A list of keys that failed to be written.
 	FailKeys []*string `json:"FailKeys,omitempty" xml:"FailKeys,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -26,7 +26,7 @@ type BatchPutKvResponseBody struct {
 	//
 	// EEEBE525-F576-1196-8DAF-2D70CA3F4D2F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The keys that were written.
+	// A list of keys that were successfully written.
 	SuccessKeys []*string `json:"SuccessKeys,omitempty" xml:"SuccessKeys,omitempty" type:"Repeated"`
 }
 

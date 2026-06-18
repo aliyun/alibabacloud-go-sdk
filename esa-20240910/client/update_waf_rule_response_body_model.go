@@ -16,13 +16,13 @@ type iUpdateWafRuleResponseBody interface {
 }
 
 type UpdateWafRuleResponseBody struct {
-	// WAF rule ID, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2878257.html) interface.
+	// The ID of the WAF rule.
 	//
 	// example:
 	//
 	// 20000001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iDeleteWafRulesetResponseBody interface {
 }
 
 type DeleteWafRulesetResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

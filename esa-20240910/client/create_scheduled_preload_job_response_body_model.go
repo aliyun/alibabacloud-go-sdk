@@ -48,51 +48,51 @@ type CreateScheduledPreloadJobResponseBody struct {
 	//
 	// 15685865xxx14622
 	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// The time when the task was created.
+	// The time the task was created.
 	//
 	// example:
 	//
 	// 2023-06-05T10:04:20+0800
 	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
-	// The domain names to be prefetched.
+	// The list of domains to preload.
 	//
 	// example:
 	//
 	// testurl.com
 	Domains *string `json:"Domains,omitempty" xml:"Domains,omitempty"`
-	// The error message. Multiple error messages are separated by commas (,). Valid values:
+	// The error message. Multiple error codes are separated by commas.
 	//
-	// 	- **InvalidUrl**: The URL format is invalid.
+	// - **InvalidUrl**: The URL format is invalid.
 	//
-	// 	- **InvalidDomain**: The domain name fails the domain ownership verification.
+	// - **InvalidDomain**: Domain ownership verification failed.
 	//
-	// 	- **QuotaExcess**: the quota limit has been reached.
+	// - **QuotaExcess**: The quota is exceeded.
 	//
-	// 	- **OtherErrors**: other errors.
+	// - **OtherErrors**: Other errors.
 	//
 	// example:
 	//
 	// InvalidDomain
 	ErrorInfo *string `json:"ErrorInfo,omitempty" xml:"ErrorInfo,omitempty"`
-	// The URL of the OSS object that stores a list of URLs that failed the conditional check for prefetching.
+	// The OSS URL for the file that lists the failed URLs.
 	//
 	// example:
 	//
 	// https://xxxobject.oss-cn-reginon.aliyuncs.com/9d91_xxxxxxxxxxx_158bb6e0f97c477791209bb46bd599f7
 	FailedFileOss *string `json:"FailedFileOss,omitempty" xml:"FailedFileOss,omitempty"`
-	// The ID of the URL list file, which can be used during downloads.
+	// The ID of the file containing the list of URLs. Use this ID to download the file.
 	//
 	// example:
 	//
 	// 665d3b48621bccf3fe29e1a7
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// The ID of the scheduled prefetch task.
+	// The task ID.
 	//
 	// example:
 	//
 	// 665d3af3621bccf3fe29e1a4
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The method to submit the URLs to be prefetched.
+	// The URL submission method.
 	//
 	// example:
 	//
@@ -110,31 +110,31 @@ type CreateScheduledPreloadJobResponseBody struct {
 	//
 	// 15C66C7B-671A-4297-9187-2C4477247B78
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The website ID.
+	// The site ID.
 	//
 	// example:
 	//
 	// 190007158391808
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The number of submitted prefetch tasks.
+	// The number of tasks submitted. A value of 1 indicates that the task was created.
 	//
 	// example:
 	//
 	// 1
 	TaskSubmitted *int32 `json:"TaskSubmitted,omitempty" xml:"TaskSubmitted,omitempty"`
-	// The task type (refresh or preload).
+	// The task type. Valid values are refresh or preload.
 	//
 	// example:
 	//
 	// preload
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	// The total number of URLs.
+	// The total number of URLs provided in the request.
 	//
 	// example:
 	//
 	// 2
 	UrlCount *int32 `json:"UrlCount,omitempty" xml:"UrlCount,omitempty"`
-	// The number of submitted URLs.
+	// The number of URLs accepted for preloading.
 	//
 	// example:
 	//

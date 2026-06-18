@@ -79,6 +79,10 @@ type FieldContentValueFieldList struct {
 	// IP address of the client.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The description of the field in Chinese.
+	//
+	// example:
+	//
+	// 客户端的IP地址
 	DescriptionCn *string `json:"DescriptionCn,omitempty" xml:"DescriptionCn,omitempty"`
 	// The category of the field.
 	//

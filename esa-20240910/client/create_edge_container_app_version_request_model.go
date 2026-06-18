@@ -28,9 +28,7 @@ type CreateEdgeContainerAppVersionRequest struct {
 	//
 	// app-88068867578379****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The container group to be deployed for this version, which contains information about images.\\
-	//
-	// The image data contains the image address, startup command, parameters, environment variables, and probe rules. You can specify one or more images. The parameter value is a JSON string.
+	// The container group to be deployed for this version, which contains information about images.<br> The image data contains the image address, startup command, parameters, environment variables, and probe rules. You can specify one or more images. The parameter value is a JSON string.
 	//
 	// This parameter is required.
 	//
@@ -205,14 +203,18 @@ type CreateEdgeContainerAppVersionRequestContainers struct {
 	// The content of the container health probe.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// For details, see the definition of readiness probes in Kubernetes.
 	ProbeContent *CreateEdgeContainerAppVersionRequestContainersProbeContent `json:"ProbeContent,omitempty" xml:"ProbeContent,omitempty" type:"Struct"`
 	// The type of the probe. Valid values:
 	//
-	// 	- exec: the command type.
+	// - exec: the command type.
 	//
-	// 	- tcpSocket: the TCP probe type.
+	// - tcpSocket: the TCP probe type.
 	//
-	// 	- httpGet: the HTTP access type.
+	// - httpGet: the HTTP access type.
 	//
 	// This parameter is required.
 	//

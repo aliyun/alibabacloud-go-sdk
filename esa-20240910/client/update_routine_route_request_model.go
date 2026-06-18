@@ -32,17 +32,17 @@ type iUpdateRoutineRouteRequest interface {
 }
 
 type UpdateRoutineRouteRequest struct {
-	// Bypass mode. Valid values:
+	// Specifies whether to enable bypass mode. Valid values:
 	//
-	// 	- on
+	// - on: Enabled
 	//
-	// 	- off
+	// - off: Disabled
 	//
 	// example:
 	//
 	// on
 	Bypass *string `json:"Bypass,omitempty" xml:"Bypass,omitempty"`
-	// The ID of the configuration.
+	// The configuration ID.
 	//
 	// This parameter is required.
 	//
@@ -50,33 +50,33 @@ type UpdateRoutineRouteRequest struct {
 	//
 	// 35281609698****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// The exception origin switch. After you turn on this switch, if a function exception occurs, such as CPU usage exceeding the upper limit, requests are sent to the origin. Valid values:
+	// Specifies whether to enable fallback. If enabled, requests fall back to the origin server if the function encounters an exception, such as exceeding the CPU usage limit. Valid values:
 	//
-	// 	- on
+	// - on: Enabled
 	//
-	// 	- off
+	// - off: Disabled
 	//
 	// example:
 	//
 	// on
 	Fallback *string `json:"Fallback,omitempty" xml:"Fallback,omitempty"`
-	// The routing switch. Valid values:
+	// Specifies whether to enable the route. Valid values:
 	//
-	// 	- on
+	// - on: Enabled
 	//
-	// 	- off
+	// - off: Disabled
 	//
 	// example:
 	//
 	// on
 	RouteEnable *string `json:"RouteEnable,omitempty" xml:"RouteEnable,omitempty"`
-	// The name of the route.
+	// The route name.
 	//
 	// example:
 	//
 	// test_route
 	RouteName *string `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
-	// The name of the function.
+	// The name of the Routine.
 	//
 	// example:
 	//
@@ -88,13 +88,13 @@ type UpdateRoutineRouteRequest struct {
 	//
 	// (http.host eq \\"video.example.com\\")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// The order in which the rule is executed.
+	// The execution sequence of the rule.
 	//
 	// example:
 	//
 	// 1
 	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	// The ID of the site. You can obtain this ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
 	//
 	// This parameter is required.
 	//

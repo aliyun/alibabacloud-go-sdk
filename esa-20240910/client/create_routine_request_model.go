@@ -18,14 +18,19 @@ type iCreateRoutineRequest interface {
 }
 
 type CreateRoutineRequest struct {
-	// The routine description.
+	// The description of the Edge Routine.
 	//
 	// example:
 	//
 	// the description of this routine
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	HasAssets   *bool   `json:"HasAssets,omitempty" xml:"HasAssets,omitempty"`
-	// The routine name, which must be unique in the same account.
+	// Specifies whether the Edge Routine contains asset files.
+	//
+	// example:
+	//
+	// false
+	HasAssets *bool `json:"HasAssets,omitempty" xml:"HasAssets,omitempty"`
+	// The name of the Edge Routine. The name must be unique within the same account.
 	//
 	// This parameter is required.
 	//

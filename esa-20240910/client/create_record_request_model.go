@@ -19,6 +19,10 @@ type iCreateRecordRequest interface {
 	GetData() *CreateRecordRequestData
 	SetHostPolicy(v string) *CreateRecordRequest
 	GetHostPolicy() *string
+	SetHttpPorts(v string) *CreateRecordRequest
+	GetHttpPorts() *string
+	SetHttpsPorts(v string) *CreateRecordRequest
+	GetHttpsPorts() *string
 	SetProxied(v bool) *CreateRecordRequest
 	GetProxied() *bool
 	SetRecordName(v string) *CreateRecordRequest
@@ -76,6 +80,8 @@ type CreateRecordRequest struct {
 	//
 	// follow_origin_domain
 	HostPolicy *string `json:"HostPolicy,omitempty" xml:"HostPolicy,omitempty"`
+	HttpPorts  *string `json:"HttpPorts,omitempty" xml:"HttpPorts,omitempty"`
+	HttpsPorts *string `json:"HttpsPorts,omitempty" xml:"HttpsPorts,omitempty"`
 	// Specifies whether to proxy the record. Only CNAME and A/AAAA records can be proxied. Valid values:
 	//
 	// 	- **true**
@@ -166,6 +172,14 @@ func (s *CreateRecordRequest) GetHostPolicy() *string {
 	return s.HostPolicy
 }
 
+func (s *CreateRecordRequest) GetHttpPorts() *string {
+	return s.HttpPorts
+}
+
+func (s *CreateRecordRequest) GetHttpsPorts() *string {
+	return s.HttpsPorts
+}
+
 func (s *CreateRecordRequest) GetProxied() *bool {
 	return s.Proxied
 }
@@ -212,6 +226,16 @@ func (s *CreateRecordRequest) SetData(v *CreateRecordRequestData) *CreateRecordR
 
 func (s *CreateRecordRequest) SetHostPolicy(v string) *CreateRecordRequest {
 	s.HostPolicy = &v
+	return s
+}
+
+func (s *CreateRecordRequest) SetHttpPorts(v string) *CreateRecordRequest {
+	s.HttpPorts = &v
+	return s
+}
+
+func (s *CreateRecordRequest) SetHttpsPorts(v string) *CreateRecordRequest {
+	s.HttpsPorts = &v
 	return s
 }
 

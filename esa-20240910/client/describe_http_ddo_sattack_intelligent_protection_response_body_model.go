@@ -20,25 +20,25 @@ type iDescribeHttpDDoSAttackIntelligentProtectionResponseBody interface {
 }
 
 type DescribeHttpDDoSAttackIntelligentProtectionResponseBody struct {
-	// The mode of smart HTTP DDoS protection. Valid values:
+	// The protection mode for HTTP DDoS intelligent protection. Valid values:
 	//
-	// 	- **observe**: alert.
+	// - **observe**: Observe
 	//
-	// 	- **defense**: block.
+	// - **defense**: Defense
 	//
 	// example:
 	//
 	// defense
 	AiMode *string `json:"AiMode,omitempty" xml:"AiMode,omitempty"`
-	// The level of smart HTTP DDoS protection. Valid values:
+	// The protection level for HTTP DDoS intelligent protection. Valid values:
 	//
-	// 	- **level0**: very loose.
+	// - **level0**: Very Loose
 	//
-	// 	- **level30**: loose.
+	// - **level30**: Loose
 	//
-	// 	- **level60**: normal.
+	// - **level60**: Normal
 	//
-	// 	- **level90**: strict.
+	// - **level90**: Strict
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type DescribeHttpDDoSAttackIntelligentProtectionResponseBody struct {
 	//
 	// CB1A380B-09F0-41BB-3C82-72F8FD6DA2FE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The website ID.
+	// The site ID.
 	//
 	// example:
 	//

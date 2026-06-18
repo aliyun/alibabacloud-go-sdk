@@ -22,30 +22,56 @@ type iSetAutomaticFrequencyControlConfigRequest interface {
 }
 
 type SetAutomaticFrequencyControlConfigRequest struct {
+	// The action to take on requests that trigger the control. Valid values:
+	//
+	// - **observe**: Monitors the requests.
+	//
+	// - **deny**: Blocks the requests.
+	//
+	// - **js**: Issues a JS challenge.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// js
 	ActionType *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
+	// Specifies whether to enable automatic frequency control. Valid values:
+	//
+	// - **on**: Enables automatic frequency control.
+	//
+	// - **off**: Disables automatic frequency control.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// on
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The protection level. Valid values:
+	//
+	// - **loose**: Loose protection.
+	//
+	// - **normal**: Normal protection.
+	//
+	// - **strict**: Strict protection.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// normal
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The ID of the site. Call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain this ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The version of the site. For a site with version management enabled, this parameter specifies the version to which the configuration applies. The default value is 0.
+	//
 	// example:
 	//
 	// 0

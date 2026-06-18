@@ -16,7 +16,7 @@ type iDeleteSiteOriginClientCertificateRequest interface {
 }
 
 type DeleteSiteOriginClientCertificateRequest struct {
-	// The certificate ID on ESA.
+	// The certificate ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DeleteSiteOriginClientCertificateRequest struct {
 	//
 	// babaabcd****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
+	// The site ID.
 	//
 	// This parameter is required.
 	//

@@ -18,15 +18,15 @@ type iWafRatelimitCharacteristics interface {
 }
 
 type WafRatelimitCharacteristics struct {
-	// The details of logical databases.
+	// A list of match criteria.
 	Criteria []*WafRatelimitCharacteristicsCriteria `json:"Criteria,omitempty" xml:"Criteria,omitempty" type:"Repeated"`
-	// The logical judgment.
+	// The logical relationship between the criteria.
 	//
 	// example:
 	//
 	// and
 	Logic *string `json:"Logic,omitempty" xml:"Logic,omitempty"`
-	// The matching type.
+	// The field to match.
 	//
 	// example:
 	//
@@ -83,15 +83,15 @@ func (s *WafRatelimitCharacteristics) Validate() error {
 }
 
 type WafRatelimitCharacteristicsCriteria struct {
-	// The details of logical databases.
+	// A list of match criteria.
 	Criteria []*WafRatelimitCharacteristicsCriteriaCriteria `json:"Criteria,omitempty" xml:"Criteria,omitempty" type:"Repeated"`
-	// The logical judgment.
+	// The logical relationship between the criteria.
 	//
 	// example:
 	//
 	// and
 	Logic *string `json:"Logic,omitempty" xml:"Logic,omitempty"`
-	// The matching type.
+	// The field to match.
 	//
 	// example:
 	//
@@ -148,15 +148,15 @@ func (s *WafRatelimitCharacteristicsCriteria) Validate() error {
 }
 
 type WafRatelimitCharacteristicsCriteriaCriteria struct {
-	// The details of logical databases.
+	// A list of match criteria.
 	Criteria []*WafRatelimitCharacteristicsCriteriaCriteriaCriteria `json:"Criteria,omitempty" xml:"Criteria,omitempty" type:"Repeated"`
-	// The logical judgment.
+	// The logical relationship between the criteria.
 	//
 	// example:
 	//
 	// and
 	Logic *string `json:"Logic,omitempty" xml:"Logic,omitempty"`
-	// The matching type.
+	// The field to match.
 	//
 	// example:
 	//
@@ -213,7 +213,7 @@ func (s *WafRatelimitCharacteristicsCriteriaCriteria) Validate() error {
 }
 
 type WafRatelimitCharacteristicsCriteriaCriteriaCriteria struct {
-	// The matching type.
+	// The field to match.
 	//
 	// example:
 	//

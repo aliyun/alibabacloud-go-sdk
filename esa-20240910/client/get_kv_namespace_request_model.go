@@ -14,7 +14,7 @@ type iGetKvNamespaceRequest interface {
 }
 
 type GetKvNamespaceRequest struct {
-	// The name of the namespace that you specify when you call the [CreateKvNamespace](https://help.aliyun.com/document_detail/2850317.html) operation.
+	// The name of the namespace. You specify this name when calling the [CreateKvNamespace](https://help.aliyun.com/document_detail/2850317.html) operation.
 	//
 	// This parameter is required.
 	//

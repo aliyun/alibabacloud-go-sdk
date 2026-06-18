@@ -34,7 +34,7 @@ type iUpdateNetworkOptimizationRequest interface {
 }
 
 type UpdateNetworkOptimizationRequest struct {
-	// Configuration ID.
+	// The configuration ID.
 	//
 	// This parameter is required.
 	//
@@ -42,54 +42,59 @@ type UpdateNetworkOptimizationRequest struct {
 	//
 	// 352816096987136
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// Whether to enable GRPC, default is disabled. Possible values:
+	// Controls whether gRPC is enabled. This feature is disabled by default. Valid values:
 	//
-	// - on: Enable
+	// - on: gRPC is enabled.
 	//
-	// - off: Disable
+	// - off: gRPC is disabled.
 	//
 	// example:
 	//
 	// on
 	Grpc *string `json:"Grpc,omitempty" xml:"Grpc,omitempty"`
-	// Whether to enable HTTP2 origin, default is disabled. Possible values:
+	// Controls whether HTTP/2 to origin is enabled. This feature is disabled by default. Valid values:
 	//
-	// - on: Enable
+	// - on: HTTP/2 to origin is enabled.
 	//
-	// - off: Disable
+	// - off: HTTP/2 to origin is disabled.
 	//
 	// example:
 	//
 	// on
 	Http2Origin *string `json:"Http2Origin,omitempty" xml:"Http2Origin,omitempty"`
-	// Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+	// The conditional expression used to match requests. This parameter is optional for global configurations.
 	//
-	// - Match all incoming requests: Set the value to true
+	// - To match all incoming requests, set the value to true.
 	//
-	// - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+	// - To match specific requests, set the value to a custom expression, for example, (http.host eq "video.example.com").
 	//
 	// example:
 	//
 	// (http.host eq \\"video.example.com\\")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// Rule switch. This parameter is not required when adding a global configuration. Possible values:
+	// Controls whether the rule is enabled. This parameter is optional for global configurations. Valid values:
 	//
-	// - on: Enable.
+	// - on: The rule is enabled.
 	//
-	// - off: Disable.
+	// - off: The rule is disabled.
 	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	// Rule name. This parameter is not required when adding a global configuration.
+	// The rule name. This parameter is optional for global configurations.
 	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	Sequence *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) API.
+	// The rule execution order. Smaller values have higher priority.
+	//
+	// example:
+	//
+	// 1
+	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// The site ID. Call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain this ID.
 	//
 	// This parameter is required.
 	//
@@ -97,27 +102,27 @@ type UpdateNetworkOptimizationRequest struct {
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// Whether to enable the smart routing service, default is disabled. Possible values:
+	// Controls whether smart routing is enabled. This feature is disabled by default. Valid values:
 	//
-	// - on: Enable
+	// - on: Smart routing is enabled.
 	//
-	// - off: Disable
+	// - off: Smart routing is disabled.
 	//
 	// example:
 	//
 	// on
 	SmartRouting *string `json:"SmartRouting,omitempty" xml:"SmartRouting,omitempty"`
-	// Maximum upload file size, in MB, with a range of 100 to 500.
+	// The maximum upload file size, in MB. The value must be an integer from 100 to 500.
 	//
 	// example:
 	//
 	// 100
 	UploadMaxFilesize *string `json:"UploadMaxFilesize,omitempty" xml:"UploadMaxFilesize,omitempty"`
-	// Whether to enable Websocket, default is enabled. Possible values:
+	// Controls whether WebSocket is enabled. This feature is enabled by default. Valid values:
 	//
-	// - on: Enable
+	// - on: WebSocket is enabled.
 	//
-	// - off: Disable
+	// - off: WebSocket is disabled.
 	//
 	// example:
 	//

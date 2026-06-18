@@ -20,25 +20,25 @@ type iDeleteHttpDDoSIntelligentRuleResponseBody interface {
 }
 
 type DeleteHttpDDoSIntelligentRuleResponseBody struct {
-	// Record name.
+	// The name of the record.
 	//
 	// example:
 	//
 	// www.example.com
 	RecordName *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
-	// ID of the request
+	// Id of the request
 	//
 	// example:
 	//
 	// 15C66C7B-671A-4297-9187-2C4477247A74
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Rule ID.
+	// The ID of the rule.
 	//
 	// example:
 	//
 	// 20757864
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+	// The ID of the site. Call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
 	//
 	// example:
 	//

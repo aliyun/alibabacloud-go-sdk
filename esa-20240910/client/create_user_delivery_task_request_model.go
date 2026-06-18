@@ -38,15 +38,15 @@ type iCreateUserDeliveryTaskRequest interface {
 }
 
 type CreateUserDeliveryTaskRequest struct {
-	// The log category. Valid values:
+	// The real-time log type. Valid values:
 	//
-	// 	- dcdn_log_access_l1 (default): access logs.
+	// - **dcdn_log_access_l1*	- (default): access log.
 	//
-	// 	- dcdn_log_er: Edge Routine logs.
+	// - **dcdn_log_er**: edge function log.
 	//
-	// 	- dcdn_log_waf: firewall logs.
+	// - **dcdn_log_waf**: WAF log.
 	//
-	// 	- dcdn_log_ipa: TCP/UDP proxy logs.
+	// - **dcdn_log_ipa**: Layer-4 acceleration log.
 	//
 	// This parameter is required.
 	//
@@ -56,27 +56,27 @@ type CreateUserDeliveryTaskRequest struct {
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
 	// The data center. Valid values:
 	//
-	// 	- cn: the Chinese mainland.
+	// - **cn**: Chinese mainland.
 	//
-	// 	- sg: outside the Chinese mainland.
+	// - **sg**: global (excluding the Chinese mainland).
 	//
 	// example:
 	//
 	// cn
 	DataCenter *string `json:"DataCenter,omitempty" xml:"DataCenter,omitempty"`
-	// The destination of the delivery. Valid values:
+	// The log delivery destination. Valid values:
 	//
-	// 1.  sls: Alibaba Cloud SLS.
+	// - **sls**: Log Service (SLS).
 	//
-	// 2.  http: HTTP server.
+	// - **http**: an HTTP service.
 	//
-	// 3.  aws3: Amazon S3.
+	// - **aws3**: Amazon S3.
 	//
-	// 4.  oss: Alibaba Cloud OSS.
+	// - **oss**: Object Storage Service (OSS).
 	//
-	// 5.  kafka: Kafka.
+	// - **kafka**: Kafka.
 	//
-	// 6.  aws3cmpt: S3-compatible storage service.
+	// - **aws3cmpt**: an S3-compatible service.
 	//
 	// This parameter is required.
 	//
@@ -85,13 +85,13 @@ type CreateUserDeliveryTaskRequest struct {
 	// sls
 	DeliveryType *string `json:"DeliveryType,omitempty" xml:"DeliveryType,omitempty"`
 	Details      *string `json:"Details,omitempty" xml:"Details,omitempty"`
-	// The discard rate. Default value: 0.
+	// The log discard rate. Defaults to 0.
 	//
 	// example:
 	//
 	// 0
 	DiscardRate *float32 `json:"DiscardRate,omitempty" xml:"DiscardRate,omitempty"`
-	// The log field. If you specify multiple fields, separate them with commas (,).
+	// The fields to be delivered. Separate multiple fields with a comma.
 	//
 	// This parameter is required.
 	//
@@ -100,15 +100,15 @@ type CreateUserDeliveryTaskRequest struct {
 	// user_agent,ip_address,ip_port
 	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
 	FilterVer *string `json:"FilterVer,omitempty" xml:"FilterVer,omitempty"`
-	// The configurations for delivery to an HTTP server.
+	// Configuration for delivering logs to an HTTP or HTTPS endpoint.
 	HttpDelivery *CreateUserDeliveryTaskRequestHttpDelivery `json:"HttpDelivery,omitempty" xml:"HttpDelivery,omitempty" type:"Struct"`
-	// The configurations for delivery to Kafka.
+	// Configuration for delivering logs to Kafka.
 	KafkaDelivery *CreateUserDeliveryTaskRequestKafkaDelivery `json:"KafkaDelivery,omitempty" xml:"KafkaDelivery,omitempty" type:"Struct"`
-	// The configurations for delivery to OSS.
+	// Configuration for delivering logs to Object Storage Service (OSS).
 	OssDelivery *CreateUserDeliveryTaskRequestOssDelivery `json:"OssDelivery,omitempty" xml:"OssDelivery,omitempty" type:"Struct"`
-	// The configurations for delivery to Amazon S3 or an S3-compatible service.
+	// Configuration for delivering logs to Amazon S3 or an S3-compatible service.
 	S3Delivery *CreateUserDeliveryTaskRequestS3Delivery `json:"S3Delivery,omitempty" xml:"S3Delivery,omitempty" type:"Struct"`
-	// The configurations for delivery to SLS.
+	// Configuration for delivering logs to Log Service (SLS).
 	SlsDelivery *CreateUserDeliveryTaskRequestSlsDelivery `json:"SlsDelivery,omitempty" xml:"SlsDelivery,omitempty" type:"Struct"`
 	// The task name.
 	//
@@ -281,73 +281,73 @@ type CreateUserDeliveryTaskRequestHttpDelivery struct {
 	//
 	// gzip
 	Compress *string `json:"Compress,omitempty" xml:"Compress,omitempty"`
-	// The address of the HTTP server.
+	// The URL of the destination endpoint.
 	//
 	// example:
 	//
 	// http://xxx.aliyun.com/v1/log/upload
 	DestUrl *string `json:"DestUrl,omitempty" xml:"DestUrl,omitempty"`
-	// The custom headers.
+	// Custom HTTP headers.
 	HeaderParam map[string]*HttpDeliveryHeaderParamValue `json:"HeaderParam,omitempty" xml:"HeaderParam,omitempty"`
-	// The ending separator.
+	// The trailing delimiter.
 	//
 	// example:
 	//
 	// \\n
 	LastLogSplit *bool `json:"LastLogSplit,omitempty" xml:"LastLogSplit,omitempty"`
-	// The prefix of the log delivery package.
+	// The prefix to add to the log delivery payload.
 	//
 	// example:
 	//
 	// cdnVersion:1.0
 	LogBodyPrefix *string `json:"LogBodyPrefix,omitempty" xml:"LogBodyPrefix,omitempty"`
-	// The suffix of the log delivery package.
+	// The suffix to add to the log delivery payload.
 	//
 	// example:
 	//
 	// cdnVersion:1.0
 	LogBodySuffix *string `json:"LogBodySuffix,omitempty" xml:"LogBodySuffix,omitempty"`
-	// Specifies whether to enable log splitting. Default value: true.
+	// Specifies whether to split log entries. Defaults to true.
 	//
 	// example:
 	//
 	// true
 	LogSplit *bool `json:"LogSplit,omitempty" xml:"LogSplit,omitempty"`
-	// The log separator.
+	// The delimiter for log entries.
 	//
 	// example:
 	//
 	// \\n
 	LogSplitWords *string `json:"LogSplitWords,omitempty" xml:"LogSplitWords,omitempty"`
-	// The maximum size of data for each delivery. Unit: MB.
+	// The maximum size of a delivery batch, in MB.
 	//
 	// example:
 	//
 	// 5
 	MaxBatchMB *int64 `json:"MaxBatchMB,omitempty" xml:"MaxBatchMB,omitempty"`
-	// The maximum number of entries for each delivery.
+	// The maximum number of log entries per delivery request.
 	//
 	// example:
 	//
 	// 1000
 	MaxBatchSize *int64 `json:"MaxBatchSize,omitempty" xml:"MaxBatchSize,omitempty"`
-	// The maximum number of retries.
+	// The maximum number of retries if a delivery fails.
 	//
 	// example:
 	//
 	// 3
 	MaxRetry *int64 `json:"MaxRetry,omitempty" xml:"MaxRetry,omitempty"`
-	// The custom query parameters.
+	// Custom query parameters.
 	QueryParam map[string]*HttpDeliveryQueryParamValue `json:"QueryParam,omitempty" xml:"QueryParam,omitempty"`
-	// Specifies whether to use server authentication.
+	// Specifies whether to enable standard authentication.
 	//
 	// example:
 	//
 	// true
 	StandardAuthOn *bool `json:"StandardAuthOn,omitempty" xml:"StandardAuthOn,omitempty"`
-	// The authentication configurations.
+	// Configuration for standard authentication.
 	StandardAuthParam *CreateUserDeliveryTaskRequestHttpDeliveryStandardAuthParam `json:"StandardAuthParam,omitempty" xml:"StandardAuthParam,omitempty" type:"Struct"`
-	// The timeout period. Unit: seconds.
+	// The delivery timeout, in seconds.
 	//
 	// example:
 	//
@@ -508,7 +508,7 @@ func (s *CreateUserDeliveryTaskRequestHttpDelivery) Validate() error {
 }
 
 type CreateUserDeliveryTaskRequestHttpDeliveryStandardAuthParam struct {
-	// The validity period of the signature.
+	// The expiration time, in seconds.
 	//
 	// example:
 	//
@@ -574,39 +574,39 @@ type CreateUserDeliveryTaskRequestKafkaDelivery struct {
 	//
 	// kafka.LeastBytes
 	Balancer *string `json:"Balancer,omitempty" xml:"Balancer,omitempty"`
-	// The brokers.
+	// A list of Kafka brokers.
 	Brokers []*string `json:"Brokers,omitempty" xml:"Brokers,omitempty" type:"Repeated"`
-	// The compression method. By default, data is not compressed.
+	// The compression method. Disabled by default.
 	//
 	// example:
 	//
-	// gzip
+	// lz4
 	Compress *string `json:"Compress,omitempty" xml:"Compress,omitempty"`
-	// The encryption method.
+	// The authentication mechanism.
 	//
 	// example:
 	//
 	// plain
 	MachanismType *string `json:"MachanismType,omitempty" xml:"MachanismType,omitempty"`
-	// The password.
+	// The password for authentication.
 	//
 	// example:
 	//
 	// xxx
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// The topic.
+	// The Kafka topic.
 	//
 	// example:
 	//
 	// dqc_test2
 	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
-	// Specifies whether to enable authentication.
+	// Specifies whether to enable user authentication.
 	//
 	// example:
 	//
 	// true
 	UserAuth *bool `json:"UserAuth,omitempty" xml:"UserAuth,omitempty"`
-	// The username.
+	// The username for authentication.
 	//
 	// example:
 	//
@@ -699,29 +699,29 @@ func (s *CreateUserDeliveryTaskRequestKafkaDelivery) Validate() error {
 }
 
 type CreateUserDeliveryTaskRequestOssDelivery struct {
-	// The ID of your Alibaba Cloud account.
+	// The Alibaba Cloud account ID.
 	//
 	// example:
 	//
 	// 1234***
 	Aliuid *string `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
-	// The name of the OSS bucket.
+	// The bucket name.
 	//
 	// example:
 	//
 	// test_rlog
 	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
-	// The prefix of the path in which you want to store logs.
+	// The object key prefix.
 	//
 	// example:
 	//
-	// logriver-test/log
+	// test/
 	PrefixPath *string `json:"PrefixPath,omitempty" xml:"PrefixPath,omitempty"`
-	// The region in which the bucket is located.
+	// The region of the destination OSS bucket.
 	//
 	// example:
 	//
-	// cn-shanghai
+	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 }
 
@@ -774,43 +774,43 @@ func (s *CreateUserDeliveryTaskRequestOssDelivery) Validate() error {
 }
 
 type CreateUserDeliveryTaskRequestS3Delivery struct {
-	// The access key ID of your Amazon S3 account.
+	// The access key ID for the S3 account.
 	//
 	// example:
 	//
 	// g0f46623ll0g0
 	AccessKey *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
-	// The directory in the bucket.
+	// The bucket path.
 	//
 	// example:
 	//
 	// logriver-test/log
 	BucketPath *string `json:"BucketPath,omitempty" xml:"BucketPath,omitempty"`
-	// The endpoint.
+	// The S3 endpoint.
 	//
 	// example:
 	//
 	// https://s3.oss-cn-hangzhou.aliyuncs.com
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	// The prefix of the path in which you want to store logs.
+	// The object key prefix.
 	//
 	// example:
 	//
 	// logriver-test/log
 	PrefixPath *string `json:"PrefixPath,omitempty" xml:"PrefixPath,omitempty"`
-	// The region ID of the service.
+	// The destination region.
 	//
 	// example:
 	//
 	// cn-shanghai
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// Specifies whether the service is compatible with Amazon S3.
+	// Specifies whether the destination is an S3-compatible service.
 	//
 	// example:
 	//
 	// true
 	S3Cmpt *bool `json:"S3Cmpt,omitempty" xml:"S3Cmpt,omitempty"`
-	// The secret access key of your Amazon S3 account.
+	// The secret access key for the S3 account.
 	//
 	// example:
 	//
@@ -914,19 +914,19 @@ func (s *CreateUserDeliveryTaskRequestS3Delivery) Validate() error {
 }
 
 type CreateUserDeliveryTaskRequestSlsDelivery struct {
-	// The name of the SLS Logstore.
+	// The name of the destination logstore.
 	//
 	// example:
 	//
 	// accesslog-test
 	SLSLogStore *string `json:"SLSLogStore,omitempty" xml:"SLSLogStore,omitempty"`
-	// The name of the SLS project.
+	// The name of the destination project.
 	//
 	// example:
 	//
 	// dcdn-test20240417
 	SLSProject *string `json:"SLSProject,omitempty" xml:"SLSProject,omitempty"`
-	// The region in which the SLS project resides.
+	// The region of the destination project.
 	//
 	// example:
 	//

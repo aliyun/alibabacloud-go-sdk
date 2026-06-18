@@ -54,7 +54,7 @@ type ListEdgeContainerAppVersionsRequest struct {
 	//
 	// example:
 	//
-	// DESC
+	// Desc
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
 	// The page number. Valid values: 1 to 65535.
 	//

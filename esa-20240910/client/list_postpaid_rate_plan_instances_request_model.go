@@ -28,17 +28,70 @@ type iListPostpaidRatePlanInstancesRequest interface {
 }
 
 type ListPostpaidRatePlanInstancesRequest struct {
+	// Specifies whether to return only instances that have remaining site quota. Valid values:
+	//
+	// - `true`: Returns only instances with remaining site quota.
+	//
+	// - `false`: Returns all instances, regardless of site quota.
+	//
 	// example:
 	//
-	// ListPostpaidRatePlanInstances
+	// true
 	CheckRemainingSiteQuota *string `json:"CheckRemainingSiteQuota,omitempty" xml:"CheckRemainingSiteQuota,omitempty"`
-	InstanceId              *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageNumber              *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize                *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SortBy                  *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	SortOrder               *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
-	Status                  *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	UnrelatedType           *string `json:"UnrelatedType,omitempty" xml:"UnrelatedType,omitempty"`
+	// The ID of the instance to query.
+	//
+	// example:
+	//
+	// sp-dps-xxxxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The page number. The value must be greater than or equal to 1.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. The maximum value is 500.
+	//
+	// example:
+	//
+	// 12
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The field to sort the results by. Valid value:
+	//
+	// - `CreateTime`: Sorts by creation time.
+	//
+	// example:
+	//
+	// CreateTime
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The sort order. Valid values:
+	//
+	// - `asc`: ascending
+	//
+	// - `desc`: descending
+	//
+	// example:
+	//
+	// desc
+	SortOrder *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
+	// The instance status. Valid values:
+	//
+	// - `online`: The instance is running.
+	//
+	// - `overdue`: The payment for the instance is overdue.
+	//
+	// - `disable`: The instance is released.
+	//
+	// example:
+	//
+	// online
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The type of add-on service to filter by, such as `bot` or `ddos`.
+	//
+	// example:
+	//
+	// bot
+	UnrelatedType *string `json:"UnrelatedType,omitempty" xml:"UnrelatedType,omitempty"`
 }
 
 func (s ListPostpaidRatePlanInstancesRequest) String() string {

@@ -16,13 +16,13 @@ type iCreateRewriteUrlRuleResponseBody interface {
 }
 
 type CreateRewriteUrlRuleResponseBody struct {
-	// Configuration ID.
+	// The configuration ID.
 	//
 	// example:
 	//
 	// 39237781679****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// Request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

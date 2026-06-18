@@ -22,11 +22,11 @@ type UpdateOriginProtectionRequest struct {
 	//
 	// off
 	AutoConfirmIPList *string `json:"AutoConfirmIPList,omitempty" xml:"AutoConfirmIPList,omitempty"`
-	// The IP convergence status.
+	// The origin fetch convergence switch.
 	//
-	// 	- on
+	// - on: Enable origin fetch convergence.
 	//
-	// 	- off
+	// - off: Disable origin fetch convergence.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type UpdateOriginProtectionRequest struct {
 	//
 	// on
 	OriginConverge *string `json:"OriginConverge,omitempty" xml:"OriginConverge,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	// The site ID. Call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API to get it.
 	//
 	// This parameter is required.
 	//

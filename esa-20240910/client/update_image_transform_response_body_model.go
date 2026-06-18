@@ -14,7 +14,7 @@ type iUpdateImageTransformResponseBody interface {
 }
 
 type UpdateImageTransformResponseBody struct {
-	// Request ID.
+	// The unique ID of the request.
 	//
 	// example:
 	//

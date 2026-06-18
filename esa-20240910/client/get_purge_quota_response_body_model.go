@@ -27,7 +27,12 @@ type GetPurgeQuotaResponseBody struct {
 	// example:
 	//
 	// 100000
-	Quota      *string `json:"Quota,omitempty" xml:"Quota,omitempty"`
+	Quota *string `json:"Quota,omitempty" xml:"Quota,omitempty"`
+	// The total quota available in a 30-day period. A value of 0 indicates that this quota is not configured.
+	//
+	// example:
+	//
+	// 200000
 	Quota30Day *string `json:"Quota30Day,omitempty" xml:"Quota30Day,omitempty"`
 	// The request ID.
 	//
@@ -35,12 +40,17 @@ type GetPurgeQuotaResponseBody struct {
 	//
 	// 15C66C7B-671A-4297-9187-2C4477247A74
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The quota usage.
+	// The used quota.
 	//
 	// example:
 	//
 	// 10
-	Usage      *string `json:"Usage,omitempty" xml:"Usage,omitempty"`
+	Usage *string `json:"Usage,omitempty" xml:"Usage,omitempty"`
+	// The quota used within the 30-day period.
+	//
+	// example:
+	//
+	// 20
 	Usage30Day *string `json:"Usage30Day,omitempty" xml:"Usage30Day,omitempty"`
 }
 

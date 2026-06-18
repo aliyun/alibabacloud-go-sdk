@@ -26,7 +26,7 @@ type iUpdateHttpIncomingRequestHeaderModificationRuleRequest interface {
 }
 
 type UpdateHttpIncomingRequestHeaderModificationRuleRequest struct {
-	// The configuration ID. You can call the ListHttpIncomingRequestHeaderModificationRules operation to query the ID.
+	// The ID of the configuration. To obtain this ID, call the ListHttpIncomingRequestHeaderModificationRules API.
 	//
 	// This parameter is required.
 	//
@@ -34,41 +34,41 @@ type UpdateHttpIncomingRequestHeaderModificationRuleRequest struct {
 	//
 	// 419717024278528
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// The configurations of modifying request headers. You can add, delete, or modify a request header.
+	// An array of objects that defines the request header modifications. Supported operations include `add`, `del`, and `modify`.
 	RequestHeaderModification []*UpdateHttpIncomingRequestHeaderModificationRuleRequestRequestHeaderModification `json:"RequestHeaderModification,omitempty" xml:"RequestHeaderModification,omitempty" type:"Repeated"`
-	// The content of the rule. A conditional expression is used to match a user request. You do not need to set this parameter when you add global configurations. Use cases:
+	// The rule expression, a conditional expression that matches user requests. This parameter is not required for a global configuration. You can use this parameter in two ways:
 	//
-	// 	- true: Match all incoming requests.
+	// - To match all incoming requests, set this value to `true`.
 	//
-	// 	- Set the value to a custom expression, for example, (http.host eq "video.example.com"): Match the specified request.
+	// - To match specific requests, provide a custom expression, such as `(http.host eq "video.example.com")`.
 	//
 	// example:
 	//
 	// (http.host eq "video.example.com")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// Specifies whether to enable the rule. Valid values: You do not need to set this parameter when you add global configurations. Valid values:
+	// The status of the rule. This parameter is not required for a global configuration. Valid values:
 	//
-	// 	- on
+	// - `on`: The rule is enabled.
 	//
-	// 	- off
+	// - `off`: The rule is disabled.
 	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	// The rule name. You do not need to set this parameter when you add global configurations.
+	// The name of the rule. This parameter is not required for a global configuration.
 	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The order in which the rule is executed. A smaller value gives priority to the rule.
+	// Specifies the rule\\"s priority. Rules with a lower value are executed first.
 	//
 	// example:
 	//
 	// 1
 	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
+	// The ID of the site. To obtain this ID, call the [ListSites](~~ListSites~~) API.
 	//
 	// This parameter is required.
 	//
@@ -171,13 +171,13 @@ type UpdateHttpIncomingRequestHeaderModificationRuleRequestRequestHeaderModifica
 	//
 	// headerName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The action. Valid values:
+	// The operation to perform on the request header. Valid values:
 	//
-	// 	- add: adds a response header.
+	// - `add`: Adds a request header.
 	//
-	// 	- del: deletes a response header.
+	// - `del`: Deletes a request header.
 	//
-	// 	- modify: modifies a response header.
+	// - `modify`: Modifies an existing request header.
 	//
 	// This parameter is required.
 	//
@@ -185,11 +185,11 @@ type UpdateHttpIncomingRequestHeaderModificationRuleRequestRequestHeaderModifica
 	//
 	// add
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
-	// The value type. Valid values:
+	// The type of value. Valid values:
 	//
-	// 	- static
+	// - `static`: The value is a fixed, literal string.
 	//
-	// 	- dynamic
+	// - `dynamic`: The value is generated dynamically at runtime.
 	//
 	// example:
 	//

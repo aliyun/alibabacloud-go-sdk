@@ -22,9 +22,9 @@ type iSetOriginClientCertificateHostnamesResponseBody interface {
 }
 
 type SetOriginClientCertificateHostnamesResponseBody struct {
-	// The domain name.
+	// The hostnames associated with the certificate.
 	Hostnames []*string `json:"Hostnames,omitempty" xml:"Hostnames,omitempty" type:"Repeated"`
-	// The ID of the client certificate.
+	// The ID of the certificate.
 	//
 	// example:
 	//
@@ -36,13 +36,13 @@ type SetOriginClientCertificateHostnamesResponseBody struct {
 	//
 	// 15C66C7B-671A-4297-9187-2C4477247A74
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The website ID.
+	// The ID of the site.
 	//
 	// example:
 	//
 	// 123456789****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The website name.
+	// The name of the site.
 	//
 	// example:
 	//

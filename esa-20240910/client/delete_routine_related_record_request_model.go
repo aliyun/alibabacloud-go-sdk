@@ -26,7 +26,7 @@ type DeleteRoutineRelatedRecordRequest struct {
 	//
 	// example:
 	//
-	// DeleteRoutineRelatedRecord
+	// test-xxx
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The record ID.
 	//

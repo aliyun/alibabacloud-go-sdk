@@ -26,7 +26,7 @@ type iListOriginCaCertificatesResponseBody interface {
 }
 
 type ListOriginCaCertificatesResponseBody struct {
-	// Page number, default is 1 if not provided.
+	// The current page number.
 	//
 	// example:
 	//
@@ -44,21 +44,21 @@ type ListOriginCaCertificatesResponseBody struct {
 	//
 	// 34DCBC8A-****-****-****-6DAA11D7DDBD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Details of the certificates.
+	// An array of certificate objects that match the query.
 	Result []*ListOriginCaCertificatesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	// The website ID.
+	// The site ID.
 	//
 	// example:
 	//
 	// 123456789****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The website name.
+	// The site name.
 	//
 	// example:
 	//
 	// example.com
 	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
-	// The total number of entries.
+	// The total number of certificates that match the query.
 	//
 	// example:
 	//
@@ -151,7 +151,7 @@ func (s *ListOriginCaCertificatesResponseBody) Validate() error {
 }
 
 type ListOriginCaCertificatesResponseBodyResult struct {
-	// The Common Name of the certificate.
+	// The common name of the certificate.
 	//
 	// example:
 	//
@@ -175,7 +175,7 @@ type ListOriginCaCertificatesResponseBodyResult struct {
 	//
 	// babaabcd****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The certificate authority (CA) that issued the certificate.
+	// The issuer of the certificate.
 	//
 	// example:
 	//
@@ -187,19 +187,19 @@ type ListOriginCaCertificatesResponseBodyResult struct {
 	//
 	// yourCertName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The time when the certificate expires.
+	// The expiration date of the certificate.
 	//
 	// example:
 	//
 	// 2024-03-31 02:08:00
 	NotAfter *string `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
-	// The time when the certificate takes effect.
+	// The validity start date of the certificate.
 	//
 	// example:
 	//
 	// 2023-11-26T16:00:00Z
 	NotBefore *string `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
-	// The public-key algorithm of the certificate.
+	// The public key algorithm of the certificate.
 	//
 	// example:
 	//
@@ -231,13 +231,11 @@ type ListOriginCaCertificatesResponseBodyResult struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The certificate type.
 	//
-	// 	- upload: custom certificate that you upload
-	//
 	// example:
 	//
 	// upload
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The time when the certificate was updated.
+	// The time when the certificate was last updated.
 	//
 	// example:
 	//

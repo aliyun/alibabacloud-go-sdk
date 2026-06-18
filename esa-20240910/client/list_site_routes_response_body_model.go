@@ -24,15 +24,15 @@ type iListSiteRoutesResponseBody interface {
 }
 
 type ListSiteRoutesResponseBody struct {
-	// The returned configurations.
+	// The list of returned configs.
 	Configs []*ListSiteRoutesResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
-	// The page number of the returned page.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries to return on each page.
 	//
 	// example:
 	//
@@ -44,13 +44,13 @@ type ListSiteRoutesResponseBody struct {
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE73368
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 16
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The total number of pages returned.
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -134,11 +134,11 @@ func (s *ListSiteRoutesResponseBody) Validate() error {
 }
 
 type ListSiteRoutesResponseBodyConfigs struct {
-	// The bypass mode. Valid values:
+	// Whether bypass mode is enabled. Valid values:
 	//
-	// 	- on
+	// - on: Enabled.
 	//
-	// 	- off
+	// - off: Disabled.
 	//
 	// example:
 	//
@@ -150,32 +150,41 @@ type ListSiteRoutesResponseBodyConfigs struct {
 	//
 	// 35281609698****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// The configuration type to query. Valid values:
+	// The configuration type. Valid values:
 	//
-	// 	- global: global configurations.
+	// - global: Global configuration.
 	//
-	// 	- rule: queries rule configurations.
+	// - rule: Rule-based configuration.
 	//
 	// example:
 	//
 	// global
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
-	Fallback   *string `json:"Fallback,omitempty" xml:"Fallback,omitempty"`
-	// The configuration mode. Specifies whether to check the image used by the instance supports hot migration. Valid values:
+	// Whether CDN fallback is enabled. Valid values:
 	//
-	// 	- simple: Simple Mode
+	// - on: Enabled.
 	//
-	// 	- custom: Custom Mode
+	// - off: Disabled.
+	//
+	// example:
+	//
+	// on
+	Fallback *string `json:"Fallback,omitempty" xml:"Fallback,omitempty"`
+	// The configuration mode. Valid values:
+	//
+	// - simple: Simple mode.
+	//
+	// - custom: Custom mode.
 	//
 	// example:
 	//
 	// simple
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// The route switch. Valid values:
+	// Whether the route is enabled. Valid values:
 	//
-	// 	- on
+	// - on: Enabled.
 	//
-	// 	- off
+	// - off: Disabled.
 	//
 	// example:
 	//
@@ -187,7 +196,7 @@ type ListSiteRoutesResponseBodyConfigs struct {
 	//
 	// test_route
 	RouteName *string `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
-	// The function name.
+	// The routine name.
 	//
 	// example:
 	//
@@ -199,19 +208,24 @@ type ListSiteRoutesResponseBodyConfigs struct {
 	//
 	// (http.host eq \\"video.example.com\\")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// The order in which the rule is executed.
+	// The rule execution sequence.
 	//
 	// example:
 	//
 	// 1
 	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	// The version number of the website.
+	// The site version.
 	//
 	// example:
 	//
 	// 1
-	SiteVersion *int32  `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
-	Timeout     *string `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	// The ER timeout.
+	//
+	// example:
+	//
+	// 60
+	Timeout *string `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 }
 
 func (s ListSiteRoutesResponseBodyConfigs) String() string {

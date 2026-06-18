@@ -28,7 +28,7 @@ type GetRoutineStagingCodeUploadInfoRequest struct {
 	//
 	// example:
 	//
-	// GetRoutineStagingCodeUploadInfo
+	// test-routine1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

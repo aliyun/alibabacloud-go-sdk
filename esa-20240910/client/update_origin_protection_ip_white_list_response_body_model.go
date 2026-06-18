@@ -14,7 +14,7 @@ type iUpdateOriginProtectionIpWhiteListResponseBody interface {
 }
 
 type UpdateOriginProtectionIpWhiteListResponseBody struct {
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//

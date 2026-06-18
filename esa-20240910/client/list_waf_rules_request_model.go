@@ -26,23 +26,35 @@ type iListWafRulesRequest interface {
 }
 
 type ListWafRulesRequest struct {
-	// Query page number, used for pagination.
+	// The number of the page to return.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Query page size, used for pagination.
+	// The number of items to return per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// WAF rule type. Values:
+	// The WAF rule execution phase. Valid values are:
 	//
-	// - http_anti_scan: Scan protection
+	// - `http_whitelist`: whitelist rule
 	//
-	// - http_bot: Bots
+	// - `http_custom`: custom rule
+	//
+	// - `http_managed`: managed rule
+	//
+	// - `http_anti_scan`: scan protection rule
+	//
+	// - `http_ratelimit`: rate limiting rule
+	//
+	// - `ip_access_rule`: IP access rule
+	//
+	// - `http_bot`: Advanced bots
+	//
+	// - `http_security_level_rule`: security rule
 	//
 	// This parameter is required.
 	//
@@ -50,14 +62,19 @@ type ListWafRulesRequest struct {
 	//
 	// http_custom
 	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	// Query filter conditions.
+	// Query filters.
 	//
 	// example:
 	//
 	// http_custom
 	QueryArgs *ListWafRulesRequestQueryArgs `json:"QueryArgs,omitempty" xml:"QueryArgs,omitempty" type:"Struct"`
-	RulesetId *int64                        `json:"RulesetId,omitempty" xml:"RulesetId,omitempty"`
-	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+	// The ID of the WAF ruleset. You can obtain this ID by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2878359.html) operation.
+	//
+	// example:
+	//
+	// 10000001
+	RulesetId *int64 `json:"RulesetId,omitempty" xml:"RulesetId,omitempty"`
+	// The site ID. You can obtain this ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -65,7 +82,7 @@ type ListWafRulesRequest struct {
 	//
 	// 1
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// Site version.
+	// The site configuration version. For sites with configuration version management enabled, this parameter specifies the version to use. Defaults to 0.
 	//
 	// example:
 	//
@@ -154,43 +171,43 @@ func (s *ListWafRulesRequest) Validate() error {
 }
 
 type ListWafRulesRequestQueryArgs struct {
-	// Fuzzy search for values in IP access control.
+	// Performs a partial-match search for a value in an IP access control rule.
 	//
 	// example:
 	//
 	// 10.0.0.1
 	ConfigValueLike *string `json:"ConfigValueLike,omitempty" xml:"ConfigValueLike,omitempty"`
-	// Whether to reverse the sorting result.
+	// Specifies whether to sort the results in descending order.
 	//
 	// example:
 	//
 	// true
 	Desc *bool `json:"Desc,omitempty" xml:"Desc,omitempty"`
-	// Exact query for WAF rule ID.
+	// Filters results by the exact WAF rule ID.
 	//
 	// example:
 	//
 	// 20000001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Fuzzy query for WAF rule ID or name.
+	// Performs a partial-match search on the WAF rule ID or name.
 	//
 	// example:
 	//
 	// example
 	IdNameLike *string `json:"IdNameLike,omitempty" xml:"IdNameLike,omitempty"`
-	// Fuzzy query for WAF rule name.
+	// Performs a partial-match search on the WAF rule name.
 	//
 	// example:
 	//
 	// example
 	NameLike *string `json:"NameLike,omitempty" xml:"NameLike,omitempty"`
-	// Sort the returned list by the specified column.
+	// Sorts the results by the specified field.
 	//
 	// example:
 	//
 	// position
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	// Exact query for WAF rule status.
+	// Filters results by the exact WAF rule status.
 	//
 	// example:
 	//

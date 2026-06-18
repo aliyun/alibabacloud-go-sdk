@@ -46,7 +46,7 @@ type iCreateWaitingRoomShrinkRequest interface {
 }
 
 type CreateWaitingRoomShrinkRequest struct {
-	// The name of the custom cookie.
+	// The custom cookie name.
 	//
 	// This parameter is required.
 	//
@@ -54,29 +54,33 @@ type CreateWaitingRoomShrinkRequest struct {
 	//
 	// __aliwaitingroom_example
 	CookieName *string `json:"CookieName,omitempty" xml:"CookieName,omitempty"`
-	// The content of the custom waiting room page. You must specify this parameter if you set WaitingRoomType to custom. The content must be Base64-encoded.
+	// The custom waiting room page content. This parameter is required when the waiting room type is custom. The content must be Base64-encoded.
 	//
 	// example:
 	//
-	// Hello%20world!
+	// SGVsbG8gd29ybGQ=
 	CustomPageHtml *string `json:"CustomPageHtml,omitempty" xml:"CustomPageHtml,omitempty"`
 	// The description of the waiting room.
+	//
+	// example:
+	//
+	// 测试
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Specifies whether to disable session renewal. Valid values:
+	// Disable session renewal. Valid values:
 	//
-	// 	- on
+	// - **on**: enabled.
 	//
-	// 	- off
+	// - **off**: disabled.
 	//
 	// example:
 	//
 	// on
 	DisableSessionRenewalEnable *string `json:"DisableSessionRenewalEnable,omitempty" xml:"DisableSessionRenewalEnable,omitempty"`
-	// Specifies whether to enable the waiting room. Valid values:
+	// The waiting room switch. Valid values:
 	//
-	// 	- on
+	// - **on**: enabled.
 	//
-	// 	- off
+	// - **off**: disabled.
 	//
 	// This parameter is required.
 	//
@@ -84,27 +88,27 @@ type CreateWaitingRoomShrinkRequest struct {
 	//
 	// on
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The hostname and path.
+	// The hostnames and paths.
 	//
 	// This parameter is required.
 	HostNameAndPathShrink *string `json:"HostNameAndPath,omitempty" xml:"HostNameAndPath,omitempty"`
-	// Specifies whether to enable JSON response. If you set this parameter to on, a JSON body is returned for requests to the waiting room with the header Accept: application/json. Valid values:
+	// JSON response. After this feature is enabled, a JSON response is returned if the Accept request header contains "application/json". Valid values:
 	//
-	// 	- on
+	// - **on**: enabled.
 	//
-	// 	- off
+	// - **off**: disabled.
 	//
 	// example:
 	//
 	// on
 	JsonResponseEnable *string `json:"JsonResponseEnable,omitempty" xml:"JsonResponseEnable,omitempty"`
-	// The language of the waiting room page. You must specify this parameter if you set WaitingRoomType to default. Valid values:
+	// The language of the waiting room page. This parameter is required when the waiting room type is default. Valid values:
 	//
-	// 	- enus: English.
+	// - **enus**: English.
 	//
-	// 	- zhcn: Simplified Chinese.
+	// - **zhcn**: Simplified Chinese.
 	//
-	// 	- zhhk: Traditional Chinese.
+	// - **zhhk**: Traditional Chinese.
 	//
 	// example:
 	//
@@ -118,7 +122,7 @@ type CreateWaitingRoomShrinkRequest struct {
 	//
 	// waitingroom_example
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The maximum number of new users per minute.
+	// The number of new users per minute.
 	//
 	// This parameter is required.
 	//
@@ -126,11 +130,11 @@ type CreateWaitingRoomShrinkRequest struct {
 	//
 	// 200
 	NewUsersPerMinute *string `json:"NewUsersPerMinute,omitempty" xml:"NewUsersPerMinute,omitempty"`
-	// Specifies whether to queue all requests. Valid values:
+	// Queue all. Valid values:
 	//
-	// 	- on
+	// - **on**: enabled.
 	//
-	// 	- off
+	// - **off**: disabled.
 	//
 	// example:
 	//
@@ -138,13 +142,13 @@ type CreateWaitingRoomShrinkRequest struct {
 	QueueAllEnable *string `json:"QueueAllEnable,omitempty" xml:"QueueAllEnable,omitempty"`
 	// The queuing method. Valid values:
 	//
-	// 	- random: Users gain access to the origin randomly, regardless of the arrival time.
+	// - **random**: random.
 	//
-	// 	- fifo: Users gain access to the origin in order of arrival.
+	// - **fifo**: first-in, first-out.
 	//
-	// 	- passthrough: Users pass through the waiting room and go straight to the origin.
+	// - **passthrough**: passthrough.
 	//
-	// 	- reject-all: Users are blocked from reaching the origin.
+	// - **reject-all**: reject all.
 	//
 	// This parameter is required.
 	//
@@ -152,13 +156,13 @@ type CreateWaitingRoomShrinkRequest struct {
 	//
 	// fifo
 	QueuingMethod *string `json:"QueuingMethod,omitempty" xml:"QueuingMethod,omitempty"`
-	// The HTTP status code to return while a user is in the queue. Valid values:
+	// The waiting room status code. Valid values:
 	//
-	// 	- 200
+	// - **200**
 	//
-	// 	- 202
+	// - **202**
 	//
-	// 	- 429
+	// - **429**
 	//
 	// This parameter is required.
 	//
@@ -166,7 +170,7 @@ type CreateWaitingRoomShrinkRequest struct {
 	//
 	// 200
 	QueuingStatusCode *string `json:"QueuingStatusCode,omitempty" xml:"QueuingStatusCode,omitempty"`
-	// The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
+	// The session duration, in minutes.
 	//
 	// This parameter is required.
 	//
@@ -174,7 +178,7 @@ type CreateWaitingRoomShrinkRequest struct {
 	//
 	// 5
 	SessionDuration *string `json:"SessionDuration,omitempty" xml:"SessionDuration,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	// The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
 	//
 	// This parameter is required.
 	//
@@ -182,7 +186,7 @@ type CreateWaitingRoomShrinkRequest struct {
 	//
 	// 1234567890123
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The maximum number of active users.
+	// The total number of active users.
 	//
 	// This parameter is required.
 	//
@@ -192,9 +196,9 @@ type CreateWaitingRoomShrinkRequest struct {
 	TotalActiveUsers *string `json:"TotalActiveUsers,omitempty" xml:"TotalActiveUsers,omitempty"`
 	// The type of the waiting room. Valid values:
 	//
-	// 	- default
+	// - **default**: default type.
 	//
-	// 	- custom
+	// - **custom**: custom type.
 	//
 	// This parameter is required.
 	//

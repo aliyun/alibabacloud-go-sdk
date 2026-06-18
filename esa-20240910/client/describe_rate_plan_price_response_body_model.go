@@ -16,8 +16,9 @@ type iDescribeRatePlanPriceResponseBody interface {
 }
 
 type DescribeRatePlanPriceResponseBody struct {
+	// The pricing information.
 	PriceModel *DescribeRatePlanPriceResponseBodyPriceModel `json:"PriceModel,omitempty" xml:"PriceModel,omitempty" type:"Struct"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//

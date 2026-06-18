@@ -30,43 +30,43 @@ type iCreateRoutineRouteRequest interface {
 }
 
 type CreateRoutineRouteRequest struct {
-	// Bypass mode Valid values:
+	// The bypass mode. Valid values:
 	//
-	// 	- on
+	// - on: enabled.
 	//
-	// 	- off
+	// - off: disabled.
 	//
 	// example:
 	//
 	// on
 	Bypass *string `json:"Bypass,omitempty" xml:"Bypass,omitempty"`
-	// The exception origin fetch switch. After you turn on this switch, if a function exception occurs, such as CPU usage exceeding the upper limit, requests are sent back to the origin. Valid values:
+	// The fallback-to-origin switch. When enabled, if the function encounters an exception such as CPU usage exceeding the limit, the request is forwarded to the origin server. Valid values:
 	//
-	// 	- on
+	// - on: enabled.
 	//
-	// 	- off
+	// - off: disabled.
 	//
 	// example:
 	//
 	// on
 	Fallback *string `json:"Fallback,omitempty" xml:"Fallback,omitempty"`
-	// The routing switch. Valid values:
+	// The route switch. Valid values:
 	//
-	// 	- on
+	// - on: enabled.
 	//
-	// 	- off
+	// - off: disabled.
 	//
 	// example:
 	//
 	// on
 	RouteEnable *string `json:"RouteEnable,omitempty" xml:"RouteEnable,omitempty"`
-	// The name of the route.
+	// The route name.
 	//
 	// example:
 	//
 	// test_route
 	RouteName *string `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
-	// The edge function name.
+	// The name of the edge function routine.
 	//
 	// This parameter is required.
 	//
@@ -74,19 +74,19 @@ type CreateRoutineRouteRequest struct {
 	//
 	// test-routine1
 	RoutineName *string `json:"RoutineName,omitempty" xml:"RoutineName,omitempty"`
-	// The content of the rule.
+	// The rule content.
 	//
 	// example:
 	//
 	// (http.host eq \\"video.example.com\\")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// The order in which the rule is executed.
+	// The rule execution sequence.
 	//
 	// example:
 	//
 	// 1
 	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	// The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
 	//
 	// This parameter is required.
 	//
@@ -94,6 +94,8 @@ type CreateRoutineRouteRequest struct {
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The edge routine timeout period. Valid values: 5 to 60. Unit: seconds.
+	//
 	// example:
 	//
 	// 5

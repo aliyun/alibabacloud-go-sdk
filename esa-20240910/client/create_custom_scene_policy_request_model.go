@@ -24,9 +24,9 @@ type iCreateCustomScenePolicyRequest interface {
 }
 
 type CreateCustomScenePolicyRequest struct {
-	// The time when the policy expires.
+	// The policy end time.
 	//
-	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The time must be in UTC and in ISO 8601 format: `yyyy-MM-ddTHH:mm:ssZ`.
 	//
 	// This parameter is required.
 	//
@@ -42,16 +42,23 @@ type CreateCustomScenePolicyRequest struct {
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The IDs of the websites that you want to associate with the policy. Separate multiple IDs with commas (,).
+	// The IDs of the sites to associate with the policy. Separate multiple site IDs with commas.
+	//
+	// > This parameter is deprecated. Use `SiteIds` instead. If `SiteIds` is specified, the value of this parameter is ignored. To prevent ambiguity, specify a value for either `SiteIds` or `Objects`.
 	//
 	// example:
 	//
-	// 7096621098****
+	// 7096621098****,7096621099****
 	Objects *string `json:"Objects,omitempty" xml:"Objects,omitempty"`
-	SiteIds *string `json:"SiteIds,omitempty" xml:"SiteIds,omitempty"`
-	// The time when the policy takes effect.
+	// The IDs of the sites to associate with the policy. Separate multiple site IDs with commas.
 	//
-	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// example:
+	//
+	// 7096621098****,7096621099****
+	SiteIds *string `json:"SiteIds,omitempty" xml:"SiteIds,omitempty"`
+	// The policy start time.
+	//
+	// The time must be in UTC and in ISO 8601 format: `yyyy-MM-ddTHH:mm:ssZ`.
 	//
 	// This parameter is required.
 	//
@@ -59,9 +66,9 @@ type CreateCustomScenePolicyRequest struct {
 	//
 	// 2021-11-07T17:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The name of the policy template. Valid value:
+	// The template name. Valid value:
 	//
-	// 	- **promotion**: major events.
+	// - **promotion**: a policy for major events.
 	//
 	// This parameter is required.
 	//

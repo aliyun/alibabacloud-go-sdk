@@ -38,15 +38,15 @@ type iCreateUserDeliveryTaskShrinkRequest interface {
 }
 
 type CreateUserDeliveryTaskShrinkRequest struct {
-	// The log category. Valid values:
+	// The real-time log type. Valid values:
 	//
-	// 	- dcdn_log_access_l1 (default): access logs.
+	// - **dcdn_log_access_l1*	- (default): access log.
 	//
-	// 	- dcdn_log_er: Edge Routine logs.
+	// - **dcdn_log_er**: edge function log.
 	//
-	// 	- dcdn_log_waf: firewall logs.
+	// - **dcdn_log_waf**: WAF log.
 	//
-	// 	- dcdn_log_ipa: TCP/UDP proxy logs.
+	// - **dcdn_log_ipa**: Layer-4 acceleration log.
 	//
 	// This parameter is required.
 	//
@@ -56,27 +56,27 @@ type CreateUserDeliveryTaskShrinkRequest struct {
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
 	// The data center. Valid values:
 	//
-	// 	- cn: the Chinese mainland.
+	// - **cn**: Chinese mainland.
 	//
-	// 	- sg: outside the Chinese mainland.
+	// - **sg**: global (excluding the Chinese mainland).
 	//
 	// example:
 	//
 	// cn
 	DataCenter *string `json:"DataCenter,omitempty" xml:"DataCenter,omitempty"`
-	// The destination of the delivery. Valid values:
+	// The log delivery destination. Valid values:
 	//
-	// 1.  sls: Alibaba Cloud SLS.
+	// - **sls**: Log Service (SLS).
 	//
-	// 2.  http: HTTP server.
+	// - **http**: an HTTP service.
 	//
-	// 3.  aws3: Amazon S3.
+	// - **aws3**: Amazon S3.
 	//
-	// 4.  oss: Alibaba Cloud OSS.
+	// - **oss**: Object Storage Service (OSS).
 	//
-	// 5.  kafka: Kafka.
+	// - **kafka**: Kafka.
 	//
-	// 6.  aws3cmpt: S3-compatible storage service.
+	// - **aws3cmpt**: an S3-compatible service.
 	//
 	// This parameter is required.
 	//
@@ -85,13 +85,13 @@ type CreateUserDeliveryTaskShrinkRequest struct {
 	// sls
 	DeliveryType *string `json:"DeliveryType,omitempty" xml:"DeliveryType,omitempty"`
 	Details      *string `json:"Details,omitempty" xml:"Details,omitempty"`
-	// The discard rate. Default value: 0.
+	// The log discard rate. Defaults to 0.
 	//
 	// example:
 	//
 	// 0
 	DiscardRate *float32 `json:"DiscardRate,omitempty" xml:"DiscardRate,omitempty"`
-	// The log field. If you specify multiple fields, separate them with commas (,).
+	// The fields to be delivered. Separate multiple fields with a comma.
 	//
 	// This parameter is required.
 	//
@@ -100,15 +100,15 @@ type CreateUserDeliveryTaskShrinkRequest struct {
 	// user_agent,ip_address,ip_port
 	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
 	FilterVer *string `json:"FilterVer,omitempty" xml:"FilterVer,omitempty"`
-	// The configurations for delivery to an HTTP server.
+	// Configuration for delivering logs to an HTTP or HTTPS endpoint.
 	HttpDeliveryShrink *string `json:"HttpDelivery,omitempty" xml:"HttpDelivery,omitempty"`
-	// The configurations for delivery to Kafka.
+	// Configuration for delivering logs to Kafka.
 	KafkaDeliveryShrink *string `json:"KafkaDelivery,omitempty" xml:"KafkaDelivery,omitempty"`
-	// The configurations for delivery to OSS.
+	// Configuration for delivering logs to Object Storage Service (OSS).
 	OssDeliveryShrink *string `json:"OssDelivery,omitempty" xml:"OssDelivery,omitempty"`
-	// The configurations for delivery to Amazon S3 or an S3-compatible service.
+	// Configuration for delivering logs to Amazon S3 or an S3-compatible service.
 	S3DeliveryShrink *string `json:"S3Delivery,omitempty" xml:"S3Delivery,omitempty"`
-	// The configurations for delivery to SLS.
+	// Configuration for delivering logs to Log Service (SLS).
 	SlsDeliveryShrink *string `json:"SlsDelivery,omitempty" xml:"SlsDelivery,omitempty"`
 	// The task name.
 	//

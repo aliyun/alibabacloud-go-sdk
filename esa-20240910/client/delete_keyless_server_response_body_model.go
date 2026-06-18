@@ -20,20 +20,26 @@ type iDeleteKeylessServerResponseBody interface {
 }
 
 type DeleteKeylessServerResponseBody struct {
-	// Keyless server ID。
+	// The keyless server ID.
 	//
 	// example:
 	//
 	// baba39055622c008b90285a8838e****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// F61CDR30-E83C-4FDA-BF73-9A94CDD44229
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The site ID.
+	//
 	// example:
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The site name.
+	//
 	// example:
 	//
 	// example.com

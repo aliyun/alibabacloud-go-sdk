@@ -14,7 +14,7 @@ type iDeactivateVersionManagementRequest interface {
 }
 
 type DeactivateVersionManagementRequest struct {
-	// The website ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
+	// The site ID. You can call the [ListSites](~~ListSites~~) operation to obtain the site ID.
 	//
 	// This parameter is required.
 	//

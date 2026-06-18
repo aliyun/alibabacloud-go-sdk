@@ -28,7 +28,7 @@ type ListSitesResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of websites per page.
+	// The number of sites to return on each page.
 	//
 	// example:
 	//
@@ -40,9 +40,9 @@ type ListSitesResponseBody struct {
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE73368
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The queried websites.
+	// A list of sites.
 	Sites []*ListSitesResponseBodySites `json:"Sites,omitempty" xml:"Sites,omitempty" type:"Repeated"`
-	// The total number of websites.
+	// The total count of sites.
 	//
 	// example:
 	//
@@ -117,60 +117,75 @@ func (s *ListSitesResponseBody) Validate() error {
 }
 
 type ListSitesResponseBodySites struct {
-	// The DNS setup for the website. Valid values:
+	// The access type. Valid values:
 	//
-	// 	- **NS**
+	// - **NS**: The site connects via NS.
 	//
-	// 	- **CNAME**
+	// - **CNAME**: The site connects via a CNAME record.
 	//
 	// example:
 	//
 	// NS
 	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
-	// The CNAME of the website domain. If you use CNAME setup when you add your website to ESA, the value is the CNAME that you configured then.
+	// The CNAME suffix for the site. This suffix is required for CNAME record configuration.
 	//
 	// example:
 	//
 	// example.cname.com
 	CnameZone *string `json:"CnameZone,omitempty" xml:"CnameZone,omitempty"`
-	// The service location for the website. Valid values:
+	// The acceleration region. Valid values:
 	//
-	// 	- **domestic**: the Chinese mainland
+	// - **domestic**: Chinese mainland only.
 	//
-	// 	- **global**: global
+	// - **global**: Global.
 	//
-	// 	- **overseas**: outside the Chinese mainland
+	// - **overseas**: Global (excluding Chinese mainland).
 	//
 	// example:
 	//
 	// domestic
 	Coverage *string `json:"Coverage,omitempty" xml:"Coverage,omitempty"`
-	// The time when the website was added. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The time (UTC) when the site was created, in `yyyy-MM-ddTHH:mm:ssZ` format.
 	//
 	// example:
 	//
 	// 2023-12-24T02:01:11Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the plan associated with the website.
+	// The ID of the plan instance associated with the site.
 	//
 	// example:
 	//
 	// onBvtlmIyeXLbiDw81F9
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The nameservers assigned to the website domain, which are separated by commas (,).
+	// The list of name servers (NS) assigned to the site. Multiple name servers are separated by commas.
 	//
 	// example:
 	//
 	// male1-1.ialicdn.com,female1-1.ialicdn.com
 	NameServerList *string `json:"NameServerList,omitempty" xml:"NameServerList,omitempty"`
-	OfflineReason  *string `json:"OfflineReason,omitempty" xml:"OfflineReason,omitempty"`
-	// The plan name.
+	// The reason the site was disabled. Valid values:
+	//
+	// - **expiration_ arrears**: The plan has expired or payment is overdue.
+	//
+	// - **internally_disabled**: Disabled by the system.
+	//
+	// - **missing_icp**: The domain name is missing an ICP filing.
+	//
+	// - **content_violation**: The site content violates regulations.
+	//
+	// - **proactively_disabled**: The user disabled the site, or a usage cap was reached.
+	//
+	// example:
+	//
+	// expiration_ arrears
+	OfflineReason *string `json:"OfflineReason,omitempty" xml:"OfflineReason,omitempty"`
+	// The name of the plan.
 	//
 	// example:
 	//
 	// plan-168656498****
 	PlanName *string `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
-	// The plan associated with the website.
+	// The name of the plan specification.
 	//
 	// example:
 	//
@@ -182,51 +197,51 @@ type ListSitesResponseBodySites struct {
 	//
 	// rg-aek26g6i6se6pna
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The website ID.
+	// The ID of the site.
 	//
 	// example:
 	//
 	// 123456789****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The website name.
+	// The domain name.
 	//
 	// example:
 	//
 	// example.com
 	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
-	// The website status. Valid values:
+	// The status. Valid values:
 	//
-	// 	- **pending**: The website is to be configured.
+	// - **pending**: The site is awaiting configuration.
 	//
-	// 	- **active**: The website is active.
+	// - **active**: The site is active.
 	//
-	// 	- **offline**: The website is suspended.
+	// - **offline**: The site is offline.
 	//
-	// 	- **moved**: The website has been added and verified by another Alibaba Cloud account.
+	// - **moved**: The site has moved to another instance.
 	//
 	// example:
 	//
 	// pending
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tags of the website.
+	// The tags associated with the site.
 	//
 	// example:
 	//
 	// {"tag1":"value1"}
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The time when the website was updated. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The time (UTC) when the site was last updated, in `yyyy-MM-ddTHH:mm:ssZ` format.
 	//
 	// example:
 	//
 	// 2023-12-24T02:01:11Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The code that is used to verify the website domain ownership. As part of the verification TXT record, this parameter is returned for websites that use CNAME setup.
+	// The TXT verification code for site ownership. For sites that connect via CNAME, you must configure this code.
 	//
 	// example:
 	//
 	// verify_d516cb3740f81f0cef77d162edd1****
 	VerifyCode *string `json:"VerifyCode,omitempty" xml:"VerifyCode,omitempty"`
-	// The website visit time is represented in the ISO 8601 date format using UTC time, formatted as yyyy-MM-ddTHH:mm:ssZ.
+	// The time (UTC) when the site was last accessed, in `yyyy-MM-ddTHH:mm:ssZ` format.
 	//
 	// example:
 	//

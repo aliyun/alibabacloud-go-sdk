@@ -28,18 +28,21 @@ type iWafSiteSettings interface {
 }
 
 type WafSiteSettings struct {
-	// Adds a bot protection header.
+	// Configuration for adding bot protection headers.
 	AddBotProtectionHeaders *WafSiteSettingsAddBotProtectionHeaders `json:"AddBotProtectionHeaders,omitempty" xml:"AddBotProtectionHeaders,omitempty" type:"Struct"`
-	// Adds security request header.
-	AddSecurityHeaders       *WafSiteSettingsAddSecurityHeaders       `json:"AddSecurityHeaders,omitempty" xml:"AddSecurityHeaders,omitempty" type:"Struct"`
+	// Configuration for adding security headers.
+	AddSecurityHeaders *WafSiteSettingsAddSecurityHeaders `json:"AddSecurityHeaders,omitempty" xml:"AddSecurityHeaders,omitempty" type:"Struct"`
+	// The bandwidth abuse protection settings.
 	BandwidthAbuseProtection *WafSiteSettingsBandwidthAbuseProtection `json:"BandwidthAbuseProtection,omitempty" xml:"BandwidthAbuseProtection,omitempty" type:"Struct"`
-	// Bot management.
+	// The bot management settings.
 	BotManagement *WafSiteSettingsBotManagement `json:"BotManagement,omitempty" xml:"BotManagement,omitempty" type:"Struct"`
-	// Identifies the IP address of the client.
-	ClientIpIdentifier    *WafSiteSettingsClientIpIdentifier    `json:"ClientIpIdentifier,omitempty" xml:"ClientIpIdentifier,omitempty" type:"Struct"`
+	// Configuration for client IP identification.
+	ClientIpIdentifier *WafSiteSettingsClientIpIdentifier `json:"ClientIpIdentifier,omitempty" xml:"ClientIpIdentifier,omitempty" type:"Struct"`
+	// Configuration for disabling the security module.
 	DisableSecurityModule *WafSiteSettingsDisableSecurityModule `json:"DisableSecurityModule,omitempty" xml:"DisableSecurityModule,omitempty" type:"Struct"`
+	// Configuration for request body inspection.
 	RequestBodyInspection *WafSiteSettingsRequestBodyInspection `json:"RequestBodyInspection,omitempty" xml:"RequestBodyInspection,omitempty" type:"Struct"`
-	// The security level.
+	// The security level settings.
 	SecurityLevel *WafSiteSettingsSecurityLevel `json:"SecurityLevel,omitempty" xml:"SecurityLevel,omitempty" type:"Struct"`
 }
 
@@ -168,7 +171,7 @@ func (s *WafSiteSettings) Validate() error {
 }
 
 type WafSiteSettingsAddBotProtectionHeaders struct {
-	// Indicates whether the parameter is enabled.
+	// Specifies whether to add bot protection headers.
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
 }
 
@@ -194,7 +197,7 @@ func (s *WafSiteSettingsAddBotProtectionHeaders) Validate() error {
 }
 
 type WafSiteSettingsAddSecurityHeaders struct {
-	// Indicates whether the parameter is enabled.
+	// Specifies whether to add security headers.
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
 }
 
@@ -220,8 +223,23 @@ func (s *WafSiteSettingsAddSecurityHeaders) Validate() error {
 }
 
 type WafSiteSettingsBandwidthAbuseProtection struct {
+	// The action to perform for the bandwidth abuse protection rule.
+	//
+	// example:
+	//
+	// deny
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	Id     *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The rule ID for bandwidth abuse protection.
+	//
+	// example:
+	//
+	// 10000001
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The status of the bandwidth abuse protection rule. Valid values: `on` and `off`.
+	//
+	// example:
+	//
+	// on
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -265,15 +283,15 @@ func (s *WafSiteSettingsBandwidthAbuseProtection) Validate() error {
 }
 
 type WafSiteSettingsBotManagement struct {
-	// Definite Bots
+	// Configuration for traffic identified as a definite bot.
 	DefiniteBots *WafSiteSettingsBotManagementDefiniteBots `json:"DefiniteBots,omitempty" xml:"DefiniteBots,omitempty" type:"Struct"`
-	// Takes effect on static resource requests.
+	// Configuration to apply bot management to static resource requests.
 	EffectOnStatic *WafSiteSettingsBotManagementEffectOnStatic `json:"EffectOnStatic,omitempty" xml:"EffectOnStatic,omitempty" type:"Struct"`
-	// JavaScript detection.
+	// The JavaScript detection settings.
 	JSDetection *WafSiteSettingsBotManagementJSDetection `json:"JSDetection,omitempty" xml:"JSDetection,omitempty" type:"Struct"`
-	// Likely Bots
+	// Configuration for traffic identified as a likely bot.
 	LikelyBots *WafSiteSettingsBotManagementLikelyBots `json:"LikelyBots,omitempty" xml:"LikelyBots,omitempty" type:"Struct"`
-	// Verified Bots
+	// Configuration for traffic identified as a verified bot.
 	VerifiedBots *WafSiteSettingsBotManagementVerifiedBots `json:"VerifiedBots,omitempty" xml:"VerifiedBots,omitempty" type:"Struct"`
 }
 
@@ -360,7 +378,7 @@ func (s *WafSiteSettingsBotManagement) Validate() error {
 }
 
 type WafSiteSettingsBotManagementDefiniteBots struct {
-	// The action that you want to perform on requests that match the rule.
+	// The action to perform.
 	//
 	// example:
 	//
@@ -405,7 +423,11 @@ func (s *WafSiteSettingsBotManagementDefiniteBots) Validate() error {
 }
 
 type WafSiteSettingsBotManagementEffectOnStatic struct {
-	// Indicates whether the parameter is enabled.
+	// Specifies whether to apply bot management to static resource requests.
+	//
+	// example:
+	//
+	// true
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
 }
 
@@ -431,7 +453,7 @@ func (s *WafSiteSettingsBotManagementEffectOnStatic) Validate() error {
 }
 
 type WafSiteSettingsBotManagementJSDetection struct {
-	// Indicates whether the parameter is enabled.
+	// Specifies whether to enable JavaScript detection.
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
 }
 
@@ -457,7 +479,7 @@ func (s *WafSiteSettingsBotManagementJSDetection) Validate() error {
 }
 
 type WafSiteSettingsBotManagementLikelyBots struct {
-	// The action that you want to perform on requests that match the rule.
+	// The action to perform.
 	//
 	// example:
 	//
@@ -502,7 +524,7 @@ func (s *WafSiteSettingsBotManagementLikelyBots) Validate() error {
 }
 
 type WafSiteSettingsBotManagementVerifiedBots struct {
-	// The action that you want to perform on requests that match the rule.
+	// The action to perform.
 	//
 	// example:
 	//
@@ -547,15 +569,9 @@ func (s *WafSiteSettingsBotManagementVerifiedBots) Validate() error {
 }
 
 type WafSiteSettingsClientIpIdentifier struct {
-	// Specify headers.
+	// An array of headers to check for the client IP address.
 	Headers []*string `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Repeated"`
-	// Identifies the mode.
-	//
-	// Enumerated values:
-	//
-	// 	- headers: specifies the headers.
-	//
-	// 	- connection_ip: the IP address for establishing a connection.
+	// The identification mode.
 	//
 	// example:
 	//
@@ -594,6 +610,11 @@ func (s *WafSiteSettingsClientIpIdentifier) Validate() error {
 }
 
 type WafSiteSettingsDisableSecurityModule struct {
+	// Specifies whether to disable the security module. Set to `on` to disable.
+	//
+	// example:
+	//
+	// on
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -619,8 +640,11 @@ func (s *WafSiteSettingsDisableSecurityModule) Validate() error {
 }
 
 type WafSiteSettingsRequestBodyInspection struct {
-	Action    *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	Id        *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The action to perform when the request body size exceeds the limit.
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// The rule ID for request body inspection.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The size limit, in bytes, for inspecting the request body.
 	SizeLimit *string `json:"SizeLimit,omitempty" xml:"SizeLimit,omitempty"`
 }
 
@@ -664,21 +688,7 @@ func (s *WafSiteSettingsRequestBodyInspection) Validate() error {
 }
 
 type WafSiteSettingsSecurityLevel struct {
-	// The security level value.
-	//
-	// Enumerated values:
-	//
-	// 	- high: high.
-	//
-	// 	- low: low.
-	//
-	// 	- under_attack: I am under attack.
-	//
-	// 	- medium: medium.
-	//
-	// 	- essentially_off: essentially off.
-	//
-	// 	- off: completely off.
+	// The security level.
 	//
 	// example:
 	//

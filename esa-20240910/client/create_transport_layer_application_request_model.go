@@ -28,34 +28,35 @@ type iCreateTransportLayerApplicationRequest interface {
 }
 
 type CreateTransportLayerApplicationRequest struct {
-	// Whether to enable China mainland network access optimization, default is disabled. Value range:
+	// Enables or disables network optimization for access from the Chinese mainland. This feature is disabled by default. Valid values:
 	//
-	// - on: Enabled.
+	// - `on`: Enables the optimization.
 	//
-	// - off: Disabled.
+	// - `off`: Disables the optimization.
 	//
 	// example:
 	//
 	// on
 	CrossBorderOptimization *string `json:"CrossBorderOptimization,omitempty" xml:"CrossBorderOptimization,omitempty"`
-	// IP access rule switch. When enabled, the WAF\\"s IP access rules apply to the transport layer application.
+	// Applies IP access rules from Web Application Firewall (WAF) to this Transport Layer Application. Valid values:
 	//
-	// - on: Enabled.
+	// - `on`: Enables the feature.
 	//
-	// - off: Disabled.
+	// - `off`: Disables the feature.
 	//
 	// example:
 	//
 	// on
 	IpAccessRule *string `json:"IpAccessRule,omitempty" xml:"IpAccessRule,omitempty"`
-	// IPv6 switch.
+	// Enables or disables IPv6 support.
 	//
 	// example:
 	//
 	// off
-	Ipv6                *string `json:"Ipv6,omitempty" xml:"Ipv6,omitempty"`
+	Ipv6 *string `json:"Ipv6,omitempty" xml:"Ipv6,omitempty"`
+	// Enables or disables keep-alive protection.
 	KeepAliveProtection *string `json:"KeepAliveProtection,omitempty" xml:"KeepAliveProtection,omitempty"`
-	// Domain name of the transport layer application.
+	// The domain name of the Transport Layer Application.
 	//
 	// This parameter is required.
 	//
@@ -63,11 +64,11 @@ type CreateTransportLayerApplicationRequest struct {
 	//
 	// aaa.example.com
 	RecordName *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
-	// List of forwarding rules.
+	// The list of forwarding rules.
 	//
 	// This parameter is required.
 	Rules []*CreateTransportLayerApplicationRequestRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+	// The site ID. You can call the [ListSites](~~ListSites~~) operation to obtain the site ID.
 	//
 	// This parameter is required.
 	//
@@ -172,15 +173,15 @@ func (s *CreateTransportLayerApplicationRequest) Validate() error {
 }
 
 type CreateTransportLayerApplicationRequestRules struct {
-	// Client IP pass-through protocol, supporting:
+	// The client IP passthrough protocol. Valid values:
 	//
-	// - **off**: No pass-through.
+	// - **off**: Disables client IP passthrough.
 	//
-	// - **PPv1**: PROXY Protocol v1, supports client IP pass-through for TCP protocol.
+	// - **PPv1**: PROXY Protocol v1. Preserves the client IP address for TCP connections.
 	//
-	// - **PPv2**: PROXY Protocol v2, supports client IP pass-through for TCP and UDP protocols.
+	// - **PPv2**: PROXY Protocol v2. Preserves the client IP address for TCP and UDP connections.
 	//
-	// - **SPP**: Simple Proxy Protocol, supports client IP pass-through for UDP protocol.
+	// - **SPP**: Simple Proxy Protocol. Preserves the client IP address for UDP connections.
 	//
 	// This parameter is required.
 	//
@@ -188,21 +189,21 @@ type CreateTransportLayerApplicationRequestRules struct {
 	//
 	// SPP
 	ClientIPPassThroughMode *string `json:"ClientIPPassThroughMode,omitempty" xml:"ClientIPPassThroughMode,omitempty"`
-	// Comment information for the rule (optional).
+	// An optional comment for the rule.
 	//
 	// example:
 	//
-	// test
+	// Test
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// Edge port. Supports:
+	// The edge port. Supported formats:
 	//
-	// - A single port, such as 80.
+	// - A single port, for example, `80`.
 	//
-	// - Port range, such as 81-85, representing ports 81, 82, 83, 84, and 85.
+	// - A port range, for example, `81-85`, which includes ports 81, 82, 83, 84, and 85.
 	//
-	// - Combination of ports and port ranges, separated by commas, such as 80,81-85,90, representing ports 80, 81, 82, 83, 84, 85, and 90.
+	// - A combination of ports and port ranges separated by commas, for example, `80,81-85,90`, which includes ports 80, 81, 82, 83, 84, 85, and 90.
 	//
-	// Edge ports within a single rule and between multiple rules must not overlap.
+	// Edge ports cannot overlap within a single rule or across multiple rules.
 	//
 	// This parameter is required.
 	//
@@ -210,11 +211,11 @@ type CreateTransportLayerApplicationRequestRules struct {
 	//
 	// 80
 	EdgePort *string `json:"EdgePort,omitempty" xml:"EdgePort,omitempty"`
-	// Forwarding rule protocol, with values:
+	// The forwarding protocol. Valid values:
 	//
-	// - TCP: TCP protocol.
+	// - `TCP`: The TCP protocol.
 	//
-	// - UDP: UDP protocol.
+	// - `UDP`: The UDP protocol.
 	//
 	// This parameter is required.
 	//
@@ -222,7 +223,7 @@ type CreateTransportLayerApplicationRequestRules struct {
 	//
 	// TCP
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// Specific value of the origin, which needs to match the origin type.
+	// The origin address. The value must match the specified `SourceType`.
 	//
 	// This parameter is required.
 	//
@@ -230,11 +231,11 @@ type CreateTransportLayerApplicationRequestRules struct {
 	//
 	// 1.1.1.1
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// Origin port. Supports:
+	// The origin port. Supported formats:
 	//
-	// - A single port, when the origin port is a single port, any valid combination of edge ports is supported.
+	// - A single port, which supports any valid combination of edge ports.
 	//
-	// - Port range, only when the edge port is a port range, the origin port can be set to a port range, and the size of the range must match that of the edge port. For example, if the edge port is 90-93, the origin port cannot be set to 81-85 because the origin port range is 5 and the edge port range is 3, which do not match.
+	// - A port range. You can specify a port range only if the edge port is also a port range. The origin and edge port ranges must be the same size. For example, if the edge port range is `90-93` (4 ports), the origin port range cannot be `81-85` (5 ports).
 	//
 	// This parameter is required.
 	//
@@ -242,15 +243,15 @@ type CreateTransportLayerApplicationRequestRules struct {
 	//
 	// 80
 	SourcePort *string `json:"SourcePort,omitempty" xml:"SourcePort,omitempty"`
-	// Origin type, supporting:
+	// The origin type. Valid values:
 	//
-	// - **ip**: IP address.
+	// - **ip**: An IP address.
 	//
-	// - **domain**: Domain name.
+	// - **domain**: A domain name.
 	//
-	// - **OP**: Origin pool.
+	// - **OP**: An origin pool.
 	//
-	// - **LB**: Load balancer.
+	// - **LB**: A load balancer.
 	//
 	// This parameter is required.
 	//

@@ -26,30 +26,50 @@ type iListDDoSInstancesRequest interface {
 }
 
 type ListDDoSInstancesRequest struct {
+	// Instance ID.
+	//
 	// example:
 	//
 	// esa-ddos-b1e0l80ugfeo
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Page number. Default: **1**.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Number of entries per page. Default: 20. Maximum: 500. Valid values: integers from 1 to 500.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Associated site package instance ID.
+	//
 	// example:
 	//
 	// esa-site-a71k7bw1adf
 	SiteInstanceId *string `json:"SiteInstanceId,omitempty" xml:"SiteInstanceId,omitempty"`
+	// Sort field. Default: CreateTime.
+	//
+	// - **CreateTime**: Time when the instance was purchased.
+	//
 	// example:
 	//
 	// CreateTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// Sort order:
+	//
+	// - asc: ascending.
+	//
+	// - desc: descending.
+	//
 	// example:
 	//
 	// asc
 	SortOrder *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
+	// Instance status.
+	//
 	// example:
 	//
 	// online

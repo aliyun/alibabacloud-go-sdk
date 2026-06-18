@@ -24,7 +24,7 @@ type DeleteCustomResponseCodeRuleRequest struct {
 	//
 	// 434497172875264
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
+	// The site ID. Obtain this by calling ListSites.
 	//
 	// This parameter is required.
 	//

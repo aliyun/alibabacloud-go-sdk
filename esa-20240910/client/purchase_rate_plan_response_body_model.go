@@ -18,19 +18,19 @@ type iPurchaseRatePlanResponseBody interface {
 }
 
 type PurchaseRatePlanResponseBody struct {
-	// Instance ID.
+	// The instance ID.
 	//
 	// example:
 	//
 	// esa-site-ads11w
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Order ID.
+	// The order ID.
 	//
 	// example:
 	//
 	// 123123
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

@@ -18,14 +18,20 @@ type iCreateCustomHostnameResponseBody interface {
 }
 
 type CreateCustomHostnameResponseBody struct {
+	// The custom hostname.
+	//
 	// example:
 	//
 	// custom.site.com
 	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	// The ID of the custom hostname.
+	//
 	// example:
 	//
 	// 1234567890123
 	HostnameId *int64 `json:"HostnameId,omitempty" xml:"HostnameId,omitempty"`
+	// The unique identifier for the request.
+	//
 	// example:
 	//
 	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9

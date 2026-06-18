@@ -16,7 +16,7 @@ type iCreateOriginPoolResponseBody interface {
 }
 
 type CreateOriginPoolResponseBody struct {
-	// The ID of the newly created origin address pool.
+	// The origin pool ID.
 	//
 	// example:
 	//

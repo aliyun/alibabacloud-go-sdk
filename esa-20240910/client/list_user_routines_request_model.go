@@ -22,7 +22,7 @@ type ListUserRoutinesRequest struct {
 	//
 	// example:
 	//
-	// ListUserRoutines
+	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Valid values: 1 to 20.
 	//

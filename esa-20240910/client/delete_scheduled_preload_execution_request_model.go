@@ -14,13 +14,13 @@ type iDeleteScheduledPreloadExecutionRequest interface {
 }
 
 type DeleteScheduledPreloadExecutionRequest struct {
-	// The ID of the prefetch plan.
+	// The preload plan ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// DeleteScheduledPreloadExecution
+	// 665d3b48621bccf3fe29e1a7
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 

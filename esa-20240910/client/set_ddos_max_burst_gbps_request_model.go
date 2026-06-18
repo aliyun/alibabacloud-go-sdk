@@ -16,12 +16,16 @@ type iSetDdosMaxBurstGbpsRequest interface {
 }
 
 type SetDdosMaxBurstGbpsRequest struct {
+	// The ID of the instance. You can call the [ListUserRatePlanInstances](https://help.aliyun.com/document_detail/2852398.html) operation to obtain the instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// esa-site-ads11w
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The maximum burstable protection bandwidth for the DDoS instance in mainland China. The unit is Gbps.
+	//
 	// This parameter is required.
 	//
 	// example:

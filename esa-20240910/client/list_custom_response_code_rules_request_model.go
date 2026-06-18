@@ -32,23 +32,23 @@ type ListCustomResponseCodeRulesRequest struct {
 	//
 	// 436490043994112
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// The configuration type to query. Valid values:
+	// The configuration type. Use this parameter to query global or rule configurations. Valid values:
 	//
-	// 	- global: global configurations.
+	// - global: Queries global configurations.
 	//
-	// 	- rule: rule configurations.
+	// - rule: Queries rule configurations.
 	//
 	// example:
 	//
 	// global
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
-	// The page number. Default value: 1.
+	// The page number. The default value is 1 if you do not specify this parameter.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Maximum value: 500. Default value: 500.
+	// The number of entries per page. The maximum value is 500. The default value is 500 if you do not specify this parameter.
 	//
 	// example:
 	//
@@ -60,7 +60,7 @@ type ListCustomResponseCodeRulesRequest struct {
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	// The site ID. For more information, see [ListSites](https://help.aliyun.com/document_detail/2850189.html).
 	//
 	// This parameter is required.
 	//
@@ -68,7 +68,7 @@ type ListCustomResponseCodeRulesRequest struct {
 	//
 	// 340035003106221
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The version number of the website configurations. You can use this parameter to specify a version of your website to apply the feature settings. By default, version 0 is used.
+	// The version number of the site configuration. For sites with configuration version control enabled, specify the site version for which the configuration takes effect using this parameter. The default value is version 0.
 	//
 	// example:
 	//

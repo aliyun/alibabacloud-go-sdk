@@ -16,9 +16,9 @@ type iQuotaListItemsValue interface {
 }
 
 type QuotaListItemsValue struct {
-	// The switch for the type of item in the custom list.
+	// Whether the item type is enabled.
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// Format restrictions for the type of item in the custom list.
+	// The format constraints for the item type.
 	Value *WafQuotaString `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

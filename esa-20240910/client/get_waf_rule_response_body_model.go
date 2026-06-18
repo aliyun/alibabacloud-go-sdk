@@ -30,15 +30,15 @@ type iGetWafRuleResponseBody interface {
 }
 
 type GetWafRuleResponseBody struct {
-	// Rule configuration.
+	// The rule configuration.
 	Config *WafRuleConfig `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The ID of the WAF rule, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2878257.html) interface.
+	// The ID of the WAF rule. You can get this ID by calling the [ListWafRules](https://help.aliyun.com/document_detail/2878257.html) operation.
 	//
 	// example:
 	//
 	// 2000001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Rule name.
+	// The name of the rule.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,23 @@ type GetWafRuleResponseBody struct {
 	//
 	// example
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// WAF operation phase.
+	// The execution phase of the WAF rule.
+	//
+	// - `http_whitelist`: A whitelist rule
+	//
+	// - `http_custom`: A custom rule
+	//
+	// - `http_managed`: A managed rule
+	//
+	// - `http_anti_scan`: A scan protection rule
+	//
+	// - `http_ratelimit`: A rate limiting rule
+	//
+	// - `ip_access_rule`: An IP access rule
+	//
+	// - `http_bot`: A bot management rule
+	//
+	// - `http_security_level_rule`: A security rule
 	//
 	// This parameter is required.
 	//
@@ -54,26 +70,27 @@ type GetWafRuleResponseBody struct {
 	//
 	// http_custom
 	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	// The position of the rule in the rule set.
+	// The position of the rule in the ruleset.
 	//
 	// example:
 	//
 	// 1
 	Position *int64 `json:"Position,omitempty" xml:"Position,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RulesetId *int64  `json:"RulesetId,omitempty" xml:"RulesetId,omitempty"`
-	// Rule status.
+	// The ID of the WAF ruleset. You can get this ID by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2878359.html) operation.
+	RulesetId *int64 `json:"RulesetId,omitempty" xml:"RulesetId,omitempty"`
+	// The status of the rule.
 	//
 	// example:
 	//
 	// on
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The last modified time of the rule.
+	// The time the rule was last updated.
 	//
 	// example:
 	//

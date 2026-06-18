@@ -16,7 +16,7 @@ type iDeleteRecordRequest interface {
 }
 
 type DeleteRecordRequest struct {
-	// The record ID, which can be obtained by calling [ListRecords](https://help.aliyun.com/document_detail/2850265.html).
+	// The ID of the DNS record. You can get this ID by calling the [ListRecords](https://help.aliyun.com/document_detail/2850265.html) operation.
 	//
 	// This parameter is required.
 	//

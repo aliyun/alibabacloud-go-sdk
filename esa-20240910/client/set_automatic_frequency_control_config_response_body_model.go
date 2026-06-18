@@ -20,19 +20,41 @@ type iSetAutomaticFrequencyControlConfigResponseBody interface {
 }
 
 type SetAutomaticFrequencyControlConfigResponseBody struct {
+	// The action taken on requests that trigger the control. Valid values:
+	//
+	// - **observe**: Requests are monitored.
+	//
+	// - **deny**: Requests are blocked.
+	//
+	// - **js**: JS challenges are issued.
+	//
 	// example:
 	//
 	// js
 	ActionType *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
+	// Indicates whether automatic frequency control is enabled. Valid values:
+	//
+	// - **on**: Enabled.
+	//
+	// - **off**: Disabled.
+	//
 	// example:
 	//
 	// on
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The protection level. Valid values:
+	//
+	// - **loose**: Loose protection.
+	//
+	// - **normal**: Normal protection.
+	//
+	// - **strict**: Strict protection.
+	//
 	// example:
 	//
 	// normal
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

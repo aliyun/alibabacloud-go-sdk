@@ -38,11 +38,11 @@ type iGetRoutineRouteResponseBody interface {
 }
 
 type GetRoutineRouteResponseBody struct {
-	// Bypass mode. Valid values:
+	// The bypass mode. Valid values:
 	//
-	// 	- on
+	// - `on`: Enabled.
 	//
-	// 	- off
+	// - `off`: Disabled.
 	//
 	// example:
 	//
@@ -54,31 +54,31 @@ type GetRoutineRouteResponseBody struct {
 	//
 	// 352816******
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// The configuration type to query. Valid values:
+	// The configuration type. Valid values:
 	//
-	// 	- global: global configurations.
+	// - `global`: Queries the global configuration.
 	//
-	// 	- rule: queries rule configurations.
+	// - `rule`: Queries the rule configuration.
 	//
 	// example:
 	//
 	// global
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
-	// The exception origin fetch switch. After you turn on this switch, if a function exception occurs, such as CPU usage exceeding the upper limit, requests are sent back to the origin. Valid values:
+	// Specifies whether to enable fallback to origin. If this feature is enabled, requests are sent to the origin server when the function encounters an exception, such as exceeding its CPU limit. Valid values:
 	//
-	// 	- on
+	// - `on`: Enabled.
 	//
-	// 	- off
+	// - `off`: Disabled.
 	//
 	// example:
 	//
 	// on
 	Fallback *string `json:"Fallback,omitempty" xml:"Fallback,omitempty"`
-	// The configuration mode. Valid values: Valid values:
+	// The configuration mode. Valid values:
 	//
-	// 	- simple
+	// - `simple`: simple mode.
 	//
-	// 	- custom
+	// - `custom`: custom mode.
 	//
 	// example:
 	//
@@ -90,11 +90,11 @@ type GetRoutineRouteResponseBody struct {
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The routing switch. Valid values:
+	// The route status. Valid values:
 	//
-	// 	- on
+	// - `on`: Enabled.
 	//
-	// 	- off
+	// - `off`: Disabled.
 	//
 	// example:
 	//
@@ -106,25 +106,25 @@ type GetRoutineRouteResponseBody struct {
 	//
 	// test_route
 	RouteName *string `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
-	// The function name.
+	// The name of the edge function routine.
 	//
 	// example:
 	//
 	// test-routine1
 	RoutineName *string `json:"RoutineName,omitempty" xml:"RoutineName,omitempty"`
-	// The rule content.
+	// The rule expression.
 	//
 	// example:
 	//
 	// (http.host eq \\"video.example.com\\")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// The order in which the rule is executed.
+	// The rule execution order.
 	//
 	// example:
 	//
 	// 1
 	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	// The version number of the website.
+	// The version number of the site.
 	//
 	// example:
 	//

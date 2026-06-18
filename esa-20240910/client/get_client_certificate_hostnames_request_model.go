@@ -22,7 +22,7 @@ type GetClientCertificateHostnamesRequest struct {
 	//
 	// baba39055622c008b90285a8838ed09a
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The website ID.
+	// The site ID.
 	//
 	// This parameter is required.
 	//

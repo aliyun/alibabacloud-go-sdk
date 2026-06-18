@@ -24,39 +24,39 @@ type iListCacheReserveInstancesRequest interface {
 }
 
 type ListCacheReserveInstancesRequest struct {
-	// Instance ID.
+	// The instance ID.
 	//
 	// example:
 	//
 	// sp-xcdn-96wblslz****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Page number.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Page size. Range: **1~500**, default is **500**.
+	// The number of entries per page. Valid values: **1 to 500**. The default value is **500**.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The criterion by which you want to sort the queried instances. Valid values:
+	// The field to sort the results by. Valid values:
 	//
-	// 	- **ExpireTime**
+	// - **ExpireTime**: Expiration time.
 	//
-	// 	- **CreateTime**
+	// - **CreateTime**: Creation time.
 	//
 	// example:
 	//
 	// ExpireTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The order by which you want to sort the queried instances. Valid values:
+	// The sort order. Valid values:
 	//
-	// 	- **asc**
+	// - **asc**: Ascending order.
 	//
-	// 	- **desc**
+	// - **desc**: Descending order.
 	//
 	// example:
 	//
@@ -64,13 +64,13 @@ type ListCacheReserveInstancesRequest struct {
 	SortOrder *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
 	// The status of the cache reserve instance. Valid values:
 	//
-	// 	- **online**: The instance is in service.
+	// - **online**: The instance is running normally.
 	//
-	// 	- **offline**: The instance has expired within an allowable period. In this state, it is unavailable.
+	// - **offline**: The instance has expired and is unavailable but remains within the grace period.
 	//
-	// 	- **disable**: The instance has been released.
+	// - **disable**: The instance is disabled.
 	//
-	// 	- **overdue**: The instance has been stopped due to overdue payments.
+	// - **overdue**: The instance is suspended due to an overdue payment.
 	//
 	// if can be null:
 	// false

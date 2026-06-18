@@ -18,19 +18,19 @@ type iListListsRequest interface {
 }
 
 type ListListsRequest struct {
-	// The page number.
+	// Specifies the page number for paginated results.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// Specifies the number of results to return per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The query arguments in the JSON format, which contain filter conditions.
+	// A JSON object containing query parameters to filter the results.
 	//
 	// example:
 	//
@@ -83,49 +83,49 @@ func (s *ListListsRequest) Validate() error {
 }
 
 type ListListsRequestQueryArgs struct {
-	// Specifies whether to sort the returned data in descending order.
+	// If true, sorts the results in descending order.
 	//
 	// example:
 	//
 	// true
 	Desc *bool `json:"Desc,omitempty" xml:"Desc,omitempty"`
-	// The list description for fuzzy search.
+	// Filters by a partial match on the list description.
 	//
 	// example:
 	//
 	// a custom list
 	DescriptionLike *string `json:"DescriptionLike,omitempty" xml:"DescriptionLike,omitempty"`
-	// The list ID for fuzzy search.
+	// Filters by a partial match on the list ID.
 	//
 	// example:
 	//
 	// 40000001
 	IdLike *string `json:"IdLike,omitempty" xml:"IdLike,omitempty"`
-	// The list content for fuzzy search.
+	// Filters by a partial match on a list item.
 	//
 	// example:
 	//
 	// 10.1.1.1
 	ItemLike *string `json:"ItemLike,omitempty" xml:"ItemLike,omitempty"`
-	// The type of the custom list.
+	// Filters by the list kind.
 	//
 	// example:
 	//
 	// ip
 	Kind *string `json:"Kind,omitempty" xml:"Kind,omitempty"`
-	// The list name and content for fuzzy search.
+	// Filters by a partial match on both the list name and list items.
 	//
 	// example:
 	//
 	// 10.1.1.1
 	NameItemLike *string `json:"NameItemLike,omitempty" xml:"NameItemLike,omitempty"`
-	// The list name for fuzzy search.
+	// Filters by a partial match on the list name.
 	//
 	// example:
 	//
 	// example
 	NameLike *string `json:"NameLike,omitempty" xml:"NameLike,omitempty"`
-	// The column by which you want to sort the returned data.
+	// Specifies the sort field.
 	//
 	// example:
 	//

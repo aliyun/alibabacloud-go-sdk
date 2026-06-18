@@ -16,12 +16,16 @@ type iGetCustomResponseCodeRuleRequest interface {
 }
 
 type GetCustomResponseCodeRuleRequest struct {
+	// Configuration ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 424022244554752
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Site ID. For more information, see [ListSites](https://help.aliyun.com/document_detail/2850189.html).
+	//
 	// This parameter is required.
 	//
 	// example:

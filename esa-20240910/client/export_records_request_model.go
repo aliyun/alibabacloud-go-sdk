@@ -16,6 +16,8 @@ type iExportRecordsRequest interface {
 type ExportRecordsRequest struct {
   // The website ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
   // 
+  // This parameter is required.
+  // 
   // example:
   // 
   // 1234567890123

@@ -16,7 +16,7 @@ type iUpdateOriginPoolResponseBody interface {
 }
 
 type UpdateOriginPoolResponseBody struct {
-	// Source address pool ID.
+	// The origin pool ID.
 	//
 	// example:
 	//

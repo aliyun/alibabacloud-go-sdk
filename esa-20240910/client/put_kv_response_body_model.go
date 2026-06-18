@@ -30,7 +30,7 @@ type PutKvResponseBody struct {
 	//
 	// EEEBE525-F576-1196-8DAF-2D70CA3F4D2F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The content of the key. If the content has more than 256 characters in length, the system displays the first 100 and the last 100 characters, and omits the middle part.
+	// The value of the key-value pair. If the value is longer than 256 characters, the response includes only the first 100 and last 100 characters.
 	//
 	// example:
 	//

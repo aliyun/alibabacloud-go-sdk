@@ -19,6 +19,10 @@ type iCreateRecordShrinkRequest interface {
 	GetDataShrink() *string
 	SetHostPolicy(v string) *CreateRecordShrinkRequest
 	GetHostPolicy() *string
+	SetHttpPorts(v string) *CreateRecordShrinkRequest
+	GetHttpPorts() *string
+	SetHttpsPorts(v string) *CreateRecordShrinkRequest
+	GetHttpsPorts() *string
 	SetProxied(v bool) *CreateRecordShrinkRequest
 	GetProxied() *bool
 	SetRecordName(v string) *CreateRecordShrinkRequest
@@ -76,6 +80,8 @@ type CreateRecordShrinkRequest struct {
 	//
 	// follow_origin_domain
 	HostPolicy *string `json:"HostPolicy,omitempty" xml:"HostPolicy,omitempty"`
+	HttpPorts  *string `json:"HttpPorts,omitempty" xml:"HttpPorts,omitempty"`
+	HttpsPorts *string `json:"HttpsPorts,omitempty" xml:"HttpsPorts,omitempty"`
 	// Specifies whether to proxy the record. Only CNAME and A/AAAA records can be proxied. Valid values:
 	//
 	// 	- **true**
@@ -166,6 +172,14 @@ func (s *CreateRecordShrinkRequest) GetHostPolicy() *string {
 	return s.HostPolicy
 }
 
+func (s *CreateRecordShrinkRequest) GetHttpPorts() *string {
+	return s.HttpPorts
+}
+
+func (s *CreateRecordShrinkRequest) GetHttpsPorts() *string {
+	return s.HttpsPorts
+}
+
 func (s *CreateRecordShrinkRequest) GetProxied() *bool {
 	return s.Proxied
 }
@@ -212,6 +226,16 @@ func (s *CreateRecordShrinkRequest) SetDataShrink(v string) *CreateRecordShrinkR
 
 func (s *CreateRecordShrinkRequest) SetHostPolicy(v string) *CreateRecordShrinkRequest {
 	s.HostPolicy = &v
+	return s
+}
+
+func (s *CreateRecordShrinkRequest) SetHttpPorts(v string) *CreateRecordShrinkRequest {
+	s.HttpPorts = &v
+	return s
+}
+
+func (s *CreateRecordShrinkRequest) SetHttpsPorts(v string) *CreateRecordShrinkRequest {
+	s.HttpsPorts = &v
 	return s
 }
 

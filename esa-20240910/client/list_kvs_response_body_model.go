@@ -22,15 +22,15 @@ type iListKvsResponseBody interface {
 }
 
 type ListKvsResponseBody struct {
-	// The key-value pairs.
+	// The list of key-value pairs returned by this traversal.
 	Keys []*ListKvsResponseBodyKeys `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Repeated"`
-	// The total number of pages returned.
+	// The total number of pages.
 	//
 	// example:
 	//
 	// 100
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of records on each page.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListKvsResponseBody struct {
 	//
 	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *ListKvsResponseBody) Validate() error {
 }
 
 type ListKvsResponseBodyKeys struct {
-	// The key name.
+	// The name of the key.
 	//
 	// example:
 	//

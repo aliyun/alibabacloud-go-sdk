@@ -20,21 +20,21 @@ type iApplyCertificateResponseBody interface {
 }
 
 type ApplyCertificateResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 156A6B-677B1A-4297B7-9187B7-2B44792
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// List of free certificate application details.
+	// A list of application details for each free certificate.
 	Result []*ApplyCertificateResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	// Site name.
+	// The site name.
 	//
 	// example:
 	//
 	// example.com
 	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
-	// Number of certificates applied for, which is the same as the number of input domains.
+	// The total number of certificates requested, which matches the number of domain names provided in the request.
 	//
 	// example:
 	//
@@ -100,19 +100,19 @@ func (s *ApplyCertificateResponseBody) Validate() error {
 }
 
 type ApplyCertificateResponseBodyResult struct {
-	// Certificate domain.
+	// The certificate domain name.
 	//
 	// example:
 	//
 	// *.example.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// Certificate ID.
+	// The certificate ID.
 	//
 	// example:
 	//
 	// 30000478
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Status of the certificate application.
+	// The certificate application status.
 	//
 	// example:
 	//

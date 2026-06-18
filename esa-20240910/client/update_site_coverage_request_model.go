@@ -16,13 +16,13 @@ type iUpdateSiteCoverageRequest interface {
 }
 
 type UpdateSiteCoverageRequest struct {
-	// The desired service location. Valid values:
+	// The target acceleration area to modify. Valid values:
 	//
-	// 	- **domestic**: the Chinese mainland
+	// - **domestic**: Only the Chinese mainland.
 	//
-	// 	- **global**: global
+	// - **global**: Global.
 	//
-	// 	- **overseas**: outside the Chinese mainland
+	// - **overseas**: Global (excluding the Chinese mainland).
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type UpdateSiteCoverageRequest struct {
 	//
 	// global
 	Coverage *string `json:"Coverage,omitempty" xml:"Coverage,omitempty"`
-	// The website ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
+	// The site ID. Get this by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
 	//
 	// This parameter is required.
 	//

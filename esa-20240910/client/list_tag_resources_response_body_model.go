@@ -20,7 +20,7 @@ type iListTagResourcesResponseBody interface {
 }
 
 type ListTagResourcesResponseBody struct {
-	// The pagination token that is used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	// The token for the next query. If NextToken is empty, all information has been displayed on the current page.
 	//
 	// example:
 	//
@@ -32,13 +32,13 @@ type ListTagResourcesResponseBody struct {
 	//
 	// CB1A380B-09F0-41BB-280B-72F8FD6DA2FE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The tags of the resource.
+	// The resource tags.
 	TagResources []*ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
-	// 16
+	// 1
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -100,13 +100,17 @@ func (s *ListTagResourcesResponseBody) Validate() error {
 }
 
 type ListTagResourcesResponseBodyTagResources struct {
-	// The resource ID.
+	// The resource ID. Enter a site ID or a DNS record ID.
 	//
 	// example:
 	//
 	// example.com
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The resource type.
+	// The resource type. Valid values:
+	//
+	// - site: site
+	//
+	// - record: DNS record.
 	//
 	// example:
 	//

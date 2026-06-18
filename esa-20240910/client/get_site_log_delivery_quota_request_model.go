@@ -18,13 +18,13 @@ type iGetSiteLogDeliveryQuotaRequest interface {
 type GetSiteLogDeliveryQuotaRequest struct {
 	// The log category. Valid values:
 	//
-	// 1.  dcdn_log_access_l1 (default): access logs.
+	// 1. dcdn_log_access_l1 (default): access logs.
 	//
-	// 2.  dcdn_log_er: Edge Routine logs.
+	// 2. dcdn_log_er: Edge Routine logs.
 	//
-	// 3.  dcdn_log_waf: firewall logs.
+	// 3. dcdn_log_waf: firewall logs.
 	//
-	// 4.  dcdn_log_ipa: TCP/UDP proxy logs.
+	// 4. dcdn_log_ipa: TCP/UDP proxy logs.
 	//
 	// This parameter is required.
 	//

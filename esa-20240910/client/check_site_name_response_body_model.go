@@ -24,15 +24,15 @@ type iCheckSiteNameResponseBody interface {
 type CheckSiteNameResponseBody struct {
 	// The description of the verification result. Valid values:
 	//
-	// 	- **success**: The verification is successful.
+	// - **success**: The verification is successful.
 	//
-	// 	- **Site.AlreadyExist**: The website domain name has already been added.
+	// - **Site.AlreadyExist**: The website domain name has already been added.
 	//
-	// 	- **Site.InvalidName**: Invalid website domain name.
+	// - **Site.InvalidName**: Invalid website domain name.
 	//
-	// 	- **Site.SubSiteUnavailable**: Subdomains are not allowed.
+	// - **Site.SubSiteUnavailable**: Subdomains are not allowed.
 	//
-	// 	- **Site.InternalError**: An internal error occurs.
+	// - **Site.InternalError**: An internal error occurs.
 	//
 	// example:
 	//
@@ -40,21 +40,25 @@ type CheckSiteNameResponseBody struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Indicates whether a subdomain is specified. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
 	// false
 	IsSubSite *bool `json:"IsSubSite,omitempty" xml:"IsSubSite,omitempty"`
 	// The verification message.
+	//
+	// example:
+	//
+	// Site name is available.
 	Messeage *string `json:"Messeage,omitempty" xml:"Messeage,omitempty"`
 	// Indicates whether the verification passed.
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//

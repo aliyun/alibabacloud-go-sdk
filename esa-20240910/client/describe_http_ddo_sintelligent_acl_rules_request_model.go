@@ -20,20 +20,28 @@ type iDescribeHttpDDoSIntelligentAclRulesRequest interface {
 }
 
 type DescribeHttpDDoSIntelligentAclRulesRequest struct {
+	// The current page number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The rule type.
+	//
 	// example:
 	//
 	// acl
 	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	// The site ID. To obtain the site ID, call the [ListSites](~~ListSites~~) operation.
+	//
 	// This parameter is required.
 	//
 	// example:

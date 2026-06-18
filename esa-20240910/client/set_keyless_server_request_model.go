@@ -30,48 +30,64 @@ type iSetKeylessServerRequest interface {
 }
 
 type SetKeylessServerRequest struct {
+	// The CA certificate used to verify the server certificate of the keyless server. This parameter applies only when `Verify` is set to `true`.
+	//
 	// example:
 	//
 	// -----BEGIN CERTIFICATE-----****
 	CaCertificate *string `json:"CaCertificate,omitempty" xml:"CaCertificate,omitempty"`
+	// The client certificate. This parameter must be used with the `ClientPrivateKey` parameter.
+	//
 	// example:
 	//
 	// -----BEGIN CERTIFICATE-----****
 	ClientCertificate *string `json:"ClientCertificate,omitempty" xml:"ClientCertificate,omitempty"`
+	// The client private key. This parameter must be used with the `ClientCertificate` parameter.
+	//
 	// example:
 	//
 	// -----BEGIN RSA PRIVATE KEY-----****
 	ClientPrivateKey *string `json:"ClientPrivateKey,omitempty" xml:"ClientPrivateKey,omitempty"`
+	// The hostname of the keyless server. The value can be a domain name or an IP address.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// keyless.example.com
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// Keyless server ID。
+	// The keyless server ID.
 	//
 	// example:
 	//
 	// baba39055622c008b90285a8838e****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The keyless server name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// example
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The keyless server port.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 443
 	Port *int64 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The site ID. You can obtain this ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// Specifies whether to verify the server certificate of the keyless server. Default: false.
+	//
 	// example:
 	//
 	// true

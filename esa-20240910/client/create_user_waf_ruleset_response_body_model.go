@@ -18,15 +18,20 @@ type iCreateUserWafRulesetResponseBody interface {
 }
 
 type CreateUserWafRulesetResponseBody struct {
+	// The WAF ruleset ID.
+	//
 	// example:
 	//
 	// 665d3af3621bccf3fe29e1a4
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 15C66C7B-671A-4297-9187-2C4477247A74
-	RequestId *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RuleIds   []*int64 `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// A list of rule IDs within the WAF ruleset.
+	RuleIds []*int64 `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Repeated"`
 }
 
 func (s CreateUserWafRulesetResponseBody) String() string {

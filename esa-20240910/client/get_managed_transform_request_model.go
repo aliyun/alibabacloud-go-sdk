@@ -16,7 +16,7 @@ type iGetManagedTransformRequest interface {
 }
 
 type GetManagedTransformRequest struct {
-	// Site ID, which can be obtained by calling [ListSites](https://help.aliyun.com/document_detail/2850189.html).
+	// The ID of the site. You can obtain this ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type GetManagedTransformRequest struct {
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The version number of the site. For sites with version management enabled, you can use this parameter to specify the effective version of the configuration, defaulting to version 0.
+	// The site version. If version management is enabled for the site, use this parameter to specify the version whose configuration you want to retrieve. The default is 0.
 	//
 	// example:
 	//

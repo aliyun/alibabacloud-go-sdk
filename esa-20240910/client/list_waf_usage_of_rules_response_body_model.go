@@ -22,13 +22,13 @@ type iListWafUsageOfRulesResponseBody interface {
 type ListWafUsageOfRulesResponseBody struct {
 	BatchConfigUsage *int64 `json:"BatchConfigUsage,omitempty" xml:"BatchConfigUsage,omitempty"`
 	InstanceUsage    *int64 `json:"InstanceUsage,omitempty" xml:"InstanceUsage,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// List of site usage.
+	// A list of sites and their respective WAF rule usage.
 	Sites []*ListWafUsageOfRulesResponseBodySites `json:"Sites,omitempty" xml:"Sites,omitempty" type:"Repeated"`
 }
 
@@ -90,19 +90,19 @@ func (s *ListWafUsageOfRulesResponseBody) Validate() error {
 }
 
 type ListWafUsageOfRulesResponseBodySites struct {
-	// Site ID.
+	// The site ID.
 	//
 	// example:
 	//
 	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Site name.
+	// The site name.
 	//
 	// example:
 	//
 	// example.com
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Usage of WAF rules/WAF rule sets.
+	// The number of WAF rules or rule sets used by the site.
 	//
 	// example:
 	//

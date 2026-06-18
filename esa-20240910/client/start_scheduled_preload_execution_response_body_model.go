@@ -30,65 +30,65 @@ type iStartScheduledPreloadExecutionResponseBody interface {
 }
 
 type StartScheduledPreloadExecutionResponseBody struct {
-	// The ID of the Alibaba Cloud account.
+	// Alibaba Cloud account ID.
 	//
 	// example:
 	//
 	// 15685865xxx14622
 	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// The end time of the prefetch plan.
+	// End time of the scheduled prefetch plan.
 	//
 	// example:
 	//
 	// 2024-05-31T18:10:48.849+08:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the prefetch plan.
+	// Prefetch plan ID.
 	//
 	// example:
 	//
 	// 665d3b48621bccf3fe29e1a7
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The time interval between each batch execution. Unit: seconds.
+	// Time interval between batches of scheduled prefetches, in seconds.
 	//
 	// example:
 	//
 	// 60
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The ID of the prefetch task.
+	// Prefetch task ID.
 	//
 	// example:
 	//
 	// 665d3af3621bccf3fe29e1a4
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//
 	// 65C66B7B-671A-8297-9187-2R5477247B76
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of URLs prefetched in each batch.
+	// Number of URLs per batch of scheduled prefetches.
 	//
 	// example:
 	//
 	// 10
 	SliceLen *int32 `json:"SliceLen,omitempty" xml:"SliceLen,omitempty"`
-	// The start time of the prefetch plan.
+	// Start time of the scheduled prefetch plan.
 	//
 	// example:
 	//
 	// 2024-05-31T17:10:48.849+08:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the prefetch plan. Valid values:
+	// Status of the scheduled prefetch plan. Valid values:
 	//
-	// 	- **waiting**
+	// - **waiting**: Waiting to run.
 	//
-	// 	- **running**
+	// - **running**: Running.
 	//
-	// 	- **finished**
+	// - **finished**: Completed.
 	//
-	// 	- **failed**
+	// - **failed**: Failed.
 	//
-	// 	- **stopped**
+	// - **stopped**: Paused.
 	//
 	// example:
 	//

@@ -16,11 +16,11 @@ type iGetSitePauseResponseBody interface {
 }
 
 type GetSitePauseResponseBody struct {
-	// Indicates whether ESA is paused on the website. Valid values:
+	// Indicates whether site acceleration is paused. Valid values:
 	//
-	// 	- true
+	// - true: The site\\"s acceleration is paused.
 	//
-	// 	- false
+	// - false: The site is accelerating normally.
 	//
 	// example:
 	//

@@ -22,19 +22,28 @@ type iSetClientCaCertificateHostnamesResponseBody interface {
 }
 
 type SetClientCaCertificateHostnamesResponseBody struct {
+	// A list of bound hostnames.
 	Hostnames []*string `json:"Hostnames,omitempty" xml:"Hostnames,omitempty" type:"Repeated"`
+	// The client CA certificate ID.
+	//
 	// example:
 	//
 	// babaabcd****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 34DCBC8A-****-****-****-6DAA11D7DDBD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The site ID. You can obtain the ID by calling the [ListSites](~~ListSites~~) API.
+	//
 	// example:
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The site name.
+	//
 	// example:
 	//
 	// example.com

@@ -28,34 +28,35 @@ type iCreateTransportLayerApplicationShrinkRequest interface {
 }
 
 type CreateTransportLayerApplicationShrinkRequest struct {
-	// Whether to enable China mainland network access optimization, default is disabled. Value range:
+	// Enables or disables network optimization for access from the Chinese mainland. This feature is disabled by default. Valid values:
 	//
-	// - on: Enabled.
+	// - `on`: Enables the optimization.
 	//
-	// - off: Disabled.
+	// - `off`: Disables the optimization.
 	//
 	// example:
 	//
 	// on
 	CrossBorderOptimization *string `json:"CrossBorderOptimization,omitempty" xml:"CrossBorderOptimization,omitempty"`
-	// IP access rule switch. When enabled, the WAF\\"s IP access rules apply to the transport layer application.
+	// Applies IP access rules from Web Application Firewall (WAF) to this Transport Layer Application. Valid values:
 	//
-	// - on: Enabled.
+	// - `on`: Enables the feature.
 	//
-	// - off: Disabled.
+	// - `off`: Disables the feature.
 	//
 	// example:
 	//
 	// on
 	IpAccessRule *string `json:"IpAccessRule,omitempty" xml:"IpAccessRule,omitempty"`
-	// IPv6 switch.
+	// Enables or disables IPv6 support.
 	//
 	// example:
 	//
 	// off
-	Ipv6                *string `json:"Ipv6,omitempty" xml:"Ipv6,omitempty"`
+	Ipv6 *string `json:"Ipv6,omitempty" xml:"Ipv6,omitempty"`
+	// Enables or disables keep-alive protection.
 	KeepAliveProtection *string `json:"KeepAliveProtection,omitempty" xml:"KeepAliveProtection,omitempty"`
-	// Domain name of the transport layer application.
+	// The domain name of the Transport Layer Application.
 	//
 	// This parameter is required.
 	//
@@ -63,11 +64,11 @@ type CreateTransportLayerApplicationShrinkRequest struct {
 	//
 	// aaa.example.com
 	RecordName *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
-	// List of forwarding rules.
+	// The list of forwarding rules.
 	//
 	// This parameter is required.
 	RulesShrink *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
-	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+	// The site ID. You can call the [ListSites](~~ListSites~~) operation to obtain the site ID.
 	//
 	// This parameter is required.
 	//

@@ -30,25 +30,25 @@ type iGetKvNamespaceResponseBody interface {
 }
 
 type GetKvNamespaceResponseBody struct {
-	// The available capacity of the namespace. Unit: bytes.
+	// The available capacity of the namespace, in bytes.
 	//
 	// example:
 	//
 	// 1073741824
 	Capacity *int64 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
-	// The available capacity of the namespace.
+	// The available capacity of the namespace, formatted as a human-readable string.
 	//
 	// example:
 	//
 	// 1 GB
 	CapacityString *string `json:"CapacityString,omitempty" xml:"CapacityString,omitempty"`
-	// The used capacity of the namespace. Unit: bytes.
+	// The used capacity of the namespace, in bytes.
 	//
 	// example:
 	//
 	// 10048576
 	CapacityUsed *int64 `json:"CapacityUsed,omitempty" xml:"CapacityUsed,omitempty"`
-	// The used capacity of the namespace.
+	// The used capacity of the namespace, formatted as a human-readable string.
 	//
 	// example:
 	//
@@ -72,7 +72,7 @@ type GetKvNamespaceResponseBody struct {
 	//
 	// 643355322374688768
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -80,13 +80,13 @@ type GetKvNamespaceResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The status of the namespace. Valid values:
 	//
-	// 	- **online**: working as expected.
+	// - **online**: The namespace is active.
 	//
-	// 	- **delete**: pending deletion.
+	// - **delete**: The namespace is marked for deletion.
 	//
-	// 	- **deleting**: being deleted.
+	// - **deleting**: The namespace is being deleted.
 	//
-	// 	- **deleted**: deleted.
+	// - **deleted**: The namespace has been deleted.
 	//
 	// example:
 	//

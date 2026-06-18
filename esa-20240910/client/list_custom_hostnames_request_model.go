@@ -26,32 +26,62 @@ type iListCustomHostnamesRequest interface {
 }
 
 type ListCustomHostnamesRequest struct {
+	// The SaaS domain name.
+	//
 	// example:
 	//
 	// custom.site.com
 	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	// The search match mode for the SaaS domain name. Default value: exact. Valid values:
+	//
+	// - **prefix**: prefix match.
+	//
+	// - **suffix**: suffix match.
+	//
+	// - **exact**: exact match.
+	//
+	// - **fuzzy**: fuzzy match.
+	//
 	// example:
 	//
 	// exact
 	NameMatchType *string `json:"NameMatchType,omitempty" xml:"NameMatchType,omitempty"`
+	// The page number, starting from 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 100. Maximum value: 500.
+	//
 	// example:
 	//
 	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The associated record ID. You can call the [ListRecords](https://help.aliyun.com/document_detail/2850265.html) operation to obtain the record ID.
+	//
 	// example:
 	//
 	// 1234567890123
 	RecordId *int64 `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 744571165985008
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The SaaS domain name status. Valid values:
+	//
+	// - **pending**: pending verification.
+	//
+	// - **active**: activated.
+	//
+	// - **conflicted**: occupied.
+	//
+	// - **offline**: offline.
+	//
 	// example:
 	//
 	// active

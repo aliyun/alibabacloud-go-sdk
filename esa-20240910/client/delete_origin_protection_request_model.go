@@ -14,7 +14,7 @@ type iDeleteOriginProtectionRequest interface {
 }
 
 type DeleteOriginProtectionRequest struct {
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	// The site ID. For more information, see the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
 	//
 	// This parameter is required.
 	//

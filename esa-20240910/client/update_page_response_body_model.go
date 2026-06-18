@@ -14,7 +14,7 @@ type iUpdatePageResponseBody interface {
 }
 
 type UpdatePageResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

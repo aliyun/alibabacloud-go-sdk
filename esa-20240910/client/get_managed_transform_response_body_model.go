@@ -22,34 +22,39 @@ type iGetManagedTransformResponseBody interface {
 }
 
 type GetManagedTransformResponseBody struct {
-	// Add visitor geolocation header. Value range:
+	// Indicates whether a header that contains the visitor\\"s geolocation is added. Valid values:
 	//
-	// - on: Enable.
+	// - on: Enables this feature.
 	//
-	// - off: Disable.
+	// - off: Disables this feature.
 	//
 	// example:
 	//
 	// on
 	AddClientGeolocationHeader *string `json:"AddClientGeolocationHeader,omitempty" xml:"AddClientGeolocationHeader,omitempty"`
-	// Add the "ali-real-client-ip" header containing the real client IP. Value range:
+	// Indicates whether the "ali-real-client-ip" header is added to include the real client IP. Valid values:
 	//
-	// - on: Enable.
+	// - on: Enables this feature.
 	//
-	// - off: Disable.
+	// - off: Disables this feature.
 	//
 	// example:
 	//
 	// on
-	AddRealClientIpHeader  *string `json:"AddRealClientIpHeader,omitempty" xml:"AddRealClientIpHeader,omitempty"`
+	AddRealClientIpHeader *string `json:"AddRealClientIpHeader,omitempty" xml:"AddRealClientIpHeader,omitempty"`
+	// The real client IP header name.
+	//
+	// example:
+	//
+	// test-header
 	RealClientIpHeaderName *string `json:"RealClientIpHeaderName,omitempty" xml:"RealClientIpHeaderName,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE73368
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The version number of the site. For sites with version management enabled, this parameter can be used to specify the site version for which the configuration takes effect, defaulting to version 0.
+	// The version of the site for which the configuration is returned.
 	//
 	// example:
 	//

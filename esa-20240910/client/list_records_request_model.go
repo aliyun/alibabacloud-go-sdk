@@ -11,6 +11,8 @@ type iListRecordsRequest interface {
 	GoString() string
 	SetBizName(v string) *ListRecordsRequest
 	GetBizName() *string
+	SetCustomPort(v string) *ListRecordsRequest
+	GetCustomPort() *string
 	SetPageNumber(v int32) *ListRecordsRequest
 	GetPageNumber() *int32
 	SetPageSize(v int32) *ListRecordsRequest
@@ -30,61 +32,62 @@ type iListRecordsRequest interface {
 }
 
 type ListRecordsRequest struct {
-	// The business scenario of the record for acceleration. Valid values:
+	// The business scenario for acceleration. Use this parameter to filter results. Valid values:
 	//
-	// 	- **image_video**: video and image.
+	// - **image_video**: Images and videos.
 	//
-	// 	- **api**: API.
+	// - **api**: API.
 	//
-	// 	- **web**: web page.
+	// - **web**: Web page.
 	//
 	// example:
 	//
 	// web
-	BizName *string `json:"BizName,omitempty" xml:"BizName,omitempty"`
-	// The page number. Default value: **1**.
+	BizName    *string `json:"BizName,omitempty" xml:"BizName,omitempty"`
+	CustomPort *string `json:"CustomPort,omitempty" xml:"CustomPort,omitempty"`
+	// The page number. Defaults to **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: **500**.
+	// The page size. Defaults to **500**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Filters by whether the record is proxied. Valid values:
+	// Filters the results based on whether the record is proxied. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The record is proxied.
 	//
-	// 	- **false**
+	// - **false**: The record is not proxied.
 	//
 	// example:
 	//
 	// true
 	Proxied *bool `json:"Proxied,omitempty" xml:"Proxied,omitempty"`
-	// The match mode to search for the record name. Default value: exact. Valid values:
+	// The match type for the record name search. Defaults to **exact**. Valid values:
 	//
-	// 	- **prefix**: match by prefix.
+	// - **prefix**: Prefix match.
 	//
-	// 	- **suffix**: match by suffix.
+	// - **suffix**: Suffix match.
 	//
-	// 	- **exact**: exact match.
+	// - **exact**: Exact match.
 	//
-	// 	- **fuzzy**: fuzzy match.
+	// - **fuzzy**: Fuzzy match.
 	//
 	// example:
 	//
 	// fuzzy
 	RecordMatchType *string `json:"RecordMatchType,omitempty" xml:"RecordMatchType,omitempty"`
-	// The record name. This parameter specifies a filter condition for the query.
+	// The record name. Use this parameter to filter query results.
 	//
 	// example:
 	//
 	// www.example.com
 	RecordName *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	// The site ID. You can get this ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -92,23 +95,23 @@ type ListRecordsRequest struct {
 	//
 	// 1234567890123
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The origin type of the record. Only CNAME records can be filtered by using this field. Valid values:
+	// Filters the results by the record\\"s origin type. This filter applies only to CNAME records. Valid values:
 	//
-	// 	- **OSS**: OSS bucket.
+	// - **OSS**: OSS origin.
 	//
-	// 	- **S3**: S3 bucket.
+	// - **S3**: S3 origin.
 	//
-	// 	- **LB**: load balancer.
+	// - **LB**: Load balancer origin.
 	//
-	// 	- **OP**: origin pool.
+	// - **OP**: Origin pool.
 	//
-	// 	- **Domain**: domain name.
+	// - **Domain**: Domain origin.
 	//
 	// example:
 	//
 	// OSS
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The DNS record type.
+	// The DNS record type. Use this parameter to filter results.
 	//
 	// example:
 	//
@@ -126,6 +129,10 @@ func (s ListRecordsRequest) GoString() string {
 
 func (s *ListRecordsRequest) GetBizName() *string {
 	return s.BizName
+}
+
+func (s *ListRecordsRequest) GetCustomPort() *string {
+	return s.CustomPort
 }
 
 func (s *ListRecordsRequest) GetPageNumber() *int32 {
@@ -162,6 +169,11 @@ func (s *ListRecordsRequest) GetType() *string {
 
 func (s *ListRecordsRequest) SetBizName(v string) *ListRecordsRequest {
 	s.BizName = &v
+	return s
+}
+
+func (s *ListRecordsRequest) SetCustomPort(v string) *ListRecordsRequest {
+	s.CustomPort = &v
 	return s
 }
 

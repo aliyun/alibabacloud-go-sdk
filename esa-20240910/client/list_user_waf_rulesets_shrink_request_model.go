@@ -22,27 +22,49 @@ type iListUserWafRulesetsShrinkRequest interface {
 }
 
 type ListUserWafRulesetsShrinkRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// esa-xxxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The page number to return.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Specifies the execution phase of the WAF rule.
+	//
+	// - `http_whitelist`: whitelist rule
+	//
+	// - `http_custom`: custom rule
+	//
+	// - `http_managed`: managed rule
+	//
+	// - `http_anti_scan`: anti-scan rule
+	//
+	// - `http_ratelimit`: rate limit rule
+	//
+	// - `ip_access_rule`: IP access rule
+	//
+	// - `http_bot`: advanced mode bot
+	//
+	// - `http_security_level_rule`: security rule
+	//
 	// example:
 	//
-	// http_bot
+	// http_custom
 	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	// example:
-	//
-	// 1
+	// Parameters for filtering and sorting the results.
 	QueryArgsShrink *string `json:"QueryArgs,omitempty" xml:"QueryArgs,omitempty"`
 }
 

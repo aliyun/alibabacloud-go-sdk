@@ -17,7 +17,9 @@ type iDeleteSiteRequest interface {
 
 type DeleteSiteRequest struct {
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	// The ID of the site to delete. Call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain site IDs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//

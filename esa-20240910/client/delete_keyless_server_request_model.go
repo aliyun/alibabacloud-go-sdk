@@ -16,7 +16,7 @@ type iDeleteKeylessServerRequest interface {
 }
 
 type DeleteKeylessServerRequest struct {
-	// Keyless server ID。
+	// The keyless server ID.
 	//
 	// This parameter is required.
 	//
@@ -24,6 +24,8 @@ type DeleteKeylessServerRequest struct {
 	//
 	// baba39055622c008b90285a8838e****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the site, which you can get by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
+	//
 	// This parameter is required.
 	//
 	// example:

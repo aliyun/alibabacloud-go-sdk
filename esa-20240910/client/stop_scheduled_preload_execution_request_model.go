@@ -14,13 +14,13 @@ type iStopScheduledPreloadExecutionRequest interface {
 }
 
 type StopScheduledPreloadExecutionRequest struct {
-	// The ID of the prefetch plan.
+	// The prefetch plan ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// StopScheduledPreloadExecution
+	// 66599bd7397885b43804901c
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 

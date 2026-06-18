@@ -72,7 +72,7 @@ type ListEdgeContainerAppsRequest struct {
 	//
 	// example:
 	//
-	// Appid
+	// AppId
 	SearchType *string `json:"SearchType,omitempty" xml:"SearchType,omitempty"`
 }
 

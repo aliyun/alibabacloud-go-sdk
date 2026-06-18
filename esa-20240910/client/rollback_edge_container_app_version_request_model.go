@@ -29,16 +29,26 @@ type RollbackEdgeContainerAppVersionRequest struct {
 	// example:
 	//
 	// app-88068867578379****
-	AppId      *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	Percentage *int32  `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
-	// The remarks.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The deployment percentage for the target version after the rollback. Valid values: **1 to 100**. Default value: **0**.
+	//
+	// example:
+	//
+	// 50
+	Percentage *int32 `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
+	// Additional information about the rollback.
 	//
 	// example:
 	//
 	// test rollback app
-	Remarks     *string `json:"Remarks,omitempty" xml:"Remarks,omitempty"`
-	UsedPercent *bool   `json:"UsedPercent,omitempty" xml:"UsedPercent,omitempty"`
-	// The ID of version that you want to roll back.
+	Remarks *string `json:"Remarks,omitempty" xml:"Remarks,omitempty"`
+	// Specifies whether to use percentage rollback.
+	//
+	// example:
+	//
+	// true
+	UsedPercent *bool `json:"UsedPercent,omitempty" xml:"UsedPercent,omitempty"`
+	// The ID of the version to roll back to.
 	//
 	// This parameter is required.
 	//

@@ -18,13 +18,13 @@ type iUpdateTieredCacheRequest interface {
 type UpdateTieredCacheRequest struct {
 	// The tiered cache architecture mode. Valid values:
 	//
-	// 	- edge: edge tiered cache.
+	// - edge: The edge cache layer.
 	//
-	// 	- edge_smart: edge tiered cache + smart tiered cache.
+	// - edge_smart: The edge cache layer and the intelligent cache layer.
 	//
-	// 	- edge_regional: edge tiered cache + regional tiered cache.
+	// - edge_regional: The edge cache layer and the regional cache layer.
 	//
-	// 	- edge_regional_smart: edge tiered cache + regional tiered cache + smart tiered cache.
+	// - edge_regional_smart: The edge cache layer, the regional cache layer, and the intelligent cache layer.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type UpdateTieredCacheRequest struct {
 	//
 	// edge_smart
 	CacheArchitectureMode *string `json:"CacheArchitectureMode,omitempty" xml:"CacheArchitectureMode,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	// The site ID. You can get this ID by calling [ListSites](https://help.aliyun.com/document_detail/2850189.html).
 	//
 	// This parameter is required.
 	//

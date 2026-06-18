@@ -18,18 +18,27 @@ type iGetIPv6ResponseBody interface {
 }
 
 type GetIPv6ResponseBody struct {
-	// Indicates whether IPv6 is enabled. Valid values:
+	// Specifies whether IPv6 is enabled. Valid values:
 	//
-	// 	- **on**
+	// - **on**: Enabled.
 	//
-	// 	- **off**
+	// - **off**: Disabled.
 	//
 	// example:
 	//
 	// on
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The region where IPv6 is enabled. The default value is `x.x`. Valid values:
+	//
+	// - `x.x`: Global.
+	//
+	// - `cn.cn`: Chinese mainland.
+	//
+	// example:
+	//
+	// x.x
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

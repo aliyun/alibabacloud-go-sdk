@@ -16,10 +16,14 @@ type iGetUserWafRulesetResponseBody interface {
 }
 
 type GetUserWafRulesetResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The WAF rule set.
+	//
 	// example:
 	//
 	// {}
@@ -62,38 +66,72 @@ func (s *GetUserWafRulesetResponseBody) Validate() error {
 }
 
 type GetUserWafRulesetResponseBodyRuleset struct {
+	// The description of the WAF rule set.
+	//
 	// example:
 	//
 	// example
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The expression of the WAF rule set.
+	//
 	// example:
 	//
 	// ip.src == 1.1.1.1
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	// The ID of the WAF rule set.
+	//
 	// example:
 	//
 	// 10000001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the WAF rule set.
+	//
 	// example:
 	//
 	// example
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The evaluation phase of the WAF rule set. Valid values:
+	//
+	// - `http_whitelist`: A whitelist rule.
+	//
+	// - `http_custom`: A custom rule.
+	//
+	// - `http_managed`: A managed rule.
+	//
+	// - `http_anti_scan`: A scan protection rule.
+	//
+	// - `http_ratelimit`: A rate limiting rule.
+	//
+	// - `ip_access_rule`: An IP access rule.
+	//
+	// - `http_bot`: A bot management rule.
+	//
+	// - `http_security_level_rule`: A security level rule.
+	//
 	// example:
 	//
 	// http_custom
 	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// The position of the WAF rule set.
+	//
 	// example:
 	//
 	// 1
 	Position *int64 `json:"Position,omitempty" xml:"Position,omitempty"`
+	// A list of rules in the WAF rule set.
+	//
 	// example:
 	//
 	// [{}]
 	Rules []*GetUserWafRulesetResponseBodyRulesetRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	// The shared configuration of the WAF rule set.
+	//
 	// example:
 	//
 	// {}
 	Shared *WafBatchRuleShared `json:"Shared,omitempty" xml:"Shared,omitempty"`
+	// The status of the WAF rule set.
+	//
 	// example:
 	//
 	// on
@@ -208,14 +246,28 @@ func (s *GetUserWafRulesetResponseBodyRuleset) Validate() error {
 }
 
 type GetUserWafRulesetResponseBodyRulesetRules struct {
+	// The action for the rule. Valid values:
+	//
+	// - `deny`: Blocks the request.
+	//
+	// - `monitor`: Monitors the request.
+	//
+	// - `js`: Triggers a JS challenge.
+	//
+	// - `captcha`: Triggers a CAPTCHA challenge.
+	//
 	// example:
 	//
 	// deny
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// A list of WAF rule statistics fields.
+	//
 	// example:
 	//
 	// ["http.host"]
 	CharacteristicsFields []*string `json:"CharacteristicsFields,omitempty" xml:"CharacteristicsFields,omitempty" type:"Repeated"`
+	// The WAF rule configuration.
+	//
 	// example:
 	//
 	// {
@@ -230,43 +282,84 @@ type GetUserWafRulesetResponseBodyRulesetRules struct {
 	//
 	// }
 	Config *WafRuleConfig `json:"Config,omitempty" xml:"Config,omitempty"`
+	// A list of WAF rule match fields.
+	//
 	// example:
 	//
 	// ["ip.src"]
 	Fields []*string `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
+	// The ID of the WAF rule.
+	//
 	// example:
 	//
 	// 20000001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the WAF rule.
+	//
 	// example:
 	//
 	// example
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The evaluation phase of the WAF rule. Valid values:
+	//
+	// - `http_whitelist`: A whitelist rule.
+	//
+	// - `http_custom`: A custom rule.
+	//
+	// - `http_managed`: A managed rule.
+	//
+	// - `http_anti_scan`: A scan protection rule.
+	//
+	// - `http_ratelimit`: A rate limiting rule.
+	//
+	// - `ip_access_rule`: An IP access rule.
+	//
+	// - `http_bot`: A bot management rule.
+	//
+	// - `http_security_level_rule`: A security level rule.
+	//
 	// example:
 	//
 	// http_custom
 	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// The position of the WAF rule.
+	//
 	// example:
 	//
 	// 1
 	Position *int64 `json:"Position,omitempty" xml:"Position,omitempty"`
+	// The ID of the WAF rule set.
+	//
 	// example:
 	//
 	// 10000001
 	RulesetId *int64 `json:"RulesetId,omitempty" xml:"RulesetId,omitempty"`
+	// The skip mode for the WAF rule.
+	//
 	// example:
 	//
 	// all
 	Skip *string `json:"Skip,omitempty" xml:"Skip,omitempty"`
+	// The status of the WAF rule.
+	//
 	// example:
 	//
 	// on
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The phases that the rule skips.
+	//
 	// example:
 	//
 	// ["http_custom"]
 	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	Type *string   `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The type of the WAF rule.
+	//
+	// example:
+	//
+	// http_ratelimit
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The time the WAF rule was last updated.
+	//
 	// example:
 	//
 	// 2025-07-07T15:00:00Z

@@ -28,7 +28,7 @@ type iUpdateCustomResponseCodeRuleRequest interface {
 }
 
 type UpdateCustomResponseCodeRuleRequest struct {
-	// The ID of the configuration.
+	// The configuration ID.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type UpdateCustomResponseCodeRuleRequest struct {
 	//
 	// 352816096987136
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// Response page.
+	// The response page.
 	//
 	// example:
 	//
@@ -48,39 +48,39 @@ type UpdateCustomResponseCodeRuleRequest struct {
 	//
 	// 200
 	ReturnCode *string `json:"ReturnCode,omitempty" xml:"ReturnCode,omitempty"`
-	// The content of the rule. A conditional expression is used to match a user request. You do not need to set this parameter when you add global configurations. Use cases:
+	// The rule content. Use a conditional expression to match user requests. Do not set this parameter when adding a global configuration. There are two scenarios:
 	//
-	// 	- true: Match all incoming requests.
+	// - Match all incoming requests: Set the value to \\`true\\`.
 	//
-	// 	- Set the value to a custom expression, for example, (http.host eq "video.example.com"): Match the specified request.
+	// - Match specific requests: Set the value to a custom expression, such as: \\`(http.host eq "video.example.com")\\`.
 	//
 	// example:
 	//
 	// (http.host eq "video.example.com")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// Specifies whether to enable the rule. Valid values: You do not need to set this parameter when you add global configurations. Valid values:
+	// The rule switch. Do not set this parameter when adding a global configuration. Valid values:
 	//
-	// 	- on
+	// - on: Enable the rule.
 	//
-	// 	- off
+	// - off: Disable the rule.
 	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	// The rule name. You do not need to set this parameter when you add global configurations.
+	// The rule name. Do not set this parameter when adding a global configuration.
 	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The order in which the rule is executed. A smaller value gives priority to the rule.
+	// The rule execution order. A smaller value indicates higher priority.
 	//
 	// example:
 	//
 	// 1
 	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	// The site ID. Get it by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
 	//
 	// This parameter is required.
 	//

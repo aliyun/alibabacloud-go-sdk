@@ -20,20 +20,25 @@ type iListWafTemplateRulesShrinkRequest interface {
 }
 
 type ListWafTemplateRulesShrinkRequest struct {
+	// The instance ID.
+	//
+	// example:
+	//
+	// esa-site-aud6ftk57ym8
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// WAF operation phase, used to filter template rules for a specific phase.
+	// The WAF running phase for filtering template rules.
 	//
 	// example:
 	//
 	// http_anti_scan
 	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	// Query parameters, used to filter template rules based on conditions such as rule type.
+	// The query parameters for filtering template rules by criteria such as the rule type.
 	//
 	// example:
 	//
 	// http_anti_scan
 	QueryArgsShrink *string `json:"QueryArgs,omitempty" xml:"QueryArgs,omitempty"`
-	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
+	// The site ID. To obtain this ID, call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
 	//
 	// example:
 	//

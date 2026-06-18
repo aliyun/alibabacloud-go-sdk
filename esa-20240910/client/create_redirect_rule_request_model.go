@@ -32,11 +32,11 @@ type iCreateRedirectRuleRequest interface {
 }
 
 type CreateRedirectRuleRequest struct {
-	// Preserve query string. Value range:
+	// Specifies whether to preserve the query string from the original request. Valid values:
 	//
-	// - on: Enabled.
+	// - `on`: Preserves the query string.
 	//
-	// - off: Disabled.
+	// - `off`: Discards the query string.
 	//
 	// This parameter is required.
 	//
@@ -44,34 +44,39 @@ type CreateRedirectRuleRequest struct {
 	//
 	// on
 	ReserveQueryString *string `json:"ReserveQueryString,omitempty" xml:"ReserveQueryString,omitempty"`
-	// Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+	// The rule content, which is a conditional expression used to match user requests. Do not set this parameter when adding a global configuration. The following use cases are supported:
 	//
-	// - To match all incoming requests: Set the value to true
+	// - To match all incoming requests, set the value to `true`.
 	//
-	// - To match specific requests: Set the value to a custom expression, e.g., (http.host eq \\"video.example.com\\")
+	// - To match specific requests, set the value to a custom expression, such as `(http.host eq "video.example.com")`.
 	//
 	// example:
 	//
 	// (http.host eq "video.example.com")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// Rule switch. This parameter is not required when adding a global configuration. Value range:
+	// Specifies whether to enable the rule. Do not set this parameter when adding a global configuration. Valid values:
 	//
-	// - on: Enabled.
+	// - `on`: The rule is enabled.
 	//
-	// - off: Disabled.
+	// - `off`: The rule is disabled.
 	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	// Rule name. This parameter is not required when adding a global configuration.
+	// The rule name. Do not set this parameter when adding a global configuration.
 	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	Sequence *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+	// The execution priority of the rule. A smaller value indicates a higher priority.
+	//
+	// example:
+	//
+	// 1
+	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// The site ID. To get this value, call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -79,13 +84,13 @@ type CreateRedirectRuleRequest struct {
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// Version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the version of the site for which the configuration will take effect. The default is version 0.
+	// For sites with configuration version management enabled, specify the version to which this configuration applies.
 	//
 	// example:
 	//
 	// 0
 	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
-	// Response status code used by the node to respond to the client with the redirect address. Value range:
+	// The status code that the edge node returns to the client for the redirect. Valid values:
 	//
 	// - 301
 	//
@@ -103,7 +108,7 @@ type CreateRedirectRuleRequest struct {
 	//
 	// 301
 	StatusCode *string `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
-	// Target URL after redirection.
+	// The target URL for the redirect.
 	//
 	// This parameter is required.
 	//
@@ -111,11 +116,11 @@ type CreateRedirectRuleRequest struct {
 	//
 	// http://www.exapmle.com/index.html
 	TargetUrl *string `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
-	// Redirect type. Value range:
+	// The redirect type. Valid values:
 	//
-	// - static: Static mode.
+	// - `static`: Static mode.
 	//
-	// - dynamic: Dynamic mode.
+	// - `dynamic`: Dynamic mode.
 	//
 	// This parameter is required.
 	//

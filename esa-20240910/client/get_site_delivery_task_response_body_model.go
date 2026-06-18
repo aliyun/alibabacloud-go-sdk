@@ -40,15 +40,15 @@ type iGetSiteDeliveryTaskResponseBody interface {
 }
 
 type GetSiteDeliveryTaskResponseBody struct {
-	// The log category. Valid values:
+	// The type of real-time log for Dynamic Route for CDN (DCDN). Valid values:
 	//
-	// 	- dcdn_log_access_l1 (default): access logs.
+	// - **dcdn_log_access_l1*	- (default): access log.
 	//
-	// 	- dcdn_log_er: Edge Routine logs.
+	// - **dcdn_log_er**: edge function log.
 	//
-	// 	- dcdn_log_waf: firewall logs.
+	// - **dcdn_log_waf**: WAF log.
 	//
-	// 	- dcdn_log_ipa: TCP/UDP proxy logs.
+	// - **dcdn_log_ipa**: layer 4 acceleration log.
 	//
 	// example:
 	//
@@ -56,27 +56,27 @@ type GetSiteDeliveryTaskResponseBody struct {
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
 	// The data center. Valid values:
 	//
-	// 1.  cn: the Chinese mainland.
+	// - **cn**: Chinese mainland.
 	//
-	// 2.  sg: outside the Chinese mainland.
+	// - **sg**: Global (excluding Chinese mainland). Note that the value for this region is "sg".
 	//
 	// example:
 	//
 	// cn
 	DataCenter *string `json:"DataCenter,omitempty" xml:"DataCenter,omitempty"`
-	// The destination of the delivery. Valid values:
+	// The delivery type. Valid values:
 	//
-	// 1.  sls: Alibaba Cloud Simple Log Service (SLS).
+	// - **sls**: Log Service.
 	//
-	// 2.  http: HTTP server.
+	// - **http**: HTTP service.
 	//
-	// 3.  aws3: Amazon Simple Storage Service (S3).
+	// - **aws3**: Amazon S3.
 	//
-	// 4.  oss: Alibaba Cloud Object Storage Service (OSS).
+	// - **oss**: Object Storage Service.
 	//
-	// 5.  kafka: Kafka.
+	// - **kafka**: Kafka service.
 	//
-	// 6.  aws3cmpt: S3-compatible storage service.
+	// - **aws3cmpt**: Amazon S3-compatible service.
 	//
 	// example:
 	//
@@ -88,13 +88,13 @@ type GetSiteDeliveryTaskResponseBody struct {
 	//
 	// 0.0
 	DiscardRate *float32 `json:"DiscardRate,omitempty" xml:"DiscardRate,omitempty"`
-	// The log fields.
+	// A comma-separated list of log fields to deliver.
 	//
 	// example:
 	//
 	// Client,UserAgent
 	FieldList *string `json:"FieldList,omitempty" xml:"FieldList,omitempty"`
-	// The filtering rules.
+	// The filter rules.
 	//
 	// example:
 	//
@@ -114,29 +114,29 @@ type GetSiteDeliveryTaskResponseBody struct {
 	//
 	// {\\"Region\\": \\"cn-hangzhou\\", \\"Endpoint\\": \\"https://***.oss-cn-hangzhou.aliyuncs.com\\", \\"BucketPath\\": \\"hjy-test002/online-logs\\"}
 	SinkConfig interface{} `json:"SinkConfig,omitempty" xml:"SinkConfig,omitempty"`
-	// The website ID.
+	// The site ID.
 	//
 	// example:
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The website name.
+	// The site name.
 	//
 	// example:
 	//
 	// test.***.com
 	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
-	// The status of the delivery task.
+	// The status of the task. Valid values:
 	//
-	// 	- **online**
+	// - **online**: The task is delivering logs.
 	//
-	// 	- **offline**
+	// - **offline**: The task is paused.
 	//
 	// example:
 	//
 	// online
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The name of the delivery task.
+	// The task name.
 	//
 	// example:
 	//

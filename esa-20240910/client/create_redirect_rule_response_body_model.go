@@ -16,13 +16,13 @@ type iCreateRedirectRuleResponseBody interface {
 }
 
 type CreateRedirectRuleResponseBody struct {
-	// Configuration ID.
+	// The config ID.
 	//
 	// example:
 	//
 	// 35281609698****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

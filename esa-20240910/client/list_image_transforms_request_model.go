@@ -26,43 +26,43 @@ type iListImageTransformsRequest interface {
 }
 
 type ListImageTransformsRequest struct {
-	// Configuration ID. Can be obtained by calling the [ListImageTransforms](https://help.aliyun.com/document_detail/2869056.html) interface.
+	// The configuration ID. Obtain this ID when you create an image transform or from a previous call to this operation.
 	//
 	// example:
 	//
 	// 352816096987136
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// Configuration type, which can be used to query global or rule configurations. Possible values:
+	// The configuration type. You can use this parameter to query for a global configuration or rule configurations. Valid values:
 	//
-	// - global: Query global configuration;
+	// - `global`: Retrieves the global configuration.
 	//
-	// - rule: Query rule configuration;
+	// - `rule`: Retrieves rule configurations.
 	//
-	// This parameter is optional. If not provided, it will not distinguish between global and rule configurations.
+	// This parameter is optional. If not specified, both global and rule configurations are returned.
 	//
 	// example:
 	//
 	// global
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
-	// Page number. The default value is 1 if not provided.
+	// The page number to return. Default: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Number of items per page. The maximum value is 500, and the default value is 500 if not provided.
+	// The number of entries to return per page. Maximum: 500. Default: 500.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Rule name. This parameter is not required when adding a global configuration.
+	// The rule name. This parameter is not required for a global configuration.
 	//
 	// example:
 	//
 	// test1
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// Site ID. Can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+	// The site ID. Call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain this ID.
 	//
 	// This parameter is required.
 	//
@@ -70,7 +70,7 @@ type ListImageTransformsRequest struct {
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// Site version number. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration takes effect. The default value is version 0.
+	// The site version. If version management is enabled for the site, use this parameter to specify the version to which the configuration applies. Default: 0.
 	//
 	// example:
 	//

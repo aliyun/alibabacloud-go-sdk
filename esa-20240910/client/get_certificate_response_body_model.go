@@ -24,33 +24,33 @@ type iGetCertificateResponseBody interface {
 }
 
 type GetCertificateResponseBody struct {
-	// Certificate content.
+	// The certificate content in PEM format.
 	//
 	// example:
 	//
 	// -----BEGIN CERTIFICATE-----
 	Certificate *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
-	// Request ID.
+	// The unique ID for the request.
 	//
 	// example:
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE73368
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The certificate information.
+	// Detailed certificate information.
 	Result *GetCertificateResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// Site ID.
+	// The site ID.
 	//
 	// example:
 	//
 	// 1234567890123
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// Site name.
+	// The site name.
 	//
 	// example:
 	//
 	// example.com
 	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
-	// Certificate status.
+	// The certificate status.
 	//
 	// example:
 	//
@@ -130,31 +130,31 @@ func (s *GetCertificateResponseBody) Validate() error {
 }
 
 type GetCertificateResponseBodyResult struct {
-	// The error code returned for certificate application.
+	// The error code for the certificate application process.
 	//
 	// example:
 	//
 	// 2
 	ApplyCode *int64 `json:"ApplyCode,omitempty" xml:"ApplyCode,omitempty"`
-	// The error message returned for certificate application.
+	// The error message for the certificate application process.
 	//
 	// example:
 	//
 	// canceled
 	ApplyMessage *string `json:"ApplyMessage,omitempty" xml:"ApplyMessage,omitempty"`
-	// Cloud certificate ID.
+	// The ID of the CAS certificate.
 	//
 	// example:
 	//
 	// 30000478
 	CasId *string `json:"CasId,omitempty" xml:"CasId,omitempty"`
-	// Common Name (CN) field of the certificate.
+	// The Common Name (CN) field of the certificate.
 	//
 	// example:
 	//
 	// www.example.com
 	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
-	// Creation time.
+	// The time when the certificate record was created.
 	//
 	// example:
 	//
@@ -162,92 +162,97 @@ type GetCertificateResponseBodyResult struct {
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The Domain Control Validation (DCV) information.
 	DCV []*GetCertificateResponseBodyResultDCV `json:"DCV,omitempty" xml:"DCV,omitempty" type:"Repeated"`
-	// SHA256 fingerprint of the certificate.
+	// The SHA-256 fingerprint of the certificate.
 	//
 	// example:
 	//
 	// 1dc5fc9af4eead2570c70d94b416130baeb6d4429b51fd3557379588456aca66
 	FingerprintSha256 *string `json:"FingerprintSha256,omitempty" xml:"FingerprintSha256,omitempty"`
-	// Certificate ID.
+	// The certificate ID.
 	//
 	// example:
 	//
 	// babaded901474b9693acf530e0fb1d95
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Certificate issuer.
+	// The certificate issuer.
 	//
 	// example:
 	//
 	// DigiCert
 	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
-	// Certificate issuing authority.
+	// The issuer\\"s Common Name (CN).
 	//
 	// example:
 	//
 	// DigiCert Global Root CA
-	IssuerCN    *string `json:"IssuerCN,omitempty" xml:"IssuerCN,omitempty"`
+	IssuerCN *string `json:"IssuerCN,omitempty" xml:"IssuerCN,omitempty"`
+	// The Keyless server ID. This parameter is returned only when the value of `Type` is `keyless`.
+	//
+	// example:
+	//
+	// baba39055622c008b90285a8838e****
 	KeyServerId *string `json:"KeyServerId,omitempty" xml:"KeyServerId,omitempty"`
-	// Certificate name.
+	// The certificate name.
 	//
 	// example:
 	//
 	// yourCertName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// End time of the certificate validity period.
+	// The end of the certificate\\"s validity period.
 	//
 	// example:
 	//
 	// 2023-11-26T16:00:00Z
 	NotAfter *string `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
-	// Start time of the certificate validity period.
+	// The start of the certificate\\"s validity period.
 	//
 	// example:
 	//
 	// 2023-11-26T16:00:00Z
 	NotBefore *string `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
-	// Certificate public key algorithm.
+	// The algorithm of the certificate\\"s public key.
 	//
 	// example:
 	//
 	// ECDSA
 	PubAlg *string `json:"PubAlg,omitempty" xml:"PubAlg,omitempty"`
-	// Region.
+	// The region where the certificate is stored.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// Subject Alternative Name (SAN) of the certificate.
+	// The Subject Alternative Name (SAN) field, which specifies the host names covered by the certificate.
 	//
 	// example:
 	//
 	// www.example.com,*.example.com
 	SAN *string `json:"SAN,omitempty" xml:"SAN,omitempty"`
-	// Serial number of the certificate.
+	// The unique serial number assigned to the certificate by the issuer.
 	//
 	// example:
 	//
 	// babaded901474b9693acf530e0fb1daa
 	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
-	// Certificate signature algorithm.
+	// The algorithm used to sign the certificate.
 	//
 	// example:
 	//
 	// ECDSA-SHA1
 	SigAlg *string `json:"SigAlg,omitempty" xml:"SigAlg,omitempty"`
-	// Certificate status.
+	// The certificate status.
 	//
 	// example:
 	//
 	// OK
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Certificate type.
+	// The certificate type.
 	//
 	// example:
 	//
 	// free
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// Update time.
+	// The time when the certificate record was last updated.
 	//
 	// example:
 	//
@@ -481,25 +486,25 @@ type GetCertificateResponseBodyResultDCV struct {
 	//
 	// bababf7cdd1546a2ad04c0def1f4c980
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The DCV name. It is a TXT record name if Type is DNS or URL if Type is HTTP.
+	// The DCV name. For DNS, this is the TXT record name. For HTTP, this is the URL.
 	//
 	// example:
 	//
 	// http://www.example.com/.well-known/acme-challenge/pH20CqwS5L3ZnvkhI436DCzadKFuG7QcUcvB_4KsAow
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The verification status.
+	// The status of the DCV check.
 	//
 	// example:
 	//
 	// pending
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The DCV type. Valid values: DNS and HTTP.
+	// The DCV type. Valid values: `DNS` and `HTTP`.
 	//
 	// example:
 	//
 	// HTTP
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The DCV content.
+	// The value required for the DCV check. For a DNS check, this is the TXT record value. For an HTTP check, this is the content of the validation file.
 	//
 	// example:
 	//

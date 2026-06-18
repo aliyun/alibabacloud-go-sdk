@@ -26,43 +26,43 @@ type iListOriginRulesRequest interface {
 }
 
 type ListOriginRulesRequest struct {
-	// Configuration ID.
+	// The configuration ID.
 	//
 	// example:
 	//
 	// 35281609698****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// Configuration type, which can be used to query global or rule configurations. Value range:
+	// Filters the results by configuration type. Valid values:
 	//
-	// - global: Query global configuration.
+	// - `global`: Queries the global configuration.
 	//
-	// - rule: Query rule configuration.
+	// - `rule`: Queries rule configurations.
 	//
-	// This parameter is optional; if not provided, it does not distinguish between global and rule configurations.
+	// If you do not specify this parameter, the operation returns both global and rule configurations.
 	//
 	// example:
 	//
 	// global
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
-	// Page number, defaulting to 1 if not provided.
+	// The page number. The default value is 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Number of items per page, with a maximum of 500. Defaults to 500 if not provided.
+	// The number of entries to return on each page. The maximum value is 500, and the default value is 20.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Rule name. This parameter is not required when adding a global configuration.
+	// The rule name. This parameter is not required when querying the global configuration.
 	//
 	// example:
 	//
 	// test
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+	// The site ID. You can obtain this ID by calling the [ListSites](~~ListSites~~) operation.
 	//
 	// This parameter is required.
 	//
@@ -70,7 +70,7 @@ type ListOriginRulesRequest struct {
 	//
 	// 1234567890123
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// Version number of the site. For sites with version management enabled, this parameter can specify the version of the site for which the configuration is effective, defaulting to version 0.
+	// Specifies the site version to query. This parameter applies only to sites that have version management enabled. The default value is 0.
 	//
 	// example:
 	//

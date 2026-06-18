@@ -16,13 +16,13 @@ type iCreateHttpsApplicationConfigurationResponseBody interface {
 }
 
 type CreateHttpsApplicationConfigurationResponseBody struct {
-	// Configuration ID.
+	// The ID of the configuration.
 	//
 	// example:
 	//
 	// 352816096987136
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// Request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

@@ -16,13 +16,13 @@ type iCreateTransportLayerApplicationResponseBody interface {
 }
 
 type CreateTransportLayerApplicationResponseBody struct {
-	// Layer 4 application ID
+	// The Layer 4 application ID.
 	//
 	// example:
 	//
 	// 165503967****
 	ApplicationId *int64 `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

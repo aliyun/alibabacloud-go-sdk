@@ -16,9 +16,9 @@ type iGetWafQuotaResponseBody interface {
 }
 
 type GetWafQuotaResponseBody struct {
-	// Returned quota information.
+	// The quota details.
 	Quota *GetWafQuotaResponseBodyQuota `json:"Quota,omitempty" xml:"Quota,omitempty" type:"Struct"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,15 +62,17 @@ func (s *GetWafQuotaResponseBody) Validate() error {
 }
 
 type GetWafQuotaResponseBodyQuota struct {
+	// The quota for captcha rules.
 	Captcha *GetWafQuotaResponseBodyQuotaCaptcha `json:"Captcha,omitempty" xml:"Captcha,omitempty" type:"Struct"`
-	// Quota information related to custom lists.
+	// The quota for custom lists.
 	List *GetWafQuotaResponseBodyQuotaList `json:"List,omitempty" xml:"List,omitempty" type:"Struct"`
-	// Quota information related to the WAF managed rules group.
+	// The quota for WAF managed rule groups.
 	ManagedRulesGroup *GetWafQuotaResponseBodyQuotaManagedRulesGroup `json:"ManagedRulesGroup,omitempty" xml:"ManagedRulesGroup,omitempty" type:"Struct"`
-	// Quota information related to custom response pages.
+	// The quota for custom response pages.
 	Page *GetWafQuotaResponseBodyQuotaPage `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
-	// Quota information related to scene protection.
-	ScenePolicy       *GetWafQuotaResponseBodyQuotaScenePolicy       `json:"ScenePolicy,omitempty" xml:"ScenePolicy,omitempty" type:"Struct"`
+	// The quota for scenario protection.
+	ScenePolicy *GetWafQuotaResponseBodyQuotaScenePolicy `json:"ScenePolicy,omitempty" xml:"ScenePolicy,omitempty" type:"Struct"`
+	// The quota for slider captcha pages.
 	SliderCaptchaPage *GetWafQuotaResponseBodyQuotaSliderCaptchaPage `json:"SliderCaptchaPage,omitempty" xml:"SliderCaptchaPage,omitempty" type:"Struct"`
 }
 
@@ -171,7 +173,9 @@ func (s *GetWafQuotaResponseBodyQuota) Validate() error {
 }
 
 type GetWafQuotaResponseBodyQuotaCaptcha struct {
-	Enable      *bool            `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// Whether captcha rules are enabled.
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The maximum number of captcha rules allowed.
 	NumberTotal *WafQuotaInteger `json:"NumberTotal,omitempty" xml:"NumberTotal,omitempty"`
 }
 
@@ -211,15 +215,15 @@ func (s *GetWafQuotaResponseBodyQuotaCaptcha) Validate() error {
 }
 
 type GetWafQuotaResponseBodyQuotaList struct {
-	// Indicates whether the custom list is enabled.
+	// Whether the custom list feature is enabled.
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// An object containing quota information for each type of item in the custom list.
+	// The quota for each item type in a custom list.
 	Items map[string]*QuotaListItemsValue `json:"Items,omitempty" xml:"Items,omitempty"`
-	// The number quota allowed per custom list.
+	// The maximum number of items allowed per custom list.
 	NumberItemsPerList *WafQuotaInteger `json:"NumberItemsPerList,omitempty" xml:"NumberItemsPerList,omitempty"`
-	// The total number quota allowed for items in all custom lists.
+	// The maximum number of items allowed across all custom lists.
 	NumberItemsTotal *WafQuotaInteger `json:"NumberItemsTotal,omitempty" xml:"NumberItemsTotal,omitempty"`
-	// The total number quota allowed for custom lists.
+	// The maximum number of custom lists allowed.
 	NumberTotal *WafQuotaInteger `json:"NumberTotal,omitempty" xml:"NumberTotal,omitempty"`
 }
 
@@ -296,9 +300,9 @@ func (s *GetWafQuotaResponseBodyQuotaList) Validate() error {
 }
 
 type GetWafQuotaResponseBodyQuotaManagedRulesGroup struct {
-	// Indicates whether the WAF managed rules group is enabled.
+	// Whether the WAF managed rule group feature is enabled.
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The total number quota allowed for the WAF managed rules group.
+	// The maximum number of WAF managed rule groups allowed.
 	NumberTotal *WafQuotaInteger `json:"NumberTotal,omitempty" xml:"NumberTotal,omitempty"`
 }
 
@@ -338,11 +342,11 @@ func (s *GetWafQuotaResponseBodyQuotaManagedRulesGroup) Validate() error {
 }
 
 type GetWafQuotaResponseBodyQuotaPage struct {
-	// An object containing quota information for each Content-Type in custom response pages.
+	// The quota for each Content-Type in a custom response page.
 	ContentTypes map[string]*QuotaPageContentTypesValue `json:"ContentTypes,omitempty" xml:"ContentTypes,omitempty"`
-	// Indicates whether the custom response page is enabled.
+	// Whether the custom response page feature is enabled.
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The total number quota allowed for custom response pages.
+	// The maximum number of custom response pages allowed.
 	NumberTotal *WafQuotaInteger `json:"NumberTotal,omitempty" xml:"NumberTotal,omitempty"`
 }
 
@@ -391,9 +395,9 @@ func (s *GetWafQuotaResponseBodyQuotaPage) Validate() error {
 }
 
 type GetWafQuotaResponseBodyQuotaScenePolicy struct {
-	// Indicates whether the scene protection feature is enabled.
+	// Whether the scenario protection feature is enabled.
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The total number quota for scene protection rules.
+	// The maximum number of scenario protection rules allowed.
 	NumberTotal *WafQuotaInteger `json:"NumberTotal,omitempty" xml:"NumberTotal,omitempty"`
 }
 
@@ -433,6 +437,7 @@ func (s *GetWafQuotaResponseBodyQuotaScenePolicy) Validate() error {
 }
 
 type GetWafQuotaResponseBodyQuotaSliderCaptchaPage struct {
+	// Whether slider captcha pages are enabled.
 	Enable      *bool            `json:"Enable,omitempty" xml:"Enable,omitempty"`
 	NumberTotal *WafQuotaInteger `json:"NumberTotal,omitempty" xml:"NumberTotal,omitempty"`
 }

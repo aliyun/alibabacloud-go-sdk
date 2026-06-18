@@ -32,13 +32,13 @@ type DeleteOriginCaCertificateResponseBody struct {
 	//
 	// C370DAF1-C838-4288-A1A0-9A87633D248E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The website ID.
+	// The site ID.
 	//
 	// example:
 	//
 	// 123456789****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The website name.
+	// The site name.
 	//
 	// example:
 	//

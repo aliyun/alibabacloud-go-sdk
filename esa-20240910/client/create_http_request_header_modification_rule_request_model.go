@@ -26,38 +26,43 @@ type iCreateHttpRequestHeaderModificationRuleRequest interface {
 }
 
 type CreateHttpRequestHeaderModificationRuleRequest struct {
-	// Modify request headers, supporting add, delete, and modify operations.
+	// An array of objects that define Request Header modifications. Supported operations include add, del, and modify.
 	//
 	// This parameter is required.
 	RequestHeaderModification []*CreateHttpRequestHeaderModificationRuleRequestRequestHeaderModification `json:"RequestHeaderModification,omitempty" xml:"RequestHeaderModification,omitempty" type:"Repeated"`
-	// Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+	// The content of the Rule, which uses a Conditional Expression to match user requests. This parameter is not required when you add a global configuration. Supports two Use Cases:
 	//
-	// - To match all incoming requests: Set the value to true
+	// - To match all incoming requests, set the value to true.
 	//
-	// - To match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+	// - To match specific requests, set the value to a custom expression, for example, (http.host eq "video.example.com").
 	//
 	// example:
 	//
 	// (http.host eq "video.example.com")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// Rule switch. This parameter is not required when adding a global configuration. Possible values:
+	// Specifies whether to enable the Rule. This parameter is not required when you add a global configuration. Valid values are:
 	//
-	// - on: Enable.
+	// - on: Enables the Rule.
 	//
-	// - off: Disable.
+	// - off: Disables the Rule.
 	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	// Rule name. This parameter is not required when adding a global configuration.
+	// The name of the Rule. This parameter is not required when you add a global configuration.
 	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	Sequence *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+	// The execution order of the Rule. A smaller value indicates a higher priority.
+	//
+	// example:
+	//
+	// 1
+	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// The ID of the Site. You can get this ID by calling the [ListSites](~~ListSites~~) operation.
 	//
 	// This parameter is required.
 	//
@@ -65,7 +70,7 @@ type CreateHttpRequestHeaderModificationRuleRequest struct {
 	//
 	// 5407498413****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// Version number of the site configuration. For sites with version management enabled, this parameter can specify the version to which the configuration applies, defaulting to version 0.
+	// The Version of the Site configuration. For a Site with configuration versioning enabled, this parameter specifies the configuration\\"s target Version. The default value is 0.
 	//
 	// example:
 	//
@@ -158,7 +163,7 @@ func (s *CreateHttpRequestHeaderModificationRuleRequest) Validate() error {
 }
 
 type CreateHttpRequestHeaderModificationRuleRequestRequestHeaderModification struct {
-	// Request header name.
+	// The Request Header name.
 	//
 	// This parameter is required.
 	//
@@ -166,13 +171,13 @@ type CreateHttpRequestHeaderModificationRuleRequestRequestHeaderModification str
 	//
 	// headername
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Operation type. Possible values:
+	// The operation to perform. Valid values are:
 	//
-	// - add: Add.
+	// - add: Adds a header.
 	//
-	// - del: Delete
+	// - del: Deletes a header.
 	//
-	// - modify: Modify.
+	// - modify: Modifies a header.
 	//
 	// This parameter is required.
 	//
@@ -180,8 +185,17 @@ type CreateHttpRequestHeaderModificationRuleRequestRequestHeaderModification str
 	//
 	// add
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
-	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// Request header value.
+	// The type of the header value. Valid values are:
+	//
+	// - static: Static value.
+	//
+	// - dynamic: Dynamic value.
+	//
+	// example:
+	//
+	// static
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The Request Header value.
 	//
 	// example:
 	//

@@ -14,13 +14,13 @@ type iGetRoutineRequest interface {
 }
 
 type GetRoutineRequest struct {
-	// The routine name.
+	// The name of the edge function Routine.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// GetRoutine
+	// test-routine1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

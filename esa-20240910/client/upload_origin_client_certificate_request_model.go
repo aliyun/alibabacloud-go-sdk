@@ -20,7 +20,7 @@ type iUploadOriginClientCertificateRequest interface {
 }
 
 type UploadOriginClientCertificateRequest struct {
-	// The certificate content.
+	// The content of the certificate in PEM format.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type UploadOriginClientCertificateRequest struct {
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The private key of the certificate.
+	// The private key for the certificate in PEM format.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type UploadOriginClientCertificateRequest struct {
 	//
 	// -----BEGIN PRIVATE KEY-----
 	PrivateKey *string `json:"PrivateKey,omitempty" xml:"PrivateKey,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	// The site ID. To get this ID, call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
 	//
 	// This parameter is required.
 	//

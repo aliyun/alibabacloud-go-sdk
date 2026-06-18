@@ -329,13 +329,13 @@ type ListEdgeContainerAppVersionsResponseBodyVersionsContainers struct {
 	//
 	// example:
 	//
-	// {\\"exec\\":{\\"command\\":[\\"bash\\",\\"-c\\",\\"cd /home/admin/
+	// sh poststart.sh "echo hello world"
 	PostStart *string `json:"PostStart,omitempty" xml:"PostStart,omitempty"`
 	// The command that is run before the container is stopped.
 	//
 	// example:
 	//
-	// sh stop.sh
+	// sh prestop.sh "echo hello world"
 	PreStop *string `json:"PreStop,omitempty" xml:"PreStop,omitempty"`
 	// The container probe content.
 	ProbeContent *ListEdgeContainerAppVersionsResponseBodyVersionsContainersProbeContent `json:"ProbeContent,omitempty" xml:"ProbeContent,omitempty" type:"Struct"`

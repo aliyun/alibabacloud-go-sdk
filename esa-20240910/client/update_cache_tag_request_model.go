@@ -22,9 +22,9 @@ type iUpdateCacheTagRequest interface {
 type UpdateCacheTagRequest struct {
 	// Specifies whether to ignore case sensitivity. Valid values:
 	//
-	// 	- on
+	// - on
 	//
-	// 	- off
+	// - off
 	//
 	// example:
 	//

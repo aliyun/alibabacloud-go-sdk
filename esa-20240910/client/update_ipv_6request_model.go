@@ -18,11 +18,11 @@ type iUpdateIPv6Request interface {
 }
 
 type UpdateIPv6Request struct {
-	// Specifies whether to enable IPv6. Valid values:
+	// Whether to enable IPv6. Valid values:
 	//
-	// 	- **on**
+	// - **on**: Enables IPv6.
 	//
-	// 	- **off**
+	// - **off**: Disables IPv6.
 	//
 	// This parameter is required.
 	//
@@ -30,8 +30,17 @@ type UpdateIPv6Request struct {
 	//
 	// on
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The region in which to enable IPv6. The default value is x.x.
+	//
+	// - x.x: global
+	//
+	// - cn.cn: Chinese mainland
+	//
+	// example:
+	//
+	// x.x
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	// The site ID. You can get this ID by calling [ListSites](https://help.aliyun.com/document_detail/2850189.html).
 	//
 	// This parameter is required.
 	//

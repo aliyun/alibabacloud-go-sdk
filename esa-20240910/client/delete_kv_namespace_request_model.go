@@ -14,7 +14,7 @@ type iDeleteKvNamespaceRequest interface {
 }
 
 type DeleteKvNamespaceRequest struct {
-	// The name of the namespace that you specify when you call the [CreateKvNamespace](https://help.aliyun.com/document_detail/2850317.html) operation.
+	// The name that you specified when you called [CreateKvNamespace](https://help.aliyun.com/document_detail/2850317.html).
 	//
 	// This parameter is required.
 	//

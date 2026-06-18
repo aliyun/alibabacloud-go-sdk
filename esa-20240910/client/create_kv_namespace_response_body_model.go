@@ -22,19 +22,19 @@ type iCreateKvNamespaceResponseBody interface {
 }
 
 type CreateKvNamespaceResponseBody struct {
-	// The description of the namespace.
+	// The description of the KV namespace.
 	//
 	// example:
 	//
 	// this is a test namespace.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the namespace.
+	// The name of the KV namespace.
 	//
 	// example:
 	//
 	// test_namespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The ID of the namespace.
+	// The ID of the KV namespace.
 	//
 	// example:
 	//
@@ -46,15 +46,15 @@ type CreateKvNamespaceResponseBody struct {
 	//
 	// EEEBE525-F576-1196-8DAF-2D70CA3F4D2F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the namespace. Valid values:
+	// The status of the KV namespace. Valid values:
 	//
-	// 	- **online**: working as expected.
+	// - **online**: The namespace is available.
 	//
-	// 	- **delete**: pending deletion.
+	// - **delete**: The namespace is pending deletion.
 	//
-	// 	- **deleting**: being deleted.
+	// - **deleting**: The namespace is being deleted.
 	//
-	// 	- **deleted**: deleted.
+	// - **deleted**: The namespace is deleted.
 	//
 	// example:
 	//

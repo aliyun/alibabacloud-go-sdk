@@ -22,21 +22,28 @@ type iDescribeHttpDDoSIntelligentRateLimitRulesResponseBody interface {
 }
 
 type DescribeHttpDDoSIntelligentRateLimitRulesResponseBody struct {
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
-	RequestId *string                                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of rules.
 	RuleInfos []*DescribeHttpDDoSIntelligentRateLimitRulesResponseBodyRuleInfos `json:"RuleInfos,omitempty" xml:"RuleInfos,omitempty" type:"Repeated"`
+	// The total number of rules.
+	//
 	// example:
 	//
 	// 100
@@ -110,38 +117,56 @@ func (s *DescribeHttpDDoSIntelligentRateLimitRulesResponseBody) Validate() error
 }
 
 type DescribeHttpDDoSIntelligentRateLimitRulesResponseBodyRuleInfos struct {
+	// The action to perform.
+	//
 	// example:
 	//
 	// js
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// The conditions that trigger the rule.
+	//
 	// example:
 	//
 	// {"$and":[{"key":"URI","opValue":"prefix-match","values":"/"}]}
 	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	// The ID of the protection rule for log records.
+	//
 	// example:
 	//
 	// 100030
 	LogRuleId *int64 `json:"LogRuleId,omitempty" xml:"LogRuleId,omitempty"`
+	// The duration of the penalty in seconds.
+	//
 	// example:
 	//
 	// 86400
 	PunishTime *int64 `json:"PunishTime,omitempty" xml:"PunishTime,omitempty"`
+	// The frequency information.
+	//
 	// example:
 	//
 	// {"threshold":2000,"interval":5,"target":"ip","ttl":600}
 	RateLimit *string `json:"RateLimit,omitempty" xml:"RateLimit,omitempty"`
+	// The name of the record.
+	//
 	// example:
 	//
 	// test.example.com
 	RecordName *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
+	// The ID of the rule.
+	//
 	// example:
 	//
 	// 20110849
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The name of the rule.
+	//
 	// example:
 	//
 	// inner_cc_client_ip_ratelimit
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The statistics.
+	//
 	// example:
 	//
 	// {"field":"ip","mode":"count"}

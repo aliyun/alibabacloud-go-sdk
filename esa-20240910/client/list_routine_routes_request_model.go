@@ -18,19 +18,19 @@ type iListRoutineRoutesRequest interface {
 }
 
 type ListRoutineRoutesRequest struct {
-	// The page number. Default value: 1.
+	// The page number. The default value is 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Maximum value: 500. Default value: 500.
+	// The number of entries per page. The maximum value is 500. The default value is 500.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The function name.
+	// The name of the Edge Function routine.
 	//
 	// This parameter is required.
 	//

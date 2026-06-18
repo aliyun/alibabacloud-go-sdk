@@ -28,21 +28,21 @@ type ListCertificatesByRecordResponseBody struct {
 	//
 	// 65C66B7B-671A-8297-9187-2R5477247B76
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The queried certificates.
+	// An array of record details.
 	Result []*ListCertificatesByRecordResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	// The website ID,
+	// The site ID.
 	//
 	// example:
 	//
 	// 1234567890123
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The website name.
+	// The site name.
 	//
 	// example:
 	//
 	// example.com
 	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
-	// The total number of records that you specified.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -117,27 +117,27 @@ func (s *ListCertificatesByRecordResponseBody) Validate() error {
 }
 
 type ListCertificatesByRecordResponseBodyResult struct {
-	// The number of certificates that are being requested.
+	// The number of certificate requests in progress.
 	//
 	// example:
 	//
 	// 1
 	ApplylingCount *int64 `json:"ApplylingCount,omitempty" xml:"ApplylingCount,omitempty"`
-	// The certificates that match the specified records.
+	// A list of certificates matching the record.
 	Certificates []*ListCertificatesByRecordResponseBodyResultCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
-	// The number of certificates that match the specified records.
+	// The number of certificates matching the record.
 	//
 	// example:
 	//
 	// 3
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The name of the record.
+	// The record name.
 	//
 	// example:
 	//
 	// www.example.com
 	RecordName *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
-	// Certificate configuration status. Possible values: none; configured; applying; failed.
+	// The certificate configuration status for the record. Valid values:
 	//
 	// example:
 	//
@@ -212,19 +212,19 @@ func (s *ListCertificatesByRecordResponseBodyResult) Validate() error {
 }
 
 type ListCertificatesByRecordResponseBodyResultCertificates struct {
-	// The certificate ID on Certificate Management Service.
+	// The ID of the Alibaba Cloud certificate.
 	//
 	// example:
 	//
 	// 30000137
 	CasId *string `json:"CasId,omitempty" xml:"CasId,omitempty"`
-	// The Common Name of the certificate.
+	// The common name of the certificate.
 	//
 	// example:
 	//
 	// www.example.com
 	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
-	// The creation time.
+	// The time when the certificate was created.
 	//
 	// example:
 	//
@@ -242,32 +242,37 @@ type ListCertificatesByRecordResponseBodyResultCertificates struct {
 	//
 	// babab022c5e9b27bf9c64d7f4b1667f4
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The certificate authority (CA) that issued the certificate.
+	// The issuer of the certificate.
 	//
 	// example:
 	//
 	// GlobalSign nv-sa
 	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
-	// The Common Name of the certificate issuer.
+	// The common name of the certificate issuer.
 	//
 	// example:
 	//
 	// GlobalSign Organization Validation CA - SHA256 - G3
-	IssuerCN    *string `json:"IssuerCN,omitempty" xml:"IssuerCN,omitempty"`
+	IssuerCN *string `json:"IssuerCN,omitempty" xml:"IssuerCN,omitempty"`
+	// The Keyless server ID. This parameter is valid only when `Type` is set to `keyless`.
+	//
+	// example:
+	//
+	// baba39055622c008b90285a8838e****
 	KeyServerId *string `json:"KeyServerId,omitempty" xml:"KeyServerId,omitempty"`
-	// The certificate name.
+	// The name of the certificate.
 	//
 	// example:
 	//
 	// yourCertName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The time when the certificate expires.
+	// The date and time when the certificate expires.
 	//
 	// example:
 	//
 	// 2024-02-28 06:17:11
 	NotAfter *string `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
-	// The time when the certificate takes effect.
+	// The date and time when the certificate becomes valid.
 	//
 	// example:
 	//
@@ -285,7 +290,7 @@ type ListCertificatesByRecordResponseBodyResultCertificates struct {
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The Subject Alternative Name (SAN) of the certificate.
+	// The Subject Alternative Names (SANs) of the certificate.
 	//
 	// example:
 	//
@@ -309,13 +314,13 @@ type ListCertificatesByRecordResponseBodyResultCertificates struct {
 	//
 	// OK
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of the SSL certificate. Valid values:
+	// The type of the certificate. Valid values:
 	//
 	// example:
 	//
 	// free
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The update time.
+	// The time when the certificate was last updated.
 	//
 	// example:
 	//

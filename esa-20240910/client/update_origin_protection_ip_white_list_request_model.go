@@ -14,7 +14,7 @@ type iUpdateOriginProtectionIpWhiteListRequest interface {
 }
 
 type UpdateOriginProtectionIpWhiteListRequest struct {
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	// Site ID. Call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to get this value.
 	//
 	// This parameter is required.
 	//

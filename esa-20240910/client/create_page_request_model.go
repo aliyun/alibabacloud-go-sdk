@@ -22,17 +22,17 @@ type iCreatePageRequest interface {
 }
 
 type CreatePageRequest struct {
-	// The Base64-encoded page content. Example: "PGh0bWw+aGVsbG8gcGFnZTwvaHRtbD4=", which indicates "hello page".
+	// The page content, which must be provided in BASE64 encoding. For example, the value PGh0bWw+aGVsbG8gcGFnZTwvaHRtbD4= decodes to \\<html>hello page\\</html>.
 	//
 	// example:
 	//
 	// PGh0bWw+aGVsbG8gcGFnZTwvaHRtbD4=
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The Content-Type field in the HTTP header. Valid values:
+	// The `Content-Type` HTTP header. Examples:
 	//
-	// 	- text/html
+	// - text/html
 	//
-	// 	- application/json
+	// - application/json
 	//
 	// This parameter is required.
 	//

@@ -18,19 +18,19 @@ type iDescribeCustomScenePoliciesRequest interface {
 }
 
 type DescribeCustomScenePoliciesRequest struct {
-	// The number of the page to return. Valid values: **1 to 100000**.
+	// The page number. Valid values: **1*	- to **100000**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: **10**. Valid values: **5**, **10**, or **20**.
+	// The number of entries per page. Default value: **10**. Valid values: **5**, **10**, and **20**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The rule ID.
+	// The policy ID.
 	//
 	// example:
 	//

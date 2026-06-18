@@ -34,7 +34,7 @@ type iUploadOriginClientCertificateResponseBody interface {
 }
 
 type UploadOriginClientCertificateResponseBody struct {
-	// The Common Name of the certificate.
+	// The common name of the certificate.
 	//
 	// example:
 	//
@@ -46,25 +46,25 @@ type UploadOriginClientCertificateResponseBody struct {
 	//
 	// 1dc5fc9af4eead2570c70d94b416130baeb6d4429b51fd3557379588456aca66
 	FingerprintSha256 *string `json:"FingerprintSha256,omitempty" xml:"FingerprintSha256,omitempty"`
-	// The certificate ID.
+	// The ID of the certificate.
 	//
 	// example:
 	//
 	// babaabcd****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The CA that issued the certificate.
+	// The issuer of the certificate.
 	//
 	// example:
 	//
 	// GlobalSign nv-sa
 	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
-	// The time when the certificate expires.
+	// The end of the certificate\\"s validity period (`not after`). The timestamp is in UTC and formatted in ISO 8601.
 	//
 	// example:
 	//
 	// 2024-12-01T02:13:07Z
 	NotAfter *string `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
-	// The time when the certificate takes effect.
+	// The start of the certificate\\"s validity period (`not before`). The timestamp is in UTC and formatted in ISO 8601.
 	//
 	// example:
 	//
@@ -94,7 +94,7 @@ type UploadOriginClientCertificateResponseBody struct {
 	//
 	// OK
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The validity period of the certificate. Unit: day.
+	// The validity period of the certificate in days.
 	//
 	// example:
 	//

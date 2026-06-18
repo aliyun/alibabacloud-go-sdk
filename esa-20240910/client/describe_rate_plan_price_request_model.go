@@ -18,11 +18,23 @@ type iDescribeRatePlanPriceRequest interface {
 }
 
 type DescribeRatePlanPriceRequest struct {
-	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// The number of plans.
+	//
 	// example:
 	//
 	// 1
-	Period   *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
+	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// The purchase duration, in months.
+	//
+	// example:
+	//
+	// 1
+	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The plan name.
+	//
+	// example:
+	//
+	// basic
 	PlanName *string `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
 }
 

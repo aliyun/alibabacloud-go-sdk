@@ -14,7 +14,7 @@ type iUpdateNetworkOptimizationResponseBody interface {
 }
 
 type UpdateNetworkOptimizationResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

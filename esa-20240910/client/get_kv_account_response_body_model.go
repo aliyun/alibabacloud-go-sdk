@@ -30,39 +30,39 @@ type iGetKvAccountResponseBody interface {
 }
 
 type GetKvAccountResponseBody struct {
-	// The available capacity of all namespaces in the account. Unit: bytes.
+	// The total available capacity of all namespaces for the account, in bytes.
 	//
 	// example:
 	//
 	// 1073741824
 	Capacity *int64 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
-	// The available capacity of all namespaces in the account.
+	// The total available capacity of all namespaces for the account.
 	//
 	// example:
 	//
 	// 1 GB
 	CapacityString *string `json:"CapacityString,omitempty" xml:"CapacityString,omitempty"`
-	// The used capacity of all namespaces in the account. Unit: bytes.
+	// The total used capacity of all namespaces for the account, in bytes.
 	//
 	// example:
 	//
 	// 10048576
 	CapacityUsed *int64 `json:"CapacityUsed,omitempty" xml:"CapacityUsed,omitempty"`
-	// The used capacity of all namespaces in the account.
+	// The total used capacity of all namespaces for the account.
 	//
 	// example:
 	//
 	// 100 MB
 	CapacityUsedString *string `json:"CapacityUsedString,omitempty" xml:"CapacityUsedString,omitempty"`
-	// The namespaces in the account.
+	// The list of namespaces for the account.
 	NamespaceList []*GetKvAccountResponseBodyNamespaceList `json:"NamespaceList,omitempty" xml:"NamespaceList,omitempty" type:"Repeated"`
-	// The maximum number of namespaces that can be created in the account.
+	// The quota on the number of KV storage spaces that you can request for the account.
 	//
 	// example:
 	//
 	// 10
 	NamespaceQuota *int32 `json:"NamespaceQuota,omitempty" xml:"NamespaceQuota,omitempty"`
-	// The number of created namespaces that store key-value data in the account.
+	// The number of namespaces created for the account.
 	//
 	// example:
 	//
@@ -74,11 +74,11 @@ type GetKvAccountResponseBody struct {
 	//
 	// EEEBE525-F576-1196-8DAF-2D70CA3F4D2F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether Edge KV is activated for the Alibaba Cloud account.
+	// The status of the account.
 	//
-	// 	- **online**
+	// - **online**: The account is active.
 	//
-	// 	- **offline**
+	// - **offline**: The account is shut down.
 	//
 	// example:
 	//
@@ -189,7 +189,7 @@ func (s *GetKvAccountResponseBody) Validate() error {
 }
 
 type GetKvAccountResponseBodyNamespaceList struct {
-	// The available capacity of the namespace. Unit: bytes.
+	// The available capacity of the namespace, in bytes.
 	//
 	// example:
 	//
@@ -201,7 +201,7 @@ type GetKvAccountResponseBodyNamespaceList struct {
 	//
 	// 1 GB
 	CapacityString *string `json:"CapacityString,omitempty" xml:"CapacityString,omitempty"`
-	// The used capacity of the namespace. Unit: bytes.
+	// The used capacity of the namespace, in bytes.
 	//
 	// example:
 	//
@@ -233,13 +233,13 @@ type GetKvAccountResponseBodyNamespaceList struct {
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 	// The status of the namespace. Valid values:
 	//
-	// 	- **online**: normal.
+	// - **online**: Normal.
 	//
-	// 	- **delete**: pending deletion.
+	// - **delete**: Pending deletion.
 	//
-	// 	- **deleting**: being deleted.
+	// - **deleting**: Being deleted.
 	//
-	// 	- **deleted**: deleted.
+	// - **deleted**: Deleted.
 	//
 	// example:
 	//

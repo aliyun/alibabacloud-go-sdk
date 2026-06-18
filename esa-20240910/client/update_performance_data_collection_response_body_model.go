@@ -14,7 +14,7 @@ type iUpdatePerformanceDataCollectionResponseBody interface {
 }
 
 type UpdatePerformanceDataCollectionResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

@@ -22,25 +22,25 @@ type iListCertificatesRequest interface {
 }
 
 type ListCertificatesRequest struct {
-	// The keyword that is used for the search.
+	// The search keyword.
 	//
 	// example:
 	//
 	// example
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// The page number.
+	// The page number to return.
 	//
 	// example:
 	//
 	// 3
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries to return on each page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
+	// The site ID. To get this ID, call the [ListSites](~~ListSites~~) API.
 	//
 	// This parameter is required.
 	//

@@ -16,13 +16,13 @@ type iCreateLoadBalancerResponseBody interface {
 }
 
 type CreateLoadBalancerResponseBody struct {
-	// Load balancer ID.
+	// The ID of the Server Load Balancer.
 	//
 	// example:
 	//
 	// 99867648760****
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

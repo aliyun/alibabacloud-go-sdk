@@ -22,9 +22,9 @@ type iGetClientCertificateHostnamesResponseBody interface {
 }
 
 type GetClientCertificateHostnamesResponseBody struct {
-	// The domain names with which the certificate is associated.
+	// The list of bound hostnames.
 	Hostnames []*string `json:"Hostnames,omitempty" xml:"Hostnames,omitempty" type:"Repeated"`
-	// The ID of the client CA certificate.
+	// The client CA certificate ID.
 	//
 	// example:
 	//
@@ -36,13 +36,13 @@ type GetClientCertificateHostnamesResponseBody struct {
 	//
 	// EEEBE525-F576-1196-8DAF-2D70CA3F4D2F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The website ID.
+	// The site ID.
 	//
 	// example:
 	//
 	// 1234567890123
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The website name.
+	// The site name.
 	//
 	// example:
 	//

@@ -18,6 +18,11 @@ type iCreateRoutineRelatedRecordResponseBody interface {
 }
 
 type CreateRoutineRelatedRecordResponseBody struct {
+	// The record ID.
+	//
+	// example:
+	//
+	// 3227405728754048
 	RecordId *int64 `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
 	// The request ID.
 	//
@@ -25,7 +30,7 @@ type CreateRoutineRelatedRecordResponseBody struct {
 	//
 	// EDBD3EB3-97DA-5465-AEF5-8DCA5DC5E395
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation is successful.
+	// The status of the operation. A value of `OK` indicates that the operation was successful.
 	//
 	// example:
 	//

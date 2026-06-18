@@ -24,13 +24,13 @@ type ListClientCaCertificatesRequest struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: 20. Valid values: 1 to 100.
+	// The number of entries to return per page. Valid values: 1 to 100. The default value is 20.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
+	// The site ID. Call the [ListSites](~~ListSites~~) operation to obtain this ID.
 	//
 	// This parameter is required.
 	//

@@ -24,19 +24,19 @@ type iListPagesResponseBody interface {
 }
 
 type ListPagesResponseBody struct {
-	// The page number returned.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries returned on the current page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The custom error pages. Each element in the array contains error page-specific information.
+	// A list of custom response pages.
 	Pages []*ListPagesResponseBodyPages `json:"Pages,omitempty" xml:"Pages,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -44,13 +44,13 @@ type ListPagesResponseBody struct {
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of custom error pages after filtering.
+	// The total number of custom response pages that match the filter criteria.
 	//
 	// example:
 	//
 	// 10
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The number of custom error pages that you created.
+	// The number of custom response pages that you have created.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ func (s *ListPagesResponseBody) Validate() error {
 }
 
 type ListPagesResponseBodyPages struct {
-	// The Base64-encoded content of the error page. The content type is specified by the Content-Type field.
+	// The Base64-encoded content of the custom response page.
 	//
 	// This parameter is required.
 	//
@@ -142,7 +142,7 @@ type ListPagesResponseBodyPages struct {
 	//
 	// PGh0bWw+aGVsbG8gcGFnZTwvaHRtbD4=
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The Content-Type field in the HTTP header.
+	// The value of the Content-Type header in the HTTP response.
 	//
 	// This parameter is required.
 	//
@@ -150,31 +150,31 @@ type ListPagesResponseBodyPages struct {
 	//
 	// text/html
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	// The description of the custom error page.
+	// A custom description for the response page.
 	//
 	// example:
 	//
 	// a custom deny page
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the custom error page.[](~~2850223~~)
+	// The ID of the custom response page.[](~~2850223~~)
 	//
 	// example:
 	//
 	// 50000001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The type of the custom error page.
+	// The type of the custom response page.
 	//
 	// example:
 	//
 	// custom
 	Kind *string `json:"Kind,omitempty" xml:"Kind,omitempty"`
-	// The name of the custom error page.
+	// The name of the custom response page.
 	//
 	// example:
 	//
 	// example
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The time when the custom error page was last modified.
+	// The time the custom response page was last updated.
 	//
 	// example:
 	//

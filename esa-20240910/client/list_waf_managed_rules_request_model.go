@@ -32,23 +32,23 @@ type iListWafManagedRulesRequest interface {
 }
 
 type ListWafManagedRulesRequest struct {
-	// Attack type of the vulnerability protection event. Values:
+	// The attack type to filter the results by. Valid values:
 	//
 	// - SQL injection
 	//
-	// - Cross-site scripting
+	// - cross-site scripting
 	//
-	// - Code execution
+	// - code execution
 	//
 	// - CRLF
 	//
-	// - Local file inclusion
+	// - local file inclusion
 	//
-	// - Remote file inclusion
+	// - remote file inclusion
 	//
-	// - Webshell
+	// - webshell
 	//
-	// - Cross-site request forgery
+	// - cross-site request forgery
 	//
 	// - Other
 	//
@@ -60,14 +60,14 @@ type ListWafManagedRulesRequest struct {
 	//
 	// 11
 	AttackType *int32 `json:"AttackType,omitempty" xml:"AttackType,omitempty"`
-	// ID of the WAF rule.
+	// The ID of the WAF rule.
 	//
 	// example:
 	//
 	// 10000001
 	Id         *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Language type, which will be used to return the response. Value range:
+	// The response language. Valid values:
 	//
 	// - **en**: English.
 	//
@@ -78,22 +78,22 @@ type ListWafManagedRulesRequest struct {
 	// zh
 	Language       *string                                   `json:"Language,omitempty" xml:"Language,omitempty"`
 	ManagedRuleset *ListWafManagedRulesRequestManagedRuleset `json:"ManagedRuleset,omitempty" xml:"ManagedRuleset,omitempty" type:"Struct"`
-	// Query page number.
+	// The number of the page to return.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Query page size.
+	// The number of entries to return on each page.
 	//
 	// example:
 	//
 	// 20
 	PageSize        *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ProtectionLevel *int32 `json:"ProtectionLevel,omitempty" xml:"ProtectionLevel,omitempty"`
-	// Query conditions.
+	// The query conditions.
 	QueryArgs *ListWafManagedRulesRequestQueryArgs `json:"QueryArgs,omitempty" xml:"QueryArgs,omitempty" type:"Struct"`
-	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+	// The ID of the site. Call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain this ID.
 	//
 	// example:
 	//
@@ -323,21 +323,21 @@ func (s *ListWafManagedRulesRequestManagedRulesetManagedRules) Validate() error 
 }
 
 type ListWafManagedRulesRequestQueryArgs struct {
-	// Action.
+	// The rule action to filter by.
 	//
 	// example:
 	//
 	// deny
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	// Fuzzy search for rule ID or rule name.
+	// The keyword for a fuzzy search on the rule ID or rule name.
 	//
 	// example:
 	//
 	// example
 	IdNameLike *string `json:"IdNameLike,omitempty" xml:"IdNameLike,omitempty"`
-	// List of rule protection levels.
+	// The rule protection levels to filter the results by.
 	ProtectionLevels []*int32 `json:"ProtectionLevels,omitempty" xml:"ProtectionLevels,omitempty" type:"Repeated"`
-	// Status.
+	// The rule status to filter by.
 	//
 	// example:
 	//

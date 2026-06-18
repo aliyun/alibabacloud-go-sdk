@@ -26,27 +26,40 @@ type iListKeylessServersResponseBody interface {
 }
 
 type ListKeylessServersResponseBody struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CB1A380B-09F0-41BB-280B-72F8FD6DA2FE
-	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*ListKeylessServersResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// A list of keyless server configurations.
+	Result []*ListKeylessServersResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// The site ID.
+	//
 	// example:
 	//
 	// 54362329990032
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The site name.
+	//
 	// example:
 	//
 	// example.com
 	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+	// The total count.
+	//
 	// example:
 	//
 	// 90
@@ -138,44 +151,62 @@ func (s *ListKeylessServersResponseBody) Validate() error {
 }
 
 type ListKeylessServersResponseBodyResult struct {
+	// The CA certificate used to verify the server certificate of the keyless server. This parameter applies only when `Verify` is set to `true`.
+	//
 	// example:
 	//
 	// -----BEGIN CERTIFICATE-----****
 	CaCertificate *string `json:"CaCertificate,omitempty" xml:"CaCertificate,omitempty"`
+	// The client certificate. This parameter must be provided with `ClientPrivateKey`.
+	//
 	// example:
 	//
 	// -----BEGIN CERTIFICATE-----****
 	ClientCertificate *string `json:"ClientCertificate,omitempty" xml:"ClientCertificate,omitempty"`
+	// The client private key. This parameter must be provided with `ClientCertificate`.
+	//
 	// example:
 	//
 	// -----BEGIN RSA PRIVATE KEY-----****
 	ClientPrivateKey *string `json:"ClientPrivateKey,omitempty" xml:"ClientPrivateKey,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2024-06-24 07:48:51
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The keyless server host name.
+	//
 	// example:
 	//
 	// example.com
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// Keyless server ID。
+	// The keyless server ID.
 	//
 	// example:
 	//
 	// babab9db65ee5efcca9f3d41d4b5****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The keyless server name.
+	//
 	// example:
 	//
 	// example
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The keyless server port. Valid values: 1 to 65535.
+	//
 	// example:
 	//
 	// 443
 	Port *int64 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The update time.
+	//
 	// example:
 	//
 	// 2024-07-20 06:18:42
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// Specifies whether to verify the server certificate of the keyless server. Defaults to false.
+	//
 	// example:
 	//
 	// true

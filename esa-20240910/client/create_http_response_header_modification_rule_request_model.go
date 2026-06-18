@@ -26,38 +26,43 @@ type iCreateHttpResponseHeaderModificationRuleRequest interface {
 }
 
 type CreateHttpResponseHeaderModificationRuleRequest struct {
-	// Modify response headers, supporting add, delete, and modify operations.
+	// An array of objects that specify modifications to the response header. The supported operations are `add`, `del`, and `modify`.
 	//
 	// This parameter is required.
 	ResponseHeaderModification []*CreateHttpResponseHeaderModificationRuleRequestResponseHeaderModification `json:"ResponseHeaderModification,omitempty" xml:"ResponseHeaderModification,omitempty" type:"Repeated"`
-	// Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+	// Specifies the conditional expression that an incoming request must match for the rule to apply. This parameter is not required when adding a Global Configuration. You can set the value in one of the following ways:
 	//
-	// - To match all incoming requests: Set the value to true
+	// - To match all incoming requests, set the value to `true`.
 	//
-	// - To match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+	// - To match specific requests, set the value to a custom expression. For example: `(http.host eq "video.example.com")`
 	//
 	// example:
 	//
 	// (http.host eq "video.example.com")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// Rule switch. This parameter is not required when adding a global configuration. Possible values:
+	// Specifies whether to enable the rule. This parameter is not required when adding a Global Configuration. Valid values:
 	//
-	// - on: Enable.
+	// - `on`: Enables the rule.
 	//
-	// - off: Disable.
+	// - `off`: Disables the rule.
 	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	// Rule name. This parameter is not required when adding a global configuration.
+	// The name of the rule. This parameter is not required when adding a Global Configuration.
 	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	Sequence *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	// Site ID. You can obtain this by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
+	// The rule\\"s execution order. A lower value indicates a higher priority.
+	//
+	// example:
+	//
+	// 1
+	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// The Site ID. You can get this ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -65,7 +70,7 @@ type CreateHttpResponseHeaderModificationRuleRequest struct {
 	//
 	// 123456******
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// Version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the version of the site where the configuration will take effect. The default is version 0.
+	// The version number of the Site configuration. For sites with Configuration Version Management enabled, this parameter specifies the configuration version that the Rule applies to. If omitted, this parameter defaults to version 0.
 	//
 	// example:
 	//
@@ -158,7 +163,7 @@ func (s *CreateHttpResponseHeaderModificationRuleRequest) Validate() error {
 }
 
 type CreateHttpResponseHeaderModificationRuleRequestResponseHeaderModification struct {
-	// Response header name.
+	// The name of the response header.
 	//
 	// This parameter is required.
 	//
@@ -166,13 +171,13 @@ type CreateHttpResponseHeaderModificationRuleRequestResponseHeaderModification s
 	//
 	// headername
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Operation type. Possible values:
+	// The modification to perform on the header. Valid values:
 	//
-	// - add: Add.
+	// - `add`: Adds a header.
 	//
-	// - del: Delete
+	// - `del`: Deletes a header.
 	//
-	// - modify: Modify.
+	// - `modify`: Modifies a header.
 	//
 	// This parameter is required.
 	//
@@ -180,8 +185,17 @@ type CreateHttpResponseHeaderModificationRuleRequestResponseHeaderModification s
 	//
 	// add
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
-	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// Response header value.
+	// The value type. Valid values:
+	//
+	// - `static`: Static value.
+	//
+	// - `dynamic`: Dynamic value.
+	//
+	// example:
+	//
+	// static
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The value to assign to the header. This parameter is not required when the `Operation` is `del`.
 	//
 	// example:
 	//

@@ -143,11 +143,11 @@ type DescribePurgeTasksResponseBodyTasks struct {
 	Process *string `json:"Process,omitempty" xml:"Process,omitempty"`
 	// The task status.
 	//
-	// 	- **Complete**: The task is complete.
+	// - **Complete**: The task is complete.
 	//
-	// 	- **Refreshing**: The task is in progress.
+	// - **Refreshing**: The task is in progress.
 	//
-	// 	- **Failed**: The task failed.
+	// - **Failed**: The task failed.
 	//
 	// example:
 	//
@@ -161,17 +161,17 @@ type DescribePurgeTasksResponseBodyTasks struct {
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// The type of the purge task. Valid values:
 	//
-	// 	- **file*	- (default): purges the cache by file.
+	// - **file*	- (default): purges the cache by file.
 	//
-	// 	- **cachetag**: purges the cache by cache tag.
+	// - **cachetag**: purges the cache by cache tag.
 	//
-	// 	- **directory**: purges the cache by directory.
+	// - **directory**: purges the cache by directory.
 	//
-	// 	- **ignoreParams**: purges the cache by URL with specified parameters ignored.
+	// - **ignoreParams**: purges the cache by URL with specified parameters ignored.
 	//
-	// 	- **hostname**: purges the cache by hostname.
+	// - **hostname**: purges the cache by hostname.
 	//
-	// 	- **purgeall**: purges all cache.
+	// - **purgeall**: purges all cache.
 	//
 	// example:
 	//

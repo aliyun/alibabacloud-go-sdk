@@ -30,31 +30,41 @@ type iCreateCustomHostnameRequest interface {
 }
 
 type CreateCustomHostnameRequest struct {
-	// 云盾证书ID，使用云盾证书时必填
+	// The ID of the CAS certificate. This parameter is required if `CertType` is set to `cas`.
 	//
 	// example:
 	//
 	// 30000478
 	CasId *int64 `json:"CasId,omitempty" xml:"CasId,omitempty"`
-	// 云盾证书所在地域，使用云盾证书时必填
+	// The region of the CAS certificate. This parameter is required if `CertType` is set to `cas`.
+	//
+	// - For accounts on the China site, set this parameter to `cn-hangzhou`.
+	//
+	// - For accounts on the International site, set this parameter to `ap-southeast-1`.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	CasRegion *string `json:"CasRegion,omitempty" xml:"CasRegion,omitempty"`
-	// 证书类型，SSL 开启时必填
+	// The certificate type. This parameter is required if `SslFlag` is set to `on`. Valid values:
+	//
+	// - **free**: A free certificate.
+	//
+	// - **upload**: A user-uploaded certificate.
+	//
+	// - **cas**: A CAS certificate.
 	//
 	// example:
 	//
 	// free
 	CertType *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
-	// 证书公钥，使用上传证书时必填
+	// The content of the certificate. This parameter is required if `CertType` is set to `upload`.
 	//
 	// example:
 	//
 	// -----BEGIN CERTIFICATE-----
 	Certificate *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
-	// 自定义主机名
+	// The custom hostname.
 	//
 	// This parameter is required.
 	//
@@ -62,13 +72,13 @@ type CreateCustomHostnameRequest struct {
 	//
 	// custom.site.com
 	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
-	// 证书私钥，使用上传证书时必填
+	// The private key of the certificate. This parameter is required if `CertType` is set to `upload`.
 	//
 	// example:
 	//
 	// -----BEGIN PRIVATE KEY-----
 	PrivateKey *string `json:"PrivateKey,omitempty" xml:"PrivateKey,omitempty"`
-	// 绑定的源站记录ID
+	// The ID of the record to bind. Call the [ListRecords](https://help.aliyun.com/document_detail/2850265.html) operation to get this ID.
 	//
 	// This parameter is required.
 	//
@@ -76,7 +86,7 @@ type CreateCustomHostnameRequest struct {
 	//
 	// 1234567890123
 	RecordId *int64 `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	// 关联站点ID
+	// The site ID. Call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to get this ID.
 	//
 	// This parameter is required.
 	//
@@ -84,7 +94,11 @@ type CreateCustomHostnameRequest struct {
 	//
 	// 1234567890123
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// SSL开关
+	// Specifies whether to enable SSL. Valid values:
+	//
+	// - **on**: Enable SSL.
+	//
+	// - **off**: Disable SSL.
 	//
 	// This parameter is required.
 	//

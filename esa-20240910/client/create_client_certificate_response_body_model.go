@@ -74,7 +74,7 @@ type CreateClientCertificateResponseBody struct {
 	//
 	// example:
 	//
-	// DCDN CA
+	// ESA CA
 	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
 	// The time when the certificate expires.
 	//

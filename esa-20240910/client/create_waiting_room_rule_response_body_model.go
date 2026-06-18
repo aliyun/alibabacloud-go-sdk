@@ -16,13 +16,13 @@ type iCreateWaitingRoomRuleResponseBody interface {
 }
 
 type CreateWaitingRoomRuleResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// EEEBE525-F576-1196-8DAF-2D70CA3F4D2F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Waiting room bypass rule ID.
+	// The waiting room bypass rule ID.
 	//
 	// example:
 	//

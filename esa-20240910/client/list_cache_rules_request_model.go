@@ -26,43 +26,43 @@ type iListCacheRulesRequest interface {
 }
 
 type ListCacheRulesRequest struct {
-	// Configuration ID.
+	// The configuration ID.
 	//
 	// example:
 	//
 	// 35281609698****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// Configuration type, which can be used to query global or rule-based configurations. Possible values:
+	// The configuration type. You can use this parameter to retrieve the global configuration or rule configurations. Valid values:
 	//
-	// - global: Query global configuration.
+	// - `global`: Returns the global configuration.
 	//
-	// - rule: Query rule-based configuration.
+	// - `rule`: Returns rule configurations.
 	//
-	// This parameter is optional; if not provided, it will not distinguish between global and rule-based configurations.
+	// This parameter is optional. If you omit this parameter, both global and rule configurations are returned.
 	//
 	// example:
 	//
 	// global
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
-	// Page number, defaulting to 1 if not provided.
+	// The page number. The default value is 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Number of items per page, with a maximum of 500. Defaults to 500 if not provided.
+	// The number of entries per page. The maximum value is 500. The default value is 500.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Rule name. This parameter is not required when adding a global configuration.
+	// The rule name. This parameter is not required for a global configuration.
 	//
 	// example:
 	//
 	// test
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+	// The site ID. You can get this ID by calling the [ListSites](~~ListSites~~) API.
 	//
 	// This parameter is required.
 	//
@@ -70,7 +70,7 @@ type ListCacheRulesRequest struct {
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// Site version number. For sites with version management enabled, this parameter can specify the site version for which the configuration takes effect, defaulting to version 0.
+	// The site version. For a site with version management enabled, this parameter specifies the version to which the configuration applies. The default value is 0.
 	//
 	// example:
 	//

@@ -26,16 +26,21 @@ type iListListsResponseBody interface {
 }
 
 type ListListsResponseBody struct {
+	// The total number of items across all lists.
+	//
+	// example:
+	//
+	// 5000
 	ItemsUsage *int64 `json:"ItemsUsage,omitempty" xml:"ItemsUsage,omitempty"`
-	// The array that contains list information, including list data after paging.
+	// A paginated array of lists.
 	Lists []*ListListsResponseBodyLists `json:"Lists,omitempty" xml:"Lists,omitempty" type:"Repeated"`
-	// The page number returned.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
@@ -47,13 +52,13 @@ type ListListsResponseBody struct {
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of filtered lists.
+	// The total number of filtered records.
 	//
 	// example:
 	//
 	// 5
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The number of created lists.
+	// The number of lists used by the account.
 	//
 	// example:
 	//
@@ -146,37 +151,37 @@ func (s *ListListsResponseBody) Validate() error {
 }
 
 type ListListsResponseBodyLists struct {
-	// The list description.
+	// The description of the list.
 	//
 	// example:
 	//
 	// a custom list
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the custom list.[](~~2850217~~)
+	// The ID of the custom list. To get this ID, call the [ListLists](https://help.aliyun.com/document_detail/2850217.html) operation.
 	//
 	// example:
 	//
 	// 40000001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The list type.
+	// The kind of the list.
 	//
 	// example:
 	//
 	// ip
 	Kind *string `json:"Kind,omitempty" xml:"Kind,omitempty"`
-	// The length of the list information array, which indicates how many items the list contains.
+	// The number of items in the list.
 	//
 	// example:
 	//
 	// 100
 	Length *int64 `json:"Length,omitempty" xml:"Length,omitempty"`
-	// The list name.
+	// The name of the list.
 	//
 	// example:
 	//
 	// example
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The time when the list was last modified.
+	// The time when the list was last updated.
 	//
 	// example:
 	//

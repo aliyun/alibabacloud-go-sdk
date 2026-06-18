@@ -38,15 +38,15 @@ type iGetUserDeliveryTaskResponseBody interface {
 }
 
 type GetUserDeliveryTaskResponseBody struct {
-	// The log category. Valid values:
+	// The business type. Valid values:
 	//
-	// 	- **dcdn_log_access_l1*	- (default): access logs.
+	// - **dcdn_log_access_l1*	- (default): access log.
 	//
-	// 	- **dcdn_log_er**: Edge Routine logs.
+	// - **dcdn_log_er**: edge function log.
 	//
-	// 	- **dcdn_log_waf**: firewall logs.
+	// - **dcdn_log_waf**: WAF log.
 	//
-	// 	- **dcdn_log_ipa**: TCP/UDP proxy logs.
+	// - **dcdn_log_ipa**: Layer 4 acceleration log.
 	//
 	// example:
 	//
@@ -54,27 +54,27 @@ type GetUserDeliveryTaskResponseBody struct {
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
 	// The data center. Valid values:
 	//
-	// 	- cn: the Chinese mainland.
+	// - **cn**: Chinese mainland
 	//
-	// 	- sg: outside the Chinese mainland.
+	// - **sg**: Global (excluding the Chinese mainland)
 	//
 	// example:
 	//
 	// cn
 	DataCenter *string `json:"DataCenter,omitempty" xml:"DataCenter,omitempty"`
-	// The destination of the delivery. Valid values:
+	// The delivery type. Valid values:
 	//
-	// 	- sls: Alibaba Cloud Simple Log Service (SLS).
+	// - **sls**: Log Service
 	//
-	// 	- http: HTTP server.
+	// - **http**: HTTP service
 	//
-	// 	- aws3: Amazon Simple Storage Service (S3).
+	// - **aws3**: Amazon S3
 	//
-	// 	- oss: Alibaba Cloud Object Storage Service (OSS).
+	// - **oss**: OSS
 	//
-	// 	- kafka: Kafka.
+	// - **kafka**: Kafka service
 	//
-	// 	- aws3cmpt: S3-compatible storage service.
+	// - **aws3cmpt**: Amazon S3-compatible service
 	//
 	// example:
 	//
@@ -87,13 +87,13 @@ type GetUserDeliveryTaskResponseBody struct {
 	//
 	// 0
 	DiscardRate *float32 `json:"DiscardRate,omitempty" xml:"DiscardRate,omitempty"`
-	// The fields.
+	// A comma-separated list of fields.
 	//
 	// example:
 	//
 	// ClientRequestID,ClientRequestHost
 	FieldList *string `json:"FieldList,omitempty" xml:"FieldList,omitempty"`
-	// The filtering rules.
+	// The filter rules.
 	//
 	// example:
 	//
@@ -113,13 +113,13 @@ type GetUserDeliveryTaskResponseBody struct {
 	//
 	// {\\"Project\\": \\"er-online-hjy-pro\\", \\"Logstore\\": \\"er-online-hjy-log\\", \\"Region\\": \\"cn-hangzhou\\", \\"Endpoint\\": \\"cn-hangzhou.log.aliyuncs.com\\", \\"Aliuid\\": \\"1077912128805410\\"}
 	SinkConfig interface{} `json:"SinkConfig,omitempty" xml:"SinkConfig,omitempty"`
-	// The status of the delivery task.
+	// The task status.
 	//
 	// example:
 	//
 	// online
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The name of the delivery task.
+	// The task name.
 	//
 	// example:
 	//

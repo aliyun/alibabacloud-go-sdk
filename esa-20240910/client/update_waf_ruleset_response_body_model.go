@@ -14,7 +14,7 @@ type iUpdateWafRulesetResponseBody interface {
 }
 
 type UpdateWafRulesetResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

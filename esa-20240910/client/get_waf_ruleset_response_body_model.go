@@ -28,13 +28,13 @@ type iGetWafRulesetResponseBody interface {
 }
 
 type GetWafRulesetResponseBody struct {
-	// Ruleset ID.
+	// The ID of the WAF ruleset. You can obtain this ID by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2878359.html) operation.
 	//
 	// example:
 	//
 	// 10000001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Ruleset name.
+	// The ruleset name.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,23 @@ type GetWafRulesetResponseBody struct {
 	//
 	// example
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The WAF operation phase applicable to the ruleset.
+	// The execution phase of the WAF ruleset. Valid values:
+	//
+	// - `http_whitelist`: A whitelist rule
+	//
+	// - `http_custom`: A custom rule
+	//
+	// - `http_managed`: A managed rule
+	//
+	// - `http_anti_scan`: A scan protection rule
+	//
+	// - `http_ratelimit`: A rate limit rule
+	//
+	// - `ip_access_rule`: An IP access rule
+	//
+	// - `http_bot`: A bot rule
+	//
+	// - `http_security_level_rule`: A security rule
 	//
 	// This parameter is required.
 	//
@@ -50,23 +66,23 @@ type GetWafRulesetResponseBody struct {
 	//
 	// http_bot
 	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// List of rule configurations in the ruleset.
+	// The list of rule configurations in the ruleset.
 	Rules []*WafRuleConfig `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	// Shared configurations for the rules in the ruleset.
+	// The shared configuration for rules within the ruleset.
 	Shared *WafBatchRuleShared `json:"Shared,omitempty" xml:"Shared,omitempty"`
-	// Ruleset status.
+	// The ruleset status.
 	//
 	// example:
 	//
 	// on
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The last modified time of the ruleset.
+	// The time when the ruleset was last updated.
 	//
 	// example:
 	//

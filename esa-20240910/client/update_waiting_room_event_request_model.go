@@ -56,7 +56,7 @@ type UpdateWaitingRoomEventRequest struct {
 	//
 	// example:
 	//
-	// html-yets-maqi1111
+	// SGVsbG8gd29ybGQ=
 	CustomPageHtml *string `json:"CustomPageHtml,omitempty" xml:"CustomPageHtml,omitempty"`
 	// The description of the waiting room.
 	//
@@ -66,9 +66,9 @@ type UpdateWaitingRoomEventRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Specifies whether to disable session renewal. Valid values:
 	//
-	// 	- on
+	// - on
 	//
-	// 	- off
+	// - off
 	//
 	// example:
 	//
@@ -76,9 +76,9 @@ type UpdateWaitingRoomEventRequest struct {
 	DisableSessionRenewalEnable *string `json:"DisableSessionRenewalEnable,omitempty" xml:"DisableSessionRenewalEnable,omitempty"`
 	// Specifies whether to enable the waiting room event. Valid values:
 	//
-	// 	- `on`
+	// - `on`
 	//
-	// 	- `off`
+	// - `off`
 	//
 	// example:
 	//
@@ -92,9 +92,9 @@ type UpdateWaitingRoomEventRequest struct {
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// Specifies whether to enable JSON response. Valid values:
 	//
-	// 	- on
+	// - on
 	//
-	// 	- off
+	// - off
 	//
 	// example:
 	//
@@ -102,17 +102,21 @@ type UpdateWaitingRoomEventRequest struct {
 	JsonResponseEnable *string `json:"JsonResponseEnable,omitempty" xml:"JsonResponseEnable,omitempty"`
 	// The default language. Valid values:
 	//
-	// 	- `enus`: English.
+	// - `enus`: English.
 	//
-	// 	- `zhcn`: Simplified Chinese.
+	// - `zhcn`: Simplified Chinese.
 	//
-	// 	- `zhhk`: Traditional Chinese.
+	// - `zhhk`: Traditional Chinese.
 	//
 	// example:
 	//
 	// enus
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	// The name of the waiting room event.
+	//
+	// example:
+	//
+	// Test event 2
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The maximum number of new users per minute.
 	//
@@ -122,9 +126,9 @@ type UpdateWaitingRoomEventRequest struct {
 	NewUsersPerMinute *string `json:"NewUsersPerMinute,omitempty" xml:"NewUsersPerMinute,omitempty"`
 	// Specifies whether to enable pre-queuing.
 	//
-	// 	- on
+	// - on
 	//
-	// 	- off
+	// - off
 	//
 	// example:
 	//
@@ -138,13 +142,13 @@ type UpdateWaitingRoomEventRequest struct {
 	PreQueueStartTime *string `json:"PreQueueStartTime,omitempty" xml:"PreQueueStartTime,omitempty"`
 	// The queuing method. Valid values:
 	//
-	// 	- random: Users gain access to the origin randomly, regardless of the arrival time.
+	// - random: Users gain access to the origin randomly, regardless of the arrival time.
 	//
-	// 	- fifo: Users gain access to the origin in order of arrival.
+	// - fifo: Users gain access to the origin in order of arrival.
 	//
-	// 	- passthrough: Users pass through the waiting room and go straight to the origin.
+	// - passthrough: Users pass through the waiting room and go straight to the origin.
 	//
-	// 	- reject-all: All requests are blocked from accessing the origin.
+	// - reject-all: All requests are blocked from accessing the origin.
 	//
 	// example:
 	//
@@ -152,11 +156,11 @@ type UpdateWaitingRoomEventRequest struct {
 	QueuingMethod *string `json:"QueuingMethod,omitempty" xml:"QueuingMethod,omitempty"`
 	// The HTTP status code to return while a user is in the queue. Valid values:
 	//
-	// 	- 200
+	// - 200
 	//
-	// 	- 202
+	// - 202
 	//
-	// 	- 429
+	// - 429
 	//
 	// example:
 	//
@@ -164,9 +168,9 @@ type UpdateWaitingRoomEventRequest struct {
 	QueuingStatusCode *string `json:"QueuingStatusCode,omitempty" xml:"QueuingStatusCode,omitempty"`
 	// Specifies whether to enable random queuing.
 	//
-	// 	- on
+	// - on
 	//
-	// 	- off
+	// - off
 	//
 	// example:
 	//
@@ -208,9 +212,9 @@ type UpdateWaitingRoomEventRequest struct {
 	WaitingRoomEventId *int64 `json:"WaitingRoomEventId,omitempty" xml:"WaitingRoomEventId,omitempty"`
 	// The type of the waiting room. Valid values:
 	//
-	// 	- default
+	// - default
 	//
-	// 	- custom
+	// - custom
 	//
 	// example:
 	//

@@ -30,15 +30,27 @@ type iCreateImageTransformRequest interface {
 }
 
 type CreateImageTransformRequest struct {
+	// Specifies whether to enable adaptive AVIF. Valid values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
 	// example:
 	//
 	// on
 	AutoAvif *string `json:"AutoAvif,omitempty" xml:"AutoAvif,omitempty"`
+	// Specifies whether to enable adaptive WebP. Valid values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
 	// example:
 	//
 	// on
 	AutoWebp *string `json:"AutoWebp,omitempty" xml:"AutoWebp,omitempty"`
-	// Indicates whether image transformation is enabled. Possible values:
+	// Specifies whether to enable image transformation. Valid values:
 	//
 	// - on: Enabled.
 	//
@@ -48,17 +60,17 @@ type CreateImageTransformRequest struct {
 	//
 	// on
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+	// The rule content, which uses a conditional expression to match user requests. This parameter is not required when you add a global configuration. Two scenarios are supported:
 	//
-	// - To match all incoming requests: Set the value to true
+	// - Match all incoming requests: Set the value to true.
 	//
-	// - To match specific requests: Set the value to a custom expression, for example: (http.host eq "video.example.com")
+	// - Match specified requests: Set the value to a custom expression, such as (http.host eq \\"video.example.com\\").
 	//
 	// example:
 	//
 	// (http.request.uri.path.file_name eq \\"jpg\\")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// Rule switch. This parameter is not required when adding a global configuration. Possible values:
+	// Specifies whether to enable the rule. This parameter is not required when you add a global configuration. Valid values:
 	//
 	// - on: Enabled.
 	//
@@ -68,14 +80,19 @@ type CreateImageTransformRequest struct {
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	// Rule name. This parameter is not required when adding a global configuration.
+	// The rule name. This parameter is not required when you add a global configuration.
 	//
 	// example:
 	//
 	// test
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	Sequence *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+	// The execution order of the rule. A smaller value indicates a higher priority.
+	//
+	// example:
+	//
+	// 1
+	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -83,7 +100,7 @@ type CreateImageTransformRequest struct {
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the effective version of the site configuration, defaulting to version 0.
+	// The version number of the site configuration. For sites with configuration version management enabled, you can use this parameter to specify the site version on which the configuration takes effect. The default value is 0.
 	//
 	// example:
 	//

@@ -22,21 +22,28 @@ type iDescribeHttpDDoSAttackRulesResponseBody interface {
 }
 
 type DescribeHttpDDoSAttackRulesResponseBody struct {
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// D4030CD2-0D9D-5E92-B358-421AE58307C6
-	RequestId *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// A list of rule details.
 	RuleInfos []*DescribeHttpDDoSAttackRulesResponseBodyRuleInfos `json:"RuleInfos,omitempty" xml:"RuleInfos,omitempty" type:"Repeated"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 100
@@ -110,34 +117,54 @@ func (s *DescribeHttpDDoSAttackRulesResponseBody) Validate() error {
 }
 
 type DescribeHttpDDoSAttackRulesResponseBodyRuleInfos struct {
+	// The action to perform.
+	//
 	// example:
 	//
 	// deny
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// The default action.
+	//
 	// example:
 	//
 	// deny
 	DefaultAction *string `json:"DefaultAction,omitempty" xml:"DefaultAction,omitempty"`
+	// The ID of the protection rule used for log records.
+	//
 	// example:
 	//
 	// 100010
 	LogRuleId *int32 `json:"LogRuleId,omitempty" xml:"LogRuleId,omitempty"`
+	// The description of the rule.
+	//
 	// example:
 	//
 	// The HTTP request\\"s Accept header contains invalid features#1
 	RuleDesc *string `json:"RuleDesc,omitempty" xml:"RuleDesc,omitempty"`
+	// The ID of the HTTP DDoS protection rule.
+	//
 	// example:
 	//
 	// 20203578
 	RuleId *int32 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The short name of the rule.
+	//
 	// example:
 	//
 	// global_01_s
 	RuleIdInfo *string `json:"RuleIdInfo,omitempty" xml:"RuleIdInfo,omitempty"`
+	// The name of the rule.
+	//
 	// example:
 	//
 	// Illegal request。
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The status of the rule. Valid values:
+	//
+	// - **on**: The rule is enabled.
+	//
+	// - **off**: The rule is disabled.
+	//
 	// example:
 	//
 	// on

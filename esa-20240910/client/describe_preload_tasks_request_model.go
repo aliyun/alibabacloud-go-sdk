@@ -34,7 +34,7 @@ type DescribePreloadTasksRequest struct {
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The end time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
-	// >  The end time must be later than the start time.
+	// > The end time must be later than the start time.
 	//
 	// example:
 	//
@@ -66,11 +66,11 @@ type DescribePreloadTasksRequest struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The task status. Valid values:
 	//
-	// 	- **Complete**: The task is complete.
+	// - **Complete**: The task is complete.
 	//
-	// 	- **Refreshing**: The task is running.
+	// - **Refreshing**: The task is running.
 	//
-	// 	- **Failed**: The task failed.
+	// - **Failed**: The task failed.
 	//
 	// example:
 	//

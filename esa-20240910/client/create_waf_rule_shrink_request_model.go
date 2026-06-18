@@ -22,9 +22,25 @@ type iCreateWafRuleShrinkRequest interface {
 }
 
 type CreateWafRuleShrinkRequest struct {
-	// Rule configuration, specifying the detailed configuration for creating a rule.
+	// The detailed configuration of the WAF rule.
 	ConfigShrink *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// WAF operation phase.
+	// The phase in which the WAF rule runs.
+	//
+	// - `http_whitelist`: whitelist rule
+	//
+	// - `http_custom`: custom rule
+	//
+	// - `http_managed`: managed rule
+	//
+	// - `http_anti_scan`: anti-scan rule
+	//
+	// - `http_ratelimit`: rate limit rule
+	//
+	// - `ip_access_rule`: IP access rule
+	//
+	// - `http_bot`: Advanced Mode Bots
+	//
+	// - `http_security_level_rule`: Security Rule
 	//
 	// This parameter is required.
 	//
@@ -32,13 +48,13 @@ type CreateWafRuleShrinkRequest struct {
 	//
 	// http_custom
 	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	// Ruleset ID.
+	// The ID of the WAF ruleset. You can obtain this ID by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2878359.html) operation.
 	//
 	// example:
 	//
 	// 10000001
 	RulesetId *int64 `json:"RulesetId,omitempty" xml:"RulesetId,omitempty"`
-	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+	// The ID of the site. You can obtain this ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +62,7 @@ type CreateWafRuleShrinkRequest struct {
 	//
 	// 1
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// Site version.
+	// If version management is enabled for the site, use this parameter to specify the version to which the configuration applies. The default is 0.
 	//
 	// example:
 	//

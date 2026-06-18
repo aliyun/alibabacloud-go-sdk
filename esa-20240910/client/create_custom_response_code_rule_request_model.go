@@ -44,39 +44,39 @@ type CreateCustomResponseCodeRuleRequest struct {
 	//
 	// 400
 	ReturnCode *string `json:"ReturnCode,omitempty" xml:"ReturnCode,omitempty"`
-	// The content of the rule. A conditional expression is used to match a user request. You do not need to set this parameter when you add global configuration. Use cases:
+	// Rule content. Use a conditional expression to match user requests. Do not set this parameter when adding a global configuration. There are two scenarios:
 	//
-	// 	- true: Match all incoming requests.
+	// - Match all incoming requests: Set the value to true.
 	//
-	// 	- Set the value to a custom expression, for example: (http.host eq "video.example.com"): Match the specified request.
+	// - Match specific requests: Set the value to a custom expression, such as: (http.host eq "video.example.com").
 	//
 	// example:
 	//
 	// (http.host eq "video.example.com")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// Specifies whether to enable the rule. Valid values: You do not need to set this parameter when you add global configuration. Valid values:
+	// Rule switch. Do not set this parameter when adding a global configuration. Valid values:
 	//
-	// 	- on
+	// - on: Enable.
 	//
-	// 	- off
+	// - off: Disable.
 	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	// The rule name. You do not need to set this parameter when you add global configuration.
+	// Rule name. Do not set this parameter when adding a global configuration.
 	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The order in which the rule is executed. A smaller value gives priority to the rule.
+	// Rule execution order. A smaller value indicates higher priority.
 	//
 	// example:
 	//
 	// 1
 	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	// Site ID. Call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API to get it.
 	//
 	// This parameter is required.
 	//
@@ -84,7 +84,7 @@ type CreateCustomResponseCodeRuleRequest struct {
 	//
 	// 805864735361584
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The version number of the website configurations. You can use this parameter to specify a version of your website to apply the feature settings. By default, version 0 is used.
+	// Site configuration version number. For sites with version management enabled, use this parameter to specify the site version where the configuration takes effect. The default is version 0.
 	//
 	// example:
 	//

@@ -18,7 +18,7 @@ type iListSiteOriginClientCertificatesRequest interface {
 }
 
 type ListSiteOriginClientCertificatesRequest struct {
-	// The page number.
+	// The page number. The default value is **1**.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type ListSiteOriginClientCertificatesRequest struct {
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	// The site ID.
 	//
 	// This parameter is required.
 	//

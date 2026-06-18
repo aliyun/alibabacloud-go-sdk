@@ -16,15 +16,9 @@ type iGetPerformanceDataCollectionResponseBody interface {
 }
 
 type GetPerformanceDataCollectionResponseBody struct {
-	// example:
-	//
-	// on
+	// Indicates whether Data Quality collection is enabled. Valid values: `true` and `false`.
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// Id of the request
-	//
-	// example:
-	//
-	// F61CDR30-E83C-4FDA-BF73-9A94CDD44229
+	// The unique ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

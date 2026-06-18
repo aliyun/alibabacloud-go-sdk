@@ -24,7 +24,7 @@ type iBatchGetExpressionFieldsShrinkRequest interface {
 }
 
 type BatchGetExpressionFieldsShrinkRequest struct {
-	// List of expressions.
+	// A list of expression objects to process.
 	//
 	// example:
 	//
@@ -32,14 +32,14 @@ type BatchGetExpressionFieldsShrinkRequest struct {
 	ExpressionsShrink *string `json:"Expressions,omitempty" xml:"Expressions,omitempty"`
 	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Kind              *string `json:"Kind,omitempty" xml:"Kind,omitempty"`
-	// WAF Phase
+	// The WAF phase.
 	//
 	// example:
 	//
 	// http_bot
 	Phase      *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
 	PlanNameEn *string `json:"PlanNameEn,omitempty" xml:"PlanNameEn,omitempty"`
-	// Site ID
+	// The ID of the site.
 	//
 	// example:
 	//

@@ -26,25 +26,36 @@ type iWafRuleMatch interface {
 }
 
 type WafRuleMatch struct {
-	ConvertToLower *bool           `json:"ConvertToLower,omitempty" xml:"ConvertToLower,omitempty"`
-	Criteria       []*WafRuleMatch `json:"Criteria,omitempty" xml:"Criteria,omitempty" type:"Repeated"`
+	// 值大小写不敏感。
+	ConvertToLower *bool `json:"ConvertToLower,omitempty" xml:"ConvertToLower,omitempty"`
+	// 逻辑列表。
+	Criteria []*WafRuleMatch `json:"Criteria,omitempty" xml:"Criteria,omitempty" type:"Repeated"`
+	// 逻辑关系。
+	//
 	// example:
 	//
 	// and
 	Logic *string `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	// 匹配符。
+	//
 	// example:
 	//
 	// eq
 	MatchOperator *string `json:"MatchOperator,omitempty" xml:"MatchOperator,omitempty"`
+	// 匹配域。
+	//
 	// example:
 	//
 	// ip.src
 	MatchType *string `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
+	// 匹配值。
+	//
 	// example:
 	//
 	// 1.1.1.1
 	MatchValue interface{} `json:"MatchValue,omitempty" xml:"MatchValue,omitempty"`
-	Negate     *bool       `json:"Negate,omitempty" xml:"Negate,omitempty"`
+	// 匹配结果取反。
+	Negate *bool `json:"Negate,omitempty" xml:"Negate,omitempty"`
 }
 
 func (s WafRuleMatch) String() string {

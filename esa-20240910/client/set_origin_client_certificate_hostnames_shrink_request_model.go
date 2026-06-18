@@ -18,11 +18,11 @@ type iSetOriginClientCertificateHostnamesShrinkRequest interface {
 }
 
 type SetOriginClientCertificateHostnamesShrinkRequest struct {
-	// The domain names to associate.
+	// The hostnames to associate with the certificate.
 	//
 	// This parameter is required.
 	HostnamesShrink *string `json:"Hostnames,omitempty" xml:"Hostnames,omitempty"`
-	// The certificate ID.
+	// The ID of the certificate.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type SetOriginClientCertificateHostnamesShrinkRequest struct {
 	//
 	// babaabcd****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	// The ID of the site.
 	//
 	// This parameter is required.
 	//

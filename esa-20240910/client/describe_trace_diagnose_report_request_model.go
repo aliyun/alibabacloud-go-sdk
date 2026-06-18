@@ -16,10 +16,14 @@ type iDescribeTraceDiagnoseReportRequest interface {
 }
 
 type DescribeTraceDiagnoseReportRequest struct {
+	// Diagnostic task ID.
+	//
 	// example:
 	//
 	// xxxxxxxxx-x-x-xxxxxxxxxxxxxxx
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Diagnostic trace ID.
+	//
 	// example:
 	//
 	// 0000xxxxxxxxxxxxxxxxxxxxxx75e

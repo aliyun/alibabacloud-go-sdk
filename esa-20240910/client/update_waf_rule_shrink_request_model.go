@@ -24,9 +24,9 @@ type iUpdateWafRuleShrinkRequest interface {
 }
 
 type UpdateWafRuleShrinkRequest struct {
-	// Rule configuration.
+	// The configuration of the rule.
 	ConfigShrink *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// WAF rule ID, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2878257.html) interface.
+	// The ID of the WAF rule. To obtain the rule ID, call the [ListWafRules](https://help.aliyun.com/document_detail/2878257.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -34,13 +34,13 @@ type UpdateWafRuleShrinkRequest struct {
 	//
 	// 20000001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The position of the rule in the rule set.
+	// The position of the rule within the rule set.
 	//
 	// example:
 	//
 	// 1
 	Position *int64 `json:"Position,omitempty" xml:"Position,omitempty"`
-	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+	// The ID of the site. To obtain the site ID, call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -48,13 +48,13 @@ type UpdateWafRuleShrinkRequest struct {
 	//
 	// 1
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// Site version.
+	// The version number of the site configuration. For sites with configuration version management enabled, use this parameter to specify the effective configuration version. The default is version 0.
 	//
 	// example:
 	//
 	// 0
 	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
-	// Rule status.
+	// The status of the rule.
 	//
 	// example:
 	//

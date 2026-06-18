@@ -18,15 +18,19 @@ type iDescribeDdosMaxBurstGbpsResponseBody interface {
 }
 
 type DescribeDdosMaxBurstGbpsResponseBody struct {
+	// The ID of the instance.
+	//
 	// example:
 	//
 	// esa-site-a71k7bw19dz4
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The maximum protection bandwidth of the DDoS instance within mainland China, in Gbps.
+	//
 	// example:
 	//
 	// 300
 	MaxBurstGbps *string `json:"MaxBurstGbps,omitempty" xml:"MaxBurstGbps,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//

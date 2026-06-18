@@ -24,15 +24,15 @@ type iUpdateSiteDeliveryTaskRequest interface {
 }
 
 type UpdateSiteDeliveryTaskRequest struct {
-	// The log category. Valid values:
+	// The real-time log type. Valid values:
 	//
-	// 	- dcdn_log_access_l1 (default): access logs.
+	// - **dcdn_log_access_l1*	- (default): access log.
 	//
-	// 	- dcdn_log_er: Edge Routine logs.
+	// - **dcdn_log_er**: Edge Routine log.
 	//
-	// 	- dcdn_log_waf: firewall logs.
+	// - **dcdn_log_waf**: WAF log.
 	//
-	// 	- dcdn_log_ipa: TCP/UDP proxy logs.
+	// - **dcdn_log_ipa**: Layer 4 acceleration log.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type UpdateSiteDeliveryTaskRequest struct {
 	//
 	// 0.0
 	DiscardRate *float32 `json:"DiscardRate,omitempty" xml:"DiscardRate,omitempty"`
-	// The log fields that you want to include in real-time logs to be delivered. Separate the log fields with commas (,).
+	// A comma-separated list of delivery fields.
 	//
 	// This parameter is required.
 	//
@@ -53,13 +53,13 @@ type UpdateSiteDeliveryTaskRequest struct {
 	// ClientIP,UserAgent
 	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
 	FilterVer *string `json:"FilterVer,omitempty" xml:"FilterVer,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	// The site ID. You can obtain this ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
 	//
 	// example:
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The name of the delivery task.
+	// The task name.
 	//
 	// This parameter is required.
 	//

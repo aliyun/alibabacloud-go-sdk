@@ -28,7 +28,7 @@ type iUpdateTransportLayerApplicationRequest interface {
 }
 
 type UpdateTransportLayerApplicationRequest struct {
-	// Transport layer application ID, which can be obtained by calling the [ListTransportLayerApplications](~~ListTransportLayerApplications~~) interface.
+	// The transport layer application ID. You can obtain this ID by calling the [ListTransportLayerApplications](~~ListTransportLayerApplications~~) operation.
 	//
 	// This parameter is required.
 	//
@@ -36,36 +36,36 @@ type UpdateTransportLayerApplicationRequest struct {
 	//
 	// 165503967****
 	ApplicationId *int64 `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// Whether to enable China mainland network access optimization, default is disabled. Value range:
+	// Specifies whether to enable cross-border optimization for network access from the Chinese mainland. This feature is disabled by default. Valid values:
 	//
-	// - on: Enabled.
+	// - on: Enables the feature.
 	//
-	// - off: Disabled.
+	// - off: Disables the feature.
 	//
 	// example:
 	//
 	// on
 	CrossBorderOptimization *string `json:"CrossBorderOptimization,omitempty" xml:"CrossBorderOptimization,omitempty"`
-	// IP access rule switch. When enabled, the IP access rules in WAF will take effect on the transport layer application.
+	// Specifies whether to enable IP access rules. If enabled, the IP access rules in WAF apply to the transport layer application. Valid values:
 	//
-	// - on: Enabled.
+	// - on: Enables the feature.
 	//
-	// - off: Disabled.
+	// - off: Disables the feature.
 	//
 	// example:
 	//
 	// on
 	IpAccessRule *string `json:"IpAccessRule,omitempty" xml:"IpAccessRule,omitempty"`
-	// IPv6 switch.
+	// Specifies whether to enable IPv6. Valid values: `on` and `off`.
 	//
 	// example:
 	//
 	// on
 	Ipv6                *string `json:"Ipv6,omitempty" xml:"Ipv6,omitempty"`
 	KeepAliveProtection *string `json:"KeepAliveProtection,omitempty" xml:"KeepAliveProtection,omitempty"`
-	// Forwarding rule list. Details of each rule. Except for the comment, all other parameters are required.
+	// A list of forwarding rules. For each rule, all parameters are required except for `Comment`.
 	Rules []*UpdateTransportLayerApplicationRequestRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+	// The site ID. You can obtain this ID by calling the [ListSites](~~ListSites~~) operation.
 	//
 	// This parameter is required.
 	//
@@ -170,75 +170,75 @@ func (s *UpdateTransportLayerApplicationRequest) Validate() error {
 }
 
 type UpdateTransportLayerApplicationRequestRules struct {
-	// Client IP pass-through protocol, supports:
+	// Specifies the protocol for client IP pass-through. Valid values:
 	//
-	// - **off**: No pass-through.
+	// - **off**: Disables client IP pass-through.
 	//
-	// - **PPv1**: PROXY Protocol v1, supports client IP pass-through for TCP protocol.
+	// - **PPv1**: PROXY Protocol v1. Supports client IP pass-through for the TCP protocol.
 	//
-	// - **PPv2**: PROXY Protocol v2, supports client IP pass-through for TCP and UDP protocols.
+	// - **PPv2**: PROXY Protocol v2. Supports client IP pass-through for both TCP and UDP protocols.
 	//
-	// - **SPP**: Simple Proxy Protocol, supports client IP pass-through for UDP protocol.
+	// - **SPP**: Simple Proxy Protocol. Supports client IP pass-through for the UDP protocol.
 	//
 	// example:
 	//
 	// SPP
 	ClientIPPassThroughMode *string `json:"ClientIPPassThroughMode,omitempty" xml:"ClientIPPassThroughMode,omitempty"`
-	// Comment information for the rule.
+	// An optional comment for the forwarding rule.
 	//
 	// example:
 	//
 	// 123
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// Edge port. Supports:
+	// The edge port. The following formats are supported:
 	//
-	// - A single port, e.g., 80.
+	// - A single port, for example, `80`.
 	//
-	// - Port range, e.g., 81-85, representing ports 81, 82, 83, 84, 85.
+	// - A port range, for example, `81-85`. This range includes ports 81, 82, 83, 84, and 85.
 	//
-	// - Combination of ports and port ranges, separated by commas, e.g., 80,81-85,90, representing ports 80, 81, 82, 83, 84, 85, 90.
+	// - A combination of ports and port ranges separated by commas, for example, `80,81-85,90`. This includes ports 80, 81, 82, 83, 84, 85, and 90.
 	//
-	// - Edge ports within a single rule and between multiple rules must not overlap.
+	// - Edge ports cannot overlap within a single rule or across multiple rules.
 	//
 	// example:
 	//
 	// 80
 	EdgePort *string `json:"EdgePort,omitempty" xml:"EdgePort,omitempty"`
-	// Forwarding rule protocol, supports:
+	// The forwarding protocol. Valid values:
 	//
-	// - TCP: TCP protocol.
+	// - TCP: Transmission Control Protocol.
 	//
-	// - UDP: UDP protocol.
+	// - UDP: User Datagram Protocol.
 	//
 	// example:
 	//
 	// TCP
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// Specific value of the source.
+	// The source, which must correspond to the specified `SourceType`. For example, if `SourceType` is `ip`, this parameter must be an IP address.
 	//
 	// example:
 	//
 	// 1.1.1.1
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// Source port. Supports:
+	// The source port. The following formats are supported:
 	//
-	// - A single port, when the source port is a single port, any valid edge port combination is supported.
+	// - A single port. When a single source port is used, any valid format can be used for the edge port.
 	//
-	// - Port range, only when the edge port is a port range, the source port can be set as a port range, and the size of the range must match that of the edge port. For example, if the edge port is 90-93, the source port cannot be set to 81-85 because the source port range is 5 and the edge port range is 3, which do not match.
+	// - A port range. You can specify a port range for the source port only if the edge port is also a port range, and their sizes must match. For example, if `EdgePort` is `90-93`, you cannot set `SourcePort` to `81-85` because their sizes (4 and 5 ports, respectively) do not match.
 	//
 	// example:
 	//
 	// 80
 	SourcePort *string `json:"SourcePort,omitempty" xml:"SourcePort,omitempty"`
-	// Source type, supports:
+	// The type of the source. Valid values:
 	//
-	// - **ip**: IP address.
+	// - **ip**: An IP address.
 	//
-	// - **domain**: Domain name.
+	// - **domain**: A domain name.
 	//
-	// - **OP**: Origin pool.
+	// - **OP**: An origin pool.
 	//
-	// - **LB**: Load balancer.
+	// - **LB**: A load balancer.
 	//
 	// example:
 	//

@@ -20,13 +20,29 @@ type iCreateWafRulesetRequest interface {
 }
 
 type CreateWafRulesetRequest struct {
-	// Ruleset name.
+	// The name of the WAF ruleset.
 	//
 	// example:
 	//
 	// example
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// WAF operation phase.
+	// The WAF rule execution phase. Valid values:
+	//
+	// - http_whitelist
+	//
+	// - http_custom
+	//
+	// - http_managed
+	//
+	// - http_anti_scan
+	//
+	// - http_ratelimit
+	//
+	// - ip_access_rule
+	//
+	// - http_bot
+	//
+	// - http_security_level_rule
 	//
 	// This parameter is required.
 	//
@@ -34,7 +50,7 @@ type CreateWafRulesetRequest struct {
 	//
 	// http_custom
 	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+	// The site ID. To get this ID, call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +58,7 @@ type CreateWafRulesetRequest struct {
 	//
 	// 1
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// Site version.
+	// The site configuration version. This parameter applies only if versioning is enabled for the site. The default is 0.
 	//
 	// example:
 	//

@@ -24,25 +24,34 @@ type iListUserWafRulesetsResponseBody interface {
 }
 
 type ListUserWafRulesetsResponseBody struct {
+	// The instance usage.
+	//
 	// example:
 	//
 	// 10
 	InstanceUsage *int64 `json:"InstanceUsage,omitempty" xml:"InstanceUsage,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
-	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Rulesets  []*ListUserWafRulesetsResponseBodyRulesets `json:"Rulesets,omitempty" xml:"Rulesets,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// A list of WAF ruleset objects.
+	Rulesets []*ListUserWafRulesetsResponseBodyRulesets `json:"Rulesets,omitempty" xml:"Rulesets,omitempty" type:"Repeated"`
+	// The total number of records after filtering.
+	//
 	// example:
 	//
 	// 5
@@ -125,26 +134,54 @@ func (s *ListUserWafRulesetsResponseBody) Validate() error {
 }
 
 type ListUserWafRulesetsResponseBodyRulesets struct {
+	// The WAF ruleset description.
+	//
 	// example:
 	//
 	// example
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The WAF ruleset ID.
+	//
 	// example:
 	//
 	// 10000001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The WAF ruleset name.
+	//
 	// example:
 	//
 	// example
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The WAF rule execution phase. Possible values:
+	//
+	// - `http_whitelist`: Whitelist rule
+	//
+	// - `http_custom`: Custom rule
+	//
+	// - `http_managed`: Managed rule
+	//
+	// - `http_anti_scan`: Scan protection rule
+	//
+	// - `http_ratelimit`: Rate limit rule
+	//
+	// - `ip_access_rule`: IP access rule
+	//
+	// - `http_bot`: Bot rule
+	//
+	// - `http_security_level_rule`: Security rule
+	//
 	// example:
 	//
 	// http_custom
 	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// The WAF ruleset position.
+	//
 	// example:
 	//
 	// 1
 	Position *int64 `json:"Position,omitempty" xml:"Position,omitempty"`
+	// The WAF ruleset status.
+	//
 	// example:
 	//
 	// on

@@ -16,10 +16,14 @@ type iGetClientCaCertificateHostnamesRequest interface {
 }
 
 type GetClientCaCertificateHostnamesRequest struct {
+	// The client CA certificate ID.
+	//
 	// example:
 	//
 	// babaded901474b9693acf530e0fb****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The site ID. To obtain this ID, call the [ListSites](~~ListSites~~) API.
+	//
 	// This parameter is required.
 	//
 	// example:

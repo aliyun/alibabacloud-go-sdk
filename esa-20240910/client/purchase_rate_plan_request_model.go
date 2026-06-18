@@ -34,75 +34,129 @@ type iPurchaseRatePlanRequest interface {
 }
 
 type PurchaseRatePlanRequest struct {
+	// The number of plans to purchase.
+	//
+	// example:
+	//
+	// 1
 	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	// Specifies whether to enable auto payment.
+	// Specifies whether to enable automatic payment.
+	//
+	// Set this parameter to true when you directly call this operation.
 	//
 	// example:
 	//
 	// true
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	// Auto-renewal:
+	// Specifies whether to enable auto-renewal. Valid values:
 	//
-	// - true: Enable auto-renewal.
+	// - true: Auto-renewal is enabled.
 	//
-	// - false: Disable auto-renewal.
+	// - false: Auto-renewal is disabled.
 	//
 	// example:
 	//
 	// true
-	AutoRenew *bool   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	Channel   *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
+	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// The channel field.
+	//
+	// example:
+	//
+	// xxxWodkxxx
+	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
 	// The billing method. Valid values:
 	//
-	// 	- PREPAY: subscription.
+	// - PREPAY: subscription.
 	//
-	// 	- POSTPAY: pay-as-you-go.
+	// - POSTPAY: pay-as-you-go.
+	//
+	// Set this parameter to PREPAY when you directly call this operation.
 	//
 	// example:
 	//
 	// PREPAY
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The service location. Valid values:
+	// The acceleration region. Valid values:
 	//
-	// 	- domestic: the Chinese mainland.
+	// - domestic: the Chinese mainland only.
 	//
-	// 	- global: global.
+	// - global: global.
 	//
-	// 	- overseas: outside the Chinese mainland.
+	// - overseas: global (excluding the Chinese mainland).
 	//
 	// example:
 	//
 	// domestic
 	Coverage *string `json:"Coverage,omitempty" xml:"Coverage,omitempty"`
-	// Subscription period (in months).
+	// The purchase period, in months.
+	//
+	// This parameter is required when you directly call this operation.
 	//
 	// example:
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// Package code.
+	// The plan code.
+	//
+	// China site
+	//
+	// - Free Edition: entranceplan
+	//
+	// - Basic: basicplan
+	//
+	// - Standard: standardplan
+	//
+	// - Premium: advancedplan
+	//
+	// International site
+	//
+	// - Entrance: entranceplan
+	//
+	// - Pro: standardplan
+	//
+	// - Premium: advancedpla.
 	//
 	// example:
 	//
-	// entranceplan
+	// basicplan
 	PlanCode *string `json:"PlanCode,omitempty" xml:"PlanCode,omitempty"`
-	// Package name.
+	// The plan name.
+	//
+	// China site
+	//
+	// - Free Edition: entranceplan
+	//
+	// - Basic: basic
+	//
+	// - Standard: medium
+	//
+	// - Premium: high
+	//
+	// International site
+	//
+	// - Entrance: entranceplan_intl
+	//
+	// - Pro: basicplan_intl
+	//
+	// - Premium: vipplan_intl
+	//
+	// > Note: For Enterprise Edition plans, the plan name is provided after backend configuration.
 	//
 	// example:
 	//
 	// basic
 	PlanName *string `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
-	// Site name.
+	// The site name.
 	//
 	// example:
 	//
 	// test.com
 	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
-	// The DNS setup option for the website. Valid values:
+	// The site access type. Valid values:
 	//
-	// 	- NS
+	// - NS: NS access.
 	//
-	// 	- CNAME
+	// - CNAME: CNAME access.
 	//
 	// example:
 	//

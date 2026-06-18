@@ -26,7 +26,7 @@ type iListSiteOriginClientCertificatesResponseBody interface {
 }
 
 type ListSiteOriginClientCertificatesResponseBody struct {
-	// The page number.
+	// The page number. The default value is 1.
 	//
 	// example:
 	//
@@ -44,21 +44,21 @@ type ListSiteOriginClientCertificatesResponseBody struct {
 	//
 	// 15C66C7B-671A-4297-9187-2C4477247A74
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Details of the certificates.
+	// The list of certificate information.
 	Result []*ListSiteOriginClientCertificatesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+	// The site ID.
 	//
 	// example:
 	//
 	// 123456789****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The website name.
+	// The site name.
 	//
 	// example:
 	//
 	// example.com
 	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
-	// The total number of certificate.
+	// The total number of real-time log projects.
 	//
 	// example:
 	//
@@ -151,7 +151,7 @@ func (s *ListSiteOriginClientCertificatesResponseBody) Validate() error {
 }
 
 type ListSiteOriginClientCertificatesResponseBodyResult struct {
-	// The Common Name of the certificate.
+	// The common name of the certificate.
 	//
 	// example:
 	//
@@ -169,13 +169,13 @@ type ListSiteOriginClientCertificatesResponseBodyResult struct {
 	//
 	// 1dc5fc9af4eead2570c70d94b416130baeb6d4429b51fd3557379588456a****
 	FingerprintSha256 *string `json:"FingerprintSha256,omitempty" xml:"FingerprintSha256,omitempty"`
-	// The certificate ID on ESA.
+	// The certificate ID.
 	//
 	// example:
 	//
 	// babaabcd****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The certificate authority (CA) that issued the certificate.
+	// The certification authority.
 	//
 	// example:
 	//
@@ -187,31 +187,31 @@ type ListSiteOriginClientCertificatesResponseBodyResult struct {
 	//
 	// yourCertName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The time when the certificate expires.
+	// The end time of the certificate validity period.
 	//
 	// example:
 	//
 	// 2024-03-31 02:08:00
 	NotAfter *string `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
-	// The time when the certificate takes effect.
+	// The start time of the certificate validity period.
 	//
 	// example:
 	//
 	// 2023-03-31 02:08:00
 	NotBefore *string `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
-	// The public key algorithm of the certificate.
+	// The public-key algorithm of the certificate.
 	//
 	// example:
 	//
 	// RSA
 	PubkeyAlgorithm *string `json:"PubkeyAlgorithm,omitempty" xml:"PubkeyAlgorithm,omitempty"`
-	// The Subject Alternative Name (SAN) of the certificate.
+	// The subject alternative name (SAN) of the certificate.
 	//
 	// example:
 	//
 	// www.example.com,*.example.com
 	SAN *string `json:"SAN,omitempty" xml:"SAN,omitempty"`
-	// The serial number of the certificate.
+	// The certificate serial number.
 	//
 	// example:
 	//
@@ -235,7 +235,7 @@ type ListSiteOriginClientCertificatesResponseBodyResult struct {
 	//
 	// upload
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The time when the certificate was updated.
+	// The time when the certificate was last updated.
 	//
 	// example:
 	//

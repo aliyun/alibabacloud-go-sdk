@@ -24,25 +24,34 @@ type iListDDoSInstancesResponseBody interface {
 }
 
 type ListDDoSInstancesResponseBody struct {
+	// Instance details
 	InstanceInfo []*ListDDoSInstancesResponseBodyInstanceInfo `json:"InstanceInfo,omitempty" xml:"InstanceInfo,omitempty" type:"Repeated"`
+	// Page number. Default: **1**.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Number of entries per page
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
+	// Request ID
 	//
 	// example:
 	//
 	// 9F1DC265-BF10-5C9C-B607-760265C5F365
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total number of entries
+	//
 	// example:
 	//
 	// 100
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// Total number of pages
+	//
 	// example:
 	//
 	// 2
@@ -125,30 +134,52 @@ func (s *ListDDoSInstancesResponseBody) Validate() error {
 }
 
 type ListDDoSInstancesResponseBodyInstanceInfo struct {
+	// Time when the instance was purchased
+	//
 	// example:
 	//
 	// 2025-07-01T07:59:07Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// DDoS protection specification for the Chinese mainland
+	//
 	// example:
 	//
 	// cn_300
 	DDoSBurstableDomesticProtection *string `json:"DDoSBurstableDomesticProtection,omitempty" xml:"DDoSBurstableDomesticProtection,omitempty"`
+	// DDoS protection specification for regions outside the Chinese mainland
+	//
 	// example:
 	//
 	// overseas_300
 	DDoSBurstableOverseasProtection *string `json:"DDoSBurstableOverseasProtection,omitempty" xml:"DDoSBurstableOverseasProtection,omitempty"`
+	// Instance ID
+	//
 	// example:
 	//
 	// sp-ddddxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Scheduled release time
+	//
 	// example:
 	//
 	// 2026-03-25T16:00:00Z
 	ReserveReleaseTime *string `json:"ReserveReleaseTime,omitempty" xml:"ReserveReleaseTime,omitempty"`
+	// Associated site package instance ID
+	//
 	// example:
 	//
 	// esa-site-b0s6kmx0r0n4
 	SiteInstanceId *string `json:"SiteInstanceId,omitempty" xml:"SiteInstanceId,omitempty"`
+	// Instance status. Valid values:
+	//
+	// - **online**: Normal service status.
+	//
+	// - **offline**: Expired but not overdue. Instance is unavailable.
+	//
+	// - **disable**: Released.
+	//
+	// - **overdue**: Service suspended due to overdue payment.
+	//
 	// example:
 	//
 	// online

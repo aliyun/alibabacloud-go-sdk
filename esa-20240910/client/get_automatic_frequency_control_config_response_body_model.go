@@ -28,34 +28,66 @@ type iGetAutomaticFrequencyControlConfigResponseBody interface {
 }
 
 type GetAutomaticFrequencyControlConfigResponseBody struct {
+	// The action to perform. Valid values:
+	//
+	// - **observe**: Monitors requests.
+	//
+	// - **deny**: Denies requests.
+	//
+	// - **js**: Issues a JavaScript challenge.
+	//
 	// example:
 	//
 	// js
 	ActionType *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
+	// Indicates whether automatic frequency control is enabled. Valid values:
+	//
+	// - **on**: Enabled.
+	//
+	// - **off**: Disabled.
+	//
 	// example:
 	//
 	// on
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The statistics collection interval.
+	//
 	// example:
 	//
 	// 10
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The protection level. Valid values:
+	//
+	// - **loose**: Loose.
+	//
+	// - **normal**: Normal.
+	//
+	// - **strict**: Strict.
+	//
 	// example:
 	//
 	// normal
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The duration of the penalty, in seconds.
+	//
 	// example:
 	//
 	// 20000000
 	PunishTime *int32 `json:"PunishTime,omitempty" xml:"PunishTime,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE73368
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The rule ID.
+	//
 	// example:
 	//
 	// 11957665
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The threshold that triggers the action.
+	//
 	// example:
 	//
 	// 100

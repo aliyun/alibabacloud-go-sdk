@@ -16,7 +16,7 @@ type iDeleteOriginClientCertificateRequest interface {
 }
 
 type DeleteOriginClientCertificateRequest struct {
-	// The certificate ID.
+	// The ID of the certificate.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DeleteOriginClientCertificateRequest struct {
 	//
 	// babaabcd****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
+	// The ID of the site.
 	//
 	// This parameter is required.
 	//

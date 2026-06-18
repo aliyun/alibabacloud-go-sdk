@@ -24,27 +24,32 @@ type iGetRoutineResponseBody interface {
 }
 
 type GetRoutineResponseBody struct {
-	// The time when the routine was created.
+	// The creation time of the edge function Routine.
 	//
 	// example:
 	//
 	// 2024-03-11T01:23:21Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The default record name to access.
+	// The default domain name for accessing the Routine.
 	//
 	// example:
 	//
 	// routine1.example.com
 	DefaultRelatedRecord *string `json:"DefaultRelatedRecord,omitempty" xml:"DefaultRelatedRecord,omitempty"`
-	// The description of the routine.
+	// The description of the edge function Routine.
 	//
 	// example:
 	//
 	// ZWRpdCByb3V0aW5lIGNvbmZpZyBkZXNjcmlwdGlvbg
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The information about the environments.
-	Envs      []*GetRoutineResponseBodyEnvs `json:"Envs,omitempty" xml:"Envs,omitempty" type:"Repeated"`
-	HasAssets *bool                         `json:"HasAssets,omitempty" xml:"HasAssets,omitempty"`
+	// A list of environments.
+	Envs []*GetRoutineResponseBodyEnvs `json:"Envs,omitempty" xml:"Envs,omitempty" type:"Repeated"`
+	// Indicates whether the Routine includes Assets.
+	//
+	// example:
+	//
+	// false
+	HasAssets *bool `json:"HasAssets,omitempty" xml:"HasAssets,omitempty"`
 	// The request ID.
 	//
 	// example:
@@ -129,8 +134,9 @@ func (s *GetRoutineResponseBody) Validate() error {
 }
 
 type GetRoutineResponseBodyEnvs struct {
+	// Details of the canary release for a code version.
 	CodeDeploy *GetRoutineResponseBodyEnvsCodeDeploy `json:"CodeDeploy,omitempty" xml:"CodeDeploy,omitempty" type:"Struct"`
-	// The environment type.
+	// The environment name.
 	//
 	// example:
 	//
@@ -174,10 +180,26 @@ func (s *GetRoutineResponseBodyEnvs) Validate() error {
 }
 
 type GetRoutineResponseBodyEnvsCodeDeploy struct {
+	// A list of deployed code versions.
 	CodeVersions []*GetRoutineResponseBodyEnvsCodeDeployCodeVersions `json:"CodeVersions,omitempty" xml:"CodeVersions,omitempty" type:"Repeated"`
-	CreationTime *string                                             `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	DeployId     *string                                             `json:"DeployId,omitempty" xml:"DeployId,omitempty"`
-	Strategy     *string                                             `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
+	// The time the deployment was created.
+	//
+	// example:
+	//
+	// 2023-05-11T09:21:36Z
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The deployment ID.
+	//
+	// example:
+	//
+	// 589267
+	DeployId *string `json:"DeployId,omitempty" xml:"DeployId,omitempty"`
+	// The deployment strategy. The default value is `percentage`.
+	//
+	// example:
+	//
+	// percentage
+	Strategy *string `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
 }
 
 func (s GetRoutineResponseBodyEnvsCodeDeploy) String() string {
@@ -238,10 +260,30 @@ func (s *GetRoutineResponseBodyEnvsCodeDeploy) Validate() error {
 }
 
 type GetRoutineResponseBodyEnvsCodeDeployCodeVersions struct {
+	// The code version ID.
+	//
+	// example:
+	//
+	// 1746583193971399525
 	CodeVersion *string `json:"CodeVersion,omitempty" xml:"CodeVersion,omitempty"`
-	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The creation time of the code version.
+	//
+	// example:
+	//
+	// 2025-07-23T09:01:40Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the code version.
+	//
+	// example:
+	//
+	// code version 1.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Percentage  *int64  `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
+	// The percentage of traffic routed to this code version.
+	//
+	// example:
+	//
+	// 100
+	Percentage *int64 `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
 }
 
 func (s GetRoutineResponseBodyEnvsCodeDeployCodeVersions) String() string {

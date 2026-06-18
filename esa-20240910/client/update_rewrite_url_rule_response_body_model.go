@@ -14,7 +14,7 @@ type iUpdateRewriteUrlRuleResponseBody interface {
 }
 
 type UpdateRewriteUrlRuleResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

@@ -38,56 +38,80 @@ type iGetKeylessServerResponseBody interface {
 }
 
 type GetKeylessServerResponseBody struct {
+	// The CA certificate used to verify the server certificate of the keyless server. This parameter applies only when Verify is set to true.
+	//
 	// example:
 	//
 	// -----BEGIN CERTIFICATE-----****
 	CaCertificate *string `json:"CaCertificate,omitempty" xml:"CaCertificate,omitempty"`
+	// The client certificate. Must be provided as a pair with the client private key.
+	//
 	// example:
 	//
 	// -----BEGIN CERTIFICATE-----****
 	ClientCertificate *string `json:"ClientCertificate,omitempty" xml:"ClientCertificate,omitempty"`
+	// The client private key. Must be provided as a pair with the client certificate.
+	//
 	// example:
 	//
 	// -----BEGIN RSA PRIVATE KEY-----****
 	ClientPrivateKey *string `json:"ClientPrivateKey,omitempty" xml:"ClientPrivateKey,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2024-03-11T01:23:21Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The hostname of the keyless server.
+	//
 	// example:
 	//
 	// example.com
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// Keyless server ID。
+	// The keyless server ID.
 	//
 	// example:
 	//
 	// baba39055622c008b90285a8838e****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The keyless server name.
+	//
 	// example:
 	//
 	// example
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The port of the keyless server. Valid values: **1*	- to **65535**.
+	//
 	// example:
 	//
 	// 443
 	Port *int64 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 3558df77-8a7a-4060-a900-2d794940****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The site ID.
+	//
 	// example:
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The site name.
+	//
 	// example:
 	//
 	// example.com
 	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+	// The update time.
+	//
 	// example:
 	//
 	// 2025-03-13T02:13:28Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// Indicates whether to verify the server certificate of the keyless server. The default value is false.
+	//
 	// example:
 	//
 	// true

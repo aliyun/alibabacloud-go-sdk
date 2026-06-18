@@ -70,9 +70,9 @@ func (s *ListESAIPInfoResponseBody) Validate() error {
 type ListESAIPInfoResponseBodyContent struct {
 	// Whether the IP address in the parameter belongs to ESA POPs.
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//

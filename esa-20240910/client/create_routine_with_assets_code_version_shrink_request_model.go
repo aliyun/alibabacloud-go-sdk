@@ -15,6 +15,8 @@ type iCreateRoutineWithAssetsCodeVersionShrinkRequest interface {
 	GetCodeDescription() *string
 	SetConfOptionsShrink(v string) *CreateRoutineWithAssetsCodeVersionShrinkRequest
 	GetConfOptionsShrink() *string
+	SetDeployEnv(v string) *CreateRoutineWithAssetsCodeVersionShrinkRequest
+	GetDeployEnv() *string
 	SetExtraInfo(v string) *CreateRoutineWithAssetsCodeVersionShrinkRequest
 	GetExtraInfo() *string
 	SetName(v string) *CreateRoutineWithAssetsCodeVersionShrinkRequest
@@ -25,6 +27,7 @@ type CreateRoutineWithAssetsCodeVersionShrinkRequest struct {
 	BuildId           *int64  `json:"BuildId,omitempty" xml:"BuildId,omitempty"`
 	CodeDescription   *string `json:"CodeDescription,omitempty" xml:"CodeDescription,omitempty"`
 	ConfOptionsShrink *string `json:"ConfOptions,omitempty" xml:"ConfOptions,omitempty"`
+	DeployEnv         *string `json:"DeployEnv,omitempty" xml:"DeployEnv,omitempty"`
 	ExtraInfo         *string `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
 	// This parameter is required.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -50,6 +53,10 @@ func (s *CreateRoutineWithAssetsCodeVersionShrinkRequest) GetConfOptionsShrink()
 	return s.ConfOptionsShrink
 }
 
+func (s *CreateRoutineWithAssetsCodeVersionShrinkRequest) GetDeployEnv() *string {
+	return s.DeployEnv
+}
+
 func (s *CreateRoutineWithAssetsCodeVersionShrinkRequest) GetExtraInfo() *string {
 	return s.ExtraInfo
 }
@@ -70,6 +77,11 @@ func (s *CreateRoutineWithAssetsCodeVersionShrinkRequest) SetCodeDescription(v s
 
 func (s *CreateRoutineWithAssetsCodeVersionShrinkRequest) SetConfOptionsShrink(v string) *CreateRoutineWithAssetsCodeVersionShrinkRequest {
 	s.ConfOptionsShrink = &v
+	return s
+}
+
+func (s *CreateRoutineWithAssetsCodeVersionShrinkRequest) SetDeployEnv(v string) *CreateRoutineWithAssetsCodeVersionShrinkRequest {
+	s.DeployEnv = &v
 	return s
 }
 

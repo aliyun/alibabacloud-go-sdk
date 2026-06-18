@@ -24,41 +24,41 @@ type iListLoadBalancersRequest interface {
 }
 
 type ListLoadBalancersRequest struct {
-	// The name matching strategy when querying by name:
+	// The matching strategy to use when querying by name. Valid values:
 	//
-	// - fuzzy: Fuzzy match;
+	// - `fuzzy`: Performs a fuzzy match.
 	//
-	// - exact: Exact match, equivalent to an equality query.
+	// - `exact`: Performs an exact match.
 	//
 	// example:
 	//
 	// fuzzy
 	MatchType *string `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
-	// The name of the load balancer, which can be used to query by name.
+	// The name of the load balancer.
 	//
 	// example:
 	//
 	// lb.example.com
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The sorting field. Currently, only sorting by id is supported. \\"id\\" indicates ascending order by id, and \\"-id\\" indicates descending order by id. The id size is positively correlated with the creation time. If not provided, it defaults to descending order by id.
+	// The sort field. Only sorting by ID is supported. IDs are assigned chronologically. Specify `id` for ascending order or `-id` for descending order. If this parameter is omitted, the results are sorted by ID in descending order.
 	//
 	// example:
 	//
 	// id
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	// The page number for paginated queries.
+	// The page number for pagination.
 	//
 	// example:
 	//
 	// 2
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The page size for paginated queries, with a value range of 1-500.
+	// The number of entries to return on each page. Valid values: 1 to 500.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The site ID, which can be obtained by calling the [ListSites](~~ListSites~~) API.
+	// The site ID. You can obtain this ID by calling the [ListSites](~~ListSites~~) operation.
 	//
 	// This parameter is required.
 	//

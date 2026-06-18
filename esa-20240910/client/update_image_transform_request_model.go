@@ -38,7 +38,7 @@ type UpdateImageTransformRequest struct {
 	//
 	// on
 	AutoWebp *string `json:"AutoWebp,omitempty" xml:"AutoWebp,omitempty"`
-	// Configuration ID. It can be obtained by calling the [ListImageTransforms](https://help.aliyun.com/document_detail/2869056.html) interface.
+	// The configuration ID. You can obtain this ID by calling the [ListImageTransforms](https://help.aliyun.com/document_detail/2869056.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -46,44 +46,49 @@ type UpdateImageTransformRequest struct {
 	//
 	// 352816096987136
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// Indicates whether to enable image transformation. Possible values:
+	// Specifies whether to enable image transform. Valid values:
 	//
-	// - on: Enable.
+	// - `on`: Enables image transform.
 	//
-	// - off: Disable.
+	// - `off`: Disables image transform.
 	//
 	// example:
 	//
 	// on
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// Rule content, used to match user requests with conditional expressions. This parameter is not required when adding a global configuration. There are two usage scenarios:
+	// The rule content, which is a conditional expression for matching user requests. This parameter is not required when you configure a global rule. The expression can be used in the following ways:
 	//
-	// - To match all incoming requests: Set the value to true.
+	// - To match all incoming requests, set the value to `true`.
 	//
-	// - To match specific requests: Set the value to a custom expression, for example: (http.host eq "video.example.com")
+	// - To match specific requests, set the value to a custom expression, for example, `(http.host eq "video.example.com")`.
 	//
 	// example:
 	//
 	// (http.request.uri.path.file_name eq \\"jpg\\")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// Rule switch. This parameter is not required when adding a global configuration. Possible values:
+	// Specifies whether to enable the rule. This parameter is not required when you configure a global rule. Valid values:
 	//
-	// - on: Enable.
+	// - `on`: Enables the rule.
 	//
-	// - off: Disable.
+	// - `off`: Disables the rule.
 	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	// Rule name. This parameter is not required when adding a global configuration.
+	// The rule name. This parameter is not required when you configure a global rule.
 	//
 	// example:
 	//
 	// test
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	Sequence *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+	// The execution priority of the rule. A smaller value indicates a higher priority.
+	//
+	// example:
+	//
+	// 1
+	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// The site ID. You can obtain this ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
 	//
 	// This parameter is required.
 	//

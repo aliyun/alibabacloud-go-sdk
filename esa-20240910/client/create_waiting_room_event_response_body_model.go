@@ -21,8 +21,13 @@ type CreateWaitingRoomEventResponseBody struct {
 	// example:
 	//
 	// 15C66C7B-671A-4297-9187-2C4477247A123425345
-	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	WaitingRoomEventId *int64  `json:"WaitingRoomEventId,omitempty" xml:"WaitingRoomEventId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The waiting room event ID. You can call the [ListWaitingRoomEvents](https://help.aliyun.com/document_detail/2850279.html) operation to obtain the ID.
+	//
+	// example:
+	//
+	// 433277746085888
+	WaitingRoomEventId *int64 `json:"WaitingRoomEventId,omitempty" xml:"WaitingRoomEventId,omitempty"`
 }
 
 func (s CreateWaitingRoomEventResponseBody) String() string {

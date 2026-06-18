@@ -24,31 +24,31 @@ type iDescribeDDoSAllEventListRequest interface {
 }
 
 type DescribeDDoSAllEventListRequest struct {
-	// The end of the time range to query.
+	// The end time of the query.
 	//
-	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. The maximum time range is 31 days.
+	// The time must be in ISO 8601 format and in UTC. Format: `yyyy-MM-ddTHH:mm:ssZ`. The time range between `StartTime` and `EndTime` cannot exceed 31 days.
 	//
-	// If you do not configure this parameter, the current time is used as the end of the time range to query.
+	// If this parameter is not specified, it defaults to the current time.
 	//
 	// example:
 	//
 	// 2023-02-22T15:59:59Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The type of DDoS attacks to query. Valid values:
+	// The type of DDoS attack events to query. Valid values:
 	//
-	// 	- **web-cc**: web resource exhaustion attacks.
+	// - **web-cc**: A web resource exhaustion attack.
 	//
-	// 	- **cc**: connection flood attacks.
+	// - **cc**: A connection-based attack.
 	//
-	// 	- **traffic**: volumetric attacks.
+	// - **traffic**: A traffic-based attack.
 	//
-	// Default value: web-cc.
+	// If you do not specify this parameter, the operation queries `web-cc` events by default.
 	//
 	// example:
 	//
 	// web-cc
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	// The page number. Valid values: **1*	- to **100000**.
+	// The page number to return. Valid range: **1*	- to **100000**.
 	//
 	// This parameter is required.
 	//
@@ -56,13 +56,13 @@ type DescribeDDoSAllEventListRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: **10**. Valid values: 5, 10, and 20.
+	// The number of entries per page. Default value: **10**. Valid values: **5**, **10**, and **20**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	// The ID of the site. You can obtain this ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -70,9 +70,9 @@ type DescribeDDoSAllEventListRequest struct {
 	//
 	// 7096621098****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The beginning of the time range to query.
+	// The start time of the query.
 	//
-	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The time must be in ISO 8601 format and in UTC. Format: `yyyy-MM-ddTHH:mm:ssZ`.
 	//
 	// This parameter is required.
 	//

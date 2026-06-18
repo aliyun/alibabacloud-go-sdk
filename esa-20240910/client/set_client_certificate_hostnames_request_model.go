@@ -18,7 +18,7 @@ type iSetClientCertificateHostnamesRequest interface {
 }
 
 type SetClientCertificateHostnamesRequest struct {
-	// The domain names to associate.
+	// The hostnames to bind.
 	//
 	// This parameter is required.
 	Hostnames []*string `json:"Hostnames,omitempty" xml:"Hostnames,omitempty" type:"Repeated"`
@@ -26,15 +26,15 @@ type SetClientCertificateHostnamesRequest struct {
 	//
 	// example:
 	//
-	// babab9db65ee5efcca9f3d41d4b50d66
+	// babab9db65ee5efcca9f3d41d4b50d**
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The website ID.
+	// The ID of the site.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 1234567890123
+	// 123456789****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 

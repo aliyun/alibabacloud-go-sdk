@@ -73,14 +73,22 @@ type ListWaitingRoomsResponseBodyWaitingRooms struct {
 	// __aliwaitingroom_example
 	CookieName *string `json:"CookieName,omitempty" xml:"CookieName,omitempty"`
 	// The HTML content or identifier of the custom queuing page. This parameter is valid only when `WaitingRoomType` is set to `custom`. The content must be URL-encoded.
+	//
+	// example:
+	//
+	// Custom HTML content
 	CustomPageHtml *string `json:"CustomPageHtml,omitempty" xml:"CustomPageHtml,omitempty"`
 	// The description of the waiting room.
+	//
+	// example:
+	//
+	// Test waiting room
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Indicates whether session renewal is disabled. Valid values:
 	//
-	// 	- on
+	// - on
 	//
-	// 	- off
+	// - off
 	//
 	// example:
 	//
@@ -88,9 +96,9 @@ type ListWaitingRoomsResponseBodyWaitingRooms struct {
 	DisableSessionRenewalEnable *string `json:"DisableSessionRenewalEnable,omitempty" xml:"DisableSessionRenewalEnable,omitempty"`
 	// Indicates whether the waiting room is enabled. Valid values:
 	//
-	// 	- on
+	// - on
 	//
-	// 	- off
+	// - off
 	//
 	// example:
 	//
@@ -100,9 +108,9 @@ type ListWaitingRoomsResponseBodyWaitingRooms struct {
 	HostNameAndPath []*ListWaitingRoomsResponseBodyWaitingRoomsHostNameAndPath `json:"HostNameAndPath,omitempty" xml:"HostNameAndPath,omitempty" type:"Repeated"`
 	// Indicates whether JSON response is enabled. If you set this parameter to on, a JSON body is returned for requests to the waiting room with the header Accept: application/json. Valid values:
 	//
-	// 	- on
+	// - on
 	//
-	// 	- off
+	// - off
 	//
 	// example:
 	//
@@ -110,17 +118,21 @@ type ListWaitingRoomsResponseBodyWaitingRooms struct {
 	JsonResponseEnable *string `json:"JsonResponseEnable,omitempty" xml:"JsonResponseEnable,omitempty"`
 	// The language of the waiting room page. This parameter is returned when the waiting room type is set to default. Valid values:
 	//
-	// 	- enus: English.
+	// - enus: English.
 	//
-	// 	- zhcn: Simplified Chinese.
+	// - zhcn: Simplified Chinese.
 	//
-	// 	- zhhk: Traditional Chinese.
+	// - zhhk: Traditional Chinese.
 	//
 	// example:
 	//
 	// zhcn
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	// The name of the waiting room.
+	//
+	// example:
+	//
+	// Test waiting room
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The maximum number of new users per minute.
 	//
@@ -130,9 +142,9 @@ type ListWaitingRoomsResponseBodyWaitingRooms struct {
 	NewUsersPerMinute *string `json:"NewUsersPerMinute,omitempty" xml:"NewUsersPerMinute,omitempty"`
 	// Indicates whether all requests must be queued. Valid values:
 	//
-	// 	- on
+	// - on
 	//
-	// 	- off
+	// - off
 	//
 	// example:
 	//
@@ -140,13 +152,13 @@ type ListWaitingRoomsResponseBodyWaitingRooms struct {
 	QueueAllEnable *string `json:"QueueAllEnable,omitempty" xml:"QueueAllEnable,omitempty"`
 	// The queuing method. Valid values:
 	//
-	// 	- random: Users gain access to the origin randomly, regardless of the arrival time.
+	// - random: Users gain access to the origin randomly, regardless of the arrival time.
 	//
-	// 	- fifo: Users gain access to the origin in order of arrival.
+	// - fifo: Users gain access to the origin in order of arrival.
 	//
-	// 	- passthrough: Users pass through the waiting room and go straight to the origin.
+	// - passthrough: Users pass through the waiting room and go straight to the origin.
 	//
-	// 	- reject-all: Users are blocked from reaching the origin.
+	// - reject-all: Users are blocked from reaching the origin.
 	//
 	// example:
 	//
@@ -154,11 +166,11 @@ type ListWaitingRoomsResponseBodyWaitingRooms struct {
 	QueuingMethod *string `json:"QueuingMethod,omitempty" xml:"QueuingMethod,omitempty"`
 	// The HTTP status code to return while a user is in the queue. Valid values:
 	//
-	// 	- 200
+	// - 200
 	//
-	// 	- 202
+	// - 202
 	//
-	// 	- 429
+	// - 429
 	//
 	// example:
 	//
@@ -184,9 +196,9 @@ type ListWaitingRoomsResponseBodyWaitingRooms struct {
 	WaitingRoomId *string `json:"WaitingRoomId,omitempty" xml:"WaitingRoomId,omitempty"`
 	// The type of the waiting room. Valid values:
 	//
-	// 	- default
+	// - default
 	//
-	// 	- custom
+	// - custom
 	//
 	// example:
 	//

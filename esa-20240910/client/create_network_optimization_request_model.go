@@ -34,54 +34,59 @@ type iCreateNetworkOptimizationRequest interface {
 }
 
 type CreateNetworkOptimizationRequest struct {
-	// Whether to enable GRPC, disabled by default. Possible values:
+	// Specifies whether to enable gRPC. This feature is disabled by default. Valid values:
 	//
-	// - on: Enable
+	// - on: enabled
 	//
-	// - off: Disable
+	// - off: disabled.
 	//
 	// example:
 	//
 	// on
 	Grpc *string `json:"Grpc,omitempty" xml:"Grpc,omitempty"`
-	// Whether to enable HTTP2 origin, disabled by default. Possible values:
+	// Specifies whether to enable HTTP/2 back-to-origin. This feature is disabled by default. Valid values:
 	//
-	// - on: Enable
+	// - on: enabled
 	//
-	// - off: Disable
+	// - off: disabled.
 	//
 	// example:
 	//
 	// on
 	Http2Origin *string `json:"Http2Origin,omitempty" xml:"Http2Origin,omitempty"`
-	// Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+	// The rule content, which uses a conditional expression to match user requests. This parameter is not required when you add a global configuration. Two scenarios are supported:
 	//
-	// - Match all incoming requests: Set the value to true
+	// - Match all incoming requests: set the value to true.
 	//
-	// - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+	// - Match specified requests: set the value to a custom expression, such as (http.host eq \\"video.example.com\\").
 	//
 	// example:
 	//
 	// (http.host eq \\"video.example.com\\")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// Rule switch. This parameter is not required when adding a global configuration. Possible values:
+	// The rule switch. This parameter is not required when you add a global configuration. Valid values:
 	//
-	// - on: Enable.
+	// - on: enabled.
 	//
-	// - off: Disable.
+	// - off: disabled.
 	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	// Rule name. This parameter is not required when adding a global configuration.
+	// The rule name. This parameter is not required when you add a global configuration.
 	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	Sequence *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) API.
+	// The rule execution order. A smaller value indicates a higher priority.
+	//
+	// example:
+	//
+	// 1
+	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// The site ID. You can call the [ListSites](~~ListSites~~) operation to obtain the site ID.
 	//
 	// This parameter is required.
 	//
@@ -89,33 +94,33 @@ type CreateNetworkOptimizationRequest struct {
 	//
 	// 340035003106221
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The version number of the site configuration. For sites with version management enabled, this parameter can specify the effective version of the configuration, defaulting to version 0.
+	// The version number of the site configuration. For sites with configuration version management enabled, you can use this parameter to specify the site version on which the configuration takes effect. The default value is 0.
 	//
 	// example:
 	//
 	// 1
 	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
-	// Whether to enable smart routing service, disabled by default. Possible values:
+	// Specifies whether to enable smart routing. This feature is disabled by default. Valid values:
 	//
-	// - on: Enable
+	// - on: enabled
 	//
-	// - off: Disable
+	// - off: disabled.
 	//
 	// example:
 	//
 	// on
 	SmartRouting *string `json:"SmartRouting,omitempty" xml:"SmartRouting,omitempty"`
-	// Maximum upload file size in MB, range: 100～500.
+	// The maximum upload file size, in MB. Valid values: 100 to 500.
 	//
 	// example:
 	//
 	// 100
 	UploadMaxFilesize *string `json:"UploadMaxFilesize,omitempty" xml:"UploadMaxFilesize,omitempty"`
-	// Whether to enable Websocket, enabled by default. Possible values:
+	// Specifies whether to enable WebSocket. This feature is enabled by default. Valid values:
 	//
-	// - on: Enable
+	// - on: enabled
 	//
-	// - off: Disable
+	// - off: disabled.
 	//
 	// example:
 	//

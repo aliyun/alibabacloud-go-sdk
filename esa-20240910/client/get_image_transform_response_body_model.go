@@ -42,23 +42,23 @@ type GetImageTransformResponseBody struct {
 	//
 	// on
 	AutoWebp *string `json:"AutoWebp,omitempty" xml:"AutoWebp,omitempty"`
-	// Configuration ID.
+	// The config ID.
 	//
 	// example:
 	//
 	// 352816096987136
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// Configuration type. Possible values:
+	// The configuration type. Valid values:
 	//
-	// - global: Global configuration;
+	// - global: The global configuration.
 	//
-	// - rule: Rule-based configuration;
+	// - rule: A rule configuration.
 	//
 	// example:
 	//
 	// global
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
-	// Whether to enable image transformation. Possible values:
+	// Indicates whether image transformation is enabled. Valid values:
 	//
 	// - on: Enabled.
 	//
@@ -68,23 +68,23 @@ type GetImageTransformResponseBody struct {
 	//
 	// on
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// CB1A380B-09F0-41BB-280B-72F8FD6DA2FE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+	// The conditional expression of the rule, used to match user requests. This parameter is relevant only for a rule configuration.
 	//
-	// - Match all incoming requests: Set the value to true
+	// - A value of true matches all incoming requests.
 	//
-	// - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+	// - A custom expression, such as (http.host eq "video.example.com"), matches specific requests.
 	//
 	// example:
 	//
 	// (http.request.uri.path.file_name eq \\"jpg\\")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// Rule switch. This parameter is not required when adding a global configuration. Possible values:
+	// The status of the rule. This parameter is relevant only for a rule configuration. Valid values:
 	//
 	// - on: Enabled.
 	//
@@ -94,19 +94,19 @@ type GetImageTransformResponseBody struct {
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	// Rule name. This parameter does not need to be set when adding global configuration.
+	// The rule name. This parameter is relevant only for a rule configuration.
 	//
 	// example:
 	//
 	// test
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// Rule execution order. The smaller the value, the higher the priority.
+	// The execution sequence of the rule. A smaller value indicates a higher execution priority.
 	//
 	// example:
 	//
 	// 2
 	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	// The version number of the site configuration. For sites with version management enabled, this parameter can specify the effective version of the site, defaulting to version 0.
+	// The version number of the site configuration. For a site that has configuration versioning enabled, this value indicates the version to which the configuration applies. The default value is 0.
 	//
 	// example:
 	//

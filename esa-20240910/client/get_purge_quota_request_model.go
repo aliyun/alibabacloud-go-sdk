@@ -16,7 +16,7 @@ type iGetPurgeQuotaRequest interface {
 }
 
 type GetPurgeQuotaRequest struct {
-	// The website ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
+	// The ID of the site. You can obtain this ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -26,17 +26,17 @@ type GetPurgeQuotaRequest struct {
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 	// The type of the purge task. Valid values:
 	//
-	// 	- **file*	- (default): purges the cache by file.
+	// - **file*	- (default): File purge.
 	//
-	// 	- **cachetag**: purges the cache by cache tag.
+	// - **cachetag**: Cache tag purge.
 	//
-	// 	- **directory**: purges the cache by directory.
+	// - **directory**: Directory purge.
 	//
-	// 	- **ignoreParams**: purges the cache by URL with specific parameters ignored.
+	// - **ignoreParams**: Purge by ignoring parameters.
 	//
-	// 	- **hostname**: purges the cache by hostname.
+	// - **hostname**: Hostname purge.
 	//
-	// 	- **purgeall**: purges all cache.
+	// - **purgeall**: Purges all cached content for the site.
 	//
 	// This parameter is required.
 	//

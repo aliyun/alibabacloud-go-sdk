@@ -26,7 +26,7 @@ type iUpdateHttpRequestHeaderModificationRuleRequest interface {
 }
 
 type UpdateHttpRequestHeaderModificationRuleRequest struct {
-	// Configuration ID. It can be obtained by calling the [ListHttpRequestHeaderModificationRules](https://help.aliyun.com/document_detail/2867483.html) API.
+	// The configuration ID. Call the [ListHttpRequestHeaderModificationRules](https://help.aliyun.com/document_detail/2867483.html) operation to obtain it.
 	//
 	// This parameter is required.
 	//
@@ -34,36 +34,41 @@ type UpdateHttpRequestHeaderModificationRuleRequest struct {
 	//
 	// 35281609698****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// Modify request headers, supporting add, delete, and modify operations.
+	// Specifies the modifications for the request header. Supported operations include `add`, `del`, and `modify`.
 	RequestHeaderModification []*UpdateHttpRequestHeaderModificationRuleRequestRequestHeaderModification `json:"RequestHeaderModification,omitempty" xml:"RequestHeaderModification,omitempty" type:"Repeated"`
-	// Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+	// The Conditional Expression used to match User Requests. This parameter is not required for a Global Configuration. Use cases:
 	//
-	// - To match all incoming requests: Set the value to true
+	// - To match all incoming requests, set the value to `true`.
 	//
-	// - To match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+	// - To match specific requests, use a custom expression, for example, `(http.host eq "video.example.com")`.
 	//
 	// example:
 	//
 	// (http.host eq "video.example.com")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// Rule switch. This parameter is not required when adding a global configuration. Possible values:
+	// Specifies whether the Rule is enabled. This parameter is not required for a Global Configuration. Valid values:
 	//
-	// - on: Enable.
+	// - `on`: Enable
 	//
-	// - off: Disable.
+	// - `off`: Disable
 	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	// Rule name. This parameter is not required when adding a global configuration.
+	// The name of the Rule. This parameter is not required for a Global Configuration.
 	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	Sequence *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
+	// The execution priority of the Rule. A smaller value indicates a higher priority.
+	//
+	// example:
+	//
+	// 1
+	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// The site ID. Call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain it.
 	//
 	// This parameter is required.
 	//
@@ -158,7 +163,7 @@ func (s *UpdateHttpRequestHeaderModificationRuleRequest) Validate() error {
 }
 
 type UpdateHttpRequestHeaderModificationRuleRequestRequestHeaderModification struct {
-	// Request header name.
+	// The name of the Request Header.
 	//
 	// This parameter is required.
 	//
@@ -166,13 +171,13 @@ type UpdateHttpRequestHeaderModificationRuleRequestRequestHeaderModification str
 	//
 	// headerName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Operation method. Possible values:
+	// The type of Operation to perform. Valid values:
 	//
-	// - add: Add.
+	// - `add`: Add
 	//
-	// - del: Delete
+	// - `del`: Delete
 	//
-	// - modify: Modify.
+	// - `modify`: Modify
 	//
 	// This parameter is required.
 	//
@@ -180,8 +185,17 @@ type UpdateHttpRequestHeaderModificationRuleRequestRequestHeaderModification str
 	//
 	// add
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
-	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// Request header value.
+	// The type of the header value. Valid values:
+	//
+	// - `static`: Static Mode
+	//
+	// - `dynamic`: Dynamic Mode
+	//
+	// example:
+	//
+	// static
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The value of the Request Header.
 	//
 	// example:
 	//

@@ -131,11 +131,11 @@ type DescribePreloadTasksResponseBodyTasks struct {
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The error message returned upon a prefetch task failure. Valid values:
 	//
-	// 	- **Internal Error**
+	// - **Internal Error**
 	//
-	// 	- **Origin Timeout**
+	// - **Origin Timeout**
 	//
-	// 	- **Origin Return StatusCode 5XX**
+	// - **Origin Return StatusCode 5XX**
 	//
 	// example:
 	//
@@ -149,11 +149,11 @@ type DescribePreloadTasksResponseBodyTasks struct {
 	Process *string `json:"Process,omitempty" xml:"Process,omitempty"`
 	// The task status.
 	//
-	// 	- **Complete**: The task is complete.
+	// - **Complete**: The task is complete.
 	//
-	// 	- **Refreshing**: The task is in progress.
+	// - **Refreshing**: The task is in progress.
 	//
-	// 	- **Failed**: The task failed.
+	// - **Failed**: The task failed.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iUpdateRedirectRuleResponseBody interface {
 }
 
 type UpdateRedirectRuleResponseBody struct {
-	// Request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

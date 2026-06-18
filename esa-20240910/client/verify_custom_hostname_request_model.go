@@ -14,6 +14,8 @@ type iVerifyCustomHostnameRequest interface {
 }
 
 type VerifyCustomHostnameRequest struct {
+	// The ID of the SaaS domain name. You can call the [ListCustomHostnames](https://help.aliyun.com/document_detail/3018667.html) operation to obtain the ID.
+	//
 	// This parameter is required.
 	//
 	// example:

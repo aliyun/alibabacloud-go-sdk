@@ -24,25 +24,25 @@ type iCreateScheduledPreloadExecutionsResponseBody interface {
 }
 
 type CreateScheduledPreloadExecutionsResponseBody struct {
-	// The information about prefetch plans that failed to be created.
+	// The information about the prefetch plans that failed to be added.
 	FailedExecutions []*CreateScheduledPreloadExecutionsResponseBodyFailedExecutions `json:"FailedExecutions,omitempty" xml:"FailedExecutions,omitempty" type:"Repeated"`
-	// The information about plan failures.
+	// The list of error messages for the plans that failed to be added.
 	FailedMessages []*string `json:"FailedMessages,omitempty" xml:"FailedMessages,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// F61CDR30-E83C-4FDA-BF73-9A94CDD44229
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of prefetch plans that are created.
+	// The number of prefetch plans that were successfully added.
 	//
 	// example:
 	//
 	// 12
 	SuccessCount *int32 `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
-	// The information about created prefetch plans.
+	// The information about the prefetch plans that were successfully added.
 	SuccessExecutions []*CreateScheduledPreloadExecutionsResponseBodySuccessExecutions `json:"SuccessExecutions,omitempty" xml:"SuccessExecutions,omitempty" type:"Repeated"`
-	// The total number of new plans requested.
+	// The total number of plans that you requested to add.
 	//
 	// example:
 	//
@@ -141,7 +141,7 @@ type CreateScheduledPreloadExecutionsResponseBodyFailedExecutions struct {
 	//
 	// 15685865xxx14622
 	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// The end time of the prefetch plans.
+	// The end time of the scheduled prefetch plan.
 	//
 	// example:
 	//
@@ -153,7 +153,7 @@ type CreateScheduledPreloadExecutionsResponseBodyFailedExecutions struct {
 	//
 	// 66599bd7397885b43804901c
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The time interval between each batch execution. Unit: seconds.
+	// The interval at which batches of a scheduled prefetch plan are executed. Unit: seconds.
 	//
 	// example:
 	//
@@ -165,29 +165,29 @@ type CreateScheduledPreloadExecutionsResponseBodyFailedExecutions struct {
 	//
 	// 665d3af3621bccf3fe29e1a4
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The number of URLs prefetched in each batch.
+	// The number of URLs to prefetch in each batch.
 	//
 	// example:
 	//
 	// 10
 	SliceLen *int32 `json:"SliceLen,omitempty" xml:"SliceLen,omitempty"`
-	// The start time of the prefetch plans.
+	// The start time of the scheduled prefetch plan.
 	//
 	// example:
 	//
 	// 2024-06-02T02:43:35Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the prefetch plan. Valid values:
+	// The status of the scheduled prefetch plan. Valid values:
 	//
-	// 	- **waiting**
+	// - **waiting**: The plan is waiting to be executed.
 	//
-	// 	- **running**
+	// - **running**: The plan is being executed.
 	//
-	// 	- **finished**
+	// - **finished**: The plan is executed.
 	//
-	// 	- **failed**
+	// - **failed**: The plan failed to be executed.
 	//
-	// 	- **stopped**
+	// - **stopped**: The execution of the plan is paused.
 	//
 	// example:
 	//
@@ -286,7 +286,7 @@ type CreateScheduledPreloadExecutionsResponseBodySuccessExecutions struct {
 	//
 	// 15685865xxx14622
 	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// The end time of the prefetch plans.
+	// The end time of the scheduled prefetch plan.
 	//
 	// example:
 	//
@@ -298,7 +298,7 @@ type CreateScheduledPreloadExecutionsResponseBodySuccessExecutions struct {
 	//
 	// 66599bd7397885b43804901c
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The time interval between each batch execution. Unit: seconds.
+	// The interval at which batches of a scheduled prefetch plan are executed. Unit: seconds.
 	//
 	// example:
 	//
@@ -310,29 +310,29 @@ type CreateScheduledPreloadExecutionsResponseBodySuccessExecutions struct {
 	//
 	// 665d3af3621bccf3fe29e1a4
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The number of URLs prefetched in each batch.
+	// The number of URLs to prefetch in each batch.
 	//
 	// example:
 	//
 	// 10
 	SliceLen *int32 `json:"SliceLen,omitempty" xml:"SliceLen,omitempty"`
-	// The start time of the prefetch plans.
+	// The start time of the scheduled prefetch plan.
 	//
 	// example:
 	//
 	// 2024-06-02T02:43:35Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the prefetch plan. Valid values:
+	// The status of the scheduled prefetch plan. Valid values:
 	//
-	// 	- **waiting**
+	// - **waiting**: The plan is waiting to be executed.
 	//
-	// 	- **running**
+	// - **running**: The plan is being executed.
 	//
-	// 	- **finished**
+	// - **finished**: The plan is executed.
 	//
-	// 	- **failed**
+	// - **failed**: The plan failed to be executed.
 	//
-	// 	- **stopped**
+	// - **stopped**: The execution of the plan is paused.
 	//
 	// example:
 	//

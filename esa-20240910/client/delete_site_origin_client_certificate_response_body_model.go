@@ -20,7 +20,7 @@ type iDeleteSiteOriginClientCertificateResponseBody interface {
 }
 
 type DeleteSiteOriginClientCertificateResponseBody struct {
-	// The certificate ID on ESA.
+	// The certificate ID.
 	//
 	// example:
 	//
@@ -32,13 +32,13 @@ type DeleteSiteOriginClientCertificateResponseBody struct {
 	//
 	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	// The site ID.
 	//
 	// example:
 	//
 	// 123456789****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The website name.
+	// The site name.
 	//
 	// example:
 	//

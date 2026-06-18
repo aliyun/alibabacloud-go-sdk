@@ -20,25 +20,25 @@ type iGetApiSchemaUsageResponseBody interface {
 }
 
 type GetApiSchemaUsageResponseBody struct {
-	// The plan ID.
+	// The plan\\"s instance ID.
 	//
 	// example:
 	//
 	// esa-site-agknce3n****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of files uploaded for schema verification in the plan instance of the website.
+	// The total count of API schema files uploaded to the plan instance.
 	//
 	// example:
 	//
 	// 10
 	InstanceUsage *int32 `json:"InstanceUsage,omitempty" xml:"InstanceUsage,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 952ea16b-1f05-4a76-bb32-420282d8****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Usage details for websites.
+	// The usage details for each site.
 	Usages []*GetApiSchemaUsageResponseBodyUsages `json:"Usages,omitempty" xml:"Usages,omitempty" type:"Repeated"`
 }
 
@@ -100,19 +100,19 @@ func (s *GetApiSchemaUsageResponseBody) Validate() error {
 }
 
 type GetApiSchemaUsageResponseBodyUsages struct {
-	// The website ID.
+	// The site ID.
 	//
 	// example:
 	//
 	// 40000449
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The website name.
+	// The site name.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The number of files uploaded for the website.
+	// The number of API schema files uploaded for this site.
 	//
 	// example:
 	//

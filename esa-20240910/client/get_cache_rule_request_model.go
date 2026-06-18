@@ -16,7 +16,7 @@ type iGetCacheRuleRequest interface {
 }
 
 type GetCacheRuleRequest struct {
-	// ConfigId of the configuration, which can be obtained by calling the [ListCacheRules](https://help.aliyun.com/document_detail/2866985.html) interface.
+	// The configuration ID. Call the [ListCacheRules](https://help.aliyun.com/document_detail/2866985.html) operation to obtain this ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type GetCacheRuleRequest struct {
 	//
 	// 352816096987136
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+	// The site ID. Call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain this ID.
 	//
 	// This parameter is required.
 	//

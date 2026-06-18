@@ -18,12 +18,18 @@ type iSetClientCaCertificateHostnamesShrinkRequest interface {
 }
 
 type SetClientCaCertificateHostnamesShrinkRequest struct {
+	// A list of hostnames.
+	//
 	// This parameter is required.
 	HostnamesShrink *string `json:"Hostnames,omitempty" xml:"Hostnames,omitempty"`
+	// The client CA certificate ID.
+	//
 	// example:
 	//
 	// babaabcd****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The site ID.
+	//
 	// This parameter is required.
 	//
 	// example:

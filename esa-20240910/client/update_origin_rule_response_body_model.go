@@ -14,7 +14,7 @@ type iUpdateOriginRuleResponseBody interface {
 }
 
 type UpdateOriginRuleResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

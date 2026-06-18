@@ -56,7 +56,7 @@ type iUpdateOriginRuleRequest interface {
 }
 
 type UpdateOriginRuleRequest struct {
-	// Configuration ID.
+	// The configuration ID.
 	//
 	// This parameter is required.
 	//
@@ -64,115 +64,175 @@ type UpdateOriginRuleRequest struct {
 	//
 	// 35281609698****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// Rewrite the DNS resolution record of the origin request.
+	// Overrides the DNS record for the origin request.
 	//
 	// example:
 	//
 	// test.example.com
-	DnsRecord             *string `json:"DnsRecord,omitempty" xml:"DnsRecord,omitempty"`
-	Follow302Enable       *string `json:"Follow302Enable,omitempty" xml:"Follow302Enable,omitempty"`
-	Follow302MaxTries     *string `json:"Follow302MaxTries,omitempty" xml:"Follow302MaxTries,omitempty"`
-	Follow302RetainArgs   *string `json:"Follow302RetainArgs,omitempty" xml:"Follow302RetainArgs,omitempty"`
+	DnsRecord *string `json:"DnsRecord,omitempty" xml:"DnsRecord,omitempty"`
+	// Indicates whether to follow 302 redirects for origin requests. Valid values:
+	//
+	// - `on`: Follows 302 redirects.
+	//
+	// - `off`: Does not follow 302 redirects.
+	//
+	// example:
+	//
+	// on
+	Follow302Enable *string `json:"Follow302Enable,omitempty" xml:"Follow302Enable,omitempty"`
+	// The maximum number of 302 redirects to follow. The value must be an integer from 1 to 5.
+	//
+	// example:
+	//
+	// 1
+	Follow302MaxTries *string `json:"Follow302MaxTries,omitempty" xml:"Follow302MaxTries,omitempty"`
+	// Indicates whether to retain the original request parameters when following a 302 redirect. Valid values:
+	//
+	// - `on`: Retains the parameters.
+	//
+	// - `off`: Does not retain the parameters.
+	//
+	// example:
+	//
+	// on
+	Follow302RetainArgs *string `json:"Follow302RetainArgs,omitempty" xml:"Follow302RetainArgs,omitempty"`
+	// Indicates whether to retain the original request headers when following a 302 redirect. Valid values:
+	//
+	// - `on`: Retains the headers.
+	//
+	// - `off`: Does not retain the headers.
+	//
+	// example:
+	//
+	// on
 	Follow302RetainHeader *string `json:"Follow302RetainHeader,omitempty" xml:"Follow302RetainHeader,omitempty"`
-	Follow302TargetHost   *string `json:"Follow302TargetHost,omitempty" xml:"Follow302TargetHost,omitempty"`
-	// The HOST carried in the origin request.
+	// The `Host` header for the redirected origin request.
+	//
+	// example:
+	//
+	// test.com
+	Follow302TargetHost *string `json:"Follow302TargetHost,omitempty" xml:"Follow302TargetHost,omitempty"`
+	// The `Host` header for the origin request.
 	//
 	// example:
 	//
 	// origin.example.com
 	OriginHost *string `json:"OriginHost,omitempty" xml:"OriginHost,omitempty"`
-	// Port of the origin server when using HTTP protocol for origin pull.
+	// The origin server port for HTTP requests.
 	//
 	// example:
 	//
 	// 8080
 	OriginHttpPort *string `json:"OriginHttpPort,omitempty" xml:"OriginHttpPort,omitempty"`
-	// Port of the origin server when using HTTPS protocol for origin pull.
+	// The origin server port for HTTPS requests.
 	//
 	// example:
 	//
 	// 4433
 	OriginHttpsPort *string `json:"OriginHttpsPort,omitempty" xml:"OriginHttpsPort,omitempty"`
-	// mTLS switch. Valid values:
+	// Indicates whether to enable mutual TLS (mTLS) for origin requests. Valid values:
 	//
-	// - on: Enable.
+	// - `on`: Enables mTLS.
 	//
-	// - off: Disable.
+	// - `off`: Disables mTLS.
 	//
 	// example:
 	//
 	// on
-	OriginMtls        *string `json:"OriginMtls,omitempty" xml:"OriginMtls,omitempty"`
+	OriginMtls *string `json:"OriginMtls,omitempty" xml:"OriginMtls,omitempty"`
+	// The read timeout period for the origin server, in seconds.
+	//
+	// example:
+	//
+	// 10
 	OriginReadTimeout *string `json:"OriginReadTimeout,omitempty" xml:"OriginReadTimeout,omitempty"`
-	// Protocol used for the origin request. Valid values:
+	// The protocol for origin requests. Valid values:
 	//
-	// - http: Use HTTP protocol for origin pull.
+	// - `http`: The origin request uses HTTP.
 	//
-	// - https: Use HTTPS protocol for origin pull.
+	// - `https`: The origin request uses HTTPS.
 	//
-	// - follow: Follow the client\\"s protocol for origin pull.
+	// - `follow`: The origin request uses the same protocol as the client request.
 	//
 	// example:
 	//
 	// http
 	OriginScheme *string `json:"OriginScheme,omitempty" xml:"OriginScheme,omitempty"`
-	// SNI carried in the origin request.
+	// The Server Name Indication (SNI) for the origin request.
 	//
 	// example:
 	//
 	// origin.example.com
 	OriginSni *string `json:"OriginSni,omitempty" xml:"OriginSni,omitempty"`
-	// Origin certificate verification switch. Valid values:
+	// Indicates whether to enable origin certificate verification. Valid values:
 	//
-	// - on: Enable.
+	// - `on`: Enables verification.
 	//
-	// - off: Disable.
+	// - `off`: Disables verification.
 	//
 	// example:
 	//
 	// on
 	OriginVerify *string `json:"OriginVerify,omitempty" xml:"OriginVerify,omitempty"`
-	// Use range chunking for origin pull file download. Valid values:
+	// Indicates whether to use range requests when fetching files from the origin server. Valid values:
 	//
-	// - on: Enable.
+	// - `on`: Enables range requests.
 	//
-	// - off: Disable.
+	// - `off`: Disables range requests.
 	//
-	// - force: Force.
+	// - `force`: Enforces range requests.
 	//
 	// example:
 	//
 	// on
-	Range          *string `json:"Range,omitempty" xml:"Range,omitempty"`
+	Range *string `json:"Range,omitempty" xml:"Range,omitempty"`
+	// The size of each chunk for range requests. Valid values:
+	//
+	// - 512KB
+	//
+	// - 1MB
+	//
+	// - 2MB
+	//
+	// - 4MB
+	//
+	// example:
+	//
+	// 1MB
 	RangeChunkSize *string `json:"RangeChunkSize,omitempty" xml:"RangeChunkSize,omitempty"`
-	// Rule content, used to match user requests with conditional expressions. This parameter is not required when adding a global configuration. There are two usage scenarios:
+	// The rule content, which is a conditional expression that matches user requests. This parameter is not required when you add a global configuration.
 	//
-	// - Match all incoming requests: Set the value to true
+	// - To match all incoming requests, set the value to `true`.
 	//
-	// - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+	// - To match specific requests, set the value to a custom expression, such as `(http.host eq "video.example.com")`.
 	//
 	// example:
 	//
 	// (http.host eq \\"video.example.com\\")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// Rule switch. This parameter is not required when adding a global configuration. Valid values:
+	// Indicates whether the rule is enabled. This parameter is not required when you add a global configuration. Valid values:
 	//
-	// - on: Enable.
+	// - `on`: Enables the rule.
 	//
-	// - off: Disable.
+	// - `off`: Disables the rule.
 	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	// Rule name. This parameter is not required when adding a global configuration.
+	// The rule name. This parameter is not required when you add a global configuration.
 	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	Sequence *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+	// The execution priority of the rule. A smaller value indicates a higher priority.
+	//
+	// example:
+	//
+	// 1
+	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// The site ID. You can get this ID by calling the [ListSites](~~ListSites~~) operation.
 	//
 	// This parameter is required.
 	//

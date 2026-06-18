@@ -16,13 +16,13 @@ type iCreateKvNamespaceRequest interface {
 }
 
 type CreateKvNamespaceRequest struct {
-	// The description of the namespace.
+	// An optional description for the KV namespace.
 	//
 	// example:
 	//
 	// this is a test namespace.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the namespace.
+	// The name of the KV namespace.
 	//
 	// This parameter is required.
 	//

@@ -24,13 +24,38 @@ type iListPostpaidRatePlanInstancesResponseBody interface {
 }
 
 type ListPostpaidRatePlanInstancesResponseBody struct {
+	// A list of instances.
 	InstanceInfo []*ListPostpaidRatePlanInstancesResponseBodyInstanceInfo `json:"InstanceInfo,omitempty" xml:"InstanceInfo,omitempty" type:"Repeated"`
-	PageNumber   *int32                                                   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int32                                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	TotalPage  *int32  `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	// The page number.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID, used for troubleshooting.
+	//
+	// example:
+	//
+	// 15C66C7B-671A-4297-9187-2C4477247A123425345
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
+	// example:
+	//
+	// 1
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The total number of pages.
+	//
+	// example:
+	//
+	// 2
+	TotalPage *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
 }
 
 func (s ListPostpaidRatePlanInstancesResponseBody) String() string {
@@ -109,18 +134,88 @@ func (s *ListPostpaidRatePlanInstancesResponseBody) Validate() error {
 }
 
 type ListPostpaidRatePlanInstancesResponseBodyInstanceInfo struct {
-	BillingMethod      *string                                                       `json:"BillingMethod,omitempty" xml:"BillingMethod,omitempty"`
-	BillingMode        *string                                                       `json:"BillingMode,omitempty" xml:"BillingMode,omitempty"`
-	Coverages          *string                                                       `json:"Coverages,omitempty" xml:"Coverages,omitempty"`
-	CreateTime         *string                                                       `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ExpectedUpdateTime *string                                                       `json:"ExpectedUpdateTime,omitempty" xml:"ExpectedUpdateTime,omitempty"`
-	InstanceId         *string                                                       `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PlanName           *string                                                       `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
-	PlanNameCn         *string                                                       `json:"PlanNameCn,omitempty" xml:"PlanNameCn,omitempty"`
-	PlanType           *string                                                       `json:"PlanType,omitempty" xml:"PlanType,omitempty"`
-	SiteQuota          *string                                                       `json:"SiteQuota,omitempty" xml:"SiteQuota,omitempty"`
-	Sites              []*ListPostpaidRatePlanInstancesResponseBodyInstanceInfoSites `json:"Sites,omitempty" xml:"Sites,omitempty" type:"Repeated"`
-	Status             *string                                                       `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The billing method. Valid value:
+	//
+	// - `dps_month95`: Monthly 95th percentile.
+	//
+	// example:
+	//
+	// SUBSCRIBE
+	BillingMethod *string `json:"BillingMethod,omitempty" xml:"BillingMethod,omitempty"`
+	// The billing mode. Valid value:
+	//
+	// - `POSTPAY`: pay-as-you-go.
+	//
+	// example:
+	//
+	// POSTPAY
+	BillingMode *string `json:"BillingMode,omitempty" xml:"BillingMode,omitempty"`
+	// The coverage area of the instance. Only sites within this area can be bound to the instance. If multiple areas are supported, they are separated by a comma (`,`). Valid values:
+	//
+	// - `domestic`: Chinese mainland.
+	//
+	// - `overseas`: Regions outside the Chinese mainland.
+	//
+	// - `global`: Global (including the Chinese mainland).
+	//
+	// example:
+	//
+	// domestic
+	Coverages *string `json:"Coverages,omitempty" xml:"Coverages,omitempty"`
+	// The time when the instance was created.
+	//
+	// example:
+	//
+	// YYYY-MM-DDThh:mm:ssZ
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time of a scheduled configuration change.
+	//
+	// example:
+	//
+	// YYYY-MM-DDThh:mm:ssZ
+	ExpectedUpdateTime *string `json:"ExpectedUpdateTime,omitempty" xml:"ExpectedUpdateTime,omitempty"`
+	// The ID of the instance.
+	//
+	// example:
+	//
+	// sp-xcdn-96wblslz****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The plan name in English.
+	//
+	// example:
+	//
+	// basic
+	PlanName *string `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
+	// The plan name in Chinese.
+	//
+	// example:
+	//
+	// 测试套餐
+	PlanNameCn *string `json:"PlanNameCn,omitempty" xml:"PlanNameCn,omitempty"`
+	// The type of the plan. Valid values:
+	//
+	// - `normal`: Normal plan.
+	//
+	// - `enterprise`: Enterprise plan.
+	//
+	// example:
+	//
+	// normal
+	PlanType *string `json:"PlanType,omitempty" xml:"PlanType,omitempty"`
+	// The maximum number of sites that can be bound to the instance.
+	//
+	// example:
+	//
+	// 1
+	SiteQuota *string `json:"SiteQuota,omitempty" xml:"SiteQuota,omitempty"`
+	// A list of sites bound to the instance.
+	Sites []*ListPostpaidRatePlanInstancesResponseBodyInstanceInfoSites `json:"Sites,omitempty" xml:"Sites,omitempty" type:"Repeated"`
+	// The status of the instance.
+	//
+	// example:
+	//
+	// online
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListPostpaidRatePlanInstancesResponseBodyInstanceInfo) String() string {
@@ -253,8 +348,31 @@ func (s *ListPostpaidRatePlanInstancesResponseBodyInstanceInfo) Validate() error
 }
 
 type ListPostpaidRatePlanInstancesResponseBodyInstanceInfoSites struct {
-	SiteId     *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	SiteName   *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+	// The ID of the site.
+	//
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The name of the site.
+	//
+	// example:
+	//
+	// example.com
+	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+	// The status of the site. Valid values:
+	//
+	// - `pending`: The site is awaiting configuration.
+	//
+	// - `active`: The site is active.
+	//
+	// - `offline`: The site is offline.
+	//
+	// - `moved`: The site has been replaced.
+	//
+	// example:
+	//
+	// pending
 	SiteStatus *string `json:"SiteStatus,omitempty" xml:"SiteStatus,omitempty"`
 }
 

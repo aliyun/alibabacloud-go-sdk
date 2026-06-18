@@ -16,7 +16,7 @@ type iDeleteKvRequest interface {
 }
 
 type DeleteKvRequest struct {
-	// The name of the key that you want to delete.
+	// The name of the key to delete.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DeleteKvRequest struct {
 	//
 	// test_key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The name of the namespace that you specify when you call the [CreateKvNamespace](https://help.aliyun.com/document_detail/2850317.html) operation.
+	// The name you specified when you called [CreateKvNamespace](https://help.aliyun.com/document_detail/2850317.html).
 	//
 	// This parameter is required.
 	//

@@ -16,17 +16,17 @@ type iDescribeKvAccountStatusResponseBody interface {
 }
 
 type DescribeKvAccountStatusResponseBody struct {
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//
 	// EEEBE525-F576-1196-8DAF-2D70CA3F4D2F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether Edge KV is activated for the Alibaba Cloud account.
+	// Account status.
 	//
-	// 	- **online**
+	// - **online**: Enabled.
 	//
-	// 	- **offline**
+	// - **offline**: Disabled.
 	//
 	// example:
 	//

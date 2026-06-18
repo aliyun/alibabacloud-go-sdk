@@ -30,38 +30,56 @@ type iListTraceTasksRequest interface {
 }
 
 type ListTraceTasksRequest struct {
+	// The client IP address.
+	//
 	// example:
 	//
 	// 60.xx.xxx.38
 	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	// The diagnose ID.
+	//
 	// example:
 	//
 	// f2xxx5
 	DiagnoseId *string `json:"DiagnoseId,omitempty" xml:"DiagnoseId,omitempty"`
+	// The domain name to diagnose.
+	//
 	// example:
 	//
 	// http://www.example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The end time. Time zone: UTC/GMT.
+	//
 	// example:
 	//
-	// 1644467126
+	// 2006-01-02T15:04:05Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 2
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The page size. Valid values: any integer from 1 to 1000.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The start time. Time zone: UTC/GMT.
+	//
 	// example:
 	//
-	// 1644467126
+	// 2006-01-02T15:04:05Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The diagnostic task ID.
+	//
 	// example:
 	//
 	// xxxxxxxxxx-x-x-xxxxxxxxxxxxxxxxx
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The diagnostic trace ID.
+	//
 	// example:
 	//
 	// 000000xxxxxxxxxxxxxxxxxxxxxx33427e

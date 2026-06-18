@@ -28,36 +28,66 @@ type iCreateUserWafRulesetShrinkRequest interface {
 }
 
 type CreateUserWafRulesetShrinkRequest struct {
+	// The description of the WAF ruleset.
+	//
 	// example:
 	//
 	// this is a test ruleset.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The expression for the WAF ruleset.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ip.src == 1.1.1.1
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// esa-site-ads11w
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the WAF ruleset.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// example
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The execution phase of the WAF ruleset.
+	//
+	// - `http_whitelist`: whitelist rule
+	//
+	// - `http_custom`: custom rule
+	//
+	// - `http_managed`: managed rule
+	//
+	// - `http_anti_scan`: scan protection rule
+	//
+	// - `http_ratelimit`: rate limiting rule
+	//
+	// - `ip_access_rule`: IP access rule
+	//
+	// - `http_bot`: advanced bot
+	//
+	// - `http_security_level_rule`: security rule
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// http_custom
-	Phase        *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	RulesShrink  *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
+	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// A list of rule configurations within the WAF ruleset.
+	RulesShrink *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
+	// The shared configuration for WAF batch rules.
 	SharedShrink *string `json:"Shared,omitempty" xml:"Shared,omitempty"`
+	// The status of the WAF ruleset.
+	//
 	// This parameter is required.
 	//
 	// example:

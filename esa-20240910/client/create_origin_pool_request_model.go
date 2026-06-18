@@ -20,17 +20,17 @@ type iCreateOriginPoolRequest interface {
 }
 
 type CreateOriginPoolRequest struct {
-	// Whether the origin address pool is enabled:
+	// Specifies whether the origin pool is enabled.
 	//
-	// - true: Enabled;
+	// - `true`: enabled
 	//
-	// - false: Disabled.
+	// - `false`: disabled
 	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The name of the origin address pool, which must be unique within a site.
+	// The name of the origin pool. The name must be unique within a site.
 	//
 	// This parameter is required.
 	//
@@ -38,9 +38,9 @@ type CreateOriginPoolRequest struct {
 	//
 	// pool1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Information about the origins added to the origin address pool, with multiple origins passed as an array.
+	// The list of origins to add to the origin pool. Use an array to specify multiple origins.
 	Origins []*CreateOriginPoolRequestOrigins `json:"Origins,omitempty" xml:"Origins,omitempty" type:"Repeated"`
-	// The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
+	// The site ID. To obtain this ID, call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -108,25 +108,25 @@ func (s *CreateOriginPoolRequest) Validate() error {
 }
 
 type CreateOriginPoolRequestOrigins struct {
-	// The address of the origin, e.g., www.example.com.
+	// The address of the origin. For example, www\\.example.com.
 	//
 	// example:
 	//
 	// www.example.com
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// Authentication information, required when the origin is OSS or S3 and needs authentication, including related configuration details.
+	// The authentication configuration for the origin. Required if the origin is an OSS or AWS S3 bucket that requires authentication.
 	AuthConf *CreateOriginPoolRequestOriginsAuthConf `json:"AuthConf,omitempty" xml:"AuthConf,omitempty" type:"Struct"`
-	// Whether the origin is enabled:
+	// Specifies whether the origin is enabled.
 	//
-	// - true: Enabled;
+	// - `true`: enabled
 	//
-	// - false: Disabled.
+	// - `false`: disabled
 	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The request header to be included when fetching from the origin, only Host is supported.
+	// The request header to include in back-to-origin requests. Only the `Host` header is supported.
 	//
 	// example:
 	//
@@ -139,27 +139,40 @@ type CreateOriginPoolRequestOrigins struct {
 	//         ]
 	//
 	//       }
-	Header          interface{} `json:"Header,omitempty" xml:"Header,omitempty"`
-	IpVersionPolicy *string     `json:"IpVersionPolicy,omitempty" xml:"IpVersionPolicy,omitempty"`
-	// The name of the origin, which must be unique within an origin address.
+	Header interface{} `json:"Header,omitempty" xml:"Header,omitempty"`
+	// The IP protocol version for back-to-origin requests. Valid values:
+	//
+	// - `round_robin`: Default. Randomly selects an IPv4 or IPv6 origin.
+	//
+	// - `ipv4_first`: Prioritizes IPv4 origins.
+	//
+	// - `ipv6_first`: Prioritizes IPv6 origins.
+	//
+	// - `follow`: Uses the same IP protocol version as the client\\"s request.
+	//
+	// example:
+	//
+	// round_robin
+	IpVersionPolicy *string `json:"IpVersionPolicy,omitempty" xml:"IpVersionPolicy,omitempty"`
+	// The name of the origin. The name must be unique within the origin pool.
 	//
 	// example:
 	//
 	// origin1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The type of the origin:
+	// The type of the origin. Valid values:
 	//
-	// - ip_domain: IP or domain name type origin;
+	// - `ip_domain`: An IP address or a domain name.
 	//
-	// - OSS: OSS address origin;
+	// - `OSS`: An Alibaba Cloud OSS bucket.
 	//
-	// - S3: AWS S3 origin.
+	// - `S3`: An AWS S3 bucket.
 	//
 	// example:
 	//
 	// ip_domain
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The weight, an integer between 0 and 100.
+	// The weight of the origin. The value must be an integer from 0 to 100.
 	//
 	// example:
 	//
@@ -263,21 +276,21 @@ type CreateOriginPoolRequestOriginsAuthConf struct {
 	//
 	// yourAccessKeyID
 	AccessKey *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
-	// The type of authentication.
+	// The authentication type. Valid values:
 	//
-	// - public: Public read/write, used when the origin is OSS or S3 and is set to public read/write;
+	// - `public`: Public read/write. Use this for public OSS or AWS S3 buckets.
 	//
-	// - private_same_account: Private same account, used when the origin is OSS and the authentication type is private within the same account;
+	// - `private_same_account`: Private authentication for an OSS bucket in the same Alibaba Cloud account.
 	//
-	// - private_cross_account: Private cross-account, used when the origin is OSS and the authentication type is private across accounts;
+	// - `private_cross_account`: Private authentication for an OSS bucket in a different Alibaba Cloud account.
 	//
-	// - private: Used when the origin is S3 and the authentication type is private.
+	// - `private`: Private authentication for an AWS S3 bucket.
 	//
 	// example:
 	//
 	// public
 	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
-	// The region of the origin required when the origin is AWS S3.
+	// The region of the origin. Required for AWS S3 origins.
 	//
 	// example:
 	//
@@ -289,7 +302,7 @@ type CreateOriginPoolRequestOriginsAuthConf struct {
 	//
 	// yourAccessKeySecret
 	SecretKey *string `json:"SecretKey,omitempty" xml:"SecretKey,omitempty"`
-	// The signature version required when the origin is AWS S3.
+	// The signature version. Required for AWS S3 origins.
 	//
 	// example:
 	//

@@ -36,13 +36,13 @@ type ListEdgeRoutineRecordsRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The match mode to filter the record names.
 	//
-	// 	- **fuzzy**: fuzzy match.
+	// - **fuzzy**: fuzzy match.
 	//
-	// 	- **prefix**: match by prefix.
+	// - **prefix**: match by prefix.
 	//
-	// 	- **suffix**: match by suffix.
+	// - **suffix**: match by suffix.
 	//
-	// 	- **exact*	- (default): exact match .
+	// - **exact*	- (default): exact match .
 	//
 	// example:
 	//

@@ -24,25 +24,25 @@ type BlockObjectShrinkRequest struct {
 	//
 	// This parameter is required.
 	ContentShrink *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The period of time during which the URL is blocked. Unit: seconds. Specify this parameter if Type is set to block.
+	// The effective period of the block, in seconds. Specify this parameter when Type is set to block.
 	//
 	// example:
 	//
 	// 864000
 	Maxage *int32 `json:"Maxage,omitempty" xml:"Maxage,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	// The ID of the site. Call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// BlockObject
+	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 	// The type. Valid values:
 	//
-	// 	- **block**
+	// - **block**: Blocks access.
 	//
-	// 	- **unblock**
+	// - **unblock**: Unblocks access.
 	//
 	// This parameter is required.
 	//

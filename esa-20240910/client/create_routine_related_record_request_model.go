@@ -18,13 +18,13 @@ type iCreateRoutineRelatedRecordRequest interface {
 }
 
 type CreateRoutineRelatedRecordRequest struct {
-	// The routine name.
+	// The name of the edge function Routine.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// CreateRoutineRelatedRecord
+	// test-routine1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The record name.
 	//
@@ -34,7 +34,7 @@ type CreateRoutineRelatedRecordRequest struct {
 	//
 	// test-record-1.example.com
 	RecordName *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
-	// The website ID.
+	// The site ID.
 	//
 	// This parameter is required.
 	//

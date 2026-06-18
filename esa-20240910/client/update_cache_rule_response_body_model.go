@@ -14,7 +14,7 @@ type iUpdateCacheRuleResponseBody interface {
 }
 
 type UpdateCacheRuleResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

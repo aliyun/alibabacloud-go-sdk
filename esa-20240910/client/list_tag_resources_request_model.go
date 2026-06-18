@@ -26,21 +26,25 @@ type iListTagResourcesRequest interface {
 }
 
 type ListTagResourcesRequest struct {
-	// The maximum number of tags to return.
+	// The maximum number of entries to return.
 	//
 	// example:
 	//
 	// 20
 	MaxItem *int32 `json:"MaxItem,omitempty" xml:"MaxItem,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results.
+	// The token for the next query to return more results.
 	//
-	// >  This parameter is not required for the first request. If not all results are returned in one query, you can specify the token that is obtained from the previous query as the value of **NextToken**.
+	// > You do not need to specify this parameter for the first query. If a query does not return all results, pass the **NextToken*	- value returned from the previous query to continue the query.
 	//
 	// example:
 	//
 	// AAAAAZjtYxxxxxxxx
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the region where the resources reside.
+	// The region ID. Valid values:
+	//
+	// - Alibaba Cloud China Website (www.aliyun.com): cn-hangzhou
+	//
+	// - Alibaba Cloud International Website (www.alibabacloud.com): ap-southeast-1.
 	//
 	// This parameter is required.
 	//
@@ -48,9 +52,13 @@ type ListTagResourcesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The website ID.
+	// The resource ID. Enter a site ID or a DNS record ID. You must specify at least one of ResourceId and Tag.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The resource type.
+	// The resource type. Valid values:
+	//
+	// - site: site
+	//
+	// - record: DNS record.
 	//
 	// This parameter is required.
 	//
@@ -59,7 +67,7 @@ type ListTagResourcesRequest struct {
 	// site
 	ResourceType  *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// A list of tags. You can enter up to 20 tags.
+	// The list of tags. You can specify up to 20 tags. You must specify at least one of ResourceId and Tag.
 	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
