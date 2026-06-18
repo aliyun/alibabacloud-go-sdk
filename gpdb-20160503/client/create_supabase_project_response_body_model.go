@@ -18,23 +18,23 @@ type iCreateSupabaseProjectResponseBody interface {
 }
 
 type CreateSupabaseProjectResponseBody struct {
-	// The order ID.
+	// The ID of the associated order.
 	//
 	// example:
 	//
 	// 278880417310796
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The Supabase instance ID.
+	// The instance ID of the Supabase project.
 	//
 	// example:
 	//
-	// sbp-180****
+	// spb-xxxx
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The request ID.
 	//
 	// example:
 	//
-	// ABB39CC3-4488-4857-905D-2E4A051D****
+	// B4CAF581-2AC7-41AD-8940-D56DF7AADF5B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
