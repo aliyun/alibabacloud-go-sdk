@@ -24,37 +24,29 @@ type iCreateIndexResponseBody interface {
 }
 
 type CreateIndexResponseBody struct {
-	// The error code.
-	//
-	// example:
-	//
-	// Forbidden
+	// Error status code
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned if the request is successful.
+	// The business data returned when the request is successful.
 	Data *CreateIndexResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message.
-	//
-	// example:
-	//
-	// Invalid input, variable name is missing
+	// Error message
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// Request ID
 	//
 	// example:
 	//
-	// 17204B98-7734-4F9A-8464-2446A84821CA
+	// 17204B98-xxxx-4F9A--2446A84821CA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status code.
+	// The status code returned by the interface.
 	//
 	// example:
 	//
-	// 200
+	// "200"
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indications whether the request is successful. Valid values:
+	// Indicates whether the request was successful. Possible values:
 	//
-	// 	- true
+	// - true: Successful
 	//
-	// 	- false
+	// - false: Failed
 	//
 	// example:
 	//
@@ -134,13 +126,13 @@ func (s *CreateIndexResponseBody) Validate() error {
 }
 
 type CreateIndexResponseBodyData struct {
-	// The knowledge base ID, or `IndexId`, is a unique identifier for the knowledge base created.
+	// The ID of the knowledge base, also known as \\`IndexId\\`. This is the unique identifier of the created knowledge base.
 	//
-	// > Keep this ID. It is required for all subsequent API operations related to this knowledge base.
+	// > Keep this value safe. It will be used for all subsequent API operations related to this knowledge base.
 	//
 	// example:
 	//
-	// jkurxhju6b
+	// jkurxhxxxx
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 

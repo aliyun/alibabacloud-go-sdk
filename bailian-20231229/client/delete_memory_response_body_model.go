@@ -14,9 +14,11 @@ type iDeleteMemoryResponseBody interface {
 }
 
 type DeleteMemoryResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
-	// 6a71f2d9-f1c9-913b-818b-114029103cad
+	// 6a71f2d9-f1c9-913b-818b-11402910xxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 

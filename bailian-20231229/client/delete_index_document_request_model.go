@@ -16,17 +16,17 @@ type iDeleteIndexDocumentRequest interface {
 }
 
 type DeleteIndexDocumentRequest struct {
-	// The list of the primary key IDs of the documents.
+	// The list of file IDs.
 	//
 	// This parameter is required.
 	DocumentIds []*string `json:"DocumentIds,omitempty" xml:"DocumentIds,omitempty" type:"Repeated"`
-	// The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
+	// The knowledge base ID, which is the `Data.Id` returned by the **CreateIndex*	- operation.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 79c0aly8zw
+	// 79c0alxxxx
 	IndexId *string `json:"IndexId,omitempty" xml:"IndexId,omitempty"`
 }
 

@@ -16,7 +16,10 @@ type iGetAlipayTransferStatusResponseBody interface {
 }
 
 type GetAlipayTransferStatusResponseBody struct {
+	// The tipping result data.
 	Data *GetAlipayTransferStatusResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The unique ID of the request.
+	//
 	// example:
 	//
 	// 6a71f2d9-f1c9-913b-818b-11402910xxxx
@@ -59,30 +62,99 @@ func (s *GetAlipayTransferStatusResponseBody) Validate() error {
 }
 
 type GetAlipayTransferStatusResponseBodyData struct {
+	// The sub-account ID (ignored by the API).
+	//
 	// example:
 	//
 	// 1348393307144609
-	AccountId         *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+	// The payment details (ignored by the API).
+	//
+	// example:
+	//
+	// {}
 	AlipayOrderDetail *string `json:"alipayOrderDetail,omitempty" xml:"alipayOrderDetail,omitempty"`
-	AlipayOrderId     *string `json:"alipayOrderId,omitempty" xml:"alipayOrderId,omitempty"`
+	// The Alipay order ID.
+	//
+	// example:
+	//
+	// 1234234
+	AlipayOrderId *string `json:"alipayOrderId,omitempty" xml:"alipayOrderId,omitempty"`
+	// The code associated with the tipping.
+	//
 	// example:
 	//
 	// 0
-	Code    *string `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The creator (ignored by the API).
+	//
+	// example:
+	//
+	// 234234
 	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	// The primary account ID (ignored by the API).
+	//
 	// example:
 	//
 	// 1007576424487905
 	MainAccountId *string `json:"mainAccountId,omitempty" xml:"mainAccountId,omitempty"`
-	Modifier      *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
-	QrURL         *string `json:"qrURL,omitempty" xml:"qrURL,omitempty"`
-	Scope         *string `json:"scope,omitempty" xml:"scope,omitempty"`
+	// The modifier (ignored by the API).
+	//
+	// example:
+	//
+	// 234234
+	Modifier *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
+	// The tipping link (ignored by the API).
+	//
+	// example:
+	//
+	// https://xxx.aliyun.com
+	QrURL *string `json:"qrURL,omitempty" xml:"qrURL,omitempty"`
+	// The ownership status of the tipping application.
+	//
+	// example:
+	//
+	// publish
+	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
+	// The tipping status. Valid values:
+	//
+	// - 1: Succeeded.
+	//
+	// - 0: Deleted.
+	//
+	// - 2: Pending tipping.
+	//
+	// - 3: Canceled.
+	//
+	// - 4: Refunded.
+	//
+	// - 5: Closed.
+	//
+	// - 6: Failed.
+	//
+	// - 7: Disputed or abnormal.
+	//
 	// example:
 	//
 	// 1
-	Status         *int64  `json:"status,omitempty" xml:"status,omitempty"`
-	Title          *string `json:"title,omitempty" xml:"title,omitempty"`
-	TransAmount    *string `json:"transAmount,omitempty" xml:"transAmount,omitempty"`
+	Status *int64 `json:"status,omitempty" xml:"status,omitempty"`
+	// The transfer title.
+	//
+	// example:
+	//
+	// test
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	// The total order amount. Unit: CNY.
+	//
+	// example:
+	//
+	// 0.22
+	TransAmount *string `json:"transAmount,omitempty" xml:"transAmount,omitempty"`
+	// The Alipay product wallet code.
+	//
+	// example:
+	//
+	// xsdfsdf
 	WalletItemCode *string `json:"walletItemCode,omitempty" xml:"walletItemCode,omitempty"`
 }
 

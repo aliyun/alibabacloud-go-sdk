@@ -24,7 +24,7 @@ type iListIndicesResponseBody interface {
 }
 
 type ListIndicesResponseBody struct {
-	// HTTP status code
+	// The error code.
 	//
 	// example:
 	//
@@ -44,17 +44,17 @@ type ListIndicesResponseBody struct {
 	//
 	// 17204B98-xxxx-4F9A-8464-2446A84821CA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The HTTP status code returned.
+	// The status code returned by the operation.
 	//
 	// example:
 	//
 	// 200
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indications whether the API call is successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// 	- true
+	// - true: Successful.
 	//
-	// 	- false
+	// - false: Failed.
 	//
 	// example:
 	//
@@ -136,19 +136,19 @@ func (s *ListIndicesResponseBody) Validate() error {
 type ListIndicesResponseBodyData struct {
 	// The list of knowledge bases.
 	Indices []*ListIndicesResponseBodyDataIndices `json:"Indices,omitempty" xml:"Indices,omitempty" type:"Repeated"`
-	// The specified page number.
+	// The page number returned.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The specified number of documents on each page.
+	// The number of entries per page returned.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of knowledge bases returned.
+	// The total number of entries returned.
 	//
 	// example:
 	//
@@ -214,99 +214,149 @@ func (s *ListIndicesResponseBodyData) Validate() error {
 }
 
 type ListIndicesResponseBodyDataIndices struct {
-	// The estimated length of chunks. Valid values: [1-2048].
+	// The estimated chunk length. Valid values: 1 to 2048.
 	//
 	// example:
 	//
 	// 5
-	ChunkSize  *int32  `json:"ChunkSize,omitempty" xml:"ChunkSize,omitempty"`
+	ChunkSize *int32 `json:"ChunkSize,omitempty" xml:"ChunkSize,omitempty"`
+	// The configuration mode used by this knowledge base. Valid values:
+	//
+	// - recommend: recommended configuration.
+	//
+	// - user-defined: custom configuration.
+	//
+	// example:
+	//
+	// recommend
 	ConfgModel *string `json:"ConfgModel,omitempty" xml:"ConfgModel,omitempty"`
 	// The description of the knowledge base.
 	//
 	// example:
 	//
-	// If each RAM user belongs to a RAM group, the configuration is considered compliant.
+	// 清单中产品主要面向海外客户。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The list of the primary key IDs of the documents.
+	// The list of file IDs.
 	DocumentIds []*string `json:"DocumentIds,omitempty" xml:"DocumentIds,omitempty" type:"Repeated"`
 	// The name of the embedding model. Valid values:
 	//
-	// 	- text-embedding-v2
+	// <props="china">
+	//
+	// - text-embedding-v4: the text-embedding-v4 model.
+	//
+	// - text-embedding-v3: the text-embedding-v3 model.
+	//
+	// - text-embedding-v2: the text-embedding-v2 model.
+	//
+	//
+	//
+	// <props="intl">
+	//
+	// - text-embedding-v2: the text-embedding-v2 model.
+	//
+	// .
 	//
 	// example:
 	//
-	// conv-rewrite-qwen-1.8b
+	// text-embedding-v2
 	EmbeddingModelName *string `json:"EmbeddingModelName,omitempty" xml:"EmbeddingModelName,omitempty"`
-	EnableRewrite      *bool   `json:"EnableRewrite,omitempty" xml:"EnableRewrite,omitempty"`
-	// The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
+	// Indicates whether <props="china">[multi-turn conversation rewriting](https://help.aliyun.com/model-studio/use-cases/rag-optimization#b7031e2ad6cji)<props="intl">[multi-turn conversation rewriting](https://www.alibabacloud.com/help/model-studio/use-cases/rag-optimization#b7031e2ad6cji) is enabled for this knowledge base. Valid values:
+	//
+	// - true: Enabled.
+	//
+	// - false: Disabled.
 	//
 	// example:
 	//
-	// 259899
+	// false
+	EnableRewrite *bool `json:"EnableRewrite,omitempty" xml:"EnableRewrite,omitempty"`
+	// The knowledge base ID, which is the `Data.Id` returned by the **CreateIndex*	- operation.
+	//
+	// example:
+	//
+	// lecxr5xxxx
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The name of the knowledge base.
 	//
 	// example:
 	//
-	// temp_mUB4j
+	// XXXX产品清单
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The overlap length. Valid values: [0-1024].
+	// The chunk overlap length. Valid values: 0 to 1024.
 	//
 	// example:
 	//
 	// 10
 	OverlapSize *int32 `json:"OverlapSize,omitempty" xml:"OverlapSize,omitempty"`
-	// Similarity Threshold Valid values: [0.01-1.00].
+	// The similarity threshold. Valid values: 0.01 to 1.00.
 	//
 	// example:
 	//
 	// 0.01
 	RerankMinScore *string `json:"RerankMinScore,omitempty" xml:"RerankMinScore,omitempty"`
-	// The name of the rank model. Valid values:
+	// The name of the rerank model. Valid values:
 	//
-	// 	- gte-rerank-hybrid
+	// <props="china">
 	//
-	// 	- gte-rerank
+	// - qwen3-rerank-hybrid: qwen3-rerank (hybrid) reranking.
+	//
+	// - qwen3-rerank: qwen3-rerank reranking.
+	//
+	// - gte-rerank-hybrid: gte-rerank (hybrid) reranking.
+	//
+	// - gte-rerank: gte-rerank reranking.
+	//
+	//
+	//
+	// <props="intl">
+	//
+	// - gte-rerank-hybrid: official reranking.
+	//
+	// - gte-rerank: gte-rerank reranking.
+	//
+	// .
 	//
 	// example:
 	//
 	// gte-rerank-hybrid
 	RerankModelName *string `json:"RerankModelName,omitempty" xml:"RerankModelName,omitempty"`
-	// The clause identifier. Separate multiple clause identifiers with |. Valid values:
+	// The sentence separator. If multiple separators are used, they are separated by |. Valid values:
 	//
-	// 	- \\n: line break
+	// - \\
 	//
-	// 	- ，: Chinese comma
+	// : line break
 	//
-	// 	- ,: English comma
+	// - ，: Chinese comma
 	//
-	// 	- 。 : Chinese full stop
+	// - ,: English comma
 	//
-	// 	- .: English full stop
+	// - 。: Chinese period
 	//
-	// 	- ！ : Chinese exclamation point
+	// - .: English period
 	//
-	// 	- ! : English exclamation point
+	// - ！: Chinese exclamation mark
 	//
-	// 	- ；: Chinese semicolon
+	// - !: English exclamation mark
 	//
-	// 	- ;: English semicolon
+	// - ；: Chinese semicolon
 	//
-	// 	- ？ : Chinese question mark
+	// - ;: English semicolon
 	//
-	// 	- ?: English question mark
+	// - ？: Chinese question mark
+	//
+	// - ?: English question mark.
 	//
 	// example:
 	//
 	// \\n
 	Separator *string `json:"Separator,omitempty" xml:"Separator,omitempty"`
-	// The ID of the vector storage instance.
+	// The instance ID of the vector storage for the knowledge base.
 	//
 	// example:
 	//
-	// gp-bp1gq62t1788yw2ol
+	// gp-bp1gq62t1788yxxxx
 	SinkInstanceId *string `json:"SinkInstanceId,omitempty" xml:"SinkInstanceId,omitempty"`
-	// The region of the vector storage instance.
+	// The region of the vector storage instance for the knowledge base.
 	//
 	// example:
 	//
@@ -314,37 +364,40 @@ type ListIndicesResponseBodyDataIndices struct {
 	SinkRegion *string `json:"SinkRegion,omitempty" xml:"SinkRegion,omitempty"`
 	// The vector storage type of the knowledge base. Valid values:
 	//
-	// 	- ES: Built-in vector database.
+	// - ES: built-in vector database.
 	//
-	// 	- BUILT_IN: Built-in vector database.
+	// - BUILT_IN: built-in vector database.
 	//
-	// 	- ADB: AnalyticDB for PostgreSQL database.
+	// - ADB: AnalyticDB for PostgreSQL database.
 	//
 	// example:
 	//
-	// es
+	// BUILT_IN
 	SinkType *string `json:"SinkType,omitempty" xml:"SinkType,omitempty"`
-	// The data type of [Data Management](https://bailian.console.aliyun.com/#/data-center). For unstructured knowledge base, possible values:
+	// The data type of Alibaba Cloud Model Studio <props="china">[application data](https://bailian.console.aliyun.com/?tab=app#/data-center)<props="intl">[application data](https://modelstudio.console.alibabacloud.com/?tab=app#/data-center).
 	//
-	// 	- DATA_CENTER_CATEGORY: The category type.
 	//
-	// 	- DATA_CENTER_FILE: The document type.
+	// For document search<props="china">/audio and video search knowledge bases, valid values:
 	//
-	// For structured knowledge base, possible values:
+	// - DATA_CENTER_CATEGORY: category type.
 	//
-	// 	- DATA_CENTER_STRUCTURED_TABLE: The data table type.
+	// - DATA_CENTER_FILE: file type.
+	//
+	// For data query/image Q&A knowledge bases, valid values:
+	//
+	// - DATA_CENTER_STRUCTURED_TABLE: data table type.
 	//
 	// example:
 	//
 	// DATA_CENTER_FILE
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The vector storage type of the knowledge base. Valid values:
+	// The type of the knowledge base. Valid values:
 	//
-	// 	- UNSTRUCTURED
+	// - UNSTRUCTURED: document search.
 	//
 	// example:
 	//
-	// structured
+	// UNSTRUCTURED
 	StructureType *string `json:"StructureType,omitempty" xml:"StructureType,omitempty"`
 }
 

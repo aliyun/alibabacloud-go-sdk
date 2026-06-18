@@ -16,7 +16,10 @@ type iGetAlipayUrlResponseBody interface {
 }
 
 type GetAlipayUrlResponseBody struct {
+	// The response data.
 	Data *GetAlipayUrlResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The unique ID of the request.
+	//
 	// example:
 	//
 	// 6a71f2d9-f1c9-913b-818b-11402910xxxx
@@ -59,10 +62,17 @@ func (s *GetAlipayUrlResponseBody) Validate() error {
 }
 
 type GetAlipayUrlResponseBodyData struct {
+	// The tipping code used to query the tipping status.
+	//
 	// example:
 	//
 	// xxsdfasfw
-	Code  *string `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The generated tipping URL.
+	//
+	// example:
+	//
+	// https://xxxxxx.aliyun-inc.com
 	QrUrl *string `json:"qrUrl,omitempty" xml:"qrUrl,omitempty"`
 }
 

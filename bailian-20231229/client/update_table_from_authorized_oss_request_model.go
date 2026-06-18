@@ -20,24 +20,32 @@ type iUpdateTableFromAuthorizedOssRequest interface {
 }
 
 type UpdateTableFromAuthorizedOssRequest struct {
+	// Name of the OSS bucket. For details, see [bucket](https://help.aliyun.com/document_detail/177682.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// yinghuo-ai
 	OssBucket *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
+	// Object key of the file in the OSS bucket. For details, see [object naming](https://help.aliyun.com/document_detail/273129.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// a0deedbce4a8162b8d66c63ace28330c
 	OssKey *string `json:"OssKey,omitempty" xml:"OssKey,omitempty"`
+	// Region ID of the OSS bucket. For details, see [OSS regions and endpoints](https://help.aliyun.com/document_detail/31837.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-beijing
 	OssRegionId *string `json:"OssRegionId,omitempty" xml:"OssRegionId,omitempty"`
+	// Update mode. Valid values: APPEND and OVERWRITE.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -24,11 +24,16 @@ type iAddTableResponseBody interface {
 }
 
 type AddTableResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// Index.Forbidden
-	Code *string                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *AddTableResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message.
+	//
 	// example:
 	//
 	// Required parameter(%s) missing or invalid, please check the request parameters.
@@ -39,10 +44,18 @@ type AddTableResponseBody struct {
 	//
 	// 778C0B3B-03C1-5FC1-A947-36EDD13606AB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status code returned by the operation.
+	//
 	// example:
 	//
 	// 200
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the call was successful. Valid values:
+	//
+	// - true: Succeeded.
+	//
+	// - false: Failed.
+	//
 	// example:
 	//
 	// True
@@ -121,6 +134,8 @@ func (s *AddTableResponseBody) Validate() error {
 }
 
 type AddTableResponseBodyData struct {
+	// The table ID.
+	//
 	// example:
 	//
 	// table_b6ddc67e7df14db38b74ef5e2e0fe24e_12792097

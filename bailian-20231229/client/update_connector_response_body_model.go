@@ -24,25 +24,34 @@ type iUpdateConnectorResponseBody interface {
 }
 
 type UpdateConnectorResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// Index.Forbidden
-	Code *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned by the operation.
 	Data *UpdateConnectorResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message.
+	//
 	// example:
 	//
 	// Required parameter(%s) missing or invalid, please check the request parameters.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 778C0B3B-03C1-5FC1-A947-36EDD13606AB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status code of the response.
+	//
 	// example:
 	//
 	// 200
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -121,6 +130,8 @@ func (s *UpdateConnectorResponseBody) Validate() error {
 }
 
 type UpdateConnectorResponseBodyData struct {
+	// The ID of the connector.
+	//
 	// example:
 	//
 	// conn_file_e0c9db4030b2465a9478028f7d76cd92_1234

@@ -24,11 +24,16 @@ type iDeleteFilesResponseBody interface {
 }
 
 type DeleteFilesResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// DataCenter.FileTooLarge
-	Code *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *DeleteFilesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message.
+	//
 	// example:
 	//
 	// Required parameter(%s) missing or invalid, please check the request parameters.
@@ -39,10 +44,18 @@ type DeleteFilesResponseBody struct {
 	//
 	// 17204B98-7734-4F9A-8464-2446A84821CA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status code returned by the API.
+	//
 	// example:
 	//
 	// 200
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the API call is successful. Valid values:
+	//
+	// - true: The call is successful.
+	//
+	// - false: The call fails.
+	//
 	// example:
 	//
 	// true
@@ -121,6 +134,7 @@ func (s *DeleteFilesResponseBody) Validate() error {
 }
 
 type DeleteFilesResponseBodyData struct {
+	// The deletion results.
 	DeleteFileResultList []*DeleteFilesResponseBodyDataDeleteFileResultList `json:"DeleteFileResultList,omitempty" xml:"DeleteFileResultList,omitempty" type:"Repeated"`
 }
 
@@ -155,10 +169,20 @@ func (s *DeleteFilesResponseBodyData) Validate() error {
 }
 
 type DeleteFilesResponseBodyDataDeleteFileResultList struct {
+	// The file ID.
+	//
 	// example:
 	//
 	// file_6b193b9b4b1546ef9eaa7340e69adfca_10052857
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// The file deletion status. Valid values:
+	//
+	// - DELETED: The file is deleted.
+	//
+	// - FAILED: The file fails to be deleted.
+	//
+	// - NOT_FOUND: The file is not found.
+	//
 	// example:
 	//
 	// DELETED

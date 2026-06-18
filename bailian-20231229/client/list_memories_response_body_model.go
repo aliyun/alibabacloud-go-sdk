@@ -24,26 +24,37 @@ type iListMemoriesResponseBody interface {
 }
 
 type ListMemoriesResponseBody struct {
+	// The number of long-term memory entities per page in a paged query.
+	//
 	// example:
 	//
 	// 10
-	MaxResults *int32                              `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	Memories   []*ListMemoriesResponseBodyMemories `json:"memories,omitempty" xml:"memories,omitempty" type:"Repeated"`
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The long-term memory entity list.
+	Memories []*ListMemoriesResponseBodyMemories `json:"memories,omitempty" xml:"memories,omitempty" type:"Repeated"`
+	// The pagination token returned in this call.
+	//
 	// example:
 	//
-	// dc270401186b433f975d7e1faaa34e0e
+	// dc270401186b433f975d7e1faaa3xxxx
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
-	// 6a71f2d9-f1c9-913b-818b-114029103cad
+	// 6a71f2d9-f1c9-913b-818b-11402910xxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 105
 	TotalCount *int32 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	// The ID of the workspace to which the long-term memory entity list belongs.
+	//
 	// example:
 	//
-	// llm-us9hjmt32nysdm5v
+	// llm-3z7uw7fwz0vexxxx
 	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
 }
 
@@ -123,10 +134,17 @@ func (s *ListMemoriesResponseBody) Validate() error {
 }
 
 type ListMemoriesResponseBodyMemories struct {
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The description of the long-term memory.
+	//
 	// example:
 	//
-	// 3fc531f4519444beaafffa4538f60667
+	// 我的大模型应用$APP_ID关于A用户的长期记忆体
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The long-term memory ID.
+	//
+	// example:
+	//
+	// 3fc531f4519444beaafffa4538f6xxxx
 	MemoryId *string `json:"memoryId,omitempty" xml:"memoryId,omitempty"`
 }
 

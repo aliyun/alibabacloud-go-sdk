@@ -22,20 +22,44 @@ type iListFileRequest interface {
 }
 
 type ListFileRequest struct {
-	// The category ID, which is the `CategoryId` returned by the [AddCategory](~~AddCategory~~) operation. To view the category ID, click the ID icon next to the category name on the Unstructured Data tab of the [Data Management](https://bailian.console.alibabacloud.com/#/data-center) page.
+	// <props="china">
+	//
+	// The category ID, which is the `CategoryId` returned by the **AddCategory*	- operation. You can also obtain it on the [Application Data](https://bailian.console.aliyun.com/?tab=app#/data-center) - Files tab by clicking the ID icon next to the category name.
+	//
+	//
+	//
+	// <props="intl">
+	//
+	// The category ID, which is the `CategoryId` returned by the **AddCategory*	- operation. You can also obtain it on the [Application Data](https://modelstudio.console.alibabacloud.com/?tab=app#/data-center) - Files tab by clicking the ID icon next to the category name.
+	//
+	// .
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// cate_cdd11b1b79a74e8bbd675c356a91ee3510024405
-	CategoryId *string   `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	FileIds    []*string `json:"FileIds,omitempty" xml:"FileIds,omitempty" type:"Repeated"`
-	FileName   *string   `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// cate_cdd11b1b79a74e8bbd675c356a91ee35xxxxxxxx
+	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// The list of file IDs to query. A maximum of 20 files can be queried per request.
+	FileIds []*string `json:"FileIds,omitempty" xml:"FileIds,omitempty" type:"Repeated"`
+	// The file name (without extension). Only exact match is supported. Fuzzy search is not supported.
+	//
+	// example:
+	//
+	// product-overview
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The number of entries per page for paging. Valid values: 1 to 200.
+	//
+	// Default value:
+	//
+	// If the value is not set or is less than 1, the default value is 20. If the value is greater than 200, the default value is 200.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token. Set this to the NextToken value returned by the previous API call.
+	//
 	// example:
 	//
 	// AAAAAdH70eOCSCKtacdomNzak4U=

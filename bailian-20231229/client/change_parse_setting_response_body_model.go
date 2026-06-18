@@ -24,13 +24,13 @@ type iChangeParseSettingResponseBody interface {
 }
 
 type ChangeParseSettingResponseBody struct {
-	// The status code.
+	// The error code.
 	//
 	// example:
 	//
 	// InvalidParameter
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data fields.
+	// The data returned for a successful request.
 	Data *ChangeParseSettingResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message.
 	//
@@ -44,17 +44,17 @@ type ChangeParseSettingResponseBody struct {
 	//
 	// 7BA8ADD9-53D6-53F0-918F-A1E776AD230E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The HTTP status code returned.
+	// The status code returned for the request.
 	//
 	// example:
 	//
 	// 200
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether the call is successful. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true
+	// - true: The request was successful.
 	//
-	// 	- false
+	// - false: The request failed.
 	//
 	// example:
 	//
@@ -134,7 +134,11 @@ func (s *ChangeParseSettingResponseBody) Validate() error {
 }
 
 type ChangeParseSettingResponseBodyData struct {
-	// The result of the modification.
+	// Indicates whether the configuration was successfully updated.
+	//
+	// - true: The configuration was updated.
+	//
+	// - false: The configuration failed to be updated.
 	//
 	// example:
 	//

@@ -16,10 +16,14 @@ type iCreatePromptTemplateResponseBody interface {
 }
 
 type CreatePromptTemplateResponseBody struct {
+	// Prompt template ID.
+	//
 	// example:
 	//
 	// 6e49109bfeb94a39bb268f4e483ccxxx
 	PromptTemplateId *string `json:"promptTemplateId,omitempty" xml:"promptTemplateId,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// FE9B6CBF-47E6-5D76-9C5D-B814DD5ABxxx

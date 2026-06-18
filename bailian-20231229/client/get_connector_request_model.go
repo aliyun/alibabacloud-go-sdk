@@ -16,10 +16,17 @@ type iGetConnectorRequest interface {
 }
 
 type GetConnectorRequest struct {
+	// The ID of the connector. You can find this ID in the [Model Studio console](https://bailian.console.aliyun.com/cn-beijing/?tab=app#/connector/list).
+	//
 	// example:
 	//
-	// file_conn_xxxx
-	ConnectorId   *string `json:"ConnectorId,omitempty" xml:"ConnectorId,omitempty"`
+	// conn_file_xxxx
+	ConnectorId *string `json:"ConnectorId,omitempty" xml:"ConnectorId,omitempty"`
+	// The name of the connector to query. An exact match is required.
+	//
+	// example:
+	//
+	// 连接器名称
 	ConnectorName *string `json:"ConnectorName,omitempty" xml:"ConnectorName,omitempty"`
 }
 

@@ -13,19 +13,28 @@ type iAddTableRequest interface {
 	GetConnectorId() *string
 	SetTableColumns(v []*AddTableRequestTableColumns) *AddTableRequest
 	GetTableColumns() []*AddTableRequestTableColumns
+	SetTableDesc(v string) *AddTableRequest
+	GetTableDesc() *string
 	SetTableName(v string) *AddTableRequest
 	GetTableName() *string
 }
 
 type AddTableRequest struct {
+	// The connector ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// connector-d51861492df64257
 	ConnectorId *string `json:"ConnectorId,omitempty" xml:"ConnectorId,omitempty"`
+	// The column information of the table.
+	//
 	// This parameter is required.
 	TableColumns []*AddTableRequestTableColumns `json:"TableColumns,omitempty" xml:"TableColumns,omitempty" type:"Repeated"`
+	TableDesc    *string                        `json:"TableDesc,omitempty" xml:"TableDesc,omitempty"`
+	// The table name.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -50,6 +59,10 @@ func (s *AddTableRequest) GetTableColumns() []*AddTableRequestTableColumns {
 	return s.TableColumns
 }
 
+func (s *AddTableRequest) GetTableDesc() *string {
+	return s.TableDesc
+}
+
 func (s *AddTableRequest) GetTableName() *string {
 	return s.TableName
 }
@@ -61,6 +74,11 @@ func (s *AddTableRequest) SetConnectorId(v string) *AddTableRequest {
 
 func (s *AddTableRequest) SetTableColumns(v []*AddTableRequestTableColumns) *AddTableRequest {
 	s.TableColumns = v
+	return s
+}
+
+func (s *AddTableRequest) SetTableDesc(v string) *AddTableRequest {
+	s.TableDesc = &v
 	return s
 }
 
@@ -83,16 +101,22 @@ func (s *AddTableRequest) Validate() error {
 }
 
 type AddTableRequestTableColumns struct {
+	// The column description.
+	//
 	// example:
 	//
 	// desc
 	ColumnDesc *string `json:"ColumnDesc,omitempty" xml:"ColumnDesc,omitempty"`
+	// The column name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// column1
 	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	// The data type.
+	//
 	// This parameter is required.
 	//
 	// example:

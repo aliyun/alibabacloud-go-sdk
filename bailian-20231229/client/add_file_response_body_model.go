@@ -24,13 +24,13 @@ type iAddFileResponseBody interface {
 }
 
 type AddFileResponseBody struct {
-	// The status code.
+	// The error code.
 	//
 	// example:
 	//
 	// DataCenter.FileTooLarge
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data fields.
+	// The data returned for the request.
 	Data *AddFileResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message.
 	//
@@ -44,17 +44,17 @@ type AddFileResponseBody struct {
 	//
 	// 778C0B3B-xxxx-5FC1-A947-36EDD13606AB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The HTTP status code.
+	// The status code of the request.
 	//
 	// example:
 	//
 	// 200
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indications whether the call is successful. Valid values:
+	// Indicates whether the API call was successful. Valid values:
 	//
-	// 	- true
+	// - `true`: The call was successful.
 	//
-	// 	- false
+	// - `false`: The call failed.
 	//
 	// example:
 	//
@@ -134,15 +134,15 @@ func (s *AddFileResponseBody) Validate() error {
 }
 
 type AddFileResponseBodyData struct {
-	// The primary key ID of the document. We recommend that you store the ID because it is required for all subsequent API operations related to this document.
+	// The ID of the file. Save this ID for use in subsequent API calls involving this file.
 	//
 	// example:
 	//
-	// file_9a65732555b54d5ea10796ca5742ba22_XXXXXXXX
+	// file_9a65732555b54d5ea10796ca5742ba22_xxxxxxxx
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// The parser that is used to parse the document. Valid value:
+	// The parser that was used for the file. A possible value is:
 	//
-	// 	- DASHSCOPE_DOCMIND: Intelligent document parsing by Alibaba Cloud.
+	// - `DASHSCOPE_DOCMIND`: Alibaba Cloud Document Intelligence
 	//
 	// example:
 	//

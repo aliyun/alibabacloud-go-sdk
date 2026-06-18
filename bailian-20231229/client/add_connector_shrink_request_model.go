@@ -20,20 +20,31 @@ type iAddConnectorShrinkRequest interface {
 }
 
 type AddConnectorShrinkRequest struct {
+	// The name of the connector.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-connector
 	ConnectorName *string `json:"ConnectorName,omitempty" xml:"ConnectorName,omitempty"`
+	// The type of the connector.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// FILE
 	ConnectorType *string `json:"ConnectorType,omitempty" xml:"ConnectorType,omitempty"`
+	// The description for the connector.
+	//
 	// This parameter is required.
-	Description               *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	//
+	// example:
+	//
+	// 文件连接器
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The parameters for the file connector.
 	FileConnectorConfigShrink *string `json:"FileConnectorConfig,omitempty" xml:"FileConnectorConfig,omitempty"`
 }
 

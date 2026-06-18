@@ -20,7 +20,7 @@ type iChangeParseSettingShrinkRequest interface {
 }
 
 type ChangeParseSettingShrinkRequest struct {
-	// The category ID, which is the `CategoryId` returned by **AddCategory**. To view the category ID, click the ID icon next to the category name on the Unstructured Data tab of the [Application Data](https://bailian.console.alibabacloud.com/?tab=app#/data-center) page.
+	// The category ID. This is the `CategoryId` returned by the **AddCategory*	- operation. You can also obtain the ID from the <props="china">[Application Data](https://bailian.console.aliyun.com/?tab=app#/data-center) - File tab<props="intl">[Application Data](https://bailian.console.alibabacloud.com/?tab=app#/data-center) - Unstructured Data tab by clicking the ID icon next to the category name.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,37 @@ type ChangeParseSettingShrinkRequest struct {
 	//
 	// cate_cdd11b1b79a74e8bbd675c356a91ee35xxxxxxxx
 	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	// The file type. Valid values: pdf, docx, and doc.
+	// The file type, specified by its extension. Valid values:
+	//
+	// - doc
+	//
+	// - docx
+	//
+	// - ppt
+	//
+	// - pptx
+	//
+	// - xls
+	//
+	// - xlsx
+	//
+	// - md
+	//
+	// - txt
+	//
+	// - pdf
+	//
+	// - png
+	//
+	// - jpg
+	//
+	// - jpeg
+	//
+	// - bmp
+	//
+	// - gif
+	//
+	// - html
 	//
 	// This parameter is required.
 	//
@@ -36,15 +66,15 @@ type ChangeParseSettingShrinkRequest struct {
 	//
 	// pdf
 	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
-	// The parser code. Valid values:
+	// The identifier for the parser. Different parsers are suitable for different scenarios. For more information, refer to the knowledge base. Valid values:
 	//
-	// 	- DOCMIND (Intelligent parsing)
+	// - DOCMIND (intelligent document parsing)
 	//
-	// 	- DOCMIND_DIGITAL (Digital parsing)
+	// - DOCMIND_DIGITAL (digital document parsing)
 	//
-	// 	- DOCMIND_LLM_VERSION (LLM parsing)
+	// - DOCMIND_LLM_VERSION (LLM-based document parsing)
 	//
-	// 	- DASH_QWEN_VL_PARSER (Qwen VL parsing)
+	// - DASH_QWEN_VL_PARSER (Qwen VL Parser)
 	//
 	// This parameter is required.
 	//
@@ -52,7 +82,7 @@ type ChangeParseSettingShrinkRequest struct {
 	//
 	// DOCMIND
 	Parser *string `json:"Parser,omitempty" xml:"Parser,omitempty"`
-	// The parser configuration. Currently, this is available only for Qwen VL parsing.
+	// The parser configuration. This parameter is required only when the `Parser` parameter is set to `DASH_QWEN_VL_PARSER`.
 	ParserConfigShrink *string `json:"ParserConfig,omitempty" xml:"ParserConfig,omitempty"`
 }
 

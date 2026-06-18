@@ -24,13 +24,13 @@ type iListIndexDocumentsResponseBody interface {
 }
 
 type ListIndexDocumentsResponseBody struct {
-	// HTTP status code
+	// The error status code.
 	//
 	// example:
 	//
 	// InvalidParameter
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The data field returned by the operation.
 	Data *ListIndexDocumentsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message.
 	//
@@ -44,17 +44,17 @@ type ListIndexDocumentsResponseBody struct {
 	//
 	// 35A267BF-xxxx-54DB-8394-AA3B0742D833
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status code.
+	// The status code returned by the operation.
 	//
 	// example:
 	//
 	// 200
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indications whether the API call is successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// 	- true
+	// - true: The operation was successful.
 	//
-	// 	- false
+	// - false: The operation failed.
 	//
 	// example:
 	//
@@ -134,27 +134,27 @@ func (s *ListIndexDocumentsResponseBody) Validate() error {
 }
 
 type ListIndexDocumentsResponseBodyData struct {
-	// The list of documents in the knowledge base.
+	// The list of files in the knowledge base, sorted by file import time in descending order (consistent with the console).
 	Documents []*ListIndexDocumentsResponseBodyDataDocuments `json:"Documents,omitempty" xml:"Documents,omitempty" type:"Repeated"`
-	// The primary key ID of the knowledge base.
+	// The knowledge base ID.
 	//
 	// example:
 	//
-	// pno97tn8iu
+	// pno97txxxx
 	IndexId *string `json:"IndexId,omitempty" xml:"IndexId,omitempty"`
-	// The specified page number.
+	// The returned page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The specified number of documents on each page.
+	// The returned number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of documents returned.
+	// The total number of returned results.
 	//
 	// example:
 	//
@@ -229,56 +229,80 @@ func (s *ListIndexDocumentsResponseBodyData) Validate() error {
 }
 
 type ListIndexDocumentsResponseBodyDataDocuments struct {
-	// The error status code of document import.
+	// The error status code for the file import.
 	//
 	// example:
 	//
 	// 110002
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The format of the document. Valid values: pdf, docx, doc, txt, md, pptx, ppt, and EXCEL.
+	// The file format type. Valid values: pdf, docx, doc, txt, md, pptx, ppt, png, jpg, jpeg, bmp, gif, and EXCEL.
 	//
 	// example:
 	//
 	// pdf
 	DocumentType *string `json:"DocumentType,omitempty" xml:"DocumentType,omitempty"`
-	GmtModified  *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The primary key ID of the document.
+	// The time when the file was imported to the knowledge base, in UNIX timestamp format.
 	//
 	// example:
 	//
-	// doc_c134aa2073204a5d936d870bf960f56a10024701
+	// 1744856423000
+	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The file ID.
+	//
+	// example:
+	//
+	// doc_c134aa2073204a5d936d870bf960f56axxxxxxxx
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The error message of document import.
+	// The error message for the file import.
 	//
 	// example:
 	//
 	// check fileUrlKey[file_path] / fileNameKey[null] / fileExtensionKey[file_extension] is invalid
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The name of the document.
+	// The file name.
+	//
+	// example:
+	//
+	// product-overview
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The size of the document. Unit: bytes.
+	// The file size, in bytes.
 	//
 	// example:
 	//
-	// 996764
+	// 996765
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// For unstructured knowledge base, this parameter is the category ID. To view the category ID, you can click the ID icon next to the category name on the Unstructured Data tab of the [Data Management](https://bailian.console.aliyun.com/#/data-center) page.
+	// <props="china">
 	//
-	// For structured knowledge base, this parameter is the data table ID. To view the table ID, you can click the ID icon next to the table name on the Structured Data tab of the [Data Management](https://bailian.console.aliyun.com/#/data-center) page.
+	// For document search or audio/video search knowledge bases, this parameter specifies the category ID, which is the `CategoryId` returned by the **AddCategory*	- operation. You can also obtain the category ID by clicking the ID icon next to the category name on the Files tab of the [Application Data](https://bailian.console.aliyun.com/?tab=app#/data-center) page.
+	//
+	//
+	// For data query or image Q&A knowledge bases, this parameter specifies the data table ID. You can obtain the data table ID by clicking the ID icon next to the data table name on the Tables tab of the [Application Data](https://bailian.console.aliyun.com/?tab=app#/data-center) page.
+	//
+	//
+	//
+	//
+	// <props="intl">
+	//
+	// For document search knowledge bases, this parameter specifies the category ID, which is the `CategoryId` returned by the **AddCategory*	- operation. You can also obtain the category ID by clicking the ID icon next to the category name on the Files tab of the [Application Data](https://bailian.console.aliyun.com/?tab=app#/data-center) page.
+	//
+	//
+	// For data query or image Q&A knowledge bases, this parameter specifies the data table ID. You can obtain the data table ID by clicking the ID icon next to the data table name on the Tables tab of the [Application Data](https://modelstudio.console.alibabacloud.com/?tab=app#/data-center) page.
+	//
+	// .
 	//
 	// example:
 	//
-	// cate_21a407a3372c4ba7aedc649709143f0c10021401
+	// cate_21a407a3372c4ba7aedc649709143f0cxxxxxxxx
 	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
-	// The import status of the document. Valid values:
+	// The file import status. Valid values:
 	//
-	// 	- INSERT_ERROR
+	// - INSERT_ERROR: The file failed to be imported.
 	//
-	// 	- RUNNING
+	// - RUNNING: The file is being imported.
 	//
-	// 	- DELETED
+	// - DELETED: The file has been deleted.
 	//
-	// 	- FINISH
+	// - FINISH: The file was imported.
 	//
 	// example:
 	//

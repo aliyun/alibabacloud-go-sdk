@@ -42,7 +42,7 @@ type iRetrieveShrinkRequest interface {
 }
 
 type RetrieveShrinkRequest struct {
-	// Vector retrieval top K. After generating vectors based on input text, the top K chunks in the knowledge base that are most similar to the vector representation of the input text are retrieved. Valid values: 0 to 100. The sum of the `DenseSimilarityTopK` and `SparseSimilarityTopK` parameters must be less than or equal to 200.
+	// The number of top-K similar text chunks to retrieve using vector retrieval. This is achieved by generating a vector representation of the query and searching the knowledge base for the K text chunks with the most similar vectors. The value must be an integer from 0 to 100. The sum of `DenseSimilarityTopK` and `SparseSimilarityTopK` must not exceed 200.
 	//
 	// Default value: 100.
 	//
@@ -50,76 +50,92 @@ type RetrieveShrinkRequest struct {
 	//
 	// 100
 	DenseSimilarityTopK *int32 `json:"DenseSimilarityTopK,omitempty" xml:"DenseSimilarityTopK,omitempty"`
-	// Specifies whether to enable reranking. For more information, see [Create a knowledge base](https://www.alibabacloud.com/help/en/model-studio/user-guide/rag-knowledge-base). Valid values:
+	// Specifies whether to enable reranking. For more information, see [Knowledge base](https://help.aliyun.com/document_detail/2807740.html). Valid values:
 	//
-	// 	- true
+	// - `true`: Enables reranking.
 	//
-	// 	- false
+	// - `false`: Disables reranking.
 	//
-	// Default value: true.
+	// Default value: `true`.
 	//
 	// example:
 	//
 	// true
 	EnableReranking *bool `json:"EnableReranking,omitempty" xml:"EnableReranking,omitempty"`
-	// Specifies whether to enable multi-round conversation rewriting. For more information, see [Create a knowledge base](https://www.alibabacloud.com/help/en/model-studio/user-guide/rag-knowledge-base). Valid values:
+	// Specifies whether to enable <props="china">[conversational query rewriting](https://help.aliyun.com/model-studio/use-cases/rag-optimization#b7031e2ad6cji)<props="intl">[conversational query rewriting](https://www.alibabacloud.com/help/model-studio/use-cases/rag-optimization#b7031e2ad6cji).
 	//
-	// 	- true
+	// Valid values:
 	//
-	// 	- false
+	// - `true`: Enables conversational query rewriting.
 	//
-	// Default value: false.
+	// - `false`: Disables conversational query rewriting.
+	//
+	// Default value: `false`.
 	//
 	// example:
 	//
 	// false
 	EnableRewrite *bool   `json:"EnableRewrite,omitempty" xml:"EnableRewrite,omitempty"`
 	ExtraShrink   *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
-	ImagesShrink  *string `json:"Images,omitempty" xml:"Images,omitempty"`
-	// The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
+	// The URLs of images to include in the query.
+	ImagesShrink *string `json:"Images,omitempty" xml:"Images,omitempty"`
+	// The ID of the knowledge base. This is the `Data.Id` value returned by the `CreateIndex` operation.
+	//
+	// > - Ensure the specified knowledge base exists and has not been deleted.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 5pwe0m2g6t
+	// 5pwe0mxxxx
 	IndexId *string `json:"IndexId,omitempty" xml:"IndexId,omitempty"`
-	// The input query prompt. The length and characters of the query are not limited.
-	Query              *string `json:"Query,omitempty" xml:"Query,omitempty"`
-	QueryHistoryShrink *string `json:"QueryHistory,omitempty" xml:"QueryHistory,omitempty"`
-	// Ranking configurations.
-	RerankShrink *string `json:"Rerank,omitempty" xml:"Rerank,omitempty"`
-	// Similarity Threshold The lowest similarity score of chunks that can be returned. This parameter is used to filter text chunks returned by the rank model. For more information, see [Create a knowledge base](https://www.alibabacloud.com/help/en/model-studio/user-guide/rag-knowledge-base). Valid values: [0.01-1.00]. The priority of this parameter is greater than the similarity threshold configured for the knowledge base.
+	// The query, which is the original user prompt. There are no limits on the length of the query.
 	//
-	// By default, this parameter is left empty. In this case, the similarity threshold of the knowledge base is used.
+	// example:
+	//
+	// 阿里云百炼平台介绍
+	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// The conversation history, used for <props="china">[conversational query rewriting](https://help.aliyun.com/model-studio/use-cases/rag-optimization#b7031e2ad6cji)<props="intl">[conversational query rewriting](https://www.alibabacloud.com/help/model-studio/use-cases/rag-optimization#b7031e2ad6cji). This parameter is effective only when `EnableRewrite` is set to `true`.
+	QueryHistoryShrink *string `json:"QueryHistory,omitempty" xml:"QueryHistory,omitempty"`
+	// The reranking configurations.
+	RerankShrink *string `json:"Rerank,omitempty" xml:"Rerank,omitempty"`
+	// The similarity threshold for reranking. Only text chunks with a similarity score greater than this value are returned. The value must be between 0.01 and 1.00, inclusive. This parameter overrides the similarity threshold setting of the knowledge base.
+	//
+	// If not specified, the threshold configured for the knowledge base is used.
 	//
 	// example:
 	//
 	// 0.20
 	RerankMinScore *float32 `json:"RerankMinScore,omitempty" xml:"RerankMinScore,omitempty"`
-	// The top N return data after reranking. Valid values: 1 to 20. Default value: 5.
+	// The number of top-ranked text chunks to return after reranking. The value must be an integer from 1 to 20. Default value: 5.
 	//
 	// example:
 	//
 	// 5
 	RerankTopN *int32 `json:"RerankTopN,omitempty" xml:"RerankTopN,omitempty"`
-	// Conversation rewriting configurations.
+	// Configuration for conversational query rewriting.
 	RewriteShrink *string `json:"Rewrite,omitempty" xml:"Rewrite,omitempty"`
-	// Specifies whether to save the retrieve test history. Valid values:
+	// Specifies whether to save the retrieval history for testing purposes. Valid values:
 	//
-	// 	- true
+	// - `true`: Saves the retrieval history.
 	//
-	// 	- false
+	// - `false`: Does not save the retrieval history.
 	//
-	// Default value: false.
+	// Default value: `false`.
 	//
 	// example:
 	//
 	// false
 	SaveRetrieverHistory *bool `json:"SaveRetrieverHistory,omitempty" xml:"SaveRetrieverHistory,omitempty"`
-	// Specifies complex filter conditions. For more information about the syntax of SearchFilters, see the SearchFilter syntax section of this topic.
+	// Specifies custom retrieval conditions, such as tags, to filter semantic retrieval results and exclude irrelevant information.
+	//
+	// The filtering logic is applied only when the `is_displayed_chunk_content` parameter is set to `true`. For more information, see [SearchFilters for a knowledge base](https://help.aliyun.com/document_detail/2869641.html).
 	SearchFiltersShrink *string `json:"SearchFilters,omitempty" xml:"SearchFilters,omitempty"`
-	// The top K of keyword retrieval. Chunks that exactly match the keywords of the input text are retrieved from the knowledge base. This filters out irrelevant chunks and boosts accuracy. Valid values: 0 to 100. The sum of the `DenseSimilarityTopK` and `SparseSimilarityTopK` parameters must be less than or equal to 200.
+	// The number of top-K text chunks to retrieve using keyword retrieval. This feature finds text chunks in the knowledge base that exactly match the keywords in the query. It helps filter out irrelevant text chunks and provide more accurate results.
+	//
+	// The value must be an integer from 0 to 100.
+	//
+	// The sum of `DenseSimilarityTopK` and `SparseSimilarityTopK` must not exceed 200.
 	//
 	// Default value: 100.
 	//

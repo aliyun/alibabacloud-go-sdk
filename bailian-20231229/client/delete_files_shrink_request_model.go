@@ -14,6 +14,8 @@ type iDeleteFilesShrinkRequest interface {
 }
 
 type DeleteFilesShrinkRequest struct {
+	// The list of IDs of the files to be deleted. A maximum of 20 files can be deleted in a single request.
+	//
 	// This parameter is required.
 	FileIdsShrink *string `json:"FileIds,omitempty" xml:"FileIds,omitempty"`
 }

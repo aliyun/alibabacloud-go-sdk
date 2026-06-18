@@ -22,19 +22,28 @@ type iListMemoryNodesResponseBody interface {
 }
 
 type ListMemoryNodesResponseBody struct {
+	// The maximum number of results returned.
+	//
 	// example:
 	//
 	// 20
-	MaxResults  *int32                                    `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The array of memory nodes.
 	MemoryNodes []*ListMemoryNodesResponseBodyMemoryNodes `json:"memoryNodes,omitempty" xml:"memoryNodes,omitempty" type:"Repeated"`
+	// The token used for token-based pagination.
+	//
 	// example:
 	//
 	// dc270401186b433f975d7e1faaa34e0e
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6a71f2d9-f1c9-913b-818b-114029103cad
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The total number of memory nodes.
+	//
 	// example:
 	//
 	// 100
@@ -108,7 +117,14 @@ func (s *ListMemoryNodesResponseBody) Validate() error {
 }
 
 type ListMemoryNodesResponseBodyMemoryNodes struct {
+	// The content of the memory node.
+	//
+	// example:
+	//
+	// 用户喜欢吃西红柿炒鸡蛋
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// The memory node ID.
+	//
 	// example:
 	//
 	// 68de06c95368463a8be4a84efc872cc5

@@ -14,6 +14,11 @@ type iUpdateMemoryRequest interface {
 }
 
 type UpdateMemoryRequest struct {
+	// The new description. The description must be 1 to 50 characters in length and can contain characters in the letter category of Unicode, which includes letters, Chinese characters, and digits. The description can also contain half-width colons (:), underscores (_), periods (.), or hyphens (-).
+	//
+	// example:
+	//
+	// 我的大模型应用$APP_ID关于B用户的长期记忆体
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 }
 

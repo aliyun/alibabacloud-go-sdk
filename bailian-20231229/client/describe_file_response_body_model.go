@@ -24,13 +24,13 @@ type iDescribeFileResponseBody interface {
 }
 
 type DescribeFileResponseBody struct {
-	// The status code.
+	// The error status code.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data fields.
+	// The data field of the operation.
 	Data *DescribeFileResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message.
 	//
@@ -44,17 +44,17 @@ type DescribeFileResponseBody struct {
 	//
 	// 17204B98-xxxx-4F9A-8464-2446A84821CA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The HTTP status code.
+	// The status code returned by the operation.
 	//
 	// example:
 	//
 	// 200
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indications whether the API call is successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// 	- true
+	// - true: Successful.
 	//
-	// 	- false
+	// - false: Failed.
 	//
 	// example:
 	//
@@ -134,66 +134,118 @@ func (s *DescribeFileResponseBody) Validate() error {
 }
 
 type DescribeFileResponseBodyData struct {
-	// The ID of the category to which the document belongs.
+	// The ID of the category to which the file belongs.
 	//
 	// example:
 	//
-	// cate_cdd11b1b79a74e8bbd675c356a91ee3XXXXXXXX
+	// cate_cdd11b1b79a74e8bbd675c356a91ee3xxxxxxxx
 	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	// The timestamp when the document was uploaded to Model Studio. Format: yyyy-MM-dd HH:mm:ss. Time zone: UTC + 8.
+	// The timestamp when the file was added to Model Studio. Format: yyyy-MM-dd HH:mm:ss. Time zone: UTC+8.
 	//
 	// example:
 	//
-	// 2024-05-26 12:45:43
+	// 2024-09-09 12:45:43
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The primary key ID of the document.
+	// The file ID.
 	//
 	// example:
 	//
-	// file_9a65732555b54d5ea10796ca5742ba22_XXXXXXXX
+	// file_9a65732555b54d5ea10796ca5742ba22_xxxxxxxx
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// The name of the document.
+	// The file name.
 	//
 	// example:
 	//
-	// test.pdf
+	// XXX产品介绍.pdf
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// The file type of the document. The value is an extension. Valid values: pdf, docx, doc, txt, md, pptx, and ppt.
+	// The file type (extension). Valid values: pdf, docx, doc, txt, md, pptx, ppt, xlsx, xls, html, png, jpg, jpeg, bmp, and gif.
 	//
 	// example:
 	//
 	// pdf
 	FileType               *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	ParseErrorMessage      *string `json:"ParseErrorMessage,omitempty" xml:"ParseErrorMessage,omitempty"`
 	ParseResultDownloadUrl *string `json:"ParseResultDownloadUrl,omitempty" xml:"ParseResultDownloadUrl,omitempty"`
-	// The parser that is used to parse the document. Valid value:
+	// The parser type used to parse the file. Valid values:
 	//
-	// 	- DASHSCOPE_DOCMIND: The default document parser.
+	// - DASHSCOPE_DOCMIND: the default document parser.
 	//
 	// example:
 	//
 	// DASHSCOPE_DOCMIND
 	Parser *string `json:"Parser,omitempty" xml:"Parser,omitempty"`
-	// The size of the document. Unit: bytes.
+	// The file size, in bytes.
 	//
 	// example:
 	//
 	// 1234
 	SizeInBytes *int64 `json:"SizeInBytes,omitempty" xml:"SizeInBytes,omitempty"`
-	// The status of the document. Valid values:
+	// <props="china">
 	//
-	// 	- INIT: pending parsing.
+	// For files used in document-based knowledge bases (type: UNSTRUCTURED), valid values:
 	//
-	// 	- PARSING
 	//
-	// 	- PARSE_SUCCESS
 	//
-	// 	- PARSE_FAILED
+	// <props="intl">
+	//
+	// For files used in unstructured knowledge bases (type: UNSTRUCTURED), valid values:
+	//
+	//
+	//
+	//
+	// - INIT: pending parsing.
+	//
+	// - IN_PARSE_QUEUE: queued for parsing.
+	//
+	// - PARSING: being parsed.
+	//
+	// - PARSE_SUCCESS: parsing completed.
+	//
+	// <note>The document can be imported into a knowledge base only after the status changes to PARSE_SUCCESS.</note>
+	//
+	// - PARSE_FAILED: parsing failed.
+	//
+	// <props="china">
+	//
+	// For files used in agent application [session interaction](https://www.alibabacloud.com/help/en/model-studio/user-guide/file-interaction) (type: SESSION_FILE), valid values:
+	//
+	// - INIT: pending parsing.
+	//
+	// - IN_PARSE_QUEUE: queued for parsing.
+	//
+	// - PARSING: being parsed.
+	//
+	// - PARSE_SUCCESS: parsing completed.
+	//
+	// - PARSE_FAILED: parsing failed.
+	//
+	// - SAFE_CHECKING: security check in progress.
+	//
+	// - SAFE_CHECK_FAILED: security check failed.
+	//
+	// - INDEX_BUILDING: index being built.
+	//
+	// - INDEX_BUILD_SUCCESS: index built.
+	//
+	// - INDEX_BUILDING_FAILED: index building failed.
+	//
+	// - INDEX_DELETED: file index deleted.
+	//
+	// - FILE_IS_READY: file is ready.
+	//
+	// <note>Q&A can proceed only after the status changes to FILE_IS_READY.</note>
+	//
+	// - FILE_EXPIRED: file expired.
+	//
+	// <note>The file is valid only for the current user session. After the user closes the session, the file expires (maximum validity period: 7 days). Long-term retention is not supported.</note>
+	//
+	// .
 	//
 	// example:
 	//
 	// PARSE_SUCCESS
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tags that are associated with the document. A document can be associated with multiple tags.
+	// The list of tags associated with the file. A file can be associated with multiple tags.
 	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
@@ -223,6 +275,10 @@ func (s *DescribeFileResponseBodyData) GetFileName() *string {
 
 func (s *DescribeFileResponseBodyData) GetFileType() *string {
 	return s.FileType
+}
+
+func (s *DescribeFileResponseBodyData) GetParseErrorMessage() *string {
+	return s.ParseErrorMessage
 }
 
 func (s *DescribeFileResponseBodyData) GetParseResultDownloadUrl() *string {
@@ -267,6 +323,11 @@ func (s *DescribeFileResponseBodyData) SetFileName(v string) *DescribeFileRespon
 
 func (s *DescribeFileResponseBodyData) SetFileType(v string) *DescribeFileResponseBodyData {
 	s.FileType = &v
+	return s
+}
+
+func (s *DescribeFileResponseBodyData) SetParseErrorMessage(v string) *DescribeFileResponseBodyData {
+	s.ParseErrorMessage = &v
 	return s
 }
 

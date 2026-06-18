@@ -24,13 +24,13 @@ type iSubmitIndexJobResponseBody interface {
 }
 
 type SubmitIndexJobResponseBody struct {
-	// HTTP status code
+	// The error code.
 	//
 	// example:
 	//
-	// InvalidParameter
+	// Index.InvalidParameter
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The business data returned by the operation.
 	Data *SubmitIndexJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message.
 	//
@@ -44,21 +44,21 @@ type SubmitIndexJobResponseBody struct {
 	//
 	// 17204B98-xxxx-4F9A-8464-2446A84821CA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status code.
+	// The status code returned by the operation.
 	//
 	// example:
 	//
-	// Success
+	// 200
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indications whether the API call is successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// 	- true
+	// - true: Successful.
 	//
-	// 	- false
+	// - false: Failed.
 	//
 	// example:
 	//
-	// True
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -134,17 +134,17 @@ func (s *SubmitIndexJobResponseBody) Validate() error {
 }
 
 type SubmitIndexJobResponseBodyData struct {
-	// The primary key ID of the job, which is the `JobId` parameter of the [GetIndexJobStatus](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-getindexjobstatus) operation.
+	// The task ID, which is the `JobId` required when calling the **GetIndexJobStatus*	- operation.
 	//
 	// example:
 	//
-	// eFDr2fGRzP9gdDZWAdo3YQ==
+	// eFDr2fGRzP9gdDZWAdo3xxxx
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The primary key ID of the knowledge base.
+	// The knowledge base ID.
 	//
 	// example:
 	//
-	// khdyak1uuj
+	// 79c0alxxxx
 	IndexId *string `json:"IndexId,omitempty" xml:"IndexId,omitempty"`
 }
 

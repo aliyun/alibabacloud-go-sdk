@@ -16,12 +16,16 @@ type iUpdateConnectorRequest interface {
 }
 
 type UpdateConnectorRequest struct {
+	// The name of the connector.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-connector
 	ConnectorName *string `json:"ConnectorName,omitempty" xml:"ConnectorName,omitempty"`
+	// A description of the connector.
+	//
 	// This parameter is required.
 	//
 	// example:

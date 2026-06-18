@@ -24,15 +24,15 @@ type iSubmitIndexAddDocumentsJobResponseBody interface {
 }
 
 type SubmitIndexAddDocumentsJobResponseBody struct {
-	// HTTP status code
+	// The error code returned on failure.
 	//
 	// example:
 	//
 	// Index.InvalidParameter
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The business data.
 	Data *SubmitIndexAddDocumentsJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message.
+	// The error message returned on failure.
 	//
 	// example:
 	//
@@ -42,19 +42,19 @@ type SubmitIndexAddDocumentsJobResponseBody struct {
 	//
 	// example:
 	//
-	// 778C0B3B-03C1-5FC1-A947-36EDD13606AB
+	// 778C0B3B-xxxx-5FC1-A947-36EDD13606AB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The HTTP status code returned.
+	// The response status code.
 	//
 	// example:
 	//
 	// 200
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indications whether the API call is successful. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true
+	// - true: The request was successful.
 	//
-	// 	- false
+	// - false: The request failed.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ func (s *SubmitIndexAddDocumentsJobResponseBody) Validate() error {
 }
 
 type SubmitIndexAddDocumentsJobResponseBodyData struct {
-	// The primary key ID of the task, `JobId`.
+	// The job ID, also known as `JobId`.
 	//
 	// example:
 	//

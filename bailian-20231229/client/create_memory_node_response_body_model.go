@@ -16,13 +16,17 @@ type iCreateMemoryNodeResponseBody interface {
 }
 
 type CreateMemoryNodeResponseBody struct {
+	// The memory node ID.
+	//
 	// example:
 	//
-	// 68de06c95368463a8be4a84efc872cc5
+	// 68de06c95368463a8be4a84efcxxxxxx
 	MemoryNodeId *string `json:"memoryNodeId,omitempty" xml:"memoryNodeId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
-	// 8C56C7AF-6573-19CE-B018-E05E1EDCF4C5
+	// 8C56C7AF-xxxx-19CE-B018-E05E1EDCF4C5
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 

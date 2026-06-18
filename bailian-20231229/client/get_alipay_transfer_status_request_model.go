@@ -16,10 +16,14 @@ type iGetAlipayTransferStatusRequest interface {
 }
 
 type GetAlipayTransferStatusRequest struct {
+	// The tipping code returned by the Alipay tipping link request.
+	//
 	// example:
 	//
 	// xxx-xxxx
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The Bailian workspace ID.
+	//
 	// example:
 	//
 	// llm-cxxxxxxb8d47ks

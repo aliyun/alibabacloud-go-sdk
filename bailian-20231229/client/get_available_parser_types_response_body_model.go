@@ -185,6 +185,10 @@ func (s *GetAvailableParserTypesResponseBodyData) Validate() error {
 
 type GetAvailableParserTypesResponseBodyDataParserList struct {
 	// The display name of the parsing method.
+	//
+	// example:
+	//
+	// 智能文档解析
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// The parser code. Valid values:
 	//

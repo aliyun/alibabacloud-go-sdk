@@ -14,7 +14,13 @@ type iUpdateMemoryNodeRequest interface {
 }
 
 type UpdateMemoryNodeRequest struct {
+	// The memory fragment content.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 用户喜欢吃西红柿炒鸡蛋
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
 }
 

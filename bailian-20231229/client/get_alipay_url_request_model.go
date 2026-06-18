@@ -16,7 +16,17 @@ type iGetAlipayUrlRequest interface {
 }
 
 type GetAlipayUrlRequest struct {
-	AppId       *string `json:"app_id,omitempty" xml:"app_id,omitempty"`
+	// The ID of the Bailian application.
+	//
+	// example:
+	//
+	// asfasdfxxasdf
+	AppId *string `json:"app_id,omitempty" xml:"app_id,omitempty"`
+	// The ID of the Bailian workspace.
+	//
+	// example:
+	//
+	// xxxllm-czb8d47ks
 	WorkspaceId *string `json:"workspace_id,omitempty" xml:"workspace_id,omitempty"`
 }
 

@@ -24,25 +24,38 @@ type iAddFilesFromAuthorizedOssResponseBody interface {
 }
 
 type AddFilesFromAuthorizedOssResponseBody struct {
+	// Error status code.
+	//
 	// example:
 	//
 	// success
-	Code *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Business data field returned by the operation.
 	Data *AddFilesFromAuthorizedOssResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Error information.
+	//
 	// example:
 	//
 	// Cant find out category for category_id param.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 17204B98-xxxx-4F9A-8464-2446A84821CA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status code returned by the operation.
+	//
 	// example:
 	//
 	// 200
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Whether the operation call succeeded. Possible values:
+	//
+	// - true: Success.
+	//
+	// - false: Failure.
+	//
 	// example:
 	//
 	// true
@@ -121,6 +134,7 @@ func (s *AddFilesFromAuthorizedOssResponseBody) Validate() error {
 }
 
 type AddFilesFromAuthorizedOssResponseBodyData struct {
+	// The list of file import results.
 	AddFileResultList []*AddFilesFromAuthorizedOssResponseBodyDataAddFileResultList `json:"AddFileResultList,omitempty" xml:"AddFileResultList,omitempty" type:"Repeated"`
 }
 
@@ -155,21 +169,37 @@ func (s *AddFilesFromAuthorizedOssResponseBodyData) Validate() error {
 }
 
 type AddFilesFromAuthorizedOssResponseBodyDataAddFileResultList struct {
+	// The file ID. Please keep this value safe, as it will be used for all subsequent API operations related to this file.
+	//
 	// example:
 	//
 	// file_809f469a59ac449586ec692576xxxxx_102248XXX
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// Error information returned when file import fails.
+	//
 	// example:
 	//
 	// size too large
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// The key name (Key) of the imported file in the OSS Bucket.
+	//
 	// example:
 	//
 	// root/path/this_is_temp_xxxx.pdf
 	OssKey *string `json:"OssKey,omitempty" xml:"OssKey,omitempty"`
+	// File import status. Possible values:
+	//
+	// - SUCCESS: Import (application data) completed.
+	//
+	// - FAILED: Import (application data) failed.
+	//
+	// > Only files with the SUCCESS status can be used to create or update knowledge bases.
+	//
+	// >
+	//
 	// example:
 	//
-	// success
+	// SUCCESS
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 

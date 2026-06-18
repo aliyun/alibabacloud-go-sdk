@@ -24,13 +24,13 @@ type iDeleteIndexDocumentResponseBody interface {
 }
 
 type DeleteIndexDocumentResponseBody struct {
-	// HTTP status code
+	// The error code.
 	//
 	// example:
 	//
 	// Index.InvalidParameter
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The parameters returned by the operation.
+	// The business data field returned by the operation.
 	Data *DeleteIndexDocumentResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message.
 	//
@@ -44,17 +44,17 @@ type DeleteIndexDocumentResponseBody struct {
 	//
 	// 17204B98-xxxx-4F9A-8464-2446A84821CA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status code.
+	// The status code returned by the operation.
 	//
 	// example:
 	//
 	// 200
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indications whether the API call is successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// 	- true
+	// - true: The operation was successful.
 	//
-	// 	- false
+	// - false: The operation failed.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ func (s *DeleteIndexDocumentResponseBody) Validate() error {
 }
 
 type DeleteIndexDocumentResponseBodyData struct {
-	// The list of primary key IDs of documents that are deleted.
+	// The list of successfully deleted file IDs.
 	DeletedDocument []*string `json:"DeletedDocument,omitempty" xml:"DeletedDocument,omitempty" type:"Repeated"`
 }
 

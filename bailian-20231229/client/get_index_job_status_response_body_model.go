@@ -24,13 +24,13 @@ type iGetIndexJobStatusResponseBody interface {
 }
 
 type GetIndexJobStatusResponseBody struct {
-	// HTTP status code
+	// The error code.
 	//
 	// example:
 	//
 	// Index.Forbidden
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The data field returned by the operation.
 	Data *GetIndexJobStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message.
 	//
@@ -44,17 +44,17 @@ type GetIndexJobStatusResponseBody struct {
 	//
 	// 17204B98-xxxx-4F9A-8464-2446A84821CA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The HTTP status code returned.
+	// The HTTP status code returned by the operation.
 	//
 	// example:
 	//
 	// 200
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indications whether the API call is successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// 	- true
+	// - true: The operation was successful.
 	//
-	// 	- false
+	// - false: The operation failed.
 	//
 	// example:
 	//
@@ -134,23 +134,23 @@ func (s *GetIndexJobStatusResponseBody) Validate() error {
 }
 
 type GetIndexJobStatusResponseBodyData struct {
-	// The list of imported documents.
+	// The list of files imported in this job.
 	Documents []*GetIndexJobStatusResponseBodyDataDocuments `json:"Documents,omitempty" xml:"Documents,omitempty" type:"Repeated"`
-	// The ID of the job.
+	// The job ID.
 	//
 	// example:
 	//
-	// 66122af12a4e45ddae6bd6c845556647
+	// 66122af12a4e45ddae6bd6c84555xxxx
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The status of the knowledge base job. Valid values:
+	// The current status of the knowledge base job. Valid values:
 	//
-	// 	- COMPLETED
+	// - COMPLETED: The job succeeded.
 	//
-	// 	- FAILED
+	// - FAILED: The job failed.
 	//
-	// 	- RUNNING
+	// - RUNNING: The job is running.
 	//
-	// 	- PENDING
+	// - PENDING: The job is pending execution.
 	//
 	// example:
 	//
@@ -207,19 +207,23 @@ func (s *GetIndexJobStatusResponseBodyData) Validate() error {
 }
 
 type GetIndexJobStatusResponseBodyDataDocuments struct {
-	// HTTP status code
+	// The error code.
 	//
 	// example:
 	//
 	// Index.Document.ChunkError
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The primary key ID of the document.
+	// The file ID.
 	//
 	// example:
 	//
-	// file_9a65732555b54d5ea10796ca5742ba22_XXXXXXXX
+	// file_9a65732555b54d5ea10796ca5742ba22_xxxxxxxx
 	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
-	// The name of the document.
+	// The file name.
+	//
+	// example:
+	//
+	// XXX产品介绍
 	DocName     *string `json:"DocName,omitempty" xml:"DocName,omitempty"`
 	GmtModified *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// The error message.
@@ -228,15 +232,15 @@ type GetIndexJobStatusResponseBodyDataDocuments struct {
 	//
 	// document parse error
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The import status of the document. Valid values:
+	// The file import status. Valid values:
 	//
-	// 	- INSERT_ERROR
+	// - INSERT_ERROR: The file import failed.
 	//
-	// 	- RUNNING
+	// - RUNNING: The file is being imported.
 	//
-	// 	- DELETED
+	// - DELETED: The file has been deleted.
 	//
-	// 	- FINISH
+	// - FINISH: The file was imported.
 	//
 	// example:
 	//

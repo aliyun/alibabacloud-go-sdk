@@ -22,7 +22,7 @@ type iDeleteIndexResponseBody interface {
 }
 
 type DeleteIndexResponseBody struct {
-	// HTTP status code
+	// The error code.
 	//
 	// example:
 	//
@@ -40,17 +40,17 @@ type DeleteIndexResponseBody struct {
 	//
 	// 17204B98-xxxx-4F9A-8464-2446A84821CA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status code.
+	// The status code returned by the operation.
 	//
 	// example:
 	//
 	// 200
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indications whether the API call is successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// 	- true
+	// - true: The call was successful.
 	//
-	// 	- false
+	// - false: The call failed.
 	//
 	// example:
 	//

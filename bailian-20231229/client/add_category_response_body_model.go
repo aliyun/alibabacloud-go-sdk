@@ -24,25 +24,38 @@ type iAddCategoryResponseBody interface {
 }
 
 type AddCategoryResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// success
-	Code *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
 	Data *AddCategoryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message.
+	//
 	// example:
 	//
 	// Requests throttling triggered.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
-	// 778C0B3B-03C1-5FC1-A947-36EDD13606AB
+	// 778C0B3B-xxxx-5FC1-A947-36EDD13606AB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code returned.
+	//
 	// example:
 	//
 	// 200
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - true: The request was successful.
+	//
+	// - false: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -121,10 +134,17 @@ func (s *AddCategoryResponseBody) Validate() error {
 }
 
 type AddCategoryResponseBodyData struct {
+	// The ID of the category. Save this ID for future API calls that use this category.
+	//
 	// example:
 	//
-	// cate_cdd11b1b79a74e8bbd675c356a91ee3XXXXXXXX
-	CategoryId   *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// cate_cdd11b1b79a74e8bbd675c356a91ee3xxxxxxxx
+	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// The name of the category.
+	//
+	// example:
+	//
+	// 类目名称
 	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
 }
 

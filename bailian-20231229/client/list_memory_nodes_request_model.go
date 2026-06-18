@@ -16,10 +16,14 @@ type iListMemoryNodesRequest interface {
 }
 
 type ListMemoryNodesRequest struct {
+	// The maximum number of results to return.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The pagination token returned from a previous request. If specified, the query results are paginated based on the previous request.
+	//
 	// example:
 	//
 	// dc270401186b433f975d7e1faaa34e0e

@@ -24,40 +24,57 @@ type iListIndexDocumentsRequest interface {
 }
 
 type ListIndexDocumentsRequest struct {
-	// The names of the queried documents. The default value is null, which means the names are not used to filter the results.
+	// Filters the returned file list by file name (without the file extension). Default value: empty, which means the results are not filtered by file name.
+	//
+	// example:
+	//
+	// product-overview
 	DocumentName *string `json:"DocumentName,omitempty" xml:"DocumentName,omitempty"`
-	// The import status of the documents to be queried. Valid values:
+	// Filters the returned file list by file import status. Valid values:
 	//
-	// 	- INSERT_ERROR
+	// - INSERT_ERROR: The file failed to be imported.
 	//
-	// 	- RUNNING
+	// - RUNNING: The file is being imported.
 	//
-	// 	- DELETED
+	// - DELETED: The file has been deleted.
 	//
-	// 	- FINISH
+	// - FINISH: The file was imported.
 	//
-	// The default value is null, which means the import status is not used to filter the results.
+	// Default value: empty, which means the results are not filtered by file import status.
 	//
 	// example:
 	//
 	// FINISH
 	DocumentStatus *string `json:"DocumentStatus,omitempty" xml:"DocumentStatus,omitempty"`
+	// Specifies whether to enable fuzzy matching for file names. This parameter is used together with the `DocumentName` parameter. Valid values:
+	//
+	// - true: Fuzzy matching is used to filter the returned file list by file name.
+	//
+	// - false: Exact matching is used to filter the returned file list by file name.
+	//
+	// Default value: false.
+	//
+	// example:
+	//
+	// false
 	EnableNameLike *string `json:"EnableNameLike,omitempty" xml:"EnableNameLike,omitempty"`
-	// The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
+	// The knowledge base ID, which is the `Data.Id` returned by the **CreateIndex*	- operation.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 79c0aly8zw
+	// 79c0alxxxx
 	IndexId *string `json:"IndexId,omitempty" xml:"IndexId,omitempty"`
-	// The page numbers of the pages to return. Pages start from page 1. Default value: 1.
+	// The page number. Minimum value: 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of documents displayed on each page. No maximum value. Default value: 10.
+	// The number of files to display per page in a paging query. No maximum limit.
+	//
+	// Default value: 10.
 	//
 	// example:
 	//

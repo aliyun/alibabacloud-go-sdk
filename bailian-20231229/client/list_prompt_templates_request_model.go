@@ -27,6 +27,10 @@ type ListPromptTemplatesRequest struct {
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
 	// The keyword that is used to search for templates.
+	//
+	// example:
+	//
+	// 小红书
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The token that determines the start position of the query. Set this parameter to the value of the NextToken parameter that is returned from the last call.
 	//

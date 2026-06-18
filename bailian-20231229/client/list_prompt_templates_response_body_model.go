@@ -135,8 +135,16 @@ func (s *ListPromptTemplatesResponseBody) Validate() error {
 
 type ListPromptTemplatesResponseBodyPromptTemplates struct {
 	// The template content
+	//
+	// example:
+	//
+	// 请写一篇小红书种草笔记，增加丰富的emoji元素，结尾作总结，并加上相关标签。主题为：${theme}
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
 	// The template name.
+	//
+	// example:
+	//
+	// 小红书文案
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The template ID.
 	//

@@ -24,11 +24,16 @@ type iDeleteFileResponseBody interface {
 }
 
 type DeleteFileResponseBody struct {
+	// The error status code.
+	//
 	// example:
 	//
 	// InvalidParameter
-	Code *string                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The business data field of the API response.
 	Data *DeleteFileResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message.
+	//
 	// example:
 	//
 	// Current file status does not support delete.
@@ -39,10 +44,18 @@ type DeleteFileResponseBody struct {
 	//
 	// 17204B98-xxxx-4F9A-8464-2446A84821CA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status code returned by the API.
+	//
 	// example:
 	//
 	// 200
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the API call succeeded. Valid values:
+	//
+	// - true: Succeeded.
+	//
+	// - false: Failed.
+	//
 	// example:
 	//
 	// true
@@ -121,9 +134,11 @@ func (s *DeleteFileResponseBody) Validate() error {
 }
 
 type DeleteFileResponseBodyData struct {
+	// The file ID.
+	//
 	// example:
 	//
-	// file_9a65732555b54d5ea10796ca5742ba22_XXXXXXXX
+	// file_9a65732555b54d5ea10796ca5742ba22_xxxxxxxx
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
 }
 

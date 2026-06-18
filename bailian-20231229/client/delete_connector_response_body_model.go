@@ -33,8 +33,6 @@ type DeleteConnectorResponseBody struct {
 	//
 	// User not authorized to operate on the specified resource
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
-	//
 	// example:
 	//
 	// 1C139002-0EC5-584C-A755-4B8B9FA080BE

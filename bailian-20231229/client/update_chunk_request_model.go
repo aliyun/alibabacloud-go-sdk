@@ -24,15 +24,15 @@ type iUpdateChunkRequest interface {
 }
 
 type UpdateChunkRequest struct {
-	// The ID of the text chunk to be modified. You can find it in the Node.Metadata._id field returned by **ListChunks**.
+	// The ID of the text chunk to modify. You can obtain this value by calling the **ListChunks*	- operation. The value is in the Node.Metadata._id field of the response.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// llm-5ip55o1zrzxx_09fe52x_table_033b551e10024029992e79767b151fxx_10024xx_0
+	// llm-5ip55o1zrzxx_09fe52x_xxxxx_033b551e10024029992e79767b151fxx_10024xx_0
 	ChunkId *string `json:"ChunkId,omitempty" xml:"ChunkId,omitempty"`
-	// The file ID, which is the `FileId` returned by **AddFile**. You can also go to the [Application Data](https://modelstudio.console.alibabacloud.com/?tab=app#/data-center) page. Click the ID icon next to your file to get its ID.
+	// The file ID. This is the `FileId` returned by the **AddFile*	- operation. You can also obtain it from the <props="china">[Application Data](https://bailian.console.aliyun.com/?tab=app#/data-center) - Files<props="intl">[Application Data](https://modelstudio.console.alibabacloud.com/?tab=app#/data-center) - Files tab in the Model Studio console by clicking the ID icon next to the corresponding file.
 	//
 	// This parameter is required.
 	//
@@ -42,9 +42,9 @@ type UpdateChunkRequest struct {
 	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
 	// Specifies whether this text chunk participates in knowledge base retrieval. Valid values:
 	//
-	// 	- true
+	// - true: Participates.
 	//
-	// 	- false
+	// - false: Does not participate.
 	//
 	// Default value: true.
 	//
@@ -54,7 +54,7 @@ type UpdateChunkRequest struct {
 	//
 	// true
 	IsDisplayedChunkContent *bool `json:"IsDisplayedChunkContent,omitempty" xml:"IsDisplayedChunkContent,omitempty"`
-	// The knowledge base ID, which is the `Data.Id` returned by **CreateIndex**. You can also get it on the [Knowledge Base](https://modelstudio.console.alibabacloud.com/?tab=app#/knowledge-base) page.
+	// The knowledge base ID. This is the `Data.Id` returned by the **CreateIndex*	- operation, or you can obtain it from the <props="china">[Knowledge Base](https://bailian.console.aliyun.com/?tab=app#/knowledge-base)<props="intl">[Knowledge Base](https://modelstudio.console.alibabacloud.com/?tab=app#/knowledge-base) page.
 	//
 	// This parameter is required.
 	//
@@ -62,11 +62,19 @@ type UpdateChunkRequest struct {
 	//
 	// 79c0alxxxx
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	// The new content of the chunk. The content must be between 10 and 6,000 characters in length and cannot exceed the maximum chunk length set when the knowledge base was created.
+	// The new content of the text chunk. The content length must be between 10 and 6000 characters and cannot exceed the maximum segment length specified when the knowledge base was created.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 在哲学中所获得的确定性类型不是科学的确定性(即对每个人的理智来说都一样的确定性)，而是一种要在人类的整体本质中才能获得的亲证。哲学的每一形态都不同于科学，因为所有的哲学都没有得到一致的认可...
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// The new title of the chunk. The title must be 0 to 50 characters in length and can be an empty string. If you specify an empty string, the existing title is cleared. If you do not pass this parameter, the original title remains unchanged.
+	// The new title of the text chunk. The length is limited to 0 to 50 characters. An empty string is allowed. If you pass an empty string, the existing title is cleared. If you do not pass this parameter, the original title is retained.
+	//
+	// example:
+	//
+	// 什么是哲学
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 

@@ -20,20 +20,31 @@ type iAddConnectorRequest interface {
 }
 
 type AddConnectorRequest struct {
+	// The name of the connector.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-connector
 	ConnectorName *string `json:"ConnectorName,omitempty" xml:"ConnectorName,omitempty"`
+	// The type of the connector.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// FILE
 	ConnectorType *string `json:"ConnectorType,omitempty" xml:"ConnectorType,omitempty"`
+	// The description for the connector.
+	//
 	// This parameter is required.
-	Description         *string                                 `json:"Description,omitempty" xml:"Description,omitempty"`
+	//
+	// example:
+	//
+	// 文件连接器
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The parameters for the file connector.
 	FileConnectorConfig *AddConnectorRequestFileConnectorConfig `json:"FileConnectorConfig,omitempty" xml:"FileConnectorConfig,omitempty" type:"Struct"`
 }
 
@@ -91,14 +102,20 @@ func (s *AddConnectorRequest) Validate() error {
 }
 
 type AddConnectorRequestFileConnectorConfig struct {
+	// The name of the bucket.
+	//
 	// example:
 	//
 	// zyb-docker-registry-jn
 	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
+	// The region of the bucket.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The file storage location. Valid values:<br>`OSS_CUSTOM`: Use your own Object Storage Service (OSS) bucket.<br>`OSS_PLATFORM`: Use the platform-provided OSS bucket.<br><br>
+	//
 	// example:
 	//
 	// OSS_CUSTOM

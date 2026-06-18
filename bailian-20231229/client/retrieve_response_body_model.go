@@ -24,13 +24,13 @@ type iRetrieveResponseBody interface {
 }
 
 type RetrieveResponseBody struct {
-	// HTTP status code
+	// The error code.
 	//
 	// example:
 	//
 	// Index.InvalidParameter
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The business data returned by the API.
 	Data *RetrieveResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message.
 	//
@@ -44,17 +44,17 @@ type RetrieveResponseBody struct {
 	//
 	// 17204B98-7734-4F9A-8464-2446A84821CA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The HTTP status code returned.
+	// The HTTP status code of the response.
 	//
 	// example:
 	//
 	// 200
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indications whether the API call is successful. Valid values:
+	// Indicates whether the API call was successful. Valid values:
 	//
-	// 	- true
+	// - true: The call succeeded.
 	//
-	// 	- false
+	// - false: The call failed.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ func (s *RetrieveResponseBody) Validate() error {
 }
 
 type RetrieveResponseBodyData struct {
-	// The list of queried chunks.
+	// An array of retrieved text chunks.
 	Nodes []*RetrieveResponseBodyDataNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
 }
 
@@ -169,15 +169,73 @@ func (s *RetrieveResponseBodyData) Validate() error {
 }
 
 type RetrieveResponseBodyDataNodes struct {
-	// The metadata map of the chunk.
+	// <props="china">
+	//
+	// A map of metadata for the text chunk.
+	//
+	// > For document search knowledge bases, the `file_path` field in the metadata map is not applicable and should not be used in your application code.
+	//
+	// > When you retrieve data from a document search knowledge base, if a text chunk contains an image, its URL is returned in the `image_url` field of the metadata map. This URL expires.
+	//
+	// > When you retrieve data from an audio/video search knowledge base, if a text chunk contains audio, its URL is returned in the `audio_url` field of the metadata map. This URL expires.
+	//
+	// > When you retrieve data from an audio/video search knowledge base, if a text chunk contains video, its URL is returned in the `video_url` field of the metadata map. This URL expires.
+	//
+	//
+	//
+	// <props="intl">
+	//
+	// A map of metadata for the text chunk.
+	//
+	// > For document search knowledge bases, the `file_path` field in the metadata map is not applicable and should not be used in your application code.
+	//
+	// > When you retrieve data from a document search knowledge base, if a text chunk contains an image, its URL is returned in the `image_url` field of the metadata map. This URL expires.
+	//
+	// example:
+	//
+	// {
+	//
+	//   "parent": "",
+	//
+	//   "file_path": "https://***",
+	//
+	//   "image_url": [
+	//
+	//     "http://***"
+	//
+	//   ],
+	//
+	//   "nid": "***",
+	//
+	//   "title": "阿里云百炼文档",
+	//
+	//   "doc_id": "doc_***",
+	//
+	//   "content": "阿里云百炼是基于通义大模型、行业大模型以及三方大模型的一站式大模型开发平台。面向企业客户和个人开发者，提供完整的模型服务工具和全链路应用开发套件，预置丰富的能力插件，提供API及SDK等便捷的集成方式，高效完成大模型应用构建",
+	//
+	//   "workspace_id": "ws_***",
+	//
+	//   "hier_title": "阿里云百炼文档",
+	//
+	//   "doc_name": "阿里云百炼文档介绍.pdpf",
+	//
+	//   "pipeline_id": "rhd***",
+	//
+	//   "_id": "ws_***"
+	//
+	// }
 	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	// The similarity score of the chunk. Valid values:[0-1].
+	// The similarity score of the text chunk, ranging from 0 to 1.
 	//
 	// example:
 	//
 	// 0.3
 	Score *float64 `json:"Score,omitempty" xml:"Score,omitempty"`
-	// The text of the chunk.
+	// The content of the text chunk.
+	//
+	// example:
+	//
+	// 阿里云百炼是基于通义大模型、行业大模型以及三方大模型的一站式大模型开发平台。面向企业客户和个人开发者，提供完整的模型服务工具和全链路应用开发套件，预置丰富的能力插件，提供API及SDK等便捷的集成方式，高效完成大模型应用构建。
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 }
 

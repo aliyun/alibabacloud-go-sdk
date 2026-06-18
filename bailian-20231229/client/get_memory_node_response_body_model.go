@@ -22,19 +22,32 @@ type iGetMemoryNodeResponseBody interface {
 }
 
 type GetMemoryNodeResponseBody struct {
+	// The content of the memory fragment.
+	//
+	// example:
+	//
+	// 用户喜欢吃西红柿炒鸡蛋
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// The long-term memory ID.
+	//
 	// example:
 	//
 	// 6bff4f317a14442fbc9f73d29dbd5fc3
 	MemoryId *string `json:"memoryId,omitempty" xml:"memoryId,omitempty"`
+	// The memory fragment ID.
+	//
 	// example:
 	//
 	// 68de06c95368463a8be4a84efc872cc5
 	MemoryNodeId *string `json:"memoryNodeId,omitempty" xml:"memoryNodeId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 8C56C7AF-6573-19CE-B018-E05E1EDCF4C5
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// llm-us9hjmt32nysdm5v

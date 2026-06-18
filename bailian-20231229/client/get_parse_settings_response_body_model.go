@@ -164,7 +164,7 @@ type GetParseSettingsResponseBodyData struct {
 	//
 	// example:
 	//
-	// Digital parsing
+	// 电子文档解析
 	ParserDisplayName *string `json:"ParserDisplayName,omitempty" xml:"ParserDisplayName,omitempty"`
 }
 
@@ -226,21 +226,19 @@ type GetParseSettingsResponseBodyDataParserConfig struct {
 	//
 	// example:
 	//
-	// - qwen-vl-max
-	//
-	// - qwen-vl-plus
+	// qwen-vl-max
 	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
 	// The prompt used for parsing.
 	//
 	// example:
 	//
-	// # Role
+	// #角色
 	//
-	// You are a professional image content annotator, skilled in identifying and describing the contents of images.
+	// 你是一个专业的图片内容标注人员，擅长识别并描述出图片中的内容。
 	//
-	// # Task Objective
+	// # 任务目标
 	//
-	// Based on the input image, provide a detailed description of its contents.
+	// 请结合输入图片，详细描述图片中的内容。
 	ModelPrompt *string `json:"ModelPrompt,omitempty" xml:"ModelPrompt,omitempty"`
 }
 

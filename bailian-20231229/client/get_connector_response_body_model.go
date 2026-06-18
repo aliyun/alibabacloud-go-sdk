@@ -24,25 +24,38 @@ type iGetConnectorResponseBody interface {
 }
 
 type GetConnectorResponseBody struct {
+	// The result code.
+	//
 	// example:
 	//
 	// success
-	Code *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *GetConnectorResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message.
+	//
 	// example:
 	//
 	// Requests throttling triggered.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 7BA8ADD9-53D6-53F0-918F-A1E776AD230E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status code of the response.
+	//
 	// example:
 	//
 	// 200
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the request was successful. The valid values are:
+	//
+	// - `true`: The call was successful.
+	//
+	// - `false`: The call failed.
+	//
 	// example:
 	//
 	// True
@@ -121,18 +134,26 @@ func (s *GetConnectorResponseBody) Validate() error {
 }
 
 type GetConnectorResponseBodyData struct {
+	// The ID of the connector.
+	//
 	// example:
 	//
 	// conn_file_e0c9db4030b2465a9478028f7d76cd92_1234
 	ConnectorId *string `json:"ConnectorId,omitempty" xml:"ConnectorId,omitempty"`
+	// The name of the connector.
+	//
 	// example:
 	//
 	// name
 	ConnectorName *string `json:"ConnectorName,omitempty" xml:"ConnectorName,omitempty"`
+	// The type of the connector.
+	//
 	// example:
 	//
 	// FILE
 	ConnectorType *string `json:"ConnectorType,omitempty" xml:"ConnectorType,omitempty"`
+	// The description of the connector.
+	//
 	// example:
 	//
 	// Description

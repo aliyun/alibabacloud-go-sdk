@@ -16,13 +16,21 @@ type iCreateMemoryResponseBody interface {
 }
 
 type CreateMemoryResponseBody struct {
+	// The long-term memory ID.
+	//
+	// > Store this value properly. It is required for all subsequent API operations related to this long-term memory.
+	//
+	// >.
+	//
 	// example:
 	//
-	// 6bff4f317a14442fbc9f73d29dbd5fc3
+	// 6bff4f317a14442fbc9f73d29dbxxxx
 	MemoryId *string `json:"memoryId,omitempty" xml:"memoryId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
-	// 6a71f2d9-f1c9-913b-818b-114029103cad
+	// 17204B98-xxxx-4F9A--2446A84821CA
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 

@@ -24,25 +24,38 @@ type iUpdateFileTagResponseBody interface {
 }
 
 type UpdateFileTagResponseBody struct {
+	// The result code. A value of `Success` indicates that the request was successful.
+	//
 	// example:
 	//
 	// Success
-	Code *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
 	Data *UpdateFileTagResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The response message.
+	//
 	// example:
 	//
 	// Requests throttling triggered.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// RequestId
+	// The request ID.
 	//
 	// example:
 	//
 	// 35A267BF-xxxx-54DB-8394-AA3B0742D833
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status code.
+	//
 	// example:
 	//
 	// 200
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - `true`: The request was successful.
+	//
+	// - `false`: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -121,6 +134,8 @@ func (s *UpdateFileTagResponseBody) Validate() error {
 }
 
 type UpdateFileTagResponseBodyData struct {
+	// The ID of the file.
+	//
 	// example:
 	//
 	// file_9a65732555b54d5ea10796ca5742ba22_xxxxxxxx

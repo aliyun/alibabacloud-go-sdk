@@ -24,23 +24,38 @@ type iUpdateIndexResponseBody interface {
 }
 
 type UpdateIndexResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// Success
-	Code *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
 	Data *UpdateIndexResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message.
+	//
 	// example:
 	//
 	// Required parameter(%s) missing or invalid, please check the request parameters.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 17204B98-7734-4F9A-8464-xxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status code returned by the API.
+	//
 	// example:
 	//
 	// 200
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// true: The request was successful.
+	//
+	// false: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -119,6 +134,8 @@ func (s *UpdateIndexResponseBody) Validate() error {
 }
 
 type UpdateIndexResponseBodyData struct {
+	// The knowledge base ID.
+	//
 	// example:
 	//
 	// 79c0alxxxx

@@ -24,25 +24,38 @@ type iAddConnectorResponseBody interface {
 }
 
 type AddConnectorResponseBody struct {
+	// The error code. A value of `Success` indicates that the request succeeded.
+	//
 	// example:
 	//
 	// Success
-	Code *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned by the operation.
 	Data *AddConnectorResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message.
+	//
 	// example:
 	//
 	// Current file status does not support delete.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 35A267BF-FBFA-54DB-8394-AA3B0742D833
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the request succeeded. Valid values:
+	//
+	// - true: The request was successful.
+	//
+	// - false: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -121,6 +134,8 @@ func (s *AddConnectorResponseBody) Validate() error {
 }
 
 type AddConnectorResponseBodyData struct {
+	// The ID of the connector.
+	//
 	// example:
 	//
 	// conn_file_e0c9db4030b2465a9478028f7d76cd92_1234

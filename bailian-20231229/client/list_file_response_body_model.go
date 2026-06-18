@@ -24,26 +24,38 @@ type iListFileResponseBody interface {
 }
 
 type ListFileResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The data field returned by the operation.
 	Data *ListFileResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message.
+	//
 	// example:
 	//
 	// Requests throttling triggered.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
-	// 8F97A63B-55F1-527F-9D6E-467B6A7E8CF1
+	// 8F97A63B-xxxx-527F-9D6E-467B6A7E8CF1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status code returned by the operation.
+	//
 	// example:
 	//
 	// 200
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the operation was successful. Valid values:
+	//
+	// - true: Successful.
+	//
+	// - false: Failed.
+	//
 	// example:
 	//
 	// true
@@ -122,20 +134,32 @@ func (s *ListFileResponseBody) Validate() error {
 }
 
 type ListFileResponseBodyData struct {
-	// The list of documents in the category.
+	// The list of files in the category.
 	FileList []*ListFileResponseBodyDataFileList `json:"FileList,omitempty" xml:"FileList,omitempty" type:"Repeated"`
+	// Indicates whether there is a next page of category data that matches the query conditions. Valid values:
+	//
+	// - true: Yes.
+	//
+	// - false: No.
+	//
 	// example:
 	//
 	// true
 	HasNext *bool `json:"HasNext,omitempty" xml:"HasNext,omitempty"`
+	// The number of entries per page for paging.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token returned by this call.
+	//
 	// example:
 	//
 	// 4jzbJk9J6lNeuXD9hP0viA==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The total number of entries in the returned results.
+	//
 	// example:
 	//
 	// 48
@@ -209,41 +233,67 @@ func (s *ListFileResponseBodyData) Validate() error {
 }
 
 type ListFileResponseBodyDataFileList struct {
+	// The ID of the category to which the file belongs.
+	//
 	// example:
 	//
-	// cate_cdd11b1b79a74e8bbd675c356a91ee3510024405
+	// cate_cdd11b1b79a74e8bbd675c356a91ee35xxxxxxxx
 	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// The timestamp when the file was added to Alibaba Cloud Model Studio. Format: yyyy-MM-dd HH:mm:ss. Time zone: UTC+8.
+	//
 	// example:
 	//
-	// 2023-08-18 11:03:35
+	// 2024-09-09 11:03:35
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The document ID, which is the `FileId` parameter returned by the [AddFile](~~AddFile~~) operation. To view the ID, click the icon next to the file name on the [Data Management](https://bailian.console.alibabacloud.com/#/data-center) page.
+	// The file ID, which is the `FileId` returned by the **AddFile*	- operation. You can also obtain it on the <props="china">[Application Data](https://bailian.console.aliyun.com/?tab=app#/data-center)<props="intl">[Application Data](https://modelstudio.console.alibabacloud.com/?tab=app#/data-center) page by clicking the icon next to the file name.
 	//
 	// example:
 	//
-	// file_5ff599b3455a45db8c41b0054b361518_10098576
+	// file_5ff599b3455a45db8c41b0054b361518_xxxxxxxx
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// The file name.
+	//
 	// example:
 	//
-	// auto-test-1721096109278.pdf
+	// product-overview.pdf
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The file format type. Valid values: pdf, docx, doc, txt, md, pptx, ppt, xlsx, xls, html, png, jpg, jpeg, bmp, and gif.
+	//
 	// example:
 	//
 	// docx
-	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	FileType          *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	ParseErrorMessage *string `json:"ParseErrorMessage,omitempty" xml:"ParseErrorMessage,omitempty"`
+	// The document parser. Valid values:
+	//
+	// - DASHSCOPE_DOCMIND: Alibaba Cloud intelligent document parsing.
+	//
 	// example:
 	//
 	// DASHSCOPE_DOCMIND
 	Parser *string `json:"Parser,omitempty" xml:"Parser,omitempty"`
+	// The file size in bytes.
+	//
 	// example:
 	//
 	// 512
 	SizeInBytes *int64 `json:"SizeInBytes,omitempty" xml:"SizeInBytes,omitempty"`
+	// The file parsing status. Valid values:
+	//
+	// - INIT: Initialization state, waiting to be scheduled.
+	//
+	// - PARSING: Parsing in progress.
+	//
+	// - PARSE_SUCCESS: Parsing completed.
+	//
+	// - PARSE_FAILED: Parsing failed.
+	//
 	// example:
 	//
-	// 200
-	Status *string   `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags   []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// PARSE_SUCCESS
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The list of tags associated with the file. A document can be associated with multiple tags.
+	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ListFileResponseBodyDataFileList) String() string {
@@ -272,6 +322,10 @@ func (s *ListFileResponseBodyDataFileList) GetFileName() *string {
 
 func (s *ListFileResponseBodyDataFileList) GetFileType() *string {
 	return s.FileType
+}
+
+func (s *ListFileResponseBodyDataFileList) GetParseErrorMessage() *string {
+	return s.ParseErrorMessage
 }
 
 func (s *ListFileResponseBodyDataFileList) GetParser() *string {
@@ -312,6 +366,11 @@ func (s *ListFileResponseBodyDataFileList) SetFileName(v string) *ListFileRespon
 
 func (s *ListFileResponseBodyDataFileList) SetFileType(v string) *ListFileResponseBodyDataFileList {
 	s.FileType = &v
+	return s
+}
+
+func (s *ListFileResponseBodyDataFileList) SetParseErrorMessage(v string) *ListFileResponseBodyDataFileList {
+	s.ParseErrorMessage = &v
 	return s
 }
 

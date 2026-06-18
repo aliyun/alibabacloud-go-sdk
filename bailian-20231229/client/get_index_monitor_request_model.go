@@ -18,18 +18,24 @@ type iGetIndexMonitorRequest interface {
 }
 
 type GetIndexMonitorRequest struct {
+	// The end of the time range to query. The end time can be a maximum of 30 days after the start time. This is a UNIX timestamp in seconds.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1767604500
 	EndTimestamp *int64 `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
+	// The unique ID of the target knowledge base.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// kb-123456xxxx
 	IndexId *string `json:"IndexId,omitempty" xml:"IndexId,omitempty"`
+	// The start of the time range to query. This is a UNIX timestamp in seconds.
+	//
 	// This parameter is required.
 	//
 	// example:
