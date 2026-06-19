@@ -38,7 +38,7 @@ type DescribeAutoSnapshotPolicyAssociationsRequest struct {
 	//
 	// sp-bp12quk7gqhhuu1f****
 	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" xml:"AutoSnapshotPolicyId,omitempty"`
-	// The ID of the disk.
+	// The cloud disk ID.
 	//
 	// - You can specify only one of AutoSnapshotPolicyId and DiskId.
 	//
@@ -46,19 +46,19 @@ type DescribeAutoSnapshotPolicyAssociationsRequest struct {
 	//
 	// d-bp67acfmxazb4p****
 	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	// The number of entries to return on each page. Maximum value: 100.
+	// The maximum number of entries per page for paging queries. Maximum value: 100.
 	//
 	// Default value:
 	//
-	// - If you do not specify this parameter or if you set this parameter to a value that is smaller than 10, the default value is 10.
+	// - If this parameter is not set or is set to a value less than 10, the default value is 10.
 	//
-	// - If you set a value greater than 100, the default value is 100.
+	// - If the value is set to a value greater than 100, the default value is 100.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of `NextToken`.
+	// The pagination token. Set this parameter to the NextToken value returned in the previous API call.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type DescribeAutoSnapshotPolicyAssociationsRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the automatic snapshot policy. You can call the [DescribeRegions](https://help.aliyun.com/zh/ecs/developer-reference/api-ecs-2014-05-26-describeregions?spm=a2c4g.11186623.0.i11) operation to view the latest list of Alibaba Cloud regions.
+	// The region ID of the automatic snapshot policy. You can call [DescribeRegions](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-ecs-2014-05-26-describeregions) to query the most recent list of Alibaba Cloud regions.
 	//
 	// This parameter is required.
 	//

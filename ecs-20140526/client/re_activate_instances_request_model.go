@@ -24,7 +24,7 @@ type iReActivateInstancesRequest interface {
 }
 
 type ReActivateInstancesRequest struct {
-	// The ID of the instance that you want to reactivate.
+	// The instance ID of the instance that you want to restart.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type ReActivateInstancesRequest struct {
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+	// The region ID of the instance. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent list of regions.
 	//
 	// example:
 	//

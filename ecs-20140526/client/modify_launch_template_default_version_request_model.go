@@ -28,7 +28,7 @@ type iModifyLaunchTemplateDefaultVersionRequest interface {
 }
 
 type ModifyLaunchTemplateDefaultVersionRequest struct {
-	// The default version number of the instance launch template.
+	// The version number of the launch template to be set as the default version.
 	//
 	// This parameter is required.
 	//
@@ -36,13 +36,13 @@ type ModifyLaunchTemplateDefaultVersionRequest struct {
 	//
 	// 2
 	DefaultVersionNumber *int64 `json:"DefaultVersionNumber,omitempty" xml:"DefaultVersionNumber,omitempty"`
-	// The ID of the launch template. You must specify the LaunchTemplateId or LaunchTemplateName parameter to determine an instance launch template.
+	// The ID of the launch template. You must specify LaunchTemplateId or LaunchTemplateName to determine the template.
 	//
 	// example:
 	//
 	// lt-s-bp177juajht6****
 	LaunchTemplateId *string `json:"LaunchTemplateId,omitempty" xml:"LaunchTemplateId,omitempty"`
-	// The name of the instance launch template. You must specify the LaunchTemplateId or LaunchTemplateName parameter to determine an instance launch template.
+	// The name of the launch template. You must specify LaunchTemplateId or LaunchTemplateName to determine the template.
 	//
 	// example:
 	//

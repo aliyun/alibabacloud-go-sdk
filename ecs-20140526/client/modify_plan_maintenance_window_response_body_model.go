@@ -14,7 +14,7 @@ type iModifyPlanMaintenanceWindowResponseBody interface {
 }
 
 type ModifyPlanMaintenanceWindowResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

@@ -35,7 +35,7 @@ type DescribeImageSharePermissionResponseBody struct {
 	//
 	// m-bp1caf3yicx5jlfl****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The page number.
+	// The page number of the returned results.
 	//
 	// example:
 	//
@@ -47,7 +47,7 @@ type DescribeImageSharePermissionResponseBody struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the custom image.
+	// The region ID of the image.
 	//
 	// example:
 	//
@@ -60,7 +60,7 @@ type DescribeImageSharePermissionResponseBody struct {
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3****
 	RequestId   *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ShareGroups *DescribeImageSharePermissionResponseBodyShareGroups `json:"ShareGroups,omitempty" xml:"ShareGroups,omitempty" type:"Struct"`
-	// The total number of entries returned.
+	// The total number of records.
 	//
 	// example:
 	//

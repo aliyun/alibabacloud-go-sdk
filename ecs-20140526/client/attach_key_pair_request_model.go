@@ -24,7 +24,7 @@ type iAttachKeyPairRequest interface {
 }
 
 type AttachKeyPairRequest struct {
-	// The IDs of instances to which you want to bind the SSH key pair. The value can be a JSON array that consists of up to 50 instance IDs. Separate multiple instance IDs with commas (,).
+	// The IDs of the instances to which you want to bind the SSH key pair. The value can be a JSON array that consists of up to 50 instance IDs. Separate multiple IDs with commas (,).
 	//
 	// This parameter is required.
 	//
@@ -41,7 +41,7 @@ type AttachKeyPairRequest struct {
 	// testKeyPairName
 	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the SSH key pair. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+	// The region ID of the SSH key pair. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list of Alibaba Cloud.
 	//
 	// This parameter is required.
 	//

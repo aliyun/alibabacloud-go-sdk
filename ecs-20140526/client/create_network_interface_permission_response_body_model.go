@@ -16,7 +16,7 @@ type iCreateNetworkInterfacePermissionResponseBody interface {
 }
 
 type CreateNetworkInterfacePermissionResponseBody struct {
-	// Details of the network interface permission.
+	// The information about the ENI permission.
 	NetworkInterfacePermission *CreateNetworkInterfacePermissionResponseBodyNetworkInterfacePermission `json:"NetworkInterfacePermission,omitempty" xml:"NetworkInterfacePermission,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,45 +62,45 @@ func (s *CreateNetworkInterfacePermissionResponseBody) Validate() error {
 }
 
 type CreateNetworkInterfacePermissionResponseBodyNetworkInterfacePermission struct {
-	// The account ID of the Alibaba Cloud Partner (certified ISV).
+	// The ID of the Alibaba Cloud partner (certified ISV) account.
 	//
 	// example:
 	//
 	// 1234567890
 	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The elastic network interface ID.
+	// The ENI ID.
 	//
 	// example:
 	//
 	// eni-bp14v2sdd3v8htln****
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
-	// The network interface permission ID.
+	// The ENI permission ID.
 	//
 	// example:
 	//
 	// eni-perm-bp1cs4lwn56lfb****
 	NetworkInterfacePermissionId *string `json:"NetworkInterfacePermissionId,omitempty" xml:"NetworkInterfacePermissionId,omitempty"`
-	// The permission for the elastic network interface.
+	// The ENI permission.
 	//
 	// example:
 	//
 	// InstanceAttach
 	Permission *string `json:"Permission,omitempty" xml:"Permission,omitempty"`
-	// The state of the network interface permission. Possible values:
+	// The ENI permission state. Valid values:
 	//
 	// - Pending: The permission is being granted.
 	//
-	// - Granted: The permission is granted.
+	// - Granted: The permission has been granted.
 	//
 	// - Revoking: The permission is being revoked.
 	//
-	// - Revoked: The permission is revoked.
+	// - Revoked: The permission has been revoked.
 	//
 	// example:
 	//
 	// Granted
 	PermissionState *string `json:"PermissionState,omitempty" xml:"PermissionState,omitempty"`
-	// The name of the Alibaba Cloud service that is granted the permission.
+	// The Alibaba Cloud service name.
 	//
 	// example:
 	//

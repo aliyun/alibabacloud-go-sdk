@@ -23,7 +23,7 @@ type iDescribeLaunchTemplatesResponseBody interface {
 
 type DescribeLaunchTemplatesResponseBody struct {
 	LaunchTemplateSets *DescribeLaunchTemplatesResponseBodyLaunchTemplateSets `json:"LaunchTemplateSets,omitempty" xml:"LaunchTemplateSets,omitempty" type:"Struct"`
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//

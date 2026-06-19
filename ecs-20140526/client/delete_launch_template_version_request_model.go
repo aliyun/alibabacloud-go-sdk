@@ -28,7 +28,7 @@ type iDeleteLaunchTemplateVersionRequest interface {
 }
 
 type DeleteLaunchTemplateVersionRequest struct {
-	// The version numbers of the launch template.
+	// The version numbers of the launch template to delete.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type DeleteLaunchTemplateVersionRequest struct {
 	//
 	// 2
 	DeleteVersion []*int64 `json:"DeleteVersion,omitempty" xml:"DeleteVersion,omitempty" type:"Repeated"`
-	// The ID of the launch template. For more information, call the [DescribeLaunchTemplates](https://help.aliyun.com/document_detail/73759.html) operation.
+	// The ID of the launch template to delete. For more information, see [DescribeLaunchTemplates](https://help.aliyun.com/document_detail/73759.html).
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type DeleteLaunchTemplateVersionRequest struct {
 	LaunchTemplateName *string `json:"LaunchTemplateName,omitempty" xml:"LaunchTemplateName,omitempty"`
 	OwnerAccount       *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the launch template. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+	// The region ID of the launch template. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list of Alibaba Cloud.
 	//
 	// This parameter is required.
 	//

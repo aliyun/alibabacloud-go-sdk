@@ -26,7 +26,7 @@ type iEndTerminalSessionRequest interface {
 type EndTerminalSessionRequest struct {
   OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
   OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-  // The region ID of the session.
+  // The ID of the region where the session resides.
   // 
   // This parameter is required.
   // 

@@ -19,7 +19,7 @@ type iDescribeAutoSnapshotPolicyAssociationsResponseBody interface {
 
 type DescribeAutoSnapshotPolicyAssociationsResponseBody struct {
 	AutoSnapshotPolicyAssociations *DescribeAutoSnapshotPolicyAssociationsResponseBodyAutoSnapshotPolicyAssociations `json:"AutoSnapshotPolicyAssociations,omitempty" xml:"AutoSnapshotPolicyAssociations,omitempty" type:"Struct"`
-	// The returned pagination token which can be used in the next request to retrieve a new page of results.
+	// The pagination token returned in this call.
 	//
 	// example:
 	//

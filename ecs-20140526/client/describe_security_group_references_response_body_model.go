@@ -16,7 +16,7 @@ type iDescribeSecurityGroupReferencesResponseBody interface {
 }
 
 type DescribeSecurityGroupReferencesResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

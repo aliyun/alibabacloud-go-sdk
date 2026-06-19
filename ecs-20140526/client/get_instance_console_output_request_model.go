@@ -36,7 +36,7 @@ type GetInstanceConsoleOutputRequest struct {
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+	// The region ID of the instance. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -44,11 +44,11 @@ type GetInstanceConsoleOutputRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Specifies whether to remove formatting symbols from the returned command output. Valid values:
+	// Specifies whether to remove formatting symbols from the returned text. Valid values:
 	//
-	// - true
+	// - true: removes formatting symbols.
 	//
-	// - false
+	// - false: does not remove formatting symbols.
 	//
 	// Default value: false.
 	//

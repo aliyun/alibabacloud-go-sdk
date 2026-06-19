@@ -22,7 +22,7 @@ type ModifyLaunchTemplateDefaultVersionResponseBody struct {
 	//
 	// lt-bp1apo0bbbkuy0rj****
 	LaunchTemplateId *string `json:"LaunchTemplateId,omitempty" xml:"LaunchTemplateId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

@@ -42,33 +42,33 @@ type iDescribeImageComponentsRequest interface {
 }
 
 type DescribeImageComponentsRequest struct {
-	// The type of the image component.
+	// The component type.
 	//
 	// Valid values:
 	//
 	// - Build
 	//
-	// - Test
+	// - Test.
 	//
 	// example:
 	//
 	// Build
 	ComponentType *string `json:"ComponentType,omitempty" xml:"ComponentType,omitempty"`
-	// The version number of the image component in the \\<major>.\\<minor>.\\<patch> format. You can set \\<major>, \\<minor>, and \\<patch> to non-negative integers, or set one of \\<major>, \\<minor>, and \\<patch> to the wildcard (\\*) and the other two to non-negative integers.
+	// The component version number in the format of major.minor.patch. All values are non-negative integers. You can also use the wildcard character (*) to replace one of the values for fuzzy matching.
 	//
-	// > This parameter takes effect only if you specify Name.
+	// >This parameter takes effect only when Name is specified.
 	//
 	// example:
 	//
 	// 1.0.*
 	ComponentVersion *string `json:"ComponentVersion,omitempty" xml:"ComponentVersion,omitempty"`
-	// The IDs of image components. Valid values of N: 1 to 20.
+	// The ID of the image component to query. Valid values of N: 1 to 20.
 	//
 	// example:
 	//
 	// ic-bp67acfmxazb4p****
 	ImageComponentId []*string `json:"ImageComponentId,omitempty" xml:"ImageComponentId,omitempty" type:"Repeated"`
-	// The maximum number of entries per page. Valid values: 1 to 500.
+	// The maximum number of entries per page for paging. Valid values: 1 to 500.
 	//
 	// Default value: 50.
 	//
@@ -76,23 +76,23 @@ type DescribeImageComponentsRequest struct {
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The name of the image component. You must specify an exact name to search for the image component.
+	// The image component name. Only exact match is supported.
 	//
 	// example:
 	//
 	// testComponent
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of `NextToken`.
+	// The pagination token. Set this parameter to the value of `NextToken` returned in the previous call. You do not need to set this parameter for the first request.
 	//
 	// example:
 	//
 	// AAAAAdDWBF2****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The type of the image component. Valid values:
+	// The image component type. Valid values:
 	//
-	// - SELF: the custom component that you created.
+	// - SELF: custom image components that you created.
 	//
-	// - ALIYUN: the system component provided by Alibaba Cloud.
+	// - ALIYUN: system components provided by Alibaba Cloud.
 	//
 	// example:
 	//
@@ -100,7 +100,7 @@ type DescribeImageComponentsRequest struct {
 	Owner        *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the image component. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -108,9 +108,9 @@ type DescribeImageComponentsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group. If this parameter is specified to query resources, up to 1,000 resources that belong to the specified resource group can be displayed in the response.
+	// The resource group ID. If you use this parameter to filter resources, the resource count cannot exceed 1000.
 	//
-	// > Resources in the default resource group are displayed in the response regardless of how this parameter is set.
+	// >Filtering by the default resource group is not supported.
 	//
 	// example:
 	//
@@ -118,19 +118,19 @@ type DescribeImageComponentsRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The type of the operating system supported by the image component.
+	// The operating system supported by the component.
 	//
 	// Valid values:
 	//
 	// - Linux
 	//
-	// - Windows
+	// - Windows.
 	//
 	// example:
 	//
 	// Linux
 	SystemType *string `json:"SystemType,omitempty" xml:"SystemType,omitempty"`
-	// The tags of the image component.
+	// The tags.
 	Tag []*DescribeImageComponentsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -291,13 +291,13 @@ func (s *DescribeImageComponentsRequest) Validate() error {
 }
 
 type DescribeImageComponentsRequestTag struct {
-	// The key of tag N. Valid values of N: 1 to 20.
+	// The tag key. Valid values of N: 1 to 20.
 	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N. Valid values of N: 1 to 20.
+	// The tag value. Valid values of N: 1 to 20.
 	//
 	// example:
 	//

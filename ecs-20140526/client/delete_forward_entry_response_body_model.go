@@ -14,7 +14,6 @@ type iDeleteForwardEntryResponseBody interface {
 }
 
 type DeleteForwardEntryResponseBody struct {
-	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

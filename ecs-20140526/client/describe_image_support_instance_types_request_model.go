@@ -28,24 +28,24 @@ type iDescribeImageSupportInstanceTypesRequest interface {
 type DescribeImageSupportInstanceTypesRequest struct {
 	// The scenario in which the image is used. Valid values:
 	//
-	// - CreateEcs (default): instance creation
+	// - CreateEcs (default): instance creation.
 	//
-	// - ChangeOS: replacement of the system disk or operating system
+	// - ChangeOS: replacement of the system disk or operating system.
 	//
 	// example:
 	//
 	// CreateEcs
 	ActionType *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
-	// The number of vCPUs of the instance type.
+	// The list of filter conditions for querying resources.
 	Filter []*DescribeImageSupportInstanceTypesRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
-	// The region ID of the image. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+	// The image ID.
 	//
 	// example:
 	//
 	// m-o6w3gy99qf89rkga****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// Details about the instance types that are supported by the image.
+	// The region ID of the image. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -142,13 +142,21 @@ func (s *DescribeImageSupportInstanceTypesRequest) Validate() error {
 }
 
 type DescribeImageSupportInstanceTypesRequestFilter struct {
-	// Filter N used to filter instance types.
+	// The filter condition key. Currently, only filtering by image ID is supported. Valid values:
+	//
+	// - imageId: filters by image ID.
+	//
+	// - filter: filters by image ID.
+	//
+	// > This parameter is not effective and will be deprecated soon.
 	//
 	// example:
 	//
 	// imageId
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The ID of the image.
+	// The filter condition value.
+	//
+	// > This parameter is not effective and will be deprecated soon.
 	//
 	// example:
 	//

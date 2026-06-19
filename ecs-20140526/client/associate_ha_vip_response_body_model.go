@@ -14,7 +14,6 @@ type iAssociateHaVipResponseBody interface {
 }
 
 type AssociateHaVipResponseBody struct {
-	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

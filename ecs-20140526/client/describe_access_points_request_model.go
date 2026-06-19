@@ -28,27 +28,15 @@ type iDescribeAccessPointsRequest interface {
 }
 
 type DescribeAccessPointsRequest struct {
-	// The filters to apply to the query results.
-	Filter  []*DescribeAccessPointsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
-	OwnerId *int64                               `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number.
-	//
-	// Default value: 1.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return per page.
-	//
-	// Valid values: 1 to 100.
-	//
-	// Default value: 10.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region where the access points are located. Call the `DescribeRegions` operation to query the latest list of regions.
-	//
+	Filter     []*DescribeAccessPointsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
+	OwnerId    *int64                               `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageNumber *int32                               `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// This parameter is required.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The type of the access point. Set the value to `ecs`.
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type                 *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeAccessPointsRequest) String() string {
@@ -145,13 +133,7 @@ func (s *DescribeAccessPointsRequest) Validate() error {
 }
 
 type DescribeAccessPointsRequestFilter struct {
-	// The filter key. Valid values:
-	//
-	// - `AccessPointId`: Filter by access point ID.
-	//
-	// - `AccessPointName`: Filter by access point name.
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The filter values.
+	Key   *string   `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 

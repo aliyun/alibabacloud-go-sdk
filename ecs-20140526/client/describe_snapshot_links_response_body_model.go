@@ -24,19 +24,19 @@ type iDescribeSnapshotLinksResponseBody interface {
 }
 
 type DescribeSnapshotLinksResponseBody struct {
-	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	// The pagination token returned in this call.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The page number.
+	// The page number of the snapshot chain list.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page as specified in the request.
 	//
 	// example:
 	//
@@ -51,7 +51,7 @@ type DescribeSnapshotLinksResponseBody struct {
 	SnapshotLinks *DescribeSnapshotLinksResponseBodySnapshotLinks `json:"SnapshotLinks,omitempty" xml:"SnapshotLinks,omitempty" type:"Struct"`
 	// The total number of snapshot chains.
 	//
-	// > When using the `MaxResults` and `NextToken` parameters for a paginated query, the returned `TotalCount` parameter value is invalid.
+	// > When you use the `MaxResults` and `NextToken` parameters for a paged query, the returned `TotalCount` value is invalid. For paging, use `MaxResults` and `NextToken` instead.
 	//
 	// example:
 	//

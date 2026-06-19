@@ -38,7 +38,7 @@ type ImportImageResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The image import task ID.
+	// The ID of the image import task.
 	//
 	// example:
 	//

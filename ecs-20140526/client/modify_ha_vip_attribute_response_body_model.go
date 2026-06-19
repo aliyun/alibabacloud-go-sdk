@@ -14,7 +14,6 @@ type iModifyHaVipAttributeResponseBody interface {
 }
 
 type ModifyHaVipAttributeResponseBody struct {
-	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

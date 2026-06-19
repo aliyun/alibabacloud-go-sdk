@@ -36,28 +36,17 @@ type iModifyForwardEntryRequest interface {
 }
 
 type ModifyForwardEntryRequest struct {
-	// The public IP address for the forward entry.
-	ExternalIp *string `json:"ExternalIp,omitempty" xml:"ExternalIp,omitempty"`
-	// The external port for the forward entry.
+	ExternalIp   *string `json:"ExternalIp,omitempty" xml:"ExternalIp,omitempty"`
 	ExternalPort *string `json:"ExternalPort,omitempty" xml:"ExternalPort,omitempty"`
-	// The ID of the forward entry that you want to modify.
-	//
 	// This parameter is required.
 	ForwardEntryId *string `json:"ForwardEntryId,omitempty" xml:"ForwardEntryId,omitempty"`
-	// The ID of the forward table.
-	//
 	// This parameter is required.
 	ForwardTableId *string `json:"ForwardTableId,omitempty" xml:"ForwardTableId,omitempty"`
-	// The internal IP address for the forward entry.
-	InternalIp *string `json:"InternalIp,omitempty" xml:"InternalIp,omitempty"`
-	// The internal port for the forward entry.
-	InternalPort *string `json:"InternalPort,omitempty" xml:"InternalPort,omitempty"`
-	// The IP protocol. Valid values are tcp, udp, and any.
-	IpProtocol   *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the forward table is located.
-	//
+	InternalIp     *string `json:"InternalIp,omitempty" xml:"InternalIp,omitempty"`
+	InternalPort   *string `json:"InternalPort,omitempty" xml:"InternalPort,omitempty"`
+	IpProtocol     *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
+	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// This parameter is required.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`

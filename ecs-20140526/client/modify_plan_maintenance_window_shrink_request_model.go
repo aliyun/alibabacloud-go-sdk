@@ -28,14 +28,14 @@ type iModifyPlanMaintenanceWindowShrinkRequest interface {
 }
 
 type ModifyPlanMaintenanceWindowShrinkRequest struct {
-	// Specifies whether to enable the maintenance window. If this parameter is not specified, the enabled status remains unchanged.
+	// Specifies whether to enable or disable the O&M window. Leave this parameter empty if no modification is needed.
 	//
 	// example:
 	//
 	// false
 	Enable                 *bool  `json:"Enable,omitempty" xml:"Enable,omitempty"`
 	MinMaintenanceInterval *int32 `json:"MinMaintenanceInterval,omitempty" xml:"MinMaintenanceInterval,omitempty"`
-	// The ID of the maintenance window to modify.
+	// The ID of the O&M window to modify. This parameter is required.
 	//
 	// This parameter is required.
 	//
@@ -43,13 +43,13 @@ type ModifyPlanMaintenanceWindowShrinkRequest struct {
 	//
 	// pw-bp1au1w8v8a1yer65g5k
 	PlanWindowId *string `json:"PlanWindowId,omitempty" xml:"PlanWindowId,omitempty"`
-	// The new name of the maintenance window. If this parameter is not specified, the name remains unchanged.
+	// The name of the O&M window. Leave this parameter empty if no modification is needed.
 	//
 	// example:
 	//
 	// WIndowName
 	PlanWindowName *string `json:"PlanWindowName,omitempty" xml:"PlanWindowName,omitempty"`
-	// The ID of the region where the instance is located. You can call the DescribeRegions operation to query the most recent list of Alibaba Cloud regions.
+	// The region ID of the instance. You can call DescribeRegions to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -57,15 +57,15 @@ type ModifyPlanMaintenanceWindowShrinkRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The maintenance action for the maintenance window. If this parameter is not specified, the action remains unchanged.
+	// The supported O&M actions. Leave this parameter empty if no modification is needed.
 	//
 	// example:
 	//
 	// Reboot
 	SupportMaintenanceAction *string `json:"SupportMaintenanceAction,omitempty" xml:"SupportMaintenanceAction,omitempty"`
-	// The resources to which the maintenance window applies. If this parameter is not specified, the target resources remain unchanged.
+	// The resource to which the O&M window applies. Leave this parameter empty if no modification is needed.
 	TargetResourceShrink *string `json:"TargetResource,omitempty" xml:"TargetResource,omitempty"`
-	// The recurrence schedule for the maintenance window. If this parameter is not specified, the schedule remains unchanged.
+	// The recurring cycle of the O&M window. Leave this parameter empty if no modification is needed.
 	TimePeriodShrink *string `json:"TimePeriod,omitempty" xml:"TimePeriod,omitempty"`
 }
 

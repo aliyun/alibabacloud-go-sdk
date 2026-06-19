@@ -32,7 +32,7 @@ type iDescribeTagsRequest interface {
 }
 
 type DescribeTagsRequest struct {
-	// > This parameter is deprecated. We recommend that you use other parameters to ensure compatibility.
+	// > This parameter is about to be deprecated. To ensure compatibility, use other parameters.
 	//
 	// example:
 	//
@@ -41,7 +41,7 @@ type DescribeTagsRequest struct {
 	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The page number of the tag list.
 	//
-	// Starts from 1.
+	// Minimum value: 1.
 	//
 	// Default value: 1.
 	//
@@ -49,7 +49,7 @@ type DescribeTagsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return per page.
+	// The number of entries per page for a paged query.
 	//
 	// Maximum value: 100.
 	//
@@ -59,7 +59,7 @@ type DescribeTagsRequest struct {
 	//
 	// 50
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to obtain the latest list of Alibaba Cloud regions.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -67,7 +67,7 @@ type DescribeTagsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource. For example, if the `ResourceType` is `instance`, this parameter specifies the instance ID.
+	// The ID of the resource to which the tag is attached. For example, if the resource type (ResourceType) is instance, the resource ID is the instance ID.
 	//
 	// example:
 	//
@@ -77,37 +77,37 @@ type DescribeTagsRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The resource type. Valid values:
 	//
-	// - `instance`: an ECS instance.
+	// - instance: ECS instance.
 	//
-	// - `disk`: a disk.
+	// - disk: cloud disk.
 	//
-	// - `snapshot`: a snapshot.
+	// - snapshot: snapshot.
 	//
-	// - `image`: an image.
+	// - image: image.
 	//
-	// - `securitygroup`: a security group.
+	// - securitygroup: security group.
 	//
-	// - `volume`: a volume.
+	// - volume: storage volume.
 	//
-	// - `eni`: an elastic network interface.
+	// - eni: network interface controller (NIC).
 	//
-	// - `ddh`: a dedicated host.
+	// - ddh: dedicated host.
 	//
-	// - `keypair`: an SSH key pair.
+	// - keypair: SSH key pair.
 	//
-	// - `launchtemplate`: a launch template.
+	// - launchtemplate: launch template.
 	//
-	// - `reservedinstance`: a reserved instance.
+	// - reservedinstance: reserved instance.
 	//
-	// - `snapshotpolicy`: a snapshot policy.
+	// - snapshotpolicy: automatic snapshot policy.
 	//
-	// All values must be in lowercase.
+	// All valid values are in lowercase.
 	//
 	// example:
 	//
 	// snapshot
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// A list of tags.
+	// The list of tags.
 	Tag []*DescribeTagsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -223,15 +223,13 @@ func (s *DescribeTagsRequest) Validate() error {
 }
 
 type DescribeTagsRequestTag struct {
-	// The tag key of the resource.
-	//
-	// > We recommend that you use the `Tag.N.Key` parameter to ensure compatibility.
+	// The tag key of the resource. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with aliyun or acs:. The tag key cannot contain http:// or https://.
 	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value. The value can be up to 128 characters in length and can be an empty string. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+	// The tag value of the resource. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot start with aliyun or acs:. The tag value cannot contain http:// or https://.
 	//
 	// example:
 	//

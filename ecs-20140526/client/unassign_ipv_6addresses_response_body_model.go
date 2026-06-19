@@ -14,7 +14,7 @@ type iUnassignIpv6AddressesResponseBody interface {
 }
 
 type UnassignIpv6AddressesResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

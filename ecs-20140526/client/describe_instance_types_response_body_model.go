@@ -18,9 +18,8 @@ type iDescribeInstanceTypesResponseBody interface {
 }
 
 type DescribeInstanceTypesResponseBody struct {
-	// A collection of instance types.
 	InstanceTypes *DescribeInstanceTypesResponseBodyInstanceTypes `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Struct"`
-	// The token used to retrieve the next page of results.
+	// The pagination token returned by this call.
 	//
 	// example:
 	//

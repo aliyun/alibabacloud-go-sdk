@@ -36,30 +36,18 @@ type iDescribeRouteTablesRequest interface {
 }
 
 type DescribeRouteTablesRequest struct {
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. Default value: 1.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: 1 to 50. Default value: 10.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID. You can call the [`DescribeRegions`](https://www.alibabacloud.com/help/en/doc-detail/40654.htm) operation to query the latest list of regions.
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageNumber           *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the route table.
-	RouteTableId *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
-	// The name of the route table.
-	RouteTableName *string `json:"RouteTableName,omitempty" xml:"RouteTableName,omitempty"`
-	// The ID of the router associated with the route table.
-	RouterId *string `json:"RouterId,omitempty" xml:"RouterId,omitempty"`
-	// The type of the router associated with the route table. Valid values:
-	//
-	// - `VRouter`: VPC router
-	//
-	// - `VBR`: virtual border router
-	RouterType *string `json:"RouterType,omitempty" xml:"RouterType,omitempty"`
-	// The ID of the VRouter.
-	VRouterId *string `json:"VRouterId,omitempty" xml:"VRouterId,omitempty"`
+	RouteTableId         *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
+	RouteTableName       *string `json:"RouteTableName,omitempty" xml:"RouteTableName,omitempty"`
+	RouterId             *string `json:"RouterId,omitempty" xml:"RouterId,omitempty"`
+	RouterType           *string `json:"RouterType,omitempty" xml:"RouterType,omitempty"`
+	VRouterId            *string `json:"VRouterId,omitempty" xml:"VRouterId,omitempty"`
 }
 
 func (s DescribeRouteTablesRequest) String() string {

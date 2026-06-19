@@ -14,7 +14,6 @@ type iDeleteVirtualBorderRouterResponseBody interface {
 }
 
 type DeleteVirtualBorderRouterResponseBody struct {
-	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

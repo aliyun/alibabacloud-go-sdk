@@ -22,13 +22,13 @@ type iAttachKeyPairResponseBody interface {
 }
 
 type AttachKeyPairResponseBody struct {
-	// The number of instances to which the SSH key pair fails to be bound.
+	// The number of instances to which the key pair failed to be bound.
 	//
 	// example:
 	//
 	// 0
 	FailCount *string `json:"FailCount,omitempty" xml:"FailCount,omitempty"`
-	// The name of the SSH key pair.
+	// The name of the key pair.
 	//
 	// example:
 	//
@@ -41,7 +41,7 @@ type AttachKeyPairResponseBody struct {
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Results   *AttachKeyPairResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Struct"`
-	// The total number of instances to which the SSH key pair is bound.
+	// The total number of instances to which the key pair is bound.
 	//
 	// example:
 	//

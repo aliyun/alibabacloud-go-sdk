@@ -28,20 +28,13 @@ type iAddBandwidthPackageIpsRequest interface {
 }
 
 type AddBandwidthPackageIpsRequest struct {
-	// The ID of the bandwidth package.
-	//
 	// This parameter is required.
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
-	// A token that you can specify to ensure the idempotency of the request. The token must be unique across requests. It can contain only ASCII characters and cannot exceed 64 characters in length.
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The number of public IP addresses to add to the bandwidth package. Valid values: 1 to 256.
-	//
+	ClientToken        *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// This parameter is required.
 	IpCount      *string `json:"IpCount,omitempty" xml:"IpCount,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the bandwidth package is located. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the most recent region list.
-	//
 	// This parameter is required.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`

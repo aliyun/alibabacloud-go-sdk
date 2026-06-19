@@ -14,7 +14,7 @@ type iModifyDiskAttributeResponseBody interface {
 }
 
 type ModifyDiskAttributeResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

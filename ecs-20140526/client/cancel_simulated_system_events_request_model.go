@@ -24,7 +24,7 @@ type iCancelSimulatedSystemEventsRequest interface {
 }
 
 type CancelSimulatedSystemEventsRequest struct {
-	// The IDs of simulated system events. You can specify up to 100 event IDs in a single request.
+	// The list of system event IDs. You can specify up to 100 event IDs.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type CancelSimulatedSystemEventsRequest struct {
 	EventId      []*string `json:"EventId,omitempty" xml:"EventId,omitempty" type:"Repeated"`
 	OwnerAccount *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//

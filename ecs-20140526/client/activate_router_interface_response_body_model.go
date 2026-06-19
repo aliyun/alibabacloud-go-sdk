@@ -14,7 +14,6 @@ type iActivateRouterInterfaceResponseBody interface {
 }
 
 type ActivateRouterInterfaceResponseBody struct {
-	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

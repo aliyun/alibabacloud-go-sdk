@@ -28,19 +28,12 @@ type iDescribeVirtualBorderRoutersForPhysicalConnectionRequest interface {
 }
 
 type DescribeVirtualBorderRoutersForPhysicalConnectionRequest struct {
-	// The filter criteria.
-	Filter  []*DescribeVirtualBorderRoutersForPhysicalConnectionRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
-	OwnerId *int64                                                            `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. Default: 1.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: 1 to 50. Default: 10.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the physical connection.
-	//
+	Filter     []*DescribeVirtualBorderRoutersForPhysicalConnectionRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
+	OwnerId    *int64                                                            `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageNumber *int32                                                            `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// This parameter is required.
 	PhysicalConnectionId *string `json:"PhysicalConnectionId,omitempty" xml:"PhysicalConnectionId,omitempty"`
-	// The ID of the region where the virtual border router (VBR) is deployed.
-	//
 	// This parameter is required.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -141,9 +134,7 @@ func (s *DescribeVirtualBorderRoutersForPhysicalConnectionRequest) Validate() er
 }
 
 type DescribeVirtualBorderRoutersForPhysicalConnectionRequestFilter struct {
-	// The filter key. The only supported value is `VbrId`.
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The VBR IDs. You can specify up to 20 IDs.
+	Key   *string   `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 

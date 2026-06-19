@@ -29,7 +29,7 @@ type DescribeHpcClustersResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page that was set when the request was made.
+	// The number of entries per page.
 	//
 	// example:
 	//

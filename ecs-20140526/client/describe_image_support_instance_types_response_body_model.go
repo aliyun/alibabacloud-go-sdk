@@ -20,60 +20,20 @@ type iDescribeImageSupportInstanceTypesResponseBody interface {
 }
 
 type DescribeImageSupportInstanceTypesResponseBody struct {
-	// The key of filter N. Only the image ID can be used to filter instance types. Valid values:
-	//
-	// - imagId: image ID
-	//
-	// - filter: image ID
+	// The ID of the queried image.
 	//
 	// example:
 	//
 	// m-o6w3gy99qf89rkga****
 	ImageId       *string                                                     `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	InstanceTypes *DescribeImageSupportInstanceTypesResponseBodyInstanceTypes `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Struct"`
-	// {
-	//
-	// "RequestId": "CF661E2D-4AFE-4BCD-959A-A65E14416B44",
-	//
-	// "RegionId": "cn-hangzhou",
-	//
-	// "ImageId": "ubuntu_16_0402_64_20G_alibase_20180409.vhd",
-	//
-	// "InstanceTypes": {
-	//
-	// "InstanceType": [{
-	//
-	// "InstanceTypeId": "ecs.t1.xsmall",
-	//
-	// "CpuCoreCount": 1,
-	//
-	// "MemorySize": 0.5,
-	//
-	// "InstanceTypeFamily": "ecs.t1"
-	//
-	// },
-	//
-	// {
-	//
-	// "InstanceTypeId": "ecs.t1.small",
-	//
-	// "CpuCoreCount": 1,
-	//
-	// "MemorySize": 1,
-	//
-	// "InstanceTypeFamily": "ecs.t1"
-	//
-	// }]
-	//
-	// }
-	//
-	// }
+	// The region ID of the image.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

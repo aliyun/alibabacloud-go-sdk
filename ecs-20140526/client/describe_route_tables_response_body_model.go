@@ -22,16 +22,11 @@ type iDescribeRouteTablesResponseBody interface {
 }
 
 type DescribeRouteTablesResponseBody struct {
-	// The page number.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Details about the route tables.
+	PageNumber  *int32                                      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int32                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId   *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	RouteTables *DescribeRouteTablesResponseBodyRouteTables `json:"RouteTables,omitempty" xml:"RouteTables,omitempty" type:"Struct"`
-	// The total number of matching entries.
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalCount  *int32                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeRouteTablesResponseBody) String() string {

@@ -26,11 +26,11 @@ type iCreatePlanMaintenanceWindowShrinkRequest interface {
 }
 
 type CreatePlanMaintenanceWindowShrinkRequest struct {
-	// Specifies whether to enable the maintenance window.
+	// Specifies whether to enable or disable the O&M window.
 	//
-	// - **true**: Enables the maintenance window.
+	// - **true**: Enabled.
 	//
-	// - **false**: Disables the maintenance window.
+	// - **false**: Disabled.
 	//
 	// This parameter is required.
 	//
@@ -39,7 +39,7 @@ type CreatePlanMaintenanceWindowShrinkRequest struct {
 	// true
 	Enable                 *bool  `json:"Enable,omitempty" xml:"Enable,omitempty"`
 	MinMaintenanceInterval *int32 `json:"MinMaintenanceInterval,omitempty" xml:"MinMaintenanceInterval,omitempty"`
-	// The name of the maintenance window. The name can be up to 200 characters long.
+	// The name of the O&M window. You can specify a custom name. The name can be up to 200 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -47,7 +47,7 @@ type CreatePlanMaintenanceWindowShrinkRequest struct {
 	//
 	// WIndowName
 	PlanWindowName *string `json:"PlanWindowName,omitempty" xml:"PlanWindowName,omitempty"`
-	// The ID of the region. You can call the DescribeRegions operation to query the latest list of Alibaba Cloud regions.
+	// The region ID. You can call DescribeRegions to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -55,7 +55,7 @@ type CreatePlanMaintenanceWindowShrinkRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The maintenance operation supported by the maintenance window.
+	// The O&M operations supported by the O&M window.
 	//
 	// This parameter is required.
 	//
@@ -63,11 +63,11 @@ type CreatePlanMaintenanceWindowShrinkRequest struct {
 	//
 	// Reboot
 	SupportMaintenanceAction *string `json:"SupportMaintenanceAction,omitempty" xml:"SupportMaintenanceAction,omitempty"`
-	// The resources to which the maintenance window applies.
+	// The resources on which the O&M window takes effect.
 	//
 	// This parameter is required.
 	TargetResourceShrink *string `json:"TargetResource,omitempty" xml:"TargetResource,omitempty"`
-	// The recurring schedule for the maintenance window.
+	// The recurring cycle of the O&M window.
 	//
 	// This parameter is required.
 	TimePeriodShrink *string `json:"TimePeriod,omitempty" xml:"TimePeriod,omitempty"`

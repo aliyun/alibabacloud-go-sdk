@@ -25,19 +25,19 @@ type iDescribeDisksResponseBody interface {
 
 type DescribeDisksResponseBody struct {
 	Disks *DescribeDisksResponseBodyDisks `json:"Disks,omitempty" xml:"Disks,omitempty" type:"Struct"`
-	// The token returned to retrieve the next page of results.
+	// The pagination token returned in this call.
 	//
 	// example:
 	//
 	// AAAAAdDWBF2****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// > This parameter is deprecated. We recommend that you use the `NextToken `and `MaxResults `parameters for pagination.
+	// > This parameter is about to be deprecated. Use NextToken and MaxResults to complete paging query operations.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// > This parameter is deprecated. We recommend that you use the `NextToken `and `MaxResults `parameters for pagination.
+	// > This parameter is about to be deprecated. Use NextToken and MaxResults to complete paging query operations.
 	//
 	// example:
 	//
@@ -51,7 +51,7 @@ type DescribeDisksResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries returned.
 	//
-	// > When you use the`MaxResults` and`NextToken` parameters for pagination, the value of `TotalCount` is invalid.
+	// > When you use MaxResults and NextToken parameters for paging query, the returned TotalCount parameter value is invalid.
 	//
 	// example:
 	//
@@ -165,13 +165,16 @@ func (s *DescribeDisksResponseBodyDisks) Validate() error {
 }
 
 type DescribeDisksResponseBodyDisksDisk struct {
-	AttachedTime                  *string                                           `json:"AttachedTime,omitempty" xml:"AttachedTime,omitempty"`
-	Attachments                   *DescribeDisksResponseBodyDisksDiskAttachments    `json:"Attachments,omitempty" xml:"Attachments,omitempty" type:"Struct"`
-	AutoSnapshotPolicyId          *string                                           `json:"AutoSnapshotPolicyId,omitempty" xml:"AutoSnapshotPolicyId,omitempty"`
-	BdfId                         *string                                           `json:"BdfId,omitempty" xml:"BdfId,omitempty"`
-	BurstingEnabled               *bool                                             `json:"BurstingEnabled,omitempty" xml:"BurstingEnabled,omitempty"`
-	Category                      *string                                           `json:"Category,omitempty" xml:"Category,omitempty"`
-	CreationTime                  *string                                           `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	AttachedTime         *string                                        `json:"AttachedTime,omitempty" xml:"AttachedTime,omitempty"`
+	Attachments          *DescribeDisksResponseBodyDisksDiskAttachments `json:"Attachments,omitempty" xml:"Attachments,omitempty" type:"Struct"`
+	AutoSnapshotPolicyId *string                                        `json:"AutoSnapshotPolicyId,omitempty" xml:"AutoSnapshotPolicyId,omitempty"`
+	BdfId                *string                                        `json:"BdfId,omitempty" xml:"BdfId,omitempty"`
+	BurstingEnabled      *bool                                          `json:"BurstingEnabled,omitempty" xml:"BurstingEnabled,omitempty"`
+	Category             *string                                        `json:"Category,omitempty" xml:"Category,omitempty"`
+	CreationTime         *string                                        `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// if can be null:
+	// true
+	DataSource                    *DescribeDisksResponseBodyDisksDiskDataSource     `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
 	DeleteAutoSnapshot            *bool                                             `json:"DeleteAutoSnapshot,omitempty" xml:"DeleteAutoSnapshot,omitempty"`
 	DeleteWithInstance            *bool                                             `json:"DeleteWithInstance,omitempty" xml:"DeleteWithInstance,omitempty"`
 	Description                   *string                                           `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -254,6 +257,10 @@ func (s *DescribeDisksResponseBodyDisksDisk) GetCategory() *string {
 
 func (s *DescribeDisksResponseBodyDisksDisk) GetCreationTime() *string {
 	return s.CreationTime
+}
+
+func (s *DescribeDisksResponseBodyDisksDisk) GetDataSource() *DescribeDisksResponseBodyDisksDiskDataSource {
+	return s.DataSource
 }
 
 func (s *DescribeDisksResponseBodyDisksDisk) GetDeleteAutoSnapshot() *bool {
@@ -460,6 +467,11 @@ func (s *DescribeDisksResponseBodyDisksDisk) SetCategory(v string) *DescribeDisk
 
 func (s *DescribeDisksResponseBodyDisksDisk) SetCreationTime(v string) *DescribeDisksResponseBodyDisksDisk {
 	s.CreationTime = &v
+	return s
+}
+
+func (s *DescribeDisksResponseBodyDisksDisk) SetDataSource(v *DescribeDisksResponseBodyDisksDiskDataSource) *DescribeDisksResponseBodyDisksDisk {
+	s.DataSource = v
 	return s
 }
 
@@ -684,6 +696,11 @@ func (s *DescribeDisksResponseBodyDisksDisk) Validate() error {
 			return err
 		}
 	}
+	if s.DataSource != nil {
+		if err := s.DataSource.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.MountInstances != nil {
 		if err := s.MountInstances.Validate(); err != nil {
 			return err
@@ -783,6 +800,41 @@ func (s *DescribeDisksResponseBodyDisksDiskAttachmentsAttachment) SetInstanceId(
 }
 
 func (s *DescribeDisksResponseBodyDisksDiskAttachmentsAttachment) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeDisksResponseBodyDisksDiskDataSource struct {
+	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeDisksResponseBodyDisksDiskDataSource) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeDisksResponseBodyDisksDiskDataSource) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDisksResponseBodyDisksDiskDataSource) GetId() *string {
+	return s.Id
+}
+
+func (s *DescribeDisksResponseBodyDisksDiskDataSource) GetType() *string {
+	return s.Type
+}
+
+func (s *DescribeDisksResponseBodyDisksDiskDataSource) SetId(v string) *DescribeDisksResponseBodyDisksDiskDataSource {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeDisksResponseBodyDisksDiskDataSource) SetType(v string) *DescribeDisksResponseBodyDisksDiskDataSource {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeDisksResponseBodyDisksDiskDataSource) Validate() error {
 	return dara.Validate(s)
 }
 

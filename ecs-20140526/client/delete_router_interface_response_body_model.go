@@ -14,7 +14,6 @@ type iDeleteRouterInterfaceResponseBody interface {
 }
 
 type DeleteRouterInterfaceResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

@@ -30,11 +30,11 @@ type iReInitDiskRequest interface {
 }
 
 type ReInitDiskRequest struct {
-	// Specifies whether to automatically start the instance after the disk is re-initialized. Valid values:
+	// Specifies whether to automatically start the instance after the disk is reinitialized. Valid values:
 	//
-	// - true
+	// - true: automatically starts the instance.
 	//
-	// - false
+	// - false: does not automatically start the instance.
 	//
 	// Default value: false.
 	//
@@ -42,7 +42,7 @@ type ReInitDiskRequest struct {
 	//
 	// true
 	AutoStartInstance *bool `json:"AutoStartInstance,omitempty" xml:"AutoStartInstance,omitempty"`
-	// The ID of the disk.
+	// The ID of the disk to be reinitialized.
 	//
 	// This parameter is required.
 	//
@@ -50,9 +50,9 @@ type ReInitDiskRequest struct {
 	//
 	// d-bp67acfmxazb4ph****
 	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	// The name of the key pair. This parameter is empty by default.
+	// The name of the key pair.
 	//
-	// > The parameter is applicable only to Linux instances. You can bind an SSH key pair to an instance as the logon credential when you re-initialize the system disk of the instance. After the SSH key pair is bound, the username and password-based logon method is disabled for the instance.
+	// > This parameter is applicable only to Linux instances. When the system disk is reinitialized, you can attach an SSH key pair to the ECS instance as the logon credential. After you use an SSH key pair, the username and password logon method is disabled.
 	//
 	// example:
 	//
@@ -60,7 +60,7 @@ type ReInitDiskRequest struct {
 	KeyPairName  *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// Specifies whether to reset the password of the instance when you re-initialize its system disk. The password must be 8 to 30 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include:
+	// Specifies whether to reset the username and password of the ECS instance when the system disk is reinitialized. The password must be 8 to 30 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported:
 	//
 	// ```
 	//
@@ -68,9 +68,9 @@ type ReInitDiskRequest struct {
 	//
 	// ```
 	//
-	// For Windows instances, passwords cannot start with a forward slash (/).
+	// For Windows instances, the password cannot start with a forward slash (/).
 	//
-	// > If the `Password` parameter is specified, we recommend that you send requests over HTTPS to prevent password leaks.
+	// > If you specify the `Password` parameter, use HTTPS to send the request to avoid password leaks.
 	//
 	// example:
 	//
@@ -78,11 +78,13 @@ type ReInitDiskRequest struct {
 	Password             *string `json:"Password,omitempty" xml:"Password,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Specifies whether to use Security Center free of charge after the system disk is re-initialized. Valid values:
+	// Specifies whether to use the free Security Center service after the system disk is reinitialized. Valid values:
 	//
-	// - Active: uses Security Center free of charge after the system disk is re-initialized. This value is applicable to only public images.
 	//
-	// - Deactive: does not use Security Center free of charge after the system disk is re-initialized. This value is applicable to all images.
+	//
+	// - Active: uses the Security Center service. This value is applicable only to public images.
+	//
+	// - Deactive: does not use the Security Center service. This value is applicable to all images.
 	//
 	// Default value: Deactive.
 	//

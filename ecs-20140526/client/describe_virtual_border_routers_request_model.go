@@ -26,15 +26,10 @@ type iDescribeVirtualBorderRoutersRequest interface {
 }
 
 type DescribeVirtualBorderRoutersRequest struct {
-	// The filter conditions.
-	Filter  []*DescribeVirtualBorderRoutersRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
-	OwnerId *int64                                       `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. Pages are numbered starting from 1. Default value: 1.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Valid values: 1 to 50. Default value: 10.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region where the Virtual Border Router (VBR) is located. You can call the `DescribeRegions` operation to obtain the most recent list of regions.
-	//
+	Filter     []*DescribeVirtualBorderRoutersRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
+	OwnerId    *int64                                       `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageNumber *int32                                       `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// This parameter is required.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -126,9 +121,7 @@ func (s *DescribeVirtualBorderRoutersRequest) Validate() error {
 }
 
 type DescribeVirtualBorderRoutersRequestFilter struct {
-	// The filter key. Set the value to `VbrId`.
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The filter value. The value must be an array of VBR IDs.
+	Key   *string   `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 

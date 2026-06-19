@@ -18,7 +18,7 @@ type iImportKeyPairResponseBody interface {
 }
 
 type ImportKeyPairResponseBody struct {
-	// The fingerprint of the key pair. The MD5 message-digest algorithm is used based on the public key fingerprint format defined in RFC 4716.
+	// The fingerprint of the key pair. The public key fingerprint format is defined in RFC 4716 and uses the MD5 message digest algorithm.
 	//
 	// example:
 	//

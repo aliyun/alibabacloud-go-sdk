@@ -16,7 +16,7 @@ type iCreatePlanMaintenanceWindowResponseBody interface {
 }
 
 type CreatePlanMaintenanceWindowResponseBody struct {
-	// The ID of the maintenance window.
+	// The ID of the created O&M window.
 	//
 	// example:
 	//

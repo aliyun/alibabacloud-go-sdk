@@ -26,16 +26,11 @@ type iDeleteHaVipRequest interface {
 }
 
 type DeleteHaVipRequest struct {
-	// The client token used to ensure request idempotence. You can use the client to generate the token, but you must ensure that the token is unique across requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the HaVip that you want to delete.
-	//
 	// This parameter is required.
 	HaVipId      *string `json:"HaVipId,omitempty" xml:"HaVipId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the HaVip is located. You can call the `DescribeRegions` operation to obtain the latest list of regions.
-	//
 	// This parameter is required.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`

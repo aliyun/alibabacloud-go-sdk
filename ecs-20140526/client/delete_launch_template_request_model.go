@@ -28,7 +28,7 @@ type iDeleteLaunchTemplateRequest interface {
 type DeleteLaunchTemplateRequest struct {
 	// The ID of the launch template. For more information, see [DescribeLaunchTemplates](https://help.aliyun.com/document_detail/73759.html).
 	//
-	// You must specify `LaunchTemplateId` or `LaunchTemplateName` to specify a launch template.
+	// You must specify `LaunchTemplateId` or `LaunchTemplateName` to determine the launch template.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type DeleteLaunchTemplateRequest struct {
 	LaunchTemplateId *string `json:"LaunchTemplateId,omitempty" xml:"LaunchTemplateId,omitempty"`
 	// The name of the launch template.
 	//
-	// You must specify `LaunchTemplateId` or `LaunchTemplateName` to specify a launch template.
+	// You must specify `LaunchTemplateId` or `LaunchTemplateName` to determine the launch template.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type DeleteLaunchTemplateRequest struct {
 	LaunchTemplateName *string `json:"LaunchTemplateName,omitempty" xml:"LaunchTemplateName,omitempty"`
 	OwnerAccount       *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the launch template. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+	// The region ID of the launch template. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//

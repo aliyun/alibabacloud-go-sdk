@@ -61,6 +61,44 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		"cn-zhengzhou-nebula-1":       dara.String("ecs.cn-qingdao-nebula.aliyuncs.com"),
 		"eu-west-1-oxs":               dara.String("ecs.cn-shenzhen-cloudstone.aliyuncs.com"),
 		"rus-west-1-pop":              dara.String("ecs.aliyuncs.com"),
+		"us-west-1":                   dara.String("ecs.us-west-1.aliyuncs.com"),
+		"us-southeast-1":              dara.String("ecs.us-southeast-1.aliyuncs.com"),
+		"us-east-1":                   dara.String("ecs.us-east-1.aliyuncs.com"),
+		"na-south-1":                  dara.String("ecs.na-south-1.aliyuncs.com"),
+		"me-east-1":                   dara.String("ecs.me-east-1.aliyuncs.com"),
+		"me-central-1":                dara.String("ecs.me-central-1.aliyuncs.com"),
+		"eu-west-2":                   dara.String("ecs.eu-west-2.aliyuncs.com"),
+		"eu-west-1":                   dara.String("ecs.eu-west-1.aliyuncs.com"),
+		"eu-central-1":                dara.String("ecs.eu-central-1.aliyuncs.com"),
+		"cn-zhongwei":                 dara.String("ecs.cn-zhongwei.aliyuncs.com"),
+		"cn-zhengzhou-jva":            dara.String("ecs.cn-zhengzhou-jva.aliyuncs.com"),
+		"cn-zhangjiakou":              dara.String("ecs.cn-zhangjiakou.aliyuncs.com"),
+		"cn-wulanchabu-gic-1":         dara.String("ecs.cn-wulanchabu-gic-1.aliyuncs.com"),
+		"cn-wulanchabu":               dara.String("ecs.cn-wulanchabu.aliyuncs.com"),
+		"cn-wuhan-lr":                 dara.String("ecs.cn-wuhan-lr.aliyuncs.com"),
+		"cn-shenzhen":                 dara.String("ecs.cn-shenzhen.aliyuncs.com"),
+		"cn-shanghai":                 dara.String("ecs.cn-shanghai.aliyuncs.com"),
+		"cn-qingdao":                  dara.String("ecs.cn-qingdao.aliyuncs.com"),
+		"cn-nanjing":                  dara.String("ecs.cn-nanjing.aliyuncs.com"),
+		"cn-huhehaote":                dara.String("ecs.cn-huhehaote.aliyuncs.com"),
+		"cn-hongkong":                 dara.String("ecs.cn-hongkong.aliyuncs.com"),
+		"cn-heyuan-acdr-1":            dara.String("ecs.cn-heyuan-acdr-1.aliyuncs.com"),
+		"cn-heyuan":                   dara.String("ecs.cn-heyuan.aliyuncs.com"),
+		"cn-guangzhou":                dara.String("ecs.cn-guangzhou.aliyuncs.com"),
+		"cn-fuzhou":                   dara.String("ecs.cn-fuzhou.aliyuncs.com"),
+		"cn-chengdu":                  dara.String("ecs.cn-chengdu.aliyuncs.com"),
+		"cn-beijing-finance-1":        dara.String("ecs.cn-beijing-finance-1.aliyuncs.com"),
+		"cn-beijing":                  dara.String("ecs.cn-beijing.aliyuncs.com"),
+		"ap-southeast-8":              dara.String("ecs.ap-southeast-8.aliyuncs.com"),
+		"ap-southeast-7":              dara.String("ecs.ap-southeast-7.aliyuncs.com"),
+		"ap-southeast-6":              dara.String("ecs.ap-southeast-6.aliyuncs.com"),
+		"ap-southeast-5":              dara.String("ecs.ap-southeast-5.aliyuncs.com"),
+		"ap-southeast-3":              dara.String("ecs.ap-southeast-3.aliyuncs.com"),
+		"ap-southeast-2":              dara.String("ecs.ap-southeast-2.aliyuncs.com"),
+		"ap-southeast-1":              dara.String("ecs.ap-southeast-1.aliyuncs.com"),
+		"ap-south-1":                  dara.String("ecs.ap-south-1.aliyuncs.com"),
+		"ap-northeast-2":              dara.String("ecs.ap-northeast-2.aliyuncs.com"),
+		"ap-northeast-1":              dara.String("ecs.ap-northeast-1.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -270,7 +308,7 @@ func (client *Client) ActivateRouterInterface(request *ActivateRouterInterfaceRe
 //
 // Summary:
 //
-// # AddBandwidthPackageIps
+// AddBandwidthPackageIps.
 //
 // @param request - AddBandwidthPackageIpsRequest
 //
@@ -344,7 +382,7 @@ func (client *Client) AddBandwidthPackageIpsWithOptions(request *AddBandwidthPac
 //
 // Summary:
 //
-// # AddBandwidthPackageIps
+// AddBandwidthPackageIps.
 //
 // @param request - AddBandwidthPackageIpsRequest
 //
@@ -365,17 +403,17 @@ func (client *Client) AddBandwidthPackageIps(request *AddBandwidthPackageIpsRequ
 //
 // Summary:
 //
-// Adds or overwrites one or more tags to specific ECS resources. You can add tags to resources such as instances, disks, snapshots, images, and security groups to help you manage these resources.
+// Adds or overwrites one or more tags on various Elastic Compute Service (ECS) resources. You can add tags to instances, cloud disks, snapshots, images, security groups, and other resources for easier management.
 //
 // Description:
 //
-// When you call this operation, note the following:
+// When you invoke this operation, take note of the following items:
 //
-// - You can add a maximum of 20 tags to a single ECS resource.
+// -   You can add up to 20 tags to each Elastic Compute Service (ECS) resource.
 //
-// - Each tag key (`Tag.N.Key`) must have a corresponding tag value (`Tag.N.Value`).
+// -   The tag key (Tag.N.Key) and tag value (Tag.N.Value) must be specified as a key-value pair.
 //
-// - If a tag with the specified key (`Tag.N.Key`) already exists on the resource, the new value (`Tag.N.Value`) overwrites the existing one.
+// -   If the tag key (Tag.N.Key) already exists on the specified resource, the original tag value is automatically overwritten with the new tag value (Tag.N.Value).
 //
 // @param request - AddTagsRequest
 //
@@ -445,17 +483,17 @@ func (client *Client) AddTagsWithOptions(request *AddTagsRequest, runtime *dara.
 //
 // Summary:
 //
-// Adds or overwrites one or more tags to specific ECS resources. You can add tags to resources such as instances, disks, snapshots, images, and security groups to help you manage these resources.
+// Adds or overwrites one or more tags on various Elastic Compute Service (ECS) resources. You can add tags to instances, cloud disks, snapshots, images, security groups, and other resources for easier management.
 //
 // Description:
 //
-// When you call this operation, note the following:
+// When you invoke this operation, take note of the following items:
 //
-// - You can add a maximum of 20 tags to a single ECS resource.
+// -   You can add up to 20 tags to each Elastic Compute Service (ECS) resource.
 //
-// - Each tag key (`Tag.N.Key`) must have a corresponding tag value (`Tag.N.Value`).
+// -   The tag key (Tag.N.Key) and tag value (Tag.N.Value) must be specified as a key-value pair.
 //
-// - If a tag with the specified key (`Tag.N.Key`) already exists on the resource, the new value (`Tag.N.Value`) overwrites the existing one.
+// -   If the tag key (Tag.N.Key) already exists on the specified resource, the original tag value is automatically overwritten with the new tag value (Tag.N.Value).
 //
 // @param request - AddTagsRequest
 //
@@ -666,7 +704,7 @@ func (client *Client) AllocateDedicatedHosts(request *AllocateDedicatedHostsRequ
 //
 // Description:
 //
-// > This API is deprecated. Use [AllocateEipAddress](https://help.aliyun.com/document_detail/120192.html) instead.
+// > This API has been upgraded and is no longer recommended. For instructions on the new API, see [AllocateEipAddress](https://help.aliyun.com/document_detail/120192.html).
 //
 // @param request - AllocateEipAddressRequest
 //
@@ -752,7 +790,7 @@ func (client *Client) AllocateEipAddressWithOptions(request *AllocateEipAddressR
 //
 // Description:
 //
-// > This API is deprecated. Use [AllocateEipAddress](https://help.aliyun.com/document_detail/120192.html) instead.
+// > This API has been upgraded and is no longer recommended. For instructions on the new API, see [AllocateEipAddress](https://help.aliyun.com/document_detail/120192.html).
 //
 // @param request - AllocateEipAddressRequest
 //
@@ -995,27 +1033,27 @@ func (client *Client) ApplyAutoSnapshotPolicy(request *ApplyAutoSnapshotPolicyRe
 
 // Summary:
 //
-// Assigns one or more IPv6 addresses to an elastic network interface (ENI).
+// Assigns one or more IPv6 addresses to an Elastic Network Interface (ENI).
 //
 // Description:
 //
-// ## [](#)Usage notes
+// ## Operation description
 //
-// You can specify IPv6 addresses in the CIDR block of the vSwitch to which the ENI is connected. You can also specify the number of IPv6 addresses that the system assigns to the ENI. Take note of the following items:
+// You can specify IPv6 addresses from the CIDR block of the vSwitch to which the Elastic Network Interface (ENI) belongs, or specify the number of IPv6 addresses for automatic creation. Note the following items:
 //
-// - IPv6 must be enabled on the vSwitch to which the ENI is connected. For more information, see [Enable IPv6 for a vSwitch](https://help.aliyun.com/document_detail/98923.html).
+// - The vSwitch to which the ENI belongs must have IPv6 enabled. For more information, see [Enable an IPv6 CIDR block for an existing vSwitch](https://help.aliyun.com/document_detail/98923.html).
 //
-// - The ENI must be in the Available (Available) or InUse (InUse) state.
+// - The ENI must be in the Active (Available) or InUse state.
 //
-// - If you want to assign IPv6 addresses to a primary ENI, make sure that the Elastic Compute Service (ECS) instance to which the ENI is attached is in the Running (Running) or Stopped (Stopped) state.
+// - When you operate on a primary ENI, the instance to which the ENI is attached must be in the Running or Stopped state.
 //
-// - The maximum number of IPv6 addresses that can be assigned to an ENI varies based on the instance type of the instance to which the ENI is attached.
+// - The number of IPv6 addresses that can be allocated to a single ENI depends on the instance type of the instance to which the ENI is attached.
 //
-//   - If the ENI is in the Available (Available) state, up to 10 IPv6 addresses can be assigned to the ENI.
+//   - If the ENI is in the Active (Available) state, up to 10 IPv6 addresses can be allocated.
 //
-//   - If the ENI is attached to an ECS instance, the maximum number of IPv6 addresses that can be assigned to the ENI varies based on the instance type. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
+//   - If the ENI is attached to an instance, the number of IPv6 addresses that can be allocated is limited by the instance type. For more information, see [Instance family](https://help.aliyun.com/document_detail/25378.html).
 //
-// - After the operation is called, you can obtain the IPv6 addresses that are assigned to the ENI from the response.
+// - After you successfully invoke this operation, you can obtain the allocated IPv6 address information from the response.
 //
 // @param request - AssignIpv6AddressesRequest
 //
@@ -1103,27 +1141,27 @@ func (client *Client) AssignIpv6AddressesWithOptions(request *AssignIpv6Addresse
 
 // Summary:
 //
-// Assigns one or more IPv6 addresses to an elastic network interface (ENI).
+// Assigns one or more IPv6 addresses to an Elastic Network Interface (ENI).
 //
 // Description:
 //
-// ## [](#)Usage notes
+// ## Operation description
 //
-// You can specify IPv6 addresses in the CIDR block of the vSwitch to which the ENI is connected. You can also specify the number of IPv6 addresses that the system assigns to the ENI. Take note of the following items:
+// You can specify IPv6 addresses from the CIDR block of the vSwitch to which the Elastic Network Interface (ENI) belongs, or specify the number of IPv6 addresses for automatic creation. Note the following items:
 //
-// - IPv6 must be enabled on the vSwitch to which the ENI is connected. For more information, see [Enable IPv6 for a vSwitch](https://help.aliyun.com/document_detail/98923.html).
+// - The vSwitch to which the ENI belongs must have IPv6 enabled. For more information, see [Enable an IPv6 CIDR block for an existing vSwitch](https://help.aliyun.com/document_detail/98923.html).
 //
-// - The ENI must be in the Available (Available) or InUse (InUse) state.
+// - The ENI must be in the Active (Available) or InUse state.
 //
-// - If you want to assign IPv6 addresses to a primary ENI, make sure that the Elastic Compute Service (ECS) instance to which the ENI is attached is in the Running (Running) or Stopped (Stopped) state.
+// - When you operate on a primary ENI, the instance to which the ENI is attached must be in the Running or Stopped state.
 //
-// - The maximum number of IPv6 addresses that can be assigned to an ENI varies based on the instance type of the instance to which the ENI is attached.
+// - The number of IPv6 addresses that can be allocated to a single ENI depends on the instance type of the instance to which the ENI is attached.
 //
-//   - If the ENI is in the Available (Available) state, up to 10 IPv6 addresses can be assigned to the ENI.
+//   - If the ENI is in the Active (Available) state, up to 10 IPv6 addresses can be allocated.
 //
-//   - If the ENI is attached to an ECS instance, the maximum number of IPv6 addresses that can be assigned to the ENI varies based on the instance type. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
+//   - If the ENI is attached to an instance, the number of IPv6 addresses that can be allocated is limited by the instance type. For more information, see [Instance family](https://help.aliyun.com/document_detail/25378.html).
 //
-// - After the operation is called, you can obtain the IPv6 addresses that are assigned to the ENI from the response.
+// - After you successfully invoke this operation, you can obtain the allocated IPv6 address information from the response.
 //
 // @param request - AssignIpv6AddressesRequest
 //
@@ -1368,7 +1406,7 @@ func (client *Client) AssociateEipAddress(request *AssociateEipAddressRequest) (
 //
 // Summary:
 //
-// # AssociateHaVip
+// Associates a high-availability virtual IP address (HaVip) with a specified instance.
 //
 // @param request - AssociateHaVipRequest
 //
@@ -1442,7 +1480,7 @@ func (client *Client) AssociateHaVipWithOptions(request *AssociateHaVipRequest, 
 //
 // Summary:
 //
-// # AssociateHaVip
+// Associates a high-availability virtual IP address (HaVip) with a specified instance.
 //
 // @param request - AssociateHaVipRequest
 //
@@ -1831,21 +1869,21 @@ func (client *Client) AttachInstanceRamRole(request *AttachInstanceRamRoleReques
 
 // Summary:
 //
-// Binds an SSH key pair to one or more Linux instances.
+// Bind an SSH key pair to one or more Linux instances.
 //
 // Description:
 //
-// Take note of the following items:
+// When you call this operation, take note of the following items:
 //
-// - SSH key pairs are not supported on Windows instances.
+// - Windows instances do not support SSH key pairs.
 //
-// - If an SSH key pair is bound to an instance, authentication by using the username and password is disabled for the instance.
+// - After you bind an SSH key pair to an instance, authentication by using a username and password is disabled.
 //
-// - If you bind an SSH key pair to an instance in the **running*	- state, you must call the [RebootInstance](https://help.aliyun.com/document_detail/25502.html) operation to restart the instance for the key pair to take effect.
+// - If the instance is in the **Running*	- state, restart the instance ([RebootInstance](https://help.aliyun.com/document_detail/25502.html)) for the SSH key pair to take effect.
 //
-// - If you bind an SSH key pair to an instance in the **stopped*	- state, you must call the [StartInstance](https://help.aliyun.com/document_detail/25500.html) operation to start the instance for the key pair to take effect.
+// - If the instance is in the **Stopped*	- state, start the instance ([StartInstance](https://help.aliyun.com/document_detail/25500.html)) for the SSH key pair to take effect.
 //
-// - If an instance is already bound to an SSH key pair, the new SSH key pair will replace the original one.
+// - If an SSH key pair is already bound to the instance, the new SSH key pair automatically replaces the original one.
 //
 // @param request - AttachKeyPairRequest
 //
@@ -1909,21 +1947,21 @@ func (client *Client) AttachKeyPairWithOptions(request *AttachKeyPairRequest, ru
 
 // Summary:
 //
-// Binds an SSH key pair to one or more Linux instances.
+// Bind an SSH key pair to one or more Linux instances.
 //
 // Description:
 //
-// Take note of the following items:
+// When you call this operation, take note of the following items:
 //
-// - SSH key pairs are not supported on Windows instances.
+// - Windows instances do not support SSH key pairs.
 //
-// - If an SSH key pair is bound to an instance, authentication by using the username and password is disabled for the instance.
+// - After you bind an SSH key pair to an instance, authentication by using a username and password is disabled.
 //
-// - If you bind an SSH key pair to an instance in the **running*	- state, you must call the [RebootInstance](https://help.aliyun.com/document_detail/25502.html) operation to restart the instance for the key pair to take effect.
+// - If the instance is in the **Running*	- state, restart the instance ([RebootInstance](https://help.aliyun.com/document_detail/25502.html)) for the SSH key pair to take effect.
 //
-// - If you bind an SSH key pair to an instance in the **stopped*	- state, you must call the [StartInstance](https://help.aliyun.com/document_detail/25500.html) operation to start the instance for the key pair to take effect.
+// - If the instance is in the **Stopped*	- state, start the instance ([StartInstance](https://help.aliyun.com/document_detail/25500.html)) for the SSH key pair to take effect.
 //
-// - If an instance is already bound to an SSH key pair, the new SSH key pair will replace the original one.
+// - If an SSH key pair is already bound to the instance, the new SSH key pair automatically replaces the original one.
 //
 // @param request - AttachKeyPairRequest
 //
@@ -2877,15 +2915,15 @@ func (client *Client) CancelAutoSnapshotPolicy(request *CancelAutoSnapshotPolicy
 
 // Summary:
 //
-// Cancels an ongoing image copy task.
+// Cancels an ongoing CopyImage task.
 //
 // Description:
 //
 // When you call this operation, take note of the following items:
 //
-// - After you cancel an image copy task, the image copy created in the destination region is deleted, and the copied image remains unchanged.
+// - After you cancel the image copy task, the image that was being created in the destination region is automatically deleted. The source image remains unchanged.
 //
-// - If the image copy task is complete, the CancelCopyImage operation fails, and an error is returned.
+// - If the image copy task is already complete, the operation fails and an error message is returned.
 //
 // @param request - CancelCopyImageRequest
 //
@@ -2949,15 +2987,15 @@ func (client *Client) CancelCopyImageWithOptions(request *CancelCopyImageRequest
 
 // Summary:
 //
-// Cancels an ongoing image copy task.
+// Cancels an ongoing CopyImage task.
 //
 // Description:
 //
 // When you call this operation, take note of the following items:
 //
-// - After you cancel an image copy task, the image copy created in the destination region is deleted, and the copied image remains unchanged.
+// - After you cancel the image copy task, the image that was being created in the destination region is automatically deleted. The source image remains unchanged.
 //
-// - If the image copy task is complete, the CancelCopyImage operation fails, and an error is returned.
+// - If the image copy task is already complete, the operation fails and an error message is returned.
 //
 // @param request - CancelCopyImageRequest
 //
@@ -3168,7 +3206,7 @@ func (client *Client) CancelPhysicalConnection(request *CancelPhysicalConnection
 
 // Summary:
 //
-// Cancels simulated system events that are in the Scheduled or Executing state. After you cancel a simulated system event, the simulated event enters the Canceled state.
+// Cancels one or more simulated system events that are in the Scheduled or Executing state. After a system event is canceled, the simulated event enters the Canceled state.
 //
 // @param request - CancelSimulatedSystemEventsRequest
 //
@@ -3236,7 +3274,7 @@ func (client *Client) CancelSimulatedSystemEventsWithOptions(request *CancelSimu
 
 // Summary:
 //
-// Cancels simulated system events that are in the Scheduled or Executing state. After you cancel a simulated system event, the simulated event enters the Canceled state.
+// Cancels one or more simulated system events that are in the Scheduled or Executing state. After a system event is canceled, the simulated event enters the Canceled state.
 //
 // @param request - CancelSimulatedSystemEventsRequest
 //
@@ -5333,25 +5371,25 @@ func (client *Client) CreateDiagnosticReport(request *CreateDiagnosticReportRequ
 
 // Summary:
 //
-// Create a pay-as-you-go or subscription data disk.
+// Creates a pay-as-you-go or subscription data disk.
 //
 // Description:
 //
-// - When you create a disk, you can enable the multi-attach feature (`MultiAttach`). We recommend that you understand this feature and its limitations. For more information, see [NVMe support for ESSDs](https://help.aliyun.com/document_detail/256487.html) and [Use the multi-attach feature](https://help.aliyun.com/document_detail/262105.html).
+// - When creating a disk, you can enable the multi-attach feature (`MultiAttach`). We recommend that you understand this feature and its usage restrictions first. For more information, see [NVMe support for ESSDs](https://help.aliyun.com/document_detail/256487.html) and [Use the multi-attach feature](https://help.aliyun.com/document_detail/262105.html).
 //
-// - Supported disk types: basic cloud disk, ultra cloud disk, SSD cloud disk, ESSD, ESSD Entry cloud disk, ESSD Zone-Redundant (ZR) disk, ESSD AutoPL cloud disk, elastic temporary disk-standard, and elastic temporary disk-premium.
+// - Supported disk types: basic disk, ultra disk, standard SSD, ESSD, ESSD Entry disk, ESSD zone-redundant disk, ESSD AutoPL disk, elastic ephemeral disk - standard, and elastic ephemeral disk - premium.
 //
-// - To create a disk, you must complete real-name registration. You can complete the [real-name registration](https://account.console.aliyun.com/#/auth/home) in your account information.
+// - Creating a disk requires real-name verification. Go to [Real-name verification](https://account.console.aliyun.com/#/auth/home) in account information.
 //
-// - Creating a disk incurs charges. Before proceeding, review the [billing overview](https://help.aliyun.com/document_detail/25398.html) to understand the billing methods for ECS.
+// - Creating a disk involves resource billing. We recommend that you understand the billing methods of ECS in advance. For more information, see [Billing overview](https://help.aliyun.com/document_detail/25398.html).
 //
-// - Default settings when you create a disk:
+// - Default settings when creating a disk:
 //
-//   - By default, deleting a disk also deletes its automatic snapshots. This means the `DeleteAutoSnapshot` parameter is set to `true`. You can call [DescribeDisks](https://help.aliyun.com/document_detail/2679767.html) to query this setting and [ModifyDiskAttribute](https://help.aliyun.com/document_detail/25517.html) to modify it.
+//   - Automatic snapshots of the disk are deleted when the disk is deleted, that is, `DeleteAutoSnapshot` is set to `true`. You can call [DescribeDisks](https://help.aliyun.com/document_detail/2679767.html) to query this parameter and call [ModifyDiskAttribute](https://help.aliyun.com/document_detail/25517.html) to modify it.
 //
-//   - When you create an ESSD without specifying a disk performance level, it defaults to PL1. You can call [ModifyDiskSpec](https://help.aliyun.com/document_detail/123780.html) to modify the disk performance level.
+//   - When creating an ESSD, if you do not set the disk performance level, the default is PL1. You can modify the disk performance level through [ModifyDiskSpec](https://help.aliyun.com/document_detail/123780.html).
 //
-//   - The default billing method is pay-as-you-go, which means the `Portable` attribute is set to `true`.
+//   - The billing method is pay-as-you-go, that is, the default `Portable` attribute is `true`.
 //
 // @param request - CreateDiskRequest
 //
@@ -5499,25 +5537,25 @@ func (client *Client) CreateDiskWithOptions(request *CreateDiskRequest, runtime 
 
 // Summary:
 //
-// Create a pay-as-you-go or subscription data disk.
+// Creates a pay-as-you-go or subscription data disk.
 //
 // Description:
 //
-// - When you create a disk, you can enable the multi-attach feature (`MultiAttach`). We recommend that you understand this feature and its limitations. For more information, see [NVMe support for ESSDs](https://help.aliyun.com/document_detail/256487.html) and [Use the multi-attach feature](https://help.aliyun.com/document_detail/262105.html).
+// - When creating a disk, you can enable the multi-attach feature (`MultiAttach`). We recommend that you understand this feature and its usage restrictions first. For more information, see [NVMe support for ESSDs](https://help.aliyun.com/document_detail/256487.html) and [Use the multi-attach feature](https://help.aliyun.com/document_detail/262105.html).
 //
-// - Supported disk types: basic cloud disk, ultra cloud disk, SSD cloud disk, ESSD, ESSD Entry cloud disk, ESSD Zone-Redundant (ZR) disk, ESSD AutoPL cloud disk, elastic temporary disk-standard, and elastic temporary disk-premium.
+// - Supported disk types: basic disk, ultra disk, standard SSD, ESSD, ESSD Entry disk, ESSD zone-redundant disk, ESSD AutoPL disk, elastic ephemeral disk - standard, and elastic ephemeral disk - premium.
 //
-// - To create a disk, you must complete real-name registration. You can complete the [real-name registration](https://account.console.aliyun.com/#/auth/home) in your account information.
+// - Creating a disk requires real-name verification. Go to [Real-name verification](https://account.console.aliyun.com/#/auth/home) in account information.
 //
-// - Creating a disk incurs charges. Before proceeding, review the [billing overview](https://help.aliyun.com/document_detail/25398.html) to understand the billing methods for ECS.
+// - Creating a disk involves resource billing. We recommend that you understand the billing methods of ECS in advance. For more information, see [Billing overview](https://help.aliyun.com/document_detail/25398.html).
 //
-// - Default settings when you create a disk:
+// - Default settings when creating a disk:
 //
-//   - By default, deleting a disk also deletes its automatic snapshots. This means the `DeleteAutoSnapshot` parameter is set to `true`. You can call [DescribeDisks](https://help.aliyun.com/document_detail/2679767.html) to query this setting and [ModifyDiskAttribute](https://help.aliyun.com/document_detail/25517.html) to modify it.
+//   - Automatic snapshots of the disk are deleted when the disk is deleted, that is, `DeleteAutoSnapshot` is set to `true`. You can call [DescribeDisks](https://help.aliyun.com/document_detail/2679767.html) to query this parameter and call [ModifyDiskAttribute](https://help.aliyun.com/document_detail/25517.html) to modify it.
 //
-//   - When you create an ESSD without specifying a disk performance level, it defaults to PL1. You can call [ModifyDiskSpec](https://help.aliyun.com/document_detail/123780.html) to modify the disk performance level.
+//   - When creating an ESSD, if you do not set the disk performance level, the default is PL1. You can modify the disk performance level through [ModifyDiskSpec](https://help.aliyun.com/document_detail/123780.html).
 //
-//   - The default billing method is pay-as-you-go, which means the `Portable` attribute is set to `true`.
+//   - The billing method is pay-as-you-go, that is, the default `Portable` attribute is `true`.
 //
 // @param request - CreateDiskRequest
 //
@@ -6207,21 +6245,21 @@ func (client *Client) CreateImage(request *CreateImageRequest) (_result *CreateI
 
 // Summary:
 //
-// Creates an image component. Image components are used to store the builder template commands that are commonly used when you create images.
+// Creates an image component. Image components store commonly used build template commands for image building.
 //
 // Description:
 //
-// ## [](#)Usage notes
+// ## Operation description
 //
-// Take note of the following items:
+// Before you create an image component, take note of the following items:
 //
 // - You can create only custom image components.
 //
-// - Each version number of an image component must be unique. When you add a version of an image component to an image template, you can specify the component by its name and version number.
+// - Component version numbers must be unique for components with the same name. When you use a component in a template, you can reference it by name and version number.
 //
-// - The content size of an image component cannot exceed 16 KB. For information about the commands supported by Image Builder, see [Commands supported by Image Builder](https://help.aliyun.com/document_detail/200206.html).
+// - The content size of an image component cannot exceed 16 KB. For details about supported commands, see [Commands supported by Image Builder](https://help.aliyun.com/document_detail/200206.html).
 //
-// For more information, see [Image Builder](https://help.aliyun.com/document_detail/197410.html).
+// For more information, see [Image Builder overview](https://help.aliyun.com/document_detail/197410.html).
 //
 // @param request - CreateImageComponentRequest
 //
@@ -6325,21 +6363,21 @@ func (client *Client) CreateImageComponentWithOptions(request *CreateImageCompon
 
 // Summary:
 //
-// Creates an image component. Image components are used to store the builder template commands that are commonly used when you create images.
+// Creates an image component. Image components store commonly used build template commands for image building.
 //
 // Description:
 //
-// ## [](#)Usage notes
+// ## Operation description
 //
-// Take note of the following items:
+// Before you create an image component, take note of the following items:
 //
 // - You can create only custom image components.
 //
-// - Each version number of an image component must be unique. When you add a version of an image component to an image template, you can specify the component by its name and version number.
+// - Component version numbers must be unique for components with the same name. When you use a component in a template, you can reference it by name and version number.
 //
-// - The content size of an image component cannot exceed 16 KB. For information about the commands supported by Image Builder, see [Commands supported by Image Builder](https://help.aliyun.com/document_detail/200206.html).
+// - The content size of an image component cannot exceed 16 KB. For details about supported commands, see [Commands supported by Image Builder](https://help.aliyun.com/document_detail/200206.html).
 //
-// For more information, see [Image Builder](https://help.aliyun.com/document_detail/197410.html).
+// For more information, see [Image Builder overview](https://help.aliyun.com/document_detail/197410.html).
 //
 // @param request - CreateImageComponentRequest
 //
@@ -6969,13 +7007,13 @@ func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *C
 
 // Summary:
 //
-// Creates an SSH key pair. The system stores the public key and returns the unencrypted private key. The private key is encoded with PEM in the PKCS#8 format. You must properly store the private key and ensure its confidentiality.
+// Calls CreateKeyPair to create an SSH key pair. The system stores the public key and returns the unencrypted PEM-encoded PKCS#8 format private key. You must securely store the private key on your own.
 //
 // Description:
 //
-// In addition to calling the CreateKeyPair operation to create a key pair, you can use a third-party tool to create a key pair and then call the [ImportKeyPair](https://help.aliyun.com/document_detail/51774.html) operation to upload the key pair to an Alibaba Cloud region.
+// In addition to calling CreateKeyPair to create a key pair, you can use a third-party tool to create a key pair and then upload it ([ImportKeyPair](https://help.aliyun.com/document_detail/51774.html)) to a region. The usage of a key pair created by a third-party tool is the same as that of a key pair created by the system.
 //
-// Up to 500 key pairs can be created in each region. For more information, see the "SSH key pair limits" section in [Limits](https://help.aliyun.com/document_detail/25412.html).
+// You can have up to 500 key pairs in each region. For more information, see [Limits](https://help.aliyun.com/document_detail/25412.html).
 //
 // @param request - CreateKeyPairRequest
 //
@@ -7043,13 +7081,13 @@ func (client *Client) CreateKeyPairWithOptions(request *CreateKeyPairRequest, ru
 
 // Summary:
 //
-// Creates an SSH key pair. The system stores the public key and returns the unencrypted private key. The private key is encoded with PEM in the PKCS#8 format. You must properly store the private key and ensure its confidentiality.
+// Calls CreateKeyPair to create an SSH key pair. The system stores the public key and returns the unencrypted PEM-encoded PKCS#8 format private key. You must securely store the private key on your own.
 //
 // Description:
 //
-// In addition to calling the CreateKeyPair operation to create a key pair, you can use a third-party tool to create a key pair and then call the [ImportKeyPair](https://help.aliyun.com/document_detail/51774.html) operation to upload the key pair to an Alibaba Cloud region.
+// In addition to calling CreateKeyPair to create a key pair, you can use a third-party tool to create a key pair and then upload it ([ImportKeyPair](https://help.aliyun.com/document_detail/51774.html)) to a region. The usage of a key pair created by a third-party tool is the same as that of a key pair created by the system.
 //
-// Up to 500 key pairs can be created in each region. For more information, see the "SSH key pair limits" section in [Limits](https://help.aliyun.com/document_detail/25412.html).
+// You can have up to 500 key pairs in each region. For more information, see [Limits](https://help.aliyun.com/document_detail/25412.html).
 //
 // @param request - CreateKeyPairRequest
 //
@@ -8096,7 +8134,7 @@ func (client *Client) CreateNetworkInterface(request *CreateNetworkInterfaceRequ
 
 // Summary:
 //
-// Use CreateNetworkInterfacePermission to grant permissions on an elastic network interface to an Alibaba Cloud partner—a certified ISV—or an individual user.
+// Grants elastic network interface (ENI) permissions to an Alibaba Cloud partner (certified ISV) or an individual user.
 //
 // @param request - CreateNetworkInterfacePermissionRequest
 //
@@ -8172,7 +8210,7 @@ func (client *Client) CreateNetworkInterfacePermissionWithOptions(request *Creat
 
 // Summary:
 //
-// Use CreateNetworkInterfacePermission to grant permissions on an elastic network interface to an Alibaba Cloud partner—a certified ISV—or an individual user.
+// Grants elastic network interface (ENI) permissions to an Alibaba Cloud partner (certified ISV) or an individual user.
 //
 // @param request - CreateNetworkInterfacePermissionRequest
 //
@@ -8325,7 +8363,7 @@ func (client *Client) CreatePhysicalConnection(request *CreatePhysicalConnection
 
 // Summary:
 //
-// If an O&M window targets an ECS instance using the `TargetResource` parameter and a hardware issue requires planned O&M, the platform schedules the execution time within the interval defined in the `TimePeriod` parameter. At the scheduled execution time, the platform automatically performs the necessary O&M operations based on the event type.
+// Creates an O&M window. When the TargetResource parameter of the O&M window is set to associate with ECS instances and a hardware risk is detected at the underlying layer that requires scheduled O&M to mitigate, the execution time of the scheduled O&M is determined based on the time range specified by the TimePeriod parameter. When the execution time of the O&M event is reached, the platform automatically performs the corresponding O&M operation based on the event type.
 //
 // @param tmpReq - CreatePlanMaintenanceWindowRequest
 //
@@ -8403,7 +8441,7 @@ func (client *Client) CreatePlanMaintenanceWindowWithOptions(tmpReq *CreatePlanM
 
 // Summary:
 //
-// If an O&M window targets an ECS instance using the `TargetResource` parameter and a hardware issue requires planned O&M, the platform schedules the execution time within the interval defined in the `TimePeriod` parameter. At the scheduled execution time, the platform automatically performs the necessary O&M operations based on the event type.
+// Creates an O&M window. When the TargetResource parameter of the O&M window is set to associate with ECS instances and a hardware risk is detected at the underlying layer that requires scheduled O&M to mitigate, the execution time of the scheduled O&M is determined based on the time range specified by the TimePeriod parameter. When the execution time of the O&M event is reached, the platform automatically performs the corresponding O&M operation based on the event type.
 //
 // @param request - CreatePlanMaintenanceWindowRequest
 //
@@ -8790,7 +8828,7 @@ func (client *Client) CreateRouteEntry(request *CreateRouteEntryRequest) (_resul
 //
 // Summary:
 //
-// # CreateRouterInterface
+// CreateRouterInterface.
 //
 // @param request - CreateRouterInterfaceRequest
 //
@@ -8940,7 +8978,7 @@ func (client *Client) CreateRouterInterfaceWithOptions(request *CreateRouterInte
 //
 // Summary:
 //
-// # CreateRouterInterface
+// CreateRouterInterface.
 //
 // @param request - CreateRouterInterfaceRequest
 //
@@ -9187,21 +9225,21 @@ func (client *Client) CreateSecurityGroup(request *CreateSecurityGroupRequest) (
 
 // Summary:
 //
-// Schedules simulated system events of Elastic Compute Service (ECS) instances. The simulated system events do not actually occur on or affect ECS instances.
+// Schedules simulated system events for one or more ECS instances. Simulated system events are equivalent to event drills. They do not actually execute the events or affect ECS instances.
 //
 // Description:
 //
-// You can use the ECS console, call [ECS API](https://help.aliyun.com/document_detail/63962.html) operations, or use CloudMonitor to view the scheduled simulated system events.
+// After you schedule simulated events, you can view the scheduled simulated system events in the ECS console, by calling [ECS API](https://help.aliyun.com/document_detail/63962.html) operations, or by using CloudMonitor.
 //
-// The following descriptions provide the lifecycle of a simulated system event:
+// The following list describes the lifecycle of simulated system events:
 //
-// - Scheduled: The state of the simulated system event is automatically changed to Scheduled after it is scheduled.
+// - Scheduled: After the simulated system event is scheduled, it automatically enters the Scheduled state.
 //
-// - Executed: The state of the simulated system event is automatically changed to Executed at the time specified by the NotBefore parameter if no manual intervention is involved.
+// - Executed: If no manual intervention is performed, the simulated system event automatically enters the Executed state at the specified point in time (NotBefore).
 //
-// - Canceled: The state of the simulated system event is changed to Canceled if you cancel the event by calling the [CancelSimulatedSystemEvents](https://help.aliyun.com/document_detail/88808.html) operation.
+// - Canceled: After you call [CancelSimulatedSystemEvents](https://help.aliyun.com/document_detail/88808.html) to cancel the simulated system event, the event enters the Canceled state.
 //
-// - Avoided: The state of the simulated system event generated from maintenance-triggered instance restart can be changed to Avoided if you restart the instance before the scheduled time of the simulated system event. The maintenance-triggered instance restart is indicated by the SystemMaintenance.Reboot value. For more information, see [RebootInstance](https://help.aliyun.com/document_detail/25502.html).
+// - Avoided: For simulated system events of the SystemMaintenance.Reboot type, you can [restart the instance](https://help.aliyun.com/document_detail/25502.html) before the scheduled time to change the event to the Avoided state.
 //
 // @param request - CreateSimulatedSystemEventsRequest
 //
@@ -9277,21 +9315,21 @@ func (client *Client) CreateSimulatedSystemEventsWithOptions(request *CreateSimu
 
 // Summary:
 //
-// Schedules simulated system events of Elastic Compute Service (ECS) instances. The simulated system events do not actually occur on or affect ECS instances.
+// Schedules simulated system events for one or more ECS instances. Simulated system events are equivalent to event drills. They do not actually execute the events or affect ECS instances.
 //
 // Description:
 //
-// You can use the ECS console, call [ECS API](https://help.aliyun.com/document_detail/63962.html) operations, or use CloudMonitor to view the scheduled simulated system events.
+// After you schedule simulated events, you can view the scheduled simulated system events in the ECS console, by calling [ECS API](https://help.aliyun.com/document_detail/63962.html) operations, or by using CloudMonitor.
 //
-// The following descriptions provide the lifecycle of a simulated system event:
+// The following list describes the lifecycle of simulated system events:
 //
-// - Scheduled: The state of the simulated system event is automatically changed to Scheduled after it is scheduled.
+// - Scheduled: After the simulated system event is scheduled, it automatically enters the Scheduled state.
 //
-// - Executed: The state of the simulated system event is automatically changed to Executed at the time specified by the NotBefore parameter if no manual intervention is involved.
+// - Executed: If no manual intervention is performed, the simulated system event automatically enters the Executed state at the specified point in time (NotBefore).
 //
-// - Canceled: The state of the simulated system event is changed to Canceled if you cancel the event by calling the [CancelSimulatedSystemEvents](https://help.aliyun.com/document_detail/88808.html) operation.
+// - Canceled: After you call [CancelSimulatedSystemEvents](https://help.aliyun.com/document_detail/88808.html) to cancel the simulated system event, the event enters the Canceled state.
 //
-// - Avoided: The state of the simulated system event generated from maintenance-triggered instance restart can be changed to Avoided if you restart the instance before the scheduled time of the simulated system event. The maintenance-triggered instance restart is indicated by the SystemMaintenance.Reboot value. For more information, see [RebootInstance](https://help.aliyun.com/document_detail/25502.html).
+// - Avoided: For simulated system events of the SystemMaintenance.Reboot type, you can [restart the instance](https://help.aliyun.com/document_detail/25502.html) before the scheduled time to change the event to the Avoided state.
 //
 // @param request - CreateSimulatedSystemEventsRequest
 //
@@ -10853,7 +10891,7 @@ func (client *Client) DeleteDedicatedHostCluster(request *DeleteDedicatedHostClu
 //
 // Description:
 //
-// Before you delete a deployment set, make sure that no instances exist in the deployment set. If instances exist in the deployment set, move the instances to a different deployment set or release the instances before you delete the deployment set. For more information, see [Change the deployment set of an instance](https://help.aliyun.com/document_detail/108407.html) and [Release an ECS instance](https://help.aliyun.com/document_detail/25442.html).
+// Before you delete a deployment set, make sure that no instances are in the deployment set. If instances exist, you must remove or release the instances before you can delete the deployment set. For more information, see [Change the deployment set of an instance](https://help.aliyun.com/document_detail/108407.html) and [Release an ECS instance](https://help.aliyun.com/document_detail/25442.html).
 //
 // @param request - DeleteDeploymentSetRequest
 //
@@ -10921,7 +10959,7 @@ func (client *Client) DeleteDeploymentSetWithOptions(request *DeleteDeploymentSe
 //
 // Description:
 //
-// Before you delete a deployment set, make sure that no instances exist in the deployment set. If instances exist in the deployment set, move the instances to a different deployment set or release the instances before you delete the deployment set. For more information, see [Change the deployment set of an instance](https://help.aliyun.com/document_detail/108407.html) and [Release an ECS instance](https://help.aliyun.com/document_detail/25442.html).
+// Before you delete a deployment set, make sure that no instances are in the deployment set. If instances exist, you must remove or release the instances before you can delete the deployment set. For more information, see [Change the deployment set of an instance](https://help.aliyun.com/document_detail/108407.html) and [Release an ECS instance](https://help.aliyun.com/document_detail/25442.html).
 //
 // @param request - DeleteDeploymentSetRequest
 //
@@ -11079,19 +11117,19 @@ func (client *Client) DeleteDiagnosticReports(request *DeleteDiagnosticReportsRe
 
 // Summary:
 //
-// Deletes a pay-as-you-go data disk. The data disk can be a basic disk, an ultra disk, a standard SSD, or an Enterprise SSD (ESSD).
+// Releases a pay-as-you-go data disk. Supported disk types include basic disks, ultra disks, standard SSDs, and enterprise SSDs (ESSDs).
 //
 // Description:
 //
-// When you call this operation, take note of the following items:
+// When you invoke this operation, take note of the following items:
 //
 // - Manual snapshots of the disk are retained.
 //
-// - You can call the [ModifyDiskAttribute](https://help.aliyun.com/document_detail/25517.html) operation to configure whether to retain automatic snapshots of the disk or release the snapshots along with the disk. We recommend that you delete the snapshots that are no longer needed to maintain a sufficient quota for new automatic snapshots.
+// - You can invoke [ModifyDiskAttribute](https://help.aliyun.com/document_detail/25517.html) to specify whether to retain or release automatic snapshots along with the disk. Delete unnecessary snapshots promptly to maintain sufficient snapshot quota for epoch-based automatic snapshot policy execution.
 //
-// - The disk must be in the Unattached (Available) state.
+// - The disk must be in the **Unattached*	- (Available) state when you release it.
 //
-// - If the specified DiskId parameter does not exist, the request is ignored.
+// - If the disk with the specified ID does not exist, the request is ignored.
 //
 // @param request - DeleteDiskRequest
 //
@@ -11151,19 +11189,19 @@ func (client *Client) DeleteDiskWithOptions(request *DeleteDiskRequest, runtime 
 
 // Summary:
 //
-// Deletes a pay-as-you-go data disk. The data disk can be a basic disk, an ultra disk, a standard SSD, or an Enterprise SSD (ESSD).
+// Releases a pay-as-you-go data disk. Supported disk types include basic disks, ultra disks, standard SSDs, and enterprise SSDs (ESSDs).
 //
 // Description:
 //
-// When you call this operation, take note of the following items:
+// When you invoke this operation, take note of the following items:
 //
 // - Manual snapshots of the disk are retained.
 //
-// - You can call the [ModifyDiskAttribute](https://help.aliyun.com/document_detail/25517.html) operation to configure whether to retain automatic snapshots of the disk or release the snapshots along with the disk. We recommend that you delete the snapshots that are no longer needed to maintain a sufficient quota for new automatic snapshots.
+// - You can invoke [ModifyDiskAttribute](https://help.aliyun.com/document_detail/25517.html) to specify whether to retain or release automatic snapshots along with the disk. Delete unnecessary snapshots promptly to maintain sufficient snapshot quota for epoch-based automatic snapshot policy execution.
 //
-// - The disk must be in the Unattached (Available) state.
+// - The disk must be in the **Unattached*	- (Available) state when you release it.
 //
-// - If the specified DiskId parameter does not exist, the request is ignored.
+// - If the disk with the specified ID does not exist, the request is ignored.
 //
 // @param request - DeleteDiskRequest
 //
@@ -11363,7 +11401,7 @@ func (client *Client) DeleteHaVip(request *DeleteHaVipRequest) (_result *DeleteH
 
 // Summary:
 //
-// Deletes a high performance computing (HPC) cluster.
+// Deletes a High Performance Computing (HPC) cluster.
 //
 // @param request - DeleteHpcClusterRequest
 //
@@ -11435,7 +11473,7 @@ func (client *Client) DeleteHpcClusterWithOptions(request *DeleteHpcClusterReque
 
 // Summary:
 //
-// Deletes a high performance computing (HPC) cluster.
+// Deletes a High Performance Computing (HPC) cluster.
 //
 // @param request - DeleteHpcClusterRequest
 //
@@ -11453,11 +11491,11 @@ func (client *Client) DeleteHpcCluster(request *DeleteHpcClusterRequest) (_resul
 
 // Summary:
 //
-// Deletes a custom image by the specified `ImageId`. You can set the `Force` parameter to `true` to force the deletion.
+// Calls the DeleteImage operation. You can specify the ImageId and Force parameters to delete a custom image.
 //
 // Description:
 //
-// For information about deletion restrictions and precautions, see [Delete a custom image](https://help.aliyun.com/document_detail/25466.html).
+// For scenarios where deleting a custom image is not allowed and precautions after an image is deleted, see [Delete a custom image](https://help.aliyun.com/document_detail/25466.html).
 //
 // @param request - DeleteImageRequest
 //
@@ -11529,11 +11567,11 @@ func (client *Client) DeleteImageWithOptions(request *DeleteImageRequest, runtim
 
 // Summary:
 //
-// Deletes a custom image by the specified `ImageId`. You can set the `Force` parameter to `true` to force the deletion.
+// Calls the DeleteImage operation. You can specify the ImageId and Force parameters to delete a custom image.
 //
 // Description:
 //
-// For information about deletion restrictions and precautions, see [Delete a custom image](https://help.aliyun.com/document_detail/25466.html).
+// For scenarios where deleting a custom image is not allowed and precautions after an image is deleted, see [Delete a custom image](https://help.aliyun.com/document_detail/25466.html).
 //
 // @param request - DeleteImageRequest
 //
@@ -11551,13 +11589,13 @@ func (client *Client) DeleteImage(request *DeleteImageRequest) (_result *DeleteI
 
 // Summary:
 //
-// Deletes an image component. You can specify RegionId and ImageComponentId in the request.
+// Deletes an image component by specifying the RegionId and ImageComponentId parameters.
 //
 // Description:
 //
-// - Only custom image components can be deleted.
+// - Only custom image components that you have created can be deleted.
 //
-// - When you delete a component, make sure that the component is not used in the template. Otherwise, the component fails to be deleted.
+// - Before deleting a component, make sure that the component is not used in any template. Otherwise, the deletion fails.
 //
 // @param request - DeleteImageComponentRequest
 //
@@ -11625,13 +11663,13 @@ func (client *Client) DeleteImageComponentWithOptions(request *DeleteImageCompon
 
 // Summary:
 //
-// Deletes an image component. You can specify RegionId and ImageComponentId in the request.
+// Deletes an image component by specifying the RegionId and ImageComponentId parameters.
 //
 // Description:
 //
-// - Only custom image components can be deleted.
+// - Only custom image components that you have created can be deleted.
 //
-// - When you delete a component, make sure that the component is not used in the template. Otherwise, the component fails to be deleted.
+// - Before deleting a component, make sure that the component is not used in any template. Otherwise, the deletion fails.
 //
 // @param request - DeleteImageComponentRequest
 //
@@ -11653,7 +11691,7 @@ func (client *Client) DeleteImageComponent(request *DeleteImageComponentRequest)
 //
 // Description:
 //
-// If an ongoing image building task is associated with an image template, you cannot delete the image template. You can delete the image template only if the image building task reaches the SUCCESS, FAILED, TEST_FAILED, PARTITION_SUCCESS, or CANCELLED state. You can call the DescribeImagePipelineExecutions operation to query the details of an image building task.
+// If a build task is running, you cannot directly delete the template. Wait until the build task reaches a desired state: SUCCESS, FAILED, TEST_FAILED, PARTITION_SUCCESS, or CANCELLED. You can call [DescribeImagePipelineExecutions](https://help.aliyun.com/document_detail/25609.html) to query the details of build tasks.
 //
 // @param request - DeleteImagePipelineRequest
 //
@@ -11725,7 +11763,7 @@ func (client *Client) DeleteImagePipelineWithOptions(request *DeleteImagePipelin
 //
 // Description:
 //
-// If an ongoing image building task is associated with an image template, you cannot delete the image template. You can delete the image template only if the image building task reaches the SUCCESS, FAILED, TEST_FAILED, PARTITION_SUCCESS, or CANCELLED state. You can call the DescribeImagePipelineExecutions operation to query the details of an image building task.
+// If a build task is running, you cannot directly delete the template. Wait until the build task reaches a desired state: SUCCESS, FAILED, TEST_FAILED, PARTITION_SUCCESS, or CANCELLED. You can call [DescribeImagePipelineExecutions](https://help.aliyun.com/document_detail/25609.html) to query the details of build tasks.
 //
 // @param request - DeleteImagePipelineRequest
 //
@@ -11743,27 +11781,27 @@ func (client *Client) DeleteImagePipeline(request *DeleteImagePipelineRequest) (
 
 // Summary:
 //
-// Deletes or releases a pay-as-you-go Elastic Compute Service (ECS) instance or an expired subscription ECS instance. You can configure parameters to specify whether to release the disks attached to the instance or retain the disks as pay-as-you-go disks.
+// Deletes or releases a specified ECS instance.
 //
 // Description:
 //
-// \\*\\*
+//	Warning:
 //
-// **Warning*	- After you release an instance, the physical resources used by the instance are recycled. Relevant data is erased and cannot be restored.
+// After an instance is released, all physical resources used by the instance are reclaimed. All related data is permanently lost and cannot be recovered.
 //
-// - After you release an instance, manual snapshots of the cloud disks attached to the instance are retained and continue to be billed. You can call the [DeleteSnapshot](https://help.aliyun.com/document_detail/2679824.html) operation to delete the snapshots.
+// .
 //
-// - After you release an instance, whether the cloud disks attached to the instance and the automatic snapshots of the disks are released is determined by the disk attributes. Before you release an instance, you can call the [DescribeDisks](https://help.aliyun.com/document_detail/2679767.html) and [ModifyDiskAttribute](https://help.aliyun.com/document_detail/2679770.html) operations to query and modify disk attributes.
+// - Manual snapshots of disks are retained and continue to incur charges. You can delete them by calling [DeleteSnapshot](https://help.aliyun.com/document_detail/2679824.html).
 //
-//   - The cloud disks for which `DeleteWithInstance` is set to false are retained as pay-as-you-go disks after the instance is released. The cloud disks for which DeleteWithInstance is set to true are released along with the instance.
+// - Whether disks attached to the instance and automatic snapshots are released depends on the parameter settings specified when they were created. Before you release an instance, you can call [DescribeDisks](https://help.aliyun.com/document_detail/2679767.html) and [ModifyDiskAttribute](https://help.aliyun.com/document_detail/2679770.html) to query and modify the related parameter settings:
 //
-//   - If `DeleteAutoSnapshot` is set to false for a cloud disk attached to the instance, the automatic snapshots of the cloud disk are retained when the instance is released. If DeleteAutoSnapshot is set to true for the cloud disk, the automatic snapshots of the disk are released along with the instance.
+//   - If `DeleteWithInstance=false`, the disk is converted to a pay-as-you-go disk and retained. Otherwise, the disk is released along with the instance.
 //
-// - Elastic IP addresses (EIPs) are not released together with instances. You can call the [ReleaseEipAddress](https://help.aliyun.com/document_detail/448702.html) operation to release EIPs.
+//   - If `DeleteAutoSnapshot=false`, automatic snapshots are retained. Otherwise, they are released along with the instance.
 //
-//	\\*\\*
+// - Elastic IP addresses (EIPs) are not released along with the instance. You can call [ReleaseEipAddress](https://help.aliyun.com/document_detail/448702.html) to release them.
 //
-//	**Note*	- When you release an instance that is locked for security reasons, the cloud disks attached to the instance are released even if DeleteWithInstance is set to false.
+//	Notice: For a security-locked instance, even if the `DeleteWithInstance` parameter of a disk is set to `false`, this attribute is ignored and the disk is released along with the instance..
 //
 // @param request - DeleteInstanceRequest
 //
@@ -11839,27 +11877,27 @@ func (client *Client) DeleteInstanceWithOptions(request *DeleteInstanceRequest, 
 
 // Summary:
 //
-// Deletes or releases a pay-as-you-go Elastic Compute Service (ECS) instance or an expired subscription ECS instance. You can configure parameters to specify whether to release the disks attached to the instance or retain the disks as pay-as-you-go disks.
+// Deletes or releases a specified ECS instance.
 //
 // Description:
 //
-// \\*\\*
+//	Warning:
 //
-// **Warning*	- After you release an instance, the physical resources used by the instance are recycled. Relevant data is erased and cannot be restored.
+// After an instance is released, all physical resources used by the instance are reclaimed. All related data is permanently lost and cannot be recovered.
 //
-// - After you release an instance, manual snapshots of the cloud disks attached to the instance are retained and continue to be billed. You can call the [DeleteSnapshot](https://help.aliyun.com/document_detail/2679824.html) operation to delete the snapshots.
+// .
 //
-// - After you release an instance, whether the cloud disks attached to the instance and the automatic snapshots of the disks are released is determined by the disk attributes. Before you release an instance, you can call the [DescribeDisks](https://help.aliyun.com/document_detail/2679767.html) and [ModifyDiskAttribute](https://help.aliyun.com/document_detail/2679770.html) operations to query and modify disk attributes.
+// - Manual snapshots of disks are retained and continue to incur charges. You can delete them by calling [DeleteSnapshot](https://help.aliyun.com/document_detail/2679824.html).
 //
-//   - The cloud disks for which `DeleteWithInstance` is set to false are retained as pay-as-you-go disks after the instance is released. The cloud disks for which DeleteWithInstance is set to true are released along with the instance.
+// - Whether disks attached to the instance and automatic snapshots are released depends on the parameter settings specified when they were created. Before you release an instance, you can call [DescribeDisks](https://help.aliyun.com/document_detail/2679767.html) and [ModifyDiskAttribute](https://help.aliyun.com/document_detail/2679770.html) to query and modify the related parameter settings:
 //
-//   - If `DeleteAutoSnapshot` is set to false for a cloud disk attached to the instance, the automatic snapshots of the cloud disk are retained when the instance is released. If DeleteAutoSnapshot is set to true for the cloud disk, the automatic snapshots of the disk are released along with the instance.
+//   - If `DeleteWithInstance=false`, the disk is converted to a pay-as-you-go disk and retained. Otherwise, the disk is released along with the instance.
 //
-// - Elastic IP addresses (EIPs) are not released together with instances. You can call the [ReleaseEipAddress](https://help.aliyun.com/document_detail/448702.html) operation to release EIPs.
+//   - If `DeleteAutoSnapshot=false`, automatic snapshots are retained. Otherwise, they are released along with the instance.
 //
-//	\\*\\*
+// - Elastic IP addresses (EIPs) are not released along with the instance. You can call [ReleaseEipAddress](https://help.aliyun.com/document_detail/448702.html) to release them.
 //
-//	**Note*	- When you release an instance that is locked for security reasons, the cloud disks attached to the instance are released even if DeleteWithInstance is set to false.
+//	Notice: For a security-locked instance, even if the `DeleteWithInstance` parameter of a disk is set to `false`, this attribute is ignored and the disk is released along with the instance..
 //
 // @param request - DeleteInstanceRequest
 //
@@ -11877,25 +11915,27 @@ func (client *Client) DeleteInstance(request *DeleteInstanceRequest) (_result *D
 
 // Summary:
 //
-// Releases multiple pay-as-you-go Elastic Compute Service (ECS) instances or expired subscription ECS instances at a time. You can configure parameters to specify whether to release the disks attached to the instances or retain the disks as pay-as-you-go disks.
+// Deletes or releases multiple pay-as-you-go instances or expired subscription instances in a batch. You can use parameters to specify whether to release or convert cloud disks to pay-as-you-go disks and retain them.
 //
 // Description:
 //
 //	Warning:
 //
-// After you release an instance, the physical resources used by the instance are recycled. Relevant data is erased and cannot be restored.
+// After an instance is released, all physical resources used by the instance are reclaimed. All related data is permanently lost and cannot be recovered.
 //
-// - After you release an instance, manual snapshots of the cloud disks attached to the instance are retained and continue to be billed. You can call the [DeleteSnapshot](https://help.aliyun.com/document_detail/2679824.html) operation to delete the snapshots.
+// .
 //
-// - After you release an instance, whether the cloud disks attached to the instance and the automatic snapshots of the disks are released is determined by the disk attributes. Before you release an instance, you can call the [DescribeDisks](https://help.aliyun.com/document_detail/2679767.html) and [ModifyDiskAttribute](https://help.aliyun.com/document_detail/2679770.html) operations to query and modify disk attributes.
+// - Manual snapshots of cloud disks are retained and continue to incur charges. You can call [DeleteSnapshot](https://help.aliyun.com/document_detail/2679824.html) to delete them.
 //
-//   - If `DeleteWithInstance` is set to false for a cloud disk attached to the instance, the cloud disk is changed to a pay-as-you-go disk and retained after the instance is released. If DeleteWithInstance is set to true for the cloud disk, the disk is released together with the instance.
+// - Whether cloud disks and automatic snapshots attached to the instance are released depends on the parameter settings specified when they were created. Before you release an instance, you can call [DescribeDisks](https://help.aliyun.com/document_detail/2679767.html) and [ModifyDiskAttribute](https://help.aliyun.com/document_detail/2679770.html) to query and modify the related parameter settings:
 //
-//   - If `DeleteAutoSnapshot` is set to false for a cloud disk attached to the instance, the automatic snapshots of the disk are retained when the instance is released. If DeleteAutoSnapshot is set to true for the cloud disk, the automatic snapshots of the disk are released together with the instance.
+//   - If `DeleteWithInstance=false`, the cloud disk is converted to a pay-as-you-go cloud disk and retained. Otherwise, the cloud disk is released along with the instance.
 //
-// - Elastic IP addresses (EIPs) are not released together with instances. You can call the [ReleaseEipAddress](https://help.aliyun.com/document_detail/448702.html) operation to release EIPs.
+//   - If `DeleteAutoSnapshot=false`, the automatic snapshots are retained. Otherwise, the automatic snapshots are released along with the instance.
 //
-// > When you release an instance that is locked for security reasons, the cloud disks attached to the instance are released together with the instance even if DeleteWithInstance is set to false for the disks.
+// - Elastic IP addresses (EIPs) are not released along with the instance. You can call [ReleaseEipAddress](https://help.aliyun.com/document_detail/448702.html) to release them.
+//
+//	Notice: For security-locked instances, even if the `DeleteWithInstance` parameter of a cloud disk is set to `false`, this attribute is ignored and the cloud disk is released along with the instance..
 //
 // @param request - DeleteInstancesRequest
 //
@@ -11979,25 +12019,27 @@ func (client *Client) DeleteInstancesWithOptions(request *DeleteInstancesRequest
 
 // Summary:
 //
-// Releases multiple pay-as-you-go Elastic Compute Service (ECS) instances or expired subscription ECS instances at a time. You can configure parameters to specify whether to release the disks attached to the instances or retain the disks as pay-as-you-go disks.
+// Deletes or releases multiple pay-as-you-go instances or expired subscription instances in a batch. You can use parameters to specify whether to release or convert cloud disks to pay-as-you-go disks and retain them.
 //
 // Description:
 //
 //	Warning:
 //
-// After you release an instance, the physical resources used by the instance are recycled. Relevant data is erased and cannot be restored.
+// After an instance is released, all physical resources used by the instance are reclaimed. All related data is permanently lost and cannot be recovered.
 //
-// - After you release an instance, manual snapshots of the cloud disks attached to the instance are retained and continue to be billed. You can call the [DeleteSnapshot](https://help.aliyun.com/document_detail/2679824.html) operation to delete the snapshots.
+// .
 //
-// - After you release an instance, whether the cloud disks attached to the instance and the automatic snapshots of the disks are released is determined by the disk attributes. Before you release an instance, you can call the [DescribeDisks](https://help.aliyun.com/document_detail/2679767.html) and [ModifyDiskAttribute](https://help.aliyun.com/document_detail/2679770.html) operations to query and modify disk attributes.
+// - Manual snapshots of cloud disks are retained and continue to incur charges. You can call [DeleteSnapshot](https://help.aliyun.com/document_detail/2679824.html) to delete them.
 //
-//   - If `DeleteWithInstance` is set to false for a cloud disk attached to the instance, the cloud disk is changed to a pay-as-you-go disk and retained after the instance is released. If DeleteWithInstance is set to true for the cloud disk, the disk is released together with the instance.
+// - Whether cloud disks and automatic snapshots attached to the instance are released depends on the parameter settings specified when they were created. Before you release an instance, you can call [DescribeDisks](https://help.aliyun.com/document_detail/2679767.html) and [ModifyDiskAttribute](https://help.aliyun.com/document_detail/2679770.html) to query and modify the related parameter settings:
 //
-//   - If `DeleteAutoSnapshot` is set to false for a cloud disk attached to the instance, the automatic snapshots of the disk are retained when the instance is released. If DeleteAutoSnapshot is set to true for the cloud disk, the automatic snapshots of the disk are released together with the instance.
+//   - If `DeleteWithInstance=false`, the cloud disk is converted to a pay-as-you-go cloud disk and retained. Otherwise, the cloud disk is released along with the instance.
 //
-// - Elastic IP addresses (EIPs) are not released together with instances. You can call the [ReleaseEipAddress](https://help.aliyun.com/document_detail/448702.html) operation to release EIPs.
+//   - If `DeleteAutoSnapshot=false`, the automatic snapshots are retained. Otherwise, the automatic snapshots are released along with the instance.
 //
-// > When you release an instance that is locked for security reasons, the cloud disks attached to the instance are released together with the instance even if DeleteWithInstance is set to false for the disks.
+// - Elastic IP addresses (EIPs) are not released along with the instance. You can call [ReleaseEipAddress](https://help.aliyun.com/document_detail/448702.html) to release them.
+//
+//	Notice: For security-locked instances, even if the `DeleteWithInstance` parameter of a cloud disk is set to `false`, this attribute is ignored and the cloud disk is released along with the instance..
 //
 // @param request - DeleteInstancesRequest
 //
@@ -12015,15 +12057,15 @@ func (client *Client) DeleteInstances(request *DeleteInstancesRequest) (_result 
 
 // Summary:
 //
-// Deletes one or more SSH key pairs.
+// Call DeleteKeyPairs to delete one or more SSH key pairs.
 //
 // Description:
 //
-// When you call this operation, take note of the following items:
+// After you delete an SSH key pair, take note of the following items:
 //
-// - After an SSH key pair is deleted, you cannot query the SSH key pair by calling the [DescribeKeyPairs](https://help.aliyun.com/document_detail/51773.html) operation.
+// - You cannot query the SSH key pair by calling [DescribeKeyPairs](https://help.aliyun.com/document_detail/51773.html).
 //
-// - If an SSH key pair is bound to one or more Elastic Compute Service (ECS) instances, the SSH key pair cannot be deleted.
+// - If an ECS instance is bound to the SSH key pair, the SSH key pair cannot be deleted.
 //
 // @param request - DeleteKeyPairsRequest
 //
@@ -12083,15 +12125,15 @@ func (client *Client) DeleteKeyPairsWithOptions(request *DeleteKeyPairsRequest, 
 
 // Summary:
 //
-// Deletes one or more SSH key pairs.
+// Call DeleteKeyPairs to delete one or more SSH key pairs.
 //
 // Description:
 //
-// When you call this operation, take note of the following items:
+// After you delete an SSH key pair, take note of the following items:
 //
-// - After an SSH key pair is deleted, you cannot query the SSH key pair by calling the [DescribeKeyPairs](https://help.aliyun.com/document_detail/51773.html) operation.
+// - You cannot query the SSH key pair by calling [DescribeKeyPairs](https://help.aliyun.com/document_detail/51773.html).
 //
-// - If an SSH key pair is bound to one or more Elastic Compute Service (ECS) instances, the SSH key pair cannot be deleted.
+// - If an ECS instance is bound to the SSH key pair, the SSH key pair cannot be deleted.
 //
 // @param request - DeleteKeyPairsRequest
 //
@@ -12109,15 +12151,15 @@ func (client *Client) DeleteKeyPairs(request *DeleteKeyPairsRequest) (_result *D
 
 // Summary:
 //
-// Deletes a launch template. You can use the LaunchTemplateId or LaunchTemplateName parameter to specify the launch template that you want to delete from the specified region.
+// Deletes a launch template in a specified region by specifying the LaunchTemplateId or LaunchTemplateName parameter.
 //
 // Description:
 //
 // Take note of the following items:
 //
-// - After you delete a launch template, Elastic Compute Service (ECS) instances created based on the launch template are not affected.
+// - After you delete a launch template, ECS instances that were created by using the launch template are not affected.
 //
-// - After you delete a launch template, all versions of the launch template are deleted and cannot be restored. If you want to delete only a specific version of the launch template, call the [DeleteLaunchTemplateVersion](https://help.aliyun.com/document_detail/2679735.html) operation.
+// - After you delete a launch template, all versions of the template are also deleted and cannot be recovered. If you want to delete only a specific version of a launch template, see [DeleteLaunchTemplateVersion](https://help.aliyun.com/document_detail/2679735.html).
 //
 // @param request - DeleteLaunchTemplateRequest
 //
@@ -12185,15 +12227,15 @@ func (client *Client) DeleteLaunchTemplateWithOptions(request *DeleteLaunchTempl
 
 // Summary:
 //
-// Deletes a launch template. You can use the LaunchTemplateId or LaunchTemplateName parameter to specify the launch template that you want to delete from the specified region.
+// Deletes a launch template in a specified region by specifying the LaunchTemplateId or LaunchTemplateName parameter.
 //
 // Description:
 //
 // Take note of the following items:
 //
-// - After you delete a launch template, Elastic Compute Service (ECS) instances created based on the launch template are not affected.
+// - After you delete a launch template, ECS instances that were created by using the launch template are not affected.
 //
-// - After you delete a launch template, all versions of the launch template are deleted and cannot be restored. If you want to delete only a specific version of the launch template, call the [DeleteLaunchTemplateVersion](https://help.aliyun.com/document_detail/2679735.html) operation.
+// - After you delete a launch template, all versions of the template are also deleted and cannot be recovered. If you want to delete only a specific version of a launch template, see [DeleteLaunchTemplateVersion](https://help.aliyun.com/document_detail/2679735.html).
 //
 // @param request - DeleteLaunchTemplateRequest
 //
@@ -12211,17 +12253,17 @@ func (client *Client) DeleteLaunchTemplate(request *DeleteLaunchTemplateRequest)
 
 // Summary:
 //
-// Deletes versions of a launch template. When you call this operation, you can specify parameters, such as LaunchTemplateId and DeleteVersion, in the request.
+// Deletes one or more versions of a specified launch template by specifying parameters such as LaunchTemplateId and DeleteVersion.
 //
 // Description:
 //
-// Take note of the following items:
+// When you call this operation, take note of the following items:
 //
-// - You cannot delete the default version of a launch template by calling this operation. To delete the default version of a launch template, you must delete the launch template.
+// - The default version cannot be deleted. You must delete the entire launch template to remove the default version.
 //
-// - If the version of a launch template that you want to delete is the default version, call the [ModifyLaunchTemplateDefaultVersion](https://help.aliyun.com/document_detail/2679734.html) operation or go to the **Launch Templates*	- page in the Elastic Compute Service (ECS) console to change the default version to a different version, and then delete the original default version.
+// - If the version you want to delete is the default version, you can call [ModifyLaunchTemplateDefaultVersion](https://help.aliyun.com/document_detail/2679734.html) or switch the default version in the **Launch Template*	- console, and then perform the delete operation.
 //
-// - After you delete a version of a launch template, the ECS instances that were created based on the version are not affected.
+// - Deleting a version does not affect instances that were already created from that version.
 //
 // @param request - DeleteLaunchTemplateVersionRequest
 //
@@ -12293,17 +12335,17 @@ func (client *Client) DeleteLaunchTemplateVersionWithOptions(request *DeleteLaun
 
 // Summary:
 //
-// Deletes versions of a launch template. When you call this operation, you can specify parameters, such as LaunchTemplateId and DeleteVersion, in the request.
+// Deletes one or more versions of a specified launch template by specifying parameters such as LaunchTemplateId and DeleteVersion.
 //
 // Description:
 //
-// Take note of the following items:
+// When you call this operation, take note of the following items:
 //
-// - You cannot delete the default version of a launch template by calling this operation. To delete the default version of a launch template, you must delete the launch template.
+// - The default version cannot be deleted. You must delete the entire launch template to remove the default version.
 //
-// - If the version of a launch template that you want to delete is the default version, call the [ModifyLaunchTemplateDefaultVersion](https://help.aliyun.com/document_detail/2679734.html) operation or go to the **Launch Templates*	- page in the Elastic Compute Service (ECS) console to change the default version to a different version, and then delete the original default version.
+// - If the version you want to delete is the default version, you can call [ModifyLaunchTemplateDefaultVersion](https://help.aliyun.com/document_detail/2679734.html) or switch the default version in the **Launch Template*	- console, and then perform the delete operation.
 //
-// - After you delete a version of a launch template, the ECS instances that were created based on the version are not affected.
+// - Deleting a version does not affect instances that were already created from that version.
 //
 // @param request - DeleteLaunchTemplateVersionRequest
 //
@@ -12884,11 +12926,11 @@ func (client *Client) DeletePortRangeList(request *DeletePortRangeListRequest) (
 
 // Summary:
 //
-// Deletes a prefix list and all entries in the prefix list.
+// Deletes a specified prefix list and all entries in the prefix list.
 //
 // Description:
 //
-// If a prefix list is associated with resources, you cannot delete the prefix list. You must disassociate the prefix list from the resources before you delete the prefix list. You can call the [DescribePrefixListAssociations](https://help.aliyun.com/document_detail/204724.html) operation to query resources that are associated with a specific prefix list.
+// If a prefix list is associated with other resources, you cannot directly delete it. Dissociate the prefix list from the resources first, and then delete it. You can call [DescribePrefixListAssociations](https://help.aliyun.com/document_detail/204724.html) to query the resources that are associated with a specified prefix list.
 //
 // @param request - DeletePrefixListRequest
 //
@@ -12956,11 +12998,11 @@ func (client *Client) DeletePrefixListWithOptions(request *DeletePrefixListReque
 
 // Summary:
 //
-// Deletes a prefix list and all entries in the prefix list.
+// Deletes a specified prefix list and all entries in the prefix list.
 //
 // Description:
 //
-// If a prefix list is associated with resources, you cannot delete the prefix list. You must disassociate the prefix list from the resources before you delete the prefix list. You can call the [DescribePrefixListAssociations](https://help.aliyun.com/document_detail/204724.html) operation to query resources that are associated with a specific prefix list.
+// If a prefix list is associated with other resources, you cannot directly delete it. Dissociate the prefix list from the resources first, and then delete it. You can call [DescribePrefixListAssociations](https://help.aliyun.com/document_detail/204724.html) to query the resources that are associated with a specified prefix list.
 //
 // @param request - DeletePrefixListRequest
 //
@@ -14023,7 +14065,7 @@ func (client *Client) DeregisterManagedInstance(request *DeregisterManagedInstan
 //
 // Summary:
 //
-// # DescribeAccessPoints
+// Queries access points.
 //
 // @param request - DescribeAccessPointsRequest
 //
@@ -14097,7 +14139,7 @@ func (client *Client) DescribeAccessPointsWithOptions(request *DescribeAccessPoi
 //
 // Summary:
 //
-// # DescribeAccessPoints
+// Queries access points.
 //
 // @param request - DescribeAccessPointsRequest
 //
@@ -14642,7 +14684,7 @@ func (client *Client) DescribeAutoProvisioningGroups(request *DescribeAutoProvis
 
 // Summary:
 //
-// Queries association relationships of automatic snapshot policies.
+// Queries the associate relationships of an automatic snapshot policy.
 //
 // @param request - DescribeAutoSnapshotPolicyAssociationsRequest
 //
@@ -14718,7 +14760,7 @@ func (client *Client) DescribeAutoSnapshotPolicyAssociationsWithOptions(request 
 
 // Summary:
 //
-// Queries association relationships of automatic snapshot policies.
+// Queries the associate relationships of an automatic snapshot policy.
 //
 // @param request - DescribeAutoSnapshotPolicyAssociationsRequest
 //
@@ -15196,7 +15238,7 @@ func (client *Client) DescribeAvailableResource(request *DescribeAvailableResour
 
 // Summary:
 //
-// Queries the maximum public bandwidth that can be purchased, upgraded, or downgraded for various Elastic Compute Service (ECS) instance types.
+// Calls DescribeBandwidthLimitation to query the maximum public bandwidth that can be purchased, upgraded, or downgraded for different instance types.
 //
 // @param request - DescribeBandwidthLimitationRequest
 //
@@ -15276,7 +15318,7 @@ func (client *Client) DescribeBandwidthLimitationWithOptions(request *DescribeBa
 
 // Summary:
 //
-// Queries the maximum public bandwidth that can be purchased, upgraded, or downgraded for various Elastic Compute Service (ECS) instance types.
+// Calls DescribeBandwidthLimitation to query the maximum public bandwidth that can be purchased, upgraded, or downgraded for different instance types.
 //
 // @param request - DescribeBandwidthLimitationRequest
 //
@@ -17255,37 +17297,35 @@ func (client *Client) DescribeDiskEncryptionByDefaultStatus(request *DescribeDis
 
 // Summary:
 //
-// Queries the monitoring data of a cloud disk within a specific period of time, such as the read IOPS, write IOPS, read bandwidth (byte/s), write bandwidth (byte/s), read latency (microseconds), and write latency (microseconds).
+// Queries the usage information of a disk within a specified period, such as read IOPS, write IOPS, read bandwidth (B/s), write bandwidth (B/s), read latency (μs), and write latency (μs).
 //
 // Description:
 //
-// Take note of the following items:
+// When you call this operation, take note of the following limits:
 //
-// - Monitoring data of only disks that are in the In Use (`In_use`) state can be queried. For more information, see [Disk states](https://help.aliyun.com/document_detail/25689.html).
+// - You can query only the usage information of disks that are in the In Use (`In_use`) state. For more information, see [Disk states](https://help.aliyun.com/document_detail/25689.html).
 //
-//	\\*\\*
+//	> If the returned information has missing content, the disk was not in the In Use (`In_use`) state during that period, and the usage information cannot be obtained.
 //
-//	**Note*	- Some information may be missing from the monitoring data of a disk because the disk is not in the In Use `(In_use)` state and the system cannot obtain the relevant information.
+// - A maximum of 400 data entries can be returned at a time. The value of `(EndTime – StartTime) / Period` must be less than or equal to 400. That is, the value of the `TotalCount` response parameter cannot exceed 400. Otherwise, the `InvalidParameter.TooManyDataQueried` error is returned.
 //
-// - Up to 400 monitoring data entries can be returned at a time. Make sure that the `TotalCount` value does not exceed 400. The value is calculated by using the following formula: `TotalCount = (EndTime - StartTime)/Period`. If the TotalCount value is greater than 400, the `InvalidParameter.TooManyDataQueried` error is returned.
+// - You can query the monitoring information of up to the last 30 days. The specified `StartTime` parameter cannot be more than 30 days earlier than the current time.
 //
-// - You can query the monitoring data in the last 30 days. If the value of `StartTime` is more than 30 days earlier than the current time, an error is returned.
+// ## Request example
 //
-// ## [](#)Sample requests
-//
-// For example, you want to query the monitoring data of a cloud disk whose ID is `d-bp14emm68wx98vjk****` in the China (Hangzhou) region every 600 seconds from `2025-02-17T00:00:00Z` to `2025-02-18T10:00:00Z`. Request parameters:
+// Assume that you want to query the usage information of a disk whose ID is `d-bp14emm68wx98vjk****` in the China (Hangzhou) region from `2025-02-17T00:00:00Z` to `2025-02-18T10:00:00Z` at intervals of 600 seconds. Configure the request parameters as follows:
 //
 // ```
 //
-// RegionId:"cn-hangzhou", // Set the region ID to cn-hangzhou, which specifies the China (Hangzhou) region.
+// RegionId:"cn-hangzhou", // Set the China (Hangzhou) region
 //
-// DiskId:"d-bp14emm68wx98vjk****", // Specify the disk ID.
+// DiskId:"d-bp14emm68wx98vjk****", // Set the disk ID
 //
-// StartTime:"2025-02-15T00:00:00Z", // Specify the beginning of the time range to query.
+// StartTime:"2025-02-15T00:00:00Z", // Set the query start time
 //
-// EndTime:"2025-02-17T00:00:00Z", // Specify the end of the time range to query.
+// EndTime:"2025-02-17T00:00:00Z", // Set the query end time
 //
-// Period:"600", // Specify the interval at which to retrieve the monitoring data.
+// Period:"600", // Set the data granularity
 //
 // ```
 //
@@ -17359,37 +17399,35 @@ func (client *Client) DescribeDiskMonitorDataWithOptions(request *DescribeDiskMo
 
 // Summary:
 //
-// Queries the monitoring data of a cloud disk within a specific period of time, such as the read IOPS, write IOPS, read bandwidth (byte/s), write bandwidth (byte/s), read latency (microseconds), and write latency (microseconds).
+// Queries the usage information of a disk within a specified period, such as read IOPS, write IOPS, read bandwidth (B/s), write bandwidth (B/s), read latency (μs), and write latency (μs).
 //
 // Description:
 //
-// Take note of the following items:
+// When you call this operation, take note of the following limits:
 //
-// - Monitoring data of only disks that are in the In Use (`In_use`) state can be queried. For more information, see [Disk states](https://help.aliyun.com/document_detail/25689.html).
+// - You can query only the usage information of disks that are in the In Use (`In_use`) state. For more information, see [Disk states](https://help.aliyun.com/document_detail/25689.html).
 //
-//	\\*\\*
+//	> If the returned information has missing content, the disk was not in the In Use (`In_use`) state during that period, and the usage information cannot be obtained.
 //
-//	**Note*	- Some information may be missing from the monitoring data of a disk because the disk is not in the In Use `(In_use)` state and the system cannot obtain the relevant information.
+// - A maximum of 400 data entries can be returned at a time. The value of `(EndTime – StartTime) / Period` must be less than or equal to 400. That is, the value of the `TotalCount` response parameter cannot exceed 400. Otherwise, the `InvalidParameter.TooManyDataQueried` error is returned.
 //
-// - Up to 400 monitoring data entries can be returned at a time. Make sure that the `TotalCount` value does not exceed 400. The value is calculated by using the following formula: `TotalCount = (EndTime - StartTime)/Period`. If the TotalCount value is greater than 400, the `InvalidParameter.TooManyDataQueried` error is returned.
+// - You can query the monitoring information of up to the last 30 days. The specified `StartTime` parameter cannot be more than 30 days earlier than the current time.
 //
-// - You can query the monitoring data in the last 30 days. If the value of `StartTime` is more than 30 days earlier than the current time, an error is returned.
+// ## Request example
 //
-// ## [](#)Sample requests
-//
-// For example, you want to query the monitoring data of a cloud disk whose ID is `d-bp14emm68wx98vjk****` in the China (Hangzhou) region every 600 seconds from `2025-02-17T00:00:00Z` to `2025-02-18T10:00:00Z`. Request parameters:
+// Assume that you want to query the usage information of a disk whose ID is `d-bp14emm68wx98vjk****` in the China (Hangzhou) region from `2025-02-17T00:00:00Z` to `2025-02-18T10:00:00Z` at intervals of 600 seconds. Configure the request parameters as follows:
 //
 // ```
 //
-// RegionId:"cn-hangzhou", // Set the region ID to cn-hangzhou, which specifies the China (Hangzhou) region.
+// RegionId:"cn-hangzhou", // Set the China (Hangzhou) region
 //
-// DiskId:"d-bp14emm68wx98vjk****", // Specify the disk ID.
+// DiskId:"d-bp14emm68wx98vjk****", // Set the disk ID
 //
-// StartTime:"2025-02-15T00:00:00Z", // Specify the beginning of the time range to query.
+// StartTime:"2025-02-15T00:00:00Z", // Set the query start time
 //
-// EndTime:"2025-02-17T00:00:00Z", // Specify the end of the time range to query.
+// EndTime:"2025-02-17T00:00:00Z", // Set the query end time
 //
-// Period:"600", // Specify the interval at which to retrieve the monitoring data.
+// Period:"600", // Set the data granularity
 //
 // ```
 //
@@ -17409,19 +17447,19 @@ func (client *Client) DescribeDiskMonitorData(request *DescribeDiskMonitorDataRe
 
 // Summary:
 //
-// Retrieves details of one or more block storage resources, including cloud disks, local disks, and elastic temporary disks.
+// Queries information about one or more created block storage devices, including disks, local disks, and elastic ephemeral disks.
 //
 // Description:
 //
-// - Parameters such as `RegionId`, `ZoneId`, `DiskIds`, and `InstanceId` act as filters and are combined with a logical AND.
+// - The request parameters RegionId, ZoneId, DiskIds, and InstanceId are filters. The logical relationship among these parameters is AND.
 //
-// - The `DiskIds` parameter is a JSON-formatted array. Omitting this parameter disables the filter. However, an empty `DiskIds` array is a valid filter that returns no results.
+// - The DiskIds request parameter is a JSON format array. If DiskIds is not specified, the filter does not take effect. If DiskIds is set to an empty JSON array, the filter is considered valid and an empty result is returned.
 //
-// - This operation supports pagination. To retrieve the next page of results, set `NextToken` to the token returned from the previous call. Use `MaxResults` to specify the maximum number of items to return on each page.
+// - Token-based paged query is supported. Set NextToken to the NextToken value returned in the previous call of DescribeDisks, and set MaxResults to specify the maximum number of entries per page.
 //
-// - You can attach a disk with the multi-attach feature enabled to multiple instances. You can view all attachment information for the disk in the `Attachment` list of the response.
+// - A disk with the multi-attach feature enabled can be attached to multiple instances. You can check the Attachment list in the response to view all attachment information of the disk.
 //
-// When you call this operation using the Alibaba Cloud CLI, request parameter values for different data types must be in the required format. For more information, see [CLI parameter format](https://help.aliyun.com/document_detail/110340.html).
+// When you call an API operation by using Cloud Assistant CLI, specify request parameters of different data types in the required formats. For more information, see [Parameter format of CLI](https://help.aliyun.com/document_detail/110340.html).
 //
 // @param request - DescribeDisksRequest
 //
@@ -17597,19 +17635,19 @@ func (client *Client) DescribeDisksWithOptions(request *DescribeDisksRequest, ru
 
 // Summary:
 //
-// Retrieves details of one or more block storage resources, including cloud disks, local disks, and elastic temporary disks.
+// Queries information about one or more created block storage devices, including disks, local disks, and elastic ephemeral disks.
 //
 // Description:
 //
-// - Parameters such as `RegionId`, `ZoneId`, `DiskIds`, and `InstanceId` act as filters and are combined with a logical AND.
+// - The request parameters RegionId, ZoneId, DiskIds, and InstanceId are filters. The logical relationship among these parameters is AND.
 //
-// - The `DiskIds` parameter is a JSON-formatted array. Omitting this parameter disables the filter. However, an empty `DiskIds` array is a valid filter that returns no results.
+// - The DiskIds request parameter is a JSON format array. If DiskIds is not specified, the filter does not take effect. If DiskIds is set to an empty JSON array, the filter is considered valid and an empty result is returned.
 //
-// - This operation supports pagination. To retrieve the next page of results, set `NextToken` to the token returned from the previous call. Use `MaxResults` to specify the maximum number of items to return on each page.
+// - Token-based paged query is supported. Set NextToken to the NextToken value returned in the previous call of DescribeDisks, and set MaxResults to specify the maximum number of entries per page.
 //
-// - You can attach a disk with the multi-attach feature enabled to multiple instances. You can view all attachment information for the disk in the `Attachment` list of the response.
+// - A disk with the multi-attach feature enabled can be attached to multiple instances. You can check the Attachment list in the response to view all attachment information of the disk.
 //
-// When you call this operation using the Alibaba Cloud CLI, request parameter values for different data types must be in the required format. For more information, see [CLI parameter format](https://help.aliyun.com/document_detail/110340.html).
+// When you call an API operation by using Cloud Assistant CLI, specify request parameters of different data types in the required formats. For more information, see [Parameter format of CLI](https://help.aliyun.com/document_detail/110340.html).
 //
 // @param request - DescribeDisksRequest
 //
@@ -18601,7 +18639,7 @@ func (client *Client) DescribeHaVips(request *DescribeHaVipsRequest) (_result *D
 
 // Summary:
 //
-// Calls DescribeHpcClusters to query the HPC clusters available to you. Request parameters are used as filters and combined with a logical AND. The parameters have no dependencies on one another.
+// Queries available High Performance Computing (HPC) clusters. Request parameters serve as filters. Filters are evaluated by using a logical AND. The parameters are independent of each other.
 //
 // @param request - DescribeHpcClustersRequest
 //
@@ -18681,7 +18719,7 @@ func (client *Client) DescribeHpcClustersWithOptions(request *DescribeHpcCluster
 
 // Summary:
 //
-// Calls DescribeHpcClusters to query the HPC clusters available to you. Request parameters are used as filters and combined with a logical AND. The parameters have no dependencies on one another.
+// Queries available High Performance Computing (HPC) clusters. Request parameters serve as filters. Filters are evaluated by using a logical AND. The parameters are independent of each other.
 //
 // @param request - DescribeHpcClustersRequest
 //
@@ -18703,7 +18741,7 @@ func (client *Client) DescribeHpcClusters(request *DescribeHpcClustersRequest) (
 //
 // Description:
 //
-// You can use `NextToken` to configure the query token. Set the value to the `NextToken` value that is returned in the previous call to the DescribeImageComponents operation. Then, use `MaxResults` to specify the maximum number of entries to return on each page.
+// You can set `NextToken` to the value of `NextToken` returned in the previous call to DescribeImageComponents, and set `MaxResults` to specify the maximum number of entries per page for the query.
 //
 // @param request - DescribeImageComponentsRequest
 //
@@ -18815,7 +18853,7 @@ func (client *Client) DescribeImageComponentsWithOptions(request *DescribeImageC
 //
 // Description:
 //
-// You can use `NextToken` to configure the query token. Set the value to the `NextToken` value that is returned in the previous call to the DescribeImageComponents operation. Then, use `MaxResults` to specify the maximum number of entries to return on each page.
+// You can set `NextToken` to the value of `NextToken` returned in the previous call to DescribeImageComponents, and set `MaxResults` to specify the maximum number of entries per page for the query.
 //
 // @param request - DescribeImageComponentsRequest
 //
@@ -19171,7 +19209,7 @@ func (client *Client) DescribeImagePipelines(request *DescribeImagePipelinesRequ
 
 // Summary:
 //
-// Queries the accounts with which a custom image is shared. When you call this operation, you can specify parameters, such as RegionId and ImageId, in the request. The response can be displayed by page. By default, 10 entries are displayed on each page.
+// Queries all users with whom a custom image is shared. The returned results support pagination, with 10 entries per page by default.
 //
 // @param request - DescribeImageSharePermissionRequest
 //
@@ -19243,7 +19281,7 @@ func (client *Client) DescribeImageSharePermissionWithOptions(request *DescribeI
 
 // Summary:
 //
-// Queries the accounts with which a custom image is shared. When you call this operation, you can specify parameters, such as RegionId and ImageId, in the request. The response can be displayed by page. By default, 10 entries are displayed on each page.
+// Queries all users with whom a custom image is shared. The returned results support pagination, with 10 entries per page by default.
 //
 // @param request - DescribeImageSharePermissionRequest
 //
@@ -19261,7 +19299,7 @@ func (client *Client) DescribeImageSharePermission(request *DescribeImageSharePe
 
 // Summary:
 //
-// Queries the Elastic Compute Service (ECS) instance types supported by an image.
+// Queries the instance types supported by a specified image.
 //
 // @param request - DescribeImageSupportInstanceTypesRequest
 //
@@ -19329,7 +19367,7 @@ func (client *Client) DescribeImageSupportInstanceTypesWithOptions(request *Desc
 
 // Summary:
 //
-// Queries the Elastic Compute Service (ECS) instance types supported by an image.
+// Queries the instance types supported by a specified image.
 //
 // @param request - DescribeImageSupportInstanceTypesRequest
 //
@@ -20625,6 +20663,10 @@ func (client *Client) DescribeInstanceStatus(request *DescribeInstanceStatusRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 实例拓扑查询接口
+//
 // @param request - DescribeInstanceTopologyRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -20681,6 +20723,10 @@ func (client *Client) DescribeInstanceTopologyWithOptions(request *DescribeInsta
 	return _result, _err
 }
 
+// Summary:
+//
+// 实例拓扑查询接口
+//
 // @param request - DescribeInstanceTopologyRequest
 //
 // @return DescribeInstanceTopologyResponse
@@ -20779,25 +20825,25 @@ func (client *Client) DescribeInstanceTypeFamilies(request *DescribeInstanceType
 
 // Summary:
 //
-// This API returns detailed information for all available ECS instance types. You can also filter for specific instance types to compare their configurations and performance and select the one that best meets your business requirements.
+// Queries the information about all instance types provided by Elastic Compute Service (ECS) and obtains the detailed information about the instance types. You can also query the information about specific instance types based on specific conditions. This helps you understand the configurations and performance of different instance types so that you can select instance types that meet your business requirements.
 //
 // Description:
 //
-// - **Pagination**: Set the MaxResults parameter to limit the number of instance types returned per response. If more results are available, the response includes a NextToken. To retrieve the next page, pass this NextToken in your subsequent request.
+// - **Paginated query**: You can set the MaxResults parameter to limit the number of instance types returned in each response. If only a subset of the queried instance types is returned, the NextToken parameter value is also returned. To perform a paginated query, set the NextToken parameter to the value returned by the previous call and set the MaxResults parameter.
 //
-// - By default, requests without a NextToken return only the first page of results (up to 100 entries). To retrieve more data, you must pass the NextToken from the previous response or apply filters to narrow the results.
+// - If you call this API operation without passing the NextToken parameter for paginated retrieval, only the first page of data (up to 100 entries) is returned by default. To retrieve more data, pass the NextToken parameter for paginated retrieval or pass filter conditions to limit the returned data range.
 //
-// > The maximum value for the MaxResults parameter is 100. As an exception for users who called this API in 2022, the maximum value remains 1600. Effective November 15, 2023, this exception will end, and the maximum value for all users will be 100.
+// >  The maximum value of the MaxResults parameter (maximum entries per page) is 100. For users who called this API before 2022, the maximum value of MaxResults remains 1600. On and after November 15, 2023, the maximum value of MaxResults will be reduced to 100 for all users, and 1600 will no longer be supported.
 //
-// - The DescribeInstanceTypes operation returns only the configurations and performance details of instance types. To query for instance types that are available for purchase in a specific region, use the [DescribeAvailableResource](https://help.aliyun.com/document_detail/66186.html) operation.
+// - DescribeInstanceTypes only queries the configuration and performance information of instance types. To query instance types available for purchase in a specific region, use [DescribeAvailableResource](https://help.aliyun.com/document_detail/66186.html).
 //
 // <props="china">
 //
-// - If you require an instance type that is not publicly available or have special requirements, [submit a ticket](https://selfservice.console.aliyun.com/ticket/createIndex).
+// - If you require instance types that are not publicly available for sale or have special requirements, [submit a ticket](https://selfservice.console.aliyun.com/ticket/createIndex).
 //
 // <props="intl">
 //
-// - If you require an instance type that is not publicly available or have special requirements, [submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket-intl).
+// - If you require instance types that are not publicly available for sale or have special requirements, [submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket-intl).
 //
 // @param request - DescribeInstanceTypesRequest
 //
@@ -21029,25 +21075,25 @@ func (client *Client) DescribeInstanceTypesWithOptions(request *DescribeInstance
 
 // Summary:
 //
-// This API returns detailed information for all available ECS instance types. You can also filter for specific instance types to compare their configurations and performance and select the one that best meets your business requirements.
+// Queries the information about all instance types provided by Elastic Compute Service (ECS) and obtains the detailed information about the instance types. You can also query the information about specific instance types based on specific conditions. This helps you understand the configurations and performance of different instance types so that you can select instance types that meet your business requirements.
 //
 // Description:
 //
-// - **Pagination**: Set the MaxResults parameter to limit the number of instance types returned per response. If more results are available, the response includes a NextToken. To retrieve the next page, pass this NextToken in your subsequent request.
+// - **Paginated query**: You can set the MaxResults parameter to limit the number of instance types returned in each response. If only a subset of the queried instance types is returned, the NextToken parameter value is also returned. To perform a paginated query, set the NextToken parameter to the value returned by the previous call and set the MaxResults parameter.
 //
-// - By default, requests without a NextToken return only the first page of results (up to 100 entries). To retrieve more data, you must pass the NextToken from the previous response or apply filters to narrow the results.
+// - If you call this API operation without passing the NextToken parameter for paginated retrieval, only the first page of data (up to 100 entries) is returned by default. To retrieve more data, pass the NextToken parameter for paginated retrieval or pass filter conditions to limit the returned data range.
 //
-// > The maximum value for the MaxResults parameter is 100. As an exception for users who called this API in 2022, the maximum value remains 1600. Effective November 15, 2023, this exception will end, and the maximum value for all users will be 100.
+// >  The maximum value of the MaxResults parameter (maximum entries per page) is 100. For users who called this API before 2022, the maximum value of MaxResults remains 1600. On and after November 15, 2023, the maximum value of MaxResults will be reduced to 100 for all users, and 1600 will no longer be supported.
 //
-// - The DescribeInstanceTypes operation returns only the configurations and performance details of instance types. To query for instance types that are available for purchase in a specific region, use the [DescribeAvailableResource](https://help.aliyun.com/document_detail/66186.html) operation.
+// - DescribeInstanceTypes only queries the configuration and performance information of instance types. To query instance types available for purchase in a specific region, use [DescribeAvailableResource](https://help.aliyun.com/document_detail/66186.html).
 //
 // <props="china">
 //
-// - If you require an instance type that is not publicly available or have special requirements, [submit a ticket](https://selfservice.console.aliyun.com/ticket/createIndex).
+// - If you require instance types that are not publicly available for sale or have special requirements, [submit a ticket](https://selfservice.console.aliyun.com/ticket/createIndex).
 //
 // <props="intl">
 //
-// - If you require an instance type that is not publicly available or have special requirements, [submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket-intl).
+// - If you require instance types that are not publicly available for sale or have special requirements, [submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket-intl).
 //
 // @param request - DescribeInstanceTypesRequest
 //
@@ -21065,33 +21111,33 @@ func (client *Client) DescribeInstanceTypes(request *DescribeInstanceTypesReques
 
 // Summary:
 //
-// Queries the Virtual Network Computing (VNC) logon address of an Elastic Compute Service (ECS) instance.
+// Queries the VNC logon URL of an ECS instance.
 //
 // Description:
 //
-// - You cannot directly use the VNC logon address (VncUrl) in the response to log on to an ECS instance. To log on to the ECS instance, you can use the **web management terminal URL*	- that contains the VNC logon address.
+// - The API returns a VNC logon URL (VncUrl) that cannot be used directly. You can access the instance through the **management terminal URL**.
 //
-// > To construct a web management terminal URL, add the `vncUrl=\\*\\*\\*\\*`, `instanceId=****`, and `isWindows=true/false` parameters at the end of `https://g.alicdn.com/aliyun/ecs-console-vnc2/0.0.8/index.html?`. Separate each parameter with an ampersand (`&`). Parameter description:
+// > To construct the management terminal URL, append `vncUrl=\\*\\*\\*\\*`, `instanceId=****`, and `isWindows=true/false` to the end of `https://g.alicdn.com/aliyun/ecs-console-vnc2/0.0.8/index.html?`, and connect the parameters with `&`. Parameters:
 //
-// - `vncUrl`: the VNC logon address.
+//	>- `vncUrl`: the VNC logon URL.
 //
-// - `instanceId`: the instance ID.
+//	>- `instanceId`: the instance ID.
 //
-// - `isWindows`: specifies whether the operating system of your ECS instance is Windows. A value of `true` specifies that the operating system is Windows. A value of `false` specifies that the operating system is not Windows.
+//	>- `isWindows`: specifies whether the operating system of the instance is Windows. A value of `true` indicates Windows. A value of `false` indicates non-Windows.
 //
-// - You can connect to an ECS instance without using a VNC logon password. Therefore, you do not need to specify the `password` parameter.
+//	>- Password-free VNC connections are supported. You do not need to set the `password` parameter.
 //
-// - The keepalive time of a connection to a VNC management terminal is 300 seconds. If you do not interact with the VNC management terminal within 300 seconds, the VNC management terminal is automatically disconnected.
+// - The KeepAlive time of a single management terminal URL is 300 seconds. If no interaction occurs within 300 seconds, the connection is automatically closed.
 //
-// - If the connection is interrupted, you must call the DescribeInstanceVncUrl operation to obtain a new VNC logon address (`VncUrl`) and use the new logon address to construct a new web management terminal URL that you can use to reconnect to the VNC management terminal. You can reconnect to a VNC management terminal up to 30 times per minute.
+// - If the connection is interrupted, call this operation again to obtain a new `VncUrl` and construct a new management terminal URL to reconnect. You can reconnect up to 30 times per minute.
 //
-// Sample web management terminal URL:
+// Example management terminal URL:
 //
 // ```
 //
 // https://g.alicdn.com/aliyun/ecs-console-vnc2/0.0.8/index.html?vncUrl=ws%3A%2F%****&instanceId=i-wz9hhwq5a6tm****&isWindows=true
 //
-// ```
+// ```.
 //
 // @param request - DescribeInstanceVncUrlRequest
 //
@@ -21155,33 +21201,33 @@ func (client *Client) DescribeInstanceVncUrlWithOptions(request *DescribeInstanc
 
 // Summary:
 //
-// Queries the Virtual Network Computing (VNC) logon address of an Elastic Compute Service (ECS) instance.
+// Queries the VNC logon URL of an ECS instance.
 //
 // Description:
 //
-// - You cannot directly use the VNC logon address (VncUrl) in the response to log on to an ECS instance. To log on to the ECS instance, you can use the **web management terminal URL*	- that contains the VNC logon address.
+// - The API returns a VNC logon URL (VncUrl) that cannot be used directly. You can access the instance through the **management terminal URL**.
 //
-// > To construct a web management terminal URL, add the `vncUrl=\\*\\*\\*\\*`, `instanceId=****`, and `isWindows=true/false` parameters at the end of `https://g.alicdn.com/aliyun/ecs-console-vnc2/0.0.8/index.html?`. Separate each parameter with an ampersand (`&`). Parameter description:
+// > To construct the management terminal URL, append `vncUrl=\\*\\*\\*\\*`, `instanceId=****`, and `isWindows=true/false` to the end of `https://g.alicdn.com/aliyun/ecs-console-vnc2/0.0.8/index.html?`, and connect the parameters with `&`. Parameters:
 //
-// - `vncUrl`: the VNC logon address.
+//	>- `vncUrl`: the VNC logon URL.
 //
-// - `instanceId`: the instance ID.
+//	>- `instanceId`: the instance ID.
 //
-// - `isWindows`: specifies whether the operating system of your ECS instance is Windows. A value of `true` specifies that the operating system is Windows. A value of `false` specifies that the operating system is not Windows.
+//	>- `isWindows`: specifies whether the operating system of the instance is Windows. A value of `true` indicates Windows. A value of `false` indicates non-Windows.
 //
-// - You can connect to an ECS instance without using a VNC logon password. Therefore, you do not need to specify the `password` parameter.
+//	>- Password-free VNC connections are supported. You do not need to set the `password` parameter.
 //
-// - The keepalive time of a connection to a VNC management terminal is 300 seconds. If you do not interact with the VNC management terminal within 300 seconds, the VNC management terminal is automatically disconnected.
+// - The KeepAlive time of a single management terminal URL is 300 seconds. If no interaction occurs within 300 seconds, the connection is automatically closed.
 //
-// - If the connection is interrupted, you must call the DescribeInstanceVncUrl operation to obtain a new VNC logon address (`VncUrl`) and use the new logon address to construct a new web management terminal URL that you can use to reconnect to the VNC management terminal. You can reconnect to a VNC management terminal up to 30 times per minute.
+// - If the connection is interrupted, call this operation again to obtain a new `VncUrl` and construct a new management terminal URL to reconnect. You can reconnect up to 30 times per minute.
 //
-// Sample web management terminal URL:
+// Example management terminal URL:
 //
 // ```
 //
 // https://g.alicdn.com/aliyun/ecs-console-vnc2/0.0.8/index.html?vncUrl=ws%3A%2F%****&instanceId=i-wz9hhwq5a6tm****&isWindows=true
 //
-// ```
+// ```.
 //
 // @param request - DescribeInstanceVncUrlRequest
 //
@@ -22187,7 +22233,7 @@ func (client *Client) DescribeLaunchTemplateVersions(request *DescribeLaunchTemp
 
 // Summary:
 //
-// Queries the information of one or more launch templates, such as the total number of launch templates, the creation time of each launch template, and the latest version number of each launch template. When you can this operation, you can specify parameters, such as TemplateTag, TemplateResourceGroupId, and LaunchTemplateId, in the request.
+// Calls the DescribeLaunchTemplates operation. You can specify parameters such as TemplateTag, TemplateResourceGroupId, and LaunchTemplateId to query information about one or more launch templates, including the total number of launch templates, template creation time, and latest version number.
 //
 // @param request - DescribeLaunchTemplatesRequest
 //
@@ -22271,7 +22317,7 @@ func (client *Client) DescribeLaunchTemplatesWithOptions(request *DescribeLaunch
 
 // Summary:
 //
-// Queries the information of one or more launch templates, such as the total number of launch templates, the creation time of each launch template, and the latest version number of each launch template. When you can this operation, you can specify parameters, such as TemplateTag, TemplateResourceGroupId, and LaunchTemplateId, in the request.
+// Calls the DescribeLaunchTemplates operation. You can specify parameters such as TemplateTag, TemplateResourceGroupId, and LaunchTemplateId to query information about one or more launch templates, including the total number of launch templates, template creation time, and latest version number.
 //
 // @param request - DescribeLaunchTemplatesRequest
 //
@@ -22805,7 +22851,7 @@ func (client *Client) DescribeNetworkInterfaceAttribute(request *DescribeNetwork
 
 // Summary:
 //
-// Call `DescribeNetworkInterfacePermissions` to list the permissions that you have granted for elastic network interfaces to Alibaba Cloud partners (certified ISVs) or individual users.
+// Queries the list of Elastic Network Interface (ENI) permissions that you have granted to an Alibaba Cloud partner (certified ISV) or an individual user.
 //
 // @param request - DescribeNetworkInterfacePermissionsRequest
 //
@@ -22885,7 +22931,7 @@ func (client *Client) DescribeNetworkInterfacePermissionsWithOptions(request *De
 
 // Summary:
 //
-// Call `DescribeNetworkInterfacePermissions` to list the permissions that you have granted for elastic network interfaces to Alibaba Cloud partners (certified ISVs) or individual users.
+// Queries the list of Elastic Network Interface (ENI) permissions that you have granted to an Alibaba Cloud partner (certified ISV) or an individual user.
 //
 // @param request - DescribeNetworkInterfacePermissionsRequest
 //
@@ -23083,7 +23129,7 @@ func (client *Client) DescribeNetworkInterfaces(request *DescribeNetworkInterfac
 //
 // Summary:
 //
-// # DescribeNewProjectEipMonitorData
+// Queries the monitoring data of an Elastic IP Address (EIP) associated with a new project.
 //
 // @param request - DescribeNewProjectEipMonitorDataRequest
 //
@@ -23161,7 +23207,7 @@ func (client *Client) DescribeNewProjectEipMonitorDataWithOptions(request *Descr
 //
 // Summary:
 //
-// # DescribeNewProjectEipMonitorData
+// Queries the monitoring data of an Elastic IP Address (EIP) associated with a new project.
 //
 // @param request - DescribeNewProjectEipMonitorDataRequest
 //
@@ -23182,7 +23228,7 @@ func (client *Client) DescribeNewProjectEipMonitorData(request *DescribeNewProje
 //
 // Summary:
 //
-// # DescribePhysicalConnections
+// Queries physical connections.
 //
 // @param request - DescribePhysicalConnectionsRequest
 //
@@ -23264,7 +23310,7 @@ func (client *Client) DescribePhysicalConnectionsWithOptions(request *DescribePh
 //
 // Summary:
 //
-// # DescribePhysicalConnections
+// Queries physical connections.
 //
 // @param request - DescribePhysicalConnectionsRequest
 //
@@ -23283,15 +23329,15 @@ func (client *Client) DescribePhysicalConnections(request *DescribePhysicalConne
 
 // Summary:
 //
-// # Query maintenance windows
+// Queries O&M windows.
 //
 // Description:
 //
-// A configured maintenance policy includes two main attributes.
+// Queries the configured maintenance policies. Each policy contains two maintenance attributes:
 //
-// - Maintenance window: A user-specified time period during which O\\&M can be performed.
+// - Maintenance time window: A time period you specify during which O&M operations are performed.
 //
-// - Maintenance action: A user-specified policy that determines how to handle instance downtime.
+// - Maintenance action: The instance downtime handling policy you specify.
 //
 // @param tmpReq - DescribePlanMaintenanceWindowsRequest
 //
@@ -23369,15 +23415,15 @@ func (client *Client) DescribePlanMaintenanceWindowsWithOptions(tmpReq *Describe
 
 // Summary:
 //
-// # Query maintenance windows
+// Queries O&M windows.
 //
 // Description:
 //
-// A configured maintenance policy includes two main attributes.
+// Queries the configured maintenance policies. Each policy contains two maintenance attributes:
 //
-// - Maintenance window: A user-specified time period during which O\\&M can be performed.
+// - Maintenance time window: A time period you specify during which O&M operations are performed.
 //
-// - Maintenance action: A user-specified policy that determines how to handle instance downtime.
+// - Maintenance action: The instance downtime handling policy you specify.
 //
 // @param request - DescribePlanMaintenanceWindowsRequest
 //
@@ -24429,17 +24475,17 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 
 // Summary:
 //
-// Queries the renewal price of Elastic Compute Service (ECS) resources. Only supports querying renewal prices for subscription resources.
+// Queries the renewal price of Elastic Compute Service (ECS) resources. Only subscription resources are supported.
 //
 // Description:
 //
-// - Only supports querying the price for renewing an ECS instance for a specific duration or the price for renewing to a unified expiration date.
+// - Only the price for renewing a subscription ECS instance for a specified duration or renewing it to a unified expiration date is supported.
 //
-// - Notes on parameter settings are as follows:
+// - Note the following when you set the parameters:
 //
-//   - If only required parameters are set, the system defaults to querying the price for renewing the instance for one month.
+//   - If you set only the required parameters, the price for renewing the instance for one month is returned by default.
 //
-//   - It is not supported to query both the renewal duration price and the price for renewing to a unified expiration date at the same time. That is, the renewal duration parameters (`Period`, `PeriodUnit`) and the unified expiration date parameter (`ExpectedRenewDay`) cannot be set simultaneously.
+//   - You cannot query the renewal duration price and the unified expiration date price at the same time. The renewal duration parameters (`Period` and `PeriodUnit`) and the unified expiration date parameter (`ExpectedRenewDay`) cannot be set at the same time.
 //
 // @param request - DescribeRenewalPriceRequest
 //
@@ -24519,17 +24565,17 @@ func (client *Client) DescribeRenewalPriceWithOptions(request *DescribeRenewalPr
 
 // Summary:
 //
-// Queries the renewal price of Elastic Compute Service (ECS) resources. Only supports querying renewal prices for subscription resources.
+// Queries the renewal price of Elastic Compute Service (ECS) resources. Only subscription resources are supported.
 //
 // Description:
 //
-// - Only supports querying the price for renewing an ECS instance for a specific duration or the price for renewing to a unified expiration date.
+// - Only the price for renewing a subscription ECS instance for a specified duration or renewing it to a unified expiration date is supported.
 //
-// - Notes on parameter settings are as follows:
+// - Note the following when you set the parameters:
 //
-//   - If only required parameters are set, the system defaults to querying the price for renewing the instance for one month.
+//   - If you set only the required parameters, the price for renewing the instance for one month is returned by default.
 //
-//   - It is not supported to query both the renewal duration price and the price for renewing to a unified expiration date at the same time. That is, the renewal duration parameters (`Period`, `PeriodUnit`) and the unified expiration date parameter (`ExpectedRenewDay`) cannot be set simultaneously.
+//   - You cannot query the renewal duration price and the unified expiration date price at the same time. The renewal duration parameters (`Period` and `PeriodUnit`) and the unified expiration date parameter (`ExpectedRenewDay`) cannot be set at the same time.
 //
 // @param request - DescribeRenewalPriceRequest
 //
@@ -25692,11 +25738,11 @@ func (client *Client) DescribeSecurityGroupAttribute(request *DescribeSecurityGr
 
 // Summary:
 //
-// Queries the security groups whose rules reference security groups as authorization objects.
+// Queries the list of other security groups that have been authorized by one or more specified security groups.
 //
 // Description:
 //
-// - If you cannot delete a security group by calling the [DeleteSecurityGroup](https://help.aliyun.com/document_detail/25558.html) operation, call the DescribeSecurityGroupReferences operation to check whether the security group is referenced by the rules of other security groups. If the security group is referenced by the rules of other security groups, you must call the [RevokeSecurityGroup](https://help.aliyun.com/document_detail/2679855.html) and [RevokeSecurityGroupEgress](https://help.aliyun.com/document_detail/2679856.html) operations to remove the references before you can delete the security group.
+// -  If you cannot delete a security group ([DeleteSecurityGroup](https://help.aliyun.com/document_detail/25558.html)), you can call this operation to check whether the specified security group has been authorized by other security groups. If the specified security group has been authorized, you can call [RevokeSecurityGroup](https://help.aliyun.com/document_detail/2679855.html) and [RevokeSecurityGroupEgress](https://help.aliyun.com/document_detail/2679856.html) to delete the corresponding security group rules to revoke the authorization.
 //
 // @param request - DescribeSecurityGroupReferencesRequest
 //
@@ -25760,11 +25806,11 @@ func (client *Client) DescribeSecurityGroupReferencesWithOptions(request *Descri
 
 // Summary:
 //
-// Queries the security groups whose rules reference security groups as authorization objects.
+// Queries the list of other security groups that have been authorized by one or more specified security groups.
 //
 // Description:
 //
-// - If you cannot delete a security group by calling the [DeleteSecurityGroup](https://help.aliyun.com/document_detail/25558.html) operation, call the DescribeSecurityGroupReferences operation to check whether the security group is referenced by the rules of other security groups. If the security group is referenced by the rules of other security groups, you must call the [RevokeSecurityGroup](https://help.aliyun.com/document_detail/2679855.html) and [RevokeSecurityGroupEgress](https://help.aliyun.com/document_detail/2679856.html) operations to remove the references before you can delete the security group.
+// -  If you cannot delete a security group ([DeleteSecurityGroup](https://help.aliyun.com/document_detail/25558.html)), you can call this operation to check whether the specified security group has been authorized by other security groups. If the specified security group has been authorized, you can call [RevokeSecurityGroup](https://help.aliyun.com/document_detail/2679855.html) and [RevokeSecurityGroupEgress](https://help.aliyun.com/document_detail/2679856.html) to delete the corresponding security group rules to revoke the authorization.
 //
 // @param request - DescribeSecurityGroupReferencesRequest
 //
@@ -25782,19 +25828,19 @@ func (client *Client) DescribeSecurityGroupReferences(request *DescribeSecurityG
 
 // Summary:
 //
-// Queries the basic information of security groups. You can query the information by various filter conditions, such as the region ID, security group ID, and security group type.
+// This API operation is used to query a list of basic information about security groups. You can query by different parameters such as region, security group ID, and security group type.
 //
 // Description:
 //
-// - **Paged query**: We recommend that you specify `MaxResults` and `NextToken`.
+// - **Paged queries**: We recommend that you use the `MaxResults` and `NextToken` parameters for queries.
 //
-//   - If the response does not include `NextToken`, the current page of results is the last page and no more results are to be returned.
+//   - When the response does not contain `NextToken`, the current page is the last page and no more pages are available.
 //
-//   - During a paged query, when you call the DescribeSecurityGroups operation to retrieve the first page of results, set `MaxResults` to specify the maximum number of entries to return in the call. The return value of `NextToken` is a pagination token that can be used in the next call to retrieve a new page of results.
+//   - When querying the first page, you only need to set `MaxResults` to limit the number of entries returned. The `NextToken` in the response is used as the token for querying subsequent pages.
 //
-//   - When you call the DescribeSecurityGroups operation to retrieve a new page of results, set `NextToken` to the `NextToken` value returned in the previous call and set `MaxResults` to specify the maximum number of entries to return in this call.
+//   - When querying subsequent pages, set the `NextToken` parameter to the `NextToken` value obtained from the previous response as the query token, and set `MaxResults` to limit the number of entries returned.
 //
-// - When you use Alibaba Cloud CLI to call an API operation, you must specify request parameter values of different data types in required formats. For more information, see [Parameter formats](https://help.aliyun.com/document_detail/110340.html).
+// - When calling the API through Alibaba Cloud CLI, the values of request parameters of different data types must follow certain format requirements. For more information, see [CLI parameter format description](https://help.aliyun.com/document_detail/110340.html).
 //
 // @param request - DescribeSecurityGroupsRequest
 //
@@ -25918,19 +25964,19 @@ func (client *Client) DescribeSecurityGroupsWithOptions(request *DescribeSecurit
 
 // Summary:
 //
-// Queries the basic information of security groups. You can query the information by various filter conditions, such as the region ID, security group ID, and security group type.
+// This API operation is used to query a list of basic information about security groups. You can query by different parameters such as region, security group ID, and security group type.
 //
 // Description:
 //
-// - **Paged query**: We recommend that you specify `MaxResults` and `NextToken`.
+// - **Paged queries**: We recommend that you use the `MaxResults` and `NextToken` parameters for queries.
 //
-//   - If the response does not include `NextToken`, the current page of results is the last page and no more results are to be returned.
+//   - When the response does not contain `NextToken`, the current page is the last page and no more pages are available.
 //
-//   - During a paged query, when you call the DescribeSecurityGroups operation to retrieve the first page of results, set `MaxResults` to specify the maximum number of entries to return in the call. The return value of `NextToken` is a pagination token that can be used in the next call to retrieve a new page of results.
+//   - When querying the first page, you only need to set `MaxResults` to limit the number of entries returned. The `NextToken` in the response is used as the token for querying subsequent pages.
 //
-//   - When you call the DescribeSecurityGroups operation to retrieve a new page of results, set `NextToken` to the `NextToken` value returned in the previous call and set `MaxResults` to specify the maximum number of entries to return in this call.
+//   - When querying subsequent pages, set the `NextToken` parameter to the `NextToken` value obtained from the previous response as the query token, and set `MaxResults` to limit the number of entries returned.
 //
-// - When you use Alibaba Cloud CLI to call an API operation, you must specify request parameter values of different data types in required formats. For more information, see [Parameter formats](https://help.aliyun.com/document_detail/110340.html).
+// - When calling the API through Alibaba Cloud CLI, the values of request parameters of different data types must follow certain format requirements. For more information, see [CLI parameter format description](https://help.aliyun.com/document_detail/110340.html).
 //
 // @param request - DescribeSecurityGroupsRequest
 //
@@ -26212,17 +26258,17 @@ func (client *Client) DescribeSnapshotGroups(request *DescribeSnapshotGroupsRequ
 
 // Summary:
 //
-// Queries the snapshot chains of cloud disks. A snapshot chain is a chain of all the snapshots created for a disk. A disk corresponds to a chain of snapshots.
+// Queries snapshot chains of disks. A snapshot chain consists of all snapshots of a disk. Each disk corresponds to one snapshot chain.
 //
 // Description:
 //
-// ## [](#)Usage notes
+// ## Operation description
 //
-// Take note of the following items:
+// When you call this operation, take note of the following items:
 //
-// - You can specify multiple request parameters, such as `RegionId`, `DiskIds`, and `InstanceId`, to query snapshot chains. Specified parameters have logical AND relations.
+// -  The request parameters such as `RegionId`, `DiskIds`, and `InstanceId` act as filters. Logical AND is used between these parameters.
 //
-// - Only the specified parameters are used as filter conditions. If the `DiskIds` and `SnapshotLinkIds` parameters are set to empty JSON arrays, the values are considered as valid filter conditions. In this case, an empty result is returned.
+// -  If you do not specify any parameters, the filters do not take effect. If `DiskIds` and `SnapshotLinkIds` are both empty arrays, the filters are considered valid, but the response is empty.
 //
 // @param request - DescribeSnapshotLinksRequest
 //
@@ -26310,17 +26356,17 @@ func (client *Client) DescribeSnapshotLinksWithOptions(request *DescribeSnapshot
 
 // Summary:
 //
-// Queries the snapshot chains of cloud disks. A snapshot chain is a chain of all the snapshots created for a disk. A disk corresponds to a chain of snapshots.
+// Queries snapshot chains of disks. A snapshot chain consists of all snapshots of a disk. Each disk corresponds to one snapshot chain.
 //
 // Description:
 //
-// ## [](#)Usage notes
+// ## Operation description
 //
-// Take note of the following items:
+// When you call this operation, take note of the following items:
 //
-// - You can specify multiple request parameters, such as `RegionId`, `DiskIds`, and `InstanceId`, to query snapshot chains. Specified parameters have logical AND relations.
+// -  The request parameters such as `RegionId`, `DiskIds`, and `InstanceId` act as filters. Logical AND is used between these parameters.
 //
-// - Only the specified parameters are used as filter conditions. If the `DiskIds` and `SnapshotLinkIds` parameters are set to empty JSON arrays, the values are considered as valid filter conditions. In this case, an empty result is returned.
+// -  If you do not specify any parameters, the filters do not take effect. If `DiskIds` and `SnapshotLinkIds` are both empty arrays, the filters are considered valid, but the response is empty.
 //
 // @param request - DescribeSnapshotLinksRequest
 //
@@ -27546,11 +27592,11 @@ func (client *Client) DescribeStorageSets(request *DescribeStorageSetsRequest) (
 //
 // Summary:
 //
-// You can query for tags and filter by criteria such as resource type, resource ID, tag key, or tag value. A logical AND (&&) combines these criteria, returning only tags that satisfy all conditions.
+// Queries tags available to you. You can perform a conditional query for tags based on resource type, resource ID, tag key, or tag value. The filter conditions are evaluated by using a logical AND (&&) operator, and only tags that meet all filter conditions are returned.
 //
 // Description:
 //
-// Specify a tag key (Tag.N.Key) without a tag value (Tag.N.Value) to return all tag key-value pairs for that tag key. Specify both a tag key and a tag value to return only the tag key-value pairs that are an exact match.
+// If you specify a tag key (Tag.N.Key) without specifying a tag value (Tag.N.Value), all tag key-value pairs associated with the tag key are returned. If you specify a tag key-value pair, only the tag that is an exact match of the key-value pair is returned.
 //
 // @param request - DescribeTagsRequest
 //
@@ -27632,11 +27678,11 @@ func (client *Client) DescribeTagsWithOptions(request *DescribeTagsRequest, runt
 //
 // Summary:
 //
-// You can query for tags and filter by criteria such as resource type, resource ID, tag key, or tag value. A logical AND (&&) combines these criteria, returning only tags that satisfy all conditions.
+// Queries tags available to you. You can perform a conditional query for tags based on resource type, resource ID, tag key, or tag value. The filter conditions are evaluated by using a logical AND (&&) operator, and only tags that meet all filter conditions are returned.
 //
 // Description:
 //
-// Specify a tag key (Tag.N.Key) without a tag value (Tag.N.Value) to return all tag key-value pairs for that tag key. Specify both a tag key and a tag value to return only the tag key-value pairs that are an exact match.
+// If you specify a tag key (Tag.N.Key) without specifying a tag value (Tag.N.Value), all tag key-value pairs associated with the tag key are returned. If you specify a tag key-value pair, only the tag that is an exact match of the key-value pair is returned.
 //
 // @param request - DescribeTagsRequest
 //
@@ -27655,7 +27701,7 @@ func (client *Client) DescribeTags(request *DescribeTagsRequest) (_result *Descr
 
 // Summary:
 //
-// Queries the details of an asynchronous task. The asynchronous tasks that you can query by calling this operation are the tasks generated by the ImportImage, ExportImage, and ModifyDiskSpec operations.
+// Queries the details of an asynchronous task. Currently, the asynchronous tasks that can be queried include ImportImage, ExportImage, and ModifyDiskSpec.
 //
 // @param request - DescribeTaskAttributeRequest
 //
@@ -27715,7 +27761,7 @@ func (client *Client) DescribeTaskAttributeWithOptions(request *DescribeTaskAttr
 
 // Summary:
 //
-// Queries the details of an asynchronous task. The asynchronous tasks that you can query by calling this operation are the tasks generated by the ImportImage, ExportImage, and ModifyDiskSpec operations.
+// Queries the details of an asynchronous task. Currently, the asynchronous tasks that can be queried include ImportImage, ExportImage, and ModifyDiskSpec.
 //
 // @param request - DescribeTaskAttributeRequest
 //
@@ -28417,7 +28463,7 @@ func (client *Client) DescribeVirtualBorderRouters(request *DescribeVirtualBorde
 //
 // Summary:
 //
-// # DescribeVirtualBorderRoutersForPhysicalConnection
+// DescribeVirtualBorderRoutersForPhysicalConnection.
 //
 // @param request - DescribeVirtualBorderRoutersForPhysicalConnectionRequest
 //
@@ -28491,7 +28537,7 @@ func (client *Client) DescribeVirtualBorderRoutersForPhysicalConnectionWithOptio
 //
 // Summary:
 //
-// # DescribeVirtualBorderRoutersForPhysicalConnection
+// DescribeVirtualBorderRoutersForPhysicalConnection.
 //
 // @param request - DescribeVirtualBorderRoutersForPhysicalConnectionRequest
 //
@@ -29099,15 +29145,15 @@ func (client *Client) DetachInstanceRamRole(request *DetachInstanceRamRoleReques
 
 // Summary:
 //
-// Unbinds an SSH key pair from Linux Elastic Compute Service (ECS) instances.
+// Unbinds SSH key pairs from one or more Linux instances.
 //
 // Description:
 //
-// When you call this operation, take note of the following items:
+// Take note of the following items when you call this operation:
 //
-// - After you unbind an SSH key pair from an instance, you must call the [RebootInstance](https://help.aliyun.com/document_detail/25502.html) operation to restart the instance to allow the unbind operation to take effect.
+// -  After you unbind an SSH key pair, restart the instance ([RebootInstance](https://help.aliyun.com/document_detail/25502.html)) for the changes to take effect.
 //
-// - After you unbind an SSH key pair from an instance, the username and password authentication method is selected for the instance.
+// -  After you unbind an SSH key pair, the instance uses the username and password authentication method by default.
 //
 // @param request - DetachKeyPairRequest
 //
@@ -29171,15 +29217,15 @@ func (client *Client) DetachKeyPairWithOptions(request *DetachKeyPairRequest, ru
 
 // Summary:
 //
-// Unbinds an SSH key pair from Linux Elastic Compute Service (ECS) instances.
+// Unbinds SSH key pairs from one or more Linux instances.
 //
 // Description:
 //
-// When you call this operation, take note of the following items:
+// Take note of the following items when you call this operation:
 //
-// - After you unbind an SSH key pair from an instance, you must call the [RebootInstance](https://help.aliyun.com/document_detail/25502.html) operation to restart the instance to allow the unbind operation to take effect.
+// -  After you unbind an SSH key pair, restart the instance ([RebootInstance](https://help.aliyun.com/document_detail/25502.html)) for the changes to take effect.
 //
-// - After you unbind an SSH key pair from an instance, the username and password authentication method is selected for the instance.
+// -  After you unbind an SSH key pair, the instance uses the username and password authentication method by default.
 //
 // @param request - DetachKeyPairRequest
 //
@@ -29831,7 +29877,7 @@ func (client *Client) EnableNetworkInterfaceQoS(request *EnableNetworkInterfaceQ
 //
 // Summary:
 //
-// # EnablePhysicalConnection
+// Enables a physical connection.
 //
 // @param request - EnablePhysicalConnectionRequest
 //
@@ -29905,7 +29951,7 @@ func (client *Client) EnablePhysicalConnectionWithOptions(request *EnablePhysica
 //
 // Summary:
 //
-// # EnablePhysicalConnection
+// Enables a physical connection.
 //
 // @param request - EnablePhysicalConnectionRequest
 //
@@ -29924,13 +29970,13 @@ func (client *Client) EnablePhysicalConnection(request *EnablePhysicalConnection
 
 // Summary:
 //
-// Permanently closes a session.
+// Permanently closes the data connection of a specified session.
 //
 // Description:
 //
-// - After you closes a session, the session is no longer available.
+// - Closes the data connection of a specified session. The session can no longer be used.
 //
-// - The WebSocket URL that is associated with a closed session is invalid and no longer available.
+// - The WebSocket URL associated with the session also becomes invalid and can no longer be used.
 //
 // @param request - EndTerminalSessionRequest
 //
@@ -29994,13 +30040,13 @@ func (client *Client) EndTerminalSessionWithOptions(request *EndTerminalSessionR
 
 // Summary:
 //
-// Permanently closes a session.
+// Permanently closes the data connection of a specified session.
 //
 // Description:
 //
-// - After you closes a session, the session is no longer available.
+// - Closes the data connection of a specified session. The session can no longer be used.
 //
-// - The WebSocket URL that is associated with a closed session is invalid and no longer available.
+// - The WebSocket URL associated with the session also becomes invalid and can no longer be used.
 //
 // @param request - EndTerminalSessionRequest
 //
@@ -30383,15 +30429,15 @@ func (client *Client) ExportSnapshot(request *ExportSnapshotRequest) (_result *E
 
 // Summary:
 //
-// Queries the command output of an Elastic Compute Service (ECS) instance. The returned command output is encoded in Base64.
+// Retrieves the system command line output of an instance. The data is returned in Base64 encoding.
 //
 // Description:
 //
-// - ECS is a virtualized cloud-based service and cannot be connected to display devices. Alibaba Cloud caches system command outputs for the last start, restart, or shutdown of ECS instances. You can call the GetInstanceConsoleOutput operation to query the command outputs.
+// - Elastic Compute Service (ECS) is a virtualization-based cloud server that cannot be connected to display devices or manually screenshotted. However, Alibaba Cloud caches the system command line output from the last time an instance was started, restarted, or shut down. You can invoke GetInstanceConsoleOutput to retrieve this output.
 //
-// - For instances of the retired instance types, you cannot obtain command outputs. For more information, see [Retired instance types](https://help.aliyun.com/document_detail/55263.html).
+// - System command line output cannot be retrieved for [retired instance types](https://help.aliyun.com/document_detail/55263.html).
 //
-// - You cannot obtain the command outputs of Windows instances.
+// - Windows instances do not support retrieving system command line output.
 //
 // @param request - GetInstanceConsoleOutputRequest
 //
@@ -30463,15 +30509,15 @@ func (client *Client) GetInstanceConsoleOutputWithOptions(request *GetInstanceCo
 
 // Summary:
 //
-// Queries the command output of an Elastic Compute Service (ECS) instance. The returned command output is encoded in Base64.
+// Retrieves the system command line output of an instance. The data is returned in Base64 encoding.
 //
 // Description:
 //
-// - ECS is a virtualized cloud-based service and cannot be connected to display devices. Alibaba Cloud caches system command outputs for the last start, restart, or shutdown of ECS instances. You can call the GetInstanceConsoleOutput operation to query the command outputs.
+// - Elastic Compute Service (ECS) is a virtualization-based cloud server that cannot be connected to display devices or manually screenshotted. However, Alibaba Cloud caches the system command line output from the last time an instance was started, restarted, or shut down. You can invoke GetInstanceConsoleOutput to retrieve this output.
 //
-// - For instances of the retired instance types, you cannot obtain command outputs. For more information, see [Retired instance types](https://help.aliyun.com/document_detail/55263.html).
+// - System command line output cannot be retrieved for [retired instance types](https://help.aliyun.com/document_detail/55263.html).
 //
-// - You cannot obtain the command outputs of Windows instances.
+// - Windows instances do not support retrieving system command line output.
 //
 // @param request - GetInstanceConsoleOutputRequest
 //
@@ -30489,17 +30535,17 @@ func (client *Client) GetInstanceConsoleOutput(request *GetInstanceConsoleOutput
 
 // Summary:
 //
-// Obtains the screenshots of an Elastic Compute Service (ECS) instance.
+// Calls GetInstanceScreenshot to obtain the screenshot information of an instance.
 //
 // Description:
 //
-// After ECS returns a Base64-encoded instance screenshot in the JPG format, you must decode the screenshot. We recommend that you call this operation for troubleshooting and diagnosis. When you call this operation, take note of the following items:
+// After Elastic Compute Service (ECS) returns the instance screenshot as a Base64-encoded JPG image, you must decode it yourself. You can call this operation when troubleshooting faults. Note the following items:
 //
 // - The instance must be in the Running state.
 //
-// - For instances of the retired instance types, you cannot obtain screenshots. For more information, see [Retired instance types](https://help.aliyun.com/document_detail/55263.html).
+// - You cannot obtain screenshot information for [retired instance types](https://help.aliyun.com/document_detail/55263.html).
 //
-// - If you call this operation on an instance for multiple times, the call interval must be at least 10 seconds. Otherwise, the `Throttling` error is returned.
+// - If you call this operation multiple times on the same instance, the interval between calls must be at least 10 seconds. Otherwise, the `Throttling` error code is returned.
 //
 // @param request - GetInstanceScreenshotRequest
 //
@@ -30571,17 +30617,17 @@ func (client *Client) GetInstanceScreenshotWithOptions(request *GetInstanceScree
 
 // Summary:
 //
-// Obtains the screenshots of an Elastic Compute Service (ECS) instance.
+// Calls GetInstanceScreenshot to obtain the screenshot information of an instance.
 //
 // Description:
 //
-// After ECS returns a Base64-encoded instance screenshot in the JPG format, you must decode the screenshot. We recommend that you call this operation for troubleshooting and diagnosis. When you call this operation, take note of the following items:
+// After Elastic Compute Service (ECS) returns the instance screenshot as a Base64-encoded JPG image, you must decode it yourself. You can call this operation when troubleshooting faults. Note the following items:
 //
 // - The instance must be in the Running state.
 //
-// - For instances of the retired instance types, you cannot obtain screenshots. For more information, see [Retired instance types](https://help.aliyun.com/document_detail/55263.html).
+// - You cannot obtain screenshot information for [retired instance types](https://help.aliyun.com/document_detail/55263.html).
 //
-// - If you call this operation on an instance for multiple times, the call interval must be at least 10 seconds. Otherwise, the `Throttling` error is returned.
+// - If you call this operation multiple times on the same instance, the interval between calls must be at least 10 seconds. Otherwise, the `Throttling` error code is returned.
 //
 // @param request - GetInstanceScreenshotRequest
 //
@@ -30599,23 +30645,23 @@ func (client *Client) GetInstanceScreenshot(request *GetInstanceScreenshotReques
 
 // Summary:
 //
-// Import a local image to ECS to create a custom image in a specified region. You can then use this image to create ECS instances (`RunInstances`) or replace an instance\\"s system disk (`ReplaceSystemDisk`).
+// Imports a local image file to Elastic Compute Service (ECS) as a custom image that appears in the specified region. You can then use the imported image to create ECS instances (RunInstances) or replace the system disk of an instance (ReplaceSystemDisk).
 //
 // Description:
 //
-// ### API
+// ### Operation description
 //
-// When you call this operation, note the following:
+// When you call this operation, take note of the following items:
 //
-// - You must upload the image file to Object Storage Service (OSS). For more information, see [Upload files](https://help.aliyun.com/document_detail/31886.html).
+// - You must upload the image file to Object Storage Service (OSS) in advance. For more information, see [Upload files](https://help.aliyun.com/document_detail/31886.html).
 //
-// - To ensure that ECS instances created from a custom image can start, check if the source server requires a virtio driver before you import the image. This driver may be required for operating systems on certain physical servers, virtual machines (VMs), or other cloud hosts. For more information, see [Install virtio drivers](https://help.aliyun.com/document_detail/62423.html).
+// - To prevent ECS instances created from the imported custom image from failing to start due to operating system issues on some servers, virtual machines, or cloud hosts, check whether you need to install the virtio driver on the source server before importing the image. For more information, see [Install the virtio driver](https://help.aliyun.com/document_detail/62423.html).
 //
-// - When you import an image for the first time, you must use Resource Access Management (RAM) to grant ECS permissions to access your OSS bucket. Otherwise, the `NoSetRoletoECSServiceAccount` or `InvalidOperation.CloudBoxImageImportRoleRequired` error is returned. The required authorization varies based on the following scenarios:
+// - When you import an image for the first time, you must authorize ECS to access your OSS bucket by using Resource Access Management (RAM). Otherwise, the `NoSetRoletoECSServiceAccount` or `InvalidOperation.CloudBoxImageImportRoleRequired` error is returned. The following two scenarios apply:
 //
-//   - **Import an image file without using Alibaba Cloud Box**: You can grant the permissions with a single click in the RAM console. For the authorization page, see [Authorize RAM roles](https://ram.console.aliyun.com/?spm=5176.2020520101image.0.0.2ffa4df57kSoHX#/role/authorize?request=%7B%22Requests%22%3A%20%7B%22request1%22%3A%20%7B%22RoleName%22%3A%20%22AliyunECSImageImportDefaultRole%22%2C%20%22TemplateId%22%3A%20%22ECSImportRole%22%7D%2C%20%22request2%22%3A%20%7B%22RoleName%22%3A%20%22AliyunECSImageExportDefaultRole%22%2C%20%22TemplateId%22%3A%20%22ECSExportRole%22%7D%7D%2C%20%22ReturnUrl%22%3A%20%22https%3A//ecs.console.aliyun.com/%22%2C%20%22Service%22%3A%20%22ECS%22%7D). Alternatively, you can manually grant the permissions. The required role and policy are described below. For more information, see [Control access to resources](https://help.aliyun.com/document_detail/25481.html).
+//   - **Import an image file without using CloudBox**: You can complete RAM authorization in the RAM console with a single click. For more information, see [Cloud resource access authorization](https://ram.console.aliyun.com/?spm=5176.2020520101image.0.0.2ffa4df57kSoHX#/role/authorize?request=%7B%22Requests%22%3A%20%7B%22request1%22%3A%20%7B%22RoleName%22%3A%20%22AliyunECSImageImportDefaultRole%22%2C%20%22TemplateId%22%3A%20%22ECSImportRole%22%7D%2C%20%22request2%22%3A%20%7B%22RoleName%22%3A%20%22AliyunECSImageExportDefaultRole%22%2C%20%22TemplateId%22%3A%20%22ECSExportRole%22%7D%7D%2C%20%22ReturnUrl%22%3A%20%22https%3A//ecs.console.aliyun.com/%22%2C%20%22Service%22%3A%20%22ECS%22%7D). You can also manually complete RAM authorization. The following policies and permissions are required for some operations. For more information, see [Account access control](https://help.aliyun.com/document_detail/25481.html).
 //
-//     1. Create a role named `AliyunECSImageImportDefaultRole`. You must use this name. Otherwise, the image import fails. The following trust policy must be attached to the role:
+//     1. Create a role named `AliyunECSImageImportDefaultRole`. You must use this exact name. Otherwise, the image import fails. Use the following policy for the role:
 //
 //     ```
 //
@@ -30649,7 +30695,7 @@ func (client *Client) GetInstanceScreenshot(request *GetInstanceScreenshotReques
 //
 //     ```
 //
-//     2. Attach the `AliyunECSImageImportRolePolicy` system policy to the role. Alternatively, you can create a custom policy. The custom policy must include the following permissions:
+//     2. Attach the system policy `AliyunECSImageImportRolePolicy` to the role. You can also create a custom policy that includes the following permissions:
 //
 //     ```
 //
@@ -30683,9 +30729,9 @@ func (client *Client) GetInstanceScreenshot(request *GetInstanceScreenshotReques
 //
 //     ```
 //
-//   - **Import an image file by using Alibaba Cloud Box**: You can grant the permissions with a single click in the RAM console. For the authorization page, see [Authorize RAM roles](https://ram.console.aliyun.com/role/authorize?request=%7B%22ReturnUrl%22%3A%22https%3A%2F%2Fecs.console.aliyun.com%2F%22%2C%22Services%22%3A%5B%7B%22Roles%22%3A%5B%7B%22RoleName%22%3A%22AliyunECSCloudBoxImageImportDefaultRole%22%2C%22TemplateId%22%3A%22AliyunECSCloudBoxImageImportDefaultRole%22%7D%5D%2C%22Service%22%3A%22ECS%22%7D%5D%7D). Alternatively, you can manually grant the permissions. The required role and policy are described below. For more information, see [Control access to resources](https://help.aliyun.com/document_detail/25481.html).
+//   - **Import an image file by using CloudBox**: You can complete RAM authorization in the RAM console with a single click. For more information, see [Cloud resource access authorization](https://ram.console.aliyun.com/role/authorize?request=%7B%22ReturnUrl%22%3A%22https%3A%2F%2Fecs.console.aliyun.com%2F%22%2C%22Services%22%3A%5B%7B%22Roles%22%3A%5B%7B%22RoleName%22%3A%22AliyunECSCloudBoxImageImportDefaultRole%22%2C%22TemplateId%22%3A%22AliyunECSCloudBoxImageImportDefaultRole%22%7D%5D%2C%22Service%22%3A%22ECS%22%7D%5D%7D). You can also manually complete RAM authorization. The following policies and permissions are required for some operations. For more information, see [Account access control](https://help.aliyun.com/document_detail/25481.html).
 //
-//     1. Create a role named `AliyunECSCloudBoxImageImportDefaultRole`. You must use this name. Otherwise, the image import fails. The following trust policy must be attached to the role:
+//     1. Create a role named `AliyunECSCloudBoxImageImportDefaultRole`. You must use this exact name. Otherwise, the image import fails. Use the following policy for the role:
 //
 //     ```
 //
@@ -30719,7 +30765,7 @@ func (client *Client) GetInstanceScreenshot(request *GetInstanceScreenshotReques
 //
 //     ```
 //
-//     2. Attach the `AliyunECSCloudBoxImageImportRolePolicy` system policy to the role. Alternatively, you can create a custom policy. The custom policy must include the following permissions:
+//     2. Attach the system policy `AliyunECSCloudBoxImageImportRolePolicy` to the role. You can also create a custom policy that includes the following permissions:
 //
 //     ```
 //
@@ -30753,35 +30799,35 @@ func (client *Client) GetInstanceScreenshot(request *GetInstanceScreenshotReques
 //
 //     ```
 //
-// - You cannot delete an image while it is being imported. To cancel the import, call the [CancelTask](https://help.aliyun.com/document_detail/25624.html) operation.
+// - You cannot delete an image that is being imported. You can only call [CancelTask](https://help.aliyun.com/document_detail/25624.html) to cancel the image import task.
 //
-// - The image must be imported into the same region as its source OSS bucket.
+// - The region into which you import the image must be the same as the region of the OSS bucket to which the image file is uploaded.
 //
-// - For the `DiskDeviceMapping.N` parameter, the value of N can range from 1 to 17. A value of 1 for N indicates the system disk, and values from 2 to 17 indicate data disks. The system ignores mappings where N is greater than 17.
+// - Valid values of N in the `DiskDeviceMapping.N` parameter: 1 to 17. When N is 1, the disk is a system disk. When N is 2 to 17, the disk is a data disk. When N is greater than 17, the system automatically ignores the value.
 //
-// - If the `Architecture` parameter is set to `arm64`, or the `Platform` parameter is set to `CentOS Stream`, `Anolis`, `AlmaLinux`, `UOS`, `Kylin`, or `Rocky Linux`, note the following:
+// - When the `Architecture` parameter is set to `arm64`, or the `Platform` parameter is set to `CentOS Stream`, `Anolis`, `AlmaLinux`, `UOS`, `Kylin`, or `Rocky Linux`, take note of the following items:
 //
-//   - To enable password configuration or key pair replacement for the imported image, it must meet the following requirements:
+//   - To ensure that the imported image supports password configuration or key pair modification, the image must meet the following requirements:
 //
-//   - The OS kernel must support the `CONFIG_FW_CFG_SYSFS` feature. This feature is enabled by default in Linux community kernels later than version 4.6 and in CentOS kernels later than version 3.10.0-826.el7. You can run the `grep -nr CONFIG_FW_CFG_SYSFS /boot/config-$(uname -r)` command on the source server. If the output is `CONFIG_FW_CFG_SYSFS=y`, the kernel supports the feature.
+//   - The operating system kernel must support the `CONFIG_FW_CFG_SYSFS` feature. Linux community kernels later than version 4.6 support this feature by default. CentOS kernels later than version 3.10.0-826.el7 support this feature by default. You can run the `grep -nr CONFIG_FW_CFG_SYSFS /boot/config-$(uname -r)` command on the server that corresponds to the image. If the output contains `CONFIG_FW_CFG_SYSFS=y`, the kernel in the image supports the `CONFIG_FW_CFG_SYSFS` feature.
 //
-//   - The OS must have the latest Alibaba Cloud-customized version of cloud-init installed. For cloud-init 19.1, the version must be 19.1.3 or later. For cloud-init 0.7.6a on some older operating systems, the version must be 0.7.6a15 or later. For more information, see [Install cloud-init](https://help.aliyun.com/document_detail/57803.html).
+//   - The latest version of Alibaba Cloud cloud-init is installed on the operating system. Cloud-init 19.1 must Milvus version 19.1.3 or later. Cloud-init 0.7.6a on some earlier operating systems must Milvus version 0.7.6a15 or later. For more information, see [Install cloud-init](https://help.aliyun.com/document_detail/57803.html).
 //
-//   - The OS must support the SHA-512 encryption algorithm.
+//   - The operating system must support the SHA-512 encryption algorithm.
 //
-//   - To enable resizing of cloud disks and file systems for the imported image, it must meet the following requirements:
+//   - To ensure that the imported image supports disk resizing and file system resizing, the image must meet the following requirements:
 //
-//   - The OS kernel version must be later than 3.6.
+//   - The operating system kernel version must be later than 3.6.
 //
-//   - The OS must support the growpart command. This command requires the `cloud-utils-growpart` package. The installation method varies by OS. For more information, see [Resize partitions and file systems of a Linux instance](~~2949817#bb3b1f02e51pj~~).
+//   - The growpart command is supported. To support this command, install the `cloud-utils-growpart` package. The installation method varies by operating system. For more information, see [Resize partitions and file systems (Linux)](~~2949817#bb3b1f02e51pj~~).
 //
-//   - The OS must support the resize2fs command. This command requires the `e2fsprogs` package. While this package is installed by default on most operating systems, you must install it if it is missing.
+//   - The resize2fs command is supported. To support this command, install the `e2fsprogs` package. This package is installed by default on the operating system. If it is not installed, install it manually.
 //
-//   - The OS must have the latest Alibaba Cloud-customized version of cloud-init installed. For cloud-init 19.1, the version must be 19.1.3 or later. For cloud-init 0.7.6a on some older operating systems, the version must be 0.7.6a15 or later. For more information, see [Install cloud-init](https://help.aliyun.com/document_detail/57803.html).
+//   - The latest version of Alibaba Cloud cloud-init is installed on the operating system. Cloud-init 19.1 must Milvus version 19.1.3 or later. Cloud-init 0.7.6a on some earlier operating systems must Milvus version 0.7.6a15 or later. For more information, see [Install cloud-init](https://help.aliyun.com/document_detail/57803.html).
 //
-// - For arm64 custom images, you must configure the Real-Time Clock (RTC) to use Coordinated Universal Time (UTC). For more information, see [Time and time zone](https://help.aliyun.com/document_detail/405080.html).
+// - If the system architecture of the custom image that you want to import is arm64, set the RTC clock to use the UTC time standard. For more information, see [Linux time and time zone description](https://help.aliyun.com/document_detail/405080.html).
 //
-// - Specifying image check parameters when you import an image helps the system optimize it. For more information, see [Image Check](https://help.aliyun.com/document_detail/439819.html).
+// - Configure the image detection parameters when you import an image. This helps the system optimize your image. For more information, see [Image detection overview](https://help.aliyun.com/document_detail/439819.html).
 //
 // @param request - ImportImageRequest
 //
@@ -30901,23 +30947,23 @@ func (client *Client) ImportImageWithOptions(request *ImportImageRequest, runtim
 
 // Summary:
 //
-// Import a local image to ECS to create a custom image in a specified region. You can then use this image to create ECS instances (`RunInstances`) or replace an instance\\"s system disk (`ReplaceSystemDisk`).
+// Imports a local image file to Elastic Compute Service (ECS) as a custom image that appears in the specified region. You can then use the imported image to create ECS instances (RunInstances) or replace the system disk of an instance (ReplaceSystemDisk).
 //
 // Description:
 //
-// ### API
+// ### Operation description
 //
-// When you call this operation, note the following:
+// When you call this operation, take note of the following items:
 //
-// - You must upload the image file to Object Storage Service (OSS). For more information, see [Upload files](https://help.aliyun.com/document_detail/31886.html).
+// - You must upload the image file to Object Storage Service (OSS) in advance. For more information, see [Upload files](https://help.aliyun.com/document_detail/31886.html).
 //
-// - To ensure that ECS instances created from a custom image can start, check if the source server requires a virtio driver before you import the image. This driver may be required for operating systems on certain physical servers, virtual machines (VMs), or other cloud hosts. For more information, see [Install virtio drivers](https://help.aliyun.com/document_detail/62423.html).
+// - To prevent ECS instances created from the imported custom image from failing to start due to operating system issues on some servers, virtual machines, or cloud hosts, check whether you need to install the virtio driver on the source server before importing the image. For more information, see [Install the virtio driver](https://help.aliyun.com/document_detail/62423.html).
 //
-// - When you import an image for the first time, you must use Resource Access Management (RAM) to grant ECS permissions to access your OSS bucket. Otherwise, the `NoSetRoletoECSServiceAccount` or `InvalidOperation.CloudBoxImageImportRoleRequired` error is returned. The required authorization varies based on the following scenarios:
+// - When you import an image for the first time, you must authorize ECS to access your OSS bucket by using Resource Access Management (RAM). Otherwise, the `NoSetRoletoECSServiceAccount` or `InvalidOperation.CloudBoxImageImportRoleRequired` error is returned. The following two scenarios apply:
 //
-//   - **Import an image file without using Alibaba Cloud Box**: You can grant the permissions with a single click in the RAM console. For the authorization page, see [Authorize RAM roles](https://ram.console.aliyun.com/?spm=5176.2020520101image.0.0.2ffa4df57kSoHX#/role/authorize?request=%7B%22Requests%22%3A%20%7B%22request1%22%3A%20%7B%22RoleName%22%3A%20%22AliyunECSImageImportDefaultRole%22%2C%20%22TemplateId%22%3A%20%22ECSImportRole%22%7D%2C%20%22request2%22%3A%20%7B%22RoleName%22%3A%20%22AliyunECSImageExportDefaultRole%22%2C%20%22TemplateId%22%3A%20%22ECSExportRole%22%7D%7D%2C%20%22ReturnUrl%22%3A%20%22https%3A//ecs.console.aliyun.com/%22%2C%20%22Service%22%3A%20%22ECS%22%7D). Alternatively, you can manually grant the permissions. The required role and policy are described below. For more information, see [Control access to resources](https://help.aliyun.com/document_detail/25481.html).
+//   - **Import an image file without using CloudBox**: You can complete RAM authorization in the RAM console with a single click. For more information, see [Cloud resource access authorization](https://ram.console.aliyun.com/?spm=5176.2020520101image.0.0.2ffa4df57kSoHX#/role/authorize?request=%7B%22Requests%22%3A%20%7B%22request1%22%3A%20%7B%22RoleName%22%3A%20%22AliyunECSImageImportDefaultRole%22%2C%20%22TemplateId%22%3A%20%22ECSImportRole%22%7D%2C%20%22request2%22%3A%20%7B%22RoleName%22%3A%20%22AliyunECSImageExportDefaultRole%22%2C%20%22TemplateId%22%3A%20%22ECSExportRole%22%7D%7D%2C%20%22ReturnUrl%22%3A%20%22https%3A//ecs.console.aliyun.com/%22%2C%20%22Service%22%3A%20%22ECS%22%7D). You can also manually complete RAM authorization. The following policies and permissions are required for some operations. For more information, see [Account access control](https://help.aliyun.com/document_detail/25481.html).
 //
-//     1. Create a role named `AliyunECSImageImportDefaultRole`. You must use this name. Otherwise, the image import fails. The following trust policy must be attached to the role:
+//     1. Create a role named `AliyunECSImageImportDefaultRole`. You must use this exact name. Otherwise, the image import fails. Use the following policy for the role:
 //
 //     ```
 //
@@ -30951,7 +30997,7 @@ func (client *Client) ImportImageWithOptions(request *ImportImageRequest, runtim
 //
 //     ```
 //
-//     2. Attach the `AliyunECSImageImportRolePolicy` system policy to the role. Alternatively, you can create a custom policy. The custom policy must include the following permissions:
+//     2. Attach the system policy `AliyunECSImageImportRolePolicy` to the role. You can also create a custom policy that includes the following permissions:
 //
 //     ```
 //
@@ -30985,9 +31031,9 @@ func (client *Client) ImportImageWithOptions(request *ImportImageRequest, runtim
 //
 //     ```
 //
-//   - **Import an image file by using Alibaba Cloud Box**: You can grant the permissions with a single click in the RAM console. For the authorization page, see [Authorize RAM roles](https://ram.console.aliyun.com/role/authorize?request=%7B%22ReturnUrl%22%3A%22https%3A%2F%2Fecs.console.aliyun.com%2F%22%2C%22Services%22%3A%5B%7B%22Roles%22%3A%5B%7B%22RoleName%22%3A%22AliyunECSCloudBoxImageImportDefaultRole%22%2C%22TemplateId%22%3A%22AliyunECSCloudBoxImageImportDefaultRole%22%7D%5D%2C%22Service%22%3A%22ECS%22%7D%5D%7D). Alternatively, you can manually grant the permissions. The required role and policy are described below. For more information, see [Control access to resources](https://help.aliyun.com/document_detail/25481.html).
+//   - **Import an image file by using CloudBox**: You can complete RAM authorization in the RAM console with a single click. For more information, see [Cloud resource access authorization](https://ram.console.aliyun.com/role/authorize?request=%7B%22ReturnUrl%22%3A%22https%3A%2F%2Fecs.console.aliyun.com%2F%22%2C%22Services%22%3A%5B%7B%22Roles%22%3A%5B%7B%22RoleName%22%3A%22AliyunECSCloudBoxImageImportDefaultRole%22%2C%22TemplateId%22%3A%22AliyunECSCloudBoxImageImportDefaultRole%22%7D%5D%2C%22Service%22%3A%22ECS%22%7D%5D%7D). You can also manually complete RAM authorization. The following policies and permissions are required for some operations. For more information, see [Account access control](https://help.aliyun.com/document_detail/25481.html).
 //
-//     1. Create a role named `AliyunECSCloudBoxImageImportDefaultRole`. You must use this name. Otherwise, the image import fails. The following trust policy must be attached to the role:
+//     1. Create a role named `AliyunECSCloudBoxImageImportDefaultRole`. You must use this exact name. Otherwise, the image import fails. Use the following policy for the role:
 //
 //     ```
 //
@@ -31021,7 +31067,7 @@ func (client *Client) ImportImageWithOptions(request *ImportImageRequest, runtim
 //
 //     ```
 //
-//     2. Attach the `AliyunECSCloudBoxImageImportRolePolicy` system policy to the role. Alternatively, you can create a custom policy. The custom policy must include the following permissions:
+//     2. Attach the system policy `AliyunECSCloudBoxImageImportRolePolicy` to the role. You can also create a custom policy that includes the following permissions:
 //
 //     ```
 //
@@ -31055,35 +31101,35 @@ func (client *Client) ImportImageWithOptions(request *ImportImageRequest, runtim
 //
 //     ```
 //
-// - You cannot delete an image while it is being imported. To cancel the import, call the [CancelTask](https://help.aliyun.com/document_detail/25624.html) operation.
+// - You cannot delete an image that is being imported. You can only call [CancelTask](https://help.aliyun.com/document_detail/25624.html) to cancel the image import task.
 //
-// - The image must be imported into the same region as its source OSS bucket.
+// - The region into which you import the image must be the same as the region of the OSS bucket to which the image file is uploaded.
 //
-// - For the `DiskDeviceMapping.N` parameter, the value of N can range from 1 to 17. A value of 1 for N indicates the system disk, and values from 2 to 17 indicate data disks. The system ignores mappings where N is greater than 17.
+// - Valid values of N in the `DiskDeviceMapping.N` parameter: 1 to 17. When N is 1, the disk is a system disk. When N is 2 to 17, the disk is a data disk. When N is greater than 17, the system automatically ignores the value.
 //
-// - If the `Architecture` parameter is set to `arm64`, or the `Platform` parameter is set to `CentOS Stream`, `Anolis`, `AlmaLinux`, `UOS`, `Kylin`, or `Rocky Linux`, note the following:
+// - When the `Architecture` parameter is set to `arm64`, or the `Platform` parameter is set to `CentOS Stream`, `Anolis`, `AlmaLinux`, `UOS`, `Kylin`, or `Rocky Linux`, take note of the following items:
 //
-//   - To enable password configuration or key pair replacement for the imported image, it must meet the following requirements:
+//   - To ensure that the imported image supports password configuration or key pair modification, the image must meet the following requirements:
 //
-//   - The OS kernel must support the `CONFIG_FW_CFG_SYSFS` feature. This feature is enabled by default in Linux community kernels later than version 4.6 and in CentOS kernels later than version 3.10.0-826.el7. You can run the `grep -nr CONFIG_FW_CFG_SYSFS /boot/config-$(uname -r)` command on the source server. If the output is `CONFIG_FW_CFG_SYSFS=y`, the kernel supports the feature.
+//   - The operating system kernel must support the `CONFIG_FW_CFG_SYSFS` feature. Linux community kernels later than version 4.6 support this feature by default. CentOS kernels later than version 3.10.0-826.el7 support this feature by default. You can run the `grep -nr CONFIG_FW_CFG_SYSFS /boot/config-$(uname -r)` command on the server that corresponds to the image. If the output contains `CONFIG_FW_CFG_SYSFS=y`, the kernel in the image supports the `CONFIG_FW_CFG_SYSFS` feature.
 //
-//   - The OS must have the latest Alibaba Cloud-customized version of cloud-init installed. For cloud-init 19.1, the version must be 19.1.3 or later. For cloud-init 0.7.6a on some older operating systems, the version must be 0.7.6a15 or later. For more information, see [Install cloud-init](https://help.aliyun.com/document_detail/57803.html).
+//   - The latest version of Alibaba Cloud cloud-init is installed on the operating system. Cloud-init 19.1 must Milvus version 19.1.3 or later. Cloud-init 0.7.6a on some earlier operating systems must Milvus version 0.7.6a15 or later. For more information, see [Install cloud-init](https://help.aliyun.com/document_detail/57803.html).
 //
-//   - The OS must support the SHA-512 encryption algorithm.
+//   - The operating system must support the SHA-512 encryption algorithm.
 //
-//   - To enable resizing of cloud disks and file systems for the imported image, it must meet the following requirements:
+//   - To ensure that the imported image supports disk resizing and file system resizing, the image must meet the following requirements:
 //
-//   - The OS kernel version must be later than 3.6.
+//   - The operating system kernel version must be later than 3.6.
 //
-//   - The OS must support the growpart command. This command requires the `cloud-utils-growpart` package. The installation method varies by OS. For more information, see [Resize partitions and file systems of a Linux instance](~~2949817#bb3b1f02e51pj~~).
+//   - The growpart command is supported. To support this command, install the `cloud-utils-growpart` package. The installation method varies by operating system. For more information, see [Resize partitions and file systems (Linux)](~~2949817#bb3b1f02e51pj~~).
 //
-//   - The OS must support the resize2fs command. This command requires the `e2fsprogs` package. While this package is installed by default on most operating systems, you must install it if it is missing.
+//   - The resize2fs command is supported. To support this command, install the `e2fsprogs` package. This package is installed by default on the operating system. If it is not installed, install it manually.
 //
-//   - The OS must have the latest Alibaba Cloud-customized version of cloud-init installed. For cloud-init 19.1, the version must be 19.1.3 or later. For cloud-init 0.7.6a on some older operating systems, the version must be 0.7.6a15 or later. For more information, see [Install cloud-init](https://help.aliyun.com/document_detail/57803.html).
+//   - The latest version of Alibaba Cloud cloud-init is installed on the operating system. Cloud-init 19.1 must Milvus version 19.1.3 or later. Cloud-init 0.7.6a on some earlier operating systems must Milvus version 0.7.6a15 or later. For more information, see [Install cloud-init](https://help.aliyun.com/document_detail/57803.html).
 //
-// - For arm64 custom images, you must configure the Real-Time Clock (RTC) to use Coordinated Universal Time (UTC). For more information, see [Time and time zone](https://help.aliyun.com/document_detail/405080.html).
+// - If the system architecture of the custom image that you want to import is arm64, set the RTC clock to use the UTC time standard. For more information, see [Linux time and time zone description](https://help.aliyun.com/document_detail/405080.html).
 //
-// - Specifying image check parameters when you import an image helps the system optimize it. For more information, see [Image Check](https://help.aliyun.com/document_detail/439819.html).
+// - Configure the image detection parameters when you import an image. This helps the system optimize your image. For more information, see [Image detection overview](https://help.aliyun.com/document_detail/439819.html).
 //
 // @param request - ImportImageRequest
 //
@@ -31101,15 +31147,17 @@ func (client *Client) ImportImage(request *ImportImageRequest) (_result *ImportI
 
 // Summary:
 //
-// Imports the public key of a Rivest-Shamir-Adleman (RSA) key pair that is generated by a third-party tool. After the key pair is imported, Alibaba Cloud stores the public key. You must securely store the private key.
+// Imports the public key part of an RSA key pair generated by other tools. After the key pair is imported, Alibaba Cloud stores the public key for you. You must securely store the private key of the key pair.
 //
 // Description:
 //
-// Take note of the following items:
+// ## Description
 //
-// - A maximum of 500 key pairs can be created in each region.
+// When you call this operation, take note of the following items:
 //
-// - The key pair to be imported must support one of the following encryption methods:
+// - You can have a maximum of 500 key pairs in each region.
+//
+// - The imported key pair must support one of the following encryption methods:
 //
 //   - rsa
 //
@@ -31120,20 +31168,6 @@ func (client *Client) ImportImage(request *ImportImageRequest) (_result *ImportI
 //   - ssh-dss
 //
 //   - ecdsa
-//
-//   - <ssh-rsa-cert-v00@openssh.com>
-//
-//   - <ssh-dss-cert-v00@openssh.com>
-//
-//   - <ssh-rsa-cert-v01@openssh.com>
-//
-//   - <ssh-dss-cert-v01@openssh.com>
-//
-//   - <ecdsa-sha2-nistp256-cert-v01@openssh.com>
-//
-//   - <ecdsa-sha2-nistp384-cert-v01@openssh.com>
-//
-//   - <ecdsa-sha2-nistp521-cert-v01@openssh.com>
 //
 // @param request - ImportKeyPairRequest
 //
@@ -31205,15 +31239,17 @@ func (client *Client) ImportKeyPairWithOptions(request *ImportKeyPairRequest, ru
 
 // Summary:
 //
-// Imports the public key of a Rivest-Shamir-Adleman (RSA) key pair that is generated by a third-party tool. After the key pair is imported, Alibaba Cloud stores the public key. You must securely store the private key.
+// Imports the public key part of an RSA key pair generated by other tools. After the key pair is imported, Alibaba Cloud stores the public key for you. You must securely store the private key of the key pair.
 //
 // Description:
 //
-// Take note of the following items:
+// ## Description
 //
-// - A maximum of 500 key pairs can be created in each region.
+// When you call this operation, take note of the following items:
 //
-// - The key pair to be imported must support one of the following encryption methods:
+// - You can have a maximum of 500 key pairs in each region.
+//
+// - The imported key pair must support one of the following encryption methods:
 //
 //   - rsa
 //
@@ -31224,20 +31260,6 @@ func (client *Client) ImportKeyPairWithOptions(request *ImportKeyPairRequest, ru
 //   - ssh-dss
 //
 //   - ecdsa
-//
-//   - <ssh-rsa-cert-v00@openssh.com>
-//
-//   - <ssh-dss-cert-v00@openssh.com>
-//
-//   - <ssh-rsa-cert-v01@openssh.com>
-//
-//   - <ssh-dss-cert-v01@openssh.com>
-//
-//   - <ecdsa-sha2-nistp256-cert-v01@openssh.com>
-//
-//   - <ecdsa-sha2-nistp384-cert-v01@openssh.com>
-//
-//   - <ecdsa-sha2-nistp521-cert-v01@openssh.com>
 //
 // @param request - ImportKeyPairRequest
 //
@@ -31653,13 +31675,13 @@ func (client *Client) InvokeCommand(request *InvokeCommandRequest) (_result *Inv
 
 // Summary:
 //
-// Adds an Elastic Compute Service (ECS) resource or service to a resource group.
+// Calls JoinResourceGroup to add an ECS resource or service to a resource group.
 //
 // Description:
 //
-// ## [](#)Usage notes
+// ## Description
 //
-// A resource is a cloud service entity that you create on Alibaba Cloud, such as an ECS instance, an elastic network interface (ENI), or an image. A resource group is a collection of infrastructure for projects, environments, or stacks. In a resource group, you can manage resources and monitor and run tasks in a centralized manner without the need to switch between Alibaba Cloud services.
+// A resource is a cloud service entity that you create on Alibaba Cloud. For example, an ECS instance, an ECS elastic network interface, or an ECS image can be a resource. A resource group is a collection of infrastructure for projects, environments, or stacks. Managing resources in a resource group allows you to monitor and run tasks in a centralized manner, saving you from the hassle of switching between multiple Alibaba Cloud services.
 //
 // @param request - JoinResourceGroupRequest
 //
@@ -31731,13 +31753,13 @@ func (client *Client) JoinResourceGroupWithOptions(request *JoinResourceGroupReq
 
 // Summary:
 //
-// Adds an Elastic Compute Service (ECS) resource or service to a resource group.
+// Calls JoinResourceGroup to add an ECS resource or service to a resource group.
 //
 // Description:
 //
-// ## [](#)Usage notes
+// ## Description
 //
-// A resource is a cloud service entity that you create on Alibaba Cloud, such as an ECS instance, an elastic network interface (ENI), or an image. A resource group is a collection of infrastructure for projects, environments, or stacks. In a resource group, you can manage resources and monitor and run tasks in a centralized manner without the need to switch between Alibaba Cloud services.
+// A resource is a cloud service entity that you create on Alibaba Cloud. For example, an ECS instance, an ECS elastic network interface, or an ECS image can be a resource. A resource group is a collection of infrastructure for projects, environments, or stacks. Managing resources in a resource group allows you to monitor and run tasks in a centralized manner, saving you from the hassle of switching between multiple Alibaba Cloud services.
 //
 // @param request - JoinResourceGroupRequest
 //
@@ -32511,17 +32533,17 @@ func (client *Client) ModifyAutoProvisioningGroup(request *ModifyAutoProvisionin
 
 // Summary:
 //
-// Modifies an automatic snapshot policy. For example, you can change the points in time of the day at which to create automatic snapshots, days of the week on which to create automatic snapshots, and retention period of automatic snapshots for the automatic snapshot policy.
+// Modifies an automatic snapshot policy, such as the snapshot creation time, repeat date, and retention period.
 //
 // Description:
 //
-// Before you call this operation, take note of the following items:
+// When you call this operation, take note of the following items:
 //
-// - You cannot modify system policies.
+// - System policies cannot be modified.
 //
-// - After an automatic snapshot policy is modified, the modifications immediately take effect on the disks that are associated with the policy.
+// - After you modify an automatic snapshot policy, the disks to which the policy has been applied immediately execute the modified policy.
 //
-// - If cross-region replication for snapshots is enabled and no encryption parameters are configured, the generated encrypted snapshot copies are encrypted by using the Key Management Service (KMS) encryption keys in the region to which the snapshots are copied.
+// - If cross-region snapshot replication is enabled and no encryption parameters are configured, encrypted snapshots are encrypted by using the service key of the destination region by default.
 //
 // @param request - ModifyAutoSnapshotPolicyExRequest
 //
@@ -32613,17 +32635,17 @@ func (client *Client) ModifyAutoSnapshotPolicyExWithOptions(request *ModifyAutoS
 
 // Summary:
 //
-// Modifies an automatic snapshot policy. For example, you can change the points in time of the day at which to create automatic snapshots, days of the week on which to create automatic snapshots, and retention period of automatic snapshots for the automatic snapshot policy.
+// Modifies an automatic snapshot policy, such as the snapshot creation time, repeat date, and retention period.
 //
 // Description:
 //
-// Before you call this operation, take note of the following items:
+// When you call this operation, take note of the following items:
 //
-// - You cannot modify system policies.
+// - System policies cannot be modified.
 //
-// - After an automatic snapshot policy is modified, the modifications immediately take effect on the disks that are associated with the policy.
+// - After you modify an automatic snapshot policy, the disks to which the policy has been applied immediately execute the modified policy.
 //
-// - If cross-region replication for snapshots is enabled and no encryption parameters are configured, the generated encrypted snapshot copies are encrypted by using the Key Management Service (KMS) encryption keys in the region to which the snapshots are copied.
+// - If cross-region snapshot replication is enabled and no encryption parameters are configured, encrypted snapshots are encrypted by using the service key of the destination region by default.
 //
 // @param request - ModifyAutoSnapshotPolicyExRequest
 //
@@ -33786,11 +33808,11 @@ func (client *Client) ModifyDiagnosticMetricSet(request *ModifyDiagnosticMetricS
 
 // Summary:
 //
-// Modifies the name, description, release behavior with ECS instance, snapshot deletion on disk removal, automatic snapshot policy feature, and performance burst feature for one or more block storage devices.
+// Modifies the name, description, release behavior, automatic snapshot deletion policy, automatic snapshot policy, performance burst settings, and other attributes of one or more block storage devices.
 //
 // Description:
 //
-// You can use `DiskId` to specify a block storage device and modify the attributes of the device, such as the name and description of the device and whether to release the device together with the associated instance. You can use `DiskIds.N` to specify multiple block storage devices and batch modify the attributes of the devices.
+// You can call the DiskId parameter to modify the name, description, release behavior, and other attributes of a single block storage device, or call the DiskIds.N parameter to modify the attributes of multiple block storage devices at a time.
 //
 // @param request - ModifyDiskAttributeRequest
 //
@@ -33882,11 +33904,11 @@ func (client *Client) ModifyDiskAttributeWithOptions(request *ModifyDiskAttribut
 
 // Summary:
 //
-// Modifies the name, description, release behavior with ECS instance, snapshot deletion on disk removal, automatic snapshot policy feature, and performance burst feature for one or more block storage devices.
+// Modifies the name, description, release behavior, automatic snapshot deletion policy, automatic snapshot policy, performance burst settings, and other attributes of one or more block storage devices.
 //
 // Description:
 //
-// You can use `DiskId` to specify a block storage device and modify the attributes of the device, such as the name and description of the device and whether to release the device together with the associated instance. You can use `DiskIds.N` to specify multiple block storage devices and batch modify the attributes of the devices.
+// You can call the DiskId parameter to modify the name, description, release behavior, and other attributes of a single block storage device, or call the DiskIds.N parameter to modify the attributes of multiple block storage devices at a time.
 //
 // @param request - ModifyDiskAttributeRequest
 //
@@ -34828,7 +34850,7 @@ func (client *Client) ModifyForwardEntry(request *ModifyForwardEntryRequest) (_r
 //
 // Summary:
 //
-// # ModifyHaVipAttribute
+// Modifies the attributes of a high-availability virtual IP address (HAVIP).
 //
 // @param request - ModifyHaVipAttributeRequest
 //
@@ -34902,7 +34924,7 @@ func (client *Client) ModifyHaVipAttributeWithOptions(request *ModifyHaVipAttrib
 //
 // Summary:
 //
-// # ModifyHaVipAttribute
+// Modifies the attributes of a high-availability virtual IP address (HAVIP).
 //
 // @param request - ModifyHaVipAttributeRequest
 //
@@ -34921,7 +34943,7 @@ func (client *Client) ModifyHaVipAttribute(request *ModifyHaVipAttributeRequest)
 
 // Summary:
 //
-// Modifies the description of a high performance computing (HPC) cluster.
+// Modifies the description of an HPC cluster by calling ModifyHpcClusterAttribute.
 //
 // @param request - ModifyHpcClusterAttributeRequest
 //
@@ -35001,7 +35023,7 @@ func (client *Client) ModifyHpcClusterAttributeWithOptions(request *ModifyHpcClu
 
 // Summary:
 //
-// Modifies the description of a high performance computing (HPC) cluster.
+// Modifies the description of an HPC cluster by calling ModifyHpcClusterAttribute.
 //
 // @param request - ModifyHpcClusterAttributeRequest
 //
@@ -35736,19 +35758,23 @@ func (client *Client) ModifyInstanceAutoReleaseTime(request *ModifyInstanceAutoR
 
 // Summary:
 //
-// Configures auto-renewal for subscription instances to help reduce the maintenance workloads on instance expiration.
+// Modifies the auto-renewal attributes of one or more subscription instances, helping you reduce the maintenance cost of resource expiration.
 //
 // Description:
 //
-// *Before you call this operation, make sure that you are familiar with the billing methods and [pricing](https://www.alibabacloud.com/product/ecs#pricing) of Elastic Compute Service (ECS)**.
+// *Before using this API, make sure you fully understand the billing methods and <props="china">[pricing](https://www.aliyun.com/price/product#/ecs/detail)<props="intl">[pricing](https://www.alibabacloud.com/product/ecs#pricing) of Elastic Compute Service (ECS)**.
 //
-// - Make sure that your account balance or credit balance is sufficient.
+// - Make sure your account balance or credit limit is sufficient.
 //
-// - Only subscription instances are supported. If you call this operation for a pay-as-you-go instance, an error is returned.
+// - Only subscription instances are supported. An error is returned if you call this API for pay-as-you-go instances.
 //
-// - The payment for auto-renewal of an instance is automatically deducted at 08:00:00 (UTC+8) nine days before the instance expires.
+// - The auto-renewal deduction date is 9 days before the instance expires. The deduction starts at 08:00:00 (UTC+8).
 //
-// - If the deduction fails, Alibaba Cloud attempts to deduct the payment every day until the payment is deducted or until the instance is locked on expiration.
+// - If the auto-deduction fails on the previous day, it will be retried at the scheduled time on the next day until the deduction succeeds or the instance is locked after expiration 9 days later.
+//
+// <props="china">
+//
+// - If the purchase duration of a newly created instance is one week, the auto-renewal deduction is made on the first day after the instance is created.
 //
 // @param request - ModifyInstanceAutoRenewAttributeRequest
 //
@@ -35828,19 +35854,23 @@ func (client *Client) ModifyInstanceAutoRenewAttributeWithOptions(request *Modif
 
 // Summary:
 //
-// Configures auto-renewal for subscription instances to help reduce the maintenance workloads on instance expiration.
+// Modifies the auto-renewal attributes of one or more subscription instances, helping you reduce the maintenance cost of resource expiration.
 //
 // Description:
 //
-// *Before you call this operation, make sure that you are familiar with the billing methods and [pricing](https://www.alibabacloud.com/product/ecs#pricing) of Elastic Compute Service (ECS)**.
+// *Before using this API, make sure you fully understand the billing methods and <props="china">[pricing](https://www.aliyun.com/price/product#/ecs/detail)<props="intl">[pricing](https://www.alibabacloud.com/product/ecs#pricing) of Elastic Compute Service (ECS)**.
 //
-// - Make sure that your account balance or credit balance is sufficient.
+// - Make sure your account balance or credit limit is sufficient.
 //
-// - Only subscription instances are supported. If you call this operation for a pay-as-you-go instance, an error is returned.
+// - Only subscription instances are supported. An error is returned if you call this API for pay-as-you-go instances.
 //
-// - The payment for auto-renewal of an instance is automatically deducted at 08:00:00 (UTC+8) nine days before the instance expires.
+// - The auto-renewal deduction date is 9 days before the instance expires. The deduction starts at 08:00:00 (UTC+8).
 //
-// - If the deduction fails, Alibaba Cloud attempts to deduct the payment every day until the payment is deducted or until the instance is locked on expiration.
+// - If the auto-deduction fails on the previous day, it will be retried at the scheduled time on the next day until the deduction succeeds or the instance is locked after expiration 9 days later.
+//
+// <props="china">
+//
+// - If the purchase duration of a newly created instance is one week, the auto-renewal deduction is made on the first day after the instance is created.
 //
 // @param request - ModifyInstanceAutoRenewAttributeRequest
 //
@@ -36586,25 +36616,23 @@ func (client *Client) ModifyInstanceNetworkOptions(request *ModifyInstanceNetwor
 
 // Summary:
 //
-// Modifies the network configurations of an Elastic Compute Service (ECS) instance, such as the public bandwidth, assignment or unassignment of a static public IP address (also known as system-assigned or auto-assigned public IP address), and billing method for network usage. You can call this operation to upgrade or downgrade the network configurations of ECS instances.
+// Modifies the bandwidth configuration of an ECS instance, allocates a public IP address, or converts the network billing method. Both upgrades and downgrades are supported.
 //
 // Description:
 //
-// Take note of the following items:
+// -  When modifying the bandwidth configuration of a subscription (PrePaid) instance, a public IP address is automatically allocated when the maximum outbound public bandwidth (InternetMaxBandwidthOut) is upgraded from 0 Mbit/s to a non-zero value.
 //
-// - If you upgrade the outbound public bandwidth (InternetMaxBandwidthOut) of a subscription (PrePaid) instance from 0 Mbit/s when you modify the network configurations of the instance, a static public IP address is automatically assigned to the instance.
+// -  When modifying the bandwidth configuration of a pay-as-you-go (PostPaid) instance, a public IP address is not automatically allocated when the maximum outbound public bandwidth (InternetMaxBandwidthOut) is upgraded from 0 Mbit/s to a non-zero value. You need to set the `AllocatePublicIp` parameter to `true` to allocate a public IP address.
 //
-// - If you upgrade the outbound public bandwidth (InternetMaxBandwidthOut) of a pay-as-you-go (PostPaid) instance from 0 Mbit/s when you modify the network configurations of the instance, no static public IP address is automatically assigned to the instance. In this case, to assign a static public IP address to the instance, you must set `AllocatePublicIp` to `true`.
+// -  For classic network (Classic) instances, when the maximum outbound public bandwidth (InternetMaxBandwidthOut) is upgraded from 0 Mbit/s to a non-zero value, the instance must be in the Stopped state.
 //
-// - You can upgrade the outbound public bandwidth (InternetMaxBandwidthOut) of an instance in the classic network from 0 Mbit/s only if the instance is in the Stopped state.
+// > Within a single region, there is a limit on the total peak pay-by-bandwidth public bandwidth for a single Alibaba Cloud account. For more information, see [Public bandwidth limits](~~25412#BandwidthQuota~~).
 //
-// > For the limits on the sum of maximum public bandwidths of ECS instances that use the pay-by-bandwidth billing method for network usage per region per Alibaba Cloud account, see the [Public bandwidth limits](~~25412#BandwidthQuota~~) section of the "Limits" topic.
+// - Fees:
 //
-// - Billing:
+//   - After upgrading bandwidth, the payment is automatically deducted by default. Make sure your payment method has sufficient balance. Otherwise, an abnormal order will be generated and can only be voided. If your account balance is insufficient, you can set the AutoPay parameter to false. In this case, an unpaid order is generated, and you can log on to the ECS console to pay for the order.
 //
-//   - After the public bandwidth is upgraded, AutoPay is automatically set to true and the payment is automatically made. Make sure that your account balance is sufficient. Otherwise, your order becomes invalid and is canceled. If your account balance is insufficient, you can set AutoPay to false. In this case, when you call the ModifyInstanceNetworkSpec operation, an unpaid order is generated. Then, you can log on to the ECS console to pay for the order.
-//
-//   - After the public bandwidth is downgraded, the price difference is refunded to the payment account that you used. Vouchers or coupons that have been redeemed are not refundable.
+//   - After downgrading bandwidth, the price difference is refunded through the original payment method. Coupons that have already been used are not refunded.
 //
 // @param request - ModifyInstanceNetworkSpecRequest
 //
@@ -36700,25 +36728,23 @@ func (client *Client) ModifyInstanceNetworkSpecWithOptions(request *ModifyInstan
 
 // Summary:
 //
-// Modifies the network configurations of an Elastic Compute Service (ECS) instance, such as the public bandwidth, assignment or unassignment of a static public IP address (also known as system-assigned or auto-assigned public IP address), and billing method for network usage. You can call this operation to upgrade or downgrade the network configurations of ECS instances.
+// Modifies the bandwidth configuration of an ECS instance, allocates a public IP address, or converts the network billing method. Both upgrades and downgrades are supported.
 //
 // Description:
 //
-// Take note of the following items:
+// -  When modifying the bandwidth configuration of a subscription (PrePaid) instance, a public IP address is automatically allocated when the maximum outbound public bandwidth (InternetMaxBandwidthOut) is upgraded from 0 Mbit/s to a non-zero value.
 //
-// - If you upgrade the outbound public bandwidth (InternetMaxBandwidthOut) of a subscription (PrePaid) instance from 0 Mbit/s when you modify the network configurations of the instance, a static public IP address is automatically assigned to the instance.
+// -  When modifying the bandwidth configuration of a pay-as-you-go (PostPaid) instance, a public IP address is not automatically allocated when the maximum outbound public bandwidth (InternetMaxBandwidthOut) is upgraded from 0 Mbit/s to a non-zero value. You need to set the `AllocatePublicIp` parameter to `true` to allocate a public IP address.
 //
-// - If you upgrade the outbound public bandwidth (InternetMaxBandwidthOut) of a pay-as-you-go (PostPaid) instance from 0 Mbit/s when you modify the network configurations of the instance, no static public IP address is automatically assigned to the instance. In this case, to assign a static public IP address to the instance, you must set `AllocatePublicIp` to `true`.
+// -  For classic network (Classic) instances, when the maximum outbound public bandwidth (InternetMaxBandwidthOut) is upgraded from 0 Mbit/s to a non-zero value, the instance must be in the Stopped state.
 //
-// - You can upgrade the outbound public bandwidth (InternetMaxBandwidthOut) of an instance in the classic network from 0 Mbit/s only if the instance is in the Stopped state.
+// > Within a single region, there is a limit on the total peak pay-by-bandwidth public bandwidth for a single Alibaba Cloud account. For more information, see [Public bandwidth limits](~~25412#BandwidthQuota~~).
 //
-// > For the limits on the sum of maximum public bandwidths of ECS instances that use the pay-by-bandwidth billing method for network usage per region per Alibaba Cloud account, see the [Public bandwidth limits](~~25412#BandwidthQuota~~) section of the "Limits" topic.
+// - Fees:
 //
-// - Billing:
+//   - After upgrading bandwidth, the payment is automatically deducted by default. Make sure your payment method has sufficient balance. Otherwise, an abnormal order will be generated and can only be voided. If your account balance is insufficient, you can set the AutoPay parameter to false. In this case, an unpaid order is generated, and you can log on to the ECS console to pay for the order.
 //
-//   - After the public bandwidth is upgraded, AutoPay is automatically set to true and the payment is automatically made. Make sure that your account balance is sufficient. Otherwise, your order becomes invalid and is canceled. If your account balance is insufficient, you can set AutoPay to false. In this case, when you call the ModifyInstanceNetworkSpec operation, an unpaid order is generated. Then, you can log on to the ECS console to pay for the order.
-//
-//   - After the public bandwidth is downgraded, the price difference is refunded to the payment account that you used. Vouchers or coupons that have been redeemed are not refundable.
+//   - After downgrading bandwidth, the price difference is refunded through the original payment method. Coupons that have already been used are not refunded.
 //
 // @param request - ModifyInstanceNetworkSpecRequest
 //
@@ -36736,25 +36762,35 @@ func (client *Client) ModifyInstanceNetworkSpec(request *ModifyInstanceNetworkSp
 
 // Summary:
 //
-// Changes the instance type or public bandwidth of a pay-as-you-go Elastic Compute Service (ECS) instance.
+// Modifies the instance type or public bandwidth of a pay-as-you-go ECS instance.
 //
 // Description:
 //
-// *Before you call this operation, familiarize yourself with the billing and [pricing](https://www.alibabacloud.com/zh/pricing-calculator#/commodity/vm_intl) of ECS resources.**
+// <props="china">.
 //
-// Before you [change the instance type of a pay-as-you-go instance](https://help.aliyun.com/document_detail/60051.html), call the [DescribeResourcesModification](https://help.aliyun.com/document_detail/66187.html) operation to query compatible instance types.
+// **Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product#/ecs/detail) of ECS.**.
 //
-// **Considerations**
+// .
 //
-// - Make sure that you have no overdue payments in your account.
+// <props="intl">.
 //
-// - You can change only the instance type or only the public bandwidth of an ECS instance at a time. The instance type and the public bandwidth of an ECS instance cannot be changed together.
+// **Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/pricing-calculator#/commodity/vm_intl) of ECS.**.
 //
-// - You can change the public bandwidth of an ECS instance only when the instance is in the **Running*	- (`Running`) or **Stopped*	- (`Stopped`) state. The change immediately takes effect.
+// .
 //
-// - You can change the instance type of an ECS instance only when the instance is in the **Stopped*	- (`Stopped`) state. You must [start the instance](https://help.aliyun.com/document_detail/25441.html) for the change to take effect.
+// Before you [change the instance type of a pay-as-you-go instance](https://help.aliyun.com/document_detail/60051.html), you can call [DescribeResourcesModification](https://help.aliyun.com/document_detail/66187.html) to query the instance types to which the current instance can be changed.
 //
-// > A limit is imposed on the sum of public bandwidths of all ECS instances that use the pay-by-bandwidth billing method for network usage per region in an Alibaba Cloud account. For more information, see the [Public bandwidth limits](~~25412#BandwidthQuota~~) section of the "Limits and quotas" topic.
+// **Before you begin**.
+//
+// - Your account must not have overdue payments.
+//
+// - Each call can modify only one configuration. You can change only the instance type or adjust only the public bandwidth in a single request.
+//
+// - The instance status must be **Running*	- (`Running`) or **Stopped*	- (`Stopped`) before you can adjust the public bandwidth. The change takes effect immediately.
+//
+// - The instance status must be **Stopped*	- (`Stopped`) before you can change the instance type. After the change, you must [start the instance](https://help.aliyun.com/document_detail/25441.html) for the change to take effect.
+//
+// > The total peak public bandwidth billed on a pay-by-bandwidth basis in a single region for a single Alibaba Cloud account is subject to limits. For more information, see [Public bandwidth limits](~~25412#BandwidthQuota~~).
 //
 // @param request - ModifyInstanceSpecRequest
 //
@@ -36858,25 +36894,35 @@ func (client *Client) ModifyInstanceSpecWithOptions(request *ModifyInstanceSpecR
 
 // Summary:
 //
-// Changes the instance type or public bandwidth of a pay-as-you-go Elastic Compute Service (ECS) instance.
+// Modifies the instance type or public bandwidth of a pay-as-you-go ECS instance.
 //
 // Description:
 //
-// *Before you call this operation, familiarize yourself with the billing and [pricing](https://www.alibabacloud.com/zh/pricing-calculator#/commodity/vm_intl) of ECS resources.**
+// <props="china">.
 //
-// Before you [change the instance type of a pay-as-you-go instance](https://help.aliyun.com/document_detail/60051.html), call the [DescribeResourcesModification](https://help.aliyun.com/document_detail/66187.html) operation to query compatible instance types.
+// **Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product#/ecs/detail) of ECS.**.
 //
-// **Considerations**
+// .
 //
-// - Make sure that you have no overdue payments in your account.
+// <props="intl">.
 //
-// - You can change only the instance type or only the public bandwidth of an ECS instance at a time. The instance type and the public bandwidth of an ECS instance cannot be changed together.
+// **Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/pricing-calculator#/commodity/vm_intl) of ECS.**.
 //
-// - You can change the public bandwidth of an ECS instance only when the instance is in the **Running*	- (`Running`) or **Stopped*	- (`Stopped`) state. The change immediately takes effect.
+// .
 //
-// - You can change the instance type of an ECS instance only when the instance is in the **Stopped*	- (`Stopped`) state. You must [start the instance](https://help.aliyun.com/document_detail/25441.html) for the change to take effect.
+// Before you [change the instance type of a pay-as-you-go instance](https://help.aliyun.com/document_detail/60051.html), you can call [DescribeResourcesModification](https://help.aliyun.com/document_detail/66187.html) to query the instance types to which the current instance can be changed.
 //
-// > A limit is imposed on the sum of public bandwidths of all ECS instances that use the pay-by-bandwidth billing method for network usage per region in an Alibaba Cloud account. For more information, see the [Public bandwidth limits](~~25412#BandwidthQuota~~) section of the "Limits and quotas" topic.
+// **Before you begin**.
+//
+// - Your account must not have overdue payments.
+//
+// - Each call can modify only one configuration. You can change only the instance type or adjust only the public bandwidth in a single request.
+//
+// - The instance status must be **Running*	- (`Running`) or **Stopped*	- (`Stopped`) before you can adjust the public bandwidth. The change takes effect immediately.
+//
+// - The instance status must be **Stopped*	- (`Stopped`) before you can change the instance type. After the change, you must [start the instance](https://help.aliyun.com/document_detail/25441.html) for the change to take effect.
+//
+// > The total peak public bandwidth billed on a pay-by-bandwidth basis in a single region for a single Alibaba Cloud account is subject to limits. For more information, see [Public bandwidth limits](~~25412#BandwidthQuota~~).
 //
 // @param request - ModifyInstanceSpecRequest
 //
@@ -37366,13 +37412,7 @@ func (client *Client) ModifyInvocationAttribute(request *ModifyInvocationAttribu
 
 // Summary:
 //
-// Changes the default version of a launch template. When you call this operation, you can specify DefaultVersionNumber in the request. If you do not specify a version when you create Elastic Compute Service (ECS) instances based on a launch template, the default version of the launch template is used.
-//
-// Description:
-//
-// ## Debugging
-//
-// [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Ecs\\&api=ModifyLaunchTemplateDefaultVersion\\&type=RPC\\&version=2014-05-26)
+// Calls the ModifyLaunchTemplateDefaultVersion operation to switch the default version of a launch template by specifying the DefaultVersionNumber parameter. If you do not specify a template version number when you create an instance by calling the RunInstances operation, the default version is used.
 //
 // @param request - ModifyLaunchTemplateDefaultVersionRequest
 //
@@ -37444,13 +37484,7 @@ func (client *Client) ModifyLaunchTemplateDefaultVersionWithOptions(request *Mod
 
 // Summary:
 //
-// Changes the default version of a launch template. When you call this operation, you can specify DefaultVersionNumber in the request. If you do not specify a version when you create Elastic Compute Service (ECS) instances based on a launch template, the default version of the launch template is used.
-//
-// Description:
-//
-// ## Debugging
-//
-// [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Ecs\\&api=ModifyLaunchTemplateDefaultVersion\\&type=RPC\\&version=2014-05-26)
+// Calls the ModifyLaunchTemplateDefaultVersion operation to switch the default version of a launch template by specifying the DefaultVersionNumber parameter. If you do not specify a template version number when you create an instance by calling the RunInstances operation, the default version is used.
 //
 // @param request - ModifyLaunchTemplateDefaultVersionRequest
 //
@@ -37831,11 +37865,11 @@ func (client *Client) ModifyPhysicalConnectionAttribute(request *ModifyPhysicalC
 
 // Summary:
 //
-// # Update maintenance window
+// Updates an O&M window.
 //
 // Description:
 //
-// Modifies the properties of a maintenance window. When an ECS instance is associated with the maintenance window via the `TargetResource` parameter, scheduled maintenance for underlying hardware issues occurs within the time period specified by the `TimePeriod` parameter. When a maintenance event is scheduled to start, the platform automatically performs the maintenance operation based on the event type.
+// Modifies the attributes of an O&M window. When the TargetResource parameter of an O&M window is set to associate ECS instances and an underlying hardware risk is detected that requires scheduled O&M to mitigate, the execution time of the scheduled O&M is determined based on the time range specified by the TimePeriod parameter of the O&M window. When the execution time of an O&M event is reached, the platform automatically performs the corresponding O&M operation based on the event type.
 //
 // @param tmpReq - ModifyPlanMaintenanceWindowRequest
 //
@@ -37917,11 +37951,11 @@ func (client *Client) ModifyPlanMaintenanceWindowWithOptions(tmpReq *ModifyPlanM
 
 // Summary:
 //
-// # Update maintenance window
+// Updates an O&M window.
 //
 // Description:
 //
-// Modifies the properties of a maintenance window. When an ECS instance is associated with the maintenance window via the `TargetResource` parameter, scheduled maintenance for underlying hardware issues occurs within the time period specified by the `TimePeriod` parameter. When a maintenance event is scheduled to start, the platform automatically performs the maintenance operation based on the event type.
+// Modifies the attributes of an O&M window. When the TargetResource parameter of an O&M window is set to associate ECS instances and an underlying hardware risk is detected that requires scheduled O&M to mitigate, the execution time of the scheduled O&M is determined based on the time range specified by the TimePeriod parameter of the O&M window. When the execution time of an O&M event is reached, the platform automatically performs the corresponding O&M operation based on the event type.
 //
 // @param request - ModifyPlanMaintenanceWindowRequest
 //
@@ -39061,7 +39095,7 @@ func (client *Client) ModifyRouterInterfaceSpec(request *ModifyRouterInterfaceSp
 
 // Summary:
 //
-// Modifies the name or description of a specific security group.
+// Modifies the name or description of a specified security group.
 //
 // @param request - ModifySecurityGroupAttributeRequest
 //
@@ -39133,7 +39167,7 @@ func (client *Client) ModifySecurityGroupAttributeWithOptions(request *ModifySec
 
 // Summary:
 //
-// Modifies the name or description of a specific security group.
+// Modifies the name or description of a specified security group.
 //
 // @param request - ModifySecurityGroupAttributeRequest
 //
@@ -39151,15 +39185,15 @@ func (client *Client) ModifySecurityGroupAttribute(request *ModifySecurityGroupA
 
 // Summary:
 //
-// Modifies an outbound security group rule in a security group.
+// Modifies an egress security group rule.
 //
 // Description:
 //
-// Take note of the following items:
+// When modifying security group rules by specifying the security group rule ID, note the following usage limits:
 //
-// - An authorization object in a security group rule can be of one of the following types: IPv4 CIDR block or address, IPv6 CIDR block or address, security group, or prefix list. You cannot call this operation to change the type of an existing authorization object. For example, if an authorization object is an IPv4 CIDR block, you can change the authorization object to a different IPv4 CIDR block or an IPv4 address, but you cannot change the authorization object to an IPv6 CIDR block or address, a security group, or a prefix list.
+// - Authorization objects of security group rules include IPv4 CIDR blocks (or IP addresses), IPv6 CIDR blocks (or IP addresses), security groups, and prefix lists. You cannot use this API to change the authorization object type of an existing security group rule. For example, if the original authorization object type is an IPv4 CIDR block, you can change it to another IPv4 CIDR block (or IP address), but you cannot change it to an IPv6 CIDR block (or IP address), a security group, or a prefix list.
 //
-// - You cannot delete the value of a non-empty parameter. If you want to delete the values of non-empty parameters, we recommend that you create another rule and delete the original rule.
+// - Fields cannot be changed from non-empty to empty. If modification is needed, we recommend that you add a new rule first and then delete the current rule.
 //
 // @param request - ModifySecurityGroupEgressRuleRequest
 //
@@ -39299,15 +39333,15 @@ func (client *Client) ModifySecurityGroupEgressRuleWithOptions(request *ModifySe
 
 // Summary:
 //
-// Modifies an outbound security group rule in a security group.
+// Modifies an egress security group rule.
 //
 // Description:
 //
-// Take note of the following items:
+// When modifying security group rules by specifying the security group rule ID, note the following usage limits:
 //
-// - An authorization object in a security group rule can be of one of the following types: IPv4 CIDR block or address, IPv6 CIDR block or address, security group, or prefix list. You cannot call this operation to change the type of an existing authorization object. For example, if an authorization object is an IPv4 CIDR block, you can change the authorization object to a different IPv4 CIDR block or an IPv4 address, but you cannot change the authorization object to an IPv6 CIDR block or address, a security group, or a prefix list.
+// - Authorization objects of security group rules include IPv4 CIDR blocks (or IP addresses), IPv6 CIDR blocks (or IP addresses), security groups, and prefix lists. You cannot use this API to change the authorization object type of an existing security group rule. For example, if the original authorization object type is an IPv4 CIDR block, you can change it to another IPv4 CIDR block (or IP address), but you cannot change it to an IPv6 CIDR block (or IP address), a security group, or a prefix list.
 //
-// - You cannot delete the value of a non-empty parameter. If you want to delete the values of non-empty parameters, we recommend that you create another rule and delete the original rule.
+// - Fields cannot be changed from non-empty to empty. If modification is needed, we recommend that you add a new rule first and then delete the current rule.
 //
 // @param request - ModifySecurityGroupEgressRuleRequest
 //
@@ -39325,17 +39359,17 @@ func (client *Client) ModifySecurityGroupEgressRule(request *ModifySecurityGroup
 
 // Summary:
 //
-// Modifies the internal access control policy of a basic security group.
+// Modifies the intra-group connectivity policy of a basic security group.
 //
 // Description:
 //
-// - By default, advanced security groups use the **internal isolation policy**, and Elastic Compute Service (ECS) instances in each advanced security group cannot communicate with each other. The internal access control policy of advanced security groups cannot be modified.
+// -  Advanced security groups do not support modifications to the intra-group connectivity policy. The default policy is **internal isolation**.
 //
-// - You can call the [DescribeSecurityGroupAttribute](https://help.aliyun.com/document_detail/25555.html) operation to query the internal access control policy of a security group.
+// -  You can call [DescribeSecurityGroupAttribute](https://help.aliyun.com/document_detail/25555.html) to query the current intra-group connectivity policy of a security group.
 //
-// - If the internal access control policy of a security group is set to **Accept**, the security group uses the internal interconnectivity policy and all ECS instances in the security group can communicate with each other over the internal network, regardless of whether custom rules exist in the security group.
+// -  When the intra-group connectivity policy of a security group is set to **intra-group connectivity**, other custom access rules are ignored, and all instances in custom security group are connected over the internal network by default.
 //
-// - If the internal access control policy of a security group is set to **Drop*	- and the security group contains no custom rules, the security group uses the internal isolation policy and all ECS instances in the security group cannot communicate with each other over the internal network. In this case, you can use custom rules to allow ECS instances in the security group to communicate with each other. For example, you can call the [AuthorizeSecurityGroup](https://help.aliyun.com/document_detail/25554.html) operation to configure custom rules.
+// -  When the intra-group connectivity policy of a security group is set to **internal isolation**, all instances in custom security group are disconnected over the internal network by default if no other access rules are added. However, you can customize security group rules to change the internal network status. For example, you can call [AuthorizeSecurityGroup](https://help.aliyun.com/document_detail/25554.html) to enable network connectivity between two ECS instances in custom security group.
 //
 // @param request - ModifySecurityGroupPolicyRequest
 //
@@ -39407,17 +39441,17 @@ func (client *Client) ModifySecurityGroupPolicyWithOptions(request *ModifySecuri
 
 // Summary:
 //
-// Modifies the internal access control policy of a basic security group.
+// Modifies the intra-group connectivity policy of a basic security group.
 //
 // Description:
 //
-// - By default, advanced security groups use the **internal isolation policy**, and Elastic Compute Service (ECS) instances in each advanced security group cannot communicate with each other. The internal access control policy of advanced security groups cannot be modified.
+// -  Advanced security groups do not support modifications to the intra-group connectivity policy. The default policy is **internal isolation**.
 //
-// - You can call the [DescribeSecurityGroupAttribute](https://help.aliyun.com/document_detail/25555.html) operation to query the internal access control policy of a security group.
+// -  You can call [DescribeSecurityGroupAttribute](https://help.aliyun.com/document_detail/25555.html) to query the current intra-group connectivity policy of a security group.
 //
-// - If the internal access control policy of a security group is set to **Accept**, the security group uses the internal interconnectivity policy and all ECS instances in the security group can communicate with each other over the internal network, regardless of whether custom rules exist in the security group.
+// -  When the intra-group connectivity policy of a security group is set to **intra-group connectivity**, other custom access rules are ignored, and all instances in custom security group are connected over the internal network by default.
 //
-// - If the internal access control policy of a security group is set to **Drop*	- and the security group contains no custom rules, the security group uses the internal isolation policy and all ECS instances in the security group cannot communicate with each other over the internal network. In this case, you can use custom rules to allow ECS instances in the security group to communicate with each other. For example, you can call the [AuthorizeSecurityGroup](https://help.aliyun.com/document_detail/25554.html) operation to configure custom rules.
+// -  When the intra-group connectivity policy of a security group is set to **internal isolation**, all instances in custom security group are disconnected over the internal network by default if no other access rules are added. However, you can customize security group rules to change the internal network status. For example, you can call [AuthorizeSecurityGroup](https://help.aliyun.com/document_detail/25554.html) to enable network connectivity between two ECS instances in custom security group.
 //
 // @param request - ModifySecurityGroupPolicyRequest
 //
@@ -39435,15 +39469,15 @@ func (client *Client) ModifySecurityGroupPolicy(request *ModifySecurityGroupPoli
 
 // Summary:
 //
-// Modifies an inbound security group rule in a security group.
+// Modifies an inbound security group rule of a specified security group.
 //
 // Description:
 //
-// Take note of the following items:
+// When you modify a security group rule by specifying the security group rule ID, take note of the following limits:
 //
-// - An authorization object in a security group rule can be of one of the following types: IPv4 CIDR block or address, IPv6 CIDR block or address, security group, or prefix list. You cannot call this operation to change the type of an existing authorization object. For example, if an authorization object is an IPv4 CIDR block, you can change the authorization object to a different IPv4 CIDR block or an IPv4 address, but you cannot change the authorization object to an IPv6 CIDR block or address, a security group, or a prefix list.
+// - The authorization object of a security group rule can be an IPv4 Classless Inter-Domain Routing (CIDR) block (or IP address), an IPv6 CIDR block (or IP address), a security group, or a prefix list. You cannot use this operation to change the type of the authorization object of an existing security group rule. For example, if the original authorization object type is an IPv4 CIDR block, you can change it to another IPv4 CIDR block (or IP address), but you cannot change it to an IPv6 CIDR block (or IP address), a security group, or a prefix list.
 //
-// - You cannot delete the value of a non-empty parameter. If you want to delete the values of non-empty parameters, we recommend that you create a security group rule and delete the original security group rule.
+// - You cannot change a field from a non-empty value to an empty value. To modify security group rules in this case, increase a new rule and then delete the current rule.
 //
 // @param request - ModifySecurityGroupRuleRequest
 //
@@ -39583,15 +39617,15 @@ func (client *Client) ModifySecurityGroupRuleWithOptions(request *ModifySecurity
 
 // Summary:
 //
-// Modifies an inbound security group rule in a security group.
+// Modifies an inbound security group rule of a specified security group.
 //
 // Description:
 //
-// Take note of the following items:
+// When you modify a security group rule by specifying the security group rule ID, take note of the following limits:
 //
-// - An authorization object in a security group rule can be of one of the following types: IPv4 CIDR block or address, IPv6 CIDR block or address, security group, or prefix list. You cannot call this operation to change the type of an existing authorization object. For example, if an authorization object is an IPv4 CIDR block, you can change the authorization object to a different IPv4 CIDR block or an IPv4 address, but you cannot change the authorization object to an IPv6 CIDR block or address, a security group, or a prefix list.
+// - The authorization object of a security group rule can be an IPv4 Classless Inter-Domain Routing (CIDR) block (or IP address), an IPv6 CIDR block (or IP address), a security group, or a prefix list. You cannot use this operation to change the type of the authorization object of an existing security group rule. For example, if the original authorization object type is an IPv4 CIDR block, you can change it to another IPv4 CIDR block (or IP address), but you cannot change it to an IPv6 CIDR block (or IP address), a security group, or a prefix list.
 //
-// - You cannot delete the value of a non-empty parameter. If you want to delete the values of non-empty parameters, we recommend that you create a security group rule and delete the original security group rule.
+// - You cannot change a field from a non-empty value to an empty value. To modify security group rules in this case, increase a new rule and then delete the current rule.
 //
 // @param request - ModifySecurityGroupRuleRequest
 //
@@ -41126,15 +41160,19 @@ func (client *Client) PurchaseStorageCapacityUnit(request *PurchaseStorageCapaci
 
 // Summary:
 //
-// Reactivates a pay-as-you-go Elastic Compute Service (ECS) instance that has expired or has been reclaimed due to overdue payments.
+// Restarts a pay-as-you-go ECS instance that has expired or been recycled due to an overdue payment.
 //
 // Description:
 //
-// After you complete the overdue payment for a pay-as-you-go ECS instance, you do not need to call this operation to reactivate the instance. The system automatically reactivates the instance to restore the instance to the status before the payment became overdue. Automatic reactivation occasionally fails. Take note of the status of automatic reactivation. If the automatic reactivation fails, call this operation to manually reactivate the instance.
+// After you settle the overdue bill for a pay-as-you-go instance, you do not need to call this operation to activate the instance. The system automatically restarts the instance and restores it to the state before the overdue payment. Automatic restarts may occasionally fail. Check whether the automatic restart succeeds. If the automatic restart fails, call this operation to manually restart the instance.
 //
-// - The instance must be in the **Expired*	- `(Stopped)` state.
+// <props="china">- After you settle the overdue bill, the total value of your Alibaba Cloud account balance (cash balance) and vouchers must be at least CNY 100.00. Otherwise, the instance cannot be restarted.
 //
-// - You cannot call this operation to start ECS instances that are locked for security reasons. For more information, see [API behavior when an instance is locked for security reasons](https://help.aliyun.com/document_detail/25695.html).
+// <props="china">- The instance must be in the **expired*	- (`Stopped`) or **being recycled due to overdue payment*	- (`Stopped`) state.
+//
+// <props="intl">- The instance must be in the **expired*	- (`Stopped`) state.
+//
+// - Instances that are locked for security reasons cannot be started by calling this operation. For more information, see [Impact of resource security locks on API calls](https://help.aliyun.com/document_detail/25695.html).
 //
 // @param request - ReActivateInstancesRequest
 //
@@ -41198,15 +41236,19 @@ func (client *Client) ReActivateInstancesWithOptions(request *ReActivateInstance
 
 // Summary:
 //
-// Reactivates a pay-as-you-go Elastic Compute Service (ECS) instance that has expired or has been reclaimed due to overdue payments.
+// Restarts a pay-as-you-go ECS instance that has expired or been recycled due to an overdue payment.
 //
 // Description:
 //
-// After you complete the overdue payment for a pay-as-you-go ECS instance, you do not need to call this operation to reactivate the instance. The system automatically reactivates the instance to restore the instance to the status before the payment became overdue. Automatic reactivation occasionally fails. Take note of the status of automatic reactivation. If the automatic reactivation fails, call this operation to manually reactivate the instance.
+// After you settle the overdue bill for a pay-as-you-go instance, you do not need to call this operation to activate the instance. The system automatically restarts the instance and restores it to the state before the overdue payment. Automatic restarts may occasionally fail. Check whether the automatic restart succeeds. If the automatic restart fails, call this operation to manually restart the instance.
 //
-// - The instance must be in the **Expired*	- `(Stopped)` state.
+// <props="china">- After you settle the overdue bill, the total value of your Alibaba Cloud account balance (cash balance) and vouchers must be at least CNY 100.00. Otherwise, the instance cannot be restarted.
 //
-// - You cannot call this operation to start ECS instances that are locked for security reasons. For more information, see [API behavior when an instance is locked for security reasons](https://help.aliyun.com/document_detail/25695.html).
+// <props="china">- The instance must be in the **expired*	- (`Stopped`) or **being recycled due to overdue payment*	- (`Stopped`) state.
+//
+// <props="intl">- The instance must be in the **expired*	- (`Stopped`) state.
+//
+// - Instances that are locked for security reasons cannot be started by calling this operation. For more information, see [Impact of resource security locks on API calls](https://help.aliyun.com/document_detail/25695.html).
 //
 // @param request - ReActivateInstancesRequest
 //
@@ -41224,21 +41266,23 @@ func (client *Client) ReActivateInstances(request *ReActivateInstancesRequest) (
 
 // Summary:
 //
-// Re-initializes a cloud disk to the state when the cloud disk was created.
+// Reinitializes a disk to its initial state when it was created.
 //
 // Description:
 //
-// Take note of the following items:
+// When you call this operation, take note of the following items:
 //
-// - The disk that you want to re-initialize must be in the **In Use*	- (`In_use`) state and the instance to which the disk is attached must be in the **Stopped*	- (`Stoppe`) state.
+// - The disk must be in the **In Use*	- (`In_use`) state, and the ECS instance to which the disk is attached must be in the **Stopped*	- (`Stopped`) state.
 //
-// - If an instance has never been started since it was created, the disks attached to it cannot be re-initialized.
+// - You cannot reinitialize a disk that is attached to an instance before the instance starts for the first time.
 //
-// - If a local snapshot has been created for a disk, the disk cannot be re-initialized.
+// - You cannot reinitialize a disk that has local snapshots.
 //
-// - If a system disk is re-initialized, the disk is restored to the state of the image from which it was created. If the image has been deleted, the disk cannot be re-initialized.
+// <props="china">- You cannot reinitialize a disk that has the multi-attach feature enabled.
 //
-// - For a data disk that was created from scratch, the disk is initialized to the empty disk state. For a data disk that is created from a snapshot, the disk is initialized to the snapshot state. If the snapshots were deleted, the disks cannot be re-initialized and an error is returned.
+// - For a system disk, the disk is reinitialized to the initial state of the image. If the source image used to create the disk has been deleted, the disk cannot be reinitialized.
+//
+// - For a data disk that was created from scratch, the disk is reinitialized to an empty disk. For a data disk that was created from a snapshot, the disk is reinitialized to the snapshot state. If the source snapshot has been deleted, the disk cannot be reinitialized and an error is returned.
 //
 // @param request - ReInitDiskRequest
 //
@@ -41314,21 +41358,23 @@ func (client *Client) ReInitDiskWithOptions(request *ReInitDiskRequest, runtime 
 
 // Summary:
 //
-// Re-initializes a cloud disk to the state when the cloud disk was created.
+// Reinitializes a disk to its initial state when it was created.
 //
 // Description:
 //
-// Take note of the following items:
+// When you call this operation, take note of the following items:
 //
-// - The disk that you want to re-initialize must be in the **In Use*	- (`In_use`) state and the instance to which the disk is attached must be in the **Stopped*	- (`Stoppe`) state.
+// - The disk must be in the **In Use*	- (`In_use`) state, and the ECS instance to which the disk is attached must be in the **Stopped*	- (`Stopped`) state.
 //
-// - If an instance has never been started since it was created, the disks attached to it cannot be re-initialized.
+// - You cannot reinitialize a disk that is attached to an instance before the instance starts for the first time.
 //
-// - If a local snapshot has been created for a disk, the disk cannot be re-initialized.
+// - You cannot reinitialize a disk that has local snapshots.
 //
-// - If a system disk is re-initialized, the disk is restored to the state of the image from which it was created. If the image has been deleted, the disk cannot be re-initialized.
+// <props="china">- You cannot reinitialize a disk that has the multi-attach feature enabled.
 //
-// - For a data disk that was created from scratch, the disk is initialized to the empty disk state. For a data disk that is created from a snapshot, the disk is initialized to the snapshot state. If the snapshots were deleted, the disks cannot be re-initialized and an error is returned.
+// - For a system disk, the disk is reinitialized to the initial state of the image. If the source image used to create the disk has been deleted, the disk cannot be reinitialized.
+//
+// - For a data disk that was created from scratch, the disk is reinitialized to an empty disk. For a data disk that was created from a snapshot, the disk is reinitialized to the snapshot state. If the source snapshot has been deleted, the disk cannot be reinitialized and an error is returned.
 //
 // @param request - ReInitDiskRequest
 //
@@ -41755,53 +41801,53 @@ func (client *Client) RedeployDedicatedHost(request *RedeployDedicatedHostReques
 
 // Summary:
 //
-// Redeploys an Elastic Compute Service (ECS) instance. You can call this operation to redeploy an ECS instance when the instance receives a system event notification.
+// Invokes the RedeployInstance operation to redeploy an ECS instance when the ECS instance receives a system event notification.
 //
 // Description:
 //
-// ## Usage notes
+// ## Operation description
 //
-// RedeployInstance is an asynchronous operation. The operation migrates the instance to a healthy physical server and then restarts the instance. After the instance is redeployed, it enters the Running (`Running`) state. If the instance fails to be redeployed, it returns to the original physical server and the state before the redeployment.
+// RedeployInstance is an asynchronous invocation that restarts and migrates an instance. After the redeployment succeeds, the instance enters the Running state. If the redeployment fails, the instance is returned to the original physical server and recovers to the state before the redeployment.
 //
-// When you call this operation, take note of the following item:
+// When you invoke this operation, take note of the following items:
 //
-// - The instance must be in the Running (Running) or Stopped (Stopped) state. After the instance is redeployed, the following changes occur to the status of the instance:
+// - The target instance must be in the Running or Stopped state. The instance status changes after the operation is invoked:
 //
-//   - If the instance is in the Running (`Running`) state, the instance enters the Stopping (`Stopping`) state.
+//   - An instance in the Running (`Running`) state enters the Stopping (`Stopping`) state.
 //
-//   - If the instance is in the Stopped (`Stopped`) state, the instance enters the Starting (`Starting`) state.
+//   - An instance in the Stopped (`Stopped`) state enters the Starting (`Starting`) state.
 //
-// - If an instance is deployed on a dedicated host, you cannot redeploy the instance.
+// - Instances on dedicated hosts cannot be redeployed.
 //
-// - If `OperationLocks` in the response of the DescribeInstances operation contains `"LockReason": "security"` for an instance, the instance is locked for security reasons and cannot be redeployed.
+// - If the OperationLocks of an instance is marked with `"LockReason": "security"`, the instance cannot be redeployed.
 //
-// - If an instance receives notifications about simulated events that are created by calling the CreateSimulatedSystemEvent operation for the instance, you cannot call this operation to redeploy the instance.
+// - Simulated events created by invoking CreateSimulatedSystemEvent cannot be responded to.
 //
-// - When you handle a local disk-related system event for an instance, if the damaged local disk is isolated but the SystemMaintenance.RebootAndReInitErrorDisk (**instance restart and re-initialization of damaged disks due to system maintenance**) event is not sent, you can still call the RedeployInstance operation to redeploy the instance. For more information, see [O\\&M scenarios and system events for instances equipped with local disks](https://help.aliyun.com/document_detail/107693.html).
+// - During the flow of isolating a local disk in a system event, you can also invoke RedeployInstance if the damaged local disk has been isolated but the SystemMaintenance.RebootAndReInitErrorDisk event has not been issued. For more information, see [Overview of system events for instances with local disks](https://help.aliyun.com/document_detail/107693.html).
 //
-// The following table describes the types and states of events that you can handle by calling the RedeployInstance operation.
+// The following table describes the system event types and event states that RedeployInstance can respond to.
 //
-// | System event                                                                                                                   | Event status            |
+// | Event name and parameter | Event status |
 //
-// | ------------------------------------------------------------------------------------------------------------------------------ | ----------------------- |
+// | --- | --- |
 //
-// | Instance restart due to system maintenance (SystemMaintenance.Reboot)                                                          | Inquiring and Scheduled |
+// | Instance restart due to system maintenance (SystemMaintenance.Reboot) | Inquiring, Scheduled |
 //
-// | Instance redeployment due to system maintenance (SystemMaintenance.Redeploy)                                                   | Inquiring and Scheduled |
+// | Instance redeployment due to system maintenance (SystemMaintenance.Redeploy) | Inquiring, Scheduled |
 //
-// | Instance restart and replacement of damaged disks due to system maintenance (SystemMaintenance.RebootAndIsolateErrorDisk)      | Inquiring               |
+// | Instance restart and damaged disk replacement due to system maintenance (SystemMaintenance.RebootAndIsolateErrorDisk) | Inquiring |
 //
-// | Instance restart and re-initialization of damaged disks due to system maintenance (SystemMaintenance.RebootAndReInitErrorDisk) | Inquiring               |
+// | Instance restart and damaged disk reinitialization due to system maintenance (SystemMaintenance.RebootAndReInitErrorDisk) | Inquiring |
 //
-// | Instance redeployment due to system errors (SystemFailure.Redeploy)                                                            | Inquiring               |
+// | Instance redeployment due to system fault (SystemFailure.Redeploy) | Inquiring |
 //
-// | For ECS instances that use only local disks: instance restart due to system errors (SystemFailure.Reboot)                      | Executing               |
+// | For ECS instances with local disks only: instance restart due to system fault (SystemFailure.Reboot) | Executing |
 //
-// | Isolation of damaged disks due to system maintenance (SystemMaintenance.IsolateErrorDisk)                                      | Inquiring               |
+// | Damaged disk isolation due to system maintenance (SystemMaintenance.IsolateErrorDisk) | Inquiring |
 //
-// | Re-initialization of damaged disks due to system maintenance (SystemMaintenance.ReInitErrorDisk)                               | Inquiring               |
+// | Damaged disk reinitialization due to system maintenance (SystemMaintenance.ReInitErrorDisk) | Inquiring |
 //
-// **Note*	- When the system redeploys instances equipped with local disks, the local disks are re-initialized and data on the local disks is cleared.
+// > Redeploying an instance with local disks reinitializes the local disks, and all data on the storage devices is cleared.
 //
 // @param request - RedeployInstanceRequest
 //
@@ -41865,53 +41911,53 @@ func (client *Client) RedeployInstanceWithOptions(request *RedeployInstanceReque
 
 // Summary:
 //
-// Redeploys an Elastic Compute Service (ECS) instance. You can call this operation to redeploy an ECS instance when the instance receives a system event notification.
+// Invokes the RedeployInstance operation to redeploy an ECS instance when the ECS instance receives a system event notification.
 //
 // Description:
 //
-// ## Usage notes
+// ## Operation description
 //
-// RedeployInstance is an asynchronous operation. The operation migrates the instance to a healthy physical server and then restarts the instance. After the instance is redeployed, it enters the Running (`Running`) state. If the instance fails to be redeployed, it returns to the original physical server and the state before the redeployment.
+// RedeployInstance is an asynchronous invocation that restarts and migrates an instance. After the redeployment succeeds, the instance enters the Running state. If the redeployment fails, the instance is returned to the original physical server and recovers to the state before the redeployment.
 //
-// When you call this operation, take note of the following item:
+// When you invoke this operation, take note of the following items:
 //
-// - The instance must be in the Running (Running) or Stopped (Stopped) state. After the instance is redeployed, the following changes occur to the status of the instance:
+// - The target instance must be in the Running or Stopped state. The instance status changes after the operation is invoked:
 //
-//   - If the instance is in the Running (`Running`) state, the instance enters the Stopping (`Stopping`) state.
+//   - An instance in the Running (`Running`) state enters the Stopping (`Stopping`) state.
 //
-//   - If the instance is in the Stopped (`Stopped`) state, the instance enters the Starting (`Starting`) state.
+//   - An instance in the Stopped (`Stopped`) state enters the Starting (`Starting`) state.
 //
-// - If an instance is deployed on a dedicated host, you cannot redeploy the instance.
+// - Instances on dedicated hosts cannot be redeployed.
 //
-// - If `OperationLocks` in the response of the DescribeInstances operation contains `"LockReason": "security"` for an instance, the instance is locked for security reasons and cannot be redeployed.
+// - If the OperationLocks of an instance is marked with `"LockReason": "security"`, the instance cannot be redeployed.
 //
-// - If an instance receives notifications about simulated events that are created by calling the CreateSimulatedSystemEvent operation for the instance, you cannot call this operation to redeploy the instance.
+// - Simulated events created by invoking CreateSimulatedSystemEvent cannot be responded to.
 //
-// - When you handle a local disk-related system event for an instance, if the damaged local disk is isolated but the SystemMaintenance.RebootAndReInitErrorDisk (**instance restart and re-initialization of damaged disks due to system maintenance**) event is not sent, you can still call the RedeployInstance operation to redeploy the instance. For more information, see [O\\&M scenarios and system events for instances equipped with local disks](https://help.aliyun.com/document_detail/107693.html).
+// - During the flow of isolating a local disk in a system event, you can also invoke RedeployInstance if the damaged local disk has been isolated but the SystemMaintenance.RebootAndReInitErrorDisk event has not been issued. For more information, see [Overview of system events for instances with local disks](https://help.aliyun.com/document_detail/107693.html).
 //
-// The following table describes the types and states of events that you can handle by calling the RedeployInstance operation.
+// The following table describes the system event types and event states that RedeployInstance can respond to.
 //
-// | System event                                                                                                                   | Event status            |
+// | Event name and parameter | Event status |
 //
-// | ------------------------------------------------------------------------------------------------------------------------------ | ----------------------- |
+// | --- | --- |
 //
-// | Instance restart due to system maintenance (SystemMaintenance.Reboot)                                                          | Inquiring and Scheduled |
+// | Instance restart due to system maintenance (SystemMaintenance.Reboot) | Inquiring, Scheduled |
 //
-// | Instance redeployment due to system maintenance (SystemMaintenance.Redeploy)                                                   | Inquiring and Scheduled |
+// | Instance redeployment due to system maintenance (SystemMaintenance.Redeploy) | Inquiring, Scheduled |
 //
-// | Instance restart and replacement of damaged disks due to system maintenance (SystemMaintenance.RebootAndIsolateErrorDisk)      | Inquiring               |
+// | Instance restart and damaged disk replacement due to system maintenance (SystemMaintenance.RebootAndIsolateErrorDisk) | Inquiring |
 //
-// | Instance restart and re-initialization of damaged disks due to system maintenance (SystemMaintenance.RebootAndReInitErrorDisk) | Inquiring               |
+// | Instance restart and damaged disk reinitialization due to system maintenance (SystemMaintenance.RebootAndReInitErrorDisk) | Inquiring |
 //
-// | Instance redeployment due to system errors (SystemFailure.Redeploy)                                                            | Inquiring               |
+// | Instance redeployment due to system fault (SystemFailure.Redeploy) | Inquiring |
 //
-// | For ECS instances that use only local disks: instance restart due to system errors (SystemFailure.Reboot)                      | Executing               |
+// | For ECS instances with local disks only: instance restart due to system fault (SystemFailure.Reboot) | Executing |
 //
-// | Isolation of damaged disks due to system maintenance (SystemMaintenance.IsolateErrorDisk)                                      | Inquiring               |
+// | Damaged disk isolation due to system maintenance (SystemMaintenance.IsolateErrorDisk) | Inquiring |
 //
-// | Re-initialization of damaged disks due to system maintenance (SystemMaintenance.ReInitErrorDisk)                               | Inquiring               |
+// | Damaged disk reinitialization due to system maintenance (SystemMaintenance.ReInitErrorDisk) | Inquiring |
 //
-// **Note*	- When the system redeploys instances equipped with local disks, the local disks are re-initialized and data on the local disks is cleared.
+// > Redeploying an instance with local disks reinitializes the local disks, and all data on the storage devices is cleared.
 //
 // @param request - RedeployInstanceRequest
 //
@@ -42379,7 +42425,7 @@ func (client *Client) RemoveBandwidthPackageIps(request *RemoveBandwidthPackageI
 //
 // Summary:
 //
-// Call RemoveTags to remove one or more tags from resources such as instances, disks, snapshots, images, and security groups.
+// Calls RemoveTags to unbind one or more tags from resources such as instances, disks, snapshots, images, and security groups.
 //
 // @param request - RemoveTagsRequest
 //
@@ -42449,7 +42495,7 @@ func (client *Client) RemoveTagsWithOptions(request *RemoveTagsRequest, runtime 
 //
 // Summary:
 //
-// Call RemoveTags to remove one or more tags from resources such as instances, disks, snapshots, images, and security groups.
+// Calls RemoveTags to unbind one or more tags from resources such as instances, disks, snapshots, images, and security groups.
 //
 // @param request - RemoveTagsRequest
 //
@@ -44042,51 +44088,47 @@ func (client *Client) RevokeSecurityGroup(request *RevokeSecurityGroupRequest) (
 
 // Summary:
 //
-// Deletes outbound security group rules from a specified security group.
+// Deletes one or more outbound security group rules from a specified security group.
 //
 // Description:
 //
-// > Alibaba Cloud modified verification rules for the RevokeSecurityGroupEgress operation on July 8, 2024. When you use the RevokeSecurityGroupEgress operation to delete a security group rule that does not exist, the "InvalidSecurityGroupRule.RuleNotExist" error code is returned instead of a success response. Update the RevokeSecurityGroupEgress operation to use the new verification rules with the new error code based on your business requirements.
+//	Notice: On July 8, 2024, Alibaba Cloud adjusted the validation rules for this operation. When you attempt to delete a security group rule that does not exist, the operation now returns the error code "InvalidSecurityGroupRule.RuleNotExist" instead of a success response. Ensure that your application is compatible with this error code to avoid impacts on your online services.
 //
-// You can use one of the following methods to delete a security group rule:
+// You can use one of the following methods to pass parameters to delete security group rules:
 //
-// - Delete a rule by specifying the IDs of security group rules. We recommend that you specify the IDs of security group rules to delete the rules.
+// - Delete rules by specifying security group rule IDs (recommended).
 //
-//   - If a security group rule ID that you specify does not exist, an error is reported.
+//   - If the specified security group rule ID does not exist, an error is returned.
 //
-// - Delete a rule by specifying the Permissions parameter.
+// - Delete rules by specifying the Permissions parameter.
 //
-//   - If no security group rule matches the specified parameters, the call to RevokeSecurityGroup is successful but no security group rules are deleted.
+//   - If the matching security group rule does not exist, the invoke succeeds but no rule is deleted.
 //
-//   - Delete a security group rule by configuring the following parameters together:
+//   - The following parameters are required to delete a security group rule:
 //
-//   - One of the following parameters: DestCidrIp, Ipv6DestCidrIp, DestPrefixListId, and DestGroupId. DestCidrIp specifies the destination IPv4 CIDR block. Ipv6DestCidrIp specifies the destination IPv6 CIDR block. DestPrefixListId specifies the ID of the destination prefix list. DestGroupId specifies the destination security group.
+//   - Destination settings: Specify one of DestCidrIp (IPv4 address), Ipv6DestCidrIp (IPv6 address), DestPrefixListId (prefix list ID), or DestGroupId (destination security group).
 //
-//   - PortRange: specifies the range of destination port numbers.
+//   - Destination port range: PortRange.
 //
-//   - IpProtocol: specifies the protocol.
+//   - Protocol type: IpProtocol.
 //
-//   - Policy: specifies the action.
+//   - Access policy: Policy.
 //
-// > You cannot set the security group rule ID and the Permissions parameter at the same time.
+// > You cannot specify both security group rule IDs and the Permissions parameter at the same time.
 //
-// ### [](#)Sample requests
+// ### Request examples
 //
-// - Delete a security group rule.
-//
-// <!---->
+// - Delete by security group rule ID.
 //
 // ```
 //
-// "SecurityGroupId":"sg-bp67acfmxazb4p****", //The security group ID.
+// "SecurityGroupId":"sg-bp67acfmxazb4p****", // Specify the security group ID.
 //
-// "SecurityGroupRuleId":["sgr-bpdfmk****","sgr-bpdfmg****"]  //The ID of the security group rule.
+// "SecurityGroupRuleId":["sgr-bpdfmk****","sgr-bpdfmg****"] // Specify the security group rule IDs.
 //
 // ```
 //
-// - Delete a security group rule based on the CIDR block.
-//
-// <!---->
+// - Delete by IP address CIDR block.
 //
 // ```
 //
@@ -44096,21 +44138,21 @@ func (client *Client) RevokeSecurityGroup(request *RevokeSecurityGroupRequest) (
 //
 //	{
 //
-// "IpProtocol":"TCP", //The protocol.
+//	  "IpProtocol":"TCP", // Specify the protocol type.
 //
-//	"DestCidrIp":"10.0.0.0/8", //The destination IPv4 CIDR block.
+//	  "DestCidrIp":"10.0.0.0/8", // Specify the destination IP address CIDR block.
 //
-// "PortRange":"22/22", //The destination port range.
+//	  "PortRange":"22/22", // Specify the destination port range.
 //
-//	"Policy":"accept" //The action.  }
+//	  "Policy":"accept" // Specify the access policy.
+//
+//	}
 //
 // ]
 //
 // ```
 //
-// - Delete a security group rule based on the ID of the destination security group.
-//
-// <!---->
+// - Delete by destination security group.
 //
 // ```
 //
@@ -44120,7 +44162,7 @@ func (client *Client) RevokeSecurityGroup(request *RevokeSecurityGroupRequest) (
 //
 //	{
 //
-//	  "DestGroupId":"sg-bp67acfmxa123b****", //Set the ID of the target security group.
+//	  "DestGroupId":"sg-bp67acfmxa123b****", // Specify the destination security group ID.
 //
 //	  "IpProtocol":"TCP",
 //
@@ -44134,9 +44176,7 @@ func (client *Client) RevokeSecurityGroup(request *RevokeSecurityGroupRequest) (
 //
 // ```
 //
-// - Delete a security group rule based on a specified prefix list.
-//
-// <!---->
+// - Delete by prefix list.
 //
 // ```
 //
@@ -44148,7 +44188,9 @@ func (client *Client) RevokeSecurityGroup(request *RevokeSecurityGroupRequest) (
 //
 //	  "IpProtocol":"TCP",
 //
-//	     "DestPrefixListId":"pl-x1j1k5ykzqlixdcy****", //The ID of the destination prefix list.    "PortRange":"22/22",
+//	  "DestPrefixListId":"pl-x1j1k5ykzqlixdcy****", // Specify the destination prefix list ID.
+//
+//	  "PortRange":"22/22",
 //
 //	  "Policy":"accept",
 //
@@ -44156,7 +44198,7 @@ func (client *Client) RevokeSecurityGroup(request *RevokeSecurityGroupRequest) (
 //
 // ]
 //
-// ```
+// ```.
 //
 // @param request - RevokeSecurityGroupEgressRequest
 //
@@ -44308,51 +44350,47 @@ func (client *Client) RevokeSecurityGroupEgressWithOptions(request *RevokeSecuri
 
 // Summary:
 //
-// Deletes outbound security group rules from a specified security group.
+// Deletes one or more outbound security group rules from a specified security group.
 //
 // Description:
 //
-// > Alibaba Cloud modified verification rules for the RevokeSecurityGroupEgress operation on July 8, 2024. When you use the RevokeSecurityGroupEgress operation to delete a security group rule that does not exist, the "InvalidSecurityGroupRule.RuleNotExist" error code is returned instead of a success response. Update the RevokeSecurityGroupEgress operation to use the new verification rules with the new error code based on your business requirements.
+//	Notice: On July 8, 2024, Alibaba Cloud adjusted the validation rules for this operation. When you attempt to delete a security group rule that does not exist, the operation now returns the error code "InvalidSecurityGroupRule.RuleNotExist" instead of a success response. Ensure that your application is compatible with this error code to avoid impacts on your online services.
 //
-// You can use one of the following methods to delete a security group rule:
+// You can use one of the following methods to pass parameters to delete security group rules:
 //
-// - Delete a rule by specifying the IDs of security group rules. We recommend that you specify the IDs of security group rules to delete the rules.
+// - Delete rules by specifying security group rule IDs (recommended).
 //
-//   - If a security group rule ID that you specify does not exist, an error is reported.
+//   - If the specified security group rule ID does not exist, an error is returned.
 //
-// - Delete a rule by specifying the Permissions parameter.
+// - Delete rules by specifying the Permissions parameter.
 //
-//   - If no security group rule matches the specified parameters, the call to RevokeSecurityGroup is successful but no security group rules are deleted.
+//   - If the matching security group rule does not exist, the invoke succeeds but no rule is deleted.
 //
-//   - Delete a security group rule by configuring the following parameters together:
+//   - The following parameters are required to delete a security group rule:
 //
-//   - One of the following parameters: DestCidrIp, Ipv6DestCidrIp, DestPrefixListId, and DestGroupId. DestCidrIp specifies the destination IPv4 CIDR block. Ipv6DestCidrIp specifies the destination IPv6 CIDR block. DestPrefixListId specifies the ID of the destination prefix list. DestGroupId specifies the destination security group.
+//   - Destination settings: Specify one of DestCidrIp (IPv4 address), Ipv6DestCidrIp (IPv6 address), DestPrefixListId (prefix list ID), or DestGroupId (destination security group).
 //
-//   - PortRange: specifies the range of destination port numbers.
+//   - Destination port range: PortRange.
 //
-//   - IpProtocol: specifies the protocol.
+//   - Protocol type: IpProtocol.
 //
-//   - Policy: specifies the action.
+//   - Access policy: Policy.
 //
-// > You cannot set the security group rule ID and the Permissions parameter at the same time.
+// > You cannot specify both security group rule IDs and the Permissions parameter at the same time.
 //
-// ### [](#)Sample requests
+// ### Request examples
 //
-// - Delete a security group rule.
-//
-// <!---->
+// - Delete by security group rule ID.
 //
 // ```
 //
-// "SecurityGroupId":"sg-bp67acfmxazb4p****", //The security group ID.
+// "SecurityGroupId":"sg-bp67acfmxazb4p****", // Specify the security group ID.
 //
-// "SecurityGroupRuleId":["sgr-bpdfmk****","sgr-bpdfmg****"]  //The ID of the security group rule.
+// "SecurityGroupRuleId":["sgr-bpdfmk****","sgr-bpdfmg****"] // Specify the security group rule IDs.
 //
 // ```
 //
-// - Delete a security group rule based on the CIDR block.
-//
-// <!---->
+// - Delete by IP address CIDR block.
 //
 // ```
 //
@@ -44362,21 +44400,21 @@ func (client *Client) RevokeSecurityGroupEgressWithOptions(request *RevokeSecuri
 //
 //	{
 //
-// "IpProtocol":"TCP", //The protocol.
+//	  "IpProtocol":"TCP", // Specify the protocol type.
 //
-//	"DestCidrIp":"10.0.0.0/8", //The destination IPv4 CIDR block.
+//	  "DestCidrIp":"10.0.0.0/8", // Specify the destination IP address CIDR block.
 //
-// "PortRange":"22/22", //The destination port range.
+//	  "PortRange":"22/22", // Specify the destination port range.
 //
-//	"Policy":"accept" //The action.  }
+//	  "Policy":"accept" // Specify the access policy.
+//
+//	}
 //
 // ]
 //
 // ```
 //
-// - Delete a security group rule based on the ID of the destination security group.
-//
-// <!---->
+// - Delete by destination security group.
 //
 // ```
 //
@@ -44386,7 +44424,7 @@ func (client *Client) RevokeSecurityGroupEgressWithOptions(request *RevokeSecuri
 //
 //	{
 //
-//	  "DestGroupId":"sg-bp67acfmxa123b****", //Set the ID of the target security group.
+//	  "DestGroupId":"sg-bp67acfmxa123b****", // Specify the destination security group ID.
 //
 //	  "IpProtocol":"TCP",
 //
@@ -44400,9 +44438,7 @@ func (client *Client) RevokeSecurityGroupEgressWithOptions(request *RevokeSecuri
 //
 // ```
 //
-// - Delete a security group rule based on a specified prefix list.
-//
-// <!---->
+// - Delete by prefix list.
 //
 // ```
 //
@@ -44414,7 +44450,9 @@ func (client *Client) RevokeSecurityGroupEgressWithOptions(request *RevokeSecuri
 //
 //	  "IpProtocol":"TCP",
 //
-//	     "DestPrefixListId":"pl-x1j1k5ykzqlixdcy****", //The ID of the destination prefix list.    "PortRange":"22/22",
+//	  "DestPrefixListId":"pl-x1j1k5ykzqlixdcy****", // Specify the destination prefix list ID.
+//
+//	  "PortRange":"22/22",
 //
 //	  "Policy":"accept",
 //
@@ -44422,7 +44460,7 @@ func (client *Client) RevokeSecurityGroupEgressWithOptions(request *RevokeSecuri
 //
 // ]
 //
-// ```
+// ```.
 //
 // @param request - RevokeSecurityGroupEgressRequest
 //
@@ -46860,17 +46898,17 @@ func (client *Client) TerminateVirtualBorderRouter(request *TerminateVirtualBord
 
 // Summary:
 //
-// Unassigns one or more IPv6 addresses from an elastic network interface (ENI).
+// Unassigns one or more IPv6 addresses from an Elastic Network Interface (ENI).
 //
 // Description:
 //
-// ## [](#)Usage notes
+// ## Operation description
 //
-// Take note of the following items:
+// When you invoke this operation, take note of the following items:
 //
-// - The ENI must be in the **Available*	- (Available) or **InUse*	- (InUse) state.
+// - The Elastic Network Interface (ENI) must be in the **Active*	- (Available) or **InUse*	- state.
 //
-// - If the ENI is a primary ENI, the Elastic Compute Service (ECS) instance to which the ENI is attached must be in the **Running*	- (Running) or **Stopped*	- (Stopped) state.
+// - If you are operating on a primary ENI, the ECS instance to which the network interface controller (NIC) is attached must be in the **Running*	- or **Stopped*	- state.
 //
 // @param request - UnassignIpv6AddressesRequest
 //
@@ -46946,17 +46984,17 @@ func (client *Client) UnassignIpv6AddressesWithOptions(request *UnassignIpv6Addr
 
 // Summary:
 //
-// Unassigns one or more IPv6 addresses from an elastic network interface (ENI).
+// Unassigns one or more IPv6 addresses from an Elastic Network Interface (ENI).
 //
 // Description:
 //
-// ## [](#)Usage notes
+// ## Operation description
 //
-// Take note of the following items:
+// When you invoke this operation, take note of the following items:
 //
-// - The ENI must be in the **Available*	- (Available) or **InUse*	- (InUse) state.
+// - The Elastic Network Interface (ENI) must be in the **Active*	- (Available) or **InUse*	- state.
 //
-// - If the ENI is a primary ENI, the Elastic Compute Service (ECS) instance to which the ENI is attached must be in the **Running*	- (Running) or **Stopped*	- (Stopped) state.
+// - If you are operating on a primary ENI, the ECS instance to which the network interface controller (NIC) is attached must be in the **Running*	- or **Stopped*	- state.
 //
 // @param request - UnassignIpv6AddressesRequest
 //

@@ -26,11 +26,11 @@ type iCreatePlanMaintenanceWindowRequest interface {
 }
 
 type CreatePlanMaintenanceWindowRequest struct {
-	// Specifies whether to enable the maintenance window.
+	// Specifies whether to enable or disable the O&M window.
 	//
-	// - **true**: Enables the maintenance window.
+	// - **true**: Enabled.
 	//
-	// - **false**: Disables the maintenance window.
+	// - **false**: Disabled.
 	//
 	// This parameter is required.
 	//
@@ -39,7 +39,7 @@ type CreatePlanMaintenanceWindowRequest struct {
 	// true
 	Enable                 *bool  `json:"Enable,omitempty" xml:"Enable,omitempty"`
 	MinMaintenanceInterval *int32 `json:"MinMaintenanceInterval,omitempty" xml:"MinMaintenanceInterval,omitempty"`
-	// The name of the maintenance window. The name can be up to 200 characters long.
+	// The name of the O&M window. You can specify a custom name. The name can be up to 200 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -47,7 +47,7 @@ type CreatePlanMaintenanceWindowRequest struct {
 	//
 	// WIndowName
 	PlanWindowName *string `json:"PlanWindowName,omitempty" xml:"PlanWindowName,omitempty"`
-	// The ID of the region. You can call the DescribeRegions operation to query the latest list of Alibaba Cloud regions.
+	// The region ID. You can call DescribeRegions to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -55,7 +55,7 @@ type CreatePlanMaintenanceWindowRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The maintenance operation supported by the maintenance window.
+	// The O&M operations supported by the O&M window.
 	//
 	// This parameter is required.
 	//
@@ -63,11 +63,11 @@ type CreatePlanMaintenanceWindowRequest struct {
 	//
 	// Reboot
 	SupportMaintenanceAction *string `json:"SupportMaintenanceAction,omitempty" xml:"SupportMaintenanceAction,omitempty"`
-	// The resources to which the maintenance window applies.
+	// The resources on which the O&M window takes effect.
 	//
 	// This parameter is required.
 	TargetResource *CreatePlanMaintenanceWindowRequestTargetResource `json:"TargetResource,omitempty" xml:"TargetResource,omitempty" type:"Struct"`
-	// The recurring schedule for the maintenance window.
+	// The recurring cycle of the O&M window.
 	//
 	// This parameter is required.
 	TimePeriod *CreatePlanMaintenanceWindowRequestTimePeriod `json:"TimePeriod,omitempty" xml:"TimePeriod,omitempty" type:"Struct"`
@@ -159,13 +159,13 @@ func (s *CreatePlanMaintenanceWindowRequest) Validate() error {
 }
 
 type CreatePlanMaintenanceWindowRequestTargetResource struct {
-	// The ID of the resource group. This parameter is required if `Scope` is set to `ResourceGroup`.
+	// The ID of the resource group. This parameter is required when Scope is set to ResourceGroup.
 	//
 	// example:
 	//
 	// rg-aekzhm7pmnvcbty
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The scope of resources to which the maintenance window applies.
+	// The type of resources for which the O&M window is configured.
 	//
 	// This parameter is required.
 	//
@@ -173,7 +173,7 @@ type CreatePlanMaintenanceWindowRequestTargetResource struct {
 	//
 	// Tag
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	// The tags of the resources to which the maintenance window applies. This parameter is required if `Scope` is set to `Tag`.
+	// The tags on which the O&M window takes effect. This parameter is required when Scope is set to Tag.
 	Tags []*CreatePlanMaintenanceWindowRequestTargetResourceTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
@@ -226,13 +226,13 @@ func (s *CreatePlanMaintenanceWindowRequestTargetResource) Validate() error {
 }
 
 type CreatePlanMaintenanceWindowRequestTargetResourceTags struct {
-	// The tag key.
+	// The key of the tag on which the O&M window takes effect.
 	//
 	// example:
 	//
 	// vms_qualification_孙总身份证_e5590864-1fef-4db2-b2a7-bd2d657fed43.png
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The value of the tag on which the O&M window takes effect.
 	//
 	// example:
 	//
@@ -271,7 +271,7 @@ func (s *CreatePlanMaintenanceWindowRequestTargetResourceTags) Validate() error 
 }
 
 type CreatePlanMaintenanceWindowRequestTimePeriod struct {
-	// Specifies how often the maintenance window recurs.
+	// The cycle type. Valid values: Daily and Weekly.
 	//
 	// This parameter is required.
 	//
@@ -279,7 +279,7 @@ type CreatePlanMaintenanceWindowRequestTimePeriod struct {
 	//
 	// Weekly
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// The time ranges of the recurring maintenance window. All times are in UTC.
+	// The time ranges of the recurring cycle of the O&M window (in UTC).
 	//
 	// This parameter is required.
 	RangeList []*CreatePlanMaintenanceWindowRequestTimePeriodRangeList `json:"RangeList,omitempty" xml:"RangeList,omitempty" type:"Repeated"`
@@ -325,25 +325,25 @@ func (s *CreatePlanMaintenanceWindowRequestTimePeriod) Validate() error {
 }
 
 type CreatePlanMaintenanceWindowRequestTimePeriodRangeList struct {
-	// The end time of the maintenance window.
+	// The end time of the O&M window.
 	//
-	// - If `PeriodUnit` is set to `Weekly`, use the format `Day,HH:mm`. Valid values for `Day` are `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`, and `Sunday`.
+	// - If PeriodUnit is set to Weekly, the format is Monday,22:00. Monday can be replaced with Tuesday, Wednesday, Thursday, Friday, Saturday, or Sunday.
 	//
-	// - If `PeriodUnit` is set to `Daily`, use the format `HH:mm`.
+	// - If PeriodUnit is set to Daily, the format is 22:00.
 	//
-	// - The time is in `HH:mm` format, where `HH` is the hour (00-23) and `mm` is the minute. Only `00` is supported for the minute.
+	// - The comma (,) is used as a delimiter. The first part represents the hour, which ranges from 00 to 23. The second part represents the minute, which currently supports only 00.
 	//
 	// example:
 	//
 	// Tuesday,03:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The start time of the maintenance window.
+	// The start time of the O&M window.
 	//
-	// - If `PeriodUnit` is set to `Weekly`, use the format `Day,HH:mm`. Valid values for `Day` are `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`, and `Sunday`.
+	// - If PeriodUnit is set to Weekly, the format is Monday,22:00. Monday can be replaced with Tuesday, Wednesday, Thursday, Friday, Saturday, or Sunday.
 	//
-	// - If `PeriodUnit` is set to `Daily`, use the format `HH:mm`.
+	// - If PeriodUnit is set to Daily, the format is 22:00.
 	//
-	// - The time is in `HH:mm` format, where `HH` is the hour (00-23) and `mm` is the minute. Only `00` is supported for the minute.
+	// - The comma (,) is used as a delimiter. The first part represents the hour, which ranges from 00 to 23. The second part represents the minute, which currently supports only 00.
 	//
 	// example:
 	//

@@ -24,7 +24,7 @@ type iDeleteDeploymentSetRequest interface {
 }
 
 type DeleteDeploymentSetRequest struct {
-	// The ID of the deployment set that you want to delete.
+	// The ID of the deployment set to delete.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type DeleteDeploymentSetRequest struct {
 	DeploymentSetId *string `json:"DeploymentSetId,omitempty" xml:"DeploymentSetId,omitempty"`
 	OwnerAccount    *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the deployment set. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+	// The region ID of the deployment set. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent Alibaba Cloud region list.
 	//
 	// This parameter is required.
 	//

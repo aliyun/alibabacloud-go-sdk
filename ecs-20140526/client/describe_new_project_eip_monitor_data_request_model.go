@@ -30,24 +30,16 @@ type iDescribeNewProjectEipMonitorDataRequest interface {
 }
 
 type DescribeNewProjectEipMonitorDataRequest struct {
-	// The ID of the EIP.
-	//
 	// This parameter is required.
 	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
-	// The end of the query time range. The time must be in UTC and formatted as `YYYY-MM-DDThh:mm:ssZ`.
-	//
 	// This parameter is required.
-	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The aggregation period of the monitoring data. Unit: seconds. Valid values: 60, 300, and 900.
-	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The ID of the region where the Elastic IP address (EIP) is located.
+	EndTime              *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Period               *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The start of the query time range. The time must be in UTC and formatted as `YYYY-MM-DDThh:mm:ssZ`.
-	//
 	// This parameter is required.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }

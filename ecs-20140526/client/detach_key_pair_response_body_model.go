@@ -22,7 +22,7 @@ type iDetachKeyPairResponseBody interface {
 }
 
 type DetachKeyPairResponseBody struct {
-	// The number of instances from which the SSH key pair failed to be unbound.
+	// The number of instances from which the key pair failed to be unbound.
 	//
 	// example:
 	//
@@ -34,14 +34,14 @@ type DetachKeyPairResponseBody struct {
 	//
 	// testKeyPairName
 	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Results   *DetachKeyPairResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Struct"`
-	// The total number of instances from which you want to unbind the SSH key pair.
+	// The total number of instances from which the key pair is unbound.
 	//
 	// example:
 	//

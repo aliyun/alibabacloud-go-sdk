@@ -22,15 +22,14 @@ type iDescribeNetworkInterfacePermissionsResponseBody interface {
 }
 
 type DescribeNetworkInterfacePermissionsResponseBody struct {
-	// The elastic network interface permissions.
 	NetworkInterfacePermissions *DescribeNetworkInterfacePermissionsResponseBodyNetworkInterfacePermissions `json:"NetworkInterfacePermissions,omitempty" xml:"NetworkInterfacePermissions,omitempty" type:"Struct"`
-	// The page number.
+	// The page number of the list.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page in a paging query.
 	//
 	// example:
 	//
@@ -42,7 +41,7 @@ type DescribeNetworkInterfacePermissionsResponseBody struct {
 	//
 	// 0FCD3DEF-63D3-4605-A818-805C8BD7DB87
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of matching entries.
+	// The total number of entries returned.
 	//
 	// example:
 	//

@@ -28,13 +28,13 @@ type iUnassignIpv6AddressesRequest interface {
 }
 
 type UnassignIpv6AddressesRequest struct {
-	// IPv6 address N to unassign. Valid values of N: 1 to 10.
+	// One or more IPv6 addresses to delete. Valid values of N: 1 to 10.
 	//
 	// example:
 	//
 	// 2001:db8:1234:1a00::***
 	Ipv6Address []*string `json:"Ipv6Address,omitempty" xml:"Ipv6Address,omitempty" type:"Repeated"`
-	// IPv6 prefix N to unassign. Valid values of N: 1 to 10.
+	// One or more IPv6 prefixes to unassign. Valid values of N: 1 to 10.
 	Ipv6Prefix []*string `json:"Ipv6Prefix,omitempty" xml:"Ipv6Prefix,omitempty" type:"Repeated"`
 	// The ID of the ENI.
 	//
@@ -46,7 +46,7 @@ type UnassignIpv6AddressesRequest struct {
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
 	OwnerAccount       *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the ENI. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+	// The region ID of the ENI. You can invoke [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//

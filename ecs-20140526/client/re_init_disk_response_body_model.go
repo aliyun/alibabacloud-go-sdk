@@ -14,7 +14,7 @@ type iReInitDiskResponseBody interface {
 }
 
 type ReInitDiskResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

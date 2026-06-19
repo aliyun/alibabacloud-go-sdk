@@ -57,7 +57,7 @@ type DescribeTaskAttributeResponseBody struct {
 	// 2015-11-23T02:19Z
 	FinishedTime         *string                                                `json:"FinishedTime,omitempty" xml:"FinishedTime,omitempty"`
 	OperationProgressSet *DescribeTaskAttributeResponseBodyOperationProgressSet `json:"OperationProgressSet,omitempty" xml:"OperationProgressSet,omitempty" type:"Struct"`
-	// The region ID of the task.
+	// The region ID.
 	//
 	// example:
 	//
@@ -69,41 +69,43 @@ type DescribeTaskAttributeResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of completed tasks.
+	// The number of successful tasks.
 	//
 	// example:
 	//
 	// 1
 	SuccessCount *int32 `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
-	// Indicates whether the task can be canceled by calling the [CancelTask](https://help.aliyun.com/document_detail/25624.html) operation. Valid values:
+	// Indicates whether the task can be canceled ([CancelTask](https://help.aliyun.com/document_detail/25624.html)). Valid values:
 	//
-	// - true
 	//
-	// - false
+	//
+	// - true: The task can be canceled.
+	//
+	// - false: The task cannot be canceled.
 	//
 	// example:
 	//
 	// true
 	SupportCancel *string `json:"SupportCancel,omitempty" xml:"SupportCancel,omitempty"`
-	// The name of the operation that generated the task.
+	// The name of the API operation associated with the task.
 	//
 	// example:
 	//
 	// ExportImage
 	TaskAction *string `json:"TaskAction,omitempty" xml:"TaskAction,omitempty"`
-	// The ID of the task.
+	// The task ID.
 	//
 	// example:
 	//
 	// t-ce946ntx4wr****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The progress of the task.
+	// The task progress.
 	//
 	// example:
 	//
 	// 100%
 	TaskProcess *string `json:"TaskProcess,omitempty" xml:"TaskProcess,omitempty"`
-	// The status of the task.
+	// The task status.
 	//
 	// example:
 	//

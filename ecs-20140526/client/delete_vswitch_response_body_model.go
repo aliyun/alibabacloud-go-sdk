@@ -14,7 +14,6 @@ type iDeleteVSwitchResponseBody interface {
 }
 
 type DeleteVSwitchResponseBody struct {
-	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

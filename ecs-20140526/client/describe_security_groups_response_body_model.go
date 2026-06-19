@@ -26,15 +26,15 @@ type iDescribeSecurityGroupsResponseBody interface {
 }
 
 type DescribeSecurityGroupsResponseBody struct {
-	// A pagination token. If the return value of this parameter is empty when MaxResults and NextToken are used for a paged query, no next page exists.
+	// The query token returned in this call. When you use the MaxResults and NextToken method for paged queries and this return value is empty, no more data is available.
 	//
 	// example:
 	//
 	// e71d8a535bd9cc11
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The page number.
+	// The current page number.
 	//
-	// > This parameter will be deprecated in the future. We recommend that you use NextToken and MaxResults for a paged query.
+	// > This parameter is about to be deprecated. We recommend that you use NextToken and MaxResults for paged queries.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type DescribeSecurityGroupsResponseBody struct {
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page.
 	//
-	// > This parameter will be deprecated in the future. We recommend that you use NextToken and MaxResults for a paged query.
+	// > This parameter is about to be deprecated. We recommend that you use NextToken and MaxResults for paged queries.
 	//
 	// example:
 	//
@@ -61,7 +61,7 @@ type DescribeSecurityGroupsResponseBody struct {
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId      *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SecurityGroups *DescribeSecurityGroupsResponseBodySecurityGroups `json:"SecurityGroups,omitempty" xml:"SecurityGroups,omitempty" type:"Struct"`
-	// The total number of security groups returned. If `MaxResults` and `NextToken` are specified in the request, the value of this parameter is not returned.
+	// The total number of security groups. This parameter value is not returned when you use the `MaxResults` and `NextToken` parameters for queries.
 	//
 	// example:
 	//

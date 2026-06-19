@@ -28,22 +28,16 @@ type iCancelPhysicalConnectionRequest interface {
 }
 
 type CancelPhysicalConnectionRequest struct {
-	// A client-generated token to ensure the idempotence of the request. This token must be unique for each request. It can contain only ASCII characters and must not exceed 64 characters in length.
 	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the Express Connect circuit.
-	//
 	// This parameter is required.
 	PhysicalConnectionId *string `json:"PhysicalConnectionId,omitempty" xml:"PhysicalConnectionId,omitempty"`
-	// The ID of the region where the Express Connect circuit is deployed. You can call the `DescribeRegions` operation to obtain the latest list of regions.
-	//
 	// This parameter is required.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The client-side CIDR block of the physical connection.
-	UserCidr *string `json:"UserCidr,omitempty" xml:"UserCidr,omitempty"`
+	UserCidr             *string `json:"UserCidr,omitempty" xml:"UserCidr,omitempty"`
 }
 
 func (s CancelPhysicalConnectionRequest) String() string {

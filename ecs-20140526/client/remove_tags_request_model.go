@@ -27,7 +27,7 @@ type iRemoveTagsRequest interface {
 
 type RemoveTagsRequest struct {
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the resource is located. Call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to get the latest list of Alibaba Cloud regions.
+	// The region to which the resource belongs. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the latest list of Alibaba Cloud regions.
 	//
 	// This parameter is required.
 	//
@@ -35,7 +35,7 @@ type RemoveTagsRequest struct {
 	//
 	// cn-shenzhen
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource from which to remove tags. For example, if ResourceType is set to instance, this parameter is the instance ID.
+	// The ID of the resource from which you want to unbind tags. For example, when the resource type (ResourceType) is instance, the resource ID is the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -45,33 +45,33 @@ type RemoveTagsRequest struct {
 	ResourceId           *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The resource type. Valid values:
+	// The type of the resource. Valid values:
 	//
-	// - instance: an ECS instance.
+	// - instance: ECS instance.
 	//
-	// - disk: a disk.
+	// - disk: disk.
 	//
-	// - snapshot: a snapshot.
+	// - snapshot: snapshot.
 	//
-	// - image: an image.
+	// - image: image.
 	//
-	// - securitygroup: a security group.
+	// - securitygroup: security group.
 	//
-	// - volume: a volume.
+	// - volume: storage volume.
 	//
-	// - eni: an elastic network interface.
+	// - eni: elastic network interface (ENI).
 	//
-	// - ddh: a dedicated host.
+	// - ddh: dedicated host.
 	//
-	// - keypair: an SSH key pair.
+	// - keypair: SSH key pair.
 	//
-	// - launchtemplate: a launch template.
+	// - launchtemplate: launch template.
 	//
-	// - reservedinstance: a reserved instance.
+	// - reservedinstance: reserved instance.
 	//
-	// - snapshotpolicy: an automatic snapshot policy.
+	// - snapshotpolicy: automatic snapshot policy.
 	//
-	// All values must be in lowercase.
+	// All valid values are in lowercase.
 	//
 	// This parameter is required.
 	//
@@ -79,7 +79,7 @@ type RemoveTagsRequest struct {
 	//
 	// snapshot
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// A list of tags.
+	// The list of tags.
 	Tag []*RemoveTagsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -168,15 +168,13 @@ func (s *RemoveTagsRequest) Validate() error {
 }
 
 type RemoveTagsRequestTag struct {
-	// The key of the tag.
-	//
-	// > For compatibility, we recommend that you use the Tag.N.Key parameter.
+	// The tag key of the resource. Valid values of N: 1 to 20. The tag key cannot be an empty string once specified. The tag key can be up to 64 characters in length and cannot start with aliyun or acs:. It cannot contain http:// or https://.
 	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag. The value can be an empty string and up to 128 characters long. It cannot start with aliyun or acs:, and cannot contain http\\:// or https\\://.
+	// The tag value of the resource. Valid values of N: 1 to 20. The tag value can be an empty string once specified. The tag value can be up to 128 characters in length and cannot start with aliyun or acs:. It cannot contain http:// or https://.
 	//
 	// example:
 	//

@@ -25,7 +25,7 @@ type DescribeDiskMonitorDataResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of monitoring data entries returned.
+	// The number of entries returned for disk usage information, which is the number of periods.
 	//
 	// example:
 	//

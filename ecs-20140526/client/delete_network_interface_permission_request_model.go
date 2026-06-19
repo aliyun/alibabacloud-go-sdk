@@ -26,16 +26,11 @@ type iDeleteNetworkInterfacePermissionRequest interface {
 }
 
 type DeleteNetworkInterfacePermissionRequest struct {
-	// Specifies whether to forcibly delete the permission. Set this parameter to `true` to force the deletion.
 	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
-	// The ID of the permission for the elastic network interface.
-	//
 	// This parameter is required.
 	NetworkInterfacePermissionId *string `json:"NetworkInterfacePermissionId,omitempty" xml:"NetworkInterfacePermissionId,omitempty"`
 	OwnerAccount                 *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId                      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the elastic network interface is located. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the latest region list.
-	//
 	// This parameter is required.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`

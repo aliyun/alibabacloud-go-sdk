@@ -14,7 +14,6 @@ type iDeleteNetworkInterfacePermissionResponseBody interface {
 }
 
 type DeleteNetworkInterfacePermissionResponseBody struct {
-	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
