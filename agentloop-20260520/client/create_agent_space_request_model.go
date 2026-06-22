@@ -21,9 +21,19 @@ type iCreateAgentSpaceRequest interface {
 
 type CreateAgentSpaceRequest struct {
 	// This parameter is required.
-	AgentSpace   *string `json:"agentSpace,omitempty" xml:"agentSpace,omitempty"`
+	//
+	// example:
+	//
+	// test-agent-space
+	AgentSpace *string `json:"agentSpace,omitempty" xml:"agentSpace,omitempty"`
+	// example:
+	//
+	// test-cms-workspace
 	CmsWorkspace *string `json:"cmsWorkspace,omitempty" xml:"cmsWorkspace,omitempty"`
-	Description  *string `json:"description,omitempty" xml:"description,omitempty"`
+	// example:
+	//
+	// test
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// example:
 	//
 	// a1b2c3d4-1234-5678-90ab-cdef12345678

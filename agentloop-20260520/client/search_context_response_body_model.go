@@ -16,6 +16,9 @@ type iSearchContextResponseBody interface {
 }
 
 type SearchContextResponseBody struct {
+	// example:
+	//
+	// 9ACFB10A-1B2C-3D4E-5F6G-7H8I9J0K1L2M
 	RequestId *string                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Results   []map[string]interface{} `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
 }

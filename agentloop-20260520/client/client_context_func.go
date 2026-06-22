@@ -9,16 +9,16 @@ import (
 
 // Summary:
 //
-// 给记忆库中增加数据
+// 向指定 Dataset 追加结构化数据行，避免客户端拼接 SQL。
 //
-// @param request - AddMem0MemoriesRequest
+// @param request - AddDatasetDataRequest
 //
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
-// @return AddMem0MemoriesResponse
-func (client *Client) AddMem0MemoriesWithContext(ctx context.Context, request *AddMem0MemoriesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AddMem0MemoriesResponse, _err error) {
+// @return AddDatasetDataResponse
+func (client *Client) AddDatasetDataWithContext(ctx context.Context, agentSpace *string, datasetName *string, request *AddDatasetDataRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AddDatasetDataResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -26,13 +26,13 @@ func (client *Client) AddMem0MemoriesWithContext(ctx context.Context, request *A
 		}
 	}
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.AgentSpace) {
-		query["agentSpace"] = request.AgentSpace
+	if !dara.IsNil(request.ClientToken) {
+		query["clientToken"] = request.ClientToken
 	}
 
 	body := map[string]interface{}{}
-	if !dara.IsNil(request.Body) {
-		body["body"] = request.Body
+	if !dara.IsNil(request.DataArray) {
+		body["dataArray"] = request.DataArray
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -41,18 +41,18 @@ func (client *Client) AddMem0MemoriesWithContext(ctx context.Context, request *A
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
-		Action:      dara.String("AddMem0Memories"),
+		Action:      dara.String("AddDatasetData"),
 		Version:     dara.String("2026-05-20"),
 		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/v1/memories"),
+		Pathname:    dara.String("/agentspace/" + dara.PercentEncode(dara.StringValue(agentSpace)) + "/dataset/" + dara.PercentEncode(dara.StringValue(datasetName)) + "/rows"),
 		Method:      dara.String("POST"),
-		AuthType:    dara.String("Anonymous"),
+		AuthType:    dara.String("AK"),
 		Style:       dara.String("ROA"),
 		ReqBodyType: dara.String("json"),
 		BodyType:    dara.String("json"),
 	}
-	_result = &AddMem0MemoriesResponse{}
-	_body, _err := client.DoROARequestWithCtx(ctx, params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.Pathname, params.BodyType, req, runtime)
+	_result = &AddDatasetDataResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -480,150 +480,6 @@ func (client *Client) DeleteDatasetWithContext(ctx context.Context, agentSpace *
 
 // Summary:
 //
-// 批量删除记忆
-//
-// @param tmpReq - DeleteMem0MemoriesRequest
-//
-// @param headers - map
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return DeleteMem0MemoriesResponse
-func (client *Client) DeleteMem0MemoriesWithContext(ctx context.Context, tmpReq *DeleteMem0MemoriesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteMem0MemoriesResponse, _err error) {
-	if dara.BoolValue(client.EnableValidate) == true {
-		_err = tmpReq.Validate()
-		if _err != nil {
-			return _result, _err
-		}
-	}
-	request := &DeleteMem0MemoriesShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !dara.IsNil(tmpReq.Metadata) {
-		request.MetadataShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Metadata, dara.String("metadata"), dara.String("json"))
-	}
-
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.AgentSpace) {
-		query["agentSpace"] = request.AgentSpace
-	}
-
-	if !dara.IsNil(request.AgentId) {
-		query["agent_id"] = request.AgentId
-	}
-
-	if !dara.IsNil(request.AppId) {
-		query["app_id"] = request.AppId
-	}
-
-	if !dara.IsNil(request.ContextStoreId) {
-		query["context_store_id"] = request.ContextStoreId
-	}
-
-	if !dara.IsNil(request.MetadataShrink) {
-		query["metadata"] = request.MetadataShrink
-	}
-
-	if !dara.IsNil(request.OrgId) {
-		query["org_id"] = request.OrgId
-	}
-
-	if !dara.IsNil(request.ProjectId) {
-		query["project_id"] = request.ProjectId
-	}
-
-	if !dara.IsNil(request.RunId) {
-		query["run_id"] = request.RunId
-	}
-
-	if !dara.IsNil(request.UserId) {
-		query["user_id"] = request.UserId
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("DeleteMem0Memories"),
-		Version:     dara.String("2026-05-20"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/v1/memories"),
-		Method:      dara.String("DELETE"),
-		AuthType:    dara.String("Anonymous"),
-		Style:       dara.String("ROA"),
-		ReqBodyType: dara.String("json"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &DeleteMem0MemoriesResponse{}
-	_body, _err := client.DoROARequestWithCtx(ctx, params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.Pathname, params.BodyType, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 删除记忆
-//
-// @param request - DeleteMem0MemoryRequest
-//
-// @param headers - map
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return DeleteMem0MemoryResponse
-func (client *Client) DeleteMem0MemoryWithContext(ctx context.Context, memoryId *string, request *DeleteMem0MemoryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteMem0MemoryResponse, _err error) {
-	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
-		if _err != nil {
-			return _result, _err
-		}
-	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.AgentSpace) {
-		query["agentSpace"] = request.AgentSpace
-	}
-
-	if !dara.IsNil(request.ContextStoreId) {
-		query["context_store_id"] = request.ContextStoreId
-	}
-
-	if !dara.IsNil(request.OrgId) {
-		query["org_id"] = request.OrgId
-	}
-
-	if !dara.IsNil(request.ProjectId) {
-		query["project_id"] = request.ProjectId
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("DeleteMem0Memory"),
-		Version:     dara.String("2026-05-20"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/v1/memories/" + dara.PercentEncode(dara.StringValue(memoryId))),
-		Method:      dara.String("DELETE"),
-		AuthType:    dara.String("Anonymous"),
-		Style:       dara.String("ROA"),
-		ReqBodyType: dara.String("json"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &DeleteMem0MemoryResponse{}
-	_body, _err := client.DoROARequestWithCtx(ctx, params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.Pathname, params.BodyType, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
 // 删除流水线
 //
 // @param request - DeletePipelineRequest
@@ -926,134 +782,6 @@ func (client *Client) GetDatasetWithContext(ctx context.Context, agentSpace *str
 	}
 	_result = &GetDatasetResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询记忆库数据
-//
-// @param request - GetMem0MemoriesRequest
-//
-// @param headers - map
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return GetMem0MemoriesResponse
-func (client *Client) GetMem0MemoriesWithContext(ctx context.Context, request *GetMem0MemoriesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetMem0MemoriesResponse, _err error) {
-	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
-		if _err != nil {
-			return _result, _err
-		}
-	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.AgentSpace) {
-		query["agentSpace"] = request.AgentSpace
-	}
-
-	if !dara.IsNil(request.ContextStoreId) {
-		query["context_store_id"] = request.ContextStoreId
-	}
-
-	if !dara.IsNil(request.EnableGraph) {
-		query["enable_graph"] = request.EnableGraph
-	}
-
-	if !dara.IsNil(request.OrgId) {
-		query["org_id"] = request.OrgId
-	}
-
-	if !dara.IsNil(request.ProjectId) {
-		query["project_id"] = request.ProjectId
-	}
-
-	body := map[string]interface{}{}
-	if !dara.IsNil(request.Body) {
-		body["body"] = request.Body
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-		Body:    openapiutil.ParseToMap(body),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("GetMem0Memories"),
-		Version:     dara.String("2026-05-20"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/v2/memories"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("Anonymous"),
-		Style:       dara.String("ROA"),
-		ReqBodyType: dara.String("json"),
-		BodyType:    dara.String("array"),
-	}
-	_result = &GetMem0MemoriesResponse{}
-	_body, _err := client.DoROARequestWithCtx(ctx, params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.Pathname, params.BodyType, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询记忆
-//
-// @param request - GetMem0MemoryRequest
-//
-// @param headers - map
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return GetMem0MemoryResponse
-func (client *Client) GetMem0MemoryWithContext(ctx context.Context, memoryId *string, request *GetMem0MemoryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetMem0MemoryResponse, _err error) {
-	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
-		if _err != nil {
-			return _result, _err
-		}
-	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.AgentSpace) {
-		query["agentSpace"] = request.AgentSpace
-	}
-
-	if !dara.IsNil(request.ContextStoreId) {
-		query["context_store_id"] = request.ContextStoreId
-	}
-
-	if !dara.IsNil(request.OrgId) {
-		query["org_id"] = request.OrgId
-	}
-
-	if !dara.IsNil(request.ProjectId) {
-		query["project_id"] = request.ProjectId
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("GetMem0Memory"),
-		Version:     dara.String("2026-05-20"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/v1/memories/" + dara.PercentEncode(dara.StringValue(memoryId))),
-		Method:      dara.String("GET"),
-		AuthType:    dara.String("Anonymous"),
-		Style:       dara.String("ROA"),
-		ReqBodyType: dara.String("json"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &GetMem0MemoryResponse{}
-	_body, _err := client.DoROARequestWithCtx(ctx, params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.Pathname, params.BodyType, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1446,75 +1174,6 @@ func (client *Client) SearchContextWithContext(ctx context.Context, agentSpace *
 
 // Summary:
 //
-// 查询记忆库内容
-//
-// @param request - SearchMem0MemoriesRequest
-//
-// @param headers - map
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return SearchMem0MemoriesResponse
-func (client *Client) SearchMem0MemoriesWithContext(ctx context.Context, request *SearchMem0MemoriesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SearchMem0MemoriesResponse, _err error) {
-	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
-		if _err != nil {
-			return _result, _err
-		}
-	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.AgentSpace) {
-		query["agentSpace"] = request.AgentSpace
-	}
-
-	if !dara.IsNil(request.ContextStoreId) {
-		query["context_store_id"] = request.ContextStoreId
-	}
-
-	if !dara.IsNil(request.EnableGraph) {
-		query["enable_graph"] = request.EnableGraph
-	}
-
-	if !dara.IsNil(request.OrgId) {
-		query["org_id"] = request.OrgId
-	}
-
-	if !dara.IsNil(request.ProjectId) {
-		query["project_id"] = request.ProjectId
-	}
-
-	body := map[string]interface{}{}
-	if !dara.IsNil(request.Body) {
-		body["body"] = request.Body
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-		Body:    openapiutil.ParseToMap(body),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("SearchMem0Memories"),
-		Version:     dara.String("2026-05-20"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/v2/memories/search"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("Anonymous"),
-		Style:       dara.String("ROA"),
-		ReqBodyType: dara.String("json"),
-		BodyType:    dara.String("array"),
-	}
-	_result = &SearchMem0MemoriesResponse{}
-	_body, _err := client.DoROARequestWithCtx(ctx, params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.Pathname, params.BodyType, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
 // 更新AgentSpace
 //
 // @param request - UpdateAgentSpaceRequest
@@ -1690,71 +1349,6 @@ func (client *Client) UpdateDatasetWithContext(ctx context.Context, agentSpace *
 
 // Summary:
 //
-// 修改记忆
-//
-// @param request - UpdateMem0MemoryRequest
-//
-// @param headers - map
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return UpdateMem0MemoryResponse
-func (client *Client) UpdateMem0MemoryWithContext(ctx context.Context, memoryId *string, request *UpdateMem0MemoryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateMem0MemoryResponse, _err error) {
-	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
-		if _err != nil {
-			return _result, _err
-		}
-	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.AgentSpace) {
-		query["agentSpace"] = request.AgentSpace
-	}
-
-	if !dara.IsNil(request.ContextStoreId) {
-		query["context_store_id"] = request.ContextStoreId
-	}
-
-	if !dara.IsNil(request.OrgId) {
-		query["org_id"] = request.OrgId
-	}
-
-	if !dara.IsNil(request.ProjectId) {
-		query["project_id"] = request.ProjectId
-	}
-
-	body := map[string]interface{}{}
-	if !dara.IsNil(request.Body) {
-		body["body"] = request.Body
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-		Body:    openapiutil.ParseToMap(body),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("UpdateMem0Memory"),
-		Version:     dara.String("2026-05-20"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/v1/memories/" + dara.PercentEncode(dara.StringValue(memoryId))),
-		Method:      dara.String("PUT"),
-		AuthType:    dara.String("Anonymous"),
-		Style:       dara.String("ROA"),
-		ReqBodyType: dara.String("json"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &UpdateMem0MemoryResponse{}
-	_body, _err := client.DoROARequestWithCtx(ctx, params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.Pathname, params.BodyType, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
 // 更新流水线
 //
 // @param request - UpdatePipelineRequest
@@ -1815,53 +1409,6 @@ func (client *Client) UpdatePipelineWithContext(ctx context.Context, agentSpace 
 	}
 	_result = &UpdatePipelineResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 校验 Mem0 / ContextStore API Key
-//
-// @param request - ValidateMem0APIKeyRequest
-//
-// @param headers - map
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return ValidateMem0APIKeyResponse
-func (client *Client) ValidateMem0APIKeyWithContext(ctx context.Context, request *ValidateMem0APIKeyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ValidateMem0APIKeyResponse, _err error) {
-	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
-		if _err != nil {
-			return _result, _err
-		}
-	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.AgentSpace) {
-		query["agentSpace"] = request.AgentSpace
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("ValidateMem0APIKey"),
-		Version:     dara.String("2026-05-20"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/v1/ping"),
-		Method:      dara.String("GET"),
-		AuthType:    dara.String("Anonymous"),
-		Style:       dara.String("ROA"),
-		ReqBodyType: dara.String("json"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &ValidateMem0APIKeyResponse{}
-	_body, _err := client.DoROARequestWithCtx(ctx, params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.Pathname, params.BodyType, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}

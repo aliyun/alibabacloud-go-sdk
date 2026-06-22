@@ -24,13 +24,32 @@ type iSearchContextRequest interface {
 }
 
 type SearchContextRequest struct {
-	Filter    map[string]interface{} `json:"filter,omitempty" xml:"filter,omitempty"`
-	Formatted *bool                  `json:"formatted,omitempty" xml:"formatted,omitempty"`
-	Limit     *int32                 `json:"limit,omitempty" xml:"limit,omitempty"`
+	// example:
+	//
+	// {"userId":"alice"}
+	Filter map[string]interface{} `json:"filter,omitempty" xml:"filter,omitempty"`
+	// example:
+	//
+	// true
+	Formatted *bool `json:"formatted,omitempty" xml:"formatted,omitempty"`
+	// example:
+	//
+	// 10
+	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
 	// This parameter is required.
-	Query           *string  `json:"query,omitempty" xml:"query,omitempty"`
-	RetrievalOption *string  `json:"retrievalOption,omitempty" xml:"retrievalOption,omitempty"`
-	Threshold       *float64 `json:"threshold,omitempty" xml:"threshold,omitempty"`
+	//
+	// example:
+	//
+	// 用户最近的偏好设置
+	Query *string `json:"query,omitempty" xml:"query,omitempty"`
+	// example:
+	//
+	// semantic
+	RetrievalOption *string `json:"retrievalOption,omitempty" xml:"retrievalOption,omitempty"`
+	// example:
+	//
+	// 0.5
+	Threshold *float64 `json:"threshold,omitempty" xml:"threshold,omitempty"`
 }
 
 func (s SearchContextRequest) String() string {

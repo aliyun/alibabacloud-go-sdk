@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/agentloop-20260520
+module github.com/alibabacloud-go/agentloop-20260520/v2
 
 go 1.14
 
