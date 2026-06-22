@@ -18,13 +18,13 @@ type iListProjectsResponseBody interface {
 }
 
 type ListProjectsResponseBody struct {
-	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	// The credential for querying subsequent pages when the total number of expected projects exceeds the specified MaxResults value. This parameter has a value only when not all projects are returned.
 	//
 	// example:
 	//
 	// MTIzNDU2Nzg6aW1tdGVzdDAx
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The projects.
+	// The array of projects. Returns information about the projects.
 	Projects []*Project `json:"Projects,omitempty" xml:"Projects,omitempty" type:"Repeated"`
 	// The request ID.
 	//

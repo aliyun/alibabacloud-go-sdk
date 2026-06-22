@@ -17,6 +17,28 @@ type iFunctionCall interface {
 
 type FunctionCall struct {
 	// The parameters detected by the large language model.
+	//
+	// example:
+	//
+	// {
+	//
+	//                     "type": "object",
+	//
+	//                         "name": {
+	//
+	//                             "type": "string",
+	//
+	//                             "description": "需要检索的文件的文件名。可以为空 null"
+	//
+	//                         },
+	//
+	//                     "required": [
+	//
+	//                         "category"
+	//
+	//                     ]
+	//
+	// }
 	Arguments *string `json:"Arguments,omitempty" xml:"Arguments,omitempty"`
 	// The function name.
 	//

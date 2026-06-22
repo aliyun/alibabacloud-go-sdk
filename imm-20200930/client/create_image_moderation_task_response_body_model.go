@@ -24,7 +24,7 @@ type CreateImageModerationTaskResponseBody struct {
 	//
 	// 2E6-1I0FGn0zFnl5AflRfhzClma*****
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

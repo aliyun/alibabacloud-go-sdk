@@ -28,7 +28,7 @@ type DetectImageFacesShrinkRequest struct {
 	//
 	// example:
 	//
-	// immtest
+	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	// The OSS URI of the image object.
 	//

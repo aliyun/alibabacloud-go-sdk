@@ -22,7 +22,7 @@ type KdtreeOption struct {
 	//
 	// example:
 	//
-	// 1
+	// 5
 	CompressionLevel *int32 `json:"CompressionLevel,omitempty" xml:"CompressionLevel,omitempty"`
 	// The name of the library supported by a k-d tree. Set the value to draco. Default value: draco.
 	//
@@ -34,7 +34,7 @@ type KdtreeOption struct {
 	//
 	// example:
 	//
-	// 1
+	// 10
 	QuantizationBits *int32 `json:"QuantizationBits,omitempty" xml:"QuantizationBits,omitempty"`
 }
 

@@ -24,7 +24,7 @@ type CreateLocationDateClusteringTaskResponseBody struct {
 	//
 	// 25B-1W2ChgujA3Q8MbBY6mSp2mh****
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

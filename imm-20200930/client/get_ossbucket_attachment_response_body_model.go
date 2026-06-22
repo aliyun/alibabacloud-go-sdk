@@ -22,19 +22,19 @@ type iGetOSSBucketAttachmentResponseBody interface {
 }
 
 type GetOSSBucketAttachmentResponseBody struct {
-	// The time when the dataset was created.
+	// The time when the dataset was created. The value is a UTC timestamp in ISO 8601 format with millisecond precision.
 	//
 	// example:
 	//
 	// ""2023-12-19T17:29:34.790931971+08:00"
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The description of the dataset.
+	// The dataset description.
 	//
 	// example:
 	//
-	// "Dataset"
+	// "数据集"
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the project.
+	// The name of the bound project.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type GetOSSBucketAttachmentResponseBody struct {
 	//
 	// 5F74C5C9-5AC0-49F9-914D-E01589D3****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The time when the dataset was last updated.
+	// The time when the dataset was last updated. The value is a UTC timestamp in ISO 8601 format with millisecond precision.
 	//
 	// example:
 	//

@@ -26,7 +26,7 @@ type ElementContent struct {
   // 
   // example:
   // 
-  // Text
+  // 文本片段
   Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
   // The time range. The array length is fixed to 2. One element indicates the start time and the other one indicates the end time. Unit: milliseconds.
   TimeRange []*int64 `json:"TimeRange,omitempty" xml:"TimeRange,omitempty" type:"Repeated"`

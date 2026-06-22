@@ -22,9 +22,9 @@ type iUpdateBatchShrinkRequest interface {
 }
 
 type UpdateBatchShrinkRequest struct {
-	// The processing templates.
+	// A list of data processing templates.
 	ActionsShrink *string `json:"Actions,omitempty" xml:"Actions,omitempty"`
-	// The ID of the batch processing task. You can obtain the ID of the batch processing task from the response of the [CreateBatch](https://help.aliyun.com/document_detail/606694.html) operation.
+	// The ID of the batch processing task. For more information, see [Create a batch processing task](https://help.aliyun.com/document_detail/606694.html).
 	//
 	// This parameter is required.
 	//
@@ -32,9 +32,9 @@ type UpdateBatchShrinkRequest struct {
 	//
 	// batch-4eb9223f-3e88-42d3-a578-3f2852******
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The input data source.
+	// The data source configuration.
 	InputShrink *string `json:"Input,omitempty" xml:"Input,omitempty"`
-	// The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+	// The project name. For more information, see [Create a project](https://help.aliyun.com/document_detail/478153.html).
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type UpdateBatchShrinkRequest struct {
 	//
 	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The custom tags. You can search for or filter asynchronous tasks by custom tag.
+	// Custom tags used to search for and filter asynchronous tasks.
 	//
 	// example:
 	//

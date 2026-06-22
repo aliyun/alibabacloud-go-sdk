@@ -56,17 +56,17 @@ type FuzzyQueryShrinkRequest struct {
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The sorting method. Valid values:
 	//
-	// 	- asc: ascending order.
+	// - asc: ascending order.
 	//
-	// 	- desc (default): descending order.
+	// - desc (default): descending order.
 	//
 	// >
 	//
-	// 	- Separate multiple sorting methods with commas (,). Example: asc,desc.
+	// - Separate multiple sorting methods with commas (,). Example: asc,desc.
 	//
-	// 	- The number of values for Order must be less than or equal to the number of values for Sort. For example, if you set Sort to Size,Filename, you can set Order only to desc or asc.
+	// - The number of values for Order must be less than or equal to the number of values for Sort. For example, if you set Sort to Size,Filename, you can set Order only to desc or asc.
 	//
-	// 	- If the number of values for Order is less than the number of values for Sort, the unsorted fields are default to the value of asc. For example, if you set Sort to Size,Filename and Order to asc, the Filename field is default to the value of asc.
+	// - If the number of values for Order is less than the number of values for Sort, the unsorted fields are default to the value of asc. For example, if you set Sort to Size,Filename and Order to asc, the Filename field is default to the value of asc.
 	//
 	// example:
 	//
@@ -83,14 +83,18 @@ type FuzzyQueryShrinkRequest struct {
 	// The query content. The value can be up to 1 MB in size.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 阿里云
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
 	// The sort fields. For more information, see [Supported fields and operators](https://help.aliyun.com/document_detail/2743991.html).
 	//
-	// 	- Separate multiple sort fields with commas (,). Example: `Size,Filename`.
+	// - Separate multiple sort fields with commas (,). Example: `Size,Filename`.
 	//
-	// 	- You can specify up to five sort fields.
+	// - You can specify up to five sort fields.
 	//
-	// 	- The priority order of sorting is determined based on the order of the sort fields.
+	// - The priority order of sorting is determined based on the order of the sort fields.
 	//
 	// example:
 	//

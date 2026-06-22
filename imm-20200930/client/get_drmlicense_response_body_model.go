@@ -20,22 +20,10 @@ type iGetDRMLicenseResponseBody interface {
 }
 
 type GetDRMLicenseResponseBody struct {
-	// example:
-	//
-	// IEEE1284DeviceID
 	DeviceInfo *string `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty"`
-	// example:
-	//
-	// AESzB8SQgpACioSEJ3yqiFwruAOUgIvlCx*****
-	License *string `json:"License,omitempty" xml:"License,omitempty"`
-	// example:
-	//
-	// 896ABAD1-C452-4BED-B5E0-302955F*****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// 200
-	States *int64 `json:"States,omitempty" xml:"States,omitempty"`
+	License    *string `json:"License,omitempty" xml:"License,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	States     *int64  `json:"States,omitempty" xml:"States,omitempty"`
 }
 
 func (s GetDRMLicenseResponseBody) String() string {

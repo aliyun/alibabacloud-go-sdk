@@ -16,7 +16,7 @@ type iCreateTriggerResponseBody interface {
 }
 
 type CreateTriggerResponseBody struct {
-	// The ID of the trigger.
+	// The data ingestion ID.
 	//
 	// example:
 	//

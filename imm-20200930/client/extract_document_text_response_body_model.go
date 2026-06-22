@@ -20,7 +20,7 @@ type ExtractDocumentTextResponseBody struct {
   // 
   // example:
   // 
-  // 测试内容。
+  // Test content.
   DocumentText *string `json:"DocumentText,omitempty" xml:"DocumentText,omitempty"`
   // Request ID.
   // 

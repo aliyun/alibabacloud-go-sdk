@@ -22,25 +22,10 @@ type iGetDRMLicenseRequest interface {
 }
 
 type GetDRMLicenseRequest struct {
-	// example:
-	//
-	// AESzB8SQgpACioSEJ3yqiFwruAOUgIvlCx*****
-	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
-	// example:
-	//
-	// http://1111111111.mns.cn-hangzhou.aliyuncs.com
-	NotifyEndpoint *string `json:"NotifyEndpoint,omitempty" xml:"NotifyEndpoint,omitempty"`
-	// example:
-	//
-	// topic1
-	NotifyTopicName *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
-	// example:
-	//
-	// immtest
-	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// example:
-	//
-	// widevine
+	KeyId            *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
+	NotifyEndpoint   *string `json:"NotifyEndpoint,omitempty" xml:"NotifyEndpoint,omitempty"`
+	NotifyTopicName  *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
+	ProjectName      *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	ProtectionSystem *string `json:"ProtectionSystem,omitempty" xml:"ProtectionSystem,omitempty"`
 }
 

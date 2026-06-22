@@ -36,7 +36,11 @@ type CreateCustomizedStoryRequest struct {
 	//
 	// example:
 	//
-	// {"Bucket": "examplebucket"}
+	// {
+	//
+	//       "MyStoryLabel": "HolidayStory"
+	//
+	// }
 	CustomLabels map[string]interface{} `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
 	// The name of the dataset.[](~~478160~~)
 	//
@@ -189,7 +193,7 @@ type CreateCustomizedStoryRequestCover struct {
 	//
 	// example:
 	//
-	// oss://bucket1/cover
+	// oss://test-bucket/test-object.jpg
 	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
 }
 
@@ -221,7 +225,21 @@ type CreateCustomizedStoryRequestFiles struct {
 	//
 	// example:
 	//
-	// [{"URI":"oss://bucket1/file1"}]
+	// [
+	//
+	//       {
+	//
+	//             "URI": "oss://test-bucket/test-object_1.jpg"
+	//
+	//       },
+	//
+	// {
+	//
+	//             "URI": "oss://test-bucket/test-object_2.jpg"
+	//
+	//       }
+	//
+	// ]
 	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
 }
 

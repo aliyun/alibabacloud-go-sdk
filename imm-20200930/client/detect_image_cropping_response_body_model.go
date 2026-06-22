@@ -18,9 +18,10 @@ type iDetectImageCroppingResponseBody interface {
 }
 
 type DetectImageCroppingResponseBody struct {
-	// The image cropping suggestions.
-	Croppings             []*CroppingSuggestion `json:"Croppings,omitempty" xml:"Croppings,omitempty" type:"Repeated"`
-	MatchedInclusionHints []*string             `json:"MatchedInclusionHints,omitempty" xml:"MatchedInclusionHints,omitempty" type:"Repeated"`
+	// The array of image cropping information.
+	Croppings []*CroppingSuggestion `json:"Croppings,omitempty" xml:"Croppings,omitempty" type:"Repeated"`
+	// The list of objects included in the cropping region, corresponding to the InclusionHints input parameter. This field is empty if no objects are included.
+	MatchedInclusionHints []*string `json:"MatchedInclusionHints,omitempty" xml:"MatchedInclusionHints,omitempty" type:"Repeated"`
 	// The request ID.
 	//
 	// example:

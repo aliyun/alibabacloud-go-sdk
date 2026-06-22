@@ -24,19 +24,21 @@ type iCreateBatchRequest interface {
 }
 
 type CreateBatchRequest struct {
-	// The templates.
+	// A list of processing templates.
 	//
 	// This parameter is required.
 	Actions []*CreateBatchRequestActions `json:"Actions,omitempty" xml:"Actions,omitempty" type:"Repeated"`
-	// The data source configurations.
+	// The input data source configuration.
 	//
 	// This parameter is required.
 	Input *Input `json:"Input,omitempty" xml:"Input,omitempty"`
-	// The notification settings. The operation supports multiple messaging middleware options. For more information about notification messages, see Asynchronous message examples. You can use one of the following methods to receive notification messages:
+	// The notification recipient. Multiple middleware services are supported. For details about the message format, see Asynchronous notification message. Select one of the following methods to receive messages:
 	//
-	// In the region in which the IMM project is located, use EventBridge to receive task notifications. For more information, see IMM events. In the region in which the IMM project is located, configure a Simple Message Queue (SMQ) subscription to receive task notifications.
+	// Activate and access EventBridge in the same region as Intelligent Media Management (IMM) to promptly receive task notifications. For more information, see IMM events.
+	//
+	// Activate MNS in the same region as IMM and configure a subscription.
 	Notification *CreateBatchRequestNotification `json:"Notification,omitempty" xml:"Notification,omitempty" type:"Struct"`
-	// The name of the project.[](~~478153~~)
+	// The project name. For more information, see [Create a project](https://help.aliyun.com/document_detail/478153.html).
 	//
 	// This parameter is required.
 	//
@@ -44,17 +46,17 @@ type CreateBatchRequest struct {
 	//
 	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The service role. IMM assumes the service role so that it can access resources in other cloud services, such as OSS. Default value: AliyunIMMBatchTriggerRole.
+	// The service role that grants IMM the permissions to access other cloud resources, such as OSS. The default value is AliyunIMMBatchTriggerRole.
 	//
-	// You can also create a custom service role in the RAM console and grant the required permissions to the role based on your business requirements. For more information, see [Create a regular service role](https://help.aliyun.com/document_detail/116800.html) and [Grant permissions to a role](https://help.aliyun.com/document_detail/116147.html).
+	// To use a custom service role, create a service role and grant permissions to the role in the RAM console. For more information, see [Create a service role](https://help.aliyun.com/document_detail/116800.html) and [Grant permissions to a RAM role](https://help.aliyun.com/document_detail/116147.html).
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// AliyunIMMDefaultRole
+	// AliyunIMMBatchTriggerRole
 	ServiceRole *string `json:"ServiceRole,omitempty" xml:"ServiceRole,omitempty"`
-	// The custom tags. You can search for or filter asynchronous tasks by custom tag.
+	// Custom tags used to search and filter asynchronous tasks.
 	//
 	// example:
 	//
@@ -148,9 +150,9 @@ func (s *CreateBatchRequest) Validate() error {
 }
 
 type CreateBatchRequestActions struct {
-	// The policy configurations for handling failures.
+	// The fast-fail policy configuration.
 	FastFailPolicy *FastFailPolicy `json:"FastFailPolicy,omitempty" xml:"FastFailPolicy,omitempty"`
-	// The name of the template.
+	// The template name.
 	//
 	// This parameter is required.
 	//
@@ -158,7 +160,7 @@ type CreateBatchRequestActions struct {
 	//
 	// doc/convert
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The template parameters.
+	// A list of template parameters.
 	Parameters []*string `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
 }
 
@@ -207,7 +209,7 @@ func (s *CreateBatchRequestActions) Validate() error {
 }
 
 type CreateBatchRequestNotification struct {
-	// The SMQ notification settings.
+	// The parameters for MNS notifications.
 	MNS *MNS `json:"MNS,omitempty" xml:"MNS,omitempty"`
 }
 

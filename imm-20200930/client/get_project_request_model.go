@@ -16,7 +16,7 @@ type iGetProjectRequest interface {
 }
 
 type GetProjectRequest struct {
-	// The name of the project. You can obtain the name from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+	// The project name. For information about how to obtain the project name, see [创建项目](https://help.aliyun.com/document_detail/478153.html).
 	//
 	// This parameter is required.
 	//
@@ -24,11 +24,13 @@ type GetProjectRequest struct {
 	//
 	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// Specifies whether to enable real-time retrieval of file statistics. Default value: false.
+	// Specifies whether to collect file statistics. Default value: false, which indicates that file statistics are not collected.
 	//
-	// 	- If you set the value to true, the returned values of FileCount and TotalFileSize in the response are valid.
+	// - File statistics are collected. The FileCount and TotalFileSize values in the returned Project struct are valid.
 	//
-	// 	- If you set the value to false, the returned values of FileCount and TotalFileSize in the response are invalid or equal to 0.
+	// - File statistics are not collected. The FileCount and TotalFileSize values in the returned Project struct may be inaccurate or both may be 0.
+	//
+	// 	Notice: Only files in datasets created before December 20, 2025 can be counted..
 	//
 	// example:
 	//

@@ -16,8 +16,10 @@ type iDocumentParseSummaryOption interface {
 }
 
 type DocumentParseSummaryOption struct {
+	// Document chapter summary
 	ChapterSummarize *bool `json:"ChapterSummarize,omitempty" xml:"ChapterSummarize,omitempty"`
-	Summarize        *bool `json:"Summarize,omitempty" xml:"Summarize,omitempty"`
+	// Article summary
+	Summarize *bool `json:"Summarize,omitempty" xml:"Summarize,omitempty"`
 }
 
 func (s DocumentParseSummaryOption) String() string {

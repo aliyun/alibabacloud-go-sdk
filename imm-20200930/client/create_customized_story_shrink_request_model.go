@@ -36,7 +36,11 @@ type CreateCustomizedStoryShrinkRequest struct {
 	//
 	// example:
 	//
-	// {"Bucket": "examplebucket"}
+	// {
+	//
+	//       "MyStoryLabel": "HolidayStory"
+	//
+	// }
 	CustomLabelsShrink *string `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
 	// The name of the dataset.[](~~478160~~)
 	//

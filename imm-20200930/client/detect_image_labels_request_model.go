@@ -30,23 +30,23 @@ type DetectImageLabelsRequest struct {
 	//
 	// example:
 	//
-	// immimagetest
+	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	// The URI of the Object Storage Service (OSS) bucket in which you store the image.
 	//
-	// Specify the value in the oss://${Bucket}/${Object} format. `${Bucket}` specifies the name of the OSS bucket that resides in the same region as the current project. `${Object}` specifies the complete path to the image file that has an extension.
+	// Specify the value in the oss\\://${Bucket}/${Object} format. `${Bucket}` specifies the name of the OSS bucket that resides in the same region as the current project. `${Object}` specifies the complete path to the image file that has an extension.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// oss://imm-test/testcases/facetest.jpg
+	// oss://test-bucket/test-object.jpg
 	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
 	// The threshold of the label confidence. Labels whose confidence is lower than the specified threshold are not returned in the response. Valid values: 0 to 1. If you leave this parameter empty, the algorithm provides a default threshold.
 	//
 	// example:
 	//
-	// 1
+	// 0.7
 	Threshold *float32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
 }
 

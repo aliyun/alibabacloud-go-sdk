@@ -22,7 +22,7 @@ type iCreateSimilarImageClusteringTaskRequest interface {
 }
 
 type CreateSimilarImageClusteringTaskRequest struct {
-	// The name of the dataset.[](~~478160~~)
+	// The name of the dataset. For more information, see [Create a dataset](https://help.aliyun.com/document_detail/478160.html).
 	//
 	// This parameter is required.
 	//
@@ -30,9 +30,9 @@ type CreateSimilarImageClusteringTaskRequest struct {
 	//
 	// test-dataset
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	// The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
+	// The configuration of the notification message. For more information, click Notification. For more information about the format of asynchronous notification messages, see [Asynchronous notification messages](https://help.aliyun.com/document_detail/2743997.html).
 	Notification *Notification `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	// The name of the project.[](~~478153~~)
+	// The name of the project. For more information, see [Create a project](https://help.aliyun.com/document_detail/478153.html).
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type CreateSimilarImageClusteringTaskRequest struct {
 	//
 	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The custom tags. You can search for or filter asynchronous tasks by custom tag.
+	// The custom tags that are used to search for and filter asynchronous tasks.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type CreateSimilarImageClusteringTaskRequest struct {
 	//
 	// }
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The custom information, which is returned in an asynchronous notification and facilitates notification management. The maximum length of the value is 2,048 bytes.
+	// The custom information. This information is returned in the asynchronous notification message to help you associate the message with your system. The value can be up to 2,048 bytes in length.
 	//
 	// example:
 	//

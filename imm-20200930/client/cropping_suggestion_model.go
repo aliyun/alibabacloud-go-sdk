@@ -30,7 +30,7 @@ type CroppingSuggestion struct {
 	//
 	// example:
 	//
-	// 0.7079545259475708
+	// 0.742
 	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
 }
 

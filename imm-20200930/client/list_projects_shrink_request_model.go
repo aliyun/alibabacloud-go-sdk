@@ -20,25 +20,25 @@ type iListProjectsShrinkRequest interface {
 }
 
 type ListProjectsShrinkRequest struct {
-	// The maximum number of entries to return. Valid values: 0 to 200. Default value: 100.
+	// The maximum number of projects to return. Valid values: 0 to 200. If you do not set this parameter or set it to 0, the default value 100 is used.
 	//
 	// example:
 	//
 	// 100
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken. The operation returns the projects in lexicographical order starting from the location specified by NextToken.
+	// The pagination token. Set this parameter to the NextToken value returned in the previous API call. Project information is returned in alphabetical order starting from the NextToken position. Leave this parameter empty for the first call.
 	//
 	// example:
 	//
 	// MTIzNDU2Nzg6aW1tdGVzdDAx
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The prefix used by the projects that you want to query. The prefix must be up to 128 characters in length.
+	// The prefix used to list projects. The value can be 0 to 128 characters in length.
 	//
 	// example:
 	//
 	// immtest
 	Prefix *string `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
-	// The tags.
+	// The list of tags.
 	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 

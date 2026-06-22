@@ -18,19 +18,19 @@ type iCreateMediaConvertTaskResponseBody interface {
 }
 
 type CreateMediaConvertTaskResponseBody struct {
-	// Event ID.
+	// The ID of the event.
 	//
 	// example:
 	//
 	// 0ED-1Bz8z71k5TtsUejT4UJ16Es****
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	// Request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// CA995EFD-083D-4F40-BE8A-BDF75FFFE0B6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Task ID.
+	// The ID of the task.
 	//
 	// example:
 	//

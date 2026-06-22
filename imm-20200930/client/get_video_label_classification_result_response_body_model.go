@@ -36,13 +36,13 @@ type iGetVideoLabelClassificationResultResponseBody interface {
 }
 
 type GetVideoLabelClassificationResultResponseBody struct {
-	// The error code of the task.
+	// The task error code.
 	//
 	// example:
 	//
 	// ResourceNotFound
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The end time of the task.
+	// The time when the task ended. The time is in the ISO 8601 UTC timestamp format with millisecond-level precision.
 	//
 	// example:
 	//
@@ -54,9 +54,9 @@ type GetVideoLabelClassificationResultResponseBody struct {
 	//
 	// 2F6-1Bz99Xi93EnRpNEyLudILJm****
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	// The labels.
+	// The list of labels.
 	Labels []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	// The error message of the task.
+	// The task error message.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type GetVideoLabelClassificationResultResponseBody struct {
 	//
 	// 7F84C6D9-5AC0-49F9-914D-F02678E3****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The start time of the task.
+	// The time when the task started. The time is in the ISO 8601 UTC timestamp format with millisecond-level precision.
 	//
 	// example:
 	//
@@ -92,13 +92,13 @@ type GetVideoLabelClassificationResultResponseBody struct {
 	//
 	// VideoLabelClassification-2f157087-91df-4fda-8c3e-232407ec****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The type of the task.
+	// The task type.
 	//
 	// example:
 	//
 	// VideoLabelClassification
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	// The custom information.
+	// The user-defined information.
 	//
 	// example:
 	//

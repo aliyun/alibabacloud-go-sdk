@@ -27,6 +27,10 @@ type LicensePlate struct {
 	// 0.789
 	Confidence *float64 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
 	// The license plate number.
+	//
+	// example:
+	//
+	// 鲁A8***8
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 }
 

@@ -22,11 +22,19 @@ type ImageInsight struct {
 	//
 	// if can be null:
 	// true
+	//
+	// example:
+	//
+	// 无。
 	Caption *string `json:"Caption,omitempty" xml:"Caption,omitempty"`
 	// The description of the image.
 	//
 	// if can be null:
 	// true
+	//
+	// example:
+	//
+	// 图片中有一人，穿着深色西装外套，内搭白色衬衫。背景为渐变的浅蓝色至灰色。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 }
 

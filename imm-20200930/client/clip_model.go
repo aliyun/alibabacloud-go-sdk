@@ -14,6 +14,7 @@ type iClip interface {
 }
 
 type Clip struct {
+	// The time range of the event clip
 	TimeRange []*int64 `json:"TimeRange,omitempty" xml:"TimeRange,omitempty" type:"Repeated"`
 }
 

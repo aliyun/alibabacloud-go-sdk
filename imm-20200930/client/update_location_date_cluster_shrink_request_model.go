@@ -65,6 +65,10 @@ type UpdateLocationDateClusterShrinkRequest struct {
 	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	// The name of the cluster. The name can be used to search for the cluster. The value can be up to 1,024 bytes in size.
+	//
+	// example:
+	//
+	// One-day trip in Hangzhou
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 

@@ -26,15 +26,15 @@ type iGenerateVideoPlaylistResponseBody interface {
 }
 
 type GenerateVideoPlaylistResponseBody struct {
-	// The audio media playlist files.
+	// The list of audio Media Playlist files.
 	AudioPlaylist []*GenerateVideoPlaylistResponseBodyAudioPlaylist `json:"AudioPlaylist,omitempty" xml:"AudioPlaylist,omitempty" type:"Repeated"`
-	// The total duration of the generated video.
+	// The total duration of the output video.
 	//
 	// example:
 	//
 	// 1082
 	Duration *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The OSS path of the master playlist.
+	// The OSS URI of the Master Playlist.
 	//
 	// example:
 	//
@@ -46,15 +46,15 @@ type GenerateVideoPlaylistResponseBody struct {
 	//
 	// CA995EFD-083D-4F40-BE8A-BDF75FFF*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The subtitle media playlist files.
+	// The list of subtitle Media Playlist files.
 	SubtitlePlaylist []*GenerateVideoPlaylistResponseBodySubtitlePlaylist `json:"SubtitlePlaylist,omitempty" xml:"SubtitlePlaylist,omitempty" type:"Repeated"`
-	// The token of the master playlist.
+	// The token of the Master Playlist.
 	//
 	// example:
 	//
 	// 92376fbb-171f-4259-913f-705f7ee0****
 	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
-	// The video media playlist files.
+	// The list of video Media Playlist files.
 	VideoPlaylist []*GenerateVideoPlaylistResponseBodyVideoPlaylist `json:"VideoPlaylist,omitempty" xml:"VideoPlaylist,omitempty" type:"Repeated"`
 }
 
@@ -167,17 +167,17 @@ type GenerateVideoPlaylistResponseBodyAudioPlaylist struct {
 	//
 	// 1
 	Channels *int32 `json:"Channels,omitempty" xml:"Channels,omitempty"`
-	// The token of the audio media playlist. You can use this parameter to generate the path of a TS file.
+	// The token generated for the audio Media Playlist. You can use this parameter to construct the URI of the generated TS file.
 	//
 	// example:
 	//
 	// affe0c6042f09722fec95a21b8b******
 	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
-	// The OSS path of the audio media playlist.
+	// The OSS URI of the audio Media Playlist.
 	//
 	// example:
 	//
-	// oss://imm-test/testcases/video.m3u8
+	// oss://test-bucket/test-object/output-audio.m3u8
 	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
 }
 
@@ -221,7 +221,7 @@ func (s *GenerateVideoPlaylistResponseBodyAudioPlaylist) Validate() error {
 }
 
 type GenerateVideoPlaylistResponseBodySubtitlePlaylist struct {
-	// The serial number of the subtitle stream. The value starts from 0.
+	// The sequence number of the subtitle stream, starting from 0.
 	//
 	// example:
 	//
@@ -229,25 +229,25 @@ type GenerateVideoPlaylistResponseBodySubtitlePlaylist struct {
 	Index *int32 `json:"Index,omitempty" xml:"Index,omitempty"`
 	// The language of the subtitle stream.
 	//
-	// >  The language is derived from the subtitle stream information in the OSS path specified by the SourceURI parameter for a source video. If no language information exists in the source video, null is returned.
+	// > The language is obtained from the subtitle stream information of the source video specified by SourceURI. If the source video does not contain language information, this parameter is empty.
 	//
 	// example:
 	//
-	// en
+	// eng
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// The token of the subtitle media playlist. You can use this parameter to generate the path of a subtitle file.
+	// The token generated for the subtitle Media Playlist. You can use this parameter to construct the URI of the generated subtitle file.
 	//
-	// >  You can generate the path of a transcoded subtitle file based on the returned token value. The path must be in the oss://${Bucket}/${Object}-${Token}_${Index}.ts format. oss://${Bucket}/${Object} specifies the URI specified by input parameters for output files. ${Token} specifies the returned token value, and ${Index} specifies the serial number of a subtitle file.
+	// > You can use the returned token value to construct the URI of the transcoded subtitle file. The format is oss\\://${Bucket}/${Object}-${Token}_${Index}.ts. oss\\://${Bucket}/${Object} is the subtitle URI specified in the request parameters. ${Token} is the returned parameter. ${Index} is the sequence number of the subtitle.
 	//
 	// example:
 	//
 	// affe0c6042f09722fec95a21b8b******
 	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
-	// The OSS path of the subtitle media playlist.
+	// The OSS URI of the subtitle Media Playlist.
 	//
 	// example:
 	//
-	// oss://imm-test/testcases/vide_0.m3u8
+	// oss://test-bucket/test-object/output-subtitle.m3u8
 	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
 }
 
@@ -312,19 +312,19 @@ type GenerateVideoPlaylistResponseBodyVideoPlaylist struct {
 	//
 	// 640x480
 	Resolution *string `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
-	// The token of the video media playlist. You can use this parameter to generate the path of a TS file.
+	// The token generated for the video Media Playlist. You can use this parameter to construct the URI of the generated TS file.
 	//
-	// >  You can generate the path of a transcoded TS file based on the value of this parameter. The path must be in the oss://${Bucket}/${Object}-${Token}-${Index}.ts format. oss://${Bucket}/${Object} specifies the URI specified by input parameters for output files. ${Token} specifies the returned token, and ${Index} specifies the serial number of a TS file.
+	// > You can use the returned token value to construct the URI of the transcoded TS file. The format is oss\\://${Bucket}/${Object}-${Token}-${Index}.ts. oss\\://${Bucket}/${Object} is the target URI specified in the request parameters. ${Token} is the returned parameter. ${Index} is the sequence number of the TS file.
 	//
 	// example:
 	//
 	// affe0c6042f09722fec95a21b8b******
 	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
-	// The OSS path of the video media playlist.
+	// The OSS URI of the video Media Playlist.
 	//
 	// example:
 	//
-	// oss://imm-test/testcases/video.m3u8
+	// oss://test-bucket/test-object/output-video.m3u8
 	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
 }
 

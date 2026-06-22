@@ -20,10 +20,14 @@ type iDocumentParseOption interface {
 }
 
 type DocumentParseOption struct {
-	Keyword  *DocumentParseKeywordOption  `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// Document parsing keyword extraction options
+	Keyword *DocumentParseKeywordOption `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// Document parsing guidance options
 	Narrator *DocumentParseNarratorOption `json:"Narrator,omitempty" xml:"Narrator,omitempty"`
+	// Document parsing question generation options
 	Question *DocumentParseQuestionOption `json:"Question,omitempty" xml:"Question,omitempty"`
-	Summary  *DocumentParseSummaryOption  `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// Document parsing summary options
+	Summary *DocumentParseSummaryOption `json:"Summary,omitempty" xml:"Summary,omitempty"`
 }
 
 func (s DocumentParseOption) String() string {

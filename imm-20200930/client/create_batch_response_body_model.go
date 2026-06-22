@@ -16,7 +16,7 @@ type iCreateBatchResponseBody interface {
 }
 
 type CreateBatchResponseBody struct {
-	// The ID of the batch processing task.
+	// The batch processing task ID.
 	//
 	// example:
 	//

@@ -30,19 +30,19 @@ type iCreateMediaConvertTaskRequest interface {
 }
 
 type CreateMediaConvertTaskRequest struct {
-	// When performing media concatenation, the index of the primary media file (which provides the default transcoding parameters for `Video` and `Audio`, including resolution, frame rate, etc.) in the concatenation list. The default value is 0 (aligning with the first media file in the concatenation list).
+	// When concatenating media files, this specifies the index of the primary file in the Sources list. The default transcoding parameters (such as resolution and frame rate from the `Video` and `Audio` objects) are taken from this primary file. The default index is 0.
 	//
 	// example:
 	//
 	// 0
 	AlignmentIndex *int32 `json:"AlignmentIndex,omitempty" xml:"AlignmentIndex,omitempty"`
-	// **If there are no special requirements, please leave this blank.**
+	// **You can leave this parameter empty if you do not have special requirements.**
 	//
-	// Chain authorization configuration. For more information, see [Using Chain Authorization to Access Other Entity Resources](https://help.aliyun.com/document_detail/465340.html).
+	// The chained authorization configuration. For more information, see [Use chained authorization to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
 	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	// Notification configuration. For details, click Notification. The format of asynchronous notification messages can be found in [Asynchronous Notification Message Format](https://help.aliyun.com/document_detail/2743997.html).
+	// The message notification settings. For more information, click Notification. For information about the format of asynchronous notifications, see [Asynchronous notification format](https://help.aliyun.com/document_detail/2743997.html).
 	Notification *Notification `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	// The name of the project. For how to obtain it, see [Creating a Project](https://help.aliyun.com/document_detail/478153.html).
+	// The name of the project. For more information about how to obtain the project name, see [Create a project](https://help.aliyun.com/document_detail/478153.html).
 	//
 	// This parameter is required.
 	//
@@ -50,20 +50,21 @@ type CreateMediaConvertTaskRequest struct {
 	//
 	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// A list of media files. If the list contains more than one element, it indicates that the Concat (concatenation) function is enabled. The Concat order follows the sequence of the input video file URIs.
+	// A list of media files. If you provide more than one file, they are concatenated in the order of their URIs.
 	//
 	// This parameter is required.
 	Sources []*CreateMediaConvertTaskRequestSources `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
-	// Custom tags used for searching and filtering asynchronous tasks.
+	// Custom tags for searching and filtering asynchronous tasks.
 	//
 	// example:
 	//
 	// {"test":"val1"}
-	Tags         map[string]interface{}                       `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// A list of media packaging tasks to convert and package the input media into HLS outputs. Each TargetGroup corresponds to one HLS master playlist.
 	TargetGroups []*CreateMediaConvertTaskRequestTargetGroups `json:"TargetGroups,omitempty" xml:"TargetGroups,omitempty" type:"Repeated"`
-	// List of media processing tasks, supporting multiple task configurations.
+	// A list of media processing tasks.
 	Targets []*CreateMediaConvertTaskRequestTargets `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Repeated"`
-	// User-defined information that will be returned in asynchronous message notifications, used for convenient association and processing within your system. The maximum length is 2048 bytes.
+	// The custom user data. This data is returned in the asynchronous notification, allowing you to associate the notification with your internal system. The maximum length is 2,048 bytes.
 	//
 	// example:
 	//
@@ -202,67 +203,67 @@ func (s *CreateMediaConvertTaskRequest) Validate() error {
 }
 
 type CreateMediaConvertTaskRequestSources struct {
-	// The alignment strategy for adding audio and video streams, with the following value range:
+	// The alignment mode for the added audio and video streams. Valid values include:
 	//
-	// - false (default): No alignment.
+	// - false (default): No alignment is performed.
 	//
-	// - loop: Loop the audio and video content to align.
+	// - loop: Aligns content by looping the audio or video.
 	//
-	// - pad: Align by padding silent frames and black video frames.
+	// - pad: Aligns content by padding with silent frames or black frames.
 	//
-	// > - Only valid when the Attached parameter is true.
+	// > 	- This parameter only takes effect if Attached is set to true.
 	//
 	// example:
 	//
 	// false
 	AlignMode *string `json:"AlignMode,omitempty" xml:"AlignMode,omitempty"`
-	// Add the current source media file as a synchronized audio or video stream to the output media file, with a default value of false.
+	// If true, adds the current source media file to the output as a synchronized audio stream or video stream. The default is false.
 	//
-	// > - The AlignmentIndex parameter pointing to the Attached parameter of the Source cannot be true.
+	// > - You cannot set Attached to true for the source media file referenced by AlignmentIndex.
 	//
 	// example:
 	//
 	// false
 	Attached *bool `json:"Attached,omitempty" xml:"Attached,omitempty"`
-	// Whether to disable the audio in the source media file. The value range is as follows:
+	// Specifies whether to disable the audio from the source media file. Valid values include:
 	//
-	// - true: Disable.
+	// - true: Disables the audio.
 	//
-	// - false (default): Do not disable.
+	// - false (default): Includes the audio.
 	//
 	// example:
 	//
 	// false
 	DisableAudio *bool `json:"DisableAudio,omitempty" xml:"DisableAudio,omitempty"`
-	// Whether to disable the video in the source media file. The value range is as follows:
+	// Specifies whether to disable the video from the source media file. Valid values include:
 	//
-	// - true: Disable.
+	// - true: Disables the video.
 	//
-	// - false (default): Do not disable.
+	// - false (default): Includes the video.
 	//
 	// example:
 	//
 	// false
 	DisableVideo *bool `json:"DisableVideo,omitempty" xml:"DisableVideo,omitempty"`
-	// The duration of media transcoding, in seconds. The default value is 0, indicating until the end of the video.
+	// The duration of media transcoding in seconds. The default value, 0, transcodes the media until its end.
 	//
 	// example:
 	//
 	// 0
 	Duration *float64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The start time for media transcoding, in seconds. The value range is as follows:
+	// The start time of media transcoding, in seconds. Valid values include:
 	//
-	// - 0 (default): Start transcoding from the beginning of the media.
+	// - 0 (default): Transcoding starts from the beginning of the media file.
 	//
-	// - n (greater than 0): Start transcoding n seconds after the beginning of the media.
+	// - n (a value greater than 0): Transcoding starts n seconds into the media file.
 	//
 	// example:
 	//
 	// 0
 	StartTime *float64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// A list of subtitles to add, which is empty by default.
+	// A list of subtitles to add.
 	Subtitles []*CreateMediaConvertTaskRequestSourcesSubtitles `json:"Subtitles,omitempty" xml:"Subtitles,omitempty" type:"Repeated"`
-	// The OSS address rule is `oss://${Bucket}/${Object}`, where `${Bucket}` is the name of the OSS Bucket in the same region (Region) as the current project, and `${Object}` is the complete path of the file including the file extension.
+	// The OSS URI of the object. The URI must use the `oss://${Bucket}/${Object}` format, where `${Bucket}` is the name of an OSS bucket in the same region as the project, and `${Object}` is the full path to the object, including its file extension.
 	//
 	// example:
 	//
@@ -364,21 +365,21 @@ func (s *CreateMediaConvertTaskRequestSources) Validate() error {
 }
 
 type CreateMediaConvertTaskRequestSourcesSubtitles struct {
-	// The language of the subtitle, referenced by ISO 639-2, with a default value of empty.
+	// The language of the subtitle. The value must comply with the ISO 639-2 standard.
 	//
 	// example:
 	//
 	// eng
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// The subtitle delay time, in seconds, with a default value of 0.
+	// The subtitle delay, in seconds. The default value is 0.
 	//
 	// example:
 	//
 	// 10.5
 	TimeOffset *float64 `json:"TimeOffset,omitempty" xml:"TimeOffset,omitempty"`
-	// The OSS address rule is `oss://${Bucket}/${Object}`, where `${Bucket}` is the name of the OSS Bucket in the same region (Region) as the current project, and `${Object}` is the complete path of the file including the file extension.
+	// The OSS URI of the object. The URI must use the `oss://${Bucket}/${Object}` format, where `${Bucket}` is the name of an OSS bucket in the same region as the project, and `${Object}` is the full path to the object, including its file extension.
 	//
-	// Supported subtitle formats include: srt, vtt, mov_text, ass, dvd_sub, pgs.
+	// Supported subtitle formats include: srt, vtt, mov_text, ass, dvd_sub, and pgs.
 	//
 	// example:
 	//
@@ -426,8 +427,14 @@ func (s *CreateMediaConvertTaskRequestSourcesSubtitles) Validate() error {
 }
 
 type CreateMediaConvertTaskRequestTargetGroups struct {
+	// A list of media packaging subtasks. Each `Target` corresponds to a variant stream (`#EXT-X-STREAM-INF`) in the HLS master playlist and generates a corresponding HLS media playlist.
 	Targets []*CreateMediaConvertTaskRequestTargetGroupsTargets `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Repeated"`
-	URI     *string                                             `json:"URI,omitempty" xml:"URI,omitempty"`
+	// The OSS URI of the output HLS master playlist file for the packaging task.
+	//
+	// example:
+	//
+	// oss://test-bucket/test-object/master.m3u8
+	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
 }
 
 func (s CreateMediaConvertTaskRequestTargetGroups) String() string {
@@ -470,14 +477,44 @@ func (s *CreateMediaConvertTaskRequestTargetGroups) Validate() error {
 }
 
 type CreateMediaConvertTaskRequestTargetGroupsTargets struct {
-	Audio         *TargetAudio                                             `json:"Audio,omitempty" xml:"Audio,omitempty"`
-	Container     *string                                                  `json:"Container,omitempty" xml:"Container,omitempty"`
-	Segment       *CreateMediaConvertTaskRequestTargetGroupsTargetsSegment `json:"Segment,omitempty" xml:"Segment,omitempty" type:"Struct"`
-	Speed         *float32                                                 `json:"Speed,omitempty" xml:"Speed,omitempty"`
-	StripMetadata *bool                                                    `json:"StripMetadata,omitempty" xml:"StripMetadata,omitempty"`
-	Subtitle      *TargetSubtitle                                          `json:"Subtitle,omitempty" xml:"Subtitle,omitempty"`
-	URI           *string                                                  `json:"URI,omitempty" xml:"URI,omitempty"`
-	Video         *TargetVideo                                             `json:"Video,omitempty" xml:"Video,omitempty"`
+	// The audio processing parameters.
+	//
+	// 	Notice: If this parameter is left empty, the first audio stream, if it exists, is copied directly to the output file.
+	Audio *TargetAudio `json:"Audio,omitempty" xml:"Audio,omitempty"`
+	// The packaging container type. Only `mp4` and `ts` are supported.
+	//
+	// example:
+	//
+	// mp4
+	Container *string `json:"Container,omitempty" xml:"Container,omitempty"`
+	// The media packaging settings.
+	Segment *CreateMediaConvertTaskRequestTargetGroupsTargetsSegment `json:"Segment,omitempty" xml:"Segment,omitempty" type:"Struct"`
+	// The playback speed of the output media. The value must be between 0.5 and 1.0, inclusive. The default value is 1.0.
+	//
+	// > This parameter specifies the default playback speed of the output file as a ratio of the source file\\"s speed. It does not perform speed-up transcoding.
+	//
+	// example:
+	//
+	// 1.0
+	Speed *float32 `json:"Speed,omitempty" xml:"Speed,omitempty"`
+	// If true, removes metadata from the output file. The default is false.
+	StripMetadata *bool `json:"StripMetadata,omitempty" xml:"StripMetadata,omitempty"`
+	// The subtitle processing parameters.
+	//
+	// 	Notice: You must use the `Subtitle.ExtractSubtitle` parameter to package subtitle streams. The `URI` in `Subtitle.ExtractSubtitle` must be in the same directory as or a subdirectory of `TargetGroups.URI`. The `Format` in `Subtitle.ExtractSubtitle` must be `vtt`. You only need to configure this parameter in one `Target` to package all subtitle streams.
+	Subtitle *TargetSubtitle `json:"Subtitle,omitempty" xml:"Subtitle,omitempty"`
+	// The OSS URI of the output HLS media playlist file for the subtask.
+	//
+	// 	Notice: This URI must be in the same directory as or a subdirectory of `TargetGroups.URI`.
+	//
+	// example:
+	//
+	// oss://test-bucket/test-target-object.mp4
+	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
+	// The video processing parameters.
+	//
+	// 	Notice: If this parameter is left empty, the first video stream, if it exists, is copied directly to the output file.
+	Video *TargetVideo `json:"Video,omitempty" xml:"Video,omitempty"`
 }
 
 func (s CreateMediaConvertTaskRequestTargetGroupsTargets) String() string {
@@ -585,9 +622,24 @@ func (s *CreateMediaConvertTaskRequestTargetGroupsTargets) Validate() error {
 }
 
 type CreateMediaConvertTaskRequestTargetGroupsTargetsSegment struct {
-	Duration    *float64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	Format      *string  `json:"Format,omitempty" xml:"Format,omitempty"`
-	StartNumber *int32   `json:"StartNumber,omitempty" xml:"StartNumber,omitempty"`
+	// The duration of each segment, in seconds.
+	//
+	// example:
+	//
+	// 30
+	Duration *float64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The media packaging format. Only `hls` is supported.
+	//
+	// example:
+	//
+	// hls
+	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	// The starting sequence number for segments. The default is 0.
+	//
+	// example:
+	//
+	// 5
+	StartNumber *int32 `json:"StartNumber,omitempty" xml:"StartNumber,omitempty"`
 }
 
 func (s CreateMediaConvertTaskRequestTargetGroupsTargetsSegment) String() string {
@@ -630,61 +682,70 @@ func (s *CreateMediaConvertTaskRequestTargetGroupsTargetsSegment) Validate() err
 }
 
 type CreateMediaConvertTaskRequestTargets struct {
+	// Settings for retaining attached pictures.
+	//
+	// 	Notice: Retaining attached pictures is supported only when the `Container` parameter is set to `mp4` or `mkv`.
 	AttachedPicture *CreateMediaConvertTaskRequestTargetsAttachedPicture `json:"AttachedPicture,omitempty" xml:"AttachedPicture,omitempty" type:"Struct"`
-	// Audio processing parameter configuration.
+	// The audio processing parameters.
 	//
-	// 	Notice: If Audio is null, the first audio stream (if present) will be directly copied to the output file.</notice>
+	// 	Notice: If this parameter is left empty, the first audio stream, if it exists, is copied directly to the output file.
 	Audio *TargetAudio `json:"Audio,omitempty" xml:"Audio,omitempty"`
-	// Media container type. Available container types are as follows:
+	// The media container type. Valid container types include:
 	//
-	// - Audio and video containers: mp4, mkv, mov, asf, avi, mxf, ts, flv
+	// - Audio/video containers: mp4, mkv, mov, asf, avi, mxf, ts, flv
 	//
-	// - Audio containers: mp3, aac, flac, oga, ac3, opus
+	// - Audio-only containers: mp3, aac, flac, oga, ac3, opus
 	//
-	// 	Notice: Both Container and URI parameters need to be set. If only subtitle extraction, frame capture, sprite image capture, or media-to-gif conversion is performed, both Container and URI should be set to null, making the Segment, Video, Audio, and Speed parameters meaningless.</notice>
+	//
+	//   	Notice:
+	//
+	//   The `Container` and `URI` parameters must be set together. To perform only subtitle extraction, frame capture, sprite generation, or animated image generation, leave both `Container` and `URI` empty. In this case, parameters such as `Segment`, `Video`, `Audio`, and `Speed` are ignored.
 	//
 	// example:
 	//
 	// mp4
-	Container *string                                   `json:"Container,omitempty" xml:"Container,omitempty"`
-	Data      *CreateMediaConvertTaskRequestTargetsData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Configuration for frame capture, sprite image capture, and media to animated image conversion.
-	Image *TargetImage `json:"Image,omitempty" xml:"Image,omitempty"`
-	// Media segment settings, no segmentation by default.
-	Segment *CreateMediaConvertTaskRequestTargetsSegment `json:"Segment,omitempty" xml:"Segment,omitempty" type:"Struct"`
-	// Media playback speed setting, with a value range of [0.5,1.0], default is 1.0.
+	Container *string `json:"Container,omitempty" xml:"Container,omitempty"`
+	// Settings for retaining data streams.
 	//
-	// > The ratio of the playback speed of the transcoded media file to the original media file, not a speed-up transcoding.
+	// 	Notice: Retaining data streams is supported only when the `Container` parameter is set to `mp4`.
+	Data *CreateMediaConvertTaskRequestTargetsData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The parameters for frame capture, sprite generation, and animated image generation.
+	Image *TargetImage `json:"Image,omitempty" xml:"Image,omitempty"`
+	// Settings for media segmentation.
+	Segment *CreateMediaConvertTaskRequestTargetsSegment `json:"Segment,omitempty" xml:"Segment,omitempty" type:"Struct"`
+	// The playback speed of the output media. The value must be between 0.5 and 1.0, inclusive. The default value is 1.0.
+	//
+	// > This parameter specifies the default playback speed of the output file as a ratio of the source file\\"s speed. It does not perform speed-up transcoding.
 	//
 	// example:
 	//
 	// 1.0
 	Speed *float32 `json:"Speed,omitempty" xml:"Speed,omitempty"`
-	// Removes metadata from the media file, such as `title`, `album`, etc. The default value is false.
+	// If true, removes metadata such as `title` and `album` from the media file. The default is false.
 	StripMetadata *bool `json:"StripMetadata,omitempty" xml:"StripMetadata,omitempty"`
-	// Subtitle processing parameter configuration.
+	// The subtitle processing parameters.
 	//
-	// 	Notice: If Subtitle is null, the first subtitle stream (if present) will be directly copied to the output file.</notice>
+	// 	Notice: If this parameter is left empty, the first subtitle stream, if it exists, is copied directly to the output file.
 	Subtitle *TargetSubtitle `json:"Subtitle,omitempty" xml:"Subtitle,omitempty"`
-	// OSS address for the output file of media transcoding.
+	// The OSS URI of the output file for media transcoding.
 	//
-	// The OSS address rule is `oss://${Bucket}/${Object}`, where `${Bucket}` is the name of the OSS Bucket in the same region (Region) as the current project, and `${Object}` is the complete path of the file including the file extension.
+	// The URI must be in the `oss://${Bucket}/${Object}` format. In this format, `${Bucket}` is the name of the OSS bucket, which must be in the same region as the project, and `${Object}` is the full path to the object, including the file extension.
 	//
-	// - When **URI*	- has an extension, the OSS address for the transcoded media file will be **URI**. If there are multiple output files, they may overwrite each other.
+	// - If the **URI*	- has a file extension, all output media files are saved to this **URI**. If multiple files are generated, they will overwrite each other.
 	//
-	// - When **URI*	- does not have an extension, the OSS address for the transcoded media file is determined by the **URI**, **Container**, and **Segment*	- parameters. For example, if **URI*	- is `oss://examplebucket/outputVideo`:
+	// - If the **URI*	- does not have a file extension, the final output URI is generated based on the **URI**, **Container**, and **Segment*	- parameters. For example, if the **URI*	- is `oss://examplebucket/outputVideo`:
 	//
-	//    -  When **Container*	- is `mp4` and **Segment*	- is empty, the generated media file\\"s OSS address will be `oss://examplebucket/outputVideo.mp4`.
+	//   - If **Container*	- is `mp4` and **Segment*	- is empty, the OSS URI of the generated media file is `oss://examplebucket/outputVideo.mp4`.
 	//
-	//    -  When **Container*	- is `ts` and **Segment**\\"s **Format*	- is `hls`, it will generate an m3u8 file with the OSS address `oss://examplebucket/outputVideo.m3u8` and multiple ts files with the prefix `oss://examplebucket/outputVideo`.
+	//   - If **Container*	- is `ts` and **Format*	- in **Segment*	- is `hls`, the process generates an m3u8 file with the OSS URI `oss://examplebucket/outputVideo.m3u8` and multiple TS files prefixed with `oss://examplebucket/outputVideo`.
 	//
 	// example:
 	//
 	// oss://test-bucket/test-target-object.mp4
 	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
-	// Video processing parameter configuration.
+	// The video processing parameters.
 	//
-	// 	Notice: If Video is null, the first video stream (if present) will be directly copied to the output file.</notice>
+	// 	Notice: If this parameter is left empty, the first video stream, if it exists, is copied directly to the output file.
 	Video *TargetVideo `json:"Video,omitempty" xml:"Video,omitempty"`
 }
 
@@ -835,6 +896,11 @@ func (s *CreateMediaConvertTaskRequestTargets) Validate() error {
 }
 
 type CreateMediaConvertTaskRequestTargetsAttachedPicture struct {
+	// A list of indexes of the attached pictures in the source file to process. An empty list (default) indicates that no attached pictures are retained. An index of -1 indicates that all attached pictures are retained.
+	//
+	// - Example: `[0,1]` processes the attached pictures with index 0 and 1; `[1]` processes the attached picture with index 1; `[-1]` processes all attached pictures.
+	//
+	// > If a specified index does not correspond to an existing attached picture, it is ignored.
 	Stream []*int32 `json:"Stream,omitempty" xml:"Stream,omitempty" type:"Repeated"`
 }
 
@@ -860,6 +926,11 @@ func (s *CreateMediaConvertTaskRequestTargetsAttachedPicture) Validate() error {
 }
 
 type CreateMediaConvertTaskRequestTargetsData struct {
+	// A list of indexes of the data streams in the source file to process. An empty list (default) indicates that no data streams are retained. An index of -1 indicates that all data streams are retained.
+	//
+	// - Example: `[0,1]` processes the data streams with index 0 and 1; `[1]` processes the data stream with index 1; `[-1]` processes all data streams.
+	//
+	// > If a specified index does not correspond to an existing data stream, it is ignored.
 	Stream []*int32 `json:"Stream,omitempty" xml:"Stream,omitempty" type:"Repeated"`
 }
 
@@ -885,13 +956,13 @@ func (s *CreateMediaConvertTaskRequestTargetsData) Validate() error {
 }
 
 type CreateMediaConvertTaskRequestTargetsSegment struct {
-	// Segment length. Unit: seconds.
+	// The duration of each segment, in seconds.
 	//
 	// example:
 	//
 	// 30
 	Duration *float64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// Media slicing method. The value range is as follows:
+	// The segmentation method. Valid values include:
 	//
 	// - hls
 	//
@@ -901,7 +972,7 @@ type CreateMediaConvertTaskRequestTargetsSegment struct {
 	//
 	// hls
 	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
-	// Starting sequence number, supported only for hls, default is 0.
+	// The starting sequence number. This parameter is supported only for HLS. The default value is 0.
 	//
 	// example:
 	//

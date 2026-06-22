@@ -93,6 +93,10 @@ type LocationDateCluster struct {
 	// location-date-cluster-14f48cb3-079d-4595-80c4-5735284b****
 	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
 	// The custom title.
+	//
+	// example:
+	//
+	// 杭州一日游
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 	// The time when the spatiotemporal cluster was updated.
 	//

@@ -67,6 +67,10 @@ type SubtitleStream struct {
 	// tx3g
 	CodecTagString *string `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
 	// The subtitle content.
+	//
+	// example:
+	//
+	// 欢迎
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The duration of the subtitle stream in seconds.
 	//

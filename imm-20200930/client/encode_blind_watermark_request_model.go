@@ -25,6 +25,10 @@ type iEncodeBlindWatermarkRequest interface {
 
 type EncodeBlindWatermarkRequest struct {
   // The text content of watermarks. It can be up to 256 characters in length.
+  // 
+  // example:
+  // 
+  // Copyright Alibaba Cloud
   Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
   // This parameter takes effect only if the input image format is JPG.
   // 

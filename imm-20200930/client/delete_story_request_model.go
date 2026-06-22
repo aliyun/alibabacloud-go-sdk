@@ -24,7 +24,7 @@ type DeleteStoryRequest struct {
 	//
 	// example:
 	//
-	// dataset001
+	// test-dataset
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
 	// The ID of the story to delete.
 	//
@@ -40,7 +40,7 @@ type DeleteStoryRequest struct {
 	//
 	// example:
 	//
-	// immtest
+	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
 

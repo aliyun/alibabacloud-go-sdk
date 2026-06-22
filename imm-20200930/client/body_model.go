@@ -22,7 +22,7 @@ type Body struct {
 	//
 	// example:
 	//
-	// 0.75
+	// 0.82
 	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
 }
 

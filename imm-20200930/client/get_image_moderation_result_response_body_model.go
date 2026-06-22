@@ -42,7 +42,7 @@ type GetImageModerationResultResponseBody struct {
 	//
 	// ResourceNotFound
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The end time of the task.
+	// The end time of the task. The value is a UTC timestamp in ISO 8601 format with millisecond precision.
 	//
 	// example:
 	//
@@ -60,9 +60,9 @@ type GetImageModerationResultResponseBody struct {
 	//
 	// The specified resource TaskId is not found.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The result of the image compliance detection task.
+	// The content moderation result.
 	ModerationResult *GetImageModerationResultResponseBodyModerationResult `json:"ModerationResult,omitempty" xml:"ModerationResult,omitempty" type:"Struct"`
-	// The name of the project.
+	// The project name.
 	//
 	// example:
 	//
@@ -74,19 +74,19 @@ type GetImageModerationResultResponseBody struct {
 	//
 	// E6A120B1-BEB3-0F63-A7C2-0783B6******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The start time of the task.
+	// The start time of the task. The value is a UTC timestamp in ISO 8601 format with millisecond precision.
 	//
 	// example:
 	//
 	// 2023-04-03T09:44:31.029Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The task status. Valid values:
+	// The running status of the task. Valid values:
 	//
-	// 	- Running
+	// - Running: The task is running.
 	//
-	// 	- Succeeded
+	// - Succeeded: The task is completed successfully.
 	//
-	// 	- Failed
+	// - Failed: The task failed.
 	//
 	// example:
 	//
@@ -98,13 +98,13 @@ type GetImageModerationResultResponseBody struct {
 	//
 	// ImageModeration-ff207203-3f93-4645-a041-7b8f0f******
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The type of the task.
+	// The task type.
 	//
 	// example:
 	//
 	// ImageModeration
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	// The custom information.
+	// The custom user data.
 	//
 	// example:
 	//
@@ -242,23 +242,23 @@ func (s *GetImageModerationResultResponseBody) Validate() error {
 }
 
 type GetImageModerationResultResponseBodyModerationResult struct {
-	// List of categories.
+	// The list of categories.
 	Categories []*string `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
-	// The information about video and motion detection frames.
+	// The frame information for video or animated image moderation.
 	Frames *GetImageModerationResultResponseBodyModerationResultFrames `json:"Frames,omitempty" xml:"Frames,omitempty" type:"Struct"`
-	// The recommended operation. Valid values:
+	// The recommended action. Valid values:
 	//
-	// 	- pass: The image has passed the check. No action is required.
+	// - pass: The image is normal. No further action is required.
 	//
-	// 	- review: The image contains suspected violations and requires human review.
+	// - review: The moderation result is uncertain. Manual review is required.
 	//
-	// 	- block: The image contains violations. Further actions, such as deleting or blocking the image, are recommended.
+	// - block: The image violates content policies. Further action is recommended, such as deleting or restricting the image.
 	//
 	// example:
 	//
 	// block
 	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
-	// The OSS URI of the file. The URI follows the oss://${bucketname}/${objectname} format. bucketname indicates the name of an OSS bucket that is in the same region as the current project, and objectname is the file path.
+	// The storage location of the OSS file. The address follows the format oss://${bucketname}/${objectname}, where bucketname is the name of an OSS bucket in the same region as the current project, and objectname is the file path.
 	//
 	// example:
 	//
@@ -320,9 +320,9 @@ func (s *GetImageModerationResultResponseBodyModerationResult) Validate() error 
 }
 
 type GetImageModerationResultResponseBodyModerationResultFrames struct {
-	// The violated frames.
+	// The frames that violate content policies.
 	BlockFrames []*GetImageModerationResultResponseBodyModerationResultFramesBlockFrames `json:"BlockFrames,omitempty" xml:"BlockFrames,omitempty" type:"Repeated"`
-	// The total number of detected frames.
+	// The total number of frames that were moderated.
 	//
 	// example:
 	//

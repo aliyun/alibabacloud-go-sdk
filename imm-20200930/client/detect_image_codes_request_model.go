@@ -28,7 +28,7 @@ type DetectImageCodesRequest struct {
 	//
 	// example:
 	//
-	// immtest
+	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	// The URI of the Object Storage Service (OSS) bucket in which the image file is stored.
 	//
@@ -38,7 +38,7 @@ type DetectImageCodesRequest struct {
 	//
 	// example:
 	//
-	// oss://bucketname/objectname
+	// oss://test-bucket/test-object.jpg
 	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
 }
 

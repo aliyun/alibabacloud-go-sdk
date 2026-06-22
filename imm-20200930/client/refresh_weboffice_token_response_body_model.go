@@ -22,31 +22,31 @@ type iRefreshWebofficeTokenResponseBody interface {
 }
 
 type RefreshWebofficeTokenResponseBody struct {
-	// Weboffice access token.
+	// The Weboffice access token.
 	//
 	// example:
 	//
 	// 4996466c690a4902846ce00f96********
 	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
-	// Expiration time of the access token. The expiration period is 30 minutes.
+	// The expiration time of the access token. The access token expires in 30 minutes. Format: ISO 8601 UTC timestamp with millisecond precision.
 	//
 	// example:
 	//
 	// 2021-08-31T13:07:28.950065359Z
 	AccessTokenExpiredTime *string `json:"AccessTokenExpiredTime,omitempty" xml:"AccessTokenExpiredTime,omitempty"`
-	// Weboffice refresh token.
+	// The Weboffice refresh token.
 	//
 	// example:
 	//
 	// 72a52ab3702a4123ab5594671a********
 	RefreshToken *string `json:"RefreshToken,omitempty" xml:"RefreshToken,omitempty"`
-	// Expiration time of the refresh token. The expiration period is 1 day.
+	// The expiration time of the refresh token. The refresh token expires in 1 day. Format: ISO 8601 UTC timestamp with millisecond precision.
 	//
 	// example:
 	//
 	// 2021-09-01T12:37:28.950065359Z
 	RefreshTokenExpiredTime *string `json:"RefreshTokenExpiredTime,omitempty" xml:"RefreshTokenExpiredTime,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

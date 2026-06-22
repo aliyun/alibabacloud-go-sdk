@@ -38,7 +38,7 @@ type DetectImageCarsShrinkRequest struct {
 	//
 	// example:
 	//
-	// oss://test-bucket/test-object
+	// oss://test-bucket/test-object.jpg
 	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
 }
 

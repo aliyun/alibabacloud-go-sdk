@@ -16,9 +16,9 @@ type iCreateDatasetResponseBody interface {
 }
 
 type CreateDatasetResponseBody struct {
-	// Dataset information.
+	// The dataset information.
 	Dataset *Dataset `json:"Dataset,omitempty" xml:"Dataset,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

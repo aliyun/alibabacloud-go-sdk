@@ -24,7 +24,7 @@ type iFigureClusterForReq interface {
 }
 
 type FigureClusterForReq struct {
-	// The cover image.
+	// The cover of the cluster.
 	Cover *FigureClusterForReqCover `json:"Cover,omitempty" xml:"Cover,omitempty" type:"Struct"`
 	// The custom ID.
 	//
@@ -32,25 +32,25 @@ type FigureClusterForReq struct {
 	//
 	// abc
 	CustomId *string `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
-	// The custom labels. You can search for the cluster by label.
+	// A key-value map of custom labels that can be used to search for the figure cluster.
 	//
 	// example:
 	//
 	// {"Bucket": "examplebucket"}
 	CustomLabels map[string]interface{} `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
-	// The version of the metadata lock. A metadata lock version can be obtained by using a get or list operation. If you include the MetaLockVersion parameter in a request to update the cluster, the server checks consistency between the MetaLockVersion parameter value sent in the request and the one on the server side and updates the cluster only when they are consistent. This parameter is used to prevent update conflicts in concurrent scenarios. The initial version is 0. The version is automatically increased by 1 after each successful update.
+	// The metadata lock version. This parameter enables optimistic locking to prevent conflicting updates during high concurrency. To ensure data consistency, pass the current MetaLockVersion value when updating a figure cluster. You can retrieve this value from a Get or List operation. The service proceeds with the update only if the provided version matches the system\\"s current version. The initial value is 0 and is incremented by 1 after each successful update.
 	//
 	// example:
 	//
 	// 1
 	MetaLockVersion *int64 `json:"MetaLockVersion,omitempty" xml:"MetaLockVersion,omitempty"`
-	// The name of the cluster.
+	// The cluster name.
 	//
 	// example:
 	//
 	// abc
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the face cluster.
+	// The object ID of the cluster.
 	//
 	// example:
 	//
@@ -130,7 +130,7 @@ func (s *FigureClusterForReq) Validate() error {
 }
 
 type FigureClusterForReqCover struct {
-	// The persons.
+	// The figure list.
 	Figures []*FigureClusterForReqCoverFigures `json:"Figures,omitempty" xml:"Figures,omitempty" type:"Repeated"`
 }
 
@@ -165,7 +165,7 @@ func (s *FigureClusterForReqCover) Validate() error {
 }
 
 type FigureClusterForReqCoverFigures struct {
-	// The person ID.
+	// The figure ID.
 	//
 	// example:
 	//

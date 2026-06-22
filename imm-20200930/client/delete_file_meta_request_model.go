@@ -44,7 +44,7 @@ type DeleteFileMetaRequest struct {
 	//
 	// example:
 	//
-	// oss://examplebucket/exampleobject.txt
+	// oss://test-bucket/test-object
 	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
 }
 

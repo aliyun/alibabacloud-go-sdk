@@ -22,27 +22,27 @@ type iTargetVideo interface {
 type TargetVideo struct {
 	// Specifies whether to disable video stream generation. Valid values:
 	//
-	// 	- true: disables video stream generation. No video stream is included in the output file.
+	// - true: Disables video stream generation. The output file will not contain a video stream.
 	//
-	// 	- false: does not disable video stream generation. This is the default value.
+	// - false (default): Enables video stream generation.
 	//
 	// example:
 	//
 	// false
 	DisableVideo *bool `json:"DisableVideo,omitempty" xml:"DisableVideo,omitempty"`
-	// The video processing parameters. This parameter is invalid if **TranscodeVideo*	- is left empty or **TranscodeVideo.Codec*	- is set to copy.
+	// The video processing parameters. This parameter is invalid if **TranscodeVideo*	- is empty or if **TranscodeVideo.Codec*	- is set to copy.
 	//
-	// > This parameter is not available to the GenerateVideoPlaylist operation.
+	// > You cannot set this parameter for the GenerateVideoPlaylist API.
 	FilterVideo *TargetVideoFilterVideo `json:"FilterVideo,omitempty" xml:"FilterVideo,omitempty" type:"Struct"`
-	// The index numbers of video streams. If you do not specify this parameter, the first video stream (the one with the smallest index number) is processed. If the array contains an element greater than 100, all video streams are processed.
+	// A list of index numbers for the source video streams to process. If you leave this parameter empty (default), the system processes the video stream with the smallest index number (the first video stream). If you set the index number to a value greater than 100, the system processes all video streams.
 	//
-	// 	- For example, you can set the parameter to `[0,1]` to process video streams with index numbers 0 and 1, `[1]` to process only the video stream with the index number 1, and `[101]` to process all video streams.
+	// - Example: `[0,1]` processes video streams with index numbers 0 and 1. `[1]` processes the video stream with index number 1. `[101]` processes all video streams.
 	//
-	// > If you specify an index number but no video stream with the index number is found, the index number is ignored.
+	// > The system only processes video streams with existing index numbers. If a video stream corresponding to an index number does not exist, the system ignores that index number.
 	Stream []*int32 `json:"Stream,omitempty" xml:"Stream,omitempty" type:"Repeated"`
-	// The video transcoding parameters. If you do not specify this parameter, no video streams are included in the output file.
+	// The video transcoding parameters. An empty value disables video processing. The output file will not contain a video stream.
 	//
-	// > We recommend that you do not use this parameter to disable video stream generation.
+	// > Do not disable video processing by leaving this parameter empty.
 	TranscodeVideo *TargetVideoTranscodeVideo `json:"TranscodeVideo,omitempty" xml:"TranscodeVideo,omitempty" type:"Struct"`
 }
 
@@ -105,29 +105,27 @@ func (s *TargetVideo) Validate() error {
 }
 
 type TargetVideoFilterVideo struct {
-	// The configurations for blurring a rectangular area of the video. This parameter is used to remove logos from videos, such as TV channel logos.
+	// Blurs a rectangular area of the video to remove logos, station icons, and other elements.
 	Delogos []*TargetVideoFilterVideoDelogos `json:"Delogos,omitempty" xml:"Delogos,omitempty" type:"Repeated"`
-	// The video anonymization settings.
+	// The video desensitization configuration.
 	//
-	// >
+	// 	Notice:
 	//
-	// 	- This parameter only applies to the CreateMediaConvertTask operation.
+	// - This parameter applies only to the CreateMediaConvertTask API.
 	Desensitization *TargetVideoFilterVideoDesensitization `json:"Desensitization,omitempty" xml:"Desensitization,omitempty" type:"Struct"`
-	// The video playback speed. Valid values: [0.5,1.0]. Default value: 1.0.
+	// The video playback speed setting. The value ranges from 0.5 to 1.0. The default value is 1.0.
 	//
-	// >
+	// > - This is the ratio of the default playback speed of the transcoded media file to that of the source media file. This is not a high-speed transcoding feature.
 	//
-	// 	- This parameter specifies the ratio of the playback speed of the output media file to the default playback speed of the source media file. It does not indicate transcoding acceleration.
+	// 	Notice:
 	//
-	// >
-	//
-	// 	- This parameter only applies to the CreateMediaConvertTask operation.
+	// - This parameter applies only to the CreateMediaConvertTask API.
 	//
 	// example:
 	//
 	// 1.0
 	Speed *float32 `json:"Speed,omitempty" xml:"Speed,omitempty"`
-	// The video watermarks.
+	// A list of video watermarks.
 	Watermarks []*TargetVideoFilterVideoWatermarks `json:"Watermarks,omitempty" xml:"Watermarks,omitempty" type:"Repeated"`
 }
 
@@ -203,71 +201,71 @@ func (s *TargetVideoFilterVideo) Validate() error {
 }
 
 type TargetVideoFilterVideoDelogos struct {
-	// The duration of the blur in seconds. By default, the blur lasts until the end of the video.
+	// The duration for which the mosaic is displayed, in seconds (s). By default, the mosaic is displayed until the end of the video.
 	//
 	// example:
 	//
 	// 15
 	Duration *float64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The value of the parameter can be an integer or a decimal.
+	// The meaning of this parameter varies depending on whether the value is an integer or a decimal:
 	//
-	// 	- 0: indicates that both the offset in pixels and the ratio of the horizontal offset relative to the height of the target resolution are 0. This is the default value.
+	// - 0 (default): The pixel offset is 0. The ratio of the horizontal offset to the output video width is also 0.
 	//
-	// 	- An integer: the offset in pixels. Valid values: [1,4096].
+	// - Integer: The offset in pixels (px). The value ranges from 1 to 4096.
 	//
-	// 	- A decimal: the ratio of the horizontal offset relative to the height of the target resolution. Valid values: (0,1).
+	// - Decimal: The ratio of the horizontal offset to the output video width. The value ranges from (0, 1).
 	//
 	// example:
 	//
 	// 0
 	Dx *float32 `json:"Dx,omitempty" xml:"Dx,omitempty"`
-	// Default value: 0. The value of the parameter can be an integer or a decimal.
+	// The default value is 0. The meaning of this parameter varies depending on whether the value is an integer or a decimal:
 	//
-	// 	- 0: indicates that both the offset in pixels and the ratio of the vertical offset relative to the height of the target resolution are 0. This is the default value.
+	// - 0 (default): The pixel offset is 0. The ratio of the vertical offset to the output video height is also 0.
 	//
-	// 	- An integer: the offset in pixels. Valid values: [1,4096].
+	// - Integer: The offset in pixels (px). The value ranges from 1 to 4096.
 	//
-	// 	- A decimal: the ratio of the vertical offset relative to the height of the target resolution. Valid values: (0,1).
+	// - Decimal: The ratio of the vertical offset to the output video height. The value ranges from (0, 1).
 	//
 	// example:
 	//
 	// 0
 	Dy *float32 `json:"Dy,omitempty" xml:"Dy,omitempty"`
-	// The height of the blur. The default value is 1.0, which specifies that the blur is as high as the video. The value can be a decimal or an integer.
+	// The height of the mosaic. The default value is the decimal 1.0, which means it fills the entire height of the output video. The meaning of this parameter varies depending on whether the value is an integer or a decimal:
 	//
-	// 	- An integer: the number of pixels. Valid values: [1,4096].
+	// - Integer: The height in pixels (px). The value ranges from 1 to 4096.
 	//
-	// 	- A decimal: the ratio relative to the height of the target resolution. Valid values: (0,1).
+	// - Decimal: The ratio of the mosaic height to the output video height. The value ranges from (0, 1).
 	//
 	// example:
 	//
 	// 40
 	Height *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	// The reference position of the blur. Valid values:
+	// The reference position for adding the mosaic. Valid values:
 	//
-	// 	- topleft: the upper-left corner. This is the default value.
+	// - topleft (default): The top-left corner.
 	//
-	// 	- topright: the upper-right corner.
+	// - topright: The top-right corner.
 	//
-	// 	- bottomright: the lower-right corner.
+	// - bottomright: The bottom-right corner.
 	//
-	// 	- bottomleft: the lower-left corner.
+	// - bottomleft: The bottom-left corner.
 	//
 	// example:
 	//
 	// topleft
 	ReferPos *string `json:"ReferPos,omitempty" xml:"ReferPos,omitempty"`
-	// The start time of blurring (in seconds). By default, the blur begins at the start time of the video.
+	// The start time for adding the mosaic, in seconds (s). By default, the mosaic is added from the beginning of the video.
 	//
 	// example:
 	//
 	// 0
 	StartTime *float64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The width of the blur. The default value is 1.0, which specifies that the blur is as wide as the video. The value can be a decimal or an integer.
+	// The width of the mosaic. The default value is the decimal 1.0, which means it fills the entire width of the output video. The meaning of this parameter varies depending on whether the value is an integer or a decimal:
 	//
-	// 	- An integer: the number of pixels. Valid values: [1,4096].
+	// - Integer: The width in pixels (px). The value ranges from 1 to 4096.
 	//
-	// 	- A decimal: the ratio relative to the width of the target resolution. Valid values: (0,1).
+	// - Decimal: The ratio of the mosaic width to the output video width. The value ranges from (0, 1).
 	//
 	// example:
 	//
@@ -351,9 +349,13 @@ func (s *TargetVideoFilterVideoDelogos) Validate() error {
 }
 
 type TargetVideoFilterVideoDesensitization struct {
-	// The settings for face anonymization.
+	// The facial desensitization configuration.
+	//
+	// > This feature is in public preview. If you have any questions, join the DingTalk group for feedback. For the DingTalk group number, see [Contact us](https://help.aliyun.com/document_detail/84454.html).
 	Face *TargetVideoFilterVideoDesensitizationFace `json:"Face,omitempty" xml:"Face,omitempty" type:"Struct"`
-	// The settings for license plate anonymization.
+	// The license plate desensitization configuration.
+	//
+	// > This feature is in public preview. If you have any questions, join the DingTalk group for feedback. For the DingTalk group number, see [Contact us](https://help.aliyun.com/document_detail/84454.html).
 	LicensePlate *TargetVideoFilterVideoDesensitizationLicensePlate `json:"LicensePlate,omitempty" xml:"LicensePlate,omitempty" type:"Struct"`
 }
 
@@ -398,17 +400,21 @@ func (s *TargetVideoFilterVideoDesensitization) Validate() error {
 }
 
 type TargetVideoFilterVideoDesensitizationFace struct {
-	// The minimum confidence threshold. Valid values: 0 to 1. Default value: 0.
+	// The confidence threshold for facial recognition. This sets the lower limit for the confidence level. If the confidence level of a detected face is below this threshold, the face is not desensitized.
+	//
+	// - Value range: 0.0 to 1.0.
+	//
+	// - Default value: 0.0 (no confidence filtering).
 	//
 	// example:
 	//
-	// 0
+	// 0.4
 	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
-	// This parameter does not take effect if the width or height of the bounding box of a face falls below the specified minimum threshold. Default value: 0.
+	// The minimum face size threshold. This sets the minimum size for a face to be desensitized. If the width or height of a detected face is smaller than this threshold, the face is not desensitized. The unit is pixels. The default value is 0, which means there is no restriction on face size.
 	//
 	// example:
 	//
-	// 0
+	// 0.4
 	MinSize *int32 `json:"MinSize,omitempty" xml:"MinSize,omitempty"`
 }
 
@@ -443,17 +449,21 @@ func (s *TargetVideoFilterVideoDesensitizationFace) Validate() error {
 }
 
 type TargetVideoFilterVideoDesensitizationLicensePlate struct {
-	// The minimum confidence threshold. Valid values: 0 to 1. Default value: 0.
+	// The confidence threshold for license plate recognition. This sets the lower limit for the confidence level. If the confidence level of a detected license plate is below this threshold, the license plate is not desensitized.
+	//
+	// - Value range: 0.0 to 1.0.
+	//
+	// - Default value: 0.0 (no confidence filtering).
 	//
 	// example:
 	//
-	// 0
+	// 0.4
 	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
-	// The minimum threshold for license plate size. This parameter does not take effect if the width or height of the bounding box of a license plate falls below the specified minimum threshold. Default value: 0.
+	// The minimum license plate size threshold. This sets the minimum size for a license plate to be desensitized. If the width or height of a detected license plate is smaller than this threshold, the license plate is not desensitized. The unit is pixels. The default value is 0, which means there is no restriction on license plate size.
 	//
 	// example:
 	//
-	// 0
+	// 0.4
 	MinSize *int32 `json:"MinSize,omitempty" xml:"MinSize,omitempty"`
 }
 
@@ -488,105 +498,119 @@ func (s *TargetVideoFilterVideoDesensitizationLicensePlate) Validate() error {
 }
 
 type TargetVideoFilterVideoWatermarks struct {
-	// The color of the text watermark border. You can specify a color name, such as "red" or "green", or an RGB color code. The default color is #000000.
+	// The outline color of the watermark text. The format is #RRGGBB. The default value is #000000. You can also enter values such as "red" or "green".
 	//
-	// > This parameter takes effect only when the Type parameter is set to text.
+	// 	Notice:
+	//
+	// This parameter is effective only when the `Type` parameter is set to `text`.
 	//
 	// example:
 	//
 	// red
 	BorderColor *string `json:"BorderColor,omitempty" xml:"BorderColor,omitempty"`
-	// The width of the text watermark border. Unit: pixels. The value must be an integer within the [0,4096] range. Default value: 0.
+	// The outline width for the text watermark, in pixels (px). The value must be an integer from 0 to 4096. The default value is 0.
 	//
-	// > This parameter takes effect only when the Type parameter is set to text.
+	// 	Notice:
+	//
+	// This parameter is effective only when the `Type` parameter is set to `text`.
 	//
 	// example:
 	//
 	// 2
 	BorderWidth *int32 `json:"BorderWidth,omitempty" xml:"BorderWidth,omitempty"`
-	// The content of the text watermark. By default, this parameter is left empty.
+	// The content of the text watermark. The default value is empty.
 	//
-	// > This parameter takes effect only when the Type parameter is set to text.
+	// 	Notice:
+	//
+	// This parameter is effective only when the `Type` parameter is set to `text`.
 	//
 	// example:
 	//
 	// example
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The duration of watermarking (in seconds). By default, the watermark lasts until the video ends.
+	// The duration for which the watermark is displayed, in seconds (s). By default, the watermark is displayed until the end of the video.
 	//
 	// example:
 	//
 	// 0
 	Duration *float64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The value of the parameter can be an integer or a decimal.
+	// The meaning of this parameter varies depending on whether the value is an integer or a decimal:
 	//
-	// 	- 0: indicates that both the offset in pixels and the ratio of the horizontal offset relative to the height of the target resolution are 0. This is the default value.
+	// - 0 (default): The pixel offset is 0. The ratio of the horizontal offset to the output video width is also 0.
 	//
-	// 	- An integer: the offset in pixels. Valid values: [1,4096].
+	// - Integer: The offset in pixels (px). The value ranges from 1 to 4096.
 	//
-	// 	- A decimal: the ratio of the horizontal offset relative to the height of the target resolution. Valid values: (0,1).
+	// - Decimal: The ratio of the horizontal offset to the output video width. The value ranges from (0, 1).
 	//
 	// example:
 	//
 	// 0
 	Dx *float32 `json:"Dx,omitempty" xml:"Dx,omitempty"`
-	// The value of the parameter can be an integer or a decimal.
+	// The meaning of this parameter varies depending on whether the value is an integer or a decimal:
 	//
-	// 	- 0: indicates that both the offset in pixels and the ratio of the vertical offset relative to the height of the target resolution are 0. This is the default value.
+	// - 0 (default): The pixel offset is 0. The ratio of the vertical offset to the output video height is also 0.
 	//
-	// 	- An integer: the offset in pixels. Valid values: [1,4096].
+	// - Integer: The offset in pixels (px). The value ranges from 1 to 4096.
 	//
-	// 	- A decimal: the ratio of the vertical offset relative to the height of the target resolution. Valid values: (0,1).
+	// - Decimal: The ratio of the vertical offset to the output video height. The value ranges from (0, 1).
 	//
 	// example:
 	//
 	// 0
 	Dy *float32 `json:"Dy,omitempty" xml:"Dy,omitempty"`
-	// The font transparency of the text watermark. Valid values: (0,1]. Default value: 1, which specifies that the text watermark is fully opaque.
+	// The font opacity of the text watermark. The value ranges from (0, 1]. The default value is 1, which means fully opaque.
 	//
-	// > This parameter takes effect only when the Type parameter is set to text.
+	// 	Notice:
+	//
+	// This parameter is effective only when the `Type` parameter is set to `text`.
 	//
 	// example:
 	//
 	// 0.8
 	FontApha *float32 `json:"FontApha,omitempty" xml:"FontApha,omitempty"`
-	// The color of the text watermark. You can specify a color name, such as "red" or "green", or an RGB color code. The default color is #000000.
+	// The font color of the watermark text. The format is #RRGGBB. The default value is #000000. You can also enter values such as "red" or "green".
 	//
-	// > This parameter takes effect only when the Type parameter is set to text.
+	// 	Notice:
+	//
+	// This parameter is effective only when the `Type` parameter is set to `text`.
 	//
 	// example:
 	//
 	// red
 	FontColor *string `json:"FontColor,omitempty" xml:"FontColor,omitempty"`
-	// The font of the text watermark. Valid values:
+	// The font name for the text watermark. Valid values:
 	//
-	// 	- SourceHanSans-Regular (default)
+	// - SourceHanSans-Regular (default)
 	//
-	// 	- SourceHanSans-Bold
+	// - SourceHanSans-Bold
 	//
-	// 	- SourceHanSerif-Regular
+	// - SourceHanSerif-Regular
 	//
-	// 	- SourceHanSerif-Bold
+	// - SourceHanSerif-Bold
 	//
-	// > This parameter takes effect only when the Type parameter is set to text.
+	// 	Notice:
+	//
+	// This parameter is effective only when the `Type` parameter is set to `text`.
 	//
 	// example:
 	//
 	// SourceHanSans-Bold
 	FontName *string `json:"FontName,omitempty" xml:"FontName,omitempty"`
-	// The size of the text watermark. Default value: 16. The value must be an integer within the (4,120) range.
+	// The font size for the text watermark. The default value is 16. The value must be an integer in the range (4, 120).
 	//
-	// > This parameter takes effect only when the Type parameter is set to text.
+	// 	Notice:
+	//
+	// This parameter is effective only when the `Type` parameter is set to `text`.
 	//
 	// example:
 	//
 	// 18
 	FontSize *int32 `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
-	// The height of the image watermark. By default, the height is the same as the height of the original watermark file. The value of the parameter can be an integer or a decimal.
+	// The height of the watermark image. By default, this is the height of the original watermark image. The meaning of this parameter varies depending on whether the value is an integer or a decimal:
 	//
-	// 	- An integer: the number of pixels excluding the height of the logo. Valid values: [1,4096].
+	// - Integer: The height of the watermark in pixels (px). The value ranges from 1 to 4096.
 	//
-	// 	- A decimal: the ratio relative to the height of the target resolution. Valid values: (0,1).
+	// - Decimal: The ratio of the watermark height to the output video height. The value ranges from (0, 1).
 	//
 	// example:
 	//
@@ -594,19 +618,19 @@ type TargetVideoFilterVideoWatermarks struct {
 	Height *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
 	// The reference position for adding the watermark. Valid values:
 	//
-	// 	- topleft: the upper-left corner. This is the default value.
+	// - topleft (default): The top-left corner.
 	//
-	// 	- topright: the upper-right corner.
+	// - topright: The top-right corner.
 	//
-	// 	- bottomright: the lower-right corner.
+	// - bottomright: The bottom-right corner.
 	//
-	// 	- bottomleft: the lower-left corner.
+	// - bottomleft: The bottom-left corner.
 	//
 	// example:
 	//
 	// topleft
 	ReferPos *string `json:"ReferPos,omitempty" xml:"ReferPos,omitempty"`
-	// The start time of watermarking (in seconds). By default, the watermark begins at the start time of the video.
+	// The start time for adding the watermark, in seconds (s). By default, the watermark is added from the beginning of the video.
 	//
 	// example:
 	//
@@ -614,29 +638,31 @@ type TargetVideoFilterVideoWatermarks struct {
 	StartTime *float64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The watermark type. Valid values:
 	//
-	// 	- text: a text watermark. This is the default value.
+	// - text (default): A text watermark.
 	//
-	// 	- file: a still or animated image watermark.
+	// - file: An image or animated image watermark.
 	//
 	// example:
 	//
 	// text
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The Object Storage Service (OSS) URI of the watermark file. The watermark file can be a PNG or MOV file.
+	// The OSS URL of the watermark file. Supported formats are PNG and MOV.
 	//
-	// The URI is in the `oss://<bucket>/<object>` format, where `<bucket>` is the name of the bucket in the same region as the current project and `<object>` is the path of the object with the extension included.
+	// The OSS URL must follow the format `oss://<bucket>/<object>`, where `<bucket>` is the name of an OSS bucket in the same region as the current project, and `<object>` is the full path of the file, including the file name extension.
 	//
-	// > This parameter takes effect only when the Type parameter is set to file.
+	// 	Notice:
+	//
+	// This parameter is effective only when the `Type` parameter is set to `file`.
 	//
 	// example:
 	//
-	// oss://test-bucket/watermark
+	// oss://test-bucket/watermark.jpg
 	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
-	// The width of the image watermark. By default, the width is the same as the width of the original watermark file. The value of the parameter can be an integer or a decimal.
+	// The width of the watermark image. By default, this is the width of the original watermark image. The meaning of this parameter varies depending on whether the value is an integer or a decimal:
 	//
-	// 	- An integer: the number of pixels excluding the width of the logo. Valid values: [1,4096].
+	// - Integer: The width of the watermark in pixels (px). The value ranges from 1 to 4096.
 	//
-	// 	- A decimal: the ratio relative to the width of the target resolution. Valid values: (0,1).
+	// - Decimal: The ratio of the watermark width to the output video width. The value ranges from (0, 1).
 	//
 	// example:
 	//
@@ -801,25 +827,25 @@ func (s *TargetVideoFilterVideoWatermarks) Validate() error {
 }
 
 type TargetVideoTranscodeVideo struct {
-	// Specifies whether to enable adaptation to resolution based on long and short sides. Valid values:
+	// Specifies whether to enable adaptive resolution for long and short edges. Valid values:
 	//
-	// 	- true: The format of the **Resolution*	- parameter is `LongSide×ShortSide`. This is the default value.
+	// - true: Yes. In this case, the format for the **Resolution*	- parameter is `long edge × short edge`.
 	//
-	// 	- false: The format of the **Resolution*	- parameter is `Width×Height`.
+	// - false (default): No. In this case, the format for the **Resolution*	- parameter is `width × height`.
 	//
 	// example:
 	//
 	// true
 	AdaptiveResolutionDirection *bool `json:"AdaptiveResolutionDirection,omitempty" xml:"AdaptiveResolutionDirection,omitempty"`
-	// The number of consecutive B frames. Default value: 3.
+	// The number of consecutive B-frames. The default value is 3.
 	//
 	// example:
 	//
 	// 3
 	BFrames *int32 `json:"BFrames,omitempty" xml:"BFrames,omitempty"`
-	// The bitrate of the video stream. Unit: bit/s.
+	// The video stream bitrate in bits per second (bit/s).
 	//
-	// > This parameter and the **CRF*	- parameter are mutually exclusive. If you leave both the parameters empty, the **CRF*	- parameter with a value of 23 applies.
+	// > This parameter is mutually exclusive with **CRF**. If both this parameter and the **CRF*	- parameter are empty, the system encodes the video with a CRF value of 23.
 	//
 	// example:
 	//
@@ -827,53 +853,56 @@ type TargetVideoTranscodeVideo struct {
 	Bitrate *int32 `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
 	// The video bitrate option. Valid values:
 	//
-	// 	- fixed: always uses the target bitrate.
+	// - fixed: Always uses the specified target video bitrate.
 	//
-	// 	- adaptive: uses the source bitrate when the source bitrate is less than the target bitrate.
+	// - adaptive: Uses the source video bitrate if it is lower than the specified target video bitrate.
 	//
-	// 	- fall: returns a failure when the source bitrate is less than the target bitrate.
+	// - fall: The task fails if the source video bitrate is lower than the specified target video bitrate.
 	//
 	// Default value:
 	//
-	// 	- fixed for the CreateMediaConvert operation.
+	// - For the CreateMediaConvert API, the default value is fixed.
 	//
-	// 	- adaptive for the GenerateVideoPlaylist operation.
+	// - For the GenerateVideoPlaylist API, the default value is adaptive.
 	//
-	// > This parameter must be used together with the **Bitrate*	- parameter.
+	// > This parameter must be set together with the **Bitrate*	- parameter.
 	//
 	// example:
 	//
 	// fixed
 	BitrateOption *string `json:"BitrateOption,omitempty" xml:"BitrateOption,omitempty"`
-	// The size of the buffer for decoding when the dynamic bitrate is used. Unit: bit/s.
+	// The size of the decoding buffer for dynamic bitrate, in bits per second (bps).
 	//
-	// > This parameter must be used together with the **CRF*	- parameter.
+	// > This parameter is effective only when used with the **CRF*	- parameter.
 	//
 	// example:
 	//
 	// 4000000
 	BufferSize *int32 `json:"BufferSize,omitempty" xml:"BufferSize,omitempty"`
-	// The constant rate factor (CRF) of the video. The value of this parameter falls within the [0,51] range. A greater indicates lower quality. We recommend that you specify a value within the [18,38] range. This parameter and the **Bitrate*	- parameter are mutually exclusive.
+	// Specifies the Constant Rate Factor (CRF) mode. This parameter is mutually exclusive with **Bitrate**. The value ranges from 0 to 51. A larger value indicates lower image quality. A value from 18 to 38 is recommended.
 	//
 	// example:
 	//
 	// 18
 	CRF *float32 `json:"CRF,omitempty" xml:"CRF,omitempty"`
-	// The video coding format. Valid values:
+	// The video encoding format. Valid values:
 	//
-	// 	- copy, h264, h265, and vp9 for the CreateMediaConvert operation. The default value is copy.
+	// - For the CreateMediaConvert API: copy (default), h264, h265, and vp9.
 	//
-	//     **
 	//
-	//     **Warning **When you set the parameter to copy, the video stream is directly copied into the output file and all other parameters in TranscodeVideo do not take effect. The copy value is commonly used in container format conversion scenarios. You cannot use this value in video merging scenarios.
+	//   	Warning:
 	//
-	// 	- h264 and h265 for the GenerateVideoPlaylist operation. The default value is h264.
+	//   If you set this parameter to copy, the system directly copies the video stream to the output file. In this case, the other parameters under **TranscodeVideo*	- are invalid. The copy value cannot be used for video concatenation and is typically used for container format conversion.
+	//
+	//
+	//
+	// - For the GenerateVideoPlaylist API: h264 (default) and h265.
 	//
 	// example:
 	//
 	// h264
 	Codec *string `json:"Codec,omitempty" xml:"Codec,omitempty"`
-	// The target frame rate. By default, the target frame rate is the same as the source frame rate.
+	// The video frame rate. By default, this is the same as the source video.
 	//
 	// example:
 	//
@@ -881,75 +910,75 @@ type TargetVideoTranscodeVideo struct {
 	FrameRate *float32 `json:"FrameRate,omitempty" xml:"FrameRate,omitempty"`
 	// The frame rate option. Valid values:
 	//
-	// 	- fixed: always uses the target frame rate.
+	// - fixed: Always uses the specified target video frame rate.
 	//
-	// 	- adaptive: uses the source frame rate when the source frame rate is less than the target frame rate.
+	// - adaptive: Uses the source video frame rate if it is lower than the specified target video frame rate.
 	//
-	// 	- fall: returns a failure if the source frame rate is less than the target frame rate.
+	// - fall: The task fails if the source video frame rate is lower than the specified target video frame rate.
 	//
 	// Default value:
 	//
-	// 	- fixed for the CreateMediaConvert operation.
+	// - For the CreateMediaConvert API, the default value is fixed.
 	//
-	// 	- adaptive for the GenerateVideoPlaylist operation.
+	// - For the GenerateVideoPlaylist API, the default value is adaptive.
 	//
-	// > This parameter must be used together with the **FrameRate*	- parameter.
+	// > This parameter must be set together with the **FrameRate*	- parameter.
 	//
 	// example:
 	//
 	// fixed
 	FrameRateOption *string `json:"FrameRateOption,omitempty" xml:"FrameRateOption,omitempty"`
-	// The keyframe interval. Default value: 150.
+	// The size of the Group of Pictures (GOP) in frames. The default value is 150.
 	//
-	// > This parameter is not available to the GenerateVideoPlaylist operation.
+	// > This parameter is not supported by the GenerateVideoPlaylist API.
 	//
 	// example:
 	//
 	// 60
 	GOPSize *int32 `json:"GOPSize,omitempty" xml:"GOPSize,omitempty"`
-	// The maximum bitrate when the dynamic bitrate is used. If you specify this parameter, you must also specify the BufferSize parameter.
+	// The maximum bitrate limit for dynamic bitrate. When you use this parameter, you must also specify the BufferSize parameter.
 	//
-	// > This parameter must be used together with the **CRF*	- parameter.
+	// > This parameter is effective only when used with the **CRF*	- parameter.
 	//
 	// example:
 	//
 	// 128000
 	MaxBitrate *int32 `json:"MaxBitrate,omitempty" xml:"MaxBitrate,omitempty"`
-	// The pixel format. By default, the pixel format matches that of the source video. Valid values:
+	// The pixel format. By default, this is the same as the source video. Valid values:
 	//
-	// 	- yuv420p
+	// - yuv420p
 	//
-	// 	- yuv422p
+	// - yuv422p
 	//
-	// 	- yuv444p
+	// - yuv444p
 	//
-	// 	- yuv420p10le
+	// - yuv420p10le
 	//
-	// 	- yuv422p10le
+	// - yuv422p10le
 	//
-	// 	- yuv444p10le
+	// - yuv444p10le
 	//
-	// 	- yuva420p
+	// - yuva420p
 	//
-	// > You can set the parameter to yuva420p only when you call the CreateMediaConvert operation and set the **Codec*	- parameter to vp9.
+	// > The yuva420p value is available only for the CreateMediaConvert API, and the **Codec*	- parameter must be set to vp9.
 	//
 	// example:
 	//
 	// yuv420p
 	PixelFormat *string `json:"PixelFormat,omitempty" xml:"PixelFormat,omitempty"`
-	// The number of reference frames. Default value: 2.
+	// The number of reference frames. The default value is 2.
 	//
 	// example:
 	//
 	// 2
 	Refs *int32 `json:"Refs,omitempty" xml:"Refs,omitempty"`
-	// The target resolution in the `WidthxHeight` format. By default, the target resolution is the same as the source resolution. You can specify both width and height, or only one of them. You can use this parameter together with the **AdaptiveResolutionDirection*	- parameter to set both the long side and short side or one of them. The value of each side falls within the range of (0,4096].
+	// The resolution of the output video in the format of `width × height`. By default, this is the same as the playback resolution of the source video. You can configure both width and height, or only width or height. You can also use this parameter with the **AdaptiveResolutionDirection*	- parameter to configure both the long and short edges, or only the long or short edge. The value for a single edge ranges from (0, 4096].
 	//
-	// 	- Example 1: If **AdaptiveResolutionDirection*	- is set to false, `1280x720` specifies a width of 1280 pixels and a height of 720 pixels, `1280x` specifies a width of 1280 pixels and the same height as the source video, and `x720` specifies a height of 720 pixels and the same width as the source video.
+	// - Example 1: If **AdaptiveResolutionDirection*	- is set to false, `1280x720` sets the width to 1280 and the height to 720. `1280x` sets the width to 1280 and keeps the height the same as the source video. `x720` sets the height to 720 and keeps the width the same as the source video.
 	//
-	// 	- Example 2: If **AdaptiveResolutionDirection*	- is set to true, `1280x720` specifies a long side of 1280 pixels and a short side of 720 pixels, `1280x` specifies a long side of 1280 pixels and the same short side as the source video, and `x720` specifies a short side of 720 pixels and the same long side as the source video.
+	// - Example 2: If **AdaptiveResolutionDirection*	- is set to true, `1280x720` sets the long edge to 1280 and the short edge to 720. `1280x` sets the long edge to 1280 and keeps the short edge the same as the source video. `x720` sets the short edge to 720 and keeps the long edge the same as the source video.
 	//
-	// > If the source video contains rotation information, the width, height, long side, and short side depend on the frame after rotation (the playback resolution).
+	// > If the source video contains rotation information, the width, height, long edge, and short edge are determined based on the rotated video, which means the playback resolution is used.
 	//
 	// example:
 	//
@@ -957,55 +986,70 @@ type TargetVideoTranscodeVideo struct {
 	Resolution *string `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
 	// The resolution option. Valid values:
 	//
-	// 	- fixed: always uses the target video resolution.
+	// - fixed: Always uses the specified target video resolution.
 	//
-	// 	- adaptive: uses the source video resolution when the source video resolution is less than the target video resolution.
+	// - adaptive: Uses the source video resolution if its area is smaller than the area of the specified target video resolution.
 	//
-	// 	- fall: returns a failure when the source video resolution is less than the target video resolution.
+	// - fall: The task fails if the area of the source video resolution is smaller than the area of the specified target video resolution.
 	//
 	// Default value:
 	//
-	// 	- fixed for the CreateMediaConvert operation.
+	// - For the CreateMediaConvert API, the default value is fixed.
 	//
-	// 	- adaptive for the GenerateVideoPlaylist operation.
+	// - For the GenerateVideoPlaylist API, the default value is adaptive.
 	//
-	// > This parameter must be used together with the **Resolution*	- parameter.
+	// > This parameter must be set together with the **Resolution*	- parameter.
 	//
 	// example:
 	//
 	// fixed
 	ResolutionOption *string `json:"ResolutionOption,omitempty" xml:"ResolutionOption,omitempty"`
-	// The degrees to rotate the video clockwise. Valid values:
+	// The clockwise rotation angle of the video in degrees. Valid values:
 	//
-	// 	- 0 (default)
+	// - 0 (default)
 	//
-	// 	- 90
+	// - 90
 	//
-	// 	- 180
+	// - 180
 	//
-	// 	- 270
+	// - 270
 	//
 	// example:
 	//
 	// 90
 	Rotation *int32 `json:"Rotation,omitempty" xml:"Rotation,omitempty"`
-	// The resizing mode. Valid values:
+	// The scaling mode. Valid values:
 	//
-	// 	- stretch: forcibly stretches the video based on the specified width and height or long side and short side to fill any remaining space. This is the default value.
+	// - stretch (default): Fixes the width and height or the long and short edges, and forces scaling to stretch and fill any blank areas.
 	//
-	// 	- crop: proportionally resizes the video to the minimum resolution outside the rectangular shape based on the specified width and height or long side and short side, and crops the parts beyond the rectangular shape from the center.
+	// - crop: Scales the video proportionally to the minimum resolution that extends beyond the specified rectangle (defined by width/height or long/short edges), and then center-crops the excess parts.
 	//
-	// 	- fill: proportionally resizes the video to the maximum resolution within the rectangular shape based on the specified width and height or long side and short side, and fills empty space with black from the center.
+	// - fill: Scales the video proportionally to the maximum resolution that fits within the specified rectangle (defined by width/height or long/short edges), and then center-fills any blank areas with black.
 	//
-	// 	- fit: proportionally resizes the video to the maximum resolution that fits within the specified width and height or long side and short side.
+	// - fit: Scales the video proportionally to the maximum resolution that fits within the specified rectangle (defined by width/height or long/short edges).
 	//
-	// > This parameter must be used together with the **Resolution*	- parameter.
+	// > This parameter must be set together with the **Resolution*	- parameter.
 	//
 	// example:
 	//
 	// crop
 	ScaleType *string `json:"ScaleType,omitempty" xml:"ScaleType,omitempty"`
-	VideoSlim *int32  `json:"VideoSlim,omitempty" xml:"VideoSlim,omitempty"`
+	// Enables the Narrowband HD mode. Set the value as follows:
+	//
+	// 0: The default value. Disables the mode.
+	//
+	// 1: Enables transcoding in Narrowband HD mode.
+	//
+	// > For best results, use the officially recommended Bitrate or CRF parameters for video transcoding and encoding in Narrowband HD mode.
+	//
+	// 	Notice:
+	//
+	// Narrowband HD only supports the h.264/h.265 format, yuv420p, and an 8-bit depth. It does not support transcoding output for multiple target videos or video concatenation. For more information, see [Introduction to Narrowband HD](https://help.aliyun.com/document_detail/2984556.html).
+	//
+	// example:
+	//
+	// 0
+	VideoSlim *int32 `json:"VideoSlim,omitempty" xml:"VideoSlim,omitempty"`
 }
 
 func (s TargetVideoTranscodeVideo) String() string {

@@ -24,39 +24,39 @@ type iGenerateWebofficeTokenResponseBody interface {
 }
 
 type GenerateWebofficeTokenResponseBody struct {
-	// Weboffice access token.
+	// The Weboffice access credential.
 	//
 	// example:
 	//
 	// 2d73dd5d87524c5e8a194c3eb5********
 	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
-	// Expiration time of the access token. The expiration time is 30 minutes.
+	// The expiration time of the access credential. The credential expires in 30 minutes. Format: YYYY-MM-DDTHH:mm:ss.
 	//
 	// example:
 	//
 	// 2021-08-30T13:13:11.347146982Z
 	AccessTokenExpiredTime *string `json:"AccessTokenExpiredTime,omitempty" xml:"AccessTokenExpiredTime,omitempty"`
-	// Weboffice refresh token.
+	// The Weboffice refresh credential.
 	//
 	// example:
 	//
 	// e374995ec532432bb678074d36********
 	RefreshToken *string `json:"RefreshToken,omitempty" xml:"RefreshToken,omitempty"`
-	// Expiration time of the refresh token. The expiration time is 1 day.
+	// The expiration time of the refresh credential. The credential expires in 1 day. Format: YYYY-MM-DDTHH:mm:ss.
 	//
 	// example:
 	//
 	// 2021-08-31T12:43:11.347146982Z
 	RefreshTokenExpiredTime *string `json:"RefreshTokenExpiredTime,omitempty" xml:"RefreshTokenExpiredTime,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 1759315A-CB33-0A75-A72B-62D7********
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Weboffice entry URL. Used for online preview or editing of documents.
+	// The Weboffice entry URL for previewing or editing documents online.
 	//
-	// > Cannot be opened directly in a browser; it needs to be used with the Weboffice JS-SDK and access token (AccessToken) to preview or edit documents. For more information, see [Getting Started](https://help.aliyun.com/document_detail/468066.html).
+	// > This URL cannot be opened directly in a browser. You must use it together with the Weboffice JS-SDK and the access credential (AccessToken) to preview or edit documents. For more information, see [Getting Started](https://help.aliyun.com/document_detail/468066.html).
 	//
 	// example:
 	//

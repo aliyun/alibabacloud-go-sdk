@@ -26,7 +26,7 @@ type iCreateLocationDateClusteringTaskRequest interface {
 }
 
 type CreateLocationDateClusteringTaskRequest struct {
-	// The name of the dataset.[](~~478160~~)
+	// The dataset name. For more information, see [Create a dataset](https://help.aliyun.com/document_detail/478160.html).
 	//
 	// This parameter is required.
 	//
@@ -34,21 +34,21 @@ type CreateLocationDateClusteringTaskRequest struct {
 	//
 	// test-dataset
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	// The date configurations for clustering.
+	// The date clustering settings.
 	//
-	// >  Adjusting these configurations affects existing spatiotemporal clusters for the dataset.
+	// 	Notice: Modifying this setting also affects existing spatio-temporal clusters in your `Dataset`.
 	//
 	// This parameter is required.
 	DateOptions *CreateLocationDateClusteringTaskRequestDateOptions `json:"DateOptions,omitempty" xml:"DateOptions,omitempty" type:"Struct"`
-	// The geolocation configurations for clustering.
+	// The location clustering settings.
 	//
-	// >  Adjusting these configurations affects existing spatiotemporal clusters for the dataset.
+	// 	Notice: Modifying this setting also affects existing spatio-temporal clusters in your `Dataset`.
 	//
 	// This parameter is required.
 	LocationOptions *CreateLocationDateClusteringTaskRequestLocationOptions `json:"LocationOptions,omitempty" xml:"LocationOptions,omitempty" type:"Struct"`
-	// The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
+	// The message notification configuration. For more information, see Notification. For the format of asynchronous notification messages, see [Asynchronous notification message format](https://help.aliyun.com/document_detail/2743997.html).
 	Notification *Notification `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	// The name of the project.[](~~478153~~)
+	// The project name. For more information, see [Create a project](https://help.aliyun.com/document_detail/478153.html).
 	//
 	// This parameter is required.
 	//
@@ -56,7 +56,7 @@ type CreateLocationDateClusteringTaskRequest struct {
 	//
 	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The custom tags. You can search for or filter asynchronous tasks by custom tag.
+	// Custom tags used to search for and filter asynchronous tasks.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type CreateLocationDateClusteringTaskRequest struct {
 	//
 	// }
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The custom information, which is returned in an asynchronous notification and facilitates notification management. The maximum length of the value is 2,048 bytes.
+	// Custom information that is returned in the asynchronous notification message. This helps you associate the notification message with your system. The maximum length is 2,048 bytes.
 	//
 	// example:
 	//
@@ -165,11 +165,11 @@ func (s *CreateLocationDateClusteringTaskRequest) Validate() error {
 }
 
 type CreateLocationDateClusteringTaskRequestDateOptions struct {
-	// The maximum number of days allowed in a gap for a single spatiotemporal cluster. Valid values: 0 to 99999.
+	// The maximum number of gap days allowed in a single spatio-temporal group. The value must be in the range of 0 to 99,999.
 	//
-	// For example, if travel photos were produced on March 4, 5, and 7, 2024, but not on Marh 6, 2024, and you set the parameter to 1, IMM considers the travel spanning the date range from March 4, 2024 to March 7, 2024 and includes photos within the data range in the same cluster.````
+	// For example, a user has photos from March 4–5 and March 7, but not from March 6. If you assume that the photos from March 4–7 belong to the same trip, set this parameter to `1 day`. This allows the gap of `1 day` on March 6 to be included in the same spatio-temporal cluster.
 	//
-	// We recommend that you set the parameter to a value within the range from 0 to 3.
+	// Set this parameter to a value from 0 to 3.
 	//
 	// This parameter is required.
 	//
@@ -177,9 +177,9 @@ type CreateLocationDateClusteringTaskRequestDateOptions struct {
 	//
 	// 1
 	GapDays *int64 `json:"GapDays,omitempty" xml:"GapDays,omitempty"`
-	// The maximum number of days that a single spatiotemporal cluster can span. Valid values: 1 to 99999. IMM does not create a cluster that spans more than the maximum number of days.
+	// The maximum number of days in a single spatio-temporal group. The value must be in the range of 1 to 99,999. Clusters with more days than this value are not detected or stored.
 	//
-	// For example, if you want to create travel photo clusters, you may want to exclude photos that were taken within 15 consecutive days in the same city, because it is likely that these photos were not taken during a travel. In this case, you can set the parameter to 15 to exclude this time range and location from the clustering task.
+	// For example, if a user takes photos in the same location for more than 15 consecutive days, this location might be their residence rather than a travel destination. If you want to exclude this time period and location from the spatio-temporal clusters, set this parameter to 15.
 	//
 	// This parameter is required.
 	//
@@ -187,9 +187,9 @@ type CreateLocationDateClusteringTaskRequestDateOptions struct {
 	//
 	// 15
 	MaxDays *int64 `json:"MaxDays,omitempty" xml:"MaxDays,omitempty"`
-	// The minimum number of days that a single spatiotemporal cluster can span. Valid values: 1 to 99999. IMM does not create a cluster that spans less than the minimum number of days.
+	// The minimum number of days in a single spatio-temporal group. The value must be in the range of 1 to 99,999. Clusters with fewer days than this value are not detected or stored.
 	//
-	// For example, if you do not want a one-day tour cluster, you can set the parameter to 2.
+	// For example, if you do not want to include one-day trips in the generated groups, set this parameter to 2.
 	//
 	// This parameter is required.
 	//
@@ -239,15 +239,15 @@ func (s *CreateLocationDateClusteringTaskRequestDateOptions) Validate() error {
 }
 
 type CreateLocationDateClusteringTaskRequestLocationOptions struct {
-	// The administrative division levels. You can specify multiple administrative division levels.
+	// A list of administrative levels for grouping. You can select multiple levels.
 	//
-	// For example, you uploaded photos that were taken from March 3, 2024 to March 5, 2024 in Hangzhou and photos that were taken from March 6, 2024 to March 8, 2024 in Jiaxing. When you call the operation and set the parameter to `["city", "province"]`, the following spatiotemporal clusters are created from these photos:
+	// For example, a user uploads photos taken in Hangzhou from March 3 to March 5 and photos taken in Jiaxing from March 6 to March 8. If you set this parameter to `["city", "province"]`, the following spatio-temporal clusters are generated:
 	//
-	// 	- March 3, 2024 to March 5, 2024, Hangzhou
+	// - March 3 to March 5, Hangzhou
 	//
-	// 	- March 6, 2024 to March 8, 2024, Jiaxing
+	// - March 6 to March 8, Jiaxing
 	//
-	// 	- March 3, 2024 to March 8, 2024, Zhejiang
+	// - March 3 to March 8, Zhejiang
 	//
 	// This parameter is required.
 	LocationDateClusterLevels []*string `json:"LocationDateClusterLevels,omitempty" xml:"LocationDateClusterLevels,omitempty" type:"Repeated"`

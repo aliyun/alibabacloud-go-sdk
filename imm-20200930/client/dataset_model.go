@@ -44,90 +44,95 @@ type iDataset interface {
 }
 
 type Dataset struct {
-	// The current number of OSS buckets that are bound to the dataset.
+	// Number of OSS buckets currently attached to the dataset.
 	//
 	// example:
 	//
 	// 2
 	BindCount *int64 `json:"BindCount,omitempty" xml:"BindCount,omitempty"`
-	// The timestamp when the dataset was created. The timestamp must be in the RFC3339Nano format.
+	// Timestamp of dataset creation in RFC3339Nano format.
 	//
 	// example:
 	//
 	// 2021-06-29T14:50:13.011643661+08:00
-	CreateTime    *string        `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Dataset configuration.
 	DatasetConfig *DatasetConfig `json:"DatasetConfig,omitempty" xml:"DatasetConfig,omitempty"`
-	// The maximum number of bindings for the dataset.
+	// Maximum number of bindings per dataset.
 	//
 	// example:
 	//
 	// 10
 	DatasetMaxBindCount *int64 `json:"DatasetMaxBindCount,omitempty" xml:"DatasetMaxBindCount,omitempty"`
-	// The maximum number of metadata entities for the dataset.
+	// Maximum number of metadata entities in the dataset.
 	//
 	// example:
 	//
 	// 10000000000
 	DatasetMaxEntityCount *int64 `json:"DatasetMaxEntityCount,omitempty" xml:"DatasetMaxEntityCount,omitempty"`
-	// The maximum number of files for the dataset.
+	// Maximum number of files in the dataset.
 	//
 	// example:
 	//
 	// 100000000
 	DatasetMaxFileCount *int64 `json:"DatasetMaxFileCount,omitempty" xml:"DatasetMaxFileCount,omitempty"`
-	// The maximum number of metadata relationships for the dataset.
+	// Maximum number of metadata relations in the dataset.
 	//
 	// example:
 	//
 	// 100000000000
 	DatasetMaxRelationCount *int64 `json:"DatasetMaxRelationCount,omitempty" xml:"DatasetMaxRelationCount,omitempty"`
-	// The maximum total size of files in the dataset. Unit: bytes.
+	// Maximum total file size in the dataset, in bytes.
 	//
 	// example:
 	//
 	// 90000000000000000
 	DatasetMaxTotalFileSize *int64 `json:"DatasetMaxTotalFileSize,omitempty" xml:"DatasetMaxTotalFileSize,omitempty"`
-	// The name of the dataset.
+	// Dataset name.
 	//
 	// example:
 	//
 	// dataset001
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	// The dataset description.
+	// Dataset description.
+	//
+	// example:
+	//
+	// 测试数据集
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The current number of files in the dataset.
+	// Current number of files in the dataset.
 	//
 	// example:
 	//
 	// 10
 	FileCount *int64 `json:"FileCount,omitempty" xml:"FileCount,omitempty"`
-	// The name of the project.
+	// Project name.
 	//
 	// example:
 	//
 	// immtest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The ID of the workflow template.
+	// Workflow template ID.
 	//
 	// example:
 	//
-	// DefaultId
+	// Official:ImageManagement
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The total size of files in the dataset. Unit: bytes.
+	// Total file size in the dataset, in bytes.
 	//
 	// example:
 	//
 	// 100000
 	TotalFileSize *int64 `json:"TotalFileSize,omitempty" xml:"TotalFileSize,omitempty"`
-	// The timestamp when the dataset was last modified. The timestamp must be in the RFC3339Nano format.
+	// Timestamp of the last dataset update in RFC3339Nano format.
 	//
-	// >  If a dataset has never been modified after it was created, the timestamp when the dataset was last modified is the same as the timestamp when the dataset was created.
+	// > If the dataset has never been updated since creation, the update timestamp equals the creation timestamp.
 	//
 	// example:
 	//
 	// 2021-06-29T14:50:13.011643661+08:00
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// 自定义参数
+	// Custom parameters.
 	//
 	// if can be null:
 	// true

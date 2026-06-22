@@ -34,34 +34,64 @@ type iCreateHighlightTaskShrinkRequest interface {
 }
 
 type CreateHighlightTaskShrinkRequest struct {
+	// The China authorization configuration. **Leave this parameter empty unless you have specific requirements.**.
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	EditShrink             *string `json:"Edit,omitempty" xml:"Edit,omitempty"`
-	HighlightShrink        *string `json:"Highlight,omitempty" xml:"Highlight,omitempty"`
+	// The editing configuration.
+	EditShrink *string `json:"Edit,omitempty" xml:"Edit,omitempty"`
+	// The highlight configuration.
+	HighlightShrink *string `json:"Highlight,omitempty" xml:"Highlight,omitempty"`
+	// The highlight recognition mode. Valid values:
+	//
+	// - Scene: scene and frame recognition.
+	//
+	// - Average (default): average slice recognition.
+	//
 	// example:
 	//
 	// Average
-	Mode               *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The message notification configuration. For more information, click Notification. For the format of asynchronous notification messages, see [Asynchronous notification message format](https://www.alibabacloud.com/help/en/imm/developer-reference/asynchronous-notification-message-examples).
 	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// The output configuration.
+	//
 	// This parameter is required.
 	OutputShrink *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	// The project name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// immtest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The list of media resources to process.
+	//
+	// A maximum of 10 videos are supported.
+	//
 	// This parameter is required.
 	SourcesShrink *string `json:"Sources,omitempty" xml:"Sources,omitempty"`
+	// The custom tags used to search for and filter asynchronous tasks.
+	//
 	// example:
 	//
 	// {"test":"val1"}
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The processing type. Valid values:
+	//
+	// - Retrieval: highlight extraction.
+	//
+	// - Concat: video composition.
+	//
+	// - Compose: one-click video creation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Retrieval
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The custom user data, which is returned in asynchronous message notifications.
+	//
 	// example:
 	//
 	// {"ID": "testuid","Name": "test-user","Avatar": "http://test.com/testuid"}

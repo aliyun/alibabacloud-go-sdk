@@ -121,6 +121,10 @@ type QueryLocationDateClustersShrinkRequest struct {
 	// LocationDateClusterStartTime
 	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
 	// The characters that are included in the titles of spatiotemporal clusters to be queried. Matches are found by using fuzzy matching.
+	//
+	// example:
+	//
+	// Hangzhou
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 	// The time range during which the spatiotemporal clusters were updated.
 	UpdateTimeRangeShrink *string `json:"UpdateTimeRange,omitempty" xml:"UpdateTimeRange,omitempty"`

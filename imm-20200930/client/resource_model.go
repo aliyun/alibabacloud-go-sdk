@@ -40,7 +40,7 @@ type Resource struct {
 	//
 	// example:
 	//
-	// string	NVIDIA_P4
+	// NVIDIA_P4
 	GPUModel *string `json:"GPUModel,omitempty" xml:"GPUModel,omitempty"`
 	// The number of GPUs.
 	//
@@ -52,7 +52,7 @@ type Resource struct {
 	//
 	// example:
 	//
-	// string	ecs.gn5i-c2g1.large-2vCPU-8GB-1*NVIDIA_P4
+	// ecs.gn5i-c2g1.large-2vCPU-8GB-1*NVIDIA_P4
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The RAM size. Unit: GB. Valid values: 30 to 736.
 	//

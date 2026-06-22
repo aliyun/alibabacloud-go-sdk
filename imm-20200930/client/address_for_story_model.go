@@ -23,14 +23,34 @@ type iAddressForStory interface {
 
 type AddressForStory struct {
 	// The city.
+	//
+	// example:
+	//
+	// 杭州市
 	City *string `json:"City,omitempty" xml:"City,omitempty"`
 	// The country.
+	//
+	// example:
+	//
+	// 中国
 	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
 	// The district.
+	//
+	// example:
+	//
+	// 滨江区
 	District *string `json:"District,omitempty" xml:"District,omitempty"`
 	// The province.
+	//
+	// example:
+	//
+	// 浙江省
 	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
 	// The township.
+	//
+	// example:
+	//
+	// 长河街道
 	Township *string `json:"Township,omitempty" xml:"Township,omitempty"`
 }
 

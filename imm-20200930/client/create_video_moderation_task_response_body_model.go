@@ -18,19 +18,19 @@ type iCreateVideoModerationTaskResponseBody interface {
 }
 
 type CreateVideoModerationTaskResponseBody struct {
-	// The event ID.
+	// The ID of the event.
 	//
 	// example:
 	//
 	// 2E6-1I0FGn0zFnl5AflRfhzClma*****
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 1B3D5E0A-D8B8-4DA0-8127-ED32C851****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The task ID.
+	// The ID of the task.
 	//
 	// example:
 	//

@@ -48,7 +48,7 @@ type TrimPolicy struct {
 	//
 	// example:
 	//
-	// true
+	// false
 	DisableDeleteUnusedPicture *bool `json:"DisableDeleteUnusedPicture,omitempty" xml:"DisableDeleteUnusedPicture,omitempty"`
 	// Specifies whether to prevent unused shapes from being deleted. Valid values:
 	//

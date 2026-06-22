@@ -20,7 +20,7 @@ type iGetTaskRequest interface {
 }
 
 type GetTaskRequest struct {
-	// The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+	// The project name. For information about how to obtain the project name, see [Create a project](https://help.aliyun.com/document_detail/478153.html).
 	//
 	// This parameter is required.
 	//
@@ -28,57 +28,57 @@ type GetTaskRequest struct {
 	//
 	// immtest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// Specifies whether to return original request parameters specified to create the task.
+	// Specifies whether to return the original request parameters used to create the task. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false (default)
+	// - false (default)
 	//
-	// This parameter applies only to the following tasks:
+	// This parameter takes effect only for the following task types:
 	//
-	// 	- MediaConvert
+	// - MediaConvert
 	//
-	// 	- VideoLabelClassification
+	// - VideoLabelClassification
 	//
-	// 	- FaceClustering
+	// - FaceClustering
 	//
-	// 	- FileCompression
+	// - FileCompression
 	//
-	// 	- ArchiveFileInspection
+	// - ArchiveFileInspection
 	//
-	// 	- FileUncompression
+	// - FileUncompression
 	//
-	// 	- PointCloudCompress
+	// - PointCloudCompress
 	//
-	// 	- ImageToPDF
+	// - ImageToPDF
 	//
-	// 	- StoryCreation
+	// - StoryCreation
 	//
-	// 	- LocationDateClustering
+	// - LocationDateClustering
 	//
-	// 	- ImageSplicing
+	// - ImageSplicing
 	//
-	// 	- FacesSearching
+	// - FacesSearching.
 	//
 	// example:
 	//
-	// True
+	// true
 	RequestDefinition *bool `json:"RequestDefinition,omitempty" xml:"RequestDefinition,omitempty"`
-	// The ID of the task. You can obtain the ID of a task after you create the task.
+	// The ID of the task that you want to query. This value is returned when you create the task.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// c2b277b9-0d30-4882-ad6d-ad661382****
+	// FileCompression-2f157087-91df-4fda-8c3e-232407ec*****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The type of the task. For information about valid values, see [Task types](https://help.aliyun.com/document_detail/2743993.html).
+	// The type of the task. For valid values, see [Task type list](https://help.aliyun.com/document_detail/2743993.html).
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// VideoLabelClassification
+	// FileCompression
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 

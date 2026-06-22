@@ -21,6 +21,10 @@ type DetectImageTextsResponseBody struct {
 	// OCR text blocks.
 	OCRContents []*OCRContents `json:"OCRContents,omitempty" xml:"OCRContents,omitempty" type:"Repeated"`
 	// The full Optical Character Recognition (OCR) text, which is spliced by using the content of OCRContents.
+	//
+	// example:
+	//
+	// Intelligent Media Management.
 	OCRTexts *string `json:"OCRTexts,omitempty" xml:"OCRTexts,omitempty"`
 	// The request ID.
 	//

@@ -29,6 +29,10 @@ type OCRContents struct {
 	// 0.8254936695098877
 	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
 	// The content.
+	//
+	// example:
+	//
+	// 欢迎使用智能媒体管理
 	Contents *string `json:"Contents,omitempty" xml:"Contents,omitempty"`
 	// The BCP 47 language code. This parameter is not supported in the current version.
 	//

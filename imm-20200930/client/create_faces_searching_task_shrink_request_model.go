@@ -24,7 +24,7 @@ type iCreateFacesSearchingTaskShrinkRequest interface {
 }
 
 type CreateFacesSearchingTaskShrinkRequest struct {
-	// The name of the dataset.[](~~478160~~)
+	// The name of the dataset. For more information, see [Create a dataset](https://help.aliyun.com/document_detail/478160.html).
 	//
 	// This parameter is required.
 	//
@@ -32,15 +32,15 @@ type CreateFacesSearchingTaskShrinkRequest struct {
 	//
 	// test-dataset
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	// The number of the most similar faces that you want to return. Valid values: 1 to 100. Default value: 5.
+	// The number of most similar faces to return. Valid values: 0 to 100. Default value: 5.
 	//
 	// example:
 	//
 	// 100
 	MaxResult *int64 `json:"MaxResult,omitempty" xml:"MaxResult,omitempty"`
-	// The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
+	// The notification configuration. For more information about the format of asynchronous notification messages, see [Asynchronous notification message format](https://help.aliyun.com/document_detail/2743997.html).
 	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	// The name of the project.[](~~478153~~)
+	// The name of the project. For more information, see [Create a project](https://help.aliyun.com/document_detail/478153.html).
 	//
 	// This parameter is required.
 	//
@@ -48,9 +48,9 @@ type CreateFacesSearchingTaskShrinkRequest struct {
 	//
 	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The images.
+	// A list of images.
 	SourcesShrink *string `json:"Sources,omitempty" xml:"Sources,omitempty"`
-	// The custom information, which is returned in an asynchronous notification and facilitates notification management. The maximum length of the value is 2,048 bytes.
+	// Custom user information. This information is returned in the asynchronous notification message to help you associate the message with your system. The maximum length is 2048 bytes.
 	//
 	// example:
 	//

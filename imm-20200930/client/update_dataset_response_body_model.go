@@ -16,9 +16,9 @@ type iUpdateDatasetResponseBody interface {
 }
 
 type UpdateDatasetResponseBody struct {
-	// 数据集。
+	// The dataset.
 	Dataset *Dataset `json:"Dataset,omitempty" xml:"Dataset,omitempty"`
-	// 请求ID。
+	// The request ID.
 	//
 	// example:
 	//

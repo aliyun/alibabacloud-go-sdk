@@ -27,22 +27,46 @@ type iAddress interface {
 
 type Address struct {
 	// The full address.
+	//
+	// example:
+	//
+	// 中国浙江省杭州市余杭区文一西路969号
 	AddressLine *string `json:"AddressLine,omitempty" xml:"AddressLine,omitempty"`
 	// The city.
+	//
+	// example:
+	//
+	// 杭州市
 	City *string `json:"City,omitempty" xml:"City,omitempty"`
 	// The country or region.
+	//
+	// example:
+	//
+	// 中国
 	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
 	// The district.
+	//
+	// example:
+	//
+	// 余杭区
 	District *string `json:"District,omitempty" xml:"District,omitempty"`
 	// The BCP 47 language code.
 	//
 	// example:
 	//
-	// zh-hans
+	// zh-Hans
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	// The province.
+	//
+	// example:
+	//
+	// 浙江省
 	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
 	// The street.
+	//
+	// example:
+	//
+	// 文一西路
 	Township *string `json:"Township,omitempty" xml:"Township,omitempty"`
 }
 

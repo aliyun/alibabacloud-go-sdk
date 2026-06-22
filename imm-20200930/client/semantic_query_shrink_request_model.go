@@ -34,13 +34,13 @@ type SemanticQueryShrinkRequest struct {
 	//
 	// example:
 	//
-	// immDatatest
+	// test-dataset
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
 	// The maximum number of entries to return. Valid values: 1 to 1000.
 	//
 	// example:
 	//
-	// 10
+	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The types of the media that you want to query. Default value:
 	//
@@ -50,7 +50,7 @@ type SemanticQueryShrinkRequest struct {
 	//
 	// example:
 	//
-	// MTIzNDU2Nzg6aW1tdGVzdDpleGFtcGxlYnVja2V0OmRhdGFzZXQwMDE6b3NzOi8vZXhhbXBsZWJ1Y2tldC9zYW1wbGVvYmplY3QxLmpwZw==
+	// Reserved. Not supported yet.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The name of the project.
 	//
@@ -58,7 +58,7 @@ type SemanticQueryShrinkRequest struct {
 	//
 	// example:
 	//
-	// immtest
+	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	// The content of the query that you input.
 	//
@@ -68,11 +68,9 @@ type SemanticQueryShrinkRequest struct {
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
 	// > Either this parameter or the Query parameter must be specified. This parameter is valid only for image searches on datasets configured with a search-by-image workflow.
 	//
-	// >
-	//
 	// URI of the source data for retrieval.
 	//
-	// The URI must be in the oss://${Bucket}/${Object} format. ${Bucket} specifies the name of the OSS bucket that is in the same region as the current project. ${Object} specifies the full path of the file that contains the file name extension.
+	// The URI must be in the oss\\://${Bucket}/${Object} format. ${Bucket} specifies the name of the OSS bucket that is in the same region as the current project. ${Object} specifies the full path of the file that contains the file name extension.
 	//
 	// Contact us if you need to configure a workflow template.
 	//
@@ -80,7 +78,7 @@ type SemanticQueryShrinkRequest struct {
 	//
 	// oss://test-bucket/test-object
 	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
-	// >  Either this parameter or the SourceURI parameter must be specified.
+	// > Either this parameter or the SourceURI parameter must be specified.
 	//
 	// The content of the query that you input.
 	WithFieldsShrink *string `json:"WithFields,omitempty" xml:"WithFields,omitempty"`

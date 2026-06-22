@@ -28,7 +28,7 @@ type DetectImageScoreRequest struct {
 	//
 	// example:
 	//
-	// immtest
+	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	// The OSS URI of the input image.
 	//
@@ -36,7 +36,7 @@ type DetectImageScoreRequest struct {
 	//
 	// example:
 	//
-	// oss://bucketname/objectname
+	// oss://examplebucket/sampleobject.jpg
 	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
 }
 

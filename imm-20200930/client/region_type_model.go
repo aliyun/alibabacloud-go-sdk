@@ -17,6 +17,10 @@ type iRegionType interface {
 
 type RegionType struct {
 	// The name of the region.
+	//
+	// example:
+	//
+	// 华北2（北京）
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	// The ID of the region.
 	//

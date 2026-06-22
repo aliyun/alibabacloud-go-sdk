@@ -18,7 +18,7 @@ type iGetVideoModerationResultRequest interface {
 }
 
 type GetVideoModerationResultRequest struct {
-	// The project name.[](~~478153~~)
+	// The project name.
 	//
 	// This parameter is required.
 	//

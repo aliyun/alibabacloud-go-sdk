@@ -58,15 +58,15 @@ type QueryFigureClustersShrinkRequest struct {
 	//
 	// example:
 	//
-	// 10
+	// CAESEgoQCg4KCkltYWdlQ291bnQQARgBIr0ECgkABAAAAAAAAAAKrwQDKgIAADFTMzEzMDMyMzMzMjMxMzAzMDMyMzQzNjM3MzczOTMzMzQzYTY5NmQ2ZDJkNjk2ZDYxNjc2NTJkNzQ2NTczNzQyZDY4N2E2NDY1NzYyZDMyMzUzMjM0MzIzOTMzMzczMTJkMzY1NDZhNzk3MzU2Njk3MjM0M2E2OTZkNmQyZDc0NjU3Mzc0MmQ3MzY1NzQyZDYzMzYzNjY0MzY2NjYxMzQyZDM1MzMzODM3MmQzMTMxNjU2NjJkNjI2NTM5MzYyZDM5MzgzMDMzMzk2MjMwMzE2NDYzNjMzMjNhNjY2OTY3NzU3MjY1MmQ2MzZjNzU3Mzc0NjU3MjNhNDM2Yzc1NzM3NDY1NzIyZDYxNjUzOTY0MzQzMzMxNjEyZDM3MzQ2NTY2MmQzNDM5Mzc2MjJkMzg2MjMxMzUyZDM0MzUzOTM1MzYzNzYxMzQ2NDM2MzE2Ni5TMzEzMDMyMzMzMjMxMzAzMDMyMzQzNjM3MzczOTMzMzQzYTY5NmQ2ZDJkNjk2ZDYxNjc2NTJkNzQ2NTczNzQyZDY4N2E2NDY1NzYyZDMyMzUzMjM0MzIzOTMzMzczMTJkMzY1NDZhNzk3MzU2Njk3MjM0M2E2OTZkNmQyZDc0NjU3Mzc0MmQ3MzY1NzQyZDYzMzYzNjY0MzY2NjYxMzQyZDM1MzMzODM3MmQzMTMxNjU2NjJkNjI2NTM5MzYyZDM5MzgzMDMzMzk2MjMwMzE2NDYzNjM*****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The sort order. Default value: asc.
 	//
 	// Valid values:
 	//
-	// 	- asc: ascending order.
+	// - asc: ascending order.
 	//
-	// 	- desc: descending order.
+	// - desc: descending order.
 	//
 	// example:
 	//
@@ -84,23 +84,23 @@ type QueryFigureClustersShrinkRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- ImageCount: the number of images.
+	// - ImageCount: the number of images.
 	//
-	// 	- VideoCount: the number of videos.
+	// - VideoCount: the number of videos.
 	//
-	// 	- ProjectName: the name of the project.
+	// - ProjectName: the name of the project.
 	//
-	// 	- DatasetName: the name of the dataset.
+	// - DatasetName: the name of the dataset.
 	//
-	// 	- CreateTime: the point in time when the group is created.
+	// - CreateTime: the point in time when the group is created.
 	//
-	// 	- UpdateTime: the most recent point in time when the group is updated.
+	// - UpdateTime: the most recent point in time when the group is updated.
 	//
-	// 	- Gender: the gender.
+	// - Gender: the gender.
 	//
-	// 	- FaceCount: the number of faces.
+	// - FaceCount: the number of faces.
 	//
-	// 	- GroupName: the name of the group.
+	// - GroupName: the name of the group.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iInput interface {
 }
 
 type Input struct {
-	// The input data source from Object Storage Service (OSS).
+	// The OSS data source.
 	OSS *InputOSS `json:"OSS,omitempty" xml:"OSS,omitempty"`
 }
 

@@ -11,6 +11,8 @@ type iProject interface {
 	GoString() string
 	SetCreateTime(v string) *Project
 	GetCreateTime() *string
+	SetDatasetConfig(v *DatasetConfig) *Project
+	GetDatasetConfig() *DatasetConfig
 	SetDatasetCount(v int64) *Project
 	GetDatasetCount() *int64
 	SetDatasetMaxBindCount(v int64) *Project
@@ -48,59 +50,64 @@ type iProject interface {
 }
 
 type Project struct {
-	// The timestamp when the project was created. The timestamp is in the RFC3339Nano format.
+	// The timestamp when the project was created, in RFC3339Nano format.
 	//
 	// example:
 	//
 	// 2021-06-29T14:50:13.011643661+08:00
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime    *string        `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DatasetConfig *DatasetConfig `json:"DatasetConfig,omitempty" xml:"DatasetConfig,omitempty"`
 	// The current number of datasets in the project.
 	//
 	// example:
 	//
 	// 5
 	DatasetCount *int64 `json:"DatasetCount,omitempty" xml:"DatasetCount,omitempty"`
-	// The maximum number of bindings that a dataset can have. Valid values: 1 to 10. Default value: 10.
+	// The maximum number of bindings per dataset. Valid values: 1 to 10. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	DatasetMaxBindCount *int64 `json:"DatasetMaxBindCount,omitempty" xml:"DatasetMaxBindCount,omitempty"`
-	// The maximum number of metadata entities in a dataset. Default value: 10000000000.
+	// The maximum number of metadata entities per dataset. Default value: 10000000000.
 	//
-	// >  This parameter is reserved and does not actually apply a limit.
+	// > This field is reserved for future use and is not enforced.
 	//
 	// example:
 	//
 	// 10000000000
 	DatasetMaxEntityCount *int64 `json:"DatasetMaxEntityCount,omitempty" xml:"DatasetMaxEntityCount,omitempty"`
-	// The maximum number of files in a dataset. Valid values: 1 to 100000000. Default value: 100000000.
+	// The maximum number of files per dataset. Valid values: 1 to 100000000. Default value: 100000000.
 	//
 	// example:
 	//
 	// 100000000
 	DatasetMaxFileCount *int64 `json:"DatasetMaxFileCount,omitempty" xml:"DatasetMaxFileCount,omitempty"`
-	// The maximum number of metadata relationships in a dataset. Default value: 100000000000.
+	// The maximum number of metadata relationships per dataset. Default value: 100000000000.
 	//
-	// >  This parameter is reserved and does not actually apply a limit.
+	// > This field is reserved for future use and is not enforced.
 	//
 	// example:
 	//
 	// 100000000000
 	DatasetMaxRelationCount *int64 `json:"DatasetMaxRelationCount,omitempty" xml:"DatasetMaxRelationCount,omitempty"`
-	// The maximum total file size for a dataset. If the total file size exceeds this limit, indexes can no longer be added. Default value: 90000000000000000. Unit: bytes.
+	// The maximum total file size per dataset, in bytes. After this limit is exceeded, no more indexes can be added. Default value: 90000000000000000.
 	//
 	// example:
 	//
 	// 90000000000000000
 	DatasetMaxTotalFileSize *int64 `json:"DatasetMaxTotalFileSize,omitempty" xml:"DatasetMaxTotalFileSize,omitempty"`
 	// The project description.
+	//
+	// example:
+	//
+	// test project
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The maximum number of tasks that the project can process per second. This corresponds to the maximum number of operators that can run in parallel in the project. Default value: 100.
+	// The maximum number of tasks that the project can process per second. This specifies the maximum number of operators that can run in parallel at the same time across the project. Default value: 100.
 	//
-	// 	- If the number of synchronous tasks that run in parallel exceeds this limit, the task execution time will be extended until a timeout occurs.
+	// - Synchronous tasks: if the number of concurrent tasks exceeds this limit, task execution time increases until a timeout occurs.
 	//
-	// 	- If the number of asynchronous tasks that run in parallel exceeds this limit, the tasks will be queued. This causes delayed task completion. If a task remains in the queue for longer than the specified time limit (usually dozens of seconds), the task will fail.
+	// - Asynchronous tasks: if the number of concurrent tasks exceeds this limit, tasks are queued for a period of time, which delays task completion. If the queuing time also exceeds the limit (typically tens of minutes), the task returns a failure.
 	//
 	// example:
 	//
@@ -112,19 +119,19 @@ type Project struct {
 	//
 	// 10
 	FileCount *int64 `json:"FileCount,omitempty" xml:"FileCount,omitempty"`
-	// The maximum number of datasets that a project can contain. Valid values: 1 to 1000000000. Default value: 1000000000.
+	// The maximum number of datasets in the project. Valid values: 1 to 1000000000. Default value: 1000000000.
 	//
 	// example:
 	//
 	// 1000000000
 	ProjectMaxDatasetCount *int64 `json:"ProjectMaxDatasetCount,omitempty" xml:"ProjectMaxDatasetCount,omitempty"`
-	// The name of the project.
+	// The project name.
 	//
 	// example:
 	//
 	// immtest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The maximum number of requests that can be processed by the project per second. This corresponds to the maximum number of API operations that can be called in the project per second. Default value: 100.
+	// The maximum number of requests that the project can process per second. This specifies the maximum number of API calls allowed per second for all APIs in the project. Default value: 100.
 	//
 	// example:
 	//
@@ -136,23 +143,23 @@ type Project struct {
 	//
 	// AliyunIMMDefaultRole
 	ServiceRole *string `json:"ServiceRole,omitempty" xml:"ServiceRole,omitempty"`
-	// The tag list.
+	// The list of tags.
 	Tags []*ProjectTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The ID of the workflow template.
+	// The workflow template ID.
 	//
 	// example:
 	//
-	// DefaultId
+	// Official:ImageManagement
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The current total size of files in the project. Unit: bytes.
+	// The current total file size in the project, in bytes.
 	//
 	// example:
 	//
 	// 100000
 	TotalFileSize *int64 `json:"TotalFileSize,omitempty" xml:"TotalFileSize,omitempty"`
-	// The timestamp when the project was last modified. The timestamp is in the RFC3339Nano format.
+	// The timestamp when the project was last modified, in RFC3339Nano format.
 	//
-	// >  If a project is not modified after it is created, the timestamp when the project was created is the same as the timestamp when the project was last modified.
+	// > If the project has not been updated since creation, this timestamp is the same as the creation timestamp.
 	//
 	// example:
 	//
@@ -170,6 +177,10 @@ func (s Project) GoString() string {
 
 func (s *Project) GetCreateTime() *string {
 	return s.CreateTime
+}
+
+func (s *Project) GetDatasetConfig() *DatasetConfig {
+	return s.DatasetConfig
 }
 
 func (s *Project) GetDatasetCount() *int64 {
@@ -242,6 +253,11 @@ func (s *Project) GetUpdateTime() *string {
 
 func (s *Project) SetCreateTime(v string) *Project {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *Project) SetDatasetConfig(v *DatasetConfig) *Project {
+	s.DatasetConfig = v
 	return s
 }
 
@@ -331,6 +347,11 @@ func (s *Project) SetUpdateTime(v string) *Project {
 }
 
 func (s *Project) Validate() error {
+	if s.DatasetConfig != nil {
+		if err := s.DatasetConfig.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.Tags != nil {
 		for _, item := range s.Tags {
 			if item != nil {
@@ -344,13 +365,13 @@ func (s *Project) Validate() error {
 }
 
 type ProjectTags struct {
-	// The tag key.
+	// 标签键。
 	//
 	// example:
 	//
 	// TestKey
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag value.
+	// 标签值。
 	//
 	// example:
 	//

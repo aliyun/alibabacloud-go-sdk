@@ -159,7 +159,7 @@ type UpdateStoryRequestCover struct {
 	//
 	// example:
 	//
-	// oss://bucket1/object
+	// oss://test-bucket/test-object
 	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
 }
 

@@ -24,7 +24,7 @@ type CreateDecodeBlindWatermarkTaskResponseBody struct {
 	//
 	// 27C-1jyAP5qQI7RoI8lFFwvMrWtl0ft
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

@@ -30,7 +30,7 @@ type Element struct {
   // 
   // example:
   // 
-  // title; image; table; narrative-text
+  // title - 标题； image - 图片 ； table - 表格 ； narrative-text - 正文
   ElementType *string `json:"ElementType,omitempty" xml:"ElementType,omitempty"`
   // The unique ID of the element.
   // 

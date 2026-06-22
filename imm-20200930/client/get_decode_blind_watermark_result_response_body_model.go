@@ -43,6 +43,10 @@ type GetDecodeBlindWatermarkResultResponseBody struct {
 	// ResourceNotFound
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The watermark content.
+	//
+	// example:
+	//
+	// Copyright Alibaba Cloud
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The end time of the task.
 	//

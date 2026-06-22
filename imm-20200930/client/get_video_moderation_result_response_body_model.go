@@ -36,13 +36,13 @@ type iGetVideoModerationResultResponseBody interface {
 }
 
 type GetVideoModerationResultResponseBody struct {
-	// The error code of the task.
+	// The task error code.
 	//
 	// example:
 	//
 	// ResourceNotFound
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The end time of the task.
+	// The time when the task ended. The value is a UTC timestamp in ISO 8601 format with millisecond precision.
 	//
 	// example:
 	//
@@ -54,13 +54,13 @@ type GetVideoModerationResultResponseBody struct {
 	//
 	// 05C-1XBQvsG2Tn5kBx2dUWo43******
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	// The error message of the task.
+	// The task error message.
 	//
 	// example:
 	//
 	// The specified resource TaskId is not found.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The result of the image compliance detection task.
+	// The content moderation details.
 	ModerationResult *GetVideoModerationResultResponseBodyModerationResult `json:"ModerationResult,omitempty" xml:"ModerationResult,omitempty" type:"Struct"`
 	// The project name.
 	//
@@ -74,7 +74,7 @@ type GetVideoModerationResultResponseBody struct {
 	//
 	// VideoModeration-d0f0df1d-531d-4ab4-b353-e7f475******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The start time of the task.
+	// The time when the task started. The value is a UTC timestamp in ISO 8601 format with millisecond precision.
 	//
 	// example:
 	//
@@ -82,11 +82,11 @@ type GetVideoModerationResultResponseBody struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The task status. Valid values:
 	//
-	// 	- Running: The task is running.
+	// - Running: The task is running.
 	//
-	// 	- Succeeded: The task is successful.
+	// - Succeeded: The task succeeded.
 	//
-	// 	- Failed: The task failed.
+	// - Failed: The task failed.
 	//
 	// example:
 	//
@@ -98,13 +98,13 @@ type GetVideoModerationResultResponseBody struct {
 	//
 	// VideoModeration-d0f0df1d-531d-4ab4-b353-e7f4750******
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The type of the task.
+	// The task type.
 	//
 	// example:
 	//
 	// VideoModeration
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	// The user-defined data.
+	// The custom user data.
 	//
 	// example:
 	//
@@ -246,21 +246,21 @@ func (s *GetVideoModerationResultResponseBody) Validate() error {
 type GetVideoModerationResultResponseBodyModerationResult struct {
 	// The category list.
 	Categories []*string `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
-	// The information about video and motion detection frames.
+	// The frame-related information for video and animated image moderation.
 	Frames *GetVideoModerationResultResponseBodyModerationResultFrames `json:"Frames,omitempty" xml:"Frames,omitempty" type:"Struct"`
-	// The recommended operation. Valid values:
+	// The moderation result suggestion. Valid values:
 	//
-	// 	- pass: The image has passed the check. No action is required.
+	// - **block**: Violation detected.
 	//
-	// 	- review: The image contains suspected violations and requires human review.
+	// - **review**: Suspected violation.
 	//
-	// 	- block: The image contains violations. Further actions, such as deleting or blocking the image, are recommended.
+	// - **pass**: Passed.
 	//
 	// example:
 	//
 	// block
 	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
-	// The OSS URI of the file. The URI follows the oss://${bucketname}/${objectname} format. bucketname indicates the name of an OSS bucket that is in the same region as the current project, and objectname is the file path.
+	// The file URI. The storage address of the OSS file. The address follows the format `oss://${bucketname}/${objectname}`, where `bucketname` is the name of an OSS bucket in the same region as the current project, and `objectname` is the file path.
 	//
 	// example:
 	//
@@ -322,9 +322,9 @@ func (s *GetVideoModerationResultResponseBodyModerationResult) Validate() error 
 }
 
 type GetVideoModerationResultResponseBodyModerationResultFrames struct {
-	// The information about violated frames.
+	// The frames that contain violations.
 	BlockFrames []*GetVideoModerationResultResponseBodyModerationResultFramesBlockFrames `json:"BlockFrames,omitempty" xml:"BlockFrames,omitempty" type:"Repeated"`
-	// The total number of detected frames.
+	// The total number of frames inspected.
 	//
 	// example:
 	//
@@ -372,7 +372,7 @@ func (s *GetVideoModerationResultResponseBodyModerationResultFrames) Validate() 
 }
 
 type GetVideoModerationResultResponseBodyModerationResultFramesBlockFrames struct {
-	// The label of the violation.
+	// The violation label.
 	//
 	// example:
 	//
@@ -384,7 +384,7 @@ type GetVideoModerationResultResponseBodyModerationResultFramesBlockFrames struc
 	//
 	// 1
 	Offset *int32 `json:"Offset,omitempty" xml:"Offset,omitempty"`
-	// The confidence level of the violation.
+	// The confidence score of the violation.
 	//
 	// example:
 	//

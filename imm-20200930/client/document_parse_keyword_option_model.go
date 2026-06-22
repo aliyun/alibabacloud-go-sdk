@@ -16,11 +16,14 @@ type iDocumentParseKeywordOption interface {
 }
 
 type DocumentParseKeywordOption struct {
+	// The number of keywords to extract. The value must be an integer from 0 to 10.
+	//
 	// example:
 	//
 	// 1
-	Count   *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	Extract *bool  `json:"Extract,omitempty" xml:"Extract,omitempty"`
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// Specifies whether to extract keywords.
+	Extract *bool `json:"Extract,omitempty" xml:"Extract,omitempty"`
 }
 
 func (s DocumentParseKeywordOption) String() string {

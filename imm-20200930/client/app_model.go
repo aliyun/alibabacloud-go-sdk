@@ -31,6 +31,10 @@ type iApp interface {
 
 type App struct {
 	// AppDescription
+	//
+	// example:
+	//
+	// 中国最大的电商购物商城
 	AppDescription *string `json:"AppDescription,omitempty" xml:"AppDescription,omitempty"`
 	// AppId
 	//
@@ -45,6 +49,10 @@ type App struct {
 	// ryBOBW0Z6NnQ3fV9
 	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
 	// AppName
+	//
+	// example:
+	//
+	// 淘宝
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	// AppRegion
 	//

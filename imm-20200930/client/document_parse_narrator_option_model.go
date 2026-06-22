@@ -14,6 +14,7 @@ type iDocumentParseNarratorOption interface {
 }
 
 type DocumentParseNarratorOption struct {
+	// The summary of the document.
 	Narrate *bool `json:"Narrate,omitempty" xml:"Narrate,omitempty"`
 }
 

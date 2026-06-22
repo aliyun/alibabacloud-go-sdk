@@ -18,7 +18,7 @@ type iGetImageModerationResultRequest interface {
 }
 
 type GetImageModerationResultRequest struct {
-	// The name of the project.
+	// The project name.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type GetImageModerationResultRequest struct {
 	//
 	// ImageModeration-ff207203-3f93-4645-a041-7b8f0f******
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The type of the task.
+	// The task type.
 	//
 	// This parameter is required.
 	//

@@ -46,7 +46,7 @@ type GetTaskResponseBody struct {
 	//
 	// ResourceNotFound
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The end time of the task.
+	// The time when the task ended. The value is a UTC timestamp in ISO 8601 format with millisecond precision.
 	//
 	// example:
 	//
@@ -64,9 +64,11 @@ type GetTaskResponseBody struct {
 	//
 	// The specified resource project is not found.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The task progress. Valid values: 0 to 100. Unit: %.
+	// The task progress. Valid values: 0 to 100. Unit: percent (%).
 	//
-	// >  This parameter is valid only if the task is in the `Running` state.``
+	// > -  The GetTask operation does not support this parameter.
+	//
+	// > -  This parameter is meaningful only when the task status `State` is `Running`.
 	//
 	// example:
 	//
@@ -76,7 +78,7 @@ type GetTaskResponseBody struct {
 	//
 	// example:
 	//
-	// immtest
+	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	// The request ID.
 	//
@@ -84,25 +86,25 @@ type GetTaskResponseBody struct {
 	//
 	// 2C5C1E0F-D8B8-4DA0-8127-EC32C771****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The start time of the task.
+	// The time when the task started. The value is a UTC timestamp in ISO 8601 format with millisecond precision.
 	//
 	// example:
 	//
 	// 2021-12-24T03:01:41.662060377Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the task. Valid values:
+	// The running status of the task. Valid values:
 	//
-	// 	- RUNNING: The task is running.
+	// - Running: The task is running.
 	//
-	// 	- Succeeded: The task is successful.
+	// - Succeeded: The task is completed.
 	//
-	// 	- Failed: The task failed.
+	// - Failed: The task failed.
 	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tags. This parameter is returned only if you specified Tags when you created the task.
+	// The task tags. These are the tags that the user passed in when creating the task.
 	//
 	// example:
 	//
@@ -114,7 +116,7 @@ type GetTaskResponseBody struct {
 	//
 	// c2b277b9-0d30-4882-ad6d-ad661382****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The initial request parameters used to create the task.
+	// The original request parameters used to create the task.
 	//
 	// example:
 	//
@@ -130,13 +132,13 @@ type GetTaskResponseBody struct {
 	//
 	// }
 	TaskRequestDefinition *string `json:"TaskRequestDefinition,omitempty" xml:"TaskRequestDefinition,omitempty"`
-	// The type of the task. For more information, see [Task types](https://help.aliyun.com/document_detail/2743993.html).
+	// The type of the task. For valid values, see [Task type list](https://help.aliyun.com/document_detail/2743993.html).
 	//
 	// example:
 	//
-	// VideoLabelClassification
+	// FileCompression
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	// The user data of the task.
+	// The custom information specified by the user.
 	//
 	// example:
 	//

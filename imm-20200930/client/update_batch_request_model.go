@@ -22,9 +22,9 @@ type iUpdateBatchRequest interface {
 }
 
 type UpdateBatchRequest struct {
-	// The processing templates.
+	// A list of data processing templates.
 	Actions []*UpdateBatchRequestActions `json:"Actions,omitempty" xml:"Actions,omitempty" type:"Repeated"`
-	// The ID of the batch processing task. You can obtain the ID of the batch processing task from the response of the [CreateBatch](https://help.aliyun.com/document_detail/606694.html) operation.
+	// The ID of the batch processing task. For more information, see [Create a batch processing task](https://help.aliyun.com/document_detail/606694.html).
 	//
 	// This parameter is required.
 	//
@@ -32,9 +32,9 @@ type UpdateBatchRequest struct {
 	//
 	// batch-4eb9223f-3e88-42d3-a578-3f2852******
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The input data source.
+	// The data source configuration.
 	Input *Input `json:"Input,omitempty" xml:"Input,omitempty"`
-	// The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+	// The project name. For more information, see [Create a project](https://help.aliyun.com/document_detail/478153.html).
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type UpdateBatchRequest struct {
 	//
 	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The custom tags. You can search for or filter asynchronous tasks by custom tag.
+	// Custom tags used to search for and filter asynchronous tasks.
 	//
 	// example:
 	//
@@ -122,13 +122,13 @@ func (s *UpdateBatchRequest) Validate() error {
 }
 
 type UpdateBatchRequestActions struct {
-	// The name of the template.
+	// The template name.
 	//
 	// example:
 	//
 	// doc/convert
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The template parameters.
+	// A list of template parameters.
 	Parameters []*string `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
 }
 

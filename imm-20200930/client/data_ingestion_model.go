@@ -38,7 +38,7 @@ type iDataIngestion interface {
 }
 
 type DataIngestion struct {
-	// The templates.
+	// A list of processing templates.
 	Actions []*DataIngestionActions `json:"Actions,omitempty" xml:"Actions,omitempty" type:"Repeated"`
 	// The time when the task was created.
 	//
@@ -58,9 +58,9 @@ type DataIngestion struct {
 	//
 	// trigger-9f72636a-0f0c-4baf-ae78-38b27bfe****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The information about the data source.
+	// The data source information.
 	Input *Input `json:"Input,omitempty" xml:"Input,omitempty"`
-	// The task execution location.
+	// The task execution position.
 	//
 	// example:
 	//
@@ -74,33 +74,33 @@ type DataIngestion struct {
 	//
 	// IncrementalScanning
 	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	// The service-linked role.
+	// The service authorization role.
 	//
 	// example:
 	//
 	// AliyunIMMBatchTriggerRole
 	ServiceRole *string `json:"ServiceRole,omitempty" xml:"ServiceRole,omitempty"`
-	// The status of the batch processing task.
+	// The state of the batch processing task:
 	//
-	// 	- Ready: The task is created.
+	// - Ready: The task is ready. A newly created task is in the Ready state.
 	//
-	// 	- Running: The task is running.
+	// - Running: The task is running. This is the state of a task that is executing normally.
 	//
-	// 	- Failed: The task fails and cannot be automatically recovered.
+	// - Failed: The task failed. An error occurred during task execution, and the task cannot be automatically recovered.
 	//
-	// 	- Suspended: The task is suspended.
+	// - Suspended: The task is paused.
 	//
-	// 	- Succeeded: The task is successful.
+	// - Succeeded: The task is complete.
 	//
 	// example:
 	//
 	// Succeeded
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The statistical information.
+	// The statistics information.
 	Statistic *DataIngestionStatistic `json:"Statistic,omitempty" xml:"Statistic,omitempty" type:"Struct"`
 	// The task tags.
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The time when the task was updated.
+	// The time when the task was last updated.
 	//
 	// example:
 	//
@@ -262,9 +262,9 @@ func (s *DataIngestion) Validate() error {
 }
 
 type DataIngestionActions struct {
-	// The on-error policy that is used to quickly troubleshoot an error.
+	// The configuration of the fast-fail policy for data processing.
 	FastFailPolicy *FastFailPolicy `json:"FastFailPolicy,omitempty" xml:"FastFailPolicy,omitempty"`
-	// The name of the template.
+	// The template name.
 	//
 	// example:
 	//
@@ -319,7 +319,7 @@ func (s *DataIngestionActions) Validate() error {
 }
 
 type DataIngestionNotification struct {
-	// The Simple Message Queue (SMQ) endpoint.
+	// The MNS Endpoint.
 	//
 	// example:
 	//
@@ -329,7 +329,7 @@ type DataIngestionNotification struct {
 	MNS *MNS `json:"MNS,omitempty" xml:"MNS,omitempty"`
 	// RocketMQ
 	RocketMQ *RocketMQ `json:"RocketMQ,omitempty" xml:"RocketMQ,omitempty"`
-	// The SMQ topic.
+	// The MNS topic.
 	//
 	// example:
 	//
@@ -396,19 +396,19 @@ func (s *DataIngestionNotification) Validate() error {
 }
 
 type DataIngestionStatistic struct {
-	// The number of files that are skipped.
+	// The number of skipped files.
 	//
 	// example:
 	//
 	// 0
 	SkipFiles *int64 `json:"SkipFiles,omitempty" xml:"SkipFiles,omitempty"`
-	// The number of files that fail to be submitted.
+	// The number of failed submissions.
 	//
 	// example:
 	//
 	// 1
 	SubmitFailure *int64 `json:"SubmitFailure,omitempty" xml:"SubmitFailure,omitempty"`
-	// The number of files that are submitted.
+	// The number of successful submissions.
 	//
 	// example:
 	//

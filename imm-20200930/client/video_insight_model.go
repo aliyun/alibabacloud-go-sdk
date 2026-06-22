@@ -20,6 +20,10 @@ type VideoInsight struct {
 	//
 	// if can be null:
 	// true
+	//
+	// example:
+	//
+	// 视频中展示了两个不同场景：一个是静止的白色盘子、黑色瓶子和透明玻璃杯，另一个是手拿着标有“YEZOLU”的洗发水瓶在浴室中缓慢上移。
 	Caption *string `json:"Caption,omitempty" xml:"Caption,omitempty"`
 	// The description of the video file.
 	//
@@ -27,6 +31,10 @@ type VideoInsight struct {
 	//
 	// if can be null:
 	// true
+	//
+	// example:
+	//
+	// 无。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 }
 

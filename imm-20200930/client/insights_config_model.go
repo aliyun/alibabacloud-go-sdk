@@ -9,6 +9,8 @@ type iInsightsConfig interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetImage(v *ImageInsightsConfig) *InsightsConfig
+	GetImage() *ImageInsightsConfig
 	SetLanguage(v string) *InsightsConfig
 	GetLanguage() *string
 	SetVideo(v *VideoInsightsConfig) *InsightsConfig
@@ -16,6 +18,9 @@ type iInsightsConfig interface {
 }
 
 type InsightsConfig struct {
+	Image *ImageInsightsConfig `json:"Image,omitempty" xml:"Image,omitempty"`
+	// The language of the source content.
+	//
 	// example:
 	//
 	// zh-Hans
@@ -31,12 +36,21 @@ func (s InsightsConfig) GoString() string {
 	return s.String()
 }
 
+func (s *InsightsConfig) GetImage() *ImageInsightsConfig {
+	return s.Image
+}
+
 func (s *InsightsConfig) GetLanguage() *string {
 	return s.Language
 }
 
 func (s *InsightsConfig) GetVideo() *VideoInsightsConfig {
 	return s.Video
+}
+
+func (s *InsightsConfig) SetImage(v *ImageInsightsConfig) *InsightsConfig {
+	s.Image = v
+	return s
 }
 
 func (s *InsightsConfig) SetLanguage(v string) *InsightsConfig {
@@ -50,6 +64,11 @@ func (s *InsightsConfig) SetVideo(v *VideoInsightsConfig) *InsightsConfig {
 }
 
 func (s *InsightsConfig) Validate() error {
+	if s.Image != nil {
+		if err := s.Image.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.Video != nil {
 		if err := s.Video.Validate(); err != nil {
 			return err

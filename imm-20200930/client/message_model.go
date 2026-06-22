@@ -46,7 +46,7 @@ type Message struct {
 	//
 	// example:
 	//
-	// Hello, which park is closest to me?
+	// 你好，哪个公园距离我最近？
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The time when the message was created.
 	//
@@ -76,7 +76,7 @@ type Message struct {
 	//
 	// example:
 	//
-	// Hello, I\\"m your assistant.
+	// 你好，我是你的助手
 	Reply *string `json:"Reply,omitempty" xml:"Reply,omitempty"`
 	// Rate
 	//
@@ -106,7 +106,7 @@ type Message struct {
 	//
 	// example:
 	//
-	// The value varies based on the value of the AssistantType parameter.
+	// 根据 AssistantType 不同具体含义不同。
 	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 

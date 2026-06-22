@@ -20,10 +20,14 @@ type iFigureClusterConfig interface {
 }
 
 type FigureClusterConfig struct {
-	AutoClustering  *bool     `json:"AutoClustering,omitempty" xml:"AutoClustering,omitempty"`
-	AutoGenerate    *bool     `json:"AutoGenerate,omitempty" xml:"AutoGenerate,omitempty"`
+	// Whether to automatically group similar figures into clusters.
+	AutoClustering *bool `json:"AutoClustering,omitempty" xml:"AutoClustering,omitempty"`
+	// Whether to automatically generate metadata for each cluster, such as a representative cover image.
+	AutoGenerate *bool `json:"AutoGenerate,omitempty" xml:"AutoGenerate,omitempty"`
+	// An array of strings specifying the clustering strategies to use.
 	EnabledFeatures []*string `json:"EnabledFeatures,omitempty" xml:"EnabledFeatures,omitempty" type:"Repeated"`
-	MinEntityCount  *int64    `json:"MinEntityCount,omitempty" xml:"MinEntityCount,omitempty"`
+	// The minimum number of figures required to form a cluster.
+	MinEntityCount *int64 `json:"MinEntityCount,omitempty" xml:"MinEntityCount,omitempty"`
 }
 
 func (s FigureClusterConfig) String() string {

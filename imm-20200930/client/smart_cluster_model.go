@@ -41,39 +41,39 @@ type iSmartCluster interface {
 
 type SmartCluster struct {
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	// The time when the cluster was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2022-01-14T10:17:18.102700407+08:00
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The name of the dataset.
+	// The dataset name.
 	//
 	// example:
 	//
 	// MyDataset
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	// The description of the cluster.
+	// The group description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the cluster.
+	// The group name.
 	//
 	// example:
 	//
 	// MySmartCluster1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the cluster.
+	// The smart cluster ID.
 	//
 	// example:
 	//
 	// SmartCluster-12cd1645-deae-4b5e-9434-613747b75f6d
 	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
-	// The status of the cluster.
+	// The group status. Valid values are `Succeeded`, `Failed`, and `Running`.
 	//
 	// example:
 	//
 	// Succeeded
 	ObjectStatus *string `json:"ObjectStatus,omitempty" xml:"ObjectStatus,omitempty"`
-	// The type of the cluster.
+	// The group type. The value is always `smart-cluster`.
 	//
 	// example:
 	//
@@ -85,7 +85,7 @@ type SmartCluster struct {
 	//
 	// 1023210024677934
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The name of the project.
+	// The project name.
 	//
 	// example:
 	//
@@ -95,7 +95,7 @@ type SmartCluster struct {
 	// The clustering rule.
 	Rule  *SmartClusterRule   `json:"Rule,omitempty" xml:"Rule,omitempty"`
 	Rules []*SmartClusterRule `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	// The time when the cluster was updated.
+	// The update time.
 	//
 	// example:
 	//

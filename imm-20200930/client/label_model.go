@@ -28,35 +28,49 @@ type iLabel interface {
 }
 
 type Label struct {
-	// The central value of the label. This value indicates the confidence that the label is the majority component of the image. Valid values: 0 to 1. A higher value indicates greater confidence.
+	// The centric score of the tag. This indicates whether the tag is the main subject in the image. The value ranges from 0 to 1. A higher value indicates higher confidence that the tag is the main subject of the image.
 	//
 	// example:
 	//
-	// 0.7319999933242798
+	// 0.877
 	CentricScore *float32 `json:"CentricScore,omitempty" xml:"CentricScore,omitempty"`
-	Clips        []*Clip  `json:"Clips,omitempty" xml:"Clips,omitempty" type:"Repeated"`
-	LabelAlias   *string  `json:"LabelAlias,omitempty" xml:"LabelAlias,omitempty"`
-	// The confidence level of the label. Valid values: 0 to 1. A higher value indicates greater confidence.
+	// Event clips.
+	Clips []*Clip `json:"Clips,omitempty" xml:"Clips,omitempty" type:"Repeated"`
+	// The tag alias.
 	//
 	// example:
 	//
-	// 0.9891784601980591
+	// 座椅
+	LabelAlias *string `json:"LabelAlias,omitempty" xml:"LabelAlias,omitempty"`
+	// The tag confidence level. The value ranges from 0 (lowest confidence) to 1 (highest confidence).
+	//
+	// example:
+	//
+	// 0.95
 	LabelConfidence *float32 `json:"LabelConfidence,omitempty" xml:"LabelConfidence,omitempty"`
-	// The label level. Valid values: 1, 2, and 3.
+	// The tag level. Valid values are 1, 2, and 3, representing first-level, second-level, and third-level tags, respectively.
 	//
 	// example:
 	//
-	// 1
+	// 2
 	LabelLevel *int64 `json:"LabelLevel,omitempty" xml:"LabelLevel,omitempty"`
-	// The label name.
+	// The tag name.
+	//
+	// example:
+	//
+	// 椅子
 	LabelName *string `json:"LabelName,omitempty" xml:"LabelName,omitempty"`
-	// The label language, which is represented as a BCP 47 language tag.
+	// The tag language, in BCP 47 format.
 	//
 	// example:
 	//
 	// zh-Hans
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// The name of the parent label.
+	// The parent tag name.
+	//
+	// example:
+	//
+	// 家具
 	ParentLabelName *string `json:"ParentLabelName,omitempty" xml:"ParentLabelName,omitempty"`
 }
 

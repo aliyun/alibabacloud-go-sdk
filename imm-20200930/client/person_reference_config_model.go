@@ -14,6 +14,7 @@ type iPersonReferenceConfig interface {
 }
 
 type PersonReferenceConfig struct {
+	// Specifies whether to enable person referencing. Set to `true` to enable this feature. The default value is `false`.
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
 }
 

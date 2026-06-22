@@ -18,11 +18,11 @@ type iTargetImage interface {
 }
 
 type TargetImage struct {
-	// The animated images.
+	// Animations
 	Animations []*TargetImageAnimations `json:"Animations,omitempty" xml:"Animations,omitempty" type:"Repeated"`
-	// The frames.
+	// Snapshots
 	Snapshots []*TargetImageSnapshots `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Repeated"`
-	// The sprites.
+	// Sprites
 	Sprites []*TargetImageSprites `json:"Sprites,omitempty" xml:"Sprites,omitempty" type:"Repeated"`
 }
 
@@ -93,11 +93,7 @@ func (s *TargetImage) Validate() error {
 }
 
 type TargetImageAnimations struct {
-	// The format of the animated image. Valid values:
-	//
-	// 	- gif
-	//
-	// 	- webp
+	// Format
 	//
 	// This parameter is required.
 	//
@@ -105,57 +101,43 @@ type TargetImageAnimations struct {
 	//
 	// gif
 	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
-	// The frame rate of the animated image. You can use this parameter together with the Interval parameter to slow down the animation.
+	// Animation frame rate, in frames per second
 	//
 	// example:
 	//
 	// 25
 	FrameRate *float64 `json:"FrameRate,omitempty" xml:"FrameRate,omitempty"`
-	// The height of the animated image. By default, the animated image has the same height as the source video. The value of the parameter can be an integer or a decimal.
-	//
-	// 	- An integer: the number of pixels. Valid values: [1,4096].
-	//
-	// 	- A decimal: the ratio relative to the height of the target image resolution. Valid values: (0,1).
+	// Height
 	//
 	// example:
 	//
 	// 960
 	Height *float64 `json:"Height,omitempty" xml:"Height,omitempty"`
-	// The time interval for extracting frames. Unit: seconds.
+	// Time interval between animation frames, in seconds
 	//
 	// example:
 	//
 	// 0.5
 	Interval *float64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The number of extracted frames. The default value is 0, which indicates that frames are extracted until the end of the video.
+	// Total number of animation frames to generate
 	//
 	// example:
 	//
 	// 100
 	Number *int32 `json:"Number,omitempty" xml:"Number,omitempty"`
-	// The resizing mode. Valid values:
-	//
-	// 	- stretch: stretches the image to fill the entire space. This is the default value.
-	//
-	// 	- crop: resizes and crops the image.
-	//
-	// 	- fill: resizes the image and keeps the black border.
-	//
-	// 	- fit: resizes the image and removes the black border.
+	// Scaling method
 	//
 	// example:
 	//
 	// crop
 	ScaleType *string `json:"ScaleType,omitempty" xml:"ScaleType,omitempty"`
-	// The start time for extracting frames. Unit: seconds. Default value: 0.
+	// StartTime
 	//
 	// example:
 	//
 	// 0
 	StartTime *float64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The URI of the animated image.
-	//
-	// The OSS URI follows the oss://bucket/object format, where bucket is the name of the bucket in the same region as the current project and object is the path of the object with the extension included.
+	// The URI of the animation.
 	//
 	// This parameter is required.
 	//
@@ -163,11 +145,7 @@ type TargetImageAnimations struct {
 	//
 	// oss://test-bucket/animations
 	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
-	// The width of the animated image. By default, the animated image has the same width as the source video. The value of the parameter can be an integer or a decimal.
-	//
-	// 	- An integer: the number of pixels. Valid values: [1,4096].
-	//
-	// 	- A decimal: the ratio relative to the width of the target image resolution. Valid values: (0,1).
+	// Output width, in pixels
 	//
 	// example:
 	//
@@ -269,11 +247,7 @@ func (s *TargetImageAnimations) Validate() error {
 }
 
 type TargetImageSnapshots struct {
-	// The format of the frame. Valid values:
-	//
-	// 	- jpg
-	//
-	// 	- png
+	// Image format
 	//
 	// This parameter is required.
 	//
@@ -281,17 +255,13 @@ type TargetImageSnapshots struct {
 	//
 	// jpg
 	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
-	// The height of the frame image. By default, the image has the same height as the source video. The value of the parameter can be an integer or a decimal.
-	//
-	// 	- An integer: the number of pixels. Valid values: [1,4096].
-	//
-	// 	- A decimal: the ratio relative to the height of the target image resolution. Valid values: (0,1).
+	// Output height, in pixels
 	//
 	// example:
 	//
 	// 960
 	Height *float64 `json:"Height,omitempty" xml:"Height,omitempty"`
-	// The time interval of frame capturing in seconds.
+	// Time interval between snapshots, in seconds
 	//
 	// example:
 	//
@@ -301,27 +271,19 @@ type TargetImageSnapshots struct {
 	//
 	// interval
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// The number of frames. The default value is 0, which indicates that frames are captured until the end of the video.
+	// The sequence number of the snapshot.
 	//
 	// example:
 	//
 	// 10
 	Number *int32 `json:"Number,omitempty" xml:"Number,omitempty"`
-	// The resizing mode. Valid values:
-	//
-	// 	- stretch: stretches the image to fill the entire space. This is the default value.
-	//
-	// 	- crop: resizes and crops the image.
-	//
-	// 	- fill: resizes the image and keeps the black border.
-	//
-	// 	- fit: resizes the image and removes the black border.
+	// Scaling method
 	//
 	// example:
 	//
 	// crop
 	ScaleType *string `json:"ScaleType,omitempty" xml:"ScaleType,omitempty"`
-	// The time in seconds at which frame capturing starts. The default value is 0, which indicates that frame capturing starts at the beginning of the video.
+	// The start time of the snapshot.
 	//
 	// example:
 	//
@@ -331,9 +293,7 @@ type TargetImageSnapshots struct {
 	//
 	// 0
 	Threshold *int32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	// The OSS URI of the frame.
-	//
-	// The OSS URI follows the oss://bucket/object format, where bucket is the name of the bucket in the same region as the current project and object is the path of the object with the extension included.
+	// OSS URI where snapshots are stored
 	//
 	// This parameter is required.
 	//
@@ -341,11 +301,7 @@ type TargetImageSnapshots struct {
 	//
 	// oss://test-bucket/snapshots
 	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
-	// The width of the frame image. By default, the image has the same width as the source video. The value of the parameter can be an integer or a decimal.
-	//
-	// 	- An integer: the number of pixels. Valid values: [1,4096].
-	//
-	// 	- A decimal: the ratio relative to the width of the target image resolution. Valid values: (0,1).
+	// The width of the snapshot.
 	//
 	// example:
 	//
@@ -456,11 +412,7 @@ func (s *TargetImageSnapshots) Validate() error {
 }
 
 type TargetImageSprites struct {
-	// The format of the sprite. Valid values:
-	//
-	// 	- jpg
-	//
-	// 	- png
+	// Image format
 	//
 	// This parameter is required.
 	//
@@ -468,13 +420,13 @@ type TargetImageSprites struct {
 	//
 	// jpg
 	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
-	// The time interval of frame capturing in seconds.
+	// Time interval between sprites, in seconds
 	//
 	// example:
 	//
 	// 1
 	Interval *float64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The margin between the small images and the edges of the sprite. Default value: 2.
+	// Margin around the sprite grid, in pixels
 	//
 	// example:
 	//
@@ -484,53 +436,37 @@ type TargetImageSprites struct {
 	//
 	// interval
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// The number of small images in the sprite. The default value is 0, which indicates that frames are captured until the end of the video.
+	// Total number of sprites to generate
 	//
 	// example:
 	//
 	// 0
 	Number *int32 `json:"Number,omitempty" xml:"Number,omitempty"`
-	// The padding between small images. Default value: 2.
+	// Padding between sprite tiles, in pixels
 	//
 	// example:
 	//
 	// 2
 	Pad *int32 `json:"Pad,omitempty" xml:"Pad,omitempty"`
-	// The height of individual small images. The default value is 1. The value can be an integer or a decimal.
-	//
-	// 	- An integer: the number of pixels. Valid values: (1,4096).
-	//
-	// 	- A decimal: the ratio relative to the height of the target video resolution. Valid values: (0,1].
+	// Output height after scaling, in pixels
 	//
 	// example:
 	//
 	// 960
 	ScaleHeight *float32 `json:"ScaleHeight,omitempty" xml:"ScaleHeight,omitempty"`
-	// The resizing mode. Valid values:
-	//
-	// 	- stretch: stretches the image to fill the entire space. This is the default value.
-	//
-	// 	- crop: resizes and crops the image.
-	//
-	// 	- fill: resizes the image and keeps the black border.
-	//
-	// 	- fit: resizes the image and removes the black border.
+	// Scaling method
 	//
 	// example:
 	//
 	// crop
 	ScaleType *string `json:"ScaleType,omitempty" xml:"ScaleType,omitempty"`
-	// The width of individual small images. The default value is 1. The value can be an integer or a decimal.
-	//
-	// 	- An integer: the number of pixels. Valid values: (1,4096).
-	//
-	// 	- A decimal: the ratio relative to the width of the target video resolution. Valid values: (0,1].
+	// Output width after scaling, in pixels
 	//
 	// example:
 	//
 	// 1280
 	ScaleWidth *float32 `json:"ScaleWidth,omitempty" xml:"ScaleWidth,omitempty"`
-	// The time in seconds at which frame capturing starts. The default value is 0, which indicates that frame capturing starts at the beginning of the video.
+	// StartTime
 	//
 	// example:
 	//
@@ -540,21 +476,19 @@ type TargetImageSprites struct {
 	//
 	// 0
 	Threshold *int32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	// The number of small images in each column. Default value: 6.
+	// Height of each sprite tile, in pixels
 	//
 	// example:
 	//
 	// 6
 	TileHeight *int32 `json:"TileHeight,omitempty" xml:"TileHeight,omitempty"`
-	// The number of small images in each row. Default value: 6.
+	// Width of each sprite tile, in pixels
 	//
 	// example:
 	//
 	// 6
 	TileWidth *int32 `json:"TileWidth,omitempty" xml:"TileWidth,omitempty"`
-	// The URI of the sprite in Object Storage Service (OSS).
-	//
-	// The OSS URI follows the oss://bucket/object format, where bucket is the name of the bucket in the same region as the current project and object is the path of the object with the extension included.
+	// URI
 	//
 	// This parameter is required.
 	//

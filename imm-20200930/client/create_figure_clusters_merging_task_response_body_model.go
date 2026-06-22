@@ -18,19 +18,19 @@ type iCreateFigureClustersMergingTaskResponseBody interface {
 }
 
 type CreateFigureClustersMergingTaskResponseBody struct {
-	// The event ID.
+	// The ID of the event.
 	//
 	// example:
 	//
 	// 0ED-1Bz8z71k5TtsUejT4UJ16E****
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// CA995EFD-083D-4F40-BE8A-BDF75FF****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The task ID.
+	// The ID of the task.
 	//
 	// example:
 	//

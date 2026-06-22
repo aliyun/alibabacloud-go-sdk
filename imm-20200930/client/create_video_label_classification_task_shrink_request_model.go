@@ -24,13 +24,13 @@ type iCreateVideoLabelClassificationTaskShrinkRequest interface {
 }
 
 type CreateVideoLabelClassificationTaskShrinkRequest struct {
-	// **If you have no special requirements, leave this parameter empty.**
+	// **If you do not have special requirements, leave this parameter empty.**
 	//
-	// The authorization chain settings. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
+	// The chained authorization configuration. This parameter is not required. For more information, see [Use chained authorization to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	// The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
+	// The message notification configuration. For more information, click Notification. For more information about the format of asynchronous notification messages, see [Asynchronous notification message format](https://help.aliyun.com/document_detail/2743997.html).
 	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	// The name of the project. For more information, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+	// The project name. For more information about how to obtain the project name, see [Create a project](https://help.aliyun.com/document_detail/478153.html).
 	//
 	// This parameter is required.
 	//
@@ -38,27 +38,35 @@ type CreateVideoLabelClassificationTaskShrinkRequest struct {
 	//
 	// immtest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The OSS URI of the video file.
+	// The Object Storage Service (OSS) URI of the video.
 	//
-	// Specify the value in the oss://${Bucket}/${Object} format. `${Bucket}` specifies the name of the OSS bucket that resides in the same region as the current project. `${Object}` specifies the path of the object with the extension included.
+	// The OSS URI must follow the format oss\\://${Bucket}/${Object}. ${Bucket} is the name of the OSS bucket that is in the same region as the current project. ${Object} is the full path of the file, including the file name extension.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// oss://bucket1/object
+	// oss://bucket1/object.mp4
 	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
-	// The custom tags, which can be used to search for and filter asynchronous tasks.
+	// Custom tags that you can use to search for and filter asynchronous tasks.
 	//
 	// example:
 	//
 	// {"test":"val1"}
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The custom data, which is returned in an asynchronous notification and facilitates notification management. The maximum length is 2,048 bytes.
+	// Custom information. This information is returned in the asynchronous notification message. You can use this information to associate the notification message with your services. The maximum length is 2,048 bytes.
 	//
 	// example:
 	//
-	// {"ID": "user1","Name": "test-user1","Avatar": "http://example.com?id=user1"}
+	// {
+	//
+	//       "ID": "testuid",
+	//
+	//       "Name": "test-user",
+	//
+	//       "Avatar": "http://test.com/testuid"
+	//
+	// }
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 

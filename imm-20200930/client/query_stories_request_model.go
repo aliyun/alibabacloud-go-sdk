@@ -82,9 +82,9 @@ type QueryStoriesRequest struct {
 	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
 	// The sort order. Valid values:
 	//
-	// 	- asc: in ascending order.
+	// - asc: in ascending order.
 	//
-	// 	- desc: in descending order.
+	// - desc: in descending order.
 	//
 	// example:
 	//
@@ -100,13 +100,13 @@ type QueryStoriesRequest struct {
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	// The sort field. Valid values:
 	//
-	// 	- CreateTime: sorts by story creation time.
+	// - CreateTime: sorts by story creation time.
 	//
-	// 	- StoryName: sorts by story name.
+	// - StoryName: sorts by story name.
 	//
-	// 	- StoryStartTime: sorts by story start time.
+	// - StoryStartTime: sorts by story start time.
 	//
-	// 	- StoryEndTime: sorts by story end time.
+	// - StoryEndTime: sorts by story end time.
 	//
 	// example:
 	//
@@ -136,9 +136,9 @@ type QueryStoriesRequest struct {
 	StoryType *string `json:"StoryType,omitempty" xml:"StoryType,omitempty"`
 	// Specifies whether to return empty stories. Valid values:
 	//
-	// 	- true (The default value)
+	// - true (The default value)
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
