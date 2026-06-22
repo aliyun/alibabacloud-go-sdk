@@ -96,7 +96,7 @@ type AddClientUserDefineRuleRequest struct {
 	//
 	// example:
 	//
-	// Rule 1
+	// 规则1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The new file path after the file is renamed.
 	//
@@ -157,7 +157,16 @@ type AddClientUserDefineRuleRequest struct {
 	// example:
 	//
 	// HKEY_DYN_****
-	RegistryKey   *string `json:"RegistryKey,omitempty" xml:"RegistryKey,omitempty"`
+	RegistryKey *string `json:"RegistryKey,omitempty" xml:"RegistryKey,omitempty"`
+	// Whether machines are automatically added to the rule. Default value: add. Valid values:
+	//
+	// - **add**: Added by default
+	//
+	// - **del**: Not added by default
+	//
+	// example:
+	//
+	// add
 	TargetDefault *string `json:"TargetDefault,omitempty" xml:"TargetDefault,omitempty"`
 	// The type of the custom defense rule. Valid values:
 	//

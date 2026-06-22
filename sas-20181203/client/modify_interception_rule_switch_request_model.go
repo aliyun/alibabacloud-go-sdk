@@ -18,27 +18,27 @@ type iModifyInterceptionRuleSwitchRequest interface {
 }
 
 type ModifyInterceptionRuleSwitchRequest struct {
-	// The ID of the cluster.
+	// The ID of the cluster that you want to modify.
 	//
-	// > You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to query the IDs of clusters.
+	// > You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// ce5c29aba99694ade9ba85dc620b4****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The IDs of the rules whose status you want to change. Separate multiple IDs with commas (,).
+	// The list of rule IDs to operate on. Separate multiple IDs with commas (,).
 	//
-	// > You can call the [ListInterceptionRulePage](https://help.aliyun.com/document_detail/182997.html) operation to query the IDs of rules.
+	// > You can call the [ListInterceptionRulePage](~~ListInterceptionRulePage~~) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// 403287
 	RuleIds *string `json:"RuleIds,omitempty" xml:"RuleIds,omitempty"`
-	// Specifies whether the rule is enabled. Valid values:
+	// The switch status of the rule. Valid values:
 	//
-	// 	- **1**: enabled
+	// - **1**: Enabled.
 	//
-	// 	- **0**: disabled
+	// - **0**: Disabled.
 	//
 	// example:
 	//

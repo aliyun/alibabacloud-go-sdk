@@ -22,7 +22,7 @@ type iDescribeImageEventOperationConditionResponseBody interface {
 }
 
 type DescribeImageEventOperationConditionResponseBody struct {
-	// The response code.
+	// The return code of the call.
 	//
 	// example:
 	//
@@ -42,11 +42,11 @@ type DescribeImageEventOperationConditionResponseBody struct {
 	//
 	// ADE57832-9666-511C-9A80-B87DE2E8****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The call was successful.
 	//
-	// 	- **false**
+	// - **false**: The call failed.
 	//
 	// example:
 	//
@@ -117,17 +117,17 @@ func (s *DescribeImageEventOperationConditionResponseBody) Validate() error {
 }
 
 type DescribeImageEventOperationConditionResponseBodyData struct {
-	// The alert type.
+	// The alerting type. Valid values:
 	//
-	// 	- Only **sensitiveFile*	- may be returned.
+	// - **sensitiveFile**: sensitive file.
 	//
 	// example:
 	//
 	// sensitiveFile
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	// The operations.
+	// The list of operations.
 	Operations []*DescribeImageEventOperationConditionResponseBodyDataOperations `json:"Operations,omitempty" xml:"Operations,omitempty" type:"Repeated"`
-	// The application scopes of the rules.
+	// The rule scope.
 	Scenarios []*string `json:"Scenarios,omitempty" xml:"Scenarios,omitempty" type:"Repeated"`
 }
 
@@ -182,15 +182,15 @@ func (s *DescribeImageEventOperationConditionResponseBodyData) Validate() error 
 type DescribeImageEventOperationConditionResponseBodyDataOperations struct {
 	// The rule conditions.
 	Conditions []*DescribeImageEventOperationConditionResponseBodyDataOperationsConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
-	// The operation code.
+	// The operation code. Valid values:
 	//
-	// 	- Only **whitelist*	- may be returned, which indicates that the alert event is added to the whitelist.
+	// - **whitelist**: whitelist.
 	//
 	// example:
 	//
 	// whitelist
 	OperationCode *string `json:"OperationCode,omitempty" xml:"OperationCode,omitempty"`
-	// The name of the operation.
+	// The operation name.
 	//
 	// example:
 	//
@@ -247,23 +247,23 @@ func (s *DescribeImageEventOperationConditionResponseBodyDataOperations) Validat
 }
 
 type DescribeImageEventOperationConditionResponseBodyDataOperationsConditions struct {
-	// The keyword of the condition. Valid values:
+	// The condition key. Valid values:
 	//
-	// 	- **MD5**
+	// - **MD5**: MD5.
 	//
-	// 	- **PATH**
+	// - **PATH**: path.
 	//
 	// example:
 	//
 	// MD5
 	ConditionKey *string `json:"ConditionKey,omitempty" xml:"ConditionKey,omitempty"`
-	// The name of the condition.
+	// The condition name.
 	//
 	// example:
 	//
 	// MD5
 	ConditionName *string `json:"ConditionName,omitempty" xml:"ConditionName,omitempty"`
-	// The matching types.
+	// The match type.
 	SupportedMisType []*string `json:"SupportedMisType,omitempty" xml:"SupportedMisType,omitempty" type:"Repeated"`
 }
 

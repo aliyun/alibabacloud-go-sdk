@@ -22,77 +22,77 @@ type iModifyPostPayModuleSwitchRequest interface {
 }
 
 type ModifyPostPayModuleSwitchRequest struct {
-	// Automatic binding switch for new assets in host and container protection. Values:
+	// Specifies whether to automatically bind newly added assets for host and container protection. Valid values:
 	//
-	// - **0**: Off
+	// - **0**: Disabled.
 	//
-	// - **1**: On
+	// - **1**: Enabled.
 	//
 	// example:
 	//
 	// 1
 	PostPaidHostAutoBind *int32 `json:"PostPaidHostAutoBind,omitempty" xml:"PostPaidHostAutoBind,omitempty"`
-	// Version for automatic binding of new assets in host and container protection. Values:
+	// The version to which newly added assets are automatically bound for host and container protection. Valid values:
 	//
-	// - **1**: Free Edition
+	// - **1**: Free Edition.
 	//
-	// - **3**: Enterprise Edition
+	// - **3**: Enterprise Edition.
 	//
-	// - **5**: Advanced Edition
+	// - **5**: Advanced Edition.
 	//
-	// - **6**: Antivirus Edition
+	// - **6**: Anti-virus Edition.
 	//
-	// - **7**: Flagship Edition
+	// - **7**: Ultimate Edition.
 	//
 	// example:
 	//
 	// 3
 	PostPaidHostAutoBindVersion *int32 `json:"PostPaidHostAutoBindVersion,omitempty" xml:"PostPaidHostAutoBindVersion,omitempty"`
-	// Pay-as-you-go instance ID, which must be filled in.
+	// The pay-as-you-go instance ID. This parameter is required.
 	//
-	// > Call the [DescribeVersionConfig](~~DescribeVersionConfig~~) interface to obtain this parameter.
+	// > Invoke the [DescribeVersionConfig](~~DescribeVersionConfig~~) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// postpay-sas-**
 	PostPayInstanceId *string `json:"PostPayInstanceId,omitempty" xml:"PostPayInstanceId,omitempty"`
-	// Status of the pay-as-you-go module switch, in JsonString format. Values:
+	// The switch status of pay-as-you-go modules in JSON string format. Valid values:
 	//
 	// - Key:
 	//
-	//   - **VUL**: Vulnerability Repair Module
+	//   - **VUL**: vulnerability fix module
 	//
-	//   - **CSPM**: Cloud Security Posture Management Module
+	//   - **CSPM**: Cloud Security Posture Management (CSPM) module
 	//
-	//   - **AGENTLESS**: Agentless Detection Module
+	//   - **AGENTLESS**: agentless detection module
 	//
-	//   - **SERVERLESS**: Serverless Security Module
+	//   - **SERVERLESS**: serverless security module
 	//
-	//   - **CTDR**: Threat Analysis and Response Module
+	//   - **CTDR**: threat detection and response module
 	//
-	//   - **POST_HOST**: Host and Container Security Module
+	//   - **POST_HOST**: host and container security module
 	//
-	//   - **SDK**: Malicious File Detection SDK Module
+	//   - **SDK**: malicious file detection SDK module
 	//
-	//   - **RASP**: Application Protection Module
+	//   - **RASP**: application protection module
 	//
-	//   - **CTDR_STORAGE**: Log Management Module
+	//   - **CTDR_STORAGE**: log management module
 	//
-	//   - **ANTI_RANSOMWARE**: Anti-Ransomware Management
+	//   - **ANTI_RANSOMWARE**: anti-ransomware management
 	//
-	// - Value: 0 means off, 1 means on
+	// - Value: 0 indicates disabled. 1 indicates enabled.
 	//
-	// > The values of modules not passed will not change.
+	// > Modules for which no value is specified remain unchanged.
 	//
-	// <notice>The meaning is the same as the PostPayModuleSwitchObj field. When both exist, the value of PostPayModuleSwitch takes precedence.
+	// <notice>This parameter has the same meaning as PostPayModuleSwitchObj. If both parameters are specified, the value of PostPayModuleSwitch takes precedence..
 	//
 	// example:
 	//
 	// {"VUL":1,"CSPM":0}
 	PostPayModuleSwitch *string `json:"PostPayModuleSwitch,omitempty" xml:"PostPayModuleSwitch,omitempty"`
-	// Pay-as-you-go module switch.
+	// The pay-as-you-go module switch.
 	//
-	// 	Notice:  The meaning is the same as the PostPayModuleSwitch field. When both exist, the value of PostPayModuleSwitch takes precedence.
+	// 	Notice: This parameter has the same meaning as PostPayModuleSwitch. If both parameters are specified, the value of PostPayModuleSwitch takes precedence..
 	PostPayModuleSwitchObj *ModifyPostPayModuleSwitchRequestPostPayModuleSwitchObj `json:"PostPayModuleSwitchObj,omitempty" xml:"PostPayModuleSwitchObj,omitempty" type:"Struct"`
 }
 
@@ -159,129 +159,129 @@ func (s *ModifyPostPayModuleSwitchRequest) Validate() error {
 }
 
 type ModifyPostPayModuleSwitchRequestPostPayModuleSwitchObj struct {
-	// Agentless Detection Module. Values:
+	// The agentless detection module. Valid values:
 	//
-	// - **0**: Off
+	// - **0**: Disabled.
 	//
-	// - **1**: On
+	// - **1**: Enabled.
 	//
 	// example:
 	//
 	// 1
 	Agentless *int32 `json:"Agentless,omitempty" xml:"Agentless,omitempty"`
-	// AI Digitization
+	// The AI digitalization module.
 	//
 	// example:
 	//
 	// 1
 	AiDigital *int32 `json:"AiDigital,omitempty" xml:"AiDigital,omitempty"`
-	// Anti-Ransomware Module. Values:
+	// The anti-ransomware module. Valid values:
 	//
-	// - **0**: Off
+	// - **0**: Disabled.
 	//
-	// - **1**: On
+	// - **1**: Enabled.
 	//
 	// example:
 	//
 	// 1
 	AntiRansomware *int32 `json:"AntiRansomware,omitempty" xml:"AntiRansomware,omitempty"`
-	// Basic service module. Values:
+	// The basic service module. Valid values:
 	//
-	// - **0**: Off
+	// - **0**: shutdown.
 	//
-	// - **1**: On
+	// - **1**: enabling status.
 	//
-	// 	Notice: The basic service module switch does not support active modification. When other modules are on, this module is also on. If all other modules are off, then this module is off.
+	// 	Notice: The basic service module switch cannot be manually modified. This module is in the enabling status when any other module is in the enabling status, and is in the shutdown state only when all other modules are in the shutdown state.
 	//
 	// example:
 	//
 	// 1
 	BasicService *int32 `json:"BasicService,omitempty" xml:"BasicService,omitempty"`
-	// Cloud Security Configuration Check Module. Values:
+	// The cloud security configuration check module. Valid values:
 	//
-	// - **0**: Off
+	// - **0**: Disabled.
 	//
-	// - **1**: On
+	// - **1**: Enabled.
 	//
 	// example:
 	//
 	// 1
 	Cspm *int32 `json:"Cspm,omitempty" xml:"Cspm,omitempty"`
-	// Threat Analysis and Response Module. Values:
+	// The threat detection and response module. Valid values:
 	//
-	// - **0**: Off
+	// - **0**: Disabled.
 	//
-	// - **1**: On
+	// - **1**: Enabled.
 	//
 	// example:
 	//
 	// 1
 	Ctdr *int32 `json:"Ctdr,omitempty" xml:"Ctdr,omitempty"`
-	// Log Management Module. Values:
+	// The log management module. Valid values:
 	//
-	// - **0**: Off
+	// - **0**: Disabled.
 	//
-	// - **1**: On
+	// - **1**: Enabled.
 	//
 	// example:
 	//
 	// 1
 	CtdrStorage *int32 `json:"CtdrStorage,omitempty" xml:"CtdrStorage,omitempty"`
-	// Host and Container Security Module. Values:
+	// The host and container security module. Valid values:
 	//
-	// - **0**: Off
+	// - **0**: Disabled.
 	//
-	// - **1**: On
+	// - **1**: Enabled.
 	//
 	// example:
 	//
 	// 1
 	PostHost *int32 `json:"PostHost,omitempty" xml:"PostHost,omitempty"`
-	// Application Protection Module. Values:
+	// The application protection module. Valid values:
 	//
-	// - **0**: Off
+	// - **0**: Disabled.
 	//
-	// - **1**: On
+	// - **1**: Enabled.
 	//
 	// example:
 	//
 	// 1
 	Rasp *int32 `json:"Rasp,omitempty" xml:"Rasp,omitempty"`
-	// Malicious File Detection SDK Module. Values:
+	// The malicious file detection SDK module. Valid values:
 	//
-	// - **0**: Off
+	// - **0**: Disabled.
 	//
-	// - **1**: On
+	// - **1**: Enabled.
 	//
 	// example:
 	//
 	// 1
 	Sdk *int32 `json:"Sdk,omitempty" xml:"Sdk,omitempty"`
-	// Serverless Security Module. Values:
+	// The serverless security module. Valid values:
 	//
-	// - **0**: Off
+	// - **0**: Disabled.
 	//
-	// - **1**: On
+	// - **1**: Enabled.
 	//
 	// example:
 	//
 	// 1
 	Serverless *int32 `json:"Serverless,omitempty" xml:"Serverless,omitempty"`
-	// Vulnerability Repair Module. Values:
+	// The vulnerability fix module. Valid values:
 	//
-	// - **0**: Off
+	// - **0**: Disabled.
 	//
-	// - **1**: On
+	// - **1**: Enabled.
 	//
 	// example:
 	//
 	// 1
 	Vul *int32 `json:"Vul,omitempty" xml:"Vul,omitempty"`
-	// File Tamper Protection Module. Values:
+	// The tamper-proofing module. Valid values:
 	//
-	// - **0**: Off
+	// - **0**: Disabled.
 	//
-	// - **1**: On
+	// - **1**: Enabled.
 	//
 	// example:
 	//

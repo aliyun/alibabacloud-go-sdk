@@ -24,7 +24,7 @@ type iListHoneypotProbeRequest interface {
 }
 
 type ListHoneypotProbeRequest struct {
-	// The number of the page to return. Pages start from page **1**. Default value: **1**.
+	// The page number of the page to return. Minimum value: **1**. Default value: **1**.
 	//
 	// example:
 	//
@@ -36,55 +36,55 @@ type ListHoneypotProbeRequest struct {
 	//
 	// probe-test
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of entries to return on each page. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+	// The maximum number of entries to return on each page in a paged query. Default value: 20. If you leave this parameter empty, 20 entries are returned per page during paging.
 	//
-	// > We recommend that you do not leave this parameter empty.
+	// > Do not leave PageSize empty.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The status of the probe. Valid values:
+	// The probe status. Valid values:
 	//
-	// 	- **installed**: installed
+	// - **installed**: Installation succeeded.
 	//
-	// 	- **install_failed**: installation failed
+	// - **install_failed**: Installation failed.
 	//
-	// 	- **online**: online
+	// - **online**: Normal.
 	//
-	// 	- **offline**: offline
+	// - **offline**: Offline.
 	//
-	// 	- **unnormal**: abnormal
+	// - **unnormal**: Service exception.
 	//
-	// 	- **unprobe**: unauthorized
+	// - **unprobe**: Unauthorized.
 	//
-	// 	- **uninstalling**: being uninstalled
+	// - **uninstalling**: Uninstalling.
 	//
-	// 	- **uninstalled**: uninstalled
+	// - **uninstalled**: Uninstallation succeeded.
 	//
-	// 	- **uninstall_failed**: uninstallation failed
+	// - **uninstall_failed**: Uninstallation failed.
 	//
-	// 	- **not_exist**: not installed
+	// - **not_exist**: Not installed.
 	//
 	// example:
 	//
 	// online
 	ProbeStatus *string `json:"ProbeStatus,omitempty" xml:"ProbeStatus,omitempty"`
-	// The type of the probe. Valid values:
+	// The probe type. Valid values:
 	//
-	// 	- **host_probe**: host probe
+	// - **host_probe**: host probe
 	//
-	// 	- **vpc_black_hole_probe**: VPC probe
+	// - **vpc_black_hole_probe**: VPC blackhole probe.
 	//
 	// example:
 	//

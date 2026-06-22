@@ -20,25 +20,25 @@ type iDeleteK8sAccessInfoRequest interface {
 }
 
 type DeleteK8sAccessInfoRequest struct {
-	// This parameter is deprecated.
+	// This parameter is deprecated and can be ignored.
 	//
 	// example:
 	//
 	// None
 	AliyunYundunGatewayApiName *string `json:"AliyunYundunGatewayApiName,omitempty" xml:"AliyunYundunGatewayApiName,omitempty"`
-	// This parameter is deprecated.
+	// This parameter is deprecated and can be ignored.
 	//
 	// example:
 	//
 	// None
 	AliyunYundunGatewayPopName *string `json:"AliyunYundunGatewayPopName,omitempty" xml:"AliyunYundunGatewayPopName,omitempty"`
-	// This parameter is deprecated.
+	// This parameter is deprecated and can be ignored.
 	//
 	// example:
 	//
 	// None
 	AliyunYundunGatewayProjectName *string `json:"AliyunYundunGatewayProjectName,omitempty" xml:"AliyunYundunGatewayProjectName,omitempty"`
-	// The ID generated when Kubernetes is connected. You can call the GenerateK8sAccessInfo operation to query the ID.
+	// The default value generated when accessing Kubernetes. You can obtain the ID by calling the [GenerateK8sAccessInfo](https://help.aliyun.com/document_detail/2623602.html) operation.
 	//
 	// This parameter is required.
 	//

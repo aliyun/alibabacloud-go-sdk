@@ -22,15 +22,15 @@ type iGetSensitiveDefineRuleConfigResponseBody interface {
 }
 
 type GetSensitiveDefineRuleConfigResponseBody struct {
-	// The HTTP status code.
+	// The status code returned by the API request.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response parameters.
+	// The returned data details.
 	Data *GetSensitiveDefineRuleConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned message.
+	// The message returned for the request.
 	//
 	// example:
 	//
@@ -42,11 +42,11 @@ type GetSensitiveDefineRuleConfigResponseBody struct {
 	//
 	// 7E0618A9-D5EF-4220-9471-C42B5E92****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the query was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Successful.
 	//
-	// 	- **false**
+	// - **false**: Failed.
 	//
 	// example:
 	//
@@ -117,11 +117,11 @@ func (s *GetSensitiveDefineRuleConfigResponseBody) Validate() error {
 }
 
 type GetSensitiveDefineRuleConfigResponseBodyData struct {
-	// Indicates whether the new rule is enabled for automatic check only on agentless detection. Valid values:
+	// Indicates whether automatic check is enabled for new rules. This parameter takes effect only for agentless checks. Valid values:
 	//
-	// 	- **0**: disabled.
+	// - **0**: Disabled.
 	//
-	// 	- **1**: enabled.
+	// - **1**: Enabled.
 	//
 	// example:
 	//
@@ -133,15 +133,15 @@ type GetSensitiveDefineRuleConfigResponseBodyData struct {
 	//
 	// 44616
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The total number of check rules.
+	// The total number of check items.
 	//
 	// example:
 	//
 	// 100
 	RuleCount *int32 `json:"RuleCount,omitempty" xml:"RuleCount,omitempty"`
-	// The tree of the check rules.
+	// The check item rule tree.
 	RuleTree []*GetSensitiveDefineRuleConfigResponseBodyDataRuleTree `json:"RuleTree,omitempty" xml:"RuleTree,omitempty" type:"Repeated"`
-	// The number of selected check rules.
+	// The number of selected check items.
 	//
 	// example:
 	//
@@ -216,19 +216,19 @@ func (s *GetSensitiveDefineRuleConfigResponseBodyData) Validate() error {
 }
 
 type GetSensitiveDefineRuleConfigResponseBodyDataRuleTree struct {
-	// The category keyword of the check rule.
+	// The classification keyword of the check item.
 	//
 	// example:
 	//
 	// password
 	ClassKey *string `json:"ClassKey,omitempty" xml:"ClassKey,omitempty"`
-	// The category name of the check rule.
+	// The classification name of the check item.
 	//
 	// example:
 	//
 	// password
 	ClassName *string `json:"ClassName,omitempty" xml:"ClassName,omitempty"`
-	// The list of check rules.
+	// The list of check item rules.
 	RuleList []*GetSensitiveDefineRuleConfigResponseBodyDataRuleTreeRuleList `json:"RuleList,omitempty" xml:"RuleList,omitempty" type:"Repeated"`
 }
 
@@ -281,23 +281,23 @@ func (s *GetSensitiveDefineRuleConfigResponseBodyDataRuleTree) Validate() error 
 }
 
 type GetSensitiveDefineRuleConfigResponseBodyDataRuleTreeRuleList struct {
-	// The keyword of the check rule.
+	// The rule keyword.
 	//
 	// example:
 	//
 	// huaweicloud_ak
 	RuleKey *string `json:"RuleKey,omitempty" xml:"RuleKey,omitempty"`
-	// The name of the check rule.
+	// The rule name.
 	//
 	// example:
 	//
 	// huaweicloud_ak
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// Indicates whether the check rule is selected. Valid values:
+	// Indicates whether the rule is selected. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Selected.
 	//
-	// 	- **false**
+	// - **false**: Not selected.
 	//
 	// example:
 	//

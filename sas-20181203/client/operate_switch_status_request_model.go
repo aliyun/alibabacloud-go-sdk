@@ -16,9 +16,9 @@ type iOperateSwitchStatusRequest interface {
 }
 
 type OperateSwitchStatusRequest struct {
-	// The ID of the rule.
+	// The rule ID.
 	//
-	// >  You can call the ListContainerWebDefenseRule operation to query the IDs of rules.
+	// > You can call the [ListSasContainerWebDefenseRule](https://help.aliyun.com/document_detail/2623606.html) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,11 @@ type OperateSwitchStatusRequest struct {
 	//
 	// 900001
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The status of the rule. Valid values: on and off.
+	// The status of the container tamper-proofing rule. Valid values:
+	//
+	// - on: enabled.
+	//
+	// - off: disabled.
 	//
 	// This parameter is required.
 	//

@@ -18,18 +18,18 @@ type iDescribeUserBaselineAuthorizationRequest interface {
 }
 
 type DescribeUserBaselineAuthorizationRequest struct {
-	// The language of the content within the request and response. Valid values:
+	// The language type for requests and responses. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang            *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the asset owner.
+	// The IP address of the access source.
 	//
 	// example:
 	//

@@ -24,13 +24,13 @@ type ExportRecordResponseBody struct {
   // 
   // cms_20171101.xlsx
   FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-  // The ID of the exported file.
+  // The ID of the export task.
   // 
   // example:
   // 
   // 131231
   Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-  // The ID of the request, which is used to locate and troubleshoot issues.
+  // The ID of the request, used to locate and troubleshoot issues.
   // 
   // example:
   // 

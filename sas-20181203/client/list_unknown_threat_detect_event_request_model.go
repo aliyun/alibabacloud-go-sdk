@@ -33,35 +33,57 @@ type iListUnknownThreatDetectEventRequest interface {
 
 type ListUnknownThreatDetectEventRequest struct {
 	AnalyzeResult *string `json:"AnalyzeResult,omitempty" xml:"AnalyzeResult,omitempty"`
+	// The page number of the current page in a paged query. This parameter is used for paging.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The unique identifier of the file.
+	//
 	// example:
 	//
 	// 0a212417e65c26ff133cfff28f6c****
 	HashKey *string `json:"HashKey,omitempty" xml:"HashKey,omitempty"`
 	Lang    *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The maximum number of entries to return on each page in a paged query. This parameter is used for paging.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The parent process path.
+	//
 	// example:
 	//
 	// /bin/bash
 	ParentProcessPath *string `json:"ParentProcessPath,omitempty" xml:"ParentProcessPath,omitempty"`
+	// The process path.
+	//
 	// example:
 	//
 	// /test
 	ProcessPath *string `json:"ProcessPath,omitempty" xml:"ProcessPath,omitempty"`
+	// The filter condition. You can filter by instance name or IP address.
+	//
 	// example:
 	//
 	// 10.167.XX.XX
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The event status. Valid values:
+	//
+	// - **1**: Unhandled.
+	//
+	// - **2**: Blocked.
+	//
+	// - **3**: Ignored.
+	//
 	// example:
 	//
 	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The UUID of the server to query.
+	//
 	// example:
 	//
 	// 18b7336e-d469-473b-af83-8e5420f9****

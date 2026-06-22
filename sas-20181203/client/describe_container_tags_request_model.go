@@ -50,13 +50,13 @@ type DescribeContainerTagsRequest struct {
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The name of the attribute that is used for the query. Valid values:
 	//
-	// 	- **namespace**: the namespace
+	// - **namespace**: the namespace
 	//
-	// 	- **appName**: the application name
+	// - **appName**: the application name
 	//
-	// 	- **image**: the image
+	// - **image**: the image
 	//
-	// 	- **tag**: the tag
+	// - **tag**: the tag
 	//
 	// This parameter is required.
 	//

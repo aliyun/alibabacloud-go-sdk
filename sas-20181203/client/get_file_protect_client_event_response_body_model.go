@@ -16,6 +16,7 @@ type iGetFileProtectClientEventResponseBody interface {
 }
 
 type GetFileProtectClientEventResponseBody struct {
+	// The data details.
 	Data *GetFileProtectClientEventResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -61,94 +62,154 @@ func (s *GetFileProtectClientEventResponseBody) Validate() error {
 }
 
 type GetFileProtectClientEventResponseBodyData struct {
+	// The alert notification level. Valid values:
+	//
+	// - 0: no alert
+	//
+	// - 1: reminder
+	//
+	// - 2: suspicious
+	//
+	// - 3: high-risk.
+	//
 	// example:
 	//
 	// 0
 	AlertLevel *int32 `json:"AlertLevel,omitempty" xml:"AlertLevel,omitempty"`
+	// The command line of the event.
+	//
 	// example:
 	//
 	// ["touch","/usr/local/aaaa"]
 	CmdLine *string `json:"CmdLine,omitempty" xml:"CmdLine,omitempty"`
+	// The number of times the alert occurred.
+	//
 	// example:
 	//
 	// 2
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The file path.
+	//
 	// example:
 	//
 	// /usr/local
 	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
+	// The process permissions.
+	//
 	// example:
 	//
 	// rwxr-xr-x
 	FilePermission *string `json:"FilePermission,omitempty" xml:"FilePermission,omitempty"`
+	// The timestamp when the event first occurred.
+	//
 	// example:
 	//
 	// 1694576692000
 	FirstTime *int64 `json:"FirstTime,omitempty" xml:"FirstTime,omitempty"`
+	// The time when the event was handled.
+	//
 	// example:
 	//
 	// 1694576692000
 	HandleTime *int64 `json:"HandleTime,omitempty" xml:"HandleTime,omitempty"`
+	// The event ID.
+	//
 	// example:
 	//
 	// 3454
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The instance name.
+	//
 	// example:
 	//
 	// i-wz92q7m5hsbgfhdss***
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The public IP address of the associated instance.
+	//
 	// example:
 	//
 	// 17.16.XX.XX
 	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	// The private IP address of the associated instance.
+	//
 	// example:
 	//
 	// 10.42.XX.XX
 	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
+	// The time when the event most recently occurred.
+	//
 	// example:
 	//
 	// 1694576692000
 	LatestTime *int64 `json:"LatestTime,omitempty" xml:"LatestTime,omitempty"`
+	// The operation that the process performed on the file.
+	//
 	// example:
 	//
 	// DELETE
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	// The operating system type.
+	//
 	// example:
 	//
 	// linux
 	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	// The process path.
+	//
 	// example:
 	//
 	// /bin/bash33
 	ProcPath *string `json:"ProcPath,omitempty" xml:"ProcPath,omitempty"`
+	// The process ID of the event.
+	//
 	// example:
 	//
 	// 3453
 	ProcessId *string `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
+	// The remarks.
+	//
 	// example:
 	//
 	// test
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The action of the blocking rule.
+	//
 	// example:
 	//
 	// block
 	RuleAction *string `json:"RuleAction,omitempty" xml:"RuleAction,omitempty"`
+	// The rule name.
+	//
 	// example:
 	//
 	// test-000
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The event status. Valid values:
+	//
+	// - 0: unhandled
+	//
+	// - 1: handled
+	//
+	// - 2: whitelisted.
+	//
 	// example:
 	//
 	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The user ID of the event.
+	//
 	// example:
 	//
 	// 12
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The username of the event.
+	//
 	// example:
 	//
 	// root
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The UUID of the asset instance.
+	//
 	// example:
 	//
 	// 6690a46c-0edb-4663-a641-3629d1a9****

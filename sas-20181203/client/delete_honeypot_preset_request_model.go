@@ -16,9 +16,9 @@ type iDeleteHoneypotPresetRequest interface {
 }
 
 type DeleteHoneypotPresetRequest struct {
-	// The ID of the honeypot template.
+	// The unique ID of the honeypot template.
 	//
-	// > You can call the [ListHoneypotPreset](~~ListHoneypotPreset~~) operation to query the IDs of honeypot templates.
+	// >Call the [ListHoneypotPreset](~~ListHoneypotPreset~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -26,11 +26,11 @@ type DeleteHoneypotPresetRequest struct {
 	//
 	// 84104b7b-a2bc-41df-a190-12298f99xxxx
 	HoneypotPresetId *string `json:"HoneypotPresetId,omitempty" xml:"HoneypotPresetId,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language of the content in the request and response. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese.
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English.
+	// - **en**: English.
 	//
 	// example:
 	//

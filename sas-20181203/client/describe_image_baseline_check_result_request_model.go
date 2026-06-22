@@ -28,23 +28,23 @@ type iDescribeImageBaselineCheckResultRequest interface {
 }
 
 type DescribeImageBaselineCheckResultRequest struct {
-	// The search condition for the image baseline.
+	// The query condition for the baseline.
 	//
 	// example:
 	//
 	// ak_leak
 	Criteria *string `json:"Criteria,omitempty" xml:"Criteria,omitempty"`
-	// The type of the search condition. Valid values:
+	// The query type of the baseline to query. Valid values:
 	//
-	// 	- **BaselineNameAlias**: baseline name
+	// - **BaselineNameAlias**: baseline name
 	//
-	// 	- **BaselineClassAlias**: baseline category
+	// - **BaselineClassAlias**: baseline category.
 	//
 	// example:
 	//
 	// BaselineNameAlias
 	CriteriaType *string `json:"CriteriaType,omitempty" xml:"CriteriaType,omitempty"`
-	// The number of the page to return. Default value: 1.
+	// The page number of the current page when using paging. Default value: 20, which indicates the first page.
 	//
 	// example:
 	//
@@ -58,35 +58,35 @@ type DescribeImageBaselineCheckResultRequest struct {
 	//
 	// a910053dd4710173ecc9e9d8931f****
 	ImageUuid *string `json:"ImageUuid,omitempty" xml:"ImageUuid,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language type for the request and response. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of entries to return on each page. Default value: **20**.
+	// The number of entries per page when using paging. Default value: **20**, which indicates that 20 logon configuration entries are displayed per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The severity of the image baseline that you want to query. Separate multiple severities with commas (,). By default, all valid values are used. Valid values:
+	// The risk level of the baseline to query. Separate multiple levels with commas (,). By default, all levels are included. Valid values:
 	//
-	// 	- **high**
+	// - **high**: high risk
 	//
-	// 	- **medium**
+	// - **medium**: medium risk
 	//
-	// 	- **low**
+	// - **low**: low risk.
 	//
 	// example:
 	//
 	// high,medium,low
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The types of the assets that you want to scan.
+	// The scan scope.
 	ScanRange []*string `json:"ScanRange,omitempty" xml:"ScanRange,omitempty" type:"Repeated"`
 }
 

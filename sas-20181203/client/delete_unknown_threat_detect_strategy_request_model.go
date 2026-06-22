@@ -14,6 +14,8 @@ type iDeleteUnknownThreatDetectStrategyRequest interface {
 }
 
 type DeleteUnknownThreatDetectStrategyRequest struct {
+	// The list of policy IDs.
+	//
 	// example:
 	//
 	// 123

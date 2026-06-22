@@ -16,9 +16,9 @@ type iGetSwitchRegionDetailResponseBody interface {
 }
 
 type GetSwitchRegionDetailResponseBody struct {
-	// The response parameters.
+	// The response data.
 	Data *GetSwitchRegionDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request. The China Chinese mainland generates a unique identifier for each request, which can be used for troubleshooting and diagnostics.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ func (s *GetSwitchRegionDetailResponseBody) Validate() error {
 }
 
 type GetSwitchRegionDetailResponseBodyData struct {
-	// The time when the permissions were modified.
+	// The time when the authorization operation was modified.
 	//
 	// example:
 	//
@@ -74,31 +74,39 @@ type GetSwitchRegionDetailResponseBodyData struct {
 	//
 	// 1692858597000
 	GmtNoticed *int64 `json:"GmtNoticed,omitempty" xml:"GmtNoticed,omitempty"`
-	// Indicates whether the migration is approved.
+	// Indicates whether the migration is agreed to.
 	//
 	// example:
 	//
 	// true
 	IsAgree *string `json:"IsAgree,omitempty" xml:"IsAgree,omitempty"`
-	// Indicates whether the notification is sent.
+	// Indicates whether the notification has been sent.
 	//
 	// example:
 	//
 	// YES
 	IsNoticed *string `json:"IsNoticed,omitempty" xml:"IsNoticed,omitempty"`
-	// Specifies whether to notify the account.
+	// Indicates whether a pop-up notification needs to be displayed to the user.
+	//
+	// - **true**: A pop-up notification needs to be displayed.
+	//
+	// - **false**: No pop-up notification needs to be displayed.
 	//
 	// example:
 	//
-	// true
+	// false
 	NeedNotice *bool `json:"NeedNotice,omitempty" xml:"NeedNotice,omitempty"`
-	// Specifies whether to switch.
+	// Indicates whether a switchover to the new console is required.
+	//
+	// - **true**: A switchover to the new console is required.
+	//
+	// - **false**: The legacy console is still in use.
 	//
 	// example:
 	//
 	// true
 	NeedSwitch *bool `json:"NeedSwitch,omitempty" xml:"NeedSwitch,omitempty"`
-	// The status of the switching to the region.
+	// The switchover status of the region.
 	RegionStatus []*GetSwitchRegionDetailResponseBodyDataRegionStatus `json:"RegionStatus,omitempty" xml:"RegionStatus,omitempty" type:"Repeated"`
 }
 
@@ -193,13 +201,13 @@ type GetSwitchRegionDetailResponseBodyDataRegionStatus struct {
 	//
 	// 27
 	EcsCount *int32 `json:"EcsCount,omitempty" xml:"EcsCount,omitempty"`
-	// The time when the migration is scheduled.
+	// The planned migration time.
 	//
 	// example:
 	//
 	// 1692858597000
 	GmtPlanSwitchTime *int64 `json:"GmtPlanSwitchTime,omitempty" xml:"GmtPlanSwitchTime,omitempty"`
-	// The region in which the server resides.
+	// The region where the server resides.
 	//
 	// example:
 	//
@@ -207,9 +215,9 @@ type GetSwitchRegionDetailResponseBodyDataRegionStatus struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The migration status. Valid values:
 	//
-	// 	- **0**: pending
+	// - **0**: waiting for migration
 	//
-	// 	- **1**: successful
+	// - **1**: switchover succeeded.
 	//
 	// example:
 	//

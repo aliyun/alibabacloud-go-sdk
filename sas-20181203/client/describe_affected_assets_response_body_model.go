@@ -18,11 +18,11 @@ type iDescribeAffectedAssetsResponseBody interface {
 }
 
 type DescribeAffectedAssetsResponseBody struct {
-	// An array that consists of the affected servers.
+	// The queried server asset information.
 	AssetList []*DescribeAffectedAssetsResponseBodyAssetList `json:"AssetList,omitempty" xml:"AssetList,omitempty" type:"Repeated"`
 	// The pagination information.
 	PageInfo *DescribeAffectedAssetsResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -84,13 +84,13 @@ func (s *DescribeAffectedAssetsResponseBody) Validate() error {
 }
 
 type DescribeAffectedAssetsResponseBodyAssetList struct {
-	// The ID of the server.
+	// The instance ID of the server.
 	//
 	// example:
 	//
 	// 11
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the server.
+	// The instance name of the server.
 	//
 	// example:
 	//
@@ -108,13 +108,13 @@ type DescribeAffectedAssetsResponseBodyAssetList struct {
 	//
 	// 172.0.XX.XX
 	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	// The number of viruses detected on the server.
+	// The number of virus detection risks on the server.
 	//
 	// example:
 	//
 	// 1
 	RiskNum *int32 `json:"RiskNum,omitempty" xml:"RiskNum,omitempty"`
-	// The UUID of the server.
+	// The unique identifier of the server.
 	//
 	// example:
 	//
@@ -189,25 +189,25 @@ func (s *DescribeAffectedAssetsResponseBodyAssetList) Validate() error {
 }
 
 type DescribeAffectedAssetsResponseBodyPageInfo struct {
-	// The number of entries returned on the current page.
+	// The number of entries on the current page in a paginated query.
 	//
 	// example:
 	//
 	// 10
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The page number of the returned page.
+	// The page number of the current page in a paginated query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//

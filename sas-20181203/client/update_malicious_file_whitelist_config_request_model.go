@@ -30,69 +30,69 @@ type iUpdateMaliciousFileWhitelistConfigRequest interface {
 }
 
 type UpdateMaliciousFileWhitelistConfigRequest struct {
-	// The ID of the whitelist rule. If you do not specify this parameter, a whitelist rule is created.
+	// The rule ID. This parameter is optional. If you do not specify this parameter, a whitelist rule is created.
 	//
 	// example:
 	//
 	// 1
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// The name of the alert.
+	// The alerting name. Valid values:
 	//
-	// 	- Set the value to ALL, which indicates all alert types.
+	// - ALL: all Alarm Metric.
 	//
 	// example:
 	//
 	// ALL
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
-	// The field that you want to use in the whitelist rule.
+	// The field to be whitelisted.
 	//
 	// example:
 	//
 	// fileMd5
 	Field *string `json:"Field,omitempty" xml:"Field,omitempty"`
-	// The value of the field that you want to use in the whitelist rule.
+	// The value of the field to be whitelisted.
 	//
 	// example:
 	//
 	// b2cf9747ee49d8d9b105cf16e078cc16
 	FieldValue *string `json:"FieldValue,omitempty" xml:"FieldValue,omitempty"`
-	// The logical operator that you want to use in the whitelist rule.
+	// The operator used for rule matching. Valid values:
 	//
-	// 	- Set the value to strEqual, which indicates the equality operator (=).
+	// - strEqual: string equals.
 	//
 	// example:
 	//
 	// strEqual
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	// Remark.
+	// The remarks.
 	//
 	// example:
 	//
 	// test
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The feature to which this operation belongs.
+	// The business source. Valid values:
 	//
-	// 	- Set the value to agentless, which indicates the agentless detection feature.
+	// - agentless: agentless detection.
 	//
 	// example:
 	//
 	// agentless
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The type of the assets on which you want the whitelist rule to take effect. Valid values:
+	// The type of the target scope. Valid values:
 	//
-	// 	- ALL: all assets
+	// - ALL: all assets
 	//
-	// 	- SELECTION_KEY: selected assets
+	// - SELECTION_KEY: assets selected by using the asset selection component.
 	//
 	// example:
 	//
 	// ALL
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	// The assets on which you want the whitelist rule to take effect. Valid values:
+	// The target scope. Valid values:
 	//
-	// 	- ALL: all assets
+	// - ALL: all assets
 	//
-	// 	- Others: selected assets
+	// - Other values: the key of the asset scope selected by using the asset selection component.
 	//
 	// example:
 	//

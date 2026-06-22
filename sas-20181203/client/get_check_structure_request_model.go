@@ -22,39 +22,39 @@ type iGetCheckStructureRequest interface {
 }
 
 type GetCheckStructureRequest struct {
-	// The page number.
+	// The page number of the current page in a paging query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language type for requests and responses. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of entries per page.
+	// The maximum number of entries per page in a paging query.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the asset. Valid values:
+	// The region where the asset resides. Valid values:
 	//
-	// 	- cn-hangzhou: China.
+	// - cn-hangzhou: China
 	//
-	// 	- ap-southeast-1: outside China.
+	// - ap-southeast-1: outside China.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// List of task sources.
+	// The list of task sources.
 	TaskSources []*string `json:"TaskSources,omitempty" xml:"TaskSources,omitempty" type:"Repeated"`
 }
 

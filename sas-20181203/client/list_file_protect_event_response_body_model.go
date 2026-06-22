@@ -18,11 +18,11 @@ type iListFileProtectEventResponseBody interface {
 }
 
 type ListFileProtectEventResponseBody struct {
-	// The events.
+	// The list of events.
 	EventList []*ListFileProtectEventResponseBodyEventList `json:"EventList,omitempty" xml:"EventList,omitempty" type:"Repeated"`
-	// The pagination information.
+	// The pagination information of the query result.
 	PageInfo *ListFileProtectEventResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the request ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -84,15 +84,15 @@ func (s *ListFileProtectEventResponseBody) Validate() error {
 }
 
 type ListFileProtectEventResponseBodyEventList struct {
-	// The severity of the alert. Valid values:
+	// The alert notification level. Valid values:
 	//
-	// 	- 0: no alerts
+	// - 0: no alert
 	//
-	// 	- 1: reminder
+	// - 1: reminder
 	//
-	// 	- 2: suspicious
+	// - 2: suspicious
 	//
-	// 	- 3: high-risk
+	// - 3: high-risk.
 	//
 	// example:
 	//
@@ -104,7 +104,7 @@ type ListFileProtectEventResponseBodyEventList struct {
 	//
 	// ["touch","/test/aaaa"]
 	CmdLine *string `json:"CmdLine,omitempty" xml:"CmdLine,omitempty"`
-	// The path to the file that is managed by the process.
+	// The file path on which the process operates.
 	//
 	// example:
 	//
@@ -116,13 +116,13 @@ type ListFileProtectEventResponseBodyEventList struct {
 	//
 	// 1694576692000
 	HandleTime *int64 `json:"HandleTime,omitempty" xml:"HandleTime,omitempty"`
-	// The ID of the event.
+	// The event ID.
 	//
 	// example:
 	//
 	// 161757
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The instance name of the server.
+	// The name of the server instance.
 	//
 	// example:
 	//
@@ -132,15 +132,15 @@ type ListFileProtectEventResponseBodyEventList struct {
 	//
 	// example:
 	//
-	// 121.40.211.194
+	// 121.40.XX.XX
 	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
-	// The private IP address of the server.
+	// The private IP address of the asset.
 	//
 	// example:
 	//
-	// 172.22.5.36
+	// 172.22.XX.XX
 	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	// The time when the event last occurred.
+	// The most recent time when the event occurred.
 	//
 	// example:
 	//
@@ -152,65 +152,65 @@ type ListFileProtectEventResponseBodyEventList struct {
 	//
 	// DELETE
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
-	// The type of the operating system. Valid values:
+	// The operating system type. Valid values:
 	//
-	// 	- **windows**: Windows
+	// - **windows**: Windows
 	//
-	// 	- **linux**: Linux
+	// - **linux**: Linux.
 	//
 	// example:
 	//
 	// linux
 	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	// The path to the process.
+	// The process path.
 	//
 	// example:
 	//
 	// /usr/bin/sshpass
 	ProcPath *string `json:"ProcPath,omitempty" xml:"ProcPath,omitempty"`
-	// The permissions required to start the process.
+	// The process permission.
 	//
 	// example:
 	//
 	// rwxr-xr-x
 	ProcPermission *string `json:"ProcPermission,omitempty" xml:"ProcPermission,omitempty"`
-	// The ID of the process.
+	// The process ID of the event.
 	//
 	// example:
 	//
 	// 52636
 	ProcessId *string `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
-	// The description.
+	// The remarks.
 	//
 	// example:
 	//
 	// test
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The name of the rule.
+	// The rule name.
 	//
 	// example:
 	//
 	// test-rule-1
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The status of the event. Valid values:
+	// The event status. Valid values:
 	//
-	// 	- 0: unhandled
+	// - 0: Unhandled.
 	//
-	// 	- 1: handled
+	// - 1: Manually handled.
 	//
-	// 	- 2: added to the whitelist
+	// - 2: Whitelisted.
 	//
-	// 	- 3: ignored
+	// - 3: Ignored.
 	//
 	// example:
 	//
 	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The UUID of the server that is associated with the process.
+	// The UUID of the server associated with the process.
 	//
 	// example:
 	//
-	// 94b44720-d982-4d20-a4e1-80a1a57b5a8e
+	// 94b44720-d982-4d20-a4e1-80a1a57b****
 	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 
@@ -389,19 +389,19 @@ func (s *ListFileProtectEventResponseBodyEventList) Validate() error {
 }
 
 type ListFileProtectEventResponseBodyPageInfo struct {
-	// The page number.
+	// The page number of the current page in a paging query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries per page.
+	// The maximum number of entries returned per page in a paging query.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//

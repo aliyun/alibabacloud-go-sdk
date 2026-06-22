@@ -20,9 +20,9 @@ type iDescribeImageRequest interface {
 }
 
 type DescribeImageRequest struct {
-	// The instance ID of the image.
+	// The image instance ID.
 	//
-	// >  You can call the [DescribeImageInstances](~~DescribeImageInstances~~) operation to query the IDs of instances.
+	// > You can call the [DescribeImageInstances](~~DescribeImageInstances~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type DescribeImageRequest struct {
 	ImageInstanceId *string `json:"ImageInstanceId,omitempty" xml:"ImageInstanceId,omitempty"`
 	// The region ID of the image.
 	//
-	// >  You can call the [DescribeImageInstances](~~DescribeImageInstances~~) operation to query the IDs of regions.
+	// > You can call the [DescribeImageInstances](~~DescribeImageInstances~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -40,9 +40,9 @@ type DescribeImageRequest struct {
 	//
 	// cn-hangzhou
 	ImageRegionId *string `json:"ImageRegionId,omitempty" xml:"ImageRegionId,omitempty"`
-	// The ID of the image repository.
+	// The image repository ID.
 	//
-	// >  You can call the [DescribeImageInstances](~~DescribeImageInstances~~) operation to query the IDs of image repositories.
+	// > You can call the [DescribeImageInstances](~~DescribeImageInstances~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -50,9 +50,9 @@ type DescribeImageRequest struct {
 	//
 	// crr-7i88t7lx3fmf****
 	ImageRepoId *string `json:"ImageRepoId,omitempty" xml:"ImageRepoId,omitempty"`
-	// The tag that is added to the image.
+	// The image tag.
 	//
-	// >  You can call the [DescribeImageInstances](~~DescribeImageInstances~~) operation to query tags.
+	// > You can call the [DescribeImageInstances](~~DescribeImageInstances~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//

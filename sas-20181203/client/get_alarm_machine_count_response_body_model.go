@@ -16,9 +16,9 @@ type iGetAlarmMachineCountResponseBody interface {
 }
 
 type GetAlarmMachineCountResponseBody struct {
-	// The data returned.
+	// The data details.
 	Data *GetAlarmMachineCountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The ID of the request. The ID is a unique identifier that Alibaba Cloud generates for the request and can be used to troubleshoot issues.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ func (s *GetAlarmMachineCountResponseBody) Validate() error {
 }
 
 type GetAlarmMachineCountResponseBodyData struct {
-	// The number of servers on which alerts are generated.
+	// The number of servers that have security alerts.
 	//
 	// example:
 	//

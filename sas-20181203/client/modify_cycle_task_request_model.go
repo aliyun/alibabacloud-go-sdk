@@ -32,9 +32,9 @@ type iModifyCycleTaskRequest interface {
 }
 
 type ModifyCycleTaskRequest struct {
-	// The ID of the task configuration.
+	// The ID of the configuration.
 	//
-	// >  You can call the [DescribeCycleTaskList](~~DescribeCycleTaskList~~) operation to query the IDs of task configurations.
+	// >Call the [DescribeCycleTaskList](~~DescribeCycleTaskList~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -44,27 +44,27 @@ type ModifyCycleTaskRequest struct {
 	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
 	// Specifies whether to enable the task. Valid values:
 	//
-	// 	- **1**: enables the task.
+	// - **1**: enabled.
 	//
-	// 	- **0**: disables the task.
+	// - **0**: disabled.
 	//
 	// example:
 	//
 	// 1
 	Enable *int32 `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The time when the task first started.
+	// The first execution time.
 	//
 	// example:
 	//
 	// 1664380800000
 	FirstDateStr *int64 `json:"FirstDateStr,omitempty" xml:"FirstDateStr,omitempty"`
-	// The interval at which the task is run.
+	// The interval period.
 	//
 	// example:
 	//
 	// 14
 	IntervalPeriod *int32 `json:"IntervalPeriod,omitempty" xml:"IntervalPeriod,omitempty"`
-	// The additional information.
+	// The extended information field.
 	//
 	// example:
 	//
@@ -96,123 +96,47 @@ type ModifyCycleTaskRequest struct {
 	//
 	// }
 	Param *string `json:"Param,omitempty" xml:"Param,omitempty"`
-	// The unit of the scan interval. Valid values:
+	// The unit of the scan cycle. Valid values:
 	//
-	// 	- **day**
+	// - **day**: day.
 	//
-	// 	- **hour**
+	// - **hour**: hour.
 	//
 	// example:
 	//
 	// day
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// The end time of the task. The time must be a time frame.
+	// The task end time, in hours.
 	//
 	// example:
 	//
 	// 6
 	TargetEndTime *int32 `json:"TargetEndTime,omitempty" xml:"TargetEndTime,omitempty"`
-	// The start time of the task. The start time must be a time frame.
+	// The task start time, in hours.
 	//
 	// example:
 	//
 	// 0
 	TargetStartTime *int32 `json:"TargetStartTime,omitempty" xml:"TargetStartTime,omitempty"`
-	// The name of the task. Valid values:
+	// The node name. Valid values:
 	//
-	// 	- **VIRUS_VUL_SCHEDULE_SCAN**: virus detection task
+	// - **VIRUS_VUL_SCHEDULE_SCAN**: virus scan.
 	//
-	// 	- **IMAGE_SCAN**: image scan task
+	// - **IMAGE_SCAN**: image scan.
 	//
-	// 	- **EMG_VUL_SCHEDULE_SCAN**: urgent vulnerability scan task
-	//
-	// Valid values:
-	//
-	// 	- VIRUS_VUL_SCHEDULE_SCAN
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     virus detection task
-	//
-	//     <!-- -->
-	//
-	// 	- IMAGE_SCAN
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     image scan task
-	//
-	//     <!-- -->
-	//
-	// 	- EMG_VUL_SCHEDULE_SCAN
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     urgent vulnerability scan task
-	//
-	//     <!-- -->
+	// - **EMG_VUL_SCHEDULE_SCAN**: emergency vulnerability scanning.
 	//
 	// example:
 	//
 	// EMG_VUL_SCHEDULE_SCAN
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// The type of the task. Valid values:
+	// The node type. Valid values:
 	//
-	// 	- **VIRUS_VUL_SCHEDULE_SCAN**: virus detection task
+	// - **VIRUS_VUL_SCHEDULE_SCAN**: virus scan.
 	//
-	// 	- **IMAGE_SCAN**: image scan task
+	// - **IMAGE_SCAN**: image scan.
 	//
-	// 	- **EMG_VUL_SCHEDULE_SCAN**: urgent vulnerability scan task
-	//
-	// Valid values:
-	//
-	// 	- VIRUS_VUL_SCHEDULE_SCAN
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     virus detection task
-	//
-	//     <!-- -->
-	//
-	// 	- IMAGE_SCAN
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     image scan task
-	//
-	//     <!-- -->
-	//
-	// 	- EMG_VUL_SCHEDULE_SCAN
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     urgent vulnerability scan task
-	//
-	//     <!-- -->
+	// - **EMG_VUL_SCHEDULE_SCAN**: emergency vulnerability scanning.
 	//
 	// example:
 	//

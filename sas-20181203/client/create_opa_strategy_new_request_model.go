@@ -70,9 +70,9 @@ type CreateOpaStrategyNewRequest struct {
 	Label []*string `json:"Label,omitempty" xml:"Label,omitempty" type:"Repeated"`
 	// Specifies whether the rule supports malicious Internet images. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -80,11 +80,11 @@ type CreateOpaStrategyNewRequest struct {
 	MaliciousImage *bool `json:"MaliciousImage,omitempty" xml:"MaliciousImage,omitempty"`
 	// The action that is performed when the rule is hit. Valid values:
 	//
-	// 	- **1**: trigger alerts
+	// - **1**: trigger alerts
 	//
-	// 	- **2**: block
+	// - **2**: block
 	//
-	// 	- **3**: allow
+	// - **3**: allow
 	//
 	// example:
 	//
@@ -94,7 +94,7 @@ type CreateOpaStrategyNewRequest struct {
 	Scopes []*CreateOpaStrategyNewRequestScopes `json:"Scopes,omitempty" xml:"Scopes,omitempty" type:"Repeated"`
 	// The rule ID.
 	//
-	// >  You can call the [ListOpaClusterStrategyNew](https://help.aliyun.com/document_detail/2623574.html) operation to query the rule ID.
+	// > You can call the [ListOpaClusterStrategyNew](https://help.aliyun.com/document_detail/2623574.html) operation to query the rule ID.
 	//
 	// > This parameter is invalid when you create a rule.
 	//
@@ -110,7 +110,7 @@ type CreateOpaStrategyNewRequest struct {
 	StrategyName *string `json:"StrategyName,omitempty" xml:"StrategyName,omitempty"`
 	// The ID of the rule template.
 	//
-	// >  You can call the [GetOpaStrategyTemplateSummary](https://help.aliyun.com/document_detail/2539952.html) operation to query the ID of the rule template.
+	// > You can call the [GetOpaStrategyTemplateSummary](https://help.aliyun.com/document_detail/2539952.html) operation to query the ID of the rule template.
 	//
 	// example:
 	//
@@ -118,9 +118,9 @@ type CreateOpaStrategyNewRequest struct {
 	StrategyTemplateId *int64 `json:"StrategyTemplateId,omitempty" xml:"StrategyTemplateId,omitempty"`
 	// Specifies whether the rule supports unscanned images. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -426,7 +426,7 @@ func (s *CreateOpaStrategyNewRequestAlarmDetailBaseline) Validate() error {
 type CreateOpaStrategyNewRequestAlarmDetailBaselineItem struct {
 	// The ID of the baseline check item.
 	//
-	// >  You can call the [GetOpaClusterBaseLineList](https://help.aliyun.com/document_detail/2539883.html) operation to query the ID.
+	// > You can call the [GetOpaClusterBaseLineList](https://help.aliyun.com/document_detail/2539883.html) operation to query the ID.
 	//
 	// example:
 	//
@@ -434,7 +434,7 @@ type CreateOpaStrategyNewRequestAlarmDetailBaselineItem struct {
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The name of the baseline check item.
 	//
-	// >  You can call the [GetOpaClusterBaseLineList](https://help.aliyun.com/document_detail/2539883.html) operation to query the name.
+	// > You can call the [GetOpaClusterBaseLineList](https://help.aliyun.com/document_detail/2539883.html) operation to query the name.
 	//
 	// example:
 	//
@@ -521,7 +521,7 @@ func (s *CreateOpaStrategyNewRequestAlarmDetailBuildRisk) Validate() error {
 type CreateOpaStrategyNewRequestAlarmDetailBuildRiskItem struct {
 	// The ID of the image build risk.
 	//
-	// >  You can call the [ListImageBuildRiskItem](~~ListImageBuildRiskItem~~) operation to query the ID of the malicious sample.
+	// > You can call the [ListImageBuildRiskItem](~~ListImageBuildRiskItem~~) operation to query the ID of the malicious sample.
 	//
 	// example:
 	//
@@ -529,7 +529,7 @@ type CreateOpaStrategyNewRequestAlarmDetailBuildRiskItem struct {
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The name of the image build risk.
 	//
-	// >  You can call the [ListImageBuildRiskItem](~~ListImageBuildRiskItem~~) operation to query the ID of the malicious sample.
+	// > You can call the [ListImageBuildRiskItem](~~ListImageBuildRiskItem~~) operation to query the ID of the malicious sample.
 	//
 	// example:
 	//
@@ -616,7 +616,7 @@ func (s *CreateOpaStrategyNewRequestAlarmDetailMaliciousFile) Validate() error {
 type CreateOpaStrategyNewRequestAlarmDetailMaliciousFileItem struct {
 	// The ID of the malicious sample.
 	//
-	// >  You can call the [DescribeMatchedMaliciousNames](~~DescribeMatchedMaliciousNames~~) operation to query the ID.
+	// > You can call the [DescribeMatchedMaliciousNames](~~DescribeMatchedMaliciousNames~~) operation to query the ID.
 	//
 	// example:
 	//
@@ -624,7 +624,7 @@ type CreateOpaStrategyNewRequestAlarmDetailMaliciousFileItem struct {
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The name of the malicious sample.
 	//
-	// >  You can call the [DescribeMatchedMaliciousNames](~~DescribeMatchedMaliciousNames~~) operation to query the name.
+	// > You can call the [DescribeMatchedMaliciousNames](~~DescribeMatchedMaliciousNames~~) operation to query the name.
 	//
 	// example:
 	//
@@ -711,7 +711,7 @@ func (s *CreateOpaStrategyNewRequestAlarmDetailSensitiveFile) Validate() error {
 type CreateOpaStrategyNewRequestAlarmDetailSensitiveFileItem struct {
 	// The ID of the sensitive files.
 	//
-	// >  You can call the [GetSensitiveDefineRuleConfig](~~GetSensitiveDefineRuleConfig~~) operation to query the ID of the malicious sample.
+	// > You can call the [GetSensitiveDefineRuleConfig](~~GetSensitiveDefineRuleConfig~~) operation to query the ID of the malicious sample.
 	//
 	// example:
 	//
@@ -719,7 +719,7 @@ type CreateOpaStrategyNewRequestAlarmDetailSensitiveFileItem struct {
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The name of the sensitive files.
 	//
-	// >  You can call the [GetSensitiveDefineRuleConfig](~~GetSensitiveDefineRuleConfig~~) operation to query the ID of the malicious sample.
+	// > You can call the [GetSensitiveDefineRuleConfig](~~GetSensitiveDefineRuleConfig~~) operation to query the ID of the malicious sample.
 	//
 	// example:
 	//
@@ -826,7 +826,7 @@ func (s *CreateOpaStrategyNewRequestAlarmDetailVul) Validate() error {
 type CreateOpaStrategyNewRequestAlarmDetailVulItem struct {
 	// The ID of the vulnerability.
 	//
-	// >  You can call the [DescribeVulListPage](https://help.aliyun.com/document_detail/471928.html) operation to query the ID.
+	// > You can call the [DescribeVulListPage](https://help.aliyun.com/document_detail/471928.html) operation to query the ID.
 	//
 	// example:
 	//
@@ -834,7 +834,7 @@ type CreateOpaStrategyNewRequestAlarmDetailVulItem struct {
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The name of the vulnerability.
 	//
-	// >  You can call the [DescribeVulListPage](https://help.aliyun.com/document_detail/471928.html) operation to query the name.
+	// > You can call the [DescribeVulListPage](https://help.aliyun.com/document_detail/471928.html) operation to query the name.
 	//
 	// example:
 	//
@@ -875,9 +875,9 @@ func (s *CreateOpaStrategyNewRequestAlarmDetailVulItem) Validate() error {
 type CreateOpaStrategyNewRequestAlarmDetailVulRiskClass struct {
 	// The ID of the vulnerability types. Valid values:
 	//
-	// 	- **cve**: system vulnerability
+	// - **cve**: system vulnerability
 	//
-	// 	- **app**: application vulnerability
+	// - **app**: application vulnerability
 	//
 	// example:
 	//
@@ -885,13 +885,13 @@ type CreateOpaStrategyNewRequestAlarmDetailVulRiskClass struct {
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The name of the vulnerability. Valid values:
 	//
-	// 	- **system vulnerability**
+	// - **system vulnerability**
 	//
-	// 	- **application vulnerability**
+	// - **application vulnerability**
 	//
 	// example:
 	//
-	// system vulnerability
+	// 系统漏洞
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -936,9 +936,9 @@ type CreateOpaStrategyNewRequestScopes struct {
 	AckPolicyInstanceId *string `json:"AckPolicyInstanceId,omitempty" xml:"AckPolicyInstanceId,omitempty"`
 	// Specifies whether to include all namespaces. Valid values:
 	//
-	// 	- **1**: includes all namespaces.
+	// - **1**: includes all namespaces.
 	//
-	// 	- **0**: does not include all namespaces.
+	// - **0**: does not include all namespaces.
 	//
 	// example:
 	//
@@ -946,7 +946,7 @@ type CreateOpaStrategyNewRequestScopes struct {
 	AllNamespace *int32 `json:"AllNamespace,omitempty" xml:"AllNamespace,omitempty"`
 	// The ID of the cluster that is specified in the rule.
 	//
-	// >  You can call the [DescribeGroupedContainerInstances](https://help.aliyun.com/document_detail/421736.html) operation to query the cluster ID.
+	// > You can call the [DescribeGroupedContainerInstances](https://help.aliyun.com/document_detail/421736.html) operation to query the cluster ID.
 	//
 	// example:
 	//

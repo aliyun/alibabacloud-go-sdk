@@ -18,9 +18,11 @@ type iListUnknownThreatDetectStrategyResponseBody interface {
 }
 
 type ListUnknownThreatDetectStrategyResponseBody struct {
-	Data     []*ListUnknownThreatDetectStrategyResponseBodyData   `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// An array of strategies.
+	Data []*ListUnknownThreatDetectStrategyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The pagination information.
 	PageInfo *ListUnknownThreatDetectStrategyResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -82,30 +84,48 @@ func (s *ListUnknownThreatDetectStrategyResponseBody) Validate() error {
 }
 
 type ListUnknownThreatDetectStrategyResponseBodyData struct {
+	// The asset selection identifier.
+	//
 	// example:
 	//
 	// UNKNOWN_THREAT_DETECT_CONFIG_****
 	AssetSelectionType *string `json:"AssetSelectionType,omitempty" xml:"AssetSelectionType,omitempty"`
+	// The duration, in days, of the learning phase after model creation.
+	//
 	// example:
 	//
 	// 1
 	DurationDaysAfterInit *int32 `json:"DurationDaysAfterInit,omitempty" xml:"DurationDaysAfterInit,omitempty"`
+	// The number of consecutive days without new process detections before the learning phase automatically ends.
+	//
 	// example:
 	//
 	// 1
 	DurationDaysAfterStop *int32 `json:"DurationDaysAfterStop,omitempty" xml:"DurationDaysAfterStop,omitempty"`
+	// The strategy ID.
+	//
 	// example:
 	//
 	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The number of servers.
+	//
 	// example:
 	//
 	// 1
 	MachineCount *int32 `json:"MachineCount,omitempty" xml:"MachineCount,omitempty"`
+	// The strategy name.
+	//
 	// example:
 	//
 	// test****
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The whitelist mode. Valid values:
+	//
+	// - **hash**: process hash
+	//
+	// - **path**: process path
+	//
 	// example:
 	//
 	// hash
@@ -188,18 +208,26 @@ func (s *ListUnknownThreatDetectStrategyResponseBodyData) Validate() error {
 }
 
 type ListUnknownThreatDetectStrategyResponseBodyPageInfo struct {
+	// The number of entries returned on the current page.
+	//
 	// example:
 	//
 	// 20
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The number of entries returned per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of matching entries.
+	//
 	// example:
 	//
 	// 69

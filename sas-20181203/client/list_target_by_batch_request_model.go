@@ -20,13 +20,13 @@ type iListTargetByBatchRequest interface {
 }
 
 type ListTargetByBatchRequest struct {
-	// The ID of the release batch.
+	// The publish batch ID.
 	//
 	// example:
 	//
 	// 1371
 	BatchId *int64 `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
-	// The page number of the current page in a paginated query.
+	// The page number of the current page to display in a paged query.
 	//
 	// This parameter is required.
 	//
@@ -34,19 +34,19 @@ type ListTargetByBatchRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// Asset selection dimension. Values:
+	// The asset selection dimension. Valid values:
 	//
-	// - **0**: Machine instance
+	// - **0**: machine instance
 	//
-	// - **1**: Machine group
+	// - **1**: machine group
 	//
-	// - **2**: VPC instance ID
+	// - **2**: VPC-connected instance ID
 	//
 	// example:
 	//
 	// 0
 	OperationBase *int32 `json:"OperationBase,omitempty" xml:"OperationBase,omitempty"`
-	// The maximum number of items to return per page in a paginated query.
+	// The maximum number of entries to display per page in a paged query.
 	//
 	// This parameter is required.
 	//

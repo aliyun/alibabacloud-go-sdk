@@ -16,7 +16,7 @@ type iCreateSuspEventNoteRequest interface {
 }
 
 type CreateSuspEventNoteRequest struct {
-	// The ID of the alert event to which you want to add remarks. You can call the [DescribeSuspEvents](https://help.aliyun.com/document_detail/251497.html) operation to query the IDs of alert events.
+	// The ID of the security alert event to which you want to add a note. Call [DescribeSuspEvents](https://help.aliyun.com/document_detail/251497.html) to obtain the ID of the alert event.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type CreateSuspEventNoteRequest struct {
 	//
 	// 668931
 	EventId *int64 `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	// The remarks that you want to add.
+	// The note to add.
 	//
 	// This parameter is required.
 	//

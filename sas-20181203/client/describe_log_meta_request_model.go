@@ -20,37 +20,37 @@ type iDescribeLogMetaRequest interface {
 }
 
 type DescribeLogMetaRequest struct {
-	// The ID of the request source. Default value: **aegis**. Valid values:
+	// The source identifier of the request. Default value: **aegis**. Valid values:
 	//
-	// 	- **aegis**: Server Guard
+	// - **aegis**: Server Guard edition.
 	//
-	// 	- **sas**: Security Center
+	// - **sas**: Security Center edition.
 	//
-	// >  If you use Server Guard, set the value to **aegis**. If you use Security Center, set the value to **sas**.
+	// > Server Guard users should use **aegis**, and Security Center users should use **sas**.
 	//
 	// example:
 	//
 	// sas
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language type for the request and response messages. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The Alibaba Cloud account ID of the member in the resource directory.
+	// The ID of the member accounts in the resource directory (Alibaba Cloud account).
 	//
-	// >  You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain the IDs.
+	// >You can invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// 127608589417****
 	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
-	// The source IP address of the request.
+	// The IP address of the access source.
 	//
 	// example:
 	//

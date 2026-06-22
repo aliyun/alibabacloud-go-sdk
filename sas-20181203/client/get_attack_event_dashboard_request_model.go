@@ -18,23 +18,23 @@ type iGetAttackEventDashboardRequest interface {
 }
 
 type GetAttackEventDashboardRequest struct {
-	// Timestamp of the end time.
+	// The timestamp of the end time.
 	//
 	// example:
 	//
 	// 1753153137284
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Language type for request and response messages. Default value is **zh**. Values:
+	// The language type for the request and response messages. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Timestamp of the start time.
+	// The timestamp of the start time.
 	//
 	// example:
 	//

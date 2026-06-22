@@ -18,29 +18,29 @@ type iGetAttackPathEventDetailRequest interface {
 }
 
 type GetAttackPathEventDetailRequest struct {
-	// Event ID.
+	// The event ID.
 	//
-	// > You can call [ListAttackPathEvent](~~ListAttackPathEvent~~) to query the event ID.
+	// > You can call [ListAttackPathEvent](~~ListAttackPathEvent~~) to query event IDs.
 	//
 	// example:
 	//
 	// 123
 	EventId *int64 `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	// Data source. The default value is **default**. Values:
+	// The data source. Default value: **default**. Valid values:
 	//
-	//  - **caasm**: Attack surface
+	// - **caasm**: attack surface
 	//
-	//  - **default**: Attack path
+	// - **default**: attack path.
 	//
 	// example:
 	//
 	// default
 	EventSource *string `json:"EventSource,omitempty" xml:"EventSource,omitempty"`
-	// The language type for request and response, default is **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//

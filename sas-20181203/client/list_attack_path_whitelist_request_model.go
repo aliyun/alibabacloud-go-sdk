@@ -24,45 +24,45 @@ type iListAttackPathWhitelistRequest interface {
 }
 
 type ListAttackPathWhitelistRequest struct {
-	// When performing a paginated query, set the current page number. The default value is **1**.
+	// The page number when using paging. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The language type for requests and responses. The default value is **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// When performing a paginated query, set the maximum number of items per page. The default value is 20.
+	// The maximum number of entries per page when using paging. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Path name description.
+	// The path name description.
 	//
-	// > You can call [ListAvailableAttackPath](~~ListAvailableAttackPath~~) to query the path name descriptions.
+	// > Call [ListAvailableAttackPath](~~ListAvailableAttackPath~~) to query path name descriptions.
 	//
 	// example:
 	//
 	// ECS Instance Can Obtain Long-term Access Credential by Enabling Console Logon for RAM User
 	PathNameDesc *string `json:"PathNameDesc,omitempty" xml:"PathNameDesc,omitempty"`
-	// Path type.
+	// The path type.
 	//
-	// > You can call [ListAvailableAttackPath](~~ListAvailableAttackPath~~) to query the path types.
+	// > Call [ListAvailableAttackPath](~~ListAvailableAttackPath~~) to query path types.
 	//
 	// example:
 	//
 	// role_escalation
 	PathType *string `json:"PathType,omitempty" xml:"PathType,omitempty"`
-	// Whitelist name.
+	// The whitelist name.
 	//
 	// example:
 	//

@@ -20,35 +20,35 @@ type iQueryAttackCountRequest interface {
 }
 
 type QueryAttackCountRequest struct {
-	// The ID of the request source. Set the value to sas.
+	// The source identifier of the request. Set this parameter to sas.
 	//
 	// example:
 	//
 	// sas
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The source IP address of the request.
+	// The IP address of the access source.
 	//
 	// example:
 	//
 	// 175.0.XX.XX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The UUID of the asset.
+	// The UUID of the server. Separate multiple UUIDs with commas (,).
 	//
-	// >  You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to query the UUIDs of assets.
+	// > Call the [DescribeCloudCenterInstances](https://help.aliyun.com/document_detail/141932.html) operation to obtain this parameter.
 	//
 	// example:
 	//
-	// 0c1714dc-f7a3-4265-8364-7aa3fce8****,1cc45e7d-7698-4b2c-89d8-e8cba407****
+	// 1587bedb-fdb4-48c4-9330-************
 	Uuids *string `json:"Uuids,omitempty" xml:"Uuids,omitempty"`
 }
 

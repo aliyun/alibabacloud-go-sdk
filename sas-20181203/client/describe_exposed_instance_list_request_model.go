@@ -40,111 +40,111 @@ type iDescribeExposedInstanceListRequest interface {
 }
 
 type DescribeExposedInstanceListRequest struct {
-	// The type of the asset. Valid values:
+	// The asset type. Valid values:
 	//
-	// 	- **0**: an Elastic Compute Service (ECS) instance.
+	// - **0**: ECS
 	//
-	// 	- **3**: an ApsaraDB RDS instance.
+	// - **3**: RDS
 	//
-	// 	- **4**: an ApsaraDB for MongoDB instance.
+	// - **4**: MONGODB
 	//
-	// 	- **5**: an ApsaraDB for Redis instance.
+	// - **5**: RDS-Redis.
 	//
 	// example:
 	//
 	// 0
 	AssetType *string `json:"AssetType,omitempty" xml:"AssetType,omitempty"`
-	// Specifies whether the asset has Cloud Security Posture Management (CSPM) risks. Valid values:
+	// Specifies whether the asset that you want to query has Cloud Security Posture Management (CSPM) risks. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The asset has CSPM risks.
 	//
-	// 	- **false**
+	// - **false**: The asset does not have CSPM risks.
 	//
 	// example:
 	//
 	// true
 	CspmStatus *bool `json:"CspmStatus,omitempty" xml:"CspmStatus,omitempty"`
-	// The number of the page to return.
+	// The page number of the current page in a paged query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The server component that is exposed on the Internet.
+	// The name of the system component exposed on the Internet that you want to query.
 	//
 	// example:
 	//
 	// openssl
 	ExposureComponent *string `json:"ExposureComponent,omitempty" xml:"ExposureComponent,omitempty"`
-	// Expose component type.
+	// The type of the exposed component.
 	//
 	// example:
 	//
 	// system_service
 	ExposureComponentBizType *string `json:"ExposureComponentBizType,omitempty" xml:"ExposureComponentBizType,omitempty"`
-	// The public IP address of the server or the public endpoint of the database.
+	// The public IP address of the server type or the public network connection address of the database type that you want to query.
 	//
 	// example:
 	//
 	// 116.12.XX.XX
 	ExposureIp *string `json:"ExposureIp,omitempty" xml:"ExposureIp,omitempty"`
-	// The port that is exposed on the Internet.
+	// The exposed port that you want to query.
 	//
 	// example:
 	//
 	// 22
 	ExposurePort *string `json:"ExposurePort,omitempty" xml:"ExposurePort,omitempty"`
-	// The ID of the server group.
+	// The ID of the server group that you want to query.
 	//
-	// > You can call the [DescribeAllGroups](~~DescribeAllGroups~~) operation to query the IDs of server groups.
+	// > You can call the [DescribeAllGroups](~~DescribeAllGroups~~) operation to query server group IDs.
 	//
 	// example:
 	//
 	// 9535356
 	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// Specifies whether the asset has weak password risks. Valid values:
+	// Specifies whether the asset that you want to query has baseline weak password risks. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The asset has baseline weak password risks.
 	//
-	// 	- **false**
+	// - **false**: The asset does not have baseline weak password risks.
 	//
 	// example:
 	//
-	// Unhealthy
+	// true
 	HealthStatus *bool `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
-	// The instance ID of the asset.
+	// The instance ID of the asset that you want to query.
 	//
 	// example:
 	//
 	// i-bp1g6wxdwps7s9dz****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the asset.
+	// The name of the asset that you want to query.
 	//
 	// example:
 	//
 	// abc_centos7.2_005
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The number of entries to return on each page. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+	// The number of entries per page in a paged query. Default value: 20. If you leave this parameter empty, 20 entries are returned per page.
 	//
-	// >  We recommend that you do not leave this parameter empty.
+	// > Do not leave PageSize empty.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The Alibaba Cloud account ID of the member in the resource directory.
+	// The Alibaba Cloud account ID of the member accounts in the resource folder.
 	//
-	// >  You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain the ID.
+	// > You can invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// 16670360956*****
 	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
-	// Specifies whether the asset has vulnerabilities. Valid values:
+	// Specifies whether the asset that you want to query has vulnerabilities. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The asset has vulnerabilities.
 	//
-	// 	- **false**
+	// - **false**: The asset does not have vulnerabilities.
 	//
 	// example:
 	//

@@ -50,17 +50,17 @@ type DescribeRiskCheckResultRequest struct {
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The type of the check item that you want to query. Valid values:
 	//
-	// 	- **1**: identity authentication and permissions
+	// - **1**: identity authentication and permissions
 	//
-	// 	- **2**: network access control
+	// - **2**: network access control
 	//
-	// 	- **3**: log audit
+	// - **3**: log audit
 	//
-	// 	- **4**: data security
+	// - **4**: data security
 	//
-	// 	- **5**: monitoring and alerting
+	// - **5**: monitoring and alerting
 	//
-	// 	- **6**: basic security protection
+	// - **6**: basic security protection
 	//
 	// > If you do not specify this parameter, all types of check items are queried.
 	//
@@ -76,9 +76,9 @@ type DescribeRiskCheckResultRequest struct {
 	ItemIds []*string `json:"ItemIds,omitempty" xml:"ItemIds,omitempty" type:"Repeated"`
 	// The language of the content within the request and response. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//
@@ -98,9 +98,9 @@ type DescribeRiskCheckResultRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// Specifies whether the check item is supported by the edition of Security Center that you purchase. Valid values:
 	//
-	// 	- **enabled**: yes
+	// - **enabled**: yes
 	//
-	// 	- **disabled**: no
+	// - **disabled**: no
 	//
 	// example:
 	//
@@ -109,11 +109,11 @@ type DescribeRiskCheckResultRequest struct {
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The risk level of the check item that you want to query. Valid values:
 	//
-	// 	- **high**
+	// - **high**
 	//
-	// 	- **medium**
+	// - **medium**
 	//
-	// 	- **low**
+	// - **low**
 	//
 	// example:
 	//
@@ -127,17 +127,17 @@ type DescribeRiskCheckResultRequest struct {
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	// The status of the check results. Valid values:
 	//
-	// 	- **pass**
+	// - **pass**
 	//
-	// 	- **failed**
+	// - **failed**
 	//
-	// 	- **running**
+	// - **running**
 	//
-	// 	- **waiting**
+	// - **waiting**
 	//
-	// 	- **ignored**
+	// - **ignored**
 	//
-	// 	- **falsePositive**
+	// - **falsePositive**
 	//
 	// example:
 	//

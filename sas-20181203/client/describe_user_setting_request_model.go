@@ -14,11 +14,11 @@ type iDescribeUserSettingRequest interface {
 }
 
 type DescribeUserSettingRequest struct {
-	// The source IP address of the request.
+	// The IP address of the access source.
 	//
 	// example:
 	//
-	// 58.248.87.10
+	// 112.94.XX.XX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 

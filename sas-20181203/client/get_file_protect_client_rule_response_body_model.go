@@ -16,6 +16,7 @@ type iGetFileProtectClientRuleResponseBody interface {
 }
 
 type GetFileProtectClientRuleResponseBody struct {
+	// The returned data.
 	Data *GetFileProtectClientRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -61,35 +62,76 @@ func (s *GetFileProtectClientRuleResponseBody) Validate() error {
 }
 
 type GetFileProtectClientRuleResponseBodyData struct {
+	// The alert notification level. Valid values:
+	//
+	// - 0: no alert
+	//
+	// - 1: reminder
+	//
+	// - 2: suspicious
+	//
+	// - 3: high-risk.
+	//
 	// example:
 	//
 	// 1
-	AlertLevel   *int32    `json:"AlertLevel,omitempty" xml:"AlertLevel,omitempty"`
+	AlertLevel *int32 `json:"AlertLevel,omitempty" xml:"AlertLevel,omitempty"`
+	// The list of excluded users.
 	ExcludeUsers []*string `json:"ExcludeUsers,omitempty" xml:"ExcludeUsers,omitempty" type:"Repeated"`
-	FileOps      []*string `json:"FileOps,omitempty" xml:"FileOps,omitempty" type:"Repeated"`
-	FilePaths    []*string `json:"FilePaths,omitempty" xml:"FilePaths,omitempty" type:"Repeated"`
-	FileTypes    []*string `json:"FileTypes,omitempty" xml:"FileTypes,omitempty" type:"Repeated"`
+	// The operations performed on files.
+	FileOps []*string `json:"FileOps,omitempty" xml:"FileOps,omitempty" type:"Repeated"`
+	// The monitored file paths. Wildcards are supported.
+	FilePaths []*string `json:"FilePaths,omitempty" xml:"FilePaths,omitempty" type:"Repeated"`
+	// The protected file types.
+	FileTypes []*string `json:"FileTypes,omitempty" xml:"FileTypes,omitempty" type:"Repeated"`
+	// The rule ID.
+	//
 	// example:
 	//
 	// 3119
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The operating system type. Valid values:
+	//
+	// - **windows**: Windows
+	//
+	// - **linux**: Linux.
+	//
 	// example:
 	//
 	// linux
-	Platform  *string   `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	// The process paths. Wildcards are supported.
 	ProcPaths []*string `json:"ProcPaths,omitempty" xml:"ProcPaths,omitempty" type:"Repeated"`
+	// The action that the rule takes on the client. Valid values:
+	//
+	// - monitor: alert
+	//
+	// - block: block
+	//
+	// - pass: allow.
+	//
 	// example:
 	//
 	// pass
 	RuleAction *string `json:"RuleAction,omitempty" xml:"RuleAction,omitempty"`
+	// The rule name.
+	//
 	// example:
 	//
 	// test
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The rule status. Valid values:
+	//
+	// - **0**: disabled.
+	//
+	// - **1**: enabled.
+	//
 	// example:
 	//
 	// 0
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The switch ID that corresponds to the rule.
+	//
 	// example:
 	//
 	// USER-CONTAINER-RULE-SWITCH-TYPE_***

@@ -22,41 +22,41 @@ type iListClusterInterceptionConfigRequest interface {
 }
 
 type ListClusterInterceptionConfigRequest struct {
-	// The status of the container firewall feature. Valid values:
+	// The container firewall status of the cluster. Valid values:
 	//
-	// 	- **-1**: unknown
+	// - **-1**: unknown
 	//
-	// 	- **0**: abnormal
+	// - **0**: abnormal
 	//
-	// 	- **1**: normal
+	// - **1**: normal
 	//
-	// 	- **2**: normal to be confirmed
+	// - **2**: normal pending confirmation.
 	//
 	// example:
 	//
 	// 1
 	ClusterCNNFStatus *int32 `json:"ClusterCNNFStatus,omitempty" xml:"ClusterCNNFStatus,omitempty"`
-	// The ID of the cluster.
+	// The ID of the container cluster.
 	//
-	// > You can call the [DescribeContainerInstances](~~DescribeContainerInstances~~) operation to query the IDs of clusters.
+	// >You can call the [DescribeContainerInstances](~~DescribeContainerInstances~~) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// c22143730ab6e40b09ec7c1c51d4d****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The name of the cluster.
+	// The cluster name.
 	//
 	// example:
 	//
 	// sas
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// The number of the page to return. Default value: 1.
+	// The page number of the page to return. Default value: 1, which indicates the first page.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries to return on each page. Default value: 20.
+	// The maximum number of entries per page in a paged query. Default value: 20.
 	//
 	// example:
 	//

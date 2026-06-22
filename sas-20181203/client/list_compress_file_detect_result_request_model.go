@@ -28,7 +28,7 @@ type ListCompressFileDetectResultRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The identifier of the file. Only MD5 hash values are supported.
+	// The unique identifier for the file.
 	//
 	// example:
 	//

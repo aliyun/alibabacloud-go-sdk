@@ -18,15 +18,15 @@ type iListAgentlessRegionResponseBody interface {
 }
 
 type ListAgentlessRegionResponseBody struct {
-	// The information about the regions.
+	// The region list information.
 	RegionList []*string `json:"RegionList,omitempty" xml:"RegionList,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// 7E0618A9-D5EF-4220-9471-C42B5E92****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the regions.
+	// The region list information.
 	VendorRegionList []*ListAgentlessRegionResponseBodyVendorRegionList `json:"VendorRegionList,omitempty" xml:"VendorRegionList,omitempty" type:"Repeated"`
 }
 
@@ -79,23 +79,23 @@ func (s *ListAgentlessRegionResponseBody) Validate() error {
 }
 
 type ListAgentlessRegionResponseBodyVendorRegionList struct {
-	// The region ID of the instance.
+	// The region in which the server resides.
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The type of the server. Valid values:
+	// The server vendor. Valid values:
 	//
-	// - **0**: Alibaba Cloud
+	// - **0**: Alibaba Cloud.
 	//
-	// - **3**: Tencent Cloud
+	// - **3**: Tencent Cloud.
 	//
-	// - **4**: Huawei Cloud
+	// - **4**: Huawei Cloud.
 	//
-	// - **5**: Azure
+	// - **5**: Azure.
 	//
-	// - **7**: AWS
+	// - **7**: AWS.
 	//
 	// example:
 	//

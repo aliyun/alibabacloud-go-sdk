@@ -28,47 +28,45 @@ type iDescribeCheckWarningDetailRequest interface {
 type DescribeCheckWarningDetailRequest struct {
 	// The ID of the check item.
 	//
-	// >  You can call the [ListCheckItemWarningSummary](~~ListCheckItemWarningSummary~~) operation to query the IDs of check items.
-	//
-	// >  If you specify this parameter, you must also specify the Uuid parameter.
+	// > You can call the [ListCheckItemWarningSummary](~~ListCheckItemWarningSummary~~) operation to obtain the check item ID.	Notice: When this parameter is specified, the Uuid parameter is required..
 	//
 	// example:
 	//
 	// 1
 	CheckId *string `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
-	// The ID of the alert triggered by the check item.
+	// The alert ID of the check item.
 	//
-	// >  To query the details of a check item, you must provide the ID of the alert that is triggered by the check item. You can call the [DescribeCheckWarnings](~~DescribeCheckWarnings~~) operation to query the IDs of alerts.
+	// > To query the details of a specified check item, provide the alert ID of the check item. You can call the [DescribeCheckWarnings](~~DescribeCheckWarnings~~) operation to obtain this ID.
 	//
-	// >  If the Uuid and CheckId parameters are not specified, this parameter is required.
+	// 	Notice: This parameter is required when both Uuid and CheckId are empty..
 	//
 	// example:
 	//
 	// 98675301
 	CheckWarningId *int64 `json:"CheckWarningId,omitempty" xml:"CheckWarningId,omitempty"`
-	// Container name.
+	// The container name.
 	//
 	// example:
 	//
 	// test_container
 	ContainerName *string `json:"ContainerName,omitempty" xml:"ContainerName,omitempty"`
-	// The language of the content within the request and response. Valid values:
+	// The language of the request and response. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The Alibaba Cloud account ID of the member in the resource directory.
+	// The ID of the Alibaba Cloud account of the member accounts in the resource folder.
 	//
-	// >  You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to query the IDs of Alibaba Cloud accounts.
+	// >You can invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
 	//
 	// example:
 	//
-	// 1232428423234****
+	// 16670360956*****
 	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The source IP address of the request.
 	//
@@ -76,15 +74,13 @@ type DescribeCheckWarningDetailRequest struct {
 	//
 	// 103.25.XX.XX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The UUID of the server.
+	// The UUID of the server to query.
 	//
-	// >  You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to query the UUIDs of servers.
-	//
-	// >  If you specify this parameter, you must also specify the CheckId parameter.
+	// > You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to obtain this parameter.	Notice: When this parameter is specified, the CheckId parameter is required..
 	//
 	// example:
 	//
-	// 01aec2da-5b57-4f38-b221-da5a0b2f****
+	// 06125d19-6a02-4451-9f65-2083996e****
 	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 

@@ -18,9 +18,9 @@ type iDescribeDomainSecureAlarmListResponseBody interface {
 }
 
 type DescribeDomainSecureAlarmListResponseBody struct {
-	// The security alerts in your website assets.
+	// The list of security alerts for website assets.
 	AlarmList []*DescribeDomainSecureAlarmListResponseBodyAlarmList `json:"AlarmList,omitempty" xml:"AlarmList,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request. The ID is a unique identifier that Alibaba Cloud generates for the request and can be used to troubleshoot issues.
 	//
 	// example:
 	//
@@ -101,7 +101,7 @@ type DescribeDomainSecureAlarmListResponseBodyAlarmList struct {
 	//
 	// Malicious Software
 	AlarmEventType *string `json:"AlarmEventType,omitempty" xml:"AlarmEventType,omitempty"`
-	// The unique ID of the alert event.
+	// The unique identifier of the alert event.
 	//
 	// example:
 	//
@@ -113,27 +113,27 @@ type DescribeDomainSecureAlarmListResponseBodyAlarmList struct {
 	//
 	// true
 	AutoBreaking *bool `json:"AutoBreaking,omitempty" xml:"AutoBreaking,omitempty"`
-	// Indicates whether the alert event can be handled online, such as quarantining the source file of the malicious process, adding the alert event to the whitelist, and ignoring the alert event. Valid values:
+	// Indicates whether the alert event can be handled online, such as blocking, adding to a whitelist, or ignoring. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Can be handled online.
 	//
-	// 	- **false**
+	// - **false**: Cannot be handled online.
 	//
 	// example:
 	//
 	// true
 	CanBeDealOnLine *bool `json:"CanBeDealOnLine,omitempty" xml:"CanBeDealOnLine,omitempty"`
-	// Indicates whether you can cancel marking the alert event as a false positive. Valid values:
+	// Indicates whether the alert event can be unmarked as a false positive. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Can be unmarked.
 	//
-	// 	- **false**
+	// - **false**: Cannot be unmarked.
 	//
 	// example:
 	//
 	// false
 	CanCancelFault *bool `json:"CanCancelFault,omitempty" xml:"CanCancelFault,omitempty"`
-	// Indicates whether the safeguard mode for major activities is supported.
+	// Indicates whether the alert event contains the critical event protection mode.
 	//
 	// example:
 	//
@@ -145,11 +145,11 @@ type DescribeDomainSecureAlarmListResponseBodyAlarmList struct {
 	//
 	// aegis_****
 	DataSource *string `json:"DataSource,omitempty" xml:"DataSource,omitempty"`
-	// Indicates whether the alert event is handled. Valid values:
+	// Indicates whether the alert event has been handled. Valid values:
 	//
-	// 	- **N**: unhandled
+	// - **N**: Pending.
 	//
-	// 	- **Y**: handled
+	// - **Y**: Handled.
 	//
 	// example:
 	//
@@ -161,13 +161,13 @@ type DescribeDomainSecureAlarmListResponseBodyAlarmList struct {
 	//
 	// The detection model finds that there is a Trojan horse program on your server. The Trojan horse program is a program specially used to invade the user\\"s host. Generally, it will download and release another malicious program after being implanted into the system through disguise.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The timestamp generated when the alert event was last detected. Unit: milliseconds.
+	// The timestamp of the most recent occurrence of the alert event. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1543740301000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The time of the last modification.
+	// The time when the alert event was last modified.
 	//
 	// example:
 	//
@@ -175,21 +175,21 @@ type DescribeDomainSecureAlarmListResponseBodyAlarmList struct {
 	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// Indicates whether the alert event has tracing information. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Has tracing information.
 	//
-	// 	- **false**
+	// - **false**: Does not have tracing information.
 	//
 	// example:
 	//
 	// true
 	HasTraceInfo *bool `json:"HasTraceInfo,omitempty" xml:"HasTraceInfo,omitempty"`
-	// The instance ID of the affected asset.
+	// The ID of the asset instance affected by the alert event.
 	//
 	// example:
 	//
 	// i-e****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The instance name of the affected asset.
+	// The name of the asset instance affected by the alert event.
 	//
 	// example:
 	//
@@ -201,7 +201,7 @@ type DescribeDomainSecureAlarmListResponseBodyAlarmList struct {
 	//
 	// 95.214.*.*
 	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
-	// The private IP address of the affected instance.
+	// The private IP address of the asset instance affected by the alert event.
 	//
 	// example:
 	//
@@ -209,71 +209,71 @@ type DescribeDomainSecureAlarmListResponseBodyAlarmList struct {
 	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
 	// The risk level of the alert event. Valid values:
 	//
-	// 	- **serious**
+	// - **serious**: Critical.
 	//
-	// 	- **suspicious**
+	// - **suspicious**: Suspicious.
 	//
-	// 	- **remind**
+	// - **remind**: Reminder.
 	//
 	// example:
 	//
 	// serious
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The handling result code of the alert event.
+	// The result code of the alert event handling.
 	//
 	// example:
 	//
 	// kill_and_quara.Success
 	OperateErrorCode *string `json:"OperateErrorCode,omitempty" xml:"OperateErrorCode,omitempty"`
-	// The timestamp generated when the alert event was handled. Unit: milliseconds.
+	// The timestamp when the alert event was handled. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1631699497000
 	OperateTime *int64 `json:"OperateTime,omitempty" xml:"OperateTime,omitempty"`
-	// The edition of Security Center in which the alert event can be detected. Valid values:
+	// The edition of Security Center that supports the detection of the alert event. Valid values:
 	//
-	// 	- **0**: Basic edition.
+	// - **0**: Basic edition.
 	//
-	// 	- **1**: Advanced edition.
+	// - **1**: Advanced edition.
 	//
-	// 	- **2**: Enterprise edition.
+	// - **2**: Enterprise edition.
 	//
 	// example:
 	//
 	// 1
 	SaleVersion *string `json:"SaleVersion,omitempty" xml:"SaleVersion,omitempty"`
-	// The ID of the associated alert event.
+	// The IDs of the alert events associated with the alert event.
 	//
 	// example:
 	//
 	// 270789
 	SecurityEventIds *string `json:"SecurityEventIds,omitempty" xml:"SecurityEventIds,omitempty"`
-	// The solution to the alert event.
+	// The solution for the alert event.
 	//
 	// example:
 	//
 	// A malicious program implanted by hacker after intrusion will occupy your bandwidth and attack other servers, and may affect you own service. The malicious process may also have self-deleting behavior or disguise as a system service to evade detection.
 	Solution *string `json:"Solution,omitempty" xml:"Solution,omitempty"`
-	// The stage at which the attack or intrusion is detected.
+	// The stage of the attack or intrusion.
 	//
 	// example:
 	//
 	// [\\"authority_maintenance\\"]
 	Stages *string `json:"Stages,omitempty" xml:"Stages,omitempty"`
-	// The timestamp generated when the alert event was first detected. Unit: milliseconds.
+	// The start timestamp of the alert event. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1543740301000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The total number of security alerts in your website assets.
+	// The total number of security alerts for your website assets.
 	//
 	// example:
 	//
 	// 1
 	SuspiciousEventCount *int32 `json:"SuspiciousEventCount,omitempty" xml:"SuspiciousEventCount,omitempty"`
-	// The unique ID of the associated instance.
+	// The unique identifier of the instance associated with the alert event.
 	//
 	// example:
 	//

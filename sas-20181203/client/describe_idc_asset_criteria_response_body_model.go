@@ -18,7 +18,7 @@ type iDescribeIdcAssetCriteriaResponseBody interface {
 type DescribeIdcAssetCriteriaResponseBody struct {
 	// The information about the asset search conditions.
 	CriteriaList []*DescribeIdcAssetCriteriaResponseBodyCriteriaList `json:"CriteriaList,omitempty" xml:"CriteriaList,omitempty" type:"Repeated"`
-	// The request ID.
+	// The request ID. Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ func (s *DescribeIdcAssetCriteriaResponseBody) Validate() error {
 }
 
 type DescribeIdcAssetCriteriaResponseBodyCriteriaList struct {
-	// The name of the search condition.
+	// The name of the corresponding search condition.
 	//
 	// example:
 	//
@@ -74,15 +74,15 @@ type DescribeIdcAssetCriteriaResponseBodyCriteriaList struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The type of the search condition. Valid values:
 	//
-	// 	- **input**: The search condition needs to be specified.
+	// - **input**: You must manually enter the search field.
 	//
-	// 	- **select**: The search condition is an option that can be selected from the drop-down list.
+	// - **select**: You must select a child class of the search condition from the drop-down list.
 	//
 	// example:
 	//
 	// select
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The attribute values of the assets that match the keyword.
+	// The specific asset property values that correspond to the entered fuzzy match value.
 	//
 	// example:
 	//

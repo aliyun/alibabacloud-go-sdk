@@ -18,19 +18,19 @@ type iDescribeHoneyPotAuthResponseBody interface {
 }
 
 type DescribeHoneyPotAuthResponseBody struct {
-	// The total quota.
+	// The total number of authorizations.
 	//
 	// example:
 	//
 	// 10
 	HoneyPotAuthCount *int64 `json:"HoneyPotAuthCount,omitempty" xml:"HoneyPotAuthCount,omitempty"`
-	// The quota that is consumed.
+	// The number of consumed authorizations.
 	//
 	// example:
 	//
 	// 4
 	HoneyPotCount *int32 `json:"HoneyPotCount,omitempty" xml:"HoneyPotCount,omitempty"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The request ID. Alibaba Cloud generates a unique identifier for each API request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//

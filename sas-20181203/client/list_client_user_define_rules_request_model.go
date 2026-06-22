@@ -32,7 +32,7 @@ type ListClientUserDefineRulesRequest struct {
 	//
 	// example:
 	//
-	// Rule\\*\\*\\*\\*
+	// 规则****
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The number of entries to return on each page.
 	//

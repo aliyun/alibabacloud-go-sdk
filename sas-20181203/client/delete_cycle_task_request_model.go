@@ -14,9 +14,9 @@ type iDeleteCycleTaskRequest interface {
 }
 
 type DeleteCycleTaskRequest struct {
-	// The ID of the task configuration.
+	// The ID of the configuration.
 	//
-	// >  You can call the [DescribeCycleTaskList](~~DescribeCycleTaskList~~) operation to query the IDs of task configurations.
+	// >Call the [DescribeCycleTaskList](~~DescribeCycleTaskList~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//

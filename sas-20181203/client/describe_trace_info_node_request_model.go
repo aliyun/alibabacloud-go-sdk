@@ -28,15 +28,15 @@ type iDescribeTraceInfoNodeRequest interface {
 }
 
 type DescribeTraceInfoNodeRequest struct {
-	// The name of the alert event.
+	// The event name.
 	//
-	// > You can call the [DescribeSuspEvents](~~DescribeSuspEvents~~) operation to query the names of alerts events.
+	// >For more information, call the [DescribeSuspEvents](~~DescribeSuspEvents~~) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// WEBSHELL
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
-	// The ID of the request source. Set the value to sas.
+	// The source identifier of the request. Set the value to sas.
 	//
 	// This parameter is required.
 	//
@@ -44,29 +44,29 @@ type DescribeTraceInfoNodeRequest struct {
 	//
 	// sas
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
-	// The time when the alert event was first detected.
+	// The time when the event was first detected.
 	//
 	// example:
 	//
 	// 1635978934000
 	IncidentTime *int64 `json:"IncidentTime,omitempty" xml:"IncidentTime,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language type of the request and response. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The source IP address of the request. The value of this parameter is specified by the system.
+	// The source IP address of the request. You do not need to specify this parameter. The system automatically obtains the value.
 	//
 	// example:
 	//
 	// 127.0.XX.XX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The type of the vertex. You can call the [DescribeTraceInfoDetail](~~DescribeTraceInfoDetail~~) operation to query the types of vertexes.
+	// The vertex type. You can call the [DescribeTraceInfoDetail](~~DescribeTraceInfoDetail~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -74,7 +74,7 @@ type DescribeTraceInfoNodeRequest struct {
 	//
 	// SAS_ASSET
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The UUID of the server. You can call the [DescribeSuspEvents](~~DescribeSuspEvents~~) operation to query the UUIDs of servers.
+	// The UUID of the server to query. You can call the [DescribeSuspEvents](~~DescribeSuspEvents~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -82,7 +82,7 @@ type DescribeTraceInfoNodeRequest struct {
 	//
 	// 6f346617-eef9-45e6-b6d1-946xxxxxxxx
 	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-	// The ID of the vertex.
+	// The vertex ID.
 	//
 	// This parameter is required.
 	//

@@ -20,43 +20,43 @@ type iDescribeContainerInstancesRequest interface {
 }
 
 type DescribeContainerInstancesRequest struct {
-	// The search conditions that are used to filter containers. The value of this parameter is in the JSON format and is case-sensitive. The value contains the following fields:
+	// The search conditions for assets. This parameter is in JSON format. Note that field names are case-sensitive. The following fields are included:
 	//
-	// 	- **name**: the search condition.
+	// - **name**: the search item.
 	//
-	// 	- **name**: the value of the search condition.
+	// - **value**: the value of the search item.
 	//
-	// 	- **logicalExp**: the logical relationship among multiple search conditions. Valid values:
+	// - **logicalExp**: the logical relationship between multiple conditions. Valid values:
 	//
-	//     	- **OR**: Search conditions are evaluated by using a logical **OR**.
+	//     - **OR**: The conditions are in an OR relationship.
 	//
-	//     	- **AND**: Search conditions are evaluated by using a logical **AND**.
+	//     - **AND**: The conditions are in an AND relationship.
 	//
-	// > You can use search conditions such as the container ID, cluster ID, cluster name, cluster type, risk level, and region. You can call the [DescribeContainerCriteria](~~DescribeContainerCriteria~~) operation to query the supported search conditions.
+	// > You can search for assets by container ID, cluster ID, cluster name, cluster type, risk level, region, and other conditions. Call the [DescribeContainerCriteria](~~DescribeContainerCriteria~~) operation to query the supported search conditions.
 	//
 	// example:
 	//
 	// [{"name":"flag","value":"0|8","logicalExp":"AND"},{"name":"ecsType","value":"!8","logicalExp":"AND"}][{"name":"clusterType","value":"NotManagedKubernetes","logicalExp":"AND"}]
 	Criteria *string `json:"Criteria,omitempty" xml:"Criteria,omitempty"`
-	// The number of the page to return. Default value: **1**.
+	// The page number of the page to return. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The logical operator that you want to use to evaluate multiple search conditions. Valid values:
+	// The logical relationship between multiple search conditions. Valid values:
 	//
-	// 	- **OR**: Search conditions are evaluated by using a logical **OR**.
+	// - **OR**: The conditions are in an OR relationship.
 	//
-	// 	- **AND**: Search conditions are evaluated by using a logical **AND**.
+	// - **AND**: The conditions are in an AND relationship.
 	//
 	// example:
 	//
 	// AND
 	LogicalExp *string `json:"LogicalExp,omitempty" xml:"LogicalExp,omitempty"`
-	// The number of entries to return on each page. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+	// The maximum number of entries per page in a paging query. Default value: 20. If you leave this parameter empty, 20 entries are returned per page.
 	//
-	// > We recommend that you do not leave this parameter empty.
+	// > Do not leave PageSize empty.
 	//
 	// example:
 	//

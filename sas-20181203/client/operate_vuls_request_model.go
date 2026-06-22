@@ -20,7 +20,7 @@ type iOperateVulsRequest interface {
 }
 
 type OperateVulsRequest struct {
-	// The operation on the vulnerabilities. Set the value to **vul_fix**, which indicates vulnerability fixing.
+	// The method to handle the vulnerability. Set the value to **vul_fix**, which indicates fixing the vulnerability.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type OperateVulsRequest struct {
 	//
 	// vul_fix
 	OperateType *string `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
-	// The type of the vulnerabilities that you want to fix. Set the value to **cve**, which indicates Linux software vulnerabilities.
+	// The type of vulnerability to fix. Set the value to **cve**, which indicates a Linux software vulnerability.
 	//
 	// This parameter is required.
 	//
@@ -36,11 +36,11 @@ type OperateVulsRequest struct {
 	//
 	// cve
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The UUIDs of servers for which you want to fix vulnerabilities.
+	// The UUIDs of the servers on which you want to fix the vulnerabilities.
 	//
 	// This parameter is required.
 	Uuids []*string `json:"Uuids,omitempty" xml:"Uuids,omitempty" type:"Repeated"`
-	// The names of the vulnerabilities that you want to fix.
+	// The names of the vulnerabilities to fix.
 	//
 	// This parameter is required.
 	VulNames []*string `json:"VulNames,omitempty" xml:"VulNames,omitempty" type:"Repeated"`

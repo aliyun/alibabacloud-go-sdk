@@ -22,77 +22,77 @@ type iModifyPostPayModuleSwitchShrinkRequest interface {
 }
 
 type ModifyPostPayModuleSwitchShrinkRequest struct {
-	// Automatic binding switch for new assets in host and container protection. Values:
+	// Specifies whether to automatically bind newly added assets for host and container protection. Valid values:
 	//
-	// - **0**: Off
+	// - **0**: Disabled.
 	//
-	// - **1**: On
+	// - **1**: Enabled.
 	//
 	// example:
 	//
 	// 1
 	PostPaidHostAutoBind *int32 `json:"PostPaidHostAutoBind,omitempty" xml:"PostPaidHostAutoBind,omitempty"`
-	// Version for automatic binding of new assets in host and container protection. Values:
+	// The version to which newly added assets are automatically bound for host and container protection. Valid values:
 	//
-	// - **1**: Free Edition
+	// - **1**: Free Edition.
 	//
-	// - **3**: Enterprise Edition
+	// - **3**: Enterprise Edition.
 	//
-	// - **5**: Advanced Edition
+	// - **5**: Advanced Edition.
 	//
-	// - **6**: Antivirus Edition
+	// - **6**: Anti-virus Edition.
 	//
-	// - **7**: Flagship Edition
+	// - **7**: Ultimate Edition.
 	//
 	// example:
 	//
 	// 3
 	PostPaidHostAutoBindVersion *int32 `json:"PostPaidHostAutoBindVersion,omitempty" xml:"PostPaidHostAutoBindVersion,omitempty"`
-	// Pay-as-you-go instance ID, which must be filled in.
+	// The pay-as-you-go instance ID. This parameter is required.
 	//
-	// > Call the [DescribeVersionConfig](~~DescribeVersionConfig~~) interface to obtain this parameter.
+	// > Invoke the [DescribeVersionConfig](~~DescribeVersionConfig~~) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// postpay-sas-**
 	PostPayInstanceId *string `json:"PostPayInstanceId,omitempty" xml:"PostPayInstanceId,omitempty"`
-	// Status of the pay-as-you-go module switch, in JsonString format. Values:
+	// The switch status of pay-as-you-go modules in JSON string format. Valid values:
 	//
 	// - Key:
 	//
-	//   - **VUL**: Vulnerability Repair Module
+	//   - **VUL**: vulnerability fix module
 	//
-	//   - **CSPM**: Cloud Security Posture Management Module
+	//   - **CSPM**: Cloud Security Posture Management (CSPM) module
 	//
-	//   - **AGENTLESS**: Agentless Detection Module
+	//   - **AGENTLESS**: agentless detection module
 	//
-	//   - **SERVERLESS**: Serverless Security Module
+	//   - **SERVERLESS**: serverless security module
 	//
-	//   - **CTDR**: Threat Analysis and Response Module
+	//   - **CTDR**: threat detection and response module
 	//
-	//   - **POST_HOST**: Host and Container Security Module
+	//   - **POST_HOST**: host and container security module
 	//
-	//   - **SDK**: Malicious File Detection SDK Module
+	//   - **SDK**: malicious file detection SDK module
 	//
-	//   - **RASP**: Application Protection Module
+	//   - **RASP**: application protection module
 	//
-	//   - **CTDR_STORAGE**: Log Management Module
+	//   - **CTDR_STORAGE**: log management module
 	//
-	//   - **ANTI_RANSOMWARE**: Anti-Ransomware Management
+	//   - **ANTI_RANSOMWARE**: anti-ransomware management
 	//
-	// - Value: 0 means off, 1 means on
+	// - Value: 0 indicates disabled. 1 indicates enabled.
 	//
-	// > The values of modules not passed will not change.
+	// > Modules for which no value is specified remain unchanged.
 	//
-	// <notice>The meaning is the same as the PostPayModuleSwitchObj field. When both exist, the value of PostPayModuleSwitch takes precedence.
+	// <notice>This parameter has the same meaning as PostPayModuleSwitchObj. If both parameters are specified, the value of PostPayModuleSwitch takes precedence..
 	//
 	// example:
 	//
 	// {"VUL":1,"CSPM":0}
 	PostPayModuleSwitch *string `json:"PostPayModuleSwitch,omitempty" xml:"PostPayModuleSwitch,omitempty"`
-	// Pay-as-you-go module switch.
+	// The pay-as-you-go module switch.
 	//
-	// 	Notice:  The meaning is the same as the PostPayModuleSwitch field. When both exist, the value of PostPayModuleSwitch takes precedence.
+	// 	Notice: This parameter has the same meaning as PostPayModuleSwitch. If both parameters are specified, the value of PostPayModuleSwitch takes precedence..
 	PostPayModuleSwitchObjShrink *string `json:"PostPayModuleSwitchObj,omitempty" xml:"PostPayModuleSwitchObj,omitempty"`
 }
 

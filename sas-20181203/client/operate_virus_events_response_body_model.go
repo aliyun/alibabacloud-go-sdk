@@ -16,13 +16,13 @@ type iOperateVirusEventsResponseBody interface {
 }
 
 type OperateVirusEventsResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// B72BEC03-001C-5C77-A4BB-1E6XXXXXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the task to handle multiple alert events at a time.
+	// The ID of the task for batch handling virus defense alert events.
 	//
 	// example:
 	//

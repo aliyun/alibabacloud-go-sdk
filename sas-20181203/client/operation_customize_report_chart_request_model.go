@@ -16,9 +16,9 @@ type iOperationCustomizeReportChartRequest interface {
 }
 
 type OperationCustomizeReportChartRequest struct {
-	// The ID of the chart that is included in the report. Separate multiple IDs with commas (,).
+	// The IDs of report chart configurations. Separate multiple IDs with commas (,).
 	//
-	// >  You can call the [DescribeChartList](~~DescribeChartList~~) operation to query the ID.
+	// >Call [DescribeChartList](~~DescribeChartList~~) to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -26,9 +26,9 @@ type OperationCustomizeReportChartRequest struct {
 	//
 	// CID_VUL_SUMMARY,CID_VUL_TREND,CID_VUL_OPERATION_TREND,CID_BASELINE_CHECK_SUMMARY,CID_BASELINE_CHECK_TREND,CID_BASELINE_CHECK_OPERATION_TREND
 	ChartIds *string `json:"ChartIds,omitempty" xml:"ChartIds,omitempty"`
-	// The ID of the report.
+	// The report ID.
 	//
-	// >  You can call the [DescribeCustomizeReportList](~~DescribeCustomizeReportList~~) operation to query the ID.
+	// >Call [DescribeCustomizeReportList](~~DescribeCustomizeReportList~~) to obtain this parameter.
 	//
 	// This parameter is required.
 	//

@@ -20,29 +20,29 @@ type iModifyClearLogstoreStorageRequest interface {
 }
 
 type ModifyClearLogstoreStorageRequest struct {
-	// The ID of the request source. Set the value to **sas**.
+	// The identifier of the request source. Set the value to **sas**.
 	//
 	// example:
 	//
 	// sas
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language type for the request and response messages. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese.
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English.
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The name of the Logstore that stores logs.
+	// The name of the user LogStore.
 	//
 	// example:
 	//
 	// sas_sls_storage
 	UserLogStore *string `json:"UserLogStore,omitempty" xml:"UserLogStore,omitempty"`
-	// The name of the project.
+	// The user project.
 	//
 	// example:
 	//

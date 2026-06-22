@@ -34,37 +34,37 @@ type iGenerateK8sAccessInfoRequest interface {
 }
 
 type GenerateK8sAccessInfoRequest struct {
-	// This parameter is deprecated.
+	// This parameter is deprecated and does not need to be specified.
 	//
 	// example:
 	//
 	// None
 	AliyunYundunGatewayApiName *string `json:"AliyunYundunGatewayApiName,omitempty" xml:"AliyunYundunGatewayApiName,omitempty"`
-	// This parameter is deprecated.
+	// This parameter is deprecated and does not need to be specified.
 	//
 	// example:
 	//
 	// None
 	AliyunYundunGatewayPopName *string `json:"AliyunYundunGatewayPopName,omitempty" xml:"AliyunYundunGatewayPopName,omitempty"`
-	// This parameter is deprecated.
+	// This parameter is deprecated and does not need to be specified.
 	//
 	// example:
 	//
 	// None
 	AliyunYundunGatewayProjectName *string `json:"AliyunYundunGatewayProjectName,omitempty" xml:"AliyunYundunGatewayProjectName,omitempty"`
-	// The Simple Log Service Logstore that is used to store the audit logs.
+	// The SLS Logstore of the audit log.
 	//
 	// example:
 	//
 	// audit-cf6baf6afa106eca665296fdf68b65bf
 	AuditLogStore *string `json:"AuditLogStore,omitempty" xml:"AuditLogStore,omitempty"`
-	// The Simple Log Service project that is used to store the audit logs.
+	// The SLS project of the audit log.
 	//
 	// example:
 	//
 	// k8s-log-custom-huxintest1018-2
 	AuditProject *string `json:"AuditProject,omitempty" xml:"AuditProject,omitempty"`
-	// The ID of the region in which the audit logs are stored.
+	// The region of the audit log.
 	//
 	// example:
 	//
@@ -78,13 +78,13 @@ type GenerateK8sAccessInfoRequest struct {
 	//
 	// test
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// CPU architectures are divided into ARM architecture and x86 architecture.
+	// The CPU architecture, which can be ARM or x86.
 	//
 	// example:
 	//
 	// arm
 	CpuArch *string `json:"CpuArch,omitempty" xml:"CpuArch,omitempty"`
-	// The time at which the container ends to be added.
+	// The expiration time for container access.
 	//
 	// This parameter is required.
 	//
@@ -92,7 +92,7 @@ type GenerateK8sAccessInfoRequest struct {
 	//
 	// 1711951508388
 	ExpireDate *int64 `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
-	// The group ID.
+	// The queried group ID.
 	//
 	// This parameter is required.
 	//
@@ -100,17 +100,17 @@ type GenerateK8sAccessInfoRequest struct {
 	//
 	// 11341690
 	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The service provider of the cloud asset. Valid values:
+	// The cloud asset vendor. Valid values:
 	//
-	// 	- **Tencent**
+	// - **Tencent**
 	//
-	// 	- **HUAWEICLOUD**
+	// - **HUAWEICLOUD**
 	//
-	// 	- **Azure**
+	// - **Azure**
 	//
-	// 	- **AWS**
+	// - **AWS*	-
 	//
-	// 	- **Others**
+	// - **Other cloud assets**
 	//
 	// This parameter is required.
 	//

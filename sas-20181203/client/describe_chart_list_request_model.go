@@ -18,19 +18,19 @@ type iDescribeChartListRequest interface {
 }
 
 type DescribeChartListRequest struct {
-	// The language of the content within the request and response. Valid values:
+	// The language type for the request and response messages. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The code of the report. Valid value:
+	// The project code. Valid values:
 	//
-	// 	- **customize_report**
+	// - **customize_report**: custom report.
 	//
 	// This parameter is required.
 	//
@@ -38,9 +38,9 @@ type DescribeChartListRequest struct {
 	//
 	// customize_report
 	ProjectCode *string `json:"ProjectCode,omitempty" xml:"ProjectCode,omitempty"`
-	// The ID of the report.
+	// The report ID.
 	//
-	// >  You can call the [DescribeCustomizeReportList](~~DescribeCustomizeReportList~~) operation to query the ID.
+	// > Call the [DescribeCustomizeReportList](~~DescribeCustomizeReportList~~) operation to obtain this parameter.
 	//
 	// example:
 	//

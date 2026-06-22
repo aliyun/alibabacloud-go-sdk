@@ -22,23 +22,23 @@ type iListOpaClusterStrategyNewRequest interface {
 }
 
 type ListOpaClusterStrategyNewRequest struct {
-	// The page number.
+	// The page number of the current page in a paged query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The image names.
+	// The list of image names.
 	ImageName []*string `json:"ImageName,omitempty" xml:"ImageName,omitempty" type:"Repeated"`
-	// The tags that are added to the container.
+	// The list of labels.
 	Label []*string `json:"Label,omitempty" xml:"Label,omitempty" type:"Repeated"`
-	// The number of entries per page.
+	// The number of entries per page in a paged query.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The rule names.
+	// The policy name.
 	StrategyName []*string `json:"StrategyName,omitempty" xml:"StrategyName,omitempty" type:"Repeated"`
 }
 

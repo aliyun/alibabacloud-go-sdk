@@ -22,66 +22,66 @@ type iDescribeAssetsSecurityEventSummaryRequest interface {
 }
 
 type DescribeAssetsSecurityEventSummaryRequest struct {
-	// The ID of the cluster to which the container belongs.
+	// The ID of the container cluster that you want to query.
 	//
-	// > You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to query the IDs of clusters.
+	// > You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// cc58f827d893f4d7fb3e34b5d4395****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The key of the condition that is used to query on containers. Valid values:
+	// The container search field. Valid values:
 	//
-	// 	- **instanceId**: the ID of the container instance
+	// - **instanceId**: container instance ID
 	//
-	// 	- **clusterId**: the ID of the cluster
+	// - **clusterId**: cluster ID
 	//
-	// 	- **regionId**: the region ID of the container
+	// - **regionId**: container region
 	//
-	// 	- **clusterName**: the name of the cluster
+	// - **clusterName**: cluster name
 	//
-	// 	- **image**: the name of the image
+	// - **image**: image name
 	//
-	// 	- **imageRepoName**: the name of the image repository
+	// - **imageRepoName**: image repository name
 	//
-	// 	- **imageRepoNamespace**: the namespace to which the image repository belongs
+	// - **imageRepoNamespace**: image repository namespace
 	//
-	// 	- **imageRepoTag**: the tag that is added to the image repository
+	// - **imageRepoTag**: image repository tag
 	//
-	// 	- **imageDigest**: the digest of the image
+	// - **imageDigest**: image digest
 	//
-	// 	- **ClusterType**: the type of the cluster
+	// - **clusterType**: cluster type
 	//
-	// 	- **hostIp**: the public IP address
+	// - **hostIp**: public IP address
 	//
-	// 	- **pod**: the pod
+	// - **pod**: pod
 	//
-	// 	- **podIp**: the IP address of the pod
+	// - **podIp**: pod IP address
 	//
-	// 	- **containerId**: the ID of the container
+	// - **containerId**: container ID
 	//
-	// 	- **vulStatus**: whether vulnerabilities are detected on the container
+	// - **vulStatus**: whether the container has vulnerabilities
 	//
-	// 	- **alarmStatus**: whether alerts are generated for the container
+	// - **alarmStatus**: whether the container has security alerts
 	//
-	// 	- **riskStatus**: whether risks are detected on the container
+	// - **riskStatus**: whether the container has risks
 	//
-	// 	- **riskLevel**: the risk level of the container
+	// - **riskLevel**: container risk level
 	//
-	// 	- **containerScope**: the type of the container
+	// - **containerScope**: container type.
 	//
 	// example:
 	//
 	// clusterName
 	ContainerFieldName *string `json:"ContainerFieldName,omitempty" xml:"ContainerFieldName,omitempty"`
-	// The value of the condition that is used to query on containers.
+	// The value of the container search field.
 	//
 	// example:
 	//
 	// arms-prom-operator
 	ContainerFieldValue *string `json:"ContainerFieldValue,omitempty" xml:"ContainerFieldValue,omitempty"`
 	ResourceOwnerId     *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The source IP address of the request.
+	// The IP address of the access source.
 	//
 	// example:
 	//

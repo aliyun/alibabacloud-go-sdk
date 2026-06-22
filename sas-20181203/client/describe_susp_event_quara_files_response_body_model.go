@@ -174,7 +174,7 @@ type DescribeSuspEventQuaraFilesResponseBodyQuaraFiles struct {
 	//
 	// example:
 	//
-	// 172.16.XX.XX
+	// 192.168.XX.XX
 	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
 	// The public IP address of the server on which the quarantined file is located.
 	//

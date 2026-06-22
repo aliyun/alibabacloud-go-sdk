@@ -28,49 +28,49 @@ type iListInterceptionHistoryRequest interface {
 }
 
 type ListInterceptionHistoryRequest struct {
-	// The ID of the container cluster.
+	// The ID of the container cluster to query.
 	//
 	// example:
 	//
 	// c7c190a82d9a048be9038d352840f****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The number of the page to return.
+	// The page number of the current page in a paged query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The end of the time range to query. The value is a UNIX timestamp.
+	// The end timestamp of the query.
 	//
 	// example:
 	//
 	// 1635575219000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The name of the alert.
+	// The alert name.
 	//
 	// example:
 	//
-	// Abnormal access
+	// 异常访问。
 	HistoryName *string `json:"HistoryName,omitempty" xml:"HistoryName,omitempty"`
-	// The types of exceptions.
+	// The types of exception events.
 	InterceptionTypes []*int32 `json:"InterceptionTypes,omitempty" xml:"InterceptionTypes,omitempty" type:"Repeated"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language type for the request and response messages. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of entries to return on each page.
+	// The maximum number of entries per page for a paged query.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The start of the time range to query. The value is a UNIX timestamp.
+	// The start timestamp of the query.
 	//
 	// example:
 	//

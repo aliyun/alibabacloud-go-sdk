@@ -20,11 +20,11 @@ type iModifyVulTargetConfigRequest interface {
 }
 
 type ModifyVulTargetConfigRequest struct {
-	// Specifies whether to enable vulnerability detection. Valid values:
+	// Specifies whether to enable or disable vulnerability detection. Valid values:
 	//
-	// 	- **on**: yes
+	// - **on**: Enable vulnerability detection.
 	//
-	// 	- **off**: no
+	// - **off**: Disable vulnerability detection.
 	//
 	// This parameter is required.
 	//
@@ -32,21 +32,21 @@ type ModifyVulTargetConfigRequest struct {
 	//
 	// off
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The source IP address of the request.
+	// The IP address of the access source.
 	//
 	// example:
 	//
 	// 1.2.XX.XX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The type of the vulnerability. Valid values:
+	// The type of vulnerability detection to configure. Valid values:
 	//
-	// 	- **cve**: Linux software vulnerability
+	// - **cve**: Linux software vulnerability
 	//
-	// 	- **sys**: Windows system vulnerability
+	// - **sys**: Windows system vulnerability
 	//
-	// 	- **cms**: Web-CMS vulnerability
+	// - **cms**: Web-CMS vulnerability
 	//
-	// 	- **emg**: urgent vulnerability
+	// - **emg**: urgent vulnerability.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +54,7 @@ type ModifyVulTargetConfigRequest struct {
 	//
 	// cve
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The UUID of the server.
+	// The UUID of the server to configure.
 	//
 	// This parameter is required.
 	//

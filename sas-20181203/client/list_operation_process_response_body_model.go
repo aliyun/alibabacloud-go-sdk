@@ -20,9 +20,9 @@ type iListOperationProcessResponseBody interface {
 type ListOperationProcessResponseBody struct {
 	// The pagination information.
 	PageInfo *ListOperationProcessResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	// The information about the operation tasks.
+	// The list of operation task information.
 	Processes []*ListOperationProcessResponseBodyProcesses `json:"Processes,omitempty" xml:"Processes,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -84,13 +84,13 @@ func (s *ListOperationProcessResponseBody) Validate() error {
 }
 
 type ListOperationProcessResponseBodyPageInfo struct {
-	// The number of entries returned on the current page.
+	// The number of entries on the current page.
 	//
 	// example:
 	//
 	// 4
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The page number.
+	// The page number of the current page to display in a paged query. This parameter is used for paging.
 	//
 	// example:
 	//
@@ -159,19 +159,19 @@ func (s *ListOperationProcessResponseBodyPageInfo) Validate() error {
 }
 
 type ListOperationProcessResponseBodyProcesses struct {
-	// The time when the task was created. Unit: milliseconds.
+	// The creation time of the task. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1674388824000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Number of completed subtasks
+	// The number of completed subtasks.
 	//
 	// example:
 	//
 	// 5
 	DetailTaskReadyCount *int32 `json:"DetailTaskReadyCount,omitempty" xml:"DetailTaskReadyCount,omitempty"`
-	// Total number of subtasks.
+	// The total number of subtasks.
 	//
 	// example:
 	//
@@ -183,7 +183,7 @@ type ListOperationProcessResponseBodyProcesses struct {
 	//
 	// 1705467559000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The number of tasks that are complete.
+	// The number of completed items.
 	//
 	// example:
 	//
@@ -195,15 +195,15 @@ type ListOperationProcessResponseBodyProcesses struct {
 	//
 	// 1705457102000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The task status code. Valid values:
+	// The check task status code. Valid values:
 	//
-	// 	- 0: not started.
+	// - 0: not started.
 	//
-	// 	- 1: running.
+	// - 1: checking.
 	//
-	// 	- 2: complete.
+	// - 2: check completed.
 	//
-	// 	- 3: times out.
+	// - 3: timed out.
 	//
 	// example:
 	//
@@ -215,9 +215,9 @@ type ListOperationProcessResponseBodyProcesses struct {
 	//
 	// 3d7a1b68-599f-4e16-9b45-e920a183b***
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// Task source. Values:
+	// The task source. Valid values:
 	//
-	// - **YAO_CHI**: YaoChi.
+	// - **YAO_CHI**: ApsaraDB.
 	//
 	// example:
 	//
@@ -225,15 +225,15 @@ type ListOperationProcessResponseBodyProcesses struct {
 	TaskSource *string `json:"TaskSource,omitempty" xml:"TaskSource,omitempty"`
 	// The task type. Valid values:
 	//
-	// 	- CHECK_ALL: full check.
+	// - CHECK_ALL: full check.
 	//
-	// 	- CHECK_POLICY: policy-based check for which check items are configured.
+	// - CHECK_POLICY: check performed based on check items in the configured policy.
 	//
-	// 	- CHECK_SCHEDULE: scheduled check.
+	// - CHECK_SCHEDULE: scheduled check.
 	//
-	// 	- CHECK_ITEM: specific check item-based check.
+	// - CHECK_ITEM: check performed based on specified check items.
 	//
-	// 	- CHECK_INSTANCE: specific check item-based check on specific instances.
+	// - CHECK_INSTANCE: check performed based on specified check items and instances.
 	//
 	// example:
 	//

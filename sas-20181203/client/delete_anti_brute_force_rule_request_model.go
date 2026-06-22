@@ -14,7 +14,7 @@ type iDeleteAntiBruteForceRuleRequest interface {
 }
 
 type DeleteAntiBruteForceRuleRequest struct {
-	// The IDs of the defense rules against brute-force attacks to delete.
+	// The IDs of the brute-force attacks defense rules that you want to delete.
 	//
 	// This parameter is required.
 	Ids []*int64 `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`

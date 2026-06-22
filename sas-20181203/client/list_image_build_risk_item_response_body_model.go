@@ -76,7 +76,7 @@ type ListImageBuildRiskItemResponseBodyData struct {
 	//
 	// example:
 	//
-	// itemName.
+	// itemName
 	ItemName *string `json:"ItemName,omitempty" xml:"ItemName,omitempty"`
 }
 

@@ -24,9 +24,9 @@ type ListPublishBatchRequest struct {
 	//
 	// example:
 	//
-	// test
+	// 批次1
 	BatchName *string `json:"BatchName,omitempty" xml:"BatchName,omitempty"`
-	// The page number.
+	// The page number of the current page when paging is used.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type ListPublishBatchRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries per page.
+	// The maximum number of entries per page when paging is used.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type ListPublishBatchRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The destination version of the Security Center agent.
+	// The target version to upgrade to.
 	//
 	// This parameter is required.
 	//

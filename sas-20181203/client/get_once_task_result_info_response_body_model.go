@@ -24,31 +24,31 @@ type iGetOnceTaskResultInfoResponseBody interface {
 }
 
 type GetOnceTaskResultInfoResponseBody struct {
-	// The execution time of the task.
+	// The time when the task was executed.
 	//
 	// example:
 	//
 	// 1671184531000
 	CollectTime *int64 `json:"CollectTime,omitempty" xml:"CollectTime,omitempty"`
-	// The number of tasks that were completed.
+	// The number of tasks that have been completed.
 	//
 	// example:
 	//
 	// 47
 	FinishCount *int32 `json:"FinishCount,omitempty" xml:"FinishCount,omitempty"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The ID of the request. This uniquely identifies the request and can be used for troubleshooting.
 	//
 	// example:
 	//
 	// CE500770-42D3-442E-9DDD-156E0F9F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the scan task.
+	// The ID of the one-time task.
 	//
 	// example:
 	//
 	// e7b70a4b030db086db52231f1b58****
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The information about the task.
+	// Details of the task.
 	TaskInfo *GetOnceTaskResultInfoResponseBodyTaskInfo `json:"TaskInfo,omitempty" xml:"TaskInfo,omitempty" type:"Struct"`
 	// The total number of entries returned.
 	//
@@ -132,13 +132,13 @@ func (s *GetOnceTaskResultInfoResponseBody) Validate() error {
 type GetOnceTaskResultInfoResponseBodyTaskInfo struct {
 	// The status of the task. Valid values:
 	//
-	// 	- **INIT**: The task is not started.
+	// - **INIT**: The task is pending start.
 	//
-	// 	- **START**: The task is started.
+	// - **START**: The task is running.
 	//
-	// 	- **SUCCESS**: The task is complete.
+	// - **SUCCESS**: The task is completed.
 	//
-	// 	- **TIMEOUT**: The task times out.
+	// - **TIMEOUT**: The task has timed out.
 	//
 	// example:
 	//

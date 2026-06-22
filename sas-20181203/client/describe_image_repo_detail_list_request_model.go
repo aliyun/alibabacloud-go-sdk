@@ -20,43 +20,43 @@ type iDescribeImageRepoDetailListRequest interface {
 }
 
 type DescribeImageRepoDetailListRequest struct {
-	// The search conditions for assets. The value of this parameter is in the JSON format and contains the following fields:
+	// The search conditions for assets. This parameter is in JSON format and contains the following fields:
 	//
-	// 	- **name**: the search condition.
+	// - **name**: the search item.
 	//
-	// 	- **name**: the value of the search condition.
+	// - **value**: the value of the search item.
 	//
-	// 	- **logicalExp**: the logical relation for multiple search conditions. Valid values:
+	// - **logicalExp**: the logical relationship among multiple search item values. Valid values:
 	//
-	//     	- **OR**: The search conditions use a logical **OR**.
+	//     - **OR**: The search item values are evaluated by using a logical OR.
 	//
-	//     	- **AND**: The search conditions use a logical **AND**.
+	//     - **AND**: The search item values are evaluated by using a logical AND.
 	//
-	// > You can call the [DescribeImageRepoCriteria](~~DescribeImageRepoCriteria~~) operation to query the supported search conditions.
+	// > Call the [DescribeImageRepoCriteria](~~DescribeImageRepoCriteria~~) operation to query the supported search conditions.
 	//
 	// example:
 	//
 	// [{"name":"vulStatus","value":"YES","logicalExp":"AND"}]
 	Criteria *string `json:"Criteria,omitempty" xml:"Criteria,omitempty"`
-	// The number of the page to return. Default value: **1**.
+	// The page number of the first page to return. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The logical relationship that you want to use to evaluate multiple search conditions. Valid values:
+	// The logical relationship among multiple search conditions. Valid values:
 	//
-	// 	- **OR**: Search conditions are evaluated by using a logical **OR**.
+	// - **OR**: The conditions are evaluated by using a logical OR.
 	//
-	// 	- **AND**: Search conditions are evaluated by using a logical **AND**.
+	// - **AND**: The conditions are evaluated by using a logical AND.
 	//
 	// example:
 	//
 	// OR
 	LogicalExp *string `json:"LogicalExp,omitempty" xml:"LogicalExp,omitempty"`
-	// The number of entries to return on each page. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+	// The maximum number of entries per page when using paging. Default value: 20. If you leave this parameter empty, 20 entries are returned per page.
 	//
-	// > We recommend that you do not leave this parameter empty.
+	// > Do not leave PageSize empty.
 	//
 	// example:
 	//

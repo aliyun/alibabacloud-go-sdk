@@ -16,17 +16,17 @@ type iDescribeMachineCanRebootRequest interface {
 }
 
 type DescribeMachineCanRebootRequest struct {
-	// The type of the vulnerabilities. Valid values:
+	// The type of vulnerability that requires a restart to fix. Valid values:
 	//
-	// 	- cve: Linux software vulnerabilities
+	// - cve: Linux software vulnerability
 	//
-	// 	- sys: Windows system vulnerabilities
+	// - sys: Windows system vulnerability.
 	//
 	// example:
 	//
 	// sys
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The UUID of the server.
+	// The UUID of the server to restart.
 	//
 	// example:
 	//

@@ -26,89 +26,89 @@ type iQueryPreCheckDatabaseResponseBody interface {
 }
 
 type QueryPreCheckDatabaseResponseBody struct {
-	// The time when the precheck task was complete.
+	// The time when the pre-check was completed.
 	//
 	// example:
 	//
 	// 1657524396
 	CompletedTime *int64 `json:"CompletedTime,omitempty" xml:"CompletedTime,omitempty"`
-	// The time when the precheck task was started.
+	// The time when the pre-check started.
 	//
 	// example:
 	//
 	// 1660448660
 	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The status of the precheck task. Valid values:
+	// The status description of the pre-check task. Valid values:
 	//
-	// 	- **completed**: complete
+	// - **completed**: Completed.
 	//
-	// 	- **created**: started
+	// - **created**: Started.
 	//
-	// 	- **error**: failed
+	// - **error**: Pre-check failed.
 	//
 	// example:
 	//
 	// completed
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The precheck progress in percentage. Valid values: 0 to 100.
+	// The pre-check progress. Valid values: 0 to 100.
 	//
 	// example:
 	//
 	// 100
 	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The request ID. Alibaba Cloud generates a unique identifier for each API request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// CE500770-42D3-442E-9DDD-156E0F9F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result of the precheck task. The value is a JSON string that contains the following fields:
+	// The task result of the dry run node. The value is a JSON string. The KEY valid values are:
 	//
-	// 	- **instanceId**: the ID of the server that hosts the database
+	// - **instanceId**: the instance ID of the server where the database resides.
 	//
-	// 	- **checkTime**: the precheck time
+	// - **checkTime**: the dry run time.
 	//
-	// 	- **sourceType**: the database type
+	// - **sourceType**: the database type.
 	//
-	// 	- **results**: the precheck item and result
+	// - **results**: the dry run items and task results.
 	//
-	//     	- **item**: the precheck item
+	//     - **item**: the dry run item.
 	//
-	//     	- **result**: the precheck result
+	//     - **result**: the dry run task result.
 	//
-	// > The following section describes the precheck items:
+	// > Dry run item description
 	//
-	// 	- MSSQL
+	// > - MSSQL
 	//
-	//     	- **OSS_INTERNAL_ENDPOINT_CONNECTIVITY**: OSS connectivity check
+	// >     - **OSS_INTERNAL_ENDPOINT_CONNECTIVITY**: OSS connectivity check.
 	//
-	//     	- **SERVICE_CONNECTIVITY**: control network connectivity check
+	// >     - **SERVICE_CONNECTIVITY**: control network connectivity check.
 	//
-	//     	- **SQL_SERVER_DB_IN_SIMPLE_RECOVERY_MODE**: recovery mode check
+	// >     - **SQL_SERVER_DB_IN_SIMPLE_RECOVERY_MODE**: recovery mode check.
 	//
-	//     	- **SQL_SERVER_DB_NOT_ONLINE**: SQL Server database status check
+	// >     - **SQL_SERVER_DB_NOT_ONLINE**: SQL Server database status check.
 	//
-	// 	- ORACLE
+	// > - ORACLE
 	//
-	//     	- **OSS_INTERNAL_ENDPOINT_CONNECTIVITY**: OSS connectivity check
+	// >     - **OSS_INTERNAL_ENDPOINT_CONNECTIVITY**: OSS connectivity check.
 	//
-	//     	- **SERVICE_CONNECTIVITY**: control network connectivity check
+	// >     - **SERVICE_CONNECTIVITY**: control network connectivity check.
 	//
-	//     	- **ORACLE_INSTANCE_STATUS**: Oracle instance status check
+	// >     - **ORACLE_INSTANCE_STATUS**: Oracle instance status check.
 	//
-	//     	- **ORACLE_DB_STATUS**: Oracle database status check
+	// >     - **ORACLE_DB_STATUS**: Oracle database status check.
 	//
-	//     	- **ARCHIVELOG**: archive mode check
+	// >     - **ARCHIVELOG**: archive mode check.
 	//
-	// 	- MYSQL
+	// > - MYSQL
 	//
-	//     	- **OSS_INTERNAL_ENDPOINT_CONNECTIVITY**: OSS connectivity check
+	// >     - **OSS_INTERNAL_ENDPOINT_CONNECTIVITY**: OSS connectivity check.
 	//
-	//     	- **SERVICE_CONNECTIVITY**: control network connectivity check
+	// >     - **SERVICE_CONNECTIVITY**: control network connectivity check.
 	//
-	//     	- **MYSQL_VERSION**: Supports full backup version checking
+	// >     - **MYSQL_VERSION**: version check for full backup support.
 	//
-	//     	- **MYSQL_BINLOG**: BINLOG check
+	// >     - **MYSQL_BINLOG**: BINLOG check.
 	//
 	// example:
 	//
@@ -164,7 +164,7 @@ type QueryPreCheckDatabaseResponseBody struct {
 	//
 	// ]
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	// The time when the precheck task was last updated.
+	// The time when the pre-check was last updated.
 	//
 	// example:
 	//

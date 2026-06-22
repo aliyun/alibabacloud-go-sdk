@@ -14,9 +14,9 @@ type iGetCheckProcessRequest interface {
 }
 
 type GetCheckProcessRequest struct {
-	// The ID of the task.
+	// The ID of the cloud service configuration check task to query.
 	//
-	// > You can call the [SubmitCheck](~~SubmitCheck~~) operation to query the ID.
+	// > You can call the [SubmitCheck](~~SubmitCheck~~) operation to obtain this parameter.
 	//
 	// example:
 	//

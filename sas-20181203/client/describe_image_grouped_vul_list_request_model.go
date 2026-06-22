@@ -64,21 +64,21 @@ type DescribeImageGroupedVulListRequest struct {
 	//
 	// High severity vulnerability that affects org.eclipse.jetty:jetty-server
 	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
-	// The ID of the container cluster.
+	// The ID of the container cluster to query.
 	//
-	// > You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to query the ID of the container cluster.
+	// > Call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// c60b77fe62093480db6164a3c2fa5****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The number of the page to return. Default value: **1**.
+	// The page number of the page to return in the query results. Default value: **1**, which indicates that the first page is returned.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The Common Vulnerabilities and Exposures (CVE) ID of the vulnerability.
+	// The CVE ID of the vulnerability.
 	//
 	// example:
 	//
@@ -90,7 +90,7 @@ type DescribeImageGroupedVulListRequest struct {
 	//
 	// 1311
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The SHA-256 value of the image digest.
+	// The SHA256 value of the image digest.
 	//
 	// example:
 	//
@@ -108,21 +108,21 @@ type DescribeImageGroupedVulListRequest struct {
 	//
 	// oval
 	ImageTag *string `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
-	// Specifies whether to query the vulnerabilities in the latest images. If you do not specify this parameter, the vulnerabilities in all images are queried. Valid values:
+	// Specifies whether to query vulnerabilities of only the latest image. If this parameter is not set, vulnerabilities of all images are queried. Valid values:
 	//
-	// 	- **0**: does not query the vulnerabilities in the latest images.
+	// - **0**: No.
 	//
-	// 	- **1**: queries the vulnerabilities in the latest images.
+	// - **1**: Yes.
 	//
 	// example:
 	//
 	// 0
 	IsLatest *int32 `json:"IsLatest,omitempty" xml:"IsLatest,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
@@ -134,25 +134,25 @@ type DescribeImageGroupedVulListRequest struct {
 	//
 	// debian:10:CVE-2019-9893
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The priority to fix the vulnerability. Valid values:
+	// The priority level for fixing the vulnerability. Valid values:
 	//
-	// 	- **asap**: high. You must fix the vulnerability at the earliest opportunity.
+	// - **asap**: high-priority vulnerability (typically a high-risk vulnerability)
 	//
-	// 	- **later**: medium. You can fix the vulnerability based on your business requirements.
+	// - **later**: medium-priority vulnerability (typically a medium-risk vulnerability)
 	//
-	// 	- **nntf**: low. You can ignore the vulnerability.
+	// - **nntf**: low-priority vulnerability (typically a low-risk vulnerability).
 	//
 	// example:
 	//
 	// asap
 	Necessity *string `json:"Necessity,omitempty" xml:"Necessity,omitempty"`
-	// The number of entries to return on each page. Default value: **20**.
+	// The number of image vulnerabilities to display on each page during a paging query. Default value: **20**, which indicates that 20 image vulnerabilities are displayed on each page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the patch that is used to fix the vulnerability.
+	// The ID of the vulnerability patch.
 	//
 	// example:
 	//
@@ -176,7 +176,7 @@ type DescribeImageGroupedVulListRequest struct {
 	//
 	// libssh2
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	// The namespace to which the image repository belongs.
+	// The namespace of the image repository.
 	//
 	// example:
 	//
@@ -188,27 +188,27 @@ type DescribeImageGroupedVulListRequest struct {
 	//
 	// cn-hangzhou
 	RepoRegionId *string `json:"RepoRegionId,omitempty" xml:"RepoRegionId,omitempty"`
-	// The tag of this vulnerability. Valid values:
+	// The vulnerability tag. Valid values:
 	//
-	// 	- **AI**: AI-related components.
+	//  - **AI**: vulnerabilities related to AI components.
 	//
 	// example:
 	//
 	// AI
 	RuleTag *string `json:"RuleTag,omitempty" xml:"RuleTag,omitempty"`
-	// An array consisting of the types of the assets that you want to scan.
+	// The collection of scan ranges.
 	ScanRange []*string `json:"ScanRange,omitempty" xml:"ScanRange,omitempty" type:"Repeated"`
-	// The type of the vulnerability that you want to query. Valid values:
+	// The type of vulnerability to query. Valid values:
 	//
-	// 	- **cve**: image system vulnerability
+	// - **cve**: image system vulnerability
 	//
-	// 	- **sca**: image application vulnerability
+	// - **sca**: image application vulnerability.
 	//
 	// example:
 	//
 	// cve
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The UUID of the asset. Separate multiple UUIDs with commas (,).
+	// The list of unique IDs of asset instances. Separate multiple IDs with commas (,).
 	//
 	// example:
 	//

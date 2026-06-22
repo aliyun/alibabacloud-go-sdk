@@ -26,43 +26,43 @@ type iListBaselineCheckWhiteRecordRequest interface {
 }
 
 type ListBaselineCheckWhiteRecordRequest struct {
-	// The IDs of check items.
+	// The list of check item IDs.
 	CheckIds []*int64 `json:"CheckIds,omitempty" xml:"CheckIds,omitempty" type:"Repeated"`
-	// The name of the check item. Fuzzy match is supported.
+	// The check item name for fuzzy match.
 	//
 	// example:
 	//
 	// redis
 	CheckItemFuzzy *string `json:"CheckItemFuzzy,omitempty" xml:"CheckItemFuzzy,omitempty"`
-	// The page number. Pages start from page 1. Default value: 1.
+	// The page number of the current page when using paging. The value starts from 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language type for requests and responses. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page when using paging.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The IDs of the whitelist rules.
+	// The list of whitelist record IDs.
 	RecordIds []*int64 `json:"RecordIds,omitempty" xml:"RecordIds,omitempty" type:"Repeated"`
-	// The data source. If you leave this parameter empty, the default value is used. Valid values:
+	// The data source. If this parameter is left empty, host data is queried by default. Valid values:
 	//
-	// 	- **default**: server
+	// - **default**: host
 	//
-	// 	- **agentless**: agentless detection
+	// - **agentless**: agentless.
 	//
 	// example:
 	//

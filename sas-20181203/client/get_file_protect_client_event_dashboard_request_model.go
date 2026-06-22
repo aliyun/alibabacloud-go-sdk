@@ -20,18 +20,26 @@ type iGetFileProtectClientEventDashboardRequest interface {
 }
 
 type GetFileProtectClientEventDashboardRequest struct {
+	// The page number of the current page to return.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The end timestamp of the query.
+	//
 	// example:
 	//
 	// 1656038940435
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The maximum number of entries per page for a paged query.
+	//
 	// example:
 	//
 	// 20
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The start timestamp of the query.
+	//
 	// example:
 	//
 	// 1648438617000

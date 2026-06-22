@@ -20,19 +20,19 @@ type iGetCheckTimeDimensionStatisticRequest interface {
 }
 
 type GetCheckTimeDimensionStatisticRequest struct {
-	// End time, in timestamp format.
+	// The end time in timestamp format.
 	//
 	// example:
 	//
 	// 1672285044000
 	EndTimeStamp *int64 `json:"EndTimeStamp,omitempty" xml:"EndTimeStamp,omitempty"`
-	// Start time, in timestamp format.
+	// The start time in timestamp format.
 	//
 	// example:
 	//
 	// 1672385044000
 	StartTimeStamp *int64 `json:"StartTimeStamp,omitempty" xml:"StartTimeStamp,omitempty"`
-	// Type of statistical data. Values:
+	// The type of data statistics. Valid values:
 	//
 	// - **CheckPassRate**: Check item pass rate.
 	//
@@ -42,7 +42,7 @@ type GetCheckTimeDimensionStatisticRequest struct {
 	//
 	// AssetPassRate
 	StatisticType *string `json:"StatisticType,omitempty" xml:"StatisticType,omitempty"`
-	// List of cloud vendors.
+	// The list of cloud service providers.
 	Vendors []*string `json:"Vendors,omitempty" xml:"Vendors,omitempty" type:"Repeated"`
 }
 

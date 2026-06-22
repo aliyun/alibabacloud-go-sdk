@@ -18,15 +18,15 @@ type iDescribeDefaultKeyInfoResponseBody interface {
 }
 
 type DescribeDefaultKeyInfoResponseBody struct {
-	// The domain names.
+	// The list of domain names.
 	DomainList []*string `json:"DomainList,omitempty" xml:"DomainList,omitempty" type:"Repeated"`
-	// The company name.
+	// The company names.
 	//
 	// example:
 	//
-	// Test
+	// ****技术股份有限公司
 	Names *string `json:"Names,omitempty" xml:"Names,omitempty"`
-	// The request ID.
+	// The ID of the request. The ID is a unique identifier that Alibaba Cloud generates for the request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//

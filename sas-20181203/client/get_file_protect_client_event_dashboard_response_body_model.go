@@ -16,6 +16,7 @@ type iGetFileProtectClientEventDashboardResponseBody interface {
 }
 
 type GetFileProtectClientEventDashboardResponseBody struct {
+	// The returned data.
 	Data *GetFileProtectClientEventDashboardResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -61,17 +62,26 @@ func (s *GetFileProtectClientEventDashboardResponseBody) Validate() error {
 }
 
 type GetFileProtectClientEventDashboardResponseBodyData struct {
+	// The tamper-proofing event statistics grouped by file path.
 	FilePathStats []*GetFileProtectClientEventDashboardResponseBodyDataFilePathStats `json:"FilePathStats,omitempty" xml:"FilePathStats,omitempty" type:"Repeated"`
+	// The event statistics grouped by file type.
 	FileTypeStats []*GetFileProtectClientEventDashboardResponseBodyDataFileTypeStats `json:"FileTypeStats,omitempty" xml:"FileTypeStats,omitempty" type:"Repeated"`
+	// The number of file tamper-proofing events for today.
+	//
 	// example:
 	//
 	// 12
-	OneDayFileChangeCount *int32                                                                `json:"OneDayFileChangeCount,omitempty" xml:"OneDayFileChangeCount,omitempty"`
-	ProcessNameStats      []*GetFileProtectClientEventDashboardResponseBodyDataProcessNameStats `json:"ProcessNameStats,omitempty" xml:"ProcessNameStats,omitempty" type:"Repeated"`
+	OneDayFileChangeCount *int32 `json:"OneDayFileChangeCount,omitempty" xml:"OneDayFileChangeCount,omitempty"`
+	// The event statistics grouped by process name.
+	ProcessNameStats []*GetFileProtectClientEventDashboardResponseBodyDataProcessNameStats `json:"ProcessNameStats,omitempty" xml:"ProcessNameStats,omitempty" type:"Repeated"`
+	// The number of file tamper-proofing events in the last 15 days.
+	//
 	// example:
 	//
 	// 33
 	RecentFileChangeCount *int32 `json:"RecentFileChangeCount,omitempty" xml:"RecentFileChangeCount,omitempty"`
+	// The number of affected servers.
+	//
 	// example:
 	//
 	// 4
@@ -172,10 +182,14 @@ func (s *GetFileProtectClientEventDashboardResponseBodyData) Validate() error {
 }
 
 type GetFileProtectClientEventDashboardResponseBodyDataFilePathStats struct {
+	// The file path.
+	//
 	// example:
 	//
 	// /usr/a
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The total number of events.
+	//
 	// example:
 	//
 	// 10
@@ -213,10 +227,14 @@ func (s *GetFileProtectClientEventDashboardResponseBodyDataFilePathStats) Valida
 }
 
 type GetFileProtectClientEventDashboardResponseBodyDataFileTypeStats struct {
+	// The file type name.
+	//
 	// example:
 	//
 	// txt
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The count.
+	//
 	// example:
 	//
 	// 60
@@ -254,10 +272,14 @@ func (s *GetFileProtectClientEventDashboardResponseBodyDataFileTypeStats) Valida
 }
 
 type GetFileProtectClientEventDashboardResponseBodyDataProcessNameStats struct {
+	// The process name.
+	//
 	// example:
 	//
 	// test
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The number of events.
+	//
 	// example:
 	//
 	// 50

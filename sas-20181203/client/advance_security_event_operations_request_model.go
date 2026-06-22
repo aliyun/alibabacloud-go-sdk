@@ -24,7 +24,7 @@ type AdvanceSecurityEventOperationsRequest struct {
 	//
 	// example:
 	//
-	// Execution of malicious script code
+	// 恶意脚本代码执行
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
 	// The alert event type. Valid values:
 	//
@@ -78,7 +78,7 @@ type AdvanceSecurityEventOperationsRequest struct {
 	//
 	// example:
 	//
-	// Malicious script
+	// 恶意脚本
 	EventType       *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The rule ID.

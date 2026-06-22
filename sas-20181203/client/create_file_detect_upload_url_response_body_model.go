@@ -222,7 +222,7 @@ type CreateFileDetectUploadUrlResponseBodyUploadUrlListContext struct {
 	//
 	// example:
 	//
-	// eyJleHBpcmF0aW9uIjoiMjAyMi0wNy0yM1QxMDo1ODoxMC43NTNaIiwiY29uZGl0aW9ucyI6W1siY29udGVudC1sZW5ndGgtcmFuZ2UiLDAsMjA5NzE1MjBdLFsiZXEiLCIka2V5IiwiMS8yMDIyLzA2LzIzLzE4LzU4LzE2NTU5ODE4OTA3NTM4NTc2MjFkNS1kN2E1LTQ5YzAtOGJjZi0yMTMyY2JiYTdmYzMi****
+	// eyJleHBpcmF0aW9uIjoiMjAyMi0wNy0yM1QxMDo1ODoxMC****
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
 	// The signature that is used to upload the file.
 	//

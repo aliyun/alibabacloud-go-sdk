@@ -18,15 +18,15 @@ type iDeleteBackupSnapshotRequest interface {
 }
 
 type DeleteBackupSnapshotRequest struct {
-	// The regions for backup.
+	// The backup regions.
 	BackupRegionIdList []*string `json:"BackupRegionIdList,omitempty" xml:"BackupRegionIdList,omitempty" type:"Repeated"`
 	// The backup snapshots.
 	BackupSnapshotList []*DeleteBackupSnapshotRequestBackupSnapshotList `json:"BackupSnapshotList,omitempty" xml:"BackupSnapshotList,omitempty" type:"Repeated"`
 	// Specifies whether to retain the latest snapshot. Valid values:
 	//
-	// 	- **true**
+	// - **true**: retains the latest snapshot.
 	//
-	// 	- **false**
+	// - **false**: does not retain the latest snapshot.
 	//
 	// example:
 	//
@@ -83,31 +83,31 @@ func (s *DeleteBackupSnapshotRequest) Validate() error {
 }
 
 type DeleteBackupSnapshotRequestBackupSnapshotList struct {
-	// The ID of the Cloud Backup client.
+	// The ID of the backup client.
 	//
-	// >  You can call the [DescribeSnapshots](~~DescribeSnapshots~~) operation to query the ID.
+	// > You can call the [DescribeSnapshots](~~DescribeSnapshots~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// c-000a4h33w14ka8xagb2s
+	// c-000a4h33w14ka8xa****
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	// The ID of the server.
+	// The ID of the server instance.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// i-j6cj8vyajp1fo4atxkae
+	// i-j6cj8vyajp1fo4at****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region in which Security Center is deployed. Valid values:
+	// The region of the Security Center instance. Valid values:
 	//
-	// 	- **cn-hangzhou**: China (Hangzhou).
+	// - **cn-hangzhou**: China (Hangzhou).
 	//
-	// 	- **ap-southeast-1**: Singapore.
+	// - **ap-southeast-1**: Singapore.
 	//
-	// 	- **cn-beijing**: China (Beijing).
+	// - **cn-beijing**: China (Beijing).
 	//
 	// This parameter is required.
 	//
@@ -115,25 +115,25 @@ type DeleteBackupSnapshotRequestBackupSnapshotList struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the snapshot that you want to delete.
+	// The ID of the snapshot to delete.
 	//
-	// >  You can call the [DescribeSnapshots](~~DescribeSnapshots~~) operation to query the ID.
+	// >You can call the [DescribeSnapshots](~~DescribeSnapshots~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// s-000f9p6r5trm6u4dc1iq
+	// s-000f9p6r5trm6u4d****
 	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
 	// The type of the data source. Valid values:
 	//
-	// 	- **ECS_FILE**: Elastic Compute Service (ECS) files.
+	// - **ECS_FILE**: backup snapshot of ECS files.
 	//
-	// 	- **OSS**: Object Storage Service (OSS) buckets.
+	// - **OSS**: backup snapshot of Alibaba Cloud OSS.
 	//
-	// 	- **NAS**: File Storage NAS (NAS) file systems.
+	// - **NAS**: backup snapshot of Alibaba Cloud NAS.
 	//
-	// 	- **OTS_TABLE**: Tablestore instances.
+	// - **OTS_TABLE**: backup snapshot of Alibaba Cloud Tablestore.
 	//
 	// This parameter is required.
 	//
@@ -141,15 +141,15 @@ type DeleteBackupSnapshotRequestBackupSnapshotList struct {
 	//
 	// ECS_FILE
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The ID of the backup vault that is used in the restoration task.
+	// The ID of the backup vault for the restoration task.
 	//
-	// >  You can call the [DescribeSnapshots](~~DescribeSnapshots~~) operation to query the ID.
+	// >You can call the [DescribeSnapshots](~~DescribeSnapshots~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// v-0004vhwcs2pmacfzrzt5
+	// v-0004vhwcs2pmacfz****
 	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 

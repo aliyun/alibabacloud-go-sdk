@@ -14,11 +14,11 @@ type iGetBuildRiskDefineRuleConfigRequest interface {
 }
 
 type GetBuildRiskDefineRuleConfigRequest struct {
-	// The language of the content within the request and response. Valid values:
+	// The language type for the request and response messages. Valid values:
 	//
-	// 	- **zh**: Chinese.
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English.
+	// - **en**: English.
 	//
 	// example:
 	//

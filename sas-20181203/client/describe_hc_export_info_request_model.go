@@ -14,9 +14,7 @@ type iDescribeHcExportInfoRequest interface {
 }
 
 type DescribeHcExportInfoRequest struct {
-	// The ID of the export task.
-	//
-	// >  You can call the [ExportWarning](~~ExportWarning~~) operation to query the IDs of export tasks.
+	// The ID of the export task. Call the [ExportWarning](https://help.aliyun.com/document_detail/425092.html) operation to obtain the task ID (**Id**).
 	//
 	// example:
 	//

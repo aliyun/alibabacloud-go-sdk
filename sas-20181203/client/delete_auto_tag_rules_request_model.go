@@ -14,9 +14,9 @@ type iDeleteAutoTagRulesRequest interface {
 }
 
 type DeleteAutoTagRulesRequest struct {
-	// The ID of the asset auto-tagging rule. Separate multiple IDs with commas (,).
+	// The IDs of the rules. Separate multiple IDs with commas (,).
 	//
-	// >  You can call the [ListAutoTagRules](~~ListAutoTagRules~~) operation to query the ID.
+	// > Call the [ListAutoTagRules](~~ListAutoTagRules~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//

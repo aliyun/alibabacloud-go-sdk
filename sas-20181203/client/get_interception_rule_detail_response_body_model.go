@@ -66,13 +66,13 @@ type GetInterceptionRuleDetailResponseBodyInterceptionRuleDetail struct {
 	DstTarget *GetInterceptionRuleDetailResponseBodyInterceptionRuleDetailDstTarget `json:"DstTarget,omitempty" xml:"DstTarget,omitempty" type:"Struct"`
 	// The interception mode. Valid values:
 	//
-	// 	- **0**: monitor
+	// - **0**: monitor
 	//
-	// 	- **1**: block
+	// - **1**: block
 	//
-	// 	- **2**: alert
+	// - **2**: alert
 	//
-	// 	- **3**: allow
+	// - **3**: allow
 	//
 	// example:
 	//
@@ -98,9 +98,9 @@ type GetInterceptionRuleDetailResponseBodyInterceptionRuleDetail struct {
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// The status of the defense rule. Valid values:
 	//
-	// 	- **1**: The rule is enabled.
+	// - **1**: The rule is enabled.
 	//
-	// 	- **0**: The rule is disabled.
+	// - **0**: The rule is disabled.
 	//
 	// example:
 	//
@@ -108,9 +108,9 @@ type GetInterceptionRuleDetailResponseBodyInterceptionRuleDetail struct {
 	RuleSwitch *int32 `json:"RuleSwitch,omitempty" xml:"RuleSwitch,omitempty"`
 	// The type of the rule. Valid values:
 	//
-	// 	- **suggest**: a suggestion rule
+	// - **suggest**: a suggestion rule
 	//
-	// 	- **customize**: a custom rule
+	// - **customize**: a custom rule
 	//
 	// example:
 	//

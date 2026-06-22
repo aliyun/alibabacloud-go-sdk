@@ -16,19 +16,19 @@ type iDescribeVulNumStatisticsRequest interface {
 }
 
 type DescribeVulNumStatisticsRequest struct {
-	// The source of the request.
+	// The request source.
 	//
-	// 	- If you want to query Security Center-related data, set the value to **sas**.
+	// 	- When querying Security Center data, set this parameter to **sas**.
 	//
-	// 	- If you want to query Server Guard-related data, you do not need to specify this parameter.
+	// 	- When querying Server Guard data, you do not need to set this parameter.
 	//
 	// example:
 	//
 	// sas
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
-	// The Alibaba Cloud account ID of the member in the resource directory.
+	// The member account ID in the resource directory (Alibaba Cloud account).
 	//
-	// >  You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain the IDs.
+	// >You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
 	//
 	// example:
 	//

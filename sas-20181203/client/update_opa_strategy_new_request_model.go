@@ -40,11 +40,11 @@ type iUpdateOpaStrategyNewRequest interface {
 }
 
 type UpdateOpaStrategyNewRequest struct {
-	// The risks that you want to detect by using the rule.
+	// The alert content details included in the policy.
 	AlarmDetail *UpdateOpaStrategyNewRequestAlarmDetail `json:"AlarmDetail,omitempty" xml:"AlarmDetail,omitempty" type:"Struct"`
 	// The cluster ID.
 	//
-	// > This parameter is deprecated. You can use the Scopes parameter to specify a scope in which cluster parameters take effect.
+	// 	Notice: This parameter is deprecated. Use the Scopes parameter to specify the scope of clusters to which the policy applies..
 	//
 	// example:
 	//
@@ -52,79 +52,79 @@ type UpdateOpaStrategyNewRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The cluster name.
 	//
-	// > This parameter is deprecated.
+	// 	Notice: This parameter is deprecated..
 	//
 	// example:
 	//
 	// docker-law
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// The rule description.
+	// The policy description.
 	//
 	// example:
 	//
 	// 4566
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The image names.
+	// The list of image names included in the policy.
 	ImageName []*string `json:"ImageName,omitempty" xml:"ImageName,omitempty" type:"Repeated"`
-	// The image tags.
+	// The list of image tags included in the policy.
 	Label []*string `json:"Label,omitempty" xml:"Label,omitempty" type:"Repeated"`
-	// Specifies whether the rule supports malicious Internet images. Valid values:
+	// Specifies whether the policy supports Internet malicious images. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Supported.
 	//
-	// 	- **false**
+	// - **false**: Not supported.
 	//
 	// example:
 	//
 	// true
 	MaliciousImage *bool `json:"MaliciousImage,omitempty" xml:"MaliciousImage,omitempty"`
-	// The action that is performed when the rule is hit. Valid values:
+	// The action to take when the policy is hit. Valid values:
 	//
-	// 	- **1**: alert
+	// - **1**: Alert.
 	//
-	// 	- **2**: block
+	// - **2**: Block.
 	//
-	// 	- **3**: allow
+	// - **3**: Allow.
 	//
 	// example:
 	//
 	// 1
 	RuleAction *int32 `json:"RuleAction,omitempty" xml:"RuleAction,omitempty"`
-	// The application scope.
+	// The scope of the policy.
 	Scopes []*UpdateOpaStrategyNewRequestScopes `json:"Scopes,omitempty" xml:"Scopes,omitempty" type:"Repeated"`
-	// The ID of the rule.
+	// The policy ID.
 	//
-	// >  You can call the [ListOpaClusterStrategyNew](https://help.aliyun.com/document_detail/2623574.html) operation to query the ID.
+	// >Call the [ListOpaClusterStrategyNew](https://help.aliyun.com/document_detail/2623574.html) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// 1003
 	StrategyId *int64 `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
-	// The rule name.
+	// The policy name.
 	//
 	// example:
 	//
 	// test
 	StrategyName *string `json:"StrategyName,omitempty" xml:"StrategyName,omitempty"`
-	// The ID of the rule template.
+	// The policy template ID.
 	//
-	// >  You can call the [GetOpaStrategyTemplateSummary](https://help.aliyun.com/document_detail/2539952.html) operation to query the ID of the rule template.
+	// >Call the [GetOpaStrategyTemplateSummary](https://help.aliyun.com/document_detail/2539952.html) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// 109
 	StrategyTemplateId *int64 `json:"StrategyTemplateId,omitempty" xml:"StrategyTemplateId,omitempty"`
-	// Specifies whether the rule supports unscanned images. Valid values:
+	// Specifies whether the policy supports unscanned images. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Supported.
 	//
-	// 	- **false**
+	// - **false**: Not supported.
 	//
 	// example:
 	//
 	// true
 	UnScanedImage *bool `json:"UnScanedImage,omitempty" xml:"UnScanedImage,omitempty"`
-	// The whitelists.
+	// The whitelist.
 	WhiteList []*string `json:"WhiteList,omitempty" xml:"WhiteList,omitempty" type:"Repeated"`
 }
 
@@ -281,15 +281,15 @@ func (s *UpdateOpaStrategyNewRequest) Validate() error {
 }
 
 type UpdateOpaStrategyNewRequestAlarmDetail struct {
-	// The baseline risks.
+	// The baseline risk information.
 	Baseline *UpdateOpaStrategyNewRequestAlarmDetailBaseline `json:"Baseline,omitempty" xml:"Baseline,omitempty" type:"Struct"`
-	// The configuration of image build risk.
+	// The risky image build command information.
 	BuildRisk *UpdateOpaStrategyNewRequestAlarmDetailBuildRisk `json:"BuildRisk,omitempty" xml:"BuildRisk,omitempty" type:"Struct"`
-	// The malicious sample risks.
+	// The malicious sample information.
 	MaliciousFile *UpdateOpaStrategyNewRequestAlarmDetailMaliciousFile `json:"MaliciousFile,omitempty" xml:"MaliciousFile,omitempty" type:"Struct"`
-	// The configuration of sensitive file.
+	// The sensitive file information.
 	SensitiveFile *UpdateOpaStrategyNewRequestAlarmDetailSensitiveFile `json:"SensitiveFile,omitempty" xml:"SensitiveFile,omitempty" type:"Struct"`
-	// The vulnerability risks.
+	// The vulnerability item information.
 	Vul *UpdateOpaStrategyNewRequestAlarmDetailVul `json:"Vul,omitempty" xml:"Vul,omitempty" type:"Struct"`
 }
 
@@ -376,9 +376,9 @@ func (s *UpdateOpaStrategyNewRequestAlarmDetail) Validate() error {
 }
 
 type UpdateOpaStrategyNewRequestAlarmDetailBaseline struct {
-	// The baseline check items.
+	// The baseline item information.
 	Item []*UpdateOpaStrategyNewRequestAlarmDetailBaselineItem `json:"Item,omitempty" xml:"Item,omitempty" type:"Repeated"`
-	// The risk levels.
+	// The list of risk levels.
 	RiskLevel []*string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty" type:"Repeated"`
 }
 
@@ -422,17 +422,17 @@ func (s *UpdateOpaStrategyNewRequestAlarmDetailBaseline) Validate() error {
 }
 
 type UpdateOpaStrategyNewRequestAlarmDetailBaselineItem struct {
-	// The ID of the baseline check item.
+	// The baseline check item ID.
 	//
-	// >  You can call the [GetOpaClusterBaseLineList](https://help.aliyun.com/document_detail/2539883.html) operation to query the ID.
+	// > Call the [GetOpaClusterBaseLineList](https://help.aliyun.com/document_detail/2539883.html) operation to query this value.
 	//
 	// example:
 	//
 	// hc.image.checklist.identify.hc_exploit_couchdb_linux.item
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the baseline check item.
+	// The baseline check item name.
 	//
-	// >  You can call the [GetOpaClusterBaseLineList](https://help.aliyun.com/document_detail/2539883.html) operation to query the name.
+	// > Call the [GetOpaClusterBaseLineList](https://help.aliyun.com/document_detail/2539883.html) operation to query this value.
 	//
 	// example:
 	//
@@ -471,9 +471,9 @@ func (s *UpdateOpaStrategyNewRequestAlarmDetailBaselineItem) Validate() error {
 }
 
 type UpdateOpaStrategyNewRequestAlarmDetailBuildRisk struct {
-	// The configuration of image build risk.
+	// The list of risk items.
 	Item []*UpdateOpaStrategyNewRequestAlarmDetailBuildRiskItem `json:"Item,omitempty" xml:"Item,omitempty" type:"Repeated"`
-	// The risk levels.
+	// The list of risk levels.
 	RiskLevel []*string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty" type:"Repeated"`
 }
 
@@ -517,17 +517,17 @@ func (s *UpdateOpaStrategyNewRequestAlarmDetailBuildRisk) Validate() error {
 }
 
 type UpdateOpaStrategyNewRequestAlarmDetailBuildRiskItem struct {
-	// The ID of the image build risk.
+	// The risky image build command type ID.
 	//
-	// >  You can call the [ListImageBuildRiskItem](~~ListImageBuildRiskItem~~) operation to query the ID of the malicious sample.
+	// > Call the [ListImageBuildRiskItem](~~ListImageBuildRiskItem~~) operation to query this value.
 	//
 	// example:
 	//
 	// key
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the image build risk.
+	// The risky image build command type name.
 	//
-	// >  You can call the [ListImageBuildRiskItem](~~ListImageBuildRiskItem~~) operation to query the ID of the malicious sample.
+	// > Call the [ListImageBuildRiskItem](~~ListImageBuildRiskItem~~) operation to query this value.
 	//
 	// example:
 	//
@@ -566,9 +566,9 @@ func (s *UpdateOpaStrategyNewRequestAlarmDetailBuildRiskItem) Validate() error {
 }
 
 type UpdateOpaStrategyNewRequestAlarmDetailMaliciousFile struct {
-	// The malicious samples.
+	// The malicious sample list.
 	Item []*UpdateOpaStrategyNewRequestAlarmDetailMaliciousFileItem `json:"Item,omitempty" xml:"Item,omitempty" type:"Repeated"`
-	// The risk levels.
+	// The list of risk levels.
 	RiskLevel []*string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty" type:"Repeated"`
 }
 
@@ -612,17 +612,17 @@ func (s *UpdateOpaStrategyNewRequestAlarmDetailMaliciousFile) Validate() error {
 }
 
 type UpdateOpaStrategyNewRequestAlarmDetailMaliciousFileItem struct {
-	// The ID of the malicious sample.
+	// The malicious sample ID.
 	//
-	// >  You can call the [DescribeMatchedMaliciousNames](~~DescribeMatchedMaliciousNames~~) operation to query the ID.
+	// > Call the [DescribeMatchedMaliciousNames](~~DescribeMatchedMaliciousNames~~) operation to query this value.
 	//
 	// example:
 	//
 	// 65201
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the malicious sample.
+	// The malicious sample name.
 	//
-	// >  You can call the [DescribeMatchedMaliciousNames](~~DescribeMatchedMaliciousNames~~) operation to query the name.
+	// > Call the [DescribeMatchedMaliciousNames](~~DescribeMatchedMaliciousNames~~) operation to query this value.
 	//
 	// example:
 	//
@@ -661,9 +661,9 @@ func (s *UpdateOpaStrategyNewRequestAlarmDetailMaliciousFileItem) Validate() err
 }
 
 type UpdateOpaStrategyNewRequestAlarmDetailSensitiveFile struct {
-	// The configuration of sensitive file.
+	// The list of sensitive file check items.
 	Item []*UpdateOpaStrategyNewRequestAlarmDetailSensitiveFileItem `json:"Item,omitempty" xml:"Item,omitempty" type:"Repeated"`
-	// The risk levels.
+	// The list of risk levels.
 	RiskLevel []*string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty" type:"Repeated"`
 }
 
@@ -707,17 +707,17 @@ func (s *UpdateOpaStrategyNewRequestAlarmDetailSensitiveFile) Validate() error {
 }
 
 type UpdateOpaStrategyNewRequestAlarmDetailSensitiveFileItem struct {
-	// The ID of the sensitive files.
+	// The sensitive file type ID.
 	//
-	// >  You can call the [GetSensitiveDefineRuleConfig](~~GetSensitiveDefineRuleConfig~~) operation to query the ID of the malicious sample.
+	// > Call the [GetSensitiveDefineRuleConfig](~~GetSensitiveDefineRuleConfig~~) operation to query this value.
 	//
 	// example:
 	//
 	// key
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the sensitive files.
+	// The sensitive file type name.
 	//
-	// >  You can call the [GetSensitiveDefineRuleConfig](~~GetSensitiveDefineRuleConfig~~) operation to query the ID of the malicious sample.
+	// > Call the [GetSensitiveDefineRuleConfig](~~GetSensitiveDefineRuleConfig~~) operation to query this value.
 	//
 	// example:
 	//
@@ -756,11 +756,11 @@ func (s *UpdateOpaStrategyNewRequestAlarmDetailSensitiveFileItem) Validate() err
 }
 
 type UpdateOpaStrategyNewRequestAlarmDetailVul struct {
-	// The vulnerabilities.
+	// The vulnerability list.
 	Item []*UpdateOpaStrategyNewRequestAlarmDetailVulItem `json:"Item,omitempty" xml:"Item,omitempty" type:"Repeated"`
-	// Risk type of vulnerability.
+	// The list of vulnerability types.
 	RiskClass []*UpdateOpaStrategyNewRequestAlarmDetailVulRiskClass `json:"RiskClass,omitempty" xml:"RiskClass,omitempty" type:"Repeated"`
-	// The risk levels.
+	// The list of risk levels.
 	RiskLevel []*string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty" type:"Repeated"`
 }
 
@@ -822,17 +822,17 @@ func (s *UpdateOpaStrategyNewRequestAlarmDetailVul) Validate() error {
 }
 
 type UpdateOpaStrategyNewRequestAlarmDetailVulItem struct {
-	// The ID of the vulnerability.
+	// The vulnerability ID.
 	//
-	// >  You can call the [DescribeVulListPage](https://help.aliyun.com/document_detail/471928.html) operation to query the ID.
+	// > Call the [DescribeVulListPage](https://help.aliyun.com/document_detail/471928.html) operation to query this value.
 	//
 	// example:
 	//
 	// CVE-2023-36034
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the vulnerability.
+	// The vulnerability name.
 	//
-	// >  You can call the [DescribeVulListPage](https://help.aliyun.com/document_detail/471928.html) operation to query the name.
+	// > Call the [DescribeVulListPage](https://help.aliyun.com/document_detail/471928.html) operation to query this value.
 	//
 	// example:
 	//
@@ -871,25 +871,25 @@ func (s *UpdateOpaStrategyNewRequestAlarmDetailVulItem) Validate() error {
 }
 
 type UpdateOpaStrategyNewRequestAlarmDetailVulRiskClass struct {
-	// The ID of the vulnerability types. Valid values:
+	// The vulnerability type ID. Valid values:
 	//
-	// 	- **cve**: system vulnerability
+	// - **cve**: system vulnerability
 	//
-	// 	- **app**: application vulnerability
+	// - **app**: application vulnerability.
 	//
 	// example:
 	//
 	// cve
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the vulnerability. Valid values:
+	// The vulnerability type name. Valid values:
 	//
-	// 	- **system vulnerability**
+	// - **system vulnerability**
 	//
-	// 	- **application vulnerability**
+	// - **application vulnerability**
 	//
 	// example:
 	//
-	// system vulnerability
+	// 系统漏洞
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -924,9 +924,9 @@ func (s *UpdateOpaStrategyNewRequestAlarmDetailVulRiskClass) Validate() error {
 }
 
 type UpdateOpaStrategyNewRequestScopes struct {
-	// The ID of the cluster node to which the rule is applied.
+	// The policy instance ID in the cluster.
 	//
-	// >  You can call the [GetOpaStrategyDetailNew](~~GetOpaStrategyDetailNew~~) operation to query the ID of the cluster node to which the rule is applied.
+	// > Call the [GetOpaStrategyDetailNew](~~GetOpaStrategyDetailNew~~) operation to obtain this parameter.
 	//
 	// example:
 	//
@@ -934,25 +934,25 @@ type UpdateOpaStrategyNewRequestScopes struct {
 	AckPolicyInstanceId *string `json:"AckPolicyInstanceId,omitempty" xml:"AckPolicyInstanceId,omitempty"`
 	// Specifies whether all namespaces are included. Valid values:
 	//
-	// 	- **0**: Not all namespaces are included.
+	// - **0**: No.
 	//
-	// 	- **1**: All namespaces are included.
+	// - **1**: Yes.
 	//
 	// example:
 	//
 	// 1
 	AllNamespace *int32 `json:"AllNamespace,omitempty" xml:"AllNamespace,omitempty"`
-	// The cluster ID.
+	// The ID of the container cluster.
 	//
-	// >  You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to query the cluster ID.
+	// > Call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// cdcb56a931c**
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The namespaces.
+	// The list of namespaces.
 	//
-	// > This parameter is valid only when the AllNamespace parameter is set to 0.
+	// 	Notice: This parameter takes effect only when AllNamespace is set to 0..
 	NamespaceList []*string `json:"NamespaceList,omitempty" xml:"NamespaceList,omitempty" type:"Repeated"`
 }
 

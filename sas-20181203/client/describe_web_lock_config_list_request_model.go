@@ -40,7 +40,7 @@ type DescribeWebLockConfigListRequest struct {
 	//
 	// example:
 	//
-	// 1.2.3.4
+	// 123.24.XX.XX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	// The UUID of the server.
 	//

@@ -16,13 +16,13 @@ type iFixCheckWarningsResponseBody interface {
 }
 
 type FixCheckWarningsResponseBody struct {
-	// The ID of the baseline risk item that has been fixed by using the Batch Repair feature.
+	// The ID of the batch fix task for risk items.
 	//
 	// example:
 	//
 	// 52370
 	BatchId *int64 `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iDescribeVulExportInfoRequest interface {
 }
 
 type DescribeVulExportInfoRequest struct {
-	// The ID of the task.
+	// The ID of the vulnerability export task.
 	//
 	// This parameter is required.
 	//

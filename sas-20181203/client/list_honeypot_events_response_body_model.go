@@ -18,11 +18,11 @@ type iListHoneypotEventsResponseBody interface {
 }
 
 type ListHoneypotEventsResponseBody struct {
-	// The intrusion events.
+	// The list of honeypot attack events.
 	HoneypotEvents []*ListHoneypotEventsResponseBodyHoneypotEvents `json:"HoneypotEvents,omitempty" xml:"HoneypotEvents,omitempty" type:"Repeated"`
-	// The pagination information.
+	// The paging information.
 	PageInfo *ListHoneypotEventsResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -108,7 +108,7 @@ type ListHoneypotEventsResponseBodyHoneypotEvents struct {
 	//
 	// 112.126.205.***
 	DstIp *string `json:"DstIp,omitempty" xml:"DstIp,omitempty"`
-	// The timestamp at which the event was first detected.
+	// The timestamp of the first occurrence.
 	//
 	// example:
 	//
@@ -118,9 +118,9 @@ type ListHoneypotEventsResponseBodyHoneypotEvents struct {
 	//
 	// example:
 	//
-	// honeypot-2
+	// 主机 tcp监听****
 	HoneypotName *string `json:"HoneypotName,omitempty" xml:"HoneypotName,omitempty"`
-	// The timestamp at which the event was last detected.
+	// The timestamp of the most recent occurrence.
 	//
 	// example:
 	//
@@ -130,15 +130,15 @@ type ListHoneypotEventsResponseBodyHoneypotEvents struct {
 	//
 	// example:
 	//
-	// China Beijing
+	// 北京市
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// The extended values that correspond to the field key.
+	// The list of extended field key-value pairs.
 	MergeFieldList []*ListHoneypotEventsResponseBodyHoneypotEventsMergeFieldList `json:"MergeFieldList,omitempty" xml:"MergeFieldList,omitempty" type:"Repeated"`
 	// The protocol. Valid values:
 	//
-	// 	- **tcp**
+	// - **tcp**.
 	//
-	// 	- **udp**
+	// - **udp**.
 	//
 	// example:
 	//
@@ -146,17 +146,17 @@ type ListHoneypotEventsResponseBodyHoneypotEvents struct {
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 	// The risk level. Valid values:
 	//
-	// 	- **2**: low
+	// - **2**: Low risk.
 	//
-	// 	- **3**: medium
+	// - **3**: Medium risk.
 	//
-	// 	- **4**: high
+	// - **4**: High risk.
 	//
 	// example:
 	//
 	// 4
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The ID of the intrusion event.
+	// The unique ID of the attack event.
 	//
 	// example:
 	//
@@ -309,7 +309,7 @@ func (s *ListHoneypotEventsResponseBodyHoneypotEvents) Validate() error {
 }
 
 type ListHoneypotEventsResponseBodyHoneypotEventsMergeFieldList struct {
-	// The supplementary information about the field.
+	// The supplementary information of the field.
 	//
 	// example:
 	//
@@ -321,7 +321,7 @@ type ListHoneypotEventsResponseBodyHoneypotEventsMergeFieldList struct {
 	//
 	// type
 	FieldKey *string `json:"FieldKey,omitempty" xml:"FieldKey,omitempty"`
-	// The type of the field.
+	// The field type.
 	//
 	// example:
 	//
@@ -384,37 +384,37 @@ func (s *ListHoneypotEventsResponseBodyHoneypotEventsMergeFieldList) Validate() 
 }
 
 type ListHoneypotEventsResponseBodyPageInfo struct {
-	// The number of entries returned on the current page.
+	// The number of entries on the current page in a paging query.
 	//
 	// example:
 	//
 	// 20
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The page number.
+	// The page number of the current page in a paging query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The key of the last data entry.
+	// The key of the last entry.
 	//
 	// example:
 	//
 	// CAESGgoSChAKDGNvbXBsZXRlVGltZRABCgQiAggAGAAiQAoJAGYXFWIAAAAACjMDLgAAADFTNzMyZDMwMzAzMDM1Mzc3Njc4MzA2ODY5NmI2YTY*********
 	LastRowKey *string `json:"LastRowKey,omitempty" xml:"LastRowKey,omitempty"`
-	// The value of the NextToken parameter that is returned by using the NextToken method.
+	// The NextToken value returned when the NextToken-based pagination method is used.
 	//
 	// example:
 	//
 	// B604532DEF982B875E8360A6EFA3B***
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The number of entries per page.
+	// The maximum number of entries per page in a paging query.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//

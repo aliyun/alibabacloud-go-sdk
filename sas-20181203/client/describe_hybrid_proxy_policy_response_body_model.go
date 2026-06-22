@@ -18,15 +18,15 @@ type iDescribeHybridProxyPolicyResponseBody interface {
 }
 
 type DescribeHybridProxyPolicyResponseBody struct {
-	// The number of entries on the current page.
+	// The number of entries returned on the current page in a paged query.
 	//
 	// example:
 	//
 	// 1
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The data collection configurations of the proxy cluster.
+	// The list of data collection configurations for the proxy cluster.
 	PolicyList []*DescribeHybridProxyPolicyResponseBodyPolicyList `json:"PolicyList,omitempty" xml:"PolicyList,omitempty" type:"Repeated"`
-	// The request ID.
+	// The request ID. Alibaba Cloud generates a unique identifier for each API request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -83,13 +83,13 @@ func (s *DescribeHybridProxyPolicyResponseBody) Validate() error {
 }
 
 type DescribeHybridProxyPolicyResponseBodyPolicyList struct {
-	// The information about the policy.
+	// The policy information.
 	Info []*DescribeHybridProxyPolicyResponseBodyPolicyListInfo `json:"Info,omitempty" xml:"Info,omitempty" type:"Repeated"`
-	// The type of the policy. Valid values:
+	// The policy type. Valid values:
 	//
-	// 	- **limitFrequency**
+	// - **limitFrequency**: collection frequency control
 	//
-	// 	- **limitBandWidth**
+	// - **limitBandWidth**: collection bandwidth control.
 	//
 	// example:
 	//
@@ -137,25 +137,25 @@ func (s *DescribeHybridProxyPolicyResponseBodyPolicyList) Validate() error {
 }
 
 type DescribeHybridProxyPolicyResponseBodyPolicyListInfo struct {
-	// The value of the policy configurations.
+	// The specific value of the policy configuration.
 	//
 	// example:
 	//
 	// 10
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The name of the file. After you configure a blocking policy, the blocked data is written to the file.
+	// The file to which the data intercepted by the proxy cluster policy is written.
 	//
 	// example:
 	//
 	// test
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// The type of the policy that you configured. Valid values:
+	// The configured policy type. Valid values:
 	//
-	// 	- **file**
+	// - **file**: file data collection
 	//
-	// 	- **net**
+	// - **net**: network data collection
 	//
-	// 	- **process**
+	// - **process**: process data collection.
 	//
 	// example:
 	//

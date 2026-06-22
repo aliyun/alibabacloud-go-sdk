@@ -16,31 +16,31 @@ type iDeleteVulWhitelistRequest interface {
 }
 
 type DeleteVulWhitelistRequest struct {
-	// The ID of the whitelist.
+	// The ID of the vulnerability whitelist.
 	//
-	// >  To delete a vulnerability whitelist, you must provide the ID of the whitelist. You can call the [DescribeVulWhitelist](~~DescribeVulWhitelist~~) operation to query the IDs of whitelists.
+	// > To delete a vulnerability whitelist, provide the vulnerability whitelist ID. You can obtain this ID by calling the [DescribeVulWhitelist](~~DescribeVulWhitelist~~) operation.
 	//
 	// example:
 	//
 	// 131231
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The information about the whitelist. The value is a JSON string that contains the following fields:
+	// The vulnerability whitelist information to delete. The value is a JSON string that contains the following fields:
 	//
-	// 	- **Name**: the name of the vulnerability.
+	// - **Name**: The name of the vulnerability.
 	//
-	// 	- **Type**: the type of the vulnerability. Valid values:
+	// - **Type**: The type of the vulnerability. Valid values:
 	//
-	//     	- **cve**: Linux software vulnerability
+	//     - **cve**: Linux software vulnerability
 	//
-	//     	- **sys**: Windows system vulnerability
+	//     - **sys**: Windows system vulnerability
 	//
-	//     	- **cms**: Web-CMS vulnerability
+	//     - **cms**: Web-CMS vulnerability
 	//
-	//     	- **app**: application vulnerability
+	//     - **app**: application vulnerability
 	//
-	//     	- **emg**: urgent vulnerability
+	//     - **emg**: emergency vulnerability
 	//
-	// 	- **AliasName**: the alias of the vulnerability.
+	// - **AliasName**: The alias of the vulnerability.
 	//
 	// example:
 	//

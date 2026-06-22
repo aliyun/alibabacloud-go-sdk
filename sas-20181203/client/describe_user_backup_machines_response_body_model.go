@@ -16,9 +16,9 @@ type iDescribeUserBackupMachinesResponseBody interface {
 }
 
 type DescribeUserBackupMachinesResponseBody struct {
-	// An array consisting of the servers to which the anti-ransomware policy is applied.
+	// The information about servers that have backup policies enabled.
 	Machines []*DescribeUserBackupMachinesResponseBodyMachines `json:"Machines,omitempty" xml:"Machines,omitempty" type:"Repeated"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -66,19 +66,19 @@ func (s *DescribeUserBackupMachinesResponseBody) Validate() error {
 }
 
 type DescribeUserBackupMachinesResponseBodyMachines struct {
-	// The ID of the anti-ransomware policy that is applied to the server.
+	// The ID of the policy enabled on the server.
 	//
 	// example:
 	//
 	// 123
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the anti-ransomware policy that is applied to the server.
+	// The name of the policy enabled on the server.
 	//
 	// example:
 	//
 	// policy_name_A
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	// The UUID of the server to which the anti-ransomware policy is applied.
+	// The UUID of the server that has a backup policy enabled.
 	//
 	// example:
 	//

@@ -18,11 +18,11 @@ type iListUuidsByWebPathResponseBody interface {
 }
 
 type ListUuidsByWebPathResponseBody struct {
-	// An array that consists of the protected assets.
+	// The list of protected assets.
 	List []*ListUuidsByWebPathResponseBodyList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
 	// The pagination information.
 	PageInfo *ListUuidsByWebPathResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The ID of the request. The ID is a unique identifier that Alibaba Cloud generates for the request and can be used to troubleshoot issues.
 	//
 	// example:
 	//
@@ -159,19 +159,19 @@ func (s *ListUuidsByWebPathResponseBodyList) Validate() error {
 }
 
 type ListUuidsByWebPathResponseBodyPageInfo struct {
-	// The number of entries returned on the current page.
+	// The number of entries displayed on the current page in a paging query.
 	//
 	// example:
 	//
 	// 10
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The page number of the returned page.
+	// The page number of the current page in a paging query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries returned per page.
+	// The maximum number of entries displayed on each page in a paging query.
 	//
 	// example:
 	//

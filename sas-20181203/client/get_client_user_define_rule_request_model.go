@@ -14,7 +14,7 @@ type iGetClientUserDefineRuleRequest interface {
 }
 
 type GetClientUserDefineRuleRequest struct {
-	// The ID of the custom defense rule.
+	// The ID of the custom rule.
 	//
 	// This parameter is required.
 	//

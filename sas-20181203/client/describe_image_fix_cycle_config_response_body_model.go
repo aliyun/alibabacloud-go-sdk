@@ -16,7 +16,7 @@ type iDescribeImageFixCycleConfigResponseBody interface {
 }
 
 type DescribeImageFixCycleConfigResponseBody struct {
-	// The response parameters.
+	// The response data.
 	Data *DescribeImageFixCycleConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,33 +62,33 @@ func (s *DescribeImageFixCycleConfigResponseBody) Validate() error {
 }
 
 type DescribeImageFixCycleConfigResponseBodyData struct {
-	// The cycle of the scheduled fix. Unit: day.
+	// The scheduled fix cycle. Unit: days.
 	//
 	// example:
 	//
 	// 7
 	ImageFixCycle *int32 `json:"ImageFixCycle,omitempty" xml:"ImageFixCycle,omitempty"`
-	// Indicates whether the scheduled fix of image risks is enabled.
+	// The scheduled image fix switch. Valid values:
 	//
-	// 	- **on**: enabled
+	// - **on**: Enabled.
 	//
-	// 	- **off**: disabled
+	// - **off**: Disabled.
 	//
 	// example:
 	//
 	// on
 	ImageFixSwitch *string `json:"ImageFixSwitch,omitempty" xml:"ImageFixSwitch,omitempty"`
-	// The range of the scheduled fix. The value of this parameter is in the JSON format and contains the following fields:
+	// The scope of the scheduled image fix. This parameter is in JSON format and contains the following fields:
 	//
-	// 	- **type**: The type of the image risk. The value is fixed to repo.
+	// - **type**: The target type. The value is fixed as repo.
 	//
-	// 	- **target**: The content of the image risk. The value is in the format of Namespace/Image repository.
+	// - **target**: The target content. Format: namespace/image repository.
 	//
 	// example:
 	//
 	// {\\"type\\":\\"repo\\",\\"target\\":[\\"qa-dac/yyuan9\\",\\"cdp-uat/zentao\\",\\"cafdms-qa/xxl-job-admin\\",\\"cafdms-qa/utils/jdk\\",\\"cafmfbi/ui\\",\\"cdp-uat/tradingdesk-webapp\\"]}
 	ImageFixTarget *string `json:"ImageFixTarget,omitempty" xml:"ImageFixTarget,omitempty"`
-	// The time range during which the image was modified. Unit: day.
+	// The time range during which the image was modified. Unit: days.
 	//
 	// example:
 	//

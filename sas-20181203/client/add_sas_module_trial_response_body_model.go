@@ -107,7 +107,7 @@ type AddSasModuleTrialResponseBodyDataTrialRecordList struct {
 	//
 	// example:
 	//
-	// [1,100]
+	// [100,1]
 	AuthLimitList *string `json:"AuthLimitList,omitempty" xml:"AuthLimitList,omitempty"`
 	// The end time of the trial use.
 	//

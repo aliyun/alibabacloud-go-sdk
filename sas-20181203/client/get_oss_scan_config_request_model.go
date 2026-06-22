@@ -16,7 +16,7 @@ type iGetOssScanConfigRequest interface {
 }
 
 type GetOssScanConfigRequest struct {
-	// The name of the bucket.
+	// The bucket name.
 	//
 	// example:
 	//

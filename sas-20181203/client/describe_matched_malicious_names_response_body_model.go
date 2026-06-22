@@ -18,15 +18,15 @@ type iDescribeMatchedMaliciousNamesResponseBody interface {
 }
 
 type DescribeMatchedMaliciousNamesResponseBody struct {
-	// The number of entries on the current page.
+	// The number of entries returned on the current page in a paged query. If paging is not used, this value indicates the total number of entries.
 	//
 	// example:
 	//
 	// 1
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The response parameters.
+	// The returned data.
 	Data []*DescribeMatchedMaliciousNamesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -83,13 +83,13 @@ func (s *DescribeMatchedMaliciousNamesResponseBody) Validate() error {
 }
 
 type DescribeMatchedMaliciousNamesResponseBodyData struct {
-	// The display name of the malicious image sample type.
+	// The display name of the malicious sample type.
 	//
 	// example:
 	//
 	// displayname
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The key of the malicious image sample type.
+	// The key of the malicious sample type.
 	//
 	// example:
 	//

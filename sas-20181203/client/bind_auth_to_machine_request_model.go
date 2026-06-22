@@ -27,106 +27,117 @@ type iBindAuthToMachineRequest interface {
 	GetNtmVersion() *string
 	SetPreBindOrderId(v int64) *BindAuthToMachineRequest
 	GetPreBindOrderId() *int64
+	SetResourceDirectoryAccountId(v int64) *BindAuthToMachineRequest
+	GetResourceDirectoryAccountId() *int64
 	SetUnBind(v []*string) *BindAuthToMachineRequest
 	GetUnBind() []*string
 }
 
 type BindAuthToMachineRequest struct {
-	// The edition of Security Center that is authorized to scan the asset. Valid values:
+	// The authorization version of the asset. Valid values:
 	//
-	// 	- **6**: Anti-virus
+	// - **6**: Anti-virus Edition
 	//
-	// 	- **5**: Advanced
+	// - **5**: Advanced Edition
 	//
-	// 	- **3**: Enterprise
+	// - **3**: Enterprise Edition
 	//
-	// 	- **7**: Ultimate
+	// - **7**: Ultimate Edition
 	//
-	// 	- **10**: Value-added Plan
+	// - **10**: Value-added Service Edition.
 	//
 	// example:
 	//
 	// 6
 	AuthVersion *int32 `json:"AuthVersion,omitempty" xml:"AuthVersion,omitempty"`
-	// Specifies whether to automatically bind servers to Security Center. Valid values:
+	// Specifies whether to enable automatic binding. Valid values:
 	//
-	// 	- **0**: no
+	// - **0**: Disabled.
 	//
-	// 	- **1**: yes
+	// - **1**: Enabled.
 	//
 	// example:
 	//
 	// 1
 	AutoBind *int32 `json:"AutoBind,omitempty" xml:"AutoBind,omitempty"`
-	// The UUIDs of the servers that you want to bind to Security Center.
+	// The UUIDs of the servers to bind.
 	//
-	// >  You must specify at least one of the **Bind*	- and **UnBind*	- parameters.
+	// > **Bind*	- and **UnBind*	- cannot both be empty.
 	Bind []*string `json:"Bind,omitempty" xml:"Bind,omitempty" type:"Repeated"`
-	// Specifies whether to bind all servers to Security Center. Default value: **false**. Valid values:
+	// Specifies whether to bind all assets. Default value: **false**. Valid values:
 	//
-	// 	- **true**: yes
+	// - **true**: Bind all assets.
 	//
-	// 	- **false**: no
+	// - **false**: Do not bind all assets.
 	//
 	// example:
 	//
 	// true
 	BindAll *bool `json:"BindAll,omitempty" xml:"BindAll,omitempty"`
-	// The search conditions that are used to filter servers. The value of this parameter is in the JSON format and is case-sensitive.
+	// The search conditions for assets. This parameter is in JSON format. Note that the parameter values are case-sensitive.
 	//
-	// >  A search condition can be an instance ID, instance name, virtual private cloud (VPC) ID, region, or public IP address. You can call the [DescribeCriteria](~~DescribeCriteria~~) operation to query the supported search conditions.
+	// > You can search for assets by instance ID, instance name, VPC ID, region, or public IP address. Call the [DescribeCriteria](~~DescribeCriteria~~) operation to query the supported search conditions.
 	//
 	// example:
 	//
 	// [{"name":"riskStatus","value":"YES"},{"name":"internetIp","value":"1.2.XX.XX"}]
 	Criteria *string `json:"Criteria,omitempty" xml:"Criteria,omitempty"`
-	// Specifies whether to specify servers for protection when you purchase Security Center. Valid values:
+	// Specifies whether this is a pre-binding operation. Valid values:
 	//
-	// 	- **0**: no
+	// - **0**: No.
 	//
-	// 	- **1**: yes
+	// - **1**: Yes.
 	//
-	// >  If you specify servers, the servers are automatically added to Security Center for protection after the purchase order is complete.
+	//
+	// > After pre-binding is enabled, the corresponding authorization quota is automatically bound to the specified servers after the purchase is completed.
 	//
 	// example:
 	//
 	// 1
 	IsPreBind *int32 `json:"IsPreBind,omitempty" xml:"IsPreBind,omitempty"`
-	// The logical relationship that you want to use to evaluate multiple search conditions. Default value: **OR**. Valid values:
+	// The logical relationship among multiple search conditions. Default value: **OR**. Valid values:
 	//
-	// 	- **OR**
+	// - **OR**: The search conditions are evaluated with a logical OR.
 	//
-	// 	- **AND**
+	// - **AND**: The search conditions are evaluated with a logical AND.
 	//
 	// example:
 	//
 	// OR
 	LogicalExp *string `json:"LogicalExp,omitempty" xml:"LogicalExp,omitempty"`
-	// The edition of Security Center that you purchase in the order. Valid values:
+	// The order version associated with the pre-binding. Valid values:
 	//
-	// 	- **level7**: Anti-virus
+	// - **level7**: Anti-virus Edition
 	//
-	// 	- **level3**: Advanced
+	// - **level3**: Advanced Edition
 	//
-	// 	- **level2**: Enterprise
+	// - **level2**: Enterprise Edition
 	//
-	// 	- **level8**: Ultimate
+	// - **level8**: Ultimate Edition
 	//
-	// 	- **level10**: Value-added Plan
+	// - **level10**: Value-added service only.
 	//
 	// example:
 	//
 	// level2
 	NtmVersion *string `json:"NtmVersion,omitempty" xml:"NtmVersion,omitempty"`
-	// The ID of the order in which Security Center is purchased and servers are specified for protection.
+	// The order ID associated with the pre-binding.
 	//
 	// example:
 	//
 	// 233016**0482
 	PreBindOrderId *int64 `json:"PreBindOrderId,omitempty" xml:"PreBindOrderId,omitempty"`
-	// The UUIDs of the servers that you want to unbind from Security Center.
+	// The ID of the member accounts in the resource folder (Alibaba Cloud account).
 	//
-	// >  You must specify at least one of the **Bind*	- and **UnBind*	- parameters.
+	// > Invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+	//
+	// example:
+	//
+	// 16670360956*****
+	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
+	// The UUIDs of the servers to unbind.
+	//
+	// > **Bind*	- and **UnBind*	- cannot both be empty.
 	UnBind []*string `json:"UnBind,omitempty" xml:"UnBind,omitempty" type:"Repeated"`
 }
 
@@ -172,6 +183,10 @@ func (s *BindAuthToMachineRequest) GetNtmVersion() *string {
 
 func (s *BindAuthToMachineRequest) GetPreBindOrderId() *int64 {
 	return s.PreBindOrderId
+}
+
+func (s *BindAuthToMachineRequest) GetResourceDirectoryAccountId() *int64 {
+	return s.ResourceDirectoryAccountId
 }
 
 func (s *BindAuthToMachineRequest) GetUnBind() []*string {
@@ -220,6 +235,11 @@ func (s *BindAuthToMachineRequest) SetNtmVersion(v string) *BindAuthToMachineReq
 
 func (s *BindAuthToMachineRequest) SetPreBindOrderId(v int64) *BindAuthToMachineRequest {
 	s.PreBindOrderId = &v
+	return s
+}
+
+func (s *BindAuthToMachineRequest) SetResourceDirectoryAccountId(v int64) *BindAuthToMachineRequest {
+	s.ResourceDirectoryAccountId = &v
 	return s
 }
 

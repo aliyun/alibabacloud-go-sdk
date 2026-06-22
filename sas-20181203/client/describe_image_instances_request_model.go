@@ -22,53 +22,53 @@ type iDescribeImageInstancesRequest interface {
 }
 
 type DescribeImageInstancesRequest struct {
-	// The search condition that is used to filter the server. The value of this parameter is in the JSON format and contains the following fields:
+	// Sets the conditions for searching assets. This parameter is in JSON format and contains the following fields:
 	//
-	// 	- **name**: the search condition
+	// - **name**: The search item.
 	//
-	// 	- **name**: the value of the search condition
+	// - **value**: The value of the search item.
 	//
-	// 	- **logicalExp**: the logical relation for multiple search conditions Valid values:
+	// - **logicalExp**: The logical relationship between multiple search item values. Valid values:
 	//
-	//     	- **OR**: The search conditions use a logical **OR**.
+	//     - **OR**: The multiple search item values are in an **OR*	- relationship.
 	//
-	//     	- **AND**: The search conditions use a logical **AND**.
+	//     - **AND**: The multiple search item values are in an **AND*	- relationship.
 	//
-	// > You can call the [DescribeImageCriteria](https://help.aliyun.com/document_detail/471822.html) operation to query the supported search conditions.
+	// > You can call the [DescribeImageRepoCriteria](~~DescribeImageRepoCriteria~~) operation to query supported search conditions.
 	//
 	// example:
 	//
 	// [{"name":"instanceId","value":"390100182","logicalExp":"AND"}]
 	Criteria *string `json:"Criteria,omitempty" xml:"Criteria,omitempty"`
-	// The number of the page to return. Pages start from page **1**. Default value: **1**.
+	// The page number of the returned results to start displaying. The starting value is **1**. Default value: **1**, which indicates that page 1 is displayed.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The logical relationship that you want to use to evaluate multiple search conditions. Valid values:
+	// Sets the logical relationship between multiple search conditions. Valid values:
 	//
-	// 	- **OR**: The search conditions are evaluated by using a logical **OR**.
+	// - **OR**: The multiple search conditions are in an **OR*	- relationship.
 	//
-	// 	- **AND**: The search conditions are evaluated by using a logical **AND**.
+	// - **AND**: The multiple search conditions are in an **AND*	- relationship.
 	//
 	// example:
 	//
 	// OR
 	LogicalExp *string `json:"LogicalExp,omitempty" xml:"LogicalExp,omitempty"`
-	// The number of entries to return on each page. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+	// The maximum number of entries to return on each page during a paged query. The default number of entries per page is 20. If the PageSize parameter is left empty, 20 entries are returned by default.
 	//
-	// > : We recommend that you do not leave this parameter empty.
+	// > We recommend that you do not leave the PageSize parameter empty.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Specifies whether the image is scanned. Valid values:
+	// Indicates whether the image has been scanned. Valid values:
 	//
-	// 	- **true**
+	// - **true**: processed.
 	//
-	// 	- **false**
+	// - **false**: not processed.
 	//
 	// example:
 	//

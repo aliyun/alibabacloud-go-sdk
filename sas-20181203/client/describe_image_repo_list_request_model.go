@@ -32,45 +32,45 @@ type iDescribeImageRepoListRequest interface {
 }
 
 type DescribeImageRepoListRequest struct {
-	// The number of the page to return. Default value: **1**.
+	// The page number of the page to return. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The name of the field that is used for the query. Valid values:
+	// The search field. Valid values:
 	//
-	// 	- **repoName**: the name of the image repository
+	// - **repoName**: image repository name
 	//
-	// 	- **repoNamespace**: the namespace to which the image repository belongs
+	// - **repoNamespace**: image repository namespace
 	//
-	// >  This parameter takes effect only when the **OperateType*	- parameter is set to **other**.
+	// > This parameter takes effect only when **OperateType*	- is set to **other**.
 	//
 	// example:
 	//
 	// repoName
 	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
-	// The value of the field that is used for the query.
+	// The value of the search field.
 	//
-	// >  This parameter takes effect only when the **OperateType*	- parameter is set to **other**.
+	// > This parameter takes effect only when **OperateType*	- is set to **other**.
 	//
 	// example:
 	//
 	// zeus
 	FieldValue *string `json:"FieldValue,omitempty" xml:"FieldValue,omitempty"`
-	// The type of the operation. Valid values:
+	// The operation type. Valid values:
 	//
-	// 	- **count**: counts statistics
+	// - **count**: statistics
 	//
-	// 	- **other**: others
+	// - **other**: other.
 	//
 	// example:
 	//
 	// count
 	OperateType *string `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
-	// The number of entries to return on each page. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+	// The number of entries per page in a paged query. Default value: 20. If you leave this parameter empty, 20 entries are returned per page during paging.
 	//
-	// >  We recommend that you do not leave this parameter empty.
+	// > Set PageSize to a non-empty value.
 	//
 	// example:
 	//
@@ -82,25 +82,25 @@ type DescribeImageRepoListRequest struct {
 	//
 	// script7
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	// The namespace to which the image repository belongs.
+	// The namespace of the container image repository.
 	//
 	// example:
 	//
 	// libssh2
 	RepoNamespace *string `json:"RepoNamespace,omitempty" xml:"RepoNamespace,omitempty"`
-	// Whether it is selected. Values:
+	// Specifies whether the item is selected. Valid values:
 	//
-	// 	- **0**: NO
+	// - **0**: No.
 	//
-	// 	- **1**: YES
+	// - **1**: Yes.
 	//
 	// example:
 	//
 	// 1
 	Selected *int32 `json:"Selected,omitempty" xml:"Selected,omitempty"`
-	// The condition by which the feature is applied. Valid values:
+	// The dimension of the defense switch configuration. Valid values:
 	//
-	// 	- **image_repo**: the ID of the image repository
+	// - **image_repo**: image repository ID.
 	//
 	// This parameter is required.
 	//
@@ -108,9 +108,9 @@ type DescribeImageRepoListRequest struct {
 	//
 	// image_repo
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	// The type of the feature. Valid values:
+	// The type of the defense switch. Valid values:
 	//
-	// 	- **image_repo**: image repository protection
+	// - **image_repo**: image repository defense.
 	//
 	// This parameter is required.
 	//

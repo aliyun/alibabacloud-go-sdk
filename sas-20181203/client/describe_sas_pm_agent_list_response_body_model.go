@@ -16,13 +16,13 @@ type iDescribeSasPmAgentListResponseBody interface {
 }
 
 type DescribeSasPmAgentListResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 8EF3ACC2-9400-5B64-B72D-4A1D35113750
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// An array that consists of the information about servers.
+	// The query result list.
 	SasPmAgentList []*DescribeSasPmAgentListResponseBodySasPmAgentList `json:"SasPmAgentList,omitempty" xml:"SasPmAgentList,omitempty" type:"Repeated"`
 }
 
@@ -66,63 +66,63 @@ func (s *DescribeSasPmAgentListResponseBody) Validate() error {
 }
 
 type DescribeSasPmAgentListResponseBodySasPmAgentList struct {
-	// The ID of Cloud Assistant.
+	// The globally unique ID of Cloud Assistant.
 	//
 	// example:
 	//
 	// mi-hz034jn***yxhc0
 	AliyunAssistId *string `json:"AliyunAssistId,omitempty" xml:"AliyunAssistId,omitempty"`
-	// The ID of the CloudMonitor agent.
+	// The globally unique ID of CloudMonitor.
 	//
 	// example:
 	//
 	// 5d5ef6be-54ff-11ed-82cf-8f01475e****
 	AliyunMonitorId *string `json:"AliyunMonitorId,omitempty" xml:"AliyunMonitorId,omitempty"`
-	// The installation result of Cloud Assistant. Valid values:
+	// The installation execution result of Cloud Assistant. Valid values:
 	//
-	// 	- **0**: SUCCESS
+	// - **0**: SUCCESS
 	//
-	// 	- **1**: MISSING_PARAM
+	// - **1**: MISSING_PARAM
 	//
-	// 	- **2**: UNKNOWN_SYSTEM
+	// - **2**: UNKNOWN_SYSTEM
 	//
-	// 	- **3**: DOWNLOAD_FAILED
+	// - **3**: DOWNLOAD_FAILED
 	//
-	// 	- **4**: INSTALL_FAILED
+	// - **4**: INSTALL_FAILED.
 	//
 	// example:
 	//
 	// 0
 	AssistInstallResult *int32 `json:"AssistInstallResult,omitempty" xml:"AssistInstallResult,omitempty"`
-	// The status of Cloud Assistant. Valid values:
+	// The installation status of Cloud Assistant. Valid values:
 	//
-	// 	- **0**: installing
+	// - **0**: Installing.
 	//
-	// 	- **1**: installed
+	// - **1**: Installed.
 	//
-	// 	- **2**: installation failed
+	// - **2**: Installation failed.
 	//
-	// 	- **3**: installation timed out
+	// - **3**: Installation timed out.
 	//
 	// example:
 	//
 	// 1
 	AssistInstallStatus *int32 `json:"AssistInstallStatus,omitempty" xml:"AssistInstallStatus,omitempty"`
-	// The installation result of the CloudMonitor agent. Valid values:
+	// The installation execution result of CloudMonitor. Valid values:
 	//
-	// 	- **0**: failed
+	// - **0**: Failed.
 	//
-	// 	- **1**: successful
+	// - **1**: Succeeded.
 	//
 	// example:
 	//
 	// 1
 	MonitorInstallResult *int32 `json:"MonitorInstallResult,omitempty" xml:"MonitorInstallResult,omitempty"`
-	// The status of the CloudMonitor agent. Valid values:
+	// The installation status of CloudMonitor. Valid values:
 	//
-	// 	- **0**: installation failed
+	// - **0**: Failed.
 	//
-	// 	- **1**: installed
+	// - **1**: Succeeded.
 	//
 	// example:
 	//

@@ -14,9 +14,9 @@ type iSendCustomizeReportRequest interface {
 }
 
 type SendCustomizeReportRequest struct {
-	// The ID of the security report.
+	// The report ID.
 	//
-	// >  You can call the [DescribeCustomizeReportList](~~DescribeCustomizeReportList~~) operation to query the ID.
+	// >Call [DescribeCustomizeReportList](~~DescribeCustomizeReportList~~) to obtain this parameter.
 	//
 	// This parameter is required.
 	//

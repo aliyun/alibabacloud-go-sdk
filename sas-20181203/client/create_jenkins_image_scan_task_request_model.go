@@ -40,7 +40,7 @@ type CreateJenkinsImageScanTaskRequest struct {
 	//
 	// example:
 	//
-	// a8c9f3765684cd8d9053db9523eab58878e99a199217500efd9ae2a860a7e01e
+	// a8c9f3765684cd8d9053db9523eab58878e99a199217500efd9ae2a860a7****
 	Digest *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
 	// The time when the image was created.
 	//
@@ -52,7 +52,7 @@ type CreateJenkinsImageScanTaskRequest struct {
 	//
 	// example:
 	//
-	// b10ef7b245c34a0822055c74fc4a0e8b5baf0279306316b2c517a501ed250b1e
+	// b10ef7b245c34a0822055c74fc4a0e8b5baf0279306316b2c517a501ed25****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	// The size of the image. Unit: bytes.
 	//

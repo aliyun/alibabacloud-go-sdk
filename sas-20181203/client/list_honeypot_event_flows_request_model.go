@@ -24,45 +24,51 @@ type iListHoneypotEventFlowsRequest interface {
 }
 
 type ListHoneypotEventFlowsRequest struct {
-	// The page number. Default value: **1**.
+	// The page number of the current page in a paged query. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The status of the event. Valid values: y, n, and a. The value y indicates handled. The value n indicates unhandled. The value a indicates all.
+	// Specifies whether the event has been handled. Valid values:
+	//
+	// - **y**: Handled.
+	//
+	// - **n**: Unhandled.
+	//
+	// - **a**: All.
 	//
 	// example:
 	//
 	// n
 	Dealed *string `json:"Dealed,omitempty" xml:"Dealed,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of entries per page. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+	// The maximum number of entries to return per page in a paged query. Default value: 100. If the PageSize parameter is left empty, 100 entries are returned by default.
 	//
-	// >  We recommend that you do not leave this parameter empty.
+	// > Do not leave PageSize empty.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
+	// Invalid parameter.
 	//
 	// example:
 	//
-	// 20540822-520E-54F5-B7E6-236CF1EC987F
+	// 9F4E6157-9600-5588-86B9-38F09067****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the alert event. The ID of the management account of the ListHoneypotEvents resource directory.
+	// The ID of the alert event.
 	//
-	// >  You can call the [ListHoneypotEvents](~~ListHoneypotEvents~~) operation to query the IDs of alert events.
+	// >You can call the [ListHoneypotEvents](~~ListHoneypotEvents~~) operation to obtain this parameter.
 	//
 	// example:
 	//

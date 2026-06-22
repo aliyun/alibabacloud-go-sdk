@@ -22,15 +22,15 @@ type iDescribeImageEventOperationPageResponseBody interface {
 }
 
 type DescribeImageEventOperationPageResponseBody struct {
-	// The HTTP status code.
+	// The status code returned.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *DescribeImageEventOperationPageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned message.
+	// The message returned.
 	//
 	// example:
 	//
@@ -42,11 +42,11 @@ type DescribeImageEventOperationPageResponseBody struct {
 	//
 	// A3D7C47D-3F11-57BB-90E8-E5C20C61****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the API call was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The API call was successful.
 	//
-	// 	- **false**
+	// - **false**: The API call failed.
 	//
 	// example:
 	//
@@ -117,9 +117,9 @@ func (s *DescribeImageEventOperationPageResponseBody) Validate() error {
 }
 
 type DescribeImageEventOperationPageResponseBodyData struct {
-	// The alert handling rules.
+	// The list of alert handling rules.
 	List []*DescribeImageEventOperationPageResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	// The pagination information.
+	// The paged query parameters.
 	PageInfo *DescribeImageEventOperationPageResponseBodyDataPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
 }
 
@@ -168,33 +168,33 @@ func (s *DescribeImageEventOperationPageResponseBodyData) Validate() error {
 }
 
 type DescribeImageEventOperationPageResponseBodyDataList struct {
-	// The rule conditions. The value is in the JSON format. Valid values of keys:
+	// The rule conditions in JSON format. Valid keys:
 	//
-	// 	- **condition**: the matching condition.
+	// - **condition**: the matching condition.
 	//
-	// 	- **type**: the matching type.
+	// - **type**: the matching type.
 	//
-	// 	- **value**: the matching value.
+	// - **value**: the matching value.
 	//
 	// example:
 	//
 	// [{\\"condition\\": \\"MD5\\", \\"type\\": \\"equals\\", \\"value\\": \\"0083a31cc0083a31ccf7c10367a6e783e\\"}]
 	Conditions *string `json:"Conditions,omitempty" xml:"Conditions,omitempty"`
-	// The keyword of the alert item.
+	// The keyword of the alert metric.
 	//
 	// example:
 	//
 	// PEM
 	EventKey *string `json:"EventKey,omitempty" xml:"EventKey,omitempty"`
-	// The name of the alert item.
+	// The name of the alert metric.
 	//
 	// example:
 	//
 	// PEM
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
-	// The alert type.
+	// The alerting type. Valid values:
 	//
-	// 	- Only **sensitiveFile*	- may be returned.
+	// - **sensitiveFile**: sensitive file tampering.
 	//
 	// example:
 	//
@@ -212,33 +212,33 @@ type DescribeImageEventOperationPageResponseBodyDataList struct {
 	//
 	// xxx
 	Note *string `json:"Note,omitempty" xml:"Note,omitempty"`
-	// The operation code.
+	// The operation code. Valid values:
 	//
-	// 	- Only **whitelist*	- may be returned, which means that the alert item is added to the whitelist.
+	// - **whitelist**: whitelist.
 	//
 	// example:
 	//
 	// whitelist
 	OperationCode *string `json:"OperationCode,omitempty" xml:"OperationCode,omitempty"`
-	// The application scope of the rule. The value is in the JSON format. Valid values of keys:
+	// The rule scope in JSON format. Valid keys:
 	//
-	// 	- **type**
+	// - **type**: the scope type.
 	//
-	// 	- **value**
+	// - **value**: the scope value.
 	//
 	// example:
 	//
 	// {\\"type\\": \\"repo\\", \\"value\\": \\"test-aaa/shenzhen-repo-01\\"}
 	Scenarios *string `json:"Scenarios,omitempty" xml:"Scenarios,omitempty"`
-	// The source of the whitelist. Valid values:
+	// The source of the alert handling rule. Valid values:
 	//
-	// 	- **image**: image.
+	// - **default**: image
 	//
-	// 	- **agentless**: agentless detection.
+	// - **agentless**: agentless.
 	//
 	// example:
 	//
-	// agentless
+	// default
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 }
 
@@ -336,13 +336,13 @@ func (s *DescribeImageEventOperationPageResponseBodyDataList) Validate() error {
 }
 
 type DescribeImageEventOperationPageResponseBodyDataPageInfo struct {
-	// The page number.
+	// The number of the page to return in a paged query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries per page.
+	// The maximum number of entries to return on each page in a paged query.
 	//
 	// example:
 	//

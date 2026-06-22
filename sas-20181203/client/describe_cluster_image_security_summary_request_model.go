@@ -30,88 +30,88 @@ type iDescribeClusterImageSecuritySummaryRequest interface {
 }
 
 type DescribeClusterImageSecuritySummaryRequest struct {
-	// The ID of the cluster.
+	// The cluster ID.
 	//
 	// example:
 	//
 	// c3aaf6c8085f84791882eef200cd2****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The key of the condition that is used to query containers. Valid values:
+	// The container search field. Valid values:
 	//
-	// 	- **instanceId**: the instance ID of the container
+	// - **instanceId**: container instance ID
 	//
-	// 	- **clusterId**: the ID of the cluster
+	// - **clusterId**: cluster ID
 	//
-	// 	- **regionId**: the region ID of the container
+	// - **regionId**: container region
 	//
-	// 	- **clusterName**: the name of the cluster
+	// - **clusterName**: cluster name
 	//
-	// 	- **image**: the name of the image
+	// - **image**: image name
 	//
-	// 	- **imageRepoName**: the name of the image repository
+	// - **imageRepoName**: image repository name
 	//
-	// 	- **imageRepoNamespace**: the namespace to which the image repository belongs
+	// - **imageRepoNamespace**: image repository namespace
 	//
-	// 	- **imageRepoTag**: the tag that is added to the image repository
+	// - **imageRepoTag**: image repository tag
 	//
-	// 	- **imageDigest**: the digest of the image
+	// - **imageDigest**: image digest
 	//
-	// 	- **clusterType**: the type of the cluster
+	// - **clusterType**: cluster type
 	//
-	// 	- **hostIp**: the public IP address
+	// - **hostIp**: public IP address
 	//
-	// 	- **pod**: the pod
+	// - **pod**: pod
 	//
-	// 	- **podIp**: the IP address of the pod
+	// - **podIp**: pod IP address
 	//
-	// 	- **containerId**: the ID of the container
+	// - **containerId**: container ID
 	//
-	// 	- **vulStatus**: whether vulnerabilities are detected on the container
+	// - **vulStatus**: whether the container has vulnerabilities
 	//
-	// 	- **alarmStatus**: whether alerts are generated for the container
+	// - **alarmStatus**: whether the container has security alerts
 	//
-	// 	- **riskStatus**: whether risks are detected on the container
+	// - **riskStatus**: whether the container has risks
 	//
-	// 	- **riskLevel**: the risk level of the container
+	// - **riskLevel**: container risk level
 	//
-	// 	- **containerScope**: the type of the container
+	// - **containerScope**: container type.
 	//
 	// example:
 	//
 	// clusterId
 	ContainerFieldName *string `json:"ContainerFieldName,omitempty" xml:"ContainerFieldName,omitempty"`
-	// The value of the condition that is used to query containers.
+	// The value of the container search field.
 	//
 	// example:
 	//
 	// c2ac28b2d0c734df29a21d29f18ac****
 	ContainerFieldValue *string `json:"ContainerFieldValue,omitempty" xml:"ContainerFieldValue,omitempty"`
-	// The digest of the image.
+	// The image digest.
 	//
 	// example:
 	//
 	// 402902de6480a020b9f29e7105e77b8a218bc1cccbc3935d3b38c8ea9ba2****
 	ImageDigest *string `json:"ImageDigest,omitempty" xml:"ImageDigest,omitempty"`
-	// The name of the image repository.
+	// The image repository name.
 	//
 	// example:
 	//
 	// repo
 	ImageRepoName *string `json:"ImageRepoName,omitempty" xml:"ImageRepoName,omitempty"`
-	// The namespace of the image repository.
+	// The image repository namespace.
 	//
 	// example:
 	//
 	// namespace
 	ImageRepoNamespace *string `json:"ImageRepoNamespace,omitempty" xml:"ImageRepoNamespace,omitempty"`
-	// The tag of the image.
+	// The image tag.
 	//
 	// example:
 	//
 	// 3.54.0.1
 	ImageTag        *string `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The source IP address.
+	// The IP address of the access source.
 	//
 	// example:
 	//

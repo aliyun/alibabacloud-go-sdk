@@ -30,11 +30,11 @@ type DeleteImageVulWhitelistResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Indicates whether the image vulnerability whitelist is deleted. Valid values:
+	// Indicates whether the operation is successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Successful.
 	//
-	// 	- **false**
+	// - **false**: Failed.
 	//
 	// example:
 	//
@@ -58,11 +58,11 @@ type DeleteImageVulWhitelistResponseBody struct {
 	//
 	// F8B6F758-BCD4-597A-8A2C-DA5A552C****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the API call is successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Successful.
 	//
-	// 	- **false**
+	// - **false**: Failed.
 	//
 	// example:
 	//

@@ -28,43 +28,43 @@ type iDescribeCustomizedDictUploadInfoResponseBody interface {
 }
 
 type DescribeCustomizedDictUploadInfoResponseBody struct {
-	// The AccessKey ID that is required to access the OSS object.
+	// The AccessKey ID required to access the file.
 	//
 	// example:
 	//
 	// yourAccessKeyID
 	Accessid *string `json:"Accessid,omitempty" xml:"Accessid,omitempty"`
-	// The time when the OSS signature expires. This value is a UNIX timestamp.
+	// The expiration time of the authentication, in timestamp format.
 	//
 	// example:
 	//
 	// 1719921470
 	Expire *string `json:"Expire,omitempty" xml:"Expire,omitempty"`
-	// The OSS endpoint.
+	// The OSS domain name.
 	//
 	// example:
 	//
 	// https://aegis-update-static-file.oss-cn-hangzhou.aliyuncs.com
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// The key of the OSS object.
+	// The OSS file key.
 	//
 	// example:
 	//
 	// HC_CUSTOMIZED_DICT/176618589410****.tmp
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The policy of the OSS bucket.
+	// The bucket policy of the OSS bucket.
 	//
 	// example:
 	//
 	// eyJleHBpcmF0aW9uIjoiMjAyNC0wNy0wMlQxMTo1Nzo1MC44MzJaIiwiY29uZGl0aW9ucyI6W1siY29udGVudC1sZW5ndGgtcmFuZ2UiLDAsNDA5NjBdLFsiZXEiLCIka2V5IiwiSENfQ1VTVE9NSVpFRF9ESUNUXC8xNzY2MTg1ODk0MTA0Njc1LnRtc****
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	// The request ID.
+	// The request ID. Alibaba Cloud generates a unique identifier for each API request. You can use this identifier to troubleshoot issues.
 	//
 	// example:
 	//
 	// BDEDEEE7-AC25-559E-8C12-5168B139****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The security token.
+	// The Security Token Service (STS) token.
 	//
 	// example:
 	//

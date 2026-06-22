@@ -32,7 +32,7 @@ type DescribeAlarmEventStackInfoRequest struct {
 	//
 	// example:
 	//
-	// Mining program
+	// Variable Trojan
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
 	// The language of the content within the request and response. Default value: **zh**. Valid values:
 	//

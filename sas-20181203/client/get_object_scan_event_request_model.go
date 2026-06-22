@@ -24,9 +24,9 @@ type GetObjectScanEventRequest struct {
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
 	// The language of the content in the request and response. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese.
+	// - **zh**: Chinese.
 	//
-	// 	- **en**: English.
+	// - **en**: English.
 	//
 	// example:
 	//

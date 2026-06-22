@@ -28,71 +28,67 @@ type iDescribeEmgVulItemRequest interface {
 }
 
 type DescribeEmgVulItemRequest struct {
-	// The check method. Valid values:
+	// The check type. Valid values:
 	//
-	// 	- **0**: proof of concept (POC) verification
+	// - **0**: POC verification
 	//
-	// 	- **1**: version comparison
+	// - **1**: version comparison.
 	//
 	// example:
 	//
 	// 0
 	CheckType *int32 `json:"CheckType,omitempty" xml:"CheckType,omitempty"`
-	// The number of the page to return. Default value: **1**.
+	// The page number of the first page to return. Default value: **1**, which indicates that query results are displayed starting from page 1.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language type for the request and response messages. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of entries to return on each page. Default value: **10**.
+	// The number of entries per page in a paged query. Default value: **10**, which indicates that 10 emergency vulnerability entries are displayed per page. Maximum value: 50.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The Alibaba Cloud account ID of the member in the resource directory.
+	// The ID of the member accounts in the resource directory (Alibaba Cloud account).
 	//
-	// >  You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain the IDs.
+	// > Invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// 127608589417****
 	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
-	// Specifies whether the vulnerability poses risks.\\
+	// The risk status of the vulnerabilities to query. If this parameter is not specified, vulnerabilities of all risk statuses are returned, including those with risks and those without risks. Valid values:
 	//
-	// If you do not specify this parameter, all vulnerabilities are queried regardless of whether the vulnerabilities pose risks. Valid values:
+	// - **y**: at risk
 	//
-	// 	- **y**: yes
-	//
-	// 	- **n**: no
+	// - **n**: not at risk.
 	//
 	// example:
 	//
 	// y
 	RiskStatus *string `json:"RiskStatus,omitempty" xml:"RiskStatus,omitempty"`
-	// The method that is used to detect the vulnerability.\\
+	// The detection method of the vulnerabilities to query. If this parameter is not specified, vulnerabilities detected by all methods are returned by default, including version detection and network scanning. Valid values:
 	//
-	// If you do not specify this parameter, all vulnerabilities are queried regardless of which method is used. Valid values:
+	// - **python**: version detection (server software version detection). Detects whether your server has disclosed software vulnerabilities.
 	//
-	// 	- **python**: The Version method is used. Security Center checks the software versions of your server to check whether disclosed vulnerabilities exist on your server.
-	//
-	// 	- **scan**: The Network Scan method is used. Security Center analyzes the access traffic to your server over the Internet to check whether vulnerabilities exist on your server.
+	// - **scan**: network scanning (network traffic detection). Detects whether your public assets (Internet-accessible servers) have vulnerabilities.
 	//
 	// example:
 	//
 	// python
 	ScanType *string `json:"ScanType,omitempty" xml:"ScanType,omitempty"`
-	// The name of the urgent vulnerability.
+	// The name of the emergency vulnerability to query.
 	//
 	// example:
 	//

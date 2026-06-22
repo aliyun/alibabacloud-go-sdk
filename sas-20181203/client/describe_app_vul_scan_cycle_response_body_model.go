@@ -16,13 +16,13 @@ type iDescribeAppVulScanCycleResponseBody interface {
 }
 
 type DescribeAppVulScanCycleResponseBody struct {
-	// The scan cycle for application vulnerabilities.
+	// The application vulnerability scanning epoch. Valid values:
 	//
-	// 	- 1week
+	// - 1week
 	//
-	// 	- 2weeks
+	// - 2weeks
 	//
-	// 	- 3days
+	// - 3days
 	//
 	// example:
 	//

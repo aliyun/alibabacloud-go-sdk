@@ -16,9 +16,9 @@ type iGetAppNetworkResponseBody interface {
 }
 
 type GetAppNetworkResponseBody struct {
-	// The information about the application network topology.
+	// The application network topology information.
 	AppNetwork *GetAppNetworkResponseBodyAppNetwork `json:"AppNetwork,omitempty" xml:"AppNetwork,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -62,11 +62,11 @@ func (s *GetAppNetworkResponseBody) Validate() error {
 }
 
 type GetAppNetworkResponseBodyAppNetwork struct {
-	// The information about the topology edge.
+	// The topology edge information.
 	Edge []*GetAppNetworkResponseBodyAppNetworkEdge `json:"Edge,omitempty" xml:"Edge,omitempty" type:"Repeated"`
 	// The namespace.
 	Namespace []*GetAppNetworkResponseBodyAppNetworkNamespace `json:"Namespace,omitempty" xml:"Namespace,omitempty" type:"Repeated"`
-	// The information about the application node.
+	// The application node information.
 	Node []*GetAppNetworkResponseBodyAppNetworkNode `json:"Node,omitempty" xml:"Node,omitempty" type:"Repeated"`
 }
 
@@ -137,45 +137,45 @@ func (s *GetAppNetworkResponseBodyAppNetwork) Validate() error {
 }
 
 type GetAppNetworkResponseBodyAppNetworkEdge struct {
-	// The ID of the destination node.
+	// The destination node ID.
 	//
 	// example:
 	//
 	// 102
 	DstNodeId *string `json:"DstNodeId,omitempty" xml:"DstNodeId,omitempty"`
-	// The type of the destination node. Valid values:
+	// The destination node type. Valid values:
 	//
-	// 	- **app**: an application
+	// - **app**: application.
 	//
-	// 	- **internet**: a network node in another cluster
+	// - **internet**: external network node.
 	//
 	// example:
 	//
 	// app
 	DstNodeType *string `json:"DstNodeType,omitempty" xml:"DstNodeType,omitempty"`
-	// The ID of the edge.
+	// The edge ID.
 	//
 	// example:
 	//
 	// 3534
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The number of the destination port.
+	// The destination port number.
 	//
 	// example:
 	//
 	// 8080
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The ID of the source node.
+	// The source node ID.
 	//
 	// example:
 	//
 	// 101
 	SrcNodeId *string `json:"SrcNodeId,omitempty" xml:"SrcNodeId,omitempty"`
-	// The type of the source node. Valid values:
+	// The source node type. Valid values:
 	//
-	// 	- **app**: an application
+	// - **app**: application.
 	//
-	// 	- **internet**: a network node in another cluster
+	// - **internet**: external network node.
 	//
 	// example:
 	//
@@ -250,13 +250,13 @@ func (s *GetAppNetworkResponseBodyAppNetworkEdge) Validate() error {
 }
 
 type GetAppNetworkResponseBodyAppNetworkNamespace struct {
-	// The ID of the namespace.
+	// The namespace ID.
 	//
 	// example:
 	//
 	// 1
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the custom namespace.
+	// The namespace name.
 	//
 	// example:
 	//
@@ -295,21 +295,21 @@ func (s *GetAppNetworkResponseBodyAppNetworkNamespace) Validate() error {
 }
 
 type GetAppNetworkResponseBodyAppNetworkNode struct {
-	// The list of the container IDs.
+	// The list of container IDs.
 	ContainerIds []*string `json:"ContainerIds,omitempty" xml:"ContainerIds,omitempty" type:"Repeated"`
-	// The ID of the node.
+	// The node ID.
 	//
 	// example:
 	//
 	// 1274
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the node.
+	// The node name.
 	//
 	// example:
 	//
 	// console
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the namespace.
+	// The namespace ID.
 	//
 	// example:
 	//
@@ -317,25 +317,25 @@ type GetAppNetworkResponseBodyAppNetworkNode struct {
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 	// The risk level. Valid values:
 	//
-	// 	- **3**: high
+	// - **3**: High.
 	//
-	// 	- **2**: medium
+	// - **2**: Medium.
 	//
-	// 	- **1**: low
+	// - **1**: Low.
 	//
-	// 	- **0**: warning
+	// - **0**: Safe.
 	//
-	// 	- **-1**: unknown
+	// - **-1**: Unknown.
 	//
 	// example:
 	//
 	// 0
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The type of the node. Valid values:
+	// The node type. Valid values:
 	//
-	// 	- **app**: an application
+	// - **app**: application
 	//
-	// 	- **internet**: a network node in another cluster
+	// - **internet**: external network node.
 	//
 	// example:
 	//

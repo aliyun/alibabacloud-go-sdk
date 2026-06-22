@@ -26,13 +26,13 @@ type iDescribeWebLockStatusResponseBody interface {
 }
 
 type DescribeWebLockStatusResponseBody struct {
-	// The total quota that you purchase for web tamper proofing.
+	// The total number of purchased tamper-proofing authorizations.
 	//
 	// example:
 	//
 	// 32
 	AuthCount *int32 `json:"AuthCount,omitempty" xml:"AuthCount,omitempty"`
-	// The associated tamper proofing quota.
+	// The number of bound tamper-proofing authorizations.
 	//
 	// example:
 	//
@@ -50,13 +50,13 @@ type DescribeWebLockStatusResponseBody struct {
 	//
 	// 2
 	DirCount *int32 `json:"DirCount,omitempty" xml:"DirCount,omitempty"`
-	// The timestamp generated when the quota for tamper proofing expires. Unit: millisecond.
+	// The timestamp when the tamper-proofing authorization expires. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1688090851000
 	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//

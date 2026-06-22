@@ -70,9 +70,9 @@ type ListCheckResultRequest struct {
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// Specifies whether the check item supports custom parameters. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -82,55 +82,55 @@ type ListCheckResultRequest struct {
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	// The asset type of the cloud services. Valid values:
 	//
-	// 	- **ECS**: Elastic Compute Service (ECS)
+	// - **ECS**: Elastic Compute Service (ECS)
 	//
-	// 	- **SLB**: Server Load Balancer (SLB)
+	// - **SLB**: Server Load Balancer (SLB)
 	//
-	// 	- **RDS**: ApsaraDB RDS
+	// - **RDS**: ApsaraDB RDS
 	//
-	// 	- **MONGODB**: ApsaraDB for MongoDB (MongoDB)
+	// - **MONGODB**: ApsaraDB for MongoDB (MongoDB)
 	//
-	// 	- **KVSTORE**: ApsaraDB for Redis (Redis)
+	// - **KVSTORE**: ApsaraDB for Redis (Redis)
 	//
-	// 	- **ACR**: Container Registry
+	// - **ACR**: Container Registry
 	//
-	// 	- **CSK**: Container Service for Kubernetes (ACK)
+	// - **CSK**: Container Service for Kubernetes (ACK)
 	//
-	// 	- **VPC**: Virtual Private Cloud (VPC)
+	// - **VPC**: Virtual Private Cloud (VPC)
 	//
-	// 	- **ACTIONTRAIL**: ActionTrail
+	// - **ACTIONTRAIL**: ActionTrail
 	//
-	// 	- **CDN**: Alibaba Cloud CDN (CDN)
+	// - **CDN**: Alibaba Cloud CDN (CDN)
 	//
-	// 	- **CAS**: Certificate Management Service (formerly SSL Certificates Service)
+	// - **CAS**: Certificate Management Service (formerly SSL Certificates Service)
 	//
-	// 	- **RDC**: Apsara Devops
+	// - **RDC**: Apsara Devops
 	//
-	// 	- **RAM**: Resource Access Management (RAM)
+	// - **RAM**: Resource Access Management (RAM)
 	//
-	// 	- **DDOS**: Anti-DDoS
+	// - **DDOS**: Anti-DDoS
 	//
-	// 	- **WAF**: Web Application Firewall (WAF)
+	// - **WAF**: Web Application Firewall (WAF)
 	//
-	// 	- **OSS**: Object Storage Service (OSS)
+	// - **OSS**: Object Storage Service (OSS)
 	//
-	// 	- **POLARDB**: PolarDB
+	// - **POLARDB**: PolarDB
 	//
-	// 	- **POSTGRESQL**: ApsaraDB RDS for PostgreSQL
+	// - **POSTGRESQL**: ApsaraDB RDS for PostgreSQL
 	//
-	// 	- **MSE**: Microservices Engine (MSE)
+	// - **MSE**: Microservices Engine (MSE)
 	//
-	// 	- **NAS**: File Storage NAS (NAS)
+	// - **NAS**: File Storage NAS (NAS)
 	//
-	// 	- **SDDP**: Sensitive Data Discovery and Protection (SDDP)
+	// - **SDDP**: Sensitive Data Discovery and Protection (SDDP)
 	//
-	// 	- **EIP**: Elastic IP Address (EIP)
+	// - **EIP**: Elastic IP Address (EIP)
 	InstanceTypes []*string `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Repeated"`
 	// The language of the content within the request and response. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//
@@ -138,9 +138,9 @@ type ListCheckResultRequest struct {
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// Specifies whether fixing is supported. Valid values:
 	//
-	// 	- **SUPPORT_REPAIR**
+	// - **SUPPORT_REPAIR**
 	//
-	// 	- **NOT_SUPPORT_REPAIR**
+	// - **NOT_SUPPORT_REPAIR**
 	OperationTypes []*string `json:"OperationTypes,omitempty" xml:"OperationTypes,omitempty" type:"Repeated"`
 	// The number of entries per page. Maximum value: 100.
 	//
@@ -150,9 +150,9 @@ type ListCheckResultRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region ID of the instance. Valid values:
 	//
-	// 	- **cn-hangzhou**: International
+	// - **cn-hangzhou**: International
 	//
-	// 	- **ap-southeast-1**: Singapore
+	// - **ap-southeast-1**: Singapore
 	//
 	// example:
 	//
@@ -162,7 +162,7 @@ type ListCheckResultRequest struct {
 	RequirementIds []*int64 `json:"RequirementIds,omitempty" xml:"RequirementIds,omitempty" type:"Repeated"`
 	// The Alibaba Cloud account ID of the member in the resource directory.
 	//
-	// >  You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain the IDs.
+	// > You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain the IDs.
 	//
 	// example:
 	//
@@ -170,31 +170,31 @@ type ListCheckResultRequest struct {
 	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The risk levels of check items. Separate multiple risk levels with commas (,). Valid values:
 	//
-	// 	- **HIGH**
+	// - **HIGH**
 	//
-	// 	- **MEDIUM**
+	// - **MEDIUM**
 	//
-	// 	- **LOW**
+	// - **LOW**
 	RiskLevels []*string `json:"RiskLevels,omitempty" xml:"RiskLevels,omitempty" type:"Repeated"`
 	// The types of the conditions based on which check items are sorted. Valid values:
 	//
-	// 	- **RISK_LEVEL**: risk level
+	// - **RISK_LEVEL**: risk level
 	//
-	// 	- **STATUS**: status
+	// - **STATUS**: status
 	SortTypes []*string `json:"SortTypes,omitempty" xml:"SortTypes,omitempty" type:"Repeated"`
 	// The standard IDs.
 	StandardIds []*int64 `json:"StandardIds,omitempty" xml:"StandardIds,omitempty" type:"Repeated"`
 	// The statuses of check items. Separate multiple statuses with commas (,). Valid values:
 	//
-	// 	- **PASS**
+	// - **PASS**
 	//
-	// 	- **NOT_PASS**
+	// - **NOT_PASS**
 	//
-	// 	- **CHECKING**
+	// - **CHECKING**
 	//
-	// 	- **NOT_CHECK**
+	// - **NOT_CHECK**
 	//
-	// 	- **WHITELIST**
+	// - **WHITELIST**
 	Statuses []*string `json:"Statuses,omitempty" xml:"Statuses,omitempty" type:"Repeated"`
 	// Delete the custom category in a custom inspection item.
 	TaskSources []*string `json:"TaskSources,omitempty" xml:"TaskSources,omitempty" type:"Repeated"`
@@ -202,13 +202,13 @@ type ListCheckResultRequest struct {
 	Types []*string `json:"Types,omitempty" xml:"Types,omitempty" type:"Repeated"`
 	// The cloud service providers. Valid values:
 	//
-	// 	- **ALIYUN**: Alibaba Cloud
+	// - **ALIYUN**: Alibaba Cloud
 	//
-	// 	- **TENCENT**: Tencent Cloud
+	// - **TENCENT**: Tencent Cloud
 	//
-	// 	- **AWS**: Amazon Web Services (AWS)
+	// - **AWS**: Amazon Web Services (AWS)
 	//
-	// 	- **MICROSOFT**: Microsoft Azure
+	// - **MICROSOFT**: Microsoft Azure
 	Vendors []*string `json:"Vendors,omitempty" xml:"Vendors,omitempty" type:"Repeated"`
 }
 

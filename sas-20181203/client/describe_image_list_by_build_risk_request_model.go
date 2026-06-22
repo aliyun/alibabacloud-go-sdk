@@ -28,23 +28,23 @@ type iDescribeImageListByBuildRiskRequest interface {
 }
 
 type DescribeImageListByBuildRiskRequest struct {
-	// The attribute value of the condition parameter.
+	// The value of the condition parameter.
 	//
 	// example:
 	//
 	// sas
 	Criteria *string `json:"Criteria,omitempty" xml:"Criteria,omitempty"`
-	// The property name of the condition parameters. Values:
+	// The name of the condition parameter. Valid values:
 	//
-	//  - **RepoNamespace**: Namespace.
+	// - **RepoNamespace**: namespace.
 	//
-	//  - **RepoName**: Repository name.
+	// - **RepoName**: repository name.
 	//
 	// example:
 	//
 	// RepoNamespace
 	CriteriaType *string `json:"CriteriaType,omitempty" xml:"CriteriaType,omitempty"`
-	// The page number. Default value: **1**.
+	// The page number of the current page in paging query. Default value: **1**.
 	//
 	// example:
 	//
@@ -52,23 +52,23 @@ type DescribeImageListByBuildRiskRequest struct {
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The language of the content within the request and response. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of entries per page. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+	// The maximum number of entries per page in paging query. Default value: 20. If you leave this parameter empty, 20 entries are returned.
 	//
-	// >  We recommend that you do not leave this parameter empty.
+	// > Do not leave PageSize empty.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The key of the risk. You can call the [DescribeImageBuildRiskList](~~~~) operation to obtain the value of RiskKey.
+	// The key of the build risk rule. You can call the [DescribeImageBuildRiskList](~~~~) operation to obtain the RiskKey.
 	//
 	// example:
 	//
@@ -76,23 +76,23 @@ type DescribeImageListByBuildRiskRequest struct {
 	RiskKey *string `json:"RiskKey,omitempty" xml:"RiskKey,omitempty"`
 	// The risk level. Valid values:
 	//
-	// 	- **high**
+	// - **high**
 	//
-	// 	- **medium**
+	// - **medium**
 	//
-	// 	- **low**
+	// - **low**.
 	//
 	// example:
 	//
 	// medium
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The status of the alert event. Valid values:
+	// The status of the alert event to query. Valid values:
 	//
-	// 	- **0**: unhandled.
+	// - **0**: Unhandled.
 	//
-	// 	- **1**: ignored.
+	// - **1**: Ignored.
 	//
-	// 	- **2**: false positive.
+	// - **2**: False positive.
 	//
 	// example:
 	//

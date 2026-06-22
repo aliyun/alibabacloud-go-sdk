@@ -42,59 +42,106 @@ type iListFileProtectClientEventRequest interface {
 }
 
 type ListFileProtectClientEventRequest struct {
+	// The list of alert notification levels.
 	AlertLevels []*int32 `json:"AlertLevels,omitempty" xml:"AlertLevels,omitempty" type:"Repeated"`
+	// The page number of the current page when paging is used in a paged query.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The end timestamp.
+	//
 	// example:
 	//
 	// 1650470399999
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The file path.
+	//
 	// example:
 	//
 	// /etc/pam****
 	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
+	// The ID of the asset instance.
+	//
 	// example:
 	//
 	// i-bp1fu4aqltf1huhc****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the asset instance.
+	//
 	// example:
 	//
 	// ca_cpm_****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The public IP address.
+	//
 	// example:
 	//
 	// 120.27.XX.XX
 	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	// The private IP address.
+	//
 	// example:
 	//
 	// 172.26.XX.XX
 	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
+	// The type of operation performed on the file. Valid values:
+	//
+	// - **DELETE**: deletes the file.
+	//
+	// - **WRITE**: writes to the file.
+	//
+	// - **READ**: reads the file.
+	//
+	// - **RENAME**: renames the file.
+	//
+	// - **CHOWN**: changes the file owner and associated group.
+	//
 	// example:
 	//
 	// READ
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	// The maximum number of entries per page when paging is used in a paged query.
+	//
 	// example:
 	//
 	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The process path.
+	//
 	// example:
 	//
 	// c:/windows/system32/i****
 	ProcPath *string `json:"ProcPath,omitempty" xml:"ProcPath,omitempty"`
+	// The name of the configuration rule.
+	//
 	// example:
 	//
 	// text-001
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The start time.
+	//
 	// example:
 	//
 	// 1650470399999
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The event status. Valid values:
+	//
+	// - **0**: Unhandled.
+	//
+	// - **1**: Handled.
+	//
+	// - **2**: Whitelisted.
+	//
 	// example:
 	//
 	// 0
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The UUID of the server to query.
+	//
+	// > Call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to obtain this parameter.
+	//
 	// example:
 	//
 	// 4fe8e1cd-3c37-4851-b9de-124da32c****

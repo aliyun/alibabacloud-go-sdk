@@ -20,9 +20,9 @@ type iListOperationProcessDetailResponseBody interface {
 type ListOperationProcessDetailResponseBody struct {
 	// The pagination information.
 	PageInfo *ListOperationProcessDetailResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	// The information about the operation subtasks.
+	// The list of operation subtask information.
 	ProcessDetails []*ListOperationProcessDetailResponseBodyProcessDetails `json:"ProcessDetails,omitempty" xml:"ProcessDetails,omitempty" type:"Repeated"`
-	// The request ID.
+	// The unique request ID.
 	//
 	// example:
 	//
@@ -84,19 +84,19 @@ func (s *ListOperationProcessDetailResponseBody) Validate() error {
 }
 
 type ListOperationProcessDetailResponseBodyPageInfo struct {
-	// The number of entries returned on the current page.
+	// The number of entries on the current page.
 	//
 	// example:
 	//
 	// 10
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The page number.
+	// The page number of the current page in a paged query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
@@ -159,67 +159,67 @@ func (s *ListOperationProcessDetailResponseBodyPageInfo) Validate() error {
 }
 
 type ListOperationProcessDetailResponseBodyProcessDetails struct {
-	// The subtype of the asset associated with the operation subtask.
+	// The asset subtype associated with the operation subtask.
 	//
 	// example:
 	//
 	// 1
 	AssetSubType *int32 `json:"AssetSubType,omitempty" xml:"AssetSubType,omitempty"`
-	// The type of the asset associated with the operation subtask.
+	// The asset type associated with the operation subtask.
 	//
 	// example:
 	//
 	// 8
 	AssetType *int32 `json:"AssetType,omitempty" xml:"AssetType,omitempty"`
-	// The vendor of the asset associated with the operation subtask.
+	// The asset vendor associated with the operation subtask.
 	//
 	// example:
 	//
 	// 0
 	AssetVendor *int32 `json:"AssetVendor,omitempty" xml:"AssetVendor,omitempty"`
-	// The check items associated with the operation subtask.
+	// The list of check items associated with the operation subtask.
 	Checks []*ListOperationProcessDetailResponseBodyProcessDetailsChecks `json:"Checks,omitempty" xml:"Checks,omitempty" type:"Repeated"`
-	// The timestamp when the task was created. Unit: milliseconds.
+	// The timestamp when the task was created, in milliseconds.
 	//
 	// example:
 	//
 	// 1706544199000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the operation subtask.
+	// The operation subtask ID.
 	//
 	// example:
 	//
 	// fb4bcd41-a916-46bc-ab1a-65fd383be***
 	DetailTaskId *string `json:"DetailTaskId,omitempty" xml:"DetailTaskId,omitempty"`
-	// The end timestamp of the operation subtask. Unit: milliseconds.
+	// The timestamp when the operation subtask ended, in milliseconds.
 	//
 	// example:
 	//
 	// 1706544199000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The start timestamp of the operation subtask. Unit: milliseconds.
+	// The timestamp when the operation subtask started, in milliseconds.
 	//
 	// example:
 	//
 	// 1730335622000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The subtask status code. Enumerated values:
+	// The operation subtask status code. Valid values:
 	//
-	// 	- 0: not started.
+	// - 0: not started.
 	//
-	// 	- 1: running.
+	// - 1: checking.
 	//
-	// 	- 2: successful.
+	// - 2: succeeded.
 	//
-	// 	- 3: times out.
+	// - 3: timed out.
 	//
-	// 	- 4: failed.
+	// - 4: failed.
 	//
 	// example:
 	//
 	// 0
 	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
-	// The ID of the operation subtask.
+	// The operation subtask ID.
 	//
 	// example:
 	//

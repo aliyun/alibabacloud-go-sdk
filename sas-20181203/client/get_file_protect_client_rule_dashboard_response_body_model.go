@@ -16,6 +16,7 @@ type iGetFileProtectClientRuleDashboardResponseBody interface {
 }
 
 type GetFileProtectClientRuleDashboardResponseBody struct {
+	// The data returned when the API call is successful.
 	Data *GetFileProtectClientRuleDashboardResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -61,18 +62,26 @@ func (s *GetFileProtectClientRuleDashboardResponseBody) Validate() error {
 }
 
 type GetFileProtectClientRuleDashboardResponseBodyData struct {
+	// The total number of web tamper-proofing licenses.
+	//
 	// example:
 	//
 	// 5
 	AuthTotal *string `json:"AuthTotal,omitempty" xml:"AuthTotal,omitempty"`
+	// The number of bound tamper-proofing licenses.
+	//
 	// example:
 	//
 	// 4
 	BindCount *int32 `json:"BindCount,omitempty" xml:"BindCount,omitempty"`
+	// The total number of web tamper-proofing rules.
+	//
 	// example:
 	//
 	// 3
 	ProtectedDirectoriesCount *int32 `json:"ProtectedDirectoriesCount,omitempty" xml:"ProtectedDirectoriesCount,omitempty"`
+	// The total number of online web tamper-proofing clients.
+	//
 	// example:
 	//
 	// 12

@@ -22,7 +22,7 @@ type DescribeCanFixVulListResponseBody struct {
 	//
 	// 1408FDB3-46F4-513C-9918-FE7D356DF048
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the vulnerability.
+	// The vulnerability information returned.
 	VulRecords []*DescribeCanFixVulListResponseBodyVulRecords `json:"VulRecords,omitempty" xml:"VulRecords,omitempty" type:"Repeated"`
 }
 
@@ -72,21 +72,21 @@ type DescribeCanFixVulListResponseBodyVulRecords struct {
 	//
 	// CVE-2018-25010:libwebp up to 1.0.0 ApplyFilter out-of-bounds read
 	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
-	// Indicates whether the vulnerability can be fixed in the Security Center console. Valid values:
+	// Indicates whether the vulnerability can be fixed in the console. Valid values:
 	//
-	// 	- **yes**
+	// - **yes**: Fixable.
 	//
-	// 	- **no**
+	// - **no**: Not fixable.
 	//
 	// example:
 	//
 	// yes
 	CanFix *string `json:"CanFix,omitempty" xml:"CanFix,omitempty"`
-	// Indicates whether the packages of the software that has the vulnerability can be upgraded by using Security Center. Valid values:
+	// Specifies whether the software package that causes the vulnerability can be upgraded through Security Center. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Supported.
 	//
-	// 	- **false**
+	// - **false**: Not supported.
 	//
 	// example:
 	//
@@ -98,7 +98,7 @@ type DescribeCanFixVulListResponseBodyVulRecords struct {
 	//
 	// c08d5fc1a329a4b88950a253d082f1****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The name of the cluster.
+	// The cluster name.
 	//
 	// example:
 	//
@@ -110,27 +110,27 @@ type DescribeCanFixVulListResponseBodyVulRecords struct {
 	//
 	// 04d20e98c8e2c93b7b864372084320a15a58c8671e53c972ce3a71d9c163****
 	ContainerId *string `json:"ContainerId,omitempty" xml:"ContainerId,omitempty"`
-	// The extended information about the vulnerability.
+	// The extended content of the vulnerability information.
 	ExtendContentJson *DescribeCanFixVulListResponseBodyVulRecordsExtendContentJson `json:"ExtendContentJson,omitempty" xml:"ExtendContentJson,omitempty" type:"Struct"`
-	// The timestamp generated when the vulnerability was first detected. Unit: milliseconds.
+	// The timestamp when the vulnerability was first detected. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1620752053000
 	FirstTs *int64 `json:"FirstTs,omitempty" xml:"FirstTs,omitempty"`
-	// The name of the image.
+	// The image name.
 	//
 	// example:
 	//
 	// registry.cn-wulanchabu.aliyuncs.com/sas_test/huxin-test-001:nuxeo6-conta****
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
-	// The unique identifier of the image.
+	// The unique identifier of the container image.
 	//
 	// example:
 	//
 	// 8f0fbdb41d3d1ade4ffdf21558443f4c03342010563bb8c43ccc09594d50****
 	ImageDigest *string `json:"ImageDigest,omitempty" xml:"ImageDigest,omitempty"`
-	// The name of the instance.
+	// The instance name.
 	//
 	// The name must be 3 to 64 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
 	//
@@ -150,27 +150,27 @@ type DescribeCanFixVulListResponseBodyVulRecords struct {
 	//
 	// 172.19.XX.XX
 	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	// The timestamp generated when the vulnerability was last detected. Unit: milliseconds.
+	// The timestamp when the vulnerability was last detected. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1620404763000
 	LastTs *int64 `json:"LastTs,omitempty" xml:"LastTs,omitempty"`
-	// The image layers.
+	// The list of container image layers.
 	Layers []*string `json:"Layers,omitempty" xml:"Layers,omitempty" type:"Repeated"`
 	// The source of the malicious file. Valid values:
 	//
-	// 	- **agentless**
+	// - **agentless**: Agentless detection.
 	//
-	// 	- **image**
+	// - **image**: Image.
 	//
-	// 	- **container**
+	// - **container**: Container.
 	//
 	// example:
 	//
 	// agentless
 	MaliciousSource *string `json:"MaliciousSource,omitempty" xml:"MaliciousSource,omitempty"`
-	// The timestamp generated when the vulnerability status was modified. Unit: milliseconds.
+	// The timestamp when the vulnerability status was modified. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -188,103 +188,103 @@ type DescribeCanFixVulListResponseBodyVulRecords struct {
 	//
 	// test-002
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The priority to fix the vulnerability. Valid values:
+	// The priority level of the vulnerability fix. Valid values:
 	//
-	// 	- **asap**: high
+	// - **asap**: High.
 	//
-	// 	- **later**: medium
+	// - **later**: Medium.
 	//
-	// 	- **nntf**: low
+	// - **nntf**: Low.
 	//
-	// >  We recommend that you fix high-level vulnerabilities as soon as possible.
+	// > Fix vulnerabilities with the **High*	- priority level as soon as possible.
 	//
 	// example:
 	//
 	// asap,later,nntf
 	Necessity *string `json:"Necessity,omitempty" xml:"Necessity,omitempty"`
-	// The name of the container group.
+	// The name of the pod.
 	//
 	// example:
 	//
 	// 22222-7xsqq
 	Pod *string `json:"Pod,omitempty" xml:"Pod,omitempty"`
-	// The vulnerability ID.
+	// The ID of the vulnerability.
 	//
 	// example:
 	//
 	// 782661
 	PrimaryId *int64 `json:"PrimaryId,omitempty" xml:"PrimaryId,omitempty"`
-	// The CVE IDs related to the vulnerability. Multiple CVE IDs are separated by commas (,).
+	// The list of CVEs associated with the vulnerability. Multiple values are separated by commas (,).
 	//
 	// example:
 	//
 	// CVE-2017-7518,CVE-2017-12188
 	Related *string `json:"Related,omitempty" xml:"Related,omitempty"`
-	// The name of the image repository.
+	// The name of the container image repository.
 	//
 	// example:
 	//
 	// varnish
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	// The namespace to which the image repository belongs.
+	// The namespace of the container image repository.
 	//
 	// example:
 	//
 	// 3rdparty
 	RepoNamespace *string `json:"RepoNamespace,omitempty" xml:"RepoNamespace,omitempty"`
-	// The timestamp generated when the scan task was performed. Unit: milliseconds.
+	// The timestamp of the scan. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1649814050000
 	ScanTime *int64 `json:"ScanTime,omitempty" xml:"ScanTime,omitempty"`
-	// The status of the vulnerability. Valid values:
+	// The fix status of the vulnerability. Valid values:
 	//
-	// 	- **1**: The vulnerability is unfixed.
+	// - **1**: Unfixed.
 	//
-	// 	- **4**: The vulnerability is being fixed.
+	// - **4**: Being fixed.
 	//
-	// 	- **7**: The vulnerability is fixed.
+	// - **7**: Fixed.
 	//
 	// example:
 	//
 	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tag that is added to the image.
+	// The tag of the container image.
 	//
 	// example:
 	//
 	// latest
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	// The ID of the asset that is scanned.
+	// The ID of the scan target.
 	//
 	// example:
 	//
 	// 300269
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
-	// The name of the asset that is scanned.
+	// The name of the scan target.
 	//
 	// example:
 	//
 	// source-test-obj-XM0Ma
 	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
-	// The type of the asset that is scanned. Valid values:
+	// The object type of the scan target. Valid values:
 	//
-	// 	- **IMAGE**
+	// - **IMAGE**: Container image.
 	//
-	// 	- **ECS_IMAGE**
+	// - **ECS_IMAGE**: Host image.
 	//
-	// 	- **ECS_SNAPSHOT**
+	// - **ECS_SNAPSHOT**: Snapshot.
 	//
 	// example:
 	//
 	// ECS_IMAGE
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	// The type of the vulnerability. Valid values:
+	// The vulnerability type. Valid values:
 	//
-	// 	- **cve**: system vulnerability
+	// - **cve**: system vulnerability
 	//
-	// 	- **sca**: application vulnerability
+	// - **sca**: application vulnerability.
 	//
 	// example:
 	//
@@ -619,13 +619,13 @@ type DescribeCanFixVulListResponseBodyVulRecordsExtendContentJson struct {
 	//
 	// debian
 	Os *string `json:"Os,omitempty" xml:"Os,omitempty"`
-	// The version of the operating system in the image.
+	// The release version of the operating system corresponding to the container image.
 	//
 	// example:
 	//
 	// 10.9
 	OsRelease *string `json:"OsRelease,omitempty" xml:"OsRelease,omitempty"`
-	// The RPM packages.
+	// The list of RPM packages.
 	RpmEntityList []*DescribeCanFixVulListResponseBodyVulRecordsExtendContentJsonRpmEntityList `json:"RpmEntityList,omitempty" xml:"RpmEntityList,omitempty" type:"Repeated"`
 }
 
@@ -678,25 +678,25 @@ func (s *DescribeCanFixVulListResponseBodyVulRecordsExtendContentJson) Validate(
 }
 
 type DescribeCanFixVulListResponseBodyVulRecordsExtendContentJsonRpmEntityList struct {
-	// The complete version number of the software package.
+	// The full version number of the software package.
 	//
 	// example:
 	//
 	// 3.10.0-693.2.2.el7
 	FullVersion *string `json:"FullVersion,omitempty" xml:"FullVersion,omitempty"`
-	// The SHA-256 value of the digest of the image layer.
+	// The SHA256 value of the container image layer digest.
 	//
 	// example:
 	//
 	// b1f5b9420803ad0657cf21566e3e20acc08581e7f22991249ef3aa80b8b1****
 	Layer *string `json:"Layer,omitempty" xml:"Layer,omitempty"`
-	// The information about the detected vulnerability.
+	// The details of the vulnerability match.
 	//
 	// example:
 	//
 	// python-perf version less than 0:3.10.0-693.21.1.el7
 	MatchDetail *string `json:"MatchDetail,omitempty" xml:"MatchDetail,omitempty"`
-	// The rule that is used to detect the vulnerability.
+	// The rule hits.
 	MatchList []*string `json:"MatchList,omitempty" xml:"MatchList,omitempty" type:"Repeated"`
 	// The name of the software package.
 	//
@@ -704,13 +704,13 @@ type DescribeCanFixVulListResponseBodyVulRecordsExtendContentJsonRpmEntityList s
 	//
 	// python-perf
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The path of the software that has the vulnerability.
+	// The path of the software that contains the vulnerability.
 	//
 	// example:
 	//
 	// /usr/lib64/python2.7/site-packages
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The command that is used to fix the vulnerability.
+	// The command to fix the vulnerability.
 	//
 	// example:
 	//

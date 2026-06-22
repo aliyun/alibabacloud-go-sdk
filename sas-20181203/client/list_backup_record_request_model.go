@@ -24,45 +24,45 @@ type iListBackupRecordRequest interface {
 }
 
 type ListBackupRecordRequest struct {
-	// The timestamp when the backup task ended. Unit: milliseconds.
+	// The backup end time. The value is a timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1699600611000
 	BackupEndTime *int64 `json:"BackupEndTime,omitempty" xml:"BackupEndTime,omitempty"`
-	// The timestamp when the backup task started. Unit: milliseconds.
+	// The backup start time. The value is a timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1699514211000
 	BackupStartTime *int64 `json:"BackupStartTime,omitempty" xml:"BackupStartTime,omitempty"`
-	// The page number. Default value: **1**. Pages start from page 1.
+	// The page number of the page to return. Default value: **1**, which indicates the first page.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The information that you want to use to identify the servers protected by the anti-ransomware policy. You can enter the IP address or ID of a server.
+	// The identification information of the server protected by the anti-ransomware policy that you want to query. You can enter the IP address or instance ID of the server.
 	//
 	// example:
 	//
 	// 192.168.XX.XX
 	MachineRemark *string `json:"MachineRemark,omitempty" xml:"MachineRemark,omitempty"`
-	// The number of entries per page. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+	// The maximum number of entries per page in a paged query. Default value: 20. If you leave this parameter empty, 20 entries are returned.
 	//
-	// >  We recommend that you do not leave this parameter empty.
+	// > Do not leave PageSize empty.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The backup task status. Valid values:
+	// The list of backup task statuses. Valid values:
 	//
-	// 	- **BACKUP_COMPLETE**: The backup task is successful.
+	// - **BACKUP_COMPLETE**: backup succeeded
 	//
-	// 	- **BACKUP_FAILED**: The backup task failed.
+	// - **BACKUP_FAILED**: backup failed
 	//
-	// 	- **PARTIAL_COMPLETE**: The backup task is partially successful.
+	// - **PARTIAL_COMPLETE**: partial backup succeeded.
 	StatusList []*string `json:"StatusList,omitempty" xml:"StatusList,omitempty" type:"Repeated"`
 }
 

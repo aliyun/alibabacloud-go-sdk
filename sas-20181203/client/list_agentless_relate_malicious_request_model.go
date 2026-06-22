@@ -22,7 +22,7 @@ type iListAgentlessRelateMaliciousRequest interface {
 }
 
 type ListAgentlessRelateMaliciousRequest struct {
-	// The number of the page to return.
+	// The page number of the current page in a paging query.
 	//
 	// This parameter is required.
 	//
@@ -30,23 +30,23 @@ type ListAgentlessRelateMaliciousRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The ID of the event.
+	// The event ID.
 	//
 	// example:
 	//
 	// 80****
 	EventId *int64 `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese.
+	// - **zh**: Chinese.
 	//
-	// 	- **en**: English.
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of entries to return on each page.
+	// The maximum number of entries per page in a paging query.
 	//
 	// This parameter is required.
 	//
@@ -54,11 +54,11 @@ type ListAgentlessRelateMaliciousRequest struct {
 	//
 	// 20
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The scenarios of batch handling. Valid values:
+	// The scenario for batch processing. Valid values:
 	//
-	// 	- same_file_md5: the same MD5 hash value.
+	// - same_file_md5: same file MD5.
 	//
-	// 	- default: the same alert type. This is the default value.
+	// - default (default value): same alerting type.
 	//
 	// example:
 	//

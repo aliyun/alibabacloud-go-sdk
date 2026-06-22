@@ -26,7 +26,7 @@ type AddPublishBatchRequest struct {
 	//
 	// example:
 	//
-	// test
+	// 批次1
 	BatchName *string `json:"BatchName,omitempty" xml:"BatchName,omitempty"`
 	// The interval between two release batches.
 	//

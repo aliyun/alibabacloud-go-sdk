@@ -16,13 +16,13 @@ type iCreateFileDetectResponseBody interface {
 }
 
 type CreateFileDetectResponseBody struct {
-	// The identifier of the file.
+	// The unique identifier of the file.
 	//
 	// example:
 	//
 	// 0a212417e65c26ff133cfff28f6c****
 	HashKey *string `json:"HashKey,omitempty" xml:"HashKey,omitempty"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The request ID.
 	//
 	// example:
 	//

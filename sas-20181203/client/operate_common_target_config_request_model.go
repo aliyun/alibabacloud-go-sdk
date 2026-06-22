@@ -24,35 +24,35 @@ type iOperateCommonTargetConfigRequest interface {
 }
 
 type OperateCommonTargetConfigRequest struct {
-	// The type of the image. Valid values:
+	// The target type of the image switch. Valid values:
 	//
-	// 	- **repoName**: the name of the image repository
+	// - **repoName**: repository name.
 	//
-	// 	- **repoNamespace**: the namespace of the image repository
+	// - **repoNamespace**: repository namespace name.
 	//
 	// example:
 	//
 	// repoName
 	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
-	// The name of the image repository or the namespace of the image repository.
+	// The repository name or repository namespace name.
 	//
 	// example:
 	//
 	// cafcmc-dev
 	FieldValue *string `json:"FieldValue,omitempty" xml:"FieldValue,omitempty"`
-	// The source IP address of the request.
+	// The IP address of the access source.
 	//
 	// example:
 	//
 	// 182.92.XXX.XXX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The configuration of proactive defense for your server. The value includes the following fields:
+	// The parameters for configuring proactive defense on servers. The following parameters are included:
 	//
-	// 	- **targetType**: specifies the dimension from which you manage proactive defense. UUIDs are supported. Set the value to **uuid**.
+	// - **targetType**: the dimension of the defense configuration. Currently, only the UUID dimension is supported. Fixed value: **uuid**.
 	//
-	// 	- **target**: specifies the UUID of the server for which you want to configure proactive defense.
+	// - **target**: the UUID of the server for which you want to configure proactive defense.
 	//
-	// 	- **flag**: specifies whether to enable or disable proactive defense for your server. Valid values are **add*	- and **del**. The value add indicates that proactive defense will be enabled for your server. The value del indicates that proactive defense will be disabled for your server.
+	// - **flag**: specifies whether to enable or disable proactive defense for the server. Valid values: **add*	- (enable) and **del*	- (disable).
 	//
 	// This parameter is required.
 	//
@@ -72,41 +72,41 @@ type OperateCommonTargetConfigRequest struct {
 	//
 	// ]
 	TargetOperations *string `json:"TargetOperations,omitempty" xml:"TargetOperations,omitempty"`
-	// The dimension based on which the asset is selected. Valid values:
+	// The Asset Type of the target. Valid values:
 	//
-	// 	- **uuid**: the UUID of the server
+	// - **uuid**: server UUID.
 	//
-	// 	- **Cluster**: the ID of the cluster
+	// - **Cluster**: cluster ID.
 	//
-	// 	- **image_repo**: the name of the image repository
+	// - **image_repo**: image repository name.
 	//
 	// example:
 	//
 	// uuid
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	// The type of the feature. Valid values:
+	// The switch type. Valid values:
 	//
-	// 	- **alidetect-scan-enable**: local file detection
+	// - **alidetect-scan-enable**: local file detection that performs detection only locally.
 	//
-	// 	- **ACTION-TRIAL-PERMISSION**: data delivery to ActionTrail
+	// - **ACTION-TRIAL-PERMISSION**: ActionTrail data delivery.
 	//
-	// 	- **alidetect**: local file detection engine
+	// - **alidetect**: local file detection engine.
 	//
-	// 	- **container_prevent_escape**: container escape prevention
+	// - **container_prevent_escape**: container escape prevention.
 	//
-	// 	- **image_repo**: repository image scan
+	// - **image_repo**: repository image scanning.
 	//
-	// 	- **proc_filter_switch**: log filtering
+	// - **proc_filter_switch**: log filtering.
 	//
-	// 	- **agentless**: agentless detection
+	// - **agentless**: agentless detection.
 	//
-	// 	- **rasp**: application protection
+	// - **rasp**: application protection.
 	//
-	// 	- **sensitiveFile**: sensitive file detection
+	// - **sensitiveFile**: sensitive information scanning.
 	//
-	// 	- **aliscriptengine**: in-depth detection engine
+	// - **aliscriptengine**: deep detection engine.
 	//
-	// 	- **containerNetwork**: container network visualization
+	// - **containerNetwork**: container visualization.
 	//
 	// This parameter is required.
 	//

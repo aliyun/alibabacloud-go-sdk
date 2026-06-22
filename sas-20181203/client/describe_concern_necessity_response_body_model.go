@@ -16,15 +16,15 @@ type iDescribeConcernNecessityResponseBody interface {
 }
 
 type DescribeConcernNecessityResponseBody struct {
-	// The priorities to fix the vulnerabilities. Valid values:
+	// The list of vulnerability fix necessity levels. Valid values:
 	//
-	// 	- asap: high
+	// - asap: high.
 	//
-	// 	- later: medium
+	// - later: medium.
 	//
-	// 	- nntf: low
+	// - nntf: low.
 	ConcernNecessity []*string `json:"ConcernNecessity,omitempty" xml:"ConcernNecessity,omitempty" type:"Repeated"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The ID of the request. The ID is a unique identifier that Alibaba Cloud generates for the request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//

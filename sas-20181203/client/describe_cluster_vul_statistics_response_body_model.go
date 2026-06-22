@@ -16,13 +16,13 @@ type iDescribeClusterVulStatisticsResponseBody interface {
 }
 
 type DescribeClusterVulStatisticsResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 0B48AB3C-84FC-424D-A01D-B9270EF46038
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The statistics of the vulnerabilities.
+	// The vulnerability statistics.
 	VulStat *DescribeClusterVulStatisticsResponseBodyVulStat `json:"VulStat,omitempty" xml:"VulStat,omitempty" type:"Struct"`
 }
 
@@ -62,19 +62,19 @@ func (s *DescribeClusterVulStatisticsResponseBody) Validate() error {
 }
 
 type DescribeClusterVulStatisticsResponseBodyVulStat struct {
-	// The number of high-risk vulnerabilities.
+	// The number of high-severity vulnerabilities.
 	//
 	// example:
 	//
 	// 13
 	AsapCount *string `json:"AsapCount,omitempty" xml:"AsapCount,omitempty"`
-	// The number of medium-risk vulnerabilities.
+	// The number of medium-severity vulnerabilities.
 	//
 	// example:
 	//
 	// 21
 	LaterCount *string `json:"LaterCount,omitempty" xml:"LaterCount,omitempty"`
-	// The number of low-risk vulnerabilities.
+	// The number of low-severity vulnerabilities.
 	//
 	// example:
 	//

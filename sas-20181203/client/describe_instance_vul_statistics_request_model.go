@@ -16,21 +16,21 @@ type iDescribeInstanceVulStatisticsRequest interface {
 }
 
 type DescribeInstanceVulStatisticsRequest struct {
-	// The vulnerability type of the serverless instance. Valid values:
+	// The vulnerability type of the Serverless asset. Valid values:
 	//
-	// 	- **sca**: middleware vulnerabilities
+	// - **sca**: middleware vulnerability
 	//
-	// 	- **app**: application vulnerabilities detected by using a scanner
+	// - **app**: scanner vulnerability
 	//
-	// >  Serverless instances allow you to detect only application vulnerabilities by using a scanner.
+	// >Serverless assets currently support only application vulnerability scanning.
 	//
 	// example:
 	//
 	// sca,app
 	Types *string `json:"Types,omitempty" xml:"Types,omitempty"`
-	// The UUID of the instance to query.
+	// The UUID of the asset instance to query.
 	//
-	// >  You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to query the UUID of the instance.
+	// >You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//

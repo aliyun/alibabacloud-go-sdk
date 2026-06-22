@@ -16,9 +16,9 @@ type iDescribeAccessKeyLeakDetailRequest interface {
 }
 
 type DescribeAccessKeyLeakDetailRequest struct {
-	// The ID of the AccessKey pair leak event.
+	// The ID of the AccessKey pair leak event to query.
 	//
-	// > You can call the [DescribeAccesskeyLeakList](~~DescribeAccesskeyLeakList~~) operation to obtain the event ID.
+	// > Call the [DescribeAccesskeyLeakList](~~DescribeAccesskeyLeakList~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -26,9 +26,9 @@ type DescribeAccessKeyLeakDetailRequest struct {
 	//
 	// 389357
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The Alibaba Cloud account ID of the member in the resource directory.
+	// The ID of the member account in the resource directory (Alibaba Cloud account).
 	//
-	// >  You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to query the ID.
+	// > Call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
 	//
 	// example:
 	//

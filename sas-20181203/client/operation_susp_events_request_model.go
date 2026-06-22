@@ -24,25 +24,25 @@ type iOperationSuspEventsRequest interface {
 }
 
 type OperationSuspEventsRequest struct {
-	// The ID of the request source.
+	// The request source identifier.
 	//
-	// Set the value to **sas**, which indicates that the request is sent from Security Center.
+	// Set this parameter to **sas**, which indicates a request from the Security Center client.
 	//
 	// example:
 	//
 	// sas
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
-	// The operation that you want to perform on alerts. Valid values:
+	// The operation to perform on the alert. Valid values:
 	//
-	// 	- **deal**: quarantines the source file of the malicious process.
+	// - **deal**: handles the alert (quarantine).
 	//
-	// 	- **ignore**: ignores the alerts.
+	// - **ignore**: ignores the alert.
 	//
-	// 	- **mark_mis_info**: marks the alerts as false positives by adding the alerts to the whitelist.
+	// - **mark_mis_info**: marks the alert as a false positive (adds it to the whitelist).
 	//
-	// 	- **rm_mark_mis_info**: cancels false positives by removing the alerts from the whitelist.
+	// - **rm_mark_mis_info**: unmarks the alert as a false positive (removes it from the whitelist).
 	//
-	// 	- **offline_handled**: marks the alerts as handled.
+	// - **offline_handled**: marks the alert as handled.
 	//
 	// This parameter is required.
 	//
@@ -50,27 +50,27 @@ type OperationSuspEventsRequest struct {
 	//
 	// deal
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
-	// The source IP address of the request.
+	// The IP address of the access source.
 	//
 	// example:
 	//
 	// 1.2.XX.XX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The suboperation that you want to perform when you quarantine the source file of the malicious process. Valid values:
+	// The sub-operation type to perform when quarantining the alert event. Valid values:
 	//
-	// 	- **killAndQuaraFileByPidAndMd5andPath**: terminates the process based on its process ID (PID) and quarantines the source file of the process.
+	// - **killAndQuaraFileByPidAndMd5andPath**: terminates the process by PID and quarantines the source file of the process.
 	//
-	// 	- **quaraFileByMd5andPath**: quarantines the source file of the process.
+	// - **quaraFileByMd5andPath**: quarantines the source file of the process.
 	//
-	// 	- **killAndQuaraFileByMd5andPath**: terminates the process and quarantines the source file of the process.
+	// - **killAndQuaraFileByMd5andPath**: terminates the process and quarantines the source file of the process.
 	//
 	// example:
 	//
 	// killAndQuaraFileByPidAndMd5andPath
 	SubOperation *string `json:"SubOperation,omitempty" xml:"SubOperation,omitempty"`
-	// The IDs of alert events.
+	// The list of alert event IDs.
 	//
-	// > You can call the [DescribeSuspEvents](~~DescribeSuspEvents~~) operation to obtain the IDs of alert events from the SecurityEventIds response parameter.
+	// > You can call [DescribeSuspEvents](~~DescribeSuspEvents~~) to obtain alert event IDs from the SecurityEventIds response parameter.
 	//
 	// This parameter is required.
 	//
@@ -78,11 +78,11 @@ type OperationSuspEventsRequest struct {
 	//
 	// 290852
 	SuspiciousEventIds *string `json:"SuspiciousEventIds,omitempty" xml:"SuspiciousEventIds,omitempty"`
-	// The type of the exceptions. Valid values:
+	// The type of the exception event to handle. Valid values:
 	//
-	// 	- **alarm**: alerts
+	// - **alarm**: alert.
 	//
-	// 	- **null**: exceptions
+	// - **Empty**: exception.
 	//
 	// example:
 	//

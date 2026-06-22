@@ -16,7 +16,7 @@ type iDescribeQuaraFileDownloadInfoRequest interface {
 }
 
 type DescribeQuaraFileDownloadInfoRequest struct {
-	// The ID of the request source. Set the value to sas.
+	// The source identifier of the request. Set the value to sas.
 	//
 	// example:
 	//
@@ -24,7 +24,7 @@ type DescribeQuaraFileDownloadInfoRequest struct {
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
 	// The ID of the quarantined file.
 	//
-	// > If you do not specify this parameter, you cannot call the RollbackSuspEventQuaraFile operation to restore a quarantined file. You can call the [DescribeSuspEventQuaraFiles](~~DescribeSuspEventQuaraFiles~~) operation to query the IDs of quarantined files.
+	// > If you do not specify this parameter, calling the RollbackSuspEventQuaraFile operation does not cancel the quarantine of the file in the quarantine box, which means the call does not take effect. Call the [DescribeSuspEventQuaraFiles](~~DescribeSuspEventQuaraFiles~~) operation to obtain the quarantined file ID (the value of the Id parameter).
 	//
 	// example:
 	//

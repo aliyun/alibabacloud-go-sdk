@@ -16,33 +16,33 @@ type iGetPropertyScheduleConfigRequest interface {
 }
 
 type GetPropertyScheduleConfigRequest struct {
-	// The type of the asset fingerprints. Valid values:
+	// The type of Asset Fingerprints for which the automatic collection frequency is configured. Valid values:
 	//
-	// 	- **scheduler_port_period**: listening port
+	// - **scheduler_port_period**: listening port
 	//
-	// 	- **scheduler_process_period**: running process
+	// - **scheduler_process_period**: running process
 	//
-	// 	- **scheduler_account_period**: account
+	// - **scheduler_account_period**: account asset
 	//
-	// 	- **scheduler_software_period**: software
+	// - **scheduler_software_period**: software asset
 	//
-	// 	- **scheduler_cron_period**: scheduled task
+	// - **scheduler_cron_period**: scheduled node
 	//
-	// 	- **scheduler_sca_period**: middleware
+	// - **scheduler_sca_period**: middleware
 	//
-	// 	- **scheduler_autorun_period**: startup item
+	// - **scheduler_autorun_period**: startup item
 	//
-	// 	- **scheduler_lkm_period**: kernel module
+	// - **scheduler_lkm_period**: kernel module
 	//
-	// 	- **scheduler_sca_proxy_period**: website
+	// - **scheduler_sca_proxy_period**: website
 	//
 	// example:
 	//
 	// scheduler_sca_period
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The UUID of the server.
+	// The UUID of the server to query.
 	//
-	// >  You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to query the UUIDs of servers.
+	// >You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to obtain this parameter.
 	//
 	// example:
 	//

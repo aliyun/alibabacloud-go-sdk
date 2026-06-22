@@ -102,7 +102,7 @@ type ListCheckItemWarningMachineRequest struct {
 	//
 	// example:
 	//
-	// 1232428423234****
+	// 1082098404740323
 	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The type of the check item.
 	//

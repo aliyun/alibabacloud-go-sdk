@@ -44,7 +44,7 @@ type AddBaselineCheckWhiteRecordRequest struct {
 	//
 	// example:
 	//
-	// AutoRun
+	// 无效
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 	// The data source. If you leave this parameter empty, the default value is used. Valid values:
 	//

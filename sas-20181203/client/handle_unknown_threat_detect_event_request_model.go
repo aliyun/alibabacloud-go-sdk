@@ -16,7 +16,16 @@ type iHandleUnknownThreatDetectEventRequest interface {
 }
 
 type HandleUnknownThreatDetectEventRequest struct {
+	// The list of event IDs.
 	EventIdList []*string `json:"EventIdList,omitempty" xml:"EventIdList,omitempty" type:"Repeated"`
+	// The event handling status. Valid values:
+	//
+	// - **1**: Unhandled.
+	//
+	// - **2**: Blocked.
+	//
+	// - **3**: Ignored.
+	//
 	// example:
 	//
 	// 3

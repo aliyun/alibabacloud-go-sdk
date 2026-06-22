@@ -14,11 +14,11 @@ type iListCloudAssetMatchOperatorsRequest interface {
 }
 
 type ListCloudAssetMatchOperatorsRequest struct {
-	// Sets the language type for requests and received messages, default is **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//

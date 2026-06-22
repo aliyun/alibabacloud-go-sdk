@@ -16,9 +16,9 @@ type iGetBackupAutoConfigStatusResponseBody interface {
 }
 
 type GetBackupAutoConfigStatusResponseBody struct {
-	// The response parameters.
+	// The response data.
 	Data *GetBackupAutoConfigStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request. The ID is a unique identifier that Alibaba Cloud generates for the request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -62,11 +62,11 @@ func (s *GetBackupAutoConfigStatusResponseBody) Validate() error {
 }
 
 type GetBackupAutoConfigStatusResponseBodyData struct {
-	// Indicates whether the anti-ransomware policy for servers can be automatically configured by the managed anti-ransomware feature. Valid values:
+	// Indicates whether the managed service supports configuring anti-ransomware backup policies. Valid values:
 	//
-	// 	- **false**
+	// - **false**: Not supported.
 	//
-	// 	- **true**
+	// - **true**: Supported.
 	//
 	// example:
 	//

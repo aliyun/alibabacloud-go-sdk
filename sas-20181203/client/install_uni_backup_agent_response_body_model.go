@@ -14,7 +14,7 @@ type iInstallUniBackupAgentResponseBody interface {
 }
 
 type InstallUniBackupAgentResponseBody struct {
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The request ID. China Chinese Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iModifyWebLockUnbindResponseBody interface {
 }
 
 type ModifyWebLockUnbindResponseBody struct {
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The request ID. It is a unique identifier that Alibaba Cloud generates for the request. You can use it to troubleshoot issues.
 	//
 	// example:
 	//

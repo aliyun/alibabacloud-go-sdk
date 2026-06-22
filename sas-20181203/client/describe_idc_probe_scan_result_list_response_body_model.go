@@ -18,11 +18,11 @@ type iDescribeIdcProbeScanResultListResponseBody interface {
 }
 
 type DescribeIdcProbeScanResultListResponseBody struct {
-	// The instances.
+	// The list of instances.
 	Instances []*DescribeIdcProbeScanResultListResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
 	// The pagination information.
 	PageInfo *DescribeIdcProbeScanResultListResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	// The request ID.
+	// The request ID. Alibaba Cloud generates a unique identifier for each API request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -84,29 +84,29 @@ func (s *DescribeIdcProbeScanResultListResponseBody) Validate() error {
 }
 
 type DescribeIdcProbeScanResultListResponseBodyInstances struct {
-	// The status of the client of the instance on which the probe is installed. Valid values:
+	// The online status of the probe instance client. Valid values:
 	//
-	// 	- **online**: The Security Center agent on the asset is **enabled**.
+	// - **online**: The Agent client on the asset is enabled.
 	//
-	// 	- **offline**: The Security Center agent on the asset is **disabled**.
+	// - **offline**: The Agent client on the asset is disabled.
 	//
 	// example:
 	//
 	// online
 	ClientStatus *string `json:"ClientStatus,omitempty" xml:"ClientStatus,omitempty"`
-	// The name of the IDC.
+	// The name of the IDC server room.
 	//
 	// example:
 	//
-	// Test
+	// 3K机房广州
 	IdcName *string `json:"IdcName,omitempty" xml:"IdcName,omitempty"`
-	// The CIDR blocks.
+	// The IP segment list.
 	//
 	// example:
 	//
 	// 192.168.2.0/24
 	IpSegment *string `json:"IpSegment,omitempty" xml:"IpSegment,omitempty"`
-	// The timestamp when the last scan was performed. Unit: milliseconds.
+	// The timestamp of the latest scan, in milliseconds.
 	//
 	// example:
 	//
@@ -114,51 +114,51 @@ type DescribeIdcProbeScanResultListResponseBodyInstances struct {
 	LastScanTime *int64 `json:"LastScanTime,omitempty" xml:"LastScanTime,omitempty"`
 	// The operating system type of the asset. Valid values:
 	//
-	// 	- **windows**
+	// - **windows**
 	//
-	// 	- **linux**
+	// - **linux**.
 	//
 	// example:
 	//
 	// Linux
 	Os *string `json:"Os,omitempty" xml:"Os,omitempty"`
-	// The private IP address of the associated instance.
+	// The public IP address of the associated machine instance.
 	//
 	// example:
 	//
 	// 42.121.*.*
 	ProbeInternetIp *string `json:"ProbeInternetIp,omitempty" xml:"ProbeInternetIp,omitempty"`
-	// The private IP address of the associated instance.
+	// The private IP address of the associated machine instance.
 	//
 	// example:
 	//
 	// 192.168.*.*
 	ProbeIntranetIp *string `json:"ProbeIntranetIp,omitempty" xml:"ProbeIntranetIp,omitempty"`
-	// The name of the associated instance.
+	// The name of the associated machine instance.
 	//
 	// example:
 	//
 	// i-xxxx
 	ProbeMachineName *string `json:"ProbeMachineName,omitempty" xml:"ProbeMachineName,omitempty"`
-	// The UUID of the associated instance.
+	// The UUID of the associated machine instance.
 	//
 	// example:
 	//
 	// 11C96623-E106-59C9-866D-A6C82911****
 	ProbeUuid *string `json:"ProbeUuid,omitempty" xml:"ProbeUuid,omitempty"`
-	// The ID of the scan result.
+	// The scan result ID.
 	//
 	// example:
 	//
 	// 1231
 	ScanResultId *int64 `json:"ScanResultId,omitempty" xml:"ScanResultId,omitempty"`
-	// The IP address that is scanned.
+	// The scanned IP address.
 	//
 	// example:
 	//
 	// 192.168.*.*
 	ScannedIp *string `json:"ScannedIp,omitempty" xml:"ScannedIp,omitempty"`
-	// The port that is scanned.
+	// The scanned port.
 	//
 	// example:
 	//
@@ -287,13 +287,13 @@ func (s *DescribeIdcProbeScanResultListResponseBodyInstances) Validate() error {
 }
 
 type DescribeIdcProbeScanResultListResponseBodyPageInfo struct {
-	// The number of entries returned on the current page.
+	// The number of entries on the current page.
 	//
 	// example:
 	//
 	// 9
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The page number.
+	// The page number of the current page in a paged query.
 	//
 	// example:
 	//
@@ -305,7 +305,7 @@ type DescribeIdcProbeScanResultListResponseBodyPageInfo struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//

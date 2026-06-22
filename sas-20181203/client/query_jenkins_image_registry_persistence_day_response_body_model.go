@@ -20,25 +20,25 @@ type iQueryJenkinsImageRegistryPersistenceDayResponseBody interface {
 }
 
 type QueryJenkinsImageRegistryPersistenceDayResponseBody struct {
-	// The retention period. Unit: days.
+	// The repository retention duration. Unit: days.
 	//
 	// example:
 	//
 	// 30
 	Data *int32 `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The request ID. Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// EA4AC8B7-0C18-5BC1-9DA4-798B3BE4****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The time consumed. Unit: seconds.
+	// The time consumed for the execution. Unit: seconds.
 	//
 	// example:
 	//

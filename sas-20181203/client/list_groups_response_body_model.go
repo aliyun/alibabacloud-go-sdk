@@ -26,7 +26,7 @@ type iListGroupsResponseBody interface {
 }
 
 type ListGroupsResponseBody struct {
-	// The status code.
+	// The status code returned by the API request.
 	//
 	// example:
 	//
@@ -38,27 +38,27 @@ type ListGroupsResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The groups.
+	// The list of server groups.
 	List []*ListGroupsResponseBodyList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	// The error message.
+	// The detailed information of the error code.
 	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The pagination information.
+	// The pagination information of the query results.
 	PageInfo *ListGroupsResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request. Alibaba Cloud generates a unique identifier for each request, which can be used for troubleshooting and diagnostics.
 	//
 	// example:
 	//
 	// CB414DB5-F692-5DAB-9F0F-975C060AF***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether exceptions are handled. Valid values:
+	// Indicates whether the exception event was processed. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Processed.
 	//
-	// 	- **false**
+	// - **false**: Not processed.
 	//
 	// example:
 	//
@@ -156,23 +156,23 @@ func (s *ListGroupsResponseBody) Validate() error {
 }
 
 type ListGroupsResponseBodyList struct {
-	// The server group type. Valid values:
+	// The type of the server group. Valid values:
 	//
-	// 	- **0**: default group
+	// - **0**: default group
 	//
-	// 	- **1**: other group
+	// - **1**: other group.
 	//
 	// example:
 	//
 	// 1
 	GroupFlag *int32 `json:"GroupFlag,omitempty" xml:"GroupFlag,omitempty"`
-	// The server group ID.
+	// The ID of the server group.
 	//
 	// example:
 	//
 	// 11028542
 	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The server group name.
+	// The name of the server group.
 	//
 	// example:
 	//
@@ -226,13 +226,13 @@ type ListGroupsResponseBodyPageInfo struct {
 	//
 	// 4
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The page number.
+	// The page number of the current page in a paging query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	// The NextToken value returned when the NextToken method is used.
 	//
 	// example:
 	//

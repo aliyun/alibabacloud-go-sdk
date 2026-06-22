@@ -20,7 +20,7 @@ type iDescribeClusterBasicInfoRequest interface {
 type DescribeClusterBasicInfoRequest struct {
 	// The ID of the cluster that you want to query.
 	//
-	// > You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to query the IDs of clusters.
+	// > You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -28,9 +28,9 @@ type DescribeClusterBasicInfoRequest struct {
 	//
 	// c870ec78ecbcb41d2a35c679823ef****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The dimension from which you want to configure the feature. Valid values:
+	// The operation dimension of the target switch configuration. Valid values:
 	//
-	// 	- **Cluster**: the ID of the cluster
+	// - **Cluster**: cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -38,11 +38,11 @@ type DescribeClusterBasicInfoRequest struct {
 	//
 	// Cluster
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	// The type of the feature. Valid values:
+	// The configuration type. Valid values:
 	//
-	// 	- **containerNetwork**: container network topology
+	// - **containerNetwork**: container network topology switch
 	//
-	// 	- **interceptionSwitch**: cluster microsegmentation
+	// - **interceptionSwitch**: cluster microsegmentation switch.
 	//
 	// This parameter is required.
 	//

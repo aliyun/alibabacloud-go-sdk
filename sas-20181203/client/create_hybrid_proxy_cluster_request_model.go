@@ -24,7 +24,7 @@ type CreateHybridProxyClusterRequest struct {
 	//
 	// example:
 	//
-	// Chester-Test
+	// test
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
 	// The endpoint of the cluster.
 	//
@@ -32,13 +32,13 @@ type CreateHybridProxyClusterRequest struct {
 	//
 	// example:
 	//
-	// 192.168.xx.xx
+	// 117.71.xx.xx
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	// The description of the cluster.
 	//
 	// example:
 	//
-	// remark test
+	// testRemark
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 }
 

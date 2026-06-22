@@ -30,17 +30,17 @@ type iModifyInterceptionRuleShrinkRequest interface {
 type ModifyInterceptionRuleShrinkRequest struct {
 	// The ID of the container cluster.
 	//
-	// > You can call the [DescribeGroupedContainerInstances](https://help.aliyun.com/document_detail/182997.html) operation to query the IDs of container clusters.
+	// > You can call the [DescribeGroupedContainerInstances](https://help.aliyun.com/document_detail/182997.html) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// c17ef568f81884cdab402decd5fcd****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The destination objects of the rule. The following parameters are included:
+	// The destination object. The metric description is as follows:
 	//
-	// 	- targetId: the ID of the destination object. You can call the [ListInterceptionTargetPage](~~ListInterceptionTargetPage~~) operation to query the ID.
+	// - targetId: the ID of the destination object. You can invoke the [ListInterceptionTargetPage](~~ListInterceptionTargetPage~~) operation to obtain this parameter.
 	//
-	// 	- ports: the destination port ranges.
+	// - ports: the list of destination port ranges.
 	//
 	// example:
 	//
@@ -48,23 +48,23 @@ type ModifyInterceptionRuleShrinkRequest struct {
 	DstTargetShrink *string `json:"DstTarget,omitempty" xml:"DstTarget,omitempty"`
 	// The interception mode. Valid values:
 	//
-	// 	- **1**: block
+	// - **1**: Block Mode
 	//
-	// 	- **2**: alert
+	// - **2**: Alert mode
 	//
-	// 	- **3**: allow
+	// - **3**: Allow mode.
 	//
 	// example:
 	//
 	// 1
 	InterceptType *int32 `json:"InterceptType,omitempty" xml:"InterceptType,omitempty"`
-	// The priority of the rule. Valid values: 1 to 1000. A smaller value indicates a higher priority.
+	// The priority of the rule. The priority ranges from 1 to 1000. A smaller number indicates a higher priority.
 	//
 	// example:
 	//
 	// 1
 	OrderIndex *int64 `json:"OrderIndex,omitempty" xml:"OrderIndex,omitempty"`
-	// The ID of the rule.
+	// The rule ID.
 	//
 	// This parameter is required.
 	//
@@ -72,25 +72,25 @@ type ModifyInterceptionRuleShrinkRequest struct {
 	//
 	// 500018
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The name of the rule.
+	// The rule name.
 	//
 	// example:
 	//
 	// tetsRule
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// Specifies whether the rule is enabled. Valid values:
+	// The switch status of the rule. Valid values:
 	//
-	// 	- **1**: enabled
+	// - **1**: enabled
 	//
-	// 	- **0**: disabled
+	// - **0**: disabled.
 	//
 	// example:
 	//
 	// 1
 	RuleSwitch *int32 `json:"RuleSwitch,omitempty" xml:"RuleSwitch,omitempty"`
-	// The source object of the rule. The following parameters are included:
+	// The source rule object. The metric description is as follows:
 	//
-	// 	- targetId: the ID of the source object. You can call the [ListInterceptionTargetPage](~~ListInterceptionTargetPage~~) operation to query the ID.
+	// - targetId: the ID of the source object. You can invoke the [ListInterceptionTargetPage](~~ListInterceptionTargetPage~~) operation to obtain this parameter.
 	//
 	// example:
 	//

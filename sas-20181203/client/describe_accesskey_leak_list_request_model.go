@@ -24,7 +24,7 @@ type iDescribeAccesskeyLeakListRequest interface {
 }
 
 type DescribeAccesskeyLeakListRequest struct {
-	// The number of the page to return. Default value: **1**.
+	// The page number of the current page in a paged query. Default value: **1**.
 	//
 	// This parameter is required.
 	//
@@ -32,11 +32,9 @@ type DescribeAccesskeyLeakListRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries to return on each page.\\
+	// The maximum number of entries per page for a paged query. The maximum value of PageSize is 100. The default number of entries per page is 20. If the PageSize parameter is left empty, 20 entries are returned by default.
 	//
-	// Maximum value: 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
-	//
-	// > We recommend that you do not leave this parameter empty.
+	// > Do not leave PageSize empty.
 	//
 	// This parameter is required.
 	//
@@ -50,25 +48,25 @@ type DescribeAccesskeyLeakListRequest struct {
 	//
 	// yourAccessKeyID
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
-	// The Alibaba Cloud account ID of the member in the resource directory.
+	// The ID of the member account in the resource directory (Alibaba Cloud account).
 	//
-	// >  You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to query the ID.
+	// > You can invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
 	//
 	// example:
 	//
-	// 127608589417****
+	// 1232428423234****
 	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
-	// The beginning of the time range to query. You can query all AccessKey pair leaks that are detected later than this time point. The value of this parameter is a UNIX timestamp. Unit: milliseconds.
+	// The discovery time of the leaked information that you want to query. All AccessKey leak information discovered after this point in time is returned. This parameter is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1614155361489
 	StartTs *int64 `json:"StartTs,omitempty" xml:"StartTs,omitempty"`
-	// Specifies whether an AccessKey pair leak is handled. Valid values:
+	// The processing status of the leaked AccessKey information that you want to query. Valid values:
 	//
-	// 	- **pending**: unhandled
+	// - **pending**: unprocessed
 	//
-	// 	- **dealed**: handled
+	// - **dealed**: processed.
 	//
 	// example:
 	//

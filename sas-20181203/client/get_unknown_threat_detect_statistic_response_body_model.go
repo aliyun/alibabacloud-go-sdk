@@ -16,6 +16,7 @@ type iGetUnknownThreatDetectStatisticResponseBody interface {
 }
 
 type GetUnknownThreatDetectStatisticResponseBody struct {
+	// The returned data.
 	Data *GetUnknownThreatDetectStatisticResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -62,22 +63,32 @@ func (s *GetUnknownThreatDetectStatisticResponseBody) Validate() error {
 
 type GetUnknownThreatDetectStatisticResponseBodyData struct {
 	BlockEventMachineCount *int32 `json:"BlockEventMachineCount,omitempty" xml:"BlockEventMachineCount,omitempty"`
+	// The number of servers under control.
+	//
 	// example:
 	//
 	// 1
 	BlockMachineCount *int32 `json:"BlockMachineCount,omitempty" xml:"BlockMachineCount,omitempty"`
+	// The total number of servers.
+	//
 	// example:
 	//
 	// 1
 	MachineCount *int32 `json:"MachineCount,omitempty" xml:"MachineCount,omitempty"`
+	// The number of servers in warning status.
+	//
 	// example:
 	//
 	// 1
 	MonitorMachineCount *int32 `json:"MonitorMachineCount,omitempty" xml:"MonitorMachineCount,omitempty"`
+	// The number of servers with the service enabled.
+	//
 	// example:
 	//
 	// 1
 	OpenMachineCount *int32 `json:"OpenMachineCount,omitempty" xml:"OpenMachineCount,omitempty"`
+	// The number of servers in learning status.
+	//
 	// example:
 	//
 	// 1

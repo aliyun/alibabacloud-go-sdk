@@ -32,31 +32,31 @@ type iDescribeImageSecurityScanCountRequest interface {
 }
 
 type DescribeImageSecurityScanCountRequest struct {
-	// The ID of the cluster that you want to scan.
+	// The ID of the cluster for image security scanning.
 	//
 	// example:
 	//
 	// cdbbe7aa56cbf4b8f830f83718d26****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The handling status. Valid values:
+	// Specifies whether the event is handled. Valid values:
 	//
-	// 	- **Y**: handled.
+	// - **Y**: Handled.
 	//
-	// 	- **N**: unhandled.
+	// - **N**: Not handled.
 	//
-	// 	- **A**: all.
+	// - **A**: All.
 	//
 	// example:
 	//
 	// N
 	Dealed *string `json:"Dealed,omitempty" xml:"Dealed,omitempty"`
-	// The SHA-256 value of the image digest.
+	// The SHA256 value of the image digest.
 	//
 	// example:
 	//
 	// a7978d51f5eddf7612ab15ae46bd4b4257bf59da77c2aafc9d9d8ab41bb3****
 	ImageDigest *string `json:"ImageDigest,omitempty" xml:"ImageDigest,omitempty"`
-	// The tag of the image.
+	// The image tag.
 	//
 	// example:
 	//
@@ -68,29 +68,29 @@ type DescribeImageSecurityScanCountRequest struct {
 	//
 	// 325bfa067ae6c678e59e8a1b34cc****
 	ImageUuid *string `json:"ImageUuid,omitempty" xml:"ImageUuid,omitempty"`
-	// The ID of the Container Registry repository.
+	// The ID of the container image repository.
 	//
 	// example:
 	//
 	// 3df5b5a1f2339eb7ebc7d474b8d4****
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	// The ID of the Container Registry instance.
+	// The instance ID of the container image.
 	//
-	// >  You can call the [DescribeImageInstances](~~DescribeImageInstances~~) operation to obtain the ID.
+	// > Invoke the [DescribeImageInstances](~~DescribeImageInstances~~) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// cri-p2jahwuuwuk7****
 	RepoInstanceId *string `json:"RepoInstanceId,omitempty" xml:"RepoInstanceId,omitempty"`
-	// The region ID of the Container Registry repository.
+	// The region ID of the container image repository.
 	//
 	// example:
 	//
 	// cn-beijing
 	RepoRegionId *string `json:"RepoRegionId,omitempty" xml:"RepoRegionId,omitempty"`
-	// The assets that you want to scan.
+	// The scan scope.
 	ScanRange []*string `json:"ScanRange,omitempty" xml:"ScanRange,omitempty" type:"Repeated"`
-	// The IDs of the instances that you want to scan.
+	// The instance ID for image security scanning.
 	Uuids []*string `json:"Uuids,omitempty" xml:"Uuids,omitempty" type:"Repeated"`
 }
 

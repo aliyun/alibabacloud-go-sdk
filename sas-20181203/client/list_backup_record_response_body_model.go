@@ -18,11 +18,11 @@ type iListBackupRecordResponseBody interface {
 }
 
 type ListBackupRecordResponseBody struct {
-	// The details of the backup record.
+	// The list of backup records.
 	BackupRecordList []*ListBackupRecordResponseBodyBackupRecordList `json:"BackupRecordList,omitempty" xml:"BackupRecordList,omitempty" type:"Repeated"`
 	// The pagination information.
 	PageInfo *ListBackupRecordResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	// The request ID, which is used to locate and troubleshoot issues.
+	// The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -84,7 +84,7 @@ func (s *ListBackupRecordResponseBody) Validate() error {
 }
 
 type ListBackupRecordResponseBodyBackupRecordList struct {
-	// The timestamp when the backup task ended. Unit: milliseconds.
+	// The backup end time. The value is a timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -102,25 +102,25 @@ type ListBackupRecordResponseBodyBackupRecordList struct {
 	//
 	// plan-000c4tt43nolmx96****
 	BackupPlanId *string `json:"BackupPlanId,omitempty" xml:"BackupPlanId,omitempty"`
-	// The timestamp when the backup task started. Unit: milliseconds.
+	// The backup start time. The value is a timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1699514211000
 	BackupStartTime *int64 `json:"BackupStartTime,omitempty" xml:"BackupStartTime,omitempty"`
-	// The backup task status. Valid value:
+	// The backup task status. Valid values:
 	//
-	// 	- **BACKUP_COMPLETE**: The backup task is successful.
+	// - **BACKUP_COMPLETE**: backup succeeded
 	//
-	// 	- **BACKUP_FAILED**: The backup task failed.
+	// - **BACKUP_FAILED**: backup failed
 	//
-	// 	- **PARTIAL_COMPLETE**: The backup task is partially successful.
+	// - **PARTIAL_COMPLETE**: partial backup succeeded.
 	//
 	// example:
 	//
 	// BACKUP_COMPLETE
 	BackupStatus *string `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
-	// The ID of the anti-ransomware agent.
+	// The anti-ransomware client ID.
 	//
 	// example:
 	//
@@ -132,13 +132,13 @@ type ListBackupRecordResponseBodyBackupRecordList struct {
 	//
 	// FILE_CACHE_NO_SPACE
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message of the backup task.
+	// The error details of the backup task.
 	//
 	// example:
 	//
 	// FILE_CACHE_NO_SPACE
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The instance ID of the server.
+	// The ID of the server instance.
 	//
 	// example:
 	//
@@ -168,13 +168,13 @@ type ListBackupRecordResponseBodyBackupRecordList struct {
 	//
 	// 1.1.1.1
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// The ID of the region in which the backup is stored.
+	// The region ID of the backup service.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The UUID of the server whose data is backed up based on the anti-ransomware policy.
+	// The UUID of the server backed up by database anti-ransomware.
 	//
 	// example:
 	//
@@ -330,19 +330,19 @@ func (s *ListBackupRecordResponseBodyBackupRecordList) Validate() error {
 }
 
 type ListBackupRecordResponseBodyPageInfo struct {
-	// The number of entries returned on the current page.
+	// The number of entries on the current page in a paged query.
 	//
 	// example:
 	//
 	// 20
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The page number.
+	// The page number of the current page in a paged query.
 	//
 	// example:
 	//
 	// 2
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries per page.
+	// The maximum number of entries per page in a paged query.
 	//
 	// example:
 	//

@@ -16,13 +16,13 @@ type iDescribeStrategyDetailResponseBody interface {
 }
 
 type DescribeStrategyDetailResponseBody struct {
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// C5B28F65-9245-5DC1-B3CF-5F2756A756A8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the baseline check policy.
+	// The information about the policy.
 	Strategy *DescribeStrategyDetailResponseBodyStrategy `json:"Strategy,omitempty" xml:"Strategy,omitempty" type:"Struct"`
 }
 
@@ -62,85 +62,83 @@ func (s *DescribeStrategyDetailResponseBody) Validate() error {
 }
 
 type DescribeStrategyDetailResponseBodyStrategy struct {
-	// The type of the baseline check policy that you want to query. Valid values:
+	// The type of the policy. Valid values:
 	//
-	// 	- **common**: standard baseline check policy
+	// - **common**: Standard policy.
 	//
-	// 	- **custom**: custom baseline check policy
+	// - **custom**: Custom policy.
 	//
 	// example:
 	//
 	// common
 	CustomType *string `json:"CustomType,omitempty" xml:"CustomType,omitempty"`
-	// The check interval of the policy.
+	// The detection cycle of the policy.
 	//
 	// example:
 	//
 	// 3
 	CycleDays *int32 `json:"CycleDays,omitempty" xml:"CycleDays,omitempty"`
-	// The time period during which the check starts. Valid values:
+	// The detection cycle of the policy. Valid values:
 	//
-	// 	- **0**: 00:00 to 06:00
+	// - **0**: 00:00 to 06:00
 	//
-	// 	- **6**: 06:00 to 12:00
+	// - **6**: 06:00 to 12:00
 	//
-	// 	- **12**: 12:00 to 18:00
+	// - **12**: 12:00 to 18:00
 	//
-	// 	- **18**: 18:00 to 24:00
+	// - **18**: 18:00 to 24:00.
 	//
 	// example:
 	//
 	// 0
 	CycleStartTime *int32 `json:"CycleStartTime,omitempty" xml:"CycleStartTime,omitempty"`
-	// The end time of the check. Specify the time in the HH:mm:ss format.
+	// The end time of the baseline check policy execution.
 	//
 	// example:
 	//
 	// 03:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the baseline check policy.
+	// The ID of the policy.
 	//
 	// example:
 	//
 	// 123
 	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the baseline check policy.
+	// The Policy Name.
 	//
 	// example:
 	//
 	// TestStrategy
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The subtype of the baselines.
-	//
-	// > You can call the [DescribeRiskType](~~DescribeRiskType~~) operation to query the subtypes of baselines.
+	// The subtype of the baseline check item.
 	//
 	// example:
 	//
 	// hc_nginx_linux,tomcat7,hc_mysql_ali,hc_docker
 	RiskSubTypeName *string `json:"RiskSubTypeName,omitempty" xml:"RiskSubTypeName,omitempty"`
-	// The information about the whitelist of risk items.
+	// The list of risk item whitelists.
 	RiskTypeWhiteListQueryResultList []*DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultList `json:"RiskTypeWhiteListQueryResultList,omitempty" xml:"RiskTypeWhiteListQueryResultList,omitempty" type:"Repeated"`
-	// The start time of the check. Specify the time in the HH:mm:ss format.
+	// The start time of the baseline check policy.
 	//
 	// example:
 	//
 	// 02:00:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The method that is used to apply the baseline check policy. Valid values:
+	// The method used to add assets to the policy. Valid values:
 	//
-	// 	- **groupId**: asset groups
+	// - **groupId**: Assets are added by asset group.
 	//
-	// 	- **uuid**: assets
+	// - **uuid**: Assets are added individually.
 	//
 	// example:
 	//
 	// groupId
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	// The type of the baseline check policy. Valid values:
+	// The type of the policy. Valid values:
 	//
-	// 	- **1**: standard policies
+	// - **1**: system-added policy. The policy name is the default policy.
 	//
-	// 	- **2**: custom policies
+	// - **2**: user-added policy.
 	//
 	// example:
 	//
@@ -275,19 +273,19 @@ type DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultList 
 	//
 	// Unauthorized Access
 	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
-	// Indicates whether the check item is selected. Valid values:
+	// Indicates whether the risk item is selected. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Selected.
 	//
-	// 	- **false**
+	// - **false**: Not selected.
 	//
 	// example:
 	//
 	// false
 	On *bool `json:"On,omitempty" xml:"On,omitempty"`
-	// The information about sub-check items.
+	// The list of sub-risk items.
 	SubTypes []*DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypes `json:"SubTypes,omitempty" xml:"SubTypes,omitempty" type:"Repeated"`
-	// The name of the check item.
+	// The check item.
 	//
 	// example:
 	//
@@ -359,29 +357,29 @@ type DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListS
 	//
 	// Redis unauthorized access high exploit vulnerability risk
 	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
-	// The details of custom check items.
+	// The list of custom check item details.
 	CheckDetails []*DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypesCheckDetails `json:"CheckDetails,omitempty" xml:"CheckDetails,omitempty" type:"Repeated"`
-	// Indicates whether the sub-check item is selected. Valid values:
+	// Indicates whether the sub-risk item is selected. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Selected.
 	//
-	// 	- **false**
+	// - **false**: Not selected.
 	//
 	// example:
 	//
 	// false
 	On *bool `json:"On,omitempty" xml:"On,omitempty"`
-	// The operating system type of the server. Valid values:
+	// The supported operating system. Valid values:
 	//
-	// 	- **windows**
+	// - **windows**
 	//
-	// 	- **linux**
+	// - **linux**.
 	//
 	// example:
 	//
 	// windows
 	SupportedOs *string `json:"SupportedOs,omitempty" xml:"SupportedOs,omitempty"`
-	// The type of the sub-check item.
+	// The type name of the sub-check item.
 	//
 	// example:
 	//
@@ -474,7 +472,7 @@ type DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListS
 	//
 	// Ensure password expiration period is set.
 	CheckItem *string `json:"CheckItem,omitempty" xml:"CheckItem,omitempty"`
-	// The details of rules.
+	// The list of rule information.
 	Rules []*DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypesCheckDetailsRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
 
@@ -542,17 +540,17 @@ type DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListS
 	//
 	// 2
 	DefaultValue *int32 `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
-	// Indicates whether the rule can be selected. Valid values:
+	// Indicates whether the rule is optional. Valid values:
 	//
-	// 	- **1**: yes
+	// - **1**: Optional.
 	//
-	// 	- **0**: no
+	// - **0**: Not optional.
 	//
 	// example:
 	//
 	// 1
 	Optional *int32 `json:"Optional,omitempty" xml:"Optional,omitempty"`
-	// The rule parameters.
+	// The list of rule parameters.
 	ParamList []*DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypesCheckDetailsRulesParamList `json:"ParamList,omitempty" xml:"ParamList,omitempty" type:"Repeated"`
 	// The description of the rule.
 	//
@@ -560,7 +558,7 @@ type DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListS
 	//
 	// Please customize the password expiration time detection standard as
 	RuleDesc *string `json:"RuleDesc,omitempty" xml:"RuleDesc,omitempty"`
-	// The rule ID.
+	// The ID of the rule.
 	//
 	// example:
 	//
@@ -635,7 +633,7 @@ func (s *DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultL
 }
 
 type DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypesCheckDetailsRulesParamList struct {
-	// The options that can be selected for the rule parameter if the value of ParamType is set to 2.
+	// The options for the rule parameter when the parameter type is selection.
 	//
 	// example:
 	//
@@ -673,9 +671,9 @@ type DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListS
 	ParamName *string `json:"ParamName,omitempty" xml:"ParamName,omitempty"`
 	// The type of the rule parameter. Valid values:
 	//
-	// 	- **1**: input
+	// - **1**: input
 	//
-	// 	- **2**: selection
+	// - **2**: selection.
 	//
 	// example:
 	//

@@ -70,9 +70,9 @@ type CreateOpaStrategyNewShrinkRequest struct {
 	Label []*string `json:"Label,omitempty" xml:"Label,omitempty" type:"Repeated"`
 	// Specifies whether the rule supports malicious Internet images. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -80,11 +80,11 @@ type CreateOpaStrategyNewShrinkRequest struct {
 	MaliciousImage *bool `json:"MaliciousImage,omitempty" xml:"MaliciousImage,omitempty"`
 	// The action that is performed when the rule is hit. Valid values:
 	//
-	// 	- **1**: trigger alerts
+	// - **1**: trigger alerts
 	//
-	// 	- **2**: block
+	// - **2**: block
 	//
-	// 	- **3**: allow
+	// - **3**: allow
 	//
 	// example:
 	//
@@ -94,7 +94,7 @@ type CreateOpaStrategyNewShrinkRequest struct {
 	Scopes []*CreateOpaStrategyNewShrinkRequestScopes `json:"Scopes,omitempty" xml:"Scopes,omitempty" type:"Repeated"`
 	// The rule ID.
 	//
-	// >  You can call the [ListOpaClusterStrategyNew](https://help.aliyun.com/document_detail/2623574.html) operation to query the rule ID.
+	// > You can call the [ListOpaClusterStrategyNew](https://help.aliyun.com/document_detail/2623574.html) operation to query the rule ID.
 	//
 	// > This parameter is invalid when you create a rule.
 	//
@@ -110,7 +110,7 @@ type CreateOpaStrategyNewShrinkRequest struct {
 	StrategyName *string `json:"StrategyName,omitempty" xml:"StrategyName,omitempty"`
 	// The ID of the rule template.
 	//
-	// >  You can call the [GetOpaStrategyTemplateSummary](https://help.aliyun.com/document_detail/2539952.html) operation to query the ID of the rule template.
+	// > You can call the [GetOpaStrategyTemplateSummary](https://help.aliyun.com/document_detail/2539952.html) operation to query the ID of the rule template.
 	//
 	// example:
 	//
@@ -118,9 +118,9 @@ type CreateOpaStrategyNewShrinkRequest struct {
 	StrategyTemplateId *int64 `json:"StrategyTemplateId,omitempty" xml:"StrategyTemplateId,omitempty"`
 	// Specifies whether the rule supports unscanned images. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -288,9 +288,9 @@ type CreateOpaStrategyNewShrinkRequestScopes struct {
 	AckPolicyInstanceId *string `json:"AckPolicyInstanceId,omitempty" xml:"AckPolicyInstanceId,omitempty"`
 	// Specifies whether to include all namespaces. Valid values:
 	//
-	// 	- **1**: includes all namespaces.
+	// - **1**: includes all namespaces.
 	//
-	// 	- **0**: does not include all namespaces.
+	// - **0**: does not include all namespaces.
 	//
 	// example:
 	//
@@ -298,7 +298,7 @@ type CreateOpaStrategyNewShrinkRequestScopes struct {
 	AllNamespace *int32 `json:"AllNamespace,omitempty" xml:"AllNamespace,omitempty"`
 	// The ID of the cluster that is specified in the rule.
 	//
-	// >  You can call the [DescribeGroupedContainerInstances](https://help.aliyun.com/document_detail/421736.html) operation to query the cluster ID.
+	// > You can call the [DescribeGroupedContainerInstances](https://help.aliyun.com/document_detail/421736.html) operation to query the cluster ID.
 	//
 	// example:
 	//

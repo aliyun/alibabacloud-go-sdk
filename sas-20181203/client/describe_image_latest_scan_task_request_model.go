@@ -14,7 +14,7 @@ type iDescribeImageLatestScanTaskRequest interface {
 }
 
 type DescribeImageLatestScanTaskRequest struct {
-	// The digest value of the image.
+	// The digest of the image.
 	//
 	// This parameter is required.
 	//

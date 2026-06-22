@@ -18,15 +18,15 @@ type iDescribeCheckFixDetailsResponseBody interface {
 }
 
 type DescribeCheckFixDetailsResponseBody struct {
-	// An array that consists of the parameters.
+	// The list of check item fix parameters.
 	CheckFixDetails []*DescribeCheckFixDetailsResponseBodyCheckFixDetails `json:"CheckFixDetails,omitempty" xml:"CheckFixDetails,omitempty" type:"Repeated"`
-	// The number of risk items that can be fixed.
+	// The number of check items that support fixing.
 	//
 	// example:
 	//
 	// 20
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The request ID. Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -83,25 +83,25 @@ func (s *DescribeCheckFixDetailsResponseBody) Validate() error {
 }
 
 type DescribeCheckFixDetailsResponseBodyCheckFixDetails struct {
-	// The detailed description of the risk item.
+	// The detailed description of the check item.
 	//
 	// example:
 	//
 	// Force users not to reuse recently used passwords to reduce the risk of password guessing attacks
 	CheckDesc *string `json:"CheckDesc,omitempty" xml:"CheckDesc,omitempty"`
-	// The ID of the risk item.
+	// The ID of the check item.
 	//
 	// example:
 	//
 	// 58
 	CheckId *int64 `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
-	// The description of the risk item.
+	// The description of the check item.
 	//
 	// example:
 	//
 	// Ensure password reuse is limited
 	CheckItem *string `json:"CheckItem,omitempty" xml:"CheckItem,omitempty"`
-	// An array consisting of the rules that are supported by the risk item.
+	// The list of rules supported by the check item.
 	Rules []*DescribeCheckFixDetailsResponseBodyCheckFixDetailsRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
 
@@ -163,7 +163,7 @@ func (s *DescribeCheckFixDetailsResponseBodyCheckFixDetails) Validate() error {
 }
 
 type DescribeCheckFixDetailsResponseBodyCheckFixDetailsRules struct {
-	// The ID of the risk item.
+	// The ID of the check item.
 	//
 	// example:
 	//
@@ -177,15 +177,15 @@ type DescribeCheckFixDetailsResponseBodyCheckFixDetailsRules struct {
 	DefaultValue *int32 `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
 	// Indicates whether the rule is optional. Valid values:
 	//
-	// 	- **1**: yes
+	// - **1**: yes
 	//
-	// 	- **0**: no
+	// - **0**: no.
 	//
 	// example:
 	//
 	// 1
 	Optional *int32 `json:"Optional,omitempty" xml:"Optional,omitempty"`
-	// An array that consists of the rule parameters.
+	// The list of rule parameters.
 	ParamList []*DescribeCheckFixDetailsResponseBodyCheckFixDetailsRulesParamList `json:"ParamList,omitempty" xml:"ParamList,omitempty" type:"Repeated"`
 	// The description of the rule.
 	//
@@ -193,19 +193,19 @@ type DescribeCheckFixDetailsResponseBodyCheckFixDetailsRules struct {
 	//
 	// (/etc/system-auth)Force users not to reuse the number of recently used passwords between 5 and 24
 	RuleDesc *string `json:"RuleDesc,omitempty" xml:"RuleDesc,omitempty"`
-	// The ID of the rule.
+	// The rule ID.
 	//
 	// example:
 	//
 	// pwd_reuse.system_auth
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The specified value of the rule parameter.
+	// The configured value of the rule parameter.
 	//
 	// example:
 	//
 	// 5
 	Value *int32 `json:"Value,omitempty" xml:"Value,omitempty"`
-	// The name of the variable.
+	// The variable name.
 	//
 	// example:
 	//
@@ -307,7 +307,7 @@ func (s *DescribeCheckFixDetailsResponseBodyCheckFixDetailsRules) Validate() err
 }
 
 type DescribeCheckFixDetailsResponseBodyCheckFixDetailsRulesParamList struct {
-	// The options that can be selected for the rule parameter if the value of the ParamType parameter is 2.
+	// The options of the rule parameter when the parameter type is selection.
 	//
 	// example:
 	//
@@ -345,21 +345,21 @@ type DescribeCheckFixDetailsResponseBodyCheckFixDetailsRulesParamList struct {
 	ParamName *string `json:"ParamName,omitempty" xml:"ParamName,omitempty"`
 	// The type of the rule parameter. Valid values:
 	//
-	// 	- **1**: input
+	// - **1**: input
 	//
-	// 	- **2**: selection
+	// - **2**: selection.
 	//
 	// example:
 	//
 	// 1
 	ParamType *int32 `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
-	// The ID of the rule.
+	// The rule ID.
 	//
 	// example:
 	//
 	// pwd_reuse.system_auth
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The specified value of the rule parameter.
+	// The configured value of the rule parameter.
 	//
 	// example:
 	//

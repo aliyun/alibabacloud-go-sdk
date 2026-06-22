@@ -14,9 +14,9 @@ type iDeleteInstallCodeRequest interface {
 }
 
 type DeleteInstallCodeRequest struct {
-	// The installation command.
+	// The installation code.
 	//
-	// >  You can call the [DescribeInstallCodes](~~DescribeInstallCodes~~) operation to query installation commands.
+	// >You can call the [DescribeInstallCodes](~~DescribeInstallCodes~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//

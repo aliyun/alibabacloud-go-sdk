@@ -28,39 +28,39 @@ type iDescribeAgentlessSensitiveFileByKeyRequest interface {
 }
 
 type DescribeAgentlessSensitiveFileByKeyRequest struct {
-	// The page number. Default value: **1**.
+	// The page number of the page to return. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The UUID of the asset that is scanned. You can query the UUID on the Host or Cloud Product page. If you scan a host, set this parameter to the UUID of the scanned host. If you scan a snapshot or a custom image, set this parameter to the ID of the scanned snapshot or image.
+	// The UUID of the asset to scan. You can obtain this value from the Host Assets and Cloud Products page. In host security detection scenarios, this parameter specifies the UUID of the host to scan. In snapshot security detection and custom image security detection scenarios, this parameter specifies the ID of the image or snapshot to scan.
 	//
 	// example:
 	//
 	// 06293273b67d19516cfcc712194f****
 	ImageUuid *string `json:"ImageUuid,omitempty" xml:"ImageUuid,omitempty"`
-	// The instance ID of the asset that is scanned. To query the instance ID, go to the Task Management page, click Details of a task, and then view the value of Check On.
+	// The instance ID of the asset to query. You can obtain this value from Node Management > Details > Detection Objects.
 	//
 	// example:
 	//
 	// i-bp1fu4aqltf1huhc****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of entries per page. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+	// The maximum number of entries per page in a paging query. Default value: 20. If you leave this parameter empty, 20 entries are returned per page.
 	//
-	// >  We recommend that you do not leave this parameter empty.
+	// > Do not leave PageSize empty.
 	//
 	// example:
 	//
 	// 50
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The name or IP address of the asset.
+	// The asset name or IP address.
 	//
 	// example:
 	//
 	// 1.2.XX.XX
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The types of the assets that are scanned.
+	// The collection of scan ranges.
 	ScanRange []*string `json:"ScanRange,omitempty" xml:"ScanRange,omitempty" type:"Repeated"`
 	// The type of the sensitive file.
 	//
@@ -68,11 +68,11 @@ type DescribeAgentlessSensitiveFileByKeyRequest struct {
 	//
 	// sshpasswd
 	SensitiveFileKey *string `json:"SensitiveFileKey,omitempty" xml:"SensitiveFileKey,omitempty"`
-	// The status of the baseline risk. Valid values:
+	// The fix status of the baseline risk. Valid values:
 	//
-	// 	- **0**: unfixed.
+	// - **0**: unfixed
 	//
-	// 	- **1**: fixed.
+	// - **1**: fixed.
 	//
 	// example:
 	//

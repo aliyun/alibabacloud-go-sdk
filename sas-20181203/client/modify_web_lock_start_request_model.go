@@ -30,11 +30,11 @@ type iModifyWebLockStartRequest interface {
 }
 
 type ModifyWebLockStartRequest struct {
-	// The prevention mode. Valid values:
+	// The defense mode. Valid values:
 	//
-	// 	- **block**: Interception Mode
+	// - **block**: block
 	//
-	// 	- **audit**: Alert Mode
+	// - **audit**: alert.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type ModifyWebLockStartRequest struct {
 	//
 	// block
 	DefenceMode *string `json:"DefenceMode,omitempty" xml:"DefenceMode,omitempty"`
-	// The directory for which you want to enable web tamper proofing. Separate multiple directories with commas (,).
+	// The protection directories. Separate multiple directories with commas (,).
 	//
 	// This parameter is required.
 	//
@@ -50,101 +50,99 @@ type ModifyWebLockStartRequest struct {
 	//
 	// /home/admin/tomcat
 	Dir *string `json:"Dir,omitempty" xml:"Dir,omitempty"`
-	// The directory for which you want to disable web tamper proofing.
+	// The folder that does not require web tamper proofing protection (excluded folder).
 	//
-	// > If you set **Mode*	- to **blacklist**, you must specify this parameter.
+	// > This parameter is required when the Defense mode **Mode*	- is set to the **blacklist*	- pattern.
 	//
 	// example:
 	//
 	// /home/admin/java
 	ExclusiveDir *string `json:"ExclusiveDir,omitempty" xml:"ExclusiveDir,omitempty"`
-	// The file for which you want to disable web tamper proofing.
+	// The files that do not require web tamper proofing protection (excluded files).
 	//
-	// > If you set **Mode*	- to **blacklist**, you must specify this parameter.
+	// > This parameter is required when the Defense mode **Mode*	- is set to the **blacklist*	- pattern.
 	//
 	// example:
 	//
 	// /home/admin/tomcat/localhost.log
 	ExclusiveFile *string `json:"ExclusiveFile,omitempty" xml:"ExclusiveFile,omitempty"`
-	// The type of the file for which you want to disable web tamper proofing. Separate multiple types with semicolons (;). Valid values:
+	// The file types that do not require web tamper proofing protection (excluded file types). Separate multiple file types with commas (,). Valid values:
 	//
-	// 	- php
+	// - php
 	//
-	// 	- jsp
+	// - jsp
 	//
-	// 	- asp
+	// - asp
 	//
-	// 	- aspx
+	// - aspx
 	//
-	// 	- js
+	// - js
 	//
-	// 	- cgi
+	// - cgi
 	//
-	// 	- html
+	// - html
 	//
-	// 	- htm
+	// - htm
 	//
-	// 	- xml
+	// - xml
 	//
-	// 	- shtml
+	// - shtml
 	//
-	// 	- shtm
+	// - shtm
 	//
-	// 	- jpg
+	// - jpg
 	//
-	// 	- gif
+	// - gif
 	//
-	// 	- png
+	// - png
 	//
-	// > If you set **Mode*	- to **blacklist**, you must specify this parameter.
+	// > This parameter is required when the Defense mode **Mode*	- is set to the **blacklist*	- pattern.
 	//
 	// example:
 	//
 	// jpg
 	ExclusiveFileType *string `json:"ExclusiveFileType,omitempty" xml:"ExclusiveFileType,omitempty"`
-	// The type of the file for which you want to enable web tamper proofing. Separate multiple types with semicolons (;). Valid values:
+	// The file types that require web tamper proofing protection. Separate multiple file types with commas (,). Valid values:
 	//
-	// 	- php
+	// - php
 	//
-	// 	- jsp
+	// - jsp
 	//
-	// 	- asp
+	// - asp
 	//
-	// 	- aspx
+	// - aspx
 	//
-	// 	- js
+	// - js
 	//
-	// 	- cgi
+	// - cgi
 	//
-	// 	- html
+	// - html
 	//
-	// 	- htm
+	// - htm
 	//
-	// 	- xml
+	// - xml
 	//
-	// 	- shtml
+	// - shtml
 	//
-	// 	- shtm
+	// - shtm
 	//
-	// 	- jpg
+	// - jpg
 	//
-	// 	- gif
+	// - gif
 	//
-	// 	- png
+	// - png
 	//
-	// > If you set **Mode*	- to **whitelist**, you must specify this parameter.
+	// > This parameter is required when the Defense mode **Mode*	- is set to the **whitelist*	- pattern.
 	//
 	// example:
 	//
 	// php
 	InclusiveFileType *string `json:"InclusiveFileType,omitempty" xml:"InclusiveFileType,omitempty"`
-	// The local path to the backup files of the protected directory.\\
+	// The local backup path used to back up the protection directories. The format of the protection directory path may differ between Linux servers and Windows servers. Make sure that you enter the path in the correct format. The following examples show the directory formats:
 	//
-	// The directory format of a Linux server is different from that of a Windows server. You must enter the directory in the required format based on your operating system. Examples:
+	//  - Linux server: /usr/local/aegis/bak
 	//
-	// 	- Linux server: /usr/local/aegis/bak
-	//
-	// 	- Windows server: C:\\Program Files (x86)\\Alibaba\\Aegis\\bak
+	//  - Windows server: C:\\Program Files (x86)\\Alibaba\\Aegis\\bak.
 	//
 	// This parameter is required.
 	//
@@ -152,11 +150,11 @@ type ModifyWebLockStartRequest struct {
 	//
 	// /usr/local/backup
 	LocalBackupDir *string `json:"LocalBackupDir,omitempty" xml:"LocalBackupDir,omitempty"`
-	// The protection mode of web tamper proofing. Valid values:
+	// The protection type. Valid values:
 	//
-	// 	- **whitelist**: In this mode, web tamper proofing is enabled for the specified directories and file types.
+	// - **whitelist**: whitelist mode. Protects the specified protection directories and file types.
 	//
-	// 	- **blacklist**: In this mode, web tamper proofing is enabled for the unspecified subdirectories, file types, and files in the protected directory.
+	// - **blacklist**: blacklist mode. Protects all subdirectories, file types, and specified files in the protection directories that are not excluded.
 	//
 	// This parameter is required.
 	//
@@ -164,7 +162,7 @@ type ModifyWebLockStartRequest struct {
 	//
 	// whitelist
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// The UUID of the server for which you want to enable web tamper proofing.
+	// The UUID of the server that you want to protect.
 	//
 	// This parameter is required.
 	//

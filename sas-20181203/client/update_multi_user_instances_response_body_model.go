@@ -86,9 +86,9 @@ type UpdateMultiUserInstancesResponseBodyResult struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// Update status. Values:
 	//
-	// - **1**：Success
+	// - **1**:Success
 	//
-	// - **2**：Failure
+	// - **2**:Failure
 	//
 	// example:
 	//

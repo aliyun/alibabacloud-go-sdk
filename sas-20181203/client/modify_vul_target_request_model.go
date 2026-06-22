@@ -16,33 +16,33 @@ type iModifyVulTargetRequest interface {
 }
 
 type ModifyVulTargetRequest struct {
-	// The configurations. The value of this parameter is in the JSON format and contains the following fields:
+	// The configuration target. This parameter is in JSON format and contains the following fields:
 	//
-	// 	- **vulType**: the type of the vulnerabilities to scan. Valid values:
+	// - **vulType**: The vulnerability type. Valid values:
 	//
-	//     	- **cve**: Linux software vulnerabilities
+	//      - **cve**: Linux software vulnerability.
 	//
-	//     	- **sys**: Windows system vulnerabilities
+	//     - **sys**: Windows system vulnerability.
 	//
-	//     	- **cms**: Web-CMS vulnerabilities
+	//     - **cms**: Web-CMS vulnerability.
 	//
-	//     	- **emg**: urgent vulnerabilities
+	//     - **emg**: Emergency vulnerability.
 	//
 	// example:
 	//
 	// {\\"vulType\\":\\"sys\\"}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The operation. The value of this parameter is in the JSON format and contains the following fields:
+	// The operation target. This parameter is in JSON format and contains the following fields:
 	//
-	// 	- **target**: the UUID of the server.
+	// - **target**: The UUID of the target machine.
 	//
-	// 	- **targetType**: the application scope of the operation. Set the value to uuid.
+	// - **targetType**: The target type. Fixed value: uuid.
 	//
-	// 	- **flag**: the type of the operation. Valid values:
+	// - **flag**: The flag. Valid values:
 	//
-	//     	- **add**: select
+	//     - **add**: Selected.
 	//
-	//     	- **del**: deselect
+	//     - **del**: Deselected.
 	//
 	// example:
 	//

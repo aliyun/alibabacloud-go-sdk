@@ -16,9 +16,9 @@ type iDescribeImageRiskLevelStatisticResponseBody interface {
 }
 
 type DescribeImageRiskLevelStatisticResponseBody struct {
-	// The information about risks at the image level. The risks include vulnerabilities, baselines risks, and malicious file risks.
+	// The risk information at the image level, including risks from vulnerability, baseline, and malicious file detection.
 	ImageRiskLevelList []*DescribeImageRiskLevelStatisticResponseBodyImageRiskLevelList `json:"ImageRiskLevelList,omitempty" xml:"ImageRiskLevelList,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -66,21 +66,21 @@ func (s *DescribeImageRiskLevelStatisticResponseBody) Validate() error {
 }
 
 type DescribeImageRiskLevelStatisticResponseBodyImageRiskLevelList struct {
-	// The number of images at the risk level.
+	// The number of images at the specified risk level.
 	//
 	// example:
 	//
 	// 12
 	Cnt *int32 `json:"Cnt,omitempty" xml:"Cnt,omitempty"`
-	// The risk level of the image. Valid values:
+	// The image risk level. Valid values:
 	//
-	// 	- **3**: high risk.
+	//  - **3**: high risk
 	//
-	// 	- **2**: medium risk.
+	// - **2**: medium risk
 	//
-	// 	- **1**: low risk.
+	// - **1**: low risk
 	//
-	// 	- **0**: no risk.
+	// - **0**: no risk.
 	//
 	// example:
 	//

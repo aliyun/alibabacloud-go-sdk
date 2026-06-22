@@ -16,9 +16,9 @@ type iListAccountsInResourceDirectoryResponseBody interface {
 }
 
 type ListAccountsInResourceDirectoryResponseBody struct {
-	// The members in the resource directory.
+	// The list of member accounts in the resource directory.
 	Accounts []*ListAccountsInResourceDirectoryResponseBodyAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -74,33 +74,33 @@ type ListAccountsInResourceDirectoryResponseBodyAccounts struct {
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// Deprecated
 	//
-	// This parameter is deprecated and should be ignored.
+	// This parameter is deprecated and does not need to be used.
 	//
 	// example:
 	//
 	// true
 	BuySas *int32 `json:"BuySas,omitempty" xml:"BuySas,omitempty"`
-	// Whether a yearly or monthly subscription of Cloud Security Center is purchased. Values:
+	// Indicates whether a Security Center subscription instance is purchased. Valid values:
 	//
-	// - **true**: Yes
+	// - **true**
 	//
-	// - **false**: No
+	// - **false**.
 	//
 	// example:
 	//
 	// true
 	BuySasNew *bool `json:"BuySasNew,omitempty" xml:"BuySasNew,omitempty"`
-	// Subscription type. Values:
+	// The billing method. Valid values:
 	//
-	// 	- **0**: Prepaid
+	// 	- **0**: upfront
 	//
-	// 	- **1**: Pay-As-You-Go
+	// 	- **1**: pay-as-you-go.
 	//
 	// example:
 	//
 	// 1
 	ChargeType *int32 `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The name of the member.
+	// The account name.
 	//
 	// example:
 	//
@@ -112,109 +112,115 @@ type ListAccountsInResourceDirectoryResponseBodyAccounts struct {
 	//
 	// fd-cE2SQP****
 	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
-	// Instance purchase type. Values:
+	// The instance purchase type. Valid values:
 	//
-	// - **0**: Self-purchased
+	// - **0**: self-purchased
 	//
-	// - **1**: Multi-account allocation
+	// - **1**: allocated through multi-account management.
 	//
 	// example:
 	//
 	// 0
 	InstanceBuyType *int32 `json:"InstanceBuyType,omitempty" xml:"InstanceBuyType,omitempty"`
-	// Indicates whether the member is an administrator account of the resource directory. Valid values:
+	// Indicates whether the account is the management account of the resource directory. Valid values:
 	//
-	// 	- **yes**
+	// - **yes**
 	//
-	// 	- **no**
+	// - **no**.
 	//
 	// example:
 	//
 	// no
 	IsMaAccount *string `json:"IsMaAccount,omitempty" xml:"IsMaAccount,omitempty"`
-	// Indicates whether the member is marked as followed.
+	// Indicates whether the account is marked as followed.
 	//
 	// example:
 	//
 	// no
 	IsMarked *string `json:"IsMarked,omitempty" xml:"IsMarked,omitempty"`
-	// Indicates whether the member is a delegated administrator account of Security Center. Valid values:
+	// Indicates whether the account is a delegated administrator account of Security Center. Valid values:
 	//
-	// 	- **yes**
+	// - **yes**
 	//
-	// 	- **no**
+	// - **no**.
 	//
 	// example:
 	//
 	// no
 	IsSasDaAccount *string `json:"IsSasDaAccount,omitempty" xml:"IsSasDaAccount,omitempty"`
-	// Indicates whether the member is an account of the threat analysis and response feature. Valid values:
+	// Indicates whether the account is a management account of Cloud Threat Detection and Response (CTDR). Valid values:
 	//
-	// 	- **yes**
+	// - **yes**
 	//
-	// 	- **no**
+	// - **no**.
 	//
 	// example:
 	//
 	// no
 	IsSiemControlAccount *string `json:"IsSiemControlAccount,omitempty" xml:"IsSiemControlAccount,omitempty"`
-	// Indicates whether the member is a delegated administrator account of the threat analysis and response feature. Valid values:
+	// Indicates whether the account is a delegated administrator account of Cloud Threat Detection and Response (CTDR). Valid values:
 	//
-	// 	- **yes**
+	// - **yes**
 	//
-	// 	- **no**
+	// - **no**.
 	//
 	// example:
 	//
 	// no
 	IsSiemDaAccount *string `json:"IsSiemDaAccount,omitempty" xml:"IsSiemDaAccount,omitempty"`
-	// Post-paid module switch. Values:
+	// The pay-as-you-go module switch. Valid values:
 	//
-	// - **0**: Off
+	// - **0**: disabled
 	//
-	// - **1**: On
+	// - **1**: enabled.
 	//
 	// example:
 	//
 	// 1
 	PostBasicService *int32 `json:"PostBasicService,omitempty" xml:"PostBasicService,omitempty"`
-	// The switch status of the pay-as-you-go module. The value is a JSON string. Valid values:
+	// The status of pay-as-you-go module switches, in JsonString format. Valid values:
 	//
-	// 	- Key:
+	// - Key:
 	//
-	//     	- **VUL**: vulnerability fixing module
+	//   - **VUL**: vulnerability management module
 	//
-	//     	- **CSPM**: cloud service configuration check module
+	//   - **CSPM**: Cloud Security Posture Management (CSPM) module
 	//
-	//     	- **AGENTLESS**: agentless detection module
+	//   - **AGENTLESS**: agentless detection module
 	//
-	//     	- **SERVERLESS**: serverless asset module
+	//   - **SERVERLESS**: serverless asset module
 	//
-	// 	- Value: A value of 0 specifies disabled. A value of 1 specifies enabled.
+	//   - **CTDR**: Cloud Threat Detection and Response (CTDR) module
 	//
-	// >  If you do not specify a value for a module, the original value of the module is retained.
+	//   - **RASP**: Runtime Application Self-Protection (RASP) module
+	//
+	//   - **SDK**: malicious file detection SDK module
+	//
+	//   - **POST_HOST**: host and container security module
+	//
+	// - Value: 0 indicates disabled. 1 indicates enabled.
 	//
 	// example:
 	//
 	// {\\"VUL\\":0}
 	PostPayModuleSwitch *string `json:"PostPayModuleSwitch,omitempty" xml:"PostPayModuleSwitch,omitempty"`
-	// Cloud Security Center Instance ID.
+	// The Security Center instance ID.
 	//
 	// example:
 	//
 	// postpay-sas-x5x3hy1ly***
 	SaleInstance *string `json:"SaleInstance,omitempty" xml:"SaleInstance,omitempty"`
-	// The edition of Security Center that you use. Valid value:
+	// The purchased edition of Security Center. Valid values:
 	//
-	// 	- **0*	- or **1**: Basic
+	// - **0*	- or **1**: Free Edition
 	//
-	// 	- **2*	- or **3**: Enterprise
+	// - **2*	- or **3**: Enterprise Edition
 	//
-	// 	- **5**: Advanced
+	// - **5**: Premium Edition
 	//
-	// 	- **6**: Anti-virus
+	// - **6**: Anti-virus Edition
 	//
-	// 	- **7**: Ultimate
+	// - **7**: Ultimate Edition.
 	//
 	// example:
 	//

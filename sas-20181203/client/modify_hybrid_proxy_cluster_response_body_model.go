@@ -14,7 +14,7 @@ type iModifyHybridProxyClusterResponseBody interface {
 }
 
 type ModifyHybridProxyClusterResponseBody struct {
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The ID of the request. The ID is a unique identifier that Alibaba Cloud generates for the request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//

@@ -20,29 +20,29 @@ type iListK8sAccessInfoRequest interface {
 }
 
 type ListK8sAccessInfoRequest struct {
-	// This parameter is deprecated.
+	// This parameter is deprecated and does not need to be specified.
 	//
 	// example:
 	//
 	// None
 	AliyunYundunGatewayApiName *string `json:"AliyunYundunGatewayApiName,omitempty" xml:"AliyunYundunGatewayApiName,omitempty"`
-	// This parameter is deprecated.
+	// This parameter is deprecated and does not need to be specified.
 	//
 	// example:
 	//
 	// None
 	AliyunYundunGatewayPopName *string `json:"AliyunYundunGatewayPopName,omitempty" xml:"AliyunYundunGatewayPopName,omitempty"`
-	// This parameter is deprecated.
+	// This parameter is deprecated and does not need to be specified.
 	//
 	// example:
 	//
 	// None
 	AliyunYundunGatewayProjectName *string `json:"AliyunYundunGatewayProjectName,omitempty" xml:"AliyunYundunGatewayProjectName,omitempty"`
-	// The language of the content within the request and response. Valid values:
+	// The language type for requests and responses. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//

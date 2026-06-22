@@ -18,19 +18,19 @@ type iCreateUserSettingRequest interface {
 }
 
 type CreateUserSettingRequest struct {
-	// The severities of alerts.
+	// The list of alert notification levels.
 	//
 	// example:
 	//
 	// high,low
 	AlertLevels *string `json:"AlertLevels,omitempty" xml:"AlertLevels,omitempty"`
-	// The number of days during which you want to retain invalid alerts.
+	// The number of days to retain false positive alerts.
 	//
 	// example:
 	//
 	// 7
 	InvalidWarningKeepDays *int32 `json:"InvalidWarningKeepDays,omitempty" xml:"InvalidWarningKeepDays,omitempty"`
-	// The source IP address.
+	// The IP address of the access source.
 	//
 	// example:
 	//

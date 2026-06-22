@@ -20,27 +20,27 @@ type iUpgradeHoneypotNodeRequest interface {
 type UpgradeHoneypotNodeRequest struct {
 	// Specifies whether to allow the honeypot to access the Internet. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Allowed.
 	//
-	// 	- **false**
+	// - **false**: Not allowed.
 	//
 	// example:
 	//
 	// true
 	AllowHoneypotAccessInternet *bool `json:"AllowHoneypotAccessInternet,omitempty" xml:"AllowHoneypotAccessInternet,omitempty"`
-	// The language of the content within the request and response.
+	// The language of the request and response. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The ID of the management node that you want to upgrade.
+	// The ID of the management node to upgrade.
 	//
-	// >  You can call the [ListHoneypotNode](~~ListHoneypotNode~~) operation to obtain the ID.
+	// >You can call the [ListHoneypotNode](~~ListHoneypotNode~~) operation to obtain this parameter.
 	//
 	// example:
 	//

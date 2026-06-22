@@ -18,11 +18,11 @@ type iListAgentlessRelateMaliciousResponseBody interface {
 }
 
 type ListAgentlessRelateMaliciousResponseBody struct {
-	// The list of hosts that are associated with the risk.
+	// The list of servers with associated risks.
 	List []*ListAgentlessRelateMaliciousResponseBodyList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	// The pagination information.
+	// The paging information for the paging query.
 	PageInfo *ListAgentlessRelateMaliciousResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	// The request ID.
+	// The request ID. Alibaba Cloud generates a unique identifier for each request. You can use the request ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -84,9 +84,9 @@ func (s *ListAgentlessRelateMaliciousResponseBody) Validate() error {
 }
 
 type ListAgentlessRelateMaliciousResponseBodyList struct {
-	// The details of the alert events.
+	// The alert event details.
 	Details []*ListAgentlessRelateMaliciousResponseBodyListDetails `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
-	// The URL to download the malicious image sample.
+	// The download URL of the malicious sample.
 	//
 	// example:
 	//
@@ -98,13 +98,13 @@ type ListAgentlessRelateMaliciousResponseBodyList struct {
 	//
 	// /root/logs/arms/tracelogs/log****
 	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
-	// The timestamp when the first scan was performed. Unit: milliseconds.
+	// The timestamp of the first scan. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 168257753****
 	FirstScanTimestamp *int64 `json:"FirstScanTimestamp,omitempty" xml:"FirstScanTimestamp,omitempty"`
-	// The highlighted JSON string.
+	// The highlighted text, in JSON string format.
 	//
 	// example:
 	//
@@ -116,7 +116,7 @@ type ListAgentlessRelateMaliciousResponseBodyList struct {
 	//
 	// 8012
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the asset.
+	// The name of the asset instance.
 	//
 	// example:
 	//
@@ -134,25 +134,25 @@ type ListAgentlessRelateMaliciousResponseBodyList struct {
 	//
 	// 172.25.XX.XX
 	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	// The timestamp when the last scan was performed. Unit: milliseconds.
+	// The timestamp of the latest scan. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 168257753****
 	LatestScanTimestamp *int64 `json:"LatestScanTimestamp,omitempty" xml:"LatestScanTimestamp,omitempty"`
-	// The severity of the malicious file. Valid values:
+	// The severity level. Valid values:
 	//
-	// 	- serious
+	// - serious: urgent
 	//
-	// 	- suspicious
+	// - suspicious: suspicious
 	//
-	// 	- remind
+	// - remind: reminder.
 	//
 	// example:
 	//
 	// serious
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The MD5 hash value of the malicious file.
+	// The MD5 hash of the malicious file.
 	//
 	// example:
 	//
@@ -164,47 +164,47 @@ type ListAgentlessRelateMaliciousResponseBodyList struct {
 	//
 	// WebShell
 	MaliciousName *string `json:"MaliciousName,omitempty" xml:"MaliciousName,omitempty"`
-	// The type of the virus.
+	// The virus type.
 	//
 	// example:
 	//
 	// WebShell
 	MaliciousType *string `json:"MaliciousType,omitempty" xml:"MaliciousType,omitempty"`
-	// The handling result of the alert.
+	// The alert handling result.
 	//
 	// example:
 	//
 	// addWhitelist.USER.Success
 	OperateResult *string `json:"OperateResult,omitempty" xml:"OperateResult,omitempty"`
-	// The timestamp when the alert is handled. Unit: milliseconds.
+	// The timestamp when the alert was handled. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 168257753****
 	OperateTimestamp *string `json:"OperateTimestamp,omitempty" xml:"OperateTimestamp,omitempty"`
-	// The partition of the disk.
+	// The disk partition.
 	//
 	// example:
 	//
 	// /dev/xvda1
 	Partition *string `json:"Partition,omitempty" xml:"Partition,omitempty"`
-	// The ID of the task object.
+	// The ID of the task target.
 	//
 	// example:
 	//
 	// m-****
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
-	// The name of the task object.
+	// The name of the task target.
 	//
 	// example:
 	//
 	// image_***
 	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
-	// The type of the task object. Valid values:
+	// The object type. Valid values:
 	//
-	// 	- **1**: snapshot.
+	// - **1**: snapshot
 	//
-	// 	- **2**: image.
+	// - **2**: image.
 	//
 	// example:
 	//
@@ -429,25 +429,25 @@ func (s *ListAgentlessRelateMaliciousResponseBodyList) Validate() error {
 }
 
 type ListAgentlessRelateMaliciousResponseBodyListDetails struct {
-	// The name of the detailed item.
+	// The name of the alert event detail item.
 	//
 	// example:
 	//
 	// MD5
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The name key of the detailed item.
+	// The name key of the alert event detail item.
 	//
 	// example:
 	//
 	// ${suspicious.mp.db.maliciousfilemd5}
 	NameKey *string `json:"NameKey,omitempty" xml:"NameKey,omitempty"`
-	// The type of the detailed item.
+	// The type of the alert event detail item.
 	//
 	// example:
 	//
 	// text
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The value of the detailed item.
+	// The value of the alert event detail item.
 	//
 	// example:
 	//
@@ -504,25 +504,25 @@ func (s *ListAgentlessRelateMaliciousResponseBodyListDetails) Validate() error {
 }
 
 type ListAgentlessRelateMaliciousResponseBodyPageInfo struct {
-	// The number of entries returned on the current page.
+	// The number of entries on the current page.
 	//
 	// example:
 	//
 	// 2
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The page number of the returned page.
+	// The page number of the current page in a paging query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries returned per page.
+	// The maximum number of entries per page in a paging query.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//

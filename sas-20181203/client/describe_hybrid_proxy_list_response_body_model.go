@@ -20,9 +20,9 @@ type iDescribeHybridProxyListResponseBody interface {
 type DescribeHybridProxyListResponseBody struct {
 	// The pagination information.
 	PageInfo *DescribeHybridProxyListResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	// The information about the proxy clusters.
+	// The proxy cluster list.
 	ProxyList []*DescribeHybridProxyListResponseBodyProxyList `json:"ProxyList,omitempty" xml:"ProxyList,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -84,19 +84,19 @@ func (s *DescribeHybridProxyListResponseBody) Validate() error {
 }
 
 type DescribeHybridProxyListResponseBodyPageInfo struct {
-	// The number of entries on the current page.
+	// The number of entries returned on the current page in a paged query.
 	//
 	// example:
 	//
 	// 20
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The page number.
+	// The number of the page to return in a paged query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries per page.
+	// The maximum number of entries returned on each page in a paged query.
 	//
 	// example:
 	//
@@ -159,7 +159,7 @@ func (s *DescribeHybridProxyListResponseBodyPageInfo) Validate() error {
 }
 
 type DescribeHybridProxyListResponseBodyProxyList struct {
-	// The number of servers that are connected to the proxy instance.
+	// The number of Security Center agents connected to the proxy instance.
 	//
 	// example:
 	//
@@ -171,13 +171,13 @@ type DescribeHybridProxyListResponseBodyProxyList struct {
 	//
 	// proxy_01_05
 	CurrentVersion *string `json:"CurrentVersion,omitempty" xml:"CurrentVersion,omitempty"`
-	// The instance ID.
+	// The instance ID of the asset.
 	//
 	// example:
 	//
 	// i-uf61q03boqhhmeai1XXX
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The instance name.
+	// The name of the asset instance.
 	//
 	// example:
 	//
@@ -195,27 +195,27 @@ type DescribeHybridProxyListResponseBodyProxyList struct {
 	//
 	// 172.23.XXX.XXX
 	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	// The UUID of the proxy node.
+	// The unique key that identifies the proxy node.
 	//
 	// example:
 	//
 	// inet-proxy-3bb11fad-37d6-4aee-9c37-b0ad1612a18e
 	ProxyUuid *string `json:"ProxyUuid,omitempty" xml:"ProxyUuid,omitempty"`
-	// The status of the proxy server. Valid values:
+	// The running status of the proxy machine. Valid values:
 	//
-	// 	- **online**
+	// - **online**: online
 	//
-	// 	- **offline**
+	// - **offline**: offline.
 	//
 	// example:
 	//
 	// online
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The UUID of the server that is connected to the proxy instance.
+	// The UUID of the Security Center agent deployed on the proxy instance.
 	//
 	// example:
 	//
-	// 59a9d158-b2f0-4766-a893-ae67b943XXXX
+	// 59a9d158-b2f0-4766-a893-ae67b9432721
 	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 

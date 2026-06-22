@@ -125,7 +125,7 @@ type DescribeClusterNetworkResponseBodyClusterNetworkEdge struct {
 	DstNodeId *string `json:"DstNodeId,omitempty" xml:"DstNodeId,omitempty"`
 	// The type of the destination node. Valid values:
 	//
-	// 	- Set the value to **cluster**.
+	// - Set the value to **cluster**.
 	//
 	// example:
 	//
@@ -151,9 +151,9 @@ type DescribeClusterNetworkResponseBodyClusterNetworkEdge struct {
 	SrcNodeId *string `json:"SrcNodeId,omitempty" xml:"SrcNodeId,omitempty"`
 	// The type of the source node. Valid values:
 	//
-	// 	- **cluster**: a cluster.
+	// - **cluster**: a cluster.
 	//
-	// 	- **internet**: a network node outside the cluster
+	// - **internet**: a network node outside the cluster
 	//
 	// example:
 	//
@@ -230,9 +230,9 @@ func (s *DescribeClusterNetworkResponseBodyClusterNetworkEdge) Validate() error 
 type DescribeClusterNetworkResponseBodyClusterNetworkNode struct {
 	// The status of the microsegmentation switch. Valid values:
 	//
-	// 	- **0**: off.
+	// - **0**: off.
 	//
-	// 	- **1**: on.
+	// - **1**: on.
 	//
 	// example:
 	//
@@ -246,9 +246,9 @@ type DescribeClusterNetworkResponseBodyClusterNetworkNode struct {
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The network type. Valid values:
 	//
-	// 	- **0**: classic network.
+	// - **0**: classic network.
 	//
-	// 	- **1**: virtual private cloud (VPC).
+	// - **1**: virtual private cloud (VPC).
 	//
 	// example:
 	//
@@ -262,9 +262,9 @@ type DescribeClusterNetworkResponseBodyClusterNetworkNode struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The status of the network topology switch. Valid values:
 	//
-	// 	- **ON**
+	// - **ON**
 	//
-	// 	- **OFF**
+	// - **OFF**
 	//
 	// example:
 	//
@@ -272,15 +272,15 @@ type DescribeClusterNetworkResponseBodyClusterNetworkNode struct {
 	NetTopoSwitch *string `json:"NetTopoSwitch,omitempty" xml:"NetTopoSwitch,omitempty"`
 	// The risk level. Valid values:
 	//
-	// 	- **3**: high.
+	// - **3**: high.
 	//
-	// 	- **2**: medium.
+	// - **2**: medium.
 	//
-	// 	- **1**: low.
+	// - **1**: low.
 	//
-	// 	- **0**: secure.
+	// - **0**: secure.
 	//
-	// 	- **-1**: unknown.
+	// - **-1**: unknown.
 	//
 	// example:
 	//
@@ -288,9 +288,9 @@ type DescribeClusterNetworkResponseBodyClusterNetworkNode struct {
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 	// The type of the node. Valid values:
 	//
-	// 	- **cluster**: a cluster.
+	// - **cluster**: a cluster.
 	//
-	// 	- **internet**: a network node outside the cluster.
+	// - **internet**: a network node outside the cluster.
 	//
 	// example:
 	//

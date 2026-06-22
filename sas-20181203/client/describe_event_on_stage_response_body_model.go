@@ -16,13 +16,13 @@ type iDescribeEventOnStageResponseBody interface {
 }
 
 type DescribeEventOnStageResponseBody struct {
-	// The ID of the request.
+	// The unique identifier that Alibaba Cloud generated for the request.
 	//
 	// example:
 	//
 	// 24A20733-10A0-4AF6-BE6B-E332241XXXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The platforms that are supported by the feature of container threat detection.
+	// The platforms supported by threat detection.
 	SecurityEventStageResponse *DescribeEventOnStageResponseBodySecurityEventStageResponse `json:"SecurityEventStageResponse,omitempty" xml:"SecurityEventStageResponse,omitempty" type:"Struct"`
 }
 
@@ -62,13 +62,13 @@ func (s *DescribeEventOnStageResponseBody) Validate() error {
 }
 
 type DescribeEventOnStageResponseBodySecurityEventStageResponse struct {
-	// The platform that is supported by the feature of container threat detection. Valid values:
+	// The platforms supported by threat detection.
 	//
-	// 	- **container**
+	// - **container**: container
 	//
-	// 	- **linux**
+	// - **linux**: linux
 	//
-	// 	- **windows**
+	// - **windows**: windows.
 	SecurityEventOnStag map[string]interface{} `json:"SecurityEventOnStag,omitempty" xml:"SecurityEventOnStag,omitempty"`
 }
 

@@ -22,7 +22,7 @@ type iDescribeModuleConfigResponseBody interface {
 }
 
 type DescribeModuleConfigResponseBody struct {
-	// The number of configurations for the module.
+	// The number of module settings.
 	//
 	// example:
 	//
@@ -34,9 +34,9 @@ type DescribeModuleConfigResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// An array that consists of the configurations of the module.
+	// The list of module settings.
 	ModuleConfigList []*DescribeModuleConfigResponseBodyModuleConfigList `json:"ModuleConfigList,omitempty" xml:"ModuleConfigList,omitempty" type:"Repeated"`
-	// The request ID.
+	// The request ID. It is a unique identifier that Alibaba Cloud generates for the request. You can use it to troubleshoot issues.
 	//
 	// example:
 	//
@@ -44,9 +44,9 @@ type DescribeModuleConfigResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The request was successful.
 	//
-	// 	- **false**
+	// - **false**: The request failed.
 	//
 	// example:
 	//
@@ -121,15 +121,15 @@ func (s *DescribeModuleConfigResponseBody) Validate() error {
 }
 
 type DescribeModuleConfigResponseBodyModuleConfigList struct {
-	// The name of the configuration.
+	// The configuration name.
 	//
 	// example:
 	//
 	// timescan
 	ConfigName *string `json:"ConfigName,omitempty" xml:"ConfigName,omitempty"`
-	// An array that consists of the configuration items.
+	// The list of configuration items.
 	Items []*DescribeModuleConfigResponseBodyModuleConfigListItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The name of the module.
+	// The module name.
 	//
 	// example:
 	//
@@ -192,13 +192,13 @@ type DescribeModuleConfigResponseBodyModuleConfigListItems struct {
 	//
 	// 173
 	GroupId *int32 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The ID of the server.
+	// The ID of the server instance.
 	//
 	// example:
 	//
 	// i-uf6435dn4t59b9av****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the server.
+	// The name of the server instance.
 	//
 	// example:
 	//

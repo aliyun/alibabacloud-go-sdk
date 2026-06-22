@@ -14,7 +14,7 @@ type iGetDockerhubImageRiskRankInfoRequest interface {
 }
 
 type GetDockerhubImageRiskRankInfoRequest struct {
-	// The dimension types.
+	// The image dimension types to query.
 	Types []*string `json:"Types,omitempty" xml:"Types,omitempty" type:"Repeated"`
 }
 

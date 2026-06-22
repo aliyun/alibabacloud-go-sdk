@@ -22,7 +22,7 @@ type iDescribeImageFixTaskRequest interface {
 }
 
 type DescribeImageFixTaskRequest struct {
-	// The number of the page to return. Default value: **1**
+	// The page number of the results to return. Default value: **1**, which indicates that the results start from page 1.
 	//
 	// This parameter is required.
 	//
@@ -30,13 +30,13 @@ type DescribeImageFixTaskRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The timestamp when the task ends. Unit: milliseconds.
+	// The end timestamp of the repair task that you want to query. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1635575219000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The number of entries to return on each page. Default value: **20**
+	// The number of entries per page in a paginated query. Default value: **20**, which indicates that up to 20 entries are returned per page.
 	//
 	// This parameter is required.
 	//
@@ -44,19 +44,19 @@ type DescribeImageFixTaskRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The timestamp when the task starts. Unit: milliseconds.
+	// The start timestamp of the repair task that you want to query. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1634725571000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the task. Valid values:
+	// The status of the image repair task that you want to query. Valid values:
 	//
-	// 	- **1**: The task is running.
+	// - **1**: Repairing
 	//
-	// 	- **2**: The task is successful.
+	// - **2**: Repaired
 	//
-	// 	- **3**: The task failed.
+	// - **3**: Repair failed
 	//
 	// example:
 	//

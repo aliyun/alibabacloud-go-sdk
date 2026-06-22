@@ -16,9 +16,9 @@ type iDescribeClientConfSetupResponseBody interface {
 }
 
 type DescribeClientConfSetupResponseBody struct {
-	// The configurations of the Security Center agent.
+	// The resource configuration information of the client.
 	ClientConf *DescribeClientConfSetupResponseBodyClientConf `json:"ClientConf,omitempty" xml:"ClientConf,omitempty" type:"Struct"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The ID of the request. The ID is a unique identifier that Alibaba Cloud generates for the request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -62,25 +62,25 @@ func (s *DescribeClientConfSetupResponseBody) Validate() error {
 }
 
 type DescribeClientConfSetupResponseBodyClientConf struct {
-	// The configurations of the usage for the Security Center agent.
+	// The resource configuration information used by the client.
 	//
 	// example:
 	//
 	// {"mem":"200","cpu":"10","cpu_all":"0"}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The tag that is added to the configuration.
+	// The policy tag.
 	//
 	// example:
 	//
 	// machineResource
 	StrategyTag *string `json:"StrategyTag,omitempty" xml:"StrategyTag,omitempty"`
-	// The value of the tag. Valid values:
+	// The policy value. Valid values:
 	//
-	// 	- major
+	// - major
 	//
-	// 	- advanced
+	// - advanced
 	//
-	// 	- basic
+	// - basic.
 	//
 	// example:
 	//

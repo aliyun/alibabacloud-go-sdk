@@ -20,39 +20,39 @@ type iListSasContainerWebDefenseRuleRequest interface {
 }
 
 type ListSasContainerWebDefenseRuleRequest struct {
-	// The search conditions for assets. The value of this parameter is in the JSON format and contains the following fields:
+	// The conditions for searching assets. This parameter is in JSON format and contains the following fields:
 	//
-	// 	- **name**: the name of the search condition.
+	// - **name**: The search item.
 	//
-	// 	- **value**: the value of the search condition.
+	// - **value**: The value of the search item.
 	//
-	// 	- **logicalExp**: the logical relation for multiple search conditions. Valid values:
+	// - **logicalExp**: The logical relationship among multiple search item values. Valid values:
 	//
-	//     	- **OR**: The search conditions use a logical **OR**.
+	//     - **OR**: The search item values are evaluated by using the OR operator.
 	//
-	//     	- **AND**: The search conditions use a logical **AND**.
+	//     - **AND**: The search item values are evaluated by using the AND operator.
 	//
 	// example:
 	//
 	// [{\\"name\\":\\"ruleName\\",\\"value\\":\\"test-1818\\",\\"logicalExp\\":\\"AND\\"}]
 	Criteria *string `json:"Criteria,omitempty" xml:"Criteria,omitempty"`
-	// The page number. Pages start from page 1. Default value: 1.
+	// The page number of the current page in a paged query. Minimum value: 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The logical relation for multiple search conditions. Valid values:
+	// The logical relationship among multiple search conditions. Valid values:
 	//
-	// 	- **OR**: The search conditions use a logical **OR**.
+	// - **OR**: The search conditions are evaluated by using the OR operator.
 	//
-	// 	- **AND**: The search conditions use a logical **AND**.
+	// - **AND**: The search conditions are evaluated by using the AND operator.
 	//
 	// example:
 	//
 	// OR
 	LogicalExp *string `json:"LogicalExp,omitempty" xml:"LogicalExp,omitempty"`
-	// The number of entries per page. Default value: **20**.
+	// The number of entries per page in a paged query. Default value: **20**, which indicates that 20 entries are displayed per page.
 	//
 	// example:
 	//

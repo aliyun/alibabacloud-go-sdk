@@ -16,11 +16,11 @@ type iUpdateAttackPathSensitiveAssetConfigRequest interface {
 }
 
 type UpdateAttackPathSensitiveAssetConfigRequest struct {
-	// List of cloud product assets in the attack path.
+	// The list of cloud service assets for attack path analysis.
 	//
 	// This parameter is required.
 	AttackPathAssetList []*UpdateAttackPathSensitiveAssetConfigRequestAttackPathAssetList `json:"AttackPathAssetList,omitempty" xml:"AttackPathAssetList,omitempty" type:"Repeated"`
-	// ID of the sensitive asset setting for the attack path.
+	// The ID of the attack path sensitive asset configuration.
 	//
 	// This parameter is required.
 	//
@@ -70,9 +70,9 @@ func (s *UpdateAttackPathSensitiveAssetConfigRequest) Validate() error {
 }
 
 type UpdateAttackPathSensitiveAssetConfigRequestAttackPathAssetList struct {
-	// Subtype of the cloud product asset.
+	// The subtype of the cloud service asset.
 	//
-	// > You can call [ListCloudAssetInstances](~~ListCloudAssetInstances~~) to query the subtype of the cloud product asset.
+	// > You can call [ListCloudAssetInstances](~~ListCloudAssetInstances~~) to query the subtype of the cloud service asset.
 	//
 	// This parameter is required.
 	//
@@ -80,9 +80,9 @@ type UpdateAttackPathSensitiveAssetConfigRequestAttackPathAssetList struct {
 	//
 	// 4
 	AssetSubType *int32 `json:"AssetSubType,omitempty" xml:"AssetSubType,omitempty"`
-	// Type of the cloud product asset.
+	// The type of the cloud service asset.
 	//
-	// > You can call [ListCloudAssetInstances](~~ListCloudAssetInstances~~) to query the type of the cloud product asset.
+	// > You can call [ListCloudAssetInstances](~~ListCloudAssetInstances~~) to query the type of the cloud service asset.
 	//
 	// This parameter is required.
 	//
@@ -90,9 +90,9 @@ type UpdateAttackPathSensitiveAssetConfigRequestAttackPathAssetList struct {
 	//
 	// 18
 	AssetType *int32 `json:"AssetType,omitempty" xml:"AssetType,omitempty"`
-	// Cloud product asset instance ID.
+	// The instance ID of the cloud service asset.
 	//
-	// > You can call [ListCloudAssetInstances](~~ListCloudAssetInstances~~) to query the cloud product asset instance ID.
+	// > You can call [ListCloudAssetInstances](~~ListCloudAssetInstances~~) to query the instance ID of the cloud service asset.
 	//
 	// This parameter is required.
 	//
@@ -100,9 +100,9 @@ type UpdateAttackPathSensitiveAssetConfigRequestAttackPathAssetList struct {
 	//
 	// i-2ze357b4mrkwi7tq****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Region ID of the cloud product asset instance.
+	// The region ID of the cloud service asset instance.
 	//
-	// > You can call [ListCloudAssetInstances](~~ListCloudAssetInstances~~) to query the region ID of the cloud product asset instance.
+	// > You can call [ListCloudAssetInstances](~~ListCloudAssetInstances~~) to query the region ID of the cloud service asset instance.
 	//
 	// This parameter is required.
 	//
@@ -110,9 +110,9 @@ type UpdateAttackPathSensitiveAssetConfigRequestAttackPathAssetList struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Vendor of the cloud product asset.
+	// The vendor of the cloud service asset.
 	//
-	// > You can call [ListCloudAssetInstances](~~ListCloudAssetInstances~~) to query the vendor of the cloud product asset.
+	// > You can call [ListCloudAssetInstances](~~ListCloudAssetInstances~~) to query the vendor of the cloud service asset.
 	//
 	// This parameter is required.
 	//

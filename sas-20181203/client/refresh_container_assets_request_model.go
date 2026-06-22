@@ -14,11 +14,11 @@ type iRefreshContainerAssetsRequest interface {
 }
 
 type RefreshContainerAssetsRequest struct {
-	// The type of the container asset whose statistics you want to refresh. Valid values:
+	// The Asset Type of the container asset to refresh. Valid values:
 	//
-	// 	- **IMAGE**
+	// - **IMAGE**: container image.
 	//
-	// 	- **CONTAINER**
+	// - **CONTAINER**: container.
 	//
 	// This parameter is required.
 	//

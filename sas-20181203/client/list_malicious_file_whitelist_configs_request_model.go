@@ -24,15 +24,15 @@ type iListMaliciousFileWhitelistConfigsRequest interface {
 }
 
 type ListMaliciousFileWhitelistConfigsRequest struct {
-	// The page number. Pages start from page 1. Default value: 1.
+	// The page number of the current page to return. Minimum value: 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The name of the alert.
+	// The alerting name. Valid values:
 	//
-	// 	- Set the value to ALL, which indicates all alert types.
+	// - ALL: all Alarm Metric values.
 	//
 	// example:
 	//
@@ -40,29 +40,31 @@ type ListMaliciousFileWhitelistConfigsRequest struct {
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
 	// Deprecated
 	//
-	// Event ID. <notice>Field is deprecated.</notice>
+	// The event ID.
+	//
+	// 	Notice: This field is deprecated..
 	//
 	// example:
 	//
 	// 123
 	IdList *int64 `json:"IdList,omitempty" xml:"IdList,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of entries per page. Default value: 20.
+	// The maximum number of entries to return per page in a paging query. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The feature to which this operation belongs. If you leave this parameter empty, the default value agentless is used.
+	// The business source. This parameter can be left empty. Default value: agentless.
 	//
 	// example:
 	//

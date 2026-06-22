@@ -22,15 +22,15 @@ type iModifyLogMetaStatusRequest interface {
 }
 
 type ModifyLogMetaStatusRequest struct {
-	// The ID of the request source. Set the value to **sas**.
+	// The request source identifier. Set this parameter to **sas**.
 	//
 	// example:
 	//
 	// sas
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
-	// The name of the dedicated Logstore in which logs are stored.
+	// The name of the dedicated Logstore where logs are stored.
 	//
-	// >  You can call the [DescribeLogMeta](~~DescribeLogMeta~~) operation to query the names of Logstores.
+	// >You can call the [DescribeLogMeta](~~DescribeLogMeta~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -38,27 +38,27 @@ type ModifyLogMetaStatusRequest struct {
 	//
 	// aegis-log-login
 	LogStore *string `json:"LogStore,omitempty" xml:"LogStore,omitempty"`
-	// The name of the project.
+	// The project name.
 	//
-	// >  You can call the [DescribeLogMeta](~~DescribeLogMeta~~) operation to query the names of projects.
+	// > You can call the [DescribeLogMeta](~~DescribeLogMeta~~) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// aegis-log
 	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
-	// The Alibaba Cloud account ID of the member in the resource directory.
+	// The ID of the member account in the resource directory (Alibaba Cloud account).
 	//
-	// >  You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain the IDs.
+	// >Call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// 1232428423234****
 	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
-	// The status of the log analysis feature. Valid values:
+	// The status to which you want to change the log. Valid values:
 	//
-	// 	- **enabled**
+	// - **enabled**: enabled
 	//
-	// 	- **disabled**
+	// - **disabled**: disabled.
 	//
 	// This parameter is required.
 	//

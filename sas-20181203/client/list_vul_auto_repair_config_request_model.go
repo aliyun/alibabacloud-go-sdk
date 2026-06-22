@@ -28,23 +28,23 @@ type ListVulAutoRepairConfigRequest struct {
 	//
 	// RHSA-2022:0274-Important: polkit pkexec Local Privilege Escalation Vulnerability(CVE-2021-4034)
 	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
-	// The number of the page to return. Default value: **1**.
+	// The page number of the page to return. Default value: **1**, which indicates that the first page is returned.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese.
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English.
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of entries per page. Default value: **10**.
+	// The number of entries per page in a paged query. Default value: **10**, which indicates that 10 auto-fix vulnerability configurations are displayed per page.
 	//
 	// example:
 	//
@@ -52,9 +52,9 @@ type ListVulAutoRepairConfigRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The type of the vulnerability. Valid values:
 	//
-	// 	- **cve**: Linux software vulnerability
+	// - **cve**: Linux software vulnerability
 	//
-	// 	- **sys**: Windows system vulnerability
+	// - **sys**: Windows system vulnerability.
 	//
 	// example:
 	//

@@ -18,27 +18,27 @@ type iSetImageBuildRiskStatusRequest interface {
 }
 
 type SetImageBuildRiskStatusRequest struct {
-	// The UUIDs of images. Separate multiple UUIDs with commas (,).
+	// The image UUIDs. Separate multiple UUIDs with commas (,).
 	//
-	// >  You can call the [DescribeImageInstances](~~DescribeImageInstances~~) operation to query the UUIDs of images.
+	// >Call the [DescribeImageInstances](~~DescribeImageInstances~~) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// f382fccd88b94c5c8c864def681*****,ac32fccd88b94c5c8c864def681*****
 	ImageUuids *string `json:"ImageUuids,omitempty" xml:"ImageUuids,omitempty"`
-	// The keyword of the image build command risk.
+	// The risk keyword.
 	//
 	// example:
 	//
 	// risk.type
 	RiskKey *string `json:"RiskKey,omitempty" xml:"RiskKey,omitempty"`
-	// The status of the image build command risk. Valid values:
+	// The status. Valid values:
 	//
-	// 	- **0**: unhandled.
+	// - **0**: Unhandled.
 	//
-	// 	- **1**: ignored.
+	// - **1**: Ignored.
 	//
-	// 	- **2**: false positive.
+	// - **2**: False positive.
 	//
 	// example:
 	//

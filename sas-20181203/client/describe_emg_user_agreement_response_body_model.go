@@ -16,11 +16,11 @@ type iDescribeEmgUserAgreementResponseBody interface {
 }
 
 type DescribeEmgUserAgreementResponseBody struct {
-	// Indicates whether Security Center is authorized to scan for urgent vulnerabilities. Valid values:
+	// Indicates whether the emergency vulnerability scan is authorized. Valid values:
 	//
-	// 	- **true**: yes
+	// - **true**: Authorized.
 	//
-	// 	- **false**: no
+	// - **false**: Not authorized.
 	//
 	// example:
 	//

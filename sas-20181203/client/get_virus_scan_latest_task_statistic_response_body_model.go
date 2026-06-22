@@ -16,9 +16,9 @@ type iGetVirusScanLatestTaskStatisticResponseBody interface {
 }
 
 type GetVirusScanLatestTaskStatisticResponseBody struct {
-	// The information about the virus scan task.
+	// The custom result data.
 	Data *GetVirusScanLatestTaskStatisticResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -62,109 +62,109 @@ func (s *GetVirusScanLatestTaskStatisticResponseBody) Validate() error {
 }
 
 type GetVirusScanLatestTaskStatisticResponseBodyData struct {
-	// The number of machines on which the virus scan task is complete.
+	// The number of servers that completed the scan.
 	//
 	// example:
 	//
 	// 2
 	CompleteMachine *int32 `json:"CompleteMachine,omitempty" xml:"CompleteMachine,omitempty"`
-	// The name of the machine.
+	// The name of the server.
 	//
 	// example:
 	//
 	// testMahine1
 	MachineName *string `json:"MachineName,omitempty" xml:"MachineName,omitempty"`
-	// The progress of the virus scan task in percentage.
+	// The progress percentage of the scan task.
 	//
 	// example:
 	//
 	// 92
 	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// The highest risk level of the detected alerts. Valid values:
+	// The highest risk level of the alerts detected by the scan. Valid values:
 	//
-	// 	- **high**
+	// - **high**: high-risk.
 	//
-	// 	- **medium**
+	// - **medium**: medium-risk.
 	//
-	// 	- **low**
+	// - **low**: low-risk.
 	//
 	// example:
 	//
 	// medium
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The number of safe machines that are detected.
+	// The number of servers on which no risks are detected.
 	//
 	// example:
 	//
 	// 1
 	SafeMachine *int32 `json:"SafeMachine,omitempty" xml:"SafeMachine,omitempty"`
-	// The number of machines that are scanned.
+	// The number of servers scanned in this virus scan.
 	//
 	// example:
 	//
 	// 3
 	ScanMachine *int32 `json:"ScanMachine,omitempty" xml:"ScanMachine,omitempty"`
-	// The paths of files that were scanned. This value is returned only when ScanType is set to user.
+	// The file paths specified for scanning when the scan type is user-defined.
 	ScanPath []*string `json:"ScanPath,omitempty" xml:"ScanPath,omitempty" type:"Repeated"`
-	// The timestamp generated when the virus scan task was performed. Unit: milliseconds.
+	// The timestamp of the scan. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1681145862000
 	ScanTime *int64 `json:"ScanTime,omitempty" xml:"ScanTime,omitempty"`
-	// The type of the virus scan. Valid values:
+	// The scan type of this virus scan. Valid values:
 	//
-	// 	- **system**: automatic scan.
+	// - **system**: automatic system scan.
 	//
-	// 	- **user**: custom scan.
+	// - **user**: user-defined scan.
 	//
 	// example:
 	//
 	// system
 	ScanType *string `json:"ScanType,omitempty" xml:"ScanType,omitempty"`
-	// The status of the virus scan task.
+	// The status of the scan task.
 	//
-	// **Valid values for a main task**:
+	// **Valid values for the main task:**
 	//
-	// 	- **0**: The main task is to be started.
+	// - **0**: The task is pending.
 	//
-	// 	- **10**: The main task is running.
+	// - **10**: The scan is in progress.
 	//
-	// 	- **100**: The main task is complete.
+	// - **100**: The scan is complete.
 	//
-	// **Valid values for a subtask**:
+	// **Valid values for the subtask:**
 	//
-	// 	- **0**: The subtask is to be started.
+	// - **0**: The scan is pending.
 	//
-	// 	- **20**: The scan script is sent.
+	// - **20**: The detection script is delivered.
 	//
-	// 	- **50**: The subtask is running.
+	// - **50**: The scan is running on the server.
 	//
-	// 	- **100**: The subtask is complete.
+	// - **100**: The scan is complete.
 	//
 	// example:
 	//
 	// 0
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The number of alerts that are detected.
+	// The number of security alerts detected by the scan.
 	//
 	// example:
 	//
 	// 2
 	SuspiciousCount *int32 `json:"SuspiciousCount,omitempty" xml:"SuspiciousCount,omitempty"`
-	// The number of suspicious machines that are detected.
+	// The number of servers on which risks are detected.
 	//
 	// example:
 	//
 	// 2
 	SuspiciousMachine *int32 `json:"SuspiciousMachine,omitempty" xml:"SuspiciousMachine,omitempty"`
-	// The ID of the virus scan task.
+	// The ID of the scan task.
 	//
 	// example:
 	//
 	// fc98d58eb56f699d49bf7ebbd6d7****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The number of machines on which the virus scan task was not complete or failed.
+	// The number of servers that have not completed the scan or failed the scan.
 	//
 	// example:
 	//

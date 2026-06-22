@@ -24,13 +24,13 @@ type DescribeHybridProxyListRequest struct {
 	//
 	// idc-sas-proxy
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// The page number.
+	// The number of the page to return in a paged query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries per page. Default value: 20.
+	// The maximum number of entries to return on each page in a paged query. Default value: 20.
 	//
 	// example:
 	//

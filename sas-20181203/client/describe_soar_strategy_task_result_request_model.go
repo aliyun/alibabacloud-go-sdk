@@ -20,27 +20,27 @@ type iDescribeSoarStrategyTaskResultRequest interface {
 }
 
 type DescribeSoarStrategyTaskResultRequest struct {
-	// Condition parameters for task scheduling.
+	// The condition parameter for task scheduling.
 	//
 	// example:
 	//
 	// {"status":1}
 	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
-	// The current page number during paginated queries.
+	// The page number of the current page for a paged query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The maximum number of entries to display per page during paginated queries.
+	// The maximum number of entries per page for a paged query.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Strategy task ID.
+	// The ID of the policy task.
 	//
-	// > You can obtain this parameter by calling the [DescribeSoarStrategyTasks](~~DescribeSoarStrategyTasks~~) interface.
+	// >Call the [DescribeSoarStrategyTasks](~~DescribeSoarStrategyTasks~~) operation to obtain this parameter.
 	//
 	// example:
 	//

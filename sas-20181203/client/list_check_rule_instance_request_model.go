@@ -20,23 +20,23 @@ type iListCheckRuleInstanceRequest interface {
 }
 
 type ListCheckRuleInstanceRequest struct {
-	// The page number of the current page when performing a paginated query.
+	// The page number to return when paging is used.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// Instance list.
+	// The list of instances.
 	InstanceList []*ListCheckRuleInstanceRequestInstanceList `json:"InstanceList,omitempty" xml:"InstanceList,omitempty" type:"Repeated"`
-	// The maximum number of items per page in a paginated query. The default value is **20**.
+	// The maximum number of entries to return per page when paging is used. Default value: **20**.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Rule ID.
+	// The rule ID.
 	//
-	// > You can call the [LisCheckRule](https://help.aliyun.com/document_detail/2590599.html) interface to get this parameter.
+	// > Call the [LisCheckRule](https://help.aliyun.com/document_detail/2590599.html) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -104,17 +104,17 @@ func (s *ListCheckRuleInstanceRequest) Validate() error {
 }
 
 type ListCheckRuleInstanceRequestInstanceList struct {
-	// Asset instance ID.
+	// The instance ID of the asset.
 	//
-	// > Call the [ListCheckInstanceResult](~~ListCheckInstanceResult~~) interface to get this parameter.
+	// > Call the [ListCheckInstanceResult](~~ListCheckInstanceResult~~) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// i-wz9fdluqx20mp2x7****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region where the asset is located.
+	// The region where the asset resides.
 	//
-	// > Call the [ListCheckInstanceResult](~~ListCheckInstanceResult~~) interface to get this parameter.
+	// > Call the [ListCheckInstanceResult](~~ListCheckInstanceResult~~) operation to obtain this parameter.
 	//
 	// example:
 	//

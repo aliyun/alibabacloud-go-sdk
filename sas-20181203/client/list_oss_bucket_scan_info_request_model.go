@@ -26,13 +26,13 @@ type iListOssBucketScanInfoRequest interface {
 }
 
 type ListOssBucketScanInfoRequest struct {
-	// The name of the bucket.
+	// The bucket name.
 	//
 	// example:
 	//
 	// iboxpublic****
 	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
-	// The page number.
+	// The page number of the current page in a paging query.
 	//
 	// This parameter is required.
 	//
@@ -40,33 +40,33 @@ type ListOssBucketScanInfoRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The name of the bucket that is used for fuzzy match.
+	// The bucket name for fuzzy match.
 	//
 	// example:
 	//
 	// test
 	FuzzBucketName *string `json:"FuzzBucketName,omitempty" xml:"FuzzBucketName,omitempty"`
-	// Specifies whether at-risk objects are detected. Valid values:
+	// Specifies whether risky files are detected. Valid values:
 	//
-	// 	- **0**: No at-risk objects are detected.
+	// - **0**: No risks detected.
 	//
-	// 	- **1**: At-risk objects are detected.
+	// - **1**: Risky files exist.
 	//
 	// example:
 	//
 	// 1
 	HasRisk *int32 `json:"HasRisk,omitempty" xml:"HasRisk,omitempty"`
-	// The language of the content in the request and response. Default value: **zh**. Valid values:
+	// The language type for the request and response messages. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese.
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English.
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of entries per page.
+	// The maximum number of entries to return on each page in a paging query.
 	//
 	// This parameter is required.
 	//
@@ -74,15 +74,15 @@ type ListOssBucketScanInfoRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The check status of the bucket. Valid values:
+	// The detection status. Valid values:
 	//
-	// 	- **1**: The bucket is not checked.
+	// - **1**: Not scanned.
 	//
-	// 	- **2**: All objects in the bucket are being checked.
+	// - **2**: Full scan in progress.
 	//
-	// 	- **3**: Only new objects in the bucket are being checked.
+	// - **3**: Incremental scan in progress.
 	//
-	// 	- **4**: The bucket is checked.
+	// - **4**: Scanned.
 	//
 	// example:
 	//

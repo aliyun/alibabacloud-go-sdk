@@ -14,9 +14,9 @@ type iModifyWebLockUnbindRequest interface {
 }
 
 type ModifyWebLockUnbindRequest struct {
-	// The UUID of the server for which you want to disable web tamper proofing.
+	// The UUID of the server from which you want to remove the protection directories.
 	//
-	// > You can call the [DescribeWebLockBindList](~~DescribeWebLockBindList~~) operation to query the UUIDs of servers.
+	// > Call [DescribeWebLockBindList](~~DescribeWebLockBindList~~) to obtain the UUID of the server.
 	//
 	// example:
 	//

@@ -18,7 +18,7 @@ type iGetOnceTaskResultInfoRequest interface {
 }
 
 type GetOnceTaskResultInfoRequest struct {
-	// The ID of the scan task.
+	// The ID of the one-time task.
 	//
 	// This parameter is required.
 	//
@@ -28,11 +28,25 @@ type GetOnceTaskResultInfoRequest struct {
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// The name of the task. Valid values:
 	//
-	// 	- **CLIENT_PROBLEM_CHECK**: a task of the Security Center agent
+	// - **CLIENT_PROBLEM_CHECK**: client troubleshooting task
 	//
-	// 	- **CLIENT_DEV_OPS**: an O\\&M task of Cloud Assistant
+	// - **CLIENT_DEV_OPS**: cloud O\\&M task
 	//
-	// 	- **ASSET_SECURITY_CHECK**: a task of asset information collection
+	// - **ASSET_SECURITY_CHECK**: asset collection task
+	//
+	// - **ASSETS_COLLECTION**: asset fingerprint collection task
+	//
+	// - **IMAGE_SCAN**: container image scan task
+	//
+	// - **AI_SECURITY_CHECK**: AI asset synchronization task
+	//
+	// - **IDC_PROBE_SCAN**: IDC probe scan task
+	//
+	// - **ATTACK_SURFACE_SCAN**: attack surface and boundary asset scan task
+	//
+	// - **ASSET_EXPOSURE_SCAN**: asset exposure scan task
+	//
+	// - **VUL_CHECK_TASK**: vulnerability scan task
 	//
 	// This parameter is required.
 	//
@@ -42,11 +56,25 @@ type GetOnceTaskResultInfoRequest struct {
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 	// The type of the task. Valid values:
 	//
-	// 	- **CLIENT_PROBLEM_CHECK**: a task of the Security Center agent
+	// - **CLIENT_PROBLEM_CHECK**: client troubleshooting task
 	//
-	// 	- **CLIENT_DEV_OPS**: an O\\&M task of Cloud Assistant
+	// - **CLIENT_DEV_OPS**: cloud O\\&M task
 	//
-	// 	- **ASSET_SECURITY_CHECK**: a task of asset information collection
+	// - **ASSET_SECURITY_CHECK**: asset collection task
+	//
+	// - **ASSETS_COLLECTION**: asset fingerprint collection task
+	//
+	// - **IMAGE_SCAN**: container image scan task
+	//
+	// - **AI_SECURITY_CHECK**: AI asset synchronization task
+	//
+	// - **IDC_PROBE_SCAN**: IDC probe scan task
+	//
+	// - **ATTACK_SURFACE_SCAN**: attack surface and boundary asset scan task
+	//
+	// - **ASSET_EXPOSURE_SCAN**: asset exposure scan task
+	//
+	// - **VUL_CHECK_TASK**: vulnerability scan task
 	//
 	// This parameter is required.
 	//

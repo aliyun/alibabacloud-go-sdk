@@ -16,7 +16,7 @@ type iListAssetSelectionSelectedTargetRequest interface {
 }
 
 type ListAssetSelectionSelectedTargetRequest struct {
-	// The unique ID of the asset.
+	// The unique identifier of the asset selection.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type ListAssetSelectionSelectedTargetRequest struct {
 	//
 	// 2e6ab33d-4e00-4581-ac16-0dd1f9ad****
 	SelectionKey *string `json:"SelectionKey,omitempty" xml:"SelectionKey,omitempty"`
-	// The details of queries.
+	// The query list.
 	TargetList []*string `json:"TargetList,omitempty" xml:"TargetList,omitempty" type:"Repeated"`
 }
 

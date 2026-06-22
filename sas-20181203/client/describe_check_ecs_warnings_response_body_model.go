@@ -20,39 +20,39 @@ type iDescribeCheckEcsWarningsResponseBody interface {
 }
 
 type DescribeCheckEcsWarningsResponseBody struct {
-	// Indicates whether you use the free trial of Security Center. Valid values:
+	// Indicates whether the current Security Center edition is a trial version. Valid values:
 	//
-	// - **0**: no
+	// - **0**: not a trial version
 	//
-	// - **1**: yes
+	// - **1**: a trial version.
 	//
 	// example:
 	//
 	// 0
 	CanTry *string `json:"CanTry,omitempty" xml:"CanTry,omitempty"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The request ID.
 	//
 	// example:
 	//
 	// 4E5BFDCF-B9DD-430D-9DA4-151BCB581C9D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The edition of Security Center that you use. Valid values:
+	// The edition of Security Center that you purchased. Valid values:
 	//
-	// 	- **1**: Basic edition
+	// - **1**: Free Edition
 	//
-	// 	- **2*	- or **3**: Enterprise edition
+	// - **2*	- or **3**: Enterprise Edition
 	//
-	// 	- **5**: Advanced edition
+	// - **5**: Premium Edition
 	//
-	// 	- **6**: Anti-virus edition
+	// - **6**: Anti-virus Edition
 	//
-	// >  Both the value 2 and the value 3 indicate the Enterprise edition.
+	// > Both 2 and 3 correspond to Enterprise Edition. There is no difference between the two values.
 	//
 	// example:
 	//
 	// 3
 	SasVersion *string `json:"SasVersion,omitempty" xml:"SasVersion,omitempty"`
-	// The number of weak passwords that can cause high risks to your assets.
+	// The number of high-risk weak password risks detected in your assets.
 	//
 	// example:
 	//

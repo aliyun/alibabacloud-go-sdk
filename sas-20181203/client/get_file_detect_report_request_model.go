@@ -32,15 +32,15 @@ type GetFileDetectReportRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- **ThreatTypes**: the type of the threat intelligence event
+	// - **ThreatTypes**: the type of the threat intelligence event
 	//
-	// 	- **Intelligences**: the threat intelligence event
+	// - **Intelligences**: the threat intelligence event
 	//
-	// 	- **ThreatLevel**: the level of the threat intelligence event
+	// - **ThreatLevel**: the level of the threat intelligence event
 	//
-	// 	- **Basic**: the basic information about the report (the scan result)
+	// - **Basic**: the basic information about the report (the scan result)
 	//
-	// 	- **Sandbox**: the cloud sandbox check report
+	// - **Sandbox**: the cloud sandbox check report
 	//
 	// example:
 	//
@@ -54,9 +54,9 @@ type GetFileDetectReportRequest struct {
 	FileHash *string `json:"FileHash,omitempty" xml:"FileHash,omitempty"`
 	// The language of the content within the request and response. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//
@@ -64,9 +64,9 @@ type GetFileDetectReportRequest struct {
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The data source type. Valid values:
 	//
-	// 	- **machine**: host alerts
+	// - **machine**: host alerts
 	//
-	// 	- **object_scan**: file detection alerts
+	// - **object_scan**: file detection alerts
 	//
 	// example:
 	//

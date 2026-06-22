@@ -30,7 +30,7 @@ type iDescribeVulExportInfoResponseBody interface {
 }
 
 type DescribeVulExportInfoResponseBody struct {
-	// The number of exported entries.
+	// The number of data entries that have been exported.
 	//
 	// example:
 	//
@@ -38,11 +38,11 @@ type DescribeVulExportInfoResponseBody struct {
 	CurrentCount *int32 `json:"CurrentCount,omitempty" xml:"CurrentCount,omitempty"`
 	// The status of the export task. Valid values:
 	//
-	// 	- **init**: The task is being initialized.
+	// - **init**: initializing
 	//
-	// 	- **exporting**: The task is in progress.
+	// - **exporting**: exporting in progress
 	//
-	// 	- **success**: The task is complete.
+	// - **success**: export successful.
 	//
 	// example:
 	//
@@ -54,37 +54,37 @@ type DescribeVulExportInfoResponseBody struct {
 	//
 	// app_20210917
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// The ID of the task.
+	// The ID of the vulnerability export task.
 	//
 	// example:
 	//
 	// 14356
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The URL at which you can download the exported Excel file.
+	// The download link of the exported Excel file.
 	//
 	// example:
 	//
 	// http://www.aliyun.com
 	Link *string `json:"Link,omitempty" xml:"Link,omitempty"`
-	// The message that shows the results of the task. The value is fixed as **success**, which indicates that the task is complete.
+	// The message about the export result. Fixed value: **success**. This value indicates that the export is successful.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The progress percentage of the task.
+	// The export progress percentage (%).
 	//
 	// example:
 	//
 	// 100
 	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The request ID. Alibaba Cloud generates a unique identifier for each API request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// 4C1AE3F3-18FA-4108-BXXX-AFA1A032756C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries in the exported Excel file.
+	// The total number of data entries in the exported Excel file.
 	//
 	// example:
 	//

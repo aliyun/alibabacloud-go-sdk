@@ -54,9 +54,9 @@ type iDescribeAffectedMaliciousFileImagesRequest interface {
 }
 
 type DescribeAffectedMaliciousFileImagesRequest struct {
-	// The ID of the container cluster.
+	// The ID of the container cluster to query.
 	//
-	// >  You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to query the IDs of container clusters.
+	// > Call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to obtain this parameter.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type DescribeAffectedMaliciousFileImagesRequest struct {
 	//
 	// cc20a1024011c44b6a8710d6f8b****
 	ContainerId *string `json:"ContainerId,omitempty" xml:"ContainerId,omitempty"`
-	// The number of the page to return. Pages start from page **1**. Default value: **1**.
+	// The page number of the current page when using paging. Minimum value: **1**. Default value: **1**.
 	//
 	// This parameter is required.
 	//
@@ -88,49 +88,49 @@ type DescribeAffectedMaliciousFileImagesRequest struct {
 	//
 	// registry.cn-wulanchabu.aliyuncs.com/sas_test/huxin-test-001:nuxeo6-****
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
-	// The image digest.
+	// The digest of the image.
 	//
 	// example:
 	//
 	// 6a5e103187b31a94592a47a5858617f7a179ead61df7606****
 	ImageDigest *string `json:"ImageDigest,omitempty" xml:"ImageDigest,omitempty"`
-	// The image layer.
+	// The layer of the image.
 	//
 	// example:
 	//
 	// 27213ad375b53628dd152a5ca****
 	ImageLayer *string `json:"ImageLayer,omitempty" xml:"ImageLayer,omitempty"`
-	// The tag that is added to the image.
+	// The tag of the image.
 	//
 	// example:
 	//
 	// 0.2
 	ImageTag *string `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
-	// The language of the content within the request and the response. Valid values:
+	// The language type of the request and response. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The severity level of the malicious image sample. Separate multiple severity levels with commas (,). Valid values:
+	// The severity levels. Separate multiple values with commas (,). Valid values:
 	//
-	// 	- **serious**
+	// 	- **serious**: urgent
 	//
-	// 	- **suspicious**
+	// 	- **suspicious**: suspicious
 	//
-	// 	- **remind**
+	// 	- **remind**: reminder.
 	//
 	// example:
 	//
 	// serious,suspicious
 	Levels *string `json:"Levels,omitempty" xml:"Levels,omitempty"`
-	// The MD5 hash value of the malicious image sample.
+	// The MD5 hash of the malicious file.
 	//
-	// >  You can call the [DescribeGroupedMaliciousFiles](~~DescribeGroupedMaliciousFiles~~) operation to query the MD5 hash values of malicious image samples.
+	// > Call the [DescribeGroupedMaliciousFiles](~~DescribeGroupedMaliciousFiles~~) operation to obtain the MD5 hash of the malicious file.
 	//
 	// example:
 	//
@@ -142,7 +142,7 @@ type DescribeAffectedMaliciousFileImagesRequest struct {
 	//
 	// test-002
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The number of entries to return on each page. Default value: **20**.
+	// The maximum number of entries per page when using paging. Default value: **20**.
 	//
 	// This parameter is required.
 	//
@@ -158,15 +158,15 @@ type DescribeAffectedMaliciousFileImagesRequest struct {
 	Pod *string `json:"Pod,omitempty" xml:"Pod,omitempty"`
 	// The ID of the image repository.
 	//
-	// >  You can call the [ListRepository](https://help.aliyun.com/document_detail/451339.html) operation to query the IDs of image repositories from the value of the **RepoId*	- response parameter.
+	// > Call the [ListRepository](https://help.aliyun.com/document_detail/145293.html) operation of Container Registry. You can obtain the image repository ID from the **RepoId*	- response parameter.
 	//
 	// example:
 	//
 	// crr-vridcl4****
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	// The ID of the container image.
+	// The ID of the container image instance.
 	//
-	// >  You can call the [ListRepository](https://help.aliyun.com/document_detail/451339.html) operation to query the IDs of container images from the value of the **InstanceId*	- response parameter.
+	// > Call the [ListRepository](https://help.aliyun.com/document_detail/145293.html) operation of Container Registry. You can obtain the container image instance ID from the **InstanceId*	- response parameter.
 	//
 	// example:
 	//
@@ -174,15 +174,15 @@ type DescribeAffectedMaliciousFileImagesRequest struct {
 	RepoInstanceId *string `json:"RepoInstanceId,omitempty" xml:"RepoInstanceId,omitempty"`
 	// The name of the image repository.
 	//
-	// >  Fuzzy match is supported.
+	// > Fuzzy match is supported.
 	//
 	// example:
 	//
 	// centos
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	// The namespace to which the image repository belongs.
+	// The namespace of the image repository.
 	//
-	// >  Fuzzy match is supported.
+	// > Fuzzy match is supported.
 	//
 	// example:
 	//
@@ -190,45 +190,45 @@ type DescribeAffectedMaliciousFileImagesRequest struct {
 	RepoNamespace *string `json:"RepoNamespace,omitempty" xml:"RepoNamespace,omitempty"`
 	// The region ID of the image repository. Valid values:
 	//
-	// 	- **cn-beijing**: China (Beijing)
+	// - **cn-beijing**: China (Beijing)
 	//
-	// 	- **cn-zhangjiakou**: China (Zhangjiakou)
+	// - **cn-zhangjiakou**: China (Zhangjiakou)
 	//
-	// 	- **cn-hangzhou**: China (Hangzhou)
+	// - **cn-hangzhou**: China (Hangzhou)
 	//
-	// 	- **cn-shanghai**: China (Shanghai)
+	// - **cn-shanghai**: China (Shanghai)
 	//
-	// 	- **cn-shenzhen**: China (Shenzhen)
+	// - **cn-shenzhen**: China (Shenzhen)
 	//
-	// 	- **cn-hongkong**: China (Hong Kong)
+	// - **cn-hongkong**: Hong Kong (China)
 	//
-	// 	- **ap-southeast-1**: Singapore
+	// - **ap-southeast-1**: Singapore
 	//
-	// 	- **ap-southeast-5**: Indonesia (Jakarta)
+	// - **ap-southeast-5**: Indonesia (Jakarta)
 	//
-	// 	- **us-east-1**: US (Virginia)
+	// - **us-east-1**: US (Virginia)
 	//
-	// 	- **us-west-1**: US (Silicon Valley)
+	// - **us-west-1**: US (Silicon Valley)
 	//
-	// 	- **eu-central-1**: Germany (Frankfurt)
+	// - **eu-central-1**: Germany (Frankfurt)
 	//
-	// 	- **eu-west-1**: UK (London)
+	// - **eu-west-1**: UK (London).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RepoRegionId *string `json:"RepoRegionId,omitempty" xml:"RepoRegionId,omitempty"`
-	// The types of the assets that you want to scan.
+	// The collection of scan ranges.
 	ScanRange []*string `json:"ScanRange,omitempty" xml:"ScanRange,omitempty" type:"Repeated"`
-	// The status of the malicious image sample. Valid values:
+	// The processing status of the malicious image sample. Valid values:
 	//
-	// 	- **0**: The malicious image sample is not handled.
+	// - **0**: unhandled
 	//
-	// 	- **1**: The malicious image sample is handled.
+	// - **1**: handled
 	//
-	// 	- **2**: The malicious image sample is being verified.
+	// - **2**: verifying
 	//
-	// 	- **3**: The malicious image sample is added to the whitelist.
+	// - **3**: added to whitelist.
 	//
 	// example:
 	//

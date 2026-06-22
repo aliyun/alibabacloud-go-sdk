@@ -16,9 +16,9 @@ type iDescribeImageScanAuthCountResponseBody interface {
 }
 
 type DescribeImageScanAuthCountResponseBody struct {
-	// The details about the quota for container image scan.
+	// The authorization details of image security scanning.
 	ImageScan *DescribeImageScanAuthCountResponseBodyImageScan `json:"ImageScan,omitempty" xml:"ImageScan,omitempty" type:"Struct"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The ID of the request. The China Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -62,19 +62,19 @@ func (s *DescribeImageScanAuthCountResponseBody) Validate() error {
 }
 
 type DescribeImageScanAuthCountResponseBodyImageScan struct {
-	// The quota for container image scan.
+	// The total number of authorization quotas.
 	//
 	// example:
 	//
 	// 15340
 	ImageScanCapacity *int64 `json:"ImageScanCapacity,omitempty" xml:"ImageScanCapacity,omitempty"`
-	// The instance ID of Security Center.
+	// The instance ID of the purchased Security Center instance.
 	//
 	// example:
 	//
 	// sas-qdl123412****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The consumed quota for container image scan.
+	// The number of used authorization quotas.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type RemoveCheckInstanceResultWhiteListRequest struct {
 	//
 	// 11
 	CheckId *int64 `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
-	// The IDs of instances. Separate multiple IDs with commas (,).
+	// The instance ID to query. Separate multiple instance IDs with commas (,).
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 }
 

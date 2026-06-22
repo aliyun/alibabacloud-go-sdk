@@ -32,15 +32,15 @@ type iDescribeCheckWarningDetailResponseBody interface {
 }
 
 type DescribeCheckWarningDetailResponseBody struct {
-	// The suggestion for the management of the risk item.
+	// The hardening suggestion for the baseline check risk item.
 	//
 	// example:
 	//
 	// You can fix it in the following ways:↵1. To configure authentication for redis service, click the redis.conf Configure complex password in requirepass, and then restart redis.↵2. In redis configuration file redis.conf The configuration is as follows: bind 127.0.0.1, only allow local access, and then restart redis
 	Advice *string `json:"Advice,omitempty" xml:"Advice,omitempty"`
-	// List of asset details to check.
+	// The list of checked asset details.
 	CheckDetailAssetInfo []map[string]*string `json:"CheckDetailAssetInfo,omitempty" xml:"CheckDetailAssetInfo,omitempty" type:"Repeated"`
-	// Detection content details.
+	// The details of the check content.
 	CheckDetailColumns []*DescribeCheckWarningDetailResponseBodyCheckDetailColumns `json:"CheckDetailColumns,omitempty" xml:"CheckDetailColumns,omitempty" type:"Repeated"`
 	// The ID of the check item.
 	//
@@ -48,7 +48,7 @@ type DescribeCheckWarningDetailResponseBody struct {
 	//
 	// 946
 	CheckId *int64 `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
-	// The additional information about the risk item.
+	// The supplementary description of the baseline check risk item.
 	//
 	// example:
 	//
@@ -62,43 +62,31 @@ type DescribeCheckWarningDetailResponseBody struct {
 	Item *string `json:"Item,omitempty" xml:"Item,omitempty"`
 	// The risk level of the check item. Valid values:
 	//
-	// 	- **high**: The item is a high-risk item and is highlighted in red.
+	// - **high**: High risk, highlighted in red.
 	//
-	// 	- **medium**: The item is a medium-risk item and is highlighted in orange.
+	// - **medium**: Medium risk, highlighted in orange.
 	//
-	// 	- **low**: The item is a low-risk item and is highlighted in gray.
+	// - **low**: Low risk, highlighted in gray.
 	//
 	// example:
 	//
 	// high
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The prompt for the risk item.
+	// The check prompt for the baseline check risk item.
 	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The request ID. Alibaba Cloud generates a unique identifier for each request. You can use the request ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// BE120DAB-F4E7-4C53-ADC3-A97578ABF384
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The type of the check item. Valid values:
+	// The type of the baseline check item.
 	//
-	// 	- **hc_exploit**: unauthorized access
-	//
-	// 	- **hc_djbh**: classified protection compliance
-	//
-	// 	- **hc_best_secruity**: best security practice
-	//
-	// 	- **hc_container**: container security
-	//
-	// 	- **hc_custom**: custom baseline
-	//
-	// 	- **cis**: Center for Internet Security (CIS) compliance
-	//
-	// 	- **weak_password**: weak password
+	// > You can call the [DescribeRiskType](~~DescribeRiskType~~) operation to view all baseline types.
 	//
 	// example:
 	//
-	// hc_exploit
+	// Security audit
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -214,25 +202,25 @@ func (s *DescribeCheckWarningDetailResponseBody) Validate() error {
 }
 
 type DescribeCheckWarningDetailResponseBodyCheckDetailColumns struct {
-	// Detection content list.
+	// The list of check content.
 	Grids []*DescribeCheckWarningDetailResponseBodyCheckDetailColumnsGrids `json:"Grids,omitempty" xml:"Grids,omitempty" type:"Repeated"`
-	// Key to detect content.
+	// The key of the check content.
 	//
 	// example:
 	//
 	// Containername
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The detection content key corresponds to the display name.
+	// The display name that corresponds to the key of the check content.
 	//
 	// example:
 	//
 	// ContainerName
 	ShowName *string `json:"ShowName,omitempty" xml:"ShowName,omitempty"`
-	// Display type. Value:
+	// The display type. Valid values:
 	//
-	// - **grid**: Detection grid
+	// - **grid**: grid
 	//
-	// - **text**: text
+	// - **text**: text.
 	//
 	// example:
 	//
@@ -298,23 +286,23 @@ func (s *DescribeCheckWarningDetailResponseBodyCheckDetailColumns) Validate() er
 }
 
 type DescribeCheckWarningDetailResponseBodyCheckDetailColumnsGrids struct {
-	// Key to detect content.
+	// The key of the check content.
 	//
 	// example:
 	//
 	// Username
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The detection content key corresponds to the display name.
+	// The display name that corresponds to the key of the check content.
 	//
 	// example:
 	//
 	// UserName
 	ShowName *string `json:"ShowName,omitempty" xml:"ShowName,omitempty"`
-	// Display type. Value:
+	// The display type. Valid values:
 	//
-	// - **grid**: Detection grid
+	// - **grid**: grid
 	//
-	// - **text**: text
+	// - **text**: text.
 	//
 	// example:
 	//

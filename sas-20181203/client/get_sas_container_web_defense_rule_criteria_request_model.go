@@ -14,7 +14,7 @@ type iGetSasContainerWebDefenseRuleCriteriaRequest interface {
 }
 
 type GetSasContainerWebDefenseRuleCriteriaRequest struct {
-	// The value of the search condition. Fuzzy match is supported.
+	// The value of the query criterion. Fuzzy match is supported.
 	//
 	// example:
 	//

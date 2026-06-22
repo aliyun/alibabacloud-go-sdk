@@ -18,11 +18,11 @@ type iDescribeImageBaselineCheckSummaryResponseBody interface {
 }
 
 type DescribeImageBaselineCheckSummaryResponseBody struct {
-	// An array that consists of the check results of image baselines.
+	// The details of the image baseline check list.
 	BaselineResultSummary []*DescribeImageBaselineCheckSummaryResponseBodyBaselineResultSummary `json:"BaselineResultSummary,omitempty" xml:"BaselineResultSummary,omitempty" type:"Repeated"`
-	// The pagination information.
+	// The paging information displayed on the page in a paged query.
 	PageInfo *DescribeImageBaselineCheckSummaryResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -84,7 +84,7 @@ func (s *DescribeImageBaselineCheckSummaryResponseBody) Validate() error {
 }
 
 type DescribeImageBaselineCheckSummaryResponseBodyBaselineResultSummary struct {
-	// The category of the baseline.
+	// The baseline category.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ type DescribeImageBaselineCheckSummaryResponseBodyBaselineResultSummary struct {
 	//
 	// hc_image_exploit
 	BaselineClassKey *string `json:"BaselineClassKey,omitempty" xml:"BaselineClassKey,omitempty"`
-	// The name of the baseline.
+	// The baseline name.
 	//
 	// example:
 	//
@@ -108,57 +108,57 @@ type DescribeImageBaselineCheckSummaryResponseBodyBaselineResultSummary struct {
 	//
 	// hc_image_exploit
 	BaselineNameKey *string `json:"BaselineNameKey,omitempty" xml:"BaselineNameKey,omitempty"`
-	// The severity of the image baseline. Valid values:
+	// The risk level of the baseline. Valid values:
 	//
-	// 	- **high**
+	// - **high**: high risk
 	//
-	// 	- **medium**
+	// - **medium**: medium risk
 	//
-	// 	- **low**
+	// - **low**: low risk.
 	//
 	// example:
 	//
 	// high
 	BaselineNameLevel *string `json:"BaselineNameLevel,omitempty" xml:"BaselineNameLevel,omitempty"`
-	// The timestamp generated when the first scan was performed. Unit: milliseconds.
+	// The timestamp of the first scan, in milliseconds.
 	//
 	// example:
 	//
 	// 1626628760000
 	FirstScanTime *int64 `json:"FirstScanTime,omitempty" xml:"FirstScanTime,omitempty"`
-	// The number of images on which **high*	- baseline risks are detected.
+	// The number of images with a **high*	- risk level that have baseline risk issues.
 	//
 	// example:
 	//
 	// 15
 	HighRiskImage *int32 `json:"HighRiskImage,omitempty" xml:"HighRiskImage,omitempty"`
-	// The timestamp generated when the last scan was performed. Unit: milliseconds.
+	// The timestamp of the most recent scan, in milliseconds.
 	//
 	// example:
 	//
 	// 1626628760000
 	LastScanTime *int64 `json:"LastScanTime,omitempty" xml:"LastScanTime,omitempty"`
-	// The number of images on which **low*	- baseline risks are detected.
+	// The number of images with a **low*	- risk level that have baseline risk issues.
 	//
 	// example:
 	//
 	// 0
 	LowRiskImage *int32 `json:"LowRiskImage,omitempty" xml:"LowRiskImage,omitempty"`
-	// The number of images on which **medium*	- baseline risks are detected.
+	// The number of images with a **medium*	- risk level that have baseline risk issues.
 	//
 	// example:
 	//
 	// 0
 	MiddleRiskImage *int32 `json:"MiddleRiskImage,omitempty" xml:"MiddleRiskImage,omitempty"`
-	// The status of the baseline risks. Valid values:
+	// The fix status of the baseline risk. Valid values:
 	//
-	// 	- **0**: unfixed
+	// - **0**: Unfixed.
 	//
-	// 	- **1**: fixed
+	// - **1**: Fixed.
 	//
-	// 	- **2**: pending verification
+	// - **2**: Pending verification.
 	//
-	// 	- **3**: fixing failed
+	// - **3**: Fix failed.
 	//
 	// example:
 	//
@@ -278,25 +278,25 @@ func (s *DescribeImageBaselineCheckSummaryResponseBodyBaselineResultSummary) Val
 }
 
 type DescribeImageBaselineCheckSummaryResponseBodyPageInfo struct {
-	// The number of entries returned on the current page.
+	// The number of entries on the current page in a paged query.
 	//
 	// example:
 	//
 	// 3
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The page number of the returned page.
+	// The current page number in a paged query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries returned per page. Default value: **20**.
+	// The number of image baseline check results per page in a paged query. Default value: **20**, which indicates that 20 image baseline check results are displayed per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of query results.
 	//
 	// example:
 	//

@@ -16,9 +16,9 @@ type iGetOssScanConfigResponseBody interface {
 }
 
 type GetOssScanConfigResponseBody struct {
-	// The data returned.
+	// The data details.
 	Data *GetOssScanConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID.
+	// The request ID. Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ func (s *GetOssScanConfigResponseBody) Validate() error {
 }
 
 type GetOssScanConfigResponseBodyData struct {
-	// Indicates whether the prefixes of all objects are matched.
+	// Indicates whether all prefixes are matched.
 	//
 	// example:
 	//
@@ -74,39 +74,39 @@ type GetOssScanConfigResponseBodyData struct {
 	//
 	// 1
 	BucketCount *int32 `json:"BucketCount,omitempty" xml:"BucketCount,omitempty"`
-	// The name of the bucket.
+	// The bucket name.
 	//
 	// example:
 	//
-	// hz-new01****
+	// hz-new02****
 	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
-	// The names of the buckets.
+	// The list of bucket names.
 	BucketNameList []*string `json:"BucketNameList,omitempty" xml:"BucketNameList,omitempty" type:"Repeated"`
-	// The maximum number of objects that can be extracted during decompression. Valid values: 1 to 1000. If the maximum number of objects that can be extracted is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
+	// The maximum number of files to decompress. Minimum value: 1. Maximum value: 1000. If the number of files exceeds this value, the decompression operation stops. Files that have already been decompressed are still scanned.
 	//
 	// example:
 	//
 	// 100
 	DecompressMaxFileCount *int32 `json:"DecompressMaxFileCount,omitempty" xml:"DecompressMaxFileCount,omitempty"`
-	// The maximum number of decompression levels when multi-level packages are decompressed. Valid values: 1 to 5. If the maximum number of decompression levels is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
+	// The maximum number of decompression layers for nested compressed files. Minimum value: 1. Maximum value: 5. If the number of layers exceeds this value, the decompression operation stops. Files that have already been decompressed are still scanned.
 	//
 	// example:
 	//
 	// 1
 	DecompressMaxLayer *int32 `json:"DecompressMaxLayer,omitempty" xml:"DecompressMaxLayer,omitempty"`
-	// The decryption methods.
+	// The list of decryption types.
 	DecryptionList []*string `json:"DecryptionList,omitempty" xml:"DecryptionList,omitempty" type:"Repeated"`
-	// Indicates whether the check policy is enabled. Valid values:
+	// Indicates whether the policy is enabled. Valid values:
 	//
-	// 	- **1**: enabled.
+	// - **1**: enabled
 	//
-	// 	- **0**: disabled.
+	// - **0**: disabled.
 	//
 	// example:
 	//
 	// 1
 	Enable *int32 `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The end time of the check. The time is in the HH:mm:ss format.
+	// The scan end time in the HH:mm:ss format.
 	//
 	// example:
 	//
@@ -116,19 +116,19 @@ type GetOssScanConfigResponseBodyData struct {
 	//
 	// example:
 	//
-	// 1274****
+	// 1
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The prefixes of the objects.
+	// The file prefix list.
 	KeyPrefixList []*string `json:"KeyPrefixList,omitempty" xml:"KeyPrefixList,omitempty" type:"Repeated"`
-	// The suffixes of the objects that are checked.
+	// The list of file suffixes to scan.
 	KeySuffixList []*string `json:"KeySuffixList,omitempty" xml:"KeySuffixList,omitempty" type:"Repeated"`
-	// The timestamp when the object was last modified. The time must be later than the timestamp that you specify. Unit: milliseconds.
+	// Scans files whose last modification time is after the specified timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1724301769834
 	LastModifiedStartTime *int64 `json:"LastModifiedStartTime,omitempty" xml:"LastModifiedStartTime,omitempty"`
-	// The timestamp when the configuration was last modified.
+	// The timestamp of the last update.
 	//
 	// example:
 	//
@@ -138,17 +138,17 @@ type GetOssScanConfigResponseBodyData struct {
 	//
 	// example:
 	//
-	// test0104
+	// testPolicy****
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Whether to enable real-time incremental detection. When this parameter is set to true, the parameters ScanDayList, StartTime, and EndTime are not effective.
+	// Specifies whether to enable real-time incremental scanning. If this parameter is set to true, the ScanDayList, StartTime, and EndTime parameters do not take effect.
 	//
 	// example:
 	//
 	// true
 	RealTimeIncr *bool `json:"RealTimeIncr,omitempty" xml:"RealTimeIncr,omitempty"`
-	// The days when the check is performed. The value indicates the days of the week.
+	// The scan days. Each number represents a day of the week.
 	ScanDayList []*int32 `json:"ScanDayList,omitempty" xml:"ScanDayList,omitempty" type:"Repeated"`
-	// The start time of the check. The time is in the HH:mm:ss format.
+	// The scan start time in the HH:mm:ss format.
 	//
 	// example:
 	//

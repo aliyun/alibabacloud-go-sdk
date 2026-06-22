@@ -18,11 +18,11 @@ type iDescribeHybridProxyClusterListResponseBody interface {
 }
 
 type DescribeHybridProxyClusterListResponseBody struct {
-	// The proxy clusters.
+	// The list of clusters.
 	ClusterList []*DescribeHybridProxyClusterListResponseBodyClusterList `json:"ClusterList,omitempty" xml:"ClusterList,omitempty" type:"Repeated"`
 	// The pagination information.
 	PageInfo *DescribeHybridProxyClusterListResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -84,19 +84,19 @@ func (s *DescribeHybridProxyClusterListResponseBody) Validate() error {
 }
 
 type DescribeHybridProxyClusterListResponseBodyClusterList struct {
-	// The ID of the credential that is used for cluster authentication.
+	// The credential ID for cluster authentication.
 	//
 	// example:
 	//
 	// test
 	AuthKey *string `json:"AuthKey,omitempty" xml:"AuthKey,omitempty"`
-	// The key of the credential that is used for cluster authentication.
+	// The credential key for cluster authentication.
 	//
 	// example:
 	//
 	// test
 	AuthKeySecret *string `json:"AuthKeySecret,omitempty" xml:"AuthKeySecret,omitempty"`
-	// The number of servers that are connected to the proxy cluster.
+	// The number of Security Center clients connected to the current cluster.
 	//
 	// example:
 	//
@@ -108,19 +108,19 @@ type DescribeHybridProxyClusterListResponseBodyClusterList struct {
 	//
 	// idc-sas-proxy
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// The installation command for the node of the proxy cluster.
+	// The installation command for the current proxy cluster node.
 	//
 	// example:
 	//
 	// test
 	InstallCommand *string `json:"InstallCommand,omitempty" xml:"InstallCommand,omitempty"`
-	// The endpoint of the cluster. An IP address or a domain name is specified.
+	// The access address of the cluster, which can be an IP address or a domain name.
 	//
 	// example:
 	//
 	// 114.115.XXX.XXX
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// The timestamp when the cluster last sent a heartbeat message. Unit: milliseconds.
+	// The timestamp of the last heartbeat from the cluster. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -132,13 +132,13 @@ type DescribeHybridProxyClusterListResponseBodyClusterList struct {
 	//
 	// 3
 	ProxyCount *int32 `json:"ProxyCount,omitempty" xml:"ProxyCount,omitempty"`
-	// The description of the proxy cluster.
+	// The remarks of the proxy cluster.
 	//
 	// example:
 	//
 	// test
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The status of the cluster.
+	// The running status of the cluster.
 	//
 	// example:
 	//
@@ -249,19 +249,19 @@ func (s *DescribeHybridProxyClusterListResponseBodyClusterList) Validate() error
 }
 
 type DescribeHybridProxyClusterListResponseBodyPageInfo struct {
-	// The number of entries on the current page.
+	// The number of entries displayed on the current page.
 	//
 	// example:
 	//
 	// 20
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The page number.
+	// The page number of the current page in a paged query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries per page.
+	// The maximum number of entries displayed on each page in a paged query.
 	//
 	// example:
 	//

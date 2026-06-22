@@ -32,25 +32,25 @@ type iDescribeGroupedInstancesRequest interface {
 }
 
 type DescribeGroupedInstancesRequest struct {
-	// The number of the page to return. Default value: **1**.
+	// The page number from which query results start to be displayed. Default value: **1**, indicating that query results are displayed starting from page 1.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The name of the group to which the assets belong. Fuzzy search is supported.
+	// The name of the asset group to query. Fuzzy search is supported.
 	//
 	// example:
 	//
 	// test-01
 	FieldValue *string `json:"FieldValue,omitempty" xml:"FieldValue,omitempty"`
-	// The filter condition that you want to use to query the assets. Valid values:
+	// The filter condition for querying assets. Valid values:
 	//
-	// 	- **groupId**: the group to which the assets belong
+	// - **groupId**: queries assets by group.
 	//
-	// 	- **regionId**: the region in which the assets reside
+	// - **regionId**: queries assets by region.
 	//
-	// 	- **vpcInstanceId**: the virtual private cloud (VPC) in which the assets reside
+	// - **vpcInstanceId**: queries assets by Virtual Private Cloud (VPC).
 	//
 	// This parameter is required.
 	//
@@ -58,81 +58,81 @@ type DescribeGroupedInstancesRequest struct {
 	//
 	// groupId
 	GroupField *string `json:"GroupField,omitempty" xml:"GroupField,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language type for requests and responses. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The type of the assets that you want to query. Set the value to **ecs**, which indicates Elastic Compute Service (ECS) instances.
+	// The type of assets to query. Fixed value: **ecs**, indicating Elastic Compute Service (ECS) instances.
 	//
 	// example:
 	//
 	// ecs
 	MachineTypes *string `json:"MachineTypes,omitempty" xml:"MachineTypes,omitempty"`
-	// Specifies whether to enable paged query. Default value: **true**. Valid values:
+	// Specifies whether to enable paginated queries. Default value: **true**. Valid values:
 	//
-	// 	- **true**: yes
+	// - **true**: enables paginated queries.
 	//
-	// 	- **false**: no
+	// - **false**: disables paginated queries.
 	//
 	// example:
 	//
 	// true
 	NoPage *bool `json:"NoPage,omitempty" xml:"NoPage,omitempty"`
-	// The number of entries to return on each page. Default value: **20**.
+	// The number of entries per page in a paginated query. Default value: **20**, indicating that 20 entries of asset information are displayed per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The edition of Security Center that protects the asset. Valid values:
+	// The edition filter for querying assets. Valid values:
 	//
-	// 	- **sas_gte_advanced**: the Advanced edition or higher
+	// - **sas_gte_advanced**: Advanced edition or higher
 	//
-	// 	- **sas_gte_enterprise**: the Enterprise edition or higher
+	// - **sas_gte_enterprise**: Enterprise edition or higher
 	//
-	// 	- **sas_gt_basic:*	- a paid edition
+	// - **sas_gt_basic**: paid editions
 	//
-	// 	- **sas_eq_advanced:*	- the Advanced edition
+	// - **sas_eq_advanced**: Advanced edition only
 	//
-	// 	- **sas_gt_anti_virus:*	- an edition higher than the Anti-virus edition
+	// - **sas_gt_anti_virus**: editions higher than Anti-virus edition
 	//
 	// example:
 	//
 	// sas_gt_basic
 	SaleVersionCheckCode *string `json:"SaleVersionCheckCode,omitempty" xml:"SaleVersionCheckCode,omitempty"`
-	// The source of the server. Valid values:
+	// The server vendor. Valid values:
 	//
-	// 	- **0**: an asset provided by Alibaba Cloud.
+	// - **0**: Alibaba Cloud assets
 	//
-	// 	- **1**: a third-party cloud server
+	// - **1**: non-cloud assets
 	//
-	// 	- **2**: a server in a data center
+	// - **2**: IDC assets
 	//
-	// 	- **3**, **4**, **5**, and **7**: other cloud asset
+	// - **3**, **4**, **5**, **7**: assets from other cloud providers
 	//
-	// 	- **8**: a lightweight asset
+	// - **8**: lightweight assets
 	//
 	// example:
 	//
 	// 0
 	Vendor *int32 `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
-	// The source of the server. Separate multiple sources with commas (,).Valid values:
+	// The server vendors. Separate multiple vendors with commas (,). Valid values:
 	//
-	// 	- **0**: an asset provided by Alibaba Cloud.
+	// - **0**: Alibaba Cloud assets
 	//
-	// 	- **1**: a third-party cloud server
+	// - **1**: non-cloud assets
 	//
-	// 	- **2**: a server in a data center
+	// - **2**: IDC assets
 	//
-	// 	- **3**, **4**, **5**, and **7**: other cloud asset
+	// - **3**, **4**, **5**, **7**: assets from other cloud providers
 	//
-	// 	- **8**: a lightweight asset
+	// - **8**: lightweight assets
 	//
 	// example:
 	//

@@ -22,23 +22,23 @@ type DescribeVulConfigRequest struct {
 	//
 	// 113.110.XX.XX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The type of configuration. By default, all types of configurations are queried. Valid values:
+	// The type of vulnerability management configuration. By default, all types of configurations are queried. Valid values:
 	//
-	// 	- **cve**: Linux software vulnerability.
+	// -  **cve**: Linux software vulnerability
 	//
-	// 	- **sys**: Windows system vulnerability.
+	// -  **sys**: Windows system vulnerability
 	//
-	// 	- **cms**: Web-CMS vulnerability.
+	// -  **cms**: Web-CMS vulnerability
 	//
-	// 	- **app**: application vulnerability that is detected by using web scanner.
+	// -  **app**: application vulnerability (web scanner)
 	//
-	// 	- **emg**: urgent vulnerability.
+	// -  **emg**: emergency vulnerability
 	//
-	// 	- **scanMode**: displays easily exploitable vulnerability.
+	// - **scanMode**: display real-risk vulnerabilities
 	//
-	// 	- **imageVulClean**: vulnerability retention duration.
+	// - **imageVulClean**: vulnerability retention period
 	//
-	// 	- **yum**: preferentially uses YUM or APT sources of Alibaba Cloud to fix vulnerabilities.
+	// - **yum**: prioritize Alibaba Cloud sources for vulnerability fixing.
 	//
 	// example:
 	//

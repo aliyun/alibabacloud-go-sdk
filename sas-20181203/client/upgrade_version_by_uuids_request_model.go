@@ -16,7 +16,7 @@ type iUpgradeVersionByUuidsRequest interface {
 }
 
 type UpgradeVersionByUuidsRequest struct {
-	// The version to which you want to upgrade the client.
+	// The target version to which you want to upgrade.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type UpgradeVersionByUuidsRequest struct {
 	//
 	// 0.0.9
 	UpgradeVersion *string `json:"UpgradeVersion,omitempty" xml:"UpgradeVersion,omitempty"`
-	// The UUIDs of the assets on which you want to run the detection task.
+	// The list of UUIDs of the assets to be checked.
 	//
 	// This parameter is required.
 	UuidList []*string `json:"UuidList,omitempty" xml:"UuidList,omitempty" type:"Repeated"`

@@ -16,11 +16,11 @@ type iModifyAssetCleanConfigResponseBody interface {
 }
 
 type ModifyAssetCleanConfigResponseBody struct {
-	// Indicates whether the request was successful. Valid values:
+	// The processing result. Valid values:
 	//
-	// 	- **true**: The request was successful.
+	// - **true**: Succeeded.
 	//
-	// 	- **false**: The request failed.
+	// - **false**: Failed.
 	//
 	// example:
 	//

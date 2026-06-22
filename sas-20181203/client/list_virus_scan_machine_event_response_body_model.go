@@ -18,11 +18,11 @@ type iListVirusScanMachineEventResponseBody interface {
 }
 
 type ListVirusScanMachineEventResponseBody struct {
-	// The details of the alert event.
+	// The details of the alert events.
 	Data []*ListVirusScanMachineEventResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The pagination information.
 	PageInfo *ListVirusScanMachineEventResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -84,7 +84,7 @@ func (s *ListVirusScanMachineEventResponseBody) Validate() error {
 }
 
 type ListVirusScanMachineEventResponseBodyData struct {
-	// The details of the exception.
+	// The details of the exception event.
 	Details []*ListVirusScanMachineEventResponseBodyDataDetails `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
 	// The ID of the alert event.
 	//
@@ -92,13 +92,13 @@ type ListVirusScanMachineEventResponseBodyData struct {
 	//
 	// 911273
 	EventId *int64 `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	// The name of the alert event. The value indicates a subtype.
+	// The name (subtype) of the alert event.
 	//
 	// example:
 	//
-	// Unusual Logon
+	// 恶意脚本代码执行
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
-	// The name of the instance.
+	// The instance name.
 	//
 	// example:
 	//
@@ -116,7 +116,7 @@ type ListVirusScanMachineEventResponseBodyData struct {
 	//
 	// 10.42.XX.XX
 	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	// The timestamp when the alert event was last generated. Unit: milliseconds.
+	// The timestamp of the last occurrence, in milliseconds.
 	//
 	// example:
 	//
@@ -124,11 +124,11 @@ type ListVirusScanMachineEventResponseBodyData struct {
 	LastTimeStamp *int64 `json:"LastTimeStamp,omitempty" xml:"LastTimeStamp,omitempty"`
 	// The risk level of the alert event. Valid values:
 	//
-	// 	- **serious**
+	// - **serious**: Critical.
 	//
-	// 	- **suspicious**
+	// - **suspicious**: Suspicious.
 	//
-	// 	- **remind**
+	// - **remind**: Reminder.
 	//
 	// example:
 	//
@@ -230,9 +230,11 @@ func (s *ListVirusScanMachineEventResponseBodyData) Validate() error {
 }
 
 type ListVirusScanMachineEventResponseBodyDataDetails struct {
-	// The display type of the value for ValueDisplay. Valid value:
+	// The display type of valueDisplay.
 	//
-	// 	- **download_url**, which indicates a download URL.
+	// Valid values:
+	//
+	// - **download_url**: download link.
 	//
 	// example:
 	//
@@ -244,19 +246,21 @@ type ListVirusScanMachineEventResponseBodyDataDetails struct {
 	//
 	// Trojan Path
 	NameDisplay *string `json:"NameDisplay,omitempty" xml:"NameDisplay,omitempty"`
-	// The format in which the details of the exception are displayed.
+	// The display format of the exception event details.
 	//
 	// Valid values:
 	//
-	// 	- **text**
+	// - **text**: plain text
 	//
-	// 	- **html**
+	// - **html**: rich text.
 	//
 	// example:
 	//
 	// html
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The attribute information about the exception. The information includes the logon time or location of an alert triggered by an unusual logon, and the trojan file path or trojan type of an alert.
+	// The additional attribute information of the exception event.
+	//
+	// For example, the logon time or logon location of an unusual logon alert, or the trojan file path or trojan type of an alert.
 	//
 	// example:
 	//
@@ -313,19 +317,19 @@ func (s *ListVirusScanMachineEventResponseBodyDataDetails) Validate() error {
 }
 
 type ListVirusScanMachineEventResponseBodyPageInfo struct {
-	// The page number.
+	// The page number of the current page in a paged query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries per page.
+	// The maximum number of entries per page in a paged query.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of alert events returned.
 	//
 	// example:
 	//

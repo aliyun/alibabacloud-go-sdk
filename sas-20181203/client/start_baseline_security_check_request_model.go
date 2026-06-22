@@ -28,9 +28,9 @@ type StartBaselineSecurityCheckRequest struct {
 	ItemIds []*int64 `json:"ItemIds,omitempty" xml:"ItemIds,omitempty" type:"Repeated"`
 	// The language of the content within the request and response. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//
@@ -45,9 +45,9 @@ type StartBaselineSecurityCheckRequest struct {
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	// The type of the check task. Valid values:
 	//
-	// 	- **check**
+	// - **check**
 	//
-	// 	- **verify**
+	// - **verify**
 	//
 	// This parameter is required.
 	//

@@ -18,7 +18,7 @@ type iDescribeReportExportRequest interface {
 type DescribeReportExportRequest struct {
 	// The ID of the export task.
 	//
-	// >  You can call the [ExportCustomizeReport](https://help.aliyun.com/document_detail/2842677.html) operation to query the ID.
+	// > Call [ExportCustomizeReport](~~ExportCustomizeReport~~) to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -26,11 +26,11 @@ type DescribeReportExportRequest struct {
 	//
 	// 2
 	ExportId *int64 `json:"ExportId,omitempty" xml:"ExportId,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language type for the request and response messages. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//

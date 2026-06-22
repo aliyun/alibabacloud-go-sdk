@@ -18,7 +18,9 @@ type iListUnknownThreatDetectEventResponseBody interface {
 }
 
 type ListUnknownThreatDetectEventResponseBody struct {
-	Data     []*ListUnknownThreatDetectEventResponseBodyData   `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The returned data details.
+	Data []*ListUnknownThreatDetectEventResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The pagination information.
 	PageInfo *ListUnknownThreatDetectEventResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -84,78 +86,123 @@ func (s *ListUnknownThreatDetectEventResponseBody) Validate() error {
 type ListUnknownThreatDetectEventResponseBodyData struct {
 	AnalyzeDesc   *string `json:"AnalyzeDesc,omitempty" xml:"AnalyzeDesc,omitempty"`
 	AnalyzeResult *string `json:"AnalyzeResult,omitempty" xml:"AnalyzeResult,omitempty"`
+	// The process chain.
+	//
 	// example:
 	//
 	// [{"5133":"pickup -l -t unix -u"},{"1077":"/usr/libexec/postfix/master -w"},{"1":"/usr/lib/systemd/systemd --switched-root --system --deserialize 22"}]
 	CmdChain *string `json:"CmdChain,omitempty" xml:"CmdChain,omitempty"`
+	// The process command line.
+	//
 	// example:
 	//
 	// /usr/sbin/sshd -D
 	Cmdline *string `json:"Cmdline,omitempty" xml:"Cmdline,omitempty"`
+	// The number of occurrences.
+	//
 	// example:
 	//
 	// 5
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The timestamp of the first occurrence.
+	//
 	// example:
 	//
 	// 1694576692000
-	FirstTime *int64 `json:"FirstTime,omitempty" xml:"FirstTime,omitempty"`
+	FirstTime  *int64  `json:"FirstTime,omitempty" xml:"FirstTime,omitempty"`
+	HandleType *string `json:"HandleType,omitempty" xml:"HandleType,omitempty"`
+	// The unique identifier of the file.
+	//
 	// example:
 	//
 	// 30368144069e7567bbb10eabc2******
 	HashKey *string `json:"HashKey,omitempty" xml:"HashKey,omitempty"`
+	// The event ID.
+	//
 	// example:
 	//
 	// 1
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The instance name.
+	//
 	// example:
 	//
 	// centos****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The public IP address.
+	//
 	// example:
 	//
 	// 172.16.XX.XX
 	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	// The private IP address.
+	//
 	// example:
 	//
 	// 10.42.XX.XX
 	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
+	// The timestamp of the most recent occurrence.
+	//
 	// example:
 	//
 	// 1694576692000
 	LastTime *int64 `json:"LastTime,omitempty" xml:"LastTime,omitempty"`
+	// The MD5 hash of the file.
+	//
 	// example:
 	//
 	// 5b394b54ca632fe51c4ab4a6dbaf****
 	Md5 *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
+	// The parent command line.
+	//
 	// example:
 	//
 	// /usr/sbin/sshd -D
 	ParentCmdline *string `json:"ParentCmdline,omitempty" xml:"ParentCmdline,omitempty"`
+	// The parent process ID.
+	//
 	// example:
 	//
 	// 12
 	ParentPid *string `json:"ParentPid,omitempty" xml:"ParentPid,omitempty"`
+	// The parent process path.
+	//
 	// example:
 	//
 	// /usr/bin/tar
 	ParentProcessPath *string `json:"ParentProcessPath,omitempty" xml:"ParentProcessPath,omitempty"`
+	// The process ID.
+	//
 	// example:
 	//
 	// 11
 	Pid *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	// The process path.
+	//
 	// example:
 	//
 	// /usr/bin/tar
 	ProcessPath *string `json:"ProcessPath,omitempty" xml:"ProcessPath,omitempty"`
+	// The SHA-256 hash of the file.
+	//
 	// example:
 	//
 	// 3a6fed5fc11392b3ee9f81caf017b48640d7458766a8eb0382899a605b41****
 	Sha256 *string `json:"Sha256,omitempty" xml:"Sha256,omitempty"`
+	// The event status. Valid values:
+	//
+	// - **1**: Unhandled.
+	//
+	// - **2**: Blocked.
+	//
+	// - **3**: Ignored.
+	//
 	// example:
 	//
 	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The UUID of the asset instance.
+	//
 	// example:
 	//
 	// 6690a46c-0edb-4663-a641-3629d1a9****
@@ -192,6 +239,10 @@ func (s *ListUnknownThreatDetectEventResponseBodyData) GetCount() *int32 {
 
 func (s *ListUnknownThreatDetectEventResponseBodyData) GetFirstTime() *int64 {
 	return s.FirstTime
+}
+
+func (s *ListUnknownThreatDetectEventResponseBodyData) GetHandleType() *string {
+	return s.HandleType
 }
 
 func (s *ListUnknownThreatDetectEventResponseBodyData) GetHashKey() *string {
@@ -284,6 +335,11 @@ func (s *ListUnknownThreatDetectEventResponseBodyData) SetFirstTime(v int64) *Li
 	return s
 }
 
+func (s *ListUnknownThreatDetectEventResponseBodyData) SetHandleType(v string) *ListUnknownThreatDetectEventResponseBodyData {
+	s.HandleType = &v
+	return s
+}
+
 func (s *ListUnknownThreatDetectEventResponseBodyData) SetHashKey(v string) *ListUnknownThreatDetectEventResponseBodyData {
 	s.HashKey = &v
 	return s
@@ -364,18 +420,26 @@ func (s *ListUnknownThreatDetectEventResponseBodyData) Validate() error {
 }
 
 type ListUnknownThreatDetectEventResponseBodyPageInfo struct {
+	// The number of alerting events displayed on the current page in a paged query. This parameter is used for paging.
+	//
 	// example:
 	//
 	// 2
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The page number of the current page in a paged query. This parameter is used for paging.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The maximum number of entries displayed on each page in a paged query. This parameter is used for paging.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 149

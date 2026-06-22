@@ -14,9 +14,9 @@ type iDeleteIdcProbeRequest interface {
 }
 
 type DeleteIdcProbeRequest struct {
-	// The UUID of the server.
+	// The UUID of the asset.
 	//
-	// >  You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to query the UUIDs of servers.
+	// > Call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//

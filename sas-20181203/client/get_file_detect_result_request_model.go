@@ -18,7 +18,7 @@ type iGetFileDetectResultRequest interface {
 }
 
 type GetFileDetectResultRequest struct {
-	// The identifiers of files. Only MD5 hash values are supported.
+	// An array of up to 100 unique file identifiers.
 	//
 	// This parameter is required.
 	HashKeyList []*string `json:"HashKeyList,omitempty" xml:"HashKeyList,omitempty" type:"Repeated"`
@@ -28,17 +28,11 @@ type GetFileDetectResultRequest struct {
 	//
 	// 183.46.XX.XX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The type of the file. Valid values:
+	// The type of file to detect. Valid values:
 	//
-	// 	- **0**: unknown file
+	// - **0**: malicious file detection
 	//
-	// 	- **1**: binary file
-	//
-	// 	- **2**: webshell file
-	//
-	// 	- **4**: script file
-	//
-	// > If you do not know the type of the file, set this parameter to 0.
+	// - **6**: Skill compressed package detection
 	//
 	// This parameter is required.
 	//

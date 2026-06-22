@@ -32,17 +32,17 @@ type CreateUniRestorePlanRequest struct {
 	//
 	// qtc
 	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	// The UUID of the Hybrid Backup Recovery (HBR) agent that is used to restore the data of the database on your server.
+	// The unique identifier of the database backup client on the destination server for restoration.
 	//
-	// >  You can call the [DescribeUniBackupDatabase](~~DescribeUniBackupDatabase~~) operation to query the UUID.
+	// >Call the [DescribeUniBackupDatabase](~~DescribeUniBackupDatabase~~) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// ac457b30598d11ed800000163e02****
 	InstanceUuid *string `json:"InstanceUuid,omitempty" xml:"InstanceUuid,omitempty"`
-	// The ID of the anti-ransomware policy.
+	// The ID of the database anti-ransomware backup policy.
 	//
-	// >  You can call the [DescribeUniBackupPolicies](~~DescribeUniBackupPolicies~~) operation to query the ID.
+	// >Call the [DescribeUniBackupPolicies](~~DescribeUniBackupPolicies~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -50,29 +50,29 @@ type CreateUniRestorePlanRequest struct {
 	//
 	// 123
 	PolicyId *int64 `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	// The identifier of the point in time for restoration in the backup version that you want to use. The database is an Oracle database.****
+	// The **reset_scn*	- value of the selected record from the recoverable points in time when you query backups for an Oracle database.
 	//
-	// >  You can call the [DescribeUniRecoverableList](~~DescribeUniRecoverableList~~) operation to query the value.
+	// >Call the [DescribeUniRecoverableList](~~DescribeUniRecoverableList~~) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// 925702.0
 	ResetScn *string `json:"ResetScn,omitempty" xml:"ResetScn,omitempty"`
-	// The point in time for restoration in the backup version that you want to use. The database is an Oracle database.****
+	// The **reset_time*	- value of the selected record from the recoverable points in time when you query backups for an Oracle database.
 	//
-	// >  You can call the [DescribeUniRecoverableList](~~DescribeUniRecoverableList~~) operation to query the value.
+	// >Call the [DescribeUniRecoverableList](~~DescribeUniRecoverableList~~) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// 2022-10-29 01:06:24
 	ResetTime *string `json:"ResetTime,omitempty" xml:"ResetTime,omitempty"`
-	// The information about the database. This parameter is available when the database is a Microsoft SQL Server (MSSQL) database. The value is a JSON string. Valid values:
+	// The database restoration information when the database type is MSSQL. The value is a JSON string. Valid values:
 	//
-	// 	- **name**: the name of the database
+	// - **name**: the name of the database.
 	//
-	// 	- **files**: the path to the database files
+	// - **files**: the file path of the database.
 	//
-	// >  You can call the [DescribeUniRecoverableList](~~DescribeUniRecoverableList~~) operation to query the information.
+	// >Call the [DescribeUniRecoverableList](~~DescribeUniRecoverableList~~) operation to obtain this parameter.
 	//
 	// example:
 	//
@@ -80,9 +80,9 @@ type CreateUniRestorePlanRequest struct {
 	//
 	// "name":"qtc"}
 	RestoreInfo *string `json:"RestoreInfo,omitempty" xml:"RestoreInfo,omitempty"`
-	// The point in time to which you want to restore data.
+	// The point in time to which you want to restore the database.
 	//
-	// >  You can call the [DescribeRestorePlans](~~DescribeRestorePlans~~) operation to query the point in time.
+	// >Call the [DescribeRestorePlans](~~DescribeRestorePlans~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//

@@ -14,9 +14,9 @@ type iGetAttackPathWhitelistRequest interface {
 }
 
 type GetAttackPathWhitelistRequest struct {
-	// Attack path whitelist ID.
+	// The attack path whitelist ID.
 	//
-	// > You can call [ListAttackPathWhitelist](~~ListAttackPathWhitelist~~) to query the attack path whitelist ID.
+	// > You can call [ListAttackPathWhitelist](~~ListAttackPathWhitelist~~) to query attack path whitelist IDs.
 	//
 	// This parameter is required.
 	//

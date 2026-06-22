@@ -28,13 +28,13 @@ type iListMachineAppsRequest interface {
 }
 
 type ListMachineAppsRequest struct {
-	// The ID of the SAE application.
+	// The SAE application ID.
 	//
 	// example:
 	//
 	// 5b41f4bf-349f-4263-89b1-9234c034****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The name of the SAE application.
+	// The SAE application name.
 	//
 	// example:
 	//
@@ -46,39 +46,39 @@ type ListMachineAppsRequest struct {
 	//
 	// cn-hangzhou
 	AppRegionId *string `json:"AppRegionId,omitempty" xml:"AppRegionId,omitempty"`
-	// The edition of Security Center. Valid values:
+	// The authorization version of the asset. Valid values:
 	//
-	// 	- **6**: Anti-virus.
+	// - **6**: Anti-virus Edition
 	//
-	// 	- **5**: Advanced.
+	// - **5**: Premium Edition
 	//
-	// 	- **3**: Enterprise.
+	// - **3**: Enterprise Edition
 	//
-	// 	- **7**: Ultimate.
+	// - **7**: Ultimate Edition
 	//
-	// 	- **10**: Value-added Plan.
+	// - **10**: value-added service Edition.
 	//
 	// example:
 	//
 	// 7
 	AuthVersion *string `json:"AuthVersion,omitempty" xml:"AuthVersion,omitempty"`
-	// The page number.
+	// The page number of the current page in a paging query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese.
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English.
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of entries per page.
+	// The maximum number of entries per page in a paging query.
 	//
 	// example:
 	//

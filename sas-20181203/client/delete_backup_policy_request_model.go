@@ -16,9 +16,9 @@ type iDeleteBackupPolicyRequest interface {
 }
 
 type DeleteBackupPolicyRequest struct {
-	// The ID of the anti-ransomware policy that you want to delete.
+	// The ID of the mitigation policies that you want to delete.
 	//
-	// >  You can call the [DescribeBackupPolicies](~~DescribeBackupPolicies~~) operation to query the IDs of anti-ransomware policies.
+	// >Invoke the [DescribeBackupPolicies](~~DescribeBackupPolicies~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -26,11 +26,11 @@ type DeleteBackupPolicyRequest struct {
 	//
 	// 12
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The version of the anti-ransomware policy that you want to delete. You can call the [DescribeBackupPolicies](~~DescribeBackupPolicies~~) operation to query the versions of anti-ransomware policies. Valid values:
+	// The version of the mitigation policies that you want to delete. You can invoke the [DescribeBackupPolicies](~~DescribeBackupPolicies~~) operation to query this parameter. Valid values:
 	//
-	// 	- **1.0.0**
+	// - **1.0.0**: The mitigation policies version is 1.0.0.
 	//
-	// 	- **2.0.0**
+	// - **2.0.0**: The mitigation policies version is 2.0.0.
 	//
 	// example:
 	//

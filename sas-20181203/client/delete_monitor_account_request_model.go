@@ -14,9 +14,9 @@ type iDeleteMonitorAccountRequest interface {
 }
 
 type DeleteMonitorAccountRequest struct {
-	// The ID of the member that you want to delete.
+	// The ID of the member account that you want to delete from the Security Center monitoring account list.
 	//
-	// >  You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to query the IDs of the members in the Security Center console.
+	// > You can invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain the list of member accounts IDs that are managed by Security Center.
 	//
 	// This parameter is required.
 	//

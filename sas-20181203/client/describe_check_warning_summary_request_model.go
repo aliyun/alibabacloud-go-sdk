@@ -42,23 +42,23 @@ type iDescribeCheckWarningSummaryRequest interface {
 }
 
 type DescribeCheckWarningSummaryRequest struct {
-	// The ID of the container cluster.
+	// The ID of the container cluster to query.
 	//
-	// >  You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to query the IDs of container clusters.
+	// > Call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// c80dae73bd1be442699766b14ffd0****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The name of the container field. Valid values:
+	// The container field. Valid values:
 	//
-	// 	- **clusterId**: the ID of the cluster
+	// - **clusterId**: cluster ID
 	//
-	// 	- **image**: the name of the image
+	// - **image**: image name
 	//
-	// 	- **imageId**: the ID of the image
+	// - **imageId**: image ID
 	//
-	// 	- **namespace**: the namespace
+	// - **namespace**: namespace.
 	//
 	// example:
 	//
@@ -70,37 +70,37 @@ type DescribeCheckWarningSummaryRequest struct {
 	//
 	// c819391d2d520485fa3e81e2dc2ea****
 	ContainerFieldValue *string `json:"ContainerFieldValue,omitempty" xml:"ContainerFieldValue,omitempty"`
-	// The number of the page to return.
+	// The page number for a paged query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The ID of the asset group.
+	// The group ID of the server to query.
 	//
-	// > You can call the [DescribeAllGroups](~~DescribeAllGroups~~) operation to query the IDs of asset groups.
+	// > Call the [DescribeAllGroups](~~DescribeAllGroups~~) operation to obtain the group ID of the server.
 	//
 	// example:
 	//
 	// 123
 	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The language of the content within the request and the response. Valid values:
+	// The language of the request and response. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of entries to return on each page.
+	// The maximum number of entries per page for a paged query.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The name of the risk item.
+	// The name of the baseline check risk item.
 	//
 	// example:
 	//
@@ -108,9 +108,9 @@ type DescribeCheckWarningSummaryRequest struct {
 	RiskName *string `json:"RiskName,omitempty" xml:"RiskName,omitempty"`
 	// The status of the baseline check. Valid values:
 	//
-	// 	- **1**: failed
+	// - **1**: failed
 	//
-	// 	- **3**: passed
+	// - **3**: passed.
 	//
 	// example:
 	//
@@ -124,15 +124,15 @@ type DescribeCheckWarningSummaryRequest struct {
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	// The status of the check item. Valid values:
 	//
-	// 	- **1**: failed
+	// - **1**: failed
 	//
-	// 	- **2**: verifying
+	// - **2**: verifying
 	//
-	// 	- **3**: passed
+	// - **3**: passed
 	//
-	// 	- **5**: expired
+	// - **5**: expired
 	//
-	// 	- **6**: ignored
+	// - **6**: ignored.
 	//
 	// example:
 	//
@@ -144,17 +144,17 @@ type DescribeCheckWarningSummaryRequest struct {
 	//
 	// 1
 	StrategyId *int64 `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
-	// The type of the query condition. Valid values:
+	// The query type. Valid values:
 	//
-	// 	- **uuid**: the ID of an asset
+	// - **uuid**: asset ID.
 	//
 	// example:
 	//
 	// uuid
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	// The level-1 type of check items.
+	// The level-1 type of the baseline.
 	//
-	// >  You can call the [DescribeRiskType](~~DescribeRiskType~~) operation to query the level-1 types of check items.
+	// > Call the [DescribeRiskType](~~DescribeRiskType~~) operation to obtain this parameter.
 	//
 	// example:
 	//
@@ -162,7 +162,7 @@ type DescribeCheckWarningSummaryRequest struct {
 	TypeName *string `json:"TypeName,omitempty" xml:"TypeName,omitempty"`
 	// The UUID of the asset.
 	//
-	// >  You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to query the UUIDs of assets.
+	// > Call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to obtain this parameter.
 	//
 	// example:
 	//

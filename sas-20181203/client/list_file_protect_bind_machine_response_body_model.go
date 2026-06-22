@@ -18,7 +18,9 @@ type iListFileProtectBindMachineResponseBody interface {
 }
 
 type ListFileProtectBindMachineResponseBody struct {
-	List     []*string                                       `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// The list of servers. The UUID of each server is returned.
+	List []*string `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// The paging information for the paged query.
 	PageInfo *ListFileProtectBindMachineResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -73,10 +75,14 @@ func (s *ListFileProtectBindMachineResponseBody) Validate() error {
 }
 
 type ListFileProtectBindMachineResponseBodyPageInfo struct {
+	// The number of entries on the current page for a paged query.
+	//
 	// example:
 	//
 	// 10
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 69

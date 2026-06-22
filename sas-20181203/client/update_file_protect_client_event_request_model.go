@@ -48,66 +48,110 @@ type iUpdateFileProtectClientEventRequest interface {
 }
 
 type UpdateFileProtectClientEventRequest struct {
+	// The list of alert notification levels.
 	AlertLevels []*int32 `json:"AlertLevels,omitempty" xml:"AlertLevels,omitempty" type:"Repeated"`
+	// The timestamp of the end time.
+	//
 	// example:
 	//
 	// 1650470399999
-	EndTime       *int64   `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The list of excluded event IDs.
 	ExcludeIdList []*int64 `json:"ExcludeIdList,omitempty" xml:"ExcludeIdList,omitempty" type:"Repeated"`
+	// The file path.
+	//
 	// example:
 	//
 	// /etc/pam****
-	FilePath *string  `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
-	IdList   []*int64 `json:"IdList,omitempty" xml:"IdList,omitempty" type:"Repeated"`
+	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
+	// The list of event IDs.
+	IdList []*int64 `json:"IdList,omitempty" xml:"IdList,omitempty" type:"Repeated"`
+	// The ID of the asset instance.
+	//
 	// example:
 	//
 	// i-bp1fu4aqltf1huhc****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the asset instance.
+	//
 	// example:
 	//
 	// test
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The public IP address.
+	//
 	// example:
 	//
 	// 120.27.XX.XX
 	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	// The internal IP address.
+	//
 	// example:
 	//
 	// 172.26.XX.XX
 	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
+	// The new status. Valid values:
+	//
+	// - **0**: Unhandled.
+	//
+	// - **1**: Handled.
+	//
+	// - **2**: Whitelisted.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	NewStatus *int32 `json:"NewStatus,omitempty" xml:"NewStatus,omitempty"`
+	// The type of the operation.
+	//
 	// example:
 	//
 	// READ
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	// The process path.
+	//
 	// example:
 	//
 	// /root/1111/****
-	ProcPath *string   `json:"ProcPath,omitempty" xml:"ProcPath,omitempty"`
-	Remark   []*string `json:"Remark,omitempty" xml:"Remark,omitempty" type:"Repeated"`
+	ProcPath *string `json:"ProcPath,omitempty" xml:"ProcPath,omitempty"`
+	// The remarks.
+	Remark []*string `json:"Remark,omitempty" xml:"Remark,omitempty" type:"Repeated"`
+	// The rule name.
+	//
 	// example:
 	//
 	// tetsRule
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// Specifies whether to select all.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// true
 	SelectAll *bool `json:"SelectAll,omitempty" xml:"SelectAll,omitempty"`
+	// The start time.
+	//
 	// example:
 	//
 	// 1649260800000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The event status. Valid values:
+	//
+	// - **0**: Unhandled.
+	//
+	// - **1**: Handled.
+	//
+	// - **2**: Whitelisted.
+	//
 	// example:
 	//
 	// 1
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The UUID of the protected server.
+	//
 	// example:
 	//
 	// ae1527a9-2308-46ab-b10a-48ae7ff7****

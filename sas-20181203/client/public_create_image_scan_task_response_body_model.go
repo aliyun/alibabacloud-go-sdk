@@ -16,9 +16,9 @@ type iPublicCreateImageScanTaskResponseBody interface {
 }
 
 type PublicCreateImageScanTaskResponseBody struct {
-	// The data returned if the call is successful.
+	// The data returned when the operation is successful.
 	Data *PublicCreateImageScanTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The request ID. Alibaba Cloud generates a unique identifier for each request. You can use the request ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -62,25 +62,25 @@ func (s *PublicCreateImageScanTaskResponseBody) Validate() error {
 }
 
 type PublicCreateImageScanTaskResponseBodyData struct {
-	// Indicates whether you can create more image scan tasks. Valid values:
+	// Indicates whether more scan tasks can be created. Valid values:
 	//
-	// 	- **true**: yes
+	// - **true**: More scan tasks can be created.
 	//
-	// 	- **false**: no
+	// - **false**: No more scan tasks can be created.
 	//
-	// > By default, a maximum of 10 image scan tasks can be running at the same time. If 10 image scan tasks are running, you cannot create an image scan task by calling this operation. You must wait for at least one of the 10 existing image scan tasks to complete before you can create an image scan task.
+	// > By default, up to 10 scan tasks can exist at the same time. If the number of scan tasks exceeds 10, creating a scan task by calling this operation fails. Wait until an existing scan task is completed before creating a new scan task.
 	//
 	// example:
 	//
 	// true
 	CanCreate *bool `json:"CanCreate,omitempty" xml:"CanCreate,omitempty"`
-	// The timestamp when the image information was collected. Unit: milliseconds.
+	// The timestamp when image information was collected, in milliseconds.
 	//
 	// example:
 	//
 	// 1644286364150
 	CollectTime *int64 `json:"CollectTime,omitempty" xml:"CollectTime,omitempty"`
-	// The timestamp when the image scan task started to run. Unit: milliseconds.
+	// The timestamp when the scan task started running, in milliseconds.
 	//
 	// example:
 	//
@@ -92,39 +92,39 @@ type PublicCreateImageScanTaskResponseBodyData struct {
 	//
 	// 5
 	FinishCount *int32 `json:"FinishCount,omitempty" xml:"FinishCount,omitempty"`
-	// The progress of the image scan task in percentage.
+	// The progress percentage of the scan task.
 	//
 	// example:
 	//
 	// 100
 	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// The result of the image scan task. Valid values:
+	// The execution result of the scan task. Valid values:
 	//
-	// 	- **SUCCESS**: The task is successful.
+	// - **SUCCESS**: The scan task succeeded.
 	//
-	// 	- **TASK_NOT_SUPPORT_REGION**: The images are deployed in a region that is not supported by container image scan.
+	// - **TASK_NOT_SUPPORT_REGION**: The image is in a region that does not support scanning.
 	//
-	// > For more information about the regions supported by container image scan, see the "Regions supported by container image scan" section in this topic.
+	// > For the regions that support image security scanning, see the table of supported regions after the response parameters table in this topic.
 	//
 	// example:
 	//
 	// SUCCESS
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	// The status of the image scan task. Valid values:
+	// The status of the scan task. Valid values:
 	//
-	// 	- **INIT**: The task is being initialized.
+	// - **INIT**: Initializing.
 	//
-	// 	- **PRE_ANALYZER**: The task is being pre-processed.
+	// - **PRE_ANALYZER**: Pre-analyzing.
 	//
-	// 	- **SUCCESS**: The task is successful.
+	// - **SUCCESS**: Succeeded.
 	//
-	// 	- **FAIL**: The task fails.
+	// - **FAIL**: Failed.
 	//
 	// example:
 	//
 	// SUCCESS
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the image scan task.
+	// The ID of the scan task.
 	//
 	// example:
 	//

@@ -24,19 +24,19 @@ type iModifyCheckRuleRequest interface {
 }
 
 type ModifyCheckRuleRequest struct {
-	// The list of instances to be added in this rule update. This parameter does not need to be passed if there are no instances to add.
+	// The list of instances to add in this rule update. If no instances need to be added, you do not need to specify this parameter.
 	AddInstanceList []*ModifyCheckRuleRequestAddInstanceList `json:"AddInstanceList,omitempty" xml:"AddInstanceList,omitempty" type:"Repeated"`
-	// The list of instances to be removed in this rule update. This parameter does not need to be passed if there are no instances to remove.
+	// The list of instances to delete in this rule update. If no instances need to be deleted, you do not need to specify this parameter.
 	DeleteInstanceList []*ModifyCheckRuleRequestDeleteInstanceList `json:"DeleteInstanceList,omitempty" xml:"DeleteInstanceList,omitempty" type:"Repeated"`
-	// Remarks.
+	// The remarks.
 	//
 	// example:
 	//
 	// testRemark
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// Rule ID.
+	// The rule ID.
 	//
-	// > You can obtain this parameter by calling the [ListCheckRule](https://help.aliyun.com/document_detail/2590599.html) API.
+	// > You can call the [ListCheckRule](https://help.aliyun.com/document_detail/2590599.html) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -44,19 +44,19 @@ type ModifyCheckRuleRequest struct {
 	//
 	// 9000**
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// Rule type. Default is **WHITE**. Values:
+	// The rule type. Default value: **WHITE**. Valid values:
 	//
-	// - **WHITE**: Add to whitelist
+	// - **WHITE**: whitelist.
 	//
 	// example:
 	//
 	// WHITE
 	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
-	// The scope of effect for modifying the rule:
+	// The scope of the rule. Valid values:
 	//
-	// - **INSTANCE**: Instance
+	// - **INSTNACE**: instance
 	//
-	// - **ITEM**: Check item
+	// - **ITEM**: check item.
 	//
 	// example:
 	//

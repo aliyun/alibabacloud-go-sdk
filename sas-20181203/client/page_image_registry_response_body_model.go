@@ -18,11 +18,11 @@ type iPageImageRegistryResponseBody interface {
 }
 
 type PageImageRegistryResponseBody struct {
-	// An array that consists of image repositories.
+	// The image repository list data.
 	List []*PageImageRegistryResponseBodyList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	// The pagination information.
+	// The pagination information for the paged query.
 	PageInfo *PageImageRegistryResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The ID of the request. The ID is a unique identifier that Alibaba Cloud generates for the request and can be used to troubleshoot issues.
 	//
 	// example:
 	//
@@ -84,43 +84,43 @@ func (s *PageImageRegistryResponseBody) Validate() error {
 }
 
 type PageImageRegistryResponseBodyList struct {
-	// The IP address blacklist.
+	// The blacklist.
 	//
 	// example:
 	//
 	// 129.211.XXX.XXX
 	BlackList *string `json:"BlackList,omitempty" xml:"BlackList,omitempty"`
-	// The domain name of the image repository.
+	// The domain name of the repository.
 	//
 	// example:
 	//
 	// sinochem.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The time when the image repository was created. The time is in the yyyy-MM-dd HH:mm:ss format.
+	// The creation time, in the yyyy-MM-dd HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2022-08-30 10:23:30
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The time when the image repository was updated. The time is in the yyyy-MM-dd HH:mm:ss format.
+	// The update time, in the yyyy-MM-dd HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2022-09-30 10:23:30
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The ID of the image repository.
+	// The unique ID of the image repository.
 	//
 	// example:
 	//
 	// 1078312
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The number of images that are stored in the image repository.
+	// The number of images in the repository.
 	//
 	// example:
 	//
 	// 1
 	ImageCount *int32 `json:"ImageCount,omitempty" xml:"ImageCount,omitempty"`
-	// The information about the Jenkins environment.
+	// The Jenkins environment context.
 	//
 	// example:
 	//
@@ -128,9 +128,9 @@ type PageImageRegistryResponseBodyList struct {
 	JenkinsEnv *string `json:"JenkinsEnv,omitempty" xml:"JenkinsEnv,omitempty"`
 	// The network type. Valid values:
 	//
-	// 	- **1**: Internet.
+	// - **1**: public network
 	//
-	// 	- **2**: virtual private cloud (VPC).
+	// - **2**: VPC.
 	//
 	// example:
 	//
@@ -142,29 +142,29 @@ type PageImageRegistryResponseBodyList struct {
 	//
 	// Harbor******
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// The number of days for which assets are retained.
+	// The number of days that assets are retained.
 	//
 	// example:
 	//
 	// 30
 	PersistenceDay *int32 `json:"PersistenceDay,omitempty" xml:"PersistenceDay,omitempty"`
-	// The type of the protocol. Valid values:
+	// The protocol type. Valid values:
 	//
-	// 	- **1**: HTTP.
+	// - **1**: HTTP
 	//
-	// 	- **2**: HTTPS.
+	// - **2**: HTTPS.
 	//
 	// example:
 	//
 	// 1
 	ProtocolType *int32 `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
-	// The region ID of the image repository.
+	// The region ID of the repository.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The IP address of the image repository.
+	// The IP address of the repository.
 	//
 	// example:
 	//
@@ -176,15 +176,15 @@ type PageImageRegistryResponseBodyList struct {
 	//
 	// test1
 	RegistryName *string `json:"RegistryName,omitempty" xml:"RegistryName,omitempty"`
-	// The type of the image repository. Valid values:
+	// The image repository type. Valid values:
 	//
-	// 	- **acr**: Container Registry.
+	// - **acr**: ACR
 	//
-	// 	- **harbor**: Harbor.
+	// - **harbor**: Harbor
 	//
-	// 	- **quay**: Quay.
+	// - **quay**: Quay
 	//
-	// 	- **CI/CD**: Jenkins.
+	// - **CI/CD**: Jenkins.
 	//
 	// example:
 	//
@@ -196,7 +196,7 @@ type PageImageRegistryResponseBodyList struct {
 	//
 	// c7b90d29-632f-4e58-88b8-00ad77f6****
 	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
-	// The number of scan tasks that are performed per hour.
+	// The number of scan tasks per hour.
 	//
 	// example:
 	//
@@ -208,13 +208,13 @@ type PageImageRegistryResponseBodyList struct {
 	//
 	// RegistryUser
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	// The VPC ID.
+	// The instance ID of the VPC.
 	//
 	// example:
 	//
 	// vpc-5gu8iu68w9b472jbb****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The IP address whitelist.
+	// The whitelist.
 	//
 	// example:
 	//
@@ -415,19 +415,19 @@ func (s *PageImageRegistryResponseBodyList) Validate() error {
 }
 
 type PageImageRegistryResponseBodyPageInfo struct {
-	// The number of entries returned on the current page.
+	// The number of entries on the current page.
 	//
 	// example:
 	//
 	// 20
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The page number of the returned page.
+	// The page number of the current page in a paged query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries returned per page.
+	// The maximum number of entries per page in a paged query.
 	//
 	// example:
 	//

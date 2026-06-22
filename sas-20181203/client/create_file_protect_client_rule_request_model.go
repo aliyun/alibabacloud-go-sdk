@@ -36,40 +36,88 @@ type iCreateFileProtectClientRuleRequest interface {
 }
 
 type CreateFileProtectClientRuleRequest struct {
+	// The alert notification level. Valid values:
+	//
+	// - 0: no alert
+	//
+	// - 1: reminder
+	//
+	// - 2: suspicious
+	//
+	// - 3: high-risk.
+	//
 	// example:
 	//
 	// 0
 	AlertLevel *int32 `json:"AlertLevel,omitempty" xml:"AlertLevel,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// xxx
-	ClientToken  *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The list of excluded users.
 	ExcludeUsers []*string `json:"ExcludeUsers,omitempty" xml:"ExcludeUsers,omitempty" type:"Repeated"`
+	// The list of operations performed on files.
+	//
 	// This parameter is required.
 	FileOps []*string `json:"FileOps,omitempty" xml:"FileOps,omitempty" type:"Repeated"`
+	// The list of monitored file paths. Wildcards are supported.
+	//
 	// This parameter is required.
 	FilePaths []*string `json:"FilePaths,omitempty" xml:"FilePaths,omitempty" type:"Repeated"`
+	// The list of monitored file types.
 	FileTypes []*string `json:"FileTypes,omitempty" xml:"FileTypes,omitempty" type:"Repeated"`
+	// The operating system type. Valid values:
+	//
+	// - **windows**: Windows.
+	//
+	// - **linux**: Linux.
+	//
 	// example:
 	//
 	// linux
 	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	// The list of process monitoring paths. Wildcards are supported.
+	//
 	// This parameter is required.
 	ProcPaths []*string `json:"ProcPaths,omitempty" xml:"ProcPaths,omitempty" type:"Repeated"`
+	// The action to take when the policy is hit. Valid values:
+	//
+	// - **monitor**: Alert.
+	//
+	// - **block**: Block.
+	//
+	// - **pass**: Allow.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pass
 	RuleAction *string `json:"RuleAction,omitempty" xml:"RuleAction,omitempty"`
+	// The name of the rule.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 规则****
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The status of the rule. Valid values:
+	//
+	// - **0**: Disabled.
+	//
+	// - **1**: Enabled.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The switch ID associated with the rule.
+	//
 	// example:
 	//
 	// FILE_PROTECT_RULE_SWITCH_TYPE_0000

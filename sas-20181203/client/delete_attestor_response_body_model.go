@@ -14,7 +14,7 @@ type iDeleteAttestorResponseBody interface {
 }
 
 type DeleteAttestorResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

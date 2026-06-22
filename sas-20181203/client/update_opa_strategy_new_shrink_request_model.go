@@ -40,11 +40,11 @@ type iUpdateOpaStrategyNewShrinkRequest interface {
 }
 
 type UpdateOpaStrategyNewShrinkRequest struct {
-	// The risks that you want to detect by using the rule.
+	// The alert content details included in the policy.
 	AlarmDetailShrink *string `json:"AlarmDetail,omitempty" xml:"AlarmDetail,omitempty"`
 	// The cluster ID.
 	//
-	// > This parameter is deprecated. You can use the Scopes parameter to specify a scope in which cluster parameters take effect.
+	// 	Notice: This parameter is deprecated. Use the Scopes parameter to specify the scope of clusters to which the policy applies..
 	//
 	// example:
 	//
@@ -52,79 +52,79 @@ type UpdateOpaStrategyNewShrinkRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The cluster name.
 	//
-	// > This parameter is deprecated.
+	// 	Notice: This parameter is deprecated..
 	//
 	// example:
 	//
 	// docker-law
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// The rule description.
+	// The policy description.
 	//
 	// example:
 	//
 	// 4566
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The image names.
+	// The list of image names included in the policy.
 	ImageName []*string `json:"ImageName,omitempty" xml:"ImageName,omitempty" type:"Repeated"`
-	// The image tags.
+	// The list of image tags included in the policy.
 	Label []*string `json:"Label,omitempty" xml:"Label,omitempty" type:"Repeated"`
-	// Specifies whether the rule supports malicious Internet images. Valid values:
+	// Specifies whether the policy supports Internet malicious images. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Supported.
 	//
-	// 	- **false**
+	// - **false**: Not supported.
 	//
 	// example:
 	//
 	// true
 	MaliciousImage *bool `json:"MaliciousImage,omitempty" xml:"MaliciousImage,omitempty"`
-	// The action that is performed when the rule is hit. Valid values:
+	// The action to take when the policy is hit. Valid values:
 	//
-	// 	- **1**: alert
+	// - **1**: Alert.
 	//
-	// 	- **2**: block
+	// - **2**: Block.
 	//
-	// 	- **3**: allow
+	// - **3**: Allow.
 	//
 	// example:
 	//
 	// 1
 	RuleAction *int32 `json:"RuleAction,omitempty" xml:"RuleAction,omitempty"`
-	// The application scope.
+	// The scope of the policy.
 	Scopes []*UpdateOpaStrategyNewShrinkRequestScopes `json:"Scopes,omitempty" xml:"Scopes,omitempty" type:"Repeated"`
-	// The ID of the rule.
+	// The policy ID.
 	//
-	// >  You can call the [ListOpaClusterStrategyNew](https://help.aliyun.com/document_detail/2623574.html) operation to query the ID.
+	// >Call the [ListOpaClusterStrategyNew](https://help.aliyun.com/document_detail/2623574.html) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// 1003
 	StrategyId *int64 `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
-	// The rule name.
+	// The policy name.
 	//
 	// example:
 	//
 	// test
 	StrategyName *string `json:"StrategyName,omitempty" xml:"StrategyName,omitempty"`
-	// The ID of the rule template.
+	// The policy template ID.
 	//
-	// >  You can call the [GetOpaStrategyTemplateSummary](https://help.aliyun.com/document_detail/2539952.html) operation to query the ID of the rule template.
+	// >Call the [GetOpaStrategyTemplateSummary](https://help.aliyun.com/document_detail/2539952.html) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// 109
 	StrategyTemplateId *int64 `json:"StrategyTemplateId,omitempty" xml:"StrategyTemplateId,omitempty"`
-	// Specifies whether the rule supports unscanned images. Valid values:
+	// Specifies whether the policy supports unscanned images. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Supported.
 	//
-	// 	- **false**
+	// - **false**: Not supported.
 	//
 	// example:
 	//
 	// true
 	UnScanedImage *bool `json:"UnScanedImage,omitempty" xml:"UnScanedImage,omitempty"`
-	// The whitelists.
+	// The whitelist.
 	WhiteList []*string `json:"WhiteList,omitempty" xml:"WhiteList,omitempty" type:"Repeated"`
 }
 
@@ -276,9 +276,9 @@ func (s *UpdateOpaStrategyNewShrinkRequest) Validate() error {
 }
 
 type UpdateOpaStrategyNewShrinkRequestScopes struct {
-	// The ID of the cluster node to which the rule is applied.
+	// The policy instance ID in the cluster.
 	//
-	// >  You can call the [GetOpaStrategyDetailNew](~~GetOpaStrategyDetailNew~~) operation to query the ID of the cluster node to which the rule is applied.
+	// > Call the [GetOpaStrategyDetailNew](~~GetOpaStrategyDetailNew~~) operation to obtain this parameter.
 	//
 	// example:
 	//
@@ -286,25 +286,25 @@ type UpdateOpaStrategyNewShrinkRequestScopes struct {
 	AckPolicyInstanceId *string `json:"AckPolicyInstanceId,omitempty" xml:"AckPolicyInstanceId,omitempty"`
 	// Specifies whether all namespaces are included. Valid values:
 	//
-	// 	- **0**: Not all namespaces are included.
+	// - **0**: No.
 	//
-	// 	- **1**: All namespaces are included.
+	// - **1**: Yes.
 	//
 	// example:
 	//
 	// 1
 	AllNamespace *int32 `json:"AllNamespace,omitempty" xml:"AllNamespace,omitempty"`
-	// The cluster ID.
+	// The ID of the container cluster.
 	//
-	// >  You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to query the cluster ID.
+	// > Call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// cdcb56a931c**
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The namespaces.
+	// The list of namespaces.
 	//
-	// > This parameter is valid only when the AllNamespace parameter is set to 0.
+	// 	Notice: This parameter takes effect only when AllNamespace is set to 0..
 	NamespaceList []*string `json:"NamespaceList,omitempty" xml:"NamespaceList,omitempty" type:"Repeated"`
 }
 

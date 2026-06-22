@@ -16,9 +16,9 @@ type iListPrivateRegistryTypeResponseBody interface {
 }
 
 type ListPrivateRegistryTypeResponseBody struct {
-	// An array that consists of image repository types.
+	// The information about image repository types.
 	RegistryTypeInfos []*ListPrivateRegistryTypeResponseBodyRegistryTypeInfos `json:"RegistryTypeInfos,omitempty" xml:"RegistryTypeInfos,omitempty" type:"Repeated"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The ID of the request. The China Chinese Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -72,15 +72,15 @@ type ListPrivateRegistryTypeResponseBodyRegistryTypeInfos struct {
 	//
 	// 2
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The name of the image repository type. Valid values:
+	// The type of the image repository. Valid values:
 	//
-	// 	- **acr**: Container Registry
+	// - **acr**: ACR.
 	//
-	// 	- **harbor**: Harbor
+	// - **harbor**: Harbor.
 	//
-	// 	- **quay**: Quay
+	// - **quay**: Quay.
 	//
-	// 	- **CI/CD**: Jenkins
+	// - **CI/CD**: Jenkins.
 	//
 	// example:
 	//

@@ -62,9 +62,9 @@ type ModifyIdcProbeRequest struct {
 	LinuxPort *string `json:"LinuxPort,omitempty" xml:"LinuxPort,omitempty"`
 	// The unit of the scan interval. Valid values:
 	//
-	// 	- **day**
+	// - **day**
 	//
-	// 	- **hour**
+	// - **hour**
 	//
 	// example:
 	//
@@ -72,9 +72,9 @@ type ModifyIdcProbeRequest struct {
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
 	// The usage status. Valid values:
 	//
-	// 	- **0**: enabled.
+	// - **0**: enabled.
 	//
-	// 	- **1**: disabled.
+	// - **1**: disabled.
 	//
 	// example:
 	//

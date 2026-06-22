@@ -20,7 +20,7 @@ type iModifyInstanceAntiBruteForceRuleRequest interface {
 }
 
 type ModifyInstanceAntiBruteForceRuleRequest struct {
-	// The ID of the defense rule.
+	// The ID of the anti-brute-force attacks rule.
 	//
 	// This parameter is required.
 	//
@@ -29,13 +29,15 @@ type ModifyInstanceAntiBruteForceRuleRequest struct {
 	// 65767
 	NewRuleId       *int64 `json:"NewRuleId,omitempty" xml:"NewRuleId,omitempty"`
 	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The source IP address of the request.
+	// The IP address of the access source.
 	//
 	// example:
 	//
 	// 1.2.XX.XX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The UUID of the server for which you want to modify the defense rule. You can call the [DescribeCloudCenterInstances](https://help.aliyun.com/document_detail/141932.html) operation to query the UUIDs of servers.
+	// The UUID of the server for which you want to modify the anti-brute-force attacks rule.
+	//
+	// You can invoke the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to obtain the UUID of the server.
 	//
 	// This parameter is required.
 	//

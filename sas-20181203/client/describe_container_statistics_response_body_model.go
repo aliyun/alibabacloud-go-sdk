@@ -16,9 +16,9 @@ type iDescribeContainerStatisticsResponseBody interface {
 }
 
 type DescribeContainerStatisticsResponseBody struct {
-	// The alert statistics of container assets.
+	// The detailed alert statistics of container assets.
 	Data *DescribeContainerStatisticsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The request ID. Alibaba Cloud generates a unique identifier for each request, which can be used for troubleshooting and diagnostics.
 	//
 	// example:
 	//
@@ -62,37 +62,37 @@ func (s *DescribeContainerStatisticsResponseBody) Validate() error {
 }
 
 type DescribeContainerStatisticsResponseBodyData struct {
-	// The number of alerts whose risk level is **Reminder**.
+	// The number of alerts with the **Reminder*	- risk level.
 	//
 	// example:
 	//
 	// 1
 	RemindAlarmCount *int32 `json:"RemindAlarmCount,omitempty" xml:"RemindAlarmCount,omitempty"`
-	// The number of alerts whose risk level is **Urgent**.
+	// The number of alerts with the **Urgent*	- risk level.
 	//
 	// example:
 	//
 	// 2
 	SeriousAlarmCount *int32 `json:"SeriousAlarmCount,omitempty" xml:"SeriousAlarmCount,omitempty"`
-	// The number of alerts whose risk level is **Suspicious**.
+	// The number of alerts with the **Suspicious*	- risk level.
 	//
 	// example:
 	//
 	// 3
 	SuspiciousAlarmCount *int32 `json:"SuspiciousAlarmCount,omitempty" xml:"SuspiciousAlarmCount,omitempty"`
-	// The total number of alerts that are generated in the current container cluster.
+	// The total number of security alerts in the container cluster.
 	//
 	// example:
 	//
 	// 6
 	TotalAlarmCount *int32 `json:"TotalAlarmCount,omitempty" xml:"TotalAlarmCount,omitempty"`
-	// The total number of nodes in the current container cluster.
+	// The total number of nodes in the container cluster.
 	//
 	// example:
 	//
 	// 12
 	TotalNode *int32 `json:"TotalNode,omitempty" xml:"TotalNode,omitempty"`
-	// The number of nodes on which alerts are generated in the current container cluster.
+	// The number of nodes that have alerts in the container cluster.
 	//
 	// example:
 	//

@@ -52,9 +52,9 @@ type GetHoneypotNodeResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**: The request was successful.
+	// - **true**: The request was successful.
 	//
-	// 	- **false**: The request failed.
+	// - **false**: The request failed.
 	//
 	// example:
 	//
@@ -136,9 +136,9 @@ func (s *GetHoneypotNodeResponseBody) Validate() error {
 type GetHoneypotNodeResponseBodyHoneypotNode struct {
 	// Indicates whether a honeypot is allowed to access the Internet. Valid values:
 	//
-	// 	- **true**: The honeypot is allowed to access the Internet.
+	// - **true**: The honeypot is allowed to access the Internet.
 	//
-	// 	- **false**: The honeypot is not allowed to access the Internet.
+	// - **false**: The honeypot is not allowed to access the Internet.
 	//
 	// example:
 	//
@@ -202,15 +202,15 @@ type GetHoneypotNodeResponseBodyHoneypotNode struct {
 	SecurityGroupProbeIpList []*string `json:"SecurityGroupProbeIpList,omitempty" xml:"SecurityGroupProbeIpList,omitempty" type:"Repeated"`
 	// The status of the management node. Valid values:
 	//
-	// 	- **0**: preparing
+	// - **0**: preparing
 	//
-	// 	- **1**: normal
+	// - **1**: normal
 	//
-	// 	- **2**: abnormal
+	// - **2**: abnormal
 	//
-	// 	- **4**: starting
+	// - **4**: starting
 	//
-	// 	- **5**: upgrading
+	// - **5**: upgrading
 	//
 	// example:
 	//
@@ -218,9 +218,9 @@ type GetHoneypotNodeResponseBodyHoneypotNode struct {
 	TotalStatus *int32 `json:"TotalStatus,omitempty" xml:"TotalStatus,omitempty"`
 	// Indicates whether the management node can be upgraded. Valid values:
 	//
-	// 	- **true**: yes
+	// - **true**: yes
 	//
-	// 	- **false**: no
+	// - **false**: no
 	//
 	// example:
 	//

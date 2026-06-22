@@ -36,15 +36,15 @@ type DescribeDomainDetailResponseBody struct {
 	//
 	// example.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// An array that consists of the details about the domain asset.
+	// The asset information related to the domain name.
 	DomainDetailItems []*DescribeDomainDetailResponseBodyDomainDetailItems `json:"DomainDetailItems,omitempty" xml:"DomainDetailItems,omitempty" type:"Repeated"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The request ID. The China value is a unique identifier that Alibaba Cloud generates for the request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// 3A85CFCF-05C8-451A-9E41-C0D5E96BA407
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The name of the root domain that corresponds to the domain.
+	// The root domain name that corresponds to the domain name.
 	//
 	// example:
 	//
@@ -134,17 +134,17 @@ func (s *DescribeDomainDetailResponseBody) Validate() error {
 }
 
 type DescribeDomainDetailResponseBodyDomainDetailItems struct {
-	// The type of the domain asset. Valid values:
+	// The Asset Type of the asset under the domain name. Valid values:
 	//
-	// 	- **0**: an Elastic Compute Service (ECS) instance
+	// - **0**: ECS
 	//
-	// 	- **1**: a Server Load Balancer (SLB) instance
+	// - **1**: load balancing
 	//
-	// 	- **2**: a Network Address Translation (NAT) gateway
+	// - **2**: NAT gateway
 	//
-	// 	- **3**: an ApsaraDB RDS instance
+	// - **3**: RDS database
 	//
-	// 	- **4**: an ApsaraDB for MongoDB instance
+	// - **4**: MongoDB database
 	//
 	// example:
 	//
@@ -174,7 +174,7 @@ type DescribeDomainDetailResponseBodyDomainDetailItems struct {
 	//
 	// 1.2.XX.XX
 	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	// The instance UUID of the domain asset.
+	// The UUID of the asset instance.
 	//
 	// example:
 	//

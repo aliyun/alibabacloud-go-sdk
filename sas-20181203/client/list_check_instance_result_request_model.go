@@ -62,9 +62,9 @@ type ListCheckInstanceResultRequest struct {
 	InstanceNameKey *string `json:"InstanceNameKey,omitempty" xml:"InstanceNameKey,omitempty"`
 	// The language of the content within the request and response. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//

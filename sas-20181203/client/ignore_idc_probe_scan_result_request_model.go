@@ -16,11 +16,11 @@ type iIgnoreIdcProbeScanResultRequest interface {
 }
 
 type IgnoreIdcProbeScanResultRequest struct {
-	// The operation that you want to perform. Valid values:
+	// The action to perform. Valid values:
 	//
-	// 	- **1**: adds the scan result to the whitelist.
+	// - **1**: whitelist
 	//
-	// 	- **2**: ignores the scan result.
+	// - **2**: ignore.
 	//
 	// This parameter is required.
 	//
@@ -28,9 +28,9 @@ type IgnoreIdcProbeScanResultRequest struct {
 	//
 	// 1
 	IgnoreAction *int32 `json:"IgnoreAction,omitempty" xml:"IgnoreAction,omitempty"`
-	// The ID of the scan result. Separate multiple IDs with commas (,).
+	// The IDs of scan results. Separate multiple IDs with commas (,).
 	//
-	// >  You can call the [DescribeIdcProbeScanResultList](~~DescribeIdcProbeScanResultList~~) operation to query the ID.
+	// > Call the [DescribeIdcProbeScanResultList](~~DescribeIdcProbeScanResultList~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//

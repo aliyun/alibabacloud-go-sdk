@@ -68,7 +68,7 @@ type ModifyTagWithUuidRequest struct {
 	//
 	// example:
 	//
-	// [{"target":"inet-7c676676-06fa-442e-90fb-b802e5d6****","targetType":"uuid","flag":"add"}]
+	// [{"target":"inet-7c676676-06fa-432e-90fb-b802e5d6****","targetType":"uuid","flag":"add"}]
 	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
 	// The UUIDs of the servers.
 	//

@@ -16,9 +16,9 @@ type iDescribeVersionConfigRequest interface {
 }
 
 type DescribeVersionConfigRequest struct {
-	// The Alibaba Cloud account ID using the Cloud Security Center service.
+	// The Alibaba Cloud account ID that uses the Security Center service.
 	//
-	// > Call the [GetUser](https://help.aliyun.com/document_detail/28681.html) API to obtain this parameter.
+	// > Call the [GetUser](https://help.aliyun.com/document_detail/28681.html) operation to obtain this parameter.
 	//
 	// example:
 	//

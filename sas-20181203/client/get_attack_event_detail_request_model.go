@@ -16,13 +16,13 @@ type iGetAttackEventDetailRequest interface {
 }
 
 type GetAttackEventDetailRequest struct {
-	// The unique identifier ID for the alert event.
+	// The unique ID of the alert event.
 	//
 	// example:
 	//
 	// 18825544674********
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The language type for requesting and receiving messages. Values:
+	// The language of the request and response. Valid values:
 	//
 	// - **zh**: Chinese.
 	//

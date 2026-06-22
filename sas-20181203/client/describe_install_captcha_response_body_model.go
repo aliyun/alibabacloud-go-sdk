@@ -18,21 +18,21 @@ type iDescribeInstallCaptchaResponseBody interface {
 }
 
 type DescribeInstallCaptchaResponseBody struct {
-	// The installation verification code for you to manually install the Security Center agent.
+	// The installation verification code for manually installing the Security Center Agent.
 	//
 	// example:
 	//
 	// M1HH**
 	CaptchaCode *string `json:"CaptchaCode,omitempty" xml:"CaptchaCode,omitempty"`
-	// The validity period of the installation verification code.
+	// The expiration date of the installation verification code.
 	//
-	// >  The installation verification code is valid only within the validity period. An expired installation verification code cannot be used to install the agent.
+	// > The installation verification code can be used only within its validity period. An expired installation verification code cannot be used.
 	//
 	// example:
 	//
 	// 2020-10-10 16:06:38
 	Deadline *string `json:"Deadline,omitempty" xml:"Deadline,omitempty"`
-	// The ID of the request.
+	// The unique identifier that Alibaba Cloud generated for the request.
 	//
 	// example:
 	//

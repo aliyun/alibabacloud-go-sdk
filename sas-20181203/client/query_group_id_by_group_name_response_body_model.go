@@ -16,13 +16,13 @@ type iQueryGroupIdByGroupNameResponseBody interface {
 }
 
 type QueryGroupIdByGroupNameResponseBody struct {
-	// The ID of the asset group.
+	// The ID of the group.
 	//
 	// example:
 	//
 	// 9935302
 	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The request ID. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//

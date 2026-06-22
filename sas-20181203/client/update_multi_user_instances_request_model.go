@@ -63,9 +63,9 @@ type UpdateMultiUserInstancesRequestMemberInstances struct {
 	AntiRansomwareCapacity *int64 `json:"AntiRansomwareCapacity,omitempty" xml:"AntiRansomwareCapacity,omitempty"`
 	// Charge type, values:
 	//
-	// 	- **PREPAID**: Prepaid.
+	// - **PREPAID**: Prepaid.
 	//
-	// 	- **POSTPAID*	- (default): Postpaid.
+	// - **POSTPAID*	- (default): Postpaid.
 	//
 	// example:
 	//

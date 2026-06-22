@@ -28,35 +28,35 @@ type iListInterceptionTargetPageRequest interface {
 }
 
 type ListInterceptionTargetPageRequest struct {
-	// The name of the application to which the network object belongs.
+	// The application name of the network object.
 	//
 	// example:
 	//
 	// frontend
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The number of the page to return. Default value: **1**.
+	// The page number of the page to return. Default value: **1**, which indicates the first page.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The images of the network object.
+	// The list of images included in the network object.
 	ImageList []*string `json:"ImageList,omitempty" xml:"ImageList,omitempty" type:"Repeated"`
-	// The namespace to which the network object belongs.
+	// The namespace of the network object.
 	//
 	// example:
 	//
 	// default
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The number of entries to return on each page. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+	// The maximum number of entries per page for paging. Default value: 20. If you leave this parameter empty, 20 entries are returned by default.
 	//
-	// > We recommend that you do not leave this parameter empty.
+	// > Do not leave PageSize empty.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The labels specified for the network object.
+	// The list of tags included in the network object.
 	TagList []*string `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Repeated"`
 	// The name of the network object.
 	//
@@ -64,9 +64,9 @@ type ListInterceptionTargetPageRequest struct {
 	//
 	// source-test-obj-0****
 	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
-	// The type of the network object. Valid values:
+	// The object type. Valid values:
 	//
-	// 	- IMAGE
+	// - IMAGE: image.
 	//
 	// example:
 	//

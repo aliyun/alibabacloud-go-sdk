@@ -16,13 +16,13 @@ type iGetServiceTrailResponseBody interface {
 }
 
 type GetServiceTrailResponseBody struct {
-	// The request ID.
+	// The ID of the request. The system generates a unique identifier for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// C699E4E4-F2F4-58FC-A949-457FFE59****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The configurations of the service trail.
+	// The service trail configuration.
 	ServiceTrail *GetServiceTrailResponseBodyServiceTrail `json:"ServiceTrail,omitempty" xml:"ServiceTrail,omitempty" type:"Struct"`
 }
 
@@ -62,23 +62,23 @@ func (s *GetServiceTrailResponseBody) Validate() error {
 }
 
 type GetServiceTrailResponseBodyServiceTrail struct {
-	// The status of the service trail. Valid values:
+	// The enabling status of the service trail. Valid values:
 	//
-	// 	- **on:**
+	// - **on**: Enabled.
 	//
-	// 	- **off:**
+	// - **off**: Shutdown.
 	//
 	// example:
 	//
 	// on
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The timestamp generated when the service trail was created. Unit: milliseconds.
+	// The timestamp when the service trail was created. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1687250241000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The timestamp generated when the service trail was last updated. Unit: milliseconds.
+	// The timestamp when the service trail was last updated. Unit: milliseconds.
 	//
 	// example:
 	//

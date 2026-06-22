@@ -14,11 +14,11 @@ type iCreateServiceTrailRequest interface {
 }
 
 type CreateServiceTrailRequest struct {
-	// The region ID of the instance. Valid values:
+	// The region ID of the instance to query. Valid values:
 	//
-	// 	- **cn-hangzhou**: International
+	// - **cn-hangzhou*	- (default): Chinese mainland.
 	//
-	// 	- **ap-southeast-1**: Singapore
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//

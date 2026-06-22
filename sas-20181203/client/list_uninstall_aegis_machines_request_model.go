@@ -28,65 +28,65 @@ type iListUninstallAegisMachinesRequest interface {
 }
 
 type ListUninstallAegisMachinesRequest struct {
-	// The number of the page to return. Default value: **1**.
+	// The page number of the first page to display in the query results. Default value: **1**, which indicates that the query results are displayed from page 1.
 	//
 	// example:
 	//
 	// 4
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The operating system of the server.
+	// The operating system.
 	//
-	// >  The value of this parameter is the value of the Values parameter that is returned by calling the [DescribeCriteria](~~DescribeCriteria~~) operation. If the value of the **Name*	- parameter in the response is **osType**, the value of the **Values*	- parameter indicates an operating system.
+	// > You can call the [DescribeCriteria](~~DescribeCriteria~~) operation to obtain supported operating systems from the **Values*	- of the item whose **Name*	- is **osType**.
 	//
 	// example:
 	//
 	// linux
 	Os *string `json:"Os,omitempty" xml:"Os,omitempty"`
-	// The number of entries to return on each page. Default value: **5**.
+	// The number of entries per page in a paged query. Default value: **5**, which indicates that 5 entries are displayed per page.
 	//
 	// example:
 	//
 	// 5
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region in which the server resides.
+	// The region where the server resides.
 	//
-	// >  The value of this parameter is the value of the Values parameter that is returned by calling the [DescribeCriteria](~~DescribeCriteria~~) operation. If the value of the **Name*	- parameter in the response is **regionId**, the value of the **Values*	- parameter indicates a region ID.
+	// > You can call the [DescribeCriteria](~~DescribeCriteria~~) operation to obtain supported regions from the **Values*	- of the item whose **Name*	- is **regionId**.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionIdStr *string `json:"RegionIdStr,omitempty" xml:"RegionIdStr,omitempty"`
-	// The region in which the server resides.
+	// The region where the server resides.
 	//
-	// >  The value of this parameter is the value of the Values parameter that is returned by calling the [DescribeCriteria](~~DescribeCriteria~~) operation. If the value of the **Name*	- parameter in the response is **regionId**, the value of the **Values*	- parameter indicates a region ID.
+	// > You can call the [DescribeCriteria](~~DescribeCriteria~~) operation to obtain supported regions from the **Values*	- of the item whose **Name*	- is **regionId**.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	// The information about the server that you want to query. The value can be the name or the public IP address of the server.
+	// The asset information to query. You can set this parameter to the asset name or public IP address.
 	//
 	// example:
 	//
 	// 172.20.XX.XX
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The source IP address of the request.
+	// The IP address of the access source.
 	//
 	// example:
 	//
 	// 180.113.XX.XX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The source of the server. Valid values:
+	// The server vendor. Valid values:
 	//
-	// 	- **0**: an asset provided by Alibaba Cloud.
+	// - **0**: Alibaba Cloud asset
 	//
-	// 	- **1**: a third-party cloud server
+	// - **1**: non-cloud asset
 	//
-	// 	- **2**: a server in a data center
+	// - **2**: IDC asset
 	//
-	// 	- **3**, **4**, **5**, and **7**: other cloud asset
+	// - **3**, **4**, **5**, **7**: third-party cloud asset
 	//
-	// 	- **8**: a lightweight asset
+	// - **8**: lightweight asset.
 	//
 	// example:
 	//

@@ -20,24 +20,24 @@ type iDescribeRiskCheckSummaryRequest interface {
 }
 
 type DescribeRiskCheckSummaryRequest struct {
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The ID of the Alibaba Cloud account that is added as a member by using the multi-account control feature.
+	// The Alibaba Cloud account ID of the member account in the resource directory for multi-account security management.
 	//
 	// example:
 	//
 	// 1232428423234****
 	ResourceDirectoryAccountId *string `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	ResourceOwnerId            *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The source IP address of the request.
+	// The IP address of the access source that you want to query.
 	//
 	// example:
 	//

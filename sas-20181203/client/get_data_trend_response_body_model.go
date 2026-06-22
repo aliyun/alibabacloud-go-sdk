@@ -16,9 +16,9 @@ type iGetDataTrendResponseBody interface {
 }
 
 type GetDataTrendResponseBody struct {
-	// The response parameters.
+	// The returned data.
 	Data *GetDataTrendResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID.
+	// The request ID. Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -62,11 +62,11 @@ func (s *GetDataTrendResponseBody) Validate() error {
 }
 
 type GetDataTrendResponseBodyData struct {
-	// The statistical timestamps of the trend data.
+	// The list of statistical timestamps for the trend data.
 	DateList []*int32 `json:"DateList,omitempty" xml:"DateList,omitempty" type:"Repeated"`
-	// The statistical dates and time for the trend data.
+	// The list of statistical date strings for the trend data.
 	DateStrList []*string `json:"DateStrList,omitempty" xml:"DateStrList,omitempty" type:"Repeated"`
-	// The returned data.
+	// The list of returned data.
 	ItemList []*GetDataTrendResponseBodyDataItemList `json:"ItemList,omitempty" xml:"ItemList,omitempty" type:"Repeated"`
 }
 
@@ -119,21 +119,21 @@ func (s *GetDataTrendResponseBodyData) Validate() error {
 }
 
 type GetDataTrendResponseBodyDataItemList struct {
-	// The statistical values of the trend data.
+	// The list of statistical values for the trend data.
 	CountList []*int64 `json:"CountList,omitempty" xml:"CountList,omitempty" type:"Repeated"`
-	// The type of the security data. Valid values:
+	// The type of security data. Valid values:
 	//
-	// 	- **HC_NEW**: the number of new baseline risks.
+	// - **HC_NEW**: number of new baseline risks
 	//
-	// 	- **HC_OPERATE**: the number of handled baseline risks.
+	// - **HC_OPERATE**: number of handled baseline risks
 	//
-	// 	- **VUL_NEW**: the number of new vulnerabilities.
+	// - **VUL_NEW**: number of new vulnerability risks
 	//
-	// 	- **VUL_OPERATE**: the number of handled vulnerabilities.
+	// - **VUL_OPERATE**: number of handled vulnerability risks
 	//
-	// 	- **SUSP_NEW**: the number of new alerts.
+	// - **SUSP_NEW**: number of new alert risks
 	//
-	// 	- **SUSP_OPERATE**: the number of handled alerts.
+	// - **SUSP_OPERATE**: number of handled alert risks.
 	//
 	// example:
 	//

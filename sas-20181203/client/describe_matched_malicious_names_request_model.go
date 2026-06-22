@@ -16,23 +16,23 @@ type iDescribeMatchedMaliciousNamesRequest interface {
 }
 
 type DescribeMatchedMaliciousNamesRequest struct {
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language type for the request and response messages. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The severity of the malicious image sample that you want to query. You can enter multiple severities. Separate the severities with commas (,). Valid values:
+	// The risk levels of the malicious samples in images to query. You can specify multiple values. Separate multiple values with commas (,). Valid values:
 	//
-	// 	- **serious**
+	// - **serious**: urgent
 	//
-	// 	- **suspicious**
+	// - **suspicious**: suspicious
 	//
-	// 	- **remind**
+	// - **remind**: reminder.
 	//
 	// example:
 	//

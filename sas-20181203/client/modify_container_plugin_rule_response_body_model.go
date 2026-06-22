@@ -16,7 +16,7 @@ type iModifyContainerPluginRuleResponseBody interface {
 }
 
 type ModifyContainerPluginRuleResponseBody struct {
-	// The defense rule against container escapes.
+	// The list of container escape prevention rules.
 	Data *ModifyContainerPluginRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,19 +62,19 @@ func (s *ModifyContainerPluginRuleResponseBody) Validate() error {
 }
 
 type ModifyContainerPluginRuleResponseBodyData struct {
-	// The ID of the rule.
+	// The rule ID.
 	//
 	// example:
 	//
 	// 600640
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The name of the rule.
+	// The rule name.
 	//
 	// example:
 	//
 	// test555
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The switch ID.
+	// The corresponding switch ID.
 	//
 	// example:
 	//

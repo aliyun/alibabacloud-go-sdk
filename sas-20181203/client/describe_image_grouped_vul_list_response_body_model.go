@@ -22,21 +22,21 @@ type iDescribeImageGroupedVulListResponseBody interface {
 }
 
 type DescribeImageGroupedVulListResponseBody struct {
-	// The page number of the returned page.
+	// The page number of the current page in the paging query.
 	//
 	// example:
 	//
 	// 2
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// An array that consists of the image vulnerabilities.
+	// The list of image vulnerabilities.
 	GroupedVulItems []*DescribeImageGroupedVulListResponseBodyGroupedVulItems `json:"GroupedVulItems,omitempty" xml:"GroupedVulItems,omitempty" type:"Repeated"`
-	// The number of entries returned per page. Default value: **20**.
+	// The number of image vulnerabilities returned on each page in the paging query. Default value: **20**, which indicates that 20 image vulnerability records are returned on each page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -123,35 +123,35 @@ type DescribeImageGroupedVulListResponseBodyGroupedVulItems struct {
 	//
 	// RHSA-2017:3075-Important: wget security update
 	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
-	// The number of vulnerabilities that have the high priority.
+	// The number of high-risk vulnerabilities.
 	//
 	// example:
 	//
 	// 26
 	AsapCount *int32 `json:"AsapCount,omitempty" xml:"AsapCount,omitempty"`
-	// Indicates whether the vulnerability can be fixed in the Security Center console. Valid values:
+	// Indicates whether the vulnerability can be fixed. Valid values:
 	//
-	// 	- **yes**
+	// - **yes**: The vulnerability can be fixed.
 	//
-	// 	- **no**
+	// - **no**: The vulnerability cannot be fixed.
 	//
 	// example:
 	//
 	// yes
 	CanFix *string `json:"CanFix,omitempty" xml:"CanFix,omitempty"`
-	// The timestamp when the first scan was performed. Unit: milliseconds.
+	// The timestamp of the first scan, in milliseconds.
 	//
 	// example:
 	//
 	// 1611201274000
 	GmtLast *int64 `json:"GmtLast,omitempty" xml:"GmtLast,omitempty"`
-	// The timestamp when the last scan was performed. Unit: milliseconds.
+	// The timestamp of the latest scan, in milliseconds.
 	//
 	// example:
 	//
 	// 1611201274000
 	LastScanTime *int64 `json:"LastScanTime,omitempty" xml:"LastScanTime,omitempty"`
-	// The number of vulnerabilities that have the medium priority.
+	// The number of medium-risk vulnerabilities.
 	//
 	// example:
 	//
@@ -163,57 +163,57 @@ type DescribeImageGroupedVulListResponseBodyGroupedVulItems struct {
 	//
 	// debian:9:CVE-2019-3858
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The number of vulnerabilities that have the low priority.
+	// The number of low-risk vulnerabilities.
 	//
 	// example:
 	//
 	// 29
 	NntfCount *int32 `json:"NntfCount,omitempty" xml:"NntfCount,omitempty"`
-	// The tag of this vulnerability. Valid values:
+	// The vulnerability tag. Valid values:
 	//
-	// 	- **AI**: AI-related components.
+	//  - **AI**: vulnerabilities related to AI components.
 	//
 	// example:
 	//
 	// AI
 	RuleTag *string `json:"RuleTag,omitempty" xml:"RuleTag,omitempty"`
-	// The status of the vulnerability. Valid values:
+	// The processing status of the vulnerability. Valid values:
 	//
-	// 	- **0**: unhandled
+	// - **0**: Unhandled.
 	//
-	// 	- **1**: handled
+	// - **1**: Handled.
 	//
-	// 	- **2**: verifying
+	// - **2**: Verifying.
 	//
-	// 	- **3**: added to the whitelist
+	// - **3**: Added to the whitelist.
 	//
 	// example:
 	//
 	// 0
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tag of the vulnerability. Valid values:
+	// The label of the vulnerability. Valid values:
 	//
-	// 	- Restart required
+	// - Restart required
 	//
-	// 	- Remote exploitation
+	// - Remote utilization
 	//
-	// 	- Exploit exists
+	// - EXP exists
 	//
-	// 	- Exploitable
+	// - Available
 	//
-	// 	- Privilege escalation
+	// - Privilege escalation
 	//
-	// 	- Code execution
+	// - Code execution
 	//
 	// example:
 	//
 	// EXP exists
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The type of the vulnerability. Valid values:
+	// The type of vulnerability to query. Valid values:
 	//
-	// 	- **cve**: image system vulnerability
+	// - **cve**: image system vulnerability
 	//
-	// 	- **sca**: image application vulnerability
+	// - **sca**: image application vulnerability.
 	//
 	// example:
 	//

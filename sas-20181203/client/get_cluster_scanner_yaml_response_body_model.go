@@ -28,53 +28,53 @@ type iGetClusterScannerYamlResponseBody interface {
 }
 
 type GetClusterScannerYamlResponseBody struct {
-	// Base64 encoded CA certificate.
+	// The CA certificate in Base64 encoding.
 	//
 	// example:
 	//
 	// xxx
 	CaCertBase64 *string `json:"CaCertBase64,omitempty" xml:"CaCertBase64,omitempty"`
-	// Cluster environment information.
+	// The cluster environment context.
 	//
 	// example:
 	//
 	// xxx
 	ClusterEnvInfo *string `json:"ClusterEnvInfo,omitempty" xml:"ClusterEnvInfo,omitempty"`
-	// The ID of the cluster that you want to scan.
+	// The ID of the container cluster.
 	//
 	// example:
 	//
 	// c7c190a82d9a048be9038d352840f****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The name of the image.
+	// The container image information.
 	//
 	// example:
 	//
 	// xxxx-registry.cn-shanghai.cr.aliyuncs.com/default/scanner:v1
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
-	// The request ID.
+	// The request ID. Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// 24A20733-10A0-4AF6-BE6B-E3322413BB68
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Base64 encoded webhook certificate.
+	// The webhook certificate in Base64 encoding.
 	//
 	// example:
 	//
 	// xxx
 	TlsCertBase64 *string `json:"TlsCertBase64,omitempty" xml:"TlsCertBase64,omitempty"`
-	// Base64 encoded webhook private key.
+	// The webhook private key in Base64 encoding.
 	//
 	// example:
 	//
 	// xxx
 	TlsKeyBase64 *string `json:"TlsKeyBase64,omitempty" xml:"TlsKeyBase64,omitempty"`
-	// Indicates whether the incremental scan switch is enabled. Values:
+	// Indicates whether incremental scanning is enabled. Valid values:
 	//
-	// - **0**: Not enabled
+	// - **0**: Disabled.
 	//
-	// - **1**: Enabled
+	// - **1**: Enabled.
 	//
 	// example:
 	//

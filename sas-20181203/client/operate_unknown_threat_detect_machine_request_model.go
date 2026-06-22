@@ -18,14 +18,29 @@ type iOperateUnknownThreatDetectMachineRequest interface {
 }
 
 type OperateUnknownThreatDetectMachineRequest struct {
+	// The operation type. Valid values:
+	//
+	// - **restart_study**: Restarts the learning process.
+	//
+	// - **increment_study**: Starts incremental learning.
+	//
+	// - **change_status**: Changes the status.
+	//
 	// example:
 	//
 	// restart_study
 	OperateType *string `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
+	// The target status. This parameter applies only when `OperateType` is set to `change_status`. Valid values:
+	//
+	// - **monitoring**: Monitoring mode.
+	//
+	// - **blocking**: Blocking mode.
+	//
 	// example:
 	//
 	// monitoring
-	Status   *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// A list of server UUIDs.
 	UuidList []*string `json:"UuidList,omitempty" xml:"UuidList,omitempty" type:"Repeated"`
 }
 

@@ -16,25 +16,25 @@ type iDescribeContainerCriteriaRequest interface {
 }
 
 type DescribeContainerCriteriaRequest struct {
-	// The filter condition. Valid values:
+	// The search field. Valid values:
 	//
-	// 	- **pod**: pod
+	// - **pod**: pod.
 	//
-	// 	- **appName**: application name
+	// - **appName**: application name.
 	//
-	// 	- **clusterId**: cluster ID
+	// - **clusterId**: cluster ID.
 	//
-	// 	- **namespace**: namespace
+	// - **namespace**: namespace.
 	//
-	// 	- **image**: image
+	// - **image**: image.
 	//
-	// 	- **containerScan**: container scan
+	// - **containerScan**: container scan.
 	//
 	// example:
 	//
 	// clusterId
 	GroupField *string `json:"GroupField,omitempty" xml:"GroupField,omitempty"`
-	// The value of the filter condition. The value can be an application name, node name, namespace, cluster name, public IP address, pod address, region, pod, instance ID, cluster ID, or container ID. Fuzzy match is supported.
+	// The value of the search field. Fuzzy match is supported for application names, node names, namespaces, cluster names, public IP addresses, pod addresses, regions, pods, instance IDs, cluster IDs, and container IDs.
 	//
 	// example:
 	//

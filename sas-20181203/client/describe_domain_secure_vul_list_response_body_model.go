@@ -18,7 +18,7 @@ type iDescribeDomainSecureVulListResponseBody interface {
 }
 
 type DescribeDomainSecureVulListResponseBody struct {
-	// The request ID.
+	// The ID of the request. The ID is a unique identifier that Alibaba Cloud generates for the request and can be used to troubleshoot issues.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type DescribeDomainSecureVulListResponseBody struct {
 	//
 	// 100
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The domain name-related vulnerabilities.
+	// The list of vulnerabilities associated with the domain name.
 	VulList []*DescribeDomainSecureVulListResponseBodyVulList `json:"VulList,omitempty" xml:"VulList,omitempty" type:"Repeated"`
 }
 
@@ -89,13 +89,13 @@ type DescribeDomainSecureVulListResponseBodyVulList struct {
 	//
 	// CESA-2023:3555: python Security Update
 	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
-	// The number of the vulnerabilities that have the **high*	- priority.
+	// The number of high-priority vulnerabilities.
 	//
 	// example:
 	//
 	// 50
 	AsapCount *int32 `json:"AsapCount,omitempty" xml:"AsapCount,omitempty"`
-	// The timestamp when the vulnerability was last detected. Unit: milliseconds.
+	// The timestamp when the vulnerability was last detected, in milliseconds.
 	//
 	// example:
 	//
@@ -107,7 +107,7 @@ type DescribeDomainSecureVulListResponseBodyVulList struct {
 	//
 	// 33
 	HandledCount *int32 `json:"HandledCount,omitempty" xml:"HandledCount,omitempty"`
-	// The number of the vulnerabilities that have the **medium*	- priority.
+	// The number of medium-priority vulnerabilities.
 	//
 	// example:
 	//
@@ -119,41 +119,58 @@ type DescribeDomainSecureVulListResponseBodyVulList struct {
 	//
 	// oval:com.redhat.rhsa:def:20170574
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The number of the vulnerabilities that have the **low*	- priority.
+	// The number of low-priority vulnerabilities.
 	//
 	// example:
 	//
 	// 20
 	NntfCount *int32 `json:"NntfCount,omitempty" xml:"NntfCount,omitempty"`
-	// The tag that is added to the vulnerability. Valid values:
+	// The label of the vulnerability. Valid values:
 	//
-	// 	- Restart required
+	// <props="china">
 	//
-	// 	- Remote utilization
+	// - Restart required
 	//
-	// 	- EXP exists
+	// - Remote utilization
 	//
-	// 	- Available
+	// - EXP exists
 	//
-	// 	- Elevation of Privilege
+	// - Available
 	//
-	// 	- Code Execution
+	// - Privilege escalation
+	//
+	// - Code execution
+	//
+	//
+	// <props="intl">
+	//
+	// - Restart required
+	//
+	// - Remote utilization
+	//
+	// - EXP exists
+	//
+	// - Available
+	//
+	// - Privilege escalation
+	//
+	// - Code execution
 	//
 	// example:
 	//
 	// Code Execution
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The type of the vulnerability. Default value: cve. Valid values:
+	// The type of the vulnerability to query. Default value: cve. Valid values:
 	//
-	// 	- **cve**: Linux software vulnerability.
+	// - **cve**: Linux software vulnerability
 	//
-	// 	- **sys**: Windows system vulnerability.
+	// - **sys**: Windows system vulnerability
 	//
-	// 	- **cms**: Web-CMS vulnerability.
+	// - **cms**: Web-CMS vulnerability
 	//
-	// 	- **app**: application vulnerability that is detected by network scanning.
+	// - **app**: application vulnerability (network scan)
 	//
-	// 	- **sca**: application vulnerability that is detected by using software component analysis.
+	// - **sca**: application vulnerability (software constituency parsing)
 	//
 	// example:
 	//

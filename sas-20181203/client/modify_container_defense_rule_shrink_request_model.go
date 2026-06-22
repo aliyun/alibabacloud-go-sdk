@@ -32,13 +32,13 @@ type ModifyContainerDefenseRuleShrinkRequest struct {
 	//
 	// example:
 	//
-	// Prevent non-mirror programs from starting in containers
+	// 防御规则。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The action specified in the rule. Valid values:
 	//
-	// 	- **1**: alert
+	// - **1**: alert
 	//
-	// 	- **2**: block
+	// - **2**: block
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type ModifyContainerDefenseRuleShrinkRequest struct {
 	RuleAction *int32 `json:"RuleAction,omitempty" xml:"RuleAction,omitempty"`
 	// The ID of the rule.
 	//
-	// >  You can call the [ListContainerDefenseRule](https://help.aliyun.com/document_detail/2590599.html) operation to query the IDs of rules.
+	// > You can call the [ListContainerDefenseRule](https://help.aliyun.com/document_detail/2590599.html) operation to query the IDs of rules.
 	//
 	// example:
 	//
@@ -60,9 +60,9 @@ type ModifyContainerDefenseRuleShrinkRequest struct {
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// The status of the rule. Valid values:
 	//
-	// 	- **1**: enabled
+	// - **1**: enabled
 	//
-	// 	- **0**: disabled
+	// - **0**: disabled
 	//
 	// example:
 	//
@@ -70,9 +70,9 @@ type ModifyContainerDefenseRuleShrinkRequest struct {
 	RuleSwitch *int32 `json:"RuleSwitch,omitempty" xml:"RuleSwitch,omitempty"`
 	// The type of the rule. Valid values:
 	//
-	// 	- 1: system rule
+	// - 1: system rule
 	//
-	// 	- 2: custom rule
+	// - 2: custom rule
 	//
 	// example:
 	//
@@ -180,9 +180,9 @@ func (s *ModifyContainerDefenseRuleShrinkRequest) Validate() error {
 type ModifyContainerDefenseRuleShrinkRequestScope struct {
 	// Specifies whether to include all namespaces. Valid values:
 	//
-	// 	- **0**: no
+	// - **0**: no
 	//
-	// 	- **1**: yes
+	// - **1**: yes
 	//
 	// example:
 	//
@@ -190,7 +190,7 @@ type ModifyContainerDefenseRuleShrinkRequestScope struct {
 	AllNamespace *int32 `json:"AllNamespace,omitempty" xml:"AllNamespace,omitempty"`
 	// The ID of the cluster on which the rule takes effect.
 	//
-	// >  You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to query the IDs of clusters.
+	// > You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to query the IDs of clusters.
 	//
 	// example:
 	//

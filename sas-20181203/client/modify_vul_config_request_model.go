@@ -16,37 +16,37 @@ type iModifyVulConfigRequest interface {
 }
 
 type ModifyVulConfigRequest struct {
-	// Specifies whether to enable the vulnerability scan feature. Valid values:
+	// Specifies whether to enable or disable vulnerability detection. Valid values:
 	//
-	// 	- **on**: enables the feature
+	// - **on**: Enable vulnerability detection.
 	//
-	// 	- **off**: disables the feature
+	// - **off**: Disable vulnerability detection.
 	//
-	// > Valid values when you set the Type parameter to scanMode:
+	// > If the type is set to real risk, valid values:
 	//
-	// 	- **real**: displays only easily exploitable vulnerabilities.
+	// > - **real**: Real risk vulnerabilities.
 	//
-	// 	- **all**: displays all vulnerabilities.
+	// > - **all**: All vulnerabilities.
 	//
 	// example:
 	//
 	// on
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The type of the vulnerability. Valid values:
+	// The type of vulnerability to modify. Valid values:
 	//
-	// 	- **cve**: Linux software vulnerability
+	// - **cve**: Linux vulnerability
 	//
-	// 	- **sys**: Windows system vulnerability
+	// - **sys**: Windows vulnerability
 	//
-	// 	- **cms**: Web-CMS vulnerability
+	// - **cms**: WebCMS vulnerability
 	//
-	// 	- **emg**: urgent vulnerability
+	// - **emg**: emergency vulnerability
 	//
-	// 	- **app**: application vulnerability
+	// - **app**: application vulnerability
 	//
-	// 	- **yum**: YUM and APT source configuration
+	// - **yum**: YUM/APT source configuration
 	//
-	// 	- **scanMode**: easily exploitable vulnerability
+	// - **scanMode**: real risk.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type iOperateImageBaselineWhitelistRequest interface {
 }
 
 type OperateImageBaselineWhitelistRequest struct {
-	// The keys of baseline check items.
+	// The list of baseline sub-item keys.
 	//
 	// This parameter is required.
 	//
@@ -30,27 +30,27 @@ type OperateImageBaselineWhitelistRequest struct {
 	//
 	// hc.image.checklist.identify.hc_exploit_es_linux.item
 	BaselineItemKeyList *string `json:"BaselineItemKeyList,omitempty" xml:"BaselineItemKeyList,omitempty"`
-	// The UUID of the image.
+	// The image UUID.
 	//
 	// example:
 	//
 	// a5250ebca765dc9eb1a84b790b0e****
 	ImageUuid *string `json:"ImageUuid,omitempty" xml:"ImageUuid,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language type for the request and response. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The operation that you want to perform on the check items. Valid values:
+	// The operation type. Valid values:
 	//
-	// 	- **add**: adds the check items to the whitelist
+	// - **add**: increase.
 	//
-	// 	- **del**: removes the check items from the whitelist
+	// - **del**: delete.
 	//
 	// This parameter is required.
 	//
@@ -58,7 +58,7 @@ type OperateImageBaselineWhitelistRequest struct {
 	//
 	// add
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
-	// The types of the assets that you want to scan.
+	// The collection of scan ranges.
 	ScanRange []*string `json:"ScanRange,omitempty" xml:"ScanRange,omitempty" type:"Repeated"`
 }
 

@@ -22,15 +22,15 @@ type iUpdateHoneypotPresetRequest interface {
 }
 
 type UpdateHoneypotPresetRequest struct {
-	// The name of the image that is used for the honeypot.
+	// The name of the honeypot image.
 	//
 	// example:
 	//
 	// metabase
 	HoneypotImageName *string `json:"HoneypotImageName,omitempty" xml:"HoneypotImageName,omitempty"`
-	// The ID of the honeypot template.
+	// The unique ID of the honeypot template.
 	//
-	// > You can call the [ListHoneypotPreset](~~ListHoneypotPreset~~) operation to query the IDs of honeypot templates.
+	// >You can call the [ListHoneypotPreset](~~ListHoneypotPreset~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -38,23 +38,23 @@ type UpdateHoneypotPresetRequest struct {
 	//
 	// f75eddce-e9d3-4a88-af95-b10b6f65xxxx
 	HoneypotPresetId *string `json:"HoneypotPresetId,omitempty" xml:"HoneypotPresetId,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language of the content in the request and response. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese.
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English.
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The custom configurations of the honeypot template. The value is a JSON string that contains the following fields:
+	// The custom parameters of the honeypot template. The value is a JSON string that contains the following fields:
 	//
-	// 	- **portrait_option**: Social Source Tracing
+	// - **portrait_option**: social tracing
 	//
-	// 	- **burp**: Burp-specific Defense
+	// - **burp**: Burp countermeasure
 	//
-	// 	- **trojan_git**: Git-specific Defense
+	// - **trojan_git**: Git countermeasure.
 	//
 	// example:
 	//

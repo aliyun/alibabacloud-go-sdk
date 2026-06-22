@@ -20,41 +20,39 @@ type iUpdateWhiteListStrategyStatusRequest interface {
 }
 
 type UpdateWhiteListStrategyStatusRequest struct {
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language type for the request and response messages. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The source IP address of the request. You do not need to specify this parameter. It is automatically obtained by the system.
+	// The source IP address of the request. You do not need to specify this parameter. The system automatically obtains this value.
 	//
 	// example:
 	//
 	// 219.143.XX.XX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The status of the policy. Valid values:
+	// The policy status. Valid values:
 	//
-	// 	- **0**: deleted
+	// - **0**: Deleted.
 	//
-	// 	- **1**: learning
+	// - **1**: Learning.
 	//
-	// 	- **2**: paused
+	// - **2**: Paused.
 	//
-	// 	- **3**: learning completed
+	// - **3**: Learning complete.
 	//
-	// 	- **4**: enabled
+	// - **4**: Active.
 	//
-	// >
+	// > - Only a policy in the **Learning*	- state can be changed to the **Paused*	- state.
 	//
-	// 	- You can change the status to **paused*	- only if the policy status is **learning**.
+	// > - Only a policy in the **Paused*	- state can be changed to the **Learning*	- state.
 	//
-	// 	- You can change the status to **learning*	- only if the policy status is **paused**.
-	//
-	// 	- You can change the status to **enabled*	- only if the policy status is **learning completed**.
+	// > - Only a policy in the **Learning complete*	- state can be changed to the **Active*	- state.
 	//
 	// This parameter is required.
 	//
@@ -62,9 +60,9 @@ type UpdateWhiteListStrategyStatusRequest struct {
 	//
 	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the policy.
+	// The policy ID.
 	//
-	// >  You can call the [DescribeWhiteListStrategyList](~~DescribeWhiteListStrategyList~~) operation to obtain the ID.
+	// >Call the [DescribeWhiteListStrategyList](~~DescribeWhiteListStrategyList~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//

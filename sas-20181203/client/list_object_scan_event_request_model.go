@@ -42,23 +42,23 @@ type iListObjectScanEventRequest interface {
 }
 
 type ListObjectScanEventRequest struct {
-	// Batch operation type. Valid values:
+	// The batch operation type. Valid values:
 	//
-	// - **sha256**: Same file content
+	// - **sha256**: same file content
 	//
-	// - **eventName**: Same alert type
+	// - **eventName**: same alerting type.
 	//
 	// example:
 	//
 	// sha256
 	BatchType *string `json:"BatchType,omitempty" xml:"BatchType,omitempty"`
-	// The name of the OSS bucket.
+	// The bucket name.
 	//
 	// example:
 	//
 	// ltrbuck****
 	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
-	// The page number.
+	// The page number of the current page when you perform a paged query.
 	//
 	// This parameter is required.
 	//
@@ -66,41 +66,41 @@ type ListObjectScanEventRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// Event ID.
+	// The event ID.
 	//
 	// example:
 	//
 	// 8925****
 	EventId *int64 `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	// The name of the alert.
+	// The alert name.
 	//
 	// example:
 	//
 	// WebShell
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language type for the request and response messages. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The MD5 hash value of the file.
+	// The MD5 hash of the file.
 	//
 	// example:
 	//
 	// 0552c44e243abdea1729d4507bce****
 	Md5 *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
-	// The key of the file that is stored in an OSS bucket.
+	// The storage key of the file in the OSS bucket.
 	//
 	// example:
 	//
 	// 1/2022/06/23/15/41/16559701077444693a0c6-33b2-4cc2-a99f-9f38b8b8****
 	OssKey *string `json:"OssKey,omitempty" xml:"OssKey,omitempty"`
-	// The number of entries per page.
+	// The maximum number of entries to return on each page when you perform a paged query.
 	//
 	// This parameter is required.
 	//
@@ -108,57 +108,63 @@ type ListObjectScanEventRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the alert that is generated for the package to which the subfile belongs.
+	// If the file is a sub-file within a compressed archive, **ParentEventId*	- specifies the event ID of the alert for the compressed archive itself.
+	//
+	// To retrieve and query alert events for sub-files within a compressed archive:
+	//
+	// 1. Call this operation and check the **HasSubEvent*	- response parameter. If the value is **true**, the corresponding **EventId*	- is the event ID of the alert for the compressed archive itself.
+	//
+	// 2. Call this operation again and pass the **EventId*	- value to **ParentEventId*	- to view the alert events for the sub-files within the compressed archive.
 	//
 	// example:
 	//
 	// 1
 	ParentEventId *int64 `json:"ParentEventId,omitempty" xml:"ParentEventId,omitempty"`
-	// The risk level of the alert. Valid values:
+	// The risk level. Valid values:
 	//
-	// 	- **high**
+	// - **high**: high risk
 	//
-	// 	- **medium**
+	// - **medium**: medium risk
 	//
-	// 	- **low**
+	// - **low**: low risk.
 	//
 	// example:
 	//
 	// low
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The method that is used to detect the malicious file. Valid values:
+	// The data source. Valid values:
 	//
-	// 	- **API**: uses API operations.
+	// - **API**: API detection
 	//
-	// 	- **OSS**: uses Object Storage Service (OSS) file check.
+	// - **OSS**: OSS detection.
 	//
 	// example:
 	//
 	// OSS
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// Event status. The values are as follows:
+	// The event status. Valid values:
 	//
-	// - **0**: Unprocessed
+	// - 0: unhandled
 	//
-	// - **1**: I have processed manually
+	// - 1: manually handled
 	//
-	// - **2**: Whitelisted
+	// - 2: whitelisted
 	//
-	// - **3**: Ignored
+	// - 3: ignored
 	//
-	// - **4**: Access denied
+	// - 4: access denied.
 	//
 	// example:
 	//
 	// 0
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The end of the time range during which the exception is detected.
+	// The end time of the time range during which the exception event occurred.
 	//
 	// example:
 	//
 	// 1683862286000
 	TimeEnd *int64 `json:"TimeEnd,omitempty" xml:"TimeEnd,omitempty"`
-	// The beginning of the time range during which the exception is detected.
+	// The start time of the time range during which the exception event occurred.
 	//
 	// example:
 	//

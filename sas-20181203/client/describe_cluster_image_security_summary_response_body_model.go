@@ -16,7 +16,7 @@ type iDescribeClusterImageSecuritySummaryResponseBody interface {
 }
 
 type DescribeClusterImageSecuritySummaryResponseBody struct {
-	// The information about the image-related security events.
+	// The image security event information.
 	ClusterImageEvent *DescribeClusterImageSecuritySummaryResponseBodyClusterImageEvent `json:"ClusterImageEvent,omitempty" xml:"ClusterImageEvent,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,13 +62,13 @@ func (s *DescribeClusterImageSecuritySummaryResponseBody) Validate() error {
 }
 
 type DescribeClusterImageSecuritySummaryResponseBodyClusterImageEvent struct {
-	// The information about image baseline risks.
+	// The image baseline check information.
 	ImageBaseline []*DescribeClusterImageSecuritySummaryResponseBodyClusterImageEventImageBaseline `json:"ImageBaseline,omitempty" xml:"ImageBaseline,omitempty" type:"Repeated"`
-	// The information about image system vulnerabilities.
+	// The image system vulnerability information.
 	ImageCveVul []*DescribeClusterImageSecuritySummaryResponseBodyClusterImageEventImageCveVul `json:"ImageCveVul,omitempty" xml:"ImageCveVul,omitempty" type:"Repeated"`
-	// The information about malicious image samples.
+	// The image malicious sample information.
 	ImageMaliciousFile []*DescribeClusterImageSecuritySummaryResponseBodyClusterImageEventImageMaliciousFile `json:"ImageMaliciousFile,omitempty" xml:"ImageMaliciousFile,omitempty" type:"Repeated"`
-	// The information about image application vulnerabilities.
+	// The image application vulnerability information.
 	ImageScaVul []*DescribeClusterImageSecuritySummaryResponseBodyClusterImageEventImageScaVul `json:"ImageScaVul,omitempty" xml:"ImageScaVul,omitempty" type:"Repeated"`
 }
 
@@ -165,11 +165,11 @@ type DescribeClusterImageSecuritySummaryResponseBodyClusterImageEventImageBaseli
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The risk level. Valid values:
 	//
-	// 	- **high**
+	// - **high**: High.
 	//
-	// 	- **medium**
+	// - **medium**: Medium.
 	//
-	// 	- **low**
+	// - **low**: Low.
 	//
 	// example:
 	//
@@ -214,13 +214,13 @@ type DescribeClusterImageSecuritySummaryResponseBodyClusterImageEventImageCveVul
 	//
 	// 0
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The alert level. Valid values:
+	// The warning level. Valid values:
 	//
-	// 	- **asap**: high. You must fix the vulnerability at the earliest opportunity.
+	// - **asap**: High. Fix the vulnerability at the earliest opportunity.
 	//
-	// 	- **nntf**: medium. You can fix the vulnerability based on your business requirements.
+	// - **nntf**: Medium. The vulnerability can be temporarily left unfixed.
 	//
-	// 	- **later**: low. You can ignore the vulnerability.
+	// - **later**: Low. The vulnerability can be left unfixed.
 	//
 	// example:
 	//
@@ -267,11 +267,11 @@ type DescribeClusterImageSecuritySummaryResponseBodyClusterImageEventImageMalici
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The risk level. Valid values:
 	//
-	// 	- **high**
+	// - **high**: High.
 	//
-	// 	- **medium**
+	// - **medium**: Medium.
 	//
-	// 	- **low**
+	// - **low**: Low.
 	//
 	// example:
 	//
@@ -310,19 +310,19 @@ func (s *DescribeClusterImageSecuritySummaryResponseBodyClusterImageEventImageMa
 }
 
 type DescribeClusterImageSecuritySummaryResponseBodyClusterImageEventImageScaVul struct {
-	// The number of image application vulnerabilities.
+	// The number of application vulnerabilities.
 	//
 	// example:
 	//
 	// 0
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The alert level. Valid values:
+	// The warning level. Valid values:
 	//
-	// 	- **asap**: high. You must fix the vulnerability at the earliest opportunity.
+	// - **asap**: High. Fix the vulnerability at the earliest opportunity.
 	//
-	// 	- **nntf**: medium. You can fix the vulnerability based on your business requirements.
+	// - **nntf**: Medium. The vulnerability can be temporarily left unfixed.
 	//
-	// 	- **later**: low. You can ignore the vulnerability.
+	// - **later**: Low. The vulnerability can be left unfixed.
 	//
 	// example:
 	//

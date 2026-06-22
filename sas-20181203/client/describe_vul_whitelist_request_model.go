@@ -18,7 +18,7 @@ type iDescribeVulWhitelistRequest interface {
 }
 
 type DescribeVulWhitelistRequest struct {
-	// The number of the page to return. Pages start from page 1. Default value: 1.
+	// The page number in paging. Pages start from page 1. Default value: 1.
 	//
 	// example:
 	//
@@ -26,15 +26,15 @@ type DescribeVulWhitelistRequest struct {
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The language of the content within the request and response. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese.
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English.
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of entries to return on each page. Default value: 10.
+	// The number of entries per page in paging. Default value: 10.
 	//
 	// example:
 	//

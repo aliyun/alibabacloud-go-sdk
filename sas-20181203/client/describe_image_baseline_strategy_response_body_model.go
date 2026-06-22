@@ -22,7 +22,7 @@ type DescribeImageBaselineStrategyResponseBody struct {
 	//
 	// 9F85AC10-A1FE-54D7-935A-F28D5256****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the baseline check policy.
+	// The baseline check policy information.
 	Strategy *DescribeImageBaselineStrategyResponseBodyStrategy `json:"Strategy,omitempty" xml:"Strategy,omitempty" type:"Struct"`
 }
 
@@ -62,15 +62,20 @@ func (s *DescribeImageBaselineStrategyResponseBody) Validate() error {
 }
 
 type DescribeImageBaselineStrategyResponseBodyStrategy struct {
-	// The baseline check policy for agentless detection.
+	// The agentless baseline check policy.
 	//
 	// example:
 	//
 	// hc_win2008_cis_rules
 	BaselineItem *string `json:"BaselineItem,omitempty" xml:"BaselineItem,omitempty"`
-	// An array that contains the baselines.
+	// The list of baseline items.
 	BaselineItemList []*DescribeImageBaselineStrategyResponseBodyStrategyBaselineItemList `json:"BaselineItemList,omitempty" xml:"BaselineItemList,omitempty" type:"Repeated"`
-	ImageVulClean    *int32                                                               `json:"ImageVulClean,omitempty" xml:"ImageVulClean,omitempty"`
+	// The retention period of baseline risks. Unit: days.
+	//
+	// example:
+	//
+	// 90
+	ImageVulClean *int32 `json:"ImageVulClean,omitempty" xml:"ImageVulClean,omitempty"`
 	// The number of selected baseline check items.
 	//
 	// example:
@@ -83,7 +88,7 @@ type DescribeImageBaselineStrategyResponseBodyStrategy struct {
 	//
 	// 8257
 	StrategyId *int64 `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
-	// The name of the baseline check policy.
+	// The Policy Name.
 	//
 	// example:
 	//
@@ -97,11 +102,11 @@ type DescribeImageBaselineStrategyResponseBodyStrategy struct {
 	TotalItemCount *int32 `json:"TotalItemCount,omitempty" xml:"TotalItemCount,omitempty"`
 	// The type of the baseline check policy. Valid values:
 	//
-	// 	- **default**: the default policy
+	// - **default**: default policy
 	//
-	// 	- **full**: a policy that uses all baselines
+	// - **full**: full baseline item policy
 	//
-	// 	- **normal**: a policy that uses general baselines
+	// - **normal**: common baseline item policy.
 	//
 	// example:
 	//
@@ -203,19 +208,19 @@ func (s *DescribeImageBaselineStrategyResponseBodyStrategy) Validate() error {
 }
 
 type DescribeImageBaselineStrategyResponseBodyStrategyBaselineItemList struct {
-	// The key of the baseline type.
+	// The classification key of the baseline main item.
 	//
 	// example:
 	//
 	// identification
 	ClassKey *string `json:"ClassKey,omitempty" xml:"ClassKey,omitempty"`
-	// The key of the baseline check item.
+	// The key of the baseline subitem.
 	//
 	// example:
 	//
 	// duplicate_pwd_hash
 	ItemKey *string `json:"ItemKey,omitempty" xml:"ItemKey,omitempty"`
-	// The key of the name for the baseline.
+	// The name key of the baseline main item.
 	//
 	// example:
 	//

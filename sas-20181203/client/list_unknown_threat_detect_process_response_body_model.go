@@ -18,9 +18,11 @@ type iListUnknownThreatDetectProcessResponseBody interface {
 }
 
 type ListUnknownThreatDetectProcessResponseBody struct {
-	Data     []*ListUnknownThreatDetectProcessResponseBodyData   `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// An array of process details.
+	Data []*ListUnknownThreatDetectProcessResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The pagination information.
 	PageInfo *ListUnknownThreatDetectProcessResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -82,32 +84,52 @@ func (s *ListUnknownThreatDetectProcessResponseBody) Validate() error {
 }
 
 type ListUnknownThreatDetectProcessResponseBodyData struct {
+	// The analysis result. Valid values:
+	//
+	// - **black**: A malicious process.
+	//
+	// - **white**: A normal process.
+	//
+	// - **abnormal**: An abnormal process.
+	//
 	// example:
 	//
 	// white
 	AnalyzeResult *string `json:"AnalyzeResult,omitempty" xml:"AnalyzeResult,omitempty"`
 	ExplanationEn *string `json:"ExplanationEn,omitempty" xml:"ExplanationEn,omitempty"`
 	ExplanationZh *string `json:"ExplanationZh,omitempty" xml:"ExplanationZh,omitempty"`
+	// The timestamp of the first occurrence.
+	//
 	// example:
 	//
 	// 1694576692000
 	FirstTime *int64 `json:"FirstTime,omitempty" xml:"FirstTime,omitempty"`
+	// The MD5 hash of the file.
+	//
 	// example:
 	//
 	// 5b394b54ca632fe51c4ab4a6dbaf****
 	Md5 *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
+	// The process ID.
+	//
 	// example:
 	//
 	// 2025031506350619216822625103151158982
 	ProcessId *string `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
+	// The process path.
+	//
 	// example:
 	//
 	// /usr/bin/tar
 	ProcessPath *string `json:"ProcessPath,omitempty" xml:"ProcessPath,omitempty"`
+	// Remarks about the process.
+	//
 	// example:
 	//
 	// safe process
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The SHA-256 hash of the file.
+	//
 	// example:
 	//
 	// 3a6fed5fc11392b3ee9f81caf017b48640d7458766a8eb0382899a605b41****
@@ -208,18 +230,26 @@ func (s *ListUnknownThreatDetectProcessResponseBodyData) Validate() error {
 }
 
 type ListUnknownThreatDetectProcessResponseBodyPageInfo struct {
+	// The number of entries on the current page.
+	//
 	// example:
 	//
 	// 2
 	Count *string `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The number of entries to return on each page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 83

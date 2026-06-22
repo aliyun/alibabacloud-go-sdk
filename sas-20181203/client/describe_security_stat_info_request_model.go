@@ -18,17 +18,17 @@ type iDescribeSecurityStatInfoRequest interface {
 }
 
 type DescribeSecurityStatInfoRequest struct {
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The ID of the account that is added to the resource directory as a member for multi-account control. You can use this parameter to query the security status of the account.
+	// The ID of the member account in the resource folder. This parameter is used by the multi-account security management feature of Security Center to query the security information of specified member accounts.
 	//
 	// example:
 	//

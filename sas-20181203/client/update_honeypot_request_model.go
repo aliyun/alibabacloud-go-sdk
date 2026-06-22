@@ -20,15 +20,15 @@ type iUpdateHoneypotRequest interface {
 }
 
 type UpdateHoneypotRequest struct {
-	// The ID of the honeypot.
+	// The honeypot ID.
 	//
-	// >  You can call the [ListHoneypot](~~ListHoneypot~~) operation to query the IDs of honeypots.
+	// > You can call the [ListHoneypot](~~ListHoneypot~~) operation to obtain this value.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 945607c2ae2a1a737c04599d6608065688bfc6048d9b9d306ce8dc8191c278b4
+	// 945607c2ae2a1a737c04599d6608065688bfc6048d9b9d306ce8dc8191c*****
 	HoneypotId *string `json:"HoneypotId,omitempty" xml:"HoneypotId,omitempty"`
 	// The custom name of the honeypot.
 	//
@@ -36,11 +36,11 @@ type UpdateHoneypotRequest struct {
 	//
 	// ExtMail
 	HoneypotName *string `json:"HoneypotName,omitempty" xml:"HoneypotName,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language of the content in the request and response. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type UpdateHoneypotRequest struct {
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The custom configuration of the honeypot.
 	//
-	// > You can call the [ListAvailableHoneypot](~~ListAvailableHoneypot~~) operation to query the configurations of honeypots from the **Template*	- response parameter.
+	// >The value of this parameter is obtained from the **Template*	- field returned by the [ListAvailableHoneypot](~~ListAvailableHoneypot~~) operation.
 	//
 	// example:
 	//

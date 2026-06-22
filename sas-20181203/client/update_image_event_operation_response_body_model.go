@@ -22,31 +22,31 @@ type iUpdateImageEventOperationResponseBody interface {
 }
 
 type UpdateImageEventOperationResponseBody struct {
-	// The HTTP status code.
+	// The status code returned by the API request.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *UpdateImageEventOperationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned message.
+	// The message returned for the request.
 	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The unique request ID.
 	//
 	// example:
 	//
 	// 7532B7EE-7CE7-5F4D-BF04-B12447DD****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// The status of the request response. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The request was successful.
 	//
-	// 	- **false**
+	// - **false**: The request failed.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *UpdateImageEventOperationResponseBody) Validate() error {
 }
 
 type UpdateImageEventOperationResponseBodyData struct {
-	// The ID of the alert handling rule, which is the same as the value of the Id request parameter.
+	// The ID of the alert handling rule, which is the same as the alert handling rule ID in the request parameters.
 	//
 	// example:
 	//

@@ -20,37 +20,37 @@ type iGetServerlessAppAuthDetailRequest interface {
 }
 
 type GetServerlessAppAuthDetailRequest struct {
-	// SAE application ID.
+	// The SAE application ID.
 	//
-	// > Obtain through the [ListMachineApps](~~ListMachineApps~~) interface.
+	// > You can call the [ListMachineApps](~~ListMachineApps~~) operation to obtain the ID.
 	//
 	// example:
 	//
 	// 3de9f2ac-f***769226df
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// Application region ID.
+	// The region ID of the application.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	AppRegionId *string `json:"AppRegionId,omitempty" xml:"AppRegionId,omitempty"`
-	// Server type:
+	// The server type. Valid values:
 	//
 	// - **RunD**
 	//
-	// - **ECI**
+	// - **ECI**.
 	//
 	// example:
 	//
 	// RunD
 	MachineType *string `json:"MachineType,omitempty" xml:"MachineType,omitempty"`
-	// Cloud product:
+	// The cloud service to which the application belongs. Valid values:
 	//
 	// - **ASK**
 	//
 	// - **SAE**
 	//
-	// - **ACS**
+	// - **ACS**.
 	//
 	// example:
 	//

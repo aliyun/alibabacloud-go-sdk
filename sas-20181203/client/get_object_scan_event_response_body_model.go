@@ -152,13 +152,13 @@ type GetObjectScanEventResponseBodyDataDetails struct {
 	//
 	// example:
 	//
-	// DownloadUrl
+	// DownloadUrl。
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The display name of the item.
 	//
 	// example:
 	//
-	// DownloadUrl
+	// DownloadUrl。
 	NameDisplay *string `json:"NameDisplay,omitempty" xml:"NameDisplay,omitempty"`
 	// The type of the item.
 	//

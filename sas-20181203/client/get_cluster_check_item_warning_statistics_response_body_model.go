@@ -16,9 +16,9 @@ type iGetClusterCheckItemWarningStatisticsResponseBody interface {
 }
 
 type GetClusterCheckItemWarningStatisticsResponseBody struct {
-	// The statistics on risk items by risk level.
+	// The baseline check statistics grouped by risk level (high, medium, and low).
 	Data *GetClusterCheckItemWarningStatisticsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The request ID. Alibaba Cloud generates a unique identifier for each API request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -62,19 +62,19 @@ func (s *GetClusterCheckItemWarningStatisticsResponseBody) Validate() error {
 }
 
 type GetClusterCheckItemWarningStatisticsResponseBodyData struct {
-	// The number of high-risk items.
+	// The number of high-risk check items.
 	//
 	// example:
 	//
 	// 3
 	HighWarningCount *int32 `json:"HighWarningCount,omitempty" xml:"HighWarningCount,omitempty"`
-	// The number of low-risk items.
+	// The number of low-risk check items.
 	//
 	// example:
 	//
 	// 1
 	LowWarningCount *int32 `json:"LowWarningCount,omitempty" xml:"LowWarningCount,omitempty"`
-	// The number of medium-risk items.
+	// The number of medium-risk check items.
 	//
 	// example:
 	//

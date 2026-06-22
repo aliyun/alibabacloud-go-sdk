@@ -14,13 +14,13 @@ type iModifyConcernNecessityRequest interface {
 }
 
 type ModifyConcernNecessityRequest struct {
-	// The priorities to fix the vulnerabilities. Valid values:
+	// The list of vulnerability fix necessity levels.
 	//
-	// 	- asap: high
+	// - asap: High
 	//
-	// 	- later: medium
+	// - later: Medium
 	//
-	// 	- nntf: low
+	// - nntf: Low
 	//
 	// example:
 	//

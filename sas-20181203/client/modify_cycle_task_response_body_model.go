@@ -14,7 +14,7 @@ type iModifyCycleTaskResponseBody interface {
 }
 
 type ModifyCycleTaskResponseBody struct {
-	// The request ID.
+	// The request ID. Alibaba Cloud generates a unique ID for each request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//

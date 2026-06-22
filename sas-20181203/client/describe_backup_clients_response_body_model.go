@@ -16,9 +16,9 @@ type iDescribeBackupClientsResponseBody interface {
 }
 
 type DescribeBackupClientsResponseBody struct {
-	// An array that consists of the information about the anti-ransomware agent.
+	// The anti-ransomware client information.
 	Clients []*DescribeBackupClientsResponseBodyClients `json:"Clients,omitempty" xml:"Clients,omitempty" type:"Repeated"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The request ID. Alibaba Cloud generates a unique identifier for each API request. You can use the request ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -66,45 +66,45 @@ func (s *DescribeBackupClientsResponseBody) Validate() error {
 }
 
 type DescribeBackupClientsResponseBodyClients struct {
-	// The ID of the anti-ransomware agent.
+	// The anti-ransomware client ID.
 	//
 	// example:
 	//
 	// c-000az2f537r73dyh****
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	// The status of the anti-ransomware agent.
+	// The status of the anti-ransomware client.
 	//
 	// Valid values:
 	//
-	// 	- **INSTALLING**: The agent is being installed.
+	// - **INSTALLING**: The client is being installed.
 	//
-	// 	- **ONLINE**: The agent is online.
+	// - **ONLINE**: The client is online.
 	//
-	// 	- **UNINSTALLING**: The agent is being uninstalled.
+	// - **UNINSTALLING**: The client is being uninstalled.
 	//
-	// 	- **NOT_INSTALLED**: The agent is not installed.
+	// - **NOT_INSTALLED**: The client is not installed.
 	//
-	// 	- **ACTIVATED**: The agent is enabled.
+	// - **ACTIVATED**: The client is activated.
 	//
-	// 	- **CLIENT_CONNECTION_ERROR**: A connection error occurs on the agent.
+	// - **CLIENT_CONNECTION_ERROR**: A client connection error occurred.
 	//
 	// example:
 	//
 	// ONLINE
 	ClientStatus *string `json:"ClientStatus,omitempty" xml:"ClientStatus,omitempty"`
-	// The version of the anti-ransomware agent.
+	// The version number of the anti-ransomware client.
 	//
 	// example:
 	//
 	// 2.0.0
 	ClientVersion *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
-	// The ID of the ECS instance on which the anti-ransomware agent is installed.
+	// The instance ID of the ECS instance that has the anti-ransomware client installed.
 	//
 	// example:
 	//
 	// i-bp15hyph4aci99dv****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The UUID of the Elastic Compute Service (ECS) instance on which the anti-ransomware agent is installed.
+	// The UUID of the ECS instance that has the anti-ransomware client installed.
 	//
 	// example:
 	//

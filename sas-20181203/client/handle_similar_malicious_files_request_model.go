@@ -22,7 +22,7 @@ type iHandleSimilarMaliciousFilesRequest interface {
 }
 
 type HandleSimilarMaliciousFilesRequest struct {
-	// Target alert ID
+	// The ID of the target alert.
 	//
 	// This parameter is required.
 	//
@@ -30,27 +30,27 @@ type HandleSimilarMaliciousFilesRequest struct {
 	//
 	// 123
 	EventId *int64 `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	// Language type for request and response messages. Values include:
+	// The language of the request and response. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Handling action:
+	// The handling action. Valid values:
 	//
-	// - addWhitelist: Add to whitelist;
+	// - addWhitelist: adds to the whitelist.
 	//
-	// - offWhitelist: Remove from whitelist;
+	// - offWhitelist: removes from the whitelist.
 	//
-	// - offline_handled: Handled offline;
+	// - offline_handled: handled offline.
 	//
-	// - mark_mis_info: Report as false positive;
+	// - mark_mis_info: submits as a false positive.
 	//
-	// - ignore: Ignore.
+	// - ignore: ignores the alert.
 	//
 	// This parameter is required.
 	//
@@ -58,23 +58,23 @@ type HandleSimilarMaliciousFilesRequest struct {
 	//
 	// ignore
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
-	// File source. Values include:
+	// The file source. Valid values:
 	//
-	// - agentless: Host detection;
+	// - agentless: host detection.
 	//
-	// - ecs_snapshot: User snapshot detection;
+	// - ecs_snapshot: user snapshot detection.
 	//
-	// - ecs_image: User-defined image detection.
+	// - ecs_image: user custom image detection.
 	//
 	// example:
 	//
 	// agentless
 	ScanRange *string `json:"ScanRange,omitempty" xml:"ScanRange,omitempty"`
-	// Batch processing scenario:
+	// The batch processing scenario. Valid values:
 	//
-	// - same_file_md5: Same file MD5;
+	// - same_file_md5: same file MD5.
 	//
-	// - default (default value): Same alert type.
+	// - default (default value): same alerting type.
 	//
 	// example:
 	//

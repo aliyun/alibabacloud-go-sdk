@@ -18,17 +18,17 @@ type iDescribeReportRecipientStatusRequest interface {
 }
 
 type DescribeReportRecipientStatusRequest struct {
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language type of the request and response. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The email address of the recipient. Separate multiple email addresses with commas (,).
+	// The email addresses of the contacts. Separate multiple email addresses with commas (,).
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type DescribeReportRecipientStatusRequest struct {
 	//
 	// username@example.com,username@example.com
 	Recipients *string `json:"Recipients,omitempty" xml:"Recipients,omitempty"`
-	// The source IP address of the request.
+	// The IP address of the access source.
 	//
 	// example:
 	//

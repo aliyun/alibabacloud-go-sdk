@@ -14,9 +14,9 @@ type iDeleteAttackPathWhitelistRequest interface {
 }
 
 type DeleteAttackPathWhitelistRequest struct {
-	// Attack path whitelist ID.
+	// The ID of the attack path whitelist entry.
 	//
-	// > You can call [ListAttackPathWhitelist](~~ListAttackPathWhitelist~~) to query the attack path whitelist ID.
+	// > You can call [ListAttackPathWhitelist](~~ListAttackPathWhitelist~~) to query attack path whitelist IDs.
 	//
 	// This parameter is required.
 	//

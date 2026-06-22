@@ -26,13 +26,13 @@ type iDescribeQuaraFileDownloadInfoResponseBody interface {
 }
 
 type DescribeQuaraFileDownloadInfoResponseBody struct {
-	// The URL that is used to download the file. The URL is valid for five minutes.
+	// The download URL. The URL is valid for 5 minutes.
 	//
 	// example:
 	//
 	// https://xxxxxxxx.oss-cn-hangzhou-1.aliyuncs.com/xxxxx/xxxxxxxxxxxxxx?Expires=1671448125&OSSAccessKeyId=xxx
 	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
-	// The MD5 hash value of the quarantined file.
+	// The MD5 hash of the file.
 	//
 	// example:
 	//
@@ -50,19 +50,19 @@ type DescribeQuaraFileDownloadInfoResponseBody struct {
 	//
 	// 123
 	QuaraFileId *int32 `json:"QuaraFileId,omitempty" xml:"QuaraFileId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 29874225-EAAC-5415-8501-32DD20FXXXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The tag that is added to the related alert.
+	// The tag of the alert record.
 	//
 	// example:
 	//
 	// 6d4ff40a22b15c86adecf2aa48xxxxx
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	// The UUID of the server.
+	// The unique identifier of the asset.
 	//
 	// example:
 	//

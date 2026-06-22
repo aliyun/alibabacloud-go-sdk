@@ -16,9 +16,9 @@ type iDescribeAllImageBaselineResponseBody interface {
 }
 
 type DescribeAllImageBaselineResponseBody struct {
-	// The baselines that are used in image baseline checks.
+	// The details of the image baseline check list.
 	ImageBaselines *DescribeAllImageBaselineResponseBodyImageBaselines `json:"ImageBaselines,omitempty" xml:"ImageBaselines,omitempty" type:"Struct"`
-	// The ID of the request, which is used to query logs and troubleshoot issues.
+	// The ID of the request. The ID is used to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ func (s *DescribeAllImageBaselineResponseBody) Validate() error {
 }
 
 type DescribeAllImageBaselineResponseBodyImageBaselines struct {
-	// An array that consists of baseline types.
+	// The list of baseline categories.
 	BaselineClassList []*DescribeAllImageBaselineResponseBodyImageBaselinesBaselineClassList `json:"BaselineClassList,omitempty" xml:"BaselineClassList,omitempty" type:"Repeated"`
 }
 
@@ -97,15 +97,15 @@ func (s *DescribeAllImageBaselineResponseBodyImageBaselines) Validate() error {
 }
 
 type DescribeAllImageBaselineResponseBodyImageBaselinesBaselineClassList struct {
-	// The alias of the baseline type.
+	// The alias of the baseline category.
 	//
 	// example:
 	//
-	// Identity authentication
+	// 身份鉴别
 	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
-	// The information about the baseline.
+	// The list of baseline main items.
 	BaselineNameList []*DescribeAllImageBaselineResponseBodyImageBaselinesBaselineClassListBaselineNameList `json:"BaselineNameList,omitempty" xml:"BaselineNameList,omitempty" type:"Repeated"`
-	// The key of the baseline type.
+	// The type key of the baseline category.
 	//
 	// example:
 	//
@@ -162,21 +162,21 @@ func (s *DescribeAllImageBaselineResponseBodyImageBaselinesBaselineClassList) Va
 }
 
 type DescribeAllImageBaselineResponseBodyImageBaselinesBaselineClassListBaselineNameList struct {
-	// The alias of the baseline.
+	// The alias of the baseline main item.
 	//
 	// example:
 	//
-	// Identity authentication
+	// 身份鉴别
 	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
-	// The information about the baseline check item.
+	// The list of baseline sub-items.
 	BaselineItemList []*DescribeAllImageBaselineResponseBodyImageBaselinesBaselineClassListBaselineNameListBaselineItemList `json:"BaselineItemList,omitempty" xml:"BaselineItemList,omitempty" type:"Repeated"`
-	// The key of the type for the baseline.
+	// The type key of the baseline main item.
 	//
 	// example:
 	//
 	// identification
 	ClassKey *string `json:"ClassKey,omitempty" xml:"ClassKey,omitempty"`
-	// The key of the name for the baseline.
+	// The name key of the baseline main item.
 	//
 	// example:
 	//
@@ -242,25 +242,25 @@ func (s *DescribeAllImageBaselineResponseBodyImageBaselinesBaselineClassListBase
 }
 
 type DescribeAllImageBaselineResponseBodyImageBaselinesBaselineClassListBaselineNameListBaselineItemList struct {
-	// The alias of the baseline check item.
+	// The alias of the baseline sub-item.
 	//
 	// example:
 	//
-	// Ensure that no accounts use the same Hash password.
+	// 确保不存在相同密码Hash的账户
 	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
-	// The key of the type for the baseline.
+	// The type key of the baseline main item.
 	//
 	// example:
 	//
 	// identification
 	ClassKey *string `json:"ClassKey,omitempty" xml:"ClassKey,omitempty"`
-	// The key of the name for the baseline check item.
+	// The name key of the baseline sub-item.
 	//
 	// example:
 	//
 	// duplicate_pwd_hash
 	ItemKey *string `json:"ItemKey,omitempty" xml:"ItemKey,omitempty"`
-	// The key of the name for the baseline.
+	// The name key of the baseline main item.
 	//
 	// example:
 	//

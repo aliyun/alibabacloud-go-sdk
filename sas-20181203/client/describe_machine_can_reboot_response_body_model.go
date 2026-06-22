@@ -18,15 +18,15 @@ type iDescribeMachineCanRebootResponseBody interface {
 type DescribeMachineCanRebootResponseBody struct {
 	// Indicates whether the server can be restarted. Valid values:
 	//
-	// 	- **true**: yes
+	// - **true**: The server can be restarted.
 	//
-	// 	- **false**: no
+	// - **false**: The server cannot be restarted.
 	//
 	// example:
 	//
 	// true
 	CanReboot *bool `json:"CanReboot,omitempty" xml:"CanReboot,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

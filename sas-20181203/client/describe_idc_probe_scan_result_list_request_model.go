@@ -26,61 +26,61 @@ type iDescribeIdcProbeScanResultListRequest interface {
 }
 
 type DescribeIdcProbeScanResultListRequest struct {
-	// The search conditions for assets. This parameter is in the JSON format. The value is case-sensitive.
+	// The search conditions for assets. This parameter is in JSON format. Parameter names are case-sensitive.
 	//
-	// >  A search condition can be the instance ID, instance name, VPC ID, region, or public IP address. You can call the [DescribeIdcAssetCriteria](https://help.aliyun.com/document_detail/2842671.html) operation to query supported search conditions.
+	// > You can search for assets by instance ID, instance name, VPC ID, region, or public IP address.
 	//
 	// example:
 	//
 	// [{\\"name\\":\\"scannedIp\\",\\"value\\":\\"192.168.2.11\\"}]
 	Criteria *string `json:"Criteria,omitempty" xml:"Criteria,omitempty"`
-	// The page number.
+	// The page number of the current page in a paged query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The end time of the scan.
+	// The end time of the scan discovery period.
 	//
 	// example:
 	//
 	// 1720006819000
 	FoundEndTime *int64 `json:"FoundEndTime,omitempty" xml:"FoundEndTime,omitempty"`
-	// The start time of the scan.
+	// The start time of the scan discovery period.
 	//
 	// example:
 	//
 	// 1720006818000
 	FoundStartTime *int64 `json:"FoundStartTime,omitempty" xml:"FoundStartTime,omitempty"`
-	// The logical operator that combines multiple search conditions. Valid values:
+	// The logical relationship between multiple search conditions. Valid values:
 	//
-	// 	- **OR******
+	// - **OR**: The search conditions are in a logical **OR*	- relationship.
 	//
-	// 	- **AND******
+	// - **AND**: The search conditions are in a logical **AND*	- relationship.
 	//
 	// example:
 	//
 	// OR
 	LogicalExp *string `json:"LogicalExp,omitempty" xml:"LogicalExp,omitempty"`
-	// The number of entries per page. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+	// The maximum number of entries per page in a paged query. Default value: 20. If you leave this parameter empty, 20 entries are returned per page.
 	//
-	// >  We recommend that you do not leave this parameter empty.
+	// > Do not leave PageSize empty.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The statuses of the corresponding probes. Separate multiple values with commas (,). Valid values:
+	// The status list of the corresponding probes. Separate multiple values with commas. Valid values:
 	//
-	// 	- **0**: The probe is valid.
+	// - **0**: active
 	//
-	// 	- **1**: The probe is ignored.
+	// - **1**: ignored
 	//
-	// 	- **2**: The probe is invalid.
+	// - **2**: invalid
 	//
-	// 	- **3**: The probe expired.
+	// - **3**: expired
 	//
-	// 	- **4**: The probe does not exist.
+	// - **4**: probe does not exist.
 	//
 	// example:
 	//

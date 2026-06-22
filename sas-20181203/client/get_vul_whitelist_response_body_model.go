@@ -84,19 +84,19 @@ type GetVulWhitelistResponseBodyVulWhitelist struct {
 	//
 	// example:
 	//
-	// Ignore
+	// 忽略
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 	// The application scope of the rule. The value is a JSON string that contains the following fields:
 	//
-	// 	- **type**: the type of the assets to which the rule is applied. Valid values:
+	// - **type**: the type of the assets to which the rule is applied. Valid values:
 	//
-	//     	- **Uuid**: server
+	//   - **Uuid**: server
 	//
-	//     	- **GroupId**: server group
+	//   - **GroupId**: server group
 	//
-	// 	- **groupIds**: the ID of the server group
+	// - **groupIds**: the ID of the server group
 	//
-	// 	- **uuids**: the UUID of the server
+	// - **uuids**: the UUID of the server
 	//
 	// > If this parameter is empty, the rule is applied to all types of assets.
 	//
@@ -124,21 +124,21 @@ type GetVulWhitelistResponseBodyVulWhitelist struct {
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The information about the vulnerability that is added to the whitelist. The value is a JSON string that contains the following fields:
 	//
-	// 	- **Name**: the name of the vulnerability.
+	// - **Name**: the name of the vulnerability.
 	//
-	// 	- **Type**: the type of the vulnerability. Valid values:
+	// - **Type**: the type of the vulnerability. Valid values:
 	//
-	//     	- **cve**: Linux software vulnerability
+	//   - **cve**: Linux software vulnerability
 	//
-	//     	- **sys**: Windows system vulnerability
+	//   - **sys**: Windows system vulnerability
 	//
-	//     	- **cms**: Web-CMS vulnerability
+	//   - **cms**: Web-CMS vulnerability
 	//
-	//     	- **app**: application vulnerability
+	//   - **app**: application vulnerability
 	//
-	//     	- **emg**: urgent vulnerabilities
+	//   - **emg**: urgent vulnerabilities
 	//
-	// 	- **AliasName**: the alias of the vulnerability.
+	// - **AliasName**: the alias of the vulnerability.
 	//
 	// example:
 	//

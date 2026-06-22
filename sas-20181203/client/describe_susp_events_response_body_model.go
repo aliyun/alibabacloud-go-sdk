@@ -282,7 +282,7 @@ type DescribeSuspEventsResponseBodySuspEvents struct {
 	//
 	// example:
 	//
-	// 1
+	// 8
 	EventStatus *int32 `json:"EventStatus,omitempty" xml:"EventStatus,omitempty"`
 	// The subtype of the alert event.
 	//
@@ -346,7 +346,7 @@ type DescribeSuspEventsResponseBodySuspEvents struct {
 	//
 	// example:
 	//
-	// k8s-daily
+	// test-daily
 	K8sClusterName *string `json:"K8sClusterName,omitempty" xml:"K8sClusterName,omitempty"`
 	// The namespace of the Kubernetes cluster.
 	//
@@ -422,7 +422,7 @@ type DescribeSuspEventsResponseBodySuspEvents struct {
 	//
 	// example:
 	//
-	// [{\\"uuid\\":\\"ALL\\",\\"field\\":\\"gmtModified\\",\\"operate\\":\\"contains\\",\\"fieldValue\\":\\"222\\"}]
+	// <strong>1.</strong>&nbsp&nbsppath&nbsp&nbspcontain&nbsp&nbsp232&nbsp&nbsp
 	MarkMisRules *string `json:"MarkMisRules,omitempty" xml:"MarkMisRules,omitempty"`
 	// The complete name of the alert event.
 	//

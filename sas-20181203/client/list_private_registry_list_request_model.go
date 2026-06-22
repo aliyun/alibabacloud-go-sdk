@@ -16,13 +16,13 @@ type iListPrivateRegistryListRequest interface {
 type ListPrivateRegistryListRequest struct {
 	// The type of the image repository. Valid values:
 	//
-	// 	- **acr**: Container Registry
+	// - **acr**: ACR
 	//
-	// 	- **harbor**: Harbor
+	// - **harbor**: Harbor
 	//
-	// 	- **quay**: Quay
+	// - **quay**: Quay
 	//
-	// 	- **CI/CD**: Jenkins
+	// - **CI/CD**: Jenkins
 	//
 	// example:
 	//

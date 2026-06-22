@@ -18,9 +18,9 @@ type iModifyImageFixCycleConfigResponseBody interface {
 type ModifyImageFixCycleConfigResponseBody struct {
 	// Indicates whether the configurations of the scheduled image fix are modified.
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//

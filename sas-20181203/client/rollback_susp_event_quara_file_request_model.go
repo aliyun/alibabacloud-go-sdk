@@ -36,7 +36,7 @@ type RollbackSuspEventQuaraFileRequest struct {
 	//
 	// example:
 	//
-	// 1.2.3.4
+	// 192.168.XX.XX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 

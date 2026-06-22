@@ -16,9 +16,9 @@ type iDescribeTaskErrorLogResponseBody interface {
 }
 
 type DescribeTaskErrorLogResponseBody struct {
-	// An array that consists of the error logs.
+	// The list of error logs.
 	Logs []*DescribeTaskErrorLogResponseBodyLogs `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

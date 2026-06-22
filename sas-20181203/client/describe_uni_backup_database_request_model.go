@@ -24,7 +24,7 @@ type iDescribeUniBackupDatabaseRequest interface {
 }
 
 type DescribeUniBackupDatabaseRequest struct {
-	// The number of the page to return. Default value: **1**.
+	// The page number of the page to return. Default value: **1**, which indicates the first page.
 	//
 	// example:
 	//
@@ -32,41 +32,41 @@ type DescribeUniBackupDatabaseRequest struct {
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The type of the database. Valid values:
 	//
-	// 	- **MYSQL**
+	// - **MYSQL**
 	//
-	// 	- **MSSQL**
+	// - **MSSQL**
 	//
-	// 	- **Oracle**
+	// - **Oracle**.
 	//
 	// example:
 	//
 	// MYSQL
 	DatabaseType *string `json:"DatabaseType,omitempty" xml:"DatabaseType,omitempty"`
-	// The name of the Elastic Compute Service (ECS) instance.
+	// The name of the ECS instance.
 	//
 	// example:
 	//
 	// test
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The number of entries to return on each page. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+	// The maximum number of entries per page in a paging query. Default value: 20. If you leave this parameter empty, 20 entries are returned per page by default.
 	//
-	// >  We recommend that you do not leave this parameter empty.
+	// > Do not leave PageSize empty.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The condition that is used to query the database. Valid values:
+	// The query type for the database. Valid values:
 	//
-	// 	- **create**: newly created
+	// - **create**: create
 	//
-	// 	- **restore**: restored
+	// - **restore**: restore.
 	//
 	// example:
 	//
 	// create
 	QueryType *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
-	// The region ID of the server that hosts the database.
+	// The region ID of the database server.
 	//
 	// example:
 	//

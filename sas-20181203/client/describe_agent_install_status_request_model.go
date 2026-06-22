@@ -18,25 +18,25 @@ type iDescribeAgentInstallStatusRequest interface {
 }
 
 type DescribeAgentInstallStatusRequest struct {
-	// The language of the content within the request and response. Valid value:
+	// The language type for the request and response messages. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The source IP address of the request.
+	// The IP address of the access source.
 	//
 	// example:
 	//
 	// 59.46.XXX.XXX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The UUIDs of servers. Separate multiple UUIDs with commas (,).
+	// The UUIDs of the servers to query. Separate multiple UUIDs with commas (,).
 	//
-	// > You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to query the UUIDs of servers.
+	// > You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to obtain the UUIDs of servers.
 	//
 	// This parameter is required.
 	//

@@ -16,9 +16,9 @@ type iDescribeImageEventOperationConditionRequest interface {
 }
 
 type DescribeImageEventOperationConditionRequest struct {
-	// The alert type.
+	// The alerting type.
 	//
-	// 	- Set the value to **sensitiveFile**.
+	// - **sensitiveFile**: sensitive file.
 	//
 	// example:
 	//
@@ -26,9 +26,9 @@ type DescribeImageEventOperationConditionRequest struct {
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
 	// The language of the content within the request and response. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese.
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English.
+	// - **en**: English.
 	//
 	// example:
 	//

@@ -16,9 +16,9 @@ type iGetCheckSaleResponseBody interface {
 }
 
 type GetCheckSaleResponseBody struct {
-	// The sales information about the configuration assessment quota.
+	// The sales information of cloud service configuration check.
 	CheckSale *GetCheckSaleResponseBodyCheckSale `json:"CheckSale,omitempty" xml:"CheckSale,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request. The ID is a unique identifier that Alibaba Cloud generates for the request and can be used to troubleshoot issues.
 	//
 	// example:
 	//
@@ -62,35 +62,39 @@ func (s *GetCheckSaleResponseBody) Validate() error {
 }
 
 type GetCheckSaleResponseBodyCheckSale struct {
-	// The consumed quota.
+	// The number of consumed authorized quotas.
 	//
 	// example:
 	//
 	// 500
-	ConsumeCount *int64 `json:"ConsumeCount,omitempty" xml:"ConsumeCount,omitempty"`
-	// Indicates whether the user is an existing user and whether the user uses the configuration assessment feature before the feature is released for sale on July 07, 2023. Valid values:
+	ConsumeCount                                *int64 `json:"ConsumeCount,omitempty" xml:"ConsumeCount,omitempty"`
+	InstanceConsumeCount                        *int64 `json:"InstanceConsumeCount,omitempty" xml:"InstanceConsumeCount,omitempty"`
+	InstanceHybridPostLatestCycledResourceCount *int64 `json:"InstanceHybridPostLatestCycledResourceCount,omitempty" xml:"InstanceHybridPostLatestCycledResourceCount,omitempty"`
+	InstancePostConsumeCount                    *int64 `json:"InstancePostConsumeCount,omitempty" xml:"InstancePostConsumeCount,omitempty"`
+	InstancePurchaseCount                       *int64 `json:"InstancePurchaseCount,omitempty" xml:"InstancePurchaseCount,omitempty"`
+	// Indicates whether the user is an existing user who used the cloud service configuration check feature before the sales feature was released on July 7, 2023. Valid values:
 	//
-	// 	- **true**: existing user
+	// - **true**: The user is an existing user.
 	//
-	// 	- **false**: new user
+	// - **false**: The user is not an existing user.
 	//
 	// example:
 	//
 	// true
 	LoyalUser *bool `json:"LoyalUser,omitempty" xml:"LoyalUser,omitempty"`
-	// The purchased quota.
+	// The number of purchased authorized quotas.
 	//
 	// example:
 	//
 	// 1000
 	PurchaseCount *int64 `json:"PurchaseCount,omitempty" xml:"PurchaseCount,omitempty"`
-	// The type of the user. Valid values:
+	// The type of the sales user. Valid values:
 	//
-	// 	- **1**: a user who can use all check items.
+	// - **1**: full-feature user who can use all check items.
 	//
-	// 	- **2**: an user who can only use the check items before the release of the feature on July 07, 2023. This type of users must upgrade Security Center before the users can use all check items.
+	// - **2**: user who needs to upgrade and can only use check items that were available before the sales feature was released on July 7, 2023.
 	//
-	// 	- **3**: a new user who cannot use the configuration assessment feature. This type of users must make a purchase before the users can use the feature.
+	// - **3**: user who needs to purchase the feature and cannot use the cloud service configuration check feature.
 	//
 	// example:
 	//
@@ -110,6 +114,22 @@ func (s *GetCheckSaleResponseBodyCheckSale) GetConsumeCount() *int64 {
 	return s.ConsumeCount
 }
 
+func (s *GetCheckSaleResponseBodyCheckSale) GetInstanceConsumeCount() *int64 {
+	return s.InstanceConsumeCount
+}
+
+func (s *GetCheckSaleResponseBodyCheckSale) GetInstanceHybridPostLatestCycledResourceCount() *int64 {
+	return s.InstanceHybridPostLatestCycledResourceCount
+}
+
+func (s *GetCheckSaleResponseBodyCheckSale) GetInstancePostConsumeCount() *int64 {
+	return s.InstancePostConsumeCount
+}
+
+func (s *GetCheckSaleResponseBodyCheckSale) GetInstancePurchaseCount() *int64 {
+	return s.InstancePurchaseCount
+}
+
 func (s *GetCheckSaleResponseBodyCheckSale) GetLoyalUser() *bool {
 	return s.LoyalUser
 }
@@ -124,6 +144,26 @@ func (s *GetCheckSaleResponseBodyCheckSale) GetSaleUserType() *int32 {
 
 func (s *GetCheckSaleResponseBodyCheckSale) SetConsumeCount(v int64) *GetCheckSaleResponseBodyCheckSale {
 	s.ConsumeCount = &v
+	return s
+}
+
+func (s *GetCheckSaleResponseBodyCheckSale) SetInstanceConsumeCount(v int64) *GetCheckSaleResponseBodyCheckSale {
+	s.InstanceConsumeCount = &v
+	return s
+}
+
+func (s *GetCheckSaleResponseBodyCheckSale) SetInstanceHybridPostLatestCycledResourceCount(v int64) *GetCheckSaleResponseBodyCheckSale {
+	s.InstanceHybridPostLatestCycledResourceCount = &v
+	return s
+}
+
+func (s *GetCheckSaleResponseBodyCheckSale) SetInstancePostConsumeCount(v int64) *GetCheckSaleResponseBodyCheckSale {
+	s.InstancePostConsumeCount = &v
+	return s
+}
+
+func (s *GetCheckSaleResponseBodyCheckSale) SetInstancePurchaseCount(v int64) *GetCheckSaleResponseBodyCheckSale {
+	s.InstancePurchaseCount = &v
 	return s
 }
 

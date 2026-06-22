@@ -22,45 +22,45 @@ type iDescribeCycleTaskListRequest interface {
 }
 
 type DescribeCycleTaskListRequest struct {
-	// The ID of the task configuration.
+	// The ID of the configuration.
 	//
-	// >  You can call the [CreateCycleTask](~~CreateCycleTask~~) operation to query the IDs of task configurations.
+	// >Call the [CreateCycleTask](~~CreateCycleTask~~) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// f93b6ee24cfd0aad44b897ad5051****
 	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// The number of the page to return.
+	// The page number of the current page when using paging.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries to return on each page.
+	// The maximum number of entries per page when using paging. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The name of the task. Valid values:
+	// The node name. Valid values:
 	//
-	// 	- **VIRUS_VUL_SCHEDULE_SCAN**: virus scan task
+	// - **VIRUS_VUL_SCHEDULE_SCAN**: virus scan.
 	//
-	// 	- **IMAGE_SCAN**: image scan task
+	// - **IMAGE_SCAN**: image scan.
 	//
-	// 	- **EMG_VUL_SCHEDULE_SCAN**: urgent vulnerability scan task
+	// - **EMG_VUL_SCHEDULE_SCAN**: emergency vulnerability scanning.
 	//
 	// example:
 	//
 	// IMAGE_SCAN
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// The type of the task. Valid values:
+	// The node type. Valid values:
 	//
-	// 	- **VIRUS_VUL_SCHEDULE_SCAN**: virus scan task
+	// - **VIRUS_VUL_SCHEDULE_SCAN**: virus scan.
 	//
-	// 	- **IMAGE_SCAN**: image scan task
+	// - **IMAGE_SCAN**: image scan.
 	//
-	// 	- **EMG_VUL_SCHEDULE_SCAN**: urgent vulnerability scan task
+	// - **EMG_VUL_SCHEDULE_SCAN**: emergency vulnerability scanning.
 	//
 	// example:
 	//

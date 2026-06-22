@@ -18,11 +18,11 @@ type iListSasContainerWebDefenseRuleResponseBody interface {
 }
 
 type ListSasContainerWebDefenseRuleResponseBody struct {
-	// The rules for container tamper-proofing.
+	// The list of container file defense rules.
 	ContainerWebDefenseRuleList []*ListSasContainerWebDefenseRuleResponseBodyContainerWebDefenseRuleList `json:"ContainerWebDefenseRuleList,omitempty" xml:"ContainerWebDefenseRuleList,omitempty" type:"Repeated"`
-	// The pagination information.
+	// The pagination information of the query result.
 	PageInfo *ListSasContainerWebDefenseRuleResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	// The request ID, which is used to query logs and troubleshoot issues.
+	// The request ID. It is used to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
@@ -90,7 +90,7 @@ type ListSasContainerWebDefenseRuleResponseBodyContainerWebDefenseRuleList struc
 	//
 	// 1766185894104675
 	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// The number of the applications.
+	// The number of configured applications.
 	//
 	// example:
 	//
@@ -108,25 +108,25 @@ type ListSasContainerWebDefenseRuleResponseBodyContainerWebDefenseRuleList struc
 	//
 	// 1678852686000
 	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The ID of the rule.
+	// The rule ID.
 	//
 	// example:
 	//
 	// 420336648
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The paths that are protected.
+	// The list of rule defense paths.
 	PathConfDTOList []*ListSasContainerWebDefenseRuleResponseBodyContainerWebDefenseRuleListPathConfDTOList `json:"PathConfDTOList,omitempty" xml:"PathConfDTOList,omitempty" type:"Repeated"`
-	// The name of the rule.
+	// The rule name.
 	//
 	// example:
 	//
 	// test2
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The status of the rule. Valid values:
+	// The rule status. Valid values:
 	//
-	// 	- **1**: enabled
+	// - **1**: Enabled.
 	//
-	// 	- **0**: disabled
+	// - **0**: Disabled.
 	//
 	// example:
 	//
@@ -228,69 +228,69 @@ func (s *ListSasContainerWebDefenseRuleResponseBodyContainerWebDefenseRuleList) 
 }
 
 type ListSasContainerWebDefenseRuleResponseBodyContainerWebDefenseRuleListPathConfDTOList struct {
-	// The backup paths.
+	// The backup path.
 	//
 	// example:
 	//
 	// /tmp/test
 	BackupPath *string `json:"BackupPath,omitempty" xml:"BackupPath,omitempty"`
-	// The prevention mode. Valid values:
+	// The action to take. Valid values:
 	//
-	// 	- **block**
+	// - **block**: Block.
 	//
-	// 	- **audit**
+	// - **audit**: Alert.
 	//
 	// example:
 	//
 	// audit
 	DefenseMode *string `json:"DefenseMode,omitempty" xml:"DefenseMode,omitempty"`
-	// The protected path.
+	// The defense path.
 	//
 	// example:
 	//
 	// /usr/test/
 	DefensePath *string `json:"DefensePath,omitempty" xml:"DefensePath,omitempty"`
-	// The file that is excluded.
+	// The excluded file.
 	//
 	// example:
 	//
 	// php
 	ExcludeFile *string `json:"ExcludeFile,omitempty" xml:"ExcludeFile,omitempty"`
-	// The path to the file that is excluded.
+	// The excluded file path.
 	//
 	// example:
 	//
 	// /usr/tt
 	ExcludeFilePath *string `json:"ExcludeFilePath,omitempty" xml:"ExcludeFilePath,omitempty"`
-	// The type of the file that is excluded.
+	// The excluded file type.
 	//
 	// example:
 	//
 	// jsp
 	ExcludeFileType *string `json:"ExcludeFileType,omitempty" xml:"ExcludeFileType,omitempty"`
-	// The protection mode. Valid values:
+	// The defense mode. Valid values:
 	//
-	// 	- **0**: basic mode (whitelist)
+	// - **0**: Basic pattern (whitelist).
 	//
-	// 	- **1**: complex mode (blacklist)
+	// - **1**: Advanced pattern (blacklist).
 	//
 	// example:
 	//
 	// 0
 	GuardType *int32 `json:"GuardType,omitempty" xml:"GuardType,omitempty"`
-	// The file that is included.
+	// The included file.
 	//
 	// example:
 	//
 	// /usr/test
 	IncludeFile *string `json:"IncludeFile,omitempty" xml:"IncludeFile,omitempty"`
-	// The type of the file that is included.
+	// The type of the included file.
 	//
 	// example:
 	//
 	// php
 	IncludeFileType *string `json:"IncludeFileType,omitempty" xml:"IncludeFileType,omitempty"`
-	// The processes that are added to the whitelist.
+	// The list of whitelisted processes.
 	ProcessPathList []*string `json:"ProcessPathList,omitempty" xml:"ProcessPathList,omitempty" type:"Repeated"`
 }
 
@@ -397,19 +397,19 @@ func (s *ListSasContainerWebDefenseRuleResponseBodyContainerWebDefenseRuleListPa
 }
 
 type ListSasContainerWebDefenseRuleResponseBodyPageInfo struct {
-	// The number of entries returned on the current page.
+	// The number of entries on the current page in a paged query.
 	//
 	// example:
 	//
 	// 4
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The page number.
+	// The page number of the current page in a paged query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries per page.
+	// The maximum number of entries per page in a paged query.
 	//
 	// example:
 	//

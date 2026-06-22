@@ -20,25 +20,25 @@ type iSetSyncRefreshRegionRequest interface {
 type SetSyncRefreshRegionRequest struct {
 	// The access type of the multi-cloud site. Valid values:
 	//
-	// 	- **0**: The current site is not the default site of multi-cloud site. You can specify the current site as the default site of the multi-cloud site.
+	// - **0**: no default site is configured, and you can select regions as needed.
 	//
-	// 	- **1**: The current site is the default site of multi-cloud site.
+	// - **1**: the current site is already the default site.
 	//
 	// example:
 	//
 	// 0
 	DefaultRegion *int32 `json:"DefaultRegion,omitempty" xml:"DefaultRegion,omitempty"`
-	// The regions from which you want to synchronize assets at the current site.
+	// The list of regions to be synchronized for the current site.
 	RegionIds []*string `json:"RegionIds,omitempty" xml:"RegionIds,omitempty" type:"Repeated"`
-	// The cloud service provider. Valid values:
+	// The cloud asset vendor. Valid values:
 	//
-	// 	- **Tencent**: Tencent Cloud
+	// - **Tencent**: Tencent Cloud.
 	//
-	// 	- **HUAWEICLOUD**: Huawei Cloud
+	// - **HUAWEICLOUD**: Huawei Cloud.
 	//
-	// 	- **Azure**: Microsoft Azure
+	// - **Azure**: Azure.
 	//
-	// 	- **AWS**: Amazon Web Services (AWS)
+	// - **AWS**: AWS.
 	//
 	// example:
 	//

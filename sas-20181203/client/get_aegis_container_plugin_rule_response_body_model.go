@@ -16,9 +16,9 @@ type iGetAegisContainerPluginRuleResponseBody interface {
 }
 
 type GetAegisContainerPluginRuleResponseBody struct {
-	// The returned data.
+	// The response data.
 	Data *GetAegisContainerPluginRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID.
+	// The request ID, which is a unique identifier that Alibaba Cloud generates for the request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -74,57 +74,57 @@ type GetAegisContainerPluginRuleResponseBodyData struct {
 	//
 	// 1671607025000
 	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The action mode of the rule. Valid values:
+	// The rule action mode. Valid values:
 	//
-	// 	- **0**: allows escape behavior.
+	// - **0**: allow
 	//
-	// 	- **1**: triggers alerts.
+	// - **1**: alert
 	//
-	// 	- **2**: blocks escape behavior.
+	// - **2**: block
 	//
 	// example:
 	//
 	// 1
 	Mode *int32 `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// The description of the rule.
+	// The rule description.
 	//
 	// example:
 	//
 	// autoTest
 	RuleDescription *string `json:"RuleDescription,omitempty" xml:"RuleDescription,omitempty"`
-	// The ID of the rule.
+	// The rule ID.
 	//
 	// example:
 	//
 	// 21**
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The name of the rule.
+	// The rule name.
 	//
 	// example:
 	//
 	// auto_test_rule-EmzIXZ
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The template ID of the rule.
+	// The rule template ID.
 	//
 	// example:
 	//
 	// 100**
 	RuleTemplateId *string `json:"RuleTemplateId,omitempty" xml:"RuleTemplateId,omitempty"`
-	// The template name of the rule.
+	// The rule template name.
 	//
 	// example:
 	//
 	// template01
 	RuleTemplateName *string `json:"RuleTemplateName,omitempty" xml:"RuleTemplateName,omitempty"`
-	// The rule items.
+	// The list of selected rule items.
 	SelectedPolicy []*string `json:"SelectedPolicy,omitempty" xml:"SelectedPolicy,omitempty" type:"Repeated"`
-	// The ID of the switch.
+	// The ID of the corresponding switch.
 	//
 	// example:
 	//
 	// USER-CONTAINER-RULE-SWITCH-TYPE_***
 	SwitchId *string `json:"SwitchId,omitempty" xml:"SwitchId,omitempty"`
-	// The images that are added to the whitelist.
+	// The list of whitelisted images.
 	WhiteImages []*string `json:"WhiteImages,omitempty" xml:"WhiteImages,omitempty" type:"Repeated"`
 }
 

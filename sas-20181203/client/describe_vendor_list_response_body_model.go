@@ -16,13 +16,13 @@ type iDescribeVendorListResponseBody interface {
 }
 
 type DescribeVendorListResponseBody struct {
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The ID of the request. Alibaba Cloud generates a unique identifier for each request, which can be used for troubleshooting and diagnostics.
 	//
 	// example:
 	//
 	// 340D7FC4-D575-1661-8ACD-CFA7BE57B795
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// An array that consists of the service providers.
+	// The list of vendors.
 	VendorNameList []*string `json:"VendorNameList,omitempty" xml:"VendorNameList,omitempty" type:"Repeated"`
 }
 

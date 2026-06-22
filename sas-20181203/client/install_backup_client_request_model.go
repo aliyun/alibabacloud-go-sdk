@@ -18,11 +18,11 @@ type iInstallBackupClientRequest interface {
 }
 
 type InstallBackupClientRequest struct {
-	// The version of the anti-ransomware policy. Valid values:
+	// The version of the mitigation policies. Valid values:
 	//
-	// 	- **1.0.0**
+	// - **1.0.0**: The version of the mitigation policies is 1.0.0.
 	//
-	// 	- **2.0.0**
+	// - **2.0.0**: The version of the mitigation policies is 2.0.0.
 	//
 	// This parameter is required.
 	//
@@ -30,17 +30,17 @@ type InstallBackupClientRequest struct {
 	//
 	// 2.0.0
 	PolicyVersion *string `json:"PolicyVersion,omitempty" xml:"PolicyVersion,omitempty"`
-	// The UUID of the server on which you want to install the anti-ransomware agent.
+	// The UUID of the server on which you want to install the anti-ransomware client.
 	//
-	// > You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to query the UUIDs of servers. You must specify at least one of the UuidList and Uuid parameters.
+	// > > You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to obtain this value. UuidList and Uuid cannot both be empty.
 	//
 	// example:
 	//
 	// inet-617eddab-7df4-4a51-b217-a3f59194****
 	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-	// The UUIDs of servers on which you want to install the anti-ransomware agent.
+	// The list of UUIDs of the servers that you want to protect.
 	//
-	// >  You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to query the UUIDs of servers.
+	// > Call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to obtain this parameter.
 	//
 	// example:
 	//

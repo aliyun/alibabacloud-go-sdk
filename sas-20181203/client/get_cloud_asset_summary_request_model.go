@@ -11,14 +11,17 @@ type iGetCloudAssetSummaryRequest interface {
 	GoString() string
 	SetCloudAssetTypes(v []*GetCloudAssetSummaryRequestCloudAssetTypes) *GetCloudAssetSummaryRequest
 	GetCloudAssetTypes() []*GetCloudAssetSummaryRequestCloudAssetTypes
+	SetIsSaleData(v bool) *GetCloudAssetSummaryRequest
+	GetIsSaleData() *bool
 	SetVendors(v []*int32) *GetCloudAssetSummaryRequest
 	GetVendors() []*int32
 }
 
 type GetCloudAssetSummaryRequest struct {
-	// List of asset type information for cloud assets
+	// The list of asset type information of cloud assets.
 	CloudAssetTypes []*GetCloudAssetSummaryRequestCloudAssetTypes `json:"CloudAssetTypes,omitempty" xml:"CloudAssetTypes,omitempty" type:"Repeated"`
-	// List of cloud vendors to be queried.
+	IsSaleData      *bool                                         `json:"IsSaleData,omitempty" xml:"IsSaleData,omitempty"`
+	// The list of cloud vendors to query.
 	Vendors []*int32 `json:"Vendors,omitempty" xml:"Vendors,omitempty" type:"Repeated"`
 }
 
@@ -34,12 +37,21 @@ func (s *GetCloudAssetSummaryRequest) GetCloudAssetTypes() []*GetCloudAssetSumma
 	return s.CloudAssetTypes
 }
 
+func (s *GetCloudAssetSummaryRequest) GetIsSaleData() *bool {
+	return s.IsSaleData
+}
+
 func (s *GetCloudAssetSummaryRequest) GetVendors() []*int32 {
 	return s.Vendors
 }
 
 func (s *GetCloudAssetSummaryRequest) SetCloudAssetTypes(v []*GetCloudAssetSummaryRequestCloudAssetTypes) *GetCloudAssetSummaryRequest {
 	s.CloudAssetTypes = v
+	return s
+}
+
+func (s *GetCloudAssetSummaryRequest) SetIsSaleData(v bool) *GetCloudAssetSummaryRequest {
+	s.IsSaleData = &v
 	return s
 }
 
@@ -62,167 +74,169 @@ func (s *GetCloudAssetSummaryRequest) Validate() error {
 }
 
 type GetCloudAssetSummaryRequestCloudAssetTypes struct {
-	// Subtypes of cloud products. Asset type-subtype. Values:
+	// The subtype of the cloud service.
 	//
-	// - **0**: ECS (Elastic Compute Service)
+	// The asset type-subtype. Valid values:
 	//
-	//   	- **1**: Disk (Storage)
+	// - **0**: Elastic Compute Service (ECS)
 	//
-	//   	- **2**: Security Group
+	//     	- **1**: Disk (Storage)
 	//
-	//   	- **100**: Instance
+	//     	- **2**: Security Group
 	//
-	// - **1**: Load Balancer
+	//     	- **100**: Instance
 	//
-	//   	- **0**: Load Balancer
+	// - **1**: Server Load Balancer
 	//
-	//   	- **1**: Application Load Balancer
+	//     	- **0**: Server Load Balancer (SLB)
+	//
+	//     	- **1**: Application Load Balancer (ALB)
 	//
 	// - **3**: ApsaraDB RDS
 	//
-	//   	- **0**: Instance
+	//     	- **0**: Instance
 	//
 	// - **4**: ApsaraDB for MongoDB
 	//
-	//   	- **0**: Instance
+	//     	- **0**: Instance
 	//
-	// - **5**: ApsaraDB Tair (Redis Compatible)
+	// - **5**: ApsaraDB for Tair (compatible with Redis)
 	//
-	//   	- **0**: Instance
+	//     	- **0**: Instance
 	//
 	// - **6**: Container Registry
 	//
-	//   	- **1**: Enterprise Edition
+	//     	- **1**: Enterprise Edition
 	//
-	//   	- **2**: Personal Edition
+	//     	- **2**: Personal Edition
 	//
-	// - **8**: Container Service for Kubernetes
+	// - **8**: Container Service for Kubernetes (ACK)
 	//
-	//   	- **0**: Cluster
+	//     	- **0**: Cluster
 	//
 	// - **9**: Virtual Private Cloud (VPC)
 	//
-	//   	- **0**: NAT Gateway
+	//     	- **0**: NAT Gateway
 	//
-	//   	- **1**: EIP (Elastic IP)
+	//     	- **1**: EIP
 	//
-	//   	- **2**: VPN
+	//     	- **2**: VPN
 	//
-	//   	- **3**: FLOW_LOG
+	//     	- **3**: FLOW_LOG
 	//
 	// - **11**: ActionTrail
 	//
-	//   	- **0**: Trail
+	//     	- **0**: Trail
 	//
-	// - **12**: CDN
+	// - **12**: Alibaba Cloud CDN
 	//
-	//   	- **0**: Instance
+	//     	- **0**: Instance
 	//
-	// - **13**: Digital Certificate Management Service (formerly SSL Certificates)
+	// - **13**: Certificate Management Service (formerly SSL Certificates Service)
 	//
-	//   	- **0**: Certificate
+	//     	- **0**: Certificate
 	//
-	// - **14**: DevOps
+	// - **14**: Apsara Devops
 	//
-	//   	- **0**: Organization
+	//     	- **0**: Organization
 	//
-	// - **16**: DDoS Protection
+	// - **16**: Anti-DDoS
 	//
-	//   	- **0**: Instance
+	//     	- **0**: Instance
 	//
-	// - **17**: Web Application Firewall
+	// - **17**: Web Application Firewall (WAF)
 	//
-	//   	- **0**: Domain
+	//     	- **0**: Domain name
 	//
-	// - **18**: Object Storage
+	// - **18**: Object Storage Service (OSS)
 	//
-	//   	- **0**: Bucket
+	//     	- **0**: Bucket
 	//
-	// - **19**: PolarDB (Cloud-Native Relational Database)
+	// - **19**: PolarDB
 	//
-	//   	- **0**: Cluster
+	//     	- **0**: Cluster
 	//
-	// - **20**: ApsaraDB for PostgreSQL
+	// - **20**: ApsaraDB RDS for PostgreSQL
 	//
-	//   	- **0**: Instance
+	//     	- **0**: Instance
 	//
-	// - **21**: Microservices Engine
+	// - **21**: Microservices Engine (MSE)
 	//
-	//   	- **0**: Cluster
+	//     	- **0**: Cluster
 	//
-	// - **22**: File Storage NAS
+	// - **22**: Apsara File Storage NAS
 	//
-	//   	- **0**: File System
+	//     	- **0**: File system
 	//
-	// - **23**: Data Security Center
+	// - **23**: Data Security Center (DSC)
 	//
-	//   	- **0**: Instance
+	//     	- **0**: Instance
 	//
-	// - **24**: Elastic Public IP
+	// - **24**: Elastic IP Address (EIP)
 	//
-	//   	- **0**: Anycast Elastic Public IP
+	//     	- **0**: Anycast EIP
 	//
-	// - **25**: Cloud Identity Service - EIAM
+	// - **25**: Identity as a Service - EIAM
 	//
-	//   	- **0**: Instance
+	//     	- **0**: Instance
 	//
 	// - **26**: PolarDB-X
 	//
-	//   	- **0**: Instance
+	//     	- **0**: Instance
 	//
 	// - **27**: Elasticsearch
 	//
-	//   	- **0**: Instance
+	//     	- **0**: Instance
 	//
 	// example:
 	//
 	// 0
 	AssetSubType *int32 `json:"AssetSubType,omitempty" xml:"AssetSubType,omitempty"`
-	// The type of asset. Values:
+	// The type of asset. Valid values:
 	//
 	// - **0**: Elastic Compute Service (ECS)
 	//
-	// - **1**: Load Balancer
+	// - **1**: Server Load Balancer (SLB)
 	//
-	// - **3**: ApsaraDB for RDS
+	// - **3**: ApsaraDB RDS
 	//
 	// - **4**: ApsaraDB for MongoDB
 	//
-	// - **5**: ApsaraDB for Tair (Redis compatible)
+	// - **5**: ApsaraDB for Tair (compatible with Redis)
 	//
 	// - **6**: Container Registry
 	//
-	// - **8**: Container Service for Kubernetes
+	// - **8**: Container Service for Kubernetes (ACK)
 	//
 	// - **9**: Virtual Private Cloud (VPC)
 	//
 	// - **11**: ActionTrail
 	//
-	// - **12**: Content Delivery Network (CDN)
+	// - **12**: Alibaba Cloud CDN
 	//
-	// - **13**: SSL Certificates (now known as Certificate Management Service)
+	// - **13**: Certificate Management Service (formerly SSL Certificates Service)
 	//
-	// - **14**: DevOps
+	// - **14**: Apsara Devops
 	//
-	// - **16**: DDoS Protection
+	// - **16**: Anti-DDoS
 	//
-	// - **17**: Web Application Firewall
+	// - **17**: Web Application Firewall (WAF)
 	//
 	// - **18**: Object Storage Service (OSS)
 	//
 	// - **19**: PolarDB
 	//
-	// - **20**: ApsaraDB for PostgreSQL
+	// - **20**: ApsaraDB RDS for PostgreSQL
 	//
-	// - **21**: Microservices Engine
+	// - **21**: Microservices Engine (MSE)
 	//
-	// - **22**: File Storage NAS
+	// - **22**: Apsara File Storage NAS
 	//
-	// - **23**: Data Security Center
+	// - **23**: Data Security Center (DSC)
 	//
-	// - **24**: Elastic IP Address
+	// - **24**: Elastic IP Address (EIP)
 	//
-	// - **25**: Cloud Identity Service - EIAM
+	// - **25**: Identity as a Service - EIAM
 	//
 	// - **26**: PolarDB-X
 	//
@@ -232,17 +246,17 @@ type GetCloudAssetSummaryRequestCloudAssetTypes struct {
 	//
 	// 4
 	AssetType *int32 `json:"AssetType,omitempty" xml:"AssetType,omitempty"`
-	// Server vendor. Values:
+	// Server vendor. Valid values:
 	//
-	// - **0**: Alibaba Cloud Asset
+	// - **0**: Alibaba Cloud assets
 	//
-	// - **1**: Non-cloud Asset
+	// - **1**: Off-cloud assets
 	//
-	// - **2**: IDC Asset
+	// - **2**: IDC assets
 	//
-	// - **3**, **4**, **5**, **7**: Other Cloud Assets
+	// - **3**, **4**, **5**, **7**: Other cloud assets
 	//
-	// - **8**: Lightweight Asset
+	// - **8**: Lightweight assets
 	//
 	// example:
 	//

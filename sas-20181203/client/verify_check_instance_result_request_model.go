@@ -22,17 +22,19 @@ type iVerifyCheckInstanceResultRequest interface {
 type VerifyCheckInstanceResultRequest struct {
 	// The ID of the check item.
 	//
-	// > You can call the [ListCheckResult](~~ListCheckResult~~) operation to query the IDs of check items.
+	// > You can call the [ListCheckResult](~~ListCheckResult~~) operation to obtain the ID of the check item.
 	//
 	// example:
 	//
 	// 16
 	CheckId *int64 `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
-	// List of item IDs to be checked.
+	// The list of IDs of the check items.
 	CheckIds []*int64 `json:"CheckIds,omitempty" xml:"CheckIds,omitempty" type:"Repeated"`
-	// The instance IDs of the assets on which risks are detected based on the check item.
+	// The list of instance IDs of the assets affected by the check item.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The source of task.
+	// The source of the task. Valid values:
+	//
+	// - **YAO_CHI**: YaoChi console.
 	//
 	// example:
 	//

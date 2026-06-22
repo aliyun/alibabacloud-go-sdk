@@ -18,11 +18,11 @@ type iListAgentlessTaskResponseBody interface {
 }
 
 type ListAgentlessTaskResponseBody struct {
-	// The tasks.
+	// The task list.
 	List []*ListAgentlessTaskResponseBodyList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
 	// The pagination information.
 	PageInfo *ListAgentlessTaskResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -84,7 +84,7 @@ func (s *ListAgentlessTaskResponseBody) Validate() error {
 }
 
 type ListAgentlessTaskResponseBodyList struct {
-	// The end timestamp of the task. Unit: milliseconds.
+	// The end timestamp of the task, in milliseconds.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ type ListAgentlessTaskResponseBodyList struct {
 	//
 	// s-wz95vuqky0ada4******
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the asset.
+	// The name of the asset instance.
 	//
 	// example:
 	//
@@ -114,19 +114,19 @@ type ListAgentlessTaskResponseBodyList struct {
 	//
 	// 172.25.XX.XX
 	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	// The amount of data detected. Unit: MB.
+	// The amount of detected data, in MB.
 	//
 	// example:
 	//
 	// 154.11
 	MeasureSpace *int64 `json:"MeasureSpace,omitempty" xml:"MeasureSpace,omitempty"`
-	// The progress of the task.
+	// The task progress.
 	//
 	// example:
 	//
 	// 60
 	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// The execution progress of the check items.
+	// The execution progress of the check item.
 	//
 	// example:
 	//
@@ -138,65 +138,65 @@ type ListAgentlessTaskResponseBodyList struct {
 	//
 	// http://newsas-oss-bucket.oss-cn-hangzhou.aliyuncs.com/agent_less_single_report****
 	ReportDownloadUrl *string `json:"ReportDownloadUrl,omitempty" xml:"ReportDownloadUrl,omitempty"`
-	// The status of the report. Valid values:
+	// The report status. Valid values:
 	//
-	// 	- **PREPARED**: preparing
+	//  - **PREPARED**: Preparing.
 	//
-	// 	- **RUNNING**: running
+	//  - **RUNNING**: Running.
 	//
-	// 	- **SUCCESS**: succeeded
+	//  - **SUCCESS**: Succeeded.
 	//
-	// 	- **TIMEOUT**: timed out
+	//  - **TIMEOUT**: Timed out.
 	//
-	// 	- **FAILED**: failed
+	//  - **FAILED**: Failed.
 	//
 	// example:
 	//
 	// SUCCESS
 	ReportStatus *string `json:"ReportStatus,omitempty" xml:"ReportStatus,omitempty"`
-	// The result of the detection.
+	// The detection result.
 	//
 	// example:
 	//
 	// True
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	// The start timestamp of the task. Unit: milliseconds.
+	// The start timestamp of the task, in milliseconds.
 	//
 	// example:
 	//
 	// 1672741657897
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the detection task.
+	// The detection status. Valid values:
 	//
-	// 	- **1**: The detection task is in progress.
+	// - **1**: Detecting.
 	//
-	// 	- **2**: The detection task is complete.
+	// - **2**: Completed.
 	//
-	// 	- **3**: The detection task fails.
+	// - **3**: Failed.
 	//
-	// 	- **4**: The detection task times out.
+	// - **4**: Timed out.
 	//
 	// example:
 	//
 	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The name of the asset that is detected.
+	// The name of the scan target.
 	//
 	// example:
 	//
 	// hkdevt****
 	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
-	// The type of the asset that is detected. Valid values:
+	// The object type. Valid values:
 	//
-	// 	- **1**: snapshot
+	// - **1**: snapshot
 	//
-	// 	- **2**: image
+	// - **2**: image.
 	//
 	// example:
 	//
 	// 2
 	TargetType *int32 `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	// The ID of the task.
+	// The task ID.
 	//
 	// example:
 	//
@@ -208,7 +208,7 @@ type ListAgentlessTaskResponseBodyList struct {
 	//
 	// AGENTLESS_SCAN
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// The UUID of the asset.
+	// The UUID of the asset instance.
 	//
 	// example:
 	//
@@ -391,19 +391,19 @@ func (s *ListAgentlessTaskResponseBodyList) Validate() error {
 }
 
 type ListAgentlessTaskResponseBodyPageInfo struct {
-	// The page number of the returned page.
+	// The page number of the current page in a paged query. Paging starts from page 1.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries returned per page.
+	// The maximum number of entries per page in a paged query. Paging is performed based on this value.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//

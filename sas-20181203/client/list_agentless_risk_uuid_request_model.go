@@ -32,43 +32,43 @@ type iListAgentlessRiskUuidRequest interface {
 }
 
 type ListAgentlessRiskUuidRequest struct {
-	// The page number.
+	// The page number of the current page when using paging.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The instance ID of the asset.
+	// The ID of the asset instance.
 	//
 	// example:
 	//
 	// s-bp1g6wxdwps7s9dz****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The instance name of the asset.
+	// The name of the asset instance.
 	//
 	// example:
 	//
 	// ca_cpm_****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The public IP address of the asset that you want to query.
+	// The public IP address of the asset to query.
 	//
 	// example:
 	//
 	// 1.1.XX.XX
 	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
-	// The private IP address of the asset that you want to query.
+	// The private IP address of the asset to query.
 	//
 	// example:
 	//
 	// 172.26.XX.XX
 	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	// The name of the instance.
+	// The instance name.
 	//
 	// example:
 	//
 	// oracle-win-001****
 	MachineName *string `json:"MachineName,omitempty" xml:"MachineName,omitempty"`
-	// The number of entries per page.
+	// The maximum number of entries per page when using paging.
 	//
 	// example:
 	//
@@ -76,29 +76,29 @@ type ListAgentlessRiskUuidRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// Specifies whether risks exist. Valid values:
 	//
-	// 	- **true**: Risks exist.
+	// - **true**: Risks exist.
 	//
-	// 	- **false**: Risks do not exist.
+	// - **false**: Risks do not exist.
 	//
 	// example:
 	//
 	// true
 	Risk *bool `json:"Risk,omitempty" xml:"Risk,omitempty"`
-	// The name of the detection object.
+	// The name of the detection target.
 	//
 	// example:
 	//
 	// source-test-obj-0****
 	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
-	// Specifies the type of the object being inspected. Valid values:
+	// The object type of the detection target. Valid values:
 	//
-	// 	- **1**: Host Snapshot.
+	// - **1**: host snapshot
 	//
-	// 	- **2**: Host Image.
+	// - **2**: host image
 	//
-	// 	- **3**: User Snapshot.
+	// - **3**: user snapshot
 	//
-	// 	- **4**: User Image.
+	// - **4**: user custom image
 	//
 	// example:
 	//

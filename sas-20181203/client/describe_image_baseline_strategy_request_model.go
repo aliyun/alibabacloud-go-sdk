@@ -18,21 +18,21 @@ type iDescribeImageBaselineStrategyRequest interface {
 }
 
 type DescribeImageBaselineStrategyRequest struct {
-	// The language of the content within the request and response. Valid values:
+	// The language of the request and response. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The data source. Default value: default. Valid values:
+	// The data source. If this parameter is left empty, the image baseline policy is queried by default. Valid values:
 	//
-	// 	- **default**: queries the information about a baseline check policy for images.
+	// - **default**: image
 	//
-	// 	- **agentless**: queries the information about a baseline check policy for agentless detection.
+	// - **agentless**: agentless.
 	//
 	// example:
 	//

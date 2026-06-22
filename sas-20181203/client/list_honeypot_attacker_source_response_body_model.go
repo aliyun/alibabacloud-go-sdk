@@ -56,9 +56,9 @@ type ListHoneypotAttackerSourceResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -166,7 +166,7 @@ type ListHoneypotAttackerSourceResponseBodyList struct {
 	//
 	// example:
 	//
-	// vpc tcp honeypot
+	// vpc tcp 蜜罐
 	LastTargetHoneypot *string `json:"LastTargetHoneypot,omitempty" xml:"LastTargetHoneypot,omitempty"`
 	// The most recent IP address that was attacked.
 	//
@@ -182,11 +182,11 @@ type ListHoneypotAttackerSourceResponseBodyList struct {
 	LastTime *int64 `json:"LastTime,omitempty" xml:"LastTime,omitempty"`
 	// The risk level. Valid values:
 	//
-	// 	- **2**: low
+	// - **2**: low
 	//
-	// 	- **3**: medium
+	// - **3**: medium
 	//
-	// 	- **4**: high
+	// - **4**: high
 	//
 	// example:
 	//

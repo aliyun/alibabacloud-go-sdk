@@ -16,21 +16,21 @@ type iGetSwitchRegionDetailRequest interface {
 }
 
 type GetSwitchRegionDetailRequest struct {
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language type for the request and response messages. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The type of the migration operation. Valid values:
+	// The service switchover type. Valid values:
 	//
-	// 	- **sg_switch**: the migration of a server from a region in the Chinese mainland to the Singapore region.
+	// - **sg_switch**: The server connection is migrated from China to Singapore.
 	//
-	// 	- **sls_meta_version_switch_stage_1**: the upgrade of log dictionaries.
+	// - **sls_meta_version_switch_stage_1**: The log analysis delivery field upgrade switchover.
 	//
 	// example:
 	//

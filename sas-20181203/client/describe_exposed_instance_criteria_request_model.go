@@ -16,21 +16,21 @@ type iDescribeExposedInstanceCriteriaRequest interface {
 }
 
 type DescribeExposedInstanceCriteriaRequest struct {
-	// The ID of the member in the resource directory.
+	// The ID of the member account in the resource directory.
 	//
-	// >  You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to query the account ID.
+	// >Call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
 	//
 	// example:
 	//
-	// 1232428423234****
+	// 127608589417****
 	ResourceDirectoryAccountId *string `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
-	// The value of the search condition. Fuzzy match is supported.
+	// The value of the query condition. Fuzzy match is supported.
 	//
-	// >  You can specify the name, ID, public IP address, private IP address, component, port, or IP address of an exposed asset.
+	// > This parameter supports queries by asset name, asset ID, public IP address of the asset, private IP address of the asset, exposed component, exposed port, or exposed IP address.
 	//
 	// example:
 	//
-	// id
+	// testInstanceName
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

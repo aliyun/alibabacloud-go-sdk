@@ -26,39 +26,39 @@ type iFindContainerNetworkConnectShrinkRequest interface {
 }
 
 type FindContainerNetworkConnectShrinkRequest struct {
-	// The type of the information that you want to query. Valid values:
+	// The query type of the element to query. Valid values:
 	//
-	// 	- **EDGE**: connection information
+	// - **EDGE**: connection information.
 	//
 	// example:
 	//
 	// EDGE
 	CriteriaType *string `json:"CriteriaType,omitempty" xml:"CriteriaType,omitempty"`
-	// The number of the page to return. Default value: **1**.
+	// The page number of the page to return. Default value: **1**, which indicates that the first page is returned.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The information about the destination node.
+	// The destination node information, which is used to filter destination nodes.
 	DstNodeShrink *string `json:"DstNode,omitempty" xml:"DstNode,omitempty"`
-	// The end time of the network connection.
+	// The end time of the network connectivity.
 	//
 	// example:
 	//
 	// 1649260799999
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The number of entries to return on each page. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+	// The maximum number of entries per page in a paged query. Default value: 20. If the PageSize parameter is left empty, 20 entries are returned by default.
 	//
-	// > We recommend that you do not leave this parameter empty.
+	// > Do not leave PageSize empty.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The information about the source node.
+	// The source node information, which is used to filter source nodes.
 	SrcNodeShrink *string `json:"SrcNode,omitempty" xml:"SrcNode,omitempty"`
-	// The start time of the network connection.
+	// The start time of the network connectivity.
 	//
 	// example:
 	//

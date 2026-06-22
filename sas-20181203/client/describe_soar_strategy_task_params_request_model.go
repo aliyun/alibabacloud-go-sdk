@@ -14,9 +14,9 @@ type iDescribeSoarStrategyTaskParamsRequest interface {
 }
 
 type DescribeSoarStrategyTaskParamsRequest struct {
-	// Strategy task ID.
+	// The ID of the policy task.
 	//
-	// > You can obtain this parameter by calling the [DescribeSoarStrategyTasks](~~DescribeSoarStrategyTasks~~) interface.
+	// >Call the [DescribeSoarStrategyTasks](~~DescribeSoarStrategyTasks~~) operation to obtain this parameter.
 	//
 	// example:
 	//

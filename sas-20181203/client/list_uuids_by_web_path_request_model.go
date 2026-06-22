@@ -20,7 +20,7 @@ type iListUuidsByWebPathRequest interface {
 }
 
 type ListUuidsByWebPathRequest struct {
-	// The number of the page to return.
+	// The page number of the current page to display in a paging query.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type ListUuidsByWebPathRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries to return on each page.
+	// The maximum number of entries to display on each page in a paging query.
 	//
 	// This parameter is required.
 	//
@@ -36,17 +36,17 @@ type ListUuidsByWebPathRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The path type of the web directory. Valid values:
+	// The type of the web path. Valid values:
 	//
-	// 	- **def**: automatically identified
+	// - **def**: automatically identified by the system
 	//
-	// 	- **customize**: manually added
+	// - **customize**: manually added.
 	//
 	// example:
 	//
 	// def
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The path to the web directory.
+	// The web path.
 	//
 	// example:
 	//

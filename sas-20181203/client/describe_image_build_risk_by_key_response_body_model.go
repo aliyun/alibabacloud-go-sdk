@@ -22,7 +22,7 @@ type iDescribeImageBuildRiskByKeyResponseBody interface {
 }
 
 type DescribeImageBuildRiskByKeyResponseBody struct {
-	// The response code.
+	// The status code of the API call.
 	//
 	// example:
 	//
@@ -30,23 +30,23 @@ type DescribeImageBuildRiskByKeyResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data *DescribeImageBuildRiskByKeyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned message.
+	// The detailed information about the error code.
 	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 52870893-48A7-5A9E-9E05-6253E5B6****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The call was successful.
 	//
-	// 	- **false**
+	// - **false**: The call failed.
 	//
 	// example:
 	//
@@ -117,9 +117,9 @@ func (s *DescribeImageBuildRiskByKeyResponseBody) Validate() error {
 }
 
 type DescribeImageBuildRiskByKeyResponseBodyData struct {
-	// The risks.
+	// The list of build risks.
 	List []*DescribeImageBuildRiskByKeyResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	// The pagination information.
+	// The paging query parameters.
 	PageInfo *DescribeImageBuildRiskByKeyResponseBodyDataPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
 }
 
@@ -168,55 +168,55 @@ func (s *DescribeImageBuildRiskByKeyResponseBodyData) Validate() error {
 }
 
 type DescribeImageBuildRiskByKeyResponseBodyDataList struct {
-	// The suggestion on how to handle the risk.
+	// The remediation suggestion.
 	//
 	// example:
 	//
 	// do not use root user
 	Advice *string `json:"Advice,omitempty" xml:"Advice,omitempty"`
-	// The description of the suggestion on how to handle the risk.
+	// The description of the build risk remediation suggestion.
 	//
 	// example:
 	//
 	// the root user has excessive permissions
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The image build command.
+	// The build command of the image layer.
 	//
 	// example:
 	//
 	// user root
 	LayerCmd *string `json:"LayerCmd,omitempty" xml:"LayerCmd,omitempty"`
-	// The digest of the image.
+	// The digest of the image layer.
 	//
 	// example:
 	//
 	// 6ec898e6274f942e0e4a053eff1c3119026a6704e56cff206b2cec71f636****
 	LayerDigest *string `json:"LayerDigest,omitempty" xml:"LayerDigest,omitempty"`
-	// The prompt message on the risk.
+	// The risk prompt.
 	//
 	// example:
 	//
 	// the root user has excessive permissions
 	Promt *string `json:"Promt,omitempty" xml:"Promt,omitempty"`
-	// The type key of the risk rule.
+	// The category key of the build risk rule.
 	//
 	// example:
 	//
 	// other
 	RiskClass *string `json:"RiskClass,omitempty" xml:"RiskClass,omitempty"`
-	// The type name of the risk rule.
+	// The category name of the build risk rule.
 	//
 	// example:
 	//
 	// other
 	RiskClassName *string `json:"RiskClassName,omitempty" xml:"RiskClassName,omitempty"`
-	// The key of the risk rule.
+	// The key of the build risk rule.
 	//
 	// example:
 	//
 	// no_user
 	RiskKey *string `json:"RiskKey,omitempty" xml:"RiskKey,omitempty"`
-	// The name of the risk rule.
+	// The name of the build risk rule.
 	//
 	// example:
 	//
@@ -224,11 +224,11 @@ type DescribeImageBuildRiskByKeyResponseBodyDataList struct {
 	RiskKeyName *string `json:"RiskKeyName,omitempty" xml:"RiskKeyName,omitempty"`
 	// The risk level. Valid values:
 	//
-	// 	- **high**
+	// - **high**: high.
 	//
-	// 	- **medium**
+	// - **medium**: medium.
 	//
-	// 	- **low**
+	// - **low**: low.
 	//
 	// example:
 	//
@@ -339,15 +339,15 @@ func (s *DescribeImageBuildRiskByKeyResponseBodyDataList) Validate() error {
 }
 
 type DescribeImageBuildRiskByKeyResponseBodyDataPageInfo struct {
-	// The page number. Default value: **1**.
+	// The page number of the current page in a paged query. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries per page. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+	// The maximum number of entries per page in a paging query. Default value: 20. If you leave this parameter empty, 20 entries are returned per page.
 	//
-	// >  We recommend that you do not leave this parameter empty.
+	// > Do not leave PageSize empty.
 	//
 	// example:
 	//

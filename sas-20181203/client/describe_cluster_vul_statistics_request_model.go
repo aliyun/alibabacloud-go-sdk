@@ -22,13 +22,13 @@ type DescribeClusterVulStatisticsRequest struct {
 	//
 	// c471f0f61b9c04f8380556e922cf1****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The type of the vulnerabilities. Valid values:
+	// The type of vulnerability that you want to query. Valid values:
 	//
-	// 	- **cve**: Linux software vulnerabilities
+	// - **cve**: Linux software vulnerabilities
 	//
-	// 	- **app**: application vulnerabilities
+	// - **app**: application vulnerabilities
 	//
-	// 	- **sca**: vulnerabilities that are detected based on software component analysis
+	// - **sca**: software composition analysis (SCA) vulnerabilities
 	//
 	// example:
 	//

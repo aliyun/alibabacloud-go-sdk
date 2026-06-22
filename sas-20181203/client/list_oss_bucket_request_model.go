@@ -16,17 +16,17 @@ type iListOssBucketRequest interface {
 }
 
 type ListOssBucketRequest struct {
-	// The name of the bucket.
+	// The bucket name.
 	//
 	// example:
 	//
 	// iboxpublic****
 	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
-	// The language of the content in the request and response. Default value: **zh**. Valid values:
+	// The language type for requests and responses. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese.
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English.
+	// - **en**: English.
 	//
 	// example:
 	//

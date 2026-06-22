@@ -18,23 +18,23 @@ type iDescribeDomainSecureAlarmListRequest interface {
 }
 
 type DescribeDomainSecureAlarmListRequest struct {
-	// The identifier of the request source. Set the value to sas.
+	// The identifier of the request source. Set this parameter to sas.
 	//
 	// example:
 	//
 	// sas
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
-	// The language of the content within the request and response. Valid values:
+	// The language type of the request and response messages. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The source IP address.
+	// The IP address of the access source.
 	//
 	// example:
 	//

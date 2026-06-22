@@ -28,63 +28,77 @@ type iCreateFileDetectRequest interface {
 }
 
 type CreateFileDetectRequest struct {
-	// Whether to decompress or not. Valid values:
+	// Specifies whether to decompress the archive for detection. Valid values:
 	//
-	// - true: To decompress.
+	// - **true**: Yes.
 	//
-	// - false: Not to decompress.
+	// - **false**: No.
+	//
+	// > This parameter is not supported when `Type` is set to `6`.
 	//
 	// example:
 	//
 	// false
 	Decompress *bool `json:"Decompress,omitempty" xml:"Decompress,omitempty"`
-	// The maximum number of files for decompression. The minimum value is 1, and the maximum value is 1000. If the decompression level exceeds the maximum, the decompression operation will be terminated, but the detection of decompressed files will not be affected.
+	// The maximum number of files that can be decompressed from an archive. The maximum value is 1000.
+	//
+	// This parameter is required if you set `Decompress` to `true`.
+	//
+	// > This parameter is not supported when `Type` is set to `6`.
 	//
 	// example:
 	//
 	// 100
 	DecompressMaxFileCount *int32 `json:"DecompressMaxFileCount,omitempty" xml:"DecompressMaxFileCount,omitempty"`
-	// The maximum level of decompression when dealing with nested compressed files with multiple levels. The minimum value is 1, and the maximum value is 5. If the decompression level exceeds the maximum, the decompression operation will be terminated, but the detection of decompressed files will not be affected.
+	// The maximum number of decompression layers for nested archives. The maximum value is 5.
+	//
+	// This parameter is required if you set `Decompress` to `true`.
+	//
+	// > This parameter is not supported when `Type` is set to `6`.
 	//
 	// example:
 	//
 	// 1
 	DecompressMaxLayer *int32 `json:"DecompressMaxLayer,omitempty" xml:"DecompressMaxLayer,omitempty"`
-	// The URL that is used to download the file. You can specify this parameter to trigger file detection without the need to upload the file in advance.
+	// The download link for the file. You can provide a public URL to trigger file detection without uploading the file.
+	//
+	// > Skill archives can be submitted only by providing a download link. Therefore, this parameter is required when `Type` is set to `6`.
 	//
 	// example:
 	//
 	// https://xxxxxxxx.oss-cn-hangzhou-1.aliyuncs.com/xxxxx/xxxxxxxxxxxxxx?Expires=1671448125&OSSAccessKeyId=xxx
 	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
-	// The identifier of the file. Only MD5 hash values are supported.
+	// The unique identifier of the file.
+	//
+	// This parameter is required if `Type` is `0`. Its value must be the MD5 or SHA-256 hash of the file.
+	//
+	// If you set `Type` to `6`, you do not need to specify this parameter. The operation returns the file\\"s unique identifier in the response.
 	//
 	// example:
 	//
 	// 0a212417e65c26ff133cfff28f6c****
 	HashKey *string `json:"HashKey,omitempty" xml:"HashKey,omitempty"`
-	// The key of the file that is stored in the Object Storage Service (OSS) bucket. You can call the [CreateFileDetectUploadUrl](~~CreateFileDetectUploadUrl~~) operation to query the keys of files.
+	// The storage key of the file in an Object Storage Service (OSS) bucket.
+	//
+	// If you submit the file by using the `DownloadUrl` parameter, you can leave this parameter empty. To obtain the value of this parameter, call the [CreateFileDetectUploadUrl](~~CreateFileDetectUploadUrl~~) operation.
+	//
+	// > This parameter is not supported when `Type` is set to `6`.
 	//
 	// example:
 	//
 	// 1/2022/06/23/15/41/16559701077444693a0c6-33b2-4cc2-a99f-9f38b8b8****
 	OssKey *string `json:"OssKey,omitempty" xml:"OssKey,omitempty"`
-	// The source IP address of the request.
+	// The IP address of the source.
 	//
 	// example:
 	//
 	// 115.213.XX.XX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The type of the file. Valid values:
+	// The type of the file to detect. Valid values:
 	//
-	// 	- **0**: unknown files
+	// - **0**: Malicious file detection
 	//
-	// 	- **1**: binary files
-	//
-	// 	- **2**: webshell files
-	//
-	// 	- **4**: script files
-	//
-	// >  If you do not know the type of the file, set this parameter to 0.
+	// - **6**: Skill archive detection
 	//
 	// This parameter is required.
 	//

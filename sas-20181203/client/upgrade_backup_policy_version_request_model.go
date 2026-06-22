@@ -14,9 +14,9 @@ type iUpgradeBackupPolicyVersionRequest interface {
 }
 
 type UpgradeBackupPolicyVersionRequest struct {
-	// The ID of the anti-ransomware policy.
+	// The ID of the anti-ransomware protection policy.
 	//
-	// > You can call the [DescribeBackupPolicies](~~DescribeBackupPolicies~~) operation to query the IDs of anti-ransomware policies.
+	// >You can call the [DescribeBackupPolicies](~~DescribeBackupPolicies~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//

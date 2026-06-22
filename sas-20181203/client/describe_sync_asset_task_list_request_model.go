@@ -22,33 +22,33 @@ type iDescribeSyncAssetTaskListRequest interface {
 }
 
 type DescribeSyncAssetTaskListRequest struct {
-	// The page number. Default value: 1. Pages start from page 1.
+	// The page number of the page to return. Default value: 1, which indicates that the first page is returned.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The timestamp when the IDC scan task ends. Unit: milliseconds.
+	// The end timestamp of the IDC scan task to query. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1662430077000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The number of entries per page. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+	// The maximum number of entries per page in a paged query. Default value: 20. If the PageSize parameter is left empty, 20 entries are returned by default.
 	//
-	// >  We recommend that you do not leave this parameter empty.
+	// > Do not leave PageSize empty.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The timestamp when the IDC scan task starts. Unit: milliseconds.
+	// The start timestamp of the IDC scan task to query. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1652063828796
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The name of the IDC scan task.
+	// The task name.
 	//
 	// example:
 	//

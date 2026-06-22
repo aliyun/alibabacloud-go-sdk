@@ -16,13 +16,13 @@ type iModifyWebLockCreateConfigResponseBody interface {
 }
 
 type ModifyWebLockCreateConfigResponseBody struct {
-	// The configuration ID of the protected directory.
+	// The ID of the protected directory configuration.
 	//
 	// example:
 	//
 	// 1404656
 	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The request ID. Alibaba Cloud generates a unique identifier for each request. You can use the request ID to troubleshoot issues.
 	//
 	// example:
 	//

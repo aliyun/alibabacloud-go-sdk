@@ -30,7 +30,7 @@ type DeleteImageEventOperationResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data *DeleteImageEventOperationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned message.
+	// The response message.
 	//
 	// example:
 	//
@@ -42,11 +42,11 @@ type DeleteImageEventOperationResponseBody struct {
 	//
 	// A3D7C47D-3F11-57BB-90E8-E5C20C61****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Successful.
 	//
-	// 	- **false**
+	// - **false**: Failed.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *DeleteImageEventOperationResponseBody) Validate() error {
 }
 
 type DeleteImageEventOperationResponseBodyData struct {
-	// The primary key of the alert handling rule.
+	// The primary key of the alert disposal rule.
 	//
 	// example:
 	//

@@ -18,43 +18,43 @@ type iModifyPushAllTaskRequest interface {
 }
 
 type ModifyPushAllTaskRequest struct {
-	// The source IP address of the request.
+	// The IP address of the access source.
 	//
 	// example:
 	//
 	// 1.2.XX.XX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The check items. Separate multiple check items with commas (,). Valid values:
+	// The check items to include in the security check. Separate multiple check items with commas (,). Valid values:
 	//
-	// 	- **OVAL_ENTITY**: Common Vulnerabilities and Exposures (CVE) vulnerabilities.
+	// - **OVAL_ENTITY**: CVE vulnerabilities
 	//
-	// 	- **CMS**: Web-CMS vulnerabilities.
+	// - **CMS**: Web-CMS vulnerabilities
 	//
-	// 	- **SYSVUL**: Windows system vulnerabilities.
+	// - **SYSVUL**: system vulnerabilities
 	//
-	// 	- **SCA**: application vulnerabilities.
+	// - **SCA**: application vulnerabilities
 	//
-	// 	- **HEALTH_CHECK**: baselines.
+	// - **HEALTH_CHECK**: baselines
 	//
-	// 	- **WEBSHELL**: webshells.
+	// - **WEBSHELL**: web shells
 	//
-	// 	- **PROC_SNAPSHOT**: processes.
+	// - **PROC_SNAPSHOT**: processes
 	//
-	// 	- **PORT_SNAPSHOT**: ports.
+	// - **PORT_SNAPSHOT**: ports
 	//
-	// 	- **ACCOUNT_SNAPSHOT**: accounts.
+	// - **ACCOUNT_SNAPSHOT**: accounts
 	//
-	// 	- **SOFTWARE_SNAPSHOT**: software assets.
+	// - **SOFTWARE_SNAPSHOT**: software
 	//
-	// 	- **SCA_SNAPSHOT**: middleware, databases, and web services.
+	// - **SCA_SNAPSHOT**: middleware, databases, and web services
 	//
-	// 	- **CROND_SNAPSHOT**: scheduled tasks.
+	// - **CROND_SNAPSHOT**: scheduled tasks
 	//
-	// 	- **AUTORUN_SNAPSHOT**: startup items.
+	// - **AUTORUN_SNAPSHOT**: startup items
 	//
-	// 	- **LKM_SNAPSHOT**: kernel modules.
+	// - **LKM_SNAPSHOT**: kernel modules
 	//
-	// 	- **SCA_PROXY_SNAPSHOT**: websites.
+	// - **SCA_PROXY_SNAPSHOT**: websites.
 	//
 	// This parameter is required.
 	//
@@ -62,7 +62,7 @@ type ModifyPushAllTaskRequest struct {
 	//
 	// HEALTH_CHECK,OVAL_ENTITY
 	Tasks *string `json:"Tasks,omitempty" xml:"Tasks,omitempty"`
-	// The UUIDs of servers on which you want to perform security check tasks. Separate multiple UUIDs with commas (,).
+	// The UUIDs of the servers on which you want to perform security checks. Separate multiple UUIDs with commas (,).
 	//
 	// This parameter is required.
 	//

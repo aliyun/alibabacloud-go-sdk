@@ -16,15 +16,15 @@ type iGetAttackPathSensitiveAssetConfigRequest interface {
 }
 
 type GetAttackPathSensitiveAssetConfigRequest struct {
-	// ID of the created attack path sensitive asset setting.
+	// The ID of the attack path sensitive asset configuration.
 	//
 	// example:
 	//
 	// apsac-123
 	AttackPathSensitiveAssetConfigId *string `json:"AttackPathSensitiveAssetConfigId,omitempty" xml:"AttackPathSensitiveAssetConfigId,omitempty"`
-	// Configuration type. Possible values:
+	// The configuration type. Valid values:
 	//
-	// - asset_instance: Asset.
+	// - asset_instance: asset.
 	//
 	// This parameter is required.
 	//

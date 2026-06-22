@@ -14,17 +14,17 @@ type iDescribePropertyUsageTopRequest interface {
 }
 
 type DescribePropertyUsageTopRequest struct {
-	// The type of the asset fingerprint. Valid value:
+	// The Asset Fingerprints type. Valid values:
 	//
-	// 	- **port**: port
+	// - **port**: port
 	//
-	// 	- **process**: process
+	// - **process**: process
 	//
-	// 	- **software**: software
+	// - **software**: software
 	//
-	// 	- **user**: account
+	// - **user**: account
 	//
-	// 	- **sca**: middleware
+	// - **sca**: middleware.
 	//
 	// This parameter is required.
 	//

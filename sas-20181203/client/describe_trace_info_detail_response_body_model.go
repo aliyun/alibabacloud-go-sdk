@@ -24,17 +24,17 @@ type DescribeTraceInfoDetailResponseBody struct {
 	//
 	// 24A20733-10A0-4AF6-BE6B-XXXXXXXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// 	- **true**: The request was successful.
+	// - **true**: The call was successful.
 	//
-	// 	- **false**: The request failed.
+	// - **false**: The call failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The details of the tracing diagram.
+	// The details of the trace graph.
 	TraceInfoDetail *DescribeTraceInfoDetailResponseBodyTraceInfoDetail `json:"TraceInfoDetail,omitempty" xml:"TraceInfoDetail,omitempty" type:"Struct"`
 }
 
@@ -83,13 +83,13 @@ func (s *DescribeTraceInfoDetailResponseBody) Validate() error {
 }
 
 type DescribeTraceInfoDetailResponseBodyTraceInfoDetail struct {
-	// An array that consists of the edges of the tracing diagram.
+	// The edge information in the trace graph.
 	EdgeList []*DescribeTraceInfoDetailResponseBodyTraceInfoDetailEdgeList `json:"EdgeList,omitempty" xml:"EdgeList,omitempty" type:"Repeated"`
-	// An array that consists of the metadata configurations of the vertex type.
+	// The metadata configuration of vertex types.
 	EntityTypeList []*DescribeTraceInfoDetailResponseBodyTraceInfoDetailEntityTypeList `json:"EntityTypeList,omitempty" xml:"EntityTypeList,omitempty" type:"Repeated"`
-	// An array that consists of the metadata configurations of the edge type.
+	// The metadata configuration of edge types.
 	RelationTypeList []*DescribeTraceInfoDetailResponseBodyTraceInfoDetailRelationTypeList `json:"RelationTypeList,omitempty" xml:"RelationTypeList,omitempty" type:"Repeated"`
-	// An array that consists of all vertexes of the tracing diagram.
+	// The information about all vertices in the trace graph.
 	VertexList []*DescribeTraceInfoDetailResponseBodyTraceInfoDetailVertexList `json:"VertexList,omitempty" xml:"VertexList,omitempty" type:"Repeated"`
 }
 
@@ -178,19 +178,19 @@ func (s *DescribeTraceInfoDetailResponseBodyTraceInfoDetail) Validate() error {
 }
 
 type DescribeTraceInfoDetailResponseBodyTraceInfoDetailEdgeList struct {
-	// The number of times.
+	// The number of occurrences.
 	//
 	// example:
 	//
 	// 1
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The ending vertex ID of the edge of the tracing diagram.
+	// The end vertex ID of the edge in the trace graph.
 	//
 	// example:
 	//
 	// a1d1fa39e5345dcef3f9712172cxxxxx
 	EndId *string `json:"EndId,omitempty" xml:"EndId,omitempty"`
-	// The starting vertex ID of the edge of the tracing diagram.
+	// The start vertex ID of the edge in the trace graph.
 	//
 	// example:
 	//
@@ -202,7 +202,7 @@ type DescribeTraceInfoDetailResponseBodyTraceInfoDetailEdgeList struct {
 	//
 	// 2022-12-21 10:24:42
 	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
-	// The type of the edge of the tracing diagram.
+	// The type of the edge in the trace graph.
 	//
 	// example:
 	//
@@ -268,7 +268,7 @@ func (s *DescribeTraceInfoDetailResponseBodyTraceInfoDetailEdgeList) Validate() 
 }
 
 type DescribeTraceInfoDetailResponseBodyTraceInfoDetailEntityTypeList struct {
-	// This parameter is deprecated.
+	// Deprecated.
 	//
 	// example:
 	//
@@ -286,31 +286,31 @@ type DescribeTraceInfoDetailResponseBodyTraceInfoDetailEntityTypeList struct {
 	//
 	// https://img.alicdn.com/tfs/TB176P5OgDqK1RjSZSyXXaxEVXa-49-48.png
 	DisplayIcon *string `json:"DisplayIcon,omitempty" xml:"DisplayIcon,omitempty"`
-	// This parameter is deprecated.
+	// Deprecated.
 	//
 	// example:
 	//
 	// [{"name":"${logtime}","value":"$!{time}"}]
 	DisplayTemplate *string `json:"DisplayTemplate,omitempty" xml:"DisplayTemplate,omitempty"`
-	// The timestamp when the vertex was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2022-10-09T11:47Z
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The time when the vertex was last modified.
+	// The last modification time.
 	//
 	// example:
 	//
 	// 2022-10-09T11:47Z
 	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The ID of the vertex type.
+	// The ID of the vertex type record.
 	//
 	// example:
 	//
 	// Alert
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// This parameter is deprecated.
+	// Deprecated.
 	//
 	// example:
 	//
@@ -328,7 +328,7 @@ type DescribeTraceInfoDetailResponseBodyTraceInfoDetailEntityTypeList struct {
 	//
 	// *
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// This parameter is deprecated.
+	// Deprecated.
 	//
 	// example:
 	//
@@ -448,11 +448,11 @@ func (s *DescribeTraceInfoDetailResponseBodyTraceInfoDetailEntityTypeList) Valid
 }
 
 type DescribeTraceInfoDetailResponseBodyTraceInfoDetailRelationTypeList struct {
-	// Indicates whether the edge is a directional edge. Valid values:
+	// Indicates whether the edge is directed. Valid values:
 	//
-	// 	- **1**: yes
+	// - **1**: yes
 	//
-	// 	- **0**: no
+	// - **0**: no.
 	//
 	// example:
 	//
@@ -476,7 +476,7 @@ type DescribeTraceInfoDetailResponseBodyTraceInfoDetailRelationTypeList struct {
 	//
 	// netflow_to_process
 	RelationTypeId *string `json:"RelationTypeId,omitempty" xml:"RelationTypeId,omitempty"`
-	// This parameter is deprecated.
+	// Deprecated.
 	//
 	// example:
 	//
@@ -542,13 +542,13 @@ func (s *DescribeTraceInfoDetailResponseBodyTraceInfoDetailRelationTypeList) Val
 }
 
 type DescribeTraceInfoDetailResponseBodyTraceInfoDetailVertexList struct {
-	// The number of times.
+	// The number of occurrences.
 	//
 	// example:
 	//
 	// 1
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The ID of the vertex.
+	// The vertex ID.
 	//
 	// example:
 	//
@@ -560,7 +560,7 @@ type DescribeTraceInfoDetailResponseBodyTraceInfoDetailVertexList struct {
 	//
 	// /usr/local/tomcat
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// An array that consists of the neighbor nodes.
+	// The information about neighbor nodes.
 	NeighborList []*DescribeTraceInfoDetailResponseBodyTraceInfoDetailVertexListNeighborList `json:"NeighborList,omitempty" xml:"NeighborList,omitempty" type:"Repeated"`
 	// The point in time.
 	//
@@ -658,7 +658,7 @@ type DescribeTraceInfoDetailResponseBodyTraceInfoDetailVertexListNeighborList st
 	//
 	// 1
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// Indicates whether one more page is returned.
+	// Indicates whether there is a next page.
 	//
 	// example:
 	//

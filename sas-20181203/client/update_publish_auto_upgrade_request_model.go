@@ -16,9 +16,9 @@ type iUpdatePublishAutoUpgradeRequest interface {
 type UpdatePublishAutoUpgradeRequest struct {
 	// Specifies whether to enable automatic upgrade. Valid values:
 	//
-	// 	- **1**: yes
+	// - **1**: enabled
 	//
-	// 	- **0**: no
+	// - **0**: disabled.
 	//
 	// example:
 	//

@@ -20,29 +20,29 @@ type iDescribeUniRecoverableListRequest interface {
 }
 
 type DescribeUniRecoverableListRequest struct {
-	// The number of the page to return. Default value: **1**.
+	// The page number of the page to return. Default value: **1**, which indicates the first page.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The name of the database.
+	// The database name.
 	//
 	// example:
 	//
 	// msdb
 	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	// The number of entries to return on each page. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+	// The maximum number of entries per page when using paging. Default value: 20. If you leave this parameter empty, 20 entries are returned per page by default.
 	//
-	// > We recommend that you do not leave this parameter empty.
+	// > Do not leave PageSize empty.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the anti-ransomware policy.
+	// The ID of the anti-ransomware backup policy for the database.
 	//
-	// > You can call the [DescribeUniBackupPolicies](~~DescribeUniBackupPolicies~~) operation to query the IDs of anti-ransomware policies.
+	// >You can call the [DescribeUniBackupPolicies](~~DescribeUniBackupPolicies~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//

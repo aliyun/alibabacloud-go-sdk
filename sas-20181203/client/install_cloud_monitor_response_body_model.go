@@ -22,35 +22,35 @@ type iInstallCloudMonitorResponseBody interface {
 }
 
 type InstallCloudMonitorResponseBody struct {
-	// The error code returned if the request fails.
+	// The error code returned when the operation failed.
 	//
 	// example:
 	//
 	// IllegalParam
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 400
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The error message returned.
+	// The detailed information about the error code.
 	//
 	// example:
 	//
 	// There was an error with your request.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The request ID. Alibaba Cloud generates a unique ID for each request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// F92AFB96-FACC-57E7-928E-678D04B94CAE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// 	- **true**: The request was successful.
+	// - **true**: The operation was successful.
 	//
-	// 	- **false**: The request failed.
+	// - **false**: The operation failed.
 	//
 	// example:
 	//

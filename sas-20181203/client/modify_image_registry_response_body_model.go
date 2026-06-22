@@ -26,17 +26,17 @@ type iModifyImageRegistryResponseBody interface {
 }
 
 type ModifyImageRegistryResponseBody struct {
-	// The HTTP status code.
+	// The status code returned.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// N/A
+	// The data returned. This parameter is not used.
 	//
 	// example:
 	//
-	// N/A
+	// 无
 	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The HTTP status code.
 	//
@@ -44,7 +44,7 @@ type ModifyImageRegistryResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The returned message.
+	// The message returned.
 	//
 	// example:
 	//
@@ -58,15 +58,15 @@ type ModifyImageRegistryResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The execution duration.
+	// The time consumed to call the API.
 	//
 	// example:
 	//

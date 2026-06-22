@@ -14,7 +14,7 @@ type iDeleteImageEventOperationRequest interface {
 }
 
 type DeleteImageEventOperationRequest struct {
-	// The primary key of the alert handling rule.
+	// The primary key of the alert disposal rule.
 	//
 	// example:
 	//

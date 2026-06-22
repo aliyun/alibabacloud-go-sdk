@@ -36,25 +36,25 @@ type iUpdateHoneypotProbeBindRequest interface {
 }
 
 type UpdateHoneypotProbeBindRequest struct {
-	// The unique ID of the honeypot to which the probe is bound.
+	// The unique ID of the bound service.
 	//
 	// example:
 	//
 	// f52e8624-e43c-473c-8312-e0fed384****
 	BindId *string `json:"BindId,omitempty" xml:"BindId,omitempty"`
-	// The ports that are bound to the probe.
+	// The list of bound ports.
 	BindPortList []*UpdateHoneypotProbeBindRequestBindPortList `json:"BindPortList,omitempty" xml:"BindPortList,omitempty" type:"Repeated"`
-	// The operation that the probe performs. Valid values:
+	// The service binding type. Valid values:
 	//
-	// 	- **forward_honey**: forward traffic to a honeypot
+	// - **forward_honey**: forward to honeypot
 	//
-	// 	- **scan_port**: monitor and scan
+	// - **scan_port**: listen for scans.
 	//
 	// example:
 	//
 	// forward_honey
 	BindType *string `json:"BindType,omitempty" xml:"BindType,omitempty"`
-	// The page number. Pages start from page **1**. Default value: **1**.
+	// The page number of the page to return. Minimum value: **1**. Default value: **1**.
 	//
 	// example:
 	//
@@ -62,37 +62,37 @@ type UpdateHoneypotProbeBindRequest struct {
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The honeypot ID.
 	//
-	// >  You can call the [ListHoneypot](~~ListHoneypot~~) operation to obtain the IDs of honeypots.
+	// > You can call the [ListHoneypot](~~ListHoneypot~~) operation to obtain this value.
 	//
 	// example:
 	//
 	// dba7d44775be8e0e5888ee3b1a62554a93d2512247cabc38ddeac17a3b3f****
 	HoneypotId *string `json:"HoneypotId,omitempty" xml:"HoneypotId,omitempty"`
-	// The port ID of the probe service.
+	// The probe service port ID.
 	//
 	// example:
 	//
 	// 1906
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The language of the content within the request and response. Valid values:
+	// The language of the request and response. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of entries per page. Default value: 20. If you leave this parameter empty, 20 entries are returned per page.
+	// The maximum number of entries to return on each page when using paged query. Default value: 20. If you leave this parameter empty, 20 entries are returned per page by paging.
 	//
-	// >  We recommend that you do not leave this parameter empty.
+	// > Do not leave PageSize empty.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ports that are monitored.
+	// The listening port range.
 	//
 	// example:
 	//
@@ -100,15 +100,15 @@ type UpdateHoneypotProbeBindRequest struct {
 	Ports *string `json:"Ports,omitempty" xml:"Ports,omitempty"`
 	// The probe ID.
 	//
-	// >  You can call the [ListHoneypotProbe](~~ListHoneypotProbe~~) operation to query the IDs of probes.
+	// >You can call the [ListHoneypotProbe](~~ListHoneypotProbe~~) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// 36bad711-d1ac-4419-ac68-c1aa280f****
 	ProbeId *string `json:"ProbeId,omitempty" xml:"ProbeId,omitempty"`
-	// The IP addresses that are monitored.
+	// The list of listening IP addresses.
 	ServiceIpList []*string `json:"ServiceIpList,omitempty" xml:"ServiceIpList,omitempty" type:"Repeated"`
-	// The status of the port.
+	// The listening port status setting.
 	//
 	// example:
 	//
@@ -246,17 +246,17 @@ func (s *UpdateHoneypotProbeBindRequest) Validate() error {
 }
 
 type UpdateHoneypotProbeBindRequestBindPortList struct {
-	// Specifies whether to bind a port. Valid values:
+	// Specifies whether to bind the port. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Yes.
 	//
-	// 	- **false**
+	// - **false**: No.
 	//
 	// example:
 	//
 	// false
 	BindPort *bool `json:"BindPort,omitempty" xml:"BindPort,omitempty"`
-	// The end port on which the probe monitors.
+	// The end port that the probe listens on.
 	//
 	// example:
 	//
@@ -264,31 +264,31 @@ type UpdateHoneypotProbeBindRequestBindPortList struct {
 	EndPort *int32 `json:"EndPort,omitempty" xml:"EndPort,omitempty"`
 	// Specifies whether the port is fixed. Valid values:
 	//
-	// 	- **0**: no
+	// - **0**: No.
 	//
-	// 	- **1**: yes
+	// - **1**: Yes.
 	//
 	// example:
 	//
 	// 0
 	Fixed *bool `json:"Fixed,omitempty" xml:"Fixed,omitempty"`
-	// The UUID of the port.
+	// The unique identifier of the bound port.
 	//
 	// example:
 	//
 	// 3183
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The type of the protocol. Valid values:
+	// The protocol type. Valid values:
 	//
-	// 	- **tcp**
+	// - **tcp**
 	//
-	// 	- **udp**
+	// - **udp**.
 	//
 	// example:
 	//
 	// tcp
 	Proto *string `json:"Proto,omitempty" xml:"Proto,omitempty"`
-	// The start port on which the probe monitors.
+	// The start port that the probe listens on.
 	//
 	// example:
 	//

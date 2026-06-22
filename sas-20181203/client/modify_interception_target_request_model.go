@@ -26,21 +26,21 @@ type iModifyInterceptionTargetRequest interface {
 }
 
 type ModifyInterceptionTargetRequest struct {
-	// The name of the application.
+	// The application name.
 	//
-	// > You can call the [DescribeContainerTags](~~DescribeContainerTags~~) operation to obtain the value of this parameter.
+	// >You can call the [DescribeContainerTags](~~DescribeContainerTags~~) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// yasintt-daemonst
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// An array that consists of images.
+	// The list of images.
 	//
-	// > You can call the [DescribeContainerTags](~~DescribeContainerTags~~) operation to obtain the value of this parameter.
+	// >You can call the [DescribeContainerTags](~~DescribeContainerTags~~) operation to obtain this parameter.
 	ImageList []*string `json:"ImageList,omitempty" xml:"ImageList,omitempty" type:"Repeated"`
 	// The namespace.
 	//
-	// > You can call the [DescribeContainerTags](~~DescribeContainerTags~~) operation to obtain the value of this parameter.
+	// >You can call the [DescribeContainerTags](~~DescribeContainerTags~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -48,13 +48,13 @@ type ModifyInterceptionTargetRequest struct {
 	//
 	// demo4
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// An array that consists of tags.
+	// The list of labels.
 	//
-	// > You can call the [DescribeContainerTags](~~DescribeContainerTags~~) operation to obtain the value of this parameter.
+	// >You can call the [DescribeContainerTags](~~DescribeContainerTags~~) operation to obtain this parameter.
 	TagList []*string `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Repeated"`
 	// The ID of the network object.
 	//
-	// > You can call the [ListInterceptionTargetPage](~~ListInterceptionTargetPage~~) operation to obtain the value of this parameter.
+	// >You can call the [ListInterceptionTargetPage](~~ListInterceptionTargetPage~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -70,9 +70,9 @@ type ModifyInterceptionTargetRequest struct {
 	//
 	// test001
 	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
-	// The object type. Valid values:
+	// The target type. Valid values:
 	//
-	// 	- **IMAGE**
+	// - **IMAGE**: image.
 	//
 	// This parameter is required.
 	//

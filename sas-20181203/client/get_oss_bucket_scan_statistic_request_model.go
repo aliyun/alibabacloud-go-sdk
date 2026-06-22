@@ -16,13 +16,13 @@ type iGetOssBucketScanStatisticRequest interface {
 }
 
 type GetOssBucketScanStatisticRequest struct {
-	// The names of the buckets.
+	// The list of bucket names.
 	BucketNameList []*string `json:"BucketNameList,omitempty" xml:"BucketNameList,omitempty" type:"Repeated"`
 	// The data source. Valid values:
 	//
-	// 	- **API**: API operations.
+	// - **API**: API-based scan.
 	//
-	// 	- **OSS**: Object Storage Service (OSS) file check.
+	// - **OSS**: OSS-based scan.
 	//
 	// example:
 	//

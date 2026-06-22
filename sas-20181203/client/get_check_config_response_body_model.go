@@ -28,43 +28,43 @@ type iGetCheckConfigResponseBody interface {
 }
 
 type GetCheckConfigResponseBody struct {
-	// The days in a week on which an automatic check is performed.
+	// The periodic check schedule.
 	CycleDays []*int32 `json:"CycleDays,omitempty" xml:"CycleDays,omitempty" type:"Repeated"`
-	// Indicates whether the check for new check items in the selected requirement item is enabled by default. Valid values:
+	// Indicates whether new check items added to the selected standards are checked by default. Valid values:
 	//
-	// 	- **true**
+	// - **true:*	- Enabled.
 	//
-	// 	- **false**
+	// - **false:*	- Disabled.
 	//
 	// example:
 	//
 	// false
 	EnableAddCheck *bool `json:"EnableAddCheck,omitempty" xml:"EnableAddCheck,omitempty"`
-	// Indicates whether the automatic check is enabled. Valid values:
+	// Indicates whether automatic periodic checks are enabled. Valid values:
 	//
-	// 	- **true**
+	// - **true:*	- Enabled.
 	//
-	// 	- **false**
+	// - **false:*	- Disabled.
 	//
 	// example:
 	//
 	// true
 	EnableAutoCheck *bool `json:"EnableAutoCheck,omitempty" xml:"EnableAutoCheck,omitempty"`
-	// The end time of the check. The value indicates a point in time. The time period that is specified by the start time and end time must be one of the following time periods:
+	// The end time of the check period, indicating the hour of the day. The start time and end time must fall within one of the following time ranges:
 	//
-	// 	- **00:00 to 06:00**: If StartTime is set to 00:00, EndTime must be set to 06:00.
+	// - **0~6**: If the start time is 0, the end time must be set to 6.
 	//
-	// 	- **06:00 to 12:00**: If StartTime is set to 06:00, EndTime must be set to 12:00.
+	// - **6~12**: If the start time is 6, the end time must be set to 12.
 	//
-	// 	- **12:00 to 18:00**: If StartTime is set to 12:00, EndTime must be set to 18:00.
+	// - **12~18**: If the start time is 12, the end time must be set to 18.
 	//
-	// 	- **18:00 to 24:00**: If StartTime is set to 18:00, EndTime must be set to 24:00.
+	// - **18~24**: If the start time is 18, the end time must be set to 24.
 	//
 	// example:
 	//
 	// 6
 	EndTime *int32 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The request ID. Alibaba Cloud generates a unique identifier for each request. You can use the request ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -72,9 +72,9 @@ type GetCheckConfigResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The check items selected in the policy.
 	SelectedChecks []*GetCheckConfigResponseBodySelectedChecks `json:"SelectedChecks,omitempty" xml:"SelectedChecks,omitempty" type:"Repeated"`
-	// The information about the check items.
+	// The list of check item information.
 	Standards []*GetCheckConfigResponseBodyStandards `json:"Standards,omitempty" xml:"Standards,omitempty" type:"Repeated"`
-	// The start time of the check. The value indicates a point in time.
+	// The start time of the check period, indicating the hour of the day.
 	//
 	// example:
 	//
@@ -240,13 +240,13 @@ type GetCheckConfigResponseBodyStandards struct {
 	//
 	// example:
 	//
-	// Cloud service configuration management
+	// 云产品配置管理
 	ShowName *string `json:"ShowName,omitempty" xml:"ShowName,omitempty"`
-	// The status of the check item. Valid values:
+	// The enabling status of the check item. Valid values:
 	//
-	// 	- **ON**: The check item is enabled.
+	// - **ON:*	- Enabled.
 	//
-	// 	- **OFF**: The check item is disabled.
+	// - **OFF:*	- Shutdown.
 	//
 	// example:
 	//
@@ -254,11 +254,11 @@ type GetCheckConfigResponseBodyStandards struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The type of the check item. Valid values:
 	//
-	// 	- **RISK**: cloud service configuration management
+	// - **RISK:*	- cloud service configuration management
 	//
-	// 	- **IDENTITY_PERMISSION**: identity and permission management
+	// - **IDENTITY_PERMISSION:*	- permission management
 	//
-	// 	- **COMPLIANCE**: compliance
+	// - **COMPLIANCE:*	- compliance.
 	//
 	// example:
 	//

@@ -16,17 +16,17 @@ type iHandleMaliciousFilesRequest interface {
 }
 
 type HandleMaliciousFilesRequest struct {
-	// List of file IDs to be processed.
+	// The list of file IDs to process.
 	//
-	// > You can call [ListAgentlessMaliciousFiles](~~ListAgentlessMaliciousFiles~~) to get the IDs.
+	// > You can call [ListAgentlessMaliciousFiles](~~ListAgentlessMaliciousFiles~~) to obtain the IDs.
 	//
-	// > -
+	// > -.
 	FileIdList []*int64 `json:"FileIdList,omitempty" xml:"FileIdList,omitempty" type:"Repeated"`
-	// Type of operation:
+	// The type of operation. Valid values:
 	//
-	// - addWhitelist: Add to whitelist
+	// - addWhitelist: adds to the whitelist.
 	//
-	// - offWhitelist: Remove from whitelist
+	// - offWhitelist: removes from the whitelist.
 	//
 	// example:
 	//

@@ -22,37 +22,37 @@ type iGetCheckSummaryRequest interface {
 }
 
 type GetCheckSummaryRequest struct {
-	// Specifies whether to return the statistics of the check items, including the number of check items supported by the system and the number of check items available to you. Default value: **false**. Valid values:
+	// Specifies whether to return check item statistics information, including the number of check items published by the system and the number of check items currently owned by the user. Default value: **false**. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Returns the statistics information.
 	//
-	// 	- **false**
+	// - **false**: Does not return the statistics information.
 	//
 	// example:
 	//
 	// false
 	IsItemStatistic *bool `json:"IsItemStatistic,omitempty" xml:"IsItemStatistic,omitempty"`
-	// The language of the content within the request and response. Valid values:
+	// The language type for requests and responses.
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The Alibaba Cloud account ID of the member in the resource directory.
+	// The ID of the member accounts in the resource directory.
 	//
-	// >  You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to query the IDs of Alibaba Cloud accounts.
+	// >Invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// 000
 	ResourceDirectoryAccountId *string `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
-	// List of task sources.
+	// The list of task sources.
 	TaskSources []*string `json:"TaskSources,omitempty" xml:"TaskSources,omitempty" type:"Repeated"`
-	// The cloud service providers.
+	// The list of cloud service providers.
 	Vendors []*string `json:"Vendors,omitempty" xml:"Vendors,omitempty" type:"Repeated"`
 }
 

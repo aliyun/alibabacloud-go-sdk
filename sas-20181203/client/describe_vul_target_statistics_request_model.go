@@ -14,15 +14,15 @@ type iDescribeVulTargetStatisticsRequest interface {
 }
 
 type DescribeVulTargetStatisticsRequest struct {
-	// The type of the vulnerability. Valid values:
+	// The type of vulnerability to query. Valid values:
 	//
-	// 	- **cve**: Linux software vulnerability
+	// - **cve**: Linux software vulnerability
 	//
-	// 	- **sys**: Windows system vulnerability
+	// - **sys**: Windows system vulnerability
 	//
-	// 	- **cms**: Web-CMS vulnerability
+	// - **cms**: Web-CMS vulnerability
 	//
-	// 	- **emg**: urgent vulnerability
+	// - **emg**: emergency vulnerability.
 	//
 	// example:
 	//

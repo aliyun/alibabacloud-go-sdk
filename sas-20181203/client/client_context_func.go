@@ -245,7 +245,7 @@ func (client *Client) AddCheckResultWhiteListWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Creates a custom defense rule.
+// Create a custom defense rule.
 //
 // @param request - AddClientUserDefineRuleRequest
 //
@@ -647,7 +647,7 @@ func (client *Client) AddContainerPluginRuleWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 创建文件防护规则
+// Creates a file protection rule.
 //
 // @param request - AddFileProtectBindMachineRequest
 //
@@ -1383,7 +1383,7 @@ func (client *Client) AddUninstallClientsByUuidsWithContext(ctx context.Context,
 
 // Summary:
 //
-// 新增未知威胁分析进程
+// Adds one or more processes for intelligent behavior analysis.
 //
 // @param request - AddUnknownThreatDetectProcessRequest
 //
@@ -1715,7 +1715,7 @@ func (client *Client) BatchUpdateMaliciousFileWhitelistConfigWithContext(ctx con
 
 // Summary:
 //
-// Binds servers to Security Center or unbinds servers from Security Center.
+// Binds authorization information to servers.
 //
 // @param request - BindAuthToMachineRequest
 //
@@ -1764,6 +1764,10 @@ func (client *Client) BindAuthToMachineWithContext(ctx context.Context, request 
 
 	if !dara.IsNil(request.PreBindOrderId) {
 		query["PreBindOrderId"] = request.PreBindOrderId
+	}
+
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
 	}
 
 	if !dara.IsNil(request.UnBind) {
@@ -3521,13 +3525,37 @@ func (client *Client) CreateDynamicDictWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Pushes a file to the cloud for detection.
+// Submits a file to the cloud for detection.
 //
 // Description:
 //
-// You can call this operation to push a file to the cloud for detection. Before you call this operation, make sure that the file is uploaded. You can call the CreateFileDetectUploadUrl operation to upload the file.
+// Use this operation to submit a file to the cloud for detection. It supports two scenarios: malicious file detection and Skill archive detection.
 //
-// The HashKey parameter is included in all API operations that are related to the file detection feature. The parameter specifies the unique identifier of a file. Only MD5 hash values are supported. Before you call this operation, calculate the MD5 hash value of the file.
+// ### File submission methods
+//
+// Submit a file by either pre-uploading it or providing a download link.
+//
+// If you use the pre-upload method, ensure the file is uploaded successfully before you call this operation. For details on how to upload a file, see the CreateFileDetectUploadUrl operation.
+//
+// If you use a download link, specify a publicly accessible URL in the `DownloadUrl` parameter.
+//
+// The malicious file detection scenario supports both methods. For the Skill archive detection scenario (when `Type` is `6`), the pre-upload method is not supported, and you must provide a download link.
+//
+// ### Unique identifier
+//
+// All API operations related to file detection include the `HashKey` parameter. This parameter specifies the file\\"s unique identifier for a detection task, which you use to query the results.
+//
+// For Skill archive detection (when `Type` is `6`), you do not need to calculate the `HashKey` in advance. This operation returns a globally unique UUID as the file\\"s identifier, which you can use to query the results.
+//
+// For malicious file detection (when `Type` is `0`), you must calculate the `HashKey` before you call this operation. The `HashKey` value must be the MD5 or SHA-256 hash of the entire file.
+//
+// To calculate the MD5 or SHA-256 hash of a file, follow these steps:
+//
+// 1. Use the MD5 or SHA-256 algorithm to generate a 128-bit or 256-bit hash value. You can use common libraries such as `MessageDigest` in Java or the `hashlib` library in Python.
+//
+// 2. Encode the hash value into a hexadecimal string. You can use tools such as the `Codec` utility in Java or the `hex()` function in Python. Ensure that the final string consists of only digits and lowercase letters. An MD5 hash is 32 characters long, and a SHA-256 hash is 64 characters long.
+//
+// Note: You must use the same `HashKey` value when you submit a file for detection and when you query the results. Otherwise, both the submission and the query will fail.
 //
 // @param request - CreateFileDetectRequest
 //
@@ -3659,7 +3687,7 @@ func (client *Client) CreateFileDetectUploadUrlWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 创建文件防护规则
+// Creates a file protection rule.
 //
 // @param request - CreateFileProtectClientRuleRequest
 //
@@ -5277,11 +5305,11 @@ func (client *Client) CreateOssScanConfigWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Creates an automatic account management policy for members of the account monitored by Security Center type by using the multi-account management feature. After the policy is created, the members that are newly added to the specified resource directory are automatically added to the list of members of the account monitored by Security Center type.
+// Creates an automatic control policy for new accounts in the multi-account security management feature of Security Center. Member accounts under the automatic control policy folder are automatically added to the monitoring account list.
 //
 // Description:
 //
-// You can call this operation only by using the management account of a resource directory or a delegated administrator account of Security Center.
+// Call this operation by using the management account of the resource directory or the delegated administrator account of Security Center.
 //
 // @param request - CreateRdDefaultSyncListRequest
 //
@@ -5463,7 +5491,7 @@ func (client *Client) CreateSasTrialWithContext(ctx context.Context, tmpReq *Cre
 
 // Summary:
 //
-// Creates a service-linked role and authorizes Security Center to access cloud resources.
+// Creates a service-linked role and grants Security Center access to cloud resources.
 //
 // Description:
 //
@@ -5511,7 +5539,17 @@ func (client *Client) CreateServiceLinkedRoleWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Create a service trail.
+// Creates a service trail.
+//
+// Description:
+//
+// The **ActionTrail data delivery*	- feature requires Cloud Security Posture Management (CSPM) and security alerting to read ActionTrail data. To use this feature, enable the **ActionTrail data delivery*	- toggle in the Security Center console and authorize the service-linked role **AliyunServiceRoleForSas*	- for Security Center. After authorization, ActionTrail data is delivered to the LogStore of Security Center.
+//
+// For more information about the service-linked role **AliyunServiceRoleForSas*	- for Security Center, see [Service-linked role for Security Center](https://help.aliyun.com/document_detail/460226.html).
+//
+// ### Before you begin ###
+//
+// Before calling this operation, enable the **ActionTrail data delivery*	- toggle. For more information, see [Access control](https://help.aliyun.com/document_detail/197302.html).
 //
 // @param request - CreateServiceTrailRequest
 //
@@ -5555,7 +5593,7 @@ func (client *Client) CreateServiceTrailWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Creates a task to query alert events that are triggered by the same rule or of the same alert type.
+// Creates a node to query alert events triggered by the same rule or Alarm Metric through alerting.
 //
 // @param request - CreateSimilarSecurityEventsQueryTaskRequest
 //
@@ -5611,11 +5649,11 @@ func (client *Client) CreateSimilarSecurityEventsQueryTaskWithContext(ctx contex
 
 // Summary:
 //
-// Creates a task on the My Policies tab of the Playbook page.
+// Creates a task under My Policies in Task Center.
 //
 // Description:
 //
-// Only the Enterprise and Ultimate editions of Security Center support this API operation.
+// Only the Enterprise and Ultimate editions of Security Center support this API operation. Other editions do not support this operation.
 //
 // @param request - CreateSoarStrategyTaskRequest
 //
@@ -5675,7 +5713,7 @@ func (client *Client) CreateSoarStrategyTaskWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Adds remarks to an alert event.
+// Creates a note for a security alert event.
 //
 // @param request - CreateSuspEventNoteRequest
 //
@@ -5821,7 +5859,7 @@ func (client *Client) CreateUniBackupPolicyWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// Creates a restoration task for a database.
+// Creates a database anti-ransomware restoration task.
 //
 // @param request - CreateUniRestorePlanRequest
 //
@@ -5889,7 +5927,7 @@ func (client *Client) CreateUniRestorePlanWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 创建未知威胁发现的策略
+// Creates an intelligent behavior analysis strategy.
 //
 // @param request - CreateUnknownThreatDetectStrategyRequest
 //
@@ -5949,7 +5987,7 @@ func (client *Client) CreateUnknownThreatDetectStrategyWithContext(ctx context.C
 
 // Summary:
 //
-// Creates the risk level settings for baseline check items.
+// Saves the risk level settings for baseline checks of a user.
 //
 // @param request - CreateUserSettingRequest
 //
@@ -6109,7 +6147,7 @@ func (client *Client) CreateVulAutoRepairConfigWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Deletes the specified defense rules against brute-force attacks.
+// Deletes a specified anti-brute-force attacks rule.
 //
 // @param request - DeleteAntiBruteForceRuleRequest
 //
@@ -6197,7 +6235,7 @@ func (client *Client) DeleteAttackPathSensitiveAssetConfigWithContext(ctx contex
 
 // Summary:
 //
-// Delete Attack Path Whitelist.
+// Deletes an attack path whitelist entry.
 //
 // @param request - DeleteAttackPathWhitelistRequest
 //
@@ -6241,7 +6279,7 @@ func (client *Client) DeleteAttackPathWhitelistWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Deletes a witness.
+// Deletes an attestor.
 //
 // @param request - DeleteAttestorRequest
 //
@@ -6293,7 +6331,7 @@ func (client *Client) DeleteAttestorWithContext(ctx context.Context, request *De
 
 // Summary:
 //
-// Deletes asset auto-tagging rules that are created by using the feature of asset management rules. You can create rules on the System Configuration > Feature Settings > Multi-cloud Configuration Management > Asset Management Rule page in the Security Center console.
+// Deletes an automatic asset tagging rule. This operation is used with the system configuration, feature settings, multi-cloud configuration management, and asset management rule features of Security Center.
 //
 // @param request - DeleteAutoTagRulesRequest
 //
@@ -6337,7 +6375,7 @@ func (client *Client) DeleteAutoTagRulesWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Deletes an anti-ransomware policy.
+// Deletes ransomware mitigation policies.
 //
 // @param request - DeleteBackupPolicyRequest
 //
@@ -6441,7 +6479,7 @@ func (client *Client) DeleteBackupPolicyMachineWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Deletes a backup snapshot that is created for anti-ransomware.
+// Deletes snapshots of anti-ransomware backups in Security Center.
 //
 // @param request - DeleteBackupSnapshotRequest
 //
@@ -6601,7 +6639,7 @@ func (client *Client) DeleteBinarySecurityPolicyWithContext(ctx context.Context,
 
 // Summary:
 //
-// # Delete custom check item for Situation Awareness
+// Deletes user-defined check items in the Cloud Security Posture Management (CSPM) custom check item feature.
 //
 // @param request - DeleteCheckItemRequest
 //
@@ -6829,7 +6867,7 @@ func (client *Client) DeleteContainerDefenseRuleWithContext(ctx context.Context,
 
 // Summary:
 //
-// Deletes a defense rule against container escapes.
+// Deletes a container escape prevention rule.
 //
 // @param request - DeleteContainerPluginRuleRequest
 //
@@ -6877,7 +6915,7 @@ func (client *Client) DeleteContainerPluginRuleWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Deletes a specified IP address blocking policy from one or more servers.
+// Deletes the blocking records of specific IP addresses that are custom-defined on one or more servers.
 //
 // @param request - DeleteCustomBlockRecordRequest
 //
@@ -6925,7 +6963,7 @@ func (client *Client) DeleteCustomBlockRecordWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Deletes a custom security report.
+// Deletes a specified custom security report.
 //
 // @param request - DeleteCustomizeReportRequest
 //
@@ -6969,7 +7007,7 @@ func (client *Client) DeleteCustomizeReportWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Deletes the file that is uploaded to create custom weak password rules.
+// Deletes a custom weak password file.
 //
 // @param request - DeleteCustomizedDictRequest
 //
@@ -7013,7 +7051,7 @@ func (client *Client) DeleteCustomizedDictWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Deletes a periodic scan task. The task can be an image scan task, urgent vulnerability scan task, or virus scan task.
+// Deletes an epoch-based scan node, including image scans, emergency vulnerability scanning, and virus scans.
 //
 // @param request - DeleteCycleTaskRequest
 //
@@ -7101,7 +7139,7 @@ func (client *Client) DeleteDingTalkWithContext(ctx context.Context, request *De
 
 // Summary:
 //
-// 删除文件防护规则
+// Deletes a file protection rule.
 //
 // @param request - DeleteFileProtectClientRuleRequest
 //
@@ -7217,7 +7255,7 @@ func (client *Client) DeleteFileProtectRuleWithContext(ctx context.Context, requ
 //
 // Description:
 //
-// The **Default*	- server group that is provided by Security Center cannot be deleted. After you delete a group, the assets in this group are moved to the **Default*	- group.
+// You cannot delete the default server group provided by Security Center, which is **Ungrouped**. After you delete a group, the assets in the group are moved to **Ungrouped*	- by default.
 //
 // @param request - DeleteGroupRequest
 //
@@ -7361,7 +7399,7 @@ func (client *Client) DeleteHoneypotNodeWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Deletes a specified honeypot template.
+// Deletes a specified honeypot template configuration.
 //
 // @param request - DeleteHoneypotPresetRequest
 //
@@ -7509,7 +7547,7 @@ func (client *Client) DeleteHoneypotProbeBindWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Removes a proxy node from a specified proxy cluster.
+// Deletes a proxy node from a specified proxy cluster.
 //
 // @param request - DeleteHybridProxyRequest
 //
@@ -7557,7 +7595,7 @@ func (client *Client) DeleteHybridProxyWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Deletes a proxy cluster based on the name of the proxy cluster.
+// Deletes a proxy cluster by cluster name.
 //
 // @param request - DeleteHybridProxyClusterRequest
 //
@@ -7601,7 +7639,7 @@ func (client *Client) DeleteHybridProxyClusterWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Deletes an IDC probe that is created in Security Center.
+// Deletes an IDC probe that is created in the IDC probe feature of Security Center.
 //
 // @param request - DeleteIdcProbeRequest
 //
@@ -7645,7 +7683,7 @@ func (client *Client) DeleteIdcProbeWithContext(ctx context.Context, request *De
 
 // Summary:
 //
-// Deletes an alert handling rule.
+// Deletes an alert disposal rule.
 //
 // @param request - DeleteImageEventOperationRequest
 //
@@ -7737,7 +7775,7 @@ func (client *Client) DeleteImageVulWhitelistWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Deletes the command that is used to install the Security Center agent.
+// Deletes an installation code.
 //
 // @param request - DeleteInstallCodeRequest
 //
@@ -7781,7 +7819,7 @@ func (client *Client) DeleteInstallCodeWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Deletes a defense rule in the container firewall module.
+// Deletes a microsegmentation interception rule.
 //
 // @param request - DeleteInterceptionRuleRequest
 //
@@ -7829,7 +7867,7 @@ func (client *Client) DeleteInterceptionRuleWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Removes the network objects that are in effect in the container firewall.
+// Deletes active network objects from the container firewall.
 //
 // @param request - DeleteInterceptionTargetRequest
 //
@@ -7873,7 +7911,7 @@ func (client *Client) DeleteInterceptionTargetWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Deletes the Kubernetes access information.
+// Deletes Kubernetes access information.
 //
 // @param request - DeleteK8sAccessInfoRequest
 //
@@ -7981,7 +8019,7 @@ func (client *Client) DeleteLoginBaseConfigWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Deletes a whitelist rule for alerts generated for sensitive files that are detected by using the agentless detection feature.
+// Deletes a whitelist rule for agentless detection of sensitive file alerts.
 //
 // @param request - DeleteMaliciousFileWhitelistConfigRequest
 //
@@ -8025,7 +8063,7 @@ func (client *Client) DeleteMaliciousFileWhitelistConfigWithContext(ctx context.
 
 // Summary:
 //
-// Removes the remarks added to alert events that are generated by the agentless detection feature.
+// Deletes a note for an agentless detection alert event.
 //
 // @param request - DeleteMaliciousNoteRequest
 //
@@ -8069,11 +8107,11 @@ func (client *Client) DeleteMaliciousNoteWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Deletes a member of the account managed by Security Center type of the multi-account management feature.
+// Deletes a Security Center monitoring account from the multi-account security management feature.
 //
 // Description:
 //
-// You must use the management account of your resource directory or a delegated administrator account of Security Center to call this operation.
+// Call this operation by using the management account of the resource directory or the delegated administrator account of Security Center.
 //
 // @param request - DeleteMonitorAccountRequest
 //
@@ -8117,7 +8155,7 @@ func (client *Client) DeleteMonitorAccountWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Deletes rules of the at-risk image blocking type.
+// Deletes a risky image blocking policy.
 //
 // @param request - DeleteOpaStrategyNewRequest
 //
@@ -8205,7 +8243,7 @@ func (client *Client) DeleteOssScanConfigWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Deletes a private image repository by using the ID of the image repository.
+// Deletes a private image repository by image repository ID.
 //
 // @param request - DeletePrivateRegistryRequest
 //
@@ -8249,7 +8287,7 @@ func (client *Client) DeletePrivateRegistryWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Deletes a rule for container tamper-proofing.
+// Deletes a container tamper-proofing rule.
 //
 // @param request - DeleteSasContainerWebDefenseRuleRequest
 //
@@ -8293,7 +8331,7 @@ func (client *Client) DeleteSasContainerWebDefenseRuleWithContext(ctx context.Co
 
 // Summary:
 //
-// Deletes a frequently used search condition by using the asset management feature of the Assets module in the Security Center console.
+// Deletes a saved search condition from the Assets module of Security Center.
 //
 // @param request - DeleteSearchConditionRequest
 //
@@ -8395,7 +8433,7 @@ func (client *Client) DeleteSecurityEventMarkMissListWithContext(ctx context.Con
 
 // Summary:
 //
-// Deletes a service trail.
+// Deletes an ActionTrail data delivery configuration.
 //
 // @param request - DeleteServiceTrailRequest
 //
@@ -8439,11 +8477,11 @@ func (client *Client) DeleteServiceTrailWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Deletes a policy task that is in the waiting state on the Playbook page.
+// Deletes a policy task that is in the waiting state from the task center.
 //
 // Description:
 //
-// Only the Enterprise and Ultimate editions of Security Center support this API operation.
+// Only the Enterprise and Ultimate editions of Security Center support this API call. Other editions are not supported.
 //
 // @param request - DeleteSoarStrategyTaskRequest
 //
@@ -8583,11 +8621,11 @@ func (client *Client) DeleteSuspEventNodeWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Removes custom tags from assets.
+// Deletes custom labels bound to assets.
 //
 // Description:
 //
-// Security Center provides asset importance tags and custom tags. You can call this operation to remove only the custom tag that is added to an asset.
+// Asset labels are classified into asset importance labels and custom labels. When you call this operation, only custom labels bound to assets can be deleted. Asset importance labels cannot be deleted.
 //
 // @param request - DeleteTagWithUuidRequest
 //
@@ -8683,7 +8721,7 @@ func (client *Client) DeleteUniBackupPolicyWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 删除未知威胁发现进程
+// Deletes one or more Unknown Threat Detect processes.
 //
 // @param request - DeleteUnknownThreatDetectProcessRequest
 //
@@ -8727,7 +8765,7 @@ func (client *Client) DeleteUnknownThreatDetectProcessWithContext(ctx context.Co
 
 // Summary:
 //
-// 删除未知威胁发现策略
+// Deletes a behavior analytics policy.
 //
 // @param request - DeleteUnknownThreatDetectStrategyRequest
 //
@@ -8771,7 +8809,7 @@ func (client *Client) DeleteUnknownThreatDetectStrategyWithContext(ctx context.C
 
 // Summary:
 //
-// Deletes a honeypot.
+// Deletes a specified honeypot instance.
 //
 // @param request - DeleteVpcHoneyPotRequest
 //
@@ -8815,7 +8853,7 @@ func (client *Client) DeleteVpcHoneyPotWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Deletes configurations of of an automatic vulnerability fixing task at a time on the Playbook page.
+// Deletes the configurations of vulnerabilities that can be automatically fixed in the vulnerability task center in batches.
 //
 // @param request - DeleteVulAutoRepairConfigRequest
 //
@@ -8915,7 +8953,7 @@ func (client *Client) DeleteVulWhitelistWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries the details of AccessKey pair leaks.
+// Queries the details of an AccessKey pair leak event.
 //
 // @param request - DescribeAccessKeyLeakDetailRequest
 //
@@ -8963,7 +9001,7 @@ func (client *Client) DescribeAccessKeyLeakDetailWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries the AccessKey pair leaks that are detected on your assets.
+// Queries information about leaked AccessKey pairs in your assets.
 //
 // @param request - DescribeAccesskeyLeakListRequest
 //
@@ -9027,7 +9065,7 @@ func (client *Client) DescribeAccesskeyLeakListWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the affected servers in the result of a virus scan task.
+// Queries the list of affected assets from virus defense check results.
 //
 // @param request - DescribeAffectedAssetsRequest
 //
@@ -9079,7 +9117,7 @@ func (client *Client) DescribeAffectedAssetsWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the details of malicious image samples.
+// Queries the details of malicious files detected in container images.
 //
 // @param request - DescribeAffectedMaliciousFileImagesRequest
 //
@@ -9203,7 +9241,7 @@ func (client *Client) DescribeAffectedMaliciousFileImagesWithContext(ctx context
 
 // Summary:
 //
-// Queries the installation status of the Security Center agent after you run an installation command by using Cloud Assistant. You can call this operation to query the installation status only if the installation request is initiated within 2 minutes.
+// Queries the Agent installation status after an Agent installation command is run by using Cloud Assistant. This operation supports querying the installation status only for installations initiated within the last 2 minutes.
 //
 // @param request - DescribeAgentInstallStatusRequest
 //
@@ -9255,11 +9293,11 @@ func (client *Client) DescribeAgentInstallStatusWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries the list of assets on which a specific type of sensitive files are detected by using the agentless detection feature.
+// Retrieves the list of assets that contain a specific type of sensitive file detected by the agentless detection feature.
 //
 // Description:
 //
-// You can call this operation only when the agentless detection feature is purchased by using the pay-as-you-go billing method within your Alibaba Cloud account.
+// Only Alibaba Cloud accounts that have activated the pay-as-you-go billing method for the agentless detection feature of Security Center can call this operation.
 //
 // @param tmpReq - DescribeAgentlessSensitiveFileByKeyRequest
 //
@@ -9427,7 +9465,7 @@ func (client *Client) DescribeAlarmEventStackInfoWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries the information about server groups.
+// Queries information about all server groups.
 //
 // @param request - DescribeAllGroupsRequest
 //
@@ -9471,7 +9509,7 @@ func (client *Client) DescribeAllGroupsWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries baselines that are used in image baseline checks.
+// Retrieves the list of all image baseline check items.
 //
 // @param request - DescribeAllImageBaselineRequest
 //
@@ -9571,7 +9609,7 @@ func (client *Client) DescribeAllRegionsStatisticsWithContext(ctx context.Contex
 
 // Summary:
 //
-// # Query the list of anti-brute force rules
+// Queries the brute-force attacks prevention rules that you have created.
 //
 // @param request - DescribeAntiBruteForceRulesRequest
 //
@@ -9637,11 +9675,11 @@ func (client *Client) DescribeAntiBruteForceRulesWithContext(ctx context.Context
 //
 // Summary:
 //
-// Queries the details of a server and the extended information about the server by using the UUID of the server.
+// Queries the details and extended information of a server asset by UUID.
 //
 // Description:
 //
-// This operation will be discontinued soon. You must call the [GetAssetDetailByUuid](~~GetAssetDetailByUuid~~) operation to query the details of the server.
+// This operation is about to be deprecated. Call the [GetAssetDetailByUuid](~~GetAssetDetailByUuid~~) operation to obtain asset details.
 //
 // @param request - DescribeAssetDetailByUuidRequest
 //
@@ -9693,7 +9731,7 @@ func (client *Client) DescribeAssetDetailByUuidWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the details of Elastic Compute Service (ECS) instances.
+// Queries the details of an asset (ECS instance).
 //
 // @param request - DescribeAssetDetailByUuidsRequest
 //
@@ -9793,7 +9831,7 @@ func (client *Client) DescribeAssetsScaProcessNumWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries the risk information about containers.
+// Queries risk statistics for container assets.
 //
 // @param request - DescribeAssetsSecurityEventSummaryRequest
 //
@@ -9987,7 +10025,7 @@ func (client *Client) DescribeAttestorsWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries the information about a file to which archived alert events are exported.
+// Retrieves the list of exported security alert archive data.
 //
 // @param request - DescribeBackUpExportInfoRequest
 //
@@ -10043,11 +10081,11 @@ func (client *Client) DescribeBackUpExportInfoWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the servers on which the anti-ransomware agent is installed in a specified region.
+// Queries servers that have the anti-ransomware client installed in a specified region.
 //
 // Description:
 //
-// You can call the DescribeBackupClients operation to query the servers on which the anti-ransomware agent is installed in a specified region.
+// Queries servers that have the anti-ransomware client installed in a specified region.
 //
 // @param request - DescribeBackupClientsRequest
 //
@@ -10151,7 +10189,7 @@ func (client *Client) DescribeBackupFilesWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries the backup status of a sever to which an anti-ransomware policy is applied.
+// Queries the backup status of servers that are associated with an anti-ransomware backup policy.
 //
 // @param request - DescribeBackupMachineStatusRequest
 //
@@ -10203,7 +10241,7 @@ func (client *Client) DescribeBackupMachineStatusWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries anti-ransomware policies.
+// Query anti-ransomware protection policies.
 //
 // @param request - DescribeBackupPoliciesRequest
 //
@@ -10263,7 +10301,7 @@ func (client *Client) DescribeBackupPoliciesWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the details of an anti-ransomware policy for servers.
+// Queries the details of an anti-ransomware protection policy for servers.
 //
 // @param request - DescribeBackupPolicyRequest
 //
@@ -10635,7 +10673,7 @@ func (client *Client) DescribeCanFixVulListWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the chart data of a security report.
+// Queries the statistics of charts configured in a security report.
 //
 // @param request - DescribeChartDataRequest
 //
@@ -10699,7 +10737,7 @@ func (client *Client) DescribeChartDataWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries the charts that are supported by using the security report feature of Security Center.
+// Queries the charts supported for statistics in Security Center security reports.
 //
 // @param request - DescribeChartListRequest
 //
@@ -10751,7 +10789,7 @@ func (client *Client) DescribeChartListWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries the number of weak passwords that can cause high risks to your assets.
+// Queries the number of high-risk weak password risks that exist in your assets.
 //
 // @param request - DescribeCheckEcsWarningsRequest
 //
@@ -10795,7 +10833,7 @@ func (client *Client) DescribeCheckEcsWarningsWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the parameters that you can configure to fix specified risk items.
+// Queries the configurable parameters for fixing a specified check item.
 //
 // @param request - DescribeCheckFixDetailsRequest
 //
@@ -10903,7 +10941,7 @@ func (client *Client) DescribeCheckWarningCountWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the details about a specified check item.
+// Queries the details of a specified check item.
 //
 // @param request - DescribeCheckWarningDetailRequest
 //
@@ -11051,7 +11089,7 @@ func (client *Client) DescribeCheckWarningMachinesWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries the statistical information about baseline check results. The information includes the number of servers on which a baseline check is performed, the number of baseline check items, and the pass rate of check items in the last baseline check.
+// Queries the statistics of baseline check results, such as the number of servers checked, the number of check items, and the latest check pass rate.
 //
 // @param request - DescribeCheckWarningSummaryRequest
 //
@@ -11151,7 +11189,7 @@ func (client *Client) DescribeCheckWarningSummaryWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries information about specified risk items and the check items of a specified server.
+// Queries check item information for a specified risk item and a specified server.
 //
 // @param request - DescribeCheckWarningsRequest
 //
@@ -11235,7 +11273,7 @@ func (client *Client) DescribeCheckWarningsWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the configurations of the Security Center agent.
+// Queries the resource configuration information of a client.
 //
 // @param request - DescribeClientConfSetupRequest
 //
@@ -11283,7 +11321,7 @@ func (client *Client) DescribeClientConfSetupWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the configurations of servers to which different tags are added.
+// Queries the machine configuration information for different client tags.
 //
 // @param request - DescribeClientConfStrategyRequest
 //
@@ -11331,7 +11369,7 @@ func (client *Client) DescribeClientConfStrategyWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries a list of agent issue types.
+// Retrieves the category list of client issue diagnostics.
 //
 // @param request - DescribeClientProblemTypeRequest
 //
@@ -11375,11 +11413,11 @@ func (client *Client) DescribeClientProblemTypeWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the information about assets that meet specific search conditions. For example, you can search for assets by the instance name or region of the asset.
+// Queries asset information that meets specified search conditions. For example, you can search for assets by instance name or region. Two pagination methods are supported: page-based pagination and NextToken-based pagination. We recommend that you use NextToken-based pagination.
 //
 // Description:
 //
-// You can search for an asset by using search conditions, such as the instance ID, instance name, virtual private cloud (VPC) ID, region, and public IP address. You can also configure a logical relationship between multiple search conditions to search for the assets that meet the search conditions.
+// You can search for assets by instance ID, instance name, VPC ID, region, public IP address, and other conditions. You can also set the logical relationship between multiple search conditions to search for assets that meet multiple conditions.
 //
 // @param request - DescribeCloudCenterInstancesRequest
 //
@@ -11543,7 +11581,7 @@ func (client *Client) DescribeCloudVendorAccountAKListWithContext(ctx context.Co
 
 // Summary:
 //
-// Multicloud configuration management queries the CTDR cloud vendor product access template configuration.
+// # Get the cloud product access template for vendors
 //
 // @param request - DescribeCloudVendorProductTemplateConfigRequest
 //
@@ -11631,7 +11669,7 @@ func (client *Client) DescribeCloudVendorTrialConfigWithContext(ctx context.Cont
 
 // Summary:
 //
-// Queries the information about an cluster based on the cluster ID.
+// Queries cluster information by cluster ID.
 //
 // @param request - DescribeClusterBasicInfoRequest
 //
@@ -11683,7 +11721,7 @@ func (client *Client) DescribeClusterBasicInfoWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the statistical information about host security.
+// Queries the security statistics of a host.
 //
 // @param request - DescribeClusterHostSecuritySummaryRequest
 //
@@ -11747,7 +11785,7 @@ func (client *Client) DescribeClusterHostSecuritySummaryWithContext(ctx context.
 
 // Summary:
 //
-// Queries the statistical information about image security.
+// Queries the security statistics of container images.
 //
 // @param request - DescribeClusterImageSecuritySummaryRequest
 //
@@ -11875,7 +11913,7 @@ func (client *Client) DescribeClusterInfoListWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries information about the network topology edge by cluster.
+// Retrieves information about the network topology edge by cluster.
 //
 // @param request - DescribeClusterNetworkRequest
 //
@@ -11975,7 +12013,7 @@ func (client *Client) DescribeClusterScannerListWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries the statistics of vulnerabilities that are detected on a cluster.
+// Queries cluster vulnerability statistics.
 //
 // @param request - DescribeClusterVulStatisticsRequest
 //
@@ -12023,7 +12061,7 @@ func (client *Client) DescribeClusterVulStatisticsWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries the information about a specified feature.
+// Queries the global configuration of the master switch.
 //
 // @param request - DescribeCommonOverallConfigRequest
 //
@@ -12163,7 +12201,7 @@ func (client *Client) DescribeCommonTargetConfigWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries the information about the servers based on the specified configuration item.
+// Queries the configured asset information for a specific switch type.
 //
 // @param request - DescribeCommonTargetResultListRequest
 //
@@ -12211,7 +12249,7 @@ func (client *Client) DescribeCommonTargetResultListWithContext(ctx context.Cont
 
 // Summary:
 //
-// Queries the priorities to fix vulnerabilities.
+// Queries the necessity information for fixing vulnerabilities that you follow.
 //
 // @param request - DescribeConcernNecessityRequest
 //
@@ -12311,7 +12349,7 @@ func (client *Client) DescribeContainerAppsWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Obtains the filter conditions that you can use to filter the containers.
+// Retrieves the supported search criteria for the container list.
 //
 // @param request - DescribeContainerCriteriaRequest
 //
@@ -12407,7 +12445,7 @@ func (client *Client) DescribeContainerGroupedFieldDetailWithContext(ctx context
 
 // Summary:
 //
-// Queries the information about containers.
+// Retrieves the list of container instance information.
 //
 // @param request - DescribeContainerInstancesRequest
 //
@@ -12463,7 +12501,7 @@ func (client *Client) DescribeContainerInstancesWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries the configurations of the vulnerability scan of one or more running container applications.
+// Queries the container runtime scan configuration.
 //
 // @param request - DescribeContainerScanConfigRequest
 //
@@ -12663,7 +12701,7 @@ func (client *Client) DescribeContainerServiceK8sClustersWithContext(ctx context
 //
 // Description:
 //
-// Only users who created a Container Registry Enterprise Edition instance can call this operation.
+// Only users who have purchased Container Registry Enterprise instances can invoke this operation.
 //
 // @param request - DescribeContainerStatisticsRequest
 //
@@ -12707,7 +12745,7 @@ func (client *Client) DescribeContainerStatisticsWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries the details of container assets by using an attribute.
+// Retrieves the details of container assets by using an attribute.
 //
 // @param request - DescribeContainerTagsRequest
 //
@@ -12891,7 +12929,7 @@ func (client *Client) DescribeCustomBlockInstancesWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries the defense rules against brute-force attacks that are applied to one or more servers.
+// Queries brute-force attacks interception records for custom blocked IP addresses defined on one or more servers.
 //
 // @param request - DescribeCustomBlockRecordsRequest
 //
@@ -12951,7 +12989,7 @@ func (client *Client) DescribeCustomBlockRecordsWithContext(ctx context.Context,
 
 // Summary:
 //
-// Obtains the configurations of a security report.
+// Retrieves the details of a report delivery configuration.
 //
 // @param request - DescribeCustomizeReportConfigDetailRequest
 //
@@ -13067,7 +13105,7 @@ func (client *Client) DescribeCustomizeReportListWithContext(ctx context.Context
 
 // Summary:
 //
-// # View the result of custom weak password uploads
+// Queries the upload result of a custom weak password file.
 //
 // @param request - DescribeCustomizedDictRequest
 //
@@ -13111,7 +13149,7 @@ func (client *Client) DescribeCustomizedDictWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the Object Storage Service (OSS) information of the file that is uploaded to create custom weak password rules.
+// Queries the information about the OSS bucket that stores custom weak password files.
 //
 // @param request - DescribeCustomizedDictUploadInfoRequest
 //
@@ -13155,7 +13193,7 @@ func (client *Client) DescribeCustomizedDictUploadInfoWithContext(ctx context.Co
 
 // Summary:
 //
-// Queries the servers to which custom policies are applied.
+// Queries the target machines included in a custom policy.
 //
 // @param request - DescribeCustomizedStrategyTargetsRequest
 //
@@ -13203,7 +13241,7 @@ func (client *Client) DescribeCustomizedStrategyTargetsWithContext(ctx context.C
 
 // Summary:
 //
-// Queries periodic scan tasks. The tasks include image scan tasks, urgent vulnerability scan tasks, and virus scan tasks.
+// Queries the list of general-purpose scheduled nodes, including image scan, emergency vulnerability scanning, and virus scan nodes.
 //
 // @param request - DescribeCycleTaskListRequest
 //
@@ -13263,7 +13301,7 @@ func (client *Client) DescribeCycleTaskListWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries data sources for DingTalk notifications. You can configure the types of alerts for which you want to use a DingTalk chatbot to send notifications based on the data sources.
+// Queries the data sources for DingTalk alert configurations. You can configure the scope of DingTalk alert notifications based on the data sources.
 //
 // @param request - DescribeDataSourceRequest
 //
@@ -13315,7 +13353,7 @@ func (client *Client) DescribeDataSourceWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries the keywords of a custom dictionary that is generated by using weak passwords.
+// Retrieves the keywords used to generate a custom dictionary in custom weak password detection.
 //
 // @param request - DescribeDefaultKeyInfoRequest
 //
@@ -13359,7 +13397,7 @@ func (client *Client) DescribeDefaultKeyInfoWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Obtains DingTalk notifications.
+// Retrieves the list of DingTalk notifications.
 //
 // @param request - DescribeDingTalkRequest
 //
@@ -13411,7 +13449,7 @@ func (client *Client) DescribeDingTalkWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries the number of domain assets within your Alibaba Cloud account.
+// Queries the number of your domain name assets.
 //
 // @param request - DescribeDomainCountRequest
 //
@@ -13455,7 +13493,7 @@ func (client *Client) DescribeDomainCountWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries the details of domain assets within your Alibaba Cloud account.
+// Queries the details of your domain name assets.
 //
 // @param request - DescribeDomainDetailRequest
 //
@@ -13503,7 +13541,7 @@ func (client *Client) DescribeDomainDetailWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the information about the domain assets within your Alibaba Cloud account.
+// Queries information about your domain name assets.
 //
 // @param request - DescribeDomainListRequest
 //
@@ -13563,7 +13601,7 @@ func (client *Client) DescribeDomainListWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries the security alert data of a website security report.
+// Queries security alert data from a website security report.
 //
 // @param request - DescribeDomainSecureAlarmListRequest
 //
@@ -13615,7 +13653,7 @@ func (client *Client) DescribeDomainSecureAlarmListWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries a list of risky websites in your website security report and the security information about the websites, including the number of vulnerabilities and the number of alerts.
+// Queries websites with risks and their associated security information from the website security report, including the number of vulnerabilities and alerts.
 //
 // @param request - DescribeDomainSecureRiskListRequest
 //
@@ -13667,7 +13705,7 @@ func (client *Client) DescribeDomainSecureRiskListWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries the security score in your website security report. The full score is 100.
+// Queries the security score of a website security report. The maximum score is 100.
 //
 // @param request - DescribeDomainSecureScoreRequest
 //
@@ -13715,7 +13753,7 @@ func (client *Client) DescribeDomainSecureScoreWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the statistics in your website security report, including the number of websites and the number of security events.
+// Queries the statistics of a website security report, including the number of websites and security events.
 //
 // @param request - DescribeDomainSecureStatisticsRequest
 //
@@ -13763,7 +13801,7 @@ func (client *Client) DescribeDomainSecureStatisticsWithContext(ctx context.Cont
 
 // Summary:
 //
-// # Query Network Security Report - Security Suggestions
+// Queries the security suggestions in a website security report.
 //
 // @param request - DescribeDomainSecureSuggestsRequest
 //
@@ -13811,7 +13849,7 @@ func (client *Client) DescribeDomainSecureSuggestsWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries a list of vulnerabilities in your website security report.
+// Queries the vulnerability list in a website security report.
 //
 // @param request - DescribeDomainSecureVulListRequest
 //
@@ -13869,7 +13907,7 @@ func (client *Client) DescribeDomainSecureVulListWithContext(ctx context.Context
 //
 // Summary:
 //
-// Queries custom weak password rules for the baseline check feature.
+// Queries the user-defined dynamic weak password rules for baseline checks.
 //
 // @param request - DescribeDynamicDictRequest
 //
@@ -13915,7 +13953,7 @@ func (client *Client) DescribeDynamicDictWithContext(ctx context.Context, reques
 //
 // Summary:
 //
-// Queries the information about an uploaded Object Storage Service (OSS) object that contains custom weak passwords and is used for baseline checks.
+// Queries the OSS upload details of user-defined dynamic weak passwords for baseline checks.
 //
 // @param request - DescribeDynamicDictUploadInfoRequest
 //
@@ -13959,7 +13997,7 @@ func (client *Client) DescribeDynamicDictUploadInfoWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries the details of urgent vulnerabilities.
+// Queries the details of emergency vulnerabilities.
 //
 // @param request - DescribeEmgVulItemRequest
 //
@@ -14099,7 +14137,7 @@ func (client *Client) DescribeEventLevelCountWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the platforms that are supported by the feature of container threat detection.
+// Queries the platforms supported by threat detection.
 //
 // @param request - DescribeEventOnStageRequest
 //
@@ -14143,7 +14181,7 @@ func (client *Client) DescribeEventOnStageWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the directories that are excluded from anti-ransomware.
+// Queries the excluded directories of the anti-ransomware system.
 //
 // @param request - DescribeExcludeSystemPathRequest
 //
@@ -14191,7 +14229,7 @@ func (client *Client) DescribeExcludeSystemPathWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the progress of a task that exports your assets to an Excel file.
+// Queries the progress of an export task.
 //
 // @param request - DescribeExportInfoRequest
 //
@@ -14239,7 +14277,7 @@ func (client *Client) DescribeExportInfoWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries the weak password-related risks of a specified server that is exposed on the Internet.
+// Queries the weak password risks of a specified exposed server.
 //
 // @param request - DescribeExposedCheckWarningRequest
 //
@@ -14291,7 +14329,7 @@ func (client *Client) DescribeExposedCheckWarningWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries the search conditions that are used to search for exposed assets.
+// Retrieves the supported query conditions for querying exposed assets.
 //
 // @param request - DescribeExposedInstanceCriteriaRequest
 //
@@ -14391,7 +14429,7 @@ func (client *Client) DescribeExposedInstanceDetailWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries the information about the assets that are exposed on the Internet.
+// Queries information about assets exposed on the Internet.
 //
 // @param request - DescribeExposedInstanceListRequest
 //
@@ -14487,7 +14525,7 @@ func (client *Client) DescribeExposedInstanceListWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries the gateway assets, ports, system components, or public IP addresses that are exposed on the Internet.
+// Queries the list of gateway assets, ports, system components, or public IP addresses that are exposed on the Internet.
 //
 // @param request - DescribeExposedStatisticsDetailRequest
 //
@@ -14567,7 +14605,7 @@ func (client *Client) DescribeExposedStatisticsDetailWithContext(ctx context.Con
 
 // Summary:
 //
-// Queries the statistics of servers.
+// Queries the statistics information of servers in your assets.
 //
 // @param request - DescribeFieldStatisticsRequest
 //
@@ -14619,7 +14657,7 @@ func (client *Client) DescribeFieldStatisticsWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the pre-patches that are required to fix a specified Windows system vulnerability.
+// Queries the list of prerequisite patches that must be installed for a specified Windows system vulnerability.
 //
 // @param request - DescribeFrontVulPatchListRequest
 //
@@ -14675,7 +14713,7 @@ func (client *Client) DescribeFrontVulPatchListWithContext(ctx context.Context, 
 
 // Summary:
 //
-// # Alert Event Investigation
+// Queries the investigation and tracing graph of Cloud Workload Protection Platform (CWPP) alert events to visually investigate and reconstruct cyberattack processes.
 //
 // @param request - DescribeGraph4InvestigationOnlineRequest
 //
@@ -14735,7 +14773,7 @@ func (client *Client) DescribeGraph4InvestigationOnlineWithContext(ctx context.C
 
 // Summary:
 //
-// Queries the structure of a group.
+// Retrieves the group structure.
 //
 // @param request - DescribeGroupStructRequest
 //
@@ -14779,7 +14817,7 @@ func (client *Client) DescribeGroupStructWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries containers by group type.
+// Queries the list of containers based on the specified group type.
 //
 // @param request - DescribeGroupedContainerInstancesRequest
 //
@@ -14843,7 +14881,7 @@ func (client *Client) DescribeGroupedContainerInstancesWithContext(ctx context.C
 
 // Summary:
 //
-// Queries the statistical information about assets based on a specified filter condition.
+// Query asset statistics by specified aggregation dimensions.
 //
 // @param request - DescribeGroupedInstancesRequest
 //
@@ -14923,7 +14961,7 @@ func (client *Client) DescribeGroupedInstancesWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries a list of malicious image samples.
+// Queries the list of malicious sample files in container images.
 //
 // @param request - DescribeGroupedMaliciousFilesRequest
 //
@@ -15027,7 +15065,7 @@ func (client *Client) DescribeGroupedMaliciousFilesWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries the statistics of asset tags.
+// Queries the statistics information of asset labels.
 //
 // @param request - DescribeGroupedTagsRequest
 //
@@ -15071,7 +15109,7 @@ func (client *Client) DescribeGroupedTagsWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries vulnerabilities by group.
+// Queries vulnerability information by group.
 //
 // @param request - DescribeGroupedVulRequest
 //
@@ -15187,7 +15225,7 @@ func (client *Client) DescribeGroupedVulWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries the information about baseline export, including the name of the file to which baselines are exported and the download URL for the file.
+// Queries information about a baseline risk export, such as the file name and download link.
 //
 // @param request - DescribeHcExportInfoRequest
 //
@@ -15231,7 +15269,7 @@ func (client *Client) DescribeHcExportInfoWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the statistics about the quota on honeypots.
+// Queries the number of authorized honeypot instances.
 //
 // @param request - DescribeHoneyPotAuthRequest
 //
@@ -15275,7 +15313,7 @@ func (client *Client) DescribeHoneyPotAuthWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the information about top 5 virtual private clouds (VPCs) or assets for which alerts are most frequently generated.
+// Queries information about the top 5 VPCs or assets ranked by the number of security alerts.
 //
 // @param request - DescribeHoneyPotSuspStatisticsRequest
 //
@@ -15331,7 +15369,7 @@ func (client *Client) DescribeHoneyPotSuspStatisticsWithContext(ctx context.Cont
 
 // Summary:
 //
-// Queries proxy clusters by page.
+// Queries proxy clusters by using paging.
 //
 // @param request - DescribeHybridProxyClusterListRequest
 //
@@ -15383,7 +15421,7 @@ func (client *Client) DescribeHybridProxyClusterListWithContext(ctx context.Cont
 
 // Summary:
 //
-// Queries the servers that are connected to a proxy in a hybrid cloud by page.
+// Queries the list of clients connected to a specified hybrid cloud proxy by paging. This operation is part of the hybrid cloud proxy feature.
 //
 // @param request - DescribeHybridProxyLinkedClientListRequest
 //
@@ -15447,7 +15485,7 @@ func (client *Client) DescribeHybridProxyLinkedClientListWithContext(ctx context
 
 // Summary:
 //
-// Queries the proxy nodes that are deployed in a proxy cluster by page.
+// Queries the list of proxy nodes that have been deployed in a specified proxy cluster by paging.
 //
 // @param request - DescribeHybridProxyListRequest
 //
@@ -15499,7 +15537,7 @@ func (client *Client) DescribeHybridProxyListWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the data collection configurations of a proxy cluster.
+// Queries the data collection configuration of a specified proxy cluster.
 //
 // @param request - DescribeHybridProxyPolicyRequest
 //
@@ -15543,7 +15581,7 @@ func (client *Client) DescribeHybridProxyPolicyWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the search conditions that can be used to query data center assets found after scanning in fuzzy match mode.
+// Queries the fuzzy match search conditions for asset properties that can be displayed when you query IDC assets discovered by scanning.
 //
 // @param request - DescribeIdcAssetCriteriaRequest
 //
@@ -15591,7 +15629,7 @@ func (client *Client) DescribeIdcAssetCriteriaWithContext(ctx context.Context, r
 
 // Summary:
 //
-// # Query IDC probe list
+// Retrieves the list of IDC probe instances used for asset discovery in the multi-cloud configuration management feature.
 //
 // @param request - DescribeIdcProbeListRequest
 //
@@ -15647,7 +15685,7 @@ func (client *Client) DescribeIdcProbeListWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries assets that are identified by Internet Data Center (IDC) probes.
+// Retrieves the list of assets discovered by IDC probes.
 //
 // @param request - DescribeIdcProbeScanResultListRequest
 //
@@ -15715,7 +15753,7 @@ func (client *Client) DescribeIdcProbeScanResultListWithContext(ctx context.Cont
 
 // Summary:
 //
-// Queries an image digest.
+// Queries the digest of an image.
 //
 // @param request - DescribeImageRequest
 //
@@ -15771,7 +15809,7 @@ func (client *Client) DescribeImageWithContext(ctx context.Context, request *Des
 
 // Summary:
 //
-// Queries the security scan results of images.
+// Queries the detection results of image security scans.
 //
 // @param request - DescribeImageBaselineCheckResultRequest
 //
@@ -15843,7 +15881,7 @@ func (client *Client) DescribeImageBaselineCheckResultWithContext(ctx context.Co
 
 // Summary:
 //
-// Queries the check results of image baselines that are included in an image scan task.
+// Queries the image baseline check list of image security scans.
 //
 // @param request - DescribeImageBaselineCheckSummaryRequest
 //
@@ -15915,7 +15953,7 @@ func (client *Client) DescribeImageBaselineCheckSummaryWithContext(ctx context.C
 
 // Summary:
 //
-// Queries the details about the baseline check result for an image.
+// Queries the details of baseline check results for image scanning.
 //
 // @param request - DescribeImageBaselineDetailRequest
 //
@@ -15967,7 +16005,7 @@ func (client *Client) DescribeImageBaselineDetailWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries baseline check results based on images.
+// Queries the list of baseline check results by image.
 //
 // @param request - DescribeImageBaselineItemListRequest
 //
@@ -16043,7 +16081,7 @@ func (client *Client) DescribeImageBaselineItemListWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries the information about a baseline check policy for images.
+// Queries the image baseline policy.
 //
 // @param request - DescribeImageBaselineStrategyRequest
 //
@@ -16095,7 +16133,7 @@ func (client *Client) DescribeImageBaselineStrategyWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries image build command risks by page.
+// Queries the build risks of images by paging.
 //
 // @param request - DescribeImageBuildRiskByKeyRequest
 //
@@ -16159,7 +16197,7 @@ func (client *Client) DescribeImageBuildRiskByKeyWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries a list of image build command risks by page.
+// Queries the summary of image build risks by using paging.
 //
 // @param request - DescribeImageBuildRiskListRequest
 //
@@ -16223,7 +16261,7 @@ func (client *Client) DescribeImageBuildRiskListWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries the search conditions that are used to query images.
+// Retrieves image search criteria.
 //
 // @param request - DescribeImageCriteriaRequest
 //
@@ -16267,7 +16305,7 @@ func (client *Client) DescribeImageCriteriaWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the conditions for handling alert events in an image.
+// Queries the conditions for handling image events.
 //
 // @param request - DescribeImageEventOperationConditionRequest
 //
@@ -16315,7 +16353,7 @@ func (client *Client) DescribeImageEventOperationConditionWithContext(ctx contex
 
 // Summary:
 //
-// Queries alert handling rules by page.
+// Queries alerting handling rules by using paging.
 //
 // @param request - DescribeImageEventOperationPageRequest
 //
@@ -16387,7 +16425,7 @@ func (client *Client) DescribeImageEventOperationPageWithContext(ctx context.Con
 
 // Summary:
 //
-// Queries the tasks that you create to fix image risks.
+// Queries the list of created image repair tasks.
 //
 // @param request - DescribeImageFixTaskRequest
 //
@@ -16447,7 +16485,7 @@ func (client *Client) DescribeImageFixTaskWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries image vulnerabilities.
+// Queries the list of image vulnerabilities.
 //
 // @param request - DescribeImageGroupedVulListRequest
 //
@@ -16579,7 +16617,7 @@ func (client *Client) DescribeImageGroupedVulListWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries images.
+// Query the image list.
 //
 // @param request - DescribeImageInfoListRequest
 //
@@ -16623,7 +16661,7 @@ func (client *Client) DescribeImageInfoListWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries information about images.
+// Retrieves a list of image information.
 //
 // @param request - DescribeImageInstancesRequest
 //
@@ -16683,7 +16721,7 @@ func (client *Client) DescribeImageInstancesWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the most recent scan task that is created for an image.
+// Queries the most recent scan task for an image.
 //
 // @param request - DescribeImageLatestScanTaskRequest
 //
@@ -16727,7 +16765,7 @@ func (client *Client) DescribeImageLatestScanTaskWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries a list of images that are affected by image build command risks by page.
+// Queries affected images by build risk with paging.
 //
 // @param request - DescribeImageListByBuildRiskRequest
 //
@@ -16799,7 +16837,7 @@ func (client *Client) DescribeImageListByBuildRiskWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries information about images that are affected by sensitive files.
+// Queries information about images affected by sensitive files.
 //
 // @param tmpReq - DescribeImageListBySensitiveFileRequest
 //
@@ -16889,7 +16927,7 @@ func (client *Client) DescribeImageListBySensitiveFileWithContext(ctx context.Co
 
 // Summary:
 //
-// Queries the details about images in the results of image baseline checks.
+// Queries the details of image baseline check results.
 //
 // @param request - DescribeImageListWithBaselineNameRequest
 //
@@ -16997,7 +17035,7 @@ func (client *Client) DescribeImageListWithBaselineNameWithContext(ctx context.C
 
 // Summary:
 //
-// Obtains the filter conditions that are supported by the image repository.
+// Retrieves the supported search criteria for image repositories.
 //
 // @param request - DescribeImageRepoCriteriaRequest
 //
@@ -17041,7 +17079,7 @@ func (client *Client) DescribeImageRepoCriteriaWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the information about image repositories.
+// Retrieves a list of image repositories.
 //
 // @param request - DescribeImageRepoDetailListRequest
 //
@@ -17097,7 +17135,7 @@ func (client *Client) DescribeImageRepoDetailListWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries the statistics and configurations of the feature that protects images.
+// Retrieves statistics information on image defense switch configurations.
 //
 // @param request - DescribeImageRepoListRequest
 //
@@ -17177,7 +17215,7 @@ func (client *Client) DescribeImageRepoListWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the number of security events detected on an image.
+// Retrieves the number of image security events.
 //
 // @param request - DescribeImageSecurityScanCountRequest
 //
@@ -17257,7 +17295,7 @@ func (client *Client) DescribeImageSecurityScanCountWithContext(ctx context.Cont
 
 // Summary:
 //
-// Queries the sensitive files in an image.
+// Queries the sensitive files of an image.
 //
 // @param tmpReq - DescribeImageSensitiveFileByKeyRequest
 //
@@ -17327,7 +17365,7 @@ func (client *Client) DescribeImageSensitiveFileByKeyWithContext(ctx context.Con
 
 // Summary:
 //
-// Queries information about sensitive files.
+// Queries sensitive file information.
 //
 // @param tmpReq - DescribeImageSensitiveFileListRequest
 //
@@ -17409,11 +17447,11 @@ func (client *Client) DescribeImageSensitiveFileListWithContext(ctx context.Cont
 
 // Summary:
 //
-// Queries the details of vulnerabilities that are detected by using container image scan and the affected images.
+// Queries the details of vulnerabilities detected by image security scans and the list of container images affected by the vulnerabilities.
 //
 // Description:
 //
-// To query the information about the recently detected image vulnerabilities, call the [PublicCreateImageScanTask](https://help.aliyun.com/document_detail/411723.html) operation. Wait 1 to 5 minutes until the call is successful and call the DescribeImageVulList operation.
+// To view the latest container image vulnerability information, call the [PublicCreateImageScanTask](~~PublicCreateImageScanTask~~) operation to create an image scan task first, wait 1 to 5 minutes, and then call this operation to view the container image vulnerability list.
 //
 // @param request - DescribeImageVulListRequest
 //
@@ -17569,7 +17607,7 @@ func (client *Client) DescribeImageVulListWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the whitelist of image vulnerabilities.
+// Queries the image vulnerability whitelist.
 //
 // @param request - DescribeImageVulWhiteListRequest
 //
@@ -17629,7 +17667,7 @@ func (client *Client) DescribeImageVulWhiteListWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the verification code for you to manually install the Security Center agent.
+// Retrieves the installation verification code for manually installing the Agent.
 //
 // @param request - DescribeInstallCaptchaRequest
 //
@@ -17681,7 +17719,7 @@ func (client *Client) DescribeInstallCaptchaWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the information about servers to which a defense rule against brute-force attacks is applied.
+// Queries information about servers on which brute-force attacks defense rules take effect.
 //
 // @param request - DescribeInstanceAntiBruteForceRulesRequest
 //
@@ -17741,7 +17779,7 @@ func (client *Client) DescribeInstanceAntiBruteForceRulesWithContext(ctx context
 
 // Summary:
 //
-// Queries the status of the servers that you restart.
+// Queries the restart status of instances.
 //
 // @param request - DescribeInstanceRebootStatusRequest
 //
@@ -17785,7 +17823,7 @@ func (client *Client) DescribeInstanceRebootStatusWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries the statistics of assets that are protected by Security Center.
+// Queries the statistics information of server asset instances.
 //
 // @param request - DescribeInstanceStatisticsRequest
 //
@@ -17841,7 +17879,7 @@ func (client *Client) DescribeInstanceStatisticsWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries the statistics of vulnerabilities that are detected on a cluster.
+// Queries vulnerability statistics for a cluster.
 //
 // @param request - DescribeInstanceVulStatisticsRequest
 //
@@ -17889,7 +17927,7 @@ func (client *Client) DescribeInstanceVulStatisticsWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries the configurations of the log analysis feature provided by Security Center.
+// Queries the configuration information of log analysis in Security Center.
 //
 // @param request - DescribeLogMetaRequest
 //
@@ -17945,7 +17983,7 @@ func (client *Client) DescribeLogMetaWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// Queries the status information about the log analysis feature.
+// Queries the availability status of the log analysis feature.
 //
 // @param request - DescribeLogShipperStatusRequest
 //
@@ -17989,7 +18027,7 @@ func (client *Client) DescribeLogShipperStatusWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the information about the configurations that are used to detect unusual logons to your servers.
+// Queries the configuration of unusual logon detection rules for servers.
 //
 // @param request - DescribeLoginBaseConfigsRequest
 //
@@ -18045,7 +18083,7 @@ func (client *Client) DescribeLoginBaseConfigsWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the purchased log storage capacity.
+// Queries the log analysis storage capacity of Security Center.
 //
 // @param request - DescribeLogstoreStorageRequest
 //
@@ -18093,7 +18131,7 @@ func (client *Client) DescribeLogstoreStorageWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries whether a server can be restarted after the vulnerabilities on the server are fixed. The fixes take effect only after the server is restarted.
+// Checks whether a server can be restarted when a vulnerability fix requires a restart to take effect.
 //
 // @param request - DescribeMachineCanRebootRequest
 //
@@ -18141,7 +18179,7 @@ func (client *Client) DescribeMachineCanRebootWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries a list of malicious image sample types.
+// Queries the list of malicious file types.
 //
 // @param request - DescribeMatchedMaliciousNamesRequest
 //
@@ -18281,7 +18319,7 @@ func (client *Client) DescribeNoticeConfigWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the information about an alert type.
+// Queries security alerting Alarm Metric.
 //
 // @param request - DescribeNsasSuspEventTypeRequest
 //
@@ -18433,7 +18471,7 @@ func (client *Client) DescribeOfflineMachinesWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries agent tasks.
+// Queries the list of client tasks.
 //
 // @param request - DescribeOnceTaskRequest
 //
@@ -18505,7 +18543,7 @@ func (client *Client) DescribeOnceTaskWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries the sub-task information of one-time scan task. A sub-task can be an image scan task or an image asset synchronization task.
+// Retrieves the details of subtasks for a one-time scan task result, including image scanning and image asset synchronization.
 //
 // @param request - DescribeOnceTaskLeafRecordPageRequest
 //
@@ -18677,7 +18715,7 @@ func (client *Client) DescribePropertyCountWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the detailed info of the Schedule Job List in host Assets.
+// # Query Asset Fingerprint Scheduled Task Details
 //
 // @param request - DescribePropertyCronDetailRequest
 //
@@ -18893,7 +18931,7 @@ func (client *Client) DescribePropertyPortDetailWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries information about all ports.
+// Retrieves information about all ports.
 //
 // @param request - DescribePropertyPortItemRequest
 //
@@ -19097,7 +19135,7 @@ func (client *Client) DescribePropertyProcItemWithContext(ctx context.Context, r
 
 // Summary:
 //
-// # Query Asset Fingerprint Collection Middleware Details
+// Queries detailed information about the middleware list on the Asset Fingerprints investigation page.
 //
 // @param request - DescribePropertyScaDetailRequest
 //
@@ -19605,11 +19643,11 @@ func (client *Client) DescribePropertyTypeScaItemWithContext(ctx context.Context
 
 // Summary:
 //
-// Uses the asset fingerprints feature to obtain the statistics on top five most frequently detected ports, processes, software, accounts, or middleware.
+// Retrieves the top 5 statistics information for ports, processes, software, accounts, or middleware by occurrence count in your assets using the Asset Fingerprints feature.
 //
 // Description:
 //
-// Only users who purchase the Enterprise or Ultimate edition of Security Center can call this operation.
+// Only Security Center Enterprise or Ultimate Edition users can call this operation.
 //
 // @param request - DescribePropertyUsageTopRequest
 //
@@ -19653,7 +19691,7 @@ func (client *Client) DescribePropertyUsageTopWithContext(ctx context.Context, r
 
 // Summary:
 //
-// # Query asset fingerprint user details
+// Queries the Asset Fingerprints information of account assets on a server.
 //
 // @param request - DescribePropertyUserDetailRequest
 //
@@ -19737,7 +19775,7 @@ func (client *Client) DescribePropertyUserDetailWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries information about an account.
+// Retrieves the account information of assets.
 //
 // @param request - DescribePropertyUserItemRequest
 //
@@ -19793,7 +19831,7 @@ func (client *Client) DescribePropertyUserItemWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the download information about a quarantined file.
+// Queries the download information of a quarantined file for a security alert.
 //
 // @param request - DescribeQuaraFileDownloadInfoRequest
 //
@@ -19841,7 +19879,7 @@ func (client *Client) DescribeQuaraFileDownloadInfoWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries the information about a report export task.
+// Queries the export information of a security report.
 //
 // @param request - DescribeReportExportRequest
 //
@@ -19889,7 +19927,7 @@ func (client *Client) DescribeReportExportWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the status of a report recipient by using the security report feature of the System Configuration module in the Security Center console.
+// Queries the status of report contacts by using the system configuration and security report feature of Security Center.
 //
 // @param request - DescribeReportRecipientStatusRequest
 //
@@ -20225,11 +20263,11 @@ func (client *Client) DescribeRiskCheckResultWithContext(ctx context.Context, re
 //
 // Summary:
 //
-// Queries the summary information about the check results of cloud service configurations. The information includes the number of risk items, the risk rate, the number of affected assets, the check time, and the statistics about each type of check items.
+// Queries the summary of cloud service configuration check results, including the number of risk items, risk rate, number of affected assets, check time, and statistics by type.
 //
 // Description:
 //
-// This operation is phased out. You can use the GetCheckSummary operation.
+// This operation is deprecated. Use the GetCheckSummary operation instead.
 //
 // @param request - DescribeRiskCheckSummaryRequest
 //
@@ -20287,11 +20325,11 @@ func (client *Client) DescribeRiskCheckSummaryWithContext(ctx context.Context, r
 //
 // Summary:
 //
-// Queries the types of check items in configuration assessment.
+// Queries the types of all cloud service configuration check items.
 //
 // Description:
 //
-// This operation is phased out. You can use the ListCheckStandard operation instead.
+// This operation is offline. Use the upgraded operation ListCheckStandard instead.
 //
 // @param request - DescribeRiskItemTypeRequest
 //
@@ -20465,7 +20503,7 @@ func (client *Client) DescribeRiskTypeWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries the information about baselines based on baseline IDs or names.
+// Queries baseline details by baseline ID or name.
 //
 // @param request - DescribeRisksRequest
 //
@@ -20525,7 +20563,7 @@ func (client *Client) DescribeRisksWithContext(ctx context.Context, request *Des
 
 // Summary:
 //
-// Queries the servers on which you want to install the CloudMonitor agent.
+// Queries the status list of O&M plug-ins.
 //
 // @param request - DescribeSasPmAgentListRequest
 //
@@ -20661,7 +20699,7 @@ func (client *Client) DescribeScanTaskStatisticsWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries the trends of the scores on the security dashboard.
+// Queries the security score trend on the security dashboard.
 //
 // @param request - DescribeScreenScoreThreadRequest
 //
@@ -20883,7 +20921,7 @@ func (client *Client) DescribeSecurityCheckScheduleConfigWithContext(ctx context
 
 // Summary:
 //
-// Queries the list of whitelist rules.
+// Queries the auto-whitelist rules for security alerts.
 //
 // @param request - DescribeSecurityEventMarkMissListRequest
 //
@@ -21059,7 +21097,7 @@ func (client *Client) DescribeSecurityEventOperationsWithContext(ctx context.Con
 
 // Summary:
 //
-// Queries the statistics of each security check item and the daily statistics in the trend chart based on each security check item.
+// Queries the statistics of each security check item and the daily statistics in the security check item trend chart.
 //
 // @param request - DescribeSecurityStatInfoRequest
 //
@@ -21155,7 +21193,7 @@ func (client *Client) DescribeServiceLinkedRoleStatusWithContext(ctx context.Con
 
 // Summary:
 //
-// Queries the scenarios in which alerts triggered by the same rule or rules of the same type are handled.
+// Queries the handling scenarios for alerts triggered by the same rule or type.
 //
 // @param request - DescribeSimilarEventScenariosRequest
 //
@@ -21503,11 +21541,11 @@ func (client *Client) DescribeSoarStrategyParamWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the details of a policy task on the Playbook page, including the execution status of the task and the process information of the task.
+// Queries the details of a policy task in the task center, including the task execution status and the corresponding flowchart.
 //
 // Description:
 //
-// Only the Enterprise and Ultimate editions of Security Center support this API operation.
+// Only the Enterprise and Ultimate editions of Security Center support this API call. Other editions are not supported.
 //
 // @param request - DescribeSoarStrategyTaskDetailRequest
 //
@@ -21555,11 +21593,11 @@ func (client *Client) DescribeSoarStrategyTaskDetailWithContext(ctx context.Cont
 
 // Summary:
 //
-// # Get the input parameters for a specific task
+// Queries the parameters of a policy task in the task center.
 //
 // Description:
 //
-// Only the Enterprise and Flagship editions of Cloud Security Center support this API call, other versions do not support it.
+// Only the Enterprise and Ultimate editions of Security Center support this API operation. Other editions do not support this operation.
 //
 // @param request - DescribeSoarStrategyTaskParamsRequest
 //
@@ -21599,11 +21637,11 @@ func (client *Client) DescribeSoarStrategyTaskParamsWithContext(ctx context.Cont
 
 // Summary:
 //
-// # Get the list of task execution results
+// Queries the execution results of a policy task in the task center.
 //
 // Description:
 //
-// This API is only supported by the Enterprise and Flagship editions of Cloud Security Center, other versions do not support it.
+// Only the Enterprise and Ultimate editions of Security Center support this API call. Other editions are not supported.
 //
 // @param request - DescribeSoarStrategyTaskResultRequest
 //
@@ -21695,11 +21733,11 @@ func (client *Client) DescribeSoarStrategyTasksWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries a list of policies created on the Playbook page of Security Center.
+// Queries the list of custom policies created in the task center of Security Center.
 //
 // Description:
 //
-// Only the Enterprise and Ultimate editions of Security Center support this API operation.
+// Only the Enterprise and Ultimate editions of Security Center support this API operation. Other editions do not support this operation.
 //
 // @param request - DescribeSoarSubscribedStrategyRequest
 //
@@ -21803,7 +21841,7 @@ func (client *Client) DescribeStrategyWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries the information about a baseline check policy.
+// Retrieves the details of a baseline check policy.
 //
 // @param request - DescribeStrategyDetailRequest
 //
@@ -22567,7 +22605,7 @@ func (client *Client) DescribeSuspiciousUUIDConfigWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries a list of IDC scan tasks.
+// Queries the list of asset synchronization IDC scan tasks.
 //
 // @param request - DescribeSyncAssetTaskListRequest
 //
@@ -22627,7 +22665,7 @@ func (client *Client) DescribeSyncAssetTaskListWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the details of an IDC scan task.
+// Queries the details of IDC scan tasks for asset synchronization.
 //
 // @param request - DescribeSyncAssetTaskLogDetailRequest
 //
@@ -22691,7 +22729,7 @@ func (client *Client) DescribeSyncAssetTaskLogDetailWithContext(ctx context.Cont
 
 // Summary:
 //
-// Queries the servers on which vulnerability scan is enabled.
+// Queries the machine list settings for vulnerability scanning.
 //
 // @param request - DescribeTargetRequest
 //
@@ -22739,7 +22777,7 @@ func (client *Client) DescribeTargetWithContext(ctx context.Context, request *De
 
 // Summary:
 //
-// Queries the error logs on a task that failed to fix image vulnerabilities.
+// Queries the error logs of a failed image fix task.
 //
 // @param request - DescribeTaskErrorLogRequest
 //
@@ -22783,7 +22821,7 @@ func (client *Client) DescribeTaskErrorLogWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries event statistics.
+// Retrieves event statistics information.
 //
 // @param request - DescribeTotalStatisticsRequest
 //
@@ -22835,7 +22873,7 @@ func (client *Client) DescribeTotalStatisticsWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the trace information about alerts.
+// Queries the tracing information of a security alert.
 //
 // @param request - DescribeTraceInfoDetailRequest
 //
@@ -22903,7 +22941,7 @@ func (client *Client) DescribeTraceInfoDetailWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the details about a trace node.
+// Queries the details of a trace node.
 //
 // @param request - DescribeTraceInfoNodeRequest
 //
@@ -22975,7 +23013,7 @@ func (client *Client) DescribeTraceInfoNodeWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the information about databases for which anti-ransomware policies are created.
+// Queries the details of databases in database protection policies.
 //
 // @param request - DescribeUniBackupDatabaseRequest
 //
@@ -23039,7 +23077,7 @@ func (client *Client) DescribeUniBackupDatabaseWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the anti-ransomware policies that are created for databases.
+// Queries the list of database anti-ransomware policies.
 //
 // @param request - DescribeUniBackupPoliciesRequest
 //
@@ -23091,7 +23129,7 @@ func (client *Client) DescribeUniBackupPoliciesWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the details of an anti-ransomware policy for databases.
+// Queries the details of an anti-ransomware backup policy for databases.
 //
 // @param request - DescribeUniBackupPolicyDetailRequest
 //
@@ -23135,7 +23173,7 @@ func (client *Client) DescribeUniBackupPolicyDetailWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries the backup snapshots from which the data of a database can be restored.
+// Queries the list of recoverable database backups.
 //
 // @param request - DescribeUniRecoverableListRequest
 //
@@ -23191,7 +23229,7 @@ func (client *Client) DescribeUniRecoverableListWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries whether Security Center is authorized to run configuration checks on cloud services.
+// Queries the status of cloud platform authorization information for a user.
 //
 // @param request - DescribeUserBaselineAuthorizationRequest
 //
@@ -23243,7 +23281,7 @@ func (client *Client) DescribeUserBaselineAuthorizationWithContext(ctx context.C
 
 // Summary:
 //
-// Queries the settings of a custom baseline check policy.
+// Retrieves user-defined configurations for baseline checks.
 //
 // @param request - DescribeUserSettingRequest
 //
@@ -23287,7 +23325,7 @@ func (client *Client) DescribeUserSettingWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries a list of assets that support fixing based on vulnerability names.
+// Retrieves the list of servers that support vulnerability fixing based on vulnerability names.
 //
 // @param request - DescribeUuidsByVulNamesRequest
 //
@@ -23387,7 +23425,7 @@ func (client *Client) DescribeUuidsByVulNamesWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the details about the edition of purchased Security Center.
+// Queries the version details of a purchased Security Center instance.
 //
 // @param request - DescribeVersionConfigRequest
 //
@@ -23527,11 +23565,11 @@ func (client *Client) DescribeVpcHoneyPotCriteriaWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries honeypots.
+// Queries the list of VPC honeypot probes.
 //
 // Description:
 //
-// If you specify only the Action request parameter in your request, Security Center returns the list of all VPCs regardless of whether a honeypot is deployed on a VPC.
+// If you specify only the Action parameter without specifying any other request parameters, Security Center returns the list of all VPCs regardless of whether honeypot instances are created in the VPCs.
 //
 // @param request - DescribeVpcHoneyPotListRequest
 //
@@ -23647,7 +23685,7 @@ func (client *Client) DescribeVulCheckTaskStatusDetailWithContext(ctx context.Co
 
 // Summary:
 //
-// Queries the configurations of vulnerability management.
+// Queries vulnerability management configuration information.
 //
 // @param request - DescribeVulConfigRequest
 //
@@ -23695,7 +23733,7 @@ func (client *Client) DescribeVulConfigWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries the vulnerability defense statistics in Security Center.
+// Queries the vulnerability prevention statistics of a Security Center user.
 //
 // @param request - DescribeVulDefendCountStatisticsRequest
 //
@@ -23739,7 +23777,7 @@ func (client *Client) DescribeVulDefendCountStatisticsWithContext(ctx context.Co
 
 // Summary:
 //
-// Queries the details about a vulnerability.
+// Queries vulnerability details.
 //
 // @param request - DescribeVulDetailsRequest
 //
@@ -23799,11 +23837,11 @@ func (client *Client) DescribeVulDetailsWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries the progress of a task that exports vulnerabilities.
+// Queries the progress of a vulnerability export task.
 //
 // Description:
 //
-// If the value of ExportStatus is success, the URL at which you can download the exported Excel file is returned.
+// A download link is returned when the export task status is success.
 //
 // @param request - DescribeVulExportInfoRequest
 //
@@ -24039,7 +24077,7 @@ func (client *Client) DescribeVulListPageWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries the statistics of vulnerabilities.
+// Get vulnerability statistics.
 //
 // @param request - DescribeVulNumStatisticsRequest
 //
@@ -24135,7 +24173,7 @@ func (client *Client) DescribeVulTargetConfigWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the configurations of the vulnerability scan feature.
+// Retrieves the list of vulnerability switch configurations.
 //
 // @param request - DescribeVulTargetStatisticsRequest
 //
@@ -24179,7 +24217,7 @@ func (client *Client) DescribeVulTargetStatisticsWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries the whitelist of vulnerabilities by page.
+// Queries vulnerability whitelists by paging.
 //
 // @param request - DescribeVulWhitelistRequest
 //
@@ -24371,7 +24409,7 @@ func (client *Client) DescribeWarningMachinesWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the information about the servers that have web tamper proofing enabled.
+// Retrieves the list of servers that have web tamper-proofing protection enabled.
 //
 // @param request - DescribeWebLockBindListRequest
 //
@@ -24495,7 +24533,7 @@ func (client *Client) DescribeWebLockConfigListWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the statistics on changes to the files that are protected by web tamper proofing.
+// Queries the file change statistics for web tamper-proofing.
 //
 // @param request - DescribeWebLockFileChangeStatisticsRequest
 //
@@ -24715,7 +24753,7 @@ func (client *Client) DescribeWebLockProcessListWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries the status of web tamper proofing.
+// Queries the tamper-proofing protection status.
 //
 // @param request - DescribeWebLockStatusRequest
 //
@@ -24767,7 +24805,7 @@ func (client *Client) DescribeWebLockStatusWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the custom web directories that are scanned based on the alerting feature.
+// Queries custom web directories for security alerts.
 //
 // @param request - DescribeWebPathRequest
 //
@@ -24887,11 +24925,11 @@ func (client *Client) DescribeWhiteListAssetWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the available quota for the application whitelist feature.
+// Queries the number of available authorizations for the application whitelist.
 //
 // Description:
 //
-// The application whitelist feature is in public preview. You cannot apply for a trial of the feature. If you applied for a trial of the feature or the feature is in use, you can call this operation.
+// The application whitelist is a China site China site public preview feature that is no longer open for new applications. Users who have already applied for or are using this feature can call this operation as expected.
 //
 // @param request - DescribeWhiteListAuthorizeRequest
 //
@@ -25147,11 +25185,11 @@ func (client *Client) DescribeWhiteListStrategyListWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries the statistics of application whitelist policies.
+// Queries the statistics of application whitelist policy.
 //
 // Description:
 //
-// The application whitelist feature is in public preview. You cannot apply for a trial of the feature. If you applied for a trial of the feature or the feature is in use, you can call this operation.
+// Application whitelist is a China-site public preview feature that is no longer open for new applications. Users who have already applied for or are using this feature can call this operation as usual.
 //
 // @param request - DescribeWhiteListStrategyStatisticsRequest
 //
@@ -25603,7 +25641,7 @@ func (client *Client) EnableCustomInstanceBlockRecordWithContext(ctx context.Con
 
 // Summary:
 //
-// Performs a baseline check on servers to which a specified baseline check policy is applied.
+// Performs a baseline check on machines within a specified policy.
 //
 // @param request - ExecStrategyRequest
 //
@@ -25703,19 +25741,11 @@ func (client *Client) ExportCustomizeReportWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Exports the check results on the Host, Cloud Platform Configuration Assessment, Image Security, Attack Awareness, and AK leak detection pages to Excel files.
+// Exports detection results from various Cloud Security Center features, such as Asset Center, cloud platform configuration check, image security scan, attack analysis, and AK leakage detection, to an Excel file.
 //
 // Description:
 //
-// You can call the operation to export the following check result lists:
-//
-//   - The list of servers on the Host page.
-//
-//   - The lists of image system vulnerabilities, image application vulnerabilities, image baseline check results, and malicious image samples on the Image Security page.
-//
-//   - The list of attack analysis data on the Attack Awareness page.
-//
-//   - The list of check results for AccessKey pair leaks on the AK leak detection page.
+// After you call this operation, you can call the [DescribeExportInfo](~~DescribeExportInfo~~) operation to query the export progress and retrieve the download URL for the exported Excel file.
 //
 // @param request - ExportRecordRequest
 //
@@ -25907,17 +25937,17 @@ func (client *Client) ExportSuspEventsWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Exports vulnerabilities.
+// # Export vulnerability list
 //
 // Description:
 //
-// You can call the ExportVul operation to export the following types of vulnerabilities: Linux software vulnerabilities, Windows system vulnerabilities, Web-CMS vulnerabilities, application vulnerabilities, and urgent vulnerabilities.
+// This API exports vulnerabilities, including Linux software vulnerabilities, Windows system vulnerabilities, Web-CMS vulnerabilities, application vulnerabilities, and emergency vulnerabilities.
 //
-// You can use this operation together with the DescribeVulExportInfo operation. After you call the ExportVul operation to create a vulnerability export task, you can call the DescribeVulExportInfo operation to query the progress of the task by specifying the ID of the task.
+// Use this API to create a `vulnerability export task`. Then, call `DescribeVulExportInfo` with the task\\"s ID to check its progress.
 //
-// ### Limits
+// ### QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The QPS limit for a single user is 10. If you exceed this limit, API calls are throttled. This can affect your service. Plan your API calls accordingly.
 //
 // @param request - ExportVulRequest
 //
@@ -26139,7 +26169,7 @@ func (client *Client) ExportWarningWithContext(ctx context.Context, request *Exp
 
 // Summary:
 //
-// # Container Network Connection
+// Retrieves information about network connectivity between two nodes.
 //
 // @param tmpReq - FindContainerNetworkConnectRequest
 //
@@ -26261,7 +26291,7 @@ func (client *Client) FinishGuidTaskWithContext(ctx context.Context, request *Fi
 
 // Summary:
 //
-// Fixes a baseline risk item.
+// Fixes baseline check risk items.
 //
 // @param request - FixCheckWarningsRequest
 //
@@ -26433,7 +26463,7 @@ func (client *Client) GenerateDynamicDictWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Generates a command that is used to add a self-managed Kubernetes cluster.
+// Generate commands for connecting self-built Kubernetes clusters.
 //
 // @param request - GenerateK8sAccessInfoRequest
 //
@@ -26621,11 +26651,11 @@ func (client *Client) GetAccountLabelWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// Queries the details of a defense rule against container escapes.
+// Queries the details of a container escape prevention rule.
 //
 // Description:
 //
-// Only the Ultimate edition of Security Center supports this operation.
+// Only Security Center Ultimate users can call this operation.
 //
 // @param request - GetAegisContainerPluginRuleRequest
 //
@@ -26677,7 +26707,7 @@ func (client *Client) GetAegisContainerPluginRuleWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries search conditions that can be used to search for container file protection rules.
+// Queries the query conditions of container anti-tamper rules.
 //
 // @param request - GetAegisContainerPluginRuleCriteriaRequest
 //
@@ -26817,7 +26847,7 @@ func (client *Client) GetAgentlessTaskUsedSizeEstimateWithContext(ctx context.Co
 
 // Summary:
 //
-// Queries the number of servers on which alerts are generated.
+// Retrieves the number of servers that currently have security alerts.
 //
 // @param request - GetAlarmMachineCountRequest
 //
@@ -26861,7 +26891,7 @@ func (client *Client) GetAlarmMachineCountWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the network topology between containerized applications.
+// Retrieves the network topology between container applications.
 //
 // @param request - GetAppNetworkRequest
 //
@@ -26901,7 +26931,7 @@ func (client *Client) GetAppNetworkWithContext(ctx context.Context, request *Get
 
 // Summary:
 //
-// Queries the details of a server and the extended information about the server by using the UUID of the server.
+// Queries the details and extended information of a server asset by UUID.
 //
 // @param request - GetAssetDetailByUuidRequest
 //
@@ -26953,7 +26983,7 @@ func (client *Client) GetAssetDetailByUuidWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries asset selection configurations.
+// Retrieves the asset selection configuration.
 //
 // @param request - GetAssetSelectionConfigRequest
 //
@@ -26997,7 +27027,7 @@ func (client *Client) GetAssetSelectionConfigWithContext(ctx context.Context, re
 
 // Summary:
 //
-// # Query detailed information of asset fingerprints
+// Queries the details of Asset Fingerprints for startup items, kernel modules, or web sites.
 //
 // @param request - GetAssetsPropertyDetailRequest
 //
@@ -27077,7 +27107,7 @@ func (client *Client) GetAssetsPropertyDetailWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the aggregation information about the asset fingerprints of the startup item, kernel module, or website type.
+// Queries the aggregated list of Asset Fingerprints for startup items, kernel modules, or websites.
 //
 // @param request - GetAssetsPropertyItemRequest
 //
@@ -27145,7 +27175,7 @@ func (client *Client) GetAssetsPropertyItemWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// # Get Attack Analysis Dashboard Information
+// Retrieves attack analysis dashboard information.
 //
 // @param request - GetAttackEventDashboardRequest
 //
@@ -27197,7 +27227,7 @@ func (client *Client) GetAttackEventDashboardWithContext(ctx context.Context, re
 
 // Summary:
 //
-// # Get Attack Analysis Event Details
+// Retrieves the details of an attack analysis event.
 //
 // @param request - GetAttackEventDetailRequest
 //
@@ -27245,7 +27275,7 @@ func (client *Client) GetAttackEventDetailWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Query attack path management event details.
+// Queries the details of an attack path event.
 //
 // @param request - GetAttackPathEventDetailRequest
 //
@@ -27297,7 +27327,7 @@ func (client *Client) GetAttackPathEventDetailWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Query Attack Path Sensitive Assets.
+// Queries the sensitive assets in an attack path.
 //
 // @param request - GetAttackPathSensitiveAssetConfigRequest
 //
@@ -27345,7 +27375,7 @@ func (client *Client) GetAttackPathSensitiveAssetConfigWithContext(ctx context.C
 
 // Summary:
 //
-// Query Attack Path Whitelist Details.
+// Queries the details of an attack path whitelist.
 //
 // @param request - GetAttackPathWhitelistRequest
 //
@@ -27389,7 +27419,7 @@ func (client *Client) GetAttackPathWhitelistWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries configurations for scanning image build command risks.
+// Queries the risk scan configuration for image build commands.
 //
 // @param request - GetBuildRiskDefineRuleConfigRequest
 //
@@ -27589,7 +27619,7 @@ func (client *Client) GetCheckDetailWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
-// Queries the progress of a configuration check task on cloud services.
+// Queries the progress of a cloud platform configuration check task.
 //
 // @param request - GetCheckProcessRequest
 //
@@ -27685,7 +27715,7 @@ func (client *Client) GetCheckRiskStatisticsWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the sales information about the configuration assessment feature, including the purchased quota and the consumed quota.
+// Retrieves the sales information of cloud service configuration check, including the number of authorized quotas and consumed quotas.
 //
 // @param request - GetCheckSaleRequest
 //
@@ -27729,11 +27759,11 @@ func (client *Client) GetCheckSaleWithContext(ctx context.Context, request *GetC
 
 // Summary:
 //
-// Obtains the structure information about check items provided by the configuration assessment feature.
+// Queries the directory structure of the check item list.
 //
 // Description:
 //
-// You must purchase the configuration assessment feature before you can use the feature.
+// The cloud platform configuration check feature requires a purchase before use.
 //
 // @param request - GetCheckStructureRequest
 //
@@ -27793,7 +27823,7 @@ func (client *Client) GetCheckStructureWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries the summary information about the configuration checks on cloud services.
+// Retrieves the overview of cloud platform configuration checks.
 //
 // @param request - GetCheckSummaryRequest
 //
@@ -27853,7 +27883,7 @@ func (client *Client) GetCheckSummaryWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// # Get time trend statistics data
+// Retrieves the time trend pass rate statistics for Cloud Security Posture Management (CSPM) risk items.
 //
 // @param request - GetCheckTimeDimensionStatisticRequest
 //
@@ -27965,7 +27995,7 @@ func (client *Client) GetClientRatioStatisticWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the information about a custom defense rule.
+// Queries custom rules for malicious behavior defense.
 //
 // @param request - GetClientUserDefineRuleRequest
 //
@@ -28113,7 +28143,7 @@ func (client *Client) GetCloudAssetDetailWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// # Get Cloud Asset Summary
+// Queries the summary of cloud assets.
 //
 // @param request - GetCloudAssetSummaryRequest
 //
@@ -28130,6 +28160,10 @@ func (client *Client) GetCloudAssetSummaryWithContext(ctx context.Context, reque
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CloudAssetTypes) {
 		query["CloudAssetTypes"] = request.CloudAssetTypes
+	}
+
+	if !dara.IsNil(request.IsSaleData) {
+		query["IsSaleData"] = request.IsSaleData
 	}
 
 	if !dara.IsNil(request.Vendors) {
@@ -28161,7 +28195,7 @@ func (client *Client) GetCloudAssetSummaryWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the statistics on baseline risk items of container clusters.
+// Retrieves the number of baseline check issues for a container cluster.
 //
 // @param request - GetClusterCheckItemWarningStatisticsRequest
 //
@@ -28209,7 +28243,7 @@ func (client *Client) GetClusterCheckItemWarningStatisticsWithContext(ctx contex
 
 // Summary:
 //
-// # Query the number of cluster inspection item risks
+// Queries the risk statistics of check items for a cluster.
 //
 // @param request - GetClusterCheckSummaryRequest
 //
@@ -28297,7 +28331,7 @@ func (client *Client) GetClusterRuleSummaryWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Query K8s cluster scan access configuration.
+// Queries the scan access configuration of a Kubernetes cluster.
 //
 // @param request - GetClusterScannerYamlRequest
 //
@@ -28341,7 +28375,7 @@ func (client *Client) GetClusterScannerYamlWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the statistics on alert events that are generated for containers.
+// Retrieves statistics on container security events.
 //
 // @param request - GetClusterSuspEventStatisticsRequest
 //
@@ -28481,7 +28515,7 @@ func (client *Client) GetConsoleFuncGrayStatusWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the details of a rule for non-image program defense.
+// Retrieves the details of a non-image process defense rule.
 //
 // @param request - GetContainerDefenseRuleDetailRequest
 //
@@ -28529,7 +28563,7 @@ func (client *Client) GetContainerDefenseRuleDetailWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries the security operations trends of the vulnerabilities, alerts, and baseline risks.
+// Queries the security operations trends for vulnerabilities, alerts, and baselines.
 //
 // @param request - GetDataTrendRequest
 //
@@ -28585,7 +28619,7 @@ func (client *Client) GetDataTrendWithContext(ctx context.Context, request *GetD
 
 // Summary:
 //
-// Queries the ranking of images in each dimension.
+// Queries the rankings of images by various dimensions.
 //
 // @param request - GetDockerhubImageRiskRankInfoRequest
 //
@@ -28733,11 +28767,25 @@ func (client *Client) GetFileDetectReportWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Obtains file detection results.
+// Retrieves file detection results in batches using `HashKey` values.
 //
 // Description:
 //
-// The HashKey parameter is included in all API operations that are related to the file detection feature. The parameter specifies the unique identifier of a file. Only MD5 hash values are supported. Before you call this operation, calculate the MD5 hash value of the file.
+// You can retrieve detection results only for submitted files. Results are retained for 5 hours and can be queried multiple times during this period. To submit a file for detection, call the [CreateFileDetect](~~CreateFileDetect~~) operation.
+//
+// ### Unique file identifier
+//
+// All file detection operations use the `HashKey` parameter. `HashKey` is a unique file identifier used to query the corresponding file detection result.
+//
+// For Skill compressed package detection (when Type is 6), obtain the `HashKey` from the response of the [CreateFileDetect](~~CreateFileDetect~~) operation.
+//
+// For malicious file detection (when Type is 0), the `HashKey` must be the MD5 or SHA-256 hash of the entire file.
+//
+// ### Query detection results
+//
+// In a malicious file detection scenario (when `Type` is `0`), you can filter files by their attributes using the `FileLabel` field in the `Ext` field. For example, you can combine the `encrypted` and `Zip` attributes to filter for encrypted compressed packages. Supported file tags for compressed packages include: `Zip`, `RAR`, `7-Zip`, `XAR`, `ZLib`, `GZip`, and `tar`. You can also use the `Highlight` field in the `Ext` field to locate malicious code segments in `WebShell` files. The `Highlight` field is a list in which each element represents a code range. The numbers indicate the character offset from the beginning of the file.
+//
+// In a Skill compressed package detection scenario (when `Type` is `6`), you can retrieve the detection report from the `Ext` field. This report includes results from deep intent analysis, prompt injection detection, sensitive information recognition, and malicious script detection. To query the details of an individual file within the compressed package, call the [ListCompressFileDetectResult](~~ListCompressFileDetectResult~~) operation.
 //
 // @param request - GetFileDetectResultRequest
 //
@@ -28789,7 +28837,7 @@ func (client *Client) GetFileDetectResultWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 获取文件防护事件
+// Retrieves the details of a file protection event.
 //
 // @param request - GetFileProtectClientEventRequest
 //
@@ -28829,7 +28877,7 @@ func (client *Client) GetFileProtectClientEventWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 获取文件防护事件大盘
+// Retrieves the dashboard data of file tamper-proofing events.
 //
 // @param request - GetFileProtectClientEventDashboardRequest
 //
@@ -28885,7 +28933,7 @@ func (client *Client) GetFileProtectClientEventDashboardWithContext(ctx context.
 
 // Summary:
 //
-// 获取文件保护规则
+// Retrieves the details of a file protection rule.
 //
 // @param request - GetFileProtectClientRuleRequest
 //
@@ -28929,7 +28977,7 @@ func (client *Client) GetFileProtectClientRuleWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 获取文件防护规则大盘
+// Retrieves the overview dashboard of file protection rules.
 //
 // @param request - GetFileProtectClientRuleDashboardRequest
 //
@@ -28966,7 +29014,7 @@ func (client *Client) GetFileProtectClientRuleDashboardWithContext(ctx context.C
 
 // Summary:
 //
-// Queries information about core file monitoring events.
+// Retrieves information about core file monitoring events.
 //
 // @param request - GetFileProtectEventRequest
 //
@@ -29186,7 +29234,7 @@ func (client *Client) GetHoneyPotUploadPolicyInfoWithContext(ctx context.Context
 
 // Summary:
 //
-// # Get honeypot attack statistics
+// Queries the attack event statistics information of a honeypot attack source.
 //
 // @param request - GetHoneypotAttackStatisticsRequest
 //
@@ -29318,7 +29366,7 @@ func (client *Client) GetHoneypotEventTrendWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the details of a specified management node.
+// Retrieves the details of a specified management node.
 //
 // @param request - GetHoneypotNodeRequest
 //
@@ -29670,7 +29718,7 @@ func (client *Client) GetImageScanNumInPeriodWithContext(ctx context.Context, re
 
 // Summary:
 //
-// # Query Asset Installation Code
+// Queries the Security Center agent installation code for a specified asset by UUID.
 //
 // @param request - GetInstallCodeForUuidRequest
 //
@@ -29714,7 +29762,7 @@ func (client *Client) GetInstallCodeForUuidWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the alerting statistics information of a server.
+// # Count the number of security events for a single instance
 //
 // @param request - GetInstanceAlarmStatisticsRequest
 //
@@ -29762,7 +29810,7 @@ func (client *Client) GetInstanceAlarmStatisticsWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries the details of a microsegmentation defense rule.
+// Retrieves the details of a microsegmentation defense rule.
 //
 // @param request - GetInterceptionRuleDetailRequest
 //
@@ -29898,7 +29946,7 @@ func (client *Client) GetInterceptionTargetDetailWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries information about the latest scan task to determine whether the task is complete.
+// Retrieves runtime information for the latest scan task to check its completion status.
 //
 // @param request - GetLastOnceTaskInfoRequest
 //
@@ -29950,7 +29998,7 @@ func (client *Client) GetLastOnceTaskInfoWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Obtains the default region for synchronizing assets outside Alibaba Cloud.
+// Retrieves the default synchronization region for external asset synchronization.
 //
 // @param request - GetLocalDefaultRegionRequest
 //
@@ -30232,7 +30280,7 @@ func (client *Client) GetModuleTrialAuthInfoWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the details of an alert event that is generated for a malicious object.
+// Retrieves the details of an alert event that is generated for a malicious object.
 //
 // @param request - GetObjectScanEventRequest
 //
@@ -30280,7 +30328,7 @@ func (client *Client) GetObjectScanEventWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries the execution result of a one-time scan task, such as asset fingerprint collection, vulnerability scan, and image security scan.
+// Queries the execution results of a one-time scan task, such as an asset fingerprint collection task, a vulnerability scan, or an image security scan.
 //
 // @param request - GetOnceTaskResultInfoRequest
 //
@@ -30388,7 +30436,7 @@ func (client *Client) GetOpaClusterImageListWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries information about the tags that are added to containers based on the feature of proactive defense for containers.
+// Retrieves information about the tags that are added to containers based on the feature of proactive defense for containers.
 //
 // @param request - GetOpaClusterLabelListRequest
 //
@@ -30444,7 +30492,7 @@ func (client *Client) GetOpaClusterLabelListWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries information about the namespaces of clusters for which the rules of the at-risk image blocking type are configured in proactive defense for containers.
+// Retrieves information about the namespaces of clusters for which the rules of the at-risk image blocking type are configured in proactive defense for containers.
 //
 // @param request - GetOpaClusterNamespaceListRequest
 //
@@ -30544,7 +30592,7 @@ func (client *Client) GetOpaPluginStatusWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries the details of the rule that is used to block at-risk images.
+// Retrieves the details of the rule that is used to block at-risk images.
 //
 // @param request - GetOpaStrategyDetailNewRequest
 //
@@ -30588,7 +30636,7 @@ func (client *Client) GetOpaStrategyDetailNewWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the statistics about an Object Storage Service (OSS) bucket check.
+// Retrieves OSS scan statistics.
 //
 // @param request - GetOssBucketScanStatisticRequest
 //
@@ -30636,7 +30684,7 @@ func (client *Client) GetOssBucketScanStatisticWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the configurations of an Object Storage Service (OSS) bucket check policy.
+// Retrieves the scan policy configuration.
 //
 // @param request - GetOssScanConfigRequest
 //
@@ -30684,7 +30732,7 @@ func (client *Client) GetOssScanConfigWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries the configurations for the collection frequency of asset fingerprints.
+// Queries the collection cycle configuration of Asset Fingerprints.
 //
 // @param request - GetPropertyScheduleConfigRequest
 //
@@ -30732,7 +30780,7 @@ func (client *Client) GetPropertyScheduleConfigWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Get Container File Defense Rule Details.
+// Retrieves a container file defense rule.
 //
 // @param request - GetSasContainerWebDefenseRuleRequest
 //
@@ -30776,7 +30824,7 @@ func (client *Client) GetSasContainerWebDefenseRuleWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries the applications that are specified in a rule for container tamper-proofing.
+// Retrieves the list of applications for container file defense configurations.
 //
 // @param request - GetSasContainerWebDefenseRuleApplicationRequest
 //
@@ -30820,7 +30868,7 @@ func (client *Client) GetSasContainerWebDefenseRuleApplicationWithContext(ctx co
 
 // Summary:
 //
-// Queries search conditions that can be used to search for container file protection rules.
+// Retrieves the query criteria for container tamper-proofing rules.
 //
 // @param request - GetSasContainerWebDefenseRuleCriteriaRequest
 //
@@ -30864,7 +30912,7 @@ func (client *Client) GetSasContainerWebDefenseRuleCriteriaWithContext(ctx conte
 
 // Summary:
 //
-// Queries the details of the deduction modules of the security score feature, including custom settings.
+// Queries the details of custom security scoring rules.
 //
 // @param request - GetSecurityScoreRuleRequest
 //
@@ -30912,7 +30960,7 @@ func (client *Client) GetSecurityScoreRuleWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the check rules of sensitive files.
+// Queries custom check items for sensitive file tampering.
 //
 // @param request - GetSensitiveDefineRuleConfigRequest
 //
@@ -30960,7 +31008,7 @@ func (client *Client) GetSensitiveDefineRuleConfigWithContext(ctx context.Contex
 
 // Summary:
 //
-// # Get Serverless Application Authorization Details
+// Retrieves the authorization details of a serverless application.
 //
 // @param request - GetServerlessAppAuthDetailRequest
 //
@@ -31016,7 +31064,7 @@ func (client *Client) GetServerlessAppAuthDetailWithContext(ctx context.Context,
 
 // Summary:
 //
-// # Get Serverless Authorization Overview
+// Retrieves the Serverless authorization overview.
 //
 // @param request - GetServerlessAuthSummaryRequest
 //
@@ -31068,7 +31116,7 @@ func (client *Client) GetServerlessAuthSummaryWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the service trail that was delivered to ActionTrail.
+// Retrieves the audit trail delivery configuration.
 //
 // @param request - GetServiceTrailRequest
 //
@@ -31112,7 +31160,7 @@ func (client *Client) GetServiceTrailWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// Queries the usage details of templates provided in the feature of proactive defense for containers for rules.
+// Queries the details of a rule template for container proactive defense.
 //
 // @param request - GetStrategyTemplateDetailRequest
 //
@@ -31156,7 +31204,7 @@ func (client *Client) GetStrategyTemplateDetailWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Get the list of modules supported by authorization.
+// Retrieves the list of modules supported for authorization.
 //
 // @param request - GetSupportedModulesRequest
 //
@@ -31200,7 +31248,7 @@ func (client *Client) GetSupportedModulesWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries the statistics of alerts in one or more asset groups.
+// Queries the statistics on the number of security alerts in one or more asset groups.
 //
 // @param request - GetSuspiciousStatisticsRequest
 //
@@ -31248,7 +31296,7 @@ func (client *Client) GetSuspiciousStatisticsWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the details of a migration operation. For example, you can query the progress and status of a migration operation after you migrate a server from a region in the Chinese mainland to the Singapore region.
+// Queries the progress of a service switchover. For example, when a server connection is being migrated from China to Singapore, this operation retrieves the migration progress and status.
 //
 // @param request - GetSwitchRegionDetailRequest
 //
@@ -31296,7 +31344,7 @@ func (client *Client) GetSwitchRegionDetailWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 获取未知威胁发现的统计信息
+// Retrieves statistics information on intelligent behavior analytics.
 //
 // @param request - GetUnknownThreatDetectStatisticRequest
 //
@@ -31385,7 +31433,7 @@ func (client *Client) GetValidDeductInstancesWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the configurations of a periodic virus scan task.
+// Retrieves the configuration of a periodic virus scan task.
 //
 // @param request - GetVirusScanConfigRequest
 //
@@ -31485,7 +31533,7 @@ func (client *Client) GetVulStatisticsWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries information about a vulnerability whitelist.
+// Retrieves information about a vulnerability whitelist.
 //
 // @param request - GetVulWhitelistRequest
 //
@@ -31529,7 +31577,7 @@ func (client *Client) GetVulWhitelistWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// # Authorization for Switching Migration
+// Grants authorization for feature migration.
 //
 // @param request - GrantSwitchAgreementRequest
 //
@@ -31589,7 +31637,7 @@ func (client *Client) GrantSwitchAgreementWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// # Handle Malicious Files
+// Adds or removes security alerts detected by the agentless detection feature to or from the whitelist.
 //
 // @param request - HandleMaliciousFilesRequest
 //
@@ -31637,7 +31685,7 @@ func (client *Client) HandleMaliciousFilesWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 文件检测告警处理操作
+// Handles malicious file detection alerts.
 //
 // @param request - HandleObjectScanEventRequest
 //
@@ -31777,11 +31825,11 @@ func (client *Client) HandleSecurityEventsWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Batch process malicious alerts.
+// Batch processes malicious sample alerts.
 //
 // Description:
 //
-// ***
+// ***.
 //
 // @param request - HandleSimilarMaliciousFilesRequest
 //
@@ -31841,7 +31889,7 @@ func (client *Client) HandleSimilarMaliciousFilesWithContext(ctx context.Context
 
 // Summary:
 //
-// Handles multiple alert events that are triggered by the same IP address rule or IP address rules of the same type at a time.
+// Batch processes alert events based on the same IP rule or type.
 //
 // @param request - HandleSimilarSecurityEventsRequest
 //
@@ -31909,7 +31957,7 @@ func (client *Client) HandleSimilarSecurityEventsWithContext(ctx context.Context
 
 // Summary:
 //
-// 处理未知威胁分析告警
+// Handles alerting from intelligent behavior analytics.
 //
 // @param request - HandleUnknownThreatDetectEventRequest
 //
@@ -32099,7 +32147,7 @@ func (client *Client) IgnoreHcCheckWarningsWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Adds the result scanned by an IDC probe to the whitelist or ignores the scan result.
+// Adds scan results from IDC probes to the whitelist or ignores them.
 //
 // @param request - IgnoreIdcProbeScanResultRequest
 //
@@ -32147,7 +32195,7 @@ func (client *Client) IgnoreIdcProbeScanResultWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Install Aegis client on Lingjun bare metal.
+// Installs the Security Center agent on Lingjun bare metal servers.
 //
 // @param tmpReq - InstallAegisForLingjunRequest
 //
@@ -32197,7 +32245,7 @@ func (client *Client) InstallAegisForLingjunWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// Installs the anti-ransomware agent.
+// Installs the anti-ransomware client.
 //
 // @param request - InstallBackupClientRequest
 //
@@ -32249,11 +32297,11 @@ func (client *Client) InstallBackupClientWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Installs the CloudMonitor agent on specified servers.
+// Installs the CloudMonitor agent on a specified server.
 //
 // Description:
 //
-// > Before you call this operation, make sure that the Security Center agent on your servers is online and the servers can access Alibaba Cloud services.
+// > Before installation, make sure that the Security Center client on your server is online and that your server can access Alibaba Cloud services over the network.
 //
 // @param request - InstallCloudMonitorRequest
 //
@@ -32513,7 +32561,7 @@ func (client *Client) JoinWebLockProcessWhiteListWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries defense rules against container escapes.
+// Query user configurations.
 //
 // @param request - ListAegisContainerPluginRuleRequest
 //
@@ -32699,7 +32747,7 @@ func (client *Client) ListAgentlessAssetWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries malicious files that are detected by agentless detection tasks.
+// Retrieves the list of malicious files detected by agentless detection.
 //
 // @param request - ListAgentlessMaliciousFilesRequest
 //
@@ -32787,7 +32835,7 @@ func (client *Client) ListAgentlessMaliciousFilesWithContext(ctx context.Context
 
 // Summary:
 //
-// Obtains the risks associated with an agentless detection event.
+// Retrieves risks associated with agentless detection events.
 //
 // @param request - ListAgentlessRelateMaliciousRequest
 //
@@ -32847,7 +32895,7 @@ func (client *Client) ListAgentlessRelateMaliciousWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries at-risk hosts that are detected by the agentless detection feature.
+// Retrieves the list of vulnerable servers detected by agentless detection.
 //
 // @param request - ListAgentlessRiskUuidRequest
 //
@@ -32927,7 +32975,7 @@ func (client *Client) ListAgentlessRiskUuidWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries agentless detection tasks.
+// Retrieves the list of agentless detection tasks.
 //
 // @param request - ListAgentlessTaskRequest
 //
@@ -33075,7 +33123,7 @@ func (client *Client) ListAssetInfoPublishWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the configurations of asset synchronization.
+// Retrieves the asset refresh configuration.
 //
 // @param request - ListAssetRefreshTaskConfigRequest
 //
@@ -33127,7 +33175,7 @@ func (client *Client) ListAssetRefreshTaskConfigWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries the selected assets.
+// Queries the selected assets from the specified assets.
 //
 // @param request - ListAssetSelectionSelectedTargetRequest
 //
@@ -33303,7 +33351,7 @@ func (client *Client) ListAttackEventInfoWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Query Attack Path Events.
+// Queries the list of attack path events.
 //
 // @param request - ListAttackPathEventRequest
 //
@@ -33379,7 +33427,7 @@ func (client *Client) ListAttackPathEventWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Query Attack Path Whitelist List.
+// Queries the attack path whitelist.
 //
 // @param request - ListAttackPathWhitelistRequest
 //
@@ -33443,7 +33491,7 @@ func (client *Client) ListAttackPathWhitelistWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries asset auto-tagging rules that are created by using the feature of asset management rules. You can create rules on the System Configuration > Feature Settings > Multi-cloud Configuration Management > Asset Management Rule page in the Security Center console.
+// Queries the list of asset tag rules by using the system configuration, feature settings, multi-cloud configuration management, and asset management rule features of Security Center.
 //
 // @param request - ListAutoTagRulesRequest
 //
@@ -33539,7 +33587,7 @@ func (client *Client) ListAvailableAttackPathWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the information about available honeypot templates.
+// Queries available honeypot configuration templates.
 //
 // @param request - ListAvailableHoneypotRequest
 //
@@ -33583,7 +33631,7 @@ func (client *Client) ListAvailableHoneypotWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries backup records.
+// Queries a list of backup records.
 //
 // @param request - ListBackupRecordRequest
 //
@@ -33647,7 +33695,7 @@ func (client *Client) ListBackupRecordWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries the whitelist rules for a baseline check item.
+// Queries baseline whitelist records.
 //
 // @param tmpReq - ListBaselineCheckWhiteRecordRequest
 //
@@ -34097,7 +34145,7 @@ func (client *Client) ListCheckItemsWithContext(ctx context.Context, request *Li
 
 // Summary:
 //
-// In the custom check items feature of Cloud Security Posture Management, query the attribution standard, attribution regulation, or attribution section in the check item categorization settings.
+// # List User Policies
 //
 // @param request - ListCheckPoliciesRequest
 //
@@ -34137,7 +34185,7 @@ func (client *Client) ListCheckPoliciesWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries the details of the risk items that are detected in the configuration checks on cloud services.
+// Retrieves the details of the risk items that are detected in the configuration checks on cloud services.
 //
 // @param request - ListCheckResultRequest
 //
@@ -34297,7 +34345,7 @@ func (client *Client) ListCheckRuleWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// # List all effective machines under the rule
+// Queries all instances under a Cloud Security Posture Management (CSPM) rule.
 //
 // @param request - ListCheckRuleInstanceRequest
 //
@@ -34469,7 +34517,7 @@ func (client *Client) ListCheckTypesWithContext(ctx context.Context, request *Li
 
 // Summary:
 //
-// Queries the alert settings of assets. By default, the balanced mode is enabled. A detected list of assets can be returned only in strict mode.
+// Queries the alert settings of assets. The default alert setting for assets is balance mode. The detailed asset list is returned only in strict mode.
 //
 // @param request - ListClientAlertModeRequest
 //
@@ -34565,7 +34613,7 @@ func (client *Client) ListClientUserDefineRulesWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries cloud service assets.
+// Queries the list of cloud service assets.
 //
 // @param request - ListCloudAssetInstancesRequest
 //
@@ -34594,6 +34642,10 @@ func (client *Client) ListCloudAssetInstancesWithContext(ctx context.Context, re
 
 	if !dara.IsNil(request.CurrentPage) {
 		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.IsSaleData) {
+		query["IsSaleData"] = request.IsSaleData
 	}
 
 	if !dara.IsNil(request.LogicalExp) {
@@ -34633,11 +34685,11 @@ func (client *Client) ListCloudAssetInstancesWithContext(ctx context.Context, re
 
 // Summary:
 //
-// # Get the list of cloud product configuration rule operators
+// Gets the list of cloud product configuration rule operators.
 //
 // Description:
 //
-// Get the list of cloud asset data operators.
+// Gets the list of cloud asset data operators.
 //
 // @param request - ListCloudAssetMatchOperatorsRequest
 //
@@ -34865,7 +34917,7 @@ func (client *Client) ListClusterCheckResultWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the protection status of the container firewall.
+// Queries the status details of the container firewall.
 //
 // @param request - ListClusterCnnfStatusDetailRequest
 //
@@ -34909,7 +34961,7 @@ func (client *Client) ListClusterCnnfStatusDetailWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries the defense rules that are created for a cluster.
+// Queries the list of cluster interception rules.
 //
 // @param request - ListClusterInterceptionConfigRequest
 //
@@ -35021,19 +35073,19 @@ func (client *Client) ListClusterPluginInfoWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the detection results of the files extracted from a package.
+// Retrieves a list of file detection results from an archive.
 //
 // Description:
 //
-// You can call this operation to query the detection results of files only if the files are pushed to the cloud for detection and in the form of packages. You can repeatedly query the detection results of files within 5 hours because the results are retained for 5 hours. For more information about how to push a file to the cloud for detection, see the CreateFileDetect operation. For more information about how to query file detection results, see the GetFileDetectResult operation.
+// Use this API to retrieve detection results for files within a compressed file that has been submitted for detection. The system retains detection results for 5 hours, during which you can query them multiple times. To submit a file for detection, use the `CreateFileDetect` API. To retrieve the detection result for the compressed file itself, use the `GetFileDetectResult` API.
 //
-// The HashKey parameter is included in all API operations that are related to the file detection feature. The parameter specifies the unique identifier of a file. Only hexadecimal MD5 hash values of complete file content are supported. You must calculate the required MD5 hash value before you call this operation.
+// All file detection APIs include the `HashKey` parameter, which is the unique file identifier.
 //
-// To calculate the hexadecimal MD5 hash value for a file, you can perform the following steps:
+// For malicious file detection (when `Type` is `0`), you must provide the MD5 or SHA-256 hash of the complete file content. Calculate this value before you call the API.
 //
-// 1\\. Use the MD5 algorithm to encrypt data and generate a 128-bit hash value. You can use a tool such as MessageDigest for Java and the hashlib module for Python.
+// For Skill compressed file detection (when `Type` is `6`), obtain the `HashKey` from the return value of the `CreateFileDetect` API.
 //
-// 2\\. Convert the hash value to a hexadecimal string. You can use a tool such as Codec for Java and the hex() function for Python.
+// Note: You must use the same `HashKey` for the submission and query requests for a single detection. Otherwise, you cannot correctly submit the file for detection or retrieve its results.
 //
 // @param request - ListCompressFileDetectResultRequest
 //
@@ -35089,7 +35141,7 @@ func (client *Client) ListCompressFileDetectResultWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries a list of rules for non-image program defense.
+// Retrieves the list of defense rules for non-image programs.
 //
 // @param request - ListContainerDefenseRuleRequest
 //
@@ -35257,7 +35309,7 @@ func (client *Client) ListDockerhubImageWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 获取绑定防篡改机器列表
+// Retrieves the list of servers associated with tamper-proofing.
 //
 // @param request - ListFileProtectBindMachineRequest
 //
@@ -35297,7 +35349,7 @@ func (client *Client) ListFileProtectBindMachineWithContext(ctx context.Context,
 
 // Summary:
 //
-// 获取文件防护事件列表
+// Retrieves the list of file protection events.
 //
 // @param request - ListFileProtectClientEventRequest
 //
@@ -35337,7 +35389,7 @@ func (client *Client) ListFileProtectClientEventWithContext(ctx context.Context,
 
 // Summary:
 //
-// 获取文件防护规则列表
+// Retrieves a list of file protection rules.
 //
 // @param request - ListFileProtectClientRuleRequest
 //
@@ -35401,7 +35453,7 @@ func (client *Client) ListFileProtectClientRuleWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 获取文件防护规则所有文件类型
+// Retrieves all file types for file protection rules.
 //
 // @param request - ListFileProtectClientRuleFileTypeRequest
 //
@@ -35438,7 +35490,7 @@ func (client *Client) ListFileProtectClientRuleFileTypeWithContext(ctx context.C
 
 // Summary:
 //
-// Queries core file monitoring rules that meet the specified filter condition.
+// Filters and retrieves a list of rules that match the specified conditions.
 //
 // @param request - ListFileProtectEventRequest
 //
@@ -35530,7 +35582,7 @@ func (client *Client) ListFileProtectEventWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries information about the Security Center agent installed on servers on which core file monitoring rules take effect. The information includes the installation status of the Security Center agent and whether the core file monitoring feature is supported.
+// Retrieves information about the Security Center agent installed on servers on which core file monitoring rules take effect. The information includes the installation status of the Security Center agent and whether the core file monitoring feature is supported.
 //
 // @param request - ListFileProtectPluginStatusRequest
 //
@@ -35646,7 +35698,7 @@ func (client *Client) ListFileProtectRuleWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries the server groups.
+// Retrieves the list of server groups for the current user.
 //
 // @param request - ListGroupsRequest
 //
@@ -35706,7 +35758,7 @@ func (client *Client) ListGroupsWithContext(ctx context.Context, request *ListGr
 
 // Summary:
 //
-// Queries the information about honeypots.
+// Queries a list of honeypots.
 //
 // @param request - ListHoneypotRequest
 //
@@ -35942,7 +35994,7 @@ func (client *Client) ListHoneypotAttackerSourceWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries the details of an intrusion event in a honeypot.
+// Retrieves the details of a honeypot attack event.
 //
 // @param request - ListHoneypotEventFlowsRequest
 //
@@ -36006,7 +36058,7 @@ func (client *Client) ListHoneypotEventFlowsWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the intrusion events detected by honeypots.
+// Retrieves intrusion events of a honeypot.
 //
 // @param request - ListHoneypotEventsRequest
 //
@@ -36170,7 +36222,7 @@ func (client *Client) ListHoneypotPresetWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries probes.
+// Queries the list of honeypot probes.
 //
 // @param request - ListHoneypotProbeRequest
 //
@@ -36234,7 +36286,7 @@ func (client *Client) ListHoneypotProbeWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// # Query installed probes
+// Queries probe IDs by probe type and node ID.
 //
 // @param request - ListHoneypotProbeUuidRequest
 //
@@ -36330,7 +36382,7 @@ func (client *Client) ListImageBuildRiskItemWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the additional configuration information about an image repository.
+// Queries the extra configuration information of an image repository.
 //
 // @param request - ListImageRegistryExtraRequest
 //
@@ -36374,7 +36426,7 @@ func (client *Client) ListImageRegistryExtraWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the regions in which you can add self-managed image repositories to Security Center.
+// Queries the regions that support private image registry access.
 //
 // @param request - ListImageRegistryRegionRequest
 //
@@ -36418,7 +36470,7 @@ func (client *Client) ListImageRegistryRegionWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries security information about a container image.
+// Retrieves the security information of container images.
 //
 // @param request - ListImageRiskRequest
 //
@@ -36638,7 +36690,7 @@ func (client *Client) ListInstanceRiskNumWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries the alerts generated by defense rules.
+// Queries container firewall interception records.
 //
 // @param request - ListInterceptionHistoryRequest
 //
@@ -36770,7 +36822,7 @@ func (client *Client) ListInterceptionRulePageWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the network objects that are protected by the container firewall feature.
+// Queries the network objects protected by micro-segmentation (container firewall).
 //
 // @param request - ListInterceptionTargetPageRequest
 //
@@ -36842,11 +36894,11 @@ func (client *Client) ListInterceptionTargetPageWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries the information about Kubernetes clusters that are added to Security Center.
+// Lists K8s access information.
 //
 // Description:
 //
-// You can use this operation to query the access information about Kubernetes clusters.
+// Lists K8s access information.
 //
 // @param request - ListK8sAccessInfoRequest
 //
@@ -36902,7 +36954,7 @@ func (client *Client) ListK8sAccessInfoWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// # Get KSPM Asset List
+// Queries Kubernetes asset information.
 //
 // @param request - ListKspmInstancesRequest
 //
@@ -36966,7 +37018,7 @@ func (client *Client) ListKspmInstancesWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries Serverless App Engine (SAE) applications.
+// Queries the Serverless Application Engine (SAE) applications of a serverless instance.
 //
 // @param request - ListMachineAppsRequest
 //
@@ -37038,7 +37090,7 @@ func (client *Client) ListMachineAppsWithContext(ctx context.Context, request *L
 
 // Summary:
 //
-// Queries the alert whitelist rules of sensitive files that are detected by using the agentless detection feature.
+// Queries the list of allowlist rules for agentless sensitive file detection alerts.
 //
 // @param request - ListMaliciousFileWhitelistConfigsRequest
 //
@@ -37154,7 +37206,7 @@ func (client *Client) ListMultiUserInstancesWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries alerts that are generated for malicious files.
+// Queries the list of malicious file alerts.
 //
 // @param request - ListObjectScanEventRequest
 //
@@ -37254,7 +37306,7 @@ func (client *Client) ListObjectScanEventWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries at-risk image blocking rules.
+// Retrieves the list of risky image blocking policies.
 //
 // @param request - ListOpaClusterStrategyNewRequest
 //
@@ -37362,7 +37414,7 @@ func (client *Client) ListOperationCheckWithContext(ctx context.Context, request
 //
 // Description:
 //
-// You can query only operation tasks.
+// Currently, only check operation task queries are supported.
 //
 // @param request - ListOperationProcessRequest
 //
@@ -37434,11 +37486,11 @@ func (client *Client) ListOperationProcessWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Query operation task sub-task list.
+// Queries the subtask list of an operation task.
 //
 // Description:
 //
-// You can query only operation subtasks.
+// Currently, only check operation subtask queries are supported.
 //
 // @param request - ListOperationProcessDetailRequest
 //
@@ -37546,7 +37598,7 @@ func (client *Client) ListOperationTaskWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries Object Storage Service (OSS) buckets.
+// Queries the list of buckets.
 //
 // @param request - ListOssBucketRequest
 //
@@ -37594,7 +37646,7 @@ func (client *Client) ListOssBucketWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// Queries the risk information of an Object Storage Service (OSS) bucket.
+// Queries the risk information list of buckets.
 //
 // @param request - ListOssBucketScanInfoRequest
 //
@@ -37702,7 +37754,7 @@ func (client *Client) ListOssScanConfigWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries the information about plug-ins on a server.
+// Query plugin information of an asset.
 //
 // @param tmpReq - ListPluginForUuidRequest
 //
@@ -37756,7 +37808,7 @@ func (client *Client) ListPluginForUuidWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// Queries the security risks of a pod.
+// Retrieves the security risks of pod groups.
 //
 // @param request - ListPodRiskRequest
 //
@@ -37820,7 +37872,7 @@ func (client *Client) ListPodRiskWithContext(ctx context.Context, request *ListP
 
 // Summary:
 //
-// Queries image repositories.
+// Retrieves image repositories.
 //
 // @param request - ListPrivateRegistryListRequest
 //
@@ -37908,7 +37960,7 @@ func (client *Client) ListPrivateRegistryTypeWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Query the details of a release batch for upgrade.
+// Queries the custom upgrade and release batches of the current user.
 //
 // @param request - ListPublishBatchRequest
 //
@@ -38008,7 +38060,7 @@ func (client *Client) ListRuleTargetAllWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries rules for container tamper-proofing.
+// Queries container file defense rules.
 //
 // @param request - ListSasContainerWebDefenseRuleRequest
 //
@@ -38064,7 +38116,7 @@ func (client *Client) ListSasContainerWebDefenseRuleWithContext(ctx context.Cont
 
 // Summary:
 //
-// Query the list of supported cloud products for attacks.
+// Queries the cloud service asset types supported by attack path analysis.
 //
 // @param request - ListSupportAttackPathAssetRequest
 //
@@ -38120,7 +38172,7 @@ func (client *Client) ListSupportAttackPathAssetWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries the details about the aggregation types of system defense rules.
+// Retrieves the details of system rule clusters.
 //
 // @param request - ListSystemAggregationRulesRequest
 //
@@ -38272,7 +38324,7 @@ func (client *Client) ListSystemRuleAggregationTypesWithContext(ctx context.Cont
 
 // Summary:
 //
-// # Query Targets by Batch
+// Queries the list of publish target information for a specified batch.
 //
 // @param request - ListTargetByBatchRequest
 //
@@ -38328,7 +38380,7 @@ func (client *Client) ListTargetByBatchWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries tasks that are not complete by task type.
+// Queries the list of incomplete tasks by task type.
 //
 // @param request - ListUnfinishedOnceTaskRequest
 //
@@ -38436,7 +38488,7 @@ func (client *Client) ListUniBackupRecordWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries the information about the servers whose Security Center agent is not installed.
+// Queries information about assets that do not have the client installed.
 //
 // @param request - ListUninstallAegisMachinesRequest
 //
@@ -38508,7 +38560,7 @@ func (client *Client) ListUninstallAegisMachinesWithContext(ctx context.Context,
 
 // Summary:
 //
-// 查询未知威胁发现事件
+// Queries the list of intelligent behavior analytics alerting events.
 //
 // @param request - ListUnknownThreatDetectEventRequest
 //
@@ -38588,7 +38640,7 @@ func (client *Client) ListUnknownThreatDetectEventWithContext(ctx context.Contex
 
 // Summary:
 //
-// 查询未知威胁发现的机器列表
+// View instances identified by intelligent behavior analytics.
 //
 // @param request - ListUnknownThreatDetectMachineRequest
 //
@@ -38660,7 +38712,7 @@ func (client *Client) ListUnknownThreatDetectMachineWithContext(ctx context.Cont
 
 // Summary:
 //
-// 查询未知威胁发现进程列表
+// Retrieve the list of processes from unknown threat detections.
 //
 // @param request - ListUnknownThreatDetectProcessRequest
 //
@@ -38744,7 +38796,7 @@ func (client *Client) ListUnknownThreatDetectProcessWithContext(ctx context.Cont
 
 // Summary:
 //
-// 查询未知威胁发现策略列表
+// Lists the strategies for intelligent behavior analytics.
 //
 // @param request - ListUnknownThreatDetectStrategyRequest
 //
@@ -38804,7 +38856,7 @@ func (client *Client) ListUnknownThreatDetectStrategyWithContext(ctx context.Con
 
 // Summary:
 //
-// # Get VPC Data
+// Retrieves VPC data for the user in a specified region by using the third-party image repository integration feature of Container Asset in Security Center.
 //
 // @param request - ListUserVpcRequest
 //
@@ -38848,7 +38900,7 @@ func (client *Client) ListUserVpcWithContext(ctx context.Context, request *ListU
 
 // Summary:
 //
-// Queries the UUIDs of Serverless App Engine (SAE) instances based on an application ID.
+// Queries the list of Serverless instance UUIDs by application ID.
 //
 // @param request - ListUuidsByAppIdRequest
 //
@@ -38912,7 +38964,7 @@ func (client *Client) ListUuidsByAppIdWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries protected assets by using the paths to specific web directories.
+// Queries protected assets by web path.
 //
 // @param request - ListUuidsByWebPathRequest
 //
@@ -38968,7 +39020,7 @@ func (client *Client) ListUuidsByWebPathWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries servers on which virus detection and removal tasks are performed.
+// Queries the list of alert hosts for virus scanning.
 //
 // @param request - ListVirusScanMachineRequest
 //
@@ -39024,7 +39076,7 @@ func (client *Client) ListVirusScanMachineWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the alert events that are generated for viruses detected on a server.
+// Queries virus alerts detected by virus scanning on a specific server.
 //
 // @param request - ListVirusScanMachineEventRequest
 //
@@ -39084,7 +39136,7 @@ func (client *Client) ListVirusScanMachineEventWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries virus scan tasks based on conditions such as the task type, task status, and server information.
+// Queries virus scan tasks that match specified conditions such as scan type, scan status, and scanned machine information.
 //
 // @param request - ListVirusScanTaskRequest
 //
@@ -39180,7 +39232,7 @@ func (client *Client) ListVirusScanTaskWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries the existing configurations of vulnerabilities that can be automatically fixed.
+// Queries the configurations of vulnerabilities that can be automatically fixed.
 //
 // @param request - ListVulAutoRepairConfigRequest
 //
@@ -39240,7 +39292,7 @@ func (client *Client) ListVulAutoRepairConfigWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the global configurations of vulnerability detection.
+// Queries the global configuration of vulnerabilities.
 //
 // @param request - ListVulGlobalConfigRequest
 //
@@ -39284,7 +39336,7 @@ func (client *Client) ListVulGlobalConfigWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Marks members for multi-account management. You can call this operation to mark selected members as followed. In the Security Center console, the drop-down list above the left-side navigation pane displays the followed members.
+// Tags member accounts in multi-account management. Tags selected member accounts as accounts of interest. Accounts of interest are displayed at the top of the drop-down list above the left-side navigation pane in the Security Center console.
 //
 // @param request - MarkMonitorAccountsRequest
 //
@@ -39328,7 +39380,7 @@ func (client *Client) MarkMonitorAccountsWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Handles AccessKey pair leaks.
+// Handles an AccessKey pair leak record.
 //
 // @param request - ModifyAccessKeyLeakDealRequest
 //
@@ -39514,7 +39566,7 @@ func (client *Client) ModifyAppVulScanCycleWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Modifies the configurations for cleaning offline hosts whose provider cannot be identified.
+// Modifies the cleanup configuration for offline hosts. Only non-Alibaba Cloud hosts are supported.
 //
 // @param request - ModifyAssetCleanConfigRequest
 //
@@ -39558,15 +39610,15 @@ func (client *Client) ModifyAssetCleanConfigWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Changes the server group to which one or more servers belong.
+// Modifies an asset group.
 //
 // Description:
 //
-// You can call the ModifyAssetGroup operation to change the server group to which one or more servers belong. After you create a server group by calling the [CreateOrUpdateAssetGroup](~~CreateOrUpdateAssetGroup~~) operation, you can call the ModifyAssetGroup operation to change the server group to which your servers belong.
+// Modifies the group of servers. You can use this operation to modify the group of one or more servers. After you create a group by calling the [CreateOrUpdateAssetGroup](~~CreateOrUpdateAssetGroup~~) operation, you can call this operation to modify the group of servers.
 //
-// ### Limits
+// ### QPS limit
 //
-// You can call this API operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The single-user QPS limit for this operation is 10 calls per second. If the number of calls exceeds the limit, throttling is triggered, which may affect your business. Use this operation appropriately.
 //
 // @param request - ModifyAssetGroupRequest
 //
@@ -39618,7 +39670,7 @@ func (client *Client) ModifyAssetGroupWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Modifies the importance of an asset.
+// Sets the importance level of assets.
 //
 // @param request - ModifyAssetImportantRequest
 //
@@ -39734,7 +39786,7 @@ func (client *Client) ModifyAttestorWithContext(ctx context.Context, request *Mo
 
 // Summary:
 //
-// Specifies the number of days after which a detected vulnerability is automatically deleted.
+// Sets the automatic deletion time for expired vulnerabilities.
 //
 // @param request - ModifyAutoDelConfigRequest
 //
@@ -39778,7 +39830,7 @@ func (client *Client) ModifyAutoDelConfigWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Modifies an anti-ransomware policy.
+// Modifies an anti-ransomware mitigation policy.
 //
 // @param tmpReq - ModifyBackupPolicyRequest
 //
@@ -39848,7 +39900,7 @@ func (client *Client) ModifyBackupPolicyWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// Enables or disables an anti-ransomware policy.
+// Enables or shuts down an anti-ransomware policy.
 //
 // @param request - ModifyBackupPolicyStatusRequest
 //
@@ -39900,7 +39952,7 @@ func (client *Client) ModifyBackupPolicyStatusWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Modify Container Image Signature Security Policy.
+// Modifies a container image signing security policy.
 //
 // @param request - ModifyBinarySecurityPolicyRequest
 //
@@ -39968,7 +40020,7 @@ func (client *Client) ModifyBinarySecurityPolicyWithContext(ctx context.Context,
 
 // Summary:
 //
-// # Modify the rule settings for cloud product configuration checks
+// Modifies the rule settings of Cloud Security Posture Management (CSPM).
 //
 // @param request - ModifyCheckRuleRequest
 //
@@ -40032,11 +40084,11 @@ func (client *Client) ModifyCheckRuleWithContext(ctx context.Context, request *M
 
 // Summary:
 //
-// Deletes all logs that occupy your log storage.
+// Clears the storage capacity space for log analysis.
 //
 // Description:
 //
-// Deleted logs cannot be restored. Before you call this operation to delete all logs and free up log storage, we recommend that you export and save your logs to your computer.
+// Cleared logs cannot be recovered. Before calling this operation, perform a log export and save the logs to a local device, and then call this operation to clear the logs and free up storage capacity space.
 //
 // @param request - ModifyClearLogstoreStorageRequest
 //
@@ -40204,7 +40256,7 @@ func (client *Client) ModifyClientConfStrategyWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Modifies a custom defense rule.
+// Modifies a custom rule for malicious behavior defense.
 //
 // @param request - ModifyClientUserDefineRuleRequest
 //
@@ -40316,7 +40368,7 @@ func (client *Client) ModifyClientUserDefineRuleWithContext(ctx context.Context,
 
 // Summary:
 //
-// Modifies the configuration of the AccessKey pair for a third-party account.
+// Modifies the authorization and authentication configuration of multi-cloud assets.
 //
 // @param request - ModifyCloudVendorAccountAKRequest
 //
@@ -40512,7 +40564,7 @@ func (client *Client) ModifyClusterCnnfStatusUserConfirmWithContext(ctx context.
 
 // Summary:
 //
-// Modifies the priority to fix vulnerabilities.
+// Sets the urgency levels of vulnerabilities that the user is concerned about.
 //
 // @param request - ModifyConcernNecessityRequest
 //
@@ -40634,7 +40686,7 @@ func (client *Client) ModifyContainerDefenseRuleWithContext(ctx context.Context,
 
 // Summary:
 //
-// Changes the status of non-image program defense rules.
+// Modifies the switch status of a non-image program defense rule.
 //
 // @param request - ModifyContainerDefenseRuleSwitchRequest
 //
@@ -40682,7 +40734,7 @@ func (client *Client) ModifyContainerDefenseRuleSwitchWithContext(ctx context.Co
 
 // Summary:
 //
-// Modifies the defense rule against container escapes.
+// Modifies a container escape prevention rule.
 //
 // @param request - ModifyContainerPluginRuleRequest
 //
@@ -40750,7 +40802,7 @@ func (client *Client) ModifyContainerPluginRuleWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Modifies the configurations of vulnerability scan for a running container.
+// Modifies the container runtime scan configuration.
 //
 // @param request - ModifyContainerScanConfigRequest
 //
@@ -40854,7 +40906,7 @@ func (client *Client) ModifyCreateVulWhitelistWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Modifies a custom IP address blocking policy.
+// Modifies the rule record of a custom blocked IP address.
 //
 // @param request - ModifyCustomBlockRecordRequest
 //
@@ -40914,7 +40966,7 @@ func (client *Client) ModifyCustomBlockRecordWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Modifies the execution cycle of periodic tasks, including image scan, urgent vulnerability scan, and virus detection tasks.
+// Modifies the run epoch of periodic nodes, including image scan, emergency vulnerability scanning, and virus scan nodes.
 //
 // @param request - ModifyCycleTaskRequest
 //
@@ -41046,7 +41098,7 @@ func (client *Client) ModifyDingTalkStatusWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Scans for urgent vulnerabilities.
+// Performs emergency vulnerability detection.
 //
 // @param request - ModifyEmgVulSubmitRequest
 //
@@ -41102,7 +41154,7 @@ func (client *Client) ModifyEmgVulSubmitWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Changes the name of a server group.
+// Modifies the name of a server group.
 //
 // @param request - ModifyGroupPropertyRequest
 //
@@ -41146,7 +41198,7 @@ func (client *Client) ModifyGroupPropertyWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Modify proxy cluster.
+// Modifies the remarks of a proxy cluster.
 //
 // @param request - ModifyHybridProxyClusterRequest
 //
@@ -41242,7 +41294,7 @@ func (client *Client) ModifyHybridProxyPolicyWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Modifies the configurations of an IDC probe.
+// Updates the configurations of an IDC probe.
 //
 // @param request - ModifyIdcProbeRequest
 //
@@ -41318,7 +41370,7 @@ func (client *Client) ModifyIdcProbeWithContext(ctx context.Context, request *Mo
 
 // Summary:
 //
-// Modifies the configurations of a scheduled image fix.
+// Updates the configurations of a scheduled image fix.
 //
 // @param request - ModifyImageFixCycleConfigRequest
 //
@@ -41374,7 +41426,7 @@ func (client *Client) ModifyImageFixCycleConfigWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Modifies the transfer time of an image repository.
+// Modifies the configuration of an image registry.
 //
 // @param request - ModifyImageRegistryRequest
 //
@@ -41444,7 +41496,7 @@ func (client *Client) ModifyImageRegistryWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Modifies the defense rule against brute-force attacks that is applied to a specified server.
+// Modifies the anti-brute-force attacks rule for a specified server.
 //
 // @param request - ModifyInstanceAntiBruteForceRuleRequest
 //
@@ -41500,7 +41552,7 @@ func (client *Client) ModifyInstanceAntiBruteForceRuleWithContext(ctx context.Co
 
 // Summary:
 //
-// Modifies a proactive defense rule for containers.
+// Modifies a container proactive defense interception rule.
 //
 // @param tmpReq - ModifyInterceptionRuleRequest
 //
@@ -41582,7 +41634,7 @@ func (client *Client) ModifyInterceptionRuleWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// Enables or disables a proactive defense rule for containers.
+// Modifies the switch status of container proactive defense interception policies.
 //
 // @param request - ModifyInterceptionRuleSwitchRequest
 //
@@ -41634,7 +41686,7 @@ func (client *Client) ModifyInterceptionRuleSwitchWithContext(ctx context.Contex
 
 // Summary:
 //
-// Modifies the information about a network object of the container firewall feature.
+// Modifies the network object information of a container firewall.
 //
 // @param request - ModifyInterceptionTargetRequest
 //
@@ -41702,7 +41754,7 @@ func (client *Client) ModifyInterceptionTargetWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Enables or disables the log analysis feature.
+// Modifies the enabling status of log analysis.
 //
 // @param request - ModifyLogMetaStatusRequest
 //
@@ -41762,7 +41814,7 @@ func (client *Client) ModifyLogMetaStatusWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Modifies the logon configuration for a specified asset.
+// Modifies the basic configuration of logon security settings for a single asset.
 //
 // @param request - ModifyLoginBaseConfigRequest
 //
@@ -41862,7 +41914,7 @@ func (client *Client) ModifyLoginSwitchConfigWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Modifies notification settings.
+// Modifies notification configuration information.
 //
 // @param request - ModifyNoticeConfigRequest
 //
@@ -41930,7 +41982,17 @@ func (client *Client) ModifyNoticeConfigWithContext(ctx context.Context, request
 //
 // Description:
 //
-// *Prerequisites*	- [Simple Log Service](https://www.alibabacloud.com/help/en/log-service/latest/billable-items) is activated. A service-linked role for Security Center is created, and Security Center is authorized to access cloud resources. You can call the [CreateServiceLinkedRole](~~CreateServiceLinkedRole~~) operation to create a service-linked role for Security Center and authorize Security Center to access cloud resources. **Scenarios*	- Before you use the log analysis feature of Security Center, you must call the [ModifyOpenLogShipper](~~ModifyOpenLogShipper~~) operation to activate Simple Log Service.
+// *Before you begin**
+//
+// Activate <props="china">[Simple Log Service](https://help.aliyun.com/document_detail/48863.html)
+//
+// <props="intl">[Log Service](https://www.alibabacloud.com/help/en/log-service/latest/billable-items).
+//
+// Create a service-linked role and authorize Security Center to access cloud resources. You can call the [CreateServiceLinkedRole](~~CreateServiceLinkedRole~~) operation to create a service-linked role and authorize Security Center to access cloud resources.
+//
+// **Common scenarios**
+//
+// Before you use the log analysis feature of Security Center, call the [ModifyOpenLogShipper](~~ModifyOpenLogShipper~~) operation to activate Simple Log Service.
 //
 // @param request - ModifyOpenLogShipperRequest
 //
@@ -42038,7 +42100,7 @@ func (client *Client) ModifyOperateVulWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// # Operate the Postpaid Module Switch
+// Enables or disables pay-as-you-go billing for a specified feature.
 //
 // @param tmpReq - ModifyPostPayModuleSwitchRequest
 //
@@ -42104,11 +42166,11 @@ func (client *Client) ModifyPostPayModuleSwitchWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Adds a process to or removes a process from the whitelist by using the application whitelist feature.
+// Adds processes to or removes processes from the whitelist in the application whitelist feature.
 //
 // Description:
 //
-// The application whitelist feature is in public preview. You cannot apply for a trial of the feature. If you applied for a trial of the feature or the feature is in use, you can call this operation.
+// The application whitelist is a China-site public preview feature that is no longer open for new applications. Users who have already applied for or are using this feature can call this operation as expected.
 //
 // @param request - ModifyProcessWhiteListRequest
 //
@@ -42216,7 +42278,7 @@ func (client *Client) ModifyPropertyScheduleConfigWithContext(ctx context.Contex
 
 // Summary:
 //
-// Performs security check tasks on servers with a few clicks.
+// Sends a security check task to asset servers with one click.
 //
 // @param request - ModifyPushAllTaskRequest
 //
@@ -42312,7 +42374,7 @@ func (client *Client) ModifyRefreshProcessInfoWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Modifies a rule for container tamper-proofing.
+// Modifies a container file defense rule.
 //
 // @param request - ModifySasContainerWebDefenseRuleRequest
 //
@@ -42364,7 +42426,7 @@ func (client *Client) ModifySasContainerWebDefenseRuleWithContext(ctx context.Co
 
 // Summary:
 //
-// Modifies common filter conditions to search for assets.
+// Edits the common filter conditions for host assets.
 //
 // @param request - ModifySearchConditionRequest
 //
@@ -42552,7 +42614,7 @@ func (client *Client) ModifySecurityEventMarkMissIndividuallyWithContext(ctx con
 
 // Summary:
 //
-// Serverless Asset authorization Management.
+// Manages Serverless asset authorization.
 //
 // @param request - ModifyServerlessAuthToMachineRequest
 //
@@ -42652,11 +42714,11 @@ func (client *Client) ModifyServerlessAuthToMachineWithContext(ctx context.Conte
 
 // Summary:
 //
-// Creates or deletes a policy template on the My Policies tab of the Playbook page.
+// Adds or removes a policy template to or from My Policies in the task center.
 //
 // Description:
 //
-// Only the Enterprise and Ultimate editions of Security Center support this API operation.
+// Only the Enterprise and Ultimate editions of Security Center support this API call. Other editions do not support this call.
 //
 // @param request - ModifySoarStrategySubscribeRequest
 //
@@ -42704,7 +42766,7 @@ func (client *Client) ModifySoarStrategySubscribeWithContext(ctx context.Context
 
 // Summary:
 //
-// Enables the quick scan feature. You can also enable the feature on the Vulnerabilities page of the Security Center console.
+// Enables the one-click scan feature on the vulnerability management page of the console.
 //
 // @param request - ModifyStartVulScanRequest
 //
@@ -42952,7 +43014,7 @@ func (client *Client) ModifyTagWithUuidWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Modifies an anti-ransomware policy for databases.
+// Modifies an anti-ransomware backup policy for databases.
 //
 // @param tmpReq - ModifyUniBackupPolicyRequest
 //
@@ -43088,7 +43150,7 @@ func (client *Client) ModifyVpcHoneyPotWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Modifies the configurations of the vulnerability scan feature.
+// Modifies the vulnerability scanning switch configuration.
 //
 // @param request - ModifyVulConfigRequest
 //
@@ -43136,7 +43198,7 @@ func (client *Client) ModifyVulConfigWithContext(ctx context.Context, request *M
 
 // Summary:
 //
-// Modifies the configurations of the vulnerability scan feature for a server.
+// Modifies the machine-level toggle settings for vulnerability scanning.
 //
 // @param request - ModifyVulTargetRequest
 //
@@ -43184,7 +43246,7 @@ func (client *Client) ModifyVulTargetWithContext(ctx context.Context, request *M
 
 // Summary:
 //
-// Configures vulnerability detection for a server.
+// Configures the vulnerability detection settings for a single server.
 //
 // @param request - ModifyVulTargetConfigRequest
 //
@@ -43296,7 +43358,7 @@ func (client *Client) ModifyVulWhitelistTargetWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Adds a directory to protect for a specified server.
+// Adds a protected directory for a specified server.
 //
 // @param request - ModifyWebLockCreateConfigRequest
 //
@@ -43384,11 +43446,11 @@ func (client *Client) ModifyWebLockCreateConfigWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Deletes a directory on a specified server from the protected directories of web tamper proofing.
+// Deletes a protected directory from a specified server.
 //
 // Description:
 //
-// After you delete a directory that has web tamper proofing enabled on a server, files in the directory are no longer protected by web tamper proofing. The information about the websites that are hosted on the server may be maliciously modified by attackers. Proceed with caution.
+// After you delete a protected directory from a server, tamper-proofing no longer protects the files in the directory. The website information on your server may be maliciously tampered with. Proceed with caution.
 //
 // @param request - ModifyWebLockDeleteConfigRequest
 //
@@ -43444,7 +43506,7 @@ func (client *Client) ModifyWebLockDeleteConfigWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Changes the status of processes for web tamper proofing.
+// Sets the status of a tamper-proofing process.
 //
 // @param request - ModifyWebLockProcessStatusRequest
 //
@@ -43552,7 +43614,7 @@ func (client *Client) ModifyWebLockRefreshWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Configures and enables web tamper proofing for a specified server.
+// Creates web tamper proofing protection for a specified server and enables the protection.
 //
 // @param request - ModifyWebLockStartRequest
 //
@@ -43628,7 +43690,7 @@ func (client *Client) ModifyWebLockStartWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Enables or disables web tamper proofing for a server.
+// Enables or shuts down web tamper-proofing for a server.
 //
 // @param request - ModifyWebLockStatusRequest
 //
@@ -43684,7 +43746,7 @@ func (client *Client) ModifyWebLockStatusWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Disables web tamper proofing for a specified server.
+// Removes the web tamper proofing protection folder from a specified server.
 //
 // @param request - ModifyWebLockUnbindRequest
 //
@@ -43728,7 +43790,7 @@ func (client *Client) ModifyWebLockUnbindWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Modifies protection policy for a specified server.
+// Modifies the protection policy of a specified server.
 //
 // @param request - ModifyWebLockUpdateConfigRequest
 //
@@ -43872,7 +43934,7 @@ func (client *Client) ModifyWebPathWithContext(ctx context.Context, request *Mod
 
 // Summary:
 //
-// Enables the automatic configuration of anti-ransomware policies for servers in the managed anti-ransomware feature. You can call this operation only after you purchase the managed anti-ransomware feature.
+// Enables the anti-ransomware managed service to configure server backup policies with one click. This operation can be called only after you purchase the anti-ransomware managed service.
 //
 // @param request - OpenBackupAutoConfigRequest
 //
@@ -43960,7 +44022,7 @@ func (client *Client) OpenPartialBuyWithContext(ctx context.Context, request *Op
 
 // Summary:
 //
-// Enables or disables sensitive file scan.
+// Modifies the sensitive file scan switch.
 //
 // @param request - OpenSensitiveFileScanRequest
 //
@@ -44216,7 +44278,7 @@ func (client *Client) OperateCommonOverallConfigWithContext(ctx context.Context,
 
 // Summary:
 //
-// Configures features by type. The features include container image scan, local file detection, container network visualization, and container escape prevention.
+// Configures the general switch for a feature module by type, including image scanning, endpoint engine detection, container network visualization, and container escape prevention.
 //
 // @param request - OperateCommonTargetConfigRequest
 //
@@ -44280,7 +44342,7 @@ func (client *Client) OperateCommonTargetConfigWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Adds a check item of an image baseline to the whitelist, or removes a check item of an image baseline from the whitelist.
+// Manages the whitelist of image baseline check items.
 //
 // @param request - OperateImageBaselineWhitelistRequest
 //
@@ -44340,7 +44402,7 @@ func (client *Client) OperateImageBaselineWhitelistWithContext(ctx context.Conte
 
 // Summary:
 //
-// Handles an image vulnerability, such as fixing the image vulnerability, verifying the fix of the image vulnerability, ignoring the image vulnerability, or canceling ignoring the image vulnerability.
+// Performs operations on image vulnerabilities. Supported operation types include fix, verify, ignore, and unignore.
 //
 // @param request - OperateImageVulRequest
 //
@@ -44392,7 +44454,7 @@ func (client *Client) OperateImageVulWithContext(ctx context.Context, request *O
 
 // Summary:
 //
-// Enables or disables a feature that detects exceptions.
+// Sets the global configuration for abnormal events.
 //
 // @param request - OperateSuspiciousOverallConfigRequest
 //
@@ -44512,7 +44574,7 @@ func (client *Client) OperateSuspiciousTargetConfigWithContext(ctx context.Conte
 
 // Summary:
 //
-// Changes the status of a rule for container tamper-proofing.
+// Changes the status of a container file defense rule.
 //
 // @param request - OperateSwitchStatusRequest
 //
@@ -44560,7 +44622,7 @@ func (client *Client) OperateSwitchStatusWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 修改未知威胁发现的机器状态
+// Modifies the unknown threat detection settings for specified servers.
 //
 // @param request - OperateUnknownThreatDetectMachineRequest
 //
@@ -44612,7 +44674,7 @@ func (client *Client) OperateUnknownThreatDetectMachineWithContext(ctx context.C
 
 // Summary:
 //
-// Handles alert events that are generated by the antivirus feature. You can perform in-depth detection and removal, add alert events to the whitelist, ignore alert events, or manually handle alert events.
+// Handles virus defense alerts in batches. The handling types include deep scan and removal, adding to whitelist, ignoring, and manual handling.
 //
 // @param request - OperateVirusEventsRequest
 //
@@ -44664,7 +44726,7 @@ func (client *Client) OperateVirusEventsWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Fixes Linux software vulnerabilities.
+// Fixes a Linux software vulnerability.
 //
 // @param request - OperateVulsRequest
 //
@@ -44720,7 +44782,7 @@ func (client *Client) OperateVulsWithContext(ctx context.Context, request *Opera
 
 // Summary:
 //
-// Handles alert events that are generated for web tamper proofing.
+// Handles web tamper-proofing alerting events.
 //
 // @param request - OperateWebLockFileEventsRequest
 //
@@ -44820,7 +44882,7 @@ func (client *Client) OperationCancelIgnoreSuspEventWithContext(ctx context.Cont
 
 // Summary:
 //
-// Modifies the chart of a security report.
+// Modifies the statistical charts of a security report.
 //
 // @param request - OperationCustomizeReportChartRequest
 //
@@ -44868,7 +44930,7 @@ func (client *Client) OperationCustomizeReportChartWithContext(ctx context.Conte
 
 // Summary:
 //
-// Handles multiple exceptions at a time.
+// Handles alert events in batches.
 //
 // @param request - OperationSuspEventsRequest
 //
@@ -44932,7 +44994,7 @@ func (client *Client) OperationSuspEventsWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries image repositories by page.
+// Queries a list of image repositories.
 //
 // @param request - PageImageRegistryRequest
 //
@@ -45046,11 +45108,11 @@ func (client *Client) PauseClientWithContext(ctx context.Context, request *Pause
 
 // Summary:
 //
-// # Modify the status of strategy tasks
+// Executes a policy task in the task center.
 //
 // Description:
 //
-// This API call is only supported by the Enterprise and Flagship editions of Cloud Security Center, other versions do not support it.
+// Only the Enterprise and Ultimate editions of Security Center support this API call. Other editions do not support this operation.
 //
 // @param request - ProcessSoarStrategyTaskRequest
 //
@@ -45098,11 +45160,11 @@ func (client *Client) ProcessSoarStrategyTaskWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Creates an image scan task.
+// Creates an image scan task that is not limited by a single primary task.
 //
 // Description:
 //
-// Before you call the PublicCreateImageScanTask operation, we recommend that you call the [PublicPreCheckImageScanTask](~~PublicPreCheckImageScanTask~~) operation to query the number of images to scan and the quota for container image scan to be consumed by the image scan task. Make sure that the remaining quota for container image scan is sufficient. This prevents the task from being stopped due to an insufficient quota.
+// Before calling this operation, call the [PublicPreCheckImageScanTask](~~PublicPreCheckImageScanTask~~) operation to query the number of container images covered by the image scan node and the number of authorizations consumed. This ensures that sufficient authorizations are available for the image scan node and prevents the image scan node from a break due to insufficient authorizations.
 //
 // @param request - PublicCreateImageScanTaskRequest
 //
@@ -45308,7 +45370,7 @@ func (client *Client) PublicSyncAndCreateImageScanTaskWithContext(ctx context.Co
 
 // Summary:
 //
-// Queries the number of alert events in each attack phase.
+// Queries the number of security alert events that occurred in each attack phase.
 //
 // @param request - QueryAttackCountRequest
 //
@@ -45410,15 +45472,15 @@ func (client *Client) QueryDiscoverDatabaseWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the ID of an asset group by using the name of the asset group.
+// Queries the ID of an asset group by group name.
 //
 // Description:
 //
-// You can call the QueryGroupIdByGroupName operation to query the ID of an asset group to which your assets belong by using the name of the asset group. When you call operations such as [GetSuspiciousStatistics](~~GetSuspiciousStatistics~~) and [DeleteGroup](~~DeleteGroup~~), you must specify the ID of the asset group. To query the ID of an asset group, call the QueryGroupIdByGroupName operation.
+// Queries the ID of an asset group by the group name. If you need to specify an asset group ID when you call other operations such as [GetSuspiciousStatistics](~~GetSuspiciousStatistics~~) and [DeleteGroup](~~DeleteGroup~~), you can call this operation to obtain the asset group ID.
 //
-// ### Limits
+// ### QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The queries per second (QPS) limit for a single user for this operation is 10 calls per second. If the limit is exceeded, API calls are throttled. This may affect your business. Call this operation appropriately.
 //
 // @param request - QueryGroupIdByGroupNameRequest
 //
@@ -45540,7 +45602,7 @@ func (client *Client) QueryGroupedSecurityEventMarkMissListWithContext(ctx conte
 
 // Summary:
 //
-// Queries the retention period of images that are stored in a Jenkins image repository.
+// Queries the image retention duration of a Jenkins image repository.
 //
 // @param request - QueryJenkinsImageRegistryPersistenceDayRequest
 //
@@ -45584,7 +45646,7 @@ func (client *Client) QueryJenkinsImageRegistryPersistenceDayWithContext(ctx con
 
 // Summary:
 //
-// Queries the result of a database precheck task.
+// Queries the task result of a database dry run node.
 //
 // @param request - QueryPreCheckDatabaseRequest
 //
@@ -45636,7 +45698,7 @@ func (client *Client) QueryPreCheckDatabaseWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Restarts a server. Only Windows servers are supported.
+// Restarts an instance. Currently, only Windows instances are supported.
 //
 // @param request - RebootMachineRequest
 //
@@ -45680,7 +45742,7 @@ func (client *Client) RebootMachineWithContext(ctx context.Context, request *Reb
 
 // Summary:
 //
-// Receives a reward that allows you to enable a free trial of the cloud honeypot feature or the feature of SDK for malicious file detection. You can receive a reward after you complete the required task.
+// Claims a trial reward for the cloud honeypot or malicious file detection SDK feature after completing a task.
 //
 // @param request - ReceiveFunctionTrialRewardByAliUidRequest
 //
@@ -45784,7 +45846,7 @@ func (client *Client) RefreshAssetsWithContext(ctx context.Context, request *Ref
 
 // Summary:
 //
-// Refreshes the statistics of container assets in the Assets module.
+// Refreshes container asset data in the asset center.
 //
 // @param request - RefreshContainerAssetsRequest
 //
@@ -45920,7 +45982,7 @@ func (client *Client) ReleaseSasInstanceWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Removes an instance from the whitelist.
+// Removes the whitelist status at the instance dimension.
 //
 // @param request - RemoveCheckInstanceResultWhiteListRequest
 //
@@ -46128,7 +46190,7 @@ func (client *Client) ResetLogShipperWithContext(ctx context.Context, request *R
 
 // Summary:
 //
-// Retries agentless detection tasks.
+// Retries an agentless detection task.
 //
 // @param request - RetryAgentlessTaskRequest
 //
@@ -46432,7 +46494,7 @@ func (client *Client) SaveCustomizeReportConfigWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Saves a baseline check policy for images.
+// Creates or updates an image baseline strategy.
 //
 // @param request - SaveImageBaselineStrategyRequest
 //
@@ -46668,7 +46730,7 @@ func (client *Client) SaveWhiteListStrategyAssetsWithContext(ctx context.Context
 
 // Summary:
 //
-// Sends a security report to an email address that you specify. You can send only a security report whose statistics are collected in a custom time range.
+// Sends a security daily report to a specified email address. Only security reports with a custom time period as the report cycle are supported.
 //
 // @param request - SendCustomizeReportRequest
 //
@@ -46712,7 +46774,7 @@ func (client *Client) SendCustomizeReportWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Modifies configurations for scanning image build command risks.
+// Modifies the risk scan configuration for image build instructions.
 //
 // @param request - SetBuildRiskDefineRuleConfigRequest
 //
@@ -46808,7 +46870,7 @@ func (client *Client) SetClusterInterceptionConfigWithContext(ctx context.Contex
 
 // Summary:
 //
-// Specifies the status of an image build command risk.
+// Sets the risk status of image builds.
 //
 // @param request - SetImageBuildRiskStatusRequest
 //
@@ -47022,7 +47084,7 @@ func (client *Client) SetSensitiveDefineRuleConfigWithContext(ctx context.Contex
 
 // Summary:
 //
-// Configures the regions from which you want to synchronize assets.
+// Sets the region list for asset refresh and synchronization.
 //
 // @param request - SetSyncRefreshRegionRequest
 //
@@ -47077,6 +47139,10 @@ func (client *Client) SetSyncRefreshRegionWithContext(ctx context.Context, reque
 // Summary:
 //
 // Checks cloud service configurations. You can check all items or a specific item and verify whether an item is checked.
+//
+// Description:
+//
+// This API operation is deprecated. Use SubmitCheck instead.
 //
 // @param request - StartBaselineSecurityCheckRequest
 //
@@ -47488,7 +47554,7 @@ func (client *Client) UnBindHybridProxyWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Cancel marking for members. You can call this operation to remove followed members from the list. In the Security Center console, the drop-down list above the left-side navigation pane no longer displays the members.
+// Cancel marking for members. Remove followed members from the list. In the Security Center console, the drop-down list above the left-side navigation pane no longer displays the members.
 //
 // @param request - UnMarkMonitorAccountsRequest
 //
@@ -47532,19 +47598,19 @@ func (client *Client) UnMarkMonitorAccountsWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Unbinds servers that are not deployed on Alibaba Cloud from Security Center.
+// Unbinds non-Alibaba Cloud servers from Security Center.
 //
 // Description:
 //
-// If you no longer require protection for servers that are not deployed on Alibaba Cloud, you can call this operation to unbind the servers from Security Center. After you unbind a server that is not deployed on Alibaba Cloud from Security Center, the server no longer consumes the quota of protected servers or protected server vCPUs. This way, you can install the Security Center agent on other servers to meet your business requirements.
+// If you no longer need Security Center to protect your non-Alibaba Cloud servers, you can call the UnbindAegis operation to unbind the servers. After a non-Alibaba Cloud server is unbound, the server no longer consumes your Security Center quota (the number of servers or compute cores). The released quota can then be used to protect other servers.
 //
-// > You can unbind only the servers that are not deployed on Alibaba Cloud from Security Center. If you use an Alibaba Cloud Elastic Compute Service (ECS) instance, you do not need to unbind the ECS instance. If you uninstall the Security Center agent from an ECS instance, the ECS instance still exists as a disconnected server in the asset list of the Security Center console. The ECS instance is not removed from the asset list.
+// > Only non-Alibaba Cloud servers require the unbinding operation. Alibaba Cloud ECS instances do not require unbinding. For ECS instances, even if you uninstall the agent, the server still appears in the asset management list in an offline state and is not removed from the list.
 //
-// **Prerequisites**
+// **Before you begin**
 //
-//   - The server that you want to unbind from Security Center is not deployed on Alibaba Cloud and the Security Center agent is disabled for the server. In this case, the agent is in the Close state and Security Center does not protect the server. You can call the [PauseClient](~~PauseClient~~) operation to disable the agent.
+// - The agent on the non-Alibaba Cloud server that you want to unbind has been paused (the client status is disabled). You can call the [PauseClient](~~PauseClient~~) operation to pause the agent.
 //
-//   - The client protection feature is disabled for the server that you want to unbind from Security Center. For more information about how to disable the client protection feature, see [Use the client protection feature](https://www.alibabacloud.com/help/en/security-center/latest/local-file-detection-engine).
+// - Client self-protection has been disabled on the non-Alibaba Cloud server that you want to unbind. For more information, see [Client self-protection](https://help.aliyun.com/document_detail/460802.html).
 //
 // @param request - UnbindAegisRequest
 //
@@ -47736,7 +47802,7 @@ func (client *Client) UpdateAlarmEventWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Update the configuration of sensitive assets in the attack path.
+// Updates the sensitive asset configuration for attack path analysis.
 //
 // @param request - UpdateAttackPathSensitiveAssetConfigRequest
 //
@@ -47852,7 +47918,7 @@ func (client *Client) UpdateAttackPathWhitelistWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Updates the whitelist rule for a baseline check item.
+// Updates a baseline whitelist record.
 //
 // @param request - UpdateBaselineCheckWhiteRecordRequest
 //
@@ -48134,7 +48200,7 @@ func (client *Client) UpdateClientAlertModeWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Modifies the settings of common switches.
+// Updates the settings of common switches.
 //
 // @param request - UpdateCommonSwitchConfigRequest
 //
@@ -48182,7 +48248,7 @@ func (client *Client) UpdateCommonSwitchConfigWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Changes the status of a security report.
+// Modifies the status of a security report.
 //
 // @param request - UpdateCustomizeReportStatusRequest
 //
@@ -48234,7 +48300,7 @@ func (client *Client) UpdateCustomizeReportStatusWithContext(ctx context.Context
 
 // Summary:
 //
-// 更新文件防护事件状态
+// Updates the status of a file protection event.
 //
 // @param request - UpdateFileProtectClientEventRequest
 //
@@ -48346,7 +48412,7 @@ func (client *Client) UpdateFileProtectClientEventWithContext(ctx context.Contex
 
 // Summary:
 //
-// 更新文件防护规则
+// Updates a file protection rule.
 //
 // @param request - UpdateFileProtectClientRuleRequest
 //
@@ -48426,7 +48492,7 @@ func (client *Client) UpdateFileProtectClientRuleWithContext(ctx context.Context
 
 // Summary:
 //
-// 更新文件防护规则状态
+// Updates the status of file tamper-proofing rules in batches.
 //
 // @param request - UpdateFileProtectClientRuleStatusRequest
 //
@@ -48758,7 +48824,7 @@ func (client *Client) UpdateFileProtectRuleWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Modifies the queries per second (QPS) limit on the files uploaded from the client.
+// Modifies the QPS for client file uploads.
 //
 // @param request - UpdateFileUploadLimitRequest
 //
@@ -48858,7 +48924,7 @@ func (client *Client) UpdateHoneypotWithContext(ctx context.Context, request *Up
 
 // Summary:
 //
-// Modifies the configuration of a specified management node.
+// Updates a specified honeypot management node.
 //
 // @param request - UpdateHoneypotNodeRequest
 //
@@ -48914,7 +48980,7 @@ func (client *Client) UpdateHoneypotNodeWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Modifies the configurations of the specified honeypot template.
+// Modifies the configuration of a specified honeypot template.
 //
 // @param request - UpdateHoneypotPresetRequest
 //
@@ -48974,7 +49040,7 @@ func (client *Client) UpdateHoneypotPresetWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Modifies the attributes of a specified probe.
+// Updates the properties of a specified probe.
 //
 // @param request - UpdateHoneypotProbeRequest
 //
@@ -49126,7 +49192,7 @@ func (client *Client) UpdateHoneypotProbeBindWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Updates the Security Center agent that is installed on a proxy server in a hybrid cloud.
+// Upgrades a hybrid cloud proxy client.
 //
 // @param request - UpdateHybridProxyRequest
 //
@@ -49230,7 +49296,7 @@ func (client *Client) UpdateImageEventOperationWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Updates the vulnerability whitelist of an image.
+// Updates an image vulnerability whitelist.
 //
 // @param request - UpdateImageVulWhitelistTargetRequest
 //
@@ -49290,7 +49356,7 @@ func (client *Client) UpdateImageVulWhitelistTargetWithContext(ctx context.Conte
 
 // Summary:
 //
-// Modifies the name of a Jenkins image repository.
+// Modifies the image name in a Jenkins image repository.
 //
 // @param request - UpdateJenkinsImageRegistryNameRequest
 //
@@ -49344,7 +49410,7 @@ func (client *Client) UpdateJenkinsImageRegistryNameWithContext(ctx context.Cont
 
 // Summary:
 //
-// Modifies the retention period of images that are stored in a Jenkins image repository.
+// Modifies the image retention period for a Jenkins image repository.
 //
 // @param request - UpdateJenkinsImageRegistryPersistenceDayRequest
 //
@@ -49398,7 +49464,7 @@ func (client *Client) UpdateJenkinsImageRegistryPersistenceDayWithContext(ctx co
 
 // Summary:
 //
-// Modifies an alert whitelist rule of sensitive files that are detected by using the agentless detection feature.
+// Modifies a whitelist rule for agentless sensitive file detection alerts.
 //
 // @param request - UpdateMaliciousFileWhitelistConfigRequest
 //
@@ -49518,7 +49584,7 @@ func (client *Client) UpdateMultiUserInstancesWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Updates the blocking rule for at-risk images.
+// Updates the risky image blocking policy.
 //
 // @param tmpReq - UpdateOpaStrategyNewRequest
 //
@@ -49620,7 +49686,7 @@ func (client *Client) UpdateOpaStrategyNewWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// Modifies a policy of detecting Object Storage Service (OSS) objects by using the SDK for malicious file detection feature.
+// Updates the scan policy configuration for OSS file detection under the malicious file detection feature.
 //
 // @param request - UpdateOssScanConfigRequest
 //
@@ -49876,7 +49942,9 @@ func (client *Client) UpdatePublishBatchWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Modifies the configuration of the client upgrade time. If you want to call this operation, contact technical support.
+// Modifies the configuration of the client upgrade time.
+//
+// To use this feature, contact technical support.
 //
 // @param request - UpdatePublishCronRequest
 //
@@ -49936,7 +50004,7 @@ func (client *Client) UpdatePublishCronWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Modifies the settings of the canary release feature for agent upgrade. If you want to use the feature, contact technical support.
+// Updates the settings of the canary release feature for agent upgrade. If you want to use the feature, contact technical support.
 //
 // @param request - UpdatePublishGraySwitchRequest
 //
@@ -49980,7 +50048,7 @@ func (client *Client) UpdatePublishGraySwitchWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Updates the unique identifier of an asset selection.
+// Modifies the key that corresponds to a specified type.
 //
 // @param request - UpdateSelectionKeyByTypeRequest
 //
@@ -50028,7 +50096,7 @@ func (client *Client) UpdateSelectionKeyByTypeWithContext(ctx context.Context, r
 
 // Summary:
 //
-// # Update the selected strict events in strict mode
+// Modifies the strict mode configuration, including whether to enable alerting in strict mode. This is a full-update operation.
 //
 // @param request - UpdateStrictEventNameRequest
 //
@@ -50080,7 +50148,7 @@ func (client *Client) UpdateStrictEventNameWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Updates machines in a release batch.
+// Updates the machines included in a batch.
 //
 // @param request - UpdateTargetListByBatchRequest
 //
@@ -50128,7 +50196,7 @@ func (client *Client) UpdateTargetListByBatchWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 更新未知威胁发现的进程详情
+// Updates the remark for a specified unknown threat detection process.
 //
 // @param request - UpdateUnknownThreatDetectProcessRequest
 //
@@ -50176,7 +50244,7 @@ func (client *Client) UpdateUnknownThreatDetectProcessWithContext(ctx context.Co
 
 // Summary:
 //
-// 更新未知威胁发现策略
+// Updates the unknown threat detection strategy.
 //
 // @param request - UpdateUnknownThreatDetectStrategyRequest
 //
@@ -50284,11 +50352,11 @@ func (client *Client) UpdateWhiteListWithContext(ctx context.Context, request *U
 
 // Summary:
 //
-// Updates the status of an application whitelist policy.
+// Modifies the status of an application whitelist policy.
 //
 // Description:
 //
-// The application whitelist feature is in public preview. You cannot apply for a trial of the feature. If you applied for a trial of the feature or the feature is in use, you can call this operation.
+// Application whitelist is a China-site public preview feature that no longer accepts new applications. Users who have already applied for or are using this feature can call this operation as usual.
 //
 // @param request - UpdateWhiteListStrategyStatusRequest
 //
@@ -50344,7 +50412,7 @@ func (client *Client) UpdateWhiteListStrategyStatusWithContext(ctx context.Conte
 
 // Summary:
 //
-// Upgrades the version of an anti-ransomware policy.
+// Upgrades the version of an anti-ransomware backup policy.
 //
 // @param request - UpgradeBackupPolicyVersionRequest
 //
@@ -50388,7 +50456,7 @@ func (client *Client) UpgradeBackupPolicyVersionWithContext(ctx context.Context,
 
 // Summary:
 //
-// Upgrades the version of the management node to which a honeypot belongs.
+// Upgrades the version of a specified honeypot management node.
 //
 // @param request - UpgradeHoneypotNodeRequest
 //
@@ -50440,7 +50508,7 @@ func (client *Client) UpgradeHoneypotNodeWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Manually upgrades the client version on assets.
+// Manually upgrades the client of an asset.
 //
 // @param request - UpgradeVersionByUuidsRequest
 //
@@ -50488,7 +50556,7 @@ func (client *Client) UpgradeVersionByUuidsWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Uploads a honeypot file.
+// Creates and confirms a record after a honeypot file is uploaded.
 //
 // @param request - UploadedHoneyPotFileRequest
 //
@@ -50556,7 +50624,7 @@ func (client *Client) UploadedHoneyPotFileWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Verifies whether risk items are fixed. If a risk item is fixed, the status of the related check item is updated to Passed.
+// Verifies existing baseline risks. If the verification passes, the status of the risk items is updated to passed.
 //
 // @param request - ValidateHcWarningsRequest
 //
@@ -50612,7 +50680,7 @@ func (client *Client) ValidateHcWarningsWithContext(ctx context.Context, request
 
 // Summary:
 //
-// # Customization and validation of check items and repair parameters
+// Authenticates whether the configuration information entered by a user is compliant with the requirements of the corresponding parameter settings.
 //
 // @param tmpReq - VerifyCheckCustomConfigRequest
 //
@@ -50678,7 +50746,7 @@ func (client *Client) VerifyCheckCustomConfigWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// Verifies the instances on which risks are detected based on a check item.
+// Verifies the instance dimensions under a check item.
 //
 // @param request - VerifyCheckInstanceResultRequest
 //
@@ -50734,7 +50802,7 @@ func (client *Client) VerifyCheckInstanceResultWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Verifies risk items that are detected based on check items.
+// Performs check item-level validation.
 //
 // @param request - VerifyCheckResultRequest
 //

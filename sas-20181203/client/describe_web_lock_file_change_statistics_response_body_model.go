@@ -22,27 +22,27 @@ type iDescribeWebLockFileChangeStatisticsResponseBody interface {
 }
 
 type DescribeWebLockFileChangeStatisticsResponseBody struct {
-	// The page number of the returned page.
+	// The page number of the current page in a paged query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// An array consisting of the files that are changed.
+	// The list of web tamper-proofing events.
 	List []*DescribeWebLockFileChangeStatisticsResponseBodyList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	// The number of entries returned per page.
+	// The maximum number of entries per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// 709A8C3D-A543-5B79-AB75-361B206F71D9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of files that are attempted to change.
+	// The total number of web tamper-proofing events.
 	//
 	// example:
 	//
@@ -123,7 +123,7 @@ type DescribeWebLockFileChangeStatisticsResponseBodyList struct {
 	//
 	// 33
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The file path.
+	// The path of the file.
 	//
 	// example:
 	//

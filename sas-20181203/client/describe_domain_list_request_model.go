@@ -22,35 +22,35 @@ type iDescribeDomainListRequest interface {
 }
 
 type DescribeDomainListRequest struct {
-	// The number of the page to return. Default value: **1**.
+	// The page number of the page to return in a paged query. Default value: **1**, which indicates that the first page is returned.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The type of the domain name that you want to query. Valid values:
+	// The type of the domain name to query. Valid values:
 	//
-	// 	- **root**: root domain name
+	// - **root**: root domain name
 	//
-	// 	- **sub**: subdomain name
+	// - **sub**: subdomain name.
 	//
 	// example:
 	//
 	// root
 	DomainType *string `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
-	// The keyword that is used to query domain names. Fuzzy match is supported.
+	// The search keyword for the domain name to query. Fuzzy match is supported.
 	//
 	// example:
 	//
 	// sas
 	FuzzyDomain *string `json:"FuzzyDomain,omitempty" xml:"FuzzyDomain,omitempty"`
-	// The number of entries to return on each page. Default value: **10**.
+	// The number of domain names to display on each page in a paged query. Default value: **10**, which indicates that 10 domain names are displayed on each page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The source IP address of the request.
+	// The IP address of the access source.
 	//
 	// example:
 	//

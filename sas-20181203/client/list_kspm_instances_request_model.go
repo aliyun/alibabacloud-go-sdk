@@ -24,49 +24,49 @@ type iListKspmInstancesRequest interface {
 }
 
 type ListKspmInstancesRequest struct {
-	// List of Kubernetes asset type information.
+	// The list of asset type information for Kubernetes assets.
 	CloudAssetTypes []*ListKspmInstancesRequestCloudAssetTypes `json:"CloudAssetTypes,omitempty" xml:"CloudAssetTypes,omitempty" type:"Repeated"`
-	// Set the conditions for searching assets. This parameter is in JSON format, and case sensitivity should be noted when entering parameters. It includes the following fields:
+	// The search conditions for assets. This parameter is in JSON format. Pay attention to letter case when you specify this parameter. The following fields are included:
 	//
-	// - **name**: Search item
+	// - **name**: the search item.
 	//
-	// - **value**: Value of the search item
+	// - **value**: the value of the search item.
 	//
-	// - **logicalExp**: The relationship between search items when multiple conditions are used. Values:
+	// - **logicalExp**: the logical relationship between multiple conditions. Valid values:
 	//
-	//     - **OR**: Indicates an **or*	- relationship between multiple conditions.
+	//     - **OR**: The conditions are in an OR relationship.
 	//
-	//     - **AND**: Indicates an **and*	- relationship between multiple conditions.
+	//     - **AND**: The conditions are in an AND relationship.
 	//
-	// > Supports using region, instance name, instance ID, alarm status, risk status, and tag search conditions.
+	// > You can search by region, instance name, instance ID, alert status, risk status, or tag.
 	//
 	// example:
 	//
 	// [{"name":"vulStatus","value":"YES","logicalExp":"AND"}]
 	Criteria *string `json:"Criteria,omitempty" xml:"Criteria,omitempty"`
-	// Set which page to start displaying the query results from. The default value is 1, indicating that the display starts from the first page.
+	// The page number of the page to return in the query results. Default value: 1, which indicates that the results are returned starting from page 1.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// Set the logical relationship that takes effect between multiple search conditions. Values:
+	// The logical relationship between multiple search conditions. Valid values:
 	//
-	// - **OR**: Indicates an **or*	- relationship between multiple search conditions.
+	// - **OR**: The search conditions are in an OR relationship.
 	//
-	// - **AND**: Indicates an **and*	- relationship between multiple search conditions.
+	// - **AND**: The search conditions are in an AND relationship.
 	//
 	// example:
 	//
 	// OR
 	LogicalExp *string `json:"LogicalExp,omitempty" xml:"LogicalExp,omitempty"`
-	// The maximum number of data entries displayed per page during pagination. The default value is 20.
+	// The maximum number of entries per page in a paged query. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region where the instance is located.
+	// The ID of the region where the instance resides.
 	//
 	// example:
 	//
@@ -150,9 +150,7 @@ func (s *ListKspmInstancesRequest) Validate() error {
 }
 
 type ListKspmInstancesRequestCloudAssetTypes struct {
-	// Subtype of the product.
-	//
-	// Asset type-subtype. Values:
+	// The subtype of the asset. The value is in the format of asset type - subtype. Valid values:
 	//
 	// - **0**: Workload
 	//
@@ -208,13 +206,13 @@ type ListKspmInstancesRequestCloudAssetTypes struct {
 	//
 	//     	- **0**: LimitRanges
 	//
-	//     	- **1**: ResourceQuota
+	//     	- **1**: ResourceQuota.
 	//
 	// example:
 	//
 	// 0
 	AssetSubType *int32 `json:"AssetSubType,omitempty" xml:"AssetSubType,omitempty"`
-	// Type of the asset. Values:
+	// The type of the asset. Valid values:
 	//
 	// - **0**: Workload
 	//
@@ -232,13 +230,13 @@ type ListKspmInstancesRequestCloudAssetTypes struct {
 	//
 	// - **7**: Configuration
 	//
-	// - **8**: Policies
+	// - **8**: Policies.
 	//
 	// example:
 	//
 	// 0
 	AssetType *int32 `json:"AssetType,omitempty" xml:"AssetType,omitempty"`
-	// Vendor of the asset. The fixed value is **200**.
+	// The asset vendor. This parameter is fixed to **200**.
 	//
 	// example:
 	//

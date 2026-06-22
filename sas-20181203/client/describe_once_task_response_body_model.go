@@ -20,13 +20,13 @@ type iDescribeOnceTaskResponseBody interface {
 type DescribeOnceTaskResponseBody struct {
 	// The pagination information.
 	PageInfo *DescribeOnceTaskResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The request ID. Alibaba Cloud generates a unique identifier for each request. You can use the request ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// 7E0618A9-D5EF-4220-9471-C42B5E92719F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// An array that consists of the tasks.
+	// The list of client task query results.
 	TaskManageResponseList []*DescribeOnceTaskResponseBodyTaskManageResponseList `json:"TaskManageResponseList,omitempty" xml:"TaskManageResponseList,omitempty" type:"Repeated"`
 }
 
@@ -84,25 +84,25 @@ func (s *DescribeOnceTaskResponseBody) Validate() error {
 }
 
 type DescribeOnceTaskResponseBodyPageInfo struct {
-	// The number of entries returned on the current page.
+	// The number of client tasks displayed on the current page in a paged query.
 	//
 	// example:
 	//
 	// 2
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The page number of the returned page.
+	// The page number of the current page in a paged query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries returned per page. Default value: **20**.
+	// The number of client tasks per page in a paged query. Default value: **20**.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of client tasks returned.
 	//
 	// example:
 	//
@@ -159,31 +159,31 @@ func (s *DescribeOnceTaskResponseBodyPageInfo) Validate() error {
 }
 
 type DescribeOnceTaskResponseBodyTaskManageResponseList struct {
-	// The execution details of the task. The value of this parameter is in the JSON format.
+	// The task execution details. This parameter is in JSON format.
 	//
-	// 	- **causeCode**: the returned code for the cause.
+	// - **causeCode**: the return code of the troubleshooting cause.
 	//
-	// 	- **causeMsg**: the returned message for the cause.
+	// - **causeMsg**: the return message of the troubleshooting cause.
 	//
-	// 	- **resCode**: the returned code for troubleshooting.
+	// - **resCode**: the troubleshooting return code.
 	//
-	// 	- **resMsg**: the returned message for troubleshooting.
+	// - **resMsg**: the troubleshooting return message.
 	//
-	// 	- **problemType**: the type of the issue.
+	// - **problemType**: the problem type.
 	//
-	// 	- **dispatchType**: the task delivery method.
+	// - **dispatchType**: the task dispatch method.
 	//
-	// 	- **uuid**: the UUID of the server.
+	// - **uuid**: the server UUID.
 	//
-	// 	- **instanceId**: the instance ID of the server.
+	// - **instanceId**: the ID of the server instance.
 	//
-	// 	- **internetIp**: the public IP address of the server.
+	// - **internetIp**: the public IP address of the server.
 	//
-	// 	- **intranetIp**: the private IP address of the server.
+	// - **intranetIp**: the private IP address of the server.
 	//
-	// 	- **instanceName**: the instance name of the server.
+	// - **instanceName**: the name of the server instance.
 	//
-	// 	- **url**: the download URL of the troubleshooting log.
+	// - **url**: the download URL of the troubleshooting log.
 	//
 	// example:
 	//
@@ -217,31 +217,31 @@ type DescribeOnceTaskResponseBodyTaskManageResponseList struct {
 	//
 	// ]
 	DetailData *string `json:"DetailData,omitempty" xml:"DetailData,omitempty"`
-	// The number of tasks that fail to be executed.
+	// The number of tasks that failed to be executed.
 	//
 	// example:
 	//
 	// 2
 	FailCount *int32 `json:"FailCount,omitempty" xml:"FailCount,omitempty"`
-	// The progress of the task. Unit: percent (%).
+	// The task progress, in percentage.
 	//
 	// example:
 	//
 	// 10%
 	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// The execution result of the task.
+	// The task execution result.
 	//
 	// example:
 	//
 	// successful
 	ResultInfo *string `json:"ResultInfo,omitempty" xml:"ResultInfo,omitempty"`
-	// The number of tasks that are executed.
+	// The number of tasks that are executed successfully.
 	//
 	// example:
 	//
 	// 7
 	SuccessCount *int32 `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
-	// The timestamp that indicates the time when the task ends. Unit: milliseconds.
+	// The timestamp when the task actually ends. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -253,57 +253,57 @@ type DescribeOnceTaskResponseBodyTaskManageResponseList struct {
 	//
 	// e900f528f5a6229bb640ca27cb44c98e
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The name of the task.
+	// The task name.
 	//
 	// example:
 	//
 	// CLIENT_PROBLEM_CHECK
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// The timestamp that indicates the time when the task starts. Unit: milliseconds.
+	// The timestamp when the task actually starts. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1649732012000
 	TaskStartTime *int64 `json:"TaskStartTime,omitempty" xml:"TaskStartTime,omitempty"`
-	// The status of the task. Valid values:
+	// The task status. Valid values:
 	//
-	// 	- **1**: The task is started.
+	// - **1**: Started.
 	//
-	// 	- **2**: The task is complete.
+	// - **2**: Completed.
 	//
-	// 	- **3**: The task fails.
+	// - **3**: Failed.
 	//
-	// 	- **4**: The task times out.
+	// - **4**: Timed out.
 	//
 	// example:
 	//
 	// 1
 	TaskStatus *int32 `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	// The text description of the status for the task. Valid values:
+	// The text representation of the task status. Valid values:
 	//
-	// 	- **INIT**: The task is pending start.
+	// - **INIT**: Pending.
 	//
-	// 	- **START**: The task is started.
+	// - **START**: Started.
 	//
-	// 	- **DISPATCH**: The self-check command is issued.
+	// - **DISPATCH**: Self-check command dispatched.
 	//
-	// 	- **SUCCESS**: The self-check is complete.
+	// - **SUCCESS**: Self-check completed.
 	//
-	// 	- **FAIL**: The task fails.
+	// - **FAIL**: Execution failed.
 	//
-	// 	- **TIMEOUT**: The task times out.
+	// - **TIMEOUT**: Timed out.
 	//
 	// example:
 	//
 	// INIT
 	TaskStatusText *string `json:"TaskStatusText,omitempty" xml:"TaskStatusText,omitempty"`
-	// The type of the task. Valid values:
+	// The task type. Valid values:
 	//
-	// 	- **CLIENT_PROBLEM_CHECK**: a task of the Security Center client
+	// - **CLIENT_PROBLEM_CHECK**: client task
 	//
-	// 	- **CLIENT_DEV_OPS**: an O\\&M task of Cloud Assistant
+	// - **CLIENT_DEV_OPS**: cloud O&M task
 	//
-	// 	- **ASSET_SECURITY_CHECK**: a task for asset information collection
+	// - **ASSET_SECURITY_CHECK**: asset information collection task.
 	//
 	// example:
 	//

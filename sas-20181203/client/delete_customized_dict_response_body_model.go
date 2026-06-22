@@ -14,7 +14,7 @@ type iDeleteCustomizedDictResponseBody interface {
 }
 
 type DeleteCustomizedDictResponseBody struct {
-	// The request ID.
+	// The ID of the request. The ID is a unique identifier that Alibaba Cloud generates for the request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//

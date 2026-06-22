@@ -137,7 +137,7 @@ type DescribeCheckWarningMachinesResponseBodyMachines struct {
 	//
 	// example:
 	//
-	// win-oracl****
+	// test****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// The public IP address of the server.
 	//

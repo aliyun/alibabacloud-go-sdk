@@ -112,9 +112,9 @@ type ListClusterCheckResultResponseBodyChecks struct {
 	CheckShowName *string `json:"CheckShowName,omitempty" xml:"CheckShowName,omitempty"`
 	// Source type of the security check item:
 	//
-	//  - **CUSTOM**：User-defined
+	// - **CUSTOM**:User-defined
 	//
-	//  - **SYSTEM**：Predefined by the Security Platform
+	// - **SYSTEM**:Predefined by the Security Platform
 	//
 	// example:
 	//
@@ -124,35 +124,35 @@ type ListClusterCheckResultResponseBodyChecks struct {
 	//
 	// - When **InstanceType*	- is **ECS**, this parameter can take the following values:
 	//
-	//     - **INSTANCE**
+	//   - **INSTANCE**
 	//
-	//     - **DISK**
+	//   - **DISK**
 	//
-	//     - **SECURITY_GROUP**
+	//   - **SECURITY_GROUP**
 	//
 	// - When **InstanceType*	- is **ACR**, this parameter can take the following values:
 	//
-	//     - **REPOSITORY_ENTERPRISE**
+	//   - **REPOSITORY_ENTERPRISE**
 	//
-	//     - **REPOSITORY_PERSON**
+	//   - **REPOSITORY_PERSON**
 	//
 	// - When **InstanceType*	- is **RAM**, this parameter can take the following values:
 	//
-	//     - **ALIAS**
+	//   - **ALIAS**
 	//
-	//     - **USER**
+	//   - **USER**
 	//
-	//     - **POLICY**
+	//   - **POLICY**
 	//
-	//     - **GROUP**
+	//   - **GROUP**
 	//
 	// - When **InstanceType*	- is **WAF**, this parameter can take the following values:
 	//
-	//     - **DOMAIN**
+	//   - **DOMAIN**
 	//
 	// - For other **InstanceType*	- values, this parameter can take the following value:
 	//
-	//     - **INSTANCE**
+	//   - **INSTANCE**
 	//
 	// example:
 	//
@@ -172,11 +172,11 @@ type ListClusterCheckResultResponseBodyChecks struct {
 	LastCheckTime *int64 `json:"LastCheckTime,omitempty" xml:"LastCheckTime,omitempty"`
 	// Risk level of the check item. Possible values:
 	//
-	// - **HIGH**：High
+	// - **HIGH**:High
 	//
-	// - **MEDIUM**：Medium
+	// - **MEDIUM**:Medium
 	//
-	// - **LOW**：Low
+	// - **LOW**:Low
 	//
 	// example:
 	//
@@ -206,9 +206,9 @@ type ListClusterCheckResultResponseBodyChecks struct {
 	TrialPermission *bool `json:"TrialPermission,omitempty" xml:"TrialPermission,omitempty"`
 	// Whether the check item requires enabling data delivery of operation audit for more than 30 days to build a behavior baseline.
 	//
-	// - **1**：Required
+	// - **1**:Required
 	//
-	// - **0**：Not Required
+	// - **0**:Not Required
 	//
 	// example:
 	//
@@ -216,15 +216,7 @@ type ListClusterCheckResultResponseBodyChecks struct {
 	TrialPermissionType *int32 `json:"TrialPermissionType,omitempty" xml:"TrialPermissionType,omitempty"`
 	// Vendor of the asset. Values:
 	//
-	// 0: Alibaba Cloud
-	//
-	// 3: Other cloud
-	//
-	// 4: Other cloud
-	//
-	// 5: Other cloud
-	//
-	// 7: Other cloud
+	// 0: Alibaba Cloud 3: Other cloud 4: Other cloud 5: Other cloud 7: Other cloud
 	//
 	// example:
 	//

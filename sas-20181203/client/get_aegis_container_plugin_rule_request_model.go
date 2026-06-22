@@ -18,29 +18,30 @@ type iGetAegisContainerPluginRuleRequest interface {
 }
 
 type GetAegisContainerPluginRuleRequest struct {
-	// The ID of the defense rule against container escapes.
+	// The ID of the container escape prevention rule.
 	//
-	// >  You can call the [ListAegisContainerPluginRule](~~ListAegisContainerPluginRule~~) operation to obtain the ID.
+	// >You can call the [ListAegisContainerPluginRule](~~ListAegisContainerPluginRule~~) operation to query this parameter.
 	//
 	// example:
 	//
 	// 1141****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language type for requests and responses. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **zh**: Chinese
+	//
+	// - **en**: English
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The type of the rule. Valid values:
+	// The rule type. Valid values:
 	//
-	// 	- **0**: custom rule
+	// - **0**: user-defined
 	//
-	// 	- **1**: system rule
+	// - **1**: system built-in
 	//
 	// example:
 	//

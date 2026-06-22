@@ -38,21 +38,21 @@ type DescribeGroupStructResponseBody struct {
 	GroupFather *int32 `json:"GroupFather,omitempty" xml:"GroupFather,omitempty"`
 	// The type of the server group. Valid values:
 	//
-	// 	- **0**: the default group
+	// - **0**: default group
 	//
-	// 	- **1**: other groups
+	// - **1**: other group.
 	//
 	// example:
 	//
 	// 0
 	GroupFlag *int32 `json:"GroupFlag,omitempty" xml:"GroupFlag,omitempty"`
-	// The ID of the server group.
+	// The ID of the asset group.
 	//
 	// example:
 	//
 	// 958****
 	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The sequence number.
+	// The sort order number.
 	//
 	// example:
 	//
@@ -70,15 +70,15 @@ type DescribeGroupStructResponseBody struct {
 	//
 	// TestGroupName
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// An array that consists of child groups.
+	// The collection of child groups.
 	Groups []*string `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
-	// The number of servers in the group.
+	// The number of servers.
 	//
 	// example:
 	//
 	// 30
 	MachineNum *int32 `json:"MachineNum,omitempty" xml:"MachineNum,omitempty"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//

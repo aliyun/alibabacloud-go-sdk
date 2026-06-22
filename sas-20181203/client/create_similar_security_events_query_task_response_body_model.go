@@ -16,9 +16,9 @@ type iCreateSimilarSecurityEventsQueryTaskResponseBody interface {
 }
 
 type CreateSimilarSecurityEventsQueryTaskResponseBody struct {
-	// The information about the task that queries alert events of the same alert type.
+	// The response for creating a task to query similar alert events.
 	CreateSimilarSecurityEventsQueryTaskResponse *CreateSimilarSecurityEventsQueryTaskResponseBodyCreateSimilarSecurityEventsQueryTaskResponse `json:"CreateSimilarSecurityEventsQueryTaskResponse,omitempty" xml:"CreateSimilarSecurityEventsQueryTaskResponse,omitempty" type:"Struct"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -62,21 +62,21 @@ func (s *CreateSimilarSecurityEventsQueryTaskResponseBody) Validate() error {
 }
 
 type CreateSimilarSecurityEventsQueryTaskResponseBodyCreateSimilarSecurityEventsQueryTaskResponse struct {
-	// The status of the task. Valid values:
+	// The task status. Valid values:
 	//
-	// 	- **New**: The task is created.
+	// - **New**: The task is created.
 	//
-	// 	- **RetrievingData**: Data is being retrieved.
+	// - **RetrievingData**: Data is being retrieved.
 	//
-	// 	- **DataRetrieved**: Data is retrieved.
+	// - **DataRetrieved**: Data is retrieved.
 	//
-	// 	- **Processing**: The task is running.
+	// - **Processing**: The task is being processed.
 	//
-	// 	- **Success**: The task is successful.
+	// - **Success**: The task is successful.
 	//
-	// 	- **Failed**: The task failed.
+	// - **Failed**: The task failed.
 	//
-	// 	- **PartialFailed**: The task partially failed.
+	// - **PartialFailed**: The task partially failed.
 	//
 	// example:
 	//

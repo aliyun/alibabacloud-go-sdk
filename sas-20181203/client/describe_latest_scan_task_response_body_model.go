@@ -22,43 +22,45 @@ type iDescribeLatestScanTaskResponseBody interface {
 }
 
 type DescribeLatestScanTaskResponseBody struct {
-	// The timestamp when the last check was performed. Unit: milliseconds.
+	// The timestamp of the most recent scan, in milliseconds.
 	//
 	// example:
 	//
 	// 1671610264000
 	LastCheckTime *int64 `json:"LastCheckTime,omitempty" xml:"LastCheckTime,omitempty"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The request ID.
 	//
 	// example:
 	//
 	// 7E0618A9-D5EF-4220-9471-C42XXXXXXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of virus detection risks on the server.
+	// The number of virus risks detected on the server.
 	//
 	// example:
 	//
 	// 1
 	RiskNum *int32 `json:"RiskNum,omitempty" xml:"RiskNum,omitempty"`
-	// The applicable scope of the whitelist. The value of this parameter is in the JSON format and contains the following fields:
+	// The asset information scanned by the virus scan node. This parameter is expressed as a character string converted from a JSON array. The following fields are included:
 	//
-	// 	- **type**: the type of the applicable scope. Valid values:
+	// - **type**: The Asset Type on which the virus scan is executed. Valid values:
 	//
-	//     	- **GroupId**: the ID of a server group
+	//     - **groupId**: server group.
 	//
-	//     	- **Uuid**: the UUID of a server
+	//     - **uuid**: server.
 	//
-	// 	- **uuids**: the UUIDs of servers
+	// - **name**: The name of the server group or server.
 	//
-	// 	- **groupIds**: the IDs of server groups
+	// - **target**: The asset on which the virus scan is executed. The following describes the values of this field:
 	//
-	// >  If you leave this parameter empty, all servers are added to the whitelist. If you set the **type*	- field to **GroupId**, you must also specify the **groupIds*	- field. If you set the **type*	- field to **Uuid**, you must also specify the **uuids*	- field.
+	//     - If **type*	- is set to **groupId**, this field specifies the server group ID.
+	//
+	//     - If **type*	- is set to **uuid**, this field specifies the UUID of the server.
 	//
 	// example:
 	//
 	// [{"type":"uuid","name":"Host001","target":"503201a7-14c6-4280-801b-1169ed42****"}]
 	TargetInfo *string `json:"TargetInfo,omitempty" xml:"TargetInfo,omitempty"`
-	// The UUIDs of the assets.
+	// The list of UUIDs of the assets.
 	Uuids []*string `json:"Uuids,omitempty" xml:"Uuids,omitempty" type:"Repeated"`
 }
 

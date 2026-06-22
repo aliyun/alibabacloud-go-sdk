@@ -32,36 +32,72 @@ type iUpdateFileProtectClientRuleRequest interface {
 }
 
 type UpdateFileProtectClientRuleRequest struct {
+	// The alert notification level. Valid values:
+	//
+	// - 0: no alert
+	//
+	// - 1: reminder
+	//
+	// - 2: suspicious
+	//
+	// - 3: high-risk.
+	//
 	// example:
 	//
 	// 0
-	AlertLevel   *int32    `json:"AlertLevel,omitempty" xml:"AlertLevel,omitempty"`
+	AlertLevel *int32 `json:"AlertLevel,omitempty" xml:"AlertLevel,omitempty"`
+	// The list of users excluded from file protection.
 	ExcludeUsers []*string `json:"ExcludeUsers,omitempty" xml:"ExcludeUsers,omitempty" type:"Repeated"`
+	// The list of operations performed on the file.
+	//
 	// This parameter is required.
 	FileOps []*string `json:"FileOps,omitempty" xml:"FileOps,omitempty" type:"Repeated"`
+	// The list of monitored file paths. Wildcards are supported.
+	//
 	// This parameter is required.
 	FilePaths []*string `json:"FilePaths,omitempty" xml:"FilePaths,omitempty" type:"Repeated"`
+	// The list of protected file types.
 	FileTypes []*string `json:"FileTypes,omitempty" xml:"FileTypes,omitempty" type:"Repeated"`
+	// The unique ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 245
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The list of process listening paths. Wildcards are supported.
+	//
 	// This parameter is required.
 	ProcPaths []*string `json:"ProcPaths,omitempty" xml:"ProcPaths,omitempty" type:"Repeated"`
+	// The action of the rule. Valid values:
+	//
+	// - **block**: Block.
+	//
+	// - **monitor**: Monitor.
+	//
+	// - **pass**: Allow.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pass
 	RuleAction *string `json:"RuleAction,omitempty" xml:"RuleAction,omitempty"`
+	// The name of the rule.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// text-001
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The status of the rule. Valid values:
+	//
+	// - **0**: disabled
+	//
+	// - **1**: enabled.
+	//
 	// This parameter is required.
 	//
 	// example:

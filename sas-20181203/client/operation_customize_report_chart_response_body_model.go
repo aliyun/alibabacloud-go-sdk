@@ -14,7 +14,7 @@ type iOperationCustomizeReportChartResponseBody interface {
 }
 
 type OperationCustomizeReportChartResponseBody struct {
-	// The request ID.
+	// The request ID. Alibaba Cloud generates a unique identifier for each API request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//

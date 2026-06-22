@@ -177,9 +177,9 @@ type DescribeRiskCheckResultResponseBodyList struct {
 	RemainingTime *int32 `json:"RemainingTime,omitempty" xml:"RemainingTime,omitempty"`
 	// Indicates whether the risks that are detected based on the check item can be fixed. Valid values:
 	//
-	// 	- **enabled**: yes
+	// - **enabled**: yes
 	//
-	// 	- **disabled**: no
+	// - **disabled**: no
 	//
 	// example:
 	//
@@ -195,11 +195,11 @@ type DescribeRiskCheckResultResponseBodyList struct {
 	RiskItemResources []*DescribeRiskCheckResultResponseBodyListRiskItemResources `json:"RiskItemResources,omitempty" xml:"RiskItemResources,omitempty" type:"Repeated"`
 	// The risk level of the check item. Valid values:
 	//
-	// 	- **high**
+	// - **high**
 	//
-	// 	- **medium**
+	// - **medium**
 	//
-	// 	- **low**
+	// - **low**
 	//
 	// example:
 	//
@@ -213,9 +213,9 @@ type DescribeRiskCheckResultResponseBodyList struct {
 	Sort *int32 `json:"Sort,omitempty" xml:"Sort,omitempty"`
 	// Indicates whether the check item is supported by the edition of Security Center that you purchase. Valid values:
 	//
-	// 	- **enabled**: yes
+	// - **enabled**: yes
 	//
-	// 	- **disable**: no
+	// - **disable**: no
 	//
 	// example:
 	//
@@ -223,17 +223,17 @@ type DescribeRiskCheckResultResponseBodyList struct {
 	StartStatus *string `json:"StartStatus,omitempty" xml:"StartStatus,omitempty"`
 	// The status of the check results. Valid values:
 	//
-	// 	- **pass**
+	// - **pass**
 	//
-	// 	- **failed**
+	// - **failed**
 	//
-	// 	- **running**
+	// - **running**
 	//
-	// 	- **waiting**
+	// - **waiting**
 	//
-	// 	- **ignored**
+	// - **ignored**
 	//
-	// 	- **falsePositive**
+	// - **falsePositive**
 	//
 	// example:
 	//
@@ -253,17 +253,17 @@ type DescribeRiskCheckResultResponseBodyList struct {
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 	// The type of the check item. Valid values:
 	//
-	// 	- Identity authentication and permissions
+	// - Identity authentication and permissions
 	//
-	// 	- Network access control
+	// - Network access control
 	//
-	// 	- Log audit
+	// - Log audit
 	//
-	// 	- Data security
+	// - Data security
 	//
-	// 	- Monitoring and alerting
+	// - Monitoring and alerting
 	//
-	// 	- Basic security protection
+	// - Basic security protection
 	//
 	// example:
 	//
@@ -420,16 +420,20 @@ func (s *DescribeRiskCheckResultResponseBodyList) Validate() error {
 
 type DescribeRiskCheckResultResponseBodyListRiskItemResources struct {
 	// The details about the check results.
+	//
+	// example:
+	//
+	// {   "type": "link",   "value": "未开启多因素认证，存在风险\\n",   "url": "https://***.aliyun.com/#/secure\\n" }
 	ContentResource map[string]interface{} `json:"ContentResource,omitempty" xml:"ContentResource,omitempty"`
 	// The title in the details. Valid values:
 	//
-	// 	- **bestPractice**: description
+	// - **bestPractice**: description
 	//
-	// 	- **influence**: risk
+	// - **influence**: risk
 	//
-	// 	- **suggestion**: solution
+	// - **suggestion**: solution
 	//
-	// 	- **helpResource**: reference
+	// - **helpResource**: reference
 	//
 	// example:
 	//

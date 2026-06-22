@@ -42,75 +42,75 @@ type iUpdateOssScanConfigRequest interface {
 }
 
 type UpdateOssScanConfigRequest struct {
-	// Specifies whether to match the prefixes of all objects.
+	// Specifies whether to match all file prefixes.
 	//
 	// example:
 	//
 	// true
 	AllKeyPrefix *bool `json:"AllKeyPrefix,omitempty" xml:"AllKeyPrefix,omitempty"`
-	// The names of the buckets.
+	// The list of bucket names.
 	BucketNameList []*string `json:"BucketNameList,omitempty" xml:"BucketNameList,omitempty" type:"Repeated"`
-	// The maximum number of objects that can be extracted from a package. Valid values: 1 to 1000. If the value is reached, the decompression operation immediately finishes. The detection of extracted objects is not affected.
+	// The maximum number of files to decompress. Minimum value: 1. Maximum value: 1000. If the maximum number of decompressed files is exceeded, the decompression operation stops. The detection of already decompressed files is not affected.
 	//
 	// example:
 	//
 	// 100
 	DecompressMaxFileCount *int32 `json:"DecompressMaxFileCount,omitempty" xml:"DecompressMaxFileCount,omitempty"`
-	// The maximum number of decompression levels when multi-level packages are decompressed. Valid values: 1 to 5. If the value is reached, the decompression operation immediately finishes. The detection of extracted objects is not affected.
+	// The maximum number of decompression layers for nested compressed files. Minimum value: 1. Maximum value: 5. If the maximum number of decompression layers is exceeded, the decompression operation stops. The detection of already decompressed files is not affected.
 	//
 	// example:
 	//
 	// 1
 	DecompressMaxLayer *int32 `json:"DecompressMaxLayer,omitempty" xml:"DecompressMaxLayer,omitempty"`
-	// The decryption methods.
+	// The list of decryption types.
 	DecryptionList []*string `json:"DecryptionList,omitempty" xml:"DecryptionList,omitempty" type:"Repeated"`
-	// Specifies whether to enable the bucket check policy. Valid values:
+	// Specifies whether to enable the scan policy. Valid values:
 	//
-	// 	- **1**: enables the bucket check policy.
+	// - **1**: Enable.
 	//
-	// 	- **0**: disables the bucket check policy.
+	// - **0**: Disable.
 	//
 	// example:
 	//
 	// 0
 	Enable *int32 `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The end time of the check. Specify the time in the HH:mm:ss format.
+	// The scan end time in the HH:mm:ss format.
 	//
 	// example:
 	//
 	// 00:00:01
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The policy ID.
+	// The scan policy ID.
 	//
 	// example:
 	//
-	// 65778
+	// 1141****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The prefixes of the objects.
+	// The prefix list of files.
 	KeyPrefixList []*string `json:"KeyPrefixList,omitempty" xml:"KeyPrefixList,omitempty" type:"Repeated"`
-	// The suffixes of the objects that you want to check.
+	// The list of file suffixes.
 	KeySuffixList []*string `json:"KeySuffixList,omitempty" xml:"KeySuffixList,omitempty" type:"Repeated"`
-	// The timestamp. The objects whose last modification time is later than the specified value are detected. Unit: milliseconds.
+	// Scans files whose last modification time is after the specified timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1724301769834
 	LastModifiedStartTime *int64 `json:"LastModifiedStartTime,omitempty" xml:"LastModifiedStartTime,omitempty"`
-	// The policy name.
+	// The scan policy name.
 	//
 	// example:
 	//
-	// nacos****
+	// testStrategy
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Whether to enable real-time incremental detection. When this parameter is set to true, the parameters ScanDayList, StartTime, and EndTime are not effective.
+	// Specifies whether to enable real-time incremental detection. If this parameter is set to true, the ScanDayList, StartTime, and EndTime parameters do not take effect.
 	//
 	// example:
 	//
 	// true
 	RealTimeIncr *bool `json:"RealTimeIncr,omitempty" xml:"RealTimeIncr,omitempty"`
-	// The time when the check is performed. The value specifies the days of the week.
+	// The scan days. The number indicates the day of the week.
 	ScanDayList []*int32 `json:"ScanDayList,omitempty" xml:"ScanDayList,omitempty" type:"Repeated"`
-	// The start time of the check. Specify the time in the HH:mm:ss format.
+	// The scan start time in the HH:mm:ss format.
 	//
 	// example:
 	//

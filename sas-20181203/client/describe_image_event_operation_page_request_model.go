@@ -28,27 +28,27 @@ type iDescribeImageEventOperationPageRequest interface {
 }
 
 type DescribeImageEventOperationPageRequest struct {
-	// The page number.
+	// The number of the page to return in a paged query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The keyword of the alert item.
+	// The keyword of the alert metric.
 	//
 	// example:
 	//
 	// PEM
 	EventKey *string `json:"EventKey,omitempty" xml:"EventKey,omitempty"`
-	// The name of the alert item.
+	// The name of the alert metric.
 	//
 	// example:
 	//
 	// PEM
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
-	// The alert type.
+	// The alerting type. Valid values:
 	//
-	// 	- Set the value to **sensitiveFile**.
+	// - **sensitiveFile**: sensitive file tampering.
 	//
 	// example:
 	//
@@ -60,17 +60,17 @@ type DescribeImageEventOperationPageRequest struct {
 	//
 	// 49616
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language of the content in the request and response. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese.
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English.
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of entries per page.
+	// The maximum number of entries to return on each page in a paged query.
 	//
 	// example:
 	//
@@ -78,9 +78,9 @@ type DescribeImageEventOperationPageRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The source of the alert handling rule. Valid values:
 	//
-	// 	- **default**: image.
+	// - **default**: image
 	//
-	// 	- **agentless**: agentless detection.
+	// - **agentless**: agentless detection.
 	//
 	// example:
 	//

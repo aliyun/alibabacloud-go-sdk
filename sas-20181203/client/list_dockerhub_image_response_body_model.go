@@ -16,9 +16,9 @@ type iListDockerhubImageResponseBody interface {
 }
 
 type ListDockerhubImageResponseBody struct {
-	// The information about the images.
+	// The list of image information.
 	ImageList []*ListDockerhubImageResponseBodyImageList `json:"ImageList,omitempty" xml:"ImageList,omitempty" type:"Repeated"`
-	// The request ID.
+	// The unique identifier that Alibaba Cloud generates for the request.
 	//
 	// example:
 	//
@@ -84,19 +84,19 @@ type ListDockerhubImageResponseBodyImageList struct {
 	//
 	// d943de1933650d74b415d3ae8b37c064a0e0c700574d7a949c26db3291******
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The size of the image. Unit: bytes.
+	// The image size, in bytes.
 	//
 	// example:
 	//
 	// 1024
 	ImageSize *int64 `json:"ImageSize,omitempty" xml:"ImageSize,omitempty"`
-	// The name of the image repository.
+	// The image repository name.
 	//
 	// example:
 	//
 	// python
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	// The namespace to which the image repository belongs.
+	// The image namespace.
 	//
 	// example:
 	//
@@ -108,7 +108,7 @@ type ListDockerhubImageResponseBodyImageList struct {
 	//
 	// {"vul":0}
 	RiskLevelDetail *string `json:"RiskLevelDetail,omitempty" xml:"RiskLevelDetail,omitempty"`
-	// The tag of the image.
+	// The image tag.
 	//
 	// example:
 	//

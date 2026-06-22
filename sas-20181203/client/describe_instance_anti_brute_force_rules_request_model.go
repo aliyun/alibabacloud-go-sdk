@@ -22,28 +22,28 @@ type iDescribeInstanceAntiBruteForceRulesRequest interface {
 }
 
 type DescribeInstanceAntiBruteForceRulesRequest struct {
-	// The number of the page to return. Default value: **1**.
+	// The page number of the page to return. Default value: **1**, which indicates that the first page is returned.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries to return on each page. Default value: **10000**.
+	// The number of assets to display per page in a paging query. Default value: **10000**, which indicates that up to 10,000 entries of asset information are returned per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize        *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The source IP address of the request.
+	// The IP address of the access source.
 	//
 	// example:
 	//
 	// 115.238.XX.XX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The UUIDs of the servers.
+	// The list of server UUIDs to query.
 	//
-	// >  You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to query the UUIDs of servers.
+	// > You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to obtain the UUIDs of servers.
 	UuidList []*string `json:"UuidList,omitempty" xml:"UuidList,omitempty" type:"Repeated"`
 }
 

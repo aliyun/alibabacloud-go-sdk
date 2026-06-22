@@ -46,7 +46,7 @@ type iDescribeImageListWithBaselineNameRequest interface {
 }
 
 type DescribeImageListWithBaselineNameRequest struct {
-	// The name of the image baseline.
+	// The name of the image baseline check result.
 	//
 	// This parameter is required.
 	//
@@ -54,65 +54,65 @@ type DescribeImageListWithBaselineNameRequest struct {
 	//
 	// ak_leak
 	BaselineNameKey *string `json:"BaselineNameKey,omitempty" xml:"BaselineNameKey,omitempty"`
-	// The ID of the container cluster.
+	// The ID of the container cluster to query.
 	//
-	// >  You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to query the IDs of container clusters.
+	// > You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// cc20a1024011c44b6a8710d6f8b****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The name of the cluster.
+	// The cluster name.
 	//
 	// example:
 	//
 	// docker-law
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// The ID of the container.
+	// The container ID.
 	//
 	// example:
 	//
 	// c08d5fc1a329a4b88950a253d082f****
 	ContainerId *string `json:"ContainerId,omitempty" xml:"ContainerId,omitempty"`
-	// The search condition for the image baseline.
+	// The query condition for the baseline.
 	//
 	// example:
 	//
 	// Unauthorized access
 	Criteria *string `json:"Criteria,omitempty" xml:"Criteria,omitempty"`
-	// The type of the search condition. Valid values:
+	// The query type for the baseline. Valid values:
 	//
-	// 	- **BaselineNameAlias**: baseline name
+	// - **BaselineNameAlias**: baseline name
 	//
-	// 	- **BaselineClassAlias**: baseline category
+	// - **BaselineClassAlias**: baseline category.
 	//
 	// example:
 	//
 	// BaselineNameAlias
 	CriteriaType *string `json:"CriteriaType,omitempty" xml:"CriteriaType,omitempty"`
-	// The number of the page to return. Default value: **1**.
+	// The page number of the page to return. Default value: **1**, which indicates that the first page is returned.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The name of the image to which the container belongs.
+	// The container image name.
 	//
 	// example:
 	//
 	// registry.cn-wulanchabu.aliyuncs.com/sas_test/huxin-test-001:nuxeo6-****
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
-	// The SHA-256 value of the image digest.
+	// The SHA256 value of the image digest.
 	//
 	// example:
 	//
 	// 2e6daffce524ffeae66cccaa90c8fc47de912346dcec295c27395b6d66db6423
 	ImageDigest *string `json:"ImageDigest,omitempty" xml:"ImageDigest,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language type for the request and response messages. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
@@ -124,7 +124,7 @@ type DescribeImageListWithBaselineNameRequest struct {
 	//
 	// test-002
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The number of entries to return on each page. Default value: **10**.
+	// Settings for paged query paging. The number of image baseline check result details to display per page. Default value: **10**, which indicates that 10 image baseline check result details are displayed per page.
 	//
 	// example:
 	//
@@ -148,13 +148,13 @@ type DescribeImageListWithBaselineNameRequest struct {
 	//
 	// libssh2
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	// The namespace to which the image repository belongs.
+	// The namespace of the image repository.
 	//
 	// example:
 	//
 	// libssh2
 	RepoNamespace *string `json:"RepoNamespace,omitempty" xml:"RepoNamespace,omitempty"`
-	// The types of the assets that you want to scan.
+	// The collection of scan ranges.
 	ScanRange []*string `json:"ScanRange,omitempty" xml:"ScanRange,omitempty" type:"Repeated"`
 }
 

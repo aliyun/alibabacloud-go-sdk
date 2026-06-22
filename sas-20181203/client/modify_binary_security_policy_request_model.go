@@ -26,7 +26,7 @@ type iModifyBinarySecurityPolicyRequest interface {
 }
 
 type ModifyBinarySecurityPolicyRequest struct {
-	// Cluster information.
+	// The cluster information.
 	//
 	// This parameter is required.
 	//
@@ -34,25 +34,25 @@ type ModifyBinarySecurityPolicyRequest struct {
 	//
 	// [{\\"Namespaces\\":[\\"default\\"],\\"ClusterId\\":\\"c9f5b93a8da8f4341b77***********\\"},{\\"Namespaces\\":[\\"default\\"],\\"ClusterId\\":\\"cc12429dbb8f644f690b0***********\\"}]
 	Clusters *string `json:"Clusters,omitempty" xml:"Clusters,omitempty"`
-	// Policy name.
+	// The policy name.
 	//
 	// example:
 	//
 	// test-policy-04-11
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Policy content. JSON format, Key values:
+	// The policy content in JSON format. Valid keys:
 	//
-	// - **policyMode**: Type of policy, default is requireAttestor.
+	// - **policyMode**: The policy type. Default value: requireAttestor.
 	//
-	// - **requiredAttestors**: Required attestors.
+	// - **requiredAttestors**: The required attestors.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// {\\"PolicyMode\\":\\"requireAttestor\\",\\"RequiredAttestors\\":[\\"test-xcs-04-11-hhht\\"]}
+	// {\\"PolicyMode\\":\\"requireAttestor\\",\\"RequiredAttestors\\":[\\"test-xcs-04-11-****\\"]}
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	// Remark.
+	// The remarks.
 	//
 	// example:
 	//
@@ -63,13 +63,13 @@ type ModifyBinarySecurityPolicyRequest struct {
 	//
 	// example:
 	//
-	// 1.2.3.4
+	// 115.213.XX.XX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// Set to enable or disable the policy. Values:
+	// Settings to enable or disable the policy. Valid values:
 	//
-	// - **enabled**: Enable the protection policy.
+	// - **enabled**: Enables the mitigation policies.
 	//
-	// - **disabled**: Disable the protection policy.
+	// - **disabled**: Disables the mitigation policies.
 	//
 	// example:
 	//

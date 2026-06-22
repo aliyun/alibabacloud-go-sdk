@@ -18,17 +18,17 @@ type iGetContainerDefenseRuleDetailRequest interface {
 type GetContainerDefenseRuleDetailRequest struct {
 	// The language of the content within the request and response. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
-	// en
+	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The rule ID.
 	//
-	// >  You can call the [ListContainerDefenseRule](https://help.aliyun.com/document_detail/2590599.html) operation to query the rule ID.
+	// > You can call the [ListContainerDefenseRule](https://help.aliyun.com/document_detail/2590599.html) operation to obtain this parameter.
 	//
 	// example:
 	//

@@ -18,21 +18,21 @@ type iDescribeWebPathRequest interface {
 }
 
 type DescribeWebPathRequest struct {
-	// The number of the page to return.
+	// The page number of the current page in a paged query. Paging is used to display results.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries to return on each page.
+	// The maximum number of entries per page in a paged query. Paging is used to display results.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The type of the alert configuration. Valid values:
+	// The alert configuration type. Valid values:
 	//
-	// 	- **web_path**
+	// - **web_path**.
 	//
 	// example:
 	//

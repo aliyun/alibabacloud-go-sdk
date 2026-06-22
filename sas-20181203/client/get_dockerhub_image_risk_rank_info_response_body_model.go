@@ -16,7 +16,7 @@ type iGetDockerhubImageRiskRankInfoResponseBody interface {
 }
 
 type GetDockerhubImageRiskRankInfoResponseBody struct {
-	// The request ID.
+	// The request ID. Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -62,9 +62,9 @@ func (s *GetDockerhubImageRiskRankInfoResponseBody) Validate() error {
 }
 
 type GetDockerhubImageRiskRankInfoResponseBodyRiskRankInfo struct {
-	// The baseline risks.
+	// The baseline risk information.
 	Baseline []*GetDockerhubImageRiskRankInfoResponseBodyRiskRankInfoBaseline `json:"Baseline,omitempty" xml:"Baseline,omitempty" type:"Repeated"`
-	// The risk information of high-risk vulnerabilities.
+	// The risk information about high-priority vulnerabilities.
 	VulAsap []*GetDockerhubImageRiskRankInfoResponseBodyRiskRankInfoVulAsap `json:"VulAsap,omitempty" xml:"VulAsap,omitempty" type:"Repeated"`
 }
 
@@ -123,7 +123,7 @@ type GetDockerhubImageRiskRankInfoResponseBodyRiskRankInfoBaseline struct {
 	//
 	// f28ecca63bfaf22ead4b28b63d752a21e4d2c1de90b8549fbde880d619f3****
 	Digest *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
-	// The number of baseline risks detected on the image repository.
+	// The number of baseline risks in the image repository.
 	//
 	// example:
 	//
@@ -141,31 +141,31 @@ type GetDockerhubImageRiskRankInfoResponseBodyRiskRankInfoBaseline struct {
 	//
 	// 1024
 	ImageSize *int64 `json:"ImageSize,omitempty" xml:"ImageSize,omitempty"`
-	// The name of the Container Registry repository.
+	// The name of the container image repository.
 	//
 	// example:
 	//
 	// glz123
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	// The namespace to which the repository belongs.
+	// The repository namespace.
 	//
 	// example:
 	//
 	// namespace-01
 	RepoNamespace *string `json:"RepoNamespace,omitempty" xml:"RepoNamespace,omitempty"`
-	// The risk statistics of all hosts, images, and containers.
+	// The risk statistics information for all hosts, images, and containers.
 	//
 	// example:
 	//
 	// {\\"account\\":0,\\"agentlessAll\\":0,\\"agentlessBaseline\\":0,\\"agentlessMalicious\\":0,\\"agentlessSensitiveFile\\":0,\\"agentlessVulCve\\":0,\\"agentlessVulSca\\":0,\\"agentlessVulSys\\":0,\\"appNum\\":0,\\"asapVulCount\\":0,\\"baselineHigh\\":0,\\"baselineLow\\":0,\\"baselineMedium\\":0,\\"baselineNum\\":0,\\"cmsNum\\":0,\\"containerAsap\\":0,\\"containerLater\\":0,\\"containerNntf\\":0,\\"containerRemind\\":0,\\"containerSerious\\":0,\\"containerSuspicious\\":0,\\"cveNum\\":0,\\"emgNum\\":0,\\"health\\":0,\\"imageBaselineHigh\\":1,\\"imageBaselineLow\\":0,\\"imageBaselineMedium\\":0,\\"imageBaselineNum\\":1,\\"imageMaliciousFileRemind\\":0,\\"imageMaliciousFileSerious\\":0,\\"imageMaliciousFileSuspicious\\":0,\\"imageVulAsap\\":0,\\"imageVulLater\\":0,\\"imageVulNntf\\":0,\\"laterVulCount\\":0,\\"newSuspicious\\":0,\\"nntfVulCount\\":0,\\"remindNum\\":0,\\"scaNum\\":0,\\"seriousNum\\":0,\\"suspNum\\":0,\\"suspicious\\":0,\\"sysNum\\":0,\\"trojan\\":0,\\"uuid\\":\\"009635bf00c0585e3122ab92f5449919\\",\\"vul\\":0,\\"weakPWNum\\":0}
 	RiskLevelDetail *string `json:"RiskLevelDetail,omitempty" xml:"RiskLevelDetail,omitempty"`
-	// The tag of the image.
+	// The image tag.
 	//
 	// example:
 	//
 	// machineResource
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	// The UUID of the record.
+	// The unique identifier of the record.
 	//
 	// example:
 	//
@@ -288,7 +288,7 @@ type GetDockerhubImageRiskRankInfoResponseBodyRiskRankInfoVulAsap struct {
 	//
 	// d97c1348e56eb52902888e6e5673623321b1f19ac45ed532c3114dc0f989****
 	Digest *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
-	// The number of risks detected on the image repository.
+	// The number of risks in the image repository.
 	//
 	// example:
 	//
@@ -312,13 +312,13 @@ type GetDockerhubImageRiskRankInfoResponseBodyRiskRankInfoVulAsap struct {
 	//
 	// lkl-zf-ss-ordapi-labs
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	// The namespace to which the image repository belongs.
+	// The namespace of the image repository.
 	//
 	// example:
 	//
 	// namespace-01
 	RepoNamespace *string `json:"RepoNamespace,omitempty" xml:"RepoNamespace,omitempty"`
-	// The risk statistics of all hosts, images, and containers.
+	// The risk statistics information for all hosts, images, and containers.
 	//
 	// example:
 	//
@@ -330,7 +330,7 @@ type GetDockerhubImageRiskRankInfoResponseBodyRiskRankInfoVulAsap struct {
 	//
 	// app:app01-ubuntu
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	// The UUID of the record.
+	// The unique identifier of the record.
 	//
 	// example:
 	//

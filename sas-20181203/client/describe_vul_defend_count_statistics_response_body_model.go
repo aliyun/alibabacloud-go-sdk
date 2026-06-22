@@ -18,19 +18,19 @@ type iDescribeVulDefendCountStatisticsResponseBody interface {
 }
 
 type DescribeVulDefendCountStatisticsResponseBody struct {
-	// The number of defended vulnerabilities.
+	// The number of vulnerabilities that have been defended against.
 	//
 	// example:
 	//
 	// 10
 	RaspDefendedCount *int32 `json:"RaspDefendedCount,omitempty" xml:"RaspDefendedCount,omitempty"`
-	// The number of supported vulnerabilities.
+	// The number of vulnerabilities that can be defended against.
 	//
 	// example:
 	//
 	// 100
 	RaspDefensibleCount *int32 `json:"RaspDefensibleCount,omitempty" xml:"RaspDefensibleCount,omitempty"`
-	// The request ID.
+	// The request ID. China Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//

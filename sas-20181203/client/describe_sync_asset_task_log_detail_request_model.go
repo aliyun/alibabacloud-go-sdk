@@ -24,39 +24,39 @@ type iDescribeSyncAssetTaskLogDetailRequest interface {
 }
 
 type DescribeSyncAssetTaskLogDetailRequest struct {
-	// The page number. Default value: 1. Pages start from page 1.
+	// The page number from which to start displaying query results. Default value: 1, which indicates that query results are displayed starting from page 1.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The end timestamp of the task.
+	// The timestamp of the end time.
 	//
 	// example:
 	//
 	// 1668064495000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The number of entries per page. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+	// The maximum number of entries to display on each page when you perform a paginated query. Default value: 20. If the PageSize parameter is left empty, 20 entries are returned by default.
 	//
-	// >  We recommend that you do not leave this parameter empty.
+	// > We recommend that you do not leave PageSize empty.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the IDC scan task. You can call the [DescribeSyncAssetTaskList](https://help.aliyun.com/document_detail/141932.html) operation to obtain the ID.
+	// The ID of the IDC scan task that you want to query. You can call the [DescribeSyncAssetTaskList](https://help.aliyun.com/document_detail/141932.html) operation to obtain the ID of an abnormal task.
 	//
 	// example:
 	//
 	// 7e9565f537146fdf6bfb4e01f6f08818
 	RootTaskId *string `json:"RootTaskId,omitempty" xml:"RootTaskId,omitempty"`
-	// The start timestamp of the task.
+	// The timestamp of the start time.
 	//
 	// example:
 	//
 	// 1644027670
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The name of the IDC scan task.
+	// The task name.
 	//
 	// example:
 	//

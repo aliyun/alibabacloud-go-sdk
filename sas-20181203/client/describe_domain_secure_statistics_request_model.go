@@ -16,17 +16,17 @@ type iDescribeDomainSecureStatisticsRequest interface {
 }
 
 type DescribeDomainSecureStatisticsRequest struct {
-	// The language of the content within the request and response. Valid values: Default value: **zh**. Valid values:
+	// The language type for the request and response messages. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The source IP address of the request.
+	// The IP address of the access source.
 	//
 	// example:
 	//

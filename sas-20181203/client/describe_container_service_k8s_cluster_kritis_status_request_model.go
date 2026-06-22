@@ -18,14 +18,14 @@ type iDescribeContainerServiceK8sClusterKritisStatusRequest interface {
 }
 
 type DescribeContainerServiceK8sClusterKritisStatusRequest struct {
-	// The ID of the cluster.
+	// The cluster ID.
 	//
 	// example:
 	//
 	// c0e9efc6dea5f41db93b7e977123c****
 	ClusterId       *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The source IP address.
+	// The source IP address of the request.
 	//
 	// example:
 	//

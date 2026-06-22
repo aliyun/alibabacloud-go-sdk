@@ -16,13 +16,13 @@ type iDescribeSupervisonInfoResponseBody interface {
 }
 
 type DescribeSupervisonInfoResponseBody struct {
-	// The time of the last system vulnerability scan. The value is a UNIX timestamp. Unit: milliseconds.
+	// The system vulnerability scanning time. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1721134553000
 	LatestScanTime *int64 `json:"LatestScanTime,omitempty" xml:"LatestScanTime,omitempty"`
-	// The request ID.
+	// The ID of the request. The ID is a unique identifier that Alibaba Cloud generates for the request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//

@@ -28,65 +28,65 @@ type iDescribeImageBaselineCheckSummaryRequest interface {
 }
 
 type DescribeImageBaselineCheckSummaryRequest struct {
-	// The ID of the specified container cluster.
+	// The ID of the container cluster to query.
 	//
-	// > You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to query the ID of the container cluster.
+	// > You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// c60b77fe62093480db6164a3c2fa5****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The search condition for the image baseline.
+	// The query condition of the baseline.
 	//
 	// example:
 	//
 	// Unauthorized access
 	Criteria *string `json:"Criteria,omitempty" xml:"Criteria,omitempty"`
-	// The type of the search condition. Valid values:
+	// The query type of the baselines to query. Valid values:
 	//
-	// 	- **BaselineNameAlias**: baseline name
+	// - **BaselineNameAlias**: baseline name
 	//
-	// 	- **BaselineClassAlias**: baseline category
+	// - **BaselineClassAlias**: baseline category.
 	//
 	// example:
 	//
 	// BaselineNameAlias
 	CriteriaType *string `json:"CriteriaType,omitempty" xml:"CriteriaType,omitempty"`
-	// The number of the page to return. Pages start from page **1**. Default value: **1**.
+	// The page number to display from the returned results. Minimum value: **1**. Default value: **1**, which indicates that the first page is displayed.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language type for requests and responses. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of entries to return on each page. Default value: **20**.
+	// The maximum number of entries per page in a paged query. Default value: **20**.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The severity of the image baseline that you want to query. Separate multiple severities with commas (,). Valid values:
+	// The risk level of the baselines to query. Separate multiple levels with commas (,). Valid values:
 	//
-	// 	- **high**
+	// - **high**: high risk
 	//
-	// 	- **medium**
+	// - **medium**: medium risk
 	//
-	// 	- **low**
+	// - **low**: low risk.
 	//
 	// example:
 	//
 	// high
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The types of the assets that you want to scan.
+	// The collection of scan ranges.
 	ScanRange []*string `json:"ScanRange,omitempty" xml:"ScanRange,omitempty" type:"Repeated"`
 }
 

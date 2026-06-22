@@ -14,7 +14,7 @@ type iInstallAegisForLingjunRequest interface {
 }
 
 type InstallAegisForLingjunRequest struct {
-	// List of unique UUIDs for Lingjun bare metal.
+	// The list of unique UUIDs for Lingjun bare metal servers.
 	Uuids []*string `json:"Uuids,omitempty" xml:"Uuids,omitempty" type:"Repeated"`
 }
 

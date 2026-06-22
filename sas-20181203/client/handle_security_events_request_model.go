@@ -102,7 +102,7 @@ type HandleSecurityEventsRequest struct {
 	//
 	// example:
 	//
-	// {}
+	// {\\"expireTime\\":1719588943551,\\"subOperation\\":\\"killAndQuaraFileByMd5andPath\\"}
 	OperationParams *string `json:"OperationParams,omitempty" xml:"OperationParams,omitempty"`
 	// The remarks of the handling operation.
 	//
@@ -116,7 +116,7 @@ type HandleSecurityEventsRequest struct {
 	//
 	// example:
 	//
-	// 16670360956*****
+	// 127608589417****
 	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The IDs of the alert events.
 	//

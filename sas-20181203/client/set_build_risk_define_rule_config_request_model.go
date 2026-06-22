@@ -14,13 +14,13 @@ type iSetBuildRiskDefineRuleConfigRequest interface {
 }
 
 type SetBuildRiskDefineRuleConfigRequest struct {
-	// The configuration item for scanning image build command risks. Valid values:
+	// The risk items in the risk scan configuration for image build instructions. Valid values:
 	//
-	// 	- **classKey**: Set the value to a valid value of the ClassKey parameter in RuleTree.
+	// - **classKey**: the ClassKey field value from RuleTree
 	//
-	// 	- **ruleList**: Set the value to a valid value of the RuleKey parameter in RuleList.
+	// - **ruleList**: the RuleKey field values under RuleList
 	//
-	// >  You can call the [GetBuildRiskDefineRuleConfig](~~GetBuildRiskDefineRuleConfig~~) operation to query the valid values.
+	// > Call the [GetBuildRiskDefineRuleConfig](~~GetBuildRiskDefineRuleConfig~~) operation to obtain this parameter.
 	//
 	// example:
 	//

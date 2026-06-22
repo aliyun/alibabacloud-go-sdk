@@ -16,9 +16,9 @@ type iGetSuspiciousStatisticsRequest interface {
 }
 
 type GetSuspiciousStatisticsRequest struct {
-	// The ID of the asset group. Separate multiple IDs with commas (,).
+	// The IDs of the asset groups that you want to query. Separate multiple asset group IDs with commas (,).
 	//
-	// > You can call the [DescribeAllGroups](~~DescribeAllGroups~~) operation to query the IDs of asset groups.
+	// > You can call the [DescribeAllGroups](~~DescribeAllGroups~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type GetSuspiciousStatisticsRequest struct {
 	//
 	// 9997897
 	GroupIdList *string `json:"GroupIdList,omitempty" xml:"GroupIdList,omitempty"`
-	// The source IP address of the request.
+	// The IP address of the access source.
 	//
 	// example:
 	//

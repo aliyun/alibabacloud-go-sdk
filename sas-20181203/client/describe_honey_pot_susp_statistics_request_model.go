@@ -28,11 +28,11 @@ type DescribeHoneyPotSuspStatisticsRequest struct {
 	//
 	// honeypot
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese.
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English.
+	// - **en**: English.
 	//
 	// example:
 	//
@@ -46,11 +46,11 @@ type DescribeHoneyPotSuspStatisticsRequest struct {
 	//
 	// 30
 	StatisticsDays *int32 `json:"StatisticsDays,omitempty" xml:"StatisticsDays,omitempty"`
-	// The type of the asset to query. Valid values:
+	// The Asset Type to query. Valid values:
 	//
-	// 	- **vpcInstanceId**: VPC
+	// - **vpcInstanceId**: VPC-connected instance
 	//
-	// 	- **uuid**: server
+	// - **uuid**: server
 	//
 	// This parameter is required.
 	//

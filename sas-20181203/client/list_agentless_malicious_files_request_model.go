@@ -36,7 +36,7 @@ type iListAgentlessMaliciousFilesRequest interface {
 }
 
 type ListAgentlessMaliciousFilesRequest struct {
-	// The page number.
+	// The page number of the current page in a paging query.
 	//
 	// This parameter is required.
 	//
@@ -44,11 +44,11 @@ type ListAgentlessMaliciousFilesRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// Specifies whether the vulnerability is handled. Valid values:
+	// Specifies whether the alert has been handled. Valid values:
 	//
-	// 	- Y: The vulnerability is handled.
+	// - Y: handled
 	//
-	// 	- N: The vulnerability is not handled.
+	// - N: not handled.
 	//
 	// example:
 	//
@@ -60,7 +60,7 @@ type ListAgentlessMaliciousFilesRequest struct {
 	//
 	// 81****
 	EventId *int64 `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	// The name of the malicious file that you want to query.
+	// The name of the malicious file to query.
 	//
 	// > Fuzzy match is supported.
 	//
@@ -68,29 +68,29 @@ type ListAgentlessMaliciousFilesRequest struct {
 	//
 	// WebShell
 	FuzzyMaliciousName *string `json:"FuzzyMaliciousName,omitempty" xml:"FuzzyMaliciousName,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language type for the request and response. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese.
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English.
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The severities of the malicious files. Separate multiple values with commas (,). Valid values:
+	// The severity levels. Separate multiple values with commas (,). Valid values:
 	//
-	// 	- serious
+	// - serious: urgent
 	//
-	// 	- suspicious
+	// - suspicious: suspicious
 	//
-	// 	- remind
+	// - remind: reminder.
 	//
 	// example:
 	//
 	// remind,suspicious
 	Levels *string `json:"Levels,omitempty" xml:"Levels,omitempty"`
-	// The MD5 hash value of the malicious file.
+	// The MD5 hash of the malicious file.
 	//
 	// example:
 	//
@@ -98,27 +98,27 @@ type ListAgentlessMaliciousFilesRequest struct {
 	MaliciousMd5 *string `json:"MaliciousMd5,omitempty" xml:"MaliciousMd5,omitempty"`
 	// The alert type.
 	//
-	// Valid values when Lang is set to zh:
+	// If Lang is set to zh, valid values:
 	//
-	// 	- WebShell
+	// - WebShell: WebShell
 	//
-	// 	- Malicious Software
+	// - 恶意软件: malware
 	//
-	// 	- Malicious Script
+	// - 恶意脚本: malicious script
 	//
-	// Valid values when Lang is set to en:
+	// If Lang is set to en, valid values:
 	//
-	// 	- WebShell
+	// - WebShell: WebShell
 	//
-	// 	- Malicious Software
+	// - Malicious Software: malware
 	//
-	// 	- Malicious Script
+	// - Malicious Script: malicious script.
 	//
 	// example:
 	//
 	// WebShell
 	MaliciousType *string `json:"MaliciousType,omitempty" xml:"MaliciousType,omitempty"`
-	// The number of entries per page.
+	// The maximum number of entries to return per page in a paging query.
 	//
 	// This parameter is required.
 	//
@@ -126,15 +126,15 @@ type ListAgentlessMaliciousFilesRequest struct {
 	//
 	// 20
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The remarks for the asset affected by the vulnerability. The value can be the private IP address, public IP address, or name of the asset. Fuzzy match is supported.
+	// The asset information for the vulnerability query. You can set this parameter to the asset name, public IP address, or private IP address. Fuzzy match is supported.
 	//
 	// example:
 	//
 	// 192.168.XX.XX
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The source of the malicious file.
+	// The file source.
 	ScanRange []*string `json:"ScanRange,omitempty" xml:"ScanRange,omitempty" type:"Repeated"`
-	// The UUID of the asset.
+	// The unique identifier of the asset.
 	//
 	// example:
 	//

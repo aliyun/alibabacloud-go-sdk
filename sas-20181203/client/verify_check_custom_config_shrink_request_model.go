@@ -22,23 +22,23 @@ type iVerifyCheckCustomConfigShrinkRequest interface {
 }
 
 type VerifyCheckCustomConfigShrinkRequest struct {
-	// Check item ID.
+	// The ID of the check item.
 	//
 	// example:
 	//
 	// 76
 	CheckId *int64 `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
-	// Custom check item to validate input parameters.
+	// The input parameters for custom check item validation.
 	CustomCheckConfigShrink *string `json:"CustomCheckConfig,omitempty" xml:"CustomCheckConfig,omitempty"`
-	// List of custom configuration items for the check item.
+	// The list of custom parameter configuration items for the check item.
 	CustomConfigs []*VerifyCheckCustomConfigShrinkRequestCustomConfigs `json:"CustomConfigs,omitempty" xml:"CustomConfigs,omitempty" type:"Repeated"`
-	// Repair parameters supported by the check item\\"s repair function.
+	// The repair parameters supported by the repair feature of the check item.
 	RepairConfigs []*VerifyCheckCustomConfigShrinkRequestRepairConfigs `json:"RepairConfigs,omitempty" xml:"RepairConfigs,omitempty" type:"Repeated"`
-	// Situation Awareness parameter validation types:
+	// The validation type for Threat Detection Service parameters. Valid values:
 	//
-	// - **REPAIR_CONFIG**: Repair and custom parameter validation (default)
+	// - **REPAIR_CONFIG**: repair and custom parameter validation (default).
 	//
-	// - **CHECK_ITEM_CONFIG**: Custom check item validation
+	// - **CHECK_ITEM_CONFIG**: custom check item validation.
 	//
 	// example:
 	//
@@ -122,19 +122,19 @@ func (s *VerifyCheckCustomConfigShrinkRequest) Validate() error {
 }
 
 type VerifyCheckCustomConfigShrinkRequestCustomConfigs struct {
-	// Name of the custom configuration item for the check item, unique within the same check item.
+	// The name of the custom configuration item for the check item. The name is unique within the check item.
 	//
 	// example:
 	//
 	// IPList
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Operation type for the custom configuration item of the check item. Only pass DELETE when deleting; no need to pass for creation or update.
+	// The operation type of the custom configuration item for the check item. Set this parameter to DELETE only for deletion operations. You do not need to specify this parameter for creation or update operations.
 	//
 	// example:
 	//
 	// DELETE
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
-	// User-configured value string for the custom configuration item of the check item.
+	// The user-configured value string of the custom configuration item for the check item.
 	//
 	// example:
 	//
@@ -182,25 +182,25 @@ func (s *VerifyCheckCustomConfigShrinkRequestCustomConfigs) Validate() error {
 }
 
 type VerifyCheckCustomConfigShrinkRequestRepairConfigs struct {
-	// ID of the repair process during the repair.
+	// The ID of the repair flow that corresponds to the repair operation.
 	//
 	// example:
 	//
 	// 7fec0a3395b345c18f108ffc9fc0****
 	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
-	// Name of the repair parameter for the check item, unique within the same check item.
+	// The name of the repair parameter for the check item. The name is unique within the check item.
 	//
 	// example:
 	//
 	// IPLists
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Operation type for the custom configuration item of the check item. Only pass DELETE when deleting; no need to pass for creation or update.
+	// The operation type of the custom configuration item for the check item. Set this parameter to DELETE only for deletion operations. You do not need to specify this parameter for creation or update operations.
 	//
 	// example:
 	//
 	// DELETE
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
-	// User-configured value string for the repair parameter of the check item.
+	// The user-configured value string of the repair configuration item for the check item.
 	//
 	// example:
 	//

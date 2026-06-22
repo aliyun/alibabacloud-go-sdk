@@ -92,7 +92,7 @@ type CreateOssScanConfigRequest struct {
 	//
 	// example:
 	//
-	// runtime
+	// testName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// Whether to enable real-time incremental detection. When this parameter is set to true, the parameters ScanDayList, StartTime, and EndTime are not effective.
 	//

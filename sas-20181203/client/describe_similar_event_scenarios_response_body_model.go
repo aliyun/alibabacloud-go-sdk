@@ -16,13 +16,13 @@ type iDescribeSimilarEventScenariosResponseBody interface {
 }
 
 type DescribeSimilarEventScenariosResponseBody struct {
-	// The request ID.
+	// The ID of the request. The ID is a unique identifier that Alibaba Cloud generates for the request and can be used to troubleshoot issues.
 	//
 	// example:
 	//
 	// FDF7B8D9-8493-4B90-8D13-E0C1FFCE5F97
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The scenarios in which alerts triggered by the same rule or rules of the same type are handled.
+	// The list of handling scenarios for alerts of the same type.
 	Scenarios []*DescribeSimilarEventScenariosResponseBodyScenarios `json:"Scenarios,omitempty" xml:"Scenarios,omitempty" type:"Repeated"`
 }
 
@@ -66,15 +66,15 @@ func (s *DescribeSimilarEventScenariosResponseBody) Validate() error {
 }
 
 type DescribeSimilarEventScenariosResponseBodyScenarios struct {
-	// The code of the scenario. Valid values:
+	// The code of the handling scenario. Valid values:
 	//
-	// 	- **default**: the same alert type
+	// - **default**: same alerting type
 	//
-	// 	- **same_file_content**: the same file content rule.
+	// - **same_file_content**: same file content rule
 	//
-	// 	- **same_ip**: the same IP address rule.
+	// - **same_ip**: same IP rule
 	//
-	// 	- **same_url**: the same URL rule.
+	// - **same_url**: same URL rule.
 	//
 	// example:
 	//

@@ -18,19 +18,19 @@ type iDescribeCustomizeReportConfigDetailRequest interface {
 }
 
 type DescribeCustomizeReportConfigDetailRequest struct {
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language type. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The ID of the report.\\
+	// The report ID.\\
 	//
-	// You can call the [DescribeCustomizeReportList](https://help.aliyun.com/document_detail/271655.html) operation to query the ID.
+	// The ReportId returned by calling the [DescribeCustomizeReportList](https://help.aliyun.com/document_detail/271655.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type DescribeCustomizeReportConfigDetailRequest struct {
 	//
 	// 619031
 	ReportId *int64 `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
-	// The source IP address of the request.
+	// The IP address of the access source.
 	//
 	// example:
 	//

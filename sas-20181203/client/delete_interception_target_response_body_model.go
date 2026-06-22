@@ -16,17 +16,17 @@ type iDeleteInterceptionTargetResponseBody interface {
 }
 
 type DeleteInterceptionTargetResponseBody struct {
-	// The request ID.
+	// The request ID. Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// D81DD78E-E006-5C65-A171-C8CB09XXXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the network objects are removed. Valid values:
+	// Indicates whether the network objects were deleted. Valid values:
 	//
-	// 	- **true**: The network objects are removed.
+	// - **true**: The network objects were deleted.
 	//
-	// 	- **false**: The network objects fail to be removed.
+	// - **false**: The network objects failed to be deleted.
 	//
 	// example:
 	//

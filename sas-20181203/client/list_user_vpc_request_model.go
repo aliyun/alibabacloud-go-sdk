@@ -14,7 +14,7 @@ type iListUserVpcRequest interface {
 }
 
 type ListUserVpcRequest struct {
-	// Region.
+	// The region.
 	//
 	// This parameter is required.
 	//

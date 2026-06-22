@@ -14,7 +14,7 @@ type iDeleteMonitorAccountResponseBody interface {
 }
 
 type DeleteMonitorAccountResponseBody struct {
-	// The request ID.
+	// The request ID. China Chinese Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//

@@ -16,9 +16,9 @@ type iDeleteCustomBlockRecordRequest interface {
 }
 
 type DeleteCustomBlockRecordRequest struct {
-	// The ID of the IP address blocking policy.
+	// The ID of the record to delete.
 	//
-	// > You can call the [DescribeCustomBlockRecords](~~DescribeCustomBlockRecords~~) operation to query the ID.
+	// > Call the [DescribeCustomBlockRecords](~~DescribeCustomBlockRecords~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//

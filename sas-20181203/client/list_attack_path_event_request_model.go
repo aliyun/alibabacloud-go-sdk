@@ -30,55 +30,55 @@ type iListAttackPathEventRequest interface {
 }
 
 type ListAttackPathEventRequest struct {
-	// List of cloud product assets in the attack path.
+	// The list of cloud service assets in the attack path.
 	AttackPathAssetList []*ListAttackPathEventRequestAttackPathAssetList `json:"AttackPathAssetList,omitempty" xml:"AttackPathAssetList,omitempty" type:"Repeated"`
-	// Specifies from which page of the returned results the query results should be displayed. The default value is 1, indicating that the display starts from the first page.
+	// The page number of the results to return. Default value: 1, which indicates the first page.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// Timestamp of the end time. Unit: milliseconds.
+	// The end time as a timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1668064495000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Sets the language type for requests and received messages, with the default being **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The maximum number of data entries displayed per page in a paginated query. The default value is **20**.
+	// The maximum number of entries per page in a paged query. Default value: **20**.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Description of the path name.
+	// The path name description.
 	//
-	// > You can call [ListAvailableAttackPath](~~ListAvailableAttackPath~~) to query the path name description.
+	// > Call [ListAvailableAttackPath](~~ListAvailableAttackPath~~) to query path name descriptions.
 	//
 	// example:
 	//
 	// ECS Instance Can Obtain Long-term Access Credential by Enabling Console Logon for RAM User
 	PathNameDesc *string `json:"PathNameDesc,omitempty" xml:"PathNameDesc,omitempty"`
-	// Path type.
+	// The path type.
 	//
-	// > You can call [ListAvailableAttackPath](~~ListAvailableAttackPath~~) to query the path type.
+	// > Call [ListAvailableAttackPath](~~ListAvailableAttackPath~~) to query path types.
 	//
 	// example:
 	//
 	// role_escalation
 	PathType *string `json:"PathType,omitempty" xml:"PathType,omitempty"`
-	// List of risk level information.
+	// The list of risk levels.
 	RiskLevelList []*string `json:"RiskLevelList,omitempty" xml:"RiskLevelList,omitempty" type:"Repeated"`
-	// Timestamp of the start time. Unit: milliseconds.
+	// The start time as a timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -189,35 +189,35 @@ func (s *ListAttackPathEventRequest) Validate() error {
 }
 
 type ListAttackPathEventRequestAttackPathAssetList struct {
-	// Subtype of the cloud product asset.
+	// The subtype of the cloud service asset.
 	//
-	// > You can call [ListSupportAttackPathAsset](~~ListSupportAttackPathAsset~~) to query the subtype of the cloud product asset.
+	// > Call [ListSupportAttackPathAsset](~~ListSupportAttackPathAsset~~) to query the subtypes of cloud service assets.
 	//
 	// example:
 	//
 	// 2
 	AssetSubType *int32 `json:"AssetSubType,omitempty" xml:"AssetSubType,omitempty"`
-	// Type of the cloud product asset.
+	// The type of the cloud service asset.
 	//
-	// > You can call [ListSupportAttackPathAsset](~~ListSupportAttackPathAsset~~) to query the type of the cloud product asset.
+	// > Call [ListSupportAttackPathAsset](~~ListSupportAttackPathAsset~~) to query the types of cloud service assets.
 	//
 	// example:
 	//
 	// 17
 	AssetType *int32 `json:"AssetType,omitempty" xml:"AssetType,omitempty"`
-	// Node type, values:
+	// The node type. Valid values:
 	//
-	// - **start**: start point.
+	// - **start**: start node.
 	//
-	// - **end**: end point.
+	// - **end**: end node.
 	//
 	// example:
 	//
 	// start
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	// Vendor of the cloud product asset.
+	// The vendor of the cloud service asset.
 	//
-	// > You can call [ListSupportAttackPathAsset](~~ListSupportAttackPathAsset~~) to query the vendor of the cloud product asset.
+	// > Call [ListSupportAttackPathAsset](~~ListSupportAttackPathAsset~~) to query the vendors of cloud service assets.
 	//
 	// example:
 	//

@@ -26,9 +26,9 @@ type iListSystemAggregationRulesRequest interface {
 }
 
 type ListSystemAggregationRulesRequest struct {
-	// The IDs of the aggregation types.
+	// The rule cluster ID.
 	AggregationIds []*int32 `json:"AggregationIds,omitempty" xml:"AggregationIds,omitempty" type:"Repeated"`
-	// The number of the page to return.
+	// The page number of the current page in a paging query.
 	//
 	// This parameter is required.
 	//
@@ -36,17 +36,17 @@ type ListSystemAggregationRulesRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language type of the request and response. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of entries to return on each page.
+	// The maximum number of entries per page in a paging query.
 	//
 	// This parameter is required.
 	//
@@ -54,21 +54,21 @@ type ListSystemAggregationRulesRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The name of the rule.
+	// The rule name.
 	//
 	// example:
 	//
-	// Rule\\*\\*\\*\\*
+	// 规则****
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The types of the rules.
+	// The list of rule types.
 	RuleTypes []*int32 `json:"RuleTypes,omitempty" xml:"RuleTypes,omitempty" type:"Repeated"`
-	// The type of the operating system. Valid values:
+	// The operating system type. Valid values:
 	//
-	// 	- **2**: Windows
+	// - **2**: Windows
 	//
-	// 	- **1**: Linux
+	// - **1**: Linux
 	//
-	// 	- **0**: all
+	// - **0**: all.
 	//
 	// example:
 	//

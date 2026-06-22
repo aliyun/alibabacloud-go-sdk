@@ -14,7 +14,7 @@ type iInstallAegisForLingjunShrinkRequest interface {
 }
 
 type InstallAegisForLingjunShrinkRequest struct {
-	// List of unique UUIDs for Lingjun bare metal.
+	// The list of unique UUIDs for Lingjun bare metal servers.
 	UuidsShrink *string `json:"Uuids,omitempty" xml:"Uuids,omitempty"`
 }
 

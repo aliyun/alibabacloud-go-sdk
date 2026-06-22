@@ -20,9 +20,9 @@ type iModifyWebLockDeleteConfigRequest interface {
 }
 
 type ModifyWebLockDeleteConfigRequest struct {
-	// The ID of the protected directory that you want to delete.
+	// The ID of the protected directory to delete.
 	//
-	// > You can call the [DescribeWebLockConfigList](~~DescribeWebLockConfigList~~) operation to query the IDs of protected directories.
+	// > You can call the [DescribeWebLockConfigList](~~DescribeWebLockConfigList~~) operation to obtain the ID of the protected directory.
 	//
 	// This parameter is required.
 	//
@@ -30,25 +30,25 @@ type ModifyWebLockDeleteConfigRequest struct {
 	//
 	// 12
 	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language type for requests and responses. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The source IP address of the request.
+	// The IP address of the access source.
 	//
 	// example:
 	//
 	// 1.2.XX.XX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The UUID of the server for which you want to delete the protected directory.
+	// The UUID of the server from which you want to delete the protected directory.
 	//
-	// > You can call the [DescribeWebLockConfigList](~~DescribeWebLockConfigList~~) operation to query the UUIDs of servers.
+	// > You can call the [DescribeWebLockConfigList](~~DescribeWebLockConfigList~~) operation to obtain the UUID of the server.
 	//
 	// This parameter is required.
 	//

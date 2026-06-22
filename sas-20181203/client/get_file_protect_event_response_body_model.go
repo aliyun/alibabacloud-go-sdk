@@ -64,13 +64,13 @@ func (s *GetFileProtectEventResponseBody) Validate() error {
 type GetFileProtectEventResponseBodyData struct {
 	// The severity of alerts. Valid values:
 	//
-	// 	- 0: does not generate alerts
+	// - 0: does not generate alerts
 	//
-	// 	- 1: sends notifications
+	// - 1: sends notifications
 	//
-	// 	- 2: suspicious
+	// - 2: suspicious
 	//
-	// 	- 3: high-risk
+	// - 3: high-risk
 	//
 	// example:
 	//
@@ -144,9 +144,9 @@ type GetFileProtectEventResponseBodyData struct {
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
 	// The type of the operating system. Valid values:
 	//
-	// 	- **windows**: Windows
+	// - **windows**: Windows
 	//
-	// 	- **linux**: Linux
+	// - **linux**: Linux
 	//
 	// example:
 	//
@@ -178,11 +178,11 @@ type GetFileProtectEventResponseBodyData struct {
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// The status of the event. Valid values:
 	//
-	// 	- 0: not handled
+	// - 0: not handled
 	//
-	// 	- 1: handled
+	// - 1: handled
 	//
-	// 	- 2: added to the whitelist
+	// - 2: added to the whitelist
 	//
 	// example:
 	//

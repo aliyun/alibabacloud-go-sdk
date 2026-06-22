@@ -18,11 +18,11 @@ type iDescribeAffectedMaliciousFileImagesResponseBody interface {
 }
 
 type DescribeAffectedMaliciousFileImagesResponseBody struct {
-	// An array consisting of the images that have malicious image samples.
+	// The list of images in which malicious samples are detected.
 	AffectedMaliciousFileImagesResponse []*DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse `json:"AffectedMaliciousFileImagesResponse,omitempty" xml:"AffectedMaliciousFileImagesResponse,omitempty" type:"Repeated"`
 	// The pagination information.
 	PageInfo *DescribeAffectedMaliciousFileImagesResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -102,19 +102,19 @@ type DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesR
 	//
 	// 04d20e98c8e2c93b7b864372084320a15a58c8671e53c972ce3a71d9c163****
 	ContainerId *string `json:"ContainerId,omitempty" xml:"ContainerId,omitempty"`
-	// The image digest.
+	// The digest of the image.
 	//
 	// example:
 	//
 	// 6a5e1031a5858617f7d8a179ead6****
 	Digest *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
-	// The URL to download the malicious image sample.
+	// The download URL of the malicious sample.
 	//
 	// example:
 	//
 	// https://aegis-metadata-file.oss-cn-shanghai.aliyuncs.com/
 	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
-	// The path to the image file.
+	// The file path of the image.
 	//
 	// example:
 	//
@@ -126,13 +126,13 @@ type DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesR
 	//
 	// 1594907349000
 	FirstScanTimestamp *int64 `json:"FirstScanTimestamp,omitempty" xml:"FirstScanTimestamp,omitempty"`
-	// The text that is highlighted.
+	// The highlighted text.
 	//
 	// example:
 	//
 	// {"ruleVersion":"highlight_20210908","ruleId":600106,"events":[[2,54]]}
 	HighLight *string `json:"HighLight,omitempty" xml:"HighLight,omitempty"`
-	// The ID of alert event.
+	// The ID of the alert event.
 	//
 	// example:
 	//
@@ -150,7 +150,7 @@ type DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesR
 	//
 	// e05c0de798217637868ef4****
 	ImageUuid *string `json:"ImageUuid,omitempty" xml:"ImageUuid,omitempty"`
-	// The name of the ECS instance.
+	// The name of the server instance.
 	//
 	// example:
 	//
@@ -168,43 +168,43 @@ type DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesR
 	//
 	// 172.22.XX.XX
 	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	// The timestamp of the last scan.
+	// The timestamp of the latest scan.
 	//
 	// example:
 	//
 	// 1596522785000
 	LatestScanTimestamp *int64 `json:"LatestScanTimestamp,omitempty" xml:"LatestScanTimestamp,omitempty"`
-	// The timestamp of the last verification.
+	// The timestamp of the latest verification.
 	//
 	// example:
 	//
 	// 1596522711000
 	LatestVerifyTimestamp *int64 `json:"LatestVerifyTimestamp,omitempty" xml:"LatestVerifyTimestamp,omitempty"`
-	// The image layer.
+	// The layer of the image.
 	//
 	// example:
 	//
 	// 27213ad3447f0209dd152a5cadea****
 	Layer *string `json:"Layer,omitempty" xml:"Layer,omitempty"`
-	// The severity of the malicious image sample. Valid values:
+	// The severity level of the malicious image sample. Valid values:
 	//
-	// 	- **serious**
+	// - **serious**: urgent
 	//
-	// 	- **suspicious**
+	// - **suspicious**: suspicious
 	//
-	// 	- **remind**
+	// - **remind**: reminder.
 	//
 	// example:
 	//
 	// serious
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The MD5 hash value of the malicious image sample.
+	// The MD5 hash of the malicious file.
 	//
 	// example:
 	//
 	// d836968041f768300d9605a****
 	MaliciousMd5 *string `json:"MaliciousMd5,omitempty" xml:"MaliciousMd5,omitempty"`
-	// The namespace to which the image repository belongs.
+	// The namespace of the image repository.
 	//
 	// example:
 	//
@@ -222,7 +222,7 @@ type DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesR
 	//
 	// crr-vridcl4****
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	// The ID of the container image.
+	// The instance ID of the container image.
 	//
 	// example:
 	//
@@ -240,43 +240,43 @@ type DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesR
 	//
 	// cn-shanghai
 	RepoRegionId *string `json:"RepoRegionId,omitempty" xml:"RepoRegionId,omitempty"`
-	// The handling status of the malicious image sample. Valid values:
+	// The processing status of the malicious image sample. Valid values:
 	//
-	// 	- **0**: unhandled
+	// - **0**: unhandled
 	//
-	// 	- **1**: handled
+	// - **1**: handled
 	//
-	// 	- **2**: verifying
+	// - **2**: verifying
 	//
-	// 	- **3**: added to the whitelist
+	// - **3**: added to whitelist.
 	//
 	// example:
 	//
 	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tag that is added to the image.
+	// The tag of the image.
 	//
 	// example:
 	//
 	// 0.2
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	// The ID of the task object.
+	// The ID of the scan target.
 	//
 	// example:
 	//
 	// m-bp17m0pc0xprzbwo****
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
-	// The name of the task object.
+	// The name of the scan target.
 	//
 	// example:
 	//
 	// source-test-obj-9LaLJ
 	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
-	// The object type. Valid value:
+	// The object type of the scan target. Valid values:
 	//
-	// 	- **ECS_IMAGE**
+	// - **ECS_IMAGE**: image.
 	//
-	// 	- **ECS_SNAPSHOT**
+	// - **ECS_SNAPSHOT**: snapshot.
 	//
 	// example:
 	//
@@ -582,25 +582,25 @@ func (s *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileIma
 }
 
 type DescribeAffectedMaliciousFileImagesResponseBodyPageInfo struct {
-	// The number of images that have malicious image samples returned on the current page.
+	// The number of images with malicious samples returned on the current page.
 	//
 	// example:
 	//
 	// 2
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The page number of the returned page. Pages start from page **1**. Default value: **1**.
+	// The page number of the current page when using paging. Minimum value: **1**. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries returned per page. Default value: **20**.
+	// The maximum number of entries per page when using paging. Default value: **20**.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of images that have malicious image samples.
+	// The total number of images in which malicious samples are detected.
 	//
 	// example:
 	//

@@ -16,33 +16,35 @@ type iModifyStartVulScanRequest interface {
 }
 
 type ModifyStartVulScanRequest struct {
-	// The types of vulnerabilities that can be detected. Valid values:
+	// Settings for the types of vulnerabilities to detect by using the one-click scan feature. Valid values:
 	//
-	// 	- **cve**: Linux software vulnerabilities
+	// - **cve**: Linux software vulnerability.
 	//
-	// 	- **sys**: Windows system vulnerabilities
+	// - **sys**: Windows system vulnerability.
 	//
-	// 	- **cms**: Web-CMS vulnerabilities
+	// - **cms**: Web-CMS vulnerability.
 	//
-	// 	- **app**: application vulnerabilities
+	// - **app**: Application vulnerability detected by the web scanner.
 	//
-	// 	- **emg**: urgent vulnerabilities
+	// - **emg**: Emergency vulnerability.
 	//
-	// 	- **image**: container image vulnerabilities
+	// - **image**: Container image vulnerability.
 	//
-	// 	- **sca**: vulnerabilities that are detected based on software component analysis
+	// - **sca**: Application vulnerability detected by software constituency parsing.
 	//
-	// > If you leave this parameter empty, all types of vulnerabilities can be detected.
+	// > If this parameter is left empty, all vulnerability types are detected.
 	//
 	// example:
 	//
 	// "cve,sys,cms,app,emg"
 	Types *string `json:"Types,omitempty" xml:"Types,omitempty"`
-	// The UUIDs of servers.
+	// The list of server UUIDs. Separate multiple UUIDs with commas (,).
+	//
+	// > You can call the [DescribeCloudCenterInstances](https://help.aliyun.com/document_detail/421726.html) operation to obtain this parameter.
 	//
 	// example:
 	//
-	// {"i-sdada-xxxxx","i-ifaedada-sfsasdxxx"}
+	// 1587bedb-fdb4-48c4-9330-****
 	Uuids *string `json:"Uuids,omitempty" xml:"Uuids,omitempty"`
 }
 

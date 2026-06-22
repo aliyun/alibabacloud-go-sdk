@@ -16,9 +16,9 @@ type iGetSasContainerWebDefenseRuleApplicationResponseBody interface {
 }
 
 type GetSasContainerWebDefenseRuleApplicationResponseBody struct {
-	// The applications.
+	// The application list.
 	ContainerWebDefenseAppList []*GetSasContainerWebDefenseRuleApplicationResponseBodyContainerWebDefenseAppList `json:"ContainerWebDefenseAppList,omitempty" xml:"ContainerWebDefenseAppList,omitempty" type:"Repeated"`
-	// The request ID.
+	// The request ID. Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -74,37 +74,37 @@ type GetSasContainerWebDefenseRuleApplicationResponseBodyContainerWebDefenseAppL
 	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
 	// The ID of the container cluster.
 	//
-	// >  The IDs of clusters can be obtained by using the [DescribeGroupedContainerInstances](https://help.aliyun.com/document_detail/182997.html) operation.
+	// > You can call the [DescribeGroupedContainerInstances](https://help.aliyun.com/document_detail/182997.html) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// cfb41a869c71e4678a97021582dd8****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The time when the application was created. Unit: milliseconds.
+	// The creation time of the application, in milliseconds.
 	//
 	// example:
 	//
 	// 1677839038000
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The last modification time. Unit: milliseconds.
+	// The most recent modification time, in milliseconds.
 	//
 	// example:
 	//
 	// 1667891185000
 	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The ID of the node.
+	// The ID of the current node.
 	//
 	// example:
 	//
 	// 143761
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The ID of the rule.
+	// The rule ID.
 	//
 	// example:
 	//
 	// 403327
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The value of the application label.
+	// The application tag value.
 	//
 	// example:
 	//

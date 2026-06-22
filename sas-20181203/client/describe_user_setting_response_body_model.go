@@ -18,15 +18,15 @@ type iDescribeUserSettingResponseBody interface {
 }
 
 type DescribeUserSettingResponseBody struct {
-	// The severities of alerts. If this parameter is empty, no custom alerts are generated.
+	// The list of alert notification levels. If the list is empty, no alerts are generated for custom policies.
 	AlertLevels []*string `json:"AlertLevels,omitempty" xml:"AlertLevels,omitempty" type:"Repeated"`
-	// The number of days during which you want to retain invalid alerts.
+	// The number of days to retain invalid alerts.
 	//
 	// example:
 	//
 	// 30
 	InvalidWarningKeepDays *int32 `json:"InvalidWarningKeepDays,omitempty" xml:"InvalidWarningKeepDays,omitempty"`
-	// The request ID.
+	// The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//

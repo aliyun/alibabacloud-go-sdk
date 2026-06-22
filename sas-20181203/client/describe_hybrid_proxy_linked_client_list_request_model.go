@@ -24,37 +24,37 @@ type iDescribeHybridProxyLinkedClientListRequest interface {
 }
 
 type DescribeHybridProxyLinkedClientListRequest struct {
-	// The name of the proxy cluster. You can query the name of the proxy cluster in the Security Center console.
+	// The name of the proxy cluster. You can view the proxy cluster name in the console.
 	//
 	// example:
 	//
 	// office-proxy
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// The page number.
+	// The page number of the current page when paging is used.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries per page.
+	// The maximum number of entries per page when paging is used.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The UUID of the proxy node. You can call the DescribeHybridProxyList operation to query the UUID of the proxy node.
+	// The UUID of the proxy node. You can call the DescribeHybridProxyList operation to obtain this value.
 	//
 	// example:
 	//
 	// inet-proxy-3bb11fad-37d6-4aee-9c37-b0ad1612XXXX
 	ProxyUuid *string `json:"ProxyUuid,omitempty" xml:"ProxyUuid,omitempty"`
-	// The description of the proxy cluster.
+	// The remarks.
 	//
 	// example:
 	//
 	// test
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The UUID of the server on which the Security Center agent is installed. You can query the UUID by querying asset information.
+	// The unique key of the Security Center agent. You can call an asset query operation to obtain the UUID of the Security Center agent installed on the server.
 	//
 	// example:
 	//

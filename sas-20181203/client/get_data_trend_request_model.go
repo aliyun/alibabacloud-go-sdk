@@ -20,19 +20,19 @@ type iGetDataTrendRequest interface {
 }
 
 type GetDataTrendRequest struct {
-	// The type of the security data that you want to query. Valid values:
+	// The type of security data to query. Valid values:
 	//
-	// 	- **HC_NEW**: the number of new baseline risks.
+	// - **HC_NEW**: number of new baseline risks
 	//
-	// 	- **HC_OPERATE**: the number of handled baseline risks.
+	// - **HC_OPERATE**: number of handled baseline risks
 	//
-	// 	- **VUL_NEW**: the number of new vulnerabilities.
+	// - **VUL_NEW**: number of new vulnerability risks
 	//
-	// 	- **VUL_OPERATE**: the number of handled vulnerabilities.
+	// - **VUL_OPERATE**: number of handled vulnerability risks
 	//
-	// 	- **SUSP_NEW**: the number of new alerts.
+	// - **SUSP_NEW**: number of new alert risks
 	//
-	// 	- **SUSP_OPERATE**: the number of handled alerts.
+	// - **SUSP_OPERATE**: number of handled alert risks.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type GetDataTrendRequest struct {
 	//
 	// HC_NEW,HC_OPERATE
 	BizTypes *string `json:"BizTypes,omitempty" xml:"BizTypes,omitempty"`
-	// The end of the time range to query. The value is a UNIX timestamp. Unit: milliseconds.
+	// The end timestamp of the query. Unit: milliseconds.
 	//
 	// This parameter is required.
 	//
@@ -48,9 +48,9 @@ type GetDataTrendRequest struct {
 	//
 	// 1721923200000
 	EndTimestamp *int64 `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
-	// The interval of the data that you want to query. Unit: milliseconds.
+	// The interval for querying data. Unit: milliseconds.
 	//
-	// >  The minimum value is 1000.
+	// > Minimum value: 1000.
 	//
 	// This parameter is required.
 	//
@@ -58,7 +58,7 @@ type GetDataTrendRequest struct {
 	//
 	// 86400000
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: milliseconds.
+	// The start timestamp of the query. Unit: milliseconds.
 	//
 	// This parameter is required.
 	//

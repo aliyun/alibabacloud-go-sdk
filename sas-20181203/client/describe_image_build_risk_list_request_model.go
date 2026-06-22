@@ -24,45 +24,45 @@ type iDescribeImageBuildRiskListRequest interface {
 }
 
 type DescribeImageBuildRiskListRequest struct {
-	// The **rule name*	- or **type name*	- of the risk. You can call the [DescribeImageBuildRiskList](~~~~) operation to obtain the name. Optional parameters:
+	// The **rule name*	- or **category name*	- of the build risk. You can call the [DescribeImageBuildRiskList](~~~~) operation to obtain the value. Valid values:
 	//
-	// 	- If **CriteriaType*	- is set to **RiskKeyName**, you must specify a **rule name*	- for this parameter.
+	// - If **CriteriaType*	- is set to **RiskKeyName**, the value is the **rule name*	- of the build risk.
 	//
-	// 	- If **CriteriaType*	- is set to**RiskClassName**, you must specify a **type name*	- for this parameter.
+	// - If **CriteriaType*	- is set to **RiskClassName**, the value is the **category name*	- of the build risk.
 	//
 	// example:
 	//
 	// no_user
 	Criteria *string `json:"Criteria,omitempty" xml:"Criteria,omitempty"`
-	// The query type.of the risk. Valid values:
+	// The query type of the build risk. Valid values:
 	//
-	// 	- **RiskKeyName**: the rule name of the risk
+	// - **RiskKeyName**: build risk rule name.
 	//
-	// 	- **RiskClassName**: the type name of the risk
+	// - **RiskClassName**: build risk category name.
 	//
 	// example:
 	//
 	// RiskKeyName
 	CriteriaType *string `json:"CriteriaType,omitempty" xml:"CriteriaType,omitempty"`
-	// The page number. Default value: **1**.
+	// The page number of the current page when paging is used. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language of the content in the request and response. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of entries per page. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+	// The maximum number of entries per page when paging is used. Default value: 20. If you leave this parameter empty, 20 entries are returned per page.
 	//
-	// >  We recommend that you do not leave this parameter empty.
+	// > Do not leave PageSize empty.
 	//
 	// example:
 	//
@@ -70,11 +70,11 @@ type DescribeImageBuildRiskListRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The risk level. Valid values:
 	//
-	// 	- **high**
+	// - **high**: High.
 	//
-	// 	- **medium**
+	// - **medium**: Medium.
 	//
-	// 	- **low**
+	// - **low**: Low.
 	//
 	// example:
 	//

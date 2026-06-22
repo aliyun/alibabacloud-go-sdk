@@ -20,7 +20,7 @@ type SasInstallCodeResponseBody struct {
 	//
 	// example:
 	//
-	// B256A525-7E42-4BB9-A27C-9017FDDFF1A2
+	// B256A525-7E42-4BB9-A27C-9017FDDF****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The installation verification code that is used to run the installation command when you manually install the Security Center agent.
 	//

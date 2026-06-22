@@ -20,25 +20,25 @@ type iDescribeDomainCountResponseBody interface {
 }
 
 type DescribeDomainCountResponseBody struct {
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// C286491D-4A2F-589A-B63B-D2AD3DA9BD71
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of root domains.
+	// The number of root domains in the assets.
 	//
 	// example:
 	//
 	// 5
 	RootDomainsCount *int32 `json:"RootDomainsCount,omitempty" xml:"RootDomainsCount,omitempty"`
-	// The number of subdomains.
+	// The number of subdomains in the assets.
 	//
 	// example:
 	//
 	// 5
 	SubDomainsCount *int32 `json:"SubDomainsCount,omitempty" xml:"SubDomainsCount,omitempty"`
-	// The total number of entries returned.
+	// The total number of domain name assets returned.
 	//
 	// example:
 	//

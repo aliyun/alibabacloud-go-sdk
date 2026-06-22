@@ -92,9 +92,9 @@ type ListFileProtectPluginStatusResponseBodyData struct {
 	ClientVersion *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
 	// The returned code after you install the Security Center agent. Valid values:
 	//
-	// 1.  0: The installation is successful.
+	// 1. 0: The installation is successful.
 	//
-	// 2.  \\-2: The kernel does not support the installation.
+	// 2. -2: The kernel does not support the installation.
 	//
 	// example:
 	//
@@ -132,9 +132,9 @@ type ListFileProtectPluginStatusResponseBodyData struct {
 	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
 	// Indicates whether the Security Center agent is online. Valid value:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -142,9 +142,9 @@ type ListFileProtectPluginStatusResponseBodyData struct {
 	Online *bool `json:"Online,omitempty" xml:"Online,omitempty"`
 	// The type of the operating system. Valid values:
 	//
-	// 	- **windows**: Windows
+	// - **windows**: Windows
 	//
-	// 	- **linux**: Linux
+	// - **linux**: Linux
 	//
 	// example:
 	//

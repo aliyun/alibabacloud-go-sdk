@@ -16,7 +16,7 @@ type iGetSasContainerWebDefenseRuleCriteriaResponseBody interface {
 }
 
 type GetSasContainerWebDefenseRuleCriteriaResponseBody struct {
-	// The search conditions.
+	// The list of query criteria.
 	CriteriaList []*GetSasContainerWebDefenseRuleCriteriaResponseBodyCriteriaList `json:"CriteriaList,omitempty" xml:"CriteriaList,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -66,25 +66,25 @@ func (s *GetSasContainerWebDefenseRuleCriteriaResponseBody) Validate() error {
 }
 
 type GetSasContainerWebDefenseRuleCriteriaResponseBodyCriteriaList struct {
-	// The name of the search condition.
+	// The name of the query criterion.
 	//
 	// example:
 	//
 	// name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The type of the search condition. Valid values:
+	// The type of the query criterion. Valid values:
 	//
-	// 	- **input**: You must manually enter the search condition.
+	// - **input**: Input type. You must manually enter the query content when using this query criterion.
 	//
-	// 	- **select**: You must select a search condition from the **Values*	- drop-down list.
+	// - **select**: Selection type. You must select a value from the options list (the **Values*	- field) when using this query criterion.
 	//
 	// example:
 	//
 	// select
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The values of the search condition. This parameter is returned only if the value of **Type*	- is **select**.
+	// The available options when **Type*	- (the type of the query criterion) is set to **select*	- (selection type).
 	//
-	// >  If the value of **Type*	- is **input**, the value of this parameter is empty.
+	// > When **Type*	- (the type of the query criterion) is set to **input*	- (input type), this parameter returns an empty value.
 	//
 	// example:
 	//

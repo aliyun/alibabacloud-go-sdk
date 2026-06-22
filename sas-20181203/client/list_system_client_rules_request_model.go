@@ -40,9 +40,9 @@ type ListSystemClientRulesRequest struct {
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// Specifies whether to query only container images. Valid values:
 	//
-	// 	- **0**: no
+	// - **0**: no
 	//
-	// 	- **1**: yes
+	// - **1**: yes
 	//
 	// example:
 	//
@@ -50,9 +50,9 @@ type ListSystemClientRulesRequest struct {
 	IsContainer *int32 `json:"IsContainer,omitempty" xml:"IsContainer,omitempty"`
 	// The language of the content within the request and response. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//
@@ -70,17 +70,17 @@ type ListSystemClientRulesRequest struct {
 	//
 	// example:
 	//
-	// Rule\\*\\*\\*\\*
+	// 规则****
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// The types of the system defense rules.
 	RuleTypes []*int32 `json:"RuleTypes,omitempty" xml:"RuleTypes,omitempty" type:"Repeated"`
 	// The type of the OS. Valid values:
 	//
-	// 	- **2**: Windows
+	// - **2**: Windows
 	//
-	// 	- **1**: Linux
+	// - **1**: Linux
 	//
-	// 	- **0**: all types
+	// - **0**: all types
 	//
 	// example:
 	//

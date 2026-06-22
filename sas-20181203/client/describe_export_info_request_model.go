@@ -18,7 +18,7 @@ type iDescribeExportInfoRequest interface {
 type DescribeExportInfoRequest struct {
 	// The ID of the export task.
 	//
-	// > You can call the [ExportRecord](~~ExportRecord~~) operation to query the IDs of export tasks.
+	// > You can obtain this parameter by calling the [ExportRecord](~~ExportRecord~~) operation to initiate an export.
 	//
 	// This parameter is required.
 	//
@@ -26,9 +26,9 @@ type DescribeExportInfoRequest struct {
 	//
 	// 111
 	ExportId *int64 `json:"ExportId,omitempty" xml:"ExportId,omitempty"`
-	// The Alibaba Cloud account ID of the member in the resource directory.
+	// The ID of the member account in the resource directory.
 	//
-	// >  You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain the IDs.
+	// > You can obtain this parameter by invoking the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation.
 	//
 	// example:
 	//

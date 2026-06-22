@@ -20,7 +20,7 @@ type AddClientUserDefineRuleResponseBody struct {
 	//
 	// example:
 	//
-	// 379a9b8f-107b-4630-9e95-2299a1ea****
+	// 32A73759-4C0F-4801-BE98-901223ACEE9A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The identifier of the custom defense rule.
 	UserDefineRuleAddResult *AddClientUserDefineRuleResponseBodyUserDefineRuleAddResult `json:"UserDefineRuleAddResult,omitempty" xml:"UserDefineRuleAddResult,omitempty" type:"Struct"`

@@ -20,7 +20,7 @@ type iGenerateOnceTaskRequest interface {
 }
 
 type GenerateOnceTaskRequest struct {
-	// The additional information.
+	// A JSON string that contains additional parameters for the task.
 	//
 	// This parameter is required.
 	//
@@ -28,19 +28,33 @@ type GenerateOnceTaskRequest struct {
 	//
 	// {"mode":1,"problemType":"offline","uuids":"inet-795dcad1-360f-49d2-b01e-b7da7f1c****"}
 	Param *string `json:"Param,omitempty" xml:"Param,omitempty"`
-	// The source of the scan task.
+	// The source that initiated the task.
 	//
 	// example:
 	//
 	// Manual
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The name of the scan task. Valid values:
+	// The name of the scan task.
 	//
-	// 	- **CLIENT_PROBLEM_CHECK**: a client diagnosis task
+	// -
 	//
-	// 	- **CLIENT_DEV_OPS**: an O\\&M task of Cloud Assistant
+	// -
 	//
-	// 	- **ASSET_SECURITY_CHECK**: a task of asset information collection
+	// -
+	//
+	// -
+	//
+	// -
+	//
+	// -
+	//
+	// -
+	//
+	// -
+	//
+	// -
+	//
+	// -
 	//
 	// This parameter is required.
 	//
@@ -50,11 +64,25 @@ type GenerateOnceTaskRequest struct {
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 	// The type of the scan task. Valid values:
 	//
-	// 	- **CLIENT_PROBLEM_CHECK**: a client diagnosis task
+	// - **CLIENT_PROBLEM_CHECK**: a client troubleshooting task
 	//
-	// 	- **CLIENT_DEV_OPS**: an O\\&M task of Cloud Assistant
+	// - **CLIENT_DEV_OPS**: a cloud DevOps task
 	//
-	// 	- **ASSET_SECURITY_CHECK**: a task of asset information collection
+	// - **ASSET_SECURITY_CHECK**: an asset collection task
+	//
+	// - **ASSETS_COLLECTION**: an asset fingerprinting task
+	//
+	// - **IMAGE_SCAN**: a container image scan task
+	//
+	// - **AI_SECURITY_CHECK**: an AI asset synchronization task
+	//
+	// - **IDC_PROBE_SCAN**: an IDC probe scan task
+	//
+	// - **ATTACK_SURFACE_SCAN**: an attack surface scan task
+	//
+	// - **ASSET_EXPOSURE_SCAN**: an asset exposure scan task
+	//
+	// - **VUL_CHECK_TASK**: a vulnerability scan task
 	//
 	// This parameter is required.
 	//

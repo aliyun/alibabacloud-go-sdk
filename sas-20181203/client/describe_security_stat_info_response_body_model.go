@@ -24,29 +24,29 @@ type iDescribeSecurityStatInfoResponseBody interface {
 }
 
 type DescribeSecurityStatInfoResponseBody struct {
-	// The detailed statistics of attacks.
+	// The statistics of attack events.
 	AttackEvent *DescribeSecurityStatInfoResponseBodyAttackEvent `json:"AttackEvent,omitempty" xml:"AttackEvent,omitempty" type:"Struct"`
-	// The detailed statistics of baseline risk items.
+	// The statistics of baseline issues.
 	HealthCheck *DescribeSecurityStatInfoResponseBodyHealthCheck `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty" type:"Struct"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// A3E61730-85E2-4789-8017-B9B1B70F0568
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The detailed statistics of unhandled alerts.
+	// The statistics of pending security alerts.
 	SecurityEvent *DescribeSecurityStatInfoResponseBodySecurityEvent `json:"SecurityEvent,omitempty" xml:"SecurityEvent,omitempty" type:"Struct"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the query is successful. Valid values:
 	//
-	// 	- **true**: The request was successful.
+	// - **true**: Successful.
 	//
-	// 	- **false**: The request failed.
+	// - **false**: Failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The detailed statistics of unfixed vulnerabilities.
+	// The statistics information of unfixed vulnerabilities.
 	Vulnerability *DescribeSecurityStatInfoResponseBodyVulnerability `json:"Vulnerability,omitempty" xml:"Vulnerability,omitempty" type:"Struct"`
 }
 
@@ -137,15 +137,15 @@ func (s *DescribeSecurityStatInfoResponseBody) Validate() error {
 }
 
 type DescribeSecurityStatInfoResponseBodyAttackEvent struct {
-	// The points in time when the number of attacks is collected in the trend chart.
+	// The collection of statistical time points in the attack count trend chart.
 	DateArray []*string `json:"DateArray,omitempty" xml:"DateArray,omitempty" type:"Repeated"`
-	// The total number of attacks on the current day.
+	// The number of attacks on the current day.
 	//
 	// example:
 	//
 	// 1096
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The numbers of attacks at all points in time.
+	// The collection of attack counts at each statistical time point.
 	ValueArray []*string `json:"ValueArray,omitempty" xml:"ValueArray,omitempty" type:"Repeated"`
 }
 
@@ -189,43 +189,43 @@ func (s *DescribeSecurityStatInfoResponseBodyAttackEvent) Validate() error {
 }
 
 type DescribeSecurityStatInfoResponseBodyHealthCheck struct {
-	// The points in time when data of baseline risk items is collected in the trend chart.
+	// The collection of statistical time points in the baseline issue trend chart.
 	DateArray []*string `json:"DateArray,omitempty" xml:"DateArray,omitempty" type:"Repeated"`
-	// The number of baseline risk items that have the high-risk level on the current day.
+	// The number of high-risk baseline issues on the current day.
 	//
 	// example:
 	//
 	// 10
 	HighCount *int32 `json:"HighCount,omitempty" xml:"HighCount,omitempty"`
-	// The numbers of baseline risk items that have the high-risk level at all points in time.
+	// The collection of high-risk baseline counts at each statistical time point.
 	HighList []*string `json:"HighList,omitempty" xml:"HighList,omitempty" type:"Repeated"`
-	// The risk levels of baseline risk items.
+	// The collection of baseline risk levels included in the statistics.
 	LevelsOn []*string `json:"LevelsOn,omitempty" xml:"LevelsOn,omitempty" type:"Repeated"`
-	// The number of baseline risk items that have the low-risk level on the current day.
+	// The number of low-risk baseline issues on the current day.
 	//
 	// example:
 	//
 	// 0
 	LowCount *int32 `json:"LowCount,omitempty" xml:"LowCount,omitempty"`
-	// The numbers of baseline risk items that have the low-risk level at all points in time.
+	// The collection of low-risk baseline issue counts at each statistical time point.
 	LowList []*string `json:"LowList,omitempty" xml:"LowList,omitempty" type:"Repeated"`
-	// The number of baseline risk items that have the medium-risk level on the current day.
+	// The number of medium-risk baseline issues on the current day.
 	//
 	// example:
 	//
 	// 21
 	MediumCount *int32 `json:"MediumCount,omitempty" xml:"MediumCount,omitempty"`
-	// The numbers of baseline risk items that have the medium-risk level at all points in time.
+	// The collection of medium-risk baseline issue counts at each statistical time point.
 	MediumList []*string `json:"MediumList,omitempty" xml:"MediumList,omitempty" type:"Repeated"`
-	// The time periods during which data of baseline risk items is collected.
+	// The collection of statistical time periods for baselines.
 	TimeArray []*string `json:"TimeArray,omitempty" xml:"TimeArray,omitempty" type:"Repeated"`
-	// The total number of baseline risk items on the current day.
+	// The total number of baseline issues on the current day.
 	//
 	// example:
 	//
 	// 32
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The total number of baseline risk items at all points in time.
+	// The collection of total baseline counts at each statistical time point.
 	ValueArray []*string `json:"ValueArray,omitempty" xml:"ValueArray,omitempty" type:"Repeated"`
 }
 
@@ -341,43 +341,43 @@ func (s *DescribeSecurityStatInfoResponseBodyHealthCheck) Validate() error {
 }
 
 type DescribeSecurityStatInfoResponseBodySecurityEvent struct {
-	// The points in time when data of unhandled alerts is collected in the trend chart.
+	// The collection of statistical time points in the pending alert trend chart.
 	DateArray []*string `json:"DateArray,omitempty" xml:"DateArray,omitempty" type:"Repeated"`
-	// The risk levels of unhandled alerts.
+	// The collection of alert severity levels included in the statistics for pending alerts.
 	LevelsOn []*string `json:"LevelsOn,omitempty" xml:"LevelsOn,omitempty" type:"Repeated"`
-	// The number of **remind*	- alerts on the current day.
+	// The number of alerts with the **Reminder*	- severity level detected on the current day.
 	//
 	// example:
 	//
 	// 0
 	RemindCount *int32 `json:"RemindCount,omitempty" xml:"RemindCount,omitempty"`
-	// The numbers of remind alerts at all points in time.
+	// The collection of Reminder-level alert counts at each statistical time point.
 	RemindList []*string `json:"RemindList,omitempty" xml:"RemindList,omitempty" type:"Repeated"`
-	// The number of **serious*	- alerts on the current day.
+	// The number of alerts with the **Urgent*	- severity level on the current day.
 	//
 	// example:
 	//
 	// 404
 	SeriousCount *int32 `json:"SeriousCount,omitempty" xml:"SeriousCount,omitempty"`
-	// The numbers of serious alerts at all points in time.
+	// The collection of Urgent-level alert counts at each statistical time point.
 	SeriousList []*string `json:"SeriousList,omitempty" xml:"SeriousList,omitempty" type:"Repeated"`
-	// The number of **suspicious*	- alerts on the current day.
+	// The number of alerts with the **Suspicious*	- severity level on the current day.
 	//
 	// example:
 	//
 	// 148
 	SuspiciousCount *int32 `json:"SuspiciousCount,omitempty" xml:"SuspiciousCount,omitempty"`
-	// The numbers of suspicious alerts at all points in time.
+	// The collection of Suspicious-level alert counts at each statistical time point.
 	SuspiciousList []*string `json:"SuspiciousList,omitempty" xml:"SuspiciousList,omitempty" type:"Repeated"`
-	// The time periods during which data of the same alert is collected.
+	// The collection of statistical time periods for alerts.
 	TimeArray []*string `json:"TimeArray,omitempty" xml:"TimeArray,omitempty" type:"Repeated"`
-	// The total number of unhandled alerts on the current day.
+	// The total number of pending alerts on the current day.
 	//
 	// example:
 	//
 	// 552
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The numbers of unhandled alerts at all points in time.
+	// The collection of pending alert counts at each statistical time point.
 	ValueArray []*string `json:"ValueArray,omitempty" xml:"ValueArray,omitempty" type:"Repeated"`
 }
 
@@ -493,43 +493,43 @@ func (s *DescribeSecurityStatInfoResponseBodySecurityEvent) Validate() error {
 }
 
 type DescribeSecurityStatInfoResponseBodyVulnerability struct {
-	// The number of **high-risk*	- unfixed vulnerabilities on the current day.
+	// The number of unfixed vulnerabilities with **high*	- priority on the current day.
 	//
 	// example:
 	//
 	// 109
 	AsapCount *int32 `json:"AsapCount,omitempty" xml:"AsapCount,omitempty"`
-	// The numbers of high-risk unfixed vulnerabilities at all points in time.
+	// The collection of high-priority unfixed vulnerability counts at each statistical time point.
 	AsapList []*string `json:"AsapList,omitempty" xml:"AsapList,omitempty" type:"Repeated"`
-	// The points in time when data of unfixed vulnerabilities is collected in the trend chart.
+	// The collection of statistical time points in the unfixed vulnerability trend chart.
 	DateArray []*string `json:"DateArray,omitempty" xml:"DateArray,omitempty" type:"Repeated"`
-	// The number of **medium-risk*	- unfixed vulnerabilities on the current day.
+	// The number of unfixed vulnerabilities with **medium*	- priority on the current day.
 	//
 	// example:
 	//
 	// 275
 	LaterCount *int32 `json:"LaterCount,omitempty" xml:"LaterCount,omitempty"`
-	// The numbers of medium-risk unfixed vulnerabilities at all points in time.
+	// The collection of medium-priority unfixed vulnerability counts at each statistical time point.
 	LaterList []*string `json:"LaterList,omitempty" xml:"LaterList,omitempty" type:"Repeated"`
-	// The risk levels of unfixed vulnerabilities.
+	// The collection of vulnerability priority levels included in the statistics for unfixed vulnerabilities.
 	LevelsOn []*string `json:"LevelsOn,omitempty" xml:"LevelsOn,omitempty" type:"Repeated"`
-	// The number of **low-risk*	- unfixed vulnerabilities on the current day.
+	// The number of unfixed vulnerabilities with **low*	- priority on the current day.
 	//
 	// example:
 	//
 	// 0
 	NntfCount *int32 `json:"NntfCount,omitempty" xml:"NntfCount,omitempty"`
-	// The numbers of low-risk unfixed vulnerabilities at all points in time.
+	// The collection of low-priority unfixed vulnerability counts at each statistical time point.
 	NntfList []*string `json:"NntfList,omitempty" xml:"NntfList,omitempty" type:"Repeated"`
-	// The time periods during which data of unfixed vulnerabilities is collected.
+	// The collection of statistical time periods for unfixed vulnerabilities.
 	TimeArray []*string `json:"TimeArray,omitempty" xml:"TimeArray,omitempty" type:"Repeated"`
-	// The total number of unfixed vulnerabilities on the current day.
+	// The number of unfixed vulnerabilities on the current day.
 	//
 	// example:
 	//
 	// 384
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The numbers of unfixed vulnerabilities at all points in time.
+	// The collection of unfixed vulnerability counts at each statistical time point.
 	ValueArray []*string `json:"ValueArray,omitempty" xml:"ValueArray,omitempty" type:"Repeated"`
 }
 

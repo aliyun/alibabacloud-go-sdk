@@ -18,7 +18,7 @@ type iListSupportObjectSuffixResponseBody interface {
 type ListSupportObjectSuffixResponseBody struct {
 	// The returned data.
 	Data []*string `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request. The system generates a unique identifier for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//

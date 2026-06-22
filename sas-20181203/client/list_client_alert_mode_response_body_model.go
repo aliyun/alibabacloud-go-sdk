@@ -16,9 +16,9 @@ type iListClientAlertModeResponseBody interface {
 }
 
 type ListClientAlertModeResponseBody struct {
-	// The response parameters.
+	// The data returned by the request.
 	Data *ListClientAlertModeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID.
+	// The request ID. Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -68,7 +68,7 @@ type ListClientAlertModeResponseBodyData struct {
 	//
 	// 5
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The UUIDs of the assets.
+	// The list of asset UUIDs.
 	Uuids []*string `json:"Uuids,omitempty" xml:"Uuids,omitempty" type:"Repeated"`
 }
 

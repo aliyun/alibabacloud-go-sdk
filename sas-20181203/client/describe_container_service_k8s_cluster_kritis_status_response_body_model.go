@@ -16,7 +16,7 @@ type iDescribeContainerServiceK8sClusterKritisStatusResponseBody interface {
 }
 
 type DescribeContainerServiceK8sClusterKritisStatusResponseBody struct {
-	// The Kritis status of the ACK cluster.
+	// The Kritis status information of the ACK cluster.
 	KritisStatus *DescribeContainerServiceK8sClusterKritisStatusResponseBodyKritisStatus `json:"KritisStatus,omitempty" xml:"KritisStatus,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -64,9 +64,9 @@ func (s *DescribeContainerServiceK8sClusterKritisStatusResponseBody) Validate() 
 type DescribeContainerServiceK8sClusterKritisStatusResponseBodyKritisStatus struct {
 	// Indicates whether Kritis is installed. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Installed.
 	//
-	// 	- **false**
+	// - **false**: Not installed.
 	//
 	// example:
 	//

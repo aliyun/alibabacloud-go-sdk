@@ -18,11 +18,13 @@ type iVerifyCheckResultRequest interface {
 }
 
 type VerifyCheckResultRequest struct {
-	// The IDs of the check items.
+	// The list of check item IDs.
 	CheckIds []*int64 `json:"CheckIds,omitempty" xml:"CheckIds,omitempty" type:"Repeated"`
-	// List of instance IDs for the check item assets.
+	// The list of instance IDs of the assets associated with the check items.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The source of task.
+	// The task source. Valid values:
+	//
+	// - **YAO_CHI**: ApsaraDB console.
 	//
 	// example:
 	//

@@ -68,15 +68,15 @@ func (s *ListCheckStandardResponseBody) Validate() error {
 type ListCheckStandardResponseBodyStandards struct {
 	// The cloud service provider that uses the standard. Valid values:
 	//
-	// 	- **0**: Alibaba Cloud.
+	// - **0**: Alibaba Cloud.
 	//
-	// 	- **3**: Tencent Cloud.
+	// - **3**: Tencent Cloud.
 	//
-	// 	- **4**: Huawei Cloud.
+	// - **4**: Huawei Cloud.
 	//
-	// 	- **5**: Microsoft Azure.
+	// - **5**: Microsoft Azure.
 	//
-	// 	- **7**: AWS.
+	// - **7**: AWS.
 	//
 	// example:
 	//
@@ -94,7 +94,7 @@ type ListCheckStandardResponseBodyStandards struct {
 	//
 	// example:
 	//
-	// Identity and permission management
+	// 身份权限管理
 	ShowName *string `json:"ShowName,omitempty" xml:"ShowName,omitempty"`
 	// The priority for display.
 	//
@@ -202,7 +202,7 @@ type ListCheckStandardResponseBodyStandardsRequirements struct {
 	//
 	// example:
 	//
-	// RAM identity authentication
+	// RAM身份认证
 	ShowName *string `json:"ShowName,omitempty" xml:"ShowName,omitempty"`
 	// The priority for display.
 	//

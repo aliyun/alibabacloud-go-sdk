@@ -18,14 +18,14 @@ type iDeleteAttestorRequest interface {
 }
 
 type DeleteAttestorRequest struct {
-	// The name of the witness.
+	// The name of the attestor.
 	//
 	// example:
 	//
 	// attestor
 	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The source IP address.
+	// The IP address of the access source.
 	//
 	// example:
 	//

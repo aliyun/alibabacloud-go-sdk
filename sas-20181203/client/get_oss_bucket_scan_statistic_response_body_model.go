@@ -16,9 +16,9 @@ type iGetOssBucketScanStatisticResponseBody interface {
 }
 
 type GetOssBucketScanStatisticResponseBody struct {
-	// The response parameters.
+	// The returned data.
 	Data *GetOssBucketScanStatisticResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request. The China Chinese system generates a unique identifier for the request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -62,67 +62,67 @@ func (s *GetOssBucketScanStatisticResponseBody) Validate() error {
 }
 
 type GetOssBucketScanStatisticResponseBodyData struct {
-	// The expiration time of the purchased quota.
+	// The timestamp when the authorization expires.
 	//
 	// example:
 	//
 	// 1714442403000
 	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The number of high-risk objects.
+	// The number of high-risk files.
 	//
 	// example:
 	//
 	// 0
 	HighRisk *int64 `json:"HighRisk,omitempty" xml:"HighRisk,omitempty"`
-	// The number of low-risk objects.
+	// The number of low-risk files.
 	//
 	// example:
 	//
 	// 0
 	LowRisk *int64 `json:"LowRisk,omitempty" xml:"LowRisk,omitempty"`
-	// The number of medium-risk objects.
+	// The number of medium-risk files.
 	//
 	// example:
 	//
 	// 0
 	MediumRisk *int64 `json:"MediumRisk,omitempty" xml:"MediumRisk,omitempty"`
-	// The number of buckets that are not checked.
+	// The number of buckets that have not been scanned.
 	//
 	// example:
 	//
 	// 1
 	NoScanBucket *int32 `json:"NoScanBucket,omitempty" xml:"NoScanBucket,omitempty"`
-	// Postpaid usage count.
+	// The number of pay-as-you-go invocations used.
 	//
 	// example:
 	//
 	// 1000
 	PostPayInvokeCount *int64 `json:"PostPayInvokeCount,omitempty" xml:"PostPayInvokeCount,omitempty"`
-	// Prepaid authorized count.
+	// The number of prepaid authorization times.
 	//
 	// example:
 	//
 	// 10000
 	PrePayAuthCount *int64 `json:"PrePayAuthCount,omitempty" xml:"PrePayAuthCount,omitempty"`
-	// Prepaid usage count.
+	// The number of prepaid invocations used.
 	//
 	// example:
 	//
 	// 100
 	PrePayInvokeCount *int64 `json:"PrePayInvokeCount,omitempty" xml:"PrePayInvokeCount,omitempty"`
-	// The remaining quota.
+	// The remaining number of authorizations.
 	//
 	// example:
 	//
 	// 1
 	RemainAuth *int32 `json:"RemainAuth,omitempty" xml:"RemainAuth,omitempty"`
-	// The number of buckets in which at-risk objects exist.
+	// The number of buckets that contain risky files.
 	//
 	// example:
 	//
 	// 1
 	RiskBucket *int32 `json:"RiskBucket,omitempty" xml:"RiskBucket,omitempty"`
-	// The number of objects that are checked.
+	// The number of scanned files.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ type GetOssBucketScanStatisticResponseBodyData struct {
 	//
 	// 1
 	TotalBucket *int32 `json:"TotalBucket,omitempty" xml:"TotalBucket,omitempty"`
-	// The total number of objects in the bucket.
+	// The total number of files in the buckets.
 	//
 	// example:
 	//

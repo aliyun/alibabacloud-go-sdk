@@ -16,9 +16,9 @@ type iVerifyCheckResultResponseBody interface {
 }
 
 type VerifyCheckResultResponseBody struct {
-	// The data returned.
+	// The returned data.
 	Data *VerifyCheckResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The request ID. Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -62,11 +62,11 @@ func (s *VerifyCheckResultResponseBody) Validate() error {
 }
 
 type VerifyCheckResultResponseBodyData struct {
-	// The operation code of the cloud service configuration task. Valid values:
+	// The operation code of the cloud service configuration check task. Valid values:
 	//
-	// 	- **Throttling**: frequency limit
+	// - **Throttling**: Rate limited.
 	//
-	// 	- **ActionTrialUnauthorized**: an error that is related to unauthorized operations
+	// - **ActionTrialUnauthorized**: Unauthorized error.
 	//
 	// example:
 	//
@@ -78,7 +78,7 @@ type VerifyCheckResultResponseBodyData struct {
 	//
 	// 8eded533-5348-468c-aa1d-0aa2934a7***
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The throttling duration. Unit: seconds
+	// The rate limit duration. Unit: seconds.
 	//
 	// example:
 	//

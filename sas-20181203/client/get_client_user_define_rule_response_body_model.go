@@ -16,13 +16,13 @@ type iGetClientUserDefineRuleResponseBody interface {
 }
 
 type GetClientUserDefineRuleResponseBody struct {
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// 0B48AB3C-84FC-424D-A01D-B9270EF4****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the custom defense rule.
+	// The rule details.
 	UserDefineRuleDetail *GetClientUserDefineRuleResponseBodyUserDefineRuleDetail `json:"UserDefineRuleDetail,omitempty" xml:"UserDefineRuleDetail,omitempty" type:"Struct"`
 }
 
@@ -62,11 +62,11 @@ func (s *GetClientUserDefineRuleResponseBody) Validate() error {
 }
 
 type GetClientUserDefineRuleResponseBodyUserDefineRuleDetail struct {
-	// The action of the custom defense rule. Valid values:
+	// The action type. Valid values:
 	//
-	// 	- **0**: allow
+	// - **0**: added to the whitelist
 	//
-	// 	- **1**: block
+	// - **1**: added to the blacklist.
 	//
 	// example:
 	//
@@ -90,13 +90,13 @@ type GetClientUserDefineRuleResponseBodyUserDefineRuleDetail struct {
 	//
 	// /etc/pam****
 	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
-	// The time when the custom defense rule was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 167118088****
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The time when the custom defense rule was last modified.
+	// The most recent modification time.
 	//
 	// example:
 	//
@@ -108,23 +108,23 @@ type GetClientUserDefineRuleResponseBodyUserDefineRuleDetail struct {
 	//
 	// 10.240.XX.XX
 	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
-	// The ID of the custom defense rule.
+	// The rule ID.
 	//
 	// example:
 	//
 	// 200****
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The hash values of processes.
+	// The list of process hashes.
 	//
 	// example:
 	//
 	// 0c9045b5bec90f9825f1f3f64dd4****
 	Md5List *string `json:"Md5List,omitempty" xml:"Md5List,omitempty"`
-	// The name of the custom defense rule.
+	// The rule name.
 	//
 	// example:
 	//
-	// Rule\\*\\*\\*\\*
+	// 规则****
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The new file path after the file is renamed.
 	//
@@ -138,19 +138,19 @@ type GetClientUserDefineRuleResponseBodyUserDefineRuleDetail struct {
 	//
 	// /usr/sbin/s****
 	ParentCmdline *string `json:"ParentCmdline,omitempty" xml:"ParentCmdline,omitempty"`
-	// The path to the parent process.
+	// The parent process path.
 	//
 	// example:
 	//
 	// c:/windows/system32/i****
 	ParentProcPath *string `json:"ParentProcPath,omitempty" xml:"ParentProcPath,omitempty"`
-	// The type of the operating system. Valid values:
+	// The operating system type. Valid values:
 	//
-	// 	- **linux**
+	// - **linux**
 	//
-	// 	- **windows**
+	// - **windows**
 	//
-	// 	- **all**
+	// - **all**.
 	//
 	// example:
 	//
@@ -168,7 +168,7 @@ type GetClientUserDefineRuleResponseBodyUserDefineRuleDetail struct {
 	//
 	// 80
 	PortStr *string `json:"PortStr,omitempty" xml:"PortStr,omitempty"`
-	// The path to the process.
+	// The process path.
 	//
 	// example:
 	//
@@ -186,21 +186,21 @@ type GetClientUserDefineRuleResponseBodyUserDefineRuleDetail struct {
 	//
 	// HKEY_DYN_****
 	RegistryKey *string `json:"RegistryKey,omitempty" xml:"RegistryKey,omitempty"`
-	// The type of the custom defense rule. Valid values:
+	// The rule type. Valid values:
 	//
-	// 	- **1**: Process hash
+	// - **1**: process hash
 	//
-	// 	- **2**: Command line
+	// - **2**: command line
 	//
-	// 	- **3**: Process Network
+	// - **3**: process network
 	//
-	// 	- **4**: File Read and Write
+	// - **4**: file read/write
 	//
-	// 	- **5**: Operation on Registry
+	// - **5**: registry operation
 	//
-	// 	- **6**: Dynamic-link Library Loading
+	// - **6**: dynamic-link library loading
 	//
-	// 	- **7**: File Renaming
+	// - **7**: file rename.
 	//
 	// example:
 	//

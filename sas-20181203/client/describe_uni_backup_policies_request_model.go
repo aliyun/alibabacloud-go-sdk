@@ -18,21 +18,21 @@ type iDescribeUniBackupPoliciesRequest interface {
 }
 
 type DescribeUniBackupPoliciesRequest struct {
-	// The number of the page to return. Default value: **1**.
+	// The page number from which to start displaying query results. Default value: **1**, which indicates that query results are displayed starting from page 1.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries to return on each page. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+	// The maximum number of entries to display per page for a paginated query. The default number of entries per page is 20. If the PageSize parameter is left empty, 20 entries are returned by default.
 	//
-	// > We recommend that you do not leave this parameter empty.
+	// > We recommend that you do not leave PageSize empty.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The name of the anti-ransomware policy.
+	// The name of the database anti-ransomware backup policy.
 	//
 	// example:
 	//

@@ -80,7 +80,7 @@ type CreateAssetSelectionConfigResponseBodyData struct {
 	//
 	// example:
 	//
-	// all
+	// linux
 	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
 	// The ID of the current asset selection. It can be used to query and modify the asset that is selected.
 	//

@@ -18,25 +18,25 @@ type iDescribeInstallCaptchaRequest interface {
 }
 
 type DescribeInstallCaptchaRequest struct {
-	// The validity period of verification codes. If this parameter is not specified, only the valid verification codes are returned.
+	// The expiration time of the installation verification code. If this parameter is left empty, only valid installation verification codes are queried.
 	//
-	// >  An installation verification code can be used only within the validity period. An expired installation verification code cannot be used to install the Security Center agent.
+	// > The installation verification code can be used only within its validity period. An expired installation verification code cannot be used to install the Security Center Agent.
 	//
 	// example:
 	//
 	// 2020-10-11 16:26:22
 	Deadline *string `json:"Deadline,omitempty" xml:"Deadline,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language type for requests and responses. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese.
+	// - **zh**: Chinese.
 	//
-	// 	- **en**: English.
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The source IP address of the request.
+	// The IP address of the access source.
 	//
 	// example:
 	//

@@ -24,37 +24,37 @@ type iOpenSensitiveFileScanResponseBody interface {
 }
 
 type OpenSensitiveFileScanResponseBody struct {
-	// The status code returned. The status code **200*	- indicates that the request was successful. Other status codes indicate that the request failed. You can identify the cause of the failure based on the status code.
+	// The result code. A value of **200*	- indicates success. Any other value indicates failure. You can use this field to determine the cause of the failure.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data.
+	// The data returned for modifying the sensitive file scan switch.
 	Data *OpenSensitiveFileScanResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The error message returned.
+	// The detailed information of the error code.
 	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// B4A4C081-7F06-5481-9323-02A5419B9423
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// The result status of the API call. Valid values:
 	//
-	// 	- **true**: The request was successful.
+	// - **true**: The API call was successful.
 	//
-	// 	- **false**: The request failed.
+	// - **false**: The API call failed.
 	//
 	// example:
 	//
@@ -134,11 +134,11 @@ func (s *OpenSensitiveFileScanResponseBody) Validate() error {
 }
 
 type OpenSensitiveFileScanResponseBodyData struct {
-	// Indicates whether sensitive file scan is enabled or disabled. Valid values:
+	// The switch operation. Valid values:
 	//
-	// 	- **on**: enabled
+	// - **on**: Enable.
 	//
-	// 	- **off**: disabled
+	// - **off**: Disable.
 	//
 	// example:
 	//

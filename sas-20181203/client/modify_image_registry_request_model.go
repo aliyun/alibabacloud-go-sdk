@@ -26,8 +26,13 @@ type iModifyImageRegistryRequest interface {
 }
 
 type ModifyImageRegistryRequest struct {
+	// The domain name.
+	//
+	// example:
+	//
+	// 114.55.xxx.xxx
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The ID of the image repository. You can call the listImageRegistry operation to query the ID of the image repository.
+	// The image registry ID. Call the [ListImageRegistry](https://help.aliyun.com/document_detail/471986.html) operation to obtain this ID.
 	//
 	// example:
 	//
@@ -38,10 +43,20 @@ type ModifyImageRegistryRequest struct {
 	// example:
 	//
 	// ********************
-	Password       *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	Port           *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The port number.
+	//
+	// example:
+	//
+	// 80
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The registry IP address.
+	//
+	// example:
+	//
+	// 192.168.0.1
 	RegistryHostIp *string `json:"RegistryHostIp,omitempty" xml:"RegistryHostIp,omitempty"`
-	// The number of images that are scanned per hour.
+	// The number of images to scan per hour.
 	//
 	// example:
 	//

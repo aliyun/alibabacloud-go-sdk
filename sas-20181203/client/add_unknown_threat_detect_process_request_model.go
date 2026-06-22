@@ -18,9 +18,12 @@ type iAddUnknownThreatDetectProcessRequest interface {
 }
 
 type AddUnknownThreatDetectProcessRequest struct {
-	EventIdList []*int64                                           `json:"EventIdList,omitempty" xml:"EventIdList,omitempty" type:"Repeated"`
+	// A list of associated event IDs.
+	EventIdList []*int64 `json:"EventIdList,omitempty" xml:"EventIdList,omitempty" type:"Repeated"`
+	// The list of processes to add.
 	ProcessList []*AddUnknownThreatDetectProcessRequestProcessList `json:"ProcessList,omitempty" xml:"ProcessList,omitempty" type:"Repeated"`
-	UuidList    []*string                                          `json:"UuidList,omitempty" xml:"UuidList,omitempty" type:"Repeated"`
+	// The UUIDs of assets on which the processes are located.
+	UuidList []*string `json:"UuidList,omitempty" xml:"UuidList,omitempty" type:"Repeated"`
 }
 
 func (s AddUnknownThreatDetectProcessRequest) String() string {
@@ -72,18 +75,26 @@ func (s *AddUnknownThreatDetectProcessRequest) Validate() error {
 }
 
 type AddUnknownThreatDetectProcessRequestProcessList struct {
+	// The MD5 hash of the process file.
+	//
 	// example:
 	//
 	// e59b63ae983377f131ab20ec0d******
 	Md5 *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
+	// The path to the process executable.
+	//
 	// example:
 	//
 	// /bin/rm
 	ProcessPath *string `json:"ProcessPath,omitempty" xml:"ProcessPath,omitempty"`
+	// A remark for the process.
+	//
 	// example:
 	//
 	// 1330
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The SHA-256 hash of the process file.
+	//
 	// example:
 	//
 	// f204693a7d2ce99d6c4434e550d985ee1c7be7cb5dd9a76094369af0d2******

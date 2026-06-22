@@ -28,13 +28,13 @@ type iListOperationProcessRequest interface {
 }
 
 type ListOperationProcessRequest struct {
-	// The page number.
+	// The page number of the current page to display in a paged query. This parameter is used for paging.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The end of the time range to query. Unit: milliseconds.
+	// The end time of the query based on the task completion time. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -46,29 +46,29 @@ type ListOperationProcessRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The beginning of the time range to query. Unit: milliseconds.
+	// The start time of the query based on the task creation time. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1680919232000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The task status codes.
+	// The list of task status codes.
 	StatusCodes []*int32 `json:"StatusCodes,omitempty" xml:"StatusCodes,omitempty" type:"Repeated"`
-	// The task IDs.
+	// The list of task IDs.
 	TaskIds []*string `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
-	// List of task sources.
+	// The list of task sources.
 	TaskSources []*string `json:"TaskSources,omitempty" xml:"TaskSources,omitempty" type:"Repeated"`
-	// The task types. Valid values:
+	// The task type. Valid values:
 	//
-	// 	- CHECK_ALL: full check.
+	// - CHECK_ALL: full check.
 	//
-	// 	- CHECK_POLICY: policy-based check for which check items are configured.
+	// - CHECK_POLICY: check performed based on check items in the configured policy.
 	//
-	// 	- CHECK_SCHEDULE: scheduled check.
+	// - CHECK_SCHEDULE: scheduled check.
 	//
-	// 	- CHECK_ITEM: specific check item-based check.
+	// - CHECK_ITEM: check performed based on specified check items.
 	//
-	// 	- CHECK_INSTANCE: specific check item-based check on specific instances.
+	// - CHECK_INSTANCE: check performed based on specified check items and instances.
 	TaskTypes []*string `json:"TaskTypes,omitempty" xml:"TaskTypes,omitempty" type:"Repeated"`
 }
 

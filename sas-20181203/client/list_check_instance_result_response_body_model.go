@@ -167,15 +167,15 @@ type ListCheckInstanceResultResponseBodyBasicData struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The states of check items. Multiple states are separated with commas (,). Valid values:
 	//
-	// 	- **PASS**: passed
+	// - **PASS**: passed
 	//
-	// 	- **NOT_PASS**: failed
+	// - **NOT_PASS**: failed
 	//
-	// 	- **CHECKING**: being checked
+	// - **CHECKING**: being checked
 	//
-	// 	- **NOT_CHECK**: not checked
+	// - **NOT_CHECK**: not checked
 	//
-	// 	- **WHITELIST**: added to the whitelist
+	// - **WHITELIST**: added to the whitelist
 	//
 	// example:
 	//
@@ -185,7 +185,7 @@ type ListCheckInstanceResultResponseBodyBasicData struct {
 	//
 	// example:
 	//
-	// Task is failed.
+	// 检查任务失败。
 	StatusMessage *string `json:"StatusMessage,omitempty" xml:"StatusMessage,omitempty"`
 	// The multi-cloud provider account name.
 	//
@@ -420,9 +420,9 @@ type ListCheckInstanceResultResponseBodyColumns struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// Indicates whether the search condition is used. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -442,9 +442,9 @@ type ListCheckInstanceResultResponseBodyColumns struct {
 	ShowName *string `json:"ShowName,omitempty" xml:"ShowName,omitempty"`
 	// The type of the check result for the instance. Valid values:
 	//
-	// 	- **text**
+	// - **text**
 	//
-	// 	- **link**
+	// - **link**
 	//
 	// example:
 	//
@@ -542,9 +542,9 @@ type ListCheckInstanceResultResponseBodyColumnsGrids struct {
 	ShowName *string `json:"ShowName,omitempty" xml:"ShowName,omitempty"`
 	// The format of the check result for the instance. Valid values:
 	//
-	// 	- **text**
+	// - **text**
 	//
-	// 	- **link**
+	// - **link**
 	//
 	// example:
 	//

@@ -16,13 +16,13 @@ type iGetRegistryScanDayNumResponseBody interface {
 }
 
 type GetRegistryScanDayNumResponseBody struct {
-	// The request ID.
+	// The request ID. China Chinese Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// 09969D2C-4FAD-429E-BFBF-9A60DEF8****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The configuration of the scan period.
+	// The scan day configuration.
 	ScanDayNumConfig *GetRegistryScanDayNumResponseBodyScanDayNumConfig `json:"ScanDayNumConfig,omitempty" xml:"ScanDayNumConfig,omitempty" type:"Struct"`
 }
 
@@ -62,13 +62,13 @@ func (s *GetRegistryScanDayNumResponseBody) Validate() error {
 }
 
 type GetRegistryScanDayNumResponseBodyScanDayNumConfig struct {
-	// The selectable day options.
+	// The list of available day options.
 	//
 	// example:
 	//
 	// 1,3,7,15,30,90,180,365
 	DayNumList *string `json:"DayNumList,omitempty" xml:"DayNumList,omitempty"`
-	// The scan period. Unit: days.
+	// The scan time range. Unit: days.
 	//
 	// example:
 	//

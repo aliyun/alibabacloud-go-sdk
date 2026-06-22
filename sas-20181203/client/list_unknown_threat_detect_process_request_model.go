@@ -34,46 +34,72 @@ type iListUnknownThreatDetectProcessRequest interface {
 }
 
 type ListUnknownThreatDetectProcessRequest struct {
+	// The analysis result. Valid values:
+	//
+	// - **black**: abnormal process
+	//
+	// - **white**: normal process
+	//
 	// example:
 	//
 	// white
 	AnalyzeResult *string `json:"AnalyzeResult,omitempty" xml:"AnalyzeResult,omitempty"`
+	// The page number to return.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The end of the time range for the first detection, in milliseconds.
+	//
 	// example:
 	//
 	// 1768891966345
 	FirstTimeEnd *int64 `json:"FirstTimeEnd,omitempty" xml:"FirstTimeEnd,omitempty"`
+	// The start of the time range for the first detection, in milliseconds.
+	//
 	// example:
 	//
 	// 1768891966344
 	FirstTimeStart *int64 `json:"FirstTimeStart,omitempty" xml:"FirstTimeStart,omitempty"`
+	// The MD5 value of the file.
+	//
 	// example:
 	//
 	// 0552c44e243abdea1729d4507bce****
 	Md5 *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
+	// The number of entries to return per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The file path.
+	//
 	// example:
 	//
 	// /etc/test
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The process path.
+	//
 	// example:
 	//
 	// /bin/rm
 	ProcessPath *string `json:"ProcessPath,omitempty" xml:"ProcessPath,omitempty"`
+	// The server name or IP address.
+	//
 	// example:
 	//
 	// 172.20.XX.XX
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The SHA-256 value of the file.
+	//
 	// example:
 	//
 	// f204693a7d2ce99d6c4434e550d985ee1c7be7cb5dd9a76094369af0d2******
 	Sha256 *string `json:"Sha256,omitempty" xml:"Sha256,omitempty"`
+	// The UUID of the server to query.
+	//
 	// example:
 	//
 	// 50d213b4-3a35-427a-b8a5-04b0c7e1****

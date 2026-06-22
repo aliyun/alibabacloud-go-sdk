@@ -24,37 +24,37 @@ type iDescribeVulWhitelistResponseBody interface {
 }
 
 type DescribeVulWhitelistResponseBody struct {
-	// The number of entries returned on the current page.
+	// The number of entries on the current page in paging.
 	//
 	// example:
 	//
 	// 2
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The page number of the returned page.
+	// The page number of the current page in paging.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page in paging.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 74F97EF7-B543-43FD-A4E9-18456731F9C5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 1
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// An array that consists of information about the whitelist of vulnerabilities.
+	// The list of whitelisted vulnerabilities.
 	VulWhitelists []*DescribeVulWhitelistResponseBodyVulWhitelists `json:"VulWhitelists,omitempty" xml:"VulWhitelists,omitempty" type:"Repeated"`
 }
 
@@ -140,7 +140,7 @@ type DescribeVulWhitelistResponseBodyVulWhitelists struct {
 	//
 	// RHSA-2017:3263: curl security update
 	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
-	// The ID of the rule.
+	// The rule ID.
 	//
 	// example:
 	//
@@ -152,43 +152,43 @@ type DescribeVulWhitelistResponseBodyVulWhitelists struct {
 	//
 	// oval:com.redhat.rhsa:def:20173263
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The reason why the vulnerability is added to the whitelist.
+	// The reason for adding the vulnerability to the whitelist.
 	//
 	// example:
 	//
 	// ignore
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	// The application scope of the rule. The value is a JSON string that contains the following fields:
+	// The scope of the rule. The value is a JSON string that contains the following fields:
 	//
-	// 	- **type**: the type of the assets to which the rule is applied. Valid values:
+	// - **type**: The applicable type. Valid values:
 	//
-	//     	- **Uuid**: server
+	//      - **Uuid**: host
 	//
-	//     	- **GroupId**: server group
+	//      - **GroupId**: group
 	//
-	// 	- **groupIds**: the ID of the server group
+	// - **groupIds**: The IDs of the applicable asset groups.
 	//
-	// 	- **uuids**: the UUID of the server
+	// - **uuids**: The UUIDs of the applicable assets.
 	//
-	// > If this field is empty, the rule is applied to all assets.
+	// > If this value is empty, the rule applies to all assets.
 	//
 	// example:
 	//
 	// {"type":"GroupId","groupIds":[916****],"uuids":[]}
 	TargetInfo *string `json:"TargetInfo,omitempty" xml:"TargetInfo,omitempty"`
-	// The type of the vulnerability.
+	// The vulnerability type.
 	//
 	// example:
 	//
 	// cve
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The information about the vulnerability. The value of this parameter is in the JSON format. Valid values:
+	// The vulnerability information. The value is in JSON format.
 	//
-	// 	- **name**: the name of the vulnerability
+	// - **name**: The name of the vulnerability.
 	//
-	// 	- **type**: the type of the vulnerability.
+	// - **type**: The type of the vulnerability.
 	//
-	// 	- **aliasName**: the alias of the vulnerability
+	// - **aliasName**: The alias of the vulnerability.
 	//
 	// example:
 	//

@@ -18,11 +18,11 @@ type iListSystemAggregationRulesResponseBody interface {
 }
 
 type ListSystemAggregationRulesResponseBody struct {
-	// An array that consists of the details about the aggregation types.
+	// The result list.
 	AggregationList []*ListSystemAggregationRulesResponseBodyAggregationList `json:"AggregationList,omitempty" xml:"AggregationList,omitempty" type:"Repeated"`
-	// The pagination information.
+	// The pagination information of the query result.
 	PageInfo *ListSystemAggregationRulesResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -84,19 +84,19 @@ func (s *ListSystemAggregationRulesResponseBody) Validate() error {
 }
 
 type ListSystemAggregationRulesResponseBodyAggregationList struct {
-	// The ID of the aggregation type.
+	// The ID of the rule cluster.
 	//
 	// example:
 	//
 	// 1
 	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the aggregation type.
+	// The name of the rule cluster.
 	//
 	// example:
 	//
-	// Remote control\\*\\*\\*\\*
+	// 远程控制****
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The number of rules that are of the aggregation type.
+	// The number of rules in the cluster.
 	//
 	// example:
 	//
@@ -144,19 +144,19 @@ func (s *ListSystemAggregationRulesResponseBodyAggregationList) Validate() error
 }
 
 type ListSystemAggregationRulesResponseBodyPageInfo struct {
-	// The page number of the returned page.
+	// The page number of the current page in a paging query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries returned per page.
+	// The maximum number of entries per page in a paging query.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//

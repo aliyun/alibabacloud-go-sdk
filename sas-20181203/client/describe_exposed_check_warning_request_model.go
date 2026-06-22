@@ -18,27 +18,27 @@ type iDescribeExposedCheckWarningRequest interface {
 }
 
 type DescribeExposedCheckWarningRequest struct {
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language type for the request and response. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The type of the baseline.
+	// The type to which the baseline belongs.
 	//
-	// >  You can call the [DescribeRiskType](~~DescribeRiskType~~) operation to obtain the types of baselines from the response parameter **TypeName**.
+	// > The **TypeName*	- field returned by calling the [DescribeRiskType](~~DescribeRiskType~~) operation.
 	//
 	// example:
 	//
 	// weak_password
 	TypeName *string `json:"TypeName,omitempty" xml:"TypeName,omitempty"`
-	// The UUID of the server. Separate multiple UUIDs with commas (,).
+	// The UUID of the server to query. Separate multiple UUIDs with commas (,).
 	//
-	// >  You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to query the UUIDs of servers.
+	// > You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to obtain the UUID of a server.
 	//
 	// example:
 	//

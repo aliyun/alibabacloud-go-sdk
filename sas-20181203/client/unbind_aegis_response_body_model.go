@@ -14,7 +14,7 @@ type iUnbindAegisResponseBody interface {
 }
 
 type UnbindAegisResponseBody struct {
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The request ID. Alibaba Cloud generates a unique identifier for each API request. You can use the request ID to troubleshoot issues.
 	//
 	// example:
 	//

@@ -18,11 +18,11 @@ type iDescribeHybridProxyLinkedClientListResponseBody interface {
 }
 
 type DescribeHybridProxyLinkedClientListResponseBody struct {
-	// The returned data.
+	// The returned list.
 	List []*DescribeHybridProxyLinkedClientListResponseBodyList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
 	// The pagination information.
 	PageInfo *DescribeHybridProxyLinkedClientListResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	// The request ID.
+	// The request ID. Alibaba Cloud generates a unique identifier for each request. You can use the request ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -120,31 +120,31 @@ type DescribeHybridProxyLinkedClientListResponseBodyList struct {
 	//
 	// centos-xxx
 	Os *string `json:"Os,omitempty" xml:"Os,omitempty"`
-	// The name of the operating system for your asset.
+	// The operating system name of the asset.
 	//
 	// example:
 	//
 	// centos
 	OsName *string `json:"OsName,omitempty" xml:"OsName,omitempty"`
-	// The ID of the region in which the server resides.
+	// The region ID of the server.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the region in which the server resides.
+	// The region name of the server.
 	//
 	// example:
 	//
 	// cn-qingdao
 	RegionName *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
-	// The status of the Security Center agent.
+	// The status of the client.
 	//
 	// example:
 	//
 	// online
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The name of the tag added to the server.
+	// The tag name of the asset.
 	//
 	// example:
 	//
@@ -294,25 +294,25 @@ func (s *DescribeHybridProxyLinkedClientListResponseBodyList) Validate() error {
 }
 
 type DescribeHybridProxyLinkedClientListResponseBodyPageInfo struct {
-	// The number of entries on the current page.
+	// The number of entries on the current page when paging is used.
 	//
 	// example:
 	//
 	// 10
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The page number.
+	// The page number of the current page when paging is used.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries per page.
+	// The maximum number of entries per page when paging is used.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//

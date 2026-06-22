@@ -20,29 +20,29 @@ type iModifyWebLockStatusRequest interface {
 }
 
 type ModifyWebLockStatusRequest struct {
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language type for requests and responses. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The source IP address of the request.
+	// The IP address of the access source.
 	//
 	// example:
 	//
 	// 125.71.XX.XX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// Specifies whether to enable or disable web tamper proofing for the specified server. Valid values:
+	// The protection status of the server. Valid values:
 	//
-	// 	- **on**: enables web tamper proofing
+	// - **on**: Enables protection.
 	//
-	// 	- **off**: disables web tamper proofing
+	// - **off**: Shuts down protection.
 	//
-	// > After you disable web tamper proofing for the specified server, one quota is released.
+	// > After you shut down web tamper-proofing for the server, a tamper-proofing authorization quota is released.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +50,9 @@ type ModifyWebLockStatusRequest struct {
 	//
 	// on
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The UUID of the server for which you want to enable or disable web tamper proofing. You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to query the UUIDs of servers.
+	// The UUID of the server for which you want to modify the brute-force attacks prevention status.
+	//
+	// You can invoke the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to obtain the UUID of the server.
 	//
 	// This parameter is required.
 	//

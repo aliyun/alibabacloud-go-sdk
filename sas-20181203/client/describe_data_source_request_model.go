@@ -18,23 +18,23 @@ type iDescribeDataSourceRequest interface {
 }
 
 type DescribeDataSourceRequest struct {
-	// The method that is used to send alert notifications. Set the value to DingTalk.
+	// The type of data source to retrieve. This parameter is currently fixed to DingTalk.
 	//
 	// example:
 	//
 	// DingTalk
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language type for the request and response messages. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The source IP address.
+	// The IP address of the access source.
 	//
 	// example:
 	//

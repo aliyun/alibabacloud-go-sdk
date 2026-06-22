@@ -16,9 +16,9 @@ type iListK8sAccessInfoResponseBody interface {
 }
 
 type ListK8sAccessInfoResponseBody struct {
-	// The information about the Kubernetes clusters.
+	// The list of K8s access information.
 	K8sAccessInfos []*ListK8sAccessInfoResponseBodyK8sAccessInfos `json:"K8sAccessInfos,omitempty" xml:"K8sAccessInfos,omitempty" type:"Repeated"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The ID of the request. The China Chinese Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -66,43 +66,43 @@ func (s *ListK8sAccessInfoResponseBody) Validate() error {
 }
 
 type ListK8sAccessInfoResponseBodyK8sAccessInfos struct {
-	// The ID of the Alibaba Cloud account.
+	// The Alibaba Cloud UID of the user.
 	//
 	// example:
 	//
 	// 1960721413485****
 	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// The Simple Log Service Logstore that is used to store the audit logs.
+	// The Simple Log Service Logstore for audit logs.
 	//
 	// example:
 	//
 	// audit-cf6baf6afa106eca665296fdf68b****
 	AuditLogStore *string `json:"AuditLogStore,omitempty" xml:"AuditLogStore,omitempty"`
-	// The Simple Log Service project that is used to store the audit logs.
+	// The Simple Log Service project for audit logs.
 	//
 	// example:
 	//
 	// k8s-log-custom-your-project-sd89eh****
 	AuditProject *string `json:"AuditProject,omitempty" xml:"AuditProject,omitempty"`
-	// The ID of the region in which the server is deployed.
+	// The region ID of the server.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	AuditRegionId *string `json:"AuditRegionId,omitempty" xml:"AuditRegionId,omitempty"`
-	// The ID of the cluster.
+	// The cluster ID.
 	//
 	// example:
 	//
 	// c0da5e4cb82a848c4a57c4dc9f49a****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The name of the cluster.
+	// The cluster name.
 	//
 	// example:
 	//
 	// test
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// CPU architecture, divided into ARM and x86 architectures.
+	// The CPU architecture. Valid values: ARM architecture and x86 architecture.
 	//
 	// example:
 	//
@@ -114,31 +114,31 @@ type ListK8sAccessInfoResponseBodyK8sAccessInfos struct {
 	//
 	// 1690596321613
 	ExpireDate *int64 `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
-	// The ID of the server group.
+	// The server group ID.
 	//
 	// example:
 	//
 	// 11088522
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the server group.
+	// The server group name.
 	//
 	// example:
 	//
 	// test
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The UUID of the access information.
+	// The unique ID of the access information.
 	//
 	// example:
 	//
 	// 67070
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The installation key of the Kubernetes cluster.
+	// The K8s installation key.
 	//
 	// example:
 	//
 	// xxx
 	InstallKey *string `json:"InstallKey,omitempty" xml:"InstallKey,omitempty"`
-	// The service provider.
+	// The vendor.
 	//
 	// example:
 	//

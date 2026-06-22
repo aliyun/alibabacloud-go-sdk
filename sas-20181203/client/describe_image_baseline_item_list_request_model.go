@@ -30,7 +30,7 @@ type iDescribeImageBaselineItemListRequest interface {
 }
 
 type DescribeImageBaselineItemListRequest struct {
-	// The key of the baseline type.
+	// The key of the baseline category.
 	//
 	// example:
 	//
@@ -40,9 +40,9 @@ type DescribeImageBaselineItemListRequest struct {
 	//
 	// example:
 	//
-	// AccessKey pair leak
+	// Access Key泄露
 	BaselineNameKey *string `json:"BaselineNameKey,omitempty" xml:"BaselineNameKey,omitempty"`
-	// The number of the page to return.
+	// The page number of the current page in a paged query.
 	//
 	// example:
 	//
@@ -56,39 +56,39 @@ type DescribeImageBaselineItemListRequest struct {
 	//
 	// 0b5c7193300da2070220038718ad****
 	ImageUuid *string `json:"ImageUuid,omitempty" xml:"ImageUuid,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language type for the request and response messages. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page in a paged query.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The types of the assets that are scanned.
+	// The scan scope collection.
 	ScanRange []*string `json:"ScanRange,omitempty" xml:"ScanRange,omitempty" type:"Repeated"`
-	// The status of the baseline risk item. Valid values:
+	// The fix status of the baseline risk. Valid values:
 	//
-	// 	- **0**: unfixed
+	// - **0**: unfixed
 	//
-	// 	- **1**: fixed
+	// - **1**: fixed
 	//
-	// 	- **2**: pending verification
+	// - **2**: pending verification
 	//
-	// 	- **3**: fixing failed
+	// - **3**: fix failed.
 	//
 	// example:
 	//
 	// 0
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The UUIDs of images.
+	// The list of image UUIDs.
 	Uuids []*string `json:"Uuids,omitempty" xml:"Uuids,omitempty" type:"Repeated"`
 }
 

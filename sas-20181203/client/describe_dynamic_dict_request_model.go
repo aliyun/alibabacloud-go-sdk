@@ -14,7 +14,7 @@ type iDescribeDynamicDictRequest interface {
 }
 
 type DescribeDynamicDictRequest struct {
-	// The source IP address of the request.
+	// The IP address of the access source.
 	//
 	// example:
 	//

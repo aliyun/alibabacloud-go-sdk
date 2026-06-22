@@ -16,17 +16,17 @@ type iGetSecurityScoreRuleRequest interface {
 }
 
 type GetSecurityScoreRuleRequest struct {
-	// The old or new version of the security score rule. If you set this parameter to **home_security_score**, the new version of the security score rule is returned. Otherwise, the old version of the security score rule is returned by default.
+	// Specifies whether to query the new or legacy security score rules. If the value is **home_security_score**, the new security score rules are queried. Otherwise, the legacy security score rules are queried by default.
 	//
 	// example:
 	//
 	// home_security_score
 	CalType *string `json:"CalType,omitempty" xml:"CalType,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language type for the request and response messages. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese.
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English.
+	// - **en**: English.
 	//
 	// example:
 	//

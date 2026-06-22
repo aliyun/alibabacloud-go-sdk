@@ -94,7 +94,7 @@ type ListCheckItemResponseBodyCheckItems struct {
 	//
 	// example:
 	//
-	// Enable deletion protection
+	// IPv4 Access Control
 	CheckShowName *string `json:"CheckShowName,omitempty" xml:"CheckShowName,omitempty"`
 	// The source type of the Situation Awareness check item:
 	//
@@ -118,99 +118,99 @@ type ListCheckItemResponseBodyCheckItems struct {
 	EstimatedCount *int32 `json:"EstimatedCount,omitempty" xml:"EstimatedCount,omitempty"`
 	// The asset subtype of the cloud service. Valid values:
 	//
-	// 	- If **InstanceType*	- is set to **ECS**, this parameter supports the following valid values:
+	// - If **InstanceType*	- is set to **ECS**, this parameter supports the following valid values:
 	//
-	//     	- **INSTANCE**
+	//   - **INSTANCE**
 	//
-	//     	- **DISK**
+	//   - **DISK**
 	//
-	//     	- **SECURITY_GROUP**
+	//   - **SECURITY_GROUP**
 	//
-	// 	- If **InstanceType*	- is set to **ACR**, this parameter supports the following valid values:
+	// - If **InstanceType*	- is set to **ACR**, this parameter supports the following valid values:
 	//
-	//     	- **REPOSITORY_ENTERPRISE**
+	//   - **REPOSITORY_ENTERPRISE**
 	//
-	//     	- **REPOSITORY_PERSON**
+	//   - **REPOSITORY_PERSON**
 	//
-	// 	- If **InstanceType*	- is set to **RAM**, this parameter supports the following valid values:
+	// - If **InstanceType*	- is set to **RAM**, this parameter supports the following valid values:
 	//
-	//     	- **ALIAS**
+	//   - **ALIAS**
 	//
-	//     	- **USER**
+	//   - **USER**
 	//
-	//     	- **POLICY**
+	//   - **POLICY**
 	//
-	//     	- **GROUP**
+	//   - **GROUP**
 	//
-	// 	- If **InstanceType*	- is set to **WAF**, this parameter supports the following valid value:
+	// - If **InstanceType*	- is set to **WAF**, this parameter supports the following valid value:
 	//
-	//     	- **DOMAIN**
+	//   - **DOMAIN**
 	//
-	// 	- If **InstanceType*	- is set to other values, this parameter supports the following valid values:
+	// - If **InstanceType*	- is set to other values, this parameter supports the following valid values:
 	//
-	//     	- **INSTANCE**
+	//   - **INSTANCE**
 	//
 	// example:
 	//
-	// ECS
+	// INSTANCE
 	InstanceSubType *string `json:"InstanceSubType,omitempty" xml:"InstanceSubType,omitempty"`
 	// The asset type of the cloud service. Valid values:
 	//
-	// 	- **ECS**: Elastic Compute Service (ECS).
+	// - **ECS**: Elastic Compute Service (ECS).
 	//
-	// 	- **SLB**: Server Load Balancer (SLB).
+	// - **SLB**: Server Load Balancer (SLB).
 	//
-	// 	- **RDS**: ApsaraDB RDS.
+	// - **RDS**: ApsaraDB RDS.
 	//
-	// 	- **MONGODB**: ApsaraDB for MongoDB (MongoDB).
+	// - **MONGODB**: ApsaraDB for MongoDB (MongoDB).
 	//
-	// 	- **KVSTORE**: ApsaraDB for Redis (Redis).
+	// - **KVSTORE**: ApsaraDB for Redis (Redis).
 	//
-	// 	- **ACR**: Container Registry.
+	// - **ACR**: Container Registry.
 	//
-	// 	- **CSK**: Container Service for Kubernetes (ACK).
+	// - **CSK**: Container Service for Kubernetes (ACK).
 	//
-	// 	- **VPC**: Virtual Private Cloud (VPC).
+	// - **VPC**: Virtual Private Cloud (VPC).
 	//
-	// 	- **ACTIONTRAIL**: ActionTrail.
+	// - **ACTIONTRAIL**: ActionTrail.
 	//
-	// 	- **CDN**: Alibaba Cloud CDN (CDN).
+	// - **CDN**: Alibaba Cloud CDN (CDN).
 	//
-	// 	- **CAS**: Certificate Management Service (formerly SSL Certificates Service).
+	// - **CAS**: Certificate Management Service (formerly SSL Certificates Service).
 	//
-	// 	- **RDC**: Apsara Devops.
+	// - **RDC**: Apsara Devops.
 	//
-	// 	- **RAM**: Resource Access Management (RAM).
+	// - **RAM**: Resource Access Management (RAM).
 	//
-	// 	- **DDOS**: Anti-DDoS.
+	// - **DDOS**: Anti-DDoS.
 	//
-	// 	- **WAF**: Web Application Firewall (WAF).
+	// - **WAF**: Web Application Firewall (WAF).
 	//
-	// 	- **OSS**: Object Storage Service (OSS).
+	// - **OSS**: Object Storage Service (OSS).
 	//
-	// 	- **POLARDB**: PolarDB.
+	// - **POLARDB**: PolarDB.
 	//
-	// 	- **POSTGRESQL**: ApsaraDB RDS for PostgreSQL.
+	// - **POSTGRESQL**: ApsaraDB RDS for PostgreSQL.
 	//
-	// 	- **MSE**: Microservices Engine (MSE).
+	// - **MSE**: Microservices Engine (MSE).
 	//
-	// 	- **NAS**: File Storage NAS (NAS).
+	// - **NAS**: File Storage NAS (NAS).
 	//
-	// 	- **SDDP**: Sensitive Data Discovery and Protection (SDDP).
+	// - **SDDP**: Sensitive Data Discovery and Protection (SDDP).
 	//
-	// 	- **EIP**: Elastic IP Address (EIP).
+	// - **EIP**: Elastic IP Address (EIP).
 	//
 	// example:
 	//
-	// OSS
+	// API_GATEWAY
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	// The risk level of the check item. Valid values:
 	//
-	// 	- **HIGH**
+	// - **HIGH**
 	//
-	// 	- **MEDIUM**
+	// - **MEDIUM**
 	//
-	// 	- **LOW**
+	// - **LOW**
 	//
 	// example:
 	//
@@ -220,15 +220,15 @@ type ListCheckItemResponseBodyCheckItems struct {
 	SectionIds []*int64 `json:"SectionIds,omitempty" xml:"SectionIds,omitempty" type:"Repeated"`
 	// The type of the cloud asset. Valid values:
 	//
-	// 	- **0**: an asset provided by Alibaba Cloud.
+	// - **0**: an asset provided by Alibaba Cloud.
 	//
-	// 	- **1**: an asset outside Alibaba Cloud.
+	// - **1**: an asset outside Alibaba Cloud.
 	//
-	// 	- **2**: an asset in a data center.
+	// - **2**: an asset in a data center.
 	//
-	// 	- **3**, **4**, **5**, and **7**: other cloud asset.
+	// - **3**, **4**, **5**, and **7**: other cloud asset.
 	//
-	// 	- **8**: a simple application server.
+	// - **8**: a simple application server.
 	//
 	// example:
 	//
@@ -378,7 +378,7 @@ type ListCheckItemResponseBodyCheckItemsCustomConfigs struct {
 	//
 	// example:
 	//
-	// Ensure RAM password policy prevents password reuse
+	// IP列表
 	ShowName *string `json:"ShowName,omitempty" xml:"ShowName,omitempty"`
 	// The type of the check item. The value is a JSON string.
 	//
@@ -454,7 +454,7 @@ func (s *ListCheckItemResponseBodyCheckItemsCustomConfigs) Validate() error {
 type ListCheckItemResponseBodyCheckItemsDescription struct {
 	// The type of the description of the check item. Valid value:
 	//
-	// 	- **text**
+	// - **text**
 	//
 	// example:
 	//
@@ -464,7 +464,7 @@ type ListCheckItemResponseBodyCheckItemsDescription struct {
 	//
 	// example:
 	//
-	// The download of query results that are returned by SELECT statements in DataStudio must be prohibited at the MaxCompute level.
+	// Checks whether strict access control policies are configured. Requirements: 1. If no blacklists and whitelist are configured, configure a whitelist first. 2. If a blacklist is configured, find the blacklist in the list of access control policies. We recommend that you do not configure an empty blacklist. 3. If a whitelist is configured, find the whitelist in the list of access control policies. We recommend that you do not configure an empty whitelist. Make sure that the whitelist does not contain 0.0.0.0. You can add the following IP addresses to the whitelist: ${IPList}.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

@@ -18,11 +18,11 @@ type iListVirusScanMachineResponseBody interface {
 }
 
 type ListVirusScanMachineResponseBody struct {
-	// The returned data.
+	// The data details.
 	Data []*ListVirusScanMachineResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The pagination information.
 	PageInfo *ListVirusScanMachineResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request. The ID is a unique identifier that Alibaba Cloud generates for the request and can be used to troubleshoot issues.
 	//
 	// example:
 	//
@@ -84,7 +84,7 @@ func (s *ListVirusScanMachineResponseBody) Validate() error {
 }
 
 type ListVirusScanMachineResponseBodyData struct {
-	// The number of times that the alert is triggered.
+	// The number of security alert occurrences.
 	//
 	// example:
 	//
@@ -96,25 +96,25 @@ type ListVirusScanMachineResponseBodyData struct {
 	//
 	// i-bp180bogui4fc0z4****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the server.
+	// The instance name.
 	//
 	// example:
 	//
 	// centos****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The public IP address of the associated server.
+	// The public IP address of the associated instance.
 	//
 	// example:
 	//
 	// 172.16.XX.XX
 	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
-	// The private IP address of the associated server.
+	// The private IP address of the associated instance.
 	//
 	// example:
 	//
 	// 10.42.XX.XX
 	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	// The UUID of the server.
+	// The UUID of the asset instance.
 	//
 	// example:
 	//
@@ -189,19 +189,19 @@ func (s *ListVirusScanMachineResponseBodyData) Validate() error {
 }
 
 type ListVirusScanMachineResponseBodyPageInfo struct {
-	// The page number.
+	// The page number of the current page in a paging query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries per page.
+	// The maximum number of entries returned per page in a paging query.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//

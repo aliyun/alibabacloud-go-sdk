@@ -26,23 +26,23 @@ type iListOperationProcessDetailRequest interface {
 }
 
 type ListOperationProcessDetailRequest struct {
-	// The page number. Default value: 1.
+	// The page number in a paged query. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The end of the time range to query. Unit: milliseconds.
+	// The query end time based on the task completion time, in milliseconds.
 	//
 	// example:
 	//
 	// 1731555850000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language type for the request and response messages. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese.
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English.
+	// - **en**: English.
 	//
 	// example:
 	//
@@ -54,15 +54,15 @@ type ListOperationProcessDetailRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The beginning of the time range to query. Unit: milliseconds.
+	// The query start time based on the task creation time, in milliseconds.
 	//
 	// example:
 	//
 	// 1731469330000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The subtask status codes.
+	// The list of operation subtask status codes.
 	StatusCodes []*int32 `json:"StatusCodes,omitempty" xml:"StatusCodes,omitempty" type:"Repeated"`
-	// The IDs of operation tasks.
+	// The list of operation task IDs.
 	TaskIds []*string `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
 }
 

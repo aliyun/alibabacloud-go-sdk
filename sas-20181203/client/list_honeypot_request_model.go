@@ -24,13 +24,13 @@ type iListHoneypotRequest interface {
 }
 
 type ListHoneypotRequest struct {
-	// The number of the page to return.
+	// The page number of the current page in a paged query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The IDs of the honeypots.
+	// The list of honeypot IDs.
 	HoneypotIds []*string `json:"HoneypotIds,omitempty" xml:"HoneypotIds,omitempty" type:"Repeated"`
 	// The name of the honeypot.
 	//
@@ -38,19 +38,19 @@ type ListHoneypotRequest struct {
 	//
 	// mx-rouyi
 	HoneypotName *string `json:"HoneypotName,omitempty" xml:"HoneypotName,omitempty"`
-	// The ID of the management node.
+	// The ID of the honeypot management node.
 	//
 	// example:
 	//
 	// a882e590-b87b-45a6-87b9-d0a3e5a0****
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The name of the management node.
+	// The name of the honeypot management node.
 	//
 	// example:
 	//
 	// honeypot_master
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	// The number of entries to return on each page.
+	// The maximum number of entries to return per page in a paged query.
 	//
 	// example:
 	//

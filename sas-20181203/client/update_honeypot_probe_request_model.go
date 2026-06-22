@@ -24,37 +24,37 @@ type iUpdateHoneypotProbeRequest interface {
 }
 
 type UpdateHoneypotProbeRequest struct {
-	// Specifies whether address resolution protocol (ARP) is enabled for the check type.
+	// The ARP check type.
 	//
 	// example:
 	//
 	// false
 	Arp *bool `json:"Arp,omitempty" xml:"Arp,omitempty"`
-	// The name of the probe.
+	// The probe name.
 	//
 	// example:
 	//
 	// svwsx-vpc-4430
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese.
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English.
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Specifies whether ping is enabled for the check type.
+	// The ping detection type.
 	//
 	// example:
 	//
 	// true
 	Ping *bool `json:"Ping,omitempty" xml:"Ping,omitempty"`
-	// The ID of the probe.
+	// The probe ID.
 	//
-	// > You can call the [ListHoneypotProbe](~~ListHoneypotProbe~~) operation to query the IDs of probes.
+	// >You can call the [ListHoneypotProbe](~~ListHoneypotProbe~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -62,7 +62,7 @@ type UpdateHoneypotProbeRequest struct {
 	//
 	// bbe7e382-956f-473e-beed-bc73a258****
 	ProbeId *string `json:"ProbeId,omitempty" xml:"ProbeId,omitempty"`
-	// The IP addresses that are monitored.
+	// The list of listening IP addresses.
 	ServiceIpList []*string `json:"ServiceIpList,omitempty" xml:"ServiceIpList,omitempty" type:"Repeated"`
 }
 

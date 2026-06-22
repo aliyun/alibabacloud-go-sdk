@@ -18,9 +18,9 @@ type iDescribeImageBaselineItemListResponseBody interface {
 }
 
 type DescribeImageBaselineItemListResponseBody struct {
-	// An array that consists of baseline check items.
+	// The list of image baseline data.
 	BaselineItemInfos []*DescribeImageBaselineItemListResponseBodyBaselineItemInfos `json:"BaselineItemInfos,omitempty" xml:"BaselineItemInfos,omitempty" type:"Repeated"`
-	// The pagination information.
+	// The pagination information of the query results.
 	PageInfo *DescribeImageBaselineItemListResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -84,35 +84,35 @@ func (s *DescribeImageBaselineItemListResponseBody) Validate() error {
 }
 
 type DescribeImageBaselineItemListResponseBodyBaselineItemInfos struct {
-	// The alias of the baseline type.
+	// The alias of the baseline category.
 	//
 	// example:
 	//
-	// AccessKey pair leak
+	// Access Key泄漏
 	BaselineClassAlias *string `json:"BaselineClassAlias,omitempty" xml:"BaselineClassAlias,omitempty"`
-	// The key of the baseline type.
+	// The key of the baseline category.
 	//
 	// example:
 	//
 	// ak_leak
 	BaselineClassKey *string `json:"BaselineClassKey,omitempty" xml:"BaselineClassKey,omitempty"`
-	// The alias of the baseline check item.
+	// The alias of the baseline sub-item.
 	//
 	// example:
 	//
-	// AccessKey pair leak
+	// Access Key泄漏
 	BaselineItemAlias *string `json:"BaselineItemAlias,omitempty" xml:"BaselineItemAlias,omitempty"`
-	// The key of the baseline check item.
+	// The key of the baseline sub-item.
 	//
 	// example:
 	//
 	// ak_leak
 	BaselineItemKey *string `json:"BaselineItemKey,omitempty" xml:"BaselineItemKey,omitempty"`
-	// The alias of the baseline.
+	// The alias of the baseline name.
 	//
 	// example:
 	//
-	// AccessKey pair leak
+	// Access Key泄漏
 	BaselineNameAlias *string `json:"BaselineNameAlias,omitempty" xml:"BaselineNameAlias,omitempty"`
 	// The key of the baseline name.
 	//
@@ -120,25 +120,25 @@ type DescribeImageBaselineItemListResponseBodyBaselineItemInfos struct {
 	//
 	// ak_leak
 	BaselineNameKey *string `json:"BaselineNameKey,omitempty" xml:"BaselineNameKey,omitempty"`
-	// The status of the baseline risks. Valid values:
+	// The fix status of the baseline risk. Valid values:
 	//
-	// 	- **0**: unfixed
+	// - **0**: unfixed
 	//
-	// 	- **1**: fixed
+	// - **1**: fixed
 	//
-	// 	- **2**: pending verification
+	// - **2**: pending verification
 	//
-	// 	- **3**: fixing failed
+	// - **3**: fix failed.
 	//
 	// example:
 	//
 	// 0
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether the baseline check item is added to the whitelist. Valid values:
+	// The whitelist status of the baseline check item. Valid values:
 	//
-	// 	- **0**: The baseline check item is not added to the whitelist.
+	// - **0**: not whitelisted
 	//
-	// 	- **1**: The baseline check item is added to the whitelist.
+	// - **1**: whitelisted.
 	//
 	// example:
 	//
@@ -231,19 +231,19 @@ func (s *DescribeImageBaselineItemListResponseBodyBaselineItemInfos) Validate() 
 }
 
 type DescribeImageBaselineItemListResponseBodyPageInfo struct {
-	// The number of entries returned on the current page.
+	// The number of entries on the current page in a paged query.
 	//
 	// example:
 	//
 	// 20
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The page number of the returned page.
+	// The page number of the current page in a paged query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries returned per page.
+	// The maximum number of entries per page in a paged query.
 	//
 	// example:
 	//

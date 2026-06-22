@@ -16,23 +16,23 @@ type iDescribeIdcAssetCriteriaRequest interface {
 }
 
 type DescribeIdcAssetCriteriaRequest struct {
-	// The status of the IP address. Valid values:
+	// Indicates whether the corresponding IP address is valid. Valid values:
 	//
-	// 	- **0**: The IP address is valid.
+	// - **0**: valid
 	//
-	// 	- **1**: The IP address is ignored.
+	// - **1**: ignored
 	//
-	// 	- *2*: The IP address is invalid.
+	// - **2**: invalid
 	//
-	// 	- *3*: The IP address is expired.
+	// - **3**: expired
 	//
-	// 	- *4*: The probe that is used to scan the IP address does not exist.
+	// - **4**: probe does not exist.
 	//
 	// example:
 	//
 	// 0
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The keyword that is used to match assets in fuzzy mode.
+	// The fuzzy match value entered when querying assets.
 	//
 	// example:
 	//

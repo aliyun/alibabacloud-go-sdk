@@ -14,9 +14,9 @@ type iDeleteMaliciousNoteRequest interface {
 }
 
 type DeleteMaliciousNoteRequest struct {
-	// The ID of the remarks.
+	// The ID of the note record.
 	//
-	// >  You can call the [ListAgentlessMaliciousFiles](~~ListAgentlessMaliciousFiles~~) operation to obtain the ID from the NoteId parameter.
+	// >Call the [ListAgentlessMaliciousFiles](~~ListAgentlessMaliciousFiles~~) operation to obtain this parameter from the NoteId field.
 	//
 	// example:
 	//

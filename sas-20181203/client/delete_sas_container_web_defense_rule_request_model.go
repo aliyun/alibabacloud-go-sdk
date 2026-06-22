@@ -16,7 +16,7 @@ type iDeleteSasContainerWebDefenseRuleRequest interface {
 type DeleteSasContainerWebDefenseRuleRequest struct {
 	// The rule ID.
 	//
-	// >  You can call the ListContainerWebDefenseRule operation to query the rule ID.
+	// > You can call the ListContainerWebDefenseRule operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//

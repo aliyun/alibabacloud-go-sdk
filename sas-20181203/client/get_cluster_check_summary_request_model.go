@@ -14,7 +14,7 @@ type iGetClusterCheckSummaryRequest interface {
 }
 
 type GetClusterCheckSummaryRequest struct {
-	// ID of the queried cluster
+	// The ID of the cluster to query.
 	//
 	// This parameter is required.
 	//

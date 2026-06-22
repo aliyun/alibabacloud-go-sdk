@@ -20,17 +20,17 @@ type iModifyEmgVulSubmitRequest interface {
 }
 
 type ModifyEmgVulSubmitRequest struct {
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language type for the request and response messages. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The name of the vulnerability.
+	// The name of the vulnerability to query.
 	//
 	// This parameter is required.
 	//
@@ -38,19 +38,19 @@ type ModifyEmgVulSubmitRequest struct {
 	//
 	// scan:ASCV-2019-032401
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The Alibaba Cloud account ID of the member in the resource directory.
+	// The ID of the member accounts in the resource folder (Alibaba Cloud account).
 	//
-	// >  You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain the IDs.
+	// >Invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
 	//
 	// example:
 	//
-	// 1232428423234****
+	// 16670360956*****
 	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
-	// Specifies whether to scan for urgent vulnerabilities. Valid values:
+	// Specifies whether to perform vulnerability detection. Valid values:
 	//
-	// 	- **yes**
+	// - **yes**: Perform vulnerability detection.
 	//
-	// 	- **no**
+	// - **no**: Do not perform vulnerability detection.
 	//
 	// This parameter is required.
 	//

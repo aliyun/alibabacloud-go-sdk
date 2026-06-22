@@ -66,7 +66,7 @@ type ListCheckTypesRequest struct {
 	//
 	// example:
 	//
-	// false
+	// true
 	ShowChecks *bool `json:"ShowChecks,omitempty" xml:"ShowChecks,omitempty"`
 	// The data source. Default value: **default**. Valid values:
 	//

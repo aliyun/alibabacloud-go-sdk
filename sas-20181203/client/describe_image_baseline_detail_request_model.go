@@ -18,11 +18,11 @@ type iDescribeImageBaselineDetailRequest interface {
 }
 
 type DescribeImageBaselineDetailRequest struct {
-	// The information about the baseline.
+	// The baseline data information.
 	//
 	// example:
 	//
-	// Valid values include but are not limited to ak_leak, duplicate_uid, duplicate_pwd_hash, and non_pwd_user.
+	// 取值包括但不限于以下内容：ak_leak, duplicate_uid,duplicate_pwd_hash,non_pwd_user
 	BaselineItemKey *string `json:"BaselineItemKey,omitempty" xml:"BaselineItemKey,omitempty"`
 	// The UUID of the image.
 	//
@@ -30,11 +30,11 @@ type DescribeImageBaselineDetailRequest struct {
 	//
 	// 06293273b67d19516cfcc712194f****
 	ImageUuid *string `json:"ImageUuid,omitempty" xml:"ImageUuid,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language type for the request and response. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//

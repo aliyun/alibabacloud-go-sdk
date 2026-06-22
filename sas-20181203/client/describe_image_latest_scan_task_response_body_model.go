@@ -16,13 +16,13 @@ type iDescribeImageLatestScanTaskResponseBody interface {
 }
 
 type DescribeImageLatestScanTaskResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 0B48AB3C-84FC-424D-A01D-B9270EF4****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// An array that consists of the information about the task.
+	// The task information.
 	Task []*DescribeImageLatestScanTaskResponseBodyTask `json:"Task,omitempty" xml:"Task,omitempty" type:"Repeated"`
 }
 
@@ -66,19 +66,19 @@ func (s *DescribeImageLatestScanTaskResponseBody) Validate() error {
 }
 
 type DescribeImageLatestScanTaskResponseBodyTask struct {
-	// The time when the task was created. The time is in the yyyy-MM-dd HH:mm:ss format.
+	// The time when the task was created. Format: yyyy-MM-ddTHH:mm:ss.
 	//
 	// example:
 	//
 	// 2022-12-20 11:59:05
 	Create *string `json:"Create,omitempty" xml:"Create,omitempty"`
-	// The number of images that are scanned.
+	// The number of completed image tasks.
 	//
 	// example:
 	//
 	// 100
 	Finish *int32 `json:"Finish,omitempty" xml:"Finish,omitempty"`
-	// The end time of the task. A value is returned only when the task is in the Finished state. Otherwise, the returned value is empty.
+	// The time when the task ended. This parameter is returned only when the task status is Finished. Otherwise, an empty value is returned.
 	//
 	// example:
 	//
@@ -90,63 +90,63 @@ type DescribeImageLatestScanTaskResponseBodyTask struct {
 	//
 	// 9755662
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The time when the task was last modified. The time is in the yyyy-MM-dd HH:mm:ss format.
+	// The time when the task was last modified. Format: yyyy-MM-ddTHH:mm:ss.
 	//
 	// example:
 	//
 	// 2022-12-20 12:00:05
 	Modified *string `json:"Modified,omitempty" xml:"Modified,omitempty"`
-	// The name of the task.
+	// The task name.
 	//
 	// example:
 	//
 	// IMAGE_SCAN
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The method in which the task was created. A task can be created in the Security Center console or by calling an API operation. Valid values:
+	// The creation method. Valid values:
 	//
-	// 	- **console_batch**: The task was created in the Security Center console.
+	// - **console_batch**: console
 	//
-	// 	- **openapi**: The task was created by calling an API operation.
+	// - **openapi**: API.
 	//
 	// example:
 	//
 	// console_batch
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The start time of the task.
+	// The time when the task started.
 	//
 	// example:
 	//
 	// 1668614400000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the task. Valid value:
+	// The task status. Valid values:
 	//
-	// 	- **PROCESSING**: The task is running.
+	// - **PROCESSING**: The task is being executed.
 	//
-	// 	- **START**: The task is being started.
+	// - **START**: The task is starting.
 	//
-	// 	- **MESSAGE_SEND**: The scan task is sent.
+	// - **MESSAGE_SEND**: The scan is being distributed.
 	//
-	// 	- **PRE_ANALYZER**: The image is in precheck.
+	// - **PRE_ANALYZER**: The image is being pre-checked.
 	//
-	// 	- **SUCCESS**: The task was successful.
+	// - **SUCCESS**: The task is executed.
 	//
-	// 	- **FAIL**: The task failed.
+	// - **FAIL**: The task failed.
 	//
-	// 	- **TIMOUT**: The task timed out.
+	// - **TIMOUT**: The task timed out.
 	//
 	// example:
 	//
 	// SUCCESS
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The digest value of the image.
+	// The digest of the target image.
 	//
 	// example:
 	//
 	// 8f0fbdb41d3d1ade4ffdf21558443f4c03342010563bb8c43ccc09594d50****
 	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
-	// The type of the scanned asset. Valid value:
+	// The scan target type. Valid values:
 	//
-	// 	- **IMAGE**
+	// - **IMAGE**: image.
 	//
 	// example:
 	//
@@ -158,9 +158,9 @@ type DescribeImageLatestScanTaskResponseBodyTask struct {
 	//
 	// 0a960b9a48b788a8689154b032bf****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The type of the task. Valid value:
+	// The task type. Valid values:
 	//
-	// 	- **IMAGE_SCAN**
+	// - **IMAGE_SCAN**: image scan.
 	//
 	// example:
 	//

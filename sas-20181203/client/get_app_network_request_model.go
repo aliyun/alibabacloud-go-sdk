@@ -18,25 +18,25 @@ type iGetAppNetworkRequest interface {
 }
 
 type GetAppNetworkRequest struct {
-	// The ID of the cluster to which the container belongs.
+	// The ID of the container cluster to query.
 	//
-	// > You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to query the IDs of container clusters.
+	// > You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// cf77xxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The end timestamp of the query. Unit: milliseconds.
+	// The timestamp of the end time. Unit: milliseconds.
 	//
-	// > The days between the start timestamp and the end timestamp cannot exceed **seven*	- days.
+	// > The difference between the start timestamp and the end timestamp cannot exceed **7*	- days.
 	//
 	// example:
 	//
 	// 1650470399999
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The start timestamp of the query. Unit: milliseconds.
+	// The timestamp of the start time. Unit: milliseconds.
 	//
-	// > The days between the start timestamp and the end timestamp cannot exceed **seven*	- days.
+	// > The difference between the start timestamp and the end timestamp cannot exceed **7*	- days.
 	//
 	// example:
 	//

@@ -22,71 +22,79 @@ type iExportRecordRequest interface {
 }
 
 type ExportRecordRequest struct {
-  // The type of the file to export. Valid values:
+  // The type of file to export. Valid values:
   // 
-  // 	- **virusScanExport**: The details of the virus scan tasks are exported. This parameter is available and required when ExportType is set to virusScanExport.
+  // - **virusScanExport**: Exports details of a virus scan task. This parameter is required when ExportType is set to virusScanExport.
   // 
   // example:
   // 
   // virusScanExport
   ExportFileType *string `json:"ExportFileType,omitempty" xml:"ExportFileType,omitempty"`
-  // The type of detection result list to be exported. Values:
+  // The type of records to export. Valid values:
   // 
-  // - **assetInstance**: List of servers in the asset center 
+  // - **assetInstance**: The list of servers in Asset Center
   // 
-  // - **user**: List of asset fingerprints for accounts 
+  // - **user**: The list of account asset fingerprints
   // 
-  // - **port**: List of asset fingerprints for ports 
+  // - **port**: The list of port asset fingerprints
   // 
-  // - **process**: List of asset fingerprints for processes 
+  // - **process**: The list of process asset fingerprints
   // 
-  // - **sca**: List of asset fingerprints for middleware 
+  // - **sca**: The list of middleware asset fingerprints
   // 
-  // - **database**: List of asset fingerprints for databases 
+  // - **database**: The list of database asset fingerprints
   // 
-  // - **web**: List of asset fingerprints for web services 
+  // - **web**: The list of web service asset fingerprints
   // 
-  // - **software**: List of asset fingerprints for software 
+  // - **software**: The list of software asset fingerprints
   // 
-  // - **cron**: List of asset fingerprints for scheduled tasks 
+  // - **cron**: The list of scheduled task (cron) asset fingerprints
   // 
-  // - **autorun**: List of asset fingerprints for startup items 
+  // - **autorun**: The list of startup item asset fingerprints
   // 
-  // - **lkm**: List of asset fingerprints for kernel modules 
+  // - **lkm**: The list of kernel module asset fingerprints
   // 
-  // - **webserver**: List of asset fingerprints for web sites 
+  // - **webserver**: The list of website asset fingerprints
   // 
-  // - **virusScanExport**: List of details for virus scan tasks 
+  // - **virusScanExport**: The list of virus scan task details
   // 
-  // - **imageVulExport**: List of system vulnerabilities in images 
+  // - **imageVulExport**: The list of system vulnerabilities in images
   // 
-  // - **imageBaseLineExport**: List of baseline check results in images 
+  // - imageVulExport: The list of system vulnerabilities in images
   // 
-  // - **imageAffectedMaliciousExport**: List of malicious sample check results in images 
+  // - **imageBaseLineExport**: The list of image baseline check results
   // 
-  // - **baselineCspm**: List of detection results for cloud platform configuration checks 
+  // - **imageAffectedMaliciousExport**: The list of malicious sample check results for images
   // 
-  // - **attack**: List of alert events for attack analysis 
+  // - **baselineCspm**: The list of cloud platform configuration check results
   // 
-  // - **accessKey**: List of alert events for AK leak detection 
+  // - **attack**: The list of attack analysis alerts
   // 
-  // - **exportObjectScanEvents**: List of alert events for malicious file detection 
+  // - **accessKey**: The list of AK leakage detection alerts
   // 
-  // - **domainDetail**: Website assets 
+  // - **exportObjectScanEvents**: The list of malicious file detection alerts
   // 
-  // - **assetsPropertyScaProcessDetail**: RASP protection process for application protection 
+  // - **domainDetail**: Website assets
   // 
-  // - **exportHcWarning**: List of system baseline risks 
+  // - **assetsPropertyScaProcessDetail**: RASP-protected processes
   // 
-  // - **raspAttackAlert**: List of attack alerts for Application Protection
+  // - **exportHcWarning**: The list of system baseline risks
   // 
-  // - **raspApplicationConfiguration**: List of application configurations for Application Protection
+  // - **raspAttackAlert**: The list of RASP attack alerts
   // 
-  // - **raspWeaknessDetection**: List of weakness detections for Application Protection
+  // - **raspApplicationConfiguration**: The list of RASP application configurations
   // 
-  // - **raspInMemoryWebshellDetection**: List of in-memory webshell detection alerts for Application Protection
+  // - **raspWeaknessDetection**: The list of RASP weakness detection results
   // 
-  // - **raspInMemoryWebshellInsertion**: List of in-memory webshell insertion alerts for Application Protection
+  // - **raspInMemoryWebshellDetection**: The list of RASP alerts for in-memory webshell detection
+  // 
+  // - **raspInMemoryWebshellInsertion**: The list of RASP alerts for in-memory webshell insertion
+  // 
+  // - **listAgentExport**: The list of agents
+  // 
+  // - **listSkillExport**: The list of skills
+  // 
+  // - **listModelExport**: The list of models
   // 
   // This parameter is required.
   // 
@@ -94,27 +102,27 @@ type ExportRecordRequest struct {
   // 
   // database
   ExportType *string `json:"ExportType,omitempty" xml:"ExportType,omitempty"`
-  // The language of the content within the request and response. Default value: **zh**. Valid values:
+  // The language of the content in the request and response. Default value: **zh**. Valid values:
   // 
-  // 	- **zh**: Chinese
+  // - **zh**: Chinese
   // 
-  // 	- **en**: English
+  // - **en**: English
   // 
   // example:
   // 
   // zh
   Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-  // The conditions that are used to filter check results.
+  // The filter conditions for the exported content.
   // 
-  // > This operation is a common export operation for multiple features of Security Center. The available configuration fields of this parameter vary based on the features. We recommend that you do not specify this parameter when you call the operation. You can export an information list without specifying this parameter, and then filter data in the exported Excel file.
+  // > This is a general-purpose operation for exporting various detection lists from Cloud Security Center. As parameter configurations vary by feature, we recommend that you omit this parameter to export the complete list. You can then filter the data in the exported Excel file.
   // 
   // example:
   // 
   // {"extend":"1","currentPage":1,"pageSize":10}
   Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
-  // The Alibaba Cloud account ID of the member in the resource directory.
+  // The ID of the management account for a member in Resource Directory.
   // 
-  // >  You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain the ID.
+  // > You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
   // 
   // example:
   // 

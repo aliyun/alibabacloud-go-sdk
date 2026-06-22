@@ -26,21 +26,21 @@ type iListHoneypotResponseBody interface {
 }
 
 type ListHoneypotResponseBody struct {
-	// The status code returned. The status code **200*	- indicates that the request was successful. Other status codes indicate that the request failed. You can identify the cause of the failure based on the status code.
+	// The result code. A value of **200*	- indicates success. Any other value indicates failure. You can use this field to determine the cause of the failure.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// An array that consists of the information about the honeypots.
+	// The list of honeypot data.
 	List []*ListHoneypotResponseBodyList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	// The error message returned.
+	// The detailed information about the error code.
 	//
 	// example:
 	//
@@ -48,17 +48,17 @@ type ListHoneypotResponseBody struct {
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The pagination information.
 	PageInfo *ListHoneypotResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The ID of the request. Alibaba Cloud generates a unique identifier for the request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// C80AFF1F-CC20-502C-A4D4-F5433E529B69
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// 	- **true**: The request was successful.
+	// - **true**: The call was successful.
 	//
-	// 	- **false**: The request failed.
+	// - **false**: The call failed.
 	//
 	// example:
 	//
@@ -156,13 +156,13 @@ func (s *ListHoneypotResponseBody) Validate() error {
 }
 
 type ListHoneypotResponseBodyList struct {
-	// The name of the management node.
+	// The name of the honeypot management node.
 	//
 	// example:
 	//
 	// 0804-pre
 	ControlNodeName *string `json:"ControlNodeName,omitempty" xml:"ControlNodeName,omitempty"`
-	// The ID of the honeypot.
+	// The honeypot ID.
 	//
 	// example:
 	//
@@ -198,13 +198,13 @@ type ListHoneypotResponseBodyList struct {
 	//
 	// c94eff5b-ea48-4805-8b7f-e04d3509b117
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The ID of the custom configuration for the honeypot.
+	// The ID of the custom honeypot parameter.
 	//
 	// example:
 	//
 	// a882e590-b87b-45a6-87b9-d0a3e5a0****
 	PresetId *string `json:"PresetId,omitempty" xml:"PresetId,omitempty"`
-	// An array that consists of the status information about the honeypot.
+	// The status of the honeypot.
 	State []*string `json:"State,omitempty" xml:"State,omitempty" type:"Repeated"`
 }
 
@@ -302,25 +302,25 @@ func (s *ListHoneypotResponseBodyList) Validate() error {
 }
 
 type ListHoneypotResponseBodyPageInfo struct {
-	// The number of entries returned on the current page.
+	// The number of entries on the current page.
 	//
 	// example:
 	//
 	// 2
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The page number of the returned page.
+	// The page number of the current page in a paged query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries returned per page.
+	// The maximum number of entries to return per page in a paged query.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//

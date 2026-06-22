@@ -20,9 +20,9 @@ type iDescribePropertyPortItemResponseBody interface {
 type DescribePropertyPortItemResponseBody struct {
 	// The pagination information.
 	PageInfo *DescribePropertyPortItemResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	// An array that consists of the ports returned.
+	// The port information.
 	PropertyItems []*DescribePropertyPortItemResponseBodyPropertyItems `json:"PropertyItems,omitempty" xml:"PropertyItems,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -84,25 +84,25 @@ func (s *DescribePropertyPortItemResponseBody) Validate() error {
 }
 
 type DescribePropertyPortItemResponseBodyPageInfo struct {
-	// The number of entries returned on the current page.
+	// The number of entries on the current page in a paged query.
 	//
 	// example:
 	//
 	// 5
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The page number of the returned page.
+	// The page number of the current page to display in a paged query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries returned per page.
+	// The maximum number of entries to display on each page in a paged query.
 	//
 	// example:
 	//
 	// 5
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -159,19 +159,19 @@ func (s *DescribePropertyPortItemResponseBodyPageInfo) Validate() error {
 }
 
 type DescribePropertyPortItemResponseBodyPropertyItems struct {
-	// The number of servers that use the port.
+	// The number of servers associated with the port.
 	//
 	// example:
 	//
 	// 495
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The number of the listening port.
+	// The listening port number.
 	//
 	// example:
 	//
 	// 22
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The network protocol of the port.
+	// The network protocol associated with the port.
 	//
 	// example:
 	//

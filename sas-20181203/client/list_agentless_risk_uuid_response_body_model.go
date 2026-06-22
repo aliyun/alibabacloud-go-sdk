@@ -18,11 +18,11 @@ type iListAgentlessRiskUuidResponseBody interface {
 }
 
 type ListAgentlessRiskUuidResponseBody struct {
-	// The information about the hosts.
+	// The list of servers.
 	List []*ListAgentlessRiskUuidResponseBodyList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	// The pagination information.
+	// The paging information for the query.
 	PageInfo *ListAgentlessRiskUuidResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -84,13 +84,13 @@ func (s *ListAgentlessRiskUuidResponseBody) Validate() error {
 }
 
 type ListAgentlessRiskUuidResponseBodyList struct {
-	// The number of baseline risks.
+	// The number of baseline risk items.
 	//
 	// example:
 	//
 	// 1
 	BaselineCount *int32 `json:"BaselineCount,omitempty" xml:"BaselineCount,omitempty"`
-	// The instance ID of the asset.
+	// The ID of the asset instance.
 	//
 	// example:
 	//
@@ -120,19 +120,19 @@ type ListAgentlessRiskUuidResponseBodyList struct {
 	//
 	// 1
 	MaliciousCount *int32 `json:"MaliciousCount,omitempty" xml:"MaliciousCount,omitempty"`
-	// The timestamp of the detection. Unit: milliseconds.
+	// The timestamp of the scan. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 168257753****
 	ScanTime *int64 `json:"ScanTime,omitempty" xml:"ScanTime,omitempty"`
-	// The ID of the asset that is detected.
+	// The ID of the scan target.
 	//
 	// example:
 	//
 	// 30****
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
-	// The name of the asset that is detected.
+	// The name of the scan target.
 	//
 	// example:
 	//
@@ -264,13 +264,13 @@ func (s *ListAgentlessRiskUuidResponseBodyList) Validate() error {
 }
 
 type ListAgentlessRiskUuidResponseBodyPageInfo struct {
-	// The page number of the returned page.
+	// The page number of the current page when using paging.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries returned per page.
+	// The maximum number of entries per page when using paging.
 	//
 	// example:
 	//

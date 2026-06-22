@@ -18,27 +18,27 @@ type iDescribeAffectedAssetsRequest interface {
 }
 
 type DescribeAffectedAssetsRequest struct {
-	// The number of the page to return.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	Current *string `json:"Current,omitempty" xml:"Current,omitempty"`
-	// The severity. Separate multiple severities with commas (,). Valid values:
+	// The severity level. Separate multiple values with commas (,). Valid values:
 	//
-	// 	- serious
+	// - serious: urgent
 	//
-	// 	- suspicious
+	// - suspicious: suspicious
 	//
-	// 	- remind
+	// - remind: reminder.
 	//
 	// example:
 	//
 	// serious,suspicious,remind
 	Levels *string `json:"Levels,omitempty" xml:"Levels,omitempty"`
-	// The number of entries to return on each page. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+	// The maximum number of entries per page in a paginated query. Default value: 20. If this parameter is left empty, 20 entries are returned.
 	//
-	// > We recommend that you do not leave this parameter empty.
+	// >Do not leave PageSize empty.
 	//
 	// example:
 	//

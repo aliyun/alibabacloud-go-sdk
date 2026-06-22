@@ -16,9 +16,9 @@ type iListAssetSelectionSelectedTargetResponseBody interface {
 }
 
 type ListAssetSelectionSelectedTargetResponseBody struct {
-	// The data returned.
+	// The data details.
 	Data []*ListAssetSelectionSelectedTargetResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The request ID.
+	// The request ID. Alibaba Cloud generates a unique identifier for each API request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -66,13 +66,13 @@ func (s *ListAssetSelectionSelectedTargetResponseBody) Validate() error {
 }
 
 type ListAssetSelectionSelectedTargetResponseBodyData struct {
-	// The ID of the asset.
+	// The asset ID. When selecting by machine, the value is the UUID of the machine. When selecting by group, the value is the group ID. When selecting by VPC, the value is the VPC ID.
 	//
 	// example:
 	//
 	// 30****
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
-	// The name of the asset.
+	// The asset name.
 	//
 	// example:
 	//

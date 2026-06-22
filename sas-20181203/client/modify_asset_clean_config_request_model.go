@@ -14,7 +14,7 @@ type iModifyAssetCleanConfigRequest interface {
 }
 
 type ModifyAssetCleanConfigRequest struct {
-	// The asset cleanup configurations.
+	// The list of asset cleanup configurations.
 	AssetCleanConfigs []*ModifyAssetCleanConfigRequestAssetCleanConfigs `json:"AssetCleanConfigs,omitempty" xml:"AssetCleanConfigs,omitempty" type:"Repeated"`
 }
 
@@ -49,25 +49,25 @@ func (s *ModifyAssetCleanConfigRequest) Validate() error {
 }
 
 type ModifyAssetCleanConfigRequestAssetCleanConfigs struct {
-	// The number of days before hosts whose provider cannot be identified are automatically cleaned after they enter the offline state. Valid value: an integer that ranges from 1 to 30.
+	// The number of offline days after which non-Alibaba Cloud hosts are automatically cleaned up. Valid values: integers from 1 to 30.
 	//
 	// example:
 	//
 	// 7
 	CleanDays *int32 `json:"CleanDays,omitempty" xml:"CleanDays,omitempty"`
-	// Specifies whether to enable the feature of cleaning the offline hosts whose provider cannot be identified. Valid values:
+	// Specifies whether to enable automatic cleanup of offline non-Alibaba Cloud hosts. Valid values:
 	//
-	// 	- **0**: disables the feature.
+	// - **0**: Disabled.
 	//
-	// 	- **1**: enables the feature.
+	// - **1**: Enabled.
 	//
 	// example:
 	//
 	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of hosts that you want to clean.
+	// The type of host to clean up. Valid values:
 	//
-	// Set the value to **1**, which indicates hosts whose provider cannot be identified.
+	// - **1**: non-Alibaba Cloud host.
 	//
 	// example:
 	//

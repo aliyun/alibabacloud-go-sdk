@@ -22,13 +22,13 @@ type iUpdateImageEventOperationRequest interface {
 }
 
 type UpdateImageEventOperationRequest struct {
-	// The rule conditions. Specify a value in the JSON format. You can specify the following keys:
+	// The rule conditions. The value is in JSON format. The following keys are supported:
 	//
-	// 	- **condition**: the matching condition.
+	// - **condition**: the matching condition.
 	//
-	// 	- **type**: the matching type.
+	// - **type**: the matching type.
 	//
-	// 	- **value**: the matching value.
+	// - **value**: the matching value.
 	//
 	// example:
 	//
@@ -36,33 +36,37 @@ type UpdateImageEventOperationRequest struct {
 	Conditions *string `json:"Conditions,omitempty" xml:"Conditions,omitempty"`
 	// The ID of the alert handling rule.
 	//
-	// > You can call the [DescribeImageEventOperationPage](~~DescribeImageEventOperationPage~~) operation to query the ID.
+	// > You can call [DescribeImageEventOperationPage](~~DescribeImageEventOperationPage~~) to obtain this parameter.
 	//
 	// example:
 	//
 	// 814163
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The remarks that you want to add.
+	// The remarks to add.
 	//
 	// example:
 	//
 	// test
 	Note *string `json:"Note,omitempty" xml:"Note,omitempty"`
-	// The application scope of the rule. The value is in the JSON format. Valid values:
+	// The rule scope. The value is in JSON format. The following keys are supported:
 	//
-	// 	- **type**
+	// - **type**: the scope type.
 	//
-	// 	- **value**
+	// - **value**: the scope value.
+	//
+	// > This parameter and Source cannot both be empty. If Source is set to agentless, this parameter does not take effect.
 	//
 	// example:
 	//
 	// {\\"type\\": \\"repo\\", \\"value\\": \\"test-aaa/shenzhen-repo-01\\"}
 	Scenarios *string `json:"Scenarios,omitempty" xml:"Scenarios,omitempty"`
-	// The source of the whitelist. Valid values:
+	// The whitelist source. Valid values:
 	//
-	// 	- **image**: image.
+	// - **image**: image.
 	//
-	// 	- **agentless**: agentless detection.
+	// - **agentless**: agentless detection.
+	//
+	// > This parameter and Scenarios cannot both be empty. If this parameter is set to agentless, the Scenarios parameter does not take effect.
 	//
 	// example:
 	//

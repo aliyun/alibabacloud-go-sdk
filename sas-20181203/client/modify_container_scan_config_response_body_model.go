@@ -18,11 +18,11 @@ type iModifyContainerScanConfigResponseBody interface {
 }
 
 type ModifyContainerScanConfigResponseBody struct {
-	// Indicates whether the request was successful. Valid values:
+	// The processing result.
 	//
-	// 	- **true**
+	// - **true**: Succeeded.
 	//
-	// 	- **false**
+	// - **false**: Failed.
 	//
 	// example:
 	//

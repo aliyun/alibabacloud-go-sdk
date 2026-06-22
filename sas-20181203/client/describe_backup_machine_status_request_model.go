@@ -18,9 +18,9 @@ type iDescribeBackupMachineStatusRequest interface {
 }
 
 type DescribeBackupMachineStatusRequest struct {
-	// The ID of the anti-ransomware policy.
+	// The ID of the anti-ransomware backup policy.
 	//
-	// >  You can call the [DescribeBackupPolicies](~~DescribeBackupPolicies~~) operation to query the IDs of anti-ransomware policies.
+	// >You can call the [DescribeBackupPolicies](~~DescribeBackupPolicies~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -28,19 +28,19 @@ type DescribeBackupMachineStatusRequest struct {
 	//
 	// 123
 	PolicyId *int64 `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	// The version of the anti-ransomware policy. Valid values:
+	// The version of the protection policy. Valid values:
 	//
-	// 	- **1.0.0**
+	// - **1.0.0**: The version of the protection policy is 1.0.0.
 	//
-	// 	- **2.0.0**
+	// - **2.0.0**: The version of the protection policy is 2.0.0.
 	//
 	// example:
 	//
 	// 2.0.0
 	PolicyVersion *string `json:"PolicyVersion,omitempty" xml:"PolicyVersion,omitempty"`
-	// The UUID of the server.
+	// The UUID of the server to query.
 	//
-	// >  You can call the [DescribeBackupPolicy](~~DescribeBackupPolicy~~) operation to query the UUIDs of servers.
+	// >You can call the [DescribeBackupPolicy](~~DescribeBackupPolicy~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//

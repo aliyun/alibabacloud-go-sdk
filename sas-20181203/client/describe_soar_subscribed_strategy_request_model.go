@@ -16,7 +16,7 @@ type iDescribeSoarSubscribedStrategyRequest interface {
 }
 
 type DescribeSoarSubscribedStrategyRequest struct {
-	// The page number. Pages start from page 1.
+	// The page number.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DescribeSoarSubscribedStrategyRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page in a paged query.
 	//
 	// This parameter is required.
 	//

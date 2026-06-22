@@ -16,13 +16,13 @@ type iGetClusterSuspEventStatisticsResponseBody interface {
 }
 
 type GetClusterSuspEventStatisticsResponseBody struct {
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The request ID. Alibaba Cloud generates a unique identifier for each API request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// ACF97412-FD09-4D1F-994F-34DF12BR****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of alerts by risk level.
+	// The number of alerts by severity level.
 	SuspStatistics *GetClusterSuspEventStatisticsResponseBodySuspStatistics `json:"SuspStatistics,omitempty" xml:"SuspStatistics,omitempty" type:"Struct"`
 }
 
@@ -62,19 +62,19 @@ func (s *GetClusterSuspEventStatisticsResponseBody) Validate() error {
 }
 
 type GetClusterSuspEventStatisticsResponseBodySuspStatistics struct {
-	// The number of alerts whose Emergency level is Reminder.
+	// The number of alerts with the reminder severity level.
 	//
 	// example:
 	//
 	// 1
 	Remind *int32 `json:"Remind,omitempty" xml:"Remind,omitempty"`
-	// The number of alerts whose Emergency level is Urgent.
+	// The number of alerts with the urgent severity level.
 	//
 	// example:
 	//
 	// 1
 	Serious *int32 `json:"Serious,omitempty" xml:"Serious,omitempty"`
-	// The number of alerts whose Emergency level is Suspicious.
+	// The number of alerts with the suspicious severity level.
 	//
 	// example:
 	//

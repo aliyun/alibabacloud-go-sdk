@@ -16,7 +16,7 @@ type iDescribeExcludeSystemPathRequest interface {
 }
 
 type DescribeExcludeSystemPathRequest struct {
-	// The number of the page to return. Default value: 1.
+	// The page number of the page to return. Default value: 1, which indicates that the first page is returned.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DescribeExcludeSystemPathRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries to return on each page.
+	// The maximum number of entries to return on each page when paging is used for a paged query.
 	//
 	// This parameter is required.
 	//

@@ -14,7 +14,7 @@ type iMarkMonitorAccountsRequest interface {
 }
 
 type MarkMonitorAccountsRequest struct {
-	// The IDs of the members.
+	// The list of member account IDs.
 	//
 	// This parameter is required.
 	//

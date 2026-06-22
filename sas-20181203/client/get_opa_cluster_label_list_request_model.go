@@ -22,7 +22,7 @@ type iGetOpaClusterLabelListRequest interface {
 type GetOpaClusterLabelListRequest struct {
 	// The ID of the cluster to which the container belongs.
 	//
-	// >  You can call the [DescribeGroupedContainerInstances](https://help.aliyun.com/document_detail/182997.html) operation to query the IDs of clusters.
+	// > You can call the [DescribeGroupedContainerInstances](https://help.aliyun.com/document_detail/182997.html) operation to query the IDs of clusters.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type GetOpaClusterLabelListRequest struct {
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The number of entries per page. Default value: 200. If you leave the PageSize parameter empty, 200 entries are returned by default. Maximum value: 200.
 	//
-	// >  We recommend that you do not leave this parameter empty.
+	// > We recommend that you do not leave this parameter empty.
 	//
 	// example:
 	//

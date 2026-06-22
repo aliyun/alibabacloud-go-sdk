@@ -16,21 +16,22 @@ type iGetSensitiveDefineRuleConfigRequest interface {
 }
 
 type GetSensitiveDefineRuleConfigRequest struct {
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language type for the request and response. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese.
 	//
-	// 	- **en**: English.
+	// - **zh**: Chinese
+	//
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The source of the check rules. Valid values:
+	// The source of the sensitive file check item. Valid values:
 	//
-	// 	- **image**: image.
+	// - **image**: image
 	//
-	// 	- **agentless**: agentless detection.
+	// - **agentless**: agentless.
 	//
 	// example:
 	//

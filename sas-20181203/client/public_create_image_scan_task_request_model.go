@@ -30,61 +30,61 @@ type iPublicCreateImageScanTaskRequest interface {
 }
 
 type PublicCreateImageScanTaskRequest struct {
-	// The SHA-256 value of the image digest. Separate multiple SHA-256 values with commas (,).
+	// The SHA256 digest values of the images. Separate multiple SHA256 values with commas (,).
 	//
 	// example:
 	//
 	// 6a5e103187b31a94592a47a5858617f7a6c
 	Digests *string `json:"Digests,omitempty" xml:"Digests,omitempty"`
-	// The ID of the Container Registry instance in which the image repository is created. Separate multiple IDs with commas (,).
+	// The IDs of the Container Registry (ACR) instances. Separate multiple IDs with commas (,).
 	//
 	// example:
 	//
 	// i-uf6j8vq9l4r5ntht****
 	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
-	// The region ID of the image. Separate multiple IDs with commas (,).
+	// The region IDs of the images. Separate multiple region IDs with commas (,).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionIds *string `json:"RegionIds,omitempty" xml:"RegionIds,omitempty"`
-	// The type of the image repository. Separate multiple types with commas (,). Valid values:
+	// The types of image registries. Separate multiple types with commas (,). Valid values:
 	//
-	// 	- **acr**
+	// - **acr**
 	//
-	// 	- **harbor**
+	// - **harbor**
 	//
-	// 	- **quay**
+	// - **quay**.
 	//
 	// example:
 	//
 	// acr
 	RegistryTypes *string `json:"RegistryTypes,omitempty" xml:"RegistryTypes,omitempty"`
-	// The ID of the image repository. Separate multiple IDs with commas (,).
+	// The IDs of the image registries. Separate multiple IDs with commas (,).
 	//
 	// example:
 	//
 	// crr-vridcl4****
 	RepoIds *string `json:"RepoIds,omitempty" xml:"RepoIds,omitempty"`
-	// The name of the image repository. Separate multiple names with commas (,).
+	// The names of the image registries. Separate multiple names with commas (,).
 	//
 	// example:
 	//
 	// centos
 	RepoNames *string `json:"RepoNames,omitempty" xml:"RepoNames,omitempty"`
-	// The namespace to which the image repository belongs. Separate multiple namespaces with commas (,).
+	// The namespaces of the image registries. Separate multiple namespaces with commas (,).
 	//
 	// example:
 	//
 	// hanghai-namespace
 	RepoNamespaces *string `json:"RepoNamespaces,omitempty" xml:"RepoNamespaces,omitempty"`
-	// The source IP address of the request.
+	// The IP address of the access source.
 	//
 	// example:
 	//
 	// 192.168..XX.XX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The tag that is added to the image. Separate multiple tags with commas (,).
+	// The tags of the images. Separate multiple tags with commas (,).
 	//
 	// example:
 	//

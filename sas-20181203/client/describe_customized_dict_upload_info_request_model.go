@@ -14,7 +14,7 @@ type iDescribeCustomizedDictUploadInfoRequest interface {
 }
 
 type DescribeCustomizedDictUploadInfoRequest struct {
-	// The source IP address.
+	// The IP address of the access source.
 	//
 	// example:
 	//

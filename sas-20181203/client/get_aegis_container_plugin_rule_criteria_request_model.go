@@ -16,17 +16,17 @@ type iGetAegisContainerPluginRuleCriteriaRequest interface {
 }
 
 type GetAegisContainerPluginRuleCriteriaRequest struct {
-	// The language of the content within the request and response. Valid values:
+	// The language type for requesting and receiving messages. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The value of the search condition.
+	// The matching condition value of the plugin.
 	//
 	// example:
 	//

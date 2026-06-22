@@ -14,6 +14,15 @@ type iDescribeClientProblemTypeRequest interface {
 }
 
 type DescribeClientProblemTypeRequest struct {
+	// The language type for the request and response messages. Default value: **zh**. Valid values:
+	//
+	// - **zh**: Chinese
+	//
+	// - **en**: English.
+	//
+	// example:
+	//
+	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 

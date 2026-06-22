@@ -28,9 +28,9 @@ type ModifyImageFixCycleConfigRequest struct {
 	ImageFixCycle *int32 `json:"ImageFixCycle,omitempty" xml:"ImageFixCycle,omitempty"`
 	// Specifies whether to enable the schedule image fix.
 	//
-	// 	- **on**: enable
+	// - **on**: enable
 	//
-	// 	- **off**: disable
+	// - **off**: disable
 	//
 	// example:
 	//
@@ -38,9 +38,9 @@ type ModifyImageFixCycleConfigRequest struct {
 	ImageFixSwitch *string `json:"ImageFixSwitch,omitempty" xml:"ImageFixSwitch,omitempty"`
 	// The range of the scheduled fix. The value of this parameter is in the JSON format and contains the following fields:
 	//
-	// 	- **type**: The type of the image. The value is fixed to repo.
+	// - **type**: The type of the image. The value is fixed to repo.
 	//
-	// 	- **target**: The content of the image. The value is in the format of Namespace/Image repository.
+	// - **target**: The content of the image. The value is in the format of Namespace/Image repository.
 	//
 	// example:
 	//

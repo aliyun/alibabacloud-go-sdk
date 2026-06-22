@@ -22,23 +22,23 @@ type iVerifyCheckCustomConfigRequest interface {
 }
 
 type VerifyCheckCustomConfigRequest struct {
-	// Check item ID.
+	// The ID of the check item.
 	//
 	// example:
 	//
 	// 76
 	CheckId *int64 `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
-	// Custom check item to validate input parameters.
+	// The input parameters for custom check item validation.
 	CustomCheckConfig *VerifyCheckCustomConfigRequestCustomCheckConfig `json:"CustomCheckConfig,omitempty" xml:"CustomCheckConfig,omitempty" type:"Struct"`
-	// List of custom configuration items for the check item.
+	// The list of custom parameter configuration items for the check item.
 	CustomConfigs []*VerifyCheckCustomConfigRequestCustomConfigs `json:"CustomConfigs,omitempty" xml:"CustomConfigs,omitempty" type:"Repeated"`
-	// Repair parameters supported by the check item\\"s repair function.
+	// The repair parameters supported by the repair feature of the check item.
 	RepairConfigs []*VerifyCheckCustomConfigRequestRepairConfigs `json:"RepairConfigs,omitempty" xml:"RepairConfigs,omitempty" type:"Repeated"`
-	// Situation Awareness parameter validation types:
+	// The validation type for Threat Detection Service parameters. Valid values:
 	//
-	// - **REPAIR_CONFIG**: Repair and custom parameter validation (default)
+	// - **REPAIR_CONFIG**: repair and custom parameter validation (default).
 	//
-	// - **CHECK_ITEM_CONFIG**: Custom check item validation
+	// - **CHECK_ITEM_CONFIG**: custom check item validation.
 	//
 	// example:
 	//
@@ -127,53 +127,53 @@ func (s *VerifyCheckCustomConfigRequest) Validate() error {
 }
 
 type VerifyCheckCustomConfigRequestCustomCheckConfig struct {
-	// Define rules for custom inspection items.
+	// The definition rule of the custom check item.
 	//
 	// example:
 	//
 	// {"AssociatedData":{"ToDataList":[{"DataName":"ACS_ECS_Instance","PropertyPath":"InstanceId","FromPropertyPath":"InstanceId"}]},"MatchProperty":{"Operator":"AND","MatchProperties":[{"DataName":"ACS_ECS_Disk","PropertyPath":"DiskId","MatchOperator":"EQ","MatchPropertyValue":"testId"}]}}
 	CheckRule *string `json:"CheckRule,omitempty" xml:"CheckRule,omitempty"`
-	// Asset instance that requires testing rules
+	// The asset instance on which you want to test the rule.
 	CloudAssetInstance *VerifyCheckCustomConfigRequestCustomCheckConfigCloudAssetInstance `json:"CloudAssetInstance,omitempty" xml:"CloudAssetInstance,omitempty" type:"Struct"`
-	// Asset subtype of the cloud product
+	// The asset subtype of the cloud service.
 	//
 	// example:
 	//
 	// DISK
 	InstanceSubType *string `json:"InstanceSubType,omitempty" xml:"InstanceSubType,omitempty"`
-	// Asset types of cloud products. Values:
+	// The asset type of the cloud service. Valid values:
 	//
-	// - **ECS**: Elastic Compute Service
+	// - **ECS**: server
 	//
-	// - **SLB**: Server Load Balancer
+	// - **SLB**: load balancing
 	//
-	// - **RDS**: Relational Database Service
+	// - **RDS**: ApsaraDB RDS database
 	//
-	// - **MONGODB**: MongoDB Database
+	// - **MONGODB**: ApsaraDB for MongoDB database
 	//
-	// - **KVSTORE**: Redis Database
+	// - **KVSTORE**: ApsaraDB for Redis database
 	//
-	// - **ACR**: Container Registry
+	// - **ACR**: ACR
 	//
 	// - **CSK**: CSK
 	//
-	// - **VPC**: Virtual Private Cloud
+	// - **VPC**: VPC
 	//
-	// - **ACTIONTRAIL**: Action Trail
+	// - **ACTIONTRAIL**: ActionTrail
 	//
-	// - **CDN**: Content Delivery Network
+	// - **CDN**: CDN
 	//
-	// - **CAS**: Digital Certificate Management Service [formerly SSL Certificates]
+	// - **CAS**: Certificate Management Service (formerly SSL Certificates Service)
 	//
-	// - **RDC**: DevOps
+	// - **RDC**: Apsara Devops
 	//
-	// - **RAM**: Resource Access Management
+	// - **RAM**: RAM
 	//
-	// - **DDOS**: Distributed Denial of Service
+	// - **DDOS**: distributed deny of service
 	//
-	// - **WAF**: Web Application Firewall
+	// - **WAF**: WAF
 	//
-	// - **OSS**: Object Storage Service
+	// - **OSS**: access control
 	//
 	// - **POLARDB**: POLARDB
 	//
@@ -181,17 +181,17 @@ type VerifyCheckCustomConfigRequestCustomCheckConfig struct {
 	//
 	// - **MSE**: MSE
 	//
-	// - **NAS**: Network Attached Storage
+	// - **NAS**: NAS
 	//
-	// - **SDDP**: Sensitive Data Discovery and Protection
+	// - **SDDP**: SDDP
 	//
-	// - **EIP**: Elastic IP
+	// - **EIP**: EIP.
 	//
 	// example:
 	//
 	// ECS
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// Cloud asset vendor. Values:
+	// The cloud asset vendor. Valid values:
 	//
 	// - **ALIYUN**: Alibaba Cloud
 	//
@@ -199,9 +199,9 @@ type VerifyCheckCustomConfigRequestCustomCheckConfig struct {
 	//
 	// - **HUAWEICLOUD**: Huawei Cloud
 	//
-	// - **Azure**: Microsoft
+	// - **Azure**: Microsoft Azure
 	//
-	// - **AWS**: Amazon Web Services (AWS)
+	// - **AWS**: Amazon Web Services (AWS).
 	//
 	// example:
 	//
@@ -272,7 +272,7 @@ func (s *VerifyCheckCustomConfigRequestCustomCheckConfig) Validate() error {
 }
 
 type VerifyCheckCustomConfigRequestCustomCheckConfigCloudAssetInstance struct {
-	// Instance ID of the asset.
+	// The instance ID of the asset.
 	//
 	// example:
 	//
@@ -317,19 +317,19 @@ func (s *VerifyCheckCustomConfigRequestCustomCheckConfigCloudAssetInstance) Vali
 }
 
 type VerifyCheckCustomConfigRequestCustomConfigs struct {
-	// Name of the custom configuration item for the check item, unique within the same check item.
+	// The name of the custom configuration item for the check item. The name is unique within the check item.
 	//
 	// example:
 	//
 	// IPList
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Operation type for the custom configuration item of the check item. Only pass DELETE when deleting; no need to pass for creation or update.
+	// The operation type of the custom configuration item for the check item. Set this parameter to DELETE only for deletion operations. You do not need to specify this parameter for creation or update operations.
 	//
 	// example:
 	//
 	// DELETE
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
-	// User-configured value string for the custom configuration item of the check item.
+	// The user-configured value string of the custom configuration item for the check item.
 	//
 	// example:
 	//
@@ -377,25 +377,25 @@ func (s *VerifyCheckCustomConfigRequestCustomConfigs) Validate() error {
 }
 
 type VerifyCheckCustomConfigRequestRepairConfigs struct {
-	// ID of the repair process during the repair.
+	// The ID of the repair flow that corresponds to the repair operation.
 	//
 	// example:
 	//
 	// 7fec0a3395b345c18f108ffc9fc0****
 	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
-	// Name of the repair parameter for the check item, unique within the same check item.
+	// The name of the repair parameter for the check item. The name is unique within the check item.
 	//
 	// example:
 	//
 	// IPLists
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Operation type for the custom configuration item of the check item. Only pass DELETE when deleting; no need to pass for creation or update.
+	// The operation type of the custom configuration item for the check item. Set this parameter to DELETE only for deletion operations. You do not need to specify this parameter for creation or update operations.
 	//
 	// example:
 	//
 	// DELETE
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
-	// User-configured value string for the repair parameter of the check item.
+	// The user-configured value string of the repair configuration item for the check item.
 	//
 	// example:
 	//

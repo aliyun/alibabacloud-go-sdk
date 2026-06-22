@@ -18,9 +18,9 @@ type iModifySasContainerWebDefenseRuleRequest interface {
 }
 
 type ModifySasContainerWebDefenseRuleRequest struct {
-	// The paths that are protected.
+	// The list of defense paths for the rule.
 	PathConfDTOList []*ModifySasContainerWebDefenseRuleRequestPathConfDTOList `json:"PathConfDTOList,omitempty" xml:"PathConfDTOList,omitempty" type:"Repeated"`
-	// The ID of the rule.
+	// The rule ID.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type ModifySasContainerWebDefenseRuleRequest struct {
 	//
 	// 200634
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The name of the rule.
+	// The rule name.
 	//
 	// example:
 	//
@@ -85,17 +85,17 @@ func (s *ModifySasContainerWebDefenseRuleRequest) Validate() error {
 }
 
 type ModifySasContainerWebDefenseRuleRequestPathConfDTOList struct {
-	// The backup paths.
+	// The backup path.
 	//
 	// example:
 	//
 	// /tmp/test
 	BackupPath *string `json:"BackupPath,omitempty" xml:"BackupPath,omitempty"`
-	// The prevention mode. Valid values:
+	// The action to perform. Valid values:
 	//
-	// 	- **block**
+	// - **block**: Block.
 	//
-	// 	- **audit**
+	// - **audit**: Alert.
 	//
 	// This parameter is required.
 	//
@@ -103,7 +103,7 @@ type ModifySasContainerWebDefenseRuleRequestPathConfDTOList struct {
 	//
 	// audit
 	DefenseMode *string `json:"DefenseMode,omitempty" xml:"DefenseMode,omitempty"`
-	// The path that is protected.
+	// The defense path.
 	//
 	// This parameter is required.
 	//
@@ -111,29 +111,29 @@ type ModifySasContainerWebDefenseRuleRequestPathConfDTOList struct {
 	//
 	// /test/home/
 	DefensePath *string `json:"DefensePath,omitempty" xml:"DefensePath,omitempty"`
-	// The files that are excluded.
+	// The excluded file.
 	//
 	// example:
 	//
 	// /usr/test
 	ExcludeFile *string `json:"ExcludeFile,omitempty" xml:"ExcludeFile,omitempty"`
-	// The paths to the files that are excluded.
+	// The excluded file path.
 	//
 	// example:
 	//
 	// /test/home/qq
 	ExcludeFilePath *string `json:"ExcludeFilePath,omitempty" xml:"ExcludeFilePath,omitempty"`
-	// The types of the files that are excluded.
+	// The excluded file type.
 	//
 	// example:
 	//
 	// php
 	ExcludeFileType *string `json:"ExcludeFileType,omitempty" xml:"ExcludeFileType,omitempty"`
-	// The protection mode. Valid values:
+	// The Defense mode. Valid values:
 	//
-	// 	- **0**: basic mode (whitelist)
+	// - **0**: Basic pattern (whitelist).
 	//
-	// 	- **1**: complex mode (blacklist)
+	// - **1**: Complex pattern (blacklist).
 	//
 	// This parameter is required.
 	//
@@ -141,13 +141,13 @@ type ModifySasContainerWebDefenseRuleRequestPathConfDTOList struct {
 	//
 	// 0
 	GuardType *int32 `json:"GuardType,omitempty" xml:"GuardType,omitempty"`
-	// The files that are included.
+	// The included file.
 	//
 	// example:
 	//
 	// /home/admin/test
 	IncludeFile *string `json:"IncludeFile,omitempty" xml:"IncludeFile,omitempty"`
-	// The type of the files that are included.
+	// The included file type.
 	//
 	// example:
 	//
@@ -159,7 +159,7 @@ type ModifySasContainerWebDefenseRuleRequestPathConfDTOList struct {
 	//
 	// 12345678
 	PathConfId *int64 `json:"PathConfId,omitempty" xml:"PathConfId,omitempty"`
-	// The processes that are added to the whitelist.
+	// The list of whitelisted processes.
 	ProcessPathList []*string `json:"ProcessPathList,omitempty" xml:"ProcessPathList,omitempty" type:"Repeated"`
 }
 

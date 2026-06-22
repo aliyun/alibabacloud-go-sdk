@@ -18,11 +18,11 @@ type iDescribeUniBackupDatabaseResponseBody interface {
 }
 
 type DescribeUniBackupDatabaseResponseBody struct {
-	// An array that consists of the information about the databases.
+	// The list of database details.
 	DatabaseList []*DescribeUniBackupDatabaseResponseBodyDatabaseList `json:"DatabaseList,omitempty" xml:"DatabaseList,omitempty" type:"Repeated"`
 	// The pagination information.
 	PageInfo *DescribeUniBackupDatabaseResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The request ID. Alibaba Cloud generates a unique identifier for each request. You can use the request ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -84,25 +84,25 @@ func (s *DescribeUniBackupDatabaseResponseBody) Validate() error {
 }
 
 type DescribeUniBackupDatabaseResponseBodyDatabaseList struct {
-	// The status of the anti-ransomware agent. Valid values:
+	// The status of the database client agent. Valid values:
 	//
-	// 	- **UNKNOWN**: unknown
+	// - **UNKNOWN**: unknown.
 	//
-	// 	- **INSTALLED**: installed
+	// - **INSTALLED**: installed.
 	//
-	// 	- **INSTALL_FAILED**: installation failed
+	// - **INSTALL_FAILED**: installation failed.
 	//
-	// 	- **UNINSTALL_FAILED**: uninstallation failed
+	// - **UNINSTALL_FAILED**: uninstallation failed.
 	//
 	// example:
 	//
 	// INSTALLED
 	AgentStatus *string `json:"AgentStatus,omitempty" xml:"AgentStatus,omitempty"`
-	// The service from which the database is created. Valid values:
+	// The method used to create the database. Valid values:
 	//
-	// 	- **HBR**: HBR
+	// - **HBR**: Cloud Backup.
 	//
-	// 	- **AEGIS**: Security Center
+	// - **AEGIS**: Security Center.
 	//
 	// example:
 	//
@@ -116,23 +116,23 @@ type DescribeUniBackupDatabaseResponseBodyDatabaseList struct {
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
 	// The type of the database. Valid values:
 	//
-	// 	- **MYSQL**
+	// - **MYSQL**
 	//
-	// 	- **MSSQL**
+	// - **MSSQL**
 	//
-	// 	- **Oracle**
+	// - **Oracle**.
 	//
 	// example:
 	//
 	// MYSQL
 	DatabaseType *string `json:"DatabaseType,omitempty" xml:"DatabaseType,omitempty"`
-	// The version of the database engine.
+	// The version of the database.
 	//
 	// example:
 	//
 	// 12.0.4100.1
 	DatabaseVersion *string `json:"DatabaseVersion,omitempty" xml:"DatabaseVersion,omitempty"`
-	// The ID of the server.
+	// The instance ID of the server.
 	//
 	// example:
 	//
@@ -144,23 +144,23 @@ type DescribeUniBackupDatabaseResponseBodyDatabaseList struct {
 	//
 	// sql-test-001
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The UUID of the Hybrid Backup Recovery (HBR) agent that is used to back up the data of the database.
+	// The unique identifier of the database backup client on the server.
 	//
 	// example:
 	//
 	// 85878b284df911ec800000163e19****
 	InstanceUuid *string `json:"InstanceUuid,omitempty" xml:"InstanceUuid,omitempty"`
-	// The ID of the anti-ransomware policy.
+	// The ID of the anti-ransomware backup policy for the database.
 	//
 	// example:
 	//
 	// 123
 	PolicyId *int64 `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	// The status of the ECS instance. Valid values:
+	// The instance status of the ECS instance. Valid values:
 	//
-	// 	- **Stopped**
+	// - **Stopped**: stopped.
 	//
-	// 	- **Running**
+	// - **Running**: running.
 	//
 	// example:
 	//
@@ -271,25 +271,25 @@ func (s *DescribeUniBackupDatabaseResponseBodyDatabaseList) Validate() error {
 }
 
 type DescribeUniBackupDatabaseResponseBodyPageInfo struct {
-	// The number of entries returned on the current page.
+	// The number of databases on the current page.
 	//
 	// example:
 	//
 	// 20
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The page number of the returned page.
+	// The page number of the current page in a paging query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries returned per page.
+	// The number of databases per page in a paging query.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of databases.
 	//
 	// example:
 	//

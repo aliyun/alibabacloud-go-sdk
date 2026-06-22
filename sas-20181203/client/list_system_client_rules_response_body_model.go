@@ -148,21 +148,21 @@ type ListSystemClientRulesResponseBodyRuleList struct {
 	//
 	// example:
 	//
-	// Initial entry
+	// 初始入口
 	AggregationName *string `json:"AggregationName,omitempty" xml:"AggregationName,omitempty"`
 	// The description of the system defense rule.
 	//
 	// example:
 	//
-	// Supports alerting or blocking of images that have high-risk vulnerabilities\\*\\*\\*\\*
+	// 支持告警或拦截存在高危漏洞的镜像在集****
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The type of the OS. Valid values:
 	//
-	// 	- **windows**: Windows
+	// - **windows**: Windows
 	//
-	// 	- **linux**: Linux
+	// - **linux**: Linux
 	//
-	// 	- **all**: all types
+	// - **all**: all types
 	//
 	// example:
 	//
@@ -180,13 +180,13 @@ type ListSystemClientRulesResponseBodyRuleList struct {
 	//
 	// example:
 	//
-	// Rule\\*\\*\\*\\*
+	// 规则****
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// The type of the system defense rule. Valid values:
 	//
-	// 	- **1**: alihips, process-specific defense
+	// - **1**: alihips, process-specific defense
 	//
-	// 	- **2**: alinet, network-specific defense
+	// - **2**: alinet, network-specific defense
 	//
 	// example:
 	//
@@ -194,9 +194,9 @@ type ListSystemClientRulesResponseBodyRuleList struct {
 	RuleType *int32 `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
 	// The status of the system defense rule. Valid values:
 	//
-	// 	- **online**: enabled
+	// - **online**: enabled
 	//
-	// 	- **offline**: disabled
+	// - **offline**: disabled
 	//
 	// example:
 	//
@@ -204,9 +204,9 @@ type ListSystemClientRulesResponseBodyRuleList struct {
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// Whether the current rule switch takes effect. Valid values:
 	//
-	// 	- **true**: enabled
+	// - **true**: enabled
 	//
-	// 	- **false**: disabled
+	// - **false**: disabled
 	//
 	// example:
 	//
@@ -342,7 +342,7 @@ type ListSystemClientRulesResponseBodyRuleListPolicies struct {
 	//
 	// example:
 	//
-	// System self-starting task\\*\\*\\*\\*
+	// 系统自启动任务****
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 }
 

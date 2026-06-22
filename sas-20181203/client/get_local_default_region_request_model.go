@@ -14,15 +14,15 @@ type iGetLocalDefaultRegionRequest interface {
 }
 
 type GetLocalDefaultRegionRequest struct {
-	// The cloud service provider. Valid values:
+	// The cloud asset vendor. Valid values:
 	//
-	// 	- **Tencent**: Tencent Cloud.
+	// - **Tencent**: Tencent Cloud
 	//
-	// 	- **HUAWEICLOUD**: Huawei Cloud.
+	// - **HUAWEICLOUD**: Huawei Cloud
 	//
-	// 	- **Azure**: Microsoft Azure.
+	// - **Azure**: Azure
 	//
-	// 	- **AWS**: Amazon Web Services (AWS).
+	// - **AWS**: AWS.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iDescribeHybridProxyPolicyRequest interface {
 }
 
 type DescribeHybridProxyPolicyRequest struct {
-	// The name of the proxy cluster. You can query the name of the proxy cluster in the Security Center console.
+	// The name of the proxy cluster. You can view the cluster name in the console.
 	//
 	// This parameter is required.
 	//

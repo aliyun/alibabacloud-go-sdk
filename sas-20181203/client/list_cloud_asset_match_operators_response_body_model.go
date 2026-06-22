@@ -18,7 +18,7 @@ type iListCloudAssetMatchOperatorsResponseBody interface {
 }
 
 type ListCloudAssetMatchOperatorsResponseBody struct {
-	// List of operator types
+	// The operator type.
 	MatchTypeOperators []*ListCloudAssetMatchOperatorsResponseBodyMatchTypeOperators `json:"MatchTypeOperators,omitempty" xml:"MatchTypeOperators,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -87,7 +87,7 @@ func (s *ListCloudAssetMatchOperatorsResponseBody) Validate() error {
 }
 
 type ListCloudAssetMatchOperatorsResponseBodyMatchTypeOperators struct {
-	// List of operators
+	// The list of operators.
 	MatchOperators []*ListCloudAssetMatchOperatorsResponseBodyMatchTypeOperatorsMatchOperators `json:"MatchOperators,omitempty" xml:"MatchOperators,omitempty" type:"Repeated"`
 	// The type used by the operator. Values:
 	//
@@ -379,7 +379,9 @@ type ListCloudAssetMatchOperatorsResponseBodyMatchTypeOperatorsMatchOperators st
 	//
 	// LIST_CONTAINS
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Operator display name. Values: - For LIST type:
+	// Operator display name. Values:
+	//
+	// - For LIST type:
 	//
 	// 1. Contains: includes
 	//
@@ -419,9 +421,9 @@ type ListCloudAssetMatchOperatorsResponseBodyMatchTypeOperatorsMatchOperators st
 	//
 	// 4. NotEquals: does not equal
 	//
-	// 5. >: greater than
+	// 5. `>`: greater than
 	//
-	// 6. >=: greater than or equal to
+	// 6. `>=`: greater than or equal to
 	//
 	// 7. <: less than
 	//
@@ -437,9 +439,9 @@ type ListCloudAssetMatchOperatorsResponseBodyMatchTypeOperatorsMatchOperators st
 	//
 	// 4. NotEquals: does not equal
 	//
-	// 5. >: greater than
+	// 5. `>`: greater than
 	//
-	// 6. >=: greater than or equal to
+	// 6. `>=`: greater than or equal to
 	//
 	// 7. <: less than
 	//
@@ -455,9 +457,9 @@ type ListCloudAssetMatchOperatorsResponseBodyMatchTypeOperatorsMatchOperators st
 	//
 	// 4. NotEquals: does not equal
 	//
-	// 5. >: greater than
+	// 5. `>`: greater than
 	//
-	// 6. >=: greater than or equal to
+	// 6. `>=`: greater than or equal to
 	//
 	// 7. <: less than
 	//
@@ -491,9 +493,9 @@ type ListCloudAssetMatchOperatorsResponseBodyMatchTypeOperatorsMatchOperators st
 	//
 	// 4. NotEquals: does not equal
 	//
-	// 5. >: greater than
+	// 5. `>`: greater than
 	//
-	// 6. >=: greater than or equal to
+	// 6. `>=`: greater than or equal to
 	//
 	// 7. <: less than
 	//

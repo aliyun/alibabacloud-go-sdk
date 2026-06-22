@@ -24,15 +24,15 @@ type UpdateJenkinsImageRegistryPersistenceDayRequest struct {
 	//
 	// 30
 	PersistenceDay *int32 `json:"PersistenceDay,omitempty" xml:"PersistenceDay,omitempty"`
-	// The ID of the image repository.
+	// The image repository ID.
 	//
-	// > You can call the [PageImageRegistry](~~PageImageRegistry~~) operation to query the IDs of image repositories.
+	// >You can call the [PageImageRegistry](~~PageImageRegistry~~) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// 25363
 	RegistryId *int64 `json:"RegistryId,omitempty" xml:"RegistryId,omitempty"`
-	// The source IP address of the request.
+	// The IP address of the access source.
 	//
 	// example:
 	//

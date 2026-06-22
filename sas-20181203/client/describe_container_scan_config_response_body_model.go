@@ -18,7 +18,7 @@ type iDescribeContainerScanConfigResponseBody interface {
 }
 
 type DescribeContainerScanConfigResponseBody struct {
-	// The response parameters.
+	// The returned data.
 	Data *DescribeContainerScanConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The HTTP status code.
 	//
@@ -79,19 +79,19 @@ func (s *DescribeContainerScanConfigResponseBody) Validate() error {
 }
 
 type DescribeContainerScanConfigResponseBodyData struct {
-	// The total number of container applications in the cluster.
+	// The total number of applications in the cluster.
 	//
 	// example:
 	//
 	// 100
 	AllCount *int32 `json:"AllCount,omitempty" xml:"AllCount,omitempty"`
-	// The names of the container applications.
+	// The container application name.
 	//
 	// example:
 	//
 	// [\\"alicloud-monitor-controller\\"]
 	AppNames *string `json:"AppNames,omitempty" xml:"AppNames,omitempty"`
-	// The number of selected container applications.
+	// The number of selected applications.
 	//
 	// example:
 	//
@@ -103,7 +103,7 @@ type DescribeContainerScanConfigResponseBodyData struct {
 	//
 	// c8ca91e0907d94efaba7fb0827eb9****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The name of the cluster.
+	// The cluster name.
 	//
 	// example:
 	//

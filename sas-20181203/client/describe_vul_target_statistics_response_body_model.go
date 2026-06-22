@@ -22,25 +22,25 @@ type iDescribeVulTargetStatisticsResponseBody interface {
 }
 
 type DescribeVulTargetStatisticsResponseBody struct {
-	// The page number.
+	// The page number of the current page when paging is used in a paged query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries per page.
+	// The maximum number of entries per page when paging is used in a paged query.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 23AD0BD2-8771-5647-819E-6BA51E212F80
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// An array that consists of the configurations of the vulnerability scan feature.
+	// The statistics of vulnerability configurations.
 	TargetStats []*DescribeVulTargetStatisticsResponseBodyTargetStats `json:"TargetStats,omitempty" xml:"TargetStats,omitempty" type:"Repeated"`
 	// The total number of entries returned.
 	//
@@ -117,29 +117,29 @@ func (s *DescribeVulTargetStatisticsResponseBody) Validate() error {
 }
 
 type DescribeVulTargetStatisticsResponseBodyTargetStats struct {
-	// An array that consists of available servers.
+	// The list of target servers for the assets.
 	Targets []*DescribeVulTargetStatisticsResponseBodyTargetStatsTargets `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Repeated"`
-	// The total number of servers.
+	// The total number of assets returned.
 	//
 	// example:
 	//
 	// 1
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The number of servers to which the configurations are applied.
+	// The number of servers on which the configuration takes effect.
 	//
 	// example:
 	//
 	// 1
 	UuidCount *int32 `json:"UuidCount,omitempty" xml:"UuidCount,omitempty"`
-	// The type of the vulnerability. Valid values:
+	// The type of vulnerability to query. Valid values:
 	//
-	// 	- cve: Linux software vulnerabilities
+	// - cve: Linux software vulnerability
 	//
-	// 	- sys: Windows system vulnerabilities
+	// - sys: Windows system vulnerability
 	//
-	// 	- cms: Web-CMS vulnerabilities
+	// - cms: Web-CMS vulnerability
 	//
-	// 	- emg: urgent vulnerabilities
+	// - emg: emergency vulnerability.
 	//
 	// example:
 	//
@@ -205,27 +205,27 @@ func (s *DescribeVulTargetStatisticsResponseBodyTargetStats) Validate() error {
 }
 
 type DescribeVulTargetStatisticsResponseBodyTargetStatsTargets struct {
-	// Indicates whether the configurations are applied to the server. Valid values:
+	// The type of configuration effect. Valid values:
 	//
-	// 	- **add**: yes
+	// - **add**: The configuration takes effect on the server.
 	//
-	// 	- **del**: no
+	// - **del**: The configuration does not take effect on the server.
 	//
 	// example:
 	//
 	// add
 	Flag *string `json:"Flag,omitempty" xml:"Flag,omitempty"`
-	// The group ID or UUID of the server to which the configurations are applied.
+	// The group ID or UUID of the asset on which the configuration takes effect.
 	//
 	// example:
 	//
 	// 0011ea53-738c-4bff-93be-ce6a1cc9****
 	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
-	// The condition by which the configurations are applied to the server. Valid values:
+	// The target type. Valid values:
 	//
-	// 	- **uuid**: the UUID of the server
+	// - **uuid**: asset.
 	//
-	// 	- **groupId**: the ID of the server group
+	// - **groupId**: server group.
 	//
 	// example:
 	//

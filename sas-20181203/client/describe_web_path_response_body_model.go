@@ -24,27 +24,27 @@ type iDescribeWebPathResponseBody interface {
 }
 
 type DescribeWebPathResponseBody struct {
-	// An array that consists of the paths to the web directories.
+	// The list of web paths.
 	ConfigList []*DescribeWebPathResponseBodyConfigList `json:"ConfigList,omitempty" xml:"ConfigList,omitempty" type:"Repeated"`
-	// The number of entries returned on the current page.
+	// The number of entries on the current page.
 	//
 	// example:
 	//
 	// 2
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The page number of the returned page.
+	// The page number of the current page in a paged query. Paging is used to display results.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries returned per page.
+	// The maximum number of entries per page in a paged query. Paging is used to display results.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The ID of the request. The China Chinese Cloud generates a unique identifier for each request, which can be used for troubleshooting and diagnostics.
 	//
 	// example:
 	//
@@ -134,19 +134,19 @@ func (s *DescribeWebPathResponseBody) Validate() error {
 }
 
 type DescribeWebPathResponseBodyConfigList struct {
-	// An array consisting of the servers on which the web directories are scanned.
+	// The list of servers on which the web directory takes effect.
 	TargetList []*DescribeWebPathResponseBodyConfigListTargetList `json:"TargetList,omitempty" xml:"TargetList,omitempty" type:"Repeated"`
-	// The path to the web directory.
+	// The web directory.
 	//
 	// example:
 	//
 	// /root/www****
 	WebPath *string `json:"WebPath,omitempty" xml:"WebPath,omitempty"`
-	// The path type of the web directory. Valid values:
+	// The type of the web path. Valid values:
 	//
-	// 	- **def**: automatically identified
+	// - **def**: automatically identified by the system.
 	//
-	// 	- **customize**: manually added
+	// - **customize**: manually added.
 	//
 	// example:
 	//
@@ -203,15 +203,15 @@ func (s *DescribeWebPathResponseBodyConfigList) Validate() error {
 }
 
 type DescribeWebPathResponseBodyConfigListTargetList struct {
-	// The object.
+	// The target object.
 	//
 	// example:
 	//
 	// 82048187-bb9b-4e19-8320-7b4ddb97****
 	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
-	// The object type. Valid values:
+	// The target type. Valid values:
 	//
-	// 	- **uuid**
+	// - **uuid**.
 	//
 	// example:
 	//

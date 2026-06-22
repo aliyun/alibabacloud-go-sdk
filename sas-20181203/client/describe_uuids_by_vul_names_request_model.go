@@ -42,23 +42,23 @@ type iDescribeUuidsByVulNamesRequest interface {
 }
 
 type DescribeUuidsByVulNamesRequest struct {
-	// Specifies whether the vulnerability is fixed. Valid values:
+	// Specifies whether the vulnerability has been handled. Valid values:
 	//
-	// 	- **y**: the vulnerability is fixed.
+	// - **y**: handled
 	//
-	// 	- **n**: the vulnerability is not fixed.
+	// - **n**: not handled.
 	//
 	// example:
 	//
 	// n
 	Dealed *string `json:"Dealed,omitempty" xml:"Dealed,omitempty"`
-	// The name of the search field that is used to query containers.
+	// The container search field name.
 	//
 	// example:
 	//
 	// namespace
 	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
-	// The value of the search field that is used to query containers.
+	// The container search field value.
 	//
 	// example:
 	//
@@ -70,83 +70,83 @@ type DescribeUuidsByVulNamesRequest struct {
 	//
 	// 11286014
 	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language type for the request and response messages. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The severity of the vulnerability. Separate multiple severities with commas (,). Valid values:
+	// The vulnerability level. Separate multiple levels with commas (,). Valid values:
 	//
-	// 	- **high**
+	// - **high**: high
 	//
-	// 	- **medium**
+	// - **medium**: medium
 	//
-	// 	- **low**
+	// - **low**: low.
 	//
 	// example:
 	//
 	// high,low
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The priority based on which the vulnerability is fixed. Separate multiple priorities with commas (,). Valid values:
+	// The priority level of vulnerability fixing. Separate multiple levels with commas (,). Valid values:
 	//
-	// 	- **asap**: high
+	// - **asap**: high
 	//
-	// 	- **later**: medium
+	// - **later**: medium
 	//
-	// 	- **nntf**: low
+	// - **nntf**: low.
 	//
 	// example:
 	//
 	// asap,later,nntf
 	Necessity *string `json:"Necessity,omitempty" xml:"Necessity,omitempty"`
-	// The remarks for the asset affected by the vulnerability. The value can be the private IP address, public IP address, or name of the asset. Fuzzy match is supported.
+	// The asset information for the vulnerability query. You can set this parameter to the asset name, public IP address, or private IP address. Fuzzy match is supported.
 	//
 	// example:
 	//
 	// 10.7.
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The tags that are used to search for the vulnerability.
+	// The tag for querying vulnerabilities.
 	//
 	// example:
 	//
 	// oval
 	SearchTags *string `json:"SearchTags,omitempty" xml:"SearchTags,omitempty"`
-	// The status of the vulnerability. Separate multiple states with commas (,). Valid values:
+	// The fix status of the vulnerability. Separate multiple statuses with commas (,). Valid values:
 	//
-	// 	- **1**: unfixed
+	// - **1**: unfixed
 	//
-	// 	- **2**: fix failed
+	// - **2**: fix failed.
 	//
 	// example:
 	//
-	// 1,4
+	// 1,2
 	StatusList *string `json:"StatusList,omitempty" xml:"StatusList,omitempty"`
-	// The tag of the vulnerability.
+	// The vulnerability tag.
 	//
 	// example:
 	//
 	// oval
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	// The type of the query condition. Valid values:
+	// The query type. Valid values:
 	//
-	// 	- **containerId**: the ID of the container
+	// - **containerId**: container ID
 	//
-	// 	- **uuid**: the ID of the asset
+	// - **uuid**: asset ID.
 	//
 	// example:
 	//
 	// uuid
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	// The type of the vulnerability. Valid values:
+	// The type of vulnerability to query. Valid values:
 	//
-	// 	- **cve**: Linux software vulnerability
+	// - **cve**: Linux software vulnerability
 	//
-	// 	- **sys**: Windows system vulnerability
+	// - **sys**: Windows system vulnerability.
 	//
 	// This parameter is required.
 	//
@@ -154,15 +154,15 @@ type DescribeUuidsByVulNamesRequest struct {
 	//
 	// cve
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The ID of the virtual private cloud (VPC) in which the vulnerability is detected. Separate multiple IDs with commas (,).
+	// The instance IDs of VPC-connected instances to query for vulnerabilities. Separate multiple instance IDs with commas (,).
 	//
 	// example:
 	//
 	// vpc-uf6ssrvbrwe37ekw****,vpc-bp1aevy8sofi8mh1q****
 	VpcInstanceIds *string `json:"VpcInstanceIds,omitempty" xml:"VpcInstanceIds,omitempty"`
-	// An array that consists of the names of vulnerabilities.
+	// The collection of vulnerability names.
 	//
-	// >  You can call the [DescribeGroupedVul](~~DescribeGroupedVul~~) operation to obtain the names of vulnerabilities.
+	// > You can call the [DescribeGroupedVul](~~DescribeGroupedVul~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	VulNames []*string `json:"VulNames,omitempty" xml:"VulNames,omitempty" type:"Repeated"`

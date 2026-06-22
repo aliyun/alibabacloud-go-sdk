@@ -18,9 +18,9 @@ type iDeleteSearchConditionRequest interface {
 }
 
 type DeleteSearchConditionRequest struct {
-	// The name of the frequently used search condition.
+	// The name of the saved search condition.
 	//
-	// >  You can call the [DescribeSearchCondition](~~DescribeSearchCondition~~) operation to query frequently used search conditions.
+	// > Call the [DescribeSearchCondition](~~DescribeSearchCondition~~) operation to obtain the name.
 	//
 	// This parameter is required.
 	//
@@ -28,17 +28,17 @@ type DeleteSearchConditionRequest struct {
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The source IP address of the request.
+	// The IP address of the access source.
 	//
 	// example:
 	//
 	// 19.12.XX.XX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The type of the asset. Default value: ecs. Valid values:
+	// The asset type. Default value: ecs. Valid values:
 	//
-	// 	- **ecs**: an Elastic Compute Service (ECS) instance.
+	// -  **ecs**: host asset
 	//
-	// 	- **cloud_product**: an Alibaba Cloud service.
+	// -  **cloud_product**: cloud service.
 	//
 	// example:
 	//

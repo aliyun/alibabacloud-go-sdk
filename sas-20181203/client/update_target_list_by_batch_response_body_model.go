@@ -14,7 +14,7 @@ type iUpdateTargetListByBatchResponseBody interface {
 }
 
 type UpdateTargetListByBatchResponseBody struct {
-	// The request ID.
+	// The ID of the request. The China value is a unique identifier that Alibaba Cloud generates for the request and can be used to troubleshoot issues.
 	//
 	// example:
 	//

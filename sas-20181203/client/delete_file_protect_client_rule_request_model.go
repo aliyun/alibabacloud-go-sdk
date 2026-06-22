@@ -26,24 +26,54 @@ type iDeleteFileProtectClientRuleRequest interface {
 }
 
 type DeleteFileProtectClientRuleRequest struct {
+	// The alert notification level. Valid values:
+	//
+	// - 0: no alert
+	//
+	// - 1: reminder
+	//
+	// - 2: suspicious
+	//
+	// - 3: high-risk.
+	//
 	// example:
 	//
 	// 0
-	AlertLevel    *int32   `json:"AlertLevel,omitempty" xml:"AlertLevel,omitempty"`
+	AlertLevel *int32 `json:"AlertLevel,omitempty" xml:"AlertLevel,omitempty"`
+	// The list of excluded policy IDs.
 	ExcludeIdList []*int64 `json:"ExcludeIdList,omitempty" xml:"ExcludeIdList,omitempty" type:"Repeated"`
-	IdList        []*int64 `json:"IdList,omitempty" xml:"IdList,omitempty" type:"Repeated"`
+	// The list of policy IDs.
+	IdList []*int64 `json:"IdList,omitempty" xml:"IdList,omitempty" type:"Repeated"`
+	// The type of the operating system. Valid values:
+	//
+	// - **windows**: Windows
+	//
+	// - **linux**: Linux.
+	//
 	// example:
 	//
 	// linux
 	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	// The action to take when the rule is triggered. Valid values:
+	//
+	// - **monitor**: Alert.
+	//
+	// - **block**: Block.
+	//
+	// - **pass**: Allow.
+	//
 	// example:
 	//
 	// pass
 	RuleAction *string `json:"RuleAction,omitempty" xml:"RuleAction,omitempty"`
+	// The name of the rule.
+	//
 	// example:
 	//
 	// text-001
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// Specifies whether to select all rules.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -14,7 +14,7 @@ type iOperateImageVulResponseBody interface {
 }
 
 type OperateImageVulResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

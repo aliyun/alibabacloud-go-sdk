@@ -84,7 +84,7 @@ type AddBaselineCheckWhiteRecordResponseBodyData struct {
 	//
 	// example:
 	//
-	// AutoTest
+	// 暂时忽略
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 	// The ID of the whitelist rule.
 	//

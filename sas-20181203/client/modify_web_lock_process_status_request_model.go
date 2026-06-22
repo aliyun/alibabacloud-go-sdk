@@ -22,35 +22,35 @@ type iModifyWebLockProcessStatusRequest interface {
 }
 
 type ModifyWebLockProcessStatusRequest struct {
-	// Specifies whether to change the status of the process on multiple servers on which the process runs at the same time. Valid values:
+	// The identity is simultaneous processing of servers that have the same process. Valid values:
 	//
-	// 	- **0**: no
+	// - **0**: Do not use simultaneous processing.
 	//
-	// 	- **1**: yes
+	// - **1**: Use simultaneous processing.
 	//
 	// example:
 	//
 	// 1
 	DealAll *int32 `json:"DealAll,omitempty" xml:"DealAll,omitempty"`
-	// The parameters required to change the status of multiple processes at a time. The value is in the JSON format.
+	// The operation parameters for batch setting the tamper-proofing process status. The value is in JSON format.
 	//
 	// example:
 	//
 	// [{"processPath":"/etc/test1","uuid":"0c1714dc-f7a3-4265-8364-7aa3fce8****"},{"processPath":"/etc/test2","uuid":"1cc45e7d-7698-4b2c-89d8-e8cba407****"}]
 	OperateInfo *string `json:"OperateInfo,omitempty" xml:"OperateInfo,omitempty"`
-	// The paths to the processes.
+	// The list of process paths.
 	ProcessPath []*string `json:"ProcessPath,omitempty" xml:"ProcessPath,omitempty" type:"Repeated"`
-	// The status of the process. Valid values:
+	// The status of the tamper-proofing process. Valid values:
 	//
-	// 	- **0**: cancels adding the process to the process whitelist
+	// - **0**: Remove from the whitelist.
 	//
-	// 	- **1**: adds the process to the process whitelist
+	// - **1**: Add to the whitelist.
 	//
 	// example:
 	//
 	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The UUID of the server.
+	// The UUID of the server for which you want to set the tamper-proofing process status.
 	//
 	// example:
 	//

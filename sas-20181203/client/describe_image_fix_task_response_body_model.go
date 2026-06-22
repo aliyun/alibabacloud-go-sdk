@@ -18,11 +18,11 @@ type iDescribeImageFixTaskResponseBody interface {
 }
 
 type DescribeImageFixTaskResponseBody struct {
-	// The tasks returned.
+	// The details of the image repair tasks.
 	BuildTasks []*DescribeImageFixTaskResponseBodyBuildTasks `json:"BuildTasks,omitempty" xml:"BuildTasks,omitempty" type:"Repeated"`
 	// The pagination information.
 	PageInfo *DescribeImageFixTaskResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	// The request ID.
+	// The request ID, which is a unique identifier that Alibaba Cloud generates for the request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -84,49 +84,49 @@ func (s *DescribeImageFixTaskResponseBody) Validate() error {
 }
 
 type DescribeImageFixTaskResponseBodyBuildTasks struct {
-	// The ID of the task.
+	// The ID of the image repair task.
 	//
 	// example:
 	//
 	// ivf-939536b5-c3ca-427b-8183-91007756
 	BuildTaskId *string `json:"BuildTaskId,omitempty" xml:"BuildTaskId,omitempty"`
-	// The timestamp when the task starts. Unit: milliseconds.
+	// The timestamp when the repair task started. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 2021-10-14 20:34:07
 	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	// The timestamp when the task ends. Unit: milliseconds.
+	// The timestamp when the repair task ended. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 2021-10-14 20:32:05
 	FixTime *string `json:"FixTime,omitempty" xml:"FixTime,omitempty"`
-	// The version of the image after image risks are fixed.
+	// The tag of the repaired image.
 	//
 	// example:
 	//
 	// redhat8-vault
 	NewTag *string `json:"NewTag,omitempty" xml:"NewTag,omitempty"`
-	// The UUID of the image after image risks are fixed.
+	// The UUID of the repaired image.
 	//
 	// example:
 	//
 	// 2fa731681911ae8d1b5f11893ace****
 	NewUuid *string `json:"NewUuid,omitempty" xml:"NewUuid,omitempty"`
-	// The version of the image.
+	// The tag of the original image.
 	//
 	// example:
 	//
 	// centos8.1-ja
 	OldTag *string `json:"OldTag,omitempty" xml:"OldTag,omitempty"`
-	// The UUID of the image.
+	// The UUID of the original image.
 	//
 	// example:
 	//
 	// 2fa731681911ae8d1b5f11893ace****
 	OldUuid *string `json:"OldUuid,omitempty" xml:"OldUuid,omitempty"`
-	// The region of the image.
+	// The region ID of the image.
 	//
 	// example:
 	//
@@ -144,25 +144,25 @@ type DescribeImageFixTaskResponseBodyBuildTasks struct {
 	//
 	// name-002
 	RepoNamespace *string `json:"RepoNamespace,omitempty" xml:"RepoNamespace,omitempty"`
-	// The status of the task. Valid values:
+	// The status of the image repair task. Valid values:
 	//
-	// 	- **1**: The task is running.
+	// - **1**: Repairing
 	//
-	// 	- **2**: The task is successful.
+	// - **2**: Repaired
 	//
-	// 	- **3**: The task failed.
+	// - **3**: Repair failed
 	//
 	// example:
 	//
 	// 2
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of the task. The value is fixed as IMAGE_REPAIR. The value indicates a task that fixes image risks.
+	// The type of the image repair task. The value is fixed as IMAGE_REPAIR, which indicates image repair.
 	//
 	// example:
 	//
 	// IMAGE_REPAIR
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	// The alias of the fixed vulnerability.
+	// The name of the vulnerability that was repaired.
 	//
 	// example:
 	//
@@ -300,25 +300,25 @@ func (s *DescribeImageFixTaskResponseBodyBuildTasks) Validate() error {
 }
 
 type DescribeImageFixTaskResponseBodyPageInfo struct {
-	// The number of tasks returned on the current page.
+	// The number of image repair tasks on the current page.
 	//
 	// example:
 	//
 	// 12
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The page number of the returned page. Default value: **1**
+	// The page number of the results returned. Default value: **1**, which indicates that the results start from page 1.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries returned per page. Default value: **20**
+	// The number of entries per page in a paginated query. Default value: **20**, which indicates that up to 20 entries are returned per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of tasks returned.
+	// The total number of image repair tasks.
 	//
 	// example:
 	//

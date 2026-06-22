@@ -24,39 +24,39 @@ type iListImageRiskRequest interface {
 }
 
 type ListImageRiskRequest struct {
-	// The name of the application.
+	// The application name.
 	//
 	// example:
 	//
 	// e****
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The ID of the container cluster.
+	// The ID of the container cluster to query.
 	//
-	// > You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to query the ID of the container cluster.
+	// > You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// c80f79959fd724a888e1187779b13****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The number of the page to return.
+	// The page number of the current page in a paging query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The name of the image.
+	// The image name.
 	//
 	// example:
 	//
 	// container-***:****
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	// The name of the namespace to which the repository belongs.
+	// The image namespace.
 	//
 	// example:
 	//
 	// kube-sy****
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The number of entries to return on each page. Default value: 20.
+	// The maximum number of entries per page in a paging query. Default value: 20.
 	//
 	// example:
 	//

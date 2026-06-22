@@ -14,9 +14,7 @@ type iDescribeBackupClientsRequest interface {
 }
 
 type DescribeBackupClientsRequest struct {
-	// The region in which the anti-ransomware feature is supported.
-	//
-	// > You can call the [DescribeSupportRegion](~~DescribeSupportRegion~~) operation to query the regions in which the anti-ransomware feature is supported.
+	// The region supported by the anti-ransomware feature. You can call [DescribeSupportRegion](~~DescribeSupportRegion~~) to query the regions supported by the anti-ransomware feature.
 	//
 	// This parameter is required.
 	//

@@ -24,9 +24,9 @@ type ModifyContainerScanConfigRequest struct {
 	//
 	// [\\"logtail-ds\\",\\"alicloud-monitor-controller\\",\\"storage-snapshot-manager\\"]
 	AppNames *string `json:"AppNames,omitempty" xml:"AppNames,omitempty"`
-	// The cluster ID.
+	// The ID of the container cluster.
 	//
-	// >  You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to query the IDs of clusters.
+	// > You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to obtain this parameter.
 	//
 	// example:
 	//
@@ -34,9 +34,9 @@ type ModifyContainerScanConfigRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The language of the content within the request and response. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//

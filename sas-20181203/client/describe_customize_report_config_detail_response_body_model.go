@@ -58,123 +58,123 @@ type iDescribeCustomizeReportConfigDetailResponseBody interface {
 }
 
 type DescribeCustomizeReportConfigDetailResponseBody struct {
-	// The ID of the chart that is included in the report. Multiple IDs are separated by commas (,).
+	// The report chart configuration IDs, separated by commas.
 	//
 	// example:
 	//
 	// BIZ_STAT_QUERY_KEY_ATTACK,CUSTOM_VUL_CVE_LIST,CUSTOM_VUL_SYS_LIST,CUSTOM_VUL_WEBCMS_LIST,CUSTOM_AUTO_BREAKING_PIE,CUSTOM_AK_LEAK_LIST,KEY_HP_TAMPERPROOF,KEY_HP_DEFENCE
 	ChartIds *string `json:"ChartIds,omitempty" xml:"ChartIds,omitempty"`
-	// The grouping type. Valid values:
+	// The group type. Valid values:
 	//
-	// 	- **ALIYUN_RG**
+	// - **ALIYUN_RG**: ALIYUN_RG.
 	//
-	// 	- **SAS_GROUP**
+	// - **SAS_GROUP**: SAS_GROUP.
 	//
 	// example:
 	//
 	// SAS_GROUP
 	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
-	// Indicates whether the report is the default report. Valid values:
+	// Indicates whether the report is a default report. Valid values:
 	//
-	// 	- **0**: no.
+	// - **0**: Not a default report.
 	//
-	// 	- **1**: yes.
+	// - **1**: A default report.
 	//
 	// example:
 	//
 	// 1
 	IsDefault *int32 `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	// Whether the new account is connected by default. Values:
+	// Specifies whether newly added accounts are included by default. Valid values:
 	//
-	// - **true**: Yes.
+	// - **true**: Included.
 	//
-	// - **false**: No.
+	// - **false**: Not included.
 	//
-	// > Only supported in version 2.0.0.
+	// > Only version 2.0.0 supports this parameter.
 	//
 	// example:
 	//
 	// true
 	MemberAccountSyncFlag *bool `json:"MemberAccountSyncFlag,omitempty" xml:"MemberAccountSyncFlag,omitempty"`
-	// The time when the report is pinned.
+	// The pinned time.
 	//
 	// example:
 	//
 	// 1717430400000
 	PinnedTime *int64 `json:"PinnedTime,omitempty" xml:"PinnedTime,omitempty"`
-	// The email address of the recipient. Multiple email addresses are separated by commas (,).
+	// The recipient email addresses, separated by commas.
 	//
 	// example:
 	//
 	// PengZheng@eaton.com,ZhongJi@Eaton.com
 	Recipients *string `json:"Recipients,omitempty" xml:"Recipients,omitempty"`
-	// The most recent days for report statistics.
+	// The number of recent days covered by the report statistics.
 	//
 	// example:
 	//
 	// 30
 	ReportDays *int32 `json:"ReportDays,omitempty" xml:"ReportDays,omitempty"`
-	// The end date on which the report is sent.
+	// The end date for report delivery.
 	//
 	// example:
 	//
 	// 1720022399999
 	ReportEndDate *string `json:"ReportEndDate,omitempty" xml:"ReportEndDate,omitempty"`
-	// The ID of the report.
+	// The report ID.
 	//
 	// example:
 	//
 	// 663434
 	ReportId *int64 `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
-	// The language of the report. Default value: **zh**. Valid values:
+	// The language type. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	ReportLang *string `json:"ReportLang,omitempty" xml:"ReportLang,omitempty"`
-	// The time range in which the report is sent. Valid values:
+	// The report delivery time range. Valid values:
 	//
-	// 	- **1**: 00:00 to 06:00.
+	// - **1**: 0:00 to 6:00.
 	//
-	// 	- **2**: 06:00 to 12:00.
+	// - **2**: 6:00 to 12:00.
 	//
-	// 	- **3**: 12:00 to 18:00.
+	// - **3**: 12:00 to 18:00.
 	//
-	// 	- **4**: 18:00 to 24:00.
+	// - **4**: 18:00 to 24:00.
 	//
 	// example:
 	//
 	// 2
 	ReportSendType *string `json:"ReportSendType,omitempty" xml:"ReportSendType,omitempty"`
-	// The start date on which the report is sent.
+	// The start date for report delivery.
 	//
 	// example:
 	//
 	// 1717430400000
 	ReportStartDate *string `json:"ReportStartDate,omitempty" xml:"ReportStartDate,omitempty"`
-	// The status of the report. Valid values:
+	// The report status. Valid values:
 	//
-	// 	- **0**: disabled.
+	//  - **0**: Disabled.
 	//
-	// 	- **1**: enabled.
+	//  - **1**: Enabled.
 	//
 	// example:
 	//
 	// 1
 	ReportStatus *string `json:"ReportStatus,omitempty" xml:"ReportStatus,omitempty"`
-	// The type of the report. Valid values:
+	// The report type. Valid values:
 	//
-	// 	- **0**: daily report.
+	// - **0**: Daily report.
 	//
-	// 	- **1**: weekly report.
+	// - **1**: Weekly report.
 	//
-	// 	- **2**: monthly report.
+	// - **2**: Monthly report.
 	//
-	// 	- **3**: report whose statistics are collected in a custom time range.
+	// - **3**: Custom period.
 	//
 	// example:
 	//
@@ -186,55 +186,55 @@ type DescribeCustomizeReportConfigDetailResponseBody struct {
 	//
 	// 379a9b8f-107b-4630-9e95-2299a1ea****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The end time at which the report is sent. The value is in the HH:mm:ss format.
+	// The delivery end time, in the format of HH:mm:ss.
 	//
 	// example:
 	//
 	// 10:00:00
 	SendEndTime *string `json:"SendEndTime,omitempty" xml:"SendEndTime,omitempty"`
-	// The exact day within the sending period.
+	// The specific execution dates within the delivery period.
 	//
 	// example:
 	//
 	// 12
 	SendPeriodDays *int32 `json:"SendPeriodDays,omitempty" xml:"SendPeriodDays,omitempty"`
-	// The interval at which the report is sent. Valid values:
+	// The delivery period type. Valid values:
 	//
-	// 	- **DAY**
+	// - **DAY**: day.
 	//
-	// 	- **WEEK**
+	// - **WEEK**: week.
 	//
-	// 	- **MONTH**
+	// - **MONTH**: month.
 	//
 	// example:
 	//
 	// MONTH
 	SendPeriodType *string `json:"SendPeriodType,omitempty" xml:"SendPeriodType,omitempty"`
-	// The start time at which the report is sent. The value is in the HH:mm:ss format.
+	// The delivery start time, in the format of HH:mm:ss.
 	//
 	// example:
 	//
 	// 09:00:00
 	SendStartTime *string `json:"SendStartTime,omitempty" xml:"SendStartTime,omitempty"`
-	// The time at which the report is sent. The value is in the HH:mm:ss format.
+	// The delivery time, in the format of HH:mm:ss.
 	//
 	// example:
 	//
 	// 09:00:00
 	SendTime *string `json:"SendTime,omitempty" xml:"SendTime,omitempty"`
-	// The groups.
+	// The targets within the group.
 	//
 	// example:
 	//
 	// 12125884,12140191
 	TargetGroups *string `json:"TargetGroups,omitempty" xml:"TargetGroups,omitempty"`
-	// The ID of the Alibaba Cloud account. Multiple IDs are separated by commas (,).
+	// The list of target UIDs, separated by commas.
 	//
 	// example:
 	//
 	// 1457515594445744,1600011353839072,1766185894104675,1674080148055995,1627510829033157
 	TargetUids *string `json:"TargetUids,omitempty" xml:"TargetUids,omitempty"`
-	// The title of the report.
+	// The title.
 	//
 	// example:
 	//

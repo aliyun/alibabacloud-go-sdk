@@ -14,7 +14,7 @@ type iDeleteOpaStrategyNewRequest interface {
 }
 
 type DeleteOpaStrategyNewRequest struct {
-	// The IDs of rules.
+	// The list of policy IDs.
 	StrategyIds []*int64 `json:"StrategyIds,omitempty" xml:"StrategyIds,omitempty" type:"Repeated"`
 }
 

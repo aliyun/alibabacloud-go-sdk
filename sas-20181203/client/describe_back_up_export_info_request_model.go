@@ -20,15 +20,15 @@ type iDescribeBackUpExportInfoRequest interface {
 }
 
 type DescribeBackUpExportInfoRequest struct {
-	// The page number.
+	// The page number of the current page in a paged query. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The type of archived information. Valid values:
+	// The type of archive data to export. Valid values:
 	//
-	// 	- **suspiciousExport**: alert event
+	// - **suspiciousExport**: security alerts.
 	//
 	// This parameter is required.
 	//
@@ -36,17 +36,17 @@ type DescribeBackUpExportInfoRequest struct {
 	//
 	// suspiciousExport
 	ExportType *string `json:"ExportType,omitempty" xml:"ExportType,omitempty"`
-	// The language of the content within the request and response. Valid values:
+	// The language type for requests and responses. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of entries per page. Default value: 20.
+	// The maximum number of entries to return on each page in a paged query. Default value: 1.
 	//
 	// example:
 	//

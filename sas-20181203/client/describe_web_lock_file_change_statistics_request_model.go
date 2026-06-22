@@ -16,13 +16,13 @@ type iDescribeWebLockFileChangeStatisticsRequest interface {
 }
 
 type DescribeWebLockFileChangeStatisticsRequest struct {
-	// The number of the page to return.
+	// The page number of the current page in a paged query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries to return on each page. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+	// The maximum number of entries per page in a paged query. Default value: 20. If you leave this parameter empty, 20 entries are returned per page.
 	//
 	// example:
 	//

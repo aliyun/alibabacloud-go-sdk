@@ -124,9 +124,9 @@ type ListMultiUserInstancesResponseBodyDaInstance struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// Instance purchase type. Values:
 	//
-	// - **0**：Self-purchased.
+	// - **0**:Self-purchased.
 	//
-	// - **1**：Allocated.
+	// - **1**:Allocated.
 	//
 	// example:
 	//
@@ -154,9 +154,9 @@ type ListMultiUserInstancesResponseBodyDaInstance struct {
 	ThreatAnalysisFlow *ListMultiUserInstancesResponseBodyDaInstanceThreatAnalysisFlow `json:"ThreatAnalysisFlow,omitempty" xml:"ThreatAnalysisFlow,omitempty" type:"Struct"`
 	// User type. Values:
 	//
-	// 	- **Administrator User**: 1
+	// - **Administrator User**: 1
 	//
-	// 	- **Regular User**: 2
+	// - **Regular User**: 2
 	//
 	// example:
 	//
@@ -164,19 +164,19 @@ type ListMultiUserInstancesResponseBodyDaInstance struct {
 	UserType *int32 `json:"UserType,omitempty" xml:"UserType,omitempty"`
 	// Purchased version of Cloud Security Center. Values:
 	//
-	// - **1**：Free Edition
+	// - **1**:Free Edition
 	//
-	// - **3**：Enterprise Edition
+	// - **3**:Enterprise Edition
 	//
-	// - **5**：Advanced Edition
+	// - **5**:Advanced Edition
 	//
-	// - **6**：Anti-Virus Edition
+	// - **6**:Anti-Virus Edition
 	//
-	// - **7**：Flagship Edition
+	// - **7**:Flagship Edition
 	//
-	// - **8**：Multiple Editions
+	// - **8**:Multiple Editions
 	//
-	// - **10**：Value-Added Services Only
+	// - **10**:Value-Added Services Only
 	//
 	// example:
 	//
@@ -1372,9 +1372,9 @@ type ListMultiUserInstancesResponseBodySaleInstanceList struct {
 	ThreatAnalysisFlow *ListMultiUserInstancesResponseBodySaleInstanceListThreatAnalysisFlow `json:"ThreatAnalysisFlow,omitempty" xml:"ThreatAnalysisFlow,omitempty" type:"Struct"`
 	// User type. Values:
 	//
-	// 	- **Administrator User**：1
+	// - **Administrator User**:1
 	//
-	// 	- **Regular User**：2
+	// - **Regular User**:2
 	//
 	// example:
 	//
@@ -2038,11 +2038,11 @@ func (s *ListMultiUserInstancesResponseBodySaleInstanceListThreatAnalysisFlow) V
 type ListMultiUserInstancesResponseBodySaleInstanceListVersionSummary struct {
 	// Authorization type consumed during binding, with values:
 	//
-	// - **ASSET**：Consumes the number of authorized instances
+	// - **ASSET**:Consumes the number of authorized instances
 	//
-	// - **CORE**：Consumes the number of authorized cores
+	// - **CORE**:Consumes the number of authorized cores
 	//
-	// - **ASSET_AND_CORE**：Consumes both the number of authorized instances and cores.
+	// - **ASSET_AND_CORE**:Consumes both the number of authorized instances and cores.
 	//
 	// example:
 	//

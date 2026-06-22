@@ -18,23 +18,23 @@ type iDescribeDingTalkRequest interface {
 }
 
 type DescribeDingTalkRequest struct {
-	// The number of the page to return.Default value: 1.
+	// The page number of the current page to display in a paged query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries to return on each page.Default value: 20.
+	// The maximum number of notifications to display per page in a paged query. Default value: **20**, which indicates that up to 20 entries are displayed per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The name of the notification.
+	// The notification name.
 	//
 	// example:
 	//
-	// Vulnerability notification
+	// TestRuleAction
 	RuleActionName *string `json:"RuleActionName,omitempty" xml:"RuleActionName,omitempty"`
 }
 

@@ -26,45 +26,45 @@ type iDescribeWebLockBindListRequest interface {
 }
 
 type DescribeWebLockBindListRequest struct {
-	// The number of the page to return. Pages start from page 1. Default value: 1.
+	// The page number of the current page in a paging query. Minimum value: 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The language of the content within the request and the response. Valid values:
+	// The language of the request and response. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of entries to return on each page. Default value: 20.
+	// The maximum number of entries per page in a paging query. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The string that allows you to search for servers in fuzzy match mode. You can enter a server name or IP address.
+	// The fuzzy match field for the server. The value can be a server name or IP address.
 	//
 	// example:
 	//
 	// 192.168.XX.XX
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The source IP address of the request.
+	// The IP address of the access source.
 	//
 	// example:
 	//
 	// 116.30.XX.XX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The protection status of the server that you want to query. Valid values:
+	// The protection status of the servers that you want to query. Valid values:
 	//
-	// 	- **on**: protected
+	// - **on**: Protection is enabled.
 	//
-	// 	- **off**: unprotected
+	// - **off**: Protection is disabled.
 	//
 	// example:
 	//
@@ -72,7 +72,7 @@ type DescribeWebLockBindListRequest struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The UUID of the asset that you want to query.
 	//
-	// >  You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to query the UUID.
+	// > Call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to obtain this parameter.
 	//
 	// example:
 	//

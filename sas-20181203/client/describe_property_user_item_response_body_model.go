@@ -20,9 +20,9 @@ type iDescribePropertyUserItemResponseBody interface {
 type DescribePropertyUserItemResponseBody struct {
 	// The pagination information.
 	PageInfo *DescribePropertyUserItemResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	// An array that consists of the account information returned.
+	// The account information.
 	PropertyItems []*DescribePropertyUserItemResponseBodyPropertyItems `json:"PropertyItems,omitempty" xml:"PropertyItems,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The unique identifier that Alibaba Cloud generated for the request.
 	//
 	// example:
 	//
@@ -84,25 +84,25 @@ func (s *DescribePropertyUserItemResponseBody) Validate() error {
 }
 
 type DescribePropertyUserItemResponseBodyPageInfo struct {
-	// The number of entries returned on the current page.
+	// The number of entries on the current page in a paged query.
 	//
 	// example:
 	//
 	// 2
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The page number of the returned page.
+	// The page number of the current page to display in a paged query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries returned per page.
+	// The maximum number of entries displayed on each page in a paged query.
 	//
 	// example:
 	//
 	// 2
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -159,13 +159,13 @@ func (s *DescribePropertyUserItemResponseBodyPageInfo) Validate() error {
 }
 
 type DescribePropertyUserItemResponseBodyPropertyItems struct {
-	// The number of servers that belong to the account.
+	// The number of servers associated with the account.
 	//
 	// example:
 	//
 	// 384
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The name of the account.
+	// The account name.
 	//
 	// example:
 	//

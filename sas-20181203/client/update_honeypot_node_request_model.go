@@ -30,7 +30,7 @@ type UpdateHoneypotNodeRequest struct {
 	AvailableProbeNum *int32 `json:"AvailableProbeNum,omitempty" xml:"AvailableProbeNum,omitempty"`
 	// The ID of the management node.
 	//
-	// > You can call the [ListHoneypotNode](~~ListHoneypotNode~~) operation to query the IDs of management nodes.
+	// >You can call the [ListHoneypotNode](~~ListHoneypotNode~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type UpdateHoneypotNodeRequest struct {
 	//
 	// HoneypotNodeTest
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	// The CIDR blocks that are allowed to access the management node.
+	// The collection of allowed CIDR blocks.
 	SecurityGroupProbeIpList []*string `json:"SecurityGroupProbeIpList,omitempty" xml:"SecurityGroupProbeIpList,omitempty" type:"Repeated"`
 }
 

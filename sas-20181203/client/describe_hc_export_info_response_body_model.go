@@ -30,7 +30,7 @@ type iDescribeHcExportInfoResponseBody interface {
 }
 
 type DescribeHcExportInfoResponseBody struct {
-	// The number of exported entries.
+	// The number of data entries that have been exported.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type DescribeHcExportInfoResponseBody struct {
 	//
 	// health_check_export_2022****
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// The time when the export task was created.
+	// The time when the task was created.
 	//
 	// example:
 	//
@@ -54,19 +54,19 @@ type DescribeHcExportInfoResponseBody struct {
 	//
 	// 1082278
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The download URL for the exported file.
+	// The download link of the exported file.
 	//
 	// example:
 	//
 	// https://hc-export.oss-cn-shanghai.aliyuncs.com/export_hc/health_check_export_20221222_1671699255808.zip?Expires=1672304056&OSSAccessKeyId=****&Signature=****
 	Link *string `json:"Link,omitempty" xml:"Link,omitempty"`
-	// The progress percentage of the export task.
+	// The export progress in percentage (%).
 	//
 	// example:
 	//
 	// 89
 	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The request ID. Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -74,15 +74,15 @@ type DescribeHcExportInfoResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The status of the export task. Valid values:
 	//
-	// 	- **exporting**: The task is in progress.
+	// - **exporting**: The export is in progress.
 	//
-	// 	- **success**: The task is complete.
+	// - **success**: The export is successful.
 	//
 	// example:
 	//
 	// exporting
 	ResultStatus *string `json:"ResultStatus,omitempty" xml:"ResultStatus,omitempty"`
-	// The total number of exported entries.
+	// The total number of data entries to be exported.
 	//
 	// example:
 	//

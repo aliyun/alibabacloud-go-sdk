@@ -16,9 +16,9 @@ type iDescribeLogShipperStatusResponseBody interface {
 }
 
 type DescribeLogShipperStatusResponseBody struct {
-	// The status information.
+	// The log delivery status collection.
 	LogShipperStatus *DescribeLogShipperStatusResponseBodyLogShipperStatus `json:"LogShipperStatus,omitempty" xml:"LogShipperStatus,omitempty" type:"Struct"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -62,81 +62,81 @@ func (s *DescribeLogShipperStatusResponseBody) Validate() error {
 }
 
 type DescribeLogShipperStatusResponseBodyLogShipperStatus struct {
-	// Indicates whether Security Center is authorized to access Log Service. Valid values:
+	// The service authorization status of the log analysis feature. Valid values:
 	//
-	// 	- **yes**
+	// - **yes**: authorized
 	//
-	// 	- **no**
+	// - **no**: not authorized.
 	//
 	// example:
 	//
 	// yes
 	AuthStatus *string `json:"AuthStatus,omitempty" xml:"AuthStatus,omitempty"`
-	// Indicates whether the log analysis feature is purchased. Valid values:
+	// The purchase status of the log analysis feature. Valid values:
 	//
-	// 	- **yes**
+	// - **yes**: purchased
 	//
-	// 	- **no**
+	// - **no**: not purchased.
 	//
 	// example:
 	//
 	// yes
 	BuyStatus *string `json:"BuyStatus,omitempty" xml:"BuyStatus,omitempty"`
-	// The version of the log analysis field. Valid values:
+	// The version of the log delivery fields for log analysis. Valid values:
 	//
-	// - SAS_V1
+	// - **SAS_V1**
 	//
-	// - SAS_V2
+	// - **SAS_V2**.
 	//
 	// example:
 	//
 	// SAS_V1
 	EtlMetaVersion *string `json:"EtlMetaVersion,omitempty" xml:"EtlMetaVersion,omitempty"`
-	// The status of the log analysis feature. Valid values:
+	// The enabling status of log analysis. Valid values:
 	//
-	// 	- **yes**: enabled
+	// - **yes**: enabled
 	//
-	// 	- **no**: disabled
+	// - **no**: not enabled.
 	//
 	// example:
 	//
 	// yes
 	OpenStatus *string `json:"OpenStatus,omitempty" xml:"OpenStatus,omitempty"`
-	// Indicates whether the pay-as-you-go billing method is used. Valid values:
+	// The pay-as-you-go activation status of the log analysis feature. Valid values:
 	//
-	// 	- **yes**
+	// - **yes**: activated
 	//
-	// 	- **no**
+	// - **no**: not activated.
 	//
 	// example:
 	//
 	// no
 	PostPaidOpenStatus *string `json:"PostPaidOpenStatus,omitempty" xml:"PostPaidOpenStatus,omitempty"`
-	// Indicates whether the log analysis feature supports the pay-as-you-go billing method. Valid values:
+	// The pay-as-you-go support status of the log analysis feature. Valid values:
 	//
-	// 	- **yes**
+	// - **yes**: supported
 	//
-	// 	- **no**
+	// - **no**: not supported.
 	//
 	// example:
 	//
 	// yes
 	PostPaidSupportStatus *string `json:"PostPaidSupportStatus,omitempty" xml:"PostPaidSupportStatus,omitempty"`
-	// The status of the dedicated Log Service project. Valid values:
+	// The status of the log project used by the log analysis feature. Valid values:
 	//
-	// 	- **Normal**: normal
+	// - **Normal**: Normal.
 	//
-	// 	- **Disable**: disabled
+	// - **Disable**: Disabled.
 	//
 	// example:
 	//
 	// Normal
 	SlsProjectStatus *string `json:"SlsProjectStatus,omitempty" xml:"SlsProjectStatus,omitempty"`
-	// Indicates whether Log Service is activated. Valid values:
+	// The activation status of Simple Log Service (SLS). Valid values:
 	//
-	// 	- **yes**
+	// - **yes**: activated
 	//
-	// 	- **no**
+	// - **no**: not activated.
 	//
 	// example:
 	//

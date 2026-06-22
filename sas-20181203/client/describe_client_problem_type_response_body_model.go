@@ -24,33 +24,33 @@ type iDescribeClientProblemTypeResponseBody interface {
 }
 
 type DescribeClientProblemTypeResponseBody struct {
-	// The number of entries returned on the current page.
+	// The number of entries on the current page.
 	//
 	// example:
 	//
 	// 4
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The page number.
+	// The current page number displayed in the returned results.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries per page. Default value: **20**.
+	// The maximum number of entries per page in a paged query. Default value: **20**.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The issue types.
+	// The list of diagnostic types.
 	ProblemTypes []*DescribeClientProblemTypeResponseBodyProblemTypes `json:"ProblemTypes,omitempty" xml:"ProblemTypes,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request. The ID is a unique identifier that Alibaba Cloud generates for the request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// D65AADFC-1D20-5A6A-8F6A-9FA53CXXXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries in the client issue list.
 	//
 	// example:
 	//
@@ -134,19 +134,19 @@ func (s *DescribeClientProblemTypeResponseBody) Validate() error {
 }
 
 type DescribeClientProblemTypeResponseBodyProblemTypes struct {
-	// The description of the issue type.
+	// The description of the diagnostic issue category.
 	//
 	// example:
 	//
-	// other
+	// Server Guard Agent Offline
 	ProblemDetail *string `json:"problemDetail,omitempty" xml:"problemDetail,omitempty"`
-	// The ID of the issue type.
+	// The ID of the diagnostic issue category.
 	//
 	// example:
 	//
 	// 4
 	ProblemId *string `json:"problemId,omitempty" xml:"problemId,omitempty"`
-	// The name of the issue type.
+	// The name of the diagnostic issue category.
 	//
 	// example:
 	//

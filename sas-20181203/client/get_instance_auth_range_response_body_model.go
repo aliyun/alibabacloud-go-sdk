@@ -124,9 +124,9 @@ type GetInstanceAuthRangeResponseBodyInstanceAuthRange struct {
 	ContainerCount *string `json:"ContainerCount,omitempty" xml:"ContainerCount,omitempty"`
 	// Number of cloud platform configuration check scans. Value:
 	//
-	// - **15000-9999999999**：Range
+	// - **15000-9999999999**:Range
 	//
-	// - **55000**：Step
+	// - **55000**:Step
 	//
 	// example:
 	//
@@ -144,9 +144,9 @@ type GetInstanceAuthRangeResponseBodyInstanceAuthRange struct {
 	EnterpriseCount *string `json:"EnterpriseCount,omitempty" xml:"EnterpriseCount,omitempty"`
 	// Number of authorized honeypots. Value:
 	//
-	// - **20-500**：Range
+	// - **20-500**:Range
 	//
-	// - **1**：Step
+	// - **1**:Step
 	//
 	// example:
 	//
@@ -174,9 +174,9 @@ type GetInstanceAuthRangeResponseBodyInstanceAuthRange struct {
 	RaspCapacity *string `json:"RaspCapacity,omitempty" xml:"RaspCapacity,omitempty"`
 	// Number of authorized malicious file detection SDKs. Value:
 	//
-	// - **10-9999999999**：Range
+	// - **10-9999999999**:Range
 	//
-	// - **10**：Step
+	// - **10**:Step
 	//
 	// example:
 	//

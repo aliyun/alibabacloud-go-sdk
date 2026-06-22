@@ -22,7 +22,7 @@ type iUpdateImageVulWhitelistTargetRequest interface {
 }
 
 type UpdateImageVulWhitelistTargetRequest struct {
-	// The whitelist ID.
+	// The ID of the vulnerability whitelist.
 	//
 	// example:
 	//
@@ -30,15 +30,15 @@ type UpdateImageVulWhitelistTargetRequest struct {
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The language of the content within the request and response. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The reason why you add the vulnerability to the whitelist.
+	// The reason for adding the whitelist.
 	//
 	// example:
 	//
@@ -46,19 +46,19 @@ type UpdateImageVulWhitelistTargetRequest struct {
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 	// The source of the whitelist. Valid values:
 	//
-	// 	- **image**
+	// - **image**: image
 	//
-	// 	- **agentless**
+	// - **agentless**: agentless.
 	//
 	// example:
 	//
 	// image
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The vulnerability that you want to add to the whitelist. The value of this parameter is in the JSON format and contains the following fields:
+	// The operation target. This parameter is in JSON format and contains the following fields:
 	//
-	// 	- **type**: The type of the vulnerability. The value is fixed to repo.
+	// - **type**: The target type. Set to repo.
 	//
-	// 	- **target**: The content of the vulnerability. The value is in the format of Namespace/Image repository.
+	// - **target**: The target content. Format: namespace/image repository.
 	//
 	// example:
 	//

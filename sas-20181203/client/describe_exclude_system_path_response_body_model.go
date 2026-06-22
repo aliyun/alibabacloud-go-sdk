@@ -18,11 +18,11 @@ type iDescribeExcludeSystemPathResponseBody interface {
 }
 
 type DescribeExcludeSystemPathResponseBody struct {
-	// An array consisting of the directories that are excluded.
+	// The list of system excluded directories.
 	ExcludePaths []*DescribeExcludeSystemPathResponseBodyExcludePaths `json:"ExcludePaths,omitempty" xml:"ExcludePaths,omitempty" type:"Repeated"`
 	// The pagination information.
 	PageInfo *DescribeExcludeSystemPathResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The ID of the request. Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -86,15 +86,15 @@ func (s *DescribeExcludeSystemPathResponseBody) Validate() error {
 type DescribeExcludeSystemPathResponseBodyExcludePaths struct {
 	// The operating system of the server. Valid values:
 	//
-	// 	- **linux**: Linux
+	// - **linux**: Linux.
 	//
-	// 	- **windows**: Windows
+	// - **windows**: Windows.
 	//
 	// example:
 	//
 	// linux
 	Os *string `json:"Os,omitempty" xml:"Os,omitempty"`
-	// The absolute path to the directory.
+	// The absolute path of the directory.
 	//
 	// example:
 	//
@@ -133,25 +133,25 @@ func (s *DescribeExcludeSystemPathResponseBodyExcludePaths) Validate() error {
 }
 
 type DescribeExcludeSystemPathResponseBodyPageInfo struct {
-	// The number of entries returned on the current page.
+	// The number of system excluded directories on the current page.
 	//
 	// example:
 	//
 	// 20
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The page number of the returned page.
+	// The page number of the current page in the paged query when paging is used.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries returned per page.
+	// The number of system excluded folders returned per page in the paged query when paging is used.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of system excluded directories.
 	//
 	// example:
 	//

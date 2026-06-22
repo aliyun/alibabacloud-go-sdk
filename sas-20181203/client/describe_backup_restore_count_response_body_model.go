@@ -16,9 +16,9 @@ type iDescribeBackupRestoreCountResponseBody interface {
 }
 
 type DescribeBackupRestoreCountResponseBody struct {
-	// The statistics of restoration tasks.
+	// The statistics of anti-ransomware restoration tasks.
 	BackupRestoreCount *DescribeBackupRestoreCountResponseBodyBackupRestoreCount `json:"BackupRestoreCount,omitempty" xml:"BackupRestoreCount,omitempty" type:"Struct"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The ID of the request. The ID is a unique identifier that Alibaba Cloud generates for the request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -62,13 +62,13 @@ func (s *DescribeBackupRestoreCountResponseBody) Validate() error {
 }
 
 type DescribeBackupRestoreCountResponseBodyBackupRestoreCount struct {
-	// The number of the restoration tasks that are in the **being restored*	- state.
+	// The number of tasks in the **Restoring*	- state.
 	//
 	// example:
 	//
 	// 3
 	Recovering *int32 `json:"Recovering,omitempty" xml:"Recovering,omitempty"`
-	// The total number of the restoration tasks that you create.
+	// The total number of restoration tasks that have been created.
 	//
 	// example:
 	//

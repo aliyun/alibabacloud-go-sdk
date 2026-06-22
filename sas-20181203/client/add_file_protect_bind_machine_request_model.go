@@ -18,9 +18,12 @@ type iAddFileProtectBindMachineRequest interface {
 }
 
 type AddFileProtectBindMachineRequest struct {
+	// The list of servers for which the alert protection level is enabled.
 	AlertUuids []*string `json:"AlertUuids,omitempty" xml:"AlertUuids,omitempty" type:"Repeated"`
+	// The list of servers for which tamper-proofing is enabled.
 	BlockUuids []*string `json:"BlockUuids,omitempty" xml:"BlockUuids,omitempty" type:"Repeated"`
-	NoneUuids  []*string `json:"NoneUuids,omitempty" xml:"NoneUuids,omitempty" type:"Repeated"`
+	// The list of servers for which file protection is disabled.
+	NoneUuids []*string `json:"NoneUuids,omitempty" xml:"NoneUuids,omitempty" type:"Repeated"`
 }
 
 func (s AddFileProtectBindMachineRequest) String() string {

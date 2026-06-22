@@ -22,7 +22,7 @@ type iDescribeImageBuildRiskListResponseBody interface {
 }
 
 type DescribeImageBuildRiskListResponseBody struct {
-	// The response code. The status code **200*	- indicates that the request was successful. Other status codes indicate that the request failed. You can identify the cause of the failure based on the status code.
+	// The result code. A value of **200*	- indicates success. Any other value indicates failure. You can use this field to determine the cause of the failure.
 	//
 	// example:
 	//
@@ -30,23 +30,23 @@ type DescribeImageBuildRiskListResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data *DescribeImageBuildRiskListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned message.
+	// The detailed information about the error code.
 	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// BE120DAB-F4E7-4C53-ADC3-A97578AB****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The call was successful.
 	//
-	// 	- **false**
+	// - **false**: The call failed.
 	//
 	// example:
 	//
@@ -117,9 +117,9 @@ func (s *DescribeImageBuildRiskListResponseBody) Validate() error {
 }
 
 type DescribeImageBuildRiskListResponseBodyData struct {
-	// The risks.
+	// The summary list of build risks.
 	List []*DescribeImageBuildRiskListResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	// The pagination information.
+	// The paging parameters.
 	PageInfo *DescribeImageBuildRiskListResponseBodyDataPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
 }
 
@@ -174,37 +174,37 @@ type DescribeImageBuildRiskListResponseBodyDataList struct {
 	//
 	// 2
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The timestamp generated when the first scan was performed. Unit: milliseconds.
+	// The timestamp of the first scan. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1723710827000
 	FirstScanTime *int64 `json:"FirstScanTime,omitempty" xml:"FirstScanTime,omitempty"`
-	// The timestamp generated when the last scan was performed. Unit: milliseconds.
+	// The timestamp of the most recent scan. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1723710827999
 	LastScanTime *int64 `json:"LastScanTime,omitempty" xml:"LastScanTime,omitempty"`
-	// The type key of the risk.
+	// The key of the build risk rule category.
 	//
 	// example:
 	//
 	// other
 	RiskClass *string `json:"RiskClass,omitempty" xml:"RiskClass,omitempty"`
-	// The type name of the risk.
+	// The category name of the build risk rule.
 	//
 	// example:
 	//
 	// other
 	RiskClassName *string `json:"RiskClassName,omitempty" xml:"RiskClassName,omitempty"`
-	// The key of the risk. You can call the [DescribeImageBuildRiskList](~~~~) operation to obtain the value of **RiskKey**.
+	// The key of the build risk rule. You can call the [DescribeImageBuildRiskList](~~~~) operation to obtain the value of **RiskKey**.
 	//
 	// example:
 	//
 	// no_user
 	RiskKey *string `json:"RiskKey,omitempty" xml:"RiskKey,omitempty"`
-	// The rule name of the risk.
+	// The name of the build risk rule.
 	//
 	// example:
 	//
@@ -212,11 +212,11 @@ type DescribeImageBuildRiskListResponseBodyDataList struct {
 	RiskKeyName *string `json:"RiskKeyName,omitempty" xml:"RiskKeyName,omitempty"`
 	// The risk level. Valid values:
 	//
-	// 	- **high**
+	// - **high**: High.
 	//
-	// 	- **medium**
+	// - **medium**: Medium.
 	//
-	// 	- **low**
+	// - **low**: Low.
 	//
 	// example:
 	//
@@ -324,15 +324,15 @@ func (s *DescribeImageBuildRiskListResponseBodyDataList) Validate() error {
 }
 
 type DescribeImageBuildRiskListResponseBodyDataPageInfo struct {
-	// The page number. Default value: **1**.
+	// The page number of the current page when paging is used. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries per page. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+	// The maximum number of entries per page when paging is used. Default value: 20. If you leave this parameter empty, 20 entries are returned per page.
 	//
-	// >  We recommend that you do not leave this parameter empty.
+	// > Do not leave PageSize empty.
 	//
 	// example:
 	//

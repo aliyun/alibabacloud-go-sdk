@@ -14,7 +14,7 @@ type iDeleteVulWhitelistResponseBody interface {
 }
 
 type DeleteVulWhitelistResponseBody struct {
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The request ID. Alibaba Cloud generates a unique ID for each request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//

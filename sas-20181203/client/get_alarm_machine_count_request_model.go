@@ -14,7 +14,7 @@ type iGetAlarmMachineCountRequest interface {
 }
 
 type GetAlarmMachineCountRequest struct {
-	// The ID of the request source. Set the value to sas.
+	// The source identifier of the request. Set this parameter to sas.
 	//
 	// example:
 	//

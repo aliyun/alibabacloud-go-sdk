@@ -16,9 +16,9 @@ type iListClusterCnnfStatusDetailResponseBody interface {
 }
 
 type ListClusterCnnfStatusDetailResponseBody struct {
-	// An array that consists of the protection status of the container firewall.
+	// The list of container firewall statuses.
 	Data []*ListClusterCnnfStatusDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The ID of the request. The China Chinese Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ func (s *ListClusterCnnfStatusDetailResponseBody) Validate() error {
 }
 
 type ListClusterCnnfStatusDetailResponseBodyData struct {
-	// The ID of the cluster.
+	// The cluster ID.
 	//
 	// example:
 	//
@@ -78,7 +78,7 @@ type ListClusterCnnfStatusDetailResponseBodyData struct {
 	//
 	// true
 	Installed *bool `json:"Installed,omitempty" xml:"Installed,omitempty"`
-	// The ID of the server.
+	// The instance ID of the server.
 	//
 	// example:
 	//
@@ -96,13 +96,13 @@ type ListClusterCnnfStatusDetailResponseBodyData struct {
 	//
 	// 10.42.XX.XX
 	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	// The cause why the plug-in is invalid. Valid values:
+	// The invalid type of the plug-in. Valid values:
 	//
-	// 	- **PLUGIN_OFFLINE**: The plug-in is offline.
+	// - **PLUGIN_OFFLINE**: offline
 	//
-	// 	- **PLUGIN_NOT_INSTALLED**: The plug-in is not installed.
+	// - **PLUGIN_NOT_INSTALLED**: not installed
 	//
-	// 	- **PLUGIN_INVALID_VERSION**: The version of the plug-in is invalid.
+	// - **PLUGIN_INVALID_VERSION**: invalid version.
 	//
 	// example:
 	//
@@ -114,13 +114,13 @@ type ListClusterCnnfStatusDetailResponseBodyData struct {
 	//
 	// security
 	MachineName *string `json:"MachineName,omitempty" xml:"MachineName,omitempty"`
-	// The machine type of the instance. The value is fixed as **ecs**.
+	// The type of the instance. The value is fixed as **ecs**.
 	//
 	// example:
 	//
 	// ecs
 	MachineType *int32 `json:"MachineType,omitempty" xml:"MachineType,omitempty"`
-	// The name of the plug-in. The value is fixed as **alinet**.
+	// The name of the plug-in type. The value is fixed as **alinet**.
 	//
 	// example:
 	//
@@ -134,15 +134,15 @@ type ListClusterCnnfStatusDetailResponseBodyData struct {
 	PluginVersion *string `json:"PluginVersion,omitempty" xml:"PluginVersion,omitempty"`
 	// The online status of the plug-in. Valid values:
 	//
-	// 	- **false**: The plug-in is offline.
+	// - **false**: offline
 	//
-	// 	- **true**: The plug-in is online.
+	// - **true**: online.
 	//
 	// example:
 	//
 	// false
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The UUID of the asset.
+	// The UUID of the asset instance.
 	//
 	// example:
 	//

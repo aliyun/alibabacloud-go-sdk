@@ -14,6 +14,7 @@ type iDeleteUnknownThreatDetectProcessRequest interface {
 }
 
 type DeleteUnknownThreatDetectProcessRequest struct {
+	// The IDs of the processes to delete.
 	ProcessIdList []*string `json:"ProcessIdList,omitempty" xml:"ProcessIdList,omitempty" type:"Repeated"`
 }
 

@@ -292,7 +292,7 @@ type DescribeSuspEventsShrinkRequest struct {
 	//
 	// example:
 	//
-	// Webshell
+	// other
 	ParentEventTypes *string `json:"ParentEventTypes,omitempty" xml:"ParentEventTypes,omitempty"`
 	// The name of the alert or the information about the asset.
 	//

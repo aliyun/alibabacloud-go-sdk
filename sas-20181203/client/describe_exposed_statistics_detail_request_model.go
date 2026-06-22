@@ -32,55 +32,55 @@ type iDescribeExposedStatisticsDetailRequest interface {
 }
 
 type DescribeExposedStatisticsDetailRequest struct {
-	// The search condition for components.
+	// The query condition.
 	//
 	// example:
 	//
 	// {}
 	Criteria *string `json:"Criteria,omitempty" xml:"Criteria,omitempty"`
-	// The number of the page to return.
+	// The page number of the current page in a paged query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The public IP address of the server or the cloud asset.
+	// The public IP address that is exposed on the Internet for the asset to query.
 	//
 	// example:
 	//
 	// 116.12.XX.XX
 	ExposureIp *string `json:"ExposureIp,omitempty" xml:"ExposureIp,omitempty"`
-	// The instance ID of the asset.
+	// The instance ID of the asset to query.
 	//
 	// example:
 	//
 	// s-bp1g6wxdwps7s9dz****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of entries to return on each page. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+	// The maximum number of entries per page in a paged query. Default value: 20. If you leave this parameter empty, 20 entries are returned per page.
 	//
-	// >  We recommend that you do not leave this parameter empty.
+	// > Set PageSize to a non-empty value.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The Alibaba Cloud account ID of the member in the resource directory.
+	// The Alibaba Cloud account ID of the member accounts in the resource folder.
 	//
-	// >  You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain the ID.
+	// > Invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
 	//
 	// example:
 	//
-	// 127608589417****
+	// 1232428423234****
 	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
-	// The type of the exposed asset. Valid values:
+	// The type of statistics to query. Valid values:
 	//
-	// 	- **exposureType**: gateway assets
+	// - **exposureType**: gateway assets exposed on the Internet.
 	//
-	// 	- **exposurePort**: ports
+	// - **exposurePort**: ports exposed on the Internet.
 	//
-	// 	- **exposureComponent**: system components
+	// - **exposureComponent**: system components exposed on the Internet.
 	//
-	// 	- **exposureIp**: IP addresses
+	// - **exposureIp**: IP addresses exposed on the Internet.
 	//
 	// This parameter is required.
 	//
@@ -88,23 +88,23 @@ type DescribeExposedStatisticsDetailRequest struct {
 	//
 	// exposureType
 	StatisticsType *string `json:"StatisticsType,omitempty" xml:"StatisticsType,omitempty"`
-	// The type of the gateway asset. This parameter is required when the **StatisticsType*	- parameter is set to **exposureType**. Valid values:
+	// The Asset Type of the gateway to query. This parameter takes effect only when **StatisticsType*	- is set to **exposureType**. Valid values:
 	//
-	// 	- **SLB**: the public IP address of a Server Load Balancer (SLB) instance
+	// - **SLB**: public IP address of a load balancing SLB instance.
 	//
-	// 	- **DNAT**: the NAT gateway that connects to the Internet by using the DNAT feature
+	// - **DNAT**: NAT gateway that uses the DNAT feature to connect to the Internet.
 	//
 	// example:
 	//
 	// SLB
 	StatisticsTypeGatewayType *string `json:"StatisticsTypeGatewayType,omitempty" xml:"StatisticsTypeGatewayType,omitempty"`
-	// The ID of the gateway asset. This parameter is required when the **StatisticsType*	- parameter is set to **exposureType**.
+	// The instance ID of the gateway to query. This parameter takes effect only when **StatisticsType*	- is set to **exposureType**.
 	//
 	// example:
 	//
 	// lb-2ze4rso39h4nczcqs****
 	StatisticsTypeInstanceValue *string `json:"StatisticsTypeInstanceValue,omitempty" xml:"StatisticsTypeInstanceValue,omitempty"`
-	// The UUID of the server.
+	// The UUID of the server to query.
 	//
 	// example:
 	//

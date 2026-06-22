@@ -18,21 +18,21 @@ type iUpdateJenkinsImageRegistryNameRequest interface {
 }
 
 type UpdateJenkinsImageRegistryNameRequest struct {
-	// The ID of the image repository.
+	// The image repository ID.
 	//
-	// > You can call the [PageImageRegistry](~~PageImageRegistry~~) operation to query the IDs of image repositories.
+	// >You can call the [PageImageRegistry](~~PageImageRegistry~~) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// 25090
 	RegistryId *int64 `json:"RegistryId,omitempty" xml:"RegistryId,omitempty"`
-	// The name of the image repository.
+	// The image repository name.
 	//
 	// example:
 	//
 	// a0603tk1
 	RegistryName *string `json:"RegistryName,omitempty" xml:"RegistryName,omitempty"`
-	// The source IP address of the request.
+	// The IP address of the access source.
 	//
 	// example:
 	//

@@ -26,13 +26,13 @@ type iGetAssetsPropertyItemRequest interface {
 }
 
 type GetAssetsPropertyItemRequest struct {
-	// The type of the asset fingerprint that you want to query. Default value: **sca**. Valid values:
+	// The type of Asset Fingerprints to query. Default value: **sca**. Valid values:
 	//
-	// 	- **lkm**: kernel module
+	// - **lkm**: kernel module
 	//
-	// 	- **autorun**: startup item
+	// - **autorun**: startup item
 	//
-	// 	- **web_server**: website
+	// - **web_server**: website.
 	//
 	// This parameter is required.
 	//
@@ -40,69 +40,69 @@ type GetAssetsPropertyItemRequest struct {
 	//
 	// lkm
 	Biz *string `json:"Biz,omitempty" xml:"Biz,omitempty"`
-	// The number of the page to return. Default value: **1**.
+	// The page number of the page to return. Default value: **1**, which indicates the first page.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// Specifies whether to forcefully refresh the data that you want to query. Valid values:
+	// Specifies whether to forcefully refresh the data to be queried. Valid values:
 	//
-	// 	- **true**: yes
+	// - **true**: Forcefully refresh.
 	//
-	// 	- **false**: no
+	// - **false**: Do not forcefully refresh.
 	//
 	// example:
 	//
 	// false
 	ForceFlush *bool `json:"ForceFlush,omitempty" xml:"ForceFlush,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language type for the request and response messages. Default value: **zh**. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese
 	//
-	// 	- en: English
+	// - en: English.
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of entries per page. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+	// The maximum number of entries to return on each page when using paging. Default value: 20. If the PageSize parameter is left empty, 20 entries are returned by default.
 	//
-	// > We recommend that you do not leave this parameter empty.
+	// > Do not leave PageSize empty.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The value of the search condition. You must specify this parameter based on the value of the **SearchItem*	- parameter.
+	// The content to query. Specify different query content based on the value of **SearchItem**:
 	//
-	// 	- If you set **SearchItem*	- to **domain**, you must enter the domain name.
+	// - If **SearchItem*	- is set to **domain**, enter the domain name of the Asset Fingerprints entry.
 	//
-	// 	- If you set **SearchItem*	- to **module_name**, you must enter the module name.
+	// - If **SearchItem*	- is set to **module_name**, enter the module name of the Asset Fingerprints entry.
 	//
-	// 	- If you set **SearchItem*	- to **path**, you must enter the path to the self-starting item.
+	// - If **SearchItem*	- is set to **path**, enter the startup item path of the Asset Fingerprints entry.
 	//
-	// >  You must specify both the **SearchItem*	- and **SearchInfo*	- parameters before you can query the information about asset fingerprints by asset fingerprint name.
+	// > The **SearchItem*	- and **SearchInfo*	- parameters must be used together. Both parameters must be set at the same time for the query to take effect. Setting only one parameter does not take effect. You can use these parameters to query all data of a specific Asset Fingerprints entry by name.
 	//
 	// example:
 	//
 	// /lib/systemd/s****
 	SearchInfo *string `json:"SearchInfo,omitempty" xml:"SearchInfo,omitempty"`
-	// The type of the search condition. You must specify this parameter based on the value of the **Biz*	- parameter. Valid values:
+	// The type of query condition. Set different aggregation search conditions based on the **Biz*	- parameter. Valid values:
 	//
-	// 	- If you set **Biz*	- to **web_server**, set **SearchItem*	- to the following value:
+	// - If **Biz*	- is set to **web_server**, the following search conditions are supported for **SearchItem**:
 	//
-	//     	- **domain**: the domain name
+	//     - **domain**: domain name
 	//
-	// 	- If you set **Biz*	- to **lkm**, set **SearchItem*	- to the following value:
+	// - If **Biz*	- is set to **lkm**, the following search conditions are supported for **SearchItem**:
 	//
-	//     	- **module_name**: the name of the module
+	//     - **module_name**: module name
 	//
-	// 	- If you set **Biz*	- to **autorun**, set **SearchItem*	- to the following value:
+	// - If **Biz*	- is set to **autorun**, the following search conditions are supported for **SearchItem**:
 	//
-	//     	- **path**: the path to the self-starting item
+	//     - **path**: startup item path
 	//
-	// >  You must specify both the **SearchItem*	- and **SearchInfo*	- parameters before you can query the information about asset fingerprints by asset fingerprint name.
+	// > The **SearchItem*	- and **SearchInfo*	- parameters must be used together. Both parameters must be set at the same time for the query to take effect. Setting only one parameter does not take effect. You can use these parameters to query all data of a specific Asset Fingerprints entry by name.
 	//
 	// example:
 	//

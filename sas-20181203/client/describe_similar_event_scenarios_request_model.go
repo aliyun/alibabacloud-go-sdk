@@ -21,7 +21,7 @@ type DescribeSimilarEventScenariosRequest struct {
 	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The ID of the alert event.
 	//
-	// >  You can call the [DescribeSuspEvents](~~DescribeSuspEvents~~) operation to query the ID of the alert event.
+	// >You can call the [DescribeSuspEvents](~~DescribeSuspEvents~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -29,11 +29,11 @@ type DescribeSimilarEventScenariosRequest struct {
 	//
 	// 12321
 	SecurityEventId *int64 `json:"SecurityEventId,omitempty" xml:"SecurityEventId,omitempty"`
-	// The source IP address of the request.
+	// The IP address of the access source.
 	//
 	// example:
 	//
-	// 1.2.XX.XX
+	// 112.214.XX.XX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 

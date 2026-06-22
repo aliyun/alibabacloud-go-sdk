@@ -28,34 +28,62 @@ type iListUnknownThreatDetectMachineRequest interface {
 }
 
 type ListUnknownThreatDetectMachineRequest struct {
+	// The page number to return.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The maximum number of entries to return per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The server name or IP address.
+	//
 	// example:
 	//
 	// test-ecs
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The status of the machine. Valid values:
+	//
+	// - **monitoring**: Monitoring
+	//
+	// - **blocking**: Blocking
+	//
+	// - **studying**: Learning
+	//
+	// - **study_finish**: Learning complete
+	//
 	// example:
 	//
 	// studying
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The whitelist mode. Valid values:
+	//
+	// - **hash**: process hash
+	//
+	// - **path**: process path
+	//
 	// example:
 	//
 	// hash
 	StudyMode *string `json:"StudyMode,omitempty" xml:"StudyMode,omitempty"`
+	// The end of the time range for model creation, specified as a timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1768891966346
 	StudyTimeEnd *int64 `json:"StudyTimeEnd,omitempty" xml:"StudyTimeEnd,omitempty"`
+	// The start of the time range for model creation, specified as a timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1768891966344
 	StudyTimeStart *int64 `json:"StudyTimeStart,omitempty" xml:"StudyTimeStart,omitempty"`
+	// The UUID of the server.
+	//
 	// example:
 	//
 	// d2d94e8b-bb25-4744-8004-1e08a53c****

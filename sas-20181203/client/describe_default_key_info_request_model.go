@@ -14,7 +14,7 @@ type iDescribeDefaultKeyInfoRequest interface {
 }
 
 type DescribeDefaultKeyInfoRequest struct {
-	// The source IP address.
+	// The IP address of the access source.
 	//
 	// example:
 	//

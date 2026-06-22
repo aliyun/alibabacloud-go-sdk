@@ -22,29 +22,29 @@ type iDescribeGraph4InvestigationOnlineRequest interface {
 }
 
 type DescribeGraph4InvestigationOnlineRequest struct {
-	// The ID of the alert event. You can call [DescribeSuspEvents](~~DescribeSuspEvents~~) to obtain the alert event ID, with the value path being: data.SuspEvents[index].UniqueInfo.
+	// The ID of the alert event. You can call [DescribeSuspEvents](~~DescribeSuspEvents~~) to obtain the alert event ID. The value is in the data.SuspEvents[index].UniqueInfo path.
 	//
 	// example:
 	//
 	// 786fc80896b25422b5324cb6e57bxxxx
 	AnomalyId *string `json:"AnomalyId,omitempty" xml:"AnomalyId,omitempty"`
-	// The UUID of the alert event asset. You can call [DescribeSuspEvents](~~DescribeSuspEvents~~) to obtain the asset UUID, with the value path being: data.SuspEvents[index].Uuid.
+	// The UUID of the asset associated with the alert event. You can call [DescribeSuspEvents](~~DescribeSuspEvents~~) to obtain the asset UUID. The value is in the data.SuspEvents[index].Uuid path.
 	//
 	// example:
 	//
 	// 3502e4b0-f362-4059-84a2-f47fa2b5exxx
 	AnomalyUuid *string `json:"AnomalyUuid,omitempty" xml:"AnomalyUuid,omitempty"`
-	// Sets the language type for the request and response messages. The default is **zh**. Values:
+	// The language type for the request and response. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The namespace of the graph, which is fixed as: hundun_dc_online.
+	// The namespace of the graph. Set this parameter to hundun_dc_online.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +52,7 @@ type DescribeGraph4InvestigationOnlineRequest struct {
 	//
 	// hundun_dc_online
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// Vertex ID. This does not need to be proactively provided.
+	// The vertex ID. You do not need to specify this parameter.
 	//
 	// example:
 	//

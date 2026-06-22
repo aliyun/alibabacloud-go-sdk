@@ -26,13 +26,58 @@ type iHandleObjectScanEventRequest interface {
 }
 
 type HandleObjectScanEventRequest struct {
-	BatchType         *string                                          `json:"BatchType,omitempty" xml:"BatchType,omitempty"`
-	EventId           *string                                          `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	EventIdList       []*int64                                         `json:"EventIdList,omitempty" xml:"EventIdList,omitempty" type:"Repeated"`
-	Lang              *string                                          `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Remark            *string                                          `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// Specifies the type for batch processing of similar alerts. Valid values:
+	//
+	// - **sha256**: by file content
+	//
+	// - **eventName**: by alert name.
+	//
+	// example:
+	//
+	// sha256
+	BatchType *string `json:"BatchType,omitempty" xml:"BatchType,omitempty"`
+	// The event ID.
+	//
+	// example:
+	//
+	// 81****
+	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// The list of event IDs.
+	EventIdList []*int64 `json:"EventIdList,omitempty" xml:"EventIdList,omitempty" type:"Repeated"`
+	// The language of the content in the request and response. Default value: **zh**. Valid values:
+	//
+	// - **zh**: Chinese
+	//
+	// - **en**: English.
+	//
+	// example:
+	//
+	// zh
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The remarks.
+	//
+	// example:
+	//
+	// test
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The list of whitelist rules. This parameter takes effect only when the alert is whitelisted.
 	RuleConditionList []*HandleObjectScanEventRequestRuleConditionList `json:"RuleConditionList,omitempty" xml:"RuleConditionList,omitempty" type:"Repeated"`
-	Status            *int32                                           `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The target status. Valid values:
+	//
+	// - **0**: Unhandled.
+	//
+	// - **1**: Manually handled.
+	//
+	// - **2**: Whitelisted.
+	//
+	// - **3**: Ignored.
+	//
+	// - **4**: Access denied.
+	//
+	// example:
+	//
+	// 0
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s HandleObjectScanEventRequest) String() string {
@@ -120,9 +165,42 @@ func (s *HandleObjectScanEventRequest) Validate() error {
 }
 
 type HandleObjectScanEventRequestRuleConditionList struct {
-	Key     *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The whitelist field. Valid values:
+	//
+	// - **ossKey**: file path
+	//
+	// - **bucketName**: bucket name
+	//
+	// - **md5**: file MD5
+	//
+	// - **sha256**: file SHA-256.
+	//
+	// example:
+	//
+	// ossKey
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The operator. Valid values:
+	//
+	// - **contains**: Contains.
+	//
+	// - **not_contains**: Does not contain.
+	//
+	// - **str_equal**: Equals.
+	//
+	// - **str_not_equal**: Does not equal.
+	//
+	// - **regex**: Regular expression.
+	//
+	// example:
+	//
+	// contains
 	Operate *string `json:"Operate,omitempty" xml:"Operate,omitempty"`
-	Value   *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The value to match.
+	//
+	// example:
+	//
+	// sshe
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s HandleObjectScanEventRequestRuleConditionList) String() string {

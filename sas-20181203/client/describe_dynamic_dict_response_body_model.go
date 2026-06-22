@@ -26,19 +26,19 @@ type iDescribeDynamicDictResponseBody interface {
 }
 
 type DescribeDynamicDictResponseBody struct {
-	// The number of weak password rules that are added.
+	// The number of weak password rules that have been added.
 	//
 	// example:
 	//
 	// 1
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The name of the OSS object that contains custom weak passwords.
+	// The name of the weak password file in OSS.
 	//
 	// example:
 	//
 	// test_dict.plain
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// The size of the OSS object. Unit: bytes.
+	// The file size, in bytes.
 	//
 	// example:
 	//
@@ -50,19 +50,19 @@ type DescribeDynamicDictResponseBody struct {
 	//
 	// 9
 	Limit *int32 `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	// The IP address of the Object Storage Service (OSS) object.
+	// The OSS object URL.
 	//
 	// example:
 	//
 	// cloudtest01/661767e1-5ae3-4ec5-865f-03039436893a/sacc2*****
 	OssUrl *string `json:"OssUrl,omitempty" xml:"OssUrl,omitempty"`
-	// The request ID.
+	// The unique identifier that Alibaba Cloud generated for the request.
 	//
 	// example:
 	//
 	// A3D7C47D-3F11-57BB-90E8-E5C20C61****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The timestamp when the OSS object was uploaded. Unit: milliseconds.
+	// The upload timestamp, in milliseconds.
 	//
 	// example:
 	//

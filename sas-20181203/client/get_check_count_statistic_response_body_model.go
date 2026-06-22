@@ -66,11 +66,11 @@ type GetCheckCountStatisticResponseBodyCheckCountStatisticDTO struct {
 	CheckCountStatisticItems []*GetCheckCountStatisticResponseBodyCheckCountStatisticDTOCheckCountStatisticItems `json:"CheckCountStatisticItems,omitempty" xml:"CheckCountStatisticItems,omitempty" type:"Repeated"`
 	// The type of the statistics. Valid values:
 	//
-	// 	- **user**: the top five users that are granted excessive permissions.
+	// - **user**: the top five users that are granted excessive permissions.
 	//
-	// 	- **role**: the top five roles that are granted excessive permissions.
+	// - **role**: the top five roles that are granted excessive permissions.
 	//
-	// 	- **instance**: the top five cloud services on which risks are detected.
+	// - **instance**: the top five cloud services on which risks are detected.
 	//
 	// example:
 	//
@@ -118,7 +118,7 @@ func (s *GetCheckCountStatisticResponseBodyCheckCountStatisticDTO) Validate() er
 }
 
 type GetCheckCountStatisticResponseBodyCheckCountStatisticDTOCheckCountStatisticItems struct {
-	// 检查项展示名称
+	// Check item display name
 	//
 	// example:
 	//
@@ -150,37 +150,37 @@ type GetCheckCountStatisticResponseBodyCheckCountStatisticDTOCheckCountStatistic
 	InstanceSubType *int32 `json:"InstanceSubType,omitempty" xml:"InstanceSubType,omitempty"`
 	// The asset subtype of the cloud service. Valid values:
 	//
-	// 	- If **InstanceTypeName*	- is set to **ECS**, this parameter supports the following valid values:
+	// - If **InstanceTypeName*	- is set to **ECS**, this parameter supports the following valid values:
 	//
-	//     	- **INSTANCE**
+	//   - **INSTANCE**
 	//
-	//     	- **DISK**
+	//   - **DISK**
 	//
-	//     	- **SECURITY_GROUP**
+	//   - **SECURITY_GROUP**
 	//
-	// 	- If **InstanceTypeName*	- is set to **ACR**, this parameter supports the following valid values:
+	// - If **InstanceTypeName*	- is set to **ACR**, this parameter supports the following valid values:
 	//
-	//     	- **REPOSITORY_ENTERPRISE**
+	//   - **REPOSITORY_ENTERPRISE**
 	//
-	//     	- **REPOSITORY_PERSON**
+	//   - **REPOSITORY_PERSON**
 	//
-	// 	- If **InstanceTypeName*	- is set to **RAM**, this parameter supports the following valid values:
+	// - If **InstanceTypeName*	- is set to **RAM**, this parameter supports the following valid values:
 	//
-	//     	- **ALIAS**
+	//   - **ALIAS**
 	//
-	//     	- **USER**
+	//   - **USER**
 	//
-	//     	- **POLICY**
+	//   - **POLICY**
 	//
-	//     	- **GROUP**
+	//   - **GROUP**
 	//
-	// 	- If **InstanceTypeName*	- is set to **WAF**, this parameter supports the following valid value:
+	// - If **InstanceTypeName*	- is set to **WAF**, this parameter supports the following valid value:
 	//
-	//     	- **DOMAIN**
+	//   - **DOMAIN**
 	//
-	// 	- If **InstanceTypeName*	- is set to other values, this parameter supports the following valid values:
+	// - If **InstanceTypeName*	- is set to other values, this parameter supports the following valid values:
 	//
-	//     	- **INSTANCE**
+	//   - **INSTANCE**
 	//
 	// example:
 	//
@@ -188,21 +188,21 @@ type GetCheckCountStatisticResponseBodyCheckCountStatisticDTOCheckCountStatistic
 	InstanceSubTypeName *string `json:"InstanceSubTypeName,omitempty" xml:"InstanceSubTypeName,omitempty"`
 	// The asset type. Valid values:
 	//
-	// 	- **0**: Elastic Compute Service (ECS) instance.
+	// - **0**: Elastic Compute Service (ECS) instance.
 	//
-	// 	- **1**: Server Load Balancer (SLB) instance.
+	// - **1**: Server Load Balancer (SLB) instance.
 	//
-	// 	- **2**: NAT gateway.
+	// - **2**: NAT gateway.
 	//
-	// 	- **3**: ApsaraDB RDS instance.
+	// - **3**: ApsaraDB RDS instance.
 	//
-	// 	- **4**: ApsaraDB for MongoDB (MongoDB) instance.
+	// - **4**: ApsaraDB for MongoDB (MongoDB) instance.
 	//
-	// 	- **5**: Tair (Redis OSS-compatible) (Tair) instance.
+	// - **5**: Tair (Redis OSS-compatible) (Tair) instance.
 	//
-	// 	- **6**: container image.
+	// - **6**: container image.
 	//
-	// 	- **7**: container.
+	// - **7**: container.
 	//
 	// example:
 	//
@@ -210,49 +210,49 @@ type GetCheckCountStatisticResponseBodyCheckCountStatisticDTOCheckCountStatistic
 	InstanceType *int32 `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	// The asset type of the cloud service. Valid values:
 	//
-	// 	- **ECS**: ECS.
+	// - **ECS**: ECS.
 	//
-	// 	- **SLB**: SLB.
+	// - **SLB**: SLB.
 	//
-	// 	- **RDS**: ApsaraDB RDS.
+	// - **RDS**: ApsaraDB RDS.
 	//
-	// 	- **MONGODB**: ApsaraDB for MongoDB.
+	// - **MONGODB**: ApsaraDB for MongoDB.
 	//
-	// 	- **KVSTORE**: Tair.
+	// - **KVSTORE**: Tair.
 	//
-	// 	- **ACR**: Container Registry.
+	// - **ACR**: Container Registry.
 	//
-	// 	- **CSK**: Container Service for Kubernetes (ACK).
+	// - **CSK**: Container Service for Kubernetes (ACK).
 	//
-	// 	- **VPC**: Virtual Private Cloud (VPC).
+	// - **VPC**: Virtual Private Cloud (VPC).
 	//
-	// 	- **ACTIONTRAIL**: ActionTrail.
+	// - **ACTIONTRAIL**: ActionTrail.
 	//
-	// 	- **CDN**: Alibaba Cloud CDN (CDN).
+	// - **CDN**: Alibaba Cloud CDN (CDN).
 	//
-	// 	- **CAS**: Certificate Management Service (formerly SSL Certificates Service).
+	// - **CAS**: Certificate Management Service (formerly SSL Certificates Service).
 	//
-	// 	- **RDC**: Alibaba Cloud DevOps.
+	// - **RDC**: Alibaba Cloud DevOps.
 	//
-	// 	- **RAM**: Resource Access Management (RAM).
+	// - **RAM**: Resource Access Management (RAM).
 	//
-	// 	- **DDOS**: Anti-DDoS.
+	// - **DDOS**: Anti-DDoS.
 	//
-	// 	- **WAF**: Web Application Firewall (WAF).
+	// - **WAF**: Web Application Firewall (WAF).
 	//
-	// 	- **OSS**: Object Storage Service (OSS).
+	// - **OSS**: Object Storage Service (OSS).
 	//
-	// 	- **POLARDB**: PolarDB.
+	// - **POLARDB**: PolarDB.
 	//
-	// 	- **POSTGRESQL**: ApsaraDB RDS for PostgreSQL.
+	// - **POSTGRESQL**: ApsaraDB RDS for PostgreSQL.
 	//
-	// 	- **MSE**: Microservices Engine (MSE).
+	// - **MSE**: Microservices Engine (MSE).
 	//
-	// 	- **NAS**: File Storage NAS (NAS).
+	// - **NAS**: File Storage NAS (NAS).
 	//
-	// 	- **SDDP**: Sensitive Data Discovery and Protection (SDDP).
+	// - **SDDP**: Sensitive Data Discovery and Protection (SDDP).
 	//
-	// 	- **EIP**: Elastic IP Address (EIP).
+	// - **EIP**: Elastic IP Address (EIP).
 	//
 	// example:
 	//
@@ -296,19 +296,19 @@ type GetCheckCountStatisticResponseBodyCheckCountStatisticDTOCheckCountStatistic
 	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 	// The cloud service provider. Valid values:
 	//
-	// 	- **ALIYUN**: Alibaba Cloud.
+	// - **ALIYUN**: Alibaba Cloud.
 	//
-	// 	- **TENCENT**: Tencent Cloud.
+	// - **TENCENT**: Tencent Cloud.
 	//
-	// 	- **MICROSOFT**: Microsoft Azure.
+	// - **MICROSOFT**: Microsoft Azure.
 	//
-	// 	- **AWS**: AWS.
+	// - **AWS**: AWS.
 	//
 	// example:
 	//
 	// ALIYUN
 	Vendor *int32 `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
-	// 厂商名称
+	// Vendor name
 	//
 	// example:
 	//

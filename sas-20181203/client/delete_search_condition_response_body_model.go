@@ -14,7 +14,7 @@ type iDeleteSearchConditionResponseBody interface {
 }
 
 type DeleteSearchConditionResponseBody struct {
-	// The request ID.
+	// The request ID. Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//

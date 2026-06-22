@@ -24,7 +24,7 @@ type UpdateTargetListByBatchRequest struct {
 	//
 	// 52370
 	BatchId *int64 `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
-	// The operations on assets.
+	// The list of asset operations.
 	//
 	// This parameter is required.
 	OperationList []*UpdateTargetListByBatchRequestOperationList `json:"OperationList,omitempty" xml:"OperationList,omitempty" type:"Repeated"`
@@ -72,7 +72,7 @@ func (s *UpdateTargetListByBatchRequest) Validate() error {
 type UpdateTargetListByBatchRequestOperationList struct {
 	// The ID of the server group.
 	//
-	// >  You can call the [DescribeAllGroups](~~DescribeAllGroups~~) operation to query the IDs of server groups.
+	// > Call the [DescribeAllGroups](~~DescribeAllGroups~~) operation to query the server group ID.
 	//
 	// example:
 	//
@@ -80,9 +80,9 @@ type UpdateTargetListByBatchRequestOperationList struct {
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The operation type. Valid values:
 	//
-	// 	- **add**: the add operation.
+	// - **add**: increase.
 	//
-	// 	- **del**: the remove operation.
+	// - **del**: delete.
 	//
 	// example:
 	//
@@ -90,7 +90,7 @@ type UpdateTargetListByBatchRequestOperationList struct {
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
 	// The UUID of the server.
 	//
-	// >  You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to query the UUIDs of servers.
+	// > Call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to obtain this parameter.
 	//
 	// example:
 	//

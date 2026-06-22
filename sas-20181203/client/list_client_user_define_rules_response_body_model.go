@@ -146,9 +146,9 @@ func (s *ListClientUserDefineRulesResponseBodyPageInfo) Validate() error {
 type ListClientUserDefineRulesResponseBodyUserDefineRuleList struct {
 	// The action of the rule. Valid values:
 	//
-	// 	- **0**: allow
+	// - **0**: allow
 	//
-	// 	- **1**: block
+	// - **1**: block
 	//
 	// example:
 	//
@@ -164,15 +164,15 @@ type ListClientUserDefineRulesResponseBodyUserDefineRuleList struct {
 	//
 	// example:
 	//
-	// Rule\\*\\*\\*\\*
+	// 规则****
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The type of the operating system. Valid values:
 	//
-	// 	- **windows**: Windows
+	// - **windows**: Windows
 	//
-	// 	- **linux**: Linux
+	// - **linux**: Linux
 	//
-	// 	- **all**: all types
+	// - **all**: all types
 	//
 	// example:
 	//
@@ -186,19 +186,19 @@ type ListClientUserDefineRulesResponseBodyUserDefineRuleList struct {
 	SwitchId *string `json:"SwitchId,omitempty" xml:"SwitchId,omitempty"`
 	// The type of the rule. Valid values:
 	//
-	// 	- **1**: Process hash
+	// - **1**: Process hash
 	//
-	// 	- **2**: Command line
+	// - **2**: Command line
 	//
-	// 	- **3**: Process Network
+	// - **3**: Process Network
 	//
-	// 	- **4**: File Read and Write
+	// - **4**: File Read and Write
 	//
-	// 	- **5**: Operation on Registry
+	// - **5**: Operation on Registry
 	//
-	// 	- **6**: Dynamic-link Library Loading
+	// - **6**: Dynamic-link Library Loading
 	//
-	// 	- **7**: File Renaming
+	// - **7**: File Renaming
 	//
 	// example:
 	//

@@ -18,9 +18,11 @@ type iListUnknownThreatDetectMachineResponseBody interface {
 }
 
 type ListUnknownThreatDetectMachineResponseBody struct {
-	Data     []*ListUnknownThreatDetectMachineResponseBodyData   `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// An array of instance details.
+	Data []*ListUnknownThreatDetectMachineResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The pagination information.
 	PageInfo *ListUnknownThreatDetectMachineResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -83,36 +85,62 @@ func (s *ListUnknownThreatDetectMachineResponseBody) Validate() error {
 
 type ListUnknownThreatDetectMachineResponseBodyData struct {
 	EffectDays *int64 `json:"EffectDays,omitempty" xml:"EffectDays,omitempty"`
+	// The instance name.
+	//
 	// example:
 	//
 	// 12
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The public IP address.
+	//
 	// example:
 	//
 	// 172.16.XX.XX
 	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	// The private IP address.
+	//
 	// example:
 	//
 	// 10.42.XX.XX
 	IntranetIp   *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
 	PluginStatus *string `json:"PluginStatus,omitempty" xml:"PluginStatus,omitempty"`
+	// The process count.
+	//
 	// example:
 	//
 	// 1
 	ProcessCount *int32 `json:"ProcessCount,omitempty" xml:"ProcessCount,omitempty"`
+	// The instance status. Valid values:
+	//
+	// - **monitoring**: The instance is being monitored for threats.
+	//
+	// - **blocking**: The instance is blocking unauthorized processes.
+	//
+	// - **studying**: The instance is in a learning phase.
+	//
 	// example:
 	//
 	// studying
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The whitelist mode. Valid values:
+	//
+	// - **hash**: process hash
+	//
+	// - **path**: process path
+	//
 	// example:
 	//
 	// hash
 	StudyMode       *string `json:"StudyMode,omitempty" xml:"StudyMode,omitempty"`
 	StudyRemainDays *int64  `json:"StudyRemainDays,omitempty" xml:"StudyRemainDays,omitempty"`
+	// The timestamp when the learning phase started. Unit: seconds.
+	//
 	// example:
 	//
 	// 1766988192
 	StudyStartTime *int64 `json:"StudyStartTime,omitempty" xml:"StudyStartTime,omitempty"`
+	// The UUID of the asset instance.
+	//
 	// example:
 	//
 	// 6690a46c-0edb-4663-a641-3629d1a9****
@@ -231,18 +259,26 @@ func (s *ListUnknownThreatDetectMachineResponseBodyData) Validate() error {
 }
 
 type ListUnknownThreatDetectMachineResponseBodyPageInfo struct {
+	// The number of entries on the current page.
+	//
 	// example:
 	//
 	// 10
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 149

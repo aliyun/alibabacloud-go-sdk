@@ -16,7 +16,7 @@ type iDeleteTagWithUuidRequest interface {
 }
 
 type DeleteTagWithUuidRequest struct {
-	// The name of the tag.
+	// The label name.
 	//
 	// This parameter is required.
 	//
@@ -24,9 +24,9 @@ type DeleteTagWithUuidRequest struct {
 	//
 	// abc
 	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
-	// The UUIDs of servers.
+	// The list of server UUIDs.
 	//
-	// > If the UuidList parameter is specified, Security Center removes the tag only from the servers whose UUIDs are specified by UuidList. If the UuidList parameter is not specified, Security Center removes the tag from all servers.
+	// > If UuidList is specified, Security Center deletes the label only from the servers included in UuidList. If UuidList is empty, Security Center deletes the label from all servers.
 	//
 	// example:
 	//

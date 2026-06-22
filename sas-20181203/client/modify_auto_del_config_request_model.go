@@ -14,13 +14,15 @@ type iModifyAutoDelConfigRequest interface {
 }
 
 type ModifyAutoDelConfigRequest struct {
-	// The number of days after which a detected vulnerability is automatically deleted. Unit: days. Valid values:
+	// The automatic deletion time for expired vulnerabilities. Valid values:
 	//
-	// 	- 7
+	// - 7
 	//
-	// 	- 30
+	// - 30
 	//
-	// 	- 90
+	// - 90
+	//
+	// Unit: days.
 	//
 	// example:
 	//

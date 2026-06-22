@@ -30,7 +30,7 @@ type iDescribeExportInfoResponseBody interface {
 }
 
 type DescribeExportInfoResponseBody struct {
-	// The number of exported entries.
+	// The number of data entries that have been exported.
 	//
 	// example:
 	//
@@ -40,11 +40,11 @@ type DescribeExportInfoResponseBody struct {
 	//
 	// Valid values:
 	//
-	// 	- **init**: The task is being initialized.
+	// - **init**: export initialization
 	//
-	// 	- **exporting**: The task is in progress.
+	// - **exporting**: export in progress
 	//
-	// 	- **success**: The task is complete.
+	// - **success**: export successful.
 	//
 	// example:
 	//
@@ -62,31 +62,31 @@ type DescribeExportInfoResponseBody struct {
 	//
 	// 131231
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The URL at which you can download the exported Excel file.
+	// The download URL of the exported Excel file.
 	//
 	// example:
 	//
 	// http://www.aliyun.com
 	Link *string `json:"Link,omitempty" xml:"Link,omitempty"`
-	// The message that shows the task result. The value is fixed as **success**, which indicates that the task is complete.
+	// The message returned for the export result. Fixed value: **success**. This value indicates that the export is successful.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The progress percentage of the export task.
+	// The export progress percentage (%).
 	//
 	// example:
 	//
 	// 16
 	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// CE500770-42D3-442E-9DDD-156E0F9F3B45
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries in the exported Excel file.
+	// The total number of data entries in the exported Excel file.
 	//
 	// example:
 	//

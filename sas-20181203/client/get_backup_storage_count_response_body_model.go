@@ -16,9 +16,9 @@ type iGetBackupStorageCountResponseBody interface {
 }
 
 type GetBackupStorageCountResponseBody struct {
-	// The details about the anti-ransomware capacity.
+	// The details of the anti-ransomware storage capacity.
 	BackupStorageCount *GetBackupStorageCountResponseBodyBackupStorageCount `json:"BackupStorageCount,omitempty" xml:"BackupStorageCount,omitempty" type:"Struct"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The ID of the request. The ID is a unique identifier that Alibaba Cloud generates for the request and can be used to troubleshoot issues.
 	//
 	// example:
 	//
@@ -62,35 +62,35 @@ func (s *GetBackupStorageCountResponseBody) Validate() error {
 }
 
 type GetBackupStorageCountResponseBodyBackupStorageCount struct {
-	// The anti-ransomware capacity that you purchased. Unit: bytes.
+	// The purchased anti-ransomware capacity. Unit: bytes.
 	//
 	// example:
 	//
 	// 2276332666880
 	BuyStorageByte *int64 `json:"BuyStorageByte,omitempty" xml:"BuyStorageByte,omitempty"`
-	// The storage capacity that is occupied by the backup data of your servers. Unit: bytes.
+	// The storage capacity occupied by server backups in the backup data. Unit: bytes.
 	//
 	// example:
 	//
 	// 817262417803
 	EcsUsageStorageByte *int64 `json:"EcsUsageStorageByte,omitempty" xml:"EcsUsageStorageByte,omitempty"`
-	// Indicates whether the anti-ransomware capacity that is used exceeds the anti-ransomware capacity that you purchased. Valid values:
+	// Indicates whether the anti-ransomware usage exceeds the purchased capacity. Valid values:
 	//
-	// 	- **0**: no
+	// - **0**: not exceeded
 	//
-	// 	- **1**: yes
+	// - **1**: exceeded.
 	//
 	// example:
 	//
 	// 0
 	Overflow *int32 `json:"Overflow,omitempty" xml:"Overflow,omitempty"`
-	// The storage capacity that is occupied by the backup data of your databases. Unit: bytes.
+	// The storage capacity occupied by database backups in the backup data. Unit: bytes.
 	//
 	// example:
 	//
 	// 7453049350
 	UniUsageStorageByte *int64 `json:"UniUsageStorageByte,omitempty" xml:"UniUsageStorageByte,omitempty"`
-	// The total anti-ransomware capacity that is used. Unit: bytes.
+	// The total used anti-ransomware storage capacity. Unit: bytes.
 	//
 	// example:
 	//

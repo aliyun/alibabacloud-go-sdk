@@ -20,29 +20,29 @@ type iDescribePropertyUserItemRequest interface {
 }
 
 type DescribePropertyUserItemRequest struct {
-	// The number of the page to return.
+	// The page number of the current page to display in a paged query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// Specifies whether to forcefully refresh the data that you want to query. Valid values:
+	// Specifies whether to forcefully refresh the data to be queried. Valid values:
 	//
-	// 	- **true**: yes
+	// - **true**: Forcefully refresh.
 	//
-	// 	- **false**: no
+	// - **false**: Do not forcefully refresh.
 	//
 	// example:
 	//
 	// true
 	ForceFlush *bool `json:"ForceFlush,omitempty" xml:"ForceFlush,omitempty"`
-	// The number of entries to return on each page.
+	// The maximum number of entries to display on each page in a paged query.
 	//
 	// example:
 	//
 	// 2
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The information about the account.
+	// The account information of Asset Fingerprints.
 	//
 	// example:
 	//

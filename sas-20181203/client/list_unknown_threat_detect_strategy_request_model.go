@@ -22,26 +22,40 @@ type iListUnknownThreatDetectStrategyRequest interface {
 }
 
 type ListUnknownThreatDetectStrategyRequest struct {
+	// The page number for a paginated query.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The strategy ID.
+	//
 	// example:
 	//
 	// 210****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The strategy name.
+	//
 	// example:
 	//
 	// strategy****
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The number of entries to return per page.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 20
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The whitelist mode. Valid values:
+	//
+	// - **hash**: process hash
+	//
+	// - **path**: process path
+	//
 	// example:
 	//
 	// hash

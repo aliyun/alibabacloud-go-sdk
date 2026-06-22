@@ -20,29 +20,29 @@ type iModifyAccessKeyLeakDealRequest interface {
 }
 
 type ModifyAccessKeyLeakDealRequest struct {
-	// The ID of the AccessKey pair leak.
+	// The ID of the AccessKey pair leak record.
 	//
-	// > You can call the [DescribeAccesskeyLeakList](~~DescribeAccesskeyLeakList~~) operation to query the ID. You must specify at least one of the Id and **IdList*	- parameters.
+	// >Call the [DescribeAccesskeyLeakList](~~DescribeAccesskeyLeakList~~) operation to obtain this parameter. This parameter and the **IdList*	- parameter cannot both be empty.
 	//
 	// example:
 	//
 	// 123
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The IDs of AccessKey pair leaks.
+	// The IDs of the AccessKey pair leak records.
 	IdList []*int64 `json:"IdList,omitempty" xml:"IdList,omitempty" type:"Repeated"`
-	// The remarks that are added.
+	// The remarks for handling the AccessKey pair leak record.
 	//
 	// example:
 	//
 	// disabled.
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The method to handle the AccessKey pair leak. Valid values:
+	// The method to handle the AccessKey pair leak information. Valid values:
 	//
-	// 	- **manual**: manually handle
+	// - **manual**: Manual handling.
 	//
-	// 	- **disable**: disable
+	// - **disable**: Disable.
 	//
-	// 	- **add-whitelist**: add to the whitelist
+	// - **add-whitelist**: Add to whitelist.
 	//
 	// This parameter is required.
 	//

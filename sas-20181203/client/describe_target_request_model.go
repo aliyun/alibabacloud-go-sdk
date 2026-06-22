@@ -16,21 +16,21 @@ type iDescribeTargetRequest interface {
 }
 
 type DescribeTargetRequest struct {
-	// The type of the vulnerability. Valid values:
+	// The vulnerability type. Valid values:
 	//
-	// 	- **cms**: Web CMS vulnerability
+	// - **cms**: Web-CMS vulnerability
 	//
-	// 	- **sys**: Windows system vulnerability
+	// - **sys**: Windows system vulnerability
 	//
-	// 	- **cve**: Linux software vulnerability
+	// - **cve**: Linux software vulnerability
 	//
-	// 	- **emg**: urgent vulnerability
+	// - **emg**: emergency vulnerability.
 	//
 	// example:
 	//
 	// {"vulType":"cms"}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The type of the query. Set the value to vul.
+	// The query type. Set this parameter to vul.
 	//
 	// example:
 	//

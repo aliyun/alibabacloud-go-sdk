@@ -14,9 +14,9 @@ type iDeleteCustomizeReportRequest interface {
 }
 
 type DeleteCustomizeReportRequest struct {
-	// The ID of the report.
+	// The report ID.
 	//
-	// >  You can call the [DescribeCustomizeReportList](~~DescribeCustomizeReportList~~) operation to query the ID.
+	// >Call [DescribeCustomizeReportList](~~DescribeCustomizeReportList~~) to obtain this parameter.
 	//
 	// This parameter is required.
 	//

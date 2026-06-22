@@ -14,7 +14,7 @@ type iDescribeLogShipperStatusRequest interface {
 }
 
 type DescribeLogShipperStatusRequest struct {
-	// The ID of the request source. Set the value to **sas**.
+	// The request source identifier. Set this parameter to **sas**.
 	//
 	// example:
 	//

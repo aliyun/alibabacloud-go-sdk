@@ -16,9 +16,9 @@ type iGetClusterCheckSummaryResponseBody interface {
 }
 
 type GetClusterCheckSummaryResponseBody struct {
-	// Return data.
+	// The returned data.
 	Data *GetClusterCheckSummaryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,25 +62,25 @@ func (s *GetClusterCheckSummaryResponseBody) Validate() error {
 }
 
 type GetClusterCheckSummaryResponseBodyData struct {
-	// Total number of items that failed the check.
+	// The total number of check items that failed the check.
 	//
 	// example:
 	//
 	// 6
 	NotPassCount *int32 `json:"NotPassCount,omitempty" xml:"NotPassCount,omitempty"`
-	// Number of high-risk inspection items that have not passed.
+	// The number of check items with a high-risk level that failed the check.
 	//
 	// example:
 	//
 	// 1
 	NotPassHighCount *int32 `json:"NotPassHighCount,omitempty" xml:"NotPassHighCount,omitempty"`
-	// Number of low-risk inspection items that have not passed.
+	// The number of check items with a low-risk level that failed the check.
 	//
 	// example:
 	//
 	// 3
 	NotPassLowCount *int32 `json:"NotPassLowCount,omitempty" xml:"NotPassLowCount,omitempty"`
-	// Number of medium-risk failed inspection items.
+	// The number of check items with a medium-risk level that failed the check.
 	//
 	// example:
 	//

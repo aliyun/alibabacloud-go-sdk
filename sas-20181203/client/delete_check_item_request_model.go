@@ -14,7 +14,7 @@ type iDeleteCheckItemRequest interface {
 }
 
 type DeleteCheckItemRequest struct {
-	// List of check item IDs.
+	// The list of check item IDs.
 	//
 	// This parameter is required.
 	CheckIds []*int64 `json:"CheckIds,omitempty" xml:"CheckIds,omitempty" type:"Repeated"`

@@ -52,9 +52,9 @@ type GetOpaStrategyDetailNewResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -166,9 +166,9 @@ type GetOpaStrategyDetailNewResponseBodyData struct {
 	Label []*string `json:"Label,omitempty" xml:"Label,omitempty" type:"Repeated"`
 	// The language of the content within the request and response. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//
@@ -176,9 +176,9 @@ type GetOpaStrategyDetailNewResponseBodyData struct {
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// Indicates whether the rule supports malicious Internet images. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -192,11 +192,11 @@ type GetOpaStrategyDetailNewResponseBodyData struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The action that is performed when the rule is hit. Valid values:
 	//
-	// 	- **1**: trigger alerts
+	// - **1**: trigger alerts
 	//
-	// 	- **2**: block
+	// - **2**: block
 	//
-	// 	- **3**: allow
+	// - **3**: allow
 	//
 	// example:
 	//
@@ -224,9 +224,9 @@ type GetOpaStrategyDetailNewResponseBodyData struct {
 	StrategyTemplateId *int64 `json:"StrategyTemplateId,omitempty" xml:"StrategyTemplateId,omitempty"`
 	// Indicates whether the rule supports unscanned images. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -650,7 +650,7 @@ func (s *GetOpaStrategyDetailNewResponseBodyDataAlarmDetailBuildRisk) Validate()
 type GetOpaStrategyDetailNewResponseBodyDataAlarmDetailBuildRiskItem struct {
 	// The ID of the image build risk.
 	//
-	// >  You can call the [ListImageBuildRiskItem](~~ListImageBuildRiskItem~~) operation to query the ID of the malicious sample.
+	// > You can call the [ListImageBuildRiskItem](~~ListImageBuildRiskItem~~) operation to query the ID of the malicious sample.
 	//
 	// example:
 	//
@@ -658,7 +658,7 @@ type GetOpaStrategyDetailNewResponseBodyDataAlarmDetailBuildRiskItem struct {
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The name of the image build risk.
 	//
-	// >  You can call the [ListImageBuildRiskItem](~~ListImageBuildRiskItem~~) operation to query the ID of the malicious sample.
+	// > You can call the [ListImageBuildRiskItem](~~ListImageBuildRiskItem~~) operation to query the ID of the malicious sample.
 	//
 	// example:
 	//
@@ -836,7 +836,7 @@ func (s *GetOpaStrategyDetailNewResponseBodyDataAlarmDetailSensitiveFile) Valida
 type GetOpaStrategyDetailNewResponseBodyDataAlarmDetailSensitiveFileItem struct {
 	// The ID of the sensitive files.
 	//
-	// >  You can call the [GetSensitiveDefineRuleConfig](~~GetSensitiveDefineRuleConfig~~) operation to query the ID of the malicious sample.
+	// > You can call the [GetSensitiveDefineRuleConfig](~~GetSensitiveDefineRuleConfig~~) operation to query the ID of the malicious sample.
 	//
 	// example:
 	//
@@ -844,7 +844,7 @@ type GetOpaStrategyDetailNewResponseBodyDataAlarmDetailSensitiveFileItem struct 
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The name of the sensitive files.
 	//
-	// >  You can call the [GetSensitiveDefineRuleConfig](~~GetSensitiveDefineRuleConfig~~) operation to query the ID of the malicious sample.
+	// > You can call the [GetSensitiveDefineRuleConfig](~~GetSensitiveDefineRuleConfig~~) operation to query the ID of the malicious sample.
 	//
 	// example:
 	//
@@ -996,9 +996,9 @@ func (s *GetOpaStrategyDetailNewResponseBodyDataAlarmDetailVulItem) Validate() e
 type GetOpaStrategyDetailNewResponseBodyDataAlarmDetailVulRiskClass struct {
 	// The ID of the vulnerability types. Valid values:
 	//
-	// 	- **cve**: system vulnerability
+	// - **cve**: system vulnerability
 	//
-	// 	- **app**: application vulnerability
+	// - **app**: application vulnerability
 	//
 	// example:
 	//
@@ -1006,13 +1006,13 @@ type GetOpaStrategyDetailNewResponseBodyDataAlarmDetailVulRiskClass struct {
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The name of the vulnerability. Valid values:
 	//
-	// 	- **system vulnerability**
+	// - **system vulnerability**
 	//
-	// 	- **application vulnerability**
+	// - **application vulnerability**
 	//
 	// example:
 	//
-	// system vulnerability
+	// 系统漏洞
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -1055,9 +1055,9 @@ type GetOpaStrategyDetailNewResponseBodyDataScopes struct {
 	AckPolicyInstanceId *string `json:"AckPolicyInstanceId,omitempty" xml:"AckPolicyInstanceId,omitempty"`
 	// Indicates whether all namespaces are included. Valid values:
 	//
-	// 	- **1**: yes
+	// - **1**: yes
 	//
-	// 	- **0**: no
+	// - **0**: no
 	//
 	// example:
 	//

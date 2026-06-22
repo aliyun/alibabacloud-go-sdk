@@ -14,9 +14,9 @@ type iGetStrategyTemplateDetailRequest interface {
 }
 
 type GetStrategyTemplateDetailRequest struct {
-	// The ID of the template.
+	// The ID of the rule template.
 	//
-	// >  You can call the [GetOpaStrategyTemplateSummary](~~GetOpaStrategyTemplateSummary~~) operation to query the IDs of templates.
+	// >You can call the [GetOpaStrategyTemplateSummary](~~GetOpaStrategyTemplateSummary~~) operation to obtain this parameter.
 	//
 	// example:
 	//

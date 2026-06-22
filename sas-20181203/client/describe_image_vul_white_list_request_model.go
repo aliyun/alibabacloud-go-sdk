@@ -22,29 +22,29 @@ type iDescribeImageVulWhiteListRequest interface {
 }
 
 type DescribeImageVulWhiteListRequest struct {
-	// The alias of the vulnerability that you want to query.
+	// The alias of the vulnerability to query.
 	//
 	// example:
 	//
 	// CVE-2007-5686:rpath_linux
 	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
-	// The number of the page to return.
+	// The page number of the current page in a paged query. Paging is used to display results.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language type for the request and response. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese.
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English.
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of entries per page. Default value: 20.
+	// The maximum number of entries per page in a paged query. Paging is used to display results. Default value: 20.
 	//
 	// example:
 	//
@@ -52,9 +52,9 @@ type DescribeImageVulWhiteListRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The source of the whitelist. Valid values:
 	//
-	// - **image**
+	// - **image**: image
 	//
-	// - **agentless**
+	// - **agentless**: agentless.
 	//
 	// example:
 	//

@@ -24,9 +24,9 @@ type iSaveImageBaselineStrategyRequest interface {
 }
 
 type SaveImageBaselineStrategyRequest struct {
-	// The baseline check items.
+	// The baseline items.
 	//
-	// > You can call the [DescribeImageBaselineStrategy](~~DescribeImageBaselineStrategy~~) operation to query baseline check items.
+	// > You can call the [DescribeImageBaselineStrategy](~~DescribeImageBaselineStrategy~~) API to obtain the value of this parameter.
 	//
 	// This parameter is required.
 	//
@@ -34,36 +34,41 @@ type SaveImageBaselineStrategyRequest struct {
 	//
 	// ak_leak
 	BaselineItemList *string `json:"BaselineItemList,omitempty" xml:"BaselineItemList,omitempty"`
-	ImageVulClean    *int32  `json:"ImageVulClean,omitempty" xml:"ImageVulClean,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The baseline risk retention period, in days.
 	//
-	// 	- **zh**: Chinese
+	// example:
 	//
-	// 	- **en**: English
+	// 90
+	ImageVulClean *int32 `json:"ImageVulClean,omitempty" xml:"ImageVulClean,omitempty"`
+	// The language of the request and response. Default value: **zh**. Valid values:
+	//
+	// - **zh**: Chinese.
+	//
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The data source. If this parameter is left empty, the baseline check policy for images is queried. Valid values:
+	// The data source. If you do not specify this parameter, the operation queries image baseline strategies by default. Valid values:
 	//
-	// 	- **default**: the baseline check policy for images
+	// - **default**: image
 	//
-	// 	- **agentless**: agentless detection
+	// - **agentless**: agentless
 	//
 	// example:
 	//
 	// agentless
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The ID of the baseline check policy.
+	// The ID of the baseline check strategy.
 	//
-	// > You can call the [DescribeImageBaselineStrategy](~~DescribeImageBaselineStrategy~~) operation to query the IDs of baseline check policies.
+	// > You can call the [DescribeImageBaselineStrategy](~~DescribeImageBaselineStrategy~~) API to obtain the value of this parameter.
 	//
 	// example:
 	//
 	// 8639
 	StrategyId *int64 `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
-	// The name of the baseline check policy.
+	// The name of the baseline check strategy.
 	//
 	// example:
 	//

@@ -26,9 +26,9 @@ type iUploadedHoneyPotFileRequest interface {
 }
 
 type UploadedHoneyPotFileRequest struct {
-	// The file key that you use to upload the file.
+	// The FileKey used to upload the file.
 	//
-	// >  The key is in the format of HONEYPOT_FILE/{Timestamp}_{Custom file name}.
+	// > Format: HONEYPOT_FILE/{timestamp}_{custom_file_name}.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type UploadedHoneyPotFileRequest struct {
 	//
 	// HONEYPOT_FILE/1601097845544644_********
 	FileKey *string `json:"FileKey,omitempty" xml:"FileKey,omitempty"`
-	// The name of the file that you want to upload.
+	// The name of the uploaded file.
 	//
 	// This parameter is required.
 	//
@@ -60,25 +60,25 @@ type UploadedHoneyPotFileRequest struct {
 	//
 	// ruoyi
 	HoneypotImageName *string `json:"HoneypotImageName,omitempty" xml:"HoneypotImageName,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language type of the request and response. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The ID of the management node to which the honeypot belongs.
+	// The ID of the honeypot management node.
 	//
-	// >  You can call the [ListHoneypotNode](~~ListHoneypotNode~~) operation to obtain the IDs of management nodes. operation to query the management node ID.
+	// > Call the [ListHoneypotNode](~~ListHoneypotNode~~) operation to obtain this value.
 	//
 	// example:
 	//
 	// cc427e14-f257-4670-9d2b-d83bbbe*****
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The prompt template that corresponds to the file.
+	// The template prompt corresponding to the uploaded file.
 	//
 	// This parameter is required.
 	//

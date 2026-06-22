@@ -20,39 +20,39 @@ type iListSupportAttackPathAssetRequest interface {
 }
 
 type ListSupportAttackPathAssetRequest struct {
-	// Node type, with values:
+	// The node type. Valid values:
 	//
-	// - **start**: Start point.
+	// - **start**: start node.
 	//
-	// - **end**: End point.
+	// - **end**: end node.
 	//
 	// example:
 	//
 	// end
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	// Path name.
+	// The path name.
 	//
-	// > You can call [ListAvailableAttackPath](~~ListAvailableAttackPath~~) to query the path names.
+	// > Call [ListAvailableAttackPath](~~ListAvailableAttackPath~~) to query path names.
 	//
 	// example:
 	//
 	// ecs_get_credential_by_create_login_profile
 	PathName *string `json:"PathName,omitempty" xml:"PathName,omitempty"`
-	// Path type.
+	// The path type.
 	//
-	// > You can call [ListAvailableAttackPath](~~ListAvailableAttackPath~~) to query the path types.
+	// > Call [ListAvailableAttackPath](~~ListAvailableAttackPath~~) to query path types.
 	//
 	// example:
 	//
 	// role_escalation
 	PathType *string `json:"PathType,omitempty" xml:"PathType,omitempty"`
-	// Support type, with values:
+	// The support type. Valid values:
 	//
-	// - **event**: Attack path alert event.
+	// - **event**: attack path alert event.
 	//
-	// - **whitelist**: Attack path whitelist.
+	// - **whitelist**: attack path whitelist.
 	//
-	// - **sensitive**: Sensitive assets in the attack path.
+	// - **sensitive**: attack path sensitive asset.
 	//
 	// This parameter is required.
 	//

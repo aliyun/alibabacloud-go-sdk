@@ -130,7 +130,7 @@ type ExportSuspEventsRequest struct {
   // 
   // example:
   // 
-  // 8076980
+  // 9454789
   GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
   // The unique ID of the alert event.
   // 

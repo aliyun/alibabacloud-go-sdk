@@ -16,10 +16,14 @@ type iUpdateUnknownThreatDetectProcessRequest interface {
 }
 
 type UpdateUnknownThreatDetectProcessRequest struct {
+	// The process ID.
+	//
 	// example:
 	//
 	// 2026011210040602108912721603151374234
 	ProcessId *string `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
+	// The remark for the process.
+	//
 	// example:
 	//
 	// remark

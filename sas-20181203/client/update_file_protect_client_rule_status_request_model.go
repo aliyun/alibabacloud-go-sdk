@@ -28,30 +28,66 @@ type iUpdateFileProtectClientRuleStatusRequest interface {
 }
 
 type UpdateFileProtectClientRuleStatusRequest struct {
+	// The alert notification level. Valid values:
+	//
+	// - 0: no alert
+	//
+	// - 1: reminder
+	//
+	// - 2: suspicious
+	//
+	// - 3: high-risk.
+	//
 	// example:
 	//
 	// 0
-	AlertLevel    *int32   `json:"AlertLevel,omitempty" xml:"AlertLevel,omitempty"`
+	AlertLevel *int32 `json:"AlertLevel,omitempty" xml:"AlertLevel,omitempty"`
+	// The list of excluded rule IDs.
 	ExcludeIdList []*int64 `json:"ExcludeIdList,omitempty" xml:"ExcludeIdList,omitempty" type:"Repeated"`
-	IdList        []*int64 `json:"IdList,omitempty" xml:"IdList,omitempty" type:"Repeated"`
+	// The list of rule IDs.
+	IdList []*int64 `json:"IdList,omitempty" xml:"IdList,omitempty" type:"Repeated"`
+	// The operating system type. Valid values:
+	//
+	// - **windows**: Windows
+	//
+	// - **linux**: Linux.
+	//
 	// example:
 	//
 	// linux
 	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	// The rule action. Valid values:
+	//
+	// - **block**: Block.
+	//
+	// - **monitor**: Monitor.
+	//
+	// - **pass**: Allow.
+	//
 	// example:
 	//
 	// pass
 	RuleAction *string `json:"RuleAction,omitempty" xml:"RuleAction,omitempty"`
+	// The rule name.
+	//
 	// example:
 	//
 	// test
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// Specifies whether to select all rules.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// true
 	SelectAll *bool `json:"SelectAll,omitempty" xml:"SelectAll,omitempty"`
+	// The policy status. Valid values:
+	//
+	// - **0**: disabled.
+	//
+	// - **1**: enabled.
+	//
 	// This parameter is required.
 	//
 	// example:

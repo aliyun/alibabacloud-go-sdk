@@ -62,21 +62,21 @@ type iDescribeCanFixVulListRequest interface {
 }
 
 type DescribeCanFixVulListRequest struct {
-	// The alias of the vulnerability that is specified in Common Vulnerabilities and Exposures (CVE).
+	// The alias in the vulnerability advisory.
 	//
 	// example:
 	//
 	// RHSA-2017:0184-Important: mysql security update
 	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
-	// The cluster ID.
+	// The ID of the container cluster.
 	//
-	// >  You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to query the IDs of clusters.
+	// > You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// c80f79959fd724a888e1187779b13****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The name of the cluster.
+	// The name of the container cluster.
 	//
 	// example:
 	//
@@ -88,7 +88,7 @@ type DescribeCanFixVulListRequest struct {
 	//
 	// 48a6d9a92435a13ad573372c3f3c63b7e04d106458141df9f92155709d5a****
 	ContainerId *string `json:"ContainerId,omitempty" xml:"ContainerId,omitempty"`
-	// The page number. Pages start from page 1. Default value: 1.
+	// The page number of the current page in a paging query. The value starts from 1. Default value: 1.
 	//
 	// example:
 	//
@@ -96,27 +96,29 @@ type DescribeCanFixVulListRequest struct {
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// Specifies whether the vulnerability is handled. Valid values:
 	//
-	// **y**: The vulnerability is handled. **n**: The vulnerability is not handled.
+	// **y**: Handled.
+	//
+	// **n**: Not handled.
 	//
 	// example:
 	//
 	// n
 	Dealed *string `json:"Dealed,omitempty" xml:"Dealed,omitempty"`
-	// The unique identifier of the image.
+	// The unique identifier of the container image.
 	//
 	// example:
 	//
 	// 8f0fbdb41d3d1ade4ffdf21558443f4c03342010563bb8c43ccc09594d50****
 	Digest *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
-	// The name of the image.
+	// The name of the container image.
 	//
 	// example:
 	//
 	// registry.cn-wulanchabu.aliyuncs.com/sas_test/huxin-test-001:nuxeo6-****
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
-	// The ID of the container image.
+	// The container image instance ID.
 	//
-	// >  You can call the [ListRepository](https://help.aliyun.com/document_detail/451339.html) operation of Container Registry and obtain the ID of the container image from **InstanceId*	- in the response.
+	// > Invoke the [ListRepository](https://help.aliyun.com/document_detail/451339.html) operation of Container Registry and obtain the container image instance ID from the **InstanceId*	- response parameter.
 	//
 	// example:
 	//
@@ -128,33 +130,33 @@ type DescribeCanFixVulListRequest struct {
 	//
 	// scan:AVD-2022-953356
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The namespace of the cluster.
+	// The cluster namespace.
 	//
-	// >  You can call the [GetOpaClusterNamespaceList](~~GetOpaClusterNamespaceList~~) operation to query the namespaces of clusters.
+	// > You can call the [GetOpaClusterNamespaceList](~~GetOpaClusterNamespaceList~~) operation to query this value.
 	//
 	// example:
 	//
 	// default
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The priority to fix the vulnerability. Separate multiple priorities with commas (,). Valid values:
+	// The priority levels of vulnerabilities to query. Separate multiple levels with commas (,). Valid values:
 	//
-	// 	- **asap**: high
+	// - **asap**: high
 	//
-	// 	- **later**: medium
+	// - **later**: medium
 	//
-	// 	- **nntf**: low
+	// - **nntf**: low.
 	//
 	// example:
 	//
 	// asap,later,nntf
 	Necessity *string `json:"Necessity,omitempty" xml:"Necessity,omitempty"`
-	// The number of entries per page. Default value: 20.
+	// The maximum number of entries per page in a paging query. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The name of the container group.
+	// The name of the pod.
 	//
 	// example:
 	//
@@ -162,29 +164,29 @@ type DescribeCanFixVulListRequest struct {
 	Pod *string `json:"Pod,omitempty" xml:"Pod,omitempty"`
 	// The region ID of the image repository. Valid values:
 	//
-	// 	- **cn-beijing**: China (Beijing)
+	// - **cn-beijing**: China (Beijing)
 	//
-	// 	- **cn-zhangjiakou**: China (Zhangjiakou)
+	// - **cn-zhangjiakou**: China (Zhangjiakou)
 	//
-	// 	- **cn-hangzhou**: China (Hangzhou)
+	// - **cn-hangzhou**: China (Hangzhou)
 	//
-	// 	- **cn-shanghai**: China (Shanghai)
+	// - **cn-shanghai**: China (Shanghai)
 	//
-	// 	- **cn-shenzhen**: China (Shenzhen)
+	// - **cn-shenzhen**: China (Shenzhen)
 	//
-	// 	- **cn-hongkong**: China (Hong Kong)
+	// - **cn-hongkong**: Hong Kong (China)
 	//
-	// 	- **ap-southeast-1**: Singapore
+	// - **ap-southeast-1**: Singapore
 	//
-	// 	- **ap-southeast-5**: Indonesia (Jakarta)
+	// - **ap-southeast-5**: Indonesia (Jakarta)
 	//
-	// 	- **us-east-1**: US (Virginia)
+	// - **us-east-1**: US (Virginia)
 	//
-	// 	- **us-west-1**: US (Silicon Valley)
+	// - **us-west-1**: US (Silicon Valley)
 	//
-	// 	- **eu-central-1**: Germany (Frankfurt)
+	// - **eu-central-1**: Germany (Frankfurt)
 	//
-	// 	- **eu-west-1**: UK (London)
+	// - **eu-west-1**: UK (London).
 	//
 	// example:
 	//
@@ -192,15 +194,15 @@ type DescribeCanFixVulListRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the image repository.
 	//
-	// >  You can call the [ListRepository](https://help.aliyun.com/document_detail/145293.html) operation of Container Registry and obtain the ID of the image repository from **RepoId*	- in the response.
+	// > Call the [ListRepository](https://help.aliyun.com/document_detail/145293.html) operation of Container Registry and obtain the value of the **RepoId*	- response parameter.
 	//
 	// example:
 	//
 	// crr-avo7qp02simz2njo
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	// The ID of the container image.
+	// The container image instance ID.
 	//
-	// >  You can call the [ListRepository](https://help.aliyun.com/document_detail/451339.html) operation of Container Registry and obtain the ID of the container image from **InstanceId*	- in the response.
+	// > Invoke the [ListRepository](https://help.aliyun.com/document_detail/451339.html) operation of Container Registry and obtain the container image instance ID from the **InstanceId*	- response parameter.
 	//
 	// example:
 	//
@@ -208,15 +210,15 @@ type DescribeCanFixVulListRequest struct {
 	RepoInstanceId *string `json:"RepoInstanceId,omitempty" xml:"RepoInstanceId,omitempty"`
 	// The name of the image repository.
 	//
-	// >  Fuzzy match is supported.
+	// > Fuzzy match is supported.
 	//
 	// example:
 	//
 	// digital-account
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	// The namespace to which the image repository belongs.
+	// The namespace of the image repository.
 	//
-	// >  Fuzzy match is supported.
+	// > Fuzzy match is supported.
 	//
 	// example:
 	//
@@ -224,63 +226,63 @@ type DescribeCanFixVulListRequest struct {
 	RepoNamespace *string `json:"RepoNamespace,omitempty" xml:"RepoNamespace,omitempty"`
 	// The region ID of the image repository. Valid values:
 	//
-	// 	- **cn-beijing**: China (Beijing)
+	// - **cn-beijing**: China (Beijing)
 	//
-	// 	- **cn-zhangjiakou**: China (Zhangjiakou)
+	// - **cn-zhangjiakou**: China (Zhangjiakou)
 	//
-	// 	- **cn-hangzhou**: China (Hangzhou)
+	// - **cn-hangzhou**: China (Hangzhou)
 	//
-	// 	- **cn-shanghai**: China (Shanghai)
+	// - **cn-shanghai**: China (Shanghai)
 	//
-	// 	- **cn-shenzhen**: China (Shenzhen)
+	// - **cn-shenzhen**: China (Shenzhen)
 	//
-	// 	- **cn-hongkong**: China (Hong Kong)
+	// - **cn-hongkong**: Hong Kong (China)
 	//
-	// 	- **ap-southeast-1**: Singapore
+	// - **ap-southeast-1**: Singapore
 	//
-	// 	- **ap-southeast-5**: Indonesia (Jakarta)
+	// - **ap-southeast-5**: Indonesia (Jakarta)
 	//
-	// 	- **us-east-1**: US (Virginia)
+	// - **us-east-1**: US (Virginia)
 	//
-	// 	- **us-west-1**: US (Silicon Valley)
+	// - **us-west-1**: US (Silicon Valley)
 	//
-	// 	- **eu-central-1**: Germany (Frankfurt)
+	// - **eu-central-1**: Germany (Frankfurt)
 	//
-	// 	- **eu-west-1**: UK (London)
+	// - **eu-west-1**: UK (London).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RepoRegionId *string `json:"RepoRegionId,omitempty" xml:"RepoRegionId,omitempty"`
-	// The type of the asset that you want to scan. Valid values:
+	// The scan scope. Valid values:
 	//
-	// 	- **image**
+	// - **image**: Image.
 	//
-	// 	- **container**
+	// - **container**: Container.
 	ScanRange []*string `json:"ScanRange,omitempty" xml:"ScanRange,omitempty" type:"Repeated"`
-	// The status of the vulnerability. Valid values:
+	// The fix status of the vulnerability. Valid values:
 	//
-	// 	- **1**: The vulnerability is unfixed.
+	// - **1**: Unfixed.
 	//
-	// 	- **4**: The vulnerability is being fixed.
+	// - **4**: Being fixed.
 	//
-	// 	- **7**:The vulnerability is fixed.
+	// - **7**: Fixed.
 	//
 	// example:
 	//
 	// 1
 	StatusList *string `json:"StatusList,omitempty" xml:"StatusList,omitempty"`
-	// The tag to add to the image.
+	// The tag of the container image.
 	//
 	// example:
 	//
 	// 0.1.0
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	// The type of the vulnerability. Valid values:
+	// The vulnerability type. Valid values:
 	//
-	// 	- **cve**: system vulnerability
+	// - **cve**: system vulnerability
 	//
-	// 	- **sca**: application vulnerability
+	// - **sca**: application vulnerability.
 	//
 	// This parameter is required.
 	//
@@ -288,7 +290,7 @@ type DescribeCanFixVulListRequest struct {
 	//
 	// cve
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The UUID of the image. Separate multiple UUIDs with commas (,).
+	// The UUIDs of images. Separate multiple UUIDs with commas (,).
 	//
 	// example:
 	//

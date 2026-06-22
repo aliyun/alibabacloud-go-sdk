@@ -22,7 +22,7 @@ type iModifyCustomBlockRecordRequest interface {
 }
 
 type ModifyCustomBlockRecordRequest struct {
-	// The IP address that you want to specify in the policy.
+	// The IP address blocked for brute-force attacks prevention.
 	//
 	// This parameter is required.
 	//
@@ -30,11 +30,11 @@ type ModifyCustomBlockRecordRequest struct {
 	//
 	// 10.12.XX.XX
 	BlockIp *string `json:"BlockIp,omitempty" xml:"BlockIp,omitempty"`
-	// The traffic direction that you want to specify in the policy. Valid values:
+	// The direction in which the brute-force attacks blocking policy blocks the IP address on the server. Valid values:
 	//
-	// 	- **in**: inbound
+	// - **in**: inbound
 	//
-	// 	- **out**: outbound
+	// - **out**: outbound.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type ModifyCustomBlockRecordRequest struct {
 	//
 	// out
 	Bound *string `json:"Bound,omitempty" xml:"Bound,omitempty"`
-	// The expiration time of the policy.
+	// The expiration time of the blocking record.
 	//
 	// This parameter is required.
 	//
@@ -51,7 +51,7 @@ type ModifyCustomBlockRecordRequest struct {
 	// 1940899881000
 	ExpireTime      *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The UUIDs of servers.
+	// The list of servers.
 	//
 	// This parameter is required.
 	//

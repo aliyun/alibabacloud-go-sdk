@@ -20,27 +20,27 @@ type iListHoneypotProbeUuidRequest interface {
 type ListHoneypotProbeUuidRequest struct {
 	// The ID of the management node.
 	//
-	// >  You can call the [ListHoneypotNode](~~ListHoneypotNode~~) operation to obtain the ID.
+	// > You can call the [ListHoneypotNode](~~ListHoneypotNode~~) operation to obtain this value.
 	//
 	// example:
 	//
 	// a882e590-b87b-45a6-87b9-d0a3e5a0****
 	ControlNodeId *string `json:"ControlNodeId,omitempty" xml:"ControlNodeId,omitempty"`
-	// The language of the content within the request and the response. Default value: **zh**. Valid values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The type of the probe. Valid values:
+	// The probe type. Valid values:
 	//
-	// 	- **host_probe**: host probe
+	// - **host_probe**: host probe
 	//
-	// 	- **vpc_black_hole_probe**: virtual private cloud (VPC) probe
+	// - **vpc_black_hole_probe**: VPC blackhole probe.
 	//
 	// example:
 	//

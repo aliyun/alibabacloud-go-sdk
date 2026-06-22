@@ -14,11 +14,11 @@ type iOpenSensitiveFileScanRequest interface {
 }
 
 type OpenSensitiveFileScanRequest struct {
-	// Specifies whether to enable or disable sensitive file scan. Valid values:
+	// The switch operation. Valid values:
 	//
-	// 	- **on**: enables sensitive file scan
+	// - **on**: Enable.
 	//
-	// 	- **off**: disables sensitive file scan
+	// - **off**: Disable.
 	//
 	// example:
 	//

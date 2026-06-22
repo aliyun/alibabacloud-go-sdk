@@ -20,7 +20,7 @@ type iGetCheckCountStatisticRequest interface {
 }
 
 type GetCheckCountStatisticRequest struct {
-	// 语言参数
+	// Language parameter
 	//
 	// example:
 	//
@@ -28,13 +28,13 @@ type GetCheckCountStatisticRequest struct {
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The type of the statistics. Valid values:
 	//
-	// 	- **user**: the top five users that are granted excessive permissions.
+	// - **user**: the top five users that are granted excessive permissions.
 	//
-	// 	- **role**: the top five roles that are granted excessive permissions.
+	// - **role**: the top five roles that are granted excessive permissions.
 	//
-	// 	- **instance**: the top five cloud services on which risks are detected.
+	// - **instance**: the top five cloud services on which risks are detected.
 	//
-	// 	- **host**: the top five servers on which baseline risks are detected.
+	// - **host**: the top five servers on which baseline risks are detected.
 	//
 	// example:
 	//

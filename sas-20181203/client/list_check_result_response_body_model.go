@@ -92,21 +92,21 @@ type ListCheckResultResponseBodyChecks struct {
 	AssetSubType *int32 `json:"AssetSubType,omitempty" xml:"AssetSubType,omitempty"`
 	// The type of the asset. Valid values:
 	//
-	// 	- **0**: an ECS instance
+	// - **0**: an ECS instance
 	//
-	// 	- **1**: a SLB instance
+	// - **1**: a SLB instance
 	//
-	// 	- **2**: a NAT gateway
+	// - **2**: a NAT gateway
 	//
-	// 	- **3**: an ApsaraDB RDS instance
+	// - **3**: an ApsaraDB RDS instance
 	//
-	// 	- **4**: an ApsaraDB for MongoDB instance
+	// - **4**: an ApsaraDB for MongoDB instance
 	//
-	// 	- **5**: an ApsaraDB for Redis instance
+	// - **5**: an ApsaraDB for Redis instance
 	//
-	// 	- **6**: a container image
+	// - **6**: a container image
 	//
-	// 	- **7**: a container
+	// - **7**: a container
 	//
 	// example:
 	//
@@ -114,15 +114,15 @@ type ListCheckResultResponseBodyChecks struct {
 	AssetType *int32 `json:"AssetType,omitempty" xml:"AssetType,omitempty"`
 	// The service provider of the asset. Valid values:
 	//
-	// 	- **0**: Alibaba Cloud
+	// - **0**: Alibaba Cloud
 	//
-	// 	- **3**: Huawei Cloud
+	// - **3**: Huawei Cloud
 	//
-	// 	- **4**: Microsoft Azure
+	// - **4**: Microsoft Azure
 	//
-	// 	- **5**: AWS
+	// - **5**: AWS
 	//
-	// 	- **7**: Tencent Cloud
+	// - **7**: Tencent Cloud
 	//
 	// example:
 	//
@@ -138,9 +138,9 @@ type ListCheckResultResponseBodyChecks struct {
 	CheckPolicies []*ListCheckResultResponseBodyChecksCheckPolicies `json:"CheckPolicies,omitempty" xml:"CheckPolicies,omitempty" type:"Repeated"`
 	// The type of the check item. Valid values:
 	//
-	// 	- **0**: paid
+	// - **0**: paid
 	//
-	// 	- **1**: free
+	// - **1**: free
 	//
 	// example:
 	//
@@ -164,37 +164,37 @@ type ListCheckResultResponseBodyChecks struct {
 	CheckType *string `json:"CheckType,omitempty" xml:"CheckType,omitempty"`
 	// The asset subtype of the cloud service. Valid values:
 	//
-	// 	- If the **InstanceType*	- parameter is set to **ECS**, this parameter supports the following valid values:
+	// - If the **InstanceType*	- parameter is set to **ECS**, this parameter supports the following valid values:
 	//
-	//     	- **INSTANCE**
+	//   - **INSTANCE**
 	//
-	//     	- **DISK**
+	//   - **DISK**
 	//
-	//     	- **SECURITY_GROUP**
+	//   - **SECURITY_GROUP**
 	//
-	// 	- If the **InstanceType*	- parameter is set to **ACR**, this parameter supports the following valid values:
+	// - If the **InstanceType*	- parameter is set to **ACR**, this parameter supports the following valid values:
 	//
-	//     	- **REPOSITORY_ENTERPRISE**
+	//   - **REPOSITORY_ENTERPRISE**
 	//
-	//     	- **REPOSITORY_PERSON**
+	//   - **REPOSITORY_PERSON**
 	//
-	// 	- If the **InstanceType*	- parameter is set to **RAM**, this parameter supports the following valid values:
+	// - If the **InstanceType*	- parameter is set to **RAM**, this parameter supports the following valid values:
 	//
-	//     	- **ALIAS**
+	//   - **ALIAS**
 	//
-	//     	- **USER**
+	//   - **USER**
 	//
-	//     	- **POLICY**
+	//   - **POLICY**
 	//
-	//     	- **GROUP**
+	//   - **GROUP**
 	//
-	// 	- If the **InstanceType*	- parameter is set to **WAF**, this parameter supports the following valid values:
+	// - If the **InstanceType*	- parameter is set to **WAF**, this parameter supports the following valid values:
 	//
-	//     	- **DOMAIN**
+	//   - **DOMAIN**
 	//
-	// 	- If the **InstanceType*	- parameter is set to other values, this parameter supports the following valid values:
+	// - If the **InstanceType*	- parameter is set to other values, this parameter supports the following valid values:
 	//
-	//     	- **INSTANCE**
+	//   - **INSTANCE**
 	//
 	// example:
 	//
@@ -202,49 +202,49 @@ type ListCheckResultResponseBodyChecks struct {
 	InstanceSubType *string `json:"InstanceSubType,omitempty" xml:"InstanceSubType,omitempty"`
 	// The asset type of the cloud service. Valid values:
 	//
-	// 	- **ECS**: ECS
+	// - **ECS**: ECS
 	//
-	// 	- **SLB**: SLB
+	// - **SLB**: SLB
 	//
-	// 	- **RDS**: ApsaraDB RDS
+	// - **RDS**: ApsaraDB RDS
 	//
-	// 	- **MONGODB**: MongoDB
+	// - **MONGODB**: MongoDB
 	//
-	// 	- **KVSTORE**: Redis
+	// - **KVSTORE**: Redis
 	//
-	// 	- **ACR**: Container Registry
+	// - **ACR**: Container Registry
 	//
-	// 	- **CSK**: ACK
+	// - **CSK**: ACK
 	//
-	// 	- **VPC**: VPC
+	// - **VPC**: VPC
 	//
-	// 	- **ACTIONTRAIL**: ActionTrail
+	// - **ACTIONTRAIL**: ActionTrail
 	//
-	// 	- **CDN**: CDN
+	// - **CDN**: CDN
 	//
-	// 	- **CAS**: Certificate Management Service (formerly SSL Certificates Service)
+	// - **CAS**: Certificate Management Service (formerly SSL Certificates Service)
 	//
-	// 	- **RDC**: Apsara Devops
+	// - **RDC**: Apsara Devops
 	//
-	// 	- **RAM**: RAM
+	// - **RAM**: RAM
 	//
-	// 	- **DDOS**: Anti-DDoS
+	// - **DDOS**: Anti-DDoS
 	//
-	// 	- **WAF**: WAF
+	// - **WAF**: WAF
 	//
-	// 	- **OSS**: OSS
+	// - **OSS**: OSS
 	//
-	// 	- **POLARDB**: PolarDB
+	// - **POLARDB**: PolarDB
 	//
-	// 	- **POSTGRESQL**: ApsaraDB RDS for PostgreSQL
+	// - **POSTGRESQL**: ApsaraDB RDS for PostgreSQL
 	//
-	// 	- **MSE**: MSE
+	// - **MSE**: MSE
 	//
-	// 	- **NAS**: NAS
+	// - **NAS**: NAS
 	//
-	// 	- **SDDP**: SDDP
+	// - **SDDP**: SDDP
 	//
-	// 	- **EIP**: EIP
+	// - **EIP**: EIP
 	//
 	// example:
 	//
@@ -258,9 +258,9 @@ type ListCheckResultResponseBodyChecks struct {
 	LastCheckTime *int64 `json:"LastCheckTime,omitempty" xml:"LastCheckTime,omitempty"`
 	// Indicates whether fixing is supported. Valid values:
 	//
-	// 	- **SUPPORT_REPAIR**
+	// - **SUPPORT_REPAIR**
 	//
-	// 	- **NOT_SUPPORT_REPAIR**
+	// - **NOT_SUPPORT_REPAIR**
 	//
 	// example:
 	//
@@ -268,11 +268,11 @@ type ListCheckResultResponseBodyChecks struct {
 	OperationType *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
 	// The risk level of the check item. Valid values:
 	//
-	// 	- **HIGH**
+	// - **HIGH**
 	//
-	// 	- **MEDIUM**
+	// - **MEDIUM**
 	//
-	// 	- **LOW**
+	// - **LOW**
 	//
 	// example:
 	//
@@ -280,17 +280,17 @@ type ListCheckResultResponseBodyChecks struct {
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 	// The status of the check item. Valid values:
 	//
-	// 	- **PASS**: passed
+	// - **PASS**: passed
 	//
-	// 	- **NOT_PASS**: failed
+	// - **NOT_PASS**: failed
 	//
-	// 	- **CHECKING**: being checked
+	// - **CHECKING**: being checked
 	//
-	// 	- **NOT_CHECK**: not checked
+	// - **NOT_CHECK**: not checked
 	//
-	// 	- **WHITELIST**: added to the whitelist
+	// - **WHITELIST**: added to the whitelist
 	//
-	// 	- **FAILED**: failed
+	// - **FAILED**: failed
 	//
 	// example:
 	//
@@ -316,9 +316,9 @@ type ListCheckResultResponseBodyChecks struct {
 	TrialPermission *bool `json:"TrialPermission,omitempty" xml:"TrialPermission,omitempty"`
 	// Check whether the data delivery period for ActionTrail is enabled for more than 30 days to establish a baseline of behaviour.
 	//
-	// 	- **0**: REQUIRED
+	// - **0**: REQUIRED
 	//
-	// 	- **1**: NOT REQUIRED
+	// - **1**: NOT REQUIRED
 	//
 	// example:
 	//

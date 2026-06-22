@@ -14,7 +14,7 @@ type iRetryAgentlessTaskRequest interface {
 }
 
 type RetryAgentlessTaskRequest struct {
-	// The ID of the task. You can call the [ListAgentlessTask](~~ListAgentlessTask~~) operation to obtain the IDs of tasks.
+	// The task ID. Call [ListAgentlessTask](~~ListAgentlessTask~~) to obtain the task ID.
 	//
 	// example:
 	//

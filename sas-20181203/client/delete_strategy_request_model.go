@@ -18,7 +18,7 @@ type iDeleteStrategyRequest interface {
 }
 
 type DeleteStrategyRequest struct {
-	// The ID of the baseline check policy that you want to delete.
+	// The ID of the policy to delete.
 	//
 	// This parameter is required.
 	//
@@ -26,17 +26,17 @@ type DeleteStrategyRequest struct {
 	//
 	// 1404656
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language type for the request and response messages. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The source IP address of the request.
+	// The IP address of the access source.
 	//
 	// example:
 	//

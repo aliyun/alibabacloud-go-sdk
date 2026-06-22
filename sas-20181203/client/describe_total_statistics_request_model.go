@@ -18,25 +18,25 @@ type iDescribeTotalStatisticsRequest interface {
 }
 
 type DescribeTotalStatisticsRequest struct {
-	// The source of data. Default value: **aqs**. Valid values:
+	// The source of the data request. Default value: **aqs**. Valid values:
 	//
-	// 	- **sas**: Security Center
+	// - **sas**: The data request comes from Security Center.
 	//
-	// 	- **aqs**: Server Guard
+	// - **aqs**: The data request comes from Server Guard.
 	//
 	// example:
 	//
 	// sas
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
-	// The ID of the asset group.
+	// The ID of the asset group to query.
 	//
-	// > You can call the [DescribeAllGroups](https://help.aliyun.com/document_detail/130972.html) operation to query the IDs of asset groups.
+	// > You can call the [DescribeAllGroups](https://help.aliyun.com/document_detail/130972.html) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// 8076980
 	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name or public IP address of the asset.
+	// The asset name or public IP address.
 	//
 	// example:
 	//

@@ -18,25 +18,25 @@ type iListAssetRefreshTaskConfigRequest interface {
 }
 
 type ListAssetRefreshTaskConfigRequest struct {
-	// The type of the configuration. Valid values:
+	// The configuration type. Valid values:
 	//
-	// 	- **0**: server synchronization task
+	// - **0**: host refresh task
 	//
-	// 	- **1**: cloud service synchronization task
+	// - **1**: cloud service refresh task
 	//
-	// 	- **2**: scheduled AccessKey pair verification task
+	// - **2**: AccessKey scheduled verification task.
 	//
 	// example:
 	//
 	// 2
 	RefreshConfigType *int32 `json:"RefreshConfigType,omitempty" xml:"RefreshConfigType,omitempty"`
-	// The region where the Security Center instance is deployed.
+	// The region of the Security Center instance.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the data entry containing the AccessKey pair that you specify when you configure the scheduled AccessKey pair verification task.
+	// The ID of the AccessKey record specified when querying an AccessKey scheduled verification task.
 	//
 	// example:
 	//

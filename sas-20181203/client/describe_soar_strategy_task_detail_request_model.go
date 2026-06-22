@@ -16,11 +16,11 @@ type iDescribeSoarStrategyTaskDetailRequest interface {
 }
 
 type DescribeSoarStrategyTaskDetailRequest struct {
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language type for the request and response messages. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
@@ -28,7 +28,7 @@ type DescribeSoarStrategyTaskDetailRequest struct {
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The ID of the policy task.
 	//
-	// >  You can call the [DescribeSoarStrategyTasks](~~DescribeSoarStrategyTasks~~) operation to obtain the ID.
+	// >Call the [DescribeSoarStrategyTasks](~~DescribeSoarStrategyTasks~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//

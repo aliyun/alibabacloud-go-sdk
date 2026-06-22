@@ -24,17 +24,15 @@ type iListContainerDefenseRuleRequest interface {
 }
 
 type ListContainerDefenseRuleRequest struct {
-	// The details of the condition.
+	// The list of conditions.
 	Conditions []*ListContainerDefenseRuleRequestConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
-	// The number of the page to return. Default value: **1**.
+	// The page number of the page to return. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// Specifies whether to query system rules.
-	//
-	// >  This parameter is deprecated.
+	// Specifies whether the rule is a system default rule.	Notice: This parameter is deprecated..
 	//
 	// example:
 	//
@@ -42,17 +40,17 @@ type ListContainerDefenseRuleRequest struct {
 	IsDefaultRule *int32 `json:"IsDefaultRule,omitempty" xml:"IsDefaultRule,omitempty"`
 	// The language of the content within the request and response. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese.
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English.
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of entries per page. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+	// The number of entries per page in a paging query. Default value: 20. If you leave this parameter empty, 20 entries are returned per page.
 	//
-	// >  We recommend that you do not leave this parameter empty.
+	// > Do not leave PageSize empty.
 	//
 	// example:
 	//
@@ -60,9 +58,9 @@ type ListContainerDefenseRuleRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The rule type. Valid values:
 	//
-	// 	- 1: system rule
+	// - 1: system rule
 	//
-	// 	- 2: user-defined rule
+	// - 2: user rule.
 	//
 	// example:
 	//
@@ -146,15 +144,15 @@ func (s *ListContainerDefenseRuleRequest) Validate() error {
 }
 
 type ListContainerDefenseRuleRequestConditions struct {
-	// The condition type. Valid values:
+	// The condition type. The following type is supported:
 	//
-	// 	- **ruleName**: the rule name
+	// - **ruleName**: rule name.
 	//
 	// example:
 	//
 	// ruleName
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The rule content.
+	// The condition content.
 	//
 	// example:
 	//

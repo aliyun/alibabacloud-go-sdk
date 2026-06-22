@@ -14,6 +14,8 @@ type iGetFileProtectClientEventRequest interface {
 }
 
 type GetFileProtectClientEventRequest struct {
+	// The unique ID of the alert event.
+	//
 	// example:
 	//
 	// 131231

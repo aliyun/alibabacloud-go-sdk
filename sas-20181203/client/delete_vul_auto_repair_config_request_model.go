@@ -24,15 +24,15 @@ type DeleteVulAutoRepairConfigRequest struct {
 	//
 	// RHSA-2017:0184-Important: mysql security update
 	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
-	// The IDs of the configurations.
+	// The list of configuration IDs to delete.
 	//
-	// >  You can call the [ListVulAutoRepairConfig](~~ListVulAutoRepairConfig~~) operation to query the IDs.
+	// > You can call the [ListVulAutoRepairConfig](~~ListVulAutoRepairConfig~~) operation to obtain configuration IDs.
 	ConfigIdList []*int64 `json:"ConfigIdList,omitempty" xml:"ConfigIdList,omitempty" type:"Repeated"`
 	// The type of the vulnerability. Valid values:
 	//
-	// 	- cve: Linux software vulnerability
+	// - cve: Linux software vulnerability
 	//
-	// 	- sys: Windows system vulnerability
+	// - sys: Windows system vulnerability.
 	//
 	// example:
 	//

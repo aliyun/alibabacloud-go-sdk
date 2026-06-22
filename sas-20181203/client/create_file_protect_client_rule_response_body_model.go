@@ -16,6 +16,8 @@ type iCreateFileProtectClientRuleResponseBody interface {
 }
 
 type CreateFileProtectClientRuleResponseBody struct {
+	// The policy ID.
+	//
 	// example:
 	//
 	// 1

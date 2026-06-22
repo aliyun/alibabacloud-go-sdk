@@ -16,13 +16,13 @@ type iDescribeInstanceVulStatisticsResponseBody interface {
 }
 
 type DescribeInstanceVulStatisticsResponseBody struct {
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The request ID. Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// 1EE7B150-D67E-53FD-A52D-3E8E669A****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The statistics of the vulnerabilities.
+	// The vulnerability statistics information.
 	VulStat *DescribeInstanceVulStatisticsResponseBodyVulStat `json:"VulStat,omitempty" xml:"VulStat,omitempty" type:"Struct"`
 }
 
@@ -62,19 +62,19 @@ func (s *DescribeInstanceVulStatisticsResponseBody) Validate() error {
 }
 
 type DescribeInstanceVulStatisticsResponseBodyVulStat struct {
-	// The number of high-risk vulnerabilities.
+	// The number of high-priority vulnerabilities.
 	//
 	// example:
 	//
 	// 0
 	AsapCount *string `json:"AsapCount,omitempty" xml:"AsapCount,omitempty"`
-	// The number of medium-risk vulnerabilities.
+	// The number of medium-priority vulnerabilities.
 	//
 	// example:
 	//
 	// 0
 	LaterCount *string `json:"LaterCount,omitempty" xml:"LaterCount,omitempty"`
-	// The number of low-risk vulnerabilities.
+	// The number of low-priority vulnerabilities.
 	//
 	// example:
 	//

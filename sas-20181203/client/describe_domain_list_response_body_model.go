@@ -18,11 +18,11 @@ type iDescribeDomainListResponseBody interface {
 }
 
 type DescribeDomainListResponseBody struct {
-	// An array that consists of the information about domain names.
+	// The list of domain name asset information.
 	DomainListResponseList []*DescribeDomainListResponseBodyDomainListResponseList `json:"DomainListResponseList,omitempty" xml:"DomainListResponseList,omitempty" type:"Repeated"`
-	// The pagination information.
+	// The pagination information of the query result.
 	PageInfo *DescribeDomainListResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The ID of the request. The ID is a unique identifier that Alibaba Cloud generates for the request and can be used to troubleshoot issues.
 	//
 	// example:
 	//
@@ -84,13 +84,13 @@ func (s *DescribeDomainListResponseBody) Validate() error {
 }
 
 type DescribeDomainListResponseBodyDomainListResponseList struct {
-	// The name of the domain or website.
+	// The domain name or website name.
 	//
 	// example:
 	//
 	// example.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The IP addresses of the domain name.
+	// The IP address information associated with the domain name.
 	//
 	// example:
 	//
@@ -129,25 +129,25 @@ func (s *DescribeDomainListResponseBodyDomainListResponseList) Validate() error 
 }
 
 type DescribeDomainListResponseBodyPageInfo struct {
-	// The number of entries returned on the current page.
+	// The number of domain names displayed on the current page in a paged query.
 	//
 	// example:
 	//
 	// 10
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The page number of the returned page.
+	// The page number of the current page in a paged query.
 	//
 	// example:
 	//
 	// 10
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries returned per page. Default value: **10**.
+	// The number of domain names displayed on each page in a paged query. Default value: **10**, which indicates that 10 domain names are displayed on each page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of domain names returned.
 	//
 	// example:
 	//

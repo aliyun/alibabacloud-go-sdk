@@ -20,13 +20,13 @@ type iDescribeInstanceAntiBruteForceRulesResponseBody interface {
 type DescribeInstanceAntiBruteForceRulesResponseBody struct {
 	// The pagination information.
 	PageInfo *DescribeInstanceAntiBruteForceRulesResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The ID of the request. The ID is a unique identifier that Alibaba Cloud generates for the request and can be used to troubleshoot issues.
 	//
 	// example:
 	//
 	// 97286A-4A6B-4A4-95FA-EC7E3E2451
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// An array consisting of the servers to which a defense rule is applied.
+	// The list of servers on which brute-force attacks defense rules take effect.
 	Rules []*DescribeInstanceAntiBruteForceRulesResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
 
@@ -84,25 +84,25 @@ func (s *DescribeInstanceAntiBruteForceRulesResponseBody) Validate() error {
 }
 
 type DescribeInstanceAntiBruteForceRulesResponseBodyPageInfo struct {
-	// The number of servers returned on the current page.
+	// The number of servers on which brute-force attacks defense rules take effect on the current page.
 	//
 	// example:
 	//
 	// 4
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The page number of the returned page.
+	// The page number of the current page in a paging query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries returned per page.
+	// The maximum number of entries per page in a paging query.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of servers returned.
+	// The total number of servers on which brute-force attacks defense rules take effect.
 	//
 	// example:
 	//
@@ -159,19 +159,19 @@ func (s *DescribeInstanceAntiBruteForceRulesResponseBodyPageInfo) Validate() err
 }
 
 type DescribeInstanceAntiBruteForceRulesResponseBodyRules struct {
-	// The ID of the defense rule.
+	// The ID of the brute-force attacks defense rule.
 	//
 	// example:
 	//
 	// 215779601
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the defense rule.
+	// The name of the brute-force attacks defense rule.
 	//
 	// example:
 	//
 	// TestRule
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The UUID of the server to which the defense rule is applied.
+	// The UUID of the server on which the brute-force attacks defense rule takes effect.
 	//
 	// example:
 	//

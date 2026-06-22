@@ -16,13 +16,13 @@ type iGetUserLangResponseBody interface {
 }
 
 type GetUserLangResponseBody struct {
-	// The request ID.
+	// The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// 23AD0BD2-8771-5647-819E-6BA51E21****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The language settings.
+	// The language settings data.
 	SasUserLang *GetUserLangResponseBodySasUserLang `json:"SasUserLang,omitempty" xml:"SasUserLang,omitempty" type:"Struct"`
 }
 
@@ -62,11 +62,11 @@ func (s *GetUserLangResponseBody) Validate() error {
 }
 
 type GetUserLangResponseBodySasUserLang struct {
-	// The language specified for log analysis. Valid values:
+	// The language configured for log analysis. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese
 	//
-	// 	- en: English
+	// - en: English.
 	//
 	// example:
 	//

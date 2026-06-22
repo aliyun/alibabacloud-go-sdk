@@ -22,7 +22,7 @@ type iDescribeImageListByBuildRiskResponseBody interface {
 }
 
 type DescribeImageListByBuildRiskResponseBody struct {
-	// The response code.
+	// The HTTP status code.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type DescribeImageListByBuildRiskResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data *DescribeImageListByBuildRiskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned message.
+	// The detailed information about the error code.
 	//
 	// example:
 	//
@@ -42,11 +42,11 @@ type DescribeImageListByBuildRiskResponseBody struct {
 	//
 	// 52870893-48A7-5A9E-9E05-6253E5B6****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The call was successful.
 	//
-	// 	- **false**
+	// - **false**: The call failed.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *DescribeImageListByBuildRiskResponseBody) Validate() error {
 }
 
 type DescribeImageListByBuildRiskResponseBodyData struct {
-	// The images.
+	// The list of images.
 	List []*DescribeImageListByBuildRiskResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
 	// The pagination information.
 	PageInfo *DescribeImageListByBuildRiskResponseBodyDataPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
@@ -174,7 +174,7 @@ type DescribeImageListByBuildRiskResponseBodyDataList struct {
 	//
 	// a5ccdd9b166b67e02954aa9b618fe19b7968bd56a15463d2ad7f2643ba5b****
 	Digest *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
-	// The timestamp generated when the first scan was performed. Unit: milliseconds.
+	// The timestamp of the first scan. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -186,13 +186,13 @@ type DescribeImageListByBuildRiskResponseBodyDataList struct {
 	//
 	// 39010****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The timestamp generated when the last scan was performed. Unit: milliseconds.
+	// The timestamp of the most recent scan. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1723710827999
 	LastScanTime *int64 `json:"LastScanTime,omitempty" xml:"LastScanTime,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	//
 	// example:
 	//
@@ -204,7 +204,7 @@ type DescribeImageListByBuildRiskResponseBodyDataList struct {
 	//
 	// test-tepo
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	// The namespace to which the image repository belongs.
+	// The namespace of the image repository.
 	//
 	// example:
 	//
@@ -212,23 +212,23 @@ type DescribeImageListByBuildRiskResponseBodyDataList struct {
 	RepoNamespace *string `json:"RepoNamespace,omitempty" xml:"RepoNamespace,omitempty"`
 	// The risk level. Valid values:
 	//
-	// 	- **high**
+	// - **high**
 	//
-	// 	- **medium**
+	// - **medium**
 	//
-	// 	- **low**
+	// - **low**.
 	//
 	// example:
 	//
 	// medium
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The status of the alert event. Valid values:
+	// The status of the alert event to query. Valid values:
 	//
-	// 	- **0**: unhandled.
+	// - **0**: Unhandled.
 	//
-	// 	- **1**: ignored.
+	// - **1**: Ignored.
 	//
-	// 	- **2**: false positive.
+	// - **2**: False positive.
 	//
 	// example:
 	//
@@ -360,15 +360,15 @@ func (s *DescribeImageListByBuildRiskResponseBodyDataList) Validate() error {
 }
 
 type DescribeImageListByBuildRiskResponseBodyDataPageInfo struct {
-	// The page number. Default value: **1**.
+	// The page number of the current page in paging query. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries per page. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+	// The maximum number of entries per page in paging query. Default value: 20. If you leave this parameter empty, 20 entries are returned.
 	//
-	// >  We recommend that you do not leave this parameter empty.
+	// > Do not leave PageSize empty.
 	//
 	// example:
 	//

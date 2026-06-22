@@ -24,7 +24,7 @@ type iDescribeImageBuildRiskByKeyRequest interface {
 }
 
 type DescribeImageBuildRiskByKeyRequest struct {
-	// The page number. Default value: **1**.
+	// The page number of the current page in a paged query. Default value: **1**.
 	//
 	// example:
 	//
@@ -36,39 +36,39 @@ type DescribeImageBuildRiskByKeyRequest struct {
 	//
 	// a910053dd4710173ecc9e9d8931f****
 	ImageUuid *string `json:"ImageUuid,omitempty" xml:"ImageUuid,omitempty"`
-	// The language of the content within the request and response. Valid values:
+	// The language of the content in the request and response. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of entries per page. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+	// The maximum number of entries per page in a paging query. Default value: 20. If you leave this parameter empty, 20 entries are returned per page.
 	//
-	// >  We recommend that you do not leave this parameter empty.
+	// > Do not leave PageSize empty.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The key of the risk rule.
+	// The key of the build risk rule.
 	//
-	// > You can call the [DescribeImageBuildRiskList](~~DescribeImageBuildRiskList~~) operation to obtain the value of **RiskKey**.
+	// >You can call the [DescribeImageBuildRiskList](~~DescribeImageBuildRiskList~~) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// no_user
 	RiskKey *string `json:"RiskKey,omitempty" xml:"RiskKey,omitempty"`
-	// The status of the alert event. Valid values:
+	// The status of the alert event to query. Valid values:
 	//
-	// 	- **0**: unhandled.
+	// - **0**: unhandled.
 	//
-	// 	- **1**: ignored.
+	// - **1**: ignored.
 	//
-	// 	- **2**: false positive.
+	// - **2**: false positive.
 	//
 	// example:
 	//

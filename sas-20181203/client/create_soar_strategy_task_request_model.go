@@ -22,9 +22,9 @@ type iCreateSoarStrategyTaskRequest interface {
 }
 
 type CreateSoarStrategyTaskRequest struct {
-	// The ID of the policy.
+	// The policy ID.
 	//
-	// >  You can call the [DescribeSoarSubscribedStrategy](~~DescribeSoarSubscribedStrategy~~) operation to obtain the ID.
+	// >Call the [DescribeSoarSubscribedStrategy](~~DescribeSoarSubscribedStrategy~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type CreateSoarStrategyTaskRequest struct {
 	//
 	// 13840
 	StrategyId *int64 `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
-	// The name of the policy. Set the value to Automated Batch Vulnerability Fixing Policy for Multiple Servers.
+	// The policy name. Fixed value: Automated Batch Vulnerability Fix Policy.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type CreateSoarStrategyTaskRequest struct {
 	//
 	// Automated Batch Vulnerability Fixing Policy for Multiple Servers
 	StrategyName *string `json:"StrategyName,omitempty" xml:"StrategyName,omitempty"`
-	// The name of.the policy task.
+	// The name of the policy task.
 	//
 	// This parameter is required.
 	//
@@ -48,31 +48,31 @@ type CreateSoarStrategyTaskRequest struct {
 	//
 	// task1
 	StrategyTaskName *string `json:"StrategyTaskName,omitempty" xml:"StrategyTaskName,omitempty"`
-	// The parameters of the policy task. The value is a JSON array.
+	// The parameter information of the policy. A string in JSONArray format with the following items:
 	//
-	// Vulnerability-related parameters:
+	// Vulnerability configuration item. Valid values:
 	//
-	// 	- name: vluList
+	// - name: vluList
 	//
-	// 	- associationProperty: sasAllVul
+	// - associationProperty: sasAllVul
 	//
-	// 	- value: basic vulnerability information
+	// - value: basic information about the vulnerability
 	//
-	// Snapshot-related parameters:
+	// Snapshot configuration item. Valid values:
 	//
-	// 	- name: snapshotConfig
+	// - name: snapshotConfig
 	//
-	// 	- associationProperty: snapshotConfig
+	// - associationProperty: snapshotConfig
 	//
-	// 	- value: retention period
+	// - value: storage time information
 	//
-	// Notification-related parameters:
+	// Notification configuration. Valid values:
 	//
-	// 	- name: notifyConfig
+	// - name: notifyConfig
 	//
-	// 	- associationProperty: notifyConfig
+	// - associationProperty: notifyConfig
 	//
-	// 	- value: email or DingTalk configuration information
+	// - value: email or DingTalk configuration information.
 	//
 	// This parameter is required.
 	//
@@ -156,7 +156,7 @@ type CreateSoarStrategyTaskRequest struct {
 	//
 	// ]
 	StrategyTaskParams *string `json:"StrategyTaskParams,omitempty" xml:"StrategyTaskParams,omitempty"`
-	// The timestamp when the task is scheduled to start. Unit: milliseconds.
+	// The planned execution timestamp of the policy task. Unit: milliseconds.
 	//
 	// example:
 	//

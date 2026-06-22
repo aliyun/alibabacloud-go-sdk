@@ -24,9 +24,9 @@ type DescribeAllGroupsResponseBody struct {
 	//
 	// 2
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The grouping information about the servers.
+	// The server group information.
 	Groups []*DescribeAllGroupsResponseBodyGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The unique identifier that Alibaba Cloud generated for the request.
 	//
 	// example:
 	//
@@ -85,9 +85,9 @@ func (s *DescribeAllGroupsResponseBody) Validate() error {
 type DescribeAllGroupsResponseBodyGroups struct {
 	// The type of the server group. Valid values:
 	//
-	// 	- **0**: default group
+	// - **0**: default group
 	//
-	// 	- **1**: other groups
+	// - **1**: other group.
 	//
 	// example:
 	//

@@ -38,11 +38,11 @@ type iModifyWebLockUpdateConfigRequest interface {
 }
 
 type ModifyWebLockUpdateConfigRequest struct {
-	// The prevention mode. Valid values:
+	// The defense mode. Valid values:
 	//
-	// 	- **block**: Interception Mode
+	// - **block**: Block.
 	//
-	// 	- **audit**: Alert Mode
+	// - **audit**: Alert.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +50,7 @@ type ModifyWebLockUpdateConfigRequest struct {
 	//
 	// block
 	DefenceMode *string `json:"DefenceMode,omitempty" xml:"DefenceMode,omitempty"`
-	// The directory for which you want to enable web tamper proofing.
+	// The full path of the directory that you want to protect.
 	//
 	// This parameter is required.
 	//
@@ -58,61 +58,61 @@ type ModifyWebLockUpdateConfigRequest struct {
 	//
 	// /home/admin/tomcat
 	Dir *string `json:"Dir,omitempty" xml:"Dir,omitempty"`
-	// The directory for which you want to disable web tamper proofing.
+	// The directory that does not require web tamper-proofing protection (excluded directory).
 	//
-	// > If you set **Mode*	- to **blacklist**, you must specify this parameter.
+	// > This parameter is required when the protection pattern **Mode*	- is set to **blacklist**.
 	//
 	// example:
 	//
 	// /home/admin/test
 	ExclusiveDir *string `json:"ExclusiveDir,omitempty" xml:"ExclusiveDir,omitempty"`
-	// The file for which you want to disable web tamper proofing.
+	// The file that does not require web tamper-proofing protection (excluded file).
 	//
-	// > If you set **Mode*	- to **blacklist**, you must specify this parameter.
+	// > This parameter is required when the protection pattern **Mode*	- is set to **blacklist**.
 	//
 	// example:
 	//
 	// /home/admin/apache.log
 	ExclusiveFile *string `json:"ExclusiveFile,omitempty" xml:"ExclusiveFile,omitempty"`
-	// The type of the file for which you want to disable web tamper proofing. Separate multiple types with semicolons (;). Valid values:
+	// The file types that do not require web tamper-proofing protection (excluded file types). Separate multiple file types with semicolons (;). Valid values:
 	//
-	// 	- php
+	// - php
 	//
-	// 	- jsp
+	// - jsp
 	//
-	// 	- asp
+	// - asp
 	//
-	// 	- aspx
+	// - aspx
 	//
-	// 	- js
+	// - js
 	//
-	// 	- cgi
+	// - cgi
 	//
-	// 	- html
+	// - html
 	//
-	// 	- htm
+	// - htm
 	//
-	// 	- xml
+	// - xml
 	//
-	// 	- shtml
+	// - shtml
 	//
-	// 	- shtm
+	// - shtm
 	//
-	// 	- jpg
+	// - jpg
 	//
-	// 	- gif
+	// - gif
 	//
-	// 	- png
+	// - png
 	//
-	// > If you set **Mode*	- to **blacklist**, you must specify this parameter.
+	// > This parameter is required when the protection pattern **Mode*	- is set to **blacklist**.
 	//
 	// example:
 	//
 	// jpg
 	ExclusiveFileType *string `json:"ExclusiveFileType,omitempty" xml:"ExclusiveFileType,omitempty"`
-	// The ID of the protected directory for which you want to change the status of web tamper proofing.
+	// The ID of the protected directory configuration that you want to modify.
 	//
-	// > You can call the [DescribeWebLockConfigList](~~DescribeWebLockConfigList~~) operation to query the IDs of protected directories.
+	// > You can call the [DescribeWebLockConfigList](~~DescribeWebLockConfigList~~) operation to obtain the ID of the protected directory.
 	//
 	// This parameter is required.
 	//
@@ -120,67 +120,67 @@ type ModifyWebLockUpdateConfigRequest struct {
 	//
 	// 312077
 	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The file for which you want to enable web tamper proofing.
+	// The file that requires protection.
 	//
-	// > If you set **Mode*	- to **whitelist**, you must specify this parameter.
+	// > This parameter is required when the protection pattern **Mode*	- is set to **whitelist**.
 	//
 	// example:
 	//
 	// /home/admin/test.log
 	InclusiveFile *string `json:"InclusiveFile,omitempty" xml:"InclusiveFile,omitempty"`
-	// The type of the file for which you want to enable web tamper proofing. Separate multiple types with semicolons (;). Valid values:
+	// The file types that require web tamper-proofing protection. Separate multiple file types with semicolons (;). Valid values:
 	//
-	// 	- php
+	// - php
 	//
-	// 	- jsp
+	// - jsp
 	//
-	// 	- asp
+	// - asp
 	//
-	// 	- aspx
+	// - aspx
 	//
-	// 	- js
+	// - js
 	//
-	// 	- cgi
+	// - cgi
 	//
-	// 	- html
+	// - html
 	//
-	// 	- htm
+	// - htm
 	//
-	// 	- xml
+	// - xml
 	//
-	// 	- shtml
+	// - shtml
 	//
-	// 	- shtm
+	// - shtm
 	//
-	// 	- jpg
+	// - jpg
 	//
-	// 	- gif
+	// - gif
 	//
-	// 	- png
+	// - png
 	//
-	// > If you set **Mode*	- to **whitelist**, you must specify this parameter.
+	// > This parameter is required when the protection pattern **Mode*	- is set to **whitelist**.
 	//
 	// example:
 	//
 	// jpg
 	InclusiveFileType *string `json:"InclusiveFileType,omitempty" xml:"InclusiveFileType,omitempty"`
-	// The language of the content within the request and response. Valid values:
+	// The language of the request and response. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The local path to the backup files of the protected directory.\\
+	// The local backup path for securely backing up the protected directory.
 	//
-	// The directory format of a Linux server is different from that of a Windows server. You must enter the directory in the required format based on your operating system. Examples:
+	// The format of the directory path may differ between Linux servers and Windows servers. Make sure that you enter the correct format. Refer to the following directory formats:
 	//
-	// 	- Linux server: /usr/local/aegis/bak
+	//  - Linux server: /usr/local/aegis/bak
 	//
-	// 	- Windows server: C:\\Program Files (x86)\\Alibaba\\Aegis\\bak
+	//  - Windows server: C:\\Program Files (x86)\\Alibaba\\Aegis\\bak.
 	//
 	// This parameter is required.
 	//
@@ -188,25 +188,25 @@ type ModifyWebLockUpdateConfigRequest struct {
 	//
 	// /usr/local/backup
 	LocalBackupDir *string `json:"LocalBackupDir,omitempty" xml:"LocalBackupDir,omitempty"`
-	// The protection mode of web tamper proofing. Valid values:
+	// The protection pattern. Valid values:
 	//
-	// 	- **whitelist**: In this mode, web tamper proofing is enabled for the specified directories and file types.
+	// - **whitelist**: whitelist mode. Protects only the specified directories and file types.
 	//
-	// 	- **blacklist**: In this mode, web tamper proofing is enabled for the unspecified subdirectories, file types, and files in the protected directory.
+	// - **blacklist**: blacklist mode. Protects all subdirectories, file types, and files under the specified directory except those that are excluded.
 	//
 	// example:
 	//
 	// blacklist
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// The source IP address of the request.
+	// The IP address of the access source.
 	//
 	// example:
 	//
 	// 36.112.XX.XX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The UUID of the server on which the protected directory is located.
+	// The UUID of the server whose protected directory you want to modify.
 	//
-	// > You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to query the UUIDs of servers.
+	// > You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to obtain the UUID of the server.
 	//
 	// This parameter is required.
 	//

@@ -32,9 +32,9 @@ type iDescribeNsasSuspEventTypeRequest interface {
 }
 
 type DescribeNsasSuspEventTypeRequest struct {
-	// The name of the container field. Valid values:
+	// The container field. Valid values:
 	//
-	// 	- **clusterId**: the ID of the cluster
+	// - **clusterId**: cluster ID.
 	//
 	// example:
 	//
@@ -46,33 +46,33 @@ type DescribeNsasSuspEventTypeRequest struct {
 	//
 	// ca3108551c83c4d949106e1ab9e1e****
 	ContainerFieldValue *string `json:"ContainerFieldValue,omitempty" xml:"ContainerFieldValue,omitempty"`
-	// The ID of the request source. Set the value to **sas**, which indicates that the request is sent from Security Center.
+	// The source of the request. Set the value to **sas**, which indicates that the request is sent from Security Center.
 	//
 	// example:
 	//
 	// sas
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The type of the accounts that you want to query. Default value: **0**. Valid values:
+	// The multi-account query type. Default value: **0**. Valid values:
 	//
-	// 	- **0**: the current account.
+	// - **0**: queries data of the current account.
 	//
-	// 	- **1**: all accounts.
+	// - **1**: queries data of all accounts.
 	//
 	// example:
 	//
 	// 0
 	MultiAccountActionType *int32 `json:"MultiAccountActionType,omitempty" xml:"MultiAccountActionType,omitempty"`
-	// The name of the alert type.
+	// The name of the security alerting Alarm Metric.
 	//
 	// example:
 	//
@@ -84,17 +84,17 @@ type DescribeNsasSuspEventTypeRequest struct {
 	//
 	// testECS
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The source IP address of the request.
+	// The IP address of the access source.
 	//
 	// example:
 	//
 	// 180.212.XX.XX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// List of supported alarm operation types.
+	// The list of operation types supported by the alert.
 	SupportOperateCodeList []*string `json:"SupportOperateCodeList,omitempty" xml:"SupportOperateCodeList,omitempty" type:"Repeated"`
-	// The UUIDs of servers. Separate multiple UUIDs with commas (,).
+	// The UUIDs of the servers. Separate multiple UUIDs with commas (,).
 	//
-	// > You can call the [DescribeCloudCenterInstances](https://help.aliyun.com/document_detail/141932.html) operation to query the UUIDs of servers.
+	// > Call the [DescribeCloudCenterInstances](https://help.aliyun.com/document_detail/141932.html) operation to obtain this parameter.
 	//
 	// example:
 	//

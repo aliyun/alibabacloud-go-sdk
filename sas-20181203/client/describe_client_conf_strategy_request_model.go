@@ -16,7 +16,7 @@ type iDescribeClientConfStrategyRequest interface {
 }
 
 type DescribeClientConfStrategyRequest struct {
-	// The tag that is added to the server.
+	// The resource tag of the client to query.
 	//
 	// This parameter is required.
 	//
@@ -24,13 +24,13 @@ type DescribeClientConfStrategyRequest struct {
 	//
 	// machineResource
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	// The value of the tag. Valid values:
+	// The tag value of the asset. Valid values:
 	//
-	// 	- major
+	// - major
 	//
-	// 	- advanced
+	// - advanced
 	//
-	// 	- basic
+	// - basic.
 	//
 	// This parameter is required.
 	//

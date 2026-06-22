@@ -18,15 +18,15 @@ type iDescribeTargetResponseBody interface {
 }
 
 type DescribeTargetResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 79CFF74D-E967-5407-8A78-EE03B925FDAA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the server.
+	// The machine settings for the vulnerability type.
 	Targets []*DescribeTargetResponseBodyTargets `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of machine configuration entries returned.
 	//
 	// example:
 	//
@@ -83,23 +83,23 @@ func (s *DescribeTargetResponseBody) Validate() error {
 }
 
 type DescribeTargetResponseBodyTargets struct {
-	// The flag that is added to the server. This parameter can be empty.
+	// The flag. This parameter can be empty.
 	//
 	// example:
 	//
 	// del
 	Flag *string `json:"Flag,omitempty" xml:"Flag,omitempty"`
-	// The UUID of the server or the ID of the server group.
+	// The target. The value is a machine UUID or a machine group ID.
 	//
 	// example:
 	//
 	// 5c5f0169-3527-40a2-b5ff-0bc1db8f****
 	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
-	// The type of the object. Valid values:
+	// The target type. Valid values:
 	//
-	// 	- **uuid**: a server
+	// - **uuid**: added by individual asset
 	//
-	// 	- **groupId**: a server group
+	// - **groupId**: added by server group.
 	//
 	// example:
 	//

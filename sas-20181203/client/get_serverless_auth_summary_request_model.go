@@ -18,29 +18,29 @@ type iGetServerlessAuthSummaryRequest interface {
 }
 
 type GetServerlessAuthSummaryRequest struct {
-	// Application region ID.
+	// The region ID of the application.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	AppRegionId *string `json:"AppRegionId,omitempty" xml:"AppRegionId,omitempty"`
-	// Server type:
+	// The server type. Valid values:
 	//
 	// - **RunD**
 	//
-	// - **ECI**
+	// - **ECI**.
 	//
 	// example:
 	//
 	// RunD
 	MachineType *string `json:"MachineType,omitempty" xml:"MachineType,omitempty"`
-	// Cloud product:
+	// The cloud service to which the resource belongs. Valid values:
 	//
 	// - **ASK**
 	//
 	// - **SAE**
 	//
-	// - **ACS**
+	// - **ACS**.
 	//
 	// example:
 	//

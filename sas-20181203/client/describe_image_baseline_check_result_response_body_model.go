@@ -18,9 +18,9 @@ type iDescribeImageBaselineCheckResultResponseBody interface {
 }
 
 type DescribeImageBaselineCheckResultResponseBody struct {
-	// An array that consists of the check results of image baselines.
+	// The details of the image baseline check results.
 	BaselineResult []*DescribeImageBaselineCheckResultResponseBodyBaselineResult `json:"BaselineResult,omitempty" xml:"BaselineResult,omitempty" type:"Repeated"`
-	// The pagination information.
+	// The paging information.
 	PageInfo *DescribeImageBaselineCheckResultResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -84,7 +84,7 @@ func (s *DescribeImageBaselineCheckResultResponseBody) Validate() error {
 }
 
 type DescribeImageBaselineCheckResultResponseBodyBaselineResult struct {
-	// The key of the image baseline type.
+	// The type key of the baseline item.
 	//
 	// example:
 	//
@@ -96,65 +96,65 @@ type DescribeImageBaselineCheckResultResponseBodyBaselineResult struct {
 	//
 	// 5
 	BaselineItemCount *int32 `json:"BaselineItemCount,omitempty" xml:"BaselineItemCount,omitempty"`
-	// The alias of the image baseline.
+	// The alias of the baseline item.
 	//
 	// example:
 	//
-	// Identity authentication
+	// 身份鉴别
 	BaselineNameAlias *string `json:"BaselineNameAlias,omitempty" xml:"BaselineNameAlias,omitempty"`
-	// The key of the image baseline.
+	// The name key of the baseline item.
 	//
 	// example:
 	//
 	// identification
 	BaselineNameKey *string `json:"BaselineNameKey,omitempty" xml:"BaselineNameKey,omitempty"`
-	// The severity of the image baseline. Valid values:
+	// The risk level of the baseline. Valid values:
 	//
-	// 	- **high**
+	// - **high**: high risk
 	//
-	// 	- **medium**
+	// - **medium**: medium risk
 	//
-	// 	- **low**
+	// - **low**: low risk.
 	//
 	// example:
 	//
 	// high
 	BaselineNameLevel *string `json:"BaselineNameLevel,omitempty" xml:"BaselineNameLevel,omitempty"`
-	// The timestamp generated when the first scan was performed. Unit: milliseconds.
+	// The timestamp of the first scan, in milliseconds.
 	//
 	// example:
 	//
 	// 1610304058366
 	FirstScanTime *int64 `json:"FirstScanTime,omitempty" xml:"FirstScanTime,omitempty"`
-	// The number of high-risk images that are affected.
+	// The number of associated high-risk images.
 	//
 	// example:
 	//
 	// 1
 	HighRiskItemCount *int32 `json:"HighRiskItemCount,omitempty" xml:"HighRiskItemCount,omitempty"`
-	// The timestamp generated when the last scan was performed. Unit: milliseconds.
+	// The timestamp of the most recent scan, in milliseconds.
 	//
 	// example:
 	//
 	// 1610304058301
 	LastScanTime *int64 `json:"LastScanTime,omitempty" xml:"LastScanTime,omitempty"`
-	// The number of low-risk images that are affected.
+	// The number of associated low-risk images.
 	//
 	// example:
 	//
 	// 10
 	LowRiskItemCount *int32 `json:"LowRiskItemCount,omitempty" xml:"LowRiskItemCount,omitempty"`
-	// The number of medium-risk images that are affected.
+	// The number of associated medium-risk images.
 	//
 	// example:
 	//
 	// 1
 	MiddleRiskItemCount *int32 `json:"MiddleRiskItemCount,omitempty" xml:"MiddleRiskItemCount,omitempty"`
-	// The status of the baseline risks. Valid values:
+	// The fix status of the baseline risk. Valid values:
 	//
-	// 	- **0**: unfixed
+	// - **0**: Unfixed.
 	//
-	// 	- **1**: fixed
+	// - **1**: Fixed.
 	//
 	// example:
 	//
@@ -274,19 +274,19 @@ func (s *DescribeImageBaselineCheckResultResponseBodyBaselineResult) Validate() 
 }
 
 type DescribeImageBaselineCheckResultResponseBodyPageInfo struct {
-	// The number of entries returned on the current page.
+	// The number of entries on the current page when using paging.
 	//
 	// example:
 	//
 	// 10
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The page number of the returned page.
+	// The page number of the current page when using paging.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries returned per page.
+	// The maximum number of entries per page when using paging.
 	//
 	// example:
 	//

@@ -16,9 +16,9 @@ type iQueryGuidTaskListResponseBody interface {
 }
 
 type QueryGuidTaskListResponseBody struct {
-	// The list of beginner tasks.
+	// The list of beginner task information.
 	GuideTaskConfigList []*QueryGuidTaskListResponseBodyGuideTaskConfigList `json:"GuideTaskConfigList,omitempty" xml:"GuideTaskConfigList,omitempty" type:"Repeated"`
-	// The request ID.
+	// The request ID. Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -66,59 +66,59 @@ func (s *QueryGuidTaskListResponseBody) Validate() error {
 }
 
 type QueryGuidTaskListResponseBodyGuideTaskConfigList struct {
-	// The information about the reward for a complete task.
+	// The reward information for task completion.
 	RewardData *QueryGuidTaskListResponseBodyGuideTaskConfigListRewardData `json:"RewardData,omitempty" xml:"RewardData,omitempty" type:"Struct"`
-	// The security score that is increased after you complete the task.
+	// The security score increase that can be gained by completing this task.
 	//
 	// example:
 	//
 	// 80
 	SecurityScore *int32 `json:"SecurityScore,omitempty" xml:"SecurityScore,omitempty"`
-	// The status of the beginner task. Valid values:
+	// The task status. Valid values:
 	//
-	// 	- **0**: disabled.
+	// - **0**: Closed.
 	//
-	// 	- **1**: in progress.
+	// - **1**: In progress.
 	//
-	// 	- **2**: complete.
+	// - **2**: Completed.
 	//
 	// example:
 	//
 	// 0
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the beginner task.
+	// The task ID.
 	//
 	// example:
 	//
 	// t-000d8slfgx4p40kb64ad
 	TaskId *int32 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The name of the task type. Valid values:
+	// The node name. Valid values:
 	//
-	// 	- **guid_task_security_score_promote_video**: the task of viewing a video tutorial for beginners.
+	// - **guid_task_security_score_promote_video**: the node of watching the beginner quick start video
 	//
-	// 	- **guide_sub_task_config_defence_hbr**: the task of configuring anti-ransomware for servers.
+	// - **guide_sub_task_config_defence_hbr**: the anti-ransomware configuration node for servers
 	//
-	// 	- **guide_sub_task_config_uni_defence_hbr**: the task of configuring anti-ransomware for databases.
+	// - **guide_sub_task_config_uni_defence_hbr**: the anti-ransomware configuration node for databases
 	//
-	// 	- **guid_task_log_analysis_config**: the task of configuring log analysis.
+	// - **guid_task_log_analysis_config**: the log analysis node
 	//
-	// 	- **guide_sub_task_web_lock_config**: the task of configuring web tamper proofing.
+	// - **guide_sub_task_web_lock_config**: the web tamper-proofing node
 	//
-	// 	- **guide_sub_task_config_anti_crack**: the task of configuring protection against brute-force attacks.
+	// - **guide_sub_task_config_anti_crack**: the anti-brute-force attacks node
 	//
-	// 	- **guid_task_container_security_video**: the task of viewing the video on how to protect containers.
+	// - **guid_task_container_security_video**: the container security video node
 	//
-	// 	- **guid_task_container_image_scan_config**: the task of configuring container image scan.
+	// - **guid_task_container_image_scan_config**: the container image scan node
 	//
-	// 	- **guid_task_k8s_log_analysis_config**: the task of configuring threat detection on Kubernetes containers.
+	// - **guid_task_k8s_log_analysis_config**: the Kubernetes threat detection node
 	//
-	// 	- **guid_task_container_network**: the task of configuring container network visualization.
+	// - **guid_task_container_network**: the container visualization node
 	//
-	// 	- **guide_sub_task_config_add_collection**: the task of saving a console URL.
+	// - **guide_sub_task_config_add_collection**: the node of adding the console to favorites
 	//
-	// 	- **guide_sub_task_vul_scan**: the task of scanning for vulnerabilities.
+	// - **guide_sub_task_vul_scan**: the vulnerability scanning node
 	//
-	// 	- **guide_sub_task_virusKill**: the task of configuring virus detection and removal.
+	// - **guide_sub_task_virusKill**: the virus scan node.
 	//
 	// example:
 	//
@@ -189,51 +189,51 @@ func (s *QueryGuidTaskListResponseBodyGuideTaskConfigList) Validate() error {
 }
 
 type QueryGuidTaskListResponseBodyGuideTaskConfigListRewardData struct {
-	// Indicates whether the reward is claimed. Valid values:
+	// The claim status. Valid values:
 	//
-	// 	- **1**: no.
+	// - **1**: Not claimed.
 	//
-	// 	- **2**: yes.
+	// - **2**: Claimed.
 	//
 	// example:
 	//
 	// 1
 	IsRewardTaked *string `json:"IsRewardTaked,omitempty" xml:"IsRewardTaked,omitempty"`
-	// The name of the reward. Valid values:
+	// The reward name. Valid values:
 	//
-	// 	- **addTrialDay**: the days of trial use.
+	// - **addTrialDay**: trial days reward
 	//
-	// 	- **addAntiRansomwareCapacity**: the anti-ransomware capacity.
+	// - **addAntiRansomwareCapacity**: anti-ransomware capacity reward
 	//
-	// 	- **addImageScanAuthCount**: the quota for container image scan.
+	// - **addImageScanAuthCount**: image scan authorization quota reward
 	//
-	// 	- **addWebLockAuthCount**: the quota for web tamper proofing.
+	// - **addWebLockAuthCount**: web tamper-proofing authorization quota reward
 	//
-	// 	- **addSlsCapacity**: the log storage capacity.
+	// - **addSlsCapacity**: log analysis storage capacity reward.
 	//
 	// example:
 	//
-	// addWebLockAuthCount
+	// addAntiRansomwareCapacity
 	Reward *string `json:"Reward,omitempty" xml:"Reward,omitempty"`
-	// The reward configuration. The value of this parameter is in the JSON format.
+	// The reward configuration information. This parameter is in JSON format.
 	//
-	// >  The key indicates the reward type, and the value indicates the number of rewards. Valid values of key:
+	// > The key in the JSON object indicates the reward content, and the value indicates the reward amount. Valid values of the key:
 	//
-	// 	- **webLockAuthCount**: the quota for web tamper proofing.
+	// - **webLockAuthCount**: the web tamper-proofing authorization quota
 	//
-	// 	- **webLockAuthCount**: the anti-ransomware capacity. Unit: GB.
+	// - **ransomwareCapacity**: the anti-ransomware capacity, in GB
 	//
-	// 	- **slsCapacity**: the log storage capacity. Unit: GB.
+	// - **slsCapacity**: the log analysis capacity, in GB
 	//
-	// 	- **days**: the days of trial use.
+	// - **days**: the number of usage days
 	//
-	// 	- **imageScanAuthCount**: the quota for container image scan.
+	// - **imageScanAuthCount**: the image scan authorization quota
 	//
-	// 	- **honeypotAuthCount**: the quota for cloud honeypot.
+	// - **honeypotAuthCount**: the cloud honeypot authorization quota.
 	//
 	// example:
 	//
-	// {"days":60,"ransomwareCapacity":100}
+	// {"days":60,"ransomwareCapacity":10}
 	RewardConfig *string `json:"RewardConfig,omitempty" xml:"RewardConfig,omitempty"`
 }
 

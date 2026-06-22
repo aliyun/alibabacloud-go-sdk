@@ -14,7 +14,7 @@ type iListAvailableHoneypotRequest interface {
 }
 
 type ListAvailableHoneypotRequest struct {
-	// The ID of the management node to which the honeypot is deployed.
+	// The ID of the honeypot management node.
 	//
 	// example:
 	//

@@ -42,7 +42,7 @@ type DescribeBruteForceRecordsRequest struct {
 	//
 	// example:
 	//
-	// i-bp1g6wxdwps7s9dz****
+	// i-bp1fu4aqltf1huhc****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The number of entries to return on each page. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page. We recommend that you do not leave this parameter empty.
 	//
@@ -54,7 +54,7 @@ type DescribeBruteForceRecordsRequest struct {
 	//
 	// example:
 	//
-	// 1.2.XX.XX
+	// 222.185.XX.XX
 	Remark          *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The status of the defense rule. Valid values:

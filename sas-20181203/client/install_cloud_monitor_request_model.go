@@ -22,23 +22,23 @@ type iInstallCloudMonitorRequest interface {
 }
 
 type InstallCloudMonitorRequest struct {
-	// The AccessKey ID that is required to install the CloudMonitor agent. You can call the [DescribeMonitoringAgentAccessKey](https://help.aliyun.com/document_detail/114948.html) operation to query the AccessKey ID.
+	// The AccessKey required to install the CloudMonitor agent. You can call the [DescribeMonitoringAgentAccessKey](https://help.aliyun.com/document_detail/114948.html) operation to obtain this parameter.
 	//
-	// > This parameter is required only when you install the CloudMonitor agent on servers that are not deployed on Alibaba Cloud.
+	// > This parameter is required only when you install the CloudMonitor agent on a non-Alibaba Cloud server.
 	//
 	// example:
 	//
 	// usY*****R_U
 	AgentAccessKey *string `json:"AgentAccessKey,omitempty" xml:"AgentAccessKey,omitempty"`
-	// The AccessKey secret that is required to install the CloudMonitor agent. You can call the [DescribeMonitoringAgentAccessKey](https://help.aliyun.com/document_detail/114948.html) operation to query the AccessKey secret.
+	// The AccessSecret required to install the CloudMonitor agent. You can call the [DescribeMonitoringAgentAccessKey](https://help.aliyun.com/document_detail/114948.html) operation to obtain this parameter.
 	//
-	// > This parameter is required only when you install the CloudMonitor agent on servers that are not deployed on Alibaba Cloud.
+	// > This parameter is required only when you install the CloudMonitor agent on a non-Alibaba Cloud server.
 	//
 	// example:
 	//
 	// UCxF2R1sIO90XlU9****
 	AgentSecretKey *string `json:"AgentSecretKey,omitempty" xml:"AgentSecretKey,omitempty"`
-	// The version of the CloudMonitor agent that you want to install on the servers. For more information about the latest version of the CloudMonitor agent, see [Overview](https://help.aliyun.com/document_detail/183431.html).
+	// The version of the CloudMonitor agent to install. You can obtain the latest CloudMonitor agent version from [Plugin overview](https://help.aliyun.com/document_detail/183431.html).
 	//
 	// This parameter is required.
 	//
@@ -46,9 +46,9 @@ type InstallCloudMonitorRequest struct {
 	//
 	// 3.5.6
 	ArgusVersion *string `json:"ArgusVersion,omitempty" xml:"ArgusVersion,omitempty"`
-	// The IDs of the servers on which you want to install the CloudMonitor agent. Separate multiple IDs with commas (,).
+	// The list of instance IDs of the servers on which you want to install the CloudMonitor agent. Separate multiple IDs with commas (,).
 	InstanceIdList []*string `json:"InstanceIdList,omitempty" xml:"InstanceIdList,omitempty" type:"Repeated"`
-	// The UUIDs of the servers on which you want to install the CloudMonitor agent. Separate multiple UUIDs with commas (,).
+	// The list of UUIDs of the servers on which you want to install the CloudMonitor agent. Separate multiple UUIDs with commas (,).
 	UuidList []*string `json:"UuidList,omitempty" xml:"UuidList,omitempty" type:"Repeated"`
 }
 

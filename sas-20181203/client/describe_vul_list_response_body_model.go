@@ -310,7 +310,7 @@ type DescribeVulListResponseBodyVulRecords struct {
 	//
 	// example:
 	//
-	// CentOS 7.2 64-bit
+	// CentOS  7.2 64位
 	OsName *string `json:"OsName,omitempty" xml:"OsName,omitempty"`
 	// The name of the operating system for your asset.
 	//

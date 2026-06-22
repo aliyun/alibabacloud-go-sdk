@@ -28,7 +28,7 @@ type iDescribeOnceTaskRequest interface {
 }
 
 type DescribeOnceTaskRequest struct {
-	// The number of the page to return. Default value: **1**.
+	// The page number of the page to return. Default value: **1**.
 	//
 	// example:
 	//
@@ -40,25 +40,25 @@ type DescribeOnceTaskRequest struct {
 	//
 	// 1651766520000
 	EndTimeQuery *int64 `json:"EndTimeQuery,omitempty" xml:"EndTimeQuery,omitempty"`
-	// The number of entries to return on each page. Default value: **20**.
+	// The number of client tasks per page in a paged query. Default value: **20**.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the root task.
+	// The root task ID.
 	//
-	// > You must specify at least one of the **TaskType*	- and **RootTaskId*	- parameters.
+	// > **TaskType*	- and **RootTaskId*	- cannot both be empty.
 	//
 	// example:
 	//
 	// bb5d657479bba5e1d308b6c9e85c9174
 	RootTaskId *string `json:"RootTaskId,omitempty" xml:"RootTaskId,omitempty"`
-	// The source of the task. Valid values include the following values:
+	// The node source. Valid values include but are not limited to:
 	//
-	// 	- **schedule**: automatic scheduling of Cloud Security Scanner.
+	// - **schedule**: automatic scheduling of vulnerability scanning
 	//
-	// 	- **console**: one-click detection in the Cloud Security Scanner console.
+	// - **console**: one-click detection from the vulnerability scanning console
 	//
 	// example:
 	//
@@ -70,21 +70,23 @@ type DescribeOnceTaskRequest struct {
 	//
 	// 1651737301000
 	StartTimeQuery *int64 `json:"StartTimeQuery,omitempty" xml:"StartTimeQuery,omitempty"`
-	// The ID of the task.
+	// The task ID.
 	//
 	// example:
 	//
 	// d7b2acf8d362742123e4a84e1bf8****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The type of the task. Valid values:
+	// The node type. Valid values:
 	//
-	// 	- **CLIENT_PROBLEM_CHECK**: a task of the Security Center agent
+	// - **VUL_CHECK_TASK**: vulnerability scanning node
 	//
-	// 	- **CLIENT_DEV_OPS**: an O\\&M task of Cloud Assistant
+	// - **CLIENT_PROBLEM_CHECK**: client node
 	//
-	// 	- **ASSET_SECURITY_CHECK**: a task of asset information collection
+	// - **CLIENT_DEV_OPS**: cloud O&M node
 	//
-	// > You must specify at least one of the **TaskType*	- and **RootTaskId*	- parameters.
+	// - **ASSET_SECURITY_CHECK**: asset information collection node
+	//
+	// > **TaskType*	- and **RootTaskId*	- cannot both be empty.
 	//
 	// example:
 	//

@@ -16,9 +16,9 @@ type iUpdateWhiteListRequest interface {
 }
 
 type UpdateWhiteListRequest struct {
-	// The ID of the image repository.
+	// The image repository ID.
 	//
-	// >  You can call the [PageImageRegistry](~~PageImageRegistry~~) operation to obtain the ID.
+	// >You can call the [PageImageRegistry](~~PageImageRegistry~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type UpdateWhiteListRequest struct {
 	//
 	// 19882
 	RegistryId *int64 `json:"RegistryId,omitempty" xml:"RegistryId,omitempty"`
-	// The IP address whitelist. Separate multiple IP addresses with commas (,).
+	// The whitelist. Separate multiple whitelisted addresses with commas (,).
 	//
 	// This parameter is required.
 	//

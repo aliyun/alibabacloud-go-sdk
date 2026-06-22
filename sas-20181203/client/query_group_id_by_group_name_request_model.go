@@ -16,7 +16,7 @@ type iQueryGroupIdByGroupNameRequest interface {
 }
 
 type QueryGroupIdByGroupNameRequest struct {
-	// The name of the asset group.
+	// The name of the group to query.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type QueryGroupIdByGroupNameRequest struct {
 	//
 	// TestGroupName
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The source IP address of the request.
+	// The IP address of the access source.
 	//
 	// example:
 	//

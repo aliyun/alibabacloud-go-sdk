@@ -14,7 +14,7 @@ type iListClusterCnnfStatusDetailRequest interface {
 }
 
 type ListClusterCnnfStatusDetailRequest struct {
-	// An array that consists of the ID of the cluster.
+	// The list of cluster IDs.
 	ClusterIds []*string `json:"ClusterIds,omitempty" xml:"ClusterIds,omitempty" type:"Repeated"`
 }
 

@@ -24,7 +24,7 @@ type ModifyHybridProxyClusterRequest struct {
 	//
 	// sas-test-cnnf
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// The remarks.
+	// The remarks of the proxy cluster.
 	//
 	// This parameter is required.
 	//

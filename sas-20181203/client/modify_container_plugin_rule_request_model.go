@@ -26,11 +26,11 @@ type iModifyContainerPluginRuleRequest interface {
 }
 
 type ModifyContainerPluginRuleRequest struct {
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language type for requests and responses. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
@@ -38,15 +38,17 @@ type ModifyContainerPluginRuleRequest struct {
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The action mode of the rule. Valid values:
 	//
-	// 	- **1**: alerts
+	// - **1**: Alert.
 	//
-	// 	- **2**: block
+	// - **2**: Block.
 	//
 	// example:
 	//
 	// 1
 	Mode *int32 `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// The ID of the rule.
+	// The rule ID.
+	//
+	// > You can call the [ListSasContainerWebDefenseRule](https://help.aliyun.com/document_detail/2623606.html) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -54,25 +56,25 @@ type ModifyContainerPluginRuleRequest struct {
 	//
 	// 100012
 	RuleId *int32 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The name of the rule.
+	// The rule name.
 	//
 	// example:
 	//
 	// test
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The type of the rule. Valid values:
+	// The rule type. Valid values:
 	//
-	// 	- **0**: user-defined rule
+	// - **0**: User-defined.
 	//
-	// 	- **1**: built-in rule
+	// - **1**: System built-in.
 	//
 	// example:
 	//
 	// 0
 	RuleType *int32 `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
-	// The rule items.
+	// The list of rule items.
 	SelectedPolicy []*string `json:"SelectedPolicy,omitempty" xml:"SelectedPolicy,omitempty" type:"Repeated"`
-	// The images that are added to the whitelist.
+	// The list of whitelisted images.
 	WhiteImages []*string `json:"WhiteImages,omitempty" xml:"WhiteImages,omitempty" type:"Repeated"`
 }
 

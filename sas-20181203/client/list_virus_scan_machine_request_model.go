@@ -20,7 +20,7 @@ type iListVirusScanMachineRequest interface {
 }
 
 type ListVirusScanMachineRequest struct {
-	// The page number.
+	// The page number of the current page in a paging query.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type ListVirusScanMachineRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries per page.
+	// The number of entries to return on each page in a paging query.
 	//
 	// This parameter is required.
 	//
@@ -36,13 +36,13 @@ type ListVirusScanMachineRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The information about the server that you want to query. The value can be the name or the IP address of the server.
+	// The asset information to query. You can set this parameter to an asset name or IP address.
 	//
 	// example:
 	//
 	// 192.168.1****
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The UUID of the server.
+	// The UUID of the asset instance.
 	//
 	// example:
 	//

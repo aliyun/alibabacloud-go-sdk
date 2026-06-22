@@ -22,31 +22,31 @@ type iGetSuspiciousStatisticsResponseBody interface {
 }
 
 type GetSuspiciousStatisticsResponseBody struct {
-	// The number of alerts whose Emergency level is Reminder.
+	// The number of security alerts whose alert level is Reminder.
 	//
 	// example:
 	//
 	// 0
 	RemindCount *int32 `json:"RemindCount,omitempty" xml:"RemindCount,omitempty"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The request ID. Alibaba Cloud generates a unique identifier for each API request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// 84092B42-1A59-4F34-8DF8-1D93520990A5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of alerts whose Emergency level is Urgent.
+	// The number of security alerts whose alert level is Urgent.
 	//
 	// example:
 	//
 	// 1
 	SeriousCount *int32 `json:"SeriousCount,omitempty" xml:"SeriousCount,omitempty"`
-	// The number of alerts whose Emergency level is Suspicious.
+	// The number of security alerts whose alert level is Suspicious.
 	//
 	// example:
 	//
 	// 8
 	SuspiciousCount *int32 `json:"SuspiciousCount,omitempty" xml:"SuspiciousCount,omitempty"`
-	// The total number of alerts.
+	// The total number of security alerts.
 	//
 	// example:
 	//

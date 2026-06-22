@@ -14,9 +14,9 @@ type iUnbindAegisRequest interface {
 }
 
 type UnbindAegisRequest struct {
-	// The UUID of the server that you want to unbind. Separate multiple UUIDs with commas (,).
+	// The UUIDs of the non-Alibaba Cloud servers that you want to unbind. Separate multiple UUIDs with commas (,).
 	//
-	// > You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to query the UUIDs of servers.
+	// > You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//

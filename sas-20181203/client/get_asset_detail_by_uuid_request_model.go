@@ -18,25 +18,25 @@ type iGetAssetDetailByUuidRequest interface {
 }
 
 type GetAssetDetailByUuidRequest struct {
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language type for the request and response messages. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The source IP address of the request. The system specifies this parameter.
+	// The source IP address of the request. You do not need to specify this parameter. The system automatically obtains this value.
 	//
 	// example:
 	//
 	// 120.245.XX.XX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The UUID of the server to query.
+	// The UUID of the asset that you want to query.
 	//
-	// > You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to query the UUIDs of servers.
+	// > Call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//

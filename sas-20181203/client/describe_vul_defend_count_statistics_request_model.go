@@ -14,11 +14,11 @@ type iDescribeVulDefendCountStatisticsRequest interface {
 }
 
 type DescribeVulDefendCountStatisticsRequest struct {
-	// The type of the vulnerabilities. Valid values:
+	// The type of vulnerability to query. Valid values:
 	//
-	// 	- app: application vulnerabilities
+	// - app: application vulnerability
 	//
-	// 	- emg: urgent vulnerabilities
+	// - emg: emergency vulnerability.
 	//
 	// example:
 	//

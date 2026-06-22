@@ -32,27 +32,27 @@ type DescribeUniBackupStatisticsResponseBody struct {
 	//
 	// 1
 	ProtectedDatabaseCount *int32 `json:"ProtectedDatabaseCount,omitempty" xml:"ProtectedDatabaseCount,omitempty"`
-	// The regions of the database instances.
+	// The list of regions in which database instances can be configured.
 	RegionCountList []*DescribeUniBackupStatisticsResponseBodyRegionCountList `json:"RegionCountList,omitempty" xml:"RegionCountList,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request. The China Chinese Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// 7532B7EE-7CE7-5F4D-BF04-B12447DD****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of the restoration tasks that are running.
+	// The number of tasks that are being restored.
 	//
 	// example:
 	//
 	// 0
 	RestoringTaskCount *int32 `json:"RestoringTaskCount,omitempty" xml:"RestoringTaskCount,omitempty"`
-	// The total number of database instances that can be restored.
+	// The number of recoverable database instances.
 	//
 	// example:
 	//
 	// 3
 	TotalRecoverableCount *int32 `json:"TotalRecoverableCount,omitempty" xml:"TotalRecoverableCount,omitempty"`
-	// The total number of the restoration tasks.
+	// The total number of restoration records.
 	//
 	// example:
 	//
@@ -157,7 +157,7 @@ type DescribeUniBackupStatisticsResponseBodyRegionCountList struct {
 	//
 	// 1
 	AutomaticCount *string `json:"AutomaticCount,omitempty" xml:"AutomaticCount,omitempty"`
-	// The ID of the region in which the database instance resides.
+	// The region ID of the database instance.
 	//
 	// example:
 	//

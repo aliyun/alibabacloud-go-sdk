@@ -14,9 +14,9 @@ type iGetVirusScanConfigRequest interface {
 }
 
 type GetVirusScanConfigRequest struct {
-	// The type of the task. Valid values:
+	// The task type. Valid values:
 	//
-	// 	- **VIRUS_VUL_SCHEDULE_SCAN**: a virus scan task.
+	// - **VIRUS_VUL_SCHEDULE_SCAN**: virus scan.
 	//
 	// example:
 	//

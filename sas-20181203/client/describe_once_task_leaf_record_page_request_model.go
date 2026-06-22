@@ -30,7 +30,7 @@ type iDescribeOnceTaskLeafRecordPageRequest interface {
 }
 
 type DescribeOnceTaskLeafRecordPageRequest struct {
-	// The number of the page to return.
+	// The page number of the current page in a paged query.
 	//
 	// This parameter is required.
 	//
@@ -38,13 +38,13 @@ type DescribeOnceTaskLeafRecordPageRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The end timestamp of the sub-task.
+	// The timestamp of the end time.
 	//
 	// example:
 	//
 	// 1668064495000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The number of entries to return on each page. Default value: 20
+	// The maximum number of entries per page in a paged query. Default value: 20.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +52,7 @@ type DescribeOnceTaskLeafRecordPageRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Specifies whether extension information is associated.
+	// Specifies whether to associate extended information.
 	//
 	// This parameter is required.
 	//
@@ -60,31 +60,31 @@ type DescribeOnceTaskLeafRecordPageRequest struct {
 	//
 	// true
 	RelateInfo *bool `json:"RelateInfo,omitempty" xml:"RelateInfo,omitempty"`
-	// The source of the request.
+	// The request source.
 	//
 	// example:
 	//
 	// console_batch
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The start timestamp of the sub-task.
+	// The timestamp of the start time.
 	//
 	// example:
 	//
 	// 1648438617000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status information.
+	// The list of statuses.
 	StatusList []*string `json:"StatusList,omitempty" xml:"StatusList,omitempty" type:"Repeated"`
-	// The ID of the sub-task.
+	// The ID of the task to retrieve.
 	//
 	// example:
 	//
 	// 1471d8ebb96795b41ede090b9758****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The type of the sub-task. Valid values:
+	// The task type. Valid values:
 	//
-	// 	- **IMAGE_SCAN**: image scan task
+	// - **IMAGE_SCAN**: image scanning
 	//
-	// 	- **IMAGE_REGISTRY_PULL**: image asset synchronization task
+	// - **IMAGE_REGISTRY_PULL**: image asset synchronization.
 	//
 	// This parameter is required.
 	//

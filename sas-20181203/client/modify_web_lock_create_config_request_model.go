@@ -36,11 +36,11 @@ type iModifyWebLockCreateConfigRequest interface {
 }
 
 type ModifyWebLockCreateConfigRequest struct {
-	// The prevention mode. Valid values:
+	// The defense mode. Valid values:
 	//
-	// 	- **block**: Interception Mode
+	// - **block**: Block mode.
 	//
-	// 	- **audit**: Alert Mode
+	// - **audit**: Alert mode.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type ModifyWebLockCreateConfigRequest struct {
 	//
 	// block
 	DefenceMode *string `json:"DefenceMode,omitempty" xml:"DefenceMode,omitempty"`
-	// The directory that you want to protect.
+	// The protected directory.
 	//
 	// This parameter is required.
 	//
@@ -56,113 +56,113 @@ type ModifyWebLockCreateConfigRequest struct {
 	//
 	// /home/admin/tomcat
 	Dir *string `json:"Dir,omitempty" xml:"Dir,omitempty"`
-	// The directory for which you want to disable web tamper proofing.
+	// The folder to exclude from web tamper proofing protection.
 	//
-	// > If you set **Mode*	- to **blacklist**, you must specify this parameter.
+	// > This parameter is required when the Defense mode **Mode*	- is set to **blacklist*	- pattern.
 	//
 	// example:
 	//
 	// /home/admin/test
 	ExclusiveDir *string `json:"ExclusiveDir,omitempty" xml:"ExclusiveDir,omitempty"`
-	// The file for which you want to disable web tamper proofing.
+	// The file to exclude from web tamper proofing protection.
 	//
-	// > If you set **Mode*	- to **blacklist**, you must specify this parameter.
+	// > This parameter is required when the Defense mode **Mode*	- is set to **blacklist*	- pattern.
 	//
 	// example:
 	//
 	// /home/admin/apache.log
 	ExclusiveFile *string `json:"ExclusiveFile,omitempty" xml:"ExclusiveFile,omitempty"`
-	// The type of file for which you want to disable web tamper proofing. Separate multiple types with semicolons (;). Valid values:
+	// The file types to exclude from web tamper proofing protection. Separate multiple file types with semicolons (;). Valid values:
 	//
-	// 	- php
+	// - php
 	//
-	// 	- jsp
+	// - jsp
 	//
-	// 	- asp
+	// - asp
 	//
-	// 	- aspx
+	// - aspx
 	//
-	// 	- js
+	// - js
 	//
-	// 	- cgi
+	// - cgi
 	//
-	// 	- html
+	// - html
 	//
-	// 	- htm
+	// - htm
 	//
-	// 	- xml
+	// - xml
 	//
-	// 	- shtml
+	// - shtml
 	//
-	// 	- shtm
+	// - shtm
 	//
-	// 	- jpg
+	// - jpg
 	//
-	// 	- gif
+	// - gif
 	//
-	// 	- png
+	// - png
 	//
-	// > If you set **Mode*	- to **blacklist**, you must specify this parameter.
+	// > This parameter is required when the Defense mode **Mode*	- is set to **blacklist*	- pattern.
 	//
 	// example:
 	//
 	// jpg
 	ExclusiveFileType *string `json:"ExclusiveFileType,omitempty" xml:"ExclusiveFileType,omitempty"`
-	// The file for which you want to enable web tamper proofing.
+	// The file to protect.
 	//
-	// > If you set **Mode*	- to **whitelist**, you must specify this parameter.
+	// > This parameter is required when the Defense mode **Mode*	- is set to **whitelist*	- pattern.
 	//
 	// example:
 	//
 	// /home/admin/test.log
 	InclusiveFile *string `json:"InclusiveFile,omitempty" xml:"InclusiveFile,omitempty"`
-	// The type of file for which you want to enable web tamper proofing. Separate multiple types with semicolons (;). Valid values:
+	// The file types to protect with web tamper proofing. Separate multiple file types with semicolons (;). Valid values:
 	//
-	// 	- php
+	// - php
 	//
-	// 	- jsp
+	// - jsp
 	//
-	// 	- asp
+	// - asp
 	//
-	// 	- aspx
+	// - aspx
 	//
-	// 	- js
+	// - js
 	//
-	// 	- cgi
+	// - cgi
 	//
-	// 	- html
+	// - html
 	//
-	// 	- htm
+	// - htm
 	//
-	// 	- xml
+	// - xml
 	//
-	// 	- shtml
+	// - shtml
 	//
-	// 	- shtm
+	// - shtm
 	//
-	// 	- jpg
+	// - jpg
 	//
-	// 	- gif
+	// - gif
 	//
-	// 	- png
+	// - png
 	//
-	// > If you set **Mode*	- to **whitelist**, you must specify this parameter.
+	// > This parameter is required when the Defense mode **Mode*	- is set to **whitelist*	- pattern.
 	//
 	// example:
 	//
 	// jpg
 	InclusiveFileType *string `json:"InclusiveFileType,omitempty" xml:"InclusiveFileType,omitempty"`
-	// The language of the content within the request and response. Valid values:
+	// The language type of the request and response. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The local path to the backup files of the protected directory.
+	// The local backup path used for secure backup of the protected directory.
 	//
 	// This parameter is required.
 	//
@@ -170,25 +170,25 @@ type ModifyWebLockCreateConfigRequest struct {
 	//
 	// /usr/local/backup
 	LocalBackupDir *string `json:"LocalBackupDir,omitempty" xml:"LocalBackupDir,omitempty"`
-	// The protection mode of web tamper proofing. Valid values:
+	// The protection directory mode. Valid values:
 	//
-	// 	- **whitelist**: In this mode, web tamper proofing is enabled for the specified directories and file types.
+	// - **whitelist**: whitelist mode. Protects only the specified directories and file types.
 	//
-	// 	- **blacklist**: In this mode, web tamper proofing is enabled for the unspecified sub-directories, file types, and files in the protected directories.
+	// - **blacklist**: blacklist mode. Protects all subdirectories, file types, and specified files under the protected directory that are not excluded.
 	//
 	// example:
 	//
 	// whitelist
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// The source IP address of the request.
+	// The IP address of the access source.
 	//
 	// example:
 	//
 	// 39.170.XX.XX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The UUID of the server for which you want to add a directory to protect.
+	// The UUID of the server for which you want to add a protected directory.
 	//
-	// > You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to query the UUIDs of servers.
+	// > You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to obtain the UUID of the server.
 	//
 	// This parameter is required.
 	//

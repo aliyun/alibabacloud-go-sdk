@@ -56,15 +56,15 @@ type DescribeVulListPageRequest struct {
 	//
 	// example:
 	//
-	// RCE vulnerability
+	// 远程代码执行漏洞
 	VulNameLike *string `json:"VulNameLike,omitempty" xml:"VulNameLike,omitempty"`
 	// The type of the vulnerabilities. Valid values:
 	//
-	// 	- **cve**: Linux software vulnerability.
+	// - **cve**: Linux software vulnerability.
 	//
-	// 	- **sys**: Windows system vulnerability.
+	// - **sys**: Windows system vulnerability.
 	//
-	// 	- **app**: Application vulnerability that is detected by using web scanner.
+	// - **app**: Application vulnerability that is detected by using web scanner.
 	//
 	// example:
 	//

@@ -16,9 +16,9 @@ type iDescribeImageSecurityScanCountResponseBody interface {
 }
 
 type DescribeImageSecurityScanCountResponseBody struct {
-	// The data returned.
+	// The returned data.
 	Data *DescribeImageSecurityScanCountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID.
+	// The request ID. Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -62,25 +62,25 @@ func (s *DescribeImageSecurityScanCountResponseBody) Validate() error {
 }
 
 type DescribeImageSecurityScanCountResponseBodyData struct {
-	// The number of image baseline risks detected on the current asset.
+	// The number of image baseline risks in the current asset.
 	//
 	// example:
 	//
 	// 0
 	ImageBaselineCount *int32 `json:"ImageBaselineCount,omitempty" xml:"ImageBaselineCount,omitempty"`
-	// The number of image system vulnerabilities returned on the current page.
+	// The number of image system vulnerabilities on the current page.
 	//
 	// example:
 	//
 	// 0
 	ImageCveVulCount *int32 `json:"ImageCveVulCount,omitempty" xml:"ImageCveVulCount,omitempty"`
-	// The number of malicious image samples returned on the current page.
+	// The number of malicious image samples on the current page.
 	//
 	// example:
 	//
 	// 0
 	ImageMaliciousFileCount *int32 `json:"ImageMaliciousFileCount,omitempty" xml:"ImageMaliciousFileCount,omitempty"`
-	// The number of image application vulnerabilities returned on the current page.
+	// The number of image application vulnerabilities displayed on the current page.
 	//
 	// example:
 	//

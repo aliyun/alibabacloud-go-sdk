@@ -18,7 +18,7 @@ type iGetRdTreeResponseBody interface {
 type GetRdTreeResponseBody struct {
 	// The processing result.
 	Data *GetRdTreeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID.
+	// The request ID. Alibaba Cloud generates a unique identifier for each API request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ func (s *GetRdTreeResponseBody) Validate() error {
 }
 
 type GetRdTreeResponseBodyData struct {
-	// The subfolder.
+	// The child folders.
 	Children []interface{} `json:"Children,omitempty" xml:"Children,omitempty" type:"Repeated"`
 	// The ID of the folder in the resource directory.
 	//
@@ -70,7 +70,7 @@ type GetRdTreeResponseBodyData struct {
 	//
 	// fd-CGA73I****
 	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
-	// The name of the folder.
+	// The folder name.
 	//
 	// example:
 	//

@@ -20,13 +20,13 @@ type iDescribeVpcHoneyPotListResponseBody interface {
 type DescribeVpcHoneyPotListResponseBody struct {
 	// The pagination information.
 	PageInfo *DescribeVpcHoneyPotListResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 4FEC7F58-FCDA-415F-AE25-CD8BC0931DF2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// An array that consists of the honeypots.
+	// The information about cloud honeypot instances.
 	VpcHoneyPotDTOList []*DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOList `json:"VpcHoneyPotDTOList,omitempty" xml:"VpcHoneyPotDTOList,omitempty" type:"Repeated"`
 }
 
@@ -84,25 +84,25 @@ func (s *DescribeVpcHoneyPotListResponseBody) Validate() error {
 }
 
 type DescribeVpcHoneyPotListResponseBodyPageInfo struct {
-	// The number of entries returned on the current page.
+	// The number of entries on the current page.
 	//
 	// example:
 	//
 	// 2
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -165,81 +165,81 @@ type DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOList struct {
 	//
 	// 192.168.XX.XX/16
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
-	// The time at which the VPC was created. Unit: milliseconds.
+	// The time when the VPC was created. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1607365213000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The status of the server on which the honeypot is deployed. Valid values:
+	// The status of the Elastic Compute Service (ECS) instance that corresponds to the cloud honeypot instance. Valid values:
 	//
-	// 	- **Pending**: The server is being created.
+	// - **Pending**: being created
 	//
-	// 	- **Running**: The server is running.
+	// - **Running**: running
 	//
-	// 	- **Starting**: The server is being started.
+	// - **Starting**: starting
 	//
-	// 	- **Stopping**: The server is being stopped.
+	// - **Stopping**: stopping
 	//
-	// 	- **Stopped**: The server is stopped.
+	// - **Stopped**: stopped
 	//
 	// example:
 	//
 	// Running
 	HoneyPotEcsInstanceStatus *string `json:"HoneyPotEcsInstanceStatus,omitempty" xml:"HoneyPotEcsInstanceStatus,omitempty"`
-	// The ID of the elastic network interface (ENI) used by the honeypot in the VPC.
+	// The ID of the elastic network interface (ENI) that the cloud honeypot created in the VPC.
 	//
 	// example:
 	//
 	// eni-p0whwgg7bing8b80****
 	HoneyPotEniInstanceId *string `json:"HoneyPotEniInstanceId,omitempty" xml:"HoneyPotEniInstanceId,omitempty"`
-	// Indicates whether the cloud honeypot feature is enabled for the VPC. Valid values:
+	// Indicates whether the VPC has cloud honeypot enabled. Valid values:
 	//
-	// 	- **true**: yes
+	// - **true**: enabled
 	//
-	// 	- **false**: no
+	// - **false**: disabled
 	//
 	// example:
 	//
 	// true
 	HoneyPotExistence *bool `json:"HoneyPotExistence,omitempty" xml:"HoneyPotExistence,omitempty"`
-	// The status of the honeypot. Valid values:
+	// The status of the cloud honeypot instance. Valid values:
 	//
-	// 	- **pending**: The honeypot is being created.
+	// - **pending**: being created
 	//
-	// 	- **deleting**: The honeypot is being deleted.
+	// - **deleting**: being deleted
 	//
-	// 	- **off**: The honeypot is disabled.
+	// - **off**: disabled
 	//
-	// 	- **suspending**: The honeypot is suspended.
+	// - **suspending**: being suspended
 	//
-	// 	- **on**: The honeypot is enabled.
+	// - **on**: enabled
 	//
 	// example:
 	//
 	// on
 	HoneyPotInstanceStatus *string `json:"HoneyPotInstanceStatus,omitempty" xml:"HoneyPotInstanceStatus,omitempty"`
-	// The ID of the vSwitch to which the ENI used by the honeypot is connected.
+	// The ID of the vSwitch to which the ENI used by the cloud honeypot belongs.
 	//
 	// example:
 	//
 	// vsw-p0w7gdcfvn20tvdul****
 	HoneyPotVpcSwitchId *string `json:"HoneyPotVpcSwitchId,omitempty" xml:"HoneyPotVpcSwitchId,omitempty"`
-	// The ID of the VPC.
+	// The ID of the VPC in which the cloud honeypot instance resides.
 	//
 	// example:
 	//
 	// vpc-p0w223apdl49sr5zv****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The name of the VPC.
+	// The name of the VPC in which the cloud honeypot instance resides.
 	//
 	// example:
 	//
 	// abc-vpcname
 	VpcName *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
-	// The region ID of the VPC.
+	// The region ID of the VPC in which the cloud honeypot instance resides.
 	//
-	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// > For the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//
@@ -247,15 +247,15 @@ type DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOList struct {
 	VpcRegionId *string `json:"VpcRegionId,omitempty" xml:"VpcRegionId,omitempty"`
 	// The status of the VPC. Valid values:
 	//
-	// 	- **Available**: The VPC is normal and available.
+	// - **Available**: normal
 	//
-	// 	- **Pending**: The VPC is being configured.
+	// - **Pending**: being configured
 	//
 	// example:
 	//
 	// Available
 	VpcStatus *string `json:"VpcStatus,omitempty" xml:"VpcStatus,omitempty"`
-	// An array that consists of the vSwitches in the VPC.
+	// The information about vSwitches in the VPC.
 	VpcSwitchIdList []*DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOListVpcSwitchIdList `json:"VpcSwitchIdList,omitempty" xml:"VpcSwitchIdList,omitempty" type:"Repeated"`
 }
 

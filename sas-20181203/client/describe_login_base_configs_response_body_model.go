@@ -22,27 +22,27 @@ type iDescribeLoginBaseConfigsResponseBody interface {
 }
 
 type DescribeLoginBaseConfigsResponseBody struct {
-	// The description of the configuration.
+	// The list of logon configuration details.
 	BaseConfigs []*DescribeLoginBaseConfigsResponseBodyBaseConfigs `json:"BaseConfigs,omitempty" xml:"BaseConfigs,omitempty" type:"Repeated"`
-	// The page number of the returned page.
+	// The current page number in the paging query result.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries returned per page. Default value: **20**.
+	// The number of logon configuration entries displayed on each page in the paging query result. Default value: **20**.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The request ID. Alibaba Cloud generates a unique identifier for each API request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// 2C2D4B3C-0524-17B1-93D2-DA50119F4E1E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of logon configuration entries returned.
 	//
 	// example:
 	//
@@ -139,9 +139,9 @@ type DescribeLoginBaseConfigsResponseBodyBaseConfigs struct {
 	//
 	// example:
 	//
-	// Montenegro
+	// BeiJing
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// Corresponding configuration remark information.
+	// The remark information displayed for the corresponding configuration.
 	//
 	// example:
 	//
@@ -153,7 +153,7 @@ type DescribeLoginBaseConfigsResponseBodyBaseConfigs struct {
 	//
 	// 08:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The details of the servers to which the configuration is applied.
+	// The list of details about the servers on which the rule takes effect.
 	TargetList []*DescribeLoginBaseConfigsResponseBodyBaseConfigsTargetList `json:"TargetList,omitempty" xml:"TargetList,omitempty" type:"Repeated"`
 	// The total number of servers.
 	//
@@ -161,7 +161,7 @@ type DescribeLoginBaseConfigsResponseBodyBaseConfigs struct {
 	//
 	// 172
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The number of servers to which the configuration is applied.
+	// The number of servers on which the rule takes effect.
 	//
 	// example:
 	//
@@ -272,19 +272,19 @@ func (s *DescribeLoginBaseConfigsResponseBodyBaseConfigs) Validate() error {
 }
 
 type DescribeLoginBaseConfigsResponseBodyBaseConfigsTargetList struct {
-	// The UUID or group ID of the server.
+	// The UUID of the server or the ID of the server group on which the rule takes effect.
 	//
 	// example:
 	//
 	// 0011ea53-738c-4bff-93be-ce6a1cc9****
 	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
-	// The type of the server to which the configuration is applied. Valid values:
+	// The selection mode for the assets on which the rule takes effect. Valid values:
 	//
-	// 	- **uuid**: a server
+	// - **uuid**: added by individual asset.
 	//
-	// 	- **groupId**: a server group
+	// - **groupId**: added by server group.
 	//
-	// 	- **global**: all servers
+	// - **global**: all assets are selected.
 	//
 	// example:
 	//

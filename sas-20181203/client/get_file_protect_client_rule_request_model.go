@@ -14,6 +14,8 @@ type iGetFileProtectClientRuleRequest interface {
 }
 
 type GetFileProtectClientRuleRequest struct {
+	// The policy ID.
+	//
 	// example:
 	//
 	// 123

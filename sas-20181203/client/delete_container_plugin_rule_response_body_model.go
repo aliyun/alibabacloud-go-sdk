@@ -16,17 +16,17 @@ type iDeleteContainerPluginRuleResponseBody interface {
 }
 
 type DeleteContainerPluginRuleResponseBody struct {
-	// Indicates whether the container plug-in is manually deleted. Valid values:
+	// Indicates whether the container escape prevention rule is deleted. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The rule is deleted.
 	//
-	// 	- **false**
+	// - **false**: The rule failed to be deleted.
 	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The request ID.
+	// The unique identifier that Alibaba Cloud generates for the request.
 	//
 	// example:
 	//

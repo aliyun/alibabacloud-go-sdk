@@ -108,9 +108,9 @@ type ListCheckItemsResponseBodyCheckItems struct {
 	CheckShowName *string `json:"CheckShowName,omitempty" xml:"CheckShowName,omitempty"`
 	// The source type of the Security Posture check item:
 	//
-	//  - **CUSTOM**: User-defined
+	// - **CUSTOM**: User-defined
 	//
-	//  - **SYSTEM**: Predefined by the Security Posture platform
+	// - **SYSTEM**: Predefined by the Security Posture platform
 	//
 	// example:
 	//
@@ -333,7 +333,7 @@ func (s *ListCheckItemsResponseBodyCheckItems) Validate() error {
 type ListCheckItemsResponseBodyCheckItemsAssistInfo struct {
 	// The type of the help information for the check item risk. Values:
 	//
-	// - **text**：Text
+	// - **text**:Text
 	//
 	// example:
 	//
@@ -416,15 +416,15 @@ type ListCheckItemsResponseBodyCheckItemsCheckPolicies struct {
 	StandardShowName *string `json:"StandardShowName,omitempty" xml:"StandardShowName,omitempty"`
 	// The name of the associated policy category:
 	//
-	// - **AISPM**：AI Configuration Management (AI-SPM)
+	// - **AISPM**:AI Configuration Management (AI-SPM)
 	//
-	// - **KISPM**：Kubernetes Configuration Management (KSPM)
+	// - **KISPM**:Kubernetes Configuration Management (KSPM)
 	//
-	// - **IDENTITY_PERMISSION**：Identity and Permission Management (CIEM)
+	// - **IDENTITY_PERMISSION**:Identity and Permission Management (CIEM)
 	//
-	// - **RISK**：Security Risk
+	// - **RISK**:Security Risk
 	//
-	// - **COMPLIANCE**：Compliance Risk
+	// - **COMPLIANCE**:Compliance Risk
 	//
 	// example:
 	//
@@ -510,7 +510,7 @@ func (s *ListCheckItemsResponseBodyCheckItemsCheckPolicies) Validate() error {
 type ListCheckItemsResponseBodyCheckItemsDescription struct {
 	// The type of the check description attribute. Values:
 	//
-	// - **text**：Text
+	// - **text**:Text
 	//
 	// example:
 	//
@@ -557,7 +557,7 @@ func (s *ListCheckItemsResponseBodyCheckItemsDescription) Validate() error {
 type ListCheckItemsResponseBodyCheckItemsSolution struct {
 	// The type of the check item solution information. Values:
 	//
-	// - **text**：Text
+	// - **text**:Text
 	//
 	// example:
 	//

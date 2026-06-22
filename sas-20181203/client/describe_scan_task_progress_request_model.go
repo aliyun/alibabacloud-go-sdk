@@ -14,9 +14,9 @@ type iDescribeScanTaskProgressRequest interface {
 }
 
 type DescribeScanTaskProgressRequest struct {
-	// The ID of the virus scan task.
+	// The ID of the virus scan task that you want to query.
 	//
-	// >  You can call the [StartVirusScanTask](~~StartVirusScanTask~~) operation to query the IDs of virus scan tasks.
+	// > You can call the [StartVirusScanTask](~~StartVirusScanTask~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//

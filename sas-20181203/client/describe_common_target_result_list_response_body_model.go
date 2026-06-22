@@ -16,13 +16,13 @@ type iDescribeCommonTargetResultListResponseBody interface {
 }
 
 type DescribeCommonTargetResultListResponseBody struct {
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The request ID. Alibaba Cloud generates a unique identifier for each request. You can use the request ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// 6673D49C-A9AB-40DD-B4A2-B92306701AE7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the configuration item.
+	// The configuration information.
 	TargetConfig *DescribeCommonTargetResultListResponseBodyTargetConfig `json:"TargetConfig,omitempty" xml:"TargetConfig,omitempty" type:"Struct"`
 }
 
@@ -62,31 +62,31 @@ func (s *DescribeCommonTargetResultListResponseBody) Validate() error {
 }
 
 type DescribeCommonTargetResultListResponseBodyTargetConfig struct {
-	// The identifier that indicates whether the configuration item is applied to the server. Valid values:
+	// The asset configuration flag. Valid values:
 	//
-	// 	- **add**: applied
+	// - **add**: The configuration takes effect on the asset.
 	//
-	// 	- **del**: not applied
+	// - **del**: The configuration does not take effect on the asset.
 	//
 	// example:
 	//
 	// del
 	Flag *string `json:"Flag,omitempty" xml:"Flag,omitempty"`
-	// The default identifier.
+	// The default flag for asset configuration.
 	//
 	// example:
 	//
 	// add
 	TargetDefault *string `json:"TargetDefault,omitempty" xml:"TargetDefault,omitempty"`
-	// An array that consists of the IDs of the server groups or the UUIDs of the servers.
+	// The group ID or asset UUID on which the configuration takes effect.
 	//
-	// >  If **uuid*	- is returned for the **TargetType*	- parameter, **UUIDs*	- of the servers are returned. If **groupId*	- is returned for the **TargetType*	- parameter, IDs of the server groups are returned.
+	// > If **TargetType*	- returns **uuid**, this field indicates the **UUID*	- of the asset. If **TargetType*	- returns **groupId**, this field indicates the group ID.
 	TargetList []*string `json:"TargetList,omitempty" xml:"TargetList,omitempty" type:"Repeated"`
-	// The type of the server to which the configuration item is applied. Valid values:
+	// The selection mode for the assets on which the configuration takes effect. Valid values:
 	//
-	// 	- **uuid**: a server
+	// - **uuid**: Added by individual asset.
 	//
-	// 	- **groupId**: a server group
+	// - **groupId**: Added by server group.
 	//
 	// example:
 	//
@@ -98,15 +98,15 @@ type DescribeCommonTargetResultListResponseBodyTargetConfig struct {
 	//
 	// 22
 	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The type of the configuration item. Valid values:
+	// The configuration type. Valid values:
 	//
-	// 	- **webshell_timescan**: webshell detection and removal
+	// - **webshell_timescan**: web shell scan.
 	//
-	// 	- **aliscriptengine**: in-depth detection engine
+	// - **aliscriptengine**: deep detection engine.
 	//
-	// 	- **alidetect**: installation scope of local file detection
+	// - **alidetect**: installation scope of the local file detection engine.
 	//
-	// 	- **alidetect-scan-enable**: detection scope of local file detection
+	// - **alidetect-scan-enable**: detection scope of the local file detection engine.
 	//
 	// example:
 	//

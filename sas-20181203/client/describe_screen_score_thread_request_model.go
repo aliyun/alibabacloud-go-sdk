@@ -18,7 +18,7 @@ type iDescribeScreenScoreThreadRequest interface {
 }
 
 type DescribeScreenScoreThreadRequest struct {
-	// The end of the time range to query. This value is a UNIX timestamp. Unit: milliseconds.
+	// The end time as a timestamp. Unit: milliseconds.
 	//
 	// This parameter is required.
 	//
@@ -26,17 +26,17 @@ type DescribeScreenScoreThreadRequest struct {
 	//
 	// 1668064495000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Source of security score, default is Cloud Security Center if left empty. Enum values:
+	// The source of the security score. If left empty, the default value is Security Center. Valid values:
 	//
-	// - 0:Cloud Security Center.
+	// 0: Security Center.
 	//
-	// - 1:Yaochi Console.
+	// 1: Alibaba Cloud ApsaraDB console.
 	//
 	// example:
 	//
 	// 0
 	Source *int32 `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The beginning of the time range to query. This value is a UNIX timestamp. Unit: milliseconds.
+	// The start time as a timestamp. Unit: milliseconds.
 	//
 	// This parameter is required.
 	//

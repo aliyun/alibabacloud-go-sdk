@@ -18,11 +18,11 @@ type iDescribeGroupedContainerInstancesResponseBody interface {
 }
 
 type DescribeGroupedContainerInstancesResponseBody struct {
-	// The information about the container.
+	// The list of container asset information returned.
 	GroupedContainerInstanceList []*DescribeGroupedContainerInstancesResponseBodyGroupedContainerInstanceList `json:"GroupedContainerInstanceList,omitempty" xml:"GroupedContainerInstanceList,omitempty" type:"Repeated"`
 	// The pagination information.
 	PageInfo *DescribeGroupedContainerInstancesResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The ID of the request. The ID is a unique identifier that Alibaba Cloud generates for the request and can be used to troubleshoot issues.
 	//
 	// example:
 	//
@@ -84,13 +84,13 @@ func (s *DescribeGroupedContainerInstancesResponseBody) Validate() error {
 }
 
 type DescribeGroupedContainerInstancesResponseBodyGroupedContainerInstanceList struct {
-	// The number of alerts that are detected for the current pod, application, namespace, or cluster.
+	// The number of alerts detected in the current pod, application, namespace, or cluster.
 	//
 	// example:
 	//
 	// 1
 	AlarmCount *int32 `json:"AlarmCount,omitempty" xml:"AlarmCount,omitempty"`
-	// The name of the application.
+	// The application name.
 	//
 	// example:
 	//
@@ -110,45 +110,45 @@ type DescribeGroupedContainerInstancesResponseBodyGroupedContainerInstanceList s
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
 	// The type of the cluster. Valid values:
 	//
-	// 	- **Kubernetes**: dedicated Kubernetes cluster.
+	// - **Kubernetes**: dedicated Kubernetes cluster
 	//
-	// 	- **ManagedKubernetes**: standard managed cluster (edge cluster).
+	// - **ManagedKubernetes**: standard managed cluster (edge cluster)
 	//
-	// 	- **Ask**: serverless Kubernetes (ASK) cluster.
+	// - **Ask**: standard serverless cluster.
 	//
 	// example:
 	//
 	// ManagedKubernetes
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	// The timestamp when the cluster was created. Unit: milliseconds.
+	// The timestamp when the cluster was created, in milliseconds.
 	//
 	// example:
 	//
 	// 1600076893000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The status of the cluster. Valid values:
+	// The running status of the cluster. Valid values:
 	//
-	// 	- **running**: The cluster is running.
+	// - **running**: The cluster is running.
 	//
-	// 	- **stopped**: The cluster is stopped.
+	// - **stopped**: The cluster is stopped.
 	//
-	// 	- **deleted**: The cluster is deleted.
+	// - **deleted**: The cluster is deleted.
 	//
-	// 	- **delete_failed**: The cluster failed to be deleted.
+	// - **delete_failed**: The cluster failed to be deleted.
 	//
-	// 	- **failed**: The cluster failed to be created.
+	// - **failed**: The cluster failed to be created.
 	//
 	// example:
 	//
 	// running
 	CusterState *string `json:"CusterState,omitempty" xml:"CusterState,omitempty"`
-	// The number of baseline risks that are detected for the current pod, application, namespace, or cluster.
+	// The total number of baseline checks detected in the current pod, application, namespace, or cluster.
 	//
 	// example:
 	//
 	// 20
 	HcCount *int32 `json:"HcCount,omitempty" xml:"HcCount,omitempty"`
-	// The IP address of the host in the container cluster.
+	// The host IP address of the container cluster.
 	//
 	// example:
 	//
@@ -178,7 +178,7 @@ type DescribeGroupedContainerInstancesResponseBodyGroupedContainerInstanceList s
 	//
 	// name001
 	ImageRepoNamespace *string `json:"ImageRepoNamespace,omitempty" xml:"ImageRepoNamespace,omitempty"`
-	// The tag that is added to the image repository.
+	// The tag of the image repository.
 	//
 	// example:
 	//
@@ -190,13 +190,13 @@ type DescribeGroupedContainerInstancesResponseBodyGroupedContainerInstanceList s
 	//
 	// e4bdec1d9ba7e0967111a7ea467c****
 	ImageUuid *string `json:"ImageUuid,omitempty" xml:"ImageUuid,omitempty"`
-	// The number of pods, applications, clusters, or namespaces.
+	// The number of pods, applications, clusters, or namespaces returned.
 	//
 	// example:
 	//
 	// 9
 	InstanceCount *int32 `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
-	// The ID of the server.
+	// The ID of the server instance.
 	//
 	// example:
 	//
@@ -208,7 +208,7 @@ type DescribeGroupedContainerInstancesResponseBodyGroupedContainerInstanceList s
 	//
 	// kube-system
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The name of the pod.
+	// The pod name.
 	//
 	// example:
 	//
@@ -220,13 +220,13 @@ type DescribeGroupedContainerInstancesResponseBodyGroupedContainerInstanceList s
 	//
 	// 172.114.XX.XX
 	PodIp *string `json:"PodIp,omitempty" xml:"PodIp,omitempty"`
-	// The region ID of the instance.
+	// The ID of the region in which the instance resides.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The number of at-risk instances.
+	// The number of instances that are at risk.
 	//
 	// example:
 	//
@@ -234,47 +234,47 @@ type DescribeGroupedContainerInstancesResponseBodyGroupedContainerInstanceList s
 	RiskInstanceCount *int32 `json:"RiskInstanceCount,omitempty" xml:"RiskInstanceCount,omitempty"`
 	// The risk level. Valid values:
 	//
-	// 	- **high**
+	// - **high**: high
 	//
-	// 	- **medium**
+	// - **medium**: medium
 	//
-	// 	- **low**
+	// - **low**: low.
 	//
 	// example:
 	//
 	// low
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// Indicates whether risks were detected. Valid values:
+	// The risk status. Valid values:
 	//
-	// 	- **NO**
+	// - **NO**: No risk.
 	//
-	// 	- **YES**
+	// - **YES**: At risk.
 	//
 	// example:
 	//
 	// NO
 	RiskStatus *string `json:"RiskStatus,omitempty" xml:"RiskStatus,omitempty"`
-	// Indicates whether the synchronization of cluster audit logs is enabled. Valid values:
+	// The log audit synchronization switch for the cluster. Valid values:
 	//
-	// 	- **0**: disabled.
+	// - **0**: disabled
 	//
-	// 	- **1**: enabled.
+	// - **1**: enabled.
 	//
 	// example:
 	//
 	// 1
 	SyncOpen *int32 `json:"SyncOpen,omitempty" xml:"SyncOpen,omitempty"`
-	// The status of the synchronization of cluster audit logs. Valid values:
+	// The log audit synchronization status for the cluster. Valid values:
 	//
-	// 	- **0**: The synchronization failed.
+	// - **0**: synchronization failed
 	//
-	// 	- **1**: The synchronization is successful.
+	// - **1**: synchronization succeeded.
 	//
 	// example:
 	//
 	// 1
 	SyncStatus *int32 `json:"SyncStatus,omitempty" xml:"SyncStatus,omitempty"`
-	// The number of vulnerabilities that are detected for the current pod, application, namespace, or cluster.
+	// The number of vulnerabilities detected in the current pod, application, namespace, or cluster.
 	//
 	// example:
 	//
@@ -538,19 +538,19 @@ func (s *DescribeGroupedContainerInstancesResponseBodyGroupedContainerInstanceLi
 }
 
 type DescribeGroupedContainerInstancesResponseBodyPageInfo struct {
-	// The number of container assets returned on the current page.
+	// The number of container assets displayed on the current page in a paging query.
 	//
 	// example:
 	//
 	// 20
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The page number of the returned page.
+	// The page number of the current page in a paging query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries returned per page. Default value: **20**.
+	// The number of container assets displayed on each page in a paging query. Default value: **20**, which indicates that 20 container assets are displayed on each page.
 	//
 	// example:
 	//

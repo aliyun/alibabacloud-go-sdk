@@ -24,27 +24,27 @@ type iDescribeAntiBruteForceRulesRequest interface {
 }
 
 type DescribeAntiBruteForceRulesRequest struct {
-	// Set which page of the returned results to start displaying the query results. The default value is **1**, indicating that the display starts from the first page.
+	// The page number of the page to return. Default value: **1**, which indicates the first page.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The ID of the anti-brute force rule.
+	// The ID of the brute-force attacks prevention rule.
 	//
-	// > You can obtain this parameter by calling the [DescribeAntiBruteForceRules](~~DescribeAntiBruteForceRules~~) interface.
+	// >You can invoke the [DescribeAntiBruteForceRules](~~DescribeAntiBruteForceRules~~) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// 1141****
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the brute force rule.
+	// The name of the brute-force attacks prevention rule.
 	//
 	// example:
 	//
 	// testName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The maximum number of data entries displayed per page during a paginated query.
+	// The maximum number of entries to return on each page in a paged query. This parameter is used for paging.
 	//
 	// example:
 	//

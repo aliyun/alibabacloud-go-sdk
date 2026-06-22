@@ -24,25 +24,25 @@ type iDescribeDomainSecureStatisticsResponseBody interface {
 }
 
 type DescribeDomainSecureStatisticsResponseBody struct {
-	// The number of domain names that trigger security alerts.
+	// The number of domain names that have security alerts.
 	//
 	// example:
 	//
 	// 2
 	AlarmCount *int32 `json:"AlarmCount,omitempty" xml:"AlarmCount,omitempty"`
-	// The number of the websites for which no certificates are installed.
+	// The number of websites without certificates.
 	//
 	// example:
 	//
 	// 1
 	NoSslCount *int32 `json:"NoSslCount,omitempty" xml:"NoSslCount,omitempty"`
-	// The request ID.
+	// The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// 1EE7B150-D67E-53FD-A52D-3E8E669A****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of the domain names that have security risks.
+	// The number of domain names that have security risks.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type DescribeDomainSecureStatisticsResponseBody struct {
 	//
 	// 72
 	TotalDomainCount *int32 `json:"TotalDomainCount,omitempty" xml:"TotalDomainCount,omitempty"`
-	// The number of the domain names that have vulnerabilities.
+	// The number of domain names that have vulnerabilities.
 	//
 	// example:
 	//

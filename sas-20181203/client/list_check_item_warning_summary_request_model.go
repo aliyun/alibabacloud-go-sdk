@@ -134,7 +134,7 @@ type ListCheckItemWarningSummaryRequest struct {
 	//
 	// example:
 	//
-	// 127608589417****
+	// 1232428423234****
 	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The type of the baseline.
 	//

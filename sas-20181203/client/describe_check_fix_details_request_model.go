@@ -18,19 +18,19 @@ type iDescribeCheckFixDetailsRequest interface {
 }
 
 type DescribeCheckFixDetailsRequest struct {
-	// The ID of the risk item.
+	// The ID of the check item.
 	//
-	// >  You can call the [DescribeRiskType](~~DescribeRiskType~~) operation to query the IDs of risk items.
+	// > You can call the [DescribeRiskType](~~DescribeRiskType~~) operation to obtain the check item ID.
 	//
 	// example:
 	//
 	// 58
 	CheckIds *string `json:"CheckIds,omitempty" xml:"CheckIds,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language type of the request and response. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type DescribeCheckFixDetailsRequest struct {
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The ID of the baseline.
 	//
-	// >  You can call the [DescribeCheckWarningSummary](https://help.aliyun.com/document_detail/116179.html) operation to query the IDs of baselines.
+	// > You can call the [DescribeCheckWarningSummary](https://help.aliyun.com/document_detail/116179.html) operation to obtain the baseline ID.
 	//
 	// example:
 	//

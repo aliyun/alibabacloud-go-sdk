@@ -16,7 +16,7 @@ type iListVulGlobalConfigRequest interface {
 type ListVulGlobalConfigRequest struct {
 	// The key of the configuration item. Valid values:
 	//
-	// 	- **vul_scan_ip_list**: The IP addresses that are detected.
+	// - **vul_scan_ip_list**: the collection of vulnerability scanning IP addresses.
 	//
 	// example:
 	//

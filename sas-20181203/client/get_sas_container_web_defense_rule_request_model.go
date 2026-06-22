@@ -14,9 +14,9 @@ type iGetSasContainerWebDefenseRuleRequest interface {
 }
 
 type GetSasContainerWebDefenseRuleRequest struct {
-	// Rule ID.
+	// The rule ID.
 	//
-	// > You can call the [ListSasContainerWebDefenseRule](~~ListSasContainerWebDefenseRule~~) API to get this parameter.
+	// > You can call the [ListSasContainerWebDefenseRule](~~ListSasContainerWebDefenseRule~~) operation to obtain this parameter.
 	//
 	// example:
 	//

@@ -124,7 +124,7 @@ type DescribeExposedInstanceDetailResponseBodyExposedChains struct {
 	//
 	// example:
 	//
-	// sg-bp1iw5enua6gf5i2xr7z
+	// test-group****
 	GroupNo *string `json:"GroupNo,omitempty" xml:"GroupNo,omitempty"`
 	// The instance ID.
 	//
@@ -517,7 +517,7 @@ type DescribeExposedInstanceDetailResponseBodyExposedChainsCspmRiskList struct {
 	//
 	// example:
 	//
-	// Create Alert Rule
+	// 使用SSH密钥对登录
 	CheckName *string `json:"CheckName,omitempty" xml:"CheckName,omitempty"`
 	// The instance ID.
 	//

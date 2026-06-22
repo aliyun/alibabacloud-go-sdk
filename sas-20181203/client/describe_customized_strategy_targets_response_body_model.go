@@ -16,13 +16,13 @@ type iDescribeCustomizedStrategyTargetsResponseBody interface {
 }
 
 type DescribeCustomizedStrategyTargetsResponseBody struct {
-	// The request ID.
+	// The request ID. Alibaba Cloud generates a unique identifier for each API request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// 1EE7B150-D67E-53FD-A52D-3E8E669A****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the servers to which custom policies are applied.
+	// The list of target information for the custom policy.
 	StartegyTargets []*DescribeCustomizedStrategyTargetsResponseBodyStartegyTargets `json:"StartegyTargets,omitempty" xml:"StartegyTargets,omitempty" type:"Repeated"`
 }
 
@@ -68,7 +68,7 @@ func (s *DescribeCustomizedStrategyTargetsResponseBody) Validate() error {
 type DescribeCustomizedStrategyTargetsResponseBodyStartegyTargets struct {
 	// The ID of the server group.
 	//
-	// >  You can call the [DescribeAllGroups](~~DescribeAllGroups~~) operation to query the IDs of server groups.
+	// > You can call the [DescribeAllGroups](~~DescribeAllGroups~~) operation to query server group IDs.
 	//
 	// example:
 	//
@@ -84,11 +84,11 @@ type DescribeCustomizedStrategyTargetsResponseBodyStartegyTargets struct {
 	//
 	// example:
 	//
-	// win
+	// 白名单
 	StrategyName *string `json:"StrategyName,omitempty" xml:"StrategyName,omitempty"`
-	// The UUID of the server.
+	// The UUID of the asset.
 	//
-	// >  You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to query the UUIDs of servers.
+	// > You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to obtain this parameter.
 	//
 	// example:
 	//

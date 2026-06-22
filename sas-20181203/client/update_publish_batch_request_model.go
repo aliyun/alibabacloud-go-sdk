@@ -30,9 +30,9 @@ type UpdatePublishBatchRequest struct {
 	//
 	// example:
 	//
-	// xxx
+	// 批次1
 	BatchName *string `json:"BatchName,omitempty" xml:"BatchName,omitempty"`
-	// The interval between two release batches.
+	// The interval between release batches.
 	//
 	// example:
 	//
@@ -40,11 +40,11 @@ type UpdatePublishBatchRequest struct {
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	// The asset selection dimension. Valid values:
 	//
-	// 	- **0**: instance
+	// - **0**: machine instance
 	//
-	// 	- **1**: machine group
+	// - **1**: machine group
 	//
-	// 	- **2**: VPC-based instance ID
+	// - **2**: VPC-connected instance ID
 	//
 	// example:
 	//

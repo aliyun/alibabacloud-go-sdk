@@ -14,7 +14,7 @@ type iDeleteUnknownThreatDetectProcessResponseBody interface {
 }
 
 type DeleteUnknownThreatDetectProcessResponseBody struct {
-	// Id of the request
+	// The unique ID of the request.
 	//
 	// example:
 	//

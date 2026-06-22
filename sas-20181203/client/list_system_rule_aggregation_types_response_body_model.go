@@ -16,9 +16,9 @@ type iListSystemRuleAggregationTypesResponseBody interface {
 }
 
 type ListSystemRuleAggregationTypesResponseBody struct {
-	// An array that consists of the aggregation types.
+	// The list of rule aggregation types.
 	AggregationTypeList []*ListSystemRuleAggregationTypesResponseBodyAggregationTypeList `json:"AggregationTypeList,omitempty" xml:"AggregationTypeList,omitempty" type:"Repeated"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The request ID. Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -66,17 +66,17 @@ func (s *ListSystemRuleAggregationTypesResponseBody) Validate() error {
 }
 
 type ListSystemRuleAggregationTypesResponseBodyAggregationTypeList struct {
-	// The ID of the aggregation type.
+	// The rule aggregation ID.
 	//
 	// example:
 	//
 	// 1
 	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the aggregation type.
+	// The rule aggregation name.
 	//
 	// example:
 	//
-	// Remote control\\*\\*\\*\\*
+	// 远程控制****
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

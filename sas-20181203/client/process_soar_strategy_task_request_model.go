@@ -16,9 +16,9 @@ type iProcessSoarStrategyTaskRequest interface {
 }
 
 type ProcessSoarStrategyTaskRequest struct {
-	// ID of the strategy task.
+	// The ID of the policy task.
 	//
-	// > You can obtain this parameter by calling the [DescribeSoarStrategyTasks](~~DescribeSoarStrategyTasks~~) interface.
+	// >Call the [DescribeSoarStrategyTasks](~~DescribeSoarStrategyTasks~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -26,11 +26,11 @@ type ProcessSoarStrategyTaskRequest struct {
 	//
 	// 100
 	StrategyTaskId *int64 `json:"StrategyTaskId,omitempty" xml:"StrategyTaskId,omitempty"`
-	// Task action status. Values:
+	// The action status of the task. Valid values:
 	//
-	// - SCHEDULE: Schedule
+	// - SCHEDULE: scheduling
 	//
-	// - PAUSE: Pause
+	// - PAUSE: pause.
 	//
 	// This parameter is required.
 	//

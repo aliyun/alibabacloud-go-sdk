@@ -94,7 +94,7 @@ type ListOperationTaskResponseBodyOperationTasks struct {
 	//
 	// example:
 	//
-	// checkShowName
+	// 开启恶意主机行为防御功能
 	CheckShowName *string `json:"CheckShowName,omitempty" xml:"CheckShowName,omitempty"`
 	// The processing time of the task.
 	//
@@ -144,11 +144,11 @@ type ListOperationTaskResponseBodyOperationTasks struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The type of repair supported by the check item:
 	//
-	// - **1**：Supports repair and rollback operations
+	// - **1**:Supports repair and rollback operations
 	//
-	// - **2**：Supports repair but not rollback
+	// - **2**:Supports repair but not rollback
 	//
-	// - **3**：Redirect to a third-party platform for operation
+	// - **3**:Redirect to a third-party platform for operation
 	//
 	// example:
 	//
@@ -158,7 +158,7 @@ type ListOperationTaskResponseBodyOperationTasks struct {
 	//
 	// - **high**: High risk.
 	//
-	//  - **medium**: Medium risk.
+	// - **medium**: Medium risk.
 	//
 	// - **low**: Low risk.
 	//
@@ -174,45 +174,45 @@ type ListOperationTaskResponseBodyOperationTasks struct {
 	RootTaskId *string `json:"RootTaskId,omitempty" xml:"RootTaskId,omitempty"`
 	// The status of the task. Possible values:
 	//
-	// - **INIT**：Initialization
+	// - **INIT**:Initialization
 	//
-	// - **FAIL**：Processing failed
+	// - **FAIL**:Processing failed
 	//
-	// - **THROTTLING**：Repairing concurrently
+	// - **THROTTLING**:Repairing concurrently
 	//
-	// - **IN_BACKUP**：Backing up
+	// - **IN_BACKUP**:Backing up
 	//
-	// - **BACKED_UP**：Backed up
+	// - **BACKED_UP**:Backed up
 	//
-	// - **BACKUP_FAIL**：Backup failed
+	// - **BACKUP_FAIL**:Backup failed
 	//
-	// - **REPAIRING**：Repairing
+	// - **REPAIRING**:Repairing
 	//
-	// - **REPAIR_SUCCESS**：Repair succeeded
+	// - **REPAIR_SUCCESS**:Repair succeeded
 	//
-	// - **REPAIR_FAIL**：Repair failed
+	// - **REPAIR_FAIL**:Repair failed
 	//
-	// - **REPAIR_SUCCESS_VERIFYING**：Verifying repair success
+	// - **REPAIR_SUCCESS_VERIFYING**:Verifying repair success
 	//
-	// - **REPAIR_SUCCESS_UNVERIFIED**：Verification of repair success failed
+	// - **REPAIR_SUCCESS_UNVERIFIED**:Verification of repair success failed
 	//
-	// - **REPAIR_SUCCESS_VERIFIED**：Verification of repair success succeeded
+	// - **REPAIR_SUCCESS_VERIFIED**:Verification of repair success succeeded
 	//
-	// - **REPAIR_RE_EXECUTE**：Re-executing repair
+	// - **REPAIR_RE_EXECUTE**:Re-executing repair
 	//
-	// - **ROLL_BACKING**：Rolling back
+	// - **ROLL_BACKING**:Rolling back
 	//
-	// - **ROLL_BACKED**：Rolled back
+	// - **ROLL_BACKED**:Rolled back
 	//
-	// - **ROLL_BACK_FAIL**：Rollback failed
+	// - **ROLL_BACK_FAIL**:Rollback failed
 	//
-	// - **ROLL_BACK_INIT**：Initiating rollback
+	// - **ROLL_BACK_INIT**:Initiating rollback
 	//
-	// - **ROLL_BACK_VERIFYING**：Verifying rollback success
+	// - **ROLL_BACK_VERIFYING**:Verifying rollback success
 	//
-	// - **ROLL_BACK_UNVERIFIED**：Verification of rollback success failed
+	// - **ROLL_BACK_UNVERIFIED**:Verification of rollback success failed
 	//
-	// - **ROLL_BACK_VERIFIED**：Verification of rollback success succeeded
+	// - **ROLL_BACK_VERIFIED**:Verification of rollback success succeeded
 	//
 	// example:
 	//
@@ -222,7 +222,7 @@ type ListOperationTaskResponseBodyOperationTasks struct {
 	//
 	// example:
 	//
-	// Verified After Repair Success
+	// 回滚已验证
 	StatusShowName *string `json:"StatusShowName,omitempty" xml:"StatusShowName,omitempty"`
 	// Whether rollback is supported:
 	//

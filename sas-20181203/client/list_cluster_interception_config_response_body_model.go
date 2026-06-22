@@ -18,11 +18,11 @@ type iListClusterInterceptionConfigResponseBody interface {
 }
 
 type ListClusterInterceptionConfigResponseBody struct {
-	// An array that consists of the configurations of the cluster.
+	// The list of cluster configuration information.
 	ClusterConfigList []*ListClusterInterceptionConfigResponseBodyClusterConfigList `json:"ClusterConfigList,omitempty" xml:"ClusterConfigList,omitempty" type:"Repeated"`
-	// The pagination information.
+	// The paging information for a paged query.
 	PageInfo *ListClusterInterceptionConfigResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -84,71 +84,71 @@ func (s *ListClusterInterceptionConfigResponseBody) Validate() error {
 }
 
 type ListClusterInterceptionConfigResponseBodyClusterConfigList struct {
-	// The status of the container firewall feature. Valid values:
+	// The container firewall status of the cluster. Valid values:
 	//
-	// 	- **-1**: unknown
+	// - **-1**: unknown
 	//
-	// 	- **0**: abnormal
+	// - **0**: abnormal
 	//
-	// 	- **1**: normal
+	// - **1**: normal
 	//
-	// 	- **2**: normal to be confirmed
+	// - **2**: normal pending confirmation.
 	//
 	// example:
 	//
 	// 0
 	ClusterCNNFStatus *int32 `json:"ClusterCNNFStatus,omitempty" xml:"ClusterCNNFStatus,omitempty"`
-	// The ID of the cluster.
+	// The cluster ID.
 	//
 	// example:
 	//
 	// c9051d30d8a044b4d99e1cb5d25ac****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The name of the cluster.
+	// The cluster name.
 	//
 	// example:
 	//
 	// container-opa-kill-02
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// The type of the cluster. Valid values:
+	// The cluster type. Valid values:
 	//
-	// 	- **ManagedKubernetes**: managed Kubernetes cluster
+	// - **ManagedKubernetes**: managed Kubernetes
 	//
-	// 	- **NotManagedKubernetes**: non-managed Kubernetes cluster
+	// - **NotManagedKubernetes**: non-managed Kubernetes
 	//
-	// 	- **PrivateKubernetes**: private cluster
+	// - **PrivateKubernetes**: private cluster
 	//
-	// 	- **kubernetes**: dedicated Kubernetes cluster
+	// - **kubernetes**: dedicated Kubernetes
 	//
-	// 	- **ask**: dedicated serverless Kubernetes (ASK) cluster
+	// - **ask**: dedicated ASK.
 	//
 	// example:
 	//
 	// ManagedKubernetes
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	// The status of the defense rule. Valid values:
+	// The status of the rule interception switch. Valid values:
 	//
-	// 	- **0**: disabled
+	// - **0**: disabled
 	//
-	// 	- **1**: enabled
+	// - **1**: enabled.
 	//
 	// example:
 	//
 	// 1
 	InterceptionSwitch *int32 `json:"InterceptionSwitch,omitempty" xml:"InterceptionSwitch,omitempty"`
-	// The number of defense rules that are in effect.
+	// The number of active rules.
 	//
 	// example:
 	//
 	// 12
 	OpenRuleCount *int64 `json:"OpenRuleCount,omitempty" xml:"OpenRuleCount,omitempty"`
-	// Indicates whether the container firewall feature is supported.
+	// Indicates whether the container firewall is supported.
 	//
 	// example:
 	//
 	// false
 	SupportCNNF *bool `json:"SupportCNNF,omitempty" xml:"SupportCNNF,omitempty"`
-	// The total number of defense rules.
+	// The total number of rules.
 	//
 	// example:
 	//
@@ -241,25 +241,25 @@ func (s *ListClusterInterceptionConfigResponseBodyClusterConfigList) Validate() 
 }
 
 type ListClusterInterceptionConfigResponseBodyPageInfo struct {
-	// The number of entries returned on the current page.
+	// The number of cluster interception rules on the current page.
 	//
 	// example:
 	//
 	// 11
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The page number of the returned page.
+	// The page number of the current page in a paged query.
 	//
 	// example:
 	//
 	// 1
 	CurrrentPage *int32 `json:"CurrrentPage,omitempty" xml:"CurrrentPage,omitempty"`
-	// The number of entries returned per page.
+	// The number of cluster interception rules per page in a paged query.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of cluster interception rules.
 	//
 	// example:
 	//

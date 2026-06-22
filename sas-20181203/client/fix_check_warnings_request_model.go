@@ -26,21 +26,21 @@ type iFixCheckWarningsRequest interface {
 }
 
 type FixCheckWarningsRequest struct {
-	// The parameters for the baseline risk item that you want to fix.
+	// The parameters of the baseline check items to fix. The following parameters are included:
 	//
-	// 	- **checkId**: the ID of the check item that corresponds to the baseline risk item.
+	// - **checkId**: The ID of the check item.
 	//
-	// 	- **rules**: an array that consists of the rules applied to fixes.
+	// - **rules**: The fix rules (in array format).
 	//
-	//     	- **value**: specifies whether a fix method is selected. Valid values: **0*	- and **1**. The value 0 indicates that no fix method is selected and the value 1 indicates that a fix method is selected.
+	//     - **value**: Specifies whether the fix method is selected. Valid values: **0*	- (not selected), **1*	- (selected).
 	//
-	//     	- **ruleId**: the ID of the fix method.
+	//     - **ruleId**: The ID of the fix method.
 	//
-	//     	- **paramList**: an array that consists of the details about the fix method.\\
+	//     - **paramList**: The list of fix methods (in array format).
 	//
-	//         • **paramName**: the name of the fix method.\\
+	//                 • **paramName**: The name of the fix method.
 	//
-	//         • **value**: the value of the fix method.
+	//                 • **value**: The value of the fix method.
 	//
 	// This parameter is required.
 	//
@@ -48,17 +48,17 @@ type FixCheckWarningsRequest struct {
 	//
 	// [{"checkId":8,"rules":[{"ruleId":"rule.ssh_Idle.interval","value":1,"paramList":[{"paramName":"range_val","value":"600"},{"paramName":"range_val","value":"600"}]},{"ruleId":"rule.ssh_Idle.count","value":1,"paramList":[{"paramName":"range_val","value":"3"}]}]}]
 	CheckParams *string `json:"CheckParams,omitempty" xml:"CheckParams,omitempty"`
-	// The language of the content within the request and response. Valid values:
+	// The language of the request and response. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The retention period of the snapshot that is created when you fix the baseline risk. Valid values: 1 to 365. Unit: days.
+	// The retention period of the snapshot to create when performing the baseline fix operation. Valid values: 1 to 365. Unit: days.
 	//
 	// example:
 	//
@@ -66,25 +66,25 @@ type FixCheckWarningsRequest struct {
 	RetentionDays *int32 `json:"RetentionDays,omitempty" xml:"RetentionDays,omitempty"`
 	// The ID of the risk item.
 	//
-	// >  To query the information about the risk items and check items of a server, you must specify the IDs of the risk items. You can call the [DescribeCheckWarningSummary](~~DescribeCheckWarningSummary~~) operation to query the IDs of risk items.
+	// > To query the check item information for a specified risk item and a specified server, you must provide the risk item ID. You can call the [DescribeCheckWarningSummary](~~DescribeCheckWarningSummary~~) operation to obtain the ID.
 	//
 	// example:
 	//
 	// 10354
 	RiskId *int64 `json:"RiskId,omitempty" xml:"RiskId,omitempty"`
-	// The name of the snapshot that is created when you fix the baseline risk.
+	// The name of the snapshot to create when performing the baseline fix operation.
 	//
 	// example:
 	//
 	// sas_fix_2024-12-04
 	SnapshotName *string `json:"SnapshotName,omitempty" xml:"SnapshotName,omitempty"`
-	// The source IP address of the request.
+	// The IP address of the access source.
 	//
 	// example:
 	//
 	// 165.225.XX.XX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The UUID of the asset for which you want to fix the baseline risk item. You can call the [DescribeWarningMachines](~~DescribeWarningMachines~~) operation to query the UUIDs of assets.
+	// The unique ID of the asset instance to fix. You can call the [DescribeWarningMachines](~~DescribeWarningMachines~~) operation to obtain the ID.
 	//
 	// example:
 	//

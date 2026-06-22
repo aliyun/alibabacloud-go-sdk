@@ -48,11 +48,11 @@ type iModifyClientUserDefineRuleRequest interface {
 }
 
 type ModifyClientUserDefineRuleRequest struct {
-	// The action of the rule. Valid values:
+	// The action type. Valid values:
 	//
-	// 	- **0**: allow
+	// - **0**: allow
 	//
-	// 	- **1**: block
+	// - **1**: block.
 	//
 	// This parameter is required.
 	//
@@ -84,9 +84,9 @@ type ModifyClientUserDefineRuleRequest struct {
 	//
 	// 1.1.XX.XX
 	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
-	// The ID of the rule.
+	// The ID of the custom rule.
 	//
-	// >  You can call the [ListClientUserDefineRules](~~ListClientUserDefineRules~~) operation to query the IDs of rules.
+	// >Call the [ListClientUserDefineRules](~~ListClientUserDefineRules~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -94,43 +94,43 @@ type ModifyClientUserDefineRuleRequest struct {
 	//
 	// 210****
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The hash values of processes.
+	// The list of process hashes.
 	//
 	// example:
 	//
 	// aa5ee3ed4363c9d195a591a70281****,3e522d6f3bf5cf88bb77e9ff3d13****
 	Md5List *string `json:"Md5List,omitempty" xml:"Md5List,omitempty"`
-	// The name of the rule.
+	// The rule name.
 	//
 	// example:
 	//
-	// Rule\\*\\*\\*\\*
+	// 规则****
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The new file path after the file is renamed.
+	// The new file path for file rename.
 	//
 	// example:
 	//
 	// /etc/pam****
 	NewFilePath *string `json:"NewFilePath,omitempty" xml:"NewFilePath,omitempty"`
-	// The parent command line.
+	// The parent process command line.
 	//
 	// example:
 	//
 	// /usr/sbin/s****
 	ParentCmdline *string `json:"ParentCmdline,omitempty" xml:"ParentCmdline,omitempty"`
-	// The path to the parent process.
+	// The parent process path.
 	//
 	// example:
 	//
 	// C:/Windows/System32/cmd****
 	ParentProcPath *string `json:"ParentProcPath,omitempty" xml:"ParentProcPath,omitempty"`
-	// The type of the operating system. Valid values:
+	// The operating system type. Valid values:
 	//
-	// 	- **windows**: Windows
+	// - **windows**: Windows
 	//
-	// 	- **linux**: Linux
+	// - **linux**: Linux
 	//
-	// 	- **all**: all types
+	// - **all**: all.
 	//
 	// example:
 	//
@@ -148,7 +148,7 @@ type ModifyClientUserDefineRuleRequest struct {
 	//
 	// 80
 	PortStr *string `json:"PortStr,omitempty" xml:"PortStr,omitempty"`
-	// The path to the process.
+	// The process path.
 	//
 	// if can be null:
 	// false
@@ -169,21 +169,21 @@ type ModifyClientUserDefineRuleRequest struct {
 	//
 	// HKEY_DYN_****
 	RegistryKey *string `json:"RegistryKey,omitempty" xml:"RegistryKey,omitempty"`
-	// The type of the rule. Valid values:
+	// The rule type. Valid values:
 	//
-	// 	- **1**: Process hash
+	// - **1**: process hash
 	//
-	// 	- **2**: Command line
+	// - **2**: command line
 	//
-	// 	- **3**: Process Network
+	// - **3**: process network
 	//
-	// 	- **4**: File Read and Write
+	// - **4**: file read/write
 	//
-	// 	- **5**: Operation on Registry
+	// - **5**: registry operation
 	//
-	// 	- **6**: Dynamic-link Library Loading
+	// - **6**: dynamic-link library loading
 	//
-	// 	- **7**: File Renaming
+	// - **7**: file rename.
 	//
 	// example:
 	//

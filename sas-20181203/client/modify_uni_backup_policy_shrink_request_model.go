@@ -30,7 +30,7 @@ type iModifyUniBackupPolicyShrinkRequest interface {
 }
 
 type ModifyUniBackupPolicyShrinkRequest struct {
-	// The name of the database account.
+	// The username of the database account.
 	//
 	// example:
 	//
@@ -42,37 +42,37 @@ type ModifyUniBackupPolicyShrinkRequest struct {
 	//
 	// Sa@****
 	AccountPassword *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
-	// The policy for full backup. The value of this parameter is a JSON string that contains the following fields:
+	// The full backup policy. The value is in JSON format and contains the following fields:
 	//
-	// 	- **start**: the start time of a backup task
+	// - **start**: the backup start time.
 	//
-	// 	- **interval**: the interval of backup tasks
+	// - **interval**: the interval.
 	//
-	// 	- **type**: the unit of the interval
+	// - **type**: the unit of the interval.
 	//
-	// 	- **days**: the days of a week on which a backup task is performed
+	// - **days**: the days of the week on which the backup is performed.
 	//
 	// example:
 	//
 	// {"days":[4],"interval":1,"planType":"weekly","startTime":"22:00:00"}
 	FullPlanShrink *string `json:"FullPlan,omitempty" xml:"FullPlan,omitempty"`
-	// The policy for incremental backup. The value of this parameter is a JSON string that contains the following fields:
+	// The incremental backup policy. The value is in JSON format and contains the following fields:
 	//
-	// 	- **start**: the start time of a backup task
+	// - **start**: the backup start time.
 	//
-	// 	- **interval**: the interval of backup tasks
+	// - **interval**: the interval.
 	//
-	// 	- **type**: the unit of the interval
+	// - **type**: the unit of the interval.
 	//
-	// 	- **days**: the days of a week on which a backup task is performed
+	// - **days**: the days of the week on which the backup is performed.
 	//
 	// example:
 	//
 	// {"interval":1,"planType":"daily","startTime":"23:30:00"}
 	IncPlanShrink *string `json:"IncPlan,omitempty" xml:"IncPlan,omitempty"`
-	// The ID of the anti-ransomware policy.
+	// The ID of the anti-ransomware backup policy for databases.
 	//
-	// > You can call the [DescribeUniBackupPolicies](~~DescribeUniBackupPolicies~~) operation to query the IDs of anti-ransomware policies.
+	// >You can call the [DescribeUniBackupPolicies](~~DescribeUniBackupPolicies~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -80,29 +80,29 @@ type ModifyUniBackupPolicyShrinkRequest struct {
 	//
 	// 123
 	PolicyId *int64 `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	// The name of the anti-ransomware policy.
+	// The name of the anti-ransomware backup policy for databases.
 	//
 	// example:
 	//
 	// databak
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	// The status of the anti-ransomware policy. Valid values:
+	// The status of the policy. Valid values:
 	//
-	// 	- **enabled**
+	// - **enabled**: The policy is enabled.
 	//
-	// 	- **disabled**
+	// - **disabled**: The policy is disabled.
 	//
 	// example:
 	//
 	// enabled
 	PolicyStatus *string `json:"PolicyStatus,omitempty" xml:"PolicyStatus,omitempty"`
-	// The retention period of the backup snapshot.
+	// The number of days for which backup snapshots are retained.
 	//
 	// example:
 	//
 	// 7
 	Retention *int32 `json:"Retention,omitempty" xml:"Retention,omitempty"`
-	// The maximum network bandwidth that is allowed during data backup. Unit: bytes.
+	// The network bandwidth throttling for backup network bandwidth. Unit: bytes.
 	//
 	// example:
 	//

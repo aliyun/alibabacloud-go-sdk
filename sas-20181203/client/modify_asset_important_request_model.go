@@ -16,21 +16,21 @@ type iModifyAssetImportantRequest interface {
 }
 
 type ModifyAssetImportantRequest struct {
-	// The importance of the asset. Valid values:
+	// The importance level. Valid values:
 	//
-	// 	- **0**: test
+	// - **0**: test
 	//
-	// 	- **1**: normal
+	// - **1**: normal
 	//
-	// 	- **2**: important
+	// - **2**: important.
 	//
 	// example:
 	//
 	// 0
 	ImportantCode *int32 `json:"ImportantCode,omitempty" xml:"ImportantCode,omitempty"`
-	// The UUIDs of servers. Separate multiple UUIDs with commas (,).
+	// The UUIDs of the servers. Separate multiple UUIDs with commas (,).
 	//
-	// >  You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to query the UUIDs of servers.
+	// > You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to obtain this parameter.
 	//
 	// example:
 	//

@@ -32,9 +32,9 @@ type ListCheckStandardRequest struct {
 	InstanceTypes []*string `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Repeated"`
 	// The language of the content within the request and response. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//
@@ -44,15 +44,15 @@ type ListCheckStandardRequest struct {
 	TaskSources []*string `json:"TaskSources,omitempty" xml:"TaskSources,omitempty" type:"Repeated"`
 	// The cloud service providers. Valid values:
 	//
-	// 	- **ALIYUN**: Alibaba Cloud.
+	// - **ALIYUN**: Alibaba Cloud.
 	//
-	// 	- **TENCENT**: Tencent Cloud.
+	// - **TENCENT**: Tencent Cloud.
 	//
-	// 	- **HUAWEICLOUD**: Huawei Cloud.
+	// - **HUAWEICLOUD**: Huawei Cloud.
 	//
-	// 	- **MICROSOFT**: Microsoft Azure.
+	// - **MICROSOFT**: Microsoft Azure.
 	//
-	// 	- **AWS**: Amazon Web Services (AWS).
+	// - **AWS**: Amazon Web Services (AWS).
 	Vendors []*string `json:"Vendors,omitempty" xml:"Vendors,omitempty" type:"Repeated"`
 }
 

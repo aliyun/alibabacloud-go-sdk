@@ -28,7 +28,7 @@ type ListHoneypotAlarmEventsRequest struct {
 	//
 	// example:
 	//
-	// 10
+	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The status of the alert event. Default value: **a**. Valid values:
 	//
@@ -40,13 +40,13 @@ type ListHoneypotAlarmEventsRequest struct {
 	//
 	// example:
 	//
-	// n
+	// a
 	Dealed *string `json:"Dealed,omitempty" xml:"Dealed,omitempty"`
 	// The destination IP address.
 	//
 	// example:
 	//
-	// 172.20.XX.XX
+	// 183.224.XX.XX
 	DstIp *string `json:"DstIp,omitempty" xml:"DstIp,omitempty"`
 	// The number of entries per page. Default value: 100. If you leave this parameter empty, 100 entries are returned on each page.
 	//
@@ -54,7 +54,7 @@ type ListHoneypotAlarmEventsRequest struct {
 	//
 	// example:
 	//
-	// 10
+	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The risk levels.
 	RiskLevelList []*string `json:"RiskLevelList,omitempty" xml:"RiskLevelList,omitempty" type:"Repeated"`
@@ -62,7 +62,7 @@ type ListHoneypotAlarmEventsRequest struct {
 	//
 	// example:
 	//
-	// 101.132.XX.XX
+	// 185.224.XX.XX
 	SrcIp *string `json:"SrcIp,omitempty" xml:"SrcIp,omitempty"`
 }
 

@@ -24,39 +24,39 @@ type iListPodRiskRequest interface {
 }
 
 type ListPodRiskRequest struct {
-	// The name of the application.
+	// The application name.
 	//
 	// example:
 	//
 	// nginx1
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The ID of the container cluster.
+	// The ID of the container cluster to query.
 	//
-	// > You can call the [DescribeGroupedContainerInstances](https://help.aliyun.com/document_detail/182997.html) operation to query the IDs of container clusters.
+	// > You can call the [DescribeGroupedContainerInstances](https://help.aliyun.com/document_detail/182997.html) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// c314aa5b2f208461dad821cdfed82****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The number of the page to return.
+	// The page number of the current page when paging is used.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The namespace of the Kubernetes cluster.
+	// The Kubernetes cluster namespace.
 	//
 	// example:
 	//
 	// taas
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The number of entries to return on each page. Default value: 20.
+	// The number of entries per page when paging is used. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The name of the pod.
+	// The pod name.
 	//
 	// example:
 	//

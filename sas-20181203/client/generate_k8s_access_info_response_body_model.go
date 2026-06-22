@@ -16,9 +16,9 @@ type iGenerateK8sAccessInfoResponseBody interface {
 }
 
 type GenerateK8sAccessInfoResponseBody struct {
-	// The data returned.
+	// The returned data.
 	Data *GenerateK8sAccessInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID.
+	// The unique identifier that Alibaba Cloud generates for the request.
 	//
 	// example:
 	//
@@ -62,25 +62,25 @@ func (s *GenerateK8sAccessInfoResponseBody) Validate() error {
 }
 
 type GenerateK8sAccessInfoResponseBodyData struct {
-	// The ID of the Alibaba Cloud account.
+	// The aliuid of the user.
 	//
 	// example:
 	//
 	// 1766185894104***
 	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// The Simple Log Service Logstore that is used to store the audit logs.
+	// The SLS Logstore of the audit log.
 	//
 	// example:
 	//
 	// audit-cf6baf6afa106eca665296fdf68b65bf
 	AuditLogStore *string `json:"AuditLogStore,omitempty" xml:"AuditLogStore,omitempty"`
-	// The Simple Log Service project that is used to store the audit logs.
+	// The SLS project of the audit log.
 	//
 	// example:
 	//
 	// k8s-log-custom-your-project-sd89ehaaa
 	AuditProject *string `json:"AuditProject,omitempty" xml:"AuditProject,omitempty"`
-	// The ID of the region in which the server is deployed.
+	// The region ID of the server.
 	//
 	// example:
 	//
@@ -98,13 +98,17 @@ type GenerateK8sAccessInfoResponseBodyData struct {
 	//
 	// test
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// CPU architectures are divided into ARM architecture and x86 architecture.
+	// The CPU architecture, which can be ARM or x86. Valid values:
+	//
+	// - arm64
+	//
+	// - x86
 	//
 	// example:
 	//
-	// arm
+	// x86
 	CpuArch *string `json:"CpuArch,omitempty" xml:"CpuArch,omitempty"`
-	// The expiration time. Unit: milliseconds.
+	// The expiration time, in milliseconds.
 	//
 	// example:
 	//

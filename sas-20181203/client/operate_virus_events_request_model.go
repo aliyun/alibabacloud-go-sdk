@@ -18,11 +18,11 @@ type iOperateVirusEventsRequest interface {
 }
 
 type OperateVirusEventsRequest struct {
-	// Specifies whether to handle all alert events. Valid values:
+	// Specifies whether to handle all alerts. Valid values:
 	//
-	// 	- **1**: yes
+	// - **1**: yes
 	//
-	// 	- **0**: no
+	// - **0**: no.
 	//
 	// This parameter is required.
 	//
@@ -30,15 +30,15 @@ type OperateVirusEventsRequest struct {
 	//
 	// 0
 	OperationAll *int32 `json:"OperationAll,omitempty" xml:"OperationAll,omitempty"`
-	// The operation that you want to perform on the alert events. Valid values:
+	// The method to handle the alert event. Valid values:
 	//
-	// 	- **default**: performs in-depth detection and removal
+	// - **default**: deep scan and removal
 	//
-	// 	- **ignore**: ignores the alert event
+	// - **ignore**: ignore
 	//
-	// 	- **advance_mark_mis_info**: adds the alert events to the whitelist
+	// - **advance_mark_mis_info**: add to whitelist
 	//
-	// 	- **manual_handled**: marks the alert events as manually handled
+	// - **manual_handled**: manually handled.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type OperateVirusEventsRequest struct {
 	//
 	// default
 	OperationCode *string `json:"OperationCode,omitempty" xml:"OperationCode,omitempty"`
-	// The handling scope.
+	// The scope of the handling operation.
 	//
 	// example:
 	//

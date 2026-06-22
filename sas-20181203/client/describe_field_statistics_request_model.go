@@ -18,25 +18,25 @@ type iDescribeFieldStatisticsRequest interface {
 }
 
 type DescribeFieldStatisticsRequest struct {
-	// The type of the asset to query. If no asset types are specified, all types of assets are returned. Valid values:
+	// The type of asset to query. If you do not specify an asset type, the statistics information of all asset types is queried. Valid values:
 	//
-	// 	- **ecs**: server
+	// - **ecs**: server
 	//
-	// 	- **cloud_product**: Alibaba Cloud service
+	// - **cloud_product**: cloud product.
 	//
 	// example:
 	//
 	// ecs
 	MachineTypes *string `json:"MachineTypes,omitempty" xml:"MachineTypes,omitempty"`
-	// The ID of the region in which the asset resides.
+	// The ID of the region where the server resides.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the primary account of the Resource Directory member account.
+	// The ID of the Alibaba Cloud account of the member accounts in the resource directory.
 	//
-	// > call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) interface to obtain this parameter.
+	// >You can invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
 	//
 	// example:
 	//

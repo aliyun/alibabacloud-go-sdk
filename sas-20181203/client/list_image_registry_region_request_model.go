@@ -14,6 +14,15 @@ type iListImageRegistryRegionRequest interface {
 }
 
 type ListImageRegistryRegionRequest struct {
+	// The language type for requesting and receiving messages. Default value: zh. Valid values:
+	//
+	// - **zh**: Chinese
+	//
+	// - **en**: English
+	//
+	// example:
+	//
+	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 

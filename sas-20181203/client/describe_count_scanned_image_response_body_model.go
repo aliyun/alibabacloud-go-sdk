@@ -16,13 +16,13 @@ type iDescribeCountScannedImageResponseBody interface {
 }
 
 type DescribeCountScannedImageResponseBody struct {
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The ID of the request. The ID is a unique identifier that Alibaba Cloud generates for the request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// 3F4236AB-7070-538D-85EB-98EBFE6C****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of images that are scanned.
+	// The number of scanned images.
 	//
 	// example:
 	//

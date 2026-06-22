@@ -16,10 +16,14 @@ type iListFileProtectBindMachineRequest interface {
 }
 
 type ListFileProtectBindMachineRequest struct {
+	// The page number of the current page for a paged query.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The maximum number of entries per page for a paged query.
+	//
 	// example:
 	//
 	// 10

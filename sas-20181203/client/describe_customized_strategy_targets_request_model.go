@@ -16,17 +16,17 @@ type iDescribeCustomizedStrategyTargetsRequest interface {
 }
 
 type DescribeCustomizedStrategyTargetsRequest struct {
-	// The language of the content within the request and response. Valid values:
+	// The language type for requests and responses. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The source IP address.
+	// The IP address of the access source.
 	//
 	// example:
 	//

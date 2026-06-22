@@ -18,11 +18,11 @@ type iListPublishBatchResponseBody interface {
 }
 
 type ListPublishBatchResponseBody struct {
-	// The information about the release batches.
+	// The details of the batch release tasks.
 	BatchList []*ListPublishBatchResponseBodyBatchList `json:"BatchList,omitempty" xml:"BatchList,omitempty" type:"Repeated"`
-	// The page information.
+	// The pagination information.
 	PageInfo *ListPublishBatchResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	// The request ID.
+	// The request ID. The China Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -90,7 +90,7 @@ type ListPublishBatchResponseBodyBatchList struct {
 	//
 	// 1371
 	BatchId *int64 `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
-	// The interval between two release batches. Unit: hours.
+	// The interval between the completion of the current batch and the start of the next batch. Unit: hours.
 	//
 	// example:
 	//
@@ -100,55 +100,55 @@ type ListPublishBatchResponseBodyBatchList struct {
 	//
 	// example:
 	//
-	// test
+	// 发布批次1
 	BatchName *string `json:"BatchName,omitempty" xml:"BatchName,omitempty"`
-	// The current batch number during a batch release.
+	// The number of the current batch in a phased release.
 	//
 	// example:
 	//
 	// 2147483647
 	BatchNo *int32 `json:"BatchNo,omitempty" xml:"BatchNo,omitempty"`
-	// The progress of the release batch. This parameter indicates the number of servers that are upgraded in the release batch.
+	// The release progress of the current batch, indicating the number of machines that have been released.
 	//
 	// example:
 	//
 	// 12
 	BatchProcess *int32 `json:"BatchProcess,omitempty" xml:"BatchProcess,omitempty"`
-	// The total number of batches.
+	// The total number of batches in the release.
 	//
 	// example:
 	//
 	// 3
 	BatchTotal *int32 `json:"BatchTotal,omitempty" xml:"BatchTotal,omitempty"`
-	// The asset selection dimension. Valid values:
+	// The dimension for asset selection. Valid values:
 	//
-	// 	- **0**: instance.
+	// - **0**: machine instance
 	//
-	// 	- **1**: machine group.
+	// - **1**: machine group
 	//
-	// 	- **2**: Virtual Private Cloud (VPC) ID.
+	// - **2**: VPC-connected instance ID.
 	//
 	// example:
 	//
 	// 0
 	OperationBase *int32 `json:"OperationBase,omitempty" xml:"OperationBase,omitempty"`
-	// The publish status of the Security Center agent. Valid values:
+	// The release status of the client. Valid values:
 	//
-	// 	- **0**: not started.
+	// - **0**: not started
 	//
-	// 	- **1**: publishing.
+	// - **1**: releasing
 	//
-	// 	- **2**: published.
+	// - **2**: release completed
 	//
-	// 	- **3**: publish suspended.
+	// - **3**: release paused
 	//
-	// 	- **4**: forcibly upgrading.
+	// - **4**: force upgrading.
 	//
 	// example:
 	//
 	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The destination version of the Security Center agent.
+	// The target version to upgrade to.
 	//
 	// example:
 	//
@@ -250,13 +250,13 @@ func (s *ListPublishBatchResponseBodyBatchList) Validate() error {
 }
 
 type ListPublishBatchResponseBodyPageInfo struct {
-	// The page number.
+	// The page number of the current page when paging is used.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries per page.
+	// The maximum number of entries per page when paging is used.
 	//
 	// example:
 	//

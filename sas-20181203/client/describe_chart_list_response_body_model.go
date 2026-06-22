@@ -16,9 +16,9 @@ type iDescribeChartListResponseBody interface {
 }
 
 type DescribeChartListResponseBody struct {
-	// The charts.
+	// The list of charts.
 	ChartList []*DescribeChartListResponseBodyChartList `json:"ChartList,omitempty" xml:"ChartList,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -66,21 +66,21 @@ func (s *DescribeChartListResponseBody) Validate() error {
 }
 
 type DescribeChartListResponseBodyChartList struct {
-	// The name of the business type. Valid values:
+	// The business type name. Valid values:
 	//
-	// 	- Overall Operations Metrics
+	// - Overall operation metrics
 	//
-	// 	- Asset Operations Metrics
+	// - Asset operation metrics
 	//
-	// 	- Security Alert Operations Metrics
+	// - Security alert operation metrics
 	//
-	// 	- Vulnerability Operations Metrics
+	// - Vulnerability operation metrics
 	//
-	// 	- Baseline Operations Metrics
+	// - Baseline operation metrics
 	//
-	// 	- Cloud Product Operations Metrics
+	// - Cloud service operation metrics
 	//
-	// 	- Honeypot Operations Metrics
+	// - Cloud honeypot operation metrics.
 	//
 	// example:
 	//
@@ -88,53 +88,53 @@ type DescribeChartListResponseBodyChartList struct {
 	BusinessName *string `json:"BusinessName,omitempty" xml:"BusinessName,omitempty"`
 	// The business type. Valid values:
 	//
-	// 	- INDEX_SECURITY_OVERALL_OPERATION
+	// - INDEX_SECURITY_OVERALL_OPERATION
 	//
-	// 	- INDEX_ASSET_OPERATION
+	// - INDEX_ASSET_OPERATION
 	//
-	// 	- INDEX_SUSPICIOUS_OPERATION
+	// - INDEX_SUSPICIOUS_OPERATION
 	//
-	// 	- INDEX_VUL_OPERATION
+	// - INDEX_VUL_OPERATION
 	//
-	// 	- INDEX_BASELINE_CHECK_OPERATION
+	// - INDEX_BASELINE_CHECK_OPERATION
 	//
-	// 	- INDEX_CLOUD_ASSET_OPERATION
+	// - INDEX_CLOUD_ASSET_OPERATION
 	//
-	// 	- INDEX_HONEYPOT_RISK_OPERATION
+	// - INDEX_HONEYPOT_RISK_OPERATION.
 	//
 	// example:
 	//
 	// INDEX_SECURITY_OVERALL_OPERATION
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
-	// The ID of the chart.
+	// The chart ID.
 	//
 	// example:
 	//
 	// CID_CLOUD_ASSET_SUMMARY
 	ChartId *string `json:"ChartId,omitempty" xml:"ChartId,omitempty"`
-	// The name of the chart.
+	// The chart name.
 	//
 	// example:
 	//
 	// Security Score
 	ChartName *string `json:"ChartName,omitempty" xml:"ChartName,omitempty"`
-	// The type of the chart. Valid values:
+	// The chart type. Valid values:
 	//
-	// 	- **text**
+	// - **text**: text
 	//
-	// 	- **table**
+	// - **table**: table
 	//
-	// 	- **gauge**
+	// - **gauge**: gauge chart
 	//
-	// 	- **pie**
+	// - **pie**: pie chart
 	//
-	// 	- **line**
+	// - **line**: line chart
 	//
-	// 	- **bar**
+	// - **bar**: bar chart
 	//
-	// 	- **timeBar**
+	// - **timeBar**: timeline bar chart
 	//
-	// 	- **timeLine**
+	// - **timeLine**: timeline line chart.
 	//
 	// example:
 	//

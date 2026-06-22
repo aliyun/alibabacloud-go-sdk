@@ -103,9 +103,9 @@ type DescribeVulListPageResponseBodyData struct {
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// Indicates whether the vulnerability was detected based on version comparison. Valid values:
 	//
-	// 	- 1: The vulnerability was detected based on version comparison.
+	// - 1: The vulnerability was detected based on version comparison.
 	//
-	// 	- 0: The vulnerability was not detected based on version comparison.
+	// - 0: The vulnerability was not detected based on version comparison.
 	//
 	// example:
 	//
@@ -113,9 +113,9 @@ type DescribeVulListPageResponseBodyData struct {
 	IsAegis *int32 `json:"IsAegis,omitempty" xml:"IsAegis,omitempty"`
 	// Indicates whether the vulnerability was detected based on proof of concept (POC) verification. Valid values:
 	//
-	// 	- 1: The vulnerability was detected based on POC verification.
+	// - 1: The vulnerability was detected based on POC verification.
 	//
-	// 	- 0: The vulnerability was not detected based on POC verification.
+	// - 0: The vulnerability was not detected based on POC verification.
 	//
 	// example:
 	//
@@ -137,7 +137,7 @@ type DescribeVulListPageResponseBodyData struct {
 	//
 	// example:
 	//
-	// Windows RCE vulnerability
+	// Windows 终端远程代码执行漏洞
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 

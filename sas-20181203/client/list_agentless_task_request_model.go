@@ -42,25 +42,25 @@ type iListAgentlessTaskRequest interface {
 }
 
 type ListAgentlessTaskRequest struct {
-	// The number of the page to return.
+	// The page number of the current page in a paged query. Paging starts from page 1.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The end timestamp of the task.
+	// The timestamp of the end time.
 	//
 	// example:
 	//
 	// 1635575219000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The public IP address of the asset that you want to query.
+	// The public IP address of the asset to query.
 	//
 	// example:
 	//
 	// 1.1.XX.XX
 	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
-	// The private IP address of the asset that you want to query.
+	// The private IP address of the asset to query.
 	//
 	// example:
 	//
@@ -68,9 +68,9 @@ type ListAgentlessTaskRequest struct {
 	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
 	// The language type. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
@@ -82,71 +82,71 @@ type ListAgentlessTaskRequest struct {
 	//
 	// oracle-win-001****
 	MachineName *string `json:"MachineName,omitempty" xml:"MachineName,omitempty"`
-	// The number of entries to return on each page.
+	// The maximum number of entries per page in a paged query. Paging is performed based on this value.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Specifies whether to query main tasks. Valid values:
+	// Specifies whether to query the root task list. Valid values:
 	//
-	// 	- **true**: queries main tasks.
+	// - **true**: Root tasks.
 	//
-	// 	- **false**: queries subtasks.
+	// - **false**: Subtasks.
 	//
 	// example:
 	//
 	// false
 	RootTask *bool `json:"RootTask,omitempty" xml:"RootTask,omitempty"`
-	// The ID of the main task.
+	// The ID of the root task.
 	//
 	// example:
 	//
 	// 12c27343861610c5db3f7a2573b4****
 	RootTaskId *string `json:"RootTaskId,omitempty" xml:"RootTaskId,omitempty"`
-	// The start timestamp of the task.
+	// The timestamp of the start time.
 	//
 	// example:
 	//
 	// 1651290987000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the detection task.
+	// The detection status. Valid values:
 	//
-	// 	- **1**: The detection task is in progress.
+	// - **1**: Detecting.
 	//
-	// 	- **2**: The detection task is complete.
+	// - **2**: Completed.
 	//
-	// 	- **3**: The detection task fails.
+	// - **3**: Failed.
 	//
-	// 	- **4**: The detection task times out.
+	// - **4**: Timed out.
 	//
 	// example:
 	//
 	// 2
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The name of the asset that you want to detect.
+	// The name of the detection target.
 	//
 	// example:
 	//
 	// source-test-obj-0****
 	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
-	// The type of the asset that you want to detect. Valid values:
+	// The scan object type. Valid values:
 	//
-	// 	- **1**: snapshot
+	// - **1**: snapshot
 	//
-	// 	- **2**: image
+	// - **2**: image.
 	//
 	// example:
 	//
 	// 1
 	TargetType *int32 `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	// The ID of the main task. If you want to query subtasks of a main task, you must specify this parameter.
+	// The ID of the root task. Specify this parameter to query the subtask list of a root task.
 	//
 	// example:
 	//
 	// d7b2acf8d362742123e4a84e1bf8****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The UUID of the server.
+	// The UUID of the server to query.
 	//
 	// example:
 	//

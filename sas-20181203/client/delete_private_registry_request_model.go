@@ -14,9 +14,9 @@ type iDeletePrivateRegistryRequest interface {
 }
 
 type DeletePrivateRegistryRequest struct {
-	// The ID of the image repository.
+	// The image repository ID.
 	//
-	// > You can call the [PageImageRegistry](~~PageImageRegistry~~) operation to query the IDs of image repositories.
+	// >Call the [PageImageRegistry](~~PageImageRegistry~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//

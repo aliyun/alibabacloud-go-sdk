@@ -16,13 +16,13 @@ type iListSystemClientRuleTypesResponseBody interface {
 }
 
 type ListSystemClientRuleTypesResponseBody struct {
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// 79CFF74D-E967-5407-8A78-EE03B925****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// An array that consists of the rule types.
+	// The list of rule types.
 	RuleTypes []*string `json:"RuleTypes,omitempty" xml:"RuleTypes,omitempty" type:"Repeated"`
 }
 

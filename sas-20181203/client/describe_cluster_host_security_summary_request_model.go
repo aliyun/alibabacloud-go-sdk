@@ -30,54 +30,54 @@ type DescribeClusterHostSecuritySummaryRequest struct {
 	//
 	// c3aaf6c8085f84791882eef200cd2****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The key of the condition that is used to query containers. Valid values:
+	// The container search field. Valid values:
 	//
-	// 	- **instanceId**: the instance ID
+	// - **instanceId**: instance ID.
 	//
-	// 	- **appName**: the name of the application
+	// - **appName**: application name.
 	//
-	// 	- **clusterId**: the ID of the cluster
+	// - **clusterId**: cluster ID.
 	//
-	// 	- **regionId**: the region ID
+	// - **regionId**: region.
 	//
-	// 	- **nodeName**: the name of the node
+	// - **nodeName**: node name.
 	//
-	// 	- **namespace**: the namespace
+	// - **namespace**: namespace.
 	//
-	// 	- **clusterName**: the name of the cluster
+	// - **clusterName**: cluster name.
 	//
-	// 	- **image**: the name of the image
+	// - **image**: image name.
 	//
-	// 	- **imageRepoName**: the name of the image repository
+	// - **imageRepoName**: image repository name.
 	//
-	// 	- **imageRepoNamespace**: the namespace to which the image repository belongs
+	// - **imageRepoNamespace**: image repository namespace.
 	//
-	// 	- **imageRepoTag**: the tag that is added to the image repository
+	// - **imageRepoTag**: image tag.
 	//
-	// 	- **imageDigest**: the digest of the image
+	// - **imageDigest**: image digest.
 	//
 	// example:
 	//
 	// clusterId
 	ContainerFieldName *string `json:"ContainerFieldName,omitempty" xml:"ContainerFieldName,omitempty"`
-	// The value of the condition that is used to query containers.
+	// The value of the container search field.
 	//
 	// example:
 	//
 	// c1fdb5fd8d42e425d88fd73eec7be****
 	ContainerFieldValue *string `json:"ContainerFieldValue,omitempty" xml:"ContainerFieldValue,omitempty"`
 	ResourceOwnerId     *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The source IP address.
+	// The IP address of the access source.
 	//
 	// example:
 	//
 	// 222.71.XXX.XXX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The type of the query. Valid values:
+	// The query type. Valid values:
 	//
-	// 	- **containerId**
+	// - **containerId**: container ID.
 	//
-	// 	- **uuid**
+	// - **uuid**: asset ID.
 	//
 	// example:
 	//

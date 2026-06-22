@@ -26,25 +26,25 @@ type DescribePropertyUsageTopResponseBody struct {
 	//
 	// 5
 	ItemCount *int32 `json:"ItemCount,omitempty" xml:"ItemCount,omitempty"`
-	// The request ID.
+	// The ID of the request. The ID is a unique identifier that Alibaba Cloud generates for the request and can be used to troubleshoot issues.
 	//
 	// example:
 	//
 	// 16AA5B62-A3C1-520B-B289-4BD971CC17AB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The statistical results.
+	// The collection of statistics results.
 	TopStatisticItems []*DescribePropertyUsageTopResponseBodyTopStatisticItems `json:"TopStatisticItems,omitempty" xml:"TopStatisticItems,omitempty" type:"Repeated"`
-	// The type of the asset fingerprint. Valid value:
+	// The Asset Fingerprints type. Valid values:
 	//
-	// 	- **port**: port
+	// - **port**: port
 	//
-	// 	- **process**: process
+	// - **process**: process
 	//
-	// 	- **software**: software
+	// - **software**: software
 	//
-	// 	- **user**: account
+	// - **user**: account
 	//
-	// 	- **sca**: middleware
+	// - **sca**: middleware.
 	//
 	// example:
 	//
@@ -110,13 +110,13 @@ func (s *DescribePropertyUsageTopResponseBody) Validate() error {
 }
 
 type DescribePropertyUsageTopResponseBodyTopStatisticItems struct {
-	// The quantity.
+	// The count.
 	//
 	// example:
 	//
 	// 1
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The statistical item.
+	// The statistics item.
 	//
 	// example:
 	//

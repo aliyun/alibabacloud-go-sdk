@@ -26,25 +26,25 @@ type iDescribeDynamicDictUploadInfoResponseBody interface {
 }
 
 type DescribeDynamicDictUploadInfoResponseBody struct {
-	// The AccessKey ID that is used to access OSS.
+	// The AccessKey ID of OSS.
 	//
 	// example:
 	//
 	// yourAccessKeyID
 	Accessid *string `json:"Accessid,omitempty" xml:"Accessid,omitempty"`
-	// The validity period of the signature. The value is a UNIX timestamp.
+	// The expiration time of the OSS authorization, in timestamp format.
 	//
 	// example:
 	//
 	// 1719919893
 	Expire *string `json:"Expire,omitempty" xml:"Expire,omitempty"`
-	// The OSS endpoint.
+	// The OSS domain name.
 	//
 	// example:
 	//
 	// https://aegis-update-static-file.oss-cn-hangzhou.aliyuncs.com
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// The name of the OSS object.
+	// The key of the OSS file name.
 	//
 	// example:
 	//
@@ -56,13 +56,13 @@ type DescribeDynamicDictUploadInfoResponseBody struct {
 	//
 	// eyJleHBpcmF0aW9uIjoiMjAyNC0wNy0wMlQxMTozMTozMy40MjlaIiwiY29uZGl0aW9********
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	// The request ID.
+	// The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// A3D7C47D-3F11-57BB-90E8-E5C20C61***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The signature that is calculated based on **AccessKeySecret*	- and **Policy**. When you call an OSS API operation, OSS uses the signature information to check the validity of the POST request.
+	// The signature information calculated based on **AccessKeySecret*	- and **Policy**. When you call an OSS API operation, OSS verifies this signature information to confirm the validity of the POST request.
 	//
 	// example:
 	//

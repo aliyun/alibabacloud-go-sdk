@@ -20,29 +20,29 @@ type iUpdateJenkinsImageRegistryNameResponseBody interface {
 }
 
 type UpdateJenkinsImageRegistryNameResponseBody struct {
-	// The result of the operation. Valid values:
+	// The returned result. Valid values:
 	//
-	// 	- **true**: successful
+	// - **true**: Processing succeeded.
 	//
-	// 	- **false**: failed
+	// - **false**: Processing failed.
 	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The request ID. Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// 4347E985-6E64-467B-96EC-30D4EA9E****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The time consumed. Unit: seconds.
+	// The time consumed for the execution. Unit: seconds.
 	//
 	// example:
 	//

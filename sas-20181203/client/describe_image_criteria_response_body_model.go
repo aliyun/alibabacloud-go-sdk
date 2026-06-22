@@ -16,9 +16,9 @@ type iDescribeImageCriteriaResponseBody interface {
 }
 
 type DescribeImageCriteriaResponseBody struct {
-	// The list of the search conditions.
+	// The list of image query criteria.
 	CriteriaList []*DescribeImageCriteriaResponseBodyCriteriaList `json:"CriteriaList,omitempty" xml:"CriteriaList,omitempty" type:"Repeated"`
-	// The request ID.
+	// The request ID. Alibaba Cloud generates a unique identifier for each API request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -66,37 +66,37 @@ func (s *DescribeImageCriteriaResponseBody) Validate() error {
 }
 
 type DescribeImageCriteriaResponseBodyCriteriaList struct {
-	// The name of the search condition.
+	// The name of the query criterion.
 	//
-	// - **tag**: the tag of the image
+	// - **tag**: image tag.
 	//
-	// - **digest**: the digest of the image
+	// - **digest**: image digest.
 	//
-	// - **vulStatus**: the status of the vulnerability
+	// - **vulStatus**: vulnerability status.
 	//
-	// - **alarmStatus**: the status of the alert
+	// - **alarmStatus**: security alert status.
 	//
-	// - **riskStatus**: the status of the risk
+	// - **riskStatus**: risk status.
 	//
-	// - **registryType**: the type of the image repository
+	// - **registryType**: image repository type.
 	//
 	// example:
 	//
 	// vulStatus
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The type of the search condition. Valid values:
+	// The type of the query criterion. Valid values:
 	//
-	// - **input**: The search condition needs to be specified.
+	// - **input**: requires manual input of the query field.
 	//
-	// - **select**: The search condition is an option that can be selected from the drop-down list.
+	// - **select**: requires selecting a subtype from a drop-down list.
 	//
 	// example:
 	//
 	// input
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The values of the search condition. This parameter is returned only if the value of Type is select.
+	// The available option values when **Type*	- (the type of the query criterion) is **select**.
 	//
-	// > If the value of **Type*	- is **input**, the value of this parameter is an empty string.
+	// > When **Type*	- (the type of the query criterion) is **input**, this parameter returns an empty value.
 	//
 	// example:
 	//

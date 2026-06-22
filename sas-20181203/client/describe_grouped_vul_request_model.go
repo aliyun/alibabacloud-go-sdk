@@ -50,27 +50,27 @@ type iDescribeGroupedVulRequest interface {
 }
 
 type DescribeGroupedVulRequest struct {
-	// The alias of the vulnerability.
+	// The alias of the vulnerability to query.
 	//
 	// example:
 	//
 	// RHSA-2019:0230-Important: polkit security update
 	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
-	// The type of the asset on which the vulnerability is detected. Separate multiple types with commas (,). Valid values:
+	// The Asset Type where the vulnerability is detected. Separate multiple types with commas (,). Valid values:
 	//
-	// 	- **ECS**: Elastic Compute Service (ECS) instance
+	// - **ECS**: host asset
 	//
-	// 	- **CONTAINER**: container
+	// - **CONTAINER**: container asset.
 	//
 	// example:
 	//
 	// ECS,CONTAINER
 	AssetType *string `json:"AssetType,omitempty" xml:"AssetType,omitempty"`
-	// The type of the vulnerability. This parameter is valid only for application vulnerabilities. Separate multiple values with commas (,). Valid values:
+	// The vulnerability type. This query condition is valid only for application vulnerabilities. Separate multiple values with commas (,). Valid values:
 	//
-	// 	- **sca**: vulnerability that is detected based on software component analysis
+	// - **sca**: software constituency parsing vulnerability
 	//
-	// 	- **app**: application vulnerability
+	// - **app**: application vulnerability.
 	//
 	// example:
 	//
@@ -82,43 +82,43 @@ type DescribeGroupedVulRequest struct {
 	//
 	// c88fb10da1168494091db6aafc5dd****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The key of the condition that is used to query containers. Valid values:
+	// The container search field. Valid values:
 	//
-	// 	- **instanceId**: the ID of the asset
+	// - **instanceId**: instance ID
 	//
-	// 	- **appName**: the name of the application
+	// - **appName**: application name
 	//
-	// 	- **clusterId**: the ID of the cluster
+	// - **clusterId**: cluster ID
 	//
-	// 	- **regionId**: the ID of the region
+	// - **regionId**: region
 	//
-	// 	- **nodeName**: the name of the node
+	// - **nodeName**: node name
 	//
-	// 	- **namespace**: the namespace
+	// - **namespace**: namespace
 	//
-	// 	- **clusterName**: the name of the cluster
+	// - **clusterName**: cluster name
 	//
-	// 	- **image**: the name of the image
+	// - **image**: image name
 	//
-	// 	- **imageRepoName**: the name of the image repository
+	// - **imageRepoName**: image repository name
 	//
-	// 	- **imageRepoNamespace**: the namespace to which the image repository belongs
+	// - **imageRepoNamespace**: image repository namespace
 	//
-	// 	- **imageRepoTag**: the tag that is added to the image
+	// - **imageRepoTag**: image tag
 	//
-	// 	- **imageDigest**: the digest of the image
+	// - **imageDigest**: image digest.
 	//
 	// example:
 	//
 	// appName
 	ContainerFieldName *string `json:"ContainerFieldName,omitempty" xml:"ContainerFieldName,omitempty"`
-	// The value specified by **ContainerFieldName**.
+	// The value that corresponds to **ContainerFieldName**.
 	//
 	// example:
 	//
 	// cc914b0df156d40148412afe4a581****
 	ContainerFieldValue *string `json:"ContainerFieldValue,omitempty" xml:"ContainerFieldValue,omitempty"`
-	// The number of the page to return. Default value: **1**.
+	// The page number of the first page to display in the query results. Default value: **1**, which indicates that the results start from page 1.
 	//
 	// example:
 	//
@@ -126,7 +126,7 @@ type DescribeGroupedVulRequest struct {
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The CVE ID.
 	//
-	// >  You can call the [DescribeVulListPage](~~DescribeVulListPage~~) operation to query the CVE ID.
+	// > Call the [DescribeVulListPage](~~DescribeVulListPage~~) operation to obtain this parameter.
 	//
 	// example:
 	//
@@ -134,9 +134,9 @@ type DescribeGroupedVulRequest struct {
 	CveId *string `json:"CveId,omitempty" xml:"CveId,omitempty"`
 	// Specifies whether the vulnerability is handled. Valid values:
 	//
-	// 	- **y**: handled
+	// - **y**: handled
 	//
-	// 	- **n**: not handled
+	// - **n**: not handled.
 	//
 	// example:
 	//
@@ -148,97 +148,97 @@ type DescribeGroupedVulRequest struct {
 	//
 	// 235454
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language type of the request and response. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The priorities to fix the vulnerabilities. Separate multiple priorities with commas (,). Valid values:
+	// The priority of the vulnerability fix to query. Separate multiple priorities with commas (,). Valid values:
 	//
-	// 	- **asap**: high
+	// - **asap**: high
 	//
-	// 	- **later**: medium
+	// - **later**: medium
 	//
-	// 	- **nntf**: low
+	// - **nntf**: low.
 	//
 	// example:
 	//
 	// asap,later,nntf
 	Necessity *string `json:"Necessity,omitempty" xml:"Necessity,omitempty"`
-	// The number of entries per page. Default value: 10.
+	// The number of vulnerability entries per page in a paged query. Default value: 10, which indicates that 10 vulnerability entries are displayed per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Indicates whether the application protection feature is supported. Valid values:
+	// Specifies whether Runtime Application Self-Protection (RASP) supports real-time protection against the vulnerability. Valid values:
 	//
-	// - **0**: no.
+	// - **0**: Not supported.
 	//
-	// - **1**: yes.
+	// - **1**: Supported.
 	//
 	// example:
 	//
 	// 1
 	RaspDefend *int32 `json:"RaspDefend,omitempty" xml:"RaspDefend,omitempty"`
-	// The Alibaba Cloud account ID of the member in the resource directory.
+	// The ID of the Alibaba Cloud account that is added as one of the member accounts in a resource folder.
 	//
-	// >  You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to query the account ID.
+	// > Invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// 127608589417****
 	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
-	// The tag that is used to search for the vulnerability. Valid values:
+	// The label used for filtering. Valid values:
 	//
-	// 	- **Restart required**
+	// - **Restart required**
 	//
-	// 	- **Remote utilization**
+	// - **Remote utilization**
 	//
-	// 	- **EXP exists**
+	// - **EXP exists**
 	//
-	// 	- **Available**
+	// - **Available**
 	//
-	// 	- **Elevation of Privilege**
+	// - **Privilege escalation**
 	//
-	// 	- **Code Execution**
+	// - **Code execution**
 	//
 	// example:
 	//
 	// Code Execution
 	SearchTags *string `json:"SearchTags,omitempty" xml:"SearchTags,omitempty"`
-	// The query type for containers. Valid values:
+	// The container query type. Valid values:
 	//
-	// 	- **containerId**: the ID of the container
+	// - **containerId**: container ID
 	//
-	// 	- **uuid**: the ID of the asset
+	// - **uuid**: asset ID.
 	//
 	// example:
 	//
 	// containerId
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	// The type of the vulnerability that you want to query. Default value: cve. Valid values:
+	// The type of the vulnerability to query. Default value: cve. Valid values:
 	//
-	// 	- **cve**: Linux software vulnerability
+	// - **cve**: Linux software vulnerability
 	//
-	// 	- **sys**: Windows system vulnerability
+	// - **sys**: Windows system vulnerability
 	//
-	// 	- **cms**: Web-CMS vulnerability
+	// - **cms**: Web-CMS vulnerability
 	//
-	// 	- **app**: application vulnerability that is detected by network scanning
+	// - **app**: application vulnerability (network scan)
 	//
-	// 	- **sca**: application vulnerability that is detected by software component analysis
+	// - **sca**: application vulnerability (software constituency parsing).
 	//
 	// example:
 	//
 	// cve
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The UUID of the server. Separate multiple UUIDs with commas (,).
+	// The UUIDs of the servers to query. Separate multiple UUIDs with commas (,).
 	//
 	// example:
 	//

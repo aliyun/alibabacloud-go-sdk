@@ -14,10 +14,9 @@ type iGetInstallCodeForUuidRequest interface {
 }
 
 type GetInstallCodeForUuidRequest struct {
-	// The UUID of the server for which the client installation code is to be queried.
+	// The UUID of the server whose agent installation code you want to query.
 	//
-	//
-	// > Call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) API to obtain this parameter.
+	// > Call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
