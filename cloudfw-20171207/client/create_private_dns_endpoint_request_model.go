@@ -48,7 +48,7 @@ type CreatePrivateDnsEndpointRequest struct {
 	//
 	// test
 	AccessInstanceName *string `json:"AccessInstanceName,omitempty" xml:"AccessInstanceName,omitempty"`
-	// The type of the Cloud Firewall. Valid values:
+	// The type of cloud firewall. Valid values:
 	//
 	// - **internet**
 	//
@@ -68,7 +68,7 @@ type CreatePrivateDnsEndpointRequest struct {
 	//
 	// UDP
 	IpProtocol *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
-	// The UID of the member account.
+	// The UID of the Alibaba Cloud member account.
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type CreatePrivateDnsEndpointRequest struct {
 	//
 	// 80
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The primary DNS server.
+	// The primary DNS.
 	//
 	// example:
 	//
@@ -98,7 +98,7 @@ type CreatePrivateDnsEndpointRequest struct {
 	//
 	// 10.1.1.1
 	PrimaryVSwitchIp *string `json:"PrimaryVSwitchIp,omitempty" xml:"PrimaryVSwitchIp,omitempty"`
-	// The type of the private DNS. Valid values:
+	// The type of private DNS. Valid values:
 	//
 	// - **PrivateZone**
 	//
@@ -118,7 +118,7 @@ type CreatePrivateDnsEndpointRequest struct {
 	//
 	// cn-hangzhou
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	// The standby DNS server.
+	// The standby DNS.
 	//
 	// example:
 	//
@@ -136,7 +136,7 @@ type CreatePrivateDnsEndpointRequest struct {
 	//
 	// 10.2.2.2
 	StandbyVSwitchIp *string `json:"StandbyVSwitchIp,omitempty" xml:"StandbyVSwitchIp,omitempty"`
-	// The ID of the VPC instance.
+	// The VPC instance ID.
 	//
 	// This parameter is required.
 	//

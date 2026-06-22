@@ -18,7 +18,7 @@ type iCreateAclCheckRequest interface {
 }
 
 type CreateAclCheckRequest struct {
-	// The type of the ACL check.
+	// The ACL check type.
 	//
 	// This parameter is required.
 	//

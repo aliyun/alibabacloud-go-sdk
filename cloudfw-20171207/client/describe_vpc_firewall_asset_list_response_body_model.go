@@ -18,15 +18,15 @@ type iDescribeVpcFirewallAssetListResponseBody interface {
 }
 
 type DescribeVpcFirewallAssetListResponseBody struct {
-	// The data returned.
+	// The data list.
 	DataList []*DescribeVpcFirewallAssetListResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 924A6CCC-4EAD-5554-8AD0-45F5ED56****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -107,7 +107,7 @@ type DescribeVpcFirewallAssetListResponseBodyDataList struct {
 	//
 	// 0.0
 	InBytes *int64 `json:"InBytes,omitempty" xml:"InBytes,omitempty"`
-	// The number of intrusion prevention system (IPS) hits.
+	// The number of IPS hits.
 	//
 	// example:
 	//
@@ -127,13 +127,13 @@ type DescribeVpcFirewallAssetListResponseBodyDataList struct {
 	//
 	// cn-beijing
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	// The threat level.
+	// The risk level.
 	//
 	// example:
 	//
 	// 3
 	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The reason for the threat.
+	// The risk reason.
 	//
 	// example:
 	//

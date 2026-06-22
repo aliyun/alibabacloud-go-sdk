@@ -14,7 +14,7 @@ type iDeleteDownloadTaskResponseBody interface {
 }
 
 type DeleteDownloadTaskResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

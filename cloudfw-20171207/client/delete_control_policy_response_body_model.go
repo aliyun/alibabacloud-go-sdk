@@ -14,7 +14,7 @@ type iDeleteControlPolicyResponseBody interface {
 }
 
 type DeleteControlPolicyResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

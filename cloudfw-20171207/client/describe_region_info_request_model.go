@@ -28,7 +28,7 @@ type DescribeRegionInfoRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The source tracking code.
+	// The tracing code.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type DescribeRegionInfoRequest struct {
 	//
 	// yundun
 	SourceCode *string `json:"SourceCode,omitempty" xml:"SourceCode,omitempty"`
-	// The source IP address of the visitor.
+	// The source IP address of the request.
 	//
 	// example:
 	//

@@ -20,21 +20,21 @@ type iDescribeAssetStatisticResponseBody interface {
 }
 
 type DescribeAssetStatisticResponseBody struct {
-	// Whether automatic traffic diversion is enabled. Valid values:- **true**: enabled- **false**: disabled
+	// Indicates whether automatic traffic redirection is enabled. Valid values:- **true**: Enabled.- **false**: Disabled.
 	//
 	// example:
 	//
 	// true
 	AutoResourceEnable *bool `json:"AutoResourceEnable,omitempty" xml:"AutoResourceEnable,omitempty"`
-	// Specifications for general instances in version 2.0.
+	// The general instance specifications for version 2.0.
 	GeneralInstanceSpecStatistic *DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatistic `json:"GeneralInstanceSpecStatistic,omitempty" xml:"GeneralInstanceSpecStatistic,omitempty" type:"Struct"`
-	// ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 850A84******25g4d2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Resource specification usage statistics.
+	// The consumed quota statistics information.
 	ResourceSpecStatistic *DescribeAssetStatisticResponseBodyResourceSpecStatistic `json:"ResourceSpecStatistic,omitempty" xml:"ResourceSpecStatistic,omitempty" type:"Struct"`
 }
 
@@ -97,41 +97,41 @@ func (s *DescribeAssetStatisticResponseBody) Validate() error {
 }
 
 type DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatistic struct {
-	// Internet-facing firewall instance usage by region.
+	// The region-specific statistics for the Internet firewall.
 	CfwGeneralInstanceRegionStatistic []*DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatisticCfwGeneralInstanceRegionStatistic `json:"CfwGeneralInstanceRegionStatistic,omitempty" xml:"CfwGeneralInstanceRegionStatistic,omitempty" type:"Repeated"`
-	// Total Internet-facing firewall instances by region.
+	// The region-specific statistics for all Internet firewall instances.
 	CfwTotalGeneralInstanceRegionStatistic []*DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatisticCfwTotalGeneralInstanceRegionStatistic `json:"CfwTotalGeneralInstanceRegionStatistic,omitempty" xml:"CfwTotalGeneralInstanceRegionStatistic,omitempty" type:"Repeated"`
-	// Total number of Internet-facing firewall instances.
+	// The total number of instances for the Internet firewall.
 	//
 	// example:
 	//
 	// 1
 	TotalCfwGeneralInstanceCnt *int32 `json:"TotalCfwGeneralInstanceCnt,omitempty" xml:"TotalCfwGeneralInstanceCnt,omitempty"`
-	// Number of Internet-facing firewall instances with protection enabled.
+	// The number of instances with the Internet firewall enabled.
 	//
 	// example:
 	//
 	// 1
 	TotalCfwGeneralInstanceUsedCnt *int32 `json:"TotalCfwGeneralInstanceUsedCnt,omitempty" xml:"TotalCfwGeneralInstanceUsedCnt,omitempty"`
-	// Total number of general instances used.
+	// The total quota.
 	//
 	// example:
 	//
 	// 1
 	TotalGeneralInstanceUsedCnt *int32 `json:"TotalGeneralInstanceUsedCnt,omitempty" xml:"TotalGeneralInstanceUsedCnt,omitempty"`
-	// Total number of NAT firewall instances.
+	// The total number of instances for the NAT firewall.
 	//
 	// example:
 	//
 	// 1
 	TotalNatGeneralInstanceCnt *int32 `json:"TotalNatGeneralInstanceCnt,omitempty" xml:"TotalNatGeneralInstanceCnt,omitempty"`
-	// Number of NAT firewall instances with protection enabled.
+	// The number of instances with the NAT firewall enabled.
 	//
 	// example:
 	//
 	// 1
 	TotalNatGeneralInstanceUsedCnt *int32 `json:"TotalNatGeneralInstanceUsedCnt,omitempty" xml:"TotalNatGeneralInstanceUsedCnt,omitempty"`
-	// Number of VPC firewall instances with protection enabled.
+	// The number of instances with the VPC firewall enabled.
 	//
 	// example:
 	//
@@ -242,9 +242,9 @@ func (s *DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatistic) Validat
 }
 
 type DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatisticCfwGeneralInstanceRegionStatistic struct {
-	// List of member accounts in the region.
+	// The list of members in the region.
 	MemberList []*string `json:"MemberList,omitempty" xml:"MemberList,omitempty" type:"Repeated"`
-	// Region information
+	// The region information.
 	//
 	// example:
 	//
@@ -283,9 +283,9 @@ func (s *DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatisticCfwGenera
 }
 
 type DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatisticCfwTotalGeneralInstanceRegionStatistic struct {
-	// List of member accounts in the region.
+	// The list of members in the region.
 	MemberList []*string `json:"MemberList,omitempty" xml:"MemberList,omitempty" type:"Repeated"`
-	// Region information
+	// The region information.
 	//
 	// example:
 	//
@@ -324,25 +324,25 @@ func (s *DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatisticCfwTotalG
 }
 
 type DescribeAssetStatisticResponseBodyResourceSpecStatistic struct {
-	// Maximum number of public IP addresses that can be protected.
+	// The quota for protected public IP addresses.
 	//
 	// example:
 	//
 	// 20
 	IpNumSpec *int32 `json:"IpNumSpec,omitempty" xml:"IpNumSpec,omitempty"`
-	// Number of public IP addresses with protection enabled.
+	// The number of public IP addresses with protection enabled.
 	//
 	// example:
 	//
 	// 10
 	IpNumUsed *int32 `json:"IpNumUsed,omitempty" xml:"IpNumUsed,omitempty"`
-	// The number of IP specifications for sensitive data.
+	// The quota for sensitive data IP addresses.
 	//
 	// example:
 	//
 	// 0
 	SensitiveDataIpNumSpec *int64 `json:"SensitiveDataIpNumSpec,omitempty" xml:"SensitiveDataIpNumSpec,omitempty"`
-	// Number of public IP addresses currently scanned for sensitive data.
+	// The number of sensitive data IP addresses with protection enabled.
 	//
 	// example:
 	//

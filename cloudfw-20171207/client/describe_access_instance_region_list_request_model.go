@@ -24,7 +24,7 @@ type DescribeAccessInstanceRegionListRequest struct {
 	AccessInstanceStatus *string `json:"AccessInstanceStatus,omitempty" xml:"AccessInstanceStatus,omitempty"`
 	// The type of the synchronization node. Valid values:
 	//
-	// - **PrivateDns**: private DNS.
+	// - **PrivateDns**: Private DNS resolution.
 	//
 	// - **AckClusterConnector**: ACK cluster connector.
 	//

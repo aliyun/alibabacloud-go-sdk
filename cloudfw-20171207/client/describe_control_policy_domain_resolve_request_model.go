@@ -28,19 +28,23 @@ type DescribeControlPolicyDomainResolveRequest struct {
 	//
 	// example.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The type of the Cloud Firewall instance.
+	// The Cloud Firewall type.
 	//
 	// example:
 	//
 	// internet
 	FirewallType *string `json:"FirewallType,omitempty" xml:"FirewallType,omitempty"`
-	// The supported ip version.
+	// The supported IP address version.
 	//
 	// example:
 	//
 	// 4
 	IpVersion *int32 `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	// The language of the request and response.
+	// The language type. Valid values:
+	//
+	// - **en**: English
+	//
+	// - **zh**: Chinese.
 	//
 	// example:
 	//

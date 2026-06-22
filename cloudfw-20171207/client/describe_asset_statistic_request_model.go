@@ -16,13 +16,13 @@ type iDescribeAssetStatisticRequest interface {
 }
 
 type DescribeAssetStatisticRequest struct {
-	// Language for the request and response messages. Valid values:- **zh**: Chinese- **en**: English
+	// The language of the request and response. Valid values:- **zh**: Chinese- **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Source IP address of the requester.
+	// The source IP address of the request.
 	//
 	// example:
 	//

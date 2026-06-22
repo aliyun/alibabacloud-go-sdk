@@ -18,7 +18,7 @@ type iDescribePostpayTrafficDetailResponseBody interface {
 }
 
 type DescribePostpayTrafficDetailResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type DescribePostpayTrafficDetailResponseBody struct {
 	//
 	// 132
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The list of traffic statistics.
+	// The traffic statistics list.
 	TrafficList []*DescribePostpayTrafficDetailResponseBodyTrafficList `json:"TrafficList,omitempty" xml:"TrafficList,omitempty" type:"Repeated"`
 }
 
@@ -83,7 +83,7 @@ func (s *DescribePostpayTrafficDetailResponseBody) Validate() error {
 }
 
 type DescribePostpayTrafficDetailResponseBodyTrafficList struct {
-	// The inbound network throughput, in bytes.
+	// The inbound network throughput (total bytes). Unit: bytes.
 	//
 	// example:
 	//
@@ -95,37 +95,37 @@ type DescribePostpayTrafficDetailResponseBodyTrafficList struct {
 	//
 	// i-8vb2d7c9mtn0bo9qcraq
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The asset type. This value is valid only for the Internet border.
+	// The asset type. This value takes effect only for Internet border traffic.
 	//
 	// example:
 	//
 	// EcsPublicIP
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The outbound network throughput, in bytes.
+	// The outbound network throughput (total bytes). Unit: bytes.
 	//
 	// example:
 	//
 	// 100000000
 	OutBytes *int64 `json:"OutBytes,omitempty" xml:"OutBytes,omitempty"`
-	// The protection duration, in hours.
+	// The protection duration. Unit: hours.
 	//
 	// example:
 	//
 	// 20
 	ProtectionDuration *int64 `json:"ProtectionDuration,omitempty" xml:"ProtectionDuration,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	// The ID of the resource. For Internet border traffic, this is the public IP address of the asset. For NAT border traffic, this is the instance ID of the firewall.
+	// The resource ID. For Internet border traffic, this is the public IP address of the asset. For NAT border traffic, this is the firewall instance ID of the asset.
 	//
 	// example:
 	//
 	// 39.106.146.214
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The total network throughput for both inbound and outbound traffic, in bytes.
+	// The total network throughput in both inbound and outbound directions (total bytes sent and received). Unit: bytes.
 	//
 	// example:
 	//
@@ -137,13 +137,17 @@ type DescribePostpayTrafficDetailResponseBodyTrafficList struct {
 	//
 	// 20231001
 	TrafficDay *string `json:"TrafficDay,omitempty" xml:"TrafficDay,omitempty"`
-	// The type of the firewall border for which traffic is queried. Valid values:
+	// The type of traffic boundary for statistics. Valid values:
 	//
-	// - **EIP_TRAFFIC**: traffic on the Internet border.
 	//
-	// - **NatGateway_TRAFFIC**: traffic on the NAT border.
 	//
-	// - **VPC_TRAFFIC**: traffic on the VPC border.
+	// - **EIP_TRAFFIC**: Internet border traffic.
+	//
+	//
+	//
+	// - **NatGateway_TRAFFIC**: NAT border traffic.
+	//
+	// - **VPC_TRAFFIC**: VPC border traffic.
 	//
 	// example:
 	//

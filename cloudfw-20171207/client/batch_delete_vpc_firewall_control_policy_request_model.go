@@ -16,11 +16,11 @@ type iBatchDeleteVpcFirewallControlPolicyRequest interface {
 }
 
 type BatchDeleteVpcFirewallControlPolicyRequest struct {
-	// The list of UUIDs of the access control policies.
+	// The list of ACL UUIDs.
 	//
 	// This parameter is required.
 	AclUuidList []*string `json:"AclUuidList,omitempty" xml:"AclUuidList,omitempty" type:"Repeated"`
-	// The instance ID of the VPC firewall.
+	// The instance ID of the virtual private cloud (VPC) firewall.
 	//
 	// This parameter is required.
 	//

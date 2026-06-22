@@ -30,9 +30,9 @@ type iCreateAckClusterConnectorRequest interface {
 }
 
 type CreateAckClusterConnectorRequest struct {
-	// The ID of the ACK cluster.
+	// The ACK cluster ID. You can call the following operation to obtain the value:
 	//
-	// - Call the [DescribeAckClusters](~~DescribeAckClusters~~) operation to query the list of ACK clusters.
+	// - [DescribeAckClusters](~~DescribeAckClusters~~): Lists ACK clusters.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type CreateAckClusterConnectorRequest struct {
 	//
 	// cb0f5640b1b2d404cad6ba21509d7847b
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The name of the ACK cluster connector. The name must be 1 to 64 characters in length and can contain Chinese characters, letters, digits, periods (.), underscores (_), and hyphens (-).
+	// The name of the ACK cluster connector. The name must be 1 to 64 characters in length and can contain letters, digits, Chinese characters, periods (.), underscores (_), and hyphens (-).
 	//
 	// This parameter is required.
 	//
@@ -48,15 +48,15 @@ type CreateAckClusterConnectorRequest struct {
 	//
 	// ack-cluster-connector-name
 	ConnectorName *string `json:"ConnectorName,omitempty" xml:"ConnectorName,omitempty"`
-	// The Alibaba Cloud UID of the account to which the ACK cluster belongs.
+	// The Alibaba Cloud UID of the account to which the ACK cluster resource belongs.
 	//
 	// example:
 	//
 	// 135809047715****
 	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
-	// The ID of the primary vSwitch for the ACK cluster connector.
+	// The primary vSwitch of the ACK cluster connector. You can call the following operation to obtain the value:
 	//
-	// - Call the [DescribeAccessInstanceVSwitchList](~~DescribeAccessInstanceVSwitchList~~) operation to query the list of vSwitches for synchronization nodes.
+	// - [DescribeAccessInstanceVSwitchList](~~DescribeAccessInstanceVSwitchList~~): Lists the vSwitches of synchronization nodes.
 	//
 	// This parameter is required.
 	//
@@ -64,17 +64,17 @@ type CreateAckClusterConnectorRequest struct {
 	//
 	// vsw-2zerfbbje7dvnbii2****
 	PrimaryVswitchId *string `json:"PrimaryVswitchId,omitempty" xml:"PrimaryVswitchId,omitempty"`
-	// The IP address of the primary vSwitch for the ACK cluster connector.
+	// The IP address of the primary vSwitch of the ACK cluster connector.
 	//
 	// example:
 	//
 	// 10.100.1.1
 	PrimaryVswitchIp *string `json:"PrimaryVswitchIp,omitempty" xml:"PrimaryVswitchIp,omitempty"`
-	// The region ID of the ACK cluster connector.
+	// The region ID of the ACK cluster connector. You can call the following operation to obtain the value:
 	//
-	// - Call the [DescribeAccessInstanceRegionList](~~DescribeAccessInstanceRegionList~~) operation to query the list of regions for synchronization nodes.
+	// - [DescribeAccessInstanceRegionList](~~DescribeAccessInstanceRegionList~~): Lists the regions of synchronization nodes.
 	//
-	// > For more information about the regions that Cloud Firewall supports for ACK cluster connectors, see [ACK cluster synchronization nodes](https://help.aliyun.com/document_detail/2865120.html).
+	// > For more information about the regions supported by ACK cluster connectors in Cloud Firewall, see [ACK cluster synchronization nodes](https://help.aliyun.com/document_detail/2865120.html).
 	//
 	// This parameter is required.
 	//
@@ -82,21 +82,21 @@ type CreateAckClusterConnectorRequest struct {
 	//
 	// cn-hangzhou
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	// The ID of the standby vSwitch for the ACK cluster connector.
+	// The standby vSwitch of the ACK cluster connector. You can call the following operation to obtain the value:
 	//
-	// - Call the [DescribeAccessInstanceVSwitchList](~~DescribeAccessInstanceVSwitchList~~) operation to query the list of vSwitches for synchronization nodes.
+	// - [DescribeAccessInstanceVSwitchList](~~DescribeAccessInstanceVSwitchList~~): Lists the vSwitches of synchronization nodes.
 	//
 	// example:
 	//
 	// vsw-2ze2gtlfozrab01cfo****
 	StandbyVswitchId *string `json:"StandbyVswitchId,omitempty" xml:"StandbyVswitchId,omitempty"`
-	// The IP address of the standby vSwitch for the ACK cluster connector.
+	// The IP address of the standby vSwitch of the ACK cluster connector.
 	//
 	// example:
 	//
 	// 10.100.2.1
 	StandbyVswitchIp *string `json:"StandbyVswitchIp,omitempty" xml:"StandbyVswitchIp,omitempty"`
-	// The synchronization interval for the ACK cluster connector. Valid values: 2 to 60. Unit: seconds.
+	// The synchronization interval of the ACK cluster connector. Valid values: 2 to 60. Unit: seconds.
 	//
 	// This parameter is required.
 	//

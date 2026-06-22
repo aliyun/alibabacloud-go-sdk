@@ -22,7 +22,7 @@ type iDeleteControlPolicyRequest interface {
 type DeleteControlPolicyRequest struct {
 	// The unique ID of the access control policy.
 	//
-	// To delete an access control policy, you must provide its ID. Call the [DescribeControlPolicy](https://help.aliyun.com/document_detail/138866.html) operation to obtain the ID.
+	// To delete an access control policy, you must provide the unique ID of the policy. You can call the [DescribeControlPolicy](https://help.aliyun.com/document_detail/138866.html) operation to obtain the ID.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type DeleteControlPolicyRequest struct {
 	//
 	// 00281255-d220-4db1-8f4f-c4df221ad84c
 	AclUuid *string `json:"AclUuid,omitempty" xml:"AclUuid,omitempty"`
-	// The traffic direction that the access control policy controls.
+	// The traffic direction controlled by the access control policy.
 	//
 	// Valid values:
 	//
@@ -48,7 +48,7 @@ type DeleteControlPolicyRequest struct {
 	//
 	// - **zh*	- (default): Chinese
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//

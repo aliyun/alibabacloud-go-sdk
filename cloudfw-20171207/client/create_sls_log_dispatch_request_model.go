@@ -16,13 +16,13 @@ type iCreateSlsLogDispatchRequest interface {
 }
 
 type CreateSlsLogDispatchRequest struct {
-	// The region ID of the Simple Log Service project.
+	// The SLS region ID.
 	//
 	// example:
 	//
 	// ap-southeast-1
 	SlsRegionId *string `json:"SlsRegionId,omitempty" xml:"SlsRegionId,omitempty"`
-	// The log retention period. Unit: days.
+	// The storage duration of logs. Unit: days.
 	//
 	// example:
 	//

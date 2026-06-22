@@ -14,7 +14,7 @@ type iModifySensitiveSwitchResponseBody interface {
 }
 
 type ModifySensitiveSwitchResponseBody struct {
-	// The ID of the request.
+	// The request ID of the returned result.
 	//
 	// example:
 	//

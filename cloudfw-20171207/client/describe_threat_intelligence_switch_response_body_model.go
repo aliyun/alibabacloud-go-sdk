@@ -20,13 +20,13 @@ type iDescribeThreatIntelligenceSwitchResponseBody interface {
 type DescribeThreatIntelligenceSwitchResponseBody struct {
 	// The list of threat intelligence categories.
 	CategoryList []*DescribeThreatIntelligenceSwitchResponseBodyCategoryList `json:"CategoryList,omitempty" xml:"CategoryList,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 6B8E0379-2629-59A1-B811-96F3E****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of entries returned.
 	//
 	// example:
 	//
@@ -85,15 +85,15 @@ func (s *DescribeThreatIntelligenceSwitchResponseBody) Validate() error {
 type DescribeThreatIntelligenceSwitchResponseBodyCategoryList struct {
 	// The action of the rule. Valid values:
 	//
-	// **alert**: Monitor.
+	//  **alert**: monitor mode.
 	//
-	// **drop**: Block.
+	//  **drop**: Block Mode.
 	//
 	// example:
 	//
 	// alert
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	// The description of the category.
+	// The category description.
 	//
 	// example:
 	//
@@ -105,7 +105,7 @@ type DescribeThreatIntelligenceSwitchResponseBodyCategoryList struct {
 	//
 	// 3000037
 	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	// The name of the category.
+	// The category name.
 	//
 	// example:
 	//
@@ -117,11 +117,11 @@ type DescribeThreatIntelligenceSwitchResponseBodyCategoryList struct {
 	//
 	// 123
 	CategoryParentId *string `json:"CategoryParentId,omitempty" xml:"CategoryParentId,omitempty"`
-	// The status of the switch. Valid values:
+	// The enabling status. Valid values:
 	//
-	// **1**: enabled.
+	//  **1**: enabled.
 	//
-	// **0**: disabled.
+	//  **0**: disabled.
 	//
 	// example:
 	//

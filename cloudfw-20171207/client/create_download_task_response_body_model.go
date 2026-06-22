@@ -20,27 +20,27 @@ type iCreateDownloadTaskResponseBody interface {
 }
 
 type CreateDownloadTaskResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// E7F333E0-7B70-54DA-A307-4B2B49DEE923
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the task. Valid values:
+	// The task status. Valid values:
 	//
-	// finish: The task is complete. You can query the task to get the file download link.
+	// - finish: The task is complete. You can query the task to obtain the download URL of the task file.
 	//
-	// start: The task has started.
+	// - start: The task has started.
 	//
-	// error: The task failed.
+	// - error: The task failed.
 	//
-	// expire: The task expired. The task file is invalid and cannot be downloaded.
+	// - expire: The task has expired. The task file is no longer valid and cannot be downloaded.
 	//
 	// example:
 	//
 	// start
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The unique ID of the task.
+	// The task ID, which uniquely identifies the task.
 	//
 	// example:
 	//

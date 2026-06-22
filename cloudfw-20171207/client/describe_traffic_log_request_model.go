@@ -94,19 +94,19 @@ type iDescribeTrafficLogRequest interface {
 }
 
 type DescribeTrafficLogRequest struct {
-	// The ID of the pre-matched ACL rule.
+	// The ACL pre-match rule ID.
 	//
 	// example:
 	//
 	// 00000000-0000-0000-0000-000000000000
 	AclPreRuleId *string `json:"AclPreRuleId,omitempty" xml:"AclPreRuleId,omitempty"`
-	// The pre-matching status of the ACL.
+	// The ACL pre-match status.
 	//
 	// example:
 	//
 	// normal
 	AclPreState *string `json:"AclPreState,omitempty" xml:"AclPreState,omitempty"`
-	// The status of deep packet inspection.
+	// The application identification status.
 	//
 	// example:
 	//
@@ -136,7 +136,7 @@ type DescribeTrafficLogRequest struct {
 	//
 	// 1
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The direction.
+	// The traffic direction.
 	//
 	// example:
 	//
@@ -148,7 +148,7 @@ type DescribeTrafficLogRequest struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The URL in the flow log.
+	// The URL of the flow log.
 	//
 	// example:
 	//
@@ -178,7 +178,7 @@ type DescribeTrafficLogRequest struct {
 	//
 	// cn-shenzhen
 	DstVpcRegionNo *string `json:"DstVpcRegionNo,omitempty" xml:"DstVpcRegionNo,omitempty"`
-	// The end time. This value is a UNIX timestamp. Unit: seconds.
+	// The end time. Specify a UNIX timestamp in seconds.
 	//
 	// This parameter is required.
 	//
@@ -210,17 +210,17 @@ type DescribeTrafficLogRequest struct {
 	//
 	// 4
 	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	// The Internet Service Provider (ISP).
+	// The Internet service provider (ISP).
 	//
 	// example:
 	//
 	// telecom
 	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
-	// The language of the response. Valid values:
+	// The language type of the received message. Valid values:
 	//
 	// - **zh*	- (default): Chinese
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
@@ -232,25 +232,25 @@ type DescribeTrafficLogRequest struct {
 	//
 	// Hangzhou
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// The UID of the member account.
+	// The UID of the member accounts.
 	//
 	// example:
 	//
 	// 128599825273****
 	MemberUid *int64 `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
-	// The ID of the NAT firewall.
+	// The NAT firewall ID.
 	//
 	// example:
 	//
 	// vfw-tr-7a9c8901ed394****
 	NatFirewallId *string `json:"NatFirewallId,omitempty" xml:"NatFirewallId,omitempty"`
-	// The ID of the NAT Gateway.
+	// The NAT gateway ID.
 	//
 	// example:
 	//
 	// ngw-2zew6yn017hhzbm****
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
-	// The page number to query. The maximum value is 20.
+	// The number of entries per page. Maximum value: 20.
 	//
 	// example:
 	//
@@ -262,25 +262,25 @@ type DescribeTrafficLogRequest struct {
 	//
 	// 8b115ae3-da64-4b80-81c1-1cd2dd42****
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The action of the rule.
+	// The rule action result. Valid values:
 	//
 	// example:
 	//
 	// 0
 	RuleResult *string `json:"RuleResult,omitempty" xml:"RuleResult,omitempty"`
-	// The source of the rule.
+	// The rule source.
 	//
 	// example:
 	//
 	// 1
 	RuleSource *string `json:"RuleSource,omitempty" xml:"RuleSource,omitempty"`
-	// The module that takes effect in the end.
+	// The final effective module.
 	//
 	// example:
 	//
 	// 1
 	RuleSourceFinal *string `json:"RuleSourceFinal,omitempty" xml:"RuleSourceFinal,omitempty"`
-	// The traceability code.
+	// The tracing watermark.
 	//
 	// This parameter is required.
 	//
@@ -288,7 +288,7 @@ type DescribeTrafficLogRequest struct {
 	//
 	// yundun
 	SourceCode *string `json:"SourceCode,omitempty" xml:"SourceCode,omitempty"`
-	// The source IP address.
+	// The IP address of the access source.
 	//
 	// example:
 	//
@@ -324,7 +324,7 @@ type DescribeTrafficLogRequest struct {
 	//
 	// cn-beijing
 	SrcVpcRegionNo *string `json:"SrcVpcRegionNo,omitempty" xml:"SrcVpcRegionNo,omitempty"`
-	// The start time. This value is a UNIX timestamp. Unit: seconds. You can query data within the last 7 days. The time range for a single query cannot exceed one day.
+	// The start time. Specify a UNIX timestamp in seconds. Only data within the last 7 days can be queried. We recommend that a single query does not exceed one day.
 	//
 	// This parameter is required.
 	//
@@ -332,13 +332,13 @@ type DescribeTrafficLogRequest struct {
 	//
 	// 1730946241
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The ID of the TLS inspection scope.
+	// The TLS inspection scope ID.
 	//
 	// example:
 	//
 	// tis-98fd64c5****
 	TlsScopeId *string `json:"TlsScopeId,omitempty" xml:"TlsScopeId,omitempty"`
-	// The instance ID of the VPC border firewall.
+	// The instance ID of the virtual private cloud (VPC) firewall.
 	//
 	// example:
 	//

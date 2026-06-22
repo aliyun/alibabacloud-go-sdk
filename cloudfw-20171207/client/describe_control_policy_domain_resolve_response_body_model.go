@@ -22,7 +22,7 @@ type DescribeControlPolicyDomainResolveResponseBody struct {
 	//
 	// F0F82705-CFC7-5F83-86C8-A063892F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The domain resolution results.
+	// The domain name resolution results.
 	ResolveResult []*DescribeControlPolicyDomainResolveResponseBodyResolveResult `json:"ResolveResult,omitempty" xml:"ResolveResult,omitempty" type:"Repeated"`
 }
 
@@ -72,15 +72,15 @@ type DescribeControlPolicyDomainResolveResponseBodyResolveResult struct {
 	//
 	// example.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The list of ip addresses.
+	// The IP address list.
 	IpAddrList []*string `json:"IpAddrList,omitempty" xml:"IpAddrList,omitempty" type:"Repeated"`
-	// The supported ip version.
+	// The supported IP address version.
 	//
 	// example:
 	//
 	// 4
 	IpVersion *int32 `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	// The update time, provided as a unix timestamp in seconds.
+	// The update time. The value is a UNIX timestamp in seconds, which represents the number of seconds that have elapsed since January 1, 1970 (UTC).
 	//
 	// example:
 	//

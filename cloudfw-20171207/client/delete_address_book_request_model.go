@@ -20,7 +20,7 @@ type iDeleteAddressBookRequest interface {
 type DeleteAddressBookRequest struct {
 	// The unique ID of the address book.
 	//
-	// > To obtain this ID, call the [DescribeAddressBook](~~DescribeAddressBook~~) operation.
+	// > You can call the [DescribeAddressBook](~~DescribeAddressBook~~) operation to query the ID.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,11 @@ type DeleteAddressBookRequest struct {
 	//
 	// 0657ab9d-fe8b-4174-b2a6-6baf358e****
 	GroupUuid *string `json:"GroupUuid,omitempty" xml:"GroupUuid,omitempty"`
-	// The language of the content within the request and response.
+	// The language type. Valid values:
+	//
+	// - **en**: English
+	//
+	// - **zh**: Chinese (default).
 	//
 	// example:
 	//

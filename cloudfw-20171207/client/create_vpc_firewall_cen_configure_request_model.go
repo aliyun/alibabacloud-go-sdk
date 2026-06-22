@@ -36,7 +36,7 @@ type iCreateVpcFirewallCenConfigureRequest interface {
 }
 
 type CreateVpcFirewallCenConfigureRequest struct {
-	// The ID of the CEN instance.
+	// The Cloud Enterprise Network (CEN) instance ID.
 	//
 	// This parameter is required.
 	//
@@ -44,11 +44,11 @@ type CreateVpcFirewallCenConfigureRequest struct {
 	//
 	// cen-x5jayxou71ad73****
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The status of the VPC firewall. Valid values:
+	// The switch status of the VPC border firewall. Valid values:
 	//
-	// - **open*	- (default): The VPC firewall is enabled after it is created.
+	// - **open*	- (default): Protection is automatically enabled after the VPC border firewall is created.
 	//
-	// - **close**: The VPC firewall is disabled after it is created. Call the [ModifyVpcFirewallCenSwitchStatus](https://help.aliyun.com/document_detail/345780.html) operation to enable the firewall.
+	// - **close**: Protection is not automatically enabled after the VPC border firewall is created. You can call the [ModifyVpcFirewallCenSwitchStatus](https://help.aliyun.com/document_detail/345780.html) operation to enable protection.
 	//
 	// This parameter is required.
 	//
@@ -56,43 +56,49 @@ type CreateVpcFirewallCenConfigureRequest struct {
 	//
 	// open
 	FirewallSwitch *string `json:"FirewallSwitch,omitempty" xml:"FirewallSwitch,omitempty"`
-	// The CIDR block of the vSwitch that is used by the firewall. Specify a CIDR block with a subnet mask of 29 bits or less that does not conflict with your network plan. This CIDR block is allocated to the vSwitch that is automatically created in the firewall VPC (Cloud_Firewall_VSWITCH) for traffic redirection. The vSwitch CIDR block must be a subnet of the firewall VPC CIDR block. If you do not specify this parameter, the system automatically allocates the 10.219.219.216/29 CIDR block.
+	// The vSwitch CIDR block used by the firewall. You must configure a CIDR block with a subnet mask no larger than 29 bits that does not conflict with the network plan to allocate a vSwitch CIDR block for the firewall creation process. This is used to automatically create a vSwitch (Cloud_Firewall_VSWITCH) within the firewall security VPC for traffic redirection. The vSwitch CIDR block must be a subnet of the firewall VPC CIDR block.
 	//
-	// If you leave this parameter empty, the CIDR block 10.219.219.216/29 is automatically allocated.
+	// If this parameter is not specified, the CIDR block 10.219.219.216/29 is automatically allocated by default.
 	//
-	// > This parameter is valid only when you create a VPC firewall for the first time in the current region of the CEN.
+	// > This parameter is only valid when a VPC firewall is created for the first time in this CEN region.
 	FirewallVSwitchCidrBlock *string `json:"FirewallVSwitchCidrBlock,omitempty" xml:"FirewallVSwitchCidrBlock,omitempty"`
-	// The CIDR block of the VPC that is used by the firewall. Specify a CIDR block with a subnet mask of 28 bits or less. This CIDR block is allocated to the VPC that is automatically created for the firewall for traffic redirection. If you do not specify this parameter, the system automatically allocates the 10.0.0.0/8 CIDR block.
+	// The VPC CIDR block used by the firewall. You must configure a CIDR block with a subnet mask no larger than 28 bits to allocate a VPC CIDR block for the firewall creation process. This is used to automatically create a firewall security VPC (Cloud_Firewall_VPC) for traffic redirection.
 	//
-	// If you leave this property empty, the CIDR block 10.0.0.0/8 is automatically allocated.
+	// If this parameter is not specified, the CIDR block 10.0.0.0/8 is automatically allocated by default.
 	//
-	// > This parameter is valid only when you create a VPC firewall for the first time in the current region of the CEN.
+	// > This parameter is only valid when a VPC firewall is created for the first time in this CEN region.
 	//
 	// example:
 	//
 	// 10.0.0.0/8
 	FirewallVpcCidrBlock *string `json:"FirewallVpcCidrBlock,omitempty" xml:"FirewallVpcCidrBlock,omitempty"`
-	// The ID of the secondary zone for the firewall. If the service in the primary zone becomes unavailable, the firewall automatically switches to the secondary zone. If you do not specify this parameter, the system automatically assigns a secondary zone for the firewall.
+	// The standby availability zone ID of the firewall. The firewall automatically switches to the standby availability zone and continues to run only when the primary availability zone service is unavailable.
 	//
-	// If you do not specify a value, a zone is automatically allocated to the VPC firewall.
+	// If this parameter is not specified, the firewall standby availability zone is automatically allocated by default.
 	//
-	// > This parameter is valid only when you create a VPC firewall for the first time in the current region of the CEN.
+	//
+	//
+	// > This parameter is only valid when a VPC firewall is created for the first time in this CEN region.
 	//
 	// example:
 	//
 	// cn-hangzhou-b
 	FirewallVpcStandbyZoneId *string `json:"FirewallVpcStandbyZoneId,omitempty" xml:"FirewallVpcStandbyZoneId,omitempty"`
-	// The ID of the primary zone for the firewall. If your business is sensitive to latency, specify the same zone for the firewall and the vSwitch of your business VPC to reduce latency. If you do not specify this parameter, the system automatically assigns a zone for the firewall.
+	// The primary availability zone ID of the firewall.
 	//
-	// If you do not specify a value, a zone is automatically allocated to the VPC firewall.
+	// If your business is latency-sensitive, you can customize the firewall availability zone to be the same as your business VPC vSwitch availability zone to reduce latency.
 	//
-	// > This parameter is valid only when you create a VPC firewall for the first time in the current region of the CEN.
+	// If this parameter is not specified, the firewall availability zone is automatically allocated by default.
+	//
+	//
+	//
+	// > This parameter is only valid when a VPC firewall is created for the first time in this CEN region.
 	//
 	// example:
 	//
 	// cn-hangzhou-a
 	FirewallVpcZoneId *string `json:"FirewallVpcZoneId,omitempty" xml:"FirewallVpcZoneId,omitempty"`
-	// The language of the request and response. Valid values:
+	// The language type for the request and response messages. Valid values:
 	//
 	// - **zh*	- (default): Chinese.
 	//
@@ -102,13 +108,13 @@ type CreateVpcFirewallCenConfigureRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The UID of the member account.
+	// The member account UID of the current Alibaba Cloud account.
 	//
 	// example:
 	//
 	// 258039427902****
 	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
-	// The ID of the VPC for which you want to create the VPC firewall.
+	// The VPC instance ID for which the VPC border firewall is created.
 	//
 	// This parameter is required.
 	//
@@ -116,13 +122,13 @@ type CreateVpcFirewallCenConfigureRequest struct {
 	//
 	// vpc-bp10zlifxh6j0232w****
 	NetworkInstanceId *string `json:"NetworkInstanceId,omitempty" xml:"NetworkInstanceId,omitempty"`
-	// The ID of the vSwitch that is used by the Cloud Firewall interface.
+	// The vSwitch ID to which the Cloud Firewall interface belongs.
 	//
 	// example:
 	//
 	// vsw-qzeaol304m***
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The name of the VPC firewall instance.
+	// The instance name of the VPC border firewall.
 	//
 	// This parameter is required.
 	//
@@ -130,9 +136,9 @@ type CreateVpcFirewallCenConfigureRequest struct {
 	//
 	// vpc-firewall-test
 	VpcFirewallName *string `json:"VpcFirewallName,omitempty" xml:"VpcFirewallName,omitempty"`
-	// The region ID of the VPC for which you want to create the VPC firewall.
+	// The region ID of the VPC for which the VPC border firewall is created.
 	//
-	// > For more information about the regions that Cloud Firewall supports, see [Supported regions](https://help.aliyun.com/document_detail/195657.html).
+	// > For more information about the regions supported by Cloud Firewall, see [Supported regions](https://help.aliyun.com/document_detail/195657.html).
 	//
 	// This parameter is required.
 	//

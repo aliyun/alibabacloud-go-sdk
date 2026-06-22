@@ -36,9 +36,9 @@ type iAddAddressBookRequest interface {
 }
 
 type AddAddressBookRequest struct {
-	// The ID of the ACK cluster connector. You can obtain this value from the following operation:
+	// The ACK cluster connector ID. You can obtain the value from:
 	//
-	// - [DescribeAckClusterConnectors](~~DescribeAckClusterConnectors~~): Queries a list of ACK cluster connectors.
+	// - [DescribeAckClusterConnectors](~~DescribeAckClusterConnectors~~): queries a list of ACK cluster connectors.
 	//
 	// example:
 	//
@@ -46,27 +46,27 @@ type AddAddressBookRequest struct {
 	AckClusterConnectorId *string `json:"AckClusterConnectorId,omitempty" xml:"AckClusterConnectorId,omitempty"`
 	// The list of ACK cluster pod labels.
 	//
-	// > You can specify a maximum of 10 labels.
+	// > A maximum of 10 labels are supported.
 	AckLabels []*AddAddressBookRequestAckLabels `json:"AckLabels,omitempty" xml:"AckLabels,omitempty" type:"Repeated"`
 	// The list of ACK cluster pod namespaces.
 	//
-	// > You can specify a maximum of 10 namespaces.
+	// > A maximum of 10 namespaces are supported.
 	AckNamespaces []*string `json:"AckNamespaces,omitempty" xml:"AckNamespaces,omitempty" type:"Repeated"`
-	// The list of addresses in the address book. Separate multiple addresses with commas (,). For each address, separate the address and its description with a space.
+	// The address list of the address book. Multiple addresses are separated by commas, and within each address element, the address and its description are separated by a space.
 	//
 	// > This parameter is required when GroupType is set to `ip`, `port`, or `domain`.
 	//
-	// - If you set GroupType to `ip`, enter IP addresses in the list. Example: 192.0.XX.XX/32 development segment,10.0.0.X/24,192.0.XX.XX/24 test segment.
+	// - When GroupType is set to `ip`, enter IP addresses in the address list. Example: 192.0.XX.XX/32 development network segment, 10.0.0.X/24,192.0.XX.XX/24 test network segment.
 	//
-	// - If you set GroupType to `port`, enter ports or port ranges in the list. Example: 80 HTTP port,100/200,3306 database port.
+	// - When GroupType is set to `port`, enter ports or port ranges in the address list. Example: 80 HTTP port, 100/200,3306 database port.
 	//
-	// - If you set GroupType to `domain`, enter domain names in the list. Example: example.com test domain name,aliyundoc.com,www\\.aliyun.com Alibaba Cloud official website.
+	// - When GroupType is set to `domain`, enter domain names in the address list. Example: example.com test domain, aliyundoc.com,www.aliyun.com Alibaba Cloud official website.
 	//
 	// example:
 	//
 	// 192.0.XX.XX/32 ,192.0.XX.XX/24
 	AddressList *string `json:"AddressList,omitempty" xml:"AddressList,omitempty"`
-	// Specifies whether to automatically add the public IP addresses of ECS instances that match the specified tags to the address book.
+	// Specifies whether to automatically add the public IP addresses of ECS instances that match new tags to the address book.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ type AddAddressBookRequest struct {
 	//
 	// ip
 	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
-	// The language of the address book description.
+	// The language type of the address book description.
 	//
 	// example:
 	//
@@ -104,7 +104,7 @@ type AddAddressBookRequest struct {
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// Deprecated
 	//
-	// The source IP address of the visitor.
+	// The source IP address of the requester.
 	//
 	// example:
 	//
@@ -112,7 +112,7 @@ type AddAddressBookRequest struct {
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	// The list of ECS tags.
 	TagList []*AddAddressBookRequestTagList `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Repeated"`
-	// The logical relationship between multiple ECS tags.
+	// The logical relationship among multiple ECS tags to be matched.
 	//
 	// example:
 	//

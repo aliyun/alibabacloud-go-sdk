@@ -24,7 +24,7 @@ type AddDomainResolveRealtimeTaskRequest struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The type of the Cloud Firewall.
+	// The Cloud Firewall type.
 	//
 	// example:
 	//

@@ -22,13 +22,23 @@ type iDescribePageDocumentsRequest interface {
 }
 
 type DescribePageDocumentsRequest struct {
-	// The language.
+	// The language type. Valid values:
+	//
+	// - **en**: English.
+	//
+	// - **zh**: Chinese.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The page name.
+	// The page name. Valid values:
+	//
+	// - **overview**: overview page
+	//
+	// - **access**: access control page
+	//
+	// - **switch**: firewall page.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +46,7 @@ type DescribePageDocumentsRequest struct {
 	//
 	// overview
 	PageName *string `json:"PageName,omitempty" xml:"PageName,omitempty"`
-	// The tracing code for the source.
+	// The tracing code.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +54,7 @@ type DescribePageDocumentsRequest struct {
 	//
 	// yundun
 	SourceCode *string `json:"SourceCode,omitempty" xml:"SourceCode,omitempty"`
-	// The source IP address of the visitor.
+	// The source IP address of the request.
 	//
 	// example:
 	//

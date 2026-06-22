@@ -22,7 +22,7 @@ type CreateVpcFirewallControlPolicyResponseBody struct {
 	//
 	// 00281255-d220-4db1-8f4f-c4df221ad84c
 	AclUuid *string `json:"AclUuid,omitempty" xml:"AclUuid,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

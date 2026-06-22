@@ -18,15 +18,15 @@ type iDescribeSdlEventSdListResponseBody interface {
 }
 
 type DescribeSdlEventSdListResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 15FCCC52-1E23-57AE-B5EF-3E00A3******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// A list of sensitive data from the data breach.
+	// The list of sensitive data involved in data leaks.
 	SdlEventSensitiveDataList []*DescribeSdlEventSdListResponseBodySdlEventSensitiveDataList `json:"SdlEventSensitiveDataList,omitempty" xml:"SdlEventSensitiveDataList,omitempty" type:"Repeated"`
-	// The total number of entries.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -89,19 +89,19 @@ type DescribeSdlEventSdListResponseBodySdlEventSensitiveDataList struct {
 	//
 	// sk-N***************************SxiJ
 	SensitiveData *string `json:"SensitiveData,omitempty" xml:"SensitiveData,omitempty"`
-	// The number of times the sensitive data appears.
+	// The number of occurrences of the sensitive data.
 	//
 	// example:
 	//
 	// 6
 	SensitiveDataCnt *int64 `json:"SensitiveDataCnt,omitempty" xml:"SensitiveDataCnt,omitempty"`
-	// The sensitivity level of the data.
+	// The level of the sensitive data.
 	//
 	// example:
 	//
 	// S3
 	SensitiveLevel *string `json:"SensitiveLevel,omitempty" xml:"SensitiveLevel,omitempty"`
-	// The type of sensitive data.
+	// The type of the sensitive data.
 	//
 	// example:
 	//

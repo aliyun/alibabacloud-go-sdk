@@ -28,7 +28,7 @@ type iDescribeAckClusterConnectorsRequest interface {
 }
 
 type DescribeAckClusterConnectorsRequest struct {
-	// The ID of the ACK cluster.
+	// The ACK cluster ID.
 	//
 	// example:
 	//
@@ -40,13 +40,13 @@ type DescribeAckClusterConnectorsRequest struct {
 	//
 	// test
 	ConnectorName *string `json:"ConnectorName,omitempty" xml:"ConnectorName,omitempty"`
-	// The language type for displaying the error reason for the ACK cluster connector\\"s health status.
+	// The language in which the unhealthy reason of the ACK cluster connector health status is displayed.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The Alibaba Cloud UID to which the ACK cluster resource belongs.
+	// The Alibaba Cloud UID of the account to which the ACK cluster resource belongs.
 	//
 	// example:
 	//
@@ -68,17 +68,17 @@ type DescribeAckClusterConnectorsRequest struct {
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the ACK cluster connector. Source of values:
+	// The region ID of the ACK cluster connector. You can call the following operation to obtain the value:
 	//
-	// - [DescribeAccessInstanceRegionList](~~DescribeAccessInstanceRegionList~~): Query the list of synchronization node regions.
+	// - [DescribeAccessInstanceRegionList](~~DescribeAccessInstanceRegionList~~): Queries the list of synchronization node regions.
 	//
-	// > For more information about the regions supported by Cloud Firewall for ACK cluster connectors, see [ACK Cluster Synchronization Nodes](https://help.aliyun.com/document_detail/2865120.html).
+	// > For more information about the regions supported by ACK cluster connectors in Cloud Firewall, see [ACK cluster synchronization nodes](https://help.aliyun.com/document_detail/2865120.html).
 	//
 	// example:
 	//
 	// cn-shenzhen
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	// The VPC instance ID to which the ACK cluster belongs.
+	// The instance ID of the VPC-connected instance to which the ACK cluster belongs.
 	//
 	// example:
 	//

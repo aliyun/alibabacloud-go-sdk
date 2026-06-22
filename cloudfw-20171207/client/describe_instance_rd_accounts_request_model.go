@@ -26,43 +26,43 @@ type iDescribeInstanceRdAccountsRequest interface {
 }
 
 type DescribeInstanceRdAccountsRequest struct {
-	// The number of the page to return.
+	// The page number of the current page.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The language of the request and response.
+	// The language type for the request and response messages.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The description of the member account.
+	// The remarks of the Cloud Firewall member accounts.
 	//
 	// example:
 	//
 	// renewal
 	MemberDesc *string `json:"MemberDesc,omitempty" xml:"MemberDesc,omitempty"`
-	// The display name of the member account.
+	// The name of the Cloud Firewall member accounts.
 	//
 	// example:
 	//
 	// cloudfirewall_2
 	MemberDisplayName *string `json:"MemberDisplayName,omitempty" xml:"MemberDisplayName,omitempty"`
-	// The UID of the member account.
+	// The UID of the member accounts.
 	//
 	// example:
 	//
 	// 258039427902****
 	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
-	// The number of the page to return.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The source IP address of the request.
+	// The IP address of the requester.
 	//
 	// example:
 	//

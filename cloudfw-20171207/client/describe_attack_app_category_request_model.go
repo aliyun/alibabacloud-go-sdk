@@ -14,7 +14,7 @@ type iDescribeAttackAppCategoryRequest interface {
 }
 
 type DescribeAttackAppCategoryRequest struct {
-	// The language of the request and response messages. Valid values:
+	// The language of the request and response. Valid values:
 	//
 	// - **zh*	- (default): Chinese.
 	//

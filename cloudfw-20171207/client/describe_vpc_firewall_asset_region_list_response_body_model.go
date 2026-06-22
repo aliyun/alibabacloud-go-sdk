@@ -16,9 +16,9 @@ type iDescribeVpcFirewallAssetRegionListResponseBody interface {
 }
 
 type DescribeVpcFirewallAssetRegionListResponseBody struct {
-	// A list of regions.
+	// The list of regions.
 	RegionNoList []*string `json:"RegionNoList,omitempty" xml:"RegionNoList,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

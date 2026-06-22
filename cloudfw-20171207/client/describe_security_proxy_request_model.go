@@ -32,7 +32,7 @@ type iDescribeSecurityProxyRequest interface {
 }
 
 type DescribeSecurityProxyRequest struct {
-	// The language of the request and response. Valid values:
+	// The language type for the request and response messages. Valid values:
 	//
 	// - **zh*	- (default): Chinese.
 	//
@@ -42,13 +42,13 @@ type DescribeSecurityProxyRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The UID of the member account within the current Alibaba Cloud account.
+	// The UID of the member accounts of the current Alibaba Cloud account.
 	//
 	// example:
 	//
 	// 258039427902****
 	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
-	// The ID of the NAT Gateway.
+	// The ID of the NAT gateway.
 	//
 	// example:
 	//
@@ -60,7 +60,7 @@ type DescribeSecurityProxyRequest struct {
 	//
 	// 1
 	PageNo *string `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The maximum number of entries to return on each page. The maximum value is 50.
+	// The maximum number of entries per page in a paged query. Maximum value: 50.
 	//
 	// example:
 	//
@@ -72,7 +72,7 @@ type DescribeSecurityProxyRequest struct {
 	//
 	// proxy-nat80d763eb0dee4eacaec9
 	ProxyId *string `json:"ProxyId,omitempty" xml:"ProxyId,omitempty"`
-	// The name of the NAT firewall. The name must be 4 to 50 characters in length. It can contain letters, digits, underscores (_), and Chinese characters. It cannot start with an underscore (_).
+	// The name of the NAT firewall. The name can contain uppercase and lowercase letters, Chinese characters, digits, and underscores (_). The name must be 4 to 50 characters in length and cannot start with an underscore.
 	//
 	// example:
 	//
@@ -84,27 +84,27 @@ type DescribeSecurityProxyRequest struct {
 	//
 	// cn-hangzhou
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	// The status of the Cloud Firewall. Valid values:
+	// The status of Cloud Firewall. Valid values:
 	//
-	// - **configuring**: The firewall is being created.
+	// - **configuring**: Being created.
 	//
-	// - **deleting**: The firewall is being deleted.
+	// - **deleting**: Being deleted.
 	//
-	// - **normal**: The firewall is running.
+	// - **normal**: Normal.
 	//
-	// - **abnormal**: The firewall is not running as expected.
+	// - **abnormal**: Abnormal.
 	//
-	// - **opening**: The firewall is being enabled.
+	// - **opening**: Being enabled.
 	//
-	// - **closing**: The firewall is being disabled.
+	// - **closing**: Being disabled.
 	//
-	// - **closed**: The firewall is disabled.
+	// - **closed**: Disabled.
 	//
 	// example:
 	//
 	// normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the VPC instance.
+	// The VPC-connected instance ID.
 	//
 	// example:
 	//

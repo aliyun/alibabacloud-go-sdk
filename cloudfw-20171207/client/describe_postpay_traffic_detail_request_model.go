@@ -30,7 +30,7 @@ type iDescribePostpayTrafficDetailRequest interface {
 }
 
 type DescribePostpayTrafficDetailRequest struct {
-	// The page number of the page to return.
+	// The page number in a paged query.
 	//
 	// Default value: 1.
 	//
@@ -38,7 +38,7 @@ type DescribePostpayTrafficDetailRequest struct {
 	//
 	// 1
 	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// Set the end time for the query. Use the YYYYMMDD date format.
+	// The end time of the query. Specify the value in the YYYYMMDD format.
 	//
 	// This parameter is required.
 	//
@@ -50,13 +50,13 @@ type DescribePostpayTrafficDetailRequest struct {
 	//
 	// - **zh*	- (default): Chinese
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The field to use for sorting. Valid values:
+	// The field by which to sort the results. Valid values:
 	//
 	// - **resourceId**: resource ID.
 	//
@@ -66,7 +66,7 @@ type DescribePostpayTrafficDetailRequest struct {
 	//
 	// resourceId
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The number of entries to return on each page. Default value: 10. Maximum value: 50.
+	// The number of entries per page in a paged query. Default value: 10. Maximum value: 50.
 	//
 	// example:
 	//
@@ -84,7 +84,7 @@ type DescribePostpayTrafficDetailRequest struct {
 	//
 	// 192.0.XX.XX
 	SearchItem *string `json:"SearchItem,omitempty" xml:"SearchItem,omitempty"`
-	// Set the start time for the query. Use the YYYYMMDD date format.
+	// The start time of the query. Specify the value in the YYYYMMDD format.
 	//
 	// This parameter is required.
 	//
@@ -92,13 +92,17 @@ type DescribePostpayTrafficDetailRequest struct {
 	//
 	// 20240101
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The type of the firewall border for which to query traffic. This parameter is required. Valid values:
+	// The type of traffic boundary for statistics. This parameter is required. Valid values:
 	//
-	// - **EIP_TRAFFIC**: traffic on the Internet border.
 	//
-	// - **NatGateway_TRAFFIC**: traffic on the NAT border.
 	//
-	// - **VPC_TRAFFIC**: traffic on the VPC border.
+	// - **EIP_TRAFFIC**: Internet border traffic.
+	//
+	//
+	//
+	// - **NatGateway_TRAFFIC**: NAT border traffic.
+	//
+	// - **VPC_TRAFFIC**: VPC border traffic.
 	//
 	// This parameter is required.
 	//

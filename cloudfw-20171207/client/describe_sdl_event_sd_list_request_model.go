@@ -28,7 +28,7 @@ type iDescribeSdlEventSdListRequest interface {
 }
 
 type DescribeSdlEventSdListRequest struct {
-	// The number of the page to return.
+	// The current page number.
 	//
 	// example:
 	//
@@ -46,13 +46,13 @@ type DescribeSdlEventSdListRequest struct {
 	//
 	// 1761185080
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The language of the response.
+	// The language type of the received message.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of the page to return.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type DescribeSdlEventSdListRequest struct {
 	//
 	// 1656664560
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The unique ID.
+	// The unique identifier ID.
 	//
 	// example:
 	//

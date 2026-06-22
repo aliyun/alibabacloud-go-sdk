@@ -30,55 +30,57 @@ type iDescribeACLProtectTrendResponseBody interface {
 }
 
 type DescribeACLProtectTrendResponseBody struct {
-	// The number of inbound sessions blocked by access control policies for internet traffic.
+	// The number of inbound interceptions by Internet access control.
 	//
 	// example:
 	//
 	// 100
 	InProtectCnt *int64 `json:"InProtectCnt,omitempty" xml:"InProtectCnt,omitempty"`
+	// Deprecated
+	//
 	// This parameter is deprecated.
 	//
 	// example:
 	//
 	// 0
 	InterVPCProtectCnt *int64 `json:"InterVPCProtectCnt,omitempty" xml:"InterVPCProtectCnt,omitempty"`
-	// The interval between data points. Unit: seconds.
+	// The interval at which data is returned. Unit: seconds. A result is returned at each interval.
 	//
 	// example:
 	//
 	// 86400
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The number of outbound sessions blocked by access control policies for internet traffic.
+	// The number of outbound interceptions by Internet access control.
 	//
 	// example:
 	//
 	// 200
 	OutProtectCnt *int64 `json:"OutProtectCnt,omitempty" xml:"OutProtectCnt,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 9063AB86-6FFA-5B2D-A16D-697C966DECA3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of sessions that trigger the alert action in access control policies in the query time range.
+	// The cumulative total of AlertCnt across all time points within the query time range. This value indicates the total number of sessions that matched an ACL policy and triggered the monitor (alert) action during the entire time period.
 	//
 	// example:
 	//
 	// 100
 	TotalAlertCnt *int64 `json:"TotalAlertCnt,omitempty" xml:"TotalAlertCnt,omitempty"`
-	// The total number of sessions that are allowed by access control policies in the query time range.
+	// The cumulative total of PassCnt across all time points within the query time range. This value indicates the total number of sessions that matched an ACL policy and were allowed during the entire time period.
 	//
 	// example:
 	//
 	// 100
 	TotalPassCnt *int64 `json:"TotalPassCnt,omitempty" xml:"TotalPassCnt,omitempty"`
-	// The total number of sessions blocked by access control policies for internet traffic.
+	// The total number of Internet access control interceptions.
 	//
 	// example:
 	//
 	// 300
 	TotalProtectCnt *int64 `json:"TotalProtectCnt,omitempty" xml:"TotalProtectCnt,omitempty"`
-	// The trend of sessions blocked by access control policies for internet traffic.
+	// The list of Internet access control intercept trend data.
 	TrendList []*DescribeACLProtectTrendResponseBodyTrendList `json:"TrendList,omitempty" xml:"TrendList,omitempty" type:"Repeated"`
 }
 
@@ -185,25 +187,25 @@ func (s *DescribeACLProtectTrendResponseBody) Validate() error {
 }
 
 type DescribeACLProtectTrendResponseBodyTrendList struct {
-	// The total number of sessions that trigger the alert action in access control policies at the specified point in time.
+	// The total number of sessions that matched an ACL policy and triggered the monitor (alert) action at this point in time.
 	//
 	// example:
 	//
 	// 20
 	AlertCnt *int32 `json:"AlertCnt,omitempty" xml:"AlertCnt,omitempty"`
-	// The total number of sessions that are allowed by access control policies at the specified point in time.
+	// The total number of sessions that matched an ACL policy and were allowed at this point in time.
 	//
 	// example:
 	//
 	// 10
 	PassCnt *int32 `json:"PassCnt,omitempty" xml:"PassCnt,omitempty"`
-	// The number of sessions blocked by access control policies for internet traffic on the current day.
+	// The number of Internet access control interceptions on the day.
 	//
 	// example:
 	//
 	// 100
 	ProtectCnt *int32 `json:"ProtectCnt,omitempty" xml:"ProtectCnt,omitempty"`
-	// The timestamp that indicates the start of the query time range. Unit: seconds.
+	// The timestamp of 00:00 on each day. Unit: seconds. Indicates the date.
 	//
 	// example:
 	//

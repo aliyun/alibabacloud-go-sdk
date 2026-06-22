@@ -16,7 +16,7 @@ type iDescribeAccessInstanceRegionListResponseBody interface {
 }
 
 type DescribeAccessInstanceRegionListResponseBody struct {
-	// The list of regions that support the specified type of synchronization node.
+	// The list of regions that support the current synchronization node type.
 	RegionNoList []*string `json:"RegionNoList,omitempty" xml:"RegionNoList,omitempty" type:"Repeated"`
 	// The request ID.
 	//

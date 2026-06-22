@@ -16,13 +16,13 @@ type iCreateSecurityProxyResponseBody interface {
 }
 
 type CreateSecurityProxyResponseBody struct {
-	// The ID of the NAT firewall.
+	// The NAT firewall ID.
 	//
 	// example:
 	//
 	// proxy-nat97a******
 	ProxyId *string `json:"ProxyId,omitempty" xml:"ProxyId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

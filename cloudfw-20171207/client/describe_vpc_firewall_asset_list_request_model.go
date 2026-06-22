@@ -72,7 +72,7 @@ type DescribeVpcFirewallAssetListRequest struct {
 	//
 	// in
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	// The ID of the ECS instance.
+	// The instance ID of the ECS instance.
 	//
 	// example:
 	//
@@ -98,13 +98,13 @@ type DescribeVpcFirewallAssetListRequest struct {
 	//
 	// tcp
 	IPProtocol *string `json:"IPProtocol,omitempty" xml:"IPProtocol,omitempty"`
-	// Specifies whether to count only the traffic to AI services.
+	// Specifies whether to collect statistics only on traffic that accesses AI services.
 	//
 	// example:
 	//
 	// true
 	IsAITraffic *string `json:"IsAITraffic,omitempty" xml:"IsAITraffic,omitempty"`
-	// The language of the request and response.
+	// The language type of the request and response messages.
 	//
 	// example:
 	//
@@ -116,13 +116,13 @@ type DescribeVpcFirewallAssetListRequest struct {
 	//
 	// desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The page number.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the peer VPC instance.
+	// The instance ID of the peer VPC.
 	//
 	// example:
 	//
@@ -134,13 +134,13 @@ type DescribeVpcFirewallAssetListRequest struct {
 	//
 	// 5234
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The threat level.
+	// The risk level.
 	//
 	// example:
 	//
 	// 3
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The sorting method.
+	// The sort method.
 	//
 	// example:
 	//
@@ -154,7 +154,7 @@ type DescribeVpcFirewallAssetListRequest struct {
 	//
 	// 1534408189
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The ID of the VPC instance.
+	// The instance ID of the VPC-connected instance.
 	//
 	// This parameter is required.
 	//

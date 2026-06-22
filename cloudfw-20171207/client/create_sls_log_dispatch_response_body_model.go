@@ -14,7 +14,7 @@ type iCreateSlsLogDispatchResponseBody interface {
 }
 
 type CreateSlsLogDispatchResponseBody struct {
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//

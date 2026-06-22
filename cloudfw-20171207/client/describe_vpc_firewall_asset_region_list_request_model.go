@@ -16,13 +16,13 @@ type iDescribeVpcFirewallAssetRegionListRequest interface {
 }
 
 type DescribeVpcFirewallAssetRegionListRequest struct {
-	// The UID of the member account.
+	// The UID of the member accounts.
 	//
 	// example:
 	//
 	// 258039427902****
 	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
-	// The instance ID of the VPC border firewall.
+	// The instance ID of the virtual private cloud (VPC) firewall.
 	//
 	// example:
 	//

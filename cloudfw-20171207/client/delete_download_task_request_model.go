@@ -26,7 +26,7 @@ type DeleteDownloadTaskRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The ID of the file download task.
+	// The task ID of the file download task.
 	//
 	// example:
 	//

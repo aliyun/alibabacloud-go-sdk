@@ -16,7 +16,7 @@ type iCreateAckClusterConnectorResponseBody interface {
 }
 
 type CreateAckClusterConnectorResponseBody struct {
-	// The details of the ACK cluster connector.
+	// The ACK cluster connector information.
 	AckClusterConnector *CreateAckClusterConnectorResponseBodyAckClusterConnector `json:"AckClusterConnector,omitempty" xml:"AckClusterConnector,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,15 +62,15 @@ func (s *CreateAckClusterConnectorResponseBody) Validate() error {
 }
 
 type CreateAckClusterConnectorResponseBodyAckClusterConnector struct {
-	// The IP address used by the ACK cluster connector to access the ACK cluster over the internal network.
+	// The entry point IP address used by the ACK cluster connector to access the ACK cluster over the internal network.
 	//
 	// example:
 	//
 	// 10.40.32.240
 	AckClientHostIp *string `json:"AckClientHostIp,omitempty" xml:"AckClientHostIp,omitempty"`
-	// The ID of the ACK cluster.
+	// The ACK cluster ID. You can call the following operation to obtain the value:
 	//
-	// - Call the [DescribeAckClusters](~~DescribeAckClusters~~) operation to query the list of ACK clusters.
+	// - [DescribeAckClusters](~~DescribeAckClusters~~): Lists ACK clusters.
 	//
 	// example:
 	//
@@ -94,7 +94,7 @@ type CreateAckClusterConnectorResponseBodyAckClusterConnector struct {
 	//
 	// ac-7c1bad6c3cc84c33baab
 	ConnectorId *string `json:"ConnectorId,omitempty" xml:"ConnectorId,omitempty"`
-	// The name of the ACK cluster connector. The name is 1 to 64 characters in length and can contain Chinese characters, letters, digits, periods (.), underscores (_), and hyphens (-).
+	// The name of the ACK cluster connector. The name must be 1 to 64 characters in length and can contain letters, digits, Chinese characters, periods (.), underscores (_), and hyphens (-).
 	//
 	// example:
 	//
@@ -106,85 +106,85 @@ type CreateAckClusterConnectorResponseBodyAckClusterConnector struct {
 	//
 	// ready
 	ConnectorStatus *string `json:"ConnectorStatus,omitempty" xml:"ConnectorStatus,omitempty"`
-	// The timestamp when the ACK cluster connector was created. This value is a UNIX timestamp. Unit: seconds.
+	// The timestamp when the ACK cluster connector was created. Unit: seconds.
 	//
 	// example:
 	//
 	// 1724982259
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The Alibaba Cloud UID of the account to which the ACK cluster belongs.
+	// The Alibaba Cloud UID of the account to which the ACK cluster resource belongs.
 	//
 	// example:
 	//
 	// 135809047715****
 	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
-	// The ID of the primary vSwitch for the ACK cluster connector.
+	// The primary vSwitch of the ACK cluster connector. You can call the following operation to obtain the value:
 	//
-	// - Call the [DescribeAccessInstanceVSwitchList](~~DescribeAccessInstanceVSwitchList~~) operation to query the list of vSwitches for synchronization nodes.
+	// - [DescribeAccessInstanceVSwitchList](~~DescribeAccessInstanceVSwitchList~~): Lists the vSwitches of synchronization nodes.
 	//
 	// example:
 	//
 	// vsw-2zerfbbje7dvnbii2****
 	PrimaryVswitchId *string `json:"PrimaryVswitchId,omitempty" xml:"PrimaryVswitchId,omitempty"`
-	// The IP address of the primary vSwitch for the ACK cluster connector.
+	// The IP address of the primary vSwitch of the ACK cluster connector.
 	//
 	// example:
 	//
 	// 10.100.1.1
 	PrimaryVswitchIp *string `json:"PrimaryVswitchIp,omitempty" xml:"PrimaryVswitchIp,omitempty"`
-	// The zone ID of the primary vSwitch for the ACK cluster connector.
+	// The zone of the primary vSwitch of the ACK cluster connector. You can call the following operation to obtain the value:
 	//
-	// - Call the [DescribeAccessInstanceZoneList](~~DescribeAccessInstanceZoneList~~) operation to query the list of zones for synchronization nodes.
+	// - [DescribeAccessInstanceZoneList](~~DescribeAccessInstanceZoneList~~): Lists the zones of vSwitches for synchronization nodes.
 	//
 	// example:
 	//
 	// cn-hangzhou-g
 	PrimaryVswitchZoneId *string `json:"PrimaryVswitchZoneId,omitempty" xml:"PrimaryVswitchZoneId,omitempty"`
-	// The region ID of the ACK cluster connector.
+	// The region ID of the ACK cluster connector. You can call the following operation to obtain the value:
 	//
-	// - Call the [DescribeAccessInstanceRegionList](~~DescribeAccessInstanceRegionList~~) operation to query the list of regions for synchronization nodes.
+	// - [DescribeAccessInstanceRegionList](~~DescribeAccessInstanceRegionList~~): Lists the regions of synchronization nodes.
 	//
-	// > For more information about the regions that Cloud Firewall supports for ACK cluster connectors, see [ACK cluster synchronization nodes](https://help.aliyun.com/document_detail/2865120.html).
+	// > For more information about the regions supported by ACK cluster connectors in Cloud Firewall, see [ACK cluster synchronization nodes](https://help.aliyun.com/document_detail/2865120.html).
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	// The ID of the standby vSwitch for the ACK cluster connector.
+	// The standby vSwitch of the ACK cluster connector. You can call the following operation to obtain the value:
 	//
-	// - Call the [DescribeAccessInstanceVSwitchList](~~DescribeAccessInstanceVSwitchList~~) operation to query the list of vSwitches for synchronization nodes.
+	// - [DescribeAccessInstanceVSwitchList](~~DescribeAccessInstanceVSwitchList~~): Lists the vSwitches of synchronization nodes.
 	//
 	// example:
 	//
 	// vsw-2ze2gtlfozrab01cfo****
 	StandbyVswitchId *string `json:"StandbyVswitchId,omitempty" xml:"StandbyVswitchId,omitempty"`
-	// The IP address of the standby vSwitch for the ACK cluster connector.
+	// The IP address of the standby vSwitch of the ACK cluster connector.
 	//
 	// example:
 	//
 	// 10.100.2.1
 	StandbyVswitchIp *string `json:"StandbyVswitchIp,omitempty" xml:"StandbyVswitchIp,omitempty"`
-	// The zone ID of the standby vSwitch for the ACK cluster connector.
+	// The zone of the standby vSwitch of the ACK cluster connector. You can call the following operation to obtain the value:
 	//
-	// - Call the [DescribeAccessInstanceZoneList](~~DescribeAccessInstanceZoneList~~) operation to query the list of zones for synchronization nodes.
+	// - [DescribeAccessInstanceZoneList](~~DescribeAccessInstanceZoneList~~): Lists the zones of vSwitches for synchronization nodes.
 	//
 	// example:
 	//
 	// cn-hangzhou-h
 	StandbyVswitchZoneId *string `json:"StandbyVswitchZoneId,omitempty" xml:"StandbyVswitchZoneId,omitempty"`
-	// The unique ID of the task to create the ACK cluster connector.
+	// The unique ID of the task for creating the ACK cluster connector.
 	//
 	// example:
 	//
 	// task-c92d4544ef7b6a42
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The synchronization interval for the ACK cluster connector. Valid values: 2 to 60. Unit: seconds.
+	// The synchronization interval of the ACK cluster connector. Valid values: 2 to 60. Unit: seconds.
 	//
 	// example:
 	//
 	// 30
 	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
-	// The ID of the VPC to which the ACK cluster belongs.
+	// The instance ID of the VPC-connected instance to which the ACK cluster belongs.
 	//
 	// example:
 	//

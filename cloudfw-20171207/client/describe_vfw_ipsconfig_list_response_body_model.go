@@ -22,31 +22,31 @@ type iDescribeVfwIPSConfigListResponseBody interface {
 }
 
 type DescribeVfwIPSConfigListResponseBody struct {
-	// The page number of the returned page.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries on each page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 15FCCC52-1E23-57AE-B5EF-3E00A3******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 2
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The list of configurations.
+	// The configuration list.
 	VfwIpsSwitchConfigList []*DescribeVfwIPSConfigListResponseBodyVfwIpsSwitchConfigList `json:"VfwIpsSwitchConfigList,omitempty" xml:"VfwIpsSwitchConfigList,omitempty" type:"Repeated"`
 }
 
@@ -117,45 +117,45 @@ func (s *DescribeVfwIPSConfigListResponseBody) Validate() error {
 }
 
 type DescribeVfwIPSConfigListResponseBodyVfwIpsSwitchConfigList struct {
-	// The status of the basic policies.
+	// The status of the Basic Policies switch.
 	//
 	// example:
 	//
 	// 1
 	BasicRules *int32 `json:"BasicRules,omitempty" xml:"BasicRules,omitempty"`
-	// The UID of the member account.
+	// The UID of the member accounts.
 	//
 	// example:
 	//
 	// 134646920647****
 	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
-	// The status of the virtual patching policies.
+	// The status of the virtual patches switch.
 	//
 	// example:
 	//
 	// 1
 	PatchRules *int32 `json:"PatchRules,omitempty" xml:"PatchRules,omitempty"`
-	// The policy for the block mode.
+	// The rule class for Block Mode.
 	//
 	// example:
 	//
 	// 1
 	RuleClass *int32 `json:"RuleClass,omitempty" xml:"RuleClass,omitempty"`
-	// The protection mode.
+	// The defense mode.
 	//
 	// example:
 	//
 	// 1
 	RunMode *int32 `json:"RunMode,omitempty" xml:"RunMode,omitempty"`
-	// The instance ID of the VPC firewall.
+	// The instance ID of the virtual private cloud (VPC) firewall.
 	//
 	// example:
 	//
 	// cen-h678sl4wv3yd5v****
 	VpcFirewallId *string `json:"VpcFirewallId,omitempty" xml:"VpcFirewallId,omitempty"`
-	// The list of instance IDs of the VPC firewalls.
+	// The list of instance IDs of virtual private cloud (VPC) firewalls.
 	VpcFirewallIdList []*string `json:"VpcFirewallIdList,omitempty" xml:"VpcFirewallIdList,omitempty" type:"Repeated"`
-	// The instance name of the VPC firewall.
+	// The instance name of the virtual private cloud (VPC) firewall.
 	//
 	// example:
 	//

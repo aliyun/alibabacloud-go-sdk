@@ -26,7 +26,7 @@ type iDescribeAclRuleCountResponseBody interface {
 }
 
 type DescribeAclRuleCountResponseBody struct {
-	// The number of inbound access control policies on the Internet border.
+	// The number of inbound access control policies for the Internet firewall.
 	//
 	// example:
 	//
@@ -38,31 +38,33 @@ type DescribeAclRuleCountResponseBody struct {
 	//
 	// 3
 	InternetOutAclCount *int32 `json:"InternetOutAclCount,omitempty" xml:"InternetOutAclCount,omitempty"`
-	// The number of inbound access control policies on the NAT boundary.	Notice:  This field is deprecated.
+	// Deprecated
+	//
+	// The number of inbound access control policies for the NAT firewall.	Notice: This field is deprecated..
 	//
 	// example:
 	//
 	// 0
 	NatInAclCount *int32 `json:"NatInAclCount,omitempty" xml:"NatInAclCount,omitempty"`
-	// The number of outbound access control policies on the NAT boundary.
+	// The number of internal-to-external access control policies for the NAT firewall.
 	//
 	// example:
 	//
 	// 2
 	NatOutAclCount *int32 `json:"NatOutAclCount,omitempty" xml:"NatOutAclCount,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 27936D6C-1B7A-5A5A-B9E4-FBEBBDAA****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of policies.
+	// The total number of access control policies.
 	//
 	// example:
 	//
 	// 8
 	TotalAclCount *int32 `json:"TotalAclCount,omitempty" xml:"TotalAclCount,omitempty"`
-	// The number of access control policies on the VPC border.
+	// The number of access control policies for the VPC firewall.
 	//
 	// example:
 	//

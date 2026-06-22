@@ -22,7 +22,7 @@ type UpdateSecurityProxyResponseBody struct {
 	//
 	// ips_server
 	Module *string `json:"Module,omitempty" xml:"Module,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

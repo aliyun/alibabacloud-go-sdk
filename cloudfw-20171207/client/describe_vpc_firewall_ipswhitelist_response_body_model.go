@@ -16,13 +16,13 @@ type iDescribeVpcFirewallIPSWhitelistResponseBody interface {
 }
 
 type DescribeVpcFirewallIPSWhitelistResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// B5EE02F9****AA49****F9F8D69483C1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The details of the IPS whitelist for the VPC firewall.
+	// The details of the VPC border firewall IPS whitelist.
 	Whitelists []*DescribeVpcFirewallIPSWhitelistResponseBodyWhitelists `json:"Whitelists,omitempty" xml:"Whitelists,omitempty" type:"Repeated"`
 }
 
@@ -66,35 +66,35 @@ func (s *DescribeVpcFirewallIPSWhitelistResponseBody) Validate() error {
 }
 
 type DescribeVpcFirewallIPSWhitelistResponseBodyWhitelists struct {
-	// The type of the list. Valid values:
+	// The list type. Valid values:
 	//
-	// - **1**: custom
+	// - **1**: user-defined type
 	//
-	// - **2**: address book
+	// - **2**: address book type.
 	//
 	// example:
 	//
 	// 1
 	ListType *int64 `json:"ListType,omitempty" xml:"ListType,omitempty"`
-	// The value of the list.
+	// The value of the corresponding list type.
 	//
 	// example:
 	//
 	// 10.10.200.4/32,10.10.200.25/32
 	ListValue *string `json:"ListValue,omitempty" xml:"ListValue,omitempty"`
-	// The instance ID of the VPC firewall.
+	// The instance ID of the VPC border firewall.
 	//
 	// example:
 	//
 	// cen-l6t5yj5fi762******
 	VpcFirewallId *string `json:"VpcFirewallId,omitempty" xml:"VpcFirewallId,omitempty"`
-	// The content of the list.
+	// The content of the list type array.
 	WhiteListValue []*string `json:"WhiteListValue,omitempty" xml:"WhiteListValue,omitempty" type:"Repeated"`
-	// The type of the whitelist. Valid values:
+	// The whitelist type. Valid values:
 	//
-	// - **1**: destination
+	// - **1**: destination type
 	//
-	// - **2**: source
+	// - **2**: source type.
 	//
 	// example:
 	//

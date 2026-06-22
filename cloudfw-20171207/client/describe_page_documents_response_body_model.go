@@ -22,9 +22,9 @@ type iDescribePageDocumentsResponseBody interface {
 }
 
 type DescribePageDocumentsResponseBody struct {
-	// The list of documents.
+	// The document list.
 	Docs []*DescribePageDocumentsResponseBodyDocs `json:"Docs,omitempty" xml:"Docs,omitempty" type:"Repeated"`
-	// The URL of the image.
+	// The image URL.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type DescribePageDocumentsResponseBody struct {
 	//
 	// sg_server
 	Module *string `json:"Module,omitempty" xml:"Module,omitempty"`
-	// Additional information.
+	// The list of additional resources.
 	More *DescribePageDocumentsResponseBodyMore `json:"More,omitempty" xml:"More,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -124,7 +124,7 @@ type DescribePageDocumentsResponseBodyDocs struct {
 	//
 	// test
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// The URL of the document.
+	// The document path.
 	//
 	// example:
 	//
@@ -169,7 +169,7 @@ type DescribePageDocumentsResponseBodyMore struct {
 	//
 	// test
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// The URL of the document.
+	// The document path.
 	//
 	// example:
 	//

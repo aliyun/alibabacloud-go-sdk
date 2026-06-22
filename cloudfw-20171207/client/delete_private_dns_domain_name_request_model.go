@@ -18,7 +18,7 @@ type iDeletePrivateDnsDomainNameRequest interface {
 }
 
 type DeletePrivateDnsDomainNameRequest struct {
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

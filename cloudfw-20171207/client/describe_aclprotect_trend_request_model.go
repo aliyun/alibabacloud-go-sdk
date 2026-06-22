@@ -24,33 +24,33 @@ type iDescribeACLProtectTrendRequest interface {
 }
 
 type DescribeACLProtectTrendRequest struct {
-	// The end of the time range to query. The value is a timestamp in seconds.
+	// The end time of the query. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1670397599
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The type of the firewall. Valid values:
+	// The type of the firewall border. Valid values:
 	//
-	// - **internet*	- (default): internet firewall
+	// - **internet*	- (default): Internet Border firewall, which detects and controls traffic between your assets and the Internet.
 	//
-	// - **vpc**: VPC firewall
+	// - **vpc**: virtual private cloud (VPC) firewalls, which detect and control traffic between VPCs.
 	//
-	// - **nat**: NAT firewall
+	// - **nat**: NAT firewalls, which detect and control traffic from internal-facing assets to the Internet.
 	//
 	// example:
 	//
 	// vpc
 	FirewallType *string `json:"FirewallType,omitempty" xml:"FirewallType,omitempty"`
-	// The time granularity for aggregating trend data, in seconds. Valid values:
+	// The time aggregation granularity for trend data. Unit: seconds. Valid values:
 	//
-	// - **60**: 1 minute
+	// - **60**: 1-minute granularity (uses the minute-level detail table).
 	//
-	// - **1800**: 30 minutes
+	// - **1800**: 30-minute granularity.
 	//
-	// - **3600**: 1 hour
+	// - **3600**: 1-hour granularity.
 	//
-	// - **86400*	- (default): 1 day
+	// - **86400*	- (default): 1-day granularity.
 	//
 	// example:
 	//
@@ -66,13 +66,15 @@ type DescribeACLProtectTrendRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Deprecated
+	//
 	// This parameter is deprecated.
 	//
 	// example:
 	//
 	// 223.95.87.130
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The beginning of the time range to query. The value is a timestamp in seconds.
+	// The start time of the query. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//

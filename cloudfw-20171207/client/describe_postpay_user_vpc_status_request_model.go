@@ -22,7 +22,7 @@ type DescribePostpayUserVpcStatusRequest struct {
 	//
 	// cfw_elasticity_public_cn-************
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The language of the response. Valid values:
+	// The language of the content within the response. Valid values:
 	//
 	// - **zh*	- (default): Chinese.
 	//
