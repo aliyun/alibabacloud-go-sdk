@@ -20,25 +20,25 @@ type iUpdateApplicationConfig interface {
 }
 
 type UpdateApplicationConfig struct {
-	// 修改描述。
+	// A description of the modification.
 	//
 	// example:
 	//
 	// dfs.namenode.checkpoint.period
 	ConfigDescription *string `json:"ConfigDescription,omitempty" xml:"ConfigDescription,omitempty"`
-	// 应用配置文件名。
+	// The name of the application configuration file.
 	//
 	// example:
 	//
 	// hdfs-site.xml
 	ConfigFileName *string `json:"ConfigFileName,omitempty" xml:"ConfigFileName,omitempty"`
-	// 配置项键。
+	// The configuration item key.
 	//
 	// example:
 	//
 	// dfs.namenode.checkpoint.period
 	ConfigItemKey *string `json:"ConfigItemKey,omitempty" xml:"ConfigItemKey,omitempty"`
-	// 配置项值。
+	// The configuration item value.
 	//
 	// example:
 	//

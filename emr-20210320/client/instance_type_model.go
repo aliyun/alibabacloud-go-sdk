@@ -30,80 +30,88 @@ type iInstanceType interface {
 }
 
 type InstanceType struct {
-	// cpu架构。
+	// The CPU architecture. Valid values:
+	//
+	// - `X86`: X86 architecture.
+	//
+	// - `ARM`: ARM architecture.
 	//
 	// example:
 	//
 	// X86
 	CpuArchitecture *string `json:"CpuArchitecture,omitempty" xml:"CpuArchitecture,omitempty"`
-	// vCPU内核数目。
+	// The number of vCPUs.
 	//
 	// example:
 	//
 	// 4
 	CpuCore *int32 `json:"CpuCore,omitempty" xml:"CpuCore,omitempty"`
-	// 实例规格分类。取值范围：
+	// The instance category. Valid values:
 	//
-	// - General-purpose： 通用型。
+	// - `General-purpose`: A general-purpose instance type.
 	//
-	// - Compute-optimized：计算型。
+	// - `Compute-optimized`: A compute-optimized instance type.
 	//
-	// - Memory-optimized：内存型。
+	// - `Memory-optimized`: A memory-optimized instance type.
 	//
-	// - Big data：大数据型。
+	// - `Big data`: A big data instance type.
 	//
-	// - Local SSDs ：本地SSD型。
+	// - `Local SSDs`: A local SSD instance type.
 	//
-	// - High Clock Speed ：高主频型。
+	// - `High Clock Speed`: A high clock speed instance type.
 	//
-	// - Enhanced ：增强型。
+	// - `Enhanced`: An enhanced instance type.
 	//
-	// - Shared：共享型。
+	// - `Shared`: A shared instance type.
 	//
-	// - Compute-optimized with GPU ：GPU计算型。
+	// - `Compute-optimized with GPU`: A compute-optimized instance type with GPUs.
 	//
-	// - Visual Compute-optimized ：视觉计算型。
+	// - `Visual Compute-optimized`: A visual compute-optimized instance type.
 	//
-	// - Heterogeneous Service ：异构服务型。
+	// - `Heterogeneous Service`: A heterogeneous service instance type.
 	//
-	// - Compute-optimized with FPGA ：FPGA计算型。
+	// - `Compute-optimized with FPGA`: A compute-optimized instance type with FPGAs.
 	//
-	// - Compute-optimized with NPU ：NPU计算型。
+	// - `Compute-optimized with NPU`: A compute-optimized instance type with NPUs.
 	//
-	// - ECS Bare Metal ：弹性裸金属服务器。
+	// - `ECS Bare Metal`: An ECS Bare Metal instance.
 	//
-	// - Super Computing Cluster：超级计算集群。
+	// - `Super Computing Cluster`: A supercomputing cluster instance type.
 	//
 	// example:
 	//
 	// Compute-optimized
 	InstanceCategory *string `json:"InstanceCategory,omitempty" xml:"InstanceCategory,omitempty"`
-	// 实例规格。
+	// The ECS instance type. For more information, see [Instance type families](https://help.aliyun.com/document_detail/25378.html).
 	//
 	// example:
 	//
 	// ecs.g6.large
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// 实例规格所属的实例规格族。取值请参见DescribeInstanceTypeFamilies。
+	// The instance type family. For valid values, see the ECS documentation for [DescribeInstanceTypeFamilies](https://help.aliyun.com/document_detail/25621.html).
 	//
 	// example:
 	//
 	// ecs.g6
 	InstanceTypeFamily *string `json:"InstanceTypeFamily,omitempty" xml:"InstanceTypeFamily,omitempty"`
-	// 实例挂载的本地盘的数量。
+	// The number of local disks attached to the instance.
 	//
 	// example:
 	//
 	// 8
 	LocalStorageAmount *int32 `json:"LocalStorageAmount,omitempty" xml:"LocalStorageAmount,omitempty"`
-	// 实例挂载的本地盘的单盘容量。单位：GiB
+	// The capacity of each local disk attached to the instance, in GiB.
 	//
 	// example:
 	//
 	// 40
 	LocalStorageCapacity *int64  `json:"LocalStorageCapacity,omitempty" xml:"LocalStorageCapacity,omitempty"`
 	ModifyType           *string `json:"ModifyType,omitempty" xml:"ModifyType,omitempty"`
-	// 是否IO优化类型。
+	// Specifies whether the instance type is I/O optimized. Valid values:
+	//
+	// - `true`: The instance type is I/O optimized.
+	//
+	// - `false`: The instance type is not I/O optimized.
 	//
 	// example:
 	//

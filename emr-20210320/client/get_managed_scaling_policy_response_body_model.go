@@ -16,12 +16,13 @@ type iGetManagedScalingPolicyResponseBody interface {
 }
 
 type GetManagedScalingPolicyResponseBody struct {
-	// 请求ID。
+	// The request ID.
 	//
 	// example:
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
-	RequestId     *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The elastic scaling policy.
 	ScalingPolicy *GetManagedScalingPolicyResponseBodyScalingPolicy `json:"ScalingPolicy,omitempty" xml:"ScalingPolicy,omitempty" type:"Struct"`
 }
 
@@ -61,15 +62,15 @@ func (s *GetManagedScalingPolicyResponseBody) Validate() error {
 }
 
 type GetManagedScalingPolicyResponseBodyScalingPolicy struct {
-	// 集群ID。
+	// The cluster ID.
 	//
 	// example:
 	//
 	// c-b933c5aac8fe****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// 最大最小值约束
+	// The constraints on the maximum and minimum values.
 	Constraints *GetManagedScalingPolicyResponseBodyScalingPolicyConstraints `json:"Constraints,omitempty" xml:"Constraints,omitempty" type:"Struct"`
-	// 伸缩策略ID。
+	// The scaling policy ID.
 	//
 	// example:
 	//
@@ -122,19 +123,19 @@ func (s *GetManagedScalingPolicyResponseBodyScalingPolicy) Validate() error {
 }
 
 type GetManagedScalingPolicyResponseBodyScalingPolicyConstraints struct {
-	// 最大值
+	// The maximum value.
 	//
 	// example:
 	//
 	// 20
 	MaxCapacity *int32 `json:"MaxCapacity,omitempty" xml:"MaxCapacity,omitempty"`
-	// 最大按量数量
+	// The maximum number of pay-as-you-go task nodes.
 	//
 	// example:
 	//
 	// 10
 	MaxOnDemandCapacity *int32 `json:"MaxOnDemandCapacity,omitempty" xml:"MaxOnDemandCapacity,omitempty"`
-	// 最小值
+	// The minimum value.
 	//
 	// example:
 	//

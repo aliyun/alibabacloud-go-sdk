@@ -32,9 +32,13 @@ type iUpdateApplicationConfigsRequest interface {
 }
 
 type UpdateApplicationConfigsRequest struct {
-	// 应用配置列表。
+	// The list of application configurations.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// CLUSTER
 	ApplicationConfigs []*UpdateApplicationConfig `json:"ApplicationConfigs,omitempty" xml:"ApplicationConfigs,omitempty" type:"Repeated"`
 	// The application name.
 	//
@@ -52,23 +56,23 @@ type UpdateApplicationConfigsRequest struct {
 	//
 	// c-e6a9d46e9267****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The operation performed on configuration items. Valid values:
+	// The operation on the configuration items. Valid values:
 	//
-	// 	- ADD
+	// - ADD: Adds configuration items.
 	//
-	// 	- UPDATE
+	// - UPDATE: Updates configuration items.
 	//
-	// 	- DELETE
+	// - DELETE: Deletes configuration items.
 	//
 	// example:
 	//
 	// ADD
 	ConfigAction *string `json:"ConfigAction,omitempty" xml:"ConfigAction,omitempty"`
-	// The operation scope. Valid values:
+	// The scope of the configuration operation. Valid values:
 	//
-	// 	- CLUSTER
+	// - CLUSTER: The cluster level.
 	//
-	// 	- NODE_GROUP
+	// - NODE_GROUP: The node group level.
 	//
 	// example:
 	//
@@ -78,7 +82,7 @@ type UpdateApplicationConfigsRequest struct {
 	//
 	// example:
 	//
-	// 更新YARN内存配置。
+	// Description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The node group ID.
 	//
@@ -92,7 +96,9 @@ type UpdateApplicationConfigsRequest struct {
 	//
 	// i-bp1cudc25w2bfwl5****
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// Specifies whether to refresh the configurations. Default value: True.
+	// Specifies whether to refresh the configurations.
+	//
+	// The default value is true.
 	//
 	// example:
 	//

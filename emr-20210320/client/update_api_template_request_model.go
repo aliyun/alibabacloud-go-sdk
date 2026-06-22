@@ -38,7 +38,7 @@ type UpdateApiTemplateRequest struct {
 	//
 	// example:
 	//
-	// CreateCluster
+	// content
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The region ID.
 	//
@@ -68,7 +68,7 @@ type UpdateApiTemplateRequest struct {
 	//
 	// example:
 	//
-	// datalakeTest1
+	// DATALAKE template
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 

@@ -42,100 +42,115 @@ type iNode interface {
 }
 
 type Node struct {
-	// 节点是否自动续费。
+	// Whether auto-renewal is enabled for the node. Valid values:
+	//
+	// - true: Auto-renewal is enabled.
+	//
+	// - false: Auto-renewal is disabled.
 	//
 	// example:
 	//
 	// false
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// 节点自动续费时长。
+	// The auto-renewal duration for the node.
 	//
 	// example:
 	//
 	// 1
 	AutoRenewDuration *int32 `json:"AutoRenewDuration,omitempty" xml:"AutoRenewDuration,omitempty"`
-	// 节点自动续费时长单位。
+	// The unit of the auto-renewal duration.
 	//
 	// example:
 	//
 	// Month
 	AutoRenewDurationUnit *string `json:"AutoRenewDurationUnit,omitempty" xml:"AutoRenewDurationUnit,omitempty"`
-	CreateTime            *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 节点过期时间。
+	// The creation time of the node.
+	//
+	// example:
+	//
+	// 1603728394857
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The expiration time of the node.
 	//
 	// example:
 	//
 	// 1603728394857
 	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// 实例类型。
+	// The instance type of the node. This corresponds to an ECS instance type. You can call the ECS [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) operation to query the available instance types.
 	//
 	// example:
 	//
-	// ecs.g6e.xlarge
+	// ecs.g7.xlarge
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// 运维模式状态。取值范围：
+	// The maintenance status of the node. Valid values:
 	//
-	// - ON：处于运维模式。
+	// - ON: The node is in maintenance mode.
 	//
-	// - OFF：处于非运维模式。
+	// - OFF: The node is not in maintenance mode.
 	//
-	// 为空表示处于非运维模式。
+	// If this parameter is empty, the node is not in maintenance mode.
 	MaintenanceStatus *string `json:"MaintenanceStatus,omitempty" xml:"MaintenanceStatus,omitempty"`
-	// 节点组ID。
+	// The ID of the node group.
 	//
 	// example:
 	//
 	// ng-869471354ecd****
 	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
-	// 节点组类型。
+	// The type of the node group. Valid values:
+	//
+	// - MASTER: A master node group.
+	//
+	// - CORE: A core node group.
+	//
+	// - TASK: A task node group.
 	//
 	// example:
 	//
 	// CORE
 	NodeGroupType *string `json:"NodeGroupType,omitempty" xml:"NodeGroupType,omitempty"`
-	// 节点ID。
+	// The ID of the node.
 	//
 	// example:
 	//
 	// i-bp1cudc25w2bfwl5****
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// 节点名称。
+	// The name of the node.
 	//
 	// example:
 	//
 	// core1-1
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	// 节点状态。取值范围：
+	// The state of the node. Valid values:
 	//
-	// - Pending：创建中。
+	// - Pending: The node is being created.
 	//
-	// - Starting：启动中。
+	// - Starting: The node is starting up.
 	//
-	// - Running：运行中。
+	// - Running: The node is operational and running services.
 	//
-	// - Stopping：停止中。
+	// - Stopping: The node is shutting down.
 	//
-	// - Stopped：已停止。
+	// - Stopped: The node is powered off.
 	//
-	// - Terminated：已终止。
+	// - Terminated: The node has been permanently deleted.
 	//
 	// example:
 	//
 	// Running
 	NodeState *string `json:"NodeState,omitempty" xml:"NodeState,omitempty"`
-	// 私网IP。
+	// The private IP address of the node.
 	//
 	// example:
 	//
-	// 10.10.10.1
+	// ``10.10.**.**``
 	PrivateIp *string `json:"PrivateIp,omitempty" xml:"PrivateIp,omitempty"`
-	// 公网IP。
+	// The public IP address of the node.
 	//
 	// example:
 	//
-	// 42.120.75.***
+	// 42.1.1.**
 	PublicIp *string `json:"PublicIp,omitempty" xml:"PublicIp,omitempty"`
-	// 可用区ID。
+	// The ID of the zone.
 	//
 	// example:
 	//

@@ -60,7 +60,7 @@ type ListDoctorHBaseTablesRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- tableSize
+	// - tableSize
 	//
 	// example:
 	//
@@ -68,9 +68,9 @@ type ListDoctorHBaseTablesRequest struct {
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
 	// The order in which you want to sort the query results. Valid value:
 	//
-	// 	- ASC: in ascending order
+	// - ASC: in ascending order
 	//
-	// 	- DESC: in descending order
+	// - DESC: in descending order
 	//
 	// example:
 	//

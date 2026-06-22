@@ -60,153 +60,165 @@ type iNodeGroup interface {
 }
 
 type NodeGroup struct {
-	// 安全组ID。
+	// The additional security group IDs.
 	//
 	// example:
 	//
 	// ["sg-hp3abbae8lb6lmb1****"]
 	AdditionalSecurityGroupIds []*string `json:"AdditionalSecurityGroupIds,omitempty" xml:"AdditionalSecurityGroupIds,omitempty" type:"Repeated"`
+	// Applies only when `NodeResizeStrategy` is set to `COST_OPTIMIZED`. If set to `true`, the system creates Pay-As-You-Go instances to meet the target capacity if it fails to create enough spot instances due to price or inventory constraints.
+	//
 	// example:
 	//
 	// true
 	CompensateWithOnDemand *bool `json:"CompensateWithOnDemand,omitempty" xml:"CompensateWithOnDemand,omitempty"`
-	// 成本优化模式配置。
+	// The configurations of the cost-optimized mode.
 	CostOptimizedConfig *CostOptimizedConfig `json:"CostOptimizedConfig,omitempty" xml:"CostOptimizedConfig,omitempty"`
-	// 数据盘列表。
+	// The data disks.
 	DataDisks []*DataDisk `json:"DataDisks,omitempty" xml:"DataDisks,omitempty" type:"Repeated"`
-	// 部署集策略。取值范围：
+	// The Deployment Set strategy. Valid values:
 	//
-	// - NONE：不适用部署集。
+	// - NONE: Does not use a Deployment Set.
 	//
-	// - CLUSTER：使用集群级别部署集。
+	// - CLUSTER: Uses a cluster-level Deployment Set.
 	//
-	// - NODE_GROUP：使用节点组级别部署集。
+	// - NODE_GROUP: Uses a node group-level Deployment Set.
 	//
-	// 默认值：NONE。
+	// Default: `NONE`.
 	//
 	// example:
 	//
 	// NONE
 	DeploymentSetStrategy *string `json:"DeploymentSetStrategy,omitempty" xml:"DeploymentSetStrategy,omitempty"`
-	// 节点组上部署的组件是否开启优雅下线。取值范围：
+	// Specifies whether to enable graceful shutdown for components deployed in the node group. Valid values:
 	//
-	// - true：开启优雅下线。
+	// - true: Enables graceful shutdown.
 	//
-	// - false：不开启优雅下线。
+	// - false: Disables graceful shutdown.
 	//
 	// example:
 	//
 	// false
 	GracefulShutdown *bool `json:"GracefulShutdown,omitempty" xml:"GracefulShutdown,omitempty"`
-	// 实例类型列表。
+	// The instance types.
 	//
 	// example:
 	//
 	// ["ecs.g6.4xlarge"]
 	InstanceTypes []*string `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Repeated"`
-	// 节点组ID。
+	// The node group ID.
 	//
 	// example:
 	//
 	// ng-869471354ecd****
 	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
-	// 节点组名称。最大长度128个字符。
+	// The node group name.
 	//
 	// example:
 	//
 	// core-1
 	NodeGroupName *string `json:"NodeGroupName,omitempty" xml:"NodeGroupName,omitempty"`
-	// 节点组状态。
+	// The state of the node group.
 	//
 	// example:
 	//
-	// CREATED
+	// RESIZING
 	NodeGroupState *string `json:"NodeGroupState,omitempty" xml:"NodeGroupState,omitempty"`
-	// 节点组类型。取值范围：
+	// The type of the node group. Valid values:
 	//
-	// - MASTER：管理类型节点组。
+	// - MASTER: A master node.
 	//
-	// - CORE：存储类型节点组。
+	// - CORE: A core node.
 	//
-	// - TASK：计算类型节点组。
+	// - TASK: A task node.
+	//
+	// - GATEWAY: A gateway node. This value is not applicable to DATALAKE, OLAP, or DATASERVING clusters.
 	//
 	// example:
 	//
-	// CORE
+	// MASTER
 	NodeGroupType *string `json:"NodeGroupType,omitempty" xml:"NodeGroupType,omitempty"`
-	// - COST_OPTIMIZED：成本优化策略。
+	// - COST_OPTIMIZED: The cost-optimized strategy.
 	//
-	// - PRIORITY：优先级策略。
+	// - PRIORITY: The priority-based strategy.
 	//
 	// example:
 	//
 	// PRIORITY
 	NodeResizeStrategy *string `json:"NodeResizeStrategy,omitempty" xml:"NodeResizeStrategy,omitempty"`
-	// 节点组付费类型。取值范围：
-	//
-	// - PayAsYouGo：后付费，按量付费。
-	//
-	// - Subscription：预付费，包年包月。
+	// The payment type. Valid values are `Subscription` for the subscription billing method and `PayAsYouGo` for the Pay-As-You-Go billing method.
 	//
 	// example:
 	//
-	// PayAsYouGo
-	PaymentType        *string             `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	// Subscription
+	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	// The private pool options.
 	PrivatePoolOptions *PrivatePoolOptions `json:"PrivatePoolOptions,omitempty" xml:"PrivatePoolOptions,omitempty"`
-	// 存活节点数量。
+	// The number of running nodes.
 	//
 	// example:
 	//
 	// 3
-	RunningNodeCount *int32          `json:"RunningNodeCount,omitempty" xml:"RunningNodeCount,omitempty"`
-	SpotBidPrices    []*SpotBidPrice `json:"SpotBidPrices,omitempty" xml:"SpotBidPrices,omitempty" type:"Repeated"`
-	// 开启补齐抢占式实例后，当收到抢占式实例将被回收的系统消息时，伸缩组将尝试创建新的实例，替换掉将被回收的抢占式实例。取值范围：
+	RunningNodeCount *int32 `json:"RunningNodeCount,omitempty" xml:"RunningNodeCount,omitempty"`
+	// The bid prices for the spot instances. This parameter is effective only when `SpotStrategy` is set to `SpotWithPriceLimit`. The array can contain 0 to 100 elements.
+	SpotBidPrices []*SpotBidPrice `json:"SpotBidPrices,omitempty" xml:"SpotBidPrices,omitempty" type:"Repeated"`
+	// Specifies whether to enable spot instance remedy. If enabled, the scaling group attempts to create a new instance to replace a spot instance that is about to be reclaimed. Valid values:
 	//
-	// - true：开启补齐抢占式实例。
+	// - true: Enables spot instance remedy.
 	//
-	// - false：不开启补齐抢占式实例。
+	// - false: Disables spot instance remedy.
 	//
-	// 默认值：false。
+	// Default: `false`.
 	//
 	// example:
 	//
-	// true
+	// false
 	SpotInstanceRemedy *bool `json:"SpotInstanceRemedy,omitempty" xml:"SpotInstanceRemedy,omitempty"`
-	// 是否支持竞价实例。
+	// The policy for using spot instances. Valid values:
+	//
+	// - NoSpot: No spot instances are used.
+	//
+	// - SpotWithPriceLimit: Spot instances are created with a user-defined maximum bid price.
+	//
+	// - SpotAsPriceGo: The system automatically bids for spot instances. The bid price does not exceed the price of a Pay-As-You-Go instance.
+	//
+	// Default: `NoSpot`.
 	//
 	// example:
 	//
 	// NoSpot
 	SpotStrategy *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
-	// 状态变化原因。
+	// The reason for the state change.
+	//
+	// example:
+	//
+	// 手动重启
 	StateChangeReason *NodeGroupStateChangeReason `json:"StateChangeReason,omitempty" xml:"StateChangeReason,omitempty"`
+	// The node group state.
+	//
 	// example:
 	//
 	// CREATED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 系统盘信息。
+	// The system disk.
 	SystemDisk *SystemDisk `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty"`
-	// 虚拟机交换机ID列表。
+	// The VSwitch IDs.
 	//
 	// example:
 	//
 	// ["vsw-hp35g7ya5ymw68mmg****"]
 	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
-	// 是否开公网IP。取值范围：
-	//
-	// - true：开公网。
-	//
-	// - false：不开公网。
+	// Specifies whether to assign a public IP address.
 	//
 	// example:
 	//
-	// false
+	// true
 	WithPublicIp *bool `json:"WithPublicIp,omitempty" xml:"WithPublicIp,omitempty"`
-	// 可用区ID。
+	// The zone ID.
 	//
 	// example:
 	//
-	// cn-beijing-h
+	// cn-hangzhou
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 

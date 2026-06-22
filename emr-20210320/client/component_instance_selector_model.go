@@ -23,26 +23,36 @@ type iComponentInstanceSelector interface {
 
 type ComponentInstanceSelector struct {
 	// Deprecated
+	//
+	// The action scope. Valid values:
+	//
+	// - APPLICATION: The application level.
+	//
+	// - COMPONENT: The component level.
+	//
+	// - COMPONENT_INSTANCE: The component instance level.
+	//
+	// example:
+	//
+	// APPLICATION
 	ActionScope *string `json:"ActionScope,omitempty" xml:"ActionScope,omitempty"`
-	// 应用名称。
+	// The application name.
 	//
 	// example:
 	//
 	// HDFS
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
-	// 组件实例列表。actionScope为COPONENT_INSTANCE时使用。
+	// A list of component instances. This parameter is used when `RunActionScope` is set to `COMPONENT_INSTANCE`.
 	ComponentInstances []*ComponentInstanceSelectorComponentInstances `json:"ComponentInstances,omitempty" xml:"ComponentInstances,omitempty" type:"Repeated"`
-	// 组件列表。
-	//
-	// actionScope为COPONENT时使用。
+	// A list of components. This parameter is used when `RunActionScope` is set to `COMPONENT`.
 	Components []*ComponentInstanceSelectorComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
-	// 动作执行范围。取值范围：
+	// The action scope. Valid values:
 	//
-	// - APPLICATION：应用级别。
+	// - APPLICATION: The application level.
 	//
-	// - COMPONENT：组件级别。
+	// - COMPONENT: The component level.
 	//
-	// - COMPONENT_INSTANCE：组件实例级别。
+	// - COMPONENT_INSTANCE: The component instance level.
 	//
 	// This parameter is required.
 	//
@@ -128,19 +138,19 @@ func (s *ComponentInstanceSelector) Validate() error {
 }
 
 type ComponentInstanceSelectorComponentInstances struct {
-	// 应用名称。
+	// The application name.
 	//
 	// example:
 	//
 	// HDFS
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
-	// 组件名称。
+	// The component name.
 	//
 	// example:
 	//
 	// DataNode
 	ComponentName *string `json:"ComponentName,omitempty" xml:"ComponentName,omitempty"`
-	// 节点ID。
+	// The node ID.
 	//
 	// example:
 	//
@@ -188,13 +198,13 @@ func (s *ComponentInstanceSelectorComponentInstances) Validate() error {
 }
 
 type ComponentInstanceSelectorComponents struct {
-	// 应用名称。
+	// The application name.
 	//
 	// example:
 	//
 	// HDFS
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
-	// 组件名称。
+	// The component name.
 	//
 	// example:
 	//

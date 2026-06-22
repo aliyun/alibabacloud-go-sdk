@@ -20,7 +20,15 @@ type iDataDisk interface {
 }
 
 type DataDisk struct {
-	// 磁盘类型。
+	// The disk type. Valid values:
+	//
+	// - `cloud_efficiency`: Ultra Disk.
+	//
+	// - `cloud_ssd`: Standard SSD.
+	//
+	// - `cloud_essd`: ESSD.
+	//
+	// - `cloud`: Basic Disk.
 	//
 	// This parameter is required.
 	//
@@ -28,29 +36,29 @@ type DataDisk struct {
 	//
 	// cloud_essd
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// 每个节点磁盘数量。
+	// The number of data disks.
 	//
 	// example:
 	//
 	// 5
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// 创建ESSD云盘作为数据盘使用时，设置云盘的性能等级。取值范围：
+	// The performance level of an ESSD. This parameter applies only when the `Category` parameter is set to `cloud_essd`. Valid values:
 	//
-	// - PL0：单盘最高随机读写IOPS 1万。
+	// - PL0: A maximum of 10,000 random read/write IOPS per disk.
 	//
-	// - PL1（默认）：单盘最高随机读写IOPS 5万。
+	// - PL1: A maximum of 50,000 random read/write IOPS per disk.
 	//
-	// - PL2：单盘最高随机读写IOPS 10万。
+	// - PL2: A maximum of 100,000 random read/write IOPS per disk.
 	//
-	// - PL3：单盘最高随机读写IOPS 100万。
+	// - PL3: A maximum of 1,000,000 random read/write IOPS per disk.
 	//
-	// 默认值：PL1。
+	// Default value: PL1.
 	//
 	// example:
 	//
 	// PL1
 	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
-	// 单位GB。
+	// The size of each data disk, in GB.
 	//
 	// This parameter is required.
 	//

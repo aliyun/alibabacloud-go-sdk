@@ -22,19 +22,19 @@ type iTriggerCondition interface {
 }
 
 type TriggerCondition struct {
-	// 比较符。取值范围：
+	// The comparison operator. This parameter is required. Valid values:
 	//
-	// - EQ:等于。
+	// 	- EQ: equal to
 	//
-	// - NE:不等于。
+	// 	- NE: not equal to
 	//
-	// - GT:大于。
+	// 	- GT: greater than
 	//
-	// - LT:小于。
+	// 	- LT: less than
 	//
-	// - GE:大于等于。
+	// 	- GE: greater than or equal to
 	//
-	// - LE:小于等于。
+	// 	- LE: less than or equal to
 	//
 	// This parameter is required.
 	//
@@ -42,21 +42,21 @@ type TriggerCondition struct {
 	//
 	// LT
 	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
-	// 指标名称。指标名称需要在 ListAutoScalingMetrics 接口返回的指标名称列表中。
+	// The name of the metric. This parameter is required and cannot be an empty string. You can view the metric name in [Add Auto Scaling Rules](https://help.aliyun.com/document_detail/445658.html).
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// yarn_resourcemanager_root_availablememoryusage
+	// yarn_resourcemanager_queue_PendingVCores
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// 统计量名称。取值范围：
+	// The name of the statistic. This parameter is required. Valid values:
 	//
-	// - MAX：最大值。
+	// 	- MAX
 	//
-	// - MIN：最小值。
+	// 	- MIN
 	//
-	// - AVG：平均值。
+	// 	- AVG
 	//
 	// This parameter is required.
 	//
@@ -64,9 +64,9 @@ type TriggerCondition struct {
 	//
 	// AVG
 	Statistics *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
-	// 指标Tag。
+	// The tags for the metrics of a partition. This parameter is available for only metrics that contain ByPartition. For other metrics, leave this parameter empty.
 	Tags []*Tag `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// 阈值。
+	// The trigger threshold. This parameter is required.
 	//
 	// This parameter is required.
 	//

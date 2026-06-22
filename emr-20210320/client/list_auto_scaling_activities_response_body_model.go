@@ -22,13 +22,13 @@ type iListAutoScalingActivitiesResponseBody interface {
 }
 
 type ListAutoScalingActivitiesResponseBody struct {
-	// The maximum number of entries returned.
+	// The maximum number of entries returned for this request.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// A pagination token.
+	// The token that is used to start the next query.
 	//
 	// example:
 	//
@@ -40,9 +40,9 @@ type ListAutoScalingActivitiesResponseBody struct {
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The scaling activities.
+	// The list of scaling activities.
 	ScalingActivities []*ListAutoScalingActivitiesResponseBodyScalingActivities `json:"ScalingActivities,omitempty" xml:"ScalingActivities,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of entries that meet the query conditions.
 	//
 	// example:
 	//
@@ -125,13 +125,13 @@ type ListAutoScalingActivitiesResponseBodyScalingActivities struct {
 	ActivityId *string `json:"ActivityId,omitempty" xml:"ActivityId,omitempty"`
 	// The status of the scaling activity. Valid values:
 	//
-	// 	- REJECTED
+	// - REJECTED: The scaling activity is rejected.
 	//
-	// 	- SUCCESSFUL
+	// - SUCCESSFUL: The scaling activity is successful.
 	//
-	// 	- FAILED
+	// - FAILED: The scaling activity failed.
 	//
-	// 	- IN_PROGRESS
+	// - IN_PROGRESS: The scaling activity is in progress.
 	//
 	// example:
 	//
@@ -139,9 +139,9 @@ type ListAutoScalingActivitiesResponseBodyScalingActivities struct {
 	ActivityState *string `json:"ActivityState,omitempty" xml:"ActivityState,omitempty"`
 	// The type of the scaling activity. Valid values:
 	//
-	// 	- SCALE_OUT
+	// - SCALE_OUT: Scale-out.
 	//
-	// 	- SCALE_IN
+	// - SCALE_IN: Scale-in.
 	//
 	// example:
 	//
@@ -159,13 +159,13 @@ type ListAutoScalingActivitiesResponseBodyScalingActivities struct {
 	//
 	// clusterId not exist
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The end time of the scaling. Unit: milliseconds.
+	// The end time of the scaling activity. The unit is milliseconds.
 	//
 	// example:
 	//
 	// 1639715634819
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The number of added or removed instances.
+	// The number of instances to be added or removed in this scaling activity.
 	//
 	// example:
 	//
@@ -173,7 +173,7 @@ type ListAutoScalingActivitiesResponseBodyScalingActivities struct {
 	ExpectNum           *int32                                                                       `json:"ExpectNum,omitempty" xml:"ExpectNum,omitempty"`
 	InstanceTypeDetails []*ListAutoScalingActivitiesResponseBodyScalingActivitiesInstanceTypeDetails `json:"InstanceTypeDetails,omitempty" xml:"InstanceTypeDetails,omitempty" type:"Repeated"`
 	InstanceTypeToNum   map[string]*int32                                                            `json:"InstanceTypeToNum,omitempty" xml:"InstanceTypeToNum,omitempty"`
-	// The ID of the node group.
+	// The node group ID.
 	//
 	// example:
 	//
@@ -201,7 +201,7 @@ type ListAutoScalingActivitiesResponseBodyScalingActivities struct {
 	//
 	// scaling-out-memory
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The start time of the scaling. Unit: milliseconds.
+	// The start time of the scaling activity. The unit is milliseconds.
 	//
 	// example:
 	//

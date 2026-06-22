@@ -26,43 +26,47 @@ type iApiTemplate interface {
 }
 
 type ApiTemplate struct {
-	// 接口名。
+	// The name of the API operation.
 	//
 	// example:
 	//
 	// CreateCluster
 	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// 模版接口参数。
+	// The parameters in the API operation template.
+	//
+	// example:
+	//
+	// content
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// 区域ID。
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 资源组ID。
+	// The resource group ID.
 	//
 	// example:
 	//
 	// rg-acfmzabjyop****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// 模板状态。
+	// The status of the template.
 	//
 	// example:
 	//
 	// READY
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 模板ID。
+	// The template ID.
 	//
 	// example:
 	//
 	// AT-Af***
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// 模板ID。
+	// The name of the template.
 	//
 	// example:
 	//
-	// AT-Af***
+	// datalakeTest1
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 

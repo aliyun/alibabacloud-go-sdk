@@ -28,7 +28,7 @@ type iListScriptsRequest interface {
 }
 
 type ListScriptsRequest struct {
-	// Cluster ID.
+	// The cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -36,19 +36,19 @@ type ListScriptsRequest struct {
 	//
 	// c-b933c5aac8fe****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The maximum number of records to retrieve at once.
+	// The maximum number of entries to return on each page.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// Marks the current position to start reading from.
+	// The token that marks the position from which to start reading.
 	//
 	// example:
 	//
 	// dd6b1b2a-5837-5237-abe4-ff0c89568980
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Region ID.
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -56,15 +56,15 @@ type ListScriptsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The script ID. Only common scripts are supported.
+	// The ID of the cluster script. This parameter is valid only for NORMAL scripts.
 	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
-	// The name of the script. Only common scripts are supported. Fuzzy search is supported.
+	// The name of the cluster script. This parameter is valid only for NORMAL scripts and supports fuzzy search.
 	ScriptName *string `json:"ScriptName,omitempty" xml:"ScriptName,omitempty"`
-	// Type of cluster script. Possible values:
+	// The type of the cluster script. Valid values:
 	//
-	// - BOOTSTRAP: Bootstrap script.
+	// - BOOTSTRAP: a bootstrap script.
 	//
-	// - NORMAL: Regular cluster script.
+	// - NORMAL: a normal cluster script.
 	//
 	// This parameter is required.
 	//
@@ -72,7 +72,7 @@ type ListScriptsRequest struct {
 	//
 	// BOOTSTRAP
 	ScriptType *string `json:"ScriptType,omitempty" xml:"ScriptType,omitempty"`
-	// The script status list.
+	// The list of script statuses.
 	Statuses []*string `json:"Statuses,omitempty" xml:"Statuses,omitempty" type:"Repeated"`
 }
 

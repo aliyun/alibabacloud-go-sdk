@@ -16,7 +16,7 @@ type iCreateNodeGroupResponseBody interface {
 }
 
 type CreateNodeGroupResponseBody struct {
-	// The ID of the machine group.
+	// The node group ID.
 	//
 	// example:
 	//

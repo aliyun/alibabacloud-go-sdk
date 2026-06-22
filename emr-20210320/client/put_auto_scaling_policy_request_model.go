@@ -30,9 +30,9 @@ type PutAutoScalingPolicyRequest struct {
 	//
 	// c-b933c5aac8fe****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The constraints on the maximum and minimum numbers of nodes in a node group.
+	// The maximum and minimum size constraints for the node group.
 	Constraints *ScalingConstraints `json:"Constraints,omitempty" xml:"Constraints,omitempty"`
-	// The ID of the node group.
+	// The node group ID.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type PutAutoScalingPolicyRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The description list of auto scaling rules. Number of elements in the array: 0 to 100.
+	// The scaling rules. The number of elements in the array can be from 0 to 100.
 	ScalingRules []*ScalingRule `json:"ScalingRules,omitempty" xml:"ScalingRules,omitempty" type:"Repeated"`
 }
 

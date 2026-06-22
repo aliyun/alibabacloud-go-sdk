@@ -26,7 +26,7 @@ type GetAutoScalingPolicyRequest struct {
 	//
 	// c-b933c5aac8fe****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The ID of the node group.
+	// The node group ID.
 	//
 	// This parameter is required.
 	//

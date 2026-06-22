@@ -22,31 +22,31 @@ type iSubscriptionConfig interface {
 }
 
 type SubscriptionConfig struct {
-	// 自动续费。取值范围：
+	// Specifies whether auto-renewal is enabled. Valid values:
 	//
-	// - true：开启启动续费。
+	// - true: Auto-renewal is enabled.
 	//
-	// - false：不开启自动续费。
-	//
-	// 默认值：false。
+	// - false: Auto-renewal is disabled (default).
 	//
 	// example:
 	//
 	// true
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// 自动续费时长。当AutoRenew取值为true时生效。当AutoRenewDurationUnit取值为Month时，取值：1、2、3、4、5、6、7、8、9、12、24、36、48、60。
+	// The auto-renewal duration. This parameter takes effect only when AutoRenew is set to true. When AutoRenewDurationUnit is Month, valid values are: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, and 60.
 	//
 	// example:
 	//
 	// 12
 	AutoRenewDuration *int32 `json:"AutoRenewDuration,omitempty" xml:"AutoRenewDuration,omitempty"`
-	// - Month：月。
+	// The auto-renewal duration unit. Valid value:
+	//
+	// - Month
 	//
 	// example:
 	//
 	// Month
 	AutoRenewDurationUnit *string `json:"AutoRenewDurationUnit,omitempty" xml:"AutoRenewDurationUnit,omitempty"`
-	// 付费时长。PaymentDurationUnit取值为Month时，取值：1、2、3、4、5、6、7、8、9、12、24、36、48、60。
+	// The payment duration. When PaymentDurationUnit is Month, valid values are: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, and 60.
 	//
 	// This parameter is required.
 	//
@@ -54,9 +54,9 @@ type SubscriptionConfig struct {
 	//
 	// 12
 	PaymentDuration *int32 `json:"PaymentDuration,omitempty" xml:"PaymentDuration,omitempty"`
-	// 付费时长单位。取值范围：
+	// The payment duration unit. Valid value:
 	//
-	// - Month：月。
+	// - Month
 	//
 	// This parameter is required.
 	//

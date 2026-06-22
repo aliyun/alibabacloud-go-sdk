@@ -16,17 +16,17 @@ type iTimeConstraint interface {
 }
 
 type TimeConstraint struct {
-	// 结束时间。取值范围：00:00:00至23:59:59
+	// The end time. Valid values: 00:00 to 23:59.
 	//
 	// example:
 	//
-	// 23:59:59
+	// 23:59
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// 开始时间。取值范围：00:00:00至23:59:59
+	// The start time. Valid values: 00:00 to 23:59.
 	//
 	// example:
 	//
-	// 06:00:00
+	// 06:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 

@@ -22,7 +22,7 @@ type GetAutoScalingPolicyResponseBody struct {
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The auto scaling policy.
+	// The Auto Scaling policy.
 	ScalingPolicy *GetAutoScalingPolicyResponseBodyScalingPolicy `json:"ScalingPolicy,omitempty" xml:"ScalingPolicy,omitempty" type:"Struct"`
 }
 
@@ -68,21 +68,21 @@ type GetAutoScalingPolicyResponseBodyScalingPolicy struct {
 	//
 	// c-b933c5aac8fe****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The maximum and minimum number of nodes in the node group.
+	// The constraints on the minimum and maximum number of nodes in the node group.
 	Constraints *GetAutoScalingPolicyResponseBodyScalingPolicyConstraints `json:"Constraints,omitempty" xml:"Constraints,omitempty" type:"Struct"`
-	// The ID of the node group.
+	// The node group ID.
 	//
 	// example:
 	//
 	// ng-869471354ecd****
 	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
-	// The ID of the scaling policy.
+	// The scaling policy ID.
 	//
 	// example:
 	//
 	// asp-asduwe23znl***
 	ScalingPolicyId *string `json:"ScalingPolicyId,omitempty" xml:"ScalingPolicyId,omitempty"`
-	// The auto scaling rules.
+	// The list of scaling rules.
 	ScalingRules []*GetAutoScalingPolicyResponseBodyScalingPolicyScalingRules `json:"ScalingRules,omitempty" xml:"ScalingRules,omitempty" type:"Repeated"`
 }
 
@@ -158,13 +158,17 @@ func (s *GetAutoScalingPolicyResponseBodyScalingPolicy) Validate() error {
 }
 
 type GetAutoScalingPolicyResponseBodyScalingPolicyConstraints struct {
-	// The maximum number of nodes in the node group. Default value: 2000.
+	// The maximum number of nodes in the node group.
+	//
+	// Default value: 2000.
 	//
 	// example:
 	//
 	// 2000
 	MaxCapacity *int32 `json:"MaxCapacity,omitempty" xml:"MaxCapacity,omitempty"`
-	// The minimum number of nodes in the node group. Default value: 0.
+	// The minimum number of nodes in the node group.
+	//
+	// Default value: 0.
 	//
 	// example:
 	//
@@ -203,11 +207,11 @@ func (s *GetAutoScalingPolicyResponseBodyScalingPolicyConstraints) Validate() er
 }
 
 type GetAutoScalingPolicyResponseBodyScalingPolicyScalingRules struct {
-	// The scaling type. Valid values:
+	// The type of the scaling activity. Valid values:
 	//
-	// 	- SCALE_OUT
+	// - SCALE_OUT: scale-out.
 	//
-	// 	- SCALE_IN
+	// - SCALE_IN: scale-in.
 	//
 	// example:
 	//
@@ -219,28 +223,28 @@ type GetAutoScalingPolicyResponseBodyScalingPolicyScalingRules struct {
 	//
 	// CHANGE_IN_CAPACITY
 	AdjustmentType *string `json:"AdjustmentType,omitempty" xml:"AdjustmentType,omitempty"`
-	// The adjustment value. The parameter value must be a positive integer, which indicates the number of instances that you want to add or remove.
+	// The adjustment value. The value must be a positive integer. It specifies the number of instances to add or remove.
 	//
 	// example:
 	//
 	// 100
 	AdjustmentValue   *int32             `json:"AdjustmentValue,omitempty" xml:"AdjustmentValue,omitempty"`
 	CollationTimeZone *CollationTimeZone `json:"CollationTimeZone,omitempty" xml:"CollationTimeZone,omitempty"`
-	// The description of load-based scaling.
+	// The description of the metric-based scaling rule.
 	MetricsTrigger *MetricsTrigger `json:"MetricsTrigger,omitempty" xml:"MetricsTrigger,omitempty"`
-	// The name of the auto scaling rule.
+	// The name of the scaling rule.
 	//
 	// example:
 	//
 	// scaling-out-memory
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The description of time-based scaling.
+	// The description of the time-based scaling rule.
 	TimeTrigger *TimeTrigger `json:"TimeTrigger,omitempty" xml:"TimeTrigger,omitempty"`
-	// The type of the auto scaling rule. Valid values:
+	// The type of the scaling rule. Valid values:
 	//
-	// 	- TIME_TRIGGER: time-based scaling
+	// - TIME_TRIGGER: a time-based scaling rule.
 	//
-	// 	- METRICS_TRIGGER: load-based scaling
+	// - METRICS_TRIGGER: a metric-based scaling rule.
 	//
 	// example:
 	//

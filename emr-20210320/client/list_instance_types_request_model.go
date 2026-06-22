@@ -34,13 +34,13 @@ type iListInstanceTypesRequest interface {
 }
 
 type ListInstanceTypesRequest struct {
-	// The ID of cluster.
+	// The cluster ID.
 	//
 	// example:
 	//
 	// c-b933c5aac8fe****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// Cluster type.
+	// The cluster type.
 	//
 	// This parameter is required.
 	//
@@ -48,31 +48,31 @@ type ListInstanceTypesRequest struct {
 	//
 	// DATALAKE
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	// Deployment mode.
+	// Specifies the deployment mode.
 	//
 	// example:
 	//
 	// HA
 	DeployMode *string `json:"DeployMode,omitempty" xml:"DeployMode,omitempty"`
-	// Instance Type
+	// The instance type.
 	//
 	// example:
 	//
 	// ecs.g6.xlarge
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// Whether to change the configuration.
+	// Specifies whether the instance type is for an instance type change. A value of true indicates an instance type change.
 	//
 	// example:
 	//
 	// false
 	IsModification *bool `json:"IsModification,omitempty" xml:"IsModification,omitempty"`
-	// Node group ID.
+	// The node group ID.
 	//
 	// example:
 	//
 	// G-F06C4B47966A****
 	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
-	// Node group type.
+	// The node group type.
 	//
 	// This parameter is required.
 	//
@@ -80,7 +80,7 @@ type ListInstanceTypesRequest struct {
 	//
 	// CORE
 	NodeGroupType *string `json:"NodeGroupType,omitempty" xml:"NodeGroupType,omitempty"`
-	// Payment type.
+	// The billing method.
 	//
 	// This parameter is required.
 	//
@@ -88,7 +88,7 @@ type ListInstanceTypesRequest struct {
 	//
 	// PayAsYouGo
 	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
-	// The ID of the region in which you want to create the instance.
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -96,13 +96,13 @@ type ListInstanceTypesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// EMR distribution.
+	// The EMR release version.
 	//
 	// example:
 	//
-	// EMR-5.8.0
+	// Released version EMR-5.8.0
 	ReleaseVersion *string `json:"ReleaseVersion,omitempty" xml:"ReleaseVersion,omitempty"`
-	// Availability Zone ID
+	// The zone ID.
 	//
 	// This parameter is required.
 	//

@@ -22,27 +22,27 @@ type iListTagResourcesResponseBody interface {
 }
 
 type ListTagResourcesResponseBody struct {
-	// The maximum number of entries returned.
+	// The maximum number of entries returned in this request.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// Returns the location of the data that was read. Empty indicates that the data has been read.
+	// The token that is used to start the next query. If this parameter is not returned, all results have been returned.
 	//
 	// example:
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C89568980
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 372D4E9B-2509-5EFA-846B-B34FBF143F56
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The details about the tag. Contains the resource ID, resource type, and tag key-value information.
+	// The list of tag resources. It contains the resource ID, resource type, tag key, and tag value.
 	TagResources []*ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of entries that meet the filter criteria.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *ListTagResourcesResponseBody) Validate() error {
 }
 
 type ListTagResourcesResponseBodyTagResources struct {
-	// Indicates the ID of a resource.
+	// The resource ID.
 	//
 	// example:
 	//
@@ -129,13 +129,13 @@ type ListTagResourcesResponseBodyTagResources struct {
 	//
 	// cluster
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tag key of the ENI.
+	// The tag key.
 	//
 	// example:
 	//
 	// Department
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag value of the ENI.
+	// The tag value.
 	//
 	// example:
 	//

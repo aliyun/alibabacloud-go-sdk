@@ -189,7 +189,7 @@ type ListDoctorHBaseTablesResponseBodyDataAnalysis struct {
 	//
 	// example:
 	//
-	// read request unbalance is <p class=\\"report-detail-topic\\">
+	// ead request unbalance is <p class=\\"report-detail-topic\\">表分区总数量为15，分区平均读请求数量为764361，以下分区存在读请求热点访问：</p><ul class=\\"report-detail-ul\\"><li class=\\".report-detail-li\\">RegionServer： emr-worker-2 Region Id： f1c922d41529785e21b61cf4c672b98a 读请求数量： 1543919</li><li class=\\".report-detail-li\\">RegionServer： emr-worker-2 Region Id： 5f019e8cf7c16be9768634cb99ccbe05 读请求数量： 1512817</li><li class=\\".report-detail-li\\">RegionServer： emr-worker-2 Region Id： d113992fea3a457f60b8b8aa5d6fa037 读请求数量： 1504293</li></ul><p style=\\"line-height： 16px; font-size： 16px; margin： 0 auto\\">&nbsp;</p>
 	ReadRequestUnbalanceSuggestion *string `json:"ReadRequestUnbalanceSuggestion,omitempty" xml:"ReadRequestUnbalanceSuggestion,omitempty"`
 	// The regions that have read/write hotspot issues.
 	//
@@ -201,7 +201,7 @@ type ListDoctorHBaseTablesResponseBodyDataAnalysis struct {
 	//
 	// example:
 	//
-	// read request unbalance is <p class=\\"report-detail-topic\\">
+	// ead request unbalance is <p class=\\"report-detail-topic\\">表分区总数量为15，分区平均读请求数量为764361，以下分区存在读请求热点访问：</p><ul class=\\"report-detail-ul\\"><li class=\\".report-detail-li\\">RegionServer： emr-worker-2 Region Id： f1c922d41529785e21b61cf4c672b98a 读请求数量： 1543919</li><li class=\\".report-detail-li\\">RegionServer： emr-worker-2 Region Id： 5f019e8cf7c16be9768634cb99ccbe05 读请求数量： 1512817</li><li class=\\".report-detail-li\\">RegionServer： emr-worker-2 Region Id： d113992fea3a457f60b8b8aa5d6fa037 读请求数量： 1504293</li></ul><p style=\\"line-height： 16px; font-size： 16px; margin： 0 auto\\">&nbsp;</p>
 	RequestUnbalanceSuggestion *string `json:"RequestUnbalanceSuggestion,omitempty" xml:"RequestUnbalanceSuggestion,omitempty"`
 	// The score of the table.
 	//
@@ -219,7 +219,7 @@ type ListDoctorHBaseTablesResponseBodyDataAnalysis struct {
 	//
 	// example:
 	//
-	// write request unbalance is <p class=\\"report-detail-topic\\">
+	// write request unbalance is <p class=\\"report-detail-topic\\">表分区总数量为15，分区平均写请求数量为786142，以下分区存在写请求热点访问：</p><ul class=\\"report-detail-ul\\"><li class=\\".report-detail-li\\">RegionServer： emr-worker-2 Region Id： f1c922d41529785e21b61cf4c672b98a 写请求数量： 1588305</li><li class=\\".report-detail-li\\">RegionServer： emr-worker-2 Region Id： 5f019e8cf7c16be9768634cb99ccbe05 写请求数量： 1556984</li><li class=\\".report-detail-li\\">RegionServer： emr-worker-2 Region Id： d113992fea3a457f60b8b8aa5d6fa037 写请求数量： 1548764</li></ul><p style=\\"line-height： 16px; font-size： 16px; margin： 0 auto\\">&nbsp;</p>
 	WriteRequestUnbalanceSuggestion *string `json:"WriteRequestUnbalanceSuggestion,omitempty" xml:"WriteRequestUnbalanceSuggestion,omitempty"`
 }
 

@@ -34,7 +34,7 @@ type GetAutoScalingActivityRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the scaling activity.
+	// The scaling activity ID.
 	//
 	// This parameter is required.
 	//

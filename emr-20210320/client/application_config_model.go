@@ -26,7 +26,7 @@ type iApplicationConfig interface {
 }
 
 type ApplicationConfig struct {
-	// 应用名称。从EMR控制台集群创建页面可查看到指定发行版的应用名称列表。
+	// The name of the application. You can view the application names of each EMR version on the cluster creation page in the EMR console.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type ApplicationConfig struct {
 	//
 	// HDFS
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
-	// 应用配置文件名。
+	// The name of the configuration file.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type ApplicationConfig struct {
 	//
 	// hdfs-site.xml
 	ConfigFileName *string `json:"ConfigFileName,omitempty" xml:"ConfigFileName,omitempty"`
-	// 配置项键。
+	// The key of the configuration item.
 	//
 	// This parameter is required.
 	//
@@ -50,31 +50,31 @@ type ApplicationConfig struct {
 	//
 	// dfs.namenode.checkpoint.period
 	ConfigItemKey *string `json:"ConfigItemKey,omitempty" xml:"ConfigItemKey,omitempty"`
-	// 配置项值。
+	// The value of the configuration item.
 	//
 	// example:
 	//
 	// 3600s
 	ConfigItemValue *string `json:"ConfigItemValue,omitempty" xml:"ConfigItemValue,omitempty"`
-	// 配置范围。取值范围：
+	// The level at which you want to apply the configurations. Valid values:
 	//
-	// - CLUSTER：集群级别。
+	// 	- CLUSTER
 	//
-	// - NODE_GROUP：节点组级别。
+	// 	- NODE_GROUP
 	//
-	// 默认值：CLUSTER。
+	// Default value: CLUSTER.
 	//
 	// example:
 	//
 	// NODE_GROUP
 	ConfigScope *string `json:"ConfigScope,omitempty" xml:"ConfigScope,omitempty"`
-	// 节点组ID。ConfigScope取值NODE_GROUP时，该参数生效。NodeGroupId参数优先级高于NodeGroupName。
+	// The node group ID. This parameter takes effect only when the ConfigScope parameter is set to NODE_GROUP. The NodeGroupId parameter has a higher priority than the NodeGroupName parameter.
 	//
 	// example:
 	//
 	// ng-869471354ecd****
 	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
-	// 节点组名称。ConfigScope取值NODE_GROUP时，且参数NodeGroupId为空时生效，该参数生效。
+	// The name of the node group. This parameter takes effect only when the ConfigScope parameter is set to NODE_GROUP and the NodeGroupId parameter is not configured.
 	//
 	// example:
 	//

@@ -16,8 +16,9 @@ type iExportApplicationConfigsResponseBody interface {
 }
 
 type ExportApplicationConfigsResponseBody struct {
+  // The list of exported application configurations.
   ApplicationConfigs []*ExportApplicationConfigsResponseBodyApplicationConfigs `json:"ApplicationConfigs,omitempty" xml:"ApplicationConfigs,omitempty" type:"Repeated"`
-  // 请求ID。
+  // The request ID.
   // 
   // example:
   // 
@@ -65,19 +66,19 @@ func (s *ExportApplicationConfigsResponseBody) Validate() error {
 }
 
 type ExportApplicationConfigsResponseBodyApplicationConfigs struct {
-  // 应用名称。
+  // The application name.
   // 
   // example:
   // 
   // YARN
   ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
-  // 文件名称。
+  // The file name.
   // 
   // example:
   // 
   // yarn-site.xml
   ConfigFileName *string `json:"ConfigFileName,omitempty" xml:"ConfigFileName,omitempty"`
-  // 文件内容，base64加密。
+  // The file content. The content is Base64-encoded.
   // 
   // example:
   // 

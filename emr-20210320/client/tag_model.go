@@ -16,7 +16,7 @@ type iTag interface {
 }
 
 type Tag struct {
-	// 标签键。必填参数，不允许为空字符串。最多支持128个字符，不能以aliyun和acs:开头，不能包含http://或https://。
+	// The key of the tag. This parameter is required and cannot be an empty string. The key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type Tag struct {
 	//
 	// department
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// 标签值。非必填，可以为空字符串。最多支持128个字符，不能以acs:开头，不能包含http://或者https://。
+	// The value of the tag This parameter is optional and can be an empty string. The value can be up to 128 characters in length. It cannot start with `acs:` and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

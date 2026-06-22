@@ -16,35 +16,35 @@ type iClusterStateChangeReason interface {
 }
 
 type ClusterStateChangeReason struct {
-	// 状态码。取值范围：
+	// The status code for the state change. Valid values:
 	//
-	// - UserRequest：用户请求。
+	// - UserRequest: A user request triggered the state change.
 	//
-	// - OutOfStock：请求的ECS实例类型无库存。
+	// - OutOfStock: The requested ECS instance type is out of stock.
 	//
-	// - NotAuthorized：无权限。
+	// - NotAuthorized: The operation was denied due to insufficient permission.
 	//
-	// - QuotaExceeded：Quota超出。
+	// - QuotaExceeded: The request exceeded a service quota.
 	//
-	// - OperationDenied：操作被拒绝。
+	// - OperationDenied: The operation was denied.
 	//
-	// - AccountException：账号异常。
+	// - AccountException: An account-related exception occurred.
 	//
-	// - NodeFailure：ECS节点异常。
+	// - NodeFailure: An ECS node failed.
 	//
-	// - BootstrapFailure：引导失败。
+	// - BootstrapFailure: A bootstrap action failed.
 	//
-	// - ValidationFail：业务逻辑校验失败。
+	// - ValidationFail: The request failed business logic validation.
 	//
-	// - ServiceFailure：依赖的其他服务失败。
+	// - ServiceFailure: A dependent service failed.
 	//
-	// - InternalError：内部错误。
+	// - InternalError: An internal error occurred.
 	//
 	// example:
 	//
 	// OutOfStock
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 状态变化信息。
+	// A human-readable message detailing the cluster state change.
 	//
 	// example:
 	//

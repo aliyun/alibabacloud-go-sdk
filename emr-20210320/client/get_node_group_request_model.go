@@ -34,7 +34,7 @@ type GetNodeGroupRequest struct {
 	//
 	// ng-869471354ecd****
 	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
-	// The ID of the region in which you want to create the instance.
+	// The ID of the region in which the cluster resides.
 	//
 	// This parameter is required.
 	//

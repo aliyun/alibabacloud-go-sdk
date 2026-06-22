@@ -30,55 +30,63 @@ type iOperation interface {
 }
 
 type Operation struct {
-	// 集群ID。
+	// The cluster ID.
 	//
 	// example:
 	//
 	// c-b933c5aac8fe****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// 创建时间。
+	// The time when the operation was created. This value is a UNIX timestamp, measured in milliseconds.
 	//
 	// example:
 	//
 	// 1628589439114
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 描述。
+	// The description of the operation.
 	//
 	// example:
 	//
 	// start
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 结束时间。
+	// The time when the operation ended. This value is a UNIX timestamp, measured in milliseconds.
 	//
 	// example:
 	//
 	// 1628589439114
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// 操作ID。
+	// The operation ID.
 	//
 	// example:
 	//
 	// op-13c37a77c505****
 	OperationId *string `json:"OperationId,omitempty" xml:"OperationId,omitempty"`
-	// 操作状态。
+	// The operation state. Valid values:
+	//
+	// - `IN_PROGRESS`: The operation is in progress.
+	//
+	// - `COMPLETED`: The operation completed.
+	//
+	// - `HUMAN_PROCESSING`: The operation requires manual intervention.
+	//
+	// - `FAILED`: The operation failed.
 	//
 	// example:
 	//
 	// COMPLETED
 	OperationState *string `json:"OperationState,omitempty" xml:"OperationState,omitempty"`
-	// 操作类型。
+	// The operation type.
 	//
 	// example:
 	//
-	// CLUSTER
+	// CREATE_CLUSTER
 	OperationType *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
-	// 开始时间。
+	// The time when the operation started. This value is a UNIX timestamp, measured in milliseconds.
 	//
 	// example:
 	//
 	// 1628589439114
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// 状态转换原因。
+	// The reason for the state change.
 	StateChangeReason *OperationStateChangeReason `json:"StateChangeReason,omitempty" xml:"StateChangeReason,omitempty"`
 }
 

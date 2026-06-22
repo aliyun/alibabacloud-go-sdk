@@ -18,7 +18,7 @@ type iCreateUsersRequest interface {
 }
 
 type CreateUsersRequest struct {
-	// 集群ID。
+	// The cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type CreateUsersRequest struct {
 	//
 	// c-b933c5aac8fe****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// 区域ID。
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type CreateUsersRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 用户列表。
+	// The list of users. The number of users must be from 0 to 10.
 	//
 	// This parameter is required.
 	Users []*CreateUsersRequestUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
@@ -89,7 +89,7 @@ func (s *CreateUsersRequest) Validate() error {
 }
 
 type CreateUsersRequestUsers struct {
-	// 用户密码。
+	// The password of the user.
 	//
 	// This parameter is required.
 	//
@@ -97,7 +97,7 @@ type CreateUsersRequestUsers struct {
 	//
 	// *Ab123
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// 用户名。
+	// The username.
 	//
 	// This parameter is required.
 	//

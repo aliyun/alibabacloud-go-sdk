@@ -16,13 +16,13 @@ type iScalingConstraints interface {
 }
 
 type ScalingConstraints struct {
-	// 最大值。
+	// The maximum number of nodes in the node group. Default value: 2000.
 	//
 	// example:
 	//
 	// 2000
 	MaxCapacity *int32 `json:"MaxCapacity,omitempty" xml:"MaxCapacity,omitempty"`
-	// 最小值。
+	// The minimum number of nodes in the node group. Default value: 0
 	//
 	// example:
 	//

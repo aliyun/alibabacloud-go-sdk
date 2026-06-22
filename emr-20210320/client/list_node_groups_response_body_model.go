@@ -22,27 +22,27 @@ type iListNodeGroupsResponseBody interface {
 }
 
 type ListNodeGroupsResponseBody struct {
-	// The maximum number of entries returned.
+	// The maximum number of entries returned for the request.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// Returns the location of the data that was read. Empty indicates that the data has been read.
+	// The token to retrieve the next page of results. An empty value indicates that all results have been returned.
 	//
 	// example:
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C89568980
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The array of node groups.
+	// An array of node groups.
 	NodeGroups []*NodeGroup `json:"NodeGroups,omitempty" xml:"NodeGroups,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries that match the query conditions.
 	//
 	// example:
 	//

@@ -28,9 +28,9 @@ type ListUsersResponseBody struct {
 	//
 	// Indicates whether the user is an admin user. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
@@ -150,7 +150,7 @@ type ListUsersResponseBodyUsers struct {
 	//
 	// example:
 	//
-	// 添加test用户
+	// Add test user
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The Base64-encoded content of the keytab file.
 	//

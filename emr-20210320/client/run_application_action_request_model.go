@@ -32,17 +32,17 @@ type iRunApplicationActionRequest interface {
 type RunApplicationActionRequest struct {
 	// The name of the action. Valid values:
 	//
-	// 	- start
+	// - start
 	//
-	// 	- stop
+	// - stop
 	//
-	// 	- config
+	// - config
 	//
-	// 	- restart
+	// - restart
 	//
-	// 	- refresh_queues
+	// - refresh_queues
 	//
-	// 	- refresh_labels
+	// - refresh_labels
 	//
 	// This parameter is required.
 	//
@@ -72,13 +72,13 @@ type RunApplicationActionRequest struct {
 	//
 	// example:
 	//
-	// 运行描述
+	// Running description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The execution policy. Valid values:
 	//
-	// 	- FAILED_BLOCK: The system stops the execution if the execution fails.
+	// - FAILED_BLOCK: The system stops the execution if the execution fails.
 	//
-	// 	- FAILED_CONTINUE: The system continues the execution if the execution fails.
+	// - FAILED_CONTINUE: The system continues the execution if the execution fails.
 	//
 	// example:
 	//

@@ -18,19 +18,19 @@ type iManagedScalingConstraints interface {
 }
 
 type ManagedScalingConstraints struct {
-	// 最大值。
+	// The maximum number of nodes in a node group.
 	//
 	// example:
 	//
 	// 2000
 	MaxCapacity *int32 `json:"MaxCapacity,omitempty" xml:"MaxCapacity,omitempty"`
-	// 最大按量节点数量
+	// The maximum number of pay-as-you-go task nodes.
 	//
 	// example:
 	//
 	// 0
 	MaxOnDemandCapacity *int32 `json:"MaxOnDemandCapacity,omitempty" xml:"MaxOnDemandCapacity,omitempty"`
-	// 最小值。
+	// The minimum number of nodes in a node group.
 	//
 	// example:
 	//

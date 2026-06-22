@@ -44,39 +44,35 @@ type ListAutoScalingActivitiesRequest struct {
 	//
 	// c-b933c5aac8fe****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The end of the time range to query. Unit: milliseconds.
+	// The end timestamp for querying the creation time of scaling activities. The unit is milliseconds.
 	//
 	// example:
 	//
 	// 1639718634819
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// 实例付费类型枚举值：
+	// The billing method of the instance. Valid values:
 	//
-	// - ONDEMAND: 按量付费实例
+	// - ONDEMAND: Pay-as-you-go instance.
 	//
-	// - SPOT: 竞价实例
-	//
-	// 默认为null代表全选
-	//
-	// 举例: ["ONDEMAND", "SPOT"]
+	// - SPOT: Spot instance.The default value is null, which means all billing methods are selected.Example: ["ONDEMAND", "SPOT"]
 	//
 	// example:
 	//
 	// ONDEMAND
 	InstanceChargeTypes []*string `json:"InstanceChargeTypes,omitempty" xml:"InstanceChargeTypes,omitempty" type:"Repeated"`
-	// The number of entries to return on each page.
+	// The maximum number of records to return in a single request.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the request to retrieve a new page of results.
+	// The token that marks the position from which the query starts.
 	//
 	// example:
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C89568980
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the node group.
+	// The node group ID.
 	//
 	// example:
 	//
@@ -90,7 +86,7 @@ type ListAutoScalingActivitiesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The status of the scaling activity. Number of elements in the array: 1-20.
+	// The status of the scaling activity. The number of elements in the array can range from 1 to 20.
 	//
 	// example:
 	//
@@ -98,9 +94,9 @@ type ListAutoScalingActivitiesRequest struct {
 	ScalingActivityStates []*string `json:"ScalingActivityStates,omitempty" xml:"ScalingActivityStates,omitempty" type:"Repeated"`
 	// The type of the scaling activity. Valid values:
 	//
-	// 	- SCALE_OUT
+	// - SCALE_OUT: Scale-out.
 	//
-	// 	- SCALE_IN
+	// - SCALE_IN: Scale-in.
 	//
 	// example:
 	//
@@ -116,7 +112,7 @@ type ListAutoScalingActivitiesRequest struct {
 	//
 	// scale-out-by-memroy
 	ScalingRuleName *string `json:"ScalingRuleName,omitempty" xml:"ScalingRuleName,omitempty"`
-	// The beginning of the time range to query. Unit: milliseconds.
+	// The start timestamp for querying the creation time of scaling activities. The unit is milliseconds.
 	//
 	// example:
 	//

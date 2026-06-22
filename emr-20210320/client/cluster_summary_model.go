@@ -44,107 +44,121 @@ type iClusterSummary interface {
 }
 
 type ClusterSummary struct {
-	// 集群ID。
+	// The cluster ID.
 	//
 	// example:
 	//
 	// c-b933c5aac8fe****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// 集群名称。
+	// The cluster name.
 	//
 	// example:
 	//
 	// emrtest
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// 集群状态。取值范围：
+	// The state of the cluster. Valid values:
 	//
-	// - STARTING：启动中。
+	// - `STARTING`: The cluster is starting.
 	//
-	// - START_FAILED：启动失败。
+	// - `START_FAILED`: The cluster fails to be started.
 	//
-	// - BOOTSTRAPPING：引导操作初始化。
+	// - `BOOTSTRAPPING`: The cluster is being initialized.
 	//
-	// - RUNNING：运行中。
+	// - `RUNNING`: The cluster is running.
 	//
-	// - TERMINATING：终止中。
+	// - `TERMINATING`: The cluster is being terminated.
 	//
-	// - TERMINATED：已终止。
+	// - `TERMINATED`: The cluster is terminated.
 	//
-	// - TERMINATED_WITH_ERRORS：发生异常导致终止。
+	// - `TERMINATED_WITH_ERRORS`: The cluster is terminated with errors.
 	//
-	// - TERMINATE_FAILED：终止失败。
+	// - `TERMINATE_FAILED`: The cluster fails to be terminated.
 	//
 	// example:
 	//
 	// RUNNING
 	ClusterState *string `json:"ClusterState,omitempty" xml:"ClusterState,omitempty"`
-	// 集群类型。取值范围：
+	// The cluster type. Valid values:
 	//
-	// - DATALAKE：新版数据湖。
+	// - `DATALAKE`: data lake.
 	//
-	// - OLAP：数据分析。
+	// - `OLAP`: data analytics.
 	//
-	// - DATAFLOW：实时数据流。
+	// - `DATAFLOW`: real-time dataflow.
 	//
-	// - DATASERVING：数据服务。
+	// - `DATASERVING`: data serving.
 	//
 	// example:
 	//
 	// DATALAKE
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	// 创建时间。
+	// The time when the cluster was created.
 	//
 	// example:
 	//
-	// 1592837465784
-	CreateTime         *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DeletionProtection *bool   `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
-	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// EMR服务角色。
+	// 1592837465788
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The release protection feature.
+	//
+	// example:
+	//
+	// false
+	DeletionProtection *bool `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
+	// The description of the cluster.
+	//
+	// example:
+	//
+	// EMR cluster
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The EMR service role.
+	//
+	// example:
+	//
+	// AliyunEMRDefaultRole
 	EmrDefaultRole *string `json:"EmrDefaultRole,omitempty" xml:"EmrDefaultRole,omitempty"`
-	// 删除时间。
+	// The time when the cluster was deleted.
 	//
 	// example:
 	//
-	// 1592837465784
+	// 1592837485788
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// 过期时间。
+	// The expiration time.
 	//
 	// example:
 	//
-	// 1592837465784
+	// 1592837475788
 	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// 付费类型。取值范围：
+	// The billing method. Valid values:
 	//
-	// - PayAsYouGo：后付费。
+	// - `PayAsYouGo`: pay-as-you-go.
 	//
-	// - Subscription：预付费。
+	// - `Subscription`: subscription.
 	//
 	// example:
 	//
 	// PayAsYouGo
 	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
-	// 可用时间。
+	// The time when the cluster is available.
 	//
 	// example:
 	//
-	// 1592837465784
+	// 1592837465788
 	ReadyTime *int64 `json:"ReadyTime,omitempty" xml:"ReadyTime,omitempty"`
-	// EMR发行版。
+	// The E-MapReduce (EMR) release version.
 	//
 	// example:
 	//
 	// EMR-5.8.0
 	ReleaseVersion *string `json:"ReleaseVersion,omitempty" xml:"ReleaseVersion,omitempty"`
-	// 资源组ID。
+	// The resource group ID.
 	//
 	// example:
 	//
 	// rg-acfmzabjyop****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// 失败原因。
+	// The reason for the failure.
 	StateChangeReason *ClusterStateChangeReason `json:"StateChangeReason,omitempty" xml:"StateChangeReason,omitempty"`
-	// 标签列表。
+	// The list of tags.
 	Tags []*Tag `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 

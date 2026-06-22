@@ -16,13 +16,13 @@ type iDecreaseNodesResponseBody interface {
 }
 
 type DecreaseNodesResponseBody struct {
-	// Operation ID.
+	// The operation ID.
 	//
 	// example:
 	//
 	// op-13c37a77c505****
 	OperationId *string `json:"OperationId,omitempty" xml:"OperationId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

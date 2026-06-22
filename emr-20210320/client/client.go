@@ -68,6 +68,21 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		"cn-zhengzhou-nebula-1":       dara.String("emr.aliyuncs.com"),
 		"eu-west-1-oxs":               dara.String("emr.aliyuncs.com"),
 		"rus-west-1-pop":              dara.String("emr.aliyuncs.com"),
+		"us-east-1":                   dara.String("emr.us-east-1.aliyuncs.com"),
+		"me-east-1":                   dara.String("emr.me-east-1.aliyuncs.com"),
+		"me-central-1":                dara.String("emr.me-central-1.aliyuncs.com"),
+		"eu-west-1":                   dara.String("emr.eu-west-1.aliyuncs.com"),
+		"eu-central-1":                dara.String("emr.eu-central-1.aliyuncs.com"),
+		"cn-zhangjiakou":              dara.String("emr.cn-zhangjiakou.aliyuncs.com"),
+		"cn-wulanchabu":               dara.String("emr.cn-wulanchabu.aliyuncs.com"),
+		"cn-qingdao":                  dara.String("emr.cn-qingdao.aliyuncs.com"),
+		"cn-huhehaote":                dara.String("emr.cn-huhehaote.aliyuncs.com"),
+		"cn-hongkong":                 dara.String("emr.cn-hongkong.aliyuncs.com"),
+		"cn-heyuan-acdr-1":            dara.String("emr.cn-heyuan-acdr-1.aliyuncs.com"),
+		"cn-chengdu":                  dara.String("emr.cn-chengdu.aliyuncs.com"),
+		"ap-southeast-5":              dara.String("emr.ap-southeast-5.aliyuncs.com"),
+		"ap-southeast-3":              dara.String("emr.ap-southeast-3.aliyuncs.com"),
+		"ap-northeast-1":              dara.String("emr.ap-northeast-1.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -388,7 +403,7 @@ func (client *Client) CreateNodeGroup(request *CreateNodeGroupRequest) (_result 
 
 // Summary:
 //
-// Adds a bootstrap action or a common script of an E-MapReduce (EMR) cluster.
+// Creates a bootstrap script or a regular cluster script.
 //
 // @param request - CreateScriptRequest
 //
@@ -448,7 +463,7 @@ func (client *Client) CreateScriptWithOptions(request *CreateScriptRequest, runt
 
 // Summary:
 //
-// Adds a bootstrap action or a common script of an E-MapReduce (EMR) cluster.
+// Creates a bootstrap script or a regular cluster script.
 //
 // @param request - CreateScriptRequest
 //
@@ -466,11 +481,11 @@ func (client *Client) CreateScript(request *CreateScriptRequest) (_result *Creat
 
 // Summary:
 //
-// Creates multiple users at a time.
+// Creates users in a batch.
 //
 // Description:
 //
-// You can call this operation to create multiple users at a time.
+// Creates users in a batch.
 //
 // @param request - CreateUsersRequest
 //
@@ -522,11 +537,11 @@ func (client *Client) CreateUsersWithOptions(request *CreateUsersRequest, runtim
 
 // Summary:
 //
-// Creates multiple users at a time.
+// Creates users in a batch.
 //
 // Description:
 //
-// You can call this operation to create multiple users at a time.
+// Creates users in a batch.
 //
 // @param request - CreateUsersRequest
 //
@@ -544,7 +559,7 @@ func (client *Client) CreateUsers(request *CreateUsersRequest) (_result *CreateU
 
 // Summary:
 //
-// Performs a scale-out operation on the target node group.
+// Scales in a target node group.
 //
 // @param request - DecreaseNodesRequest
 //
@@ -612,7 +627,7 @@ func (client *Client) DecreaseNodesWithOptions(request *DecreaseNodesRequest, ru
 
 // Summary:
 //
-// Performs a scale-out operation on the target node group.
+// Scales in a target node group.
 //
 // @param request - DecreaseNodesRequest
 //
@@ -702,6 +717,10 @@ func (client *Client) DeleteApiTemplate(request *DeleteApiTemplateRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a pay-as-you-go cluster.
+//
 // @param request - DeleteClusterRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -746,6 +765,10 @@ func (client *Client) DeleteClusterWithOptions(request *DeleteClusterRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a pay-as-you-go cluster.
+//
 // @param request - DeleteClusterRequest
 //
 // @return DeleteClusterResponse
@@ -753,6 +776,80 @@ func (client *Client) DeleteCluster(request *DeleteClusterRequest) (_result *Del
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteClusterResponse{}
 	_body, _err := client.DeleteClusterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a created cluster node group.
+//
+// @param request - DeleteNodeGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteNodeGroupResponse
+func (client *Client) DeleteNodeGroupWithOptions(request *DeleteNodeGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteNodeGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClusterId) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.NodeGroupId) {
+		query["NodeGroupId"] = request.NodeGroupId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteNodeGroup"),
+		Version:     dara.String("2021-03-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteNodeGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a created cluster node group.
+//
+// @param request - DeleteNodeGroupRequest
+//
+// @return DeleteNodeGroupResponse
+func (client *Client) DeleteNodeGroup(request *DeleteNodeGroupRequest) (_result *DeleteNodeGroupResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteNodeGroupResponse{}
+	_body, _err := client.DeleteNodeGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -922,7 +1019,7 @@ func (client *Client) DeleteUsers(request *DeleteUsersRequest) (_result *DeleteU
 
 // Summary:
 //
-// 导出应用服务配置
+// Exports the configurations of a specified service in a cluster.
 //
 // @param request - ExportApplicationConfigsRequest
 //
@@ -994,7 +1091,7 @@ func (client *Client) ExportApplicationConfigsWithOptions(request *ExportApplica
 
 // Summary:
 //
-// 导出应用服务配置
+// Exports the configurations of a specified service in a cluster.
 //
 // @param request - ExportApplicationConfigsRequest
 //
@@ -1082,7 +1179,7 @@ func (client *Client) GetApiTemplate(request *GetApiTemplateRequest) (_result *G
 //
 // Description:
 //
-// 查询应用详情。
+// Queries the details of an application.
 //
 // @param request - GetApplicationRequest
 //
@@ -1138,7 +1235,7 @@ func (client *Client) GetApplicationWithOptions(request *GetApplicationRequest, 
 //
 // Description:
 //
-// 查询应用详情。
+// Queries the details of an application.
 //
 // @param request - GetApplicationRequest
 //
@@ -1156,7 +1253,7 @@ func (client *Client) GetApplication(request *GetApplicationRequest) (_result *G
 
 // Summary:
 //
-// Queries the information about an auto scaling activity.
+// Retrieves the details of an Auto Scaling activity.
 //
 // @param request - GetAutoScalingActivityRequest
 //
@@ -1208,7 +1305,7 @@ func (client *Client) GetAutoScalingActivityWithOptions(request *GetAutoScalingA
 
 // Summary:
 //
-// Queries the information about an auto scaling activity.
+// Retrieves the details of an Auto Scaling activity.
 //
 // @param request - GetAutoScalingActivityRequest
 //
@@ -1226,7 +1323,7 @@ func (client *Client) GetAutoScalingActivity(request *GetAutoScalingActivityRequ
 
 // Summary:
 //
-// Queries custom auto scaling rules.
+// Retrieves the details of a custom Auto Scaling policy.
 //
 // @param request - GetAutoScalingPolicyRequest
 //
@@ -1278,7 +1375,7 @@ func (client *Client) GetAutoScalingPolicyWithOptions(request *GetAutoScalingPol
 
 // Summary:
 //
-// Queries custom auto scaling rules.
+// Retrieves the details of a custom Auto Scaling policy.
 //
 // @param request - GetAutoScalingPolicyRequest
 //
@@ -1362,7 +1459,7 @@ func (client *Client) GetCluster(request *GetClusterRequest) (_result *GetCluste
 
 // Summary:
 //
-// Obtains metadata of the E-MapReduce (EMR) cluster that you want to clone. This helps you call the CreateCluster API operation to quickly create an EMR cluster.
+// Retrieves the clone metadata of an E-MapReduce (EMR) cluster. You can use this metadata to quickly create a cluster by calling the CreateCluster operation.
 //
 // @param request - GetClusterCloneMetaRequest
 //
@@ -1410,7 +1507,7 @@ func (client *Client) GetClusterCloneMetaWithOptions(request *GetClusterCloneMet
 
 // Summary:
 //
-// Obtains metadata of the E-MapReduce (EMR) cluster that you want to clone. This helps you call the CreateCluster API operation to quickly create an EMR cluster.
+// Retrieves the clone metadata of an E-MapReduce (EMR) cluster. You can use this metadata to quickly create a cluster by calling the CreateCluster operation.
 //
 // @param request - GetClusterCloneMetaRequest
 //
@@ -2476,6 +2573,10 @@ func (client *Client) GetDoctorReportComponentSummary(request *GetDoctorReportCo
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the details of a managed scaling policy.
+//
 // @param request - GetManagedScalingPolicyRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2520,6 +2621,10 @@ func (client *Client) GetManagedScalingPolicyWithOptions(request *GetManagedScal
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the details of a managed scaling policy.
+//
 // @param request - GetManagedScalingPolicyRequest
 //
 // @return GetManagedScalingPolicyResponse
@@ -2536,11 +2641,11 @@ func (client *Client) GetManagedScalingPolicy(request *GetManagedScalingPolicyRe
 
 // Summary:
 //
-// You can call this operation to obtain the details of a node group.
+// Queries the details of a node group.
 //
 // Description:
 //
-// 获取节点组详情。
+// Queries the details of a node group.
 //
 // @param request - GetNodeGroupRequest
 //
@@ -2592,11 +2697,11 @@ func (client *Client) GetNodeGroupWithOptions(request *GetNodeGroupRequest, runt
 
 // Summary:
 //
-// You can call this operation to obtain the details of a node group.
+// Queries the details of a node group.
 //
 // Description:
 //
-// 获取节点组详情。
+// Queries the details of a node group.
 //
 // @param request - GetNodeGroupRequest
 //
@@ -2684,7 +2789,7 @@ func (client *Client) GetOperation(request *GetOperationRequest) (_result *GetOp
 
 // Summary:
 //
-// Scales out the node group.
+// Scales out a target node group.
 //
 // @param request - IncreaseNodesRequest
 //
@@ -2768,7 +2873,7 @@ func (client *Client) IncreaseNodesWithOptions(request *IncreaseNodesRequest, ru
 
 // Summary:
 //
-// Scales out the node group.
+// Scales out a target node group.
 //
 // @param request - IncreaseNodesRequest
 //
@@ -2860,7 +2965,7 @@ func (client *Client) JoinResourceGroup(request *JoinResourceGroupRequest) (_res
 
 // Summary:
 //
-// 查询API模板
+// Lists API templates.
 //
 // @param request - ListApiTemplatesRequest
 //
@@ -2932,7 +3037,7 @@ func (client *Client) ListApiTemplatesWithOptions(request *ListApiTemplatesReque
 
 // Summary:
 //
-// 查询API模板
+// Lists API templates.
 //
 // @param request - ListApiTemplatesRequest
 //
@@ -2954,7 +3059,7 @@ func (client *Client) ListApiTemplates(request *ListApiTemplatesRequest) (_resul
 //
 // Description:
 //
-// 查询应用配置。
+// Queries application configurations.
 //
 // @param request - ListApplicationConfigsRequest
 //
@@ -3038,7 +3143,7 @@ func (client *Client) ListApplicationConfigsWithOptions(request *ListApplication
 //
 // Description:
 //
-// 查询应用配置。
+// Queries application configurations.
 //
 // @param request - ListApplicationConfigsRequest
 //
@@ -3134,7 +3239,7 @@ func (client *Client) ListApplications(request *ListApplicationsRequest) (_resul
 
 // Summary:
 //
-// Queries a list of auto scaling activities.
+// Lists Auto Scaling activities.
 //
 // @param request - ListAutoScalingActivitiesRequest
 //
@@ -3222,7 +3327,7 @@ func (client *Client) ListAutoScalingActivitiesWithOptions(request *ListAutoScal
 
 // Summary:
 //
-// Queries a list of auto scaling activities.
+// Lists Auto Scaling activities.
 //
 // @param request - ListAutoScalingActivitiesRequest
 //
@@ -3240,7 +3345,7 @@ func (client *Client) ListAutoScalingActivities(request *ListAutoScalingActiviti
 
 // Summary:
 //
-// Queries E-MapReduce (EMR) clusters.
+// Lists EMR clusters.
 //
 // @param request - ListClustersRequest
 //
@@ -3320,7 +3425,7 @@ func (client *Client) ListClustersWithOptions(request *ListClustersRequest, runt
 
 // Summary:
 //
-// Queries E-MapReduce (EMR) clusters.
+// Lists EMR clusters.
 //
 // @param request - ListClustersRequest
 //
@@ -3924,9 +4029,13 @@ func (client *Client) ListDoctorHBaseTables(request *ListDoctorHBaseTablesReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves batch analysis results for specific directories using EMR Doctor. The directory depth cannot exceed five levels.
+//
 // Description:
 //
-// list Doctor HDFSNodes
+// Queries the analysis results for HDFS directories.
 //
 // @param request - ListDoctorHDFSDirectoriesRequest
 //
@@ -3996,9 +4105,13 @@ func (client *Client) ListDoctorHDFSDirectoriesWithOptions(request *ListDoctorHD
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves batch analysis results for specific directories using EMR Doctor. The directory depth cannot exceed five levels.
+//
 // Description:
 //
-// list Doctor HDFSNodes
+// Queries the analysis results for HDFS directories.
 //
 // @param request - ListDoctorHDFSDirectoriesRequest
 //
@@ -4608,7 +4721,7 @@ func (client *Client) ListDoctorReports(request *ListDoctorReportsRequest) (_res
 
 // Summary:
 //
-// Lists instance types.
+// Retrieves a list of EMR instance types.
 //
 // @param request - ListInstanceTypesRequest
 //
@@ -4692,7 +4805,7 @@ func (client *Client) ListInstanceTypesWithOptions(request *ListInstanceTypesReq
 
 // Summary:
 //
-// Lists instance types.
+// Retrieves a list of EMR instance types.
 //
 // @param request - ListInstanceTypesRequest
 //
@@ -4710,7 +4823,7 @@ func (client *Client) ListInstanceTypes(request *ListInstanceTypesRequest) (_res
 
 // Summary:
 //
-// Queries the list of node groups in an EMR cluster.
+// Queries the node groups in an EMR cluster.
 //
 // @param request - ListNodeGroupsRequest
 //
@@ -4786,7 +4899,7 @@ func (client *Client) ListNodeGroupsWithOptions(request *ListNodeGroupsRequest, 
 
 // Summary:
 //
-// Queries the list of node groups in an EMR cluster.
+// Queries the node groups in an EMR cluster.
 //
 // @param request - ListNodeGroupsRequest
 //
@@ -4910,7 +5023,7 @@ func (client *Client) ListNodes(request *ListNodesRequest) (_result *ListNodesRe
 //
 // Description:
 //
-// 查询主版本。
+// Queries release versions.
 //
 // @param request - ListReleaseVersionsRequest
 //
@@ -4966,7 +5079,7 @@ func (client *Client) ListReleaseVersionsWithOptions(request *ListReleaseVersion
 //
 // Description:
 //
-// 查询主版本。
+// Queries release versions.
 //
 // @param request - ListReleaseVersionsRequest
 //
@@ -4984,7 +5097,7 @@ func (client *Client) ListReleaseVersions(request *ListReleaseVersionsRequest) (
 
 // Summary:
 //
-// Query EMR cluster bootstrap scripts or regular scripts.
+// Queries the bootstrap or normal scripts of an EMR cluster.
 //
 // @param request - ListScriptsRequest
 //
@@ -5056,7 +5169,7 @@ func (client *Client) ListScriptsWithOptions(request *ListScriptsRequest, runtim
 
 // Summary:
 //
-// Query EMR cluster bootstrap scripts or regular scripts.
+// Queries the bootstrap or normal scripts of an EMR cluster.
 //
 // @param request - ListScriptsRequest
 //
@@ -5074,7 +5187,7 @@ func (client *Client) ListScripts(request *ListScriptsRequest) (_result *ListScr
 
 // Summary:
 //
-// Queries the tags that are bound to an EMR cluster.
+// Queries the tags attached to E-MapReduce (EMR) clusters.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -5138,7 +5251,7 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 
 // Summary:
 //
-// Queries the tags that are bound to an EMR cluster.
+// Queries the tags attached to E-MapReduce (EMR) clusters.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -5246,11 +5359,11 @@ func (client *Client) ListUsers(request *ListUsersRequest) (_result *ListUsersRe
 
 // Summary:
 //
-// Adds a custom auto scaling rule.
+// Creates a custom Auto Scaling policy.
 //
 // Description:
 //
-// You can call this operation to configure auto scaling policies.
+// Configures an Auto Scaling policy.
 //
 // @param request - PutAutoScalingPolicyRequest
 //
@@ -5310,11 +5423,11 @@ func (client *Client) PutAutoScalingPolicyWithOptions(request *PutAutoScalingPol
 
 // Summary:
 //
-// Adds a custom auto scaling rule.
+// Creates a custom Auto Scaling policy.
 //
 // Description:
 //
-// You can call this operation to configure auto scaling policies.
+// Configures an Auto Scaling policy.
 //
 // @param request - PutAutoScalingPolicyRequest
 //
@@ -5462,6 +5575,10 @@ func (client *Client) RemoveAutoScalingPolicy(request *RemoveAutoScalingPolicyRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Runs an API template.
+//
 // @param request - RunApiTemplateRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5514,6 +5631,10 @@ func (client *Client) RunApiTemplateWithOptions(request *RunApiTemplateRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Runs an API template.
+//
 // @param request - RunApiTemplateRequest
 //
 // @return RunApiTemplateResponse
@@ -5624,11 +5745,11 @@ func (client *Client) RunApplicationAction(request *RunApplicationActionRequest)
 
 // Summary:
 //
-// Creates a pay-as-you-go or subscription E-MapReduce (EMR) cluster.
+// Creates a pay-as-you-go or subscription cluster.
 //
 // Description:
 //
-// RunCluster is an upgraded version of CreateCluster. RunCluster uses HTTPS POST requests and supports more parameters. Complex parameters, such as parameters of the object and array types, are in the JSON format and are more friendly for users who use CLI.
+// RunCluster is an upgraded version of CreateCluster. It uses HTTPS POST requests and supports larger parameter values. For complex parameters, such as objects and arrays, RunCluster uses the JSON format. This improves compatibility with command-line interface (CLI) tools.
 //
 // @param tmpReq - RunClusterRequest
 //
@@ -5780,11 +5901,11 @@ func (client *Client) RunClusterWithOptions(tmpReq *RunClusterRequest, runtime *
 
 // Summary:
 //
-// Creates a pay-as-you-go or subscription E-MapReduce (EMR) cluster.
+// Creates a pay-as-you-go or subscription cluster.
 //
 // Description:
 //
-// RunCluster is an upgraded version of CreateCluster. RunCluster uses HTTPS POST requests and supports more parameters. Complex parameters, such as parameters of the object and array types, are in the JSON format and are more friendly for users who use CLI.
+// RunCluster is an upgraded version of CreateCluster. It uses HTTPS POST requests and supports larger parameter values. For complex parameters, such as objects and arrays, RunCluster uses the JSON format. This improves compatibility with command-line interface (CLI) tools.
 //
 // @param request - RunClusterRequest
 //
@@ -5958,7 +6079,7 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 //
 // Description:
 //
-// 修改集群模板
+// Modifies a cluster template.
 //
 // @param request - UpdateApiTemplateRequest
 //
@@ -6026,7 +6147,7 @@ func (client *Client) UpdateApiTemplateWithOptions(request *UpdateApiTemplateReq
 //
 // Description:
 //
-// 修改集群模板
+// Modifies a cluster template.
 //
 // @param request - UpdateApiTemplateRequest
 //
@@ -6044,7 +6165,7 @@ func (client *Client) UpdateApiTemplate(request *UpdateApiTemplateRequest) (_res
 
 // Summary:
 //
-// Updates the application configurations.
+// Updates the configurations of an application.
 //
 // @param request - UpdateApplicationConfigsRequest
 //
@@ -6129,7 +6250,7 @@ func (client *Client) UpdateApplicationConfigsWithOptions(request *UpdateApplica
 
 // Summary:
 //
-// Updates the application configurations.
+// Updates the configurations of an application.
 //
 // @param request - UpdateApplicationConfigsRequest
 //
@@ -6223,6 +6344,14 @@ func (client *Client) UpdateClusterAttribute(request *UpdateClusterAttributeRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables or disables auto-renewal for an EMR cluster and its Elastic Compute Service (ECS) instances.
+//
+// Description:
+//
+// Before you call this operation, make sure you understand the billing methods and [pricing](https://www.aliyun.com/price/product?spm=openapi-amp.newDocPublishment.0.0.d54d281ftXTbvg#/emapreduce/detail/emrpre) of E-MapReduce. Note: Auto-renewal is different from manual renewal. If an instance has expired or will expire the next day, you must perform a manual renewal first.
+//
 // @param request - UpdateClusterAutoRenewRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6287,6 +6416,14 @@ func (client *Client) UpdateClusterAutoRenewWithOptions(request *UpdateClusterAu
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables or disables auto-renewal for an EMR cluster and its Elastic Compute Service (ECS) instances.
+//
+// Description:
+//
+// Before you call this operation, make sure you understand the billing methods and [pricing](https://www.aliyun.com/price/product?spm=openapi-amp.newDocPublishment.0.0.d54d281ftXTbvg#/emapreduce/detail/emrpre) of E-MapReduce. Note: Auto-renewal is different from manual renewal. If an instance has expired or will expire the next day, you must perform a manual renewal first.
+//
 // @param request - UpdateClusterAutoRenewRequest
 //
 // @return UpdateClusterAutoRenewResponse
@@ -6294,6 +6431,152 @@ func (client *Client) UpdateClusterAutoRenew(request *UpdateClusterAutoRenewRequ
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateClusterAutoRenewResponse{}
 	_body, _err := client.UpdateClusterAutoRenewWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the attributes of a node group.
+//
+// Description:
+//
+// 更新节点组基本属性。
+//
+// @param request - UpdateNodeGroupAttributesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateNodeGroupAttributesResponse
+func (client *Client) UpdateNodeGroupAttributesWithOptions(request *UpdateNodeGroupAttributesRequest, runtime *dara.RuntimeOptions) (_result *UpdateNodeGroupAttributesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AckConfig) {
+		query["AckConfig"] = request.AckConfig
+	}
+
+	if !dara.IsNil(request.AdditionalSecurityGroupIds) {
+		query["AdditionalSecurityGroupIds"] = request.AdditionalSecurityGroupIds
+	}
+
+	if !dara.IsNil(request.AutoCompensateState) {
+		query["AutoCompensateState"] = request.AutoCompensateState
+	}
+
+	if !dara.IsNil(request.ClusterId) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.CostOptimizedConfig) {
+		query["CostOptimizedConfig"] = request.CostOptimizedConfig
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.EcsSpotStrategy) {
+		query["EcsSpotStrategy"] = request.EcsSpotStrategy
+	}
+
+	if !dara.IsNil(request.EnableGracefulDecommission) {
+		query["EnableGracefulDecommission"] = request.EnableGracefulDecommission
+	}
+
+	if !dara.IsNil(request.InstanceTypeList) {
+		query["InstanceTypeList"] = request.InstanceTypeList
+	}
+
+	if !dara.IsNil(request.KeyPairName) {
+		query["KeyPairName"] = request.KeyPairName
+	}
+
+	if !dara.IsNil(request.MaxSize) {
+		query["MaxSize"] = request.MaxSize
+	}
+
+	if !dara.IsNil(request.MinSize) {
+		query["MinSize"] = request.MinSize
+	}
+
+	if !dara.IsNil(request.NodeCount) {
+		query["NodeCount"] = request.NodeCount
+	}
+
+	if !dara.IsNil(request.NodeGroupId) {
+		query["NodeGroupId"] = request.NodeGroupId
+	}
+
+	if !dara.IsNil(request.NodeGroupName) {
+		query["NodeGroupName"] = request.NodeGroupName
+	}
+
+	if !dara.IsNil(request.NodeResizeStrategy) {
+		query["NodeResizeStrategy"] = request.NodeResizeStrategy
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SpotBidPrices) {
+		query["SpotBidPrices"] = request.SpotBidPrices
+	}
+
+	if !dara.IsNil(request.SpotInstanceRemedy) {
+		query["SpotInstanceRemedy"] = request.SpotInstanceRemedy
+	}
+
+	if !dara.IsNil(request.VSwitchId) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateNodeGroupAttributes"),
+		Version:     dara.String("2021-03-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateNodeGroupAttributesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the attributes of a node group.
+//
+// Description:
+//
+// 更新节点组基本属性。
+//
+// @param request - UpdateNodeGroupAttributesRequest
+//
+// @return UpdateNodeGroupAttributesResponse
+func (client *Client) UpdateNodeGroupAttributes(request *UpdateNodeGroupAttributesRequest) (_result *UpdateNodeGroupAttributesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateNodeGroupAttributesResponse{}
+	_body, _err := client.UpdateNodeGroupAttributesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

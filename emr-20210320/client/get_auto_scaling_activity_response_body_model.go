@@ -22,7 +22,7 @@ type GetAutoScalingActivityResponseBody struct {
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the scaling activity.
+	// The details of the scaling activity.
 	ScalingActivity *GetAutoScalingActivityResponseBodyScalingActivity `json:"ScalingActivity,omitempty" xml:"ScalingActivity,omitempty" type:"Struct"`
 }
 
@@ -68,27 +68,27 @@ type GetAutoScalingActivityResponseBodyScalingActivity struct {
 	//
 	// asa-36373b084d6b4b13aa50f4129a9e****
 	ActivityId *string `json:"ActivityId,omitempty" xml:"ActivityId,omitempty"`
-	// The instances that correspond to the scaling activity.
+	// The list of instances involved in the scaling activity.
 	ActivityResults []*ScalingActivityResult `json:"ActivityResults,omitempty" xml:"ActivityResults,omitempty" type:"Repeated"`
-	// The status of the scaling activity. Valid values:
+	// The state of the scaling activity. Valid values:
 	//
-	// 	- REJECTED
+	// - REJECTED: rejected.
 	//
-	// 	- SUCCESSFUL
+	// - SUCCESSFUL: successful.
 	//
-	// 	- FAILED
+	// - FAILED: failed.
 	//
-	// 	- IN_PROGRESS
+	// - IN_PROGRESS: in progress.
 	//
 	// example:
 	//
 	// IN_PROGRESS
 	ActivityState *string `json:"ActivityState,omitempty" xml:"ActivityState,omitempty"`
-	// The type of the scaling activity. Valid value:
+	// The type of the scaling activity. Valid values:
 	//
-	// 	- SCALE_OUT
+	// - SCALE_OUT: scale-out.
 	//
-	// 	- SCALE_IN
+	// - SCALE_IN: scale-in.
 	//
 	// example:
 	//
@@ -106,19 +106,19 @@ type GetAutoScalingActivityResponseBodyScalingActivity struct {
 	//
 	// clusterId not exist
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time when scaling ended.
+	// The end time of the scaling activity.
 	//
 	// example:
 	//
 	// 1639715634819
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The number of added or removed instances.
+	// The number of instances that are added or removed.
 	//
 	// example:
 	//
 	// 10
 	ExpectNum *int32 `json:"ExpectNum,omitempty" xml:"ExpectNum,omitempty"`
-	// The ID of the node group.
+	// The node group ID.
 	//
 	// example:
 	//
@@ -142,7 +142,7 @@ type GetAutoScalingActivityResponseBodyScalingActivity struct {
 	//
 	// AUTO
 	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
-	// The description of the scaling rule.
+	// The details of the scaling rule.
 	RuleDetail *ScalingRule `json:"RuleDetail,omitempty" xml:"RuleDetail,omitempty"`
 	// The name of the scaling rule.
 	//
@@ -150,7 +150,7 @@ type GetAutoScalingActivityResponseBodyScalingActivity struct {
 	//
 	// scaling-out-memory
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The time when scaling started.
+	// The start time of the scaling activity.
 	//
 	// example:
 	//

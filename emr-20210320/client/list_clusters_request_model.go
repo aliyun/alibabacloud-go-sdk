@@ -32,7 +32,7 @@ type iListClustersRequest interface {
 }
 
 type ListClustersRequest struct {
-	// The cluster IDs. Number of elements in the array: 1 to 100.
+	// A list of cluster IDs. The number of array elements N can range from 1 to 100.
 	//
 	// example:
 	//
@@ -44,31 +44,31 @@ type ListClustersRequest struct {
 	//
 	// emrtest
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// The states of the clusters. Number of elements in the array: 1 to 100.
+	// An array of cluster states. The number of array elements N can range from 1 to 100.
 	//
 	// example:
 	//
 	// ["HADOOP"]
 	ClusterStates []*string `json:"ClusterStates,omitempty" xml:"ClusterStates,omitempty" type:"Repeated"`
-	// The list of cluster types. Number of elements in the array: 1 to 100.
+	// A list of cluster types. The number of array elements N can range from 1 to 100.
 	//
 	// example:
 	//
 	// ["c-b933c5aac8fe****"]
 	ClusterTypes []*string `json:"ClusterTypes,omitempty" xml:"ClusterTypes,omitempty" type:"Repeated"`
-	// The number of entries to return on each page. Valid values: 1 to 100.
+	// The maximum number of entries to return on each page. Valid values: 1 to 100.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The starting point of the current query. If you do not configure this parameter, the query starts from the beginning.
+	// The token that specifies the position from which to start the query. If you leave this parameter empty, the query starts from the beginning.
 	//
 	// example:
 	//
 	// eyJlY21OZXh0VG9rZW4iOiIxIiwidGFpaGFvTmV4dFRva2VuIjoiNTYiLCJ0YWloYW9OZXh0VG9rZW5JbnQiOjU2LCJlY21OZXh0VG9rZW5JbnQiOjF9
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The billing methods. You can specify a maximum of 2 items.
+	// The billing methods. The number of array elements N can be 1 or 2.
 	//
 	// example:
 	//
@@ -88,7 +88,7 @@ type ListClustersRequest struct {
 	//
 	// rg-acfmzabjyop****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The tag list. Number of elements in the array: 1 to 20.
+	// A list of tags. The number of array elements N can range from 1 to 20.
 	//
 	// example:
 	//

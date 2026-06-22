@@ -16,13 +16,19 @@ type iStateChangeReason interface {
 }
 
 type StateChangeReason struct {
-	// 状态码。
+	// The status code. Possible values:
+	//
+	// - UserRequest: The state change was initiated by the user.
+	//
+	// - QuotaExceeded: A service or resource quota was exceeded.
+	//
+	// - InternalError: An internal error occurred.
 	//
 	// example:
 	//
 	// MissingParameter
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 描述信息。
+	// A message providing additional details about the status code.
 	//
 	// example:
 	//

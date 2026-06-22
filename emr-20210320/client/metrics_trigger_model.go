@@ -24,25 +24,25 @@ type iMetricsTrigger interface {
 }
 
 type MetricsTrigger struct {
-	// 多指标逻辑关系。默认：Or。取值范围：
+	// The logical relationship between multiple metrics. Valid values:
 	//
-	// - And:与
+	// 	- And
 	//
-	// - Or：或
+	// 	- Or (default)
 	//
 	// example:
 	//
 	// Or
 	ConditionLogicOperator *string `json:"ConditionLogicOperator,omitempty" xml:"ConditionLogicOperator,omitempty"`
-	// 指标触发条件列表。
+	// The trigger conditions for the metric.
 	Conditions []*TriggerCondition `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
-	// 冷却时间。 单位为秒
+	// The cooldown interval. Unit: seconds. Valid values: 0 to 10800.
 	//
 	// example:
 	//
 	// 300
 	CoolDownInterval *int32 `json:"CoolDownInterval,omitempty" xml:"CoolDownInterval,omitempty"`
-	// 统计次数。
+	// The number of times that the statistics are collected. This parameter is required. Valid values: 1 to 5.
 	//
 	// This parameter is required.
 	//
@@ -50,9 +50,9 @@ type MetricsTrigger struct {
 	//
 	// 2
 	EvaluationCount *int32 `json:"EvaluationCount,omitempty" xml:"EvaluationCount,omitempty"`
-	// 时间限制。
+	// The limits on time.
 	TimeConstraints []*TimeConstraint `json:"TimeConstraints,omitempty" xml:"TimeConstraints,omitempty" type:"Repeated"`
-	// 统计窗口。单位为秒。
+	// The time window for statistics. This parameter is required. Unit: seconds. Valid values: 30 to 1800.
 	//
 	// This parameter is required.
 	//

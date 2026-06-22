@@ -20,7 +20,7 @@ type iRunApiTemplateRequest interface {
 }
 
 type RunApiTemplateRequest struct {
-	// 接口名。
+	// The API name.
 	//
 	// This parameter is required.
 	//
@@ -28,13 +28,13 @@ type RunApiTemplateRequest struct {
 	//
 	// CreateCluster
 	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// 幂等客户端TOKEN。
+	// The client token that is used to ensure the idempotence of the request.
 	//
 	// example:
 	//
 	// A7D960FA-6DBA-5E07-8746-A63E3E4D****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 地域ID。
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type RunApiTemplateRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 集群模板id。
+	// The cluster template ID.
 	//
 	// This parameter is required.
 	//

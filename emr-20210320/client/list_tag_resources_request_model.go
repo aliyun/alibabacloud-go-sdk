@@ -24,19 +24,19 @@ type iListTagResourcesRequest interface {
 }
 
 type ListTagResourcesRequest struct {
-	// The number of maximum number of records to obtain at a time.
+	// The maximum number of entries to return on each page.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the request to retrieve a new page of results. If NextToken is empty, the query starts from the beginning.
+	// The token to start the query. Leave this parameter empty to start the query from the beginning.
 	//
 	// example:
 	//
-	// DD6B1B2A-5837-5237-ABE4-FF0C89568980
+	// 2
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the region in which you want to create the instance.
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -44,13 +44,13 @@ type ListTagResourcesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The list of resource IDs. Number of array elements N Valid values: 1 to 1
+	// The list of resource IDs. The number of elements in the array N must be 1.
 	//
 	// example:
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C89568980
 	ResourceIds []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
-	// The type of the resource. Set the value to cluster.
+	// The resource type. Set the value to \\`cluster\\`.
 	//
 	// This parameter is required.
 	//
@@ -58,7 +58,7 @@ type ListTagResourcesRequest struct {
 	//
 	// cluster
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// An array of tags. The number of elements in the array. Valid values: 1 to 20.
+	// The tags. The number of elements in the array N can be from 1 to 20.
 	//
 	// example:
 	//

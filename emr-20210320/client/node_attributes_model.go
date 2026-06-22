@@ -32,43 +32,43 @@ type iNodeAttributes interface {
 }
 
 type NodeAttributes struct {
-	// 是否启用云盘加密。取值范围：
+	// Specifies whether to enable encryption for the data disk. For more information, see <props="china">[Encrypt a data disk](https://help.aliyun.com/zh/ecs/user-guide/encrypt-a-data-disk)<props="intl">[Encrypt a data disk](https://www.alibabacloud.com/help/en/ecs/user-guide/encryption-overview). Valid values:
 	//
-	// - true：启用加密。
+	// - true: Enables encryption.
 	//
-	// - false：不加密。
-	//
-	// 默认值：false，不加密
+	// - false (default): Disables encryption.
 	//
 	// example:
 	//
 	// false
 	DataDiskEncrypted *bool `json:"DataDiskEncrypted,omitempty" xml:"DataDiskEncrypted,omitempty"`
-	// KMS加密秘钥ID。
+	// The ID of the KMS key for the data disk.
 	//
 	// example:
 	//
 	// 0e478b7a-4262-4802-b8cb-00d3fb40****
 	DataDiskKMSKeyId *string `json:"DataDiskKMSKeyId,omitempty" xml:"DataDiskKMSKeyId,omitempty"`
-	// ECS ssh登录秘钥。
+	// The SSH key pair for logging on to the ECS instances.
 	//
 	// example:
 	//
 	// emr_login
 	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
-	// MASTER节点root密码。
+	// The password of the root user for the master node. This parameter is left empty in the response of an API call.
 	//
 	// example:
 	//
-	// Adxefswfd****
+	// EAQ#86****
 	MasterRootPassword *string `json:"MasterRootPassword,omitempty" xml:"MasterRootPassword,omitempty"`
-	// ECS访问资源绑定的角色。
+	// The RAM role that is attached to the ECS instances to access other cloud resources.
+	//
+	// Default value: AliyunECSInstanceForEMRRole.
 	//
 	// example:
 	//
 	// AliyunECSInstanceForEMRRole
 	RamRole *string `json:"RamRole,omitempty" xml:"RamRole,omitempty"`
-	// 安全组ID。EMR只支持普通安全组，不支持企业安全组。
+	// The ID of the security group. EMR supports only basic security groups and does not support enterprise security groups.
 	//
 	// This parameter is required.
 	//
@@ -76,25 +76,23 @@ type NodeAttributes struct {
 	//
 	// sg-hp3abbae8lb6lmb1****
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// 是否启用云盘加密。取值范围：
+	// Specifies whether to enable disk encryption for the system disk. Valid values:
 	//
-	// - true：启用加密。
+	// - true: Enables encryption.
 	//
-	// - false：不加密。
-	//
-	// 默认值：false，不加密
+	// - false (default): Disables encryption.
 	//
 	// example:
 	//
 	// false
 	SystemDiskEncrypted *bool `json:"SystemDiskEncrypted,omitempty" xml:"SystemDiskEncrypted,omitempty"`
-	// KMS加密秘钥ID。
+	// The ID of the KMS key.
 	//
 	// example:
 	//
 	// 0e478b7a-4262-4802-b8cb-00d3fb40****
 	SystemDiskKMSKeyId *string `json:"SystemDiskKMSKeyId,omitempty" xml:"SystemDiskKMSKeyId,omitempty"`
-	// 专有网络ID。
+	// The ID of the VPC.
 	//
 	// This parameter is required.
 	//
@@ -102,7 +100,7 @@ type NodeAttributes struct {
 	//
 	// vpc-bp1tgey2p0ytxmdo5****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// 可用区ID。
+	// The ID of the zone.
 	//
 	// This parameter is required.
 	//

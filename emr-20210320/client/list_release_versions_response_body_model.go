@@ -127,13 +127,13 @@ type ListReleaseVersionsResponseBodyReleaseVersions struct {
 	//
 	// example:
 	//
-	// EMR-5.3.0
+	// EMR-5.8.0
 	ReleaseVersion *string `json:"ReleaseVersion,omitempty" xml:"ReleaseVersion,omitempty"`
 	// The version series.
 	//
 	// example:
 	//
-	// EMR-6.X
+	// EMR-5.X
 	Series *string `json:"Series,omitempty" xml:"Series,omitempty"`
 }
 

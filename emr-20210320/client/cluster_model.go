@@ -54,107 +54,155 @@ type iCluster interface {
 }
 
 type Cluster struct {
-	// 集群ID。
+	// The cluster ID.
 	//
 	// example:
 	//
 	// c-b933c5aac8fe****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// 集群名称。
+	// The cluster name.
 	//
 	// example:
 	//
 	// emrtest
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// 集群状态。
+	// The cluster state. Valid values:
+	//
+	// - `STARTING`: The cluster is starting.
+	//
+	// - `START_FAILED`: The cluster failed to start.
+	//
+	// - `BOOTSTRAPPING`: The cluster is running bootstrap actions.
+	//
+	// - `RUNNING`: The cluster is running.
+	//
+	// - `TERMINATING`: The cluster is terminating.
+	//
+	// - `TERMINATED`: The cluster is terminated.
+	//
+	// - `TERMINATED_WITH_ERRORS`: The cluster terminated due to errors.
+	//
+	// - `TERMINATE_FAILED`: The cluster failed to terminate.
 	//
 	// example:
 	//
 	// RUNNING
 	ClusterState *string `json:"ClusterState,omitempty" xml:"ClusterState,omitempty"`
-	// 集群类型。
+	// The cluster type. Valid values:
+	//
+	// - `DATALAKE`: New data lake.
+	//
+	// - `OLAP`: Data analysis.
+	//
+	// - `DATAFLOW`: Real-time data flow.
+	//
+	// - `DATASERVING`: Data serving.
+	//
+	// - `CUSTOM`: Custom cluster.
+	//
+	// - `HADOOP`: Legacy data lake.
 	//
 	// example:
 	//
 	// DATALAKE
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	// 创建时间。
+	// The time when the cluster was created. The time is a Unix timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1592837465784
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Indicates whether deletion protection is enabled for the cluster.
+	//
 	// example:
 	//
 	// false
 	DeletionProtection *bool `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
-	// 部署模式。
+	// The application deployment mode. Valid values:
+	//
+	// - `NORMAL`: Standard deployment.
+	//
+	// - `HA`: High-availability deployment.
 	//
 	// example:
 	//
 	// HA
-	DeployMode  *string `json:"DeployMode,omitempty" xml:"DeployMode,omitempty"`
+	DeployMode *string `json:"DeployMode,omitempty" xml:"DeployMode,omitempty"`
+	// The cluster description.
+	//
+	// example:
+	//
+	// EMR cluster
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// EMR默认角色。
+	// The default role for E-MapReduce.
 	//
 	// example:
 	//
 	// AliyunEMRDefaultRole
 	EmrDefaultRole *string `json:"EmrDefaultRole,omitempty" xml:"EmrDefaultRole,omitempty"`
-	// 删除时间。
+	// The time when the cluster was deleted. The time is a Unix timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1592837465784
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// 过期时间。
+	// The time when the cluster is scheduled to expire. The time is a Unix timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1592837465784
 	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// 节点属性。
+	// The node attributes.
 	NodeAttributes *NodeAttributes `json:"NodeAttributes,omitempty" xml:"NodeAttributes,omitempty"`
-	// 付费类型。
+	// The billing method. Valid values:
+	//
+	// - `PayAsYouGo`: Pay-as-you-go.
+	//
+	// - `Subscription`: Subscription.
 	//
 	// example:
 	//
 	// PayAsYouGo
 	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
-	// 可用时间。
+	// The time when the cluster became ready. The time is a Unix timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1592837465784
 	ReadyTime *int64 `json:"ReadyTime,omitempty" xml:"ReadyTime,omitempty"`
-	// 地域ID。
+	// The ID of the region.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// EMR发行版。
+	// The release version of E-MapReduce.
 	//
 	// example:
 	//
-	// EMR-5.3.0
+	// EMR-5.8.0
 	ReleaseVersion *string `json:"ReleaseVersion,omitempty" xml:"ReleaseVersion,omitempty"`
-	// 资源组ID。
+	// The ID of the resource group.
 	//
 	// example:
 	//
 	// rg-acfmzabjyop****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// Kerberos安全模式。
+	// The security mode of the cluster. Valid values:
+	//
+	// - `NORMAL`: Kerberos is disabled.
+	//
+	// - `KERBEROS`: Kerberos is enabled.
 	//
 	// example:
 	//
 	// NORMAL
-	SecurityMode      *string                   `json:"SecurityMode,omitempty" xml:"SecurityMode,omitempty"`
+	SecurityMode *string `json:"SecurityMode,omitempty" xml:"SecurityMode,omitempty"`
+	// The reason for the cluster state change.
 	StateChangeReason *ClusterStateChangeReason `json:"StateChangeReason,omitempty" xml:"StateChangeReason,omitempty"`
-	// 预付费配置。
+	// The subscription configuration.
 	SubscriptionConfig *SubscriptionConfig `json:"SubscriptionConfig,omitempty" xml:"SubscriptionConfig,omitempty"`
-	// 集群标签。
+	// The cluster tags.
 	Tags []*Tag `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 

@@ -16,13 +16,15 @@ type iUpdateClusterAutoRenewResponseBody interface {
 }
 
 type UpdateClusterAutoRenewResponseBody struct {
-	// 请求ID。
+	// The request ID.
 	//
 	// example:
 	//
 	// 9E3A7161-EB7B-172B-8D18-FFB06BA3896A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Deprecated
+	//
+	// Indicates whether the operation was successful.
 	//
 	// example:
 	//

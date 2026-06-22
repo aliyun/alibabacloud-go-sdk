@@ -237,7 +237,7 @@ func (client *Client) CreateNodeGroupWithContext(ctx context.Context, request *C
 
 // Summary:
 //
-// Adds a bootstrap action or a common script of an E-MapReduce (EMR) cluster.
+// Creates a bootstrap script or a regular cluster script.
 //
 // @param request - CreateScriptRequest
 //
@@ -297,11 +297,11 @@ func (client *Client) CreateScriptWithContext(ctx context.Context, request *Crea
 
 // Summary:
 //
-// Creates multiple users at a time.
+// Creates users in a batch.
 //
 // Description:
 //
-// You can call this operation to create multiple users at a time.
+// Creates users in a batch.
 //
 // @param request - CreateUsersRequest
 //
@@ -353,7 +353,7 @@ func (client *Client) CreateUsersWithContext(ctx context.Context, request *Creat
 
 // Summary:
 //
-// Performs a scale-out operation on the target node group.
+// Scales in a target node group.
 //
 // @param request - DecreaseNodesRequest
 //
@@ -475,6 +475,10 @@ func (client *Client) DeleteApiTemplateWithContext(ctx context.Context, request 
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a pay-as-you-go cluster.
+//
 // @param request - DeleteClusterRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -511,6 +515,62 @@ func (client *Client) DeleteClusterWithContext(ctx context.Context, request *Del
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteClusterResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a created cluster node group.
+//
+// @param request - DeleteNodeGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteNodeGroupResponse
+func (client *Client) DeleteNodeGroupWithContext(ctx context.Context, request *DeleteNodeGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteNodeGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClusterId) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.NodeGroupId) {
+		query["NodeGroupId"] = request.NodeGroupId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteNodeGroup"),
+		Version:     dara.String("2021-03-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteNodeGroupResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -641,7 +701,7 @@ func (client *Client) DeleteUsersWithContext(ctx context.Context, tmpReq *Delete
 
 // Summary:
 //
-// 导出应用服务配置
+// Exports the configurations of a specified service in a cluster.
 //
 // @param request - ExportApplicationConfigsRequest
 //
@@ -765,7 +825,7 @@ func (client *Client) GetApiTemplateWithContext(ctx context.Context, request *Ge
 //
 // Description:
 //
-// 查询应用详情。
+// Queries the details of an application.
 //
 // @param request - GetApplicationRequest
 //
@@ -817,7 +877,7 @@ func (client *Client) GetApplicationWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
-// Queries the information about an auto scaling activity.
+// Retrieves the details of an Auto Scaling activity.
 //
 // @param request - GetAutoScalingActivityRequest
 //
@@ -869,7 +929,7 @@ func (client *Client) GetAutoScalingActivityWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries custom auto scaling rules.
+// Retrieves the details of a custom Auto Scaling policy.
 //
 // @param request - GetAutoScalingPolicyRequest
 //
@@ -969,7 +1029,7 @@ func (client *Client) GetClusterWithContext(ctx context.Context, request *GetClu
 
 // Summary:
 //
-// Obtains metadata of the E-MapReduce (EMR) cluster that you want to clone. This helps you call the CreateCluster API operation to quickly create an EMR cluster.
+// Retrieves the clone metadata of an E-MapReduce (EMR) cluster. You can use this metadata to quickly create a cluster by calling the CreateCluster operation.
 //
 // @param request - GetClusterCloneMetaRequest
 //
@@ -1779,6 +1839,10 @@ func (client *Client) GetDoctorReportComponentSummaryWithContext(ctx context.Con
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the details of a managed scaling policy.
+//
 // @param request - GetManagedScalingPolicyRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1825,11 +1889,11 @@ func (client *Client) GetManagedScalingPolicyWithContext(ctx context.Context, re
 
 // Summary:
 //
-// You can call this operation to obtain the details of a node group.
+// Queries the details of a node group.
 //
 // Description:
 //
-// 获取节点组详情。
+// Queries the details of a node group.
 //
 // @param request - GetNodeGroupRequest
 //
@@ -1933,7 +1997,7 @@ func (client *Client) GetOperationWithContext(ctx context.Context, request *GetO
 
 // Summary:
 //
-// Scales out the node group.
+// Scales out a target node group.
 //
 // @param request - IncreaseNodesRequest
 //
@@ -2073,7 +2137,7 @@ func (client *Client) JoinResourceGroupWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 查询API模板
+// Lists API templates.
 //
 // @param request - ListApiTemplatesRequest
 //
@@ -2149,7 +2213,7 @@ func (client *Client) ListApiTemplatesWithContext(ctx context.Context, request *
 //
 // Description:
 //
-// 查询应用配置。
+// Queries application configurations.
 //
 // @param request - ListApplicationConfigsRequest
 //
@@ -2289,7 +2353,7 @@ func (client *Client) ListApplicationsWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries a list of auto scaling activities.
+// Lists Auto Scaling activities.
 //
 // @param request - ListAutoScalingActivitiesRequest
 //
@@ -2377,7 +2441,7 @@ func (client *Client) ListAutoScalingActivitiesWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries E-MapReduce (EMR) clusters.
+// Lists EMR clusters.
 //
 // @param request - ListClustersRequest
 //
@@ -2919,9 +2983,13 @@ func (client *Client) ListDoctorHBaseTablesWithContext(ctx context.Context, requ
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves batch analysis results for specific directories using EMR Doctor. The directory depth cannot exceed five levels.
+//
 // Description:
 //
-// list Doctor HDFSNodes
+// Queries the analysis results for HDFS directories.
 //
 // @param request - ListDoctorHDFSDirectoriesRequest
 //
@@ -3453,7 +3521,7 @@ func (client *Client) ListDoctorReportsWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Lists instance types.
+// Retrieves a list of EMR instance types.
 //
 // @param request - ListInstanceTypesRequest
 //
@@ -3537,7 +3605,7 @@ func (client *Client) ListInstanceTypesWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries the list of node groups in an EMR cluster.
+// Queries the node groups in an EMR cluster.
 //
 // @param request - ListNodeGroupsRequest
 //
@@ -3701,7 +3769,7 @@ func (client *Client) ListNodesWithContext(ctx context.Context, request *ListNod
 //
 // Description:
 //
-// 查询主版本。
+// Queries release versions.
 //
 // @param request - ListReleaseVersionsRequest
 //
@@ -3753,7 +3821,7 @@ func (client *Client) ListReleaseVersionsWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Query EMR cluster bootstrap scripts or regular scripts.
+// Queries the bootstrap or normal scripts of an EMR cluster.
 //
 // @param request - ListScriptsRequest
 //
@@ -3825,7 +3893,7 @@ func (client *Client) ListScriptsWithContext(ctx context.Context, request *ListS
 
 // Summary:
 //
-// Queries the tags that are bound to an EMR cluster.
+// Queries the tags attached to E-MapReduce (EMR) clusters.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -3957,11 +4025,11 @@ func (client *Client) ListUsersWithContext(ctx context.Context, request *ListUse
 
 // Summary:
 //
-// Adds a custom auto scaling rule.
+// Creates a custom Auto Scaling policy.
 //
 // Description:
 //
-// You can call this operation to configure auto scaling policies.
+// Configures an Auto Scaling policy.
 //
 // @param request - PutAutoScalingPolicyRequest
 //
@@ -4119,6 +4187,10 @@ func (client *Client) RemoveAutoScalingPolicyWithContext(ctx context.Context, re
 	return _result, _err
 }
 
+// Summary:
+//
+// Runs an API template.
+//
 // @param request - RunApiTemplateRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4249,11 +4321,11 @@ func (client *Client) RunApplicationActionWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Creates a pay-as-you-go or subscription E-MapReduce (EMR) cluster.
+// Creates a pay-as-you-go or subscription cluster.
 //
 // Description:
 //
-// RunCluster is an upgraded version of CreateCluster. RunCluster uses HTTPS POST requests and supports more parameters. Complex parameters, such as parameters of the object and array types, are in the JSON format and are more friendly for users who use CLI.
+// RunCluster is an upgraded version of CreateCluster. It uses HTTPS POST requests and supports larger parameter values. For complex parameters, such as objects and arrays, RunCluster uses the JSON format. This improves compatibility with command-line interface (CLI) tools.
 //
 // @param tmpReq - RunClusterRequest
 //
@@ -4525,7 +4597,7 @@ func (client *Client) UntagResourcesWithContext(ctx context.Context, request *Un
 //
 // Description:
 //
-// 修改集群模板
+// Modifies a cluster template.
 //
 // @param request - UpdateApiTemplateRequest
 //
@@ -4589,7 +4661,7 @@ func (client *Client) UpdateApiTemplateWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Updates the application configurations.
+// Updates the configurations of an application.
 //
 // @param request - UpdateApplicationConfigsRequest
 //
@@ -4732,6 +4804,14 @@ func (client *Client) UpdateClusterAttributeWithContext(ctx context.Context, req
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables or disables auto-renewal for an EMR cluster and its Elastic Compute Service (ECS) instances.
+//
+// Description:
+//
+// Before you call this operation, make sure you understand the billing methods and [pricing](https://www.aliyun.com/price/product?spm=openapi-amp.newDocPublishment.0.0.d54d281ftXTbvg#/emapreduce/detail/emrpre) of E-MapReduce. Note: Auto-renewal is different from manual renewal. If an instance has expired or will expire the next day, you must perform a manual renewal first.
+//
 // @param request - UpdateClusterAutoRenewRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4788,6 +4868,130 @@ func (client *Client) UpdateClusterAutoRenewWithContext(ctx context.Context, req
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateClusterAutoRenewResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the attributes of a node group.
+//
+// Description:
+//
+// 更新节点组基本属性。
+//
+// @param request - UpdateNodeGroupAttributesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateNodeGroupAttributesResponse
+func (client *Client) UpdateNodeGroupAttributesWithContext(ctx context.Context, request *UpdateNodeGroupAttributesRequest, runtime *dara.RuntimeOptions) (_result *UpdateNodeGroupAttributesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AckConfig) {
+		query["AckConfig"] = request.AckConfig
+	}
+
+	if !dara.IsNil(request.AdditionalSecurityGroupIds) {
+		query["AdditionalSecurityGroupIds"] = request.AdditionalSecurityGroupIds
+	}
+
+	if !dara.IsNil(request.AutoCompensateState) {
+		query["AutoCompensateState"] = request.AutoCompensateState
+	}
+
+	if !dara.IsNil(request.ClusterId) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.CostOptimizedConfig) {
+		query["CostOptimizedConfig"] = request.CostOptimizedConfig
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.EcsSpotStrategy) {
+		query["EcsSpotStrategy"] = request.EcsSpotStrategy
+	}
+
+	if !dara.IsNil(request.EnableGracefulDecommission) {
+		query["EnableGracefulDecommission"] = request.EnableGracefulDecommission
+	}
+
+	if !dara.IsNil(request.InstanceTypeList) {
+		query["InstanceTypeList"] = request.InstanceTypeList
+	}
+
+	if !dara.IsNil(request.KeyPairName) {
+		query["KeyPairName"] = request.KeyPairName
+	}
+
+	if !dara.IsNil(request.MaxSize) {
+		query["MaxSize"] = request.MaxSize
+	}
+
+	if !dara.IsNil(request.MinSize) {
+		query["MinSize"] = request.MinSize
+	}
+
+	if !dara.IsNil(request.NodeCount) {
+		query["NodeCount"] = request.NodeCount
+	}
+
+	if !dara.IsNil(request.NodeGroupId) {
+		query["NodeGroupId"] = request.NodeGroupId
+	}
+
+	if !dara.IsNil(request.NodeGroupName) {
+		query["NodeGroupName"] = request.NodeGroupName
+	}
+
+	if !dara.IsNil(request.NodeResizeStrategy) {
+		query["NodeResizeStrategy"] = request.NodeResizeStrategy
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SpotBidPrices) {
+		query["SpotBidPrices"] = request.SpotBidPrices
+	}
+
+	if !dara.IsNil(request.SpotInstanceRemedy) {
+		query["SpotInstanceRemedy"] = request.SpotInstanceRemedy
+	}
+
+	if !dara.IsNil(request.VSwitchId) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateNodeGroupAttributes"),
+		Version:     dara.String("2021-03-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateNodeGroupAttributesResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

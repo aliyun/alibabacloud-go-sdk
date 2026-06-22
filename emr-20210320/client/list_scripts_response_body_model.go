@@ -22,27 +22,27 @@ type iListScriptsResponseBody interface {
 }
 
 type ListScriptsResponseBody struct {
-	// The maximum number of records returned in this request.
+	// The maximum number of entries returned in the request.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The position of the data read.
+	// The token that is used to start the next query.
 	//
 	// example:
 	//
 	// dd6b1b2a-5837-5237-abe4-ff0c89568982
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The scripts.
+	// The list of scripts.
 	Scripts []*ListScriptsResponseBodyScripts `json:"Scripts,omitempty" xml:"Scripts,omitempty" type:"Repeated"`
-	// The total amount of data under the conditions of this request.
+	// The total number of entries that meet the request conditions.
 	//
 	// example:
 	//
@@ -117,51 +117,51 @@ func (s *ListScriptsResponseBody) Validate() error {
 }
 
 type ListScriptsResponseBodyScripts struct {
-	// API name.
+	// The name of the API.
 	//
 	// example:
 	//
 	// ListScripts
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	// End execution time. This value is returned only when `ScriptType` is `NORMAL`.
+	// The time when the execution ended. This parameter is returned only when ScriptType is set to NORMAL.
 	//
 	// example:
 	//
 	// 1639715635819
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Execution failure strategy. Possible values:
+	// The policy used to handle an execution failure. Valid values:
 	//
-	// - FAILED_CONTINUE: Continue after failure.
+	// - FAILED_CONTINUE: Continue the execution.
 	//
-	// - FAILED_BLOCK: Block after failure.
+	// - FAILED_BLOCK: Block the execution.
 	//
 	// example:
 	//
 	// FAILED_CONTINUE
 	ExecutionFailStrategy *string `json:"ExecutionFailStrategy,omitempty" xml:"ExecutionFailStrategy,omitempty"`
-	// Execution timing. Possible values:
+	// The time to execute the script. Valid values:
 	//
-	// - BEFORE_INSTALL: Before application installation.
+	// - BEFORE_INSTALL: before application installation.
 	//
-	// - AFTER_STARTED: After application startup.
+	// - AFTER_STARTED: after application startup.
 	//
 	// example:
 	//
 	// BEFORE_INSTALL
 	ExecutionMoment *string `json:"ExecutionMoment,omitempty" xml:"ExecutionMoment,omitempty"`
-	// Script execution state. This value is returned only when `ScriptType` is `NORMAL`. Possible values:
+	// The execution status of the script. This parameter is returned only when `ScriptType` is set to `NORMAL`. Valid values:
 	//
-	// - SCRIPT_COMPLETED: Script executed successfully.
+	// - SCRIPT_COMPLETED: The script is successfully executed.
 	//
-	// - SCRIPT_SUBMISSION_FAILED: Script execution failed.
+	// - SCRIPT_SUBMISSION_FAILED: The script fails to be executed.
 	//
-	// - SCRIPT_RUNNING: Script is running.
+	// - SCRIPT_RUNNING: The script is being executed.
 	//
 	// example:
 	//
 	// SCRIPT_COMPLETED
 	ExecutionState *string `json:"ExecutionState,omitempty" xml:"ExecutionState,omitempty"`
-	// Time of the last update.
+	// The time when the script was last updated.
 	//
 	// example:
 	//
@@ -169,37 +169,37 @@ type ListScriptsResponseBodyScripts struct {
 	LastUpdateTime *int64 `json:"LastUpdateTime,omitempty" xml:"LastUpdateTime,omitempty"`
 	// The node selector.
 	NodeSelector *NodeSelector `json:"NodeSelector,omitempty" xml:"NodeSelector,omitempty"`
-	// Region ID.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Script execution parameters.
+	// The runtime parameters of the script.
 	//
 	// example:
 	//
 	// --mode=client -h -p
 	ScriptArgs *string `json:"ScriptArgs,omitempty" xml:"ScriptArgs,omitempty"`
-	// Script ID.
+	// The script ID.
 	//
 	// example:
 	//
 	// cs-bf25219d103043a0820613e32781****
 	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
-	// Script name.
+	// The script name.
 	//
 	// example:
 	//
 	// check_env
 	ScriptName *string `json:"ScriptName,omitempty" xml:"ScriptName,omitempty"`
-	// Script path.
+	// The script path.
 	//
 	// example:
 	//
 	// oss://bucket1/check_evn.sh
 	ScriptPath *string `json:"ScriptPath,omitempty" xml:"ScriptPath,omitempty"`
-	// Start execution time. This value is returned only when `ScriptType` is `NORMAL`.
+	// The time when the execution started. This parameter is returned only when ScriptType is set to NORMAL.
 	//
 	// example:
 	//

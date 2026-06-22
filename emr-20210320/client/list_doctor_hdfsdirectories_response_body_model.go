@@ -22,26 +22,27 @@ type iListDoctorHDFSDirectoriesResponseBody interface {
 }
 
 type ListDoctorHDFSDirectoriesResponseBody struct {
+	// The analytical data for the batch analysis of HDFS directories.
 	Data []*ListDoctorHDFSDirectoriesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// 本次请求所返回的最大记录条数。
+	// The maximum number of records returned.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 返回读取到的数据位置，空代表数据已经读取完毕。
+	// The starting position for the next read.
 	//
 	// example:
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C89568980
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 请求ID。
+	// The ID of the request.
 	//
 	// example:
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 本次请求条件下的数据总量。
+	// The total number of entries that match the request.
 	//
 	// example:
 	//
@@ -116,19 +117,28 @@ func (s *ListDoctorHDFSDirectoriesResponseBody) Validate() error {
 }
 
 type ListDoctorHDFSDirectoriesResponseBodyData struct {
+	// The directory level.
+	//
 	// example:
 	//
 	// 2
 	Depth *int32 `json:"Depth,omitempty" xml:"Depth,omitempty"`
+	// The directory name.
+	//
 	// example:
 	//
 	// /tmp/test
 	DirPath *string `json:"DirPath,omitempty" xml:"DirPath,omitempty"`
+	// The group of the folder.
+	//
 	// example:
 	//
 	// DW
-	Group   *string                                           `json:"Group,omitempty" xml:"Group,omitempty"`
+	Group *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	// The metric information.
 	Metrics *ListDoctorHDFSDirectoriesResponseBodyDataMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Struct"`
+	// The owner of the directory.
+	//
 	// example:
 	//
 	// DW
@@ -198,39 +208,72 @@ func (s *ListDoctorHDFSDirectoriesResponseBodyData) Validate() error {
 }
 
 type ListDoctorHDFSDirectoriesResponseBodyDataMetrics struct {
-	ColdDataDayGrowthSize         *ListDoctorHDFSDirectoriesResponseBodyDataMetricsColdDataDayGrowthSize         `json:"ColdDataDayGrowthSize,omitempty" xml:"ColdDataDayGrowthSize,omitempty" type:"Struct"`
-	ColdDataSize                  *ListDoctorHDFSDirectoriesResponseBodyDataMetricsColdDataSize                  `json:"ColdDataSize,omitempty" xml:"ColdDataSize,omitempty" type:"Struct"`
-	ColdDataSizeDayGrowthRatio    *ListDoctorHDFSDirectoriesResponseBodyDataMetricsColdDataSizeDayGrowthRatio    `json:"ColdDataSizeDayGrowthRatio,omitempty" xml:"ColdDataSizeDayGrowthRatio,omitempty" type:"Struct"`
-	EmptyFileCount                *ListDoctorHDFSDirectoriesResponseBodyDataMetricsEmptyFileCount                `json:"EmptyFileCount,omitempty" xml:"EmptyFileCount,omitempty" type:"Struct"`
-	EmptyFileCountDayGrowthRatio  *ListDoctorHDFSDirectoriesResponseBodyDataMetricsEmptyFileCountDayGrowthRatio  `json:"EmptyFileCountDayGrowthRatio,omitempty" xml:"EmptyFileCountDayGrowthRatio,omitempty" type:"Struct"`
-	EmptyFileDayGrowthCount       *ListDoctorHDFSDirectoriesResponseBodyDataMetricsEmptyFileDayGrowthCount       `json:"EmptyFileDayGrowthCount,omitempty" xml:"EmptyFileDayGrowthCount,omitempty" type:"Struct"`
-	FreezeDataDayGrowthSize       *ListDoctorHDFSDirectoriesResponseBodyDataMetricsFreezeDataDayGrowthSize       `json:"FreezeDataDayGrowthSize,omitempty" xml:"FreezeDataDayGrowthSize,omitempty" type:"Struct"`
-	FreezeDataSize                *ListDoctorHDFSDirectoriesResponseBodyDataMetricsFreezeDataSize                `json:"FreezeDataSize,omitempty" xml:"FreezeDataSize,omitempty" type:"Struct"`
-	FreezeDataSizeDayGrowthRatio  *ListDoctorHDFSDirectoriesResponseBodyDataMetricsFreezeDataSizeDayGrowthRatio  `json:"FreezeDataSizeDayGrowthRatio,omitempty" xml:"FreezeDataSizeDayGrowthRatio,omitempty" type:"Struct"`
-	HotDataDayGrowthSize          *ListDoctorHDFSDirectoriesResponseBodyDataMetricsHotDataDayGrowthSize          `json:"HotDataDayGrowthSize,omitempty" xml:"HotDataDayGrowthSize,omitempty" type:"Struct"`
-	HotDataSize                   *ListDoctorHDFSDirectoriesResponseBodyDataMetricsHotDataSize                   `json:"HotDataSize,omitempty" xml:"HotDataSize,omitempty" type:"Struct"`
-	HotDataSizeDayGrowthRatio     *ListDoctorHDFSDirectoriesResponseBodyDataMetricsHotDataSizeDayGrowthRatio     `json:"HotDataSizeDayGrowthRatio,omitempty" xml:"HotDataSizeDayGrowthRatio,omitempty" type:"Struct"`
-	LargeFileCount                *ListDoctorHDFSDirectoriesResponseBodyDataMetricsLargeFileCount                `json:"LargeFileCount,omitempty" xml:"LargeFileCount,omitempty" type:"Struct"`
-	LargeFileCountDayGrowthRatio  *ListDoctorHDFSDirectoriesResponseBodyDataMetricsLargeFileCountDayGrowthRatio  `json:"LargeFileCountDayGrowthRatio,omitempty" xml:"LargeFileCountDayGrowthRatio,omitempty" type:"Struct"`
-	LargeFileDayGrowthCount       *ListDoctorHDFSDirectoriesResponseBodyDataMetricsLargeFileDayGrowthCount       `json:"LargeFileDayGrowthCount,omitempty" xml:"LargeFileDayGrowthCount,omitempty" type:"Struct"`
-	MediumFileCount               *ListDoctorHDFSDirectoriesResponseBodyDataMetricsMediumFileCount               `json:"MediumFileCount,omitempty" xml:"MediumFileCount,omitempty" type:"Struct"`
+	// The daily growth in the size of cold data. Cold data is data that was last accessed between 30 and 90 days ago.
+	ColdDataDayGrowthSize *ListDoctorHDFSDirectoriesResponseBodyDataMetricsColdDataDayGrowthSize `json:"ColdDataDayGrowthSize,omitempty" xml:"ColdDataDayGrowthSize,omitempty" type:"Struct"`
+	// The size of the cold data. Cold data is data that was last accessed between 30 and 90 days ago.
+	ColdDataSize *ListDoctorHDFSDirectoriesResponseBodyDataMetricsColdDataSize `json:"ColdDataSize,omitempty" xml:"ColdDataSize,omitempty" type:"Struct"`
+	// The day-over-day growth rate of the cold data size. Cold data refers to data last accessed between 30 and 90 days ago.
+	ColdDataSizeDayGrowthRatio *ListDoctorHDFSDirectoriesResponseBodyDataMetricsColdDataSizeDayGrowthRatio `json:"ColdDataSizeDayGrowthRatio,omitempty" xml:"ColdDataSizeDayGrowthRatio,omitempty" type:"Struct"`
+	// The count of empty files. An empty file is a file with a size of 0 MB.
+	EmptyFileCount *ListDoctorHDFSDirectoriesResponseBodyDataMetricsEmptyFileCount `json:"EmptyFileCount,omitempty" xml:"EmptyFileCount,omitempty" type:"Struct"`
+	// The day-over-day growth ratio of the empty file count. An empty file is a file with a size of 0 MB.
+	EmptyFileCountDayGrowthRatio *ListDoctorHDFSDirectoriesResponseBodyDataMetricsEmptyFileCountDayGrowthRatio `json:"EmptyFileCountDayGrowthRatio,omitempty" xml:"EmptyFileCountDayGrowthRatio,omitempty" type:"Struct"`
+	// The daily growth in the number of empty files. An empty file has a size of 0 MB.
+	EmptyFileDayGrowthCount *ListDoctorHDFSDirectoriesResponseBodyDataMetricsEmptyFileDayGrowthCount `json:"EmptyFileDayGrowthCount,omitempty" xml:"EmptyFileDayGrowthCount,omitempty" type:"Struct"`
+	// The daily growth in the size of freeze data. Freeze data is data that has not been accessed for 90 days.
+	FreezeDataDayGrowthSize *ListDoctorHDFSDirectoriesResponseBodyDataMetricsFreezeDataDayGrowthSize `json:"FreezeDataDayGrowthSize,omitempty" xml:"FreezeDataDayGrowthSize,omitempty" type:"Struct"`
+	// The size of the frozen data. Data is considered frozen if it has not been accessed in the last 90 days.
+	FreezeDataSize *ListDoctorHDFSDirectoriesResponseBodyDataMetricsFreezeDataSize `json:"FreezeDataSize,omitempty" xml:"FreezeDataSize,omitempty" type:"Struct"`
+	// The daily growth rate of freeze data. Freeze data is data that has not been accessed in 90 days.
+	FreezeDataSizeDayGrowthRatio *ListDoctorHDFSDirectoriesResponseBodyDataMetricsFreezeDataSizeDayGrowthRatio `json:"FreezeDataSizeDayGrowthRatio,omitempty" xml:"FreezeDataSizeDayGrowthRatio,omitempty" type:"Struct"`
+	// The daily increase in hot data size. Hot data is data that has been accessed within the last 7 days.
+	HotDataDayGrowthSize *ListDoctorHDFSDirectoriesResponseBodyDataMetricsHotDataDayGrowthSize `json:"HotDataDayGrowthSize,omitempty" xml:"HotDataDayGrowthSize,omitempty" type:"Struct"`
+	// The size of the hot data. Hot data is data accessed within the last 7 days.
+	HotDataSize *ListDoctorHDFSDirectoriesResponseBodyDataMetricsHotDataSize `json:"HotDataSize,omitempty" xml:"HotDataSize,omitempty" type:"Struct"`
+	// The daily growth rate of the hot data size. Hot data is any data accessed in the past 7 days.
+	HotDataSizeDayGrowthRatio *ListDoctorHDFSDirectoriesResponseBodyDataMetricsHotDataSizeDayGrowthRatio `json:"HotDataSizeDayGrowthRatio,omitempty" xml:"HotDataSizeDayGrowthRatio,omitempty" type:"Struct"`
+	// The number of large files. A large file is a file that is 1 GB or larger.
+	LargeFileCount *ListDoctorHDFSDirectoriesResponseBodyDataMetricsLargeFileCount `json:"LargeFileCount,omitempty" xml:"LargeFileCount,omitempty" type:"Struct"`
+	// The day-over-day growth ratio of the large file count. A large file is a file that is 1 GB or larger.
+	LargeFileCountDayGrowthRatio *ListDoctorHDFSDirectoriesResponseBodyDataMetricsLargeFileCountDayGrowthRatio `json:"LargeFileCountDayGrowthRatio,omitempty" xml:"LargeFileCountDayGrowthRatio,omitempty" type:"Struct"`
+	// The daily increase in the number of large files. A large file is a file larger than 1 GB.
+	LargeFileDayGrowthCount *ListDoctorHDFSDirectoriesResponseBodyDataMetricsLargeFileDayGrowthCount `json:"LargeFileDayGrowthCount,omitempty" xml:"LargeFileDayGrowthCount,omitempty" type:"Struct"`
+	// The number of files larger than 128 MB and up to 1 GB.
+	MediumFileCount *ListDoctorHDFSDirectoriesResponseBodyDataMetricsMediumFileCount `json:"MediumFileCount,omitempty" xml:"MediumFileCount,omitempty" type:"Struct"`
+	// The day-over-day growth ratio of the number of medium-sized files. A medium-sized file is larger than 128 MB and smaller than 1 GB.
 	MediumFileCountDayGrowthRatio *ListDoctorHDFSDirectoriesResponseBodyDataMetricsMediumFileCountDayGrowthRatio `json:"MediumFileCountDayGrowthRatio,omitempty" xml:"MediumFileCountDayGrowthRatio,omitempty" type:"Struct"`
-	MediumFileDayGrowthCount      *ListDoctorHDFSDirectoriesResponseBodyDataMetricsMediumFileDayGrowthCount      `json:"MediumFileDayGrowthCount,omitempty" xml:"MediumFileDayGrowthCount,omitempty" type:"Struct"`
-	SmallFileCount                *ListDoctorHDFSDirectoriesResponseBodyDataMetricsSmallFileCount                `json:"SmallFileCount,omitempty" xml:"SmallFileCount,omitempty" type:"Struct"`
-	SmallFileCountDayGrowthRatio  *ListDoctorHDFSDirectoriesResponseBodyDataMetricsSmallFileCountDayGrowthRatio  `json:"SmallFileCountDayGrowthRatio,omitempty" xml:"SmallFileCountDayGrowthRatio,omitempty" type:"Struct"`
-	SmallFileDayGrowthCount       *ListDoctorHDFSDirectoriesResponseBodyDataMetricsSmallFileDayGrowthCount       `json:"SmallFileDayGrowthCount,omitempty" xml:"SmallFileDayGrowthCount,omitempty" type:"Struct"`
-	TinyFileCount                 *ListDoctorHDFSDirectoriesResponseBodyDataMetricsTinyFileCount                 `json:"TinyFileCount,omitempty" xml:"TinyFileCount,omitempty" type:"Struct"`
-	TinyFileCountDayGrowthRatio   *ListDoctorHDFSDirectoriesResponseBodyDataMetricsTinyFileCountDayGrowthRatio   `json:"TinyFileCountDayGrowthRatio,omitempty" xml:"TinyFileCountDayGrowthRatio,omitempty" type:"Struct"`
-	TinyFileDayGrowthCount        *ListDoctorHDFSDirectoriesResponseBodyDataMetricsTinyFileDayGrowthCount        `json:"TinyFileDayGrowthCount,omitempty" xml:"TinyFileDayGrowthCount,omitempty" type:"Struct"`
-	TotalDataDayGrowthSize        *ListDoctorHDFSDirectoriesResponseBodyDataMetricsTotalDataDayGrowthSize        `json:"TotalDataDayGrowthSize,omitempty" xml:"TotalDataDayGrowthSize,omitempty" type:"Struct"`
-	TotalDataSize                 *ListDoctorHDFSDirectoriesResponseBodyDataMetricsTotalDataSize                 `json:"TotalDataSize,omitempty" xml:"TotalDataSize,omitempty" type:"Struct"`
-	TotalDataSizeDayGrowthRatio   *ListDoctorHDFSDirectoriesResponseBodyDataMetricsTotalDataSizeDayGrowthRatio   `json:"TotalDataSizeDayGrowthRatio,omitempty" xml:"TotalDataSizeDayGrowthRatio,omitempty" type:"Struct"`
-	TotalFileCount                *ListDoctorHDFSDirectoriesResponseBodyDataMetricsTotalFileCount                `json:"TotalFileCount,omitempty" xml:"TotalFileCount,omitempty" type:"Struct"`
-	TotalFileCountDayGrowthRatio  *ListDoctorHDFSDirectoriesResponseBodyDataMetricsTotalFileCountDayGrowthRatio  `json:"TotalFileCountDayGrowthRatio,omitempty" xml:"TotalFileCountDayGrowthRatio,omitempty" type:"Struct"`
-	TotalFileDayGrowthCount       *ListDoctorHDFSDirectoriesResponseBodyDataMetricsTotalFileDayGrowthCount       `json:"TotalFileDayGrowthCount,omitempty" xml:"TotalFileDayGrowthCount,omitempty" type:"Struct"`
-	WarmDataDayGrowthSize         *ListDoctorHDFSDirectoriesResponseBodyDataMetricsWarmDataDayGrowthSize         `json:"WarmDataDayGrowthSize,omitempty" xml:"WarmDataDayGrowthSize,omitempty" type:"Struct"`
-	WarmDataSize                  *ListDoctorHDFSDirectoriesResponseBodyDataMetricsWarmDataSize                  `json:"WarmDataSize,omitempty" xml:"WarmDataSize,omitempty" type:"Struct"`
-	WarmDataSizeDayGrowthRatio    *ListDoctorHDFSDirectoriesResponseBodyDataMetricsWarmDataSizeDayGrowthRatio    `json:"WarmDataSizeDayGrowthRatio,omitempty" xml:"WarmDataSizeDayGrowthRatio,omitempty" type:"Struct"`
+	// The daily increase in the number of medium-sized files. A medium-sized file is larger than 128 MB and less than or equal to 1 GB.
+	MediumFileDayGrowthCount *ListDoctorHDFSDirectoriesResponseBodyDataMetricsMediumFileDayGrowthCount `json:"MediumFileDayGrowthCount,omitempty" xml:"MediumFileDayGrowthCount,omitempty" type:"Struct"`
+	// The number of small files. A small file is a file with a size from 10 MB to 128 MB.
+	SmallFileCount *ListDoctorHDFSDirectoriesResponseBodyDataMetricsSmallFileCount `json:"SmallFileCount,omitempty" xml:"SmallFileCount,omitempty" type:"Struct"`
+	// The day-over-day growth ratio of the number of small files. A small file has a size greater than 10 MB and less than or equal to 128 MB.
+	SmallFileCountDayGrowthRatio *ListDoctorHDFSDirectoriesResponseBodyDataMetricsSmallFileCountDayGrowthRatio `json:"SmallFileCountDayGrowthRatio,omitempty" xml:"SmallFileCountDayGrowthRatio,omitempty" type:"Struct"`
+	// The number of new small files added each day. A small file is 10 MB to 128 MB.
+	SmallFileDayGrowthCount *ListDoctorHDFSDirectoriesResponseBodyDataMetricsSmallFileDayGrowthCount `json:"SmallFileDayGrowthCount,omitempty" xml:"SmallFileDayGrowthCount,omitempty" type:"Struct"`
+	// The number of tiny files. A tiny file is larger than 0 MB and up to 10 MB in size.
+	TinyFileCount *ListDoctorHDFSDirectoriesResponseBodyDataMetricsTinyFileCount `json:"TinyFileCount,omitempty" xml:"TinyFileCount,omitempty" type:"Struct"`
+	// The daily growth rate of tiny files. A tiny file is larger than 0 MB and smaller than 10 MB.
+	TinyFileCountDayGrowthRatio *ListDoctorHDFSDirectoriesResponseBodyDataMetricsTinyFileCountDayGrowthRatio `json:"TinyFileCountDayGrowthRatio,omitempty" xml:"TinyFileCountDayGrowthRatio,omitempty" type:"Struct"`
+	// The daily growth in the tiny file count. A tiny file is a file larger than 0 MB and smaller than 10 MB.
+	TinyFileDayGrowthCount *ListDoctorHDFSDirectoriesResponseBodyDataMetricsTinyFileDayGrowthCount `json:"TinyFileDayGrowthCount,omitempty" xml:"TinyFileDayGrowthCount,omitempty" type:"Struct"`
+	// The daily growth in the total data size.
+	TotalDataDayGrowthSize *ListDoctorHDFSDirectoriesResponseBodyDataMetricsTotalDataDayGrowthSize `json:"TotalDataDayGrowthSize,omitempty" xml:"TotalDataDayGrowthSize,omitempty" type:"Struct"`
+	// The total data size.
+	TotalDataSize *ListDoctorHDFSDirectoriesResponseBodyDataMetricsTotalDataSize `json:"TotalDataSize,omitempty" xml:"TotalDataSize,omitempty" type:"Struct"`
+	// The day-over-day growth ratio of the total data size.
+	TotalDataSizeDayGrowthRatio *ListDoctorHDFSDirectoriesResponseBodyDataMetricsTotalDataSizeDayGrowthRatio `json:"TotalDataSizeDayGrowthRatio,omitempty" xml:"TotalDataSizeDayGrowthRatio,omitempty" type:"Struct"`
+	// The total number of files.
+	TotalFileCount *ListDoctorHDFSDirectoriesResponseBodyDataMetricsTotalFileCount `json:"TotalFileCount,omitempty" xml:"TotalFileCount,omitempty" type:"Struct"`
+	// The day-over-day growth ratio of the total file count.
+	TotalFileCountDayGrowthRatio *ListDoctorHDFSDirectoriesResponseBodyDataMetricsTotalFileCountDayGrowthRatio `json:"TotalFileCountDayGrowthRatio,omitempty" xml:"TotalFileCountDayGrowthRatio,omitempty" type:"Struct"`
+	// The daily growth in the total file count.
+	TotalFileDayGrowthCount *ListDoctorHDFSDirectoriesResponseBodyDataMetricsTotalFileDayGrowthCount `json:"TotalFileDayGrowthCount,omitempty" xml:"TotalFileDayGrowthCount,omitempty" type:"Struct"`
+	// The daily growth in the size of warm data. Warm data is data that has not been accessed in the last 7 days, but has been accessed in the last 30 days.
+	WarmDataDayGrowthSize *ListDoctorHDFSDirectoriesResponseBodyDataMetricsWarmDataDayGrowthSize `json:"WarmDataDayGrowthSize,omitempty" xml:"WarmDataDayGrowthSize,omitempty" type:"Struct"`
+	// The size of the warm data. Warm data is data that has been accessed within the past 30 days, but not within the past 7 days.
+	WarmDataSize *ListDoctorHDFSDirectoriesResponseBodyDataMetricsWarmDataSize `json:"WarmDataSize,omitempty" xml:"WarmDataSize,omitempty" type:"Struct"`
+	// The day-over-day growth ratio of the warm data size. Warm data has not been accessed in the last 7 days but has been accessed in the last 30 days.
+	WarmDataSizeDayGrowthRatio *ListDoctorHDFSDirectoriesResponseBodyDataMetricsWarmDataSizeDayGrowthRatio `json:"WarmDataSizeDayGrowthRatio,omitempty" xml:"WarmDataSizeDayGrowthRatio,omitempty" type:"Struct"`
 }
 
 func (s ListDoctorHDFSDirectoriesResponseBodyDataMetrics) String() string {
@@ -708,18 +751,26 @@ func (s *ListDoctorHDFSDirectoriesResponseBodyDataMetrics) Validate() error {
 }
 
 type ListDoctorHDFSDirectoriesResponseBodyDataMetricsColdDataDayGrowthSize struct {
+	// The description of the metric.
+	//
 	// example:
 	//
 	// Day growth size of cold data
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	//
 	// example:
 	//
 	// coldDataDayGrowthSize
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	//
 	// example:
 	//
 	// MB
 	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	//
 	// example:
 	//
 	// -182636577752
@@ -775,18 +826,26 @@ func (s *ListDoctorHDFSDirectoriesResponseBodyDataMetricsColdDataDayGrowthSize) 
 }
 
 type ListDoctorHDFSDirectoriesResponseBodyDataMetricsColdDataSize struct {
+	// The description of the metric.
+	//
 	// example:
 	//
 	// Size of the cold data size
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	//
 	// example:
 	//
 	// coldDataSize
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	//
 	// example:
 	//
 	// MB
 	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The metric value.
+	//
 	// example:
 	//
 	// 5570958082267
@@ -842,18 +901,26 @@ func (s *ListDoctorHDFSDirectoriesResponseBodyDataMetricsColdDataSize) Validate(
 }
 
 type ListDoctorHDFSDirectoriesResponseBodyDataMetricsColdDataSizeDayGrowthRatio struct {
+	// The description of the metric.
+	//
 	// example:
 	//
 	// Day growth ratio of cold data size
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	//
 	// example:
 	//
 	// coldDataSizeDayGrowthRatio
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	//
 	// example:
 	//
 	// ”“
 	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The metric value.
+	//
 	// example:
 	//
 	// -0.03
@@ -909,18 +976,26 @@ func (s *ListDoctorHDFSDirectoriesResponseBodyDataMetricsColdDataSizeDayGrowthRa
 }
 
 type ListDoctorHDFSDirectoriesResponseBodyDataMetricsEmptyFileCount struct {
+	// The description of the metric.
+	//
 	// example:
 	//
 	// Number of empty files
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	//
 	// example:
 	//
 	// emptyFileCount
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	//
 	// example:
 	//
 	// ”“
 	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The metric value.
+	//
 	// example:
 	//
 	// 15595897
@@ -976,18 +1051,26 @@ func (s *ListDoctorHDFSDirectoriesResponseBodyDataMetricsEmptyFileCount) Validat
 }
 
 type ListDoctorHDFSDirectoriesResponseBodyDataMetricsEmptyFileCountDayGrowthRatio struct {
+	// The description of the metric.
+	//
 	// example:
 	//
 	// Day growth ratio of empty files
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	//
 	// example:
 	//
 	// emptyFileCountDayGrowthRatio
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	//
 	// example:
 	//
 	// ”“
 	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The metric value.
+	//
 	// example:
 	//
 	// 0.005
@@ -1043,18 +1126,26 @@ func (s *ListDoctorHDFSDirectoriesResponseBodyDataMetricsEmptyFileCountDayGrowth
 }
 
 type ListDoctorHDFSDirectoriesResponseBodyDataMetricsEmptyFileDayGrowthCount struct {
+	// The description of the metric.
+	//
 	// example:
 	//
 	// Day growth count of empty files
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	//
 	// example:
 	//
 	// emptyFileDayGrowthCount
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	//
 	// example:
 	//
 	// ”“
 	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The metric value.
+	//
 	// example:
 	//
 	// 114
@@ -1110,18 +1201,26 @@ func (s *ListDoctorHDFSDirectoriesResponseBodyDataMetricsEmptyFileDayGrowthCount
 }
 
 type ListDoctorHDFSDirectoriesResponseBodyDataMetricsFreezeDataDayGrowthSize struct {
+	// The description of the metric.
+	//
 	// example:
 	//
 	// Day growth size of freeze data
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	//
 	// example:
 	//
 	// freezeDataDayGrowthSize
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	//
 	// example:
 	//
 	// MB
 	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	//
 	// example:
 	//
 	// -167683929450
@@ -1177,18 +1276,26 @@ func (s *ListDoctorHDFSDirectoriesResponseBodyDataMetricsFreezeDataDayGrowthSize
 }
 
 type ListDoctorHDFSDirectoriesResponseBodyDataMetricsFreezeDataSize struct {
+	// The description of the metric.
+	//
 	// example:
 	//
 	// Size of the freeze data size
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	//
 	// example:
 	//
 	// freezeDataSize
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	//
 	// example:
 	//
 	// MB
 	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The metric value.
+	//
 	// example:
 	//
 	// 1231312431
@@ -1244,18 +1351,26 @@ func (s *ListDoctorHDFSDirectoriesResponseBodyDataMetricsFreezeDataSize) Validat
 }
 
 type ListDoctorHDFSDirectoriesResponseBodyDataMetricsFreezeDataSizeDayGrowthRatio struct {
+	// The description of the metric.
+	//
 	// example:
 	//
 	// Day growth ratio of freeze data size
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	//
 	// example:
 	//
 	// freezeDataSizeDayGrowthRatio
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	//
 	// example:
 	//
 	// ”“
 	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	//
 	// example:
 	//
 	// -0.09
@@ -1311,18 +1426,26 @@ func (s *ListDoctorHDFSDirectoriesResponseBodyDataMetricsFreezeDataSizeDayGrowth
 }
 
 type ListDoctorHDFSDirectoriesResponseBodyDataMetricsHotDataDayGrowthSize struct {
+	// The description of the metric.
+	//
 	// example:
 	//
 	// Day growth size of hot data
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	//
 	// example:
 	//
 	// hotDataDayGrowthSize
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	//
 	// example:
 	//
 	// MB
 	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	//
 	// example:
 	//
 	// 123154
@@ -1378,18 +1501,26 @@ func (s *ListDoctorHDFSDirectoriesResponseBodyDataMetricsHotDataDayGrowthSize) V
 }
 
 type ListDoctorHDFSDirectoriesResponseBodyDataMetricsHotDataSize struct {
+	// The description of the metric.
+	//
 	// example:
 	//
 	// Size of the hot data size
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	//
 	// example:
 	//
 	// hotDataSize
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	//
 	// example:
 	//
 	// MB
 	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	//
 	// example:
 	//
 	// 6701531944206
@@ -1445,18 +1576,26 @@ func (s *ListDoctorHDFSDirectoriesResponseBodyDataMetricsHotDataSize) Validate()
 }
 
 type ListDoctorHDFSDirectoriesResponseBodyDataMetricsHotDataSizeDayGrowthRatio struct {
+	// The description of the metric.
+	//
 	// example:
 	//
 	// Day growth ratio of hot data size
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	//
 	// example:
 	//
 	// hotDataSizeDayGrowthRatio
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	//
 	// example:
 	//
 	// ”“
 	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	//
 	// example:
 	//
 	// 0.1114
@@ -1512,18 +1651,26 @@ func (s *ListDoctorHDFSDirectoriesResponseBodyDataMetricsHotDataSizeDayGrowthRat
 }
 
 type ListDoctorHDFSDirectoriesResponseBodyDataMetricsLargeFileCount struct {
+	// The description of the metric.
+	//
 	// example:
 	//
 	// Number of large files
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	//
 	// example:
 	//
 	// largeFileCount
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	//
 	// example:
 	//
 	// ”“
 	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The metric value.
+	//
 	// example:
 	//
 	// 123
@@ -1579,18 +1726,26 @@ func (s *ListDoctorHDFSDirectoriesResponseBodyDataMetricsLargeFileCount) Validat
 }
 
 type ListDoctorHDFSDirectoriesResponseBodyDataMetricsLargeFileCountDayGrowthRatio struct {
+	// The description of the metric.
+	//
 	// example:
 	//
 	// Day growth ratio of large files
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	//
 	// example:
 	//
 	// largeFileCountDayGrowthRatio
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	//
 	// example:
 	//
 	// ”“
 	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The metric value.
+	//
 	// example:
 	//
 	// 0.39
@@ -1646,18 +1801,26 @@ func (s *ListDoctorHDFSDirectoriesResponseBodyDataMetricsLargeFileCountDayGrowth
 }
 
 type ListDoctorHDFSDirectoriesResponseBodyDataMetricsLargeFileDayGrowthCount struct {
+	// The description of the metric.
+	//
 	// example:
 	//
 	// Day growth count of large files
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	//
 	// example:
 	//
 	// largeFileDayGrowthCount
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	//
 	// example:
 	//
 	// ”“
 	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	//
 	// example:
 	//
 	// 2
@@ -1713,18 +1876,26 @@ func (s *ListDoctorHDFSDirectoriesResponseBodyDataMetricsLargeFileDayGrowthCount
 }
 
 type ListDoctorHDFSDirectoriesResponseBodyDataMetricsMediumFileCount struct {
+	// The description of the metric.
+	//
 	// example:
 	//
 	// Number of medium files
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	//
 	// example:
 	//
 	// mediumFileCount
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	//
 	// example:
 	//
 	// ”“
 	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	//
 	// example:
 	//
 	// 323
@@ -1780,18 +1951,26 @@ func (s *ListDoctorHDFSDirectoriesResponseBodyDataMetricsMediumFileCount) Valida
 }
 
 type ListDoctorHDFSDirectoriesResponseBodyDataMetricsMediumFileCountDayGrowthRatio struct {
+	// The description of the metric.
+	//
 	// example:
 	//
 	// Day growth ratio of medium files
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	//
 	// example:
 	//
 	// mediumFileCountDayGrowthRatio
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	//
 	// example:
 	//
 	// ”“
 	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	//
 	// example:
 	//
 	// 0.19
@@ -1847,18 +2026,26 @@ func (s *ListDoctorHDFSDirectoriesResponseBodyDataMetricsMediumFileCountDayGrowt
 }
 
 type ListDoctorHDFSDirectoriesResponseBodyDataMetricsMediumFileDayGrowthCount struct {
+	// The description of the metric.
+	//
 	// example:
 	//
 	// Day growth count of medium files
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	//
 	// example:
 	//
 	// mediumFileDayGrowthCount
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	//
 	// example:
 	//
 	// ”“
 	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	//
 	// example:
 	//
 	// 176
@@ -1914,18 +2101,26 @@ func (s *ListDoctorHDFSDirectoriesResponseBodyDataMetricsMediumFileDayGrowthCoun
 }
 
 type ListDoctorHDFSDirectoriesResponseBodyDataMetricsSmallFileCount struct {
+	// The description of the metric.
+	//
 	// example:
 	//
 	// Number of small files
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	//
 	// example:
 	//
 	// smallFileCount
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	//
 	// example:
 	//
 	// ”“
 	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	//
 	// example:
 	//
 	// 12345
@@ -1981,18 +2176,26 @@ func (s *ListDoctorHDFSDirectoriesResponseBodyDataMetricsSmallFileCount) Validat
 }
 
 type ListDoctorHDFSDirectoriesResponseBodyDataMetricsSmallFileCountDayGrowthRatio struct {
+	// The description of the metric.
+	//
 	// example:
 	//
 	// Day growth ratio of small files
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	//
 	// example:
 	//
 	// smallFileCountDayGrowthRatio
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	//
 	// example:
 	//
 	// ”“
 	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The metric value.
+	//
 	// example:
 	//
 	// 0.02
@@ -2048,18 +2251,26 @@ func (s *ListDoctorHDFSDirectoriesResponseBodyDataMetricsSmallFileCountDayGrowth
 }
 
 type ListDoctorHDFSDirectoriesResponseBodyDataMetricsSmallFileDayGrowthCount struct {
+	// The description of the metric.
+	//
 	// example:
 	//
 	// Day growth count of small files
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	//
 	// example:
 	//
 	// smallFileDayGrowthCount
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	//
 	// example:
 	//
 	// ”“
 	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The metric value.
+	//
 	// example:
 	//
 	// 12345
@@ -2115,18 +2326,26 @@ func (s *ListDoctorHDFSDirectoriesResponseBodyDataMetricsSmallFileDayGrowthCount
 }
 
 type ListDoctorHDFSDirectoriesResponseBodyDataMetricsTinyFileCount struct {
+	// The description of the metric.
+	//
 	// example:
 	//
 	// Number of tiny files
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	//
 	// example:
 	//
 	// tinyFileCount
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	//
 	// example:
 	//
 	// ""
 	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	//
 	// example:
 	//
 	// 232131
@@ -2182,18 +2401,26 @@ func (s *ListDoctorHDFSDirectoriesResponseBodyDataMetricsTinyFileCount) Validate
 }
 
 type ListDoctorHDFSDirectoriesResponseBodyDataMetricsTinyFileCountDayGrowthRatio struct {
+	// The description of the metric.
+	//
 	// example:
 	//
 	// Day growth ratio of tiny files
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	//
 	// example:
 	//
 	// tinyFileCountDayGrowthRatio
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	//
 	// example:
 	//
 	// ”“
 	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The metric value.
+	//
 	// example:
 	//
 	// 0.003
@@ -2249,18 +2476,26 @@ func (s *ListDoctorHDFSDirectoriesResponseBodyDataMetricsTinyFileCountDayGrowthR
 }
 
 type ListDoctorHDFSDirectoriesResponseBodyDataMetricsTinyFileDayGrowthCount struct {
+	// The description of the metric.
+	//
 	// example:
 	//
 	// Day growth count of tiny files
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	//
 	// example:
 	//
 	// tinyFileDayGrowthCount
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	//
 	// example:
 	//
 	// ”“
 	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The metric value.
+	//
 	// example:
 	//
 	// -123
@@ -2316,18 +2551,26 @@ func (s *ListDoctorHDFSDirectoriesResponseBodyDataMetricsTinyFileDayGrowthCount)
 }
 
 type ListDoctorHDFSDirectoriesResponseBodyDataMetricsTotalDataDayGrowthSize struct {
+	// The description of the metric.
+	//
 	// example:
 	//
 	// Day growth size of total data
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	//
 	// example:
 	//
 	// totalDataDayGrowthSize
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	//
 	// example:
 	//
 	// MB
 	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The metric value.
+	//
 	// example:
 	//
 	// 256482228248
@@ -2383,18 +2626,26 @@ func (s *ListDoctorHDFSDirectoriesResponseBodyDataMetricsTotalDataDayGrowthSize)
 }
 
 type ListDoctorHDFSDirectoriesResponseBodyDataMetricsTotalDataSize struct {
+	// The description of the metric.
+	//
 	// example:
 	//
 	// Total data size in megabytes (MB)
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	//
 	// example:
 	//
 	// totalDataSize
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	//
 	// example:
 	//
 	// MB
 	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The metric value.
+	//
 	// example:
 	//
 	// 62086342083623
@@ -2450,18 +2701,26 @@ func (s *ListDoctorHDFSDirectoriesResponseBodyDataMetricsTotalDataSize) Validate
 }
 
 type ListDoctorHDFSDirectoriesResponseBodyDataMetricsTotalDataSizeDayGrowthRatio struct {
+	// The description of the metric.
+	//
 	// example:
 	//
 	// Day growth ratio of total data size
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	//
 	// example:
 	//
 	// totalDataSizeDayGrowthRatio
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	//
 	// example:
 	//
 	// ”“
 	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	//
 	// example:
 	//
 	// 0.14
@@ -2517,18 +2776,26 @@ func (s *ListDoctorHDFSDirectoriesResponseBodyDataMetricsTotalDataSizeDayGrowthR
 }
 
 type ListDoctorHDFSDirectoriesResponseBodyDataMetricsTotalFileCount struct {
+	// The description of the metric.
+	//
 	// example:
 	//
 	// Number of total files
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	//
 	// example:
 	//
 	// totalFileCount
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	//
 	// example:
 	//
 	// ”“
 	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The metric value.
+	//
 	// example:
 	//
 	// 51683279
@@ -2584,18 +2851,26 @@ func (s *ListDoctorHDFSDirectoriesResponseBodyDataMetricsTotalFileCount) Validat
 }
 
 type ListDoctorHDFSDirectoriesResponseBodyDataMetricsTotalFileCountDayGrowthRatio struct {
+	// The description of the metric.
+	//
 	// example:
 	//
 	// Day growth ratio of total files
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	//
 	// example:
 	//
 	// totalFileCountDayGrowthRatio
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	//
 	// example:
 	//
 	// ”“
 	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The metric value.
+	//
 	// example:
 	//
 	// 0.02
@@ -2651,18 +2926,26 @@ func (s *ListDoctorHDFSDirectoriesResponseBodyDataMetricsTotalFileCountDayGrowth
 }
 
 type ListDoctorHDFSDirectoriesResponseBodyDataMetricsTotalFileDayGrowthCount struct {
+	// The description of the metric.
+	//
 	// example:
 	//
 	// Day growth count of total files
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	//
 	// example:
 	//
 	// totalFileDayGrowthCount
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	//
 	// example:
 	//
 	// ”“
 	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	//
 	// example:
 	//
 	// 27809
@@ -2718,18 +3001,26 @@ func (s *ListDoctorHDFSDirectoriesResponseBodyDataMetricsTotalFileDayGrowthCount
 }
 
 type ListDoctorHDFSDirectoriesResponseBodyDataMetricsWarmDataDayGrowthSize struct {
+	// The description of the metric.
+	//
 	// example:
 	//
 	// Day growth size of warm data
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	//
 	// example:
 	//
 	// warmDataDayGrowthSize
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	//
 	// example:
 	//
 	// MB
 	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	//
 	// example:
 	//
 	// -64806998319
@@ -2785,18 +3076,26 @@ func (s *ListDoctorHDFSDirectoriesResponseBodyDataMetricsWarmDataDayGrowthSize) 
 }
 
 type ListDoctorHDFSDirectoriesResponseBodyDataMetricsWarmDataSize struct {
+	// The description of the metric.
+	//
 	// example:
 	//
 	// Size of the warm data size
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	//
 	// example:
 	//
 	// warmDataSize
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	//
 	// example:
 	//
 	// MB
 	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The metric value.
+	//
 	// example:
 	//
 	// 4062349775577
@@ -2852,18 +3151,26 @@ func (s *ListDoctorHDFSDirectoriesResponseBodyDataMetricsWarmDataSize) Validate(
 }
 
 type ListDoctorHDFSDirectoriesResponseBodyDataMetricsWarmDataSizeDayGrowthRatio struct {
+	// The description of the metric.
+	//
 	// example:
 	//
 	// Day growth ratio of warm data size
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	//
 	// example:
 	//
 	// warmDataSizeDayGrowthRatio
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	//
 	// example:
 	//
 	// ”“
 	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	//
 	// example:
 	//
 	// -0.015

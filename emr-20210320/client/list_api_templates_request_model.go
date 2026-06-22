@@ -28,7 +28,7 @@ type iListApiTemplatesRequest interface {
 }
 
 type ListApiTemplatesRequest struct {
-	// 接口名。
+	// The API operation name.
 	//
 	// This parameter is required.
 	//
@@ -36,19 +36,19 @@ type ListApiTemplatesRequest struct {
 	//
 	// CreateCluster
 	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// 一次获取的最大记录数。
+	// The maximum number of records to return in a single request.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 标记当前开始读取的位置，置空表示从头开始。
+	// The starting position for the read operation.
 	//
 	// example:
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C89568980
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 区域ID。
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -56,29 +56,29 @@ type ListApiTemplatesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 资源组ID。
+	// The ID of the resource group.
 	//
 	// example:
 	//
 	// rg-acfmzabjyop****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// 集群模板id。
+	// The cluster template ID.
 	//
 	// example:
 	//
 	// at-41b4c6a0fc63****
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// 集群模板id列表。
+	// A list of API template IDs.
 	//
 	// example:
 	//
 	// ["AT-****"]
 	TemplateIds []*string `json:"TemplateIds,omitempty" xml:"TemplateIds,omitempty" type:"Repeated"`
-	// 集群模板名字。
+	// The name of the cluster template.
 	//
 	// example:
 	//
-	// DATALAKE模板
+	// DATALAKE template
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 

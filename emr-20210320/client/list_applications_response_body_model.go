@@ -141,7 +141,7 @@ type ListApplicationsResponseBodyApplications struct {
 	//
 	// example:
 	//
-	// 2.8.1
+	// 2.8.5-20230620
 	ApplicationVersion *string `json:"ApplicationVersion,omitempty" xml:"ApplicationVersion,omitempty"`
 	// The community edition.
 	//

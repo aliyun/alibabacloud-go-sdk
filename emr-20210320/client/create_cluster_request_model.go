@@ -48,21 +48,21 @@ type iCreateClusterRequest interface {
 }
 
 type CreateClusterRequest struct {
-	// The service configurations. Number of elements in the array: 1 to 1,000.
+	// The application configurations. The number of array elements N must be in the range of 1 to 1000.
 	ApplicationConfigs []*ApplicationConfig `json:"ApplicationConfigs,omitempty" xml:"ApplicationConfigs,omitempty" type:"Repeated"`
-	// The services. Number of elements in the array: 1 to 100.
+	// The list of applications. The number of array elements N must be in the range of 1 to 100.
 	//
 	// This parameter is required.
 	Applications []*Application `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Repeated"`
-	// The array of bootstrap scripts. Number of elements in the array: 1 to 10.
+	// The array of bootstrap scripts. The number of array elements N must be in the range of 1 to 10.
 	BootstrapScripts []*Script `json:"BootstrapScripts,omitempty" xml:"BootstrapScripts,omitempty" type:"Repeated"`
-	// The idempotent client token. If you call the same ClientToken multiple times, the returned results are the same. Only one cluster can be created with the same ClientToken.
+	// The client token that is used to ensure the idempotence of the request. The results of multiple calls that use the same client token are the same. A maximum of one cluster can be created with the same client token.
 	//
 	// example:
 	//
 	// A7D960FA-6DBA-5E07-8746-A63E3E4D****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The name of the cluster. The name must be 1 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+	// The cluster name. The name must be 1 to 128 characters in length. It must start with a letter or a Chinese character. It cannot start with http\\:// or https\\://. It can contain letters, digits, Chinese characters, colons (:), underscores (_), periods (.), and hyphens (-).
 	//
 	// This parameter is required.
 	//
@@ -70,21 +70,21 @@ type CreateClusterRequest struct {
 	//
 	// emrtest
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// The type of the cluster. Valid values:
+	// The cluster type. Valid values:
 	//
-	// 	- DATALAKE: data lake
+	// - DATALAKE: new data lake.
 	//
-	// 	- OLAP: online analytical processing (OLAP)
+	// - OLAP: data analytics.
 	//
-	// 	- DATAFLOW: Dataflow
+	// - DATAFLOW: real-time data stream.
 	//
-	// 	- DATASERVING: DataServing
+	// - DATASERVING: data serving.
 	//
-	// 	- CUSTOM: a custom hybrid cluster.
+	// - CUSTOM: custom cluster.
 	//
-	// 	- HADOOP: the old data lake. We recommend that you use the new data lake.
+	// - HADOOP: earlier-version data lake. We recommend that you use the new data lake.
 	//
-	// If you create an EMR cluster for the first time after 17:00 (UTC +8) on December 19, 2022, you cannot select the HADOOP, DATA_SCIENCE, PRESTO, or ZOOKEEPER cluster type.
+	// If you create an EMR cluster for the first time after 17:00 (UTC+8) on December 19, 2022, you cannot select HADOOP, DATA_SCIENCE, PRESTO, or ZOOKEEPER as the cluster type.
 	//
 	// This parameter is required.
 	//
@@ -92,11 +92,11 @@ type CreateClusterRequest struct {
 	//
 	// DATALAKE
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	// Specifies whether to enable release protection for the cluster. Valid values:
+	// Specifies whether to enable deletion protection for the cluster. Valid values:
 	//
-	// 	- true: enables release protection for the cluster.
+	// - true: enables deletion protection.
 	//
-	// 	- false: disables release protection for the cluster.
+	// - false: disables deletion protection.
 	//
 	// Default value: false.
 	//
@@ -104,27 +104,27 @@ type CreateClusterRequest struct {
 	//
 	// false
 	DeletionProtection *bool `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
-	// The deployment mode of master nodes in the cluster. Valid values:
+	// The deployment mode of applications in the cluster. Valid values:
 	//
-	// 	- NORMAL: regular mode. This is the default value. A cluster that contains only one master node is created.
+	// - NORMAL (default): non-high availability (HA) deployment. The cluster has one master node.
 	//
-	// 	- HA: high availability (HA) mode. A cluster that contains three master nodes is created.
+	// - HA: HA deployment. An HA deployment requires at least three master nodes.
 	//
 	// example:
 	//
 	// HA
 	DeployMode *string `json:"DeployMode,omitempty" xml:"DeployMode,omitempty"`
-	// The cluster description.
+	// The description of the cluster.
 	//
 	// example:
 	//
 	// Emr cluster for ETL
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The node attributes. The basic attributes of all ECS nodes in the cluster.
+	// The node attributes. This parameter specifies the basic attributes of all Elastic Compute Service (ECS) nodes in the cluster.
 	//
 	// This parameter is required.
 	NodeAttributes *NodeAttributes `json:"NodeAttributes,omitempty" xml:"NodeAttributes,omitempty"`
-	// The array of configurations of the node groups. Number of elements in the array: 1 to 100.
+	// The array of node group configurations. The number of array elements N must be in the range of 1 to 100.
 	//
 	// This parameter is required.
 	//
@@ -132,11 +132,11 @@ type CreateClusterRequest struct {
 	//
 	// NORMAL
 	NodeGroups []*NodeGroupConfig `json:"NodeGroups,omitempty" xml:"NodeGroups,omitempty" type:"Repeated"`
-	// The billing cycle of the instance. Valid values:
+	// The billing method. Valid values:
 	//
-	// 	- PayAsYouGo: pay-as-you-go
+	// - PayAsYouGo: pay-as-you-go.
 	//
-	// 	- Subscription: subscription
+	// - Subscription: subscription.
 	//
 	// Default value: PayAsYouGo.
 	//
@@ -152,33 +152,33 @@ type CreateClusterRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The EMR version. You can query available E-MapReduce (EMR) versions in the EMR console.
+	// The EMR release version. You can find the EMR release versions on the EMR cluster purchase page.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// EMR-5.8.0
+	// EMR-5.16.0
 	ReleaseVersion *string `json:"ReleaseVersion,omitempty" xml:"ReleaseVersion,omitempty"`
-	// The ID of the resource group to which to assign the ENI.
+	// The resource group ID.
 	//
 	// example:
 	//
 	// rg-acfmzabjyop****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The security mode of the cluster. Valid values:
+	// The Kerberos security mode of the cluster. Valid values:
 	//
-	// 	- NORMAL: disables Kerberos authentication for the cluster. This is the default value.
+	// - NORMAL (default): normal mode. Kerberos is disabled.
 	//
-	// 	- KERBEROS: enables Kerberos authentication for the cluster.
+	// - KERBEROS: Kerberos mode. Kerberos is enabled.
 	//
 	// example:
 	//
 	// NORMAL
 	SecurityMode *string `json:"SecurityMode,omitempty" xml:"SecurityMode,omitempty"`
-	// The subscription configurations. This parameter takes effect only if you set the PaymentType parameter to Subscription.
+	// The subscription configurations. This parameter is required if you set PaymentType to Subscription.
 	SubscriptionConfig *SubscriptionConfig `json:"SubscriptionConfig,omitempty" xml:"SubscriptionConfig,omitempty"`
-	// The tag. Number of elements in the array: 0 to 20.
+	// The tags. The number of array elements N must be in the range of 0 to 20.
 	//
 	// example:
 	//

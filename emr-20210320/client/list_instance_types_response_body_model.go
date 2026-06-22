@@ -24,25 +24,25 @@ type iListInstanceTypesResponseBody interface {
 type ListInstanceTypesResponseBody struct {
 	// The instance types.
 	InstanceTypes []*InstanceType `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Repeated"`
-	// The maximum number of records returned in this request.
+	// The maximum number of entries per page.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// Returns the position of the read data.
+	// A pagination token. It can be used in the next request to retrieve a new page of results.
 	//
 	// example:
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C89568980
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total amount of data under the conditions of this request.
+	// The total number of entries returned.
 	//
 	// example:
 	//

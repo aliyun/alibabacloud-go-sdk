@@ -26,7 +26,7 @@ type PutManagedScalingPolicyRequest struct {
 	//
 	// c-b933c5aac8fe****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The constrains on the maximum and minimum numbers of nodes in a node group.
+	// The maximum and minimum value constraints for the cluster.
 	Constraints *ManagedScalingConstraints `json:"Constraints,omitempty" xml:"Constraints,omitempty"`
 	// The region ID.
 	//

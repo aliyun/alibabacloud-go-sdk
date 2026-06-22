@@ -28,41 +28,43 @@ type iNodeSelector interface {
 type NodeSelector struct {
 	// Deprecated
 	//
-	// 节点组ID。当NodeSelectType取值NodeGroup时，该参数生效。
+	// > This parameter is deprecated. Use `NodeGroupIds` instead.
 	//
 	// example:
 	//
 	// ng-869471354ecd****
-	NodeGroupId  *string   `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
+	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
+	// The IDs of the node groups to select.
 	NodeGroupIds []*string `json:"NodeGroupIds,omitempty" xml:"NodeGroupIds,omitempty" type:"Repeated"`
 	// Deprecated
 	//
-	// 节点组名称。当NodeSelectType取值NodeGroup，且参数NodeGroupId为空时生效，该参数生效。
+	// > This parameter is deprecated. Use `NodeGroupNames` instead.
 	//
 	// example:
 	//
 	// master-1
-	NodeGroupName  *string   `json:"NodeGroupName,omitempty" xml:"NodeGroupName,omitempty"`
+	NodeGroupName *string `json:"NodeGroupName,omitempty" xml:"NodeGroupName,omitempty"`
+	// The names of the node groups to select.
 	NodeGroupNames []*string `json:"NodeGroupNames,omitempty" xml:"NodeGroupNames,omitempty" type:"Repeated"`
-	// 节点组类型。当NodeSelectType取值NodeGroup，且参数NodeGroupId为空时生效。数组元数个数N取值范围：0~10。
+	// The types of node groups to select. This parameter applies only when `NodeSelectType` is set to `NODE_GROUP` and `NodeGroupIds` is not specified. The array can contain up to 10 elements.
 	//
 	// example:
 	//
 	// ["CORE","TASK"]
 	NodeGroupTypes []*string `json:"NodeGroupTypes,omitempty" xml:"NodeGroupTypes,omitempty" type:"Repeated"`
-	// 节点名称列表。当NodeSelectType取值Node时，该参数生效。
+	// The names of the nodes to select. This parameter applies only when `NodeSelectType` is set to `NODE`.
 	//
 	// example:
 	//
 	// ["core1-1"]
 	NodeNames []*string `json:"NodeNames,omitempty" xml:"NodeNames,omitempty" type:"Repeated"`
-	// 节点选择类型。取值范围：
+	// The node selection type. Valid values:
 	//
-	// - CLUSTER：集群。
+	// - `CLUSTER`: Selects all nodes in the cluster.
 	//
-	// - NODE_GROUP：节点组。
+	// - `NODE_GROUP`: Selects nodes by their node group.
 	//
-	// - NODE：节点。
+	// - `NODE`: Selects specific nodes by name.
 	//
 	// This parameter is required.
 	//

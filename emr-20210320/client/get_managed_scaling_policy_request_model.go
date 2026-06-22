@@ -16,7 +16,7 @@ type iGetManagedScalingPolicyRequest interface {
 }
 
 type GetManagedScalingPolicyRequest struct {
-	// 集群ID。
+	// The cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type GetManagedScalingPolicyRequest struct {
 	//
 	// c-b933c5aac8fe****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// 区域ID。
+	// The region ID.
 	//
 	// This parameter is required.
 	//

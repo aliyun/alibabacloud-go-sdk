@@ -181,15 +181,15 @@ type GetApplicationResponseBodyApplicationActions struct {
 	//
 	// example:
 	//
-	// 描述
+	// Description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The execution scope. Valid values:
 	//
-	// 	- APPLICATION: the application scope.
+	// - APPLICATION: the application scope.
 	//
-	// 	- COMPONENT: the component scope.
+	// - COMPONENT: the component scope.
 	//
-	// 	- COMPONENT_INSTANCE: the component instance scope.
+	// - COMPONENT_INSTANCE: the component instance scope.
 	//
 	// example:
 	//
@@ -277,7 +277,7 @@ type GetApplicationResponseBodyApplicationActionsActionParams struct {
 	//
 	// example:
 	//
-	// start
+	// Decommission action
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The parameter name.
 	//
@@ -338,7 +338,7 @@ type GetApplicationResponseBodyApplicationActionsActionParamsValueAttribute stru
 	//
 	// example:
 	//
-	// 描述
+	// Set timeout duration
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The size of the value increment.
 	//
@@ -368,7 +368,7 @@ type GetApplicationResponseBodyApplicationActionsActionParamsValueAttribute stru
 	//
 	// example:
 	//
-	// number
+	// Second
 	ValueUnit *string `json:"ValueUnit,omitempty" xml:"ValueUnit,omitempty"`
 }
 

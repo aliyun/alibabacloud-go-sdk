@@ -16,10 +16,14 @@ type iCreateUsersResponseBody interface {
 }
 
 type CreateUsersResponseBody struct {
+	// The result of the request. Valid values: true: The request was successful. false: The request failed.
+	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944****

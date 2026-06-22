@@ -28,9 +28,9 @@ type iExportApplicationConfigsRequest interface {
 }
 
 type ExportApplicationConfigsRequest struct {
-  // 导出应用配置。
+  // The list of application configurations to export.
   ApplicationConfigFiles []*ApplicationConfigFile `json:"ApplicationConfigFiles,omitempty" xml:"ApplicationConfigFiles,omitempty" type:"Repeated"`
-  // 集群ID。
+  // The cluster ID.
   // 
   // This parameter is required.
   // 
@@ -39,11 +39,21 @@ type ExportApplicationConfigsRequest struct {
   // c-b933c5aac8fe****
   ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
   ConfigScope *string `json:"ConfigScope,omitempty" xml:"ConfigScope,omitempty"`
+  // The mode for exporting service configurations. Valid values:
+  // 
+  // - MODIFICATION
+  // 
+  // - ALL
+  // 
   // example:
   // 
   // MODIFICATION
   ExportMode *string `json:"ExportMode,omitempty" xml:"ExportMode,omitempty"`
-  // 导出应用配置的文件格式。
+  // The file format of the exported application configurations. Valid values:
+  // 
+  // - JSON
+  // 
+  // - XML
   // 
   // example:
   // 
@@ -51,7 +61,7 @@ type ExportApplicationConfigsRequest struct {
   FileFormat *string `json:"FileFormat,omitempty" xml:"FileFormat,omitempty"`
   NodeGroupIds []*string `json:"NodeGroupIds,omitempty" xml:"NodeGroupIds,omitempty" type:"Repeated"`
   NodeIds []*string `json:"NodeIds,omitempty" xml:"NodeIds,omitempty" type:"Repeated"`
-  // 区域ID。
+  // The region ID.
   // 
   // This parameter is required.
   // 

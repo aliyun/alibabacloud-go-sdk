@@ -26,7 +26,7 @@ type CreateNodeGroupRequest struct {
 	//
 	// C-E525E04F3914****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The information about the node group.
+	// The information about the machine group.
 	NodeGroup *NodeGroupConfig `json:"NodeGroup,omitempty" xml:"NodeGroup,omitempty"`
 	// The region ID.
 	//

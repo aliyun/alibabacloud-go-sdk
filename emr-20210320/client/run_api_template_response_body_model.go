@@ -16,11 +16,13 @@ type iRunApiTemplateResponseBody interface {
 }
 
 type RunApiTemplateResponseBody struct {
+	// The content returned for the request.
+	//
 	// example:
 	//
 	// {\\"clusterId\\":\\"c-b7be171f1928****\\",\\"operationId\\":\\"op-61126efe629d****\\"}
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// 请求ID。
+	// The request ID.
 	//
 	// example:
 	//

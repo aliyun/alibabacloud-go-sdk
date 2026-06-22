@@ -26,11 +26,11 @@ type iScalingRule interface {
 }
 
 type ScalingRule struct {
-	// 伸缩活动类型。取值范围：
+	// The type of the scaling activity. This parameter is required. Valid values:
 	//
-	// - SCALE_OUT：扩容。
+	// - SCALE_OUT: scale-out.
 	//
-	// - SCALE_IN：缩容。
+	// - SCALE_IN: scale-in.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type ScalingRule struct {
 	//
 	// SCALE_IN
 	ActivityType *string `json:"ActivityType,omitempty" xml:"ActivityType,omitempty"`
-	// 调整值。需要为正数，代表需要扩容或者缩容的实例数量。
+	// The adjustment value. This parameter is required and must be a positive integer. It specifies the number of instances to add for a scale-out activity or remove for a scale-in activity.
 	//
 	// This parameter is required.
 	//
@@ -46,31 +46,29 @@ type ScalingRule struct {
 	//
 	// 100
 	AdjustmentValue *int32 `json:"AdjustmentValue,omitempty" xml:"AdjustmentValue,omitempty"`
-	// 按照负载伸缩描述。
-	//
-	// <p>
+	// The configurations for load-based scaling.
 	MetricsTrigger *MetricsTrigger `json:"MetricsTrigger,omitempty" xml:"MetricsTrigger,omitempty"`
+	// The minimum number of instances to add during a scale-out activity.
+	//
 	// example:
 	//
 	// 1
 	MinAdjustmentValue *int32 `json:"MinAdjustmentValue,omitempty" xml:"MinAdjustmentValue,omitempty"`
-	// 规则名称。
+	// The name of the rule. This parameter is required and cannot be an empty string.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// scale-out-memory
+	// scalingByYarnMemory
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// 按照时间伸缩描述。
-	//
-	// <p>
+	// The configurations for time-based scaling.
 	TimeTrigger *TimeTrigger `json:"TimeTrigger,omitempty" xml:"TimeTrigger,omitempty"`
-	// 伸缩规则类型。 取值范围：
+	// The type of the scaling rule. This parameter is required. Valid values:
 	//
-	// - TIME_TRIGGER: 按时间伸缩。
+	// - TIME_TRIGGER: time-based scaling.
 	//
-	// - METRICS_TRIGGER: 按负载伸缩。
+	// - METRICS_TRIGGER: load-based scaling.
 	//
 	// This parameter is required.
 	//

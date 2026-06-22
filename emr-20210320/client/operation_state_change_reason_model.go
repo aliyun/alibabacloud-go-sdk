@@ -16,13 +16,35 @@ type iOperationStateChangeReason interface {
 }
 
 type OperationStateChangeReason struct {
-	// 状态码。
+	// The operation status code. Valid values:
+	//
+	// - `UserRequest`: The operation was initiated by a user.
+	//
+	// - `OutOfStock`: The requested ECS instance type is out of stock.
+	//
+	// - `NotAuthorized`: You are not authorized to perform the operation.
+	//
+	// - `QuotaExceeded`: A resource quota was exceeded.
+	//
+	// - `OperationDenied`: The operation was denied.
+	//
+	// - `AccountException`: An account exception occurred.
+	//
+	// - `NodeFailure`: An ECS node failed.
+	//
+	// - `BootstrapFailure`: A bootstrap action failed.
+	//
+	// - `ValidationFail`: The business logic validation failed.
+	//
+	// - `ServiceFailure`: A dependent service failed.
+	//
+	// - `InternalError`: An internal error occurred.
 	//
 	// example:
 	//
 	// OutOfStock
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 状态变化信息。
+	// A human-readable message that provides details about the state change.
 	//
 	// example:
 	//

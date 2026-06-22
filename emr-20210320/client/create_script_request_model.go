@@ -38,11 +38,11 @@ type CreateScriptRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The type of the script. Valid values:
+	// The script type. Valid values:
 	//
-	// 	- BOOTSTRAP: indicates a bootstrap action of the Elastic Compute Service (ECS) instance.
+	// - BOOTSTRAP: an ECS instance bootstrap script.
 	//
-	// 	- NORMAL: indicates a common script.
+	// - NORMAL: a normal script.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +54,7 @@ type CreateScriptRequest struct {
 	//
 	// This parameter is required.
 	Scripts []*Script `json:"Scripts,omitempty" xml:"Scripts,omitempty" type:"Repeated"`
-	// The timeout period for a manual execution script. You cannot specify a timeout period for a bootstrap action.
+	// The timeout period for manually executing the script. This parameter is not supported for bootstrap scripts.
 	TimeoutSecs *string `json:"TimeoutSecs,omitempty" xml:"TimeoutSecs,omitempty"`
 }
 

@@ -14,7 +14,7 @@ type iScalingActivityResult interface {
 }
 
 type ScalingActivityResult struct {
-	// 实例ID。
+	// The instance ID.
 	//
 	// example:
 	//

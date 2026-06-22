@@ -26,9 +26,9 @@ type iDecreaseNodesRequest interface {
 }
 
 type DecreaseNodesRequest struct {
-	// The cooldown interval between two batches.
+	// The cooldown time between batches.
 	BatchInterval *int32 `json:"BatchInterval,omitempty" xml:"BatchInterval,omitempty"`
-	// The number of nodes to be removed in a single batch.
+	// The number of nodes to concurrently take offline in a single batch.
 	BatchSize *int32 `json:"BatchSize,omitempty" xml:"BatchSize,omitempty"`
 	// The cluster ID.
 	//
@@ -38,13 +38,13 @@ type DecreaseNodesRequest struct {
 	//
 	// c-b933c5aac8fe****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The number of nodes to scale out. The number of nodes to be scaled out. The value should be less than the number of surviving nodes in the current node group.
+	// The number of nodes to remove. The value must be less than the number of active nodes in the node group.
 	//
 	// example:
 	//
 	// 3
 	DecreaseNodeCount *int32 `json:"DecreaseNodeCount,omitempty" xml:"DecreaseNodeCount,omitempty"`
-	// The ID of the node group.
+	// The node group ID.
 	//
 	// This parameter is required.
 	//
@@ -52,13 +52,13 @@ type DecreaseNodesRequest struct {
 	//
 	// ng-869471354ecd****
 	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
-	// The array of node IDs. Valid values of array element N: 1 to 500.
+	// An array of node IDs. The array can contain from 1 to 500 elements.
 	//
 	// example:
 	//
 	// ["i-bp1cudc25w2bfwl5****"]
 	NodeIds []*string `json:"NodeIds,omitempty" xml:"NodeIds,omitempty" type:"Repeated"`
-	// The ID of the region in which you want to create the instance.
+	// The region ID.
 	//
 	// This parameter is required.
 	//

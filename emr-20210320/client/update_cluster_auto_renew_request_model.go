@@ -26,27 +26,41 @@ type iUpdateClusterAutoRenewRequest interface {
 }
 
 type UpdateClusterAutoRenewRequest struct {
-	// 自动续费ECS实例列表。
+	// The list of ECS instances for which to enable auto-renewal. This parameter takes effect only when RenewAllInstances is not set to true.
 	AutoRenewInstances []*AutoRenewInstance `json:"AutoRenewInstances,omitempty" xml:"AutoRenewInstances,omitempty" type:"Repeated"`
-	// 集群是否自动续费。
+	// Specifies whether to enable auto-renewal for the cluster. Valid values:
+	//
+	// - true: Enables auto-renewal.
+	//
+	// - false: Disables auto-renewal.
+	//
+	// Default value: false.
 	//
 	// example:
 	//
 	// true
 	ClusterAutoRenew *bool `json:"ClusterAutoRenew,omitempty" xml:"ClusterAutoRenew,omitempty"`
-	// 集群自动续费时长。
+	// The auto-renewal duration for the cluster. This parameter takes effect only when ClusterAutoRenew is set to true.
+	//
+	// If ClusterAutoRenewDurationUnit is set to Month, the valid values are 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, and 36. If ClusterAutoRenewDurationUnit is set to Year, the valid values are 1, 2, and 3.
 	//
 	// example:
 	//
 	// 1
 	ClusterAutoRenewDuration *int32 `json:"ClusterAutoRenewDuration,omitempty" xml:"ClusterAutoRenewDuration,omitempty"`
-	// 集群续费时长单位。
+	// The unit of the auto-renewal duration. Valid values:
+	//
+	// - Month
+	//
+	// - Year
+	//
+	// Default value: Month.
 	//
 	// example:
 	//
 	// Monthly
 	ClusterAutoRenewDurationUnit *string `json:"ClusterAutoRenewDurationUnit,omitempty" xml:"ClusterAutoRenewDurationUnit,omitempty"`
-	// 集群ID。
+	// The cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +68,7 @@ type UpdateClusterAutoRenewRequest struct {
 	//
 	// c-d6661c71139a****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// 区域ID。
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -62,7 +76,13 @@ type UpdateClusterAutoRenewRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 续费所有ECS实例。
+	// Specifies whether to enable auto-renewal for all ECS instances in the cluster. Valid values:
+	//
+	// - true: Enables auto-renewal for all ECS instances in the cluster. The default auto-renewal duration is one month.
+	//
+	// - false: Does not enable auto-renewal for all ECS instances in the cluster. You can specify the ECS instances for which to enable auto-renewal in the AutoRenewInstances parameter.
+	//
+	// Default value: false.
 	RenewAllInstances *bool `json:"RenewAllInstances,omitempty" xml:"RenewAllInstances,omitempty"`
 }
 

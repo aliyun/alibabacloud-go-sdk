@@ -22,27 +22,27 @@ type iListClustersResponseBody interface {
 }
 
 type ListClustersResponseBody struct {
-	// The clusters.
+	// The list of clusters.
 	Clusters []*ClusterSummary `json:"Clusters,omitempty" xml:"Clusters,omitempty" type:"Repeated"`
-	// The number of entries returned per page.
+	// The number of entries returned on each page.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The page number of the next page returned.
+	// The token for the next page of results.
 	//
 	// example:
 	//
 	// eyJlY21OZXh0VG9rZW4iOiIxIiwidGFpaGFvTmV4dFRva2VuIjoiNTYiLCJ0YWloYW9OZXh0VG9rZW5JbnQiOjU2LCJlY21OZXh0VG9rZW5JbnQiOjF9
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 9E3A7161-EB7B-172B-8D18-FFB06BA3896A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of pages.
+	// The total number of entries.
 	//
 	// example:
 	//

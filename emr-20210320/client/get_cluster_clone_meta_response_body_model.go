@@ -16,7 +16,7 @@ type iGetClusterCloneMetaResponseBody interface {
 }
 
 type GetClusterCloneMetaResponseBody struct {
-	// Cluster clone metadata.
+	// The clone metadata of the cluster.
 	ClusterCloneMeta *GetClusterCloneMetaResponseBodyClusterCloneMeta `json:"ClusterCloneMeta,omitempty" xml:"ClusterCloneMeta,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,11 +62,11 @@ func (s *GetClusterCloneMetaResponseBody) Validate() error {
 }
 
 type GetClusterCloneMetaResponseBodyClusterCloneMeta struct {
-	// The modified configuration items.
+	// The modified application configuration items.
 	ApplicationConfigs []*ApplicationConfig `json:"ApplicationConfigs,omitempty" xml:"ApplicationConfigs,omitempty" type:"Repeated"`
 	// The cluster applications.
 	Applications []*Application `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Repeated"`
-	// An array of bootstrap scripts. The number of elements in the array: 1 to 10.
+	// An array of bootstrap scripts. The number of array elements N can be from 1 to 10.
 	BootstrapScripts []*Script `json:"BootstrapScripts,omitempty" xml:"BootstrapScripts,omitempty" type:"Repeated"`
 	// The cluster ID.
 	//
@@ -74,58 +74,58 @@ type GetClusterCloneMetaResponseBodyClusterCloneMeta struct {
 	//
 	// c-b933c5aac7f7****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The name of the cluster.
+	// The cluster name.
 	//
 	// example:
 	//
 	// emrtest
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// The status of the cluster. Valid values:
+	// The state of the cluster. Valid values:
 	//
-	// 	- STARTING
+	// - STARTING: The cluster is starting.
 	//
-	// 	- START_FAILED
+	// - START_FAILED: The cluster failed to start.
 	//
-	// 	- BOOTSTRAPPING
+	// - BOOTSTRAPPING: The cluster is performing bootstrap actions.
 	//
-	// 	- RUNNING
+	// - RUNNING: The cluster is running.
 	//
-	// 	- TERMINATING
+	// - TERMINATING: The cluster is being terminated.
 	//
-	// 	- TERMINATED
+	// - TERMINATED: The cluster is terminated.
 	//
-	// 	- TERMINATED_WITH_ERRORS
+	// - TERMINATED_WITH_ERRORS: The cluster is terminated due to an exception.
 	//
-	// 	- TERMINATE_FAILED
+	// - TERMINATE_FAILED: The cluster failed to be terminated.
 	//
 	// example:
 	//
 	// RUNNING
 	ClusterState *string `json:"ClusterState,omitempty" xml:"ClusterState,omitempty"`
-	// The cluster type. Valid values:
+	// The type of the cluster. Valid values:
 	//
-	// 	- DATALAKE
+	// - DATALAKE: data lake.
 	//
-	// 	- OLAP
+	// - OLAP: data analytics.
 	//
-	// 	- DATAFLOW
+	// - DATAFLOW: real-time data stream.
 	//
-	// 	- DATASERVING
+	// - DATASERVING: data service.
 	//
-	// 	- CUSTOM
+	// - CUSTOM: custom cluster.
 	//
-	// 	- HADOOP
+	// - HADOOP: Hadoop.
 	//
 	// example:
 	//
 	// DATALAKE
 	ClusterType       *string            `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
 	CollationTimeZone *CollationTimeZone `json:"CollationTimeZone,omitempty" xml:"CollationTimeZone,omitempty"`
-	// Indicates whether release protection is enabled for the cluster. Valid values:
+	// Indicates whether deletion protection is enabled for the cluster. Valid values:
 	//
-	// 	- true: Release protection is enabled for the cluster.
+	// - true: Deletion protection is enabled.
 	//
-	// 	- false: Release protection is disabled for the cluster.
+	// - false: Deletion protection is disabled.
 	//
 	// Default value: false.
 	//
@@ -133,27 +133,27 @@ type GetClusterCloneMetaResponseBodyClusterCloneMeta struct {
 	//
 	// false
 	DeletionProtection *bool `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
-	// The deployment mode of master nodes in the cluster. Valid values:
+	// The deployment mode of applications in the cluster. Valid values:
 	//
-	// 	- NORMAL: regular mode.
+	// - NORMAL: standard deployment.
 	//
-	// 	- HA: high availability mode.
+	// - HA: high-availability deployment.
 	//
 	// example:
 	//
 	// HA
 	DeployMode *string `json:"DeployMode,omitempty" xml:"DeployMode,omitempty"`
-	// The EMR service role.
+	// The EMR server role.
 	//
 	// example:
 	//
 	// AliyunEMRDefaultRole
 	EmrDefaultRole *string `json:"EmrDefaultRole,omitempty" xml:"EmrDefaultRole,omitempty"`
-	// Indicates whether the service configurations of a Hadoop cluster that you made during cluster creation can be cloned. Valid values:
+	// Indicates whether the application configurations can be passed in when you clone a HADOOP cluster. Valid values:
 	//
-	// 	- False
+	// - False: Not supported.
 	//
-	// 	- True
+	// - True: Supported.
 	//
 	// example:
 	//
@@ -161,13 +161,13 @@ type GetClusterCloneMetaResponseBodyClusterCloneMeta struct {
 	ExistCloneConfig *bool `json:"ExistCloneConfig,omitempty" xml:"ExistCloneConfig,omitempty"`
 	// The node attributes.
 	NodeAttributes *NodeAttributes `json:"NodeAttributes,omitempty" xml:"NodeAttributes,omitempty"`
-	// The node groups. The number of elements in the array: 1 to 100.
+	// An array of node group configurations. The number of array elements N can be from 1 to 100.
 	NodeGroups []*NodeGroup `json:"NodeGroups,omitempty" xml:"NodeGroups,omitempty" type:"Repeated"`
-	// The billing method of the cluster. Valid values:
+	// The billing method. Valid values:
 	//
-	// 	- PayAsYouGo
+	// - PayAsYouGo: pay-as-you-go.
 	//
-	// 	- Subscription
+	// - Subscription: subscription.
 	//
 	// example:
 	//
@@ -179,7 +179,7 @@ type GetClusterCloneMetaResponseBodyClusterCloneMeta struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The EMR version.
+	// The EMR release.
 	//
 	// example:
 	//
@@ -191,19 +191,19 @@ type GetClusterCloneMetaResponseBodyClusterCloneMeta struct {
 	//
 	// rg-acfmzabjyop****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The auto scaling policies of each node group in the cluster.
+	// The Auto Scaling policies for each node group in the cluster.
 	ScalingPolicies []*GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicies `json:"ScalingPolicies,omitempty" xml:"ScalingPolicies,omitempty" type:"Repeated"`
-	// The security mode of the cluster. Valid values:
+	// The Kerberos security mode of the cluster. Valid values:
 	//
-	// 	- NORMAL: regular mode. Kerberos is not enabled.
+	// - NORMAL: The Kerberos mode is disabled.
 	//
-	// 	- KERBEROS: Kerberos mode. Kerberos is enabled.
+	// - KERBEROS: The Kerberos mode is enabled.
 	//
 	// example:
 	//
 	// NORMAL
 	SecurityMode *string `json:"SecurityMode,omitempty" xml:"SecurityMode,omitempty"`
-	// The subscription configurations.
+	// The subscription configuration.
 	SubscriptionConfig *SubscriptionConfig `json:"SubscriptionConfig,omitempty" xml:"SubscriptionConfig,omitempty"`
 	// The list of cluster tags.
 	Tags []*Tag `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
@@ -495,7 +495,7 @@ type GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicies struct {
 	//
 	// c-b933c5aac8fe****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The maximum and minimum number of nodes in the node group.
+	// The constraints on the maximum and minimum number of nodes in the node group.
 	Constraints *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPoliciesConstraints `json:"Constraints,omitempty" xml:"Constraints,omitempty" type:"Struct"`
 	// The node group ID.
 	//
@@ -503,21 +503,21 @@ type GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicies struct {
 	//
 	// ng-869471354ecd****
 	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
-	// The name of the node group.
+	// The node group name.
 	//
 	// example:
 	//
 	// emr-etltask
 	NodeGroupName *string `json:"NodeGroupName,omitempty" xml:"NodeGroupName,omitempty"`
-	// The ID of the auto scaling policy.
+	// The scaling policy ID.
 	//
 	// example:
 	//
 	// asp-asduwe23znl***
 	ScalingPolicyId *string `json:"ScalingPolicyId,omitempty" xml:"ScalingPolicyId,omitempty"`
-	// The type of the auto scaling policy.
+	// The type of the elastic policy.
 	ScalingPolicyType *string `json:"ScalingPolicyType,omitempty" xml:"ScalingPolicyType,omitempty"`
-	// The auto scaling rules.
+	// The list of scaling rules.
 	ScalingRules []*GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPoliciesScalingRules `json:"ScalingRules,omitempty" xml:"ScalingRules,omitempty" type:"Repeated"`
 }
 
@@ -617,7 +617,7 @@ type GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPoliciesConstraints s
 	//
 	// 200
 	MaxCapacity *int32 `json:"MaxCapacity,omitempty" xml:"MaxCapacity,omitempty"`
-	// The maximum number of pay-as-you-go nodes in the node group.
+	// The maximum number of pay-as-you-go instances.
 	//
 	// example:
 	//
@@ -671,37 +671,37 @@ func (s *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPoliciesConstrain
 }
 
 type GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPoliciesScalingRules struct {
-	// The scaling type. This parameter is required. Valid values:
+	// The type of the scaling activity. This parameter is required. Valid values:
 	//
-	// 	- SCALE_OUT
+	// - SCALE_OUT: scale-out.
 	//
-	// 	- SCALE_IN
+	// - SCALE_IN: scale-in.
 	//
 	// example:
 	//
 	// SCALE_OUT
 	ActivityType *string `json:"ActivityType,omitempty" xml:"ActivityType,omitempty"`
-	// The adjustment value of the auto scaling rule. This parameter is required. The parameter value must be a positive integer, which indicates the number of instances to be added or removed.
+	// The adjustment value. This parameter is required. It must be a positive integer. It specifies the number of instances to add or remove.
 	//
 	// example:
 	//
 	// 100
 	AdjustmentValue *int32 `json:"AdjustmentValue,omitempty" xml:"AdjustmentValue,omitempty"`
-	// The description of load-based scaling.
+	// The description of the metric-based scaling rule.
 	MetricsTrigger *MetricsTrigger `json:"MetricsTrigger,omitempty" xml:"MetricsTrigger,omitempty"`
-	// The name of the auto scaling rule.
+	// The name of the scaling rule.
 	//
 	// example:
 	//
 	// scaling-out-memory
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The description of time-based scaling.
+	// The description of the time-based scaling rule.
 	TimeTrigger *TimeTrigger `json:"TimeTrigger,omitempty" xml:"TimeTrigger,omitempty"`
-	// The trigger mode of the auto scaling rule. This parameter is required. Valid values:
+	// The type of the scaling rule. This parameter is required. Valid values:
 	//
-	// 	- TIME_TRIGGER: time-based scaling.
+	// - TIME_TRIGGER: time-based scaling.
 	//
-	// 	- METRICS_TRIGGER: load-based scaling.
+	// - METRICS_TRIGGER: metric-based scaling.
 	//
 	// example:
 	//

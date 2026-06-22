@@ -56,73 +56,77 @@ type iNodeGroupConfig interface {
 }
 
 type NodeGroupConfig struct {
-	// 附加安全组。除集群设置的安全组外，为节点组单独设置的附加安全组。数组元数个数N的取值范围：0~2。
+	// The IDs of the additional security groups. In addition to the security group of the cluster, you can specify additional security groups for the node group. You can specify up to two security group IDs.
 	//
 	// example:
 	//
 	// ["sg-hp3abbae8lb6lmb1****"]
-	AdditionalSecurityGroupIds []*string          `json:"AdditionalSecurityGroupIds,omitempty" xml:"AdditionalSecurityGroupIds,omitempty" type:"Repeated"`
-	AutoScalingPolicy          *AutoScalingPolicy `json:"AutoScalingPolicy,omitempty" xml:"AutoScalingPolicy,omitempty"`
+	AdditionalSecurityGroupIds []*string `json:"AdditionalSecurityGroupIds,omitempty" xml:"AdditionalSecurityGroupIds,omitempty" type:"Repeated"`
+	// The auto scaling policy.
+	AutoScalingPolicy *AutoScalingPolicy `json:"AutoScalingPolicy,omitempty" xml:"AutoScalingPolicy,omitempty"`
+	// Specifies whether to automatically create pay-as-you-go instances to meet the required capacity when the number of preemptible instances is insufficient. This parameter is effective only when `nodeResizeStrategy` is set to `COST_OPTIMIZED`.
+	//
 	// example:
 	//
 	// true
-	CompensateWithOnDemand *bool     `json:"CompensateWithOnDemand,omitempty" xml:"CompensateWithOnDemand,omitempty"`
-	ComponentTags          []*string `json:"ComponentTags,omitempty" xml:"ComponentTags,omitempty" type:"Repeated"`
-	// 成本优化模式配置。
+	CompensateWithOnDemand *bool `json:"CompensateWithOnDemand,omitempty" xml:"CompensateWithOnDemand,omitempty"`
+	// A list of custom component tags.
+	ComponentTags []*string `json:"ComponentTags,omitempty" xml:"ComponentTags,omitempty" type:"Repeated"`
+	// The cost optimization settings.
 	CostOptimizedConfig *CostOptimizedConfig `json:"CostOptimizedConfig,omitempty" xml:"CostOptimizedConfig,omitempty"`
-	// 数据盘。当前数据盘只支持一种磁盘类型，即数组元数个数N的取值范围：1~1。
+	// The data disks. Currently, the array can contain only one data disk.
 	DataDisks []*DataDisk `json:"DataDisks,omitempty" xml:"DataDisks,omitempty" type:"Repeated"`
-	// 部署集策略。取值范围：
+	// The deployment set strategy. Valid values:
 	//
-	// - NONE：不适用部署集。
+	// - `NONE`: No deployment sets are used.
 	//
-	// - CLUSTER：使用集群级别部署集。
+	// - `CLUSTER`: The cluster-level deployment set is used.
 	//
-	// - NODE_GROUP：使用节点组级别部署集。
+	// - `NODE_GROUP`: The node group-level deployment set is used.
 	//
-	// 默认值：NONE。
+	// Default value: `NONE`.
 	//
 	// example:
 	//
 	// NONE
 	DeploymentSetStrategy *string `json:"DeploymentSetStrategy,omitempty" xml:"DeploymentSetStrategy,omitempty"`
-	// 节点组上部署的组件是否开启优雅下线。取值范围：
+	// Specifies whether to enable graceful shutdown for the components in the node group. Valid values:
 	//
-	// - true：开启优雅下线。
+	// - `true`: Enables graceful shutdown.
 	//
-	// - false：不开启优雅下线。
+	// - `false`: Disables graceful shutdown.
 	//
-	// 默认值：false。
+	// Default value: `false`.
 	//
 	// example:
 	//
 	// false
 	GracefulShutdown *bool `json:"GracefulShutdown,omitempty" xml:"GracefulShutdown,omitempty"`
-	// 节点实例类型列表。数组元数个数N的取值范围：1~100。
+	// The instance types. You can specify 1 to 100 instance types.
 	//
 	// example:
 	//
 	// ["ecs.g6.xlarge"]
 	InstanceTypes []*string `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Repeated"`
-	// 节点数量。取值范围：1~1000。
+	// The number of nodes in the node group. Valid values: 1 to 1,000.
 	//
 	// example:
 	//
 	// 3
 	NodeCount *int32 `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
-	// 节点组名称。最大长度128个字符。集群内要求节点组名称唯一。
+	// The name of the node group. The name can be up to 128 characters in length and must be unique within the cluster.
 	//
 	// example:
 	//
 	// core-1
 	NodeGroupName *string `json:"NodeGroupName,omitempty" xml:"NodeGroupName,omitempty"`
-	// 节点组类型。取值范围：
+	// The type of the node group. Valid values:
 	//
-	// - MASTER：管理类型节点组。
+	// - `MASTER`: a master node group.
 	//
-	// - CORE：存储类型节点组。
+	// - `CORE`: a core node group.
 	//
-	// - TASK：计算类型节点组。
+	// - `TASK`: a task node group.
 	//
 	// This parameter is required.
 	//
@@ -130,76 +134,77 @@ type NodeGroupConfig struct {
 	//
 	// CORE
 	NodeGroupType *string `json:"NodeGroupType,omitempty" xml:"NodeGroupType,omitempty"`
-	// 节点扩容策略。取值范围：
+	// The node scale-out strategy. Valid values:
 	//
-	// - COST_OPTIMIZED：成本优化策略。
+	// - `COST_OPTIMIZED`: The cost-optimized strategy.
 	//
-	// - PRIORITY：优先级策略。
+	// - `PRIORITY`: The priority-based strategy.
 	//
-	// 默认值：PRIORITY。
+	// Default value: `PRIORITY`.
 	//
 	// example:
 	//
 	// PRIORITY
 	NodeResizeStrategy *string `json:"NodeResizeStrategy,omitempty" xml:"NodeResizeStrategy,omitempty"`
-	// 节点组付费类型。不传入时默认和集群付费类型一致。取值范围：
+	// The billing method of the node group. If you do not specify this parameter, the billing method of the cluster is used. Valid values:
 	//
-	// - PayAsYouGo：后付费，按量付费。
+	// - `PayAsYouGo`: pay-as-you-go.
 	//
-	// - Subscription：预付费，包年包月。
+	// - `Subscription`: subscription.
 	//
-	// 默认值：PayAsYouGo。
+	// Default value: `PayAsYouGo`.
 	//
 	// example:
 	//
 	// PayAsYouGo
-	PaymentType        *string             `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	// The private pool options. This parameter is effective only when you create pay-as-you-go instances.
 	PrivatePoolOptions *PrivatePoolOptions `json:"PrivatePoolOptions,omitempty" xml:"PrivatePoolOptions,omitempty"`
-	// 抢占式Spot实例出价价格。参数SpotStrategy取值为SpotWithPriceLimit时生效。数组元数个数N的取值范围：0~100。
+	// The bid prices for the preemptible instances. This parameter is effective only when `SpotStrategy` is set to `SpotWithPriceLimit`. You can specify up to 100 bid prices.
 	SpotBidPrices []*SpotBidPrice `json:"SpotBidPrices,omitempty" xml:"SpotBidPrices,omitempty" type:"Repeated"`
-	// 开启后，当收到抢占式实例将被回收的系统消息时，伸缩组将尝试创建新的实例，替换掉将被回收的抢占式实例。取值范围：
+	// If enabled, the auto scaling group attempts to create a new instance to replace a spot instance that is about to be reclaimed. This process is triggered when the auto scaling group receives a system message about the impending reclamation. Valid values:
 	//
-	// - true：开启补齐抢占式实例。
+	// - `true`: The auto scaling group attempts to replace a spot instance that is about to be reclaimed.
 	//
-	// - false：不开启补齐抢占式实例。
+	// - `false`: The auto scaling group does not attempt to replace a spot instance that is about to be reclaimed.
 	//
-	// 默认值：false。
+	// Default value: `false`.
 	//
 	// example:
 	//
 	// true
 	SpotInstanceRemedy *bool `json:"SpotInstanceRemedy,omitempty" xml:"SpotInstanceRemedy,omitempty"`
-	// 抢占式Spot实例策略。取值范围：
+	// The preemption strategy for preemptible instances. Valid values:
 	//
-	// - NoSpot：正常按量付费实例。
+	// - `NoSpot`: pay-as-you-go instances.
 	//
-	// - SpotWithPriceLimit：设置最高出价的抢占式实例。
+	// - `SpotWithPriceLimit`: preemptible instances with a user-defined maximum hourly price.
 	//
-	// - SpotAsPriceGo：系统自动出价，最高按量付费价格的抢占式实例。
+	// - `SpotAsPriceGo`: preemptible instances that are automatically bid at the pay-as-you-go price.
 	//
-	// 默认值：NoSpot。
+	// Default value: `NoSpot`.
 	//
 	// example:
 	//
 	// NoSpot
 	SpotStrategy *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
-	// 节点组预付费配置。不传入时默认和集群预付费配置一致。
+	// The subscription settings of the node group. If you do not specify this parameter, the subscription settings of the cluster are used.
 	SubscriptionConfig *SubscriptionConfig `json:"SubscriptionConfig,omitempty" xml:"SubscriptionConfig,omitempty"`
-	// 系统盘。
+	// The system disk.
 	SystemDisk *SystemDisk `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty"`
-	// 虚拟机交换机ID列表。数组元数个数N的取值范围：1~20。
+	// The vSwitch IDs. You can specify 1 to 20 vSwitch IDs.
 	//
 	// example:
 	//
 	// ["vsw-hp35g7ya5ymw68mmg****"]
 	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
-	// 是否开公网IP。取值范围：
+	// Specifies whether to assign a public IP address to the instances. Valid values:
 	//
-	// - true：开公网。
+	// - `true`: Assigns a public IP address.
 	//
-	// - false：不开公网。
+	// - `false`: Does not assign a public IP address.
 	//
-	// 默认值：false。
+	// Default value: `false`.
 	//
 	// example:
 	//

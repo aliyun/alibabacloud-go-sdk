@@ -236,6 +236,17 @@ type GetDoctorApplicationResponseBodyDataAnalysis struct {
 	// 67
 	Score *int32 `json:"Score,omitempty" xml:"Score,omitempty"`
 	// The suggestion for running the job.
+	//
+	// example:
+	//
+	// ##### 当前节点：container
+	//
+	// ##### 存在问题：
+	//
+	// 最大内存利用率为7.75%，利用率较低
+	//
+	//
+	// 尝试减小Tez Container内存，可通过hive.tez.container.size进行设置
 	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
 }
 
